@@ -6,6 +6,8 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="obtainallworks1"></a>
+
 ## obtainAllWorks
 
 ```TypeScript
@@ -18,7 +20,7 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 **废弃版本：** 10
 
-**替代接口：** [obtainAllWorks](#obtainallworks-1)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
+**替代接口：** [obtainAllWorks](#obtainallworks2)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,9 +44,9 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
 **示例**
@@ -74,7 +76,7 @@ workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
 ```
 
 
-<a id="obtainallworks-1"></a>
+<a id="obtainallworks2"></a>
 
 ## obtainAllWorks
 
@@ -102,9 +104,9 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
 **示例**
@@ -123,7 +125,7 @@ workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.Wor
 ```
 
 
-<a id="obtainallworks-2"></a>
+<a id="obtainallworks3"></a>
 
 ## obtainAllWorks
 
@@ -151,9 +153,9 @@ function obtainAllWorks(): Promise<Array<WorkInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
 **示例**

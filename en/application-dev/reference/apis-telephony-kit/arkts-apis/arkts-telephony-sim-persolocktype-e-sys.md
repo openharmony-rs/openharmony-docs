@@ -14,6 +14,38 @@ Indicates the personalized lock types.
 
 **System API:** This is a system API.
 
+## PC_PIN_LOCK
+
+```TypeScript
+PC_PIN_LOCK = 6
+```
+
+Indicates corporate personalization of PIN lock(refer 3GPP TS 22.022 [33]).
+
+**Since:** 8
+
+<!--Device-PersoLockType-PC_PIN_LOCK = 6--><!--Device-PersoLockType-PC_PIN_LOCK = 6-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**System API:** This is a system API.
+
+## PC_PUK_LOCK
+
+```TypeScript
+PC_PUK_LOCK = 7
+```
+
+Indicates corporate personalization of PUK lock(refer 3GPP TS 22.022 [33]).
+
+**Since:** 8
+
+<!--Device-PersoLockType-PC_PUK_LOCK = 7--><!--Device-PersoLockType-PC_PUK_LOCK = 7-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**System API:** This is a system API.
+
 ## PN_PIN_LOCK
 
 ```TypeScript
@@ -41,38 +73,6 @@ Indicates network personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 **Since:** 8
 
 <!--Device-PersoLockType-PN_PUK_LOCK = 1--><!--Device-PersoLockType-PN_PUK_LOCK = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-**System API:** This is a system API.
-
-## PU_PIN_LOCK
-
-```TypeScript
-PU_PIN_LOCK = 2
-```
-
-Indicates network subset personalization of PIN lock(refer 3GPP TS 22.022 [33]).
-
-**Since:** 8
-
-<!--Device-PersoLockType-PU_PIN_LOCK = 2--><!--Device-PersoLockType-PU_PIN_LOCK = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-**System API:** This is a system API.
-
-## PU_PUK_LOCK
-
-```TypeScript
-PU_PUK_LOCK = 3
-```
-
-Indicates network subset personalization of PUK lock(refer 3GPP TS 22.022 [33]).
-
-**Since:** 8
-
-<!--Device-PersoLockType-PU_PUK_LOCK = 3--><!--Device-PersoLockType-PU_PUK_LOCK = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -110,33 +110,33 @@ Indicates service provider personalization of PUK lock(refer 3GPP TS 22.022 [33]
 
 **System API:** This is a system API.
 
-## PC_PIN_LOCK
+## PU_PIN_LOCK
 
 ```TypeScript
-PC_PIN_LOCK = 6
+PU_PIN_LOCK = 2
 ```
 
-Indicates corporate personalization of PIN lock(refer 3GPP TS 22.022 [33]).
+Indicates network subset personalization of PIN lock(refer 3GPP TS 22.022 [33]).
 
 **Since:** 8
 
-<!--Device-PersoLockType-PC_PIN_LOCK = 6--><!--Device-PersoLockType-PC_PIN_LOCK = 6-End-->
+<!--Device-PersoLockType-PU_PIN_LOCK = 2--><!--Device-PersoLockType-PU_PIN_LOCK = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
 
-## PC_PUK_LOCK
+## PU_PUK_LOCK
 
 ```TypeScript
-PC_PUK_LOCK = 7
+PU_PUK_LOCK = 3
 ```
 
-Indicates corporate personalization of PUK lock(refer 3GPP TS 22.022 [33]).
+Indicates network subset personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 
 **Since:** 8
 
-<!--Device-PersoLockType-PC_PUK_LOCK = 7--><!--Device-PersoLockType-PC_PUK_LOCK = 7-End-->
+<!--Device-PersoLockType-PU_PUK_LOCK = 3--><!--Device-PersoLockType-PU_PUK_LOCK = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

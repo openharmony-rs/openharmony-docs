@@ -14,83 +14,19 @@ Enumerates the action constants of the Want object. **action** specifies the ope
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_HOME
+## ACTION_APP_ACCOUNT_OAUTH
 
 ```TypeScript
-ACTION_HOME = 'ohos.want.action.home'
+ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'
 ```
 
-Action of returning to the home page.
+Action of providing the OAuth service.
 
-**Since:** 6
+**Since:** 8
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_HOME = 'ohos.want.action.home'--><!--Device-Action-ACTION_HOME = 'ohos.want.action.home'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## ACTION_DIAL
-
-```TypeScript
-ACTION_DIAL = 'ohos.want.action.dial'
-```
-
-Action of launching the numeric keypad.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'--><!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## ACTION_SEARCH
-
-```TypeScript
-ACTION_SEARCH = 'ohos.want.action.search'
-```
-
-Action of launching the search function.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'--><!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## ACTION_WIRELESS_SETTINGS
-
-```TypeScript
-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'
-```
-
-Action of launching the UI that provides wireless network settings, for example, Wi-Fi options.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'--><!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## ACTION_MANAGE_APPLICATIONS_SETTINGS
-
-```TypeScript
-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'
-```
-
-Action of launching the UI for managing installed applications.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'--><!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'-End-->
+<!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'--><!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -110,51 +46,35 @@ Action of launching the UI that displays the details of an application.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_SET_ALARM
+## ACTION_CHOOSE
 
 ```TypeScript
-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'
+ACTION_CHOOSE = 'ohos.want.action.choose'
 ```
 
-Action of launching the UI for setting the alarm clock.
+Action of launching the UI for opening a contact or picture.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'--><!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'-End-->
+<!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'--><!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_SHOW_ALARMS
+## ACTION_DIAL
 
 ```TypeScript
-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'
+ACTION_DIAL = 'ohos.want.action.dial'
 ```
 
-Action of launching the UI that displays all alarms.
+Action of launching the numeric keypad.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'--><!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## ACTION_SNOOZE_ALARM
-
-```TypeScript
-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'
-```
-
-Action of launching the UI for snoozing an alarm.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'--><!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'-End-->
+<!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'--><!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -190,35 +110,51 @@ Action of launching the UI for dismissing a timer.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_SEND_SMS
+## ACTION_EDIT_DATA
 
 ```TypeScript
-ACTION_SEND_SMS = 'ohos.want.action.sendSms'
+ACTION_EDIT_DATA = 'ohos.want.action.editData'
 ```
 
-Action of launching the UI for sending an SMS message.
+Action of editing data.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'--><!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'-End-->
+<!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'--><!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_CHOOSE
+## ACTION_FILE_SELECT
 
 ```TypeScript
-ACTION_CHOOSE = 'ohos.want.action.choose'
+ACTION_FILE_SELECT = 'ohos.action.fileSelect'
 ```
 
-Action of launching the UI for opening a contact or picture.
+Action of selecting a file.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+<!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'--><!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ACTION_HOME
+
+```TypeScript
+ACTION_HOME = 'ohos.want.action.home'
+```
+
+Action of returning to the home page.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'--><!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'-End-->
+<!--Device-Action-ACTION_HOME = 'ohos.want.action.home'--><!--Device-Action-ACTION_HOME = 'ohos.want.action.home'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -238,19 +174,51 @@ Action of launching the UI for photographing.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_VIDEO_CAPTURE
+## ACTION_MANAGE_APPLICATIONS_SETTINGS
 
 ```TypeScript
-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'
+ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'
 ```
 
-Action of launching the UI for shooting a video.
+Action of launching the UI for managing installed applications.
 
-**Since:** 8
+**Since:** 6
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'--><!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'-End-->
+<!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'--><!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ACTION_SCAN_MEDIA_FILE
+
+```TypeScript
+ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'
+```
+
+Action of requesting a media scanner to scan a file and add the file to the media library.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'--><!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ACTION_SEARCH
+
+```TypeScript
+ACTION_SEARCH = 'ohos.want.action.search'
+```
+
+Action of launching the search function.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'--><!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -302,19 +270,83 @@ Action of launching the UI for sending multiple data records.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_SCAN_MEDIA_FILE
+## ACTION_SEND_SMS
 
 ```TypeScript
-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'
+ACTION_SEND_SMS = 'ohos.want.action.sendSms'
 ```
 
-Action of requesting a media scanner to scan a file and add the file to the media library.
+Action of launching the UI for sending an SMS message.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'--><!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'-End-->
+<!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'--><!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ACTION_SET_ALARM
+
+```TypeScript
+ACTION_SET_ALARM = 'ohos.want.action.setAlarm'
+```
+
+Action of launching the UI for setting the alarm clock.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'--><!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ACTION_SHOW_ALARMS
+
+```TypeScript
+ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'
+```
+
+Action of launching the UI that displays all alarms.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'--><!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ACTION_SNOOZE_ALARM
+
+```TypeScript
+ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'
+```
+
+Action of launching the UI for snoozing an alarm.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'--><!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ACTION_VIDEO_CAPTURE
+
+```TypeScript
+ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'
+```
+
+Action of launching the UI for shooting a video.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+<!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'--><!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -334,19 +366,19 @@ Action of viewing data.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_EDIT_DATA
+## ACTION_WIRELESS_SETTINGS
 
 ```TypeScript
-ACTION_EDIT_DATA = 'ohos.want.action.editData'
+ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'
 ```
 
-Action of editing data.
+Action of launching the UI that provides wireless network settings, for example, Wi-Fi options.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-<!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'--><!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'-End-->
+<!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'--><!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -382,22 +414,6 @@ Title of the character sequence dialog box used with the action selector.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ACTION_FILE_SELECT
-
-```TypeScript
-ACTION_FILE_SELECT = 'ohos.action.fileSelect'
-```
-
-Action of selecting a file.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-<!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'--><!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
 ## PARAMS_STREAM
 
 ```TypeScript
@@ -411,21 +427,5 @@ URI of the data stream associated with the target when the data is sent. The val
 **Deprecated since:** 9
 
 <!--Device-Action-PARAMS_STREAM = 'ability.params.stream'--><!--Device-Action-PARAMS_STREAM = 'ability.params.stream'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## ACTION_APP_ACCOUNT_OAUTH
-
-```TypeScript
-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'
-```
-
-Action of providing the OAuth service.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-<!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'--><!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase

@@ -6,6 +6,8 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="isadminenabled1"></a>
+
 ## isAdminEnabled
 
 ```TypeScript
@@ -36,8 +38,9 @@ function isAdminEnabled(admin: Want, callback: AsyncCallback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,8 +62,10 @@ adminManager.isAdminEnabled(wantTemp, (err, result) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="isadminenabled-1"></a>
+
+<a id="isadminenabled2"></a>
 
 ## isAdminEnabled
 
@@ -93,8 +98,9 @@ function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -117,8 +123,10 @@ adminManager.isAdminEnabled(wantTemp, 100, (err, result) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="isadminenabled-2"></a>
+
+<a id="isadminenabled3"></a>
 
 ## isAdminEnabled
 
@@ -156,8 +164,9 @@ function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -178,3 +187,5 @@ adminManager.isAdminEnabled(wantTemp, 100).then((result) => {
   console.error(`Failed to query admin is enabled or not. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

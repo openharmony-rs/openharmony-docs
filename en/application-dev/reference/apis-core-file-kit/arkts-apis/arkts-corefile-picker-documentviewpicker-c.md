@@ -18,6 +18,8 @@ Provides APIs for selecting and saving documents in different formats. Before us
 import { picker } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -28,7 +30,7 @@ A constructor used to create a **DocumentViewPicker** instance. This constructor
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-constructor()--><!--Device-DocumentViewPicker-constructor()-End-->
 
@@ -40,7 +42,7 @@ A constructor used to create a **DocumentViewPicker** instance. This constructor
 let documentPicker = new picker.DocumentViewPicker(); // Construction without parameter is not recommended. There is a possibility that the DocumentViewPicker instance fails to start.
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -52,7 +54,7 @@ A constructor used to create a **DocumentViewPicker** instance. This constructor
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-constructor(context: Context)--><!--Device-DocumentViewPicker-constructor(context: Context)-End-->
 
@@ -92,7 +94,7 @@ struct Index {
 }
 ```
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 
@@ -156,11 +158,11 @@ struct Index {
 getSelectedIndex(): number
 ```
 
-Obtains the index of the file suffix type of the file saved. This method takes effect only when used with [save()](#save). This method can be used only after [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md) is configured. The index (number) returned by this method indicates the location of the file suffix specified in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). If no file suffix is specified, **getSelectedIndex()** returns **-1**.
+Obtains the index of the file suffix type of the file saved. This method takes effect only when used with [save()](#save1). This method can be used only after [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md) is configured. The index (number) returned by this method indicates the location of the file suffix specified in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). If no file suffix is specified, **getSelectedIndex()** returns **-1**.
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-DocumentViewPicker-getSelectedIndex(): int--><!--Device-DocumentViewPicker-getSelectedIndex(): int-End-->
 
@@ -172,6 +174,8 @@ Obtains the index of the file suffix type of the file saved. This method takes e
 | --- | --- |
 | number | Subscript (number) of the selected suffix type in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). The default value is **-1**. |
 
+<a id="save1"></a>
+
 ## save
 
 ```TypeScript
@@ -182,7 +186,7 @@ Starts a **documentPicker** page for the user to save one or more documents. Thi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-save(option?: DocumentSaveOptions): Promise<Array<string>>--><!--Device-DocumentViewPicker-save(option?: DocumentSaveOptions): Promise<Array<string>>-End-->
 
@@ -223,7 +227,7 @@ async function example10(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save-1"></a>
+<a id="save2"></a>
 
 ## save
 
@@ -235,7 +239,7 @@ Starts a **documentPicker** page for the user to save one or more documents. Thi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-save(option: DocumentSaveOptions, callback: AsyncCallback<Array<string>>): void--><!--Device-DocumentViewPicker-save(option: DocumentSaveOptions, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -273,7 +277,7 @@ async function example11(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save-2"></a>
+<a id="save3"></a>
 
 ## save
 
@@ -285,7 +289,7 @@ Starts a **documentPicker** page for the user to save one or more documents. Thi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-save(callback: AsyncCallback<Array<string>>): void--><!--Device-DocumentViewPicker-save(callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -320,6 +324,8 @@ async function example12(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
+<a id="select1"></a>
+
 ## select
 
 ```TypeScript
@@ -330,7 +336,7 @@ Starts a **documentPicker** page for the user to select one or more documents. T
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-select(option?: DocumentSelectOptions): Promise<Array<string>>--><!--Device-DocumentViewPicker-select(option?: DocumentSelectOptions): Promise<Array<string>>-End-->
 
@@ -370,7 +376,7 @@ async function example07(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="select-1"></a>
+<a id="select2"></a>
 
 ## select
 
@@ -382,7 +388,7 @@ Starts a **documentPicker** page for the user to select one or more documents. T
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-select(option: DocumentSelectOptions, callback: AsyncCallback<Array<string>>): void--><!--Device-DocumentViewPicker-select(option: DocumentSelectOptions, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -419,7 +425,7 @@ async function example08(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="select-2"></a>
+<a id="select3"></a>
 
 ## select
 
@@ -431,7 +437,7 @@ Starts a **documentPicker** page for the user to select one or more documents. T
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentViewPicker-select(callback: AsyncCallback<Array<string>>): void--><!--Device-DocumentViewPicker-select(callback: AsyncCallback<Array<string>>): void-End-->
 

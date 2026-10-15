@@ -26,21 +26,21 @@ Stops and clears all the deferred tasks.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
 
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  try{
-    workScheduler.stopAndClearWorks();
-    console.info(`workschedulerLog stopAndClearWorks success`);
-  } catch (error) {
-    console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+try {
+  workScheduler.stopAndClearWorks();
+  console.info(`workschedulerLog stopAndClearWorks success`);
+} catch (error) {
+  console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```

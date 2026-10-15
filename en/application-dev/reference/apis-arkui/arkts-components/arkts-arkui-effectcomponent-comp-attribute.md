@@ -8,7 +8,7 @@ The universal attributes are supported. Currently, this component only works wit
 
 The universal events are not supported.
 
-**Inheritance/Implementation:** EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>
+**Inheritance/Implementation:** EffectComponentAttribute extends CommonMethod&lt;EffectComponentAttribute&gt;
 
 **Since:** 10
 

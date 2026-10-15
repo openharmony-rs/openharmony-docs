@@ -6,7 +6,7 @@ declare type Blender = import('../api/@ohos.graphics.uiEffect').default.Blender
 
 Blender
 
-@typedef { import('../api/@ohos.graphics.uiEffect').default.Blender } Blender
+**Type:** import('../api/@ohos.graphics.uiEffect').default.Blender
 
 **Since:** 13
 
@@ -19,5 +19,3 @@ Blender
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
-
-**Type:** import('../api/@ohos.graphics.uiEffect').default.Blender

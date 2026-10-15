@@ -30,7 +30,7 @@ Gets current exposure value.
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-ManualExposure-getExposureDuration(): int--><!--Device-ManualExposure-getExposureDuration(): int-End-->
 
@@ -59,7 +59,7 @@ Sets Exposure duration value, units: microseconds.This control is only effective
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-ManualExposure-setExposureDuration(exposureDuration: int): void--><!--Device-ManualExposure-setExposureDuration(exposureDuration: int): void-End-->
 

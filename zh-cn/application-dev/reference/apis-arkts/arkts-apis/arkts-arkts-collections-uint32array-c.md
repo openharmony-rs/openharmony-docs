@@ -88,6 +88,8 @@ at(index: number): number | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -110,7 +112,7 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -140,7 +142,7 @@ constructor(length: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 
@@ -170,7 +172,7 @@ constructor(elements: Iterable<number>)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-3"></a>
+<a id="constructor4"></a>
 
 ## constructor
 
@@ -200,7 +202,7 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-4"></a>
+<a id="constructor5"></a>
 
 ## constructor
 
@@ -504,6 +506,8 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Uint32Array>): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="from1"></a>
+
 ## from
 
 ```TypeScript
@@ -532,7 +536,7 @@ static from(arrayLike: ArrayLike<number>): Uint32Array
 | --- | --- |
 | Uint32Array | 新创建的ArkTS Uint32Array对象。 |
 
-<a id="from-1"></a>
+<a id="from2"></a>
 
 ## from
 
@@ -563,7 +567,7 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 | --- | --- |
 | Uint32Array | 新创建的ArkTS Uint32Array对象。 |
 
-<a id="from-2"></a>
+<a id="from3"></a>
 
 ## from
 
@@ -827,7 +831,9 @@ static of(...items: number[]): Uint32Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint32Array | 新的ArkTS Uint32Array实例。可能的原因：1.必填参数未指定；<br>2.参数类型不正确；3.参数校验失败。 |
+| Uint32Array | 新的ArkTS Uint32Array实例。 |
+
+<a id="reduce1"></a>
 
 ## reduce
 
@@ -864,7 +870,7 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>): numbe
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduce-1"></a>
+<a id="reduce2"></a>
 
 ## reduce
 
@@ -902,7 +908,7 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>, initia
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduce-2"></a>
+<a id="reduce3"></a>
 
 ## reduce
 
@@ -940,6 +946,8 @@ reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Array>, initialV
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduceright1"></a>
+
 ## reduceRight
 
 ```TypeScript
@@ -967,7 +975,7 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| U | 由归约函数最后一次调用返回的结果。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| U | 由归约函数最后一次调用返回的结果。 |
 
 **错误码：**
 
@@ -976,7 +984,7 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Ar
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduceright-1"></a>
+<a id="reduceright2"></a>
 
 ## reduceRight
 
@@ -1004,7 +1012,7 @@ reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>): 
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 由归约函数最后一次调用返回的结果。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| number | 由归约函数最后一次调用返回的结果。 |
 
 **错误码：**
 

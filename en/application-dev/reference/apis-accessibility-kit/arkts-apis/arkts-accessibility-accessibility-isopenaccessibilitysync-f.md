@@ -4,7 +4,7 @@
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## isOpenAccessibilitySync
@@ -19,9 +19,9 @@ To obtain information about accessibility applications in the system, you are ad
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-accessibility-function isOpenAccessibilitySync(): boolean--><!--Device-accessibility-function isOpenAccessibilitySync(): boolean-End-->
 

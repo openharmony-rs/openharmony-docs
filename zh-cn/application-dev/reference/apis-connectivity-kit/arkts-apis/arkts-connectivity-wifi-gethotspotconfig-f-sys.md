@@ -34,6 +34,7 @@ function getHotspotConfig(): HotspotConfig
 | --- | --- |
 | [HotspotConfig](arkts-connectivity-wifi-hotspotconfig-i-sys.md) | 热点的配置信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

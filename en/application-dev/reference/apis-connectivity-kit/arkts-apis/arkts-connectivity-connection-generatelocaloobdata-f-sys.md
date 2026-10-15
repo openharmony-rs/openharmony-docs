@@ -48,6 +48,7 @@ Generate out-of-band data of the local device.
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

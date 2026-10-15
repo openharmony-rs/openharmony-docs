@@ -26,20 +26,6 @@ Country code obtained from the locale setting.
 
 **System capability:** SystemCapability.Location.Location.Core
 
-## COUNTRY_CODE_FROM_SIM
-
-```TypeScript
-COUNTRY_CODE_FROM_SIM = 2
-```
-
-Country code obtained from the SIM information.
-
-**Since:** 9
-
-<!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2--><!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
 ## COUNTRY_CODE_FROM_LOCATION
 
 ```TypeScript
@@ -65,5 +51,19 @@ Obtain the country code from the cell registration information.
 **Since:** 9
 
 <!--Device-CountryCodeType-COUNTRY_CODE_FROM_NETWORK = 4--><!--Device-CountryCodeType-COUNTRY_CODE_FROM_NETWORK = 4-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+## COUNTRY_CODE_FROM_SIM
+
+```TypeScript
+COUNTRY_CODE_FROM_SIM = 2
+```
+
+Country code obtained from the SIM information.
+
+**Since:** 9
+
+<!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2--><!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

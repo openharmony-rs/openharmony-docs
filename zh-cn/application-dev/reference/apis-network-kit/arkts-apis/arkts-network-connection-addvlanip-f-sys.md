@@ -54,6 +54,7 @@ function addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promis
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2100400](../errorcode-net-connection.md#2100400-传入网卡名不正确非以太网) | The input network interface name is incorrect. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -76,3 +77,5 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
   console.error(`Failed to add vlan ip. Code:${error.code}, message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

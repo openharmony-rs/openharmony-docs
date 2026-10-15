@@ -28,39 +28,39 @@ import { geolocation } from '@kit.LocationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [flushCachedGnssLocations](arkts-location-geolocation-flushcachedgnsslocations-f.md) | 读取并清空GNSS芯片所有缓存位置。使用callback异步回调。 |
-| [flushCachedGnssLocations](arkts-location-geolocation-flushcachedgnsslocations-f.md#flushcachedgnsslocations-1) | 读取并清空GNSS芯片所有缓存位置。使用Promise异步回调。 |
-| [getAddressesFromLocation](arkts-location-geolocation-getaddressesfromlocation-f.md) | 调用逆地理编码服务，将坐标转换为地理描述，使用callback异步回调。 |
-| [getAddressesFromLocation](arkts-location-geolocation-getaddressesfromlocation-f.md#getaddressesfromlocation-1) | 调用逆地理编码服务，将坐标转换为地理描述，使用Promise异步回调。 |
-| [getAddressesFromLocationName](arkts-location-geolocation-getaddressesfromlocationname-f.md) | 调用地理编码服务，将地理描述转换为具体坐标，使用callback异步回调。 |
-| [getAddressesFromLocationName](arkts-location-geolocation-getaddressesfromlocationname-f.md#getaddressesfromlocationname-1) | 调用地理编码服务，将地理描述转换为具体坐标，使用Promise异步回调。 |
-| [getCachedGnssLocationsSize](arkts-location-geolocation-getcachedgnsslocationssize-f.md) | 获取GNSS芯片缓存位置的个数。使用callback异步回调。 |
-| [getCachedGnssLocationsSize](arkts-location-geolocation-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize-1) | 获取GNSS芯片缓存位置的个数。使用Promise异步回调。 |
-| [getCurrentLocation](arkts-location-geolocation-getcurrentlocation-f.md) | 获取当前位置，使用callback异步回调。 |
-| [getCurrentLocation](arkts-location-geolocation-getcurrentlocation-f.md#getcurrentlocation-1) | 获取当前位置，使用callback异步回调。 |
-| [getCurrentLocation](arkts-location-geolocation-getcurrentlocation-f.md#getcurrentlocation-2) | 获取当前位置，使用Promise异步回调。 |
-| [getLastLocation](arkts-location-geolocation-getlastlocation-f.md) | 获取上一次位置，使用callback异步回调。 |
-| [getLastLocation](arkts-location-geolocation-getlastlocation-f.md#getlastlocation-1) | 获取上一次位置，使用Promise异步回调。 |
-| [isGeoServiceAvailable](arkts-location-geolocation-isgeoserviceavailable-f.md) | 判断（逆）地理编码服务状态，使用callback异步回调。 |
-| [isGeoServiceAvailable](arkts-location-geolocation-isgeoserviceavailable-f.md#isgeoserviceavailable-1) | 判断（逆）地理编码服务状态，使用Promise异步回调。 |
-| [isLocationEnabled](arkts-location-geolocation-islocationenabled-f.md) | 判断位置服务是否已经打开，使用callback异步回调。 |
-| [isLocationEnabled](arkts-location-geolocation-islocationenabled-f.md#islocationenabled-1) | 判断位置服务是否已经开启，使用Promise异步回调。 |
-| [off](arkts-location-geolocation-off-f.md#offlocationchange) | 关闭位置变化订阅，并删除对应的定位请求。 |
-| [off](arkts-location-geolocation-off-f.md#offlocationservicestate) | 取消订阅位置服务状态变化。 |
-| [off](arkts-location-geolocation-off-f.md#offcachedgnsslocationsreporting) | 取消订阅缓存GNSS定位结果上报事件。 |
-| [off](arkts-location-geolocation-off-f.md#offgnssstatuschange) | 取消订阅GNSS卫星状态信息上报事件。 |
-| [off](arkts-location-geolocation-off-f.md#offnmeamessagechange) | 取消订阅GNSS NMEA信息上报事件。 |
-| [off](arkts-location-geolocation-off-f.md#offfencestatuschange) | 删除一个围栏，并取消订阅该围栏事件。 |
-| [on](arkts-location-geolocation-on-f.md#onlocationchange) | 开启位置变化订阅，并发起定位请求。使用callback异步回调。 |
-| [on](arkts-location-geolocation-on-f.md#onlocationservicestate) | 订阅位置服务状态变化。使用callback异步回调。 |
-| [on](arkts-location-geolocation-on-f.md#oncachedgnsslocationsreporting) | 订阅缓存GNSS定位结果上报事件。使用callback异步回调。 |
-| [on](arkts-location-geolocation-on-f.md#ongnssstatuschange) | 订阅GNSS卫星状态信息上报事件。使用callback异步回调。 |
-| [on](arkts-location-geolocation-on-f.md#onnmeamessagechange) | 订阅GNSS NMEA信息上报事件。使用callback异步回调。 |
-| [on](arkts-location-geolocation-on-f.md#onfencestatuschange) | 添加一个围栏，并订阅地理围栏事件。使用callback异步回调。 |
-| [requestEnableLocation](arkts-location-geolocation-requestenablelocation-f.md) | 请求打开位置服务，使用callback异步回调。 |
-| [requestEnableLocation](arkts-location-geolocation-requestenablelocation-f.md#requestenablelocation-1) | 请求打开位置服务，使用Promise异步回调。 |
-| [sendCommand](arkts-location-geolocation-sendcommand-f.md) | 给位置服务子系统的各个部件发送扩展命令。使用callback异步回调。 |
-| [sendCommand](arkts-location-geolocation-sendcommand-f.md#sendcommand-1) | 给位置服务子系统的各个部件发送扩展命令。使用Promise异步回调。 |
+| [flushCachedGnssLocations](arkts-location-geolocation-flushcachedgnsslocations-f.md#flushcachedgnsslocations1) | 读取并清空GNSS芯片所有缓存位置。使用callback异步回调。 |
+| [flushCachedGnssLocations](arkts-location-geolocation-flushcachedgnsslocations-f.md#flushcachedgnsslocations2) | 读取并清空GNSS芯片所有缓存位置。使用Promise异步回调。 |
+| [getAddressesFromLocation](arkts-location-geolocation-getaddressesfromlocation-f.md#getaddressesfromlocation1) | 调用逆地理编码服务，将坐标转换为地理描述，使用callback异步回调。 |
+| [getAddressesFromLocation](arkts-location-geolocation-getaddressesfromlocation-f.md#getaddressesfromlocation2) | 调用逆地理编码服务，将坐标转换为地理描述，使用Promise异步回调。 |
+| [getAddressesFromLocationName](arkts-location-geolocation-getaddressesfromlocationname-f.md#getaddressesfromlocationname1) | 调用地理编码服务，将地理描述转换为具体坐标，使用callback异步回调。 |
+| [getAddressesFromLocationName](arkts-location-geolocation-getaddressesfromlocationname-f.md#getaddressesfromlocationname2) | 调用地理编码服务，将地理描述转换为具体坐标，使用Promise异步回调。 |
+| [getCachedGnssLocationsSize](arkts-location-geolocation-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize1) | 获取GNSS芯片缓存位置的个数。使用callback异步回调。 |
+| [getCachedGnssLocationsSize](arkts-location-geolocation-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize2) | 获取GNSS芯片缓存位置的个数。使用Promise异步回调。 |
+| [getCurrentLocation](arkts-location-geolocation-getcurrentlocation-f.md#getcurrentlocation1) | 获取当前位置，使用callback异步回调。 |
+| [getCurrentLocation](arkts-location-geolocation-getcurrentlocation-f.md#getcurrentlocation2) | 获取当前位置，使用callback异步回调。 |
+| [getCurrentLocation](arkts-location-geolocation-getcurrentlocation-f.md#getcurrentlocation3) | 获取当前位置，使用Promise异步回调。 |
+| [getLastLocation](arkts-location-geolocation-getlastlocation-f.md#getlastlocation1) | 获取上一次位置，使用callback异步回调。 |
+| [getLastLocation](arkts-location-geolocation-getlastlocation-f.md#getlastlocation2) | 获取上一次位置，使用Promise异步回调。 |
+| [isGeoServiceAvailable](arkts-location-geolocation-isgeoserviceavailable-f.md#isgeoserviceavailable1) | 判断（逆）地理编码服务状态，使用callback异步回调。 |
+| [isGeoServiceAvailable](arkts-location-geolocation-isgeoserviceavailable-f.md#isgeoserviceavailable2) | 判断（逆）地理编码服务状态，使用Promise异步回调。 |
+| [isLocationEnabled](arkts-location-geolocation-islocationenabled-f.md#islocationenabled1) | 判断位置服务是否已经打开，使用callback异步回调。 |
+| [isLocationEnabled](arkts-location-geolocation-islocationenabled-f.md#islocationenabled2) | 判断位置服务是否已经开启，使用Promise异步回调。 |
+| [off('locationChange')](arkts-location-geolocation-off-f.md#offlocationchange) | 关闭位置变化订阅，并删除对应的定位请求。 |
+| [off('locationServiceState')](arkts-location-geolocation-off-f.md#offlocationservicestate) | 取消订阅位置服务状态变化。 |
+| [off('cachedGnssLocationsReporting')](arkts-location-geolocation-off-f.md#offcachedgnsslocationsreporting) | 取消订阅缓存GNSS定位结果上报事件。 |
+| [off('gnssStatusChange')](arkts-location-geolocation-off-f.md#offgnssstatuschange) | 取消订阅GNSS卫星状态信息上报事件。 |
+| [off('nmeaMessageChange')](arkts-location-geolocation-off-f.md#offnmeamessagechange) | 取消订阅GNSS NMEA信息上报事件。 |
+| [off('fenceStatusChange')](arkts-location-geolocation-off-f.md#offfencestatuschange) | 删除一个围栏，并取消订阅该围栏事件。 |
+| [on('locationChange')](arkts-location-geolocation-on-f.md#onlocationchange) | 开启位置变化订阅，并发起定位请求。使用callback异步回调。 |
+| [on('locationServiceState')](arkts-location-geolocation-on-f.md#onlocationservicestate) | 订阅位置服务状态变化。使用callback异步回调。 |
+| [on('cachedGnssLocationsReporting')](arkts-location-geolocation-on-f.md#oncachedgnsslocationsreporting) | 订阅缓存GNSS定位结果上报事件。使用callback异步回调。 |
+| [on('gnssStatusChange')](arkts-location-geolocation-on-f.md#ongnssstatuschange) | 订阅GNSS卫星状态信息上报事件。使用callback异步回调。 |
+| [on('nmeaMessageChange')](arkts-location-geolocation-on-f.md#onnmeamessagechange) | 订阅GNSS NMEA信息上报事件。使用callback异步回调。 |
+| [on('fenceStatusChange')](arkts-location-geolocation-on-f.md#onfencestatuschange) | 添加一个围栏，并订阅地理围栏事件。使用callback异步回调。 |
+| [requestEnableLocation](arkts-location-geolocation-requestenablelocation-f.md#requestenablelocation1) | 请求打开位置服务，使用callback异步回调。 |
+| [requestEnableLocation](arkts-location-geolocation-requestenablelocation-f.md#requestenablelocation2) | 请求打开位置服务，使用Promise异步回调。 |
+| [sendCommand](arkts-location-geolocation-sendcommand-f.md#sendcommand1) | 给位置服务子系统的各个部件发送扩展命令。使用callback异步回调。 |
+| [sendCommand](arkts-location-geolocation-sendcommand-f.md#sendcommand2) | 给位置服务子系统的各个部件发送扩展命令。使用Promise异步回调。 |
 
 ### 接口
 

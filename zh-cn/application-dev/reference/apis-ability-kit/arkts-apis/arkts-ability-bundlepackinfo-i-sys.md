@@ -4,7 +4,7 @@
 export interface BundlePackInfo
 ```
 
-应用包信息
+应用包信息，通过接口[freeInstall.getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md)获取。
 
 **起始版本：** 9
 

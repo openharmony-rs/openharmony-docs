@@ -36,6 +36,7 @@ Obtains the AttestResultInfo object.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Input parameters wrong, the number of parameters is incorrect, or the type of parameters is incorrect. |
 | [20000001](../errorcode-deviceAttest.md#20000001-system-service-abnormal) | System service exception, please try again or reboot your device. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
     console.error("error code:" + code + " message:" + message);
 }
 ```
+
+<!--DelEnd-->

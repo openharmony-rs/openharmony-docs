@@ -18,6 +18,26 @@ Enumerates the [FileAsset](arkts-corefile-userfilemanager-fileasset-i-sys.md) ty
 
 **System API:** This is a system API.
 
+## CAMERA
+
+```TypeScript
+CAMERA = 2
+```
+
+Photos and videos taken by a camera.
+
+**Since:** 10
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** SOURCE_GENERIC
+
+<!--Device-PhotoSubType-CAMERA = 2--><!--Device-PhotoSubType-CAMERA = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
 ## DEFAULT
 
 ```TypeScript
@@ -53,26 +73,6 @@ Screenshots and screen recording files.
 **Substitutes:** SCREENSHOT
 
 <!--Device-PhotoSubType-SCREENSHOT = 1--><!--Device-PhotoSubType-SCREENSHOT = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
-## CAMERA
-
-```TypeScript
-CAMERA = 2
-```
-
-Photos and videos taken by a camera.
-
-**Since:** 10
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** SOURCE_GENERIC
-
-<!--Device-PhotoSubType-CAMERA = 2--><!--Device-PhotoSubType-CAMERA = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

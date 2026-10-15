@@ -12,46 +12,6 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Stretch
-
-```TypeScript
-Stretch
-```
-
-Swiper滑动一页的宽度为Swiper组件自身的宽度。
-
-**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [STRETCH](#stretch)
-
-**卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-SwiperDisplayMode-Stretch--><!--Device-SwiperDisplayMode-Stretch-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## AutoLinear
-
-```TypeScript
-AutoLinear
-```
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [AUTO_LINEAR](#auto_linear)
-
-**卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-SwiperDisplayMode-AutoLinear--><!--Device-SwiperDisplayMode-AutoLinear-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## STRETCH
 
 ```TypeScript
@@ -91,5 +51,45 @@ AUTO_LINEAR
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-SwiperDisplayMode-AUTO_LINEAR--><!--Device-SwiperDisplayMode-AUTO_LINEAR-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## AutoLinear
+
+```TypeScript
+AutoLinear
+```
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [AUTO_LINEAR](#auto_linear)
+
+**卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperDisplayMode-AutoLinear--><!--Device-SwiperDisplayMode-AutoLinear-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Stretch
+
+```TypeScript
+Stretch
+```
+
+Swiper滑动一页的宽度为Swiper组件自身的宽度。
+
+**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [STRETCH](#stretch)
+
+**卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperDisplayMode-Stretch--><!--Device-SwiperDisplayMode-Stretch-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

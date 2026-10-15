@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="once1"></a>
+
 ## once
 
 ```TypeScript
@@ -57,7 +59,7 @@ try {
 ```
 
 
-<a id="once-1"></a>
+<a id="once2"></a>
 
 ## once
 
@@ -113,7 +115,7 @@ try {
 ```
 
 
-<a id="once-2"></a>
+<a id="once3"></a>
 
 ## once
 
@@ -161,7 +163,7 @@ try {
 ```
 
 
-<a id="once-3"></a>
+<a id="once4"></a>
 
 ## once
 
@@ -209,7 +211,7 @@ try {
 ```
 
 
-<a id="once-4"></a>
+<a id="once5"></a>
 
 ## once
 
@@ -257,7 +259,7 @@ try {
 ```
 
 
-<a id="once-5"></a>
+<a id="once6"></a>
 
 ## once
 
@@ -307,7 +309,7 @@ try {
 ```
 
 
-<a id="once-6"></a>
+<a id="once7"></a>
 
 ## once
 
@@ -360,7 +362,7 @@ try {
 ```
 
 
-<a id="once-7"></a>
+<a id="once8"></a>
 
 ## once
 
@@ -416,7 +418,7 @@ try {
 ```
 
 
-<a id="once-8"></a>
+<a id="once9"></a>
 
 ## once
 
@@ -464,7 +466,7 @@ try {
 ```
 
 
-<a id="once-9"></a>
+<a id="once10"></a>
 
 ## once
 
@@ -515,7 +517,7 @@ try {
 ```
 
 
-<a id="once-10"></a>
+<a id="once11"></a>
 
 ## once
 
@@ -563,7 +565,7 @@ try {
 ```
 
 
-<a id="once-11"></a>
+<a id="once12"></a>
 
 ## once
 
@@ -616,7 +618,7 @@ try {
 ```
 
 
-<a id="once-12"></a>
+<a id="once13"></a>
 
 ## once
 
@@ -666,7 +668,7 @@ try {
 ```
 
 
-<a id="once-13"></a>
+<a id="once14"></a>
 
 ## once
 
@@ -719,7 +721,7 @@ try {
 ```
 
 
-<a id="once-14"></a>
+<a id="once15"></a>
 
 ## once
 
@@ -769,7 +771,7 @@ try {
 ```
 
 
-<a id="once-15"></a>
+<a id="once16"></a>
 
 ## once
 
@@ -824,7 +826,7 @@ try {
 ```
 
 
-<a id="once-16"></a>
+<a id="once17"></a>
 
 ## once
 
@@ -875,7 +877,7 @@ try {
 ```
 
 
-<a id="once-17"></a>
+<a id="once18"></a>
 
 ## once
 
@@ -923,7 +925,7 @@ try {
 ```
 
 
-<a id="once-18"></a>
+<a id="once19"></a>
 
 ## once
 
@@ -974,7 +976,7 @@ try {
 ```
 
 
-<a id="once-19"></a>
+<a id="once20"></a>
 
 ## once
 
@@ -1022,7 +1024,7 @@ try {
 ```
 
 
-<a id="once-20"></a>
+<a id="once21"></a>
 
 ## once
 
@@ -1070,7 +1072,7 @@ try {
 ```
 
 
-<a id="once-21"></a>
+<a id="once22"></a>
 
 ## once
 
@@ -1083,14 +1085,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback<
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER]
-> [once_SensorId.ACCELEROMETER](arkts-sensorservice-sensor-once-f.md)
+> [once](#once1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](arkts-sensorservice-sensor-once-f.md)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;)
+**替代接口：** [once](#once1)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -1118,7 +1120,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accele
 ```
 
 
-<a id="once-22"></a>
+<a id="once23"></a>
 
 ## once
 
@@ -1131,14 +1133,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callba
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER_UNCALIBRATED]
-> [once_SensorId.ACCELEROMETER_UNCALIBRATED](#once-1)
+> [once](#once2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-1)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;)
+**替代接口：** [once](#once2)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -1169,7 +1171,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: 
 ```
 
 
-<a id="once-23"></a>
+<a id="once24"></a>
 
 ## once
 
@@ -1182,14 +1184,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_LIGHT]
-> [once_SensorId.AMBIENT_LIGHT](#once-2)
+> [once](#once3)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-2)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;)
+**替代接口：** [once](#once3)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>): void-End-->
 
@@ -1213,7 +1215,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightR
 ```
 
 
-<a id="once-24"></a>
+<a id="once25"></a>
 
 ## once
 
@@ -1226,14 +1228,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Cal
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_LIGHT]
-> [once_SensorId.AMBIENT_LIGHT](#once-2)
+> [once](#once3)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-3)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;)
+**替代接口：** [once](#once4)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>): void-End-->
 
@@ -1257,7 +1259,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.
 ```
 
 
-<a id="once-25"></a>
+<a id="once26"></a>
 
 ## once
 
@@ -1270,14 +1272,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<Baro
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.BAROMETER]
-> [once_SensorId.BAROMETER](#once-4)
+> [once](#once5)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-4)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;)
+**替代接口：** [once](#once5)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>): void-End-->
 
@@ -1301,7 +1303,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerR
 ```
 
 
-<a id="once-26"></a>
+<a id="once27"></a>
 
 ## once
 
@@ -1314,14 +1316,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<Gravit
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GRAVITY]
-> [once_SensorId.GRAVITY](#once-5)
+> [once](#once6)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-5)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;)
+**替代接口：** [once](#once6)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>): void-End-->
 
@@ -1347,7 +1349,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespo
 ```
 
 
-<a id="once-27"></a>
+<a id="once28"></a>
 
 ## once
 
@@ -1360,14 +1362,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback<Gyro
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE]
-> [once_SensorId.GYROSCOPE](#once-6)
+> [once](#once7)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-6)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;)
+**替代接口：** [once](#once7)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -1395,7 +1397,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeR
 ```
 
 
-<a id="once-28"></a>
+<a id="once29"></a>
 
 ## once
 
@@ -1408,14 +1410,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback: 
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE_UNCALIBRATED]
-> [once_SensorId.GYROSCOPE_UNCALIBRATED](#once-7)
+> [once](#once8)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-7)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;)
+**替代接口：** [once](#once8)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -1446,7 +1448,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sens
 ```
 
 
-<a id="once-29"></a>
+<a id="once30"></a>
 
 ## once
 
@@ -1459,14 +1461,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallRespo
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HALL]
-> [once_SensorId.HALL](#once-8)
+> [once](#once9)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-8)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;)
+**替代接口：** [once](#once9)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>): void-End-->
 
@@ -1490,7 +1492,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) =
 ```
 
 
-<a id="once-30"></a>
+<a id="once31"></a>
 
 ## once
 
@@ -1503,14 +1505,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback<Hea
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HEART_RATE]
-> [once_SensorId.HEART_RATE](#once-9)
+> [once](#once10)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-9)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;)
+**替代接口：** [once](#once10)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;)
 
 **需要权限：** ohos.permission.HEART_RATE
 
@@ -1536,7 +1538,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, (data: sensor.HeartRate
 ```
 
 
-<a id="once-31"></a>
+<a id="once32"></a>
 
 ## once
 
@@ -1549,14 +1551,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<Humid
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HUMIDITY]
-> [once_SensorId.HUMIDITY](#once-10)
+> [once](#once11)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-10)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;)
+**替代接口：** [once](#once11)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>): void-End-->
 
@@ -1580,7 +1582,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRes
 ```
 
 
-<a id="once-32"></a>
+<a id="once33"></a>
 
 ## once
 
@@ -1593,14 +1595,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Cal
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.LINEAR_ACCELEROMETER]
-> [once_SensorId.LINEAR_ACCELEROMETER](#once-11)
+> [once](#once12)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-11)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;)
+**替代接口：** [once](#once12)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -1616,7 +1618,7 @@ function once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Cal
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LinearAccelerometerResponse](arkts-sensorservice-sensor-linearaccelerometerresponse-i.md)&gt; | 是 | 注册一次线性加速度传感器的回调函数，上报的数据类型为LinearAccelerometerResponse。 |
 
 
-<a id="once-33"></a>
+<a id="once34"></a>
 
 ## once
 
@@ -1629,14 +1631,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD]
-> [once_SensorId.MAGNETIC_FIELD](#once-12)
+> [once](#once13)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-12)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;)
+**替代接口：** [once](#once13)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>): void-End-->
 
@@ -1662,7 +1664,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magne
 ```
 
 
-<a id="once-34"></a>
+<a id="once35"></a>
 
 ## once
 
@@ -1675,14 +1677,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callb
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD_UNCALIBRATED]
-> [once_SensorId.MAGNETIC_FIELD_UNCALIBRATED](#once-13)
+> [once](#once14)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-13)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
+**替代接口：** [once](#once14)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>): void-End-->
 
@@ -1711,7 +1713,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data:
 ```
 
 
-<a id="once-35"></a>
+<a id="once36"></a>
 
 ## once
 
@@ -1724,14 +1726,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<Or
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ORIENTATION]
-> [once_SensorId.ORIENTATION](#once-14)
+> [once](#once15)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-14)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;)
+**替代接口：** [once](#once15)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>): void-End-->
 
@@ -1757,7 +1759,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientat
 ```
 
 
-<a id="once-36"></a>
+<a id="once37"></a>
 
 ## once
 
@@ -1770,14 +1772,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback<Pedo
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER]
-> [once_SensorId.PEDOMETER](#once-15)
+> [once](#once16)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-15)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;)
+**替代接口：** [once](#once16)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -1803,7 +1805,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerR
 ```
 
 
-<a id="once-37"></a>
+<a id="once38"></a>
 
 ## once
 
@@ -1816,14 +1818,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Cal
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER_DETECTION]
-> [once_SensorId.PEDOMETER_DETECTION](#once-16)
+> [once](#once17)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-16)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;)
+**替代接口：** [once](#once17)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -1849,7 +1851,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.
 ```
 
 
-<a id="once-38"></a>
+<a id="once39"></a>
 
 ## once
 
@@ -1862,14 +1864,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<Prox
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PROXIMITY]
-> [once_SensorId.PROXIMITY](#once-17)
+> [once](#once18)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-17)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;)
+**替代接口：** [once](#once18)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>): void-End-->
 
@@ -1894,7 +1896,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityR
 ```
 
 
-<a id="once-39"></a>
+<a id="once40"></a>
 
 ## once
 
@@ -1907,14 +1909,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callbac
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ROTATION_VECTOR]
-> [once_SensorId.ROTATION_VECTOR](#once-18)
+> [once](#once19)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-18)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;)
+**替代接口：** [once](#once19)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>): void-End-->
 
@@ -1941,7 +1943,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rota
 ```
 
 
-<a id="once-40"></a>
+<a id="once41"></a>
 
 ## once
 
@@ -1954,14 +1956,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Call
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.SIGNIFICANT_MOTION]
-> [once_SensorId.SIGNIFICANT_MOTION](#once-19)
+> [once](#once20)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-19)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;)
+**替代接口：** [once](#once20)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>): void-End-->
 
@@ -1985,7 +1987,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.S
 ```
 
 
-<a id="once-41"></a>
+<a id="once42"></a>
 
 ## once
 
@@ -1998,14 +2000,14 @@ function once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.WEAR_DETECTION]
-> [once_SensorId.WEAR_DETECTION](#once-20)
+> [once](#once21)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [once](#once-20)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;)
+**替代接口：** [once](#once21)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>): void-End-->
 

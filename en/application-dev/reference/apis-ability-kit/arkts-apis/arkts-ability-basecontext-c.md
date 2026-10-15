@@ -18,13 +18,13 @@ BaseContext is an abstract class that specifies whether a child class Context is
 stageMode: boolean
 ```
 
-Indicates the context is FA Mode or Stage Mode.
+Whether the child class Context is used for the stage model. true: [Stage model](../../../application-models/ability-terminology.md#stage-model). false：[FA model](../../../application-models/ability-terminology.md#fa-model).
 
 **Type:** boolean
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BaseContext-stageMode: boolean--><!--Device-BaseContext-stageMode: boolean-End-->
 

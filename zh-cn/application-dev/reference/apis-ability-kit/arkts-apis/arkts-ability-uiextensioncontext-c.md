@@ -8,7 +8,7 @@ UIExtensionContext是[UIExtensionAbility](arkts-ability-app-ability-uiextensiona
 
 **继承/实现关系：** UIExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
-**起始版本：** 12
+**起始版本：** 10
 
 <!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext-End-->
 
@@ -24,7 +24,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -39,7 +39,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 连接ServiceExtensionAbility的Want信息，包括Ability名称，Bundle名称等。 |
-| options | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
+| options | [ConnectOptions](arkts-ability-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
 
 **返回值：**
 
@@ -77,7 +77,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -105,7 +105,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
@@ -116,6 +116,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
+
+<a id="disconnectserviceextensionability1"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -148,7 +150,7 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<vo
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-<a id="disconnectserviceextensionability-1"></a>
+<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -218,7 +220,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
@@ -230,13 +232,13 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<Abilit
 
 打开一个独立窗口的原子化服务，并返回结果。使用Promise异步回调。分为以下几种情况：
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死原子化服务会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息，异常信息中resultCode为-1。
+- 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 12
 
@@ -257,7 +259,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<Abilit
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise对象。返回给拉起方的信息。 |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise对象。返回给拉起方的信息。 |
 
 **错误码：**
 
@@ -284,11 +286,11 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<Abili
 - "actions"列表中包含"ohos.want.action.viewData"。  
 - "entities"列表中包含"entity.system.browsable"。  
 - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。  
-如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult)接口。传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
+如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult1)接口。传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 12
 
@@ -304,7 +306,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<Abili
 | --- | --- | --- | --- |
 | link | string | 是 | 指示要打开的标准格式URL。 |
 | options | [OpenLinkOptions](arkts-ability-app-ability-openlinkoptions-openlinkoptions-i.md) | 否 | 打开URL的选项参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | 否 | 回调函数，包含返回给拉起方的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | 否 | 回调函数，包含返回给拉起方的信息。 |
 
 **返回值：**
 
@@ -398,6 +400,8 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 | --- | --- |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -408,7 +412,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -459,7 +463,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startability-1"></a>
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -471,7 +475,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -521,7 +525,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startability-2"></a>
+<a id="startability3"></a>
 
 ## startAbility
 
@@ -533,7 +537,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -590,6 +594,8 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilityforresult1"></a>
+
 ## startAbilityForResult
 
 ```TypeScript
@@ -598,13 +604,13 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 启动一个UIAbility，开发者可以通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。UIAbility被启动后，有如下情况:
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死UIAbility会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -619,7 +625,7 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动UIAbility时必要的Want，包含待启动UIAbility的名称等信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | 是 | 回调函数，包含返回给拉起方的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | 是 | 回调函数，包含返回给拉起方的信息。 |
 
 **错误码：**
 
@@ -655,7 +661,7 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startabilityforresult-1"></a>
+<a id="startabilityforresult2"></a>
 
 ## startAbilityForResult
 
@@ -665,13 +671,13 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 启动一个UIAbility，开发者可以通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。UIAbility被启动后，有如下情况:
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -687,7 +693,7 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动UIAbility时必要的Want，包含待启动UIAbility的名称等信息。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 是 | 启动UIAbility所携带的额外参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | 是 | 回调函数，包含返回给拉起方的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | 是 | 回调函数，包含返回给拉起方的信息。 |
 
 **错误码：**
 
@@ -721,7 +727,7 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startabilityforresult-2"></a>
+<a id="startabilityforresult3"></a>
 
 ## startAbilityForResult
 
@@ -731,13 +737,13 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 启动一个UIAbility，开发者可以通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。UIAbility被启动后，有如下情况:
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死UIAbility会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -758,7 +764,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise对象，返回被拉起的UIAbility退出时的返回结果。 |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise对象，返回被拉起的UIAbility退出时的返回结果。 |
 
 **错误码：**
 
@@ -804,7 +810,7 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -831,7 +837,7 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
@@ -844,6 +850,8 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 | [16000019](../errorcode-ability.md#16000019-隐式启动未查找到匹配ability) | No matching ability is found. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
+
+<a id="terminateself1"></a>
 
 ## terminateSelf
 
@@ -873,7 +881,7 @@ terminateSelf(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-<a id="terminateself-1"></a>
+<a id="terminateself2"></a>
 
 ## terminateSelf
 
@@ -897,6 +905,8 @@ terminateSelf(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<a id="terminateselfwithresult1"></a>
+
 ## terminateSelfWithResult
 
 ```TypeScript
@@ -917,7 +927,7 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给UIExtensionAbility拉起方的信息。 |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | 是 | 返回给UIExtensionAbility拉起方的信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。UIExtensionAbility停止成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -926,7 +936,7 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>)
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-<a id="terminateselfwithresult-1"></a>
+<a id="terminateselfwithresult2"></a>
 
 ## terminateSelfWithResult
 
@@ -948,7 +958,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给UIExtensionAbility拉起方的信息。 |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | 是 | 返回给UIExtensionAbility拉起方的信息。 |
 
 **返回值：**
 

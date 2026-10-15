@@ -21,6 +21,8 @@ declare interface Dir
 ```TypeScript
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -54,7 +56,7 @@ dir.close().then(() => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -113,6 +115,8 @@ closeSync(): void
 dir.closeSync();
 ```
 
+<a id="read1"></a>
+
 ## read
 
 ```TypeScript
@@ -148,7 +152,7 @@ dir.read().then((dirent: fileio.Dirent) => {
 });
 ```
 
-<a id="read-1"></a>
+<a id="read2"></a>
 
 ## read
 

@@ -6,6 +6,8 @@ declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
 弹窗的蒙层效果。
 
+**类型：** import('../api/@ohos.promptAction').ImmersiveMode
+
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 <!--Device-unnamed-declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode--><!--Device-unnamed-declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.promptAction').ImmersiveMode

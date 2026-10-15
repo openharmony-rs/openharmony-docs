@@ -49,7 +49,7 @@ declare function mkdirSync(path: string): void
 | 13900042 | Unknown error |
 
 
-<a id="mkdirsync-1"></a>
+<a id="mkdirsync2"></a>
 
 ## mkdirSync
 

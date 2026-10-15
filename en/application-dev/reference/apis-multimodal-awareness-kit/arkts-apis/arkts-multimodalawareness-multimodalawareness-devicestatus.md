@@ -20,15 +20,15 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [off](arkts-multimodalawareness-devicestatus-off-f.md#offsteadystandingdetect) | Unsubscribes from steady standing state events. |
-| [on](arkts-multimodalawareness-devicestatus-on-f.md#onsteadystandingdetect) | Subscribes to the device steady standing state (stand mode) event. It is recommended to call off() to unsubscribe when it is no longer needed to release resources. |
+| [off('steadyStandingDetect')](arkts-multimodalawareness-devicestatus-off-f.md#offsteadystandingdetect) | Unsubscribes from steady standing state events. |
+| [on('steadyStandingDetect')](arkts-multimodalawareness-devicestatus-on-f.md#onsteadystandingdetect) | Subscribes to the device steady standing state (stand mode) event. It is recommended to call off() to unsubscribe when it is no longer needed to release resources. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [getDeviceRotationRadian](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md) | Obtains the device posture data. |
+| [getDeviceRotationRadian](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md#getdevicerotationradian) | Obtains the device posture data. |
 <!--DelEnd-->
 
 <!--Del-->

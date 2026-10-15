@@ -4,7 +4,7 @@
 interface AudioRenderer
 ```
 
-音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md)获取AudioRenderer实例。
+音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1)获取AudioRenderer实例。
 
 **起始版本：** 8
 
@@ -17,6 +17,8 @@ interface AudioRenderer
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
+
+<a id="drain1"></a>
 
 ## drain
 
@@ -52,7 +54,7 @@ audioRenderer.drain((err: BusinessError) => {
 });
 ```
 
-<a id="drain-1"></a>
+<a id="drain2"></a>
 
 ## drain
 
@@ -124,6 +126,8 @@ audioRenderer.flush().then(() => {
 });
 ```
 
+<a id="getaudioeffectmode1"></a>
+
 ## getAudioEffectMode
 
 ```TypeScript
@@ -158,7 +162,7 @@ audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEff
 });
 ```
 
-<a id="getaudioeffectmode-1"></a>
+<a id="getaudioeffectmode2"></a>
 
 ## getAudioEffectMode
 
@@ -192,6 +196,8 @@ audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
 });
 ```
 
+<a id="getaudiostreamid1"></a>
+
 ## getAudioStreamId
 
 ```TypeScript
@@ -222,7 +228,7 @@ audioRenderer.getAudioStreamId((err: BusinessError, streamId: number) => {
 });
 ```
 
-<a id="getaudiostreamid-1"></a>
+<a id="getaudiostreamid2"></a>
 
 ## getAudioStreamId
 
@@ -290,6 +296,8 @@ try {
 }
 ```
 
+<a id="getaudiotime1"></a>
+
 ## getAudioTime
 
 ```TypeScript
@@ -320,7 +328,7 @@ audioRenderer.getAudioTime((err: BusinessError, timestamp: number) => {
 });
 ```
 
-<a id="getaudiotime-1"></a>
+<a id="getaudiotime2"></a>
 
 ## getAudioTime
 
@@ -480,6 +488,8 @@ try {
 }
 ```
 
+<a id="getbuffersize1"></a>
+
 ## getBufferSize
 
 ```TypeScript
@@ -517,7 +527,7 @@ audioRenderer.getBufferSize((err: BusinessError, data: number) => {
 });
 ```
 
-<a id="getbuffersize-1"></a>
+<a id="getbuffersize2"></a>
 
 ## getBufferSize
 
@@ -590,6 +600,8 @@ try {
 }
 ```
 
+<a id="getcurrentoutputdevices1"></a>
+
 ## getCurrentOutputDevices
 
 ```TypeScript
@@ -633,7 +645,7 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
 });
 ```
 
-<a id="getcurrentoutputdevices-1"></a>
+<a id="getcurrentoutputdevices2"></a>
 
 ## getCurrentOutputDevices
 
@@ -803,6 +815,8 @@ getLoudnessGain(): number
 let loudnessGain = audioRenderer.getLoudnessGain();
 ```
 
+<a id="getmaxstreamvolume1"></a>
+
 ## getMaxStreamVolume
 
 ```TypeScript
@@ -837,7 +851,7 @@ audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
 });
 ```
 
-<a id="getmaxstreamvolume-1"></a>
+<a id="getmaxstreamvolume2"></a>
 
 ## getMaxStreamVolume
 
@@ -905,6 +919,8 @@ try {
 }
 ```
 
+<a id="getminstreamvolume1"></a>
+
 ## getMinStreamVolume
 
 ```TypeScript
@@ -939,7 +955,7 @@ audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
 });
 ```
 
-<a id="getminstreamvolume-1"></a>
+<a id="getminstreamvolume2"></a>
 
 ## getMinStreamVolume
 
@@ -1007,6 +1023,8 @@ try {
 }
 ```
 
+<a id="getrendererinfo1"></a>
+
 ## getRendererInfo
 
 ```TypeScript
@@ -1041,7 +1059,7 @@ audioRenderer.getRendererInfo((err: BusinessError, audioRendererInfo: audio.Audi
 });
 ```
 
-<a id="getrendererinfo-1"></a>
+<a id="getrendererinfo2"></a>
 
 ## getRendererInfo
 
@@ -1161,6 +1179,8 @@ getSpeed(): number
 let speed = audioRenderer.getSpeed();
 ```
 
+<a id="getstreaminfo1"></a>
+
 ## getStreamInfo
 
 ```TypeScript
@@ -1195,7 +1215,7 @@ audioRenderer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
 });
 ```
 
-<a id="getstreaminfo-1"></a>
+<a id="getstreaminfo2"></a>
 
 ## getStreamInfo
 
@@ -1270,6 +1290,8 @@ try {
 }
 ```
 
+<a id="getunderflowcount1"></a>
+
 ## getUnderflowCount
 
 ```TypeScript
@@ -1304,7 +1326,7 @@ audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => 
 });
 ```
 
-<a id="getunderflowcount-1"></a>
+<a id="getunderflowcount2"></a>
 
 ## getUnderflowCount
 
@@ -2098,6 +2120,8 @@ audioRenderer.start().then(() => {
 });
 ```
 
+<a id="pause1"></a>
+
 ## pause
 
 ```TypeScript
@@ -2132,7 +2156,7 @@ audioRenderer.pause((err: BusinessError) => {
 });
 ```
 
-<a id="pause-1"></a>
+<a id="pause2"></a>
 
 ## pause
 
@@ -2165,6 +2189,8 @@ audioRenderer.pause().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="release1"></a>
 
 ## release
 
@@ -2200,7 +2226,7 @@ audioRenderer.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -2233,6 +2259,8 @@ audioRenderer.release().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="setaudioeffectmode1"></a>
 
 ## setAudioEffectMode
 
@@ -2276,7 +2304,7 @@ audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: Bus
 });
 ```
 
-<a id="setaudioeffectmode-1"></a>
+<a id="setaudioeffectmode2"></a>
 
 ## setAudioEffectMode
 
@@ -2428,7 +2456,7 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 > **说明：** 
 > 
 > 当音频渲染器在运行状态时调用此接口后，必须重新调用接口
-> [start](#start)使其生效。
+> [start](#start1)使其生效。
 
 **起始版本：** 24
 
@@ -2461,6 +2489,8 @@ let strategy: audio.AudioSessionStrategy = {
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```
+
+<a id="setinterruptmode1"></a>
 
 ## setInterruptMode
 
@@ -2498,7 +2528,7 @@ audioRenderer.setInterruptMode(mode, (err: BusinessError) => {
 });
 ```
 
-<a id="setinterruptmode-1"></a>
+<a id="setinterruptmode2"></a>
 
 ## setInterruptMode
 
@@ -2689,6 +2719,8 @@ setSpeed(speed: number): void
 audioRenderer.setSpeed(1.5);
 ```
 
+<a id="setvolume1"></a>
+
 ## setVolume
 
 ```TypeScript
@@ -2724,7 +2756,7 @@ audioRenderer.setVolume(0.5, (err: BusinessError) => {
 });
 ```
 
-<a id="setvolume-1"></a>
+<a id="setvolume2"></a>
 
 ## setVolume
 
@@ -2802,6 +2834,8 @@ audioRenderer.setVolumeWithRamp(volume, duration);
 console.info(`setVolumeWithRamp: ${volume}`);
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -2836,7 +2870,7 @@ audioRenderer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -2869,6 +2903,8 @@ audioRenderer.start().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="stop1"></a>
 
 ## stop
 
@@ -2904,7 +2940,7 @@ audioRenderer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -2937,6 +2973,8 @@ audioRenderer.stop().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="getrenderrate1"></a>
 
 ## getRenderRate
 
@@ -2976,7 +3014,7 @@ audioRenderer.getRenderRate((err: BusinessError, renderRate: audio.AudioRenderer
 });
 ```
 
-<a id="getrenderrate-1"></a>
+<a id="getrenderrate2"></a>
 
 ## getRenderRate
 
@@ -3060,6 +3098,8 @@ try {
 }
 ```
 
+<a id="setrenderrate1"></a>
+
 ## setRenderRate
 
 ```TypeScript
@@ -3076,7 +3116,7 @@ setRenderRate(rate: AudioRendererRate, callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** setSpeed
+**替代接口：** [setSpeed](#setspeed)
 
 <!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate, callback: AsyncCallback<void>): void--><!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate, callback: AsyncCallback<void>): void-End-->
 
@@ -3103,7 +3143,7 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL, (err: Bu
 });
 ```
 
-<a id="setrenderrate-1"></a>
+<a id="setrenderrate2"></a>
 
 ## setRenderRate
 
@@ -3121,7 +3161,7 @@ setRenderRate(rate: AudioRendererRate): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** setSpeed
+**替代接口：** [setSpeed](#setspeed)
 
 <!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate): Promise<void>--><!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate): Promise<void>-End-->
 
@@ -3151,6 +3191,8 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL).then(() 
 });
 ```
 
+<a id="write1"></a>
+
 ## write
 
 ```TypeScript
@@ -3161,7 +3203,7 @@ write(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 
 > **说明：** 
 > 
-> 从 API version 8开始支持，从API version 11开始废弃。建议使用[on('writeData')](#onwritedata)替代。
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用on('writeData')替代。
 
 **起始版本：** 8
 
@@ -3227,7 +3269,7 @@ audioRenderer.getBufferSize().then((data: number)=> {
 });
 ```
 
-<a id="write-1"></a>
+<a id="write2"></a>
 
 ## write
 
@@ -3239,7 +3281,7 @@ write(buffer: ArrayBuffer): Promise<number>
 
 > **说明：** 
 > 
-> 从 API version 8开始支持，从API version 11开始废弃。建议使用[on('writeData')](#onwritedata)替代。
+> 从 API version 8开始支持，从API version 11开始废弃。建议使用on('writeData')替代。
 
 **起始版本：** 8
 

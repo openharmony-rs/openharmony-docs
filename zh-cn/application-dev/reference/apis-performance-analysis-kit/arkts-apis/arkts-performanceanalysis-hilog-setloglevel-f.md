@@ -22,7 +22,7 @@ function setLogLevel(level: LogLevel, prefer: PreferStrategy): void
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-hilog-function setLogLevel(level: LogLevel, prefer: PreferStrategy): void--><!--Device-hilog-function setLogLevel(level: LogLevel, prefer: PreferStrategy): void-End-->
 

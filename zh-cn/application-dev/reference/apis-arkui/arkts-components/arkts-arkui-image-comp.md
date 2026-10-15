@@ -12,7 +12,7 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 > 
 > - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](arkts-arkui-common-comp.md)。
 > 
-> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
+> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
 > 
 > - Image组件播放GIF动图时，帧时长取自GIF文件中各帧的delay time字段。当某帧的时长值小于等于0时，系统会将其修正为100ms；当某帧的时长值大于0时，系统直接使用该原始值，不做最小帧时长限制。
 
@@ -62,7 +62,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [DrawableDescriptor](arkts-arkui-image-comp-drawabledescriptor-t.md) | 是 | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片。当[使用相对路径显示图片](arkts-arkui-image-comp.md)时，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption &gt; resOptions &gt; copyCodeResource &gt; enable 设置为true。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](arkts-arkui-image-comp.md)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://&lt;bundleName&gt;/&lt;sandboxPath&gt;。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考访问跨HAP/HSP包资源。<br>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)类型可播放PixelMap数组动画。<br>**说明：** <br>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br>- ArkTS卡片上不支持http://等网络相关路径前缀和file://路径前缀的字符串。 |
+| src | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [DrawableDescriptor](arkts-arkui-image-comp-drawabledescriptor-t.md) | 是 | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片。当[使用相对路径显示图片](arkts-arkui-image-comp.md)时，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption &gt; resOptions &gt; copyCodeResource &gt; enable 设置为true。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](arkts-arkui-image-comp.md)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://<bundleName>/<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨HAP/HSP包资源)。<br>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)类型可播放PixelMap数组动画。<br>**说明：** <br>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br>- ArkTS卡片上不支持http://等网络相关路径前缀和file://路径前缀的字符串。 |
 
 ## Image
 
@@ -191,7 +191,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor,
 | [ImageErrorCallback](arkts-arkui-image-comp-imageerrorcallback-t.md) | 图片加载异常时触发此回调。 |
 | [ImageMatrix](arkts-arkui-image-comp-imagematrix-t.md) | 当前的矩阵对象。 |
 | [RequestDownloadInfo](arkts-arkui-image-comp-requestdownloadinfo-t.md) | 用于描述网络图片加载失败或异常时的下载信息。该对象包含本次下载任务的资源信息、网络信息以及性能统计信息，可用于定位加载异常的具体原因。 |
-| ResolutionQuality | 分辨率质量等级类型。 |
+| [ResolutionQuality](arkts-arkui-image-comp-resolutionquality-t-sys.md) | 分辨率质量等级类型。 |
 
 ### 枚举
 
@@ -207,7 +207,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor,
 
 ### 示例1（加载基本类型图片）
 
-该示例通过传入Resource资源，加载png、gif、svg和jpg等基本类型的图片。
+该示例通过传入[Resource](ts-types.md#resource)资源，加载png、gif、svg和jpg等基本类型的图片。
 
 
 
@@ -357,7 +357,7 @@ struct Index {
 
 ### 示例4（为图片添加事件）
 
-该示例为图片添加onClick和[onFinish](arkts-arkui-image-comp-attribute.md#onfinish)事件。
+该示例为图片添加[onClick](ts-universal-events-click.md#onclick)和[onFinish](#onfinish)事件。
 
 
 
@@ -398,7 +398,7 @@ struct ImageExample3 {
 
 ### 示例5（开启图像AI分析）
 
-该示例使用[enableAnalyzer](arkts-arkui-image-comp-attribute.md#enableanalyzer)接口开启图像AI分析。
+该示例使用[enableAnalyzer](#enableanalyzer11)接口开启图像AI分析。
 
 
 
@@ -449,7 +449,7 @@ struct ImageExample4 {
 
 ### 示例6（通过slice拉伸图片）
 
-该示例通过[resizable](arkts-arkui-image-comp-attribute.md#resizable)属性的slice选项，调整不同方向对图片进行拉伸。
+该示例通过[resizable](#resizable11)属性的slice选项，调整不同方向对图片进行拉伸。
 
 
 
@@ -518,7 +518,7 @@ struct Index {
 
 ### 示例7（通过lattice拉伸图片）
 
-该示例使用[resizable](arkts-arkui-image-comp-attribute.md#resizable)属性的lattice选项，使用矩形网格对象对图片进行拉伸。
+该示例使用[resizable](#resizable11)属性的lattice选项，使用矩形网格对象对图片进行拉伸。
 
 
 
@@ -644,7 +644,7 @@ struct ImageExample {
 
 ### 示例9（为图像设置颜色滤镜效果）
 
-该示例通过[colorFilter](arkts-arkui-image-comp-attribute.md#colorfilter)属性实现了给图像设置颜色滤镜效果。
+该示例通过[colorFilter](#colorfilter9)属性实现了给图像设置颜色滤镜效果。
 
 
 
@@ -712,7 +712,7 @@ struct ImageExample3 {
 
 ### 示例10（为图像设置填充效果）
 
-该示例通过[objectFit](arkts-arkui-image-comp-attribute.md#objectfit)属性为图像设置填充效果。
+该示例通过[objectFit](#objectfit)属性为图像设置填充效果。
 
 
 
@@ -763,7 +763,7 @@ struct ImageExample{
 
 ### 示例11（切换显示不同类型图片）
 
-该示例展示了ResourceStr类型与[ImageContent](arkts-arkui-image-comp-imagecontent-e.md)类型作为数据源的显示图片效果。
+该示例展示了[ResourceStr](ts-types.md#resourcestr)类型与[ImageContent](arkts-arkui-image-comp-imagecontent-e.md)类型作为数据源的显示图片效果。
 
 
 
@@ -793,7 +793,7 @@ struct ImageContentExample {
 
 ### 示例12（配置隐私隐藏）
 
-该示例通过[privacySensitive](arkts-arkui-image-comp-attribute.md#privacysensitive)属性展示了如何配置隐私隐藏，效果展示需要卡片框架支持。
+该示例通过[privacySensitive](#privacysensitive12)属性展示了如何配置隐私隐藏，效果展示需要卡片框架支持。
 
 
 
@@ -818,7 +818,7 @@ struct ImageExample {
 
 ### 示例13（为图片设置扫光效果）
 
-该示例通过linearGradient接口和animateTo()接口实现了给图片设置扫光效果。
+该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和[animateTo()](../arkts-apis-uicontext-uicontext.md#animateto)接口实现了给图片设置扫光效果。
 
 
 
@@ -907,7 +907,7 @@ struct ImageExample11 {
 
 ### 示例14（为图片添加变换效果）
 
-该示例通过[imageMatrix](arkts-arkui-image-comp-attribute.md#imagematrix)和[objectFit](arkts-arkui-image-comp-attribute.md#objectfit)属性，为图片添加旋转和平移的效果。
+该示例通过[imageMatrix](#imagematrix15)和[objectFit](#objectfit)属性，为图片添加旋转和平移的效果。
 
 从API version 15开始，新增imageMatrix属性。
 
@@ -976,7 +976,7 @@ struct Test {
 
 ### 示例15（通过sourceSize设置图片解码尺寸）
 
-该示例通过[sourceSize](arkts-arkui-image-comp-attribute.md#sourcesize)接口自定义图片的解码尺寸。
+该示例通过[sourceSize](#sourcesize)接口自定义图片的解码尺寸。
 
 
 
@@ -1009,7 +1009,7 @@ struct Index {
 
 ### 示例16（通过renderMode设置图片的渲染模式）
 
-该示例通过[renderMode](arkts-arkui-image-comp-attribute.md#rendermode)接口设置图片渲染模式为黑白模式。
+该示例通过[renderMode](#rendermode)接口设置图片渲染模式为黑白模式。
 
 
 
@@ -1061,7 +1061,7 @@ struct Index {
 
 ### 示例18（设置SVG图片的填充颜色）
 
-该示例通过[fillColor](arkts-arkui-image-comp-attribute.md#fillcolor)属性为SVG图片设置不同颜色的填充效果。
+该示例通过[fillColor](#fillcolor15)属性为SVG图片设置不同颜色的填充效果。
 
 
 
@@ -1111,7 +1111,7 @@ struct Index {
 
 ### 示例19（设置HDR图源动态提亮）
 
-该示例通过[hdrBrightness](arkts-arkui-image-comp-attribute.md#hdrbrightness)属性调整HDR图源的亮度，将hdrBrightness从0调整到1。
+该示例通过[hdrBrightness](#hdrbrightness19)属性调整HDR图源的亮度，将hdrBrightness从0调整到1。
 
 从API version 19开始，新增hdrBrightness属性。
 
@@ -1202,7 +1202,7 @@ struct Index {
 
 ### 示例21（设置图像内容的显示方向）
 
-该示例通过[orientation](arkts-arkui-image-comp-attribute.md#orientation)属性，设置图像内容的显示方向。
+该示例通过[orientation](#orientation14)属性，设置图像内容的显示方向。
 
 
 
@@ -1296,7 +1296,7 @@ struct OrientationExample {
 
 ### 示例22（获取图片的exif信息并设置图像内容的显示方向）
 
-该示例通过getImageProperty接口，获取图片的exif信息，再根据获取到的exif信息，通过[orientation](arkts-arkui-image-comp-attribute.md#orientation)属性设置图像内容显示为正确方向。
+该示例通过[getImageProperty](../../apis-image-kit/arkts-apis-image-ImageSource.md#getimageproperty)接口，获取图片的exif信息，再根据获取到的exif信息，通过[orientation](#orientation14)属性设置图像内容显示为正确方向。
 
 
 
@@ -1533,7 +1533,7 @@ struct Index {
 
 ### 示例26（使用supportSvg2属性时，SVG图片的显示效果）
 
-该示例通过设置[supportSvg2](arkts-arkui-image-comp-attribute.md#supportsvg2)属性，使SVG标签解析能力增强功能生效。
+该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
 
 从API version 21开始，新增supportSvg2属性。
 
@@ -1570,7 +1570,7 @@ struct Index {
 
 ### 示例27（使用ContentTransition属性实现图片淡入淡出切换效果）
 
-从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](arkts-arkui-image-comp-attribute.md#contenttransition)属性实现淡入淡出效果，完成图片的平滑过渡。
+从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
 
 
 
@@ -1603,7 +1603,7 @@ struct ImageExample {
 
 ### 示例28（使用alt属性设置加载过程中和加载失败时的占位图）
 
-该示例演示了在图片加载过程中和加载失败时，通过设置[alt](arkts-arkui-image-comp-attribute.md#alt)属性实现图片加载过程中和图片加载失败时显示指定图片
+该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片
 
 
 
@@ -1642,7 +1642,7 @@ struct ImageExample {
 
 ### 示例29（使用onError回调监听网络图片加载异常信息）
 
-该示例演示如何通过[onError](arkts-arkui-image-comp-attribute.md#onerror)回调获取网络图片加载异常时的详细下载信息[ImageError](arkts-arkui-image-comp-imageerror-i.md)。当图片加载失败时，可通过ImageError中的downloadInfo属性获取网络图片下载的详细信息，包括下载的资源信息、网络请求信息以及性能统计信息，有助于快速定位网络异常或资源错误原因。
+该示例演示如何通过[onError](#onerror9)回调获取网络图片加载异常时的详细下载信息[ImageError](arkts-arkui-image-comp-imageerror-i.md)。当图片加载失败时，可通过ImageError中的downloadInfo属性获取网络图片下载的详细信息，包括下载的资源信息、网络请求信息以及性能统计信息，有助于快速定位网络异常或资源错误原因。
 
 从API version 23开始，ImageError新增downloadInfo属性。
 

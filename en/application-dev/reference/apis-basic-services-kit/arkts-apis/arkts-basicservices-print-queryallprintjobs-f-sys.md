@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryallprintjobs1"></a>
+
 ## queryAllPrintJobs
 
 ```TypeScript
@@ -41,6 +43,7 @@ Queries all print jobs. This API uses an asynchronous callback to return the res
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,8 +70,10 @@ print.queryAllPrintJobs().then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="queryallprintjobs-1"></a>
+
+<a id="queryallprintjobs2"></a>
 
 ## queryAllPrintJobs
 
@@ -105,6 +110,9 @@ Queries all print jobs. This API uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 
+<!--Del-->
 **Examples**
 
 See [queryAllPrintJobs](#queryallprintjobs)
+
+<!--DelEnd-->

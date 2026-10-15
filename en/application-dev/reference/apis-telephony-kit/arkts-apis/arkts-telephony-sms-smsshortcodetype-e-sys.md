@@ -14,24 +14,6 @@ Enumerates SMS short code types.
 
 **System API:** This is a system API.
 
-## SMS_SHORT_CODE_TYPE_UNKNOWN
-
-```TypeScript
-SMS_SHORT_CODE_TYPE_UNKNOWN = -1
-```
-
-Indicates an unknown SMS short code type.
-
-**Since:** 23
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-<!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
-**System API:** This is a system API.
-
 ## SMS_SHORT_CODE_TYPE_NOT_PREMIUM
 
 ```TypeScript
@@ -63,6 +45,24 @@ Indicates a possible premium SMS short code type.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 <!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+**System API:** This is a system API.
+
+## SMS_SHORT_CODE_TYPE_UNKNOWN
+
+```TypeScript
+SMS_SHORT_CODE_TYPE_UNKNOWN = -1
+```
+
+Indicates an unknown SMS short code type.
+
+**Since:** 23
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

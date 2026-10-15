@@ -4,8 +4,6 @@ The **DataShare** module allows an application to manage its own data and share 
 
 **Since:** 20
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace dataShare--><!--Device-unnamed-declare namespace dataShare-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -22,18 +20,18 @@ import { dataShare } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [createDataProxyHandle](arkts-arkdata-datashare-createdataproxyhandle-f.md) | Creates a **DataProxyHandle** instance. This API uses a promise to return the result. |
+| [createDataProxyHandle](arkts-arkdata-datashare-createdataproxyhandle-f.md#createdataproxyhandle) | Creates a **DataProxyHandle** instance. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper) | Creates a **DataShareHelper** instance. This API uses an asynchronous callback to return the result. |
-| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper-1) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses an asynchronous callback to return the result. |
-| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper-2) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses a promise to return the result. |
-| [disableSilentProxy](arkts-arkdata-datashare-disablesilentproxy-f-sys.md) | Disables silent access. This API uses a promise to return the result. |
-| [enableSilentProxy](arkts-arkdata-datashare-enablesilentproxy-f-sys.md) | Enables silent access. This API uses a promise to return the result. |
+| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper1) | Creates a **DataShareHelper** instance. This API uses an asynchronous callback to return the result. |
+| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper2) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses an asynchronous callback to return the result. |
+| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper3) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses a promise to return the result. |
+| [disableSilentProxy](arkts-arkdata-datashare-disablesilentproxy-f-sys.md#disablesilentproxy) | Disables silent access. This API uses a promise to return the result. |
+| [enableSilentProxy](arkts-arkdata-datashare-enablesilentproxy-f-sys.md#enablesilentproxy) | Enables silent access. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -53,7 +51,7 @@ import { dataShare } from '@kit.ArkData';
 | Name | Description |
 | --- | --- |
 | [ChangeInfo](arkts-arkdata-datashare-changeinfo-i-sys.md) | Represents the data change information, including the data change type, URI of the data changed, and changed data content. |
-| [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md) | Provides a **DataShareHelper** instance to access or manage data on the server. Before calling an API provided by **DataShareHelper**, you must create a **DataShareHelper** instance using [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md). |
+| [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md) | Provides a **DataShareHelper** instance to access or manage data on the server. Before calling an API provided by **DataShareHelper**, you must create a **DataShareHelper** instance using [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper1). |
 | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | Represents the optional parameters of [DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md). |
 | [OperationResult](arkts-arkdata-datashare-operationresult-i-sys.md) | Defines the result of the operation for subscribing to or unsubscribing from the data changes or published data. |
 | [PublishedDataChangeNode](arkts-arkdata-datashare-publisheddatachangenode-i-sys.md) | Defines the subscription/unsubscription result of the changes in the published data. |

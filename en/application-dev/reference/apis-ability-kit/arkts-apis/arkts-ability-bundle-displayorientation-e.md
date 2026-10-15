@@ -22,21 +22,21 @@ Enumerates display orientations.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
-## UNSPECIFIED
+## FOLLOW_RECENT
 
 ```TypeScript
-UNSPECIFIED = 0
+FOLLOW_RECENT = 3
 ```
 
-Unspecified display orientation.
+Orientation same as that of the nearest ability in the stack.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#unspecified)
+**Substitutes:** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#follow_recent)
 
-<!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
+<!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -76,20 +76,20 @@ Portrait orientation.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
-## FOLLOW_RECENT
+## UNSPECIFIED
 
 ```TypeScript
-FOLLOW_RECENT = 3
+UNSPECIFIED = 0
 ```
 
-Orientation same as that of the nearest ability in the stack.
+Unspecified display orientation.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#follow_recent)
+**Substitutes:** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#unspecified)
 
-<!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
+<!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

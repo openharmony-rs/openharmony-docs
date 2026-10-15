@@ -12,20 +12,6 @@ Enumerates the types of sensitive data that can be accessed under the lock scree
 
 **System capability:** SystemCapability.Security.ScreenLockFileManager
 
-## MEDIA_DATA
-
-```TypeScript
-MEDIA_DATA = 0x00000001
-```
-
-Media data type.
-
-**Since:** 12
-
-<!--Device-DataType-MEDIA_DATA = 0x00000001--><!--Device-DataType-MEDIA_DATA = 0x00000001-End-->
-
-**System capability:** SystemCapability.Security.ScreenLockFileManager
-
 ## ALL_DATA
 
 ```TypeScript
@@ -37,5 +23,19 @@ All sensitive data types.
 **Since:** 12
 
 <!--Device-DataType-ALL_DATA = 0xffffffff--><!--Device-DataType-ALL_DATA = 0xffffffff-End-->
+
+**System capability:** SystemCapability.Security.ScreenLockFileManager
+
+## MEDIA_DATA
+
+```TypeScript
+MEDIA_DATA = 0x00000001
+```
+
+Media data type.
+
+**Since:** 12
+
+<!--Device-DataType-MEDIA_DATA = 0x00000001--><!--Device-DataType-MEDIA_DATA = 0x00000001-End-->
 
 **System capability:** SystemCapability.Security.ScreenLockFileManager

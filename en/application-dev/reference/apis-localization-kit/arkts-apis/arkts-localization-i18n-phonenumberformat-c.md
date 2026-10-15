@@ -28,7 +28,7 @@ Creates a **PhoneNumberFormat** object.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhoneNumberFormat-constructor(country: string, options?: PhoneNumberFormatOptions)--><!--Device-PhoneNumberFormat-constructor(country: string, options?: PhoneNumberFormatOptions)-End-->
 
@@ -64,7 +64,7 @@ Formats a phone number.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhoneNumberFormat-format(phoneNumber: string): string--><!--Device-PhoneNumberFormat-format(phoneNumber: string): string-End-->
 
@@ -116,7 +116,7 @@ Obtains the home location of a phone number.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhoneNumberFormat-getLocationName(phoneNumber: string, locale: string): string--><!--Device-PhoneNumberFormat-getLocationName(phoneNumber: string, locale: string): string-End-->
 
@@ -166,7 +166,7 @@ Checks whether the phone number is valid for the country/region in the **PhoneNu
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhoneNumberFormat-isValidNumber(phoneNumber: string): boolean--><!--Device-PhoneNumberFormat-isValidNumber(phoneNumber: string): boolean-End-->
 

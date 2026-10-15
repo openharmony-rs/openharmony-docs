@@ -28,7 +28,7 @@ Adds a [CameraInput](arkts-camera-camera-camerainput-i.md) instance to this sess
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-addInput(cameraInput: CameraInput): void--><!--Device-Session-addInput(cameraInput: CameraInput): void-End-->
 
@@ -75,7 +75,7 @@ Adds a [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instance to this se
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-addOutput(cameraOutput: CameraOutput): void--><!--Device-Session-addOutput(cameraOutput: CameraOutput): void-End-->
 
@@ -122,7 +122,7 @@ Starts configuration for the session.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-beginConfig(): void--><!--Device-Session-beginConfig(): void-End-->
 
@@ -161,7 +161,7 @@ Checks whether a **CameraInput** instance can be added to this session. This API
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-canAddInput(cameraInput: CameraInput): boolean--><!--Device-Session-canAddInput(cameraInput: CameraInput): boolean-End-->
 
@@ -198,7 +198,7 @@ Determines whether a CameraOutput instance can be added to this session. This AP
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-canAddOutput(cameraOutput: CameraOutput): boolean--><!--Device-Session-canAddOutput(cameraOutput: CameraOutput): boolean-End-->
 
@@ -225,6 +225,8 @@ function canAddOutput(session: camera.Session, cameraOutput: camera.CameraOutput
 }
 ```
 
+<a id="commitconfig1"></a>
+
 ## commitConfig
 
 ```TypeScript
@@ -235,7 +237,7 @@ Commits the configuration for this session. This API uses an asynchronous callba
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-commitConfig(callback: AsyncCallback<void>): void--><!--Device-Session-commitConfig(callback: AsyncCallback<void>): void-End-->
 
@@ -270,7 +272,7 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
-<a id="commitconfig-1"></a>
+<a id="commitconfig2"></a>
 
 ## commitConfig
 
@@ -282,7 +284,7 @@ Commits the configuration for this session. This API uses a promise to return th
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-commitConfig(): Promise<void>--><!--Device-Session-commitConfig(): Promise<void>-End-->
 
@@ -316,6 +318,8 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -326,7 +330,7 @@ Releases this session. This API uses an asynchronous callback to return the resu
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-release(callback: AsyncCallback<void>): void--><!--Device-Session-release(callback: AsyncCallback<void>): void-End-->
 
@@ -360,7 +364,7 @@ function releaseCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -372,7 +376,7 @@ Releases this session. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-release(): Promise<void>--><!--Device-Session-release(): Promise<void>-End-->
 
@@ -414,7 +418,7 @@ Removes a [CameraInput](arkts-camera-camera-camerainput-i.md) instance from this
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-removeInput(cameraInput: CameraInput): void--><!--Device-Session-removeInput(cameraInput: CameraInput): void-End-->
 
@@ -461,7 +465,7 @@ Removes a [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instance from th
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-removeOutput(cameraOutput: CameraOutput): void--><!--Device-Session-removeOutput(cameraOutput: CameraOutput): void-End-->
 
@@ -498,6 +502,8 @@ function removeOutput(session: camera.Session, previewOutput: camera.PreviewOutp
 }
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -508,7 +514,7 @@ Starts this session. This API uses an asynchronous callback to return the result
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-start(callback: AsyncCallback<void>): void--><!--Device-Session-start(callback: AsyncCallback<void>): void-End-->
 
@@ -544,7 +550,7 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -556,7 +562,7 @@ Starts this session. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-start(): Promise<void>--><!--Device-Session-start(): Promise<void>-End-->
 
@@ -590,6 +596,8 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -600,7 +608,7 @@ Stops this session. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-stop(callback: AsyncCallback<void>): void--><!--Device-Session-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -634,7 +642,7 @@ function stopCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -646,7 +654,7 @@ Stops this session. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Session-stop(): Promise<void>--><!--Device-Session-stop(): Promise<void>-End-->
 

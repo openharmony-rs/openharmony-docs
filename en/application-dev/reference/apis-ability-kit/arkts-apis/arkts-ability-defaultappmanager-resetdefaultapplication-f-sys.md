@@ -6,6 +6,8 @@
 import { defaultAppManager } from '@kit.AbilityKit';
 ```
 
+<a id="resetdefaultapplication1"></a>
+
 ## resetDefaultApplication
 
 ```TypeScript
@@ -30,7 +32,7 @@ Resets the default application for a user based on a system-defined application 
 | --- | --- | --- | --- |
 | type | string | Yes | Type of the target application. It must be set to a value defined by [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md), a file type that complies with the media type format, or a value defined by [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md). |
 | userId | number | Yes | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -43,6 +45,7 @@ Resets the default application for a user based on a system-defined application 
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700025](../errorcode-bundle.md#17700025-invalid-type) | The specified type is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,8 +81,10 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
   });
 ```
 
+<!--DelEnd-->
 
-<a id="resetdefaultapplication-1"></a>
+
+<a id="resetdefaultapplication2"></a>
 
 ## resetDefaultApplication
 
@@ -104,7 +109,7 @@ Resets the default application based on a system-defined application type, a fil
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | string | Yes | Type of the target application. It must be set to a value defined by [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md), a file type that complies with the media type format, or a value defined by [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -116,6 +121,7 @@ Resets the default application based on a system-defined application type, a fil
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [17700025](../errorcode-bundle.md#17700025-invalid-type) | The specified type is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -148,8 +154,10 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 });
 ```
 
+<!--DelEnd-->
 
-<a id="resetdefaultapplication-2"></a>
+
+<a id="resetdefaultapplication3"></a>
 
 ## resetDefaultApplication
 
@@ -193,6 +201,7 @@ Resets the default application based on a system-defined application type, a fil
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700025](../errorcode-bundle.md#17700025-invalid-type) | The specified type is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -225,3 +234,5 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

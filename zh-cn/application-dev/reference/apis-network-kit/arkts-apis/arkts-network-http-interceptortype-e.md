@@ -20,38 +20,6 @@ HTTP拦截器的类型枚举。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-## INITIAL_REQUEST
-
-```TypeScript
-INITIAL_REQUEST = 'INITIAL_REQUEST'
-```
-
-在初始HTTP请求组装完成后进行拦截。
-
-**起始版本：** 22
-
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-InterceptorType-INITIAL_REQUEST = 'INITIAL_REQUEST'--><!--Device-InterceptorType-INITIAL_REQUEST = 'INITIAL_REQUEST'-End-->
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-## REDIRECTION
-
-```TypeScript
-REDIRECTION = 'REDIRECTION'
-```
-
-在初始HTTP请求组装完成后进行拦截。
-
-**起始版本：** 22
-
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-InterceptorType-REDIRECTION = 'REDIRECTION'--><!--Device-InterceptorType-REDIRECTION = 'REDIRECTION'-End-->
-
-**系统能力：** SystemCapability.Communication.NetStack
-
 ## CACHE_CHECKED
 
 ```TypeScript
@@ -65,6 +33,38 @@ Intercept after we checked the HTTP cache.
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterceptorType-CACHE_CHECKED = 'READ_CACHE'--><!--Device-InterceptorType-CACHE_CHECKED = 'READ_CACHE'-End-->
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+## FINAL_RESPONSE
+
+```TypeScript
+FINAL_RESPONSE = 'FINAL_RESPONSE'
+```
+
+Intercept when we get the final HTTP response.
+
+**起始版本：** 22
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-InterceptorType-FINAL_RESPONSE = 'FINAL_RESPONSE'--><!--Device-InterceptorType-FINAL_RESPONSE = 'FINAL_RESPONSE'-End-->
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+## INITIAL_REQUEST
+
+```TypeScript
+INITIAL_REQUEST = 'INITIAL_REQUEST'
+```
+
+在初始HTTP请求组装完成后进行拦截。
+
+**起始版本：** 22
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-InterceptorType-INITIAL_REQUEST = 'INITIAL_REQUEST'--><!--Device-InterceptorType-INITIAL_REQUEST = 'INITIAL_REQUEST'-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -84,18 +84,18 @@ Intercept when we perform network connection, such as TLS and TCP.
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-## FINAL_RESPONSE
+## REDIRECTION
 
 ```TypeScript
-FINAL_RESPONSE = 'FINAL_RESPONSE'
+REDIRECTION = 'REDIRECTION'
 ```
 
-Intercept when we get the final HTTP response.
+在初始HTTP请求组装完成后进行拦截。
 
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-InterceptorType-FINAL_RESPONSE = 'FINAL_RESPONSE'--><!--Device-InterceptorType-FINAL_RESPONSE = 'FINAL_RESPONSE'-End-->
+<!--Device-InterceptorType-REDIRECTION = 'REDIRECTION'--><!--Device-InterceptorType-REDIRECTION = 'REDIRECTION'-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack

@@ -4,7 +4,7 @@
 interface CurrentDayStyle
 ```
 
-CurrentDayStyle object.
+CurrentDayStyle对象。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ CurrentDayStyle object.
 boundaryColOffset?: number
 ```
 
-Boundary col offset.
+边界列偏移量。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ Boundary col offset.
 boundaryRowOffset?: number
 ```
 
-Boundary row offset.
+边界行偏移量。
 
 **类型：** number
 
@@ -70,7 +70,7 @@ Boundary row offset.
 colSpace?: number
 ```
 
-Number of columns.
+列数。
 
 **类型：** number
 
@@ -94,7 +94,7 @@ Number of columns.
 dailyFiveRowSpace?: number
 ```
 
-Daily five row space.
+每日五行间距。
 
 **类型：** number
 
@@ -118,7 +118,7 @@ Daily five row space.
 dailySixRowSpace?: number
 ```
 
-Daily six row space.
+每日六行间距。
 
 **类型：** number
 
@@ -142,7 +142,7 @@ Daily six row space.
 dayColor?: ResourceColor
 ```
 
-Text color.
+文本颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -166,7 +166,7 @@ Text color.
 dayFontSize?: number
 ```
 
-Text fontSize.
+文本字体大小。
 
 **类型：** number
 
@@ -190,7 +190,7 @@ Text fontSize.
 dayHeight?: number
 ```
 
-Single date height.
+单个日期高度。
 
 **类型：** number
 
@@ -214,7 +214,7 @@ Single date height.
 dayWidth?: number
 ```
 
-Single date width.
+单个日期宽度。
 
 **类型：** number
 
@@ -238,7 +238,7 @@ Single date width.
 dayYAxisOffset?: number
 ```
 
-Data y axis Off set.
+日期Y轴偏移量。
 
 **类型：** number
 
@@ -262,7 +262,7 @@ Data y axis Off set.
 gregorianCalendarHeight?: number
 ```
 
-Gregorian calendar height.
+公历日期高度。
 
 **类型：** number
 
@@ -286,7 +286,7 @@ Gregorian calendar height.
 lunarColor?: ResourceColor
 ```
 
-lunar Text color.
+农历文本颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -310,7 +310,7 @@ lunar Text color.
 lunarDayFontSize?: number
 ```
 
-lunar text fontSize.
+农历文本字体大小。
 
 **类型：** number
 
@@ -334,7 +334,7 @@ lunar text fontSize.
 lunarDayYAxisOffset?: number
 ```
 
-Lunar data y axis Off set.
+农历日期Y轴偏移量。
 
 **类型：** number
 
@@ -358,7 +358,7 @@ Lunar data y axis Off set.
 lunarHeight?: number
 ```
 
-Single lunar height.
+单个农历高度。
 
 **类型：** number
 
@@ -382,7 +382,7 @@ Single lunar height.
 markLunarColor?: ResourceColor
 ```
 
-lunar Work and rest text color.
+农历作息文本颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -406,7 +406,7 @@ lunar Work and rest text color.
 scheduleMarkerRadius?: number
 ```
 
-Schedule marker radius.
+日程标记半径。
 
 **类型：** number
 
@@ -430,7 +430,7 @@ Schedule marker radius.
 scheduleMarkerXAxisOffset?: number
 ```
 
-Schedule marker X axis Off set
+日程标记X轴偏移量。
 
 **类型：** number
 
@@ -454,7 +454,7 @@ Schedule marker X axis Off set
 scheduleMarkerYAxisOffset?: number
 ```
 
-schedule Marker Y Axis Off set
+日程标记Y轴偏移量。
 
 **类型：** number
 
@@ -478,7 +478,7 @@ schedule Marker Y Axis Off set
 underscoreLength?: number
 ```
 
-Under score length.
+下划线长度。
 
 **类型：** number
 
@@ -502,7 +502,7 @@ Under score length.
 underscoreWidth?: number
 ```
 
-Under score width.
+下划线宽度。
 
 **类型：** number
 
@@ -526,7 +526,7 @@ Under score width.
 underscoreXAxisOffset?: number
 ```
 
-Under score X Axis Off set.
+下划线X轴偏移量。
 
 **类型：** number
 
@@ -550,7 +550,7 @@ Under score X Axis Off set.
 underscoreYAxisOffset?: number
 ```
 
-Under score Y Axis Off set
+下划线Y轴偏移量。
 
 **类型：** number
 

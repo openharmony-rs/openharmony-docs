@@ -38,6 +38,7 @@ Registers a callback used to listen for the scanner addition event. This API use
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -47,6 +48,8 @@ scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
     console.info('scan device add: ' + JSON.stringify(device));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('scanDeviceDel')
@@ -81,6 +84,7 @@ Registers a callback used to listen for the scanner deletion event. This API use
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -90,3 +94,5 @@ scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
     console.info('scan device delete: ' + JSON.stringify(device));
 });
 ```
+
+<!--DelEnd-->

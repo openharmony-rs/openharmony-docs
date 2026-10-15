@@ -41,10 +41,11 @@ function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOp
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, non-system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,3 +71,5 @@ screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions)
   console.error(`Failed to set multi screen relative position. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

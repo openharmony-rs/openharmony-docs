@@ -22,7 +22,7 @@ function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-errorManager-function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver--><!--Device-errorManager-function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver-End-->
 
@@ -51,11 +51,12 @@ function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let oldObserver: errorManager.ResourceUsageObserver;
 const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType, resourceSize, detailInfo) => {
   // 自定义的resourceUsageObserver实现逻辑
-  console.info('[Observer] Resource usage observer.');
+  hilog.info(0x0000, 'testTag', '[Observer] Resource usage observer.');
   if (oldObserver) {
     oldObserver(resourceType, resourceSize, detailInfo);
   } else {

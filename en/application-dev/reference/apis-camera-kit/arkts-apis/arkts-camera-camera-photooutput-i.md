@@ -20,6 +20,8 @@ PhotoOutput implements output information used in a photo session. It inherits f
 import { camera } from '@kit.CameraKit';
 ```
 
+<a id="capture1"></a>
+
 ## capture
 
 ```TypeScript
@@ -30,7 +32,7 @@ Captures a photo with the default photo capture parameters. This API uses an asy
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-capture(callback: AsyncCallback<void>): void--><!--Device-PhotoOutput-capture(callback: AsyncCallback<void>): void-End-->
 
@@ -65,7 +67,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-<a id="capture-1"></a>
+<a id="capture2"></a>
 
 ## capture
 
@@ -77,7 +79,7 @@ Captures a photo with the default photo capture parameters. This API uses a prom
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-capture(): Promise<void>--><!--Device-PhotoOutput-capture(): Promise<void>-End-->
 
@@ -110,7 +112,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-<a id="capture-2"></a>
+<a id="capture3"></a>
 
 ## capture
 
@@ -122,7 +124,7 @@ Captures a photo with the specified photo capture parameters. This API uses an a
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-capture(setting: PhotoCaptureSetting, callback: AsyncCallback<void>): void--><!--Device-PhotoOutput-capture(setting: PhotoCaptureSetting, callback: AsyncCallback<void>): void-End-->
 
@@ -170,7 +172,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-<a id="capture-3"></a>
+<a id="capture4"></a>
 
 ## capture
 
@@ -182,7 +184,7 @@ Captures a photo with the specified photo capture parameters. This API uses a pr
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-capture(setting: PhotoCaptureSetting): Promise<void>--><!--Device-PhotoOutput-capture(setting: PhotoCaptureSetting): Promise<void>-End-->
 
@@ -233,6 +235,41 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## configureC2PASignature
+
+```TypeScript
+configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void
+```
+
+Configures the C2PA signature settings. This API enables or disables C2PA signature and optionally sets the author information for the C2PA signature.
+
+Before calling this API, check whether C2PA signature is supported by calling [isC2PASignatureSupported](#isc2pasignaturesupported).
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PhotoOutput-configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void--><!--Device-PhotoOutput-configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enableC2PA | boolean | Yes | Whether to enable C2PA signature. **true** to enable, **false** to disable. |
+| config | [C2PASignatureConfig](arkts-camera-camera-c2pasignatureconfig-i.md) | No | C2PA signature configuration, which includes the author name and author ID. This parameter is optional. If not provided, the C2PA signature will be generated without author information. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| 7400113 | An exception occurred in the session currently in use. |
+| 7400116 | The session does not have camerainput information. |
+| [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
+
 ## enableAutoExtendedGainmapDelivery
 
 ```TypeScript
@@ -245,7 +282,7 @@ Enables or disables automatic extended gain map delivery.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-PhotoOutput-enableAutoExtendedGainmapDelivery(enabled: boolean): void--><!--Device-PhotoOutput-enableAutoExtendedGainmapDelivery(enabled: boolean): void-End-->
 
@@ -294,7 +331,7 @@ Before calling this API, check whether moving photo capture is supported by call
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-enableMirror(enabled: boolean): void--><!--Device-PhotoOutput-enableMirror(enabled: boolean): void-End-->
 
@@ -342,7 +379,7 @@ Enables or disables the feature of taking moving photos.
 
 **Required permissions:** ohos.permission.MICROPHONE
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-enableMovingPhoto(enabled: boolean): void--><!--Device-PhotoOutput-enableMovingPhoto(enabled: boolean): void-End-->
 
@@ -388,7 +425,7 @@ Obtains the profile that takes effect currently.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-getActiveProfile(): Profile--><!--Device-PhotoOutput-getActiveProfile(): Profile-End-->
 
@@ -441,7 +478,7 @@ natural orientation. For example, the rear camera sensor of a bar-type phone is 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-getPhotoRotation(deviceDegree?: int): ImageRotation--><!--Device-PhotoOutput-getPhotoRotation(deviceDegree?: int): ImageRotation-End-->
 
@@ -508,7 +545,7 @@ Obtains the supported video codec types of moving photos.
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-getSupportedMovingPhotoVideoCodecTypes(): Array<VideoCodecType>--><!--Device-PhotoOutput-getSupportedMovingPhotoVideoCodecTypes(): Array<VideoCodecType>-End-->
 
@@ -547,7 +584,7 @@ Check if the automatic auxiliary photo delivery is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-PhotoOutput-isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): boolean--><!--Device-PhotoOutput-isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): boolean-End-->
 
@@ -583,7 +620,7 @@ Checks whether automatic extended gain map delivery is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-PhotoOutput-isAutoExtendedGainmapDeliverySupported(): boolean--><!--Device-PhotoOutput-isAutoExtendedGainmapDeliverySupported(): boolean-End-->
 
@@ -614,6 +651,30 @@ function isAutoExtendedGainmapDeliverySupported(photoOutput: camera.PhotoOutput)
 }
 ```
 
+## isC2PASignatureSupported
+
+```TypeScript
+isC2PASignatureSupported(): boolean
+```
+
+Checks whether C2PA signature is supported.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PhotoOutput-isC2PASignatureSupported(): boolean--><!--Device-PhotoOutput-isC2PASignatureSupported(): boolean-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Check result for the support of C2PA signature. **true** if supported, **false** otherwise. If the API call fails, undefined is returned. |
+
 ## isMirrorSupported
 
 ```TypeScript
@@ -624,7 +685,7 @@ Checks whether mirror photography is supported.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-isMirrorSupported(): boolean--><!--Device-PhotoOutput-isMirrorSupported(): boolean-End-->
 
@@ -655,7 +716,7 @@ Checks whether taking moving photos is supported.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-isMovingPhotoSupported(): boolean--><!--Device-PhotoOutput-isMovingPhotoSupported(): boolean-End-->
 
@@ -701,7 +762,7 @@ Checks whether the specified photo quality prioritization strategy is supported.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PhotoOutput-isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPrioritization): boolean--><!--Device-PhotoOutput-isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPrioritization): boolean-End-->
 
@@ -1086,7 +1147,7 @@ Unsubscribes from the events of returning full-quality images and uncompressed i
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-PhotoOutput-offCapturePhotoAvailable(callback?: Callback<CapturePhoto>): void--><!--Device-PhotoOutput-offCapturePhotoAvailable(callback?: Callback<CapturePhoto>): void-End-->
 
@@ -1581,7 +1642,7 @@ Subscribes to the events of returning full-quality images and uncompressed image
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-PhotoOutput-onCapturePhotoAvailable(callback: Callback<CapturePhoto>): void--><!--Device-PhotoOutput-onCapturePhotoAvailable(callback: Callback<CapturePhoto>): void-End-->
 
@@ -1620,7 +1681,7 @@ Enable or disable auto auxiliary photo delivery.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-PhotoOutput-setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[], enable: boolean): void--><!--Device-PhotoOutput-setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[], enable: boolean): void-End-->
 
@@ -1651,7 +1712,7 @@ Sets a video codec type for moving photos.
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PhotoOutput-setMovingPhotoVideoCodecType(codecType: VideoCodecType): void--><!--Device-PhotoOutput-setMovingPhotoVideoCodecType(codecType: VideoCodecType): void-End-->
 
@@ -1689,7 +1750,7 @@ Before setting the strategy, you can call [isPhotoQualityPrioritizationSupported
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PhotoOutput-setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization): void--><!--Device-PhotoOutput-setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization): void-End-->
 

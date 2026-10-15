@@ -38,26 +38,6 @@ None
 
 **System API:** This is a system API.
 
-## SOURCE
-
-```TypeScript
-SOURCE = 1
-```
-
-External power supply.
-
-**Since:** 9
-
-**Deprecated since:** 9
-
-**Substitutes:** [SOURCE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#source)
-
-<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
 ## SINK
 
 ```TypeScript
@@ -73,6 +53,26 @@ Internal power supply.
 **Substitutes:** [SINK](arkts-basicservices-usbmanager-powerroletype-e-sys.md#sink)
 
 <!--Device-PowerRoleType-SINK = 2--><!--Device-PowerRoleType-SINK = 2-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
+## SOURCE
+
+```TypeScript
+SOURCE = 1
+```
+
+External power supply.
+
+**Since:** 9
+
+**Deprecated since:** 9
+
+**Substitutes:** [SOURCE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#source)
+
+<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

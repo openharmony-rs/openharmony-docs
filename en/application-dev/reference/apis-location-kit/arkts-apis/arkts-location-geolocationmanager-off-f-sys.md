@@ -40,6 +40,7 @@ Stop WiFi/BT scanning and unsubscribe from WiFi/BT scanning information changes.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.off('locatingRequiredDataChange')} due to limited device capabilities. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,6 +57,8 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('locationIconStatusChange')
@@ -90,6 +93,7 @@ Unsubscribe location icon status changed.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.off('locationIconStatusChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -105,3 +109,5 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->

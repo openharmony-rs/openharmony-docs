@@ -37,7 +37,7 @@ Truncates a file based on the file descriptor. This API uses a promise to return
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
-<a id="ftruncate-1"></a>
+<a id="ftruncate2"></a>
 
 ## ftruncate
 
@@ -65,7 +65,7 @@ Truncates a file based on the file descriptor. This API uses an asynchronous cal
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
 
-<a id="ftruncate-2"></a>
+<a id="ftruncate3"></a>
 
 ## ftruncate
 

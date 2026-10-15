@@ -48,7 +48,7 @@ effectStrategy(value: SymbolEffectStrategy)
 
 NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动效，适用于需要吸引用户注意力的场景，如按钮点击反馈；HIERARCHICAL表示层级动效，适用于需要突出图标层次感的场景。
 
-不同动效策略效果可以参考示例1（设置渲染和动效策略）。
+不同动效策略效果可以参考[示例1（设置渲染和动效策略）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#示例1设置渲染和动效策略)。
 
 > **说明：** 
 > 
@@ -130,7 +130,9 @@ fontSize(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolSpan组件大小。<br>取值范围：[0, +∞) <br>单位：fp |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolSpan组件大小。<br>取值范围：[0, +∞) <br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+
+<a id="fontweight1"></a>
 
 ## fontWeight
 
@@ -164,7 +166,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | 是 | SymbolSpan组件字体粗细。<br>number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“ lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。 |
 
-<a id="fontweight-1"></a>
+<a id="fontweight2"></a>
 
 ## fontWeight
 

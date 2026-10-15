@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="restore1"></a>
+
 ## restore
 
 ```TypeScript
@@ -39,6 +41,7 @@ function restore(wallpaperType: WallpaperType, callback: AsyncCallback<void>): v
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -53,8 +56,10 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 });
 ```
 
+<!--DelEnd-->
 
-<a id="restore-1"></a>
+
+<a id="restore2"></a>
 
 ## restore
 
@@ -94,6 +99,7 @@ function restore(wallpaperType: WallpaperType): Promise<void>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -105,3 +111,5 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.error(`Failed to restore. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -28,7 +28,7 @@ function deleteDisposedStatusSync(appId: string, appIndex?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br> **说明：** <br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](arkts-ability-bundleinfo-signatureinfo-i.md)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
+| appId | string | 是 | 要删除处置状态的应用的appId或appIdentifier。使用appId设置的处置状态只能通过appId删除，使用appIdentifier设置的同理。<br> **说明：** <br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
 | appIndex | number | 否 | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示删除主应用的处置状态。appIndex大于0时，表示删除指定分身应用的处置状态。<br>**适用版本：** 12 |
 
 **错误码：**
@@ -42,6 +42,7 @@ function deleteDisposedStatusSync(appId: string, appIndex?: number): void
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex is not in the valid range.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
   console.error('deleteDisposedStatusSync failed ' + message);
 }
 ```
+
+<!--DelEnd-->

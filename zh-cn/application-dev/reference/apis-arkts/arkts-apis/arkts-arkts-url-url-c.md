@@ -18,7 +18,7 @@ class URL
 import { url } from '@kit.ArkTS';
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -30,7 +30,7 @@ URL的无参构造函数，不建议直接调用。请使用parseURL方法创建
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URL-constructor()--><!--Device-URL-constructor()-End-->
 
@@ -52,6 +52,8 @@ new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is 
 new url.URL('https://www.example.com', ); // Output https://www.example.com/
 new url.URL('https://www.example.com', absoluteUrl); // Output https://www.example.com/
 ```
+
+<a id="constructor1"></a>
 
 ## constructor
 
@@ -111,7 +113,7 @@ static parseURL(url: string, base?: string | URL): URL
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URL-static parseURL(url: string, base?: string | URL): URL--><!--Device-URL-static parseURL(url: string, base?: string | URL): URL-End-->
 
@@ -163,7 +165,7 @@ toJSON(): string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URL-toJSON(): string--><!--Device-URL-toJSON(): string-End-->
 
@@ -194,7 +196,7 @@ toString(): string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URL-toString(): string--><!--Device-URL-toString(): string-End-->
 
@@ -448,7 +450,7 @@ readonly searchParams: URLSearchParams
 
 **废弃版本：** 9
 
-**替代接口：** params
+**替代接口：** [params](#params)
 
 <!--Device-URL-readonly searchParams: URLSearchParams--><!--Device-URL-readonly searchParams: URLSearchParams-End-->
 

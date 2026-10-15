@@ -357,7 +357,7 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | This operation is not supported on the float view in the current state. Possible cause: The float view window is not started when restoring. |
-| [1300032](../errorcode-window.md#1300032-恢复主窗口失败) | Failed to restore the main window. Possible cause: 1. User has never clicked the float view window before restore. 2. The float view window is not in the foreground. 3. The main window is in PAUSED lifecycle state. 4. The main window is in background during recent. |
+| [1300032](../errorcode-window.md#1300032-恢复主窗口失败) | Failed to restore the main window. Possible cause:         1. User has never clicked the float view window before restore.         2. The float view window is not in the foreground.         3. The main window is in PAUSED lifecycle state.         4. The main window is in background during recent. |
 
 **示例**
 
@@ -668,7 +668,7 @@ start(): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300030](../errorcode-window.md#1300030-重复操作闪控窗) | Repeated operations on the float view. Possible cause: The float view is starting or has already started. |
 | [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | The float view state does not support this operation. Possible cause: The float view is stopping. |
-| [1300033](../errorcode-window.md#1300033-启动闪控窗失败) | Failed to start float view. Possible causes: 1. Start multiple float views. 2. The main window of context is not foreground. |
+| [1300033](../errorcode-window.md#1300033-启动闪控窗失败) | Failed to start float view. Possible causes:         1. Start multiple float views.         2. The main window of context is not foreground. |
 | [1300034](../errorcode-window.md#1300034-闪控窗与其他悬浮窗口操作冲突) | This operation conflicts with other floating windows. Possible cause: App has already started floating ball or pip window. |
 
 **示例**
@@ -772,7 +772,7 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid template type. 2. The value of the size is less than or equal to 0. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. Invalid template type.         2. The value of the size is less than or equal to 0. |
 
 **示例**
 

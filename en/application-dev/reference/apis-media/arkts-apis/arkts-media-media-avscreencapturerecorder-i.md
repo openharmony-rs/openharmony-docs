@@ -1,0 +1,921 @@
+# AVScreenCaptureRecorder
+
+```TypeScript
+interface AVScreenCaptureRecorder
+```
+
+AVScreenCaptureRecorder is a class for screen capture management. It provides APIs for screen capture. Before calling any API in AVScreenCaptureRecorder, you must use [createAVScreenCaptureRecorder()](arkts-media-media-createavscreencapturerecorder-f.md) to create an AVScreenCaptureRecorder instance.
+
+**Since:** 12
+
+<!--Device-media-interface AVScreenCaptureRecorder--><!--Device-media-interface AVScreenCaptureRecorder-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+## Modules to Import
+
+```TypeScript
+```
+
+## addWatermark
+
+```TypeScript
+addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<number>
+```
+
+add a watermark for the AVScreenCaptureRecorder. This API uses a promise to return the result. App can add up to 5 watermarks. This API can be called only before calling startRecording().
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>--><!--Device-AVScreenCaptureRecorder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| watermark | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | : Watermark image. |
+| config | [WatermarkConfiguration](arkts-media-media-watermarkconfiguration-i.md) | Yes | : Configuration of the watermark. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;number&gt; | Promise that returns the watermark id. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+| [5400108](../../apis-media-kit/errorcode-media.md#5400108-parameter-value-out-of-range) | The parameter check failed, parameter value out of range. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+async function testAddWaterMark() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  let watermark: image.PixelMap | undefined = undefined; // You can obtain a local resource file and convert it to a PixelMap. The watermark image cannot be empty.
+  let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+  if (watermark && avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: number) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+  }
+}
+```
+
+## excludePickerWindows
+
+```TypeScript
+excludePickerWindows(excludedWindows: Array<number>): Promise<void>
+```
+
+Sets the list of windows to be hidden in the picker. The setting takes effect the next time the picker is displayed. This API uses a promise to return the result.
+
+**Since:** 22
+
+<!--Device-AVScreenCaptureRecorder-excludePickerWindows(excludedWindows: Array<int>): Promise<void>--><!--Device-AVScreenCaptureRecorder-excludePickerWindows(excludedWindows: Array<int>): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| excludedWindows | Array&lt;number&gt; | Yes | List of windows to be hidden in the picker. For details about how to obtain window properties, see [getWindowProperties](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testExcludePickerWindows() {
+  let excludedWindows: number[] = [101, 102, 103];
+
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the excludePickerWindows method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
+      console.info('Succeeded in excluding picker windows.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to exclude picker windows. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## init
+
+```TypeScript
+init(config: AVScreenCaptureRecordConfig): Promise<void>
+```
+
+Initializes screen capture and sets screen capture parameters. This API uses a promise to return the result.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-init(config: AVScreenCaptureRecordConfig): Promise<void>--><!--Device-AVScreenCaptureRecorder-init(config: AVScreenCaptureRecordConfig): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| config | [AVScreenCaptureRecordConfig](arkts-media-media-avscreencapturerecordconfig-i.md) | Yes | Screen capture parameters to set. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. Return by promise. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+async function testInit() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Create a file.
+  let filesDir = '/data/storage/el2/base/haps';
+  let file = fileIo.openSync(filesDir + '/screenCapture.mp4', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+
+  let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
+      fd: file.fd, // Before passing in an FD to this parameter, the file (generally an MP4 file) must be created by the caller and granted with the write permissions.
+      frameWidth: 640,
+      frameHeight: 480
+      // Add other parameters.
+  };
+
+  // Call the init method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
+      console.info('Succeeded in initializing avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## off('stateChange')
+
+```TypeScript
+off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void
+```
+
+Unsubscribes from screen capture state changes. You can specify a callback to cancel the specified subscription.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void--><!--Device-AVScreenCaptureRecorder-off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'stateChange' | Yes | Event type, which is **'stateChange'** in this case. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVScreenCaptureStateCode](arkts-media-media-avscreencapturestatecode-e.md)&gt; | No | Callback used for unsubscription. [AVScreenCaptureStateCode](arkts-media-media-avscreencapturestatecode-e.md) indicates the new state. If this parameter is not specified, the last subscription is canceled. |
+
+**Examples**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function testOffStateChange() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the off method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.off('stateChange');
+  }
+}
+```
+
+## off('error')
+
+```TypeScript
+off(type: 'error', callback?: ErrorCallback): void
+```
+
+Unsubscribes from AVScreenCaptureRecorder errors. You can specify a callback to cancel the specified subscription.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-off(type: 'error', callback?: ErrorCallback): void--><!--Device-AVScreenCaptureRecorder-off(type: 'error', callback?: ErrorCallback): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'error' | Yes | Event type, which is **'error'** in this case. |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used for unsubscription. If this parameter is not specified, the last subscription is canceled. |
+
+**Examples**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function testOffError() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the off method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.off('error');
+  }
+}
+```
+
+## on('stateChange')
+
+```TypeScript
+on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void
+```
+
+Subscribes to screen capture state changes. An application can subscribe to only one screen capture state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void--><!--Device-AVScreenCaptureRecorder-on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'stateChange' | Yes | Event type, which is **'stateChange'** in this case. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVScreenCaptureStateCode](arkts-media-media-avscreencapturestatecode-e.md)&gt; | Yes | Callback invoked when the event is triggered. [AVScreenCaptureStateCode](arkts-media-media-avscreencapturestatecode-e.md) indicates the new state. |
+
+**Examples**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function testOnStateChange() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the on method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.on('stateChange', (state: media.AVScreenCaptureStateCode) => {
+        console.info('avScreenCaptureRecorder stateChange to ' + state);
+    });
+  }
+}
+```
+
+## on('error')
+
+```TypeScript
+on(type: 'error', callback: ErrorCallback): void
+```
+
+Subscribes to AVScreenCaptureRecorder errors. You can handle the errors based on the application logic. An application can subscribe to only one AVScreenCaptureRecorder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-on(type: 'error', callback: ErrorCallback): void--><!--Device-AVScreenCaptureRecorder-on(type: 'error', callback: ErrorCallback): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'error' | Yes | Event type, which is **'error'** in this case. |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback invoked when the event is triggered. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by ErrorCallback. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by ErrorCallback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testOnError() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the on method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.on('error', (err: BusinessError) => {
+      console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## pauseRecording
+
+```TypeScript
+pauseRecording(): Promise<void>
+```
+
+Pause screen capture. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-pauseRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-pauseRecording(): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testPauseRecording() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the pauseRecording method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.pauseRecording().then(() => {
+      console.info('Succeeded in pausing avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to pause avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## presentPicker
+
+```TypeScript
+presentPicker(): Promise<void>
+```
+
+Displays the Picker once more after the screen capture starts, allowing for dynamic updates to the recording source, such as changing the window or screen being recorded. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> - The ongoing capture process remains uninterrupted while updating the recording source.
+> 
+> - Following the dynamic update of the recording source through the Picker, the capture proceeds with the newly selected source.
+
+**Since:** 22
+
+<!--Device-AVScreenCaptureRecorder-presentPicker(): Promise<void>--><!--Device-AVScreenCaptureRecorder-presentPicker(): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testPresentPicker() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the presentPicker method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.presentPicker().then(() => {
+      console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## release
+
+```TypeScript
+release(): Promise<void>
+```
+
+Releases this AVScreenCaptureRecorder instance. This API uses a promise to return the result.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-release(): Promise<void>--><!--Device-AVScreenCaptureRecorder-release(): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testRelease() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the release method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.release().then(() => {
+      console.info('Succeeded in releasing avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## resumeRecording
+
+```TypeScript
+resumeRecording(): Promise<void>
+```
+
+Resume screen capture. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-resumeRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-resumeRecording(): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testResumeRecording() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the resumeRecording method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.resumeRecording().then(() => {
+      console.info('Succeeded in resuming avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to resume avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## setContentAutoRotation
+
+```TypeScript
+setContentAutoRotation(enable: boolean): Promise<void>
+```
+
+Sets whether the captured screen content automatically rotates to keep the image upright.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-setContentAutoRotation(enable: boolean): Promise<void>--><!--Device-AVScreenCaptureRecorder-setContentAutoRotation(enable: boolean): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enable | boolean | Yes | Indicates whether to enable automatic rotation. The default value is **false**. A value of **true** indicates automatic rotation and the image content in the output frame remains upright. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSetContentAutoRotation() {
+  // Create the screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the setContentAutoRotation method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
+      console.info('Succeeded in enabling setContentAutoRotation.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## setMicEnabled
+
+```TypeScript
+setMicEnabled(enable: boolean): Promise<void>
+```
+
+Enables or disables the microphone. This API uses a promise to return the result.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-setMicEnabled(enable: boolean): Promise<void>--><!--Device-AVScreenCaptureRecorder-setMicEnabled(enable: boolean): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enable | boolean | Yes | Whether to enable the microphone. **true** to enable, **false** otherwise. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSetMicEnable() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the setMicEnabled method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setMicEnabled(true).then(() => {
+      console.info('Succeeded in setting microphone enabled.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set microphone enabled. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## setPickerMode
+
+```TypeScript
+setPickerMode(pickerMode: PickerMode): Promise<void>
+```
+
+Sets the display mode of the picker. The setting takes effect the next time the picker is displayed. This API uses a promise to return the result.
+
+**Since:** 22
+
+<!--Device-AVScreenCaptureRecorder-setPickerMode(pickerMode: PickerMode): Promise<void>--><!--Device-AVScreenCaptureRecorder-setPickerMode(pickerMode: PickerMode): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| pickerMode | [PickerMode](arkts-media-media-pickermode-e.md) | Yes | Picker mode.<br>It defines the content type displayed in the picker. The options are as follows:<br>- **SCREEN_ONLY**: Displays only a list of screens.<br>- **WINDOW_ONLY**: Displays only a list of windows.<br>- **SCREEN_AND_WINDOW**: Displays both screens and windows. It is the default value. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSetPickerMode() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the setPickerMode method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
+      console.info('Succeeded in setting picker mode.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set picker mode. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## skipPrivacyMode
+
+```TypeScript
+skipPrivacyMode(windowIDs: Array<number>): Promise<void>
+```
+
+During screen capture, the application can exempt its privacy windows from security purposes. This API uses a promise to return the result.
+
+For example, if a user enters a password in this application during screen capture, the application will not display a black screen.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-skipPrivacyMode(windowIDs: Array<int>): Promise<void>--><!--Device-AVScreenCaptureRecorder-skipPrivacyMode(windowIDs: Array<int>): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| windowIDs | Array&lt;number&gt; | Yes | IDs of windows that require privacy exemption, including the main window IDs and subwindow IDs. For details about how to obtain window properties, see [getWindowProperties](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSkipPrivacyMode() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the skipPrivacyMode method.
+  if (avScreenCaptureRecorder) {
+    let windowIDs = [];
+    avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
+      console.info('Succeeded in skipping privacy mode');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## startRecording
+
+```TypeScript
+startRecording(): Promise<void>
+```
+
+Starts screen recording. Before using this API, you must call [init](#init). This API uses a promise to return the result.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-startRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-startRecording(): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testStartRecording() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the startRecording method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.startRecording().then(() => {
+      console.info('Succeeded in starting avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## stopRecording
+
+```TypeScript
+stopRecording(): Promise<void>
+```
+
+Stops screen recording. This API uses a promise to return the result.
+
+**Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-stopRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-stopRecording(): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testStopRecording() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Call the stopRecording method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.stopRecording().then(() => {
+      console.info('Succeeded in stopping avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```

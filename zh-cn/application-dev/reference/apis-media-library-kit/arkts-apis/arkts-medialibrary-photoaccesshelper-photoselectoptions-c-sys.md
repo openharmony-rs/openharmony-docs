@@ -46,7 +46,7 @@ userId?: number
 
 指定访问空间的Id。默认值为-1。
 
-当需要作为[PhotoViewPicker.select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select)的选择参数时，请申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+当需要作为[PhotoViewPicker.select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select1)的选择参数时，请申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
 **类型：** number
 

@@ -14,6 +14,22 @@ want实体的常数。用于表示目标Ability额外的类别信息。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
+## ENTITY_BROWSABLE
+
+```TypeScript
+ENTITY_BROWSABLE = 'entity.system.browsable'
+```
+
+指示浏览器类别。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+<!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'--><!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 ## ENTITY_DEFAULT
 
 ```TypeScript
@@ -46,38 +62,6 @@ ENTITY_HOME = 'entity.system.home'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ENTITY_VOICE
-
-```TypeScript
-ENTITY_VOICE = 'entity.system.voice'
-```
-
-表示语音交互实体。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-<!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'--><!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ENTITY_BROWSABLE
-
-```TypeScript
-ENTITY_BROWSABLE = 'entity.system.browsable'
-```
-
-指示浏览器类别。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-<!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'--><!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
 ## ENTITY_VIDEO
 
 ```TypeScript
@@ -91,5 +75,21 @@ ENTITY_VIDEO = 'entity.system.video'
 **废弃版本：** 9
 
 <!--Device-Entity-ENTITY_VIDEO = 'entity.system.video'--><!--Device-Entity-ENTITY_VIDEO = 'entity.system.video'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ENTITY_VOICE
+
+```TypeScript
+ENTITY_VOICE = 'entity.system.voice'
+```
+
+表示语音交互实体。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+<!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'--><!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase

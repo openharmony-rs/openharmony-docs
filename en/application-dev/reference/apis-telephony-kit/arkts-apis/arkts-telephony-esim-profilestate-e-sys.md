@@ -14,22 +14,6 @@ Enumerates the profile states.
 
 **System API:** This is a system API.
 
-## PROFILE_STATE_UNSPECIFIED
-
-```TypeScript
-PROFILE_STATE_UNSPECIFIED = -1
-```
-
-Profile status unspecified.
-
-**Since:** 18
-
-<!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1--><!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## PROFILE_STATE_DISABLED
 
 ```TypeScript
@@ -57,6 +41,22 @@ Profile enabled.
 **Since:** 18
 
 <!--Device-ProfileState-PROFILE_STATE_ENABLED = 1--><!--Device-ProfileState-PROFILE_STATE_ENABLED = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## PROFILE_STATE_UNSPECIFIED
+
+```TypeScript
+PROFILE_STATE_UNSPECIFIED = -1
+```
+
+Profile status unspecified.
+
+**Since:** 18
+
+<!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1--><!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

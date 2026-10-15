@@ -18,17 +18,17 @@ enum PathDashStyle
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## TRANSLATE
+## MORPH
 
 ```TypeScript
-TRANSLATE = 0
+MORPH = 2
 ```
 
-Translates only, not rotating with the path.
+Rotates with the path and stretches or compresses at turns to enhance smoothness.
 
 **起始版本：** 18
 
-<!--Device-PathDashStyle-TRANSLATE = 0--><!--Device-PathDashStyle-TRANSLATE = 0-End-->
+<!--Device-PathDashStyle-MORPH = 2--><!--Device-PathDashStyle-MORPH = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -46,16 +46,16 @@ Rotates with the path.
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## MORPH
+## TRANSLATE
 
 ```TypeScript
-MORPH = 2
+TRANSLATE = 0
 ```
 
-Rotates with the path and stretches or compresses at turns to enhance smoothness.
+Translates only, not rotating with the path.
 
 **起始版本：** 18
 
-<!--Device-PathDashStyle-MORPH = 2--><!--Device-PathDashStyle-MORPH = 2-End-->
+<!--Device-PathDashStyle-TRANSLATE = 0--><!--Device-PathDashStyle-TRANSLATE = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

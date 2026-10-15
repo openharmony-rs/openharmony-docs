@@ -4,7 +4,7 @@
 interface PasteData
 ```
 
-Implements a **PasteData** object. PasteData contains one or more data records ([PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)) and property description objects ([PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)). Before calling any API in **PasteData**, you must use ** [createData()](arkts-basicservices-pasteboard-createdata-f.md)** or ** [getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata)** to create a **PasteData** object.
+Implements a **PasteData** object. PasteData contains one or more data records ([PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)) and property description objects ([PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)). Before calling any API in **PasteData**, you must use ** [createData()](arkts-basicservices-pasteboard-createdata-f.md#createdata1)** or ** [getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata1)** to create a **PasteData** object.
 
 **Since:** 6
 
@@ -18,6 +18,8 @@ Implements a **PasteData** object. PasteData contains one or more data records (
 import { pasteboard } from '@kit.BasicServicesKit';
 ```
 
+<a id="addrecord1"></a>
+
 ## addRecord
 
 ```TypeScript
@@ -28,7 +30,7 @@ Adds a data record to the PasteData, and adds its type to **mimeTypes** in [Past
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-addRecord(record: PasteDataRecord): void--><!--Device-PasteData-addRecord(record: PasteDataRecord): void-End-->
 
@@ -53,7 +55,7 @@ pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
 
-<a id="addrecord-1"></a>
+<a id="addrecord2"></a>
 
 ## addRecord
 
@@ -65,7 +67,7 @@ Adds a data record to the PasteData, and adds its type to **mimeTypes** in [Past
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-addRecord(mimeType: string, value: ValueType): void--><!--Device-PasteData-addRecord(mimeType: string, value: ValueType): void-End-->
 
@@ -82,7 +84,7 @@ Adds a data record to the PasteData, and adds its type to **mimeTypes** in [Past
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 | [12900002](../errorcode-pasteboard.md#12900002-maximum-number-of-records-reached) | The number of records exceeds the upper limit.<br>**Applicable version:** 9 |
 
 **Examples**
@@ -104,7 +106,7 @@ Obtains types of [PasteDataProperty](arkts-basicservices-pasteboard-pastedatapro
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getMimeTypes(): Array<string>--><!--Device-PasteData-getMimeTypes(): Array<string>-End-->
 
@@ -133,7 +135,7 @@ Obtains the HTML content of the primary record.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getPrimaryHtml(): string--><!--Device-PasteData-getPrimaryHtml(): string-End-->
 
@@ -168,7 +170,7 @@ Obtains the data type of the primary record in the pasteboard.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getPrimaryMimeType(): string--><!--Device-PasteData-getPrimaryMimeType(): string-End-->
 
@@ -197,7 +199,7 @@ Obtains the PixelMap of the primary record.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getPrimaryPixelMap(): image.PixelMap--><!--Device-PasteData-getPrimaryPixelMap(): image.PixelMap-End-->
 
@@ -241,7 +243,7 @@ Obtains the plain text of the primary record.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getPrimaryText(): string--><!--Device-PasteData-getPrimaryText(): string-End-->
 
@@ -280,7 +282,7 @@ Obtains the URI of the primary record.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getPrimaryUri(): string--><!--Device-PasteData-getPrimaryUri(): string-End-->
 
@@ -315,7 +317,7 @@ Obtains the **Want** object of the primary record.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getPrimaryWant(): Want--><!--Device-PasteData-getPrimaryWant(): Want-End-->
 
@@ -351,7 +353,7 @@ Obtains the property of the PasteData.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getProperty(): PasteDataProperty--><!--Device-PasteData-getProperty(): PasteDataProperty-End-->
 
@@ -380,7 +382,7 @@ Obtains the record with a specific index in PasteData.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getRecord(index: int): PasteDataRecord--><!--Device-PasteData-getRecord(index: int): PasteDataRecord-End-->
 
@@ -402,7 +404,7 @@ Obtains the record with a specific index in PasteData.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-index-out-of-range) | The index is out of range. |
 
 **Examples**
@@ -422,7 +424,7 @@ Obtains the number of records in a PasteData object.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getRecordCount(): int--><!--Device-PasteData-getRecordCount(): int-End-->
 
@@ -451,7 +453,7 @@ Obtains the custom tag from the PasteData. If no custom tag is set, an empty str
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-getTag(): string--><!--Device-PasteData-getTag(): string-End-->
 
@@ -480,7 +482,7 @@ Checks whether the PasteData contains data of the specified MIME type.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-hasType(mimeType: string): boolean--><!--Device-PasteData-hasType(mimeType: string): boolean-End-->
 
@@ -502,7 +504,7 @@ Checks whether the PasteData contains data of the specified MIME type.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -583,7 +585,7 @@ Removes the record with a specific index in PasteData.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-removeRecord(index: int): void--><!--Device-PasteData-removeRecord(index: int): void-End-->
 
@@ -599,7 +601,7 @@ Removes the record with a specific index in PasteData.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-index-out-of-range) | The index is out of range. |
 
 **Examples**
@@ -619,7 +621,7 @@ Replaces the record with a specific index in PasteData.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-replaceRecord(index: int, record: PasteDataRecord): void--><!--Device-PasteData-replaceRecord(index: int, record: PasteDataRecord): void-End-->
 
@@ -636,7 +638,7 @@ Replaces the record with a specific index in PasteData.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-index-out-of-range) | The index is out of range. |
 
 **Examples**
@@ -657,7 +659,7 @@ Sets a [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteData-setProperty(property: PasteDataProperty): void--><!--Device-PasteData-setProperty(property: PasteDataProperty): void-End-->
 
@@ -673,7 +675,7 @@ Sets a [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -737,7 +739,7 @@ Adds an HTML record to the PasteData, and adds **MIMETYPE_TEXT_HTML** to **mimeT
 
 **Deprecated since:** 9
 
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**Substitutes:** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addHtmlRecord(htmlText: string): void--><!--Device-PasteData-addHtmlRecord(htmlText: string): void-End-->
 
@@ -769,7 +771,7 @@ Adds a plain text record to the PasteData, and adds **MIMETYPE_TEXT_PLAIN** to *
 
 **Deprecated since:** 9
 
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**Substitutes:** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addTextRecord(text: string): void--><!--Device-PasteData-addTextRecord(text: string): void-End-->
 
@@ -800,7 +802,7 @@ Adds a URI record to the PasteData, and adds **MIMETYPE_TEXT_URI** to **mimeType
 
 **Deprecated since:** 9
 
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**Substitutes:** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addUriRecord(uri: string): void--><!--Device-PasteData-addUriRecord(uri: string): void-End-->
 
@@ -831,7 +833,7 @@ Adds a Want record to the PasteData, and adds **MIMETYPE_TEXT_WANT** to **mimeTy
 
 **Deprecated since:** 9
 
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**Substitutes:** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addWantRecord(want: Want): void--><!--Device-PasteData-addWantRecord(want: Want): void-End-->
 
@@ -890,7 +892,7 @@ Obtains the record with a specific index in PasteData.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -933,7 +935,7 @@ Checks whether the PasteData contains data of the specified type.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -976,7 +978,7 @@ Removes the record with a specific index in PasteData.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 

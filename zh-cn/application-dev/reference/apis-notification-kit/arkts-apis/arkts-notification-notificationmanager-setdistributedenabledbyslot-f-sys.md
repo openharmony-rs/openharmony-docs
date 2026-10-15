@@ -44,8 +44,9 @@ function setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(
     hilog.error(0x0000, 'testTag', '%{public}s', `setDistributedEnabledBySlot failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

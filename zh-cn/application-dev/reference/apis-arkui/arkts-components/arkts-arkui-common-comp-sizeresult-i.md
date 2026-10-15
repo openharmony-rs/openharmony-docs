@@ -21,7 +21,7 @@ declare interface SizeResult
 height: number
 ```
 
-测量后的高。单位为： vp。
+测量后的高。单位为： vp。取值范围：[0, +∞)。
 
 **类型：** number
 
@@ -41,7 +41,7 @@ height: number
 width: number
 ```
 
-测量后的宽。单位为： vp。
+测量后的宽。单位为： vp。取值范围：[0, +∞)。
 
 **类型：** number
 

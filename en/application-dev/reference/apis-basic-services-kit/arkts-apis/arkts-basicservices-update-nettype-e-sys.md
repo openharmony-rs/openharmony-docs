@@ -30,6 +30,22 @@ Data network.
 
 **System API:** This is a system API.
 
+## CELLULAR_AND_WIFI
+
+```TypeScript
+CELLULAR_AND_WIFI = 7
+```
+
+Data network and Wi-Fi.
+
+**Since:** 9
+
+<!--Device-NetType-CELLULAR_AND_WIFI = 7--><!--Device-NetType-CELLULAR_AND_WIFI = 7-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
 ## METERED_WIFI
 
 ```TypeScript
@@ -73,22 +89,6 @@ Wi-Fi.
 **Since:** 9
 
 <!--Device-NetType-WIFI = 6--><!--Device-NetType-WIFI = 6-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## CELLULAR_AND_WIFI
-
-```TypeScript
-CELLULAR_AND_WIFI = 7
-```
-
-Data network and Wi-Fi.
-
-**Since:** 9
-
-<!--Device-NetType-CELLULAR_AND_WIFI = 7--><!--Device-NetType-CELLULAR_AND_WIFI = 7-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

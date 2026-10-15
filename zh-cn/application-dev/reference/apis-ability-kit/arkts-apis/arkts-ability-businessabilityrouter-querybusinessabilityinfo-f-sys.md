@@ -6,6 +6,8 @@
 import { businessAbilityRouter } from '@kit.AbilityKit';
 ```
 
+<a id="querybusinessabilityinfo1"></a>
+
 ## queryBusinessAbilityInfo
 
 ```TypeScript
@@ -38,10 +40,11 @@ function queryBusinessAbilityInfo(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | non-system app called system api. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,8 +67,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="querybusinessabilityinfo-1"></a>
+
+<a id="querybusinessabilityinfo2"></a>
 
 ## queryBusinessAbilityInfo
 
@@ -101,10 +106,11 @@ function queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise<Array<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | non-system app called system api. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +131,5 @@ try {
   console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```
+
+<!--DelEnd-->

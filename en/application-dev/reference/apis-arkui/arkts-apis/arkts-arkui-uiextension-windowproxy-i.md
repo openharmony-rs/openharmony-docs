@@ -18,6 +18,8 @@ The proxy of the UIExtension window.
 import { uiExtension } from '@kit.ArkUI';
 ```
 
+<a id="createsubwindowwithoptions1"></a>
+
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -30,7 +32,7 @@ Creates a subwindow for this window proxy. This API uses a promise to return the
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProxy-createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions): Promise<window.Window>--><!--Device-WindowProxy-createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions): Promise<window.Window>-End-->
 
@@ -53,10 +55,10 @@ Creates a subwindow for this window proxy. This API uses a promise to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
-| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes:         1. The window is not created or destroyed.         2. Internal task error.         3. The subWindow has been created and cannot be created again.         4. It is not allowed to create non-secure window when secure extension exists.         5. Subwindow level exceeds the maximum limit. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause:         1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Examples**
 
@@ -105,7 +107,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-<a id="createsubwindowwithoptions-1"></a>
+<a id="createsubwindowwithoptions2"></a>
 
 ## createSubWindowWithOptions
 
@@ -143,8 +145,8 @@ Create subwindow.
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
-| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes:         1. The window is not created or destroyed.         2. Internal task error.         3. The subWindow has been created and cannot be created again.         4. It is not allowed to create non-secure window when secure extension exists.         5. Subwindow level exceeds the maximum limit. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause:         1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Examples**
 
@@ -205,7 +207,7 @@ Obtains the area where this window cannot be displayed, for example, the system 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProxy-getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea--><!--Device-WindowProxy-getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea-End-->
 
@@ -227,7 +229,7 @@ Obtains the area where this window cannot be displayed, for example, the system 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 
 **Examples**
 
@@ -258,7 +260,7 @@ Sets the events that the component (**EmbeddedComponent** or **UIExtensionCompon
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-WindowProxy-occupyEvents(eventFlags: int): Promise<void>--><!--Device-WindowProxy-occupyEvents(eventFlags: int): Promise<void>-End-->
 
@@ -280,8 +282,8 @@ Sets the events that the component (**EmbeddedComponent** or **UIExtensionCompon
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
 **Examples**
@@ -340,8 +342,8 @@ Unsubscribes from events of system avoidance area changes.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes:         1. The listening type is not supported.         2. The listening type is not registered.         3. The listener has not been registered.         4. The UIExtension window proxy is abnormal. |
 
 **Examples**
 
@@ -387,8 +389,8 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes:         1. The listening type is not supported.         2. The listening type is not registered.         3. The listener has not been registered.         4. The UIExtension window proxy is abnormal. |
 
 **Examples**
 
@@ -434,9 +436,9 @@ Unsubscribes from position and size change events of the component (**EmbeddedCo
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes:         1. The listening type is not supported.         2. The listening type is not registered.         3. The listener has not been registered.         4. The UIExtension window proxy is abnormal. |
 
 **Examples**
 
@@ -482,8 +484,8 @@ Subscribes to events of system avoidance area changes.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes:         1. The listening type is not supported.         2. The listener has been registered.         3. The UIExtension window proxy is abnormal. |
 
 **Examples**
 
@@ -532,8 +534,8 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes:         1. The listening type is not supported.         2. The listener has been registered.         3. The UIExtension window proxy is abnormal. |
 
 **Examples**
 
@@ -583,9 +585,9 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | Abnormal state. Possible causes:         1. The listening type is not supported.         2. The listener has been registered.         3. The UIExtension window proxy is abnormal. |
 
 **Examples**
 
@@ -621,7 +623,7 @@ Note: Due to architecture restrictions, avoid obtaining the value in [onSessionC
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-WindowProxy-properties: WindowProxyProperties--><!--Device-WindowProxy-properties: WindowProxyProperties-End-->
 

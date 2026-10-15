@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="exportkey1"></a>
+
 ## exportKey
 
 ```TypeScript
@@ -18,7 +20,7 @@ Exports a key. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
+**Substitutes:** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem1)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
 
 <!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -47,7 +49,7 @@ huks.exportKey(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
-<a id="exportkey-1"></a>
+<a id="exportkey2"></a>
 
 ## exportKey
 
@@ -61,7 +63,7 @@ Exports a key. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem-1)(keyAlias: string, options: HuksOptions)
+**Substitutes:** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 

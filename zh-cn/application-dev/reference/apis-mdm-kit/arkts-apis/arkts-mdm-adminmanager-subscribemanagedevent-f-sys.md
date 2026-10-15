@@ -6,6 +6,8 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="subscribemanagedevent1"></a>
+
 ## subscribeManagedEvent
 
 ```TypeScript
@@ -46,8 +48,9 @@ function subscribeManagedEvent(admin: Want, managedEvents: Array<ManagedEvent>, 
 | [9200008](../errorcode-enterpriseDeviceManager.md#9200008-系统订阅事件无效) | The specified system event is invalid. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,8 +73,10 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="subscribemanagedevent-1"></a>
+
+<a id="subscribemanagedevent2"></a>
 
 ## subscribeManagedEvent
 
@@ -118,8 +123,9 @@ function subscribeManagedEvent(admin: Want, managedEvents: Array<ManagedEvent>):
 | [9200008](../errorcode-enterpriseDeviceManager.md#9200008-系统订阅事件无效) | The specified system event is invalid. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -139,3 +145,5 @@ adminManager.subscribeManagedEvent(wantTemp, events).then(() => {
   console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<!--DelEnd-->

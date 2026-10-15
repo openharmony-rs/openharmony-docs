@@ -4,7 +4,7 @@
 export interface CallStateInfo
 ```
 
-通话状态相关信息。
+运营商通话状态及号码
 
 **起始版本：** 11
 
@@ -24,7 +24,7 @@ import { observer } from '@kit.TelephonyKit';
 number: string
 ```
 
-电话号码。
+运营商通话电话号码
 
 **类型：** string
 
@@ -40,7 +40,7 @@ number: string
 state: CallState
 ```
 
-通话类型。
+运营商通话状态
 
 **类型：** [CallState](arkts-telephony-observer-callstate-t.md)
 

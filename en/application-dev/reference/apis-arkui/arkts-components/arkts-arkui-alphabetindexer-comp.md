@@ -1,8 +1,15 @@
 # AlphabetIndexer
 
-The **AlphabetIndexer** component can create a logically indexed array of items in a container for instant location.
+The **AlphabetIndexer** component can be used with container components to quickly locate the display area of the container based on logical structure. It is suitable for scenarios requiring quick content location, such as contacts, city lists, and category lists.
 
 > **NOTE:** 
+> 
+> - Primary indexes: letter indexes on the index bar, such as '#', 'A', 'B', 'C', etc.
+> 
+> - Secondary indexes: specific content list items displayed in the pop-up window, returned through the
+> **onRequestPopupData** callback.
+> 
+> - Since API version 12, haptic feedback is enabled by default. Before using it, configure the vibration permission as described in [enableHapticFeedback](arkts-arkui-alphabetindexer-comp-attribute.md#enablehapticfeedback).
 
 ## Child Components
 

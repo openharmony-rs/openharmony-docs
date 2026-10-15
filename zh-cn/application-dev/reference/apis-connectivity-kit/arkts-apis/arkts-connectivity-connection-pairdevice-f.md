@@ -6,6 +6,8 @@
 import { connection } from '@kit.ConnectivityKit';
 ```
 
+<a id="pairdevice1"></a>
+
 ## pairDevice
 
 ```TypeScript
@@ -22,7 +24,7 @@ function pairDevice(deviceId: string, callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-connection-function pairDevice(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-connection-function pairDevice(deviceId: string, callback: AsyncCallback<void>): void-End-->
 
@@ -40,7 +42,7 @@ function pairDevice(deviceId: string, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -61,7 +63,7 @@ try {
 ```
 
 
-<a id="pairdevice-1"></a>
+<a id="pairdevice2"></a>
 
 ## pairDevice
 
@@ -79,7 +81,7 @@ function pairDevice(deviceId: string): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-connection-function pairDevice(deviceId: string): Promise<void>--><!--Device-connection-function pairDevice(deviceId: string): Promise<void>-End-->
 
@@ -102,7 +104,7 @@ function pairDevice(deviceId: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -126,7 +128,7 @@ try {
 ```
 
 
-<a id="pairdevice-2"></a>
+<a id="pairdevice3"></a>
 
 ## pairDevice
 

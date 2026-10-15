@@ -6,6 +6,8 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
+<a id="stopusingpermission1"></a>
+
 ## stopUsingPermission
 
 ```TypeScript
@@ -45,7 +47,7 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system app. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
@@ -54,6 +56,7 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-out-of-memory) | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,8 +72,10 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then((
 });
 ```
 
+<!--DelEnd-->
 
-<a id="stopusingpermission-1"></a>
+
+<a id="stopusingpermission2"></a>
 
 ## stopUsingPermission
 
@@ -106,7 +111,7 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system app. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
@@ -115,6 +120,7 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-out-of-memory) | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -132,8 +138,10 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="stopusingpermission-2"></a>
+
+<a id="stopusingpermission3"></a>
 
 ## stopUsingPermission
 
@@ -189,6 +197,7 @@ The PID must be the same as the PID passed in [startUsingPermission](arkts-abili
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-out-of-memory) | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -221,8 +230,10 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="stopusingpermission-3"></a>
+
+<a id="stopusingpermission4"></a>
 
 ## stopUsingPermission
 
@@ -268,7 +279,7 @@ The pid must be the same as the pid passed into [startUsingPermission](arkts-abi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system app. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
@@ -277,6 +288,7 @@ The pid must be the same as the pid passed into [startUsingPermission](arkts-abi
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-out-of-memory) | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -301,3 +313,5 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).t
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

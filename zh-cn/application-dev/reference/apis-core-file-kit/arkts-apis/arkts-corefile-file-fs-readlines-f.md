@@ -52,7 +52,7 @@ declare function readLines(filePath: string, options?: Options): Promise<ReaderI
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="readlines-1"></a>
+<a id="readlines2"></a>
 
 ## readLines
 
@@ -93,7 +93,7 @@ declare function readLines(filePath: string, callback: AsyncCallback<ReaderItera
 | 13900042 | Unknown error |
 
 
-<a id="readlines-2"></a>
+<a id="readlines3"></a>
 
 ## readLines
 

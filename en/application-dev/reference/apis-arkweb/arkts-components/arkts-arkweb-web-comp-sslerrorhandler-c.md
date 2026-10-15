@@ -28,6 +28,8 @@ Constructs a **SslErrorHandler** object.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+<a id="handlecancel1"></a>
+
 ## handleCancel
 
 ```TypeScript
@@ -44,7 +46,7 @@ Notifies the Web component to cancel this request and stops the current SSL cert
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-<a id="handlecancel-1"></a>
+<a id="handlecancel2"></a>
 
 ## handleCancel
 

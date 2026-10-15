@@ -12,7 +12,7 @@ WebController is suitable for scenarios where active control of the embedded Web
 
 **Deprecated since:** 9
 
-**Substitutes:** WebviewController
+**Substitutes:** [WebviewController](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md)
 
 <!--Device-unnamed-declare class WebController--><!--Device-unnamed-declare class WebController-End-->
 
@@ -30,7 +30,7 @@ Checks whether going to the previous page can be performed on the current page.
 
 **Deprecated since:** 9
 
-**Substitutes:** accessBackward
+**Substitutes:** [accessBackward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessbackward)
 
 <!--Device-WebController-accessBackward(): boolean--><!--Device-WebController-accessBackward(): boolean-End-->
 
@@ -76,7 +76,7 @@ Checks whether going to the next page can be performed on the current page.
 
 **Deprecated since:** 9
 
-**Substitutes:** accessForward
+**Substitutes:** [accessForward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessforward)
 
 <!--Device-WebController-accessForward(): boolean--><!--Device-WebController-accessForward(): boolean-End-->
 
@@ -122,7 +122,7 @@ Checks whether the current page can move forward or backward by the given step.
 
 **Deprecated since:** 9
 
-**Substitutes:** accessStep
+**Substitutes:** [accessStep](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessstep)
 
 <!--Device-WebController-accessStep(step: number): boolean--><!--Device-WebController-accessStep(step: number): boolean-End-->
 
@@ -169,13 +169,13 @@ struct WebComponent {
 backward()
 ```
 
-Goes backward by one page in the history stack. You are advised to call [accessBackward&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessbackward) to check whether the current page can go backward before calling **backward**.
+Goes backward by one page in the history stack. You are advised to call [accessBackward<sup>9+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessbackward) to check whether the current page can go backward before calling **backward**.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** backward
+**Substitutes:** [backward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#backward)
 
 <!--Device-WebController-backward()--><!--Device-WebController-backward()-End-->
 
@@ -214,7 +214,7 @@ Clears the browsing history.
 
 **Deprecated since:** 9
 
-**Substitutes:** clearHistory
+**Substitutes:** [clearHistory](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#clearhistory)
 
 <!--Device-WebController-clearHistory(): void--><!--Device-WebController-clearHistory(): void-End-->
 
@@ -234,7 +234,7 @@ Constructs a **WebController** object.
 
 **Deprecated since:** 9
 
-**Substitutes:** constructor
+**Substitutes:** [constructor](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#constructor)
 
 <!--Device-WebController-constructor()--><!--Device-WebController-constructor()-End-->
 
@@ -252,7 +252,7 @@ Deletes a specific application JavaScript object that is registered with the win
 
 **Deprecated since:** 9
 
-**Substitutes:** deleteJavaScriptRegister
+**Substitutes:** [deleteJavaScriptRegister](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#deletejavascriptregister)
 
 <!--Device-WebController-deleteJavaScriptRegister(name: string)--><!--Device-WebController-deleteJavaScriptRegister(name: string)-End-->
 
@@ -292,13 +292,13 @@ struct WebComponent {
 forward()
 ```
 
-Goes forward by one page in the history stack. You are advised to call [accessForward&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessforward) to check whether the current page can go forward before calling **forward**.
+Goes forward by one page in the history stack. You are advised to call [accessForward<sup>9+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessforward) to check whether the current page can go forward before calling **forward**.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** forward
+**Substitutes:** [forward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#forward)
 
 <!--Device-WebController-forward()--><!--Device-WebController-forward()-End-->
 
@@ -432,7 +432,7 @@ If **baseUrl** is set to an HTTP or HTTPS URL, the encoded data string will be p
 
 **Deprecated since:** 9
 
-**Substitutes:** loadData
+**Substitutes:** [loadData](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loaddata)
 
 <!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })--><!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })-End-->
 
@@ -485,7 +485,7 @@ The object injected through **registerJavaScriptProxy** is still valid on a new 
 
 **Deprecated since:** 9
 
-**Substitutes:** loadUrl
+**Substitutes:** [loadUrl](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)
 
 <!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })--><!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })-End-->
 
@@ -530,7 +530,7 @@ Called when the **Web** component enters the active state.
 
 **Deprecated since:** 9
 
-**Substitutes:** onActive
+**Substitutes:** [onActive](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#onactive)
 
 <!--Device-WebController-onActive(): void--><!--Device-WebController-onActive(): void-End-->
 
@@ -569,7 +569,7 @@ Called when the **Web** component enters the inactive state.
 
 **Deprecated since:** 9
 
-**Substitutes:** onInactive
+**Substitutes:** [onInactive](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#oninactive)
 
 <!--Device-WebController-onInactive(): void--><!--Device-WebController-onInactive(): void-End-->
 
@@ -608,7 +608,7 @@ Called when the **Web** component refreshes the web page.
 
 **Deprecated since:** 9
 
-**Substitutes:** refresh
+**Substitutes:** [refresh](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh)
 
 <!--Device-WebController-refresh()--><!--Device-WebController-refresh()-End-->
 
@@ -647,7 +647,7 @@ Injects a JavaScript object into the window object and calls the methods of the 
 
 **Deprecated since:** 9
 
-**Substitutes:** registerJavaScriptProxy
+**Substitutes:** [registerJavaScriptProxy](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#registerjavascriptproxy)
 
 <!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })--><!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })-End-->
 
@@ -732,7 +732,7 @@ Makes the current web page obtain focus.
 
 **Deprecated since:** 9
 
-**Substitutes:** requestFocus
+**Substitutes:** [requestFocus](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#requestfocus)
 
 <!--Device-WebController-requestFocus()--><!--Device-WebController-requestFocus()-End-->
 
@@ -771,7 +771,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 
 **Deprecated since:** 9
 
-**Substitutes:** runJavaScript
+**Substitutes:** [runJavaScript](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#runjavascript)
 
 <!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })--><!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })-End-->
 
@@ -846,7 +846,7 @@ Stops page loading.
 
 **Deprecated since:** 9
 
-**Substitutes:** stop
+**Substitutes:** [stop](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#stop)
 
 <!--Device-WebController-stop()--><!--Device-WebController-stop()-End-->
 

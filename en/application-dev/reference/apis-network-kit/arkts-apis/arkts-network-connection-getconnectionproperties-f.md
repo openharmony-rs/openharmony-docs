@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="getconnectionproperties1"></a>
+
 ## getConnectionProperties
 
 ```TypeScript
@@ -64,7 +66,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 ```
 
 
-<a id="getconnectionproperties-1"></a>
+<a id="getconnectionproperties2"></a>
 
 ## getConnectionProperties
 

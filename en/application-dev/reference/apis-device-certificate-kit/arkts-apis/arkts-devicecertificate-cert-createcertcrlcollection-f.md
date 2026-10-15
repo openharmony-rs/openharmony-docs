@@ -16,7 +16,7 @@ Creates an object for a collection of X.509 certificates and CRLs.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-cert-function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>): CertCRLCollection--><!--Device-cert-function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>): CertCRLCollection-End-->
 
@@ -39,7 +39,7 @@ Creates an object for a collection of X.509 certificates and CRLs.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 
 **Examples**

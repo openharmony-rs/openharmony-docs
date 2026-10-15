@@ -6,6 +6,8 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="setdelegatedpolicies1"></a>
+
 ## setDelegatedPolicies
 
 ```TypeScript
@@ -40,7 +42,7 @@ function setDelegatedPolicies(admin: Want, bundleName: string, policies: Array<s
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200009](../errorcode-enterpriseDeviceManager.md#9200009-授予应用权限失败) | Failed to grant the permission to the application. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

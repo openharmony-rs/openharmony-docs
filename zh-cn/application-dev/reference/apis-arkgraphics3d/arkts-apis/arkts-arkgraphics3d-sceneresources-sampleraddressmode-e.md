@@ -6,25 +6,23 @@ export enum SamplerAddressMode
 
 采样器寻址模式枚举，用于控制纹理坐标超出[0, 1]范围时的处理方式。
 
-@enum { int }
-
 **起始版本：** 20
 
 <!--Device-unnamed-export enum SamplerAddressMode--><!--Device-unnamed-export enum SamplerAddressMode-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## REPEAT
+## CLAMP_TO_EDGE
 
 ```TypeScript
-REPEAT = 0
+CLAMP_TO_EDGE = 2
 ```
 
-纹理坐标超出范围时，纹理会重复平铺。
+纹理坐标超出范围时，贴图边缘像素会被拉伸延伸。
 
 **起始版本：** 20
 
-<!--Device-SamplerAddressMode-REPEAT = 0--><!--Device-SamplerAddressMode-REPEAT = 0-End-->
+<!--Device-SamplerAddressMode-CLAMP_TO_EDGE = 2--><!--Device-SamplerAddressMode-CLAMP_TO_EDGE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -42,16 +40,16 @@ MIRRORED_REPEAT = 1
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## CLAMP_TO_EDGE
+## REPEAT
 
 ```TypeScript
-CLAMP_TO_EDGE = 2
+REPEAT = 0
 ```
 
-纹理坐标超出范围时，贴图边缘像素会被拉伸延伸。
+纹理坐标超出范围时，纹理会重复平铺。
 
 **起始版本：** 20
 
-<!--Device-SamplerAddressMode-CLAMP_TO_EDGE = 2--><!--Device-SamplerAddressMode-CLAMP_TO_EDGE = 2-End-->
+<!--Device-SamplerAddressMode-REPEAT = 0--><!--Device-SamplerAddressMode-REPEAT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D

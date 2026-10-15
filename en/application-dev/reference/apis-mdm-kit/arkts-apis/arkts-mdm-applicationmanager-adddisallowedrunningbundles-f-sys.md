@@ -6,6 +6,8 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="adddisallowedrunningbundles1"></a>
+
 ## addDisallowedRunningBundles
 
 ```TypeScript
@@ -46,9 +48,10 @@ Adds the applications that are not allowed to run under the current user. This A
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9200010](../errorcode-enterpriseDeviceManager.md#9200010-policy-conflict) | A conflict policy has been configured.<br>**Applicable version:** 21 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,8 +75,10 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="adddisallowedrunningbundles-1"></a>
+
+<a id="adddisallowedrunningbundles2"></a>
 
 ## addDisallowedRunningBundles
 
@@ -116,9 +121,10 @@ Adds the applications that are not allowed to run under a specified user (specif
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9200010](../errorcode-enterpriseDeviceManager.md#9200010-policy-conflict) | A conflict policy has been configured.<br>**Applicable version:** 21 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -142,8 +148,10 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="adddisallowedrunningbundles-2"></a>
+
+<a id="adddisallowedrunningbundles3"></a>
 
 ## addDisallowedRunningBundles
 
@@ -191,9 +199,10 @@ Adds the applications that are not allowed to run by the current or specified us
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9200010](../errorcode-enterpriseDeviceManager.md#9200010-policy-conflict) | A conflict policy has been configured.<br>**Applicable version:** 21 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -215,3 +224,5 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100).then(() =>
   console.error(`Failed to add disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -32,6 +32,8 @@ address: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionStateParam-address: string--><!--Device-ConnectionStateParam-address: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ connectionReason: ConnectionReason
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionStateParam-connectionReason: ConnectionReason--><!--Device-ConnectionStateParam-connectionReason: ConnectionReason-End-->
 
@@ -68,6 +72,8 @@ preState: ConnectionState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionStateParam-preState: ConnectionState--><!--Device-ConnectionStateParam-preState: ConnectionState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -86,6 +92,8 @@ reasonMsg?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionStateParam-reasonMsg?: string--><!--Device-ConnectionStateParam-reasonMsg?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -103,6 +111,8 @@ state: ConnectionState
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionStateParam-state: ConnectionState--><!--Device-ConnectionStateParam-state: ConnectionState-End-->
 

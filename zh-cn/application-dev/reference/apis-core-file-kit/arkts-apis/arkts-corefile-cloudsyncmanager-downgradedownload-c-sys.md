@@ -55,6 +55,7 @@ constructor(bundleName: string)
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,6 +69,8 @@ try {
   console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getCloudFileInfo
 
@@ -103,6 +106,7 @@ getCloudFileInfo(): Promise<CloudFileInfo>
 | 13900010 | Try again. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -116,6 +120,8 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
   console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## startDownload
 
@@ -161,6 +167,7 @@ startDownload(callback: Callback<DownloadProgress>): Promise<void>
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400006 | The same task is already in progress. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -182,6 +189,8 @@ downgradeMgr.startDownload(callback).then(() => {
   console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## startTransfer
 
@@ -224,6 +233,7 @@ startTransfer(targetUri: string, callback: Callback<TransferProgress>): void
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified. <br>2.The length of the input uri does not meet the value range requirement. <br>3.The input uri does not belong to a File Manager public directory. |
 | 22400006 | The same task is already in progress. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -240,6 +250,8 @@ try {
     console.error(`transfer files failed with error message: ${e.message}, error code: ${e.code}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## stopDownload
 
@@ -274,6 +286,7 @@ stopDownload(): Promise<void>
 | 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -297,3 +310,5 @@ downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
   console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
 });
 ```
+
+<!--DelEnd-->

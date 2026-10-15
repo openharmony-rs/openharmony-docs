@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace serial--><!--Device-unnamed-declare namespace serial-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
@@ -22,14 +20,14 @@ import { serial } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md) | 查询串口设备列表，返回[SerialPort](arkts-basicservices-serial-serialport-i.md)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等场景。 |
+| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md#getserialportlist) | 查询串口设备列表，返回[SerialPort](arkts-basicservices-serial-serialport-i.md)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等场景。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md) | 添加应用访问串口的权限。此函数通过将应用的Token ID与串口设备ID关联，建立应用的串口访问权限关系。适用于系统管理类应用为第三方应用授予串口访问权限的场景，如设备管理工具为工业数据采集应用分配串口权限。仅用于会弹出串口授权弹窗的系统应用，在用户授权后，权限信息将持久化存储。使用Promise异步回调。 |
+| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md#addportauthorization) | 添加应用访问串口的权限。此函数通过将应用的Token ID与串口设备ID关联，建立应用的串口访问权限关系。适用于系统管理类应用为第三方应用授予串口访问权限的场景，如设备管理工具为工业数据采集应用分配串口权限。仅用于会弹出串口授权弹窗的系统应用，在用户授权后，权限信息将持久化存储。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

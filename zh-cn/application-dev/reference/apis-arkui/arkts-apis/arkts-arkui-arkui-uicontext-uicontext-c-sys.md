@@ -53,6 +53,7 @@ clearResourceCache(): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application.<br>**适用版本：** 12 - 22 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,6 +71,10 @@ struct MyStateSample {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="freezeuinode1"></a>
 
 ## freezeUINode
 
@@ -102,7 +107,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 
-<a id="freezeuinode-1"></a>
+<a id="freezeuinode2"></a>
 
 ## freezeUINode
 
@@ -165,9 +170,12 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 | --- | --- |
 | [LuminanceSampler](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md) &#124; undefined | the luminance sampler or undefined. |
 
+<!--Del-->
 **示例**
 
 参考[offBackgroundLuminanceChange](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md#offbackgroundluminancechange)接口的示例。
+
+<!--DelEnd-->
 
 ## recycleInvisibleImageMemory
 
@@ -193,6 +201,7 @@ recycleInvisibleImageMemory(enabled: boolean): void
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 使能开关项：true开启，false关闭；默认不开启，由系统应用按需开启。<br>默认值：false <br>默认值：false <br>默认值：false <br>默认值：false <br>配置为异常undefined时，恢复为默认值false |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -216,6 +225,8 @@ struct ImageRecycleSample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setDynamicDimming
 
@@ -246,6 +257,7 @@ setDynamicDimming(id: string, value: number): void
 | id | string | 是 | 组件id。 |
 | value | number | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -267,6 +279,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setKeyboardAppearanceConfig
 

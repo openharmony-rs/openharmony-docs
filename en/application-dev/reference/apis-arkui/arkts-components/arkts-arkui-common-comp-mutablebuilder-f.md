@@ -6,7 +6,7 @@
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>
 ```
 
-Use `mutableBuilder` to wrap a global [\@Builder](arkts-arkui-common-comp-builder-d.md#builder) function, so as to dynamically switch the content of the global `@Builder` function at runtime based on different conditions (for example, switching between different UI building logic based on the state). For details about the development guide, see [mutableBuilder: Implementing Dynamic Update of Global @Builder](../../../ui/state-management/arkts-mutableBuilder.md).
+Use `mutableBuilder` to wrap a global [\@Builder](arkts-arkui-common-comp-con.md#builder) function, so as to dynamically switch the content of the global `@Builder` function at runtime based on different conditions (for example, switching between different UI building logic based on the state). For details about the development guide, see [mutableBuilder: Implementing Dynamic Update of Global @Builder](../../../ui/state-management/arkts-mutableBuilder.md).
 
 `mutableBuilder` is a generic function. It returns a `MutableBuilder` object and accepts only a single global `@Builder` function as its parameter.
 
@@ -32,4 +32,4 @@ The `builder` attribute method of the `MutableBuilder` object returned by the `m
 
 | Type | Description |
 | --- | --- |
-| [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md)&lt;Args&gt; | An instance of `MutableBuilder&lt;Args&gt;`, used to encapsulate a global `@Builder` function and support dynamically switching the build logic at runtime. This instance holds a reference to the global `@Builder` function. You can call the encapsulated build function through its `builder` attribute, or dynamically switch the build logic by reassigning a new instance returned by the `mutableBuilder` function. Its `builder` attribute method can only be used inside a custom component. |
+| [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md)&lt;Args&gt; | An instance of `MutableBuilder<Args>`, used to encapsulate a global `@Builder` function and support dynamically switching the build logic at runtime. This instance holds a reference to the global `@Builder` function. You can call the encapsulated build function through its `builder` attribute, or dynamically switch the build logic by reassigning a new instance returned by the `mutableBuilder` function. Its `builder` attribute method can only be used inside a custom component. |

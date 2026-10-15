@@ -30,24 +30,6 @@ AUTO = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## PRIOR
-
-```TypeScript
-PRIOR = 2000
-```
-
-容器首次获焦时优先获焦的优先级。优先级高于AUTO。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-FocusPriority-PRIOR = 2000--><!--Device-FocusPriority-PRIOR = 2000-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## PREVIOUS
 
 ```TypeScript
@@ -63,5 +45,23 @@ PREVIOUS = 3000
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-FocusPriority-PREVIOUS = 3000--><!--Device-FocusPriority-PREVIOUS = 3000-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PRIOR
+
+```TypeScript
+PRIOR = 2000
+```
+
+容器首次获焦时优先获焦的优先级。优先级高于AUTO。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FocusPriority-PRIOR = 2000--><!--Device-FocusPriority-PRIOR = 2000-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

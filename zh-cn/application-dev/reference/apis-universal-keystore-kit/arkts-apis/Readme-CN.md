@@ -1,79 +1,78 @@
 # ArkTS API<!--arkts-universalkeystorekit-->
 
-- [@ohos.security.CryptoExtensionAbility(密钥扩展能力)](arkts-universalkeystore-security-cryptoextensionability.md)
+- [@ohos.security.CryptoExtensionAbility（密钥扩展能力）](arkts-universalkeystore-security-cryptoextensionability.md)
   - [CryptoExtensionAbility](arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md)
   - [HuksCryptoExtensionCertInfo](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensioncertinfo-i.md)
   - [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)
   - [HuksCryptoExtensionParams](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparams-i.md)
   - [HuksCryptoExtensionResult](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresult-i.md)
   - [HuksCryptoExtensionResultCode](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresultcode-e.md)
-- [@ohos.security.huks(通用密钥库系统)](arkts-universalkeystore-security-huks.md)
-  - [abort](arkts-universalkeystore-huks-abort-f.md)
+- [@ohos.security.huks（通用密钥库系统）](arkts-universalkeystore-security-huks.md)
   - [abortSession](arkts-universalkeystore-huks-abortsession-f.md)
   - [anonAttestKeyItem](arkts-universalkeystore-huks-anonattestkeyitem-f.md)
   <!--Del-->
-  - [anonAttestKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-anonattestkeyitemasuser-f-sys.md)<!--DelEnd-->
+  - [anonAttestKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-anonattestkeyitemasuser-f-sys.md)<!--DelEnd-->
   - [anonAttestKeyItemOffline](arkts-universalkeystore-huks-anonattestkeyitemoffline-f.md)
   <!--Del-->
-  - [anonAttestKeyItemOfflineAsUser(系统接口)](arkts-universalkeystore-huks-anonattestkeyitemofflineasuser-f-sys.md)<!--DelEnd-->
+  - [anonAttestKeyItemOfflineAsUser（系统接口）](arkts-universalkeystore-huks-anonattestkeyitemofflineasuser-f-sys.md)<!--DelEnd-->
   - [attestKeyItem](arkts-universalkeystore-huks-attestkeyitem-f.md)
   <!--Del-->
-  - [attestKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-attestkeyitemasuser-f-sys.md)<!--DelEnd-->
+  - [attestKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-attestkeyitemasuser-f-sys.md)<!--DelEnd-->
   - [decapsulate](arkts-universalkeystore-huks-decapsulate-f.md)
-  - [deleteKey](arkts-universalkeystore-huks-deletekey-f.md)
   - [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md)
   <!--Del-->
-  - [deleteKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-deletekeyitemasuser-f-sys.md)<!--DelEnd-->
+  - [deleteKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-deletekeyitemasuser-f-sys.md)<!--DelEnd-->
   - [encapsulate](arkts-universalkeystore-huks-encapsulate-f.md)
-  - [exportKey](arkts-universalkeystore-huks-exportkey-f.md)
   - [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md)
   <!--Del-->
-  - [exportKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-exportkeyitemasuser-f-sys.md)<!--DelEnd-->
-  - [finish](arkts-universalkeystore-huks-finish-f.md)
+  - [exportKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-exportkeyitemasuser-f-sys.md)<!--DelEnd-->
   - [finishSession](arkts-universalkeystore-huks-finishsession-f.md)
-  - [generateKey](arkts-universalkeystore-huks-generatekey-f.md)
   - [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md)
   <!--Del-->
-  - [generateKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-generatekeyitemasuser-f-sys.md)<!--DelEnd-->
+  - [generateKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-generatekeyitemasuser-f-sys.md)<!--DelEnd-->
   - [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md)
   <!--Del-->
-  - [getKeyItemPropertiesAsUser(系统接口)](arkts-universalkeystore-huks-getkeyitempropertiesasuser-f-sys.md)<!--DelEnd-->
-  - [getKeyProperties](arkts-universalkeystore-huks-getkeyproperties-f.md)
-  - [getSdkVersion](arkts-universalkeystore-huks-getsdkversion-f.md)
+  - [getKeyItemPropertiesAsUser（系统接口）](arkts-universalkeystore-huks-getkeyitempropertiesasuser-f-sys.md)<!--DelEnd-->
   - [hasKeyItem](arkts-universalkeystore-huks-haskeyitem-f.md)
   <!--Del-->
-  - [hasKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-haskeyitemasuser-f-sys.md)<!--DelEnd-->
-  - [importKey](arkts-universalkeystore-huks-importkey-f.md)
+  - [hasKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-haskeyitemasuser-f-sys.md)<!--DelEnd-->
   - [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md)
   <!--Del-->
-  - [importKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-importkeyitemasuser-f-sys.md)<!--DelEnd-->
+  - [importKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-importkeyitemasuser-f-sys.md)<!--DelEnd-->
   - [importWrappedKeyItem](arkts-universalkeystore-huks-importwrappedkeyitem-f.md)
   <!--Del-->
-  - [importWrappedKeyItemAsUser(系统接口)](arkts-universalkeystore-huks-importwrappedkeyitemasuser-f-sys.md)<!--DelEnd-->
-  - [init](arkts-universalkeystore-huks-init-f.md)
+  - [importWrappedKeyItemAsUser（系统接口）](arkts-universalkeystore-huks-importwrappedkeyitemasuser-f-sys.md)<!--DelEnd-->
   - [initSession](arkts-universalkeystore-huks-initsession-f.md)
   <!--Del-->
-  - [initSessionAsUser(系统接口)](arkts-universalkeystore-huks-initsessionasuser-f-sys.md)<!--DelEnd-->
-  - [isKeyExist](arkts-universalkeystore-huks-iskeyexist-f.md)
+  - [initSessionAsUser（系统接口）](arkts-universalkeystore-huks-initsessionasuser-f-sys.md)<!--DelEnd-->
   - [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md)
   - [listAliases](arkts-universalkeystore-huks-listaliases-f.md)
   - [unwrapKeyItem](arkts-universalkeystore-huks-unwrapkeyitem-f.md)
-  - [update](arkts-universalkeystore-huks-update-f.md)
   - [updateSession](arkts-universalkeystore-huks-updatesession-f.md)
   - [wrapKeyItem](arkts-universalkeystore-huks-wrapkeyitem-f.md)
-  - [HuksHandle](arkts-universalkeystore-huks-hukshandle-i.md)
+  - [abort](arkts-universalkeystore-huks-abort-f.md)
+  - [deleteKey](arkts-universalkeystore-huks-deletekey-f.md)
+  - [exportKey](arkts-universalkeystore-huks-exportkey-f.md)
+  - [finish](arkts-universalkeystore-huks-finish-f.md)
+  - [generateKey](arkts-universalkeystore-huks-generatekey-f.md)
+  - [getKeyProperties](arkts-universalkeystore-huks-getkeyproperties-f.md)
+  - [getSdkVersion](arkts-universalkeystore-huks-getsdkversion-f.md)
+  - [importKey](arkts-universalkeystore-huks-importkey-f.md)
+  - [init](arkts-universalkeystore-huks-init-f.md)
+  - [isKeyExist](arkts-universalkeystore-huks-iskeyexist-f.md)
+  - [update](arkts-universalkeystore-huks-update-f.md)
   - [HuksListAliasesReturnResult](arkts-universalkeystore-huks-hukslistaliasesreturnresult-i.md)
   - [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md)
   - [HuksParam](arkts-universalkeystore-huks-huksparam-i.md)
-  - [HuksResult](arkts-universalkeystore-huks-huksresult-i.md)
   - [HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)
   - [HuksSessionHandle](arkts-universalkeystore-huks-hukssessionhandle-i.md)
+  - [HuksHandle](arkts-universalkeystore-huks-hukshandle-i.md)
+  - [HuksResult](arkts-universalkeystore-huks-huksresult-i.md)
   - [HuksAuthAccessType](arkts-universalkeystore-huks-huksauthaccesstype-e.md)
   - [HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)
   - [HuksChallengePosition](arkts-universalkeystore-huks-hukschallengeposition-e.md)
   - [HuksChallengeType](arkts-universalkeystore-huks-hukschallengetype-e.md)
   - [HuksCipherMode](arkts-universalkeystore-huks-huksciphermode-e.md)
-  - [HuksErrorCode](arkts-universalkeystore-huks-hukserrorcode-e.md)
   - [HuksExceptionErrCode](arkts-universalkeystore-huks-huksexceptionerrcode-e.md)
   - [HuksImportKeyType](arkts-universalkeystore-huks-huksimportkeytype-e.md)
   - [HuksKeyAlg](arkts-universalkeystore-huks-hukskeyalg-e.md)
@@ -95,9 +94,10 @@
   - [HuksUnwrapSuite](arkts-universalkeystore-huks-huksunwrapsuite-e.md)
   - [HuksUserAuthMode](arkts-universalkeystore-huks-huksuserauthmode-e.md)
   - [HuksUserAuthType](arkts-universalkeystore-huks-huksuserauthtype-e.md)
-- [@ohos.security.huksExternalCrypto(外部密钥管理)](arkts-universalkeystore-security-huksexternalcrypto.md)
+  - [HuksErrorCode](arkts-universalkeystore-huks-hukserrorcode-e.md)
+- [@ohos.security.huksExternalCrypto（外部密钥管理）](arkts-universalkeystore-security-huksexternalcrypto.md)
   <!--Del-->
-  - [authUkeyPin(系统接口)](arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md)<!--DelEnd-->
+  - [authUkeyPin（系统接口）](arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md)<!--DelEnd-->
   - [clearUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md)
   - [closeResource](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md)
   - [getErrorInfo](arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md)

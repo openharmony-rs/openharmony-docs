@@ -16,57 +16,37 @@ export enum AuthenticationResult
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## NO_SUPPORT
+## BUSY
 
 ```TypeScript
-NO_SUPPORT = -1
+BUSY = 5
 ```
 
-设备不支持当前的认证方式。
+认证服务忙，请稍后重试。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#type_not_support)
+**替代接口：** [BUSY](arkts-userauthentication-userauth-resultcode-e.md#busy)
 
-<!--Device-AuthenticationResult-NO_SUPPORT = -1--><!--Device-AuthenticationResult-NO_SUPPORT = -1-End-->
+<!--Device-AuthenticationResult-BUSY = 5--><!--Device-AuthenticationResult-BUSY = 5-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## SUCCESS
+## CAMERA_FAIL
 
 ```TypeScript
-SUCCESS = 0
+CAMERA_FAIL = 4
 ```
 
-认证成功。
+开启相机失败。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [SUCCESS](arkts-userauthentication-userauth-resultcode-e.md#success)
-
-<!--Device-AuthenticationResult-SUCCESS = 0--><!--Device-AuthenticationResult-SUCCESS = 0-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## COMPARE_FAILURE
-
-```TypeScript
-COMPARE_FAILURE = 1
-```
-
-比对失败。
-
-**起始版本：** 6
-
-**废弃版本：** 8
-
-**替代接口：** [FAIL](arkts-userauthentication-userauth-resultcode-e.md#fail)
-
-<!--Device-AuthenticationResult-COMPARE_FAILURE = 1--><!--Device-AuthenticationResult-COMPARE_FAILURE = 1-End-->
+<!--Device-AuthenticationResult-CAMERA_FAIL = 4--><!--Device-AuthenticationResult-CAMERA_FAIL = 4-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -88,55 +68,39 @@ CANCELED = 2
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## TIMEOUT
+## COMPARE_FAILURE
 
 ```TypeScript
-TIMEOUT = 3
+COMPARE_FAILURE = 1
 ```
 
-认证超时。
+比对失败。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [TIMEOUT](arkts-userauthentication-userauth-resultcode-e.md#timeout)
+**替代接口：** [FAIL](arkts-userauthentication-userauth-resultcode-e.md#fail)
 
-<!--Device-AuthenticationResult-TIMEOUT = 3--><!--Device-AuthenticationResult-TIMEOUT = 3-End-->
+<!--Device-AuthenticationResult-COMPARE_FAILURE = 1--><!--Device-AuthenticationResult-COMPARE_FAILURE = 1-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## CAMERA_FAIL
+## GENERAL_ERROR
 
 ```TypeScript
-CAMERA_FAIL = 4
+GENERAL_ERROR = 100
 ```
 
-开启相机失败。
+其他错误。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-<!--Device-AuthenticationResult-CAMERA_FAIL = 4--><!--Device-AuthenticationResult-CAMERA_FAIL = 4-End-->
+**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#general_error)
 
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## BUSY
-
-```TypeScript
-BUSY = 5
-```
-
-认证服务忙，请稍后重试。
-
-**起始版本：** 6
-
-**废弃版本：** 8
-
-**替代接口：** [BUSY](arkts-userauthentication-userauth-resultcode-e.md#busy)
-
-<!--Device-AuthenticationResult-BUSY = 5--><!--Device-AuthenticationResult-BUSY = 5-End-->
+<!--Device-AuthenticationResult-GENERAL_ERROR = 100--><!--Device-AuthenticationResult-GENERAL_ERROR = 100-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -176,6 +140,24 @@ LOCKED = 7
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+## NO_SUPPORT
+
+```TypeScript
+NO_SUPPORT = -1
+```
+
+设备不支持当前的认证方式。
+
+**起始版本：** 6
+
+**废弃版本：** 8
+
+**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#type_not_support)
+
+<!--Device-AuthenticationResult-NO_SUPPORT = -1--><!--Device-AuthenticationResult-NO_SUPPORT = -1-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 ## NOT_ENROLLED
 
 ```TypeScript
@@ -194,20 +176,38 @@ NOT_ENROLLED = 8
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## GENERAL_ERROR
+## SUCCESS
 
 ```TypeScript
-GENERAL_ERROR = 100
+SUCCESS = 0
 ```
 
-其他错误。
+认证成功。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#general_error)
+**替代接口：** [SUCCESS](arkts-userauthentication-userauth-resultcode-e.md#success)
 
-<!--Device-AuthenticationResult-GENERAL_ERROR = 100--><!--Device-AuthenticationResult-GENERAL_ERROR = 100-End-->
+<!--Device-AuthenticationResult-SUCCESS = 0--><!--Device-AuthenticationResult-SUCCESS = 0-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 3
+```
+
+认证超时。
+
+**起始版本：** 6
+
+**废弃版本：** 8
+
+**替代接口：** [TIMEOUT](arkts-userauthentication-userauth-resultcode-e.md#timeout)
+
+<!--Device-AuthenticationResult-TIMEOUT = 3--><!--Device-AuthenticationResult-TIMEOUT = 3-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core

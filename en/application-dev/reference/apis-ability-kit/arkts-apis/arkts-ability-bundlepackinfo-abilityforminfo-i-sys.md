@@ -56,7 +56,7 @@ Widget name.
 readonly scheduledUpdateTime: string
 ```
 
-Scheduled time to update the widget. The value is in 24-hour format and accurate to the minute.
+Indicates the time for scheduled refresh of the card, in 24-hour format and accurate to the minute. This parameter and the periodic refresh parameter are mutually exclusive. If both are configured, the scheduled refresh takes precedence.
 
 **Type:** string
 
@@ -110,7 +110,7 @@ Widget type.
 readonly updateDuration: number
 ```
 
-Interval to update the widget. The unit is 30 minutes. The value is a multiple of 30. A widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). If both are configured, **updateDuration** takes precedence.
+Indicates the update frequency for periodic refresh of the card, in minutes. The value must be a multiple of 30. The maximum refresh frequency of the card is once every 30 minutes. This parameter and the scheduled refresh parameter are mutually exclusive. If both are configured, the scheduled refresh takes precedence.
 
 **Type:** number
 

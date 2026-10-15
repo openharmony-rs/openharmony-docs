@@ -6,6 +6,8 @@ declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 导入CircleShape类型对象。
 
+**类型：** import('../api/@ohos.arkui.shape').CircleShape
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 <!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape--><!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.shape').CircleShape

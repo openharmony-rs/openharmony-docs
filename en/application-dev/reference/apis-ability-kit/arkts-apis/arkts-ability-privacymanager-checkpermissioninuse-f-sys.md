@@ -48,6 +48,7 @@ Queries whether a specified sensitive permission is currently being used. It can
 | [12100003](../errorcode-access-token.md#12100003-permission-not-exist) | The specified permission does not exist or is not a user_grant permission. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`checkPermissionInUse fail, code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 declare interface CalendarRequestedData
 ```
 
-Defines the struct of CalendarRequestedData.
+定义CalendarRequestedData结构体。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Defines the struct of CalendarRequestedData.
 currentMonth: number
 ```
 
-Current Month
+当前月份
 
 **类型：** number
 
@@ -46,7 +46,7 @@ Current Month
 currentYear: number
 ```
 
-Current Year
+当前年份
 
 **类型：** number
 
@@ -70,7 +70,7 @@ Current Year
 month: number
 ```
 
-Previous month
+请求月份
 
 **类型：** number
 
@@ -94,7 +94,7 @@ Previous month
 monthState: number
 ```
 
-State of month
+月份状态
 
 **类型：** number
 
@@ -118,7 +118,7 @@ State of month
 year: number
 ```
 
-Previous year
+请求年份
 
 **类型：** number
 

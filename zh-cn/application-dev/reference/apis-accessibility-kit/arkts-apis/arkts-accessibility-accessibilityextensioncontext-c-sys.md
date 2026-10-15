@@ -8,6 +8,14 @@ AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，�
 
 辅助功能扩展上下文模块提供辅助功能扩展的相关能力，包括配置关注信息类型、查询节点信息、手势注入等。
 
+**继承/实现关系：** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
+
+**起始版本：** 9
+
+<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
 ## 使用说明
 
 使用AccessibilityExtensionContext功能前，通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext实例。
@@ -20,14 +28,6 @@ class EntryAbility extends AccessibilityExtensionAbility {
   } 
 }
 ```
-
-**继承/实现关系：** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
-
-**起始版本：** 9
-
-<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## addAccessibilityVirtualNodes
 
@@ -71,6 +71,7 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array<A
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -122,6 +123,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getAccessibilityFocusedElement
 
 ```TypeScript
@@ -157,6 +160,7 @@ getAccessibilityFocusedElement(): Promise<AccessibilityElement>
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -201,6 +205,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getAccessibilityWindowsSync
 
 ```TypeScript
@@ -239,6 +245,7 @@ getAccessibilityWindowsSync(displayId?: number): Array<AccessibilityElement>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -287,6 +294,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getDefaultFocusedElementIds
 
 ```TypeScript
@@ -322,9 +331,10 @@ getDefaultFocusedElementIds(windowId: number): Promise<Array<number>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -370,6 +380,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getElements
 
 ```TypeScript
@@ -404,9 +416,10 @@ getElements(windowId: number, elementId?: number): Promise<Array<AccessibilityEl
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -454,6 +467,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getRootInActiveWindow
 
 ```TypeScript
@@ -495,6 +510,7 @@ getRootInActiveWindow(windowId?: number): Promise<AccessibilityElement>
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -541,6 +557,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## holdRunningLockSync
 
 ```TypeScript
@@ -566,6 +584,7 @@ holdRunningLockSync(): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -608,6 +627,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## notifyDisconnect
 
 ```TypeScript
@@ -635,6 +656,7 @@ notifyDisconnect(): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -677,6 +699,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## off('preDisconnect')
 
 ```TypeScript
@@ -709,6 +733,7 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -751,6 +776,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## on('preDisconnect')
 
 ```TypeScript
@@ -785,6 +812,7 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -829,6 +857,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## removeAccessibilityVirtualNodes
 
 ```TypeScript
@@ -870,6 +900,7 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise<Op
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -916,6 +947,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## startAbility
 
 ```TypeScript
@@ -949,8 +982,9 @@ startAbility(want: Want): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1000,6 +1034,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## unholdRunningLockSync
 
 ```TypeScript
@@ -1025,6 +1061,7 @@ unholdRunningLockSync(): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1066,6 +1103,8 @@ export default class AccessibilityManager {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## updateAccessibilityElementProperty
 
@@ -1109,6 +1148,7 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1159,3 +1199,5 @@ export default class AccessibilityManager {
   }
 }
 ```
+
+<!--DelEnd-->

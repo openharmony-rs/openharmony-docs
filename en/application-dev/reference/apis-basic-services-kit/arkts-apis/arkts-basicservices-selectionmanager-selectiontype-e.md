@@ -18,22 +18,6 @@ Enumerates the word selection types.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-## MOUSE_MOVE
-
-```TypeScript
-MOUSE_MOVE = 1
-```
-
-Word selection by sliding the mouse or touchpad.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SelectionType-MOUSE_MOVE = 1--><!--Device-SelectionType-MOUSE_MOVE = 1-End-->
-
-**System capability:** SystemCapability.SelectionInput.Selection
-
 ## DOUBLE_CLICK
 
 ```TypeScript
@@ -47,6 +31,22 @@ Word selection by double-clicking the mouse or touchpad.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-SelectionType-DOUBLE_CLICK = 2--><!--Device-SelectionType-DOUBLE_CLICK = 2-End-->
+
+**System capability:** SystemCapability.SelectionInput.Selection
+
+## MOUSE_MOVE
+
+```TypeScript
+MOUSE_MOVE = 1
+```
+
+Word selection by sliding the mouse or touchpad.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SelectionType-MOUSE_MOVE = 1--><!--Device-SelectionType-MOUSE_MOVE = 1-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 

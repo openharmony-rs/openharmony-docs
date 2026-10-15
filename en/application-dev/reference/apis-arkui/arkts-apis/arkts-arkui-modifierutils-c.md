@@ -41,7 +41,7 @@ Checks whether a given instance is of a specified component type. For example, w
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if the instance is of the specified component type; returns **false** otherwise. @static |
+| boolean | Returns **true** if the instance is of the specified component type; returns **false** otherwise. |
 
 **Examples**
 

@@ -14,17 +14,17 @@ Enumerates the network sharing types of an NIC.
 
 **System API:** This is a system API.
 
-## SHARING_WIFI
+## SHARING_BLUETOOTH
 
 ```TypeScript
-SHARING_WIFI = 0
+SHARING_BLUETOOTH = 2
 ```
 
-Wi-Fi hotspot sharing.
+Bluetooth sharing.
 
 **Since:** 9
 
-<!--Device-SharingIfaceType-SHARING_WIFI = 0--><!--Device-SharingIfaceType-SHARING_WIFI = 0-End-->
+<!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2--><!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
@@ -46,17 +46,17 @@ USB sharing.
 
 **System API:** This is a system API.
 
-## SHARING_BLUETOOTH
+## SHARING_WIFI
 
 ```TypeScript
-SHARING_BLUETOOTH = 2
+SHARING_WIFI = 0
 ```
 
-Bluetooth sharing.
+Wi-Fi hotspot sharing.
 
 **Since:** 9
 
-<!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2--><!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2-End-->
+<!--Device-SharingIfaceType-SHARING_WIFI = 0--><!--Device-SharingIfaceType-SHARING_WIFI = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

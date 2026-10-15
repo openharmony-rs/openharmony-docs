@@ -53,7 +53,7 @@ getUri(): string
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -95,6 +95,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+<a id="requestcontent1"></a>
+
 ## requestContent
 
 ```TypeScript
@@ -107,7 +109,7 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise<void>
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-MovingPhoto-requestContent(imageFileUri: string, videoFileUri: string): Promise<void>--><!--Device-MovingPhoto-requestContent(imageFileUri: string, videoFileUri: string): Promise<void>-End-->
 
@@ -136,7 +138,7 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise<void>
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -190,7 +192,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-<a id="requestcontent-1"></a>
+<a id="requestcontent2"></a>
 
 ## requestContent
 
@@ -204,7 +206,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise<void>
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-MovingPhoto-requestContent(resourceType: ResourceType, fileUri: string): Promise<void>--><!--Device-MovingPhoto-requestContent(resourceType: ResourceType, fileUri: string): Promise<void>-End-->
 
@@ -233,7 +235,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise<void>
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -282,7 +284,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-<a id="requestcontent-2"></a>
+<a id="requestcontent3"></a>
 
 ## requestContent
 
@@ -296,7 +298,7 @@ requestContent(resourceType: ResourceType): Promise<ArrayBuffer>
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-MovingPhoto-requestContent(resourceType: ResourceType): Promise<ArrayBuffer>--><!--Device-MovingPhoto-requestContent(resourceType: ResourceType): Promise<ArrayBuffer>-End-->
 
@@ -324,7 +326,7 @@ requestContent(resourceType: ResourceType): Promise<ArrayBuffer>
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

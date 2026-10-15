@@ -8,8 +8,6 @@ declare namespace GestureControl
 
 **起始版本：** 11
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace GestureControl--><!--Device-unnamed-declare namespace GestureControl-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -20,9 +18,53 @@ declare namespace GestureControl
 
 | 名称 | 说明 |
 | --- | --- |
-| GestureType | 定义手势类型。 |
+| [GestureType](arkts-arkui-tapgesture-comp-gesturetype-e.md) | 定义手势类型。 |
 
 ## 示例
+
+该示例通过配置RotationGesture实现了双指旋转手势的识别。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct RotationGestureExample {
+  @State angle: number = 0;
+  @State rotateValue: number = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Text('RotationGesture angle:' + this.angle)
+      }
+      .height(200)
+      .width(300)
+      .padding(20)
+      .border({ width: 3 })
+      .margin(80)
+      .rotate({ angle: this.angle })
+      // 双指旋转触发该手势事件
+      .gesture(
+      RotationGesture()
+        .onActionStart(() => {
+          console.info('Rotation start');
+        })
+        .onActionUpdate((event: GestureEvent) => {
+          if (event) {
+            // 根据本次手势变化角度和已保存旋转角度，更新组件当前旋转角度。
+            this.angle = this.rotateValue + event.angle;
+          }
+        })
+        .onActionEnd(() => {
+          // 手势结束时保存当前旋转角度，作为下一次旋转计算的初始值。
+          this.rotateValue = this.angle;
+          console.info('Rotation end');
+        })
+      )
+    }.width('100%')
+  }
+}
+```
 
 该示例通过LongPressGesture实现了长按手势的识别。从API version 22开始，支持通过[LongPressGestureHandlerOptions](./ts-gesturehandler.md#longpressgesturehandleroptions)的allowableMovement属性设置识别手势的最大移动距离。
 
@@ -36,7 +78,7 @@ struct LongPressGestureExample {
   build() {
     Column() {
       Text('LongPress onAction:' + this.count).fontSize(28)
-        // 单指长按文本触发该手势事件。
+        // 至少一指长按文本触发该手势事件。
         .gesture(
         // 设置长按手势识别器识别的手势的最大移动距离为200px。
         LongPressGesture({ repeat: true, allowableMovement: 200 })
@@ -254,7 +296,7 @@ struct SwipeGestureExample {
       .height(200)
       .margin(100)
       .rotate({ angle: this.rotateAngle })
-      // 单指竖直方向快滑时触发该事件
+      // 手指数量达到配置值且沿竖直方向快滑时触发该事件
       .gesture(
       SwipeGesture({ direction: SwipeDirection.Vertical })
         .onAction((event: GestureEvent) => {
@@ -265,50 +307,6 @@ struct SwipeGestureExample {
         })
       )
     }.width('100%');
-  }
-}
-```
-
-该示例通过配置RotationGesture实现了双指旋转手势的识别。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct RotationGestureExample {
-  @State angle: number = 0;
-  @State rotateValue: number = 0;
-
-  build() {
-    Column() {
-      Column() {
-        Text('RotationGesture angle:' + this.angle)
-      }
-      .height(200)
-      .width(300)
-      .padding(20)
-      .border({ width: 3 })
-      .margin(80)
-      .rotate({ angle: this.angle })
-      // 双指旋转触发该手势事件
-      .gesture(
-      RotationGesture()
-        .onActionStart(() => {
-          console.info('Rotation start');
-        })
-        .onActionUpdate((event: GestureEvent) => {
-          if (event) {
-            // 根据本次手势变化角度和已保存旋转角度，更新组件当前旋转角度。
-            this.angle = this.rotateValue + event.angle;
-          }
-        })
-        .onActionEnd(() => {
-          // 手势结束时保存当前旋转角度，作为下一次旋转计算的初始值。
-          this.rotateValue = this.angle;
-          console.info('Rotation end');
-        })
-      )
-    }.width('100%')
   }
 }
 ```
@@ -440,7 +438,7 @@ struct PinchGestureExample {
           this.curScale = this.preScale * event.scale;
           let targetDisplayWidth = this.contentWidth * this.curScale;
           let targetDisplayHeight = this.contentHeight * this.curScale;
-          // 本次缩放前手指中点在本次缩放后的坐标
+          // 本次缩放前手指中点对应的图片位置在本次缩放后的坐标
           const pointX = (this.screenWidth - targetDisplayWidth) / 2 + targetDisplayWidth * this.pointRatioX;
           const pointY = (this.screenHeight - targetDisplayHeight) / 2 + targetDisplayHeight * this.pointRatioY;
           // 将pointX、pointY移动到缩放后的手指中点，需要移动的距离
@@ -448,7 +446,7 @@ struct PinchGestureExample {
           this.offsetY = event.pinchCenterY - pointY;
           this.updateMatrix();
         })
-        .onActionEnd((event: GestureEvent) => {
+        .onActionEnd(() => {
           // 缩放比例超出允许范围时，重置图片的缩放比例和偏移量
           if (this.curScale < this.scaleMin || this.curScale > this.scaleMax) {
             this.curScale = 1;

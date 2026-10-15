@@ -6,13 +6,15 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="ispointervisible1"></a>
+
 ## isPointerVisible
 
 ```TypeScript
 function isPointerVisible(callback: AsyncCallback<boolean>): void
 ```
 
-Obtains the visible status of the mouse pointer. This API uses an asynchronous callback to return the result.
+Obtains the display/hidden state of the current window. This state reflects the cursor display/hidden state of the multimodal process for the process where the window resides, not the actual cursor display/hidden status. Whether the cursor is correctly displayed/hidden is also affected by the render service process. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -30,7 +32,7 @@ Obtains the visible status of the mouse pointer. This API uses an asynchronous c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -64,7 +66,7 @@ struct Index {
 ```
 
 
-<a id="ispointervisible-1"></a>
+<a id="ispointervisible2"></a>
 
 ## isPointerVisible
 
@@ -72,7 +74,7 @@ struct Index {
 function isPointerVisible(): Promise<boolean>
 ```
 
-Obtains the visible status of the mouse pointer. This API uses a promise to return the result.
+Obtains the display/hidden state of the current window. This state reflects the cursor display/hidden state of the multimodal process for the process where the window resides, not the actual cursor display/hidden status. Whether the cursor is correctly displayed/hidden is also affected by the render service process. This API uses a promise to return the result.
 
 **Since:** 9
 

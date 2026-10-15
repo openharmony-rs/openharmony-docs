@@ -12,26 +12,6 @@ declare enum PixelRoundCalcPolicy
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NO_FORCE_ROUND
-
-```TypeScript
-NO_FORCE_ROUND = 0
-```
-
-非取整计算。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelRoundCalcPolicy-NO_FORCE_ROUND = 0--><!--Device-PixelRoundCalcPolicy-NO_FORCE_ROUND = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## FORCE_CEIL
 
 ```TypeScript
@@ -69,5 +49,25 @@ FORCE_FLOOR = 2
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-PixelRoundCalcPolicy-FORCE_FLOOR = 2--><!--Device-PixelRoundCalcPolicy-FORCE_FLOOR = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NO_FORCE_ROUND
+
+```TypeScript
+NO_FORCE_ROUND = 0
+```
+
+非取整计算。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PixelRoundCalcPolicy-NO_FORCE_ROUND = 0--><!--Device-PixelRoundCalcPolicy-NO_FORCE_ROUND = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

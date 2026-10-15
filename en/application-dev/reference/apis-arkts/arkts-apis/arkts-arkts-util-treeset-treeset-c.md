@@ -91,7 +91,7 @@ If the set does not contain the element, the specified element is added
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-add(value: T): boolean--><!--Device-TreeSet-add(value: T): boolean-End-->
 
@@ -133,7 +133,7 @@ Clears all element groups in a set
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-clear(): void--><!--Device-TreeSet-clear(): void-End-->
 
@@ -236,7 +236,7 @@ Returns a new Iterator object that contains the [key, value] pairs for each elem
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-entries(): IterableIterator<[T, T]>--><!--Device-TreeSet-entries(): IterableIterator<[T, T]>-End-->
 
@@ -344,7 +344,7 @@ Gets the first elements in a set
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-getFirstValue(): T--><!--Device-TreeSet-getFirstValue(): T-End-->
 
@@ -428,7 +428,7 @@ Gets the last elements in a set
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-getLastValue(): T--><!--Device-TreeSet-getLastValue(): T-End-->
 
@@ -512,7 +512,7 @@ Returns whether the Set object contains the elements
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-has(value: T): boolean--><!--Device-TreeSet-has(value: T): boolean-End-->
 
@@ -555,7 +555,7 @@ Returns whether the Set object contains elements
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-isEmpty(): boolean--><!--Device-TreeSet-isEmpty(): boolean-End-->
 
@@ -591,7 +591,7 @@ Return and delete the first element, returns undefined if tree set is empty
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-popFirst(): T--><!--Device-TreeSet-popFirst(): T-End-->
 
@@ -630,7 +630,7 @@ Return and delete the last element, returns undefined if tree set is empty
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-popLast(): T--><!--Device-TreeSet-popLast(): T-End-->
 
@@ -669,7 +669,7 @@ Remove a specified element from a Set object
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-remove(value: T): boolean--><!--Device-TreeSet-remove(value: T): boolean-End-->
 
@@ -713,7 +713,7 @@ Returns a new Iterator object that contains the values contained in this set
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TreeSet-values(): IterableIterator<T>--><!--Device-TreeSet-values(): IterableIterator<T>-End-->
 

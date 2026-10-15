@@ -26,7 +26,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md) | Checks whether a specified API version is available on the current device. This API provides compatibility check across different OpenHarmony/Distribution OS versions. A suitable version check method is automatically selected based on the input format and supported API versions. |
+| [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md#apiavailable) | Checks whether a specified API version is available on the current device. This API provides compatibility check across different OpenHarmony/Distribution OS versions. A suitable version check method is automatically selected based on the input format and supported API versions. |
 
 ### Enums
 
@@ -62,8 +62,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [featureVersion](arkts-basicservices-deviceinfo-con.md#featureversion) | Feature version number, which identifies the planned new feature version. The value is the third digit in **osFullName**. You are advised to use **deviceInfo.featureVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement. |
 | [firstApiVersion](arkts-basicservices-deviceinfo-con.md#firstapiversion) | First API version. |
 | [hardwareModel](arkts-basicservices-deviceinfo-con.md#hardwaremodel) | Hardware model. |
-| [hardwareProfile](arkts-basicservices-deviceinfo-con.md#hardwareprofile) | Hardware profile. |
 | [incrementalVersion](arkts-basicservices-deviceinfo-con.md#incrementalversion) | Incremental version, which is the Ohos version number generated during compilation. |
+| [kernelVersion](arkts-basicservices-deviceinfo-con.md#kernelversion) | Obtain the kernel version. The value is in the format of 'HongMeng Kernel X.Y.Z'. Example: 'HongMeng Kernel 1.0.0'. |
 | [majorVersion](arkts-basicservices-deviceinfo-con.md#majorversion) | Major version number, which increments with the main version. The value is the first digit in **osFullName**. You are advised to use **deviceInfo.majorVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement. |
 | [manufacture](arkts-basicservices-deviceinfo-con.md#manufacture) | Device manufacturer. |
 | [marketName](arkts-basicservices-deviceinfo-con.md#marketname) | Marketing name. |
@@ -83,3 +83,4 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [softwareModel](arkts-basicservices-deviceinfo-con.md#softwaremodel) | Software model. |
 | [udid](arkts-basicservices-deviceinfo-con.md#udid) | UDID of the device. This API will start a temporary process during execution. When the system load is high, blocking may occur. To ensure the response of the main thread of your application, you are advised not to call this API in the main thread. This value varies depending on the device and is fixed. To improve performance, you can store this information on a local device after obtaining it for the first time. |
 | [versionId](arkts-basicservices-deviceinfo-con.md#versionid) | Version ID, which is a concatenation of **deviceType**, **manufacture**, **brand**, **productSeries**, **osFullName**, **productModel**, **softwareModel**, **sdkApiVersion**, **incrementalVersion**, and **buildType**. To obtain a specific field value, you are advised to use the corresponding field directly (such as **deviceType** and **manufacture**) instead of parsing **versionId**, facilitating efficiency improvement. |
+| [hardwareProfile](arkts-basicservices-deviceinfo-con.md#hardwareprofile) | Hardware profile. |

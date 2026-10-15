@@ -24,7 +24,7 @@ const ACTIVATED_INPUT_METHODS: string
 
 Indicates the list of input methods that have been activated.
 
-<p>The list is a string that contains the IDs of activated input methods. The IDs are separated by colons (:), and keyboardTypes of an input method are separated by semicolons (;). An example format is `ima0:keyboardType0;keyboardType1;ima1:ima2:keyboardTypes0`. The type of &lt;b&gt;imaID&lt;/b&gt; is ElementName, and the type of &lt;b&gt;keyboard&lt;/b&gt; is int.
+<p>The list is a string that contains the IDs of activated input methods. The IDs are separated by colons (:), and keyboardTypes of an input method are separated by semicolons (;). An example format is `ima0:keyboardType0;keyboardType1;ima1:ima2:keyboardTypes0`. The type of <b>imaID</b> is ElementName, and the type of <b>keyboard</b> is int.
 
 **Type:** string
 

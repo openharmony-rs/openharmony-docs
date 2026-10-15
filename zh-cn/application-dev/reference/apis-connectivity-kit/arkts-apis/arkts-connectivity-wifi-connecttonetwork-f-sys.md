@@ -40,6 +40,7 @@ function connectToNetwork(networkId: number): boolean
 | --- | --- |
 | boolean | true:操作成功， false:操作失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

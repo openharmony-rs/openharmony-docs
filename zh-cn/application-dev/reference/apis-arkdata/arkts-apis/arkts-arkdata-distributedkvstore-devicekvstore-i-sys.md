@@ -26,7 +26,7 @@ interface DeviceKVStore extends SingleKVStore
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="getresultset-8"></a>
+<a id="getresultset9"></a>
 
 ## getResultSet
 
@@ -63,6 +63,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -393,7 +394,9 @@ try {
 }
 ```
 
-<a id="getresultset-9"></a>
+<!--DelEnd-->
+
+<a id="getresultset10"></a>
 
 ## getResultSet
 
@@ -435,6 +438,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVSto
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -765,7 +769,9 @@ try {
 }
 ```
 
-<a id="getresultset-10"></a>
+<!--DelEnd-->
+
+<a id="getresultset11"></a>
 
 ## getResultSet
 
@@ -803,6 +809,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1133,7 +1140,9 @@ try {
 }
 ```
 
-<a id="getresultset-11"></a>
+<!--DelEnd-->
+
+<a id="getresultset12"></a>
 
 ## getResultSet
 
@@ -1176,6 +1185,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1505,3 +1515,5 @@ try {
   console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

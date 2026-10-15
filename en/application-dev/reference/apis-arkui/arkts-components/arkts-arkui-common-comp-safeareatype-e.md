@@ -12,24 +12,6 @@ Enumerates the types for expanding layout safe areas.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SYSTEM
-
-```TypeScript
-SYSTEM = 0
-```
-
-Default non-safe area of the system, including the status bar and navigation bar.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-SafeAreaType-SYSTEM = 0--><!--Device-SafeAreaType-SYSTEM = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## CUTOUT
 
 ```TypeScript
@@ -63,5 +45,23 @@ Soft keyboard area.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SafeAreaType-KEYBOARD = 2--><!--Device-SafeAreaType-KEYBOARD = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SYSTEM
+
+```TypeScript
+SYSTEM = 0
+```
+
+Default non-safe area of the system, including the status bar and navigation bar.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SafeAreaType-SYSTEM = 0--><!--Device-SafeAreaType-SYSTEM = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

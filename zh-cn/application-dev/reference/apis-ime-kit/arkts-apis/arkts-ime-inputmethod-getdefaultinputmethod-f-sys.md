@@ -6,7 +6,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getdefaultinputmethod-1"></a>
+<a id="getdefaultinputmethod2"></a>
 
 ## getDefaultInputMethod
 
@@ -48,6 +48,7 @@ function getDefaultInputMethod(userId?: number): InputMethodProperty
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
 | [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,3 +62,5 @@ try {
   console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

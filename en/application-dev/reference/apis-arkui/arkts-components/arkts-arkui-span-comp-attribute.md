@@ -6,9 +6,9 @@ declare class SpanAttribute extends BaseSpan<SpanAttribute>
 
 Inherited from [BaseSpan](arkts-arkui-span-comp-basespan-c.md).
 
-@extends CommonMethod&lt;SpanAttribute&gt; [since 7 - 10] @extends BaseSpan&lt;SpanAttribute&gt; [since 11]
+@extends CommonMethod<SpanAttribute> [since 7 - 10] @extends BaseSpan<SpanAttribute> [since 11]
 
-**Inheritance/Implementation:** SpanAttribute extends BaseSpan<SpanAttribute>
+**Inheritance/Implementation:** SpanAttribute extends BaseSpan&lt;SpanAttribute&gt;
 
 **Since:** 7
 
@@ -40,6 +40,8 @@ Sets the text decoration line style and its color. If this API is not used, the 
 | --- | --- | --- | --- |
 | value | [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md) | Yes | Text decoration line style object.<br>**Note:** <br>The style parameter does not support the card capability.<br>**Since:** 12 |
 
+<a id="font1"></a>
+
 ## font
 
 ```TypeScript
@@ -68,7 +70,7 @@ Sets the text style, covering the font size, font width, Font family, and font s
 | --- | --- | --- | --- |
 | value | Font | Yes | Text style, including the font size, font weight, font family, and font style. |
 
-<a id="font-1"></a>
+<a id="font2"></a>
 
 ## font
 
@@ -217,6 +219,8 @@ Sets the attributes of a variable font. This is applicable to scenarios where va
 | --- | --- | --- | --- |
 | fontVariations | Array&lt;[FontVariation](../arkts-apis/arkts-arkui-fontvariation-t.md)&gt; | Yes | Array of variable font attributes. Each array element contains two fields: axis (attribute axis name) and value (attribute value). The fontVariations attribute has a higher priority than [fontWeight](#fontweight). |
 
+<a id="fontweight1"></a>
+
 ## fontWeight
 
 ```TypeScript
@@ -246,7 +250,7 @@ Sets the font weight of the text. If the value is too large, the text may be cli
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text.<br>For the number type, the value ranges from [100, 900], at an interval of 100. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enumvalues in FontWeight. If the value is set too large, the font may be truncated under different fonts. If a value outside the value range or not meeting the interval requirement is passed in, the default value is used. <br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
 
-<a id="fontweight-1"></a>
+<a id="fontweight2"></a>
 
 ## fontWeight
 

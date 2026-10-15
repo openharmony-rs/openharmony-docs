@@ -6,7 +6,7 @@ declare class TextClockAttribute extends CommonMethod<TextClockAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported:
 
-**Inheritance/Implementation:** TextClockAttribute extends CommonMethod<TextClockAttribute>
+**Inheritance/Implementation:** TextClockAttribute extends CommonMethod&lt;TextClockAttribute&gt;
 
 **Since:** 8
 
@@ -120,11 +120,11 @@ fontFeature(value: string)
 
 Sets the font feature, for example, monospaced digits.
 
-Format: normal \| \&lt;feature-tag-value\&gt;
+Format: normal \| \<feature-tag-value\>
 
-Format of **\&lt;feature-tag-value\&gt;**: \&lt;string\&gt; \[ \&lt;integer\&gt; \| on \| off ]
+Format of **\<feature-tag-value\>**: \<string\> \[ \<integer\> \| on \| off ]
 
-There can be multiple **\&lt;feature-tag-value\&gt;** values, which are separated by commas (,).
+There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).
 
 For example, the input format for monospaced clock fonts is "ss01" on.
 
@@ -144,7 +144,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Text feature effect, used to set the OpenType features of the text. Format: normal &#124; &lt;feature-tag-value&gt;, where the &lt;feature-tag-value&gt; format is: &lt;string&gt; [ &lt;integer&gt; &#124; on &#124; off ]. Multiple features can be set, separated by ','. For example, the format for using monospaced clock digits is:'"ss01" on'. |
+| value | string | Yes | Text feature effect, used to set the OpenType features of the text. Format: normal &#124;<feature-tag-value>, where the <feature-tag-value> format is: <string> [ <integer> &#124; on &#124; off ]. Multiple features can be set, separated by ','. For example, the format for using monospaced clock digits is:'"ss01" on'. |
 
 ## fontSize
 

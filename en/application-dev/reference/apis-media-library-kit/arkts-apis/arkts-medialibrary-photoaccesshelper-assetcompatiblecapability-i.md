@@ -32,7 +32,7 @@ Whether high-resolution assets are supported. **true**: yes; **false**: no.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AssetCompatibleCapability-supportedHighResolution: boolean--><!--Device-AssetCompatibleCapability-supportedHighResolution: boolean-End-->
 
@@ -52,7 +52,7 @@ Supported MIME types.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AssetCompatibleCapability-supportedMimeType?: Array<string>--><!--Device-AssetCompatibleCapability-supportedMimeType?: Array<string>-End-->
 

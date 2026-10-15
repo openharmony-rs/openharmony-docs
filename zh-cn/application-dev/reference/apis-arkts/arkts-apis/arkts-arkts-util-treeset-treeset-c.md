@@ -91,7 +91,7 @@ add(value: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-add(value: T): boolean--><!--Device-TreeSet-add(value: T): boolean-End-->
 
@@ -133,7 +133,7 @@ clear(): void
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-clear(): void--><!--Device-TreeSet-clear(): void-End-->
 
@@ -236,7 +236,7 @@ entries(): IterableIterator<[T, T]>
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-entries(): IterableIterator<[T, T]>--><!--Device-TreeSet-entries(): IterableIterator<[T, T]>-End-->
 
@@ -304,7 +304,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: TreeSet<T>) => void, thisArg?: Ob
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callbackFn | (value?: T, key?: T, set?: TreeSet&lt;T&gt;) =&gt; void | 是 | 遍历实例对象中每个元素时调用的回调函数，开发者可在回调中对元素及其下标进行自定义处理。 |
-| thisArg | Object | 否 | callbackFn被调用时用作this值。当需要在回调函数中使用特定的this上下文（如访问外部对象属性）时传入此参数。不传入时默认值为undefined。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值。ArkTS中箭头函数的this取自外层作用域，普通函数不支持使用this；如需访问外部对象，请在箭头函数中直接引用。不传入时默认值为undefined。 |
 
 **错误码：**
 
@@ -347,7 +347,7 @@ getFirstValue(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-getFirstValue(): T--><!--Device-TreeSet-getFirstValue(): T-End-->
 
@@ -431,7 +431,7 @@ getLastValue(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-getLastValue(): T--><!--Device-TreeSet-getLastValue(): T-End-->
 
@@ -515,7 +515,7 @@ has(value: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-has(value: T): boolean--><!--Device-TreeSet-has(value: T): boolean-End-->
 
@@ -559,7 +559,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-isEmpty(): boolean--><!--Device-TreeSet-isEmpty(): boolean-End-->
 
@@ -596,7 +596,7 @@ popFirst(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-popFirst(): T--><!--Device-TreeSet-popFirst(): T-End-->
 
@@ -635,7 +635,7 @@ popLast(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-popLast(): T--><!--Device-TreeSet-popLast(): T-End-->
 
@@ -674,7 +674,7 @@ remove(value: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-remove(value: T): boolean--><!--Device-TreeSet-remove(value: T): boolean-End-->
 
@@ -718,7 +718,7 @@ values(): IterableIterator<T>
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeSet-values(): IterableIterator<T>--><!--Device-TreeSet-values(): IterableIterator<T>-End-->
 

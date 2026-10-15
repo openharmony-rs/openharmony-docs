@@ -6,6 +6,8 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getopname1"></a>
+
 ## getOpName
 
 ```TypeScript
@@ -31,7 +33,7 @@ function getOpName(slotId: number, callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
@@ -58,7 +60,7 @@ try {
 ```
 
 
-<a id="getopname-1"></a>
+<a id="getopname2"></a>
 
 ## getOpName
 
@@ -90,7 +92,7 @@ function getOpName(slotId: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |

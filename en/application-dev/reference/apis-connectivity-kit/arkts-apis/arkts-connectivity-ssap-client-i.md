@@ -36,6 +36,8 @@ Closes the client and disconnects from the remote server. To terminate the curre
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-close(): void--><!--Device-Client-close(): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -44,7 +46,7 @@ Closes the client and disconnects from the remote server. To terminate the curre
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -62,9 +64,13 @@ Initiates a connection to the server. This API uses a promise to return the resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-connect(): Promise<void>--><!--Device-Client-connect(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [disconnect](#disconnect) Disconnects from the server.
 
 **Return value:**
 
@@ -76,7 +82,7 @@ Initiates a connection to the server. This API uses a promise to return the resu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -94,9 +100,13 @@ Initiates a disconnection to the server, disconnecting an existing connection or
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-disconnect(): Promise<void>--><!--Device-Client-disconnect(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [connect](#connect) Connects to the server.
 
 **Return value:**
 
@@ -108,7 +118,7 @@ Initiates a disconnection to the server, disconnecting an existing connection or
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -126,6 +136,8 @@ Obtains the list of services supported by the server. This API uses a promise to
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-getServices(): Promise<Service[]>--><!--Device-Client-getServices(): Promise<Service[]>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -140,7 +152,7 @@ Obtains the list of services supported by the server. This API uses a promise to
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -156,9 +168,13 @@ Unsubscribes from the connection status change event. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void--><!--Device-Client-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [onConnectionStateChange](#onconnectionstatechange) Subscribes to the connection status change event.
 
 **Parameters:**
 
@@ -178,9 +194,13 @@ Unsubscribes from the MTU change event. This API uses an asynchronous callback t
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-offMtuChange(callback?: Callback<int>): void--><!--Device-Client-offMtuChange(callback?: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [onMtuChange](#onmtuchange) Subscribes to the MTU change event.
 
 **Parameters:**
 
@@ -200,9 +220,13 @@ Unsubscribes from the property change event. This API uses an asynchronous callb
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-offPropertyChange(callback?: Callback<Property>): void--><!--Device-Client-offPropertyChange(callback?: Callback<Property>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [onPropertyChange](#onpropertychange) Subscribes to the property change event.
 
 **Parameters:**
 
@@ -224,9 +248,13 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void--><!--Device-Client-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [offConnectionStateChange](#offconnectionstatechange) Unsubscribes from the connection status change event.
 
 **Parameters:**
 
@@ -248,9 +276,13 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-onMtuChange(callback: Callback<int>): void--><!--Device-Client-onMtuChange(callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [offMtuChange](#offmtuchange) Unsubscribes from the MTU change event.
 
 **Parameters:**
 
@@ -272,9 +304,13 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-onPropertyChange(callback: Callback<Property>): void--><!--Device-Client-onPropertyChange(callback: Callback<Property>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [offPropertyChange](#offpropertychange) Unsubscribes from the property change event.
 
 **Parameters:**
 
@@ -296,6 +332,8 @@ Reads a server attribute. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Client-readProperty(property: Property): Promise<Property>--><!--Device-Client-readProperty(property: Property): Promise<Property>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -316,7 +354,7 @@ Reads a server attribute. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100043](../errorcode-nearlink-service.md#36100043-invalid-uuid) | Invalid UUID in property. |
 | [36100044](../errorcode-nearlink-service.md#36100044-standard-nearlink-service-uuid-not-allowed) | NearLink standard UUID not allowed. |
@@ -335,6 +373,8 @@ Initiates an MTU negotiation request. This API uses a promise to return the resu
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Client-requestMtuSize(mtu: int): Promise<void>--><!--Device-Client-requestMtuSize(mtu: int): Promise<void>-End-->
 
@@ -356,7 +396,7 @@ Initiates an MTU negotiation request. This API uses a promise to return the resu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -373,6 +413,8 @@ Sets a [Property](arkts-connectivity-ssap-property-i.md) change notification. Th
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Client-setPropertyNotification(property: Property, enable: boolean): Promise<void>--><!--Device-Client-setPropertyNotification(property: Property, enable: boolean): Promise<void>-End-->
 
@@ -395,7 +437,7 @@ Sets a [Property](arkts-connectivity-ssap-property-i.md) change notification. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100043](../errorcode-nearlink-service.md#36100043-invalid-uuid) | Invalid UUID in property. |
 | [36100044](../errorcode-nearlink-service.md#36100044-standard-nearlink-service-uuid-not-allowed) | NearLink standard UUID not allowed. |
@@ -414,6 +456,8 @@ Writes a property to the server. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Client-writeProperty(property: Property, writeType: PropertyWriteType): Promise<void>--><!--Device-Client-writeProperty(property: Property, writeType: PropertyWriteType): Promise<void>-End-->
 
@@ -436,7 +480,7 @@ Writes a property to the server. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100043](../errorcode-nearlink-service.md#36100043-invalid-uuid) | Invalid UUID in property. |
 | [36100044](../errorcode-nearlink-service.md#36100044-standard-nearlink-service-uuid-not-allowed) | NearLink standard UUID not allowed. |

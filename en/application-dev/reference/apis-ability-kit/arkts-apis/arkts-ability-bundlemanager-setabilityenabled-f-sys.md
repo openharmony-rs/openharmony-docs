@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="setabilityenabled1"></a>
+
 ## setAbilityEnabled
 
 ```TypeScript
@@ -49,6 +51,7 @@ Enables or disables an ability of an application or an application clone. This A
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified abilityInfo is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -83,8 +86,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setabilityenabled-1"></a>
+
+<a id="setabilityenabled2"></a>
 
 ## setAbilityEnabled
 
@@ -110,7 +115,7 @@ Enables or disables an ability. This API uses an asynchronous callback to return
 | --- | --- | --- | --- |
 | info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | Yes | Information about the target ability. |
 | isEnabled | boolean | Yes | Whether to enable the application. **true** to enable, **false** otherwise. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If setting the enabled or disabled state of the component is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -122,6 +127,7 @@ Enables or disables an ability. This API uses an asynchronous callback to return
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified abilityInfo is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -158,8 +164,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setabilityenabled-2"></a>
+
+<a id="setabilityenabled3"></a>
 
 ## setAbilityEnabled
 
@@ -202,6 +210,7 @@ Enables or disables an ability. This API uses a promise to return the result.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified abilityInfo is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -235,3 +244,5 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

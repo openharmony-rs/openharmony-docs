@@ -12,13 +12,13 @@ Enumerates the axis types for focus axis events.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ABS_X
+## ABS_BRAKE
 
 ```TypeScript
-ABS_X = 0
+ABS_BRAKE = 5
 ```
 
-Game controller x-axis.
+Game controller BRAKE-axis.
 
 **Since:** 15
 
@@ -26,61 +26,7 @@ Game controller x-axis.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
-<!--Device-AxisModel-ABS_X = 0--><!--Device-AxisModel-ABS_X = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_Y
-
-```TypeScript
-ABS_Y = 1
-```
-
-Game controller y-axis.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-AxisModel-ABS_Y = 1--><!--Device-AxisModel-ABS_Y = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_Z
-
-```TypeScript
-ABS_Z = 2
-```
-
-Game controller z-axis.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-AxisModel-ABS_Z = 2--><!--Device-AxisModel-ABS_Z = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_RZ
-
-```TypeScript
-ABS_RZ = 3
-```
-
-Game controller rz-axis.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-AxisModel-ABS_RZ = 3--><!--Device-AxisModel-ABS_RZ = 3-End-->
+<!--Device-AxisModel-ABS_BRAKE = 5--><!--Device-AxisModel-ABS_BRAKE = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,24 +45,6 @@ Game controller GAS-axis.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-AxisModel-ABS_GAS = 4--><!--Device-AxisModel-ABS_GAS = 4-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_BRAKE
-
-```TypeScript
-ABS_BRAKE = 5
-```
-
-Game controller BRAKE-axis.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-AxisModel-ABS_BRAKE = 5--><!--Device-AxisModel-ABS_BRAKE = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,96 +81,6 @@ Game controller HAT0Y-axis.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-AxisModel-ABS_HAT0Y = 7--><!--Device-AxisModel-ABS_HAT0Y = 7-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_RX
-
-```TypeScript
-ABS_RX = 8
-```
-
-Game controller RX-axis.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-<!--Device-AxisModel-ABS_RX = 8--><!--Device-AxisModel-ABS_RX = 8-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_RY
-
-```TypeScript
-ABS_RY = 9
-```
-
-Game controller RY-axis.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-<!--Device-AxisModel-ABS_RY = 9--><!--Device-AxisModel-ABS_RY = 9-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_THROTTLE
-
-```TypeScript
-ABS_THROTTLE = 10
-```
-
-Game controller THROTTLE-axis.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-<!--Device-AxisModel-ABS_THROTTLE = 10--><!--Device-AxisModel-ABS_THROTTLE = 10-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_RUDDER
-
-```TypeScript
-ABS_RUDDER = 11
-```
-
-Game controller RUDDER-axis.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-<!--Device-AxisModel-ABS_RUDDER = 11--><!--Device-AxisModel-ABS_RUDDER = 11-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABS_WHEEL
-
-```TypeScript
-ABS_WHEEL = 12
-```
-
-Game controller WHEEL-axis.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-<!--Device-AxisModel-ABS_WHEEL = 12--><!--Device-AxisModel-ABS_WHEEL = 12-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -351,5 +189,167 @@ Game controller HAT3Y-axis.
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AxisModel-ABS_HAT3Y = 18--><!--Device-AxisModel-ABS_HAT3Y = 18-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_RUDDER
+
+```TypeScript
+ABS_RUDDER = 11
+```
+
+Game controller RUDDER-axis.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-AxisModel-ABS_RUDDER = 11--><!--Device-AxisModel-ABS_RUDDER = 11-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_RX
+
+```TypeScript
+ABS_RX = 8
+```
+
+Game controller RX-axis.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-AxisModel-ABS_RX = 8--><!--Device-AxisModel-ABS_RX = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_RY
+
+```TypeScript
+ABS_RY = 9
+```
+
+Game controller RY-axis.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-AxisModel-ABS_RY = 9--><!--Device-AxisModel-ABS_RY = 9-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_RZ
+
+```TypeScript
+ABS_RZ = 3
+```
+
+Game controller rz-axis.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-AxisModel-ABS_RZ = 3--><!--Device-AxisModel-ABS_RZ = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_THROTTLE
+
+```TypeScript
+ABS_THROTTLE = 10
+```
+
+Game controller THROTTLE-axis.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-AxisModel-ABS_THROTTLE = 10--><!--Device-AxisModel-ABS_THROTTLE = 10-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_WHEEL
+
+```TypeScript
+ABS_WHEEL = 12
+```
+
+Game controller WHEEL-axis.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-AxisModel-ABS_WHEEL = 12--><!--Device-AxisModel-ABS_WHEEL = 12-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_X
+
+```TypeScript
+ABS_X = 0
+```
+
+Game controller x-axis.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-AxisModel-ABS_X = 0--><!--Device-AxisModel-ABS_X = 0-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_Y
+
+```TypeScript
+ABS_Y = 1
+```
+
+Game controller y-axis.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-AxisModel-ABS_Y = 1--><!--Device-AxisModel-ABS_Y = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ABS_Z
+
+```TypeScript
+ABS_Z = 2
+```
+
+Game controller z-axis.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-AxisModel-ABS_Z = 2--><!--Device-AxisModel-ABS_Z = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

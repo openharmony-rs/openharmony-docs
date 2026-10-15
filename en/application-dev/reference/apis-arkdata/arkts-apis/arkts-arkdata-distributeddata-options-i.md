@@ -10,7 +10,7 @@ Provides KV store configuration.
 
 **Deprecated since:** 9
 
-**Substitutes:** Options
+**Substitutes:** [Options](arkts-arkdata-distributedkvstore-options-i.md)
 
 <!--Device-distributedData-interface Options--><!--Device-distributedData-interface Options-End-->
 
@@ -37,7 +37,7 @@ ohos.permission.DISTRIBUTED_DATASYNC
 
 **Deprecated since:** 9
 
-**Substitutes:** autoSync
+**Substitutes:** [autoSync](arkts-arkdata-distributedkvstore-options-i.md#autosync)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -59,7 +59,7 @@ Whether to back up the KV store. The default value is **true**, which means to b
 
 **Deprecated since:** 9
 
-**Substitutes:** backup
+**Substitutes:** [backup](arkts-arkdata-distributedkvstore-options-i.md#backup)
 
 <!--Device-Options-backup?: boolean--><!--Device-Options-backup?: boolean-End-->
 
@@ -79,7 +79,7 @@ Whether to create a KV store if the database file does not exist. The default va
 
 **Deprecated since:** 9
 
-**Substitutes:** createIfMissing
+**Substitutes:** [createIfMissing](arkts-arkdata-distributedkvstore-options-i.md#createifmissing)
 
 <!--Device-Options-createIfMissing?: boolean--><!--Device-Options-createIfMissing?: boolean-End-->
 
@@ -99,7 +99,7 @@ Whether to encrypt the KV store. The default value is **false**, which means the
 
 **Deprecated since:** 9
 
-**Substitutes:** encrypt
+**Substitutes:** [encrypt](arkts-arkdata-distributedkvstore-options-i.md#encrypt)
 
 <!--Device-Options-encrypt?: boolean--><!--Device-Options-encrypt?: boolean-End-->
 
@@ -119,7 +119,7 @@ Type of the KV store to create. The default value is **DEVICE_COLLABORATION**, w
 
 **Deprecated since:** 9
 
-**Substitutes:** kvStoreType
+**Substitutes:** [kvStoreType](arkts-arkdata-distributedkvstore-options-i.md#kvstoretype)
 
 <!--Device-Options-kvStoreType?: KVStoreType--><!--Device-Options-kvStoreType?: KVStoreType-End-->
 
@@ -139,7 +139,7 @@ Schema that defines the values stored in the KV store. The default value is **un
 
 **Deprecated since:** 9
 
-**Substitutes:** schema
+**Substitutes:** [schema](arkts-arkdata-distributedkvstore-options-i.md#schema)
 
 <!--Device-Options-schema?: Schema--><!--Device-Options-schema?: Schema-End-->
 
@@ -159,7 +159,7 @@ Security level (S1 to S4) of the KV store.
 
 **Deprecated since:** 9
 
-**Substitutes:** securityLevel
+**Substitutes:** [securityLevel](arkts-arkdata-distributedkvstore-options-i.md#securitylevel)
 
 <!--Device-Options-securityLevel?: SecurityLevel--><!--Device-Options-securityLevel?: SecurityLevel-End-->
 

@@ -30,7 +30,7 @@ Media file types used for filtering.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PhotoViewMimeTypeFileSizeFilter-photoViewMimeType: PhotoViewMIMETypes--><!--Device-PhotoViewMimeTypeFileSizeFilter-photoViewMimeType: PhotoViewMIMETypes-End-->
 
@@ -48,7 +48,7 @@ Media file size used for filtering.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PhotoViewMimeTypeFileSizeFilter-sizeFilter: FileSizeFilter--><!--Device-PhotoViewMimeTypeFileSizeFilter-sizeFilter: FileSizeFilter-End-->
 

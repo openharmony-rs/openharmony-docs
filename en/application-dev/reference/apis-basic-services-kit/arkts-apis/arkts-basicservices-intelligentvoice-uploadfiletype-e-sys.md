@@ -4,7 +4,7 @@
 enum UploadFileType
 ```
 
-Enumerates upload file type. @enum {number}
+Enumerates upload file type.
 
 **Since:** 12
 

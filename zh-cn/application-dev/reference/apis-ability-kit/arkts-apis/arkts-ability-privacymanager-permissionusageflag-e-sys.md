@@ -14,24 +14,6 @@ enum PermissionUsageFlag
 
 **系统接口：** 此接口为系统接口。
 
-## FLAG_PERMISSION_USAGE_SUMMARY
-
-```TypeScript
-FLAG_PERMISSION_USAGE_SUMMARY = 0
-```
-
-表示查询总览数据。
-
-**起始版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0--><!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0-End-->
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
 ## FLAG_PERMISSION_USAGE_DETAIL
 
 ```TypeScript
@@ -45,6 +27,24 @@ FLAG_PERMISSION_USAGE_DETAIL = 1
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_DETAIL = 1--><!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_DETAIL = 1-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+## FLAG_PERMISSION_USAGE_SUMMARY
+
+```TypeScript
+FLAG_PERMISSION_USAGE_SUMMARY = 0
+```
+
+表示查询总览数据。
+
+**起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0--><!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 

@@ -18,21 +18,21 @@ declare class InputMethodExtensionContext extends ExtensionContext
 
 // 1. 定义InputMethodExtensionAbility子类
 class InputMethodExtAbility extends InputMethodExtensionAbility {
- onCreate(want) {
- // 获取上下文对象
- let context = this.context; // InputMethodExtensionContext实例
- }
+  onCreate(want) {
+    // 获取上下文对象
+    let context = this.context; // InputMethodExtensionContext实例
+  }
 
- onDestroy() {
- // 在生命周期回调中销毁自身
- this.context.destroy();
- }
+  onDestroy() {
+    // 在生命周期回调中销毁自身
+    this.context.destroy();
+  }
 }
 
 // 2. 拉起目标应用（如输入法设置页面）
 let targetWant = {
- bundleName: "com.example.settings",
- abilityName: "SettingsAbility"
+  bundleName: "com.example.settings",
+  abilityName: "SettingsAbility"
 };
 this.context.startAbility(targetWant);
 ```
@@ -66,7 +66,7 @@ connectAbility(want: Want, options: ConnectOptions): number
 将当前Ability连接到ServiceExtensionAbility。<br> <br>  
 > **说明：** <br>
 > <br>
-> 输入法应用不建议主动连接ServiceExtensionAbility，如需与系统组件通信建议使用sendPrivateCommand或[on('privateCommand')](arkts-ime-inputmethodengine-inputmethodability-i.md#onprivatecommand)私有命令通道。
+> 输入法应用不建议主动连接ServiceExtensionAbility，如需与系统组件通信建议使用sendPrivateCommand或on('privateCommand')私有命令通道。
 
 **起始版本：** 9
 
@@ -85,7 +85,7 @@ connectAbility(want: Want, options: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 用于指定目标ServiceExtensionAbility的Want类型信息。 |
-| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md) | 是 | 连接回调，用于返回连接成功、中断或失败的信息。 |
+| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md) | 是 | 连接回调，用于返回连接成功、中断或失败的信息。 |
 
 **返回值：**
 
@@ -97,11 +97,11 @@ connectAbility(want: Want, options: ConnectOptions): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000005](../../apis-ability-kit/errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 10+ |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 10+ |
 | [16000006](../../apis-ability-kit/errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed.<br>**适用版本：** 10+ |
@@ -150,11 +150,11 @@ connectAbilityWithAccount(want: Want, accountId: number): number
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000005](../../apis-ability-kit/errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 10+ |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 10+ |
 | [16000006](../../apis-ability-kit/errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed.<br>**适用版本：** 10+ |
@@ -171,7 +171,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 将当前Ability连接到ServiceExtensionAbility。<br> <br>  
 > **说明：** <br>
 > <br>
-> 输入法应用不建议主动连接ServiceExtensionAbility，如需与系统组件通信建议使用sendPrivateCommand或[on('privateCommand')](arkts-ime-inputmethodengine-inputmethodability-i.md#onprivatecommand)私有命令通道。
+> 输入法应用不建议主动连接ServiceExtensionAbility，如需与系统组件通信建议使用sendPrivateCommand或on('privateCommand')私有命令通道。
 
 **起始版本：** 9
 
@@ -190,7 +190,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 用于指定目标ServiceExtensionAbility的Want类型信息。 |
-| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md) | 是 | 连接回调，用于返回连接成功、中断或失败的信息。. |
+| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md) | 是 | 连接回调，用于返回连接成功、中断或失败的信息。. |
 
 **返回值：**
 
@@ -202,17 +202,19 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000005](../../apis-ability-kit/errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 10+ |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 10+ |
 | [16000006](../../apis-ability-kit/errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed.<br>**适用版本：** 10+ |
 | [16000008](../../apis-ability-kit/errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires.<br>**适用版本：** 10+ |
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI.<br>**适用版本：** 10+ |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out.<br>**适用版本：** 10+ |
+
+<a id="disconnectability1"></a>
 
 ## disconnectAbility
 
@@ -245,11 +247,11 @@ disconnectAbility(connection: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
 
-<a id="disconnectability-1"></a>
+<a id="disconnectability2"></a>
 
 ## disconnectAbility
 
@@ -287,9 +289,11 @@ disconnectAbility(connection: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
+
+<a id="disconnectserviceextensionability1"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -322,11 +326,11 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
 
-<a id="disconnectserviceextensionability-1"></a>
+<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -367,9 +371,11 @@ disconnectServiceExtensionAbility(connection: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
+
+<a id="startabilitywithaccount1"></a>
 
 ## startAbilityWithAccount
 
@@ -407,7 +413,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<v
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -419,12 +425,12 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<v
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000012](../../apis-ability-kit/errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
 | [16000013](../../apis-ability-kit/errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
-<a id="startabilitywithaccount-1"></a>
+<a id="startabilitywithaccount2"></a>
 
 ## startAbilityWithAccount
 
@@ -467,7 +473,7 @@ startAbilityWithAccount(want: Want, accountId: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -479,10 +485,12 @@ startAbilityWithAccount(want: Want, accountId: number): Promise<void>
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000012](../../apis-ability-kit/errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
 | [16000013](../../apis-ability-kit/errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed.         2. System service failed to communicate with dependency module. |
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
+
+<a id="terminateself1"></a>
 
 ## terminateSelf
 
@@ -496,7 +504,7 @@ terminateSelf(callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [destroy](arkts-ime-inputmethodextensioncontext-c.md#destroy)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [destroy](arkts-ime-inputmethodextensioncontext-c.md#destroy1)(callback: AsyncCallback&lt;void&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -512,7 +520,7 @@ terminateSelf(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当销毁输入法应用成功时，err为undefined；否则为错误对象。 |
 
-<a id="terminateself-1"></a>
+<a id="terminateself2"></a>
 
 ## terminateSelf
 

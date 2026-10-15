@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="acquireformstate1"></a>
+
 ## acquireFormState
 
 ```TypeScript
@@ -34,6 +36,7 @@ function acquireFormState(want: Want, callback: AsyncCallback<formInfo.FormState
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 查询卡片状态时携带的want信息。需要包含bundle名、ability名、module名、卡片名、卡片规格等。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[formInfo.FormStateInfo](arkts-form-forminfo-formstateinfo-i.md)&gt; | 是 | 回调函数。当获取卡片状态成功，error为undefined，data为获取到的卡片状态；否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,8 +63,10 @@ formHost.acquireFormState(want, (error: Base.BusinessError, data: formInfo.FormS
 });
 ```
 
+<!--DelEnd-->
 
-<a id="acquireformstate-1"></a>
+
+<a id="acquireformstate2"></a>
 
 ## acquireFormState
 
@@ -97,6 +102,7 @@ function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>
 | --- | --- |
 | Promise&lt;[formInfo.FormStateInfo](arkts-form-forminfo-formstateinfo-i.md)&gt; | Promise对象。返回卡片状态。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -120,3 +126,5 @@ formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
   console.error(`formHost acquireFormState, error: ${JSON.stringify(error)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -4,13 +4,13 @@
 export declare struct ToolBar
 ```
 
-The **Toolbar** component is designed to present a set of action options related to the current screen, displayed at the bottom of the screen. It can display up to five child components. If there are six or more child components, the first four are shown directly, and the additional ones are grouped under a **More** item on the rightmost side of the toolbar.
+The **Toolbar** component is used to display operation options for the current interface content, shown at the bottom of the interface. It is suitable for scenarios where quick action entry points need to be provided for users, such as copy, paste, and share operations on an editing page. A maximum of 5 entries are displayed at the bottom. Any excess entries are collapsed into a "More" item, displayed on the far right.
 
 > **NOTE:** 
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **ToolBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ToolBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ToolBar** component.
+> - If the **ToolBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **ToolBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ToolBar** component.
 
 **Since:** 10
 
@@ -34,9 +34,7 @@ activateIndex?: number
 
 Index of the active item.
 
-The value must be greater than or equal to -1.
-
-The default value is **-1**, indicating that there is no active item. Values less than -1 are treated as no active item.
+Default value: **-1**, indicating no active item. Values less than -1 are treated as no active item.
 
 **Type:** number
 

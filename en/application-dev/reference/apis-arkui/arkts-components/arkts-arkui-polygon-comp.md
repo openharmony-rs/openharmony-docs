@@ -28,16 +28,15 @@ Draws a polygon.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-PolygonInterface-new (options?: PolygonOptions): PolygonAttribute--><!--Device-PolygonInterface-new (options?: PolygonOptions): PolygonAttribute-End-->
+<!--Device-PolygonInterface-(options?: PolygonOptions): PolygonAttribute--><!--Device-PolygonInterface-(options?: PolygonOptions): PolygonAttribute-End-->
 
-**System capability:** 
-- API version 9 and later: SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PolygonOptions](arkts-arkui-polygon-comp-polygonoptions-i.md) | No | Configuration options of the **Polygon** component, used to define the width and height of the drawing area. Pass this parameter when the polygon size needs to be specified. If it is not passed, the default width and height (both 0) are used. If **undefined** or **null** is passed, the parameter setting does not take effect and the component attributes remain unchanged. |
+| options | [PolygonOptions](arkts-arkui-polygon-comp-polygonoptions-i.md) | No | Configuration options of the **Polygon** component, used to define the width and height of the drawing area. Pass this parameter when the polygon size needs to be specified. If it is not passed, the default width and height (both 0) are used. If **undefined** or **null** is passed, the parameter setting does not take effect and the component attribute remains unchanged. |
 
 ## Polygon
 
@@ -55,15 +54,16 @@ Draws a polygon.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-PolygonInterface-(options?: PolygonOptions): PolygonAttribute--><!--Device-PolygonInterface-(options?: PolygonOptions): PolygonAttribute-End-->
+<!--Device-PolygonInterface-new (options?: PolygonOptions): PolygonAttribute--><!--Device-PolygonInterface-new (options?: PolygonOptions): PolygonAttribute-End-->
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability:** 
+- API version 9 and later: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PolygonOptions](arkts-arkui-polygon-comp-polygonoptions-i.md) | No | Configuration options of the **Polygon** component, used to define the width and height of the drawing area. Pass this parameter when the polygon size needs to be specified. If it is not passed, the default width and height (both 0) are used. If **undefined** or **null** is passed, the parameter setting does not take effect and the component attribute remains unchanged. |
+| options | [PolygonOptions](arkts-arkui-polygon-comp-polygonoptions-i.md) | No | Configuration options of the **Polygon** component, used to define the width and height of the drawing area. Pass this parameter when the polygon size needs to be specified. If it is not passed, the default width and height (both 0) are used. If **undefined** or **null** is passed, the parameter setting does not take effect and the component attributes remain unchanged. |
 
 ## Summary
 

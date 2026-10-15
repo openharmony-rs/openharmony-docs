@@ -32,15 +32,15 @@ Begin
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Moving
+## Click
 
 ```TypeScript
-Moving
+Click
 ```
 
-拖动滑块过程中。
+点击滑动条使滑块移动。
 
-**起始版本：** 7
+**起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -48,7 +48,7 @@ Moving
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SliderChangeMode-Moving--><!--Device-SliderChangeMode-Moving-End-->
+<!--Device-SliderChangeMode-Click--><!--Device-SliderChangeMode-Click-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,15 +76,15 @@ End
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Click
+## Moving
 
 ```TypeScript
-Click
+Moving
 ```
 
-点击滑动条使滑块移动。
+拖动滑块过程中。
 
-**起始版本：** 8
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -92,6 +92,6 @@ Click
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-SliderChangeMode-Click--><!--Device-SliderChangeMode-Click-End-->
+<!--Device-SliderChangeMode-Moving--><!--Device-SliderChangeMode-Moving-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

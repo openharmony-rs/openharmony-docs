@@ -25,7 +25,7 @@ Registers a callback to receive bundle status changes. This API uses an asynchro
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-ability-bundlemonitor-on-f-sys.md)
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -62,7 +62,7 @@ Registers a callback to receive bundle status changes. This API uses an asynchro
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-ability-bundlemonitor-on-f-sys.md)
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 

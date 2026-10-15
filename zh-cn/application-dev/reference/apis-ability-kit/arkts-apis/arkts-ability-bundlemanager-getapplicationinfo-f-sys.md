@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getapplicationinfo1"></a>
+
 ## getApplicationInfo
 
 ```TypeScript
@@ -44,6 +46,7 @@ function getApplicationInfo(bundleName: string, appFlags: number, callback: Asyn
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,8 +71,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getapplicationinfo-1"></a>
+
+<a id="getapplicationinfo2"></a>
 
 ## getApplicationInfo
 
@@ -111,6 +116,7 @@ function getApplicationInfo(bundleName: string, appFlags: number, userId: number
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -136,8 +142,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getapplicationinfo-2"></a>
+
+<a id="getapplicationinfo3"></a>
 
 ## getApplicationInfo
 
@@ -184,6 +192,7 @@ function getApplicationInfo(bundleName: string, appFlags: number, userId?: numbe
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -206,3 +215,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

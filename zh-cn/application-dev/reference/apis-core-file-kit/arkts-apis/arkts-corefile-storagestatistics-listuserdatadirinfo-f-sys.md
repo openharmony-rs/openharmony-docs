@@ -41,6 +41,7 @@ function listUserdataDirInfo(): Promise<Array<UserdataDirInfo>>
 | 13600001 | IPC error. |
 | 13600015 | Failed to traverse the query data partition directory. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -53,3 +54,5 @@ storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.Userda
   console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

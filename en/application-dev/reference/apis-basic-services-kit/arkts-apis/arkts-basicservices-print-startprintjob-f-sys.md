@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="startprintjob1"></a>
+
 ## startPrintJob
 
 ```TypeScript
@@ -39,6 +41,7 @@ Starts the specified print job. This API uses an asynchronous callback to return
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,8 +74,10 @@ print.startPrintJob(jobInfo, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="startprintjob-1"></a>
+
+<a id="startprintjob2"></a>
 
 ## startPrintJob
 
@@ -112,6 +117,7 @@ Starts the specified print job. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -141,3 +147,5 @@ print.startPrintJob(jobInfo).then(() => {
     console.error(`Failed to start print job. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

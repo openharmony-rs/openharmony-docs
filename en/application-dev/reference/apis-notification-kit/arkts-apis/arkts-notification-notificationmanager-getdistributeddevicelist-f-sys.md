@@ -37,6 +37,7 @@ Obtains the device types that enable cross-device notification. This API uses a 
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,3 +61,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

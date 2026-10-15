@@ -30,7 +30,7 @@ Obtains the exposure compensation values of the camera device.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposureQuery-getExposureBiasRange(): Array<double>--><!--Device-AutoExposureQuery-getExposureBiasRange(): Array<double>-End-->
 
@@ -76,7 +76,7 @@ Checks whether the specified exposure metering mode is supported.
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AutoExposureQuery-isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean--><!--Device-AutoExposureQuery-isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean-End-->
 
@@ -130,7 +130,7 @@ Checks whether an exposure mode is supported.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposureQuery-isExposureModeSupported(aeMode: ExposureMode): boolean--><!--Device-AutoExposureQuery-isExposureModeSupported(aeMode: ExposureMode): boolean-End-->
 

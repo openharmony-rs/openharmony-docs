@@ -25,7 +25,7 @@ interface of app lifecycle.
 onActive?(): void
 ```
 
-Called back when an ability enters the &lt;b&gt;ACTIVE&lt;/b&gt; state.
+Called back when an ability enters the <b>ACTIVE</b> state.
 
 **Since:** 7
 
@@ -95,7 +95,7 @@ Called back before an ability is destroyed.
 onHide?(): void
 ```
 
-Called back when an ability enters the &lt;b&gt;BACKGROUND&lt;/b&gt; state.
+Called back when an ability enters the <b>BACKGROUND</b> state.
 
 **Since:** 7
 
@@ -111,7 +111,7 @@ Called back when an ability enters the &lt;b&gt;BACKGROUND&lt;/b&gt; state.
 onInactive?(): void
 ```
 
-Called back when an ability enters the &lt;b&gt;INACTIVE&lt;/b&gt; state (an ability in this state is not interactive and may change to the &lt;b&gt;BACKGROUND&lt;/b&gt; or &lt;b&gt;ACTIVE&lt;/b&gt; state).
+Called back when an ability enters the <b>INACTIVE</b> state (an ability in this state is not interactive and may change to the <b>BACKGROUND</b> or <b>ACTIVE</b> state).
 
 **Since:** 7
 
@@ -281,7 +281,7 @@ Saves the user data of a local ability generated during runtime. After the migra
 onShow?(): void
 ```
 
-Called back when the state of an ability changes from &lt;b&gt;BACKGROUND&lt;/b&gt; to &lt;b&gt;INACTIVE&lt;/b&gt;.
+Called back when the state of an ability changes from <b>BACKGROUND</b> to <b>INACTIVE</b>.
 
 **Since:** 7
 

@@ -34,7 +34,7 @@ Obtains the number of glyphs represented by text.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-countText(text: string): int--><!--Device-Font-countText(text: string): int-End-->
 
@@ -127,7 +127,7 @@ Enables emboldened fonts.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-enableEmbolden(isEmbolden: boolean): void--><!--Device-Font-enableEmbolden(isEmbolden: boolean): void-End-->
 
@@ -164,7 +164,7 @@ Enables linear font scaling.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-enableLinearMetrics(isLinearMetrics: boolean): void--><!--Device-Font-enableLinearMetrics(isLinearMetrics: boolean): void-End-->
 
@@ -201,7 +201,7 @@ Enables subpixel font rendering.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-enableSubpixel(isSubpixel: boolean): void--><!--Device-Font-enableSubpixel(isSubpixel: boolean): void-End-->
 
@@ -374,7 +374,7 @@ Obtains the horizontal scale ratio of this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-getScaleX(): double--><!--Device-Font-getScaleX(): double-End-->
 
@@ -406,7 +406,7 @@ Obtains the font size.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-getSize(): double--><!--Device-Font-getSize(): double-End-->
 
@@ -438,7 +438,7 @@ Obtains the horizontal skew factor of this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-getSkewX(): double--><!--Device-Font-getSkewX(): double-End-->
 
@@ -660,7 +660,7 @@ Checks whether baselines are requested to be snapped to pixels when the current 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-isBaselineSnap(): boolean--><!--Device-Font-isBaselineSnap(): boolean-End-->
 
@@ -693,7 +693,7 @@ Checks whether bitmaps are used in this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-isEmbeddedBitmaps(): boolean--><!--Device-Font-isEmbeddedBitmaps(): boolean-End-->
 
@@ -726,7 +726,7 @@ Checks whether the bold effect is set for this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-isEmbolden(): boolean--><!--Device-Font-isEmbolden(): boolean-End-->
 
@@ -758,7 +758,7 @@ Checks whether auto hinting is forcibly used.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-isForceAutoHinting(): boolean--><!--Device-Font-isForceAutoHinting(): boolean-End-->
 
@@ -791,7 +791,7 @@ Checks whether linear scaling is used for this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-isLinearMetrics(): boolean--><!--Device-Font-isLinearMetrics(): boolean-End-->
 
@@ -823,7 +823,7 @@ Checks whether sub-pixel rendering is used for a font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-isSubpixel(): boolean--><!--Device-Font-isSubpixel(): boolean-End-->
 
@@ -855,7 +855,7 @@ Checks whether the font follows the theme font. By default, the font follows the
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-isThemeFontFollowed(): boolean--><!--Device-Font-isThemeFontFollowed(): boolean-End-->
 
@@ -887,7 +887,7 @@ Measures the width of a single character. If the typeface of the current font do
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-measureSingleCharacter(text: string): double--><!--Device-Font-measureSingleCharacter(text: string): double-End-->
 
@@ -937,7 +937,7 @@ Measures the width of a single character with font features. If the typeface of 
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-measureSingleCharacterWithFeatures(text: string, features: Array<FontFeature>): double--><!--Device-Font-measureSingleCharacterWithFeatures(text: string, features: Array<FontFeature>): double-End-->
 
@@ -994,7 +994,7 @@ Measures the text width.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-measureText(text: string, encoding: TextEncoding): double--><!--Device-Font-measureText(text: string, encoding: TextEncoding): double-End-->
 
@@ -1057,12 +1057,6 @@ Measures the width of text with font fallback support. When the typeface of the 
 | --- | --- |
 | number | Width of the text including fallback fonts. The value is a floating point number. |
 
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [25900001](../errorcode-drawing.md#25900001-abnormal-parameter-value) | Parameter error. Possible causes: Incorrect parameter range. |
-
 ## setBaselineSnap
 
 ```TypeScript
@@ -1073,7 +1067,7 @@ Sets whether to request that baselines be snapped to pixels when the current can
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setBaselineSnap(isBaselineSnap: boolean): void--><!--Device-Font-setBaselineSnap(isBaselineSnap: boolean): void-End-->
 
@@ -1111,7 +1105,7 @@ Sets a font edging effect.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setEdging(edging: FontEdging): void--><!--Device-Font-setEdging(edging: FontEdging): void-End-->
 
@@ -1148,7 +1142,7 @@ Sets whether to use bitmaps in this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void--><!--Device-Font-setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void-End-->
 
@@ -1187,7 +1181,7 @@ Sets whether to forcibly use auto hinting, that is, whether to always hint glyph
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setForceAutoHinting(isForceAutoHinting: boolean): void--><!--Device-Font-setForceAutoHinting(isForceAutoHinting: boolean): void-End-->
 
@@ -1226,7 +1220,7 @@ Sets a font hinting effect.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setHinting(hinting: FontHinting): void--><!--Device-Font-setHinting(hinting: FontHinting): void-End-->
 
@@ -1263,7 +1257,7 @@ Sets a horizontal scale factor for this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setScaleX(scaleX: double): void--><!--Device-Font-setScaleX(scaleX: double): void-End-->
 
@@ -1313,7 +1307,7 @@ Sets the font size.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setSize(textSize: double): void--><!--Device-Font-setSize(textSize: double): void-End-->
 
@@ -1350,7 +1344,7 @@ Sets a horizontal skew factor for this font.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setSkewX(skewX: double): void--><!--Device-Font-setSkewX(skewX: double): void-End-->
 
@@ -1400,7 +1394,7 @@ Sets whether to follow the theme font. When **followed** is set to **true**, the
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setThemeFontFollowed(followed: boolean): void--><!--Device-Font-setThemeFontFollowed(followed: boolean): void-End-->
 
@@ -1438,7 +1432,7 @@ Sets the typeface style (including attributes such as font name, weight, and ita
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Font-setTypeface(typeface: Typeface): void--><!--Device-Font-setTypeface(typeface: Typeface): void-End-->
 

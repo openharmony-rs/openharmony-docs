@@ -4,7 +4,7 @@
 declare interface IntentEntityDecoratorInfo
 ```
 
-Describes the parameters supported by the [@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator.
+Describes the parameters supported by the [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity) decorator.
 
 **Since:** 20
 
@@ -64,7 +64,7 @@ Data format of the intent entity.
 supportedQueryProperties?: string[]
 ```
 
-Supported query properties.
+List of attributes supported for querying the intent entity. The attribute names in the list must be defined in parameters.
 
 **Type:** string[]
 

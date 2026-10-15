@@ -6,6 +6,8 @@
 import { wifiext } from '@kit.ConnectivityKit';
 ```
 
+<a id="getsupportedpowermodel1"></a>
+
 ## getSupportedPowerModel
 
 ```TypeScript
@@ -37,7 +39,7 @@ function getSupportedPowerModel(): Promise<Array<PowerModel>>
 | Promise&lt;Array&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt;&gt; | Promise对象。表示功率模式。 |
 
 
-<a id="getsupportedpowermodel-1"></a>
+<a id="getsupportedpowermodel2"></a>
 
 ## getSupportedPowerModel
 

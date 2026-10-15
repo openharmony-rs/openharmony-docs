@@ -12,26 +12,6 @@ Sets the word break rule.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text, but can occur only at a space character for non-CJK text (such as English).
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
-
-<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## BREAK_ALL
 
 ```TypeScript
@@ -89,5 +69,25 @@ Attempts are made to hyphenate words at the end of each line using a hyphen. If 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
 <!--Device-WordBreak-HYPHENATION = 3--><!--Device-WordBreak-HYPHENATION = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text, but can occur only at a space character for non-CJK text (such as English).
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,26 @@ Defines the configuration information about the camera picker.
 import { cameraPicker } from '@kit.CameraKit';
 ```
 
+## c2PASignatureConfig
+
+```TypeScript
+c2PASignatureConfig?: C2PASignatureConfig
+```
+
+C2PA signature configuration.
+
+**Type:** [C2PASignatureConfig](arkts-camera-camerapicker-c2pasignatureconfig-i.md)
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PickerProfile-c2PASignatureConfig?: C2PASignatureConfig--><!--Device-PickerProfile-c2PASignatureConfig?: C2PASignatureConfig-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
 ## cameraPosition
 
 ```TypeScript
@@ -30,9 +50,29 @@ Camera position.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerProfile-cameraPosition: camera.CameraPosition--><!--Device-PickerProfile-cameraPosition: camera.CameraPosition-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+## enableC2PA
+
+```TypeScript
+enableC2PA?: boolean
+```
+
+Enables or disables the C2PA signature feature for the photo output.
+
+**Type:** boolean
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PickerProfile-enableC2PA?: boolean--><!--Device-PickerProfile-enableC2PA?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -48,7 +88,7 @@ URI for saving the configuration information. For details about the default valu
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerProfile-saveUri?: string--><!--Device-PickerProfile-saveUri?: string-End-->
 
@@ -66,7 +106,7 @@ Maximum video duration, in seconds. The default value is **0**, indicating that 
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerProfile-videoDuration?: int--><!--Device-PickerProfile-videoDuration?: int-End-->
 

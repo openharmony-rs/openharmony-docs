@@ -4,7 +4,7 @@
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## on('accessibilityStateChange')
@@ -44,7 +44,7 @@ function on(type: 'accessibilityStateChange', callback: Callback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -115,7 +115,7 @@ function on(type: 'touchGuideStateChange', callback: Callback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -184,7 +184,7 @@ function on(type: 'screenReaderStateChange', callback: Callback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -250,7 +250,7 @@ function on(type: 'touchModeChange', callback: Callback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 

@@ -6,6 +6,8 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="publish1"></a>
+
 ## publish
 
 ```TypeScript
@@ -16,7 +18,7 @@ function publish(event: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-commonEventManager-function publish(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEventManager-function publish(event: string, callback: AsyncCallback<void>): void-End-->
 
@@ -59,7 +61,7 @@ try {
 ```
 
 
-<a id="publish-1"></a>
+<a id="publish2"></a>
 
 ## publish
 
@@ -71,7 +73,7 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-commonEventManager-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void--><!--Device-commonEventManager-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void-End-->
 

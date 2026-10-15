@@ -39,6 +39,7 @@ Registers the network sharing status change event. This API uses an asynchronous
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,6 +49,8 @@ sharing.on('sharingStateChange', (data: boolean) => {
   console.info('on sharingStateChange: ' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('interfaceSharingStateChange')
@@ -83,6 +86,7 @@ Subscribes to network sharing state changes of a specified NIC. This API uses an
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -92,6 +96,8 @@ sharing.on('interfaceSharingStateChange', (data: object) => {
   console.info('on interfaceSharingStateChange:' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('sharingUpstreamChange')
@@ -127,6 +133,7 @@ Subscribes to upstream network changes. This API uses an asynchronous callback t
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,3 +143,5 @@ sharing.on('sharingUpstreamChange', (data: object) => {
   console.info('on sharingUpstreamChange:' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->

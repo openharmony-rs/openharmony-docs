@@ -30,24 +30,6 @@ The transition takes effect in all scenarios.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Insert
-
-```TypeScript
-Insert
-```
-
-The transition takes effect when a component is inserted or displayed.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-TransitionType-Insert--><!--Device-TransitionType-Insert-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Delete
 
 ```TypeScript
@@ -63,5 +45,23 @@ The transition takes effect when a component is deleted or hidden.
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-TransitionType-Delete--><!--Device-TransitionType-Delete-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Insert
+
+```TypeScript
+Insert
+```
+
+The transition takes effect when a component is inserted or displayed.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TransitionType-Insert--><!--Device-TransitionType-Insert-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

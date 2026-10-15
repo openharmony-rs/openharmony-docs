@@ -14,24 +14,6 @@ Describes the data origin sources.
 
 **System API:** This is a system API.
 
-## ORI_LOCAL
-
-```TypeScript
-ORI_LOCAL = 0
-```
-
-Indicates the data source is local.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DistributedOrigin-ORI_LOCAL = 0--><!--Device-DistributedOrigin-ORI_LOCAL = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**System API:** This is a system API.
-
 ## ORI_CLOUD
 
 ```TypeScript
@@ -45,6 +27,24 @@ Indicates the data source is cloud.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DistributedOrigin-ORI_CLOUD = 1--><!--Device-DistributedOrigin-ORI_CLOUD = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**System API:** This is a system API.
+
+## ORI_LOCAL
+
+```TypeScript
+ORI_LOCAL = 0
+```
+
+Indicates the data source is local.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistributedOrigin-ORI_LOCAL = 0--><!--Device-DistributedOrigin-ORI_LOCAL = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

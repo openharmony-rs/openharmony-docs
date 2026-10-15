@@ -101,7 +101,7 @@
   - [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md)
   - [ColorSpaceManager](arkts-arkgraphics2d-sendablecolorspacemanager-colorspacemanager-i.md)
   - [ISendable](arkts-arkgraphics2d-sendablecolorspacemanager-isendable-t.md)
-- [@ohos.graphics.text](arkts-arkgraphics2d-graphics-text.md)
+- [@ohos.graphics.text(Text Module)](arkts-arkgraphics2d-graphics-text.md)
   - [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md)
   - [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md)
   - [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md)

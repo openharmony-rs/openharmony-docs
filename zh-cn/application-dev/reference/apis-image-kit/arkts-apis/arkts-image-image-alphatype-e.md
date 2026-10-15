@@ -12,24 +12,6 @@ enum AlphaType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-未知透明度类型。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AlphaType-UNKNOWN = 0--><!--Device-AlphaType-UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## OPAQUE
 
 ```TypeScript
@@ -40,9 +22,9 @@ OPAQUE = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AlphaType-OPAQUE = 1--><!--Device-AlphaType-OPAQUE = 1-End-->
 
@@ -58,11 +40,29 @@ RGB通道预乘Alpha值。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AlphaType-PREMUL = 2--><!--Device-AlphaType-PREMUL = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+未知透明度类型。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AlphaType-UNKNOWN = 0--><!--Device-AlphaType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -76,9 +76,9 @@ RGB通道非预乘Alpha值。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AlphaType-UNPREMUL = 3--><!--Device-AlphaType-UNPREMUL = 3-End-->
 

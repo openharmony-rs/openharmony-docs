@@ -24,7 +24,9 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 status: number
 ```
 
-Indicates refueling status.
+Refueling status.  
+- 1: invalid  
+0: idle (refueling is not started) 1: refueling started 2: refueling finished.
 
 **Type:** number
 
@@ -44,7 +46,7 @@ Indicates refueling status.
 timestamp: number
 ```
 
-Indicates timestamp . Unit: milliseconds.
+Timestamp of the recognition result. Unit: ms.
 
 **Type:** number
 

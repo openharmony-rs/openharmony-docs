@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="getrunningprocessinfobybundlename1"></a>
+
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -34,9 +36,10 @@ Obtains information about the running processes by bundle name. This API uses an
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,8 +64,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getrunningprocessinfobybundlename-1"></a>
+
+<a id="getrunningprocessinfobybundlename2"></a>
 
 ## getRunningProcessInfoByBundleName
 
@@ -93,9 +98,10 @@ Obtains information about the running processes by bundle name and user ID. This
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -121,8 +127,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getrunningprocessinfobybundlename-2"></a>
+
+<a id="getrunningprocessinfobybundlename3"></a>
 
 ## getRunningProcessInfoByBundleName
 
@@ -157,9 +165,10 @@ Obtains information about the running processes by bundle name. This API uses a 
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -181,8 +190,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getrunningprocessinfobybundlename-3"></a>
+
+<a id="getrunningprocessinfobybundlename4"></a>
 
 ## getRunningProcessInfoByBundleName
 
@@ -218,9 +229,10 @@ Obtains information about the running processes by bundle name and user ID. This
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -242,3 +254,5 @@ try {
   console.error(`[appManager] error: ${code}, ${message}`);
 }
 ```
+
+<!--DelEnd-->

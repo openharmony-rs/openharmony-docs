@@ -14,24 +14,6 @@ Indicates the mode of the ims rtt.
 
 **System API:** This is a system API.
 
-## LOCAL_REQUEST_UPGRADE
-
-```TypeScript
-LOCAL_REQUEST_UPGRADE = 0
-```
-
-Indicates the rtt is local request update.
-
-**Since:** 22
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-<!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0--><!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## LOCAL_REQUEST_DOWNGRADE
 
 ```TypeScript
@@ -45,6 +27,24 @@ Indicates the rtt is local request downgrade.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 <!--Device-ImsRttMode-LOCAL_REQUEST_DOWNGRADE = 1--><!--Device-ImsRttMode-LOCAL_REQUEST_DOWNGRADE = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## LOCAL_REQUEST_UPGRADE
+
+```TypeScript
+LOCAL_REQUEST_UPGRADE = 0
+```
+
+Indicates the rtt is local request update.
+
+**Since:** 22
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0--><!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

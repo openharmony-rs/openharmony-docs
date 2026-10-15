@@ -4,7 +4,7 @@
 export interface ButtonElement extends Element
 ```
 
-The &lt;button&gt; component includes capsule, circle, text, arc, and download buttons.
+The <button> component includes capsule, circle, text, arc, and download buttons.
 
 @extends Element @interface ButtonElement
 

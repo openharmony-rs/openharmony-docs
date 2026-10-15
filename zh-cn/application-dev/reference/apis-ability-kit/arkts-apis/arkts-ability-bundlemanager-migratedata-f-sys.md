@@ -30,8 +30,8 @@ function migrateData(sourcePaths: Array<string>, destinationPath: string): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sourcePaths | Array&lt;string&gt; | 是 | 需要迁移的源路径数组，支持传入如/example1/test.txt的单文件路径，或/example2/test的目录路径。 |
-| destinationPath | string | 是 | 目标路径，仅支持传入一个目录路径，例如：/example2/test。 |
+| sourcePaths | Array&lt;string&gt; | 是 | 需要迁移的源路径数组，支持传入如\/example1\/test.txt的单文件路径，或\/example2\/test的目录路径。 |
+| destinationPath | string | 是 | 目标路径，仅支持传入一个目录路径，例如：\/example2\/test。 |
 
 **返回值：**
 
@@ -53,6 +53,7 @@ function migrateData(sourcePaths: Array<string>, destinationPath: string): Promi
 | [17700085](../errorcode-bundle.md#17700085-目标路径未开启写权限) | The destination path cannot be accessed. |
 | [17700086](../errorcode-bundle.md#17700086-发生系统错误) | System error occurred during copy execution. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -78,3 +79,5 @@ try {
   hilog.error(0x0000, 'testTag', 'migrateData call err: %{public}s', JSON.stringify(err));
 }
 ```
+
+<!--DelEnd-->

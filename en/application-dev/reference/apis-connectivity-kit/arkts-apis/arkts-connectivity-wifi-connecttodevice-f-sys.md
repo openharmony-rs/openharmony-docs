@@ -40,6 +40,7 @@ Connects to Wi-Fi network.
 | --- | --- |
 | boolean | Returns `true` if the network connection is successful, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,3 +72,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

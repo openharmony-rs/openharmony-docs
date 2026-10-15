@@ -32,7 +32,7 @@ code: KeyCode
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Key-code: KeyCode--><!--Device-Key-code: KeyCode-End-->
 
@@ -50,7 +50,7 @@ deviceId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Key-deviceId: int--><!--Device-Key-deviceId: int-End-->
 
@@ -68,7 +68,7 @@ pressedTime: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Key-pressedTime: long--><!--Device-Key-pressedTime: long-End-->
 

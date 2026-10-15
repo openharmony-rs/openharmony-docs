@@ -28,7 +28,7 @@ addInput(cameraInput: CameraInput): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-addInput(cameraInput: CameraInput): void--><!--Device-Session-addInput(cameraInput: CameraInput): void-End-->
 
@@ -75,7 +75,7 @@ addOutput(cameraOutput: CameraOutput): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-addOutput(cameraOutput: CameraOutput): void--><!--Device-Session-addOutput(cameraOutput: CameraOutput): void-End-->
 
@@ -122,7 +122,7 @@ beginConfig(): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-beginConfig(): void--><!--Device-Session-beginConfig(): void-End-->
 
@@ -161,7 +161,7 @@ canAddInput(cameraInput: CameraInput): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-canAddInput(cameraInput: CameraInput): boolean--><!--Device-Session-canAddInput(cameraInput: CameraInput): boolean-End-->
 
@@ -198,7 +198,7 @@ canAddOutput(cameraOutput: CameraOutput): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-canAddOutput(cameraOutput: CameraOutput): boolean--><!--Device-Session-canAddOutput(cameraOutput: CameraOutput): boolean-End-->
 
@@ -225,6 +225,8 @@ function canAddOutput(session: camera.Session, cameraOutput: camera.CameraOutput
 }
 ```
 
+<a id="commitconfig1"></a>
+
 ## commitConfig
 
 ```TypeScript
@@ -235,7 +237,7 @@ commitConfig(callback: AsyncCallback<void>): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-commitConfig(callback: AsyncCallback<void>): void--><!--Device-Session-commitConfig(callback: AsyncCallback<void>): void-End-->
 
@@ -270,7 +272,7 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
-<a id="commitconfig-1"></a>
+<a id="commitconfig2"></a>
 
 ## commitConfig
 
@@ -282,7 +284,7 @@ commitConfig(): Promise<void>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-commitConfig(): Promise<void>--><!--Device-Session-commitConfig(): Promise<void>-End-->
 
@@ -316,6 +318,8 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -326,7 +330,7 @@ release(callback: AsyncCallback<void>): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-release(callback: AsyncCallback<void>): void--><!--Device-Session-release(callback: AsyncCallback<void>): void-End-->
 
@@ -360,7 +364,7 @@ function releaseCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -372,7 +376,7 @@ release(): Promise<void>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-release(): Promise<void>--><!--Device-Session-release(): Promise<void>-End-->
 
@@ -414,7 +418,7 @@ removeInput(cameraInput: CameraInput): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-removeInput(cameraInput: CameraInput): void--><!--Device-Session-removeInput(cameraInput: CameraInput): void-End-->
 
@@ -461,7 +465,7 @@ removeOutput(cameraOutput: CameraOutput): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-removeOutput(cameraOutput: CameraOutput): void--><!--Device-Session-removeOutput(cameraOutput: CameraOutput): void-End-->
 
@@ -498,6 +502,8 @@ function removeOutput(session: camera.Session, previewOutput: camera.PreviewOutp
 }
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -508,7 +514,7 @@ start(callback: AsyncCallback<void>): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-start(callback: AsyncCallback<void>): void--><!--Device-Session-start(callback: AsyncCallback<void>): void-End-->
 
@@ -544,7 +550,7 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -556,7 +562,7 @@ start(): Promise<void>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-start(): Promise<void>--><!--Device-Session-start(): Promise<void>-End-->
 
@@ -590,6 +596,8 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -600,7 +608,7 @@ stop(callback: AsyncCallback<void>): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-stop(callback: AsyncCallback<void>): void--><!--Device-Session-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -634,7 +642,7 @@ function stopCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -646,7 +654,7 @@ stop(): Promise<void>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Session-stop(): Promise<void>--><!--Device-Session-stop(): Promise<void>-End-->
 

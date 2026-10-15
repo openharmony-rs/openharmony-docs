@@ -42,9 +42,12 @@ Removes the file of the specified URI from the recent file list.
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let uri = 'file://docs/storage/Users/currentUser/<publicPath>';
 recent.remove(uri);
 ```
+
+<!--DelEnd-->

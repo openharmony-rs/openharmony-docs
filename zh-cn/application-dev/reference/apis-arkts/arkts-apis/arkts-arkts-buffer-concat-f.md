@@ -16,7 +16,7 @@ function concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-buffer-function concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer--><!--Device-buffer-function concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer-End-->
 

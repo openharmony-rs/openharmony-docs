@@ -26,20 +26,6 @@ A media asset or an album is created.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## NOTIFY_CHANGE_UPDATE
-
-```TypeScript
-NOTIFY_CHANGE_UPDATE = 1
-```
-
-A media asset or an album is modified.
-
-**Since:** 20
-
-<!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1--><!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## NOTIFY_CHANGE_REMOVE
 
 ```TypeScript
@@ -51,5 +37,19 @@ A media asset or an album is deleted.
 **Since:** 20
 
 <!--Device-NotifyChangeType-NOTIFY_CHANGE_REMOVE = 2--><!--Device-NotifyChangeType-NOTIFY_CHANGE_REMOVE = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## NOTIFY_CHANGE_UPDATE
+
+```TypeScript
+NOTIFY_CHANGE_UPDATE = 1
+```
+
+A media asset or an album is modified.
+
+**Since:** 20
+
+<!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1--><!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -62,6 +62,7 @@ acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): 
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid privilege or options. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -85,6 +86,8 @@ try {
   console.error(`acquireAuthorization exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## hasAuthorization
 
@@ -124,6 +127,7 @@ hasAuthorization(privilege: string): Promise<boolean>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid privilege. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -144,6 +148,8 @@ try {
   console.error(`hasAuthorization exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## releaseAuthorization
 
@@ -183,6 +189,7 @@ releaseAuthorization(privilege: string): Promise<void>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid privilege. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -203,3 +210,5 @@ try {
   console.error(`releaseAuthorization exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

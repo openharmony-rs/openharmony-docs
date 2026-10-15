@@ -34,8 +34,11 @@ Create customized tone attributes.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomizedToneAttrs();
 ```
+
+<!--DelEnd-->

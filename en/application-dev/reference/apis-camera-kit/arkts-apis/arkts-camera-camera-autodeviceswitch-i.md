@@ -38,7 +38,7 @@ Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupp
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoDeviceSwitch-enableAutoDeviceSwitch(enabled: boolean): void--><!--Device-AutoDeviceSwitch-enableAutoDeviceSwitch(enabled: boolean): void-End-->
 
@@ -57,7 +57,7 @@ Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupp
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
-| [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed.<br>**Applicable version:** 19 and later |
+| [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameters verification failed.<br>**Applicable version:** 19 and later |
 
 **Examples**
 

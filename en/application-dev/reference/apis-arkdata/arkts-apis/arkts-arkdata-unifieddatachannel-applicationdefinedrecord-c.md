@@ -34,7 +34,7 @@ Indicates the type of data, should always be started with 'ApplicationDefined.',
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ApplicationDefinedRecord-get applicationDefinedType(): string--><!--Device-ApplicationDefinedRecord-get applicationDefinedType(): string-End-->
 
@@ -52,7 +52,7 @@ Indicates the type of data, should always be started with 'ApplicationDefined.',
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ApplicationDefinedRecord-set applicationDefinedType(value: string)--><!--Device-ApplicationDefinedRecord-set applicationDefinedType(value: string)-End-->
 
@@ -72,7 +72,7 @@ Indicates the raw data of application defined data
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ApplicationDefinedRecord-get rawData(): Uint8Array--><!--Device-ApplicationDefinedRecord-get rawData(): Uint8Array-End-->
 
@@ -90,7 +90,7 @@ Indicates the raw data of application defined data
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ApplicationDefinedRecord-set rawData(value: Uint8Array)--><!--Device-ApplicationDefinedRecord-set rawData(value: Uint8Array)-End-->
 

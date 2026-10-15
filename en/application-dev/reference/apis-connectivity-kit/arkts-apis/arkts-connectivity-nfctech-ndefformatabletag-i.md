@@ -6,19 +6,21 @@ export interface NdefFormatableTag extends TagSession
 
 Provides APIs for formatting NDEF formattable tags. This class inherits from **TagSession**.
 
-**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
+**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-i.md).
 
 For details about how to obtain an **NdefFormatableTag** object, see [NFC Tag Read/Write Development](../../../connectivity/nfc/nfc-tag-access-guide.md).
 
 The following describes the unique APIs of **NdefFormatableTag**.
 
-**Inheritance/Implementation:** NdefFormatableTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**Inheritance/Implementation:** NdefFormatableTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **Since:** 9
 
 <!--Device-unnamed-export interface NdefFormatableTag extends TagSession--><!--Device-unnamed-export interface NdefFormatableTag extends TagSession-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
+
+<a id="format1"></a>
 
 ## format
 
@@ -32,7 +34,7 @@ Formats this tag as an NDEF tag, and writes an NDEF message to it. This API uses
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefFormatableTag-format(message: NdefMessage): Promise<void>--><!--Device-NdefFormatableTag-format(message: NdefMessage): Promise<void>-End-->
 
@@ -126,7 +128,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="format-1"></a>
+<a id="format2"></a>
 
 ## format
 
@@ -140,7 +142,7 @@ Formats this tag as an NDEF tag, and writes an NDEF message to it. This API uses
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefFormatableTag-format(message: NdefMessage, callback: AsyncCallback<void>): void--><!--Device-NdefFormatableTag-format(message: NdefMessage, callback: AsyncCallback<void>): void-End-->
 
@@ -166,6 +168,8 @@ Formats this tag as an NDEF tag, and writes an NDEF message to it. This API uses
 
 See [format](#format)
 
+<a id="formatreadonly1"></a>
+
 ## formatReadOnly
 
 ```TypeScript
@@ -178,7 +182,7 @@ Formats this tag as an NDEF tag, writes an NDEF message to it, and then sets the
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage): Promise<void>--><!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage): Promise<void>-End-->
 
@@ -273,7 +277,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="formatreadonly-1"></a>
+<a id="formatreadonly2"></a>
 
 ## formatReadOnly
 
@@ -287,7 +291,7 @@ Formats this tag as an NDEF tag, writes an NDEF message to the NDEF tag, and the
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage, callback: AsyncCallback<void>): void--><!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage, callback: AsyncCallback<void>): void-End-->
 

@@ -12,31 +12,45 @@ Enumerates the print error codes.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## E_PRINT_NONE
+## E_PRINT_FILE_IO
 
 ```TypeScript
-E_PRINT_NONE = 0
+E_PRINT_FILE_IO = 13100007
 ```
 
-No error.
+Incorrect file input/output.
 
 **Since:** 14
 
-<!--Device-PrintErrorCode-E_PRINT_NONE = 0--><!--Device-PrintErrorCode-E_PRINT_NONE = 0-End-->
+<!--Device-PrintErrorCode-E_PRINT_FILE_IO = 13100007--><!--Device-PrintErrorCode-E_PRINT_FILE_IO = 13100007-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## E_PRINT_NO_PERMISSION
+## E_PRINT_GENERIC_FAILURE
 
 ```TypeScript
-E_PRINT_NO_PERMISSION = 201
+E_PRINT_GENERIC_FAILURE = 13100001
 ```
 
-No permission.
+Printing failure.
 
 **Since:** 14
 
-<!--Device-PrintErrorCode-E_PRINT_NO_PERMISSION = 201--><!--Device-PrintErrorCode-E_PRINT_NO_PERMISSION = 201-End-->
+<!--Device-PrintErrorCode-E_PRINT_GENERIC_FAILURE = 13100001--><!--Device-PrintErrorCode-E_PRINT_GENERIC_FAILURE = 13100001-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## E_PRINT_INVALID_EXTENSION
+
+```TypeScript
+E_PRINT_INVALID_EXTENSION = 13100004
+```
+
+Invalid printer extension.
+
+**Since:** 14
+
+<!--Device-PrintErrorCode-E_PRINT_INVALID_EXTENSION = 13100004--><!--Device-PrintErrorCode-E_PRINT_INVALID_EXTENSION = 13100004-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -54,17 +68,59 @@ Invalid parameters.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## E_PRINT_GENERIC_FAILURE
+## E_PRINT_INVALID_PRINT_JOB
 
 ```TypeScript
-E_PRINT_GENERIC_FAILURE = 13100001
+E_PRINT_INVALID_PRINT_JOB = 13100006
 ```
 
-Printing failure.
+Invalid print job.
 
 **Since:** 14
 
-<!--Device-PrintErrorCode-E_PRINT_GENERIC_FAILURE = 13100001--><!--Device-PrintErrorCode-E_PRINT_GENERIC_FAILURE = 13100001-End-->
+<!--Device-PrintErrorCode-E_PRINT_INVALID_PRINT_JOB = 13100006--><!--Device-PrintErrorCode-E_PRINT_INVALID_PRINT_JOB = 13100006-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## E_PRINT_INVALID_PRINTER
+
+```TypeScript
+E_PRINT_INVALID_PRINTER = 13100005
+```
+
+Invalid printer.
+
+**Since:** 14
+
+<!--Device-PrintErrorCode-E_PRINT_INVALID_PRINTER = 13100005--><!--Device-PrintErrorCode-E_PRINT_INVALID_PRINTER = 13100005-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## E_PRINT_NO_PERMISSION
+
+```TypeScript
+E_PRINT_NO_PERMISSION = 201
+```
+
+No permission.
+
+**Since:** 14
+
+<!--Device-PrintErrorCode-E_PRINT_NO_PERMISSION = 201--><!--Device-PrintErrorCode-E_PRINT_NO_PERMISSION = 201-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## E_PRINT_NONE
+
+```TypeScript
+E_PRINT_NONE = 0
+```
+
+No error.
+
+**Since:** 14
+
+<!--Device-PrintErrorCode-E_PRINT_NONE = 0--><!--Device-PrintErrorCode-E_PRINT_NONE = 0-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -93,92 +149,6 @@ Print service failure.
 **Since:** 14
 
 <!--Device-PrintErrorCode-E_PRINT_SERVER_FAILURE = 13100003--><!--Device-PrintErrorCode-E_PRINT_SERVER_FAILURE = 13100003-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## E_PRINT_INVALID_EXTENSION
-
-```TypeScript
-E_PRINT_INVALID_EXTENSION = 13100004
-```
-
-Invalid printer extension.
-
-**Since:** 14
-
-<!--Device-PrintErrorCode-E_PRINT_INVALID_EXTENSION = 13100004--><!--Device-PrintErrorCode-E_PRINT_INVALID_EXTENSION = 13100004-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## E_PRINT_INVALID_PRINTER
-
-```TypeScript
-E_PRINT_INVALID_PRINTER = 13100005
-```
-
-Invalid printer.
-
-**Since:** 14
-
-<!--Device-PrintErrorCode-E_PRINT_INVALID_PRINTER = 13100005--><!--Device-PrintErrorCode-E_PRINT_INVALID_PRINTER = 13100005-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## E_PRINT_INVALID_PRINT_JOB
-
-```TypeScript
-E_PRINT_INVALID_PRINT_JOB = 13100006
-```
-
-Invalid print job.
-
-**Since:** 14
-
-<!--Device-PrintErrorCode-E_PRINT_INVALID_PRINT_JOB = 13100006--><!--Device-PrintErrorCode-E_PRINT_INVALID_PRINT_JOB = 13100006-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## E_PRINT_FILE_IO
-
-```TypeScript
-E_PRINT_FILE_IO = 13100007
-```
-
-Incorrect file input/output.
-
-**Since:** 14
-
-<!--Device-PrintErrorCode-E_PRINT_FILE_IO = 13100007--><!--Device-PrintErrorCode-E_PRINT_FILE_IO = 13100007-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## E_PRINT_TOO_MANY_FILES
-
-```TypeScript
-E_PRINT_TOO_MANY_FILES = 13100010
-```
-
-Excessive files. Maximum number: 99.
-
-**Since:** 18
-
-<!--Device-PrintErrorCode-E_PRINT_TOO_MANY_FILES = 13100010--><!--Device-PrintErrorCode-E_PRINT_TOO_MANY_FILES = 13100010-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## E_PRINT_SMB_LOGIN_LOCKOUT
-
-```TypeScript
-E_PRINT_SMB_LOGIN_LOCKOUT = 13100012
-```
-
-The SMB account is locked due to multiple failed login attempts.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PrintErrorCode-E_PRINT_SMB_LOGIN_LOCKOUT = 13100012--><!--Device-PrintErrorCode-E_PRINT_SMB_LOGIN_LOCKOUT = 13100012-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -211,5 +181,35 @@ The login account or password is invalid.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PrintErrorCode-E_PRINT_SMB_INVALID_CREDENTIALS = 13100014--><!--Device-PrintErrorCode-E_PRINT_SMB_INVALID_CREDENTIALS = 13100014-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## E_PRINT_SMB_LOGIN_LOCKOUT
+
+```TypeScript
+E_PRINT_SMB_LOGIN_LOCKOUT = 13100012
+```
+
+The SMB account is locked due to multiple failed login attempts.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintErrorCode-E_PRINT_SMB_LOGIN_LOCKOUT = 13100012--><!--Device-PrintErrorCode-E_PRINT_SMB_LOGIN_LOCKOUT = 13100012-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## E_PRINT_TOO_MANY_FILES
+
+```TypeScript
+E_PRINT_TOO_MANY_FILES = 13100010
+```
+
+Excessive files. Maximum number: 99.
+
+**Since:** 18
+
+<!--Device-PrintErrorCode-E_PRINT_TOO_MANY_FILES = 13100010--><!--Device-PrintErrorCode-E_PRINT_TOO_MANY_FILES = 13100010-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

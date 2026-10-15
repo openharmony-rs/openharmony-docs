@@ -34,6 +34,7 @@ Creates a RemoteObject instance based on a CloudService instance. The system use
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise used to return the RemoteObject instance of CloudService. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,3 +67,5 @@ export default class MyServiceExtension extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

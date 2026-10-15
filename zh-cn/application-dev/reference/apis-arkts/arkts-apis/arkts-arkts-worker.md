@@ -20,11 +20,8 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 
 | 名称 | 说明 |
 | --- | --- |
-| [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | Worker线程自身的运行环境，与宿主线程环境隔离。 |
 | [ErrorEvent](arkts-arkts-worker-errorevent-i.md) | 错误事件类用于表示Worker执行过程中出现异常的详细信息，ErrorEvent类继承Event。 |
 | [Event](arkts-arkts-worker-event-i.md) | 事件类。 |
-| [EventListener](arkts-arkts-worker-eventlistener-i.md) | 事件监听类用于处理事件。 |
-| [EventTarget](arkts-arkts-worker-eventtarget-i.md) | 用于管理Worker的监听事件。 |
 | [GlobalScope](arkts-arkts-worker-globalscope-i.md) | Worker线程自身的运行环境，GlobalScope类继承WorkerEventTarget。 |
 | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | 消息类，持有Worker线程间传递的数据，MessageEvent类继承Event。 |
 | [MessageEvents](arkts-arkts-worker-messageevents-i.md) | 消息类，持有Worker线程间传递的数据。 |
@@ -32,8 +29,11 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 | [ThreadWorkerGlobalScope](arkts-arkts-worker-threadworkerglobalscope-i.md) | Worker线程用于与宿主线程通信的类。其中postMessage接口用于向宿主线程发送消息，close接口用于销毁Worker线程。ThreadWorkerGlobalScope类继承GlobalScope9+。 |
 | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 事件监听类。 |
 | [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md) | 用于管理Worker的监听事件。 |
-| [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md) | Worker线程自身的运行环境，与宿主线程环境隔离。 |
 | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | Worker构造函数的选项，用于为Worker添加其他信息。 |
+| [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | Worker线程自身的运行环境，与宿主线程环境隔离。 |
+| [EventListener](arkts-arkts-worker-eventlistener-i.md) | 事件监听类用于处理事件。 |
+| [EventTarget](arkts-arkts-worker-eventtarget-i.md) | 用于管理Worker的监听事件。 |
+| [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md) | Worker线程自身的运行环境，与宿主线程环境隔离。 |
 
 ### 类型
 

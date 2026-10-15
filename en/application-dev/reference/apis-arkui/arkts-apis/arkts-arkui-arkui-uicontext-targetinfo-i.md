@@ -27,7 +27,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 componentId?: number
 ```
 
-Unique ID of the custom component where the target node is located. When the above **id** is specified as a string, this property can be used to narrow down the scope, helping you ensure the uniqueness of **id: string** within a certain range.
+**UniqueID** of the custom component where the target node is located. When the above **id** is specified as the string type and the target node needs to be found within a specified custom component scope, this property can be used to define the scope, making it easier for you to ensure the uniqueness of **id: string** within a certain range. By default, no custom component scope is specified.
 
 **Type:** number
 

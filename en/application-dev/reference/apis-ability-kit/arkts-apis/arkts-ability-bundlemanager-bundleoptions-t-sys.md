@@ -6,6 +6,8 @@ export type BundleOptions = _BundleInfo.BundleOptions
 
 Describes the bundle options used to set or query application information.
 
+**Type:** [_BundleInfo.BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md)
+
 **Since:** 20
 
 <!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions--><!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions-End-->
@@ -13,5 +15,3 @@ Describes the bundle options used to set or query application information.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
-
-**Type:** [_BundleInfo.BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md)

@@ -4,6 +4,8 @@
 export declare class SegmentButtonV2Item
 ```
 
+**SegmentButtonV2** component option class, used to define properties such as the text and icon of a single segmented button item.
+
 **Since:** 18
 
 **Decorator:** @ObservedV2
@@ -48,7 +50,7 @@ Constructs a **SegmentButtonV2ItemOptions** instance.
 accessibilityDescription?: ResourceStr
 ```
 
-[Accessibility description](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription) of the segmented button item.
+[Accessibility description](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription1) of the segmented button item.
 
 Default value: **""**
 
@@ -80,8 +82,6 @@ Default value: **"auto"**
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** string
 
 **Since:** 18
@@ -102,7 +102,7 @@ If the value is **undefined**, the default value is used.
 accessibilityText?: ResourceStr
 ```
 
-[Accessibility text](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext) of the segmented button item.
+[Accessibility text](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1) of the segmented button item.
 
 Default value: **""**
 

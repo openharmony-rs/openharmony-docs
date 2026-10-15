@@ -51,6 +51,7 @@ Obtains the supported time-lapse shooting interval range.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,6 +69,8 @@ function getSupportedTimeLapseIntervalRange(timeLapsePhotoSession: camera.TimeLa
   return intervalRange;
 }
 ```
+
+<!--DelEnd-->
 
 ## getTimeLapseInterval
 
@@ -98,6 +101,7 @@ Obtains the current time-lapse shooting interval.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -115,6 +119,8 @@ function getTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
   return interval;
 }
 ```
+
+<!--DelEnd-->
 
 ## getTimeLapsePreviewType
 
@@ -145,6 +151,7 @@ Obtains the time-lapse preview type.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -162,6 +169,8 @@ function getTimeLapsePreviewType(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   return type;
 }
 ```
+
+<!--DelEnd-->
 
 ## getTimeLapseRecordState
 
@@ -192,6 +201,7 @@ Obtains the time-lapse shooting state.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -209,6 +219,8 @@ function getTimeLapseRecordState(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   return state;
 }
 ```
+
+<!--DelEnd-->
 
 ## isTryAENeeded
 
@@ -239,6 +251,7 @@ Checks whether Try AE is required.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -256,6 +269,8 @@ function isTryAENeeded(timeLapsePhotoSession: camera.TimeLapsePhotoSession): boo
   return needed;
 }
 ```
+
+<!--DelEnd-->
 
 ## off('error')
 
@@ -286,6 +301,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -293,6 +309,8 @@ function unregisterSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSess
   timeLapsePhotoSession.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusStateChange')
 
@@ -323,6 +341,7 @@ Unsubscribes from focus state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -330,6 +349,8 @@ function unregisterFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhoto
   timeLapsePhotoSession.off('focusStateChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('isoInfoChange')
 
@@ -360,6 +381,7 @@ Unsubscribes from automatic ISO change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -367,6 +389,8 @@ function unregisterIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSess
   timeLapsePhotoSession.off('isoInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('exposureInfoChange')
 
@@ -397,6 +421,7 @@ Unsubscribes from exposure information change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -404,6 +429,8 @@ function unregisterExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhot
   timeLapsePhotoSession.off('exposureInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('luminationInfoChange')
 
@@ -434,6 +461,7 @@ Unsubscribes from illumination change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -441,6 +469,8 @@ function unregisterLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePh
   timeLapsePhotoSession.off('luminationInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('tryAEInfoChange')
 
@@ -471,6 +501,7 @@ Unsubscribes from Try AE change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -478,6 +509,8 @@ function unregisterTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSe
   timeLapsePhotoSession.off('tryAEInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -508,6 +541,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -521,6 +555,8 @@ function registerSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
   timeLapsePhotoSession.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusStateChange')
 
@@ -551,6 +587,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -568,6 +605,8 @@ function registerFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhotoSe
   timeLapsePhotoSession.on('focusStateChange', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('isoInfoChange')
 
@@ -598,6 +637,7 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -615,6 +655,8 @@ function registerIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
   timeLapsePhotoSession.on('isoInfoChange', isoInfoCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('exposureInfoChange')
 
@@ -645,6 +687,7 @@ Subscribes to exposure information change events to obtain the exposure informat
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -662,6 +705,8 @@ function registerExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoS
   timeLapsePhotoSession.on('exposureInfoChange', exposureInfoCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('luminationInfoChange')
 
@@ -692,6 +737,7 @@ Subscribes to illumination change events to obtain real-time illumination inform
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -709,6 +755,8 @@ function registerLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhot
   timeLapsePhotoSession.on('luminationInfoChange', luminationInfoCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('tryAEInfoChange')
 
@@ -739,6 +787,7 @@ Subscribes to Try AE change events to obtain real-time Try AE parameters. This A
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -756,6 +805,8 @@ function registerTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSess
   timeLapsePhotoSession.on('tryAEInfoChange', tryAEInfoCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## setTimeLapseInterval
 
@@ -787,6 +838,7 @@ Sets a time-lapse shooting interval.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -803,6 +855,8 @@ function setTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setTimeLapsePreviewType
 
@@ -834,6 +888,7 @@ Sets the time-lapse preview type.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -849,6 +904,8 @@ function setTimeLapsePreviewType(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setTimeLapseRecordState
 
@@ -880,6 +937,7 @@ Sets the time-lapse shooting state.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -895,6 +953,8 @@ function setTimeLapseRecordState(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## startTryAE
 
@@ -920,6 +980,7 @@ Starts to execute Try AE.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -935,6 +996,8 @@ function startTryAE(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## stopTryAE
 
@@ -960,6 +1023,7 @@ Stops the execution of Try AE.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -975,3 +1039,5 @@ function stopTryAE(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
   }
 }
 ```
+
+<!--DelEnd-->

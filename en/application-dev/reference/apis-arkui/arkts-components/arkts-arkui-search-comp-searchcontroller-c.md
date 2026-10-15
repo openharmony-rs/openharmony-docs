@@ -6,12 +6,6 @@ declare class SearchController extends TextContentControllerBase
 
 The controller of the Search component inherits from [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md), and the involved APIs include [getTextContentRect](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentrect), [getTextContentLineCount](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentlinecount), [getCaretOffset](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getcaretoffset), [addText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#addtext), [deleteText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletetext), [getSelection](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getselection), [clearPreviewText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#clearpreviewtext), [setStyledPlaceholder](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#setstyledplaceholder), [deleteBackward](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletebackward), [scrollToVisible](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#scrolltovisible)<!--Del-->and the system API [getText](arkts-arkui-common-comp-textcontentcontrollerbase-c-sys.md#gettext)<!--DelEnd-->.
 
-## Import Object
-
-```ts
-controller: SearchController = new SearchController();
-```
-
 **Inheritance/Implementation:** SearchController extends [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md)
 
 **Since:** 8
@@ -19,6 +13,12 @@ controller: SearchController = new SearchController();
 <!--Device-unnamed-declare class SearchController extends TextContentControllerBase--><!--Device-unnamed-declare class SearchController extends TextContentControllerBase-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Import Object
+
+```ts
+controller: SearchController = new SearchController();
+```
 
 ## caretPosition
 
@@ -40,7 +40,7 @@ Sets the position of the input cursor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Length from the start of the string to the cursor position.&lt;/br&gt;When value is less than 0, it is processed as 0. When value is greater than the string length, it is processed as the string length. |
+| value | number | Yes | Length from the start of the string to the cursor position.</br>When value is less than 0, it is processed as 0. When value is greater than the string length, it is processed as the string length. |
 
 ## constructor
 

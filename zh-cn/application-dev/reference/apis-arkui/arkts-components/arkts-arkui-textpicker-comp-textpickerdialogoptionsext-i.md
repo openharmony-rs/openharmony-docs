@@ -759,7 +759,7 @@ systemMaterial?: SystemUiMaterial
 > **说明：** 
 > 
 > - 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。不同的材质具有不同的效果。
-> - 该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、背景模糊[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)、背景效果[backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)，当设置系统材质时，上述接口不生效。
+> - 该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、背景模糊[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1)、背景效果[backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1)，当设置系统材质时，上述接口不生效。
 
 **类型：** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 

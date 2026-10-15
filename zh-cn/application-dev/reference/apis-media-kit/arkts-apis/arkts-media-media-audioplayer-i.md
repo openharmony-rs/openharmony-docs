@@ -27,6 +27,8 @@ interface AudioPlayer
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="gettrackdescription1"></a>
+
 ## getTrackDescription
 
 ```TypeScript
@@ -38,14 +40,14 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)
+> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
+**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription1)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
 
 <!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void--><!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void-End-->
 
@@ -57,7 +59,7 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[MediaDescription](arkts-media-media-mediadescription-i.md)&gt;&gt; | 是 | 回调函数。获取音频轨道信息成功时，err为undefined，data为获取到的MediaDescription数组，否则为错误对象。 |
 
-<a id="gettrackdescription-1"></a>
+<a id="gettrackdescription2"></a>
 
 ## getTrackDescription
 
@@ -254,13 +256,13 @@ pause(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.pause](arkts-media-media-avplayer-i.md#pause)替代。
+> [AVPlayer.pause](arkts-media-media-avplayer-i.md#pause1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [pause](arkts-media-media-avplayer-i.md#pause)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [pause](arkts-media-media-avplayer-i.md#pause1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-pause(): void--><!--Device-AudioPlayer-pause(): void-End-->
 
@@ -277,13 +279,13 @@ play(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.play](arkts-media-media-avplayer-i.md#play)替代。
+> [AVPlayer.play](arkts-media-media-avplayer-i.md#play1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [play](arkts-media-media-avplayer-i.md#play)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [play](arkts-media-media-avplayer-i.md#play1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-play(): void--><!--Device-AudioPlayer-play(): void-End-->
 
@@ -300,13 +302,13 @@ release(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.release](arkts-media-media-avplayer-i.md#release)替代。
+> [AVPlayer.release](arkts-media-media-avplayer-i.md#release1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [release](arkts-media-media-avplayer-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [release](arkts-media-media-avplayer-i.md#release1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-release(): void--><!--Device-AudioPlayer-release(): void-End-->
 
@@ -323,13 +325,13 @@ reset(): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.reset](arkts-media-media-avplayer-i.md#reset)替代。
+> [AVPlayer.reset](arkts-media-media-avplayer-i.md#reset1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [reset](arkts-media-media-avplayer-i.md#reset)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [reset](arkts-media-media-avplayer-i.md#reset1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-reset(): void--><!--Device-AudioPlayer-reset(): void-End-->
 
@@ -404,13 +406,13 @@ stop(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.stop](arkts-media-media-avplayer-i.md#stop)替代。
+> [AVPlayer.stop](arkts-media-media-avplayer-i.md#stop1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [stop](arkts-media-media-avplayer-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-media-media-avplayer-i.md#stop1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-stop(): void--><!--Device-AudioPlayer-stop(): void-End-->
 
@@ -544,7 +546,7 @@ src: string
 
 1. fd类型播放：fd://xx
 
-![](../../../reference/apis-media-kit/figures/image-url.png)
+![](../../../reference/apis-media-kit/figures/zh-cn_image_url.png)
 
 2. http网络播放: http://xx
 3. https网络播放: https://xx

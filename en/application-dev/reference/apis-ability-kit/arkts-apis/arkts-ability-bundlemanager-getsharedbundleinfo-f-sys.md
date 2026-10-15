@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getsharedbundleinfo1"></a>
+
 ## getSharedBundleInfo
 
 ```TypeScript
@@ -32,7 +34,7 @@ No permission is required for obtaining the caller's own information.
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
 | moduleName | string | Yes | Module name. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[SharedBundleInfo](arkts-ability-bundlemanager-sharedbundleinfo-t-sys.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the shared bundle information obtained. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[SharedBundleInfo](arkts-ability-bundlemanager-sharedbundleinfo-t-sys.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, **err** is **undefined**, and data is the information about the specified shared bundle obtained. |
 
 **Error codes:**
 
@@ -44,6 +46,7 @@ No permission is required for obtaining the caller's own information.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700002](../errorcode-bundle.md#17700002-module-name-does-not-exist) | The specified moduleName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,8 +71,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getsharedbundleinfo-1"></a>
+
+<a id="getsharedbundleinfo2"></a>
 
 ## getSharedBundleInfo
 
@@ -114,6 +119,7 @@ No permission is required for obtaining the caller's own information.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700002](../errorcode-bundle.md#17700002-module-name-does-not-exist) | The specified moduleName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -135,3 +141,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

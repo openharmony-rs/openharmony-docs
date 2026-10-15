@@ -12,35 +12,19 @@ enum LoopMode
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-## LOOP_MODE_SEQUENCE
+## LOOP_MODE_CUSTOM
 
 ```TypeScript
-LOOP_MODE_SEQUENCE = 0
+LOOP_MODE_CUSTOM = 4
 ```
 
-顺序播放。
+自定义播放。
 
-**起始版本：** 10
+**起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-LoopMode-LOOP_MODE_SEQUENCE = 0--><!--Device-LoopMode-LOOP_MODE_SEQUENCE = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## LOOP_MODE_SINGLE
-
-```TypeScript
-LOOP_MODE_SINGLE = 1
-```
-
-单曲循环。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-LoopMode-LOOP_MODE_SINGLE = 1--><!--Device-LoopMode-LOOP_MODE_SINGLE = 1-End-->
+<!--Device-LoopMode-LOOP_MODE_CUSTOM = 4--><!--Device-LoopMode-LOOP_MODE_CUSTOM = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -54,9 +38,25 @@ LOOP_MODE_LIST = 2
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-LoopMode-LOOP_MODE_LIST = 2--><!--Device-LoopMode-LOOP_MODE_LIST = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## LOOP_MODE_SEQUENCE
+
+```TypeScript
+LOOP_MODE_SEQUENCE = 0
+```
+
+顺序播放。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LoopMode-LOOP_MODE_SEQUENCE = 0--><!--Device-LoopMode-LOOP_MODE_SEQUENCE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -70,24 +70,24 @@ LOOP_MODE_SHUFFLE = 3
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-LoopMode-LOOP_MODE_SHUFFLE = 3--><!--Device-LoopMode-LOOP_MODE_SHUFFLE = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-## LOOP_MODE_CUSTOM
+## LOOP_MODE_SINGLE
 
 ```TypeScript
-LOOP_MODE_CUSTOM = 4
+LOOP_MODE_SINGLE = 1
 ```
 
-自定义播放。
+单曲循环。
 
-**起始版本：** 11
+**起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-LoopMode-LOOP_MODE_CUSTOM = 4--><!--Device-LoopMode-LOOP_MODE_CUSTOM = 4-End-->
+<!--Device-LoopMode-LOOP_MODE_SINGLE = 1--><!--Device-LoopMode-LOOP_MODE_SINGLE = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core

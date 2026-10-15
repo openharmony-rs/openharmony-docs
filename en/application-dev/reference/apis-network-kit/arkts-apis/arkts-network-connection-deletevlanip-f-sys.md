@@ -55,6 +55,7 @@ Deletes the configured IP address and subnet mask from the VLAN specified by **v
 | [2100400](../errorcode-net-connection.md#2100400-incorrect-nic-name-non-ethernet) | The input network interface name is incorrect. |
 | [2100401](../errorcode-net-connection.md#2100401-no-ip-address-configured-on-the-vlan-is-found) | The input IP address is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -77,3 +78,5 @@ connection.deleteVlanIp(ifName, vlanId, address).then(() => {
   console.error(`Failed to delete vlan ip. Code:${error.code}, message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

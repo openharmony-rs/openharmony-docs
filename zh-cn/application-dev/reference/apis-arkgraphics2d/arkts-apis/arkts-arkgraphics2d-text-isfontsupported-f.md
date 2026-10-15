@@ -16,7 +16,7 @@ function isFontSupported(fontURL: string | Resource): boolean
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-text-function isFontSupported(fontURL: string | Resource): boolean--><!--Device-text-function isFontSupported(fontURL: string | Resource): boolean-End-->
 
@@ -26,7 +26,7 @@ function isFontSupported(fontURL: string | Resource): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontURL | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要检查的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+| fontURL | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | 是 | 需要检查的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
 
 **返回值：**
 

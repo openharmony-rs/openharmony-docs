@@ -12,20 +12,6 @@ Enumerates trace point types.
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
-## CS
-
-```TypeScript
-CS = 0
-```
-
-CS trace point.
-
-**Since:** 8
-
-<!--Device-HiTraceTracepointType-CS = 0--><!--Device-HiTraceTracepointType-CS = 0-End-->
-
-**System capability:** SystemCapability.HiviewDFX.HiTrace
-
 ## CR
 
 ```TypeScript
@@ -40,17 +26,31 @@ CR trace point.
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
-## SS
+## CS
 
 ```TypeScript
-SS = 2
+CS = 0
 ```
 
-SS trace point.
+CS trace point.
 
 **Since:** 8
 
-<!--Device-HiTraceTracepointType-SS = 2--><!--Device-HiTraceTracepointType-SS = 2-End-->
+<!--Device-HiTraceTracepointType-CS = 0--><!--Device-HiTraceTracepointType-CS = 0-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiTrace
+
+## GENERAL
+
+```TypeScript
+GENERAL = 4
+```
+
+General type, which identifies the trace points except the CS, CR, SS, and SR trace points.
+
+**Since:** 8
+
+<!--Device-HiTraceTracepointType-GENERAL = 4--><!--Device-HiTraceTracepointType-GENERAL = 4-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
@@ -68,16 +68,16 @@ SR trace point.
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
-## GENERAL
+## SS
 
 ```TypeScript
-GENERAL = 4
+SS = 2
 ```
 
-General type, which identifies the trace points except the CS, CR, SS, and SR trace points.
+SS trace point.
 
 **Since:** 8
 
-<!--Device-HiTraceTracepointType-GENERAL = 4--><!--Device-HiTraceTracepointType-GENERAL = 4-End-->
+<!--Device-HiTraceTracepointType-SS = 2--><!--Device-HiTraceTracepointType-SS = 2-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace

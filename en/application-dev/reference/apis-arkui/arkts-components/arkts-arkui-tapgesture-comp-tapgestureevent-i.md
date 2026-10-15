@@ -20,7 +20,7 @@ Inherits from [BaseGestureEvent](arkts-arkui-tapgesture-comp-basegestureevent-i.
 tapLocation?: EventLocationInfo
 ```
 
-Coordinate information of the current tap gesture. For non-tap gestures, the return value of **tapLocation** is **undefined**.
+Coordinate information of the tap gesture. If no value is returned, there is no coordinate information of the tap gesture.
 
 **Type:** [EventLocationInfo](arkts-arkui-tapgesture-comp-eventlocationinfo-i.md)
 

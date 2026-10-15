@@ -14,33 +14,17 @@ Enumerates the metered network rules.
 
 **System API:** This is a system API.
 
-## NET_RULE_NONE
+## NET_RULE_ALLOW_ALL
 
 ```TypeScript
-NET_RULE_NONE = 0
+NET_RULE_ALLOW_ALL = 1 << 5
 ```
 
-Default rule.
+Applications are allowed to access all networks (metered or non-metered).
 
 **Since:** 10
 
-<!--Device-NetUidRule-NET_RULE_NONE = 0--><!--Device-NetUidRule-NET_RULE_NONE = 0-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-**System API:** This is a system API.
-
-## NET_RULE_ALLOW_METERED_FOREGROUND
-
-```TypeScript
-NET_RULE_ALLOW_METERED_FOREGROUND = 1 << 0
-```
-
-Applications running in the foreground are allowed to access a metered network.
-
-**Since:** 10
-
-<!--Device-NetUidRule-NET_RULE_ALLOW_METERED_FOREGROUND = 1 << 0--><!--Device-NetUidRule-NET_RULE_ALLOW_METERED_FOREGROUND = 1 << 0-End-->
+<!--Device-NetUidRule-NET_RULE_ALLOW_ALL = 1 << 5--><!--Device-NetUidRule-NET_RULE_ALLOW_ALL = 1 << 5-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -62,33 +46,33 @@ Applications are allowed to access a metered network.
 
 **System API:** This is a system API.
 
-## NET_RULE_REJECT_METERED
+## NET_RULE_ALLOW_METERED_FOREGROUND
 
 ```TypeScript
-NET_RULE_REJECT_METERED = 1 << 2
+NET_RULE_ALLOW_METERED_FOREGROUND = 1 << 0
 ```
 
-Applications are not allowed to access a metered network.
+Applications running in the foreground are allowed to access a metered network.
 
 **Since:** 10
 
-<!--Device-NetUidRule-NET_RULE_REJECT_METERED = 1 << 2--><!--Device-NetUidRule-NET_RULE_REJECT_METERED = 1 << 2-End-->
+<!--Device-NetUidRule-NET_RULE_ALLOW_METERED_FOREGROUND = 1 << 0--><!--Device-NetUidRule-NET_RULE_ALLOW_METERED_FOREGROUND = 1 << 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
 
-## NET_RULE_ALLOW_ALL
+## NET_RULE_NONE
 
 ```TypeScript
-NET_RULE_ALLOW_ALL = 1 << 5
+NET_RULE_NONE = 0
 ```
 
-Applications are allowed to access all networks (metered or non-metered).
+Default rule.
 
 **Since:** 10
 
-<!--Device-NetUidRule-NET_RULE_ALLOW_ALL = 1 << 5--><!--Device-NetUidRule-NET_RULE_ALLOW_ALL = 1 << 5-End-->
+<!--Device-NetUidRule-NET_RULE_NONE = 0--><!--Device-NetUidRule-NET_RULE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -105,6 +89,22 @@ Applications are not allowed to access any networks (metered or non-metered).
 **Since:** 10
 
 <!--Device-NetUidRule-NET_RULE_REJECT_ALL = 1 << 6--><!--Device-NetUidRule-NET_RULE_REJECT_ALL = 1 << 6-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**System API:** This is a system API.
+
+## NET_RULE_REJECT_METERED
+
+```TypeScript
+NET_RULE_REJECT_METERED = 1 << 2
+```
+
+Applications are not allowed to access a metered network.
+
+**Since:** 10
+
+<!--Device-NetUidRule-NET_RULE_REJECT_METERED = 1 << 2--><!--Device-NetUidRule-NET_RULE_REJECT_METERED = 1 << 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -16,83 +16,19 @@ Enumerates the properties available for the metadata of a PNG image.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## X_PIXELS_PER_METER
+## AUTHOR
 
 ```TypeScript
-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'
+AUTHOR = 'PngAuthor'
 ```
 
-PNG x pixels per meter.
+PNG author.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'--><!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## Y_PIXELS_PER_METER
-
-```TypeScript
-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'
-```
-
-PNG y pixels per meter.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'--><!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## GAMMA
-
-```TypeScript
-GAMMA = 'PngGamma'
-```
-
-PNG gamma.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-GAMMA = 'PngGamma'--><!--Device-PngPropertyKey-GAMMA = 'PngGamma'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## INTERLACE_TYPE
-
-```TypeScript
-INTERLACE_TYPE = 'PngInterlaceType'
-```
-
-PNG interlacing mode.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'--><!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## SRGB_INTENT
-
-```TypeScript
-SRGB_INTENT = 'PngSRGBIntent'
-```
-
-PNG sRGB rendering intent.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'--><!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'-End-->
+<!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'--><!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -112,38 +48,6 @@ PNG color primary/white-point coordinates.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## TITLE
-
-```TypeScript
-TITLE = 'PngTitle'
-```
-
-PNG title.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-TITLE = 'PngTitle'--><!--Device-PngPropertyKey-TITLE = 'PngTitle'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## DESCRIPTION
-
-```TypeScript
-DESCRIPTION = 'PngDescription'
-```
-
-PNG description.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'--><!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## COMMENT
 
 ```TypeScript
@@ -157,54 +61,6 @@ PNG comment.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PngPropertyKey-COMMENT = 'PngComment'--><!--Device-PngPropertyKey-COMMENT = 'PngComment'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## DISCLAIMER
-
-```TypeScript
-DISCLAIMER = 'PngDisclaimer'
-```
-
-PNG disclaimer.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'--><!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## WARNING
-
-```TypeScript
-WARNING = 'PngWarning'
-```
-
-PNG warning.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-WARNING = 'PngWarning'--><!--Device-PngPropertyKey-WARNING = 'PngWarning'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## AUTHOR
-
-```TypeScript
-AUTHOR = 'PngAuthor'
-```
-
-PNG author.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'--><!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -240,6 +96,70 @@ PNG creation time.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
+## DESCRIPTION
+
+```TypeScript
+DESCRIPTION = 'PngDescription'
+```
+
+PNG description.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'--><!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## DISCLAIMER
+
+```TypeScript
+DISCLAIMER = 'PngDisclaimer'
+```
+
+PNG disclaimer.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'--><!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## GAMMA
+
+```TypeScript
+GAMMA = 'PngGamma'
+```
+
+PNG gamma.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-GAMMA = 'PngGamma'--><!--Device-PngPropertyKey-GAMMA = 'PngGamma'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## INTERLACE_TYPE
+
+```TypeScript
+INTERLACE_TYPE = 'PngInterlaceType'
+```
+
+PNG interlacing mode.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'--><!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
 ## MODIFICATION_TIME
 
 ```TypeScript
@@ -269,5 +189,85 @@ PNG software.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PngPropertyKey-SOFTWARE = 'PngSoftware'--><!--Device-PngPropertyKey-SOFTWARE = 'PngSoftware'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## SRGB_INTENT
+
+```TypeScript
+SRGB_INTENT = 'PngSRGBIntent'
+```
+
+PNG sRGB rendering intent.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'--><!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## TITLE
+
+```TypeScript
+TITLE = 'PngTitle'
+```
+
+PNG title.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-TITLE = 'PngTitle'--><!--Device-PngPropertyKey-TITLE = 'PngTitle'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## WARNING
+
+```TypeScript
+WARNING = 'PngWarning'
+```
+
+PNG warning.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-WARNING = 'PngWarning'--><!--Device-PngPropertyKey-WARNING = 'PngWarning'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## X_PIXELS_PER_METER
+
+```TypeScript
+X_PIXELS_PER_METER = 'PngXPixelsPerMeter'
+```
+
+PNG x pixels per meter.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'--><!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## Y_PIXELS_PER_METER
+
+```TypeScript
+Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'
+```
+
+PNG y pixels per meter.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'--><!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

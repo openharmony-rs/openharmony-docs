@@ -6,8 +6,6 @@ export enum TargetType
 
 Target type.
 
-@enum { int }
-
 **起始版本：** 21
 
 <!--Device-mechanicManager-export enum TargetType--><!--Device-mechanicManager-export enum TargetType-End-->

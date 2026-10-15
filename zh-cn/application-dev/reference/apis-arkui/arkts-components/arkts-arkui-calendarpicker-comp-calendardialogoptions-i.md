@@ -329,6 +329,30 @@ enableHoverMode?: boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## firstDayOfWeek
+
+```TypeScript
+firstDayOfWeek?: CalendarFirstDayOfWeek
+```
+
+设置日历选择器弹窗每周的起始日。
+
+默认值：**CalendarFirstDayOfWeek.LOCAL**（跟随系统区域变化）。
+
+**类型：** [CalendarFirstDayOfWeek](arkts-arkui-calendarpicker-comp-calendarfirstdayofweek-e.md)
+
+**默认值：** CalendarFirstDayOfWeek.LOCAL
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarDialogOptions-firstDayOfWeek?: CalendarFirstDayOfWeek--><!--Device-CalendarDialogOptions-firstDayOfWeek?: CalendarFirstDayOfWeek-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## hoverModeArea
 
 ```TypeScript
@@ -457,7 +481,7 @@ systemMaterial?: SystemUiMaterial
 > **说明：** 
 > 
 > - 默认值：[ImmersiveOptions](../arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。
-> - 不同的材质具有不同的视觉效果，包括背景透明度、模糊程度、阴影样式等方面的差异，该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、背景模糊[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)、背景效果[backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)，当设置系统材质时，上述接口不生效。
+> - 不同的材质具有不同的视觉效果，包括背景透明度、模糊程度、阴影样式等方面的差异，该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、背景模糊[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1)、背景效果[backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1)，当设置系统材质时，上述接口不生效。
 
 **类型：** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 

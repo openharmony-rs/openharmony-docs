@@ -22,7 +22,7 @@ Aligned to the baseline.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextVerticalAlign-BASELINE = 0--><!--Device-TextVerticalAlign-BASELINE = 0-End-->
 
@@ -38,7 +38,7 @@ Bottom-aligned.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextVerticalAlign-BOTTOM = 1--><!--Device-TextVerticalAlign-BOTTOM = 1-End-->
 
@@ -54,7 +54,7 @@ Center-aligned.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextVerticalAlign-CENTER = 2--><!--Device-TextVerticalAlign-CENTER = 2-End-->
 
@@ -70,7 +70,7 @@ Top-aligned.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextVerticalAlign-TOP = 3--><!--Device-TextVerticalAlign-TOP = 3-End-->
 

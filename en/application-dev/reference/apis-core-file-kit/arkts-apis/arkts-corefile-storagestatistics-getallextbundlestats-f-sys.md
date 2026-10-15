@@ -48,6 +48,7 @@ Obtains the space usage of all system applications or system services of a speci
 | 13600010 | The input parameter is invalid. |
 | 13600013 | Failed to query all business space usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,3 +62,5 @@ storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageSta
   console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

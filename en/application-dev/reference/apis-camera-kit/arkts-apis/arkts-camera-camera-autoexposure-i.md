@@ -32,7 +32,7 @@ Obtains the exposure metering mode in use.
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AutoExposure-getExposureMeteringMode(): ExposureMeteringMode--><!--Device-AutoExposure-getExposureMeteringMode(): ExposureMeteringMode-End-->
 
@@ -85,7 +85,7 @@ Obtains the exposure mode in use.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposure-getExposureMode(): ExposureMode--><!--Device-AutoExposure-getExposureMode(): ExposureMode-End-->
 
@@ -131,7 +131,7 @@ Obtains the exposure value in use.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposure-getExposureValue(): double--><!--Device-AutoExposure-getExposureValue(): double-End-->
 
@@ -178,7 +178,7 @@ Obtains the metering point of the camera device.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposure-getMeteringPoint(): Point--><!--Device-AutoExposure-getMeteringPoint(): Point-End-->
 
@@ -226,7 +226,7 @@ Unregisters the listener for exposure state change events. This API uses an asyn
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AutoExposure-offExposureStateChange(callback?: Callback<ExposureState>): void--><!--Device-AutoExposure-offExposureStateChange(callback?: Callback<ExposureState>): void-End-->
 
@@ -268,7 +268,7 @@ Listens to exposure state change events. This API uses an asynchronous callback 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AutoExposure-onExposureStateChange(callback: Callback<ExposureState>): void--><!--Device-AutoExposure-onExposureStateChange(callback: Callback<ExposureState>): void-End-->
 
@@ -306,7 +306,7 @@ Before the setting, you are advised to use [getExposureBiasRange](arkts-camera-c
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposure-setExposureBias(exposureBias: double): void--><!--Device-AutoExposure-setExposureBias(exposureBias: double): void-End-->
 
@@ -354,7 +354,7 @@ Sets exposure metering mode.
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AutoExposure-setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void--><!--Device-AutoExposure-setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void-End-->
 
@@ -401,7 +401,7 @@ Sets an exposure mode. Before the setting, call [isExposureModeSupported](arkts-
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposure-setExposureMode(aeMode: ExposureMode): void--><!--Device-AutoExposure-setExposureMode(aeMode: ExposureMode): void-End-->
 
@@ -448,7 +448,7 @@ The coordinate system is based on the horizontal device direction with the devic
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoExposure-setMeteringPoint(point: Point): void--><!--Device-AutoExposure-setMeteringPoint(point: Point): void-End-->
 

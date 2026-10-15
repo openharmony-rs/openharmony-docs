@@ -14,6 +14,38 @@ enum FingerprintTips
 
 **系统接口：** 此接口为系统接口。
 
+## FINGERPRINT_TIP_FINGER_DOWN
+
+```TypeScript
+FINGERPRINT_TIP_FINGER_DOWN = 6
+```
+
+表示手指落下。
+
+**起始版本：** 10
+
+<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## FINGERPRINT_TIP_FINGER_UP
+
+```TypeScript
+FINGERPRINT_TIP_FINGER_UP = 7
+```
+
+表示手指抬起。
+
+**起始版本：** 10
+
+<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
 ## FINGERPRINT_TIP_GOOD
 
 ```TypeScript
@@ -105,38 +137,6 @@ FINGERPRINT_TIP_TOO_SLOW = 5
 **起始版本：** 8
 
 <!--Device-FingerprintTips-FINGERPRINT_TIP_TOO_SLOW = 5--><!--Device-FingerprintTips-FINGERPRINT_TIP_TOO_SLOW = 5-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## FINGERPRINT_TIP_FINGER_DOWN
-
-```TypeScript
-FINGERPRINT_TIP_FINGER_DOWN = 6
-```
-
-表示手指落下。
-
-**起始版本：** 10
-
-<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## FINGERPRINT_TIP_FINGER_UP
-
-```TypeScript
-FINGERPRINT_TIP_FINGER_UP = 7
-```
-
-表示手指抬起。
-
-**起始版本：** 10
-
-<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

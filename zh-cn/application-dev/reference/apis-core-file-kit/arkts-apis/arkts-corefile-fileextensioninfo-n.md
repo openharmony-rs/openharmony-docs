@@ -1,4 +1,4 @@
-# fileExtensionInfo(公共文件访问与管理属性信息)
+# fileExtensionInfo（公共文件访问与管理属性信息）
 
 ```TypeScript
 declare namespace fileExtensionInfo

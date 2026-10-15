@@ -45,6 +45,7 @@ Unsubscribes from PortraitSession error events.
 | type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,6 +53,8 @@ function unregisterSessionError(nightPhotoSession: camera.NightPhotoSession): vo
   nightPhotoSession.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusStateChange')
 
@@ -76,6 +79,7 @@ Unsubscribes from focus state change events.
 | type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -83,6 +87,8 @@ function unregisterFocusStateChange(nightPhotoSession: camera.NightPhotoSession)
   nightPhotoSession.off('focusStateChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('smoothZoomInfoAvailable')
 
@@ -107,6 +113,7 @@ Unsubscribes from smooth zoom state change events.
 | type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,6 +121,8 @@ function unregisterSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): 
   nightPhotoSession.off('smoothZoomInfoAvailable');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('lcdFlashStatus')
 
@@ -167,6 +176,7 @@ Subscribes to PortraitSession error events. This API uses an asynchronous callba
 | type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -180,6 +190,8 @@ function registerSessionError(nightPhotoSession: camera.NightPhotoSession): void
   nightPhotoSession.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusStateChange')
 
@@ -204,6 +216,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | Callback used to return the focus state change. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -221,6 +234,8 @@ function registerFocusStateChange(nightPhotoSession: camera.NightPhotoSession): 
   nightPhotoSession.on('focusStateChange', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('smoothZoomInfoAvailable')
 
@@ -245,6 +260,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | Callback used to return the smooth zoom state change. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -262,6 +278,8 @@ function registerSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): vo
   nightPhotoSession.on('smoothZoomInfoAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('lcdFlashStatus')
 

@@ -12,24 +12,6 @@ export const enum GestureListenerType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TAP
-
-```TypeScript
-TAP = 0
-```
-
-点击手势
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-GestureListenerType-TAP = 0--><!--Device-GestureListenerType-TAP = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## LONG_PRESS
 
 ```TypeScript
@@ -84,6 +66,24 @@ PINCH = 3
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## ROTATION
+
+```TypeScript
+ROTATION = 5
+```
+
+旋转手势
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureListenerType-ROTATION = 5--><!--Device-GestureListenerType-ROTATION = 5-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## SWIPE
 
 ```TypeScript
@@ -102,13 +102,13 @@ SWIPE = 4
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ROTATION
+## TAP
 
 ```TypeScript
-ROTATION = 5
+TAP = 0
 ```
 
-旋转手势
+点击手势
 
 **起始版本：** 20
 
@@ -116,6 +116,6 @@ ROTATION = 5
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureListenerType-ROTATION = 5--><!--Device-GestureListenerType-ROTATION = 5-End-->
+<!--Device-GestureListenerType-TAP = 0--><!--Device-GestureListenerType-TAP = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

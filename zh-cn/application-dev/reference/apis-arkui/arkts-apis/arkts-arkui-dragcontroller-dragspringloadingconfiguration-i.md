@@ -24,7 +24,7 @@ import { dragController } from '@kit.ArkUI';
 stillTimeLimit?: number
 ```
 
-进入悬停检测BEGIN状态所需保持静止的时间，单位：ms。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。
+进入悬停检测BEGIN状态所需保持静止的时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ stillTimeLimit?: number
 updateInterval?: number
 ```
 
-进入悬停检测UPDATE状态后，更新通知的时间间隔，单位：ms。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。
+进入悬停检测UPDATE状态后，更新通知的时间间隔，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。
 
 **类型：** number
 
@@ -64,7 +64,7 @@ updateInterval?: number
 updateNotifyCount?: number
 ```
 
-进入悬停检测UPDATE状态后，更新通知的最大次数。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值3。
+进入悬停检测UPDATE状态后，更新通知的最大次数。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值3。
 
 **类型：** number
 
@@ -84,7 +84,7 @@ updateNotifyCount?: number
 updateToFinishInterval?: number
 ```
 
-从UPDATE状态到END状态的最长等待时间，单位：ms。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。
+从UPDATE状态到END状态的最长等待时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。
 
 **类型：** number
 

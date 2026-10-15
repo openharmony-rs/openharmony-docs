@@ -282,7 +282,7 @@ Background blur effect parameter, which is used to customize the display style o
 
 **NOTE:** 
 
-If this parameter is not set, the default effect of [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle) (**BlurStyle.COMPONENT_ULTRA_THICK**) is used.
+If this parameter is not set, the default effect of [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1) (**BlurStyle.COMPONENT_ULTRA_THICK**) is used.
 
 **Type:** [BackgroundBlurStyleOptions](arkts-arkui-common-comp-backgroundblurstyleoptions-i.md)
 
@@ -337,7 +337,7 @@ Background effect parameter, which is used to customize the display effect of th
 
 **NOTE:** 
 
-If this parameter is not set, the setting does not take effect. In this case, the background blur effect of the dialog box is determined by [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle). If this parameter is set, the **backgroundBlurStyle** effect will be overwritten. From API version 26.0.0, after **systemMaterial** is set, neither **backgroundEffect** nor **backgroundBlurStyle** takes effect.
+If this parameter is not set, the setting does not take effect. In this case, the background blur effect of the dialog box is determined by [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1). If this parameter is set, the **backgroundBlurStyle** effect will be overwritten. From API version 26.0.0, after **systemMaterial** is set, neither **backgroundEffect** nor **backgroundBlurStyle** takes effect.
 
 **Type:** [BackgroundEffectOptions](arkts-arkui-common-comp-backgroundeffectoptions-i.md)
 
@@ -699,7 +699,7 @@ System material of the dialog box.
 
 - Default value: [ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)  
 object whose **style** in [ImmersiveOptions](../arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md) is **ImmersiveStyle.ULTRA_THICK** If this parameter is set to **undefined**, the default value is used.  
-- Different materials produce distinct effects. This API impacts the following attributes:[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle), [backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow). When the system material is set, the aforementioned attributes do not take effect.
+- Different materials produce distinct effects. This API impacts the following attributes:[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1), [backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1). When the system material is set, the aforementioned attributes do not take effect.
 
 **Type:** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 

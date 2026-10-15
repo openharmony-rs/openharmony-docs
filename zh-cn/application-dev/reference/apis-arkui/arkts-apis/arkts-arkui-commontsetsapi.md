@@ -21,8 +21,8 @@
 | [PersistentStorage](arkts-arkui-persistentstorage-c-sys.md) | PersistentStorage提供了UI状态的持久化存储能力，将选定的AppStorage属性持久化到文件中，在应用重启时从文件中恢复这些属性值并写入到AppStorage。具体UI使用说明，详见[PersistentStorage：持久化存储UI状态](../../../ui/state-management/arkts-persiststorage.md)。 |
 | [SubscribaleAbstract](arkts-arkui-subscribaleabstract-c-sys.md) | 可订阅抽象类，用于管理所持有的属性集合，提供属性的添加、删除和变更通知能力。 |
 | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c-sys.md) | SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/ [LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同步关系。SubscribedAbstractProperty实例需要通过[aboutToBeDeleted](arkts-arkui-subscribedabstractproperty-c.md#abouttobedeleted)接口手动释放，以取消同步关系并无效化实例。 |
-| [SyncedPropertyOneWay](arkts-arkui-syncedpropertyoneway-c-sys.md) | 继承自[SubscribedAbstractProperty\&lt;T\&gt;](arkts-arkui-subscribedabstractproperty-c.md)。用于接收父组件状态值的单向同步，当父组件状态变化时更新自身值。 |
-| [SyncedPropertyTwoWay](arkts-arkui-syncedpropertytwoway-c-sys.md) | 继承自[SubscribedAbstractProperty\&lt;T\&gt;](arkts-arkui-subscribedabstractproperty-c.md)。用于实现父子组件之间的双向状态数据同步。 |
+| [SyncedPropertyOneWay](arkts-arkui-syncedpropertyoneway-c-sys.md) | 继承自[SubscribedAbstractProperty\<T\>](arkts-arkui-subscribedabstractproperty-c.md)。用于接收父组件状态值的单向同步，当父组件状态变化时更新自身值。 |
+| [SyncedPropertyTwoWay](arkts-arkui-syncedpropertytwoway-c-sys.md) | 继承自[SubscribedAbstractProperty\<T\>](arkts-arkui-subscribedabstractproperty-c.md)。用于实现父子组件之间的双向状态数据同步。 |
 <!--DelEnd-->
 
 ### 接口

@@ -40,7 +40,7 @@ Note: The enabling behavior of an application takes effect only in its current l
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AddressSanitizerPolicy-pageSwitchLogEnable?: boolean--><!--Device-AddressSanitizerPolicy-pageSwitchLogEnable?: boolean-End-->
 

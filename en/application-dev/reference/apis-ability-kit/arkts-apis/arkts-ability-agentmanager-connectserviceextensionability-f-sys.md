@@ -30,7 +30,7 @@ Connects an AgentExtensionAbility to a ServiceExtensionAbility. If the target se
 | --- | --- | --- | --- |
 | context | [AgentExtensionContext](arkts-ability-agentextensioncontext-c.md) | Yes | The context of the current agent extension ability. |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Indicates the service extension ability to connect. |
-| callback | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | Yes | Indicates the callback of connection. |
+| callback | [ConnectOptions](arkts-ability-connectoptions-i.md) | Yes | Indicates the callback of connection. |
 
 **Return value:**
 
@@ -42,7 +42,7 @@ Connects an AgentExtensionAbility to a ServiceExtensionAbility. If the target se
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |

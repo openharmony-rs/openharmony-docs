@@ -18,7 +18,7 @@ Creates a **PasteData** object of the plain text type.
 
 **Deprecated since:** 9
 
-**Substitutes:** [createData](arkts-basicservices-pasteboard-createdata-f.md)(mimeType: string, value: ValueType)
+**Substitutes:** [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata1)(mimeType: string, value: ValueType)
 
 <!--Device-pasteboard-function createPlainTextData(text: string): PasteData--><!--Device-pasteboard-function createPlainTextData(text: string): PasteData-End-->
 

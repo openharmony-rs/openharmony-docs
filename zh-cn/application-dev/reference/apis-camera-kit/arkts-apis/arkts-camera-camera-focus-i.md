@@ -32,7 +32,7 @@ getFocalLength(): number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Focus-getFocalLength(): double--><!--Device-Focus-getFocalLength(): double-End-->
 
@@ -79,7 +79,7 @@ getFocusMode(): FocusMode
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Focus-getFocusMode(): FocusMode--><!--Device-Focus-getFocusMode(): FocusMode-End-->
 
@@ -125,7 +125,7 @@ getFocusPoint(): Point
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Focus-getFocusPoint(): Point--><!--Device-Focus-getFocusPoint(): Point-End-->
 
@@ -173,7 +173,7 @@ lockFocusTracking(focusPoint: Point): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Focus-lockFocusTracking(focusPoint: Point): void--><!--Device-Focus-lockFocusTracking(focusPoint: Point): void-End-->
 
@@ -221,7 +221,7 @@ setFocusMode(afMode: FocusMode): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Focus-setFocusMode(afMode: FocusMode): void--><!--Device-Focus-setFocusMode(afMode: FocusMode): void-End-->
 
@@ -267,7 +267,7 @@ setFocusPoint(point: Point): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Focus-setFocusPoint(point: Point): void--><!--Device-Focus-setFocusPoint(point: Point): void-End-->
 
@@ -314,7 +314,7 @@ unlockFocusTracking(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Focus-unlockFocusTracking(): void--><!--Device-Focus-unlockFocusTracking(): void-End-->
 

@@ -45,6 +45,7 @@ SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例�
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -69,6 +70,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getAllSyncFolders
 
@@ -105,6 +108,7 @@ getAllSyncFolders(): Promise<Array<SyncFolder>>
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-系统内部错误) | Temporary failure. Retry is recommended (e.g., network issues). |
 | [34400015](../errorcode-clouddiskmanager-sys.md#34400015-当前设备不允许使用云盘功能) | Cloud disk is not allowed on this device. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -127,6 +131,9 @@ try {
             if (syncFolders[i].customAlias) {
                 console.info(`${TAG}syncFolders[${i}].customAlias: ${syncFolders[i].customAlias}`);
             }
+            if (syncFolders[i].isSupportPlaceHolder) {
+                console.info(`${TAG}syncFolders[${i}].isSupportPlaceHolder: ${syncFolders[i].isSupportPlaceHolder}`);
+            }
         }
     }).catch((err: BusinessError<object>) => {
         console.error(`${TAG}Failed to getAllSyncFolders. Code: ${err.code}, message: ${err.message}`);
@@ -136,3 +143,5 @@ try {
     console.error(`${TAG}getAllSyncFolders failed. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

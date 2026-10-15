@@ -22,19 +22,19 @@ Ability组件类型。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
-## UNKNOWN
+## DATA
 
 ```TypeScript
-UNKNOWN = 0
+DATA = 3
 ```
-
-未知Ability类型。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-<!--Device-AbilityType-UNKNOWN = 0--><!--Device-AbilityType-UNKNOWN = 0-End-->
+**替代接口：** [DATA](arkts-ability-bundlemanager-abilitytype-e.md#data)
+
+<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -70,18 +70,18 @@ SERVICE = 2
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
-## DATA
+## UNKNOWN
 
 ```TypeScript
-DATA = 3
+UNKNOWN = 0
 ```
+
+未知Ability类型。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [DATA](arkts-ability-bundlemanager-abilitytype-e.md#data)
-
-<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
+<!--Device-AbilityType-UNKNOWN = 0--><!--Device-AbilityType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework

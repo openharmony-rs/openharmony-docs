@@ -6,6 +6,8 @@ type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>
 
 TextTimer类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextTimerInterface, [TextTimerAttribute](../arkts-components/arkts-arkui-texttimer-comp-attribute.md)&gt;
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ TextTimer类型的FrameNode节点类型。
 <!--Device-typeNode-type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>--><!--Device-typeNode-type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextTimerInterface, [TextTimerAttribute](../arkts-components/arkts-arkui-texttimer-comp-attribute.md)&gt;

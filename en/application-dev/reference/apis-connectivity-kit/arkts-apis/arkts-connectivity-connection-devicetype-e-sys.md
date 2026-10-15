@@ -14,6 +14,24 @@ Enum for the custom type of remote device.
 
 **System API:** This is a system API.
 
+## DEVICE_TYPE_CAR
+
+```TypeScript
+DEVICE_TYPE_CAR = 1
+```
+
+Car bluetooth.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceType-DEVICE_TYPE_CAR = 1--><!--Device-DeviceType-DEVICE_TYPE_CAR = 1-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
 ## DEVICE_TYPE_DEFAULT
 
 ```TypeScript
@@ -32,19 +50,19 @@ Default type, the type is consistent with COD.
 
 **System API:** This is a system API.
 
-## DEVICE_TYPE_CAR
+## DEVICE_TYPE_GLASSES
 
 ```TypeScript
-DEVICE_TYPE_CAR = 1
+DEVICE_TYPE_GLASSES = 4
 ```
 
-Car bluetooth.
+Glasses device.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceType-DEVICE_TYPE_CAR = 1--><!--Device-DeviceType-DEVICE_TYPE_CAR = 1-End-->
+<!--Device-DeviceType-DEVICE_TYPE_GLASSES = 4--><!--Device-DeviceType-DEVICE_TYPE_GLASSES = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -86,37 +104,19 @@ Hearing Aid.
 
 **System API:** This is a system API.
 
-## DEVICE_TYPE_GLASSES
+## DEVICE_TYPE_OTHERS
 
 ```TypeScript
-DEVICE_TYPE_GLASSES = 4
+DEVICE_TYPE_OTHERS = 7
 ```
 
-Glasses device.
+Others bluetooth.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceType-DEVICE_TYPE_GLASSES = 4--><!--Device-DeviceType-DEVICE_TYPE_GLASSES = 4-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
-## DEVICE_TYPE_WATCH
-
-```TypeScript
-DEVICE_TYPE_WATCH = 5
-```
-
-Watch device.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceType-DEVICE_TYPE_WATCH = 5--><!--Device-DeviceType-DEVICE_TYPE_WATCH = 5-End-->
+<!--Device-DeviceType-DEVICE_TYPE_OTHERS = 7--><!--Device-DeviceType-DEVICE_TYPE_OTHERS = 7-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -140,19 +140,19 @@ Speaker device.
 
 **System API:** This is a system API.
 
-## DEVICE_TYPE_OTHERS
+## DEVICE_TYPE_WATCH
 
 ```TypeScript
-DEVICE_TYPE_OTHERS = 7
+DEVICE_TYPE_WATCH = 5
 ```
 
-Others bluetooth.
+Watch device.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceType-DEVICE_TYPE_OTHERS = 7--><!--Device-DeviceType-DEVICE_TYPE_OTHERS = 7-End-->
+<!--Device-DeviceType-DEVICE_TYPE_WATCH = 5--><!--Device-DeviceType-DEVICE_TYPE_WATCH = 5-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

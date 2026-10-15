@@ -37,6 +37,7 @@ Register session create callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,6 +64,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('sessionDestroy')
@@ -96,6 +99,7 @@ Register session destroy callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -120,6 +124,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('topSessionChange')
@@ -153,6 +159,7 @@ Register top session changed callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -179,6 +186,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('sessionServiceDie')
@@ -212,6 +221,7 @@ Register Session service death callback, notifying the application to clean up r
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -219,6 +229,8 @@ avSession.on('sessionServiceDie', () => {
   console.info('on sessionServiceDie : session is dead ');
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('distributedSessionChange')
@@ -252,6 +264,7 @@ Register distributed session changed callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -259,6 +272,8 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
   console.info(`on distributedSessionChange size: ${sessionControllers.length}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceAvailable')
@@ -291,6 +306,7 @@ Register device discovery callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -300,6 +316,8 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   console.info(`on deviceAvailable  : ${device} `);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceOffline')
@@ -332,6 +350,7 @@ Register device offline callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -341,6 +360,8 @@ avSession.on('deviceOffline', (deviceId: string) => {
   console.info(`on deviceOffline  : ${deviceId} `);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceLogEvent')
@@ -371,10 +392,11 @@ Register log event callback.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-session-does-not-exist) | The session does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -382,6 +404,8 @@ avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
   console.info(`on deviceLogEvent code : ${eventCode}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceStateChanged')
@@ -416,6 +440,7 @@ Registers a system callback for the device connection phase. The callback includ
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -424,3 +449,5 @@ avSession.on('deviceStateChanged', (state: avSession.DeviceState) => {
     reasonCode=${state.reasonCode}, radarErrorCode=${state.radarErrorCode}`)
 })
 ```
+
+<!--DelEnd-->

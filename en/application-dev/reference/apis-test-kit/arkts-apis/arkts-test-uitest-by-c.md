@@ -12,7 +12,7 @@ The APIs provided by the **By** class exhibit the following features:
 For example, you can specify both the **text** and **id** attributes to find the target component.
 2. Provide multiple match patterns for component attributes.
 3. Support absolute positioning and relative positioning for components.
-APIs such as [By.isBefore&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isbefore) and [By.isAfter&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isafter) can be used to specify the features of adjacent components to assist positioning.
+APIs such as [By.isBefore<sup>(deprecated)</sup>](#isbefore) and [By.isAfter<sup>(deprecated)</sup>](#isafter) can be used to specify the features of adjacent components to assist positioning.
 
 All APIs provided in the **By** class are synchronous. You are advised to use the static constructor **BY** to create a **By** object in chain mode.
 
@@ -170,7 +170,7 @@ Specifies the ID attribute of the target component.
 
 **Deprecated since:** 9
 
-**Substitutes:** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**Substitutes:** [id](arkts-test-uitest-on-c.md#id1)(id: string)
 
 <!--Device-By-id(id: number): By--><!--Device-By-id(id: number): By-End-->
 
@@ -295,7 +295,7 @@ Specifies the key attribute of the target component.
 
 **Deprecated since:** 9
 
-**Substitutes:** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**Substitutes:** [id](arkts-test-uitest-on-c.md#id1)(id: string)
 
 <!--Device-By-key(key: string): By--><!--Device-By-key(key: string): By-End-->
 
@@ -460,7 +460,7 @@ Specifies the type attribute of the target component.
 
 **Deprecated since:** 9
 
-**Substitutes:** [type](arkts-test-uitest-on-c.md#type)(tp: string)
+**Substitutes:** [type](arkts-test-uitest-on-c.md#type1)(tp: string)
 
 <!--Device-By-type(tp: string): By--><!--Device-By-type(tp: string): By-End-->
 

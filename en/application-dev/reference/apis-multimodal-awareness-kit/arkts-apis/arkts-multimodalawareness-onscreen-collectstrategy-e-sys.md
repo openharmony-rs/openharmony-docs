@@ -32,55 +32,19 @@ Collection is supported.
 
 **System API:** This is a system API.
 
-## SPLIT_SCREEN
+## ALLOW_USER_CHANGE
 
 ```TypeScript
-SPLIT_SCREEN = 1 << 1
+ALLOW_USER_CHANGE = 1 << 5
 ```
 
-Collection policy of the split-screen window on the application.
+Collection policies can be configured.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-CollectStrategy-SPLIT_SCREEN = 1 << 1--><!--Device-CollectStrategy-SPLIT_SCREEN = 1 << 1-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
-
-**System API:** This is a system API.
-
-## UNSUPPORTED_APP
-
-```TypeScript
-UNSUPPORTED_APP = 1 << 2
-```
-
-Automatic collection is not supported.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-CollectStrategy-UNSUPPORTED_APP = 1 << 2--><!--Device-CollectStrategy-UNSUPPORTED_APP = 1 << 2-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
-
-**System API:** This is a system API.
-
-## PRIVATE_WINDOW
-
-```TypeScript
-PRIVATE_WINDOW = 1 << 3
-```
-
-Privacy window of the application.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-CollectStrategy-PRIVATE_WINDOW = 1 << 3--><!--Device-CollectStrategy-PRIVATE_WINDOW = 1 << 3-End-->
+<!--Device-CollectStrategy-ALLOW_USER_CHANGE = 1 << 5--><!--Device-CollectStrategy-ALLOW_USER_CHANGE = 1 << 5-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -99,24 +63,6 @@ VM application, which is a non-HarmonyOS application.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-CollectStrategy-ANCO_APP = 1 << 4--><!--Device-CollectStrategy-ANCO_APP = 1 << 4-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
-
-**System API:** This is a system API.
-
-## ALLOW_USER_CHANGE
-
-```TypeScript
-ALLOW_USER_CHANGE = 1 << 5
-```
-
-Collection policies can be configured.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-CollectStrategy-ALLOW_USER_CHANGE = 1 << 5--><!--Device-CollectStrategy-ALLOW_USER_CHANGE = 1 << 5-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -158,6 +104,24 @@ Floating window.
 
 **System API:** This is a system API.
 
+## LAUNCHER
+
+```TypeScript
+LAUNCHER = 1 << 9
+```
+
+Desktop application.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CollectStrategy-LAUNCHER = 1 << 9--><!--Device-CollectStrategy-LAUNCHER = 1 << 9-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**System API:** This is a system API.
+
 ## PIP_SCREEN
 
 ```TypeScript
@@ -176,19 +140,55 @@ Picture-in-picture mode.
 
 **System API:** This is a system API.
 
-## LAUNCHER
+## PRIVATE_WINDOW
 
 ```TypeScript
-LAUNCHER = 1 << 9
+PRIVATE_WINDOW = 1 << 3
 ```
 
-Desktop application.
+Privacy window of the application.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-CollectStrategy-LAUNCHER = 1 << 9--><!--Device-CollectStrategy-LAUNCHER = 1 << 9-End-->
+<!--Device-CollectStrategy-PRIVATE_WINDOW = 1 << 3--><!--Device-CollectStrategy-PRIVATE_WINDOW = 1 << 3-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**System API:** This is a system API.
+
+## SPLIT_SCREEN
+
+```TypeScript
+SPLIT_SCREEN = 1 << 1
+```
+
+Collection policy of the split-screen window on the application.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CollectStrategy-SPLIT_SCREEN = 1 << 1--><!--Device-CollectStrategy-SPLIT_SCREEN = 1 << 1-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**System API:** This is a system API.
+
+## UNSUPPORTED_APP
+
+```TypeScript
+UNSUPPORTED_APP = 1 << 2
+```
+
+Automatic collection is not supported.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CollectStrategy-UNSUPPORTED_APP = 1 << 2--><!--Device-CollectStrategy-UNSUPPORTED_APP = 1 << 2-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 

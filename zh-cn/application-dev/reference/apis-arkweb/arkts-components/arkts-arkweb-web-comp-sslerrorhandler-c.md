@@ -28,6 +28,8 @@ SslErrorHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+<a id="handlecancel1"></a>
+
 ## handleCancel
 
 ```TypeScript
@@ -44,7 +46,7 @@ handleCancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handlecancel-1"></a>
+<a id="handlecancel2"></a>
 
 ## handleCancel
 
@@ -64,7 +66,7 @@ handleCancel(abortLoading: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| abortLoading | boolean | 是 | 是否在取消请求后停止加载页面。<br>true表示停止加载页面，false表示继续加载页面。 |
+| abortLoading | boolean | 是 | SSL错误页场景，拒绝错误证书后是否终止页面加载。<br>true表示停止加载页面，false表示继续加载页面。 |
 
 ## handleConfirm
 

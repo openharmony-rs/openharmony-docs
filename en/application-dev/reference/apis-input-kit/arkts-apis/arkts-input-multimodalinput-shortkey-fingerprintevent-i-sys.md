@@ -45,7 +45,7 @@ Enumeration of fingerprint gesture event types.
 distanceX: number
 ```
 
-Offset relative to the short axis of the side fingerprint device (positive values indicate movement to the right, and negative values indicate movement to the left).
+Offset of the X axis for the fingerprint sensor relative to the side edge (a positive number indicates that a rightward offset, and a negative number indicates a leftward offset).
 
 **Type:** number
 
@@ -63,7 +63,7 @@ Offset relative to the short axis of the side fingerprint device (positive value
 distanceY: number
 ```
 
-Offset relative to the long axis of the side fingerprint device (positive values indicate upward movement, and negative values indicate downward movement).
+Offset of the Y axis for the fingerprint sensor relative to the side edge (a positive number indicates an upward offset, and a negative number indicates a downward offset).
 
 **Type:** number
 

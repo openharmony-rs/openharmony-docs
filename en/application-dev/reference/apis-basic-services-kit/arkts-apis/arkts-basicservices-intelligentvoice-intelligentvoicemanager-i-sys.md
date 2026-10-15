@@ -51,6 +51,7 @@ Obtains capability information.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,6 +59,8 @@ if (intelligentVoiceManager != null) {
   let info = intelligentVoiceManager.getCapabilityInfo();
 }
 ```
+
+<!--DelEnd-->
 
 ## off('serviceChange')
 
@@ -91,6 +94,7 @@ Unsubscribes service change events.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -98,6 +102,8 @@ if (intelligentVoiceManager != null) {
   intelligentVoiceManager.off('serviceChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('serviceChange')
 
@@ -131,6 +137,7 @@ Subscribes service change events. When the state of intelligent voice service ch
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,3 +145,5 @@ if (intelligentVoiceManager != null) {
   intelligentVoiceManager.on('serviceChange', (serviceChangeType: intelligentVoice.ServiceChangeType) => {});
 }
 ```
+
+<!--DelEnd-->

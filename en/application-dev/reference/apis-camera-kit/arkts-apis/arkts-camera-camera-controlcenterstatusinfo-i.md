@@ -30,7 +30,7 @@ Effect type of the camera controller.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-ControlCenterStatusInfo-readonly effectType: ControlCenterEffectType--><!--Device-ControlCenterStatusInfo-readonly effectType: ControlCenterEffectType-End-->
 
@@ -48,7 +48,7 @@ Whether the camera controller is activated. **true** if activated, **false** oth
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-ControlCenterStatusInfo-readonly isActive: boolean--><!--Device-ControlCenterStatusInfo-readonly isActive: boolean-End-->
 

@@ -12,19 +12,19 @@ Enumerates the screen density types.
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-## SCREEN_SDPI
+## SCREEN_LDPI
 
 ```TypeScript
-SCREEN_SDPI = 120
+SCREEN_LDPI = 240
 ```
 
-Small-scale DPI.
+Large-scale DPI.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ScreenDensity-SCREEN_SDPI = 120--><!--Device-ScreenDensity-SCREEN_SDPI = 120-End-->
+<!--Device-ScreenDensity-SCREEN_LDPI = 240--><!--Device-ScreenDensity-SCREEN_LDPI = 240-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -38,25 +38,25 @@ Medium-scale DPI.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_MDPI = 160--><!--Device-ScreenDensity-SCREEN_MDPI = 160-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-## SCREEN_LDPI
+## SCREEN_SDPI
 
 ```TypeScript
-SCREEN_LDPI = 240
+SCREEN_SDPI = 120
 ```
 
-Large-scale DPI.
+Small-scale DPI.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ScreenDensity-SCREEN_LDPI = 240--><!--Device-ScreenDensity-SCREEN_LDPI = 240-End-->
+<!--Device-ScreenDensity-SCREEN_SDPI = 120--><!--Device-ScreenDensity-SCREEN_SDPI = 120-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -70,7 +70,7 @@ Extra-large-scale DPI.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_XLDPI = 320--><!--Device-ScreenDensity-SCREEN_XLDPI = 320-End-->
 
@@ -86,7 +86,7 @@ Extra-extra-large-scale DPI.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_XXLDPI = 480--><!--Device-ScreenDensity-SCREEN_XXLDPI = 480-End-->
 
@@ -102,7 +102,7 @@ Extra-extra-extra-large-scale DPI.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_XXXLDPI = 640--><!--Device-ScreenDensity-SCREEN_XXXLDPI = 640-End-->
 

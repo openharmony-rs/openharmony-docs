@@ -10,7 +10,7 @@ Defines the **DisableAlertBeforeBackPage** parameter.
 
 **Deprecated since:** 8
 
-**Substitutes:** RouterOptions
+**Substitutes:** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-unnamed-export interface DisableAlertBeforeBackPageOptions--><!--Device-unnamed-export interface DisableAlertBeforeBackPageOptions-End-->
 
@@ -34,7 +34,7 @@ Called when the dialog box fails to be closed. **errMsg** indicates the returned
 
 **Deprecated since:** 8
 
-**Substitutes:** RouterOptions
+**Substitutes:** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-DisableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void--><!--Device-DisableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void-End-->
 
@@ -58,7 +58,7 @@ Called when the dialog box is closed.
 
 **Deprecated since:** 8
 
-**Substitutes:** RouterOptions
+**Substitutes:** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-DisableAlertBeforeBackPageOptions-complete?: () => void--><!--Device-DisableAlertBeforeBackPageOptions-complete?: () => void-End-->
 
@@ -76,7 +76,7 @@ Called when the dialog box is closed. **errMsg** indicates the returned informat
 
 **Deprecated since:** 8
 
-**Substitutes:** RouterOptions
+**Substitutes:** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-DisableAlertBeforeBackPageOptions-success?: (errMsg: string) => void--><!--Device-DisableAlertBeforeBackPageOptions-success?: (errMsg: string) => void-End-->
 

@@ -46,22 +46,6 @@ No follow rule is used even if the **followx_file_list.cfg** file exists.
 
 **System API:** This is a system API.
 
-## SIM_DEFAULT
-
-```TypeScript
-SIM_DEFAULT = 10
-```
-
-Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of the default card.
-
-**Since:** 11
-
-<!--Device-FollowXMode-SIM_DEFAULT = 10--><!--Device-FollowXMode-SIM_DEFAULT = 10-End-->
-
-**System capability:** SystemCapability.Customization.ConfigPolicy
-
-**System API:** This is a system API.
-
 ## SIM_1
 
 ```TypeScript
@@ -89,6 +73,22 @@ Files are searched in **etc/carrier/${opkey}** at each configuration level based
 **Since:** 11
 
 <!--Device-FollowXMode-SIM_2 = 12--><!--Device-FollowXMode-SIM_2 = 12-End-->
+
+**System capability:** SystemCapability.Customization.ConfigPolicy
+
+**System API:** This is a system API.
+
+## SIM_DEFAULT
+
+```TypeScript
+SIM_DEFAULT = 10
+```
+
+Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of the default card.
+
+**Since:** 11
+
+<!--Device-FollowXMode-SIM_DEFAULT = 10--><!--Device-FollowXMode-SIM_DEFAULT = 10-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 

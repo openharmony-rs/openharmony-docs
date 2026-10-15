@@ -58,6 +58,7 @@ cancel the current file transfer action.
 | 2900099 | Failed to cancel the current transfer. |
 | 2903002 | Current Transfer Information is busy. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,6 +73,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getCurrentTransferInformation
 
@@ -116,6 +119,7 @@ Obtains the information about the file that is being transferred. On API 26.0.0 
 | 2900099 | Failed to obtain the current transmission information. |
 | 2903004 | Current Transfer Information is empty. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -130,6 +134,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('transferStateChange')
 
@@ -165,12 +171,13 @@ Unsubscribe the event reported when the file transfer status changes.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -185,6 +192,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('receiveIncomingFile')
 
@@ -220,12 +229,13 @@ Unsubscribe to the event of receiving a file transfer request.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -239,6 +249,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('transferStateChange')
 
@@ -277,12 +289,13 @@ Subscribe the event reported when the file transfer status changes. On API 26.0.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 16 - 24 |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 16 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -305,6 +318,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('receiveIncomingFile')
 
@@ -343,12 +358,13 @@ Subscribe to the event of receiving a file transfer request. On API 26.0.0 and a
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 16 - 24 |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 16 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -371,6 +387,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## sendFile
 
@@ -422,6 +440,7 @@ Send files to the remote device.
 | 2903002 | Current Transfer Information is busy. |
 | 2903003 | The file is not accessible. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -452,6 +471,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setIncomingFileConfirmation
 
@@ -502,6 +523,7 @@ Set the user confirmation information for incoming files.
 | 2903002 | Current Transfer Information is busy. |
 | 2903003 | The file is not accessible. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -524,6 +546,8 @@ try {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setLastReceivedFileUri
 
@@ -564,13 +588,14 @@ Set the URI of the last received file.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 | 2900099 | Failed to set the URI of the last file. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -584,3 +609,5 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->

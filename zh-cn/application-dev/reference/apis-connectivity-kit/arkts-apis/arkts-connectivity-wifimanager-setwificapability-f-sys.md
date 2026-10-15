@@ -42,6 +42,7 @@ function setWifiCapability(capability: WifiCapability, enable: boolean): void
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true);
 ```
+
+<!--DelEnd-->

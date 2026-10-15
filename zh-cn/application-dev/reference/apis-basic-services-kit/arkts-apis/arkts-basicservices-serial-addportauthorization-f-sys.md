@@ -46,6 +46,7 @@ function addPortAuthorization(tokenId: string, deviceId: string): Promise<void>
 | [35700002](../errorcode-busmanager-serial.md#35700002-参数错误) | Invalid parameter. |
 | [35700008](../errorcode-busmanager-serial.md#35700008-权限被拒绝) | Permission denied. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,3 +61,5 @@ serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.error(`Failed to addPortAuthorization. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

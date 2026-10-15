@@ -44,6 +44,7 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 | callback | [IInputData](arkts-basicservices-osaccount-iinputdata-i-sys.md) | 是 |  |
 | options | [GetInputDataOptions](arkts-basicservices-osaccount-getinputdataoptions-i-sys.md) | 是 |  |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
 let result = pinAuth.registerInputer(inputer);
 console.info('registerInputer result: ' + result);
 ```
+
+<!--DelEnd-->

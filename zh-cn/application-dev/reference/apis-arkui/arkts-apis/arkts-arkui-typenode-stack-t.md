@@ -6,6 +6,8 @@ type Stack = TypedFrameNode<StackInterface, StackAttribute>
 
 Stack类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;StackInterface, [StackAttribute](../arkts-components/arkts-arkui-stack-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Stack类型的FrameNode节点类型。
 <!--Device-typeNode-type Stack = TypedFrameNode<StackInterface, StackAttribute>--><!--Device-typeNode-type Stack = TypedFrameNode<StackInterface, StackAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;StackInterface, [StackAttribute](../arkts-components/arkts-arkui-stack-comp-attribute.md)&gt;

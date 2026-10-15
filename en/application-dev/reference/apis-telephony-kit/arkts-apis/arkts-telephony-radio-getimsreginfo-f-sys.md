@@ -6,6 +6,8 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
+<a id="getimsreginfo1"></a>
+
 ## getImsRegInfo
 
 ```TypeScript
@@ -44,6 +46,7 @@ Get the IMS registration state info of specified IMS service type.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,8 +63,10 @@ radio.getImsRegInfo(slotId, mode, (err: BusinessError, data: radio.ImsRegInfo) =
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getimsreginfo-1"></a>
+
+<a id="getimsreginfo2"></a>
 
 ## getImsRegInfo
 
@@ -106,6 +111,7 @@ Get the IMS registration state info of specified IMS service type.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -119,3 +125,5 @@ radio.getImsRegInfo(slotId, mode).then((data: radio.ImsRegInfo) => {
     console.error(`getImsRegInfo failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

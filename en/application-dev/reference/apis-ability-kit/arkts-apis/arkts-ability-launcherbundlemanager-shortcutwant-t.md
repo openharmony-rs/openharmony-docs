@@ -6,10 +6,10 @@ export type ShortcutWant = _ShortcutWant
 
 Defines the target [wants](../../../quick-start/module-configuration-file.md#wants) defined in the shortcut configuration.
 
+**Type:** _ShortcutWant
+
 **Since:** 20
 
 <!--Device-launcherBundleManager-export type ShortcutWant = _ShortcutWant--><!--Device-launcherBundleManager-export type ShortcutWant = _ShortcutWant-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
-
-**Type:** _ShortcutWant

@@ -18,6 +18,24 @@ interface AVScreenCaptureStrategy
 import { media } from '@kit.MediaKit';
 ```
 
+## enableAEC
+
+```TypeScript
+enableAEC?: boolean
+```
+
+表示当麦克风采集开启时，是否使能回声检测与回声消除功能。<br> true表示开启回声消除功能，false表示关闭回声消除功能，默认是false。
+
+**类型：** boolean
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVScreenCaptureStrategy-enableAEC?: boolean--><!--Device-AVScreenCaptureStrategy-enableAEC?: boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
 ## enableBFrame
 
 ```TypeScript
@@ -77,9 +95,9 @@ privacyMaskMode?: number
 ```
 
 设置屏幕录制时对隐私窗口的屏蔽模式。<br>  
-- 0：表示存在隐私窗口时，采用全屏屏蔽模式，默认是0。<br>  
-- 1：表示存在隐私窗口时，采用隐私窗口屏蔽模式。<br>  
-- 设置为其他值时返回错误。
+  - 0：表示存在隐私窗口时，采用全屏屏蔽模式，默认是0。<br>  
+  - 1：表示存在隐私窗口时，采用隐私窗口屏蔽模式。<br>  
+  - 设置为其他值时返回错误。
 
 **类型：** number
 

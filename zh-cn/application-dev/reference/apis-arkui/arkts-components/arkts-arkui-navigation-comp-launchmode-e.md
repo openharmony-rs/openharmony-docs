@@ -12,26 +12,6 @@ declare enum LaunchMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## STANDARD
-
-```TypeScript
-STANDARD = 0
-```
-
-系统默认的栈操作模式。
-
-push操作会将指定的NavDestination入栈；replace操作会将当前栈顶NavDestination替换。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-LaunchMode-STANDARD = 0--><!--Device-LaunchMode-STANDARD = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## MOVE_TO_TOP_SINGLETON
 
 ```TypeScript
@@ -47,6 +27,24 @@ MOVE_TO_TOP_SINGLETON = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1--><!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NEW_INSTANCE
+
+```TypeScript
+NEW_INSTANCE = 3
+```
+
+创建新的NavDestination实例。与STANDARD模式相比，该方法不会复用栈中同名实例。并且指定该模式时，新创建的页面默认会执行push动效。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LaunchMode-NEW_INSTANCE = 3--><!--Device-LaunchMode-NEW_INSTANCE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,13 +66,15 @@ POP_TO_SINGLETON = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NEW_INSTANCE
+## STANDARD
 
 ```TypeScript
-NEW_INSTANCE = 3
+STANDARD = 0
 ```
 
-创建新的NavDestination实例。与STANDARD模式相比，该方法不会复用栈中同名实例。并且指定该模式时，新创建的页面默认会执行push动效。
+系统默认的栈操作模式。
+
+push操作会将指定的NavDestination入栈；replace操作会将当前栈顶NavDestination替换。
 
 **起始版本：** 12
 
@@ -82,6 +82,6 @@ NEW_INSTANCE = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-LaunchMode-NEW_INSTANCE = 3--><!--Device-LaunchMode-NEW_INSTANCE = 3-End-->
+<!--Device-LaunchMode-STANDARD = 0--><!--Device-LaunchMode-STANDARD = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

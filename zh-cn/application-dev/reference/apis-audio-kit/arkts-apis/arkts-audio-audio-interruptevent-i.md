@@ -30,7 +30,7 @@ eventType: InterruptType
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptEvent-eventType: InterruptType--><!--Device-InterruptEvent-eventType: InterruptType-End-->
 
@@ -48,7 +48,7 @@ forceType: InterruptForceType
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptEvent-forceType: InterruptForceType--><!--Device-InterruptEvent-forceType: InterruptForceType-End-->
 
@@ -66,7 +66,7 @@ hintType: InterruptHint
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptEvent-hintType: InterruptHint--><!--Device-InterruptEvent-hintType: InterruptHint-End-->
 

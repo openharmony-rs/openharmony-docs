@@ -6,6 +6,8 @@ type ValuesBucket = { [key: string]: ValueType | Uint8Array | null}
 
 用于存储键值对的类型。
 
+**类型：** { [key: string]: ValueType | Uint8Array | null}
+
 **起始版本：** 7
 
 **废弃版本：** 9
@@ -15,5 +17,3 @@ type ValuesBucket = { [key: string]: ValueType | Uint8Array | null}
 <!--Device-rdb-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }--><!--Device-rdb-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**类型：** { [key: string]: ValueType | Uint8Array | null}

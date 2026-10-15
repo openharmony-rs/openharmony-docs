@@ -12,19 +12,19 @@ Enumerates switch states.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## ON
+## FORCE_ON
 
 ```TypeScript
-ON = 0
+FORCE_ON = 2
 ```
 
-On.
+Forced-on.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SwitchStatus-ON = 0--><!--Device-SwitchStatus-ON = 0-End-->
+<!--Device-SwitchStatus-FORCE_ON = 2--><!--Device-SwitchStatus-FORCE_ON = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,18 +44,18 @@ Off.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## FORCE_ON
+## ON
 
 ```TypeScript
-FORCE_ON = 2
+ON = 0
 ```
 
-Forced-on.
+On.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SwitchStatus-FORCE_ON = 2--><!--Device-SwitchStatus-FORCE_ON = 2-End-->
+<!--Device-SwitchStatus-ON = 0--><!--Device-SwitchStatus-ON = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

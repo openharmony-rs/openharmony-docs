@@ -14,13 +14,13 @@ export enum HuksImportKeyType
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本9-11：SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_TYPE_PUBLIC_KEY
+## HUKS_KEY_TYPE_KEY_PAIR
 
 ```TypeScript
-HUKS_KEY_TYPE_PUBLIC_KEY = 0
+HUKS_KEY_TYPE_KEY_PAIR = 2
 ```
 
-表示导入的密钥类型为公钥。
+表示导入的密钥类型为公私钥对。
 
 **起始版本：** 9
 
@@ -28,7 +28,7 @@ HUKS_KEY_TYPE_PUBLIC_KEY = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0-End-->
+<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -54,13 +54,13 @@ HUKS_KEY_TYPE_PRIVATE_KEY = 1
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本9-11：SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_TYPE_KEY_PAIR
+## HUKS_KEY_TYPE_PUBLIC_KEY
 
 ```TypeScript
-HUKS_KEY_TYPE_KEY_PAIR = 2
+HUKS_KEY_TYPE_PUBLIC_KEY = 0
 ```
 
-表示导入的密钥类型为公私钥对。
+表示导入的密钥类型为公钥。
 
 **起始版本：** 9
 
@@ -68,7 +68,7 @@ HUKS_KEY_TYPE_KEY_PAIR = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2-End-->
+<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core

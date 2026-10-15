@@ -28,22 +28,6 @@ AF_A = 0
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## AF_S
-
-```TypeScript
-AF_S = 1
-```
-
-单次自动对焦。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FocusMode-AF_S = 1--><!--Device-FocusMode-AF_S = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## AF_C
 
 ```TypeScript
@@ -57,6 +41,22 @@ AF_C = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FocusMode-AF_C = 2--><!--Device-FocusMode-AF_C = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## AF_S
+
+```TypeScript
+AF_S = 1
+```
+
+单次自动对焦。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FocusMode-AF_S = 1--><!--Device-FocusMode-AF_S = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

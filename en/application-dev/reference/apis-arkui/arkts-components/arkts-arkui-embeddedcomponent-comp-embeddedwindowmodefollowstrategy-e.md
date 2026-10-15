@@ -4,7 +4,7 @@
 declare enum EmbeddedWindowModeFollowStrategy
 ```
 
-Enumeration of different types of EmbeddedWindowModeFollowStrategy.
+Defines the window mode follow strategy, which is used to set the window mode to follow either the host or the **EmbeddedUIExtensionAbility**. For example, when the **EmbeddedUIExtensionAbility** needs to maintain the same window mode (such as full screen or split screen) as the host app, you can choose to follow the host. When the **EmbeddedUIExtensionAbility** needs to independently control the window mode, you can choose to follow the **EmbeddedUIExtensionAbility**.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Enumeration of different types of EmbeddedWindowModeFollowStrategy.
 FOLLOW_HOST_WINDOW_MODE = 0
 ```
 
-Followed the host Window Mode.
+The window mode follows the host.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ Followed the host Window Mode.
 FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE = 1
 ```
 
-Followed the EmbeddedUIExtensionAbility.
+The window mode follows the **EmbeddedUIExtensionAbility**.
 
 **Since:** 26.0.0
 

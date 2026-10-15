@@ -4,7 +4,7 @@
 export interface AppProvisionInfo
 ```
 
-The module provides information in the [HarmonyAppProvision configuration file](../../../security/app-provision-structure.md).
+The module provides information in the [HarmonyAppProvision configuration file](../../../security/app-provision-structure.md). The information can be obtained through [getAppProvisionInfo](arkts-ability-bundlemanager-getappprovisioninfo-f-sys.md).
 
 **Since:** 10
 
@@ -76,7 +76,7 @@ readonly appDistributionType: string
 readonly appIdentifier: string
 ```
 
-Unique ID of the application. For details, see [What Is appIdentifier](../../../quick-start/common_problem_of_application.md#what-is-appidentifier).
+Unique identifier of the application. For details, see [What Is appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier).
 
 **Type:** string
 
@@ -94,7 +94,7 @@ Unique ID of the application. For details, see [What Is appIdentifier](../../../
 readonly appIndex?: number
 ```
 
-Index of the application.
+Index of the application. The value should be an integer.
 
 **Type:** number
 

@@ -48,7 +48,7 @@ Ascent height of a text line, which is a floating-point value in physical pixels
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TypographicBounds-ascent: double--><!--Device-TypographicBounds-ascent: double-End-->
 
@@ -66,7 +66,7 @@ Descent height of a text line, which is a floating-point value in physical pixel
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TypographicBounds-descent: double--><!--Device-TypographicBounds-descent: double-End-->
 
@@ -84,7 +84,7 @@ Leading of a text line, which is a floating-point value in physical pixels (px).
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TypographicBounds-leading: double--><!--Device-TypographicBounds-leading: double-End-->
 
@@ -102,7 +102,7 @@ Total width of the layout boundary, which is a floating-point value in physical 
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TypographicBounds-width: double--><!--Device-TypographicBounds-width: double-End-->
 

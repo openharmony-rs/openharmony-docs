@@ -20,6 +20,8 @@ Implements enroll intelligent voice engine. @typedef EnrollIntelligentVoiceEngin
 import { intelligentVoice } from '@kit.BasicServicesKit';
 ```
 
+<a id="commit1"></a>
+
 ## commit
 
 ```TypeScript
@@ -52,6 +54,7 @@ Commit enroll, This method uses an asynchronous callback to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [22700104](../errorcode-intelligentVoice.md#22700104-enrollment-commit-failure) | Failed to commit the enrollment. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,7 +71,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="commit-1"></a>
+<!--DelEnd-->
+
+<a id="commit2"></a>
 
 ## commit
 
@@ -102,6 +107,7 @@ Commit enroll, This method uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [22700104](../errorcode-intelligentVoice.md#22700104-enrollment-commit-failure) | Failed to commit the enrollment. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -115,6 +121,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="enrollforresult1"></a>
 
 ## enrollForResult
 
@@ -150,6 +160,7 @@ Enrolls for result, This method uses an asynchronous callback to return the resu
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -168,7 +179,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="enrollforresult-1"></a>
+<!--DelEnd-->
+
+<a id="enrollforresult2"></a>
 
 ## enrollForResult
 
@@ -209,6 +222,7 @@ Enrolls for result, This method uses a promise to return the result.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -224,6 +238,8 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## evaluateForResult
 
@@ -264,6 +280,7 @@ Evaluates for result, This method uses a promise to return the result.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -279,6 +296,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getparameter1"></a>
 
 ## getParameter
 
@@ -314,6 +335,7 @@ Obtains the value of an intelligent voice parameter. This method uses an asynchr
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -331,7 +353,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="getparameter-1"></a>
+<!--DelEnd-->
+
+<a id="getparameter2"></a>
 
 ## getParameter
 
@@ -372,6 +396,7 @@ Obtains the value of an intelligent voice parameter. This method uses a promise 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -386,6 +411,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getsupportedregions1"></a>
 
 ## getSupportedRegions
 
@@ -418,6 +447,7 @@ Obtains the supported regions, This method uses an asynchronous callback to retu
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -437,7 +467,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="getsupportedregions-1"></a>
+<!--DelEnd-->
+
+<a id="getsupportedregions2"></a>
 
 ## getSupportedRegions
 
@@ -470,6 +502,7 @@ Obtains the supported regions, This method uses a promise to return the query re
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -485,6 +518,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="init1"></a>
 
 ## init
 
@@ -521,6 +558,7 @@ Initials the engine, This method uses an asynchronous callback to return the res
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 | [22700103](../errorcode-intelligentVoice.md#22700103-initialization-failed) | Init failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -541,7 +579,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="init-1"></a>
+<!--DelEnd-->
+
+<a id="init2"></a>
 
 ## init
 
@@ -583,6 +623,7 @@ Initials the engine, This method uses a promise to return the result.
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 | [22700103](../errorcode-intelligentVoice.md#22700103-initialization-failed) | Init failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -600,6 +641,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="release1"></a>
 
 ## release
 
@@ -632,6 +677,7 @@ Releases the engine, This method uses an asynchronous callback to return the res
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -648,7 +694,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="release-1"></a>
+<!--DelEnd-->
+
+<a id="release2"></a>
 
 ## release
 
@@ -681,6 +729,7 @@ Releases the engine, This method uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -694,6 +743,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setparameter1"></a>
 
 ## setParameter
 
@@ -730,6 +783,7 @@ Sets an intelligent voice parameter. This method uses an asynchronous callback t
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -746,7 +800,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="setparameter-1"></a>
+<!--DelEnd-->
+
+<a id="setparameter2"></a>
 
 ## setParameter
 
@@ -788,6 +844,7 @@ Sets an intelligent voice parameter. This method uses a promise to return the re
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -801,6 +858,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setsensibility1"></a>
 
 ## setSensibility
 
@@ -836,6 +897,7 @@ Sets sensibility, This method uses an asynchronous callback to return the result
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -852,7 +914,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="setsensibility-1"></a>
+<!--DelEnd-->
+
+<a id="setsensibility2"></a>
 
 ## setSensibility
 
@@ -893,6 +957,7 @@ Sets sensibility, This method uses a promise to return the result.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -906,6 +971,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setwakeuphapinfo1"></a>
 
 ## setWakeupHapInfo
 
@@ -941,6 +1010,7 @@ Sets wakeup hap information, This method uses an asynchronous callback to return
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -961,7 +1031,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="setwakeuphapinfo-1"></a>
+<!--DelEnd-->
+
+<a id="setwakeuphapinfo2"></a>
 
 ## setWakeupHapInfo
 
@@ -1002,6 +1074,7 @@ Sets wakeup hap information, This method uses a promise to return the result.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1019,6 +1092,10 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="stop1"></a>
 
 ## stop
 
@@ -1051,6 +1128,7 @@ Stops the engine, This method uses an asynchronous callback to return the result
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1067,7 +1145,9 @@ if (enrollIntelligentVoiceEngine != null) {
 }
 ```
 
-<a id="stop-1"></a>
+<!--DelEnd-->
+
+<a id="stop2"></a>
 
 ## stop
 
@@ -1100,6 +1180,7 @@ Stops the engine, This method uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1113,3 +1194,5 @@ if (enrollIntelligentVoiceEngine != null) {
   });
 }
 ```
+
+<!--DelEnd-->

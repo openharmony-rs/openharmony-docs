@@ -62,7 +62,7 @@ Control type of application disposal.
 disposedType: DisposedType
 ```
 
-Type of application disposal.
+Disposed rule for the application.
 
 **Type:** [DisposedType](arkts-ability-appcontrol-disposedtype-e-sys.md)
 
@@ -98,7 +98,9 @@ List of application components to be disposed of or exempted.
 pageJump?: PageJumpMode
 ```
 
-Specifies whether to jump to another page when the target application is blocked. The default value is [PAGE_JUMP_WINDOW_SHOW](arkts-ability-appcontrol-pagejumpmode-e-sys.md#page_jump_window_show).
+Whether to jump to a page when the target application is intercepted. The default value is PageJumpMode.PAGE_JUMP_WINDOW_SHOW.
+
+**Initial version:** 26.0.0
 
 **Type:** [PageJumpMode](arkts-ability-appcontrol-pagejumpmode-e-sys.md)
 
@@ -118,7 +120,7 @@ Specifies whether to jump to another page when the target application is blocked
 priority: number
 ```
 
-Priority of the disposed rule, which is used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority.
+Priority of the disposed rule, used for sorting the rule list query results. The value is an integer. A smaller value indicates a higher priority and an earlier position in the sorting.
 
 **Type:** number
 

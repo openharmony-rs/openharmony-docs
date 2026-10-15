@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="requestprintpreview1"></a>
+
 ## requestPrintPreview
 
 ```TypeScript
@@ -39,6 +41,7 @@ function requestPrintPreview(jobInfo: PrintJob, callback: Callback<number>): voi
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ print.requestPrintPreview(jobInfo, (num : number) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="requestprintpreview-1"></a>
+
+<a id="requestprintpreview2"></a>
 
 ## requestPrintPreview
 
@@ -108,6 +113,7 @@ function requestPrintPreview(jobInfo: PrintJob): Promise<number>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -137,3 +143,5 @@ print.requestPrintPreview(jobInfo).then((num: number) => {
     console.error(`Failed to request print preview. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

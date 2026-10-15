@@ -12,22 +12,6 @@ Enumerates the number of parity bits.
 
 **System capability:** SystemCapability.BusManager.Serial
 
-## NONE
-
-```TypeScript
-NONE = 'none'
-```
-
-No parity.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Parity-NONE = 'none'--><!--Device-Parity-NONE = 'none'-End-->
-
-**System capability:** SystemCapability.BusManager.Serial
-
 ## EVEN
 
 ```TypeScript
@@ -44,22 +28,6 @@ Even parity.
 
 **System capability:** SystemCapability.BusManager.Serial
 
-## ODD
-
-```TypeScript
-ODD = 'odd'
-```
-
-Odd parity.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Parity-ODD = 'odd'--><!--Device-Parity-ODD = 'odd'-End-->
-
-**System capability:** SystemCapability.BusManager.Serial
-
 ## MARK
 
 ```TypeScript
@@ -73,6 +41,38 @@ Mark parity. The parity bit is always **1**.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Parity-MARK = 'mark'--><!--Device-Parity-MARK = 'mark'-End-->
+
+**System capability:** SystemCapability.BusManager.Serial
+
+## NONE
+
+```TypeScript
+NONE = 'none'
+```
+
+No parity.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Parity-NONE = 'none'--><!--Device-Parity-NONE = 'none'-End-->
+
+**System capability:** SystemCapability.BusManager.Serial
+
+## ODD
+
+```TypeScript
+ODD = 'odd'
+```
+
+Odd parity.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Parity-ODD = 'odd'--><!--Device-Parity-ODD = 'odd'-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 

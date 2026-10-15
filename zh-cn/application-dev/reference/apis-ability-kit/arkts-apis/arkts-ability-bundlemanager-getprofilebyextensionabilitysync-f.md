@@ -14,9 +14,12 @@ function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityNa
 
 以同步方法根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
+> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)的相关接
+> 口，来获取引用的资源。
+
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-bundleManager-function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: string, metadataName?: string): Array<string>--><!--Device-bundleManager-function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: string, metadataName?: string): Array<string>-End-->
 
@@ -34,7 +37,7 @@ function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityNa
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 返回Array&lt;string&gt;对象。 |
+| Array&lt;string&gt; | 返回Array<string>对象。 |
 
 **错误码：**
 

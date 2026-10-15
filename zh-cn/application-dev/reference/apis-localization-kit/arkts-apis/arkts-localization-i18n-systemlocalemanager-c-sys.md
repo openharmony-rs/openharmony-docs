@@ -42,6 +42,7 @@ constructor()
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,6 +50,8 @@ import { i18n } from '@kit.LocalizationKit';
 
 let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
 ```
+
+<!--DelEnd-->
 
 ## getLanguageInfoArray
 
@@ -87,6 +90,7 @@ getLanguageInfoArray(languages: Array<string>, options?: SortOptions): Array<Loc
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -105,6 +109,8 @@ try {
     console.error(`call systemLocaleManager.getLanguageInfoArray failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getRegionInfoArray
 
@@ -143,6 +149,7 @@ getRegionInfoArray(regions: Array<string>, options?: SortOptions): Array<LocaleI
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -161,6 +168,8 @@ try {
     console.error(`call systemLocaleManager.getRegionInfoArray failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getTimeZoneCityItemArray
 
@@ -190,6 +199,7 @@ static getTimeZoneCityItemArray(): Array<TimeZoneCityItem>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a systemAPI.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -207,3 +217,5 @@ try {
   console.error(`call SystemLocaleManager.getTimeZoneCityItemArray failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->

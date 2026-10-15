@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="cancelprintjob1"></a>
+
 ## cancelPrintJob
 
 ```TypeScript
@@ -39,6 +41,7 @@ function cancelPrintJob(jobId: string, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ print.cancelPrintJob(jobId, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="cancelprintjob-1"></a>
+
+<a id="cancelprintjob2"></a>
 
 ## cancelPrintJob
 
@@ -96,6 +101,7 @@ function cancelPrintJob(jobId: string): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -109,3 +115,5 @@ print.cancelPrintJob(jobId).then(() => {
     console.error(`Failed to cancel print job. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

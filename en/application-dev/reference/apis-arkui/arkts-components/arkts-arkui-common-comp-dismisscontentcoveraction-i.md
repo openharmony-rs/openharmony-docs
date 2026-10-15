@@ -18,7 +18,7 @@ Component content cover dismiss
 dismiss: Callback<void>
 ```
 
-Callback invoked when the modal is dismissed. Call this API when you need to exit the page.
+Callback invoked when the full-screen modal page is closed. This method must be called in the onWillDismiss callback to close the full-screen modal page. If it is not called, the full-screen modal page remains open.
 
 **Type:** [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt;
 

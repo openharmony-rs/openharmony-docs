@@ -6,6 +6,8 @@ export type PacMap = _PacMap
 
 PacMap二级模块。
 
+**类型：** _PacMap
+
 **起始版本：** 9
 
 **模型约束：** 
@@ -14,5 +16,3 @@ PacMap二级模块。
 <!--Device-ability-export type PacMap = _PacMap--><!--Device-ability-export type PacMap = _PacMap-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**类型：** _PacMap

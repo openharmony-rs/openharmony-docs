@@ -64,6 +64,7 @@ connect(deviceId: string): void
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Internal system error. For example, IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -74,6 +75,8 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## disconnect
 
@@ -115,6 +118,7 @@ disconnect(deviceId: string): void
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Internal system error. For example, IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +129,5 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -151,6 +151,31 @@ static makeFromPosTextWithFallback(
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+**示例**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let text : string = 'makeFromPosText';
+    let font : drawing.Font = new drawing.Font();
+    font.setSize(100);
+    let length = font.countText(text);
+    let points : common2D.Point[] = [];
+    for (let i = 0; i !== length; ++i) {
+      points.push({ x: i * 35, y: i * 35 });
+    }
+    let textBlobs : Array<drawing.TextBlob> = drawing.TextBlob.makeFromPosTextWithFallback(text, points.length, points, font);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 100, 100);
+    }
+  }
+}
+```
+
 ## makeFromRunBuffer
 
 ```TypeScript
@@ -297,6 +322,35 @@ static makeFromStringWithFallback(text: string, font: Font): Array<TextBlob>
 | --- | --- |
 | Array&lt;[TextBlob](arkts-arkgraphics2d-drawing-textblob-c.md)&gt; | 创建的TextBlob对象数组。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlobs = drawing.TextBlob.makeFromStringWithFallback("drawing", font);
+    canvas.attachBrush(brush);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 20, 20);
+    }
+    canvas.detachBrush();
+  }
+}
+```
+
 ## uniqueID
 
 ```TypeScript
@@ -320,7 +374,7 @@ uniqueID(): number
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let text : string = 'TextBlobUniqueId';
 let font : drawing.Font = new drawing.Font();

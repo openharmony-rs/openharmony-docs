@@ -34,7 +34,7 @@ alpha: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-OrientationResponse-alpha: double--><!--Device-OrientationResponse-alpha: double-End-->
 
@@ -52,7 +52,7 @@ beta: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-OrientationResponse-beta: double--><!--Device-OrientationResponse-beta: double-End-->
 
@@ -70,7 +70,7 @@ gamma: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-OrientationResponse-gamma: double--><!--Device-OrientationResponse-gamma: double-End-->
 

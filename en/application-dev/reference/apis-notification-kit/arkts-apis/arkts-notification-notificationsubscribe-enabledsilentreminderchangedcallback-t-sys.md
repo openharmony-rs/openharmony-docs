@@ -6,6 +6,8 @@ export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChanged
 
 Defines a callback function to listen for the enabling state changes of the application's silent reminder.
 
+**Type:** _EnabledSilentReminderChangedCallback
+
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines a callback function to listen for the enabling state changes of the appl
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _EnabledSilentReminderChangedCallback

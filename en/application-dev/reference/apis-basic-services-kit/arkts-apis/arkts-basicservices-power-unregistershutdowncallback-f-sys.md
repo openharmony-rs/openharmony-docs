@@ -38,6 +38,7 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [4900101](../errorcode-power.md#4900101-service-connection-failure) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,3 +51,5 @@ try {
     console.error('unregister shutdown callback failed, err: ' + err);
 }
 ```
+
+<!--DelEnd-->

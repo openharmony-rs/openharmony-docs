@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="disableformsupdate1"></a>
+
 ## disableFormsUpdate
 
 ```TypeScript
@@ -44,6 +46,7 @@ function disableFormsUpdate(formIds: Array<string>, callback: AsyncCallback<void
 | [16501001](../errorcode-form.md#16501001-卡片id不存在) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="disableformsupdate-1"></a>
+
+<a id="disableformsupdate2"></a>
 
 ## disableFormsUpdate
 
@@ -108,6 +113,7 @@ function disableFormsUpdate(formIds: Array<string>): Promise<void>
 | [16501001](../errorcode-form.md#16501001-卡片id不存在) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +131,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

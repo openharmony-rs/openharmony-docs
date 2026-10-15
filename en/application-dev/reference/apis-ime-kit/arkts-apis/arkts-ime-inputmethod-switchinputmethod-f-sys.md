@@ -6,7 +6,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="switchinputmethod-2"></a>
+<a id="switchinputmethod3"></a>
 
 ## switchInputMethod
 
@@ -49,6 +49,7 @@ Switches to another input method. This API uses a promise to return the result.
 | [12800005](../errorcode-inputmethod-framework.md#12800005-configuration-persistence-failure) | configuration persistence error. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-input-method-manager-service-error) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -85,3 +86,5 @@ async function switchInputMethodWithSubtype() {
 
 switchInputMethodWithSubtype();
 ```
+
+<!--DelEnd-->

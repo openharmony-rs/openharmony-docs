@@ -6,6 +6,8 @@
 import { ethernet } from '@kit.NetworkKit';
 ```
 
+<a id="isifaceactive1"></a>
+
 ## isIfaceActive
 
 ```TypeScript
@@ -43,6 +45,7 @@ function isIfaceActive(iface: string, callback: AsyncCallback<number>): void
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,8 +61,10 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="isifaceactive-1"></a>
+
+<a id="isifaceactive2"></a>
 
 ## isIfaceActive
 
@@ -103,6 +108,7 @@ function isIfaceActive(iface: string): Promise<number>
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -115,3 +121,5 @@ ethernet.isIfaceActive("eth0").then((data: number) => {
   console.error("isIfaceActive promise error = " + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

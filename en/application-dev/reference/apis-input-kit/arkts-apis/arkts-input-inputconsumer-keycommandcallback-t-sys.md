@@ -4,7 +4,7 @@
 type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 ```
 
-Callback function when the shortcut key registered by the system application meets the conditions.
+Defines the key command callback function type, which is triggered when the hotkey registration conditions are met.
 
 **Since:** 26.0.0
 
@@ -20,5 +20,5 @@ Callback function when the shortcut key registered by the system application mee
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyOptions | [KeyOptions](arkts-input-inputconsumer-keyoptions-i-sys.md) | Yes | Options for registering shortcut keys when the system applies. |
-| keyEvent | [KeyEvent](arkts-input-multimodalinput-keyevent-keyevent-i.md) | Yes | Key event when a shortcut key is triggered. |
+| keyOptions | [KeyOptions](arkts-input-inputconsumer-keyoptions-i-sys.md) | Yes | Key combination options when the callback is triggered. |
+| keyEvent | [KeyEvent](arkts-input-multimodalinput-keyevent-keyevent-i.md) | Yes | Key event object, which contains detailed key information. |

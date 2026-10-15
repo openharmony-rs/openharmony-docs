@@ -58,7 +58,7 @@ Copies the source directory to the destination path. This API uses a promise to 
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
-<a id="copydir-1"></a>
+<a id="copydir2"></a>
 
 ## copyDir
 
@@ -105,7 +105,7 @@ Copies the source directory to the destination directory. This API uses an async
 | 13900042 | Unknown error |
 
 
-<a id="copydir-2"></a>
+<a id="copydir3"></a>
 
 ## copyDir
 
@@ -138,7 +138,7 @@ An exception will be thrown if the destination directory contains a directory wi
 | 13900015 | File exists |
 
 
-<a id="copydir-3"></a>
+<a id="copydir4"></a>
 
 ## copyDir
 
@@ -160,7 +160,7 @@ Copies the source directory to the destination directory. You can set the copy m
 | --- | --- | --- | --- |
 | src | string | Yes | Application sandbox path of the source directory. |
 | dest | string | Yes | Application sandbox path of the destination directory. |
-| mode | number | Yes | Copy mode. The default value is 0.<br>0: Throw an exception if a file conflict occurs. <br>An exception will be thrown if the destination directory contains a directory with <br>the same name as the source directory, and a file with the same name exists in the conflict directory. <br>All the non-conflicting files in the source directory will be moved <br>to the destination directory, and the non-conflicting files in the destination directory will be retained. <br>The data attribute in the error returned provides information about the <br>conflicting files in the Array&lt;ConflictFiles&gt; format. <br>1: Forcibly overwrite the files with the same name in the destination directory. <br>When the destination directory contains a directory with the same name as the source directory, <br>the files with the same names in the destination directory are overwritten forcibly; <br>the files without conflicts in the destination directory are retained. |
+| mode | number | Yes | Copy mode. The default value is 0.<br>0: Throw an exception if a file conflict occurs. <br>An exception will be thrown if the destination directory contains a directory with <br>the same name as the source directory, and a file with the same name exists in the conflict directory. <br>All the non-conflicting files in the source directory will be moved <br>to the destination directory, and the non-conflicting files in the destination directory will be retained. <br>The data attribute in the error returned provides information about the <br>conflicting files in the Array<ConflictFiles> format. <br>1: Forcibly overwrite the files with the same name in the destination directory. <br>When the destination directory contains a directory with the same name as the source directory, <br>the files with the same names in the destination directory are overwritten forcibly; <br>the files without conflicts in the destination directory are retained. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -186,7 +186,7 @@ Copies the source directory to the destination directory. You can set the copy m
 | 13900042 | Unknown error |
 
 
-<a id="copydir-4"></a>
+<a id="copydir5"></a>
 
 ## copyDir
 

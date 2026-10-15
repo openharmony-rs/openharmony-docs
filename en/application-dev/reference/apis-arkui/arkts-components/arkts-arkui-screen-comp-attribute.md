@@ -6,9 +6,9 @@ declare class ScreenAttribute extends CommonMethod<ScreenAttribute>
 
 Defines the attribute functions of Screen.
 
-@extends CommonMethod&lt;ScreenAttribute&gt;
+@extends CommonMethod<ScreenAttribute>
 
-**Inheritance/Implementation:** ScreenAttribute extends CommonMethod<ScreenAttribute>
+**Inheritance/Implementation:** ScreenAttribute extends CommonMethod&lt;ScreenAttribute&gt;
 
 **Since:** 10
 

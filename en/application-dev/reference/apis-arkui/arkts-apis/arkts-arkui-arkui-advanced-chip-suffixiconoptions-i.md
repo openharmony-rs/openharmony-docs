@@ -6,8 +6,6 @@ export interface SuffixIconOptions extends IconCommonOptions
 
 Defines the suffix icon options.
 
-Inherits from [IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md).
-
 **Inheritance/Implementation:** SuffixIconOptions extends [IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md)
 
 **Since:** 11

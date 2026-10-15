@@ -6,10 +6,6 @@ export declare struct DatePickerComponent
 
 The **DatePickerComponent** is used to select dates (year, month, and day) and times (hour, minute, and second).
 
-## Child Components
-
-None
-
 **Since:** 26.0.0
 
 **Decorator:** @Component
@@ -17,6 +13,10 @@ None
 <!--Device-unnamed-export declare struct DatePickerComponent--><!--Device-unnamed-export declare struct DatePickerComponent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Child Components
+
+None
 
 ## Modules to Import
 

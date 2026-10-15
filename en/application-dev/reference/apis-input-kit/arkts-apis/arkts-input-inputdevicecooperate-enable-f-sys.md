@@ -6,6 +6,8 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
+<a id="enable1"></a>
+
 ## enable
 
 ```TypeScript
@@ -18,7 +20,7 @@ Enables or disables screen hopping. This API uses an asynchronous callback to re
 
 **Deprecated since:** 23
 
-**Substitutes:** [prepareCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-preparecooperate-f-sys.md)
+**Substitutes:** [prepareCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-preparecooperate-f-sys.md), [unprepareCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md)
 
 <!--Device-inputDeviceCooperate-function enable(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-inputDeviceCooperate-function enable(enable: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -37,9 +39,10 @@ Enables or disables screen hopping. This API uses an asynchronous callback to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -70,8 +73,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="enable-1"></a>
+
+<a id="enable2"></a>
 
 ## enable
 
@@ -85,7 +90,7 @@ Specifies whether to enable screen hopping. This API uses a promise to return th
 
 **Deprecated since:** 23
 
-**Substitutes:** [prepareCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-preparecooperate-f-sys.md)
+**Substitutes:** [prepareCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-preparecooperate-f-sys.md), [unprepareCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md)
 
 <!--Device-inputDeviceCooperate-function enable(enable: boolean): Promise<void>--><!--Device-inputDeviceCooperate-function enable(enable: boolean): Promise<void>-End-->
 
@@ -109,9 +114,10 @@ Specifies whether to enable screen hopping. This API uses a promise to return th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -135,3 +141,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

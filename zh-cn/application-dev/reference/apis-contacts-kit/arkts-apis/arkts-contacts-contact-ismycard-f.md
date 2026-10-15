@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="ismycard1"></a>
+
 ## isMyCard
 
 ```TypeScript
@@ -18,7 +20,7 @@ function isMyCard(id: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 10
 
-**替代接口：** [isMyCard](#ismycard-1)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [isMyCard](#ismycard2)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -50,7 +52,7 @@ contact.isMyCard(1, (err: BusinessError, data) => {
 ```
 
 
-<a id="ismycard-1"></a>
+<a id="ismycard2"></a>
 
 ## isMyCard
 
@@ -106,7 +108,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="ismycard-2"></a>
+<a id="ismycard3"></a>
 
 ## isMyCard
 
@@ -120,7 +122,7 @@ function isMyCard(id: number): Promise<boolean>
 
 **废弃版本：** 10
 
-**替代接口：** [isMyCard](#ismycard-3)(context: Context, id: number)
+**替代接口：** [isMyCard](#ismycard4)(context: Context, id: number)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -153,7 +155,7 @@ promise.then((data) => {
 ```
 
 
-<a id="ismycard-3"></a>
+<a id="ismycard4"></a>
 
 ## isMyCard
 

@@ -4,7 +4,7 @@
 export declare struct TipsDialog
 ```
 
-TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, checkAction?: (isChecked: boolean) =&gt; void, onCheckedChange?: Callback\&lt;boolean&gt;, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
+TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, checkAction?: (isChecked: boolean) =&gt; void, onCheckedChange?: Callback\<boolean>, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
 Defines a tip dialog box used to remind users to pay attention to specific matters or perform confirmation operations.
 
@@ -30,7 +30,7 @@ checkAction?: (isChecked: boolean) => void
 
 State change event of the checkbox. When **isChecked** is **true**, the checkbox is selected; when **isChecked** is **false**, the checkbox is unselected.
 
-**Note:** It is recommended to use onCheckedChange&lt;sup&gt;12+&lt;/sup&gt;.
+**Note:** It is recommended to use onCheckedChange<sup>12+</sup>.
 
 **Since:** 12
 

@@ -30,7 +30,7 @@ navigationButtonText?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WidgetParam-navigationButtonText?: string--><!--Device-WidgetParam-navigationButtonText?: string-End-->
 
@@ -48,7 +48,7 @@ title: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WidgetParam-title: string--><!--Device-WidgetParam-title: string-End-->
 
@@ -68,7 +68,7 @@ uiContext?: Context
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-WidgetParam-uiContext?: Context--><!--Device-WidgetParam-uiContext?: Context-End-->
 

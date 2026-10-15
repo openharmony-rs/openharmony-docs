@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="makecall1"></a>
+
 ## makeCall
 
 ```TypeScript
@@ -16,7 +18,7 @@ Launches the call screen and displays the dialed number. This API uses an asynch
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-call-function makeCall(phoneNumber: string, callback: AsyncCallback<void>): void--><!--Device-call-function makeCall(phoneNumber: string, callback: AsyncCallback<void>): void-End-->
 
@@ -33,7 +35,7 @@ Launches the call screen and displays the dialed number. This API uses an asynch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -54,7 +56,7 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
 ```
 
 
-<a id="makecall-1"></a>
+<a id="makecall2"></a>
 
 ## makeCall
 
@@ -66,7 +68,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-call-function makeCall(phoneNumber: string): Promise<void>--><!--Device-call-function makeCall(phoneNumber: string): Promise<void>-End-->
 
@@ -88,7 +90,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -107,7 +109,7 @@ call.makeCall("138xxxxxxxx").then(() => {
 ```
 
 
-<a id="makecall-2"></a>
+<a id="makecall3"></a>
 
 ## makeCall
 
@@ -167,7 +169,7 @@ call.makeCall("138xxxxxxxx", makeOptions).then(() => {
 ```
 
 
-<a id="makecall-3"></a>
+<a id="makecall4"></a>
 
 ## makeCall
 
@@ -179,7 +181,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-call-function makeCall(context: Context, phoneNumber: string): Promise<void>--><!--Device-call-function makeCall(context: Context, phoneNumber: string): Promise<void>-End-->
 
@@ -202,7 +204,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 

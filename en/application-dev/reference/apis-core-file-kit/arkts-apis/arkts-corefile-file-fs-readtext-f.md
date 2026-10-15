@@ -58,7 +58,7 @@ Reads the text content of a file. This API uses a promise to return the result.
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
-<a id="readtext-1"></a>
+<a id="readtext2"></a>
 
 ## readText
 
@@ -102,7 +102,7 @@ Reads the text content of a file. This API uses an asynchronous callback to retu
 | 13900042 | Unknown error |
 
 
-<a id="readtext-2"></a>
+<a id="readtext3"></a>
 
 ## readText
 

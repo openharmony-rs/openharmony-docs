@@ -4,8 +4,6 @@ This module provides the capability to manage HyperSnap.
 
 **Since:** 24
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace hyperSnapManager--><!--Device-unnamed-declare namespace hyperSnapManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
@@ -22,9 +20,9 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getLastError](arkts-ability-hypersnapmanager-getlasterror-f.md) | Gets the last Hyper Snap error information of the current application for a specified scenario. Error information for each scenario is stored independently and cleared after a successful request. All error information will be cleared when the device restarts. |
-| [requestRebuildHyperSnap](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md) | Requests the recreation of the Hyper Snap process snapshot for the application. |
-| [setHyperSnapEnabled](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md) | Enables or disables the Hyper Snap performance optimization for the application. |
+| [getLastError](arkts-ability-hypersnapmanager-getlasterror-f.md#getlasterror) | Gets the last Hyper Snap error information of the current application for a specified scenario. Error information for each scenario is stored independently and cleared after a successful request. All error information will be cleared when the device restarts. |
+| [requestRebuildHyperSnap](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md#requestrebuildhypersnap) | Requests the recreation of the Hyper Snap process snapshot for the application. |
+| [setHyperSnapEnabled](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md#sethypersnapenabled) | Enables or disables the Hyper Snap performance optimization for the application. |
 
 ### Interfaces
 

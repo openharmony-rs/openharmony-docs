@@ -10,8 +10,6 @@
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace dragController--><!--Device-unnamed-declare namespace dragController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -28,10 +26,10 @@ import { dragController } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md) | 创建拖拽的Action对象，需要显式指定拖拽背板图（可多个），以及拖拽的数据，跟手点等信息；当通过一个已创建的 Action 对象发起的拖拽未结束时，无法再次创建新的 Action 对象，接口会抛出异常；当Action对象的生命周期结束后，注册在该对象上的回调函数会失效，因此需要在一个尽量长的作用域下持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。 |
-| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md) | Execute a drag event. |
-| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag-1) | 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。使用Promise异步回调。 |
-| [getDragPreview](arkts-arkui-dragcontroller-getdragpreview-f.md) | 返回一个代表拖拽背板的对象。 |
+| [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md#createdragaction) | 创建拖拽的Action对象，需要显式指定拖拽背板图（可多个），以及拖拽的数据，跟手点等信息；当通过一个已创建的 Action 对象发起的拖拽未结束时，无法再次创建新的 Action 对象，接口会抛出异常；当Action对象的生命周期结束后，注册在该对象上的回调函数会失效，因此需要在一个尽量长的作用域下持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。 |
+| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag1) | Execute a drag event. |
+| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag2) | 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。使用Promise异步回调。 |
+| [getDragPreview](arkts-arkui-dragcontroller-getdragpreview-f.md#getdragpreview) | 返回一个代表拖拽背板的对象。 |
 
 ### 类
 
@@ -56,6 +54,6 @@ import { dragController } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [DragSpringLoadingState](arkts-arkui-dragcontroller-dragspringloadingstate-e.md) | 定义拖拽的悬停检测状态的枚举类型。默认系统配置下，如果没有触发CANCEL，状态报告如下：保持Hover--&gt;500ms--&gt;BEGIN--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;END |
+| [DragSpringLoadingState](arkts-arkui-dragcontroller-dragspringloadingstate-e.md) | 定义拖拽的悬停检测状态的枚举类型。默认系统配置下，如果没有触发CANCEL，状态报告如下：保持Hover-->500ms-->BEGIN-->100ms-->UPDATE-->100ms-->UPDATE-->100ms-->UPDATE-->100ms-->END |
 | [DragStartRequestStatus](arkts-arkui-dragcontroller-dragstartrequeststatus-e.md) | 定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart)调用时有效。 |
 | [DragStatus](arkts-arkui-dragcontroller-dragstatus-e.md) | 拖拽开始和结束状态。 |

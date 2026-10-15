@@ -63,7 +63,7 @@ Moves the source directory to the destination directory. This API uses a promise
 | 13900042 | Unknown error |
 
 
-<a id="movedir-1"></a>
+<a id="movedir2"></a>
 
 ## moveDir
 
@@ -111,7 +111,7 @@ Moves the source directory to the destination directory. This API uses an asynch
 | 13900042 | Unknown error |
 
 
-<a id="movedir-2"></a>
+<a id="movedir3"></a>
 
 ## moveDir
 
@@ -148,7 +148,7 @@ An exception will be thrown if a directory conflict occurs, that is, the destina
 | 13900015 | File exists |
 
 
-<a id="movedir-3"></a>
+<a id="movedir4"></a>
 
 ## moveDir
 
@@ -170,7 +170,7 @@ Moves the source directory to the destination directory. You can set the move mo
 | --- | --- | --- | --- |
 | src | string | Yes | Application sandbox path of the source directory. |
 | dest | string | Yes | Application sandbox path of the destination directory. |
-| mode | number | Yes | Move mode. The default value is 0.<br>0: Throw an exception if a directory conflict occurs. <br>An exception will be thrown if the destination directory contains a non-empty directory with <br>the same name as the source directory. <br>1: Throw an exception if a file conflict occurs. <br>An exception will be thrown if the destination directory contains a directory with <br>the same name as the source directory, and a file with the same name exists in the conflict directory. <br>All the non-conflicting files in the source directory will be moved to the destination directory, <br>and the non-conflicting files in the destination directory will be retained. <br>The data attribute in the error returned provides information about the conflicting files in <br>the Array&lt;ConflictFiles&gt; format. <br>2: Forcibly overwrite the conflicting files in the destination directory. <br>When the destination directory contains a directory with the same name as the source directory, <br>the files with the same names in the destination directory are overwritten forcibly; <br>the files without conflicts in the destination directory are retained. <br>3: Forcibly overwrite the conflicting directory. <br>The source directory is moved to the destination directory, and the content of the moved directory is the <br>same as that of the source directory. If the destination directory contains a directory with the same name <br>as the source directory, all original files in the directory will be deleted. |
+| mode | number | Yes | Move mode. The default value is 0.<br>0: Throw an exception if a directory conflict occurs. <br>An exception will be thrown if the destination directory contains a non-empty directory with <br>the same name as the source directory. <br>1: Throw an exception if a file conflict occurs. <br>An exception will be thrown if the destination directory contains a directory with <br>the same name as the source directory, and a file with the same name exists in the conflict directory. <br>All the non-conflicting files in the source directory will be moved to the destination directory, <br>and the non-conflicting files in the destination directory will be retained. <br>The data attribute in the error returned provides information about the conflicting files in <br>the Array<ConflictFiles> format. <br>2: Forcibly overwrite the conflicting files in the destination directory. <br>When the destination directory contains a directory with the same name as the source directory, <br>the files with the same names in the destination directory are overwritten forcibly; <br>the files without conflicts in the destination directory are retained. <br>3: Forcibly overwrite the conflicting directory. <br>The source directory is moved to the destination directory, and the content of the moved directory is the <br>same as that of the source directory. If the destination directory contains a directory with the same name <br>as the source directory, all original files in the directory will be deleted. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Return the callback function. |
 
 **Error codes:**
@@ -197,7 +197,7 @@ Moves the source directory to the destination directory. You can set the move mo
 | 13900042 | Unknown error |
 
 
-<a id="movedir-4"></a>
+<a id="movedir5"></a>
 
 ## moveDir
 

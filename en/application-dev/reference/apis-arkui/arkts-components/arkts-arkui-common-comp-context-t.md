@@ -6,6 +6,8 @@ declare type Context = import('../api/application/Context').default
 
 Get context.
 
+**Type:** import('../api/application/Context').default
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Get context.
 <!--Device-unnamed-declare type Context = import('../api/application/Context').default--><!--Device-unnamed-declare type Context = import('../api/application/Context').default-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/application/Context').default

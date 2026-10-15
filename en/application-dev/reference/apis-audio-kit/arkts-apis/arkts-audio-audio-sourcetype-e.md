@@ -12,6 +12,20 @@ Enumerates the types of audio streams captured.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## SOURCE_TYPE_CAMCORDER
+
+```TypeScript
+SOURCE_TYPE_CAMCORDER = 13
+```
+
+Camcorder source type.
+
+**Since:** 13
+
+<!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13--><!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## SOURCE_TYPE_INVALID
 
 ```TypeScript
@@ -26,6 +40,20 @@ Invalid audio source.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## SOURCE_TYPE_LIVE
+
+```TypeScript
+SOURCE_TYPE_LIVE = 17
+```
+
+Live broadcast source type.
+
+**Since:** 20
+
+<!--Device-SourceType-SOURCE_TYPE_LIVE = 17--><!--Device-SourceType-SOURCE_TYPE_LIVE = 17-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## SOURCE_TYPE_MIC
 
 ```TypeScript
@@ -37,6 +65,48 @@ Mic source.
 **Since:** 8
 
 <!--Device-SourceType-SOURCE_TYPE_MIC = 0--><!--Device-SourceType-SOURCE_TYPE_MIC = 0-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## SOURCE_TYPE_UNPROCESSED
+
+```TypeScript
+SOURCE_TYPE_UNPROCESSED = 14
+```
+
+Unprocessed source type.
+
+**Since:** 14
+
+<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## SOURCE_TYPE_VOICE_COMMUNICATION
+
+```TypeScript
+SOURCE_TYPE_VOICE_COMMUNICATION = 7
+```
+
+Voice communication source. (The 3A algorithm is not enabled if recording is started independently. It is enabled when the AudioRenderer of the [STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md) or [STREAM_USAGE_VIDEO_COMMUNICATION](arkts-audio-audio-streamusage-e.md) type is also used to start playback.)
+
+**Since:** 8
+
+<!--Device-SourceType-SOURCE_TYPE_VOICE_COMMUNICATION = 7--><!--Device-SourceType-SOURCE_TYPE_VOICE_COMMUNICATION = 7-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## SOURCE_TYPE_VOICE_MESSAGE
+
+```TypeScript
+SOURCE_TYPE_VOICE_MESSAGE = 10
+```
+
+Voice message source.
+
+**Since:** 12
+
+<!--Device-SourceType-SOURCE_TYPE_VOICE_MESSAGE = 10--><!--Device-SourceType-SOURCE_TYPE_VOICE_MESSAGE = 10-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -71,73 +141,3 @@ Playback capture source type.
 <!--Device-SourceType-SOURCE_TYPE_PLAYBACK_CAPTURE = 2--><!--Device-SourceType-SOURCE_TYPE_PLAYBACK_CAPTURE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
-
-## SOURCE_TYPE_VOICE_COMMUNICATION
-
-```TypeScript
-SOURCE_TYPE_VOICE_COMMUNICATION = 7
-```
-
-Voice communication source. (The 3A algorithm is not enabled if recording is started independently. It is enabled when the AudioRenderer of the [STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md) or [STREAM_USAGE_VIDEO_COMMUNICATION](arkts-audio-audio-streamusage-e.md) type is also used to start playback.)
-
-**Since:** 8
-
-<!--Device-SourceType-SOURCE_TYPE_VOICE_COMMUNICATION = 7--><!--Device-SourceType-SOURCE_TYPE_VOICE_COMMUNICATION = 7-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SOURCE_TYPE_VOICE_MESSAGE
-
-```TypeScript
-SOURCE_TYPE_VOICE_MESSAGE = 10
-```
-
-Voice message source.
-
-**Since:** 12
-
-<!--Device-SourceType-SOURCE_TYPE_VOICE_MESSAGE = 10--><!--Device-SourceType-SOURCE_TYPE_VOICE_MESSAGE = 10-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SOURCE_TYPE_CAMCORDER
-
-```TypeScript
-SOURCE_TYPE_CAMCORDER = 13
-```
-
-Camcorder source type.
-
-**Since:** 13
-
-<!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13--><!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SOURCE_TYPE_UNPROCESSED
-
-```TypeScript
-SOURCE_TYPE_UNPROCESSED = 14
-```
-
-Unprocessed source type.
-
-**Since:** 14
-
-<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SOURCE_TYPE_LIVE
-
-```TypeScript
-SOURCE_TYPE_LIVE = 17
-```
-
-Live broadcast source type.
-
-**Since:** 20
-
-<!--Device-SourceType-SOURCE_TYPE_LIVE = 17--><!--Device-SourceType-SOURCE_TYPE_LIVE = 17-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core

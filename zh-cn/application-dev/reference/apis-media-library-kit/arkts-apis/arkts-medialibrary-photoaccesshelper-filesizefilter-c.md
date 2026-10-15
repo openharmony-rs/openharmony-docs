@@ -32,7 +32,7 @@ extraFileSize?: number
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileSizeFilter-extraFileSize?: long--><!--Device-FileSizeFilter-extraFileSize?: long-End-->
 
@@ -52,7 +52,7 @@ fileSize: number
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileSizeFilter-fileSize: long--><!--Device-FileSizeFilter-fileSize: long-End-->
 
@@ -72,7 +72,7 @@ filterOperator: FilterOperator
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileSizeFilter-filterOperator: FilterOperator--><!--Device-FileSizeFilter-filterOperator: FilterOperator-End-->
 

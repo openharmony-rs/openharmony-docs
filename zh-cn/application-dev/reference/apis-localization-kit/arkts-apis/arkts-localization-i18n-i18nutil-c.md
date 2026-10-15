@@ -64,7 +64,7 @@ static getBestMatchLocale(locale: string, localeList: string[]): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-I18NUtil-static getBestMatchLocale(locale: string, localeList: string[]): string--><!--Device-I18NUtil-static getBestMatchLocale(locale: string, localeList: string[]): string-End-->
 
@@ -115,7 +115,7 @@ static getDateOrder(locale: string): string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-I18NUtil-static getDateOrder(locale: string): string--><!--Device-I18NUtil-static getDateOrder(locale: string): string-End-->
 
@@ -153,7 +153,7 @@ static getThreeLetterLanguage(locale: string): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-I18NUtil-static getThreeLetterLanguage(locale: string): string--><!--Device-I18NUtil-static getThreeLetterLanguage(locale: string): string-End-->
 
@@ -204,7 +204,7 @@ static getThreeLetterRegion(locale: string): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-I18NUtil-static getThreeLetterRegion(locale: string): string--><!--Device-I18NUtil-static getThreeLetterRegion(locale: string): string-End-->
 
@@ -253,7 +253,7 @@ static getTimePeriodName(hour:number, locale?: string): string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-I18NUtil-static getTimePeriodName(hour:int, locale?: string): string--><!--Device-I18NUtil-static getTimePeriodName(hour:int, locale?: string): string-End-->
 
@@ -293,6 +293,8 @@ try {
 }
 ```
 
+<a id="getunicodewrappedfilepath1"></a>
+
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -305,7 +307,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl.Locale): string--><!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl.Locale): string-End-->
 
@@ -349,7 +351,7 @@ try {
 }
 ```
 
-<a id="getunicodewrappedfilepath-1"></a>
+<a id="getunicodewrappedfilepath2"></a>
 
 ## getUnicodeWrappedFilePath
 
@@ -365,7 +367,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 
 **废弃版本：** 20
 
-**替代接口：** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath)(path: string, delimiter?: string, locale?: Intl.Locale)
+**替代接口：** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath1)(path: string, delimiter?: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
@@ -472,7 +474,7 @@ static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: 
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-I18NUtil-static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string, style?: string): string--><!--Device-I18NUtil-static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string, style?: string): string-End-->
 

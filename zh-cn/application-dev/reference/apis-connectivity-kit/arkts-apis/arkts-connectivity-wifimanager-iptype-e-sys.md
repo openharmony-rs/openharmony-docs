@@ -14,22 +14,6 @@ enum IpType
 
 **系统接口：** 此接口为系统接口。
 
-## STATIC
-
-```TypeScript
-STATIC
-```
-
-静态IP。
-
-**起始版本：** 9
-
-<!--Device-IpType-STATIC--><!--Device-IpType-STATIC-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
 ## DHCP
 
 ```TypeScript
@@ -41,6 +25,22 @@ DHCP
 **起始版本：** 9
 
 <!--Device-IpType-DHCP--><!--Device-IpType-DHCP-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## STATIC
+
+```TypeScript
+STATIC
+```
+
+静态IP。
+
+**起始版本：** 9
+
+<!--Device-IpType-STATIC--><!--Device-IpType-STATIC-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

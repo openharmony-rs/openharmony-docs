@@ -23,6 +23,7 @@ import { cloudDiskManager } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [CloudDiskSystemAccessor](arkts-corefile-clouddiskmanager-clouddisksystemaccessor-c-sys.md) | 文件管理器访问云盘系统能力的类，如补水和脱水文件。 |
 | [SyncFolderAccessor](arkts-corefile-clouddiskmanager-syncfolderaccessor-c-sys.md) | 同步根管理类，负责为系统文件管理应用提供获取三方网盘注册的同步根信息的能力。 |
 <!--DelEnd-->
 
@@ -31,6 +32,7 @@ import { cloudDiskManager } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [HydrateProgress](arkts-corefile-clouddiskmanager-hydrateprogress-i-sys.md) | 封装水合进度信息。 |
 | [SyncFolder](arkts-corefile-clouddiskmanager-syncfolder-i-sys.md) | 表示同步根信息。 |
 <!--DelEnd-->
 
@@ -39,5 +41,8 @@ import { cloudDiskManager } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [CallbackType](arkts-corefile-clouddiskmanager-callbacktype-e-sys.md) | 枚举云文件数据获取的回调类型。 |
+| [HydratePriority](arkts-corefile-clouddiskmanager-hydratepriority-e-sys.md) | 枚举任务的优先级。 |
+| [HydrateProgressState](arkts-corefile-clouddiskmanager-hydrateprogressstate-e-sys.md) | 枚举进度的状态。 |
 | [SyncFolderState](arkts-corefile-clouddiskmanager-syncfolderstate-e-sys.md) | 枚举，云盘的同步根的状态。 |
 <!--DelEnd-->

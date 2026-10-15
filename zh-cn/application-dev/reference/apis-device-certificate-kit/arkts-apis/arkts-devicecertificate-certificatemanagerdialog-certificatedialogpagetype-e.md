@@ -12,22 +12,6 @@ export enum CertificateDialogPageType
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-## PAGE_MAIN
-
-```TypeScript
-PAGE_MAIN = 1
-```
-
-证书管理应用主页面。
-
-**起始版本：** 13
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertificateDialogPageType-PAGE_MAIN = 1--><!--Device-CertificateDialogPageType-PAGE_MAIN = 1-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManagerDialog
-
 ## PAGE_CA_CERTIFICATE
 
 ```TypeScript
@@ -73,5 +57,21 @@ PAGE_INSTALL_CERTIFICATE = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CertificateDialogPageType-PAGE_INSTALL_CERTIFICATE = 4--><!--Device-CertificateDialogPageType-PAGE_INSTALL_CERTIFICATE = 4-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## PAGE_MAIN
+
+```TypeScript
+PAGE_MAIN = 1
+```
+
+证书管理应用主页面。
+
+**起始版本：** 13
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateDialogPageType-PAGE_MAIN = 1--><!--Device-CertificateDialogPageType-PAGE_MAIN = 1-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog

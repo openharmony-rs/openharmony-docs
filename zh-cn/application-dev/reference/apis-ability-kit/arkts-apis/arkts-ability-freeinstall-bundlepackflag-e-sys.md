@@ -4,45 +4,17 @@
 export enum BundlePackFlag
 ```
 
-要查询的应用包标志
+应用包pack.info的信息标志。
+
+> **说明：** 
+> 
+> 不支持组合使用，如：let flag = BundlePackFlag.GET_PACKAGES | BundlePackFlag.GET_BUNDLE_SUMMARY，只支持单个枚举类型传入。
 
 **起始版本：** 9
 
 <!--Device-freeInstall-export enum BundlePackFlag--><!--Device-freeInstall-export enum BundlePackFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
-
-**系统接口：** 此接口为系统接口。
-
-## GET_PACK_INFO_ALL
-
-```TypeScript
-GET_PACK_INFO_ALL = 0x00000000
-```
-
-获取应用包pack.info的所有信息。
-
-**起始版本：** 9
-
-<!--Device-BundlePackFlag-GET_PACK_INFO_ALL = 0x00000000--><!--Device-BundlePackFlag-GET_PACK_INFO_ALL = 0x00000000-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
-
-**系统接口：** 此接口为系统接口。
-
-## GET_PACKAGES
-
-```TypeScript
-GET_PACKAGES = 0x00000001
-```
-
-获取应用包pack.info的package信息。
-
-**起始版本：** 9
-
-<!--Device-BundlePackFlag-GET_PACKAGES = 0x00000001--><!--Device-BundlePackFlag-GET_PACKAGES = 0x00000001-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
 
@@ -73,6 +45,38 @@ GET_MODULE_SUMMARY = 0x00000004
 **起始版本：** 9
 
 <!--Device-BundlePackFlag-GET_MODULE_SUMMARY = 0x00000004--><!--Device-BundlePackFlag-GET_MODULE_SUMMARY = 0x00000004-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**系统接口：** 此接口为系统接口。
+
+## GET_PACK_INFO_ALL
+
+```TypeScript
+GET_PACK_INFO_ALL = 0x00000000
+```
+
+获取应用包pack.info的所有信息。
+
+**起始版本：** 9
+
+<!--Device-BundlePackFlag-GET_PACK_INFO_ALL = 0x00000000--><!--Device-BundlePackFlag-GET_PACK_INFO_ALL = 0x00000000-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**系统接口：** 此接口为系统接口。
+
+## GET_PACKAGES
+
+```TypeScript
+GET_PACKAGES = 0x00000001
+```
+
+获取应用包pack.info的package信息。
+
+**起始版本：** 9
+
+<!--Device-BundlePackFlag-GET_PACKAGES = 0x00000001--><!--Device-BundlePackFlag-GET_PACKAGES = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

@@ -14,64 +14,10 @@ declare enum BarrierDirection
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
 
-## LEFT
-
-```TypeScript
-LEFT = 0
-```
-
-屏障在其所有[referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)的最左侧。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-BarrierDirection-LEFT = 0--><!--Device-BarrierDirection-LEFT = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## RIGHT
-
-```TypeScript
-RIGHT = 1
-```
-
-屏障在其所有[referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)的最右侧。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-BarrierDirection-RIGHT = 1--><!--Device-BarrierDirection-RIGHT = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## TOP
-
-```TypeScript
-TOP = 2
-```
-
-屏障在其所有[referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)的最上方。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-BarrierDirection-TOP = 2--><!--Device-BarrierDirection-TOP = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## BOTTOM
 
 ```TypeScript
-BOTTOM = 3
+BOTTOM
 ```
 
 屏障在其所有[referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)的最下方。
@@ -82,6 +28,60 @@ BOTTOM = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-BarrierDirection-BOTTOM = 3--><!--Device-BarrierDirection-BOTTOM = 3-End-->
+<!--Device-BarrierDirection-BOTTOM--><!--Device-BarrierDirection-BOTTOM-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## LEFT
+
+```TypeScript
+LEFT
+```
+
+屏障在其所有[referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)的最左侧。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BarrierDirection-LEFT--><!--Device-BarrierDirection-LEFT-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## RIGHT
+
+```TypeScript
+RIGHT
+```
+
+屏障在其所有[referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)的最右侧。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BarrierDirection-RIGHT--><!--Device-BarrierDirection-RIGHT-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TOP
+
+```TypeScript
+TOP
+```
+
+屏障在其所有[referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)的最上方。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BarrierDirection-TOP--><!--Device-BarrierDirection-TOP-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

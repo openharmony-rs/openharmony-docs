@@ -26,7 +26,7 @@ import { appControl } from '@kit.AbilityKit';
 priority: number
 ```
 
-Priority of the disposed rule, which is used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority.
+Priority of the uninstall disposition rule, used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority and an earlier position in the sorting.
 
 **Type:** number
 
@@ -44,7 +44,7 @@ Priority of the disposed rule, which is used to sort the query results of the ru
 uninstallComponentType: UninstallComponentType
 ```
 
-Type of the ability to start during interception.
+Type of the ability to be started upon interception.
 
 **Type:** [UninstallComponentType](arkts-ability-appcontrol-uninstallcomponenttype-e-sys.md)
 

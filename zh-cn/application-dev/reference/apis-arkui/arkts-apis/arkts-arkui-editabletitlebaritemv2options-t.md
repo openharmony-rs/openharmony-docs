@@ -6,6 +6,8 @@ export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 左侧图像项配置选项类型别名。
 
+**类型：** [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md)
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 <!--Device-unnamed-export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options--><!--Device-unnamed-export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md)

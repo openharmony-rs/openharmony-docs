@@ -12,20 +12,6 @@ Enumerates gesture event types.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## CANCEL
-
-```TypeScript
-CANCEL = 0
-```
-
-Canceled.
-
-**Since:** 10
-
-<!--Device-ActionType-CANCEL = 0--><!--Device-ActionType-CANCEL = 0-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
 ## BEGIN
 
 ```TypeScript
@@ -40,17 +26,17 @@ Started.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## UPDATE
+## CANCEL
 
 ```TypeScript
-UPDATE = 2
+CANCEL = 0
 ```
 
-Updated.
+Canceled.
 
 **Since:** 10
 
-<!--Device-ActionType-UPDATE = 2--><!--Device-ActionType-UPDATE = 2-End-->
+<!--Device-ActionType-CANCEL = 0--><!--Device-ActionType-CANCEL = 0-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -65,5 +51,19 @@ Ended.
 **Since:** 10
 
 <!--Device-ActionType-END = 3--><!--Device-ActionType-END = 3-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## UPDATE
+
+```TypeScript
+UPDATE = 2
+```
+
+Updated.
+
+**Since:** 10
+
+<!--Device-ActionType-UPDATE = 2--><!--Device-ActionType-UPDATE = 2-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

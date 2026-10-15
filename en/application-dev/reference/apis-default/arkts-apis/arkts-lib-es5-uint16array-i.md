@@ -203,6 +203,8 @@ Calls a defined callback function on each element of an array, and returns an ar
 | callbackfn | (value: number, index: number, array: Uint16Array) =&gt; number | Yes |  |
 | thisArg | any | No |  |
 
+<a id="reduce1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -219,7 +221,7 @@ Calls the specified callback function for all the elements in an array. The retu
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) =&gt; number | Yes |  |
 
-<a id="reduce-1"></a>
+<a id="reduce2"></a>
 
 ## reduce
 
@@ -234,7 +236,7 @@ reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: n
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) =&gt; number | Yes |  |
 | initialValue | number | Yes |  |
 
-<a id="reduce-2"></a>
+<a id="reduce3"></a>
 
 ## reduce
 
@@ -253,6 +255,8 @@ Calls the specified callback function for all the elements in an array. The retu
 | callbackfn | (previousValue: U, currentValue: number, currentIndex: number, array: Uint16Array) =&gt; U | Yes |  |
 | initialValue | U | Yes |  |
 
+<a id="reduceright1"></a>
+
 ## reduceRight
 
 ```TypeScript
@@ -269,7 +273,7 @@ Calls the specified callback function for all the elements in an array, in desce
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) =&gt; number | Yes |  |
 
-<a id="reduceright-1"></a>
+<a id="reduceright2"></a>
 
 ## reduceRight
 
@@ -284,7 +288,7 @@ reduceRight(callbackfn: (previousValue: number, currentValue: number, currentInd
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) =&gt; number | Yes |  |
 | initialValue | number | Yes |  |
 
-<a id="reduceright-2"></a>
+<a id="reduceright3"></a>
 
 ## reduceRight
 

@@ -10,7 +10,7 @@ export interface RouterOptions
 
 **废弃版本：** 8
 
-**替代接口：** RouterOptions
+**替代接口：** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-unnamed-export interface RouterOptions--><!--Device-unnamed-export interface RouterOptions-End-->
 
@@ -36,7 +36,7 @@ params?: Object
 
 **废弃版本：** 8
 
-**替代接口：** params
+**替代接口：** [params](arkts-arkui-router-routeroptions-i.md#params)
 
 <!--Device-RouterOptions-params?: Object--><!--Device-RouterOptions-params?: Object-End-->
 
@@ -63,7 +63,7 @@ uri: string
 
 **废弃版本：** 8
 
-**替代接口：** url
+**替代接口：** [url](arkts-arkui-router-routeroptions-i.md#url)
 
 <!--Device-RouterOptions-uri: string--><!--Device-RouterOptions-uri: string-End-->
 

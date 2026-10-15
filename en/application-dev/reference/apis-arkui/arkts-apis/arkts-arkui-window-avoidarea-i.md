@@ -40,7 +40,7 @@ Rectangle centered at the bottom of the window's two diagonals.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AvoidArea-bottomRect: Rect--><!--Device-AvoidArea-bottomRect: Rect-End-->
 
@@ -58,7 +58,7 @@ Rectangle centered to the left of the window's two diagonals.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AvoidArea-leftRect: Rect--><!--Device-AvoidArea-leftRect: Rect-End-->
 
@@ -76,7 +76,7 @@ Rectangle centered to the right of the window's two diagonals.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AvoidArea-rightRect: Rect--><!--Device-AvoidArea-rightRect: Rect-End-->
 
@@ -94,7 +94,7 @@ Rectangle centered at the top of the window's two diagonals.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AvoidArea-topRect: Rect--><!--Device-AvoidArea-topRect: Rect-End-->
 
@@ -112,7 +112,7 @@ Whether the avoid area is visible. **true** if visible, **false** otherwise.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AvoidArea-visible: boolean--><!--Device-AvoidArea-visible: boolean-End-->
 

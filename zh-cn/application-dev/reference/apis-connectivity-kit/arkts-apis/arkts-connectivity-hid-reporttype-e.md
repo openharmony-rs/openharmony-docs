@@ -12,6 +12,22 @@ enum ReportType
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
+## REPORT_TYPE_FEATURE
+
+```TypeScript
+REPORT_TYPE_FEATURE = 3
+```
+
+特征报告，表示双向传输的配置数据。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ReportType-REPORT_TYPE_FEATURE = 3--><!--Device-ReportType-REPORT_TYPE_FEATURE = 3-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
 ## REPORT_TYPE_INPUT
 
 ```TypeScript
@@ -41,21 +57,5 @@ REPORT_TYPE_OUTPUT = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ReportType-REPORT_TYPE_OUTPUT = 2--><!--Device-ReportType-REPORT_TYPE_OUTPUT = 2-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## REPORT_TYPE_FEATURE
-
-```TypeScript
-REPORT_TYPE_FEATURE = 3
-```
-
-特征报告，表示双向传输的配置数据。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ReportType-REPORT_TYPE_FEATURE = 3--><!--Device-ReportType-REPORT_TYPE_FEATURE = 3-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

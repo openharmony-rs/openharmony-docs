@@ -6,7 +6,7 @@ declare class MenuItemGroupAttribute extends CommonMethod<MenuItemGroupAttribute
 
 Class for MenuItemGroupAttribute.
 
-**Inheritance/Implementation:** MenuItemGroupAttribute extends CommonMethod<MenuItemGroupAttribute>
+**Inheritance/Implementation:** MenuItemGroupAttribute extends CommonMethod&lt;MenuItemGroupAttribute&gt;
 
 **Since:** 9
 

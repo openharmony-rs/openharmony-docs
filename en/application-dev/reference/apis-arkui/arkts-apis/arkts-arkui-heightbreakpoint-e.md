@@ -14,13 +14,13 @@ The following table lists default aspect ratio breakpoint thresholds for typical
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## HEIGHT_SM
+## HEIGHT_LG
 
 ```TypeScript
-HEIGHT_SM = 0
+HEIGHT_LG = 2
 ```
 
-The window aspect ratio is less than 0.8.
+The window aspect ratio is greater than or equal to 1.2.
 
 **Since:** 13
 
@@ -28,7 +28,7 @@ The window aspect ratio is less than 0.8.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
-<!--Device-HeightBreakpoint-HEIGHT_SM = 0--><!--Device-HeightBreakpoint-HEIGHT_SM = 0-End-->
+<!--Device-HeightBreakpoint-HEIGHT_LG = 2--><!--Device-HeightBreakpoint-HEIGHT_LG = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,13 +50,13 @@ The window aspect ratio is greater than or equal to 0.8 and less than 1.2.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## HEIGHT_LG
+## HEIGHT_SM
 
 ```TypeScript
-HEIGHT_LG = 2
+HEIGHT_SM = 0
 ```
 
-The window aspect ratio is greater than or equal to 1.2.
+The window aspect ratio is less than 0.8.
 
 **Since:** 13
 
@@ -64,6 +64,6 @@ The window aspect ratio is greater than or equal to 1.2.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
-<!--Device-HeightBreakpoint-HEIGHT_LG = 2--><!--Device-HeightBreakpoint-HEIGHT_LG = 2-End-->
+<!--Device-HeightBreakpoint-HEIGHT_SM = 0--><!--Device-HeightBreakpoint-HEIGHT_SM = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

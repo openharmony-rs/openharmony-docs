@@ -6,6 +6,8 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="islastworktimeout1"></a>
+
 ## isLastWorkTimeOut
 
 ```TypeScript
@@ -43,11 +45,11 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Check on workInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Input param failed. |
 
 **示例**
 
@@ -78,7 +80,7 @@ workScheduler.isLastWorkTimeOut(500)
 ```
 
 
-<a id="islastworktimeout-1"></a>
+<a id="islastworktimeout2"></a>
 
 ## isLastWorkTimeOut
 
@@ -107,11 +109,11 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<boolean>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Check on workInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Input param failed. |
 
 **示例**
 
@@ -129,7 +131,7 @@ workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) => {
 ```
 
 
-<a id="islastworktimeout-2"></a>
+<a id="islastworktimeout3"></a>
 
 ## isLastWorkTimeOut
 
@@ -163,11 +165,11 @@ function isLastWorkTimeOut(workId: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-内存操作失败) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Check on workInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Input param failed. |
 
 **示例**
 

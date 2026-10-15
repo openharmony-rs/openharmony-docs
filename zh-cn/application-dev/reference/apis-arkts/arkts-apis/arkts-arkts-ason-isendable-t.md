@@ -6,6 +6,8 @@ type ISendable = lang.ISendable
 
 ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必要的方法和属性。
 
+**类型：** [lang.ISendable](arkts-arkts-lang-isendable-i.md)
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -13,5 +15,3 @@ ISendable是所有Sendable类型（除null和undefined）的父类型。自身�
 <!--Device-ASON-type ISendable = lang.ISendable--><!--Device-ASON-type ISendable = lang.ISendable-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**类型：** [lang.ISendable](arkts-arkts-lang-isendable-i.md)

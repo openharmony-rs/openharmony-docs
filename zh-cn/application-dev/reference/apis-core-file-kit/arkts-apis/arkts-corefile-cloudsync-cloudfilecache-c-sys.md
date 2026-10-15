@@ -53,6 +53,7 @@ cleanCache(uri: string): void
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,7 +72,9 @@ try {
 }
 ```
 
-<a id="constructor-1"></a>
+<!--DelEnd-->
+
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -103,11 +106,14 @@ A constructor used to create a CloudFileCache object.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 ```
+
+<!--DelEnd-->
 
 ## getDownloadList
 
@@ -150,6 +156,7 @@ getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>
 | 13900010 | Try again. |
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -179,3 +186,5 @@ try {
   console.error("get download list failed with error message: " + error.message + ", error code: " + error.code);
 }
 ```
+
+<!--DelEnd-->

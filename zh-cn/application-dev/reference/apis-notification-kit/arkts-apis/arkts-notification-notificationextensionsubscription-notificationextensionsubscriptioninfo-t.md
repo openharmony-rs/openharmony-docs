@@ -6,10 +6,10 @@ export type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscr
 
 用于描述通知扩展订阅的信息。
 
+**类型：** _NotificationExtensionSubscriptionInfo
+
 **起始版本：** 22
 
 <!--Device-notificationExtensionSubscription-export type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionInfo--><!--Device-notificationExtensionSubscription-export type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionInfo-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
-
-**类型：** _NotificationExtensionSubscriptionInfo

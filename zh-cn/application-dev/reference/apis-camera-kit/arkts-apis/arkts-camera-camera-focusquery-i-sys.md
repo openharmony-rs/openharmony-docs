@@ -51,6 +51,7 @@ Checks whether the focus assist is supported.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,6 +69,8 @@ function isFocusAssistSupported(professionalPhotoSession: camera.ProfessionalPho
   return status;
 }
 ```
+
+<!--DelEnd-->
 
 ## isFocusDrivenTypeSupported
 
@@ -102,9 +105,10 @@ Checks whether a focus drive type is supported.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -122,6 +126,8 @@ function isFocusDrivenTypeSupported(session: camera.VideoSessionForSys, type: ca
   return status;
 }
 ```
+
+<!--DelEnd-->
 
 ## isFocusRangeTypeSupported
 
@@ -156,9 +162,10 @@ Checks whether a focus range type is supported.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -176,3 +183,5 @@ function isFocusRangeTypeSupported(session: camera.VideoSessionForSys, type: cam
   return status;
 }
 ```
+
+<!--DelEnd-->

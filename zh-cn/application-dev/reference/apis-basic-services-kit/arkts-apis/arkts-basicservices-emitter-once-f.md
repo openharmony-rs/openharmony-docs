@@ -6,6 +6,8 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
+<a id="once1"></a>
+
 ## once
 
 ```TypeScript
@@ -16,7 +18,7 @@ function once(event: InnerEvent, callback: Callback<EventData>): void
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-emitter-function once(event: InnerEvent, callback: Callback<EventData>): void--><!--Device-emitter-function once(event: InnerEvent, callback: Callback<EventData>): void-End-->
 
@@ -46,7 +48,7 @@ emitter.once(innerEvent, callback);
 ```
 
 
-<a id="once-1"></a>
+<a id="once2"></a>
 
 ## once
 
@@ -84,7 +86,7 @@ emitter.once('eventId', callback);
 ```
 
 
-<a id="once-2"></a>
+<a id="once3"></a>
 
 ## once
 

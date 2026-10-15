@@ -30,7 +30,7 @@ Indicates window context.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-ctx?: BaseContext--><!--Device-Configuration-ctx?: BaseContext-End-->
 
@@ -48,7 +48,7 @@ Indicates whether enable window decor, only support dialog, The default value is
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-decorEnabled?: boolean--><!--Device-Configuration-decorEnabled?: boolean-End-->
 
@@ -66,7 +66,7 @@ Screen ID of the current window. If it is not set, the screen ID of the parent w
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-displayId?: long--><!--Device-Configuration-displayId?: long-End-->
 
@@ -84,7 +84,7 @@ Indicates window id.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-name: string--><!--Device-Configuration-name: string-End-->
 
@@ -102,7 +102,7 @@ Indicates Parent window id
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-parentId?: int--><!--Device-Configuration-parentId?: int-End-->
 
@@ -120,7 +120,7 @@ Indicates dialog window title when decor enabled.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-title?: string--><!--Device-Configuration-title?: string-End-->
 
@@ -138,7 +138,7 @@ Indicates window type
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-windowType: WindowType--><!--Device-Configuration-windowType: WindowType-End-->
 

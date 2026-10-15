@@ -13,7 +13,7 @@ export declare class SelectionContainerAttribute extends CommonMethod<SelectionC
 > - The [transformation](arkts-arkui-common-comp.md) attribute is not supported. In the
 > **SelectionContainer** container, the **Text** child component does not support transformation.
 
-**Inheritance/Implementation:** SelectionContainerAttribute extends CommonMethod<SelectionContainerAttribute>
+**Inheritance/Implementation:** SelectionContainerAttribute extends CommonMethod&lt;SelectionContainerAttribute&gt;
 
 **Since:** 26.0.0
 
@@ -38,7 +38,7 @@ Sets a custom selection menu. If this attribute is not used, the default value o
 
 > **NOTE:** 
 > 
-> - The long-press response duration of **bindSelectionMenu** is 600 ms, while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)is 800 ms. When both are bound and both are triggered by a long press, **bindSelectionMenu** is responded to first.
+> - The long-press response duration of **bindSelectionMenu** is 600 ms, while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1)is 800 ms. When both are bound and both are triggered by a long press, **bindSelectionMenu** is responded to first.
 > 
 > - When the custom menu is too long, you are advised to nest a [Scroll](arkts-arkui-scroll-comp.md)component inside it to prevent the keyboard from being obscured.
 > 

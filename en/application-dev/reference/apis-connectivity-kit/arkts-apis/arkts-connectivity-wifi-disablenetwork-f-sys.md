@@ -42,6 +42,7 @@ Disables a specified network.
 | --- | --- |
 | boolean | Returns `true` if the specified network is disabled, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,3 +55,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

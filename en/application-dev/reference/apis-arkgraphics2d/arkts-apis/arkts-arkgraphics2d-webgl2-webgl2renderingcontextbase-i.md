@@ -363,6 +363,8 @@ Client waits for sync object
 | --- | --- |
 | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Result |
 
+<a id="compressedteximage3d1"></a>
+
 ## compressedTexImage3D
 
 ```TypeScript
@@ -403,7 +405,7 @@ Compressed texture image 3D from PBO offset
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
 
-<a id="compressedteximage3d-1"></a>
+<a id="compressedteximage3d2"></a>
 
 ## compressedTexImage3D
 
@@ -446,6 +448,8 @@ Compressed texture image 3D from ArrayBufferView
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Source data |
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source offset |
 | srcLengthOverride | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source length override |
+
+<a id="compressedtexsubimage3d1"></a>
 
 ## compressedTexSubImage3D
 
@@ -491,7 +495,7 @@ Compressed texture sub image 3D from PBO offset
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
 
-<a id="compressedtexsubimage3d-1"></a>
+<a id="compressedtexsubimage3d2"></a>
 
 ## compressedTexSubImage3D
 
@@ -1773,6 +1777,8 @@ Sets sampler parameteri
 | pname | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Parameter name |
 | param | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Parameter value |
 
+<a id="teximage3d1"></a>
+
 ## texImage3D
 
 ```TypeScript
@@ -1815,7 +1821,7 @@ Sets texture image 3D from PBO offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
-<a id="teximage3d-1"></a>
+<a id="teximage3d2"></a>
 
 ## texImage3D
 
@@ -1859,7 +1865,7 @@ Sets texture image 3D from TexImageSource
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="teximage3d-2"></a>
+<a id="teximage3d3"></a>
 
 ## texImage3D
 
@@ -1903,7 +1909,7 @@ Sets texture image 3D from ArrayBufferView
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Source data |
 
-<a id="teximage3d-3"></a>
+<a id="teximage3d4"></a>
 
 ## texImage3D
 
@@ -2015,6 +2021,8 @@ Sets texture storage 3D
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
 
+<a id="texsubimage3d1"></a>
+
 ## texSubImage3D
 
 ```TypeScript
@@ -2059,7 +2067,7 @@ Sets texture sub image 3D from PBO offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
-<a id="texsubimage3d-1"></a>
+<a id="texsubimage3d2"></a>
 
 ## texSubImage3D
 
@@ -2105,7 +2113,7 @@ Sets texture sub image 3D from TexImageSource
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="texsubimage3d-2"></a>
+<a id="texsubimage3d3"></a>
 
 ## texSubImage3D
 

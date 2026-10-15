@@ -52,7 +52,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [16300005](../errorcode-ability.md#16300005-bundle-information-does-not-exist) | The target bundle does not exist. |
@@ -60,6 +60,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 | [16300009](../errorcode-ability.md#16300009-specified-package-does-not-have-a-status-bar) | The target bundle has no status-bar ability. |
 | [16300010](../errorcode-ability.md#16300010-running-application-is-not-attached-to-a-status-bar) | The target application is not attached to the status bar. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -80,3 +81,5 @@ try {
   console.error(`[appManager] setKeepAliveForBundle error: ${code}, ${message}`);
 }
 ```
+
+<!--DelEnd-->

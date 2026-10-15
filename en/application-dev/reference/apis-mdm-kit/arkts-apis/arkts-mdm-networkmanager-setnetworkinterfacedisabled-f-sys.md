@@ -6,6 +6,8 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="setnetworkinterfacedisabled1"></a>
+
 ## setNetworkInterfaceDisabled
 
 ```TypeScript
@@ -47,8 +49,9 @@ Disables a network interface. This API uses an asynchronous callback to return t
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,8 +74,10 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setnetworkinterfacedisabled-1"></a>
+
+<a id="setnetworkinterfacedisabled2"></a>
 
 ## setNetworkInterfaceDisabled
 
@@ -120,8 +125,9 @@ Disables a network interface. This API uses a promise to return the result.
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -142,3 +148,5 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true).then(() => {
   console.error(`Failed to set network interface disabled. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

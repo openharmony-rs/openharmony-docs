@@ -32,7 +32,7 @@ actionTime: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InputEvent-actionTime: long--><!--Device-InputEvent-actionTime: long-End-->
 
@@ -50,7 +50,7 @@ deviceId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InputEvent-deviceId: int--><!--Device-InputEvent-deviceId: int-End-->
 
@@ -68,7 +68,7 @@ id: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InputEvent-id: int--><!--Device-InputEvent-id: int-End-->
 
@@ -86,7 +86,7 @@ screenId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InputEvent-screenId: int--><!--Device-InputEvent-screenId: int-End-->
 
@@ -104,7 +104,7 @@ windowId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InputEvent-windowId: int--><!--Device-InputEvent-windowId: int-End-->
 

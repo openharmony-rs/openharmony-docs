@@ -14,33 +14,33 @@ export enum MessageType
 
 **系统接口：** 此接口为系统接口。
 
-## TYPE_MMS_SEND_REQ
+## TYPE_MMS_ACKNOWLEDGE_IND
 
 ```TypeScript
-TYPE_MMS_SEND_REQ = 128
+TYPE_MMS_ACKNOWLEDGE_IND = 133
 ```
 
-彩信发送请求类型
+彩信确认索引类型
 
 **起始版本：** 8
 
-<!--Device-MessageType-TYPE_MMS_SEND_REQ = 128--><!--Device-MessageType-TYPE_MMS_SEND_REQ = 128-End-->
+<!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133--><!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
 
-## TYPE_MMS_SEND_CONF
+## TYPE_MMS_DELIVERY_IND
 
 ```TypeScript
-TYPE_MMS_SEND_CONF = 129
+TYPE_MMS_DELIVERY_IND = 134
 ```
 
-彩信发送配置类型
+彩信传送索引类型
 
 **起始版本：** 8
 
-<!--Device-MessageType-TYPE_MMS_SEND_CONF = 129--><!--Device-MessageType-TYPE_MMS_SEND_CONF = 129-End-->
+<!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134--><!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -57,6 +57,38 @@ TYPE_MMS_NOTIFICATION_IND = 130
 **起始版本：** 8
 
 <!--Device-MessageType-TYPE_MMS_NOTIFICATION_IND = 130--><!--Device-MessageType-TYPE_MMS_NOTIFICATION_IND = 130-End-->
+
+**系统能力：** SystemCapability.Telephony.SmsMms
+
+**系统接口：** 此接口为系统接口。
+
+## TYPE_MMS_READ_ORIG_IND
+
+```TypeScript
+TYPE_MMS_READ_ORIG_IND = 136
+```
+
+彩信读取原始索引类型
+
+**起始版本：** 8
+
+<!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136--><!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136-End-->
+
+**系统能力：** SystemCapability.Telephony.SmsMms
+
+**系统接口：** 此接口为系统接口。
+
+## TYPE_MMS_READ_REC_IND
+
+```TypeScript
+TYPE_MMS_READ_REC_IND = 135
+```
+
+彩信读取接收索引类型
+
+**起始版本：** 8
+
+<!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135--><!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -94,65 +126,33 @@ TYPE_MMS_RETRIEVE_CONF = 132
 
 **系统接口：** 此接口为系统接口。
 
-## TYPE_MMS_ACKNOWLEDGE_IND
+## TYPE_MMS_SEND_CONF
 
 ```TypeScript
-TYPE_MMS_ACKNOWLEDGE_IND = 133
+TYPE_MMS_SEND_CONF = 129
 ```
 
-彩信确认索引类型
+彩信发送配置类型
 
 **起始版本：** 8
 
-<!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133--><!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133-End-->
+<!--Device-MessageType-TYPE_MMS_SEND_CONF = 129--><!--Device-MessageType-TYPE_MMS_SEND_CONF = 129-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
 
-## TYPE_MMS_DELIVERY_IND
+## TYPE_MMS_SEND_REQ
 
 ```TypeScript
-TYPE_MMS_DELIVERY_IND = 134
+TYPE_MMS_SEND_REQ = 128
 ```
 
-彩信传送索引类型
+彩信发送请求类型
 
 **起始版本：** 8
 
-<!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134--><!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134-End-->
-
-**系统能力：** SystemCapability.Telephony.SmsMms
-
-**系统接口：** 此接口为系统接口。
-
-## TYPE_MMS_READ_REC_IND
-
-```TypeScript
-TYPE_MMS_READ_REC_IND = 135
-```
-
-彩信读取接收索引类型
-
-**起始版本：** 8
-
-<!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135--><!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135-End-->
-
-**系统能力：** SystemCapability.Telephony.SmsMms
-
-**系统接口：** 此接口为系统接口。
-
-## TYPE_MMS_READ_ORIG_IND
-
-```TypeScript
-TYPE_MMS_READ_ORIG_IND = 136
-```
-
-彩信读取原始索引类型
-
-**起始版本：** 8
-
-<!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136--><!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136-End-->
+<!--Device-MessageType-TYPE_MMS_SEND_REQ = 128--><!--Device-MessageType-TYPE_MMS_SEND_REQ = 128-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 

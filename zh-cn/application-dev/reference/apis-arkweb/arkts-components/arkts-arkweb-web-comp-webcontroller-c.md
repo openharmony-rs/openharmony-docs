@@ -12,7 +12,7 @@ WebController适用于需要在应用侧对嵌入式Web组件进行主动控制�
 
 **废弃版本：** 9
 
-**替代接口：** WebviewController
+**替代接口：** [WebviewController](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md)
 
 <!--Device-unnamed-declare class WebController--><!--Device-unnamed-declare class WebController-End-->
 
@@ -30,7 +30,7 @@ accessBackward(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** accessBackward
+**替代接口：** [accessBackward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessbackward)
 
 <!--Device-WebController-accessBackward(): boolean--><!--Device-WebController-accessBackward(): boolean-End-->
 
@@ -76,7 +76,7 @@ accessForward(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** accessForward
+**替代接口：** [accessForward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessforward)
 
 <!--Device-WebController-accessForward(): boolean--><!--Device-WebController-accessForward(): boolean-End-->
 
@@ -122,7 +122,7 @@ accessStep(step: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** accessStep
+**替代接口：** [accessStep](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessstep)
 
 <!--Device-WebController-accessStep(step: number): boolean--><!--Device-WebController-accessStep(step: number): boolean-End-->
 
@@ -169,13 +169,13 @@ struct WebComponent {
 backward()
 ```
 
-按照历史栈，后退一个页面。建议在调用backward前先调用[accessBackward&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessbackward)检查当前页面是否可后退。
+按照历史栈，后退一个页面。建议在调用backward前先调用[accessBackward<sup>9+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessbackward)检查当前页面是否可后退。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** backward
+**替代接口：** [backward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#backward)
 
 <!--Device-WebController-backward()--><!--Device-WebController-backward()-End-->
 
@@ -214,7 +214,7 @@ clearHistory(): void
 
 **废弃版本：** 9
 
-**替代接口：** clearHistory
+**替代接口：** [clearHistory](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#clearhistory)
 
 <!--Device-WebController-clearHistory(): void--><!--Device-WebController-clearHistory(): void-End-->
 
@@ -234,7 +234,7 @@ WebController的构造函数。
 
 **废弃版本：** 9
 
-**替代接口：** constructor
+**替代接口：** [constructor](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#constructor)
 
 <!--Device-WebController-constructor()--><!--Device-WebController-constructor()-End-->
 
@@ -252,7 +252,7 @@ deleteJavaScriptRegister(name: string)
 
 **废弃版本：** 9
 
-**替代接口：** deleteJavaScriptRegister
+**替代接口：** [deleteJavaScriptRegister](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#deletejavascriptregister)
 
 <!--Device-WebController-deleteJavaScriptRegister(name: string)--><!--Device-WebController-deleteJavaScriptRegister(name: string)-End-->
 
@@ -292,13 +292,13 @@ struct WebComponent {
 forward()
 ```
 
-按照历史栈，前进一个页面。建议在调用forward前先调用[accessForward&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessforward)检查当前页面是否可前进。
+按照历史栈，前进一个页面。建议在调用forward前先调用[accessForward<sup>9+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessforward)检查当前页面是否可前进。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** forward
+**替代接口：** [forward](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#forward)
 
 <!--Device-WebController-forward()--><!--Device-WebController-forward()-End-->
 
@@ -347,7 +347,7 @@ getCookieManager(): WebCookie
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Web组件cookie管理对象，参考WebCookie定义。 |
+| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Web组件cookie管理对象，参考[WebCookie](arkts-arkweb-web-comp.md)定义。 |
 
 **示例**
 
@@ -432,7 +432,7 @@ baseUrl为空时，通过“data”协议加载指定的一段字符串。
 
 **废弃版本：** 9
 
-**替代接口：** loadData
+**替代接口：** [loadData](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loaddata)
 
 <!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })--><!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })-End-->
 
@@ -485,7 +485,7 @@ loadUrl(options: { url: string | Resource, headers?: Array<Header> })
 
 **废弃版本：** 9
 
-**替代接口：** loadUrl
+**替代接口：** [loadUrl](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)
 
 <!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })--><!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })-End-->
 
@@ -530,7 +530,7 @@ onActive(): void
 
 **废弃版本：** 9
 
-**替代接口：** onActive
+**替代接口：** [onActive](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#onactive)
 
 <!--Device-WebController-onActive(): void--><!--Device-WebController-onActive(): void-End-->
 
@@ -569,7 +569,7 @@ onInactive(): void
 
 **废弃版本：** 9
 
-**替代接口：** onInactive
+**替代接口：** [onInactive](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#oninactive)
 
 <!--Device-WebController-onInactive(): void--><!--Device-WebController-onInactive(): void-End-->
 
@@ -608,7 +608,7 @@ refresh()
 
 **废弃版本：** 9
 
-**替代接口：** refresh
+**替代接口：** [refresh](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh)
 
 <!--Device-WebController-refresh()--><!--Device-WebController-refresh()-End-->
 
@@ -647,7 +647,7 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
 
 **废弃版本：** 9
 
-**替代接口：** registerJavaScriptProxy
+**替代接口：** [registerJavaScriptProxy](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#registerjavascriptproxy)
 
 <!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })--><!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })-End-->
 
@@ -657,7 +657,7 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | { object: object, name: string, methodList: Array&lt;string&gt; } | 是 | The option with the JavaScript object and method list. |
+| options | { object: object, name: string, methodList: Array&lt;string&gt; } | 是 | 包含JavaScript对象和方法列表的选项。 |
 
 **示例**
 
@@ -732,7 +732,7 @@ requestFocus()
 
 **废弃版本：** 9
 
-**替代接口：** requestFocus
+**替代接口：** [requestFocus](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#requestfocus)
 
 <!--Device-WebController-requestFocus()--><!--Device-WebController-requestFocus()-End-->
 
@@ -771,7 +771,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 
 **废弃版本：** 9
 
-**替代接口：** runJavaScript
+**替代接口：** [runJavaScript](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#runjavascript)
 
 <!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })--><!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })-End-->
 
@@ -781,7 +781,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | { script: string, callback?: (result: string) =&gt; void } | 是 | The options with a piece of code and a callback. |
+| options | { script: string, callback?: (result: string) =&gt; void } | 是 | 包含脚本和回调的选项。 |
 
 **示例**
 
@@ -846,7 +846,7 @@ stop()
 
 **废弃版本：** 9
 
-**替代接口：** stop
+**替代接口：** [stop](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#stop)
 
 <!--Device-WebController-stop()--><!--Device-WebController-stop()-End-->
 
@@ -895,7 +895,7 @@ zoom(factor: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| factor | number | 是 | The zoom factor. |
+| factor | number | 是 | 缩放系数。1表示恢复加载网页的默认缩放比例；小于1为缩小，大于1为放大。取值范围(0, 100]。 |
 
 **示例**
 

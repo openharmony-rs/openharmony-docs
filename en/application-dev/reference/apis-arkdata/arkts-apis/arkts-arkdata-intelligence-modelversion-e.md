@@ -6,8 +6,6 @@ enum ModelVersion
 
 Version of the model.
 
-@enum { int }
-
 **Since:** 15
 
 <!--Device-intelligence-enum ModelVersion--><!--Device-intelligence-enum ModelVersion-End-->

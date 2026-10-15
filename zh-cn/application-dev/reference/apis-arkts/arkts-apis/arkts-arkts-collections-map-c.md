@@ -79,6 +79,8 @@ clear(): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -107,7 +109,7 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArkTS Map's constructor cannot be directly invoked. |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -409,6 +411,8 @@ put(key: K, value: V): V | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The put method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
+<a id="putall1"></a>
+
 ## putAll
 
 ```TypeScript
@@ -440,7 +444,7 @@ putAll(from: Map<K, V>): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The putAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
-<a id="putall-1"></a>
+<a id="putall2"></a>
 
 ## putAll
 

@@ -12,7 +12,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 function isSupportEffectSync(effectId: string): boolean
 ```
 
-查询当前设备是否支持预设的振动效果。此接口为同步接口，会阻塞主线程直到查询完成，容易影响UI交互，需谨慎使用。当开发者需要在触发预置振动前立即确认当前设备是否支持指定的振动效果时使用此接口。适用于对实时性要求高且查询逻辑简单的场景。返回boolean结果：返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)；返回false表示不支持，使用该effectId触发振动可能效果不佳或无法振动。与异步版本[vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md)相比，本接口为同步接口，直接返回结果无需回调，但会阻塞主线程。建议在非UI线程中使用，或在UI线程中优先使用异步版本以避免影响交互响应。
+查询当前设备是否支持预设的振动效果。此接口为同步接口，会阻塞主线程直到查询完成，容易影响UI交互，需谨慎使用。当开发者需要在触发预置振动前立即确认当前设备是否支持指定的振动效果时使用此接口。适用于对实时性要求高且查询逻辑简单的场景。返回boolean结果：返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)；返回false表示不支持，使用该effectId触发振动可能效果不佳或无法振动。与异步版本[vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md#issupporteffect1)相比，本接口为同步接口，直接返回结果无需回调，但会阻塞主线程。建议在非UI线程中使用，或在UI线程中优先使用异步版本以避免影响交互响应。
 
 **起始版本：** 12
 
@@ -30,7 +30,7 @@ function isSupportEffectSync(effectId: string): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回对象。返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)；返回false表示不支持，使用该effectId触发振动可能效果不佳或无法振动。 |
+| boolean | 返回对象。返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)；返回false表示不支持，使用该effectId触发振动可能效果不佳或无法振动。 |
 
 **错误码：**
 

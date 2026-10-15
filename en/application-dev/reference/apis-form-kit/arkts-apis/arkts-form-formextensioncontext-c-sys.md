@@ -41,7 +41,7 @@ Connects this ability to a ServiceExtensionAbility.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Want information about the target ability, such as the ability name and bundle name. |
-| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md) | Yes | Callback used to return the information indicating that the connection is successful, interrupted, or failed. |
+| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md) | Yes | Callback used to return the information indicating that the connection is successful, interrupted, or failed. |
 
 **Return value:**
 
@@ -66,6 +66,7 @@ Connects this ability to a ServiceExtensionAbility.
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-ability-not-in-the-foreground) | The ability is not on the top of the UI. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-installation-free-timeout) | Installation-free timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -112,6 +113,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+<!--DelEnd-->
+
+<a id="disconnectserviceextensionability1"></a>
+
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -145,6 +150,7 @@ Disconnects this ability from a **ServiceExtensionAbility** and after the succes
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -180,7 +186,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
-<a id="disconnectserviceextensionability-1"></a>
+<!--DelEnd-->
+
+<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -220,6 +228,7 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -255,6 +264,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 };
 ```
+
+<!--DelEnd-->
+
+<a id="startability1"></a>
 
 ## startAbility
 
@@ -292,6 +305,7 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 | 16500101 | The application is not a system application.<br>**Applicable version:** 9 - 11 |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -322,7 +336,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
-<a id="startability-1"></a>
+<!--DelEnd-->
+
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -365,6 +381,7 @@ Starts an ability. This API uses a promise to return the result.
 | 16500101 | The application is not a system application.<br>**Applicable version:** 9 - 11 |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -392,3 +409,5 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 };
 ```
+
+<!--DelEnd-->

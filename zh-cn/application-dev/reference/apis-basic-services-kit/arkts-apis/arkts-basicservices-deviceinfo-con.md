@@ -226,7 +226,7 @@ const deviceColor: string
 const deviceType: string
 ```
 
-设备类型。详细请参考deviceTypes标签。
+设备类型。详细请参考[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)。
 
 示例：<!--RP1-->wearable<!--RP1End-->
 
@@ -441,6 +441,24 @@ const incrementalVersion: string
 **起始版本：** 6
 
 <!--Device-deviceInfo-const incrementalVersion: string--><!--Device-deviceInfo-const incrementalVersion: string-End-->
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+## kernelVersion
+
+```TypeScript
+const kernelVersion: string
+```
+
+获取内核版本。示例: '产品内核1.0.0'。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-deviceInfo-const kernelVersion: string--><!--Device-deviceInfo-const kernelVersion: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 

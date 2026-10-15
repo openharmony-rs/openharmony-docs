@@ -12,6 +12,22 @@ export declare enum GradientAlpha
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## OPACITY_100
+
+```TypeScript
+OPACITY_100 = 4
+```
+
+不透明度为1.0。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-GradientAlpha-OPACITY_100 = 4--><!--Device-GradientAlpha-OPACITY_100 = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## OPACITY_20
 
 ```TypeScript
@@ -57,21 +73,5 @@ OPACITY_80 = 3
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-GradientAlpha-OPACITY_80 = 3--><!--Device-GradientAlpha-OPACITY_80 = 3-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## OPACITY_100
-
-```TypeScript
-OPACITY_100 = 4
-```
-
-不透明度为1.0。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-GradientAlpha-OPACITY_100 = 4--><!--Device-GradientAlpha-OPACITY_100 = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

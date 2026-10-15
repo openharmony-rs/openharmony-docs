@@ -12,19 +12,35 @@ Enum for cause of disconnect.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## USER_DISCONNECT
+## CONNECT_FAIL_INTERNAL
 
 ```TypeScript
-USER_DISCONNECT = 0
+CONNECT_FAIL_INTERNAL = 5
 ```
 
-User disconnect device.
+Connection failed due to an internal error.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DisconnectCause-USER_DISCONNECT = 0--><!--Device-DisconnectCause-USER_DISCONNECT = 0-End-->
+<!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5--><!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## CONNECT_FROM_CAR
+
+```TypeScript
+CONNECT_FROM_CAR = 3
+```
+
+The connection needs to be initiated from the car side.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DisconnectCause-CONNECT_FROM_CAR = 3--><!--Device-DisconnectCause-CONNECT_FROM_CAR = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -60,22 +76,6 @@ The connection needs to be initiated from the mouse side.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## CONNECT_FROM_CAR
-
-```TypeScript
-CONNECT_FROM_CAR = 3
-```
-
-The connection needs to be initiated from the car side.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DisconnectCause-CONNECT_FROM_CAR = 3--><!--Device-DisconnectCause-CONNECT_FROM_CAR = 3-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## TOO_MANY_CONNECTED_DEVICES
 
 ```TypeScript
@@ -92,18 +92,18 @@ Too many devices are currently connected.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## CONNECT_FAIL_INTERNAL
+## USER_DISCONNECT
 
 ```TypeScript
-CONNECT_FAIL_INTERNAL = 5
+USER_DISCONNECT = 0
 ```
 
-Connection failed due to an internal error.
+User disconnect device.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5--><!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5-End-->
+<!--Device-DisconnectCause-USER_DISCONNECT = 0--><!--Device-DisconnectCause-USER_DISCONNECT = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

@@ -38,7 +38,7 @@ Checks whether this session supports a preconfigured resolution.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-VideoSession-canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boolean--><!--Device-VideoSession-canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boolean-End-->
 
@@ -315,7 +315,7 @@ Unsubscribes camera switch request event callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-VideoSession-offCameraSwitchRequest(callback?: Callback<CameraDevice>): void--><!--Device-VideoSession-offCameraSwitchRequest(callback?: Callback<CameraDevice>): void-End-->
 
@@ -339,7 +339,7 @@ Unsubscribes from exposure information change events. If you have subscribed to 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-VideoSession-offExposureInfoChange(callback?: Callback<ExposureInfo>): void--><!--Device-VideoSession-offExposureInfoChange(callback?: Callback<ExposureInfo>): void-End-->
 
@@ -371,7 +371,7 @@ Unsubscribes from ISO state change events.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-VideoSession-offIsoInfoChange(callback?: Callback<IsoInfo>): void--><!--Device-VideoSession-offIsoInfoChange(callback?: Callback<IsoInfo>): void-End-->
 
@@ -423,7 +423,7 @@ Subscribes to **VideoSession** error events. This API uses an asynchronous callb
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
+| type | 'error' | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig1), and [addInput](arkts-camera-camera-session-i.md#addinput). |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
 
 **Examples**
@@ -724,7 +724,7 @@ Subscribes camera switch request event callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-VideoSession-onCameraSwitchRequest(callback: Callback<CameraDevice>): void--><!--Device-VideoSession-onCameraSwitchRequest(callback: Callback<CameraDevice>): void-End-->
 
@@ -748,7 +748,7 @@ Subscribes to exposure information change events. After the exposure parameters 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-VideoSession-onExposureInfoChange(callback: Callback<ExposureInfo>): void--><!--Device-VideoSession-onExposureInfoChange(callback: Callback<ExposureInfo>): void-End-->
 
@@ -782,7 +782,7 @@ Subscribes to sensitivity (ISO) state change events and obtains the latest ISO v
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-VideoSession-onIsoInfoChange(callback: Callback<IsoInfo>): void--><!--Device-VideoSession-onIsoInfoChange(callback: Callback<IsoInfo>): void-End-->
 
@@ -816,7 +816,7 @@ Preconfigures this session.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-VideoSession-preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void--><!--Device-VideoSession-preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void-End-->
 
@@ -864,11 +864,11 @@ Sets the priority level for video recording quality.
 > 
 > - The default value is **HIGH_QUALITY**. Switching to **POWER_BALANCE** will compromise video recording quality to achieve lower power usage. The extent of power conservation achieved varies depending on the platform.
 > 
-> - It is recommended that this API be called between [commitConfig](arkts-camera-camera-session-i.md#commitconfig) and [start](arkts-camera-camera-session-i.md#start).
+> - It is recommended that this API be called between [commitConfig](arkts-camera-camera-session-i.md#commitconfig1) and [start](arkts-camera-camera-session-i.md#start).
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-VideoSession-setQualityPrioritization(quality: QualityPrioritization): void--><!--Device-VideoSession-setQualityPrioritization(quality: QualityPrioritization): void-End-->
 
@@ -884,7 +884,7 @@ Sets the priority level for video recording quality.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. The session has not been committed or configured. |
 
 **Examples**

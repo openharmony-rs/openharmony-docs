@@ -14,13 +14,13 @@ Sets the initial state of the slidable panel.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Mini
+## Full
 
 ```TypeScript
-Mini = 0
+Full
 ```
 
-Minimum state.
+Class Full Screen Status.
 
 **Since:** 7
 
@@ -30,7 +30,7 @@ Minimum state.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-PanelMode-Mini = 0--><!--Device-PanelMode-Mini = 0-End-->
+<!--Device-PanelMode-Full--><!--Device-PanelMode-Full-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,13 +54,13 @@ SHalf-screen-like status
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Full
+## Mini
 
 ```TypeScript
-Full
+Mini = 0
 ```
 
-Class Full Screen Status.
+Minimum state.
 
 **Since:** 7
 
@@ -70,6 +70,6 @@ Class Full Screen Status.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-PanelMode-Full--><!--Device-PanelMode-Full-End-->
+<!--Device-PanelMode-Mini = 0--><!--Device-PanelMode-Mini = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,17 +12,73 @@ Enumerates the operations that can be performed on a DLP file. For example, the 
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
-## ACTION_VIEW
+## ACTION_COPY
 
 ```TypeScript
-ACTION_VIEW = 0x00000001
+ACTION_COPY = 0x00000080
 ```
 
-View the file.
+Copy the file.
 
 **Since:** 10
 
-<!--Device-ActionFlagType-ACTION_VIEW = 0x00000001--><!--Device-ActionFlagType-ACTION_VIEW = 0x00000001-End-->
+<!--Device-ActionFlagType-ACTION_COPY = 0x00000080--><!--Device-ActionFlagType-ACTION_COPY = 0x00000080-End-->
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
+## ACTION_EDIT
+
+```TypeScript
+ACTION_EDIT = 0x00000008
+```
+
+Edit the file.
+
+**Since:** 10
+
+<!--Device-ActionFlagType-ACTION_EDIT = 0x00000008--><!--Device-ActionFlagType-ACTION_EDIT = 0x00000008-End-->
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
+## ACTION_EXPORT
+
+```TypeScript
+ACTION_EXPORT = 0x00000200
+```
+
+Export the file.
+
+**Since:** 10
+
+<!--Device-ActionFlagType-ACTION_EXPORT = 0x00000200--><!--Device-ActionFlagType-ACTION_EXPORT = 0x00000200-End-->
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
+## ACTION_PERMISSION_CHANGE
+
+```TypeScript
+ACTION_PERMISSION_CHANGE = 0x00000400
+```
+
+Modify the permissions on the file.
+
+**Since:** 10
+
+<!--Device-ActionFlagType-ACTION_PERMISSION_CHANGE = 0x00000400--><!--Device-ActionFlagType-ACTION_PERMISSION_CHANGE = 0x00000400-End-->
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
+## ACTION_PRINT
+
+```TypeScript
+ACTION_PRINT = 0x00000100
+```
+
+Print the file.
+
+**Since:** 10
+
+<!--Device-ActionFlagType-ACTION_PRINT = 0x00000100--><!--Device-ActionFlagType-ACTION_PRINT = 0x00000100-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -54,20 +110,6 @@ Save the file as another file.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
-## ACTION_EDIT
-
-```TypeScript
-ACTION_EDIT = 0x00000008
-```
-
-Edit the file.
-
-**Since:** 10
-
-<!--Device-ActionFlagType-ACTION_EDIT = 0x00000008--><!--Device-ActionFlagType-ACTION_EDIT = 0x00000008-End-->
-
-**System capability:** SystemCapability.Security.DataLossPrevention
-
 ## ACTION_SCREEN_CAPTURE
 
 ```TypeScript
@@ -79,20 +121,6 @@ Capture screenshots of the file.
 **Since:** 10
 
 <!--Device-ActionFlagType-ACTION_SCREEN_CAPTURE = 0x00000010--><!--Device-ActionFlagType-ACTION_SCREEN_CAPTURE = 0x00000010-End-->
-
-**System capability:** SystemCapability.Security.DataLossPrevention
-
-## ACTION_SCREEN_SHARE
-
-```TypeScript
-ACTION_SCREEN_SHARE = 0x00000020
-```
-
-Share the screen of the file.
-
-**Since:** 10
-
-<!--Device-ActionFlagType-ACTION_SCREEN_SHARE = 0x00000020--><!--Device-ActionFlagType-ACTION_SCREEN_SHARE = 0x00000020-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -110,58 +138,30 @@ Record the screen on which the file is open.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
-## ACTION_COPY
+## ACTION_SCREEN_SHARE
 
 ```TypeScript
-ACTION_COPY = 0x00000080
+ACTION_SCREEN_SHARE = 0x00000020
 ```
 
-Copy the file.
+Share the screen of the file.
 
 **Since:** 10
 
-<!--Device-ActionFlagType-ACTION_COPY = 0x00000080--><!--Device-ActionFlagType-ACTION_COPY = 0x00000080-End-->
+<!--Device-ActionFlagType-ACTION_SCREEN_SHARE = 0x00000020--><!--Device-ActionFlagType-ACTION_SCREEN_SHARE = 0x00000020-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
-## ACTION_PRINT
+## ACTION_VIEW
 
 ```TypeScript
-ACTION_PRINT = 0x00000100
+ACTION_VIEW = 0x00000001
 ```
 
-Print the file.
+View the file.
 
 **Since:** 10
 
-<!--Device-ActionFlagType-ACTION_PRINT = 0x00000100--><!--Device-ActionFlagType-ACTION_PRINT = 0x00000100-End-->
-
-**System capability:** SystemCapability.Security.DataLossPrevention
-
-## ACTION_EXPORT
-
-```TypeScript
-ACTION_EXPORT = 0x00000200
-```
-
-Export the file.
-
-**Since:** 10
-
-<!--Device-ActionFlagType-ACTION_EXPORT = 0x00000200--><!--Device-ActionFlagType-ACTION_EXPORT = 0x00000200-End-->
-
-**System capability:** SystemCapability.Security.DataLossPrevention
-
-## ACTION_PERMISSION_CHANGE
-
-```TypeScript
-ACTION_PERMISSION_CHANGE = 0x00000400
-```
-
-Modify the permissions on the file.
-
-**Since:** 10
-
-<!--Device-ActionFlagType-ACTION_PERMISSION_CHANGE = 0x00000400--><!--Device-ActionFlagType-ACTION_PERMISSION_CHANGE = 0x00000400-End-->
+<!--Device-ActionFlagType-ACTION_VIEW = 0x00000001--><!--Device-ActionFlagType-ACTION_VIEW = 0x00000001-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

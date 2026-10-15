@@ -12,13 +12,13 @@ Enumerates reasons for **NavDestination** visibility changes.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TRANSITION
+## APP_STATE
 
 ```TypeScript
-TRANSITION = 0
+APP_STATE = 2
 ```
 
-Visibility changes due to page navigation.
+Visibility changes due to switching between the foreground and background states.
 
 **Since:** 21
 
@@ -26,7 +26,7 @@ Visibility changes due to page navigation.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
-<!--Device-VisibilityChangeReason-TRANSITION = 0--><!--Device-VisibilityChangeReason-TRANSITION = 0-End-->
+<!--Device-VisibilityChangeReason-APP_STATE = 2--><!--Device-VisibilityChangeReason-APP_STATE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ Visibility changes due to the opening or closing of a modal page.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## APP_STATE
+## TRANSITION
 
 ```TypeScript
-APP_STATE = 2
+TRANSITION = 0
 ```
 
-Visibility changes due to switching between the foreground and background states.
+Visibility changes due to page navigation.
 
 **Since:** 21
 
@@ -62,6 +62,6 @@ Visibility changes due to switching between the foreground and background states
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
-<!--Device-VisibilityChangeReason-APP_STATE = 2--><!--Device-VisibilityChangeReason-APP_STATE = 2-End-->
+<!--Device-VisibilityChangeReason-TRANSITION = 0--><!--Device-VisibilityChangeReason-TRANSITION = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

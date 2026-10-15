@@ -42,7 +42,7 @@ Obtains the routing configuration of the current **NavDestination** component.
 mode?: NavDestinationMode
 ```
 
-Type of the current **NavDestination**. Default value: NavDestinationMode.Standard.
+Type of the current **NavDestination**.
 
 **Type:** [NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md)
 

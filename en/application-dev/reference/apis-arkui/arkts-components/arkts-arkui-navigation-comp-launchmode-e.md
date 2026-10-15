@@ -12,26 +12,6 @@ Enumerates the operation modes for the routing stack.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## STANDARD
-
-```TypeScript
-STANDARD = 0
-```
-
-Default routing stack operation mode.
-
-In this mode, push operations add the specified **NavDestination** page to the stack; replace operations replace the current top **NavDestination** page.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-LaunchMode-STANDARD = 0--><!--Device-LaunchMode-STANDARD = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## MOVE_TO_TOP_SINGLETON
 
 ```TypeScript
@@ -47,6 +27,24 @@ This mode searches from the bottom to the top of the routing stack. If a **NavDe
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1--><!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NEW_INSTANCE
+
+```TypeScript
+NEW_INSTANCE = 3
+```
+
+This mode creates an instance of **NavDestination**. Compared with **STANDARD**, this mode does not reuse the instance with the same name in the stack. When this mode is specified, the newly created page will execute the push animation effect by default.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LaunchMode-NEW_INSTANCE = 3--><!--Device-LaunchMode-NEW_INSTANCE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,13 +66,15 @@ This mode searches from the bottom to the top of the routing stack. If a **NavDe
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NEW_INSTANCE
+## STANDARD
 
 ```TypeScript
-NEW_INSTANCE = 3
+STANDARD = 0
 ```
 
-This mode creates an instance of **NavDestination**. Compared with **STANDARD**, this mode does not reuse the instance with the same name in the stack. When this mode is specified, the newly created page will execute the push animation effect by default.
+Default routing stack operation mode.
+
+In this mode, push operations add the specified **NavDestination** page to the stack; replace operations replace the current top **NavDestination** page.
 
 **Since:** 12
 
@@ -82,6 +82,6 @@ This mode creates an instance of **NavDestination**. Compared with **STANDARD**,
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-LaunchMode-NEW_INSTANCE = 3--><!--Device-LaunchMode-NEW_INSTANCE = 3-End-->
+<!--Device-LaunchMode-STANDARD = 0--><!--Device-LaunchMode-STANDARD = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

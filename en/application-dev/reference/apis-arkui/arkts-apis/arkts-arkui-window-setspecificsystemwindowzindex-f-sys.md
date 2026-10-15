@@ -48,6 +48,7 @@ You are advised to set different **zIndex** values for different types of window
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`Failed to set zIndex. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->

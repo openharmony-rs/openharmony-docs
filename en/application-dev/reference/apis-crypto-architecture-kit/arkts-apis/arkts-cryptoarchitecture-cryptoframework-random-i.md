@@ -32,7 +32,7 @@ Enables the hardware entropy source. Secure random numbers obtained from TEE wil
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-Random-enableHardwareEntropy(): void--><!--Device-Random-enableHardwareEntropy(): void-End-->
 
@@ -70,6 +70,8 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
+<a id="generaterandom1"></a>
+
 ## generateRandom
 
 ```TypeScript
@@ -84,7 +86,7 @@ Generates a random number of the specified length. This API uses an asynchronous
 - API version 12 and later: This API can be used in both the stage model and FA model.
 - API versions 9 to 11: This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Random-generateRandom(len: int, callback: AsyncCallback<DataBlob>): void--><!--Device-Random-generateRandom(len: int, callback: AsyncCallback<DataBlob>): void-End-->
 
@@ -103,7 +105,7 @@ Generates a random number of the specified length. This API uses an asynchronous
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -122,7 +124,7 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
-<a id="generaterandom-1"></a>
+<a id="generaterandom2"></a>
 
 ## generateRandom
 
@@ -136,7 +138,7 @@ Generates a random number of the specified length. This API uses a promise to re
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Random-generateRandom(len: int): Promise<DataBlob>--><!--Device-Random-generateRandom(len: int): Promise<DataBlob>-End-->
 
@@ -160,7 +162,7 @@ Generates a random number of the specified length. This API uses a promise to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -263,7 +265,7 @@ Generates a random number of the specified length. This API returns the result s
 - API version 12 and later: This API can be used in both the stage model and FA model.
 - API versions 10 to 11: This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Random-generateRandomSync(len: int): DataBlob--><!--Device-Random-generateRandomSync(len: int): DataBlob-End-->
 
@@ -287,7 +289,7 @@ Generates a random number of the specified length. This API returns the result s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -394,7 +396,7 @@ Sets a seed.
 - API version 12 and later: This API can be used in both the stage model and FA model.
 - API versions 9 to 11: This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Random-setSeed(seed: DataBlob): void--><!--Device-Random-setSeed(seed: DataBlob): void-End-->
 
@@ -450,7 +452,7 @@ Indicates the random generation algorithm name. Currently, only CTR_DRBG is supp
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Random-readonly algName: string--><!--Device-Random-readonly algName: string-End-->
 

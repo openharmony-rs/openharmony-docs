@@ -18,26 +18,6 @@ export enum HuksAuthStorageLevel
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本11：SystemCapability.Security.Huks.Extension
 
-## HUKS_AUTH_STORAGE_LEVEL_DE
-
-```TypeScript
-HUKS_AUTH_STORAGE_LEVEL_DE = 0
-```
-
-表示密钥仅在开机后可访问。
-
-**起始版本：** 11
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_DE = 0--><!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_DE = 0-End-->
-
-**系统能力：** 
-- API版本12+：SystemCapability.Security.Huks.Core
-- API版本11：SystemCapability.Security.Huks.Extension
-
 ## HUKS_AUTH_STORAGE_LEVEL_CE
 
 ```TypeScript
@@ -53,6 +33,26 @@ HUKS_AUTH_STORAGE_LEVEL_CE = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_CE = 1--><!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_CE = 1-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本11：SystemCapability.Security.Huks.Extension
+
+## HUKS_AUTH_STORAGE_LEVEL_DE
+
+```TypeScript
+HUKS_AUTH_STORAGE_LEVEL_DE = 0
+```
+
+表示密钥仅在开机后可访问。
+
+**起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_DE = 0--><!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_DE = 0-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core

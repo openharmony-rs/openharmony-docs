@@ -4,7 +4,7 @@
 export interface BundleExtensionPolicyInfo
 ```
 
-定义包扩展策略信息。
+定义扩展策略信息。
 
 **起始版本：** 26.0.1
 
@@ -20,7 +20,7 @@ export interface BundleExtensionPolicyInfo
 readonly appIndex: number
 ```
 
-应用的索引。该值应为整数。
+应用的索引。取值限定为整数。
 
 **类型：** number
 
@@ -60,7 +60,7 @@ readonly appSandboxPolicy: bundleManager.AppSandboxPolicy
 readonly bundleName: string
 ```
 
-应用的包名。
+应用的Bundle名称。
 
 **类型：** string
 
@@ -80,7 +80,7 @@ readonly bundleName: string
 readonly deviceModeDistributionPolicy: bundleManager.DeviceModeDistributionPolicy
 ```
 
-应用的设备模式分发策略。
+应用的设备模式分布策略。
 
 **类型：** [bundleManager.DeviceModeDistributionPolicy](arkts-ability-bundlemanager-devicemodedistributionpolicy-e-sys.md)
 

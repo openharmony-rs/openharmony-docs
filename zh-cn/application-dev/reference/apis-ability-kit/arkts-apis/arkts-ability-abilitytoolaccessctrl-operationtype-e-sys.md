@@ -14,24 +14,6 @@ enum OperationType
 
 **系统接口：** 此接口为系统接口。
 
-## CLI
-
-```TypeScript
-CLI = 0x01
-```
-
-命令行操作。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-OperationType-CLI = 0x01--><!--Device-OperationType-CLI = 0x01-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-**系统接口：** 此接口为系统接口。
-
 ## API
 
 ```TypeScript
@@ -45,6 +27,24 @@ API操作。
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-OperationType-API = 0x02--><!--Device-OperationType-API = 0x02-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+**系统接口：** 此接口为系统接口。
+
+## CLI
+
+```TypeScript
+CLI = 0x01
+```
+
+命令行操作。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-OperationType-CLI = 0x01--><!--Device-OperationType-CLI = 0x01-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

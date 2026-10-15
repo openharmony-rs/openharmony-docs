@@ -4,7 +4,7 @@
 interface AeadParamsSpec extends ParamsSpec
 ```
 
-用于AEAD（带附加数据的认证加密）对称加解密的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3)方法参数，继承自[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)。
+用于AEAD（带附加数据的认证加密）对称加解密的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4)方法参数，继承自[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)。
 
 <br>适用于[AES算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes)的CCM和GCM分组模式。<br>适用于[SM4算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#sm4)的GCM分组模式。<br>适用于[ChaCha20-Poly1305算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20)分组模式。
 
@@ -43,7 +43,7 @@ authenticatedData?: Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AeadParamsSpec-authenticatedData?: Uint8Array--><!--Device-AeadParamsSpec-authenticatedData?: Uint8Array-End-->
 
@@ -69,7 +69,7 @@ nonce: Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AeadParamsSpec-nonce: Uint8Array--><!--Device-AeadParamsSpec-nonce: Uint8Array-End-->
 
@@ -97,7 +97,7 @@ tagLen?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AeadParamsSpec-tagLen?: int--><!--Device-AeadParamsSpec-tagLen?: int-End-->
 

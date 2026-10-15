@@ -79,3 +79,68 @@ struct MemoryOptimizeDemo {
   }
 }
 ```
+
+### 示例2（主动清理缓存池）
+
+以下示例中，通过[RepeatOptions](#repeatoptions)的controller属性绑定了[RepeatController](#repeatcontroller)。点击Scroll按钮，使列表跳转，旧组件进入缓存池。然后点击Clear按钮，主动清理Repeat缓存池中的组件。
+
+从API版本26.2.0开始，Repeat接口新增options参数。
+
+```TypeScript
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Local data: Array<number> = [];
+  // 创建RepeatController对象
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ scroller: this.scroller }) {
+        // 通过RepeatOptions的controller字段绑定控制器
+        Repeat<number>(this.data, { controller: this.controller })
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll()
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Scroll')
+        .onClick(() => {
+          // 点击按钮触发列表跳转，旧组件进入缓存池
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理Repeat缓存池中的组件
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```

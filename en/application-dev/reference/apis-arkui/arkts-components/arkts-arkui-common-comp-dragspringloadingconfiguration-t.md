@@ -6,6 +6,8 @@ declare type DragSpringLoadingConfiguration = import('../api/@ohos.arkui.dragCon
 
 Defines the configuration parameters for drag hover detection.
 
+**Type:** import('../api/@ohos.arkui.dragController').default.DragSpringLoadingConfiguration
+
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the configuration parameters for drag hover detection.
 <!--Device-unnamed-declare type DragSpringLoadingConfiguration = import('../api/@ohos.arkui.dragController').default.DragSpringLoadingConfiguration--><!--Device-unnamed-declare type DragSpringLoadingConfiguration = import('../api/@ohos.arkui.dragController').default.DragSpringLoadingConfiguration-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.dragController').default.DragSpringLoadingConfiguration

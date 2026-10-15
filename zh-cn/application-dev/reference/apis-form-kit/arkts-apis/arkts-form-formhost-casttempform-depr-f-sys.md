@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="casttempform1"></a>
+
 ## castTempForm
 
 ```TypeScript
@@ -34,6 +36,7 @@ function castTempForm(formId: string, callback: AsyncCallback<void>): void
 | formId | string | 是 | 卡片标识。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当将指定的临时卡片转换为普通卡片成功，error为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,8 +50,10 @@ formHost.castTempForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="casttempform-1"></a>
+
+<a id="casttempform2"></a>
 
 ## castTempForm
 
@@ -84,6 +89,7 @@ function castTempForm(formId: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +102,5 @@ formHost.castTempForm(formId).then(() => {
   console.error(`formHost castTempForm, error: ${JSON.stringify(error)}`);
 });
 ```
+
+<!--DelEnd-->

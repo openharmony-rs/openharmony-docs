@@ -18,7 +18,7 @@ Defines the controller of the **XComponent**. You can bind the controller to the
 constructor()
 ```
 
-A constructor used to create a **XComponentController** object.
+A constructor used to create a **XComponentController** instance.
 
 **Since:** 8
 
@@ -62,7 +62,7 @@ Obtains the context of an **XComponent** object. This API works only when **type
 getXComponentSurfaceId(): string
 ```
 
-Obtains the ID of the surface held by the **XComponent**. This API works only when **type** of the **XComponent** is **SURFACE("surface")** or **TEXTURE**.
+Obtains the ID of the surface corresponding to the XComponent. This parameter is valid only when the XComponent type is SURFACE("surface") or TEXTURE.
 
 **Since:** 9
 
@@ -175,7 +175,7 @@ Obtains a canvas object for drawing content on the **XComponent** component. For
 
 | Type | Description |
 | --- | --- |
-| [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md) &#124; null | Returns a Canvas for drawing into the surface created by XComponent. Returns null if the surface is not available. |
+| [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md) &#124; null | Canvas object that can be used to draw on the XComponent area. Returns null when the canvas object cannot be obtained (for example, when the Surface is not created or the canvas is occupied and not released). |
 
 ## onSurfaceChanged
 
@@ -200,7 +200,7 @@ Triggered when the surface held by the **XComponent** has its size changed (incl
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | surfaceId | string | Yes | ID of the surface held by the **XComponent**. |
-| rect | [SurfaceRect](arkts-arkui-xcomponent-comp-surfacerect-i.md) | Yes | Area for displaying the surface held by the **XComponent**. |
+| rect | [SurfaceRect](arkts-arkui-xcomponent-comp-surfacerect-i.md) | Yes | Rectangle for displaying the surface held by the **XComponent**. |
 
 ## onSurfaceCreated
 
@@ -232,7 +232,7 @@ Triggered when the surface held by the **XComponent** is created. This API works
 onSurfaceDestroyed(surfaceId: string): void
 ```
 
-Triggered when the surface held by the **XComponent** is destroyed. This API works only when **type** of the **XComponent** is set to **SURFACE** (**"surface"**) or **TEXTURE**.
+Called when the surface held by the **XComponent** is destroyed. This callback takes effect only when the **XComponent** type is SURFACE("surface") or TEXTURE. For details, see [Creating an XComponent and Managing the Surface Lifecycle](../../../ui/napi-xcomponent-guidelines.md#creating-an-xcomponent-and-managing-the-surface-lifecycle).
 
 **Since:** 12
 
@@ -256,7 +256,7 @@ Triggered when the surface held by the **XComponent** is destroyed. This API wor
 setXComponentSurfaceConfig(config: SurfaceConfig):void
 ```
 
-Sets the options of the surface created by the **XComponent**, which determine whether the surface held by the **XComponent** is considered opaque during rendering.
+Sets the options of the surface created by the **XComponent**, which are used to set whether the surface held by the **XComponent** needs to be treated as opaque during rendering. When the content drawn on the surface is completely opaque, the surface can be set to opaque to improve rendering performance. When the drawn content contains transparent areas, the surface must remain non-opaque to ensure that the transparency effect is displayed correctly.
 
 > **NOTE:** 
 > 
@@ -276,7 +276,7 @@ Sets the options of the surface created by the **XComponent**, which determine w
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [SurfaceConfig](arkts-arkui-xcomponent-comp-surfaceconfig-i.md) | Yes | surface config |
+| config | [SurfaceConfig](arkts-arkui-xcomponent-comp-surfaceconfig-i.md) | Yes | Surface configuration options, used to set whether the Surface held by the XComponent needs to be treated as opaque during rendering. |
 
 ## setXComponentSurfaceRect
 
@@ -332,17 +332,13 @@ Sets whether to lock the orientation of the surface held by this **XComponent** 
 startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 ```
 
-Starts AI image analysis in the given settings. Before calling this API, make sure the AI image analyzer is [enabled](arkts-arkui-xcomponent-comp-attribute.md#enableanalyzer). This API uses a promise to return the result.
-
-Because the image frame used for analysis is the one captured when this API is called, pay attention to the invoking time of this API.
-
-If this API is repeatedly called before the execution is complete, an error callback is triggered.
+Configures and starts AI analysis. Before using this API, enable the image AI analysis capability by calling [enableAnalyzer](arkts-arkui-xcomponent-comp-attribute.md#enableanalyzer). This API takes effect only when the **XComponent** type is SURFACE or TEXTURE. This API uses a promise to return the result asynchronously.<br>When this API is called, the frame at the moment of the call is captured for analysis. Pay attention to the timing of starting the analysis to avoid inconsistency between the displayed content and the analysis result.<br>If this API is called again before the previous call is complete, an error callback is triggered.
 
 > **NOTE:** 
 
-> The image analysis type cannot be dynamically modified.
-> 
-> This API depends on device capabilities. If it is called on an incompatible device, an error code is returned.
+> The analysis type cannot be dynamically modified.
+> The AI analysis capability depends on the device capability. If the device does not support this capability, an
+> error code is returned.
 
 **Since:** 12
 
@@ -364,7 +360,7 @@ If this API is repeatedly called before the execution is complete, an error call
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. It is used to indicate AI-based analysis is successfully executed. |
+| Promise&lt;void&gt; | Promise that returns no value. It is used to indicate AI analysis is successfully executed. |
 
 **Error codes:**
 
@@ -380,13 +376,12 @@ If this API is repeatedly called before the execution is complete, an error call
 stopImageAnalyzer(): void
 ```
 
-Stops AI image analysis. The content displayed by the AI image analyzer will be destroyed.
+Stops AI analysis. This API takes effect only when the **XComponent** type is SURFACE or TEXTURE. Before calling this API, call [enableAnalyzer](arkts-arkui-xcomponent-comp-attribute.md#enableanalyzer) and [startImageAnalyzer](#startimageanalyzer) to enable the AI analysis capability. After this API is called, the content displayed by AI analysis is destroyed.
 
 > **NOTE:** 
 
 > If this API is called when the **startImageAnalyzer** API has not yet returned any result, an error callback is
 > triggered.
-> 
 > This feature depends on device capabilities.
 
 **Since:** 12
@@ -421,7 +416,7 @@ Submits the drawn content from a canvas object to the display area of the **XCom
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| canvas | [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md) | Yes | The canvas previously obtained from lockCanvas. |
+| canvas | [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md) | Yes | Canvas object returned by the lockCanvas method called earlier. |
 
 ## setXComponentSurfaceSize
 
@@ -450,4 +445,4 @@ Unit: px.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | {     surfaceWidth: number;     surfaceHeight: number;   } | Yes | Width and Height of the surface held by the XComponent. |
+| value | {     surfaceWidth: number;     surfaceHeight: number;   } | Yes | Width and height of the Surface held by the XComponent. The value of surfaceWidth ranges from greater than 0 to no more than 8192, in px. If 0, a negative number, or another invalid value is passed in, the API does not take effect. The value of surfaceHeight ranges from greater than 0 to no more than 8192, in px. If 0, a negative number, or another invalid value is passed in, the API does not take effect. |

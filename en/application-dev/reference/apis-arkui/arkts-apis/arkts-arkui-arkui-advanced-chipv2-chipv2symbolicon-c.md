@@ -6,8 +6,6 @@ export abstract class ChipV2SymbolIcon extends ChipV2Icon
 
 Defines the symbol icon class.
 
-This API inherits from [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md).
-
 **Inheritance/Implementation:** ChipV2SymbolIcon extends [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 
 **Since:** 26.0.0
@@ -58,9 +56,7 @@ Icon settings in the active state.
 
 Default value: **undefined**, which means no prefix icon or suffix icon is displayed. When the value is **undefined**, the default value is used.
 
-Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) and setting the animation effect using [effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) are not supported.
-
-**Decorator:** @Trace
+Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1) and setting the animation effect using [effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) are not supported.
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -86,9 +82,7 @@ Icon settings in the inactive state.
 
 Default value: **undefined**, which means no prefix icon or suffix icon is displayed. When the value is **undefined**, the default value is used.
 
-Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) and setting the animation effect using [effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) are not supported.
-
-**Decorator:** @Trace
+Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1) and setting the animation effect using [effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) are not supported.
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 

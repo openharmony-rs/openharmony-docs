@@ -7,7 +7,7 @@
 
 | Name | Description |
 | --- | --- |
-| [FeatureAbility](arkts-arkui-featureability-featureability-c-sys.md) |  |
+| [FeatureAbility](arkts-arkui-featureability-c-sys.md) |  |
 <!--DelEnd-->
 
 ### Interfaces

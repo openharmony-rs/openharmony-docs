@@ -6,6 +6,8 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createcertextension1"></a>
+
 ## createCertExtension
 
 ```TypeScript
@@ -16,7 +18,7 @@ Creates a certificate extension object. This API uses an asynchronous callback t
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-cert-function createCertExtension(inStream: EncodingBlob, callback: AsyncCallback<CertExtension>): void--><!--Device-cert-function createCertExtension(inStream: EncodingBlob, callback: AsyncCallback<CertExtension>): void-End-->
 
@@ -33,7 +35,7 @@ Creates a certificate extension object. This API uses an asynchronous callback t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
@@ -72,7 +74,7 @@ cert.createCertExtension(encodingBlob, (error, _certExt) => {
 ```
 
 
-<a id="createcertextension-1"></a>
+<a id="createcertextension2"></a>
 
 ## createCertExtension
 
@@ -84,7 +86,7 @@ Creates a certificate extension object. This API uses a promise to return the re
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-cert-function createCertExtension(inStream: EncodingBlob): Promise<CertExtension>--><!--Device-cert-function createCertExtension(inStream: EncodingBlob): Promise<CertExtension>-End-->
 
@@ -106,7 +108,7 @@ Creates a certificate extension object. This API uses a promise to return the re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |

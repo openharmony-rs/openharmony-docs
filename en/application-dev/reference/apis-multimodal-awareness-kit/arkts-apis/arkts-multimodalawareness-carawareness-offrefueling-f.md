@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function offRefueling(callback?: Callback<RefuelingInfo>): void
 ```
 
-Disables refueling awareness.
+Unsubscribes from the refueling status result.
 
 **Since:** 26.0.1
 
@@ -30,11 +30,11 @@ Disables refueling awareness.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | No | Callback for obtaining the capability data. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | No | Callback for the refueling status event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |

@@ -18,6 +18,8 @@ Defines the application account manager, which is used to manage account informa
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="auth1"></a>
+
 ## auth
 
 ```TypeScript
@@ -99,7 +101,7 @@ struct Index {
 }
 ```
 
-<a id="auth-1"></a>
+<a id="auth2"></a>
 
 ## auth
 
@@ -192,6 +194,8 @@ struct Index {
 }
 ```
 
+<a id="checkaccountlabels1"></a>
+
 ## checkAccountLabels
 
 ```TypeScript
@@ -248,7 +252,7 @@ try {
 }
 ```
 
-<a id="checkaccountlabels-1"></a>
+<a id="checkaccountlabels2"></a>
 
 ## checkAccountLabels
 
@@ -309,6 +313,8 @@ try {
 }
 ```
 
+<a id="checkappaccess1"></a>
+
 ## checkAppAccess
 
 ```TypeScript
@@ -360,7 +366,7 @@ try {
 }
 ```
 
-<a id="checkappaccess-1"></a>
+<a id="checkappaccess2"></a>
 
 ## checkAppAccess
 
@@ -415,6 +421,8 @@ try {
 }
 ```
 
+<a id="checkauthtokenvisibility1"></a>
+
 ## checkAuthTokenVisibility
 
 ```TypeScript
@@ -468,7 +476,7 @@ try {
 }
 ```
 
-<a id="checkauthtokenvisibility-1"></a>
+<a id="checkauthtokenvisibility2"></a>
 
 ## checkAuthTokenVisibility
 
@@ -526,6 +534,8 @@ try {
 }
 ```
 
+<a id="checkdatasyncenabled1"></a>
+
 ## checkDataSyncEnabled
 
 ```TypeScript
@@ -553,7 +563,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
@@ -578,7 +588,7 @@ try {
 }
 ```
 
-<a id="checkdatasyncenabled-1"></a>
+<a id="checkdatasyncenabled2"></a>
 
 ## checkDataSyncEnabled
 
@@ -612,7 +622,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
@@ -634,6 +644,8 @@ try {
   console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="createaccount1"></a>
 
 ## createAccount
 
@@ -685,7 +697,7 @@ try {
 }
 ```
 
-<a id="createaccount-1"></a>
+<a id="createaccount2"></a>
 
 ## createAccount
 
@@ -743,7 +755,7 @@ try {
 }
 ```
 
-<a id="createaccount-2"></a>
+<a id="createaccount3"></a>
 
 ## createAccount
 
@@ -803,6 +815,8 @@ try {
   console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="createaccountimplicitly1"></a>
 
 ## createAccountImplicitly
 
@@ -882,7 +896,7 @@ struct Index {
 }
 ```
 
-<a id="createaccountimplicitly-1"></a>
+<a id="createaccountimplicitly2"></a>
 
 ## createAccountImplicitly
 
@@ -967,6 +981,8 @@ struct Index {
 }
 ```
 
+<a id="deleteauthtoken1"></a>
+
 ## deleteAuthToken
 
 ```TypeScript
@@ -1021,7 +1037,7 @@ try {
 }
 ```
 
-<a id="deleteauthtoken-1"></a>
+<a id="deleteauthtoken2"></a>
 
 ## deleteAuthToken
 
@@ -1079,6 +1095,8 @@ try {
 }
 ```
 
+<a id="deletecredential1"></a>
+
 ## deleteCredential
 
 ```TypeScript
@@ -1130,7 +1148,7 @@ try {
 }
 ```
 
-<a id="deletecredential-1"></a>
+<a id="deletecredential2"></a>
 
 ## deleteCredential
 
@@ -1186,6 +1204,8 @@ try {
 }
 ```
 
+<a id="getaccountsbyowner1"></a>
+
 ## getAccountsByOwner
 
 ```TypeScript
@@ -1235,7 +1255,7 @@ try {
 }
 ```
 
-<a id="getaccountsbyowner-1"></a>
+<a id="getaccountsbyowner2"></a>
 
 ## getAccountsByOwner
 
@@ -1289,6 +1309,8 @@ try {
 }
 ```
 
+<a id="getallaccounts1"></a>
+
 ## getAllAccounts
 
 ```TypeScript
@@ -1335,7 +1357,7 @@ try {
 }
 ```
 
-<a id="getallaccounts-1"></a>
+<a id="getallaccounts2"></a>
 
 ## getAllAccounts
 
@@ -1380,7 +1402,7 @@ try {
 }
 ```
 
-<a id="getallaccounts-2"></a>
+<a id="getallaccounts3"></a>
 
 ## getAllAccounts
 
@@ -1393,14 +1415,14 @@ Obtains the application accounts that can be accessed by the invoker based on th
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAccountsByOwner](#getaccountsbyowner)
+> [getAccountsByOwner](#getaccountsbyowner1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAccountsByOwner](#getaccountsbyowner)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**Substitutes:** [getAccountsByOwner](#getaccountsbyowner1)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1430,7 +1452,7 @@ appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccou
 });
 ```
 
-<a id="getallaccounts-3"></a>
+<a id="getallaccounts4"></a>
 
 ## getAllAccounts
 
@@ -1443,13 +1465,13 @@ Obtains the application accounts that can be accessed by the invoker based on th
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAccountsByOwner](#getaccountsbyowner-1) instead.
+> [getAccountsByOwner](#getaccountsbyowner2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAccountsByOwner](#getaccountsbyowner-1)(owner: string)
+**Substitutes:** [getAccountsByOwner](#getaccountsbyowner2)(owner: string)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1481,6 +1503,8 @@ appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountIn
   console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getallauthtokens1"></a>
 
 ## getAllAuthTokens
 
@@ -1533,7 +1557,7 @@ try {
 }
 ```
 
-<a id="getallauthtokens-1"></a>
+<a id="getallauthtokens2"></a>
 
 ## getAllAuthTokens
 
@@ -1588,6 +1612,8 @@ try {
   console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getauthcallback1"></a>
 
 ## getAuthCallback
 
@@ -1654,7 +1680,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthcallback-1"></a>
+<a id="getauthcallback2"></a>
 
 ## getAuthCallback
 
@@ -1724,13 +1750,15 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getauthlist1"></a>
+
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility1). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -1775,7 +1803,7 @@ try {
 }
 ```
 
-<a id="getauthlist-1"></a>
+<a id="getauthlist2"></a>
 
 ## getAuthList
 
@@ -1783,7 +1811,7 @@ try {
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility). This API uses a promise to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility1). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -1830,6 +1858,8 @@ try {
   console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getauthtoken1"></a>
 
 ## getAuthToken
 
@@ -1884,7 +1914,7 @@ try {
 }
 ```
 
-<a id="getauthtoken-1"></a>
+<a id="getauthtoken2"></a>
 
 ## getAuthToken
 
@@ -1941,6 +1971,8 @@ try {
 }
 ```
 
+<a id="getcredential1"></a>
+
 ## getCredential
 
 ```TypeScript
@@ -1992,7 +2024,7 @@ try {
 }
 ```
 
-<a id="getcredential-1"></a>
+<a id="getcredential2"></a>
 
 ## getCredential
 
@@ -2048,6 +2080,8 @@ try {
 }
 ```
 
+<a id="getcustomdata1"></a>
+
 ## getCustomData
 
 ```TypeScript
@@ -2099,7 +2133,7 @@ try {
 }
 ```
 
-<a id="getcustomdata-1"></a>
+<a id="getcustomdata2"></a>
 
 ## getCustomData
 
@@ -2405,6 +2439,8 @@ try {
 }
 ```
 
+<a id="queryauthenticatorinfo1"></a>
+
 ## queryAuthenticatorInfo
 
 ```TypeScript
@@ -2455,7 +2491,7 @@ try {
 }
 ```
 
-<a id="queryauthenticatorinfo-1"></a>
+<a id="queryauthenticatorinfo2"></a>
 
 ## queryAuthenticatorInfo
 
@@ -2510,6 +2546,8 @@ try {
 }
 ```
 
+<a id="removeaccount1"></a>
+
 ## removeAccount
 
 ```TypeScript
@@ -2559,7 +2597,7 @@ try {
 }
 ```
 
-<a id="removeaccount-1"></a>
+<a id="removeaccount2"></a>
 
 ## removeAccount
 
@@ -2612,6 +2650,8 @@ try {
   console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="selectaccountsbyoptions1"></a>
 
 ## selectAccountsByOptions
 
@@ -2668,7 +2708,7 @@ try {
 }
 ```
 
-<a id="selectaccountsbyoptions-1"></a>
+<a id="selectaccountsbyoptions2"></a>
 
 ## selectAccountsByOptions
 
@@ -2726,6 +2766,8 @@ try {
 }
 ```
 
+<a id="setappaccess1"></a>
+
 ## setAppAccess
 
 ```TypeScript
@@ -2778,7 +2820,7 @@ try {
 }
 ```
 
-<a id="setappaccess-1"></a>
+<a id="setappaccess2"></a>
 
 ## setAppAccess
 
@@ -2835,6 +2877,8 @@ try {
 }
 ```
 
+<a id="setauthenticatorproperties1"></a>
+
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -2889,7 +2933,7 @@ try {
 }
 ```
 
-<a id="setauthenticatorproperties-1"></a>
+<a id="setauthenticatorproperties2"></a>
 
 ## setAuthenticatorProperties
 
@@ -2949,6 +2993,8 @@ try {
 }
 ```
 
+<a id="setauthtoken1"></a>
+
 ## setAuthToken
 
 ```TypeScript
@@ -3001,7 +3047,7 @@ try {
 }
 ```
 
-<a id="setauthtoken-1"></a>
+<a id="setauthtoken2"></a>
 
 ## setAuthToken
 
@@ -3057,6 +3103,8 @@ try {
   console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="setauthtokenvisibility1"></a>
 
 ## setAuthTokenVisibility
 
@@ -3119,7 +3167,7 @@ try {
 }
 ```
 
-<a id="setauthtokenvisibility-1"></a>
+<a id="setauthtokenvisibility2"></a>
 
 ## setAuthTokenVisibility
 
@@ -3178,6 +3226,8 @@ try {
 }
 ```
 
+<a id="setcredential1"></a>
+
 ## setCredential
 
 ```TypeScript
@@ -3230,7 +3280,7 @@ try {
 }
 ```
 
-<a id="setcredential-1"></a>
+<a id="setcredential2"></a>
 
 ## setCredential
 
@@ -3286,6 +3336,8 @@ try {
 }
 ```
 
+<a id="setcustomdata1"></a>
+
 ## setCustomData
 
 ```TypeScript
@@ -3338,7 +3390,7 @@ try {
 }
 ```
 
-<a id="setcustomdata-1"></a>
+<a id="setcustomdata2"></a>
 
 ## setCustomData
 
@@ -3395,6 +3447,8 @@ try {
 }
 ```
 
+<a id="setdatasyncenabled1"></a>
+
 ## setDataSyncEnabled
 
 ```TypeScript
@@ -3423,7 +3477,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
@@ -3444,7 +3498,7 @@ try {
 }
 ```
 
-<a id="setdatasyncenabled-1"></a>
+<a id="setdatasyncenabled2"></a>
 
 ## setDataSyncEnabled
 
@@ -3479,7 +3533,7 @@ Sets data synchronization for an application account. This API uses a promise to
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
@@ -3501,6 +3555,8 @@ try {
     console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="verifycredential1"></a>
 
 ## verifyCredential
 
@@ -3558,7 +3614,7 @@ try {
 }
 ```
 
-<a id="verifycredential-1"></a>
+<a id="verifycredential2"></a>
 
 ## verifyCredential
 
@@ -3621,6 +3677,8 @@ try {
 }
 ```
 
+<a id="addaccount1"></a>
+
 ## addAccount
 
 ```TypeScript
@@ -3632,14 +3690,14 @@ Adds an application account with the given name. This API uses an asynchronous c
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount)
+> [createAccount](#createaccount1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [createAccount](#createaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3662,7 +3720,7 @@ appAccountManager.addAccount('WangWu', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount-1"></a>
+<a id="addaccount2"></a>
 
 ## addAccount
 
@@ -3675,14 +3733,14 @@ Adds an application account name and additional information. This API uses an as
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount-1)
+> [createAccount](#createaccount2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount-1)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [createAccount](#createaccount2)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3706,7 +3764,7 @@ appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount-2"></a>
+<a id="addaccount3"></a>
 
 ## addAccount
 
@@ -3718,14 +3776,14 @@ Adds an application account name and additional information. This API uses a pro
 
 > **NOTE:** 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount-2)
+> [createAccount](#createaccount3)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount-2)(name: string, options?: CreateAccountOptions)
+**Substitutes:** [createAccount](#createaccount3)(name: string, options?: CreateAccountOptions)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
@@ -3772,14 +3830,14 @@ Adds an application account implicitly based on the specified owner. This API us
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [createAccountImplicitly](#createaccountimplicitly)
+> [createAccountImplicitly](#createaccountimplicitly1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
+**Substitutes:** [createAccountImplicitly](#createaccountimplicitly1)(owner: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3852,14 +3910,14 @@ Authenticates an application account. This API uses an asynchronous callback to 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [auth](#auth)
+> [auth](#auth1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
+**Substitutes:** [auth](#auth1)(name: string, owner: string, authType: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3916,6 +3974,8 @@ struct Index {
 }
 ```
 
+<a id="checkappaccountsyncenable1"></a>
+
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -3927,14 +3987,14 @@ Checks whether data synchronization is enabled for an application account. This 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled)
+> [checkDataSyncEnabled](#checkdatasyncenabled1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled1)(name: string, callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3963,7 +4023,7 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, res
 });
 ```
 
-<a id="checkappaccountsyncenable-1"></a>
+<a id="checkappaccountsyncenable2"></a>
 
 ## checkAppAccountSyncEnable
 
@@ -3976,13 +4036,13 @@ Checks whether data synchronization is enabled for an application account. This 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled-1) instead.
+> [checkDataSyncEnabled](#checkdatasyncenabled2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled-1)(name: string)
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled2)(name: string)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -4014,6 +4074,8 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => 
 });
 ```
 
+<a id="checkoauthtokenvisibility1"></a>
+
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -4030,14 +4092,14 @@ Checks the visibility of an authorization token of the specified authentication 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility1)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
 
@@ -4067,7 +4129,7 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
   });
 ```
 
-<a id="checkoauthtokenvisibility-1"></a>
+<a id="checkoauthtokenvisibility2"></a>
 
 ## checkOAuthTokenVisibility
 
@@ -4080,14 +4142,14 @@ Checks the visibility of an authorization token of the specified authentication 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility-1)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility-1)(name: string, authType: string, bundleName: string)
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility2)(name: string, authType: string, bundleName: string)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
@@ -4120,6 +4182,8 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
 });
 ```
 
+<a id="deleteaccount1"></a>
+
 ## deleteAccount
 
 ```TypeScript
@@ -4131,14 +4195,14 @@ Deletes an application account. This API uses an asynchronous callback to return
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount)
+> [removeAccount](#removeaccount1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [removeAccount](#removeaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4161,7 +4225,7 @@ appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => {
 });
 ```
 
-<a id="deleteaccount-1"></a>
+<a id="deleteaccount2"></a>
 
 ## deleteAccount
 
@@ -4174,14 +4238,14 @@ Deletes an application account. This API uses a promise to return the result.
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount-1)
+> [removeAccount](#removeaccount2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAccount](#removeaccount-1)(name: string)
+**Substitutes:** [removeAccount](#removeaccount2)(name: string)
 
 <!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
@@ -4211,6 +4275,8 @@ appAccountManager.deleteAccount('ZhaoLiu').then(() => {
 });
 ```
 
+<a id="deleteoauthtoken1"></a>
+
 ## deleteOAuthToken
 
 ```TypeScript
@@ -4222,14 +4288,14 @@ Deletes the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken)
+> [deleteAuthToken](#deleteauthtoken1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [deleteAuthToken](#deleteauthtoken1)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4260,7 +4326,7 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
   });
 ```
 
-<a id="deleteoauthtoken-1"></a>
+<a id="deleteoauthtoken2"></a>
 
 ## deleteOAuthToken
 
@@ -4273,14 +4339,14 @@ Deletes the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken-1)
+> [deleteAuthToken](#deleteauthtoken2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [deleteAuthToken](#deleteauthtoken-1)(name: string, owner: string, authType: string, token: string)
+**Substitutes:** [deleteAuthToken](#deleteauthtoken2)(name: string, owner: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
@@ -4313,6 +4379,8 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
 });
 ```
 
+<a id="disableappaccess1"></a>
+
 ## disableAppAccess
 
 ```TypeScript
@@ -4324,14 +4392,14 @@ Disables access to the third-party application with the specified package name u
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4355,7 +4423,7 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err
 });
 ```
 
-<a id="disableappaccess-1"></a>
+<a id="disableappaccess2"></a>
 
 ## disableAppAccess
 
@@ -4368,14 +4436,14 @@ Disables an application account from accessing an application. This API uses a p
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess-1)
+> [setAppAccess](#setappaccess2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
+**Substitutes:** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4406,6 +4474,8 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then
 });
 ```
 
+<a id="enableappaccess1"></a>
+
 ## enableAppAccess
 
 ```TypeScript
@@ -4417,14 +4487,14 @@ Enables an application to access an application account. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4452,7 +4522,7 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err:
 });
 ```
 
-<a id="enableappaccess-1"></a>
+<a id="enableappaccess2"></a>
 
 ## enableAppAccess
 
@@ -4465,14 +4535,14 @@ Enables an application to access an application account. This API uses a promise
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess-1)
+> [setAppAccess](#setappaccess2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
+**Substitutes:** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4503,6 +4573,8 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(
 });
 ```
 
+<a id="getaccountcredential1"></a>
+
 ## getAccountCredential
 
 ```TypeScript
@@ -4514,14 +4586,14 @@ Obtains the credential of an application account. This API uses an asynchronous 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential)
+> [getCredential](#getcredential1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCredential](#getcredential1)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4549,7 +4621,7 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: Bu
 });
 ```
 
-<a id="getaccountcredential-1"></a>
+<a id="getaccountcredential2"></a>
 
 ## getAccountCredential
 
@@ -4562,14 +4634,14 @@ Obtains the credential of an application account. This API uses a promise to ret
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential-1)
+> [getCredential](#getcredential2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCredential](#getcredential-1)(name: string, credentialType: string)
+**Substitutes:** [getCredential](#getcredential2)(name: string, credentialType: string)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
@@ -4600,6 +4672,8 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((da
 });
 ```
 
+<a id="getaccountextrainfo1"></a>
+
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -4611,14 +4685,14 @@ Obtains additional information of an application account. Additional information
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4645,7 +4719,7 @@ appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: s
 });
 ```
 
-<a id="getaccountextrainfo-1"></a>
+<a id="getaccountextrainfo2"></a>
 
 ## getAccountExtraInfo
 
@@ -4658,13 +4732,13 @@ Obtains additional information of an application account. Additional information
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata-1) instead.
+> [getCustomData](#getcustomdata2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string)
+**Substitutes:** [getCustomData](#getcustomdata2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
@@ -4694,6 +4768,8 @@ appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => {
 });
 ```
 
+<a id="getallaccessibleaccounts1"></a>
+
 ## getAllAccessibleAccounts
 
 ```TypeScript
@@ -4705,14 +4781,14 @@ Obtains information about all accessible application accounts. This API uses an 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAllAccounts](#getallaccounts)
+> [getAllAccounts](#getallaccounts1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**Substitutes:** [getAllAccounts](#getallaccounts1)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -4740,7 +4816,7 @@ appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount
 });
 ```
 
-<a id="getallaccessibleaccounts-1"></a>
+<a id="getallaccessibleaccounts2"></a>
 
 ## getAllAccessibleAccounts
 
@@ -4785,6 +4861,8 @@ appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountIn
 });
 ```
 
+<a id="getalloauthtokens1"></a>
+
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -4796,14 +4874,14 @@ Obtains all tokens visible to the invoker for an application account. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens)
+> [getAllAuthTokens](#getallauthtokens1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
+**Substitutes:** [getAllAuthTokens](#getallauthtokens1)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
@@ -4832,7 +4910,7 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
   });
 ```
 
-<a id="getalloauthtokens-1"></a>
+<a id="getalloauthtokens2"></a>
 
 ## getAllOAuthTokens
 
@@ -4845,13 +4923,13 @@ Obtains all tokens visible to the invoker for an application account. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens-1) instead.
+> [getAllAuthTokens](#getallauthtokens2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAuthTokens](#getallauthtokens-1)(name: string, owner: string)
+**Substitutes:** [getAllAuthTokens](#getallauthtokens2)(name: string, owner: string)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
@@ -4883,6 +4961,8 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
 });
 ```
 
+<a id="getassociateddata1"></a>
+
 ## getAssociatedData
 
 ```TypeScript
@@ -4894,14 +4974,14 @@ Obtains the associated data of an application account based on the specified key
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4929,7 +5009,7 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, res
 });
 ```
 
-<a id="getassociateddata-1"></a>
+<a id="getassociateddata2"></a>
 
 ## getAssociatedData
 
@@ -4942,13 +5022,13 @@ Obtains data to be associated with an application account. This API uses a promi
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata-1) instead.
+> [getCustomData](#getcustomdata2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string)
+**Substitutes:** [getCustomData](#getcustomdata2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
@@ -4979,6 +5059,8 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => {
 });
 ```
 
+<a id="getauthenticatorcallback1"></a>
+
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -4990,14 +5072,14 @@ Obtains the authenticator callback for an authentication session. This API uses 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback)
+> [getAuthCallback](#getauthcallback1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
+**Substitutes:** [getAuthCallback](#getauthcallback1)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
 
@@ -5036,7 +5118,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthenticatorcallback-1"></a>
+<a id="getauthenticatorcallback2"></a>
 
 ## getAuthenticatorCallback
 
@@ -5049,13 +5131,13 @@ Obtains the authenticator callback for an authentication session. This API uses 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback-1) instead.
+> [getAuthCallback](#getauthcallback2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthCallback](#getauthcallback-1)(sessionId: string)
+**Substitutes:** [getAuthCallback](#getauthcallback2)(sessionId: string)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
@@ -5097,6 +5179,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getauthenticatorinfo1"></a>
+
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -5108,14 +5192,14 @@ Obtains the authenticator information of an application. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo)
+> [queryAuthenticatorInfo](#queryauthenticatorinfo1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo1)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
@@ -5143,7 +5227,7 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
   });
 ```
 
-<a id="getauthenticatorinfo-1"></a>
+<a id="getauthenticatorinfo2"></a>
 
 ## getAuthenticatorInfo
 
@@ -5156,13 +5240,13 @@ Obtains the authenticator information of an application. This API uses a promise
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo-1) instead.
+> [queryAuthenticatorInfo](#queryauthenticatorinfo2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo-1)(owner: string)
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo2)(owner: string)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
@@ -5193,25 +5277,27 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
 });
 ```
 
+<a id="getoauthlist1"></a>
+
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility1). This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist)
+> [getAuthList](#getauthlist1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
+**Substitutes:** [getAuthList](#getauthlist1)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -5239,7 +5325,7 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 });
 ```
 
-<a id="getoauthlist-1"></a>
+<a id="getoauthlist2"></a>
 
 ## getOAuthList
 
@@ -5247,18 +5333,18 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses a promise to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility1). This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist-1) instead.
+> [getAuthList](#getauthlist2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthList](#getauthlist-1)(name: string, authType: string)
+**Substitutes:** [getAuthList](#getauthlist2)(name: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
@@ -5289,6 +5375,8 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) =>
 });
 ```
 
+<a id="getoauthtoken1"></a>
+
 ## getOAuthToken
 
 ```TypeScript
@@ -5300,14 +5388,14 @@ Obtains the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken)
+> [getAuthToken](#getauthtoken1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getAuthToken](#getauthtoken1)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5337,7 +5425,7 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
   });
 ```
 
-<a id="getoauthtoken-1"></a>
+<a id="getoauthtoken2"></a>
 
 ## getOAuthToken
 
@@ -5350,14 +5438,14 @@ Obtains the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken-1)
+> [getAuthToken](#getauthtoken2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthToken](#getauthtoken-1)(name: string, owner: string, authType: string)
+**Substitutes:** [getAuthToken](#getauthtoken2)(name: string, owner: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
@@ -5389,6 +5477,8 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
 });
 ```
 
+<a id="setaccountcredential1"></a>
+
 ## setAccountCredential
 
 ```TypeScript
@@ -5400,14 +5490,14 @@ Sets a credential for an application account. This API uses an asynchronous call
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential)
+> [setCredential](#setcredential1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCredential](#setcredential1)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5436,7 +5526,7 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
-<a id="setaccountcredential-1"></a>
+<a id="setaccountcredential2"></a>
 
 ## setAccountCredential
 
@@ -5449,14 +5539,14 @@ Sets a credential for an application account. This API uses a promise to return 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential-1)
+> [setCredential](#setcredential2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCredential](#setcredential-1)(name: string, credentialType: string, credential: string)
+**Substitutes:** [setCredential](#setcredential2)(name: string, credentialType: string, credential: string)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
@@ -5488,6 +5578,8 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
+<a id="setaccountextrainfo1"></a>
+
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -5499,14 +5591,14 @@ Sets additional information for an application account. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5534,7 +5626,7 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) 
 });
 ```
 
-<a id="setaccountextrainfo-1"></a>
+<a id="setaccountextrainfo2"></a>
 
 ## setAccountExtraInfo
 
@@ -5547,14 +5639,14 @@ Sets additional information for an application account. This API uses a promise 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata-1)
+> [setCustomData](#setcustomdata2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
+**Substitutes:** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
@@ -5585,6 +5677,8 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => {
 });
 ```
 
+<a id="setappaccountsyncenable1"></a>
+
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -5596,14 +5690,14 @@ Sets data synchronization for an application account. This API uses an asynchron
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled)
+> [setDataSyncEnabled](#setdatasyncenabled1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled1)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5633,7 +5727,7 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError)
 });
 ```
 
-<a id="setappaccountsyncenable-1"></a>
+<a id="setappaccountsyncenable2"></a>
 
 ## setAppAccountSyncEnable
 
@@ -5646,14 +5740,14 @@ Sets data synchronization for an application account. This API uses a promise to
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled-1)
+> [setDataSyncEnabled](#setdatasyncenabled2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled-1)(name: string, isEnabled: boolean)
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled2)(name: string, isEnabled: boolean)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5686,6 +5780,8 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => {
 });
 ```
 
+<a id="setassociateddata1"></a>
+
 ## setAssociatedData
 
 ```TypeScript
@@ -5697,14 +5793,14 @@ Sets data to be associated with an application account. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5733,7 +5829,7 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessEr
 });
 ```
 
-<a id="setassociateddata-1"></a>
+<a id="setassociateddata2"></a>
 
 ## setAssociatedData
 
@@ -5746,14 +5842,14 @@ Sets data to be associated with an application account. This API uses a promise 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata-1)
+> [setCustomData](#setcustomdata2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
+**Substitutes:** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
@@ -5785,6 +5881,8 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => {
 });
 ```
 
+<a id="setoauthtoken1"></a>
+
 ## setOAuthToken
 
 ```TypeScript
@@ -5796,14 +5894,14 @@ Sets an authorization token of the specific authentication type for an applicati
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken)
+> [setAuthToken](#setauthtoken1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAuthToken](#setauthtoken1)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5832,7 +5930,7 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessE
 });
 ```
 
-<a id="setoauthtoken-1"></a>
+<a id="setoauthtoken2"></a>
 
 ## setOAuthToken
 
@@ -5845,14 +5943,14 @@ Sets an authorization token of the specific authentication type for an applicati
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken-1)
+> [setAuthToken](#setauthtoken2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthToken](#setauthtoken-1)(name: string, authType: string, token: string)
+**Substitutes:** [setAuthToken](#setauthtoken2)(name: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
@@ -5884,6 +5982,8 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
 });
 ```
 
+<a id="setoauthtokenvisibility1"></a>
+
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -5901,14 +6001,14 @@ Sets the visibility of an authorization token to an application. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility)
+> [setAuthTokenVisibility](#setauthtokenvisibility1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility1)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -5939,7 +6039,7 @@ appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.
   });
 ```
 
-<a id="setoauthtokenvisibility-1"></a>
+<a id="setoauthtokenvisibility2"></a>
 
 ## setOAuthTokenVisibility
 
@@ -5952,14 +6052,14 @@ Sets the visibility of an authorization token to an application. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility-1)
+> [setAuthTokenVisibility](#setauthtokenvisibility2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility-1)(name: string, authType: string, bundleName: string, isVisible: boolean)
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility2)(name: string, authType: string, bundleName: string, isVisible: boolean)
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 

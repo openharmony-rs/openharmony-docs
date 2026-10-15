@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="notifyformsvisible1"></a>
+
 ## notifyFormsVisible
 
 ```TypeScript
@@ -44,6 +46,7 @@ function notifyFormsVisible(formIds: Array<string>, isVisible: boolean, callback
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="notifyformsvisible-1"></a>
+
+<a id="notifyformsvisible2"></a>
 
 ## notifyFormsVisible
 
@@ -108,6 +113,7 @@ function notifyFormsVisible(formIds: Array<string>, isVisible: boolean): Promise
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +131,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

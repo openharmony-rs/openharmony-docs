@@ -11,7 +11,7 @@ Defines the style of a badge, including the text color, size, font weight, badge
 > When `borderWidth` is greater than 0 and the colors of `borderColor` and `badgeColor` are different, the badge is
 > drawn first and then the border. Because edge pixels are anti-aliased, semi-transparent pixels are generated, and
 > border lines in the `badgeColor` color appear at the four corners. To implement such a scenario, you are advised to
-> use the [Text](arkts-arkui-text-comp.md) component and set [outline](arkts-arkui-common-comp-commonmethod-c.md#outline) instead
+> use the [Text](arkts-arkui-text-comp.md) component and set [outline](arkts-arkui-common-comp-commonmethod-c.md#outline1) instead
 > of the Badge component.
 
 **Since:** 7

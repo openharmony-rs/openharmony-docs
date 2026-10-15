@@ -4,7 +4,7 @@
 declare type OnActionCallback = () => void
 ```
 
-Callback function when click on this menu item.
+Defines the callback for the tap event.
 
 **Since:** 26.0.0
 

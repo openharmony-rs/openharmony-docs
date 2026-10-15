@@ -34,7 +34,7 @@ action: Action
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-action: Action--><!--Device-KeyEvent-action: Action-End-->
 
@@ -52,7 +52,7 @@ altKey: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-altKey: boolean--><!--Device-KeyEvent-altKey: boolean-End-->
 
@@ -70,7 +70,7 @@ capsLock: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-capsLock: boolean--><!--Device-KeyEvent-capsLock: boolean-End-->
 
@@ -88,7 +88,7 @@ ctrlKey: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-ctrlKey: boolean--><!--Device-KeyEvent-ctrlKey: boolean-End-->
 
@@ -106,7 +106,7 @@ fnKey: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-fnKey: boolean--><!--Device-KeyEvent-fnKey: boolean-End-->
 
@@ -124,7 +124,7 @@ key: Key
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-key: Key--><!--Device-KeyEvent-key: Key-End-->
 
@@ -142,7 +142,7 @@ keys: Key[]
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-keys: Key[]--><!--Device-KeyEvent-keys: Key[]-End-->
 
@@ -160,7 +160,7 @@ logoKey: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-logoKey: boolean--><!--Device-KeyEvent-logoKey: boolean-End-->
 
@@ -178,7 +178,7 @@ numLock: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-numLock: boolean--><!--Device-KeyEvent-numLock: boolean-End-->
 
@@ -196,7 +196,7 @@ scrollLock: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-scrollLock: boolean--><!--Device-KeyEvent-scrollLock: boolean-End-->
 
@@ -214,7 +214,7 @@ shiftKey: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-shiftKey: boolean--><!--Device-KeyEvent-shiftKey: boolean-End-->
 
@@ -232,7 +232,7 @@ unicodeChar: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-KeyEvent-unicodeChar: int--><!--Device-KeyEvent-unicodeChar: int-End-->
 

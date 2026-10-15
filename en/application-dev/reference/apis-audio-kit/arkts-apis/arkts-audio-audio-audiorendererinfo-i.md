@@ -32,7 +32,7 @@ Set this parameter to **0**.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AudioRendererInfo-rendererFlags: int--><!--Device-AudioRendererInfo-rendererFlags: int-End-->
 
@@ -50,7 +50,7 @@ Audio stream usage.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AudioRendererInfo-usage: StreamUsage--><!--Device-AudioRendererInfo-usage: StreamUsage-End-->
 
@@ -86,7 +86,7 @@ Audio content type.
 
 **Deprecated since:** 10
 
-**Substitutes:** usage
+**Substitutes:** [usage](#usage)
 
 <!--Device-AudioRendererInfo-content?: ContentType--><!--Device-AudioRendererInfo-content?: ContentType-End-->
 

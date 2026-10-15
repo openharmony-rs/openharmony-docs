@@ -14,7 +14,7 @@ declare interface Rectangle
 > 
 > - 百分比相对于组件自身宽高进行计算。
 > 
-> - 当父组件设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
+> - 当父组件设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
 > 
 > - width和height不支持calc()的动态计算。
 

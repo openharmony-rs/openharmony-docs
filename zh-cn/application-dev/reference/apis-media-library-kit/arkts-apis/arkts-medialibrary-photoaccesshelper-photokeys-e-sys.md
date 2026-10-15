@@ -12,49 +12,53 @@ enum PhotoKeys
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## DATE_TRASHED
+## APPLINK
 
 ```TypeScript
-DATE_TRASHED = 'date_trashed'
+APPLINK = 'applink'
 ```
 
-删除日期（删除文件时间距1970年1月1日的秒数值）。
+I文件记忆链接的信息。
 
-**起始版本：** 10
+**起始版本：** 21
 
-<!--Device-PhotoKeys-DATE_TRASHED = 'date_trashed'--><!--Device-PhotoKeys-DATE_TRASHED = 'date_trashed'-End-->
+<!--Device-PhotoKeys-APPLINK = 'applink'--><!--Device-PhotoKeys-APPLINK = 'applink'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## HIDDEN
+## ASSET_SOURCE_TYPE
 
 ```TypeScript
-HIDDEN = 'hidden'
+ASSET_SOURCE_TYPE = 'file_source_type'
 ```
 
-文件的隐藏状态。
+Source type of assets, read only
 
-**起始版本：** 10
+**起始版本：** 22
 
-<!--Device-PhotoKeys-HIDDEN = 'hidden'--><!--Device-PhotoKeys-HIDDEN = 'hidden'-End-->
+<!--Device-PhotoKeys-ASSET_SOURCE_TYPE = 'file_source_type'--><!--Device-PhotoKeys-ASSET_SOURCE_TYPE = 'file_source_type'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## USER_COMMENT
+## ATTACHMENT_SIZE
 
 ```TypeScript
-USER_COMMENT = 'user_comment'
+ATTACHMENT_SIZE = 'attachment_size'
 ```
 
-用户注释信息。
+附件文件的大小。单位为字节（Byte）。
 
-**起始版本：** 10
+- 默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。
 
-<!--Device-PhotoKeys-USER_COMMENT = 'user_comment'--><!--Device-PhotoKeys-USER_COMMENT = 'user_comment'-End-->
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-ATTACHMENT_SIZE = 'attachment_size'--><!--Device-PhotoKeys-ATTACHMENT_SIZE = 'attachment_size'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -76,33 +80,103 @@ CAMERA_SHOT_KEY = 'camera_shot_key'
 
 **系统接口：** 此接口为系统接口。
 
-## DATE_YEAR
+## CE_AVAILABLE
 
 ```TypeScript
-DATE_YEAR = 'date_year'
+CE_AVAILABLE = 'ce_available'
 ```
 
-创建文件的年份。
+云增强任务标识。
 
-**起始版本：** 11
+**起始版本：** 13
 
-<!--Device-PhotoKeys-DATE_YEAR = 'date_year'--><!--Device-PhotoKeys-DATE_YEAR = 'date_year'-End-->
+<!--Device-PhotoKeys-CE_AVAILABLE = 'ce_available'--><!--Device-PhotoKeys-CE_AVAILABLE = 'ce_available'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## DATE_MONTH
+## CLOUD_ID
 
 ```TypeScript
-DATE_MONTH = 'date_month'
+CLOUD_ID = 'cloud_id'
 ```
 
-创建文件的月份。
+文件在云端的唯一标识。
 
-**起始版本：** 11
+**起始版本：** 22
 
-<!--Device-PhotoKeys-DATE_MONTH = 'date_month'--><!--Device-PhotoKeys-DATE_MONTH = 'date_month'-End-->
+<!--Device-PhotoKeys-CLOUD_ID = 'cloud_id'--><!--Device-PhotoKeys-CLOUD_ID = 'cloud_id'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## COMPOSITE_DISPLAY_STATUS
+
+```TypeScript
+COMPOSITE_DISPLAY_STATUS = 'composite_display_status'
+```
+
+复合图资产显示状态。
+
+**起始版本：** 23
+
+<!--Device-PhotoKeys-COMPOSITE_DISPLAY_STATUS = 'composite_display_status'--><!--Device-PhotoKeys-COMPOSITE_DISPLAY_STATUS = 'composite_display_status'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DATE_ADDED_DAY
+
+```TypeScript
+DATE_ADDED_DAY = 'date_added_day'
+```
+
+资产添加时间的日期。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-DATE_ADDED_DAY = 'date_added_day'--><!--Device-PhotoKeys-DATE_ADDED_DAY = 'date_added_day'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DATE_ADDED_MONTH
+
+```TypeScript
+DATE_ADDED_MONTH = 'date_added_month'
+```
+
+资产添加时间的月份。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-DATE_ADDED_MONTH = 'date_added_month'--><!--Device-PhotoKeys-DATE_ADDED_MONTH = 'date_added_month'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DATE_ADDED_YEAR
+
+```TypeScript
+DATE_ADDED_YEAR = 'date_added_year'
+```
+
+资产添加时间的年份。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-DATE_ADDED_YEAR = 'date_added_year'--><!--Device-PhotoKeys-DATE_ADDED_YEAR = 'date_added_year'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -124,17 +198,33 @@ DATE_DAY = 'date_day'
 
 **系统接口：** 此接口为系统接口。
 
-## PENDING
+## DATE_MONTH
 
 ```TypeScript
-PENDING = 'pending'
+DATE_MONTH = 'date_month'
 ```
 
-pending状态。
+创建文件的月份。
 
 **起始版本：** 11
 
-<!--Device-PhotoKeys-PENDING = 'pending'--><!--Device-PhotoKeys-PENDING = 'pending'-End-->
+<!--Device-PhotoKeys-DATE_MONTH = 'date_month'--><!--Device-PhotoKeys-DATE_MONTH = 'date_month'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DATE_TRASHED
+
+```TypeScript
+DATE_TRASHED = 'date_trashed'
+```
+
+删除日期（删除文件时间距1970年1月1日的秒数值）。
+
+**起始版本：** 10
+
+<!--Device-PhotoKeys-DATE_TRASHED = 'date_trashed'--><!--Device-PhotoKeys-DATE_TRASHED = 'date_trashed'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -158,81 +248,165 @@ DATE_TRASHED_MS = 'date_trashed_ms'
 
 **系统接口：** 此接口为系统接口。
 
-## MOVING_PHOTO_EFFECT_MODE
+## DATE_YEAR
 
 ```TypeScript
-MOVING_PHOTO_EFFECT_MODE = 'moving_photo_effect_mode'
+DATE_YEAR = 'date_year'
 ```
 
-动态照片效果模式。
+创建文件的年份。
 
-**起始版本：** 12
+**起始版本：** 11
 
-<!--Device-PhotoKeys-MOVING_PHOTO_EFFECT_MODE = 'moving_photo_effect_mode'--><!--Device-PhotoKeys-MOVING_PHOTO_EFFECT_MODE = 'moving_photo_effect_mode'-End-->
+<!--Device-PhotoKeys-DATE_YEAR = 'date_year'--><!--Device-PhotoKeys-DATE_YEAR = 'date_year'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## THUMBNAIL_READY
+## EDIT_DATA_EXIST
 
 ```TypeScript
-THUMBNAIL_READY = 'thumbnail_ready'
+EDIT_DATA_EXIST = 'edit_data_exist'
 ```
 
-缩略图生成标识。
+资产的编辑数据已存在。
 
-**起始版本：** 13
+**起始版本：** 22
 
-<!--Device-PhotoKeys-THUMBNAIL_READY = 'thumbnail_ready'--><!--Device-PhotoKeys-THUMBNAIL_READY = 'thumbnail_ready'-End-->
+<!--Device-PhotoKeys-EDIT_DATA_EXIST = 'edit_data_exist'--><!--Device-PhotoKeys-EDIT_DATA_EXIST = 'edit_data_exist'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## CE_AVAILABLE
+## EXIF_ROTATE
 
 ```TypeScript
-CE_AVAILABLE = 'ce_available'
+EXIF_ROTATE = 'exif_rotate'
 ```
 
-云增强任务标识。
+文件的旋转角度信息。
 
-**起始版本：** 13
+**起始版本：** 21
 
-<!--Device-PhotoKeys-CE_AVAILABLE = 'ce_available'--><!--Device-PhotoKeys-CE_AVAILABLE = 'ce_available'-End-->
+<!--Device-PhotoKeys-EXIF_ROTATE = 'exif_rotate'--><!--Device-PhotoKeys-EXIF_ROTATE = 'exif_rotate'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## SUPPORTED_WATERMARK_TYPE
+## EXIST_COMPATIBLE_DUPLICATE
 
 ```TypeScript
-SUPPORTED_WATERMARK_TYPE = 'supported_watermark_type'
+EXIST_COMPATIBLE_DUPLICATE = 'exist_compatible_duplicate'
 ```
 
-水印可编辑标识。
+兼容副本的状态信息。
 
-**起始版本：** 14
+**起始版本：** 22
 
-<!--Device-PhotoKeys-SUPPORTED_WATERMARK_TYPE = 'supported_watermark_type'--><!--Device-PhotoKeys-SUPPORTED_WATERMARK_TYPE = 'supported_watermark_type'-End-->
+<!--Device-PhotoKeys-EXIST_COMPATIBLE_DUPLICATE = 'exist_compatible_duplicate'--><!--Device-PhotoKeys-EXIST_COMPATIBLE_DUPLICATE = 'exist_compatible_duplicate'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## THUMBNAIL_VISIBLE
+## FILE_HIDDEN
 
 ```TypeScript
-THUMBNAIL_VISIBLE = 'thumbnail_visible'
+FILE_HIDDEN = 'file_hidden'
 ```
 
-缩略图可见标识。
+文件的隐藏状态。
 
-**起始版本：** 14
+**起始版本：** 26.0.0
 
-<!--Device-PhotoKeys-THUMBNAIL_VISIBLE = 'thumbnail_visible'--><!--Device-PhotoKeys-THUMBNAIL_VISIBLE = 'thumbnail_visible'-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-FILE_HIDDEN = 'file_hidden'--><!--Device-PhotoKeys-FILE_HIDDEN = 'file_hidden'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## FUSION_ASSET_STORAGE_PATH
+
+```TypeScript
+FUSION_ASSET_STORAGE_PATH = 'storage_path'
+```
+
+Storage path of fusion assets, read only
+
+**起始版本：** 22
+
+<!--Device-PhotoKeys-FUSION_ASSET_STORAGE_PATH = 'storage_path'--><!--Device-PhotoKeys-FUSION_ASSET_STORAGE_PATH = 'storage_path'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HAS_APPLINK
+
+```TypeScript
+HAS_APPLINK = 'has_applink'
+```
+
+文件记忆链接的状态信息。
+
+**起始版本：** 21
+
+<!--Device-PhotoKeys-HAS_APPLINK = 'has_applink'--><!--Device-PhotoKeys-HAS_APPLINK = 'has_applink'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HDR_MODE
+
+```TypeScript
+HDR_MODE = 'hdr_mode'
+```
+
+文件的HDR模式。
+
+**起始版本：** 22
+
+<!--Device-PhotoKeys-HDR_MODE = 'hdr_mode'--><!--Device-PhotoKeys-HDR_MODE = 'hdr_mode'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HIDDEN
+
+```TypeScript
+HIDDEN = 'hidden'
+```
+
+文件的隐藏状态。
+
+**起始版本：** 10
+
+<!--Device-PhotoKeys-HIDDEN = 'hidden'--><!--Device-PhotoKeys-HIDDEN = 'hidden'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HIDDEN_TIME
+
+```TypeScript
+HIDDEN_TIME = 'hidden_time'
+```
+
+文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-HIDDEN_TIME = 'hidden_time'--><!--Device-PhotoKeys-HIDDEN_TIME = 'hidden_time'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -270,283 +444,37 @@ IS_RECENT_SHOW = 'is_recent_show'
 
 **系统接口：** 此接口为系统接口。
 
-## SUM_SIZE
+## LCD_FILE_SIZE
 
 ```TypeScript
-SUM_SIZE = 'sum(size)'
+LCD_FILE_SIZE = 'lcd_file_size'
 ```
 
-文件大小总和。在fetchColumns中填入SUM_SIZE属性时，仅获取到第一个资产，并且属性中带有所有资产的总大小。
+LCD图大小。
 
-**起始版本：** 19
-
-<!--Device-PhotoKeys-SUM_SIZE = 'sum(size)'--><!--Device-PhotoKeys-SUM_SIZE = 'sum(size)'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## EXIF_ROTATE
-
-```TypeScript
-EXIF_ROTATE = 'exif_rotate'
-```
-
-文件的旋转角度信息。
-
-**起始版本：** 21
-
-<!--Device-PhotoKeys-EXIF_ROTATE = 'exif_rotate'--><!--Device-PhotoKeys-EXIF_ROTATE = 'exif_rotate'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HAS_APPLINK
-
-```TypeScript
-HAS_APPLINK = 'has_applink'
-```
-
-文件记忆链接的状态信息。
-
-**起始版本：** 21
-
-<!--Device-PhotoKeys-HAS_APPLINK = 'has_applink'--><!--Device-PhotoKeys-HAS_APPLINK = 'has_applink'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## APPLINK
-
-```TypeScript
-APPLINK = 'applink'
-```
-
-I文件记忆链接的信息。
-
-**起始版本：** 21
-
-<!--Device-PhotoKeys-APPLINK = 'applink'--><!--Device-PhotoKeys-APPLINK = 'applink'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HDR_MODE
-
-```TypeScript
-HDR_MODE = 'hdr_mode'
-```
-
-文件的HDR模式。
-
-**起始版本：** 22
-
-<!--Device-PhotoKeys-HDR_MODE = 'hdr_mode'--><!--Device-PhotoKeys-HDR_MODE = 'hdr_mode'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## COMPOSITE_DISPLAY_STATUS
-
-```TypeScript
-COMPOSITE_DISPLAY_STATUS = 'composite_display_status'
-```
-
-复合图资产显示状态。
-
-**起始版本：** 23
-
-<!--Device-PhotoKeys-COMPOSITE_DISPLAY_STATUS = 'composite_display_status'--><!--Device-PhotoKeys-COMPOSITE_DISPLAY_STATUS = 'composite_display_status'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## ASSET_SOURCE_TYPE
-
-```TypeScript
-ASSET_SOURCE_TYPE = 'file_source_type'
-```
-
-Source type of assets, read only
-
-**起始版本：** 22
-
-<!--Device-PhotoKeys-ASSET_SOURCE_TYPE = 'file_source_type'--><!--Device-PhotoKeys-ASSET_SOURCE_TYPE = 'file_source_type'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## FUSION_ASSET_STORAGE_PATH
-
-```TypeScript
-FUSION_ASSET_STORAGE_PATH = 'storage_path'
-```
-
-Storage path of fusion assets, read only
-
-**起始版本：** 22
-
-<!--Device-PhotoKeys-FUSION_ASSET_STORAGE_PATH = 'storage_path'--><!--Device-PhotoKeys-FUSION_ASSET_STORAGE_PATH = 'storage_path'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## CLOUD_ID
-
-```TypeScript
-CLOUD_ID = 'cloud_id'
-```
-
-文件在云端的唯一标识。
-
-**起始版本：** 22
-
-<!--Device-PhotoKeys-CLOUD_ID = 'cloud_id'--><!--Device-PhotoKeys-CLOUD_ID = 'cloud_id'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## EXIST_COMPATIBLE_DUPLICATE
-
-```TypeScript
-EXIST_COMPATIBLE_DUPLICATE = 'exist_compatible_duplicate'
-```
-
-兼容副本的状态信息。
-
-**起始版本：** 22
-
-<!--Device-PhotoKeys-EXIST_COMPATIBLE_DUPLICATE = 'exist_compatible_duplicate'--><!--Device-PhotoKeys-EXIST_COMPATIBLE_DUPLICATE = 'exist_compatible_duplicate'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## VIDEO_MODE
-
-```TypeScript
-VIDEO_MODE = 'video_mode'
-```
-
-视频文件的log模式。
-
-**起始版本：** 22
-
-<!--Device-PhotoKeys-VIDEO_MODE = 'video_mode'--><!--Device-PhotoKeys-VIDEO_MODE = 'video_mode'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## EDIT_DATA_EXIST
-
-```TypeScript
-EDIT_DATA_EXIST = 'edit_data_exist'
-```
-
-资产的编辑数据已存在。
-
-**起始版本：** 22
-
-<!--Device-PhotoKeys-EDIT_DATA_EXIST = 'edit_data_exist'--><!--Device-PhotoKeys-EDIT_DATA_EXIST = 'edit_data_exist'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## PACKAGE_NAME
-
-```TypeScript
-PACKAGE_NAME = 'package_name'
-```
-
-文件的包名信息。
-
-**起始版本：** 23
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoKeys-PACKAGE_NAME = 'package_name'--><!--Device-PhotoKeys-PACKAGE_NAME = 'package_name'-End-->
+<!--Device-PhotoKeys-LCD_FILE_SIZE = 'lcd_file_size'--><!--Device-PhotoKeys-LCD_FILE_SIZE = 'lcd_file_size'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## PHOTO_RISK_STATUS
+## LIVEPHOTO_4D_LATEST_PAIR
 
 ```TypeScript
-PHOTO_RISK_STATUS = 'photo_risk_status'
+LIVEPHOTO_4D_LATEST_PAIR = 'livephoto_4d_latest_pair'
 ```
 
-图片风控状态。
+记录着该3D动态照片的生成源照片的UniqueId
 
-**起始版本：** 23
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoKeys-PHOTO_RISK_STATUS = 'photo_risk_status'--><!--Device-PhotoKeys-PHOTO_RISK_STATUS = 'photo_risk_status'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## DATE_ADDED_YEAR
-
-```TypeScript
-DATE_ADDED_YEAR = 'date_added_year'
-```
-
-资产添加时间的年份。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoKeys-DATE_ADDED_YEAR = 'date_added_year'--><!--Device-PhotoKeys-DATE_ADDED_YEAR = 'date_added_year'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## DATE_ADDED_MONTH
-
-```TypeScript
-DATE_ADDED_MONTH = 'date_added_month'
-```
-
-资产添加时间的月份。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoKeys-DATE_ADDED_MONTH = 'date_added_month'--><!--Device-PhotoKeys-DATE_ADDED_MONTH = 'date_added_month'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## DATE_ADDED_DAY
-
-```TypeScript
-DATE_ADDED_DAY = 'date_added_day'
-```
-
-资产添加时间的日期。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoKeys-DATE_ADDED_DAY = 'date_added_day'--><!--Device-PhotoKeys-DATE_ADDED_DAY = 'date_added_day'-End-->
+<!--Device-PhotoKeys-LIVEPHOTO_4D_LATEST_PAIR = 'livephoto_4d_latest_pair'--><!--Device-PhotoKeys-LIVEPHOTO_4D_LATEST_PAIR = 'livephoto_4d_latest_pair'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -570,111 +498,177 @@ LIVEPHOTO_4D_STATUS = 'livephoto_4d_status'
 
 **系统接口：** 此接口为系统接口。
 
-## UNIQUE_ID
+## LOCAL_ENHANCEMENT_ABILITY
 
 ```TypeScript
-UNIQUE_ID = 'unique_id'
+LOCAL_ENHANCEMENT_ABILITY = 'local_enhancement_ability'
 ```
 
-资产的unique id
+端侧AI增强任务类型。
 
-**起始版本：** 24
+**起始版本：** 26.0.1
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-<!--Device-PhotoKeys-UNIQUE_ID = 'unique_id'--><!--Device-PhotoKeys-UNIQUE_ID = 'unique_id'-End-->
+<!--Device-PhotoKeys-LOCAL_ENHANCEMENT_ABILITY = 'local_enhancement_ability'--><!--Device-PhotoKeys-LOCAL_ENHANCEMENT_ABILITY = 'local_enhancement_ability'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## THUMB_STATUS
+## LOCAL_ENHANCEMENT_STATUS
 
 ```TypeScript
-THUMB_STATUS = 'thumb_status'
+LOCAL_ENHANCEMENT_STATUS = 'local_enhancement_status'
 ```
 
-缩略图状态标识。
+端侧AI增强任务状态。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-<!--Device-PhotoKeys-THUMB_STATUS = 'thumb_status'--><!--Device-PhotoKeys-THUMB_STATUS = 'thumb_status'-End-->
+<!--Device-PhotoKeys-LOCAL_ENHANCEMENT_STATUS = 'local_enhancement_status'--><!--Device-PhotoKeys-LOCAL_ENHANCEMENT_STATUS = 'local_enhancement_status'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## LCD_FILE_SIZE
+## MOVING_PHOTO_EFFECT_MODE
 
 ```TypeScript
-LCD_FILE_SIZE = 'lcd_file_size'
+MOVING_PHOTO_EFFECT_MODE = 'moving_photo_effect_mode'
 ```
 
-LCD图大小。
+动态照片效果模式。
 
-**起始版本：** 26.0.0
+**起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoKeys-LCD_FILE_SIZE = 'lcd_file_size'--><!--Device-PhotoKeys-LCD_FILE_SIZE = 'lcd_file_size'-End-->
+<!--Device-PhotoKeys-MOVING_PHOTO_EFFECT_MODE = 'moving_photo_effect_mode'--><!--Device-PhotoKeys-MOVING_PHOTO_EFFECT_MODE = 'moving_photo_effect_mode'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## FILE_HIDDEN
+## MUSIC_MASTER_MODE
 
 ```TypeScript
-FILE_HIDDEN = 'file_hidden'
+MUSIC_MASTER_MODE = 'music_master_mode'
 ```
 
-文件的隐藏状态。
+音乐大师的模式
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoKeys-FILE_HIDDEN = 'file_hidden'--><!--Device-PhotoKeys-FILE_HIDDEN = 'file_hidden'-End-->
+<!--Device-PhotoKeys-MUSIC_MASTER_MODE = 'music_master_mode'--><!--Device-PhotoKeys-MUSIC_MASTER_MODE = 'music_master_mode'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## HIDDEN_TIME
+## PACKAGE_NAME
 
 ```TypeScript
-HIDDEN_TIME = 'hidden_time'
+PACKAGE_NAME = 'package_name'
 ```
 
-文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。
+文件的包名信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoKeys-HIDDEN_TIME = 'hidden_time'--><!--Device-PhotoKeys-HIDDEN_TIME = 'hidden_time'-End-->
+<!--Device-PhotoKeys-PACKAGE_NAME = 'package_name'--><!--Device-PhotoKeys-PACKAGE_NAME = 'package_name'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## ATTACHMENT_SIZE
+## PENDING
 
 ```TypeScript
-ATTACHMENT_SIZE = 'attachment_size'
+PENDING = 'pending'
 ```
 
-附件文件的大小。单位为字节（Byte）。
+pending状态。
 
-- 默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。
+**起始版本：** 11
 
-**起始版本：** 26.0.0
+<!--Device-PhotoKeys-PENDING = 'pending'--><!--Device-PhotoKeys-PENDING = 'pending'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PHOTO_RISK_STATUS
+
+```TypeScript
+PHOTO_RISK_STATUS = 'photo_risk_status'
+```
+
+图片风控状态。
+
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoKeys-ATTACHMENT_SIZE = 'attachment_size'--><!--Device-PhotoKeys-ATTACHMENT_SIZE = 'attachment_size'-End-->
+<!--Device-PhotoKeys-PHOTO_RISK_STATUS = 'photo_risk_status'--><!--Device-PhotoKeys-PHOTO_RISK_STATUS = 'photo_risk_status'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PHOTO_VISIBILITY
+
+```TypeScript
+PHOTO_VISIBILITY = 'photo_visibility'
+```
+
+照片资产的照片可见性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-PHOTO_VISIBILITY = 'photo_visibility'--><!--Device-PhotoKeys-PHOTO_VISIBILITY = 'photo_visibility'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_DATE_DAY
+
+```TypeScript
+SHARE_DATE_DAY = 'share_date_day'
+```
+
+共享资产的共享日期。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-SHARE_DATE_DAY = 'share_date_day'--><!--Device-PhotoKeys-SHARE_DATE_DAY = 'share_date_day'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_GROUP
+
+```TypeScript
+SHARE_GROUP = 'share_group'
+```
+
+共享相册资产的分享批次
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoKeys-SHARE_GROUP = 'share_group'--><!--Device-PhotoKeys-SHARE_GROUP = 'share_group'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -734,127 +728,133 @@ SHARE_RISK_TYPE = 'share_risk_type'
 
 **系统接口：** 此接口为系统接口。
 
-## PHOTO_VISIBILITY
+## SUM_SIZE
 
 ```TypeScript
-PHOTO_VISIBILITY = 'photo_visibility'
+SUM_SIZE = 'sum(size)'
 ```
 
-照片资产的照片可见性。
+文件大小总和。在fetchColumns中填入SUM_SIZE属性时，仅获取到第一个资产，并且属性中带有所有资产的总大小。
 
-**起始版本：** 26.0.1
+**起始版本：** 19
+
+<!--Device-PhotoKeys-SUM_SIZE = 'sum(size)'--><!--Device-PhotoKeys-SUM_SIZE = 'sum(size)'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SUPPORTED_WATERMARK_TYPE
+
+```TypeScript
+SUPPORTED_WATERMARK_TYPE = 'supported_watermark_type'
+```
+
+水印可编辑标识。
+
+**起始版本：** 14
+
+<!--Device-PhotoKeys-SUPPORTED_WATERMARK_TYPE = 'supported_watermark_type'--><!--Device-PhotoKeys-SUPPORTED_WATERMARK_TYPE = 'supported_watermark_type'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## THUMB_STATUS
+
+```TypeScript
+THUMB_STATUS = 'thumb_status'
+```
+
+缩略图状态标识。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoKeys-PHOTO_VISIBILITY = 'photo_visibility'--><!--Device-PhotoKeys-PHOTO_VISIBILITY = 'photo_visibility'-End-->
+<!--Device-PhotoKeys-THUMB_STATUS = 'thumb_status'--><!--Device-PhotoKeys-THUMB_STATUS = 'thumb_status'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## SHARE_GROUP
+## THUMBNAIL_READY
 
 ```TypeScript
-SHARE_GROUP = 'share_group'
+THUMBNAIL_READY = 'thumbnail_ready'
 ```
 
-共享相册资产的分享批次
+缩略图生成标识。
 
-**起始版本：** 26.0.1
+**起始版本：** 13
+
+<!--Device-PhotoKeys-THUMBNAIL_READY = 'thumbnail_ready'--><!--Device-PhotoKeys-THUMBNAIL_READY = 'thumbnail_ready'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## THUMBNAIL_VISIBLE
+
+```TypeScript
+THUMBNAIL_VISIBLE = 'thumbnail_visible'
+```
+
+缩略图可见标识。
+
+**起始版本：** 14
+
+<!--Device-PhotoKeys-THUMBNAIL_VISIBLE = 'thumbnail_visible'--><!--Device-PhotoKeys-THUMBNAIL_VISIBLE = 'thumbnail_visible'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## UNIQUE_ID
+
+```TypeScript
+UNIQUE_ID = 'unique_id'
+```
+
+资产的unique id
+
+**起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoKeys-SHARE_GROUP = 'share_group'--><!--Device-PhotoKeys-SHARE_GROUP = 'share_group'-End-->
+<!--Device-PhotoKeys-UNIQUE_ID = 'unique_id'--><!--Device-PhotoKeys-UNIQUE_ID = 'unique_id'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## SHARE_DATE_DAY
+## USER_COMMENT
 
 ```TypeScript
-SHARE_DATE_DAY = 'share_date_day'
+USER_COMMENT = 'user_comment'
 ```
 
-共享资产的共享日期。
+用户注释信息。
 
-**起始版本：** 26.0.1
+**起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoKeys-SHARE_DATE_DAY = 'share_date_day'--><!--Device-PhotoKeys-SHARE_DATE_DAY = 'share_date_day'-End-->
+<!--Device-PhotoKeys-USER_COMMENT = 'user_comment'--><!--Device-PhotoKeys-USER_COMMENT = 'user_comment'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
 
-## MUSIC_MASTER_MODE
+## VIDEO_MODE
 
 ```TypeScript
-MUSIC_MASTER_MODE = 'music_master_mode'
+VIDEO_MODE = 'video_mode'
 ```
 
-音乐大师的模式
+视频文件的log模式。
 
-**起始版本：** 26.0.1
+**起始版本：** 22
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoKeys-MUSIC_MASTER_MODE = 'music_master_mode'--><!--Device-PhotoKeys-MUSIC_MASTER_MODE = 'music_master_mode'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## LIVEPHOTO_4D_LATEST_PAIR
-
-```TypeScript
-LIVEPHOTO_4D_LATEST_PAIR = 'livephoto_4d_latest_pair'
-```
-
-记录着该3D动态照片的生成源照片的UniqueId
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoKeys-LIVEPHOTO_4D_LATEST_PAIR = 'livephoto_4d_latest_pair'--><!--Device-PhotoKeys-LIVEPHOTO_4D_LATEST_PAIR = 'livephoto_4d_latest_pair'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## LOCAL_ENHANCEMENT_ABILITY
-
-```TypeScript
-LOCAL_ENHANCEMENT_ABILITY = 'local_enhancement_ability'
-```
-
-端侧AI增强任务类型。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-PhotoKeys-LOCAL_ENHANCEMENT_ABILITY = 'local_enhancement_ability'--><!--Device-PhotoKeys-LOCAL_ENHANCEMENT_ABILITY = 'local_enhancement_ability'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## LOCAL_ENHANCEMENT_STATUS
-
-```TypeScript
-LOCAL_ENHANCEMENT_STATUS = 'local_enhancement_status'
-```
-
-端侧AI增强任务状态。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-PhotoKeys-LOCAL_ENHANCEMENT_STATUS = 'local_enhancement_status'--><!--Device-PhotoKeys-LOCAL_ENHANCEMENT_STATUS = 'local_enhancement_status'-End-->
+<!--Device-PhotoKeys-VIDEO_MODE = 'video_mode'--><!--Device-PhotoKeys-VIDEO_MODE = 'video_mode'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

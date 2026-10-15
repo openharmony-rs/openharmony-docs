@@ -14,22 +14,6 @@ Enumerates the portrait effects.
 
 **System API:** This is a system API.
 
-## OFF
-
-```TypeScript
-OFF = 0
-```
-
-Disabled.
-
-**Since:** 10
-
-<!--Device-PortraitEffect-OFF = 0--><!--Device-PortraitEffect-OFF = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
 ## CIRCLES
 
 ```TypeScript
@@ -57,6 +41,22 @@ Heart-shaped.
 **Since:** 11
 
 <!--Device-PortraitEffect-HEART = 2--><!--Device-PortraitEffect-HEART = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## OFF
+
+```TypeScript
+OFF = 0
+```
+
+Disabled.
+
+**Since:** 10
+
+<!--Device-PortraitEffect-OFF = 0--><!--Device-PortraitEffect-OFF = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

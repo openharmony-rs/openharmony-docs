@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="createkvmanager1"></a>
+
 ## createKVManager
 
 ```TypeScript
@@ -17,7 +19,7 @@ function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVMana
 
 **废弃版本：** 9
 
-**替代接口：** createKVManager
+**替代接口：** [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md)
 
 <!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void--><!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void-End-->
 
@@ -56,7 +58,7 @@ try {
 ```
 
 
-<a id="createkvmanager-1"></a>
+<a id="createkvmanager2"></a>
 
 ## createKVManager
 
@@ -70,7 +72,7 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 
 **废弃版本：** 9
 
-**替代接口：** createKVManager
+**替代接口：** [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md)
 
 <!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>--><!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>-End-->
 

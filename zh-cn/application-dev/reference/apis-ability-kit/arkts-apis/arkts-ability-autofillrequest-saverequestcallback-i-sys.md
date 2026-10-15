@@ -36,9 +36,10 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -109,6 +110,8 @@ struct SavePage {
 }
 ```
 
+<!--DelEnd-->
+
 ## onSuccess
 
 ```TypeScript
@@ -131,9 +134,10 @@ onSuccess(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -203,3 +207,5 @@ struct SavePage {
   }
 }
 ```
+
+<!--DelEnd-->

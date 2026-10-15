@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="getnetworkaccesspolicy1"></a>
+
 ## getNetworkAccessPolicy
 
 ```TypeScript
@@ -47,6 +49,7 @@ Obtains whether the application with the specified UID can access the network. T
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,8 +65,10 @@ policy
   });
 ```
 
+<!--DelEnd-->
 
-<a id="getnetworkaccesspolicy-1"></a>
+
+<a id="getnetworkaccesspolicy2"></a>
 
 ## getNetworkAccessPolicy
 
@@ -98,6 +103,7 @@ Obtains the network access policy of all applications under the current user. Th
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -129,3 +135,5 @@ policy
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallapplicationinfo1"></a>
+
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -29,7 +31,7 @@ function getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array<A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | appFlags | number | 是 | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;ApplicationInfo&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<ApplicationInfo>；否则为错误对象。 |
 
 **错误码：**
 
@@ -39,6 +41,7 @@ function getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array<A
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getallapplicationinfo-1"></a>
+
+<a id="getallapplicationinfo2"></a>
 
 ## getAllApplicationInfo
 
@@ -90,7 +95,7 @@ function getAllApplicationInfo(appFlags: number,
 | --- | --- | --- | --- |
 | appFlags | number | 是 | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md)。 |
 | userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;ApplicationInfo&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<ApplicationInfo>；否则为错误对象。 |
 
 **错误码：**
 
@@ -101,6 +106,7 @@ function getAllApplicationInfo(appFlags: number,
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,8 +131,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getallapplicationinfo-2"></a>
+
+<a id="getallapplicationinfo3"></a>
 
 ## getAllApplicationInfo
 
@@ -157,7 +165,7 @@ function getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Promise对象，返回Array&lt;ApplicationInfo&gt;。 |
+| Promise&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Promise对象，返回Array<[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)>。 |
 
 **错误码：**
 
@@ -168,6 +176,7 @@ function getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -188,3 +197,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllApplicationInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

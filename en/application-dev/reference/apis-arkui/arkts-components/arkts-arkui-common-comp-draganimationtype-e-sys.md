@@ -20,7 +20,7 @@ Enumerates drag animation types.
 DEFAULT = 0
 ```
 
-Default drag animation.
+Uses the default drag animation, which applies to common drag scenarios that do not require a custom drop animation.
 
 **Since:** 26.0.0
 
@@ -38,7 +38,7 @@ Default drag animation.
 FOLLOW_HAND_MORPH = 1
 ```
 
-Follow-hand morph drag animation.
+Uses the follow-hand morph drag animation, which applies to scenarios where the dragged element morphs with the gesture and a custom drop animation is executed.
 
 **Since:** 26.0.0
 

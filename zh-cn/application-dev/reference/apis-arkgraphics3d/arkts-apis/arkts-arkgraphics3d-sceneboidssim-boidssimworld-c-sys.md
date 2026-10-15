@@ -42,6 +42,7 @@ addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 | param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组行为参数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,6 +69,8 @@ function manageBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 }
 ```
 
+<!--DelEnd-->
+
 ## addBoidsSimGravityComponent
 
 ```TypeScript
@@ -93,6 +96,7 @@ addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 | param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,6 +117,8 @@ function manageBoidsSimGravityComponent(world: BoidsSimWorld, fieldNode: Node): 
   world.removeBoidsSimGravityComponent(fieldNode);
 }
 ```
+
+<!--DelEnd-->
 
 ## addBoidsSimRepulsionComponent
 
@@ -139,6 +145,7 @@ addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 | param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -159,6 +166,8 @@ function manageBoidsSimRepulsionComponent(world: BoidsSimWorld, fieldNode: Node)
   world.removeBoidsSimRepulsionComponent(fieldNode);
 }
 ```
+
+<!--DelEnd-->
 
 ## getBoidsSimComponent
 
@@ -190,6 +199,7 @@ getBoidsSimComponent(node: Node): BoidsSimParameters | null
 | --- | --- |
 | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) &#124; null | 返回群组行为参数，若节点未挂载该组件则返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -202,6 +212,8 @@ function queryBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getBoidsSimGravityComponent
 
@@ -233,6 +245,7 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null
 | --- | --- |
 | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) &#124; null | 返回引力场参数，若节点未挂载该组件则返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -245,6 +258,8 @@ function queryBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getBoidsSimRepulsionComponent
 
@@ -276,6 +291,7 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null
 | --- | --- |
 | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) &#124; null | 返回斥力场参数，若节点未挂载该组件则返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -288,6 +304,8 @@ function queryBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## pause
 
@@ -307,6 +325,7 @@ pause(): void
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -316,6 +335,8 @@ function pauseBoidsSim(world: BoidsSimWorld): void {
   world.pause();
 }
 ```
+
+<!--DelEnd-->
 
 ## play
 
@@ -335,6 +356,7 @@ play(): void
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -344,6 +366,8 @@ function controlBoidsSimLifecycle(world: BoidsSimWorld): void {
   world.play();
 }
 ```
+
+<!--DelEnd-->
 
 ## removeBoidsSimComponent
 
@@ -369,6 +393,7 @@ removeBoidsSimComponent(node: Node): void
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -378,6 +403,8 @@ function removeBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
   world.removeBoidsSimComponent(node);
 }
 ```
+
+<!--DelEnd-->
 
 ## removeBoidsSimGravityComponent
 
@@ -403,6 +430,7 @@ removeBoidsSimGravityComponent(node: Node): void
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -412,6 +440,8 @@ function removeBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
   world.removeBoidsSimGravityComponent(node);
 }
 ```
+
+<!--DelEnd-->
 
 ## removeBoidsSimRepulsionComponent
 
@@ -437,6 +467,7 @@ removeBoidsSimRepulsionComponent(node: Node): void
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -446,6 +477,8 @@ function removeBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
   world.removeBoidsSimRepulsionComponent(node);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBoidsSimComponent
 
@@ -472,6 +505,7 @@ setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 | param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组行为参数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -487,6 +521,8 @@ function updateBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
   world.setBoidsSimComponent(node, newParams);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBoidsSimGravityComponent
 
@@ -513,6 +549,7 @@ setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 | param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -523,6 +560,8 @@ function updateBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
   world.setBoidsSimGravityComponent(node, newParams);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBoidsSimRepulsionComponent
 
@@ -549,6 +588,7 @@ setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 | param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -559,6 +599,8 @@ function updateBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
   world.setBoidsSimRepulsionComponent(node, newParams);
 }
 ```
+
+<!--DelEnd-->
 
 ## stop
 
@@ -578,6 +620,7 @@ stop(): void
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -587,6 +630,8 @@ function stopBoidsSim(world: BoidsSimWorld): void {
   world.stop();
 }
 ```
+
+<!--DelEnd-->
 
 ## isPlaying
 

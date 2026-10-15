@@ -12,7 +12,7 @@ import { pointer } from '@kit.InputKit';
 function setPointerVisibleSync(visible: boolean): void
 ```
 
-Sets whether the mouse pointer is visible in the current window. This API returns the result synchronously.
+Sets the cursor display/hidden state. This state applies to all windows of the current process. The actual display/hidden effect of the cursor on the screen is also affected by the render service process. This API is called synchronously.
 
 **Since:** 10
 
@@ -30,7 +30,7 @@ Sets whether the mouse pointer is visible in the current window. This API return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

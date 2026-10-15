@@ -6,6 +6,8 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
+<a id="getsignalinformation1"></a>
+
 ## getSignalInformation
 
 ```TypeScript
@@ -31,7 +33,7 @@ Obtains a list of signal strengths of the network with which the SIM card in the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -53,7 +55,7 @@ radio.getSignalInformation(slotId, (err: BusinessError, data: Array<radio.Signal
 ```
 
 
-<a id="getsignalinformation-1"></a>
+<a id="getsignalinformation2"></a>
 
 ## getSignalInformation
 
@@ -85,7 +87,7 @@ Obtains a list of signal strengths of the network with which the SIM card in the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |

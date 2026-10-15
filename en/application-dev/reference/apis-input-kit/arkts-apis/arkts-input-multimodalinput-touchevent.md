@@ -34,7 +34,7 @@ import { Action as KeyAction, SourceType, ToolType, Touch, TouchEvent, FixedMode
 | Name | Description |
 | --- | --- |
 | [Action](arkts-input-multimodalinput-touchevent-action-e.md) | Enumerates the touch event types. |
-| [SourceType](arkts-input-multimodalinput-touchevent-sourcetype-e.md) | Enumerates touch sources. Currently, only the touchscreen and touchpad are supported. |
+| [SourceType](arkts-input-multimodalinput-touchevent-sourcetype-e.md) | Device type of the touch input source. Currently the touchscreen, stylus, and touchpad are supported. |
 | [ToolType](arkts-input-multimodalinput-touchevent-tooltype-e.md) | Enumerates touch tool types. |
 
 <!--Del-->
@@ -42,5 +42,5 @@ import { Action as KeyAction, SourceType, ToolType, Touch, TouchEvent, FixedMode
 
 | Name | Description |
 | --- | --- |
-| [FixedMode](arkts-input-multimodalinput-touchevent-fixedmode-e-sys.md) | Enumerates coordinate correction modes. |
+| [FixedMode](arkts-input-multimodalinput-touchevent-fixedmode-e-sys.md) | Coordinate correction mode. The default value is NONE. |
 <!--DelEnd-->

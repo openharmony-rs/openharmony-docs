@@ -19,6 +19,20 @@ Enumerates the modes of capitalizing the first letter of a text. <br>
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
+## CHARACTERS
+
+```TypeScript
+CHARACTERS
+```
+
+Capitalize each letter.
+
+**Since:** 20
+
+<!--Device-CapitalizeMode-CHARACTERS--><!--Device-CapitalizeMode-CHARACTERS-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
 ## NONE
 
 ```TypeScript
@@ -58,19 +72,5 @@ Capitalize the first letter of each word.
 **Since:** 20
 
 <!--Device-CapitalizeMode-WORDS--><!--Device-CapitalizeMode-WORDS-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-## CHARACTERS
-
-```TypeScript
-CHARACTERS
-```
-
-Capitalize each letter.
-
-**Since:** 20
-
-<!--Device-CapitalizeMode-CHARACTERS--><!--Device-CapitalizeMode-CHARACTERS-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

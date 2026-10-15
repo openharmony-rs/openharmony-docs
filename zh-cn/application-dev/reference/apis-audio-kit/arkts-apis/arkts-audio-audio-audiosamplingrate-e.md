@@ -12,20 +12,6 @@ enum AudioSamplingRate
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## SAMPLE_RATE_8000
-
-```TypeScript
-SAMPLE_RATE_8000 = 8000
-```
-
-采样率为8000。单位为赫兹（Hz）。
-
-**起始版本：** 8
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000--><!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 ## SAMPLE_RATE_11025
 
 ```TypeScript
@@ -65,6 +51,34 @@ SAMPLE_RATE_16000 = 16000
 **起始版本：** 8
 
 <!--Device-AudioSamplingRate-SAMPLE_RATE_16000 = 16000--><!--Device-AudioSamplingRate-SAMPLE_RATE_16000 = 16000-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## SAMPLE_RATE_176400
+
+```TypeScript
+SAMPLE_RATE_176400 = 176400
+```
+
+采样率为176400。单位为赫兹（Hz）。
+
+**起始版本：** 12
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400--><!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## SAMPLE_RATE_192000
+
+```TypeScript
+SAMPLE_RATE_192000 = 192000
+```
+
+采样率为192000。单位为赫兹（Hz）。
+
+**起始版本：** 12
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000--><!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -110,6 +124,22 @@ SAMPLE_RATE_32000 = 32000
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+## SAMPLE_RATE_384000
+
+```TypeScript
+SAMPLE_RATE_384000 = 384000
+```
+
+采样率为384000。单位为赫兹（Hz）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000--><!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 ## SAMPLE_RATE_44100
 
 ```TypeScript
@@ -152,6 +182,20 @@ SAMPLE_RATE_64000 = 64000
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+## SAMPLE_RATE_8000
+
+```TypeScript
+SAMPLE_RATE_8000 = 8000
+```
+
+采样率为8000。单位为赫兹（Hz）。
+
+**起始版本：** 8
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000--><!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 ## SAMPLE_RATE_88200
 
 ```TypeScript
@@ -177,49 +221,5 @@ SAMPLE_RATE_96000 = 96000
 **起始版本：** 8
 
 <!--Device-AudioSamplingRate-SAMPLE_RATE_96000 = 96000--><!--Device-AudioSamplingRate-SAMPLE_RATE_96000 = 96000-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_RATE_176400
-
-```TypeScript
-SAMPLE_RATE_176400 = 176400
-```
-
-采样率为176400。单位为赫兹（Hz）。
-
-**起始版本：** 12
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400--><!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_RATE_192000
-
-```TypeScript
-SAMPLE_RATE_192000 = 192000
-```
-
-采样率为192000。单位为赫兹（Hz）。
-
-**起始版本：** 12
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000--><!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_RATE_384000
-
-```TypeScript
-SAMPLE_RATE_384000 = 384000
-```
-
-采样率为384000。单位为赫兹（Hz）。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000--><!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

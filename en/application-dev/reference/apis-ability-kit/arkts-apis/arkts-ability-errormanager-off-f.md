@@ -36,7 +36,7 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000003](../errorcode-ability.md#16000003-id-does-not-exist) | The specified ID does not exist. |
 
 **Examples**
@@ -98,7 +98,7 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000003](../errorcode-ability.md#16000003-id-does-not-exist) | The specified ID does not exist. |
 
 **Examples**
@@ -201,7 +201,7 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | If the caller is invalid. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
 
@@ -285,7 +285,7 @@ If the observer passed in is not in the observer queue registered via the **on**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | If the caller is invalid. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
 
@@ -347,7 +347,7 @@ If the observer passed in does not match the observer registered via the **on** 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
 
 **Examples**
@@ -399,7 +399,7 @@ If the observer passed in is not in the observer queue registered via the **on**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | If the caller is invalid. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
 

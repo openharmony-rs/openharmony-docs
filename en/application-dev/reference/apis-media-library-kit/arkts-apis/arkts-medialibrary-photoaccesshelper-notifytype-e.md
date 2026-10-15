@@ -26,34 +26,6 @@ A file asset or album is added.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## NOTIFY_UPDATE
-
-```TypeScript
-NOTIFY_UPDATE = 1
-```
-
-A file asset or album is updated.
-
-**Since:** 10
-
-<!--Device-NotifyType-NOTIFY_UPDATE = 1--><!--Device-NotifyType-NOTIFY_UPDATE = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## NOTIFY_REMOVE
-
-```TypeScript
-NOTIFY_REMOVE = 2
-```
-
-A file asset or album is removed.
-
-**Since:** 10
-
-<!--Device-NotifyType-NOTIFY_REMOVE = 2--><!--Device-NotifyType-NOTIFY_REMOVE = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## NOTIFY_ALBUM_ADD_ASSET
 
 ```TypeScript
@@ -79,5 +51,33 @@ A file asset is removed from the album.
 **Since:** 10
 
 <!--Device-NotifyType-NOTIFY_ALBUM_REMOVE_ASSET = 4--><!--Device-NotifyType-NOTIFY_ALBUM_REMOVE_ASSET = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## NOTIFY_REMOVE
+
+```TypeScript
+NOTIFY_REMOVE = 2
+```
+
+A file asset or album is removed.
+
+**Since:** 10
+
+<!--Device-NotifyType-NOTIFY_REMOVE = 2--><!--Device-NotifyType-NOTIFY_REMOVE = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## NOTIFY_UPDATE
+
+```TypeScript
+NOTIFY_UPDATE = 1
+```
+
+A file asset or album is updated.
+
+**Since:** 10
+
+<!--Device-NotifyType-NOTIFY_UPDATE = 1--><!--Device-NotifyType-NOTIFY_UPDATE = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

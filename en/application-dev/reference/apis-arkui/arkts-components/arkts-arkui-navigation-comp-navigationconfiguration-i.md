@@ -4,7 +4,7 @@
 declare interface NavigationConfiguration
 ```
 
-Navigation configuration options.
+Provides the navigation configuration item.
 
 **Since:** 26.0.0
 
@@ -66,19 +66,17 @@ When enabled, Navigation recycles invisible NavDestination page instance after r
 stackSizeLimit?: number
 ```
 
-Navigation page stack size limit.
+Maximum number of active page nodes in the navigation routing stack.
 
-Description:  
-- Limits to maximum number of active page nodes in Navigation page stack.  
-- When limit is exceeded, oldest page nodes are automatically destroyed  
-in FIFO (First-In-First-Out) order.  
-- NavPathInfo of pages is completely retained, supporting page recreation.  
-- value &lt;=0 No limit on page stack size (default value).  
-- value &gt;0 Limit stack size to specified value.
+Default value: **0**, indicating that the routing stack size is not limited.
+
+If the value is less than or equal to 0, the routing stack size is not limited.
+
+If the value is greater than 0, the number of active page nodes is limited to the specified value. If the number exceeds the limit, the system automatically destroys the page nodes that are pushed to the stack earlier in the first-in-first-out (FIFO) order. The **NavPathInfo** of the pages is completely retained in the routing stack, so that the pages can be recreated later.
 
 **Type:** number
 
-**Default:** 0 (nolimit)
+**Default:** 0 (no limit)
 
 **Since:** 26.0.0
 

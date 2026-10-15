@@ -6,6 +6,8 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getremainingdelaytime1"></a>
+
 ## getRemainingDelayTime
 
 ```TypeScript
@@ -31,9 +33,9 @@ function getRemainingDelayTime(requestId: number, callback: AsyncCallback<number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types; 3. Parameter verification failed. |
 | [9800001](../errorcode-backgroundTaskMgr.md#9800001-内存操作失败) | Memory operation failed. |
-| [9800002](../errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9800002](../errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9800003](../errorcode-backgroundTaskMgr.md#9800003-ipc通信失败) | Internal transaction failed. |
 | [9800004](../errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | System service operation failed. |
 | [9900001](../errorcode-backgroundTaskMgr.md#9900001-短时任务调用方信息校验失败) | Caller information verification failed for a transient task. |
@@ -57,7 +59,7 @@ backgroundTaskManager.getRemainingDelayTime(requestId, (error: BusinessError, re
 ```
 
 
-<a id="getremainingdelaytime-1"></a>
+<a id="getremainingdelaytime2"></a>
 
 ## getRemainingDelayTime
 
@@ -89,9 +91,9 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types; 3. Parameter verification failed. |
 | [9800001](../errorcode-backgroundTaskMgr.md#9800001-内存操作失败) | Memory operation failed. |
-| [9800002](../errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9800002](../errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9800003](../errorcode-backgroundTaskMgr.md#9800003-ipc通信失败) | Internal transaction failed. |
 | [9800004](../errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | System service operation failed. |
 | [9900001](../errorcode-backgroundTaskMgr.md#9900001-短时任务调用方信息校验失败) | Caller information verification failed for a transient task. |

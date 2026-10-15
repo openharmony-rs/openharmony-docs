@@ -10,10 +10,13 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 
 为保障系统安全性和稳定性，防止 FormExtensionAbility 滥用系统资源，系统对其能力进行管控， 不支持以下模块的引用：
 
-- [@ohos.ability.particleAbility (ParticleAbility模块)](../../apis-ability-kit/arkts-apis/arkts-ability-ability-particleability.md)  
- - [@ohos.multimedia.audio (音频管理)](../../apis-audio-kit/arkts-apis/arkts-audio-multimedia-audio.md)  
- - [@ohos.multimedia.camera (相机管理)](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md)  
- - [@ohos.multimedia.media (媒体服务)](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)  
+- [@ohos.ability.particleAbility (ParticleAbility模块)](../../apis-ability-kit/arkts-apis/arkts-ability-ability-particleability.md)
+
+- [@ohos.multimedia.audio (音频管理)](../../apis-audio-kit/arkts-apis/arkts-audio-multimedia-audio.md)
+
+- [@ohos.multimedia.camera (相机管理)](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md)
+
+- [@ohos.multimedia.media (媒体服务)](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)  
  -[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundtaskmanager.md)
 
 ## 导入模块

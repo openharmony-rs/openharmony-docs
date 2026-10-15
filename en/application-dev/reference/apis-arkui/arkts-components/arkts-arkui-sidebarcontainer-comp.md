@@ -1,9 +1,9 @@
 # SideBarContainer
 
-The **SideBarContainer** component contains a sidebar and content area as its child components. The sidebar is the first child component and can be shown or hidden as needed. The content area is the second child component.
+Provides a container that allows the sidebar to be shown and hidden. The sidebar and content area are defined by child components, with the first child component representing the sidebar and the second representing the content area. It supports sidebar navigation layout scenarios, where the sidebar can be shown or hidden through a control button or gesture, improving app navigation efficiency.
 
 > **NOTE:** 
-
+> 
 > The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate
 > their
 
@@ -57,7 +57,7 @@ Creates a sidebar container.
 
 | Name | Description |
 | --- | --- |
-| [SideBarContainerType](arkts-arkui-sidebarcontainer-comp-sidebarcontainertype-e.md) | Enumerates the types of sidebar containers. |
+| [SideBarContainerType](arkts-arkui-sidebarcontainer-comp-sidebarcontainertype-e.md) | Enumerates the sidebar types of the container. |
 | [SideBarPosition](arkts-arkui-sidebarcontainer-comp-sidebarposition-e.md) | Enumerates the positions of the sidebar. |
 
 ## Examples

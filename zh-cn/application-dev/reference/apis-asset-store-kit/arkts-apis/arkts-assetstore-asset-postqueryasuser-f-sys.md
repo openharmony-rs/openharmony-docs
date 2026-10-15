@@ -43,7 +43,7 @@ function postQueryAsUser(userId:number, handle: AssetMap): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
 | [24000010](../errorcode-asset.md#24000010-进程通信错误) | IPC failed. |
@@ -51,6 +51,7 @@ function postQueryAsUser(userId:number, handle: AssetMap): Promise<void>
 | [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
 | [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,3 +65,5 @@ asset.postQueryAsUser(userId, handle).then(() => {
   console.info(`Succeeded in post-querying Asset from user space.`);
 });
 ```
+
+<!--DelEnd-->

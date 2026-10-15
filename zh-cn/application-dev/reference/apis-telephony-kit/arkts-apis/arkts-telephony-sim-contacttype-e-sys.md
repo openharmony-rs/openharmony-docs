@@ -14,22 +14,6 @@ Indicates the contact types.
 
 **系统接口：** 此接口为系统接口。
 
-## GENERAL_CONTACT
-
-```TypeScript
-GENERAL_CONTACT = 1
-```
-
-Indicates the common contact number.
-
-**起始版本：** 8
-
-<!--Device-ContactType-GENERAL_CONTACT = 1--><!--Device-ContactType-GENERAL_CONTACT = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-**系统接口：** 此接口为系统接口。
-
 ## FIXED_DIALING
 
 ```TypeScript
@@ -41,6 +25,22 @@ Indicates the fixed dialing number.
 **起始版本：** 8
 
 <!--Device-ContactType-FIXED_DIALING = 2--><!--Device-ContactType-FIXED_DIALING = 2-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**系统接口：** 此接口为系统接口。
+
+## GENERAL_CONTACT
+
+```TypeScript
+GENERAL_CONTACT = 1
+```
+
+Indicates the common contact number.
+
+**起始版本：** 8
+
+<!--Device-ContactType-GENERAL_CONTACT = 1--><!--Device-ContactType-GENERAL_CONTACT = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

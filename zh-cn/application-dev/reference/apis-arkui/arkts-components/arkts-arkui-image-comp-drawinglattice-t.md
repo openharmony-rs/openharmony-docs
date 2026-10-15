@@ -6,6 +6,8 @@ declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.La
 
 将图片按照矩形网格进行划分。
 
+**类型：** import('../api/@ohos.graphics.drawing').default.Lattice
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.La
 <!--Device-unnamed-declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice--><!--Device-unnamed-declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.graphics.drawing').default.Lattice

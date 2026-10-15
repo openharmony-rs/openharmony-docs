@@ -16,26 +16,6 @@ Defines the type of a continuous task.
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## WIFI_INTERACTION
-
-```TypeScript
-WIFI_INTERACTION = 7
-```
-
-WLAN-related.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** WIFI_INTERACTION
-
-<!--Device-BackgroundMode-WIFI_INTERACTION = 7--><!--Device-BackgroundMode-WIFI_INTERACTION = 7-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-**System API:** This is a system API.
-
 ## VOIP
 
 ```TypeScript
@@ -48,9 +28,29 @@ Audio and video calls.
 
 **Deprecated since:** 9
 
-**Substitutes:** VOIP
+**Substitutes:** [VOIP](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-e.md#voip)
 
 <!--Device-BackgroundMode-VOIP = 8--><!--Device-BackgroundMode-VOIP = 8-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API:** This is a system API.
+
+## WIFI_INTERACTION
+
+```TypeScript
+WIFI_INTERACTION = 7
+```
+
+WLAN-related.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [WIFI_INTERACTION](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-e-sys.md#wifi_interaction)
+
+<!--Device-BackgroundMode-WIFI_INTERACTION = 7--><!--Device-BackgroundMode-WIFI_INTERACTION = 7-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

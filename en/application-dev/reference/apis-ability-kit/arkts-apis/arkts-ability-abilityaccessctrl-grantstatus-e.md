@@ -24,7 +24,7 @@ The permission is not granted.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-GrantStatus-PERMISSION_DENIED = -1--><!--Device-GrantStatus-PERMISSION_DENIED = -1-End-->
 
@@ -42,7 +42,7 @@ The permission is granted.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-GrantStatus-PERMISSION_GRANTED = 0--><!--Device-GrantStatus-PERMISSION_GRANTED = 0-End-->
 

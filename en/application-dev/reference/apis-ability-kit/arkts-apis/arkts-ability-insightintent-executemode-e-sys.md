@@ -4,7 +4,7 @@
 enum ExecuteMode
 ```
 
-Enumerates the intent execution modes. It specifies the mode of execution passed when the intent is triggered by a system entry point. The supported execution modes for each intent are defined during intent development.
+Intent execution mode. Indicates the mode passed when a system entry triggers intent execution. The execution modes supported by each intent are defined during intent development.
 
 **Since:** 11
 

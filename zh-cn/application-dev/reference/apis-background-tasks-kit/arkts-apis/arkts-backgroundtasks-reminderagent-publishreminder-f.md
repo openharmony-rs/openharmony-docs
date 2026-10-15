@@ -6,13 +6,15 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="publishreminder1"></a>
+
 ## publishReminder
 
 ```TypeScript
 function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<number>): void
 ```
 
-发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md)后才能调用。
+发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification1)后才能调用。
 
 **起始版本：** 7
 
@@ -50,7 +52,7 @@ reminderAgent.publishReminder(timer, (err: BusinessError, reminderId: number) =>
 ```
 
 
-<a id="publishreminder-1"></a>
+<a id="publishreminder2"></a>
 
 ## publishReminder
 
@@ -58,7 +60,7 @@ reminderAgent.publishReminder(timer, (err: BusinessError, reminderId: number) =>
 function publishReminder(reminderReq: ReminderRequest): Promise<number>
 ```
 
-发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md)后才能调用。
+发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification1)后才能调用。
 
 **起始版本：** 7
 

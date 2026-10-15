@@ -8,6 +8,8 @@ The reasons for destroying partner agent extension ability.
 
 @typedef { partnerAgent.PartnerAgentExtensionAbilityDestroyReason } PartnerAgentExtensionAbilityDestroyReason
 
+**Type:** [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](arkts-connectivity-partneragent-partneragentextensionabilitydestroyreason-e.md)
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ The reasons for destroying partner agent extension ability.
 <!--Device-unnamed-type PartnerAgentExtensionAbilityDestroyReason = partnerAgent.PartnerAgentExtensionAbilityDestroyReason--><!--Device-unnamed-type PartnerAgentExtensionAbilityDestroyReason = partnerAgent.PartnerAgentExtensionAbilityDestroyReason-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
-
-**Type:** [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](arkts-connectivity-partneragent-partneragentextensionabilitydestroyreason-e.md)

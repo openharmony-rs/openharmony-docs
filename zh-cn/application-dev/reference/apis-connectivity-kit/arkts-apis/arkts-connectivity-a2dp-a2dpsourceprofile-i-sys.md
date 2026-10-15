@@ -52,12 +52,14 @@ connect(deviceId: string): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="disableabsolutevolume1"></a>
 
 ## disableAbsoluteVolume
 
@@ -65,7 +67,7 @@ connect(deviceId: string): void
 disableAbsoluteVolume(deviceId: string): Promise<void>
 ```
 
-关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-1))，再关闭设备绝对音量能力。使用Promise异步回调。
+关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported2))，再关闭设备绝对音量能力。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -95,13 +97,13 @@ disableAbsoluteVolume(deviceId: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
-<a id="disableabsolutevolume-1"></a>
+<a id="disableabsolutevolume2"></a>
 
 ## disableAbsoluteVolume
 
@@ -109,7 +111,7 @@ disableAbsoluteVolume(deviceId: string): Promise<void>
 disableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-1))，再关闭设备绝对音量能力。使用Callback异步回调。
+关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported2))，再关闭设备绝对音量能力。使用Callback异步回调。
 
 **起始版本：** 11
 
@@ -134,7 +136,7 @@ disableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -177,7 +179,7 @@ disableAutoPlay(deviceId: string, duration: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -213,12 +215,14 @@ disconnect(deviceId: string): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="enableabsolutevolume1"></a>
 
 ## enableAbsoluteVolume
 
@@ -226,7 +230,7 @@ disconnect(deviceId: string): void
 enableAbsoluteVolume(deviceId: string): Promise<void>
 ```
 
-开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-1))，再开启设备绝对音量能力。使用Promise异步回调。
+开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported2))，再开启设备绝对音量能力。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -256,13 +260,13 @@ enableAbsoluteVolume(deviceId: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
-<a id="enableabsolutevolume-1"></a>
+<a id="enableabsolutevolume2"></a>
 
 ## enableAbsoluteVolume
 
@@ -270,7 +274,7 @@ enableAbsoluteVolume(deviceId: string): Promise<void>
 enableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-1))，再开启设备绝对音量能力。使用Callback异步回调。
+开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported2))，再开启设备绝对音量能力。使用Callback异步回调。
 
 **起始版本：** 11
 
@@ -295,7 +299,7 @@ enableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -337,7 +341,7 @@ enableAutoPlay(deviceId: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -379,7 +383,7 @@ getAutoPlayDisabledDuration(deviceId: string): Promise<number>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -421,7 +425,7 @@ getCurrentCodecInfo(deviceId: string): CodecInfo
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -469,13 +473,15 @@ getCurrentFullCodecInfo(deviceId: string): CodecInfoList[]
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 | 2902008 | Current device is not an active device. |
 
+<a id="isabsolutevolumeenabled1"></a>
+
 ## isAbsoluteVolumeEnabled
 
 ```TypeScript
 isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>
 ```
 
-获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-1))，再获取设备绝对音量能力是否开启。使用Promise异步回调。
+获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported2))，再获取设备绝对音量能力是否开启。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -505,13 +511,13 @@ isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
-<a id="isabsolutevolumeenabled-1"></a>
+<a id="isabsolutevolumeenabled2"></a>
 
 ## isAbsoluteVolumeEnabled
 
@@ -519,7 +525,7 @@ isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>
 isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback<boolean>): void
 ```
 
-获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-1))，再获取设备绝对音量能力是否开启。使用Callback异步回调。
+获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported2))，再获取设备绝对音量能力是否开启。使用Callback异步回调。
 
 **起始版本：** 11
 
@@ -544,11 +550,13 @@ isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback<boolean>): voi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="isabsolutevolumesupported1"></a>
 
 ## isAbsoluteVolumeSupported
 
@@ -586,13 +594,13 @@ isAbsoluteVolumeSupported(deviceId: string): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
-<a id="isabsolutevolumesupported-1"></a>
+<a id="isabsolutevolumesupported2"></a>
 
 ## isAbsoluteVolumeSupported
 
@@ -625,7 +633,7 @@ isAbsoluteVolumeSupported(deviceId: string, callback: AsyncCallback<boolean>): v
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -662,7 +670,7 @@ setCurrentCodecInfo(deviceId: string, codecInfo: CodecInfo): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |

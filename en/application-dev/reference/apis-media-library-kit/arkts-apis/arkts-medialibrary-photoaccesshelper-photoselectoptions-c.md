@@ -34,7 +34,7 @@ The complete button is located in the lower-right corner of the page. It is used
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-PhotoSelectOptions-completeButtonText?: CompleteButtonText--><!--Device-PhotoSelectOptions-completeButtonText?: CompleteButtonText-End-->
 
@@ -54,7 +54,7 @@ When the selection process is complete, the PhotoPicker returns **contextRecover
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PhotoSelectOptions-contextRecoveryInfo?: ContextRecoveryInfo--><!--Device-PhotoSelectOptions-contextRecoveryInfo?: ContextRecoveryInfo-End-->
 
@@ -74,7 +74,7 @@ Whether destruction with [Navigation](../../apis-arkui/arkts-components/arkts-ar
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-PhotoSelectOptions-isDestroyedWithNavigation?: boolean--><!--Device-PhotoSelectOptions-isDestroyedWithNavigation?: boolean-End-->
 
@@ -92,7 +92,7 @@ Whether the image can be edited. **true** if editable, **false** otherwise.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PhotoSelectOptions-isEditSupported?: boolean--><!--Device-PhotoSelectOptions-isEditSupported?: boolean-End-->
 
@@ -110,7 +110,7 @@ Whether to display the button for selecting the original image. **true** to disp
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhotoSelectOptions-isOriginalSupported?: boolean--><!--Device-PhotoSelectOptions-isOriginalSupported?: boolean-End-->
 
@@ -132,7 +132,7 @@ Note: This parameter takes effect only when [SingleSelectionMode](arkts-medialib
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-PhotoSelectOptions-isReturnToPhotoBrowserEnabled?: boolean--><!--Device-PhotoSelectOptions-isReturnToPhotoBrowserEnabled?: boolean-End-->
 
@@ -152,7 +152,7 @@ Support displaying index numbers.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-PhotoSelectOptions-isSelectionNumberVisible?: boolean--><!--Device-PhotoSelectOptions-isSelectionNumberVisible?: boolean-End-->
 
@@ -172,7 +172,7 @@ Support selection order adjustment.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-PhotoSelectOptions-isSelectionOrderAdjustable?: boolean--><!--Device-PhotoSelectOptions-isSelectionOrderAdjustable?: boolean-End-->
 
@@ -192,7 +192,7 @@ Maximum number of photos that can be selected. A maximum of 500 photos can be se
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-PhotoSelectOptions-maxPhotoSelectNumber?: int--><!--Device-PhotoSelectOptions-maxPhotoSelectNumber?: int-End-->
 
@@ -212,7 +212,7 @@ Maximum number of videos that can be selected. A maximum of 500 videos can be se
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-PhotoSelectOptions-maxVideoSelectNumber?: int--><!--Device-PhotoSelectOptions-maxVideoSelectNumber?: int-End-->
 
@@ -232,7 +232,7 @@ Picker color mode. Dark/light color mode of all content within the Picker. The d
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-PhotoSelectOptions-pickerColorMode?: PickerColorMode--><!--Device-PhotoSelectOptions-pickerColorMode?: PickerColorMode-End-->
 
@@ -250,7 +250,7 @@ Name of the child window.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhotoSelectOptions-subWindowName?: string--><!--Device-PhotoSelectOptions-subWindowName?: string-End-->
 

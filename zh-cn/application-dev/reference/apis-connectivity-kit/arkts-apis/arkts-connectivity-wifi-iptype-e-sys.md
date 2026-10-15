@@ -18,26 +18,6 @@ enum IpType
 
 **系统接口：** 此接口为系统接口。
 
-## STATIC
-
-```TypeScript
-STATIC
-```
-
-静态IP。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [STATIC](arkts-connectivity-wifimanager-iptype-e-sys.md#static)
-
-<!--Device-IpType-STATIC--><!--Device-IpType-STATIC-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
 ## DHCP
 
 ```TypeScript
@@ -53,6 +33,26 @@ DHCP
 **替代接口：** [DHCP](arkts-connectivity-wifimanager-iptype-e-sys.md#dhcp)
 
 <!--Device-IpType-DHCP--><!--Device-IpType-DHCP-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## STATIC
+
+```TypeScript
+STATIC
+```
+
+静态IP。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [STATIC](arkts-connectivity-wifimanager-iptype-e-sys.md#static)
+
+<!--Device-IpType-STATIC--><!--Device-IpType-STATIC-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

@@ -6,6 +6,8 @@ type RingtonePlayer = _RingtonePlayer
 
 Ringtone player object.
 
+**Type:** _RingtonePlayer
+
 **Since:** 10
 
 <!--Device-systemSoundManager-type RingtonePlayer = _RingtonePlayer--><!--Device-systemSoundManager-type RingtonePlayer = _RingtonePlayer-End-->
@@ -13,5 +15,3 @@ Ringtone player object.
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
-
-**Type:** _RingtonePlayer

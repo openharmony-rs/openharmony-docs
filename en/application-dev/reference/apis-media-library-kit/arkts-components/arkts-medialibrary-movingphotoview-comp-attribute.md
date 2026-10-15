@@ -6,9 +6,9 @@ declare class MovingPhotoViewAttribute extends CommonMethod<MovingPhotoViewAttri
 
 Defines the moving photo view attribute functions.
 
-@extends CommonMethod&lt;MovingPhotoViewAttribute&gt;
+@extends CommonMethod<MovingPhotoViewAttribute>
 
-**Inheritance/Implementation:** MovingPhotoViewAttribute extends CommonMethod<MovingPhotoViewAttribute>
+**Inheritance/Implementation:** MovingPhotoViewAttribute extends CommonMethod&lt;MovingPhotoViewAttribute&gt;
 
 **Since:** 12
 

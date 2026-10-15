@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="getrunningprocessinformation1"></a>
+
 ## getRunningProcessInformation
 
 ```TypeScript
@@ -26,7 +28,7 @@ Obtains information about the running processes of the current application. This
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.GET_RUNNING_INFO
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function getRunningProcessInformation(): Promise<Array<ProcessInformation>>--><!--Device-appManager-function getRunningProcessInformation(): Promise<Array<ProcessInformation>>-End-->
 
@@ -58,7 +60,7 @@ appManager.getRunningProcessInformation().then((data) => {
 ```
 
 
-<a id="getrunningprocessinformation-1"></a>
+<a id="getrunningprocessinformation2"></a>
 
 ## getRunningProcessInformation
 
@@ -80,7 +82,7 @@ Obtains information about the running processes of the current application. This
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.GET_RUNNING_INFO
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-appManager-function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
 
@@ -96,7 +98,7 @@ Obtains information about the running processes of the current application. This
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
 **Examples**

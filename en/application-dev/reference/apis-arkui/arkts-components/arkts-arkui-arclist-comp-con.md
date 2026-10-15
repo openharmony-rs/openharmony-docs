@@ -16,10 +16,6 @@ A child component used to display items in an arc list. It must be used in conju
 > 
 > - This component can be used on Phone, PC/2in1, Tablet, TV, and Wearable devices. In API version 22 and earlier,using it on Phone, PC/2in1, Tablet, and TV generates a compilation warning, but it can run normally.
 
-### Child Components
-
-This component can contain a single child component.
-
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
@@ -27,6 +23,10 @@ This component can contain a single child component.
 <!--Device-unnamed-export declare const ArcListItem: ArcListItemInterface--><!--Device-unnamed-export declare const ArcListItem: ArcListItemInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
+
+### Child Components
+
+This component can contain a single child component.
 
 ## ArcListItemInstance
 

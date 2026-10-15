@@ -6,6 +6,8 @@ declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.Rect
 
 Enumerates the rectangle height styles.
 
+**Type:** import('../api/@ohos.graphics.text').default.RectHeightStyle
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Enumerates the rectangle height styles.
 <!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle--><!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.text').default.RectHeightStyle

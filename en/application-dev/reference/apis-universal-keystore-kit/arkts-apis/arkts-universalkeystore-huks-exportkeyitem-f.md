@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="exportkeyitem1"></a>
+
 ## exportKeyItem
 
 ```TypeScript
@@ -44,8 +46,8 @@ Exports a key. This API uses an asynchronous callback to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed: call the exportKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>**Applicable version:** 26.0.0 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-feature-not-supported) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-missing-key-algorithm-parameter) | algorithm param is missing<br>**Applicable version:** 9 - 11 |
 | [12000003](../errorcode-huks.md#12000003-invalid-key-algorithm-parameter) | algorithm param is invalid<br>**Applicable version:** 9 - 11 |
@@ -81,7 +83,7 @@ huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
 ```
 
 
-<a id="exportkeyitem-1"></a>
+<a id="exportkeyitem2"></a>
 
 ## exportKeyItem
 
@@ -122,8 +124,8 @@ Exports a key. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed: call the exportKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>**Applicable version:** 26.0.0 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-feature-not-supported) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-missing-key-algorithm-parameter) | algorithm param is missing<br>**Applicable version:** 9 - 11 |
 | [12000003](../errorcode-huks.md#12000003-invalid-key-algorithm-parameter) | algorithm param is invalid<br>**Applicable version:** 9 - 11 |

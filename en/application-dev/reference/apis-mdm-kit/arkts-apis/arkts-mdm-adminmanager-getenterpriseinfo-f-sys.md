@@ -6,6 +6,8 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="getenterpriseinfo1"></a>
+
 ## getEnterpriseInfo
 
 ```TypeScript
@@ -37,8 +39,9 @@ Obtains the enterprise information of the device administrator application. This
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,8 +63,10 @@ adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getenterpriseinfo-1"></a>
+
+<a id="getenterpriseinfo2"></a>
 
 ## getEnterpriseInfo
 
@@ -99,8 +104,9 @@ Obtains the enterprise information of the device administrator application. This
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -120,3 +126,5 @@ adminManager.getEnterpriseInfo(wantTemp).then((result) => {
   console.error(`Failed to get enterprise info. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -43,3 +43,14 @@ function getDeviceAdsorbState(mechId: number): AdsorbState
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+console.info('Query the adsorb state');
+let adsorbState: mechanicManager.AdsorbState = mechanicManager.getDeviceAdsorbState(0);
+console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState}`);
+```
+
+<!--DelEnd-->

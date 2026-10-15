@@ -32,6 +32,8 @@ address: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionResult-address: string--><!--Device-ConnectionResult-address: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ mtu: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionResult-mtu: int--><!--Device-ConnectionResult-mtu: int-End-->
 
@@ -68,6 +72,8 @@ state: ConnectionState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionResult-state: ConnectionState--><!--Device-ConnectionResult-state: ConnectionState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -85,6 +91,8 @@ uuid: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionResult-uuid: string--><!--Device-ConnectionResult-uuid: string-End-->
 

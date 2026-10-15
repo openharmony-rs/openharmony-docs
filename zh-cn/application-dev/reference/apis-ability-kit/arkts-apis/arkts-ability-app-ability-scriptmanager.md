@@ -2,9 +2,14 @@
 
 本模块提供管理和组织脚本信息的能力，支持应用的ArkTS脚本执行结果上报。
 
-**起始版本：** 26.0.0
+> **说明：** 
+> 应用的ArkTS脚本开发参考[基于ArkTS脚本的应用Skill开发指导](../../../application-models/arkts-skill-development-guide.md)。
+> 应用的ArkTS脚本需要绑定一个Ability，在[module.json5](../../../quick-start/module-configuration-file.md)的
+> [skillProfiles标签](../../../quick-start/module-configuration-file.md#skillprofiles标签)中配置对应的Ability。
+> 脚本通过export default class导出，其入口函数的第一个参数固定为[ArkTSScriptInfo](arkts-ability-scriptmanager-arktsscriptinfo-i.md)，用于接收系统传递的脚本
+> 上下文信息，开发者可在第一个参数后添加自定义参数。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
 <!--Device-unnamed-declare namespace scriptManager--><!--Device-unnamed-declare namespace scriptManager-End-->
 
@@ -22,7 +27,7 @@ import { scriptManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [completeArkTSScriptInApp](arkts-ability-scriptmanager-completearktsscriptinapp-f.md) | 完成应用的ArkTS脚本执行，上报执行结果。使用Promise异步回调。 |
+| [completeArkTSScriptInApp](arkts-ability-scriptmanager-completearktsscriptinapp-f.md#completearktsscriptinapp) | 完成应用的ArkTS脚本执行，上报执行结果。使用Promise异步回调。 |
 
 ### 接口
 

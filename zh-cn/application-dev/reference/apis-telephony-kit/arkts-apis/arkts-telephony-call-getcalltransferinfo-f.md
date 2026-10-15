@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="getcalltransferinfo1"></a>
+
 ## getCallTransferInfo
 
 ```TypeScript

@@ -6,13 +6,13 @@ export interface NdefTag extends TagSession
 
 提供对已格式化为NDEF的NFC标签的数据和操作的访问，继承自TagSession。
 
-TagSession是所有NFC Tag技术类型的基类，提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
+TagSession是所有NFC Tag技术类型的基类，提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-i.md)。
 
 NdefTag获取方式请参考[nfc-tag开发指南](../../../connectivity/nfc/nfc-tag-access-guide.md)。
 
 以下是NdefTag的独有接口。
 
-**继承/实现关系：** NdefTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**继承/实现关系：** NdefTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **起始版本：** 9
 
@@ -32,7 +32,7 @@ canSetReadOnly(): boolean
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-canSetReadOnly(): boolean--><!--Device-NdefTag-canSetReadOnly(): boolean-End-->
 
@@ -71,7 +71,7 @@ getNdefMessage(): NdefMessage
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-getNdefMessage(): NdefMessage--><!--Device-NdefTag-getNdefMessage(): NdefMessage-End-->
 
@@ -103,7 +103,7 @@ getNdefTagType(): tag.NfcForumType
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-getNdefTagType(): tag.NfcForumType--><!--Device-NdefTag-getNdefTagType(): tag.NfcForumType-End-->
 
@@ -135,7 +135,7 @@ getNdefTagTypeString(type: tag.NfcForumType): string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-getNdefTagTypeString(type: tag.NfcForumType): string--><!--Device-NdefTag-getNdefTagTypeString(type: tag.NfcForumType): string-End-->
 
@@ -185,7 +185,7 @@ isNdefWritable(): boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-isNdefWritable(): boolean--><!--Device-NdefTag-isNdefWritable(): boolean-End-->
 
@@ -207,6 +207,8 @@ let isWritable : boolean = ndefTag.isNdefWritable();
 console.info("ndef isNdefWritable: " + isWritable);
 ```
 
+<a id="readndef1"></a>
+
 ## readNdef
 
 ```TypeScript
@@ -219,7 +221,7 @@ readNdef(): Promise<NdefMessage>
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-readNdef(): Promise<NdefMessage>--><!--Device-NdefTag-readNdef(): Promise<NdefMessage>-End-->
 
@@ -296,7 +298,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="readndef-1"></a>
+<a id="readndef2"></a>
 
 ## readNdef
 
@@ -310,7 +312,7 @@ readNdef(callback: AsyncCallback<NdefMessage>): void
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-readNdef(callback: AsyncCallback<NdefMessage>): void--><!--Device-NdefTag-readNdef(callback: AsyncCallback<NdefMessage>): void-End-->
 
@@ -335,6 +337,8 @@ readNdef(callback: AsyncCallback<NdefMessage>): void
 
 参见 [readNdef](#readndef)
 
+<a id="setreadonly1"></a>
+
 ## setReadOnly
 
 ```TypeScript
@@ -347,7 +351,7 @@ setReadOnly(): Promise<void>
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-setReadOnly(): Promise<void>--><!--Device-NdefTag-setReadOnly(): Promise<void>-End-->
 
@@ -397,7 +401,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="setreadonly-1"></a>
+<a id="setreadonly2"></a>
 
 ## setReadOnly
 
@@ -411,7 +415,7 @@ setReadOnly(callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-setReadOnly(callback: AsyncCallback<void>): void--><!--Device-NdefTag-setReadOnly(callback: AsyncCallback<void>): void-End-->
 
@@ -463,6 +467,8 @@ function nfcTechDemo() {
 }
 ```
 
+<a id="writendef1"></a>
+
 ## writeNdef
 
 ```TypeScript
@@ -475,7 +481,7 @@ writeNdef(msg: NdefMessage): Promise<void>
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-writeNdef(msg: NdefMessage): Promise<void>--><!--Device-NdefTag-writeNdef(msg: NdefMessage): Promise<void>-End-->
 
@@ -568,7 +574,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="writendef-1"></a>
+<a id="writendef2"></a>
 
 ## writeNdef
 
@@ -582,7 +588,7 @@ writeNdef(msg: NdefMessage, callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefTag-writeNdef(msg: NdefMessage, callback: AsyncCallback<void>): void--><!--Device-NdefTag-writeNdef(msg: NdefMessage, callback: AsyncCallback<void>): void-End-->
 

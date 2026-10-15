@@ -54,6 +54,7 @@ Adds a specified IP address and subnet mask for the VLAN specified by **vlanId**
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 | [2100400](../errorcode-net-connection.md#2100400-incorrect-nic-name-non-ethernet) | The input network interface name is incorrect. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -76,3 +77,5 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
   console.error(`Failed to add vlan ip. Code:${error.code}, message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -34,6 +34,7 @@ Enable semi - Wifi.
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 | [2501004](../errorcode-wifi.md#2501004-failed-to-close-the-service) | Operation failed because the service is being opened. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ import { wifiManager } from '@kit.ConnectivityKit';
     console.error("failed:" + JSON.stringify(error));
   }
 ```
+
+<!--DelEnd-->

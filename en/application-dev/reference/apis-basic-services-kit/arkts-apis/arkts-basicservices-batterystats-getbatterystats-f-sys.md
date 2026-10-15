@@ -6,6 +6,8 @@
 import { batteryStats } from '@kit.BasicServicesKit';
 ```
 
+<a id="getbatterystats1"></a>
+
 ## getBatteryStats
 
 ```TypeScript
@@ -35,6 +37,7 @@ Obtains the power consumption information list. This API uses a promise to retur
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-service-connection-failure) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -47,8 +50,10 @@ batteryStats.getBatteryStats()
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getbatterystats-1"></a>
+
+<a id="getbatterystats2"></a>
 
 ## getBatteryStats
 
@@ -77,9 +82,10 @@ Obtains the power consumption information list. This API uses an asynchronous ca
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-service-connection-failure) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -91,3 +97,5 @@ batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]
     }
 });
 ```
+
+<!--DelEnd-->

@@ -8,11 +8,6 @@
   - [DataAbilityResult](arkts-ability-ability-dataabilityresult-t.md)
   - [PacMap](arkts-ability-ability-pacmap-t.md)
   - [StartAbilityParameter](arkts-ability-ability-startabilityparameter-t.md)
-- [@ohos.ability.dataUriUtils(DataUriUtils Module)](arkts-ability-ability-datauriutils.md)
-  - [attachId](arkts-ability-datauriutils-attachid-depr-f.md)
-  - [deleteId](arkts-ability-datauriutils-deleteid-depr-f.md)
-  - [getId](arkts-ability-datauriutils-getid-depr-f.md)
-  - [updateId](arkts-ability-datauriutils-updateid-depr-f.md)
 - [@ohos.ability.errorCode(ErrorCode)](arkts-ability-ability-errorcode.md)
   - [ErrorCode](arkts-ability-ability-errorcode-errorcode-e.md)
 - [@ohos.ability.featureAbility(FeatureAbility Module)](arkts-ability-ability-featureability.md)
@@ -36,12 +31,12 @@
   - [ErrorCode](arkts-ability-featureability-errorcode-e.md)
 - [@ohos.ability.particleAbility(ParticleAbility Module)](arkts-ability-ability-particleability.md)
   - [acquireDataAbilityHelper](arkts-ability-particleability-acquiredataabilityhelper-f.md)
-  - [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md)
   - [connectAbility](arkts-ability-particleability-connectability-f.md)
   - [disconnectAbility](arkts-ability-particleability-disconnectability-f.md)
   - [startAbility](arkts-ability-particleability-startability-f.md)
-  - [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md)
   - [terminateSelf](arkts-ability-particleability-terminateself-f.md)
+  - [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md)
+  - [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md)
   - [ErrorCode](arkts-ability-particleability-errorcode-e.md)
 - [@ohos.ability.screenLockFileManager(Sensitive Data Access Management Under Lock Screen)](arkts-ability-ability-screenlockfilemanager.md)
   - [acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f.md)
@@ -57,12 +52,6 @@
   - [DataType](arkts-ability-screenlockfilemanager-datatype-e.md)
   - [KeyStatus](arkts-ability-screenlockfilemanager-keystatus-e.md)
   - [ReleaseStatus](arkts-ability-screenlockfilemanager-releasestatus-e.md)
-- [@ohos.ability.wantConstant(wantConstant)](arkts-ability-ability-wantconstant.md)
-  - [Action](arkts-ability-wantconstant-action-depr-e.md)
-  - [Entity](arkts-ability-wantconstant-entity-depr-e.md)
-  - [Flags](arkts-ability-wantconstant-flags-depr-e.md)
-  <!--Del-->
-  - [Flags(system api)](arkts-ability-wantconstant-flags-depr-e-sys.md)<!--DelEnd-->
 - [@ohos.abilityAccessCtrl(Application Access Control)](arkts-ability-abilityaccessctrl.md)
   - [abilityAccessCtrl](arkts-ability-abilityaccessctrl-n.md)
     - [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md)
@@ -81,8 +70,7 @@
     - [SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md)
   - [Context](arkts-ability-context-t.md)
   - [PermissionRequestResult](arkts-ability-permissionrequestresult-t.md)
-<!--Del-->
-- [@ohos.abilityToolAccessCtrl(This module provides the capabilities of tools access control)](arkts-ability-abilitytoolaccessctrl.md)<!--DelEnd-->
+- [@ohos.abilityToolAccessCtrl(This module provides the capabilities of tools access control)](arkts-ability-abilitytoolaccessctrl.md)
   <!--Del-->
   - [generateControlledDevicePackage(system api)](arkts-ability-abilitytoolaccessctrl-generatecontrolleddevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -93,6 +81,7 @@
   - [grantToolPermissionsByUser(system api)](arkts-ability-abilitytoolaccessctrl-granttoolpermissionsbyuser-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [requestToolPermissions(system api)](arkts-ability-abilitytoolaccessctrl-requesttoolpermissions-f-sys.md)<!--DelEnd-->
+  - [requestToolTicket](arkts-ability-abilitytoolaccessctrl-requesttoolticket-f.md)
   <!--Del-->
   - [updateRemoteGrantStatus(system api)](arkts-ability-abilitytoolaccessctrl-updateremotegrantstatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -101,10 +90,10 @@
   - [verifyControllerDevicePackage(system api)](arkts-ability-abilitytoolaccessctrl-verifycontrollerdevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AuthStatusInfo(system api)](arkts-ability-abilitytoolaccessctrl-authstatusinfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [CliCmdInfo(system api)](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i-sys.md)<!--DelEnd-->
+  - [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i.md)
   <!--Del-->
   - [OperationInfo(system api)](arkts-ability-abilitytoolaccessctrl-operationinfo-i-sys.md)<!--DelEnd-->
+  - [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)
   <!--Del-->
   - [PermissionInfo(system api)](arkts-ability-abilitytoolaccessctrl-permissioninfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -123,6 +112,8 @@
   - [RemoteUserAuthResults(system api)](arkts-ability-abilitytoolaccessctrl-remoteuserauthresults-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TicketInfo(system api)](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)<!--DelEnd-->
+  - [TicketOpions](arkts-ability-abilitytoolaccessctrl-ticketopions-i.md)
+  - [TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)
   <!--Del-->
   - [UserAuthResult(system api)](arkts-ability-abilitytoolaccessctrl-userauthresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -175,8 +166,6 @@
   <!--Del-->
   - [notifyDebugAssertResult(system api)](arkts-ability-abilitymanager-notifydebugassertresult-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [notifySaveAsResult(system api)](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md)<!--DelEnd-->
-  <!--Del-->
   - [off(system api)](arkts-ability-abilitymanager-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offPreloadedUIExtensionAbilityDestroyed(system api)](arkts-ability-abilitymanager-offpreloadeduiextensionabilitydestroyed-f-sys.md)<!--DelEnd-->
@@ -198,6 +187,8 @@
   <!--Del-->
   - [updateConfiguration(system api)](arkts-ability-abilitymanager-updateconfiguration-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [notifySaveAsResult(system api)](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [AtomicServiceStartupRule(system api)](arkts-ability-abilitymanager-atomicservicestartuprule-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AbilityForegroundStateObserver(system api)](arkts-ability-abilitymanager-abilityforegroundstateobserver-t-sys.md)<!--DelEnd-->
@@ -214,8 +205,6 @@
   - [UserStatus(system api)](arkts-ability-abilitymanager-userstatus-e-sys.md)<!--DelEnd-->
 - [@ohos.app.ability.AbilityStage(AbilityStage Component Manager)](arkts-ability-app-ability-abilitystage.md)
   - [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)
-- [@ohos.app.ability.ActionExtensionAbility(ExtensionAbility for Custom Actions)](arkts-ability-app-ability-actionextensionability.md)
-  - [ActionExtensionAbility](arkts-ability-app-ability-actionextensionability-actionextensionability-c.md)
 - [@ohos.app.ability.application(Application Utility Class)](arkts-ability-app-ability-application.md)
   <!--Del-->
   - [createBundleContext(system api)](arkts-ability-application-createbundlecontext-f-sys.md)<!--DelEnd-->
@@ -249,8 +238,6 @@
   - [getKeepAliveBundles(system api)](arkts-ability-appmanager-getkeepalivebundles-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getProcessMemoryByPid(system api)](arkts-ability-appmanager-getprocessmemorybypid-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getProcessRunningInfos(system api)](arkts-ability-appmanager-getprocessrunninginfos-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getRunningMultiAppInfo(system api)](arkts-ability-appmanager-getrunningmultiappinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -288,6 +275,8 @@
   - [setKeepAliveForBundle(system api)](arkts-ability-appmanager-setkeepaliveforbundle-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [terminateMission(system api)](arkts-ability-appmanager-terminatemission-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getProcessRunningInfos(system api)](arkts-ability-appmanager-getprocessrunninginfos-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AppStateFilter(system api)](arkts-ability-appmanager-appstatefilter-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -541,6 +530,9 @@
   - [ExecuteResult](arkts-ability-insightintent-executeresult-i.md)
   <!--Del-->
   - [ExecuteResult(system api)](arkts-ability-insightintent-executeresult-i-sys.md)<!--DelEnd-->
+  - [FileEntity](arkts-ability-insightintent-fileentity-i.md)
+  <!--Del-->
+  - [FileEntity(system api)](arkts-ability-insightintent-fileentity-i-sys.md)<!--DelEnd-->
   - [IntentEntity](arkts-ability-insightintent-intententity-i.md)
   - [IntentResult](arkts-ability-insightintent-intentresult-i.md)
   <!--Del-->
@@ -703,7 +695,7 @@
   <!--Del-->
   - [ArkTSScriptInfo(system api)](arkts-ability-scriptmanager-arktsscriptinfo-i-sys.md)<!--DelEnd-->
   - [ExecuteResult](arkts-ability-scriptmanager-executeresult-i.md)
-- [@ohos.app.ability.sendableContextManager](arkts-ability-app-ability-sendablecontextmanager.md)
+- [@ohos.app.ability.sendableContextManager(Sendable Context Management)](arkts-ability-app-ability-sendablecontextmanager.md)
   - [convertFromContext](arkts-ability-sendablecontextmanager-convertfromcontext-f.md)
   - [convertToAbilityStageContext](arkts-ability-sendablecontextmanager-converttoabilitystagecontext-f.md)
   - [convertToApplicationContext](arkts-ability-sendablecontextmanager-converttoapplicationcontext-f.md)
@@ -839,6 +831,12 @@
   - [updateAgentCard(system api)](arkts-ability-agentmanager-updateagentcard-f-sys.md)<!--DelEnd-->
 - [@ohos.app.agent.AgentUIExtensionAbility(UI-based Agent Extension Component)](arkts-ability-app-agent-agentuiextensionability.md)
   - [AgentUIExtensionAbility](arkts-ability-app-agent-agentuiextensionability-agentuiextensionability-c.md)
+- [@ohos.app.agent.taskManager](arkts-ability-app-agent-taskmanager.md)
+  <!--Del-->
+  - [finishTask(system api)](arkts-ability-taskmanager-finishtask-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [startTask(system api)](arkts-ability-taskmanager-starttask-f-sys.md)<!--DelEnd-->
+  - [TaskPriority](arkts-ability-taskmanager-taskpriority-e.md)
 - [@ohos.app.appstartup.StartupConfig(AppStartup Configuration)](arkts-ability-app-appstartup-startupconfig.md)
   - [StartupConfig](arkts-ability-app-appstartup-startupconfig-startupconfig-i.md)
 - [@ohos.app.appstartup.StartupConfigEntry(AppStartup Configuration Entry)](arkts-ability-app-appstartup-startupconfigentry.md)
@@ -868,13 +866,10 @@
   - [execCmd](arkts-ability-climanager-execcmd-f.md)
   <!--Del-->
   - [execTool(system api)](arkts-ability-climanager-exectool-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getToolInfoByName(system api)](arkts-ability-climanager-gettoolinfobyname-f-sys.md)<!--DelEnd-->
+  - [getToolInfoByName](arkts-ability-climanager-gettoolinfobyname-f.md)
   - [querySession](arkts-ability-climanager-querysession-f.md)
-  <!--Del-->
-  - [queryTools(system api)](arkts-ability-climanager-querytools-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [queryToolSummaries(system api)](arkts-ability-climanager-querytoolsummaries-f-sys.md)<!--DelEnd-->
+  - [queryTools](arkts-ability-climanager-querytools-f.md)
+  - [queryToolSummaries](arkts-ability-climanager-querytoolsummaries-f.md)
   <!--Del-->
   - [registerCliHook(system api)](arkts-ability-climanager-registerclihook-f-sys.md)<!--DelEnd-->
   - [sendMessage](arkts-ability-climanager-sendmessage-f.md)
@@ -904,59 +899,6 @@
   <!--Del-->
   - [InvokeResult(system api)](arkts-ability-functionmanager-invokeresult-i-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.application.abilityManager](arkts-ability-application-abilitymanager.md)<!--DelEnd-->
-  <!--Del-->
-  - [getAbilityRunningInfos(system api)](arkts-ability-abilitymanager-getabilityrunninginfos-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [updateConfiguration(system api)](arkts-ability-abilitymanager-updateconfiguration-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [AbilityState(system api)](arkts-ability-abilitymanager-abilitystate-depr-e-sys.md)<!--DelEnd-->
-- [@ohos.application.appManager(appManager)](arkts-ability-application-appmanager.md)
-  <!--Del-->
-  - [clearUpApplicationData(system api)](arkts-ability-appmanager-clearupapplicationdata-depr-f-sys.md)<!--DelEnd-->
-  - [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-depr-f.md)
-  <!--Del-->
-  - [getForegroundApplications(system api)](arkts-ability-appmanager-getforegroundapplications-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getProcessRunningInformation(system api)](arkts-ability-appmanager-getprocessrunninginformation-depr-f-sys.md)<!--DelEnd-->
-  - [getProcessRunningInfos](arkts-ability-appmanager-getprocessrunninginfos-depr-f.md)
-  - [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-depr-f.md)
-  - [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-depr-f.md)
-  <!--Del-->
-  - [killProcessesByBundleName(system api)](arkts-ability-appmanager-killprocessesbybundlename-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [killProcessWithAccount(system api)](arkts-ability-appmanager-killprocesswithaccount-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [registerApplicationStateObserver(system api)](arkts-ability-appmanager-registerapplicationstateobserver-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [unregisterApplicationStateObserver(system api)](arkts-ability-appmanager-unregisterapplicationstateobserver-depr-f-sys.md)<!--DelEnd-->
-- [@ohos.application.Configuration(Configuration)](arkts-ability-application-configuration.md)
-  - [Configuration](arkts-ability-application-configuration-configuration-depr-i.md)
-- [@ohos.application.ConfigurationConstant(ConfigurationConstant)](arkts-ability-application-configurationconstant.md)
-  - [ColorMode](arkts-ability-configurationconstant-colormode-depr-e.md)
-<!--Del-->
-- [@ohos.application.missionManager](arkts-ability-application-missionmanager.md)<!--DelEnd-->
-  <!--Del-->
-  - [clearAllMissions(system api)](arkts-ability-missionmanager-clearallmissions-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [clearMission(system api)](arkts-ability-missionmanager-clearmission-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getMissionInfo(system api)](arkts-ability-missionmanager-getmissioninfo-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getMissionInfos(system api)](arkts-ability-missionmanager-getmissioninfos-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getMissionSnapShot(system api)](arkts-ability-missionmanager-getmissionsnapshot-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [lockMission(system api)](arkts-ability-missionmanager-lockmission-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [moveMissionToFront(system api)](arkts-ability-missionmanager-movemissiontofront-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [registerMissionListener(system api)](arkts-ability-missionmanager-registermissionlistener-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [unlockMission(system api)](arkts-ability-missionmanager-unlockmission-depr-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [unregisterMissionListener(system api)](arkts-ability-missionmanager-unregistermissionlistener-depr-f-sys.md)<!--DelEnd-->
-<!--Del-->
 - [@ohos.application.uriPermissionManager(URI Permission Manager)](arkts-ability-application-uripermissionmanager.md)<!--DelEnd-->
   <!--Del-->
   - [grantUriPermission(system api)](arkts-ability-uripermissionmanager-granturipermission-f-sys.md)<!--DelEnd-->
@@ -966,55 +908,8 @@
   - [grantUriPermissionByKeyAsCaller(system api)](arkts-ability-uripermissionmanager-granturipermissionbykeyascaller-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [revokeUriPermission(system api)](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md)<!--DelEnd-->
-- [@ohos.application.Want(Want)](arkts-ability-application-want.md)
-  - [Want](arkts-ability-application-want-want-depr-c.md)
-- [@ohos.bundle](arkts-ability-bundle.md)
-  <!--Del-->
-  - [cleanBundleCacheFiles(system api)](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md)<!--DelEnd-->
-  - [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md)
-  - [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md)
-  - [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md)
-  - [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md)
-  - [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md)
-  - [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md)
-  <!--Del-->
-  - [getApplicationInfos(system api)](arkts-ability-bundle-getapplicationinfos-f-sys.md)<!--DelEnd-->
-  - [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md)
-  - [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md)
-  <!--Del-->
-  - [getBundleInfos(system api)](arkts-ability-bundle-getbundleinfos-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getBundleInstaller(system api)](arkts-ability-bundle-getbundleinstaller-f-sys.md)<!--DelEnd-->
-  - [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md)
-  - [getNameForUid](arkts-ability-bundle-getnameforuid-f.md)
-  <!--Del-->
-  - [getPermissionDef(system api)](arkts-ability-bundle-getpermissiondef-f-sys.md)<!--DelEnd-->
-  - [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md)
-  - [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md)
-  - [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md)
-  <!--Del-->
-  - [setAbilityEnabled(system api)](arkts-ability-bundle-setabilityenabled-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [setApplicationEnabled(system api)](arkts-ability-bundle-setapplicationenabled-f-sys.md)<!--DelEnd-->
-  - [BundleOptions](arkts-ability-bundle-bundleoptions-i.md)
-  - [AbilitySubType](arkts-ability-bundle-abilitysubtype-e.md)
-  - [AbilityType](arkts-ability-bundle-abilitytype-e.md)
-  - [BundleFlag](arkts-ability-bundle-bundleflag-e.md)
-  - [ColorMode](arkts-ability-bundle-colormode-e.md)
-  - [DisplayOrientation](arkts-ability-bundle-displayorientation-e.md)
-  - [GrantStatus](arkts-ability-bundle-grantstatus-e.md)
-  - [InstallErrorCode](arkts-ability-bundle-installerrorcode-e.md)
-  - [LaunchMode](arkts-ability-bundle-launchmode-e.md)
-  <!--Del-->
-  - [ModuleRemoveFlag(system api)](arkts-ability-bundle-moduleremoveflag-e-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [QueryShortCutFlag(system api)](arkts-ability-bundle-queryshortcutflag-e-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [ShortcutExistence(system api)](arkts-ability-bundle-shortcutexistence-e-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [SignatureCompareResult(system api)](arkts-ability-bundle-signaturecompareresult-e-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.bundle.appControl](arkts-ability-bundle-appcontrol.md)<!--DelEnd-->
+- [@ohos.bundle.appControl(appControl Module)](arkts-ability-bundle-appcontrol.md)<!--DelEnd-->
   <!--Del-->
   - [deleteDisposedStatus(system api)](arkts-ability-appcontrol-deletedisposedstatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1065,7 +960,7 @@
   - [queryAssociatedBundleNames(system api)](arkts-ability-appdomainverify-queryassociatedbundlenames-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [queryAssociatedDomains(system api)](arkts-ability-appdomainverify-queryassociateddomains-f-sys.md)<!--DelEnd-->
-- [@ohos.bundle.bundleManager](arkts-ability-bundle-bundlemanager.md)
+- [@ohos.bundle.bundleManager(Bundle Management Module)](arkts-ability-bundle-bundlemanager.md)
   - [canOpenLink](arkts-ability-bundlemanager-canopenlink-f.md)
   <!--Del-->
   - [cleanAllBundleCache(system api)](arkts-ability-bundlemanager-cleanallbundlecache-f-sys.md)<!--DelEnd-->
@@ -1080,8 +975,6 @@
   - [enableDynamicIcon(system api)](arkts-ability-bundlemanager-enabledynamicicon-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [filterBundleListByDeviceModeDistributionPolicies(system api)](arkts-ability-bundlemanager-filterbundlelistbydevicemodedistributionpolicies-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getAbilityIcon(system api)](arkts-ability-bundlemanager-getabilityicon-f-sys.md)<!--DelEnd-->
   - [getAbilityInfo](arkts-ability-bundlemanager-getabilityinfo-f.md)
   <!--Del-->
   - [getAbilityLabel(system api)](arkts-ability-bundlemanager-getabilitylabel-f-sys.md)<!--DelEnd-->
@@ -1227,6 +1120,8 @@
   - [switchUninstallState(system api)](arkts-ability-bundlemanager-switchuninstallstate-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [verifyAbc(system api)](arkts-ability-bundlemanager-verifyabc-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getAbilityIcon(system api)](arkts-ability-bundlemanager-getabilityicon-f-sys.md)<!--DelEnd-->
   - [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)
   - [AlternateIconInfo](arkts-ability-bundlemanager-alternateiconinfo-t.md)
   - [AppCloneIdentity](arkts-ability-bundlemanager-appcloneidentity-t.md)
@@ -1305,7 +1200,7 @@
   - [ProfileType(system api)](arkts-ability-bundlemanager-profiletype-e-sys.md)<!--DelEnd-->
   - [SupportWindowMode](arkts-ability-bundlemanager-supportwindowmode-e.md)
 <!--Del-->
-- [@ohos.bundle.bundleMonitor](arkts-ability-bundle-bundlemonitor.md)<!--DelEnd-->
+- [@ohos.bundle.bundleMonitor(bundleMonitor Module)](arkts-ability-bundle-bundlemonitor.md)<!--DelEnd-->
   <!--Del-->
   - [off(system api)](arkts-ability-bundlemonitor-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1315,7 +1210,7 @@
   <!--Del-->
   - [BundleChangedEvent(system api)](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.bundle.bundleResourceManager](arkts-ability-bundle-bundleresourcemanager.md)<!--DelEnd-->
+- [@ohos.bundle.bundleResourceManager(bundleResourceManager Module)](arkts-ability-bundle-bundleresourcemanager.md)<!--DelEnd-->
   <!--Del-->
   - [getAllBundleResourceInfo(system api)](arkts-ability-bundleresourcemanager-getallbundleresourceinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1336,7 +1231,7 @@
   - [LauncherAbilityResourceInfo(system api)](arkts-ability-bundleresourcemanager-launcherabilityresourceinfo-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ResourceFlag(system api)](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md)<!--DelEnd-->
-- [@ohos.bundle.defaultAppManager](arkts-ability-bundle-defaultappmanager.md)
+- [@ohos.bundle.defaultAppManager(Default Application Management)](arkts-ability-bundle-defaultappmanager.md)
   <!--Del-->
   - [getDefaultApplication(system api)](arkts-ability-defaultappmanager-getdefaultapplication-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1357,7 +1252,7 @@
   - [setDefaultApplicationSync(system api)](arkts-ability-defaultappmanager-setdefaultapplicationsync-f-sys.md)<!--DelEnd-->
   - [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)
 <!--Del-->
-- [@ohos.bundle.distributedBundleManager](arkts-ability-bundle-distributedbundlemanager.md)<!--DelEnd-->
+- [@ohos.bundle.distributedBundleManager(distributedBundleManager Module)](arkts-ability-bundle-distributedbundlemanager.md)<!--DelEnd-->
   <!--Del-->
   - [getRemoteAbilityInfo(system api)](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1367,7 +1262,7 @@
   <!--Del-->
   - [RemoteAbilityInfo(system api)](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.bundle.freeInstall](arkts-ability-bundle-freeinstall.md)<!--DelEnd-->
+- [@ohos.bundle.freeInstall(freeInstall Module)](arkts-ability-bundle-freeinstall.md)<!--DelEnd-->
   <!--Del-->
   - [getBundlePackInfo(system api)](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1405,23 +1300,7 @@
   <!--Del-->
   - [UpgradeFlag(system api)](arkts-ability-freeinstall-upgradeflag-e-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.bundle.innerBundleManager](arkts-ability-bundle-innerbundlemanager.md)<!--DelEnd-->
-  <!--Del-->
-  - [innerBundleManager(system api)](arkts-ability-innerbundlemanager-n.md)<!--DelEnd-->
-    <!--Del-->
-    - [getAllLauncherAbilityInfos(system api)](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [getLauncherAbilityInfos(system api)](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [getShortcutInfos(system api)](arkts-ability-innerbundlemanager-getshortcutinfos-f-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [off(system api)](arkts-ability-innerbundlemanager-off-f-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [on(system api)](arkts-ability-innerbundlemanager-on-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [BundleStatusCallback(system api)](arkts-ability-bundlestatuscallback-t-sys.md)<!--DelEnd-->
-<!--Del-->
-- [@ohos.bundle.installer](arkts-ability-bundle-installer.md)<!--DelEnd-->
+- [@ohos.bundle.installer(installer Module)](arkts-ability-bundle-installer.md)<!--DelEnd-->
   <!--Del-->
   - [getBundleInstaller(system api)](arkts-ability-installer-getbundleinstaller-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1446,7 +1325,7 @@
   - [UninstallParam(system api)](arkts-ability-installer-uninstallparam-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [VerifyCodeParam(system api)](arkts-ability-installer-verifycodeparam-i-sys.md)<!--DelEnd-->
-- [@ohos.bundle.launcherBundleManager](arkts-ability-bundle-launcherbundlemanager.md)
+- [@ohos.bundle.launcherBundleManager(launcherBundleManager Module)](arkts-ability-bundle-launcherbundlemanager.md)
   <!--Del-->
   - [getAllLauncherAbilityInfo(system api)](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1466,7 +1345,7 @@
   - [ParameterItem](arkts-ability-launcherbundlemanager-parameteritem-t.md)
   - [ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)
   - [ShortcutWant](arkts-ability-launcherbundlemanager-shortcutwant-t.md)
-- [@ohos.bundle.overlay](arkts-ability-bundle-overlay.md)
+- [@ohos.bundle.overlay(overlay Module)](arkts-ability-bundle-overlay.md)
   - [getOverlayModuleInfo](arkts-ability-overlay-getoverlaymoduleinfo-f.md)
   <!--Del-->
   - [getOverlayModuleInfoByBundleName(system api)](arkts-ability-overlay-getoverlaymoduleinfobybundlename-f-sys.md)<!--DelEnd-->
@@ -1477,13 +1356,13 @@
   <!--Del-->
   - [setOverlayEnabledByBundleName(system api)](arkts-ability-overlay-setoverlayenabledbybundlename-f-sys.md)<!--DelEnd-->
   - [OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)
-- [@ohos.bundle.pluginBundleManager](arkts-ability-bundle-pluginbundlemanager.md)
+- [@ohos.bundle.pluginBundleManager(pluginBundleManager module)](arkts-ability-bundle-pluginbundlemanager.md)
   - [getAllLocalPluginInfoForSelf](arkts-ability-pluginbundlemanager-getalllocalplugininfoforself-f.md)
   - [installLocalPlugin](arkts-ability-pluginbundlemanager-installlocalplugin-f.md)
   - [uninstallLocalPlugin](arkts-ability-pluginbundlemanager-uninstalllocalplugin-f.md)
   - [PluginBundleInfo](arkts-ability-pluginbundlemanager-pluginbundleinfo-t.md)
   - [PluginModuleInfo](arkts-ability-pluginbundlemanager-pluginmoduleinfo-t.md)
-- [@ohos.bundle.shortcutManager](arkts-ability-bundle-shortcutmanager.md)
+- [@ohos.bundle.shortcutManager(shortcutManager Module)](arkts-ability-bundle-shortcutmanager.md)
   <!--Del-->
   - [addDesktopShortcutInfo(system api)](arkts-ability-shortcutmanager-adddesktopshortcutinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1506,7 +1385,7 @@
   - [ParameterItem](arkts-ability-shortcutmanager-parameteritem-t.md)
   - [ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)
   - [ShortcutWant](arkts-ability-shortcutmanager-shortcutwant-t.md)
-- [@ohos.bundle.skillManager](arkts-ability-bundle-skillmanager.md)
+- [@ohos.bundle.skillManager(skillManager Module)](arkts-ability-bundle-skillmanager.md)
   - [getAllSkillInfos](arkts-ability-skillmanager-getallskillinfos-f.md)
   - [getSkillInfo](arkts-ability-skillmanager-getskillinfo-f.md)
   - [getSkillInfoForSelf](arkts-ability-skillmanager-getskillinfoforself-f.md)
@@ -1515,27 +1394,6 @@
   - [SkillInfo](arkts-ability-skillmanager-skillinfo-t.md)
   - [SkillType](arkts-ability-skillmanager-skilltype-t.md)
   - [SkillInfoFlag](arkts-ability-skillmanager-skillinfoflag-e.md)
-- [@ohos.continuation.continuationManager](arkts-ability-continuation-continuationmanager.md)
-  - [off](arkts-ability-continuationmanager-off-f.md)
-  - [on](arkts-ability-continuationmanager-on-f.md)
-  - [register](arkts-ability-continuationmanager-register-f.md)
-  - [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md)
-  - [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md)
-  - [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md)
-  - [unregister](arkts-ability-continuationmanager-unregister-f.md)
-  - [unregisterContinuation](arkts-ability-continuationmanager-unregistercontinuation-f.md)
-  - [updateConnectStatus](arkts-ability-continuationmanager-updateconnectstatus-f.md)
-  - [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md)
-  - [ContinuationExtraParams](arkts-ability-continuationmanager-continuationextraparams-t.md)
-  - [ContinuationResult](arkts-ability-continuationmanager-continuationresult-t.md)
-  - [ContinuationMode](arkts-ability-continuationmanager-continuationmode-e.md)
-  - [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md)
-<!--Del-->
-- [@ohos.distributedBundle](arkts-ability-distributedbundle.md)<!--DelEnd-->
-  <!--Del-->
-  - [getRemoteAbilityInfo(system api)](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getRemoteAbilityInfos(system api)](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md)<!--DelEnd-->
 <!--Del-->
 - [@ohos.distributedMissionManager](arkts-ability-distributedmissionmanager.md)<!--DelEnd-->
   <!--Del-->
@@ -1616,6 +1474,167 @@
   - [PermissionUsageFlag(system api)](arkts-ability-privacymanager-permissionusageflag-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [PermissionUsedType(system api)](arkts-ability-privacymanager-permissionusedtype-e-sys.md)<!--DelEnd-->
+- [lifecycle](arkts-ability-lifecycle.md)
+  - [LifecycleApp](arkts-ability-lifecycle-lifecycleapp-i.md)
+  <!--Del-->
+  - [LifecycleApp(system api)](arkts-ability-lifecycle-lifecycleapp-i-sys.md)<!--DelEnd-->
+  - [LifecycleData](arkts-ability-lifecycle-lifecycledata-i.md)
+  - [LifecycleForm](arkts-ability-lifecycle-lifecycleform-i.md)
+  <!--Del-->
+  - [LifecycleForm(system api)](arkts-ability-lifecycle-lifecycleform-i-sys.md)<!--DelEnd-->
+  - [LifecycleService](arkts-ability-lifecycle-lifecycleservice-i.md)
+- [permissions(Defines all permissions.)](arkts-ability-permissions.md)
+  - [Permissions](arkts-ability-permissions-t.md)
+- [@ohos.ability.dataUriUtils(DataUriUtils Module)](arkts-ability-ability-datauriutils.md)
+  - [attachId](arkts-ability-datauriutils-attachid-depr-f.md)
+  - [deleteId](arkts-ability-datauriutils-deleteid-depr-f.md)
+  - [getId](arkts-ability-datauriutils-getid-depr-f.md)
+  - [updateId](arkts-ability-datauriutils-updateid-depr-f.md)
+- [@ohos.ability.wantConstant(wantConstant)](arkts-ability-ability-wantconstant.md)
+  - [Action](arkts-ability-wantconstant-action-depr-e.md)
+  - [Entity](arkts-ability-wantconstant-entity-depr-e.md)
+  - [Flags](arkts-ability-wantconstant-flags-depr-e.md)
+  <!--Del-->
+  - [Flags(system api)](arkts-ability-wantconstant-flags-depr-e-sys.md)<!--DelEnd-->
+- [@ohos.app.ability.ActionExtensionAbility(ExtensionAbility for Custom Actions)](arkts-ability-app-ability-actionextensionability.md)
+  - [ActionExtensionAbility](arkts-ability-app-ability-actionextensionability-actionextensionability-c.md)
+<!--Del-->
+- [@ohos.application.abilityManager](arkts-ability-application-abilitymanager.md)<!--DelEnd-->
+  <!--Del-->
+  - [getAbilityRunningInfos(system api)](arkts-ability-abilitymanager-getabilityrunninginfos-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [updateConfiguration(system api)](arkts-ability-abilitymanager-updateconfiguration-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AbilityState(system api)](arkts-ability-abilitymanager-abilitystate-depr-e-sys.md)<!--DelEnd-->
+- [@ohos.application.appManager(appManager)](arkts-ability-application-appmanager.md)
+  <!--Del-->
+  - [clearUpApplicationData(system api)](arkts-ability-appmanager-clearupapplicationdata-depr-f-sys.md)<!--DelEnd-->
+  - [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-depr-f.md)
+  <!--Del-->
+  - [getForegroundApplications(system api)](arkts-ability-appmanager-getforegroundapplications-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getProcessRunningInformation(system api)](arkts-ability-appmanager-getprocessrunninginformation-depr-f-sys.md)<!--DelEnd-->
+  - [getProcessRunningInfos](arkts-ability-appmanager-getprocessrunninginfos-depr-f.md)
+  - [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-depr-f.md)
+  - [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-depr-f.md)
+  <!--Del-->
+  - [killProcessesByBundleName(system api)](arkts-ability-appmanager-killprocessesbybundlename-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [killProcessWithAccount(system api)](arkts-ability-appmanager-killprocesswithaccount-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [registerApplicationStateObserver(system api)](arkts-ability-appmanager-registerapplicationstateobserver-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterApplicationStateObserver(system api)](arkts-ability-appmanager-unregisterapplicationstateobserver-depr-f-sys.md)<!--DelEnd-->
+- [@ohos.application.Configuration(Configuration)](arkts-ability-application-configuration.md)
+  - [Configuration](arkts-ability-application-configuration-configuration-depr-i.md)
+- [@ohos.application.ConfigurationConstant(ConfigurationConstant)](arkts-ability-application-configurationconstant.md)
+  - [ColorMode](arkts-ability-configurationconstant-colormode-depr-e.md)
+<!--Del-->
+- [@ohos.application.missionManager](arkts-ability-application-missionmanager.md)<!--DelEnd-->
+  <!--Del-->
+  - [clearAllMissions(system api)](arkts-ability-missionmanager-clearallmissions-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [clearMission(system api)](arkts-ability-missionmanager-clearmission-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getMissionInfo(system api)](arkts-ability-missionmanager-getmissioninfo-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getMissionInfos(system api)](arkts-ability-missionmanager-getmissioninfos-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getMissionSnapShot(system api)](arkts-ability-missionmanager-getmissionsnapshot-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [lockMission(system api)](arkts-ability-missionmanager-lockmission-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [moveMissionToFront(system api)](arkts-ability-missionmanager-movemissiontofront-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [registerMissionListener(system api)](arkts-ability-missionmanager-registermissionlistener-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unlockMission(system api)](arkts-ability-missionmanager-unlockmission-depr-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterMissionListener(system api)](arkts-ability-missionmanager-unregistermissionlistener-depr-f-sys.md)<!--DelEnd-->
+- [@ohos.application.Want(Want)](arkts-ability-application-want.md)
+  - [Want](arkts-ability-application-want-want-depr-c.md)
+- [@ohos.bundle(Bundle Module)](arkts-ability-bundle.md)
+  <!--Del-->
+  - [cleanBundleCacheFiles(system api)](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md)<!--DelEnd-->
+  - [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md)
+  - [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md)
+  - [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md)
+  - [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md)
+  - [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md)
+  - [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md)
+  <!--Del-->
+  - [getApplicationInfos(system api)](arkts-ability-bundle-getapplicationinfos-f-sys.md)<!--DelEnd-->
+  - [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md)
+  - [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md)
+  <!--Del-->
+  - [getBundleInfos(system api)](arkts-ability-bundle-getbundleinfos-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBundleInstaller(system api)](arkts-ability-bundle-getbundleinstaller-f-sys.md)<!--DelEnd-->
+  - [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md)
+  - [getNameForUid](arkts-ability-bundle-getnameforuid-f.md)
+  <!--Del-->
+  - [getPermissionDef(system api)](arkts-ability-bundle-getpermissiondef-f-sys.md)<!--DelEnd-->
+  - [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md)
+  - [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md)
+  - [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md)
+  <!--Del-->
+  - [setAbilityEnabled(system api)](arkts-ability-bundle-setabilityenabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setApplicationEnabled(system api)](arkts-ability-bundle-setapplicationenabled-f-sys.md)<!--DelEnd-->
+  - [BundleOptions](arkts-ability-bundle-bundleoptions-i.md)
+  - [AbilitySubType](arkts-ability-bundle-abilitysubtype-e.md)
+  - [AbilityType](arkts-ability-bundle-abilitytype-e.md)
+  - [BundleFlag](arkts-ability-bundle-bundleflag-e.md)
+  - [ColorMode](arkts-ability-bundle-colormode-e.md)
+  - [DisplayOrientation](arkts-ability-bundle-displayorientation-e.md)
+  - [GrantStatus](arkts-ability-bundle-grantstatus-e.md)
+  - [InstallErrorCode](arkts-ability-bundle-installerrorcode-e.md)
+  - [LaunchMode](arkts-ability-bundle-launchmode-e.md)
+  <!--Del-->
+  - [ModuleRemoveFlag(system api)](arkts-ability-bundle-moduleremoveflag-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [QueryShortCutFlag(system api)](arkts-ability-bundle-queryshortcutflag-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ShortcutExistence(system api)](arkts-ability-bundle-shortcutexistence-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SignatureCompareResult(system api)](arkts-ability-bundle-signaturecompareresult-e-sys.md)<!--DelEnd-->
+<!--Del-->
+- [@ohos.bundle.innerBundleManager(innerBundleManager Module)](arkts-ability-bundle-innerbundlemanager.md)<!--DelEnd-->
+  <!--Del-->
+  - [innerBundleManager(system api)](arkts-ability-innerbundlemanager-n.md)<!--DelEnd-->
+    <!--Del-->
+    - [getAllLauncherAbilityInfos(system api)](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [getLauncherAbilityInfos(system api)](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [getShortcutInfos(system api)](arkts-ability-innerbundlemanager-getshortcutinfos-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [off(system api)](arkts-ability-innerbundlemanager-off-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [on(system api)](arkts-ability-innerbundlemanager-on-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BundleStatusCallback(system api)](arkts-ability-bundlestatuscallback-t-sys.md)<!--DelEnd-->
+- [@ohos.continuation.continuationManager](arkts-ability-continuation-continuationmanager.md)
+  - [off](arkts-ability-continuationmanager-off-f.md)
+  - [on](arkts-ability-continuationmanager-on-f.md)
+  - [register](arkts-ability-continuationmanager-register-f.md)
+  - [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md)
+  - [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md)
+  - [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md)
+  - [unregister](arkts-ability-continuationmanager-unregister-f.md)
+  - [unregisterContinuation](arkts-ability-continuationmanager-unregistercontinuation-f.md)
+  - [updateConnectStatus](arkts-ability-continuationmanager-updateconnectstatus-f.md)
+  - [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md)
+  - [ContinuationExtraParams](arkts-ability-continuationmanager-continuationextraparams-t.md)
+  - [ContinuationResult](arkts-ability-continuationmanager-continuationresult-t.md)
+  - [ContinuationMode](arkts-ability-continuationmanager-continuationmode-e.md)
+  - [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md)
+<!--Del-->
+- [@ohos.distributedBundle(Distributed Bundle Management)](arkts-ability-distributedbundle.md)<!--DelEnd-->
+  <!--Del-->
+  - [getRemoteAbilityInfo(system api)](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getRemoteAbilityInfos(system api)](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md)<!--DelEnd-->
 - [@ohos.wantAgent(WantAgent Module)](arkts-ability-wantagent.md)
   - [wantAgent](arkts-ability-wantagent-depr-n.md)
     - [cancel](arkts-ability-wantagent-cancel-depr-f.md)
@@ -1630,51 +1649,40 @@
     - [OperationType](arkts-ability-wantagent-operationtype-depr-e.md)
     - [WantAgentFlags](arkts-ability-wantagent-wantagentflags-depr-e.md)
   - [WantAgent](arkts-ability-wantagent-depr-t.md)
-- [@system.package](arkts-ability-system-package.md)
+- [@system.package(Bundle Management)](arkts-ability-system-package.md)
   - [Package](arkts-ability-system-package-package-c.md)
   - [CheckPackageHasInstalledOptions](arkts-ability-system-package-checkpackagehasinstalledoptions-i.md)
   - [CheckPackageHasInstalledResponse](arkts-ability-system-package-checkpackagehasinstalledresponse-i.md)
-- [lifecycle](arkts-ability-lifecycle.md)
-  - [LifecycleApp](arkts-ability-lifecycle-lifecycleapp-i.md)
-  <!--Del-->
-  - [LifecycleApp(system api)](arkts-ability-lifecycle-lifecycleapp-i-sys.md)<!--DelEnd-->
-  - [LifecycleData](arkts-ability-lifecycle-lifecycledata-i.md)
-  - [LifecycleForm](arkts-ability-lifecycle-lifecycleform-i.md)
-  <!--Del-->
-  - [LifecycleForm(system api)](arkts-ability-lifecycle-lifecycleform-i-sys.md)<!--DelEnd-->
-  - [LifecycleService](arkts-ability-lifecycle-lifecycleservice-i.md)
-- [permissions(Defines all permissions.)](arkts-ability-permissions.md)
-  - [Permissions](arkts-ability-permissions-t.md)
 - ability<!--arkts-abilitykit-ability-->
   - [abilityResult](arkts-ability-abilityresult.md)
-    - [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)
+    - [AbilityResult](arkts-ability-abilityresult-i.md)
   - [connectOptions](arkts-ability-connectoptions.md)
-    - [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md)
+    - [ConnectOptions](arkts-ability-connectoptions-i.md)
   - [dataAbilityHelper(DataAbilityHelper)](arkts-ability-dataabilityhelper.md)
-    - [DataAbilityHelper](arkts-ability-dataabilityhelper-dataabilityhelper-i.md)
+    - [DataAbilityHelper](arkts-ability-dataabilityhelper-i.md)
     - [PacMap](arkts-ability-dataabilityhelper-pacmap-i.md)
   - [dataAbilityOperation(DataAbilityOperation)](arkts-ability-dataabilityoperation.md)
-    - [DataAbilityOperation](arkts-ability-dataabilityoperation-dataabilityoperation-i.md)
+    - [DataAbilityOperation](arkts-ability-dataabilityoperation-i.md)
   - [dataAbilityResult(DataAbilityResult)](arkts-ability-dataabilityresult.md)
-    - [DataAbilityResult](arkts-ability-dataabilityresult-dataabilityresult-i.md)
+    - [DataAbilityResult](arkts-ability-dataabilityresult-i.md)
   - [startAbilityParameter](arkts-ability-startabilityparameter.md)
-    - [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md)
+    - [StartAbilityParameter](arkts-ability-startabilityparameter-i.md)
   - [want(Want)](arkts-ability-want.md)
-    - [Want](arkts-ability-want-want-i.md)
+    - [Want](arkts-ability-want-i.md)
 - app<!--arkts-abilitykit-app-->
   - [appVersionInfo(AppVersionInfo)](arkts-ability-appversioninfo.md)
-    - [AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)
+    - [AppVersionInfo](arkts-ability-appversioninfo-depr-i.md)
   - [context(Context Base Class of the FA Model)](arkts-ability-context.md)
-    - [Context](arkts-ability-context-context-depr-i.md)
+    - [Context](arkts-ability-context-depr-i.md)
     - [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md)
     - [PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)
   - [processInfo](arkts-ability-processinfo.md)
-    - [ProcessInfo](arkts-ability-processinfo-processinfo-depr-i.md)
+    - [ProcessInfo](arkts-ability-processinfo-depr-i.md)
 - application<!--arkts-abilitykit-application-->
   - [AbilityDelegator(AbilityDelegator)](arkts-ability-abilitydelegator.md)
     - [AbilityDelegator](arkts-ability-abilitydelegator-i.md)
   - [abilityDelegatorArgs(AbilityDelegatorArgs)](arkts-ability-abilitydelegatorargs.md)
-    - [AbilityDelegatorArgs](arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md)
+    - [AbilityDelegatorArgs](arkts-ability-abilitydelegatorargs-i.md)
   <!--Del-->
   - [AbilityFirstFrameStateData(Ability First Frame State Data)](arkts-ability-abilityfirstframestatedata.md)<!--DelEnd-->
     <!--Del-->
@@ -1896,8 +1904,6 @@
     - [ProcessData](arkts-ability-processdata-c.md)
   - [ProcessInformation(ProcessInformation)](arkts-ability-processinformation.md)
     - [ProcessInformation](arkts-ability-processinformation-i.md)
-  - [ProcessRunningInfo(ProcessRunningInfo)](arkts-ability-processrunninginfo.md)
-    - [ProcessRunningInfo](arkts-ability-processrunninginfo-i.md)
   <!--Del-->
   - [RunningAppClone(RunningAppClone)](arkts-ability-runningappclone.md)<!--DelEnd-->
     <!--Del-->
@@ -1917,7 +1923,7 @@
     <!--Del-->
     - [ServiceExtensionContext(system api)](arkts-ability-serviceextensioncontext-c-sys.md)<!--DelEnd-->
   - [shellCmdResult(ShellCmdResult)](arkts-ability-shellcmdresult.md)
-    - [ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)
+    - [ShellCmdResult](arkts-ability-shellcmdresult-i.md)
   - [ToolEventCallback(CLI Tool Event Callback)](arkts-ability-tooleventcallback.md)
     - [ToolEventCallback](arkts-ability-tooleventcallback-i.md)
     - [OnEventFn](arkts-ability-oneventfn-t.md)
@@ -1953,56 +1959,58 @@
     - [ViewData](arkts-ability-viewdata-i.md)
     <!--Del-->
     - [ViewData(system api)](arkts-ability-viewdata-i-sys.md)<!--DelEnd-->
+  - [ProcessRunningInfo(ProcessRunningInfo)](arkts-ability-processrunninginfo.md)
+    - [ProcessRunningInfo](arkts-ability-processrunninginfo-i.md)
 - bundle<!--arkts-abilitykit-bundle-->
-  - [abilityInfo](arkts-ability-abilityinfo.md)
-    - [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)
-  - [applicationInfo](arkts-ability-applicationinfo.md)
-    - [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
-  - [bundleInfo](arkts-ability-bundleinfo.md)
-    - [BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)
+  - [abilityInfo(AbilityInfo)](arkts-ability-abilityinfo.md)
+    - [AbilityInfo](arkts-ability-abilityinfo-depr-i.md)
+  - [applicationInfo(ApplicationInfo)](arkts-ability-applicationinfo.md)
+    - [ApplicationInfo](arkts-ability-applicationinfo-depr-i.md)
+  - [bundleInfo(BundleInfo)](arkts-ability-bundleinfo.md)
+    - [BundleInfo](arkts-ability-bundleinfo-depr-i.md)
     - [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)
     - [UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md)
   <!--Del-->
-  - [bundleInstaller](arkts-ability-bundleinstaller.md)<!--DelEnd-->
+  - [bundleInstaller(BundleInstaller)](arkts-ability-bundleinstaller.md)<!--DelEnd-->
     <!--Del-->
-    - [BundleInstaller(system api)](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)<!--DelEnd-->
+    - [BundleInstaller(system api)](arkts-ability-bundleinstaller-depr-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [InstallParam(system api)](arkts-ability-bundleinstaller-installparam-depr-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [InstallStatus(system api)](arkts-ability-bundleinstaller-installstatus-depr-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [bundleStatusCallback](arkts-ability-bundlestatuscallback.md)<!--DelEnd-->
+  - [bundleStatusCallback(BundleStatusCallback)](arkts-ability-bundlestatuscallback.md)<!--DelEnd-->
     <!--Del-->
-    - [BundleStatusCallback(system api)](arkts-ability-bundlestatuscallback-bundlestatuscallback-depr-i-sys.md)<!--DelEnd-->
-  - [customizeData](arkts-ability-customizedata.md)
-    - [CustomizeData](arkts-ability-customizedata-customizedata-depr-i.md)
-  - [elementName](arkts-ability-elementname.md)
-    - [ElementName](arkts-ability-elementname-elementname-depr-i.md)
-  - [hapModuleInfo](arkts-ability-hapmoduleinfo.md)
-    - [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
+    - [BundleStatusCallback(system api)](arkts-ability-bundlestatuscallback-depr-i-sys.md)<!--DelEnd-->
+  - [customizeData(CustomizeData)](arkts-ability-customizedata.md)
+    - [CustomizeData](arkts-ability-customizedata-depr-i.md)
+  - [elementName(ElementName)](arkts-ability-elementname.md)
+    - [ElementName](arkts-ability-elementname-depr-i.md)
+  - [hapModuleInfo(HapModuleInfo)](arkts-ability-hapmoduleinfo.md)
+    - [HapModuleInfo](arkts-ability-hapmoduleinfo-depr-i.md)
   <!--Del-->
-  - [launcherAbilityInfo](arkts-ability-launcherabilityinfo.md)<!--DelEnd-->
+  - [launcherAbilityInfo(LauncherAbilityInfo)](arkts-ability-launcherabilityinfo.md)<!--DelEnd-->
     <!--Del-->
-    - [LauncherAbilityInfo(system api)](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)<!--DelEnd-->
-  - [moduleInfo](arkts-ability-moduleinfo.md)
-    - [ModuleInfo](arkts-ability-moduleinfo-moduleinfo-depr-i.md)
+    - [LauncherAbilityInfo(system api)](arkts-ability-launcherabilityinfo-depr-i-sys.md)<!--DelEnd-->
+  - [moduleInfo(ModuleInfo)](arkts-ability-moduleinfo.md)
+    - [ModuleInfo](arkts-ability-moduleinfo-depr-i.md)
   <!--Del-->
-  - [PermissionDef](arkts-ability-permissiondef.md)<!--DelEnd-->
+  - [PermissionDef(PermissionDef)](arkts-ability-permissiondef.md)<!--DelEnd-->
     <!--Del-->
     - [PermissionDef(system api)](arkts-ability-permissiondef-depr-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [remoteAbilityInfo](arkts-ability-remoteabilityinfo.md)<!--DelEnd-->
+  - [remoteAbilityInfo(RemoteAbilityInfo)](arkts-ability-remoteabilityinfo.md)<!--DelEnd-->
     <!--Del-->
-    - [RemoteAbilityInfo(system api)](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)<!--DelEnd-->
-  - [shortcutInfo](arkts-ability-shortcutinfo.md)
-    - [ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)
+    - [RemoteAbilityInfo(system api)](arkts-ability-remoteabilityinfo-depr-i-sys.md)<!--DelEnd-->
+  - [shortcutInfo(ShortcutInfo)](arkts-ability-shortcutinfo.md)
+    - [ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md)
     <!--Del-->
     - [ShortcutWant(system api)](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)<!--DelEnd-->
 - bundleManager<!--arkts-abilitykit-bundlemanager-->
-  - [AbilityInfo](arkts-ability-abilityinfo.md)
+  - [AbilityInfo(AbilityInfo)](arkts-ability-abilityinfo.md)
     - [AbilityInfo](arkts-ability-abilityinfo-i.md)
     - [WindowSize](arkts-ability-abilityinfo-windowsize-i.md)
-  - [ApplicationInfo](arkts-ability-applicationinfo.md)
+  - [ApplicationInfo(ApplicationInfo)](arkts-ability-applicationinfo.md)
     - [ApplicationInfo](arkts-ability-applicationinfo-i.md)
     <!--Del-->
     - [ApplicationInfo(system api)](arkts-ability-applicationinfo-i-sys.md)<!--DelEnd-->
@@ -2011,12 +2019,12 @@
     <!--Del-->
     - [PreinstalledApplicationInfo(system api)](arkts-ability-applicationinfo-preinstalledapplicationinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [AppProvisionInfo](arkts-ability-appprovisioninfo.md)<!--DelEnd-->
+  - [AppProvisionInfo(AppProvisionInfo)](arkts-ability-appprovisioninfo.md)<!--DelEnd-->
     <!--Del-->
     - [AppProvisionInfo(system api)](arkts-ability-appprovisioninfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [Validity(system api)](arkts-ability-appprovisioninfo-validity-i-sys.md)<!--DelEnd-->
-  - [BundleInfo](arkts-ability-bundleinfo.md)
+  - [BundleInfo(BundleInfo)](arkts-ability-bundleinfo.md)
     - [AlternateIconInfo](arkts-ability-bundleinfo-alternateiconinfo-i.md)
     - [AppCloneIdentity](arkts-ability-bundleinfo-appcloneidentity-i.md)
     <!--Del-->
@@ -2036,7 +2044,7 @@
     - [SignatureInfo(system api)](arkts-ability-bundleinfo-signatureinfo-i-sys.md)<!--DelEnd-->
     - [UsedScene](arkts-ability-bundleinfo-usedscene-i.md)
   <!--Del-->
-  - [BundlePackInfo](arkts-ability-bundlepackinfo.md)<!--DelEnd-->
+  - [BundlePackInfo(BundlePackInfo)](arkts-ability-bundlepackinfo.md)<!--DelEnd-->
     <!--Del-->
     - [AbilityFormInfo(system api)](arkts-ability-bundlepackinfo-abilityforminfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
@@ -2060,18 +2068,18 @@
     <!--Del-->
     - [Version(system api)](arkts-ability-bundlepackinfo-version-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [BundleResourceInfo](arkts-ability-bundleresourceinfo.md)<!--DelEnd-->
+  - [BundleResourceInfo(BundleResourceInfo)](arkts-ability-bundleresourceinfo.md)<!--DelEnd-->
     <!--Del-->
     - [BundleResourceInfo(system api)](arkts-ability-bundleresourceinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [DispatchInfo](arkts-ability-dispatchinfo.md)<!--DelEnd-->
+  - [DispatchInfo(DispatchInfo)](arkts-ability-dispatchinfo.md)<!--DelEnd-->
     <!--Del-->
     - [DispatchInfo(system api)](arkts-ability-dispatchinfo-i-sys.md)<!--DelEnd-->
-  - [ElementName](arkts-ability-elementname.md)
+  - [ElementName(ElementName)](arkts-ability-elementname.md)
     - [ElementName](arkts-ability-elementname-i.md)
-  - [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo.md)
+  - [ExtensionAbilityInfo(ExtensionAbilityInfo)](arkts-ability-extensionabilityinfo.md)
     - [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)
-  - [HapModuleInfo](arkts-ability-hapmoduleinfo.md)
+  - [HapModuleInfo(HapModuleInfo)](arkts-ability-hapmoduleinfo.md)
     - [DataItem](arkts-ability-hapmoduleinfo-dataitem-i.md)
     - [Dependency](arkts-ability-hapmoduleinfo-dependency-i.md)
     - [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)
@@ -2079,44 +2087,44 @@
     - [HapModuleInfo(system api)](arkts-ability-hapmoduleinfo-i-sys.md)<!--DelEnd-->
     - [PreloadItem](arkts-ability-hapmoduleinfo-preloaditem-i.md)
     - [RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md)
-  - [LauncherAbilityInfo](arkts-ability-launcherabilityinfo.md)
+  - [LauncherAbilityInfo(LauncherAbilityInfo)](arkts-ability-launcherabilityinfo.md)
     - [LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)
   <!--Del-->
-  - [LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo.md)<!--DelEnd-->
+  - [LauncherAbilityResourceInfo(LauncherAbilityResourceInfo)](arkts-ability-launcherabilityresourceinfo.md)<!--DelEnd-->
     <!--Del-->
     - [LauncherAbilityResourceInfo(system api)](arkts-ability-launcherabilityresourceinfo-i-sys.md)<!--DelEnd-->
-  - [Metadata](arkts-ability-metadata.md)
+  - [Metadata(Metadata)](arkts-ability-metadata.md)
     - [Metadata](arkts-ability-metadata-i.md)
-  - [OverlayModuleInfo](arkts-ability-overlaymoduleinfo.md)
+  - [OverlayModuleInfo(OverlayModuleInfo)](arkts-ability-overlaymoduleinfo.md)
     - [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)
   <!--Del-->
-  - [PermissionDef](arkts-ability-permissiondef.md)<!--DelEnd-->
+  - [PermissionDef(PermissionDef)](arkts-ability-permissiondef.md)<!--DelEnd-->
     <!--Del-->
     - [PermissionDef(system api)](arkts-ability-permissiondef-i-sys.md)<!--DelEnd-->
-  - [PluginBundleInfo](arkts-ability-pluginbundleinfo.md)
+  - [PluginBundleInfo(PluginBundleInfo)](arkts-ability-pluginbundleinfo.md)
     - [PluginBundleInfo](arkts-ability-pluginbundleinfo-i.md)
     - [PluginModuleInfo](arkts-ability-pluginbundleinfo-pluginmoduleinfo-i.md)
   <!--Del-->
-  - [RecoverableApplicationInfo](arkts-ability-recoverableapplicationinfo.md)<!--DelEnd-->
+  - [RecoverableApplicationInfo(RecoverableApplicationInfo)](arkts-ability-recoverableapplicationinfo.md)<!--DelEnd-->
     <!--Del-->
     - [RecoverableApplicationInfo(system api)](arkts-ability-recoverableapplicationinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [RemoteAbilityInfo](arkts-ability-remoteabilityinfo.md)<!--DelEnd-->
+  - [RemoteAbilityInfo(RemoteAbilityInfo)](arkts-ability-remoteabilityinfo.md)<!--DelEnd-->
     <!--Del-->
     - [RemoteAbilityInfo(system api)](arkts-ability-remoteabilityinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [SharedBundleInfo](arkts-ability-sharedbundleinfo.md)<!--DelEnd-->
+  - [SharedBundleInfo(SharedBundleInfo)](arkts-ability-sharedbundleinfo.md)<!--DelEnd-->
     <!--Del-->
     - [SharedBundleInfo(system api)](arkts-ability-sharedbundleinfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [SharedModuleInfo(system api)](arkts-ability-sharedbundleinfo-sharedmoduleinfo-i-sys.md)<!--DelEnd-->
-  - [ShortcutInfo](arkts-ability-shortcutinfo.md)
+  - [ShortcutInfo(ShortcutInfo)](arkts-ability-shortcutinfo.md)
     - [ParameterItem](arkts-ability-shortcutinfo-parameteritem-i.md)
     - [ShortcutInfo](arkts-ability-shortcutinfo-i.md)
     - [ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-i.md)
     <!--Del-->
     - [ShortcutWant(system api)](arkts-ability-shortcutinfo-shortcutwant-i-sys.md)<!--DelEnd-->
-  - [Skill](arkts-ability-skill.md)
+  - [Skill(Skill)](arkts-ability-skill.md)
     - [Skill](arkts-ability-skill-i.md)
     - [SkillUri](arkts-ability-skill-skilluri-i.md)
   - [SkillInfo](arkts-ability-skillinfo.md)
@@ -2124,20 +2132,20 @@
     - [SkillType](arkts-ability-skillinfo-skilltype-e.md)
 - continuation<!--arkts-abilitykit-continuation-->
   - [continuationExtraParams](arkts-ability-continuationextraparams.md)
-    - [ContinuationExtraParams](arkts-ability-continuationextraparams-continuationextraparams-i.md)
+    - [ContinuationExtraParams](arkts-ability-continuationextraparams-i.md)
   - [continuationResult](arkts-ability-continuationresult.md)
-    - [ContinuationResult](arkts-ability-continuationresult-continuationresult-i.md)
+    - [ContinuationResult](arkts-ability-continuationresult-i.md)
 - security<!--arkts-abilitykit-security-->
   - [PermissionRequestResult](arkts-ability-permissionrequestresult.md)
     - [PermissionRequestResult](arkts-ability-permissionrequestresult-c.md)
 - wantAgent<!--arkts-abilitykit-wantagent-->
   - [triggerInfo(TriggerInfo)](arkts-ability-triggerinfo.md)
-    - [TriggerInfo](arkts-ability-triggerinfo-triggerinfo-i.md)
+    - [TriggerInfo](arkts-ability-triggerinfo-i.md)
     <!--Del-->
-    - [TriggerInfo(system api)](arkts-ability-triggerinfo-triggerinfo-i-sys.md)<!--DelEnd-->
+    - [TriggerInfo(system api)](arkts-ability-triggerinfo-i-sys.md)<!--DelEnd-->
   - [wantAgentInfo(WantAgentInfo)](arkts-ability-wantagentinfo.md)
     <!--Del-->
     - [LocalWantAgentInfo(system api)](arkts-ability-wantagentinfo-localwantagentinfo-i-sys.md)<!--DelEnd-->
-    - [WantAgentInfo](arkts-ability-wantagentinfo-wantagentinfo-i.md)
+    - [WantAgentInfo](arkts-ability-wantagentinfo-i.md)
     <!--Del-->
-    - [WantAgentInfo(system api)](arkts-ability-wantagentinfo-wantagentinfo-i-sys.md)<!--DelEnd-->
+    - [WantAgentInfo(system api)](arkts-ability-wantagentinfo-i-sys.md)<!--DelEnd-->

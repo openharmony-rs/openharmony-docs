@@ -22,6 +22,20 @@ Enumerates the blur types of a mask filter.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+## INNER
+
+```TypeScript
+INNER = 3
+```
+
+Only the inner solid part is blurred, while the outer edges remain sharp.
+
+**Since:** 12
+
+<!--Device-BlurType-INNER = 3--><!--Device-BlurType-INNER = 3-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
 ## NORMAL
 
 ```TypeScript
@@ -33,20 +47,6 @@ Both the outer edges and the inner solid parts are blurred.
 **Since:** 12
 
 <!--Device-BlurType-NORMAL = 0--><!--Device-BlurType-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## SOLID
-
-```TypeScript
-SOLID = 1
-```
-
-The inner solid part remains unchanged, while only the outer edges are blurred.
-
-**Since:** 12
-
-<!--Device-BlurType-SOLID = 1--><!--Device-BlurType-SOLID = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -64,16 +64,16 @@ Only the outer edges are blurred, with the inner solid part being fully transpar
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## INNER
+## SOLID
 
 ```TypeScript
-INNER = 3
+SOLID = 1
 ```
 
-Only the inner solid part is blurred, while the outer edges remain sharp.
+The inner solid part remains unchanged, while only the outer edges are blurred.
 
 **Since:** 12
 
-<!--Device-BlurType-INNER = 3--><!--Device-BlurType-INNER = 3-End-->
+<!--Device-BlurType-SOLID = 1--><!--Device-BlurType-SOLID = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

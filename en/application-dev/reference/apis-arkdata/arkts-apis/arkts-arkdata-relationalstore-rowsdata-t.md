@@ -6,6 +6,8 @@ type RowsData = Array<RowData>
 
 Indicates multiple rows of data with an array.
 
+**Type:** Array&lt;[RowData](arkts-arkdata-relationalstore-rowdata-t.md)&gt;
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -13,5 +15,3 @@ Indicates multiple rows of data with an array.
 <!--Device-relationalStore-type RowsData = Array<RowData>--><!--Device-relationalStore-type RowsData = Array<RowData>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Type:** Array&lt;[RowData](arkts-arkdata-relationalstore-rowdata-t.md)&gt;

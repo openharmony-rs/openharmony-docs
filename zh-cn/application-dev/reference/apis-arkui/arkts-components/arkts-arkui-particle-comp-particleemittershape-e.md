@@ -12,21 +12,21 @@ declare enum ParticleEmitterShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## RECTANGLE
+## ANNULUS
 
 ```TypeScript
-RECTANGLE = 'rectangle'
+ANNULUS = 'annulus'
 ```
 
-粒子发射器为矩形。
+粒子发射器为环形。使用此形状时必须配置annulusRegion参数，且position和size参数不生效。
 
-**起始版本：** 10
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'--><!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'-End-->
+<!--Device-ParticleEmitterShape-ANNULUS = 'annulus'--><!--Device-ParticleEmitterShape-ANNULUS = 'annulus'-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,20 +66,20 @@ ELLIPSE = 'ellipse'
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ANNULUS
+## RECTANGLE
 
 ```TypeScript
-ANNULUS = 'annulus'
+RECTANGLE = 'rectangle'
 ```
 
-粒子发射器为环形。使用此形状时必须配置annulusRegion参数，且position和size参数不生效。
+粒子发射器为矩形。
 
-**起始版本：** 20
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ParticleEmitterShape-ANNULUS = 'annulus'--><!--Device-ParticleEmitterShape-ANNULUS = 'annulus'-End-->
+<!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'--><!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -44,10 +44,11 @@ function getSystemTrustedCertificate(certUri: string): Promise<CMResult>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.<br>The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter verification failed.<br>Possible causes: the URI is null or the URI format is wrong. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error.<br>Possible causes: The URI is null or the URI format is wrong. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500002](../errorcode-certManager.md#17500002-证书不存在) | The certificate does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +72,5 @@ try {
   console.error(`Failed to get system trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

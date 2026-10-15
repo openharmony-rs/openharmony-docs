@@ -14,24 +14,6 @@ Remote grant status.
 
 **System API:** This is a system API.
 
-## ENABLE
-
-```TypeScript
-ENABLE = 0x01
-```
-
-Enable remote grant.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-<!--Device-RemoteGrantStatus-ENABLE = 0x01--><!--Device-RemoteGrantStatus-ENABLE = 0x01-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-**System API:** This is a system API.
-
 ## DISABLE
 
 ```TypeScript
@@ -45,6 +27,24 @@ Disable remote grant.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 <!--Device-RemoteGrantStatus-DISABLE = 0x02--><!--Device-RemoteGrantStatus-DISABLE = 0x02-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+**System API:** This is a system API.
+
+## ENABLE
+
+```TypeScript
+ENABLE = 0x01
+```
+
+Enable remote grant.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-RemoteGrantStatus-ENABLE = 0x01--><!--Device-RemoteGrantStatus-ENABLE = 0x01-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

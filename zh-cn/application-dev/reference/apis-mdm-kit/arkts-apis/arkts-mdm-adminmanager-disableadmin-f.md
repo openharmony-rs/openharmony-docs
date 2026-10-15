@@ -6,7 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="disableadmin-2"></a>
+<a id="disableadmin3"></a>
 
 ## disableAdmin
 

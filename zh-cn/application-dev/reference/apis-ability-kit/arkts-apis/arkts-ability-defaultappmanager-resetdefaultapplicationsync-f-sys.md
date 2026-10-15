@@ -29,7 +29,7 @@ function resetDefaultApplicationSync(type: string, userId?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 要重置的应用类型，取[ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。 |
 
 **错误码：**
 
@@ -42,6 +42,7 @@ function resetDefaultApplicationSync(type: string, userId?: number): void
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,3 +71,5 @@ try {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
+
+<!--DelEnd-->

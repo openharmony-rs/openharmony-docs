@@ -34,7 +34,7 @@ Name of the form element.
 
 **Deprecated since:** 9
 
-**Substitutes:** name
+**Substitutes:** [name](arkts-basicservices-agent-formitem-i.md#name)
 
 <!--Device-RequestData-name: string--><!--Device-RequestData-name: string-End-->
 
@@ -54,7 +54,7 @@ Value of the form element.
 
 **Deprecated since:** 9
 
-**Substitutes:** value
+**Substitutes:** [value](arkts-basicservices-agent-formitem-i.md#value)
 
 <!--Device-RequestData-value: string--><!--Device-RequestData-value: string-End-->
 

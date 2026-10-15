@@ -6,6 +6,8 @@
 import { drm } from '@kit.DrmKit';
 ```
 
+<a id="ismediakeysystemsupported1"></a>
+
 ## isMediaKeySystemSupported
 
 ```TypeScript
@@ -16,7 +18,7 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean-End-->
 
@@ -26,8 +28,8 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported-2). |
-| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. Before calling this API, ensure that the MIME type is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported-1). |
+| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported3). |
+| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. Before calling this API, ensure that the MIME type is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported2). |
 | level | [ContentProtectionLevel](arkts-drm-drm-contentprotectionlevel-e.md) | Yes | Content protection level. |
 
 **Return value:**
@@ -54,7 +56,7 @@ console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 
-<a id="ismediakeysystemsupported-1"></a>
+<a id="ismediakeysystemsupported2"></a>
 
 ## isMediaKeySystemSupported
 
@@ -66,7 +68,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string): boolean-End-->
 
@@ -76,7 +78,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported-2). |
+| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported3). |
 | mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. For example, video/avc and video/hevc. |
 
 **Return value:**
@@ -103,7 +105,7 @@ console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 
-<a id="ismediakeysystemsupported-2"></a>
+<a id="ismediakeysystemsupported3"></a>
 
 ## isMediaKeySystemSupported
 
@@ -115,7 +117,7 @@ Checks whether the device supports the specified DRM solution.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-drm-function isMediaKeySystemSupported(name: string): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string): boolean-End-->
 

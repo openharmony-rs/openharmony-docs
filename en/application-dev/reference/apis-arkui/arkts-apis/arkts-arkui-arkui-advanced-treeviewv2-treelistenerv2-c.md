@@ -4,7 +4,7 @@
 export declare class TreeListenerV2
 ```
 
-Declare class TreeListenerV2
+Defines the listener of the tree view component, which is used to listen for changes to tree view nodes. Bind this object to a tree view component before use. A single tree view listener cannot control multiple tree view components. This listener provides two event registration modes: **on** and **once**. The **on** method continuously listens for events until canceled, while the **once** method listens once and then is automatically destroyed. After use, call **offNodeClick**, **offNodeAdd**, and other methods to cancel listening when the component is destroyed, to avoid memory leaks.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { CallbackParamV2, NodeParamV2, TreeControllerV2, TreeListenerV2, TreeLis
 offNodeAdd(callback?: OnChangedCallback): void
 ```
 
-Destroy node add callback event.
+Unregisters the node add event listener. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -40,7 +40,7 @@ Destroy node add callback event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No | Callback for the node addition event. If this parameter is passed in, the corresponding listener is canceled; otherwise, all node addition listeners are canceled. |
 
 ## offNodeClick
 
@@ -48,7 +48,7 @@ Destroy node add callback event.
 offNodeClick(callback?: OnChangedCallback): void
 ```
 
-Destroy node click callback event.
+Unregisters the node click event listener. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -64,7 +64,7 @@ Destroy node click callback event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No | Callback for the node click event. If this parameter is passed, the corresponding listener is removed; otherwise, all node click listeners are removed. |
 
 ## offNodeDelete
 
@@ -72,7 +72,7 @@ Destroy node click callback event.
 offNodeDelete(callback?: OnChangedCallback): void
 ```
 
-Destroy node delete callback event.
+Unregisters from the node deletion event. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -88,7 +88,7 @@ Destroy node delete callback event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No | Callback for the node deletion event. If this parameter is passed, the corresponding listener is unregistered; otherwise, all node deletion listeners are unregistered. |
 
 ## offNodeModify
 
@@ -96,7 +96,7 @@ Destroy node delete callback event.
 offNodeModify(callback?: OnChangedCallback): void
 ```
 
-Destroy node modify callback event.
+Unregisters the node modification event listener. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -112,7 +112,7 @@ Destroy node modify callback event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No | Callback for the node modification event. If this parameter is passed, the corresponding listener is canceled; otherwise, all node modification listeners are canceled. |
 
 ## offNodeMove
 
@@ -120,7 +120,7 @@ Destroy node modify callback event.
 offNodeMove(callback?: OnChangedCallback): void
 ```
 
-Destroy node move callback event.
+Unregisters the node move event listener. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -136,7 +136,7 @@ Destroy node move callback event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | No | Callback for the node move event. If this parameter is passed in, the corresponding listener is unregistered; otherwise, all node move listeners are unregistered. |
 
 ## onceNodeAdd
 
@@ -144,7 +144,7 @@ Destroy node move callback event.
 onceNodeAdd(callback: OnChangedCallback): void
 ```
 
-Node add event registration and processing. After the event is processed once, it will be destroyed.
+Registers a node add event listener, which is automatically destroyed after being triggered once. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -160,7 +160,7 @@ Node add event registration and processing. After the event is processed once, i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback for the node addition event. |
 
 ## onceNodeClick
 
@@ -168,7 +168,7 @@ Node add event registration and processing. After the event is processed once, i
 onceNodeClick(callback: OnChangedCallback): void
 ```
 
-Node click event registration and processing. After the event is processed once, it will be destroyed.
+Registers a node click event listener, which is automatically destroyed after being triggered once. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -184,7 +184,7 @@ Node click event registration and processing. After the event is processed once,
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback for the node click event. |
 
 ## onceNodeDelete
 
@@ -192,7 +192,7 @@ Node click event registration and processing. After the event is processed once,
 onceNodeDelete(callback: OnChangedCallback): void
 ```
 
-Node delete event registration and processing. After the event is processed once, it will be destroyed.
+Registers a node deletion event listener. The listener is automatically destroyed after being triggered once. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -208,7 +208,7 @@ Node delete event registration and processing. After the event is processed once
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback for the node deletion event. |
 
 ## onceNodeModify
 
@@ -216,7 +216,7 @@ Node delete event registration and processing. After the event is processed once
 onceNodeModify(callback: OnChangedCallback): void
 ```
 
-Node modify event registration and processing. After the event is processed once, it will be destroyed.
+Registers a node modification event listener, which is automatically destroyed after being triggered once. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -232,7 +232,7 @@ Node modify event registration and processing. After the event is processed once
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback for the node modification event. |
 
 ## onceNodeMove
 
@@ -240,7 +240,7 @@ Node modify event registration and processing. After the event is processed once
 onceNodeMove(callback: OnChangedCallback): void
 ```
 
-Node move event registration and processing. After the event is processed once, it will be destroyed.
+Registers a node move event listener that is automatically destroyed after being triggered once. Node move is triggered by drag operations. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -256,7 +256,7 @@ Node move event registration and processing. After the event is processed once, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback for the node move event. |
 
 ## onNodeAdd
 
@@ -264,7 +264,7 @@ Node move event registration and processing. After the event is processed once, 
 onNodeAdd(callback: OnChangedCallback): void
 ```
 
-Node add event registration and processing. The event will not be destroyed after being processed.
+Registers a listener for the node addition event, which takes effect continuously. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -280,7 +280,7 @@ Node add event registration and processing. The event will not be destroyed afte
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback invoked when a node is added. |
 
 ## onNodeClick
 
@@ -288,7 +288,7 @@ Node add event registration and processing. The event will not be destroyed afte
 onNodeClick(callback: OnChangedCallback): void
 ```
 
-Node click event registration and processing. The event will not be destroyed after being processed.
+Registers a listener for the node click event, which takes effect continuously. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -304,7 +304,7 @@ Node click event registration and processing. The event will not be destroyed af
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback invoked when a node is clicked. |
 
 ## onNodeDelete
 
@@ -312,7 +312,7 @@ Node click event registration and processing. The event will not be destroyed af
 onNodeDelete(callback: OnChangedCallback): void
 ```
 
-Node delete event registration and processing. The event will not be destroyed after being processed.
+Registers a listener for the node deletion event, which takes effect continuously. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -328,7 +328,7 @@ Node delete event registration and processing. The event will not be destroyed a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback invoked when a node is deleted. |
 
 ## onNodeModify
 
@@ -336,7 +336,7 @@ Node delete event registration and processing. The event will not be destroyed a
 onNodeModify(callback: OnChangedCallback): void
 ```
 
-Node modify event registration and processing. The event will not be destroyed after being processed.
+Registers a listener for the node modification event, which takes effect continuously. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -352,7 +352,7 @@ Node modify event registration and processing. The event will not be destroyed a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback for the node modification event. |
 
 ## onNodeMove
 
@@ -360,7 +360,7 @@ Node modify event registration and processing. The event will not be destroyed a
 onNodeMove(callback: OnChangedCallback): void
 ```
 
-Node move event registration and processing. The event will not be destroyed after being processed.
+Registers a node move event listener that takes effect continuously. Node move is triggered by drag operations. This API uses a callback to return the result.
 
 **Since:** 26.0.0
 
@@ -376,4 +376,4 @@ Node move event registration and processing. The event will not be destroyed aft
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes |  |
+| callback | [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Yes | Callback invoked when a node is moved. |

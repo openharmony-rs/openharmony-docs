@@ -30,7 +30,7 @@ interval: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousLocationRequest-interval: int--><!--Device-ContinuousLocationRequest-interval: int-End-->
 
@@ -48,7 +48,7 @@ locationScenario: UserActivityScenario | PowerConsumptionScenario
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousLocationRequest-locationScenario: UserActivityScenario | PowerConsumptionScenario--><!--Device-ContinuousLocationRequest-locationScenario: UserActivityScenario | PowerConsumptionScenario-End-->
 
@@ -68,7 +68,7 @@ needPoi?: boolean
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousLocationRequest-needPoi?: boolean--><!--Device-ContinuousLocationRequest-needPoi?: boolean-End-->
 
@@ -86,7 +86,7 @@ sportsType?: SportsType
 
 **起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousLocationRequest-sportsType?: SportsType--><!--Device-ContinuousLocationRequest-sportsType?: SportsType-End-->
 

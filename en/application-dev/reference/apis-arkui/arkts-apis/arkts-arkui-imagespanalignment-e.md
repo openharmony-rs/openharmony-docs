@@ -66,24 +66,6 @@ The image is center aligned with the line.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
-
-```TypeScript
-TOP
-```
-
-The image is top aligned with the line.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ImageSpanAlignment-TOP--><!--Device-ImageSpanAlignment-TOP-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## FOLLOW_PARAGRAPH
 
 ```TypeScript
@@ -99,5 +81,23 @@ The alignment mode follows the parent component of the **Text** component.
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH--><!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TOP
+
+```TypeScript
+TOP
+```
+
+The image is top aligned with the line.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ImageSpanAlignment-TOP--><!--Device-ImageSpanAlignment-TOP-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

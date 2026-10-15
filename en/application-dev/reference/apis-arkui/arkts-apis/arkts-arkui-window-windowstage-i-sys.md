@@ -48,6 +48,7 @@ When window decorators are disabled and the main window transitions into full-sc
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,7 +65,9 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="setimageforrecent-1"></a>
+<!--DelEnd-->
+
+<a id="setimageforrecent2"></a>
 
 ## setImageForRecent
 
@@ -103,10 +106,11 @@ Sets the image displayed in the multitasking view. This API uses a promise to re
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
+| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -132,6 +136,8 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
+<!--DelEnd-->
 
 ## setShowOnLockScreen
 
@@ -161,11 +167,12 @@ Sets whether to display the window of the application on the lock screen.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -185,3 +192,5 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
+<!--DelEnd-->

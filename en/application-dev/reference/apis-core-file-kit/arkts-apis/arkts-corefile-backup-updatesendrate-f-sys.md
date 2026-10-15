@@ -45,6 +45,7 @@ Update send file fd rate.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,3 +68,5 @@ function updateSendRate() {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -12,24 +12,6 @@ Provides the concatenation method for text aggregation.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NEWLINE
-
-```TypeScript
-NEWLINE = 0
-```
-
-Joined with a newline character `\n` between different text nodes.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-SelectionContainerTextJoinStyle-NEWLINE = 0--><!--Device-SelectionContainerTextJoinStyle-NEWLINE = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## DIRECT
 
 ```TypeScript
@@ -45,5 +27,23 @@ Joined directly between different text nodes without a separator.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-SelectionContainerTextJoinStyle-DIRECT = 1--><!--Device-SelectionContainerTextJoinStyle-DIRECT = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NEWLINE
+
+```TypeScript
+NEWLINE = 0
+```
+
+Joined with a newline character `\n` between different text nodes.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SelectionContainerTextJoinStyle-NEWLINE = 0--><!--Device-SelectionContainerTextJoinStyle-NEWLINE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

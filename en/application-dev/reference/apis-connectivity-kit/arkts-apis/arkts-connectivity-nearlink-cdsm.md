@@ -4,8 +4,6 @@ This module provides the coordinated devices set management (CDSM) capability fo
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace cdsm--><!--Device-unnamed-declare namespace cdsm-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -22,7 +20,7 @@ import { cdsm } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md) | Creates a CDSM client instance. |
+| [createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md#createcdsmclient) | Creates a CDSM client instance. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
 
 ### Interfaces
 

@@ -14,17 +14,17 @@ export enum SmsEncodingScheme
 
 **系统接口：** 此接口为系统接口。
 
-## SMS_ENCODING_UNKNOWN
+## SMS_ENCODING_16BIT
 
 ```TypeScript
-SMS_ENCODING_UNKNOWN = 0
+SMS_ENCODING_16BIT = 3
 ```
 
-未知短信编码
+16位短信编码
 
 **起始版本：** 8
 
-<!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0--><!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0-End-->
+<!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3--><!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -62,17 +62,17 @@ SMS_ENCODING_8BIT = 2
 
 **系统接口：** 此接口为系统接口。
 
-## SMS_ENCODING_16BIT
+## SMS_ENCODING_UNKNOWN
 
 ```TypeScript
-SMS_ENCODING_16BIT = 3
+SMS_ENCODING_UNKNOWN = 0
 ```
 
-16位短信编码
+未知短信编码
 
 **起始版本：** 8
 
-<!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3--><!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3-End-->
+<!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0--><!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 

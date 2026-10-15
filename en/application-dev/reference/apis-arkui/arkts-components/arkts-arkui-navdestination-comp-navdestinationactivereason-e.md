@@ -12,13 +12,13 @@ Enumerates reasons for the activation state changes of the **NavDestination** co
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TRANSITION
+## APP_STATE
 
 ```TypeScript
-TRANSITION = 0
+APP_STATE = 5
 ```
 
-Activation state changes due to page navigation.
+Activation state changes due to switching between foreground and background states of the application.
 
 **Since:** 17
 
@@ -26,7 +26,7 @@ Activation state changes due to page navigation.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
-<!--Device-NavDestinationActiveReason-TRANSITION = 0--><!--Device-NavDestinationActiveReason-TRANSITION = 0-End-->
+<!--Device-NavDestinationActiveReason-APP_STATE = 5--><!--Device-NavDestinationActiveReason-APP_STATE = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,24 +45,6 @@ Activation state changes due to the opening or closing of a modal page.
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
 <!--Device-NavDestinationActiveReason-CONTENT_COVER = 1--><!--Device-NavDestinationActiveReason-CONTENT_COVER = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## SHEET
-
-```TypeScript
-SHEET = 2
-```
-
-Activation state changes due to the opening or closing of a sheet.
-
-**Since:** 17
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 17.
-
-<!--Device-NavDestinationActiveReason-SHEET = 2--><!--Device-NavDestinationActiveReason-SHEET = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,13 +84,13 @@ Activation state changes due to the opening or closing of an overlay using **Ove
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## APP_STATE
+## SHEET
 
 ```TypeScript
-APP_STATE = 5
+SHEET = 2
 ```
 
-Activation state changes due to switching between foreground and background states of the application.
+Activation state changes due to the opening or closing of a sheet.
 
 **Since:** 17
 
@@ -116,6 +98,24 @@ Activation state changes due to switching between foreground and background stat
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
-<!--Device-NavDestinationActiveReason-APP_STATE = 5--><!--Device-NavDestinationActiveReason-APP_STATE = 5-End-->
+<!--Device-NavDestinationActiveReason-SHEET = 2--><!--Device-NavDestinationActiveReason-SHEET = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TRANSITION
+
+```TypeScript
+TRANSITION = 0
+```
+
+Activation state changes due to page navigation.
+
+**Since:** 17
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-NavDestinationActiveReason-TRANSITION = 0--><!--Device-NavDestinationActiveReason-TRANSITION = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

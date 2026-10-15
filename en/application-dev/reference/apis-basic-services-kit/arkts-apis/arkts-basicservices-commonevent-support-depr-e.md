@@ -16,59 +16,101 @@ A system common event is an event that is published by a system service or syste
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BOOT_COMPLETED
+## COMMON_EVENT_ABILITY_ADDED
 
 ```TypeScript
-COMMON_EVENT_BOOT_COMPLETED = 'usual.event.BOOT_COMPLETED'
+COMMON_EVENT_ABILITY_ADDED = 'common.event.ABILITY_ADDED'
 ```
 
-Indicates that the boot is complete and the system is loaded.
+(reserved, not supported yet) Indicates that an ability has been added.
 
-To subscribe to this common event, your application must have the ohos.permission.RECEIVER_STARTUP_COMPLETED permission. (This permission is available only for system applications.)
+To subscribe to this common event, your application must have the ohos.permission.LISTEN_BUNDLE_CHANGE permission.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BOOT_COMPLETED](arkts-basicservices-commoneventmanager-support-e.md#common_event_boot_completed)
+**Substitutes:** [COMMON_EVENT_ABILITY_ADDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_ability_added)
 
-<!--Device-Support-COMMON_EVENT_BOOT_COMPLETED = 'usual.event.BOOT_COMPLETED'--><!--Device-Support-COMMON_EVENT_BOOT_COMPLETED = 'usual.event.BOOT_COMPLETED'-End-->
+<!--Device-Support-COMMON_EVENT_ABILITY_ADDED = 'common.event.ABILITY_ADDED'--><!--Device-Support-COMMON_EVENT_ABILITY_ADDED = 'common.event.ABILITY_ADDED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_LOCKED_BOOT_COMPLETED
+## COMMON_EVENT_ABILITY_REMOVED
 
 ```TypeScript
-COMMON_EVENT_LOCKED_BOOT_COMPLETED = 'usual.event.LOCKED_BOOT_COMPLETED'
+COMMON_EVENT_ABILITY_REMOVED = 'common.event.ABILITY_REMOVED'
 ```
 
-(reserved, not supported yet) Indicates that the guidance is complete and the system is loaded, but the screen is still locked.
+(reserved, not supported yet) Indicates that an ability has been removed.
+
+To subscribe to this common event, your application must have the ohos.permission.LISTEN_BUNDLE_CHANGE permission.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_LOCKED_BOOT_COMPLETED](arkts-basicservices-commoneventmanager-support-e.md#common_event_locked_boot_completed)
+**Substitutes:** [COMMON_EVENT_ABILITY_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_ability_removed)
 
-<!--Device-Support-COMMON_EVENT_LOCKED_BOOT_COMPLETED = 'usual.event.LOCKED_BOOT_COMPLETED'--><!--Device-Support-COMMON_EVENT_LOCKED_BOOT_COMPLETED = 'usual.event.LOCKED_BOOT_COMPLETED'-End-->
+<!--Device-Support-COMMON_EVENT_ABILITY_REMOVED = 'common.event.ABILITY_REMOVED'--><!--Device-Support-COMMON_EVENT_ABILITY_REMOVED = 'common.event.ABILITY_REMOVED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_SHUTDOWN
+## COMMON_EVENT_ABILITY_UPDATED
 
 ```TypeScript
-COMMON_EVENT_SHUTDOWN = 'usual.event.SHUTDOWN'
+COMMON_EVENT_ABILITY_UPDATED = 'common.event.ABILITY_UPDATED'
 ```
 
-Indicates that the device is being shut down and will continue until it is finally shut down.
+(reserved, not supported yet) Indicates that an ability has been updated.
+
+To subscribe to this common event, your application must have the ohos.permission.LISTEN_BUNDLE_CHANGE permission.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_SHUTDOWN](arkts-basicservices-commoneventmanager-support-e.md#common_event_shutdown)
+**Substitutes:** [COMMON_EVENT_ABILITY_UPDATED](arkts-basicservices-commoneventmanager-support-e.md#common_event_ability_updated)
 
-<!--Device-Support-COMMON_EVENT_SHUTDOWN = 'usual.event.SHUTDOWN'--><!--Device-Support-COMMON_EVENT_SHUTDOWN = 'usual.event.SHUTDOWN'-End-->
+<!--Device-Support-COMMON_EVENT_ABILITY_UPDATED = 'common.event.ABILITY_UPDATED'--><!--Device-Support-COMMON_EVENT_ABILITY_UPDATED = 'common.event.ABILITY_UPDATED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_ACCOUNT_DELETED
+
+```TypeScript
+COMMON_EVENT_ACCOUNT_DELETED = 'usual.event.data.ACCOUNT_DELETED'
+```
+
+(reserved, not supported yet) Indicates that an account was deleted.
+
+To subscribe to this common event, your application must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_ACCOUNT_DELETED](arkts-basicservices-commoneventmanager-support-e.md#common_event_account_deleted)
+
+<!--Device-Support-COMMON_EVENT_ACCOUNT_DELETED = 'usual.event.data.ACCOUNT_DELETED'--><!--Device-Support-COMMON_EVENT_ACCOUNT_DELETED = 'usual.event.data.ACCOUNT_DELETED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_AIRPLANE_MODE_CHANGED
+
+```TypeScript
+COMMON_EVENT_AIRPLANE_MODE_CHANGED = 'usual.event.AIRPLANE_MODE'
+```
+
+Indicates that the airplane mode of the device has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_AIRPLANE_MODE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_airplane_mode_changed)
+
+<!--Device-Support-COMMON_EVENT_AIRPLANE_MODE_CHANGED = 'usual.event.AIRPLANE_MODE'--><!--Device-Support-COMMON_EVENT_AIRPLANE_MODE_CHANGED = 'usual.event.AIRPLANE_MODE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -126,1153 +168,13 @@ Indicates that the battery level is normal.
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_POWER_CONNECTED
+## COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE
 
 ```TypeScript
-COMMON_EVENT_POWER_CONNECTED = 'usual.event.POWER_CONNECTED'
+COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'
 ```
 
-Indicates that the device is connected to an external power supply.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_POWER_CONNECTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_power_connected)
-
-<!--Device-Support-COMMON_EVENT_POWER_CONNECTED = 'usual.event.POWER_CONNECTED'--><!--Device-Support-COMMON_EVENT_POWER_CONNECTED = 'usual.event.POWER_CONNECTED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_POWER_DISCONNECTED
-
-```TypeScript
-COMMON_EVENT_POWER_DISCONNECTED = 'usual.event.POWER_DISCONNECTED'
-```
-
-Indicates that the device is disconnected from the external power supply.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_POWER_DISCONNECTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_power_disconnected)
-
-<!--Device-Support-COMMON_EVENT_POWER_DISCONNECTED = 'usual.event.POWER_DISCONNECTED'--><!--Device-Support-COMMON_EVENT_POWER_DISCONNECTED = 'usual.event.POWER_DISCONNECTED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_SCREEN_OFF
-
-```TypeScript
-COMMON_EVENT_SCREEN_OFF = 'usual.event.SCREEN_OFF'
-```
-
-Indicates that the device screen is off and the device is in sleep mode.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_SCREEN_OFF](arkts-basicservices-commoneventmanager-support-e.md#common_event_screen_off)
-
-<!--Device-Support-COMMON_EVENT_SCREEN_OFF = 'usual.event.SCREEN_OFF'--><!--Device-Support-COMMON_EVENT_SCREEN_OFF = 'usual.event.SCREEN_OFF'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_SCREEN_ON
-
-```TypeScript
-COMMON_EVENT_SCREEN_ON = 'usual.event.SCREEN_ON'
-```
-
-Indicates that the device screen is on and the device is in interactive state.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_SCREEN_ON](arkts-basicservices-commoneventmanager-support-e.md#common_event_screen_on)
-
-<!--Device-Support-COMMON_EVENT_SCREEN_ON = 'usual.event.SCREEN_ON'--><!--Device-Support-COMMON_EVENT_SCREEN_ON = 'usual.event.SCREEN_ON'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_THERMAL_LEVEL_CHANGED
-
-```TypeScript
-COMMON_EVENT_THERMAL_LEVEL_CHANGED = 'usual.event.THERMAL_LEVEL_CHANGED'
-```
-
-Indicates that the device thermal level has changed.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_THERMAL_LEVEL_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_thermal_level_changed)
-
-<!--Device-Support-COMMON_EVENT_THERMAL_LEVEL_CHANGED = 'usual.event.THERMAL_LEVEL_CHANGED'--><!--Device-Support-COMMON_EVENT_THERMAL_LEVEL_CHANGED = 'usual.event.THERMAL_LEVEL_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_PRESENT
-
-```TypeScript
-COMMON_EVENT_USER_PRESENT = 'usual.event.USER_PRESENT'
-```
-
-(reserved, not supported yet) Indicates that the user unlocks the device.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_PRESENT](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_present)
-
-<!--Device-Support-COMMON_EVENT_USER_PRESENT = 'usual.event.USER_PRESENT'--><!--Device-Support-COMMON_EVENT_USER_PRESENT = 'usual.event.USER_PRESENT'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_TIME_TICK
-
-```TypeScript
-COMMON_EVENT_TIME_TICK = 'usual.event.TIME_TICK'
-```
-
-Indicates that the system time has changed as time ticks by.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_TIME_TICK](arkts-basicservices-commoneventmanager-support-e.md#common_event_time_tick)
-
-<!--Device-Support-COMMON_EVENT_TIME_TICK = 'usual.event.TIME_TICK'--><!--Device-Support-COMMON_EVENT_TIME_TICK = 'usual.event.TIME_TICK'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_TIME_CHANGED
-
-```TypeScript
-COMMON_EVENT_TIME_CHANGED = 'usual.event.TIME_CHANGED'
-```
-
-Indicates that the system time is set.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_TIME_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_time_changed)
-
-<!--Device-Support-COMMON_EVENT_TIME_CHANGED = 'usual.event.TIME_CHANGED'--><!--Device-Support-COMMON_EVENT_TIME_CHANGED = 'usual.event.TIME_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_DATE_CHANGED
-
-```TypeScript
-COMMON_EVENT_DATE_CHANGED = 'usual.event.DATE_CHANGED'
-```
-
-(reserved, not supported yet) Indicates that the system date has been changed.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_DATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_date_changed)
-
-<!--Device-Support-COMMON_EVENT_DATE_CHANGED = 'usual.event.DATE_CHANGED'--><!--Device-Support-COMMON_EVENT_DATE_CHANGED = 'usual.event.DATE_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_TIMEZONE_CHANGED
-
-```TypeScript
-COMMON_EVENT_TIMEZONE_CHANGED = 'usual.event.TIMEZONE_CHANGED'
-```
-
-Indicates that the system time zone is changed.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_TIMEZONE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_timezone_changed)
-
-<!--Device-Support-COMMON_EVENT_TIMEZONE_CHANGED = 'usual.event.TIMEZONE_CHANGED'--><!--Device-Support-COMMON_EVENT_TIMEZONE_CHANGED = 'usual.event.TIMEZONE_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_CLOSE_SYSTEM_DIALOGS
-
-```TypeScript
-COMMON_EVENT_CLOSE_SYSTEM_DIALOGS = 'usual.event.CLOSE_SYSTEM_DIALOGS'
-```
-
-(reserved, not supported yet) Indicates that the user closes a temporary system dialog box.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_CLOSE_SYSTEM_DIALOGS](arkts-basicservices-commoneventmanager-support-e.md#common_event_close_system_dialogs)
-
-<!--Device-Support-COMMON_EVENT_CLOSE_SYSTEM_DIALOGS = 'usual.event.CLOSE_SYSTEM_DIALOGS'--><!--Device-Support-COMMON_EVENT_CLOSE_SYSTEM_DIALOGS = 'usual.event.CLOSE_SYSTEM_DIALOGS'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_ADDED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_ADDED = 'usual.event.PACKAGE_ADDED'
-```
-
-Indicates that a new application package has been installed on the device.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_ADDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_added)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_ADDED = 'usual.event.PACKAGE_ADDED'--><!--Device-Support-COMMON_EVENT_PACKAGE_ADDED = 'usual.event.PACKAGE_ADDED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_REPLACED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_REPLACED = 'usual.event.PACKAGE_REPLACED'
-```
-
-(reserved, not supported yet) Indicates that a later version of an installed application package has replaced the previous one on the device.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_REPLACED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_replaced)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_REPLACED = 'usual.event.PACKAGE_REPLACED'--><!--Device-Support-COMMON_EVENT_PACKAGE_REPLACED = 'usual.event.PACKAGE_REPLACED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_MY_PACKAGE_REPLACED
-
-```TypeScript
-COMMON_EVENT_MY_PACKAGE_REPLACED = 'usual.event.MY_PACKAGE_REPLACED'
-```
-
-(reserved, not supported yet) Indicates that the new version of the application package has replaced the previous version.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_MY_PACKAGE_REPLACED](arkts-basicservices-commoneventmanager-support-e.md#common_event_my_package_replaced)
-
-<!--Device-Support-COMMON_EVENT_MY_PACKAGE_REPLACED = 'usual.event.MY_PACKAGE_REPLACED'--><!--Device-Support-COMMON_EVENT_MY_PACKAGE_REPLACED = 'usual.event.MY_PACKAGE_REPLACED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_REMOVED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_REMOVED = 'usual.event.PACKAGE_REMOVED'
-```
-
-Indicates that an installed application has been uninstalled from the device with the application data retained.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_removed)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_REMOVED = 'usual.event.PACKAGE_REMOVED'--><!--Device-Support-COMMON_EVENT_PACKAGE_REMOVED = 'usual.event.PACKAGE_REMOVED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_BUNDLE_REMOVED
-
-```TypeScript
-COMMON_EVENT_BUNDLE_REMOVED = 'usual.event.BUNDLE_REMOVED'
-```
-
-(reserved, not supported yet) Indicates that an installed bundle has been uninstalled from the device with the application data retained.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_BUNDLE_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bundle_removed)
-
-<!--Device-Support-COMMON_EVENT_BUNDLE_REMOVED = 'usual.event.BUNDLE_REMOVED'--><!--Device-Support-COMMON_EVENT_BUNDLE_REMOVED = 'usual.event.BUNDLE_REMOVED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_FULLY_REMOVED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_FULLY_REMOVED = 'usual.event.PACKAGE_FULLY_REMOVED'
-```
-
-(reserved, not supported yet) Indicates that an installed application, including both the application data and code, has been completely uninstalled from the device.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_FULLY_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_fully_removed)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_FULLY_REMOVED = 'usual.event.PACKAGE_FULLY_REMOVED'--><!--Device-Support-COMMON_EVENT_PACKAGE_FULLY_REMOVED = 'usual.event.PACKAGE_FULLY_REMOVED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_CHANGED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_CHANGED = 'usual.event.PACKAGE_CHANGED'
-```
-
-Indicates that an application package has been changed (for example, an ability in the package has been enabled or disabled).
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_changed)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_CHANGED = 'usual.event.PACKAGE_CHANGED'--><!--Device-Support-COMMON_EVENT_PACKAGE_CHANGED = 'usual.event.PACKAGE_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_RESTARTED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_RESTARTED = 'usual.event.PACKAGE_RESTARTED'
-```
-
-Indicates that the user closed all processes of the application and restarted the application.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_RESTARTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_restarted)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_RESTARTED = 'usual.event.PACKAGE_RESTARTED'--><!--Device-Support-COMMON_EVENT_PACKAGE_RESTARTED = 'usual.event.PACKAGE_RESTARTED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_DATA_CLEARED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_DATA_CLEARED = 'usual.event.PACKAGE_DATA_CLEARED'
-```
-
-Indicates that the user cleared the application package data.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_DATA_CLEARED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_data_cleared)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_DATA_CLEARED = 'usual.event.PACKAGE_DATA_CLEARED'--><!--Device-Support-COMMON_EVENT_PACKAGE_DATA_CLEARED = 'usual.event.PACKAGE_DATA_CLEARED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGES_SUSPENDED
-
-```TypeScript
-COMMON_EVENT_PACKAGES_SUSPENDED = 'usual.event.PACKAGES_SUSPENDED'
-```
-
-(reserved, not supported yet) Indicates that application packages have been suspended.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGES_SUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_packages_suspended)
-
-<!--Device-Support-COMMON_EVENT_PACKAGES_SUSPENDED = 'usual.event.PACKAGES_SUSPENDED'--><!--Device-Support-COMMON_EVENT_PACKAGES_SUSPENDED = 'usual.event.PACKAGES_SUSPENDED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGES_UNSUSPENDED
-
-```TypeScript
-COMMON_EVENT_PACKAGES_UNSUSPENDED = 'usual.event.PACKAGES_UNSUSPENDED'
-```
-
-(reserved, not supported yet) Indicates that the application HAP package is not suspended (resumed from the suspended state).
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGES_UNSUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_packages_unsuspended)
-
-<!--Device-Support-COMMON_EVENT_PACKAGES_UNSUSPENDED = 'usual.event.PACKAGES_UNSUSPENDED'--><!--Device-Support-COMMON_EVENT_PACKAGES_UNSUSPENDED = 'usual.event.PACKAGES_UNSUSPENDED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_MY_PACKAGE_SUSPENDED
-
-```TypeScript
-COMMON_EVENT_MY_PACKAGE_SUSPENDED = 'usual.event.MY_PACKAGE_SUSPENDED'
-```
-
-Indicates that the application HAP package is suspended.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_MY_PACKAGE_SUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_my_package_suspended)
-
-<!--Device-Support-COMMON_EVENT_MY_PACKAGE_SUSPENDED = 'usual.event.MY_PACKAGE_SUSPENDED'--><!--Device-Support-COMMON_EVENT_MY_PACKAGE_SUSPENDED = 'usual.event.MY_PACKAGE_SUSPENDED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
-
-```TypeScript
-COMMON_EVENT_MY_PACKAGE_UNSUSPENDED = 'usual.event.MY_PACKAGE_UNSUSPENDED'
-```
-
-Indicates that the application package is not suspended.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_MY_PACKAGE_UNSUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_my_package_unsuspended)
-
-<!--Device-Support-COMMON_EVENT_MY_PACKAGE_UNSUSPENDED = 'usual.event.MY_PACKAGE_UNSUSPENDED'--><!--Device-Support-COMMON_EVENT_MY_PACKAGE_UNSUSPENDED = 'usual.event.MY_PACKAGE_UNSUSPENDED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_UID_REMOVED
-
-```TypeScript
-COMMON_EVENT_UID_REMOVED = 'usual.event.UID_REMOVED'
-```
-
-(reserved, not supported yet) Indicates that a user ID has been removed from the system.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_UID_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_uid_removed)
-
-<!--Device-Support-COMMON_EVENT_UID_REMOVED = 'usual.event.UID_REMOVED'--><!--Device-Support-COMMON_EVENT_UID_REMOVED = 'usual.event.UID_REMOVED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_FIRST_LAUNCH
-
-```TypeScript
-COMMON_EVENT_PACKAGE_FIRST_LAUNCH = 'usual.event.PACKAGE_FIRST_LAUNCH'
-```
-
-(reserved, not supported yet) Indicates that an installed application is started for the first time.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_FIRST_LAUNCH](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_first_launch)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_FIRST_LAUNCH = 'usual.event.PACKAGE_FIRST_LAUNCH'--><!--Device-Support-COMMON_EVENT_PACKAGE_FIRST_LAUNCH = 'usual.event.PACKAGE_FIRST_LAUNCH'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION
-
-```TypeScript
-COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION = 'usual.event.PACKAGE_NEEDS_VERIFICATION'
-```
-
-(reserved, not supported yet) Indicates that an application requires system verification.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_needs_verification)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION = 'usual.event.PACKAGE_NEEDS_VERIFICATION'--><!--Device-Support-COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION = 'usual.event.PACKAGE_NEEDS_VERIFICATION'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_PACKAGE_VERIFIED
-
-```TypeScript
-COMMON_EVENT_PACKAGE_VERIFIED = 'usual.event.PACKAGE_VERIFIED'
-```
-
-(reserved, not supported yet) Indicates that an application has been verified by the system.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_PACKAGE_VERIFIED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_verified)
-
-<!--Device-Support-COMMON_EVENT_PACKAGE_VERIFIED = 'usual.event.PACKAGE_VERIFIED'--><!--Device-Support-COMMON_EVENT_PACKAGE_VERIFIED = 'usual.event.PACKAGE_VERIFIED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE
-
-```TypeScript
-COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_AVAILABLE'
-```
-
-(reserved, not supported yet) Indicates that applications installed on the external storage are available for the system.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_external_applications_available)
-
-<!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_AVAILABLE'--><!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_AVAILABLE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE
-
-```TypeScript
-COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE'
-```
-
-(reserved, not supported yet) Indicates that applications installed on the external storage are not available for the system.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_external_applications_unavailable)
-
-<!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE'--><!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_CONFIGURATION_CHANGED
-
-```TypeScript
-COMMON_EVENT_CONFIGURATION_CHANGED = 'usual.event.CONFIGURATION_CHANGED'
-```
-
-(reserved, not supported yet) Indicates that the device state (for example, orientation and locale) has changed.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_CONFIGURATION_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_configuration_changed)
-
-<!--Device-Support-COMMON_EVENT_CONFIGURATION_CHANGED = 'usual.event.CONFIGURATION_CHANGED'--><!--Device-Support-COMMON_EVENT_CONFIGURATION_CHANGED = 'usual.event.CONFIGURATION_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_LOCALE_CHANGED
-
-```TypeScript
-COMMON_EVENT_LOCALE_CHANGED = 'usual.event.LOCALE_CHANGED'
-```
-
-(reserved, not supported yet) Indicates that the device locale has changed.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_LOCALE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_locale_changed)
-
-<!--Device-Support-COMMON_EVENT_LOCALE_CHANGED = 'usual.event.LOCALE_CHANGED'--><!--Device-Support-COMMON_EVENT_LOCALE_CHANGED = 'usual.event.LOCALE_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_MANAGE_PACKAGE_STORAGE
-
-```TypeScript
-COMMON_EVENT_MANAGE_PACKAGE_STORAGE = 'usual.event.MANAGE_PACKAGE_STORAGE'
-```
-
-(reserved, not supported yet) Indicates that the device storage is insufficient.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_MANAGE_PACKAGE_STORAGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_manage_package_storage)
-
-<!--Device-Support-COMMON_EVENT_MANAGE_PACKAGE_STORAGE = 'usual.event.MANAGE_PACKAGE_STORAGE'--><!--Device-Support-COMMON_EVENT_MANAGE_PACKAGE_STORAGE = 'usual.event.MANAGE_PACKAGE_STORAGE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_DRIVE_MODE
-
-```TypeScript
-COMMON_EVENT_DRIVE_MODE = 'common.event.DRIVE_MODE'
-```
-
-(reserved, not supported yet) Indicates that the system is in driving mode.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_DRIVE_MODE](arkts-basicservices-commoneventmanager-support-e.md#common_event_drive_mode)
-
-<!--Device-Support-COMMON_EVENT_DRIVE_MODE = 'common.event.DRIVE_MODE'--><!--Device-Support-COMMON_EVENT_DRIVE_MODE = 'common.event.DRIVE_MODE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_HOME_MODE
-
-```TypeScript
-COMMON_EVENT_HOME_MODE = 'common.event.HOME_MODE'
-```
-
-(reserved, not supported yet) Indicates that the system is in home mode.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_HOME_MODE](arkts-basicservices-commoneventmanager-support-e.md#common_event_home_mode)
-
-<!--Device-Support-COMMON_EVENT_HOME_MODE = 'common.event.HOME_MODE'--><!--Device-Support-COMMON_EVENT_HOME_MODE = 'common.event.HOME_MODE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_OFFICE_MODE
-
-```TypeScript
-COMMON_EVENT_OFFICE_MODE = 'common.event.OFFICE_MODE'
-```
-
-(reserved, not supported yet) Indicates that the system is in office mode.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_OFFICE_MODE](arkts-basicservices-commoneventmanager-support-e.md#common_event_office_mode)
-
-<!--Device-Support-COMMON_EVENT_OFFICE_MODE = 'common.event.OFFICE_MODE'--><!--Device-Support-COMMON_EVENT_OFFICE_MODE = 'common.event.OFFICE_MODE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_STARTED
-
-```TypeScript
-COMMON_EVENT_USER_STARTED = 'usual.event.USER_STARTED'
-```
-
-(reserved, not supported yet) Indicates that the user has been started.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_STARTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_started)
-
-<!--Device-Support-COMMON_EVENT_USER_STARTED = 'usual.event.USER_STARTED'--><!--Device-Support-COMMON_EVENT_USER_STARTED = 'usual.event.USER_STARTED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_BACKGROUND
-
-```TypeScript
-COMMON_EVENT_USER_BACKGROUND = 'usual.event.USER_BACKGROUND'
-```
-
-(reserved, not supported yet) Indicates that the user has been brought to the background.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_BACKGROUND](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_background)
-
-<!--Device-Support-COMMON_EVENT_USER_BACKGROUND = 'usual.event.USER_BACKGROUND'--><!--Device-Support-COMMON_EVENT_USER_BACKGROUND = 'usual.event.USER_BACKGROUND'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_FOREGROUND
-
-```TypeScript
-COMMON_EVENT_USER_FOREGROUND = 'usual.event.USER_FOREGROUND'
-```
-
-(reserved, not supported yet) Indicates that the user has been brought to the foreground.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_FOREGROUND](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_foreground)
-
-<!--Device-Support-COMMON_EVENT_USER_FOREGROUND = 'usual.event.USER_FOREGROUND'--><!--Device-Support-COMMON_EVENT_USER_FOREGROUND = 'usual.event.USER_FOREGROUND'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_SWITCHED
-
-```TypeScript
-COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'
-```
-
-Indicates that user switching is in progress.
-
-To subscribe to this common event, your application must have the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_SWITCHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_switched)
-
-<!--Device-Support-COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'--><!--Device-Support-COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_STARTING
-
-```TypeScript
-COMMON_EVENT_USER_STARTING = 'usual.event.USER_STARTING'
-```
-
-(reserved, not supported yet) Indicates that user starting is in progress. To subscribe to this common event, your application must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_STARTING](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_starting)
-
-<!--Device-Support-COMMON_EVENT_USER_STARTING = 'usual.event.USER_STARTING'--><!--Device-Support-COMMON_EVENT_USER_STARTING = 'usual.event.USER_STARTING'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_UNLOCKED
-
-```TypeScript
-COMMON_EVENT_USER_UNLOCKED = 'usual.event.USER_UNLOCKED'
-```
-
-(reserved, not supported yet) Indicates that the credential encryption storage of the current user has been unlocked upon restart.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_UNLOCKED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_unlocked)
-
-<!--Device-Support-COMMON_EVENT_USER_UNLOCKED = 'usual.event.USER_UNLOCKED'--><!--Device-Support-COMMON_EVENT_USER_UNLOCKED = 'usual.event.USER_UNLOCKED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_STOPPING
-
-```TypeScript
-COMMON_EVENT_USER_STOPPING = 'usual.event.USER_STOPPING'
-```
-
-(reserved, not supported yet) Indicates the user to be stopped.
-
-To subscribe to this common event, your application must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_STOPPING](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_stopping)
-
-<!--Device-Support-COMMON_EVENT_USER_STOPPING = 'usual.event.USER_STOPPING'--><!--Device-Support-COMMON_EVENT_USER_STOPPING = 'usual.event.USER_STOPPING'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USER_STOPPED
-
-```TypeScript
-COMMON_EVENT_USER_STOPPED = 'usual.event.USER_STOPPED'
-```
-
-(reserved, not supported yet) Indicates that the user has been stopped.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USER_STOPPED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_stopped)
-
-<!--Device-Support-COMMON_EVENT_USER_STOPPED = 'usual.event.USER_STOPPED'--><!--Device-Support-COMMON_EVENT_USER_STOPPED = 'usual.event.USER_STOPPED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_HWID_LOGIN
-
-```TypeScript
-COMMON_EVENT_HWID_LOGIN = 'common.event.HWID_LOGIN'
-```
-
-HW id login successfully.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_login)
-
-<!--Device-Support-COMMON_EVENT_HWID_LOGIN = 'common.event.HWID_LOGIN'--><!--Device-Support-COMMON_EVENT_HWID_LOGIN = 'common.event.HWID_LOGIN'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_HWID_LOGOUT
-
-```TypeScript
-COMMON_EVENT_HWID_LOGOUT = 'common.event.HWID_LOGOUT'
-```
-
-HW id logout successfully.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_logout)
-
-<!--Device-Support-COMMON_EVENT_HWID_LOGOUT = 'common.event.HWID_LOGOUT'--><!--Device-Support-COMMON_EVENT_HWID_LOGOUT = 'common.event.HWID_LOGOUT'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_HWID_TOKEN_INVALID
-
-```TypeScript
-COMMON_EVENT_HWID_TOKEN_INVALID = 'common.event.HWID_TOKEN_INVALID'
-```
-
-HW id is invalid.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_token_invalid)
-
-<!--Device-Support-COMMON_EVENT_HWID_TOKEN_INVALID = 'common.event.HWID_TOKEN_INVALID'--><!--Device-Support-COMMON_EVENT_HWID_TOKEN_INVALID = 'common.event.HWID_TOKEN_INVALID'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_HWID_LOGOFF
-
-```TypeScript
-COMMON_EVENT_HWID_LOGOFF = 'common.event.HWID_LOGOFF'
-```
-
-HW id logs off.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_logoff)
-
-<!--Device-Support-COMMON_EVENT_HWID_LOGOFF = 'common.event.HWID_LOGOFF'--><!--Device-Support-COMMON_EVENT_HWID_LOGOFF = 'common.event.HWID_LOGOFF'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_POWER_STATE
-
-```TypeScript
-COMMON_EVENT_WIFI_POWER_STATE = 'usual.event.wifi.POWER_STATE'
-```
-
-Indicates a change in the Wi-Fi state (enabled or disabled).
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_POWER_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_power_state)
-
-<!--Device-Support-COMMON_EVENT_WIFI_POWER_STATE = 'usual.event.wifi.POWER_STATE'--><!--Device-Support-COMMON_EVENT_WIFI_POWER_STATE = 'usual.event.wifi.POWER_STATE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_SCAN_FINISHED
-
-```TypeScript
-COMMON_EVENT_WIFI_SCAN_FINISHED = 'usual.event.wifi.SCAN_FINISHED'
-```
-
-Indicates that the Wi-Fi access point has been scanned and proved available.
-
-To subscribe to this common event, your application must have the ohos.permission.LOCATION permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_SCAN_FINISHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_scan_finished)
-
-<!--Device-Support-COMMON_EVENT_WIFI_SCAN_FINISHED = 'usual.event.wifi.SCAN_FINISHED'--><!--Device-Support-COMMON_EVENT_WIFI_SCAN_FINISHED = 'usual.event.wifi.SCAN_FINISHED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_RSSI_VALUE
-
-```TypeScript
-COMMON_EVENT_WIFI_RSSI_VALUE = 'usual.event.wifi.RSSI_VALUE'
-```
-
-Indicates that the Wi-Fi signal strength (RSSI) has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_RSSI_VALUE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_rssi_value)
-
-<!--Device-Support-COMMON_EVENT_WIFI_RSSI_VALUE = 'usual.event.wifi.RSSI_VALUE'--><!--Device-Support-COMMON_EVENT_WIFI_RSSI_VALUE = 'usual.event.wifi.RSSI_VALUE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_CONN_STATE
-
-```TypeScript
-COMMON_EVENT_WIFI_CONN_STATE = 'usual.event.wifi.CONN_STATE'
-```
-
-Indicates that the Wi-Fi connection state has changed.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_CONN_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_conn_state)
-
-<!--Device-Support-COMMON_EVENT_WIFI_CONN_STATE = 'usual.event.wifi.CONN_STATE'--><!--Device-Support-COMMON_EVENT_WIFI_CONN_STATE = 'usual.event.wifi.CONN_STATE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_HOTSPOT_STATE
-
-```TypeScript
-COMMON_EVENT_WIFI_HOTSPOT_STATE = 'usual.event.wifi.HOTSPOT_STATE'
-```
-
-Indicates a change in the Wi-Fi hotspot state (enabled or disabled).
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_HOTSPOT_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_hotspot_state)
-
-<!--Device-Support-COMMON_EVENT_WIFI_HOTSPOT_STATE = 'usual.event.wifi.HOTSPOT_STATE'--><!--Device-Support-COMMON_EVENT_WIFI_HOTSPOT_STATE = 'usual.event.wifi.HOTSPOT_STATE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_AP_STA_JOIN
-
-```TypeScript
-COMMON_EVENT_WIFI_AP_STA_JOIN = 'usual.event.wifi.WIFI_HS_STA_JOIN'
-```
-
-Indicates that a client has joined the Wi-Fi hotspot of the current device.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_AP_STA_JOIN](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_ap_sta_join)
-
-<!--Device-Support-COMMON_EVENT_WIFI_AP_STA_JOIN = 'usual.event.wifi.WIFI_HS_STA_JOIN'--><!--Device-Support-COMMON_EVENT_WIFI_AP_STA_JOIN = 'usual.event.wifi.WIFI_HS_STA_JOIN'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_AP_STA_LEAVE
-
-```TypeScript
-COMMON_EVENT_WIFI_AP_STA_LEAVE = 'usual.event.wifi.WIFI_HS_STA_LEAVE'
-```
-
-Indicates that the client is disconnected from the Wi-Fi hotspot of the current device.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_AP_STA_LEAVE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_ap_sta_leave)
-
-<!--Device-Support-COMMON_EVENT_WIFI_AP_STA_LEAVE = 'usual.event.wifi.WIFI_HS_STA_LEAVE'--><!--Device-Support-COMMON_EVENT_WIFI_AP_STA_LEAVE = 'usual.event.wifi.WIFI_HS_STA_LEAVE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE
-
-```TypeScript
-COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE = 'usual.event.wifi.mplink.STATE_CHANGE'
-```
-
-(not supported yet) Indicates that the state of MPLINK (an enhanced Wi-Fi feature) has changed.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_mplink_state_change)
-
-<!--Device-Support-COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE = 'usual.event.wifi.mplink.STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE = 'usual.event.wifi.mplink.STATE_CHANGE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_P2P_CONN_STATE
-
-```TypeScript
-COMMON_EVENT_WIFI_P2P_CONN_STATE = 'usual.event.wifi.p2p.CONN_STATE_CHANGE'
-```
-
-Indicates that the Wi-Fi P2P connection state has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION permissions.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_P2P_CONN_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_conn_state)
-
-<!--Device-Support-COMMON_EVENT_WIFI_P2P_CONN_STATE = 'usual.event.wifi.p2p.CONN_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_CONN_STATE = 'usual.event.wifi.p2p.CONN_STATE_CHANGE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_P2P_STATE_CHANGED
-
-```TypeScript
-COMMON_EVENT_WIFI_P2P_STATE_CHANGED = 'usual.event.wifi.p2p.STATE_CHANGE'
-```
-
-Indicates a change in the Wi-Fi P2P state (enabled or disabled).
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_P2P_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_state_changed)
-
-<!--Device-Support-COMMON_EVENT_WIFI_P2P_STATE_CHANGED = 'usual.event.wifi.p2p.STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_STATE_CHANGED = 'usual.event.wifi.p2p.STATE_CHANGE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED
-
-```TypeScript
-COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED = 'usual.event.wifi.p2p.DEVICES_CHANGE'
-```
-
-Indicates that the state of the Wi-Fi P2P peer device has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_peers_state_changed)
-
-<!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED = 'usual.event.wifi.p2p.DEVICES_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED = 'usual.event.wifi.p2p.DEVICES_CHANGE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED
-
-```TypeScript
-COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED = 'usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE'
-```
-
-Indicates that the Wi-Fi P2P discovery state has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_peers_discovery_state_changed)
-
-<!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED = 'usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED = 'usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED
-
-```TypeScript
-COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED = 'usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE'
-```
-
-Indicates that the state of the Wi-Fi P2P local device has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_current_device_state_changed)
-
-<!--Device-Support-COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED = 'usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED = 'usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED
-
-```TypeScript
-COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED = 'usual.event.wifi.p2p.GROUP_STATE_CHANGED'
-```
-
-Indicates that the Wi-Fi P2P group information has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_group_state_changed)
-
-<!--Device-Support-COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED = 'usual.event.wifi.p2p.GROUP_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED = 'usual.event.wifi.p2p.GROUP_STATE_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE
-
-```TypeScript
-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'
-```
-
-(reserved, not supported yet) Indicates the connection state of Bluetooth handsfree communication.
+(reserved, not supported yet) Indicates that the audio state of Bluetooth A2DP Sink has changed.
 
 To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
 
@@ -1280,19 +182,19 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfree_ag_connect_state_update)
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsink_audio_state_update)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE
+## COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'
+COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'
 ```
 
-(reserved, not supported yet) Indicates that the device connected to the Bluetooth handsfree function is active.
+(reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP Sink has changed.
 
 To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
 
@@ -1300,19 +202,19 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfree_ag_current_device_update)
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsink_connect_state_update)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE
+## COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'
+COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'
 ```
 
-(reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP has changed.
+(reserved, not supported yet) Indicates that the playing state of Bluetooth A2DP Sink has changed.
 
 To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
 
@@ -1320,9 +222,49 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfree_ag_audio_state_update)
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsink_playing_state_update)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the AVRCP connection state of Bluetooth A2DP has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsource_avrcp_connect_state_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE = 'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the audio codec state of Bluetooth A2DP has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsource_codec_value_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE = 'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE = 'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -1386,13 +328,13 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE
+## COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'
+COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'
 ```
 
-(reserved, not supported yet) Indicates that the AVRCP connection state of Bluetooth A2DP has changed.
+(reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP has changed.
 
 To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
 
@@ -1400,19 +342,19 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsource_avrcp_connect_state_update)
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfree_ag_audio_state_update)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE
+## COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE = 'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'
+COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'
 ```
 
-(reserved, not supported yet) Indicates that the audio codec state of Bluetooth A2DP has changed.
+(reserved, not supported yet) Indicates the connection state of Bluetooth handsfree communication.
 
 To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
 
@@ -1420,39 +362,19 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsource_codec_value_update)
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfree_ag_connect_state_update)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE = 'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE = 'usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED
-
-```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED = 'usual.event.bluetooth.remotedevice.DISCOVERED'
-```
-
-(reserved, not supported yet) Indicates that a remote Bluetooth device is discovered.
-
-To subscribe to this common event, your application must have the ohos.permission.LOCATION and ohos.permission.USE_BLUETOOTH permissions.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_discovered)
-
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED = 'usual.event.bluetooth.remotedevice.DISCOVERED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED = 'usual.event.bluetooth.remotedevice.DISCOVERED'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE
+## COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'
+COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'
 ```
 
-(reserved, not supported yet) Indicates that the Bluetooth class of a remote Bluetooth device has changed.
+(reserved, not supported yet) Indicates that the device connected to the Bluetooth handsfree function is active.
 
 To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
 
@@ -1460,9 +382,239 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_class_value_update)
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfree_ag_current_device_update)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE = 'usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the calling state of a Bluetooth handsfree has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_ag_call_state_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT = 'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'
+```
+
+(reserved, not supported yet) Indicates that the audio gateway state of a Bluetooth handsfree has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_ag_common_event)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT = 'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT = 'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the audio state of a Bluetooth handsfree has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_audio_state_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the connection state with a Bluetooth handsfree has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_connect_state_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED = 'usual.event.bluetooth.host.DISCOVERY_FINISHED'
+```
+
+(reserved, not supported yet) Indicates that Bluetooth discovery is finished on the device.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_discovery_finished)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED = 'usual.event.bluetooth.host.DISCOVERY_FINISHED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED = 'usual.event.bluetooth.host.DISCOVERY_FINISHED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED = 'usual.event.bluetooth.host.DISCOVERY_STARTED'
+```
+
+(reserved, not supported yet) Indicates that Bluetooth discovery is started on the device.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_discovery_started)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED = 'usual.event.bluetooth.host.DISCOVERY_STARTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED = 'usual.event.bluetooth.host.DISCOVERY_STARTED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE = 'usual.event.bluetooth.host.NAME_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the name of the device Bluetooth adapter has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_name_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE = 'usual.event.bluetooth.host.NAME_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE = 'usual.event.bluetooth.host.NAME_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE = 'usual.event.bluetooth.host.REQ_DISABLE'
+```
+
+(reserved, not supported yet) Indicates that Bluetooth is disabled.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_req_disable)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE = 'usual.event.bluetooth.host.REQ_DISABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE = 'usual.event.bluetooth.host.REQ_DISABLE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE = 'usual.event.bluetooth.host.REQ_DISCOVERABLE'
+```
+
+(reserved, not supported yet) Indicates that Bluetooth is discoverable.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_req_discoverable)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE = 'usual.event.bluetooth.host.REQ_DISCOVERABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE = 'usual.event.bluetooth.host.REQ_DISCOVERABLE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE = 'usual.event.bluetooth.host.REQ_ENABLE'
+```
+
+(reserved, not supported yet) Indicates that Bluetooth is enabled.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_req_enable)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE = 'usual.event.bluetooth.host.REQ_ENABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE = 'usual.event.bluetooth.host.REQ_ENABLE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE = 'usual.event.bluetooth.host.SCAN_MODE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the Bluetooth scan mode of the device is changed.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_scan_mode_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE = 'usual.event.bluetooth.host.SCAN_MODE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE = 'usual.event.bluetooth.host.SCAN_MODE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE = 'usual.event.bluetooth.host.STATE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates a change in the Bluetooth adapter state (enabled or disabled).
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_state_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE = 'usual.event.bluetooth.host.STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE = 'usual.event.bluetooth.host.STATE_UPDATE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -1506,6 +658,120 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the battery level of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_battery_value_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'
+```
+
+(reserved, not supported yet) Indicates that the Bluetooth class of a remote Bluetooth device has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_class_value_update)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL = 'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'
+```
+
+(reserved, not supported yet) Indicates that the connection to a remote Bluetooth device has been canceled.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_connect_cancel)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL = 'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL = 'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY = 'usual.event.bluetooth.remotedevice.CONNECT_REPLY'
+```
+
+(reserved, not supported yet) Indicates the response to the connection request from a remote Bluetooth device.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_connect_reply)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY = 'usual.event.bluetooth.remotedevice.CONNECT_REPLY'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY = 'usual.event.bluetooth.remotedevice.CONNECT_REPLY'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ = 'usual.event.bluetooth.remotedevice.CONNECT_REQ'
+```
+
+(reserved, not supported yet) Indicates the connection request from a remote Bluetooth device.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_connect_req)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ = 'usual.event.bluetooth.remotedevice.CONNECT_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ = 'usual.event.bluetooth.remotedevice.CONNECT_REQ'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED = 'usual.event.bluetooth.remotedevice.DISCOVERED'
+```
+
+(reserved, not supported yet) Indicates that a remote Bluetooth device is discovered.
+
+To subscribe to this common event, your application must have the ohos.permission.LOCATION and ohos.permission.USE_BLUETOOTH permissions.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_discovered)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED = 'usual.event.bluetooth.remotedevice.DISCOVERED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED = 'usual.event.bluetooth.remotedevice.DISCOVERED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
 ## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE
 
 ```TypeScript
@@ -1546,23 +812,41 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL = 'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'
 ```
 
-(reserved, not supported yet) Indicates that the battery level of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
-
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+(reserved, not supported yet) Indicates that Bluetooth pairing has been canceled.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_battery_value_update)
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_pairing_cancel)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE = 'usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL = 'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL = 'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ
+
+```TypeScript
+COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ = 'usual.event.bluetooth.remotedevice.PAIRING_REQ'
+```
+
+(reserved, not supported yet) Indicates the pairing request from a remote Bluetooth device.
+
+To subscribe to this common event, your application must have the ohos.permission.DISCOVER_BLUETOOTH permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_pairing_req)
+
+<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ = 'usual.event.bluetooth.remotedevice.PAIRING_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ = 'usual.event.bluetooth.remotedevice.PAIRING_REQ'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -1604,385 +888,757 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ
+## COMMON_EVENT_BOOT_COMPLETED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ = 'usual.event.bluetooth.remotedevice.PAIRING_REQ'
+COMMON_EVENT_BOOT_COMPLETED = 'usual.event.BOOT_COMPLETED'
 ```
 
-(reserved, not supported yet) Indicates the pairing request from a remote Bluetooth device.
+Indicates that the boot is complete and the system is loaded.
 
-To subscribe to this common event, your application must have the ohos.permission.DISCOVER_BLUETOOTH permission.
+To subscribe to this common event, your application must have the ohos.permission.RECEIVER_STARTUP_COMPLETED permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_pairing_req)
+**Substitutes:** [COMMON_EVENT_BOOT_COMPLETED](arkts-basicservices-commoneventmanager-support-e.md#common_event_boot_completed)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ = 'usual.event.bluetooth.remotedevice.PAIRING_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ = 'usual.event.bluetooth.remotedevice.PAIRING_REQ'-End-->
+<!--Device-Support-COMMON_EVENT_BOOT_COMPLETED = 'usual.event.BOOT_COMPLETED'--><!--Device-Support-COMMON_EVENT_BOOT_COMPLETED = 'usual.event.BOOT_COMPLETED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL
+## COMMON_EVENT_BUNDLE_REMOVED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL = 'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'
+COMMON_EVENT_BUNDLE_REMOVED = 'usual.event.BUNDLE_REMOVED'
 ```
 
-(reserved, not supported yet) Indicates that Bluetooth pairing has been canceled.
+(reserved, not supported yet) Indicates that an installed bundle has been uninstalled from the device with the application data retained.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_pairing_cancel)
+**Substitutes:** [COMMON_EVENT_BUNDLE_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bundle_removed)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL = 'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL = 'usual.event.bluetooth.remotedevice.PAIRING_CANCEL'-End-->
+<!--Device-Support-COMMON_EVENT_BUNDLE_REMOVED = 'usual.event.BUNDLE_REMOVED'--><!--Device-Support-COMMON_EVENT_BUNDLE_REMOVED = 'usual.event.BUNDLE_REMOVED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ
+## COMMON_EVENT_CHARGING
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ = 'usual.event.bluetooth.remotedevice.CONNECT_REQ'
+COMMON_EVENT_CHARGING = 'usual.event.CHARGING'
 ```
 
-(reserved, not supported yet) Indicates the connection request from a remote Bluetooth device.
+Indicates that the system starts charging the battery.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_connect_req)
+**Substitutes:** [COMMON_EVENT_CHARGING](arkts-basicservices-commoneventmanager-support-e.md#common_event_charging)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ = 'usual.event.bluetooth.remotedevice.CONNECT_REQ'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ = 'usual.event.bluetooth.remotedevice.CONNECT_REQ'-End-->
+<!--Device-Support-COMMON_EVENT_CHARGING = 'usual.event.CHARGING'--><!--Device-Support-COMMON_EVENT_CHARGING = 'usual.event.CHARGING'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY
+## COMMON_EVENT_CLOSE_SYSTEM_DIALOGS
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY = 'usual.event.bluetooth.remotedevice.CONNECT_REPLY'
+COMMON_EVENT_CLOSE_SYSTEM_DIALOGS = 'usual.event.CLOSE_SYSTEM_DIALOGS'
 ```
 
-(reserved, not supported yet) Indicates the response to the connection request from a remote Bluetooth device.
+(reserved, not supported yet) Indicates that the user closes a temporary system dialog box.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_connect_reply)
+**Substitutes:** [COMMON_EVENT_CLOSE_SYSTEM_DIALOGS](arkts-basicservices-commoneventmanager-support-e.md#common_event_close_system_dialogs)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY = 'usual.event.bluetooth.remotedevice.CONNECT_REPLY'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY = 'usual.event.bluetooth.remotedevice.CONNECT_REPLY'-End-->
+<!--Device-Support-COMMON_EVENT_CLOSE_SYSTEM_DIALOGS = 'usual.event.CLOSE_SYSTEM_DIALOGS'--><!--Device-Support-COMMON_EVENT_CLOSE_SYSTEM_DIALOGS = 'usual.event.CLOSE_SYSTEM_DIALOGS'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL
+## COMMON_EVENT_CONFIGURATION_CHANGED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL = 'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'
+COMMON_EVENT_CONFIGURATION_CHANGED = 'usual.event.CONFIGURATION_CHANGED'
 ```
 
-(reserved, not supported yet) Indicates that the connection to a remote Bluetooth device has been canceled.
+(reserved, not supported yet) Indicates that the device state (for example, orientation and locale) has changed.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_remotedevice_connect_cancel)
+**Substitutes:** [COMMON_EVENT_CONFIGURATION_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_configuration_changed)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL = 'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL = 'usual.event.bluetooth.remotedevice.CONNECT_CANCEL'-End-->
+<!--Device-Support-COMMON_EVENT_CONFIGURATION_CHANGED = 'usual.event.CONFIGURATION_CHANGED'--><!--Device-Support-COMMON_EVENT_CONFIGURATION_CHANGED = 'usual.event.CONFIGURATION_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE
+## COMMON_EVENT_DATE_CHANGED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'
+COMMON_EVENT_DATE_CHANGED = 'usual.event.DATE_CHANGED'
 ```
 
-(reserved, not supported yet) Indicates that the connection state with a Bluetooth handsfree has changed.
+(reserved, not supported yet) Indicates that the system date has been changed.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_connect_state_update)
+**Substitutes:** [COMMON_EVENT_DATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_date_changed)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_DATE_CHANGED = 'usual.event.DATE_CHANGED'--><!--Device-Support-COMMON_EVENT_DATE_CHANGED = 'usual.event.DATE_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE
+## COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'
+COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED = 'usual.event.DEVICE_IDLE_MODE_CHANGED'
 ```
 
-(reserved, not supported yet) Indicates that the audio state of a Bluetooth handsfree has changed.
+(reserved, not supported yet) Indicates that the system idle mode has changed.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_audio_state_update)
+**Substitutes:** [COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_device_idle_mode_changed)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED = 'usual.event.DEVICE_IDLE_MODE_CHANGED'--><!--Device-Support-COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED = 'usual.event.DEVICE_IDLE_MODE_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT
+## COMMON_EVENT_DISCHARGING
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT = 'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'
+COMMON_EVENT_DISCHARGING = 'usual.event.DISCHARGING'
 ```
 
-(reserved, not supported yet) Indicates that the audio gateway state of a Bluetooth handsfree has changed.
+Indicates that the system stops charging the battery.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_ag_common_event)
+**Substitutes:** [COMMON_EVENT_DISCHARGING](arkts-basicservices-commoneventmanager-support-e.md#common_event_discharging)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT = 'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT = 'usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT'-End-->
+<!--Device-Support-COMMON_EVENT_DISCHARGING = 'usual.event.DISCHARGING'--><!--Device-Support-COMMON_EVENT_DISCHARGING = 'usual.event.DISCHARGING'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE
+## COMMON_EVENT_DISK_BAD_REMOVAL
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'
+COMMON_EVENT_DISK_BAD_REMOVAL = 'usual.event.data.DISK_BAD_REMOVAL'
 ```
 
-(reserved, not supported yet) Indicates that the calling state of a Bluetooth handsfree has changed.
+(reserved, not supported yet) Indicates that an external storage device was removed without being unmounted.
+
+To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_handsfreeunit_ag_call_state_update)
+**Substitutes:** [COMMON_EVENT_DISK_BAD_REMOVAL](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_bad_removal)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE = 'usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_DISK_BAD_REMOVAL = 'usual.event.data.DISK_BAD_REMOVAL'--><!--Device-Support-COMMON_EVENT_DISK_BAD_REMOVAL = 'usual.event.data.DISK_BAD_REMOVAL'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE
+## COMMON_EVENT_DISK_EJECT
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE = 'usual.event.bluetooth.host.STATE_UPDATE'
+COMMON_EVENT_DISK_EJECT = 'usual.event.data.DISK_EJECT'
 ```
 
-(reserved, not supported yet) Indicates a change in the Bluetooth adapter state (enabled or disabled).
+(reserved, not supported yet) Indicates that the external storage medium has been ejected (interactive operation at the system software layer, not directly ejected physically).
 
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_state_update)
+**Substitutes:** [COMMON_EVENT_DISK_EJECT](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_eject)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE = 'usual.event.bluetooth.host.STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE = 'usual.event.bluetooth.host.STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_DISK_EJECT = 'usual.event.data.DISK_EJECT'--><!--Device-Support-COMMON_EVENT_DISK_EJECT = 'usual.event.data.DISK_EJECT'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE
+## COMMON_EVENT_DISK_MOUNTED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE = 'usual.event.bluetooth.host.REQ_DISCOVERABLE'
+COMMON_EVENT_DISK_MOUNTED = 'usual.event.data.DISK_MOUNTED'
 ```
 
-(reserved, not supported yet) Indicates that Bluetooth is discoverable.
+(reserved, not supported yet) Indicates that an external storage device was mounted.
+
+To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_req_discoverable)
+**Substitutes:** [COMMON_EVENT_DISK_MOUNTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_mounted)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE = 'usual.event.bluetooth.host.REQ_DISCOVERABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE = 'usual.event.bluetooth.host.REQ_DISCOVERABLE'-End-->
+<!--Device-Support-COMMON_EVENT_DISK_MOUNTED = 'usual.event.data.DISK_MOUNTED'--><!--Device-Support-COMMON_EVENT_DISK_MOUNTED = 'usual.event.data.DISK_MOUNTED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE
+## COMMON_EVENT_DISK_REMOVED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE = 'usual.event.bluetooth.host.REQ_ENABLE'
+COMMON_EVENT_DISK_REMOVED = 'usual.event.data.DISK_REMOVED'
 ```
 
-(reserved, not supported yet) Indicates that Bluetooth is enabled.
+(reserved, not supported yet) Indicates that an external storage device was removed.
 
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_req_enable)
+**Substitutes:** [COMMON_EVENT_DISK_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_removed)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE = 'usual.event.bluetooth.host.REQ_ENABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE = 'usual.event.bluetooth.host.REQ_ENABLE'-End-->
+<!--Device-Support-COMMON_EVENT_DISK_REMOVED = 'usual.event.data.DISK_REMOVED'--><!--Device-Support-COMMON_EVENT_DISK_REMOVED = 'usual.event.data.DISK_REMOVED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE
+## COMMON_EVENT_DISK_UNMOUNTABLE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE = 'usual.event.bluetooth.host.REQ_DISABLE'
+COMMON_EVENT_DISK_UNMOUNTABLE = 'usual.event.data.DISK_UNMOUNTABLE'
 ```
 
-(reserved, not supported yet) Indicates that Bluetooth is disabled.
+(reserved, not supported yet) Indicates that the external storage device cannot be mounted when a card is inserted.
 
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_req_disable)
+**Substitutes:** [COMMON_EVENT_DISK_UNMOUNTABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_unmountable)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE = 'usual.event.bluetooth.host.REQ_DISABLE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE = 'usual.event.bluetooth.host.REQ_DISABLE'-End-->
+<!--Device-Support-COMMON_EVENT_DISK_UNMOUNTABLE = 'usual.event.data.DISK_UNMOUNTABLE'--><!--Device-Support-COMMON_EVENT_DISK_UNMOUNTABLE = 'usual.event.data.DISK_UNMOUNTABLE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE
+## COMMON_EVENT_DISK_UNMOUNTED
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE = 'usual.event.bluetooth.host.SCAN_MODE_UPDATE'
+COMMON_EVENT_DISK_UNMOUNTED = 'usual.event.data.DISK_UNMOUNTED'
 ```
 
-(reserved, not supported yet) Indicates that the Bluetooth scan mode of the device is changed.
+(reserved, not supported yet) Indicates that an external storage device was unmounted.
 
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_scan_mode_update)
+**Substitutes:** [COMMON_EVENT_DISK_UNMOUNTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_unmounted)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE = 'usual.event.bluetooth.host.SCAN_MODE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE = 'usual.event.bluetooth.host.SCAN_MODE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_DISK_UNMOUNTED = 'usual.event.data.DISK_UNMOUNTED'--><!--Device-Support-COMMON_EVENT_DISK_UNMOUNTED = 'usual.event.data.DISK_UNMOUNTED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED
+## COMMON_EVENT_DRIVE_MODE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED = 'usual.event.bluetooth.host.DISCOVERY_STARTED'
+COMMON_EVENT_DRIVE_MODE = 'common.event.DRIVE_MODE'
 ```
 
-(reserved, not supported yet) Indicates that Bluetooth discovery is started on the device.
-
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+(reserved, not supported yet) Indicates that the system is in driving mode.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_discovery_started)
+**Substitutes:** [COMMON_EVENT_DRIVE_MODE](arkts-basicservices-commoneventmanager-support-e.md#common_event_drive_mode)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED = 'usual.event.bluetooth.host.DISCOVERY_STARTED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED = 'usual.event.bluetooth.host.DISCOVERY_STARTED'-End-->
+<!--Device-Support-COMMON_EVENT_DRIVE_MODE = 'common.event.DRIVE_MODE'--><!--Device-Support-COMMON_EVENT_DRIVE_MODE = 'common.event.DRIVE_MODE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED
+## COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED = 'usual.event.bluetooth.host.DISCOVERY_FINISHED'
+COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_AVAILABLE'
 ```
 
-(reserved, not supported yet) Indicates that Bluetooth discovery is finished on the device.
-
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+(reserved, not supported yet) Indicates that applications installed on the external storage are available for the system.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_discovery_finished)
+**Substitutes:** [COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_external_applications_available)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED = 'usual.event.bluetooth.host.DISCOVERY_FINISHED'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED = 'usual.event.bluetooth.host.DISCOVERY_FINISHED'-End-->
+<!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_AVAILABLE'--><!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_AVAILABLE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE
+## COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE = 'usual.event.bluetooth.host.NAME_UPDATE'
+COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE'
 ```
 
-(reserved, not supported yet) Indicates that the name of the device Bluetooth adapter has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+(reserved, not supported yet) Indicates that applications installed on the external storage are not available for the system.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_host_name_update)
+**Substitutes:** [COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_external_applications_unavailable)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE = 'usual.event.bluetooth.host.NAME_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE = 'usual.event.bluetooth.host.NAME_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE'--><!--Device-Support-COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE = 'usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE
+## COMMON_EVENT_FOUNDATION_READY
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'
+COMMON_EVENT_FOUNDATION_READY = 'common.event.FOUNDATION_READY'
 ```
 
-(reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP Sink has changed.
+(reserved, not supported yet) Indicates that the foundation is ready.
 
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+To subscribe to this common event, your application must have the ohos.permission.RECEIVER_STARTUP_COMPLETED permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsink_connect_state_update)
+**Substitutes:** [COMMON_EVENT_FOUNDATION_READY](arkts-basicservices-commoneventmanager-support-e.md#common_event_foundation_ready)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_FOUNDATION_READY = 'common.event.FOUNDATION_READY'--><!--Device-Support-COMMON_EVENT_FOUNDATION_READY = 'common.event.FOUNDATION_READY'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE
+## COMMON_EVENT_HOME_MODE
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'
+COMMON_EVENT_HOME_MODE = 'common.event.HOME_MODE'
 ```
 
-(reserved, not supported yet) Indicates that the playing state of Bluetooth A2DP Sink has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+(reserved, not supported yet) Indicates that the system is in home mode.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsink_playing_state_update)
+**Substitutes:** [COMMON_EVENT_HOME_MODE](arkts-basicservices-commoneventmanager-support-e.md#common_event_home_mode)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_HOME_MODE = 'common.event.HOME_MODE'--><!--Device-Support-COMMON_EVENT_HOME_MODE = 'common.event.HOME_MODE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE
+## COMMON_EVENT_HWID_LOGIN
 
 ```TypeScript
-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'
+COMMON_EVENT_HWID_LOGIN = 'common.event.HWID_LOGIN'
 ```
 
-(reserved, not supported yet) Indicates that the audio state of Bluetooth A2DP Sink has changed.
-
-To subscribe to this common event, your application must have the ohos.permission.USE_BLUETOOTH permission.
+HW id login successfully.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_bluetooth_a2dpsink_audio_state_update)
+**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_login)
 
-<!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'--><!--Device-Support-COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE = 'usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE'-End-->
+<!--Device-Support-COMMON_EVENT_HWID_LOGIN = 'common.event.HWID_LOGIN'--><!--Device-Support-COMMON_EVENT_HWID_LOGIN = 'common.event.HWID_LOGIN'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_HWID_LOGOFF
+
+```TypeScript
+COMMON_EVENT_HWID_LOGOFF = 'common.event.HWID_LOGOFF'
+```
+
+HW id logs off.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_logoff)
+
+<!--Device-Support-COMMON_EVENT_HWID_LOGOFF = 'common.event.HWID_LOGOFF'--><!--Device-Support-COMMON_EVENT_HWID_LOGOFF = 'common.event.HWID_LOGOFF'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_HWID_LOGOUT
+
+```TypeScript
+COMMON_EVENT_HWID_LOGOUT = 'common.event.HWID_LOGOUT'
+```
+
+HW id logout successfully.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_logout)
+
+<!--Device-Support-COMMON_EVENT_HWID_LOGOUT = 'common.event.HWID_LOGOUT'--><!--Device-Support-COMMON_EVENT_HWID_LOGOUT = 'common.event.HWID_LOGOUT'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_HWID_TOKEN_INVALID
+
+```TypeScript
+COMMON_EVENT_HWID_TOKEN_INVALID = 'common.event.HWID_TOKEN_INVALID'
+```
+
+HW id is invalid.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID](arkts-basicservices-commoneventmanager-support-e.md#common_event_distributed_account_token_invalid)
+
+<!--Device-Support-COMMON_EVENT_HWID_TOKEN_INVALID = 'common.event.HWID_TOKEN_INVALID'--><!--Device-Support-COMMON_EVENT_HWID_TOKEN_INVALID = 'common.event.HWID_TOKEN_INVALID'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_ACTIVE
+
+```TypeScript
+COMMON_EVENT_IVI_ACTIVE = 'common.event.IVI_ACTIVE'
+```
+
+(reserved, not supported yet) Indicates that the battery service of the vehicle-mounted system is active.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_ACTIVE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_active)
+
+<!--Device-Support-COMMON_EVENT_IVI_ACTIVE = 'common.event.IVI_ACTIVE'--><!--Device-Support-COMMON_EVENT_IVI_ACTIVE = 'common.event.IVI_ACTIVE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_EXTREME_TEMPERATURE
+
+```TypeScript
+COMMON_EVENT_IVI_EXTREME_TEMPERATURE = 'common.event.IVI_EXTREME_TEMPERATURE'
+```
+
+(reserved, not supported yet) Indicates that the temperature of the IVI system of the vehicle is extremely high.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_EXTREME_TEMPERATURE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_extreme_temperature)
+
+<!--Device-Support-COMMON_EVENT_IVI_EXTREME_TEMPERATURE = 'common.event.IVI_EXTREME_TEMPERATURE'--><!--Device-Support-COMMON_EVENT_IVI_EXTREME_TEMPERATURE = 'common.event.IVI_EXTREME_TEMPERATURE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_HIGH_TEMPERATURE
+
+```TypeScript
+COMMON_EVENT_IVI_HIGH_TEMPERATURE = 'common.event.IVI_HIGH_TEMPERATURE'
+```
+
+(reserved, not supported yet) Indicates that the temperature of the IVI system of the vehicle is too high.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_HIGH_TEMPERATURE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_high_temperature)
+
+<!--Device-Support-COMMON_EVENT_IVI_HIGH_TEMPERATURE = 'common.event.IVI_HIGH_TEMPERATURE'--><!--Device-Support-COMMON_EVENT_IVI_HIGH_TEMPERATURE = 'common.event.IVI_HIGH_TEMPERATURE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_LASTMODE_SAVE
+
+```TypeScript
+COMMON_EVENT_IVI_LASTMODE_SAVE = 'common.event.IVI_LASTMODE_SAVE'
+```
+
+(reserved, not supported yet) Indicates that the third-party application in the IVI system of the vehicle saves the last mode.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_LASTMODE_SAVE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_lastmode_save)
+
+<!--Device-Support-COMMON_EVENT_IVI_LASTMODE_SAVE = 'common.event.IVI_LASTMODE_SAVE'--><!--Device-Support-COMMON_EVENT_IVI_LASTMODE_SAVE = 'common.event.IVI_LASTMODE_SAVE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_PAUSE
+
+```TypeScript
+COMMON_EVENT_IVI_PAUSE = 'common.event.IVI_PAUSE'
+```
+
+(reserved, not supported yet) Indicates that the IVI system of the vehicle is in sleep mode and notifies the application to stop playing.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_PAUSE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_pause)
+
+<!--Device-Support-COMMON_EVENT_IVI_PAUSE = 'common.event.IVI_PAUSE'--><!--Device-Support-COMMON_EVENT_IVI_PAUSE = 'common.event.IVI_PAUSE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_SLEEP
+
+```TypeScript
+COMMON_EVENT_IVI_SLEEP = 'common.event.IVI_SLEEP'
+```
+
+(reserved, not supported yet) Indicates that the in-vehicle infotainment (IVI) system of the vehicle is sleeping.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_SLEEP](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_sleep)
+
+<!--Device-Support-COMMON_EVENT_IVI_SLEEP = 'common.event.IVI_SLEEP'--><!--Device-Support-COMMON_EVENT_IVI_SLEEP = 'common.event.IVI_SLEEP'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_STANDBY
+
+```TypeScript
+COMMON_EVENT_IVI_STANDBY = 'common.event.IVI_STANDBY'
+```
+
+(reserved, not supported yet) Indicates that a third-party application in the IVI system of a vehicle is suspended.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_STANDBY](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_standby)
+
+<!--Device-Support-COMMON_EVENT_IVI_STANDBY = 'common.event.IVI_STANDBY'--><!--Device-Support-COMMON_EVENT_IVI_STANDBY = 'common.event.IVI_STANDBY'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
+
+```TypeScript
+COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL = 'common.event.IVI_TEMPERATURE_ABNORMAL'
+```
+
+(reserved, not supported yet) Indicates that the IVI system of the vehicle has an extreme temperature.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_temperature_abnormal)
+
+<!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL = 'common.event.IVI_TEMPERATURE_ABNORMAL'--><!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL = 'common.event.IVI_TEMPERATURE_ABNORMAL'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_TEMPERATURE_RECOVERY
+
+```TypeScript
+COMMON_EVENT_IVI_TEMPERATURE_RECOVERY = 'common.event.IVI_TEMPERATURE_RECOVERY'
+```
+
+(reserved, not supported yet) Indicates that the temperature of the IVI system is restored to normal.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_TEMPERATURE_RECOVERY](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_temperature_recovery)
+
+<!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_RECOVERY = 'common.event.IVI_TEMPERATURE_RECOVERY'--><!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_RECOVERY = 'common.event.IVI_TEMPERATURE_RECOVERY'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_VOLTAGE_ABNORMAL
+
+```TypeScript
+COMMON_EVENT_IVI_VOLTAGE_ABNORMAL = 'common.event.IVI_VOLTAGE_ABNORMAL'
+```
+
+(reserved, not supported yet) Indicates that the voltage of the vehicle's power system is abnormal.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_VOLTAGE_ABNORMAL](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_voltage_abnormal)
+
+<!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_ABNORMAL = 'common.event.IVI_VOLTAGE_ABNORMAL'--><!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_ABNORMAL = 'common.event.IVI_VOLTAGE_ABNORMAL'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_IVI_VOLTAGE_RECOVERY
+
+```TypeScript
+COMMON_EVENT_IVI_VOLTAGE_RECOVERY = 'common.event.IVI_VOLTAGE_RECOVERY'
+```
+
+(reserved, not supported yet) Indicates that the voltage of the vehicle's power system is restored to normal.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_IVI_VOLTAGE_RECOVERY](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_voltage_recovery)
+
+<!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_RECOVERY = 'common.event.IVI_VOLTAGE_RECOVERY'--><!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_RECOVERY = 'common.event.IVI_VOLTAGE_RECOVERY'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_LOCALE_CHANGED
+
+```TypeScript
+COMMON_EVENT_LOCALE_CHANGED = 'usual.event.LOCALE_CHANGED'
+```
+
+(reserved, not supported yet) Indicates that the device locale has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_LOCALE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_locale_changed)
+
+<!--Device-Support-COMMON_EVENT_LOCALE_CHANGED = 'usual.event.LOCALE_CHANGED'--><!--Device-Support-COMMON_EVENT_LOCALE_CHANGED = 'usual.event.LOCALE_CHANGED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
+
+```TypeScript
+COMMON_EVENT_LOCATION_MODE_STATE_CHANGED = 'usual.event.location.MODE_STATE_CHANGED'
+```
+
+(reserved, not supported yet) Indicates that the location mode of the system has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_LOCATION_MODE_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_location_mode_state_changed)
+
+<!--Device-Support-COMMON_EVENT_LOCATION_MODE_STATE_CHANGED = 'usual.event.location.MODE_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_LOCATION_MODE_STATE_CHANGED = 'usual.event.location.MODE_STATE_CHANGED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_LOCKED_BOOT_COMPLETED
+
+```TypeScript
+COMMON_EVENT_LOCKED_BOOT_COMPLETED = 'usual.event.LOCKED_BOOT_COMPLETED'
+```
+
+(reserved, not supported yet) Indicates that the guidance is complete and the system is loaded, but the screen is still locked.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_LOCKED_BOOT_COMPLETED](arkts-basicservices-commoneventmanager-support-e.md#common_event_locked_boot_completed)
+
+<!--Device-Support-COMMON_EVENT_LOCKED_BOOT_COMPLETED = 'usual.event.LOCKED_BOOT_COMPLETED'--><!--Device-Support-COMMON_EVENT_LOCKED_BOOT_COMPLETED = 'usual.event.LOCKED_BOOT_COMPLETED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_MANAGE_PACKAGE_STORAGE
+
+```TypeScript
+COMMON_EVENT_MANAGE_PACKAGE_STORAGE = 'usual.event.MANAGE_PACKAGE_STORAGE'
+```
+
+(reserved, not supported yet) Indicates that the device storage is insufficient.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_MANAGE_PACKAGE_STORAGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_manage_package_storage)
+
+<!--Device-Support-COMMON_EVENT_MANAGE_PACKAGE_STORAGE = 'usual.event.MANAGE_PACKAGE_STORAGE'--><!--Device-Support-COMMON_EVENT_MANAGE_PACKAGE_STORAGE = 'usual.event.MANAGE_PACKAGE_STORAGE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_MY_PACKAGE_REPLACED
+
+```TypeScript
+COMMON_EVENT_MY_PACKAGE_REPLACED = 'usual.event.MY_PACKAGE_REPLACED'
+```
+
+(reserved, not supported yet) Indicates that the new version of the application package has replaced the previous version.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_MY_PACKAGE_REPLACED](arkts-basicservices-commoneventmanager-support-e.md#common_event_my_package_replaced)
+
+<!--Device-Support-COMMON_EVENT_MY_PACKAGE_REPLACED = 'usual.event.MY_PACKAGE_REPLACED'--><!--Device-Support-COMMON_EVENT_MY_PACKAGE_REPLACED = 'usual.event.MY_PACKAGE_REPLACED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_MY_PACKAGE_SUSPENDED
+
+```TypeScript
+COMMON_EVENT_MY_PACKAGE_SUSPENDED = 'usual.event.MY_PACKAGE_SUSPENDED'
+```
+
+Indicates that the application HAP package is suspended.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_MY_PACKAGE_SUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_my_package_suspended)
+
+<!--Device-Support-COMMON_EVENT_MY_PACKAGE_SUSPENDED = 'usual.event.MY_PACKAGE_SUSPENDED'--><!--Device-Support-COMMON_EVENT_MY_PACKAGE_SUSPENDED = 'usual.event.MY_PACKAGE_SUSPENDED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
+
+```TypeScript
+COMMON_EVENT_MY_PACKAGE_UNSUSPENDED = 'usual.event.MY_PACKAGE_UNSUSPENDED'
+```
+
+Indicates that the application package is not suspended.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_MY_PACKAGE_UNSUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_my_package_unsuspended)
+
+<!--Device-Support-COMMON_EVENT_MY_PACKAGE_UNSUSPENDED = 'usual.event.MY_PACKAGE_UNSUSPENDED'--><!--Device-Support-COMMON_EVENT_MY_PACKAGE_UNSUSPENDED = 'usual.event.MY_PACKAGE_UNSUSPENDED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -2001,26 +1657,6 @@ COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED = 'usual.event.nfc.action.ADAPTER_
 **Substitutes:** [COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_nfc_action_adapter_state_changed)
 
 <!--Device-Support-COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED = 'usual.event.nfc.action.ADAPTER_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED = 'usual.event.nfc.action.ADAPTER_STATE_CHANGED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED
-
-```TypeScript
-COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED = 'usual.event.nfc.action.RF_FIELD_ON_DETECTED'
-```
-
-(reserved, not supported yet) Indicates that the NFC RF field is detected to be in the enabled state.
-
-To subscribe to this common event, your application must have the ohos.permission.MANAGE_SECURE_SETTINGS permission. (This permission is available only for system applications.)
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_nfc_action_rf_field_on_detected)
-
-<!--Device-Support-COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED = 'usual.event.nfc.action.RF_FIELD_ON_DETECTED'--><!--Device-Support-COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED = 'usual.event.nfc.action.RF_FIELD_ON_DETECTED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -2044,57 +1680,293 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DISCHARGING
+## COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED
 
 ```TypeScript
-COMMON_EVENT_DISCHARGING = 'usual.event.DISCHARGING'
+COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED = 'usual.event.nfc.action.RF_FIELD_ON_DETECTED'
 ```
 
-Indicates that the system stops charging the battery.
+(reserved, not supported yet) Indicates that the NFC RF field is detected to be in the enabled state.
+
+To subscribe to this common event, your application must have the ohos.permission.MANAGE_SECURE_SETTINGS permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DISCHARGING](arkts-basicservices-commoneventmanager-support-e.md#common_event_discharging)
+**Substitutes:** [COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_nfc_action_rf_field_on_detected)
 
-<!--Device-Support-COMMON_EVENT_DISCHARGING = 'usual.event.DISCHARGING'--><!--Device-Support-COMMON_EVENT_DISCHARGING = 'usual.event.DISCHARGING'-End-->
+<!--Device-Support-COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED = 'usual.event.nfc.action.RF_FIELD_ON_DETECTED'--><!--Device-Support-COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED = 'usual.event.nfc.action.RF_FIELD_ON_DETECTED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_CHARGING
+## COMMON_EVENT_OFFICE_MODE
 
 ```TypeScript
-COMMON_EVENT_CHARGING = 'usual.event.CHARGING'
+COMMON_EVENT_OFFICE_MODE = 'common.event.OFFICE_MODE'
 ```
 
-Indicates that the system starts charging the battery.
+(reserved, not supported yet) Indicates that the system is in office mode.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_CHARGING](arkts-basicservices-commoneventmanager-support-e.md#common_event_charging)
+**Substitutes:** [COMMON_EVENT_OFFICE_MODE](arkts-basicservices-commoneventmanager-support-e.md#common_event_office_mode)
 
-<!--Device-Support-COMMON_EVENT_CHARGING = 'usual.event.CHARGING'--><!--Device-Support-COMMON_EVENT_CHARGING = 'usual.event.CHARGING'-End-->
+<!--Device-Support-COMMON_EVENT_OFFICE_MODE = 'common.event.OFFICE_MODE'--><!--Device-Support-COMMON_EVENT_OFFICE_MODE = 'common.event.OFFICE_MODE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED
+## COMMON_EVENT_PACKAGE_ADDED
 
 ```TypeScript
-COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED = 'usual.event.DEVICE_IDLE_MODE_CHANGED'
+COMMON_EVENT_PACKAGE_ADDED = 'usual.event.PACKAGE_ADDED'
 ```
 
-(reserved, not supported yet) Indicates that the system idle mode has changed.
+Indicates that a new application package has been installed on the device.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_device_idle_mode_changed)
+**Substitutes:** [COMMON_EVENT_PACKAGE_ADDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_added)
 
-<!--Device-Support-COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED = 'usual.event.DEVICE_IDLE_MODE_CHANGED'--><!--Device-Support-COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED = 'usual.event.DEVICE_IDLE_MODE_CHANGED'-End-->
+<!--Device-Support-COMMON_EVENT_PACKAGE_ADDED = 'usual.event.PACKAGE_ADDED'--><!--Device-Support-COMMON_EVENT_PACKAGE_ADDED = 'usual.event.PACKAGE_ADDED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_CHANGED
+
+```TypeScript
+COMMON_EVENT_PACKAGE_CHANGED = 'usual.event.PACKAGE_CHANGED'
+```
+
+Indicates that an application package has been changed (for example, an ability in the package has been enabled or disabled).
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_changed)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_CHANGED = 'usual.event.PACKAGE_CHANGED'--><!--Device-Support-COMMON_EVENT_PACKAGE_CHANGED = 'usual.event.PACKAGE_CHANGED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_DATA_CLEARED
+
+```TypeScript
+COMMON_EVENT_PACKAGE_DATA_CLEARED = 'usual.event.PACKAGE_DATA_CLEARED'
+```
+
+Indicates that the user cleared the application package data.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_DATA_CLEARED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_data_cleared)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_DATA_CLEARED = 'usual.event.PACKAGE_DATA_CLEARED'--><!--Device-Support-COMMON_EVENT_PACKAGE_DATA_CLEARED = 'usual.event.PACKAGE_DATA_CLEARED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_FIRST_LAUNCH
+
+```TypeScript
+COMMON_EVENT_PACKAGE_FIRST_LAUNCH = 'usual.event.PACKAGE_FIRST_LAUNCH'
+```
+
+(reserved, not supported yet) Indicates that an installed application is started for the first time.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_FIRST_LAUNCH](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_first_launch)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_FIRST_LAUNCH = 'usual.event.PACKAGE_FIRST_LAUNCH'--><!--Device-Support-COMMON_EVENT_PACKAGE_FIRST_LAUNCH = 'usual.event.PACKAGE_FIRST_LAUNCH'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_FULLY_REMOVED
+
+```TypeScript
+COMMON_EVENT_PACKAGE_FULLY_REMOVED = 'usual.event.PACKAGE_FULLY_REMOVED'
+```
+
+(reserved, not supported yet) Indicates that an installed application, including both the application data and code, has been completely uninstalled from the device.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_FULLY_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_fully_removed)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_FULLY_REMOVED = 'usual.event.PACKAGE_FULLY_REMOVED'--><!--Device-Support-COMMON_EVENT_PACKAGE_FULLY_REMOVED = 'usual.event.PACKAGE_FULLY_REMOVED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION
+
+```TypeScript
+COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION = 'usual.event.PACKAGE_NEEDS_VERIFICATION'
+```
+
+(reserved, not supported yet) Indicates that an application requires system verification.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_needs_verification)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION = 'usual.event.PACKAGE_NEEDS_VERIFICATION'--><!--Device-Support-COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION = 'usual.event.PACKAGE_NEEDS_VERIFICATION'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_REMOVED
+
+```TypeScript
+COMMON_EVENT_PACKAGE_REMOVED = 'usual.event.PACKAGE_REMOVED'
+```
+
+Indicates that an installed application has been uninstalled from the device with the application data retained.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_removed)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_REMOVED = 'usual.event.PACKAGE_REMOVED'--><!--Device-Support-COMMON_EVENT_PACKAGE_REMOVED = 'usual.event.PACKAGE_REMOVED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_REPLACED
+
+```TypeScript
+COMMON_EVENT_PACKAGE_REPLACED = 'usual.event.PACKAGE_REPLACED'
+```
+
+(reserved, not supported yet) Indicates that a later version of an installed application package has replaced the previous one on the device.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_REPLACED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_replaced)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_REPLACED = 'usual.event.PACKAGE_REPLACED'--><!--Device-Support-COMMON_EVENT_PACKAGE_REPLACED = 'usual.event.PACKAGE_REPLACED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_RESTARTED
+
+```TypeScript
+COMMON_EVENT_PACKAGE_RESTARTED = 'usual.event.PACKAGE_RESTARTED'
+```
+
+Indicates that the user closed all processes of the application and restarted the application.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_RESTARTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_restarted)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_RESTARTED = 'usual.event.PACKAGE_RESTARTED'--><!--Device-Support-COMMON_EVENT_PACKAGE_RESTARTED = 'usual.event.PACKAGE_RESTARTED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGE_VERIFIED
+
+```TypeScript
+COMMON_EVENT_PACKAGE_VERIFIED = 'usual.event.PACKAGE_VERIFIED'
+```
+
+(reserved, not supported yet) Indicates that an application has been verified by the system.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGE_VERIFIED](arkts-basicservices-commoneventmanager-support-e.md#common_event_package_verified)
+
+<!--Device-Support-COMMON_EVENT_PACKAGE_VERIFIED = 'usual.event.PACKAGE_VERIFIED'--><!--Device-Support-COMMON_EVENT_PACKAGE_VERIFIED = 'usual.event.PACKAGE_VERIFIED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGES_SUSPENDED
+
+```TypeScript
+COMMON_EVENT_PACKAGES_SUSPENDED = 'usual.event.PACKAGES_SUSPENDED'
+```
+
+(reserved, not supported yet) Indicates that application packages have been suspended.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGES_SUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_packages_suspended)
+
+<!--Device-Support-COMMON_EVENT_PACKAGES_SUSPENDED = 'usual.event.PACKAGES_SUSPENDED'--><!--Device-Support-COMMON_EVENT_PACKAGES_SUSPENDED = 'usual.event.PACKAGES_SUSPENDED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_PACKAGES_UNSUSPENDED
+
+```TypeScript
+COMMON_EVENT_PACKAGES_UNSUSPENDED = 'usual.event.PACKAGES_UNSUSPENDED'
+```
+
+(reserved, not supported yet) Indicates that the application HAP package is not suspended (resumed from the suspended state).
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_PACKAGES_UNSUSPENDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_packages_unsuspended)
+
+<!--Device-Support-COMMON_EVENT_PACKAGES_UNSUSPENDED = 'usual.event.PACKAGES_UNSUSPENDED'--><!--Device-Support-COMMON_EVENT_PACKAGES_UNSUSPENDED = 'usual.event.PACKAGES_UNSUSPENDED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_POWER_CONNECTED
+
+```TypeScript
+COMMON_EVENT_POWER_CONNECTED = 'usual.event.POWER_CONNECTED'
+```
+
+Indicates that the device is connected to an external power supply.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_POWER_CONNECTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_power_connected)
+
+<!--Device-Support-COMMON_EVENT_POWER_CONNECTED = 'usual.event.POWER_CONNECTED'--><!--Device-Support-COMMON_EVENT_POWER_CONNECTED = 'usual.event.POWER_CONNECTED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_POWER_DISCONNECTED
+
+```TypeScript
+COMMON_EVENT_POWER_DISCONNECTED = 'usual.event.POWER_DISCONNECTED'
+```
+
+Indicates that the device is disconnected from the external power supply.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_POWER_DISCONNECTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_power_disconnected)
+
+<!--Device-Support-COMMON_EVENT_POWER_DISCONNECTED = 'usual.event.POWER_DISCONNECTED'--><!--Device-Support-COMMON_EVENT_POWER_DISCONNECTED = 'usual.event.POWER_DISCONNECTED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -2116,355 +1988,165 @@ Indicates that the system power-saving mode has changed.
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_USER_ADDED
+## COMMON_EVENT_SCREEN_OFF
 
 ```TypeScript
-COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'
+COMMON_EVENT_SCREEN_OFF = 'usual.event.SCREEN_OFF'
 ```
 
-Indicates that a user has been added to the system.
-
-To subscribe to this common event, your application must have the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+Indicates that the device screen is off and the device is in sleep mode.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_USER_ADDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_added)
+**Substitutes:** [COMMON_EVENT_SCREEN_OFF](arkts-basicservices-commoneventmanager-support-e.md#common_event_screen_off)
 
-<!--Device-Support-COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'--><!--Device-Support-COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'-End-->
+<!--Device-Support-COMMON_EVENT_SCREEN_OFF = 'usual.event.SCREEN_OFF'--><!--Device-Support-COMMON_EVENT_SCREEN_OFF = 'usual.event.SCREEN_OFF'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_USER_REMOVED
+## COMMON_EVENT_SCREEN_ON
 
 ```TypeScript
-COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'
+COMMON_EVENT_SCREEN_ON = 'usual.event.SCREEN_ON'
 ```
 
-Indicates that a user has been removed from the system.
-
-To subscribe to this common event, your application must have the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+Indicates that the device screen is on and the device is in interactive state.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_USER_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_removed)
+**Substitutes:** [COMMON_EVENT_SCREEN_ON](arkts-basicservices-commoneventmanager-support-e.md#common_event_screen_on)
 
-<!--Device-Support-COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'--><!--Device-Support-COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'-End-->
+<!--Device-Support-COMMON_EVENT_SCREEN_ON = 'usual.event.SCREEN_ON'--><!--Device-Support-COMMON_EVENT_SCREEN_ON = 'usual.event.SCREEN_ON'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_ABILITY_ADDED
+## COMMON_EVENT_SHUTDOWN
 
 ```TypeScript
-COMMON_EVENT_ABILITY_ADDED = 'common.event.ABILITY_ADDED'
+COMMON_EVENT_SHUTDOWN = 'usual.event.SHUTDOWN'
 ```
 
-(reserved, not supported yet) Indicates that an ability has been added.
-
-To subscribe to this common event, your application must have the ohos.permission.LISTEN_BUNDLE_CHANGE permission.
+Indicates that the device is being shut down and will continue until it is finally shut down.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_ABILITY_ADDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_ability_added)
+**Substitutes:** [COMMON_EVENT_SHUTDOWN](arkts-basicservices-commoneventmanager-support-e.md#common_event_shutdown)
 
-<!--Device-Support-COMMON_EVENT_ABILITY_ADDED = 'common.event.ABILITY_ADDED'--><!--Device-Support-COMMON_EVENT_ABILITY_ADDED = 'common.event.ABILITY_ADDED'-End-->
+<!--Device-Support-COMMON_EVENT_SHUTDOWN = 'usual.event.SHUTDOWN'--><!--Device-Support-COMMON_EVENT_SHUTDOWN = 'usual.event.SHUTDOWN'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_ABILITY_REMOVED
+## COMMON_EVENT_SPLIT_SCREEN
 
 ```TypeScript
-COMMON_EVENT_ABILITY_REMOVED = 'common.event.ABILITY_REMOVED'
+COMMON_EVENT_SPLIT_SCREEN = 'common.event.SPLIT_SCREEN'
 ```
 
-(reserved, not supported yet) Indicates that an ability has been removed.
+Indicates that the screen has been split.
 
-To subscribe to this common event, your application must have the ohos.permission.LISTEN_BUNDLE_CHANGE permission.
-
-**Since:** 7
+**Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_ABILITY_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_ability_removed)
+**Substitutes:** [COMMON_EVENT_SPLIT_SCREEN](arkts-basicservices-commoneventmanager-support-e.md#common_event_split_screen)
 
-<!--Device-Support-COMMON_EVENT_ABILITY_REMOVED = 'common.event.ABILITY_REMOVED'--><!--Device-Support-COMMON_EVENT_ABILITY_REMOVED = 'common.event.ABILITY_REMOVED'-End-->
+<!--Device-Support-COMMON_EVENT_SPLIT_SCREEN = 'common.event.SPLIT_SCREEN'--><!--Device-Support-COMMON_EVENT_SPLIT_SCREEN = 'common.event.SPLIT_SCREEN'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_ABILITY_UPDATED
+## COMMON_EVENT_THERMAL_LEVEL_CHANGED
 
 ```TypeScript
-COMMON_EVENT_ABILITY_UPDATED = 'common.event.ABILITY_UPDATED'
+COMMON_EVENT_THERMAL_LEVEL_CHANGED = 'usual.event.THERMAL_LEVEL_CHANGED'
 ```
 
-(reserved, not supported yet) Indicates that an ability has been updated.
+Indicates that the device thermal level has changed.
 
-To subscribe to this common event, your application must have the ohos.permission.LISTEN_BUNDLE_CHANGE permission.
-
-**Since:** 7
+**Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_ABILITY_UPDATED](arkts-basicservices-commoneventmanager-support-e.md#common_event_ability_updated)
+**Substitutes:** [COMMON_EVENT_THERMAL_LEVEL_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_thermal_level_changed)
 
-<!--Device-Support-COMMON_EVENT_ABILITY_UPDATED = 'common.event.ABILITY_UPDATED'--><!--Device-Support-COMMON_EVENT_ABILITY_UPDATED = 'common.event.ABILITY_UPDATED'-End-->
+<!--Device-Support-COMMON_EVENT_THERMAL_LEVEL_CHANGED = 'usual.event.THERMAL_LEVEL_CHANGED'--><!--Device-Support-COMMON_EVENT_THERMAL_LEVEL_CHANGED = 'usual.event.THERMAL_LEVEL_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
+## COMMON_EVENT_TIME_CHANGED
 
 ```TypeScript
-COMMON_EVENT_LOCATION_MODE_STATE_CHANGED = 'usual.event.location.MODE_STATE_CHANGED'
+COMMON_EVENT_TIME_CHANGED = 'usual.event.TIME_CHANGED'
 ```
 
-(reserved, not supported yet) Indicates that the location mode of the system has changed.
+Indicates that the system time is set.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_LOCATION_MODE_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_location_mode_state_changed)
+**Substitutes:** [COMMON_EVENT_TIME_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_time_changed)
 
-<!--Device-Support-COMMON_EVENT_LOCATION_MODE_STATE_CHANGED = 'usual.event.location.MODE_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_LOCATION_MODE_STATE_CHANGED = 'usual.event.location.MODE_STATE_CHANGED'-End-->
+<!--Device-Support-COMMON_EVENT_TIME_CHANGED = 'usual.event.TIME_CHANGED'--><!--Device-Support-COMMON_EVENT_TIME_CHANGED = 'usual.event.TIME_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_IVI_SLEEP
+## COMMON_EVENT_TIME_TICK
 
 ```TypeScript
-COMMON_EVENT_IVI_SLEEP = 'common.event.IVI_SLEEP'
+COMMON_EVENT_TIME_TICK = 'usual.event.TIME_TICK'
 ```
 
-(reserved, not supported yet) Indicates that the in-vehicle infotainment (IVI) system of the vehicle is sleeping.
+Indicates that the system time has changed as time ticks by.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_IVI_SLEEP](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_sleep)
+**Substitutes:** [COMMON_EVENT_TIME_TICK](arkts-basicservices-commoneventmanager-support-e.md#common_event_time_tick)
 
-<!--Device-Support-COMMON_EVENT_IVI_SLEEP = 'common.event.IVI_SLEEP'--><!--Device-Support-COMMON_EVENT_IVI_SLEEP = 'common.event.IVI_SLEEP'-End-->
+<!--Device-Support-COMMON_EVENT_TIME_TICK = 'usual.event.TIME_TICK'--><!--Device-Support-COMMON_EVENT_TIME_TICK = 'usual.event.TIME_TICK'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_IVI_PAUSE
+## COMMON_EVENT_TIMEZONE_CHANGED
 
 ```TypeScript
-COMMON_EVENT_IVI_PAUSE = 'common.event.IVI_PAUSE'
+COMMON_EVENT_TIMEZONE_CHANGED = 'usual.event.TIMEZONE_CHANGED'
 ```
 
-(reserved, not supported yet) Indicates that the IVI system of the vehicle is in sleep mode and notifies the application to stop playing.
+Indicates that the system time zone is changed.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_IVI_PAUSE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_pause)
+**Substitutes:** [COMMON_EVENT_TIMEZONE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_timezone_changed)
 
-<!--Device-Support-COMMON_EVENT_IVI_PAUSE = 'common.event.IVI_PAUSE'--><!--Device-Support-COMMON_EVENT_IVI_PAUSE = 'common.event.IVI_PAUSE'-End-->
+<!--Device-Support-COMMON_EVENT_TIMEZONE_CHANGED = 'usual.event.TIMEZONE_CHANGED'--><!--Device-Support-COMMON_EVENT_TIMEZONE_CHANGED = 'usual.event.TIMEZONE_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_IVI_STANDBY
+## COMMON_EVENT_UID_REMOVED
 
 ```TypeScript
-COMMON_EVENT_IVI_STANDBY = 'common.event.IVI_STANDBY'
+COMMON_EVENT_UID_REMOVED = 'usual.event.UID_REMOVED'
 ```
 
-(reserved, not supported yet) Indicates that a third-party application in the IVI system of a vehicle is suspended.
+(reserved, not supported yet) Indicates that a user ID has been removed from the system.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_IVI_STANDBY](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_standby)
+**Substitutes:** [COMMON_EVENT_UID_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_uid_removed)
 
-<!--Device-Support-COMMON_EVENT_IVI_STANDBY = 'common.event.IVI_STANDBY'--><!--Device-Support-COMMON_EVENT_IVI_STANDBY = 'common.event.IVI_STANDBY'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_LASTMODE_SAVE
-
-```TypeScript
-COMMON_EVENT_IVI_LASTMODE_SAVE = 'common.event.IVI_LASTMODE_SAVE'
-```
-
-(reserved, not supported yet) Indicates that the third-party application in the IVI system of the vehicle saves the last mode.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_LASTMODE_SAVE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_lastmode_save)
-
-<!--Device-Support-COMMON_EVENT_IVI_LASTMODE_SAVE = 'common.event.IVI_LASTMODE_SAVE'--><!--Device-Support-COMMON_EVENT_IVI_LASTMODE_SAVE = 'common.event.IVI_LASTMODE_SAVE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_VOLTAGE_ABNORMAL
-
-```TypeScript
-COMMON_EVENT_IVI_VOLTAGE_ABNORMAL = 'common.event.IVI_VOLTAGE_ABNORMAL'
-```
-
-(reserved, not supported yet) Indicates that the voltage of the vehicle's power system is abnormal.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_VOLTAGE_ABNORMAL](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_voltage_abnormal)
-
-<!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_ABNORMAL = 'common.event.IVI_VOLTAGE_ABNORMAL'--><!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_ABNORMAL = 'common.event.IVI_VOLTAGE_ABNORMAL'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_HIGH_TEMPERATURE
-
-```TypeScript
-COMMON_EVENT_IVI_HIGH_TEMPERATURE = 'common.event.IVI_HIGH_TEMPERATURE'
-```
-
-(reserved, not supported yet) Indicates that the temperature of the IVI system of the vehicle is too high.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_HIGH_TEMPERATURE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_high_temperature)
-
-<!--Device-Support-COMMON_EVENT_IVI_HIGH_TEMPERATURE = 'common.event.IVI_HIGH_TEMPERATURE'--><!--Device-Support-COMMON_EVENT_IVI_HIGH_TEMPERATURE = 'common.event.IVI_HIGH_TEMPERATURE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_EXTREME_TEMPERATURE
-
-```TypeScript
-COMMON_EVENT_IVI_EXTREME_TEMPERATURE = 'common.event.IVI_EXTREME_TEMPERATURE'
-```
-
-(reserved, not supported yet) Indicates that the temperature of the IVI system of the vehicle is extremely high.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_EXTREME_TEMPERATURE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_extreme_temperature)
-
-<!--Device-Support-COMMON_EVENT_IVI_EXTREME_TEMPERATURE = 'common.event.IVI_EXTREME_TEMPERATURE'--><!--Device-Support-COMMON_EVENT_IVI_EXTREME_TEMPERATURE = 'common.event.IVI_EXTREME_TEMPERATURE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
-
-```TypeScript
-COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL = 'common.event.IVI_TEMPERATURE_ABNORMAL'
-```
-
-(reserved, not supported yet) Indicates that the IVI system of the vehicle has an extreme temperature.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_temperature_abnormal)
-
-<!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL = 'common.event.IVI_TEMPERATURE_ABNORMAL'--><!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL = 'common.event.IVI_TEMPERATURE_ABNORMAL'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_VOLTAGE_RECOVERY
-
-```TypeScript
-COMMON_EVENT_IVI_VOLTAGE_RECOVERY = 'common.event.IVI_VOLTAGE_RECOVERY'
-```
-
-(reserved, not supported yet) Indicates that the voltage of the vehicle's power system is restored to normal.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_VOLTAGE_RECOVERY](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_voltage_recovery)
-
-<!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_RECOVERY = 'common.event.IVI_VOLTAGE_RECOVERY'--><!--Device-Support-COMMON_EVENT_IVI_VOLTAGE_RECOVERY = 'common.event.IVI_VOLTAGE_RECOVERY'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_TEMPERATURE_RECOVERY
-
-```TypeScript
-COMMON_EVENT_IVI_TEMPERATURE_RECOVERY = 'common.event.IVI_TEMPERATURE_RECOVERY'
-```
-
-(reserved, not supported yet) Indicates that the temperature of the IVI system is restored to normal.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_TEMPERATURE_RECOVERY](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_temperature_recovery)
-
-<!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_RECOVERY = 'common.event.IVI_TEMPERATURE_RECOVERY'--><!--Device-Support-COMMON_EVENT_IVI_TEMPERATURE_RECOVERY = 'common.event.IVI_TEMPERATURE_RECOVERY'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_IVI_ACTIVE
-
-```TypeScript
-COMMON_EVENT_IVI_ACTIVE = 'common.event.IVI_ACTIVE'
-```
-
-(reserved, not supported yet) Indicates that the battery service of the vehicle-mounted system is active.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_IVI_ACTIVE](arkts-basicservices-commoneventmanager-support-e.md#common_event_ivi_active)
-
-<!--Device-Support-COMMON_EVENT_IVI_ACTIVE = 'common.event.IVI_ACTIVE'--><!--Device-Support-COMMON_EVENT_IVI_ACTIVE = 'common.event.IVI_ACTIVE'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USB_DEVICE_ATTACHED
-
-```TypeScript
-COMMON_EVENT_USB_DEVICE_ATTACHED = 'usual.event.hardware.usb.action.USB_DEVICE_ATTACHED'
-```
-
-Indicates that a USB device has been attached to the device functioning as a USB host.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USB_DEVICE_ATTACHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_usb_device_attached)
-
-<!--Device-Support-COMMON_EVENT_USB_DEVICE_ATTACHED = 'usual.event.hardware.usb.action.USB_DEVICE_ATTACHED'--><!--Device-Support-COMMON_EVENT_USB_DEVICE_ATTACHED = 'usual.event.hardware.usb.action.USB_DEVICE_ATTACHED'-End-->
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-## COMMON_EVENT_USB_DEVICE_DETACHED
-
-```TypeScript
-COMMON_EVENT_USB_DEVICE_DETACHED = 'usual.event.hardware.usb.action.USB_DEVICE_DETACHED'
-```
-
-Indicates that a USB device has been detached from the device functioning as a USB host.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [COMMON_EVENT_USB_DEVICE_DETACHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_usb_device_detached)
-
-<!--Device-Support-COMMON_EVENT_USB_DEVICE_DETACHED = 'usual.event.hardware.usb.action.USB_DEVICE_DETACHED'--><!--Device-Support-COMMON_EVENT_USB_DEVICE_DETACHED = 'usual.event.hardware.usb.action.USB_DEVICE_DETACHED'-End-->
+<!--Device-Support-COMMON_EVENT_UID_REMOVED = 'usual.event.UID_REMOVED'--><!--Device-Support-COMMON_EVENT_UID_REMOVED = 'usual.event.UID_REMOVED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -2504,123 +2186,245 @@ COMMON_EVENT_USB_ACCESSORY_DETACHED = 'usual.event.hardware.usb.action.USB_ACCES
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DISK_REMOVED
+## COMMON_EVENT_USB_DEVICE_ATTACHED
 
 ```TypeScript
-COMMON_EVENT_DISK_REMOVED = 'usual.event.data.DISK_REMOVED'
+COMMON_EVENT_USB_DEVICE_ATTACHED = 'usual.event.hardware.usb.action.USB_DEVICE_ATTACHED'
 ```
 
-(reserved, not supported yet) Indicates that an external storage device was removed.
-
-To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
+Indicates that a USB device has been attached to the device functioning as a USB host.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DISK_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_removed)
+**Substitutes:** [COMMON_EVENT_USB_DEVICE_ATTACHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_usb_device_attached)
 
-<!--Device-Support-COMMON_EVENT_DISK_REMOVED = 'usual.event.data.DISK_REMOVED'--><!--Device-Support-COMMON_EVENT_DISK_REMOVED = 'usual.event.data.DISK_REMOVED'-End-->
+<!--Device-Support-COMMON_EVENT_USB_DEVICE_ATTACHED = 'usual.event.hardware.usb.action.USB_DEVICE_ATTACHED'--><!--Device-Support-COMMON_EVENT_USB_DEVICE_ATTACHED = 'usual.event.hardware.usb.action.USB_DEVICE_ATTACHED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DISK_UNMOUNTED
+## COMMON_EVENT_USB_DEVICE_DETACHED
 
 ```TypeScript
-COMMON_EVENT_DISK_UNMOUNTED = 'usual.event.data.DISK_UNMOUNTED'
+COMMON_EVENT_USB_DEVICE_DETACHED = 'usual.event.hardware.usb.action.USB_DEVICE_DETACHED'
 ```
 
-(reserved, not supported yet) Indicates that an external storage device was unmounted.
-
-To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
+Indicates that a USB device has been detached from the device functioning as a USB host.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DISK_UNMOUNTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_unmounted)
+**Substitutes:** [COMMON_EVENT_USB_DEVICE_DETACHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_usb_device_detached)
 
-<!--Device-Support-COMMON_EVENT_DISK_UNMOUNTED = 'usual.event.data.DISK_UNMOUNTED'--><!--Device-Support-COMMON_EVENT_DISK_UNMOUNTED = 'usual.event.data.DISK_UNMOUNTED'-End-->
+<!--Device-Support-COMMON_EVENT_USB_DEVICE_DETACHED = 'usual.event.hardware.usb.action.USB_DEVICE_DETACHED'--><!--Device-Support-COMMON_EVENT_USB_DEVICE_DETACHED = 'usual.event.hardware.usb.action.USB_DEVICE_DETACHED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DISK_MOUNTED
+## COMMON_EVENT_USER_ADDED
 
 ```TypeScript
-COMMON_EVENT_DISK_MOUNTED = 'usual.event.data.DISK_MOUNTED'
+COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'
 ```
 
-(reserved, not supported yet) Indicates that an external storage device was mounted.
+Indicates that a user has been added to the system.
 
-To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
+To subscribe to this common event, your application must have the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DISK_MOUNTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_mounted)
+**Substitutes:** [COMMON_EVENT_USER_ADDED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_added)
 
-<!--Device-Support-COMMON_EVENT_DISK_MOUNTED = 'usual.event.data.DISK_MOUNTED'--><!--Device-Support-COMMON_EVENT_DISK_MOUNTED = 'usual.event.data.DISK_MOUNTED'-End-->
+<!--Device-Support-COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'--><!--Device-Support-COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DISK_BAD_REMOVAL
+## COMMON_EVENT_USER_BACKGROUND
 
 ```TypeScript
-COMMON_EVENT_DISK_BAD_REMOVAL = 'usual.event.data.DISK_BAD_REMOVAL'
+COMMON_EVENT_USER_BACKGROUND = 'usual.event.USER_BACKGROUND'
 ```
 
-(reserved, not supported yet) Indicates that an external storage device was removed without being unmounted.
-
-To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
+(reserved, not supported yet) Indicates that the user has been brought to the background.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DISK_BAD_REMOVAL](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_bad_removal)
+**Substitutes:** [COMMON_EVENT_USER_BACKGROUND](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_background)
 
-<!--Device-Support-COMMON_EVENT_DISK_BAD_REMOVAL = 'usual.event.data.DISK_BAD_REMOVAL'--><!--Device-Support-COMMON_EVENT_DISK_BAD_REMOVAL = 'usual.event.data.DISK_BAD_REMOVAL'-End-->
+<!--Device-Support-COMMON_EVENT_USER_BACKGROUND = 'usual.event.USER_BACKGROUND'--><!--Device-Support-COMMON_EVENT_USER_BACKGROUND = 'usual.event.USER_BACKGROUND'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DISK_UNMOUNTABLE
+## COMMON_EVENT_USER_FOREGROUND
 
 ```TypeScript
-COMMON_EVENT_DISK_UNMOUNTABLE = 'usual.event.data.DISK_UNMOUNTABLE'
+COMMON_EVENT_USER_FOREGROUND = 'usual.event.USER_FOREGROUND'
 ```
 
-(reserved, not supported yet) Indicates that the external storage device cannot be mounted when a card is inserted.
-
-To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
+(reserved, not supported yet) Indicates that the user has been brought to the foreground.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DISK_UNMOUNTABLE](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_unmountable)
+**Substitutes:** [COMMON_EVENT_USER_FOREGROUND](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_foreground)
 
-<!--Device-Support-COMMON_EVENT_DISK_UNMOUNTABLE = 'usual.event.data.DISK_UNMOUNTABLE'--><!--Device-Support-COMMON_EVENT_DISK_UNMOUNTABLE = 'usual.event.data.DISK_UNMOUNTABLE'-End-->
+<!--Device-Support-COMMON_EVENT_USER_FOREGROUND = 'usual.event.USER_FOREGROUND'--><!--Device-Support-COMMON_EVENT_USER_FOREGROUND = 'usual.event.USER_FOREGROUND'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_DISK_EJECT
+## COMMON_EVENT_USER_PRESENT
 
 ```TypeScript
-COMMON_EVENT_DISK_EJECT = 'usual.event.data.DISK_EJECT'
+COMMON_EVENT_USER_PRESENT = 'usual.event.USER_PRESENT'
 ```
 
-(reserved, not supported yet) Indicates that the external storage medium has been ejected (interactive operation at the system software layer, not directly ejected physically).
-
-To subscribe to this common event, your application must have the ohos.permission.STORAGE_MANAGER permission. (This permission is available only for system applications.)
+(reserved, not supported yet) Indicates that the user unlocks the device.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_DISK_EJECT](arkts-basicservices-commoneventmanager-support-e.md#common_event_disk_eject)
+**Substitutes:** [COMMON_EVENT_USER_PRESENT](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_present)
 
-<!--Device-Support-COMMON_EVENT_DISK_EJECT = 'usual.event.data.DISK_EJECT'--><!--Device-Support-COMMON_EVENT_DISK_EJECT = 'usual.event.data.DISK_EJECT'-End-->
+<!--Device-Support-COMMON_EVENT_USER_PRESENT = 'usual.event.USER_PRESENT'--><!--Device-Support-COMMON_EVENT_USER_PRESENT = 'usual.event.USER_PRESENT'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_USER_REMOVED
+
+```TypeScript
+COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'
+```
+
+Indicates that a user has been removed from the system.
+
+To subscribe to this common event, your application must have the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_USER_REMOVED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_removed)
+
+<!--Device-Support-COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'--><!--Device-Support-COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_USER_STARTED
+
+```TypeScript
+COMMON_EVENT_USER_STARTED = 'usual.event.USER_STARTED'
+```
+
+(reserved, not supported yet) Indicates that the user has been started.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_USER_STARTED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_started)
+
+<!--Device-Support-COMMON_EVENT_USER_STARTED = 'usual.event.USER_STARTED'--><!--Device-Support-COMMON_EVENT_USER_STARTED = 'usual.event.USER_STARTED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_USER_STARTING
+
+```TypeScript
+COMMON_EVENT_USER_STARTING = 'usual.event.USER_STARTING'
+```
+
+(reserved, not supported yet) Indicates that user starting is in progress. To subscribe to this common event, your application must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_USER_STARTING](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_starting)
+
+<!--Device-Support-COMMON_EVENT_USER_STARTING = 'usual.event.USER_STARTING'--><!--Device-Support-COMMON_EVENT_USER_STARTING = 'usual.event.USER_STARTING'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_USER_STOPPED
+
+```TypeScript
+COMMON_EVENT_USER_STOPPED = 'usual.event.USER_STOPPED'
+```
+
+(reserved, not supported yet) Indicates that the user has been stopped.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_USER_STOPPED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_stopped)
+
+<!--Device-Support-COMMON_EVENT_USER_STOPPED = 'usual.event.USER_STOPPED'--><!--Device-Support-COMMON_EVENT_USER_STOPPED = 'usual.event.USER_STOPPED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_USER_STOPPING
+
+```TypeScript
+COMMON_EVENT_USER_STOPPING = 'usual.event.USER_STOPPING'
+```
+
+(reserved, not supported yet) Indicates the user to be stopped.
+
+To subscribe to this common event, your application must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_USER_STOPPING](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_stopping)
+
+<!--Device-Support-COMMON_EVENT_USER_STOPPING = 'usual.event.USER_STOPPING'--><!--Device-Support-COMMON_EVENT_USER_STOPPING = 'usual.event.USER_STOPPING'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_USER_SWITCHED
+
+```TypeScript
+COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'
+```
+
+Indicates that user switching is in progress.
+
+To subscribe to this common event, your application must have the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_USER_SWITCHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_switched)
+
+<!--Device-Support-COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'--><!--Device-Support-COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_USER_UNLOCKED
+
+```TypeScript
+COMMON_EVENT_USER_UNLOCKED = 'usual.event.USER_UNLOCKED'
+```
+
+(reserved, not supported yet) Indicates that the credential encryption storage of the current user has been unlocked upon restart.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_USER_UNLOCKED](arkts-basicservices-commoneventmanager-support-e.md#common_event_user_unlocked)
+
+<!--Device-Support-COMMON_EVENT_USER_UNLOCKED = 'usual.event.USER_UNLOCKED'--><!--Device-Support-COMMON_EVENT_USER_UNLOCKED = 'usual.event.USER_UNLOCKED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -2644,78 +2448,274 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_ACCOUNT_DELETED
+## COMMON_EVENT_WIFI_AP_STA_JOIN
 
 ```TypeScript
-COMMON_EVENT_ACCOUNT_DELETED = 'usual.event.data.ACCOUNT_DELETED'
+COMMON_EVENT_WIFI_AP_STA_JOIN = 'usual.event.wifi.WIFI_HS_STA_JOIN'
 ```
 
-(reserved, not supported yet) Indicates that an account was deleted.
+Indicates that a client has joined the Wi-Fi hotspot of the current device.
 
-To subscribe to this common event, your application must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. (This permission is available only for system applications.)
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_ACCOUNT_DELETED](arkts-basicservices-commoneventmanager-support-e.md#common_event_account_deleted)
+**Substitutes:** [COMMON_EVENT_WIFI_AP_STA_JOIN](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_ap_sta_join)
 
-<!--Device-Support-COMMON_EVENT_ACCOUNT_DELETED = 'usual.event.data.ACCOUNT_DELETED'--><!--Device-Support-COMMON_EVENT_ACCOUNT_DELETED = 'usual.event.data.ACCOUNT_DELETED'-End-->
+<!--Device-Support-COMMON_EVENT_WIFI_AP_STA_JOIN = 'usual.event.wifi.WIFI_HS_STA_JOIN'--><!--Device-Support-COMMON_EVENT_WIFI_AP_STA_JOIN = 'usual.event.wifi.WIFI_HS_STA_JOIN'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_FOUNDATION_READY
+## COMMON_EVENT_WIFI_AP_STA_LEAVE
 
 ```TypeScript
-COMMON_EVENT_FOUNDATION_READY = 'common.event.FOUNDATION_READY'
+COMMON_EVENT_WIFI_AP_STA_LEAVE = 'usual.event.wifi.WIFI_HS_STA_LEAVE'
 ```
 
-(reserved, not supported yet) Indicates that the foundation is ready.
+Indicates that the client is disconnected from the Wi-Fi hotspot of the current device.
 
-To subscribe to this common event, your application must have the ohos.permission.RECEIVER_STARTUP_COMPLETED permission. (This permission is available only for system applications.)
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_FOUNDATION_READY](arkts-basicservices-commoneventmanager-support-e.md#common_event_foundation_ready)
+**Substitutes:** [COMMON_EVENT_WIFI_AP_STA_LEAVE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_ap_sta_leave)
 
-<!--Device-Support-COMMON_EVENT_FOUNDATION_READY = 'common.event.FOUNDATION_READY'--><!--Device-Support-COMMON_EVENT_FOUNDATION_READY = 'common.event.FOUNDATION_READY'-End-->
+<!--Device-Support-COMMON_EVENT_WIFI_AP_STA_LEAVE = 'usual.event.wifi.WIFI_HS_STA_LEAVE'--><!--Device-Support-COMMON_EVENT_WIFI_AP_STA_LEAVE = 'usual.event.wifi.WIFI_HS_STA_LEAVE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_AIRPLANE_MODE_CHANGED
+## COMMON_EVENT_WIFI_CONN_STATE
 
 ```TypeScript
-COMMON_EVENT_AIRPLANE_MODE_CHANGED = 'usual.event.AIRPLANE_MODE'
+COMMON_EVENT_WIFI_CONN_STATE = 'usual.event.wifi.CONN_STATE'
 ```
 
-Indicates that the airplane mode of the device has changed.
+Indicates that the Wi-Fi connection state has changed.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_AIRPLANE_MODE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_airplane_mode_changed)
+**Substitutes:** [COMMON_EVENT_WIFI_CONN_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_conn_state)
 
-<!--Device-Support-COMMON_EVENT_AIRPLANE_MODE_CHANGED = 'usual.event.AIRPLANE_MODE'--><!--Device-Support-COMMON_EVENT_AIRPLANE_MODE_CHANGED = 'usual.event.AIRPLANE_MODE'-End-->
+<!--Device-Support-COMMON_EVENT_WIFI_CONN_STATE = 'usual.event.wifi.CONN_STATE'--><!--Device-Support-COMMON_EVENT_WIFI_CONN_STATE = 'usual.event.wifi.CONN_STATE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
-## COMMON_EVENT_SPLIT_SCREEN
+## COMMON_EVENT_WIFI_HOTSPOT_STATE
 
 ```TypeScript
-COMMON_EVENT_SPLIT_SCREEN = 'common.event.SPLIT_SCREEN'
+COMMON_EVENT_WIFI_HOTSPOT_STATE = 'usual.event.wifi.HOTSPOT_STATE'
 ```
 
-Indicates that the screen has been split.
+Indicates a change in the Wi-Fi hotspot state (enabled or disabled).
 
-**Since:** 8
+**Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMMON_EVENT_SPLIT_SCREEN](arkts-basicservices-commoneventmanager-support-e.md#common_event_split_screen)
+**Substitutes:** [COMMON_EVENT_WIFI_HOTSPOT_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_hotspot_state)
 
-<!--Device-Support-COMMON_EVENT_SPLIT_SCREEN = 'common.event.SPLIT_SCREEN'--><!--Device-Support-COMMON_EVENT_SPLIT_SCREEN = 'common.event.SPLIT_SCREEN'-End-->
+<!--Device-Support-COMMON_EVENT_WIFI_HOTSPOT_STATE = 'usual.event.wifi.HOTSPOT_STATE'--><!--Device-Support-COMMON_EVENT_WIFI_HOTSPOT_STATE = 'usual.event.wifi.HOTSPOT_STATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE
+
+```TypeScript
+COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE = 'usual.event.wifi.mplink.STATE_CHANGE'
+```
+
+(not supported yet) Indicates that the state of MPLINK (an enhanced Wi-Fi feature) has changed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_mplink_state_change)
+
+<!--Device-Support-COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE = 'usual.event.wifi.mplink.STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE = 'usual.event.wifi.mplink.STATE_CHANGE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_P2P_CONN_STATE
+
+```TypeScript
+COMMON_EVENT_WIFI_P2P_CONN_STATE = 'usual.event.wifi.p2p.CONN_STATE_CHANGE'
+```
+
+Indicates that the Wi-Fi P2P connection state has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION permissions.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_P2P_CONN_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_conn_state)
+
+<!--Device-Support-COMMON_EVENT_WIFI_P2P_CONN_STATE = 'usual.event.wifi.p2p.CONN_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_CONN_STATE = 'usual.event.wifi.p2p.CONN_STATE_CHANGE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED
+
+```TypeScript
+COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED = 'usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE'
+```
+
+Indicates that the state of the Wi-Fi P2P local device has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_current_device_state_changed)
+
+<!--Device-Support-COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED = 'usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED = 'usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED
+
+```TypeScript
+COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED = 'usual.event.wifi.p2p.GROUP_STATE_CHANGED'
+```
+
+Indicates that the Wi-Fi P2P group information has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_group_state_changed)
+
+<!--Device-Support-COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED = 'usual.event.wifi.p2p.GROUP_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED = 'usual.event.wifi.p2p.GROUP_STATE_CHANGED'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED
+
+```TypeScript
+COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED = 'usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE'
+```
+
+Indicates that the Wi-Fi P2P discovery state has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_peers_discovery_state_changed)
+
+<!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED = 'usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED = 'usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED
+
+```TypeScript
+COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED = 'usual.event.wifi.p2p.DEVICES_CHANGE'
+```
+
+Indicates that the state of the Wi-Fi P2P peer device has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_peers_state_changed)
+
+<!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED = 'usual.event.wifi.p2p.DEVICES_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED = 'usual.event.wifi.p2p.DEVICES_CHANGE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_P2P_STATE_CHANGED
+
+```TypeScript
+COMMON_EVENT_WIFI_P2P_STATE_CHANGED = 'usual.event.wifi.p2p.STATE_CHANGE'
+```
+
+Indicates a change in the Wi-Fi P2P state (enabled or disabled).
+
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_P2P_STATE_CHANGED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_p2p_state_changed)
+
+<!--Device-Support-COMMON_EVENT_WIFI_P2P_STATE_CHANGED = 'usual.event.wifi.p2p.STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_WIFI_P2P_STATE_CHANGED = 'usual.event.wifi.p2p.STATE_CHANGE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_POWER_STATE
+
+```TypeScript
+COMMON_EVENT_WIFI_POWER_STATE = 'usual.event.wifi.POWER_STATE'
+```
+
+Indicates a change in the Wi-Fi state (enabled or disabled).
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_POWER_STATE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_power_state)
+
+<!--Device-Support-COMMON_EVENT_WIFI_POWER_STATE = 'usual.event.wifi.POWER_STATE'--><!--Device-Support-COMMON_EVENT_WIFI_POWER_STATE = 'usual.event.wifi.POWER_STATE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_RSSI_VALUE
+
+```TypeScript
+COMMON_EVENT_WIFI_RSSI_VALUE = 'usual.event.wifi.RSSI_VALUE'
+```
+
+Indicates that the Wi-Fi signal strength (RSSI) has changed.
+
+To subscribe to this common event, your application must have the ohos.permission.GET_WIFI_INFO permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_RSSI_VALUE](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_rssi_value)
+
+<!--Device-Support-COMMON_EVENT_WIFI_RSSI_VALUE = 'usual.event.wifi.RSSI_VALUE'--><!--Device-Support-COMMON_EVENT_WIFI_RSSI_VALUE = 'usual.event.wifi.RSSI_VALUE'-End-->
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+## COMMON_EVENT_WIFI_SCAN_FINISHED
+
+```TypeScript
+COMMON_EVENT_WIFI_SCAN_FINISHED = 'usual.event.wifi.SCAN_FINISHED'
+```
+
+Indicates that the Wi-Fi access point has been scanned and proved available.
+
+To subscribe to this common event, your application must have the ohos.permission.LOCATION permission.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMMON_EVENT_WIFI_SCAN_FINISHED](arkts-basicservices-commoneventmanager-support-e.md#common_event_wifi_scan_finished)
+
+<!--Device-Support-COMMON_EVENT_WIFI_SCAN_FINISHED = 'usual.event.wifi.SCAN_FINISHED'--><!--Device-Support-COMMON_EVENT_WIFI_SCAN_FINISHED = 'usual.event.wifi.SCAN_FINISHED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent

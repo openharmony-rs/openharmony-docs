@@ -6,6 +6,8 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
+<a id="gettrafficstatsbyiface1"></a>
+
 ## getTrafficStatsByIface
 
 ```TypeScript
@@ -29,7 +31,7 @@ function getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback<Ne
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ifaceInfo | [IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md) | 是 | 指定查询的网卡信息，参见[IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;NetStatsInfo&gt; | 是 | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 是 | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -43,6 +45,7 @@ function getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback<Ne
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-读取数据库失败) | Failed to read the database. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -76,8 +79,10 @@ if (iFaceInfo) {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="gettrafficstatsbyiface-1"></a>
+
+<a id="gettrafficstatsbyiface2"></a>
 
 ## getTrafficStatsByIface
 
@@ -111,7 +116,7 @@ function getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise<NetStatsInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;NetStatsInfo&gt; | The promise returned by the function. |
+| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | The promise returned by the function. |
 
 **错误码：**
 
@@ -125,6 +130,7 @@ function getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise<NetStatsInfo>
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-读取数据库失败) | Failed to read the database. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -152,3 +158,5 @@ if (iFaceInfo) {
   });
 }
 ```
+
+<!--DelEnd-->

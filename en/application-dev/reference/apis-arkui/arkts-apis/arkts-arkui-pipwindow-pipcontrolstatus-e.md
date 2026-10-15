@@ -12,35 +12,19 @@ Enumerates the statuses of components displayed on the PiP controller.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## PLAY
+## CLOSE
 
 ```TypeScript
-PLAY = 1
+CLOSE = 0
 ```
 
-Play.
+Close.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-PiPControlStatus-PLAY = 1--><!--Device-PiPControlStatus-PLAY = 1-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
-## PAUSE
-
-```TypeScript
-PAUSE = 0
-```
-
-Pause.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-PiPControlStatus-PAUSE = 0--><!--Device-PiPControlStatus-PAUSE = 0-End-->
+<!--Device-PiPControlStatus-CLOSE = 0--><!--Device-PiPControlStatus-CLOSE = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -54,24 +38,40 @@ Open.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPControlStatus-OPEN = 1--><!--Device-PiPControlStatus-OPEN = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## CLOSE
+## PAUSE
 
 ```TypeScript
-CLOSE = 0
+PAUSE = 0
 ```
 
-Close.
+Pause.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-PiPControlStatus-CLOSE = 0--><!--Device-PiPControlStatus-CLOSE = 0-End-->
+<!--Device-PiPControlStatus-PAUSE = 0--><!--Device-PiPControlStatus-PAUSE = 0-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## PLAY
+
+```TypeScript
+PLAY = 1
+```
+
+Play.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PiPControlStatus-PLAY = 1--><!--Device-PiPControlStatus-PLAY = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

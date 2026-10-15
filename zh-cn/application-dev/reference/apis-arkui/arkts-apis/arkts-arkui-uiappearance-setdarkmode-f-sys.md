@@ -6,6 +6,8 @@
 import { uiAppearance } from '@kit.ArkUI';
 ```
 
+<a id="setdarkmode1"></a>
+
 ## setDarkMode
 
 ```TypeScript
@@ -39,6 +41,7 @@ function setDarkMode(mode: DarkMode, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,8 +62,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setdarkmode-1"></a>
+
+<a id="setdarkmode2"></a>
 
 ## setDarkMode
 
@@ -100,6 +105,7 @@ function setDarkMode(mode: DarkMode): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -117,3 +123,5 @@ try {
   console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

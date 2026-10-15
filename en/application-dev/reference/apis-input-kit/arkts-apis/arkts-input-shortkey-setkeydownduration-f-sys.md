@@ -7,6 +7,8 @@ import { shortKey } from '@kit.InputKit';
 import { FingerprintEvent } from '@kit.InputKit';
 ```
 
+<a id="setkeydownduration1"></a>
+
 ## setKeyDownDuration
 
 ```TypeScript
@@ -28,16 +30,17 @@ Sets the delay for starting an ability using shortcut keys. This API uses an asy
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | businessKey | string | Yes | Unique service ID registered on the multimodal side. It corresponds to **businessId** in the **ability_launch_config.json** file. You need to query this parameter on your own before calling the API. |
-| delay | number | Yes | Delay for starting an ability using shortcut keys, in milliseconds. This field is valid only when shortcut keys are pressed. |
+| delay | number | Yes | Duration after a shortcut key is pressed before the Ability is launched, in ms. This parameter is supported only when a shortcut key is pressed. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,8 +72,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setkeydownduration-1"></a>
+
+<a id="setkeydownduration2"></a>
 
 ## setKeyDownDuration
 
@@ -105,9 +110,10 @@ Sets the delay for starting an ability using shortcut keys. This API uses a prom
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,3 +142,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

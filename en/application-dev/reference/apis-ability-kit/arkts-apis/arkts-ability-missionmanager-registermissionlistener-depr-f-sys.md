@@ -39,6 +39,7 @@ Registers a listener to observe the mission status.
 | --- | --- |
 | number | Index of the mission status listener, which is created by the system and allocated when the listener is registered. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -70,3 +71,5 @@ let listenerId = missionManager.registerMissionListener({
   }
 });
 ```
+
+<!--DelEnd-->

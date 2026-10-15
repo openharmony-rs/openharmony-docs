@@ -46,9 +46,9 @@ Invoke a function by functionNamespace and functionName.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
-| [35600050](../errorcode-ability.md#35600050-occasional-error) | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [35600050](../errorcode-ability.md#35600050-occasional-error) | System Error. 1. Connect to system service failed;         2. System service failed to communicate with dependency module. |
 | [35600060](../errorcode-ability.md#35600060-function-does-not-exist) | The function does not exist. |
 | [35600061](../errorcode-ability.md#35600061-function-execution-failed) | The function execute failed. |
 | [35600062](../errorcode-ability.md#35600062-function-execution-timeout) | The function execute timeout. |

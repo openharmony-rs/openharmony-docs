@@ -4,7 +4,7 @@
 declare type ReuseIdCallback = () => string
 ```
 
-ReuseId callback type. It is used to compute reuseId.
+Triggered to obtain the reuse ID.
 
 **Since:** 18
 

@@ -6,6 +6,8 @@ export type NotificationSubscriber = _NotificationSubscriber
 
 Provides callback methods for subscribers to receive and cancel notifications.
 
+**Type:** _NotificationSubscriber
+
 **Since:** 9
 
 <!--Device-notificationSubscribe-export type NotificationSubscriber = _NotificationSubscriber--><!--Device-notificationSubscribe-export type NotificationSubscriber = _NotificationSubscriber-End-->
@@ -13,5 +15,3 @@ Provides callback methods for subscribers to receive and cancel notifications.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationSubscriber

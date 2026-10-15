@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
-**Inheritance/Implementation:** GridRowAttribute extends CommonMethod<GridRowAttribute>
+**Inheritance/Implementation:** GridRowAttribute extends CommonMethod&lt;GridRowAttribute&gt;
 
 **Since:** 9
 

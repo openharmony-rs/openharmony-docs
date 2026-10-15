@@ -16,21 +16,21 @@ The enum of bond state.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## BOND_STATE_INVALID
+## BOND_STATE_BONDED
 
 ```TypeScript
-BOND_STATE_INVALID = 0
+BOND_STATE_BONDED = 2
 ```
 
-Indicate the bond state is invalid
+Indicate the bond state is bonded
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [BOND_STATE_INVALID](arkts-connectivity-bluetoothmanager-bondstate-e.md#bond_state_invalid)
+**Substitutes:** [BOND_STATE_BONDED](arkts-connectivity-bluetoothmanager-bondstate-e.md#bond_state_bonded)
 
-<!--Device-BondState-BOND_STATE_INVALID = 0--><!--Device-BondState-BOND_STATE_INVALID = 0-End-->
+<!--Device-BondState-BOND_STATE_BONDED = 2--><!--Device-BondState-BOND_STATE_BONDED = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -52,20 +52,20 @@ Indicate the bond state is bonding
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## BOND_STATE_BONDED
+## BOND_STATE_INVALID
 
 ```TypeScript
-BOND_STATE_BONDED = 2
+BOND_STATE_INVALID = 0
 ```
 
-Indicate the bond state is bonded
+Indicate the bond state is invalid
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [BOND_STATE_BONDED](arkts-connectivity-bluetoothmanager-bondstate-e.md#bond_state_bonded)
+**Substitutes:** [BOND_STATE_INVALID](arkts-connectivity-bluetoothmanager-bondstate-e.md#bond_state_invalid)
 
-<!--Device-BondState-BOND_STATE_BONDED = 2--><!--Device-BondState-BOND_STATE_BONDED = 2-End-->
+<!--Device-BondState-BOND_STATE_INVALID = 0--><!--Device-BondState-BOND_STATE_INVALID = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

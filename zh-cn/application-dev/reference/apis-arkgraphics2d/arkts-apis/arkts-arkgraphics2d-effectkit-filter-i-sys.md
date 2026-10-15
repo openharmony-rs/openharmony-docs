@@ -56,14 +56,16 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 传入读取的图片数据
 function ImageEllipticalGradientBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
@@ -72,7 +74,9 @@ function ImageEllipticalGradientBlur(imageBuffer: ArrayBuffer): Promise<image.Pi
     let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
     let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
     let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
         // 对图片添加效果标识
@@ -80,8 +84,17 @@ function ImageEllipticalGradientBlur(imageBuffer: ArrayBuffer): Promise<image.Pi
         // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
         headFilter.getEffectPixelMap(false).then(imageData => {
           resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
         });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
       }
+    }).catch((err: BusinessError) => {
+      reject(err);
+    }).finally(() => {
+      imageSource.release();
     });
   });
 }
@@ -123,3 +136,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

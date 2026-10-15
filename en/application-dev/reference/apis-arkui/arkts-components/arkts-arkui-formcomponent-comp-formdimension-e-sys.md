@@ -14,6 +14,22 @@ Enumerates widget sizes.
 
 **System API:** This is a system API.
 
+## DIMENSION_1_1
+
+```TypeScript
+DIMENSION_1_1 = 6
+```
+
+1 x 1 widget.
+
+**Since:** 11
+
+<!--Device-FormDimension-DIMENSION_1_1 = 6--><!--Device-FormDimension-DIMENSION_1_1 = 6-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
 ## Dimension_1_2
 
 ```TypeScript
@@ -46,6 +62,22 @@ Dimension_2_2 = 1
 
 **System API:** This is a system API.
 
+## DIMENSION_2_3
+
+```TypeScript
+DIMENSION_2_3 = 8
+```
+
+2 x 3 widget. Available for wearable devices.
+
+**Since:** 18
+
+<!--Device-FormDimension-DIMENSION_2_3 = 8--><!--Device-FormDimension-DIMENSION_2_3 = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
 ## Dimension_2_4
 
 ```TypeScript
@@ -57,6 +89,22 @@ Dimension_2_4 = 2
 **Since:** 7
 
 <!--Device-FormDimension-Dimension_2_4 = 2--><!--Device-FormDimension-Dimension_2_4 = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## DIMENSION_3_3
+
+```TypeScript
+DIMENSION_3_3 = 9
+```
+
+3 x 3 widget. Available for wearable devices.
+
+**Since:** 18
+
+<!--Device-FormDimension-DIMENSION_3_3 = 9--><!--Device-FormDimension-DIMENSION_3_3 = 9-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,40 +126,6 @@ Dimension_4_4 = 3
 
 **System API:** This is a system API.
 
-## Dimension_2_1
-
-```TypeScript
-Dimension_2_1 = 4
-```
-
-2 x 1 widget.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-<!--Device-FormDimension-Dimension_2_1 = 4--><!--Device-FormDimension-Dimension_2_1 = 4-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## DIMENSION_1_1
-
-```TypeScript
-DIMENSION_1_1 = 6
-```
-
-1 x 1 widget.
-
-**Since:** 11
-
-<!--Device-FormDimension-DIMENSION_1_1 = 6--><!--Device-FormDimension-DIMENSION_1_1 = 6-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
 ## DIMENSION_6_4
 
 ```TypeScript
@@ -128,33 +142,19 @@ DIMENSION_6_4 = 7
 
 **System API:** This is a system API.
 
-## DIMENSION_2_3
+## Dimension_2_1
 
 ```TypeScript
-DIMENSION_2_3 = 8
+Dimension_2_1 = 4
 ```
 
-2 x 3 widget. Available for wearable devices.
+2 x 1 widget.
 
-**Since:** 18
+**Since:** 9
 
-<!--Device-FormDimension-DIMENSION_2_3 = 8--><!--Device-FormDimension-DIMENSION_2_3 = 8-End-->
+**Deprecated since:** 20
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## DIMENSION_3_3
-
-```TypeScript
-DIMENSION_3_3 = 9
-```
-
-3 x 3 widget. Available for wearable devices.
-
-**Since:** 18
-
-<!--Device-FormDimension-DIMENSION_3_3 = 9--><!--Device-FormDimension-DIMENSION_3_3 = 9-End-->
+<!--Device-FormDimension-Dimension_2_1 = 4--><!--Device-FormDimension-Dimension_2_1 = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

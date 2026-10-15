@@ -8,6 +8,8 @@ declare type EdgeWidth = EdgeWidths
 
 引入该对象时，至少传入一个参数。
 
+**类型：** EdgeWidths
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type EdgeWidth = EdgeWidths
 <!--Device-unnamed-declare type EdgeWidth = EdgeWidths--><!--Device-unnamed-declare type EdgeWidth = EdgeWidths-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** EdgeWidths

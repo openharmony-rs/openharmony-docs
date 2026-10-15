@@ -30,7 +30,7 @@ copyright?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-copyright?: string--><!--Device-FontDescriptor-copyright?: string-End-->
 
@@ -48,7 +48,7 @@ fontFamily?: string
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-fontFamily?: string--><!--Device-FontDescriptor-fontFamily?: string-End-->
 
@@ -68,7 +68,7 @@ fontFeatures?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-fontFeatures?: Array<string>--><!--Device-FontDescriptor-fontFeatures?: Array<string>-End-->
 
@@ -86,7 +86,7 @@ fontSubfamily?: string
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-fontSubfamily?: string--><!--Device-FontDescriptor-fontSubfamily?: string-End-->
 
@@ -104,7 +104,7 @@ fullName?: string
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-fullName?: string--><!--Device-FontDescriptor-fullName?: string-End-->
 
@@ -124,7 +124,7 @@ index?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-index?: int--><!--Device-FontDescriptor-index?: int-End-->
 
@@ -142,7 +142,7 @@ italic?: number
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-italic?: int--><!--Device-FontDescriptor-italic?: int-End-->
 
@@ -162,7 +162,7 @@ languages?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-languages?: Array<string>--><!--Device-FontDescriptor-languages?: Array<string>-End-->
 
@@ -180,7 +180,7 @@ license?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-license?: string--><!--Device-FontDescriptor-license?: string-End-->
 
@@ -198,7 +198,7 @@ localFamilyName?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-localFamilyName?: string--><!--Device-FontDescriptor-localFamilyName?: string-End-->
 
@@ -216,7 +216,7 @@ localFullName?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-localFullName?: string--><!--Device-FontDescriptor-localFullName?: string-End-->
 
@@ -234,7 +234,7 @@ localPostscriptName?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-localPostscriptName?: string--><!--Device-FontDescriptor-localPostscriptName?: string-End-->
 
@@ -252,7 +252,7 @@ localSubFamilyName?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-localSubFamilyName?: string--><!--Device-FontDescriptor-localSubFamilyName?: string-End-->
 
@@ -270,7 +270,7 @@ manufacture?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-manufacture?: string--><!--Device-FontDescriptor-manufacture?: string-End-->
 
@@ -288,7 +288,7 @@ monoSpace?: boolean
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-monoSpace?: boolean--><!--Device-FontDescriptor-monoSpace?: boolean-End-->
 
@@ -306,7 +306,7 @@ path?: string
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-path?: string--><!--Device-FontDescriptor-path?: string-End-->
 
@@ -324,7 +324,7 @@ postScriptName?: string
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-postScriptName?: string--><!--Device-FontDescriptor-postScriptName?: string-End-->
 
@@ -342,7 +342,7 @@ symbolic?: boolean
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-symbolic?: boolean--><!--Device-FontDescriptor-symbolic?: boolean-End-->
 
@@ -360,7 +360,7 @@ trademark?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-trademark?: string--><!--Device-FontDescriptor-trademark?: string-End-->
 
@@ -378,7 +378,7 @@ variationAxisRecords?: Array<FontVariationAxis>
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-variationAxisRecords?: Array<FontVariationAxis>--><!--Device-FontDescriptor-variationAxisRecords?: Array<FontVariationAxis>-End-->
 
@@ -396,7 +396,7 @@ variationInstanceRecords?: Array<FontVariationInstance>
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-variationInstanceRecords?: Array<FontVariationInstance>--><!--Device-FontDescriptor-variationInstanceRecords?: Array<FontVariationInstance>-End-->
 
@@ -414,7 +414,7 @@ version?: string
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-version?: string--><!--Device-FontDescriptor-version?: string-End-->
 
@@ -432,7 +432,7 @@ weight?: FontWeight
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-weight?: FontWeight--><!--Device-FontDescriptor-weight?: FontWeight-End-->
 
@@ -450,7 +450,7 @@ width?: number
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontDescriptor-width?: int--><!--Device-FontDescriptor-width?: int-End-->
 

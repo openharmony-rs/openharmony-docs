@@ -12,19 +12,35 @@ Enumerates application window states.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DISCONNECT
+## ACTIVE
 
 ```TypeScript
-DISCONNECT = 0
+ACTIVE = 3
 ```
 
-The window has been created but is currently unavailable.
+Foreground active state, indicating that the window is currently displayed in the foreground.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-WindowState-DISCONNECT = 0--><!--Device-WindowState-DISCONNECT = 0-End-->
+<!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## BACKGROUND
+
+```TypeScript
+BACKGROUND = 5
+```
+
+Background state, indicating that the window has been moved to the background and is not visible.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowState-BACKGROUND = 5--><!--Device-WindowState-BACKGROUND = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,6 +60,22 @@ The window has been created and is available for use.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## DISCONNECT
+
+```TypeScript
+DISCONNECT = 0
+```
+
+The window has been created but is currently unavailable.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowState-DISCONNECT = 0--><!--Device-WindowState-DISCONNECT = 0-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## FOREGROUND
 
 ```TypeScript
@@ -60,22 +92,6 @@ Foreground state, indicating that the window has entered the foreground display.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## ACTIVE
-
-```TypeScript
-ACTIVE = 3
-```
-
-Foreground active state, indicating that the window is currently displayed in the foreground.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## INACTIVE
 
 ```TypeScript
@@ -89,21 +105,5 @@ Foreground inactive state, indicating that the window is about to enter the back
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-WindowState-INACTIVE = 4--><!--Device-WindowState-INACTIVE = 4-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## BACKGROUND
-
-```TypeScript
-BACKGROUND = 5
-```
-
-Background state, indicating that the window has been moved to the background and is not visible.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-WindowState-BACKGROUND = 5--><!--Device-WindowState-BACKGROUND = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

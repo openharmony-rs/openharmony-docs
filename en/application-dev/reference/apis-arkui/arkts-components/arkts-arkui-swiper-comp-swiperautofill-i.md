@@ -18,9 +18,11 @@ Describes the auto-fill attribute.
 minSize: VP
 ```
 
-Minimum width of the element.
+Minimum width for displaying elements, which is used to automatically calculate and change the display count of elements on one page based on the current width of **Swiper** and the **minSize** value. When the display count of elements on one page needs to be adaptively adjusted based on the width of the **Swiper** component, you are advised to set this parameter to achieve a better responsive layout effect.
 
 Default value: **0**
+
+Value range: (0, +∞). When the value is set to less than or equal to 0, **Swiper** displays one column.
 
 **Type:** VP
 

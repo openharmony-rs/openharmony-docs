@@ -14,17 +14,17 @@ Indicates IMS registration technology.
 
 **System API:** This is a system API.
 
-## REGISTRATION_TECH_NONE
+## REGISTRATION_TECH_IWLAN
 
 ```TypeScript
-REGISTRATION_TECH_NONE = 0
+REGISTRATION_TECH_IWLAN = 2
 ```
 
-Indicates that ims has no registered technology.
+Indicates that ims registers IWLAN technology.
 
 **Since:** 9
 
-<!--Device-ImsRegTech-REGISTRATION_TECH_NONE = 0--><!--Device-ImsRegTech-REGISTRATION_TECH_NONE = 0-End-->
+<!--Device-ImsRegTech-REGISTRATION_TECH_IWLAN = 2--><!--Device-ImsRegTech-REGISTRATION_TECH_IWLAN = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -46,17 +46,17 @@ Indicates that ims registers LTE technology.
 
 **System API:** This is a system API.
 
-## REGISTRATION_TECH_IWLAN
+## REGISTRATION_TECH_NONE
 
 ```TypeScript
-REGISTRATION_TECH_IWLAN = 2
+REGISTRATION_TECH_NONE = 0
 ```
 
-Indicates that ims registers IWLAN technology.
+Indicates that ims has no registered technology.
 
 **Since:** 9
 
-<!--Device-ImsRegTech-REGISTRATION_TECH_IWLAN = 2--><!--Device-ImsRegTech-REGISTRATION_TECH_IWLAN = 2-End-->
+<!--Device-ImsRegTech-REGISTRATION_TECH_NONE = 0--><!--Device-ImsRegTech-REGISTRATION_TECH_NONE = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

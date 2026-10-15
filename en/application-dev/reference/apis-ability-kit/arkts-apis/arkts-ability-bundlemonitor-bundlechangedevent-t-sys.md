@@ -4,9 +4,9 @@
 type BundleChangedEvent = 'add' | 'update' | 'remove'
 ```
 
-Indicates the event type of bundle change
+Enumerates the types of events to listen for.
 
-@typedef { 'add' | 'update' | 'remove' }
+The value type is one of the types listed in the table below.
 
 **Since:** 9
 

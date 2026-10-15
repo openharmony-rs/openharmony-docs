@@ -49,6 +49,7 @@ Obtains the virtual aperture in use.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,6 +58,8 @@ function getVirtualAperture(session: camera.PortraitPhotoSession): number {
   return virtualAperture;
 }
 ```
+
+<!--DelEnd-->
 
 ## setVirtualAperture
 
@@ -87,6 +90,7 @@ Sets a virtual aperture. Before the setting, call [getSupportedVirtualApertures]
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -94,3 +98,5 @@ function setVirtualAperture(session: camera.PortraitPhotoSession, virtualApertur
   session.setVirtualAperture(virtualAperture);
 }
 ```
+
+<!--DelEnd-->

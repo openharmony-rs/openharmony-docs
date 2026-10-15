@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getfreebytes1"></a>
+
 ## getFreeBytes
 
 ```TypeScript
@@ -47,7 +49,7 @@ statfs.getFreeBytes(path, (err: BusinessError, freeBytes:Number) => {
 ```
 
 
-<a id="getfreebytes-1"></a>
+<a id="getfreebytes2"></a>
 
 ## getFreeBytes
 

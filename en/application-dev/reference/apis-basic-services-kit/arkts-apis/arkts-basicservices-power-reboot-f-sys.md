@@ -39,6 +39,7 @@ Reboots a device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types; |
 | [4900101](../errorcode-power.md#4900101-service-connection-failure) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ try {
     console.error('reboot failed, err: ' + err);
 }
 ```
+
+<!--DelEnd-->

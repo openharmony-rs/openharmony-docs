@@ -36,6 +36,7 @@ Ability首帧绘制完成时触发的回调函数。
 | --- | --- | --- | --- |
 | data | [AbilityFirstFrameStateData](arkts-ability-abilityfirstframestatedata-i-sys.md) | 是 | 表示首帧绘制完成时返回的数据。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,3 +59,5 @@ try {
   console.error(`appmanager.on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
+
+<!--DelEnd-->

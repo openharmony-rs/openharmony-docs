@@ -17,7 +17,7 @@ Profiler tools for inspectors.
 
 | Name | Description |
 | --- | --- |
-| [getInspectorNodeById](arkts-arkui-inspector-getinspectornodebyid-f-sys.md) | Get inspector node info by node id. |
-| [getInspectorNodes](arkts-arkui-inspector-getinspectornodes-f-sys.md) | Get inspector node infos. |
-| [setAppBgColor](arkts-arkui-inspector-setappbgcolor-f-sys.md) | Set app background color. |
+| [setAppBgColor](arkts-arkui-inspector-setappbgcolor-f-sys.md#setappbgcolor) | Set app background color. |
+| [getInspectorNodeById](arkts-arkui-inspector-getinspectornodebyid-f-sys.md#getinspectornodebyid) | Get inspector node info by node id. |
+| [getInspectorNodes](arkts-arkui-inspector-getinspectornodes-f-sys.md#getinspectornodes) | Get inspector node infos. |
 <!--DelEnd-->

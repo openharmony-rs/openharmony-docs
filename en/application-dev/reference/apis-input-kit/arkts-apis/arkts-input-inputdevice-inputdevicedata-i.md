@@ -24,7 +24,7 @@ import { inputDevice } from '@kit.InputKit';
 axisRanges: Array<AxisRange>
 ```
 
-Axis information of the input device.
+Axis range of the input device.
 
 **Type:** Array&lt;[AxisRange](arkts-input-inputdevice-axisrange-i.md)&gt;
 
@@ -56,7 +56,7 @@ Bus type of the input device. By default, the bus type reported by the input dev
 readonly displayId?: number
 ```
 
-Indicates the bound target displayId.
+ID of the bound target display. This field exists when there is a binding relationship in the system, and does not exist when there is no binding.
 
 **Type:** number
 
@@ -90,9 +90,7 @@ Unique ID of the input device. If a physical device is repeatedly plugged and un
 isLocal?: boolean
 ```
 
-Whether the input device is a local device.
-
-The value **true** indicates that the device is a local device, and the value **false** indicates that the device is a non-local device.
+Whether the input device is a local device.<br>The value **true** indicates a local device, and **false** indicates a non-local device. If this field does not exist, the default value is **false**.
 
 **Type:** boolean
 
@@ -108,9 +106,7 @@ The value **true** indicates that the device is a local device, and the value **
 isVirtual?: boolean
 ```
 
-Whether the input device is a virtual device.
-
-The value **true** indicates that the device is a virtual device, and the value **false** indicates that the device is a non-virtual device.
+Whether the input device is a virtual device.<br>The value **true** indicates a virtual device, and **false** indicates a non-virtual device. If this field does not exist, the default value is **false**.
 
 **Type:** boolean
 

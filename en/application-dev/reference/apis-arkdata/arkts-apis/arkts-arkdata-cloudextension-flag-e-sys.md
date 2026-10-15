@@ -14,6 +14,22 @@ Enumerates the operations that can be performed on a database. Use the enum name
 
 **System API:** This is a system API.
 
+## DELETE
+
+```TypeScript
+DELETE = 2
+```
+
+Delete data.
+
+**Since:** 11
+
+<!--Device-Flag-DELETE = 2--><!--Device-Flag-DELETE = 2-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**System API:** This is a system API.
+
 ## INSERT
 
 ```TypeScript
@@ -41,22 +57,6 @@ Update data.
 **Since:** 11
 
 <!--Device-Flag-UPDATE = 1--><!--Device-Flag-UPDATE = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
-
-**System API:** This is a system API.
-
-## DELETE
-
-```TypeScript
-DELETE = 2
-```
-
-Delete data.
-
-**Since:** 11
-
-<!--Device-Flag-DELETE = 2--><!--Device-Flag-DELETE = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

@@ -24,7 +24,7 @@ import { SelectTitleBar, SelectTitleBarMenuItem } from '@kit.ArkUI';
 action?: () => void
 ```
 
-Action to perform.
+Callback invoked when the custom button on the right is tapped. Developers can define custom operations to be executed after the button is tapped.
 
 **Since:** 10
 
@@ -64,19 +64,19 @@ Default value: **"Double-tap to activate"**
 accessibilityLevel?: string
 ```
 
-Accessibility level. It determines whether the component can be recognized by accessibility services.
+Accessibility level of the custom button on the right side of the title bar. It controls whether the current item can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: It is treated as "yes" by the system.
+**"auto"**: The component is automatically converted to **"yes"** or **"no"** based on the specific situation.
 
 **"yes"**: The component can be recognized by accessibility services.
 
 **"no"**: The component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.
 
-Default value: **"auto"**
+Default value: **"auto"**.
 
 **Type:** string
 
@@ -98,9 +98,9 @@ Default value: **"auto"**
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+Accessibility text attribute of the custom button on the right side of the title bar. When a component does not contain a text attribute, the screen reader does not announce anything when this component is selected, and the user cannot clearly know which component is currently selected. To address this scenario, developers can set accessibility text for components that do not contain text information. When the screen reader selects this component, it announces the content of the accessibility text, helping screen reader users clearly know which component they have selected.
 
-Default value: value of the **label** property if it is set and an empty string otherwise.
+Default value: when **label** is set, the default value is the content of the **label** attribute of the current item; when **label** is not set, the default value is a space character.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -120,9 +120,9 @@ Default value: value of the **label** property if it is set and an empty string 
 isEnabled?: boolean
 ```
 
-Whether to enable the item.
+Whether to enable.
 
-Default value: **false**. **true** to enable, **false** to disable.
+Default value: **false**. The value **true** enables the menu item, and **false** disables it (grayed out and not tappable).
 
 **Type:** boolean
 
@@ -142,7 +142,7 @@ Default value: **false**. **true** to enable, **false** to disable.
 label?: ResourceStr
 ```
 
-Icon label.
+Icon label description, which can serve as the default value of **accessibilityText**. When both **label** and **accessibilityText** are set, **accessibilityText** takes precedence. When not set, there is no label by default.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -182,7 +182,7 @@ Symbol icon resource, which has higher priority than **value**.
 value: ResourceStr
 ```
 
-Icon resource.
+Icon resource used to set the icon of the menu item on the right side of the title bar. It can be referenced through $r. When **symbolStyle** is also set, **symbolStyle** takes precedence.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

@@ -33,6 +33,7 @@ function stopOptimizeSpace(): void
 | 13600001 | IPC error. |
 | 22400005 | Inner error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
 cloudSync.startOptimizeSpace(para, callback);
 cloudSync.stopOptimizeSpace();   // 停止空间优化
 ```
+
+<!--DelEnd-->

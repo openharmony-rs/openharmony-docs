@@ -6,8 +6,6 @@ export enum PrimitiveTopology
 
 Enumerates the vertex processing methods.
 
-@enum { int }
-
 **Since:** 18
 
 <!--Device-unnamed-export enum PrimitiveTopology--><!--Device-unnamed-export enum PrimitiveTopology-End-->

@@ -12,22 +12,6 @@ enum FormLocation
 
 **系统能力：** SystemCapability.Ability.Form
 
-## OTHER
-
-```TypeScript
-OTHER = -1
-```
-
-表示卡片位于其他位置。
-
-**起始版本：** 12
-
-<!--Device-FormLocation-OTHER = -1--><!--Device-FormLocation-OTHER = -1-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
 ## FORM_CENTER_NEGATIVE_SCREEN
 
 ```TypeScript
@@ -55,6 +39,22 @@ FORM_MANAGER_NEGATIVE_SCREEN = 5
 **起始版本：** 12
 
 <!--Device-FormLocation-FORM_MANAGER_NEGATIVE_SCREEN = 5--><!--Device-FormLocation-FORM_MANAGER_NEGATIVE_SCREEN = 5-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## OTHER
+
+```TypeScript
+OTHER = -1
+```
+
+表示卡片位于其他位置。
+
+**起始版本：** 12
+
+<!--Device-FormLocation-OTHER = -1--><!--Device-FormLocation-OTHER = -1-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 

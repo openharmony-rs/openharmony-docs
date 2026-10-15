@@ -240,6 +240,7 @@ Unsubscribes from LCD flash status change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -247,6 +248,8 @@ function unregisterLcdFlashStatus(videoSession: camera.VideoSession): void {
   videoSession.off('lcdFlashStatus');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusTrackingInfoAvailable')
 
@@ -277,6 +280,7 @@ Unsubscribes from focus tracking information events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -284,6 +288,8 @@ function unregisterFocusTrackingInfoChanged(session: camera.VideoSessionForSys):
   session.off('focusTrackingInfoAvailable');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('effectSuggestionChange')
 
@@ -343,6 +349,7 @@ Unsubscribes from camera light status changes.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -366,6 +373,8 @@ function handleLightStatusOff(mSession: camera.VideoSessionForSys): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## offApertureInfoChange
 
@@ -426,6 +435,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -444,6 +454,8 @@ function registerLcdFlashStatus(videoSession: camera.VideoSession): void {
   videoSession.on('lcdFlashStatus', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusTrackingInfoAvailable')
 
@@ -474,6 +486,7 @@ Subscribes to focus tracking information events. This API uses an asynchronous c
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -489,6 +502,8 @@ function registerFocusTrackingInfoChanged(session: camera.VideoSessionForSys): v
   session.on('focusTrackingInfoAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('effectSuggestionChange')
 
@@ -548,6 +563,7 @@ Subscribes to camera light status changes. This API uses an asynchronous callbac
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -571,6 +587,8 @@ function handleLightStatusOn(mSession: camera.VideoSessionForSys): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onApertureInfoChange
 

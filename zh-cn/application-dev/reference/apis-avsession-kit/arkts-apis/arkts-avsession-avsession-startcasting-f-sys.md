@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="startcasting1"></a>
+
 ## startCasting
 
 ```TypeScript
@@ -42,6 +44,7 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo, callback:
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600108](../errorcode-avsession.md#6600108-设备连接失败) | Device connecting failed |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,8 +64,10 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="startcasting-1"></a>
+
+<a id="startcasting2"></a>
 
 ## startCasting
 
@@ -105,6 +110,7 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo): Promise<
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600108](../errorcode-avsession.md#6600108-设备连接失败) | Device connecting failed |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -123,3 +129,5 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   }
 });
 ```
+
+<!--DelEnd-->

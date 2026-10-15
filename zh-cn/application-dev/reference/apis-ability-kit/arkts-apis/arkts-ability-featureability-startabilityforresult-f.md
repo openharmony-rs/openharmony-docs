@@ -6,6 +6,8 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="startabilityforresult1"></a>
+
 ## startAbilityForResult
 
 ```TypeScript
@@ -14,9 +16,9 @@ function startAbilityForResult(parameter: StartAbilityParameter, callback: Async
 
 启动一个Ability。使用callback异步回调。启动Ability后，存在如下几种情况：
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -34,8 +36,8 @@ function startAbilityForResult(parameter: StartAbilityParameter, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，data为ability的启动结果；否则为错误对象。 |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，data为ability的启动结果；否则为错误对象。 |
 
 **示例**
 
@@ -69,7 +71,7 @@ featureAbility.startAbilityForResult(
 ```
 
 
-<a id="startabilityforresult-1"></a>
+<a id="startabilityforresult2"></a>
 
 ## startAbilityForResult
 
@@ -79,9 +81,9 @@ function startAbilityForResult(parameter: StartAbilityParameter): Promise<Abilit
 
 启动一个Ability。使用Promise异步回调。启动Ability后，存在如下几种情况：
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -99,13 +101,13 @@ function startAbilityForResult(parameter: StartAbilityParameter): Promise<Abilit
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise对象，返回启动Ability的结果。 |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise对象，返回启动Ability的结果。 |
 
 **示例**
 

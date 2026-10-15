@@ -26,6 +26,8 @@ addPath to apply the graphic transformation corresponding to the **Matrix2D** ob
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -46,7 +48,7 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -127,7 +129,7 @@ Obtains the inverse of the current matrix. It is commonly used to undo previous 
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | Inverse matrix result, which can be used for reverse transformation or to undo previous transformation operations. |
 
-<a id="rotate-1"></a>
+<a id="rotate2"></a>
 
 ## rotate
 
@@ -162,6 +164,8 @@ Performs a left-multiply rotation operation on the current matrix, centered at t
 | Type | Description |
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | Resulting matrix object after rotation, which can be used to perform rotation transformation on graphics. |
+
+<a id="rotate1"></a>
 
 ## rotate
 
@@ -271,8 +275,6 @@ multiply(other?: Matrix2D): Matrix2D
 ```
 
 Multiplies the current matrix by the target matrix. This API is an empty API and has no actual effect.
-
-This API is deprecated since API version 10 and has no actual drawing effect, so no example is provided.
 
 **Since:** 8
 

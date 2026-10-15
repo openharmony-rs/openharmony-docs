@@ -36,6 +36,7 @@ Called when the ability is switched between foreground and background.
 | --- | --- | --- | --- |
 | abilityStateData | [AbilityStateData](arkts-ability-abilitystatedata-c.md) | Yes | Ability state data. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
   console.error(`error code: ${code}, error msg: ${message}`);
 }
 ```
+
+<!--DelEnd-->

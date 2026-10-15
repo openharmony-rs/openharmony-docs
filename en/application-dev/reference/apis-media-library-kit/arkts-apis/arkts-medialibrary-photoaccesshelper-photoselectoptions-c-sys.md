@@ -46,7 +46,7 @@ userId?: number
 
 ID of the user space to access. The default value is **-1**.
 
-To use it as a parameter of [PhotoViewPicker.select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select), request the permission **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS**.
+To use it as a parameter of [PhotoViewPicker.select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select1), request the permission **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS**.
 
 **Type:** number
 

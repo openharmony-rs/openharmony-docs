@@ -328,7 +328,7 @@ cornerRadius?: Dimension | BorderRadiuses
 
 默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }
 
-**说明：** 自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和[borderRadius](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderradius)属性一起使用。
+**说明：** 自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和[borderRadius](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderradius1)属性一起使用。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md) &#124; [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 
@@ -1004,7 +1004,7 @@ systemMaterial?: SystemUiMaterial
 
 - 默认值：[ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)}的style为  
 ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。  
-- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
+- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)，不建议与上述接口一起使用。
 
 **类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 

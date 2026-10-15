@@ -37,6 +37,7 @@ Obtains the added scanners. This API uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
     console.error(`Failed to get added scanners. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

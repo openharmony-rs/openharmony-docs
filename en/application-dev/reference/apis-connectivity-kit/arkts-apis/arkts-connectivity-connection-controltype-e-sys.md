@@ -14,37 +14,19 @@ Describes the control type.
 
 **System API:** This is a system API.
 
-## PLAY
+## ERASE
 
 ```TypeScript
-PLAY = 0
+ERASE = 4
 ```
 
-Indicates the control command of play.
+Indicates the control command of erase.
 
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ControlType-PLAY = 0--><!--Device-ControlType-PLAY = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
-## VIBRATE
-
-```TypeScript
-VIBRATE = 1
-```
-
-Indicates the control command of vibration.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ControlType-VIBRATE = 1--><!--Device-ControlType-VIBRATE = 1-End-->
+<!--Device-ControlType-ERASE = 4--><!--Device-ControlType-ERASE = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -86,19 +68,37 @@ Indicates the control command of lock.
 
 **System API:** This is a system API.
 
-## ERASE
+## PLAY
 
 ```TypeScript
-ERASE = 4
+PLAY = 0
 ```
 
-Indicates the control command of erase.
+Indicates the control command of play.
 
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ControlType-ERASE = 4--><!--Device-ControlType-ERASE = 4-End-->
+<!--Device-ControlType-PLAY = 0--><!--Device-ControlType-PLAY = 0-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## VIBRATE
+
+```TypeScript
+VIBRATE = 1
+```
+
+Indicates the control command of vibration.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ControlType-VIBRATE = 1--><!--Device-ControlType-VIBRATE = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

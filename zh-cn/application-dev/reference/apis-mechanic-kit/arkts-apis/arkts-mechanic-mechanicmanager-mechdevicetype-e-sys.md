@@ -4,7 +4,7 @@
 export enum MechDeviceType
 ```
 
-Enumerates the mechanical device types. @enum { int }
+Enumerates the mechanical device types.
 
 **起始版本：** 20
 

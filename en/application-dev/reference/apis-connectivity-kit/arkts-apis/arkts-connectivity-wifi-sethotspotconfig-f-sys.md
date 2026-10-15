@@ -42,6 +42,7 @@ Sets the hotspot for a device.
 | --- | --- |
 | boolean | Returns `true` if the method is called successfully, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,3 +62,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

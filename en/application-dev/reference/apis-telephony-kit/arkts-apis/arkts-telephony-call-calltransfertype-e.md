@@ -12,20 +12,6 @@ Enumerates call transfer types.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## TRANSFER_TYPE_UNCONDITIONAL
-
-```TypeScript
-TRANSFER_TYPE_UNCONDITIONAL = 0
-```
-
-Call forwarding unconditional.
-
-**Since:** 26.0.0
-
-<!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0--><!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
 ## TRANSFER_TYPE_BUSY
 
 ```TypeScript
@@ -65,5 +51,19 @@ Call forwarding on no user not reachable.
 **Since:** 26.0.0
 
 <!--Device-CallTransferType-TRANSFER_TYPE_NOT_REACHABLE = 3--><!--Device-CallTransferType-TRANSFER_TYPE_NOT_REACHABLE = 3-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## TRANSFER_TYPE_UNCONDITIONAL
+
+```TypeScript
+TRANSFER_TYPE_UNCONDITIONAL = 0
+```
+
+Call forwarding unconditional.
+
+**Since:** 26.0.0
+
+<!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0--><!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager

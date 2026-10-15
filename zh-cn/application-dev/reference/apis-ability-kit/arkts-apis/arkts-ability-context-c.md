@@ -26,7 +26,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-createAreaModeContext(areaMode: contextConstant.AreaMode): Context--><!--Device-Context-createAreaModeContext(areaMode: contextConstant.AreaMode): Context-End-->
 
@@ -79,7 +79,7 @@ createDisplayContext(displayId: number): Context
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-createDisplayContext(displayId: long): Context--><!--Device-Context-createDisplayContext(displayId: long): Context-End-->
 
@@ -131,13 +131,13 @@ export default class EntryAbility extends UIAbility {
 getApplicationContext(): ApplicationContext
 ```
 
-获取当前应用上下文。
+获取当前应用上下文。提供应用级事件订阅等能力，与应用内所有UIAbility共享。详情请参见[ApplicationContext (应用上下文)](arkts-ability-applicationcontext-c.md)。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-getApplicationContext(): ApplicationContext--><!--Device-Context-getApplicationContext(): ApplicationContext-End-->
 
@@ -175,6 +175,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getgroupdir1"></a>
+
 ## getGroupDir
 
 ```TypeScript
@@ -187,7 +189,7 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void--><!--Device-Context-getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void-End-->
 
@@ -230,7 +232,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getgroupdir-1"></a>
+<a id="getgroupdir2"></a>
 
 ## getGroupDir
 
@@ -244,7 +246,7 @@ getGroupDir(dataGroupID: string): Promise<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-getGroupDir(dataGroupID: string): Promise<string>--><!--Device-Context-getGroupDir(dataGroupID: string): Promise<string>-End-->
 
@@ -304,7 +306,7 @@ isContextOf(contextType: contextConstant.ContextType): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-isContextOf(contextType: contextConstant.ContextType): boolean--><!--Device-Context-isContextOf(contextType: contextConstant.ContextType): boolean-End-->
 
@@ -320,7 +322,7 @@ isContextOf(contextType: contextConstant.ContextType): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否为指定类型的上下文。返回true表示Context类型为指定类型，返回false表示Context类型匹配失败。 |
+| boolean | 是否为指定类型的上下文。返回true表示Context类型为指定类型，返回false表示当前Context不是指定类型。 |
 
 **示例**
 
@@ -337,6 +339,8 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<a id="createmodulecontext1"></a>
 
 ## createModuleContext
 
@@ -417,7 +421,7 @@ applicationInfo: ApplicationInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-applicationInfo: ApplicationInfo--><!--Device-Context-applicationInfo: ApplicationInfo-End-->
 
@@ -457,7 +461,7 @@ bundleCodeDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-bundleCodeDir: string--><!--Device-Context-bundleCodeDir: string-End-->
 
@@ -477,7 +481,7 @@ cacheDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-cacheDir: string--><!--Device-Context-cacheDir: string-End-->
 
@@ -497,7 +501,7 @@ cloudFileDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-cloudFileDir: string--><!--Device-Context-cloudFileDir: string-End-->
 
@@ -517,7 +521,7 @@ databaseDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-databaseDir: string--><!--Device-Context-databaseDir: string-End-->
 
@@ -537,7 +541,7 @@ distributedFilesDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-distributedFilesDir: string--><!--Device-Context-distributedFilesDir: string-End-->
 
@@ -557,7 +561,7 @@ eventHub: EventHub
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-eventHub: EventHub--><!--Device-Context-eventHub: EventHub-End-->
 
@@ -577,7 +581,7 @@ filesDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-filesDir: string--><!--Device-Context-filesDir: string-End-->
 
@@ -597,7 +601,7 @@ get logFileDir(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-get logFileDir(): string--><!--Device-Context-get logFileDir(): string-End-->
 
@@ -617,7 +621,7 @@ preferences目录，详情参考[应用沙箱目录](../../../file-management/ap
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-preferencesDir: string--><!--Device-Context-preferencesDir: string-End-->
 
@@ -637,7 +641,7 @@ processName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-processName: string--><!--Device-Context-processName: string-End-->
 
@@ -653,7 +657,7 @@ resourceDir: string
 
 > **说明：** 
 > 
-> 需要开发者手动在`\&lt;module-name&gt;\resources`路径下创建`resfile`目录。创建的`resfile`目录仅支持以只读方式访问。
+> 需要开发者手动在`\<module-name>\resources`路径下创建`resfile`目录。创建的`resfile`目录仅支持以只读方式访问。
 
 **类型：** string
 
@@ -661,7 +665,7 @@ resourceDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-resourceDir: string--><!--Device-Context-resourceDir: string-End-->
 
@@ -681,7 +685,7 @@ resourceManager: resmgr.ResourceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-resourceManager: resmgr.ResourceManager--><!--Device-Context-resourceManager: resmgr.ResourceManager-End-->
 
@@ -701,7 +705,7 @@ tempDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Context-tempDir: string--><!--Device-Context-tempDir: string-End-->
 

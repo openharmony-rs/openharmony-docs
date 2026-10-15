@@ -4,13 +4,13 @@
 interface CcmParamsSpec extends ParamsSpec
 ```
 
-加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，封装使用CCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证标签。它是[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，用于在对称加解密时作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3)方法的参数。
+加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，封装使用CCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证标签。它是[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，用于在对称加解密时作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4)方法的参数。
 
 <br>适用于CCM模式。
 
 > **说明：** 
 > 
-> 传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3)方法前需
+> 传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4)方法前需
 > 要指定其algName属性（来源于父类[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)）。
 
 **继承/实现关系：** CcmParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)
@@ -41,7 +41,7 @@ aad: DataBlob
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CcmParamsSpec-aad: DataBlob--><!--Device-CcmParamsSpec-aad: DataBlob-End-->
 
@@ -57,13 +57,13 @@ authTag: DataBlob
 
 指明加解密参数authTag，长度为12字节。
 
-<br>加密时，需从[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)或[doFinalSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinalsync)输出的[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)中提取末尾12字节，作为解密时[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3)或[initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync)方法中CcmParamsSpec的authTag。
+<br>加密时，需从[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal2)或[doFinalSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinalsync)输出的[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)中提取末尾12字节，作为解密时[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4)或[initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync)方法中CcmParamsSpec的authTag。
 
 **类型：** [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CcmParamsSpec-authTag: DataBlob--><!--Device-CcmParamsSpec-authTag: DataBlob-End-->
 
@@ -83,7 +83,7 @@ iv: DataBlob
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CcmParamsSpec-iv: DataBlob--><!--Device-CcmParamsSpec-iv: DataBlob-End-->
 

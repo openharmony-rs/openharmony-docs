@@ -6,7 +6,7 @@ declare class SearchAttribute extends CommonMethod<SearchAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported:
 
-**Inheritance/Implementation:** SearchAttribute extends CommonMethod<SearchAttribute>
+**Inheritance/Implementation:** SearchAttribute extends CommonMethod&lt;SearchAttribute&gt;
 
 **Since:** 8
 
@@ -495,11 +495,11 @@ fontFeature(value: string)
 
 Sets the font feature, such as monospaced digits.
 
-The format is: normal \| \&lt;feature-tag-value\&gt;.
+The format is: normal \| \<feature-tag-value\>.
 
-The format of \&lt;feature-tag-value\&gt; is: \&lt;string\&gt; \[ \&lt;integer\&gt; \| on \| off ].
+The format of \<feature-tag-value\> is: \<string\> \[ \<integer\> \| on \| off ].
 
-There can be multiple \&lt;feature-tag-value\&gt;, separated by commas.
+There can be multiple \<feature-tag-value\>, separated by commas.
 
 For example, the input format for using monospaced digits is: "ss01" on.
 
@@ -1049,6 +1049,8 @@ Called when a paste operation is performed.
 | --- | --- | --- | --- |
 | callback | OnPasteCallback | Yes | Executed when a paste operation is performed.Callback used to return the pasted text content.<br>**Since:** 18 |
 
+<a id="onsubmit1"></a>
+
 ## onSubmit
 
 ```TypeScript
@@ -1071,7 +1073,7 @@ Triggered when the search icon or search button is clicked, or when the search b
 | --- | --- | --- | --- |
 | callback | Callback&lt;string&gt; | Yes | Callback for search submission, whose return value is the text entered in the current search box.<br>**Since:** 18 |
 
-<a id="onsubmit-1"></a>
+<a id="onsubmit2"></a>
 
 ## onSubmit
 

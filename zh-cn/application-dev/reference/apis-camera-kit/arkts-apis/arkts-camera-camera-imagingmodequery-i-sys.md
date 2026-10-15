@@ -6,7 +6,7 @@ interface ImagingModeQuery
 
 Imaging mode query object.
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 <!--Device-camera-interface ImagingModeQuery--><!--Device-camera-interface ImagingModeQuery-End-->
 
@@ -28,7 +28,7 @@ isImagingModeSupported(mode: CameraImagingMode): boolean
 
 Checks whether a camera imaging mode is supported.
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

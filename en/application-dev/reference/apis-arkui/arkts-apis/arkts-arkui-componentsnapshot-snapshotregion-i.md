@@ -28,7 +28,7 @@ Y-coordinate of the lower right corner of the rectangular region.
 
 Unit: px.
 
-Value range: [0, Component height].
+Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 
@@ -52,7 +52,7 @@ X-coordinate of the upper left corner of the rectangular region.
 
 Unit: px.
 
-Value range: [0, Component width].
+Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 
@@ -76,7 +76,7 @@ X-coordinate of the lower right corner of the rectangular region.
 
 Unit: px.
 
-Value range: [0, Component width].
+Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 
@@ -100,7 +100,7 @@ Y-coordinate of the upper left corner of the rectangular region.
 
 Unit: px.
 
-Value range: [0, Component height].
+Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 

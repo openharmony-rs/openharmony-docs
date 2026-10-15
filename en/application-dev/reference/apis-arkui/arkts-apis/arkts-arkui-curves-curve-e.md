@@ -28,22 +28,6 @@ Defines an interpolation curve. For details about the curves and animations, see
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Linear
-
-```TypeScript
-Linear
-```
-
-Linear. Indicates that the animation has the same velocity from start to finish.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-Curve-Linear--><!--Device-Curve-Linear-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Ease
 
 ```TypeScript
@@ -76,22 +60,6 @@ EaseIn. Indicates that the animation starts at a low speed, Cubic Bezier (0.42, 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## EaseOut
-
-```TypeScript
-EaseOut
-```
-
-EaseOut. Indicates that the animation ends at low speed, CubicBezier (0.0, 0.0, 0.58, 1.0).
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-Curve-EaseOut--><!--Device-Curve-EaseOut-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## EaseInOut
 
 ```TypeScript
@@ -108,51 +76,19 @@ EaseInOut. Indicates that the animation starts and ends at low speed, CubicBezie
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## FastOutSlowIn
+## EaseOut
 
 ```TypeScript
-FastOutSlowIn
+EaseOut
 ```
 
-FastOutSlowIn. Standard curve, cubic-bezier (0.4, 0.0, 0.2, 1.0).
+EaseOut. Indicates that the animation ends at low speed, CubicBezier (0.0, 0.0, 0.58, 1.0).
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-Curve-FastOutSlowIn--><!--Device-Curve-FastOutSlowIn-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## LinearOutSlowIn
-
-```TypeScript
-LinearOutSlowIn
-```
-
-LinearOutSlowIn. Deceleration curve, cubic-bezier (0.0, 0.0, 0.2, 1.0).
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-Curve-LinearOutSlowIn--><!--Device-Curve-LinearOutSlowIn-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## FastOutLinearIn
-
-```TypeScript
-FastOutLinearIn
-```
-
-FastOutLinearIn. Acceleration curve, cubic-bezier (0.4, 0.0, 1.0, 1.0).
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-Curve-FastOutLinearIn--><!--Device-Curve-FastOutLinearIn-End-->
+<!--Device-Curve-EaseOut--><!--Device-Curve-EaseOut-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,19 +108,83 @@ ExtremeDeceleration. Abrupt curve, cubic-bezier (0.0, 0.0, 0.0, 1.0).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Sharp
+## FastOutLinearIn
 
 ```TypeScript
-Sharp
+FastOutLinearIn
 ```
 
-Sharp. Sharp curves, cubic-bezier (0.33, 0.0, 0.67, 1.0).
+FastOutLinearIn. Acceleration curve, cubic-bezier (0.4, 0.0, 1.0, 1.0).
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-Curve-Sharp--><!--Device-Curve-Sharp-End-->
+<!--Device-Curve-FastOutLinearIn--><!--Device-Curve-FastOutLinearIn-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FastOutSlowIn
+
+```TypeScript
+FastOutSlowIn
+```
+
+FastOutSlowIn. Standard curve, cubic-bezier (0.4, 0.0, 0.2, 1.0).
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Curve-FastOutSlowIn--><!--Device-Curve-FastOutSlowIn-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Friction
+
+```TypeScript
+Friction
+```
+
+Friction. Damping curves, CubicBezier (0.2, 0.0, 0.2, 1.0).
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Curve-Friction--><!--Device-Curve-Friction-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Linear
+
+```TypeScript
+Linear
+```
+
+Linear. Indicates that the animation has the same velocity from start to finish.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Curve-Linear--><!--Device-Curve-Linear-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LinearOutSlowIn
+
+```TypeScript
+LinearOutSlowIn
+```
+
+LinearOutSlowIn. Deceleration curve, cubic-bezier (0.0, 0.0, 0.2, 1.0).
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Curve-LinearOutSlowIn--><!--Device-Curve-LinearOutSlowIn-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,6 +204,22 @@ Rhythm. Rhythmic curve, cubic-bezier (0.7, 0.0, 0.2, 1.0).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Sharp
+
+```TypeScript
+Sharp
+```
+
+Sharp. Sharp curves, cubic-bezier (0.33, 0.0, 0.67, 1.0).
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Curve-Sharp--><!--Device-Curve-Sharp-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Smooth
 
 ```TypeScript
@@ -217,21 +233,5 @@ Smooth. Smooth curves, cubic-bezier (0.4, 0.0, 0.4, 1.0).
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Curve-Smooth--><!--Device-Curve-Smooth-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Friction
-
-```TypeScript
-Friction
-```
-
-Friction. Damping curves, CubicBezier (0.2, 0.0, 0.2, 1.0).
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-Curve-Friction--><!--Device-Curve-Friction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

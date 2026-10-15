@@ -6,6 +6,8 @@ export type Context = common.Context
 
 当前组件所在Ability的上下文。
 
+**类型：** [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md)
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type Context = common.Context
 <!--Device-unnamed-export type Context = common.Context--><!--Device-unnamed-export type Context = common.Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md)

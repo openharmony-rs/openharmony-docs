@@ -6,7 +6,7 @@ declare class WindowExtensionContext extends ExtensionContext
 
 WindowExtensionContext模块是WindowExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
-WindowExtensionContext模块提供WindowExtensionAbility具有的能力，包括启动Ability。
+WindowExtensionContext模块提供[WindowExtensionAbility](arkts-arkui-application-windowextensionability-windowextensionability-c-sys.md)具有的能力，包括启动Ability。
 
 > **说明：** 
 > 
@@ -28,6 +28,8 @@ WindowExtensionContext模块提供WindowExtensionAbility具有的能力，包括
 
 **系统接口：** 此接口为系统接口。
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -38,7 +40,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-1)。
+> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability2)。
 
 **起始版本：** 9
 
@@ -67,6 +69,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -107,7 +110,9 @@ class WindowExtAbility extends WindowExtensionAbility {
 }
 ```
 
-<a id="startability-1"></a>
+<!--DelEnd-->
+
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -119,7 +124,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-2)。
+> - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability3)。
 
 **起始版本：** 9
 
@@ -153,6 +158,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -192,3 +198,5 @@ class WindowExtAbility extends WindowExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

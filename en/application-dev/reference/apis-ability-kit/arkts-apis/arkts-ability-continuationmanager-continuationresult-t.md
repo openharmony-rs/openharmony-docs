@@ -6,6 +6,8 @@ export type ContinuationResult = _ContinuationResult
 
 Defines the device information returned by the continuation management entry.
 
+**Type:** _ContinuationResult
+
 **Since:** 10
 
 **Deprecated since:** 22
@@ -19,5 +21,3 @@ Defines the device information returned by the continuation management entry.
 <!--Device-continuationManager-export type ContinuationResult = _ContinuationResult--><!--Device-continuationManager-export type ContinuationResult = _ContinuationResult-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
-
-**Type:** _ContinuationResult

@@ -12,22 +12,6 @@ Enumerates the user authentication types.
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
-## HUKS_USER_AUTH_TYPE_FINGERPRINT
-
-```TypeScript
-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0
-```
-
-Fingerprint authentication.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0--><!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0-End-->
-
-**System capability:** SystemCapability.Security.Huks.Extension
-
 ## HUKS_USER_AUTH_TYPE_FACE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Facial authentication.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FACE = 1 << 1--><!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FACE = 1 << 1-End-->
+
+**System capability:** SystemCapability.Security.Huks.Extension
+
+## HUKS_USER_AUTH_TYPE_FINGERPRINT
+
+```TypeScript
+HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0
+```
+
+Fingerprint authentication.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0--><!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

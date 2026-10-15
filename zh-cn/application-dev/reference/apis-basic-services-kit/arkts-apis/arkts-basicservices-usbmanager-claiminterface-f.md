@@ -71,6 +71,7 @@ async function claimInterface() {
     return;
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  // 声明接口控制权，返回0表示声明成功，失败时需关闭设备通道并退出
   let ret: number = usbManager.claimInterface(devicePipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
@@ -78,6 +79,7 @@ async function claimInterface() {
     return;
   }
   console.info(`claimInterface = ${ret}`);
+  // 释放此前声明的接口控制权
   ret = usbManager.releaseInterface(devicePipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
   usbManager.closePipe(devicePipe);

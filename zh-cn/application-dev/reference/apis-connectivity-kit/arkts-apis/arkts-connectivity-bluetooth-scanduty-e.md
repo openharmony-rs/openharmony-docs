@@ -18,24 +18,6 @@ enum ScanDuty
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## SCAN_MODE_LOW_POWER
-
-```TypeScript
-SCAN_MODE_LOW_POWER = 0
-```
-
-表示低功耗模式，默认值。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [SCAN_MODE_LOW_POWER](arkts-connectivity-bluetoothmanager-scanduty-e.md#scan_mode_low_power)
-
-<!--Device-ScanDuty-SCAN_MODE_LOW_POWER = 0--><!--Device-ScanDuty-SCAN_MODE_LOW_POWER = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## SCAN_MODE_BALANCED
 
 ```TypeScript
@@ -69,5 +51,23 @@ SCAN_MODE_LOW_LATENCY = 2
 **替代接口：** [SCAN_MODE_LOW_LATENCY](arkts-connectivity-bluetoothmanager-scanduty-e.md#scan_mode_low_latency)
 
 <!--Device-ScanDuty-SCAN_MODE_LOW_LATENCY = 2--><!--Device-ScanDuty-SCAN_MODE_LOW_LATENCY = 2-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## SCAN_MODE_LOW_POWER
+
+```TypeScript
+SCAN_MODE_LOW_POWER = 0
+```
+
+表示低功耗模式，默认值。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [SCAN_MODE_LOW_POWER](arkts-connectivity-bluetoothmanager-scanduty-e.md#scan_mode_low_power)
+
+<!--Device-ScanDuty-SCAN_MODE_LOW_POWER = 0--><!--Device-ScanDuty-SCAN_MODE_LOW_POWER = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

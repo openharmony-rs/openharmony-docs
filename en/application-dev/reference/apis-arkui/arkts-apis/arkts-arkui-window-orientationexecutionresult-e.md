@@ -24,7 +24,7 @@ Orientation policy is applied.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OrientationExecutionResult-ORIENTATION_APPLIED = 0--><!--Device-OrientationExecutionResult-ORIENTATION_APPLIED = 0-End-->
 
@@ -42,7 +42,7 @@ Orientation policy is ignored.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OrientationExecutionResult-ORIENTATION_IGNORED = 1--><!--Device-OrientationExecutionResult-ORIENTATION_IGNORED = 1-End-->
 
@@ -60,7 +60,7 @@ Orientation policy is pending and will be applied soon.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OrientationExecutionResult-ORIENTATION_PENDING = 2--><!--Device-OrientationExecutionResult-ORIENTATION_PENDING = 2-End-->
 

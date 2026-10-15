@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="isramconstraineddevice1"></a>
+
 ## isRamConstrainedDevice
 
 ```TypeScript
@@ -16,7 +18,7 @@ function isRamConstrainedDevice(): Promise<boolean>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-appManager-function isRamConstrainedDevice(): Promise<boolean>--><!--Device-appManager-function isRamConstrainedDevice(): Promise<boolean>-End-->
 
@@ -48,7 +50,7 @@ appManager.isRamConstrainedDevice().then((data) => {
 ```
 
 
-<a id="isramconstraineddevice-1"></a>
+<a id="isramconstraineddevice2"></a>
 
 ## isRamConstrainedDevice
 
@@ -60,7 +62,7 @@ function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-appManager-function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void--><!--Device-appManager-function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void-End-->
 
@@ -76,7 +78,7 @@ function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**

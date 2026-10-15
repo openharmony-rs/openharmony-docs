@@ -14,42 +14,6 @@ Disk type.
 
 **System API:** This is a system API.
 
-## SD_CARD
-
-```TypeScript
-SD_CARD = 1
-```
-
-The type of sd card.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DiskType-SD_CARD = 1--><!--Device-DiskType-SD_CARD = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.StorageService.Volume
-
-**System API:** This is a system API.
-
-## USB_FLASH
-
-```TypeScript
-USB_FLASH = 2
-```
-
-The type of usb flash.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DiskType-USB_FLASH = 2--><!--Device-DiskType-USB_FLASH = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.StorageService.Volume
-
-**System API:** This is a system API.
-
 ## CD_DVD_BD
 
 ```TypeScript
@@ -63,24 +27,6 @@ The type of CD_DVD_BD.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DiskType-CD_DVD_BD = 3--><!--Device-DiskType-CD_DVD_BD = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.StorageService.Volume
-
-**System API:** This is a system API.
-
-## DATA_DISK_SSD
-
-```TypeScript
-DATA_DISK_SSD = 4
-```
-
-The type of ssd data disk.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DiskType-DATA_DISK_SSD = 4--><!--Device-DiskType-DATA_DISK_SSD = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -104,6 +50,24 @@ The type of hdd data disk.
 
 **System API:** This is a system API.
 
+## DATA_DISK_SSD
+
+```TypeScript
+DATA_DISK_SSD = 4
+```
+
+The type of ssd data disk.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiskType-DATA_DISK_SSD = 4--><!--Device-DiskType-DATA_DISK_SSD = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.StorageService.Volume
+
+**System API:** This is a system API.
+
 ## DVR_USB
 
 ```TypeScript
@@ -122,6 +86,24 @@ The type of DVR USB.
 
 **System API:** This is a system API.
 
+## SD_CARD
+
+```TypeScript
+SD_CARD = 1
+```
+
+The type of sd card.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiskType-SD_CARD = 1--><!--Device-DiskType-SD_CARD = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.StorageService.Volume
+
+**System API:** This is a system API.
+
 ## UNKNOWN_DISK_TYPE
 
 ```TypeScript
@@ -135,6 +117,24 @@ Unknown disk type.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DiskType-UNKNOWN_DISK_TYPE = 255--><!--Device-DiskType-UNKNOWN_DISK_TYPE = 255-End-->
+
+**System capability:** SystemCapability.FileManagement.StorageService.Volume
+
+**System API:** This is a system API.
+
+## USB_FLASH
+
+```TypeScript
+USB_FLASH = 2
+```
+
+The type of usb flash.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiskType-USB_FLASH = 2--><!--Device-DiskType-USB_FLASH = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

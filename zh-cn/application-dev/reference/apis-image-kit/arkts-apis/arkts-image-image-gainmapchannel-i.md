@@ -4,7 +4,7 @@
 interface GainmapChannel
 ```
 
-Gainmap图单个通道的数据内容，参考ISO 21496-1。
+HDR增益图单个通道的数据内容，参考ISO 21496-1。
 
 **起始版本：** 12
 
@@ -24,7 +24,7 @@ import { image } from '@kit.ImageKit';
 alternateOffset: number
 ```
 
-The per-component alternate offset.
+可选择图像的偏移量。浮点数，参考ISO 21496-1。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ The per-component alternate offset.
 baseOffset: number
 ```
 
-The per-component baseline offset.
+基础图的偏移量。浮点数，参考ISO 21496-1。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ The per-component baseline offset.
 gainmapMax: number
 ```
 
-The per-component max gain map values.
+增益图的最大值。浮点数，取值范围是(0, +∞)且必须大于gainmapMin，参考ISO 21496-1。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ The per-component max gain map values.
 gainmapMin: number
 ```
 
-The per-component min gain map values.
+增益图的最小值。浮点数，取值可以为0或负值但必须小于gainmapMax，参考ISO 21496-1。
 
 **类型：** number
 
@@ -88,7 +88,7 @@ The per-component min gain map values.
 gamma: number
 ```
 
-The per-component gamma values.
+增益曲线的Gamma校正值。浮点数，取值范围是(0, +∞)，参考ISO 21496-1。
 
 **类型：** number
 

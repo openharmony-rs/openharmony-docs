@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getpermissiondef1"></a>
+
 ## getPermissionDef
 
 ```TypeScript
@@ -35,6 +37,7 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 | permissionName | string | 是 | 需要查询的权限的名称。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionDef](arkts-ability-permissiondef-depr-i-sys.md)&gt; | 是 | 程序启动作为入参的回调函数，返回定义的权限信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ bundle.getPermissionDef(permissionName).then((data) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getpermissiondef-1"></a>
+
+<a id="getpermissiondef2"></a>
 
 ## getPermissionDef
 
@@ -99,6 +104,9 @@ function getPermissionDef(permissionName: string): Promise<PermissionDef>
 | --- | --- |
 | Promise&lt;[PermissionDef](arkts-ability-permissiondef-depr-i-sys.md)&gt; | Promise对象，获取成功时返回权限详细信息。 |
 
+<!--Del-->
 **示例**
 
 参见 [getPermissionDef](#getpermissiondef)
+
+<!--DelEnd-->

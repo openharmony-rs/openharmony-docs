@@ -48,6 +48,7 @@ Generates an authorization package for the controlled device. This function gene
 | [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-internal-service-error) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | [24010003](../errorcode-abilityToolAccessCtrl-sys.md#24010003-environment-error) | The account is not logged in, network is unavailable, timeout, etc. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,3 +76,5 @@ abilityToolAccessCtrl.generateControlledDevicePackage(permissionQuery).then((dat
   console.error(`generateControlledDevicePackage fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

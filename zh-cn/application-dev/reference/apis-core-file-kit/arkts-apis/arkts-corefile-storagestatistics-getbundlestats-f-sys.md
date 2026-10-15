@@ -6,6 +6,8 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getbundlestats1"></a>
+
 ## getBundleStats
 
 ```TypeScript
@@ -43,6 +45,7 @@ function getBundleStats(packageName: string, callback: AsyncCallback<BundleStats
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -73,8 +76,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getbundlestats-1"></a>
+
+<a id="getbundlestats2"></a>
 
 ## getBundleStats
 
@@ -118,6 +123,7 @@ function getBundleStats(packageName: string, index?: number): Promise<BundleStat
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -145,3 +151,5 @@ try {
   console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -30,7 +30,7 @@ Height of the screen region to capture, in px. The value must be a positive inte
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Rect-height: long--><!--Device-Rect-height: long-End-->
 
@@ -48,7 +48,7 @@ Left boundary of the screen region to capture, in px. The value must be a non-ne
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Rect-left: long--><!--Device-Rect-left: long-End-->
 
@@ -66,7 +66,7 @@ Top boundary of the screen region to capture, in px. The value must be a non-neg
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Rect-top: long--><!--Device-Rect-top: long-End-->
 
@@ -84,7 +84,7 @@ Width of the screen region to capture, in px. The value must be a positive integ
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Rect-width: long--><!--Device-Rect-width: long-End-->
 

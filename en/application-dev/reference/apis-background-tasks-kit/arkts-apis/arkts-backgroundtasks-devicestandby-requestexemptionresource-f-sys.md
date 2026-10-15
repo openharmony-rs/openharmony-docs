@@ -43,6 +43,7 @@ Requests exemption resources.
 | [9800004](../errorcode-backgroundTaskMgr.md#9800004-system-service-failure) | Failed to get device standby service. Possible cause: A necessary system service is not ready. |
 | [18700001](../errorcode-backgroundTaskMgr.md#18700001-caller-information-verification-failure-for-an-energy-resource-request) | Caller information verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,3 +58,5 @@ let resRequest: deviceStandby.ResourceRequest = {
 };
 deviceStandby.requestExemptionResource(resRequest);
 ```
+
+<!--DelEnd-->

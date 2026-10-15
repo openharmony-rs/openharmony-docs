@@ -70,7 +70,7 @@ declare function copy(srcUri: string, destUri: string, options?: CopyOptions): P
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="copy-1"></a>
+<a id="copy2"></a>
 
 ## copy
 
@@ -129,7 +129,7 @@ declare function copy(srcUri: string, destUri: string, callback: AsyncCallback<v
 | 13900042 | Unknown error |
 
 
-<a id="copy-2"></a>
+<a id="copy3"></a>
 
 ## copy
 

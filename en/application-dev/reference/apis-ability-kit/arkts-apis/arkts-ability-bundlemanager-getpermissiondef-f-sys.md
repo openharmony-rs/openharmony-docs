@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getpermissiondef1"></a>
+
 ## getPermissionDef
 
 ```TypeScript
@@ -29,7 +31,7 @@ Obtains the PermissionDef struct based on the given permission name. This API us
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | permissionName | string | Yes | Name of the permission. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the PermissionDef object obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) invoked to return the result. If the operation is successful, **err** is **undefined** and **data** is the obtained **PermissionDef**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -40,6 +42,7 @@ Obtains the PermissionDef struct based on the given permission name. This API us
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700006](../errorcode-bundle.md#17700006-permission-does-not-exist) | The specified permission is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getpermissiondef-1"></a>
+
+<a id="getpermissiondef2"></a>
 
 ## getPermissionDef
 
@@ -93,7 +98,7 @@ Obtains the PermissionDef struct based on the given permission name. This API us
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | Promise used to return the PermissionDef object obtained. |
+| Promise&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | Promise used to return the queried PermissionDef information. |
 
 **Error codes:**
 
@@ -104,6 +109,7 @@ Obtains the PermissionDef struct based on the given permission name. This API us
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700006](../errorcode-bundle.md#17700006-permission-does-not-exist) | The specified permission is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -123,3 +129,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getPermissionDef failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

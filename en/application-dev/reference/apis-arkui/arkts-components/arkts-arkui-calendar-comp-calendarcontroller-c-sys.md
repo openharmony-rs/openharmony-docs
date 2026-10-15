@@ -86,4 +86,4 @@ To the specified element.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | { year: number; month: number; day: number } | Yes |  |
+| value | { year: number; month: number; day: number } | Yes | Target date to navigate to.<br>year: Year of the target date.<br>month: Month of the target date.<br>day: Day of the target date. |

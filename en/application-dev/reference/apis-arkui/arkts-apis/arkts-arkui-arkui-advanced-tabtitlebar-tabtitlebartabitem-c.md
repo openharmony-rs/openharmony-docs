@@ -24,7 +24,7 @@ import { TabTitleBar, TabTitleBarMenuItem, TabTitleBarTabItem } from '@kit.ArkUI
 icon?: ResourceStr
 ```
 
-Icon of the tab.
+Tab icon resource. If **symbolStyle** is set, this attribute does not take effect. If not set, the tab displays only text content.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -44,7 +44,7 @@ Icon of the tab.
 symbolStyle?: SymbolGlyphModifier
 ```
 
-Symbol icon of the tab, which has higher priority than **icon**.
+Symbol icon resource, which takes priority over **icon**. Pass this parameter when a symbol icon is needed as the tab. If not passed, the image tab set by the **icon** parameter is used.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -64,7 +64,7 @@ Symbol icon of the tab, which has higher priority than **icon**.
 title: ResourceStr
 ```
 
-Text of the tab.
+Text content displayed on the tab item.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

@@ -12,21 +12,21 @@ Enumerates the response types of the menu.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## RIGHT_CLICK
+## DEFAULT
 
 ```TypeScript
-RIGHT_CLICK = 0
+DEFAULT = 3
 ```
 
-The menu is displayed when the component is right-clicked.
+When a menu of this type is registered while **RIGHT_CLICK**, **LONG_PRESS**, and **SELECT** menus are not registered, the menu will be displayed for those unregistered types.
 
-**Since:** 11
+**Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
-<!--Device-RichEditorResponseType-RIGHT_CLICK = 0--><!--Device-RichEditorResponseType-RIGHT_CLICK = 0-End-->
+<!--Device-RichEditorResponseType-DEFAULT = 3--><!--Device-RichEditorResponseType-DEFAULT = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +48,24 @@ The menu is displayed when the component is long-pressed.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## RIGHT_CLICK
+
+```TypeScript
+RIGHT_CLICK = 0
+```
+
+The menu is displayed when the component is right-clicked.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorResponseType-RIGHT_CLICK = 0--><!--Device-RichEditorResponseType-RIGHT_CLICK = 0-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## SELECT
 
 ```TypeScript
@@ -63,23 +81,5 @@ The menu is displayed when the component is selected.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-RichEditorResponseType-SELECT = 2--><!--Device-RichEditorResponseType-SELECT = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 3
-```
-
-When a menu of this type is registered while **RIGHT_CLICK**, **LONG_PRESS**, and **SELECT** menus are not registered, the menu will be displayed for those unregistered types.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-RichEditorResponseType-DEFAULT = 3--><!--Device-RichEditorResponseType-DEFAULT = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

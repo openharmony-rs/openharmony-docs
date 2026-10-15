@@ -30,7 +30,7 @@ accuracy: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-accuracy: double--><!--Device-Location-accuracy: double-End-->
 
@@ -48,7 +48,7 @@ additions?: Array<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-additions?: Array<string>--><!--Device-Location-additions?: Array<string>-End-->
 
@@ -66,7 +66,7 @@ additionSize?: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-additionSize?: int--><!--Device-Location-additionSize?: int-End-->
 
@@ -84,7 +84,7 @@ additionsMap?: Map<string, string>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-additionsMap?: Map<string, string>--><!--Device-Location-additionsMap?: Map<string, string>-End-->
 
@@ -102,7 +102,7 @@ altitude: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-altitude: double--><!--Device-Location-altitude: double-End-->
 
@@ -120,7 +120,7 @@ altitudeAccuracy?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-altitudeAccuracy?: double--><!--Device-Location-altitudeAccuracy?: double-End-->
 
@@ -138,7 +138,7 @@ direction: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-direction: double--><!--Device-Location-direction: double-End-->
 
@@ -156,7 +156,7 @@ directionAccuracy?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-directionAccuracy?: double--><!--Device-Location-directionAccuracy?: double-End-->
 
@@ -176,7 +176,7 @@ false：位置信息不是来自于位置模拟功能。
 
 **起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-isFromMock?: boolean--><!--Device-Location-isFromMock?: boolean-End-->
 
@@ -194,7 +194,7 @@ latitude: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-latitude: double--><!--Device-Location-latitude: double-End-->
 
@@ -212,7 +212,7 @@ longitude: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-longitude: double--><!--Device-Location-longitude: double-End-->
 
@@ -230,7 +230,7 @@ poi?: PoiInfo
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-poi?: PoiInfo--><!--Device-Location-poi?: PoiInfo-End-->
 
@@ -248,7 +248,7 @@ sourceType?: LocationSourceType
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-sourceType?: LocationSourceType--><!--Device-Location-sourceType?: LocationSourceType-End-->
 
@@ -266,7 +266,7 @@ speed: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-speed: double--><!--Device-Location-speed: double-End-->
 
@@ -284,7 +284,7 @@ speedAccuracy?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-speedAccuracy?: double--><!--Device-Location-speedAccuracy?: double-End-->
 
@@ -302,7 +302,7 @@ timeSinceBoot: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-timeSinceBoot: long--><!--Device-Location-timeSinceBoot: long-End-->
 
@@ -320,7 +320,7 @@ timeStamp: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-timeStamp: long--><!--Device-Location-timeStamp: long-End-->
 
@@ -338,7 +338,7 @@ uncertaintyOfTimeSinceBoot?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Location-uncertaintyOfTimeSinceBoot?: long--><!--Device-Location-uncertaintyOfTimeSinceBoot?: long-End-->
 

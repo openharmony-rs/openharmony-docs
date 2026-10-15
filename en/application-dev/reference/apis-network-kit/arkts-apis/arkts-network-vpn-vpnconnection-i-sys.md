@@ -20,6 +20,8 @@ Defines a VPN connection object. Before calling **VpnConnection** APIs, you need
 import { vpn } from '@kit.NetworkKit';
 ```
 
+<a id="destroy1"></a>
+
 ## destroy
 
 ```TypeScript
@@ -54,11 +56,12 @@ Destroys a VPN. This API uses an asynchronous callback to return the result.
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 > NOTE
 > 
-> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
@@ -79,7 +82,9 @@ struct Index {
 }
 ```
 
-<a id="destroy-1"></a>
+<!--DelEnd-->
+
+<a id="destroy2"></a>
 
 ## destroy
 
@@ -115,11 +120,12 @@ Destroys a VPN. This API uses a promise to return the result.
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 > NOTE
 > 
-> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
@@ -141,6 +147,10 @@ struct Index {
   build() { }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="protect1"></a>
 
 ## protect
 
@@ -179,11 +189,12 @@ Protects sockets against a VPN connection. The data sent through sockets is dire
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 | [2203004](../errorcode-net-vpn.md#2203004-invalid-descriptor) | Invalid socket file descriptor. |
 
+<!--Del-->
 **Examples**
 
 > NOTE
 > 
-> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```TypeScript
 import { socket, vpn } from '@kit.NetworkKit';
@@ -222,7 +233,9 @@ struct Index {
 }
 ```
 
-<a id="protect-1"></a>
+<!--DelEnd-->
+
+<a id="protect2"></a>
 
 ## protect
 
@@ -266,11 +279,12 @@ Protects sockets against a VPN connection. The data sent through sockets is dire
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 | [2203004](../errorcode-net-vpn.md#2203004-invalid-descriptor) | Invalid socket file descriptor. |
 
+<!--Del-->
 **Examples**
 
 > NOTE
 > 
-> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```TypeScript
 import { socket, vpn } from '@kit.NetworkKit';
@@ -311,6 +325,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="setup1"></a>
+
 ## setUp
 
 ```TypeScript
@@ -349,11 +367,12 @@ Creates a VPN based on the specified configuration. This API uses an asynchronou
 | [2203001](../errorcode-net-vpn.md#2203001-failed-to-create-a-vpn) | VPN creation denied. Check the user type. |
 | [2203002](../errorcode-net-vpn.md#2203002-vpn-already-exists) | VPN already exists. |
 
+<!--Del-->
 **Examples**
 
 > NOTE
 > 
-> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
@@ -378,7 +397,10 @@ struct Index {
       dnsAddresses: ["114.114.114.114"]
     }
     this.VpnConnection.setUp(config, (error: BusinessError, data: number) => {
-      console.error(JSON.stringify(error));
+      if (error) {
+        console.error(JSON.stringify(error));
+        return;
+      };
       console.info("tunfd: " + JSON.stringify(data));
     });
   }
@@ -386,7 +408,9 @@ struct Index {
 }
 ```
 
-<a id="setup-1"></a>
+<!--DelEnd-->
+
+<a id="setup2"></a>
 
 ## setUp
 
@@ -431,11 +455,12 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 | [2203001](../errorcode-net-vpn.md#2203001-failed-to-create-a-vpn) | VPN creation denied. Check the user type. |
 | [2203002](../errorcode-net-vpn.md#2203002-vpn-already-exists) | VPN already exists. |
 
+<!--Del-->
 **Examples**
 
 > NOTE
 > 
-> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
@@ -468,3 +493,5 @@ struct Index {
   build() { }
 }
 ```
+
+<!--DelEnd-->

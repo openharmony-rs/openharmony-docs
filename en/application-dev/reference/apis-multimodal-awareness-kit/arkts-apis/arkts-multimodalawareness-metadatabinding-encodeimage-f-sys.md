@@ -39,10 +39,11 @@ Encodes metadata into an image. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [32100001](../errorcode-metadataBinding.md#32100001-file-creation-failed) | Internal handling failed. |
 | [32100002](../errorcode-metadataBinding.md#32100002-encoding-failed) | Encode process fail. Possible causes:<br>1. Image processing error. <br>2. Channel coding error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,12 +51,15 @@ import { image } from '@kit.ImageKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let captureImage: image.PixelMap | undefined = undefined;
-let metadata: string = "";
+let encodedImage: image.PixelMap | undefined = undefined;
+let metadata: string = '';
+// Obtain a valid PixelMap object for srcImage through the APIs in image.
 let srcImage: image.PixelMap | undefined = undefined;
 metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) => {
-  captureImage = pixelMap;
+  encodedImage = pixelMap;
 }).catch((error: BusinessError) => {
-  console.error("encode image error" + error);
+  console.error(`Failed to encode image. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

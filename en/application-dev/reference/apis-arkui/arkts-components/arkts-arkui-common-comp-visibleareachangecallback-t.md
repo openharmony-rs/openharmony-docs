@@ -21,4 +21,4 @@ Represents a callback for visible area changes of the component.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | isExpanding | boolean | Yes | Whether the component's visible area has increased or decreased relative to its total area since the last callback. The value **true** indicates that the visible area has increased, and **false** indicates that the visible area has decreased. |
-| currentRatio | number | Yes | Ratio of the component's visible area to its own area at the moment the callback is triggered. |
+| currentRatio | number | Yes | Ratio of the component's visible area to its own area at the moment the callback is triggered. The value range is [0.0, 1.0]. |

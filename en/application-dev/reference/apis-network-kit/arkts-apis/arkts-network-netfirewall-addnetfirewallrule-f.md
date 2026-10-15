@@ -155,7 +155,8 @@ let ipRule: netFirewall.NetFirewallRule = {
       startPort: 443,
       endPort: 443
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -178,8 +179,18 @@ let domainRule: netFirewall.NetFirewallRule = {
     },{
       isWildcard: true,
       domain: "*.example.cn"
+    },{
+      isWildcard: true,
+      domain: "*w.example.cn"  // Supported since API version 26.0.0.
+    },{
+      isWildcard: true,
+      domain: "www.example.*"  // Supported since API version 26.0.0.
+    },{
+      isWildcard: true,
+      domain: "www.example.c*"  // Supported since API version 26.0.0.
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -199,7 +210,8 @@ let dnsRule: netFirewall.NetFirewallRule = {
    primaryDns: "4.4.4.4",
    standbyDns: "8.8.8.8",
   },
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
   console.info('rule Id: ', result);

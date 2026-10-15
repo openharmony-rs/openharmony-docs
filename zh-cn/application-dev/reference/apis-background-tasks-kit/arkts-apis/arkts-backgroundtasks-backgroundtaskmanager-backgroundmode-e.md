@@ -12,26 +12,6 @@ export enum BackgroundMode
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## DATA_TRANSFER
-
-```TypeScript
-DATA_TRANSFER = 1
-```
-
-数据传输。
-
-使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。
-
-**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。
-
-更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-2)中的示例。
-
-**起始版本：** 9
-
-<!--Device-BackgroundMode-DATA_TRANSFER = 1--><!--Device-BackgroundMode-DATA_TRANSFER = 1-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
 ## AUDIO_PLAYBACK
 
 ```TypeScript
@@ -50,7 +30,7 @@ AUDIO_PLAYBACK = 2
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-BackgroundMode-AUDIO_PLAYBACK = 2--><!--Device-BackgroundMode-AUDIO_PLAYBACK = 2-End-->
 
@@ -74,22 +54,6 @@ AUDIO_RECORDING = 3
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## LOCATION
-
-```TypeScript
-LOCATION = 4
-```
-
-定位导航。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-BackgroundMode-LOCATION = 4--><!--Device-BackgroundMode-LOCATION = 4-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
 ## BLUETOOTH_INTERACTION
 
 ```TypeScript
@@ -106,6 +70,42 @@ BLUETOOTH_INTERACTION = 5
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+## DATA_TRANSFER
+
+```TypeScript
+DATA_TRANSFER = 1
+```
+
+数据传输。
+
+使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。
+
+**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。
+
+更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning3)中的示例。
+
+**起始版本：** 9
+
+<!--Device-BackgroundMode-DATA_TRANSFER = 1--><!--Device-BackgroundMode-DATA_TRANSFER = 1-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## LOCATION
+
+```TypeScript
+LOCATION = 4
+```
+
+定位导航。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackgroundMode-LOCATION = 4--><!--Device-BackgroundMode-LOCATION = 4-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
 ## MULTI_DEVICE_CONNECTION
 
 ```TypeScript
@@ -118,27 +118,9 @@ MULTI_DEVICE_CONNECTION = 6
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-BackgroundMode-MULTI_DEVICE_CONNECTION = 6--><!--Device-BackgroundMode-MULTI_DEVICE_CONNECTION = 6-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## VOIP
-
-```TypeScript
-VOIP = 8
-```
-
-音视频通话。
-
-使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del-->
-
-**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->
-
-**起始版本：** 13
-
-<!--Device-BackgroundMode-VOIP = 8--><!--Device-BackgroundMode-VOIP = 8-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -157,5 +139,23 @@ TASK_KEEPING = 9
 **起始版本：** 9
 
 <!--Device-BackgroundMode-TASK_KEEPING = 9--><!--Device-BackgroundMode-TASK_KEEPING = 9-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## VOIP
+
+```TypeScript
+VOIP = 8
+```
+
+音视频通话。
+
+使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del-->
+
+**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->
+
+**起始版本：** 13
+
+<!--Device-BackgroundMode-VOIP = 8--><!--Device-BackgroundMode-VOIP = 8-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

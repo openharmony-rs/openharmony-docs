@@ -6,6 +6,8 @@
 import { ethernet } from '@kit.NetworkKit';
 ```
 
+<a id="setifaceconfig1"></a>
+
 ## setIfaceConfig
 
 ```TypeScript
@@ -47,6 +49,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: Asy
 | [2201006](../errorcode-net-ethernet.md#2201006-设备未连接) | Ethernet device not connected. |
 | [2201007](../errorcode-net-ethernet.md#2201007-用户配置写入失败) | Ethernet failed to write user configuration information. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,8 +74,10 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setifaceconfig-1"></a>
+
+<a id="setifaceconfig2"></a>
 
 ## setIfaceConfig
 
@@ -120,6 +125,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void
 | [2201006](../errorcode-net-ethernet.md#2201006-设备未连接) | Ethernet device not connected. |
 | [2201007](../errorcode-net-ethernet.md#2201007-用户配置写入失败) | Ethernet failed to write user configuration information. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -143,3 +149,5 @@ setConfigPromise.then(() => {
   console.error("setIfaceConfig promise error = " + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

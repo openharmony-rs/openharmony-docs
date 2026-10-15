@@ -66,24 +66,6 @@ CENTER = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
-
-```TypeScript
-TOP = 3
-```
-
-图片上边沿与行上边沿对齐。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ImageSpanAlignment-TOP = 3--><!--Device-ImageSpanAlignment-TOP = 3-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## FOLLOW_PARAGRAPH
 
 ```TypeScript
@@ -99,5 +81,23 @@ FOLLOW_PARAGRAPH = 4
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH = 4--><!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TOP
+
+```TypeScript
+TOP = 3
+```
+
+图片上边沿与行上边沿对齐。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageSpanAlignment-TOP = 3--><!--Device-ImageSpanAlignment-TOP = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -32,7 +32,7 @@ delayedDataLoadHandler?: DelayedDataLoadHandler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-DataLoadParams-delayedDataLoadHandler?: DelayedDataLoadHandler--><!--Device-DataLoadParams-delayedDataLoadHandler?: DelayedDataLoadHandler-End-->
 
@@ -50,7 +50,7 @@ loadHandler: DataLoadHandler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-DataLoadParams-loadHandler: DataLoadHandler--><!--Device-DataLoadParams-loadHandler: DataLoadHandler-End-->
 
@@ -70,7 +70,7 @@ dataLoadInfo: DataLoadInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-DataLoadParams-dataLoadInfo: DataLoadInfo--><!--Device-DataLoadParams-dataLoadInfo: DataLoadInfo-End-->
 

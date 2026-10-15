@@ -20,7 +20,7 @@ import { displaySync } from '@kit.ArkGraphics2D';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-arkgraphics2d-displaysync-create-f.md) | Creates a **DisplaySync** object, through which you can set the frame rate of the custom UI content. |
+| [create](arkts-arkgraphics2d-displaysync-create-f.md#create) | Creates a **DisplaySync** object, through which you can set the frame rate of the custom UI content. |
 
 ### Interfaces
 

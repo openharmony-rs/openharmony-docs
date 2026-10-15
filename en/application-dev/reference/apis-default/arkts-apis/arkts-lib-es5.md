@@ -17,17 +17,17 @@
 
 | Name | Description |
 | --- | --- |
-| [decodeURI](arkts-lib-es5-decodeuri-f.md) | Gets the unencoded version of an encoded Uniform Resource Identifier (URI). |
-| [decodeURIComponent](arkts-lib-es5-decodeuricomponent-f.md) | Gets the unencoded version of an encoded component of a Uniform Resource Identifier (URI). |
-| [encodeURI](arkts-lib-es5-encodeuri-f.md) | Encodes a text string as a valid Uniform Resource Identifier (URI) |
-| [encodeURIComponent](arkts-lib-es5-encodeuricomponent-f.md) | Encodes a text string as a valid component of a Uniform Resource Identifier (URI). |
-| [escape](arkts-lib-es5-escape-f.md) | Computes a new string in which certain characters have been replaced by a hexadecimal escape sequence. |
-| [eval](arkts-lib-es5-eval-f.md) | Evaluates JavaScript code and executes it. |
-| [isFinite](arkts-lib-es5-isfinite-f.md) | Determines whether a supplied number is finite. |
-| [isNaN](arkts-lib-es5-isnan-f.md) | Returns a Boolean value that indicates whether a value is the reserved value NaN (not a number). |
-| [parseFloat](arkts-lib-es5-parsefloat-f.md) | Converts a string to a floating-point number. |
-| [parseInt](arkts-lib-es5-parseint-f.md) | Converts a string to an integer. |
-| [unescape](arkts-lib-es5-unescape-f.md) | Computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. |
+| [decodeURI](arkts-lib-es5-decodeuri-f.md#decodeuri) | Gets the unencoded version of an encoded Uniform Resource Identifier (URI). |
+| [decodeURIComponent](arkts-lib-es5-decodeuricomponent-f.md#decodeuricomponent) | Gets the unencoded version of an encoded component of a Uniform Resource Identifier (URI). |
+| [encodeURI](arkts-lib-es5-encodeuri-f.md#encodeuri) | Encodes a text string as a valid Uniform Resource Identifier (URI) |
+| [encodeURIComponent](arkts-lib-es5-encodeuricomponent-f.md#encodeuricomponent) | Encodes a text string as a valid component of a Uniform Resource Identifier (URI). |
+| [eval](arkts-lib-es5-eval-f.md#eval) | Evaluates JavaScript code and executes it. |
+| [isFinite](arkts-lib-es5-isfinite-f.md#isfinite) | Determines whether a supplied number is finite. |
+| [isNaN](arkts-lib-es5-isnan-f.md#isnan) | Returns a Boolean value that indicates whether a value is the reserved value NaN (not a number). |
+| [parseFloat](arkts-lib-es5-parsefloat-f.md#parsefloat) | Converts a string to a floating-point number. |
+| [parseInt](arkts-lib-es5-parseint-f.md#parseint) | Converts a string to an integer. |
+| [escape](arkts-lib-es5-escape-f.md#escape) | Computes a new string in which certain characters have been replaced by a hexadecimal escape sequence. |
+| [unescape](arkts-lib-es5-unescape-f.md#unescape) | Computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. |
 
 ### Interfaces
 
@@ -146,33 +146,33 @@
 
 | Name | Description |
 | --- | --- |
-| [Array](arkts-lib-es5-p.md) |  |
-| [ArrayBuffer](arkts-lib-es5-p.md) |  |
-| [Boolean](arkts-lib-es5-p.md) |  |
-| [DataView](arkts-lib-es5-p.md) |  |
-| [Date](arkts-lib-es5-p.md) |  |
-| [Error](arkts-lib-es5-p.md) |  |
-| [EvalError](arkts-lib-es5-p.md) |  |
-| [Float32Array](arkts-lib-es5-p.md) |  |
-| [Float64Array](arkts-lib-es5-p.md) |  |
-| [Function](arkts-lib-es5-p.md) |  |
-| [Infinity](arkts-lib-es5-p.md) |  |
-| [Int16Array](arkts-lib-es5-p.md) |  |
-| [Int32Array](arkts-lib-es5-p.md) |  |
-| [Int8Array](arkts-lib-es5-p.md) |  |
-| [JSON](arkts-lib-es5-p.md) | An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format. |
-| [Math](arkts-lib-es5-p.md) | An intrinsic object that provides basic mathematics functionality and constants. |
-| [NaN](arkts-lib-es5-p.md) |  |
-| [Number](arkts-lib-es5-p.md) | An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers. |
-| [Object](arkts-lib-es5-p.md) | Provides functionality common to all JavaScript objects. |
-| [RangeError](arkts-lib-es5-p.md) |  |
-| [ReferenceError](arkts-lib-es5-p.md) |  |
-| [RegExp](arkts-lib-es5-p.md) |  |
-| [String](arkts-lib-es5-p.md) | Allows manipulation and formatting of text strings and determination and location of substrings within strings. |
-| [SyntaxError](arkts-lib-es5-p.md) |  |
-| [TypeError](arkts-lib-es5-p.md) |  |
-| [Uint16Array](arkts-lib-es5-p.md) |  |
-| [Uint32Array](arkts-lib-es5-p.md) |  |
-| [Uint8Array](arkts-lib-es5-p.md) |  |
-| [Uint8ClampedArray](arkts-lib-es5-p.md) |  |
-| [URIError](arkts-lib-es5-p.md) |  |
+| [Array](arkts-lib-es5-p.md#array) |  |
+| [ArrayBuffer](arkts-lib-es5-p.md#arraybuffer) |  |
+| [Boolean](arkts-lib-es5-p.md#boolean) |  |
+| [DataView](arkts-lib-es5-p.md#dataview) |  |
+| [Date](arkts-lib-es5-p.md#date) |  |
+| [Error](arkts-lib-es5-p.md#error) |  |
+| [EvalError](arkts-lib-es5-p.md#evalerror) |  |
+| [Float32Array](arkts-lib-es5-p.md#float32array) |  |
+| [Float64Array](arkts-lib-es5-p.md#float64array) |  |
+| [Function](arkts-lib-es5-p.md#function) |  |
+| [Infinity](arkts-lib-es5-p.md#infinity) |  |
+| [Int16Array](arkts-lib-es5-p.md#int16array) |  |
+| [Int32Array](arkts-lib-es5-p.md#int32array) |  |
+| [Int8Array](arkts-lib-es5-p.md#int8array) |  |
+| [JSON](arkts-lib-es5-p.md#json) | An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format. |
+| [Math](arkts-lib-es5-p.md#math) | An intrinsic object that provides basic mathematics functionality and constants. |
+| [NaN](arkts-lib-es5-p.md#nan) |  |
+| [Number](arkts-lib-es5-p.md#number) | An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers. |
+| [Object](arkts-lib-es5-p.md#object) | Provides functionality common to all JavaScript objects. |
+| [RangeError](arkts-lib-es5-p.md#rangeerror) |  |
+| [ReferenceError](arkts-lib-es5-p.md#referenceerror) |  |
+| [RegExp](arkts-lib-es5-p.md#regexp) |  |
+| [String](arkts-lib-es5-p.md#string) | Allows manipulation and formatting of text strings and determination and location of substrings within strings. |
+| [SyntaxError](arkts-lib-es5-p.md#syntaxerror) |  |
+| [TypeError](arkts-lib-es5-p.md#typeerror) |  |
+| [Uint16Array](arkts-lib-es5-p.md#uint16array) |  |
+| [Uint32Array](arkts-lib-es5-p.md#uint32array) |  |
+| [Uint8Array](arkts-lib-es5-p.md#uint8array) |  |
+| [Uint8ClampedArray](arkts-lib-es5-p.md#uint8clampedarray) |  |
+| [URIError](arkts-lib-es5-p.md#urierror) |  |

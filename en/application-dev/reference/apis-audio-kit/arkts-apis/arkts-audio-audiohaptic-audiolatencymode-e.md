@@ -12,20 +12,6 @@ Enumerates the audio latency modes.
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
-## AUDIO_LATENCY_MODE_NORMAL
-
-```TypeScript
-AUDIO_LATENCY_MODE_NORMAL = 0
-```
-
-Normal latency mode.
-
-**Since:** 11
-
-<!--Device-AudioLatencyMode-AUDIO_LATENCY_MODE_NORMAL = 0--><!--Device-AudioLatencyMode-AUDIO_LATENCY_MODE_NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.AudioHaptic.Core
-
 ## AUDIO_LATENCY_MODE_FAST
 
 ```TypeScript
@@ -37,5 +23,19 @@ Low latency mode. This mode is applicable to short audio files. A long audio fil
 **Since:** 11
 
 <!--Device-AudioLatencyMode-AUDIO_LATENCY_MODE_FAST = 1--><!--Device-AudioLatencyMode-AUDIO_LATENCY_MODE_FAST = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.AudioHaptic.Core
+
+## AUDIO_LATENCY_MODE_NORMAL
+
+```TypeScript
+AUDIO_LATENCY_MODE_NORMAL = 0
+```
+
+Normal latency mode.
+
+**Since:** 11
+
+<!--Device-AudioLatencyMode-AUDIO_LATENCY_MODE_NORMAL = 0--><!--Device-AudioLatencyMode-AUDIO_LATENCY_MODE_NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core

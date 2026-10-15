@@ -20,7 +20,7 @@ export interface SubscribeCallbackData
 readonly notificationClassification?: NotificationClassification
 ```
 
-通知分类信息。仅在[NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md)中的enableClassification为true时存在。
+通知分类信息。仅在[NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-i-sys.md)中的enableClassification为true时存在。
 
 **类型：** [NotificationClassification](arkts-notification-notificationsubscriber-notificationclassification-i-sys.md)
 
@@ -60,7 +60,7 @@ readonly request: NotificationRequest
 
 通知内容。
 
-**类型：** [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)
+**类型：** [NotificationRequest](arkts-notification-notificationrequest-i.md)
 
 **起始版本：** 7
 
@@ -78,7 +78,7 @@ readonly sortingMap?: NotificationSortingMap
 
 通知排序信息。
 
-**类型：** [NotificationSortingMap](arkts-notification-notificationsortingmap-notificationsortingmap-i-sys.md)
+**类型：** [NotificationSortingMap](arkts-notification-notificationsortingmap-i-sys.md)
 
 **起始版本：** 7
 

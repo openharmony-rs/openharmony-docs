@@ -6,13 +6,13 @@ export interface NfcFTag extends TagSession
 
 NfcFTag 提供对NFC-F(JIS 6319-4)技术的属性和I/O操作的访问，继承自TagSession。
 
-TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
+TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-i.md)。
 
 NfcFTag获取方式请参考[nfc-tag开发指南](../../../connectivity/nfc/nfc-tag-access-guide.md)。
 
 以下是NfcFTag的独有接口。
 
-**继承/实现关系：** NfcFTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**继承/实现关系：** NfcFTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **起始版本：** 7
 
@@ -30,7 +30,7 @@ getPmm(): number[]
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NfcFTag-getPmm(): int[]--><!--Device-NfcFTag-getPmm(): int[]-End-->
 
@@ -62,7 +62,7 @@ getSystemCode(): number[]
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NfcFTag-getSystemCode(): int[]--><!--Device-NfcFTag-getSystemCode(): int[]-End-->
 

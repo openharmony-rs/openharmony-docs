@@ -295,14 +295,17 @@ offDataRead(callback?: Callback<Uint8Array>): void
 
 ```TypeScript
 // port为串口对象，需要先通过serial.getSerialPortList()获取
-// 取消监听串口数据接收
-port.offDataRead();
-
-// 取消指定的监听回调
+// 先注册回调
 let callback = (data: Uint8Array) => {
   console.info(`received data length: ${data.length}`);
 };
+port.onDataRead(callback);
+
+// 取消指定的监听回调
 port.offDataRead(callback);
+
+// 或者取消所有监听
+port.offDataRead();
 ```
 
 ## offDisconnect
@@ -346,14 +349,17 @@ offDisconnect(callback?: Callback<void>): void
 
 ```TypeScript
 // port为串口对象，需要先通过serial.getSerialPortList()获取
-// 取消监听串口断开事件
-port.offDisconnect();
-
-// 取消指定的监听回调
+// 先注册回调
 let disconnectedCallback = () => {
   console.info('serial port disconnected');
 };
+port.onDisconnect(disconnectedCallback);
+
+// 取消指定的监听回调
 port.offDisconnect(disconnectedCallback);
+
+// 或者取消所有监听
+port.offDisconnect();
 ```
 
 ## onDataRead
@@ -703,6 +709,7 @@ write(data: Uint8Array, timeout?: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. undefined is passed as the optional parameter. |
 | [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700002](../errorcode-busmanager-serial.md#35700002-参数错误) | Invalid parameter. |
 | [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |

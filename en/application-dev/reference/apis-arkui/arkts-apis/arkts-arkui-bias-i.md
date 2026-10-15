@@ -6,11 +6,11 @@ declare interface Bias
 
 Defines offset parameters for a component under anchor constraints.
 
-Taking horizontal bias as an example, the value is the ratio of D&lt;sub&gt;start&lt;/sub&gt; (the distance from the component to the left anchor) to D&lt;sub&gt;start&lt;/sub&gt; + D&lt;sub&gt;end&lt;/sub&gt; (the total horizontal distance between anchors). In a mirrored language, D&lt;sub&gt;start&lt;/sub&gt; represents the distance from the component to the right anchor. In the following figure, D&lt;sub&gt;width&lt;/sub&gt; indicates the width of the component.
+Taking horizontal bias as an example, the value is the ratio of D<sub>start</sub> (the distance from the component to the left anchor) to D<sub>start</sub> + D<sub>end</sub> (the total horizontal distance between anchors). In a mirrored language, D<sub>start</sub> represents the distance from the component to the right anchor. In the following figure, D<sub>width</sub> indicates the width of the component.
 
 ![bias_horizontal_example.png](../../../reference/apis-arkui/arkui-ts/figures/bias_horizontal_example.png)
 
-The same rule applies to the vertical direction. The value is the ratio of D&lt;sub&gt;top&lt;/sub&gt; (the distance from the component to the top anchor) to D&lt;sub&gt;top&lt;/sub&gt; + D&lt;sub&gt;bottom&lt;/sub&gt; (the total vertical distance between anchors). In the following figure, D&lt;sub&gt;height&lt;/sub&gt; indicates the height of the component.
+The same rule applies to the vertical direction. The value is the ratio of D<sub>top</sub> (the distance from the component to the top anchor) to D<sub>top</sub> + D<sub>bottom</sub> (the total vertical distance between anchors). In the following figure, D<sub>height</sub> indicates the height of the component.
 
 ![bias_vertical_example.png](../../../reference/apis-arkui/arkui-ts/figures/bias_vertical_example.png)
 

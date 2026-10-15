@@ -68,6 +68,7 @@ UID of the application.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -85,3 +86,5 @@ try {
   console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
 }
 ```
+
+<!--DelEnd-->

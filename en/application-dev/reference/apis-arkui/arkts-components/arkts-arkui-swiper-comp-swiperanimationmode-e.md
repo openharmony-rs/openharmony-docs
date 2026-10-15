@@ -12,26 +12,6 @@ Enumerates the animation mode for moving to a specific page in the **Swiper** co
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NO_ANIMATION
-
-```TypeScript
-NO_ANIMATION = 0
-```
-
-Move to the specified page without any animation.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 15.
-
-<!--Device-SwiperAnimationMode-NO_ANIMATION = 0--><!--Device-SwiperAnimationMode-NO_ANIMATION = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## DEFAULT_ANIMATION
 
 ```TypeScript
@@ -69,5 +49,25 @@ Move to a page near the specified page without animation, and then navigate to t
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
 <!--Device-SwiperAnimationMode-FAST_ANIMATION = 2--><!--Device-SwiperAnimationMode-FAST_ANIMATION = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NO_ANIMATION
+
+```TypeScript
+NO_ANIMATION = 0
+```
+
+Move to the specified page without any animation.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-SwiperAnimationMode-NO_ANIMATION = 0--><!--Device-SwiperAnimationMode-NO_ANIMATION = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,10 +20,10 @@
  let testSpace: number = 100;
  let testUserId: number = 1;
  class MyCloudDB implements cloudExtension.CloudDB {
- async generateId(count: number): Promise&lt;cloudExtension.Result&lt;Array&lt;string&gt;>
+ async generateId(count: number): Promise<cloudExtension.Result<Array<string>>
 > {
  console.info(`generate id, count: ${count}`);
- let result = new Array&lt;string&gt;();
+ let result = new Array<string>();
  // ...
  // 返回创建Id的结果
  return {
@@ -32,38 +32,38 @@
  value: result
  };
  }
- async update(table: string, values: Array&lt;Record<string,
- cloudExtension.CloudType>&gt;, extensions: Array&lt;Record<string, cloudExtension.CloudType>&gt;):
- 　　Promise&lt;Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>>
+ async update(table: string, values: Array<Record<string,
+ cloudExtension.CloudType>&gt;, extensions: Array<Record<string, cloudExtension.CloudType>&gt;):
+ 　　Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>
 > {
  console.info(`update, table: ${table}`);
- let updateRes: Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>
+ let updateRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>
 > = [];
  // ...
  // 返回更新数据的结果
  return updateRes;
  }
- async insert(table: string, values: Array&lt;Record<string, cloudExtension.CloudType>&gt;,
- extensions: Array&lt;Record<string, cloudExtension.CloudType>&gt;): Promise&lt;Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>>
+ async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>&gt;,
+ extensions: Array<Record<string, cloudExtension.CloudType>&gt;): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>
 > {
  console.info(`insert, table: ${table}`);
- let insertRes: Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>
+ let insertRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>
 > = [];
  // ...
  // 返回插入数据的结果
  return insertRes;
  }
- async delete(table: string, extensions: Array&lt;Record<string, cloudExtension.CloudType>&gt;):
- 　　Promise&lt;Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>>
+ async delete(table: string, extensions: Array<Record<string, cloudExtension.CloudType>&gt;):
+ 　　Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>
 > {
  console.info(`delete, table: ${table}`);
- let deleteRes: Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>
+ let deleteRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>
 > = [];
  // ...
  // 返回删除数据的结果
  return deleteRes;
  }
- async query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCursor: string): Promise&lt;cloudExtension.Result&lt;cloudExtension.CloudData&gt;
+ async query(table: string, fields: Array<string>, queryCount: number, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>
 > {
  console.info(`query, table: ${table}`);
  // ...
@@ -78,7 +78,7 @@
  }
  };
  }
- async lock(): Promise&lt;cloudExtension.Result&lt;cloudExtension.LockInfo&gt;
+ async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>
 > {
  console.info(`DB lock`);
  // ...
@@ -92,7 +92,7 @@
  }
  };
  }
- async heartbeat(lockId: number): Promise&lt;cloudExtension.Result&lt;cloudExtension.LockInfo&gt;
+ async heartbeat(lockId: number): Promise<cloudExtension.Result<cloudExtension.LockInfo>
 > {
  console.info(`heartbeat lock`);
  // ...
@@ -106,7 +106,7 @@
  }
  };
  }
- async unlock(lockId: number): Promise&lt;cloudExtension.Result&lt;boolean&gt;
+ async unlock(lockId: number): Promise<cloudExtension.Result<boolean>
 > {
  console.info(`unlock`);
  // ...
@@ -120,17 +120,17 @@
  }
  class MyAssetLoader implements cloudExtension.AssetLoader {
  async download(table: string, gid: string, prefix: string,
- assets: Array&lt;cloudExtension.CloudAsset&gt;): Promise&lt;Array&lt;cloudExtension.Result&lt;cloudExtension.CloudAsset&gt;>
+ assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>
 > {
  console.info(`download asset loader, table: ${table}, gid: ${gid}, prefix: ${prefix}`);
- let downloadRes = Array&lt;cloudExtension.Result<cloudExtension.CloudAsset>&gt;();
+ let downloadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>&gt;();
  // ...
  return downloadRes;
  }
- async upload(table: string, gid: string, assets: Array&lt;cloudExtension.CloudAsset&gt;): Promise&lt;Array&lt;cloudExtension.Result&lt;cloudExtension.CloudAsset&gt;>
+ async upload(table: string, gid: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>
 > {
  console.info(`upload asset loader, table: ${table}, gid: ${gid}`);
- let uploadRes = Array&lt;cloudExtension.Result<cloudExtension.CloudAsset>&gt;();
+ let uploadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>&gt;();
  // ...
  return uploadRes;
  }
@@ -138,14 +138,14 @@
  class MyShareCenter implements cloudExtension.ShareCenter {
  constructor() {
  }
- async share(userId: number, bundleName: string, sharingResource: string, participants: Array&lt;Participant&gt;):
- Promise&lt;cloudExtension.Result&lt;Array&lt;cloudExtension.Result&lt;Participant&gt;>>
+ async share(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
+ Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>
 > {
  console.info(`share, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得共享的返回值
  // ...
  // 返回服务端发起共享的返回结果
- let result: Array&lt;cloudExtension.Result&lt;Participant&gt;
+ let result: Array<cloudExtension.Result<Participant>
 > = [];
  participants.forEach(() =
 > {
@@ -160,14 +160,14 @@
  value: result
  };
  }
- async unshare(userId: number, bundleName: string, sharingResource: string, participants: Array&lt;Participant&gt;):
- Promise&lt;cloudExtension.Result&lt;Array&lt;cloudExtension.Result&lt;Participant&gt;>>
+ async unshare(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
+ Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>
 > {
  console.info(`unshare, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得取消共享的返回值
  // ...
  // 返回服务端取消共享的返回结果
- let result: Array&lt;cloudExtension.Result&lt;Participant&gt;
+ let result: Array<cloudExtension.Result<Participant>
 > = [];
  participants.forEach(() =
 > {
@@ -183,7 +183,7 @@
  };
  }
  async exit(userId: number, bundleName: string, sharingResource: string):
- Promise&lt;cloudExtension.Result&lt;void&gt;
+ Promise<cloudExtension.Result<void>
 > {
  console.info(`exit share, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得退出共享的返回值
@@ -194,14 +194,14 @@
  description: 'exit share succeeded'
  };
  }
- async changePrivilege(userId: number, bundleName: string, sharingResource: string, participants: Array&lt;Participant&gt;):
- Promise&lt;cloudExtension.Result&lt;Array&lt;cloudExtension.Result&lt;Participant&gt;>>
+ async changePrivilege(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
+ Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>
 > {
  console.info(`change privilege, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得更改权限的返回值
  // ...
  // 返回服务端更改权限的返回结果
- let result: Array&lt;cloudExtension.Result&lt;Participant&gt;
+ let result: Array<cloudExtension.Result<Participant>
 > = [];
  participants.forEach(() =
 > {
@@ -217,13 +217,13 @@
  };
  }
  async queryParticipants(userId: number, bundleName: string, sharingResource: string):
- Promise&lt;cloudExtension.Result&lt;Array&lt;Participant&gt;>
+ Promise<cloudExtension.Result<Array<Participant>>
 > {
  console.info(`query participants, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得查询参与者的返回值
  // ...
  // 返回服务端查询参与者的返回结果
- let participants = new Array&lt;cloudData.sharing.Participant&gt;();
+ let participants = new Array<cloudData.sharing.Participant>();
  participants.push({
  identity: '000000000',
  role: cloudData.sharing.Role.ROLE_INVITEE,
@@ -257,13 +257,13 @@
  };
  }
  async queryParticipantsByInvitation(userId: number, bundleName: string, invitationCode: string):
- Promise&lt;cloudExtension.Result&lt;Array&lt;Participant&gt;>
+ Promise<cloudExtension.Result<Array<Participant>>
 > {
  console.info(`query participants by invitation, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得查询参与者的返回值
  // ...
  // 返回服务端查询参与者的返回结果
- let participants = new Array&lt;cloudData.sharing.Participant&gt;();
+ let participants = new Array<cloudData.sharing.Participant>();
  participants.push({
  identity: '000000000',
  role: cloudData.sharing.Role.ROLE_INVITEE,
@@ -297,7 +297,7 @@
  };
  }
  async confirmInvitation(userId: number, bundleName: string, invitationCode: string, state: cloudData.sharing.State):
- Promise&lt;cloudExtension.Result&lt;string&gt;
+ Promise<cloudExtension.Result<string>
 > {
  console.info(`confirm invitation, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得确认共享邀请的返回值
@@ -310,7 +310,7 @@
  };
  }
  async changeConfirmation(userId: number, bundleName: string, sharingResource: string, state: cloudData.sharing.State):
- Promise&lt;cloudExtension.Result&lt;void&gt;
+ Promise<cloudExtension.Result<void>
 > {
  console.info(`change confirm, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得更改共享邀请的返回值
@@ -325,7 +325,7 @@
  class MyCloudService implements cloudExtension.CloudService {
  constructor() {
  }
- async getServiceInfo(): Promise&lt;cloudExtension.ServiceInfo&gt; {
+ async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
  console.info(`get service info`);
  // ...
  return {
@@ -336,7 +336,7 @@
  user: testUserId,
  };
  }
- async getAppBriefInfo(): Promise&lt;Record&lt;string, cloudExtension.AppBriefInfo&gt;
+ async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>
 > {
  console.info(`get app brief info`);
  // ...
@@ -350,7 +350,7 @@
  }
  };
  }
- async getAppSchema(bundleName: string): Promise&lt;cloudExtension.Result&lt;cloudExtension.AppSchema&gt;
+ async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>
 > {
  console.info(`get app schema, bundleName:${bundleName}`);
  // ...
@@ -364,8 +364,8 @@
  }
  };
  }
- async subscribe(subInfo: Record&lt;string, Array<cloudExtension.Database>&gt;,
- expirationTime: number): Promise&lt;cloudExtension.Result&lt;cloudExtension.SubscribeInfo&gt;
+ async subscribe(subInfo: Record<string, Array<cloudExtension.Database>&gt;,
+ expirationTime: number): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>
 > {
  console.info(`subscribe expirationTime: ${expirationTime}`);
  // ...
@@ -378,19 +378,19 @@
  }
  };
  }
- async unsubscribe(unsubscribeInfo: Record&lt;string, Array<string>&gt;): Promise&lt;number&gt; {
+ async unsubscribe(unsubscribeInfo: Record<string, Array<string>&gt;): Promise<number> {
  console.info(`unsubscribe`);
  // ...
  return cloudExtension.ErrorCode.SUCCESS;
  }
- async connectDB(bundleName: string, database: cloudExtension.Database): Promise&lt;rpc.RemoteObject&gt; {
+ async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
  console.info(`connect DB, bundleName: ${bundleName}`);
  return cloudExtension.createCloudDBStub(new MyCloudDB());
  }
- async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise&lt;rpc.RemoteObject&gt; {
+ async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
  return cloudExtension.createAssetLoaderStub(new MyAssetLoader());
  }
- async connectShareCenter(userId: number, bundleName: string): Promise&lt;rpc.RemoteObject&gt; {
+ async connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject> {
  console.info(`connect share center, bundle: ${bundleName}`);
  // ...
  return cloudExtension.createShareServiceStub(new MyShareCenter());
@@ -403,7 +403,7 @@
  onRequest(want: Want, startId: number) {
  console.info(`onRequest: ${want} ${startId}`);
  }
- onConnect(want: Want): rpc.RemoteObject | Promise&lt;rpc.RemoteObject&gt; {
+ onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject> {
  console.info(`onConnect: ${want}`);
  return cloudExtension.createCloudServiceStub(new MyCloudService());
  }
@@ -431,10 +431,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAssetLoaderStub](arkts-arkdata-cloudextension-createassetloaderstub-f-sys.md) | 根据[AssetLoader](arkts-arkdata-cloudextension-assetloader-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[AssetLoader](arkts-arkdata-cloudextension-assetloader-i-sys.md)的实现接口，使用Promise异步回调。 |
-| [createCloudDBStub](arkts-arkdata-cloudextension-createclouddbstub-f-sys.md) | 根据[CloudDB](arkts-arkdata-cloudextension-clouddb-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[CloudDB](arkts-arkdata-cloudextension-clouddb-i-sys.md)的实现接口，使用Promise异步回调。 |
-| [createCloudServiceStub](arkts-arkdata-cloudextension-createcloudservicestub-f-sys.md) | 根据[CloudService](arkts-arkdata-cloudextension-cloudservice-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[CloudService](arkts-arkdata-cloudextension-cloudservice-i-sys.md)的实现接口。使用Promise异步回调。 |
-| [createShareServiceStub](arkts-arkdata-cloudextension-createshareservicestub-f-sys.md) | 根据[ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md)的实现接口，使用Promise异步回调。 |
+| [createAssetLoaderStub](arkts-arkdata-cloudextension-createassetloaderstub-f-sys.md#createassetloaderstub) | 根据[AssetLoader](arkts-arkdata-cloudextension-assetloader-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[AssetLoader](arkts-arkdata-cloudextension-assetloader-i-sys.md)的实现接口，使用Promise异步回调。 |
+| [createCloudDBStub](arkts-arkdata-cloudextension-createclouddbstub-f-sys.md#createclouddbstub) | 根据[CloudDB](arkts-arkdata-cloudextension-clouddb-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[CloudDB](arkts-arkdata-cloudextension-clouddb-i-sys.md)的实现接口，使用Promise异步回调。 |
+| [createCloudServiceStub](arkts-arkdata-cloudextension-createcloudservicestub-f-sys.md#createcloudservicestub) | 根据[CloudService](arkts-arkdata-cloudextension-cloudservice-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[CloudService](arkts-arkdata-cloudextension-cloudservice-i-sys.md)的实现接口。使用Promise异步回调。 |
+| [createShareServiceStub](arkts-arkdata-cloudextension-createshareservicestub-f-sys.md#createshareservicestub) | 根据[ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md)类的实例创建对应的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，系统内部通过该对象调用[ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md)的实现接口，使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -39,6 +39,7 @@ Optimizes the resources that have been synced to the cloud from the local Galler
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,3 +51,5 @@ cloudSync.optimizeStorage().then(() => {
   console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
+
+<!--DelEnd-->

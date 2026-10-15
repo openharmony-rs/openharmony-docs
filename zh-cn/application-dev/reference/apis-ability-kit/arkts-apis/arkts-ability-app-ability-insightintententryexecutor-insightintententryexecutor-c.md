@@ -4,7 +4,7 @@
 declare class InsightIntentEntryExecutor<T>
 ```
 
-本模块提供@InsightIntentEntry装饰器的意图执行基类，必须与@InsightIntentEntry装饰器联合使用。开发者需要在继承该基类的子类中，实现[onExecute()](#onexecute)意图执行回调，并使用@ InsightIntentEntry装饰器来装饰子类。
+本模块提供[@InsightIntentEntry](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图执行基类，必须与@InsightIntentEntry装饰器联合使用。开发者需要在继承该基类的子类中，实现[onExecute()](#onexecute)意图执行回调，并使用@ InsightIntentEntry装饰器来装饰子类。
 
 **起始版本：** 20
 
@@ -30,7 +30,7 @@ onExecute(): Promise<insightIntent.IntentResult<T>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentEntryExecutor-onExecute(): Promise<insightIntent.IntentResult<T>>--><!--Device-InsightIntentEntryExecutor-onExecute(): Promise<insightIntent.IntentResult<T>>-End-->
 
@@ -40,7 +40,7 @@ onExecute(): Promise<insightIntent.IntentResult<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[insightIntent.IntentResult](arkts-ability-insightintent-intentresult-i.md)&lt;T&gt;&gt; | Promise对象。返回[insightIntent.IntentResult&lt;T&gt;](arkts-ability-insightintent-intentresult-i.md)对象，表示意图执行结果。 |
+| Promise&lt;[insightIntent.IntentResult](arkts-ability-insightintent-intentresult-i.md)&lt;T&gt;&gt; | Promise对象。返回[insightIntent.IntentResult<T>](arkts-ability-insightintent-intentresult-i.md)对象，表示意图执行结果。 |
 
 ## context
 
@@ -56,7 +56,7 @@ context: InsightIntentContext
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentEntryExecutor-context: InsightIntentContext--><!--Device-InsightIntentEntryExecutor-context: InsightIntentContext-End-->
 
@@ -76,7 +76,7 @@ executeMode: insightIntent.ExecuteMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentEntryExecutor-executeMode: insightIntent.ExecuteMode--><!--Device-InsightIntentEntryExecutor-executeMode: insightIntent.ExecuteMode-End-->
 
@@ -96,7 +96,7 @@ uiExtensionSession?: UIExtensionContentSession
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentEntryExecutor-uiExtensionSession?: UIExtensionContentSession--><!--Device-InsightIntentEntryExecutor-uiExtensionSession?: UIExtensionContentSession-End-->
 
@@ -116,7 +116,7 @@ windowStage?: window.WindowStage
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentEntryExecutor-windowStage?: window.WindowStage--><!--Device-InsightIntentEntryExecutor-windowStage?: window.WindowStage-End-->
 

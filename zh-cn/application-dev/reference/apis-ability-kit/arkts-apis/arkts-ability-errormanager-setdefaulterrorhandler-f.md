@@ -20,7 +20,7 @@ function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-errorManager-function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler--><!--Device-errorManager-function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler-End-->
 
@@ -49,11 +49,12 @@ function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let oldHandler: errorManager.ErrorHandler;
 const errorHandler: errorManager.ErrorHandler = (reason: Error) => {
   // 自定义的errorHandler实现逻辑
-  console.info('[Handler] Uncaught exception handler invoked.');
+  hilog.info(0x0000, 'testTag', '[Handler] Uncaught exception handler invoked.');
   if (oldHandler) {
       oldHandler(reason);
   } else {

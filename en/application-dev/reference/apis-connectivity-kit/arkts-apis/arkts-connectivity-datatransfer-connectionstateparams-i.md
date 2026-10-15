@@ -32,6 +32,8 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-ConnectionStateParams-address: string--><!--Device-ConnectionStateParams-address: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ConnectionStateParams-uuid: string--><!--Device-ConnectionStateParams-uuid: string-End-->
 

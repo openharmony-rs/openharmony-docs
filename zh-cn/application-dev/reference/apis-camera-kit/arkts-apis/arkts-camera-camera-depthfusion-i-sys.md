@@ -53,6 +53,7 @@ Enables depth fusion.
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -69,6 +70,8 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
   };
 }
 ```
+
+<!--DelEnd-->
 
 ## isDepthFusionEnabled
 
@@ -99,6 +102,7 @@ Checks whether depth fusion is enabled.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -116,3 +120,5 @@ function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
   return isEnable;
 }
 ```
+
+<!--DelEnd-->

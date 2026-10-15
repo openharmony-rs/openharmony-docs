@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="updatecontact1"></a>
+
 ## updateContact
 
 ```TypeScript
@@ -18,7 +20,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [updateContact](#updatecontact-1)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [updateContact](#updatecontact2)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -62,7 +64,7 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-1"></a>
+<a id="updatecontact2"></a>
 
 ## updateContact
 
@@ -130,7 +132,7 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-2"></a>
+<a id="updatecontact3"></a>
 
 ## updateContact
 
@@ -144,7 +146,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Deprecated since:** 10
 
-**Substitutes:** [updateContact](#updatecontact-3)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [updateContact](#updatecontact4)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -190,7 +192,7 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-3"></a>
+<a id="updatecontact4"></a>
 
 ## updateContact
 
@@ -260,7 +262,7 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-4"></a>
+<a id="updatecontact5"></a>
 
 ## updateContact
 
@@ -274,7 +276,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Deprecated since:** 10
 
-**Substitutes:** [updateContact](#updatecontact-5)(context: Context, contact: Contact, attrs?: ContactAttributes)
+**Substitutes:** [updateContact](#updatecontact6)(context: Context, contact: Contact, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -320,7 +322,7 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact-5"></a>
+<a id="updatecontact6"></a>
 
 ## updateContact
 

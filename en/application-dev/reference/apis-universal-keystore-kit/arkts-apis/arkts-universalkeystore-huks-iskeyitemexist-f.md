@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="iskeyitemexist1"></a>
+
 ## isKeyItemExist
 
 ```TypeScript
@@ -36,8 +38,8 @@ If the key does not exist, the error code 12000011 is returned.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine |
@@ -154,7 +156,7 @@ export default {
 ```
 
 
-<a id="iskeyitemexist-1"></a>
+<a id="iskeyitemexist2"></a>
 
 ## isKeyItemExist
 
@@ -189,8 +191,8 @@ If the key does not exist, the error code 12000011 is returned.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine |

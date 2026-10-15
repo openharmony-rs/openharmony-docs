@@ -36,7 +36,7 @@ a: bigint
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCCommonParamsSpec-a: bigint--><!--Device-ECCCommonParamsSpec-a: bigint-End-->
 
@@ -56,7 +56,7 @@ b: bigint
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCCommonParamsSpec-b: bigint--><!--Device-ECCCommonParamsSpec-b: bigint-End-->
 
@@ -76,7 +76,7 @@ field: ECField
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCCommonParamsSpec-field: ECField--><!--Device-ECCCommonParamsSpec-field: ECField-End-->
 
@@ -96,7 +96,7 @@ g: Point
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCCommonParamsSpec-g: Point--><!--Device-ECCCommonParamsSpec-g: Point-End-->
 
@@ -116,7 +116,7 @@ h: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCCommonParamsSpec-h: int--><!--Device-ECCCommonParamsSpec-h: int-End-->
 
@@ -136,7 +136,7 @@ ECC算法中基点g的阶n。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCCommonParamsSpec-n: bigint--><!--Device-ECCCommonParamsSpec-n: bigint-End-->
 

@@ -6,7 +6,7 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="on-2"></a>
+<a id="on3"></a>
 
 ## on
 
@@ -70,7 +70,7 @@ try {
 ```
 
 
-<a id="on-3"></a>
+<a id="on4"></a>
 
 ## on
 
@@ -133,7 +133,7 @@ try {
 ```
 
 
-<a id="on-4"></a>
+<a id="on5"></a>
 
 ## on
 
@@ -187,7 +187,7 @@ try {
 ```
 
 
-<a id="on-5"></a>
+<a id="on6"></a>
 
 ## on
 
@@ -242,7 +242,7 @@ try {
 ```
 
 
-<a id="on-6"></a>
+<a id="on7"></a>
 
 ## on
 
@@ -296,7 +296,7 @@ try {
 ```
 
 
-<a id="on-7"></a>
+<a id="on8"></a>
 
 ## on
 
@@ -353,7 +353,7 @@ try {
 ```
 
 
-<a id="on-8"></a>
+<a id="on9"></a>
 
 ## on
 
@@ -417,7 +417,7 @@ try {
 ```
 
 
-<a id="on-9"></a>
+<a id="on10"></a>
 
 ## on
 
@@ -480,7 +480,7 @@ try {
 ```
 
 
-<a id="on-10"></a>
+<a id="on11"></a>
 
 ## on
 
@@ -534,7 +534,7 @@ try {
 ```
 
 
-<a id="on-11"></a>
+<a id="on12"></a>
 
 ## on
 
@@ -592,7 +592,7 @@ try {
 ```
 
 
-<a id="on-12"></a>
+<a id="on13"></a>
 
 ## on
 
@@ -647,7 +647,7 @@ try {
 ```
 
 
-<a id="on-13"></a>
+<a id="on14"></a>
 
 ## on
 
@@ -707,7 +707,7 @@ try {
 ```
 
 
-<a id="on-14"></a>
+<a id="on15"></a>
 
 ## on
 
@@ -764,7 +764,7 @@ try {
 ```
 
 
-<a id="on-15"></a>
+<a id="on16"></a>
 
 ## on
 
@@ -824,7 +824,7 @@ try {
 ```
 
 
-<a id="on-16"></a>
+<a id="on17"></a>
 
 ## on
 
@@ -891,7 +891,7 @@ try {
 ```
 
 
-<a id="on-17"></a>
+<a id="on18"></a>
 
 ## on
 
@@ -953,7 +953,7 @@ try {
 ```
 
 
-<a id="on-18"></a>
+<a id="on19"></a>
 
 ## on
 
@@ -1011,7 +1011,7 @@ try {
 ```
 
 
-<a id="on-19"></a>
+<a id="on20"></a>
 
 ## on
 
@@ -1065,7 +1065,7 @@ try {
 ```
 
 
-<a id="on-20"></a>
+<a id="on21"></a>
 
 ## on
 
@@ -1121,7 +1121,7 @@ try {
 ```
 
 
-<a id="on-21"></a>
+<a id="on22"></a>
 
 ## on
 
@@ -1174,7 +1174,7 @@ try {
 ```
 
 
-<a id="on-22"></a>
+<a id="on23"></a>
 
 ## on
 
@@ -1227,7 +1227,7 @@ try {
 ```
 
 
-<a id="on-23"></a>
+<a id="on24"></a>
 
 ## on
 
@@ -1282,7 +1282,7 @@ try {
 ```
 
 
-<a id="on-24"></a>
+<a id="on25"></a>
 
 ## on
 
@@ -1296,14 +1296,14 @@ Subscribes to data changes of the acceleration sensor. This API uses an asynchro
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ACCELEROMETER](#on-2)
+> [sensor.on.ACCELEROMETER](#on3)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-2)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#on3)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1334,7 +1334,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accelero
 ```
 
 
-<a id="on-25"></a>
+<a id="on26"></a>
 
 ## on
 
@@ -1348,14 +1348,14 @@ Subscribes to data changes of the uncalibrated acceleration sensor. This API use
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ACCELEROMETER](#on-3)
+> [sensor.on.ACCELEROMETER](#on4)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-3)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options)
+**Substitutes:** [on](#on4)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1389,7 +1389,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: se
 ```
 
 
-<a id="on-26"></a>
+<a id="on27"></a>
 
 ## on
 
@@ -1403,14 +1403,14 @@ Subscribes to data changes of the ambient light sensor. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.AMBIENT_LIGHT](#on-4)
+> [sensor.on.AMBIENT_LIGHT](#on5)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-4)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options)
+**Substitutes:** [on](#on5)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>,    options?: Options): void-End-->
 
@@ -1437,7 +1437,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightRes
 ```
 
 
-<a id="on-27"></a>
+<a id="on28"></a>
 
 ## on
 
@@ -1451,14 +1451,14 @@ Subscribes to data changes of the ambient temperature sensor. This API uses an a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.AMBIENT_TEMPERATURE](#on-5)
+> [sensor.on.AMBIENT_TEMPERATURE](#on6)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-5)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options)
+**Substitutes:** [on](#on6)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void-End-->
 
@@ -1485,7 +1485,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.Am
 ```
 
 
-<a id="on-28"></a>
+<a id="on29"></a>
 
 ## on
 
@@ -1499,14 +1499,14 @@ Subscribes to data changes of the barometer sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.BAROMETER](#on-6)
+> [sensor.on.BAROMETER](#on7)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-6)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#on7)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>,    options?: Options): void-End-->
 
@@ -1533,7 +1533,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerRes
 ```
 
 
-<a id="on-29"></a>
+<a id="on30"></a>
 
 ## on
 
@@ -1547,14 +1547,14 @@ Subscribes to data changes of the gravity sensor. This API uses an asynchronous 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.GRAVITY](#on-7)
+> [sensor.on.GRAVITY](#on8)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-7)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options)
+**Substitutes:** [on](#on8)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void-End-->
 
@@ -1583,7 +1583,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespons
 ```
 
 
-<a id="on-30"></a>
+<a id="on31"></a>
 
 ## on
 
@@ -1597,14 +1597,14 @@ Subscribes to data changes of the gyroscope sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.GYROSCOPE](#on-8)
+> [sensor.on.GYROSCOPE](#on9)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-8)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
+**Substitutes:** [on](#on9)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -1635,7 +1635,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeRes
 ```
 
 
-<a id="on-31"></a>
+<a id="on32"></a>
 
 ## on
 
@@ -1649,14 +1649,14 @@ Subscribes to data changes of the uncalibrated gyroscope sensor. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.GYROSCOPE_UNCALIBRATED](#on-9)
+> [sensor.on.GYROSCOPE_UNCALIBRATED](#on10)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-9)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options)
+**Substitutes:** [on](#on10)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -1690,7 +1690,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sensor
 ```
 
 
-<a id="on-32"></a>
+<a id="on33"></a>
 
 ## on
 
@@ -1704,14 +1704,14 @@ Subscribes to data changes of the Hall effect sensor. This API uses an asynchron
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.HALL](#on-10)
+> [sensor.on.HALL](#on11)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-10)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options)
+**Substitutes:** [on](#on11)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>,    options?: Options): void-End-->
 
@@ -1738,7 +1738,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) => 
 ```
 
 
-<a id="on-33"></a>
+<a id="on34"></a>
 
 ## on
 
@@ -1752,14 +1752,14 @@ Subscribes to data changes of the heart rate sensor. This API uses an asynchrono
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.HALL](#on-10)
+> [sensor.on.HALL](#on11)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-11)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
+**Substitutes:** [on](#on12)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.HEALTH_DATA
 
@@ -1776,7 +1776,7 @@ Subscribes to data changes of the heart rate sensor. This API uses an asynchrono
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 
-<a id="on-34"></a>
+<a id="on35"></a>
 
 ## on
 
@@ -1790,14 +1790,14 @@ Subscribes to data changes of the humidity sensor. This API uses an asynchronous
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.SENSOR_TYPE_ID_HUMIDITY](#on-12)
+> [sensor.on.SENSOR_TYPE_ID_HUMIDITY](#on13)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-12)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options)
+**Substitutes:** [on](#on13)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void-End-->
 
@@ -1824,7 +1824,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRespo
 ```
 
 
-<a id="on-35"></a>
+<a id="on36"></a>
 
 ## on
 
@@ -1838,14 +1838,14 @@ Subscribes to data changes of the linear acceleration sensor. This API uses an a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.LINEAR_ACCELEROMETER](#on-13)
+> [sensor.on.LINEAR_ACCELEROMETER](#on14)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-13)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#on14)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1862,7 +1862,7 @@ Subscribes to data changes of the linear acceleration sensor. This API uses an a
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 
-<a id="on-36"></a>
+<a id="on37"></a>
 
 ## on
 
@@ -1876,14 +1876,14 @@ Subscribes to data changes of the magnetic field sensor. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.MAGNETIC_FIELD](#on-14)
+> [sensor.on.MAGNETIC_FIELD](#on15)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-14)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options)
+**Substitutes:** [on](#on15)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void-End-->
 
@@ -1912,7 +1912,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magneti
 ```
 
 
-<a id="on-37"></a>
+<a id="on38"></a>
 
 ## on
 
@@ -1926,14 +1926,14 @@ Subscribes to data changes of the uncalibrated magnetic field sensor. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#on-15)
+> [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#on16)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-15)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options)
+**Substitutes:** [on](#on16)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void-End-->
 
@@ -1965,7 +1965,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data: s
 ```
 
 
-<a id="on-38"></a>
+<a id="on39"></a>
 
 ## on
 
@@ -1979,14 +1979,14 @@ Subscribes to data changes of the orientation sensor. This API uses an asynchron
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ORIENTATION](#on-16)
+> [sensor.on.ORIENTATION](#on17)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-16)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
+**Substitutes:** [on](#on17)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void-End-->
 
@@ -2015,7 +2015,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientatio
 ```
 
 
-<a id="on-39"></a>
+<a id="on40"></a>
 
 ## on
 
@@ -2029,14 +2029,14 @@ Subscribes to data changes of the pedometer sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.PEDOMETER](#on-17)
+> [sensor.on.PEDOMETER](#on18)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-17)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#on18)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -2065,7 +2065,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerRes
 ```
 
 
-<a id="on-40"></a>
+<a id="on41"></a>
 
 ## on
 
@@ -2079,14 +2079,14 @@ Subscribes to data changes of the pedometer detection sensor. This API uses an a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.PEDOMETER_DETECTION](#on-18)
+> [sensor.on.PEDOMETER_DETECTION](#on19)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-18)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options)
+**Substitutes:** [on](#on19)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -2115,7 +2115,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.Pe
 ```
 
 
-<a id="on-41"></a>
+<a id="on42"></a>
 
 ## on
 
@@ -2129,14 +2129,14 @@ Subscribes to data changes of the proximity sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.PROXIMITY](#on-19)
+> [sensor.on.PROXIMITY](#on20)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-19)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options)
+**Substitutes:** [on](#on20)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>,    options?: Options): void-End-->
 
@@ -2163,7 +2163,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityRes
 ```
 
 
-<a id="on-42"></a>
+<a id="on43"></a>
 
 ## on
 
@@ -2177,14 +2177,14 @@ Subscribes to data changes of the rotation vector sensor. This API uses an async
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ROTATION_VECTOR](#on-20)
+> [sensor.on.ROTATION_VECTOR](#on21)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-20)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options)
+**Substitutes:** [on](#on21)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void-End-->
 
@@ -2214,7 +2214,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rotati
 ```
 
 
-<a id="on-43"></a>
+<a id="on44"></a>
 
 ## on
 
@@ -2228,14 +2228,14 @@ Subscribes to data changes of the significant motion sensor. This API uses an as
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.SIGNIFICANT_MOTION](#on-21)
+> [sensor.on.SIGNIFICANT_MOTION](#on22)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-21)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options)
+**Substitutes:** [on](#on22)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void-End-->
 
@@ -2262,7 +2262,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.Sig
 ```
 
 
-<a id="on-44"></a>
+<a id="on45"></a>
 
 ## on
 
@@ -2276,14 +2276,14 @@ Subscribes to data changes of the wear detection sensor. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.WEAR_DETECTION](#on-22)
+> [sensor.on.WEAR_DETECTION](#on23)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on-22)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
+**Substitutes:** [on](#on23)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void-End-->
 

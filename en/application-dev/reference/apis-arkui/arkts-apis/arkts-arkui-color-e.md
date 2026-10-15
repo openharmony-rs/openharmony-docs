@@ -12,26 +12,6 @@ Sets the color type.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## White
-
-```TypeScript
-White
-```
-
-![white](../../../reference/apis-arkui/arkui-ts/figures/white.png)
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-Color-White--><!--Device-Color-White-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Black
 
 ```TypeScript
@@ -212,26 +192,6 @@ Red
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Yellow
-
-```TypeScript
-Yellow
-```
-
-![yellow](../../../reference/apis-arkui/arkui-ts/figures/yellow.png)
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-Color-Yellow--><!--Device-Color-Yellow-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Transparent
 
 ```TypeScript
@@ -249,5 +209,45 @@ Transparent
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-Color-Transparent--><!--Device-Color-Transparent-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## White
+
+```TypeScript
+White
+```
+
+![white](../../../reference/apis-arkui/arkui-ts/figures/white.png)
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Color-White--><!--Device-Color-White-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Yellow
+
+```TypeScript
+Yellow
+```
+
+![yellow](../../../reference/apis-arkui/arkui-ts/figures/yellow.png)
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Color-Yellow--><!--Device-Color-Yellow-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -6,6 +6,8 @@ export type WindowExtensionContext = _WindowExtensionContext
 
 WindowExtension上下文信息。
 
+**类型：** _WindowExtensionContext
+
 **起始版本：** 9
 
 **废弃版本：** 21
@@ -17,5 +19,3 @@ WindowExtension上下文信息。
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _WindowExtensionContext

@@ -30,7 +30,7 @@ beacon围栏信息类型。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconFence-beaconFenceInfoType: BeaconFenceInfoType--><!--Device-BeaconFence-beaconFenceInfoType: BeaconFenceInfoType-End-->
 
@@ -48,7 +48,7 @@ beacon围栏标识。可自行定义，如："123", "beaconName"。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconFence-identifier: string--><!--Device-BeaconFence-identifier: string-End-->
 
@@ -66,7 +66,7 @@ beacon设备制造商数据。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconFence-manufactureData?: BeaconManufactureData--><!--Device-BeaconFence-manufactureData?: BeaconManufactureData-End-->
 

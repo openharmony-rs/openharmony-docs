@@ -41,7 +41,7 @@ Creates a **Connection** object on the device that functions as the client. Afte
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because the linkEnhance function has been trimmed.<br>**Applicable version:** 26.0.0 and later |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 

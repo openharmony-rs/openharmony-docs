@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="updatesimmessage1"></a>
+
 ## updateSimMessage
 
 ```TypeScript
@@ -43,6 +45,7 @@ Updates a SIM message. This API uses an asynchronous callback to return the resu
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,8 +64,10 @@ sms.updateSimMessage(updateSimMessageOptions, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="updatesimmessage-1"></a>
+
+<a id="updatesimmessage2"></a>
 
 ## updateSimMessage
 
@@ -106,6 +111,7 @@ Updates a SIM message. This API uses a promise to return the result.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -126,3 +132,5 @@ promise.then(() => {
     console.error(`updateSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

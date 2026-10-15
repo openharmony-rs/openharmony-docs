@@ -92,7 +92,7 @@ Adds an element to this LightWeightSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-add(obj: T): boolean--><!--Device-LightWeightSet-add(obj: T): boolean-End-->
 
@@ -134,7 +134,7 @@ Adds all elements in a LightWeightSet to this LightWeightSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-addAll(set: LightWeightSet<T>): boolean--><!--Device-LightWeightSet-addAll(set: LightWeightSet<T>): boolean-End-->
 
@@ -181,7 +181,7 @@ Clears this LightWeightSet and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-clear(): void--><!--Device-LightWeightSet-clear(): void-End-->
 
@@ -214,7 +214,7 @@ A constructor used to create a **LightWeightSet** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-constructor()--><!--Device-LightWeightSet-constructor()-End-->
 
@@ -242,7 +242,7 @@ Returns an iterator that contains all the elements in this LightWeightSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-entries(): IterableIterator<[T, T]>--><!--Device-LightWeightSet-entries(): IterableIterator<[T, T]>-End-->
 
@@ -348,7 +348,7 @@ Obtains the position index of the element with the specified key in this LightWe
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-getIndexOf(key: T): int--><!--Device-LightWeightSet-getIndexOf(key: T): int-End-->
 
@@ -426,7 +426,7 @@ Checks whether this LightWeightSet has the specified key.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-has(key: T): boolean--><!--Device-LightWeightSet-has(key: T): boolean-End-->
 
@@ -469,7 +469,7 @@ Checks whether this LightWeightSet contains all elements of the specified LightW
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-hasAll(set: LightWeightSet<T>): boolean--><!--Device-LightWeightSet-hasAll(set: LightWeightSet<T>): boolean-End-->
 
@@ -515,7 +515,7 @@ Increases the capacity of this LightWeightSet. If the passed-in capacity is grea
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-increaseCapacityTo(minimumCapacity: int): void--><!--Device-LightWeightSet-increaseCapacityTo(minimumCapacity: int): void-End-->
 
@@ -551,7 +551,7 @@ Checks whether this LightWeightSet is empty (contains no element).
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-isEmpty(): boolean--><!--Device-LightWeightSet-isEmpty(): boolean-End-->
 
@@ -631,7 +631,7 @@ Removes the element at the specified position from this LightWeightSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-removeAt(index: int): boolean--><!--Device-LightWeightSet-removeAt(index: int): boolean-End-->
 
@@ -675,7 +675,7 @@ Obtains an array that contains all objects in this LightWeightSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-toArray(): Array<T>--><!--Device-LightWeightSet-toArray(): Array<T>-End-->
 
@@ -712,7 +712,7 @@ Obtains a string that contains all elements in this LightWeightSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-toString(): String--><!--Device-LightWeightSet-toString(): String-End-->
 
@@ -744,7 +744,7 @@ Returns an iterator that contains all the values in this LightWeightSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LightWeightSet-values(): IterableIterator<T>--><!--Device-LightWeightSet-values(): IterableIterator<T>-End-->
 

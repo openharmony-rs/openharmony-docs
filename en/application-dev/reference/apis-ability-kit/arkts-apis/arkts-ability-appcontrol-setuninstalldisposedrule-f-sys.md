@@ -28,7 +28,7 @@ Sets an uninstallation disposed rule for an application or an application clone.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appIdentifier | string | Yes | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier | string | Yes | appIdentifier of the application for which the uninstall disposition rule is to be set. <br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [Obtaining the appId of an Application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | rule | [UninstallDisposedRule](arkts-ability-appcontrol-uninstalldisposedrule-i-sys.md) | Yes | Uninstallation disposed rule. |
 | appIndex | number | No | Index of the application clone. The default value is **0**.<br> The value **0** means to set the uninstallation disposed rule for the main application. A value greater than 0 means to set the uninstallation disposed rule for the application clone. |
 
@@ -44,6 +44,7 @@ Sets an uninstallation disposed rule for an application or an application clone.
 | [17700074](../errorcode-bundle.md#17700074-invalid-appidentifier) | The specified appIdentifier is invalid. |
 | [17700075](../errorcode-bundle.md#17700075-bundle-name-specified-in-want-is-inconsistent-with-that-of-the-caller) | The specified bundleName of want is not the same with caller. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -70,3 +71,5 @@ try {
   console.error('setUninstallDisposedRule failed ' + message);
 }
 ```
+
+<!--DelEnd-->

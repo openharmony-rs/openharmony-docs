@@ -30,7 +30,7 @@ day?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-day?: TextStyle--><!--Device-StyledDateTimeFormatOptions-day?: TextStyle-End-->
 
@@ -48,7 +48,7 @@ dayPeriod?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-dayPeriod?: TextStyle--><!--Device-StyledDateTimeFormatOptions-dayPeriod?: TextStyle-End-->
 
@@ -66,7 +66,7 @@ era?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-era?: TextStyle--><!--Device-StyledDateTimeFormatOptions-era?: TextStyle-End-->
 
@@ -84,7 +84,7 @@ hour?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-hour?: TextStyle--><!--Device-StyledDateTimeFormatOptions-hour?: TextStyle-End-->
 
@@ -102,7 +102,7 @@ minute?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-minute?: TextStyle--><!--Device-StyledDateTimeFormatOptions-minute?: TextStyle-End-->
 
@@ -120,7 +120,7 @@ month?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-month?: TextStyle--><!--Device-StyledDateTimeFormatOptions-month?: TextStyle-End-->
 
@@ -138,7 +138,7 @@ second?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-second?: TextStyle--><!--Device-StyledDateTimeFormatOptions-second?: TextStyle-End-->
 
@@ -156,7 +156,7 @@ timeZoneName?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-timeZoneName?: TextStyle--><!--Device-StyledDateTimeFormatOptions-timeZoneName?: TextStyle-End-->
 
@@ -174,7 +174,7 @@ weekday?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-weekday?: TextStyle--><!--Device-StyledDateTimeFormatOptions-weekday?: TextStyle-End-->
 
@@ -192,7 +192,7 @@ year?: TextStyle
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledDateTimeFormatOptions-year?: TextStyle--><!--Device-StyledDateTimeFormatOptions-year?: TextStyle-End-->
 

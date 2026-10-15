@@ -12,31 +12,45 @@ export enum ManagedEvent
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MANAGED_EVENT_BUNDLE_ADDED
+## MANAGED_EVENT_ACCOUNT_ADDED
 
 ```TypeScript
-MANAGED_EVENT_BUNDLE_ADDED = 0
+MANAGED_EVENT_ACCOUNT_ADDED = 5
 ```
 
-应用安装事件。
+账号新增事件。
 
-**起始版本：** 12
+**起始版本：** 18
 
-<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0-End-->
+<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MANAGED_EVENT_BUNDLE_REMOVED
+## MANAGED_EVENT_ACCOUNT_REMOVED
 
 ```TypeScript
-MANAGED_EVENT_BUNDLE_REMOVED = 1
+MANAGED_EVENT_ACCOUNT_REMOVED = 7
 ```
 
-应用卸载事件。
+账号删除事件。
 
-**起始版本：** 12
+**起始版本：** 18
 
-<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1-End-->
+<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_ACCOUNT_SWITCHED
+
+```TypeScript
+MANAGED_EVENT_ACCOUNT_SWITCHED = 6
+```
+
+账号切换事件。
+
+**起始版本：** 18
+
+<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,78 +82,6 @@ MANAGED_EVENT_APP_STOP = 3
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MANAGED_EVENT_SYSTEM_UPDATE
-
-```TypeScript
-MANAGED_EVENT_SYSTEM_UPDATE = 4
-```
-
-系统更新事件。
-
-**起始版本：** 12
-
-<!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4--><!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_ACCOUNT_ADDED
-
-```TypeScript
-MANAGED_EVENT_ACCOUNT_ADDED = 5
-```
-
-账号新增事件。
-
-**起始版本：** 18
-
-<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_ACCOUNT_SWITCHED
-
-```TypeScript
-MANAGED_EVENT_ACCOUNT_SWITCHED = 6
-```
-
-账号切换事件。
-
-**起始版本：** 18
-
-<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_ACCOUNT_REMOVED
-
-```TypeScript
-MANAGED_EVENT_ACCOUNT_REMOVED = 7
-```
-
-账号删除事件。
-
-**起始版本：** 18
-
-<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_STARTUP_GUIDE_COMPLETED
-
-```TypeScript
-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8
-```
-
-开机向导完成事件。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8--><!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## MANAGED_EVENT_BOOT_COMPLETED
 
 ```TypeScript
@@ -153,6 +95,34 @@ MANAGED_EVENT_BOOT_COMPLETED = 9
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ManagedEvent-MANAGED_EVENT_BOOT_COMPLETED = 9--><!--Device-ManagedEvent-MANAGED_EVENT_BOOT_COMPLETED = 9-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_BUNDLE_ADDED
+
+```TypeScript
+MANAGED_EVENT_BUNDLE_ADDED = 0
+```
+
+应用安装事件。
+
+**起始版本：** 12
+
+<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_BUNDLE_REMOVED
+
+```TypeScript
+MANAGED_EVENT_BUNDLE_REMOVED = 1
+```
+
+应用卸载事件。
+
+**起始版本：** 12
+
+<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -189,5 +159,35 @@ MANAGED_EVENT_POLICIES_CHANGED = 11
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ManagedEvent-MANAGED_EVENT_POLICIES_CHANGED = 11--><!--Device-ManagedEvent-MANAGED_EVENT_POLICIES_CHANGED = 11-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_STARTUP_GUIDE_COMPLETED
+
+```TypeScript
+MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8
+```
+
+开机向导完成事件。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8--><!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_SYSTEM_UPDATE
+
+```TypeScript
+MANAGED_EVENT_SYSTEM_UPDATE = 4
+```
+
+系统更新事件。
+
+**起始版本：** 12
+
+<!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4--><!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

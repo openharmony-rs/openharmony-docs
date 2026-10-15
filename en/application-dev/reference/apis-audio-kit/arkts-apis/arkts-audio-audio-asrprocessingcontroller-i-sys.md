@@ -49,11 +49,14 @@ Get ASR AEC mode.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let mode = asrProcessingController.getAsrAecMode();
 ```
+
+<!--DelEnd-->
 
 ## getAsrNoiseSuppressionMode
 
@@ -84,11 +87,14 @@ Get ASR noise suppression mode.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let mode = asrProcessingController.getAsrNoiseSuppressionMode();
 ```
+
+<!--DelEnd-->
 
 ## getAsrWhisperDetectionMode
 
@@ -119,11 +125,14 @@ Get ASR whisper detection mode.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let mode = asrProcessingController.getAsrWhisperDetectionMode();
 ```
+
+<!--DelEnd-->
 
 ## isWhispering
 
@@ -154,11 +163,14 @@ Query whether user is whispering.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let flag = asrProcessingController.isWhispering();
 ```
+
+<!--DelEnd-->
 
 ## setAsrAecMode
 
@@ -197,11 +209,14 @@ Set ASR AEC mode.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrAecMode(audio.AsrAecMode.BYPASS);
 ```
+
+<!--DelEnd-->
 
 ## setAsrNoiseSuppressionMode
 
@@ -240,11 +255,14 @@ Set ASR noise suppression mode.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrNoiseSuppressionMode(audio.AsrNoiseSuppressionMode.BYPASS);
 ```
+
+<!--DelEnd-->
 
 ## setAsrVoiceControlMode
 
@@ -284,11 +302,14 @@ Set ASR voice control mode.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrVoiceControlMode(audio.AsrVoiceControlMode.AUDIO_2_VOICE_TX, true);
 ```
+
+<!--DelEnd-->
 
 ## setAsrVoiceMuteMode
 
@@ -328,11 +349,14 @@ Set ASR voice mute mode.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
 ```
+
+<!--DelEnd-->
 
 ## setAsrWhisperDetectionMode
 
@@ -371,8 +395,11 @@ Set ASR whisper detection mode.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Operation not allowed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrWhisperDetectionMode(audio.AsrWhisperDetectionMode.BYPASS);
 ```
+
+<!--DelEnd-->

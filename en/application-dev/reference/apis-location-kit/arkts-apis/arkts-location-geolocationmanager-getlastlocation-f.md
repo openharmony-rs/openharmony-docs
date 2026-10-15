@@ -18,7 +18,7 @@ Obtain last known location.
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-geoLocationManager-function getLastLocation(): Location--><!--Device-geoLocationManager-function getLastLocation(): Location-End-->
 

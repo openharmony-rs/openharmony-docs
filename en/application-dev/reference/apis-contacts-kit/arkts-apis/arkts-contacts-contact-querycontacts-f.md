@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querycontacts1"></a>
+
 ## queryContacts
 
 ```TypeScript
@@ -18,7 +20,7 @@ Queries all contacts. This API uses an asynchronous callback to return the resul
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts-1)(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts2)(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -49,7 +51,7 @@ contact.queryContacts((err: BusinessError, data) => {
 ```
 
 
-<a id="querycontacts-1"></a>
+<a id="querycontacts2"></a>
 
 ## queryContacts
 
@@ -104,7 +106,7 @@ contact.queryContacts(context, (err: BusinessError, data) => {
 ```
 
 
-<a id="querycontacts-2"></a>
+<a id="querycontacts3"></a>
 
 ## queryContacts
 
@@ -118,7 +120,7 @@ Queries all contacts based on the specified holder. This API uses an asynchronou
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts-3)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts4)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -154,7 +156,7 @@ contact.queryContacts({
 ```
 
 
-<a id="querycontacts-3"></a>
+<a id="querycontacts4"></a>
 
 ## queryContacts
 
@@ -214,7 +216,7 @@ contact.queryContacts(context, {
 ```
 
 
-<a id="querycontacts-4"></a>
+<a id="querycontacts5"></a>
 
 ## queryContacts
 
@@ -228,7 +230,7 @@ Queries all contacts based on the specified attributes. This API uses an asynchr
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts-5)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts6)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -262,7 +264,7 @@ contact.queryContacts({
 ```
 
 
-<a id="querycontacts-5"></a>
+<a id="querycontacts6"></a>
 
 ## queryContacts
 
@@ -320,7 +322,7 @@ contact.queryContacts(context, {
 ```
 
 
-<a id="querycontacts-6"></a>
+<a id="querycontacts7"></a>
 
 ## queryContacts
 
@@ -334,7 +336,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts-7)(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts8)(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -373,7 +375,7 @@ contact.queryContacts({
 ```
 
 
-<a id="querycontacts-7"></a>
+<a id="querycontacts8"></a>
 
 ## queryContacts
 
@@ -436,7 +438,7 @@ contact.queryContacts(context, {
 ```
 
 
-<a id="querycontacts-8"></a>
+<a id="querycontacts9"></a>
 
 ## queryContacts
 
@@ -450,7 +452,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts-9)(context: Context, holder?: Holder, attrs?: ContactAttributes)
+**Substitutes:** [queryContacts](#querycontacts10)(context: Context, holder?: Holder, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -490,7 +492,7 @@ import { contact } from '@kit.ContactsKit';
 ```
 
 
-<a id="querycontacts-9"></a>
+<a id="querycontacts10"></a>
 
 ## queryContacts
 

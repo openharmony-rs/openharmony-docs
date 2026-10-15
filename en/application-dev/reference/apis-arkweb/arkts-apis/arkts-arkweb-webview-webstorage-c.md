@@ -94,7 +94,7 @@ Deletes all data in the specified origin.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| origin | string | Yes | Index of the origin, which is obtained through [getOrigins](#getorigins-1). |
+| origin | string | Yes | Index of the origin, which is obtained through [getOrigins](#getorigins2). |
 
 **Error codes:**
 
@@ -224,6 +224,8 @@ HTML file to be loaded:
  </html>
 ```
 
+<a id="getoriginquota1"></a>
+
 ## getOriginQuota
 
 ```TypeScript
@@ -295,7 +297,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getoriginquota-1"></a>
+<a id="getoriginquota2"></a>
 
 ## getOriginQuota
 
@@ -362,6 +364,8 @@ struct WebComponent {
   }
 }
 ```
+
+<a id="getorigins1"></a>
 
 ## getOrigins
 
@@ -431,7 +435,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getorigins-1"></a>
+<a id="getorigins2"></a>
 
 ## getOrigins
 
@@ -500,6 +504,8 @@ struct WebComponent {
   }
 }
 ```
+
+<a id="getoriginusage1"></a>
 
 ## getOriginUsage
 
@@ -570,7 +576,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getoriginusage-1"></a>
+<a id="getoriginusage2"></a>
 
 ## getOriginUsage
 

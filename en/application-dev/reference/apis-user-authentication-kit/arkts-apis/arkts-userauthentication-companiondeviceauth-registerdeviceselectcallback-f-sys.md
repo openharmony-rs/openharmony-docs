@@ -39,37 +39,3 @@ Registers a callback for companion device selection. When the system requires th
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [32600001](../errorcode-useriam.md#32600001-system-service-not-working-properly) | The system service is not working properly. Please try again later. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  companionDeviceAuth.registerDeviceSelectCallback((purpose) => {
-    const addDeviceId = 'addDeviceId';
-    const otherDeviceId = 'otherDeviceId';
-    const addDeviceUserId = 100;
-    const otherDeviceUserId = 100;
-    if (purpose === companionDeviceAuth.SelectPurpose.SELECT_ADD_DEVICE) {
-      return {
-        deviceKeys: [{
-          deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
-          deviceId: addDeviceId,
-          deviceUserId: addDeviceUserId
-        }]
-      };
-    }
-    return {
-      deviceKeys: [{
-        deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
-        deviceId: otherDeviceId,
-        deviceUserId: otherDeviceUserId
-      }]
-    };
-  })
-} catch (error) {
-  const err = error as BusinessError;
-  console.error(`error has been captured: ${err.code} ${err.message}`);
-}
-```

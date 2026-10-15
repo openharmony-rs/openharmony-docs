@@ -18,7 +18,7 @@ Provides the result returned by the started **EmbeddedUIExtensionAbility**.
 code: number
 ```
 
-Result code returned when the EmbeddedUIExtensionAbility exits. The result code is determined by the data passed when terminateSelfWithResult or terminateSelf is called.
+Result code returned when the pulled **EmbeddedUIExtensionAbility** exits, determined by the data passed in when `terminateSelfWithResult` or `terminateSelf` is called. If the exit is through `terminateSelf`, the default value of code is **0**.
 
 **Type:** number
 
@@ -38,7 +38,7 @@ Result code returned when the EmbeddedUIExtensionAbility exits. The result code 
 want?: import('../api/@ohos.app.ability.Want').default
 ```
 
-Data returned when the EmbeddedUIExtensionAbility exits.
+Data returned when the pulled **EmbeddedUIExtensionAbility** exits. If the exit is through `terminateSelf`, the value is **undefined**.
 
 **Type:** import('../api/@ohos.app.ability.Want').default
 

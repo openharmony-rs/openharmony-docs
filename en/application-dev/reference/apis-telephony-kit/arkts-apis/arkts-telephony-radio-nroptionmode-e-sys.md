@@ -14,17 +14,17 @@ Obtains the option mode of NR.
 
 **System API:** This is a system API.
 
-## NR_OPTION_UNKNOWN
+## NR_OPTION_NSA_AND_SA
 
 ```TypeScript
-NR_OPTION_UNKNOWN = 0
+NR_OPTION_NSA_AND_SA = 3
 ```
 
-Indicates unknown NR networking mode.
+Indicates that the NR networking mode is NSA and SA.
 
 **Since:** 10
 
-<!--Device-NROptionMode-NR_OPTION_UNKNOWN = 0--><!--Device-NROptionMode-NR_OPTION_UNKNOWN = 0-End-->
+<!--Device-NROptionMode-NR_OPTION_NSA_AND_SA = 3--><!--Device-NROptionMode-NR_OPTION_NSA_AND_SA = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -62,17 +62,17 @@ Indicates that the NR networking mode is SA only.
 
 **System API:** This is a system API.
 
-## NR_OPTION_NSA_AND_SA
+## NR_OPTION_UNKNOWN
 
 ```TypeScript
-NR_OPTION_NSA_AND_SA = 3
+NR_OPTION_UNKNOWN = 0
 ```
 
-Indicates that the NR networking mode is NSA and SA.
+Indicates unknown NR networking mode.
 
 **Since:** 10
 
-<!--Device-NROptionMode-NR_OPTION_NSA_AND_SA = 3--><!--Device-NROptionMode-NR_OPTION_NSA_AND_SA = 3-End-->
+<!--Device-NROptionMode-NR_OPTION_UNKNOWN = 0--><!--Device-NROptionMode-NR_OPTION_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

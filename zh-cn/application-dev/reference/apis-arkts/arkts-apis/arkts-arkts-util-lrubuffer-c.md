@@ -145,7 +145,7 @@ constructor(capacity?: number)
 
 **废弃版本：** 9
 
-**替代接口：** constructor
+**替代接口：** [constructor](arkts-arkts-util-lrucache-c.md#constructor)
 
 <!--Device-LruBuffer-constructor(capacity?: number)--><!--Device-LruBuffer-constructor(capacity?: number)-End-->
 
@@ -784,7 +784,7 @@ length: number
 
 **废弃版本：** 9
 
-**替代接口：** length
+**替代接口：** [length](arkts-arkts-util-lrucache-c.md#length)
 
 <!--Device-LruBuffer-length: number--><!--Device-LruBuffer-length: number-End-->
 

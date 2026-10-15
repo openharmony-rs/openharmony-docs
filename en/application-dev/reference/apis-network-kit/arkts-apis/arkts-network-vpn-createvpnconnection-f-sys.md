@@ -41,11 +41,12 @@ Creates a VPN connection.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+<!--Del-->
 **Examples**
 
 > NOTE
 > 
-> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -58,10 +59,11 @@ import { common } from '@kit.AbilityKit';
 struct Index {
   private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
-  functiontest()
-  {
+  functiontest(): void {
     console.info("vpn createVpnConnection: " + JSON.stringify(this.VpnConnection));
   }
   build() {  }
 }
 ```
+
+<!--DelEnd-->

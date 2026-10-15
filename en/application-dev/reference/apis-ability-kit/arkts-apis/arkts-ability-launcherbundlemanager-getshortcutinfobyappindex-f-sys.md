@@ -49,6 +49,7 @@ No permission is required for obtaining the caller's own information.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   console.error(`Failed to getShortcutInfoByAppIndex. Code: ${code}, message: ${message}`);
 }
 ```
+
+<!--DelEnd-->

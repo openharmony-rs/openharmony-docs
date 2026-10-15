@@ -30,7 +30,7 @@ Radius of the button background rounded corner. The value ranges from 4 vp to 8 
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-DecorButtonStyle-buttonBackgroundCornerRadius? : int--><!--Device-DecorButtonStyle-buttonBackgroundCornerRadius? : int-End-->
 
@@ -48,7 +48,7 @@ Size of the button when it is highlighted. The value ranges from 20 vp to 40 vp.
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-DecorButtonStyle-buttonBackgroundSize? : int--><!--Device-DecorButtonStyle-buttonBackgroundSize? : int-End-->
 
@@ -66,7 +66,7 @@ Size of the button icon. The value ranges from 16 vp to 24 vp. The default value
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-DecorButtonStyle-buttonIconSize? : int--><!--Device-DecorButtonStyle-buttonIconSize? : int-End-->
 
@@ -84,7 +84,7 @@ Margin between the rightmost edge of the close button and the window. The value 
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-DecorButtonStyle-closeButtonRightMargin? : int--><!--Device-DecorButtonStyle-closeButtonRightMargin? : int-End-->
 
@@ -102,7 +102,7 @@ Color mode. Buttons automatically adapt to light colors in dark mode and to dark
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-DecorButtonStyle-colorMode?: ConfigurationConstant.ColorMode--><!--Device-DecorButtonStyle-colorMode?: ConfigurationConstant.ColorMode-End-->
 
@@ -120,7 +120,7 @@ Spacing between buttons. The value ranges from 8 vp to 24 vp. The default value 
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-DecorButtonStyle-spacingBetweenButtons? : int--><!--Device-DecorButtonStyle-spacingBetweenButtons? : int-End-->
 

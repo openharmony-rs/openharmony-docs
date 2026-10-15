@@ -6,25 +6,9 @@ export enum PolicyErrorCode
 
 枚举授予或激活权限策略失败的URI对应的错误码。
 
-@enum { int } PolicyErrorCode
-
 **起始版本：** 11
 
 <!--Device-fileShare-export enum PolicyErrorCode--><!--Device-fileShare-export enum PolicyErrorCode-End-->
-
-**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
-## PERSISTENCE_FORBIDDEN
-
-```TypeScript
-PERSISTENCE_FORBIDDEN = 1
-```
-
-URI禁止被持久化。
-
-**起始版本：** 11
-
-<!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1--><!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -67,5 +51,19 @@ PERMISSION_NOT_PERSISTED = 4
 **起始版本：** 12
 
 <!--Device-PolicyErrorCode-PERMISSION_NOT_PERSISTED = 4--><!--Device-PolicyErrorCode-PERMISSION_NOT_PERSISTED = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+## PERSISTENCE_FORBIDDEN
+
+```TypeScript
+PERSISTENCE_FORBIDDEN = 1
+```
+
+URI禁止被持久化。
+
+**起始版本：** 11
+
+<!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1--><!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization

@@ -8,9 +8,9 @@ Accessibility event types.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-accessibility-type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |  'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |  'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |  'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |   'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate' | 'focusInvisible'--><!--Device-accessibility-type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |  'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |  'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |  'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |   'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate' | 'focusInvisible'-End-->
 
@@ -29,11 +29,11 @@ Accessibility event types.
 | 'textUpdate' | Event indicating that the component text has changed. |
 | 'textSelectionUpdate' | Event indicating that the selected text has changed. This feature is not supported in the current version. |
 | 'scroll' | Event indicating a scroll view event. |
-| 'requestFocusForAccessibility' | Event indicating active focus. [since 12] |
-| 'announceForAccessibility' | Event indicating active announcement. [since 12] |
-| 'requestFocusForAccessibilityNotInterrupt' | Event indicating active focus without interruption. [since 18] |
-| 'announceForAccessibilityNotInterrupt' | Event indicating active announcement without interruption. [since 18] |
-| 'scrolling' | Event indicating that an item in the scroll view is scrolled off the screen. [since 18] |
-| 'pageActive' | Event indicating a page change. The value is fixed as the string **'pageActive'**. [since 23] |
-| 'notificationUpdate' | Event indicating a notification change. The value is fixed as the string **'notificationUpdate'**. [since 26.0.0] |
-| 'focusInvisible' | Event indicating that the focus becomes invisible. The value is fixed as the string **'focusInvisible'**. [since 26.0.0] |
+| 'requestFocusForAccessibility' | Event indicating active focus.<br>**Since:** 12 |
+| 'announceForAccessibility' | Event indicating active announcement.<br>**Since:** 12 |
+| 'requestFocusForAccessibilityNotInterrupt' | Event indicating active focus without interruption.<br>**Since:** 18 |
+| 'announceForAccessibilityNotInterrupt' | Event indicating active announcement without interruption.<br>**Since:** 18 |
+| 'scrolling' | Event indicating that an item in the scroll view is scrolled off the screen.<br>**Since:** 18 |
+| 'pageActive' | Event indicating a page change. The value is fixed as the string **'pageActive'**.<br>**Since:** 23 |
+| 'notificationUpdate' | Event indicating a notification change. The value is fixed as the string **'notificationUpdate'**.<br>**Since:** 26.0.0 |
+| 'focusInvisible' | Event indicating that the focus becomes invisible. The value is fixed as the string **'focusInvisible'**.<br>**Since:** 26.0.0 |

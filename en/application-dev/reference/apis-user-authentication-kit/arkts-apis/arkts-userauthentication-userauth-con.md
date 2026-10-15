@@ -6,7 +6,7 @@
 const MAX_ALLOWABLE_REUSE_DURATION: 300000
 ```
 
-Maximum reuse duration of the authentication result, in milliseconds. The value is **300000** (5 minutes). This constant is used to limit the maximum duration for reusing an authentication result, preventing security risks caused by reusing expired authentication results for a long time. It can be used as the maximum value of the **reuseDuration** parameter in [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md).
+Maximum valid duration of the reuse unlock authentication result, with a value of 300000 milliseconds (5 minutes). It is used to limit the maximum duration for reusing an authentication result, preventing the security risk caused by reusing an expired authentication result for a long time. This constant can be used as the maximum value of the **reuseDuration** parameter in [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md).
 
 **Since:** 12
 
@@ -22,7 +22,7 @@ Maximum reuse duration of the authentication result, in milliseconds. The value 
 const PERMANENT_LOCKOUT_DURATION: number = 0x7fffffff
 ```
 
-Permanent lockout duration, in milliseconds. The value is **0x7fffffff**. When the number of failed authentication attempts reaches the upper limit, the authenticator enters the permanent lockout status. In this case, PIN authentication is required for unlocking. This value is used to identify the permanent lockout status of the authenticator, which can be returned by the **lockoutDuration** field in [AuthLockState](arkts-userauthentication-userauth-authlockstate-i.md).
+Permanent freeze duration, with a value of 0x7fffffff milliseconds. When the number of authentication failures reaches the upper limit, the authenticator enters the permanent freeze state, and PIN authentication is required to unlock it. This value is used to identify the permanent freeze state of the authenticator and can be returned through the **lockoutDuration** field of [AuthLockState](arkts-userauthentication-userauth-authlockstate-i.md).
 
 **Since:** 22
 

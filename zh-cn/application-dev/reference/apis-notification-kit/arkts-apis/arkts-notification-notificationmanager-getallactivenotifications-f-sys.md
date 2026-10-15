@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getallactivenotifications1"></a>
+
 ## getAllActiveNotifications
 
 ```TypeScript
@@ -36,11 +38,12 @@ function getAllActiveNotifications(callback: AsyncCallback<Array<NotificationReq
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ let getAllActiveNotificationsCallback = (err: BusinessError, data: Array<notific
 notificationManager.getAllActiveNotifications(getAllActiveNotificationsCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="getallactivenotifications-1"></a>
+
+<a id="getallactivenotifications2"></a>
 
 ## getAllActiveNotifications
 
@@ -94,6 +99,7 @@ function getAllActiveNotifications(): Promise<Array<NotificationRequest>>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -105,3 +111,5 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
     console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

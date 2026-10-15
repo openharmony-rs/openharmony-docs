@@ -6,6 +6,8 @@ export type PageNodeInfo = _PageNodeInfo.default
 
 Defines the page node information used for auto-fill.
 
+**Type:** _PageNodeInfo.default
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the page node information used for auto-fill.
 <!--Device-autoFillManager-export type PageNodeInfo = _PageNodeInfo.default--><!--Device-autoFillManager-export type PageNodeInfo = _PageNodeInfo.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Type:** _PageNodeInfo.default

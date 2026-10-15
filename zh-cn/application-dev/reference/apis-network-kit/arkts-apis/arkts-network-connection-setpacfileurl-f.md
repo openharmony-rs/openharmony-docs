@@ -16,7 +16,7 @@ function setPacFileUrl(pacFileUrl: string): void
 
 > **注意：**
 > 
-> 1、本接口当前在PC/2in1&lt;sup&gt;20+&lt;/sup&gt;、Phone&lt;sup&gt;23+&lt;/sup&gt;、Tablet&lt;sup&gt;23+&lt;/sup&gt;、TV&lt;sup&gt;23+&lt;/sup&gt;设备上支持解析脚本并启用PAC代理能力，
+> 1、本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，
 > Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。
 
 > 2、该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。

@@ -6,6 +6,8 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="createwindow1"></a>
+
 ## createWindow
 
 ```TypeScript
@@ -14,7 +16,7 @@ function createWindow(config: Configuration, callback: AsyncCallback<Window>): v
 
 创建子窗口或者系统窗口，使用callback异步回调。
 
-非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
+非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -24,7 +26,7 @@ function createWindow(config: Configuration, callback: AsyncCallback<Window>): v
 - API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW
 - API版本9-11：N/A
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-window-function createWindow(config: Configuration, callback: AsyncCallback<Window>): void--><!--Device-window-function createWindow(config: Configuration, callback: AsyncCallback<Window>): void-End-->
 
@@ -42,7 +44,7 @@ function createWindow(config: Configuration, callback: AsyncCallback<Window>): v
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.createWindow cannot work correctly due to limited device capabilities.<br>**适用版本：** 12+ |
 | [1300001](../errorcode-window.md#1300001-重复操作) | Repeated operation. Possible cause: The window has been created and cannot be created again. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>**适用版本：** 12+ |
@@ -85,7 +87,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="createwindow-1"></a>
+<a id="createwindow2"></a>
 
 ## createWindow
 
@@ -95,7 +97,7 @@ function createWindow(config: Configuration): Promise<Window>
 
 创建子窗口或者系统窗口，使用Promise异步回调。
 
-非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
+非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -105,7 +107,7 @@ function createWindow(config: Configuration): Promise<Window>
 - API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW
 - API版本9-11：N/A
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-window-function createWindow(config: Configuration): Promise<Window>--><!--Device-window-function createWindow(config: Configuration): Promise<Window>-End-->
 
@@ -128,7 +130,7 @@ function createWindow(config: Configuration): Promise<Window>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.createWindow cannot work correctly due to limited device capabilities.<br>**适用版本：** 12+ |
 | [1300001](../errorcode-window.md#1300001-重复操作) | Repeated operation. Possible cause: The window has been created and cannot be created again. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>**适用版本：** 12+ |

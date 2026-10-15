@@ -34,6 +34,7 @@ Disconnect Wi-Fi network.
 | --- | --- |
 | boolean | Returns `true` for disconnecting network success, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

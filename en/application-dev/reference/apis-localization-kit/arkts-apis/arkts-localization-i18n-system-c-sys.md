@@ -52,6 +52,7 @@ Adds a preferred language to the specified position on the preferred language li
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,6 +69,8 @@ try {
   console.error(`call System.addPreferredLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemCollations
 
@@ -97,6 +100,7 @@ Gets collations supported by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -110,6 +114,8 @@ try {
   console.error(`call System.getSystemCollations failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemMeasurements
 
@@ -139,6 +145,7 @@ Gets measurements supported by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -152,6 +159,8 @@ try {
   console.error(`call System.getSystemMeasurements failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemNumberingSystems
 
@@ -181,6 +190,7 @@ Gets numbering systems supported by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -194,6 +204,8 @@ try {
   console.error(`call System.getSystemNumberingSystems failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemNumberPatterns
 
@@ -223,6 +235,7 @@ Gets commonly used number patterns for system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -236,6 +249,8 @@ try {
   console.error(`call System.getSystemNumberPatterns failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemNumericalDatePatterns
 
@@ -265,6 +280,7 @@ Gets numerical date patterns and examples supported by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -278,6 +294,8 @@ try {
   console.error(`call System.getSystemNumericalDatePatterns failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingCollation
 
@@ -307,6 +325,7 @@ Gets collation currently used by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -320,6 +339,8 @@ try {
   console.error(`call System.getUsingCollation failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingMeasurement
 
@@ -349,6 +370,7 @@ Gets measurement currently used by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -362,6 +384,8 @@ try {
   console.error(`call System.getUsingMeasurement failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingNumberingSystem
 
@@ -419,6 +443,7 @@ Gets number pattern used by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -432,6 +457,8 @@ try {
   console.error(`call System.getUsingNumberPattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingNumericalDatePattern
 
@@ -461,6 +488,7 @@ Gets numerical date pattern currently used by system locale.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -474,6 +502,8 @@ try {
   console.error(`call System.getUsingNumericalDatePattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## removePreferredLanguage
 
@@ -508,6 +538,7 @@ Removes a preferred language from the specified position on the preferred langua
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed.<br>**Applicable version:** 9 - 24 |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -523,6 +554,8 @@ try {
   console.error(`call System.removePreferredLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## set24HourClock
 
@@ -557,6 +590,7 @@ Sets whether to use the 24-hour clock.
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed.<br>**Applicable version:** 9 - 24 |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -571,6 +605,8 @@ try {
   console.error(`call System.set24HourClock failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setFirstDayOfWeek
 
@@ -604,6 +640,7 @@ Sets the first day of a week.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -617,6 +654,8 @@ try {
   console.error(`call System.setFirstDayOfWeek failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemCollation
 
@@ -650,6 +689,7 @@ Sets the system collation mode.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-parameter-verification-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -663,6 +703,8 @@ try {
   console.error(`call System.setSystemCollation failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemLanguage
 
@@ -697,6 +739,7 @@ Sets the system language.
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -711,6 +754,8 @@ try {
   console.error(`call System.setSystemLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemMeasurement
 
@@ -744,6 +789,7 @@ Sets the measurement system used by the system locale.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-parameter-verification-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -757,6 +803,8 @@ try {
   console.error(`call System.setSystemMeasurement failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemNumberingSystem
 
@@ -790,6 +838,7 @@ Sets the numbering system used by the system locale.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-parameter-verification-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -803,6 +852,8 @@ try {
   console.error(`call System.setSystemNumberingSystem failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemNumberPattern
 
@@ -836,6 +887,7 @@ Sets the number pattern used by the system locale.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-parameter-verification-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -849,6 +901,8 @@ try {
   console.error(`call System.setSystemNumberPattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemNumericalDatePattern
 
@@ -882,6 +936,7 @@ Sets the numerical date pattern used by the system locale.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-parameter-verification-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -895,6 +950,8 @@ try {
   console.error(`call System.setSystemNumericalDatePattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemRegion
 
@@ -929,6 +986,7 @@ Sets the system region.
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -942,6 +1000,8 @@ try {
   console.error(`call System.setSystemRegion failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setTemperatureType
 
@@ -975,6 +1035,7 @@ Sets the temperature unit of the system.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -988,6 +1049,8 @@ try {
   console.error(`call System.setTemperatureType failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setUsingLocalDigit
 
@@ -1022,6 +1085,7 @@ Specifies whether to enable use of local digits.
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed.<br>**Applicable version:** 9 - 24 |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1035,6 +1099,8 @@ try {
   console.error(`call System.setUsingLocalDigit failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemLocale
 
@@ -1070,6 +1136,7 @@ Sets the system locale.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-parameter-error) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1083,3 +1150,5 @@ try {
   console.error(`call System.setSystemLocale failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->

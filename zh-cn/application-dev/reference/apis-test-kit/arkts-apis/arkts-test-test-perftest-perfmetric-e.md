@@ -37,8 +37,6 @@ declare enum PerfMetric
 > 
 > - 单次测试期间，仅指定应用内第一次列表滑动的帧率数据会被采集。
 
-@enum { int }
-
 **起始版本：** 20
 
 <!--Device-unnamed-declare enum PerfMetric--><!--Device-unnamed-declare enum PerfMetric-End-->
@@ -47,19 +45,37 @@ declare enum PerfMetric
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
 
-## DURATION
+## APP_START_COMPLETE_TIME
 
 ```TypeScript
-DURATION = 0
+APP_START_COMPLETE_TIME = 6
 ```
 
-代码段执行耗时，单位：ms。
+应用启动的完成时延，单位：ms。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-PerfMetric-DURATION = 0--><!--Device-PerfMetric-DURATION = 0-End-->
+<!--Device-PerfMetric-APP_START_COMPLETE_TIME = 6--><!--Device-PerfMetric-APP_START_COMPLETE_TIME = 6-End-->
+
+**系统能力：** SystemCapability.Test.PerfTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## APP_START_RESPONSE_TIME
+
+```TypeScript
+APP_START_RESPONSE_TIME = 5
+```
+
+应用启动的响应时延，单位：ms。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PerfMetric-APP_START_RESPONSE_TIME = 5--><!--Device-PerfMetric-APP_START_RESPONSE_TIME = 5-End-->
 
 **系统能力：** SystemCapability.Test.PerfTest
 
@@ -75,7 +91,7 @@ CPU_LOAD = 1
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PerfMetric-CPU_LOAD = 1--><!--Device-PerfMetric-CPU_LOAD = 1-End-->
 
@@ -93,7 +109,7 @@ CPU_USAGE = 2
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PerfMetric-CPU_USAGE = 2--><!--Device-PerfMetric-CPU_USAGE = 2-End-->
 
@@ -101,91 +117,19 @@ CPU_USAGE = 2
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
 
-## MEMORY_RSS
+## DURATION
 
 ```TypeScript
-MEMORY_RSS = 3
+DURATION = 0
 ```
 
-代码段单次执行结束时，应用进程占用物理内存（含共享库），单位：KB。
+代码段执行耗时，单位：ms。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-PerfMetric-MEMORY_RSS = 3--><!--Device-PerfMetric-MEMORY_RSS = 3-End-->
-
-**系统能力：** SystemCapability.Test.PerfTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## MEMORY_PSS
-
-```TypeScript
-MEMORY_PSS = 4
-```
-
-代码段单次执行结束时，应用进程占用物理内存（按比例分摊共享库），单位：KB。
-
-**起始版本：** 20
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-PerfMetric-MEMORY_PSS = 4--><!--Device-PerfMetric-MEMORY_PSS = 4-End-->
-
-**系统能力：** SystemCapability.Test.PerfTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## APP_START_RESPONSE_TIME
-
-```TypeScript
-APP_START_RESPONSE_TIME = 5
-```
-
-应用启动的响应时延，单位：ms。
-
-**起始版本：** 20
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-PerfMetric-APP_START_RESPONSE_TIME = 5--><!--Device-PerfMetric-APP_START_RESPONSE_TIME = 5-End-->
-
-**系统能力：** SystemCapability.Test.PerfTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## APP_START_COMPLETE_TIME
-
-```TypeScript
-APP_START_COMPLETE_TIME = 6
-```
-
-应用启动的完成时延，单位：ms。
-
-**起始版本：** 20
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-PerfMetric-APP_START_COMPLETE_TIME = 6--><!--Device-PerfMetric-APP_START_COMPLETE_TIME = 6-End-->
-
-**系统能力：** SystemCapability.Test.PerfTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## PAGE_SWITCH_COMPLETE_TIME
-
-```TypeScript
-PAGE_SWITCH_COMPLETE_TIME = 7
-```
-
-应用内页面切换的完成时延，单位：ms。
-
-**起始版本：** 20
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-PerfMetric-PAGE_SWITCH_COMPLETE_TIME = 7--><!--Device-PerfMetric-PAGE_SWITCH_COMPLETE_TIME = 7-End-->
+<!--Device-PerfMetric-DURATION = 0--><!--Device-PerfMetric-DURATION = 0-End-->
 
 **系统能力：** SystemCapability.Test.PerfTest
 
@@ -201,9 +145,63 @@ LIST_SWIPE_FPS = 8
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PerfMetric-LIST_SWIPE_FPS = 8--><!--Device-PerfMetric-LIST_SWIPE_FPS = 8-End-->
+
+**系统能力：** SystemCapability.Test.PerfTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## MEMORY_PSS
+
+```TypeScript
+MEMORY_PSS = 4
+```
+
+代码段单次执行结束时，应用进程占用物理内存（按比例分摊共享库），单位：KB。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PerfMetric-MEMORY_PSS = 4--><!--Device-PerfMetric-MEMORY_PSS = 4-End-->
+
+**系统能力：** SystemCapability.Test.PerfTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## MEMORY_RSS
+
+```TypeScript
+MEMORY_RSS = 3
+```
+
+代码段单次执行结束时，应用进程占用物理内存（含共享库），单位：KB。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PerfMetric-MEMORY_RSS = 3--><!--Device-PerfMetric-MEMORY_RSS = 3-End-->
+
+**系统能力：** SystemCapability.Test.PerfTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## PAGE_SWITCH_COMPLETE_TIME
+
+```TypeScript
+PAGE_SWITCH_COMPLETE_TIME = 7
+```
+
+应用内页面切换的完成时延，单位：ms。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PerfMetric-PAGE_SWITCH_COMPLETE_TIME = 7--><!--Device-PerfMetric-PAGE_SWITCH_COMPLETE_TIME = 7-End-->
 
 **系统能力：** SystemCapability.Test.PerfTest
 

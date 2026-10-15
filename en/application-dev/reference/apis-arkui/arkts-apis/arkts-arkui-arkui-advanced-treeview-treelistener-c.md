@@ -4,7 +4,7 @@
 export declare class TreeListener
 ```
 
-Listener of the tree view component. You can bind it to the **TreeView** component and use it to listen for changes of tree nodes. One listener can be bound to only one **TreeView** component.
+Defines a listener for the tree view component, which can be bound to the tree view component to listen for node changes of the tree. The same listener cannot control multiple tree view components. The listener internally maintains the mapping between event types and callback functions. When a user performs a node operation on the TreeView, the TreeView notifies the listener to trigger the corresponding callback function, and the developer can obtain node information in the callback and perform service processing.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { CallbackParam, NodeParam, TreeController, TreeListenType, TreeListener,
 off(type: TreeListenType, callback?: (callbackParam: CallbackParam) => void): void
 ```
 
-Registers a one-off listener.
+Cancels listening. Listening must be registered before it can be canceled. The same listener cannot control multiple tree view components.
 
 **Since:** 10
 
@@ -40,8 +40,8 @@ Registers a one-off listener.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [TreeListenType](arkts-arkui-arkui-advanced-treeview-treelistentype-e.md) | Yes | Listening type. |
-| callback | (callbackParam: CallbackParam) =&gt; void | No | Node information. |
+| type | [TreeListenType](arkts-arkui-arkui-advanced-treeview-treelistentype-e.md) | Yes | Type of the listening event, used to specify the listening event to cancel. |
+| callback | (callbackParam: CallbackParam) =&gt; void | No | Callback invoked when the corresponding listening event is triggered. Default value: **undefined**. When this parameter is passed, the listener for the corresponding node information is canceled; when not passed, all node information listeners of this type are canceled. |
 
 ## on
 
@@ -49,7 +49,7 @@ Registers a one-off listener.
 on(type: TreeListenType, callback: (callbackParam: CallbackParam) => void): void
 ```
 
-Declare class TreeListener
+Registers a listener for tree view node events. After successful registration, the callback function is triggered when the corresponding event occurs on a node. The same listener cannot control multiple tree view components.
 
 **Since:** 10
 
@@ -65,8 +65,8 @@ Declare class TreeListener
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [TreeListenType](arkts-arkui-arkui-advanced-treeview-treelistentype-e.md) | Yes | Listening type. |
-| callback | (callbackParam: CallbackParam) =&gt; void | Yes | Node information. |
+| type | [TreeListenType](arkts-arkui-arkui-advanced-treeview-treelistentype-e.md) | Yes | Type of the listening event, used to specify the listening event to register. |
+| callback | (callbackParam: CallbackParam) =&gt; void | Yes | Callback invoked when the corresponding listening event is triggered. The callback parameter **callbackParam** contains information such as **currentNodeId**, **parentNodeId**, and **childIndex**. |
 
 ## once
 
@@ -74,7 +74,7 @@ Declare class TreeListener
 once(type: TreeListenType, callback: (callbackParam: CallbackParam) => void): void
 ```
 
-Declare class TreeListener
+Registers a one-time listening for tree view node events. After successful registration, the callback function is triggered when the corresponding event occurs on a node for the first time, and the listening is automatically removed after triggering. The same listener cannot control multiple tree view components.
 
 **Since:** 10
 
@@ -90,5 +90,5 @@ Declare class TreeListener
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [TreeListenType](arkts-arkui-arkui-advanced-treeview-treelistentype-e.md) | Yes | Listening type. |
-| callback | (callbackParam: CallbackParam) =&gt; void | Yes | Node information. |
+| type | [TreeListenType](arkts-arkui-arkui-advanced-treeview-treelistentype-e.md) | Yes | Type of the listening event, used to specify the listening event to register. |
+| callback | (callbackParam: CallbackParam) =&gt; void | Yes | Callback invoked when the corresponding listening event is triggered. The callback parameter **callbackParam** contains information such as **currentNodeId**, **parentNodeId**, and **childIndex**. |

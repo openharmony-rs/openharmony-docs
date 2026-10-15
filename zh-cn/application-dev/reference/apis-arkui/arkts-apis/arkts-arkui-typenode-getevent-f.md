@@ -1,5 +1,7 @@
 # getEvent
 
+<a id="getevent1"></a>
+
 ## getEvent
 
 ```TypeScript
@@ -36,7 +38,7 @@ function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefine
 完整示例请参考滚动事件示例。
 
 
-<a id="getevent-1"></a>
+<a id="getevent2"></a>
 
 ## getEvent
 
@@ -74,7 +76,7 @@ function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 完整示例请参考滚动事件示例。
 
 
-<a id="getevent-2"></a>
+<a id="getevent3"></a>
 
 ## getEvent
 
@@ -112,7 +114,7 @@ function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | un
 完整示例请参考滚动事件示例。
 
 
-<a id="getevent-3"></a>
+<a id="getevent4"></a>
 
 ## getEvent
 

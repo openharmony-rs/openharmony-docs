@@ -22,7 +22,7 @@ AES-128-CBC.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PbesEncryptionAlgorithm-AES_128_CBC = 0--><!--Device-PbesEncryptionAlgorithm-AES_128_CBC = 0-End-->
 
@@ -38,7 +38,7 @@ AES-192-CBC.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PbesEncryptionAlgorithm-AES_192_CBC = 1--><!--Device-PbesEncryptionAlgorithm-AES_192_CBC = 1-End-->
 
@@ -54,7 +54,7 @@ AES-256-CBC.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PbesEncryptionAlgorithm-AES_256_CBC = 2--><!--Device-PbesEncryptionAlgorithm-AES_256_CBC = 2-End-->
 

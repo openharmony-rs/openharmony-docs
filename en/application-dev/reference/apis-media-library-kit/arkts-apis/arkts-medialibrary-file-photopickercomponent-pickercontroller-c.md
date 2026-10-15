@@ -276,8 +276,8 @@ This parameter takes effect only on the photo browser page. **NOT_MOVING_PHOTO**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameters validate failed, possible causes: 1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration; |
-| [23800202](../errorcode-medialibrary.md#23800202-invalid-scenario-call) | Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameters validate failed, possible causes:         1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration; |
+| [23800202](../errorcode-medialibrary.md#23800202-invalid-scenario-call) | Invalid call context. Possible causes:         1. The API is called outside the photo browsing scenario.         2. The API is called when isMovingPhotoBadgeShown is already set to true. |
 
 ## setPhotoBrowserItem
 

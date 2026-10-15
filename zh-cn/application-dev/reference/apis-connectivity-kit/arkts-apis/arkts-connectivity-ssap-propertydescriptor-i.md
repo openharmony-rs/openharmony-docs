@@ -32,6 +32,8 @@ descriptorType: PropertyDescriptorType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-PropertyDescriptor-descriptorType: PropertyDescriptorType--><!--Device-PropertyDescriptor-descriptorType: PropertyDescriptorType-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ isWriteable?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PropertyDescriptor-isWriteable?: boolean--><!--Device-PropertyDescriptor-isWriteable?: boolean-End-->
 
@@ -68,6 +72,8 @@ propertyUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-PropertyDescriptor-propertyUuid: string--><!--Device-PropertyDescriptor-propertyUuid: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -86,6 +92,8 @@ serviceUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-PropertyDescriptor-serviceUuid: string--><!--Device-PropertyDescriptor-serviceUuid: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -103,6 +111,8 @@ value: ArrayBuffer
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PropertyDescriptor-value: ArrayBuffer--><!--Device-PropertyDescriptor-value: ArrayBuffer-End-->
 

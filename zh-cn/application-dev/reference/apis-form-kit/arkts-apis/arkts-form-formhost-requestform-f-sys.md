@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="requestform1"></a>
+
 ## requestForm
 
 ```TypeScript
@@ -44,6 +46,7 @@ function requestForm(formId: string, callback: AsyncCallback<void>): void
 | [16501001](../errorcode-form.md#16501001-卡片id不存在) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="requestform-1"></a>
+
+<a id="requestform2"></a>
 
 ## requestForm
 
@@ -108,6 +113,7 @@ function requestForm(formId: string): Promise<void>
 | [16501001](../errorcode-form.md#16501001-卡片id不存在) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +131,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

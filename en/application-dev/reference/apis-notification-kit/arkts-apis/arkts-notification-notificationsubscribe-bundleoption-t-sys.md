@@ -6,6 +6,8 @@ export type BundleOption = _BundleOption
 
 Describes the **BundleOption** information, that is, the bundle information of an application.
 
+**Type:** _BundleOption
+
 **Since:** 9
 
 <!--Device-notificationSubscribe-export type BundleOption = _BundleOption--><!--Device-notificationSubscribe-export type BundleOption = _BundleOption-End-->
@@ -13,5 +15,3 @@ Describes the **BundleOption** information, that is, the bundle information of a
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _BundleOption

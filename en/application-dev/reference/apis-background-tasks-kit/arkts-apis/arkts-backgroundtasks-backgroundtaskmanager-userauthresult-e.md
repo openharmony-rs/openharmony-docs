@@ -12,34 +12,6 @@ Represents the user authorization result.
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## NOT_SUPPORTED
-
-```TypeScript
-NOT_SUPPORTED = 0
-```
-
-The authorization is not supported. For example, if the main type of the requested continuous task is not **MODE_SPECIAL_SCENARIO_PROCESSING**, continuous task running in the background is not supported.
-
-**Since:** 22
-
-<!--Device-UserAuthResult-NOT_SUPPORTED = 0--><!--Device-UserAuthResult-NOT_SUPPORTED = 0-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## NOT_DETERMINED
-
-```TypeScript
-NOT_DETERMINED = 1
-```
-
-No user operation.
-
-**Since:** 22
-
-<!--Device-UserAuthResult-NOT_DETERMINED = 1--><!--Device-UserAuthResult-NOT_DETERMINED = 1-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
 ## DENIED
 
 ```TypeScript
@@ -51,22 +23,6 @@ The authorization is denied.
 **Since:** 22
 
 <!--Device-UserAuthResult-DENIED = 2--><!--Device-UserAuthResult-DENIED = 2-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## GRANTED_ONCE
-
-```TypeScript
-GRANTED_ONCE = 3
-```
-
-The authorization is granted this time.
-
-Note: The authorization record will be cleared when the application exits.
-
-**Since:** 22
-
-<!--Device-UserAuthResult-GRANTED_ONCE = 3--><!--Device-UserAuthResult-GRANTED_ONCE = 3-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -87,5 +43,49 @@ When the following common events are received, the related authorization records
 **Since:** 22
 
 <!--Device-UserAuthResult-GRANTED_ALWAYS = 4--><!--Device-UserAuthResult-GRANTED_ALWAYS = 4-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## GRANTED_ONCE
+
+```TypeScript
+GRANTED_ONCE = 3
+```
+
+The authorization is granted this time.
+
+Note: The authorization record will be cleared when the application exits.
+
+**Since:** 22
+
+<!--Device-UserAuthResult-GRANTED_ONCE = 3--><!--Device-UserAuthResult-GRANTED_ONCE = 3-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## NOT_DETERMINED
+
+```TypeScript
+NOT_DETERMINED = 1
+```
+
+No user operation.
+
+**Since:** 22
+
+<!--Device-UserAuthResult-NOT_DETERMINED = 1--><!--Device-UserAuthResult-NOT_DETERMINED = 1-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## NOT_SUPPORTED
+
+```TypeScript
+NOT_SUPPORTED = 0
+```
+
+The authorization is not supported. For example, if the main type of the requested continuous task is not **MODE_SPECIAL_SCENARIO_PROCESSING**, continuous task running in the background is not supported.
+
+**Since:** 22
+
+<!--Device-UserAuthResult-NOT_SUPPORTED = 0--><!--Device-UserAuthResult-NOT_SUPPORTED = 0-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

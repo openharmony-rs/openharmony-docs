@@ -10,7 +10,7 @@ Defines the input parameters of **cipher.rsa()**.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-unnamed-export interface CipherRsaOptions--><!--Device-unnamed-export interface CipherRsaOptions-End-->
 
@@ -34,7 +34,7 @@ Called when the execution is complete.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherRsaOptions-complete: () => void--><!--Device-CipherRsaOptions-complete: () => void-End-->
 
@@ -52,7 +52,7 @@ Called when data fails to be encrypted or decrypted.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherRsaOptions-fail: (data: string, code: number) => void--><!--Device-CipherRsaOptions-fail: (data: string, code: number) => void-End-->
 
@@ -77,7 +77,7 @@ Called when data is encrypted or decrypted successfully.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherRsaOptions-success: (data: CipherResponse) => void--><!--Device-CipherRsaOptions-success: (data: CipherResponse) => void-End-->
 
@@ -106,7 +106,7 @@ Action to perform. The options are as follows:
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherRsaOptions-action: string--><!--Device-CipherRsaOptions-action: string-End-->
 
@@ -126,7 +126,7 @@ RSA key. It is a public key in encryption and a private key in decryption.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherRsaOptions-key: string--><!--Device-CipherRsaOptions-key: string-End-->
 
@@ -148,7 +148,7 @@ The text to be encrypted must be a common text and cannot exceed the length calc
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherRsaOptions-text: string--><!--Device-CipherRsaOptions-text: string-End-->
 
@@ -168,7 +168,7 @@ RSA padding. The default value is **RSA/None/OAEPWithSHA256AndMGF1Padding**.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherRsaOptions-transformation?: string--><!--Device-CipherRsaOptions-transformation?: string-End-->
 

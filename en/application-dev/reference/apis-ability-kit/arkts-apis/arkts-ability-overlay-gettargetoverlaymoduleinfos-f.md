@@ -6,6 +6,8 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
+<a id="gettargetoverlaymoduleinfos1"></a>
+
 ## getTargetOverlayModuleInfos
 
 ```TypeScript
@@ -25,7 +27,7 @@ Obtains the OverlayModuleInfo associated with the specified target module. Modul
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | targetModuleName | string | Yes | Name of the target module specified by modules with the overlay feature. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result, which is an [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) object. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). When the [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) of the specified target module is obtained successfully, **err** returns **undefined**. Otherwise, the callback returns a specific error object. |
 
 **Error codes:**
 
@@ -60,7 +62,7 @@ try {
 ```
 
 
-<a id="gettargetoverlaymoduleinfos-1"></a>
+<a id="gettargetoverlaymoduleinfos2"></a>
 
 ## getTargetOverlayModuleInfos
 
@@ -68,7 +70,7 @@ try {
 function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<OverlayModuleInfo>>
 ```
 
-Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **Since:** 10
 

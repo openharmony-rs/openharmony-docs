@@ -20,7 +20,7 @@ Returns **0** if the font file is not found, the font file path is invalid, the 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-text-function getFontCount(path: string | Resource) : int--><!--Device-text-function getFontCount(path: string | Resource) : int-End-->
 
@@ -30,7 +30,7 @@ Returns **0** if the font file is not found, the font file path is invalid, the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to query, which must be "file:// + absolute path of the font file" or $rawfile('file name in the resources/rawfile directory of the project'). |
+| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Path of the font file to query, which must be "file:// + absolute path of the font file" or $rawfile('file name in the resources/rawfile directory of the project'). |
 
 **Return value:**
 

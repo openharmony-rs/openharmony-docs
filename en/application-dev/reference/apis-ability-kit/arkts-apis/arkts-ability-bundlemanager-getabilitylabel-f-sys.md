@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getabilitylabel1"></a>
+
 ## getAbilityLabel
 
 ```TypeScript
@@ -33,7 +35,7 @@ No permission is required for obtaining the caller's own information.
 | bundleName | string | Yes | Bundle name. |
 | moduleName | string | Yes | Module name. |
 | abilityName | string | Yes | Name of the UIAbility component. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the label. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, **err** is **undefined** and **data** is the label of the specified component; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -49,6 +51,7 @@ No permission is required for obtaining the caller's own information.
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-disabled-ability) | The specified ability is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -74,8 +77,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getabilitylabel-1"></a>
+
+<a id="getabilitylabel2"></a>
 
 ## getAbilityLabel
 
@@ -125,6 +130,7 @@ No permission is required for obtaining the caller's own information.
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-disabled-ability) | The specified ability is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -147,3 +153,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

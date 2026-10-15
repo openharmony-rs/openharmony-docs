@@ -6,6 +6,8 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="dumpjsheapdata1"></a>
+
 ## dumpJsHeapData
 
 ```TypeScript
@@ -20,6 +22,10 @@ Dumps VM heap data.
 > call this API in the release version. Otherwise, the application screen may freeze, affecting user experience.
 
 **Since:** 9
+
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 
 <!--Device-hidebug-function dumpJsHeapData(filename : string) : void--><!--Device-hidebug-function dumpJsHeapData(filename : string) : void-End-->
 
@@ -51,7 +57,7 @@ try {
 ```
 
 
-<a id="dumpjsheapdata-1"></a>
+<a id="dumpjsheapdata2"></a>
 
 ## dumpJsHeapData
 
@@ -68,9 +74,13 @@ Dumps VM heap data and clears the nodeId cache.
 
 **Since:** 24
 
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
+
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-hidebug-function dumpJsHeapData(filename : string, needClean : boolean) : void--><!--Device-hidebug-function dumpJsHeapData(filename : string, needClean : boolean) : void-End-->
 

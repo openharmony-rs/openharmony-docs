@@ -4,7 +4,7 @@
 declare interface TabsAnimationEvent
 ```
 
-Describes the animation information of the **Tabs** component.
+Defines a collection of animation-related information of the **Tabs** component.
 
 **Since:** 11
 
@@ -18,11 +18,7 @@ Describes the animation information of the **Tabs** component.
 currentOffset: number
 ```
 
-Offset of the currently displayed element relative to the start position of the **Tabs** component along the main axis.
-
-Unit: vp.
-
-Default value: **0**.
+Offset of the currently displayed element of **Tabs** relative to the start position of **Tabs** along the main axis. Unit: vp. Default value: **0**. A positive value indicates an offset to the right (horizontal) or downward (vertical), and a negative value indicates an offset to the left (horizontal) or upward (vertical).
 
 **Type:** number
 
@@ -44,11 +40,7 @@ Default value: **0**.
 targetOffset: number
 ```
 
-Offset of the target element relative to the start position of the **Tabs** component along the main axis.
-
-Unit: vp.
-
-Default value: **0**.
+Offset of the animation target element of **Tabs** relative to the start position of **Tabs** along the main axis. Unit: vp. Default value: **0**. A positive value indicates an offset to the right (horizontal) or downward (vertical), and a negative value indicates an offset to the left (horizontal) or upward (vertical).
 
 **Type:** number
 
@@ -70,9 +62,7 @@ Default value: **0**.
 velocity: number
 ```
 
-Hands-off velocity at the beginning of the animation. Unit: vp/s.
-
-Default value: **0**.
+Release velocity of **Tabs** when the release animation starts. Unit: vp/s. Default value: **0**. A positive value indicates sliding to the right (horizontal) or downward (vertical), and a negative value indicates sliding to the left (horizontal) or upward (vertical). A larger velocity value indicates faster sliding. This parameter can be used to implement the inertial scrolling effect.
 
 **Type:** number
 

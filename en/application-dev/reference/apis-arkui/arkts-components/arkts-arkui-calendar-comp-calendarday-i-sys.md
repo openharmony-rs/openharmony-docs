@@ -4,7 +4,7 @@
 interface CalendarDay
 ```
 
-Provides a monthly view component to display information such as date, shift break, and schedule.
+Calendar day information.
 
 **Since:** 7
 
@@ -46,7 +46,7 @@ Gregorian calendar day.
 dayMark: string
 ```
 
-Day.
+Work or off day state. The options are work and off.
 
 **Type:** string
 
@@ -70,7 +70,7 @@ Day.
 dayMarkValue: string
 ```
 
-Indicates the off-duty flag information. The options are work and off.By default, the off-duty flag information is not required.
+Display text of the work or off day state.
 
 **Type:** string
 
@@ -94,7 +94,7 @@ Indicates the off-duty flag information. The options are work and off.By default
 hasSchedule: boolean
 ```
 
-Indicates whether to display has Schedule. The week sequence is one, two, three, four, five, six.
+Indicates whether there is a schedule.
 
 **Type:** boolean
 
@@ -118,7 +118,7 @@ Indicates whether to display has Schedule. The week sequence is one, two, three,
 index: number
 ```
 
-Indicates the sequence number of the 7 x 7 (7 x 6) grid layout on a calendar page by row. The week sequence is one, two, three, four, five, six.
+Indicates the sequence number of the 7 x 7 (7 x 6) grid layout on a calendar page by row.
 
 **Type:** number
 
@@ -142,7 +142,7 @@ Indicates the sequence number of the 7 x 7 (7 x 6) grid layout on a calendar pag
 isFirstOfLunar: boolean
 ```
 
-Indicates whether the default value is Lunar calendar.
+Indicates whether the day is the first day of a lunar month.
 
 **Type:** boolean
 
@@ -190,7 +190,7 @@ Lunar day.
 lunarMonth: string
 ```
 
-Lunar moon. The week sequence is one, two, three, four, five, six.
+Lunar month.
 
 **Type:** string
 
@@ -214,7 +214,7 @@ Lunar moon. The week sequence is one, two, three, four, five, six.
 markLunarDay: boolean
 ```
 
-Display Lunar Date.The week sequence is one, two, three, four, five, six.
+Indicates whether to display the lunar date.
 
 **Type:** boolean
 

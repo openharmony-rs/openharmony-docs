@@ -12,44 +12,6 @@ enum ExtraKey
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-## REQUIRE_ABILITY_LIST
-
-```TypeScript
-REQUIRE_ABILITY_LIST = 'requireAbilityList'
-```
-
-作为setExtras)}接口传入的键，用于向系统设置应用所需的能力列表。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-ExtraKey-REQUIRE_ABILITY_LIST = 'requireAbilityList'--><!--Device-ExtraKey-REQUIRE_ABILITY_LIST = 'requireAbilityList'-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## SUPPORT_URL_CASTING
-
-```TypeScript
-SUPPORT_URL_CASTING = 'url-cast'
-```
-
-作为setExtras)}接口，给REQUIRE_ABILITY_LIST键传入能力列表的值，用于通知系统当前应用支持URL投播功能。
-
-setExtras)}接口传入入参`{[avSession.ExtraKey.REQUIRE_ABILITY_LIST]: [avSession.ExtraKey.SUPPORT_URL_CASTING]}`表示当前应用支持投播功能。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-ExtraKey-SUPPORT_URL_CASTING = 'url-cast'--><!--Device-ExtraKey-SUPPORT_URL_CASTING = 'url-cast'-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
 ## DLNA_CURRENT_URI_METADATA
 
 ```TypeScript
@@ -64,7 +26,7 @@ DLNA_CURRENT_URI_METADATA = 'CurrentURIMetadata'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtraKey-DLNA_CURRENT_URI_METADATA = 'CurrentURIMetadata'--><!--Device-ExtraKey-DLNA_CURRENT_URI_METADATA = 'CurrentURIMetadata'-End-->
 
@@ -84,8 +46,46 @@ DLNA_DIDL_LITE = 'DIDL-Lite'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtraKey-DLNA_DIDL_LITE = 'DIDL-Lite'--><!--Device-ExtraKey-DLNA_DIDL_LITE = 'DIDL-Lite'-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+## REQUIRE_ABILITY_LIST
+
+```TypeScript
+REQUIRE_ABILITY_LIST = 'requireAbilityList'
+```
+
+作为setExtras)}接口传入的键，用于向系统设置应用所需的能力列表。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ExtraKey-REQUIRE_ABILITY_LIST = 'requireAbilityList'--><!--Device-ExtraKey-REQUIRE_ABILITY_LIST = 'requireAbilityList'-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## SUPPORT_URL_CASTING
+
+```TypeScript
+SUPPORT_URL_CASTING = 'url-cast'
+```
+
+作为setExtras)}接口，给REQUIRE_ABILITY_LIST键传入能力列表的值，用于通知系统当前应用支持URL投播功能。
+
+setExtras)}接口传入入参`{[avSession.ExtraKey.REQUIRE_ABILITY_LIST]: [avSession.ExtraKey.SUPPORT_URL_CASTING]}`表示当前应用支持投播功能。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ExtraKey-SUPPORT_URL_CASTING = 'url-cast'--><!--Device-ExtraKey-SUPPORT_URL_CASTING = 'url-cast'-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast

@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="downloadmms1"></a>
+
 ## downloadMms
 
 ```TypeScript
@@ -44,6 +46,7 @@ function downloadMms(context: Context, mmsParams: MmsParams, callback: AsyncCall
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 FA模型示例：
@@ -126,8 +129,10 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="downloadmms-1"></a>
+
+<a id="downloadmms2"></a>
 
 ## downloadMms
 
@@ -172,6 +177,7 @@ function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 FA模型示例：
@@ -251,3 +257,5 @@ class EntryAbility extends UIAbility {
     }
 }
 ```
+
+<!--DelEnd-->

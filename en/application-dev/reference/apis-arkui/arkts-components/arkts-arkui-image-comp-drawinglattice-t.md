@@ -6,6 +6,8 @@ declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.La
 
 Represents a matrix grid object that divides an image into a rectangular grid.
 
+**Type:** import('../api/@ohos.graphics.drawing').default.Lattice
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a matrix grid object that divides an image into a rectangular grid.
 <!--Device-unnamed-declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice--><!--Device-unnamed-declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.drawing').default.Lattice

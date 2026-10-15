@@ -45,6 +45,7 @@ Deletes an .abc file based on the specified file path. This API uses a promise t
 | [17700202](../errorcode-bundle.md#17700202-abc-file-deletion-failure) | Failed to delete the abc file. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,3 +66,5 @@ try {
   hilog.error(0x0000, 'testTag', 'deleteAbc failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

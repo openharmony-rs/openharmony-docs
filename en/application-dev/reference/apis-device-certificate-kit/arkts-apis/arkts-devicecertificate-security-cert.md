@@ -20,30 +20,30 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 | Name | Description |
 | --- | --- |
-| [buildX509CertChain](arkts-devicecertificate-cert-buildx509certchain-f.md) | Builds an X.509 certificate chain with a CertChainBuildParameters object. This API uses a promise to return the result. |
-| [createCertChainValidator](arkts-devicecertificate-cert-createcertchainvalidator-f.md) | Creates a **CertChainValidator** object. |
-| [createCertCRLCollection](arkts-devicecertificate-cert-createcertcrlcollection-f.md) | Creates an object for a collection of X.509 certificates and CRLs. |
-| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md#createcertextension) | Creates a certificate extension object. This API uses an asynchronous callback to return the result. |
-| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md#createcertextension-1) | Creates a certificate extension object. This API uses a promise to return the result. |
-| [createCmsGenerator](arkts-devicecertificate-cert-createcmsgenerator-f.md) | Creates a **CmsGenerator** object. |
-| [createCmsParser](arkts-devicecertificate-cert-createcmsparser-f.md) | Creates a **CmsParser** object. |
-| [createPkcs12](arkts-devicecertificate-cert-createpkcs12-f.md) | Creates P12. This API uses a promise to return the result. |
-| [createPkcs12Sync](arkts-devicecertificate-cert-createpkcs12sync-f.md) | Creates P12. This API returns the result synchronously. |
-| [createTrustAnchorsWithKeyStore](arkts-devicecertificate-cert-createtrustanchorswithkeystore-f.md) | Creates a [TrustAnchor](arkts-devicecertificate-cert-x509trustanchor-i.md) object array by using the CA certificate parsed from a .p12 keystore file. This API uses a promise to return the result. |
-| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md#createx500distinguishedname) | Creates an **X500DistinguishedName** object with a name in the form of a string. This API uses a promise to return the result. |
-| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md#createx500distinguishedname-1) | Creates an **X500DistinguishedName** object with a name in DER format. This API uses a promise to return the result. |
-| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md#createx509cert) | Creates an **X509Cert** instance. This API uses an asynchronous callback to return the result. |
-| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md#createx509cert-1) | Creates an **X509Cert** instance. This API uses a promise to return the result. |
-| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain) | Creates an **X509CertChain** instance. This API uses a promise to return the result. |
-| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain-1) | Creates an **X509CertChain** instance. This API uses an asynchronous callback to return the result. |
-| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain-2) | Creates an X.509 certificate chain object based on the specified certificates. This API returns the result synchronously. |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl) | Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result. |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl-1) | Creates an **X509Crl** instance. This API uses a promise to return the result. |
-| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl) | Creates an **X509CRL** instance. This API uses an asynchronous callback to return the result. |
-| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl-1) | Creates an **X509CRL** instance. This API uses a promise to return the result. |
-| [generateCsr](arkts-devicecertificate-cert-generatecsr-f.md) | Generates a CSR. |
-| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md#parsepkcs12) | Parses P12. |
-| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md#parsepkcs12-1) | Parses P12. This API uses a promise to return the result. |
+| [buildX509CertChain](arkts-devicecertificate-cert-buildx509certchain-f.md#buildx509certchain) | Builds an X.509 certificate chain with a CertChainBuildParameters object. This API uses a promise to return the result. |
+| [createCertChainValidator](arkts-devicecertificate-cert-createcertchainvalidator-f.md#createcertchainvalidator) | Creates a **CertChainValidator** object. |
+| [createCertCRLCollection](arkts-devicecertificate-cert-createcertcrlcollection-f.md#createcertcrlcollection) | Creates an object for a collection of X.509 certificates and CRLs. |
+| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md#createcertextension1) | Creates a certificate extension object. This API uses an asynchronous callback to return the result. |
+| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md#createcertextension2) | Creates a certificate extension object. This API uses a promise to return the result. |
+| [createCmsGenerator](arkts-devicecertificate-cert-createcmsgenerator-f.md#createcmsgenerator) | Creates a **CmsGenerator** object. |
+| [createCmsParser](arkts-devicecertificate-cert-createcmsparser-f.md#createcmsparser) | Creates a **CmsParser** object. |
+| [createPkcs12](arkts-devicecertificate-cert-createpkcs12-f.md#createpkcs12) | Creates P12. This API uses a promise to return the result. |
+| [createPkcs12Sync](arkts-devicecertificate-cert-createpkcs12sync-f.md#createpkcs12sync) | Creates P12. This API returns the result synchronously. |
+| [createTrustAnchorsWithKeyStore](arkts-devicecertificate-cert-createtrustanchorswithkeystore-f.md#createtrustanchorswithkeystore) | Creates a [TrustAnchor](arkts-devicecertificate-cert-x509trustanchor-i.md) object array by using the CA certificate parsed from a .p12 keystore file. This API uses a promise to return the result. |
+| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md#createx500distinguishedname1) | Creates an **X500DistinguishedName** object with a name in the form of a string. This API uses a promise to return the result. |
+| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md#createx500distinguishedname2) | Creates an **X500DistinguishedName** object with a name in DER format. This API uses a promise to return the result. |
+| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md#createx509cert1) | Creates an **X509Cert** instance. This API uses an asynchronous callback to return the result. |
+| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md#createx509cert2) | Creates an **X509Cert** instance. This API uses a promise to return the result. |
+| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain1) | Creates an **X509CertChain** instance. This API uses a promise to return the result. |
+| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain2) | Creates an **X509CertChain** instance. This API uses an asynchronous callback to return the result. |
+| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain3) | Creates an X.509 certificate chain object based on the specified certificates. This API returns the result synchronously. |
+| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl1) | Creates an **X509CRL** instance. This API uses an asynchronous callback to return the result. |
+| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl2) | Creates an **X509CRL** instance. This API uses a promise to return the result. |
+| [generateCsr](arkts-devicecertificate-cert-generatecsr-f.md#generatecsr) | Generates a CSR. |
+| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md#parsepkcs121) | Parses P12. |
+| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md#parsepkcs122) | Parses P12. This API uses a promise to return the result. |
+| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl1) | Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result. |
+| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl2) | Creates an **X509Crl** instance. This API uses a promise to return the result. |
 
 ### Interfaces
 
@@ -85,12 +85,12 @@ import { cert } from '@kit.DeviceCertificateKit';
 | [X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md) | Provides APIs for managing the X.509 certificate chain. |
 | [X509CertMatchParameters](arkts-devicecertificate-cert-x509certmatchparameters-i.md) | Defines the parameters used to match a certificate. If no parameter is specified, all certificates are matched. |
 | [X509CertRevokedParams](arkts-devicecertificate-cert-x509certrevokedparams-i.md) | Parameters for checking certificate revocation status. |
-| [X509Crl](arkts-devicecertificate-cert-x509crl-depr-i.md) | Provides APIs for X.509 CRL operations. |
 | [X509CRL](arkts-devicecertificate-cert-x509crl-i.md) | Provides APIs for X.509 CRL operations. |
-| [X509CrlEntry](arkts-devicecertificate-cert-x509crlentry-depr-i.md) | Provides APIs for operating on a revoked certificate entry in a CRL. |
 | [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | Provides APIs for operating on a revoked certificate entry in a CRL. |
 | [X509CRLMatchParameters](arkts-devicecertificate-cert-x509crlmatchparameters-i.md) | Represents the parameters used to match a certificate revocation list (CRL). If no parameter is specified, all CRLs are matched. |
 | [X509TrustAnchor](arkts-devicecertificate-cert-x509trustanchor-i.md) | Represents an X.509 trust anchor, which is used to verify the certificate chain. The certificate or public key in the trust anchor is used as the trusted root to verify the certificate chain. |
+| [X509Crl](arkts-devicecertificate-cert-x509crl-depr-i.md) | Provides APIs for X.509 CRL operations. |
+| [X509CrlEntry](arkts-devicecertificate-cert-x509crlentry-depr-i.md) | Provides APIs for operating on a revoked certificate entry in a CRL. |
 
 ### Enums
 

@@ -20,6 +20,8 @@ MulticastSocket连接。在调用MulticastSocket的方法前，需要先通过[s
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="addmembership1"></a>
+
 ## addMembership
 
 ```TypeScript
@@ -78,7 +80,7 @@ multicast.addMembership(addr, (err: Object) => {
 })
 ```
 
-<a id="addmembership-1"></a>
+<a id="addmembership2"></a>
 
 ## addMembership
 
@@ -140,6 +142,8 @@ multicast.addMembership(addr).then(() => {
 });
 ```
 
+<a id="dropmembership1"></a>
+
 ## dropMembership
 
 ```TypeScript
@@ -153,7 +157,7 @@ dropMembership(multicastAddress: NetAddress, callback: AsyncCallback<void>): voi
 > 多播使用的IP地址属于特定的范围（例如224.0.0.0到239.255.255.255）。
 > 
 > 从已加入的多播组中退出，必须在加入多播组
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后退出才有效。
 
 **起始版本：** 11
@@ -199,7 +203,7 @@ multicast.dropMembership(addr, (err: Object) => {
 })
 ```
 
-<a id="dropmembership-1"></a>
+<a id="dropmembership2"></a>
 
 ## dropMembership
 
@@ -214,7 +218,7 @@ dropMembership(multicastAddress: NetAddress): Promise<void>
 > 多播使用的IP地址属于特定的范围（例如224.0.0.0到239.255.255.255）。
 > 
 > 从已加入的多播组中退出，必须在加入多播组
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后退出才有效。
 
 **起始版本：** 11
@@ -263,6 +267,8 @@ multicast.dropMembership(addr).then(() => {
 });
 ```
 
+<a id="getloopbackmode1"></a>
+
 ## getLoopbackMode
 
 ```TypeScript
@@ -278,7 +284,7 @@ getLoopbackMode(callback: AsyncCallback<boolean>): void
 > 如果获取的属性值为 true，表示环回模式是开启的状态，允许主机在本地循环接收自己发送的多播数据包。如果为 false，则表示环回模式是关闭的状态，主机不会接收到自己发送的多播数据包。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -315,7 +321,7 @@ multicast.getLoopbackMode((err: Object, value: Boolean) => {
 })
 ```
 
-<a id="getloopbackmode-1"></a>
+<a id="getloopbackmode2"></a>
 
 ## getLoopbackMode
 
@@ -332,7 +338,7 @@ getLoopbackMode(): Promise<boolean>
 > 如果获取的属性值为 true，表示环回模式是开启的状态，允许主机在本地循环接收自己发送的多播数据包。如果为 false，则表示环回模式是关闭的状态，主机不会接收到自己发送的多播数据包。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -367,6 +373,8 @@ multicast.getLoopbackMode().then((value: Boolean) => {
 });
 ```
 
+<a id="getmulticastttl1"></a>
+
 ## getMulticastTTL
 
 ```TypeScript
@@ -384,7 +392,7 @@ getMulticastTTL(callback: AsyncCallback<number>): void
 > 如果一个多播数据包的 TTL 值为 1，那么它只能被直接连接到发送者的主机接收。如果 TTL 被设置为一个较大的值，那么数据包就能够被传送到更远的网络范围内。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -421,7 +429,7 @@ multicast.getMulticastTTL((err: Object, value: Number) => {
 })
 ```
 
-<a id="getmulticastttl-1"></a>
+<a id="getmulticastttl2"></a>
 
 ## getMulticastTTL
 
@@ -440,7 +448,7 @@ getMulticastTTL(): Promise<number>
 > 如果一个多播数据包的 TTL 值为 1，那么它只能被直接连接到发送者的主机接收。如果 TTL 被设置为一个较大的值，那么数据包就能够被传送到更远的网络范围内。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -485,11 +493,11 @@ getSocketFd(): Promise<number>
 
 > **说明：** 
 > 
-> - [bind](arkts-network-socket-udpsocket-i.md#bind)方法调用成功后，才可调用此方法。
+> - [bind](arkts-network-socket-udpsocket-i.md#bind1)方法调用成功后，才可调用此方法。
 > 
 > - bind异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-udpsocket-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-udpsocket-i.md#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -537,6 +545,8 @@ multicast.bind(bindAddr)
 });
 ```
 
+<a id="setloopbackmode1"></a>
+
 ## setLoopbackMode
 
 ```TypeScript
@@ -552,7 +562,7 @@ setLoopbackMode(flag: boolean, callback: AsyncCallback<void>): void
 > 如果一个多播通信中环回模式设置值为 true，那么它允许主机在本地循环接收自己发送的多播数据包。如果为 false，则主机不会接收到自己发送的多播数据包。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -590,7 +600,7 @@ multicast.setLoopbackMode(false, (err: Object) => {
 })
 ```
 
-<a id="setloopbackmode-1"></a>
+<a id="setloopbackmode2"></a>
 
 ## setLoopbackMode
 
@@ -607,7 +617,7 @@ setLoopbackMode(flag: boolean): Promise<void>
 > 如果一个多播通信中环回模式设置值为 true，那么它允许主机在本地循环接收自己发送的多播数据包。如果为 false，则主机不会接收到自己发送的多播数据包。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -648,6 +658,8 @@ multicast.setLoopbackMode(false).then(() => {
 });
 ```
 
+<a id="setmulticastttl1"></a>
+
 ## setMulticastTTL
 
 ```TypeScript
@@ -665,7 +677,7 @@ setMulticastTTL(ttl: number, callback: AsyncCallback<void>): void
 > 如果一个多播数据包的 TTL 值为 1，那么它只能被直接连接到发送者的主机接收。如果 TTL 被设置为一个较大的值，那么数据包就能够被传送到更远的网络范围内。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -705,7 +717,7 @@ multicast.setMulticastTTL(ttl, (err: Object) => {
 })
 ```
 
-<a id="setmulticastttl-1"></a>
+<a id="setmulticastttl2"></a>
 
 ## setMulticastTTL
 
@@ -724,7 +736,7 @@ setMulticastTTL(ttl: number): Promise<void>
 > 如果一个多播数据包的 TTL 值为 1，那么它只能被直接连接到发送者的主机接收。如果 TTL 被设置为一个较大的值，那么数据包就能够被传送到更远的网络范围内。
 > 
 > 在调用
-> [addMembership](#addmembership)
+> [addMembership](#addmembership1)
 > 之后，调用此接口才有效。
 
 **起始版本：** 11
@@ -779,7 +791,7 @@ setReuseAddress(reuse: boolean): void
 > 用于控制多播Socket绑定端口时是否开启地址复用能力。
 > 
 > 如需绑定已被占用的端口，确保占用方开启了地址复用能力，同时本业务也需在调用
-> [bind](arkts-network-socket-udpsocket-i.md#bind)前调用本接口以开启地址复用能力。
+> [bind](arkts-network-socket-udpsocket-i.md#bind1)前调用本接口以开启地址复用能力。
 
 **起始版本：** 26.0.0
 

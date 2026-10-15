@@ -4,10 +4,8 @@
 
 > **说明：** 
 > 
-> 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> updateConstructorParams接口更新构造参数。
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 
@@ -46,7 +44,7 @@ SVG路径描述规范支持的命令如下：
 Path(options?: PathOptions)
 ```
 
-Use new to create Path. Annonymous Object Rectification.
+创建Path对象实例，用于根据绘制路径生成封闭的自定义形状。
 
 **起始版本：** 7
 
@@ -54,7 +52,7 @@ Use new to create Path. Annonymous Object Rectification.
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PathInterface-new (options?: PathOptions): PathAttribute--><!--Device-PathInterface-new (options?: PathOptions): PathAttribute-End-->
+<!--Device-PathInterface-(options?: PathOptions): PathAttribute--><!--Device-PathInterface-(options?: PathOptions): PathAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,7 +60,7 @@ Use new to create Path. Annonymous Object Rectification.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | 否 | path options |
+| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | 否 | Path组件绘制属性的配置对象。<br>省略时不设置绘制属性，组件按默认尺寸显示。默认尺寸根据路径内容自动计算宽度和高度。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## Path
 
@@ -78,7 +76,7 @@ Path(options?: PathOptions)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PathInterface-(options?: PathOptions): PathAttribute--><!--Device-PathInterface-(options?: PathOptions): PathAttribute-End-->
+<!--Device-PathInterface-new (options?: PathOptions): PathAttribute--><!--Device-PathInterface-new (options?: PathOptions): PathAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

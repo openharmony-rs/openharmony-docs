@@ -80,7 +80,8 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
       startIp: "10.20.1.1",
       endIp: "10.20.1.10"
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0" // Supported since API version 26.0.0.
 };
 netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
   console.info('update firewall rule success.');

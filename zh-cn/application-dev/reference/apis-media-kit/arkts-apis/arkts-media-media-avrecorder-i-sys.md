@@ -4,7 +4,7 @@
 interface AVRecorder
 ```
 
-AVRecorder是音视频录制管理类，用于音视频录制的全流程管理，支持音频录制、视频录制及音视频混合录制，可灵活配置编码参数、添加水印、设置元数据、监听录制状态和错误事件等。适用于录制音视频并保存到文件的场景，包括需要在音频流打断期间保持录制连续性、实时监控音频振幅等场景。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-media-media-createavrecorder-f.md)接口构建一个AVRecorder实例。典型录制流程：[createAVRecorder](arkts-media-media-createavrecorder-f.md) → [prepare](arkts-media-media-avrecorder-i.md#prepare-1) → [getInputSurface](arkts-media-media-avrecorder-i.md#getinputsurface)（纯视频/音视频录制时） → [start](arkts-media-media-avrecorder-i.md#start) → [pause](arkts-media-media-avrecorder-i.md#pause)/[resume](arkts-media-media-avrecorder-i.md#resume) → [stop](arkts-media-media-avrecorder-i.md#stop) → [release](arkts-media-media-avrecorder-i.md#release)。
+AVRecorder是音视频录制管理类，用于音视频录制的全流程管理，支持音频录制、视频录制及音视频混合录制，可灵活配置编码参数、添加水印、设置元数据、监听录制状态和错误事件等。适用于录制音视频并保存到文件的场景，包括需要在音频流打断期间保持录制连续性、实时监控音频振幅等场景。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-media-media-createavrecorder-f.md)接口构建一个AVRecorder实例。典型录制流程：[createAVRecorder](arkts-media-media-createavrecorder-f.md) → [prepare](arkts-media-media-avrecorder-i.md#prepare2) → [getInputSurface](arkts-media-media-avrecorder-i.md#getinputsurface)（纯视频/音视频录制时） → [start](arkts-media-media-avrecorder-i.md#start) → [pause](arkts-media-media-avrecorder-i.md#pause)/[resume](arkts-media-media-avrecorder-i.md#resume) → [stop](arkts-media-media-avrecorder-i.md#stop) → [release](arkts-media-media-avrecorder-i.md#release)。
 
 音视频录制示例可参考：[音频录制开发指导](../../../media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](../../../media/media/video-recording.md)。
 
@@ -87,6 +87,7 @@ isWatermarkSupported(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回查询结果。true表示设备支持硬件数字水印，false表示不支持。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -99,6 +100,8 @@ avRecorder.isWatermarkSupported().then((isWatermarkSupported: boolean) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## setWatermark
 
 ```TypeScript
@@ -107,7 +110,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise<void>
 
 给AVRecorder设置水印图像。使用Promise异步回调。<br>
 
-当且仅当[prepare](arkts-media-media-avrecorder-i.md#prepare-1)事件成功触发后，且在[start](arkts-media-media-avrecorder-i.md#start)之前，才能调用setWatermark方法。
+当且仅当[prepare](arkts-media-media-avrecorder-i.md#prepare2)事件成功触发后，且在[start](arkts-media-media-avrecorder-i.md#start)之前，才能调用setWatermark方法。
 
 **起始版本：** 13
 
@@ -121,7 +124,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| watermark | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 图像PixelMap数据。<br>当前支持规格:<br>- 当前仅支持pixelformat为RGBA8888。<br>- 原图像为8K时-&gt;水印图像限制范围3072x288，原图像为4K时-&gt;水印图像限制范围1536x144。 |
+| watermark | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 图像PixelMap数据。<br>当前支持规格:<br>- 当前仅支持pixelformat为RGBA8888。<br>- 原图像为8K时->水印图像限制范围3072x288，原图像为4K时->水印图像限制范围1536x144。 |
 | config | [WatermarkConfig](arkts-media-media-watermarkconfig-i-sys.md) | 是 | 水印的相关配置参数。 |
 
 **返回值：**
@@ -137,6 +140,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -152,3 +156,5 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
   console.error(`Failed to setWatermark and catch error is ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

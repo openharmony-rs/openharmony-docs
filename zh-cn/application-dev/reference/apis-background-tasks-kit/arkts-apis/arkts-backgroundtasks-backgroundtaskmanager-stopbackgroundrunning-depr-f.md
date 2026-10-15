@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="stopbackgroundrunning1"></a>
+
 ## stopBackgroundRunning
 
 ```TypeScript
@@ -17,7 +19,7 @@ function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>):
 
 **废弃版本：** 9
 
-**替代接口：** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md)(context: Context, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning1)(context: Context, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>): void--><!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>): void-End-->
 
@@ -27,7 +29,7 @@ function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，取消长时任务成功时，err为undefined，否则为错误对象。 |
 
 **示例**
@@ -75,7 +77,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="stopbackgroundrunning-1"></a>
+<a id="stopbackgroundrunning2"></a>
 
 ## stopBackgroundRunning
 
@@ -89,7 +91,7 @@ function stopBackgroundRunning(context: Context): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning-1)(context: Context)
+**替代接口：** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning2)(context: Context)
 
 <!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context): Promise<void>--><!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context): Promise<void>-End-->
 
@@ -99,7 +101,7 @@ function stopBackgroundRunning(context: Context): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 
 **返回值：**
 

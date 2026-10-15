@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querygroups1"></a>
+
 ## queryGroups
 
 ```TypeScript
@@ -18,7 +20,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryGroups](#querygroups-1)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**Substitutes:** [queryGroups](#querygroups2)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -48,7 +50,7 @@ contact.queryGroups((err: BusinessError, data) => {
 ```
 
 
-<a id="querygroups-1"></a>
+<a id="querygroups2"></a>
 
 ## queryGroups
 
@@ -103,7 +105,7 @@ contact.queryGroups(context, (err: BusinessError, data) => {
 ```
 
 
-<a id="querygroups-2"></a>
+<a id="querygroups3"></a>
 
 ## queryGroups
 
@@ -117,7 +119,7 @@ Queries all groups of a contact based on the specified holder. This API uses an 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryGroups](#querygroups-3)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**Substitutes:** [queryGroups](#querygroups4)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -152,7 +154,7 @@ contact.queryGroups({
 ```
 
 
-<a id="querygroups-3"></a>
+<a id="querygroups4"></a>
 
 ## queryGroups
 
@@ -212,7 +214,7 @@ contact.queryGroups(context, {
 ```
 
 
-<a id="querygroups-4"></a>
+<a id="querygroups5"></a>
 
 ## queryGroups
 
@@ -226,7 +228,7 @@ Queries all groups of a contact based on the specified holder. This API uses a p
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryGroups](#querygroups-5)(context: Context, holder?: Holder)
+**Substitutes:** [queryGroups](#querygroups6)(context: Context, holder?: Holder)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -262,7 +264,7 @@ promise.then((data) => {
 ```
 
 
-<a id="querygroups-5"></a>
+<a id="querygroups6"></a>
 
 ## queryGroups
 

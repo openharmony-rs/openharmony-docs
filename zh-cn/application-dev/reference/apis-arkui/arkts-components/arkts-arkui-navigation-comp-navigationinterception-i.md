@@ -6,6 +6,12 @@ declare interface NavigationInterception
 
 Navigation跳转拦截对象。
 
+**起始版本：** 12
+
+<!--Device-unnamed-declare interface NavigationInterception--><!--Device-unnamed-declare interface NavigationInterception-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## InterceptionShowCallback<sup>12+</sup>
 
 type InterceptionShowCallback = (from: NavDestinationContext | NavBar, to: NavDestinationContext | NavBar, operation: NavigationOperation, isAnimated: boolean) =&gt; void
@@ -60,12 +66,6 @@ Navigation页面跳转前的拦截回调。
 | pathStack | [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) | 是 | 页面栈。 |
 | operation | [NavigationOperation](arkts-arkui-navigation-comp-navigationoperation-e.md) | 是 | 当前页面跳转类型。 |
 | isAnimated | boolean | 是 | 页面跳转是否有动画。<br>true：页面跳转有动画。<br>false：页面跳转没有动画。 |
-
-**起始版本：** 12
-
-<!--Device-unnamed-declare interface NavigationInterception--><!--Device-unnamed-declare interface NavigationInterception-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## didShow
 

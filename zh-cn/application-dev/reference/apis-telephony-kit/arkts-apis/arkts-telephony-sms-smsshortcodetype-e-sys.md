@@ -14,24 +14,6 @@ export enum SmsShortCodeType
 
 **系统接口：** 此接口为系统接口。
 
-## SMS_SHORT_CODE_TYPE_UNKNOWN
-
-```TypeScript
-SMS_SHORT_CODE_TYPE_UNKNOWN = -1
-```
-
-未知短信短码类型
-
-**起始版本：** 23
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1-End-->
-
-**系统能力：** SystemCapability.Telephony.SmsMms
-
-**系统接口：** 此接口为系统接口。
-
 ## SMS_SHORT_CODE_TYPE_NOT_PREMIUM
 
 ```TypeScript
@@ -63,6 +45,24 @@ SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.SmsMms
+
+**系统接口：** 此接口为系统接口。
+
+## SMS_SHORT_CODE_TYPE_UNKNOWN
+
+```TypeScript
+SMS_SHORT_CODE_TYPE_UNKNOWN = -1
+```
+
+未知短信短码类型
+
+**起始版本：** 23
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 

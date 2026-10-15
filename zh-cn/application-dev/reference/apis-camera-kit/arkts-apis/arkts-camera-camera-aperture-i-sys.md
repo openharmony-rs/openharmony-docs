@@ -51,6 +51,7 @@ getVirtualAperture(): number
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,6 +60,8 @@ function getVirtualAperture(session: camera.PortraitPhotoSession): number {
   return virtualAperture;
 }
 ```
+
+<!--DelEnd-->
 
 ## setVirtualAperture
 
@@ -89,6 +92,7 @@ setVirtualAperture(aperture: number): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +100,5 @@ function setVirtualAperture(session: camera.PortraitPhotoSession, virtualApertur
   session.setVirtualAperture(virtualAperture);
 }
 ```
+
+<!--DelEnd-->

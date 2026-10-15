@@ -4,7 +4,7 @@
 interface RequestEventResult
 ```
 
-Provides the result returned after the request listener is registered and the requested event is received.
+Provides the data type used to respond to a request event after the request listener is registered.
 
 **Since:** 8
 
@@ -24,7 +24,7 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 data?: KVObject
 ```
 
-Component data.
+Component data stored in key-value pairs, used to transfer service data when responding to a request. The key and value types are defined by the service. This is an optional parameter. If not provided, it is not included in the return result by default.
 
 **Type:** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
@@ -42,7 +42,7 @@ Component data.
 extraData?: KVObject
 ```
 
-Extra data.
+Extra data passed in the request event. This is an optional parameter. If not provided, it is not included in the return result by default.
 
 **Type:** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
@@ -60,7 +60,7 @@ Extra data.
 template?: string
 ```
 
-Component template.
+Component template. This is an optional parameter. If not provided, it is not included in the return result by default. Set this parameter when the component template information needs to be returned; it can be omitted when the template is not required.
 
 **Type:** string
 

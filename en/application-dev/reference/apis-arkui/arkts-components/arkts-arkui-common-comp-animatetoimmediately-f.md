@@ -6,7 +6,7 @@
 declare function animateToImmediately(value: AnimateParam, event: () => void): void
 ```
 
-Delivers an explicit animation immediately.
+Delivers an explicit animation immediately. This interface depends on the UI context and cannot be used when the UI context is unclear. It is recommended to use [animateToImmediately](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animatetoimmediately) to explicitly specify the UI context.
 
 **Since:** 12
 

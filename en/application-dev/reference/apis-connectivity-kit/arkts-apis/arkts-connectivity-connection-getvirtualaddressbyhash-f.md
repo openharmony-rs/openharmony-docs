@@ -51,9 +51,9 @@ Obtain the virtual address of the corresponding device based on the hash value o
 **Examples**
 
 ```TypeScript
-// If the queried actual address is 11:22:33:44:55:AA,
-// the corresponding 64-bit hash is d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789.
-// If HashAlgorithmType is set to HASH_ALGORITHM_SHA256, the last 32 bits of the hash are used.
+// If the actual address to be queried is 11:22:33:44:55:AA,
+// the corresponding 64-digit hash value is d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789,
+// Take the last 32 bits of the hash value when HashAlgorithmType is HASH_ALGORITHM_SHA256.
 let hashValue: string = "c10b57deb2e1aafd255596e0d4fd6789";
 try {
   let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);

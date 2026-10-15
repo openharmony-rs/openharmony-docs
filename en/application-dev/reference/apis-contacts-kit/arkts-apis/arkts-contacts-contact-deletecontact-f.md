@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="deletecontact1"></a>
+
 ## deleteContact
 
 ```TypeScript
@@ -18,7 +20,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [deleteContact](#deletecontact-1)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [deleteContact](#deletecontact2)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -30,7 +32,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey-1). |
+| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey2). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Indicates the callback for getting the result of the call. If the operation is successful, the ID of the deleted contact is returned. If the operation fails, an error code is returned. |
 
 **Examples**
@@ -55,7 +57,7 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="deletecontact-1"></a>
+<a id="deletecontact2"></a>
 
 ## deleteContact
 
@@ -78,7 +80,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Indicates the context of application or capability. |
-| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey-1). |
+| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey2). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Indicates the callback for getting the result of the call. If the operation is successful, the ID of the deleted contact is returned. If the operation fails, an error code is returned. |
 
 **Error codes:**
@@ -115,7 +117,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="deletecontact-2"></a>
+<a id="deletecontact3"></a>
 
 ## deleteContact
 
@@ -129,7 +131,7 @@ Deletes a contact. This API uses a promise to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [deleteContact](#deletecontact-3)(context: Context, key: string)
+**Substitutes:** [deleteContact](#deletecontact4)(context: Context, key: string)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -141,7 +143,7 @@ Deletes a contact. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey-1). |
+| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey2). |
 
 **Return value:**
 
@@ -165,7 +167,7 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="deletecontact-3"></a>
+<a id="deletecontact4"></a>
 
 ## deleteContact
 
@@ -188,7 +190,7 @@ Deletes a contact. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Indicates the context of application or capability. |
-| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey-1). |
+| key | string | Yes | Unique query key of a contact. One contact corresponds to one key, which can be obtained through [queryKey](arkts-contacts-contact-querykey-f.md#querykey2). |
 
 **Return value:**
 

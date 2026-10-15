@@ -14,17 +14,17 @@ Enumerates the window modes.
 
 **System API:** This is a system API.
 
-## UNDEFINED
+## FLOATING
 
 ```TypeScript
-UNDEFINED = 1
+FLOATING = 5
 ```
 
-The window mode is not defined by the application.
+The application is displayed in a floating window.
 
 **Since:** 7
 
-<!--Device-WindowMode-UNDEFINED = 1--><!--Device-WindowMode-UNDEFINED = 1-End-->
+<!--Device-WindowMode-FLOATING = 5--><!--Device-WindowMode-FLOATING = 5-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -78,17 +78,17 @@ The application is displayed in the secondary window in split-screen mode. In to
 
 **System API:** This is a system API.
 
-## FLOATING
+## UNDEFINED
 
 ```TypeScript
-FLOATING = 5
+UNDEFINED = 1
 ```
 
-The application is displayed in a floating window.
+The window mode is not defined by the application.
 
 **Since:** 7
 
-<!--Device-WindowMode-FLOATING = 5--><!--Device-WindowMode-FLOATING = 5-End-->
+<!--Device-WindowMode-UNDEFINED = 1--><!--Device-WindowMode-UNDEFINED = 1-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="gethistoricalavqueueinfos1"></a>
+
 ## getHistoricalAVQueueInfos
 
 ```TypeScript
@@ -41,6 +43,7 @@ Get history play list information records.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,8 +52,10 @@ avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]
 });
 ```
 
+<!--DelEnd-->
 
-<a id="gethistoricalavqueueinfos-1"></a>
+
+<a id="gethistoricalavqueueinfos2"></a>
 
 ## getHistoricalAVQueueInfos
 
@@ -90,6 +95,7 @@ Get history play list information records.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -97,3 +103,5 @@ avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueI
   console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
 });
 ```
+
+<!--DelEnd-->

@@ -20,11 +20,8 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 
 | Name | Description |
 | --- | --- |
-| [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | Specifies the worker thread running environment, which is isolated from the host thread environment |
 | [ErrorEvent](arkts-arkts-worker-errorevent-i.md) | Provides detailed information about the exception that occurs during worker execution. The ErrorEvent class inherits from Event. |
 | [Event](arkts-arkts-worker-event-i.md) | Defines the event. |
-| [EventListener](arkts-arkts-worker-eventlistener-i.md) | Implements event listening. |
-| [EventTarget](arkts-arkts-worker-eventtarget-i.md) | Specific event features. |
 | [GlobalScope](arkts-arkts-worker-globalscope-i.md) | Implements the running environment of the Worker thread. The GlobalScope class inherits from WorkerEventTarget. |
 | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | Holds the data transferred between worker threads. |
 | [MessageEvents](arkts-arkts-worker-messageevents-i.md) | Holds the data transferred between Worker threads. |
@@ -32,8 +29,11 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 | [ThreadWorkerGlobalScope](arkts-arkts-worker-threadworkerglobalscope-i.md) | Implements communication between the Worker thread and the host thread. The postMessage API is used to send messages to the host thread, and the close API is used to terminate the Worker thread. The ThreadWorkerGlobalScope class inherits from GlobalScope9+. |
 | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | Implements event listening. |
 | [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md) | Processes worker listening events. |
-| [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md) | Specifies the worker thread running environment, which is isolated from the host thread environment. |
 | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | Provides options that can be set for the Worker instance to create. |
+| [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | Specifies the worker thread running environment, which is isolated from the host thread environment |
+| [EventListener](arkts-arkts-worker-eventlistener-i.md) | Implements event listening. |
+| [EventTarget](arkts-arkts-worker-eventtarget-i.md) | Specific event features. |
+| [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md) | Specifies the worker thread running environment, which is isolated from the host thread environment. |
 
 ### Types
 

@@ -22,7 +22,7 @@ Full camera concurrency.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraConcurrentType-CAMERA_FULL_CAPABILITY = 1--><!--Device-CameraConcurrentType-CAMERA_FULL_CAPABILITY = 1-End-->
 
@@ -38,7 +38,7 @@ Limited camera concurrency.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraConcurrentType-CAMERA_LIMITED_CAPABILITY = 0--><!--Device-CameraConcurrentType-CAMERA_LIMITED_CAPABILITY = 0-End-->
 

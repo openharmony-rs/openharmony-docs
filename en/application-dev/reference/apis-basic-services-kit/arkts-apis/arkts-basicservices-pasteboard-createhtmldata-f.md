@@ -18,7 +18,7 @@ Creates a **PasteData** object of the HTML type.
 
 **Deprecated since:** 9
 
-**Substitutes:** [createData](arkts-basicservices-pasteboard-createdata-f.md)(mimeType: string, value: ValueType)
+**Substitutes:** [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata1)(mimeType: string, value: ValueType)
 
 <!--Device-pasteboard-function createHtmlData(htmlText: string): PasteData--><!--Device-pasteboard-function createHtmlData(htmlText: string): PasteData-End-->
 

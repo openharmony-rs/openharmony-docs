@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getInstalledBundleList(bundleFlags: number): Promise<Array<BundleInfo>>
 ```
 
-Obtains all the bundle information in the system based on the given bundle flags. This API uses a promise to return the result.
+Obtains all **BundleInfo** objects in the system based on the given bundleFlags. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -28,13 +28,13 @@ Obtains all the bundle information in the system based on the given bundle flags
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleFlags | number | Yes | Information contained in the returned BundleInfo. For details, see [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md). |
+| bundleFlags | number | Yes | Specifies the information contained in the returned BundleInfo. For details, see [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt;&gt; | Promise used to return the list of installed applications. |
+| Promise&lt;Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt;&gt; | Promise used to return the result. If the call succeeds, it returns a list of BundleInfo objects; if the call fails, it returns an error object. |
 
 **Error codes:**
 

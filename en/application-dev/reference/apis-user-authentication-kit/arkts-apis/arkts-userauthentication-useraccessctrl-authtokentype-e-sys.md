@@ -14,6 +14,22 @@ Enumerates the authentication token types. They are used to identify the source 
 
 **System API:** This is a system API.
 
+## TOKEN_TYPE_COAUTH
+
+```TypeScript
+TOKEN_TYPE_COAUTH = 2
+```
+
+Collaborative authentication token. It is an authentication token issued based on multiple device collaboration authentication results, indicating that the user has completed authentication through multi-device collaboration.
+
+**Since:** 18
+
+<!--Device-AuthTokenType-TOKEN_TYPE_COAUTH = 2--><!--Device-AuthTokenType-TOKEN_TYPE_COAUTH = 2-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+**System API:** This is a system API.
+
 ## TOKEN_TYPE_LOCAL_AUTH
 
 ```TypeScript
@@ -41,22 +57,6 @@ Local resigning token. It is an authentication token signed based on the reused 
 **Since:** 18
 
 <!--Device-AuthTokenType-TOKEN_TYPE_LOCAL_RESIGN = 1--><!--Device-AuthTokenType-TOKEN_TYPE_LOCAL_RESIGN = 1-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-**System API:** This is a system API.
-
-## TOKEN_TYPE_COAUTH
-
-```TypeScript
-TOKEN_TYPE_COAUTH = 2
-```
-
-Collaborative authentication token. It is an authentication token issued based on multiple device collaboration authentication results, indicating that the user has completed authentication through multi-device collaboration.
-
-**Since:** 18
-
-<!--Device-AuthTokenType-TOKEN_TYPE_COAUTH = 2--><!--Device-AuthTokenType-TOKEN_TYPE_COAUTH = 2-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

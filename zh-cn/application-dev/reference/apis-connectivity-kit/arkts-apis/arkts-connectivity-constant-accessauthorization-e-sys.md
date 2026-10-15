@@ -14,22 +14,6 @@ export enum AccessAuthorization
 
 **系统接口：** 此接口为系统接口。
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-未知。
-
-**起始版本：** 11
-
-<!--Device-AccessAuthorization-UNKNOWN = 0--><!--Device-AccessAuthorization-UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## ALLOWED
 
 ```TypeScript
@@ -57,6 +41,22 @@ REJECTED = 2
 **起始版本：** 11
 
 <!--Device-AccessAuthorization-REJECTED = 2--><!--Device-AccessAuthorization-REJECTED = 2-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**系统接口：** 此接口为系统接口。
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+未知。
+
+**起始版本：** 11
+
+<!--Device-AccessAuthorization-UNKNOWN = 0--><!--Device-AccessAuthorization-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

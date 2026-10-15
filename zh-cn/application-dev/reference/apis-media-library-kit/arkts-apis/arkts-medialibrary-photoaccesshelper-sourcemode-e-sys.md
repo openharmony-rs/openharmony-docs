@@ -14,22 +14,6 @@ enum SourceMode
 
 **系统接口：** 此接口为系统接口。
 
-## ORIGINAL_MODE
-
-```TypeScript
-ORIGINAL_MODE = 0
-```
-
-读取源文件。
-
-**起始版本：** 11
-
-<!--Device-SourceMode-ORIGINAL_MODE = 0--><!--Device-SourceMode-ORIGINAL_MODE = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## EDITED_MODE
 
 ```TypeScript
@@ -41,6 +25,22 @@ EDITED_MODE = 1
 **起始版本：** 11
 
 <!--Device-SourceMode-EDITED_MODE = 1--><!--Device-SourceMode-EDITED_MODE = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## ORIGINAL_MODE
+
+```TypeScript
+ORIGINAL_MODE = 0
+```
+
+读取源文件。
+
+**起始版本：** 11
+
+<!--Device-SourceMode-ORIGINAL_MODE = 0--><!--Device-SourceMode-ORIGINAL_MODE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -12,45 +12,17 @@ enum AudioVolumeType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-## VOICE_CALL
+## ACCESSIBILITY
 
 ```TypeScript
-VOICE_CALL = 0
+ACCESSIBILITY = 5
 ```
 
-语音电话。
+无障碍。
 
-**起始版本：** 8
+**起始版本：** 10
 
-<!--Device-AudioVolumeType-VOICE_CALL = 0--><!--Device-AudioVolumeType-VOICE_CALL = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-## RINGTONE
-
-```TypeScript
-RINGTONE = 2
-```
-
-铃声。
-
-**起始版本：** 7
-
-<!--Device-AudioVolumeType-RINGTONE = 2--><!--Device-AudioVolumeType-RINGTONE = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-## MEDIA
-
-```TypeScript
-MEDIA = 3
-```
-
-媒体。
-
-**起始版本：** 7
-
-<!--Device-AudioVolumeType-MEDIA = 3--><!--Device-AudioVolumeType-MEDIA = 3-End-->
+<!--Device-AudioVolumeType-ACCESSIBILITY = 5--><!--Device-AudioVolumeType-ACCESSIBILITY = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -68,17 +40,31 @@ ALARM = 4
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-## ACCESSIBILITY
+## MEDIA
 
 ```TypeScript
-ACCESSIBILITY = 5
+MEDIA = 3
 ```
 
-无障碍。
+媒体。
 
-**起始版本：** 10
+**起始版本：** 7
 
-<!--Device-AudioVolumeType-ACCESSIBILITY = 5--><!--Device-AudioVolumeType-ACCESSIBILITY = 5-End-->
+<!--Device-AudioVolumeType-MEDIA = 3--><!--Device-AudioVolumeType-MEDIA = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+## RINGTONE
+
+```TypeScript
+RINGTONE = 2
+```
+
+铃声。
+
+**起始版本：** 7
+
+<!--Device-AudioVolumeType-RINGTONE = 2--><!--Device-AudioVolumeType-RINGTONE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -93,5 +79,19 @@ VOICE_ASSISTANT = 9
 **起始版本：** 8
 
 <!--Device-AudioVolumeType-VOICE_ASSISTANT = 9--><!--Device-AudioVolumeType-VOICE_ASSISTANT = 9-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+## VOICE_CALL
+
+```TypeScript
+VOICE_CALL = 0
+```
+
+语音电话。
+
+**起始版本：** 8
+
+<!--Device-AudioVolumeType-VOICE_CALL = 0--><!--Device-AudioVolumeType-VOICE_CALL = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume

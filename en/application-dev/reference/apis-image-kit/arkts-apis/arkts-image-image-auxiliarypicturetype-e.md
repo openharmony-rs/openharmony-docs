@@ -16,24 +16,6 @@ Before obtaining and using a specific auxiliary picture, call [getAuxiliaryPictu
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## GAINMAP
-
-```TypeScript
-GAINMAP = 1
-```
-
-Gain map.
-
-It is used to generate HDR images more accurately.
-
-HDR synthesis usually involves using the SDR main image, gain map, and [HDR metadata](arkts-image-image-pixelmap-i.md#getmetadata) to calculate the luminance mapping.
-
-**Since:** 13
-
-<!--Device-AuxiliaryPictureType-GAINMAP = 1--><!--Device-AuxiliaryPictureType-GAINMAP = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## DEPTH_MAP
 
 ```TypeScript
@@ -49,42 +31,6 @@ It is useful for tasks like 3D reconstruction, background separation, and scene 
 **Since:** 13
 
 <!--Device-AuxiliaryPictureType-DEPTH_MAP = 2--><!--Device-AuxiliaryPictureType-DEPTH_MAP = 2-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## UNREFOCUS_MAP
-
-```TypeScript
-UNREFOCUS_MAP = 3
-```
-
-Unrefocus map.
-
-It is used to store the pixel content that is not refocused during capture.
-
-It is useful for post-processing effects such as portrait blurring, allowing users to select focus areas freely.
-
-**Since:** 13
-
-<!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3--><!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## LINEAR_MAP
-
-```TypeScript
-LINEAR_MAP = 4
-```
-
-Linear map.
-
-It records lighting, color, or other visual elements linearly, providing additional data for image processing.
-
-It is useful for visual effect enhancement and color post-processing.
-
-**Since:** 13
-
-<!--Device-AuxiliaryPictureType-LINEAR_MAP = 4--><!--Device-AuxiliaryPictureType-LINEAR_MAP = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -106,6 +52,24 @@ It is useful for watermark removal and original image restoration.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
+## GAINMAP
+
+```TypeScript
+GAINMAP = 1
+```
+
+Gain map.
+
+It is used to generate HDR images more accurately.
+
+HDR synthesis usually involves using the SDR main image, gain map, and [HDR metadata](arkts-image-image-pixelmap-i.md#getmetadata) to calculate the luminance mapping.
+
+**Since:** 13
+
+<!--Device-AuxiliaryPictureType-GAINMAP = 1--><!--Device-AuxiliaryPictureType-GAINMAP = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
 ## LHDR_GAINMAP
 
 ```TypeScript
@@ -119,6 +83,42 @@ LHDR gain map.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AuxiliaryPictureType-LHDR_GAINMAP = 10--><!--Device-AuxiliaryPictureType-LHDR_GAINMAP = 10-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## LINEAR_MAP
+
+```TypeScript
+LINEAR_MAP = 4
+```
+
+Linear map.
+
+It records lighting, color, or other visual elements linearly, providing additional data for image processing.
+
+It is useful for visual effect enhancement and color post-processing.
+
+**Since:** 13
+
+<!--Device-AuxiliaryPictureType-LINEAR_MAP = 4--><!--Device-AuxiliaryPictureType-LINEAR_MAP = 4-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## MEL_MAP
+
+```TypeScript
+MEL_MAP = 12
+```
+
+Melanin concentration map.
+
+It records the melanin distribution in face area, and could be used for skin analysis.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuxiliaryPictureType-MEL_MAP = 12--><!--Device-AuxiliaryPictureType-MEL_MAP = 12-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -140,20 +140,20 @@ It records the oxygen saturation level for face area pixels, and could be used f
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## MEL_MAP
+## UNREFOCUS_MAP
 
 ```TypeScript
-MEL_MAP = 12
+UNREFOCUS_MAP = 3
 ```
 
-Melanin concentration map.
+Unrefocus map.
 
-It records the melanin distribution in face area, and could be used for skin analysis.
+It is used to store the pixel content that is not refocused during capture.
 
-**Since:** 26.0.1
+It is useful for post-processing effects such as portrait blurring, allowing users to select focus areas freely.
 
-**Model restriction:** This API can be used only in the stage model.
+**Since:** 13
 
-<!--Device-AuxiliaryPictureType-MEL_MAP = 12--><!--Device-AuxiliaryPictureType-MEL_MAP = 12-End-->
+<!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3--><!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

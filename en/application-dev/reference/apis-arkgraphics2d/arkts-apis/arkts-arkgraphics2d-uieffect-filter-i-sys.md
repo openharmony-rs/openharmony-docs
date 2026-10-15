@@ -52,6 +52,7 @@ Adds a Bezier curve deformation effect to the component. This effect achieves pr
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,6 +76,8 @@ struct BezierWarpExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## blurBubblesRise
 
@@ -106,6 +109,7 @@ Applies a blur bubbles rise effect to the image, simulating a dreamy, bubbly dis
 | --- | --- |
 | [Filter](arkts-arkgraphics2d-uieffect-filter-i.md) | Returns the Filter with the blur bubbles rise effect attached. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -158,6 +162,8 @@ struct BlurBubblesRiseExample {
 }
 ```
 
+<!--DelEnd-->
+
 ## colorGradient
 
 ```TypeScript
@@ -196,6 +202,7 @@ Adds a color gradient effect to the component content.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -227,6 +234,8 @@ struct ColorGradientExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## contentLight
 
@@ -266,6 +275,7 @@ Adds a 3D lighting effect to the component content.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -306,6 +316,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## directionLight
 
 ```TypeScript
@@ -344,6 +356,7 @@ Provides a Mask-based and directional light lighting effect for the component co
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -382,6 +395,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## displacementDistort
 
 ```TypeScript
@@ -417,6 +432,7 @@ Adds a distortion effect to the component content.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -439,6 +455,8 @@ struct DisplacementDistortExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## distort
 
@@ -474,6 +492,7 @@ Adds a lens distortion effect to the component.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -481,6 +500,8 @@ Adds a lens distortion effect to the component.
 let filter = uiEffect.createFilter();
 filter.distort(-0.5);
 ```
+
+<!--DelEnd-->
 
 ## edgeLight
 
@@ -519,6 +540,7 @@ Detects edges of the component content and adds an edge highlight effect. This e
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -543,6 +565,8 @@ struct EdgeLightExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## flyInFlyOutEffect
 
@@ -579,6 +603,7 @@ Adds a fly-in or fly-out deformation effect to the component. Typical applicatio
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -586,6 +611,8 @@ Adds a fly-in or fly-out deformation effect to the component. Typical applicatio
 let filter = uiEffect.createFilter();
 filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP);
 ```
+
+<!--DelEnd-->
 
 ## haloBloom
 
@@ -653,6 +680,7 @@ Applies a heat distortion effect to the image, simulating the visual distortion 
 | --- | --- |
 | [Filter](arkts-arkgraphics2d-uieffect-filter-i.md) | Returns the Filter with the heat distortion effect attached. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -685,13 +713,15 @@ struct HeatDistortionExample {
 }
 ```
 
+<!--DelEnd-->
+
 ## mapColorByBrightness
 
 ```TypeScript
 mapColorByBrightness(colors: Array<Color>, positions: Array<number>): Filter
 ```
 
-Performs color gradient mapping on the image based on its brightness. The mapping is based on the input colors and their corresponding brightness anchor positions. Darker areas of the image correspond to smaller brightness values; for example, black areas are the darkest with a brightness value of 0.0, while white areas are the brightest with a brightness value of 1.0. The color mapping is cyclic; for example, given 5 colors sorted by brightness anchor position in ascending order, the color mapping sequence is 1--&gt;2--&gt;3--&gt;4--&gt;5--&gt;1.
+Performs color gradient mapping on the image based on its brightness. The mapping is based on the input colors and their corresponding brightness anchor positions. Darker areas of the image correspond to smaller brightness values; for example, black areas are the darkest with a brightness value of 0.0, while white areas are the brightest with a brightness value of 1.0. The color mapping is cyclic; for example, given 5 colors sorted by brightness anchor position in ascending order, the color mapping sequence is 1-->2-->3-->4-->5-->1.
 
 > **NOTE:** 
 > 
@@ -759,6 +789,7 @@ Adds a dispersion effect controlled by a displacement map to the component conte
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -809,6 +840,8 @@ struct MaskDispersion {
 }
 ```
 
+<!--DelEnd-->
+
 ## maskTransition
 
 ```TypeScript
@@ -847,6 +880,7 @@ It is not recommended to use this effect during screen size changes, such as scr
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -893,6 +927,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## pixelStretch
 
 ```TypeScript
@@ -922,6 +958,7 @@ Adds a pixel stretch effect to the component.
 | --- | --- |
 | [Filter](arkts-arkgraphics2d-uieffect-filter-i.md) | Returns the Filter with the pixel stretch effect attached. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -929,6 +966,8 @@ Adds a pixel stretch effect to the component.
 let filter = uiEffect.createFilter();
 filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP);
 ```
+
+<!--DelEnd-->
 
 ## radiusGradientBlur
 
@@ -965,6 +1004,7 @@ Adds a radius linear gradient blur effect to the component content.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -987,6 +1027,8 @@ struct RadiusGradientBlurExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## spinBlur
 
@@ -1059,6 +1101,7 @@ Provides a Mask-based gradient blur effect for the component content.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1081,6 +1124,8 @@ struct VariableRadiusBlurExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## waterRipple
 
@@ -1120,6 +1165,7 @@ Adds a water ripple effect to the component.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1127,3 +1173,5 @@ Adds a water ripple effect to the component.
 let filter = uiEffect.createFilter();
 filter.waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL);
 ```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 declare interface TerminationInfo
 ```
 
-Indicates the information when the provider of the embedded UI is terminated.
+Triggered when the started UIExtensionAbility exits properly by calling **terminateSelfWithResult** or **terminateSelf**.
 
 **Since:** 12
 
@@ -20,7 +20,7 @@ Indicates the information when the provider of the embedded UI is terminated.
 code: number
 ```
 
-Defines the termination code.
+Result code returned when the launched **UIExtensionAbility** exits. The result code is determined by the data passed in when `terminateSelfWithResult` or `terminateSelf` is called.
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Defines the termination code.
 want?: import('../api/@ohos.app.ability.Want').default
 ```
 
-Defines the additional termination information.
+Data returned when the launched **UIExtensionAbility** exits. The default value is **undefined**.
 
 **Type:** import('../api/@ohos.app.ability.Want').default
 

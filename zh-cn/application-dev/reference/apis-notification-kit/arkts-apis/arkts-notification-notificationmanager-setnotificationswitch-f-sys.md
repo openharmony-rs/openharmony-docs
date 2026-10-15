@@ -31,7 +31,7 @@ function setNotificationSwitch(switchName: string, switchState: boolean, userId:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
-| switchState | boolean | 是 | 是否开启通知开关。   - true：表示开启。   - false：表示关闭。 |
+| switchState | boolean | 是 | 是否开启通知开关。           - true：表示开启。           - false：表示关闭。 |
 | userId | number | 是 | 用户ID。 |
 
 **返回值：**
@@ -52,6 +52,7 @@ function setNotificationSwitch(switchName: string, switchState: boolean, userId:
 | [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,3 +68,5 @@ notificationManager.setNotificationSwitch(switchName, switchState, userId).then(
     console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

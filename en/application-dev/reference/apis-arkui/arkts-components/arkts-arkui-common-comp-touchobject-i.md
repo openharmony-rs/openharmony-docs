@@ -18,7 +18,7 @@ Type of the touch event.
 getCurrentLocalPosition?(): Coordinate2D
 ```
 
-Gets the coordinates of the top-left corner of the current component based on its real-time position.
+Obtains the coordinates of the touch position relative to the upper left corner of the current component's real-time position.
 
 **Since:** 26.0.0
 
@@ -34,7 +34,7 @@ Gets the coordinates of the top-left corner of the current component based on it
 
 | Type | Description |
 | --- | --- |
-| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | return the coordinates of the top-left corner of the current component based on its real-time position. |
+| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | Coordinates of the touch position relative to the upper left corner of the current component's real-time position. |
 
 ## displayX
 

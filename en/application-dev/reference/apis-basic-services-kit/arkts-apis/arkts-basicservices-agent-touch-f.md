@@ -6,6 +6,8 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="touch1"></a>
+
 ## touch
 
 ```TypeScript
@@ -37,7 +39,7 @@ Queries the task details based on the task ID and token. This API uses an asynch
 | [21900006](../errorcode-request.md#21900006-task-not-found) | Task removed or not found. |
 
 
-<a id="touch-1"></a>
+<a id="touch2"></a>
 
 ## touch
 

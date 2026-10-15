@@ -14,22 +14,6 @@ enum HiddenPhotosDisplayMode
 
 **系统接口：** 此接口为系统接口。
 
-## ASSETS_MODE
-
-```TypeScript
-ASSETS_MODE = 0
-```
-
-按系统预置的隐藏相册显示隐藏文件，即显示系统中所有的隐藏文件。
-
-**起始版本：** 11
-
-<!--Device-HiddenPhotosDisplayMode-ASSETS_MODE = 0--><!--Device-HiddenPhotosDisplayMode-ASSETS_MODE = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## ALBUMS_MODE
 
 ```TypeScript
@@ -41,6 +25,22 @@ ALBUMS_MODE = 1
 **起始版本：** 11
 
 <!--Device-HiddenPhotosDisplayMode-ALBUMS_MODE = 1--><!--Device-HiddenPhotosDisplayMode-ALBUMS_MODE = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## ASSETS_MODE
+
+```TypeScript
+ASSETS_MODE = 0
+```
+
+按系统预置的隐藏相册显示隐藏文件，即显示系统中所有的隐藏文件。
+
+**起始版本：** 11
+
+<!--Device-HiddenPhotosDisplayMode-ASSETS_MODE = 0--><!--Device-HiddenPhotosDisplayMode-ASSETS_MODE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

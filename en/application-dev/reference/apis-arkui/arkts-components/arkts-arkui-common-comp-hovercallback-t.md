@@ -21,4 +21,4 @@ Defines the callback type for hover events.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | isHover | boolean | Yes | Whether the element is in the hover state. **true**: yes; **false**: no. |
-| event | [HoverEvent](arkts-arkui-common-comp-hoverevent-i.md) | Yes | Position coordinates of the hovered mouse or stylus. |
+| event | [HoverEvent](arkts-arkui-common-comp-hoverevent-i.md) | Yes | Mouse or stylus floating event object, which provides event information such as the floating position coordinates. |

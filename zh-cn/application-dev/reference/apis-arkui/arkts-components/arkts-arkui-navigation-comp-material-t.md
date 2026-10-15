@@ -6,6 +6,8 @@ declare type Material = import('../api/@ohos.arkui.uiMaterial').default.Material
 
 导入用于Navigation组件的材质类型。
 
+**类型：** import('../api/@ohos.arkui.uiMaterial').default.Material
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type Material = import('../api/@ohos.arkui.uiMaterial').default.Material
 <!--Device-unnamed-declare type Material = import('../api/@ohos.arkui.uiMaterial').default.Material--><!--Device-unnamed-declare type Material = import('../api/@ohos.arkui.uiMaterial').default.Material-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.uiMaterial').default.Material

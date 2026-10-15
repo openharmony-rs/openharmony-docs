@@ -6,6 +6,8 @@ export type DispatchInfo = _DispatchInfo
 
 Defines the installation-free structure and API version information.
 
+**Type:** _DispatchInfo
+
 **Since:** 9
 
 <!--Device-freeInstall-export type DispatchInfo = _DispatchInfo--><!--Device-freeInstall-export type DispatchInfo = _DispatchInfo-End-->
@@ -13,5 +15,3 @@ Defines the installation-free structure and API version information.
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
-
-**Type:** _DispatchInfo

@@ -12,34 +12,6 @@ Enumerates the default application types.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-## BROWSER
-
-```TypeScript
-BROWSER = "Web Browser"
-```
-
-Default browser.
-
-**Since:** 9
-
-<!--Device-ApplicationType-BROWSER = "Web Browser"--><!--Device-ApplicationType-BROWSER = "Web Browser"-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
-
-## IMAGE
-
-```TypeScript
-IMAGE = "Image Gallery"
-```
-
-Default image viewer.
-
-**Since:** 9
-
-<!--Device-ApplicationType-IMAGE = "Image Gallery"--><!--Device-ApplicationType-IMAGE = "Image Gallery"-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
-
 ## AUDIO
 
 ```TypeScript
@@ -54,45 +26,31 @@ Default audio player.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-## VIDEO
+## BROWSER
 
 ```TypeScript
-VIDEO = "Video Player"
+BROWSER = "Web Browser"
 ```
 
-Default video player.
+Default browser.
 
 **Since:** 9
 
-<!--Device-ApplicationType-VIDEO = "Video Player"--><!--Device-ApplicationType-VIDEO = "Video Player"-End-->
+<!--Device-ApplicationType-BROWSER = "Web Browser"--><!--Device-ApplicationType-BROWSER = "Web Browser"-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-## PDF
+## EMAIL
 
 ```TypeScript
-PDF = "PDF Viewer"
+EMAIL = 'Email'
 ```
 
-Default PDF reader.
+Default email.
 
-**Since:** 9
+**Since:** 12
 
-<!--Device-ApplicationType-PDF = "PDF Viewer"--><!--Device-ApplicationType-PDF = "PDF Viewer"-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
-
-## WORD
-
-```TypeScript
-WORD = "Word Viewer"
-```
-
-Default Word viewer.
-
-**Since:** 9
-
-<!--Device-ApplicationType-WORD = "Word Viewer"--><!--Device-ApplicationType-WORD = "Word Viewer"-End-->
+<!--Device-ApplicationType-EMAIL = 'Email'--><!--Device-ApplicationType-EMAIL = 'Email'-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -110,13 +68,41 @@ Default Excel viewer.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
+## IMAGE
+
+```TypeScript
+IMAGE = "Image Gallery"
+```
+
+Default image viewer.
+
+**Since:** 9
+
+<!--Device-ApplicationType-IMAGE = "Image Gallery"--><!--Device-ApplicationType-IMAGE = "Image Gallery"-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+## PDF
+
+```TypeScript
+PDF = "PDF Viewer"
+```
+
+Default PDF viewer.
+
+**Since:** 9
+
+<!--Device-ApplicationType-PDF = "PDF Viewer"--><!--Device-ApplicationType-PDF = "PDF Viewer"-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
 ## PPT
 
 ```TypeScript
 PPT = "PPT Viewer"
 ```
 
-Default PowerPoint viewer.
+Default PPT viewer.
 
 **Since:** 9
 
@@ -124,16 +110,30 @@ Default PowerPoint viewer.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-## EMAIL
+## VIDEO
 
 ```TypeScript
-EMAIL = 'Email'
+VIDEO = "Video Player"
 ```
 
-Default email.
+Default video player.
 
-**Since:** 12
+**Since:** 9
 
-<!--Device-ApplicationType-EMAIL = 'Email'--><!--Device-ApplicationType-EMAIL = 'Email'-End-->
+<!--Device-ApplicationType-VIDEO = "Video Player"--><!--Device-ApplicationType-VIDEO = "Video Player"-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+## WORD
+
+```TypeScript
+WORD = "Word Viewer"
+```
+
+Default Word viewer.
+
+**Since:** 9
+
+<!--Device-ApplicationType-WORD = "Word Viewer"--><!--Device-ApplicationType-WORD = "Word Viewer"-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp

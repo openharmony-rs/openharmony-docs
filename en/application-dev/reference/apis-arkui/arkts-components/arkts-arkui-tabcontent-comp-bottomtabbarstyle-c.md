@@ -62,7 +62,7 @@ A constructor used to create a **BottomTabBarStyle** instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [TabBarSymbol](arkts-arkui-tabcontent-comp-tabbarsymbol-c.md) | Yes | Image for the tab.<br>**Since:** 12 |
+| icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [TabBarSymbol](arkts-arkui-tabcontent-comp-tabbarsymbol-c.md) | Yes | Image for the tab. If the icon resource fails to be loaded or does not exist, a gray block is displayed. If the icon uses an SVG image source, the built-in width and height attributes of the image source must be deleted. Otherwise, the width and height attribute values built in the SVG image source are used.<br>**Since:** 12 |
 | text | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text for the tab. |
 
 ## iconStyle
@@ -71,7 +71,7 @@ A constructor used to create a **BottomTabBarStyle** instance.
 iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 ```
 
-Sets the style of the label icon on the bottom tab.
+Sets the style of the bottom tab icon.
 
 **Since:** 12
 
@@ -87,13 +87,13 @@ Sets the style of the label icon on the bottom tab.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [TabBarIconStyle](arkts-arkui-tabcontent-comp-tabbariconstyle-i.md) | Yes | Style of the label icon on the bottom tab. |
+| style | [TabBarIconStyle](arkts-arkui-tabcontent-comp-tabbariconstyle-i.md) | Yes | Style of the bottom tab icon, which is used to set the colors of the selected and unselected states of the settings icon. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | The **BottomTabBarStyle** object itself, which is used for chain call. |
 
 ## id
 
@@ -117,13 +117,13 @@ Sets the ID of the bottom tab.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | [ID](arkts-arkui-common-comp-commonmethod-c.md#id) of the bottom tab. |
+| value | string | Yes | ID of the bottom tab. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | Returns the **BottomTabBarStyle** object itself for chaining calls. |
 
 ## labelStyle
 
@@ -147,13 +147,13 @@ Sets the style of the label text and font for the bottom tab.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LabelStyle](arkts-arkui-tabcontent-comp-labelstyle-i.md) | Yes | Style of the label text and font for the bottom tab. |
+| value | [LabelStyle](arkts-arkui-tabcontent-comp-labelstyle-i.md) | Yes | Label text and font style of the bottom tab, which is used to set the text color, size, font, and number of lines. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | Returns the **BottomTabBarStyle** object itself for chaining calls. |
 
 ## layoutMode
 
@@ -183,7 +183,7 @@ Sets the layout mode of the images and texts on the bottom tab.
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | Returns the **BottomTabBarStyle** object itself for chained calls. |
 
 ## of
 
@@ -207,14 +207,14 @@ Static constructor used to create a **BottomTabBarStyle** instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [TabBarSymbol](arkts-arkui-tabcontent-comp-tabbarsymbol-c.md) | Yes | Image for the tab.<br>**Since:** 12 |
+| icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [TabBarSymbol](arkts-arkui-tabcontent-comp-tabbarsymbol-c.md) | Yes | Image for the tab. When the icon resource fails to be loaded or does not exist, a gray block is displayed. If the icon uses an SVG image source, the built-in width and height attributes of the image source must be deleted. Otherwise, the width and height attribute values built in the SVG image source are used.<br>**Since:** 12 |
 | text | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text for the tab. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object created. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | Returns the created **BottomTabBarStyle** object, which is used to set the bottom tab and side tab in approved sample mode. |
 
 ## padding
 
@@ -238,13 +238,13 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) | Yes | Padding of the bottom tab.<br>Value range: [0, +∞]<br> Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br> **top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**<br>**Since:** 12 |
+| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) | Yes | Padding of the bottom tab, which is used to set the distance between the tab content and the boundary. (The percentage setting is not supported.) When you need to adjust the interior space distribution of the tab and optimize the visual effect, pass a custom value.<br>Value range: [0, +∞] <br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}** <br>If of the LocalizedPadding type, this attribute supports the mirroring capability. <br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),** <br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**<br>**Since:** 12 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | The **BottomTabBarStyle** object itself is returned for chain call. |
 
 ## symmetricExtensible
 
@@ -268,13 +268,13 @@ Sets whether the images and text on the bottom tab can be symmetrically extended
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.<br>Default value: **false**, indicating that the images and text on the bottom tab cannot be symmetrically extended by the minimum value of the available space on the left and right bottom tabs. |
+| value | boolean | Yes | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs. If **true** is passed, the symmetric borrowing function is enabled (when you need to optimize the tab layout and fully utilize the space). If **false** is passed, the symmetric borrowing function is disabled (when you need to keep the fixed tab layout and avoid positional changes of tab content).<br>The default value is **false**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | Returns the **BottomTabBarStyle** object itself for chaining calls. |
 
 ## verticalAlign
 
@@ -304,4 +304,4 @@ Sets the vertical alignment mode of the images and text on the bottom tab.
 
 | Type | Description |
 | --- | --- |
-| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | Returns the **BottomTabBarStyle** object itself for chained calls. |

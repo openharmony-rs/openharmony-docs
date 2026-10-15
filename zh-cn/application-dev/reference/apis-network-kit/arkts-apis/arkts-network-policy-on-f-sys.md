@@ -42,6 +42,7 @@ function on(type: 'netUidPolicyChange', callback: Callback<NetUidPolicyInfo>): v
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,6 +61,8 @@ try {
   console.error('on netUidPolicyChange error: ' + JSON.stringify(err));
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('netUidRuleChange')
@@ -98,6 +101,7 @@ function on(type: 'netUidRuleChange', callback: Callback<NetUidRuleInfo>): void
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -116,6 +120,8 @@ try {
   console.error('on netUidRuleChange error: ' + JSON.stringify(err));
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('netMeteredIfacesChange')
@@ -154,6 +160,7 @@ function on(type: 'netMeteredIfacesChange', callback: Callback<Array<string>>): 
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -167,6 +174,8 @@ try {
   console.error('on netMeteredIfacesChange error: ' + JSON.stringify(err));
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('netQuotaPolicyChange')
@@ -205,6 +214,7 @@ function on(type: 'netQuotaPolicyChange', callback: Callback<Array<NetQuotaPolic
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -223,6 +233,8 @@ try {
   console.error('on netQuotaPolicyChange error: ' + JSON.stringify(err));
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('netBackgroundPolicyChange')
@@ -261,6 +273,7 @@ function on(type: 'netBackgroundPolicyChange', callback: Callback<boolean>): voi
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -274,3 +287,5 @@ try {
   console.error('on netBackgroundPolicyChange error: ' + JSON.stringify(err));
 }
 ```
+
+<!--DelEnd-->

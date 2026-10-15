@@ -39,7 +39,7 @@ Obtains a dataAbilityHelper object.
 
 | Type | Description |
 | --- | --- |
-| [DataAbilityHelper](arkts-ability-dataabilityhelper-dataabilityhelper-i.md) | A utility class used to help other abilities access a DataAbility. |
+| [DataAbilityHelper](arkts-ability-dataabilityhelper-i.md) | A utility class used to help other abilities access a DataAbility. |
 
 **Examples**
 

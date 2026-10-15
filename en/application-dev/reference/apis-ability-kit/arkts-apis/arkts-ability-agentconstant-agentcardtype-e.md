@@ -24,7 +24,7 @@ Application-type agent card, applicable to traditional installable applications.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AgentCardType-APP = 0--><!--Device-AgentCardType-APP = 0-End-->
 
@@ -42,7 +42,7 @@ Atomic service-type agent card, applicable to installation-free atomic services.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AgentCardType-ATOMIC_SERVICE = 1--><!--Device-AgentCardType-ATOMIC_SERVICE = 1-End-->
 

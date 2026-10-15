@@ -54,20 +54,6 @@ Touch moved.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## UP
-
-```TypeScript
-UP = 3
-```
-
-Touch up.
-
-**Since:** 9
-
-<!--Device-Action-UP = 3--><!--Device-Action-UP = 3-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
 ## PULL_DOWN
 
 ```TypeScript
@@ -75,8 +61,6 @@ PULL_DOWN = 4
 ```
 
 Drag started.
-
-**Since**: 26.0.0
 
 **Since:** 26.0.0
 
@@ -94,8 +78,6 @@ PULL_MOVE = 5
 
 Dragging.
 
-**Since**: 26.0.0
-
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -112,12 +94,24 @@ PULL_UP = 6
 
 Drag ended.
 
-**Since**: 26.0.0
-
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Action-PULL_UP = 6--><!--Device-Action-PULL_UP = 6-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## UP
+
+```TypeScript
+UP = 3
+```
+
+Touch up.
+
+**Since:** 9
+
+<!--Device-Action-UP = 3--><!--Device-Action-UP = 3-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

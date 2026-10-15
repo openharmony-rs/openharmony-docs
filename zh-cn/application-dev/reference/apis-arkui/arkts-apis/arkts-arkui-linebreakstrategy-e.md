@@ -12,6 +12,24 @@ declare enum LineBreakStrategy
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## BALANCED
+
+```TypeScript
+BALANCED = 2
+```
+
+在不拆词的情况下，尽量使一个段落中每一行的宽度相同。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LineBreakStrategy-BALANCED = 2--><!--Device-LineBreakStrategy-BALANCED = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## GREEDY
 
 ```TypeScript
@@ -45,23 +63,5 @@ HIGH_QUALITY = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineBreakStrategy-HIGH_QUALITY = 1--><!--Device-LineBreakStrategy-HIGH_QUALITY = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## BALANCED
-
-```TypeScript
-BALANCED = 2
-```
-
-在不拆词的情况下，尽量使一个段落中每一行的宽度相同。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-LineBreakStrategy-BALANCED = 2--><!--Device-LineBreakStrategy-BALANCED = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

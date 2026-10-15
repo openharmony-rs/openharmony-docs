@@ -12,13 +12,13 @@ Defines the alignment mode for child elements in the container drawing area.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TopStart
+## Bottom
 
 ```TypeScript
-TopStart
+Bottom
 ```
 
-Top start.
+Horizontally centered on the bottom.
 
 **Since:** 7
 
@@ -28,17 +28,17 @@ Top start.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-Alignment-TopStart--><!--Device-Alignment-TopStart-End-->
+<!--Device-Alignment-Bottom--><!--Device-Alignment-Bottom-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Top
+## BottomEnd
 
 ```TypeScript
-Top
+BottomEnd
 ```
 
-Horizontally centered on the top.
+Bottom end.
 
 **Since:** 7
 
@@ -48,17 +48,17 @@ Horizontally centered on the top.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-Alignment-Top--><!--Device-Alignment-Top-End-->
+<!--Device-Alignment-BottomEnd--><!--Device-Alignment-BottomEnd-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TopEnd
+## BottomStart
 
 ```TypeScript
-TopEnd
+BottomStart
 ```
 
-Top end.
+Bottom start.
 
 **Since:** 7
 
@@ -68,27 +68,7 @@ Top end.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-Alignment-TopEnd--><!--Device-Alignment-TopEnd-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Start
-
-```TypeScript
-Start
-```
-
-Vertically centered start.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-Alignment-Start--><!--Device-Alignment-Start-End-->
+<!--Device-Alignment-BottomStart--><!--Device-Alignment-BottomStart-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,13 +112,13 @@ Vertically centered end.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BottomStart
+## Start
 
 ```TypeScript
-BottomStart
+Start
 ```
 
-Bottom start.
+Vertically centered start.
 
 **Since:** 7
 
@@ -148,17 +128,17 @@ Bottom start.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-Alignment-BottomStart--><!--Device-Alignment-BottomStart-End-->
+<!--Device-Alignment-Start--><!--Device-Alignment-Start-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Bottom
+## Top
 
 ```TypeScript
-Bottom
+Top
 ```
 
-Horizontally centered on the bottom.
+Horizontally centered on the top.
 
 **Since:** 7
 
@@ -168,17 +148,17 @@ Horizontally centered on the bottom.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-Alignment-Bottom--><!--Device-Alignment-Bottom-End-->
+<!--Device-Alignment-Top--><!--Device-Alignment-Top-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BottomEnd
+## TopEnd
 
 ```TypeScript
-BottomEnd
+TopEnd
 ```
 
-Bottom end.
+Top end.
 
 **Since:** 7
 
@@ -188,6 +168,26 @@ Bottom end.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-Alignment-BottomEnd--><!--Device-Alignment-BottomEnd-End-->
+<!--Device-Alignment-TopEnd--><!--Device-Alignment-TopEnd-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TopStart
+
+```TypeScript
+TopStart
+```
+
+Top start.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-TopStart--><!--Device-Alignment-TopStart-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

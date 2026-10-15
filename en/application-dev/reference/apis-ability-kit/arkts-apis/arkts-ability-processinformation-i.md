@@ -24,7 +24,7 @@ Index of an application clone.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ProcessInformation-appCloneIndex?: int--><!--Device-ProcessInformation-appCloneIndex?: int-End-->
 
@@ -44,7 +44,7 @@ Names of all running bundles in the process.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ProcessInformation-bundleNames: Array<string>--><!--Device-ProcessInformation-bundleNames: Array<string>-End-->
 
@@ -62,7 +62,7 @@ Type of the bundle running in the process.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ProcessInformation-bundleType: bundleManager.BundleType--><!--Device-ProcessInformation-bundleType: bundleManager.BundleType-End-->
 
@@ -85,7 +85,7 @@ Indicates whether the process is in the preload state.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ProcessInformation-isPreload?: boolean--><!--Device-ProcessInformation-isPreload?: boolean-End-->
 
@@ -105,7 +105,7 @@ Process ID.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ProcessInformation-pid: int--><!--Device-ProcessInformation-pid: int-End-->
 
@@ -125,7 +125,7 @@ Process name.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ProcessInformation-processName: string--><!--Device-ProcessInformation-processName: string-End-->
 
@@ -143,7 +143,7 @@ Running status of the process.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ProcessInformation-state: appManager.ProcessState--><!--Device-ProcessInformation-state: appManager.ProcessState-End-->
 
@@ -163,7 +163,7 @@ UID of the application.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ProcessInformation-uid: int--><!--Device-ProcessInformation-uid: int-End-->
 

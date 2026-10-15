@@ -14,42 +14,6 @@ Enumerates the DistributedField.
 
 **System API:** This is a system API.
 
-## ORIGIN
-
-```TypeScript
-ORIGIN = '#_origin'
-```
-
-Origin field. For details, see [DistributedOrigin](arkts-arkdata-relationalstore-distributedorigin-e-sys.md).
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DistributedField-ORIGIN = '#_origin'--><!--Device-DistributedField-ORIGIN = '#_origin'-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**System API:** This is a system API.
-
-## ORIGIN_ORIDEVICE
-
-```TypeScript
-ORIGIN_ORIDEVICE = '#_ori_device'
-```
-
-Origin device field. Indicates the data origin sources device ID.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DistributedField-ORIGIN_ORIDEVICE = '#_ori_device'--><!--Device-DistributedField-ORIGIN_ORIDEVICE = '#_ori_device'-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**System API:** This is a system API.
-
 ## CURSOR_FIELD
 
 ```TypeScript
@@ -83,6 +47,42 @@ Indicates whether data has been deleted.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DistributedField-DELETED_FLAG_FIELD = '#_deleted_flag'--><!--Device-DistributedField-DELETED_FLAG_FIELD = '#_deleted_flag'-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**System API:** This is a system API.
+
+## ORIGIN
+
+```TypeScript
+ORIGIN = '#_origin'
+```
+
+Origin field. For details, see [DistributedOrigin](arkts-arkdata-relationalstore-distributedorigin-e-sys.md).
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistributedField-ORIGIN = '#_origin'--><!--Device-DistributedField-ORIGIN = '#_origin'-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**System API:** This is a system API.
+
+## ORIGIN_ORIDEVICE
+
+```TypeScript
+ORIGIN_ORIDEVICE = '#_ori_device'
+```
+
+Origin device field. Indicates the data origin sources device ID.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistributedField-ORIGIN_ORIDEVICE = '#_ori_device'--><!--Device-DistributedField-ORIGIN_ORIDEVICE = '#_ori_device'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

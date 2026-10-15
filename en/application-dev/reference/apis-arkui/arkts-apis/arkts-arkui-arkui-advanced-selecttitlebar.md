@@ -18,7 +18,7 @@ import { SelectTitleBar, SelectTitleBarMenuItem } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [SelectTitleBar](arkts-arkui-arkui-advanced-selecttitlebar-selecttitlebar-s.md) | The **SelectTitleBar** component represents a drop-down menu title bar used for switching between pages of different levels (configured with the **Back** button). |
+| [SelectTitleBar](arkts-arkui-arkui-advanced-selecttitlebar-selecttitlebar-s.md) | The dropdown menu title bar is a title bar component that includes a dropdown menu, supports quick switching between pages, and can be configured with a back button and right-side menu items. This component is suitable for scenarios where navigation and switching between different views or pages are required, and it supports first-level pages as well as second-level and higher-level interfaces. Using this component facilitates quick access to and switching between different content views, improving the convenience of page navigation and user experience. |
 
 ## Examples
 

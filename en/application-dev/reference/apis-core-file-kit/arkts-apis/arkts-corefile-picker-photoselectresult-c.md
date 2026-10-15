@@ -50,7 +50,7 @@ Whether the selected image is the original one. The value **true** means the sel
 photoUris: Array<string>
 ```
 
-URIs of the media files selected. This URI array can be used only by [photoAccessHelper.getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets). For details, see [Using a Media File URI](../../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
+URIs of the media files selected. This URI array can be used only by [photoAccessHelper.getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets1). For details, see [Using a Media File URI](../../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
 
 **Type:** Array&lt;string&gt;
 

@@ -6,6 +6,8 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
+<a id="unbinddevice1"></a>
+
 ## unbindDevice
 
 ```TypeScript
@@ -62,7 +64,7 @@ try {
 ```
 
 
-<a id="unbinddevice-1"></a>
+<a id="unbinddevice2"></a>
 
 ## unbindDevice
 

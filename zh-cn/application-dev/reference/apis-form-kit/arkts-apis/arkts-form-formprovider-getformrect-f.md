@@ -16,7 +16,7 @@ function getFormRect(formId: string): Promise<formInfo.Rect>
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-formProvider-function getFormRect(formId: string): Promise<formInfo.Rect>--><!--Device-formProvider-function getFormRect(formId: string): Promise<formInfo.Rect>-End-->
 

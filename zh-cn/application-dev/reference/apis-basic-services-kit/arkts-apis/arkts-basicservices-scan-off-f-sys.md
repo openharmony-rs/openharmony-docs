@@ -38,6 +38,7 @@ function off(type: 'scanDeviceAdd', callback?: Callback<ScannerDevice>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -50,6 +51,8 @@ scan.on('scanDeviceAdd', callback);
 // 取消注册
 scan.off('scanDeviceAdd', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## off('scanDeviceDel')
@@ -84,6 +87,7 @@ function off(type: 'scanDeviceDel', callback?: Callback<ScannerDevice>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +100,5 @@ scan.on('scanDeviceDel', callback);
 // 取消注册
 scan.off('scanDeviceDel', callback);
 ```
+
+<!--DelEnd-->

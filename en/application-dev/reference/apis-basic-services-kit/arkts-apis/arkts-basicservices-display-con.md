@@ -128,7 +128,7 @@ Indicates the screen rotation when no other policy is available.
 
 <p>This constant is invalid when auto-rotation is enabled. When auto-rotation is disabled, the following values are available:
 
-&lt;ul&gt; &lt;li&gt;`0` - The screen rotates 0 degrees. &lt;li&gt;`1` - The screen rotates 90 degrees. &lt;li&gt;`2` - The screen rotates 180 degrees. &lt;li&gt;`3` - The screen rotates 270 degrees. &lt;/ul&gt;
+<ul> <li>`0` - The screen rotates 0 degrees. <li>`1` - The screen rotates 90 degrees. <li>`2` - The screen rotates 180 degrees. <li>`3` - The screen rotates 270 degrees. </ul>
 
 **Type:** string
 

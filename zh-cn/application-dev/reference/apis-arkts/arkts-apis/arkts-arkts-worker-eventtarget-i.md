@@ -34,7 +34,7 @@ addEventListener(type: string, listener: EventListener): void
 
 **废弃版本：** 9
 
-**替代接口：** addEventListener
+**替代接口：** [addEventListener](arkts-arkts-worker-workereventtarget-i.md#addeventlistener)
 
 <!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void--><!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void-End-->
 
@@ -72,7 +72,7 @@ dispatchEvent(event: Event): boolean
 
 **废弃版本：** 9
 
-**替代接口：** dispatchEvent
+**替代接口：** [dispatchEvent](arkts-arkts-worker-workereventtarget-i.md#dispatchevent)
 
 <!--Device-EventTarget-dispatchEvent(event: Event): boolean--><!--Device-EventTarget-dispatchEvent(event: Event): boolean-End-->
 
@@ -145,7 +145,7 @@ removeAllListener(): void
 
 **废弃版本：** 9
 
-**替代接口：** removeAllListener
+**替代接口：** [removeAllListener](arkts-arkts-worker-workereventtarget-i.md#removealllistener)
 
 <!--Device-EventTarget-removeAllListener(): void--><!--Device-EventTarget-removeAllListener(): void-End-->
 
@@ -178,7 +178,7 @@ removeEventListener(type: string, callback?: EventListener): void
 
 **废弃版本：** 9
 
-**替代接口：** removeEventListener
+**替代接口：** [removeEventListener](arkts-arkts-worker-workereventtarget-i.md#removeeventlistener)
 
 <!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void--><!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void-End-->
 

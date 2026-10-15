@@ -14,24 +14,6 @@ Enumerates the assertion result for different user operations.
 
 **System API:** This is a system API.
 
-## ASSERT_TERMINATE
-
-```TypeScript
-ASSERT_TERMINATE = 0
-```
-
-Assertion result of the terminate operation.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserStatus-ASSERT_TERMINATE = 0--><!--Device-UserStatus-ASSERT_TERMINATE = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
 ## ASSERT_CONTINUE
 
 ```TypeScript
@@ -63,6 +45,24 @@ Assertion result of the retry operation.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-UserStatus-ASSERT_RETRY = 2--><!--Device-UserStatus-ASSERT_RETRY = 2-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+## ASSERT_TERMINATE
+
+```TypeScript
+ASSERT_TERMINATE = 0
+```
+
+Assertion result of the terminate operation.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatus-ASSERT_TERMINATE = 0--><!--Device-UserStatus-ASSERT_TERMINATE = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

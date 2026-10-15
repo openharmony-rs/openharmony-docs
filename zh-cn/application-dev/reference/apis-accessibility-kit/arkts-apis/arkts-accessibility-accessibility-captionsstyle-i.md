@@ -16,7 +16,7 @@ interface CaptionsStyle
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## backgroundColor
@@ -37,9 +37,9 @@ string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CaptionsStyle-backgroundColor: int | string--><!--Device-CaptionsStyle-backgroundColor: int | string-End-->
 
@@ -63,9 +63,9 @@ string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CaptionsStyle-fontColor: int | string--><!--Device-CaptionsStyle-fontColor: int | string-End-->
 
@@ -83,9 +83,9 @@ fontEdgeType: CaptionsFontEdgeType
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CaptionsStyle-fontEdgeType: CaptionsFontEdgeType--><!--Device-CaptionsStyle-fontEdgeType: CaptionsFontEdgeType-End-->
 
@@ -103,9 +103,9 @@ fontFamily: CaptionsFontFamily
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CaptionsStyle-fontFamily: CaptionsFontFamily--><!--Device-CaptionsStyle-fontFamily: CaptionsFontFamily-End-->
 
@@ -123,9 +123,9 @@ fontScale: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CaptionsStyle-fontScale: int--><!--Device-CaptionsStyle-fontScale: int-End-->
 
@@ -149,9 +149,9 @@ string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CaptionsStyle-windowColor: int | string--><!--Device-CaptionsStyle-windowColor: int | string-End-->
 

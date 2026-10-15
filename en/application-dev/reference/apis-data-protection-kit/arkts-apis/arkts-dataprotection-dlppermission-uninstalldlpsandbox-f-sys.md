@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="uninstalldlpsandbox1"></a>
+
 ## uninstallDLPSandbox
 
 ```TypeScript
@@ -16,7 +18,7 @@ Uninstalls a DLP sandbox application for an application. This API uses a promise
 
 Use this API to clear the corresponding sandbox environment.
 
-This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md).
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox1).
 
 **Since:** 10
 
@@ -33,7 +35,7 @@ This API can be called only after a DLP sandbox is installed by calling [install
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown. |
-| userId | number | Yes | Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**.<br>The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value is out of range, the excess part will be truncated. If the value of **userId** is less than 0, an error log is generated, and the function stops running. |
+| userId | number | Yes | Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**.<br>The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated. If the value of **userId** is less than 0, an error log is generated, and the function stops running. |
 | appIndex | number | Yes | DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. The value range is [1000, 1100]. If the value of **appIndex** is less than 0, an error log is generated, and the function stops running. |
 
 **Return value:**
@@ -48,11 +50,12 @@ This API can be called only after a DLP sandbox is installed by calling [install
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,8 +71,10 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 }); // Uninstall the DLP sandbox that has been installed.
 ```
 
+<!--DelEnd-->
 
-<a id="uninstalldlpsandbox-1"></a>
+
+<a id="uninstalldlpsandbox2"></a>
 
 ## uninstallDLPSandbox
 
@@ -81,7 +86,7 @@ Uninstalls a DLP sandbox application for an application. This API uses an asynch
 
 Use this API to clear the sandbox environment.
 
-This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md).
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox1).
 
 **Since:** 10
 
@@ -98,7 +103,7 @@ This API can be called only after a DLP sandbox is installed by calling [install
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown. |
-| userId | number | Yes | Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value is out of range, the excess part will be truncated. If the value of **userId** is less than 0, an error log is generated, and the function stops running. |
+| userId | number | Yes | Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value is out of range, the excess part will be truncated. If the value of **userId** is less than 0, an error log is generated, and the function stops running. |
 | appIndex | number | Yes | DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. The value range is [1000, 1100]. If the value of **appIndex** is less than 0, an error log is generated, and the function stops running. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the DLP sandbox uninstallation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
@@ -108,11 +113,12 @@ This API can be called only after a DLP sandbox is installed by calling [install
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -133,3 +139,5 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
   console.error(`Failed to install or uninstall DLPSandbox. Code: ${error.code}, message: ${error.message}`);
 }); // Uninstall the DLP sandbox that has been installed.
 ```
+
+<!--DelEnd-->

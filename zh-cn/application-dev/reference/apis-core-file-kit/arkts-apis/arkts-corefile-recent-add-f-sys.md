@@ -42,9 +42,12 @@ function add(uri: string): void
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let uri = 'file://docs/storage/Users/currentUser/<publicPath>';
 recent.add(uri);
 ```
+
+<!--DelEnd-->

@@ -6,7 +6,7 @@ declare class WebAttribute extends CommonMethod<WebAttribute>
 
 定义了Web属性函数。
 
-**继承/实现关系：** WebAttribute extends CommonMethod<WebAttribute>
+**继承/实现关系：** WebAttribute extends CommonMethod&lt;WebAttribute&gt;
 
 **起始版本：** 8
 
@@ -277,7 +277,7 @@ darkMode(mode: WebDarkMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | WebDarkMode | 是 | 设置Web的深色模式为关闭、开启或跟随系统。<br>传入null或undefined时为`WebDarkMode.Off`。 |
+| mode | [WebDarkMode](arkts-arkweb-web-comp-webdarkmode-e.md) | 是 | 设置Web的深色模式为关闭、开启或跟随系统。<br>传入null或undefined时为`WebDarkMode.Off`。 |
 
 ## databaseAccess
 
@@ -447,9 +447,9 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 在[onMenuItemClick](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md#onmenuitemclick)中，可以自定义菜单选项的回调函数。该函数在菜单选项被点击后触发，并根据返回值决定是否执行系统默认的回调。返回true不执行系统回调，返回false继续执行系统回调。
 
-在[onPrepareMenu&lt;sup&gt;20+&lt;/sup&gt;](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)中，当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行修改、增加、删除菜单选项，实现动态更新菜单。
+在[onPrepareMenu<sup>20+</sup>](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)中，当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行修改、增加、删除菜单选项，实现动态更新菜单。
 
-本接口在与[selectionMenuOptions&lt;sup&gt;(deprecated)&lt;/sup&gt;](#selectionmenuoptions)同时使用时，会使selectionMenuOptions&lt;sup&gt;(deprecated)&lt;/sup&gt;不生效。
+本接口在与[selectionMenuOptions<sup>(deprecated)</sup>](#selectionmenuoptions)同时使用时，会使selectionMenuOptions<sup>(deprecated)</sup>不生效。
 
 **起始版本：** 12
 
@@ -662,7 +662,7 @@ enableImageAnalyzer(enable: boolean)
 > 
 > - 图片的原始长宽均不小于100px。
 > 
-> - 在设备类型不为2in1的设备上，需要图片渲染宽度超过网页宽度的80%。
+> - 在[设备类型](../../../quick-start/module-configuration-file.md#devicetypes标签)不为2in1的设备上，需要图片渲染宽度超过网页宽度的80%。
 
 **起始版本：** 23
 
@@ -842,6 +842,30 @@ fileAccess(fileAccess: boolean)
 | --- | --- | --- | --- |
 | fileAccess | boolean | 是 | 设置是否开启应用中文件系统的访问。<br>true表示开启，false表示不开启。<br>同时，当fileAccess为false的时候，仅只读资源目录`/data/storage/el1/bundle/entry/resources/resfile`里面的资源依然可以通过file协议访问，不受fileAccess管控。<br>API version 11及以前，传入undefined或null时为true，API version 12及以后传入undefined或null时为false。 |
 
+## flingSpeedLimit
+
+```TypeScript
+flingSpeedLimit(speedLimit: number)
+```
+
+设置Web组件惯性滚动的最大速度。
+
+通过该TypeScript API配置的值优先于通过其他API配置的值生效。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-flingSpeedLimit(speedLimit: number): WebAttribute--><!--Device-WebAttribute-flingSpeedLimit(speedLimit: number): WebAttribute-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| speedLimit | number | 是 | 惯性滚动最大速度，单位vp/s。当值小于等于0、`NaN`、`+Infinity`或`-Infinity`时，使用默认值：PC设备为9000 vp/s，非PC设备为17000 vp/s。 |
+
 ## forceDarkAccess
 
 ```TypeScript
@@ -912,7 +936,7 @@ forceEnableZoom(enable: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 设置是否遵从网页中`&lt;meta name="viewport"&gt;`标签设置的缩放限制。<br>设置为`true`时，不遵从网页缩放限制；设置为`false`时，遵从网页缩放限制。<br>传入`undefined`与`null`时属性设置不生效。 |
+| enable | boolean | 是 | 设置是否遵从网页中`<meta name="viewport">`标签设置的缩放限制。<br>设置为`true`时，不遵从网页缩放限制；设置为`false`时，遵从网页缩放限制。<br>传入`undefined`与`null`时属性设置不生效。 |
 
 ## geolocationAccess
 
@@ -1129,7 +1153,7 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 > **说明：** 
 > 
 > javaScriptProxy接口需要和
-> [deleteJavaScriptRegister&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#deletejavascriptregister)
+> [deleteJavaScriptRegister<sup>9+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#deletejavascriptregister)
 > 接口配合使用，防止内存泄漏。
 > 
 > javaScriptProxy对象的所有参数不支持更新。
@@ -1137,7 +1161,7 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 > 注册javaScriptProxy对象时，同步与异步列表请至少选择一项不为空，可同时注册两类方法。
 > 
 > 此接口只支持注册一个对象，若需要注册多个对象请使用
-> [registerJavaScriptProxy&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#registerjavascriptproxy)
+> [registerJavaScriptProxy<sup>9+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#registerjavascriptproxy)
 > 。
 
 **起始版本：** 8
@@ -1220,7 +1244,7 @@ layoutMode(mode: WebLayoutMode)
 > 
 > - 当layoutMode设置为WebLayoutMode.FIT_CONTENT
 > 
-> - forceDisplayScrollBar不支持常驻
+> - [forceDisplayScrollBar](#forcedisplayscrollbar)不支持常驻
 > 
 > - [blankScreenDetectionConfig](#blankscreendetectionconfig)不生效
 > 
@@ -1405,7 +1429,7 @@ mixedMode(mixedMode: MixedMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mixedMode | MixedMode | 是 | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。 |
+| mixedMode | [MixedMode](arkts-arkweb-web-comp-mixedmode-e.md) | 是 | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。 |
 
 ## multiWindowAccess
 
@@ -1481,7 +1505,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](../../apis-arkui/arkts-components/arkts-arkui-common-comp-nestedscrolloptions-i.md) &#124; NestedScrollOptionsExt | 是 | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../../apis-arkui/arkts-apis/arkts-arkui-nestedscrollmode-e.md)。<br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。<br>**适用版本：** 14 |
+| value | [NestedScrollOptions](../../apis-arkui/arkts-components/arkts-arkui-common-comp-nestedscrolloptions-i.md) &#124; [NestedScrollOptionsExt](arkts-arkweb-web-comp-nestedscrolloptionsext-i.md) | 是 | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../../apis-arkui/arkts-apis/arkts-arkui-nestedscrollmode-e.md)。<br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。<br>**适用版本：** 14 |
 
 ## onActivateContent
 
@@ -1495,7 +1519,7 @@ Web页面触发window.open(url, name)时，会根据name查找是否存在已绑
 > 
 > - 通过name绑定Web实例‌：需在[onWindowNew](#onwindownew)回调中调用event.handler.setWebController方法，并传入新Web实例的controller，以完成绑定。
 > 
-> - name‌命名需符合正则表达式[a-zA-Z0-9_]+。当该name被用作\&lt;a&gt;或\&lt;form&gt;标签的target属性值时，已绑定的Web实例同样会触发此回调。
+> - name‌命名需符合正则表达式[a-zA-Z0-9_]+。当该name被用作\<a>或\<form>标签的target属性值时，已绑定的Web实例同样会触发此回调。
 
 **起始版本：** 20
 
@@ -1641,7 +1665,7 @@ onClientAuthenticationRequest(callback: Callback<OnClientAuthenticationEvent>)
 
 > **说明：** 
 > 
-> - Web组件有三种响应方式：[ClientAuthenticationHandler.confirm](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#confirm-1)（继续）、[ClientAuthenticationHandler.cancel](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#cancel)（取消）或[ClientAuthenticationHandler.ignore](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#ignore)（忽略）。
+> - Web组件有三种响应方式：[ClientAuthenticationHandler.confirm](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#confirm2)（继续）、[ClientAuthenticationHandler.cancel](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#cancel)（取消）或[ClientAuthenticationHandler.ignore](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#ignore)（忽略）。
 > 
 > - 如果调用ClientAuthenticationHandler.confirm或ClientAuthenticationHandler.cancel，ArkWeb会将认证结果存储在内存中（在应用程序的生命周期内），并且不会对相同的主机和端口再次调用onClientAuthenticationRequest()。如果调用onClientAuthenticationRequest.ignore，ArkWeb则不会存储该认证结果。
 > 
@@ -1849,7 +1873,7 @@ onDownloadStart(callback: Callback<OnDownloadStartEvent>)
 onErrorReceive(callback: Callback<OnErrorReceiveEvent>)
 ```
 
-网页加载遇到错误时触发该回调。主资源与子资源出错都会回调该接口，可以通过isMainFrame来判断是否是主资源报错。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。
+网页加载遇到错误时触发该回调。主资源与子资源出错都会回调该接口，可以通过[isMainFrame](arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)来判断是否是主资源报错。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。
 
 **起始版本：** 8
 
@@ -2205,7 +2229,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), WebResourceResponse&gt; | 是 | 当Web组件加载url之前触发此回调。<br>返回值WebResourceResponse。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。<br>**适用版本：** 12 |
+| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), [WebResourceResponse](arkts-arkweb-web-comp-webresourceresponse-c.md)&gt; | 是 | 当Web组件加载url之前触发此回调。<br>返回值[WebResourceResponse](arkts-arkweb-web-comp.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。<br>**适用版本：** 12 |
 
 ## onLargestContentfulPaint
 
@@ -2289,7 +2313,7 @@ onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>)
 
 > **说明：** 
 > 
-> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在onInterceptRequest或者通过WebSchemeHandler的[onRequestStart](../arkts-apis/arkts-arkweb-webview-webschemehandler-c.md#onrequeststart)中获取。
+> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest)或者通过WebSchemeHandler的[onRequestStart](../arkts-apis/arkts-arkweb-webview-webschemehandler-c.md#onrequeststart)中获取。
 
 **起始版本：** 10
 
@@ -2337,7 +2361,7 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 通知应用当前网页中麦克风状态，麦克风有三个状态：未工作、捕获中、暂停中。使用callback异步回调。
 
-可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[resumeMicrophone&lt;sup&gt;23+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#resumemicrophone)。
+可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[resumeMicrophone<sup>23+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#resumemicrophone)。
 
 > **说明：** 
 > 
@@ -2466,7 +2490,7 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 ```
 
-当网页中同层标签（例如&lt;embed\&gt;标签或&lt;object\&gt;标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](#nativeembedoptions)，并将[EmbedOptions](arkts-arkweb-web-comp-embedoptions-i.md)中的supportCssDisplayChange参数设为true。
+当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](#nativeembedoptions)，并将[EmbedOptions](arkts-arkweb-web-comp-embedoptions-i.md)中的supportCssDisplayChange参数设为true。
 
 **起始版本：** 12
 
@@ -2512,9 +2536,9 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 > **说明：** 
 > 
-> - 该功能需通过调用[setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled)&lt;sup &gt; &gt;20+&lt;/sup&gt;启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用[setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled-1)接口并将includeSubframe设置为true。
+> - 该功能需通过调用[setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled1)<sup > &gt;20+</sup>启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用[setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled2)接口并将includeSubframe设置为true。
 > 
-> - 通过errorPageEvent.request.isMainFrame()判断请求来源是mainframe还是subframe，以便在回调中分别设置对应的自定义错误页。
+> - 通过[errorPageEvent.request.isMainFrame()](arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)判断请求来源是mainframe还是subframe，以便在回调中分别设置对应的自定义错误页。
 > 
 > - 通过[errorPageEvent.error.getErrorCode()](arkts-arkweb-web-comp-webresourceerror-c.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
@@ -2776,6 +2800,8 @@ onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>)
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnRefreshAccessedHistoryEvent](arkts-arkweb-web-comp-onrefreshaccessedhistoryevent-i.md)&gt; | 是 | 在导航完成时触发。<br>**适用版本：** 12 |
 
+<a id="onrenderexited1"></a>
+
 ## onRenderExited
 
 ```TypeScript
@@ -2804,7 +2830,7 @@ onRenderExited(callback: Callback<OnRenderExitedEvent>)
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnRenderExitedEvent](arkts-arkweb-web-comp-onrenderexitedevent-i.md)&gt; | 是 | 渲染过程退出时触发。<br>**适用版本：** 12 |
 
-<a id="onrenderexited-1"></a>
+<a id="onrenderexited2"></a>
 
 ## onRenderExited
 
@@ -3102,7 +3128,7 @@ onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>)
 onSslErrorEvent(callback: OnSslErrorEventCallback)
 ```
 
-通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用isMainFrame字段进行区分。
+通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用[isMainFrame](arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)字段进行区分。
 
 > **说明：** 
 > 
@@ -3192,7 +3218,7 @@ onTextSelectionChange(callback: TextSelectionChangeCallback)
 onTitleReceive(callback: Callback<OnTitleReceiveEvent>)
 ```
 
-当页面文档标题`&lt;title&gt;`元素发生变更时，触发回调。若当前页面未显示设置标题，ArkWeb将在加载完成前基于页面的URL生成标题并返回给应用。
+当页面文档标题`<title>`元素发生变更时，触发回调。若当前页面未显示设置标题，ArkWeb将在加载完成前基于页面的URL生成标题并返回给应用。
 
 **起始版本：** 8
 
@@ -3388,7 +3414,7 @@ optimizeParserBudget(optimizeParserBudget: boolean)
 
 ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免过多占用主线程资源，并使网页具有渐进式加载能力。ArkWeb内核默认使用解析时间作为分段点，当单次解析时间超过阈值时，会中断解析，随后进行布局和渲染操作。
 
-开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`&lt;div&gt;`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP（First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
+开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`<div>`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP（First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
 
 由于页面的FCP触发时会恢复成默认分段解析逻辑，因此分段解析HTML优化仅对每个Web组件加载的首个页面生效。
 
@@ -3476,11 +3502,11 @@ pinchSmooth(isEnabled: boolean)
 registerNativeEmbedRule(tag: string, type:string)
 ```
 
-注册使用同层渲染的HTML标签名和类型。标签名仅支持使用&lt;object\&gt;和&lt;embed\&gt;。标签类型只能使用ASCII可显示字符。
+注册使用同层渲染的HTML标签名和类型。标签名仅支持使用<object\>和<embed\>。标签类型只能使用ASCII可显示字符。
 
-若指定类型与W3C定义的&lt;object\&gt;或&lt;embed\&gt;标准类型重合，ArkWeb内核将其识别为非同层标签。
+若指定类型与W3C定义的<object\>或<embed\>标准类型重合，ArkWeb内核将其识别为非同层标签。
 
-本接口同样受enableNativeEmbedMode接口控制，在未使能同层渲染时本接口无效。在不使用本接口的情况下，ArkWeb内核默认将"native/"前缀类型的&lt;embed\&gt;标签识别为同层标签。
+本接口同样受enableNativeEmbedMode接口控制，在未使能同层渲染时本接口无效。在不使用本接口的情况下，ArkWeb内核默认将"native/"前缀类型的<embed\>标签识别为同层标签。
 
 具体使用详情请参考[同层渲染](../../../web/web-same-layer.md#web页面中同层渲染输入框)指南。
 
@@ -4059,7 +4085,7 @@ textZoomAtio(textZoomAtio: number)
 
 **废弃版本：** 9
 
-**替代接口：** textZoomRatio
+**替代接口：** [textZoomRatio](#textzoomratio)
 
 <!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute--><!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute-End-->
 
@@ -4083,7 +4109,7 @@ userAgent(userAgent: string)
 
 **废弃版本：** 10
 
-**替代接口：** setCustomUserAgent
+**替代接口：** [setCustomUserAgent](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setcustomuseragent)
 
 <!--Device-WebAttribute-userAgent(userAgent: string): WebAttribute--><!--Device-WebAttribute-userAgent(userAgent: string): WebAttribute-End-->
 

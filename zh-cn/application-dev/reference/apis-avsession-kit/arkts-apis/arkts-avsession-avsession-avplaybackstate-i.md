@@ -30,7 +30,7 @@ activeItemId?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-activeItemId?: int--><!--Device-AVPlaybackState-activeItemId?: int-End-->
 
@@ -48,7 +48,7 @@ bufferedTime?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-bufferedTime?: long--><!--Device-AVPlaybackState-bufferedTime?: long-End-->
 
@@ -102,7 +102,7 @@ isFavorite?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-isFavorite?: boolean--><!--Device-AVPlaybackState-isFavorite?: boolean-End-->
 
@@ -120,7 +120,7 @@ loopMode?: LoopMode
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-loopMode?: LoopMode--><!--Device-AVPlaybackState-loopMode?: LoopMode-End-->
 
@@ -138,7 +138,7 @@ maxVolume?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-maxVolume?: int--><!--Device-AVPlaybackState-maxVolume?: int-End-->
 
@@ -156,7 +156,7 @@ muted?: boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-muted?: boolean--><!--Device-AVPlaybackState-muted?: boolean-End-->
 
@@ -174,7 +174,7 @@ position?: PlaybackPosition
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-position?: PlaybackPosition--><!--Device-AVPlaybackState-position?: PlaybackPosition-End-->
 
@@ -192,7 +192,7 @@ speed?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-speed?: double--><!--Device-AVPlaybackState-speed?: double-End-->
 
@@ -210,7 +210,7 @@ state?: PlaybackState
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-state?: PlaybackState--><!--Device-AVPlaybackState-state?: PlaybackState-End-->
 
@@ -228,7 +228,7 @@ videoHeight?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-videoHeight?: int--><!--Device-AVPlaybackState-videoHeight?: int-End-->
 
@@ -246,7 +246,7 @@ videoWidth?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-videoWidth?: int--><!--Device-AVPlaybackState-videoWidth?: int-End-->
 
@@ -264,7 +264,7 @@ volume?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlaybackState-volume?: int--><!--Device-AVPlaybackState-volume?: int-End-->
 

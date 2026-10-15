@@ -4,7 +4,7 @@
 export declare class EditableSaveButtonV2
 ```
 
-Declaration of the save button configuration.
+Defines the save button configuration class, which is decorated by **@ObservedV2** and supports state observation.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 constructor(options?: EditableSaveButtonV2Options)
 ```
 
-Constructor of EditableSaveButtonV2.
+A constructor used to create an **EditableSaveButtonV2** instance.
 
 **Since:** 26.0.0
 
@@ -42,7 +42,7 @@ Constructor of EditableSaveButtonV2.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EditableSaveButtonV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2options-i.md) | No | The options of the save button |
+| options | [EditableSaveButtonV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2options-i.md) | No | Save button configuration options.<br>Default value: **undefined**, which means the default configuration is used when this parameter is not passed. |
 
 ## onAction
 
@@ -50,7 +50,9 @@ Constructor of EditableSaveButtonV2.
 public onAction?: OnActionCallback
 ```
 
-Callback function when click on the save button.
+Callback triggered when the save button is tapped. If not set, tapping the button does not respond.
+
+**Decorator:** @Trace
 
 **Since:** 26.0.0
 
@@ -70,7 +72,17 @@ Callback function when click on the save button.
 public defaultFocus: boolean
 ```
 
-Whether to get focus by default.
+Whether to obtain focus by default.
+
+**true**: yes.
+
+**false**: no.
+
+Default value: **false**.
+
+If multiple operable areas in the title bar are set as the default focus, the first operable area in display order among those set as the default focus is the default focus.
+
+**Decorator:** @Trace
 
 **Type:** boolean
 
@@ -94,7 +106,15 @@ Whether to get focus by default.
 public isRequired: boolean
 ```
 
-Whether to show the save button.
+Whether to display the save button.
+
+**true**: yes.
+
+**false**: no.
+
+Default value: **true**.
+
+**Decorator:** @Trace
 
 **Type:** boolean
 

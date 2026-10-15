@@ -12,20 +12,6 @@ export enum CallTransferType
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-## TRANSFER_TYPE_UNCONDITIONAL
-
-```TypeScript
-TRANSFER_TYPE_UNCONDITIONAL = 0
-```
-
-无条件转移。
-
-**起始版本：** 26.0.0
-
-<!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0--><!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
 ## TRANSFER_TYPE_BUSY
 
 ```TypeScript
@@ -65,5 +51,19 @@ TRANSFER_TYPE_NOT_REACHABLE = 3
 **起始版本：** 26.0.0
 
 <!--Device-CallTransferType-TRANSFER_TYPE_NOT_REACHABLE = 3--><!--Device-CallTransferType-TRANSFER_TYPE_NOT_REACHABLE = 3-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+## TRANSFER_TYPE_UNCONDITIONAL
+
+```TypeScript
+TRANSFER_TYPE_UNCONDITIONAL = 0
+```
+
+无条件转移。
+
+**起始版本：** 26.0.0
+
+<!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0--><!--Device-CallTransferType-TRANSFER_TYPE_UNCONDITIONAL = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager

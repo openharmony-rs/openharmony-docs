@@ -36,6 +36,7 @@ constructor()
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -43,6 +44,8 @@ import { faceAuth } from '@kit.UserAuthenticationKit';
 
 let faceAuthManager = new faceAuth.FaceAuthManager();
 ```
+
+<!--DelEnd-->
 
 ## setSurfaceId
 
@@ -76,6 +79,7 @@ setSurfaceId(surfaceId: string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Called by non-system application. |
 | [12700001](../errorcode-useriam.md#12700001-人脸服务不可用) | The service is unavailable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -93,3 +97,5 @@ try {
   console.error(`Failed to set surface id. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

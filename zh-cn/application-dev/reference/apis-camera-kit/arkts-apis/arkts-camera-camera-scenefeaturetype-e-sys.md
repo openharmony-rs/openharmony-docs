@@ -14,6 +14,22 @@ Enumerates the scene features.
 
 **系统接口：** 此接口为系统接口。
 
+## LOW_LIGHT_BOOST
+
+```TypeScript
+LOW_LIGHT_BOOST = 2
+```
+
+Scene for long exposure photography. This is a system API.
+
+**起始版本：** 13
+
+<!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2--><!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## MOON_CAPTURE_BOOST
 
 ```TypeScript
@@ -41,22 +57,6 @@ Scene where a tripod is used for photo capture. This is a system API.
 **起始版本：** 13
 
 <!--Device-SceneFeatureType-TRIPOD_DETECTION = 1--><!--Device-SceneFeatureType-TRIPOD_DETECTION = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-## LOW_LIGHT_BOOST
-
-```TypeScript
-LOW_LIGHT_BOOST = 2
-```
-
-Scene for long exposure photography. This is a system API.
-
-**起始版本：** 13
-
-<!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2--><!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

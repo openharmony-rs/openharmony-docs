@@ -18,7 +18,7 @@ Asynchronous interface for enables Bluetooth on a device.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-access-function enableBluetoothAsync(): Promise<void>--><!--Device-access-function enableBluetoothAsync(): Promise<void>-End-->
 

@@ -36,7 +36,7 @@ declare function lstat(path: string): Promise<Stat>
 | Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
 
 
-<a id="lstat-1"></a>
+<a id="lstat2"></a>
 
 ## lstat
 

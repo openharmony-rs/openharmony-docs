@@ -14,38 +14,6 @@ export enum SwitchState
 
 **系统接口：** 此接口为系统接口。
 
-## USER_MODIFIED_OFF
-
-```TypeScript
-USER_MODIFIED_OFF = 0
-```
-
-表示用户设置的关闭状态。
-
-**起始版本：** 20
-
-<!--Device-SwitchState-USER_MODIFIED_OFF = 0--><!--Device-SwitchState-USER_MODIFIED_OFF = 0-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
-## USER_MODIFIED_ON
-
-```TypeScript
-USER_MODIFIED_ON = 1
-```
-
-表示用户设置的开启状态。
-
-**起始版本：** 20
-
-<!--Device-SwitchState-USER_MODIFIED_ON = 1--><!--Device-SwitchState-USER_MODIFIED_ON = 1-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
 ## SYSTEM_DEFAULT_OFF
 
 ```TypeScript
@@ -73,6 +41,38 @@ SYSTEM_DEFAULT_ON = 3
 **起始版本：** 20
 
 <!--Device-SwitchState-SYSTEM_DEFAULT_ON = 3--><!--Device-SwitchState-SYSTEM_DEFAULT_ON = 3-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## USER_MODIFIED_OFF
+
+```TypeScript
+USER_MODIFIED_OFF = 0
+```
+
+表示用户设置的关闭状态。
+
+**起始版本：** 20
+
+<!--Device-SwitchState-USER_MODIFIED_OFF = 0--><!--Device-SwitchState-USER_MODIFIED_OFF = 0-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## USER_MODIFIED_ON
+
+```TypeScript
+USER_MODIFIED_ON = 1
+```
+
+表示用户设置的开启状态。
+
+**起始版本：** 20
+
+<!--Device-SwitchState-USER_MODIFIED_ON = 1--><!--Device-SwitchState-USER_MODIFIED_ON = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

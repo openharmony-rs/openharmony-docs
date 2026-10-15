@@ -12,34 +12,6 @@ enum PhysicalUnit
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## SCAN_UNIT_NONE
-
-```TypeScript
-SCAN_UNIT_NONE = 0
-```
-
-无单位。
-
-**起始版本：** 20
-
-<!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0--><!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_UNIT_PIXEL
-
-```TypeScript
-SCAN_UNIT_PIXEL = 1
-```
-
-像素单位。
-
-**起始版本：** 20
-
-<!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1--><!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## SCAN_UNIT_BIT
 
 ```TypeScript
@@ -51,20 +23,6 @@ SCAN_UNIT_BIT = 2
 **起始版本：** 20
 
 <!--Device-PhysicalUnit-SCAN_UNIT_BIT = 2--><!--Device-PhysicalUnit-SCAN_UNIT_BIT = 2-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_UNIT_MM
-
-```TypeScript
-SCAN_UNIT_MM = 3
-```
-
-毫米单位。
-
-**起始版本：** 20
-
-<!--Device-PhysicalUnit-SCAN_UNIT_MM = 3--><!--Device-PhysicalUnit-SCAN_UNIT_MM = 3-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -82,6 +40,48 @@ DPI单位。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+## SCAN_UNIT_MICROSECOND
+
+```TypeScript
+SCAN_UNIT_MICROSECOND = 6
+```
+
+微秒单位。
+
+**起始版本：** 20
+
+<!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6--><!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_UNIT_MM
+
+```TypeScript
+SCAN_UNIT_MM = 3
+```
+
+毫米单位。
+
+**起始版本：** 20
+
+<!--Device-PhysicalUnit-SCAN_UNIT_MM = 3--><!--Device-PhysicalUnit-SCAN_UNIT_MM = 3-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_UNIT_NONE
+
+```TypeScript
+SCAN_UNIT_NONE = 0
+```
+
+无单位。
+
+**起始版本：** 20
+
+<!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0--><!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
 ## SCAN_UNIT_PERCENT
 
 ```TypeScript
@@ -96,16 +96,16 @@ SCAN_UNIT_PERCENT = 5
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## SCAN_UNIT_MICROSECOND
+## SCAN_UNIT_PIXEL
 
 ```TypeScript
-SCAN_UNIT_MICROSECOND = 6
+SCAN_UNIT_PIXEL = 1
 ```
 
-微秒单位。
+像素单位。
 
 **起始版本：** 20
 
-<!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6--><!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6-End-->
+<!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1--><!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

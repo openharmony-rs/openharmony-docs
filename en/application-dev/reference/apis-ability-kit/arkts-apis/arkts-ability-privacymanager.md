@@ -2,8 +2,6 @@
 
 **Since:** 9
 
-**Model restriction:** This API can be used in both the stage model and FA model.
-
 <!--Device-unnamed-declare namespace privacyManager--><!--Device-unnamed-declare namespace privacyManager-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
@@ -11,50 +9,69 @@
 ## Core Enum Types
 
 - **[PermissionUsageFlag](arkts-ability-privacymanager-permissionusageflag-e-sys.md):** Enum for querying permission usage records,  
- used to specify querying summary data or detailed data.  
- - **[PermissionActiveStatus](arkts-ability-privacymanager-permissionactivestatus-e-sys.md):** Enum for permission usage status change  
- types, used to indicate unused, foreground use, or background use status.  
- - **[PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md):** Enum for sensitive permission usage types, used  
+ used to specify querying summary data or detailed data.
+
+- **[PermissionActiveStatus](arkts-ability-privacymanager-permissionactivestatus-e-sys.md):** Enum for permission usage status change  
+ types, used to indicate unused, foreground use, or background use status.
+
+- **[PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md):** Enum for sensitive permission usage types, used  
  to indicate the use of sensitive permissions through normal authorization, Picker, or security components.
 
 ## Core Interface Types
 
 - **[PermissionUsedRequest](arkts-ability-privacymanager-permissionusedrequest-i-sys.md):** Permission usage record query request  
- object, used to specify the query application, permission, time range, and query method.  
- - **[PermissionUsedResponse](arkts-ability-privacymanager-permissionusedresponse-i-sys.md):** Permission usage record query response  
- object, used to return the query time range and a collection of application-level records.  
- - **[BundleUsedRecord](arkts-ability-privacymanager-bundleusedrecord-i-sys.md):** Application or device-level permission usage record  
- object, used to return the permission access records of a specific application or remote device.  
- - **[PermissionUsedRecord](arkts-ability-privacymanager-permissionusedrecord-i-sys.md):** Access record object for a single  
- permission, used to return the number of accesses, number of denials, last access time, and detailed records.  
- - **[UsedRecordDetail](arkts-ability-privacymanager-usedrecorddetail-i-sys.md):** Single access record detail object, used to return  
- information such as access status, timestamp, access duration, and usage type.  
- - **[ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md):** Permission usage status change event  
- object, to return details of permission active status changes.  
- - **[PermissionUsedTypeInfo](arkts-ability-privacymanager-permissionusedtypeinfo-i-sys.md):** Permission usage type information  
- object, used to return the usage type when an application accesses a sensitive permission.  
- - **[AddPermissionUsedRecordOptions](arkts-ability-privacymanager-addpermissionusedrecordoptions-i-sys.md):** Optional parameter  
- object for adding a permission usage record, used to specify the sensitive permission usage type and extension identity.  
- - **[PermissionUsingOptions](arkts-ability-privacymanager-permissionusingoptions-i-sys.md):** Optional parameter object for  
+ object, used to specify the query application, permission, time range, and query method.
+
+- **[PermissionUsedResponse](arkts-ability-privacymanager-permissionusedresponse-i-sys.md):** Permission usage record query response  
+ object, used to return the query time range and a collection of application-level records.
+
+- **[BundleUsedRecord](arkts-ability-privacymanager-bundleusedrecord-i-sys.md):** Application or device-level permission usage record  
+ object, used to return the permission access records of a specific application or remote device.
+
+- **[PermissionUsedRecord](arkts-ability-privacymanager-permissionusedrecord-i-sys.md):** Access record object for a single  
+ permission, used to return the number of accesses, number of denials, last access time, and detailed records.
+
+- **[UsedRecordDetail](arkts-ability-privacymanager-usedrecorddetail-i-sys.md):** Single access record detail object, used to return  
+ information such as access status, timestamp, access duration, and usage type.
+
+- **[ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md):** Permission usage status change event  
+ object, to return details of permission active status changes.
+
+- **[PermissionUsedTypeInfo](arkts-ability-privacymanager-permissionusedtypeinfo-i-sys.md):** Permission usage type information  
+ object, used to return the usage type when an application accesses a sensitive permission.
+
+- **[AddPermissionUsedRecordOptions](arkts-ability-privacymanager-addpermissionusedrecordoptions-i-sys.md):** Optional parameter  
+ object for adding a permission usage record, used to specify the sensitive permission usage type and extension identity.
+
+- **[PermissionUsingOptions](arkts-ability-privacymanager-permissionusingoptions-i-sys.md):** Optional parameter object for  
  permission usage, used to specify the extension identity.
 
 ## Core Function Types
 
-- **[addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md):** Adds a permission usage record.  
- - **[getPermissionUsedRecord](arkts-ability-privacymanager-getpermissionusedrecord-f-sys.md):** Queries permission usage records.  
- - **[setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md):** Sets the  
- permission usage record toggle status.  
- - **[getPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-getpermissionusedrecordtogglestatus-f-sys.md):** Queries the  
- permission usage record toggle status.  
- - **[startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md):** Marks the start of using a sensitive  
- permission.  
- - **[stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md):** Marks the stop of using a sensitive  
- permission.  
- - **[checkPermissionInUse](arkts-ability-privacymanager-checkpermissioninuse-f-sys.md):** Checks whether a specified permission is  
- currently being used.  
- - **[on](arkts-ability-privacymanager-on-f-sys.md):** Subscribes to permission usage status change events.  
- - **[off](arkts-ability-privacymanager-off-f-sys.md):** Unsubscribes from permission usage status change events.  
- - **[getPermissionUsedTypeInfos](arkts-ability-privacymanager-getpermissionusedtypeinfos-f-sys.md):** Queries sensitive permission  
+- **[addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md):** Adds a permission usage record.
+
+- **[getPermissionUsedRecord](arkts-ability-privacymanager-getpermissionusedrecord-f-sys.md):** Queries permission usage records.
+
+- **[setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md):** Sets the  
+ permission usage record toggle status.
+
+- **[getPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-getpermissionusedrecordtogglestatus-f-sys.md):** Queries the  
+ permission usage record toggle status.
+
+- **[startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md):** Marks the start of using a sensitive  
+ permission.
+
+- **[stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md):** Marks the stop of using a sensitive  
+ permission.
+
+- **[checkPermissionInUse](arkts-ability-privacymanager-checkpermissioninuse-f-sys.md):** Checks whether a specified permission is  
+ currently being used.
+
+- **[on](arkts-ability-privacymanager-on-f-sys.md):** Subscribes to permission usage status change events.
+
+- **[off](arkts-ability-privacymanager-off-f-sys.md):** Unsubscribes from permission usage status change events.
+
+- **[getPermissionUsedTypeInfos](arkts-ability-privacymanager-getpermissionusedtypeinfos-f-sys.md):** Queries sensitive permission  
  access type information.
 
 ## Core Class
@@ -76,26 +93,26 @@ import { privacyManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord) | When an application protected by a permission is called by another service or application, this API can be used to add a permission usage record. It is recommended to call this API after accessing a sensitive permission, so that the system records the corresponding sensitive permission access event. This API uses a promise to return the result. |
-| [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord-1) | When an application protected by a permission is called by another service or application, this API can be used to add a permission usage record. It is recommended to call this API after accessing a sensitive permission, so that the system records the corresponding sensitive permission access event. This API uses an asynchronous callback to return the result. |
-| [checkPermissionInUse](arkts-ability-privacymanager-checkpermissioninuse-f-sys.md) | Queries whether a specified sensitive permission is currently being used. It can be used in scenarios such as displaying the real-time permission usage status on the permission management interface. The judgment is based on whether there is currently an active call that has been marked as started by [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md) and has not yet been marked as stopped by [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md). |
-| [getPermissionUsedRecord](arkts-ability-privacymanager-getpermissionusedrecord-f-sys.md#getpermissionusedrecord) | Obtains historical permission usage records, which can be used in permission auditing or security monitoring scenarios, such as checking an application's usage of sensitive permissions within a specified time period. This API uses a promise to return the result. |
-| [getPermissionUsedRecord](arkts-ability-privacymanager-getpermissionusedrecord-f-sys.md#getpermissionusedrecord-1) | Obtains historical permission usage records, which can be used in permission auditing or security monitoring scenarios, such as checking an application's usage of sensitive permissions within a specified time period. This API uses an asynchronous callback to return the result. |
-| [getPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-getpermissionusedrecordtogglestatus-f-sys.md#getpermissionusedrecordtogglestatus) | A system application can call this API to obtain the current user's permission usage record toggle status, for example, to display the current toggle setting status on the permission management interface. This API uses a promise to return the result. |
-| [getPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-getpermissionusedrecordtogglestatus-f-sys.md#getpermissionusedrecordtogglestatus-1) | A system application can call this API to obtain the permission usage record toggle status for a specified sub-profile, for example, to display the current toggle setting status on the permission management interface. This API uses a promise to return the result. |
-| [getPermissionUsedTypeInfos](arkts-ability-privacymanager-getpermissionusedtypeinfos-f-sys.md) | Obtains information about how a sensitive permission is used by an application. |
-| [off](arkts-ability-privacymanager-off-f-sys.md#offactivestatechange) | Unsubscribes from permission usage status change events for a specified permission list. After a successful unsubscription, status change notifications for the specified permission list will no longer be received. |
-| [on](arkts-ability-privacymanager-on-f-sys.md#onactivestatechange) | Subscribes to permission usage status change events for a specified permission list. Permission usage status changes are triggered by calls to [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md) and [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md). After a successful subscription, when the permission usage status changes, the callback function is triggered, returning an [ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md) object containing details of the permission usage status change. This API uses an asynchronous callback to return the result. |
-| [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus) | Sets whether to record the permission usage of this user. Sets the permission usage record switch for this user. This API uses a promise to return the result. |
-| [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus-1) | Sets whether permission usage records are collected for a specified sub-profile. A system application can call this API to set the permission usage record switch status for the specified sub-profile. This API uses a promise to return the result. |
-| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses a promise to return the result. |
-| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission-1) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses a promise to return the result. |
-| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission-2) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses a promise to return the result. |
-| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission-3) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses an asynchronous callback to return the result. |
-| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result. |
-| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission-1) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses an asynchronous callback to return the result. |
-| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission-2) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result. |
-| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission-3) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result. |
+| [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord1) | When an application protected by a permission is called by another service or application, this API can be used to add a permission usage record. It is recommended to call this API after accessing a sensitive permission, so that the system records the corresponding sensitive permission access event. This API uses a promise to return the result. |
+| [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord2) | When an application protected by a permission is called by another service or application, this API can be used to add a permission usage record. It is recommended to call this API after accessing a sensitive permission, so that the system records the corresponding sensitive permission access event. This API uses an asynchronous callback to return the result. |
+| [checkPermissionInUse](arkts-ability-privacymanager-checkpermissioninuse-f-sys.md#checkpermissioninuse) | Queries whether a specified sensitive permission is currently being used. It can be used in scenarios such as displaying the real-time permission usage status on the permission management interface. The judgment is based on whether there is currently an active call that has been marked as started by [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md) and has not yet been marked as stopped by [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md). |
+| [getPermissionUsedRecord](arkts-ability-privacymanager-getpermissionusedrecord-f-sys.md#getpermissionusedrecord1) | Obtains historical permission usage records, which can be used in permission auditing or security monitoring scenarios, such as checking an application's usage of sensitive permissions within a specified time period. This API uses a promise to return the result. |
+| [getPermissionUsedRecord](arkts-ability-privacymanager-getpermissionusedrecord-f-sys.md#getpermissionusedrecord2) | Obtains historical permission usage records, which can be used in permission auditing or security monitoring scenarios, such as checking an application's usage of sensitive permissions within a specified time period. This API uses an asynchronous callback to return the result. |
+| [getPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-getpermissionusedrecordtogglestatus-f-sys.md#getpermissionusedrecordtogglestatus1) | A system application can call this API to obtain the current user's permission usage record toggle status, for example, to display the current toggle setting status on the permission management interface. This API uses a promise to return the result. |
+| [getPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-getpermissionusedrecordtogglestatus-f-sys.md#getpermissionusedrecordtogglestatus2) | A system application can call this API to obtain the permission usage record toggle status for a specified sub-profile, for example, to display the current toggle setting status on the permission management interface. This API uses a promise to return the result. |
+| [getPermissionUsedTypeInfos](arkts-ability-privacymanager-getpermissionusedtypeinfos-f-sys.md#getpermissionusedtypeinfos) | Obtains information about how a sensitive permission is used by an application. |
+| [off('activeStateChange')](arkts-ability-privacymanager-off-f-sys.md#offactivestatechange) | Unsubscribes from permission usage status change events for a specified permission list. After a successful unsubscription, status change notifications for the specified permission list will no longer be received. |
+| [on('activeStateChange')](arkts-ability-privacymanager-on-f-sys.md#onactivestatechange) | Subscribes to permission usage status change events for a specified permission list. Permission usage status changes are triggered by calls to [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md) and [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md). After a successful subscription, when the permission usage status changes, the callback function is triggered, returning an [ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md) object containing details of the permission usage status change. This API uses an asynchronous callback to return the result. |
+| [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus1) | Sets whether to record the permission usage of this user. Sets the permission usage record switch for this user. This API uses a promise to return the result. |
+| [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus2) | Sets whether permission usage records are collected for a specified sub-profile. A system application can call this API to set the permission usage record switch status for the specified sub-profile. This API uses a promise to return the result. |
+| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission1) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses a promise to return the result. |
+| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission2) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses a promise to return the result. |
+| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission3) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses a promise to return the result. |
+| [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission4) | A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](arkts-ability-privacymanager-on-f-sys.md) for the subscription method). This API uses an asynchronous callback to return the result. |
+| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission1) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result. |
+| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission2) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses an asynchronous callback to return the result. |
+| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission3) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result. |
+| [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission4) | A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

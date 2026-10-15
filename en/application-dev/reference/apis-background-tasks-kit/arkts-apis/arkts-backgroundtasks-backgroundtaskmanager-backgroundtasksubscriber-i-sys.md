@@ -44,6 +44,7 @@ Called when a continuous task starts.
 | --- | --- | --- | --- |
 | info | [ContinuousTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskinfo-i.md) | Yes | Continuous task callback information, including the task ID and type. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,6 +62,8 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## onContinuousTaskStop
 
@@ -86,6 +89,7 @@ Called when a continuous task stops.
 | --- | --- | --- | --- |
 | info | [ContinuousTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskinfo-i.md) | Yes | Continuous task callback information, including the task ID and type. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -103,6 +107,8 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## onContinuousTaskUpdate
 
@@ -128,6 +134,7 @@ Called when a continuous task is updated.
 | --- | --- | --- | --- |
 | info | [ContinuousTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskinfo-i.md) | Yes | Continuous task callback information, including the task ID and type. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -145,3 +152,5 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
     }
 }
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { preferences } from '@kit.ArkData';
 ```
 
+<a id="deletepreferences1"></a>
+
 ## deletePreferences
 
 ```TypeScript
@@ -16,7 +18,7 @@ Deletes a specified **Preferences** instance from the cache. If the **Preference
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function deletePreferences(context: Context, name: string, callback: AsyncCallback<void>): void--><!--Device-preferences-function deletePreferences(context: Context, name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -79,7 +81,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deletepreferences-1"></a>
+<a id="deletepreferences2"></a>
 
 ## deletePreferences
 
@@ -91,7 +93,7 @@ Deletes a specified **Preferences** instance from the cache. If the **Preference
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function deletePreferences(context: Context, options: Options, callback: AsyncCallback<void>): void--><!--Device-preferences-function deletePreferences(context: Context, options: Options, callback: AsyncCallback<void>): void-End-->
 
@@ -110,7 +112,7 @@ Deletes a specified **Preferences** instance from the cache. If the **Preference
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [15500010](../errorcode-preferences.md#15500010-failed-to-delete-the-user-preference-persistence-file) | Failed to delete the user preferences persistence file. |
 | [15501001](../errorcode-preferences.md#15501001-stage-model-required) | The operations is supported in stage mode only. |
 | [15501002](../errorcode-preferences.md#15501002-invalid-datagroupid-parameter-in-options) | Invalid dataGroupId. |
@@ -159,7 +161,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deletepreferences-2"></a>
+<a id="deletepreferences3"></a>
 
 ## deletePreferences
 
@@ -171,7 +173,7 @@ Deletes a specified **Preferences** instance from the cache. If the **Preference
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function deletePreferences(context: Context, name: string): Promise<void>--><!--Device-preferences-function deletePreferences(context: Context, name: string): Promise<void>-End-->
 
@@ -237,7 +239,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deletepreferences-3"></a>
+<a id="deletepreferences4"></a>
 
 ## deletePreferences
 
@@ -249,7 +251,7 @@ Deletes a specified **Preferences** instance from the cache. If the **Preference
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function deletePreferences(context: Context, options: Options): Promise<void>--><!--Device-preferences-function deletePreferences(context: Context, options: Options): Promise<void>-End-->
 
@@ -273,7 +275,7 @@ Deletes a specified **Preferences** instance from the cache. If the **Preference
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [15500010](../errorcode-preferences.md#15500010-failed-to-delete-the-user-preference-persistence-file) | Failed to delete the user preferences persistence file. |
 | [15501001](../errorcode-preferences.md#15501001-stage-model-required) | The operations is supported in stage mode only. |
 | [15501002](../errorcode-preferences.md#15501002-invalid-datagroupid-parameter-in-options) | Invalid dataGroupId. |

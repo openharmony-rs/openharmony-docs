@@ -12,22 +12,6 @@ Enumerates the types of window rectangle coordinate systems.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## RELATIVE_TO_SCREEN
-
-```TypeScript
-RELATIVE_TO_SCREEN  = 0
-```
-
-The window rectangle is relative to the screen coordinate system.
-
-**Since:** 19
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
-
-<!--Device-RectType-RELATIVE_TO_SCREEN  = 0--><!--Device-RectType-RELATIVE_TO_SCREEN  = 0-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
 ## RELATIVE_TO_PARENT_WINDOW
 
 ```TypeScript
@@ -38,8 +22,24 @@ The window rectangle is relative to the parent window coordinate system.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-RectType-RELATIVE_TO_PARENT_WINDOW = 1--><!--Device-RectType-RELATIVE_TO_PARENT_WINDOW = 1-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## RELATIVE_TO_SCREEN
+
+```TypeScript
+RELATIVE_TO_SCREEN  = 0
+```
+
+The window rectangle is relative to the screen coordinate system.
+
+**Since:** 19
+
+**Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-RectType-RELATIVE_TO_SCREEN  = 0--><!--Device-RectType-RELATIVE_TO_SCREEN  = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

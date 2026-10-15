@@ -6,6 +6,8 @@ export type PluginModuleInfo = _PluginModuleInfo
 
 插件的模块信息。
 
+**类型：** _PluginModuleInfo
+
 **起始版本：** 19
 
 <!--Device-bundleManager-export type PluginModuleInfo = _PluginModuleInfo--><!--Device-bundleManager-export type PluginModuleInfo = _PluginModuleInfo-End-->
@@ -13,5 +15,3 @@ export type PluginModuleInfo = _PluginModuleInfo
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _PluginModuleInfo

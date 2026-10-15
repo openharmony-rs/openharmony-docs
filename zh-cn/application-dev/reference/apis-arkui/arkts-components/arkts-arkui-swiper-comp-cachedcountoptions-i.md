@@ -18,7 +18,7 @@ declare interface CachedCountOptions
 independent?: boolean
 ```
 
-[cachedCount](arkts-arkui-swiper-comp-attribute.md#cachedcount-2)是否按实际子组件个数计算。
+[cachedCount](arkts-arkui-swiper-comp-attribute.md#cachedcount3)是否按实际子组件个数计算。
 
 设置为true时，cachedCount按实际子组件个数计算，不按组计算。
 

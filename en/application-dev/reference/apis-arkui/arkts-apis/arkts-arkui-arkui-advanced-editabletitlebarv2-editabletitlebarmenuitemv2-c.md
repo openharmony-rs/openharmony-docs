@@ -4,7 +4,7 @@
 export declare class EditableTitleBarMenuItemV2
 ```
 
-Declaration of the menu item on the right side.
+Defines the menu item configuration class, which is decorated with **@ObservedV2** and supports state observation.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,11 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 public action?: OnActionCallback
 ```
 
-Callback function when click on this menu item.
+Callback invoked when the menu item is tapped. If it is not set, no response is triggered on tap.
+
+Default value: **undefined**.
+
+**Decorator:** @Trace
 
 **Since:** 26.0.0
 
@@ -46,7 +50,7 @@ Callback function when click on this menu item.
 constructor(options?: EditableTitleBarMenuItemV2Options)
 ```
 
-Constructor of EditableTitleBarMenuItemV2.
+A constructor used to create an **EditableTitleBarMenuItemV2** instance.
 
 **Since:** 26.0.0
 
@@ -62,7 +66,7 @@ Constructor of EditableTitleBarMenuItemV2.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md) | No | The options of the menu item |
+| options | [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md) | No | Menu item configuration options.<br>Default value: **undefined**, which means that when this parameter is not passed, each attribute uses its default value. |
 
 ## accessibilityDescription
 
@@ -70,7 +74,11 @@ Constructor of EditableTitleBarMenuItemV2.
 public accessibilityDescription?: ResourceStr
 ```
 
-Accessibility description.
+Accessibility description, which explains in detail the operation of the current component and its possible consequences to users. If the component has both a text attribute and an accessibility description attribute, the system announces the text attribute first and then the accessibility description attribute when the component is selected.
+
+Default value: **"Single-finger double-tap to execute"**.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -92,7 +100,23 @@ Accessibility description.
 public accessibilityLevel: string
 ```
 
-Accessibility level, options: 'auto', 'yes', 'no'.
+Accessibility level, which controls whether the current item can be recognized by the accessibility service.
+
+Supported values:
+
+**"auto"**: The attribute value of the current component is converted to **"yes"** or **"no"** as appropriate.
+
+**"yes"**: The current component can be recognized by the accessibility service.
+
+**"no"**: The current component cannot be recognized by the accessibility service.
+
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.
+
+If a value outside the preceding range is passed in, it is processed as **"auto"**.
+
+Default value: **"auto"**.
+
+**Decorator:** @Trace
 
 **Type:** string
 
@@ -116,7 +140,11 @@ Accessibility level, options: 'auto', 'yes', 'no'.
 public accessibilityText?: ResourceStr
 ```
 
-Accessibility text for screen reader.
+Accessibility text for the screen reader. When the component does not contain a text attribute, setting this attribute enables the screen reader to announce the accessibility text when the component is selected.
+
+Default value: the content of the **label** attribute of the current item if **label** is set; otherwise, **" "**.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -138,7 +166,19 @@ Accessibility text for screen reader.
 public defaultFocus: boolean
 ```
 
-Whether to get focus by default.
+Whether to set the item as the default focus.
+
+**true**: The item obtains focus.
+
+**false**: The item does not obtain focus.
+
+Default value: **false**.
+
+If multiple operable areas in the title bar are set as the default focus, the first operable area in display order among those set as the default focus is used as the default focus.
+
+When using the **defaultFocus** attribute, set the **isEnabled** attribute to **true** in advance; otherwise, the **defaultFocus** value is recognized as **false**.
+
+**Decorator:** @Trace
 
 **Type:** boolean
 
@@ -162,7 +202,13 @@ Whether to get focus by default.
 public isEnabled: boolean
 ```
 
-Whether to enable this menu item.
+Whether to enable an item.
+
+Default value: **true**, meaning to enable.
+
+When **isEnabled** is **false**, the item is disabled.
+
+**Decorator:** @Trace
 
 **Type:** boolean
 
@@ -186,7 +232,11 @@ Whether to enable this menu item.
 public label?: ResourceStr
 ```
 
-Label text for long press dialog.
+Label text of the long-press dialog box.
+
+Default value: **undefined**, meaning that no label is displayed.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -208,7 +258,11 @@ Label text for long press dialog.
 public symbolStyle?: SymbolGlyphModifier
 ```
 
-Symbol icon style modifier.
+Symbol icon style modifier. When both **value** and **symbolStyle** are set, **symbolStyle** takes effect and **value** does not.
+
+Default value: **undefined**, meaning that no Symbol icon style modifier is set.
+
+**Decorator:** @Trace
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -230,7 +284,11 @@ Symbol icon style modifier.
 public value: ResourceStr
 ```
 
-Icon resource, supports Symbol or Image.
+Icon resource, which supports a Symbol type icon or an Image type icon. When both **value** and **symbolStyle** are set, **symbolStyle** takes effect and **value** does not.
+
+Default value: **''**.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

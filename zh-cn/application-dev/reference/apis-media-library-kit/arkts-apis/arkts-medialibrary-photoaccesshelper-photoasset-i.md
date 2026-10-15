@@ -52,11 +52,11 @@ clone(title: string): Promise<PhotoAsset>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -80,6 +80,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="commitmodify1"></a>
+
 ## commitModify
 
 ```TypeScript
@@ -92,7 +94,7 @@ commitModify(callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-commitModify(callback: AsyncCallback<void>): void--><!--Device-PhotoAsset-commitModify(callback: AsyncCallback<void>): void-End-->
 
@@ -113,11 +115,11 @@ commitModify(callback: AsyncCallback<void>): void
 | 13900012 | Permission denied<br>**适用版本：** 10 |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
 | 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: 1. Server internal error; 2. Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: (1)Server internal error; (2)Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -153,7 +155,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="commitmodify-1"></a>
+<a id="commitmodify2"></a>
 
 ## commitModify
 
@@ -167,7 +169,7 @@ commitModify(): Promise<void>
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-commitModify(): Promise<void>--><!--Device-PhotoAsset-commitModify(): Promise<void>-End-->
 
@@ -188,11 +190,11 @@ commitModify(): Promise<void>
 | 13900012 | Permission denied<br>**适用版本：** 10 |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
 | 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: 1. Server internal error; 2. Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: (1)Server internal error; (2)Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -234,7 +236,7 @@ get(member: string): MemberType
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-get(member: string): MemberType--><!--Device-PhotoAsset-get(member: string): MemberType-End-->
 
@@ -261,7 +263,7 @@ get(member: string): MemberType
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -285,6 +287,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getthumbnail1"></a>
+
 ## getThumbnail
 
 ```TypeScript
@@ -297,7 +301,7 @@ getThumbnail(callback: AsyncCallback<image.PixelMap>): void
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-getThumbnail(callback: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoAsset-getThumbnail(callback: AsyncCallback<image.PixelMap>): void-End-->
 
@@ -316,11 +320,11 @@ getThumbnail(callback: AsyncCallback<image.PixelMap>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The PhotoAsset object is not a valid PhotoAsset; <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>3.Failed to query the thumbnail, possible causes: 1. Thumbnail does not exist; 2. Database exception. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The PhotoAsset object is not a valid PhotoAsset; <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>3.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -345,7 +349,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getthumbnail-1"></a>
+<a id="getthumbnail2"></a>
 
 ## getThumbnail
 
@@ -359,7 +363,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoAsset-getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void-End-->
 
@@ -379,11 +383,11 @@ getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: 1. Thumbnail does not exist; 2. Database exception. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -414,7 +418,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getthumbnail-2"></a>
+<a id="getthumbnail3"></a>
 
 ## getThumbnail
 
@@ -428,7 +432,7 @@ getThumbnail(size?: image.Size): Promise<image.PixelMap>
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-getThumbnail(size?: image.Size): Promise<image.PixelMap>--><!--Device-PhotoAsset-getThumbnail(size?: image.Size): Promise<image.PixelMap>-End-->
 
@@ -453,11 +457,11 @@ getThumbnail(size?: image.Size): Promise<image.PixelMap>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: 1. Thumbnail does not exist; 2. Database exception. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -514,7 +518,7 @@ set(member: string, value: string): void
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -536,6 +540,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<a id="close1"></a>
 
 ## close
 
@@ -568,11 +574,11 @@ close(fd: number, callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The member parameter is invalid, must be a valid member key. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -602,7 +608,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -640,11 +646,11 @@ close(fd: number): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The member parameter is invalid, must be a valid member key. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -668,6 +674,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<a id="getreadonlyfd1"></a>
 
 ## getReadOnlyFd
 
@@ -704,11 +712,11 @@ getReadOnlyFd(callback: AsyncCallback<number>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -734,7 +742,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getreadonlyfd-1"></a>
+<a id="getreadonlyfd2"></a>
 
 ## getReadOnlyFd
 
@@ -771,11 +779,11 @@ getReadOnlyFd(): Promise<number>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -820,7 +828,7 @@ readonly displayName: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-readonly displayName: string--><!--Device-PhotoAsset-readonly displayName: string-End-->
 
@@ -838,7 +846,7 @@ readonly photoType: PhotoType
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-readonly photoType: PhotoType--><!--Device-PhotoAsset-readonly photoType: PhotoType-End-->
 
@@ -850,13 +858,13 @@ readonly photoType: PhotoType
 readonly uri: string
 ```
 
-媒体文件资源URI（如：**file://media/Photo/1/IMG_datetime_0001/displayName.jpg**）， 详情参见用户文件URI介绍中的媒体文件URI.
+媒体文件资源URI（如：**file://media/Photo/1/IMG_datetime_0001/displayName.jpg**）， 详情参见用户文件URI介绍中的[媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体库uri).
 
 **类型：** string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoAsset-readonly uri: string--><!--Device-PhotoAsset-readonly uri: string-End-->
 

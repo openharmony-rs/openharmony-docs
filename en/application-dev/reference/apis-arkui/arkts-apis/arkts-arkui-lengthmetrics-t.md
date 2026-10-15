@@ -6,6 +6,8 @@ declare type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
 
 Defines LengthMetrics.
 
+**Type:** import('../api/arkui/Graphics').LengthMetrics
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines LengthMetrics.
 <!--Device-unnamed-declare type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics--><!--Device-unnamed-declare type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/Graphics').LengthMetrics

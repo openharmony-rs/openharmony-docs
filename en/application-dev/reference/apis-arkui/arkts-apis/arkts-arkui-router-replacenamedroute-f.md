@@ -6,13 +6,15 @@
 import { router } from '@kit.ArkUI';
 ```
 
+<a id="replacenamedroute1"></a>
+
 ## replaceNamedRoute
 
 ```TypeScript
 function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one using the named route and destroys the current page.
+Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 > **NOTE:** 
 > 
@@ -22,7 +24,7 @@ Replaces the current page with another one using the named route and destroys th
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute1)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -37,7 +39,7 @@ Replaces the current page with another one using the named route and destroys th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Yes | Description of the new page. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result.<br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
@@ -73,7 +75,7 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute-1"></a>
+<a id="replacenamedroute2"></a>
 
 ## replaceNamedRoute
 
@@ -81,7 +83,7 @@ router.replaceNamedRoute({
 function replaceNamedRoute(options: NamedRouterOptions): Promise<void>
 ```
 
-Replaces the current page with another one using the named route and destroys the current page.
+Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 > **NOTE:** 
 > 
@@ -91,7 +93,7 @@ Replaces the current page with another one using the named route and destroys th
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-1)(options: router.NamedRouterOptions)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute2)(options: router.NamedRouterOptions)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -111,7 +113,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -149,7 +151,7 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute-2"></a>
+<a id="replacenamedroute3"></a>
 
 ## replaceNamedRoute
 
@@ -157,7 +159,7 @@ router.replaceNamedRoute({
 function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one using the named route and destroys the current page.
+Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 > **NOTE:** 
 > 
@@ -167,7 +169,7 @@ Replaces the current page with another one using the named route and destroys th
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-2)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute3)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -182,8 +184,8 @@ Replaces the current page with another one using the named route and destroys th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Yes | Description of the new page. |
-| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Routing mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Mode used for replacing the page. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result.<br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
@@ -219,7 +221,7 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute-3"></a>
+<a id="replacenamedroute4"></a>
 
 ## replaceNamedRoute
 
@@ -227,7 +229,7 @@ router.replaceNamedRoute({
 function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one using the named route and destroys the current page.
+Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 > **NOTE:** 
 > 
@@ -237,7 +239,7 @@ Replaces the current page with another one using the named route and destroys th
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-3)(options: router.NamedRouterOptions, mode: router.RouterMode)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute4)(options: router.NamedRouterOptions, mode: router.RouterMode)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -252,13 +254,13 @@ Replaces the current page with another one using the named route and destroys th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Yes | Description of the new page. |
-| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Routing mode. |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Mode for page replacement. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

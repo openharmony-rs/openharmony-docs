@@ -43,6 +43,7 @@ function sendUssdResponse(slotId: number, content: string): void
 | 8400002 | Operation failed. Cannot connect to service. |
 | 8400003 | System internal error, system database write fail. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ function testSendUssdResponse() {
     }
 }
 ```
+
+<!--DelEnd-->

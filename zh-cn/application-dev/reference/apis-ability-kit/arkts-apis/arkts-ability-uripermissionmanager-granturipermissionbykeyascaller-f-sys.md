@@ -28,7 +28,7 @@ function grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 目标UDMF数据唯一标识。key必须指定应用（即callerTokenId对应的应用）通过[unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../../database/unified-data-channels.md)。 |
+| key | string | 是 | 目标UDMF数据唯一标识。key必须指定应用（即callerTokenId对应的应用）通过[unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata1)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../../database/unified-data-channels.md)。 |
 | flag | [wantConstant.Flags](arkts-ability-wantconstant-flags-e.md) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
 | callerTokenId | number | 是 | 拉起方应用的身份标识，可以通过[want](arkts-ability-app-ability-want-want-c.md)中的"ohos.aafwk.param.callerToken"字段获取。 |
 | targetTokenId | number | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md)获取。 |
@@ -43,9 +43,9 @@ function grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000058](../errorcode-ability.md#16000058-指定的uri-flag无效) | Invalid URI flag. |
 | [16000060](../errorcode-ability.md#16000060-不支持沙箱应用授权uri) | A sandbox application cannot grant URI permission. |
@@ -54,6 +54,7 @@ function grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, 
 | [16000093](../errorcode-ability.md#16000093-调用方的token-id无效) | The caller token ID is invalid. |
 | [16000094](../errorcode-ability.md#16000094-目标应用的token-id无效) | The target token ID is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,3 +127,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

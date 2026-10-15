@@ -28,7 +28,7 @@ Grants the URI access permission of the specified application to the target appl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Unique key of the target UDMF data. The key must be created by the application (corresponding to **callerTokenId**) through [unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md), and the written data must be the URIs of the authorized files.<br>Currently, only the keys of the [UDMF data channels](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md) of the **SYSTEM_SHARE**, **PICKER**, and **MENU** types are supported. For details about how to create and use a key, see [Sharing Data via Unified Data Channels](../../../database/unified-data-channels.md). |
+| key | string | Yes | Unique key of the target UDMF data. The key must be created by the application (corresponding to **callerTokenId**) through [unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata1), and the written data must be the URIs of the authorized files.<br>Currently, only the keys of the [UDMF data channels](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md) of the **SYSTEM_SHARE**, **PICKER**, and **MENU** types are supported. For details about how to create and use a key, see [Sharing Data via Unified Data Channels](../../../database/unified-data-channels.md). |
 | flag | [wantConstant.Flags](arkts-ability-wantconstant-flags-e.md) | Yes | Read or write permission on the file to grant. The options are as follows:<br>- **FLAG_AUTH_READ_URI_PERMISSION**: read permission.<br>- **FLAG_AUTH_WRITE_URI_PERMISSION**: write permission. |
 | callerTokenId | number | Yes | Identity of the caller application. You can obtain the value from the **ohos.aafwk.param.callerToken** field in [want](arkts-ability-app-ability-want-want-c.md). |
 | targetTokenId | number | Yes | Identity of the target application, which can be obtained through [bundleManager.getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md). The target application must be different from the caller application. |
@@ -43,9 +43,9 @@ Grants the URI access permission of the specified application to the target appl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [16000058](../errorcode-ability.md#16000058-specified-uri-flag-is-invalid) | Invalid URI flag. |
 | [16000060](../errorcode-ability.md#16000060-sandbox-applications-cannot-grant-uri-permission) | A sandbox application cannot grant URI permission. |
@@ -54,6 +54,7 @@ Grants the URI access permission of the specified application to the target appl
 | [16000093](../errorcode-ability.md#16000093-invalid-caller-token-id) | The caller token ID is invalid. |
 | [16000094](../errorcode-ability.md#16000094-invalid-target-token-id) | The target token ID is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -126,3 +127,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

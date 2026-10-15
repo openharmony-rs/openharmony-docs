@@ -22,25 +22,9 @@ GNSS = 1
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationSourceType-GNSS = 1--><!--Device-LocationSourceType-GNSS = 1-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## NETWORK
-
-```TypeScript
-NETWORK = 2
-```
-
-表示定位结果来自于网络定位技术。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-LocationSourceType-NETWORK = 2--><!--Device-LocationSourceType-NETWORK = 2-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -54,9 +38,25 @@ INDOOR = 3
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationSourceType-INDOOR = 3--><!--Device-LocationSourceType-INDOOR = 3-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## NETWORK
+
+```TypeScript
+NETWORK = 2
+```
+
+表示定位结果来自于网络定位技术。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocationSourceType-NETWORK = 2--><!--Device-LocationSourceType-NETWORK = 2-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -70,7 +70,7 @@ RTK = 4
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationSourceType-RTK = 4--><!--Device-LocationSourceType-RTK = 4-End-->
 

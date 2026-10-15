@@ -16,10 +16,6 @@ export declare struct ToolBarV2
 > 
 > - 当系统切换深浅色模式时，工具栏背景色不会自动跟随切换。
 
-## 子组件
-
-无
-
 **起始版本：** 18
 
 **装饰器类型：** @ComponentV2
@@ -27,6 +23,10 @@ export declare struct ToolBarV2
 <!--Device-unnamed-export declare struct ToolBarV2--><!--Device-unnamed-export declare struct ToolBarV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 子组件
+
+无
 
 ## 导入模块
 
@@ -62,7 +62,7 @@ dividerModifier?: DividerModifier
 
 Define divider Modifier.
 
-**类型：** DividerModifier
+**类型：** [DividerModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 

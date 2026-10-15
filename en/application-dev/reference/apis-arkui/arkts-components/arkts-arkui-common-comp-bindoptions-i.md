@@ -18,7 +18,7 @@ Overlay module options
 onAppear?: () => void
 ```
 
-Callback for when the sheet is displayed (after the animation ends).
+Callback invoked when the semi-modal page is displayed (after the animation ends). If not set, the callback is not triggered.
 
 **Since:** 10
 
@@ -36,7 +36,7 @@ Callback for when the sheet is displayed (after the animation ends).
 onDisappear?: () => void
 ```
 
-Callback for when the sheet disappears (after the animation ends).
+Callback invoked when the semi-modal page is dismissed (after the animation ends). If not set, the callback is not triggered.
 
 **Since:** 10
 
@@ -54,7 +54,7 @@ Callback for when the sheet disappears (after the animation ends).
 onWillAppear?: () => void
 ```
 
-Callback for when the sheet is about to be displayed (before the animation starts).
+Callback invoked when the semi-modal page is about to be displayed (before the animation starts). Timing relationship with onAppear: onWillAppear is triggered before the display animation starts, and onAppear is triggered after the display animation ends. Both can be used at the same time. To do preparation work before the animation starts, use onWillAppear. To update the UI after the animation ends, use onAppear. If not set, the callback is not triggered.
 
 **Since:** 12
 
@@ -72,7 +72,11 @@ Callback for when the sheet is about to be displayed (before the animation start
 onWillDisappear?: () => void
 ```
 
-Callback function before overlay popAnimation starts.
+Callback invoked when the semi-modal page is about to be dismissed (before the animation starts). Timing relationship with onDisappear: onWillDisappear is triggered before the dismiss animation starts, and onDisappear is triggered after the dismiss animation ends. Both can be used at the same time. To save the state before the animation starts, use onWillDisappear. To release resources after the animation ends, use onDisappear. If not set, the callback is not triggered.
+
+**NOTE:** 
+
+Do not modify state variables in the onWillDisappear function, as this may cause unstable component behavior.
 
 **Since:** 12
 
@@ -90,7 +94,13 @@ Callback function before overlay popAnimation starts.
 backgroundColor?: ResourceColor
 ```
 
-Background color of the sheet. <br>Default value: **Color.White**.
+Background color of the semi-modal page.
+
+Default value: Color.White.
+
+**NOTE:** 
+
+When the systemMaterial attribute is set, the effect of this attribute may be overwritten. It is not recommended to use this attribute together with systemMaterial.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 

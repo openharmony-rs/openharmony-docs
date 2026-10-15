@@ -6,6 +6,8 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getsystemsize1"></a>
+
 ## getSystemSize
 
 ```TypeScript
@@ -40,6 +42,7 @@ Get the system size.
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,8 +57,10 @@ storageStatistics.getSystemSize((error: BusinessError, number: number) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getsystemsize-1"></a>
+
+<a id="getsystemsize2"></a>
 
 ## getSystemSize
 
@@ -91,6 +96,7 @@ Get the system size.
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -101,3 +107,5 @@ storageStatistics.getSystemSize().then((number: number) => {
   console.error("getSystemSize failed with error:" + JSON.stringify(err));
 });
 ```
+
+<!--DelEnd-->

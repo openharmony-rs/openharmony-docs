@@ -64,6 +64,7 @@ Creates an effect rendering merging component. When no parameter is passed or th
 | --- | --- |
 | [EffectLayer](arkts-arkui-effectcomponent-comp-effectlayer-e-sys.md) | Rendering layer of the EffectComponent. |
 
+<!--Del-->
 ## Examples
 
 ### Example 1: Using the EffectComponent Component
@@ -161,3 +162,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

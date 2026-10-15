@@ -20,6 +20,8 @@ Message digest interface, defining methods for calculating message digests. Befo
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="digest1"></a>
+
 ## digest
 
 ```TypeScript
@@ -34,7 +36,7 @@ Generates a message digest. This API uses an asynchronous callback to return the
 - API version 12 and later: This API can be used in both the stage model and FA model.
 - API versions 9 to 11: This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-digest(callback: AsyncCallback<DataBlob>): void--><!--Device-Md-digest(callback: AsyncCallback<DataBlob>): void-End-->
 
@@ -73,7 +75,7 @@ function mdByCallback() {
 }
 ```
 
-<a id="digest-1"></a>
+<a id="digest2"></a>
 
 ## digest
 
@@ -87,7 +89,7 @@ Generates a message digest. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-digest(): Promise<DataBlob>--><!--Device-Md-digest(): Promise<DataBlob>-End-->
 
@@ -224,7 +226,7 @@ Generates a message digest. This API returns the result synchronously.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-digestSync(): DataBlob--><!--Device-Md-digestSync(): DataBlob-End-->
 
@@ -240,7 +242,7 @@ Generates a message digest. This API returns the result synchronously.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.2.0 and later |
@@ -348,7 +350,7 @@ Obtains the message digest length, in bytes.
 - API version 12 and later: This API can be used in both the stage model and FA model.
 - API versions 9 to 11: This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-getMdLength(): int--><!--Device-Md-getMdLength(): int-End-->
 
@@ -396,7 +398,7 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API u
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Md-squeeze(len: int): Promise<DataBlob>--><!--Device-Md-squeeze(len: int): Promise<DataBlob>-End-->
 
@@ -441,7 +443,7 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API r
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Md-squeezeSync(len: int): DataBlob--><!--Device-Md-squeezeSync(len: int): DataBlob-End-->
 
@@ -468,6 +470,8 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API r
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Invalid len value; |
 | [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
+<a id="update1"></a>
+
 ## update
 
 ```TypeScript
@@ -488,7 +492,7 @@ Updates the message digest status. This API uses an asynchronous callback to ret
 - API version 12 and later: This API can be used in both the stage model and FA model.
 - API versions 9 to 11: This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-update(input: DataBlob, callback: AsyncCallback<void>): void--><!--Device-Md-update(input: DataBlob, callback: AsyncCallback<void>): void-End-->
 
@@ -507,11 +511,11 @@ Updates the message digest status. This API uses an asynchronous callback to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
-<a id="update-1"></a>
+<a id="update2"></a>
 
 ## update
 
@@ -531,7 +535,7 @@ Updates the message digest status. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-update(input: DataBlob): Promise<void>--><!--Device-Md-update(input: DataBlob): Promise<void>-End-->
 
@@ -555,7 +559,7 @@ Updates the message digest status. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -579,7 +583,7 @@ Updates the message digest status. This API returns the result synchronously. **
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-updateSync(input: DataBlob): void--><!--Device-Md-updateSync(input: DataBlob): void-End-->
 
@@ -595,7 +599,7 @@ Updates the message digest status. This API returns the result synchronously. **
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -613,7 +617,7 @@ Indicates the algorithm name.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Md-readonly algName: string--><!--Device-Md-readonly algName: string-End-->
 

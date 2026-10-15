@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="casttonormalform1"></a>
+
 ## castToNormalForm
 
 ```TypeScript
@@ -44,8 +46,29 @@ Converts a temporary widget to a normal one. This API uses an asynchronous callb
 | [16501002](../errorcode-form.md#16501002-too-many-widgets) | The number of forms exceeds the maximum allowed. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 
+<!--Del-->
+**Examples**
 
-<a id="casttonormalform-1"></a>
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.castToNormalForm(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="casttonormalform2"></a>
 
 ## castToNormalForm
 
@@ -89,3 +112,24 @@ Converts a temporary widget to a normal one. This API uses a promise to return t
 | [16501001](../errorcode-form.md#16501001-widget-id-not-exist) | The ID of the form to be operated does not exist. |
 | [16501002](../errorcode-form.md#16501002-too-many-widgets) | The number of forms exceeds the maximum allowed. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.castToNormalForm(formId).then(() => {
+    console.info('formHost castToNormalForm success');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

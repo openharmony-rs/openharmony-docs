@@ -54,20 +54,6 @@ PDF文件格式不支持。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## PARSE_ERROR_PASSWORD
-
-```TypeScript
-PARSE_ERROR_PASSWORD = 3
-```
-
-PDF文件密码不正确。
-
-**起始版本：** 20
-
-<!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3--><!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## PARSE_ERROR_HANDLER
 
 ```TypeScript
@@ -79,5 +65,19 @@ PDF文件处理失败。
 **起始版本：** 20
 
 <!--Device-PdfLoadResult-PARSE_ERROR_HANDLER = 4--><!--Device-PdfLoadResult-PARSE_ERROR_HANDLER = 4-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## PARSE_ERROR_PASSWORD
+
+```TypeScript
+PARSE_ERROR_PASSWORD = 3
+```
+
+PDF文件密码不正确。
+
+**起始版本：** 20
+
+<!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3--><!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

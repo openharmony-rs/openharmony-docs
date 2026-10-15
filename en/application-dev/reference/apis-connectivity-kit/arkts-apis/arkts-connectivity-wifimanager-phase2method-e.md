@@ -4,7 +4,7 @@
 enum Phase2Method
 ```
 
-Wi-Fi phase 2 method. @enum { int }
+Wi-Fi phase 2 method.
 
 **Since:** 10
 
@@ -12,31 +12,45 @@ Wi-Fi phase 2 method. @enum { int }
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## PHASE2_NONE
+## PHASE2_AKA
 
 ```TypeScript
-PHASE2_NONE
+PHASE2_AKA
 ```
 
-Phase2 NONE
+Phase2 AKA
 
 **Since:** 10
 
-<!--Device-Phase2Method-PHASE2_NONE--><!--Device-Phase2Method-PHASE2_NONE-End-->
+<!--Device-Phase2Method-PHASE2_AKA--><!--Device-Phase2Method-PHASE2_AKA-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## PHASE2_PAP
+## PHASE2_AKA_PRIME
 
 ```TypeScript
-PHASE2_PAP
+PHASE2_AKA_PRIME
 ```
 
-Phase2 PAP
+Phase2 AKA+
 
 **Since:** 10
 
-<!--Device-Phase2Method-PHASE2_PAP--><!--Device-Phase2Method-PHASE2_PAP-End-->
+<!--Device-Phase2Method-PHASE2_AKA_PRIME--><!--Device-Phase2Method-PHASE2_AKA_PRIME-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+## PHASE2_GTC
+
+```TypeScript
+PHASE2_GTC
+```
+
+Phase2 GTC
+
+**Since:** 10
+
+<!--Device-Phase2Method-PHASE2_GTC--><!--Device-Phase2Method-PHASE2_GTC-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -68,17 +82,31 @@ Phase2 MSCHAPV2
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## PHASE2_GTC
+## PHASE2_NONE
 
 ```TypeScript
-PHASE2_GTC
+PHASE2_NONE
 ```
 
-Phase2 GTC
+Phase2 NONE
 
 **Since:** 10
 
-<!--Device-Phase2Method-PHASE2_GTC--><!--Device-Phase2Method-PHASE2_GTC-End-->
+<!--Device-Phase2Method-PHASE2_NONE--><!--Device-Phase2Method-PHASE2_NONE-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+## PHASE2_PAP
+
+```TypeScript
+PHASE2_PAP
+```
+
+Phase2 PAP
+
+**Since:** 10
+
+<!--Device-Phase2Method-PHASE2_PAP--><!--Device-Phase2Method-PHASE2_PAP-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -93,33 +121,5 @@ Phase2 SIM
 **Since:** 10
 
 <!--Device-Phase2Method-PHASE2_SIM--><!--Device-Phase2Method-PHASE2_SIM-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-## PHASE2_AKA
-
-```TypeScript
-PHASE2_AKA
-```
-
-Phase2 AKA
-
-**Since:** 10
-
-<!--Device-Phase2Method-PHASE2_AKA--><!--Device-Phase2Method-PHASE2_AKA-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-## PHASE2_AKA_PRIME
-
-```TypeScript
-PHASE2_AKA_PRIME
-```
-
-Phase2 AKA+
-
-**Since:** 10
-
-<!--Device-Phase2Method-PHASE2_AKA_PRIME--><!--Device-Phase2Method-PHASE2_AKA_PRIME-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

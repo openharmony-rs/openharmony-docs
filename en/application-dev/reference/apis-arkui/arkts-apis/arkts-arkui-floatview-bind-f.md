@@ -54,8 +54,8 @@ Binds the float view and floating ball. You need to create the [float view contr
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported on this device. Possible cause: Call api on unsupported device. |
 | [1300019](../errorcode-window.md#1300019-floating-ball-parameter-verification-error) | Wrong parameters for operating the floating ball. Possible cause: Invalid floating ball params. |
-| [1300025](../errorcode-window.md#1300025-unsupported-operation-in-the-current-floating-ball-state) | The floating ball state does not support this operation. Possible cause: 1. The floating ball has started but not stopped yet. 2. The floating ball controller has been bound. |
-| [1300031](../errorcode-window.md#1300031-operation-not-supported-in-the-current-float-view-state) | The floatView state does not support this operation. Possible cause: 1. The float view has started but not stopped yet. 2. The float view controller has been bound. |
+| [1300025](../errorcode-window.md#1300025-unsupported-operation-in-the-current-floating-ball-state) | The floating ball state does not support this operation. Possible cause:         1. The floating ball has started but not stopped yet.         2. The floating ball controller has been bound. |
+| [1300031](../errorcode-window.md#1300031-operation-not-supported-in-the-current-float-view-state) | The floatView state does not support this operation. Possible cause:         1. The float view has started but not stopped yet.         2. The float view controller has been bound. |
 
 **Examples**
 

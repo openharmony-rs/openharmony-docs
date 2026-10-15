@@ -40,10 +40,11 @@ Begin to write device logs into a file descriptor for the purpose of problem loc
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-session-does-not-exist) | The session does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,3 +58,5 @@ async function startDeviceLogging() {
   });
 }
 ```
+
+<!--DelEnd-->

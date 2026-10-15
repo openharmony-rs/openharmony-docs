@@ -22,25 +22,9 @@ The location is obtained from the GNSS.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LocationSourceType-GNSS = 1--><!--Device-LocationSourceType-GNSS = 1-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-## NETWORK
-
-```TypeScript
-NETWORK = 2
-```
-
-The location comes from the network positioning technology.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-LocationSourceType-NETWORK = 2--><!--Device-LocationSourceType-NETWORK = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -54,9 +38,25 @@ The location comes from the indoor positioning technology.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LocationSourceType-INDOOR = 3--><!--Device-LocationSourceType-INDOOR = 3-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+## NETWORK
+
+```TypeScript
+NETWORK = 2
+```
+
+The location comes from the network positioning technology.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocationSourceType-NETWORK = 2--><!--Device-LocationSourceType-NETWORK = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -70,7 +70,7 @@ The location comes from the GNSS RTK technology.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LocationSourceType-RTK = 4--><!--Device-LocationSourceType-RTK = 4-End-->
 

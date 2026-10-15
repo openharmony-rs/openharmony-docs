@@ -6,6 +6,8 @@
 import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
+<a id="showactionmenu1"></a>
+
 ## showActionMenu
 
 ```TypeScript
@@ -24,7 +26,7 @@ Creates and displays an action menu. This API uses an asynchronous callback to r
 
 **Deprecated since:** 18
 
-**Substitutes:** showActionMenu
+**Substitutes:** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -179,7 +181,7 @@ struct Index {
 ```
 
 
-<a id="showactionmenu-1"></a>
+<a id="showactionmenu2"></a>
 
 ## showActionMenu
 
@@ -199,7 +201,7 @@ Creates and displays an action menu in the given settings. This API uses a promi
 
 **Deprecated since:** 18
 
-**Substitutes:** showActionMenu
+**Substitutes:** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

@@ -4,7 +4,7 @@
 export interface SwiperElement
 ```
 
-The &lt;swiper&gt; component provides a swiper container.
+The <swiper> component provides a swiper container.
 
 @interface SwiperElement
 

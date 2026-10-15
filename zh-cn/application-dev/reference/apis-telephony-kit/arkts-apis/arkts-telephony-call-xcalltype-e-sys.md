@@ -14,24 +14,6 @@ export enum XCallType
 
 **系统接口：** 此接口为系统接口。
 
-## XCALL_ECALL_TYPE
-
-```TypeScript
-XCALL_ECALL_TYPE = 0
-```
-
-表示XCall是ECall。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-XCallType-XCALL_ECALL_TYPE = 0--><!--Device-XCallType-XCALL_ECALL_TYPE = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## XCALL_BCALL_TYPE
 
 ```TypeScript
@@ -45,6 +27,24 @@ XCALL_BCALL_TYPE = 1
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-XCallType-XCALL_BCALL_TYPE = 1--><!--Device-XCallType-XCALL_BCALL_TYPE = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## XCALL_ECALL_TYPE
+
+```TypeScript
+XCALL_ECALL_TYPE = 0
+```
+
+表示XCall是ECall。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-XCallType-XCALL_ECALL_TYPE = 0--><!--Device-XCallType-XCALL_ECALL_TYPE = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

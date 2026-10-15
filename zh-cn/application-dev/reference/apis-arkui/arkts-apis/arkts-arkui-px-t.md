@@ -6,6 +6,8 @@ declare type PX = `${number}px`
 
 长度类型，用于描述以px像素单位为单位的长度。
 
+**类型：** `${number}px`
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type PX = `${number}px`
 <!--Device-unnamed-declare type PX = `${number}px`--><!--Device-unnamed-declare type PX = `${number}px`-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** `${number}px`

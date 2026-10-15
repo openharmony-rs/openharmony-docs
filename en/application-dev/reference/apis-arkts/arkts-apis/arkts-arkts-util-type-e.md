@@ -28,22 +28,6 @@ Basic format. This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Utils.Lang
 
-## MIME
-
-```TypeScript
-MIME = 1
-```
-
-MIME format. This API can be used in atomic services since API version 11.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-Type-MIME = 1--><!--Device-Type-MIME = 1-End-->
-
-**System capability:** SystemCapability.Utils.Lang
-
 ## BASIC_URL_SAFE
 
 ```TypeScript
@@ -59,6 +43,22 @@ This value is supported since API version 12. This API can be used in atomic ser
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Type-BASIC_URL_SAFE = 2--><!--Device-Type-BASIC_URL_SAFE = 2-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
+## MIME
+
+```TypeScript
+MIME = 1
+```
+
+MIME format. This API can be used in atomic services since API version 11.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Type-MIME = 1--><!--Device-Type-MIME = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

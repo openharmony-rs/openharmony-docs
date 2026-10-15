@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="downloadmms1"></a>
+
 ## downloadMms
 
 ```TypeScript
@@ -44,6 +46,7 @@ Downloads an MMS message. This API uses an asynchronous callback to return the r
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 FA model:
@@ -126,8 +129,10 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="downloadmms-1"></a>
+
+<a id="downloadmms2"></a>
 
 ## downloadMms
 
@@ -172,6 +177,7 @@ Downloads an MMS message. This API uses a promise to return the result.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 FA model:
@@ -251,3 +257,5 @@ class EntryAbility extends UIAbility {
     }
 }
 ```
+
+<!--DelEnd-->

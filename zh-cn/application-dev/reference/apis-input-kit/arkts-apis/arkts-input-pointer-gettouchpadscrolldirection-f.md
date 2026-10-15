@@ -6,6 +6,8 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="gettouchpadscrolldirection1"></a>
+
 ## getTouchpadScrollDirection
 
 ```TypeScript
@@ -24,13 +26,13 @@ function getTouchpadScrollDirection(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取触控板滚轴方向成功，err为undefined，state是true与手指滑动的方向一致；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取触控板滚轴方向成功，err为undefined，state为true表示与手指滑动的方向一致；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error.<br>**适用版本：** 10 - 26.0.0 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 10 - 26.0.0 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
@@ -65,7 +67,7 @@ struct Index {
 ```
 
 
-<a id="gettouchpadscrolldirection-1"></a>
+<a id="gettouchpadscrolldirection2"></a>
 
 ## getTouchpadScrollDirection
 
@@ -91,7 +93,7 @@ function getTouchpadScrollDirection(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error.<br>**适用版本：** 10 - 26.0.0 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 10 - 26.0.0 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**

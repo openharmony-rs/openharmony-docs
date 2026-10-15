@@ -76,22 +76,6 @@ PostScript.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## DOCUMENT_FORMAT_TEXT
-
-```TypeScript
-DOCUMENT_FORMAT_TEXT = 4
-```
-
-Text.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## DOCUMENT_FORMAT_RAW
 
 ```TypeScript
@@ -105,5 +89,21 @@ RAW.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_RAW = 5--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_RAW = 5-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## DOCUMENT_FORMAT_TEXT
+
+```TypeScript
+DOCUMENT_FORMAT_TEXT = 4
+```
+
+Text.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

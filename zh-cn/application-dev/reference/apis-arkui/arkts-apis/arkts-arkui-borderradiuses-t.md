@@ -1,10 +1,12 @@
-# type BorderRadiuses
+# BorderRadiuses
 
 ```TypeScript
 export type BorderRadiuses = Corners<number>
 ```
 
 设置四个角的圆角半径。
+
+**类型：** [Corners](arkts-arkui-graphics-corners-i.md)&lt;number&gt;
 
 **起始版本：** 12
 
@@ -15,5 +17,3 @@ export type BorderRadiuses = Corners<number>
 <!--Device-unnamed-export type BorderRadiuses = Corners<number>--><!--Device-unnamed-export type BorderRadiuses = Corners<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [Corners](arkts-arkui-graphics-corners-i.md)&lt;number&gt;

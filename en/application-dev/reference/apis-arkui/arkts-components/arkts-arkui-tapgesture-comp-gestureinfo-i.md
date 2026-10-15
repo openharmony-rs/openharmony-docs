@@ -18,7 +18,7 @@ Defines the gesture information type.
 isSystemGesture: boolean
 ```
 
-Whether the gesture is a system/component gesture. **true** if the gesture is a system/component gesture, **false** otherwise.
+Whether the current gesture is a system built-in gesture. The value **true** indicates that the gesture is a system built-in gesture, and **false** indicates the opposite.
 
 Default value: **false**
 

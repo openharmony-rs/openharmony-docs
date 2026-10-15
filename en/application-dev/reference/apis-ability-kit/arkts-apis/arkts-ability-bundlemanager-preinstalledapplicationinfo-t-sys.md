@@ -6,6 +6,8 @@ export type PreinstalledApplicationInfo = _PreinstalledApplicationInfo
 
 Defines the preinstalled application information.
 
+**Type:** _PreinstalledApplicationInfo
+
 **Since:** 12
 
 <!--Device-bundleManager-export type PreinstalledApplicationInfo = _PreinstalledApplicationInfo--><!--Device-bundleManager-export type PreinstalledApplicationInfo = _PreinstalledApplicationInfo-End-->
@@ -13,5 +15,3 @@ Defines the preinstalled application information.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
-
-**Type:** _PreinstalledApplicationInfo

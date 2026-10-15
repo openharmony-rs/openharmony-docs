@@ -12,20 +12,6 @@ Describes the codec bit rate.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_BIT_RATE_96000
-
-```TypeScript
-CODEC_BIT_RATE_96000 = 0
-```
-
-Codec bit rate 96k.
-
-**Since:** 19
-
-<!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0--><!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## CODEC_BIT_RATE_128000
 
 ```TypeScript
@@ -40,6 +26,20 @@ Codec bit rate 128k.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
+## CODEC_BIT_RATE_1500000
+
+```TypeScript
+CODEC_BIT_RATE_1500000 = 9
+```
+
+Codec bit rate 1.5M.
+
+**Since:** 21
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9--><!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
 ## CODEC_BIT_RATE_192000
 
 ```TypeScript
@@ -51,6 +51,20 @@ Codec bit rate 192k.
 **Since:** 19
 
 <!--Device-CodecBitRate-CODEC_BIT_RATE_192000 = 2--><!--Device-CodecBitRate-CODEC_BIT_RATE_192000 = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## CODEC_BIT_RATE_2300000
+
+```TypeScript
+CODEC_BIT_RATE_2300000 = 10
+```
+
+Codec bit rate 2.3M.
+
+**Since:** 21
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10--><!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -110,6 +124,20 @@ Codec bit rate 640k.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
+## CODEC_BIT_RATE_96000
+
+```TypeScript
+CODEC_BIT_RATE_96000 = 0
+```
+
+Codec bit rate 96k.
+
+**Since:** 19
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0--><!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
 ## CODEC_BIT_RATE_960000
 
 ```TypeScript
@@ -135,33 +163,5 @@ Codec bit rate adaptive bitrate streaming.
 **Since:** 19
 
 <!--Device-CodecBitRate-CODEC_BIT_RATE_ABR = 8--><!--Device-CodecBitRate-CODEC_BIT_RATE_ABR = 8-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## CODEC_BIT_RATE_1500000
-
-```TypeScript
-CODEC_BIT_RATE_1500000 = 9
-```
-
-Codec bit rate 1.5M.
-
-**Since:** 21
-
-<!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9--><!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## CODEC_BIT_RATE_2300000
-
-```TypeScript
-CODEC_BIT_RATE_2300000 = 10
-```
-
-Codec bit rate 2.3M.
-
-**Since:** 21
-
-<!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10--><!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

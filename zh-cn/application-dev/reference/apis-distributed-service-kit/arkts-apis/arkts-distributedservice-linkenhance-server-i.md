@@ -40,7 +40,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -92,7 +92,7 @@ off(type: 'connectionAccepted', callback?: Callback<Connection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -151,7 +151,7 @@ off(type: 'serverStopped', callback?: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -210,7 +210,7 @@ on(type: 'connectionAccepted', callback: Callback<Connection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -269,7 +269,7 @@ on(type: 'serverStopped', callback: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -321,7 +321,7 @@ start(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390202](../errorcode-link-enhance.md#32390202-服务个数超出限制) | The number of servers exceeds the limit. |
 | [32390300](../errorcode-link-enhance.md#32390300-内部错误) | Internal error. |
 
@@ -367,7 +367,7 @@ stop(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 

@@ -49,11 +49,14 @@ off(type: 'systemScreenRecorder', callback?: Callback<ScreenCaptureEvent>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 screenCaptureMonitor.off('systemScreenRecorder');
 ```
+
+<!--DelEnd-->
 
 ## on('systemScreenRecorder')
 
@@ -84,6 +87,7 @@ on(type: 'systemScreenRecorder', callback: Callback<ScreenCaptureEvent>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -93,6 +97,8 @@ screenCaptureMonitor.on('systemScreenRecorder', (event: media.ScreenCaptureEvent
   console.info(`system ScreenRecorder event: ${event}`);
 })
 ```
+
+<!--DelEnd-->
 
 ## isSystemScreenRecorderWorking
 

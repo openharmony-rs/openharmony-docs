@@ -4,7 +4,7 @@
 interface QueryParam
 ```
 
-Param when query insight intent entity.
+Intent entity query parameters, used to filter intent entities on the device that meet matching conditions.
 
 @typedef QueryParam
 
@@ -28,7 +28,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 bundleName: string
 ```
 
-Indicates the bundle name.
+Bundle name of the application to which the target intent entity belongs.
 
 **Type:** string
 
@@ -48,7 +48,7 @@ Indicates the bundle name.
 className: string
 ```
 
-Indicates the entity class name.
+Class name of the target intent entity decorated by [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity).
 
 **Type:** string
 
@@ -68,7 +68,7 @@ Indicates the entity class name.
 intentName: string
 ```
 
-Indicates the intent name.
+Intent name to which the target intent entity belongs.
 
 **Type:** string
 
@@ -88,7 +88,7 @@ Indicates the intent name.
 moduleName: string
 ```
 
-Indicates the module name.
+Module name to which the target intent entity belongs.
 
 **Type:** string
 
@@ -108,7 +108,7 @@ Indicates the module name.
 queryEntityParam: insightIntent.QueryEntityParam
 ```
 
-Indicates the param for query entity.
+Intent entity query parameters, including the query mode and query conditions, used to specify how intent entities are queried.
 
 **Type:** [insightIntent.QueryEntityParam](arkts-ability-insightintent-queryentityparam-i.md)
 
@@ -128,9 +128,12 @@ Indicates the param for query entity.
 userId?: number
 ```
 
-Indicates the target user ID.
+User ID to which the target intent entity belongs.
 
-If the user ID of the caller application is different from the target user ID, you need to apply for permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS.
+> **NOTE:** 
+> 
+> If the user ID of the caller application differs from the user ID to which the target intent
+> entity belongs, the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is required.
 
 **Type:** number
 

@@ -67,7 +67,7 @@ Constructor for typeface arguments.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TypefaceArguments-constructor()--><!--Device-TypefaceArguments-constructor()-End-->
 

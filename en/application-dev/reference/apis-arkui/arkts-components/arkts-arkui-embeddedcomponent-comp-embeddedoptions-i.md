@@ -4,7 +4,7 @@
 declare interface EmbeddedOptions
 ```
 
-This interface is used to set the options for EmbeddedComponentAttribute during construction
+Used to pass optional construction parameters when creating an **EmbeddedComponent**.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ This interface is used to set the options for EmbeddedComponentAttribute during 
 areaChangePlaceholder?: Record<string, ComponentContent>
 ```
 
-Set Areachange placeholder. If the Areachange placeholder ComponentContent is set, the placeholder node is displayed until the EmbeddedComponent size change is complete.
+Sets the size-change placeholder, which is displayed when the size of the **EmbeddedComponent** changes and the content rendering of the **EmbeddedUIExtensionAbility** is not complete. The key is the size-change scenario type (for example, **"FOLD_TO_EXPAND"** indicates the fold-to-expand scenario), and the value is the placeholder component for the corresponding scenario. The currently supported key includes: **FOLD_TO_EXPAND**. If an unsupported key is passed in, the placeholder does not take effect. Default value: **null**, indicating that no size-change placeholder is set.
 
 **Type:** Record&lt;string, ComponentContent&gt;
 
@@ -38,7 +38,7 @@ Set Areachange placeholder. If the Areachange placeholder ComponentContent is se
 dpiFollowStrategy?: EmbeddedDpiFollowStrategy
 ```
 
-Set EmbeddedComponent Content Dpi Follow Strategy.
+DPI to follow the host or the **EmbeddedUIExtensionAbility**.<br>Default value: **FOLLOW_UI_EXTENSION_ABILITY_DPI**, indicating that the DPI follows the **EmbeddedUIExtensionAbility**.
 
 **Type:** [EmbeddedDpiFollowStrategy](arkts-arkui-embeddedcomponent-comp-embeddeddpifollowstrategy-e.md)
 
@@ -60,7 +60,7 @@ Set EmbeddedComponent Content Dpi Follow Strategy.
 placeholder?: ComponentContent
 ```
 
-Set placeholder. If set placeholder ComponentContent, show placeholder node when connection is not established.
+Placeholder to display before the **EmbeddedComponent** establishes a connection with the **EmbeddedUIExtensionAbility**.<br>Default value: **null**, indicating no placeholder is displayed.
 
 **Type:** ComponentContent
 
@@ -80,7 +80,7 @@ Set placeholder. If set placeholder ComponentContent, show placeholder node when
 windowModeFollowStrategy?: EmbeddedWindowModeFollowStrategy
 ```
 
-Set EmbeddedComponent Content Window Mode Follow Strategy.
+Window mode to follow the host or the **EmbeddedUIExtensionAbility**.<br>Default value: **FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE**, indicating that the window mode follows the **EmbeddedUIExtensionAbility**.<br>**Since:** 26.0.0
 
 **Type:** [EmbeddedWindowModeFollowStrategy](arkts-arkui-embeddedcomponent-comp-embeddedwindowmodefollowstrategy-e.md)
 

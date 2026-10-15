@@ -63,7 +63,7 @@ Moves a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="movefile-1"></a>
+<a id="movefile2"></a>
 
 ## moveFile
 
@@ -116,7 +116,7 @@ Moves a file and forcibly overwrites the file with the same name in the destinat
 | 13900042 | Unknown error |
 
 
-<a id="movefile-2"></a>
+<a id="movefile3"></a>
 
 ## moveFile
 

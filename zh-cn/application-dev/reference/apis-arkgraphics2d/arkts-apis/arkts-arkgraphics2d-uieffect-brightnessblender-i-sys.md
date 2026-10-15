@@ -32,7 +32,7 @@ cubicRate: number
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-cubicRate: double--><!--Device-BrightnessBlender-cubicRate: double-End-->
 
@@ -52,7 +52,7 @@ degree: number
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-degree: double--><!--Device-BrightnessBlender-degree: double-End-->
 
@@ -72,7 +72,7 @@ fraction: number
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-fraction: double--><!--Device-BrightnessBlender-fraction: double-End-->
 
@@ -92,7 +92,7 @@ linearRate: number
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-linearRate: double--><!--Device-BrightnessBlender-linearRate: double-End-->
 
@@ -112,7 +112,7 @@ negativeCoefficient: [number, number, number]
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-negativeCoefficient: [double, double, double]--><!--Device-BrightnessBlender-negativeCoefficient: [double, double, double]-End-->
 
@@ -132,7 +132,7 @@ positiveCoefficient: [number, number, number]
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-positiveCoefficient: [double, double, double]--><!--Device-BrightnessBlender-positiveCoefficient: [double, double, double]-End-->
 
@@ -152,7 +152,7 @@ quadraticRate: number
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-quadraticRate: double--><!--Device-BrightnessBlender-quadraticRate: double-End-->
 
@@ -172,7 +172,7 @@ saturation: number
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BrightnessBlender-saturation: double--><!--Device-BrightnessBlender-saturation: double-End-->
 

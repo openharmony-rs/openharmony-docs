@@ -40,6 +40,7 @@ Deletes the persistent P2P group with the specified network ID.
 | --- | --- |
 | boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

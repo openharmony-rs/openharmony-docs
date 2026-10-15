@@ -6,6 +6,8 @@ export type BundleStatusCallback = _BundleStatusCallback
 
 Contains basic Ability information, which uniquely identifies a launcher StatusCallback.
 
+**Type:** _BundleStatusCallback
+
 **Since:** 8
 
 **Deprecated since:** 9
@@ -17,5 +19,3 @@ Contains basic Ability information, which uniquely identifies a launcher StatusC
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
-
-**Type:** _BundleStatusCallback

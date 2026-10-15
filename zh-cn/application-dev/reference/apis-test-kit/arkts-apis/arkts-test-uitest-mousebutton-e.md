@@ -24,27 +24,9 @@ MOUSE_BUTTON_LEFT = 0
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-MouseButton-MOUSE_BUTTON_LEFT = 0--><!--Device-MouseButton-MOUSE_BUTTON_LEFT = 0-End-->
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## MOUSE_BUTTON_RIGHT
-
-```TypeScript
-MOUSE_BUTTON_RIGHT = 1
-```
-
-鼠标右键。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MouseButton-MOUSE_BUTTON_RIGHT = 1--><!--Device-MouseButton-MOUSE_BUTTON_RIGHT = 1-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -60,9 +42,27 @@ MOUSE_BUTTON_MIDDLE = 2
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-MouseButton-MOUSE_BUTTON_MIDDLE = 2--><!--Device-MouseButton-MOUSE_BUTTON_MIDDLE = 2-End-->
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## MOUSE_BUTTON_RIGHT
+
+```TypeScript
+MOUSE_BUTTON_RIGHT = 1
+```
+
+鼠标右键。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MouseButton-MOUSE_BUTTON_RIGHT = 1--><!--Device-MouseButton-MOUSE_BUTTON_RIGHT = 1-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 

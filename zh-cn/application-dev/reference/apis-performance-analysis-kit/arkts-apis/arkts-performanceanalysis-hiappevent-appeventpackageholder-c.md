@@ -28,7 +28,7 @@ constructor(watcherName: string)
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackageHolder-constructor(watcherName: string)--><!--Device-AppEventPackageHolder-constructor(watcherName: string)-End-->
 
@@ -67,7 +67,7 @@ setRow(size: number): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackageHolder-setRow(size: int): void--><!--Device-AppEventPackageHolder-setRow(size: int): void-End-->
 
@@ -83,7 +83,7 @@ setRow(size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [11104001](../errorcode-hiappevent.md#11104001-非法的事件包大小值) | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例**
@@ -105,7 +105,7 @@ setSize(size: number): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackageHolder-setSize(size: int): void--><!--Device-AppEventPackageHolder-setSize(size: int): void-End-->
 
@@ -121,7 +121,7 @@ setSize(size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [11104001](../errorcode-hiappevent.md#11104001-非法的事件包大小值) | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例**

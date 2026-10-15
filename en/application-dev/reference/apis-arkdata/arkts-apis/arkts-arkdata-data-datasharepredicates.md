@@ -16,8 +16,6 @@ The APIs provided by **DataSharePredicates** correspond to the filter criteria o
 
 **Since:** 10
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace dataSharePredicates--><!--Device-unnamed-declare namespace dataSharePredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core

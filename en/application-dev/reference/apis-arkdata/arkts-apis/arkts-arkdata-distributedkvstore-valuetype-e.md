@@ -14,47 +14,19 @@ Indicates the `ValueType`.
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
-## STRING
+## BOOLEAN
 
 ```TypeScript
-STRING = 0
+BOOLEAN = 4
 ```
 
-Indicates that the value type is string.
+Indicates that the value type is boolean.
 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ValueType-STRING = 0--><!--Device-ValueType-STRING = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
-
-## INTEGER
-
-```TypeScript
-INTEGER = 1
-```
-
-Indicates that the value type is int.
-
-**Since:** 9
-
-<!--Device-ValueType-INTEGER = 1--><!--Device-ValueType-INTEGER = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
-
-## FLOAT
-
-```TypeScript
-FLOAT = 2
-```
-
-Indicates that the value type is float.
-
-**Since:** 9
-
-<!--Device-ValueType-FLOAT = 2--><!--Device-ValueType-FLOAT = 2-End-->
+<!--Device-ValueType-BOOLEAN = 4--><!--Device-ValueType-BOOLEAN = 4-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -74,22 +46,6 @@ Indicates that the value type is byte array.
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
-## BOOLEAN
-
-```TypeScript
-BOOLEAN = 4
-```
-
-Indicates that the value type is boolean.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ValueType-BOOLEAN = 4--><!--Device-ValueType-BOOLEAN = 4-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
-
 ## DOUBLE
 
 ```TypeScript
@@ -103,5 +59,49 @@ Indicates that the value type is double.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ValueType-DOUBLE = 5--><!--Device-ValueType-DOUBLE = 5-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
+
+## FLOAT
+
+```TypeScript
+FLOAT = 2
+```
+
+Indicates that the value type is float.
+
+**Since:** 9
+
+<!--Device-ValueType-FLOAT = 2--><!--Device-ValueType-FLOAT = 2-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
+
+## INTEGER
+
+```TypeScript
+INTEGER = 1
+```
+
+Indicates that the value type is int.
+
+**Since:** 9
+
+<!--Device-ValueType-INTEGER = 1--><!--Device-ValueType-INTEGER = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
+
+## STRING
+
+```TypeScript
+STRING = 0
+```
+
+Indicates that the value type is string.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ValueType-STRING = 0--><!--Device-ValueType-STRING = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

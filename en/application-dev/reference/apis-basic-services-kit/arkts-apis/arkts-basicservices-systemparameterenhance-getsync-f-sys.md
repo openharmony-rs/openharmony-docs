@@ -52,6 +52,7 @@ Obtains the value of the specified system parameter key.
 | [14700103](../errorcode-device-info.md#14700103-operation-denied-due-to-permission) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-internal-system-error-including-out-of-memory-and-deadlock) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   console.error(`getSync failed. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

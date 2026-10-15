@@ -27,7 +27,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 navDestinationInfo?: observer.NavDestinationInfo
 ```
 
-the property of navDestination information.
+Navigation destination information.
 
 **Type:** [observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)
 

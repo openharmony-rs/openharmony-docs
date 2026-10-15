@@ -12,19 +12,19 @@ enum TextEncoding
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## TEXT_ENCODING_UTF8
+## TEXT_ENCODING_GLYPH_ID
 
 ```TypeScript
-TEXT_ENCODING_UTF8 = 0
+TEXT_ENCODING_GLYPH_ID = 3
 ```
 
-UTF-8或ASCII编码，UTF-8使用1-4个字节表示字符，ASCII使用1个字节表示字符。
+使用2个字节表示glyph index。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextEncoding-TEXT_ENCODING_UTF8 = 0--><!--Device-TextEncoding-TEXT_ENCODING_UTF8 = 0-End-->
+<!--Device-TextEncoding-TEXT_ENCODING_GLYPH_ID = 3--><!--Device-TextEncoding-TEXT_ENCODING_GLYPH_ID = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -38,7 +38,7 @@ TEXT_ENCODING_UTF16 = 1
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextEncoding-TEXT_ENCODING_UTF16 = 1--><!--Device-TextEncoding-TEXT_ENCODING_UTF16 = 1-End-->
 
@@ -54,24 +54,24 @@ TEXT_ENCODING_UTF32 = 2
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextEncoding-TEXT_ENCODING_UTF32 = 2--><!--Device-TextEncoding-TEXT_ENCODING_UTF32 = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## TEXT_ENCODING_GLYPH_ID
+## TEXT_ENCODING_UTF8
 
 ```TypeScript
-TEXT_ENCODING_GLYPH_ID = 3
+TEXT_ENCODING_UTF8 = 0
 ```
 
-使用2个字节表示glyph index。
+UTF-8或ASCII编码，UTF-8使用1-4个字节表示字符，ASCII使用1个字节表示字符。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextEncoding-TEXT_ENCODING_GLYPH_ID = 3--><!--Device-TextEncoding-TEXT_ENCODING_GLYPH_ID = 3-End-->
+<!--Device-TextEncoding-TEXT_ENCODING_UTF8 = 0--><!--Device-TextEncoding-TEXT_ENCODING_UTF8 = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

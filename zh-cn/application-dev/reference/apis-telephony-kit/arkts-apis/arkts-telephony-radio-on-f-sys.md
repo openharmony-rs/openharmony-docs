@@ -45,6 +45,7 @@ Called when the IMS registration state of specified IMS service type correspondi
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,3 +55,5 @@ radio.on('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
     console.info(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -11,6 +11,8 @@ export declare struct AtomicServiceWeb
 > - 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> 
+> - 如果AtomicServiceWeb设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到AtomicServiceWeb本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议AtomicServiceWeb设置通用属性和通用事件。
 
 **起始版本：** 12
 
@@ -70,7 +72,7 @@ darkMode?: WebDarkMode
 
 设置Web深色模式，默认关闭。
 
-**类型：** WebDarkMode
+**类型：** [WebDarkMode](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webdarkmode-e.md)
 
 **起始版本：** 12
 
@@ -110,7 +112,7 @@ mixedMode?: MixedMode
 
 设置是否允许加载超文本传输协议（HTTP）和超文本传输安全协议（HTTPS）混合内容，默认不允许加载HTTP和HTTPS混合内容。
 
-**类型：** MixedMode
+**类型：** [MixedMode](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-mixedmode-e.md)
 
 **起始版本：** 12
 
@@ -148,7 +150,7 @@ nestedScroll?: NestedScrollOptions | NestedScrollOptionsExt
 
 设置嵌套滚动选项。nestedScroll为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为NestedScrollMode.SELF_FIRST。nestedScroll为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。
 
-**类型：** [NestedScrollOptions](../arkts-components/arkts-arkui-common-comp-nestedscrolloptions-i.md) &#124; NestedScrollOptionsExt
+**类型：** [NestedScrollOptions](../arkts-components/arkts-arkui-common-comp-nestedscrolloptions-i.md) &#124; [NestedScrollOptionsExt](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-nestedscrolloptionsext-i.md)
 
 **起始版本：** 15
 

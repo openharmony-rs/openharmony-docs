@@ -4,7 +4,7 @@
 declare class StartOptions
 ```
 
-StartOptions can be used as an input parameter for APIs used to launch a UIAbility (for example, [startAbility()](arkts-ability-uiabilitycontext-c.md#startability-1)). It specifies the options for starting the target UIAbility, including but not limited to the window mode and the display where the target UIAbility is started.
+StartOptions can be used as an input parameter for APIs used to launch a UIAbility (for example, [startAbility()](arkts-ability-uiabilitycontext-c.md#startability2)). It specifies the options for starting the target UIAbility, including but not limited to the window mode and the display where the target UIAbility is started.
 
 **Since:** 9
 
@@ -32,7 +32,7 @@ Operation class used to handle the result of an application launch request.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-StartOptions-completionHandler?: CompletionHandler--><!--Device-StartOptions-completionHandler?: CompletionHandler-End-->
 
@@ -62,7 +62,7 @@ In versions earlier than API version 14, the default value is **0**, indicating 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-StartOptions-displayId?: long--><!--Device-StartOptions-displayId?: long-End-->
 
@@ -176,6 +176,31 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-StartOptions-minWindowWidth?: int--><!--Device-StartOptions-minWindowWidth?: int-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## preferDefaultBrowser
+
+```TypeScript
+preferDefaultBrowser?: boolean
+```
+
+Whether to prefer using the default browser to open the URL when the target is an **http** or **https** URL. The value **true** means to use the default browser, and **false** means to use the normal startAbility flow.
+
+**Constraints**:
+
+1. This property takes effect only when the target URI starts with **http** or **https**.
+2. If no default browser is available, the normal startAbility flow is used.
+
+**Type:** boolean
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-StartOptions-preferDefaultBrowser?: boolean--><!--Device-StartOptions-preferDefaultBrowser?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

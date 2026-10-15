@@ -14,24 +14,6 @@ Enumerates the member status of share album.
 
 **System API:** This is a system API.
 
-## INVITING
-
-```TypeScript
-INVITING = 0
-```
-
-Member is being invited.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ShareMemberStatus-INVITING = 0--><!--Device-ShareMemberStatus-INVITING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## ACCEPTED
 
 ```TypeScript
@@ -63,6 +45,24 @@ Member declined the invitation.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ShareMemberStatus-DECLINED = 2--><!--Device-ShareMemberStatus-DECLINED = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## INVITING
+
+```TypeScript
+INVITING = 0
+```
+
+Member is being invited.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ShareMemberStatus-INVITING = 0--><!--Device-ShareMemberStatus-INVITING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

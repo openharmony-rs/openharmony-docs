@@ -6,6 +6,8 @@
 import { dateTimeManager } from '@kit.MDMKit';
 ```
 
+<a id="disallowmodifydatetime1"></a>
+
 ## disallowModifyDateTime
 
 ```TypeScript
@@ -18,7 +20,7 @@ Disallows the device to modify the system time. This API uses an asynchronous ca
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -46,8 +48,9 @@ Disallows the device to modify the system time. This API uses an asynchronous ca
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,8 +72,10 @@ dateTimeManager.disallowModifyDateTime(wantTemp, true, (err) => {
 })
 ```
 
+<!--DelEnd-->
 
-<a id="disallowmodifydatetime-1"></a>
+
+<a id="disallowmodifydatetime2"></a>
 
 ## disallowModifyDateTime
 
@@ -84,7 +89,7 @@ Disallows the device to modify the system time. This API uses a promise to retur
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -117,8 +122,9 @@ Disallows the device to modify the system time. This API uses a promise to retur
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,3 +144,5 @@ dateTimeManager.disallowModifyDateTime(wantTemp, true).then(() => {
   console.error(`Failed to disallow modify date time. Code is ${err.code}, message is ${err.message}`);
 })
 ```
+
+<!--DelEnd-->

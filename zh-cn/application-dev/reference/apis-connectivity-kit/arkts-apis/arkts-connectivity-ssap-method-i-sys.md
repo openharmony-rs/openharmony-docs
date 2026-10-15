@@ -34,6 +34,8 @@ methodUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Method-methodUuid: string--><!--Device-Method-methodUuid: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -53,6 +55,8 @@ parameter?: ArrayBuffer
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Method-parameter?: ArrayBuffer--><!--Device-Method-parameter?: ArrayBuffer-End-->
 
@@ -74,6 +78,8 @@ result?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Method-result?: ArrayBuffer--><!--Device-Method-result?: ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -93,6 +99,8 @@ serviceUuid: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Method-serviceUuid: string--><!--Device-Method-serviceUuid: string-End-->
 

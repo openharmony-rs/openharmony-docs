@@ -182,7 +182,7 @@ ChipV2激活时的背景颜色。
 activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
+设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -258,7 +258,7 @@ ChipV2背景颜色。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -585,7 +585,7 @@ ChipV2尺寸。
 
 默认值：ChipV2Size.NORMAL
 
-SizeT&lt;LengthMetrics&gt;类型参数不支持百分比设置，异常值按默认值处理。
+SizeT<LengthMetrics>类型参数不支持百分比设置，异常值按默认值处理。
 
 **说明：** [适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。
 

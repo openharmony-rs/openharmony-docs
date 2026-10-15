@@ -53,9 +53,12 @@ function getRestorer(): Restorer
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 // 获取恢复出厂设置对象
   let factoryRestorer = update.getRestorer();
 ```
+
+<!--DelEnd-->

@@ -30,7 +30,7 @@ Event domain. The value is a string that contains a maximum of 32 characters, in
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventReportConfig-domain?: string--><!--Device-AppEventReportConfig-domain?: string-End-->
 
@@ -48,7 +48,7 @@ Whether to report events in real time. The value **true** indicates that events 
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventReportConfig-isRealTime?: boolean--><!--Device-AppEventReportConfig-isRealTime?: boolean-End-->
 
@@ -66,7 +66,7 @@ Event name. The value is string that contains a maximum of 48 characters, includ
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventReportConfig-name?: string--><!--Device-AppEventReportConfig-name?: string-End-->
 

@@ -18,7 +18,7 @@ Creates a **PasteData** object of the Want type.
 
 **Deprecated since:** 9
 
-**Substitutes:** [createData](arkts-basicservices-pasteboard-createdata-f.md)(mimeType: string, value: ValueType)
+**Substitutes:** [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata1)(mimeType: string, value: ValueType)
 
 <!--Device-pasteboard-function createWantData(want: Want): PasteData--><!--Device-pasteboard-function createWantData(want: Want): PasteData-End-->
 

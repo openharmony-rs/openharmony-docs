@@ -6,13 +6,15 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
+<a id="getoverlaymoduleinfo1"></a>
+
 ## getOverlayModuleInfo
 
 ```TypeScript
 function getOverlayModuleInfo(moduleName: string, callback: AsyncCallback<OverlayModuleInfo>): void
 ```
 
-Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result.
+Obtains the OverlayModuleInfo of the overlay feature module in the current application. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -24,8 +26,8 @@ Obtains the OverlayModuleInfo about a module with the overlay feature in the cur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| moduleName | string | Yes | Name of the module with the overlay feature. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result, which is an [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) object. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| moduleName | string | Yes | Name of the overlay feature module in the current app. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) of the specified module in the current app is obtained successfully, **err** is undefined. Otherwise, the callback returns a specific error object. |
 
 **Error codes:**
 
@@ -60,7 +62,7 @@ try {
 ```
 
 
-<a id="getoverlaymoduleinfo-1"></a>
+<a id="getoverlaymoduleinfo2"></a>
 
 ## getOverlayModuleInfo
 
@@ -68,7 +70,7 @@ try {
 function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>
 ```
 
-Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo of the overlay feature module in the current application. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **Since:** 10
 
@@ -80,7 +82,7 @@ Obtains the OverlayModuleInfo about a module with the overlay feature in the cur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| moduleName | string | Yes | Name of the module with the overlay feature. |
+| moduleName | string | Yes | Name of the overlay feature module in the current app. |
 
 **Return value:**
 

@@ -4,7 +4,7 @@
 declare class DrawModifier
 ```
 
-DrawModifier can set the drawing methods of the mask layer (drawOverlay&lt;sup&gt;23+&lt;/sup&gt;), foreground (drawForeground&lt;sup&gt;20+&lt;/sup&gt;), content foreground (drawFront), content (drawContent), and content background (drawBehind), and also provides the [invalidate](#invalidate) method to actively trigger redrawing. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited.
+DrawModifier can set the drawing methods of the mask layer (drawOverlay<sup>23+</sup>), foreground (drawForeground<sup>20+</sup>), content foreground (drawFront), content (drawContent), and content background (drawBehind), and also provides the [invalidate](#invalidate) method to actively trigger redrawing. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited.
 
 > **NOTE:** 
 > 

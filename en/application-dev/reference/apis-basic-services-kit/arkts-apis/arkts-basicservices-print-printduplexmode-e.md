@@ -12,20 +12,6 @@ Enumerates the duplex modes.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## DUPLEX_MODE_NONE
-
-```TypeScript
-DUPLEX_MODE_NONE = 0
-```
-
-Simplex (single-sided).
-
-**Since:** 11
-
-<!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0--><!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## DUPLEX_MODE_LONG_EDGE
 
 ```TypeScript
@@ -37,6 +23,20 @@ Duplex (double-sided) with flipping on long edge.
 **Since:** 11
 
 <!--Device-PrintDuplexMode-DUPLEX_MODE_LONG_EDGE = 1--><!--Device-PrintDuplexMode-DUPLEX_MODE_LONG_EDGE = 1-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## DUPLEX_MODE_NONE
+
+```TypeScript
+DUPLEX_MODE_NONE = 0
+```
+
+Simplex (single-sided).
+
+**Since:** 11
+
+<!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0--><!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

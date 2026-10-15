@@ -10,7 +10,7 @@ export interface DisableAlertBeforeBackPageOptions
 
 **废弃版本：** 8
 
-**替代接口：** RouterOptions
+**替代接口：** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-unnamed-export interface DisableAlertBeforeBackPageOptions--><!--Device-unnamed-export interface DisableAlertBeforeBackPageOptions-End-->
 
@@ -34,7 +34,7 @@ cancel?: (errMsg: string) => void
 
 **废弃版本：** 8
 
-**替代接口：** RouterOptions
+**替代接口：** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-DisableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void--><!--Device-DisableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void-End-->
 
@@ -58,7 +58,7 @@ complete?: () => void
 
 **废弃版本：** 8
 
-**替代接口：** RouterOptions
+**替代接口：** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-DisableAlertBeforeBackPageOptions-complete?: () => void--><!--Device-DisableAlertBeforeBackPageOptions-complete?: () => void-End-->
 
@@ -76,7 +76,7 @@ success?: (errMsg: string) => void
 
 **废弃版本：** 8
 
-**替代接口：** RouterOptions
+**替代接口：** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-DisableAlertBeforeBackPageOptions-success?: (errMsg: string) => void--><!--Device-DisableAlertBeforeBackPageOptions-success?: (errMsg: string) => void-End-->
 

@@ -62,7 +62,7 @@ Appends a key-value pair into the query string.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-append(name: string, value: string): void--><!--Device-URLParams-append(name: string, value: string): void-End-->
 
@@ -103,7 +103,7 @@ A constructor used to create a URLParams instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| init | string[][] &#124; Record&lt;string, string&gt; &#124; string &#124; [URLParams](arkts-arkts-url-urlparams-c.md) | No | Input parameter objects, which include the following:   - string[][]: two-dimensional string array.   - Record&lt;string, string&gt;: list of objects.   - string: string.   - URLParams: object.   The default value is null. |
+| init | string[][] &#124; Record&lt;string, string&gt; &#124; string &#124; [URLParams](arkts-arkts-url-urlparams-c.md) | No | Input parameter objects, which include the following:           - string[][]: two-dimensional string array.           - Record<string, string>: list of objects.           - string: string.           - URLParams: object.   The default value is null. |
 
 **Examples**
 
@@ -132,7 +132,7 @@ Deletes key-value pairs of the specified key.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-delete(name: string): void--><!--Device-URLParams-delete(name: string): void-End-->
 
@@ -162,7 +162,7 @@ Obtains an ES6 iterator. Each item of the iterator is a JavaScript array, and th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-entries(): IterableIterator<[string, string]>--><!--Device-URLParams-entries(): IterableIterator<[string, string]>-End-->
 
@@ -265,7 +265,7 @@ Obtains all the values based on the specified key.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-getAll(name: string): string[]--><!--Device-URLParams-getAll(name: string): string[]-End-->
 
@@ -302,7 +302,7 @@ Checks whether a key has a value.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-has(name: string): boolean--><!--Device-URLParams-has(name: string): boolean-End-->
 
@@ -338,7 +338,7 @@ Obtains an ES6 iterator that contains the keys of all the key-value pairs.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-keys(): IterableIterator<string>--><!--Device-URLParams-keys(): IterableIterator<string>-End-->
 
@@ -372,7 +372,7 @@ Sets the value for a key. If key-value pairs matching the specified key exist, t
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-set(name: string, value: string): void--><!--Device-URLParams-set(name: string, value: string): void-End-->
 
@@ -403,7 +403,7 @@ Sorts all key-value pairs contained in this object based on the Unicode code poi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-sort(): void--><!--Device-URLParams-sort(): void-End-->
 
@@ -427,7 +427,7 @@ Obtains search parameters that are serialized as a string and, if necessary, per
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-toString(): string--><!--Device-URLParams-toString(): string-End-->
 
@@ -458,7 +458,7 @@ Obtains an ES6 iterator that contains the values of all the key-value pairs.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URLParams-values(): IterableIterator<string>--><!--Device-URLParams-values(): IterableIterator<string>-End-->
 

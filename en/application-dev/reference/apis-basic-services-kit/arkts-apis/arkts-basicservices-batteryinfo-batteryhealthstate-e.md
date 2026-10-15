@@ -12,17 +12,31 @@ Enumerates battery health states.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## UNKNOWN
+## COLD
 
 ```TypeScript
-UNKNOWN
+COLD
 ```
 
-Unknown state.
+The battery temperature is low.
 
 **Since:** 6
 
-<!--Device-BatteryHealthState-UNKNOWN--><!--Device-BatteryHealthState-UNKNOWN-End-->
+<!--Device-BatteryHealthState-COLD--><!--Device-BatteryHealthState-COLD-End-->
+
+**System capability:** SystemCapability.PowerManager.BatteryManager.Core
+
+## DEAD
+
+```TypeScript
+DEAD
+```
+
+The battery is dead.
+
+**Since:** 6
+
+<!--Device-BatteryHealthState-DEAD--><!--Device-BatteryHealthState-DEAD-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -68,30 +82,16 @@ The battery voltage is over high.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## COLD
+## UNKNOWN
 
 ```TypeScript
-COLD
+UNKNOWN
 ```
 
-The battery temperature is low.
+Unknown state.
 
 **Since:** 6
 
-<!--Device-BatteryHealthState-COLD--><!--Device-BatteryHealthState-COLD-End-->
-
-**System capability:** SystemCapability.PowerManager.BatteryManager.Core
-
-## DEAD
-
-```TypeScript
-DEAD
-```
-
-The battery is dead.
-
-**Since:** 6
-
-<!--Device-BatteryHealthState-DEAD--><!--Device-BatteryHealthState-DEAD-End-->
+<!--Device-BatteryHealthState-UNKNOWN--><!--Device-BatteryHealthState-UNKNOWN-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core

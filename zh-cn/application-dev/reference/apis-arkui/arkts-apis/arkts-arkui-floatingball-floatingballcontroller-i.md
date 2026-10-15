@@ -379,7 +379,7 @@ restoreMainWindow(want: Want): Promise<void>
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible causes:<br>1.The floating ball controller has been destroyed. <br>2.The floating ball window is not created or has been destroyed. |
 | [1300025](../errorcode-window.md#1300025-闪控球状态不支持该操作) | The floating ball state does not support this operation. Possible cause: The floating ball is not started. |
-| [1300026](../errorcode-window.md#1300026-闪控球拉起应用窗口失败) | Failed to restore the main window. Possible causes: 1. Invalid parameter. The provided bundleName does not match the caller's application bundleName. 2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
+| [1300026](../errorcode-window.md#1300026-闪控球拉起应用窗口失败) | Failed to restore the main window. Possible causes:         1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.         2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
 
 **示例**
 

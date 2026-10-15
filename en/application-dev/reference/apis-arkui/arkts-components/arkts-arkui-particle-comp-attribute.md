@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 The [universal events](arkts-arkui-common-comp.md) are supported.
 
-**Inheritance/Implementation:** ParticleAttribute extends CommonMethod<ParticleAttribute>
+**Inheritance/Implementation:** ParticleAttribute extends CommonMethod&lt;ParticleAttribute&gt;
 
 **Since:** 10
 

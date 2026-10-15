@@ -12,7 +12,7 @@ import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyDynamicLayout](arkts-arkui-arkui-components-arklazydynamiclayout-lazydynamiclayout-f.md) | 定义LazyDynamicLayout组件。 |
+| [LazyDynamicLayout](arkts-arkui-arkui-components-arklazydynamiclayout-lazydynamiclayout-f.md#lazydynamiclayout) | 定义LazyDynamicLayout组件。 |
 
 ### 类
 
@@ -30,11 +30,11 @@ import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
 
 ### 示例1（实现懒加载自定义布局）
 
-通过List和LazyDynamicLayout组件实现自定义的懒加载列表布局，并通过onVisibleIndexesChange在可视区域发生变化时回调索引。
+通过[List](ts-container-list.md)和LazyDynamicLayout组件实现自定义的懒加载列表布局，并通过onVisibleIndexesChange在可视区域发生变化时回调索引。
 
 LazyListLayout实现了一个自定义懒加载列表布局算法，布局算法中通过setAdjustedOffset接口，确保子组件布局间隔变化时可视区域内第一个子组件的位置不变。
 
-MyDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给LazyDynamicLayout提供子组件。
+MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyDynamicLayout提供子组件。
 
 从API版本26.0.0开始，新增LazyDynamicLayout组件。
 

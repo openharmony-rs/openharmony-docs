@@ -44,6 +44,7 @@ static getDefaultBoidsSimWorld(scene: Scene): BoidsSimWorld | null
 | --- | --- |
 | [BoidsSimWorld](arkts-arkgraphics3d-sceneboidssim-boidssimworld-c-sys.md) &#124; null | 返回群组模拟世界实例，若不存在则返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,3 +69,5 @@ async function initBoidsSim(): Promise<BoidsSimWorld | null> {
   return world;
 }
 ```
+
+<!--DelEnd-->

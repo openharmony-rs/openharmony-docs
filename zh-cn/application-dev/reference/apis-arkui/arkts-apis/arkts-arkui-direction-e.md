@@ -12,6 +12,26 @@ declare enum Direction
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## Auto
+
+```TypeScript
+Auto
+```
+
+使用系统默认布局方向。
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Direction-Auto--><!--Device-Direction-Auto-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## Ltr
 
 ```TypeScript
@@ -49,25 +69,5 @@ Rtl
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-Direction-Rtl--><!--Device-Direction-Rtl-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Auto
-
-```TypeScript
-Auto
-```
-
-使用系统默认布局方向。
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Direction-Auto--><!--Device-Direction-Auto-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

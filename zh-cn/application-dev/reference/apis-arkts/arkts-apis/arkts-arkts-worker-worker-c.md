@@ -36,7 +36,7 @@ constructor(scriptURL: string, options?: WorkerOptions)
 
 **废弃版本：** 9
 
-**替代接口：** constructor
+**替代接口：** [constructor](arkts-arkts-worker-threadworker-c.md#constructor)
 
 <!--Device-Worker-constructor(scriptURL: string, options?: WorkerOptions)--><!--Device-Worker-constructor(scriptURL: string, options?: WorkerOptions)-End-->
 
@@ -73,7 +73,7 @@ off(type: string, listener?: EventListener): void
 
 **废弃版本：** 9
 
-**替代接口：** off
+**替代接口：** [off](arkts-arkts-worker-threadworker-c.md#off)
 
 <!--Device-Worker-off(type: string, listener?: EventListener): void--><!--Device-Worker-off(type: string, listener?: EventListener): void-End-->
 
@@ -109,7 +109,7 @@ on(type: string, listener: EventListener): void
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-arkts-worker-threadworker-c.md#on)
 
 <!--Device-Worker-on(type: string, listener: EventListener): void--><!--Device-Worker-on(type: string, listener: EventListener): void-End-->
 
@@ -146,7 +146,7 @@ once(type: string, listener: EventListener): void
 
 **废弃版本：** 9
 
-**替代接口：** once
+**替代接口：** [once](arkts-arkts-worker-threadworker-c.md#once)
 
 <!--Device-Worker-once(type: string, listener: EventListener): void--><!--Device-Worker-once(type: string, listener: EventListener): void-End-->
 
@@ -183,7 +183,7 @@ onerror?: (err: ErrorEvent) => void
 
 **废弃版本：** 9
 
-**替代接口：** onerror
+**替代接口：** [onerror](arkts-arkts-worker-threadworker-c.md#onerror)
 
 <!--Device-Worker-onerror?: (err: ErrorEvent) => void--><!--Device-Worker-onerror?: (err: ErrorEvent) => void-End-->
 
@@ -207,7 +207,7 @@ onexit?: (code: number) => void
 
 **废弃版本：** 9
 
-**替代接口：** onexit
+**替代接口：** [onexit](arkts-arkts-worker-threadworker-c.md#onexit)
 
 <!--Device-Worker-onexit?: (code: number) => void--><!--Device-Worker-onexit?: (code: number) => void-End-->
 
@@ -231,7 +231,7 @@ onmessage?: (event: MessageEvent) => void
 
 **废弃版本：** 9
 
-**替代接口：** onmessage
+**替代接口：** [onmessage](arkts-arkts-worker-threadworker-c.md#onmessage)
 
 <!--Device-Worker-onmessage?: (event: MessageEvent) => void--><!--Device-Worker-onmessage?: (event: MessageEvent) => void-End-->
 
@@ -255,7 +255,7 @@ onmessageerror?: (event: MessageEvent) => void
 
 **废弃版本：** 9
 
-**替代接口：** onmessageerror
+**替代接口：** [onmessageerror](arkts-arkts-worker-threadworker-c.md#onmessageerror)
 
 <!--Device-Worker-onmessageerror?: (event: MessageEvent) => void--><!--Device-Worker-onmessageerror?: (event: MessageEvent) => void-End-->
 
@@ -266,6 +266,8 @@ onmessageerror?: (event: MessageEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | 是 |  |
+
+<a id="postmessage1"></a>
 
 ## postMessage
 
@@ -279,7 +281,7 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 **废弃版本：** 9
 
-**替代接口：** postMessage
+**替代接口：** [postMessage](arkts-arkts-worker-threadworker-c.md#postmessage)
 
 <!--Device-Worker-postMessage(message: Object, transfer: ArrayBuffer[]): void--><!--Device-Worker-postMessage(message: Object, transfer: ArrayBuffer[]): void-End-->
 
@@ -304,7 +306,7 @@ let buffer = new ArrayBuffer(8);
 workerInstance.postMessage(buffer, [buffer]);
 ```
 
-<a id="postmessage-1"></a>
+<a id="postmessage2"></a>
 
 ## postMessage
 
@@ -318,7 +320,7 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** postMessage
+**替代接口：** [postMessage](arkts-arkts-worker-threadworker-c.md#postmessage)
 
 <!--Device-Worker-postMessage(message: Object, options?: PostMessageOptions): void--><!--Device-Worker-postMessage(message: Object, options?: PostMessageOptions): void-End-->
 
@@ -357,7 +359,7 @@ terminate(): void
 
 **废弃版本：** 9
 
-**替代接口：** terminate
+**替代接口：** [terminate](arkts-arkts-worker-threadworker-c.md#terminate)
 
 <!--Device-Worker-terminate(): void--><!--Device-Worker-terminate(): void-End-->
 

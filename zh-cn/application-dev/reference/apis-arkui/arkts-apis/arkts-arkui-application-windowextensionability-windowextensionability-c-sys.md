@@ -48,6 +48,7 @@ onConnect(want: Want): void
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前ability的Want类型信息，包括ability名称、bundle名称等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,6 +61,8 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDisconnect
 
@@ -87,6 +90,7 @@ onDisconnect(want: Want): void
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前Ability的Want类型信息，包括ability名称、bundle名称等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -99,6 +103,8 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onWindowReady
 
@@ -126,6 +132,7 @@ onWindowReady(window: window.Window): void
 | --- | --- | --- | --- |
 | window | [window.Window](arkts-arkui-window-window-i.md) | 是 | 当前窗口实例。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -142,6 +149,8 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

@@ -12,6 +12,8 @@ Describes the image attachment.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -36,7 +38,7 @@ A constructor used to create an image object.
 | --- | --- | --- | --- |
 | value | [ImageAttachmentInterface](arkts-arkui-imageattachmentinterface-i.md) | Yes | Image attachment options. |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -132,11 +134,11 @@ Resizable image options of the styled string.
 
 **Type:** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**Since:** 26.0.1
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ImageAttachment-readonly resizable?: ResizableOptions--><!--Device-ImageAttachment-readonly resizable?: ResizableOptions-End-->
 

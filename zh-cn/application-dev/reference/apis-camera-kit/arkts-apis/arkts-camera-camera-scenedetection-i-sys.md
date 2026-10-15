@@ -52,6 +52,7 @@ Enables or disables a scene feature. This API must be called after [SceneFeature
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -82,3 +83,5 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
     });
 }
 ```
+
+<!--DelEnd-->

@@ -26,20 +26,6 @@ Draws an image into the lattice.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## TRANSPARENT
-
-```TypeScript
-TRANSPARENT = 1
-```
-
-Sets the lattice to transparent.
-
-**Since:** 12
-
-<!--Device-RectType-TRANSPARENT = 1--><!--Device-RectType-TRANSPARENT = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## FIXEDCOLOR
 
 ```TypeScript
@@ -51,5 +37,19 @@ Draws the colors in the **fColors** array in [Lattice](arkts-arkgraphics2d-graph
 **Since:** 12
 
 <!--Device-RectType-FIXEDCOLOR = 2--><!--Device-RectType-FIXEDCOLOR = 2-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## TRANSPARENT
+
+```TypeScript
+TRANSPARENT = 1
+```
+
+Sets the lattice to transparent.
+
+**Since:** 12
+
+<!--Device-RectType-TRANSPARENT = 1--><!--Device-RectType-TRANSPARENT = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

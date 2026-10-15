@@ -6,6 +6,8 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getbundlename1"></a>
+
 ## getBundleName
 
 ```TypeScript
@@ -16,7 +18,7 @@ Obtains the bundle name of a WantAgent object. This API uses an asynchronous cal
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-wantAgent-function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void--><!--Device-wantAgent-function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void-End-->
 
@@ -33,7 +35,7 @@ Obtains the bundle name of a WantAgent object. This API uses an asynchronous cal
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-service-unresponsive) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
 
@@ -107,7 +109,7 @@ try {
 ```
 
 
-<a id="getbundlename-1"></a>
+<a id="getbundlename2"></a>
 
 ## getBundleName
 
@@ -119,7 +121,7 @@ Obtains the bundle name of a WantAgent object. This API uses a promise to return
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-wantAgent-function getBundleName(agent: WantAgent): Promise<string>--><!--Device-wantAgent-function getBundleName(agent: WantAgent): Promise<string>-End-->
 
@@ -141,7 +143,7 @@ Obtains the bundle name of a WantAgent object. This API uses a promise to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-service-unresponsive) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
 

@@ -12,46 +12,6 @@ declare enum ScrollSnapAlign
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-默认无列表项滚动结束对齐效果。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ScrollSnapAlign-NONE = 0--><!--Device-ScrollSnapAlign-NONE = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## START
-
-```TypeScript
-START = 1
-```
-
-视图中的第一项将在列表的开头对齐。
-
-**说明：** 
-
-当列表位移至末端，需要将末端的item完整显示，可能出现开头不对齐的情况。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ScrollSnapAlign-START = 1--><!--Device-ScrollSnapAlign-START = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## CENTER
 
 ```TypeScript
@@ -93,5 +53,45 @@ END = 3
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScrollSnapAlign-END = 3--><!--Device-ScrollSnapAlign-END = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+默认无列表项滚动结束对齐效果。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollSnapAlign-NONE = 0--><!--Device-ScrollSnapAlign-NONE = 0-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## START
+
+```TypeScript
+START = 1
+```
+
+视图中的第一项将在列表的开头对齐。
+
+**说明：** 
+
+当列表位移至末端，需要将末端的item完整显示，可能出现开头不对齐的情况。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollSnapAlign-START = 1--><!--Device-ScrollSnapAlign-START = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

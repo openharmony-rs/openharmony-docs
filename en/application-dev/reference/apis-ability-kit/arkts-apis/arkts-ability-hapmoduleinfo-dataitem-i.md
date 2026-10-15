@@ -24,7 +24,7 @@ Key of the user-defined data.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DataItem-readonly key: string--><!--Device-DataItem-readonly key: string-End-->
 
@@ -42,7 +42,7 @@ Value of the user-defined data.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DataItem-readonly value: string--><!--Device-DataItem-readonly value: string-End-->
 

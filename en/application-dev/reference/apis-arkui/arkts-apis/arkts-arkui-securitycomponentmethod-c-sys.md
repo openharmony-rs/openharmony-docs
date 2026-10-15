@@ -13,6 +13,12 @@ such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md) and [
 the security component specifications. For specific constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).  
 - Reuse the universal attribute capabilities of security components through chained calls.
 
+**Since:** 10
+
+<!--Device-unnamed-declare class SecurityComponentMethod<T>--><!--Device-unnamed-declare class SecurityComponentMethod<T>-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Key Enums
 
 - [SecurityComponentLayoutDirection](arkts-arkui-securitycomponentlayoutdirection-e.md): Enumeration of icon and text  
@@ -30,12 +36,6 @@ security components. Configures layout, size, text, icon, color, border, and int
 - Not supported
 
 Defines the method of a security component.
-
-**Since:** 10
-
-<!--Device-unnamed-declare class SecurityComponentMethod<T>--><!--Device-unnamed-declare class SecurityComponentMethod<T>-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
 

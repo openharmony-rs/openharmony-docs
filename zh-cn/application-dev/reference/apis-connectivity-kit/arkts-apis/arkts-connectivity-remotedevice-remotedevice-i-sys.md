@@ -32,6 +32,8 @@ cancelDevicePairing(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>--><!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -48,8 +50,8 @@ cancelDevicePairing(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -67,6 +69,8 @@ connect(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-connect(): Promise<void>--><!--Device-RemoteDevice-connect(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -83,8 +87,8 @@ connect(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -102,6 +106,8 @@ disconnect(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-disconnect(): Promise<void>--><!--Device-RemoteDevice-disconnect(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -118,8 +124,8 @@ disconnect(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -137,6 +143,8 @@ getDeviceAlias(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-getDeviceAlias(): string--><!--Device-RemoteDevice-getDeviceAlias(): string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -153,8 +161,8 @@ getDeviceAlias(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -169,6 +177,8 @@ getDeviceModel(): DeviceModel
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-getDeviceModel(): DeviceModel--><!--Device-RemoteDevice-getDeviceModel(): DeviceModel-End-->
 
@@ -186,7 +196,7 @@ getDeviceModel(): DeviceModel
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -204,6 +214,8 @@ getRssiValue(): Promise<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-getRssiValue(): Promise<int>--><!--Device-RemoteDevice-getRssiValue(): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -220,8 +232,8 @@ getRssiValue(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -239,6 +251,8 @@ removePairedDevice(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-removePairedDevice(): Promise<void>--><!--Device-RemoteDevice-removePairedDevice(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -255,8 +269,8 @@ removePairedDevice(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -274,6 +288,8 @@ setConnectionInterval(interval: ConnectionInterval): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void--><!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -290,8 +306,8 @@ setConnectionInterval(interval: ConnectionInterval): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -309,6 +325,8 @@ setDeviceAlias(alias: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-setDeviceAlias(alias: string): void--><!--Device-RemoteDevice-setDeviceAlias(alias: string): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -325,8 +343,8 @@ setDeviceAlias(alias: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | 36100046 | String exceeds maximum length. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
@@ -345,6 +363,8 @@ setPairingConfirmation(accept: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void--><!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -361,8 +381,8 @@ setPairingConfirmation(accept: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -379,6 +399,8 @@ setPairingPasscode(passcode: string): Promise<void>
 **需要权限：** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>--><!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>-End-->
 
@@ -402,8 +424,8 @@ setPairingPasscode(passcode: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | 36100045 | Passcode must be a 6-digit number. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
@@ -422,6 +444,8 @@ startCrediblePairing(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-RemoteDevice-startCrediblePairing(): Promise<void>--><!--Device-RemoteDevice-startCrediblePairing(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -438,7 +462,7 @@ startCrediblePairing(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |

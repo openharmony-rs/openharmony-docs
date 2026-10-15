@@ -45,6 +45,7 @@ A constructor used to create a **SyncFolderAccessor** instance.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,6 +69,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getAllSyncFolders
 
@@ -104,6 +107,7 @@ Obtains information about all registered sync roots. This API uses a promise to 
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-system-internal-error) | Temporary failure. Retry is recommended (e.g., network issues). |
 | [34400015](../errorcode-clouddiskmanager-sys.md#34400015-cloud-disk-not-allowed) | Cloud disk is not allowed on this device. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,3 +142,5 @@ try {
     console.error(TAG + `getAllSyncFolders failed. code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

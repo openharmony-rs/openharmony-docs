@@ -12,6 +12,32 @@ Define the display mode of the sheet.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## EMBEDDED
+
+```TypeScript
+EMBEDDED = 1
+```
+
+Sets the semi-modal panel to be displayed at the top level of the current page.
+
+**Note:** 
+
+Currently, the panel can be mounted only on a Page or NavDestination node. If a NavDestination exists, it is mounted on the NavDestination first. Top-level display is supported only in these two types of pages.
+
+In this mode, a newly opened page can cover the semi-modal dialog box. After returning from the page, the semi-modal dialog box still exists and its content is not lost.
+
+In this mode, ensure that the target page node (for example, the Page node) is mounted to the tree before the semi-modal dialog box is displayed. Otherwise, the semi-modal dialog box cannot be mounted to the corresponding page node.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SheetMode-EMBEDDED = 1--><!--Device-SheetMode-EMBEDDED = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## OVERLAY
 
 ```TypeScript
@@ -27,23 +53,5 @@ The sheet is displayed at the top of the window corresponding to the current **U
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SheetMode-OVERLAY = 0--><!--Device-SheetMode-OVERLAY = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## EMBEDDED
-
-```TypeScript
-EMBEDDED = 1
-```
-
-The sheet is displayed at the top of the current page. <br>**NOTE:** <br>Currently, the sheet can only be mounted on a **Page** or **NavDestination** node, with priority given to the **NavDestination** node if it is present. This means that, the sheet can only be displayed at the top of these two types of pages.<br> In this mode, new pages can overlay the sheet, and when the user returns to the previous page, the sheet remains present without losing its content.<br> In this mode, you must ensure that the target page node, such as the **Page** node, has been attached to the tree before bringing up the sheet; otherwise, the sheet will not be able to be attached to the corresponding page node.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-SheetMode-EMBEDDED = 1--><!--Device-SheetMode-EMBEDDED = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

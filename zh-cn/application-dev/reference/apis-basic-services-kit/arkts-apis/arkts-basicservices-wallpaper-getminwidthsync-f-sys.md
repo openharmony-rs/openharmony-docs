@@ -34,6 +34,7 @@ function getMinWidthSync(): number
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,3 +48,5 @@ try {
     console.error(`Failed to getMinWidthSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -12,13 +12,15 @@ import { dataTransfer } from '@kit.ConnectivityKit';
 function getConnectionState(params: ConnectionStateParams): ConnectionState
 ```
 
-获取与远端设备之间的端口通道连接状态。
+获取与远端设备之间的端口通道连接状态。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-dataTransfer-function getConnectionState(params: ConnectionStateParams): ConnectionState--><!--Device-dataTransfer-function getConnectionState(params: ConnectionStateParams): ConnectionState-End-->
 
@@ -40,8 +42,8 @@ function getConnectionState(params: ConnectionStateParams): ConnectionState
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the chip does not support it. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |
 | [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID in connection parameters. |

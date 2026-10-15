@@ -6,8 +6,6 @@ export enum MaterialType
 
 场景中物体材质类型枚举，定义材质的渲染方式。
 
-@enum { int }
-
 **起始版本：** 12
 
 <!--Device-unnamed-export enum MaterialType--><!--Device-unnamed-export enum MaterialType-End-->

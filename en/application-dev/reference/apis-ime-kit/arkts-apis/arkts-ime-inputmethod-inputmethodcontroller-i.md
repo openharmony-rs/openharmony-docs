@@ -18,6 +18,8 @@ In the following API examples, you must first use [getController](arkts-ime-inpu
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="attach1"></a>
+
 ## attach
 
 ```TypeScript
@@ -29,7 +31,7 @@ Attaches a self-drawing component to the input method. This API uses an asynchro
 > <br>
 > An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method. <br>
 > <br>
-> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable-1), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable2), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **Since:** 10
 
@@ -72,7 +74,7 @@ inputMethod.getController().attach(true, textConfig, (err: BusinessError) => {
 });
 ```
 
-<a id="attach-1"></a>
+<a id="attach2"></a>
 
 ## attach
 
@@ -85,7 +87,7 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 > <br>
 > An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method. <br>
 > <br>
-> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable-1), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable2), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **Since:** 10
 
@@ -131,7 +133,7 @@ inputMethod.getController().attach(true, textConfig).then(() => {
 });
 ```
 
-<a id="attach-2"></a>
+<a id="attach3"></a>
 
 ## attach
 
@@ -144,7 +146,7 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 > <br>
 > An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method. <br>
 > <br>
-> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable-1), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable2), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **Since:** 15
 
@@ -253,6 +255,8 @@ inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOpt
 });
 ```
 
+<a id="changeselection1"></a>
+
 ## changeSelection
 
 ```TypeScript
@@ -299,7 +303,7 @@ inputMethod.getController().changeSelection('text', 0, 5, (err: BusinessError) =
 });
 ```
 
-<a id="changeselection-1"></a>
+<a id="changeselection2"></a>
 
 ## changeSelection
 
@@ -350,6 +354,8 @@ inputMethod.getController().changeSelection('test', 0, 5).then(() => {
 });
 ```
 
+<a id="detach1"></a>
+
 ## detach
 
 ```TypeScript
@@ -391,7 +397,7 @@ inputMethod.getController().detach((err: BusinessError) => {
 });
 ```
 
-<a id="detach-1"></a>
+<a id="detach2"></a>
 
 ## detach
 
@@ -475,6 +481,8 @@ inputMethod.getController().discardTypingText().then(() => {
 });
 ```
 
+<a id="hidesoftkeyboard1"></a>
+
 ## hideSoftKeyboard
 
 ```TypeScript
@@ -522,7 +530,7 @@ inputMethod.getController().hideSoftKeyboard((err: BusinessError) => {
 })
 ```
 
-<a id="hidesoftkeyboard-1"></a>
+<a id="hidesoftkeyboard2"></a>
 
 ## hideSoftKeyboard
 
@@ -569,6 +577,8 @@ inputMethod.getController().hideSoftKeyboard().then(() => {
 });
 ```
 
+<a id="hidetextinput1"></a>
+
 ## hideTextInput
 
 ```TypeScript
@@ -580,7 +590,7 @@ Exits the text editing mode. This API uses an asynchronous callback to return th
 > <br>
 > If the soft keyboard is displayed when this API is called, it will be hidden. <br>
 > <br>
-> Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput) again to reenter the text editing mode.
+> Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput1) again to reenter the text editing mode.
 
 **Since:** 10
 
@@ -616,7 +626,7 @@ inputMethod.getController().hideTextInput((err: BusinessError) => {
 });
 ```
 
-<a id="hidetextinput-1"></a>
+<a id="hidetextinput2"></a>
 
 ## hideTextInput
 
@@ -629,7 +639,7 @@ Exits the text editing mode. This API uses a promise to return the result. <br> 
 > <br>
 > If the soft keyboard is displayed when this API is called, it will be hidden. <br>
 > <br>
-> Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput) again to reenter the text editing mode.
+> Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput1) again to reenter the text editing mode.
 
 **Since:** 10
 
@@ -1631,7 +1641,7 @@ on(type: 'setPreviewText', callback: SetPreviewTextCallback): void
 Subscribes to the event for text preview operations in an input method application. This API uses an asynchronous callback to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> To use the text preview function, you need to subscribe to this event before calling [attach](#attach) and subscribe to this event together with [on('finishTextPreview')](#onfinishtextpreview).
+> To use the text preview function, you need to subscribe to this event before calling [attach](#attach1) and subscribe to this event together with [on('finishTextPreview')](#onfinishtextpreview).
 
 **Since:** 17
 
@@ -1650,7 +1660,7 @@ Subscribes to the event for text preview operations in an input method applicati
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1685,7 +1695,7 @@ on(type: 'finishTextPreview', callback: Callback<void>): void
 Subscribes to the event of finishing text preview. This API uses an asynchronous callback to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> To use the text preview function, you need to subscribe to this event before calling [attach](#attach) and subscribe to this event together with [on('setPreviewText')](#onsetpreviewtext).
+> To use the text preview function, you need to subscribe to this event before calling [attach](#attach1) and subscribe to this event together with [on('setPreviewText')](#onsetpreviewtext).
 
 **Since:** 17
 
@@ -1704,7 +1714,7 @@ Subscribes to the event of finishing text preview. This API uses an asynchronous
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1754,7 +1764,7 @@ Registers or unregisters MessageHandler. <br> <br>
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| msgHandler | [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md) | No | This object receives custom communication data from the input method application through [onMessage](arkts-ime-inputmethod-messagehandler-i.md#onmessage-1) and receives a message for terminating the subscription to this object through [onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated). <br>If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md). Its [onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated) callback will be triggered. |
+| msgHandler | [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md) | No | This object receives custom communication data from the input method application through [onMessage](arkts-ime-inputmethod-messagehandler-i.md#onmessage2) and receives a message for terminating the subscription to this object through [onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated). <br>If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md). Its [onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated) callback will be triggered. |
 
 **Error codes:**
 
@@ -1817,7 +1827,7 @@ Sends the custom communication to the input method application. This API uses a 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Incorrect parameter types. 2. Incorrect parameter length. |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-input-method-client-detached) | input method client detached. |
 | [12800014](../errorcode-inputmethod-framework.md#12800014-non-full-access-mode-of-the-input-method-application) | the input method is in basic mode. |
@@ -1837,6 +1847,8 @@ inputMethod.getController().sendMessage(msgId, msgParam).then(() => {
   console.error(`Failed to send message, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="setcallingwindow1"></a>
 
 ## setCallingWindow
 
@@ -1886,7 +1898,7 @@ inputMethod.getController().setCallingWindow(windowId, (err: BusinessError) => {
 });
 ```
 
-<a id="setcallingwindow-1"></a>
+<a id="setcallingwindow2"></a>
 
 ## setCallingWindow
 
@@ -1939,6 +1951,8 @@ inputMethod.getController().setCallingWindow(windowId).then(() => {
 });
 ```
 
+<a id="showsoftkeyboard1"></a>
+
 ## showSoftKeyboard
 
 ```TypeScript
@@ -1986,7 +2000,7 @@ inputMethod.getController().showSoftKeyboard((err: BusinessError) => {
 });
 ```
 
-<a id="showsoftkeyboard-1"></a>
+<a id="showsoftkeyboard2"></a>
 
 ## showSoftKeyboard
 
@@ -2033,6 +2047,8 @@ inputMethod.getController().showSoftKeyboard().then(() => {
 });
 ```
 
+<a id="showtextinput1"></a>
+
 ## showTextInput
 
 ```TypeScript
@@ -2078,7 +2094,7 @@ inputMethod.getController().showTextInput((err: BusinessError) => {
 });
 ```
 
-<a id="showtextinput-1"></a>
+<a id="showtextinput2"></a>
 
 ## showTextInput
 
@@ -2123,7 +2139,7 @@ inputMethod.getController().showTextInput().then(() => {
 });
 ```
 
-<a id="showtextinput-2"></a>
+<a id="showtextinput3"></a>
 
 ## showTextInput
 
@@ -2176,6 +2192,8 @@ inputMethod.getController().showTextInput(requestKeyboardReason).then(() => {
 });
 ```
 
+<a id="stopinputsession1"></a>
+
 ## stopInputSession
 
 ```TypeScript
@@ -2224,7 +2242,7 @@ inputMethod.getController().stopInputSession((err: BusinessError, result: boolea
 });
 ```
 
-<a id="stopinputsession-1"></a>
+<a id="stopinputsession2"></a>
 
 ## stopInputSession
 
@@ -2272,6 +2290,8 @@ inputMethod.getController().stopInputSession().then((result: boolean) => {
 });
 ```
 
+<a id="updateattribute1"></a>
+
 ## updateAttribute
 
 ```TypeScript
@@ -2317,7 +2337,7 @@ inputMethod.getController().updateAttribute(inputAttribute, (err: BusinessError)
 });
 ```
 
-<a id="updateattribute-1"></a>
+<a id="updateattribute2"></a>
 
 ## updateAttribute
 
@@ -2366,6 +2386,8 @@ inputMethod.getController().updateAttribute(inputAttribute).then(() => {
   console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="updatecursor1"></a>
 
 ## updateCursor
 
@@ -2417,7 +2439,7 @@ inputMethod.getController().updateCursor(cursorInfo, (err: BusinessError) => {
 });
 ```
 
-<a id="updatecursor-1"></a>
+<a id="updatecursor2"></a>
 
 ## updateCursor
 
@@ -2472,6 +2494,8 @@ inputMethod.getController().updateCursor(cursorInfo).then(() => {
 });
 ```
 
+<a id="stopinput1"></a>
+
 ## stopInput
 
 ```TypeScript
@@ -2517,7 +2541,7 @@ inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="stopinput-1"></a>
+<a id="stopinput2"></a>
 
 ## stopInput
 

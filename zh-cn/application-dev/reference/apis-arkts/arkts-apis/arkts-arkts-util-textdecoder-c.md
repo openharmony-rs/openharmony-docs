@@ -18,6 +18,8 @@ class TextDecoder
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -43,7 +45,7 @@ console.info('retStr = ' + retStr);
 // 输出结果：retStr = utf-8
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -181,7 +183,7 @@ console.info("retStr = " + retStr);
 // 输出结果：retStr = abc
 let retJson = JSON.stringify(retStr)
 console.info("retJson = " + retJson);
-// 输出结果：retJson = ab/u0000c
+// 输出结果：retJson = "ab\u0000c"
 ```
 
 ## decode

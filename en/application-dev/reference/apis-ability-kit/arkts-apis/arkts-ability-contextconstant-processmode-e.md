@@ -4,11 +4,31 @@
 export enum ProcessMode
 ```
 
-Enumerates the process modes of the UIAbility after it is started. As a property of [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md), **ProcessMode** takes effect only in [UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability-1) and is used to specify the process mode of the target UIAbility. This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
+Enumerates the process modes of the UIAbility after it is started. As a property of [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md), **ProcessMode** takes effect only in [UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability2) and is used to specify the process mode of the target UIAbility. This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
 
 **Since:** 12
 
 <!--Device-contextConstant-export enum ProcessMode--><!--Device-contextConstant-export enum ProcessMode-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ATTACH_TO_STATUS_BAR_ITEM
+
+```TypeScript
+ATTACH_TO_STATUS_BAR_ITEM = 3
+```
+
+The UIAbility is started, and the process of the UIAbility is bound to the status bar icon.
+
+**Constraints**:
+
+In this mode, the target UIAbility and caller must be in the same application, and the application must have an icon in the status bar.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProcessMode-ATTACH_TO_STATUS_BAR_ITEM = 3--><!--Device-ProcessMode-ATTACH_TO_STATUS_BAR_ITEM = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -49,25 +69,5 @@ In this mode, the target UIAbility and caller must be in the same application, a
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ProcessMode-NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM = 2--><!--Device-ProcessMode-NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM = 2-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## ATTACH_TO_STATUS_BAR_ITEM
-
-```TypeScript
-ATTACH_TO_STATUS_BAR_ITEM = 3
-```
-
-The UIAbility is started, and the process of the UIAbility is bound to the status bar icon.
-
-**Constraints**:
-
-In this mode, the target UIAbility and caller must be in the same application, and the application must have an icon in the status bar.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ProcessMode-ATTACH_TO_STATUS_BAR_ITEM = 3--><!--Device-ProcessMode-ATTACH_TO_STATUS_BAR_ITEM = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

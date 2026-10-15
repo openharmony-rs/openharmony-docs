@@ -26,7 +26,7 @@ Checks whether the caller is allowed to create native child processes on this de
 
 | Type | Description |
 | --- | --- |
-| boolean | `true`: The caller is allowed to create native child processes.   - `false`: The caller is not allowed to create native child processes. |
+| boolean | `true`: The caller is allowed to create native child processes.           - `false`: The caller is not allowed to create native child processes. |
 
 **Examples**
 

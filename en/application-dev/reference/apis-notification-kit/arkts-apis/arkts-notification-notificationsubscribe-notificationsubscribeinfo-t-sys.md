@@ -6,6 +6,8 @@ export type NotificationSubscribeInfo = _NotificationSubscribeInfo
 
 The **NotificationSubscribeInfo** module provides APIs for defining the information about the publisher for notification subscription.
 
+**Type:** _NotificationSubscribeInfo
+
 **Since:** 9
 
 <!--Device-notificationSubscribe-export type NotificationSubscribeInfo = _NotificationSubscribeInfo--><!--Device-notificationSubscribe-export type NotificationSubscribeInfo = _NotificationSubscribeInfo-End-->
@@ -13,5 +15,3 @@ The **NotificationSubscribeInfo** module provides APIs for defining the informat
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationSubscribeInfo

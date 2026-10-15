@@ -26,17 +26,17 @@ DEFAULT = 0
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-## THREAD
+## DEVICE
 
 ```TypeScript
-THREAD = 1
+DEVICE = 3
 ```
 
-线程间通信。
+设备间通信。
 
 **起始版本：** 8
 
-<!--Device-HiTraceCommunicationMode-THREAD = 1--><!--Device-HiTraceCommunicationMode-THREAD = 1-End-->
+<!--Device-HiTraceCommunicationMode-DEVICE = 3--><!--Device-HiTraceCommunicationMode-DEVICE = 3-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -54,16 +54,16 @@ PROCESS = 2
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-## DEVICE
+## THREAD
 
 ```TypeScript
-DEVICE = 3
+THREAD = 1
 ```
 
-设备间通信。
+线程间通信。
 
 **起始版本：** 8
 
-<!--Device-HiTraceCommunicationMode-DEVICE = 3--><!--Device-HiTraceCommunicationMode-DEVICE = 3-End-->
+<!--Device-HiTraceCommunicationMode-THREAD = 1--><!--Device-HiTraceCommunicationMode-THREAD = 1-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace

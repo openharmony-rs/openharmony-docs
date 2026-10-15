@@ -4,8 +4,6 @@ This module provides Nearlink advertising functions, including starting and stop
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace advertising--><!--Device-unnamed-declare namespace advertising-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -22,10 +20,10 @@ import { advertising } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md) | Unsubscribes from the NearLink advertising state change event. This API uses an asynchronous callback to return the result. |
-| [onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md) | Subscribes to the NearLink advertising state change event. This API uses an asynchronous callback to return the result. When [advertising.startAdvertising](arkts-connectivity-advertising-startadvertising-f.md) is called to start advertising or [advertising.stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md) is called to stop advertising, the callback is triggered to return the corresponding advertising ID and advertising status. This API must be used in pairs with [advertising.offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md). |
-| [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md) | Starts NearLink advertising. This API uses a promise to return the result. This API is applicable to scenarios where the local device capabilities or data needs to be advertised, such as device discovery and device information advertising. You can use [advertising.onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md) to monitor the advertising status. |
-| [stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md) | Stops NearLink advertising. This API uses a promise to return the result. |
+| [offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md#offadvertisingstatechange) | Unsubscribes from the NearLink advertising state change event. This API uses an asynchronous callback to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md#onadvertisingstatechange) | Subscribes to the NearLink advertising state change event. This API uses an asynchronous callback to return the result. When [advertising.startAdvertising](arkts-connectivity-advertising-startadvertising-f.md) is called to start advertising or [advertising.stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md) is called to stop advertising, the callback is triggered to return the corresponding advertising ID and advertising status. This API must be used in pairs with [advertising.offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md). |
+| [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md#startadvertising) | Starts NearLink advertising. This API uses a promise to return the result. This API is applicable to scenarios where the local device capabilities or data needs to be advertised, such as device discovery and device information advertising. You can use [advertising.onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md) to monitor the advertising status. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md#stopadvertising) | Stops NearLink advertising. This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
 
 ### Interfaces
 

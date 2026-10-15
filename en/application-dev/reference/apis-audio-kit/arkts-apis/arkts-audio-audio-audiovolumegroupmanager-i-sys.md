@@ -24,6 +24,8 @@ Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupM
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="adjustsystemvolumebystep1"></a>
+
 ## adjustSystemVolumeByStep
 
 ```TypeScript
@@ -59,6 +61,7 @@ Adjusts system volume by step for target volume type. This method uses an asynch
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. Return by callback. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -73,7 +76,9 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 });
 ```
 
-<a id="adjustsystemvolumebystep-1"></a>
+<!--DelEnd-->
+
+<a id="adjustsystemvolumebystep2"></a>
 
 ## adjustSystemVolumeByStep
 
@@ -115,6 +120,7 @@ Adjusts system volume by step for target volume type. This method uses a promise
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. Return by promise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -126,6 +132,10 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
   console.error('Fail to adjust the system volume by step.');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="adjustvolumebystep1"></a>
 
 ## adjustVolumeByStep
 
@@ -161,6 +171,7 @@ Adjusts system volume by step, volume type is decided by system. This method use
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. Return by callback. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -176,7 +187,9 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (er
 });
 ```
 
-<a id="adjustvolumebystep-1"></a>
+<!--DelEnd-->
+
+<a id="adjustvolumebystep2"></a>
 
 ## adjustVolumeByStep
 
@@ -217,6 +230,7 @@ Adjusts system volume by step, volume type is decided by system. This method use
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. Return by promise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -228,6 +242,8 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).the
   console.error('Fail to adjust the volume by step.');
 });
 ```
+
+<!--DelEnd-->
 
 ## getActiveVolumeTypeSync
 
@@ -265,6 +281,7 @@ Obtains the active volume type in the calling moment. This method returns in syn
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -272,6 +289,8 @@ let uid: number = 20010041; // Application ID.
 
 let value = audioVolumeGroupManager.getActiveVolumeTypeSync(uid);
 ```
+
+<!--DelEnd-->
 
 ## isPersistentMicMute
 
@@ -304,11 +323,16 @@ Checks whether the persistent microphone status is muted.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let value: boolean = audioVolumeGroupManager.isPersistentMicMute();
 ```
+
+<!--DelEnd-->
+
+<a id="mute1"></a>
 
 ## mute
 
@@ -336,6 +360,7 @@ Mutes a stream. This method uses an asynchronous callback to return the result.
 | mute | boolean | Yes | Mute status to set. The value true means to mute the stream, and false means the opposite. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -350,7 +375,9 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessEr
 });
 ```
 
-<a id="mute-1"></a>
+<!--DelEnd-->
+
+<a id="mute2"></a>
 
 ## mute
 
@@ -383,6 +410,7 @@ Mutes a stream. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -390,6 +418,8 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
   console.info('Promise returned to indicate that the stream is muted.');
 });
 ```
+
+<!--DelEnd-->
 
 ## setMicMute
 
@@ -430,6 +460,7 @@ Mutes or unmutes the microphone. This method uses a promise to return the result
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -437,6 +468,8 @@ audioVolumeGroupManager.setMicMute(true).then(() => {
   console.info('Promise returned to indicate that the mic is muted.');
 });
 ```
+
+<!--DelEnd-->
 
 ## setMicMutePersistent
 
@@ -478,6 +511,7 @@ Mutes or unmutes the microphone. This method uses a promise to return the result
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters missing. 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -485,6 +519,10 @@ audioVolumeGroupManager.setMicMutePersistent(true, audio.PolicyType.PRIVACY).the
   console.info('Succeeded in setting mic mute.');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setringermode1"></a>
 
 ## setRingerMode
 
@@ -511,6 +549,7 @@ Sets the ringer mode. This method uses an asynchronous callback to return the re
 | mode | [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | Yes | Ringer mode. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -525,7 +564,9 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (e
 });
 ```
 
-<a id="setringermode-1"></a>
+<!--DelEnd-->
+
+<a id="setringermode2"></a>
 
 ## setRingerMode
 
@@ -557,6 +598,7 @@ Sets the ringer mode. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -564,6 +606,10 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).th
   console.info('Promise returned to indicate a successful setting of the ringer mode.');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setvolume1"></a>
 
 ## setVolume
 
@@ -591,6 +637,7 @@ Sets the volume for a stream. This method uses an asynchronous callback to retur
 | volume | number | Yes | Volume to set. The value range can be obtained by calling getMinVolume and getMaxVolume. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -605,7 +652,9 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: Busines
 });
 ```
 
-<a id="setvolume-1"></a>
+<!--DelEnd-->
+
+<a id="setvolume2"></a>
 
 ## setVolume
 
@@ -638,6 +687,7 @@ Sets the volume for a stream. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -645,6 +695,8 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
   console.info('Promise returned to indicate a successful volume setting.');
 });
 ```
+
+<!--DelEnd-->
 
 ## setVolumeWithFlag
 
@@ -685,6 +737,7 @@ Sets the volume for a stream. This method uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -692,3 +745,5 @@ audioVolumeGroupManager.setVolumeWithFlag(audio.AudioVolumeType.MEDIA, 10, 1).th
   console.info('Promise returned to indicate a successful volume setting.');
 });
 ```
+
+<!--DelEnd-->

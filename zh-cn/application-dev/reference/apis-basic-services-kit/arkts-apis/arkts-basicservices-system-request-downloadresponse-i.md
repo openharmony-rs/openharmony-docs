@@ -34,7 +34,7 @@ token: string
 
 **废弃版本：** 9
 
-**替代接口：** tid
+**替代接口：** [tid](arkts-basicservices-agent-task-i.md#tid)
 
 <!--Device-DownloadResponse-token: string--><!--Device-DownloadResponse-token: string-End-->
 

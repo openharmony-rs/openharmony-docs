@@ -14,22 +14,6 @@ export enum DispositionType
 
 **系统接口：** 此接口为系统接口。
 
-## FROM_DATA
-
-```TypeScript
-FROM_DATA = 0
-```
-
-数据来源
-
-**起始版本：** 8
-
-<!--Device-DispositionType-FROM_DATA = 0--><!--Device-DispositionType-FROM_DATA = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.SmsMms
-
-**系统接口：** 此接口为系统接口。
-
 ## ATTACHMENT
 
 ```TypeScript
@@ -41,6 +25,22 @@ ATTACHMENT = 1
 **起始版本：** 8
 
 <!--Device-DispositionType-ATTACHMENT = 1--><!--Device-DispositionType-ATTACHMENT = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.SmsMms
+
+**系统接口：** 此接口为系统接口。
+
+## FROM_DATA
+
+```TypeScript
+FROM_DATA = 0
+```
+
+数据来源
+
+**起始版本：** 8
+
+<!--Device-DispositionType-FROM_DATA = 0--><!--Device-DispositionType-FROM_DATA = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 

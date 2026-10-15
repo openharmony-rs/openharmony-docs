@@ -37,7 +37,7 @@ The default duration is 180000 when the battery level is higher than or equal to
 
 **Deprecated since:** 9
 
-**Substitutes:** DelaySuspendInfo
+**Substitutes:** [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-i.md)
 
 <!--Device-DelaySuspendInfo-actualDelayTime: number--><!--Device-DelaySuspendInfo-actualDelayTime: number-End-->
 
@@ -57,7 +57,7 @@ ID of the suspension delay request.
 
 **Deprecated since:** 9
 
-**Substitutes:** DelaySuspendInfo
+**Substitutes:** [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-i.md)
 
 <!--Device-DelaySuspendInfo-requestId: number--><!--Device-DelaySuspendInfo-requestId: number-End-->
 

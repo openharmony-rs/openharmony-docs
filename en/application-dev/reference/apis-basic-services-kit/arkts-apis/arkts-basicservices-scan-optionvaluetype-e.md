@@ -26,20 +26,6 @@ Boolean.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## SCAN_TYPE_INT
-
-```TypeScript
-SCAN_TYPE_INT = 1
-```
-
-Integer.
-
-**Since:** 20
-
-<!--Device-OptionValueType-SCAN_TYPE_INT = 1--><!--Device-OptionValueType-SCAN_TYPE_INT = 1-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## SCAN_TYPE_FIXED
 
 ```TypeScript
@@ -51,6 +37,20 @@ Fixed-point number.
 **Since:** 20
 
 <!--Device-OptionValueType-SCAN_TYPE_FIXED = 2--><!--Device-OptionValueType-SCAN_TYPE_FIXED = 2-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## SCAN_TYPE_INT
+
+```TypeScript
+SCAN_TYPE_INT = 1
+```
+
+Integer.
+
+**Since:** 20
+
+<!--Device-OptionValueType-SCAN_TYPE_INT = 1--><!--Device-OptionValueType-SCAN_TYPE_INT = 1-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

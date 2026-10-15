@@ -20,8 +20,8 @@ import { sendableResourceManager } from '@kit.LocalizationKit';
 
 | Name | Description |
 | --- | --- |
-| [resourceToSendableResource](arkts-localization-sendableresourcemanager-resourcetosendableresource-f.md) | Converts a `Resource` object to a `SendableResource` object that can be used for cross-thread transmission. |
-| [sendableResourceToResource](arkts-localization-sendableresourcemanager-sendableresourcetoresource-f.md) | Converts a `SendableResource` object transmitted across threads to a `Resource` object. |
+| [resourceToSendableResource](arkts-localization-sendableresourcemanager-resourcetosendableresource-f.md#resourcetosendableresource) | Converts a `Resource` object to a `SendableResource` object that can be used for cross-thread transmission. |
+| [sendableResourceToResource](arkts-localization-sendableresourcemanager-sendableresourcetoresource-f.md#sendableresourcetoresource) | Converts a `SendableResource` object transmitted across threads to a `Resource` object. |
 
 ### Types
 

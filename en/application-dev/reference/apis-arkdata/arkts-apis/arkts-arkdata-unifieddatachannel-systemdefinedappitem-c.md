@@ -34,7 +34,7 @@ Indicates the ability name of app
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-get abilityName(): string--><!--Device-SystemDefinedAppItem-get abilityName(): string-End-->
 
@@ -52,7 +52,7 @@ Indicates the ability name of app
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-set abilityName(value: string)--><!--Device-SystemDefinedAppItem-set abilityName(value: string)-End-->
 
@@ -72,7 +72,7 @@ Indicates the id of app icon. This field can be sourced from BMS or customized a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-get appIconId(): string--><!--Device-SystemDefinedAppItem-get appIconId(): string-End-->
 
@@ -90,7 +90,7 @@ Indicates the id of app icon. This field can be sourced from BMS or customized a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-set appIconId(value: string)--><!--Device-SystemDefinedAppItem-set appIconId(value: string)-End-->
 
@@ -110,7 +110,7 @@ Indicates the app id
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-get appId(): string--><!--Device-SystemDefinedAppItem-get appId(): string-End-->
 
@@ -128,7 +128,7 @@ Indicates the app id
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-set appId(value: string)--><!--Device-SystemDefinedAppItem-set appId(value: string)-End-->
 
@@ -148,7 +148,7 @@ Indicates the id of app label. This field can be sourced from BMS or customized 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-get appLabelId(): string--><!--Device-SystemDefinedAppItem-get appLabelId(): string-End-->
 
@@ -166,7 +166,7 @@ Indicates the id of app label. This field can be sourced from BMS or customized 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-set appLabelId(value: string)--><!--Device-SystemDefinedAppItem-set appLabelId(value: string)-End-->
 
@@ -186,7 +186,7 @@ Indicates the app name
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-get appName(): string--><!--Device-SystemDefinedAppItem-get appName(): string-End-->
 
@@ -204,7 +204,7 @@ Indicates the app name
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-set appName(value: string)--><!--Device-SystemDefinedAppItem-set appName(value: string)-End-->
 
@@ -224,7 +224,7 @@ Indicates the bundle name of app
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-get bundleName(): string--><!--Device-SystemDefinedAppItem-get bundleName(): string-End-->
 
@@ -242,7 +242,7 @@ Indicates the bundle name of app
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedAppItem-set bundleName(value: string)--><!--Device-SystemDefinedAppItem-set bundleName(value: string)-End-->
 

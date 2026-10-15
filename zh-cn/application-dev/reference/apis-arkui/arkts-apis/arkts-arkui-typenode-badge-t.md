@@ -6,6 +6,8 @@ type Badge = TypedFrameNode<BadgeInterface, BadgeAttribute>
 
 Badge类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;BadgeInterface, [BadgeAttribute](../arkts-components/arkts-arkui-badge-comp-attribute.md)&gt;
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Badge类型的FrameNode节点类型。
 <!--Device-typeNode-type Badge = TypedFrameNode<BadgeInterface, BadgeAttribute>--><!--Device-typeNode-type Badge = TypedFrameNode<BadgeInterface, BadgeAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;BadgeInterface, [BadgeAttribute](../arkts-components/arkts-arkui-badge-comp-attribute.md)&gt;

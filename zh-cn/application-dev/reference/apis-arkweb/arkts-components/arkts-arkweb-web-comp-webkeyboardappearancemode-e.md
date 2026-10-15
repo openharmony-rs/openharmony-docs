@@ -12,19 +12,19 @@ WebView中输入法沉浸模式，用于控制软键盘的显示风格，帮助�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## NONE_IMMERSIVE
+## DARK_IMMERSIVE
 
 ```TypeScript
-NONE_IMMERSIVE = 0
+DARK_IMMERSIVE = 3
 ```
 
-默认外观模式，不采用沉浸式风格。
+深色沉浸式风格。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0--><!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0-End-->
+<!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3--><!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,18 +60,18 @@ LIGHT_IMMERSIVE = 2
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## DARK_IMMERSIVE
+## NONE_IMMERSIVE
 
 ```TypeScript
-DARK_IMMERSIVE = 3
+NONE_IMMERSIVE = 0
 ```
 
-深色沉浸式风格。
+默认外观模式，不采用沉浸式风格。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3--><!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3-End-->
+<!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0--><!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

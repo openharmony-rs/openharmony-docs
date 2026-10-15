@@ -12,19 +12,19 @@ Enumerates the navigation types.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## UNKNOWN
+## MAIN_FRAME_EXISTING_ENTRY
 
 ```TypeScript
-UNKNOWN = 0
+MAIN_FRAME_EXISTING_ENTRY = 2
 ```
 
-Unknown type.
+Navigation to an existing history entry from the main document.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-WebNavigationType-UNKNOWN = 0--><!--Device-WebNavigationType-UNKNOWN = 0-End-->
+<!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2--><!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ Navigation to a new history entry from the main document.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## MAIN_FRAME_EXISTING_ENTRY
+## NAVIGATION_TYPE_AUTO_SUBFRAME
 
 ```TypeScript
-MAIN_FRAME_EXISTING_ENTRY = 2
+NAVIGATION_TYPE_AUTO_SUBFRAME = 5
 ```
 
-Navigation to an existing history entry from the main document.
+Non-user-triggered navigation from a subdocument.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2--><!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2-End-->
+<!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5--><!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -76,18 +76,18 @@ User-triggered navigation from a subdocument.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## NAVIGATION_TYPE_AUTO_SUBFRAME
+## UNKNOWN
 
 ```TypeScript
-NAVIGATION_TYPE_AUTO_SUBFRAME = 5
+UNKNOWN = 0
 ```
 
-Non-user-triggered navigation from a subdocument.
+Unknown type.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5--><!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5-End-->
+<!--Device-WebNavigationType-UNKNOWN = 0--><!--Device-WebNavigationType-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

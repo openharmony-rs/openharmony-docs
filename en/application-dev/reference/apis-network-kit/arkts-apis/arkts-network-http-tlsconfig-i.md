@@ -30,7 +30,7 @@ Array of cipher suite types. If no cipher suite type is set, all supported ciphe
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-TlsConfig-cipherSuites?: CipherSuite[]--><!--Device-TlsConfig-cipherSuites?: CipherSuite[]-End-->
 
@@ -48,7 +48,7 @@ Latest TLS version.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-TlsConfig-tlsVersionMax: TlsVersion--><!--Device-TlsConfig-tlsVersionMax: TlsVersion-End-->
 
@@ -66,7 +66,7 @@ Earliest TLS version.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-TlsConfig-tlsVersionMin: TlsVersion--><!--Device-TlsConfig-tlsVersionMin: TlsVersion-End-->
 

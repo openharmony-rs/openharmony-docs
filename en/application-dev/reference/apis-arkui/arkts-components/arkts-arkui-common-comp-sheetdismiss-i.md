@@ -18,7 +18,7 @@ Component sheet dismiss
 dismiss: () => void
 ```
 
-Defines sheet dismiss function
+Callback for dismissing the sheet. Call this API only when you need the sheet to exit.
 
 **Since:** 11
 

@@ -56,11 +56,13 @@ async function connectDevice() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  let rightResult = await usbManager.requestRight(device.name);
-  if (!rightResult) {
-    console.error(`request right failed`);
+  try {
+    let rightResult = await usbManager.requestRight(device.name);
+  } catch (err) {
+    console.error(`request right failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
+  // 打开USB设备并建立连接通道，若USB服务异常会返回undefined，使用完后需调用closePipe关闭
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicePipe == undefined) {
     console.error(`connect device failed`);

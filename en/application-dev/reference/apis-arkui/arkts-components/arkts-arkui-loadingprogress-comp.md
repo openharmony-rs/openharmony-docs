@@ -2,7 +2,7 @@
 
 The **LoadingProgress** component is used to display a loading progress bar, providing visual feedback to users during data loading to improve user experience. This component supports features such as setting the foreground color and controlling the animation display state, and is suitable for scenarios where loading progress needs to be displayed in an application.
 
-The loading progress animation stops when the component is invisible. The component's visibility is determined by the value of **ratios** in the [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) handler. The component is considered visible when the visibility threshold **ratios** is greater than 0.
+The loading progress animation stops when the component is invisible. The component's visibility is determined by the value of **ratios** in the [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1) handler. The component is considered visible when the visibility threshold **ratios** is greater than 0.
 
 > **NOTE:** 
 > 

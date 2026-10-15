@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="cleanbundlecachefiles1"></a>
+
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -35,6 +37,7 @@ function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>
 | bundleName | string | 是 | 指示要清除其缓存数据的应用Bundle名称。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,8 +67,10 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="cleanbundlecachefiles-1"></a>
+
+<a id="cleanbundlecachefiles2"></a>
 
 ## cleanBundleCacheFiles
 
@@ -101,6 +106,9 @@ function cleanBundleCacheFiles(bundleName: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 参见 [cleanBundleCacheFiles](#cleanbundlecachefiles)
+
+<!--DelEnd-->

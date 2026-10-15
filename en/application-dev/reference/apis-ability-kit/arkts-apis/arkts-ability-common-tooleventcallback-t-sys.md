@@ -8,6 +8,8 @@ Define the cli event callback function.
 
 @typedef { _ToolEventCallback }
 
+**Type:** _ToolEventCallback
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Define the cli event callback function.
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _ToolEventCallback

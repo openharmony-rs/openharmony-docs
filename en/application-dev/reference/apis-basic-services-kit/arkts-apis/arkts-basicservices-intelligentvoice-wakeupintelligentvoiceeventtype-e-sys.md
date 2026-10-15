@@ -4,7 +4,7 @@
 enum WakeupIntelligentVoiceEventType
 ```
 
-Enumerates wakeup intelligent voice event type. @enum {number}
+Enumerates wakeup intelligent voice event type.
 
 **Since:** 10
 
@@ -14,17 +14,17 @@ Enumerates wakeup intelligent voice event type. @enum {number}
 
 **System API:** This is a system API.
 
-## INTELLIGENT_VOICE_EVENT_WAKEUP_NONE
+## INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE
 
 ```TypeScript
-INTELLIGENT_VOICE_EVENT_WAKEUP_NONE = 0
+INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE = 2
 ```
 
-Wakeup None.
+Headset Recognize complete.
 
-**Since:** 10
+**Since:** 12
 
-<!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_WAKEUP_NONE = 0--><!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_WAKEUP_NONE = 0-End-->
+<!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE = 2--><!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE = 2-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -46,17 +46,17 @@ Recognize complete.
 
 **System API:** This is a system API.
 
-## INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE
+## INTELLIGENT_VOICE_EVENT_WAKEUP_NONE
 
 ```TypeScript
-INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE = 2
+INTELLIGENT_VOICE_EVENT_WAKEUP_NONE = 0
 ```
 
-Headset Recognize complete.
+Wakeup None.
 
-**Since:** 12
+**Since:** 10
 
-<!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE = 2--><!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_HEADSET_RECOGNIZE_COMPLETE = 2-End-->
+<!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_WAKEUP_NONE = 0--><!--Device-WakeupIntelligentVoiceEventType-INTELLIGENT_VOICE_EVENT_WAKEUP_NONE = 0-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

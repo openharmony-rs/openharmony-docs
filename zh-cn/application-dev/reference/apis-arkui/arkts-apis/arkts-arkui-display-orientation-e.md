@@ -12,22 +12,6 @@ enum Orientation
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-## PORTRAIT
-
-```TypeScript
-PORTRAIT = 0
-```
-
-表示设备当前以竖屏方式显示。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Orientation-PORTRAIT = 0--><!--Device-Orientation-PORTRAIT = 0-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 ## LANDSCAPE
 
 ```TypeScript
@@ -38,25 +22,9 @@ LANDSCAPE = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Orientation-LANDSCAPE = 1--><!--Device-Orientation-LANDSCAPE = 1-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-## PORTRAIT_INVERTED
-
-```TypeScript
-PORTRAIT_INVERTED = 2
-```
-
-表示设备当前以反向竖屏方式显示。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Orientation-PORTRAIT_INVERTED = 2--><!--Device-Orientation-PORTRAIT_INVERTED = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -70,8 +38,40 @@ LANDSCAPE_INVERTED = 3
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Orientation-LANDSCAPE_INVERTED = 3--><!--Device-Orientation-LANDSCAPE_INVERTED = 3-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## PORTRAIT
+
+```TypeScript
+PORTRAIT = 0
+```
+
+表示设备当前以竖屏方式显示。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Orientation-PORTRAIT = 0--><!--Device-Orientation-PORTRAIT = 0-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## PORTRAIT_INVERTED
+
+```TypeScript
+PORTRAIT_INVERTED = 2
+```
+
+表示设备当前以反向竖屏方式显示。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Orientation-PORTRAIT_INVERTED = 2--><!--Device-Orientation-PORTRAIT_INVERTED = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

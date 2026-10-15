@@ -8,7 +8,7 @@ UIExtensionContext是[UIExtensionAbility](arkts-ability-app-ability-uiextensiona
 
 **继承/实现关系：** UIExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
-**起始版本：** 12
+**起始版本：** 10
 
 <!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext-End-->
 
@@ -24,7 +24,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 26.0.0
 
@@ -41,7 +41,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 连接ServiceExtensionAbility的Want信息，包括Ability名称、Bundle名称等。 |
-| connect | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
+| connect | [ConnectOptions](arkts-ability-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
 
 **返回值：**
 
@@ -77,7 +77,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
 > 该接口需要在窗口创建之前调用。建议在[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的
 > [onCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#oncreate)生命周期内调用。
@@ -113,9 +113,9 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<Abili
 
 使用设置的caller信息启动一个Ability，caller信息由want携带，在系统服务层识别，Ability可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个Ability时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用Promise异步回调。
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -143,7 +143,7 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<Abili
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise对象，返回Ability结果对象。 |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise对象，返回Ability结果对象。 |
 
 **错误码：**
 
@@ -286,7 +286,7 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 20
 
@@ -330,7 +330,7 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 | [16000076](../errorcode-ability.md#16000076-指定的app_instance_key不存在) | The app instance key is invalid. |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported. |
 | [16000120](../errorcode-ability.md#16000120-wantlist内的元素个数超出4个或小于1个) | A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1. |
-| 16000121 | The target component type is not a UIAbility. |
+| [16000121](../errorcode-ability.md#16000121-待启动的目标组件类型不是uiability) | The target component type is not a UIAbility. |
 | [16000122](../errorcode-ability.md#16000122-待启动的目标组件被系统管控模块拦截) | The target component is blocked by the system module and does not support startup. |
 | [16000123](../errorcode-ability.md#16000123-不支持隐式启动) | Implicit startup is not supported. |
 | [16000124](../errorcode-ability.md#16000124-不支持启动分布式uiability) | Starting a remote UIAbility is not supported. |
@@ -353,7 +353,7 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 > 
 > 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND (该权限仅系统应用可申请)。
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 21
 

@@ -9,13 +9,15 @@ interface ObjectConstructor
 ```TypeScript
 ```
 
+<a id="call1"></a>
+
 ## [[Call]]
 
 ```TypeScript
 (): any
 ```
 
-<a id="call-1"></a>
+<a id="call2"></a>
 
 ## [[Call]]
 
@@ -41,6 +43,8 @@ new(value?: any): Object
 | --- | --- | --- | --- |
 | value | any | No |  |
 
+<a id="create1"></a>
+
 ## create
 
 ```TypeScript
@@ -57,7 +61,7 @@ Creates an object that has the specified prototype or that has null prototype.
 | --- | --- | --- | --- |
 | o | object &#124; null | Yes |  |
 
-<a id="create-1"></a>
+<a id="create2"></a>
 
 ## create
 
@@ -111,6 +115,8 @@ Adds a property to an object, or modifies attributes of an existing property.
 | p | [PropertyKey](arkts-propertykey-t.md) | Yes |  |
 | attributes | PropertyDescriptor & ThisType&lt;any&gt; | Yes |  |
 
+<a id="freeze1"></a>
+
 ## freeze
 
 ```TypeScript
@@ -127,7 +133,7 @@ Prevents the modification of existing property attributes and values, and preven
 | --- | --- | --- | --- |
 | f | T | Yes |  |
 
-<a id="freeze-1"></a>
+<a id="freeze2"></a>
 
 ## freeze
 
@@ -145,7 +151,7 @@ Prevents the modification of existing property attributes and values, and preven
 | --- | --- | --- | --- |
 | o | T | Yes |  |
 
-<a id="freeze-2"></a>
+<a id="freeze3"></a>
 
 ## freeze
 

@@ -22,17 +22,17 @@ The following is an example of the table creation statement when **CUSTOM_TOKENI
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## NONE_TOKENIZER
+## CUSTOM_TOKENIZER
 
 ```TypeScript
-NONE_TOKENIZER = 0
+CUSTOM_TOKENIZER = 2
 ```
 
-NONE_TOKENIZER: not use tokenizer
+A custom tokenizer is used. Chinese (simplified and traditional), English, and Arabic numerals are supported. Compared with **ICU_TOKENIZER**, **CUSTOM_TOKENIZER** has advantages in tokenization accuracy and resident memory usage. The self-developed tokenizer supports two modes: default tokenization mode and short word tokenization mode (short_words). You can use the cut_mode parameter to specify the mode. If no mode is specified, the default mode is used.
 
-**Since:** 17
+**Since:** 18
 
-<!--Device-Tokenizer-NONE_TOKENIZER = 0--><!--Device-Tokenizer-NONE_TOKENIZER = 0-End-->
+<!--Device-Tokenizer-CUSTOM_TOKENIZER = 2--><!--Device-Tokenizer-CUSTOM_TOKENIZER = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -50,16 +50,16 @@ The ICU tokenizer is used, which supports Chinese and multiple languages. If the
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## CUSTOM_TOKENIZER
+## NONE_TOKENIZER
 
 ```TypeScript
-CUSTOM_TOKENIZER = 2
+NONE_TOKENIZER = 0
 ```
 
-A custom tokenizer is used. Chinese (simplified and traditional), English, and Arabic numerals are supported. Compared with **ICU_TOKENIZER**, **CUSTOM_TOKENIZER** has advantages in tokenization accuracy and resident memory usage. The self-developed tokenizer supports two modes: default tokenization mode and short word tokenization mode (short_words). You can use the cut_mode parameter to specify the mode. If no mode is specified, the default mode is used.
+NONE_TOKENIZER: not use tokenizer
 
-**Since:** 18
+**Since:** 17
 
-<!--Device-Tokenizer-CUSTOM_TOKENIZER = 2--><!--Device-Tokenizer-CUSTOM_TOKENIZER = 2-End-->
+<!--Device-Tokenizer-NONE_TOKENIZER = 0--><!--Device-Tokenizer-NONE_TOKENIZER = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

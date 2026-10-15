@@ -47,6 +47,7 @@ Enables or disables the specified static shortcuts. This API uses a promise to r
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle is not found. |
 | [17700070](../errorcode-bundle.md#17700070-invalid-shortcut-id) | The specified shortcut id is illegal. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -81,3 +82,5 @@ try {
   console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

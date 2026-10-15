@@ -6,6 +6,8 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
+<a id="from1"></a>
+
 ## from
 
 ```TypeScript
@@ -45,7 +47,7 @@ console.info(buf.toString('hex'));
 ```
 
 
-<a id="from-1"></a>
+<a id="from2"></a>
 
 ## from
 
@@ -96,7 +98,7 @@ console.info(buf.length.toString());
 ```
 
 
-<a id="from-2"></a>
+<a id="from3"></a>
 
 ## from
 
@@ -152,7 +154,7 @@ console.info("uint8Array:", uint8Array)
 ```
 
 
-<a id="from-3"></a>
+<a id="from4"></a>
 
 ## from
 

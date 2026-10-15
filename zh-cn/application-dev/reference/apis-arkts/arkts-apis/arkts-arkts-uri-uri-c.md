@@ -28,7 +28,7 @@ addEncodedSegment(pathSegment: string): URI
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-addEncodedSegment(pathSegment: string): URI--><!--Device-URI-addEncodedSegment(pathSegment: string): URI-End-->
 
@@ -64,7 +64,7 @@ addQueryValue(key: string, value: string): URI
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-addQueryValue(key: string, value: string): URI--><!--Device-URI-addQueryValue(key: string, value: string): URI-End-->
 
@@ -101,7 +101,7 @@ addSegment(pathSegment: string): URI
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-addSegment(pathSegment: string): URI--><!--Device-URI-addSegment(pathSegment: string): URI-End-->
 
@@ -137,7 +137,7 @@ checkHierarchical(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-checkHierarchical(): boolean--><!--Device-URI-checkHierarchical(): boolean-End-->
 
@@ -168,7 +168,7 @@ checkIsAbsolute(): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-checkIsAbsolute(): boolean--><!--Device-URI-checkIsAbsolute(): boolean-End-->
 
@@ -199,7 +199,7 @@ checkOpaque(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-checkOpaque(): boolean--><!--Device-URI-checkOpaque(): boolean-End-->
 
@@ -230,7 +230,7 @@ checkRelative(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-checkRelative(): boolean--><!--Device-URI-checkRelative(): boolean-End-->
 
@@ -261,7 +261,7 @@ clearQuery(): URI
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-clearQuery(): URI--><!--Device-URI-clearQuery(): URI-End-->
 
@@ -290,7 +290,7 @@ constructor(uri: string)
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-constructor(uri: string)--><!--Device-URI-constructor(uri: string)-End-->
 
@@ -329,7 +329,7 @@ static createFromParts(scheme: string, ssp: string, fragment: string): URI
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-static createFromParts(scheme: string, ssp: string, fragment: string): URI--><!--Device-URI-static createFromParts(scheme: string, ssp: string, fragment: string): URI-End-->
 
@@ -366,7 +366,7 @@ equalsTo(other: URI): boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-equalsTo(other: URI): boolean--><!--Device-URI-equalsTo(other: URI): boolean-End-->
 
@@ -402,7 +402,7 @@ getBooleanQueryValue(key: string, defaultValue: boolean): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-getBooleanQueryValue(key: string, defaultValue: boolean): boolean--><!--Device-URI-getBooleanQueryValue(key: string, defaultValue: boolean): boolean-End-->
 
@@ -446,7 +446,7 @@ getLastSegment(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-getLastSegment(): string--><!--Device-URI-getLastSegment(): string-End-->
 
@@ -475,7 +475,7 @@ getQueryNames(): string[]
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-getQueryNames(): string[]--><!--Device-URI-getQueryNames(): string[]-End-->
 
@@ -547,7 +547,7 @@ getQueryValues(key: string): string[]
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-getQueryValues(key: string): string[]--><!--Device-URI-getQueryValues(key: string): string[]-End-->
 
@@ -583,7 +583,7 @@ getSegment(): string[]
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-getSegment(): string[]--><!--Device-URI-getSegment(): string[]-End-->
 
@@ -622,7 +622,7 @@ normalize(): URI
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-normalize(): URI--><!--Device-URI-normalize(): URI-End-->
 
@@ -659,7 +659,7 @@ toString(): string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-URI-toString(): string--><!--Device-URI-toString(): string-End-->
 

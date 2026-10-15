@@ -12,7 +12,7 @@ import { inputEventClient } from '@kit.InputKit';
 function injectEvent({ KeyEvent: KeyEvent }): void
 ```
 
-按键(包括单个按键和组合键)注入。从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
+按键（包括单个按键和组合键）注入。从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。若未指定displayId，则操作将在与调用者同用户的屏幕组生效。
 
 **起始版本：** 8
 
@@ -36,10 +36,11 @@ function injectEvent({ KeyEvent: KeyEvent }): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 12+ |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -79,3 +80,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

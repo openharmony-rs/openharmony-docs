@@ -50,6 +50,7 @@ Set the SIM card labelIndex.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ sim.setSimLabelIndex(1,  0).then(() => {
     console.error(`setSimLabelIndex failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="setpowersavetrustlist1"></a>
+
 ## setPowerSaveTrustlist
 
 ```TypeScript
@@ -43,6 +45,7 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ policy.setPowerSaveTrustlist([11111, 22222], true, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setpowersavetrustlist-1"></a>
+
+<a id="setpowersavetrustlist2"></a>
 
 ## setPowerSaveTrustlist
 
@@ -98,6 +103,7 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -112,3 +118,5 @@ policy
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

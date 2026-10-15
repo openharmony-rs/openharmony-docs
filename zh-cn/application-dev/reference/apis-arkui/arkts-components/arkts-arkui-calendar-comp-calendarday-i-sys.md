@@ -4,7 +4,7 @@
 interface CalendarDay
 ```
 
-Provides a monthly view component to display information such as date, shift break, and schedule.
+日历日期信息。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Provides a monthly view component to display information such as date, shift bre
 day: number
 ```
 
-Gregorian calendar day.
+公历日。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ Gregorian calendar day.
 dayMark: string
 ```
 
-Day.
+上下班状态。取值为work和off。
 
 **类型：** string
 
@@ -70,7 +70,7 @@ Day.
 dayMarkValue: string
 ```
 
-Indicates the off-duty flag information. The options are work and off.By default, the off-duty flag information is not required.
+上下班状态的显示文本。
 
 **类型：** string
 
@@ -94,7 +94,7 @@ Indicates the off-duty flag information. The options are work and off.By default
 hasSchedule: boolean
 ```
 
-Indicates whether to display has Schedule. The week sequence is one, two, three, four, five, six.
+表示是否有日程。
 
 **类型：** boolean
 
@@ -118,7 +118,7 @@ Indicates whether to display has Schedule. The week sequence is one, two, three,
 index: number
 ```
 
-Indicates the sequence number of the 7 x 7 (7 x 6) grid layout on a calendar page by row. The week sequence is one, two, three, four, five, six.
+表示日历页面上7 x 7（7 x 6）网格布局的行序号。
 
 **类型：** number
 
@@ -142,7 +142,7 @@ Indicates the sequence number of the 7 x 7 (7 x 6) grid layout on a calendar pag
 isFirstOfLunar: boolean
 ```
 
-Indicates whether the default value is Lunar calendar.
+表示是否为农历月的第一天。
 
 **类型：** boolean
 
@@ -166,7 +166,7 @@ Indicates whether the default value is Lunar calendar.
 lunarDay: string
 ```
 
-Lunar day.
+农历日。
 
 **类型：** string
 
@@ -190,7 +190,7 @@ Lunar day.
 lunarMonth: string
 ```
 
-Lunar moon. The week sequence is one, two, three, four, five, six.
+农历月份。
 
 **类型：** string
 
@@ -214,7 +214,7 @@ Lunar moon. The week sequence is one, two, three, four, five, six.
 markLunarDay: boolean
 ```
 
-Display Lunar Date.The week sequence is one, two, three, four, five, six.
+表示是否显示农历日期。
 
 **类型：** boolean
 
@@ -238,7 +238,7 @@ Display Lunar Date.The week sequence is one, two, three, four, five, six.
 month: number
 ```
 
-Gregorian calendar month.
+公历月。
 
 **类型：** number
 
@@ -262,7 +262,7 @@ Gregorian calendar month.
 year: number
 ```
 
-Gregorian calendar year.
+公历年。
 
 **类型：** number
 

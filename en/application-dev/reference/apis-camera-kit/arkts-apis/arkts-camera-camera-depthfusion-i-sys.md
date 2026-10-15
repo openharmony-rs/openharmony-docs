@@ -53,6 +53,7 @@ Enables depth fusion.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,6 +70,8 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
   };
 }
 ```
+
+<!--DelEnd-->
 
 ## isDepthFusionEnabled
 
@@ -99,6 +102,7 @@ Checks whether depth fusion is enabled.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -116,3 +120,5 @@ function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
   return isEnable;
 }
 ```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 export declare class EditableTitleBarStyleV2
 ```
 
-Declaration of the title bar style configuration.
+Defines the title bar style configuration class, which is decorated with **@ObservedV2** and supports state observation.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 constructor(options?: EditableTitleBarStyleV2Options)
 ```
 
-Constructor of EditableTitleBarStyleV2.
+A constructor used to create an **EditableTitleBarStyleV2** instance.
 
 **Since:** 26.0.0
 
@@ -42,7 +42,7 @@ Constructor of EditableTitleBarStyleV2.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EditableTitleBarStyleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2options-i.md) | No | The style options of the title bar |
+| options | [EditableTitleBarStyleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2options-i.md) | No | Options for the title bar style.<br>Default value: **undefined**, which means the default configuration is used when this parameter is not passed. |
 
 ## backgroundBlurStyle
 
@@ -50,7 +50,11 @@ Constructor of EditableTitleBarStyleV2.
 public backgroundBlurStyle?: BlurStyle
 ```
 
-Background blur style.
+Background blur style of the title bar.
+
+Default value: **BlurStyle.NONE**, indicating no blur effect.
+
+**Decorator:** @Trace
 
 **Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
@@ -72,7 +76,11 @@ Background blur style.
 public backgroundColor?: ResourceColor
 ```
 
-Background color.
+Background color of the title bar.
+
+Default value: **'#00000000'**, indicating a transparent background.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -94,7 +102,19 @@ Background color.
 public contentMargin?: LocalizedMargin
 ```
 
-Content margin, supports RTL layout.
+Outer margin of the title bar. Negative values are not supported. If a negative value is set, it does not take effect.
+
+Default value:
+
+**{
+
+start: LengthMetrics.resource($r('sys.float.margin_left')),
+
+end: LengthMetrics.resource($r('sys.float.margin_right'))
+
+}**.
+
+**Decorator:** @Trace
 
 **Type:** [LocalizedMargin](arkts-arkui-localizedmargin-t.md)
 
@@ -116,7 +136,11 @@ Content margin, supports RTL layout.
 public safeAreaEdges?: Array<SafeAreaEdge>
 ```
 
-Indicates the edges of the safe area.
+Edges of the expanded safe area.
+
+Default value: **[SafeAreaEdge.TOP]**.
+
+**Decorator:** @Trace
 
 **Type:** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-common-comp-safeareaedge-e.md)&gt;
 
@@ -138,7 +162,11 @@ Indicates the edges of the safe area.
 public safeAreaTypes?: Array<SafeAreaType>
 ```
 
-Indicates the types of the safe area.
+Types of the expanded safe area.
+
+Default value: **[SafeAreaType.SYSTEM]**.
+
+**Decorator:** @Trace
 
 **Type:** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-common-comp-safeareatype-e.md)&gt;
 

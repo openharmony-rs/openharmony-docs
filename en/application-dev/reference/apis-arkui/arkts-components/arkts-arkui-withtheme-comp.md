@@ -8,13 +8,13 @@ Defines WithTheme Logic Component.
 
 | Name | Description |
 | --- | --- |
-| [WithThemeOptions](arkts-arkui-withtheme-comp-withthemeoptions-i.md) | Defines the default theme and color mode for components within the **WithTheme** scope. |
+| [WithThemeOptions](arkts-arkui-withtheme-comp-withthemeoptions-i.md) | Sets the theme colors and dark/light mode for components within the **WithTheme** scope. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [CustomTheme](arkts-arkui-withtheme-comp-customtheme-t.md) | Defines a custom theme. |
+| [CustomTheme](arkts-arkui-withtheme-comp-customtheme-t.md) | Customizes the color scheme of components within the **WithTheme** scope. The specific color items are configured through the **CustomColors** interface. |
 
 ## Examples
 

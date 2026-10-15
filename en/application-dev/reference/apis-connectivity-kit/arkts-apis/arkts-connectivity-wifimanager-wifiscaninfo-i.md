@@ -46,7 +46,7 @@ Wi-Fi bssid(MAC): the length is 6
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiScanInfo-bssid: string--><!--Device-WifiScanInfo-bssid: string-End-->
 
@@ -64,7 +64,7 @@ Wi-Fi bssid type
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiScanInfo-bssidType: DeviceAddressType--><!--Device-WifiScanInfo-bssidType: DeviceAddressType-End-->
 
@@ -146,7 +146,7 @@ Frequency
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiScanInfo-frequency: int--><!--Device-WifiScanInfo-frequency: int-End-->
 
@@ -196,7 +196,7 @@ Received signal strength indicator (RSSI)
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiScanInfo-rssi: int--><!--Device-WifiScanInfo-rssi: int-End-->
 
@@ -214,7 +214,7 @@ Security type: reference definition of WifiSecurityType
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiScanInfo-securityType: WifiSecurityType--><!--Device-WifiScanInfo-securityType: WifiSecurityType-End-->
 
@@ -232,7 +232,7 @@ Wi-Fi SSID: the maximum length is 32
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiScanInfo-ssid: string--><!--Device-WifiScanInfo-ssid: string-End-->
 

@@ -32,7 +32,7 @@ needsCert?: boolean
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12ParsingConfig-needsCert?: boolean--><!--Device-Pkcs12ParsingConfig-needsCert?: boolean-End-->
 
@@ -52,7 +52,7 @@ needsOtherCerts?: boolean
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12ParsingConfig-needsOtherCerts?: boolean--><!--Device-Pkcs12ParsingConfig-needsOtherCerts?: boolean-End-->
 
@@ -74,7 +74,7 @@ true为获取，返回PKCS8编码的私钥数据；false为不获取。
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12ParsingConfig-needsPrivateKey?: boolean--><!--Device-Pkcs12ParsingConfig-needsPrivateKey?: boolean-End-->
 
@@ -92,7 +92,7 @@ password: string
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12ParsingConfig-password: string--><!--Device-Pkcs12ParsingConfig-password: string-End-->
 
@@ -116,7 +116,7 @@ privateKeyFormat?: EncodingBaseFormat
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12ParsingConfig-privateKeyFormat?: EncodingBaseFormat--><!--Device-Pkcs12ParsingConfig-privateKeyFormat?: EncodingBaseFormat-End-->
 

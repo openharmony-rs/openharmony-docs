@@ -30,6 +30,22 @@ DEFAULT
 
 **系统接口：** 此接口为系统接口。
 
+## PACKAGE
+
+```TypeScript
+PACKAGE
+```
+
+包资源。
+
+**起始版本：** 10
+
+<!--Device-WallpaperResourceType-PACKAGE--><!--Device-WallpaperResourceType-PACKAGE-End-->
+
+**系统能力：** SystemCapability.MiscServices.Wallpaper
+
+**系统接口：** 此接口为系统接口。
+
 ## PICTURE
 
 ```TypeScript
@@ -57,22 +73,6 @@ VIDEO
 **起始版本：** 10
 
 <!--Device-WallpaperResourceType-VIDEO--><!--Device-WallpaperResourceType-VIDEO-End-->
-
-**系统能力：** SystemCapability.MiscServices.Wallpaper
-
-**系统接口：** 此接口为系统接口。
-
-## PACKAGE
-
-```TypeScript
-PACKAGE
-```
-
-包资源。
-
-**起始版本：** 10
-
-<!--Device-WallpaperResourceType-PACKAGE--><!--Device-WallpaperResourceType-PACKAGE-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 

@@ -12,6 +12,24 @@ Enumerates the reasons for popup dismissal.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## CLOSE_BUTTON
+
+```TypeScript
+CLOSE_BUTTON = 2
+```
+
+Touching the close button.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DismissReason-CLOSE_BUTTON = 2--><!--Device-DismissReason-CLOSE_BUTTON = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## PRESS_BACK
 
 ```TypeScript
@@ -30,39 +48,25 @@ Touching the **Back** button, swiping left or right on the screen, or pressing t
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOUCH_OUTSIDE
+## SLIDE
 
 ```TypeScript
-TOUCH_OUTSIDE = 1
+SLIDE = 4
 ```
 
-Touching the mask.
+Swiping left or right on the screen. By default, swiping right dismisses the popup, while swiping left is used in the mirror scenario. This setting is not user-defined.
 
-**Since:** 12
+**NOTE:** 
+
+This API is effective only in sheet transition.
+
+**Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-DismissReason-TOUCH_OUTSIDE = 1--><!--Device-DismissReason-TOUCH_OUTSIDE = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## CLOSE_BUTTON
-
-```TypeScript
-CLOSE_BUTTON = 2
-```
-
-Touching the close button.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-DismissReason-CLOSE_BUTTON = 2--><!--Device-DismissReason-CLOSE_BUTTON = 2-End-->
+<!--Device-DismissReason-SLIDE = 4--><!--Device-DismissReason-SLIDE = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,24 +92,20 @@ This API is effective only in sheet transition.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SLIDE
+## TOUCH_OUTSIDE
 
 ```TypeScript
-SLIDE = 4
+TOUCH_OUTSIDE = 1
 ```
 
-Swiping left or right on the screen. By default, swiping right dismisses the popup, while swiping left is used in the mirror scenario. This setting is not user-defined.
+Touching the mask.
 
-**NOTE:** 
-
-This API is effective only in sheet transition.
-
-**Since:** 20
+**Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-DismissReason-SLIDE = 4--><!--Device-DismissReason-SLIDE = 4-End-->
+<!--Device-DismissReason-TOUCH_OUTSIDE = 1--><!--Device-DismissReason-TOUCH_OUTSIDE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

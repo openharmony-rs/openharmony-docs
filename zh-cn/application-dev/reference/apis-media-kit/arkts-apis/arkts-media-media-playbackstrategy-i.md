@@ -30,7 +30,7 @@ enableSuperResolution?: boolean
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-enableSuperResolution?: boolean--><!--Device-PlaybackStrategy-enableSuperResolution?: boolean-End-->
 
@@ -48,7 +48,7 @@ keepDecodingOnMute?: boolean
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-keepDecodingOnMute?: boolean--><!--Device-PlaybackStrategy-keepDecodingOnMute?: boolean-End-->
 
@@ -82,7 +82,7 @@ preferredAudioLanguage?: string
 
 **起始版本：** 13
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本13开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-preferredAudioLanguage?: string--><!--Device-PlaybackStrategy-preferredAudioLanguage?: string-End-->
 
@@ -102,7 +102,7 @@ preferredBufferDuration?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-preferredBufferDuration?: int--><!--Device-PlaybackStrategy-preferredBufferDuration?: int-End-->
 
@@ -120,7 +120,7 @@ preferredBufferDurationForPlaying?: number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-preferredBufferDurationForPlaying?: double--><!--Device-PlaybackStrategy-preferredBufferDurationForPlaying?: double-End-->
 
@@ -138,7 +138,7 @@ preferredHdr?: boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-preferredHdr?: boolean--><!--Device-PlaybackStrategy-preferredHdr?: boolean-End-->
 
@@ -156,7 +156,7 @@ preferredHeight?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-preferredHeight?: int--><!--Device-PlaybackStrategy-preferredHeight?: int-End-->
 
@@ -174,7 +174,7 @@ preferredSubtitleLanguage?: string
 
 **起始版本：** 13
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本13开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-preferredSubtitleLanguage?: string--><!--Device-PlaybackStrategy-preferredSubtitleLanguage?: string-End-->
 
@@ -192,7 +192,7 @@ preferredWidth?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-preferredWidth?: int--><!--Device-PlaybackStrategy-preferredWidth?: int-End-->
 
@@ -210,7 +210,7 @@ prepare时显示首帧。
 
 **起始版本：** 17
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本17开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-showFirstFrameOnPrepare?: boolean--><!--Device-PlaybackStrategy-showFirstFrameOnPrepare?: boolean-End-->
 
@@ -228,7 +228,7 @@ thresholdForAutoQuickPlay?: number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackStrategy-thresholdForAutoQuickPlay?: double--><!--Device-PlaybackStrategy-thresholdForAutoQuickPlay?: double-End-->
 

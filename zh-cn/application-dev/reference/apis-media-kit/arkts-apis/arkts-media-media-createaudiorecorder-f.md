@@ -17,13 +17,13 @@ function createAudioRecorder(): AudioRecorder
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [createAVRecorder](arkts-media-media-createavrecorder-f.md)替代。
+> [createAVRecorder](arkts-media-media-createavrecorder-f.md#createavrecorder1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [createAVRecorder](arkts-media-media-createavrecorder-f.md)(callback: AsyncCallback&lt;AVRecorder&gt;)
+**替代接口：** [createAVRecorder](arkts-media-media-createavrecorder-f.md#createavrecorder1)(callback: AsyncCallback&lt;AVRecorder&gt;)
 
 <!--Device-media-function createAudioRecorder(): AudioRecorder--><!--Device-media-function createAudioRecorder(): AudioRecorder-End-->
 

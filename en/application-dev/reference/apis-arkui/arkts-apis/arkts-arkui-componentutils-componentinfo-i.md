@@ -24,7 +24,7 @@ import { componentUtils } from '@kit.ArkUI';
 localOffset: Offset
 ```
 
-Offset of the component relative to the parent component.
+Offset of the component relative to its parent component.
 
 **Type:** [Offset](arkts-arkui-componentutils-offset-i.md)
 

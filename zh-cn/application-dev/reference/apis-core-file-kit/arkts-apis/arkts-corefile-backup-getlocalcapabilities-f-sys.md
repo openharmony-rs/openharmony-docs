@@ -6,6 +6,8 @@
 import { backup } from '@kit.CoreFileKit';
 ```
 
+<a id="getlocalcapabilities1"></a>
+
 ## getLocalCapabilities
 
 ```TypeScript
@@ -40,6 +42,7 @@ function getLocalCapabilities(): Promise<FileData>
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -78,8 +81,10 @@ async function getLocalCapabilities() {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getlocalcapabilities-1"></a>
+
+<a id="getlocalcapabilities2"></a>
 
 ## getLocalCapabilities
 
@@ -115,6 +120,7 @@ function getLocalCapabilities(callback: AsyncCallback<FileData>): void
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -156,8 +162,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getlocalcapabilities-2"></a>
+
+<a id="getlocalcapabilities3"></a>
 
 ## getLocalCapabilities
 
@@ -202,6 +210,7 @@ function getLocalCapabilities(dataList: Array<IncrementalBackupTime>): Promise<F
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -224,3 +233,5 @@ async function getLocalCapabilities() {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -1,5 +1,13 @@
 # @ohos.arkui.advanced.SegmentButtonV2(api/@ohos.arkui.advanced.SegmentedButton.d.ts)
 
+The segmented button component is used to create tab-type, single-selection, or multi-selection capsule segmented
+ buttons. It supports multiple option types such as text, icons, and symbols, as well as graphic-text hybrid
+ configurations, and allows customization of fonts, colors, corner radii, and other styles. The tab segmented button
+ is suitable for tab switching scenarios, the single-selection capsule segmented button is suitable for single-
+ selection switching scenarios, and the multi-selection capsule segmented button is suitable for multi-selection
+ filtering scenarios.
+
+
 ## Modules to Import
 
 ```TypeScript
@@ -12,16 +20,16 @@ import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesCha
 
 | Name | Description |
 | --- | --- |
-| [SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md) |  |
+| [SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md) | **SegmentButtonV2** component option class, used to define properties such as the text and icon of a single segmented button item. |
 | [SegmentButtonV2Items](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2items-c.md) | Represents items of the **SegmentButtonV2** component. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [CapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-capsulesegmentbuttonv2-s.md) | The segmented button component is used to create tab-type, single-selection, or multi-selection capsule segmented buttons. It supports multiple option types such as text, icons, and symbols, as well as graphic-text hybrid configurations, and allows customization of fonts, colors, corner radii, and other styles. The tab segmented button is suitable for tab switching scenarios, the single-selection capsule segmented button is suitable for single- selection switching scenarios, and the multi-selection capsule segmented button is suitable for multi-selection filtering scenarios. |
-| [MultiCapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-multicapsulesegmentbuttonv2-s.md) | The segmented button component is used to create tab-type, single-selection, or multi-selection capsule segmented buttons. It supports multiple option types such as text, icons, and symbols, as well as graphic-text hybrid configurations, and allows customization of fonts, colors, corner radii, and other styles. The tab segmented button is suitable for tab switching scenarios, the single-selection capsule segmented button is suitable for single- selection switching scenarios, and the multi-selection capsule segmented button is suitable for multi-selection filtering scenarios. |
-| [TabSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-tabsegmentbuttonv2-s.md) | The segmented button component is used to create tab-type, single-selection, or multi-selection capsule segmented buttons. It supports multiple option types such as text, icons, and symbols, as well as graphic-text hybrid configurations, and allows customization of fonts, colors, corner radii, and other styles. The tab segmented button is suitable for tab switching scenarios, the single-selection capsule segmented button is suitable for single- selection switching scenarios, and the multi-selection capsule segmented button is suitable for multi-selection filtering scenarios. |
+| [CapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-capsulesegmentbuttonv2-s.md) | Creates a single-selection capsule segmented button. |
+| [MultiCapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-multicapsulesegmentbuttonv2-s.md) | Creates a multi-selection capsule segmented button. |
+| [TabSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-tabsegmentbuttonv2-s.md) | Creates a tab segmented button. |
 
 ### Interfaces
 

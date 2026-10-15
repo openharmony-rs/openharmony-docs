@@ -2,6 +2,10 @@
 
 输入监听模块，提供了监听输入设备事件的能力。输入设备事件当前包括触屏输入事件、鼠标输入事件和触控板输入事件。
 
+> **说明：** 
+> 
+> - 文档中“全局”表示整个触控屏或触控板。如监听全局触屏输入事件，表示触摸触控板任何位置时，整个触控板的触屏输入事件均被监听。
+
 **起始版本：** 7
 
 <!--Device-unnamed-declare namespace inputMonitor--><!--Device-unnamed-declare namespace inputMonitor-End-->
@@ -23,34 +27,34 @@ import { inputMonitor } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offtouch) | 取消监听全局触屏输入事件，使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offmouse) | 取消监听全局鼠标事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offpinch) | 取消监听全局触控板的捏合事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offpinch) | 取消监听全局触控板的捏合事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offrotate) | 取消监听全局触控板的旋转事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offthreefingersswipe) | 取消监听全局触控板的三指滑动事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offfourfingersswipe) | 取消监听全局触控板的四指滑动事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offthreefingerstap) | 取消监听全局触控板的三指轻点事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offfingerprint) | 取消监听指纹手势输入事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offswipeinward) | 取消监听向内滑动事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offtouchscreenswipe) | 取消监听触摸屏滑动手势事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offtouchscreenpinch) | 取消监听触摸屏捏合手势事件。使用callback异步回调。 |
-| [off](arkts-input-inputmonitor-off-f-sys.md#offkeypressed) | 取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#ontouch) | 监听全局触屏输入事件，使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onmouse) | 监听全局鼠标事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onmouse) | 监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onpinch) | 监听全局触控板的捏合事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onpinch) | 监听全局触控板的捏合事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onrotate) | 监听全局触控板的旋转事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onthreefingersswipe) | 监听全局触控板的三指滑动事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onfourfingersswipe) | 监听全局触控板的四指滑动事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onthreefingerstap) | 监听全局触控板的三指轻点事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onfingerprint) | 监听指纹手势输入事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onswipeinward) | 监听向内滑动事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenswipe) | 监听触摸屏滑动手势事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenpinch) | 监听触摸屏捏合手势事件。使用callback异步回调。 |
-| [on](arkts-input-inputmonitor-on-f-sys.md#onkeypressed) | 监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。使用callback异步回调。 |
-| [queryTouchEvents](arkts-input-inputmonitor-querytouchevents-f-sys.md) | 查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。 |
+| [off('touch')](arkts-input-inputmonitor-off-f-sys.md#offtouch) | 取消监听全局触屏输入事件，使用callback异步回调。 |
+| [off('mouse')](arkts-input-inputmonitor-off-f-sys.md#offmouse) | 取消监听全局鼠标事件。使用callback异步回调。 |
+| [off('pinch')](arkts-input-inputmonitor-off-f-sys.md#offpinch) | 取消监听全局触控板的捏合事件。使用callback异步回调。 |
+| [off('pinch')](arkts-input-inputmonitor-off-f-sys.md#offpinch) | 取消监听全局触控板的捏合事件。使用callback异步回调。 |
+| [off('rotate')](arkts-input-inputmonitor-off-f-sys.md#offrotate) | 取消监听全局触控板的旋转事件。使用callback异步回调。 |
+| [off('threeFingersSwipe')](arkts-input-inputmonitor-off-f-sys.md#offthreefingersswipe) | 取消监听全局触控板的三指滑动事件。使用callback异步回调。 |
+| [off('fourFingersSwipe')](arkts-input-inputmonitor-off-f-sys.md#offfourfingersswipe) | 取消监听全局触控板的四指滑动事件。使用callback异步回调。 |
+| [off('threeFingersTap')](arkts-input-inputmonitor-off-f-sys.md#offthreefingerstap) | 取消监听全局触控板的三指轻点事件。使用callback异步回调。 |
+| [off('fingerprint')](arkts-input-inputmonitor-off-f-sys.md#offfingerprint) | 取消监听指纹手势输入事件。使用callback异步回调。 |
+| [off('swipeInward')](arkts-input-inputmonitor-off-f-sys.md#offswipeinward) | 取消监听向内滑动事件。使用callback异步回调。 |
+| [off('touchscreenSwipe')](arkts-input-inputmonitor-off-f-sys.md#offtouchscreenswipe) | 取消监听触摸屏滑动手势事件。使用callback异步回调。 |
+| [off('touchscreenPinch')](arkts-input-inputmonitor-off-f-sys.md#offtouchscreenpinch) | 取消监听触摸屏捏合手势事件。使用callback异步回调。 |
+| [off('keyPressed')](arkts-input-inputmonitor-off-f-sys.md#offkeypressed) | 取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。使用callback异步回调。 |
+| [on('touch')](arkts-input-inputmonitor-on-f-sys.md#ontouch) | 监听全局触屏输入事件，使用callback异步回调。 |
+| [on('mouse')](arkts-input-inputmonitor-on-f-sys.md#onmouse) | 监听全局鼠标事件。使用callback异步回调。 |
+| [on('mouse')](arkts-input-inputmonitor-on-f-sys.md#onmouse) | 监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。使用callback异步回调。 |
+| [on('pinch')](arkts-input-inputmonitor-on-f-sys.md#onpinch) | 监听全局触控板的捏合事件。使用callback异步回调。 |
+| [on('pinch')](arkts-input-inputmonitor-on-f-sys.md#onpinch) | 监听全局触控板的捏合事件。使用callback异步回调。 |
+| [on('rotate')](arkts-input-inputmonitor-on-f-sys.md#onrotate) | 监听全局触控板的旋转事件。使用callback异步回调。 |
+| [on('threeFingersSwipe')](arkts-input-inputmonitor-on-f-sys.md#onthreefingersswipe) | 监听全局触控板的三指滑动事件。使用callback异步回调。 |
+| [on('fourFingersSwipe')](arkts-input-inputmonitor-on-f-sys.md#onfourfingersswipe) | 监听全局触控板的四指滑动事件。使用callback异步回调。 |
+| [on('threeFingersTap')](arkts-input-inputmonitor-on-f-sys.md#onthreefingerstap) | 监听全局触控板的三指轻点事件。使用callback异步回调。 |
+| [on('fingerprint')](arkts-input-inputmonitor-on-f-sys.md#onfingerprint) | 监听指纹手势输入事件。使用callback异步回调。 |
+| [on('swipeInward')](arkts-input-inputmonitor-on-f-sys.md#onswipeinward) | 监听向内滑动事件。使用callback异步回调。 |
+| [on('touchscreenSwipe')](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenswipe) | 监听触摸屏滑动手势事件。使用callback异步回调。 |
+| [on('touchscreenPinch')](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenpinch) | 监听触摸屏捏合手势事件。使用callback异步回调。 |
+| [on('keyPressed')](arkts-input-inputmonitor-on-f-sys.md#onkeypressed) | 监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。使用callback异步回调。 |
+| [queryTouchEvents](arkts-input-inputmonitor-querytouchevents-f-sys.md#querytouchevents) | 查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

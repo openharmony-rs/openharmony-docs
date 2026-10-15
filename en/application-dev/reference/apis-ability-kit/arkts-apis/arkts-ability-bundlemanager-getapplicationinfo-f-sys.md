@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getapplicationinfo1"></a>
+
 ## getApplicationInfo
 
 ```TypeScript
@@ -31,8 +33,8 @@ No permission is required for obtaining the caller's own information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| appFlags | number | Yes | Type of the application information to obtain. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the application information obtained. Otherwise, **err** is an error object. |
+| appFlags | number | Yes | Information contained in the returned ApplicationInfo. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, **err** is **undefined**, and data is the ApplicationInfo obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -44,6 +46,7 @@ No permission is required for obtaining the caller's own information.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,8 +71,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getapplicationinfo-1"></a>
+
+<a id="getapplicationinfo2"></a>
 
 ## getApplicationInfo
 
@@ -96,9 +101,9 @@ No permission is required for obtaining the caller's own information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| appFlags | number | Yes | Type of the application information to obtain. |
+| appFlags | number | Yes | Information contained in the returned ApplicationInfo. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
 | userId | number | Yes | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the application information obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, **err** is **undefined**, and data is the ApplicationInfo obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -111,6 +116,7 @@ No permission is required for obtaining the caller's own information.
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,8 +142,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getapplicationinfo-2"></a>
+
+<a id="getapplicationinfo3"></a>
 
 ## getApplicationInfo
 
@@ -164,7 +172,7 @@ No permission is required for obtaining the caller's own information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| appFlags | number | Yes | Type of the application information to obtain. |
+| appFlags | number | Yes | Information contained in the returned ApplicationInfo. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
 | userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. The value must be greater than or equal to 0. |
 
 **Return value:**
@@ -184,6 +192,7 @@ No permission is required for obtaining the caller's own information.
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -206,3 +215,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

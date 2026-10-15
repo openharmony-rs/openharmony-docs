@@ -32,7 +32,7 @@ Automotive camera position attribute.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CameraDevice-readonly automotiveCameraPosition?: AutomotiveCameraPosition--><!--Device-CameraDevice-readonly automotiveCameraPosition?: AutomotiveCameraPosition-End-->
 
@@ -50,7 +50,7 @@ Camera ID.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraDevice-readonly cameraId: string--><!--Device-CameraDevice-readonly cameraId: string-End-->
 
@@ -68,7 +68,7 @@ Camera installation angle, which does not change as the screen rotates. The valu
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraDevice-readonly cameraOrientation: int--><!--Device-CameraDevice-readonly cameraOrientation: int-End-->
 
@@ -86,7 +86,7 @@ Camera position.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraDevice-readonly cameraPosition: CameraPosition--><!--Device-CameraDevice-readonly cameraPosition: CameraPosition-End-->
 
@@ -104,7 +104,7 @@ Camera type.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraDevice-readonly cameraType: CameraType--><!--Device-CameraDevice-readonly cameraType: CameraType-End-->
 
@@ -122,7 +122,7 @@ Camera connection type.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraDevice-readonly connectionType: ConnectionType--><!--Device-CameraDevice-readonly connectionType: ConnectionType-End-->
 
@@ -142,7 +142,7 @@ List of physical cameras that form the logical camera.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly constituentCameraDevices?: Array<CameraDevice>--><!--Device-CameraDevice-readonly constituentCameraDevices?: Array<CameraDevice>-End-->
 
@@ -160,7 +160,7 @@ Remote device name. If no remote device is available, an empty value is returned
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraDevice-readonly hostDeviceName: string--><!--Device-CameraDevice-readonly hostDeviceName: string-End-->
 
@@ -178,7 +178,7 @@ Remote device type.
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraDevice-readonly hostDeviceType: HostDeviceType--><!--Device-CameraDevice-readonly hostDeviceType: HostDeviceType-End-->
 
@@ -198,7 +198,7 @@ Whether a camera is a logical camera (consisting of multiple physical cameras). 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly isLogicalCamera?: boolean--><!--Device-CameraDevice-readonly isLogicalCamera?: boolean-End-->
 
@@ -218,7 +218,7 @@ Array of lens distortion parameters.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly lensDistortion?: Array<double>--><!--Device-CameraDevice-readonly lensDistortion?: Array<double>-End-->
 
@@ -236,7 +236,7 @@ Equivalent focal length of the camera lens.
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly lensEquivalentFocalLength?: Array<int>--><!--Device-CameraDevice-readonly lensEquivalentFocalLength?: Array<int>-End-->
 
@@ -256,7 +256,7 @@ Actual focal length of the lens.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly lensFocalLength?: double--><!--Device-CameraDevice-readonly lensFocalLength?: double-End-->
 
@@ -276,7 +276,7 @@ Array of lens intrinsic calibration parameters.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly lensIntrinsicCalibration?: Array<double>--><!--Device-CameraDevice-readonly lensIntrinsicCalibration?: Array<double>-End-->
 
@@ -296,7 +296,7 @@ Minimum focus distance of the camera.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly minimumFocusDistance?: double--><!--Device-CameraDevice-readonly minimumFocusDistance?: double-End-->
 
@@ -316,7 +316,7 @@ Arrangement mode of the sensor color filter.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly sensorColorFilterArrangement?: SensorColorFilterArrangement--><!--Device-CameraDevice-readonly sensorColorFilterArrangement?: SensorColorFilterArrangement-End-->
 
@@ -336,7 +336,7 @@ Physical dimensions (width and height) of the sensor.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly sensorPhysicalSize?: Array<double>--><!--Device-CameraDevice-readonly sensorPhysicalSize?: Array<double>-End-->
 
@@ -356,7 +356,7 @@ Pixel array dimensions (width and height, in pixels) of the sensor.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CameraDevice-readonly sensorPixelArraySize?: Array<int>--><!--Device-CameraDevice-readonly sensorPixelArraySize?: Array<int>-End-->
 

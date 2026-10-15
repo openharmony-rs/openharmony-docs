@@ -27,6 +27,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [finishTrace](arkts-api10lessdeprecatedmodules-bytrace-finishtrace-f.md) | 标记一个时间片跟踪事件的结束。 |
-| [startTrace](arkts-api10lessdeprecatedmodules-bytrace-starttrace-f.md) | 标记一个时间片跟踪任务的开始。 |
-| [traceByValue](arkts-api10lessdeprecatedmodules-bytrace-tracebyvalue-f.md) | 标记预追踪耗时任务的数值变量，该变量的数值会不断变化。traceByValue可独立使用，用于记录某个数值变量的变化轨迹。 |
+| [finishTrace](arkts-api10lessdeprecatedmodules-bytrace-finishtrace-f.md#finishtrace) | 标记一个时间片跟踪事件的结束。 |
+| [startTrace](arkts-api10lessdeprecatedmodules-bytrace-starttrace-f.md#starttrace) | 标记一个时间片跟踪任务的开始。 |
+| [traceByValue](arkts-api10lessdeprecatedmodules-bytrace-tracebyvalue-f.md#tracebyvalue) | 标记预追踪耗时任务的数值变量，该变量的数值会不断变化。traceByValue可独立使用，用于记录某个数值变量的变化轨迹。 |

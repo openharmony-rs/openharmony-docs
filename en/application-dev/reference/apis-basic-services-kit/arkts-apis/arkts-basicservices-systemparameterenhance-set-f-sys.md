@@ -6,6 +6,8 @@
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 ```
 
+<a id="set1"></a>
+
 ## set
 
 ```TypeScript
@@ -39,6 +41,7 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 | [14700103](../errorcode-device-info.md#14700103-operation-denied-due-to-permission) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-internal-system-error-including-out-of-memory-and-deadlock) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,8 +60,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="set-1"></a>
+
+<a id="set2"></a>
 
 ## set
 
@@ -98,6 +103,7 @@ Sets a value of the specified key. This API uses a promise to return the result.
 | [14700103](../errorcode-device-info.md#14700103-operation-denied-due-to-permission) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-internal-system-error-including-out-of-memory-and-deadlock) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -114,3 +120,5 @@ try {
   console.error('set unexpected error: ' + e);
 }
 ```
+
+<!--DelEnd-->

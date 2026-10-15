@@ -4,7 +4,7 @@
 interface ExecuteResult
 ```
 
-Result of arkTS script execution.
+Defines the result of ArkTS script execution.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { scriptManager } from '@kit.AbilityKit';
 code: number
 ```
 
-Indicates result code. The value range is all integers.
+Result code. The value is an integer, and the default value is 0.
 
 **Type:** number
 
@@ -44,7 +44,12 @@ Indicates result code. The value range is all integers.
 flags?: number
 ```
 
-Indicates the URIs read and write permissions which consistent with flags, flags must be one of FLAG_AUTH_READ_URI_PERMISSION, FLAG_AUTH_WRITE_URI_PERMISSION, FLAG_AUTH_READ_URI_PERMISSION| FLAG_AUTH_WRITE_URI_PERMISSION. The value range is all integers.
+Read/write permission of the URIs, which is the same as the flags field of [Want](arkts-ability-app-ability-want-want-c.md). The value can be any of the following:  
+- [wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flag_auth_read_uri_permission):  
+read permission.  
+- [wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flag_auth_write_uri_permission):  
+write permission.  
+- A combination of the two flags above: grants both read and write permissions.
 
 **Type:** number
 
@@ -64,7 +69,7 @@ Indicates the URIs read and write permissions which consistent with flags, flags
 result?: Record<string, Object>
 ```
 
-Indicates execute result.
+Script execution result.
 
 **Type:** Record&lt;string, Object&gt;
 
@@ -84,7 +89,7 @@ Indicates execute result.
 uris?: Array<string>
 ```
 
-Indicates the URIs will be authorized to the caller.
+List of URIs to be authorized to the caller.
 
 **Type:** Array&lt;string&gt;
 

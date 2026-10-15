@@ -12,6 +12,34 @@ enum WifiSecurityType
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
+## WIFI_SEC_TYPE_EAP
+
+```TypeScript
+WIFI_SEC_TYPE_EAP = 5
+```
+
+EAP authentication (EAP)加密类型。
+
+**起始版本：** 9
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
+## WIFI_SEC_TYPE_EAP_SUITE_B
+
+```TypeScript
+WIFI_SEC_TYPE_EAP_SUITE_B = 6
+```
+
+Suite-B 192位加密类型。
+
+**起始版本：** 9
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
 ## WIFI_SEC_TYPE_INVALID
 
 ```TypeScript
@@ -36,23 +64,23 @@ WIFI_SEC_TYPE_OPEN = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_OPEN = 1--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OPEN = 1-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-## WIFI_SEC_TYPE_WEP
+## WIFI_SEC_TYPE_OWE
 
 ```TypeScript
-WIFI_SEC_TYPE_WEP = 2
+WIFI_SEC_TYPE_OWE = 7
 ```
 
-Wired Equivalent Privacy (WEP)加密类型。候选网络(添加网络配置信息)配置不支持该加密类型。
+Opportunistic  Wireless  Encryption (OWE)机会性无线加密类型。
 
 **起始版本：** 9
 
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
@@ -84,48 +112,6 @@ Simultaneous Authentication of Equals (SAE)加密类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-## WIFI_SEC_TYPE_EAP
-
-```TypeScript
-WIFI_SEC_TYPE_EAP = 5
-```
-
-EAP authentication (EAP)加密类型。
-
-**起始版本：** 9
-
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.Core
-
-## WIFI_SEC_TYPE_EAP_SUITE_B
-
-```TypeScript
-WIFI_SEC_TYPE_EAP_SUITE_B = 6
-```
-
-Suite-B 192位加密类型。
-
-**起始版本：** 9
-
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.Core
-
-## WIFI_SEC_TYPE_OWE
-
-```TypeScript
-WIFI_SEC_TYPE_OWE = 7
-```
-
-Opportunistic  Wireless  Encryption (OWE)机会性无线加密类型。
-
-**起始版本：** 9
-
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.Core
-
 ## WIFI_SEC_TYPE_WAPI_CERT
 
 ```TypeScript
@@ -151,5 +137,19 @@ WAPI-PSK加密类型。
 **起始版本：** 9
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
+## WIFI_SEC_TYPE_WEP
+
+```TypeScript
+WIFI_SEC_TYPE_WEP = 2
+```
+
+Wired Equivalent Privacy (WEP)加密类型。候选网络(添加网络配置信息)配置不支持该加密类型。
+
+**起始版本：** 9
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core

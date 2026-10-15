@@ -24,7 +24,7 @@ import { webview } from '@kit.ArkWeb';
 attributes: Record<string, string>
 ```
 
-Attributes in **&lt;video&gt;** or **&lt;audio&gt;**.
+Attributes in **<video>** or **<audio>**.
 
 **Type:** Record&lt;string, string&gt;
 
@@ -40,7 +40,7 @@ Attributes in **&lt;video&gt;** or **&lt;audio&gt;**.
 controlList: string[]
 ```
 
-Value of the **controlslist** attribute in **&lt;video&gt;** or **&lt;audio&gt;**.
+Value of the **controlslist** attribute in **<video>** or **<audio>**.
 
 **Type:** string[]
 
@@ -58,7 +58,7 @@ Value of the **controlslist** attribute in **&lt;video&gt;** or **&lt;audio&gt;*
 controlsShown: boolean
 ```
 
-Whether the `&lt;video&gt;` or `&lt;audio&gt;` element has the `controls` attribute.
+Whether the `<video>` or `<audio>` element has the `controls` attribute.
 
 The value **true** indicates that it has, and **false** indicates that it does not.
 
@@ -78,7 +78,7 @@ The value **true** indicates that it has, and **false** indicates that it does n
 embedID: string
 ```
 
-ID of the `&lt;video&gt;` or `&lt;audio&gt;` element in the web page.
+ID of the `<video>` or `<audio>` element in the web page.
 
 **Type:** string
 

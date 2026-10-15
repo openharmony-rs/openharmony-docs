@@ -1,5 +1,8 @@
 # @ohos.arkui.advanced.ProgressButton
 
+文本下载按钮，可显示具体下载进度。
+
+
 ## 导入模块
 
 ```TypeScript
@@ -12,7 +15,7 @@ import { ProgressButton } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbutton-s.md) | 文本下载按钮，可显示具体下载进度。 |
+| [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbutton-s.md) | 创建ProgressButton组件。 |
 
 ### 接口
 

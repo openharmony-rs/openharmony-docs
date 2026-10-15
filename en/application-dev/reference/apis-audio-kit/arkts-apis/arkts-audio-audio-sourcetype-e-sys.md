@@ -12,17 +12,19 @@ Enumerates the types of audio streams captured.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## SOURCE_TYPE_WAKEUP
+## SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT
 
 ```TypeScript
-SOURCE_TYPE_WAKEUP = 3
+SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19
 ```
 
-Wakeup source type. Permission ohos.permission.MANAGE_INTELLIGENT_VOICE is needed when calling createAudioCapturer with this type.
+Unprocessed voice assistant source type.
 
-**Since:** 10
+**Since:** 23
 
-<!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3--><!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3-End-->
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -60,19 +62,17 @@ Source type for voice transcription and processing.
 
 **System API:** This is a system API.
 
-## SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT
+## SOURCE_TYPE_WAKEUP
 
 ```TypeScript
-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19
+SOURCE_TYPE_WAKEUP = 3
 ```
 
-Unprocessed voice assistant source type.
+Wakeup source type. Permission ohos.permission.MANAGE_INTELLIGENT_VOICE is needed when calling createAudioCapturer with this type.
 
-**Since:** 23
+**Since:** 10
 
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19-End-->
+<!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3--><!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

@@ -39,7 +39,7 @@ iterations: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PBKDF2Spec-iterations: int--><!--Device-PBKDF2Spec-iterations: int-End-->
 
@@ -59,7 +59,7 @@ keySize: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PBKDF2Spec-keySize: int--><!--Device-PBKDF2Spec-keySize: int-End-->
 
@@ -79,7 +79,7 @@ password: string | Uint8Array
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PBKDF2Spec-password: string | Uint8Array--><!--Device-PBKDF2Spec-password: string | Uint8Array-End-->
 
@@ -99,7 +99,7 @@ salt: Uint8Array
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PBKDF2Spec-salt: Uint8Array--><!--Device-PBKDF2Spec-salt: Uint8Array-End-->
 

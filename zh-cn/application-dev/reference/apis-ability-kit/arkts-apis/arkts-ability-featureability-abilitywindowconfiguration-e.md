@@ -12,19 +12,19 @@ export enum AbilityWindowConfiguration
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## WINDOW_MODE_UNDEFINED
+## WINDOW_MODE_FLOATING
 
 ```TypeScript
-WINDOW_MODE_UNDEFINED = 0
+WINDOW_MODE_FLOATING = 102
 ```
 
-未定义。
+悬浮窗。
 
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0-End-->
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -76,18 +76,18 @@ WINDOW_MODE_SPLIT_SECONDARY = 101
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## WINDOW_MODE_FLOATING
+## WINDOW_MODE_UNDEFINED
 
 ```TypeScript
-WINDOW_MODE_FLOATING = 102
+WINDOW_MODE_UNDEFINED = 0
 ```
 
-悬浮窗。
+未定义。
 
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102-End-->
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel

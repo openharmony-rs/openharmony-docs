@@ -4,7 +4,7 @@
 
 > **说明：** 
 
-> - 该组件默认设置了[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)属性的值为true，若需要扩展内容区到组件外显示，需先关闭clip属性。
+> - 该组件默认设置了[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)属性的值为true，若需要扩展内容区到组件外显示，需先关闭clip属性。
 
 ## 子组件
 
@@ -66,7 +66,7 @@ TabContent()
 
 ### 示例1（自定义页签切换联动）
 
-本示例通过onAnimationStart、onChange实现切换时自定义tabBar和TabContent的联动。
+本示例通过[onAnimationStart](ts-container-tabs.md#onanimationstart11)、[onChange](ts-container-tabs.md#onchange)实现切换时自定义tabBar和TabContent的联动。
 
 > 说明
 > 
@@ -193,7 +193,7 @@ struct TabContentExample {
 
 ### 示例2（自定义侧边页签）
 
-本示例通过vertical、barPosition实现侧边页签。
+本示例通过[vertical](./ts-container-tabs.md#vertical)、[barPosition](./ts-container-tabs.md#barposition9)实现侧边页签。
 
 > 说明
 > 
@@ -445,7 +445,7 @@ struct TabBarStyleExample {
 
 ### 示例4（设置子页签下划线基本属性）
 
-本示例通过SubTabBarStyle中的indicator属性，实现了子页签下划线基本属性的展示。
+本示例通过SubTabBarStyle中的[indicator](#indicator10)属性，实现了子页签下划线基本属性的展示。
 
 
 
@@ -683,7 +683,7 @@ struct TabsAttr {
 
 ### 示例5（设置子页签文本自适应高度属性）
 
-本示例通过heightAdaptivePolicy实现了子页签文本高度自适应。
+本示例通过[heightAdaptivePolicy](#labelstyle10对象说明)实现了子页签文本高度自适应。
 
 
 
@@ -771,7 +771,7 @@ struct TabsTextOverflow {
 
 ### 示例6（设置底部页签基本属性）
 
-本示例通过padding、verticalAlign、layoutMode、[symmetricExtensible](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md#symmetricextensible)实现了底部页签基本属性的展示。
+本示例通过[padding](#padding10)、[verticalAlign](#verticalalign10)、[layoutMode](#layoutmode10)、[symmetricExtensible](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md#symmetricextensible)实现了底部页签基本属性的展示。
 
 
 
@@ -923,9 +923,9 @@ struct TabContentExample6 {
 
 ### 示例7（设置子页签/底部页签文本颜色）
 
-本示例通过LabelStyle中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
+本示例通过[LabelStyle](#labelstyle10对象说明)中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
 
-通过iconStyle中的unselectedColor和selectedColor改变底部页签的图标颜色。
+通过[iconStyle](#iconstyle12)中的unselectedColor和selectedColor改变底部页签的图标颜色。
 
 > 说明
 > 
@@ -1213,7 +1213,7 @@ struct Index {
 
 ### 示例10（通过ComponentContent预加载子节点）
 
-该示例实现了通过ComponentContent设置TabBar，使用TabsController的preloadItems预加载子节点。
+该示例实现了通过ComponentContent设置TabBar，使用TabsController的[preloadItems](ts-container-tabs.md#preloaditems12)预加载子节点。
 
 
 
@@ -1389,9 +1389,11 @@ struct MyComponent {
 
 ### 示例11（设置子页签indicator为图片）
 
-该示例通过SubTabBarStyle中的indicator属性，实现了图片格式的子页签下划线风格。
+该示例通过SubTabBarStyle中的[indicator](#indicator22)属性，实现了图片格式的子页签下划线风格。
 
 从API version 22开始，新增了入参类型包含图片的indicator属性。
+
+
 
 ```TypeScript
 import { DrawableDescriptor } from '@kit.ArkUI';
@@ -1447,6 +1449,180 @@ struct TabsIndicatorExample {
     .width('100%')
     .height(500)
     .padding('24vp')
+  }
+}
+```
+
+### 示例12（设置页签在不同页签栏中的可见性）
+
+该示例通过[tabBarVisibility](#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
+
+从API版本26.2.0开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TabBarVisibilityExample {
+  @State myIndex: number = 0;
+  @State isBottomType: boolean = true;
+  private controller: TabsController = new TabsController();
+
+  build() {
+    Column() {
+      Row() {
+        Text('barStyle: ')
+        Radio({group: `barStyle`, value: `BOTTOM`}).checked(this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = true;
+          }
+        })
+        Text('BOTTOM  ')
+        Radio({group: `barStyle`, value: `SIDEBAR`}).checked(!this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = false;
+          }
+        })
+        Text('SIDEBAR')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // 即使某些页签通过tabBarVisibility属性隐藏了，也可以通过修改index状态变量切换到对应的页面
+        Text('Set myIndex: ')
+        Radio({group: `myIndex`, value: `0`}).checked(this.myIndex === 0).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 0;
+          }
+        })
+        Text('0  ')
+        Radio({group: `myIndex`, value: `1`}).checked(this.myIndex === 1).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 1;
+          }
+        })
+        Text('1  ')
+        Radio({group: `myIndex`, value: `2`}).checked(this.myIndex === 2).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 2;
+          }
+        })
+        Text('2')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // 即使某些页签通过tabBarVisibility属性隐藏了，也可以通过TabsController.changeIndex接口切换到对应的页面
+        Text('TabsController.changeIndex').margin({right: 10})
+        Button('0').onClick(() => {
+          this.controller.changeIndex(0)
+        }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+        Button('1').onClick(() => {
+          this.controller.changeIndex(1)
+        }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+        Button('2').onClick(() => {
+          this.controller.changeIndex(2)
+        }).fontSize(15).backgroundColor('#ff2787d9')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Tabs({index: this.myIndex, controller: this.controller}) {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent0').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        // 页签默认在TabBarDisplayMode.BOTTOM_TABBAR和TabBarDisplayMode.SIDEBAR显示模式中都可见
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab0'})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent1').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab1'})
+        // 设置该页签在TabBarDisplayMode.BOTTOM_TABBAR显示模式时不可见
+        .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.BOTTOM_TABBAR)
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent2').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab2'})
+        // 设置该页签在TabBarDisplayMode.SIDEBAR显示模式时不可见
+        .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.SIDEBAR)
+      }
+      .width(450)
+      .height('80%')
+      .border({width: 1, color: '#ffd9d9d9'})
+      .barBackgroundColor('#fff7f7f7')
+      .barStyle(this.isBottomType ? TabBarStyle.BOTTOM : TabBarStyle.SIDEBAR)
+      .barPosition(BarPosition.End)
+      .vertical(false)
+    }.width('100%')
+    .height(350)
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+### 示例13（设置页签的信息标记内容）
+
+该示例通过[TabBarOptions](#tabbaroptions18对象说明)的badge属性和[BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md)的[badge](#badge)属性，设置页签的信息标记内容。
+
+从API版本26.0.1开始，[TabBarOptions](#tabbaroptions18对象说明)和[BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md)都新增了badge属性。
+
+```TypeScript
+// xxx.ets
+import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State symbolModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+  @State symbolModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ellipsis_bubble'));
+
+  build() {
+    Column({ space: 5 }) {
+      Column() {
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier1,
+          }, 'Pink').badge({ value: 1 })) // 设置信息标记的内容为普通数字类型
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier2,
+          }, 'Orange').badge({ value: 100, maxCount: 99 })) // 设置信息标记的内容和最大显示数量
+        }
+        .vertical(false)
+        .width('100%').height(200)
+
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          // 设置信息标记的文本内容为文本
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: { value: 'Info' } })
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          // 未设置信息标记内容，显示为无内容圆点
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: {} })
+        }
+        .vertical(false)
+        .width('100%').height(200)
+      }.width('100%')
+    }
   }
 }
 ```

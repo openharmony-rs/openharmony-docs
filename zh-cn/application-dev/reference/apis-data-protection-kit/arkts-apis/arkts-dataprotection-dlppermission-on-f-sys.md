@@ -41,11 +41,12 @@ DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱�
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,3 +56,5 @@ dlpPermission.on('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) =>
   console.info('uninstallDLPSandbox event', info.appIndex, info.bundleName);
 }); // 订阅。
 ```
+
+<!--DelEnd-->

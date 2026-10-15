@@ -12,15 +12,19 @@ import { scan } from '@kit.ConnectivityKit';
 function offDeviceFound(callback?: Callback<ScanResults[]>): void
 ```
 
-取消订阅星闪扫描结果。使用callback异步回调。
+取消订阅星闪扫描结果。使用callback异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-scan-function offDeviceFound(callback?: Callback<ScanResults[]>): void--><!--Device-scan-function offDeviceFound(callback?: Callback<ScanResults[]>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md) 订阅星闪扫描结果。
 
 **参数：**
 
@@ -32,4 +36,4 @@ function offDeviceFound(callback?: Callback<ScanResults[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the chip does not support it. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported. |

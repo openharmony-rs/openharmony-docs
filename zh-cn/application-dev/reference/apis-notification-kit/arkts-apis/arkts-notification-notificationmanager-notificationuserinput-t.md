@@ -6,10 +6,10 @@ export type NotificationUserInput = _NotificationUserInput
 
 保存用户输入的通知消息。
 
+**类型：** _NotificationUserInput
+
 **起始版本：** 9
 
 <!--Device-notificationManager-export type NotificationUserInput = _NotificationUserInput--><!--Device-notificationManager-export type NotificationUserInput = _NotificationUserInput-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
-
-**类型：** _NotificationUserInput

@@ -6,6 +6,8 @@ type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>
 
 Represents a FrameNode of the **TextClock** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextClockInterface, [TextClockAttribute](../arkts-components/arkts-arkui-textclock-comp-attribute.md)&gt;
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **TextClock** type.
 <!--Device-typeNode-type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>--><!--Device-typeNode-type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextClockInterface, [TextClockAttribute](../arkts-components/arkts-arkui-textclock-comp-attribute.md)&gt;

@@ -64,7 +64,7 @@ File name. The default value is obtained from the file path.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FileSpec-filename?: string--><!--Device-FileSpec-filename?: string-End-->
 
@@ -104,7 +104,7 @@ Example: **file://media/Photo/path/to/file.img**. Only foreground tasks are supp
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FileSpec-path: string--><!--Device-FileSpec-path: string-End-->
 

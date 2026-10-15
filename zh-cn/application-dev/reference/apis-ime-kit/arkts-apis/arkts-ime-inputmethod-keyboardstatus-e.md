@@ -12,20 +12,6 @@ export enum KeyboardStatus
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-NONE。<br> <br>使用场景：表示键盘状态尚未确定或无法判断时使用。
-
-**起始版本：** 10
-
-<!--Device-KeyboardStatus-NONE = 0--><!--Device-KeyboardStatus-NONE = 0-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
 ## HIDE
 
 ```TypeScript
@@ -37,6 +23,20 @@ HIDE = 1
 **起始版本：** 10
 
 <!--Device-KeyboardStatus-HIDE = 1--><!--Device-KeyboardStatus-HIDE = 1-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+NONE。<br> <br>使用场景：表示键盘状态尚未确定或无法判断时使用。
+
+**起始版本：** 10
+
+<!--Device-KeyboardStatus-NONE = 0--><!--Device-KeyboardStatus-NONE = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

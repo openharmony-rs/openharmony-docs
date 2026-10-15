@@ -6,6 +6,8 @@ export type MonitorEvent = _MonitorEvent
 
 Enumerates the event types of monitoring a geofence.
 
+**Type:** _MonitorEvent
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Enumerates the event types of monitoring a geofence.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _MonitorEvent

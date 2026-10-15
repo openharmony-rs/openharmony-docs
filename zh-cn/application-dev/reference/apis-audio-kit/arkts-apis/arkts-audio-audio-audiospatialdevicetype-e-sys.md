@@ -14,33 +14,17 @@ enum AudioSpatialDeviceType
 
 **系统接口：** 此接口为系统接口。
 
-## SPATIAL_DEVICE_TYPE_NONE
+## SPATIAL_DEVICE_TYPE_GLASSES
 
 ```TypeScript
-SPATIAL_DEVICE_TYPE_NONE = 0
+SPATIAL_DEVICE_TYPE_GLASSES = 4
 ```
 
-无空间化设备类型。
+眼镜式耳机。
 
 **起始版本：** 11
 
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-## SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE
-
-```TypeScript
-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1
-```
-
-入耳式耳机。
-
-**起始版本：** 11
-
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1-End-->
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -62,33 +46,33 @@ SPATIAL_DEVICE_TYPE_HALF_IN_EAR_HEADPHONE = 2
 
 **系统接口：** 此接口为系统接口。
 
-## SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE
+## SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE
 
 ```TypeScript
-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3
+SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1
 ```
 
-头戴式耳机。
+入耳式耳机。
 
 **起始版本：** 11
 
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3-End-->
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
 **系统接口：** 此接口为系统接口。
 
-## SPATIAL_DEVICE_TYPE_GLASSES
+## SPATIAL_DEVICE_TYPE_NONE
 
 ```TypeScript
-SPATIAL_DEVICE_TYPE_GLASSES = 4
+SPATIAL_DEVICE_TYPE_NONE = 0
 ```
 
-眼镜式耳机。
+无空间化设备类型。
 
 **起始版本：** 11
 
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4-End-->
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -105,6 +89,22 @@ SPATIAL_DEVICE_TYPE_OTHERS = 5
 **起始版本：** 11
 
 <!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OTHERS = 5--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OTHERS = 5-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+## SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE
+
+```TypeScript
+SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3
+```
+
+头戴式耳机。
+
+**起始版本：** 11
+
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 

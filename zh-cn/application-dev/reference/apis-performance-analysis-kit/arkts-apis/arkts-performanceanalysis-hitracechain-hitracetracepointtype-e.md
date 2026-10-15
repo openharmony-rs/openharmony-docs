@@ -12,20 +12,6 @@ enum HiTraceTracepointType
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-## CS
-
-```TypeScript
-CS = 0
-```
-
-客户端发送(Client Send)。
-
-**起始版本：** 8
-
-<!--Device-HiTraceTracepointType-CS = 0--><!--Device-HiTraceTracepointType-CS = 0-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiTrace
-
 ## CR
 
 ```TypeScript
@@ -40,17 +26,31 @@ CR = 1
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-## SS
+## CS
 
 ```TypeScript
-SS = 2
+CS = 0
 ```
 
-服务端发送(Server Send)。
+客户端发送(Client Send)。
 
 **起始版本：** 8
 
-<!--Device-HiTraceTracepointType-SS = 2--><!--Device-HiTraceTracepointType-SS = 2-End-->
+<!--Device-HiTraceTracepointType-CS = 0--><!--Device-HiTraceTracepointType-CS = 0-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
+## GENERAL
+
+```TypeScript
+GENERAL = 4
+```
+
+通用类型，标识CS、CR、SS、SR四种场景之外的埋点。
+
+**起始版本：** 8
+
+<!--Device-HiTraceTracepointType-GENERAL = 4--><!--Device-HiTraceTracepointType-GENERAL = 4-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -68,16 +68,16 @@ SR = 3
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-## GENERAL
+## SS
 
 ```TypeScript
-GENERAL = 4
+SS = 2
 ```
 
-通用类型，标识CS、CR、SS、SR四种场景之外的埋点。
+服务端发送(Server Send)。
 
 **起始版本：** 8
 
-<!--Device-HiTraceTracepointType-GENERAL = 4--><!--Device-HiTraceTracepointType-GENERAL = 4-End-->
+<!--Device-HiTraceTracepointType-SS = 2--><!--Device-HiTraceTracepointType-SS = 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace

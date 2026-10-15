@@ -6,6 +6,8 @@
 import { quickFixManager } from '@kit.AbilityKit';
 ```
 
+<a id="revokequickfix1"></a>
+
 ## revokeQuickFix
 
 ```TypeScript
@@ -37,10 +39,11 @@ Revokes quick fix. This API uses an asynchronous callback to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [18500001](../errorcode-ability.md#18500001-invalid-bundle-name) | The bundle does not exist or no patch has been applied. |
 | [18500009](../errorcode-ability.md#18500009-application-has-a-quick-fix-task-being-processed) | The application has an ongoing quick fix task. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,8 +58,10 @@ quickFixManager.revokeQuickFix(bundleName, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="revokequickfix-1"></a>
+
+<a id="revokequickfix2"></a>
 
 ## revokeQuickFix
 
@@ -94,10 +99,11 @@ Revokes quick fix. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [18500001](../errorcode-ability.md#18500001-invalid-bundle-name) | The bundle does not exist or no patch has been applied. |
 | [18500009](../errorcode-ability.md#18500009-application-has-a-quick-fix-task-being-processed) | The application has an ongoing quick fix task. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -112,3 +118,5 @@ quickFixManager.revokeQuickFix(bundleName).then(() => {
   console.error(`revokeQuickFix ${bundleName} failed, err code: ${err.code}, err msg: ${err.message}.`);
 });
 ```
+
+<!--DelEnd-->

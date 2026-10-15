@@ -1,6 +1,6 @@
 # @ohos.app.ability.abilityDelegatorRegistry(AbilityDelegatorRegistry)
 
-**AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) and [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md) objects. **AbilityDelegator** provides APIs for creating [AbilityMonitor](../../apis-ability-kit/arkts-apis/arkts-ability-abilitymonitor-i.md) objects, which can be used to listen for ability lifecycle changes. **AbilityDelegatorArgs** provides APIs for obtaining test parameters.
+**AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) and [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md) objects. **AbilityDelegator** provides APIs for creating [AbilityMonitor](../../apis-ability-kit/arkts-apis/arkts-ability-abilitymonitor-i.md) objects, which can be used to listen for ability lifecycle changes. **AbilityDelegatorArgs** provides APIs for obtaining test parameters.
 
 > **NOTE:** 
 > 
@@ -26,8 +26,8 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 | Name | Description |
 | --- | --- |
-| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md) | Obtains an [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) object. |
-| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md) | Obtains an [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md) object. |
+| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md#getabilitydelegator) | Obtains an [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) object. |
+| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md#getarguments) | Obtains an [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md) object. |
 
 ### Types
 

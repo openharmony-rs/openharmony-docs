@@ -12,13 +12,13 @@ Enumerates the original operation intentions of smart gestures.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TAP
+## BACK_PRESS
 
 ```TypeScript
-TAP = 0
+BACK_PRESS = 2
 ```
 
-Tap gesture.
+Wrist flip gesture.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ Tap gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-<!--Device-OperateIntention-TAP = 0--><!--Device-OperateIntention-TAP = 0-End-->
+<!--Device-OperateIntention-BACK_PRESS = 2--><!--Device-OperateIntention-BACK_PRESS = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ Slide gesture.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BACK_PRESS
+## TAP
 
 ```TypeScript
-BACK_PRESS = 2
+TAP = 0
 ```
 
-Wrist flip gesture.
+Tap gesture.
 
 **Since:** 26.0.0
 
@@ -62,6 +62,6 @@ Wrist flip gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-<!--Device-OperateIntention-BACK_PRESS = 2--><!--Device-OperateIntention-BACK_PRESS = 2-End-->
+<!--Device-OperateIntention-TAP = 0--><!--Device-OperateIntention-TAP = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

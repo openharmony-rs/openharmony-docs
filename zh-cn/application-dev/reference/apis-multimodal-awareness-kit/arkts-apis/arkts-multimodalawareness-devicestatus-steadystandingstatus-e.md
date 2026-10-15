@@ -14,20 +14,6 @@ export enum SteadyStandingStatus
 
 **系统能力：** SystemCapability.MultimodalAwareness.DeviceStatus
 
-## STATUS_EXIT
-
-```TypeScript
-STATUS_EXIT = 0
-```
-
-表示设备退出支架态。
-
-**起始版本：** 18
-
-<!--Device-SteadyStandingStatus-STATUS_EXIT = 0--><!--Device-SteadyStandingStatus-STATUS_EXIT = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.DeviceStatus
-
 ## STATUS_ENTER
 
 ```TypeScript
@@ -39,5 +25,19 @@ STATUS_ENTER = 1
 **起始版本：** 18
 
 <!--Device-SteadyStandingStatus-STATUS_ENTER = 1--><!--Device-SteadyStandingStatus-STATUS_ENTER = 1-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.DeviceStatus
+
+## STATUS_EXIT
+
+```TypeScript
+STATUS_EXIT = 0
+```
+
+表示设备退出支架态。
+
+**起始版本：** 18
+
+<!--Device-SteadyStandingStatus-STATUS_EXIT = 0--><!--Device-SteadyStandingStatus-STATUS_EXIT = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DeviceStatus

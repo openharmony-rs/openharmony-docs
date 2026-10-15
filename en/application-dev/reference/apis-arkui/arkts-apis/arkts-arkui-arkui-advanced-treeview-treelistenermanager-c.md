@@ -4,7 +4,7 @@
 export declare class TreeListenerManager
 ```
 
-Implements a **TreeListenerManager** object, which can be bound to a **TreeView** component to listen for changes of tree nodes. One **TreeListenerManager** object can be bound to only one tree view component.
+Defines a listener manager for the tree view component, which can obtain a listener instance and bind it to the tree view component for managing node listening of the tree. The same listener cannot control multiple tree view components.
 
 **Since:** 10
 

@@ -32,6 +32,8 @@ Service data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-ServiceData-serviceData: ArrayBuffer--><!--Device-ServiceData-serviceData: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ Service UUID. A UUID must contain 36 characters, including 32 hexadecimal digits
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ServiceData-serviceUuid: string--><!--Device-ServiceData-serviceUuid: string-End-->
 

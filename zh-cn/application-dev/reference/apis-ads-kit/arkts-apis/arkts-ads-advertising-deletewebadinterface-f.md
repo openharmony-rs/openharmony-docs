@@ -26,14 +26,14 @@ function deleteWebAdInterface(controller: web_webview.WebviewController, needRef
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | web_webview.WebviewController | 是 | Web组件控制器。 |
+| controller | [web_webview.WebviewController](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) | 是 | Web组件控制器。 |
 | needRefresh | boolean | 是 | 是否需要刷新页面（true: 需要；false: 不需要）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
 **示例**

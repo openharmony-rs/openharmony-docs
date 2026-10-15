@@ -12,20 +12,6 @@ Enumerates the device states.
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-The device state is unknown after the device goes online. Before the device state changes to available, distributed services cannot be used.
-
-**Since:** 10
-
-<!--Device-DeviceStateChange-UNKNOWN = 0--><!--Device-DeviceStateChange-UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
 ## AVAILABLE
 
 ```TypeScript
@@ -51,5 +37,19 @@ The device goes offline, and the device state is unknown.
 **Since:** 10
 
 <!--Device-DeviceStateChange-UNAVAILABLE = 2--><!--Device-DeviceStateChange-UNAVAILABLE = 2-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+The device state is unknown after the device goes online. Before the device state changes to available, distributed services cannot be used.
+
+**Since:** 10
+
+<!--Device-DeviceStateChange-UNKNOWN = 0--><!--Device-DeviceStateChange-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager

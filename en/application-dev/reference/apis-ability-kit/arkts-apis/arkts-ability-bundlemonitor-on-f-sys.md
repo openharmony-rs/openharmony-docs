@@ -12,7 +12,7 @@ import { bundleMonitor } from '@kit.AbilityKit';
 function on(type: BundleChangedEvent, callback: Callback<BundleChangedInfo>): void
 ```
 
-Register to monitor the installation status
+Subscribes to bundle installation, uninstall, and update events. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -28,8 +28,8 @@ Register to monitor the installation status
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [BundleChangedEvent](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md) | Yes | Indicates the command should be implement. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md)&gt; | Yes | Indicates the callback to be register. |
+| type | [BundleChangedEvent](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md) | Yes | Type of the event to subscribe to. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md)&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md) used to return the result. If the operation is successful, err is undefined and data is the app change information obtained. Otherwise, err is an error object. |
 
 **Error codes:**
 
@@ -39,6 +39,7 @@ Register to monitor the installation status
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,3 +57,5 @@ try {
   console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="disconnectprinter1"></a>
+
 ## disconnectPrinter
 
 ```TypeScript
@@ -39,6 +41,7 @@ function disconnectPrinter(printerId: string, callback: AsyncCallback<void>): vo
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ print.disconnectPrinter(printerId, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="disconnectprinter-1"></a>
+
+<a id="disconnectprinter2"></a>
 
 ## disconnectPrinter
 
@@ -96,6 +101,7 @@ function disconnectPrinter(printerId: string): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -109,3 +115,5 @@ print.disconnectPrinter(printerId).then(() => {
     console.error(`Failed to disconnect printer. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

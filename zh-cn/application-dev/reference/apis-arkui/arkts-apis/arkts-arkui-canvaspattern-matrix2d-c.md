@@ -56,7 +56,7 @@ identity(): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 单位矩阵。 |
 
 ## invert
 
@@ -82,7 +82,7 @@ invert(): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 逆矩阵结果。 |
 
 ## multiply
 
@@ -114,7 +114,7 @@ multiply(other?: Matrix2D): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 相乘结果矩阵。 |
 
 ## rotate
 
@@ -147,7 +147,7 @@ rotate(rx?: number, ry?: number): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 旋转后结果矩阵对象。 |
 
 ## scale
 
@@ -180,7 +180,7 @@ scale(sx?: number, sy?: number): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 缩放后结果矩阵对象。 |
 
 ## translate
 
@@ -213,7 +213,7 @@ translate(tx?: number, ty?: number): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 平移后结果矩阵对象。 |
 
 ## rotateX
 

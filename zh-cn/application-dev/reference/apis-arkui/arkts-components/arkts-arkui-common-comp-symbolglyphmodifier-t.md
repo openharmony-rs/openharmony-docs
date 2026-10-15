@@ -6,6 +6,8 @@ declare type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').Sy
 
 SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
+**类型：** import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ SymbolGlyphModifier类型，用于设置自定义图标小符号。
 <!--Device-unnamed-declare type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier--><!--Device-unnamed-declare type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier

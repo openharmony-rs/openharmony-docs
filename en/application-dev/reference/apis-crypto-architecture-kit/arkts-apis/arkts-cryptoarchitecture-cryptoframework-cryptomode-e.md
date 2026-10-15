@@ -14,24 +14,6 @@ Enumerates cipher operation modes for encryption and decryption.
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Cipher
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
 
-## ENCRYPT_MODE
-
-```TypeScript
-ENCRYPT_MODE = 0
-```
-
-Encryption.
-
-**Since:** 9
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-CryptoMode-ENCRYPT_MODE = 0--><!--Device-CryptoMode-ENCRYPT_MODE = 0-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.CryptoFramework.Cipher
-- API versions 9 to 11: SystemCapability.Security.CryptoFramework
-
 ## DECRYPT_MODE
 
 ```TypeScript
@@ -42,9 +24,27 @@ Decryption.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CryptoMode-DECRYPT_MODE = 1--><!--Device-CryptoMode-DECRYPT_MODE = 1-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.CryptoFramework.Cipher
+- API versions 9 to 11: SystemCapability.Security.CryptoFramework
+
+## ENCRYPT_MODE
+
+```TypeScript
+ENCRYPT_MODE = 0
+```
+
+Encryption.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CryptoMode-ENCRYPT_MODE = 0--><!--Device-CryptoMode-ENCRYPT_MODE = 0-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Cipher

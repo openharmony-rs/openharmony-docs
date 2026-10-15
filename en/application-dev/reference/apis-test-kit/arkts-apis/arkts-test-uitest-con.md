@@ -34,7 +34,7 @@ The static builder for building [By](arkts-test-uitest-by-c.md)object convenient
 
 **Deprecated since:** 9
 
-**Substitutes:** ON
+**Substitutes:** [ON](#on)
 
 <!--Device-unnamed-declare const BY: By--><!--Device-unnamed-declare const BY: By-End-->
 

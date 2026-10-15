@@ -10,9 +10,27 @@ Enumerates the subscription types.
 
 **Deprecated since:** 9
 
-**Substitutes:** SubscribeType
+**Substitutes:** [SubscribeType](arkts-arkdata-distributedkvstore-subscribetype-e.md)
 
 <!--Device-distributedData-enum SubscribeType--><!--Device-distributedData-enum SubscribeType-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
+
+## SUBSCRIBE_TYPE_ALL
+
+```TypeScript
+SUBSCRIBE_TYPE_ALL = 2
+```
+
+Local and remote data changes.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [SUBSCRIBE_TYPE_ALL](arkts-arkdata-distributedkvstore-subscribetype-e.md#subscribe_type_all)
+
+<!--Device-SubscribeType-SUBSCRIBE_TYPE_ALL = 2--><!--Device-SubscribeType-SUBSCRIBE_TYPE_ALL = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -28,7 +46,7 @@ Local data changes.
 
 **Deprecated since:** 9
 
-**Substitutes:** SUBSCRIBE_TYPE_LOCAL
+**Substitutes:** [SUBSCRIBE_TYPE_LOCAL](arkts-arkdata-distributedkvstore-subscribetype-e.md#subscribe_type_local)
 
 <!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL = 0-End-->
 
@@ -46,26 +64,8 @@ Remote data changes.
 
 **Deprecated since:** 9
 
-**Substitutes:** SUBSCRIBE_TYPE_REMOTE
+**Substitutes:** [SUBSCRIBE_TYPE_REMOTE](arkts-arkdata-distributedkvstore-subscribetype-e.md#subscribe_type_remote)
 
 <!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 1--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
-
-## SUBSCRIBE_TYPE_ALL
-
-```TypeScript
-SUBSCRIBE_TYPE_ALL = 2
-```
-
-Local and remote data changes.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** SUBSCRIBE_TYPE_ALL
-
-<!--Device-SubscribeType-SUBSCRIBE_TYPE_ALL = 2--><!--Device-SubscribeType-SUBSCRIBE_TYPE_ALL = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

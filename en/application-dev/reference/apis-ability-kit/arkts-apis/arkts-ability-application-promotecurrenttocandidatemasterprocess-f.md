@@ -16,9 +16,10 @@ Adds the current process into the [candidate master process](../../../applicatio
 
 - If a candidate master process exists, the system sets the process at the head of the candidate master process  
 list as the new master process and triggers the [onNewProcessRequest](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onnewprocessrequest) callback.  
-- If no candidate master process exists, the system performs the following operations based on the component type:  
-- For a UIAbility, the system creates an empty process as the master process.  
-- For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new  
+- If no candidate master process exists, the system performs the following operations based on the component type:
+
+    - For a UIAbility, the system creates an empty process as the master process.  
+    - For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new  
 master process. If no available process exists, it creates an empty process as the master process. This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
 
 > **NOTE:** 

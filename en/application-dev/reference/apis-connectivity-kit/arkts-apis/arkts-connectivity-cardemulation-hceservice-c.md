@@ -214,7 +214,7 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HceService-start(elementName: ElementName, aidList: string[]): void--><!--Device-HceService-start(elementName: ElementName, aidList: string[]): void-End-->
 
@@ -250,7 +250,7 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HceService-stop(elementName: ElementName): void--><!--Device-HceService-stop(elementName: ElementName): void-End-->
 
@@ -271,6 +271,8 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
 
+<a id="transmit1"></a>
+
 ## transmit
 
 ```TypeScript
@@ -285,7 +287,7 @@ Transmits an APDU to the peer card reader. This API uses a promise to return the
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HceService-transmit(response: int[]): Promise<void>--><!--Device-HceService-transmit(response: int[]): Promise<void>-End-->
 
@@ -346,7 +348,7 @@ hceService.transmit(responseData).then(() => {
 console.info("transmit Promise end.");
 ```
 
-<a id="transmit-1"></a>
+<a id="transmit2"></a>
 
 ## transmit
 
@@ -362,7 +364,7 @@ Sends APDU data to the peer card reader. The application can call this API only 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HceService-transmit(response: int[], callback: AsyncCallback<void>): void--><!--Device-HceService-transmit(response: int[], callback: AsyncCallback<void>): void-End-->
 

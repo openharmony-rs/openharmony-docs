@@ -24,7 +24,7 @@ import { router } from '@kit.ArkUI';
 name: string
 ```
 
-Name of the target named route.
+Name of the target named route page, which must be a registered named route name.
 
 **Type:** string
 
@@ -44,11 +44,11 @@ Name of the target named route.
 params?: Object
 ```
 
-Data that needs to be passed to the target page during redirection. The target page can use **router.getParams()** to obtain the passed parameters, for example, **this.keyValue** (**keyValue** is the value of a key in **params**). In the web-like paradigm, these parameters can be directly used on the target page. If the field specified by **key** already exists on the target page, the passed value of the key will be displayed.
+Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. After navigating to the target page, use **router.getParams()** to obtain the passed parameters. In addition, in the web-like paradigm, parameters can also be used directly on the page, for example, **this.keyValue** (where **keyValue** is the value of a key in the **params** parameter during navigation). If the target page already has this parameter, its value will be overwritten by the passed parameter value.
 
 **NOTE:** 
 
-The **params** parameter cannot pass objects returned by methods and system APIs, for example, **PixelMap** objects defined and returned by media APIs. To pass such objects, extract from them the basic type attributes to be passed, and then construct objects of the object type.
+The **params** parameter can only pass serializable parameters. It cannot pass methods or objects returned by system APIs (for example, the **PixelMap** object defined and returned by media APIs). Passing non-serializable parameters may cause parameter transfer failure or application running exceptions. You are advised to extract the basic-type attributes that need to be passed from objects returned by system APIs, and construct an object-type object for passing.
 
 **Type:** Object
 

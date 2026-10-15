@@ -6,6 +6,8 @@
 import { connection } from '@kit.ConnectivityKit';
 ```
 
+<a id="paircredibledevice1"></a>
+
 ## pairCredibleDevice
 
 ```TypeScript
@@ -31,7 +33,7 @@ function pairCredibleDevice(deviceId: string, transport: BluetoothTransport, cal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transport | [BluetoothTransport](arkts-connectivity-connection-bluetoothtransport-e.md) | 是 | 表示在配对远端设备时使用的传输方式。若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。若不确定使用哪种传输方式，则传入TRANSPORT_DUAL&lt;sup&gt;20+&lt;/sup&gt;或TRANSPORT_UNKNOWN&lt;sup&gt;20+&lt;/sup&gt;，蓝牙子系统会决策传输方式。 |
+| transport | [BluetoothTransport](arkts-connectivity-connection-bluetoothtransport-e.md) | 是 | 表示在配对远端设备时使用的传输方式。若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。若不确定使用哪种传输方式，则传入TRANSPORT_DUAL<sup>20+</sup>或TRANSPORT_UNKNOWN<sup>20+</sup>，蓝牙子系统会决策传输方式。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当发起配对成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -40,12 +42,13 @@ function pairCredibleDevice(deviceId: string, transport: BluetoothTransport, cal
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,8 +67,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="paircredibledevice-1"></a>
+
+<a id="paircredibledevice2"></a>
 
 ## pairCredibleDevice
 
@@ -92,7 +97,7 @@ function pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Pr
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transport | [BluetoothTransport](arkts-connectivity-connection-bluetoothtransport-e.md) | 是 | 表示在配对远端设备时使用的传输方式。若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。若不确定使用哪种传输方式，则传入TRANSPORT_DUAL&lt;sup&gt;20+&lt;/sup&gt;或TRANSPORT_UNKNOWN&lt;sup&gt;20+&lt;/sup&gt;，蓝牙子系统会决策传输方式。 |
+| transport | [BluetoothTransport](arkts-connectivity-connection-bluetoothtransport-e.md) | 是 | 表示在配对远端设备时使用的传输方式。若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。若不确定使用哪种传输方式，则传入TRANSPORT_DUAL<sup>20+</sup>或TRANSPORT_UNKNOWN<sup>20+</sup>，蓝牙子系统会决策传输方式。 |
 
 **返回值：**
 
@@ -106,12 +111,13 @@ function pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Pr
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,3 +132,5 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->

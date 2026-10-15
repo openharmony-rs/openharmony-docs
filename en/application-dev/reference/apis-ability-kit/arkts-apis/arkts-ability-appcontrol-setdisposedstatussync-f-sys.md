@@ -28,7 +28,7 @@ Sets the disposed status for an application. This API returns the result synchro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | ID of the target application.<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appId | string | Yes | appId of the application for which the disposition status is to be set. <br> appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [obtaining the appId of an application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | disposedWant | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Disposal intent of the application. |
 
 **Error codes:**
@@ -41,6 +41,7 @@ Sets the disposed status for an application. This API returns the result synchro
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-appid-is-an-empty-string) | The specified app ID is empty string. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,3 +59,5 @@ try {
   console.error('setDisposedStatusSync failed ' + message);
 }
 ```
+
+<!--DelEnd-->

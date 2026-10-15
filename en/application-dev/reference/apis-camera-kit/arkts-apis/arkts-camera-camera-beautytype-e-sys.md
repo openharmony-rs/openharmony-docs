@@ -30,17 +30,33 @@ Automatic.
 
 **System API:** This is a system API.
 
-## SKIN_SMOOTH
+## EYE_BIG_EYES
 
 ```TypeScript
-SKIN_SMOOTH = 1
+EYE_BIG_EYES = 5
 ```
 
-Skin smoothing.
+Eye big eyes beauty type.
 
-**Since:** 10
+**Since:** 22
 
-<!--Device-BeautyType-SKIN_SMOOTH = 1--><!--Device-BeautyType-SKIN_SMOOTH = 1-End-->
+<!--Device-BeautyType-EYE_BIG_EYES = 5--><!--Device-BeautyType-EYE_BIG_EYES = 5-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## FACE_MAKEUP
+
+```TypeScript
+FACE_MAKEUP = 7
+```
+
+Face makeup beauty type.
+
+**Since:** 22
+
+<!--Device-BeautyType-FACE_MAKEUP = 7--><!--Device-BeautyType-FACE_MAKEUP = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -62,54 +78,6 @@ Face slimming.
 
 **System API:** This is a system API.
 
-## SKIN_TONE
-
-```TypeScript
-SKIN_TONE = 3
-```
-
-Skin tone perfection.
-
-**Since:** 10
-
-<!--Device-BeautyType-SKIN_TONE = 3--><!--Device-BeautyType-SKIN_TONE = 3-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
-## SKIN_TONE_BRIGHT
-
-```TypeScript
-SKIN_TONE_BRIGHT = 4
-```
-
-Skin tone bright beauty type.
-
-**Since:** 22
-
-<!--Device-BeautyType-SKIN_TONE_BRIGHT = 4--><!--Device-BeautyType-SKIN_TONE_BRIGHT = 4-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
-## EYE_BIG_EYES
-
-```TypeScript
-EYE_BIG_EYES = 5
-```
-
-Eye big eyes beauty type.
-
-**Since:** 22
-
-<!--Device-BeautyType-EYE_BIG_EYES = 5--><!--Device-BeautyType-EYE_BIG_EYES = 5-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
 ## HAIR_HAIRLINE
 
 ```TypeScript
@@ -121,22 +89,6 @@ Hair hairline beauty type.
 **Since:** 22
 
 <!--Device-BeautyType-HAIR_HAIRLINE = 6--><!--Device-BeautyType-HAIR_HAIRLINE = 6-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
-## FACE_MAKEUP
-
-```TypeScript
-FACE_MAKEUP = 7
-```
-
-Face makeup beauty type.
-
-**Since:** 22
-
-<!--Device-BeautyType-FACE_MAKEUP = 7--><!--Device-BeautyType-FACE_MAKEUP = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -169,6 +121,54 @@ Nose slender beauty type.
 **Since:** 22
 
 <!--Device-BeautyType-NOSE_SLENDER = 9--><!--Device-BeautyType-NOSE_SLENDER = 9-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## SKIN_SMOOTH
+
+```TypeScript
+SKIN_SMOOTH = 1
+```
+
+Skin smoothing.
+
+**Since:** 10
+
+<!--Device-BeautyType-SKIN_SMOOTH = 1--><!--Device-BeautyType-SKIN_SMOOTH = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## SKIN_TONE
+
+```TypeScript
+SKIN_TONE = 3
+```
+
+Skin tone perfection.
+
+**Since:** 10
+
+<!--Device-BeautyType-SKIN_TONE = 3--><!--Device-BeautyType-SKIN_TONE = 3-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## SKIN_TONE_BRIGHT
+
+```TypeScript
+SKIN_TONE_BRIGHT = 4
+```
+
+Skin tone bright beauty type.
+
+**Since:** 22
+
+<!--Device-BeautyType-SKIN_TONE_BRIGHT = 4--><!--Device-BeautyType-SKIN_TONE_BRIGHT = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

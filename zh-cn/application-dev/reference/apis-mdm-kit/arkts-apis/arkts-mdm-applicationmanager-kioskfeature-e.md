@@ -12,22 +12,6 @@ Kiosk模式的特征。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## ALLOW_NOTIFICATION_CENTER
-
-```TypeScript
-ALLOW_NOTIFICATION_CENTER = 1
-```
-
-允许进入通知中心（通过单指左上方下滑进入）。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1--><!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## ALLOW_CONTROL_CENTER
 
 ```TypeScript
@@ -57,6 +41,22 @@ ALLOW_GESTURE_CONTROL = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KioskFeature-ALLOW_GESTURE_CONTROL = 3--><!--Device-KioskFeature-ALLOW_GESTURE_CONTROL = 3-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## ALLOW_NOTIFICATION_CENTER
+
+```TypeScript
+ALLOW_NOTIFICATION_CENTER = 1
+```
+
+允许进入通知中心（通过单指左上方下滑进入）。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1--><!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

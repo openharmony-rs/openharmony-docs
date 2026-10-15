@@ -42,6 +42,7 @@ Obtains the current angles of a mechanical device.
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-device-not-connected) | Device not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ console.info('Query current location');
 let currentAngles: mechanicManager.EulerAngles = mechanicManager.getCurrentAngles(0);
 console.info(`'Query current location, location:' ${currentAngles}`);
 ```
+
+<!--DelEnd-->

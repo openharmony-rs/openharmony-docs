@@ -18,7 +18,7 @@ Describes a collection of target [Wants](../../../quick-start/module-configurati
 action?: string
 ```
 
-Action to take when starting the shortcut, consistent with the **action** field of [Want](arkts-ability-app-ability-want-want-c.md#action). It is used with **uri** or **parameters** to specify the operation to be performed in implicit Want mode.
+Action to take when starting the shortcut, consistent with the **action** field of [Want](arkts-ability-app-ability-want-want-c.md#action).
 
 **Type:** string
 

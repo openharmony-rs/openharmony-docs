@@ -45,7 +45,7 @@ function addAsUser(userId: number, attributes: AssetMap): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [24000003](../errorcode-asset.md#24000003-关键资产已存在) | The asset already exists. |
 | [24000005](../errorcode-asset.md#24000005-锁屏状态不匹配) | The screen lock status does not match. |
@@ -60,6 +60,7 @@ function addAsUser(userId: number, attributes: AssetMap): Promise<void>
 | [24000014](../errorcode-asset.md#24000014-文件操作失败) | The file operation failed. |
 | [24000015](../errorcode-asset.md#24000015-获取系统时间失败) | Getting the system time failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,3 +82,5 @@ asset.addAsUser(userId, attr).then(() => {
   console.info(`Succeeded in adding Asset to user space.`);
 });
 ```
+
+<!--DelEnd-->

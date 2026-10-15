@@ -22,20 +22,6 @@ To ensure consistent results when both **desiredRegion** and **desiredSize** are
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## SCALE_FIRST
-
-```TypeScript
-SCALE_FIRST = 1
-```
-
-If both **desiredRegion** and **desiredSize** are specified, the image is first scaled based on **desiredSize** and then cropped based on **desiredRegion**.
-
-**Since:** 18
-
-<!--Device-CropAndScaleStrategy-SCALE_FIRST = 1--><!--Device-CropAndScaleStrategy-SCALE_FIRST = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## CROP_FIRST
 
 ```TypeScript
@@ -47,5 +33,19 @@ If both **desiredRegion** and **desiredSize** are specified, the image is first 
 **Since:** 18
 
 <!--Device-CropAndScaleStrategy-CROP_FIRST = 2--><!--Device-CropAndScaleStrategy-CROP_FIRST = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## SCALE_FIRST
+
+```TypeScript
+SCALE_FIRST = 1
+```
+
+If both **desiredRegion** and **desiredSize** are specified, the image is first scaled based on **desiredSize** and then cropped based on **desiredRegion**.
+
+**Since:** 18
+
+<!--Device-CropAndScaleStrategy-SCALE_FIRST = 1--><!--Device-CropAndScaleStrategy-SCALE_FIRST = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -4,11 +4,7 @@
 export interface BundleResourceInfo
 ```
 
-The module provides resource information of an application, such as the icon and label. The information can be obtained by calling getBundleResourceInfo.
-
-> **NOTE:** 
-> 
-> The APIs provided by this module are system APIs.
+The module provides resource information of an application, such as the icon and label. The information can be obtained by calling [getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md).
 
 **Since:** 11
 

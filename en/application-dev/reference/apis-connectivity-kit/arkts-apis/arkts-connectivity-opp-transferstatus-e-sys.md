@@ -14,6 +14,24 @@ Enum for the file transfer status.
 
 **System API:** This is a system API.
 
+## FINISH
+
+```TypeScript
+FINISH = 2
+```
+
+The file is transfer finished.
+
+**Since:** 16
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferStatus-FINISH = 2--><!--Device-TransferStatus-FINISH = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
 ## PENDING
 
 ```TypeScript
@@ -45,24 +63,6 @@ The file is transfering.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TransferStatus-RUNNING = 1--><!--Device-TransferStatus-RUNNING = 1-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
-## FINISH
-
-```TypeScript
-FINISH = 2
-```
-
-The file is transfer finished.
-
-**Since:** 16
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TransferStatus-FINISH = 2--><!--Device-TransferStatus-FINISH = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

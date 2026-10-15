@@ -16,21 +16,39 @@ enum ResultCode
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## SUCCESS
+## BUSY
 
 ```TypeScript
-SUCCESS = 0
+BUSY = 7
 ```
 
-执行成功。
+忙碌状态。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [SUCCESS](arkts-userauthentication-userauth-userauthresultcode-e.md#success)
+**替代接口：** [BUSY](arkts-userauthentication-userauth-userauthresultcode-e.md#busy)
 
-<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
+<!--Device-ResultCode-BUSY = 7--><!--Device-ResultCode-BUSY = 7-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## CANCELED
+
+```TypeScript
+CANCELED = 3
+```
+
+操作取消。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [CANCELED](arkts-userauthentication-userauth-userauthresultcode-e.md#canceled)
+
+<!--Device-ResultCode-CANCELED = 3--><!--Device-ResultCode-CANCELED = 3-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -67,96 +85,6 @@ GENERAL_ERROR = 2
 **替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-userauthresultcode-e.md#general_error)
 
 <!--Device-ResultCode-GENERAL_ERROR = 2--><!--Device-ResultCode-GENERAL_ERROR = 2-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## CANCELED
-
-```TypeScript
-CANCELED = 3
-```
-
-操作取消。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [CANCELED](arkts-userauthentication-userauth-userauthresultcode-e.md#canceled)
-
-<!--Device-ResultCode-CANCELED = 3--><!--Device-ResultCode-CANCELED = 3-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## TIMEOUT
-
-```TypeScript
-TIMEOUT = 4
-```
-
-操作超时。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [TIMEOUT](arkts-userauthentication-userauth-userauthresultcode-e.md#timeout)
-
-<!--Device-ResultCode-TIMEOUT = 4--><!--Device-ResultCode-TIMEOUT = 4-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## TYPE_NOT_SUPPORT
-
-```TypeScript
-TYPE_NOT_SUPPORT = 5
-```
-
-不支持的认证类型。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#type_not_support)
-
-<!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## TRUST_LEVEL_NOT_SUPPORT
-
-```TypeScript
-TRUST_LEVEL_NOT_SUPPORT = 6
-```
-
-不支持的认证等级。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#trust_level_not_support)
-
-<!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## BUSY
-
-```TypeScript
-BUSY = 7
-```
-
-忙碌状态。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [BUSY](arkts-userauthentication-userauth-userauthresultcode-e.md#busy)
-
-<!--Device-ResultCode-BUSY = 7--><!--Device-ResultCode-BUSY = 7-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -211,5 +139,77 @@ NOT_ENROLLED = 10
 **替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-userauthresultcode-e.md#not_enrolled)
 
 <!--Device-ResultCode-NOT_ENROLLED = 10--><!--Device-ResultCode-NOT_ENROLLED = 10-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+执行成功。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [SUCCESS](arkts-userauthentication-userauth-userauthresultcode-e.md#success)
+
+<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 4
+```
+
+操作超时。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [TIMEOUT](arkts-userauthentication-userauth-userauthresultcode-e.md#timeout)
+
+<!--Device-ResultCode-TIMEOUT = 4--><!--Device-ResultCode-TIMEOUT = 4-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## TRUST_LEVEL_NOT_SUPPORT
+
+```TypeScript
+TRUST_LEVEL_NOT_SUPPORT = 6
+```
+
+不支持的认证等级。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#trust_level_not_support)
+
+<!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## TYPE_NOT_SUPPORT
+
+```TypeScript
+TYPE_NOT_SUPPORT = 5
+```
+
+不支持的认证类型。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#type_not_support)
+
+<!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core

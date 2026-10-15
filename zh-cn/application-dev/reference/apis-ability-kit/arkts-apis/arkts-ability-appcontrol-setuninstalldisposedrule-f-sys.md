@@ -44,12 +44,12 @@ function setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposed
 | [17700074](../errorcode-bundle.md#17700074-传入的appidentifier无效) | The specified appIdentifier is invalid. |
 | [17700075](../errorcode-bundle.md#17700075-want指定的bundlename与调用方不符) | The specified bundleName of want is not the same with caller. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -70,3 +70,5 @@ try {
   console.error('setUninstallDisposedRule failed ' + message);
 }
 ```
+
+<!--DelEnd-->

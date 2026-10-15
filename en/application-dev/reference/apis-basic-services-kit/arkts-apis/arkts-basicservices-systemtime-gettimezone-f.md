@@ -6,6 +6,8 @@
 import { systemTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="gettimezone1"></a>
+
 ## getTimezone
 
 ```TypeScript
@@ -18,7 +20,7 @@ Obtains the system time zone. This API uses an asynchronous callback to return t
 
 **Deprecated since:** 9
 
-**Substitutes:** [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md)(callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone1)(callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void--><!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void-End-->
 
@@ -56,7 +58,7 @@ try {
 ```
 
 
-<a id="gettimezone-1"></a>
+<a id="gettimezone2"></a>
 
 ## getTimezone
 

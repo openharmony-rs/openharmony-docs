@@ -12,6 +12,22 @@ Represents the management status of application permissions.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## DEFAULT
+
+```TypeScript
+DEFAULT = 1
+```
+
+The permission is granted by the user by default.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissionManagedState-DEFAULT = 1--><!--Device-PermissionManagedState-DEFAULT = 1-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## DENIED
 
 ```TypeScript
@@ -41,21 +57,5 @@ This permission is granted silently.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PermissionManagedState-GRANTED = 0--><!--Device-PermissionManagedState-GRANTED = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 1
-```
-
-The permission is granted by the user by default.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PermissionManagedState-DEFAULT = 1--><!--Device-PermissionManagedState-DEFAULT = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

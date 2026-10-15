@@ -26,7 +26,7 @@ You are advised to use the [getSystemFontFullNamesByType](../../apis-arkgraphics
 
 **Deprecated since:** 18
 
-**Substitutes:** getSystemFontList
+**Substitutes:** [getSystemFontList](arkts-arkui-arkui-uicontext-font-c.md#getsystemfontlist)
 
 **Model restriction:** This API can be used only in the stage model.
 

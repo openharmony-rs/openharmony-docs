@@ -6,6 +6,8 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
+<a id="getnetworkstate1"></a>
+
 ## getNetworkState
 
 ```TypeScript
@@ -36,7 +38,7 @@ Obtains the network status of the SIM card in the specified slot. This API uses 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -58,7 +60,7 @@ radio.getNetworkState(slotId, (err: BusinessError, data: radio.NetworkState) => 
 ```
 
 
-<a id="getnetworkstate-1"></a>
+<a id="getnetworkstate2"></a>
 
 ## getNetworkState
 
@@ -95,7 +97,7 @@ Obtains the network status of the SIM card in the specified slot. This API uses 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -115,7 +117,7 @@ radio.getNetworkState(slotId).then((data: radio.NetworkState) => {
 ```
 
 
-<a id="getnetworkstate-2"></a>
+<a id="getnetworkstate3"></a>
 
 ## getNetworkState
 
@@ -146,7 +148,7 @@ Obtains the network status. This API uses an asynchronous callback to return the
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |

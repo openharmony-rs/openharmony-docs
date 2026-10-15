@@ -32,19 +32,19 @@ AIRPORT = 1
 
 **系统接口：** 此接口为系统接口。
 
-## TRAIN_STATION
+## SHOP
 
 ```TypeScript
-TRAIN_STATION = 2
+SHOP = 4
 ```
 
-表示火车站场景。
+表示商场场景。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FusionFenceScene-TRAIN_STATION = 2--><!--Device-FusionFenceScene-TRAIN_STATION = 2-End-->
+<!--Device-FusionFenceScene-SHOP = 4--><!--Device-FusionFenceScene-SHOP = 4-End-->
 
 **系统能力：** SystemCapability.Location.Location.Geofence
 
@@ -68,19 +68,19 @@ SUBWAY = 3
 
 **系统接口：** 此接口为系统接口。
 
-## SHOP
+## TRAIN_STATION
 
 ```TypeScript
-SHOP = 4
+TRAIN_STATION = 2
 ```
 
-表示商场场景。
+表示火车站场景。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FusionFenceScene-SHOP = 4--><!--Device-FusionFenceScene-SHOP = 4-End-->
+<!--Device-FusionFenceScene-TRAIN_STATION = 2--><!--Device-FusionFenceScene-TRAIN_STATION = 2-End-->
 
 **系统能力：** SystemCapability.Location.Location.Geofence
 

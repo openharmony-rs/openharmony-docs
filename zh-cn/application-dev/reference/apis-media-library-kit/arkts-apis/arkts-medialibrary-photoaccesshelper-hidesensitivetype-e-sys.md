@@ -14,6 +14,25 @@ enum HideSensitiveType
 
 **系统接口：** 此接口为系统接口。
 
+## DEFAULT
+
+```TypeScript
+DEFAULT = 4
+```
+
+根据[ohos.permission.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：
+
+- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。  
+- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置信息。
+
+**起始版本：** 23
+
+<!--Device-HideSensitiveType-DEFAULT = 4--><!--Device-HideSensitiveType-DEFAULT = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## HIDE_LOCATION_AND_SHOOTING_PARAM
 
 ```TypeScript
@@ -73,25 +92,6 @@ NO_HIDE_SENSITIVE_TYPE = 3
 **起始版本：** 12
 
 <!--Device-HideSensitiveType-NO_HIDE_SENSITIVE_TYPE = 3--><!--Device-HideSensitiveType-NO_HIDE_SENSITIVE_TYPE = 3-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 4
-```
-
-根据[ohos.permission.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：
-
-- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。  
-- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置信息。
-
-**起始版本：** 23
-
-<!--Device-HideSensitiveType-DEFAULT = 4--><!--Device-HideSensitiveType-DEFAULT = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

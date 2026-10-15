@@ -14,6 +14,34 @@ enum AVImageQueryOptions
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
+## AV_IMAGE_QUERY_CLOSEST
+
+```TypeScript
+AV_IMAGE_QUERY_CLOSEST
+```
+
+表示选取离传入时间点最近的帧，该帧不一定是关键帧。
+
+**起始版本：** 12
+
+<!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST--><!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+## AV_IMAGE_QUERY_CLOSEST_SYNC
+
+```TypeScript
+AV_IMAGE_QUERY_CLOSEST_SYNC
+```
+
+表示选取离传入时间点最近的关键帧。
+
+**起始版本：** 12
+
+<!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST_SYNC--><!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST_SYNC-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
 ## AV_IMAGE_QUERY_NEXT_SYNC
 
 ```TypeScript
@@ -39,33 +67,5 @@ AV_IMAGE_QUERY_PREVIOUS_SYNC
 **起始版本：** 12
 
 <!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_PREVIOUS_SYNC--><!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_PREVIOUS_SYNC-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
-
-## AV_IMAGE_QUERY_CLOSEST_SYNC
-
-```TypeScript
-AV_IMAGE_QUERY_CLOSEST_SYNC
-```
-
-表示选取离传入时间点最近的关键帧。
-
-**起始版本：** 12
-
-<!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST_SYNC--><!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST_SYNC-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
-
-## AV_IMAGE_QUERY_CLOSEST
-
-```TypeScript
-AV_IMAGE_QUERY_CLOSEST
-```
-
-表示选取离传入时间点最近的帧，该帧不一定是关键帧。
-
-**起始版本：** 12
-
-<!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST--><!--Device-AVImageQueryOptions-AV_IMAGE_QUERY_CLOSEST-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator

@@ -6,6 +6,8 @@ export type Validity = _AppProvisionInfo.Validity
 
 配置文件中的有效期。
 
+**类型：** [_AppProvisionInfo.Validity](arkts-ability-appprovisioninfo-validity-i-sys.md)
+
 **起始版本：** 10
 
 <!--Device-bundleManager-export type Validity = _AppProvisionInfo.Validity--><!--Device-bundleManager-export type Validity = _AppProvisionInfo.Validity-End-->
@@ -13,5 +15,3 @@ export type Validity = _AppProvisionInfo.Validity
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_AppProvisionInfo.Validity](arkts-ability-appprovisioninfo-validity-i-sys.md)

@@ -12,20 +12,6 @@ Describes the reason for canceling a continuous task.
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## USER_CANCEL
-
-```TypeScript
-USER_CANCEL = 1
-```
-
-The task is canceled by the user.
-
-**Since:** 15
-
-<!--Device-ContinuousTaskCancelReason-USER_CANCEL = 1--><!--Device-ContinuousTaskCancelReason-USER_CANCEL = 1-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
 ## SYSTEM_CANCEL
 
 ```TypeScript
@@ -37,48 +23,6 @@ The task is canceled by the system.
 **Since:** 15
 
 <!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL = 2--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL = 2-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## USER_CANCEL_REMOVE_NOTIFICATION
-
-```TypeScript
-USER_CANCEL_REMOVE_NOTIFICATION = 3
-```
-
-User removal notification. This value is reserved.
-
-**Since:** 15
-
-<!--Device-ContinuousTaskCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3--><!--Device-ContinuousTaskCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED
-
-```TypeScript
-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
-```
-
-A continuous task of the DATA_TRANSFER type is requested, but the data transmission rate is low. This value is reserved.
-
-**Since:** 15
-
-<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION
-
-```TypeScript
-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5
-```
-
-A continuous task of the AUDIO_PLAYBACK type is requested, but the [AVSession](../../../media/avsession/avsession-overview.md) is not accessed. This value is reserved.
-
-**Since:** 15
-
-<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -96,6 +40,20 @@ A continuous task of the AUDIO_PLAYBACK type is requested, but the audio and vid
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+## SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION
+
+```TypeScript
+SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5
+```
+
+A continuous task of the AUDIO_PLAYBACK type is requested, but the [AVSession](../../../media/avsession/avsession-overview.md) is not accessed. This value is reserved.
+
+**Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
 ## SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING
 
 ```TypeScript
@@ -110,17 +68,17 @@ A continuous task of the AUDIO_RECORDING type is requested, but audio recording 
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SYSTEM_CANCEL_NOT_USE_LOCATION
+## SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED
 
 ```TypeScript
-SYSTEM_CANCEL_NOT_USE_LOCATION = 8
+SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
 ```
 
-A continuous task of the **LOCATION** type is requested, but the location service is not in use. This value is reserved.
+A continuous task of the DATA_TRANSFER type is requested, but the data transmission rate is low. This value is reserved.
 
 **Since:** 15
 
-<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8-End-->
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -135,6 +93,20 @@ A continuous task of the BLUETOOTH_INTERACTION type is requested, but Bluetooth-
 **Since:** 15
 
 <!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SYSTEM_CANCEL_NOT_USE_LOCATION
+
+```TypeScript
+SYSTEM_CANCEL_NOT_USE_LOCATION = 8
+```
+
+A continuous task of the **LOCATION** type is requested, but the location service is not in use. This value is reserved.
+
+**Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -163,5 +135,33 @@ A continuous task of an invalid type is used. For example, a continuous task of 
 **Since:** 15
 
 <!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## USER_CANCEL
+
+```TypeScript
+USER_CANCEL = 1
+```
+
+The task is canceled by the user.
+
+**Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-USER_CANCEL = 1--><!--Device-ContinuousTaskCancelReason-USER_CANCEL = 1-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## USER_CANCEL_REMOVE_NOTIFICATION
+
+```TypeScript
+USER_CANCEL_REMOVE_NOTIFICATION = 3
+```
+
+User removal notification. This value is reserved.
+
+**Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3--><!--Device-ContinuousTaskCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

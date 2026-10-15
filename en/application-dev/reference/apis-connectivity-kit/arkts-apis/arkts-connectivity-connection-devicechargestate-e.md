@@ -12,22 +12,6 @@ Enum for the charge state.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## DEVICE_NORMAL_CHARGE_NOT_CHARGED
-
-```TypeScript
-DEVICE_NORMAL_CHARGE_NOT_CHARGED = 0
-```
-
-Not support super charge, and not charged.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceChargeState-DEVICE_NORMAL_CHARGE_NOT_CHARGED = 0--><!--Device-DeviceChargeState-DEVICE_NORMAL_CHARGE_NOT_CHARGED = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## DEVICE_NORMAL_CHARGE_IN_CHARGING
 
 ```TypeScript
@@ -44,19 +28,19 @@ Not support super charge, and in charging.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## DEVICE_SUPER_CHARGE_NOT_CHARGED
+## DEVICE_NORMAL_CHARGE_NOT_CHARGED
 
 ```TypeScript
-DEVICE_SUPER_CHARGE_NOT_CHARGED = 2
+DEVICE_NORMAL_CHARGE_NOT_CHARGED = 0
 ```
 
-Support super charge, and not charged.
+Not support super charge, and not charged.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceChargeState-DEVICE_SUPER_CHARGE_NOT_CHARGED = 2--><!--Device-DeviceChargeState-DEVICE_SUPER_CHARGE_NOT_CHARGED = 2-End-->
+<!--Device-DeviceChargeState-DEVICE_NORMAL_CHARGE_NOT_CHARGED = 0--><!--Device-DeviceChargeState-DEVICE_NORMAL_CHARGE_NOT_CHARGED = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -73,5 +57,21 @@ Support super charge, and in charging.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DeviceChargeState-DEVICE_SUPER_CHARGE_IN_CHARGING = 3--><!--Device-DeviceChargeState-DEVICE_SUPER_CHARGE_IN_CHARGING = 3-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## DEVICE_SUPER_CHARGE_NOT_CHARGED
+
+```TypeScript
+DEVICE_SUPER_CHARGE_NOT_CHARGED = 2
+```
+
+Support super charge, and not charged.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceChargeState-DEVICE_SUPER_CHARGE_NOT_CHARGED = 2--><!--Device-DeviceChargeState-DEVICE_SUPER_CHARGE_NOT_CHARGED = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

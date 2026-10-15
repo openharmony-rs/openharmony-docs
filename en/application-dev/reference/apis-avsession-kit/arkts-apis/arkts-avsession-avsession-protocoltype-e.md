@@ -12,19 +12,19 @@ Define different protocol capability
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
-## TYPE_LOCAL
+## TYPE_CAST_PLUS_AUDIO
 
 ```TypeScript
-TYPE_LOCAL = 0
+TYPE_CAST_PLUS_AUDIO = 8
 ```
 
-The default cast type "local", media can be routed on the same device, including internal speakers or audio jack on the device itself, A2DP devices.
+This type indicates the device supports audio casting with high definition to get a better sound quality.
 
-**Since:** 11
+**Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-ProtocolType-TYPE_LOCAL = 0--><!--Device-ProtocolType-TYPE_LOCAL = 0-End-->
+<!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8--><!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -38,7 +38,7 @@ The Cast+ Stream indicating the media is presenting on a different device the ap
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ProtocolType-TYPE_CAST_PLUS_STREAM = 2--><!--Device-ProtocolType-TYPE_CAST_PLUS_STREAM = 2-End-->
 
@@ -54,24 +54,24 @@ The DLNA type indicates the device supports DLNA protocol, the application needs
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ProtocolType-TYPE_DLNA = 4--><!--Device-ProtocolType-TYPE_DLNA = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
-## TYPE_CAST_PLUS_AUDIO
+## TYPE_LOCAL
 
 ```TypeScript
-TYPE_CAST_PLUS_AUDIO = 8
+TYPE_LOCAL = 0
 ```
 
-This type indicates the device supports audio casting with high definition to get a better sound quality.
+The default cast type "local", media can be routed on the same device, including internal speakers or audio jack on the device itself, A2DP devices.
 
-**Since:** 20
+**Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8--><!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8-End-->
+<!--Device-ProtocolType-TYPE_LOCAL = 0--><!--Device-ProtocolType-TYPE_LOCAL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast

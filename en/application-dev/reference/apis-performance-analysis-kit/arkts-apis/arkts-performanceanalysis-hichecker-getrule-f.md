@@ -33,5 +33,5 @@ Obtains a collection of thread, process, and alarm rules that have been added.
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // Obtain the collection of added rules.
-hichecker.getRule(); // return 1n;
+hichecker.getRule();
 ```

@@ -26,7 +26,7 @@ CLICK = 0
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PenKeyOperation-CLICK = 0--><!--Device-PenKeyOperation-CLICK = 0-End-->
 
@@ -46,7 +46,7 @@ DOUBLE_CLICK = 1
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PenKeyOperation-DOUBLE_CLICK = 1--><!--Device-PenKeyOperation-DOUBLE_CLICK = 1-End-->
 

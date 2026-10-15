@@ -44,7 +44,7 @@ Default value: **false**
 actionControllerId?: string
 ```
 
-[Unique ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1) enabled performs accessibility grouping, any triggered accessibility control operation is forwarded to the child component of the specified ID. This aggregates click events during screen reading and eliminates the need to focus on child components individually. **NOTE:** If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component. Currently, only accessibility click actions are supported. If this API is configured together with **actionControllerRoleType**, the component with a matching ID is prioritized. Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**. Default value: no specified component.
+[Unique ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup2) enabled performs accessibility grouping, any triggered accessibility control operation is forwarded to the child component of the specified ID. This aggregates click events during screen reading and eliminates the need to focus on child components individually. **NOTE:** If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component. Currently, only accessibility click actions are supported. If this API is configured together with **actionControllerRoleType**, the component with a matching ID is prioritized. Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**. Default value: no specified component.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ actionControllerId?: string
 actionControllerRoleType?: AccessibilityRoleType
 ```
 
-Type of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1) enabled performs accessibility grouping, any triggered accessibility control operation is forwarded to the child component of the specified type. This aggregates click events during screen reading and eliminates the need to focus on child components individually.
+Type of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup2) enabled performs accessibility grouping, any triggered accessibility control operation is forwarded to the child component of the specified type. This aggregates click events during screen reading and eliminates the need to focus on child components individually.
 
 **NOTE:** 
 
@@ -94,7 +94,7 @@ Default value: no specified component
 stateControllerId?: string
 ```
 
-[Unique ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1) enabled performs accessibility grouping, the selection state and state announcement text of the child component of the specified ID are used as the state and announcement text of the grouped component. This aggregates state announcements during screen reading and eliminates the need to focus on child components individually. **NOTE:** If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component. If this API is configured together with **stateControllerRoleType**, the component with a matching ID is prioritized. Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**. Default value: no specified component.
+[Unique ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup2) enabled performs accessibility grouping, the selection state and state announcement text of the child component of the specified ID are used as the state and announcement text of the grouped component. This aggregates state announcements during screen reading and eliminates the need to focus on child components individually. **NOTE:** If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component. If this API is configured together with **stateControllerRoleType**, the component with a matching ID is prioritized. Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**. Default value: no specified component.
 
 **Type:** string
 
@@ -114,7 +114,7 @@ stateControllerId?: string
 stateControllerRoleType?: AccessibilityRoleType
 ```
 
-Type of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1) enabled performs accessibility grouping, the selection state and state announcement text of the child component of the specified type are used as the state and announcement text of the grouped component. This aggregates state announcements during screen reading and eliminates the need to focus on child components individually.
+Type of the target child component. After a container component with [accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup2) enabled performs accessibility grouping, the selection state and state announcement text of the child component of the specified type are used as the state and announcement text of the grouped component. This aggregates state announcements during screen reading and eliminates the need to focus on child components individually.
 
 **NOTE:** 
 

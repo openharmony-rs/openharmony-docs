@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="construct1"></a>
+
 ## construct
 
 ```TypeScript
@@ -28,7 +30,7 @@ Constructs the target with the elements of specified array as the arguments and 
 | newTarget | new (...args: any) =&gt; any | No |  |
 
 
-<a id="construct-1"></a>
+<a id="construct2"></a>
 
 ## construct
 

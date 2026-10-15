@@ -39,6 +39,7 @@ function getHotspotConfig(): HotspotConfig
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot模块异常) | Operation failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,3 +52,5 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

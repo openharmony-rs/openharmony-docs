@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setbadgenumber1"></a>
+
 ## setBadgeNumber
 
 ```TypeScript
@@ -24,7 +26,7 @@ This API can be properly called on devices other than wearables. If it is called
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) obtains the number of active notifications of this application.
+**See also:** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount1) obtains the number of active notifications of this application.
 
 **Parameters:**
 
@@ -37,7 +39,7 @@ This API can be properly called on devices other than wearables. If it is called
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
@@ -61,7 +63,7 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
 
-<a id="setbadgenumber-1"></a>
+<a id="setbadgenumber2"></a>
 
 ## setBadgeNumber
 
@@ -99,7 +101,7 @@ This API can be properly called on devices other than wearables. If it is called
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |

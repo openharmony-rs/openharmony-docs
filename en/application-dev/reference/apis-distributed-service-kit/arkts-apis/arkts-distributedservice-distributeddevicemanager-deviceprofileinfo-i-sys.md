@@ -389,7 +389,7 @@ Service list. This parameter is left unspecified by default.
 setupType: number
 ```
 
-Device type.
+Setup type. The value should be an integer.
 
 **Type:** number
 

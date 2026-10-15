@@ -30,7 +30,7 @@ contentData?: Uint8Array
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsVerificationConfig-contentData?: Uint8Array--><!--Device-CmsVerificationConfig-contentData?: Uint8Array-End-->
 
@@ -50,7 +50,7 @@ contentDataFormat?: CmsContentDataFormat
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsVerificationConfig-contentDataFormat?: CmsContentDataFormat--><!--Device-CmsVerificationConfig-contentDataFormat?: CmsContentDataFormat-End-->
 
@@ -68,7 +68,7 @@ signerCerts?: Array<X509Cert>
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsVerificationConfig-signerCerts?: Array<X509Cert>--><!--Device-CmsVerificationConfig-signerCerts?: Array<X509Cert>-End-->
 
@@ -90,7 +90,7 @@ trustCerts: Array<X509Cert>
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsVerificationConfig-trustCerts: Array<X509Cert>--><!--Device-CmsVerificationConfig-trustCerts: Array<X509Cert>-End-->
 

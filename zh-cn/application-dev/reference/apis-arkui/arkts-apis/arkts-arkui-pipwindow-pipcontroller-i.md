@@ -6,7 +6,7 @@ interface PiPController
 
 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。
 
-下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md)方法获取到PiPController实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create1)方法获取到PiPController实例，再通过此实例调用对应方法。
 
 **起始版本：** 11
 
@@ -30,7 +30,7 @@ getPiPSettingSwitch(): Promise<boolean>
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-getPiPSettingSwitch(): Promise<boolean>--><!--Device-PiPController-getPiPSettingSwitch(): Promise<boolean>-End-->
 
@@ -78,7 +78,7 @@ getPiPWindowInfo(): Promise<PiPWindowInfo>
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-getPiPWindowInfo(): Promise<PiPWindowInfo>--><!--Device-PiPController-getPiPWindowInfo(): Promise<PiPWindowInfo>-End-->
 
@@ -126,7 +126,7 @@ isPiPActive(): Promise<boolean>
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-isPiPActive(): Promise<boolean>--><!--Device-PiPController-isPiPActive(): Promise<boolean>-End-->
 
@@ -592,7 +592,7 @@ setAutoStartEnabled(enable: boolean): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-setAutoStartEnabled(enable: boolean): void--><!--Device-PiPController-setAutoStartEnabled(enable: boolean): void-End-->
 
@@ -621,7 +621,7 @@ setPiPControlEnabled(controlType: PiPControlType, enabled: boolean): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-setPiPControlEnabled(controlType: PiPControlType, enabled: boolean): void--><!--Device-PiPController-setPiPControlEnabled(controlType: PiPControlType, enabled: boolean): void-End-->
 
@@ -652,7 +652,7 @@ startPiP(): Promise<void>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-startPiP(): Promise<void>--><!--Device-PiPController-startPiP(): Promise<void>-End-->
 
@@ -696,7 +696,7 @@ stopPiP(): Promise<void>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-stopPiP(): Promise<void>--><!--Device-PiPController-stopPiP(): Promise<void>-End-->
 
@@ -737,7 +737,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise<void>
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-updateContentNode(contentNode: typeNode.XComponent): Promise<void>--><!--Device-PiPController-updateContentNode(contentNode: typeNode.XComponent): Promise<void>-End-->
 
@@ -787,7 +787,7 @@ updateContentSize(width: number, height: number): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-updateContentSize(width: int, height: int): void--><!--Device-PiPController-updateContentSize(width: int, height: int): void-End-->
 
@@ -818,7 +818,7 @@ updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): v
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPController-updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): void--><!--Device-PiPController-updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): void-End-->
 

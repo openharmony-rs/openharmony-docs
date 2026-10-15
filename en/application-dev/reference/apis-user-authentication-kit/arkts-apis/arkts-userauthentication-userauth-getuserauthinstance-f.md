@@ -22,7 +22,7 @@ Obtains a [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-userAuth-function getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance--><!--Device-userAuth-function getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance-End-->
 
@@ -84,6 +84,6 @@ try {
   console.info('get userAuth instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```

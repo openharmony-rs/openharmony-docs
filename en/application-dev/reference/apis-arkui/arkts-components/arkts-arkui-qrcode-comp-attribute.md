@@ -6,7 +6,7 @@ declare class QRCodeAttribute extends CommonMethod<QRCodeAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** QRCodeAttribute extends CommonMethod<QRCodeAttribute>
+**Inheritance/Implementation:** QRCodeAttribute extends CommonMethod&lt;QRCodeAttribute&gt;
 
 **Since:** 7
 

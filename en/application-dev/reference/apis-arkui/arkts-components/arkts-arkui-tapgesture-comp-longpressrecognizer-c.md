@@ -4,7 +4,7 @@
 declare class LongPressRecognizer extends GestureRecognizer
 ```
 
-Implements a long press gesture recognizer. Inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md).
+Defines the long press gesture recognizer object, which inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) and supports querying whether long press is triggered repeatedly, the trigger duration threshold, and the maximum recognizable movement distance. It is applicable to querying the long press gesture recognition configuration.
 
 **Inheritance/Implementation:** LongPressRecognizer extends [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)
 

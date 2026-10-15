@@ -6,6 +6,8 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createx509cert1"></a>
+
 ## createX509Cert
 
 ```TypeScript
@@ -16,7 +18,7 @@ Creates an **X509Cert** instance. This API uses an asynchronous callback to retu
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-cert-function createX509Cert(inStream: EncodingBlob, callback: AsyncCallback<X509Cert>): void--><!--Device-cert-function createX509Cert(inStream: EncodingBlob, callback: AsyncCallback<X509Cert>): void-End-->
 
@@ -33,7 +35,7 @@ Creates an **X509Cert** instance. This API uses an asynchronous callback to retu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
@@ -79,7 +81,7 @@ cert.createX509Cert(encodingBlob, (error, _x509Cert) => {
 ```
 
 
-<a id="createx509cert-1"></a>
+<a id="createx509cert2"></a>
 
 ## createX509Cert
 
@@ -91,7 +93,7 @@ Creates an **X509Cert** instance. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-cert-function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>--><!--Device-cert-function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>-End-->
 
@@ -113,7 +115,7 @@ Creates an **X509Cert** instance. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |

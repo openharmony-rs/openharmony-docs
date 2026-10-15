@@ -14,19 +14,19 @@ Enumerates the risk status of share album.
 
 **System API:** This is a system API.
 
-## UNDER_REVIEW
+## HIGH_REVIEW_RISK
 
 ```TypeScript
-UNDER_REVIEW = 0
+HIGH_REVIEW_RISK = 2
 ```
 
-Under review.
+High review risk.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ShareAlbumRiskStatus-UNDER_REVIEW = 0--><!--Device-ShareAlbumRiskStatus-UNDER_REVIEW = 0-End-->
+<!--Device-ShareAlbumRiskStatus-HIGH_REVIEW_RISK = 2--><!--Device-ShareAlbumRiskStatus-HIGH_REVIEW_RISK = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -50,19 +50,19 @@ Low review risk.
 
 **System API:** This is a system API.
 
-## HIGH_REVIEW_RISK
+## UNDER_REVIEW
 
 ```TypeScript
-HIGH_REVIEW_RISK = 2
+UNDER_REVIEW = 0
 ```
 
-High review risk.
+Under review.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ShareAlbumRiskStatus-HIGH_REVIEW_RISK = 2--><!--Device-ShareAlbumRiskStatus-HIGH_REVIEW_RISK = 2-End-->
+<!--Device-ShareAlbumRiskStatus-UNDER_REVIEW = 0--><!--Device-ShareAlbumRiskStatus-UNDER_REVIEW = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

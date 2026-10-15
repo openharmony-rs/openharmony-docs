@@ -18,6 +18,8 @@ Provides an instance to obtain information about a distributed KV store. Before 
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="closekvstore1"></a>
+
 ## closeKVStore
 
 ```TypeScript
@@ -90,7 +92,7 @@ try {
 }
 ```
 
-<a id="closekvstore-1"></a>
+<a id="closekvstore2"></a>
 
 ## closeKVStore
 
@@ -169,6 +171,8 @@ try {
 }
 ```
 
+<a id="deletekvstore1"></a>
+
 ## deleteKVStore
 
 ```TypeScript
@@ -243,7 +247,7 @@ try {
 }
 ```
 
-<a id="deletekvstore-1"></a>
+<a id="deletekvstore2"></a>
 
 ## deleteKVStore
 
@@ -323,13 +327,15 @@ try {
 }
 ```
 
+<a id="getallkvstoreid1"></a>
+
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore). This API uses an asynchronous callback to return the result.
+Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore1). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -373,7 +379,7 @@ try {
 }
 ```
 
-<a id="getallkvstoreid-1"></a>
+<a id="getallkvstoreid2"></a>
 
 ## getAllKVStoreId
 
@@ -381,7 +387,7 @@ try {
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore). This API uses a promise to return the result.
+Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore1). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -428,6 +434,8 @@ try {
   console.error(`Failed to get AllKVStoreId. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getkvstore1"></a>
 
 ## getKVStore
 
@@ -502,7 +510,7 @@ try {
 }
 ```
 
-<a id="getkvstore-1"></a>
+<a id="getkvstore2"></a>
 
 ## getKVStore
 

@@ -62,6 +62,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -74,6 +75,8 @@ function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSessi
   return beautyLevels;
 }
 ```
+
+<!--DelEnd-->
 
 ## getSupportedBeautyTypes
 
@@ -104,6 +107,7 @@ Obtains the supported beauty types.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -112,6 +116,8 @@ function getSupportedBeautyTypes(portraitPhotoSession: camera.PortraitPhotoSessi
   return beautyTypes;
 }
 ```
+
+<!--DelEnd-->
 
 ## getSupportedPortraitThemeTypes
 

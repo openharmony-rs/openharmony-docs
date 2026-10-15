@@ -12,38 +12,6 @@ enum ReadyState
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## HAVE_NOTHING
-
-```TypeScript
-HAVE_NOTHING = 0
-```
-
-没有缓存。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ReadyState-HAVE_NOTHING = 0--><!--Device-ReadyState-HAVE_NOTHING = 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## HAVE_METADATA
-
-```TypeScript
-HAVE_METADATA = 1
-```
-
-只缓存了媒体元数据。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ReadyState-HAVE_METADATA = 1--><!--Device-ReadyState-HAVE_METADATA = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## HAVE_CURRENT_DATA
 
 ```TypeScript
@@ -57,6 +25,22 @@ HAVE_CURRENT_DATA = 2
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ReadyState-HAVE_CURRENT_DATA = 2--><!--Device-ReadyState-HAVE_CURRENT_DATA = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## HAVE_ENOUGH_DATA
+
+```TypeScript
+HAVE_ENOUGH_DATA = 4
+```
+
+缓存了足够的数据，保证播放流畅。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ReadyState-HAVE_ENOUGH_DATA = 4--><!--Device-ReadyState-HAVE_ENOUGH_DATA = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -76,18 +60,34 @@ HAVE_FUTURE_DATA = 3
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## HAVE_ENOUGH_DATA
+## HAVE_METADATA
 
 ```TypeScript
-HAVE_ENOUGH_DATA = 4
+HAVE_METADATA = 1
 ```
 
-缓存了足够的数据，保证播放流畅。
+只缓存了媒体元数据。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ReadyState-HAVE_ENOUGH_DATA = 4--><!--Device-ReadyState-HAVE_ENOUGH_DATA = 4-End-->
+<!--Device-ReadyState-HAVE_METADATA = 1--><!--Device-ReadyState-HAVE_METADATA = 1-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## HAVE_NOTHING
+
+```TypeScript
+HAVE_NOTHING = 0
+```
+
+没有缓存。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ReadyState-HAVE_NOTHING = 0--><!--Device-ReadyState-HAVE_NOTHING = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

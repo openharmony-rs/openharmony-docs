@@ -54,8 +54,7 @@ function addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, 
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换

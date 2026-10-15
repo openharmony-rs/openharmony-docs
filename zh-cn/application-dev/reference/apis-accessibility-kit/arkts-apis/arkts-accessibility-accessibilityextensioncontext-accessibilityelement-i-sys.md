@@ -6,7 +6,7 @@ export declare interface AccessibilityElement
 
 无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。
 
-调用AccessibilityElement的方法前，先通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或AccessibilityExtensionContext.getRootInActiveWindow()获取AccessibilityElement实例。
+调用AccessibilityElement的方法前，先通过[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement)或[AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow)获取AccessibilityElement实例。
 
 **起始版本：** 9
 
@@ -41,9 +41,10 @@ enableScreenCurtain(isEnable: boolean): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -89,6 +90,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## executeAction
 
 ```TypeScript
@@ -128,6 +131,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
+<!--Del-->
 **示例**
 
 无参数Action。
@@ -184,6 +188,8 @@ rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, parameter).th
 });
 ```
 
+<!--DelEnd-->
+
 ## findElement('textType')
 
 ```TypeScript
@@ -217,8 +223,9 @@ findElement(type: 'textType', condition: string): Promise<Array<AccessibilityEle
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -235,6 +242,8 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
   console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## findElement('elementId')
 
@@ -271,8 +280,9 @@ findElement(type: 'elementId', condition: number): Promise<AccessibilityElement>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -289,6 +299,8 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
   console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## findElementByContent
 
@@ -328,6 +340,7 @@ findElementByContent(condition: string): Promise<Array<AccessibilityElement>>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -357,6 +370,10 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="findelementbyfocusdirection1"></a>
+
 ## findElementByFocusDirection
 
 ```TypeScript
@@ -365,7 +382,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 
 根据焦点方向查找元素。使用Promise异步回调。
 
-与[findElementsByCondition](#findelementsbycondition)相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
+与[findElementsByCondition](#findelementsbycondition1)相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
 
 **起始版本：** 20
 
@@ -397,6 +414,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -453,7 +471,9 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 </html>
 ```
 
-<a id="findelementbyfocusdirection-1"></a>
+<!--DelEnd-->
+
+<a id="findelementbyfocusdirection2"></a>
 
 ## findElementByFocusDirection
 
@@ -496,6 +516,7 @@ findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Pro
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -551,6 +572,8 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 </html>
 ```
 
+<!--DelEnd-->
+
 ## findElementById
 
 ```TypeScript
@@ -591,6 +614,7 @@ findElementById(condition: number): Promise<AccessibilityElement>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -622,6 +646,8 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
   console.error(`Failed to get accessibility focused element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## findElementsByAccessibilityHintText
 
@@ -661,6 +687,7 @@ findElementsByAccessibilityHintText(condition: string): Promise<Array<Accessibil
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -695,6 +722,10 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="findelementsbycondition1"></a>
+
 ## findElementsByCondition
 
 ```TypeScript
@@ -703,7 +734,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 
 查询满足条件的可聚焦节点。使用Promise异步回调。
 
-与[findElementByFocusDirection](#findelementbyfocusdirection)相比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
+与[findElementByFocusDirection](#findelementbyfocusdirection1)相比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
 
 **起始版本：** 23
 
@@ -735,6 +766,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -765,7 +797,9 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 });
 ```
 
-<a id="findelementsbycondition-1"></a>
+<!--DelEnd-->
+
+<a id="findelementsbycondition2"></a>
 
 ## findElementsByCondition
 
@@ -808,6 +842,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusR
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -862,6 +897,8 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 });
 ```
 
+<!--DelEnd-->
+
 ## getChildren
 
 ```TypeScript
@@ -893,6 +930,7 @@ getChildren(): Promise<Array<AccessibilityElement>>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -911,6 +949,10 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
   console.error(`Failed to get accessibility focused element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="getcursorposition1"></a>
 
 ## getCursorPosition
 
@@ -934,6 +976,7 @@ getCursorPosition(callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取光标位置成功，err为undefined，data为光标在文本中的位置索引；否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -949,7 +992,9 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 });
 ```
 
-<a id="getcursorposition-1"></a>
+<!--DelEnd-->
+
+<a id="getcursorposition2"></a>
 
 ## getCursorPosition
 
@@ -973,6 +1018,7 @@ getCursorPosition(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回当前光标所处位置。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -985,6 +1031,8 @@ rootElement.getCursorPosition().then((data: number) => {
   console.error(`Failed to get cursor position. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getParent
 
@@ -1017,6 +1065,7 @@ getParent(): Promise<AccessibilityElement>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1035,6 +1084,8 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
   console.error(`Failed to get accessibility focused element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getRoot
 
@@ -1067,6 +1118,7 @@ getRoot(): Promise<AccessibilityElement>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1084,6 +1136,8 @@ for (let window of windows) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## accessibilityFocused
 
@@ -1655,7 +1709,7 @@ extraInfo?: string
 focusable?: boolean
 ```
 
-元素是否可获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示可获得焦点，false表示不可获得焦点。
+表示元素是否可聚焦。true表示元素可聚焦，false表示元素不可聚焦。
 
 默认值：false。
 
@@ -1809,7 +1863,7 @@ isEssential?: boolean
 isFocused?: boolean
 ```
 
-表示元素是否已获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示已获得焦点，false表示未获得焦点。
+表示元素是否聚焦。true表示元素处于聚焦状态，false表示元素不处于聚焦状态。
 
 默认值：false。
 

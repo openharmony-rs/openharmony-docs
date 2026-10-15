@@ -24,7 +24,7 @@ function registerFont(options: FontOptions): void
 
 **废弃版本：** 18
 
-**替代接口：** registerFont
+**替代接口：** [registerFont](arkts-arkui-arkui-uicontext-font-c.md#registerfont)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

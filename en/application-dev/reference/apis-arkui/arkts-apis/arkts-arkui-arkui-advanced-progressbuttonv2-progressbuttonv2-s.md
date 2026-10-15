@@ -4,7 +4,7 @@
 export declare struct ProgressButtonV2
 ```
 
-Declare Component ProgressButtonV2
+Creates a **ProgressButtonV2** component.
 
 **Since:** 18
 

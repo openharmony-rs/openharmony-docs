@@ -12,13 +12,103 @@ Enumerates the key sizes.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_RSA_KEY_SIZE_512
+## HUKS_3DES_KEY_SIZE_128
 
 ```TypeScript
-HUKS_RSA_KEY_SIZE_512 = 512
+HUKS_3DES_KEY_SIZE_128 = 128
 ```
 
-Rivest-Shamir-Adleman (RSA) key of 512 bits.
+3DES key of 128 bits.
+
+**Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_128 = 128-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_3DES_KEY_SIZE_192
+
+```TypeScript
+HUKS_3DES_KEY_SIZE_192 = 192
+```
+
+3DES key of 192 bits.
+
+**Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192--><!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_AES_KEY_SIZE_128
+
+```TypeScript
+HUKS_AES_KEY_SIZE_128 = 128
+```
+
+Advanced Encryption Standard (AES) key of 128 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_AES_KEY_SIZE_192
+
+```TypeScript
+HUKS_AES_KEY_SIZE_192 = 192
+```
+
+AES key of 192 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_192 = 192--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_192 = 192-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_AES_KEY_SIZE_256
+
+```TypeScript
+HUKS_AES_KEY_SIZE_256 = 256
+```
+
+AES key of 256 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_CURVE25519_KEY_SIZE_256
+
+```TypeScript
+HUKS_CURVE25519_KEY_SIZE_256 = 256
+```
+
+Curve25519 key of 256 bits.
 
 **Since:** 8
 
@@ -26,19 +116,37 @@ Rivest-Shamir-Adleman (RSA) key of 512 bits.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_512 = 512--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_512 = 512-End-->
+<!--Device-HuksKeySize-HUKS_CURVE25519_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_CURVE25519_KEY_SIZE_256 = 256-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_RSA_KEY_SIZE_768
+## HUKS_DES_KEY_SIZE_64
 
 ```TypeScript
-HUKS_RSA_KEY_SIZE_768 = 768
+HUKS_DES_KEY_SIZE_64 = 64
 ```
 
-RSA key of 768 bits.
+DES key of 64 bits.
+
+**Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64--><!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_DH_KEY_SIZE_2048
+
+```TypeScript
+HUKS_DH_KEY_SIZE_2048 = 2048
+```
+
+Diffie-Hellman (DH) key of 2048 bits.
 
 **Since:** 8
 
@@ -46,19 +154,19 @@ RSA key of 768 bits.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768-End-->
+<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_RSA_KEY_SIZE_1024
+## HUKS_DH_KEY_SIZE_3072
 
 ```TypeScript
-HUKS_RSA_KEY_SIZE_1024 = 1024
+HUKS_DH_KEY_SIZE_3072 = 3072
 ```
 
-RSA key of 1024 bits.
+DH key of 3072 bits.
 
 **Since:** 8
 
@@ -66,19 +174,19 @@ RSA key of 1024 bits.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_1024 = 1024--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_1024 = 1024-End-->
+<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_3072 = 3072--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_3072 = 3072-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_RSA_KEY_SIZE_2048
+## HUKS_DH_KEY_SIZE_4096
 
 ```TypeScript
-HUKS_RSA_KEY_SIZE_2048 = 2048
+HUKS_DH_KEY_SIZE_4096 = 4096
 ```
 
-RSA key of 2048 bits.
+DH key of 4096 bits.
 
 **Since:** 8
 
@@ -86,47 +194,7 @@ RSA key of 2048 bits.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_RSA_KEY_SIZE_3072
-
-```TypeScript
-HUKS_RSA_KEY_SIZE_3072 = 3072
-```
-
-RSA key of 3072 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_3072 = 3072--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_3072 = 3072-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_RSA_KEY_SIZE_4096
-
-```TypeScript
-HUKS_RSA_KEY_SIZE_4096 = 4096
-```
-
-RSA key of 4096 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096-End-->
+<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -212,254 +280,6 @@ ECC key of 521 bits.
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_AES_KEY_SIZE_128
-
-```TypeScript
-HUKS_AES_KEY_SIZE_128 = 128
-```
-
-Advanced Encryption Standard (AES) key of 128 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_AES_KEY_SIZE_192
-
-```TypeScript
-HUKS_AES_KEY_SIZE_192 = 192
-```
-
-AES key of 192 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_192 = 192--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_192 = 192-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_AES_KEY_SIZE_256
-
-```TypeScript
-HUKS_AES_KEY_SIZE_256 = 256
-```
-
-AES key of 256 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_AES_KEY_SIZE_512
-
-```TypeScript
-HUKS_AES_KEY_SIZE_512 = 512
-```
-
-AES key of 512 bits.
-
-Note: This parameter is supported since API version 8 and deprecated since API version 11.
-
-**Since:** 8
-
-**Deprecated since:** 11
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_CURVE25519_KEY_SIZE_256
-
-```TypeScript
-HUKS_CURVE25519_KEY_SIZE_256 = 256
-```
-
-Curve25519 key of 256 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_CURVE25519_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_CURVE25519_KEY_SIZE_256 = 256-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_DH_KEY_SIZE_2048
-
-```TypeScript
-HUKS_DH_KEY_SIZE_2048 = 2048
-```
-
-Diffie-Hellman (DH) key of 2048 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_DH_KEY_SIZE_3072
-
-```TypeScript
-HUKS_DH_KEY_SIZE_3072 = 3072
-```
-
-DH key of 3072 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_3072 = 3072--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_3072 = 3072-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_DH_KEY_SIZE_4096
-
-```TypeScript
-HUKS_DH_KEY_SIZE_4096 = 4096
-```
-
-DH key of 4096 bits.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_SM2_KEY_SIZE_256
-
-```TypeScript
-HUKS_SM2_KEY_SIZE_256 = 256
-```
-
-ShangMi2 (SM2) key of 256 bits.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_SM2_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_SM2_KEY_SIZE_256 = 256-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 9 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_SM4_KEY_SIZE_128
-
-```TypeScript
-HUKS_SM4_KEY_SIZE_128 = 128
-```
-
-ShangMi4 (SM4) key of 128 bits.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 9 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_DES_KEY_SIZE_64
-
-```TypeScript
-HUKS_DES_KEY_SIZE_64 = 64
-```
-
-DES key of 64 bits.
-
-**Since:** 12
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64--><!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_3DES_KEY_SIZE_128
-
-```TypeScript
-HUKS_3DES_KEY_SIZE_128 = 128
-```
-
-3DES key of 128 bits.
-
-**Since:** 12
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_128 = 128-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_3DES_KEY_SIZE_192
-
-```TypeScript
-HUKS_3DES_KEY_SIZE_192 = 192
-```
-
-3DES key of 192 bits.
-
-**Since:** 12
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192--><!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
 ## HUKS_ML_DSA_KEY_PARAM_SET_44
 
 ```TypeScript
@@ -514,6 +334,24 @@ ML-DSA-87 parameter set.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
+## HUKS_ML_KEM_KEY_PARAM_SET_1024
+
+```TypeScript
+HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024
+```
+
+ML-KEM-1024 parameter set.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024--><!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
 ## HUKS_ML_KEM_KEY_PARAM_SET_768
 
 ```TypeScript
@@ -532,20 +370,182 @@ ML-KEM-768 parameter set.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_ML_KEM_KEY_PARAM_SET_1024
+## HUKS_RSA_KEY_SIZE_1024
 
 ```TypeScript
-HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024
+HUKS_RSA_KEY_SIZE_1024 = 1024
 ```
 
-ML-KEM-1024 parameter set.
+RSA key of 1024 bits.
 
-**Since:** 26.0.0
+**Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024--><!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024-End-->
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_1024 = 1024--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_1024 = 1024-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_RSA_KEY_SIZE_2048
+
+```TypeScript
+HUKS_RSA_KEY_SIZE_2048 = 2048
+```
+
+RSA key of 2048 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_RSA_KEY_SIZE_3072
+
+```TypeScript
+HUKS_RSA_KEY_SIZE_3072 = 3072
+```
+
+RSA key of 3072 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_3072 = 3072--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_3072 = 3072-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_RSA_KEY_SIZE_4096
+
+```TypeScript
+HUKS_RSA_KEY_SIZE_4096 = 4096
+```
+
+RSA key of 4096 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_RSA_KEY_SIZE_512
+
+```TypeScript
+HUKS_RSA_KEY_SIZE_512 = 512
+```
+
+Rivest-Shamir-Adleman (RSA) key of 512 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_512 = 512--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_512 = 512-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_RSA_KEY_SIZE_768
+
+```TypeScript
+HUKS_RSA_KEY_SIZE_768 = 768
+```
+
+RSA key of 768 bits.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_SM2_KEY_SIZE_256
+
+```TypeScript
+HUKS_SM2_KEY_SIZE_256 = 256
+```
+
+ShangMi2 (SM2) key of 256 bits.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_SM2_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_SM2_KEY_SIZE_256 = 256-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 9 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_SM4_KEY_SIZE_128
+
+```TypeScript
+HUKS_SM4_KEY_SIZE_128 = 128
+```
+
+ShangMi4 (SM4) key of 128 bits.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 9 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_AES_KEY_SIZE_512
+
+```TypeScript
+HUKS_AES_KEY_SIZE_512 = 512
+```
+
+AES key of 512 bits.
+
+Note: This parameter is supported since API version 8 and deprecated since API version 11.
+
+**Since:** 8
+
+**Deprecated since:** 11
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core

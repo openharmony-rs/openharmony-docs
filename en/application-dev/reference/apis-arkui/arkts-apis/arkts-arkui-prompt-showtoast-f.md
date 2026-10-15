@@ -18,7 +18,7 @@ Shows a toast.
 
 **Deprecated since:** 9
 
-**Substitutes:** showToast
+**Substitutes:** [showToast](arkts-arkui-arkui-uicontext-promptaction-c.md#showtoast)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

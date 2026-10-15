@@ -12,20 +12,6 @@ Carrier call state code.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## CCALL_STATE_UNKNOWN
-
-```TypeScript
-CCALL_STATE_UNKNOWN = -1
-```
-
-The call status fails to be obtained and is unknown.
-
-**Since:** 23
-
-<!--Device-CCallState-CCALL_STATE_UNKNOWN = -1--><!--Device-CCallState-CCALL_STATE_UNKNOWN = -1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
 ## CCALL_STATE_ACTIVE
 
 ```TypeScript
@@ -37,34 +23,6 @@ The call is connected.
 **Since:** 23
 
 <!--Device-CCallState-CCALL_STATE_ACTIVE = 0--><!--Device-CCallState-CCALL_STATE_ACTIVE = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-## CCALL_STATE_HOLDING
-
-```TypeScript
-CCALL_STATE_HOLDING = 1
-```
-
-The call is on hold.
-
-**Since:** 23
-
-<!--Device-CCallState-CCALL_STATE_HOLDING = 1--><!--Device-CCallState-CCALL_STATE_HOLDING = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-## CCALL_STATE_DIALING
-
-```TypeScript
-CCALL_STATE_DIALING = 2
-```
-
-The outgoing call is in the dialing process, and the peer end has not received the ringing.
-
-**Since:** 23
-
-<!--Device-CCallState-CCALL_STATE_DIALING = 2--><!--Device-CCallState-CCALL_STATE_DIALING = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -82,31 +40,31 @@ The outgoing call is in the ringing process, and the peer end is ringing.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## CCALL_STATE_INCOMING
+## CCALL_STATE_ANSWERED
 
 ```TypeScript
-CCALL_STATE_INCOMING = 4
+CCALL_STATE_ANSWERED = 9
 ```
 
-Indicates that an incoming call is received.
+The incoming call is answered.
 
 **Since:** 23
 
-<!--Device-CCallState-CCALL_STATE_INCOMING = 4--><!--Device-CCallState-CCALL_STATE_INCOMING = 4-End-->
+<!--Device-CCallState-CCALL_STATE_ANSWERED = 9--><!--Device-CCallState-CCALL_STATE_ANSWERED = 9-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## CCALL_STATE_WAITING
+## CCALL_STATE_DIALING
 
 ```TypeScript
-CCALL_STATE_WAITING = 5
+CCALL_STATE_DIALING = 2
 ```
 
-Indicates that another incoming call is received when there is an ongoing call in the same card slot.
+The outgoing call is in the dialing process, and the peer end has not received the ringing.
 
 **Since:** 23
 
-<!--Device-CCallState-CCALL_STATE_WAITING = 5--><!--Device-CCallState-CCALL_STATE_WAITING = 5-End-->
+<!--Device-CCallState-CCALL_STATE_DIALING = 2--><!--Device-CCallState-CCALL_STATE_DIALING = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -138,6 +96,20 @@ Indicates that the call is being released.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
+## CCALL_STATE_HOLDING
+
+```TypeScript
+CCALL_STATE_HOLDING = 1
+```
+
+The call is on hold.
+
+**Since:** 23
+
+<!--Device-CCallState-CCALL_STATE_HOLDING = 1--><!--Device-CCallState-CCALL_STATE_HOLDING = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
 ## CCALL_STATE_IDLE
 
 ```TypeScript
@@ -152,16 +124,44 @@ No call is in progress.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## CCALL_STATE_ANSWERED
+## CCALL_STATE_INCOMING
 
 ```TypeScript
-CCALL_STATE_ANSWERED = 9
+CCALL_STATE_INCOMING = 4
 ```
 
-The incoming call is answered.
+Indicates that an incoming call is received.
 
 **Since:** 23
 
-<!--Device-CCallState-CCALL_STATE_ANSWERED = 9--><!--Device-CCallState-CCALL_STATE_ANSWERED = 9-End-->
+<!--Device-CCallState-CCALL_STATE_INCOMING = 4--><!--Device-CCallState-CCALL_STATE_INCOMING = 4-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## CCALL_STATE_UNKNOWN
+
+```TypeScript
+CCALL_STATE_UNKNOWN = -1
+```
+
+The call status fails to be obtained and is unknown.
+
+**Since:** 23
+
+<!--Device-CCallState-CCALL_STATE_UNKNOWN = -1--><!--Device-CCallState-CCALL_STATE_UNKNOWN = -1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## CCALL_STATE_WAITING
+
+```TypeScript
+CCALL_STATE_WAITING = 5
+```
+
+Indicates that another incoming call is received when there is an ongoing call in the same card slot.
+
+**Since:** 23
+
+<!--Device-CCallState-CCALL_STATE_WAITING = 5--><!--Device-CCallState-CCALL_STATE_WAITING = 5-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager

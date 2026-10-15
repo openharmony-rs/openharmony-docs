@@ -6,7 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="publish-2"></a>
+<a id="publish3"></a>
 
 ## publish
 
@@ -42,7 +42,7 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | The device does not support geofencing.<br>**Applicable version:** 23 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
@@ -51,7 +51,7 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 | [1600005](../errorcode-notification.md#1600005-notification-slot-disabled) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist.<br>**Applicable version:** 11 and later |
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
-| [1600009](../errorcode-notification.md#1600009-notification-sending-limit-reached) | The notification sending frequency reaches the upper limit. |
+| [1600009](../errorcode-notification.md#1600009-notification-sending-frequency-limit-reached) | The notification sending frequency reaches the upper limit. |
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 | [1600014](../errorcode-notification.md#1600014-no-related-permission) | No permission.<br>**Applicable version:** 11 and later |
 | [1600015](../errorcode-notification.md#1600015-duplicate-configurations-not-allowed-for-the-current-notification-status) | The current notification status does not support duplicate configurations.<br>**Applicable version:** 11 and later |
@@ -63,6 +63,7 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 | [1600029](../errorcode-notification.md#1600029-failed-to-find-the-extensionability-for-the-custom-extension-area-of-the-live-view-widget) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>**Applicable version:** 26.0.0 and later |
 | [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-failed-to-connect-to-the-server) | Network unreachable.<br>**Applicable version:** 11 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -73,7 +74,7 @@ let publishCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publish success");
+        console.info('publish success');
     }
 }
 // Use the actual user ID when calling the API.
@@ -84,17 +85,19 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publish(notificationRequest, userId, publishCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="publish-3"></a>
+
+<a id="publish4"></a>
 
 ## publish
 
@@ -135,7 +138,7 @@ Publishes a notification to a specified user. This API uses a promise to return 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | The device does not support geofencing.<br>**Applicable version:** 23 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
@@ -144,7 +147,7 @@ Publishes a notification to a specified user. This API uses a promise to return 
 | [1600005](../errorcode-notification.md#1600005-notification-slot-disabled) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist.<br>**Applicable version:** 11 and later |
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
-| [1600009](../errorcode-notification.md#1600009-notification-sending-limit-reached) | The notification sending frequency reaches the upper limit. |
+| [1600009](../errorcode-notification.md#1600009-notification-sending-frequency-limit-reached) | The notification sending frequency reaches the upper limit. |
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 | [1600014](../errorcode-notification.md#1600014-no-related-permission) | No permission.<br>**Applicable version:** 11 and later |
 | [1600015](../errorcode-notification.md#1600015-duplicate-configurations-not-allowed-for-the-current-notification-status) | The current notification status does not support duplicate configurations.<br>**Applicable version:** 11 and later |
@@ -156,6 +159,7 @@ Publishes a notification to a specified user. This API uses a promise to return 
 | [1600029](../errorcode-notification.md#1600029-failed-to-find-the-extensionability-for-the-custom-extension-area-of-the-live-view-widget) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>**Applicable version:** 26.0.0 and later |
 | [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-failed-to-connect-to-the-server) | Network unreachable.<br>**Applicable version:** 11 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -166,9 +170,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -177,8 +181,10 @@ let notificationRequest: notificationManager.NotificationRequest = {
 let userId: number = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
-    console.info("publish success");
+    console.info('publish success');
 }).catch((err: BusinessError) => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

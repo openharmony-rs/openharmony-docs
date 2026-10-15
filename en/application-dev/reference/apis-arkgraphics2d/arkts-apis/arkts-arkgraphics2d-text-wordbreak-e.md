@@ -12,22 +12,6 @@ Enumerates the word break types.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-Default mode that break words based on language-specific conventions.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
-
-<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## BREAK_ALL
 
 ```TypeScript
@@ -38,25 +22,9 @@ Allows breaks within any character in non-CJK text. (CJK means Chinese, Japanese
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-WordBreak-BREAK_ALL = 1--><!--Device-WordBreak-BREAK_ALL = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## BREAK_WORD
-
-```TypeScript
-BREAK_WORD = 2
-```
-
-For non-CJK text, breaks lines between any two characters. If a line contains break points (such as whitespace characters), the line breaks at the break points first to keep words intact. If the entire line has no break points, the line breaks between any two characters. For CJK text, this strategy behaves the same as NORMAL.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
-
-<!--Device-WordBreak-BREAK_WORD = 2--><!--Device-WordBreak-BREAK_WORD = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -72,8 +40,40 @@ When using this word break strategy, you need to use the `locale` attribute in [
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-WordBreak-BREAK_HYPHEN = 3--><!--Device-WordBreak-BREAK_HYPHEN = 3-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## BREAK_WORD
+
+```TypeScript
+BREAK_WORD = 2
+```
+
+For non-CJK text, breaks lines between any two characters. If a line contains break points (such as whitespace characters), the line breaks at the break points first to keep words intact. If the entire line has no break points, the line breaks between any two characters. For CJK text, this strategy behaves the same as NORMAL.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-WordBreak-BREAK_WORD = 2--><!--Device-WordBreak-BREAK_WORD = 2-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+Default mode that break words based on language-specific conventions.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

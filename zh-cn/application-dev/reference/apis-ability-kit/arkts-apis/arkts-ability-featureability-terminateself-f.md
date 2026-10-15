@@ -6,6 +6,8 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="terminateself1"></a>
+
 ## terminateSelf
 
 ```TypeScript
@@ -42,7 +44,7 @@ featureAbility.terminateSelf(
 ```
 
 
-<a id="terminateself-1"></a>
+<a id="terminateself2"></a>
 
 ## terminateSelf
 

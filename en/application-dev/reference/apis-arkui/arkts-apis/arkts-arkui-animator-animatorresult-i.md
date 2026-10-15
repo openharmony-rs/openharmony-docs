@@ -198,6 +198,8 @@ See ArkTS-based Declarative Development Paradigm.
 animator.play();
 ```
 
+<a id="reset1"></a>
+
 ## reset
 
 ```TypeScript
@@ -266,7 +268,7 @@ struct AnimatorTest {
 }
 ```
 
-<a id="reset-1"></a>
+<a id="reset2"></a>
 
 ## reset
 
@@ -274,7 +276,7 @@ struct AnimatorTest {
 reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 ```
 
-Resets the animation parameters of this animator. Compared with [reset](#reset), this API accepts parameters of the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
+Resets the animation parameters of this animator. Compared with [reset](#reset1), this API accepts parameters of the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
 
 **Since:** 18
 
@@ -423,7 +425,7 @@ Note: This API is supported since API version 6 and deprecated since API version
 
 **Deprecated since:** 12
 
-**Substitutes:** onCancel
+**Substitutes:** [onCancel](#oncancel)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -445,7 +447,7 @@ Note: This API is supported since API version 6 and deprecated since API version
 
 **Deprecated since:** 12
 
-**Substitutes:** onFinish
+**Substitutes:** [onFinish](#onfinish)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -467,7 +469,7 @@ Note: This API is supported since API version 6 and deprecated since API version
 
 **Deprecated since:** 12
 
-**Substitutes:** onFrame
+**Substitutes:** [onFrame](#onframe)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -495,7 +497,7 @@ Note: This API is supported since API version 6 and deprecated since API version
 
 **Deprecated since:** 12
 
-**Substitutes:** onRepeat
+**Substitutes:** [onRepeat](#onrepeat)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -515,7 +517,7 @@ Updates this animator.
 
 **Deprecated since:** 9
 
-**Substitutes:** reset
+**Substitutes:** [reset](#reset)
 
 <!--Device-AnimatorResult-update(options: AnimatorOptions): void--><!--Device-AnimatorResult-update(options: AnimatorOptions): void-End-->
 

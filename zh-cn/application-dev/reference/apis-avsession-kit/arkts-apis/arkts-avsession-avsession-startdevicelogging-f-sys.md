@@ -44,6 +44,7 @@ function startDeviceLogging(url: string, maxSize?: number): Promise<void>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,3 +58,5 @@ async function startDeviceLogging() {
   });
 }
 ```
+
+<!--DelEnd-->

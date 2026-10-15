@@ -6,27 +6,25 @@ enum SettingType
 
 表示设置类型的枚举。
 
-@enum { int }
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-enum SettingType--><!--Device-avMusicTemplate-enum SettingType-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-## SWITCH
+## JUMP
 
 ```TypeScript
-SWITCH = 0
+JUMP = 2
 ```
 
-开关设置，用于控制功能的开启或关闭。
+跳转设置，用于跳转到另一个界面。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingType-SWITCH = 0--><!--Device-SettingType-SWITCH = 0-End-->
+<!--Device-SettingType-JUMP = 2--><!--Device-SettingType-JUMP = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -46,18 +44,18 @@ LIST = 1
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-## JUMP
+## SWITCH
 
 ```TypeScript
-JUMP = 2
+SWITCH = 0
 ```
 
-跳转设置，用于跳转到另一个界面。
+开关设置，用于控制功能的开启或关闭。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SettingType-JUMP = 2--><!--Device-SettingType-JUMP = 2-End-->
+<!--Device-SettingType-SWITCH = 0--><!--Device-SettingType-SWITCH = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate

@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="updateprinterstate1"></a>
+
 ## updatePrinterState
 
 ```TypeScript
@@ -40,6 +42,7 @@ function updatePrinterState(printerId: string, state: PrinterState, callback: As
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ print.updatePrinterState(printerId, state, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="updateprinterstate-1"></a>
+
+<a id="updateprinterstate2"></a>
 
 ## updatePrinterState
 
@@ -99,6 +104,7 @@ function updatePrinterState(printerId: string, state: PrinterState): Promise<voi
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,3 +119,5 @@ print.updatePrinterState(printerId, state).then(() => {
     console.error(`Failed to update printer state. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

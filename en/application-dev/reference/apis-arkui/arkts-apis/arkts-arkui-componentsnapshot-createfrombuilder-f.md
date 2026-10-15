@@ -6,6 +6,8 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
+<a id="createfrombuilder1"></a>
+
 ## createFromBuilder
 
 ```TypeScript
@@ -29,7 +31,7 @@ Renders a custom component in the application background and outputs its snapsho
 
 **Deprecated since:** 18
 
-**Substitutes:** createFromBuilder
+**Substitutes:** [createFromBuilder](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#createfrombuilder)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -43,7 +45,7 @@ Renders a custom component in the application background and outputs its snapsho
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001. |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the width and height of the root component of the builder are both 0, the snapshot operation fails and error code 100001 is thrown. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Yes | Callback used to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
 | delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed- in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.<br>**Since:** 12 |
 | checkImageStatus | boolean | No | Whether to verify the image decoding status before taking a snapshot.<br> **true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**<br>**Since:** 12 |
@@ -120,7 +122,7 @@ struct OffscreenSnapshotExample {
 ```
 
 
-<a id="createfrombuilder-1"></a>
+<a id="createfrombuilder2"></a>
 
 ## createFromBuilder
 
@@ -129,7 +131,7 @@ function createFromBuilder(builder: CustomBuilder, delay?: number,
     checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>
 ```
 
-Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.
+Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the promise.
 
 > **NOTE:** 
 > 
@@ -145,7 +147,7 @@ Renders a custom component in the application background and outputs its snapsho
 
 **Deprecated since:** 18
 
-**Substitutes:** createFromBuilder
+**Substitutes:** [createFromBuilder](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#createfrombuilder)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -159,7 +161,7 @@ Renders a custom component in the application background and outputs its snapsho
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001. |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the width and height of the root component of the builder are both 0, the snapshot operation fails and error code 100001 is thrown. |
 | delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed- in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br>**Since:** 12 |
 | checkImageStatus | boolean | No | Whether to verify the image decoding status before taking a snapshot.<br> **true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**<br>**Since:** 12 |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot.<br>**Since:** 12 |

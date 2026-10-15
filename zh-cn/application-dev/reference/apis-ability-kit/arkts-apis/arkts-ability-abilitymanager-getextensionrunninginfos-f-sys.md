@@ -6,6 +6,8 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="getextensionrunninginfos1"></a>
+
 ## getExtensionRunningInfos
 
 ```TypeScript
@@ -28,7 +30,7 @@ function getExtensionRunningInfos(upperLimit: number): Promise<Array<ExtensionRu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2&lt;sup&gt;31&lt;/sup&gt;-1。 |
+| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2^31-1。 |
 
 **返回值：**
 
@@ -40,12 +42,12 @@ function getExtensionRunningInfos(upperLimit: number): Promise<Array<ExtensionRu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
-<a id="getextensionrunninginfos-1"></a>
+<a id="getextensionrunninginfos2"></a>
 
 ## getExtensionRunningInfos
 
@@ -69,13 +71,13 @@ function getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback<Ar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2&lt;sup&gt;31&lt;/sup&gt;-1。 |
+| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2^31-1。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ExtensionRunningInfo](arkts-ability-abilitymanager-extensionrunninginfo-t-sys.md)&gt;&gt; | 是 | 回调函数。当获取运行扩展能力的信息成功，err为undefined，data为获取到的运行扩展能力信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |

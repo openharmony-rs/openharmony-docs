@@ -22,7 +22,7 @@ function startTrace(name: string, taskId: number, expectedTime?: number): void
 
 **废弃版本：** 8
 
-**替代接口：** startTrace
+**替代接口：** [startTrace](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-starttrace-f.md)
 
 <!--Device-bytrace-function startTrace(name: string, taskId: number, expectedTime?: number): void--><!--Device-bytrace-function startTrace(name: string, taskId: number, expectedTime?: number): void-End-->
 

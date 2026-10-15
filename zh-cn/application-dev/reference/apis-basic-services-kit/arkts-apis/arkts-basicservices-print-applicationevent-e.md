@@ -12,17 +12,17 @@ enum ApplicationEvent
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## APPLICATION_CREATED
+## APPLICATION_CLOSED_FOR_CANCELED
 
 ```TypeScript
-APPLICATION_CREATED = 0
+APPLICATION_CLOSED_FOR_CANCELED = 2
 ```
 
-表示打印应用被拉起的事件。
+表示由于点击取消而关闭打印应用的事件。
 
 **起始版本：** 14
 
-<!--Device-ApplicationEvent-APPLICATION_CREATED = 0--><!--Device-ApplicationEvent-APPLICATION_CREATED = 0-End-->
+<!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2--><!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -40,16 +40,16 @@ APPLICATION_CLOSED_FOR_STARTED = 1
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## APPLICATION_CLOSED_FOR_CANCELED
+## APPLICATION_CREATED
 
 ```TypeScript
-APPLICATION_CLOSED_FOR_CANCELED = 2
+APPLICATION_CREATED = 0
 ```
 
-表示由于点击取消而关闭打印应用的事件。
+表示打印应用被拉起的事件。
 
 **起始版本：** 14
 
-<!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2--><!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2-End-->
+<!--Device-ApplicationEvent-APPLICATION_CREATED = 0--><!--Device-ApplicationEvent-APPLICATION_CREATED = 0-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

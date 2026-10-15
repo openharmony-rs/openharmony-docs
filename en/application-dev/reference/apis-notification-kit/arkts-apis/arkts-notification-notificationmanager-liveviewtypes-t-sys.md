@@ -6,6 +6,8 @@ export type LiveViewTypes = _LiveViewTypes
 
 Enumerates live view types.
 
+**Type:** _LiveViewTypes
+
 **Since:** 18
 
 <!--Device-notificationManager-export type LiveViewTypes = _LiveViewTypes--><!--Device-notificationManager-export type LiveViewTypes = _LiveViewTypes-End-->
@@ -13,5 +15,3 @@ Enumerates live view types.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _LiveViewTypes

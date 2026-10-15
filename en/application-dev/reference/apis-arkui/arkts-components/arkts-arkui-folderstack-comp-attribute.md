@@ -11,7 +11,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 > Setting the **offset** and **margin** attributes may cause the upper and lower screens to obscure the fold crease
 > area. This is not recommended.
 
-**Inheritance/Implementation:** FolderStackAttribute extends CommonMethod<FolderStackAttribute>
+**Inheritance/Implementation:** FolderStackAttribute extends CommonMethod&lt;FolderStackAttribute&gt;
 
 **Since:** 11
 
@@ -25,7 +25,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 alignContent(value: Alignment)
 ```
 
-Sets the alignment of child components in the container. After this attribute is set, child components are arranged in the container according to the specified alignment. When both this attribute and [align](arkts-arkui-common-comp-commonmethod-c.md#align) are set, whichever is set last takes effect.
+Sets the alignment of child components in the container. After this attribute is set, child components are arranged in the container according to the specified alignment. When both this attribute and [align](arkts-arkui-common-comp-commonmethod-c.md#align1) are set, whichever is set last takes effect.
 
 > **NOTE:** 
 > 

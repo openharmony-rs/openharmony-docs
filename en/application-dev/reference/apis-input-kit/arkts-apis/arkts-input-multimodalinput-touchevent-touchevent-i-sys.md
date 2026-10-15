@@ -26,7 +26,7 @@ import { Action as KeyAction, SourceType, ToolType, Touch, TouchEvent, FixedMode
 fixedMode?: FixedMode
 ```
 
-Coordinate correction mode.
+Coordinate correction mode. The default value is FixedMode.NONE.
 
 **Type:** [FixedMode](arkts-input-multimodalinput-touchevent-fixedmode-e-sys.md)
 
@@ -44,7 +44,7 @@ Coordinate correction mode.
 isInject?: boolean
 ```
 
-Whether the touch event is an injection event. For details about injection events, see [@ohos.multimodalInput.inputEventClient](arkts-input-multimodalinput-inputeventclient.md).
+Whether the touch event is an injection event. The default value is false. For details about injection events, see [@ohos.multimodalInput.inputEventClient](arkts-input-multimodalinput-inputeventclient.md).
 
 **Type:** boolean
 

@@ -12,6 +12,22 @@ Enum for optimization level
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
+## AUTO
+
+```TypeScript
+AUTO = 4
+```
+
+Choose optimization based on device
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OptimizationLevel-AUTO = 4--><!--Device-OptimizationLevel-AUTO = 4-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
 ## O0
 
 ```TypeScript
@@ -57,21 +73,5 @@ Cast network to float16, including batch norm
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-OptimizationLevel-O3 = 3--><!--Device-OptimizationLevel-O3 = 3-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
-## AUTO
-
-```TypeScript
-AUTO = 4
-```
-
-Choose optimization based on device
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-OptimizationLevel-AUTO = 4--><!--Device-OptimizationLevel-AUTO = 4-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

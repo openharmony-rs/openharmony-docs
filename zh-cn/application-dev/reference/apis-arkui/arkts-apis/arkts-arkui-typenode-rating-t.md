@@ -6,6 +6,8 @@ type Rating = TypedFrameNode<RatingInterface, RatingAttribute>
 
 Rating类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;RatingInterface, [RatingAttribute](../arkts-components/arkts-arkui-rating-comp-attribute.md)&gt;
+
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Rating类型的FrameNode节点类型。
 <!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>--><!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;RatingInterface, [RatingAttribute](../arkts-components/arkts-arkui-rating-comp-attribute.md)&gt;

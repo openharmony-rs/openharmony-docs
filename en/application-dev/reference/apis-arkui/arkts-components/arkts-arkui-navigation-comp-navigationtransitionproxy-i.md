@@ -56,12 +56,6 @@ updateTransition?(progress: number): void
 
 Updates the progress of this interactive transition animation. (Non-interactive animations do not support setting the animation progress).
 
-> **NOTE:** 
-> 
-> You are not advised to use stack operations in [aboutToAppear](arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear), as the
-> page has not yet finished building at this stage, which may lead to issues such as white screens or navigation
-> failures.
-
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -76,7 +70,7 @@ Updates the progress of this interactive transition animation. (Non-interactive 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| progress | number | Yes | Progress percentage of the interactive transition animation. Value range: [0, 1]. |
+| progress | number | Yes | Progress of the interactive transition animation. Value range: [0, 1]. |
 
 ## from
 
@@ -106,9 +100,11 @@ isInteractive?: boolean
 
 Whether the transition animation is interactive.
 
-**true**: yes; **false**: no
-
 Default value: **false**
+
+**true**: The transition animation is interactive.
+
+**false**: The transition animation is not interactive.
 
 **Type:** boolean
 

@@ -41,6 +41,7 @@ function subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): voi
 | [9800004](../errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | System service operation failed. |
 | [9800005](../errorcode-backgroundTaskMgr.md#9800005-长时任务校验失败) | Continuous task verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ try {
     console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

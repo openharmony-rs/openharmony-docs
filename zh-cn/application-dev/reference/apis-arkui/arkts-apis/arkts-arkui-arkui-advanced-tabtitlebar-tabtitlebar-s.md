@@ -12,14 +12,6 @@ TabTitleBar是页签型标题栏组件，支持页签列表与关联内容的联
 > 
 > - 设置TabTitleBar的[通用属性](../arkts-components/arkts-arkui-common-comp.md)或[通用事件](../arkts-components/arkts-arkui-common-comp.md)时，编译工具链会在__Common__节点上挂载而非直接应用到组件本身，可能导致设置不生效或不符合预期，因此不建议设置。
 
-## 子组件
-
-无
-
-## TabTitleBarAttribute
-
-不支持通用事件。
-
 **起始版本：** 10
 
 **装饰器类型：** @Component
@@ -27,6 +19,14 @@ TabTitleBar是页签型标题栏组件，支持页签列表与关联内容的联
 <!--Device-unnamed-export declare struct TabTitleBar--><!--Device-unnamed-export declare struct TabTitleBar-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 子组件
+
+无
+
+## TabTitleBarAttribute
+
+不支持通用事件。
 
 ## 导入模块
 

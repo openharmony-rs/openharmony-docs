@@ -24,7 +24,7 @@ Obtains the **DragPreview** object, which represents the preview displayed durin
 
 **Deprecated since:** 18
 
-**Substitutes:** getDragPreview
+**Substitutes:** [getDragPreview](arkts-arkui-arkui-uicontext-dragcontroller-c.md#getdragpreview)
 
 **Model restriction:** This API can be used only in the stage model.
 

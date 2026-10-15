@@ -38,6 +38,7 @@ onAutoStartupOff(info: AutoStartupInfo): void
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | 是 | 取消开机自启动的应用组件信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,6 +64,8 @@ try {
   console.error(`autoStartupManager.on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## onAutoStartupOn
 
@@ -88,6 +91,7 @@ onAutoStartupOn(info: AutoStartupInfo): void
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | 是 | 设置为开机自启动的应用组件信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,3 +117,5 @@ try {
   console.error(`autoStartupManager.on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
+
+<!--DelEnd-->

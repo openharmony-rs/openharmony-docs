@@ -50,6 +50,7 @@ Obtains the manual exposure duration in use.
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,6 +63,8 @@ function getExposure(nightPhotoSession: camera.NightPhotoSession): number | unde
   return exposure;
 }
 ```
+
+<!--DelEnd-->
 
 ## setExposure
 

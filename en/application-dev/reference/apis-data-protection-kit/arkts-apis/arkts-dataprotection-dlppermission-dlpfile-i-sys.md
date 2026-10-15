@@ -4,7 +4,7 @@
 export interface DLPFile
 ```
 
-Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP file object. You can use [generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md) or [openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md) to obtain a **DLPFile** instance. The **DLPFile** object represents an opened DLP file handle, which encapsulates all operation APIs for DLP files. After using the object, the system must call the [closeDLPFile](#closedlpfile) API to release resources to prevent file handle leaks. Authorization is required when the **DLPFile** object is transferred across processes.
+Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP file object. You can use [generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md#generatedlpfile1) or [openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile1) to obtain a **DLPFile** instance. The **DLPFile** object represents an opened DLP file handle, which encapsulates all operation APIs for DLP files. After using the object, the system must call the [closeDLPFile](#closedlpfile) API to release resources to prevent file handle leaks. Authorization is required when the **DLPFile** object is transferred across processes.
 
 **Since:** 10
 
@@ -20,6 +20,8 @@ Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP fil
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="adddlplinkfile1"></a>
+
 ## addDLPLinkFile
 
 ```TypeScript
@@ -28,7 +30,7 @@ addDLPLinkFile(linkFileName: string): Promise<void>
 
 Adds a link file to the Filesystem in Userspace (FUSE). FUSE allows you to implement custom logic of the file system in user space. The link file is a virtual file in the FUSE, which is used to map to the DLP file. The read and write on the link file will be synchronized to the actual DLP file. This API uses a promise to return the result.
 
-After calling **addDLPLinkFile** to add a link file, the system needs to call [deleteDLPLinkFile](#deletedlplinkfile) to remove the DLP link file.
+After calling **addDLPLinkFile** to add a link file, the system needs to call [deleteDLPLinkFile](#deletedlplinkfile1) to remove the DLP link file.
 
 When a DLP application needs to access a DLP file using a standard file API, it can add a link file as the virtual plaintext file to map the DLP file, and then perform read and write on the link file as it does on a common file.
 
@@ -60,12 +62,13 @@ When a DLP application needs to access a DLP file using a standard file API, it 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -98,7 +101,9 @@ async function exampleFunction() {
 exampleFunction();
 ```
 
-<a id="adddlplinkfile-1"></a>
+<!--DelEnd-->
+
+<a id="adddlplinkfile2"></a>
 
 ## addDLPLinkFile
 
@@ -108,7 +113,7 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 
 Adds a link file to the FUSE. This API uses an asynchronous callback to return the result. After this API is successfully called, a virtual file used to map the DLP file is created in the FUSE.
 
-After calling **addDLPLinkFile** to add a link file, the system needs to call [deleteDLPLinkFile](#deletedlplinkfile) to remove the DLP link file.
+After calling **addDLPLinkFile** to add a link file, the system needs to call [deleteDLPLinkFile](#deletedlplinkfile1) to remove the DLP link file.
 
 This API is called when a DLP application needs to access a DLP file using a standard file API.
 
@@ -135,12 +140,13 @@ This API is called when a DLP application needs to access a DLP file using a sta
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -176,6 +182,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
+
+<a id="closedlpfile1"></a>
+
 ## closeDLPFile
 
 ```TypeScript
@@ -184,7 +194,7 @@ closeDLPFile(): Promise<void>
 
 Closes a **DLPFile** object. This API uses a promise to return the result.
 
-After calling [generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md) to return a **DLPFile** object, the system must call **closeDLPFile()** to release resources after using the object.
+After calling [generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md#generatedlpfile1) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile1) to return a **DLPFile** object, the system must call **closeDLPFile()** to release resources after using the object.
 
 This API is used when the file owner decides to close a DLP file.
 
@@ -219,6 +229,7 @@ This API is used when the file owner decides to close a DLP file.
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -250,7 +261,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="closedlpfile-1"></a>
+<!--DelEnd-->
+
+<a id="closedlpfile2"></a>
 
 ## closeDLPFile
 
@@ -296,6 +309,7 @@ This API is used when the file owner decides to close a DLP file.
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -330,6 +344,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
+
+<a id="deletedlplinkfile1"></a>
+
 ## deleteDLPLinkFile
 
 ```TypeScript
@@ -338,7 +356,7 @@ deleteDLPLinkFile(linkFileName: string): Promise<void>
 
 Deletes a link file from the FUSE. This API uses a promise to return the result. After the API is successfully called, the specified link file is deleted from the FUSE.
 
-Before calling **deleteDLPLinkFile**, the system must call [addDLPLinkFile](#adddlplinkfile) to add a DLP link file.
+Before calling **deleteDLPLinkFile**, the system must call [addDLPLinkFile](#adddlplinkfile1) to add a DLP link file.
 
 This API is used to clear the link file mapping after DLP file access is complete.
 
@@ -370,12 +388,13 @@ This API is used to clear the link file mapping after DLP file access is complet
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -409,7 +428,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="deletedlplinkfile-1"></a>
+<!--DelEnd-->
+
+<a id="deletedlplinkfile2"></a>
 
 ## deleteDLPLinkFile
 
@@ -419,7 +440,7 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 
 Deletes a link file from the FUSE. This API uses an asynchronous callback to return the result. After the API is successfully called, the specified link file is deleted from the FUSE.
 
-Before calling **deleteDLPLinkFile**, the system must call [addDLPLinkFile](#adddlplinkfile) to add a DLP link file.
+Before calling **deleteDLPLinkFile**, the system must call [addDLPLinkFile](#adddlplinkfile1) to add a DLP link file.
 
 This API is used to clear the link file mapping after DLP file access is complete.
 
@@ -446,12 +467,13 @@ This API is used to clear the link file mapping after DLP file access is complet
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -488,6 +510,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
+
+<a id="recoverdlpfile1"></a>
+
 ## recoverDLPFile
 
 ```TypeScript
@@ -512,7 +538,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| plaintextFd | number | Yes | FD of the target plaintext file. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| plaintextFd | number | Yes | FD of the target plaintext file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 
 **Return value:**
 
@@ -526,7 +552,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -538,6 +564,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 | [19100010](../errorcode-dlp.md#19100010-read-only-dlp-file) | The DLP file is read only. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -574,7 +601,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="recoverdlpfile-1"></a>
+<!--DelEnd-->
+
+<a id="recoverdlpfile2"></a>
 
 ## recoverDLPFile
 
@@ -600,7 +629,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| plaintextFd | number | Yes | FD of the target plaintext file. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| plaintextFd | number | Yes | FD of the target plaintext file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to receive the result of recovering the plaintext of a DLP file. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -609,7 +638,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -621,6 +650,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 | [19100010](../errorcode-dlp.md#19100010-read-only-dlp-file) | The DLP file is read only. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -658,6 +688,10 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
+
+<a id="replacedlplinkfile1"></a>
 
 ## replaceDLPLinkFile
 
@@ -697,12 +731,13 @@ When you need to access a different DLP file, you can replace the link file to c
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -738,7 +773,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="replacedlplinkfile-1"></a>
+<!--DelEnd-->
+
+<a id="replacedlplinkfile2"></a>
 
 ## replaceDLPLinkFile
 
@@ -773,12 +810,13 @@ When you need to access a different DLP file, you can replace the link file. Bef
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -816,6 +854,10 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
+
+<a id="resumefuselink1"></a>
 
 ## resumeFuseLink
 
@@ -856,6 +898,7 @@ After the link file is replaced, the read and write need to be resumed for norma
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -890,7 +933,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="resumefuselink-1"></a>
+<!--DelEnd-->
+
+<a id="resumefuselink2"></a>
 
 ## resumeFuseLink
 
@@ -932,6 +977,7 @@ After the link file is replaced, the read and write need to be resumed.
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -968,6 +1014,10 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
+
+<a id="stopfuselink1"></a>
 
 ## stopFuseLink
 
@@ -1008,6 +1058,7 @@ Before deleting a link file, stop the read and write to ensure secure file opera
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1040,7 +1091,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="stopfuselink-1"></a>
+<!--DelEnd-->
+
+<a id="stopfuselink2"></a>
 
 ## stopFuseLink
 
@@ -1082,6 +1135,7 @@ Before deleting a link file, stop the read and write.
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1117,6 +1171,8 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
 
 ## dlpProperty
 

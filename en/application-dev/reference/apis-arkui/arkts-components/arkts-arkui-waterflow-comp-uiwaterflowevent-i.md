@@ -4,7 +4,9 @@
 declare interface UIWaterFlowEvent extends UIScrollableCommonEvent
 ```
 
-Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-2) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node.
+Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent3) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node.
+
+**UIWaterFlowEvent** inherits from [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md).
 
 **Inheritance/Implementation:** UIWaterFlowEvent extends [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md)
 
@@ -22,7 +24,12 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 Sets the callback for the [onDidScroll](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12) event.
 
-If the input parameter is **undefined**, the event callback is reset.
+> **NOTE:** 
+> 
+> **setOnWillScroll** is used to set the callback before each frame starts scrolling, and **setOnDidScroll** is
+> used to set the callback after each frame finishes scrolling. The two can be used at the same time, and the
+> callback of **setOnWillScroll** is triggered before that of **setOnDidScroll**.
+> If the input parameter is **undefined**, the event callback is reset.
 
 **Since:** 19
 
@@ -46,7 +53,7 @@ If the input parameter is **undefined**, the event callback is reset.
 setOnScrollIndex(callback: OnWaterFlowScrollIndexCallback | undefined): void
 ```
 
-Sets the callback of the [onScrollIndex](../../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#onscrollindex11) event.
+Sets the callback of the [onScrollIndex](arkts-arkui-waterflow-comp-attribute.md#onscrollindex) event.
 
 If the input parameter is **undefined**, the event callback is reset.
 

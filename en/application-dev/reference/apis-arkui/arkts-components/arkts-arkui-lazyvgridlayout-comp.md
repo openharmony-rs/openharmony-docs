@@ -1,30 +1,39 @@
 # LazyVGridLayout
 
-Implements a grid layout that supports lazy loading.
+This component is used to implement a grid layout that supports lazy loading. It is suitable for scenarios where a large number of grid items need to be rendered on demand in a scroll container, reducing the initial frame rendering time and memory overhead.
 
-In versions earlier than API version 26.0.0, the parent component of the **LazyVGridLayout** component supports the WaterFlow and FlowItem components. You can also encapsulate the parent component using a custom component or NodeContainer component and use it in **WaterFlow** or **FlowItem**.
+In versions earlier than API version 26.0.0, the parent component of the **LazyVGridLayout** component supports the [WaterFlow](arkts-arkui-waterflow-comp.md) and [FlowItem](arkts-arkui-flowitem-comp-attribute.md#flowitemattribute) components. You can also encapsulate the parent component using a custom component or [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) component and use it in **WaterFlow** or **FlowItem**.
 
-Since API version 26.0.0, the parent component of this component also supports List, Scroll, or [LazyColumnLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md). Additionally, custom components or NodeContainer components can be encapsulated and then used in **List**, **Scroll**, or **LazyColumnLayout**.
+Since API version 26.0.0, the parent component of this component also supports [List](arkts-arkui-list-comp.md), [Scroll](arkts-arkui-scroll-comp.md), or [LazyColumnLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md). Additionally, custom components or [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) components can be encapsulated and then used in **List**, **Scroll**, or **LazyColumnLayout**.
+
+For more usage scenarios and complete examples of lazy loading layouts, see [Creating Lazy Layouts](../../../ui/arkts-layout-development-create-lazy-layout.md).
 
 > **NOTE:** 
 > 
-> - This component is supported since API version 19. Updates will be marked with a superscript to indicate their earliest API version.
+> - The height of the **LazyVGridLayout** component adapts to content by default. It is not recommended to set attributes that fix or constrain the vertical dimension of the component, as doing so may cause display exceptions or prevent normal scrolling. The attributes involved include [height](arkts-arkui-common-comp-commonmethod-c.md#height1),
+> **height** in [size](arkts-arkui-common-comp-commonmethod-c.md#size), **minHeight**\/**maxHeight** in
+> [constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize), [aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio),
+> [layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight), and scenarios where
+> [height](arkts-arkui-common-comp-commonmethod-c.md#height2) takes a [LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)
+> value.
 > 
-> - This component's height adapts to content by default. Setting the height, height constraints, or aspect ratio causes display anomalies.
+> - When the parent component sets the main axis dimension, **LazyVGridLayout** performs lazy loading based on the visible area of the parent component. When the parent component does not set the main axis dimension,
+> **LazyVGridLayout** is stretched by its content, causing all child components to be loaded and laid out.
 > 
-> - The lazy loading conditions of this component in different parent components are as follows:
+> - The conditions for lazy loading support of this component under different parent components are as follows:
 > 
-> 1. In the **WaterFlow** component, lazy loading is supported only when it uses single-column mode or single-column segments in segmented layout and [FlexDirection](../arkts-apis/arkts-arkui-flexdirection-e.md) is set to **FlexDirection.Column**.Lazy loading is not supported if the **WaterFlow** component is in multi-column mode or the layout direction is
-> **FlexDirection.Row** or **FlexDirection.RowReverse**. Using this component with **FlexDirection.ColumnReverse** in
-> the **WaterFlow** component causes display anomalies.
+> 1. Under the **WaterFlow** component, lazy loading is supported only when **WaterFlow** is in single-column mode or a single-column segment in a segmented layout, and the layout direction [FlexDirection](../arkts-apis/arkts-arkui-flexdirection-e.md) is set to **FlexDirection.Column**. If this component is used in **WaterFlow**'s multi-column mode or horizontal layout (
+> **FlexDirection.Row** or **FlexDirection.RowReverse**), lazy loading is not supported. In addition, using this
+> component under a **WaterFlow** component with the layout direction set to **FlexDirection.ColumnReverse** will
+> cause display exceptions.
 > 
-> 2. In the **List** component, the layout direction must be vertical (that is, the [listDirection](arkts-arkui-list-comp-attribute.md#listdirection) property is set to **Axis.Vertical**). Using this component in a non-vertical **List** component will cause an application crash. If any of the **lanes**, **chainAnimation**, and
-> **scrollSnapAlign** properties is set for the **List** component, the lazy loading of this component will become
-> invalid.
+> 2. Under the **List** component, the layout direction of **List** must be vertical (that is, the [listDirection](arkts-arkui-list-comp-attribute.md#listdirection) attribute is set to **Axis.Vertical**). Using this component in a non-vertical **List** will cause the app to crash. When **List** has any one or more of the [lanes](arkts-arkui-list-comp-attribute.md#lanes1),[chainAnimation](arkts-arkui-list-comp-attribute.md#chainanimation), or [scrollSnapAlign](arkts-arkui-list-comp-attribute.md#scrollsnapalign)attributes set, the lazy loading feature of this component becomes ineffective.
 > 
-> 3. In the **Scroll** component, the layout direction must be vertical (that is, the value of the [scrollable](arkts-arkui-scroll-comp-attribute.md#scrollable) property is **ScrollDirection.Vertical**). Using this component in a non-vertical **Scroll** component will cause an application crash.
+> 3. Under the **Scroll** component, the layout direction of **Scroll** must be vertical (that is, the [scrollable](arkts-arkui-scroll-comp-attribute.md#scrollable) attribute is set to **ScrollDirection.Vertical**). Using this component in a non-vertical **Scroll** will cause the app to crash.
 > 
-> - When lazy loading is enabled, the component only loads child components within the visible area of the parent component, with pre-loading of half-screen content above and below the viewport during frame idle periods.
+> - When the lazy loading feature is in effect, this component loads only the child components within the visible area of the parent component, and preloads content half a screen above and below the visible area during idle time between frames.
+> 
+> - The parent component here refers to the nearest upper-level scroll component of the current component. For specific meanings in other documents, refer to the corresponding content.
 
 ## LazyVGridLayout
 

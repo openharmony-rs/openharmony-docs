@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="install1"></a>
+
 ## install
 
 ```TypeScript
@@ -18,7 +20,7 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install-2)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install3)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -47,8 +49,9 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 | [9201002](../errorcode-enterpriseDeviceManager.md#9201002-企业应用安装失败) | Failed to install the application. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,8 +75,10 @@ bundleManager.install(wantTemp, hapFilePaths, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="install-1"></a>
+
+<a id="install2"></a>
 
 ## install
 
@@ -87,7 +92,7 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install-2)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install3)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -117,8 +122,9 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 | [9201002](../errorcode-enterpriseDeviceManager.md#9201002-企业应用安装失败) | Failed to install the application. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -145,3 +151,5 @@ bundleManager.install(wantTemp, hapFilePaths, installParam, (err) => {
   console.info('Succeeded in installing bundles');
 });
 ```
+
+<!--DelEnd-->

@@ -22,6 +22,8 @@ Provides APIs for obtaining locale information.
 import { intl } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -55,7 +57,7 @@ let locale = new intl.Locale();
 let localeID = locale.toString();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

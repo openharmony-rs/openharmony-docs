@@ -28,19 +28,35 @@ None = 0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## PlainText
+## Number
 
 ```TypeScript
-PlainText = 1
+Number = 3
 ```
 
-纯文本类型，包括text、search、email等。
+数字类型。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ContextMenuInputFieldType-PlainText = 1--><!--Device-ContextMenuInputFieldType-PlainText = 1-End-->
+<!--Device-ContextMenuInputFieldType-Number = 3--><!--Device-ContextMenuInputFieldType-Number = 3-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## Other
+
+```TypeScript
+Other = 5
+```
+
+其他类型。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuInputFieldType-Other = 5--><!--Device-ContextMenuInputFieldType-Other = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,19 +76,19 @@ Password = 2
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## Number
+## PlainText
 
 ```TypeScript
-Number = 3
+PlainText = 1
 ```
 
-数字类型。
+纯文本类型，包括text、search、email等。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ContextMenuInputFieldType-Number = 3--><!--Device-ContextMenuInputFieldType-Number = 3-End-->
+<!--Device-ContextMenuInputFieldType-PlainText = 1--><!--Device-ContextMenuInputFieldType-PlainText = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -89,21 +105,5 @@ Telephone = 4
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContextMenuInputFieldType-Telephone = 4--><!--Device-ContextMenuInputFieldType-Telephone = 4-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## Other
-
-```TypeScript
-Other = 5
-```
-
-其他类型。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ContextMenuInputFieldType-Other = 5--><!--Device-ContextMenuInputFieldType-Other = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

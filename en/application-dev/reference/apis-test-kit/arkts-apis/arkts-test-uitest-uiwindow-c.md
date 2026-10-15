@@ -31,7 +31,7 @@ Closes a window. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-close(): Promise<void>--><!--Device-UiWindow-close(): Promise<void>-End-->
 
@@ -76,7 +76,7 @@ Focuses a window. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-focus(): Promise<void>--><!--Device-UiWindow-focus(): Promise<void>-End-->
 
@@ -120,7 +120,7 @@ Obtains the bounds information of a window. This API uses a promise to return th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-getBounds(): Promise<Rect>--><!--Device-UiWindow-getBounds(): Promise<Rect>-End-->
 
@@ -167,7 +167,7 @@ Obtains the bundle name of the application to which a window belongs. This API u
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-getBundleName(): Promise<string>--><!--Device-UiWindow-getBundleName(): Promise<string>-End-->
 
@@ -214,7 +214,7 @@ Obtains the ID of the display to which a window belongs. This API uses a promise
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-UiWindow-getDisplayId(): Promise<int>--><!--Device-UiWindow-getDisplayId(): Promise<int>-End-->
 
@@ -258,7 +258,7 @@ Obtains the window title. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-getTitle(): Promise<string>--><!--Device-UiWindow-getTitle(): Promise<string>-End-->
 
@@ -302,7 +302,7 @@ Obtains the window mode. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-getWindowMode(): Promise<WindowMode>--><!--Device-UiWindow-getWindowMode(): Promise<WindowMode>-End-->
 
@@ -346,7 +346,7 @@ Checks whether a window is active. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-isActive(): Promise<boolean>--><!--Device-UiWindow-isActive(): Promise<boolean>-End-->
 
@@ -390,7 +390,7 @@ Checks whether a window is focused. This API uses a promise to return the result
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-isFocused(): Promise<boolean>--><!--Device-UiWindow-isFocused(): Promise<boolean>-End-->
 
@@ -434,7 +434,7 @@ Maximizes a window. A window can be resumed to its previous mode using [resume](
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-maximize(): Promise<void>--><!--Device-UiWindow-maximize(): Promise<void>-End-->
 
@@ -479,7 +479,7 @@ Minimizes a window. A window can be resumed to its previous mode using [resume](
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-minimize(): Promise<void>--><!--Device-UiWindow-minimize(): Promise<void>-End-->
 
@@ -524,7 +524,7 @@ Moves a window to the target point. This API uses a promise to return the result
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-moveTo(x: int, y: int): Promise<void>--><!--Device-UiWindow-moveTo(x: int, y: int): Promise<void>-End-->
 
@@ -577,7 +577,7 @@ Resizes a window based on the specified width, height, and direction. This API u
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-resize(wide: int, height: int, direction: ResizeDirection): Promise<void>--><!--Device-UiWindow-resize(wide: int, height: int, direction: ResizeDirection): Promise<void>-End-->
 
@@ -589,7 +589,7 @@ Resizes a window based on the specified width, height, and direction. This API u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| wide | number | Yes | Width of the adjusted window, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown. |
+| wide | number | Yes | Width of the adjusted window, in pixels. The value is an integer greater than or equal to         0. If the value is out of range, error code 401 is thrown. |
 | height | number | Yes | Height of the adjusted window, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown. |
 | direction | [ResizeDirection](arkts-test-uitest-resizedirection-e.md) | Yes | Resize direction. |
 
@@ -618,7 +618,7 @@ Resumes a window to its previous mode. This API uses a promise to return the res
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-resume(): Promise<void>--><!--Device-UiWindow-resume(): Promise<void>-End-->
 
@@ -663,7 +663,7 @@ Switches to the split-screen mode. A window can be resumed to its previous mode 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UiWindow-split(): Promise<void>--><!--Device-UiWindow-split(): Promise<void>-End-->
 

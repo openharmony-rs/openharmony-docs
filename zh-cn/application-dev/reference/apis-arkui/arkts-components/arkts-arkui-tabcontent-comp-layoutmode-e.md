@@ -30,24 +30,6 @@ AUTO = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## VERTICAL
-
-```TypeScript
-VERTICAL = 1
-```
-
-页签内容上下排布，图标在上，文字在下。适用于页签宽度有限、需要节省空间的场景。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-LayoutMode-VERTICAL = 1--><!--Device-LayoutMode-VERTICAL = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## HORIZONTAL
 
 ```TypeScript
@@ -63,5 +45,23 @@ HORIZONTAL = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-LayoutMode-HORIZONTAL = 2--><!--Device-LayoutMode-HORIZONTAL = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## VERTICAL
+
+```TypeScript
+VERTICAL = 1
+```
+
+页签内容上下排布，图标在上，文字在下。适用于页签宽度有限、需要节省空间的场景。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutMode-VERTICAL = 1--><!--Device-LayoutMode-VERTICAL = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

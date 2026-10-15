@@ -48,11 +48,14 @@ Gets tone category.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneAttrs.getCategory();
 ```
+
+<!--DelEnd-->
 
 ## getCustomizedType
 
@@ -82,11 +85,14 @@ Gets customized type of tone.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneAttrs.getCustomizedType();
 ```
+
+<!--DelEnd-->
 
 ## getFileName
 
@@ -116,11 +122,14 @@ Gets file name of tone.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneAttrs.getFileName();
 ```
+
+<!--DelEnd-->
 
 ## getMediaType
 
@@ -150,11 +159,14 @@ Gets media type. This function returns [AUDIO](arkts-audio-systemsoundmanager-me
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneAttrs.getMediaType();
 ```
+
+<!--DelEnd-->
 
 ## getTitle
 
@@ -184,11 +196,14 @@ Gets title of tone.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneAttrs.getTitle();
 ```
+
+<!--DelEnd-->
 
 ## getUri
 
@@ -218,11 +233,14 @@ Gets uri of tone.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneAttrs.getUri();
 ```
+
+<!--DelEnd-->
 
 ## setCategory
 
@@ -253,6 +271,7 @@ Sets tone category.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -260,6 +279,8 @@ let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM; // Change the value to the required constant.
 toneAttrs.setCategory(categoryValue);
 ```
+
+<!--DelEnd-->
 
 ## setFileName
 
@@ -290,6 +311,7 @@ Sets file name of tone.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -297,6 +319,8 @@ let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 let fileName = 'textFileName';
 toneAttrs.setFileName(fileName);
 ```
+
+<!--DelEnd-->
 
 ## setMediaType
 
@@ -326,6 +350,7 @@ Sets media type.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -333,6 +358,8 @@ let type: systemSoundManager.MediaType = systemSoundManager.MediaType.VIDEO; // 
 let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 toneAttrs.setMediaType(type);
 ```
+
+<!--DelEnd-->
 
 ## setTitle
 
@@ -363,6 +390,7 @@ Sets title of tone.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -370,3 +398,5 @@ let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 let title = 'text';
 toneAttrs.setTitle(title);
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="disableadmin1"></a>
+
 ## disableAdmin
 
 ```TypeScript
@@ -40,8 +42,9 @@ function disableAdmin(admin: Want, callback: AsyncCallback<void>): void
 | [9200005](../errorcode-enterpriseDeviceManager.md#9200005-解除激活设备管理器失败) | Failed to deactivate the administrator application of the device. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,8 +66,10 @@ adminManager.disableAdmin(wantTemp, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="disableadmin-1"></a>
+
+<a id="disableadmin2"></a>
 
 ## disableAdmin
 
@@ -101,8 +106,9 @@ function disableAdmin(admin: Want, userId: number, callback: AsyncCallback<void>
 | [9200005](../errorcode-enterpriseDeviceManager.md#9200005-解除激活设备管理器失败) | Failed to deactivate the administrator application of the device. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -123,3 +129,5 @@ adminManager.disableAdmin(wantTemp, 100, (err) => {
   console.info('Succeeded in disabling admin');
 });
 ```
+
+<!--DelEnd-->

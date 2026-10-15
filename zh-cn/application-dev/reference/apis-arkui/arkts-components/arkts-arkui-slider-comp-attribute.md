@@ -76,6 +76,8 @@ blockBorderWidth(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 滑块描边粗细。<br>**说明：** <br>设置string类型时，不支持百分比。 |
 
+<a id="blockcolor1"></a>
+
 ## blockColor
 
 ```TypeScript
@@ -108,7 +110,7 @@ blockColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 滑块的颜色。 <br>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
 
-<a id="blockcolor-1"></a>
+<a id="blockcolor2"></a>
 
 ## blockColor
 
@@ -377,6 +379,8 @@ selectedBorderRadius(value: Dimension)
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 已选择部分的圆角半径。<br>默认值：当style值为SliderStyle.InSet或SliderStyle.OutSet时，跟随底板圆角；当style值为SliderStyle.NONE时，为0。<br>**说明：** <br>不支持Percentage类型。设定值小于0时取默认值。 |
 
+<a id="selectedcolor1"></a>
+
 ## selectedColor
 
 ```TypeScript
@@ -403,7 +407,7 @@ selectedColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 滑轨的已滑动部分颜色。 <br>默认值：`$r('sys.color.ohos_id_color_emphasize')` |
 
-<a id="selectedcolor-1"></a>
+<a id="selectedcolor2"></a>
 
 ## selectedColor
 
@@ -411,7 +415,7 @@ selectedColor(value: ResourceColor)
 selectedColor(selectedColor: ResourceColor | LinearGradient)
 ```
 
-设置滑轨的已滑动部分颜色。与[selectedColor](#selectedcolor)相比，新增了LinearGradient类型的支持。
+设置滑轨的已滑动部分颜色。与[selectedColor](#selectedcolor1)相比，新增了LinearGradient类型的支持。
 
 **起始版本：** 18
 
@@ -430,6 +434,8 @@ selectedColor(selectedColor: ResourceColor | LinearGradient)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | 是 | 滑轨的已滑动部分颜色。<br>默认值：`$r('sys.color.ohos_id_color_emphasize')` <br>**说明：** <br>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。 |
+
+<a id="showsteps1"></a>
 
 ## showSteps
 
@@ -457,7 +463,7 @@ showSteps(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否显示步长刻度值。<br>true：显示刻度值；false：不显示刻度值。<br>默认值：false |
 
-<a id="showsteps-1"></a>
+<a id="showsteps2"></a>
 
 ## showSteps
 

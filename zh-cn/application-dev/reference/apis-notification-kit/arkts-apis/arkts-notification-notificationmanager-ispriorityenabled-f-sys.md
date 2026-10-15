@@ -39,6 +39,7 @@ function isPriorityEnabled(): Promise<boolean>
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,3 +52,5 @@ notificationManager.isPriorityEnabled().then((result : boolean) => {
     hilog.error(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

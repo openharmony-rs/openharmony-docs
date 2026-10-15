@@ -58,6 +58,7 @@ cancelTransfer(): Promise<void>
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Failed to cancel the current transfer. |
 | 2903002 | Current Transfer Information is busy. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,6 +73,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getCurrentTransferInformation
 
@@ -116,6 +119,7 @@ getCurrentTransferInformation(): Promise<OppTransferInformation>
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Failed to obtain the current transmission information. |
 | 2903004 | Current Transfer Information is empty. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -130,6 +134,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('transferStateChange')
 
@@ -165,12 +171,13 @@ off(type: 'transferStateChange', callback?: Callback<OppTransferInformation>): v
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -185,6 +192,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('receiveIncomingFile')
 
@@ -220,12 +229,13 @@ off(type: 'receiveIncomingFile', callback?: Callback<OppTransferInformation>): v
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -239,6 +249,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('transferStateChange')
 
@@ -277,12 +289,13 @@ on(type: 'transferStateChange', callback: Callback<OppTransferInformation>): voi
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**适用版本：** 16 - 24 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed.<br>**适用版本：** 16 - 24 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -305,6 +318,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('receiveIncomingFile')
 
@@ -343,12 +358,13 @@ on(type: 'receiveIncomingFile', callback: Callback<OppTransferInformation>): voi
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**适用版本：** 16 - 24 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed.<br>**适用版本：** 16 - 24 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -371,6 +387,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## sendFile
 
@@ -422,6 +440,7 @@ sendFile(deviceId: string, fileHolds: Array<FileHolder>): Promise<void>
 | 2903002 | Current Transfer Information is busy. |
 | 2903003 | The file is not accessible. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -452,6 +471,8 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setIncomingFileConfirmation
 
@@ -502,6 +523,7 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise<void>
 | 2903002 | Current Transfer Information is busy. |
 | 2903003 | The file is not accessible. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -524,6 +546,8 @@ try {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setLastReceivedFileUri
 
@@ -564,13 +588,14 @@ setLastReceivedFileUri(uri: string): Promise<void>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Failed to set the URI of the last file. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -584,3 +609,5 @@ try {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->

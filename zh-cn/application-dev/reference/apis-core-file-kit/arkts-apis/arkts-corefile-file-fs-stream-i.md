@@ -4,7 +4,7 @@
 declare interface Stream
 ```
 
-文件流，提供流式读写文件数据的能力，使用完毕后需调用close关闭。在调用Stream的方法前，需要先通过fileIo.createStream方法或者fileIo.fdopenStream（同步或异步）来构建一个Stream实例。
+文件流，提供流式读写文件数据的能力，使用完毕后需调用close关闭。在调用Stream的方法前，需要先通过[fileIo.createStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
 
 **起始版本：** 9
 
@@ -17,6 +17,8 @@ declare interface Stream
 ```TypeScript
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
 ```
+
+<a id="close1"></a>
 
 ## close
 
@@ -65,7 +67,7 @@ stream.close().then(() => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -151,6 +153,8 @@ let stream = fileIo.createStreamSync(filePath, "r+");
 stream.closeSync();
 ```
 
+<a id="flush1"></a>
+
 ## flush
 
 ```TypeScript
@@ -205,7 +209,7 @@ stream.flush().then(() => {
 });
 ```
 
-<a id="flush-1"></a>
+<a id="flush2"></a>
 
 ## flush
 
@@ -305,6 +309,8 @@ stream.flushSync();
 stream.close();
 ```
 
+<a id="read1"></a>
+
 ## read
 
 ```TypeScript
@@ -375,7 +381,7 @@ stream.read(arrayBuffer, readOption).then((readLen: number) => {
 });
 ```
 
-<a id="read-1"></a>
+<a id="read2"></a>
 
 ## read
 
@@ -434,7 +440,7 @@ stream.read(arrayBuffer, (err: BusinessError, readLen: number) => {
 });
 ```
 
-<a id="read-2"></a>
+<a id="read3"></a>
 
 ## read
 
@@ -566,6 +572,8 @@ let num = stream.readSync(buf, readOption);
 stream.close();
 ```
 
+<a id="write1"></a>
+
 ## write
 
 ```TypeScript
@@ -636,7 +644,7 @@ stream.write("hello, world", writeOption).then((number: number) => {
 });
 ```
 
-<a id="write-1"></a>
+<a id="write2"></a>
 
 ## write
 
@@ -697,7 +705,7 @@ stream.write("hello, world", (err: BusinessError, bytesWritten: number) => {
 });
 ```
 
-<a id="write-2"></a>
+<a id="write3"></a>
 
 ## write
 
@@ -724,7 +732,7 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer &#124; string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 是 | 支持如下选项：<br>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>   - offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br>   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**适用版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 是 | 支持如下选项：<br>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>         - offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br>         - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**适用版本：** 11 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
@@ -793,7 +801,7 @@ writeSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer &#124; string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>   - offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br>   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**适用版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>           - offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br>           - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**适用版本：** 11 |
 
 **返回值：**
 

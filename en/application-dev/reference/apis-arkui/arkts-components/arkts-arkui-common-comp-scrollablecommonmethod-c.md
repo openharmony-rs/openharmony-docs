@@ -6,9 +6,9 @@ declare class ScrollableCommonMethod<T> extends CommonMethod<T>
 
 CommonScrollableMethod
 
-@extends CommonMethod&lt;T&gt;
+@extends CommonMethod<T>
 
-**Inheritance/Implementation:** ScrollableCommonMethod extends CommonMethod<T>
+**Inheritance/Implementation:** ScrollableCommonMethod extends CommonMethod&lt;T&gt;
 
 **Since:** 12
 
@@ -275,7 +275,7 @@ Sets whether to support scroll gestures.
 enableScrollWithMouse(enabled: boolean | undefined): T
 ```
 
-Sets whether to support scrolling by dragging with the left mouse button pressed. If this API is not called, scrolling by dragging with the left mouse button pressed is not supported by default.
+Set whether to support scrolling by dragging with the left mouse button pressed.
 
 **Since:** 26.0.0
 
@@ -291,7 +291,7 @@ Sets whether to support scrolling by dragging with the left mouse button pressed
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed.<br>**true**: yes. <br>**false**: no. <br>**undefined**: no. |
+| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed.<br>Default value: For API versions earlier than 26.2.0,the defalut value is false. For API versions 26.2.0 and later, the defalut value is true when the scrollable component scrolls horizontally,false otherwise. |
 
 **Return value:**
 
@@ -310,23 +310,23 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 > **NOTE:** 
 > 
 > **fadingEdge** is implemented by setting the [overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay) attribute and the
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode) attribute (with the parameter
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1) attribute (with the parameter
 > values **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When **fadingEdge** takes effect, it overrides
 > the **.overlay()** and **.blendMode()** attributes of the original component, and causes the APIs that require
 > screen capture of the current component and its child components to fail to capture the correct image. The APIs
-> that require screen capture include [blur](arkts-arkui-common-comp-commonmethod-c.md#blur),
-> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur),
-> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness), [visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect),
-> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale), [saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate),
-> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast),
-> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert),
-> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia),
-> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate),
-> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend),
-> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect),
-> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect),
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode), and
-> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness).
+> that require screen capture include [blur](arkts-arkui-common-comp-commonmethod-c.md#blur1),
+> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur1),
+> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness1), [visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect),
+> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale1), [saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate1),
+> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast1),
+> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert1),
+> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia1),
+> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate1),
+> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend1),
+> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect1),
+> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1),
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1), and
+> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness1).
 > 
 > When **fadingEdge** takes effect, it is recommended not to set the [background](arkts-arkui-common-comp-commonmethod-c.md#background)
 > related attributes on the component on which the **fadingEdge** attribute is set, because doing so affects the
@@ -338,7 +338,7 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 > system material and causes the material effect to be inconsistent with the expected effect.
 > 
 > When **fadingEdge** takes effect, the component on which the **fadingEdge** attribute is set is clipped to the
-> boundary. Setting the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute to **false** on this component
+> boundary. Setting the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute to **false** on this component
 > does not take effect.
 
 **Since:** 14
@@ -870,6 +870,8 @@ Sets the scrollbar state.
 | --- | --- |
 | T | Current scrollable component. |
 
+<a id="scrollbarcolor1"></a>
+
 ## scrollBarColor
 
 ```TypeScript
@@ -900,7 +902,7 @@ Sets the scrollbar color.
 | --- | --- |
 | T | Current scrollable component. |
 
-<a id="scrollbarcolor-1"></a>
+<a id="scrollbarcolor2"></a>
 
 ## scrollBarColor
 
@@ -908,7 +910,7 @@ Sets the scrollbar color.
 scrollBarColor(color: Color | number | string | Resource): T
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor&lt;sup&gt;11+&lt;/sup&gt;](#scrollbarcolor), this API supports the Resource type for the **color** parameter.
+Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollbarcolor1), this API supports the Resource type for the **color** parameter.
 
 **Since:** 22
 
@@ -1000,6 +1002,8 @@ Sets the margin of the scrollbar. The margin is calculated based on the distance
 | --- | --- |
 | T | Current scrollable component. |
 
+<a id="scrollbarwidth1"></a>
+
 ## scrollBarWidth
 
 ```TypeScript
@@ -1030,7 +1034,7 @@ Sets the width of the scrollbar. Percentage values are not supported. After the 
 | --- | --- |
 | T | Current scrollable component. |
 
-<a id="scrollbarwidth-1"></a>
+<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 

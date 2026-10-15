@@ -4,7 +4,7 @@
 export interface ShortcutInfo
 ```
 
-Describes the configuration information for a shortcut.
+The module describes the shortcut information defined in the [module.json5](../../../quick-start/module-configuration-file.md#shortcuts) file of an application. The information can be obtained by running [getAllShortcutInfoForSelf](arkts-ability-shortcutmanager-getallshortcutinfoforself-f.md)<!--Del--> or [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)<!--DelEnd-->.
 
 **Since:** 20
 
@@ -50,7 +50,7 @@ Bundle name of the application to which the shortcut belongs.
 hostAbility?: string
 ```
 
-Name of the ability that hosts the shortcut.
+Name of the host ability of the shortcut, that is, the name of the ability that carries this shortcut.
 
 **Type:** string
 

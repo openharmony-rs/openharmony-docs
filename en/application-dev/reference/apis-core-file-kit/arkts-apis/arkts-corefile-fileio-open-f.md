@@ -38,7 +38,7 @@ Opens a file. This API uses a promise to return the result.
 | Promise&lt;number&gt; | Promise that returns the file descriptor of the file opened. |
 
 
-<a id="open-1"></a>
+<a id="open2"></a>
 
 ## open
 
@@ -66,7 +66,7 @@ Opens a file. This API uses an asynchronous callback to return the result.
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked when the file is opened asynchronously, which is used to return the file descriptor. |
 
 
-<a id="open-2"></a>
+<a id="open3"></a>
 
 ## open
 
@@ -95,7 +95,7 @@ Opens a file. This API uses an asynchronous callback to return the result.
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked when the file is opened asynchronously, which is used to return the file descriptor. |
 
 
-<a id="open-3"></a>
+<a id="open4"></a>
 
 ## open
 

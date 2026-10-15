@@ -36,7 +36,7 @@ function off(type: 'error', observerId: number, callback: AsyncCallback<void>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写；         2. 参数类型不正确；3. 参数校验失败。 |
 | [16000003](../errorcode-ability.md#16000003-指定的id不存在) | 指定的ID不存在。 |
 
 **示例**
@@ -44,12 +44,13 @@ function off(type: 'error', observerId: number, callback: AsyncCallback<void>): 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let observerId = 100;
 
 const unregisterErrorObserverCallback = (err: BusinessError) => {
   if (err) {
-    console.error('------------ unregisterErrorObserverCallback ------------', err);
+    hilog.error(0x0000, 'testTag', `------------ unregisterErrorObserverCallback ------------ ${err}`);
   }
 };
 
@@ -58,7 +59,7 @@ try {
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
-  console.error(`error: ${code}, ${message}`);
+  hilog.error(0x0000, 'testTag', `error: ${code}, ${message}`);
 }
 ```
 
@@ -98,7 +99,7 @@ function off(type: 'error', observerId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写；         2. 参数类型不正确；3. 参数校验失败。 |
 | [16000003](../errorcode-ability.md#16000003-指定的id不存在) | 指定的ID不存在。 |
 
 **示例**
@@ -106,21 +107,22 @@ function off(type: 'error', observerId: number): Promise<void>
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let observerId = 100;
 
 try {
   errorManager.off('error', observerId)
     .then((data) => {
-      console.info('----------- unregisterErrorObserver success ----------', data);
+      hilog.info(0x0000, 'testTag', `----------- unregisterErrorObserver success ---------- ${data}`);
     })
     .catch((err: BusinessError) => {
-      console.error(`Failed to unregister error observer. Code: ${err.code}, message: ${err.message}`);
+      hilog.error(0x0000, 'testTag', `Failed to unregister error observer. Code: ${err.code}, message: ${err.message}`);
     });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
-  console.error(`error: ${code}, ${message}`);
+  hilog.error(0x0000, 'testTag', `error: ${code}, ${message}`);
 }
 ```
 
@@ -154,7 +156,7 @@ function off(type: 'loopObserver', observer?: LoopObserver): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写；         2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 请在主线程中调用。 |
 | [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | 观测器不存在。 |
 
@@ -163,13 +165,14 @@ function off(type: 'loopObserver', observer?: LoopObserver): void
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   errorManager.off('loopObserver');
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
-  console.error(`error: ${code}, ${message}`);
+  hilog.error(0x0000, 'testTag', `error: ${code}, ${message}`);
 }
 ```
 
@@ -203,7 +206,7 @@ function off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写；         2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 请在主线程中调用。 |
 | [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | 观测器不存在。 |
 
@@ -211,15 +214,16 @@ function off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver):
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    console.info('promise1 is rejected');
+    hilog.info(0x0000, 'testTag', `promise1 is rejected`);
   }
-  console.info('reason.name: ', reason.name);
-  console.info('reason.message: ', reason.message);
+  hilog.info(0x0000, 'testTag', `reason.name: ${reason.name}`);
+  hilog.info(0x0000, 'testTag', `reason.message: ${reason.message}`);
   if (reason.stack) {
-    console.info('reason.stack: ', reason.stack);
+    hilog.info(0x0000, 'testTag', `reason.stack: ${reason.stack}`);
   }
 };
 
@@ -236,15 +240,16 @@ errorManager.off('unhandledRejection');
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    console.info('promise1 is rejected');
+    hilog.info(0x0000, 'testTag', `promise1 is rejected`);
   }
-  console.info('reason.name: ', reason.name);
-  console.info('reason.message: ', reason.message);
+  hilog.info(0x0000, 'testTag', `reason.name: ${reason.name}`);
+  hilog.info(0x0000, 'testTag', `reason.message: ${reason.message}`);
   if (reason.stack) {
-    console.info('reason.stack: ', reason.stack);
+    hilog.info(0x0000, 'testTag', `reason.stack: ${reason.stack}`);
   }
 };
 
@@ -287,7 +292,7 @@ function off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写；         2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
 | [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | 观测器不存在。 |
 
@@ -295,13 +300,14 @@ function off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const promiseFunc = (observer: errorManager.GlobalError) => {
-  console.info('result name :' + observer.name);
-  console.info('result message :' + observer.message);
-  console.info('result stack :' + observer.stack);
-  console.info('result instanceName :' + observer.instanceName);
-  console.info('result instanceType :' + observer.instanceType);
+  hilog.info(0x0000, 'testTag', `result name :${observer.name}`);
+  hilog.info(0x0000, 'testTag', `result message :${observer.message}`);
+  hilog.info(0x0000, 'testTag', `result stack :${observer.stack}`);
+  hilog.info(0x0000, 'testTag', `result instanceName :${observer.instanceName}`);
+  hilog.info(0x0000, 'testTag', `result instanceType :${observer.instanceType}`);
 };
 
 errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
@@ -349,7 +355,7 @@ function off(type: 'freeze', observer?: FreezeObserver): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写；         2. 参数类型不正确；3. 参数校验失败。 |
 | [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | 观测器不存在。 |
 
 **示例**
@@ -357,9 +363,10 @@ function off(type: 'freeze', observer?: FreezeObserver): void
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const freezeCallback = () => {
-  console.info('freezecallback');
+  hilog.info(0x0000, 'testTag', 'freezecallback');
 };
 try {
   errorManager.on('freeze', freezeCallback);
@@ -367,7 +374,7 @@ try {
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
-  console.error(`error: ${code}, ${message}`);
+  hilog.error(0x0000, 'testTag', `error: ${code}, ${message}`);
 }
 ```
 
@@ -401,7 +408,7 @@ function off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数错误。可能的原因：1. 必填参数未填写；         2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
 | [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | 观测器不存在。 |
 
@@ -410,13 +417,14 @@ function off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const errorFunc = (observer: errorManager.GlobalError) => {
-  console.info('result name :' + observer.name);
-  console.info('result message :' + observer.message);
-  console.info('result stack :' + observer.stack);
-  console.info('result instanceName :' + observer.instanceName);
-  console.info('result instanceType :' + observer.instanceType);
+  hilog.info(0x0000, 'testTag', `result name :${observer.name}`);
+  hilog.info(0x0000, 'testTag', `result message :${observer.message}`);
+  hilog.info(0x0000, 'testTag', `result stack :${observer.stack}`);
+  hilog.info(0x0000, 'testTag', `result instanceName :${observer.instanceName}`);
+  hilog.info(0x0000, 'testTag', `result instanceType :${observer.instanceType}`);
 }
 
 try {
@@ -424,6 +432,6 @@ try {
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
-  console.error(`error: ${code}, ${message}`);
+  hilog.error(0x0000, 'testTag', `error: ${code}, ${message}`);
 }
 ```

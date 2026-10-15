@@ -12,54 +12,6 @@ enum AlbumSubtype
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## HIDDEN
-
-```TypeScript
-HIDDEN = 1027
-```
-
-隐藏相册。
-
-**起始版本：** 10
-
-<!--Device-AlbumSubtype-HIDDEN = 1027--><!--Device-AlbumSubtype-HIDDEN = 1027-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## TRASH
-
-```TypeScript
-TRASH = 1028
-```
-
-回收站。
-
-**起始版本：** 10
-
-<!--Device-AlbumSubtype-TRASH = 1028--><!--Device-AlbumSubtype-TRASH = 1028-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SCREENSHOT
-
-```TypeScript
-SCREENSHOT = 1029
-```
-
-截屏和录屏相册。
-
-**起始版本：** 10
-
-<!--Device-AlbumSubtype-SCREENSHOT = 1029--><!--Device-AlbumSubtype-SCREENSHOT = 1029-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## CAMERA
 
 ```TypeScript
@@ -71,40 +23,6 @@ CAMERA = 1030
 **起始版本：** 10
 
 <!--Device-AlbumSubtype-CAMERA = 1030--><!--Device-AlbumSubtype-CAMERA = 1030-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## CLOUD_ENHANCEMENT
-
-```TypeScript
-CLOUD_ENHANCEMENT = 1032
-```
-
-AI云增强相册。
-
-**起始版本：** 13
-
-<!--Device-AlbumSubtype-CLOUD_ENHANCEMENT = 1032--><!--Device-AlbumSubtype-CLOUD_ENHANCEMENT = 1032-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## LIVEPHOTO_4D
-
-```TypeScript
-LIVEPHOTO_4D = 1033
-```
-
-子弹时间相册
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-AlbumSubtype-LIVEPHOTO_4D = 1033--><!--Device-AlbumSubtype-LIVEPHOTO_4D = 1033-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -126,17 +44,17 @@ CLASSIFY = 4097
 
 **系统接口：** 此接口为系统接口。
 
-## GEOGRAPHY_LOCATION
+## CLOUD_ENHANCEMENT
 
 ```TypeScript
-GEOGRAPHY_LOCATION = 4099
+CLOUD_ENHANCEMENT = 1032
 ```
 
-地图相册。
+AI云增强相册。
 
-**起始版本：** 11
+**起始版本：** 13
 
-<!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099--><!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099-End-->
+<!--Device-AlbumSubtype-CLOUD_ENHANCEMENT = 1032--><!--Device-AlbumSubtype-CLOUD_ENHANCEMENT = 1032-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -158,33 +76,17 @@ GEOGRAPHY_CITY = 4100
 
 **系统接口：** 此接口为系统接口。
 
-## SHOOTING_MODE
+## GEOGRAPHY_LOCATION
 
 ```TypeScript
-SHOOTING_MODE = 4101
+GEOGRAPHY_LOCATION = 4099
 ```
 
-拍摄模式相册。
+地图相册。
 
 **起始版本：** 11
 
-<!--Device-AlbumSubtype-SHOOTING_MODE = 4101--><!--Device-AlbumSubtype-SHOOTING_MODE = 4101-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## PORTRAIT
-
-```TypeScript
-PORTRAIT = 4102
-```
-
-人像相册。
-
-**起始版本：** 11
-
-<!--Device-AlbumSubtype-PORTRAIT = 4102--><!--Device-AlbumSubtype-PORTRAIT = 4102-End-->
+<!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099--><!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -201,6 +103,22 @@ GROUP_PHOTO = 4103
 **起始版本：** 13
 
 <!--Device-AlbumSubtype-GROUP_PHOTO = 4103--><!--Device-AlbumSubtype-GROUP_PHOTO = 4103-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HIDDEN
+
+```TypeScript
+HIDDEN = 1027
+```
+
+隐藏相册。
+
+**起始版本：** 10
+
+<!--Device-AlbumSubtype-HIDDEN = 1027--><!--Device-AlbumSubtype-HIDDEN = 1027-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -238,6 +156,56 @@ HIGHLIGHT_SUGGESTIONS = 4105
 
 **系统接口：** 此接口为系统接口。
 
+## LIVEPHOTO_4D
+
+```TypeScript
+LIVEPHOTO_4D = 1033
+```
+
+子弹时间相册
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-AlbumSubtype-LIVEPHOTO_4D = 1033--><!--Device-AlbumSubtype-LIVEPHOTO_4D = 1033-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PORTRAIT
+
+```TypeScript
+PORTRAIT = 4102
+```
+
+人像相册。
+
+**起始版本：** 11
+
+<!--Device-AlbumSubtype-PORTRAIT = 4102--><!--Device-AlbumSubtype-PORTRAIT = 4102-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SCREENSHOT
+
+```TypeScript
+SCREENSHOT = 1029
+```
+
+截屏和录屏相册。
+
+**起始版本：** 10
+
+<!--Device-AlbumSubtype-SCREENSHOT = 1029--><!--Device-AlbumSubtype-SCREENSHOT = 1029-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## SHARE
 
 ```TypeScript
@@ -251,6 +219,38 @@ SHARE = 8193
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AlbumSubtype-SHARE = 8193--><!--Device-AlbumSubtype-SHARE = 8193-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHOOTING_MODE
+
+```TypeScript
+SHOOTING_MODE = 4101
+```
+
+拍摄模式相册。
+
+**起始版本：** 11
+
+<!--Device-AlbumSubtype-SHOOTING_MODE = 4101--><!--Device-AlbumSubtype-SHOOTING_MODE = 4101-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## TRASH
+
+```TypeScript
+TRASH = 1028
+```
+
+回收站。
+
+**起始版本：** 10
+
+<!--Device-AlbumSubtype-TRASH = 1028--><!--Device-AlbumSubtype-TRASH = 1028-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

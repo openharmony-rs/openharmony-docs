@@ -8,6 +8,8 @@ The context of form extension. It allows access to formExtension-specific resour
 
 @typedef { _FormExtensionContext.default }
 
+**类型：** _FormExtensionContext.default
+
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ The context of form extension. It allows access to formExtension-specific resour
 <!--Device-common-export type FormExtensionContext = _FormExtensionContext.default--><!--Device-common-export type FormExtensionContext = _FormExtensionContext.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _FormExtensionContext.default

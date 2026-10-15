@@ -12,7 +12,7 @@ import { infraredEmitter } from '@kit.InputKit';
 function getInfraredFrequencies(): Array<InfraredFrequency>
 ```
 
-查询设备支持的红外信号的频率范围。建议先使用[hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md)接口查询设备是否支持红外发射器。
+查询设备支持的红外信号的频率范围。调用此接口前，需要先调用[hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md)接口确认设备是否具备红外发射器。
 
 **起始版本：** 15
 
@@ -32,8 +32,8 @@ function getInfraredFrequencies(): Array<InfraredFrequency>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application.<br>**适用版本：** 12 - 14 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12 - 14 |
 
 **示例**
 

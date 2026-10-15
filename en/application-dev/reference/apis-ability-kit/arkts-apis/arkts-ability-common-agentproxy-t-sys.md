@@ -6,6 +6,8 @@ export type AgentProxy = _AgentProxy
 
 Represents the AgentProxy type.
 
+**Type:** _AgentProxy
+
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents the AgentProxy type.
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _AgentProxy

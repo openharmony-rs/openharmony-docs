@@ -12,17 +12,17 @@ Enumerates USB transfer flags.
 
 **System capability:** SystemCapability.USB.USBManager
 
-## USB_TRANSFER_SHORT_NOT_OK
+## USB_TRANSFER_ADD_ZERO_PACKET
 
 ```TypeScript
-USB_TRANSFER_SHORT_NOT_OK = 0
+USB_TRANSFER_ADD_ZERO_PACKET = 3
 ```
 
-Reports short frames as errors.
+Adds an additional data packet to be transferred.
 
 **Since:** 18
 
-<!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0--><!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0-End-->
+<!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3--><!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -54,16 +54,16 @@ Automatically releases transfer resources after the callback is complete.
 
 **System capability:** SystemCapability.USB.USBManager
 
-## USB_TRANSFER_ADD_ZERO_PACKET
+## USB_TRANSFER_SHORT_NOT_OK
 
 ```TypeScript
-USB_TRANSFER_ADD_ZERO_PACKET = 3
+USB_TRANSFER_SHORT_NOT_OK = 0
 ```
 
-Adds an additional data packet to be transferred.
+Reports short frames as errors.
 
 **Since:** 18
 
-<!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3--><!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3-End-->
+<!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0--><!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0-End-->
 
 **System capability:** SystemCapability.USB.USBManager

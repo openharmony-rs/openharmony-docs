@@ -70,7 +70,7 @@ Style of week color.
 weekendDayColor?: ResourceColor
 ```
 
-Style of week day color.
+Weekend day color.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -94,7 +94,7 @@ Style of week day color.
 weekendLunarColor?: ResourceColor
 ```
 
-Style of lunar color.
+Weekend lunar color.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 

@@ -37,6 +37,7 @@ Queries all active print jobs. This API uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ print.queryAllActivePrintJobs().then((printJobs : print.PrintJob[]) => {
     console.error(`Failed to query all active print jobs. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

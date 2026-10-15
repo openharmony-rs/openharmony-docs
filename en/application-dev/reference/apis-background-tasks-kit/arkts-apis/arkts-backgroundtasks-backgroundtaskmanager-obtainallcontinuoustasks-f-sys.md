@@ -40,6 +40,7 @@ Obtains all continuous task information, including the task ID and type. This AP
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [9800004](../errorcode-backgroundTaskMgr.md#9800004-system-service-failure) | System service operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
     console.error(`Operation obtainAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

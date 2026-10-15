@@ -4,7 +4,7 @@
 const enum DragSpringLoadingState
 ```
 
-Enumerates hover detection states during drag operations. Under default system configuration, if no CANCEL occurs, the state reporting is as follows: Hover still--&gt;500ms--&gt;BEGIN--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;END
+Enumerates hover detection states during drag operations. Under default system configuration, if no CANCEL occurs, the state reporting is as follows: Hover still-->500ms-->BEGIN-->100ms-->UPDATE-->100ms-->UPDATE-->100ms-->UPDATE-->100ms-->END
 
 **Since:** 20
 
@@ -18,7 +18,7 @@ Enumerates hover detection states during drag operations. Under default system c
 BEGIN
 ```
 
-Initial state when a dragged item enters the component boundary and remains stationary for the specified duration. This state enables preparation operations.
+Initial state when a dragged item enters the component boundary and remains stationary for the duration specified by **stillTimeLimit**. This state enables preparation operations such as data preparation and state recording required for hover detection.
 
 **Since:** 20
 
@@ -30,13 +30,13 @@ Initial state when a dragged item enters the component boundary and remains stat
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## UPDATE
+## CANCEL
 
 ```TypeScript
-UPDATE
+CANCEL
 ```
 
-Periodic notification state during sustained hover detection. In this state, periodic updates refresh UI effects to highlight the hover state.
+Interruption state of hover detection triggered by termination events, which include the following: finger or mouse release, window switching, screen off, exiting the component boundary, entering child components, or exceeding the movement threshold within the component. The application will restore the UI style and cancel pending navigation and view switching operations.
 
 **Since:** 20
 
@@ -44,7 +44,7 @@ Periodic notification state during sustained hover detection. In this state, per
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-DragSpringLoadingState-UPDATE--><!--Device-DragSpringLoadingState-UPDATE-End-->
+<!--Device-DragSpringLoadingState-CANCEL--><!--Device-DragSpringLoadingState-CANCEL-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +66,13 @@ Final state indicating completion of the hover detection cycle, which is trigger
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CANCEL
+## UPDATE
 
 ```TypeScript
-CANCEL
+UPDATE
 ```
 
-Interruption state of hover detection triggered by termination events, which include the following: finger or mouse release, window switching, screen off, exiting the component boundary, entering child components, or exceeding the movement threshold within the component. The application will restore the UI style and cancel pending navigation and view switching operations.
+Periodic notification state during sustained hover detection. In this state, periodic updates refresh UI effects to highlight the hover state.
 
 **Since:** 20
 
@@ -80,6 +80,6 @@ Interruption state of hover detection triggered by termination events, which inc
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-DragSpringLoadingState-CANCEL--><!--Device-DragSpringLoadingState-CANCEL-End-->
+<!--Device-DragSpringLoadingState-UPDATE--><!--Device-DragSpringLoadingState-UPDATE-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

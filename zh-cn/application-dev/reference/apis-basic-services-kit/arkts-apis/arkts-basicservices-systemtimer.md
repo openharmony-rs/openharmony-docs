@@ -23,14 +23,14 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer) | 创建定时器，使用callback异步回调。 |
-| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer-1) | 创建定时器，使用Promise异步回调返回定时器的ID。 |
-| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer) | 销毁定时器，使用callback异步回调。 |
-| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1) | 销毁定时器，使用Promise进行异步回调。 |
-| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer) | 开启定时器，使用callback异步回调。 |
-| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-1) | 开启定时器，使用Promise进行异步回调。 |
-| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer) | 该方法停止定时器，并使用callback进行异步回调。 |
-| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer-1) | 此方法用于停止定时器，并使用Promise异步回调。 |
+| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer1) | 创建定时器，使用callback异步回调。 |
+| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer2) | 创建定时器，使用Promise异步回调返回定时器的ID。 |
+| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer1) | 销毁定时器，使用callback异步回调。 |
+| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer2) | 销毁定时器，使用Promise进行异步回调。 |
+| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer1) | 开启定时器，使用callback异步回调。 |
+| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer2) | 开启定时器，使用Promise进行异步回调。 |
+| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer1) | 该方法停止定时器，并使用callback进行异步回调。 |
+| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer2) | 此方法用于停止定时器，并使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

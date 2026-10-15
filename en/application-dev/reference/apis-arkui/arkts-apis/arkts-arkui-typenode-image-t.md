@@ -6,6 +6,8 @@ type Image = TypedFrameNode<ImageInterface, ImageAttribute>
 
 Represents a FrameNode of the **Image** type. This type of node does not allow child components to be added.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ImageInterface, [ImageAttribute](../arkts-components/arkts-arkui-image-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Image** type. This type of node does not allow c
 <!--Device-typeNode-type Image = TypedFrameNode<ImageInterface, ImageAttribute>--><!--Device-typeNode-type Image = TypedFrameNode<ImageInterface, ImageAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ImageInterface, [ImageAttribute](../arkts-components/arkts-arkui-image-comp-attribute.md)&gt;

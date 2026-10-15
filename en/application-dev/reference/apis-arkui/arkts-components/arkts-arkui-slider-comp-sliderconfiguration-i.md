@@ -6,7 +6,7 @@ declare interface SliderConfiguration extends CommonConfiguration<SliderConfigur
 
 You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** SliderConfiguration extends CommonConfiguration<SliderConfiguration>
+**Inheritance/Implementation:** SliderConfiguration extends CommonConfiguration&lt;SliderConfiguration&gt;
 
 **Since:** 12
 

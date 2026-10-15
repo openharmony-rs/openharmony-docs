@@ -4,7 +4,7 @@
 declare class StartOptions
 ```
 
-StartOptions可以作为启动UIAbility接口（例如[startAbility()](arkts-ability-uiabilitycontext-c.md#startability-1)）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
+StartOptions可以作为启动UIAbility接口（例如[startAbility()](arkts-ability-uiabilitycontext-c.md#startability2)）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
 
 **起始版本：** 9
 
@@ -44,6 +44,7 @@ windowFocused?: boolean
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -162,3 +163,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -12,7 +12,7 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-media-type SourceReadCallback = (uuid: long, requestedOffset: long, requestedLength: long) => void--><!--Device-media-type SourceReadCallback = (uuid: long, requestedOffset: long, requestedLength: long) => void-End-->
 

@@ -34,7 +34,7 @@ Indicates the ability name of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-get abilityName(): string--><!--Device-SystemDefinedForm-get abilityName(): string-End-->
 
@@ -52,7 +52,7 @@ Indicates the ability name of form.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-set abilityName(value: string)--><!--Device-SystemDefinedForm-set abilityName(value: string)-End-->
 
@@ -72,7 +72,7 @@ Indicates the bundle name of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-get bundleName(): string--><!--Device-SystemDefinedForm-get bundleName(): string-End-->
 
@@ -90,7 +90,7 @@ Indicates the bundle name of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-set bundleName(value: string)--><!--Device-SystemDefinedForm-set bundleName(value: string)-End-->
 
@@ -110,7 +110,7 @@ Indicates the id of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-get formId(): int--><!--Device-SystemDefinedForm-get formId(): int-End-->
 
@@ -128,7 +128,7 @@ Indicates the id of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-set formId(value: int)--><!--Device-SystemDefinedForm-set formId(value: int)-End-->
 
@@ -148,7 +148,7 @@ Indicates the name of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-get formName(): string--><!--Device-SystemDefinedForm-get formName(): string-End-->
 
@@ -166,7 +166,7 @@ Indicates the name of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-set formName(value: string)--><!--Device-SystemDefinedForm-set formName(value: string)-End-->
 
@@ -186,7 +186,7 @@ Indicates the module of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-get module(): string--><!--Device-SystemDefinedForm-get module(): string-End-->
 
@@ -204,7 +204,7 @@ Indicates the module of form
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemDefinedForm-set module(value: string)--><!--Device-SystemDefinedForm-set module(value: string)-End-->
 

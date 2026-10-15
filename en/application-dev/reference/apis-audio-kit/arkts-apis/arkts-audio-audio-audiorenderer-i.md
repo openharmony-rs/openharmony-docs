@@ -6,7 +6,7 @@ interface AudioRenderer
 
 This interface provides APIs for audio rendering.
 
-Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) to create an AudioRenderer instance.
+Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1) to create an AudioRenderer instance.
 
 > **NOTE:** 
 > 
@@ -23,6 +23,8 @@ Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkt
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
+
+<a id="drain1"></a>
 
 ## drain
 
@@ -58,7 +60,7 @@ audioRenderer.drain((err: BusinessError) => {
 });
 ```
 
-<a id="drain-1"></a>
+<a id="drain2"></a>
 
 ## drain
 
@@ -130,6 +132,8 @@ audioRenderer.flush().then(() => {
 });
 ```
 
+<a id="getaudioeffectmode1"></a>
+
 ## getAudioEffectMode
 
 ```TypeScript
@@ -164,7 +168,7 @@ audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEff
 });
 ```
 
-<a id="getaudioeffectmode-1"></a>
+<a id="getaudioeffectmode2"></a>
 
 ## getAudioEffectMode
 
@@ -198,6 +202,8 @@ audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
 });
 ```
 
+<a id="getaudiostreamid1"></a>
+
 ## getAudioStreamId
 
 ```TypeScript
@@ -228,7 +234,7 @@ audioRenderer.getAudioStreamId((err: BusinessError, streamId: number) => {
 });
 ```
 
-<a id="getaudiostreamid-1"></a>
+<a id="getaudiostreamid2"></a>
 
 ## getAudioStreamId
 
@@ -296,6 +302,8 @@ try {
 }
 ```
 
+<a id="getaudiotime1"></a>
+
 ## getAudioTime
 
 ```TypeScript
@@ -326,7 +334,7 @@ audioRenderer.getAudioTime((err: BusinessError, timestamp: number) => {
 });
 ```
 
-<a id="getaudiotime-1"></a>
+<a id="getaudiotime2"></a>
 
 ## getAudioTime
 
@@ -484,6 +492,8 @@ try {
 }
 ```
 
+<a id="getbuffersize1"></a>
+
 ## getBufferSize
 
 ```TypeScript
@@ -521,7 +531,7 @@ audioRenderer.getBufferSize((err: BusinessError, data: number) => {
 });
 ```
 
-<a id="getbuffersize-1"></a>
+<a id="getbuffersize2"></a>
 
 ## getBufferSize
 
@@ -594,6 +604,8 @@ try {
 }
 ```
 
+<a id="getcurrentoutputdevices1"></a>
+
 ## getCurrentOutputDevices
 
 ```TypeScript
@@ -637,7 +649,7 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
 });
 ```
 
-<a id="getcurrentoutputdevices-1"></a>
+<a id="getcurrentoutputdevices2"></a>
 
 ## getCurrentOutputDevices
 
@@ -807,6 +819,8 @@ Gets loudness gain of this stream.
 let loudnessGain = audioRenderer.getLoudnessGain();
 ```
 
+<a id="getmaxstreamvolume1"></a>
+
 ## getMaxStreamVolume
 
 ```TypeScript
@@ -841,7 +855,7 @@ audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
 });
 ```
 
-<a id="getmaxstreamvolume-1"></a>
+<a id="getmaxstreamvolume2"></a>
 
 ## getMaxStreamVolume
 
@@ -909,6 +923,8 @@ try {
 }
 ```
 
+<a id="getminstreamvolume1"></a>
+
 ## getMinStreamVolume
 
 ```TypeScript
@@ -943,7 +959,7 @@ audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
 });
 ```
 
-<a id="getminstreamvolume-1"></a>
+<a id="getminstreamvolume2"></a>
 
 ## getMinStreamVolume
 
@@ -1011,6 +1027,8 @@ try {
 }
 ```
 
+<a id="getrendererinfo1"></a>
+
 ## getRendererInfo
 
 ```TypeScript
@@ -1045,7 +1063,7 @@ audioRenderer.getRendererInfo((err: BusinessError, audioRendererInfo: audio.Audi
 });
 ```
 
-<a id="getrendererinfo-1"></a>
+<a id="getrendererinfo2"></a>
 
 ## getRendererInfo
 
@@ -1165,6 +1183,8 @@ Obtains the playback speed.
 let speed = audioRenderer.getSpeed();
 ```
 
+<a id="getstreaminfo1"></a>
+
 ## getStreamInfo
 
 ```TypeScript
@@ -1199,7 +1219,7 @@ audioRenderer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
 });
 ```
 
-<a id="getstreaminfo-1"></a>
+<a id="getstreaminfo2"></a>
 
 ## getStreamInfo
 
@@ -1274,6 +1294,8 @@ try {
 }
 ```
 
+<a id="getunderflowcount1"></a>
+
 ## getUnderflowCount
 
 ```TypeScript
@@ -1308,7 +1330,7 @@ audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => 
 });
 ```
 
-<a id="getunderflowcount-1"></a>
+<a id="getunderflowcount2"></a>
 
 ## getUnderflowCount
 
@@ -2106,6 +2128,8 @@ audioRenderer.start().then(() => {
 });
 ```
 
+<a id="pause1"></a>
+
 ## pause
 
 ```TypeScript
@@ -2140,7 +2164,7 @@ audioRenderer.pause((err: BusinessError) => {
 });
 ```
 
-<a id="pause-1"></a>
+<a id="pause2"></a>
 
 ## pause
 
@@ -2173,6 +2197,8 @@ audioRenderer.pause().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="release1"></a>
 
 ## release
 
@@ -2208,7 +2234,7 @@ audioRenderer.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -2241,6 +2267,8 @@ audioRenderer.release().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="setaudioeffectmode1"></a>
 
 ## setAudioEffectMode
 
@@ -2284,7 +2312,7 @@ audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: Bus
 });
 ```
 
-<a id="setaudioeffectmode-1"></a>
+<a id="setaudioeffectmode2"></a>
 
 ## setAudioEffectMode
 
@@ -2428,7 +2456,7 @@ Sets the independent audio session strategy and behavior parameters.
 > **NOTE:** 
 > 
 > If this API is called while an audio renderer is running, you must call the
-> [start](#start) API again for
+> [start](#start1) API again for
 > the settings to take effect.
 
 **Since:** 24
@@ -2462,6 +2490,8 @@ let strategy: audio.AudioSessionStrategy = {
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```
+
+<a id="setinterruptmode1"></a>
 
 ## setInterruptMode
 
@@ -2499,7 +2529,7 @@ audioRenderer.setInterruptMode(mode, (err: BusinessError) => {
 });
 ```
 
-<a id="setinterruptmode-1"></a>
+<a id="setinterruptmode2"></a>
 
 ## setInterruptMode
 
@@ -2682,6 +2712,8 @@ Sets the playback speed.
 audioRenderer.setSpeed(1.5);
 ```
 
+<a id="setvolume1"></a>
+
 ## setVolume
 
 ```TypeScript
@@ -2717,7 +2749,7 @@ audioRenderer.setVolume(0.5, (err: BusinessError) => {
 });
 ```
 
-<a id="setvolume-1"></a>
+<a id="setvolume2"></a>
 
 ## setVolume
 
@@ -2795,6 +2827,8 @@ audioRenderer.setVolumeWithRamp(volume, duration);
 console.info(`setVolumeWithRamp: ${volume}`);
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -2829,7 +2863,7 @@ audioRenderer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -2862,6 +2896,8 @@ audioRenderer.start().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="stop1"></a>
 
 ## stop
 
@@ -2897,7 +2933,7 @@ audioRenderer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -2930,6 +2966,8 @@ audioRenderer.stop().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="getrenderrate1"></a>
 
 ## getRenderRate
 
@@ -2965,7 +3003,7 @@ audioRenderer.getRenderRate((err: BusinessError, renderRate: audio.AudioRenderer
 });
 ```
 
-<a id="getrenderrate-1"></a>
+<a id="getrenderrate2"></a>
 
 ## getRenderRate
 
@@ -3041,6 +3079,8 @@ try {
 }
 ```
 
+<a id="setrenderrate1"></a>
+
 ## setRenderRate
 
 ```TypeScript
@@ -3053,7 +3093,7 @@ Sets the render rate. This API uses an asynchronous callback to return the resul
 
 **Deprecated since:** 11
 
-**Substitutes:** setSpeed
+**Substitutes:** [setSpeed](#setspeed)
 
 <!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate, callback: AsyncCallback<void>): void--><!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate, callback: AsyncCallback<void>): void-End-->
 
@@ -3080,7 +3120,7 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL, (err: Bu
 });
 ```
 
-<a id="setrenderrate-1"></a>
+<a id="setrenderrate2"></a>
 
 ## setRenderRate
 
@@ -3094,7 +3134,7 @@ Sets the render rate. This API uses a promise to return the result.
 
 **Deprecated since:** 11
 
-**Substitutes:** setSpeed
+**Substitutes:** [setSpeed](#setspeed)
 
 <!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate): Promise<void>--><!--Device-AudioRenderer-setRenderRate(rate: AudioRendererRate): Promise<void>-End-->
 
@@ -3123,6 +3163,8 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL).then(() 
   console.error(`ERROR: ${err}`);
 });
 ```
+
+<a id="write1"></a>
 
 ## write
 
@@ -3196,7 +3238,7 @@ audioRenderer.getBufferSize().then((data: number)=> {
 });
 ```
 
-<a id="write-1"></a>
+<a id="write2"></a>
 
 ## write
 

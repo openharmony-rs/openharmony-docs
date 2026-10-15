@@ -6,6 +6,8 @@ declare type PromptActionDialogController = import('../api/@ohos.promptAction').
 
 Import the DialogController type from promptAction.
 
+**Type:** import('../api/@ohos.promptAction').promptAction.DialogController
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Import the DialogController type from promptAction.
 <!--Device-unnamed-declare type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController--><!--Device-unnamed-declare type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.promptAction').promptAction.DialogController

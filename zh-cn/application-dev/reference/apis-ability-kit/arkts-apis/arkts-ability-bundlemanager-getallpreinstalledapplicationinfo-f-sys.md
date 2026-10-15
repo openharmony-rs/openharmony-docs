@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicationInfo>>
 ```
 
-获取所有预置应用信息。使用Promise异步回调。
+获取所有预置应用信息。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[PreinstalledApplicationInfo](arkts-ability-bundlemanager-preinstalledapplicationinfo-t-sys.md)&gt;&gt; | Promise对象，返回Array&lt;PreinstalledApplicationInfo&gt;。 |
+| Promise&lt;Array&lt;[PreinstalledApplicationInfo](arkts-ability-bundlemanager-preinstalledapplicationinfo-t-sys.md)&gt;&gt; | Promise对象，返回Array<[PreinstalledApplicationInfo](arkts-ability-bundlemanager-preinstalledapplicationinfo-t-sys.md)>。 |
 
 **错误码：**
 
@@ -37,6 +37,7 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

@@ -13,6 +13,8 @@ Represents the completion of an asynchronous operation
 ```TypeScript
 ```
 
+<a id="any1"></a>
+
 ## any
 
 ```TypeScript
@@ -35,7 +37,7 @@ The any function returns a promise that is fulfilled by the first given promise 
 | --- | --- |
 | Promise&lt;Awaited&lt;T[number]&gt;&gt; | A new Promise. |
 
-<a id="any-1"></a>
+<a id="any2"></a>
 
 ## any
 

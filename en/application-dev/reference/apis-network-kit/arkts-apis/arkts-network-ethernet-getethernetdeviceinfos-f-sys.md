@@ -38,6 +38,7 @@ Obtains the device information (such as the vendor name, product name, and maxim
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [2201005](../errorcode-net-ethernet.md#2201005-device-information-not-exist) | Device information does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,3 +54,5 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
   console.error("getEthernetDeviceInfos err = " + err.code);
 });
 ```
+
+<!--DelEnd-->

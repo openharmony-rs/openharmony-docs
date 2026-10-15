@@ -30,24 +30,6 @@ CONTINUE = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DISCARD_LOWER
-
-```TypeScript
-DISCARD_LOWER = 1
-```
-
-丢弃所有待收集的低优先级手势和事件。丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。仅保留当前节点和更高优先级节点中已收集的手势。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-GestureCollectIntervention-DISCARD_LOWER = 1--><!--Device-GestureCollectIntervention-DISCARD_LOWER = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## DISCARD_HIGHER
 
 ```TypeScript
@@ -66,13 +48,13 @@ DISCARD_HIGHER = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DISCARD_SELF
+## DISCARD_LOWER
 
 ```TypeScript
-DISCARD_SELF = 3
+DISCARD_LOWER = 1
 ```
 
-丢弃当前节点自身的手势和事件。当前节点的手势和事件将从手势树中排除。兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。
+丢弃所有待收集的低优先级手势和事件。丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。仅保留当前节点和更高优先级节点中已收集的手势。
 
 **起始版本：** 26.0.0
 
@@ -80,7 +62,7 @@ DISCARD_SELF = 3
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureCollectIntervention-DISCARD_SELF = 3--><!--Device-GestureCollectIntervention-DISCARD_SELF = 3-End-->
+<!--Device-GestureCollectIntervention-DISCARD_LOWER = 1--><!--Device-GestureCollectIntervention-DISCARD_LOWER = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,5 +81,23 @@ DISCARD_LOWER_PRIORITY_SIBLINGS = 4
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-GestureCollectIntervention-DISCARD_LOWER_PRIORITY_SIBLINGS = 4--><!--Device-GestureCollectIntervention-DISCARD_LOWER_PRIORITY_SIBLINGS = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DISCARD_SELF
+
+```TypeScript
+DISCARD_SELF = 3
+```
+
+丢弃当前节点自身的手势和事件。当前节点的手势和事件将从手势树中排除。兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureCollectIntervention-DISCARD_SELF = 3--><!--Device-GestureCollectIntervention-DISCARD_SELF = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

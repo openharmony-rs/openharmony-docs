@@ -12,20 +12,6 @@ enum ErrorCode
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-## OTHERS
-
-```TypeScript
-OTHERS = 0xFF
-```
-
-表示未分类的其他类型错误。
-
-**起始版本：** 23
-
-<!--Device-ErrorCode-OTHERS = 0xFF--><!--Device-ErrorCode-OTHERS = 0xFF-End-->
-
-**系统能力：** SystemCapability.Request.FileTransferAgent
-
 ## DNS
 
 ```TypeScript
@@ -40,17 +26,31 @@ DNS = 0x00
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-## TCP
+## HTTP
 
 ```TypeScript
-TCP = 0x10
+HTTP = 0x30
 ```
 
-表示TCP相关错误。
+表示HTTP相关错误。
 
 **起始版本：** 23
 
-<!--Device-ErrorCode-TCP = 0x10--><!--Device-ErrorCode-TCP = 0x10-End-->
+<!--Device-ErrorCode-HTTP = 0x30--><!--Device-ErrorCode-HTTP = 0x30-End-->
+
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+## OTHERS
+
+```TypeScript
+OTHERS = 0xFF
+```
+
+表示未分类的其他类型错误。
+
+**起始版本：** 23
+
+<!--Device-ErrorCode-OTHERS = 0xFF--><!--Device-ErrorCode-OTHERS = 0xFF-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -68,16 +68,16 @@ SSL = 0x20
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-## HTTP
+## TCP
 
 ```TypeScript
-HTTP = 0x30
+TCP = 0x10
 ```
 
-表示HTTP相关错误。
+表示TCP相关错误。
 
 **起始版本：** 23
 
-<!--Device-ErrorCode-HTTP = 0x30--><!--Device-ErrorCode-HTTP = 0x30-End-->
+<!--Device-ErrorCode-TCP = 0x10--><!--Device-ErrorCode-TCP = 0x10-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent

@@ -6,6 +6,8 @@ export type AbilityFirstFrameStateData = _AbilityFirstFrameStateData.default
 
 Defines the data structure reported when the first frame rendering of the UIAbility is complete.
 
+**Type:** _AbilityFirstFrameStateData.default
+
 **Since:** 12
 
 <!--Device-appManager-export type AbilityFirstFrameStateData = _AbilityFirstFrameStateData.default--><!--Device-appManager-export type AbilityFirstFrameStateData = _AbilityFirstFrameStateData.default-End-->
@@ -13,5 +15,3 @@ Defines the data structure reported when the first frame rendering of the UIAbil
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _AbilityFirstFrameStateData.default

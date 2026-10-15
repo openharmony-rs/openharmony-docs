@@ -40,7 +40,7 @@ advertiseName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertiseData-advertiseName?: string--><!--Device-AdvertiseData-advertiseName?: string-End-->
 
@@ -64,7 +64,7 @@ true表示携带，false表示不携带，默认值为false。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertiseData-includeDeviceName?: boolean--><!--Device-AdvertiseData-includeDeviceName?: boolean-End-->
 
@@ -88,7 +88,7 @@ true表示携带广播发送功率，false表示不携带广播发送功率，�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertiseData-includeTxPower?: boolean--><!--Device-AdvertiseData-includeTxPower?: boolean-End-->
 
@@ -108,7 +108,7 @@ manufactureData: Array<ManufactureData>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertiseData-manufactureData: Array<ManufactureData>--><!--Device-AdvertiseData-manufactureData: Array<ManufactureData>-End-->
 
@@ -128,7 +128,7 @@ serviceData: Array<ServiceData>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertiseData-serviceData: Array<ServiceData>--><!--Device-AdvertiseData-serviceData: Array<ServiceData>-End-->
 
@@ -148,7 +148,7 @@ serviceUuids: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertiseData-serviceUuids: Array<string>--><!--Device-AdvertiseData-serviceUuids: Array<string>-End-->
 

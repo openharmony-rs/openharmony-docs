@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getSpecifiedDistributionType(bundleName: string): string
 ```
 
-Obtains the [distribution type](../../../security/app-provision-structure.md) of a bundle in synchronous mode. The return value is the **specifiedDistributionType** field value in [InstallParam](arkts-ability-installer-installparam-i-sys.md) passed when **install** is called.
+Synchronously queries the [HarmonyAppProvision Configuration File](../../../security/app-provision-structure.md) of a specified bundle name. The return value is the specifiedDistributionType field in the [InstallParam](arkts-ability-installer-installparam-i-sys.md) passed when the install API is called.
 
 No permission is required for obtaining the caller's own information.
 
@@ -36,7 +36,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type | Description |
 | --- | --- |
-| string | [Distribution type](../../../security/app-provision-structure.md) of the bundle. |
+| string | [HarmonyAppProvision Configuration File](../../../security/app-provision-structure.md) of the specified bundle name. |
 
 **Error codes:**
 
@@ -47,6 +47,7 @@ No permission is required for obtaining the caller's own information.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getSpecifiedDistributionType failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

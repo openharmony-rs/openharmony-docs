@@ -30,7 +30,7 @@ Specifies the text style of the day. The default value is the default text style
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-day?: TextStyle--><!--Device-StyledDateTimeFormatOptions-day?: TextStyle-End-->
 
@@ -48,7 +48,7 @@ Specifies the text style of the period. The default value is the default text st
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-dayPeriod?: TextStyle--><!--Device-StyledDateTimeFormatOptions-dayPeriod?: TextStyle-End-->
 
@@ -66,7 +66,7 @@ Specifies the text style of the era. The default value is the default text style
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-era?: TextStyle--><!--Device-StyledDateTimeFormatOptions-era?: TextStyle-End-->
 
@@ -84,7 +84,7 @@ Specifies the text style of the hour. The default value is the default text styl
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-hour?: TextStyle--><!--Device-StyledDateTimeFormatOptions-hour?: TextStyle-End-->
 
@@ -102,7 +102,7 @@ Specifies the text style of the minute. The default value is the default text st
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-minute?: TextStyle--><!--Device-StyledDateTimeFormatOptions-minute?: TextStyle-End-->
 
@@ -120,7 +120,7 @@ Specifies the text style of the month. The default value is the default text sty
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-month?: TextStyle--><!--Device-StyledDateTimeFormatOptions-month?: TextStyle-End-->
 
@@ -138,7 +138,7 @@ Specifies the text style of the second. The default value is the default text st
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-second?: TextStyle--><!--Device-StyledDateTimeFormatOptions-second?: TextStyle-End-->
 
@@ -156,7 +156,7 @@ Specifies the text style of the time zone name. The default value is the default
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-timeZoneName?: TextStyle--><!--Device-StyledDateTimeFormatOptions-timeZoneName?: TextStyle-End-->
 
@@ -174,7 +174,7 @@ Specifies the text style of the week. The default value is the default text styl
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-weekday?: TextStyle--><!--Device-StyledDateTimeFormatOptions-weekday?: TextStyle-End-->
 
@@ -192,7 +192,7 @@ Specifies the text style of the year. The default value is the default text styl
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-StyledDateTimeFormatOptions-year?: TextStyle--><!--Device-StyledDateTimeFormatOptions-year?: TextStyle-End-->
 

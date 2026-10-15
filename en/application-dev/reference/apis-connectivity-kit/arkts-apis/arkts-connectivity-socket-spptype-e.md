@@ -12,20 +12,6 @@ The enum of SPP type.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## SPP_RFCOMM
-
-```TypeScript
-SPP_RFCOMM = 0
-```
-
-RFCOMM
-
-**Since:** 10
-
-<!--Device-SppType-SPP_RFCOMM = 0--><!--Device-SppType-SPP_RFCOMM = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## SPP_L2CAP
 
 ```TypeScript
@@ -51,5 +37,19 @@ L2CAP of the BLE type
 **Since:** 20
 
 <!--Device-SppType-SPP_L2CAP_BLE = 2--><!--Device-SppType-SPP_L2CAP_BLE = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## SPP_RFCOMM
+
+```TypeScript
+SPP_RFCOMM = 0
+```
+
+RFCOMM
+
+**Since:** 10
+
+<!--Device-SppType-SPP_RFCOMM = 0--><!--Device-SppType-SPP_RFCOMM = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

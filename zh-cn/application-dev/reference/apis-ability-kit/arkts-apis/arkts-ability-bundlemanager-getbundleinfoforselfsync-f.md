@@ -16,7 +16,7 @@ function getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-bundleManager-function getBundleInfoForSelfSync(bundleFlags: int): BundleInfo--><!--Device-bundleManager-function getBundleInfoForSelfSync(bundleFlags: int): BundleInfo-End-->
 

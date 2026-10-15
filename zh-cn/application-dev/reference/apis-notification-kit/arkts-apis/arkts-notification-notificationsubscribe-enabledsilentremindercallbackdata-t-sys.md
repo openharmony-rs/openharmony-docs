@@ -6,6 +6,8 @@ export type EnabledSilentReminderCallbackData = _EnabledSilentReminderCallbackDa
 
 回调返回监听到的静默提醒使能状态信息。
 
+**类型：** _EnabledSilentReminderCallbackData
+
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type EnabledSilentReminderCallbackData = _EnabledSilentReminderCallbackDa
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _EnabledSilentReminderCallbackData

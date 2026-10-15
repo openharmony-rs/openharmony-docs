@@ -18,6 +18,8 @@ interface AppAccountManager
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="auth1"></a>
+
 ## auth
 
 ```TypeScript
@@ -99,7 +101,7 @@ struct Index {
 }
 ```
 
-<a id="auth-1"></a>
+<a id="auth2"></a>
 
 ## auth
 
@@ -192,6 +194,8 @@ struct Index {
 }
 ```
 
+<a id="checkaccountlabels1"></a>
+
 ## checkAccountLabels
 
 ```TypeScript
@@ -248,7 +252,7 @@ try {
 }
 ```
 
-<a id="checkaccountlabels-1"></a>
+<a id="checkaccountlabels2"></a>
 
 ## checkAccountLabels
 
@@ -309,6 +313,8 @@ try {
 }
 ```
 
+<a id="checkappaccess1"></a>
+
 ## checkAppAccess
 
 ```TypeScript
@@ -360,7 +366,7 @@ try {
 }
 ```
 
-<a id="checkappaccess-1"></a>
+<a id="checkappaccess2"></a>
 
 ## checkAppAccess
 
@@ -415,6 +421,8 @@ try {
 }
 ```
 
+<a id="checkauthtokenvisibility1"></a>
+
 ## checkAuthTokenVisibility
 
 ```TypeScript
@@ -468,7 +476,7 @@ try {
 }
 ```
 
-<a id="checkauthtokenvisibility-1"></a>
+<a id="checkauthtokenvisibility2"></a>
 
 ## checkAuthTokenVisibility
 
@@ -526,6 +534,8 @@ try {
 }
 ```
 
+<a id="checkdatasyncenabled1"></a>
+
 ## checkDataSyncEnabled
 
 ```TypeScript
@@ -578,7 +588,7 @@ try {
 }
 ```
 
-<a id="checkdatasyncenabled-1"></a>
+<a id="checkdatasyncenabled2"></a>
 
 ## checkDataSyncEnabled
 
@@ -635,6 +645,8 @@ try {
 }
 ```
 
+<a id="createaccount1"></a>
+
 ## createAccount
 
 ```TypeScript
@@ -685,7 +697,7 @@ try {
 }
 ```
 
-<a id="createaccount-1"></a>
+<a id="createaccount2"></a>
 
 ## createAccount
 
@@ -743,7 +755,7 @@ try {
 }
 ```
 
-<a id="createaccount-2"></a>
+<a id="createaccount3"></a>
 
 ## createAccount
 
@@ -803,6 +815,8 @@ try {
   console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="createaccountimplicitly1"></a>
 
 ## createAccountImplicitly
 
@@ -882,7 +896,7 @@ struct Index {
 }
 ```
 
-<a id="createaccountimplicitly-1"></a>
+<a id="createaccountimplicitly2"></a>
 
 ## createAccountImplicitly
 
@@ -967,6 +981,8 @@ struct Index {
 }
 ```
 
+<a id="deleteauthtoken1"></a>
+
 ## deleteAuthToken
 
 ```TypeScript
@@ -1021,7 +1037,7 @@ try {
 }
 ```
 
-<a id="deleteauthtoken-1"></a>
+<a id="deleteauthtoken2"></a>
 
 ## deleteAuthToken
 
@@ -1079,6 +1095,8 @@ try {
 }
 ```
 
+<a id="deletecredential1"></a>
+
 ## deleteCredential
 
 ```TypeScript
@@ -1130,7 +1148,7 @@ try {
 }
 ```
 
-<a id="deletecredential-1"></a>
+<a id="deletecredential2"></a>
 
 ## deleteCredential
 
@@ -1186,6 +1204,8 @@ try {
 }
 ```
 
+<a id="getaccountsbyowner1"></a>
+
 ## getAccountsByOwner
 
 ```TypeScript
@@ -1235,7 +1255,7 @@ try {
 }
 ```
 
-<a id="getaccountsbyowner-1"></a>
+<a id="getaccountsbyowner2"></a>
 
 ## getAccountsByOwner
 
@@ -1289,6 +1309,8 @@ try {
 }
 ```
 
+<a id="getallaccounts1"></a>
+
 ## getAllAccounts
 
 ```TypeScript
@@ -1335,7 +1357,7 @@ try {
 }
 ```
 
-<a id="getallaccounts-1"></a>
+<a id="getallaccounts2"></a>
 
 ## getAllAccounts
 
@@ -1380,7 +1402,7 @@ try {
 }
 ```
 
-<a id="getallaccounts-2"></a>
+<a id="getallaccounts3"></a>
 
 ## getAllAccounts
 
@@ -1393,14 +1415,14 @@ getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): v
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](#getaccountsbyowner)
+> [getAccountsByOwner](#getaccountsbyowner1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner](#getaccountsbyowner)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**替代接口：** [getAccountsByOwner](#getaccountsbyowner1)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1430,7 +1452,7 @@ appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccou
 });
 ```
 
-<a id="getallaccounts-3"></a>
+<a id="getallaccounts4"></a>
 
 ## getAllAccounts
 
@@ -1443,13 +1465,13 @@ getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](#getaccountsbyowner-1)替代。
+> [getAccountsByOwner](#getaccountsbyowner2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner](#getaccountsbyowner-1)(owner: string)
+**替代接口：** [getAccountsByOwner](#getaccountsbyowner2)(owner: string)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1481,6 +1503,8 @@ appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountIn
   console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getallauthtokens1"></a>
 
 ## getAllAuthTokens
 
@@ -1533,7 +1557,7 @@ try {
 }
 ```
 
-<a id="getallauthtokens-1"></a>
+<a id="getallauthtokens2"></a>
 
 ## getAllAuthTokens
 
@@ -1588,6 +1612,8 @@ try {
   console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getauthcallback1"></a>
 
 ## getAuthCallback
 
@@ -1654,7 +1680,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthcallback-1"></a>
+<a id="getauthcallback2"></a>
 
 ## getAuthCallback
 
@@ -1724,13 +1750,15 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getauthlist1"></a>
+
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility1)来设置）。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -1775,7 +1803,7 @@ try {
 }
 ```
 
-<a id="getauthlist-1"></a>
+<a id="getauthlist2"></a>
 
 ## getAuthList
 
@@ -1783,7 +1811,7 @@ try {
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility1)来设置）。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -1830,6 +1858,8 @@ try {
   console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getauthtoken1"></a>
 
 ## getAuthToken
 
@@ -1884,7 +1914,7 @@ try {
 }
 ```
 
-<a id="getauthtoken-1"></a>
+<a id="getauthtoken2"></a>
 
 ## getAuthToken
 
@@ -1941,6 +1971,8 @@ try {
 }
 ```
 
+<a id="getcredential1"></a>
+
 ## getCredential
 
 ```TypeScript
@@ -1992,7 +2024,7 @@ try {
 }
 ```
 
-<a id="getcredential-1"></a>
+<a id="getcredential2"></a>
 
 ## getCredential
 
@@ -2048,6 +2080,8 @@ try {
 }
 ```
 
+<a id="getcustomdata1"></a>
+
 ## getCustomData
 
 ```TypeScript
@@ -2099,7 +2133,7 @@ try {
 }
 ```
 
-<a id="getcustomdata-1"></a>
+<a id="getcustomdata2"></a>
 
 ## getCustomData
 
@@ -2405,6 +2439,8 @@ try {
 }
 ```
 
+<a id="queryauthenticatorinfo1"></a>
+
 ## queryAuthenticatorInfo
 
 ```TypeScript
@@ -2455,7 +2491,7 @@ try {
 }
 ```
 
-<a id="queryauthenticatorinfo-1"></a>
+<a id="queryauthenticatorinfo2"></a>
 
 ## queryAuthenticatorInfo
 
@@ -2510,6 +2546,8 @@ try {
 }
 ```
 
+<a id="removeaccount1"></a>
+
 ## removeAccount
 
 ```TypeScript
@@ -2559,7 +2597,7 @@ try {
 }
 ```
 
-<a id="removeaccount-1"></a>
+<a id="removeaccount2"></a>
 
 ## removeAccount
 
@@ -2612,6 +2650,8 @@ try {
   console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="selectaccountsbyoptions1"></a>
 
 ## selectAccountsByOptions
 
@@ -2668,7 +2708,7 @@ try {
 }
 ```
 
-<a id="selectaccountsbyoptions-1"></a>
+<a id="selectaccountsbyoptions2"></a>
 
 ## selectAccountsByOptions
 
@@ -2726,6 +2766,8 @@ try {
 }
 ```
 
+<a id="setappaccess1"></a>
+
 ## setAppAccess
 
 ```TypeScript
@@ -2778,7 +2820,7 @@ try {
 }
 ```
 
-<a id="setappaccess-1"></a>
+<a id="setappaccess2"></a>
 
 ## setAppAccess
 
@@ -2835,6 +2877,8 @@ try {
 }
 ```
 
+<a id="setauthenticatorproperties1"></a>
+
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -2889,7 +2933,7 @@ try {
 }
 ```
 
-<a id="setauthenticatorproperties-1"></a>
+<a id="setauthenticatorproperties2"></a>
 
 ## setAuthenticatorProperties
 
@@ -2949,6 +2993,8 @@ try {
 }
 ```
 
+<a id="setauthtoken1"></a>
+
 ## setAuthToken
 
 ```TypeScript
@@ -3001,7 +3047,7 @@ try {
 }
 ```
 
-<a id="setauthtoken-1"></a>
+<a id="setauthtoken2"></a>
 
 ## setAuthToken
 
@@ -3057,6 +3103,8 @@ try {
   console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="setauthtokenvisibility1"></a>
 
 ## setAuthTokenVisibility
 
@@ -3119,7 +3167,7 @@ try {
 }
 ```
 
-<a id="setauthtokenvisibility-1"></a>
+<a id="setauthtokenvisibility2"></a>
 
 ## setAuthTokenVisibility
 
@@ -3178,6 +3226,8 @@ try {
 }
 ```
 
+<a id="setcredential1"></a>
+
 ## setCredential
 
 ```TypeScript
@@ -3230,7 +3280,7 @@ try {
 }
 ```
 
-<a id="setcredential-1"></a>
+<a id="setcredential2"></a>
 
 ## setCredential
 
@@ -3286,6 +3336,8 @@ try {
 }
 ```
 
+<a id="setcustomdata1"></a>
+
 ## setCustomData
 
 ```TypeScript
@@ -3338,7 +3390,7 @@ try {
 }
 ```
 
-<a id="setcustomdata-1"></a>
+<a id="setcustomdata2"></a>
 
 ## setCustomData
 
@@ -3395,6 +3447,8 @@ try {
 }
 ```
 
+<a id="setdatasyncenabled1"></a>
+
 ## setDataSyncEnabled
 
 ```TypeScript
@@ -3444,7 +3498,7 @@ try {
 }
 ```
 
-<a id="setdatasyncenabled-1"></a>
+<a id="setdatasyncenabled2"></a>
 
 ## setDataSyncEnabled
 
@@ -3502,6 +3556,8 @@ try {
 }
 ```
 
+<a id="verifycredential1"></a>
+
 ## verifyCredential
 
 ```TypeScript
@@ -3558,7 +3614,7 @@ try {
 }
 ```
 
-<a id="verifycredential-1"></a>
+<a id="verifycredential2"></a>
 
 ## verifyCredential
 
@@ -3621,6 +3677,8 @@ try {
 }
 ```
 
+<a id="addaccount1"></a>
+
 ## addAccount
 
 ```TypeScript
@@ -3632,14 +3690,14 @@ addAccount(name: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount)替
+> [createAccount](#createaccount1)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [createAccount](#createaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3662,7 +3720,7 @@ appAccountManager.addAccount('WangWu', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount-1"></a>
+<a id="addaccount2"></a>
 
 ## addAccount
 
@@ -3675,14 +3733,14 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount-1)
+> [createAccount](#createaccount2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount-1)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [createAccount](#createaccount2)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3706,7 +3764,7 @@ appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount-2"></a>
+<a id="addaccount3"></a>
 
 ## addAccount
 
@@ -3718,14 +3776,14 @@ addAccount(name: string, extraInfo?: string): Promise<void>
 
 > **说明：** 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount-2)
+> [createAccount](#createaccount3)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount-2)(name: string, options?: CreateAccountOptions)
+**替代接口：** [createAccount](#createaccount3)(name: string, options?: CreateAccountOptions)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
@@ -3772,14 +3830,14 @@ addAccountImplicitly(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [createAccountImplicitly](#createaccountimplicitly)
+> [createAccountImplicitly](#createaccountimplicitly1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
+**替代接口：** [createAccountImplicitly](#createaccountimplicitly1)(owner: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3852,14 +3910,14 @@ authenticate(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [auth](#auth)
+> [auth](#auth1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
+**替代接口：** [auth](#auth1)(name: string, owner: string, authType: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3916,6 +3974,8 @@ struct Index {
 }
 ```
 
+<a id="checkappaccountsyncenable1"></a>
+
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -3927,14 +3987,14 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](#checkdatasyncenabled)
+> [checkDataSyncEnabled](#checkdatasyncenabled1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled1)(name: string, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3963,7 +4023,7 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, res
 });
 ```
 
-<a id="checkappaccountsyncenable-1"></a>
+<a id="checkappaccountsyncenable2"></a>
 
 ## checkAppAccountSyncEnable
 
@@ -3976,13 +4036,13 @@ checkAppAccountSyncEnable(name: string): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](#checkdatasyncenabled-1)替代。
+> [checkDataSyncEnabled](#checkdatasyncenabled2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled-1)(name: string)
+**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled2)(name: string)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -4014,6 +4074,8 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => 
 });
 ```
 
+<a id="checkoauthtokenvisibility1"></a>
+
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -4030,14 +4092,14 @@ checkOAuthTokenVisibility(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](#checkauthtokenvisibility)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility1)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
 
@@ -4067,7 +4129,7 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
   });
 ```
 
-<a id="checkoauthtokenvisibility-1"></a>
+<a id="checkoauthtokenvisibility2"></a>
 
 ## checkOAuthTokenVisibility
 
@@ -4080,14 +4142,14 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](#checkauthtokenvisibility-1)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility-1)(name: string, authType: string, bundleName: string)
+**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility2)(name: string, authType: string, bundleName: string)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
@@ -4120,6 +4182,8 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
 });
 ```
 
+<a id="deleteaccount1"></a>
+
 ## deleteAccount
 
 ```TypeScript
@@ -4131,14 +4195,14 @@ deleteAccount(name: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](#removeaccount)替
+> [removeAccount](#removeaccount1)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [removeAccount](#removeaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4161,7 +4225,7 @@ appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => {
 });
 ```
 
-<a id="deleteaccount-1"></a>
+<a id="deleteaccount2"></a>
 
 ## deleteAccount
 
@@ -4174,14 +4238,14 @@ deleteAccount(name: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](#removeaccount-1)替
+> [removeAccount](#removeaccount2)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount](#removeaccount-1)(name: string)
+**替代接口：** [removeAccount](#removeaccount2)(name: string)
 
 <!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
@@ -4211,6 +4275,8 @@ appAccountManager.deleteAccount('ZhaoLiu').then(() => {
 });
 ```
 
+<a id="deleteoauthtoken1"></a>
+
 ## deleteOAuthToken
 
 ```TypeScript
@@ -4222,14 +4288,14 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](#deleteauthtoken)
+> [deleteAuthToken](#deleteauthtoken1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteAuthToken](#deleteauthtoken1)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4260,7 +4326,7 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
   });
 ```
 
-<a id="deleteoauthtoken-1"></a>
+<a id="deleteoauthtoken2"></a>
 
 ## deleteOAuthToken
 
@@ -4273,14 +4339,14 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](#deleteauthtoken-1)
+> [deleteAuthToken](#deleteauthtoken2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken](#deleteauthtoken-1)(name: string, owner: string, authType: string, token: string)
+**替代接口：** [deleteAuthToken](#deleteauthtoken2)(name: string, owner: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
@@ -4313,6 +4379,8 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
 });
 ```
 
+<a id="disableappaccess1"></a>
+
 ## disableAppAccess
 
 ```TypeScript
@@ -4324,14 +4392,14 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4355,7 +4423,7 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err
 });
 ```
 
-<a id="disableappaccess-1"></a>
+<a id="disableappaccess2"></a>
 
 ## disableAppAccess
 
@@ -4368,14 +4436,14 @@ disableAppAccess(name: string, bundleName: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess-1)
+> [setAppAccess](#setappaccess2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
+**替代接口：** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4406,6 +4474,8 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then
 });
 ```
 
+<a id="enableappaccess1"></a>
+
 ## enableAppAccess
 
 ```TypeScript
@@ -4417,14 +4487,14 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4452,7 +4522,7 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err:
 });
 ```
 
-<a id="enableappaccess-1"></a>
+<a id="enableappaccess2"></a>
 
 ## enableAppAccess
 
@@ -4465,14 +4535,14 @@ enableAppAccess(name: string, bundleName: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess-1)
+> [setAppAccess](#setappaccess2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
+**替代接口：** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4503,6 +4573,8 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(
 });
 ```
 
+<a id="getaccountcredential1"></a>
+
 ## getAccountCredential
 
 ```TypeScript
@@ -4514,14 +4586,14 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](#getcredential)
+> [getCredential](#getcredential1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCredential](#getcredential1)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4549,7 +4621,7 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: Bu
 });
 ```
 
-<a id="getaccountcredential-1"></a>
+<a id="getaccountcredential2"></a>
 
 ## getAccountCredential
 
@@ -4562,13 +4634,13 @@ getAccountCredential(name: string, credentialType: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](#getcredential-1)替代。
+> [getCredential](#getcredential2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential](#getcredential-1)(name: string, credentialType: string)
+**替代接口：** [getCredential](#getcredential2)(name: string, credentialType: string)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
@@ -4599,6 +4671,8 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((da
 });
 ```
 
+<a id="getaccountextrainfo1"></a>
+
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -4610,14 +4684,14 @@ getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4644,7 +4718,7 @@ appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: s
 });
 ```
 
-<a id="getaccountextrainfo-1"></a>
+<a id="getaccountextrainfo2"></a>
 
 ## getAccountExtraInfo
 
@@ -4657,13 +4731,13 @@ getAccountExtraInfo(name: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata-1)替代。
+> [getCustomData](#getcustomdata2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata-1)(name: string, key: string)
+**替代接口：** [getCustomData](#getcustomdata2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
@@ -4693,6 +4767,8 @@ appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => {
 });
 ```
 
+<a id="getallaccessibleaccounts1"></a>
+
 ## getAllAccessibleAccounts
 
 ```TypeScript
@@ -4704,14 +4780,14 @@ getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAllAccounts](#getallaccounts)
+> [getAllAccounts](#getallaccounts1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**替代接口：** [getAllAccounts](#getallaccounts1)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -4739,7 +4815,7 @@ appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount
 });
 ```
 
-<a id="getallaccessibleaccounts-1"></a>
+<a id="getallaccessibleaccounts2"></a>
 
 ## getAllAccessibleAccounts
 
@@ -4784,6 +4860,8 @@ appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountIn
 });
 ```
 
+<a id="getalloauthtokens1"></a>
+
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -4795,14 +4873,14 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAu
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](#getallauthtokens)
+> [getAllAuthTokens](#getallauthtokens1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
+**替代接口：** [getAllAuthTokens](#getallauthtokens1)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
@@ -4831,7 +4909,7 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
   });
 ```
 
-<a id="getalloauthtokens-1"></a>
+<a id="getalloauthtokens2"></a>
 
 ## getAllOAuthTokens
 
@@ -4844,13 +4922,13 @@ getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](#getallauthtokens-1)替代。
+> [getAllAuthTokens](#getallauthtokens2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens](#getallauthtokens-1)(name: string, owner: string)
+**替代接口：** [getAllAuthTokens](#getallauthtokens2)(name: string, owner: string)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
@@ -4882,6 +4960,8 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
 });
 ```
 
+<a id="getassociateddata1"></a>
+
 ## getAssociatedData
 
 ```TypeScript
@@ -4893,14 +4973,14 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): v
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4928,7 +5008,7 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, res
 });
 ```
 
-<a id="getassociateddata-1"></a>
+<a id="getassociateddata2"></a>
 
 ## getAssociatedData
 
@@ -4941,13 +5021,13 @@ getAssociatedData(name: string, key: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata-1)替代。
+> [getCustomData](#getcustomdata2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata-1)(name: string, key: string)
+**替代接口：** [getCustomData](#getcustomdata2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
@@ -4978,6 +5058,8 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => {
 });
 ```
 
+<a id="getauthenticatorcallback1"></a>
+
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -4989,14 +5071,14 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<Authenticato
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](#getauthcallback)
+> [getAuthCallback](#getauthcallback1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
+**替代接口：** [getAuthCallback](#getauthcallback1)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
 
@@ -5035,7 +5117,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthenticatorcallback-1"></a>
+<a id="getauthenticatorcallback2"></a>
 
 ## getAuthenticatorCallback
 
@@ -5048,13 +5130,13 @@ getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](#getauthcallback-1)替代。
+> [getAuthCallback](#getauthcallback2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback](#getauthcallback-1)(sessionId: string)
+**替代接口：** [getAuthCallback](#getauthcallback2)(sessionId: string)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
@@ -5096,6 +5178,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getauthenticatorinfo1"></a>
+
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -5107,14 +5191,14 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>):
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](#queryauthenticatorinfo)
+> [queryAuthenticatorInfo](#queryauthenticatorinfo1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
+**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo1)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
@@ -5142,7 +5226,7 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
   });
 ```
 
-<a id="getauthenticatorinfo-1"></a>
+<a id="getauthenticatorinfo2"></a>
 
 ## getAuthenticatorInfo
 
@@ -5155,13 +5239,13 @@ getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](#queryauthenticatorinfo-1)替代。
+> [queryAuthenticatorInfo](#queryauthenticatorinfo2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo-1)(owner: string)
+**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo2)(owner: string)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
@@ -5192,25 +5276,27 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
 });
 ```
 
+<a id="getoauthlist1"></a>
+
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility1)来设置）。使用callback异步回调。
 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](#getauthlist)
+> [getAuthList](#getauthlist1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
+**替代接口：** [getAuthList](#getauthlist1)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -5238,7 +5324,7 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 });
 ```
 
-<a id="getoauthlist-1"></a>
+<a id="getoauthlist2"></a>
 
 ## getOAuthList
 
@@ -5246,18 +5332,18 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility1)来设置）。使用Promise异步回调。
 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](#getauthlist-1)替代。
+> [getAuthList](#getauthlist2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList](#getauthlist-1)(name: string, authType: string)
+**替代接口：** [getAuthList](#getauthlist2)(name: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
@@ -5288,6 +5374,8 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) =>
 });
 ```
 
+<a id="getoauthtoken1"></a>
+
 ## getOAuthToken
 
 ```TypeScript
@@ -5299,14 +5387,14 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](#getauthtoken)
+> [getAuthToken](#getauthtoken1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getAuthToken](#getauthtoken1)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5336,7 +5424,7 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
   });
 ```
 
-<a id="getoauthtoken-1"></a>
+<a id="getoauthtoken2"></a>
 
 ## getOAuthToken
 
@@ -5349,13 +5437,13 @@ getOAuthToken(name: string, owner: string, authType: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](#getauthtoken-1)替代。
+> [getAuthToken](#getauthtoken2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken](#getauthtoken-1)(name: string, owner: string, authType: string)
+**替代接口：** [getAuthToken](#getauthtoken2)(name: string, owner: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
@@ -5387,6 +5475,8 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
 });
 ```
 
+<a id="setaccountcredential1"></a>
+
 ## setAccountCredential
 
 ```TypeScript
@@ -5398,14 +5488,14 @@ setAccountCredential(name: string, credentialType: string, credential: string, c
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](#setcredential)
+> [setCredential](#setcredential1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCredential](#setcredential1)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5434,7 +5524,7 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
-<a id="setaccountcredential-1"></a>
+<a id="setaccountcredential2"></a>
 
 ## setAccountCredential
 
@@ -5447,14 +5537,14 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](#setcredential-1)
+> [setCredential](#setcredential2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential](#setcredential-1)(name: string, credentialType: string, credential: string)
+**替代接口：** [setCredential](#setcredential2)(name: string, credentialType: string, credential: string)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
@@ -5486,6 +5576,8 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
+<a id="setaccountextrainfo1"></a>
+
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -5497,14 +5589,14 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<voi
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5532,7 +5624,7 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) 
 });
 ```
 
-<a id="setaccountextrainfo-1"></a>
+<a id="setaccountextrainfo2"></a>
 
 ## setAccountExtraInfo
 
@@ -5545,13 +5637,13 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata-1)替代。
+> [setCustomData](#setcustomdata2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
+**替代接口：** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
@@ -5582,6 +5674,8 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => {
 });
 ```
 
+<a id="setappaccountsyncenable1"></a>
+
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -5593,14 +5687,14 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](#setdatasyncenabled)
+> [setDataSyncEnabled](#setdatasyncenabled1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setDataSyncEnabled](#setdatasyncenabled1)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5630,7 +5724,7 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError)
 });
 ```
 
-<a id="setappaccountsyncenable-1"></a>
+<a id="setappaccountsyncenable2"></a>
 
 ## setAppAccountSyncEnable
 
@@ -5643,13 +5737,13 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](#setdatasyncenabled-1)替代。
+> [setDataSyncEnabled](#setdatasyncenabled2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled](#setdatasyncenabled-1)(name: string, isEnabled: boolean)
+**替代接口：** [setDataSyncEnabled](#setdatasyncenabled2)(name: string, isEnabled: boolean)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5682,6 +5776,8 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => {
 });
 ```
 
+<a id="setassociateddata1"></a>
+
 ## setAssociatedData
 
 ```TypeScript
@@ -5693,14 +5789,14 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5729,7 +5825,7 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessEr
 });
 ```
 
-<a id="setassociateddata-1"></a>
+<a id="setassociateddata2"></a>
 
 ## setAssociatedData
 
@@ -5742,13 +5838,13 @@ setAssociatedData(name: string, key: string, value: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata-1)替代。
+> [setCustomData](#setcustomdata2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
+**替代接口：** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
@@ -5780,6 +5876,8 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => {
 });
 ```
 
+<a id="setoauthtoken1"></a>
+
 ## setOAuthToken
 
 ```TypeScript
@@ -5791,14 +5889,14 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](#setauthtoken)
+> [setAuthToken](#setauthtoken1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAuthToken](#setauthtoken1)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5827,7 +5925,7 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessE
 });
 ```
 
-<a id="setoauthtoken-1"></a>
+<a id="setoauthtoken2"></a>
 
 ## setOAuthToken
 
@@ -5840,13 +5938,13 @@ setOAuthToken(name: string, authType: string, token: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](#setauthtoken-1)替代。
+> [setAuthToken](#setauthtoken2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken](#setauthtoken-1)(name: string, authType: string, token: string)
+**替代接口：** [setAuthToken](#setauthtoken2)(name: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
@@ -5878,6 +5976,8 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
 });
 ```
 
+<a id="setoauthtokenvisibility1"></a>
+
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -5895,14 +5995,14 @@ setOAuthTokenVisibility(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](#setauthtokenvisibility)
+> [setAuthTokenVisibility](#setauthtokenvisibility1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
+**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility1)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -5933,7 +6033,7 @@ appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.
   });
 ```
 
-<a id="setoauthtokenvisibility-1"></a>
+<a id="setoauthtokenvisibility2"></a>
 
 ## setOAuthTokenVisibility
 
@@ -5946,14 +6046,14 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](#setauthtokenvisibility-1)
+> [setAuthTokenVisibility](#setauthtokenvisibility2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility-1)(name: string, authType: string, bundleName: string, isVisible: boolean)
+**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility2)(name: string, authType: string, bundleName: string, isVisible: boolean)
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 

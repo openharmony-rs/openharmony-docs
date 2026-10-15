@@ -40,7 +40,7 @@ Opens a proxy channel. This API uses a promise to return the result. Based on th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because bluetooth proxy function has been trimmed.<br>**Applicable version:** 26.0.0 and later |
 | [32390001](../errorcode-proxyChannelManager.md#32390001-bluetooth-disabled) | BR is disabled. |
 | [32390002](../errorcode-proxyChannelManager.md#32390002-bluetooth-unpaired) | Device not paired. |

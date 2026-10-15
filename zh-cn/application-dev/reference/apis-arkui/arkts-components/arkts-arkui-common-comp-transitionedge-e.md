@@ -12,26 +12,6 @@ declare enum TransitionEdge
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
-
-```TypeScript
-TOP = 0
-```
-
-窗口的上边缘。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TransitionEdge-TOP = 0--><!--Device-TransitionEdge-TOP = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## BOTTOM
 
 ```TypeScript
@@ -49,6 +29,26 @@ BOTTOM = 1
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-TransitionEdge-BOTTOM = 1--><!--Device-TransitionEdge-BOTTOM = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## END
+
+```TypeScript
+END = 3
+```
+
+窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TransitionEdge-END = 3--><!--Device-TransitionEdge-END = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,13 +72,13 @@ START = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## END
+## TOP
 
 ```TypeScript
-END = 3
+TOP = 0
 ```
 
-窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。
+窗口的上边缘。
 
 **起始版本：** 10
 
@@ -88,6 +88,6 @@ END = 3
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TransitionEdge-END = 3--><!--Device-TransitionEdge-END = 3-End-->
+<!--Device-TransitionEdge-TOP = 0--><!--Device-TransitionEdge-TOP = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

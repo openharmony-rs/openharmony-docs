@@ -12,6 +12,42 @@ Enumerates the padding algorithms.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
+## HUKS_PADDING_ISO_IEC_9796_2
+
+```TypeScript
+HUKS_PADDING_ISO_IEC_9796_2 = 6
+```
+
+ISO_IEC_9796_2<!--Del--> (not supported currently)<!--DelEnd-->.
+
+**Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_PADDING_ISO_IEC_9797_1
+
+```TypeScript
+HUKS_PADDING_ISO_IEC_9797_1 = 7
+```
+
+ISO_IEC_9797_1<!--Del--> (not supported currently)<!--DelEnd-->.
+
+**Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
 ## HUKS_PADDING_NONE
 
 ```TypeScript
@@ -45,26 +81,6 @@ Optimal Asymmetric Encryption Padding (OAEP).
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HuksKeyPadding-HUKS_PADDING_OAEP = 1--><!--Device-HuksKeyPadding-HUKS_PADDING_OAEP = 1-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_PADDING_PSS
-
-```TypeScript
-HUKS_PADDING_PSS = 2
-```
-
-Probabilistic Signature Scheme (PSS).
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2--><!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -128,38 +144,22 @@ PKCS #7.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_PADDING_ISO_IEC_9796_2
+## HUKS_PADDING_PSS
 
 ```TypeScript
-HUKS_PADDING_ISO_IEC_9796_2 = 6
+HUKS_PADDING_PSS = 2
 ```
 
-ISO_IEC_9796_2<!--Del--> (not supported currently)<!--DelEnd-->.
+Probabilistic Signature Scheme (PSS).
 
-**Since:** 12
+**Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6-End-->
+<!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2--><!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2-End-->
 
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_PADDING_ISO_IEC_9797_1
-
-```TypeScript
-HUKS_PADDING_ISO_IEC_9797_1 = 7
-```
-
-ISO_IEC_9797_1<!--Del--> (not supported currently)<!--DelEnd-->.
-
-**Since:** 12
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension

@@ -52,6 +52,7 @@ delete(
 | --- | --- |
 | Promise&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回被删除的数据和删除结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,6 +68,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## generateId
 
@@ -96,6 +99,7 @@ generateId(count: number): Promise<Result<Array<string>>>
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;string&gt;&gt;&gt; | Promise对象，以[Result](../../../reference/apis-arkdata/js-apis-data-cloudExtension-sys.md#resultt)结构将生成的ID以数组形式返回。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,6 +117,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## heartbeat
 
@@ -142,6 +148,7 @@ heartbeat(lockId: number): Promise<Result<LockInfo>>
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[LockInfo](arkts-arkdata-cloudextension-lockinfo-i-sys.md)&gt;&gt; | Promise对象，返回锁的信息，包含加锁时长和锁的ID。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -165,6 +172,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## insert
 
@@ -200,6 +209,7 @@ insert(
 | --- | --- |
 | Promise&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回插入的数据和插入结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -215,6 +225,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## lock
 
@@ -238,6 +250,7 @@ lock(): Promise<Result<LockInfo>>
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[LockInfo](arkts-arkdata-cloudextension-lockinfo-i-sys.md)&gt;&gt; | Promise对象，返回加锁的信息，包含加锁时长和锁的ID。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -261,6 +274,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## query
 
@@ -293,6 +308,7 @@ query(table: string, fields: Array<string>, queryCount: number, queryCursor: str
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[CloudData](arkts-arkdata-cloudextension-clouddata-i-sys.md)&gt;&gt; | Promise对象，返回被查询的数据和查询结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -315,6 +331,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## unlock
 
@@ -344,6 +362,7 @@ unlock(lockId: number): Promise<Result<boolean>>
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;boolean&gt;&gt; | Promise对象，返回解锁结果，true表示解锁成功，false表示解锁失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -362,6 +381,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## update
 
@@ -397,6 +418,7 @@ update(
 | --- | --- |
 | Promise&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回更新的数据和更新结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -412,3 +434,5 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->

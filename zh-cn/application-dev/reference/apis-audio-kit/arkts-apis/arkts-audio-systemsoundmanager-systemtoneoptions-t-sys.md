@@ -6,6 +6,8 @@ type SystemToneOptions = _SystemToneOptions
 
 系统提示音播放器配置项。
 
+**类型：** _SystemToneOptions
+
 **起始版本：** 11
 
 <!--Device-systemSoundManager-type SystemToneOptions = _SystemToneOptions--><!--Device-systemSoundManager-type SystemToneOptions = _SystemToneOptions-End-->
@@ -13,5 +15,3 @@ type SystemToneOptions = _SystemToneOptions
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _SystemToneOptions

@@ -55,7 +55,7 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | The algorithm mode is not supported. |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | The file operation failed. |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | The IPC communication failed. |
@@ -63,7 +63,7 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The queried entity does not exist. |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | The device environment or input parameter is abnormal. |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | The memory is insufficient. |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | The parameter is incorrect. Possible causes: 1. A mandatory parameter is left empty. 2. The parameter type is incorrect. 3. The parameter verification failed. 4. The group ID specified by the access group tag is invalid. |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | The parameter is incorrect. Possible causes:         1. A mandatory parameter is left empty.         2. The parameter type is incorrect.         3. The parameter verification failed.         4. The group ID specified by the access group tag is invalid. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | The operation times out. This may be caused by network jitter. You can try again later. |
 | [12000027](../errorcode-huks.md#12000027-网络不可用) | The network is unavailable. Check network connections. |
 

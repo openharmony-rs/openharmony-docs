@@ -12,6 +12,22 @@ export enum ClipboardPolicy
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## CROSS_DEVICE
+
+```TypeScript
+CROSS_DEVICE = 3
+```
+
+剪贴板可跨设备使用。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ClipboardPolicy-CROSS_DEVICE = 3--><!--Device-ClipboardPolicy-CROSS_DEVICE = 3-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## DEFAULT
 
 ```TypeScript
@@ -57,21 +73,5 @@ LOCAL_DEVICE = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ClipboardPolicy-LOCAL_DEVICE = 2--><!--Device-ClipboardPolicy-LOCAL_DEVICE = 2-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## CROSS_DEVICE
-
-```TypeScript
-CROSS_DEVICE = 3
-```
-
-剪贴板可跨设备使用。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ClipboardPolicy-CROSS_DEVICE = 3--><!--Device-ClipboardPolicy-CROSS_DEVICE = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

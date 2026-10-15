@@ -30,7 +30,7 @@ Manufacture data.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BeaconManufactureData-manufactureData: ArrayBuffer--><!--Device-BeaconManufactureData-manufactureData: ArrayBuffer-End-->
 
@@ -48,7 +48,7 @@ Manufacture data mask.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BeaconManufactureData-manufactureDataMask: ArrayBuffer--><!--Device-BeaconManufactureData-manufactureDataMask: ArrayBuffer-End-->
 
@@ -66,7 +66,7 @@ Manufacture id.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BeaconManufactureData-manufactureId: int--><!--Device-BeaconManufactureData-manufactureId: int-End-->
 

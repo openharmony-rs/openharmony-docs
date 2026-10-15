@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="formatphonenumber1"></a>
+
 ## formatPhoneNumber
 
 ```TypeScript
@@ -34,7 +36,7 @@ function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, ca
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -58,7 +60,7 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
 ```
 
 
-<a id="formatphonenumber-1"></a>
+<a id="formatphonenumber2"></a>
 
 ## formatPhoneNumber
 
@@ -93,7 +95,7 @@ function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -115,7 +117,7 @@ call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
 ```
 
 
-<a id="formatphonenumber-2"></a>
+<a id="formatphonenumber3"></a>
 
 ## formatPhoneNumber
 
@@ -144,7 +146,7 @@ function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |

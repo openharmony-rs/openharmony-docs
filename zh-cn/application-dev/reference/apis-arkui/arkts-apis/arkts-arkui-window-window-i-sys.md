@@ -6,7 +6,7 @@ interface Window
 
 当前窗口实例，窗口管理器管理的基本单元。
 
-下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md)、[createWindow()](arkts-arkui-window-createwindow-f.md)、[findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
+下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)、[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow1)、[findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
 **起始版本：** 6
 
@@ -36,7 +36,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 > 
 > - 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，并且可以监听主窗大小及模式切换。除非调用[detachLayoutToParentWindow()](#detachlayouttoparentwindow)接口解绑，否则效果将持续。
 > 
-> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
+> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize1)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
 
 **起始版本：** 24
 
@@ -67,11 +67,12 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported. |
-| [1300010](../errorcode-window.md#1300010-当前窗口模式不支持该操作) | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in the floating mode. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported;         2. The current window's parent window is not a main window;         3. Only level-1 subwindows are supported. |
+| [1300010](../errorcode-window.md#1300010-当前窗口模式不支持该操作) | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout.         2. The subwindow is not in the floating mode. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -120,6 +121,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="binddialogtarget1"></a>
+
 ## bindDialogTarget
 
 ```TypeScript
@@ -158,6 +163,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promis
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -210,7 +216,9 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-<a id="binddialogtarget-1"></a>
+<!--DelEnd-->
+
+<a id="binddialogtarget2"></a>
 
 ## bindDialogTarget
 
@@ -245,6 +253,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callbac
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -299,7 +308,9 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-<a id="binddialogtarget-2"></a>
+<!--DelEnd-->
+
+<a id="binddialogtarget3"></a>
 
 ## bindDialogTarget
 
@@ -339,6 +350,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -379,7 +391,9 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-<a id="binddialogtarget-3"></a>
+<!--DelEnd-->
+
+<a id="binddialogtarget4"></a>
 
 ## bindDialogTarget
 
@@ -414,6 +428,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -456,6 +471,8 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## detachLayoutToParentWindow
 
 ```TypeScript
@@ -470,7 +487,7 @@ detachLayoutToParentWindow(): Promise<void>
 > 
 > - 调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽以修改子窗大小和位置。
 > 
-> - 解除协同后，调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
+> - 解除协同后，调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize1)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
 
 **起始版本：** 24
 
@@ -494,11 +511,12 @@ detachLayoutToParentWindow(): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function detachLayoutToParentWindow cannot work correctly due to limited device capabilities. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. Only level-1 subwindows are supported. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported;         2. Only level-1 subwindows are supported. |
 | [1300010](../errorcode-window.md#1300010-当前窗口模式不支持该操作) | The operation in the current window status is invalid. Possible cause: The subwindow is not attached to the main window. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -532,6 +550,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## getRotationLocked
 
 ```TypeScript
@@ -560,10 +580,11 @@ getRotationLocked(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | 1300029 | This window type is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -574,6 +595,8 @@ try {
   console.error(`Failed to get rotation locked. Cause code: ${exception.code}, message: ${exception.message}`);
 };
 ```
+
+<!--DelEnd-->
 
 ## getTransitionController
 
@@ -602,14 +625,19 @@ getTransitionController(): TransitionController
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let controller = windowClass.getTransitionController(); // 获取属性转换控制器
 ```
+
+<!--DelEnd-->
+
+<a id="hide1"></a>
 
 ## hide
 
@@ -640,6 +668,7 @@ hide (callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -655,7 +684,9 @@ windowClass.hide((err: BusinessError) => {
 });
 ```
 
-<a id="hide-1"></a>
+<!--DelEnd-->
+
+<a id="hide2"></a>
 
 ## hide
 
@@ -686,6 +717,7 @@ hide(): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -698,6 +730,10 @@ promise.then(() => {
   console.error(`Failed to hide the window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="hidenonsystemfloatingwindows1"></a>
 
 ## hideNonSystemFloatingWindows
 
@@ -729,12 +765,13 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback<void>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -780,7 +817,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="hidenonsystemfloatingwindows-1"></a>
+<!--DelEnd-->
+
+<a id="hidenonsystemfloatingwindows2"></a>
 
 ## hideNonSystemFloatingWindows
 
@@ -817,12 +856,13 @@ hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -868,6 +908,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="hidewithanimation1"></a>
+
 ## hideWithAnimation
 
 ```TypeScript
@@ -895,10 +939,11 @@ hideWithAnimation(callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -914,7 +959,9 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 });
 ```
 
-<a id="hidewithanimation-1"></a>
+<!--DelEnd-->
+
+<a id="hidewithanimation2"></a>
 
 ## hideWithAnimation
 
@@ -943,10 +990,11 @@ hideWithAnimation(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -959,6 +1007,8 @@ promise.then(() => {
   console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## isMainWindowFullScreenAcrossDisplays
 
@@ -988,10 +1038,11 @@ isMainWindowFullScreenAcrossDisplays(): Promise<boolean>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1008,6 +1059,8 @@ try {
   console.error(`Failed to use isMainWindowFullScreenAcrossDisplays function. Cause code: ${exception.code}, message: ${exception.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('mainWindowFullScreenAcrossDisplaysChanged')
 
@@ -1038,10 +1091,11 @@ off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback<boole
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1059,6 +1113,8 @@ try {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('mainWindowFullScreenAcrossDisplaysChanged')
 
@@ -1089,10 +1145,11 @@ on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback<boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1105,6 +1162,8 @@ try {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## opacity
 
@@ -1133,10 +1192,11 @@ opacity(opacity: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1147,6 +1207,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="raiseabovetarget1"></a>
+
 ## raiseAboveTarget
 
 ```TypeScript
@@ -1155,7 +1219,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 
 将同一个主窗口下的子窗口抬升到目标子窗口之上。使用callback异步回调。
 
-使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow1)并执行完毕。
 
 **起始版本：** 10
 
@@ -1184,6 +1248,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 | [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1226,7 +1291,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="raiseabovetarget-1"></a>
+<!--DelEnd-->
+
+<a id="raiseabovetarget2"></a>
 
 ## raiseAboveTarget
 
@@ -1236,7 +1303,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 
 将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
 
-使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow1)并执行完毕。
 
 **起始版本：** 10
 
@@ -1270,6 +1337,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 | [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1309,6 +1377,8 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## raiseMainWindowAboveTarget
 
@@ -1354,8 +1424,9 @@ raiseMainWindowAboveTarget(windowId: number): Promise<void>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. Invalid parameter range. 2. Invalid parameter length. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1478,6 +1549,10 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="raisetoapptop1"></a>
+
 ## raiseToAppTop
 
 ```TypeScript
@@ -1486,7 +1561,7 @@ raiseToAppTop(callback: AsyncCallback<void>): void
 
 提升应用子窗口到应用顶层。使用callback异步回调。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow1)并执行完毕。
 
 **起始版本：** 10
 
@@ -1512,6 +1587,7 @@ raiseToAppTop(callback: AsyncCallback<void>): void
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 | [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1544,6 +1620,8 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## requestFocus
 
@@ -1582,11 +1660,12 @@ requestFocus(isFocused: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, non-system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1600,6 +1679,8 @@ promise.then(() => {
   console.error(`Failed to request focus. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## rotate
 
@@ -1628,10 +1709,11 @@ rotate(rotateOptions: RotateOptions): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1648,6 +1730,8 @@ try {
   console.error(`Failed to rotate. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## scale
 
@@ -1676,10 +1760,11 @@ scale(scaleOptions: ScaleOptions): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1695,6 +1780,8 @@ try {
   console.error(`Failed to scale. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBackdropBlur
 
@@ -1727,10 +1814,11 @@ setBackdropBlur(radius: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1741,6 +1829,8 @@ try {
   console.error(`Failed to set backdrop blur. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBackdropBlurStyle
 
@@ -1768,11 +1858,12 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1782,6 +1873,8 @@ try {
   console.error(`Failed to set backdrop blur style. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBlur
 
@@ -1810,10 +1903,11 @@ setBlur(radius: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1823,6 +1917,8 @@ try {
   console.error(`Failed to set blur. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setCornerRadius
 
@@ -1851,10 +1947,11 @@ setCornerRadius(cornerRadius: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Invalid window type. Only subwindows and float windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1865,13 +1962,15 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## setDefaultDensityEnabled
 
 ```TypeScript
 setDefaultDensityEnabled(enabled: boolean): void
 ```
 
-设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)调用生效后使用。
+设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent1)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent1)调用生效后使用。
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
@@ -1899,6 +1998,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1909,6 +2009,8 @@ try {
   console.error(`Failed to set default density enabled. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setHandwritingFlag
 
@@ -1943,11 +2045,12 @@ setHandwritingFlag(enable: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1965,6 +2068,8 @@ try {
   console.error(`Failed to set handwriting flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setMainWindowRaiseByClickEnabled
 
@@ -2006,6 +2111,7 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2039,6 +2145,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="setraisebyclickenabled1"></a>
+
 ## setRaiseByClickEnabled
 
 ```TypeScript
@@ -2049,7 +2159,7 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void
 
 通常来说，点击一个子窗口，会将该子窗口显示到最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上方，而是保持不变。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow1)并执行完毕。
 
 **起始版本：** 10
 
@@ -2071,13 +2181,14 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 | [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2115,6 +2226,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## setRotationLocked
 
 ```TypeScript
@@ -2125,15 +2238,15 @@ setRotationLocked(locked: boolean): Promise<void>
 
 > **说明：** 
 > 
-> - 如果在锁定期间主窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
+> - 如果在锁定期间主窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation2)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
 > 
-> - 如果在锁定期间系统窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)设置显示方向。
+> - 如果在锁定期间系统窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation2)设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation2)设置显示方向。
 > 
 > - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。
 > 
-> - 如果在锁定期间应用调用[setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
+> - 如果在锁定期间应用调用[setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation1)设置屏幕方向，忽略该次屏幕方向设置。
 > 
-> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-1)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../windowmanager/window-rotation.md#窗口旋转简介)。
+> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation2)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../windowmanager/window-rotation.md#窗口旋转简介)。
 > 
 > - 不影响应用[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
 
@@ -2163,10 +2276,11 @@ setRotationLocked(locked: boolean): Promise<void>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | 1300029 | This window type is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2180,6 +2294,8 @@ promise.then(() => {
   console.error(`Failed to set rotation locked. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setShadow
 
@@ -2211,10 +2327,11 @@ setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): v
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, modal windows and subwindows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2224,6 +2341,8 @@ try {
   console.error(`Failed to set shadow. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSingleFrameComposerEnabled
 
@@ -2260,10 +2379,11 @@ setSingleFrameComposerEnabled(enable: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2281,6 +2401,8 @@ try {
   console.error(`Failed to enable the single-frame-composer function. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSnapshotSkip
 
@@ -2304,16 +2426,17 @@ setSnapshotSkip(isSkip: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。<br>true表示忽略当前窗口，false表示不忽略当前窗口。&lt;/br&gt; |
+| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。<br>true表示忽略当前窗口，false表示不忽略当前窗口。</br> |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2324,6 +2447,8 @@ try {
   console.error(`Failed to Skip. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setTitleButtonVisible
 
@@ -2356,11 +2481,12 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2399,6 +2525,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## setTopmost
 
 ```TypeScript
@@ -2432,12 +2560,13 @@ setTopmost(isTopmost: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2460,6 +2589,8 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setWakeUpScreen
 
@@ -2488,10 +2619,11 @@ setWakeUpScreen(wakeUp: boolean): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2502,6 +2634,10 @@ try {
   console.error(`Failed to wake up the screen. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setwatermarkflag1"></a>
 
 ## setWaterMarkFlag
 
@@ -2536,6 +2672,7 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback<void>): void
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2556,7 +2693,9 @@ try {
 }
 ```
 
-<a id="setwatermarkflag-1"></a>
+<!--DelEnd-->
+
+<a id="setwatermarkflag2"></a>
 
 ## setWaterMarkFlag
 
@@ -2596,6 +2735,7 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2613,6 +2753,10 @@ try {
   console.error(`Failed to set water mark flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setwindowmode1"></a>
 
 ## setWindowMode
 
@@ -2646,11 +2790,12 @@ setWindowMode(mode: WindowMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2686,7 +2831,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowmode-1"></a>
+<!--DelEnd-->
+
+<a id="setwindowmode2"></a>
 
 ## setWindowMode
 
@@ -2716,10 +2863,11 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2757,6 +2905,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="showwithanimation1"></a>
+
 ## showWithAnimation
 
 ```TypeScript
@@ -2784,10 +2936,11 @@ showWithAnimation(callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2803,7 +2956,9 @@ windowClass.showWithAnimation((err: BusinessError) => {
 });
 ```
 
-<a id="showwithanimation-1"></a>
+<!--DelEnd-->
+
+<a id="showwithanimation2"></a>
 
 ## showWithAnimation
 
@@ -2832,10 +2987,11 @@ showWithAnimation(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2848,6 +3004,8 @@ promise.then(() => {
   console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## translate
 
@@ -2876,10 +3034,11 @@ translate(translateOptions: TranslateOptions): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2894,6 +3053,10 @@ try {
   console.error(`Failed to translate. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setforbidsplitmove1"></a>
 
 ## setForbidSplitMove
 
@@ -2925,10 +3088,11 @@ setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback<void>): v
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2966,7 +3130,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setforbidsplitmove-1"></a>
+<!--DelEnd-->
+
+<a id="setforbidsplitmove2"></a>
 
 ## setForbidSplitMove
 
@@ -3003,10 +3169,11 @@ setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -3042,6 +3209,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="setwindowtype1"></a>
+
 ## setWindowType
 
 ```TypeScript
@@ -3072,6 +3243,7 @@ setWindowType(type: WindowType): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -3086,7 +3258,9 @@ promise.then(() => {
 });
 ```
 
-<a id="setwindowtype-1"></a>
+<!--DelEnd-->
+
+<a id="setwindowtype2"></a>
 
 ## setWindowType
 
@@ -3113,6 +3287,7 @@ setWindowType(type: WindowType, callback: AsyncCallback<void>): void
 | type | [WindowType](arkts-arkui-window-windowtype-e.md) | 是 | 窗口类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -3128,3 +3303,5 @@ windowClass.setWindowType(type, (err: BusinessError) => {
   console.info('Succeeded in setting the window type.');
 });
 ```
+
+<!--DelEnd-->

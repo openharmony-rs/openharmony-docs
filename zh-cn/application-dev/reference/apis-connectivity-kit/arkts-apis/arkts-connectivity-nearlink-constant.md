@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace nearlinkConstant--><!--Device-unnamed-declare namespace nearlinkConstant-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -25,6 +23,7 @@ import { nearlinkConstant } from '@kit.ConnectivityKit';
 | [AcbState](arkts-connectivity-nearlinkconstant-acbstate-e.md) | 表示和远端设备的逻辑链路连接状态，为枚举值。 |
 | [ConnectionState](arkts-connectivity-nearlinkconstant-connectionstate-e.md) | 表示和远端设备的连接状态，为枚举值。 |
 | [DeviceClass](arkts-connectivity-nearlinkconstant-deviceclass-e.md) | 表示设备类型，为枚举值。 |
+| [FrameType](arkts-connectivity-nearlinkconstant-frametype-e.md) | 表示星闪无线帧类型，为枚举值。 |
 | [PairingState](arkts-connectivity-nearlinkconstant-pairingstate-e.md) | 表示和远端设备的配对状态，为枚举值。 |
 
 <!--Del-->

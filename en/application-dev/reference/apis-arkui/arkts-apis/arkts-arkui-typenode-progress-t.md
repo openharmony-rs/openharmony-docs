@@ -6,6 +6,8 @@ type Progress = TypedFrameNode<ProgressInterface, ProgressAttribute>
 
 Represents a FrameNode of the **Progress** type. This type of node does not allow child components to be added.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ProgressInterface, [ProgressAttribute](../arkts-components/arkts-arkui-progress-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Progress** type. This type of node does not allo
 <!--Device-typeNode-type Progress = TypedFrameNode<ProgressInterface, ProgressAttribute>--><!--Device-typeNode-type Progress = TypedFrameNode<ProgressInterface, ProgressAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ProgressInterface, [ProgressAttribute](../arkts-components/arkts-arkui-progress-comp-attribute.md)&gt;

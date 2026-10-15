@@ -8,7 +8,7 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPWindow-type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'--><!--Device-PiPWindow-type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'-End-->
 
@@ -17,4 +17,4 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 | 类型 | 说明 |
 | --- | --- |
 | 'playbackStateChanged' | 播放或暂停直播。 |
-| 'voiceStateChanged' | 静音或解除静音。 [since 12] |
+| 'voiceStateChanged' | 静音或解除静音。<br>**起始版本：** 12 |

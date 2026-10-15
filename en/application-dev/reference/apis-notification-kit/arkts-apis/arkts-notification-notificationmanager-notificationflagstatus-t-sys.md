@@ -6,6 +6,8 @@ export type NotificationFlagStatus = _NotificationFlagStatus
 
 Enumerates the notification flag states.
 
+**Type:** _NotificationFlagStatus
+
 **Since:** 9
 
 <!--Device-notificationManager-export type NotificationFlagStatus = _NotificationFlagStatus--><!--Device-notificationManager-export type NotificationFlagStatus = _NotificationFlagStatus-End-->
@@ -13,5 +15,3 @@ Enumerates the notification flag states.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationFlagStatus

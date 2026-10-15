@@ -12,7 +12,7 @@ import { pluginBundleManager } from '@kit.AbilityKit';
 function getAllLocalPluginInfoForSelf(): Promise<Array<PluginBundleInfo>>
 ```
 
-Obtains information about all local plugins installed on the current application.
+Queries the information about all self-distributed plugins in the current app. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -28,7 +28,7 @@ Obtains information about all local plugins installed on the current application
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[PluginBundleInfo](arkts-ability-pluginbundlemanager-pluginbundleinfo-t.md)&gt;&gt; | Promise used to return the list of PluginBundleInfos object. |
+| Promise&lt;Array&lt;[PluginBundleInfo](arkts-ability-pluginbundlemanager-pluginbundleinfo-t.md)&gt;&gt; | Promise used to return the list of all local plugin information installed for the current application. |
 
 **Error codes:**
 

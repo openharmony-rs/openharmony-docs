@@ -6,6 +6,8 @@ export type NotificationClassification = _NotificationClassification
 
 Describes the notification classification information.
 
+**Type:** _NotificationClassification
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Describes the notification classification information.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationClassification

@@ -32,24 +32,6 @@ Blinking triggered by an alarm.
 
 **System API:** This is a system API.
 
-## NOTIFICATION
-
-```TypeScript
-NOTIFICATION = 2
-```
-
-Blinking triggered by a notification.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-BlinkingScenario-NOTIFICATION = 2--><!--Device-BlinkingScenario-NOTIFICATION = 2-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
 ## CALL
 
 ```TypeScript
@@ -63,6 +45,24 @@ Blinking triggered by an incoming call.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-BlinkingScenario-CALL = 3--><!--Device-BlinkingScenario-CALL = 3-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## NOTIFICATION
+
+```TypeScript
+NOTIFICATION = 2
+```
+
+Blinking triggered by a notification.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlinkingScenario-NOTIFICATION = 2--><!--Device-BlinkingScenario-NOTIFICATION = 2-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

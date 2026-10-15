@@ -12,20 +12,6 @@ Enumerates the digest algorithms that can be used for signing and signature veri
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## CM_DIGEST_NONE
-
-```TypeScript
-CM_DIGEST_NONE = 0
-```
-
-When this option is selected, it indicates that the application performs a digest calculation on the data to be signed or verified.
-
-**Since:** 11
-
-<!--Device-CmKeyDigest-CM_DIGEST_NONE = 0--><!--Device-CmKeyDigest-CM_DIGEST_NONE = 0-End-->
-
-**System capability:** SystemCapability.Security.CertificateManager
-
 ## CM_DIGEST_MD5
 
 ```TypeScript
@@ -37,6 +23,20 @@ MD5.
 **Since:** 11
 
 <!--Device-CmKeyDigest-CM_DIGEST_MD5 = 1--><!--Device-CmKeyDigest-CM_DIGEST_MD5 = 1-End-->
+
+**System capability:** SystemCapability.Security.CertificateManager
+
+## CM_DIGEST_NONE
+
+```TypeScript
+CM_DIGEST_NONE = 0
+```
+
+When this option is selected, it indicates that the application performs a digest calculation on the data to be signed or verified.
+
+**Since:** 11
+
+<!--Device-CmKeyDigest-CM_DIGEST_NONE = 0--><!--Device-CmKeyDigest-CM_DIGEST_NONE = 0-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 

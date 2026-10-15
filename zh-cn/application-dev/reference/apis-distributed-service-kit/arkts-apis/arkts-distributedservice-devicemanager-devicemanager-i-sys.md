@@ -60,9 +60,10 @@ authenticateDevice(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -130,6 +131,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## deleteCredential
 
 ```TypeScript
@@ -161,9 +164,10 @@ deleteCredential(queryInfo: string, callback: AsyncCallback<{ resultInfo: string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified queryInfo is greater than 5999. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified queryInfo is greater than 5999. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -202,6 +206,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getdeviceinfo1"></a>
+
 ## getDeviceInfo
 
 ```TypeScript
@@ -235,9 +243,10 @@ getDeviceInfo(networkId: string, callback: AsyncCallback<DeviceInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified networkId is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -262,7 +271,9 @@ try {
 }
 ```
 
-<a id="getdeviceinfo-1"></a>
+<!--DelEnd-->
+
+<a id="getdeviceinfo2"></a>
 
 ## getDeviceInfo
 
@@ -302,9 +313,10 @@ getDeviceInfo(networkId: string): Promise<DeviceInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified networkId is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -321,6 +333,10 @@ dmInstance.getDeviceInfo(networkId).then((data: deviceManager.DeviceInfo) => {
   console.error("getDeviceInfo errCode:" + err.code + ",errMessage:" + err.message);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="getlocaldeviceinfo1"></a>
 
 ## getLocalDeviceInfo
 
@@ -354,9 +370,10 @@ getLocalDeviceInfo(callback: AsyncCallback<DeviceInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -380,7 +397,9 @@ try {
 }
 ```
 
-<a id="getlocaldeviceinfo-1"></a>
+<!--DelEnd-->
+
+<a id="getlocaldeviceinfo2"></a>
 
 ## getLocalDeviceInfo
 
@@ -416,6 +435,7 @@ getLocalDeviceInfo(): Promise<DeviceInfo>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -430,6 +450,8 @@ dmInstance.getLocalDeviceInfo().then((data: deviceManager.DeviceInfo) => {
   console.error("getLocalDeviceInfo errCode:" + err.code + ",errMessage:" + err.message);
 });
 ```
+
+<!--DelEnd-->
 
 ## getLocalDeviceInfoSync
 
@@ -467,6 +489,7 @@ getLocalDeviceInfoSync(): DeviceInfo
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -483,6 +506,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="gettrusteddevicelist1"></a>
+
 ## getTrustedDeviceList
 
 ```TypeScript
@@ -495,7 +522,7 @@ getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void
 
 **废弃版本：** 11
 
-**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
+**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist1)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -516,8 +543,9 @@ getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -540,7 +568,9 @@ try {
 }
 ```
 
-<a id="gettrusteddevicelist-1"></a>
+<!--DelEnd-->
+
+<a id="gettrusteddevicelist2"></a>
 
 ## getTrustedDeviceList
 
@@ -576,6 +606,7 @@ getTrustedDeviceList(): Promise<Array<DeviceInfo>>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -590,6 +621,10 @@ dmInstance.getTrustedDeviceList().then((data: Array<deviceManager.DeviceInfo>) =
     console.error("getTrustedDeviceList errCode:" + err.code + ",errMessage:" + err.message);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="gettrusteddevicelistsync1"></a>
 
 ## getTrustedDeviceListSync
 
@@ -627,6 +662,7 @@ getTrustedDeviceListSync(): Array<DeviceInfo>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -643,7 +679,9 @@ try {
 }
 ```
 
-<a id="gettrusteddevicelistsync-1"></a>
+<!--DelEnd-->
+
+<a id="gettrusteddevicelistsync2"></a>
 
 ## getTrustedDeviceListSync
 
@@ -683,9 +721,10 @@ getTrustedDeviceListSync(isRefresh: boolean): Array<DeviceInfo>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -701,6 +740,8 @@ try {
   console.error("getTrustedDeviceListSync errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## importCredential
 
@@ -733,9 +774,10 @@ importCredential(credentialInfo: string, callback: AsyncCallback<{ resultInfo: s
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified credentialInfo is greater than 5999. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified credentialInfo is greater than 5999. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -803,6 +845,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## off('uiStateChange')
 
 ```TypeScript
@@ -836,9 +880,10 @@ off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -853,6 +898,8 @@ try {
   console.error("uiStateChange errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('deviceStateChange')
 
@@ -887,9 +934,10 @@ off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAc
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -919,6 +967,8 @@ try {
   console.error("deviceStateChange errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('deviceFound')
 
@@ -953,9 +1003,10 @@ off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: Devi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -985,6 +1036,8 @@ try {
   console.error("deviceFound errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('discoverFail')
 
@@ -1019,9 +1072,10 @@ off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: num
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1043,6 +1097,8 @@ try {
   console.error("discoverFail errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('publishSuccess')
 
@@ -1075,9 +1131,10 @@ off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1098,6 +1155,8 @@ try {
   console.error("publishSuccess errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('publishFail')
 
@@ -1130,9 +1189,10 @@ off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1154,6 +1214,8 @@ try {
   console.error("publishFail errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('serviceDie')
 
@@ -1188,9 +1250,10 @@ off(type: 'serviceDie', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1207,6 +1270,8 @@ try {
   console.error("serviceDie errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('uiStateChange')
 
@@ -1241,9 +1306,10 @@ ui状态变更回调。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1271,6 +1337,8 @@ try {
   console.error("uiStateChange errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('deviceStateChange')
 
@@ -1305,9 +1373,10 @@ on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeActi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1337,6 +1406,8 @@ try {
   console.error("deviceStateChange errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('deviceFound')
 
@@ -1371,9 +1442,10 @@ on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: Device
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1404,6 +1476,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## on('discoverFail')
 
 ```TypeScript
@@ -1416,7 +1490,7 @@ on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: numbe
 
 **废弃版本：** 11
 
-**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondiscoverfailure)(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;)
+**替代接口：** on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1437,9 +1511,10 @@ on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: numbe
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1461,6 +1536,8 @@ try {
   console.error("discoverFail errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('publishSuccess')
 
@@ -1493,9 +1570,10 @@ on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1516,6 +1594,8 @@ try {
   console.error("publishSuccess errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('publishFail')
 
@@ -1548,9 +1628,10 @@ on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1572,6 +1653,8 @@ try {
   console.error("publishFail errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('serviceDie')
 
@@ -1606,9 +1689,10 @@ on(type: 'serviceDie', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1625,6 +1709,8 @@ try {
   console.error("serviceDie errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## publishDeviceDiscovery
 
@@ -1656,12 +1742,13 @@ publishDeviceDiscovery(publishInfo: PublishInfo): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600105](../errorcode-device-manager.md#11600105-发布业务不可用) | Publish unavailable. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1693,6 +1780,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## release
 
 ```TypeScript
@@ -1723,6 +1812,7 @@ release(): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1737,6 +1827,8 @@ try {
   console.error("release errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## requestCredentialRegisterInfo
 
@@ -1769,9 +1861,10 @@ requestCredentialRegisterInfo(requestInfo: string, callback: AsyncCallback<{ reg
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified requestInfo is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified requestInfo is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1807,6 +1900,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## setUserOperation
 
 ```TypeScript
@@ -1840,10 +1935,11 @@ setUserOperation(operateAction: number, params: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified params is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified params is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1867,6 +1963,10 @@ try {
   console.error("setUserOperation errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="startdevicediscovery1"></a>
 
 ## startDeviceDiscovery
 
@@ -1900,12 +2000,13 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified param is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified param is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600104](../errorcode-device-manager.md#11600104-发现业务不可用) | Discovery unavailable. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -1942,7 +2043,9 @@ try {
 }
 ```
 
-<a id="startdevicediscovery-1"></a>
+<!--DelEnd-->
+
+<a id="startdevicediscovery2"></a>
 
 ## startDeviceDiscovery
 
@@ -1977,12 +2080,13 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo, filterOptions?: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified param is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified param is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600104](../errorcode-device-manager.md#11600104-发现业务不可用) | Discovery unavailable. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -2041,6 +2145,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## stopDeviceDiscovery
 
 ```TypeScript
@@ -2073,11 +2179,12 @@ stopDeviceDiscovery(subscribeId: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified param is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified param is greater than 255. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -2094,6 +2201,8 @@ try {
   console.error("stopDeviceDiscovery errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## unAuthenticateDevice
 
@@ -2127,11 +2236,12 @@ unAuthenticateDevice(deviceInfo: DeviceInfo): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -2163,6 +2273,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## unPublishDeviceDiscovery
 
 ```TypeScript
@@ -2193,11 +2305,12 @@ unPublishDeviceDiscovery(publishId: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -2214,6 +2327,8 @@ try {
   console.error("unPublishDeviceDiscovery errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## verifyAuthInfo
 
@@ -2246,9 +2361,10 @@ verifyAuthInfo(authInfo: AuthInfo, callback: AsyncCallback<{ deviceId: string, l
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
@@ -2295,3 +2411,5 @@ try {
   console.error("verifyAuthInfo errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
+
+<!--DelEnd-->

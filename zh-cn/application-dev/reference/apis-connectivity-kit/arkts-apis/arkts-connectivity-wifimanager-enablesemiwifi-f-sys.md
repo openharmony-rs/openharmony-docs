@@ -34,6 +34,7 @@ function enableSemiWifi(): void
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501004](../errorcode-wifi.md#2501004-服务关闭失败) | Operation failed because the service is being opened. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -45,3 +46,5 @@ import { wifiManager } from '@kit.ConnectivityKit';
     console.error("failed:" + JSON.stringify(error));
   }
 ```
+
+<!--DelEnd-->

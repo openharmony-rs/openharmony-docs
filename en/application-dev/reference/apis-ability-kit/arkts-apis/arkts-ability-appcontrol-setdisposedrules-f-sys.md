@@ -28,7 +28,7 @@ Sets disposed rules in batches for an application or an application clone.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| disposedRuleConfigurations | Array&lt;[DisposedRuleConfiguration](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)&gt; | Yes | Configuration for the disposed rules in batches, including the appId of the target application, the index of the application clone, and the rules themselves. The maximum number of disposed rules in an array is 1000.<br>**NOTE:** <br>1. If multiple **DisposedRuleConfiguration** entries in the array have the same appId and appIndex, the later entry will overwrite the earlier one.<br>2. If an application has already set disposed rules, re-setting the rules will replace the existing ones. Identical appId and appIndex values indicate the same application instance. |
+| disposedRuleConfigurations | Array&lt;[DisposedRuleConfiguration](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)&gt; | Yes | Configuration for the disposed rules in batches, including the appId of the target application, the index of the application clone, and the rules themselves. The maximum number of disposed rules in an array is 1000.<br>**NOTE:** <br>1. If multiple **DisposedRuleConfiguration** entries in the array have the same appId and appIndex, the later entry will overwrite the earlier one. <br>2. If an application has already set disposed rules, re-setting the rules will replace the existing ones. Identical appId and appIndex values indicate the same application instance. |
 
 **Error codes:**
 
@@ -40,6 +40,7 @@ Sets disposed rules in batches for an application or an application clone.
 | [17700005](../errorcode-bundle.md#17700005-appid-is-an-empty-string) | The specified app ID is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex is not in the valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -98,3 +99,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

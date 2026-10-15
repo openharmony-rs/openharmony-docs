@@ -6,7 +6,7 @@ declare class StepperAttribute extends CommonMethod<StepperAttribute>
 
 无
 
-@extends CommonMethod&lt;StepperAttribute&gt;
+@extends CommonMethod<StepperAttribute>
 
 **继承/实现关系：** StepperAttribute extends CommonMethod&lt;StepperAttribute&gt;
 

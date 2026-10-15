@@ -6,6 +6,8 @@ export type EditableTitleBarItem = EditableTitleBarMenuItem
 
 Declaration of the image item.
 
+**Type:** [EditableTitleBarMenuItem](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebarmenuitem-c.md)
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Declaration of the image item.
 <!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem--><!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [EditableTitleBarMenuItem](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebarmenuitem-c.md)

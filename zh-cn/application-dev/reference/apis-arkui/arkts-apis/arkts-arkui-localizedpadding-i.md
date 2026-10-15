@@ -42,9 +42,7 @@ end?: LengthMetrics
 
 右内边距，组件内元素距组件右边界的尺寸。
 
-从右至左显示语言模式下为
-
-左内边距，组件内元素距组件左边界的尺寸。
+从右至左显示语言模式下为左内边距，组件内元素距组件左边界的尺寸。
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -68,9 +66,7 @@ start?: LengthMetrics
 
 左内边距，组件内元素距组件左边界的尺寸。
 
-从右至左显示语言模式下为
-
-右内边距，组件内元素距组件右边界的尺寸。
+从右至左显示语言模式下为右内边距，组件内元素距组件右边界的尺寸。
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 

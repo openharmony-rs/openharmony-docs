@@ -8,7 +8,7 @@ UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按�
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[Driver&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](arkts-test-uitest-driver-c.md)替代。
 
 **起始版本：** 8
 
@@ -39,7 +39,7 @@ assertComponentExist(by: By): Promise<void>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[assertComponentExist&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#assertcomponentexist)替
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[assertComponentExist<sup>9+</sup>](arkts-test-uitest-driver-c.md#assertcomponentexist)替
 > 代。
 
 **起始版本：** 8
@@ -96,7 +96,7 @@ UiDriver对象采取如下操作：在目标坐标点单击。使用Promise异�
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[click&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#click)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](arkts-test-uitest-component-c.md#click)替代。
 
 **起始版本：** 8
 
@@ -145,7 +145,7 @@ static create(): UiDriver
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[create&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#create)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[create<sup>9+</sup>](arkts-test-uitest-driver-c.md#create)替代。
 
 **起始版本：** 8
 
@@ -186,7 +186,7 @@ UiDriver对象在给定的时间内延时。使用Promise异步回调。
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[delayMs&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#delayms)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[delayMs<sup>9+</sup>](arkts-test-uitest-driver-c.md#delayms)替代。
 
 **起始版本：** 8
 
@@ -234,7 +234,7 @@ UiDriver对象采取如下操作：在目标坐标点双击。使用Promise异�
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#doubleclick)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](arkts-test-uitest-component-c.md#doubleclick)替代。
 
 **起始版本：** 8
 
@@ -283,7 +283,7 @@ findComponent(by: By): Promise<UiComponent>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponent&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#findcomponent)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponent<sup>9+</sup>](arkts-test-uitest-driver-c.md#findcomponent)替代。
 
 **起始版本：** 8
 
@@ -331,7 +331,7 @@ findComponents(by: By): Promise<Array<UiComponent>>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponents&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#findcomponents)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponents<sup>9+</sup>](arkts-test-uitest-driver-c.md#findcomponents)替代。
 
 **起始版本：** 8
 
@@ -379,7 +379,7 @@ UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。使
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#longclick)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](arkts-test-uitest-component-c.md#longclick)替代。
 
 **起始版本：** 8
 
@@ -428,7 +428,7 @@ UiDriver对象进行点击BACK键的操作。使用Promise异步回调。
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[pressBack&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#pressback)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[pressBack<sup>9+</sup>](arkts-test-uitest-driver-c.md#pressback)替代。
 
 **起始版本：** 8
 
@@ -470,13 +470,13 @@ UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#screencap)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](arkts-test-uitest-driver-c.md#screencap1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [screenCap](arkts-test-uitest-driver-c.md#screencap)(savePath: string)
+**替代接口：** [screenCap](arkts-test-uitest-driver-c.md#screencap1)(savePath: string)
 
 <!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>--><!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>-End-->
 
@@ -518,7 +518,7 @@ UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[swipe&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#swipe)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[swipe<sup>9+</sup>](arkts-test-uitest-driver-c.md#swipe)替代。
 
 **起始版本：** 8
 
@@ -569,7 +569,7 @@ UiDriver对象采取如下操作：通过key值找到对应键并点击。使用
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[triggerKey&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#triggerkey)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[triggerKey<sup>9+</sup>](arkts-test-uitest-driver-c.md#triggerkey)替代。
 
 **起始版本：** 8
 

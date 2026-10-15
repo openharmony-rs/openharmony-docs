@@ -36,7 +36,7 @@ The onerror attribute of parentPort specifies the event handler to be called whe
 
 **Deprecated since:** 9
 
-**Substitutes:** onerror
+**Substitutes:** [onerror](arkts-arkts-worker-globalscope-i.md#onerror)
 
 <!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void--><!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void-End-->
 
@@ -62,7 +62,7 @@ Worker name specified when there is a new worker.
 
 **Deprecated since:** 9
 
-**Substitutes:** name
+**Substitutes:** [name](arkts-arkts-worker-globalscope-i.md#name)
 
 <!--Device-WorkerGlobalScope-readonly name: string--><!--Device-WorkerGlobalScope-readonly name: string-End-->
 
@@ -82,7 +82,7 @@ Specify the type attribute for self.
 
 **Deprecated since:** 9
 
-**Substitutes:** self
+**Substitutes:** [self](arkts-arkts-worker-globalscope-i.md#self)
 
 <!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis--><!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis-End-->
 

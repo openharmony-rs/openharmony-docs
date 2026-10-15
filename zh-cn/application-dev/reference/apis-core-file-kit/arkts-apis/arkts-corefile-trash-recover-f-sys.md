@@ -42,6 +42,7 @@ function recover(uri: string): void
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ let fileinfos = trash.listFile();
 let uri = fileinfos[0].uri;
 trash.recover(uri);
 ```
+
+<!--DelEnd-->

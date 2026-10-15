@@ -6,6 +6,8 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getvalidreminders1"></a>
+
 ## getValidReminders
 
 ```TypeScript
@@ -30,7 +32,7 @@ Obtains all [valid (not yet expired) reminders](../../../task-management/agent-p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700004](../errorcode-reminderAgentManager.md#1700004-nonexistent-bundle-name) | The bundle name does not exist. |
 
 **Examples**
@@ -69,7 +71,7 @@ reminderAgentManager.getValidReminders((err: BusinessError, reminders: Array<rem
 ```
 
 
-<a id="getvalidreminders-1"></a>
+<a id="getvalidreminders2"></a>
 
 ## getValidReminders
 
@@ -95,7 +97,7 @@ Obtains all [valid (not yet expired) reminders](../../../task-management/agent-p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700004](../errorcode-reminderAgentManager.md#1700004-nonexistent-bundle-name) | The bundle name does not exist. |
 
 **Examples**

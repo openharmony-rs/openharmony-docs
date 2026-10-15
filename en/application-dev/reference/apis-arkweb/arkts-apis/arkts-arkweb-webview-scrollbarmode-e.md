@@ -12,20 +12,6 @@ Enumerates the global scrollbar modes in the web page.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## OVERLAY_LAYOUT_SCROLLBAR
-
-```TypeScript
-OVERLAY_LAYOUT_SCROLLBAR = 0
-```
-
-Overlay scrollbar that can be dragged.
-
-**Since:** 23
-
-<!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0--><!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## FORCE_DISPLAY_SCROLLBAR
 
 ```TypeScript
@@ -37,6 +23,20 @@ The scrollbar is always displayed.
 **Since:** 23
 
 <!--Device-ScrollbarMode-FORCE_DISPLAY_SCROLLBAR = 1--><!--Device-ScrollbarMode-FORCE_DISPLAY_SCROLLBAR = 1-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## OVERLAY_LAYOUT_SCROLLBAR
+
+```TypeScript
+OVERLAY_LAYOUT_SCROLLBAR = 0
+```
+
+Overlay scrollbar that can be dragged.
+
+**Since:** 23
+
+<!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0--><!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

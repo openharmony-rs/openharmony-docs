@@ -20,6 +20,8 @@ Symmetric key generator interface, defining methods for generating symmetric key
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="convertkey1"></a>
+
 ## convertKey
 
 ```TypeScript
@@ -38,7 +40,7 @@ If no hash algorithm is specified when the symmetric key generator is created (f
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SymKeyGenerator-convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void--><!--Device-SymKeyGenerator-convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void-End-->
 
@@ -57,7 +59,7 @@ If no hash algorithm is specified when the symmetric key generator is created (f
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
 
@@ -84,7 +86,7 @@ function testConvertKey() {
 }
 ```
 
-<a id="convertkey-1"></a>
+<a id="convertkey2"></a>
 
 ## convertKey
 
@@ -96,7 +98,7 @@ Converts specified data into a symmetric key. This API uses a promise to return 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SymKeyGenerator-convertKey(key: DataBlob): Promise<SymKey>--><!--Device-SymKeyGenerator-convertKey(key: DataBlob): Promise<SymKey>-End-->
 
@@ -120,7 +122,7 @@ Converts specified data into a symmetric key. This API uses a promise to return 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
@@ -172,7 +174,7 @@ Converts specified data into a symmetric key.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SymKeyGenerator-convertKeySync(key: DataBlob): SymKey--><!--Device-SymKeyGenerator-convertKeySync(key: DataBlob): SymKey-End-->
 
@@ -194,7 +196,7 @@ Converts specified data into a symmetric key.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
 
@@ -217,6 +219,8 @@ function testConvertKeySync() {
 }
 ```
 
+<a id="generatesymkey1"></a>
+
 ## generateSymKey
 
 ```TypeScript
@@ -231,11 +235,11 @@ Generates a random key using this symmetric key generator. This API uses an asyn
 > when the symmetric key generator is created, a binary key matching the hash length (for example, a 256-bit key)
 > will be randomly generated. If no hash algorithm is specified, for example, only **HMAC** is specified, random
 > symmetric key generation is not supported. You can generate symmetric key data using
-> [convertKey](#convertkey).
+> [convertKey](#convertkey1).
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SymKeyGenerator-generateSymKey(callback: AsyncCallback<SymKey>): void--><!--Device-SymKeyGenerator-generateSymKey(callback: AsyncCallback<SymKey>): void-End-->
 
@@ -268,7 +272,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   });
 ```
 
-<a id="generatesymkey-1"></a>
+<a id="generatesymkey2"></a>
 
 ## generateSymKey
 
@@ -280,7 +284,7 @@ Generates a random key using this symmetric key generator. This API uses a promi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SymKeyGenerator-generateSymKey(): Promise<SymKey>--><!--Device-SymKeyGenerator-generateSymKey(): Promise<SymKey>-End-->
 
@@ -337,7 +341,7 @@ If no hash algorithm is specified, for example, only **HMAC** is specified, rand
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SymKeyGenerator-generateSymKeySync(): SymKey--><!--Device-SymKeyGenerator-generateSymKeySync(): SymKey-End-->
 
@@ -384,7 +388,7 @@ Indicates the algorithm name of the SymKeyGenerator object.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SymKeyGenerator-readonly algName: string--><!--Device-SymKeyGenerator-readonly algName: string-End-->
 

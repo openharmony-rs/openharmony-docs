@@ -10,7 +10,7 @@ export type ValueType = number | number | string | boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-unnamed-export type ValueType = long | double | string | boolean--><!--Device-unnamed-export type ValueType = long | double | string | boolean-End-->
 
@@ -18,7 +18,7 @@ export type ValueType = number | number | string | boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| long | [since 20] |
-| double | [since 20] |
-| string | The value is a string. [since 12] |
-| boolean | The value is **true** or **false**. [since 12] |
+| long | <br>**起始版本：** 20 |
+| double | <br>**起始版本：** 20 |
+| string | The value is a string.<br>**起始版本：** 12 |
+| boolean | The value is **true** or **false**.<br>**起始版本：** 12 |

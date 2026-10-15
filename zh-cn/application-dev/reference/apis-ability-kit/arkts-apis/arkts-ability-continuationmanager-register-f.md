@@ -6,6 +6,8 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
+<a id="register1"></a>
+
 ## register
 
 ```TypeScript
@@ -49,7 +51,7 @@ continuationManager.register((err, data) => {
 ```
 
 
-<a id="register-1"></a>
+<a id="register2"></a>
 
 ## register
 
@@ -99,7 +101,7 @@ continuationManager.register(
 ```
 
 
-<a id="register-2"></a>
+<a id="register3"></a>
 
 ## register
 

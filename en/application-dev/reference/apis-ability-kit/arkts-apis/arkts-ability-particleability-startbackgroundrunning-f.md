@@ -6,6 +6,8 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
+<a id="startbackgroundrunning1"></a>
+
 ## startBackgroundRunning
 
 ```TypeScript
@@ -33,7 +35,7 @@ Requests a continuous task from the system. This API uses an asynchronous callba
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | id | number | Yes | Notification ID of the continuous task. |
-| request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md) | Yes | Notification parameter, which is used to display information in the notification bar. |
+| request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md) | Yes | Notification parameter, which is used to display information in the notification bar. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the continuous task is requested, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Examples**
@@ -81,7 +83,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
 ```
 
 
-<a id="startbackgroundrunning-1"></a>
+<a id="startbackgroundrunning2"></a>
 
 ## startBackgroundRunning
 
@@ -110,7 +112,7 @@ Requests a continuous task from the system. This API uses a promise to return th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | id | number | Yes | Notification ID of the continuous task. |
-| request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md) | Yes | Notification parameter, which is used to display information in the notification bar. |
+| request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md) | Yes | Notification parameter, which is used to display information in the notification bar. |
 
 **Return value:**
 

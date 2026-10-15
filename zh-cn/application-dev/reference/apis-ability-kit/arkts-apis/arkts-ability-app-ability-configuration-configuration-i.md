@@ -38,7 +38,7 @@ colorMode?: ConfigurationConstant.ColorMode
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-colorMode?: ConfigurationConstant.ColorMode--><!--Device-Configuration-colorMode?: ConfigurationConstant.ColorMode-End-->
 
@@ -64,7 +64,7 @@ direction?: ConfigurationConstant.Direction
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-direction?: ConfigurationConstant.Direction--><!--Device-Configuration-direction?: ConfigurationConstant.Direction-End-->
 
@@ -84,7 +84,7 @@ displayId?: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-displayId?: long--><!--Device-Configuration-displayId?: long-End-->
 
@@ -102,7 +102,7 @@ fontId?: string
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-fontId?: string--><!--Device-Configuration-fontId?: string-End-->
 
@@ -122,7 +122,7 @@ fontSizeScale?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-fontSizeScale?: double--><!--Device-Configuration-fontSizeScale?: double-End-->
 
@@ -140,7 +140,7 @@ fontWeightScale?: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-fontWeightScale?: double--><!--Device-Configuration-fontWeightScale?: double-End-->
 
@@ -158,7 +158,7 @@ hasPointerDevice?: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-hasPointerDevice?: boolean--><!--Device-Configuration-hasPointerDevice?: boolean-End-->
 
@@ -180,7 +180,7 @@ language?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-language?: string--><!--Device-Configuration-language?: string-End-->
 
@@ -200,7 +200,7 @@ locale?: Intl.Locale
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-locale?: Intl.Locale--><!--Device-Configuration-locale?: Intl.Locale-End-->
 
@@ -218,7 +218,7 @@ mcc?: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-mcc?: string--><!--Device-Configuration-mcc?: string-End-->
 
@@ -236,7 +236,7 @@ mnc?: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-mnc?: string--><!--Device-Configuration-mnc?: string-End-->
 
@@ -268,7 +268,7 @@ screenDensity?: ConfigurationConstant.ScreenDensity
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-screenDensity?: ConfigurationConstant.ScreenDensity--><!--Device-Configuration-screenDensity?: ConfigurationConstant.ScreenDensity-End-->
 

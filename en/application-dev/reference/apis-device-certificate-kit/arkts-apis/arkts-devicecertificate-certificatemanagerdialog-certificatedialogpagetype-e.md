@@ -12,22 +12,6 @@ Enumerates the page types of the certificate management dialog box.
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
-## PAGE_MAIN
-
-```TypeScript
-PAGE_MAIN = 1
-```
-
-Main page of the Certificate Manager application.
-
-**Since:** 13
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-CertificateDialogPageType-PAGE_MAIN = 1--><!--Device-CertificateDialogPageType-PAGE_MAIN = 1-End-->
-
-**System capability:** SystemCapability.Security.CertificateManagerDialog
-
 ## PAGE_CA_CERTIFICATE
 
 ```TypeScript
@@ -73,5 +57,21 @@ Certificate installation page.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-CertificateDialogPageType-PAGE_INSTALL_CERTIFICATE = 4--><!--Device-CertificateDialogPageType-PAGE_INSTALL_CERTIFICATE = 4-End-->
+
+**System capability:** SystemCapability.Security.CertificateManagerDialog
+
+## PAGE_MAIN
+
+```TypeScript
+PAGE_MAIN = 1
+```
+
+Main page of the Certificate Manager application.
+
+**Since:** 13
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CertificateDialogPageType-PAGE_MAIN = 1--><!--Device-CertificateDialogPageType-PAGE_MAIN = 1-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog

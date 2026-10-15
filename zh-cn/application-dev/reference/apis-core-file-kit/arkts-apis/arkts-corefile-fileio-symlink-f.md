@@ -37,7 +37,7 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="symlink-1"></a>
+<a id="symlink2"></a>
 
 ## symlink
 

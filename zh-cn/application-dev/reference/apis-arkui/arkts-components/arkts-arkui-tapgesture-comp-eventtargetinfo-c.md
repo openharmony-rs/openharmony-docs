@@ -36,6 +36,8 @@ getId(): string
 | --- | --- |
 | string | 当前组件的组件标识。 |
 
+<a id="getuniqueid1"></a>
+
 ## getUniqueId
 
 ```TypeScript
@@ -60,7 +62,7 @@ Returns the component's unique id.
 | --- | --- |
 | number | the unique id of the component |
 
-<a id="getuniqueid-1"></a>
+<a id="getuniqueid2"></a>
 
 ## getUniqueId
 

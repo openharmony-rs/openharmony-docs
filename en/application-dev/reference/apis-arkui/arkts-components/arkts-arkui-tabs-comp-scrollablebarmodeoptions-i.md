@@ -4,7 +4,7 @@
 interface ScrollableBarModeOptions
 ```
 
-Implements a **ScrollableBarModeOptions** object.
+Defines a layout style object of the tab bar in Scrollable mode.
 
 **Since:** 10
 
@@ -18,13 +18,13 @@ Implements a **ScrollableBarModeOptions** object.
 margin?: Dimension
 ```
 
-Left and right margin of the tab bar in scrollable mode. It cannot be set in percentage.
+Left and right margins of the tab bar in Scrollable mode (percentage setting is not supported).
 
 Default value: **0.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞). When the value is set to less than 0, the default value is used.
 
 **Type:** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
 
@@ -44,7 +44,7 @@ Value range: [0, +∞)
 nonScrollableLayoutStyle?: LayoutStyle
 ```
 
-Tab layout mode of the tab bar when not scrolling in scrollable mode.
+Arrangement of tabs when not scrolling in Scrollable mode. This attribute is valid only in horizontal mode.
 
 Default value: **LayoutStyle.ALWAYS_CENTER**
 

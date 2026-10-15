@@ -6,8 +6,6 @@ export interface ChipV2PrefixImageIconConfig extends ChipV2ImageIconConfig
 
 ChipV2PrefixImageIconConfig定义前缀图标的属性配置。
 
-继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md)。
-
 **继承/实现关系：** ChipV2PrefixImageIconConfig extends [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md)
 
 **起始版本：** 26.0.0

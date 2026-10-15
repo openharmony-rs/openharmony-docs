@@ -60,6 +60,7 @@ Verifies the certificate passed by the application using the preset CA certifica
 
 ```TypeScript
 import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create certificate blobs
 const cert: networkSecurity.CertBlob = {

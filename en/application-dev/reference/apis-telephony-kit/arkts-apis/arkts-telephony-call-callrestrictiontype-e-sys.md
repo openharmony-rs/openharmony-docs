@@ -14,6 +14,22 @@ Enumerates call restriction types.
 
 **System API:** This is a system API.
 
+## RESTRICTION_TYPE_ALL_CALLS
+
+```TypeScript
+RESTRICTION_TYPE_ALL_CALLS = 5
+```
+
+Barring of all calls.
+
+**Since:** 8
+
+<!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
 ## RESTRICTION_TYPE_ALL_INCOMING
 
 ```TypeScript
@@ -41,6 +57,22 @@ Barring of all outgoing calls.
 **Since:** 8
 
 <!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_OUTGOING = 1--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_OUTGOING = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## RESTRICTION_TYPE_INCOMING_SERVICES
+
+```TypeScript
+RESTRICTION_TYPE_INCOMING_SERVICES = 7
+```
+
+Barring of incoming services.
+
+**Since:** 8
+
+<!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7--><!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -78,38 +110,6 @@ Barring of international calls except those in the home country.
 
 **System API:** This is a system API.
 
-## RESTRICTION_TYPE_ROAMING_INCOMING
-
-```TypeScript
-RESTRICTION_TYPE_ROAMING_INCOMING = 4
-```
-
-Barring of incoming roaming calls.
-
-**Since:** 8
-
-<!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## RESTRICTION_TYPE_ALL_CALLS
-
-```TypeScript
-RESTRICTION_TYPE_ALL_CALLS = 5
-```
-
-Barring of all calls.
-
-**Since:** 8
-
-<!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## RESTRICTION_TYPE_OUTGOING_SERVICES
 
 ```TypeScript
@@ -126,17 +126,17 @@ Barring of outgoing services.
 
 **System API:** This is a system API.
 
-## RESTRICTION_TYPE_INCOMING_SERVICES
+## RESTRICTION_TYPE_ROAMING_INCOMING
 
 ```TypeScript
-RESTRICTION_TYPE_INCOMING_SERVICES = 7
+RESTRICTION_TYPE_ROAMING_INCOMING = 4
 ```
 
-Barring of incoming services.
+Barring of incoming roaming calls.
 
 **Since:** 8
 
-<!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7--><!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7-End-->
+<!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

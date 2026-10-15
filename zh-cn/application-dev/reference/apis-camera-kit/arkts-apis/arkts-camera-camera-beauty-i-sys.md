@@ -57,6 +57,7 @@ Obtains the level of the beauty type in use.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -75,6 +76,8 @@ function getBeauty(portraitPhotoSession: camera.PortraitPhotoSession): number {
   return beautyLevel;
 }
 ```
+
+<!--DelEnd-->
 
 ## setBeauty
 
@@ -106,6 +109,7 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -121,6 +125,8 @@ function setBeauty(portraitPhotoSession: camera.PortraitPhotoSession): void {
   portraitPhotoSession.setBeauty(beautyTypes[0], beautyLevels[0]);
 }
 ```
+
+<!--DelEnd-->
 
 ## setPortraitThemeType
 

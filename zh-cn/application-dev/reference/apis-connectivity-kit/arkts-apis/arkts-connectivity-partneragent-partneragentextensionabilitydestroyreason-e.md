@@ -12,6 +12,54 @@ export enum PartnerAgentExtensionAbilityDestroyReason
 
 **系统能力：** SystemCapability.Communication.FusionConnectivity.Core
 
+## BLUETOOTH_DISABLED
+
+```TypeScript
+BLUETOOTH_DISABLED = 4
+```
+
+蓝牙被关闭，建议打开蓝牙
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PartnerAgentExtensionAbilityDestroyReason-BLUETOOTH_DISABLED = 4--><!--Device-PartnerAgentExtensionAbilityDestroyReason-BLUETOOTH_DISABLED = 4-End-->
+
+**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
+
+## DEVICE_LOST
+
+```TypeScript
+DEVICE_LOST = 3
+```
+
+该设备已断开连接或未被发现，可能原因包括距离过长、设备关机、设备电量耗尽等，建议确认设备状态
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_LOST = 3--><!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_LOST = 3-End-->
+
+**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
+
+## DEVICE_UNPAIRED
+
+```TypeScript
+DEVICE_UNPAIRED = 2
+```
+
+用户取消了该设备的蓝牙配对关系，建议重新进行蓝牙配对流程。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_UNPAIRED = 2--><!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_UNPAIRED = 2-End-->
+
+**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
+
 ## UNKNOWN_REASON
 
 ```TypeScript
@@ -41,53 +89,5 @@ USER_CLOSED_ABILITY = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PartnerAgentExtensionAbilityDestroyReason-USER_CLOSED_ABILITY = 1--><!--Device-PartnerAgentExtensionAbilityDestroyReason-USER_CLOSED_ABILITY = 1-End-->
-
-**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
-
-## DEVICE_UNPAIRED
-
-```TypeScript
-DEVICE_UNPAIRED = 2
-```
-
-用户取消了该设备的蓝牙配对关系，建议重新进行蓝牙配对流程。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_UNPAIRED = 2--><!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_UNPAIRED = 2-End-->
-
-**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
-
-## DEVICE_LOST
-
-```TypeScript
-DEVICE_LOST = 3
-```
-
-该设备已断开连接或未被发现，可能原因包括距离过长、设备关机、设备电量耗尽等，建议确认设备状态
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_LOST = 3--><!--Device-PartnerAgentExtensionAbilityDestroyReason-DEVICE_LOST = 3-End-->
-
-**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
-
-## BLUETOOTH_DISABLED
-
-```TypeScript
-BLUETOOTH_DISABLED = 4
-```
-
-蓝牙被关闭，建议打开蓝牙
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PartnerAgentExtensionAbilityDestroyReason-BLUETOOTH_DISABLED = 4--><!--Device-PartnerAgentExtensionAbilityDestroyReason-BLUETOOTH_DISABLED = 4-End-->
 
 **系统能力：** SystemCapability.Communication.FusionConnectivity.Core

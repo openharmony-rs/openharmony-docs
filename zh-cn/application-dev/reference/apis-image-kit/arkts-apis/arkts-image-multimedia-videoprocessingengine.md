@@ -20,9 +20,9 @@ import { videoProcessingEngine } from '@kit.ImageKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-image-videoprocessingengine-create-f.md) | 创建图像处理实例。 |
-| [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md) | 反初始化图像处理的全局环境。 |
-| [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md) | 初始化图像处理的全局环境。 |
+| [create](arkts-image-videoprocessingengine-create-f.md#create) | 创建图像处理实例。 |
+| [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md#deinitializeenvironment) | 反初始化图像处理的全局环境。 |
+| [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md#initializeenvironment) | 初始化图像处理的全局环境。 |
 
 ### 接口
 
@@ -34,4 +34,4 @@ import { videoProcessingEngine } from '@kit.ImageKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [QualityLevel](arkts-image-videoprocessingengine-qualitylevel-e.md) | 细节增强的处理质量等级。@enum {int} |
+| [QualityLevel](arkts-image-videoprocessingengine-qualitylevel-e.md) | 细节增强的处理质量等级。 |

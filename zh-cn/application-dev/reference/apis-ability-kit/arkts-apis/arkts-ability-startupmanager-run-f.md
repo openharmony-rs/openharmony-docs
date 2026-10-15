@@ -6,6 +6,8 @@
 import { startupManager } from '@kit.AbilityKit';
 ```
 
+<a id="run1"></a>
+
 ## run
 
 ```TypeScript
@@ -17,7 +19,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 > **说明：** 
 > 
 > 本接口不支持执行feature类型HAP中的启动任务，如需要使用相关能力请调用
-> [startupManager.run](#run-1)
+> [startupManager.run](#run2)
 > 接口。
 
 **起始版本：** 12
@@ -45,7 +47,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [28800001](../errorcode-ability.md#28800001-启动任务或其依赖项不存在) | Startup task or its dependency not found. |
 | [28800002](../errorcode-ability.md#28800002-启动任务之间存在循环依赖关系) | The startup tasks have circular dependencies. |
@@ -82,7 +84,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="run-1"></a>
+<a id="run2"></a>
 
 ## run
 

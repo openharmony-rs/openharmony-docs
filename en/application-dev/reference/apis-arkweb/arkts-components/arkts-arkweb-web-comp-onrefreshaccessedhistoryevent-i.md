@@ -36,7 +36,7 @@ The value **true** indicates that the event is triggered by the main frame, and 
 isRefreshed: boolean
 ```
 
-Whether the page is reloaded. The value **true** means that the page is reloaded by invoking the [refresh&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh) API, and **false** means the opposite.
+Whether the page is reloaded. The value **true** means that the page is reloaded by invoking the [refresh<sup>9+</sup>](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh) API, and **false** means the opposite.
 
 **Type:** boolean
 

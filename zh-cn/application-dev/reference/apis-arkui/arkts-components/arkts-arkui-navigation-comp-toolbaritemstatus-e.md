@@ -12,13 +12,13 @@ declare enum ToolbarItemStatus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NORMAL
+## ACTIVE
 
 ```TypeScript
-NORMAL = 0
+ACTIVE = 2
 ```
 
-设置工具栏单个选项为NORMAL态，该选项显示默认样式，可以触发Hover，Press，Focus事件并显示对应的多态样式。
+设置工具栏单个选项为ACTIVE态， 该选项通过点击事件可以将icon图标更新为activeIcon对应的图片资源。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ NORMAL = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ToolbarItemStatus-NORMAL = 0--><!--Device-ToolbarItemStatus-NORMAL = 0-End-->
+<!--Device-ToolbarItemStatus-ACTIVE = 2--><!--Device-ToolbarItemStatus-ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ DISABLED = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ACTIVE
+## NORMAL
 
 ```TypeScript
-ACTIVE = 2
+NORMAL = 0
 ```
 
-设置工具栏单个选项为ACTIVE态， 该选项通过点击事件可以将icon图标更新为activeIcon对应的图片资源。
+设置工具栏单个选项为NORMAL态，该选项显示默认样式，可以触发Hover，Press，Focus事件并显示对应的多态样式。
 
 **起始版本：** 10
 
@@ -62,6 +62,6 @@ ACTIVE = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ToolbarItemStatus-ACTIVE = 2--><!--Device-ToolbarItemStatus-ACTIVE = 2-End-->
+<!--Device-ToolbarItemStatus-NORMAL = 0--><!--Device-ToolbarItemStatus-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

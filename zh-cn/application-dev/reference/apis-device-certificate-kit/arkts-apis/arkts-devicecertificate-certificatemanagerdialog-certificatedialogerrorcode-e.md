@@ -12,6 +12,22 @@ export enum CertificateDialogErrorCode
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
+## ERROR_DEVICE_NOT_SUPPORTED
+
+```TypeScript
+ERROR_DEVICE_NOT_SUPPORTED = 29700004
+```
+
+表示接口不支持该设备
+
+**起始版本：** 14
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateDialogErrorCode-ERROR_DEVICE_NOT_SUPPORTED = 29700004--><!--Device-CertificateDialogErrorCode-ERROR_DEVICE_NOT_SUPPORTED = 29700004-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
 ## ERROR_GENERIC
 
 ```TypeScript
@@ -25,6 +41,54 @@ ERROR_GENERIC = 29700001
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CertificateDialogErrorCode-ERROR_GENERIC = 29700001--><!--Device-CertificateDialogErrorCode-ERROR_GENERIC = 29700001-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_NO_AVAILABLE_CERTIFICATE
+
+```TypeScript
+ERROR_NO_AVAILABLE_CERTIFICATE = 29700007
+```
+
+表示没有可用证书。
+
+**起始版本：** 22
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateDialogErrorCode-ERROR_NO_AVAILABLE_CERTIFICATE = 29700007--><!--Device-CertificateDialogErrorCode-ERROR_NO_AVAILABLE_CERTIFICATE = 29700007-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_NOT_COMPLY_SECURITY_POLICY
+
+```TypeScript
+ERROR_NOT_COMPLY_SECURITY_POLICY = 29700005
+```
+
+表示该操作不符合设备安全策略。例如设备不允许用户管理GLOBAL_USER的CA证书。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateDialogErrorCode-ERROR_NOT_COMPLY_SECURITY_POLICY = 29700005--><!--Device-CertificateDialogErrorCode-ERROR_NOT_COMPLY_SECURITY_POLICY = 29700005-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_NOT_CONCURRENT_SUPPORT
+
+```TypeScript
+ERROR_NOT_CONCURRENT_SUPPORT = 29700010
+```
+
+API不支持并发调用。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateDialogErrorCode-ERROR_NOT_CONCURRENT_SUPPORT = 29700010--><!--Device-CertificateDialogErrorCode-ERROR_NOT_CONCURRENT_SUPPORT = 29700010-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -60,35 +124,19 @@ ERROR_OPERATION_FAILED = 29700003
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-## ERROR_DEVICE_NOT_SUPPORTED
+## ERROR_OPERATION_TIMEOUT
 
 ```TypeScript
-ERROR_DEVICE_NOT_SUPPORTED = 29700004
+ERROR_OPERATION_TIMEOUT = 29700009
 ```
 
-表示接口不支持该设备
+证书管理对话框操作超时。
 
-**起始版本：** 14
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CertificateDialogErrorCode-ERROR_DEVICE_NOT_SUPPORTED = 29700004--><!--Device-CertificateDialogErrorCode-ERROR_DEVICE_NOT_SUPPORTED = 29700004-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManagerDialog
-
-## ERROR_NOT_COMPLY_SECURITY_POLICY
-
-```TypeScript
-ERROR_NOT_COMPLY_SECURITY_POLICY = 29700005
-```
-
-表示该操作不符合设备安全策略。例如设备不允许用户管理GLOBAL_USER的CA证书。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertificateDialogErrorCode-ERROR_NOT_COMPLY_SECURITY_POLICY = 29700005--><!--Device-CertificateDialogErrorCode-ERROR_NOT_COMPLY_SECURITY_POLICY = 29700005-End-->
+<!--Device-CertificateDialogErrorCode-ERROR_OPERATION_TIMEOUT = 29700009--><!--Device-CertificateDialogErrorCode-ERROR_OPERATION_TIMEOUT = 29700009-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -107,53 +155,5 @@ ERROR_PARAMETER_VALIDATION_FAILED = 29700006
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CertificateDialogErrorCode-ERROR_PARAMETER_VALIDATION_FAILED = 29700006--><!--Device-CertificateDialogErrorCode-ERROR_PARAMETER_VALIDATION_FAILED = 29700006-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManagerDialog
-
-## ERROR_NO_AVAILABLE_CERTIFICATE
-
-```TypeScript
-ERROR_NO_AVAILABLE_CERTIFICATE = 29700007
-```
-
-表示没有可用证书。
-
-**起始版本：** 22
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertificateDialogErrorCode-ERROR_NO_AVAILABLE_CERTIFICATE = 29700007--><!--Device-CertificateDialogErrorCode-ERROR_NO_AVAILABLE_CERTIFICATE = 29700007-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManagerDialog
-
-## ERROR_OPERATION_TIMEOUT
-
-```TypeScript
-ERROR_OPERATION_TIMEOUT = 29700009
-```
-
-证书管理对话框操作超时。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertificateDialogErrorCode-ERROR_OPERATION_TIMEOUT = 29700009--><!--Device-CertificateDialogErrorCode-ERROR_OPERATION_TIMEOUT = 29700009-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManagerDialog
-
-## ERROR_NOT_CONCURRENT_SUPPORT
-
-```TypeScript
-ERROR_NOT_CONCURRENT_SUPPORT = 29700010
-```
-
-API不支持并发调用。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertificateDialogErrorCode-ERROR_NOT_CONCURRENT_SUPPORT = 29700010--><!--Device-CertificateDialogErrorCode-ERROR_NOT_CONCURRENT_SUPPORT = 29700010-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog

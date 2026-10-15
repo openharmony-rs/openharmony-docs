@@ -28,7 +28,7 @@ Skill关联的ability名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly abilityName: string--><!--Device-SkillInfo-readonly abilityName: string-End-->
 
@@ -48,7 +48,7 @@ Skill的应用名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly bundleName: string--><!--Device-SkillInfo-readonly bundleName: string-End-->
 
@@ -68,7 +68,7 @@ Skill的描述信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly description?: string--><!--Device-SkillInfo-readonly description?: string-End-->
 
@@ -88,7 +88,7 @@ Skill的模块名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly moduleName: string--><!--Device-SkillInfo-readonly moduleName: string-End-->
 
@@ -108,7 +108,7 @@ Skill所需的权限。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly permissions?: Array<string>--><!--Device-SkillInfo-readonly permissions?: Array<string>-End-->
 
@@ -128,7 +128,7 @@ readonly requestPermissions?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly requestPermissions?: Array<string>--><!--Device-SkillInfo-readonly requestPermissions?: Array<string>-End-->
 
@@ -148,7 +148,7 @@ Skill名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly skillName: string--><!--Device-SkillInfo-readonly skillName: string-End-->
 
@@ -168,7 +168,7 @@ Skill的安装包路径。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly skillPath: string--><!--Device-SkillInfo-readonly skillPath: string-End-->
 
@@ -188,7 +188,7 @@ Skill类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly skillType: SkillType--><!--Device-SkillInfo-readonly skillType: SkillType-End-->
 
@@ -208,7 +208,7 @@ Skill的srcEntries信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly srcEntries?: Array<string>--><!--Device-SkillInfo-readonly srcEntries?: Array<string>-End-->
 
@@ -228,7 +228,7 @@ Skill的版本号。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SkillInfo-readonly versionCode: long--><!--Device-SkillInfo-readonly versionCode: long-End-->
 

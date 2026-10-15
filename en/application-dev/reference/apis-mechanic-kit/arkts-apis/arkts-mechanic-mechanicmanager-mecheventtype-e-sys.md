@@ -46,6 +46,22 @@ Mechanic device detached from the base.
 
 **System API:** This is a system API.
 
+## LOW_POWER
+
+```TypeScript
+LOW_POWER = 4
+```
+
+Mechanic device is low on power.
+
+**Since:** 26.0.0
+
+<!--Device-MechEventType-LOW_POWER = 4--><!--Device-MechEventType-LOW_POWER = 4-End-->
+
+**System capability:** SystemCapability.Mechanic.Core
+
+**System API:** This is a system API.
+
 ## REACH_CLIFF
 
 ```TypeScript
@@ -73,22 +89,6 @@ Mechanic device hits an obstacle while moving.
 **Since:** 26.0.0
 
 <!--Device-MechEventType-REACH_OBSTACLE = 3--><!--Device-MechEventType-REACH_OBSTACLE = 3-End-->
-
-**System capability:** SystemCapability.Mechanic.Core
-
-**System API:** This is a system API.
-
-## LOW_POWER
-
-```TypeScript
-LOW_POWER = 4
-```
-
-Mechanic device is low on power.
-
-**Since:** 26.0.0
-
-<!--Device-MechEventType-LOW_POWER = 4--><!--Device-MechEventType-LOW_POWER = 4-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

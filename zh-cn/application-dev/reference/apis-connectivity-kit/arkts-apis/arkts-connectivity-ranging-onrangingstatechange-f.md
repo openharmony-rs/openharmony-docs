@@ -36,7 +36,7 @@ function onRangingStateChange(callback: Callback<RangingStateChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RangingStateChangeInfo](arkts-connectivity-ranging-rangingstatechangeinfo-i.md)&gt; | 是 | 测距状态回调，当测距状态发生变化时触发。该参数可用于[offRangingStateChange](arkts-connectivity-ranging-offrangingstatechange-f.md)接口的入参取消注册测距状态回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RangingStateChangeInfo](arkts-connectivity-ranging-rangingstatechangeinfo-i.md)&gt; | 是 | 测距状态回调，当测距状态发生变化时触发。该参数可用于offRangingStateChange接口的入参取消注册测距状态回调。 |
 
 **错误码：**
 

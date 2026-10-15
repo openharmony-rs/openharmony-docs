@@ -6,6 +6,8 @@ type CheckboxGroup = TypedFrameNode<CheckboxGroupInterface, CheckboxGroupAttribu
 
 Represents a FrameNode of the **CheckboxGroup** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxGroupInterface, [CheckboxGroupAttribute](../arkts-components/arkts-arkui-checkboxgroup-comp-attribute.md)&gt;
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **CheckboxGroup** type.
 <!--Device-typeNode-type CheckboxGroup = TypedFrameNode<CheckboxGroupInterface, CheckboxGroupAttribute>--><!--Device-typeNode-type CheckboxGroup = TypedFrameNode<CheckboxGroupInterface, CheckboxGroupAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxGroupInterface, [CheckboxGroupAttribute](../arkts-components/arkts-arkui-checkboxgroup-comp-attribute.md)&gt;

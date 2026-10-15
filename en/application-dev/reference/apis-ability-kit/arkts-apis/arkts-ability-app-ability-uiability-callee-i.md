@@ -44,7 +44,7 @@ Unregisters a caller notification callback, which is invoked when the target UIA
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200005](../errorcode-ability.md#16200005-method-not-registered) | The method has not been registered. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
@@ -95,7 +95,7 @@ Registers a caller notification callback, which is invoked when the target UIAbi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200004](../errorcode-ability.md#16200004-method-registered) | The method has been registered. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 

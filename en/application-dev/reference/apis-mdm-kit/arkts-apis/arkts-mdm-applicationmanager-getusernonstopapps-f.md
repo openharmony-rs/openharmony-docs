@@ -6,6 +6,8 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="getusernonstopapps1"></a>
+
 ## getUserNonStopApps
 
 ```TypeScript
@@ -65,7 +67,7 @@ try {
 ```
 
 
-<a id="getusernonstopapps-1"></a>
+<a id="getusernonstopapps2"></a>
 
 ## getUserNonStopApps
 

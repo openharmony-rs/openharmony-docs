@@ -12,22 +12,6 @@ Enumerates the camera positions.
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
-## CAMERA_POSITION_UNSPECIFIED
-
-```TypeScript
-CAMERA_POSITION_UNSPECIFIED = 0
-```
-
-A camera that does not have a fixed orientation relative to the device screen.
-
-**Since:** 10
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0--><!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
 ## CAMERA_POSITION_BACK
 
 ```TypeScript
@@ -38,7 +22,7 @@ Rear camera.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CameraPosition-CAMERA_POSITION_BACK = 1--><!--Device-CameraPosition-CAMERA_POSITION_BACK = 1-End-->
 
@@ -54,9 +38,25 @@ Front camera.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CameraPosition-CAMERA_POSITION_FRONT = 2--><!--Device-CameraPosition-CAMERA_POSITION_FRONT = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+## CAMERA_POSITION_UNSPECIFIED
+
+```TypeScript
+CAMERA_POSITION_UNSPECIFIED = 0
+```
+
+A camera that does not have a fixed orientation relative to the device screen.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0--><!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -12,17 +12,17 @@ enum AlbumType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## USER
+## SOURCE
 
 ```TypeScript
-USER = 0
+SOURCE = 2048
 ```
 
-用户相册。
+由应用创建的相册。
 
-**起始版本：** 10
+**起始版本：** 23
 
-<!--Device-AlbumType-USER = 0--><!--Device-AlbumType-USER = 0-End-->
+<!--Device-AlbumType-SOURCE = 2048--><!--Device-AlbumType-SOURCE = 2048-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,16 +40,16 @@ SYSTEM = 1024
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SOURCE
+## USER
 
 ```TypeScript
-SOURCE = 2048
+USER = 0
 ```
 
-由应用创建的相册。
+用户相册。
 
-**起始版本：** 23
+**起始版本：** 10
 
-<!--Device-AlbumType-SOURCE = 2048--><!--Device-AlbumType-SOURCE = 2048-End-->
+<!--Device-AlbumType-USER = 0--><!--Device-AlbumType-USER = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

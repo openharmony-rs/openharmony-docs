@@ -12,35 +12,19 @@ CLI工具会话事件类型。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
-## STDOUT
+## ERROR
 
 ```TypeScript
-STDOUT = 'stdout'
+ERROR = 'error'
 ```
 
-标准输出事件。
+进程错误事件。
 
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ToolEventType-STDOUT = 'stdout'--><!--Device-ToolEventType-STDOUT = 'stdout'-End-->
-
-**系统能力：** SystemCapability.Ability.AgentRuntime.Core
-
-## STDERR
-
-```TypeScript
-STDERR = 'stderr'
-```
-
-标准错误事件。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ToolEventType-STDERR = 'stderr'--><!--Device-ToolEventType-STDERR = 'stderr'-End-->
+<!--Device-ToolEventType-ERROR = 'error'--><!--Device-ToolEventType-ERROR = 'error'-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -60,18 +44,34 @@ EXIT = 'exit'
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
-## ERROR
+## STDERR
 
 ```TypeScript
-ERROR = 'error'
+STDERR = 'stderr'
 ```
 
-进程错误事件。
+标准错误事件。
 
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ToolEventType-ERROR = 'error'--><!--Device-ToolEventType-ERROR = 'error'-End-->
+<!--Device-ToolEventType-STDERR = 'stderr'--><!--Device-ToolEventType-STDERR = 'stderr'-End-->
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## STDOUT
+
+```TypeScript
+STDOUT = 'stdout'
+```
+
+标准输出事件。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ToolEventType-STDOUT = 'stdout'--><!--Device-ToolEventType-STDOUT = 'stdout'-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core

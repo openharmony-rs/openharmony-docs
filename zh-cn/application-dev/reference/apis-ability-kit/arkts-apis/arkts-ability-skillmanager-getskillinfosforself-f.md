@@ -28,7 +28,7 @@ function getSkillInfosForSelf(flags: number): Promise<Array<SkillInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| flags | number | 是 | [SkillInfoFlag](arkts-ability-skillmanager-skillinfoflag-e.md) - 指定返回的SkillInfo所包含的信息。详情请参考SkillInfoFlag。 |
+| flags | number | 是 | 指定返回的SkillInfo所包含的信息。详情请参考[SkillInfoFlag](arkts-ability-skillmanager-skillinfoflag-e.md)。 |
 
 **返回值：**
 
@@ -40,4 +40,4 @@ function getSkillInfosForSelf(flags: number): Promise<Array<SkillInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700101](../errorcode-bundle.md#17700101-包管理服务异常) | Bundle manager service is exception. Possible causes: 1. Failed to connect to the system service. 2. IPC data transmission failed. 3. Failed to obtain the object constructor. |
+| [17700101](../errorcode-bundle.md#17700101-包管理服务异常) | Bundle manager service is exception. Possible causes:         1. Failed to connect to the system service.         2. IPC data transmission failed.         3. Failed to obtain the object constructor. |

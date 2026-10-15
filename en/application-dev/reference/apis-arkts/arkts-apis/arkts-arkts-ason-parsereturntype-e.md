@@ -12,22 +12,6 @@ The return types for parsing.
 
 **System capability:** SystemCapability.Utils.Lang
 
-## OBJECT
-
-```TypeScript
-OBJECT = 0
-```
-
-Return type is object.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ParseReturnType-OBJECT = 0--><!--Device-ParseReturnType-OBJECT = 0-End-->
-
-**System capability:** SystemCapability.Utils.Lang
-
 ## MAP
 
 ```TypeScript
@@ -41,5 +25,21 @@ Return type is map.
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
 <!--Device-ParseReturnType-MAP = 1--><!--Device-ParseReturnType-MAP = 1-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
+## OBJECT
+
+```TypeScript
+OBJECT = 0
+```
+
+Return type is object.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ParseReturnType-OBJECT = 0--><!--Device-ParseReturnType-OBJECT = 0-End-->
 
 **System capability:** SystemCapability.Utils.Lang

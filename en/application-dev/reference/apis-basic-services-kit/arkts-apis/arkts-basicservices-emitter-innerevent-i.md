@@ -30,7 +30,7 @@ Event ID.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-InnerEvent-eventId: long--><!--Device-InnerEvent-eventId: long-End-->
 
@@ -48,7 +48,7 @@ Event priority. The default value is **EventPriority.LOW**.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-InnerEvent-priority?: EventPriority--><!--Device-InnerEvent-priority?: EventPriority-End-->
 

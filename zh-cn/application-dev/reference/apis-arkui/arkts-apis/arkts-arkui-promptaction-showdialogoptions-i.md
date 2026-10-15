@@ -482,7 +482,7 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。<br>**说明：** <br>- 默认值：[ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。<br>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
+设置弹窗的系统材质。<br>**说明：** <br>- 默认值：[ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。<br>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、背景模糊[backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1)、背景效果[backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)，不建议与上述接口一起使用。
 
 **类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 

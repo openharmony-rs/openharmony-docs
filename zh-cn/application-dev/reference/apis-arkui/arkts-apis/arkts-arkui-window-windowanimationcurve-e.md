@@ -12,23 +12,21 @@ enum WindowAnimationCurve
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## LINEAR
+## CUBIC_BEZIER
 
 ```TypeScript
-LINEAR = 0
+CUBIC_BEZIER = 2
 ```
 
-表示动画从头到尾的速度都是相同的。
+表示贝塞尔曲线。
 
-使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)中duration必填。
-
-使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)中param选填，且不生效。
+使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)中的param和duration为必填项。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-WindowAnimationCurve-LINEAR = 0--><!--Device-WindowAnimationCurve-LINEAR = 0-End-->
+<!--Device-WindowAnimationCurve-CUBIC_BEZIER = 2--><!--Device-WindowAnimationCurve-CUBIC_BEZIER = 2-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -46,26 +44,28 @@ INTERPOLATION_SPRING = 1
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowAnimationCurve-INTERPOLATION_SPRING = 1--><!--Device-WindowAnimationCurve-INTERPOLATION_SPRING = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## CUBIC_BEZIER
+## LINEAR
 
 ```TypeScript
-CUBIC_BEZIER = 2
+LINEAR = 0
 ```
 
-表示贝塞尔曲线。
+表示动画从头到尾的速度都是相同的。
 
-使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)中的param和duration为必填项。
+使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)中duration必填。
+
+使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)中param选填，且不生效。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-WindowAnimationCurve-CUBIC_BEZIER = 2--><!--Device-WindowAnimationCurve-CUBIC_BEZIER = 2-End-->
+<!--Device-WindowAnimationCurve-LINEAR = 0--><!--Device-WindowAnimationCurve-LINEAR = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

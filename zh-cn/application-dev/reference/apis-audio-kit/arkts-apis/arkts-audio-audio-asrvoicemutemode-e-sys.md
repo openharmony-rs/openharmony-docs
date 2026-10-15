@@ -14,17 +14,17 @@ enum AsrVoiceMuteMode
 
 **系统接口：** 此接口为系统接口。
 
-## OUTPUT_MUTE
+## CALL_MUTE
 
 ```TypeScript
-OUTPUT_MUTE = 0
+CALL_MUTE = 3
 ```
 
-本地输出静音。
+通话语音流静音。
 
 **起始版本：** 12
 
-<!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0--><!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0-End-->
+<!--Device-AsrVoiceMuteMode-CALL_MUTE = 3--><!--Device-AsrVoiceMuteMode-CALL_MUTE = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -46,33 +46,17 @@ INPUT_MUTE = 1
 
 **系统接口：** 此接口为系统接口。
 
-## TTS_MUTE
+## OUTPUT_MUTE
 
 ```TypeScript
-TTS_MUTE = 2
+OUTPUT_MUTE = 0
 ```
 
-应用下发的媒体音频本地静音。
+本地输出静音。
 
 **起始版本：** 12
 
-<!--Device-AsrVoiceMuteMode-TTS_MUTE = 2--><!--Device-AsrVoiceMuteMode-TTS_MUTE = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-**系统接口：** 此接口为系统接口。
-
-## CALL_MUTE
-
-```TypeScript
-CALL_MUTE = 3
-```
-
-通话语音流静音。
-
-**起始版本：** 12
-
-<!--Device-AsrVoiceMuteMode-CALL_MUTE = 3--><!--Device-AsrVoiceMuteMode-CALL_MUTE = 3-End-->
+<!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0--><!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -89,6 +73,22 @@ OUTPUT_MUTE_EX = 4
 **起始版本：** 12
 
 <!--Device-AsrVoiceMuteMode-OUTPUT_MUTE_EX = 4--><!--Device-AsrVoiceMuteMode-OUTPUT_MUTE_EX = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**系统接口：** 此接口为系统接口。
+
+## TTS_MUTE
+
+```TypeScript
+TTS_MUTE = 2
+```
+
+应用下发的媒体音频本地静音。
+
+**起始版本：** 12
+
+<!--Device-AsrVoiceMuteMode-TTS_MUTE = 2--><!--Device-AsrVoiceMuteMode-TTS_MUTE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

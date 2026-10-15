@@ -6,6 +6,8 @@ export type RunningMultiAppInfo = _RunningMultiAppInfo
 
 应用多开在运行态的结构信息。
 
+**类型：** _RunningMultiAppInfo
+
 **起始版本：** 12
 
 <!--Device-appManager-export type RunningMultiAppInfo = _RunningMultiAppInfo--><!--Device-appManager-export type RunningMultiAppInfo = _RunningMultiAppInfo-End-->
@@ -13,5 +15,3 @@ export type RunningMultiAppInfo = _RunningMultiAppInfo
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _RunningMultiAppInfo

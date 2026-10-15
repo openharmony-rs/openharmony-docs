@@ -12,76 +12,6 @@ enum ColumnType
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## NULL
-
-```TypeScript
-NULL = 0
-```
-
-表示列数据类型为NULL。
-
-**起始版本：** 18
-
-<!--Device-ColumnType-NULL = 0--><!--Device-ColumnType-NULL = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## INTEGER
-
-```TypeScript
-INTEGER = 1
-```
-
-表示列数据类型为64位整数。可用于保存8位（包括布尔值）、16位、32位、64位整数。如果64位整数大于2^53或小于-2^53，需使用[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)将64位整数转换为字符串。
-
-**起始版本：** 18
-
-<!--Device-ColumnType-INTEGER = 1--><!--Device-ColumnType-INTEGER = 1-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## REAL
-
-```TypeScript
-REAL = 2
-```
-
-表示列类型为浮点数。
-
-**起始版本：** 18
-
-<!--Device-ColumnType-REAL = 2--><!--Device-ColumnType-REAL = 2-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## TEXT
-
-```TypeScript
-TEXT = 3
-```
-
-表示列类型为字符串。
-
-**起始版本：** 18
-
-<!--Device-ColumnType-TEXT = 3--><!--Device-ColumnType-TEXT = 3-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## BLOB
-
-```TypeScript
-BLOB = 4
-```
-
-表示列类型为Uint8Array。
-
-**起始版本：** 18
-
-<!--Device-ColumnType-BLOB = 4--><!--Device-ColumnType-BLOB = 4-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## ASSET
 
 ```TypeScript
@@ -110,6 +40,20 @@ ASSETS = 6
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+## BLOB
+
+```TypeScript
+BLOB = 4
+```
+
+表示列类型为Uint8Array。
+
+**起始版本：** 18
+
+<!--Device-ColumnType-BLOB = 4--><!--Device-ColumnType-BLOB = 4-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 ## FLOAT_VECTOR
 
 ```TypeScript
@@ -121,6 +65,62 @@ FLOAT_VECTOR = 7
 **起始版本：** 18
 
 <!--Device-ColumnType-FLOAT_VECTOR = 7--><!--Device-ColumnType-FLOAT_VECTOR = 7-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## INTEGER
+
+```TypeScript
+INTEGER = 1
+```
+
+表示列数据类型为64位整数。可用于保存8位（包括布尔值）、16位、32位、64位整数。如果64位整数大于2^53或小于-2^53，需使用[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)将64位整数转换为字符串。
+
+**起始版本：** 18
+
+<!--Device-ColumnType-INTEGER = 1--><!--Device-ColumnType-INTEGER = 1-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## NULL
+
+```TypeScript
+NULL = 0
+```
+
+表示列数据类型为NULL。
+
+**起始版本：** 18
+
+<!--Device-ColumnType-NULL = 0--><!--Device-ColumnType-NULL = 0-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## REAL
+
+```TypeScript
+REAL = 2
+```
+
+表示列类型为浮点数。
+
+**起始版本：** 18
+
+<!--Device-ColumnType-REAL = 2--><!--Device-ColumnType-REAL = 2-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## TEXT
+
+```TypeScript
+TEXT = 3
+```
+
+表示列类型为字符串。
+
+**起始版本：** 18
+
+<!--Device-ColumnType-TEXT = 3--><!--Device-ColumnType-TEXT = 3-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

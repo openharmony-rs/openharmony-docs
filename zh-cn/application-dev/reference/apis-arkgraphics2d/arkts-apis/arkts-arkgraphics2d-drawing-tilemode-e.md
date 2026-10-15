@@ -26,17 +26,17 @@ CLAMP = 0
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## REPEAT
+## DECAL
 
 ```TypeScript
-REPEAT = 1
+DECAL = 3
 ```
 
-在水平和垂直方向上重复着色器效果。
+仅在其原始边界内渲染着色器效果。
 
 **起始版本：** 12
 
-<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
+<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -54,16 +54,16 @@ MIRROR = 2
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## DECAL
+## REPEAT
 
 ```TypeScript
-DECAL = 3
+REPEAT = 1
 ```
 
-仅在其原始边界内渲染着色器效果。
+在水平和垂直方向上重复着色器效果。
 
 **起始版本：** 12
 
-<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
+<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

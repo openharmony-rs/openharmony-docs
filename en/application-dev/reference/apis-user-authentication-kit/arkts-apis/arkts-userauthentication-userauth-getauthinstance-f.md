@@ -65,6 +65,6 @@ try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   console.info('get auth instance successfully.');
 } catch (error) {
-  console.error(`get auth instance failed. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to get auth instance. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```

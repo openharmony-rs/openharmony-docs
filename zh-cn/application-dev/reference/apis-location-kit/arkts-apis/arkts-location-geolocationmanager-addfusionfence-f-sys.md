@@ -50,6 +50,7 @@ function addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<v
 | [3501603](../errorcode-geoLocationManager.md#3501603-由于存在重复的beacon围栏导致添加围栏失败) | Duplicate fusion fence identifier. |
 | [3301601](../errorcode-geoLocationManager.md#3301601-地理围栏个数超过最大值限制导致添加围栏失败) | The number of geofences exceeds the maximum. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -151,3 +152,5 @@ try {
   console.error("addFusionFence: error=" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

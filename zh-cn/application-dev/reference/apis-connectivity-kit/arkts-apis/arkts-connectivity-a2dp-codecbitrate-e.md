@@ -12,20 +12,6 @@ enum CodecBitRate
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_BIT_RATE_96000
-
-```TypeScript
-CODEC_BIT_RATE_96000 = 0
-```
-
-96kbps
-
-**起始版本：** 19
-
-<!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0--><!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## CODEC_BIT_RATE_128000
 
 ```TypeScript
@@ -40,6 +26,20 @@ CODEC_BIT_RATE_128000 = 1
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
+## CODEC_BIT_RATE_1500000
+
+```TypeScript
+CODEC_BIT_RATE_1500000 = 9
+```
+
+1500kbps
+
+**起始版本：** 21
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9--><!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
 ## CODEC_BIT_RATE_192000
 
 ```TypeScript
@@ -51,6 +51,20 @@ CODEC_BIT_RATE_192000 = 2
 **起始版本：** 19
 
 <!--Device-CodecBitRate-CODEC_BIT_RATE_192000 = 2--><!--Device-CodecBitRate-CODEC_BIT_RATE_192000 = 2-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## CODEC_BIT_RATE_2300000
+
+```TypeScript
+CODEC_BIT_RATE_2300000 = 10
+```
+
+2300kbps
+
+**起始版本：** 21
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10--><!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -110,6 +124,20 @@ CODEC_BIT_RATE_640000 = 6
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
+## CODEC_BIT_RATE_96000
+
+```TypeScript
+CODEC_BIT_RATE_96000 = 0
+```
+
+96kbps
+
+**起始版本：** 19
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0--><!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
 ## CODEC_BIT_RATE_960000
 
 ```TypeScript
@@ -135,33 +163,5 @@ CODEC_BIT_RATE_ABR = 8
 **起始版本：** 19
 
 <!--Device-CodecBitRate-CODEC_BIT_RATE_ABR = 8--><!--Device-CodecBitRate-CODEC_BIT_RATE_ABR = 8-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## CODEC_BIT_RATE_1500000
-
-```TypeScript
-CODEC_BIT_RATE_1500000 = 9
-```
-
-1500kbps
-
-**起始版本：** 21
-
-<!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9--><!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## CODEC_BIT_RATE_2300000
-
-```TypeScript
-CODEC_BIT_RATE_2300000 = 10
-```
-
-2300kbps
-
-**起始版本：** 21
-
-<!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10--><!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

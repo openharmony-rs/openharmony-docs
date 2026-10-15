@@ -4,7 +4,7 @@
 export declare class ToolBarV2Item
 ```
 
-Declare type ToolBarV2Item
+Defines an item in the toolbar.
 
 **Since:** 18
 
@@ -46,7 +46,7 @@ Define the action event.
 constructor(options: ToolBarV2ItemOptions)
 ```
 
-The constructor used to create a ToolBarV2Item object.
+A constructor used to create a **ToolBarV2Item** instance.
 
 **Since:** 18
 

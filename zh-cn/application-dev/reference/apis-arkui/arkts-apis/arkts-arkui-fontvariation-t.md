@@ -6,6 +6,8 @@ declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVa
 
 可变字体的属性。
 
+**类型：** import('../api/@ohos.graphics.text').default.FontVariation
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVa
 <!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation--><!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.graphics.text').default.FontVariation

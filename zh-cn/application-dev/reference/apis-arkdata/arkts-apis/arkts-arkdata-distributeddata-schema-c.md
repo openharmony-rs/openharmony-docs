@@ -10,7 +10,7 @@ class Schema
 
 **废弃版本：** 9
 
-**替代接口：** Schema
+**替代接口：** [Schema](arkts-arkdata-distributedkvstore-schema-c.md)
 
 <!--Device-distributedData-class Schema--><!--Device-distributedData-class Schema-End-->
 
@@ -33,7 +33,7 @@ constructor()
 
 **废弃版本：** 9
 
-**替代接口：** constructor
+**替代接口：** [constructor](arkts-arkdata-distributedkvstore-schema-c.md#constructor)
 
 <!--Device-Schema-constructor()--><!--Device-Schema-constructor()-End-->
 
@@ -53,7 +53,7 @@ indexes: Array<string>
 
 **废弃版本：** 9
 
-**替代接口：** indexes
+**替代接口：** [indexes](arkts-arkdata-distributedkvstore-schema-c.md#indexes)
 
 <!--Device-Schema-indexes: Array<string>--><!--Device-Schema-indexes: Array<string>-End-->
 
@@ -73,7 +73,7 @@ mode: number
 
 **废弃版本：** 9
 
-**替代接口：** mode
+**替代接口：** [mode](arkts-arkdata-distributedkvstore-schema-c.md#mode)
 
 <!--Device-Schema-mode: number--><!--Device-Schema-mode: number-End-->
 
@@ -93,7 +93,7 @@ root: FieldNode
 
 **废弃版本：** 9
 
-**替代接口：** root
+**替代接口：** [root](arkts-arkdata-distributedkvstore-schema-c.md#root)
 
 <!--Device-Schema-root: FieldNode--><!--Device-Schema-root: FieldNode-End-->
 
@@ -113,7 +113,7 @@ Schema的跳跃大小。
 
 **废弃版本：** 9
 
-**替代接口：** skip
+**替代接口：** [skip](arkts-arkdata-distributedkvstore-schema-c.md#skip)
 
 <!--Device-Schema-skip: number--><!--Device-Schema-skip: number-End-->
 

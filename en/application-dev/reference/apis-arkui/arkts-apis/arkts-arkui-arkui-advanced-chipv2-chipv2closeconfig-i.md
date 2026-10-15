@@ -6,8 +6,6 @@ export interface ChipV2CloseConfig extends ChipV2AccessibilityConfig
 
 Defines the functional attribute configuration for the close icon of the **ChipV2** component, including accessibility attribute.
 
-This API inherits from [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md).
-
 **Inheritance/Implementation:** ChipV2CloseConfig extends [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md)
 
 **Since:** 26.0.0

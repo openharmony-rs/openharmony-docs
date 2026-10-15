@@ -12,59 +12,45 @@ enum WindowAnchor
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## TOP_START
+## BOTTOM
 
 ```TypeScript
-TOP_START = 0
+BOTTOM = 7
 ```
 
-窗口左上角。
+窗口下边界横向居中点。
 
 **起始版本：** 20
 
-<!--Device-WindowAnchor-TOP_START = 0--><!--Device-WindowAnchor-TOP_START = 0-End-->
+<!--Device-WindowAnchor-BOTTOM = 7--><!--Device-WindowAnchor-BOTTOM = 7-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## TOP
+## BOTTOM_END
 
 ```TypeScript
-TOP = 1
+BOTTOM_END = 8
 ```
 
-窗口上边界横向居中点。
+窗口右下角。
 
 **起始版本：** 20
 
-<!--Device-WindowAnchor-TOP = 1--><!--Device-WindowAnchor-TOP = 1-End-->
+<!--Device-WindowAnchor-BOTTOM_END = 8--><!--Device-WindowAnchor-BOTTOM_END = 8-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## TOP_END
+## BOTTOM_START
 
 ```TypeScript
-TOP_END = 2
+BOTTOM_START = 6
 ```
 
-窗口右上角。
+窗口左下角。
 
 **起始版本：** 20
 
-<!--Device-WindowAnchor-TOP_END = 2--><!--Device-WindowAnchor-TOP_END = 2-End-->
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-## START
-
-```TypeScript
-START = 3
-```
-
-窗口左边界纵向居中点。
-
-**起始版本：** 20
-
-<!--Device-WindowAnchor-START = 3--><!--Device-WindowAnchor-START = 3-End-->
+<!--Device-WindowAnchor-BOTTOM_START = 6--><!--Device-WindowAnchor-BOTTOM_START = 6-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -96,44 +82,58 @@ END = 5
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## BOTTOM_START
+## START
 
 ```TypeScript
-BOTTOM_START = 6
+START = 3
 ```
 
-窗口左下角。
+窗口左边界纵向居中点。
 
 **起始版本：** 20
 
-<!--Device-WindowAnchor-BOTTOM_START = 6--><!--Device-WindowAnchor-BOTTOM_START = 6-End-->
+<!--Device-WindowAnchor-START = 3--><!--Device-WindowAnchor-START = 3-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## BOTTOM
+## TOP
 
 ```TypeScript
-BOTTOM = 7
+TOP = 1
 ```
 
-窗口下边界横向居中点。
+窗口上边界横向居中点。
 
 **起始版本：** 20
 
-<!--Device-WindowAnchor-BOTTOM = 7--><!--Device-WindowAnchor-BOTTOM = 7-End-->
+<!--Device-WindowAnchor-TOP = 1--><!--Device-WindowAnchor-TOP = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## BOTTOM_END
+## TOP_END
 
 ```TypeScript
-BOTTOM_END = 8
+TOP_END = 2
 ```
 
-窗口右下角。
+窗口右上角。
 
 **起始版本：** 20
 
-<!--Device-WindowAnchor-BOTTOM_END = 8--><!--Device-WindowAnchor-BOTTOM_END = 8-End-->
+<!--Device-WindowAnchor-TOP_END = 2--><!--Device-WindowAnchor-TOP_END = 2-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## TOP_START
+
+```TypeScript
+TOP_START = 0
+```
+
+窗口左上角。
+
+**起始版本：** 20
+
+<!--Device-WindowAnchor-TOP_START = 0--><!--Device-WindowAnchor-TOP_START = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

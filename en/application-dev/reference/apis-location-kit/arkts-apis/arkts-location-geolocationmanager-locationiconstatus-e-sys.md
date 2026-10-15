@@ -14,6 +14,22 @@ Enum for location icon status.
 
 **System API:** This is a system API.
 
+## HD_LOCATING_STARTED
+
+```TypeScript
+HD_LOCATING_STARTED = 2
+```
+
+The HD locating service(RTK) is started.
+
+**Since:** 12
+
+<!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2--><!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+**System API:** This is a system API.
+
 ## LOCATING_NOT_STARTED
 
 ```TypeScript
@@ -41,22 +57,6 @@ The normal locating service is started.
 **Since:** 12
 
 <!--Device-LocationIconStatus-LOCATING_STARTED = 1--><!--Device-LocationIconStatus-LOCATING_STARTED = 1-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-**System API:** This is a system API.
-
-## HD_LOCATING_STARTED
-
-```TypeScript
-HD_LOCATING_STARTED = 2
-```
-
-The HD locating service(RTK) is started.
-
-**Since:** 12
-
-<!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2--><!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

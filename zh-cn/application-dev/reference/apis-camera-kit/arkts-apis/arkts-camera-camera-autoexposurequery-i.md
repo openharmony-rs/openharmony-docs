@@ -30,7 +30,7 @@ getExposureBiasRange(): Array<number>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AutoExposureQuery-getExposureBiasRange(): Array<double>--><!--Device-AutoExposureQuery-getExposureBiasRange(): Array<double>-End-->
 
@@ -76,7 +76,7 @@ isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-AutoExposureQuery-isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean--><!--Device-AutoExposureQuery-isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean-End-->
 
@@ -130,7 +130,7 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AutoExposureQuery-isExposureModeSupported(aeMode: ExposureMode): boolean--><!--Device-AutoExposureQuery-isExposureModeSupported(aeMode: ExposureMode): boolean-End-->
 

@@ -6,6 +6,8 @@
 import { ethernet } from '@kit.NetworkKit';
 ```
 
+<a id="getallactiveifaces1"></a>
+
 ## getAllActiveIfaces
 
 ```TypeScript
@@ -39,6 +41,7 @@ Obtains the active network interface. This API uses an asynchronous callback to 
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,8 +60,10 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getallactiveifaces-1"></a>
+
+<a id="getallactiveifaces2"></a>
 
 ## getAllActiveIfaces
 
@@ -93,6 +98,7 @@ Obtains the active network interface. This API uses a promise to return the resu
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -108,3 +114,5 @@ ethernet.getAllActiveIfaces().then((data: string[]) => {
   console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

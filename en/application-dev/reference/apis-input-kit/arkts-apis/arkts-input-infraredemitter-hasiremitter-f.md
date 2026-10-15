@@ -12,7 +12,7 @@ import { infraredEmitter } from '@kit.InputKit';
 function hasIrEmitter(): Promise<boolean>
 ```
 
-Checks whether the device has an infrared transmitter. This API uses a promise to return the result.
+Checks whether the device has an infrared emitter. This API uses a promise to return the result.
 
 **Since:** 23
 
@@ -32,7 +32,7 @@ Checks whether the device has an infrared transmitter. This API uses a promise t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [3800001](../errorcode-infraredemitter.md#3800001-multimodal-input-service-internal-error) | Input service exception. |
 
 **Examples**

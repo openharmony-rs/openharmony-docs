@@ -12,20 +12,6 @@ enum PrintColorMode
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## COLOR_MODE_MONOCHROME
-
-```TypeScript
-COLOR_MODE_MONOCHROME = 0
-```
-
-表示黑白打印。
-
-**起始版本：** 11
-
-<!--Device-PrintColorMode-COLOR_MODE_MONOCHROME = 0--><!--Device-PrintColorMode-COLOR_MODE_MONOCHROME = 0-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## COLOR_MODE_COLOR
 
 ```TypeScript
@@ -37,5 +23,19 @@ COLOR_MODE_COLOR = 1
 **起始版本：** 11
 
 <!--Device-PrintColorMode-COLOR_MODE_COLOR = 1--><!--Device-PrintColorMode-COLOR_MODE_COLOR = 1-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## COLOR_MODE_MONOCHROME
+
+```TypeScript
+COLOR_MODE_MONOCHROME = 0
+```
+
+表示黑白打印。
+
+**起始版本：** 11
+
+<!--Device-PrintColorMode-COLOR_MODE_MONOCHROME = 0--><!--Device-PrintColorMode-COLOR_MODE_MONOCHROME = 0-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

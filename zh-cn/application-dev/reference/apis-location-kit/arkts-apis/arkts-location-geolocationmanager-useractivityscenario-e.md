@@ -12,6 +12,26 @@ export enum UserActivityScenario
 
 **系统能力：** SystemCapability.Location.Location.Core
 
+## DAILY_LIFE_SERVICE
+
+```TypeScript
+DAILY_LIFE_SERVICE = 0x404
+```
+
+表示日常服务使用场景。
+
+适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。
+
+该场景仅使用网络定位技术提供定位服务，功耗较低。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UserActivityScenario-DAILY_LIFE_SERVICE = 0x404--><!--Device-UserActivityScenario-DAILY_LIFE_SERVICE = 0x404-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
 ## NAVIGATION
 
 ```TypeScript
@@ -26,7 +46,7 @@ NAVIGATION = 0x401
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserActivityScenario-NAVIGATION = 0x401--><!--Device-UserActivityScenario-NAVIGATION = 0x401-End-->
 
@@ -46,7 +66,7 @@ SPORT = 0x402
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserActivityScenario-SPORT = 0x402--><!--Device-UserActivityScenario-SPORT = 0x402-End-->
 
@@ -66,28 +86,8 @@ TRANSPORT = 0x403
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserActivityScenario-TRANSPORT = 0x403--><!--Device-UserActivityScenario-TRANSPORT = 0x403-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## DAILY_LIFE_SERVICE
-
-```TypeScript
-DAILY_LIFE_SERVICE = 0x404
-```
-
-表示日常服务使用场景。
-
-适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。
-
-该场景仅使用网络定位技术提供定位服务，功耗较低。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-UserActivityScenario-DAILY_LIFE_SERVICE = 0x404--><!--Device-UserActivityScenario-DAILY_LIFE_SERVICE = 0x404-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core

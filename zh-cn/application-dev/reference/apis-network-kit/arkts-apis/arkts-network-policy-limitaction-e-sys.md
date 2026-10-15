@@ -14,22 +14,6 @@ export enum LimitAction
 
 **系统接口：** 此接口为系统接口。
 
-## LIMIT_ACTION_NONE
-
-```TypeScript
-LIMIT_ACTION_NONE = -1
-```
-
-默认值。
-
-**起始版本：** 10
-
-<!--Device-LimitAction-LIMIT_ACTION_NONE = -1--><!--Device-LimitAction-LIMIT_ACTION_NONE = -1-End-->
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## LIMIT_ACTION_ACCESS_DISABLED
 
 ```TypeScript
@@ -57,6 +41,22 @@ LIMIT_ACTION_ALERT_ONLY = 1
 **起始版本：** 10
 
 <!--Device-LimitAction-LIMIT_ACTION_ALERT_ONLY = 1--><!--Device-LimitAction-LIMIT_ACTION_ALERT_ONLY = 1-End-->
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LIMIT_ACTION_NONE
+
+```TypeScript
+LIMIT_ACTION_NONE = -1
+```
+
+默认值。
+
+**起始版本：** 10
+
+<!--Device-LimitAction-LIMIT_ACTION_NONE = -1--><!--Device-LimitAction-LIMIT_ACTION_NONE = -1-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 

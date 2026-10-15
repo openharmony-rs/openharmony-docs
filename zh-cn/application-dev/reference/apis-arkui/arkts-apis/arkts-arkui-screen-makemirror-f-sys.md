@@ -6,6 +6,8 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="makemirror1"></a>
+
 ## makeMirror
 
 ```TypeScript
@@ -38,6 +40,7 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>, callback: Asy
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ screen.makeMirror(mainScreenId, mirrorScreenIds, (err: BusinessError, data: numb
 });
 ```
 
+<!--DelEnd-->
 
-<a id="makemirror-1"></a>
+
+<a id="makemirror2"></a>
 
 ## makeMirror
 
@@ -97,6 +102,7 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>): Promise<numb
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -112,3 +118,5 @@ screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
   console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

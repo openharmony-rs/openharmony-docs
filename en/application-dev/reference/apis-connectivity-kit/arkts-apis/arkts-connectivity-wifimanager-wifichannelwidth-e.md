@@ -4,11 +4,25 @@
 enum WifiChannelWidth
 ```
 
-Describes the wifi channel width. @enum { int }
+Describes the wifi channel width.
 
 **Since:** 9
 
 <!--Device-wifiManager-enum WifiChannelWidth--><!--Device-wifiManager-enum WifiChannelWidth-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+## WIDTH_160MHZ
+
+```TypeScript
+WIDTH_160MHZ = 3
+```
+
+160MHz.
+
+**Since:** 9
+
+<!--Device-WifiChannelWidth-WIDTH_160MHZ = 3--><!--Device-WifiChannelWidth-WIDTH_160MHZ = 3-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -51,20 +65,6 @@ WIDTH_80MHZ = 2
 **Since:** 9
 
 <!--Device-WifiChannelWidth-WIDTH_80MHZ = 2--><!--Device-WifiChannelWidth-WIDTH_80MHZ = 2-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-## WIDTH_160MHZ
-
-```TypeScript
-WIDTH_160MHZ = 3
-```
-
-160MHz.
-
-**Since:** 9
-
-<!--Device-WifiChannelWidth-WIDTH_160MHZ = 3--><!--Device-WifiChannelWidth-WIDTH_160MHZ = 3-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

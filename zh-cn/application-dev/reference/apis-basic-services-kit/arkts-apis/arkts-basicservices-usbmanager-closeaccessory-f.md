@@ -39,6 +39,7 @@ function closeAccessory(accessoryHandle: USBAccessoryHandle): void
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 async function closeAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -48,9 +49,10 @@ async function closeAccessory() {
     }
     let handle = usbManager.openAccessory(accList?.[0]);
     usbManager.closeAccessory(handle);
-    console.info(`closeAccessory success`);
+    console.info(`Succeeded in closeAccessory`);
   } catch (error) {
-    console.error(`closeAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`closeAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```

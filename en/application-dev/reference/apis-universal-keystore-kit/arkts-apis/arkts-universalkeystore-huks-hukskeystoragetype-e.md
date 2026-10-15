@@ -12,45 +12,25 @@ Enumerates the key storage modes.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_STORAGE_TEMP
+## HUKS_STORAGE_KEY_EXPORT_ALLOWED
 
 ```TypeScript
-HUKS_STORAGE_TEMP = 0
+HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3
 ```
 
-The key is managed locally.
+The key derived from the master key is exported to the service, and not managed by the HUKS.
 
-Note: This tag is supported since API version 8 and deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.
-
-**Since:** 8
-
-**Deprecated since:** 10
+**Since:** 10
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-<!--Device-HuksKeyStorageType-HUKS_STORAGE_TEMP = 0--><!--Device-HuksKeyStorageType-HUKS_STORAGE_TEMP = 0-End-->
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability:** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyStorageType-HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3--><!--Device-HuksKeyStorageType-HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3-End-->
 
-## HUKS_STORAGE_PERSISTENT
-
-```TypeScript
-HUKS_STORAGE_PERSISTENT = 1
-```
-
-The key is managed by the HUKS service.
-
-Note: This tag is supported since API version 8 and deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-<!--Device-HuksKeyStorageType-HUKS_STORAGE_PERSISTENT = 1--><!--Device-HuksKeyStorageType-HUKS_STORAGE_PERSISTENT = 1-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 10 to 11: SystemCapability.Security.Huks.Extension
 
 ## HUKS_STORAGE_ONLY_USED_IN_HUKS
 
@@ -72,22 +52,42 @@ The key derived from the master key is stored in the HUKS and managed by the HUK
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 10 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_STORAGE_KEY_EXPORT_ALLOWED
+## HUKS_STORAGE_PERSISTENT
 
 ```TypeScript
-HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3
+HUKS_STORAGE_PERSISTENT = 1
 ```
 
-The key derived from the master key is exported to the service, and not managed by the HUKS.
+The key is managed by the HUKS service.
 
-**Since:** 10
+Note: This tag is supported since API version 8 and deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.
+
+**Since:** 8
+
+**Deprecated since:** 10
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+<!--Device-HuksKeyStorageType-HUKS_STORAGE_PERSISTENT = 1--><!--Device-HuksKeyStorageType-HUKS_STORAGE_PERSISTENT = 1-End-->
 
-<!--Device-HuksKeyStorageType-HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3--><!--Device-HuksKeyStorageType-HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3-End-->
+**System capability:** SystemCapability.Security.Huks.Core
 
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 10 to 11: SystemCapability.Security.Huks.Extension
+## HUKS_STORAGE_TEMP
+
+```TypeScript
+HUKS_STORAGE_TEMP = 0
+```
+
+The key is managed locally.
+
+Note: This tag is supported since API version 8 and deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-HuksKeyStorageType-HUKS_STORAGE_TEMP = 0--><!--Device-HuksKeyStorageType-HUKS_STORAGE_TEMP = 0-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core

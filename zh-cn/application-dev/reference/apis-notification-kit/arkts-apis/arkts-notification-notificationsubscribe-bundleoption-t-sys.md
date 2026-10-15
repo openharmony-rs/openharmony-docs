@@ -6,6 +6,8 @@ export type BundleOption = _BundleOption
 
 描述BundleOption信息，即应用的包信息。
 
+**类型：** _BundleOption
+
 **起始版本：** 9
 
 <!--Device-notificationSubscribe-export type BundleOption = _BundleOption--><!--Device-notificationSubscribe-export type BundleOption = _BundleOption-End-->
@@ -13,5 +15,3 @@ export type BundleOption = _BundleOption
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _BundleOption

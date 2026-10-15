@@ -36,50 +36,6 @@ declare enum NavigationMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Stack
-
-```TypeScript
-Stack
-```
-
-导航页与内容区独立显示，相当于两个页面。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-NavigationMode-Stack--><!--Device-NavigationMode-Stack-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Split
-
-```TypeScript
-Split
-```
-
-导航页与内容区分两栏显示。
-
-**1.** navBarWidth最终取值与开发者设置值的关系参见表1。
-
-**2.** 缩小组件尺寸时，先缩小内容区的尺寸至minContentWidth，然后再缩小导航页的尺寸至minNavBarWidth。若继续缩小，先缩小内容区，内容区消失后再缩小导航页。
-
-**3.** 设置导航页为固定尺寸时，若持续缩小组件尺寸，导航页最后压缩显示。
-
-**4.** 若只设置了navBarWidth属性，则导航页宽度为navBarWidth，且分割线不可拖动。
-
-**5.** 分割线的热区左右各2vp，建议避让4vp以上。
-
-**6.** Split模式下，内容区若只存在一个页面，则页面左上角不会显示返回按钮。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-NavigationMode-Split--><!--Device-NavigationMode-Split-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Auto
 
 ```TypeScript
@@ -113,5 +69,49 @@ Navigation宽度&gt;=600vp且高宽比小于等于1.2时，采用Split模式显�
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-NavigationMode-AUTO_WITH_ASPECT_RATIO--><!--Device-NavigationMode-AUTO_WITH_ASPECT_RATIO-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Split
+
+```TypeScript
+Split
+```
+
+导航页与内容区分两栏显示。
+
+**1.** navBarWidth最终取值与开发者设置值的关系参见表1。
+
+**2.** 缩小组件尺寸时，先缩小内容区的尺寸至minContentWidth，然后再缩小导航页的尺寸至minNavBarWidth。若继续缩小，先缩小内容区，内容区消失后再缩小导航页。
+
+**3.** 设置导航页为固定尺寸时，若持续缩小组件尺寸，导航页最后压缩显示。
+
+**4.** 若只设置了navBarWidth属性，则导航页宽度为navBarWidth，且分割线不可拖动。
+
+**5.** 分割线的热区左右各2vp，建议避让4vp以上。
+
+**6.** Split模式下，内容区若只存在一个页面，则页面左上角不会显示返回按钮。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationMode-Split--><!--Device-NavigationMode-Split-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Stack
+
+```TypeScript
+Stack
+```
+
+导航页与内容区独立显示，相当于两个页面。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationMode-Stack--><!--Device-NavigationMode-Stack-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -6,6 +6,8 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
+<a id="removeall1"></a>
+
 ## removeAll
 
 ```TypeScript
@@ -37,12 +39,13 @@ function removeAll(bundle: BundleOption, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,8 +64,10 @@ let bundle: notificationSubscribe.BundleOption = {
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="removeall-1"></a>
+
+<a id="removeall2"></a>
 
 ## removeAll
 
@@ -94,11 +99,12 @@ function removeAll(callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,8 +120,10 @@ let removeAllCallback = (err: BusinessError) => {
 notificationSubscribe.removeAll(removeAllCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="removeall-2"></a>
+
+<a id="removeall3"></a>
 
 ## removeAll
 
@@ -148,12 +156,13 @@ function removeAll(userId: number, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -171,8 +180,10 @@ let userId: number = 1;
 notificationSubscribe.removeAll(userId, removeAllCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="removeall-3"></a>
+
+<a id="removeall4"></a>
 
 ## removeAll
 
@@ -210,12 +221,13 @@ function removeAll(userId: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -229,8 +241,10 @@ notificationSubscribe.removeAll(userId).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="removeall-4"></a>
+
+<a id="removeall5"></a>
 
 ## removeAll
 
@@ -268,12 +282,13 @@ function removeAll(bundle?: BundleOption): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -286,3 +301,5 @@ notificationSubscribe.removeAll().then(() => {
   console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

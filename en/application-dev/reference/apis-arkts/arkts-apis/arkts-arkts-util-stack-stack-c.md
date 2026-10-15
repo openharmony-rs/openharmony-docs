@@ -87,7 +87,7 @@ A constructor used to create a **Stack** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Stack-constructor()--><!--Device-Stack-constructor()-End-->
 
@@ -161,7 +161,7 @@ Checks whether this Stack is empty (contains no elements).
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Stack-isEmpty(): boolean--><!--Device-Stack-isEmpty(): boolean-End-->
 
@@ -201,7 +201,7 @@ Obtains the index of the first occurrence of the specified element in this Stack
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Stack-locate(element: T): int--><!--Device-Stack-locate(element: T): int-End-->
 
@@ -247,7 +247,7 @@ Obtains the top element of this Stack. If the Stack is empty, **undefined** is r
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Stack-peek(): T--><!--Device-Stack-peek(): T-End-->
 
@@ -288,7 +288,7 @@ Removes the top element from this Stack.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Stack-pop(): T--><!--Device-Stack-pop(): T-End-->
 
@@ -330,7 +330,7 @@ Adds an element at the top of this Stack.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Stack-push(item: T): T--><!--Device-Stack-push(item: T): T-End-->
 

@@ -6,6 +6,12 @@ declare interface CalendarOptions
 
 日历选择器组件的参数说明。
 
+**起始版本：** 10
+
+<!--Device-unnamed-declare interface CalendarOptions--><!--Device-unnamed-declare interface CalendarOptions-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## start和end设置规则
 
 
@@ -16,12 +22,6 @@ declare interface CalendarOptions
 > - start日期晚于当前系统日期，选中日期未设置：选中日期为start日期
 > - end日期早于当前系统日期，选中日期未设置：选中日期为end日期
 > - 日期格式不符合规范，如`1999-13-32`：start日期或end日期设置无效，选中日期取默认值
-
-**起始版本：** 10
-
-<!--Device-unnamed-declare interface CalendarOptions--><!--Device-unnamed-declare interface CalendarOptions-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## disabledDateRange
 

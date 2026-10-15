@@ -12,20 +12,6 @@ Enumerates the full download states.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-Downloading.
-
-**Since:** 20
-
-<!--Device-DownloadState-RUNNING = 0--><!--Device-DownloadState-RUNNING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
 ## COMPLETED
 
 ```TypeScript
@@ -37,6 +23,20 @@ Downloaded.
 **Since:** 20
 
 <!--Device-DownloadState-COMPLETED = 1--><!--Device-DownloadState-COMPLETED = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+Downloading.
+
+**Since:** 20
+
+<!--Device-DownloadState-RUNNING = 0--><!--Device-DownloadState-RUNNING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

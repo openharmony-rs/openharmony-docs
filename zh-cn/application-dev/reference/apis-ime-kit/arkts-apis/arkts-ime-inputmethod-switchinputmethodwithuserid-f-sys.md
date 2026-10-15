@@ -52,6 +52,7 @@ function switchInputMethodWithUserId(bundleName: string, subtypeId?: string, use
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
 | [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 1
   console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

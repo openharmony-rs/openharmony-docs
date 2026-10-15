@@ -4,7 +4,7 @@
 declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle
 ```
 
-Defines the pointer style.
+Defines the mouse cursor style.
 
 > **NOTE:** 
 > 
@@ -13,6 +13,8 @@ Defines the pointer style.
 > [UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) object using the **getUIContext()** API and then obtain the
 > **cursorControl** bound to the instance using the
 > getCursorController API.
+
+**Type:** import('../api/@ohos.multimodalInput.pointer').default.PointerStyle
 
 **Since:** 11
 
@@ -23,5 +25,3 @@ Defines the pointer style.
 <!--Device-unnamed-declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle--><!--Device-unnamed-declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.multimodalInput.pointer').default.PointerStyle

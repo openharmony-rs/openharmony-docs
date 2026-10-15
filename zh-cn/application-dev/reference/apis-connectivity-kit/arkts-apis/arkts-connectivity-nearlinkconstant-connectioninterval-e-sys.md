@@ -26,6 +26,8 @@ HIGH_SPEED_INTERVAL_4_5 = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionInterval-HIGH_SPEED_INTERVAL_4_5 = 0--><!--Device-ConnectionInterval-HIGH_SPEED_INTERVAL_4_5 = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -44,61 +46,9 @@ HIGH_SPEED_INTERVAL_4_875 = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionInterval-HIGH_SPEED_INTERVAL_4_875 = 1--><!--Device-ConnectionInterval-HIGH_SPEED_INTERVAL_4_875 = 1-End-->
-
-**系统能力：** SystemCapability.Communication.NearLink.Base
-
-**系统接口：** 此接口为系统接口。
-
-## MID_SPEED_INTERVAL_11_25
-
-```TypeScript
-MID_SPEED_INTERVAL_11_25 = 2
-```
-
-表示连接间隔为11.25毫秒。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectionInterval-MID_SPEED_INTERVAL_11_25 = 2--><!--Device-ConnectionInterval-MID_SPEED_INTERVAL_11_25 = 2-End-->
-
-**系统能力：** SystemCapability.Communication.NearLink.Base
-
-**系统接口：** 此接口为系统接口。
-
-## MID_SPEED_INTERVAL_15
-
-```TypeScript
-MID_SPEED_INTERVAL_15 = 3
-```
-
-表示连接间隔为15毫秒。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectionInterval-MID_SPEED_INTERVAL_15 = 3--><!--Device-ConnectionInterval-MID_SPEED_INTERVAL_15 = 3-End-->
-
-**系统能力：** SystemCapability.Communication.NearLink.Base
-
-**系统接口：** 此接口为系统接口。
-
-## MID_SPEED_INTERVAL_50
-
-```TypeScript
-MID_SPEED_INTERVAL_50 = 4
-```
-
-表示连接间隔为50毫秒。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectionInterval-MID_SPEED_INTERVAL_50 = 4--><!--Device-ConnectionInterval-MID_SPEED_INTERVAL_50 = 4-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -115,6 +65,8 @@ LOW_SPEED_INTERVAL_100 = 5
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_100 = 5--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_100 = 5-End-->
 
@@ -134,6 +86,8 @@ LOW_SPEED_INTERVAL_150 = 6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_150 = 6--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_150 = 6-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -151,6 +105,8 @@ LOW_SPEED_INTERVAL_200 = 7
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_200 = 7--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_200 = 7-End-->
 
@@ -170,6 +126,8 @@ LOW_SPEED_INTERVAL_300 = 8
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_300 = 8--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_300 = 8-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -188,7 +146,69 @@ LOW_SPEED_INTERVAL_500 = 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_500 = 9--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_500 = 9-End-->
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**系统接口：** 此接口为系统接口。
+
+## MID_SPEED_INTERVAL_11_25
+
+```TypeScript
+MID_SPEED_INTERVAL_11_25 = 2
+```
+
+表示连接间隔为11.25毫秒。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ConnectionInterval-MID_SPEED_INTERVAL_11_25 = 2--><!--Device-ConnectionInterval-MID_SPEED_INTERVAL_11_25 = 2-End-->
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**系统接口：** 此接口为系统接口。
+
+## MID_SPEED_INTERVAL_15
+
+```TypeScript
+MID_SPEED_INTERVAL_15 = 3
+```
+
+表示连接间隔为15毫秒。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ConnectionInterval-MID_SPEED_INTERVAL_15 = 3--><!--Device-ConnectionInterval-MID_SPEED_INTERVAL_15 = 3-End-->
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**系统接口：** 此接口为系统接口。
+
+## MID_SPEED_INTERVAL_50
+
+```TypeScript
+MID_SPEED_INTERVAL_50 = 4
+```
+
+表示连接间隔为50毫秒。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ConnectionInterval-MID_SPEED_INTERVAL_50 = 4--><!--Device-ConnectionInterval-MID_SPEED_INTERVAL_50 = 4-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 

@@ -21,9 +21,9 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBatteryConfig](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md) | 按场景名称查询电池配置。调用该接口后，系统将根据传入的场景名称查找并返回对应的电池充电配置值。 |
-| [isBatteryConfigSupported](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md) | 检查是否按场景名称启用电池配置。调用该接口后，系统将判断当前设备是否支持指定的充电场景配置，并返回检查结果。 |
-| [setBatteryConfig](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md) | 按场景名称设置电池配置。调用该接口后，系统将根据传入的场景名称和场景值修改对应的电池充电配置，影响设备充电行为。 |
+| [getBatteryConfig](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md#getbatteryconfig) | 按场景名称查询电池配置。调用该接口后，系统将根据传入的场景名称查找并返回对应的电池充电配置值。 |
+| [isBatteryConfigSupported](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md#isbatteryconfigsupported) | 检查是否按场景名称启用电池配置。调用该接口后，系统将判断当前设备是否支持指定的充电场景配置，并返回检查结果。 |
+| [setBatteryConfig](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md#setbatteryconfig) | 按场景名称设置电池配置。调用该接口后，系统将根据传入的场景名称和场景值修改对应的电池充电配置，影响设备充电行为。 |
 <!--DelEnd-->
 
 ### 枚举
@@ -34,7 +34,7 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 | [BatteryChargeState](arkts-basicservices-batteryinfo-batterychargestate-e.md) | 表示电池充电状态的枚举。 |
 | [BatteryHealthState](arkts-basicservices-batteryinfo-batteryhealthstate-e.md) | 表示电池健康状态的枚举。 |
 | [BatteryPluggedType](arkts-basicservices-batteryinfo-batterypluggedtype-e.md) | 表示连接的充电器类型的枚举。 |
-| [CommonEventBatteryChangedKey](arkts-basicservices-batteryinfo-commoneventbatterychangedkey-e.md) | 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。开发者需先订阅COMMON_EVENT_BATTERY_CHANGED，在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。详细使用方法请参见@ohos.commonEventManager (公共事件模块)。 |
+| [CommonEventBatteryChangedKey](arkts-basicservices-batteryinfo-commoneventbatterychangedkey-e.md) | 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。开发者需先订阅[COMMON_EVENT_BATTERY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_battery_changed)，在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](../../../reference/api-basic-services/js-apis-commonEventManager.md)。 |
 
 ### 常量
 

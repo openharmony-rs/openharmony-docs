@@ -6,6 +6,8 @@ export type FillRequest = _AutoFillRequest.FillRequest
 
 Defines the information about an auto-fill request.
 
+**Type:** [_AutoFillRequest.FillRequest](arkts-ability-autofillrequest-fillrequest-i.md)
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the information about an auto-fill request.
 <!--Device-autoFillManager-export type FillRequest = _AutoFillRequest.FillRequest--><!--Device-autoFillManager-export type FillRequest = _AutoFillRequest.FillRequest-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Type:** [_AutoFillRequest.FillRequest](arkts-ability-autofillrequest-fillrequest-i.md)

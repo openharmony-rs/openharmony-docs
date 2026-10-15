@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="casttonormalform1"></a>
+
 ## castToNormalForm
 
 ```TypeScript
@@ -44,6 +46,7 @@ function castToNormalForm(formId: string, callback: AsyncCallback<void>): void
 | [16501002](../errorcode-form.md#16501002-卡片数量达到上限) | The number of forms exceeds the maximum allowed. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="casttonormalform-1"></a>
+
+<a id="casttonormalform2"></a>
 
 ## castToNormalForm
 
@@ -108,6 +113,7 @@ function castToNormalForm(formId: string): Promise<void>
 | [16501002](../errorcode-form.md#16501002-卡片数量达到上限) | The number of forms exceeds the maximum allowed. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +131,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

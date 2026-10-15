@@ -12,20 +12,6 @@ ASCII/Unicode转码转换流程参数的枚举。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-## NO_CONFIGURATION
-
-```TypeScript
-NO_CONFIGURATION = 0
-```
-
-仅允许转换已分配的Unicode代码点的域名（Unicode为每个字符分配一个唯一的数字，这个数字就叫做代码点）。
-
-**起始版本：** 23
-
-<!--Device-ConversionProcess-NO_CONFIGURATION = 0--><!--Device-ConversionProcess-NO_CONFIGURATION = 0-End-->
-
-**系统能力：** SystemCapability.Communication.NetManager.Core
-
 ## ALLOW_UNASSIGNED
 
 ```TypeScript
@@ -37,6 +23,20 @@ ALLOW_UNASSIGNED = 1
 **起始版本：** 23
 
 <!--Device-ConversionProcess-ALLOW_UNASSIGNED = 1--><!--Device-ConversionProcess-ALLOW_UNASSIGNED = 1-End-->
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+## NO_CONFIGURATION
+
+```TypeScript
+NO_CONFIGURATION = 0
+```
+
+仅允许转换已分配的Unicode代码点的域名（Unicode为每个字符分配一个唯一的数字，这个数字就叫做代码点）。
+
+**起始版本：** 23
+
+<!--Device-ConversionProcess-NO_CONFIGURATION = 0--><!--Device-ConversionProcess-NO_CONFIGURATION = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 

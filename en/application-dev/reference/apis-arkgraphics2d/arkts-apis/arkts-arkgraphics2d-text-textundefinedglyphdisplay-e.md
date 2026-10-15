@@ -22,7 +22,7 @@ Follows the internal .notdef glyph design of the font, which can be an empty box
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextUndefinedGlyphDisplay-USE_DEFAULT = 0--><!--Device-TextUndefinedGlyphDisplay-USE_DEFAULT = 0-End-->
 
@@ -38,7 +38,7 @@ Always uses explicit tofu blocks to replace undefined glyphs, overriding the def
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextUndefinedGlyphDisplay-USE_TOFU = 1--><!--Device-TextUndefinedGlyphDisplay-USE_TOFU = 1-End-->
 

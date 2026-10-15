@@ -6,7 +6,7 @@ interface SearchPlayKaraokeInfo
 
 The definition of SearchPlayKaraokeInfo.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-avMusicTemplate-interface SearchPlayKaraokeInfo--><!--Device-avMusicTemplate-interface SearchPlayKaraokeInfo-End-->
 
@@ -28,7 +28,7 @@ Album name. When this value is blank, the application does not search for audio 
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Artist name. When this value is blank, the application does not search for audio
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ Ranking name. When this parameter is left blank, the application does not search
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -82,7 +82,7 @@ Age. When this value is blank, the application does not search for audio by refe
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -100,7 +100,7 @@ Audio extras. When this value is blank, the application does not search for audi
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -118,7 +118,7 @@ Gender. When this value is blank, the application does not search for audio by r
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -136,7 +136,7 @@ Style. When this value is blank, the application does not search for audio by re
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -154,7 +154,7 @@ Musical instruments. When this value is blank, the application does not search f
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -172,7 +172,7 @@ Search the playlist. When this parameter is undefined or the array is empty, the
 
 **Type:** [SearchPlayKaraokeItem](arkts-avsession-avmusictemplate-searchplaykaraokeitem-i.md)[]
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -190,7 +190,7 @@ Language. When this value is blank, the application does not search for audio by
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -208,7 +208,7 @@ Emotions. When this value is blank, the application does not search for audio by
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -226,7 +226,7 @@ Search for keywords. When this value is blank, the application does not search f
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -244,7 +244,7 @@ Scene. When this parameter is left blank, the application does not search for au
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -262,7 +262,7 @@ Song name. When this value is blank, the application does not search for audio b
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="getuidsbypolicy1"></a>
+
 ## getUidsByPolicy
 
 ```TypeScript
@@ -42,6 +44,7 @@ Obtains all UIDs that match the specified network policy. This API uses an async
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getuidsbypolicy-1"></a>
+
+<a id="getuidsbypolicy2"></a>
 
 ## getUidsByPolicy
 
@@ -97,6 +102,7 @@ Obtains all UIDs that match the policy by policy. This API uses a promise to ret
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -111,3 +117,5 @@ policy
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

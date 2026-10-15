@@ -47,11 +47,13 @@ function hasAccessoryRight(accessory: USBAccessory): boolean
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
   let flag = usbManager.hasAccessoryRight(accList?.[0]);
-  console.info(`hasAccessoryRight success, ret:${flag}`);
+  console.info(`Succeeded in hasAccessoryRight, ret:${flag}`);
 } catch (error) {
-  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`hasAccessoryRight error ${err.code}, message is ${err.message}`);
 }
 ```

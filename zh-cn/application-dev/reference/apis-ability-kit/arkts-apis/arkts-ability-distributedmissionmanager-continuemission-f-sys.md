@@ -6,6 +6,8 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="continuemission1"></a>
+
 ## continueMission
 
 ```TypeScript
@@ -48,6 +50,7 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 | [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continued is located or the target device to be continued. |
 | [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,8 +84,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="continuemission-1"></a>
+
+<a id="continuemission2"></a>
 
 ## continueMission
 
@@ -131,6 +136,7 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 | [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continued is located or the target device to be continued. |
 | [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -161,8 +167,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="continuemission-2"></a>
+
+<a id="continuemission3"></a>
 
 ## continueMission
 
@@ -205,6 +213,7 @@ function continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback
 | [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 | [16300507](../errorcode-DistributedSchedule.md#16300507-获取指定的bundlename的missioninfo失败) | Failed to get the missionInfo of the specified bundle name. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -231,8 +240,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="continuemission-3"></a>
+
+<a id="continuemission4"></a>
 
 ## continueMission
 
@@ -280,6 +291,7 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 | [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 | [16300507](../errorcode-DistributedSchedule.md#16300507-获取指定的bundlename的missioninfo失败) | Failed to get the missionInfo of the specified bundle name. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -303,3 +315,5 @@ try {
     console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -103,8 +103,6 @@ static offVMHeapMemoryPressure(): void
 
 Unregister the callback that is triggered when the heap memory exceeds the critical warning threshold after a GC.
 
-@static
-
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -142,7 +140,7 @@ NOTE: There is no guarantee that the callback will be triggered before OOM.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the registration succeeds; returns `false` if not called on the main thread or if the callback is already registered. @static |
+| boolean | Returns `true` if the registration succeeds; returns `false` if not called on the main thread or if the callback is already registered. |
 
 ## setMultithreadingDetectionEnabled
 

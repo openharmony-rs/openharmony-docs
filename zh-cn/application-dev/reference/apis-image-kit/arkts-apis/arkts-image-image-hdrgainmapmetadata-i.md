@@ -4,7 +4,7 @@
 interface HdrGainmapMetadata
 ```
 
-Gainmap使用的元数据值，[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md)中HDR_GAINMAP_METADATA关键字对应的值，参考ISO 21496-1。
+增益图使用的元数据值，[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md)中HDR_GAINMAP_METADATA关键字对应的值，参考ISO 21496-1。
 
 **起始版本：** 12
 
@@ -24,7 +24,7 @@ import { image } from '@kit.ImageKit';
 alternateHeadroom: number
 ```
 
-The alternate hdr headroom.
+可选择图像的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ The alternate hdr headroom.
 baseHeadroom: number
 ```
 
-The baseline hdr headroom.
+基础图的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ The baseline hdr headroom.
 channels: Array<GainmapChannel>
 ```
 
-The per-channel metadata.
+各通道的数据，长度为3，按R、G、B三通道存储，参考ISO 21496-1。
 
 **类型：** Array&lt;[GainmapChannel](arkts-image-image-gainmapchannel-i.md)&gt;
 
@@ -72,7 +72,7 @@ The per-channel metadata.
 gainmapChannelCount: number
 ```
 
-The number of gain map channels, with a value of 1 or 3.
+增益图的颜色通道数。取值为1或3，值为3时RGB通道的元数据值不同，值为1时各通道元数据值相同，参考ISO 21496-1。
 
 **类型：** number
 
@@ -88,7 +88,7 @@ The number of gain map channels, with a value of 1 or 3.
 miniVersion: number
 ```
 
-The minimum version a parser needs to understand.
+元数据解析所需的最小版本。
 
 **类型：** number
 
@@ -104,7 +104,7 @@ The minimum version a parser needs to understand.
 useBaseColorFlag: boolean
 ```
 
-Indicate whether to use the color space of the base image.
+是否使用基础图的色彩空间。true表示使用，false表示不使用，参考ISO 21496-1。
 
 **类型：** boolean
 
@@ -120,7 +120,7 @@ Indicate whether to use the color space of the base image.
 writerVersion: number
 ```
 
-The version used by the writer.
+元数据编写器的版本。
 
 **类型：** number
 

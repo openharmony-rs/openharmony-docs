@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function off(type: 'change', listener?: Callback<DeviceListener>): void
 ```
 
-Disables listening for device hot swap events. This API is called before the application exits. This API uses an asynchronous callback to return the result. Listener unregistration must be performed on the same thread used for registration.
+Disables listening for device hot swap events. This API is called before the application exits. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -31,7 +31,7 @@ Disables listening for device hot swap events. This API is called before the app
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

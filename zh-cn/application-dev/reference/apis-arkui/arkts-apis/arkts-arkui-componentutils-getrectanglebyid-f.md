@@ -22,7 +22,7 @@ function getRectangleById(id: string): ComponentInfo
 
 **废弃版本：** 18
 
-**替代接口：** getRectangleById
+**替代接口：** [getRectangleById](arkts-arkui-arkui-uicontext-componentutils-c.md#getrectanglebyid)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

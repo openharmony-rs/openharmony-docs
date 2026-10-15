@@ -4,11 +4,13 @@
 export declare struct TabTitleBar
 ```
 
-The **TabTitleBar** component is a tab title bar used to switch between tabs pages. It is applicable only to level-1 pages.
+**TabTitleBar** is a tab title bar component that supports linked switching between a tab list and associated content, and allows configuration of right menu items. It is suitable for scenarios where page content needs to be switched through tabs, such as top navigation bars. With flexible configuration of tabs and menu items, this component can meet various interaction requirements. It supports tab switching only on level-1 pages.
 
 > **NOTE:** 
 > 
-> - If the **TabTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **TabTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **TabTitleBar** component.
+> - This component can only be used in the stage model.
+> 
+> - When setting [universal attributes](../arkts-components/arkts-arkui-common-comp.md) or [universal events](../arkts-components/arkts-arkui-common-comp.md) of **TabTitleBar**, the compilation toolchain mounts them on the \_\_Common\_\_ node instead of directly applying them to the component itself, which may cause the settings to not take effect or not work as expected. Therefore, setting them is not recommended.
 
 **Since:** 10
 
@@ -50,7 +52,7 @@ Constructor for page content pertaining to the tab list.
 menuItems?: Array<TabTitleBarMenuItem>
 ```
 
-List of menu items on the right of the title bar.
+List of menu items on the right. If this parameter is not passed, the right menu items are not displayed.
 
 **Type:** Array&lt;[TabTitleBarMenuItem](arkts-arkui-arkui-advanced-tabtitlebar-tabtitlebarmenuitem-c.md)&gt;
 
@@ -70,7 +72,7 @@ List of menu items on the right of the title bar.
 tabItems: Array<TabTitleBarTabItem>
 ```
 
-List of tab items on the left of the title bar.
+List of tab items on the left.
 
 **Type:** Array&lt;[TabTitleBarTabItem](arkts-arkui-arkui-advanced-tabtitlebar-tabtitlebartabitem-c.md)&gt;
 

@@ -32,19 +32,19 @@ Indicates the rtt is disable.
 
 **System API:** This is a system API.
 
-## RTT_STATE_YES
+## RTT_STATE_REMOTE_NOT_SUPPORT
 
 ```TypeScript
-RTT_STATE_YES = 1
+RTT_STATE_REMOTE_NOT_SUPPORT = 3
 ```
 
-Indicates the rtt is enable.
+Indicates the rtt is not support.
 
 **Since:** 22
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-<!--Device-RttState-RTT_STATE_YES = 1--><!--Device-RttState-RTT_STATE_YES = 1-End-->
+<!--Device-RttState-RTT_STATE_REMOTE_NOT_SUPPORT = 3--><!--Device-RttState-RTT_STATE_REMOTE_NOT_SUPPORT = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -68,19 +68,19 @@ Indicates the rtt is tty state.
 
 **System API:** This is a system API.
 
-## RTT_STATE_REMOTE_NOT_SUPPORT
+## RTT_STATE_YES
 
 ```TypeScript
-RTT_STATE_REMOTE_NOT_SUPPORT = 3
+RTT_STATE_YES = 1
 ```
 
-Indicates the rtt is not support.
+Indicates the rtt is enable.
 
 **Since:** 22
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-<!--Device-RttState-RTT_STATE_REMOTE_NOT_SUPPORT = 3--><!--Device-RttState-RTT_STATE_REMOTE_NOT_SUPPORT = 3-End-->
+<!--Device-RttState-RTT_STATE_YES = 1--><!--Device-RttState-RTT_STATE_YES = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

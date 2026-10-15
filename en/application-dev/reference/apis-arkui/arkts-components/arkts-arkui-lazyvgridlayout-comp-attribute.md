@@ -4,17 +4,19 @@
 declare class LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-In addition to the universal events, the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>
+**Inheritance/Implementation:** LazyVGridLayoutAttribute extends LazyGridLayoutAttribute&lt;LazyVGridLayoutAttribute&gt;
 
 **Since:** 19
 
 <!--Device-unnamed-declare class LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>--><!--Device-unnamed-declare class LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="columnstemplate1"></a>
 
 ## columnsTemplate
 
@@ -24,17 +26,19 @@ columnsTemplate(value: string)
 
 Sets the number of columns, fixed column width, or minimum column width of the grid. If this attribute is not set, one column will be used.
 
-For example, **'1fr 1fr 2fr'** indicates three columns, with the first column taking up 1/4 of the parent component's full width, the second column 1/4, and the third column 2/4.
+For example, **'1fr 1fr 2fr'** means that the parent component is divided into 3 columns, and the available width of the parent component is divided into 4 equal parts, with the first column occupying 1 part, the second column occupying 1 part, and the third column occupying 2 parts.
 
 **columnsTemplate('repeat(auto-fit, track-size)')**: The layout automatically calculates the number of columns and their actual widths while respecting the minimum column width specified by **track-size**.
 
 **columnsTemplate('repeat(auto-fill, track-size)')**: The layout automatically calculates the number of columns based on the fixed column width specified by **track-size**.
 
-**columnsTemplate('repeat(auto-stretch, track-size)')**: The layout uses **columnsGap** to define the minimum gap between columns and automatically calculates the number of columns and the actual gap size based on the fixed column width specified by **track-size**.
+**columnsTemplate('repeat(auto-stretch, track-size)')** sets a fixed column width of **track-size**, uses columnsGap as the minimum column gap, and automatically calculates the number of columns and the actual column gap.
 
-**repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in units of px, vp (default), %, or any valid numeric value. The value must be greater than or equal to a valid column width.
+**repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in units of px, vp, %, or any valid numeric value. The default unit is vp. **track-size** must include at least one valid column width.
 
-In auto-fit and auto-stretch modes, only a valid column width value is supported for **track-size**. Additionally, in auto-stretch mode, **track-size** only supports units such as px, vp, and valid numbers, but does not support percentage (%). The auto-fill mode supports one or more valid column widths, for example: columnsTemplate('repeat(auto-fill, 20)') or columnsTemplate('repeat(auto-fill, 20 80px)').
+The **auto-fit** and **auto-stretch** modes support only one valid column width value for **track-size**, and **track-size** in **auto-stretch** mode supports only px, vp, and valid numeric values, not %. The **auto-fill** mode supports one or more valid column widths, for example, **columnsTemplate('repeat(auto-fill, 20)')** and **columnsTemplate('repeat(auto-fill, 20 80px)')**.
+
+For usage effects, see Example 3.
 
 If this attribute is set to **'0fr'**, the column width is 0, and child components are not displayed. If this attribute is set to an invalid value, the child components are displayed in a fixed column.
 
@@ -52,9 +56,9 @@ If this attribute is set to **'0fr'**, the column width is 0, and child componen
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Number of columns or minimum column width of the grid. |
+| value | string | Yes | Number of columns, fixed column width, or minimum column width value of the current grid layout. |
 
-<a id="columnstemplate-1"></a>
+<a id="columnstemplate2"></a>
 
 ## columnsTemplate
 
@@ -64,7 +68,7 @@ columnsTemplate(template: string | ItemFillPolicy)
 
 Number of columns in the current grid layout. If this attribute is not set, one column will be used.
 
-When template is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate) for the usage.
+When template is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate1) for the usage.
 
 When template is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **LazyVGridLayout** component.
 

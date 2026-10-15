@@ -30,22 +30,6 @@ RGB_565 = 2
 
 **系统接口：** 此接口为系统接口。
 
-## RGBA_8888
-
-```TypeScript
-RGBA_8888 = 3
-```
-
-表示RGBA_8888颜色格式。
-
-**起始版本：** 11
-
-<!--Device-PixelFormat-RGBA_8888 = 3--><!--Device-PixelFormat-RGBA_8888 = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
-
-**系统接口：** 此接口为系统接口。
-
 ## RGB_888
 
 ```TypeScript
@@ -57,6 +41,22 @@ RGB_888 = 5
 **起始版本：** 11
 
 <!--Device-PixelFormat-RGB_888 = 5--><!--Device-PixelFormat-RGB_888 = 5-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**系统接口：** 此接口为系统接口。
+
+## RGBA_8888
+
+```TypeScript
+RGBA_8888 = 3
+```
+
+表示RGBA_8888颜色格式。
+
+**起始版本：** 11
+
+<!--Device-PixelFormat-RGBA_8888 = 3--><!--Device-PixelFormat-RGBA_8888 = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 

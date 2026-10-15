@@ -12,19 +12,19 @@ Enumerates the states of the float view.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## STARTED
+## ERROR
 
 ```TypeScript
-STARTED = 1
+ERROR = 6
 ```
 
-The float view has been started and displayed.
+An exception occurs in the float view.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FloatViewState-STARTED = 1--><!--Device-FloatViewState-STARTED = 1-End-->
+<!--Device-FloatViewState-ERROR = 6--><!--Device-FloatViewState-ERROR = 6-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -44,19 +44,19 @@ The float view has been hidden. This event is triggered when the user swipes up 
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## STOPPED
+## IN_FLOATING_BALL
 
 ```TypeScript
-STOPPED = 3
+IN_FLOATING_BALL = 5
 ```
 
-The float view has been stopped.
+The float view is switched to the floating ball.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FloatViewState-STOPPED = 3--><!--Device-FloatViewState-STOPPED = 3-End-->
+<!--Device-FloatViewState-IN_FLOATING_BALL = 5--><!--Device-FloatViewState-IN_FLOATING_BALL = 5-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -76,34 +76,34 @@ The float view is in the sidebar.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## IN_FLOATING_BALL
+## STARTED
 
 ```TypeScript
-IN_FLOATING_BALL = 5
+STARTED = 1
 ```
 
-The float view is switched to the floating ball.
+The float view has been started and displayed.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FloatViewState-IN_FLOATING_BALL = 5--><!--Device-FloatViewState-IN_FLOATING_BALL = 5-End-->
+<!--Device-FloatViewState-STARTED = 1--><!--Device-FloatViewState-STARTED = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## ERROR
+## STOPPED
 
 ```TypeScript
-ERROR = 6
+STOPPED = 3
 ```
 
-An exception occurs in the float view.
+The float view has been stopped.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FloatViewState-ERROR = 6--><!--Device-FloatViewState-ERROR = 6-End-->
+<!--Device-FloatViewState-STOPPED = 3--><!--Device-FloatViewState-STOPPED = 3-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

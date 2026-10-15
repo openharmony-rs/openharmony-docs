@@ -12,13 +12,13 @@ declare enum VerticalAlign
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Top
+## Bottom
 
 ```TypeScript
-Top
+Bottom
 ```
 
-顶部对齐。
+底部对齐。
 
 **起始版本：** 7
 
@@ -28,7 +28,7 @@ Top
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-VerticalAlign-Top--><!--Device-VerticalAlign-Top-End-->
+<!--Device-VerticalAlign-Bottom--><!--Device-VerticalAlign-Bottom-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,13 +52,13 @@ Center
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Bottom
+## Top
 
 ```TypeScript
-Bottom
+Top
 ```
 
-底部对齐。
+顶部对齐。
 
 **起始版本：** 7
 
@@ -68,6 +68,6 @@ Bottom
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-VerticalAlign-Bottom--><!--Device-VerticalAlign-Bottom-End-->
+<!--Device-VerticalAlign-Top--><!--Device-VerticalAlign-Top-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

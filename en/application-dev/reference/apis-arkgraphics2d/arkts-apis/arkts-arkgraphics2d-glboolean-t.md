@@ -6,6 +6,8 @@ type GLboolean = boolean
 
 WebGL 1.0
 
+**Type:** boolean
+
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
@@ -13,5 +15,3 @@ WebGL 1.0
 <!--Device-unnamed-type GLboolean = boolean--><!--Device-unnamed-type GLboolean = boolean-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
-
-**Type:** boolean

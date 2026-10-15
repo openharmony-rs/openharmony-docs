@@ -20,6 +20,8 @@ class IncrementalBackupSession
 import { backup } from '@kit.CoreFileKit';
 ```
 
+<a id="appendbundles1"></a>
+
 ## appendBundles
 
 ```TypeScript
@@ -64,6 +66,7 @@ appendBundles(bundlesToBackup: Array<IncrementalBackupData>): Promise<void>
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -124,7 +127,9 @@ incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
 }); // 添加需要增量备份的应用
 ```
 
-<a id="appendbundles-1"></a>
+<!--DelEnd-->
+
+<a id="appendbundles2"></a>
 
 ## appendBundles
 
@@ -171,6 +176,7 @@ appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): P
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -272,6 +278,8 @@ incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then((
 });
 ```
 
+<!--DelEnd-->
+
 ## cancel
 
 ```TypeScript
@@ -310,6 +318,7 @@ cancel(bundleName: string): number
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -374,6 +383,8 @@ incrementalBackupSession.appendBundles(backupBundles).then(() => {
 });
 ```
 
+<!--DelEnd-->
+
 ## cleanBundleTempDir
 
 ```TypeScript
@@ -411,6 +422,7 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -477,6 +489,8 @@ let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程�
 let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
 ```
 
+<!--DelEnd-->
+
 ## constructor
 
 ```TypeScript
@@ -509,6 +523,7 @@ constructor(callbacks: GeneralCallbacks)
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -558,6 +573,8 @@ let generalCallbacks: backup.GeneralCallbacks = {
 let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
 ```
 
+<!--DelEnd-->
+
 ## getBackupDataSize
 
 ```TypeScript
@@ -601,6 +618,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>
 | 13900020 | Invalid argument |
 | 13900042 | Internal error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -709,6 +727,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## getCompatibilityInfo
 
 ```TypeScript
@@ -747,6 +767,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -812,6 +833,8 @@ async function getIncBackupCompatibilityInfo() {
 }
 ```
 
+<!--DelEnd-->
+
 ## getLocalCapabilities
 
 ```TypeScript
@@ -847,6 +870,7 @@ getLocalCapabilities(): Promise<FileData>
 | 13900020 | Invalid argument |
 | 13900042 | Internal error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -975,6 +999,8 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
+<!--DelEnd-->
+
 ## release
 
 ```TypeScript
@@ -1011,6 +1037,7 @@ release(): Promise<void>
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1068,3 +1095,5 @@ async function release() {
   }
 }
 ```
+
+<!--DelEnd-->

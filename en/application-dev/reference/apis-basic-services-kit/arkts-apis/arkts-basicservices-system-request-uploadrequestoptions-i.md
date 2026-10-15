@@ -38,7 +38,7 @@ Called when the execution is completed.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-UploadRequestOptions-complete?: () => void--><!--Device-UploadRequestOptions-complete?: () => void-End-->
 
@@ -56,7 +56,7 @@ Called when uploading fails.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-UploadRequestOptions-fail?: (data: any, code: number) => void--><!--Device-UploadRequestOptions-fail?: (data: any, code: number) => void-End-->
 
@@ -81,7 +81,7 @@ Called when the files are uploaded successfully.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-UploadRequestOptions-success?: (data: UploadResponse) => void--><!--Device-UploadRequestOptions-success?: (data: UploadResponse) => void-End-->
 
@@ -107,7 +107,7 @@ Form data in the request body.
 
 **Deprecated since:** 9
 
-**Substitutes:** data
+**Substitutes:** [data](arkts-basicservices-agent-config-i.md#data)
 
 <!--Device-UploadRequestOptions-data?: Array<RequestData>--><!--Device-UploadRequestOptions-data?: Array<RequestData>-End-->
 
@@ -127,7 +127,7 @@ List of files to upload, which is submitted through multipart/form-data.
 
 **Deprecated since:** 9
 
-**Substitutes:** data
+**Substitutes:** [data](arkts-basicservices-agent-config-i.md#data)
 
 <!--Device-UploadRequestOptions-files: Array<RequestFile>--><!--Device-UploadRequestOptions-files: Array<RequestFile>-End-->
 
@@ -147,7 +147,7 @@ Request header.
 
 **Deprecated since:** 9
 
-**Substitutes:** headers
+**Substitutes:** [headers](arkts-basicservices-agent-config-i.md#headers)
 
 <!--Device-UploadRequestOptions-header?: Object--><!--Device-UploadRequestOptions-header?: Object-End-->
 
@@ -167,7 +167,7 @@ Request methods available: POST and PUT. The default value is POST.
 
 **Deprecated since:** 9
 
-**Substitutes:** method
+**Substitutes:** [method](arkts-basicservices-agent-config-i.md#method)
 
 <!--Device-UploadRequestOptions-method?: string--><!--Device-UploadRequestOptions-method?: string-End-->
 
@@ -187,7 +187,7 @@ Resource URL.
 
 **Deprecated since:** 9
 
-**Substitutes:** url
+**Substitutes:** [url](arkts-basicservices-agent-config-i.md#url)
 
 <!--Device-UploadRequestOptions-url: string--><!--Device-UploadRequestOptions-url: string-End-->
 

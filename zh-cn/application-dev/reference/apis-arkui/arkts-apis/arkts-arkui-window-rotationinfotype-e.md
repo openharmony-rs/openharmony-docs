@@ -12,22 +12,6 @@ enum RotationInfoType
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## WINDOW_ORIENTATION
-
-```TypeScript
-WINDOW_ORIENTATION = 0
-```
-
-窗口所在屏幕的显示方向，以窗口模块对横竖屏的定义方式表示。
-
-开发者在使用时，需要注意该方向表示[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md)中的orientation参数。
-
-**起始版本：** 23
-
-<!--Device-RotationInfoType-WINDOW_ORIENTATION = 0--><!--Device-RotationInfoType-WINDOW_ORIENTATION = 0-End-->
-
-**系统能力：** SystemCapability.Window.SessionManager
-
 ## DISPLAY_ORIENTATION
 
 ```TypeScript
@@ -57,5 +41,21 @@ DISPLAY_ROTATION = 2
 **起始版本：** 23
 
 <!--Device-RotationInfoType-DISPLAY_ROTATION = 2--><!--Device-RotationInfoType-DISPLAY_ROTATION = 2-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## WINDOW_ORIENTATION
+
+```TypeScript
+WINDOW_ORIENTATION = 0
+```
+
+窗口所在屏幕的显示方向，以窗口模块对横竖屏的定义方式表示。
+
+开发者在使用时，需要注意该方向表示[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md)中的orientation参数。
+
+**起始版本：** 23
+
+<!--Device-RotationInfoType-WINDOW_ORIENTATION = 0--><!--Device-RotationInfoType-WINDOW_ORIENTATION = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

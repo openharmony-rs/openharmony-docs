@@ -59,6 +59,7 @@ Obtains analysis data. This API uses a promise to return the result.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
@@ -88,6 +89,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## requestSource
 
@@ -121,6 +124,7 @@ Opens the source file and returns the FD. This API uses a promise to return the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
@@ -150,3 +154,5 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
+
+<!--DelEnd-->

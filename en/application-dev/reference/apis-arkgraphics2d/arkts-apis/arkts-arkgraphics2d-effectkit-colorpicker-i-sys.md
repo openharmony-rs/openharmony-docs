@@ -30,7 +30,7 @@ Discriminates the light and dark degree of the picture. When the light and dark 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-ColorPicker-discriminatePictureLightDegree(): PictureLightDegree--><!--Device-ColorPicker-discriminatePictureLightDegree(): PictureLightDegree-End-->
 
@@ -44,6 +44,7 @@ Discriminates the light and dark degree of the picture. When the light and dark 
 | --- | --- |
 | [PictureLightDegree](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md) | Light and dark degree of the image. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,6 +73,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getAlphaZeroTransparentProportion
 
 ```TypeScript
@@ -82,7 +85,7 @@ Obtains the proportion of fully transparent pixels with alpha=0 in the image.
 
 **Since:** 23
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-ColorPicker-getAlphaZeroTransparentProportion(): double--><!--Device-ColorPicker-getAlphaZeroTransparentProportion(): double-End-->
 
@@ -102,6 +105,7 @@ Obtains the proportion of fully transparent pixels with alpha=0 in the image.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -130,6 +134,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getComplexityDegree
 
 ```TypeScript
@@ -140,7 +146,7 @@ Obtains the complexity degree of the image. When the complexity degree cannot be
 
 **Since:** 22
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-ColorPicker-getComplexityDegree(): PictureComplexityDegree--><!--Device-ColorPicker-getComplexityDegree(): PictureComplexityDegree-End-->
 
@@ -160,6 +166,7 @@ Obtains the complexity degree of the image. When the complexity degree cannot be
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -188,6 +195,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getDeepenImmersionColor
 
 ```TypeScript
@@ -200,7 +209,7 @@ Generates a stronger immersion color that merges with the background color and i
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-ColorPicker-getDeepenImmersionColor(): Color--><!--Device-ColorPicker-getDeepenImmersionColor(): Color-End-->
 
@@ -214,6 +223,7 @@ Generates a stronger immersion color that merges with the background color and i
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color value of the deepened immersion color. If the image processing fails or the immersion color cannot be generated, null is returned. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -242,6 +252,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getImmersiveBackgroundColor
 
 ```TypeScript
@@ -254,7 +266,7 @@ Generates an immersive background color that creates an immersive visual effect,
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-ColorPicker-getImmersiveBackgroundColor(): Color--><!--Device-ColorPicker-getImmersiveBackgroundColor(): Color-End-->
 
@@ -268,6 +280,7 @@ Generates an immersive background color that creates an immersive visual effect,
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color value of the immersive background color. If the image processing fails or the immersive background color cannot be generated, null is returned. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -296,6 +309,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getImmersiveForegroundColor
 
 ```TypeScript
@@ -308,7 +323,7 @@ Generates an immersive foreground color that creates an immersive visual effect 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-ColorPicker-getImmersiveForegroundColor(): Color--><!--Device-ColorPicker-getImmersiveForegroundColor(): Color-End-->
 
@@ -322,6 +337,7 @@ Generates an immersive foreground color that creates an immersive visual effect 
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color value of the immersive foreground color. If the image processing fails or the immersive foreground color cannot be generated, null is returned. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -350,6 +366,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getMorandiShadowColor
 
 ```TypeScript
@@ -362,7 +380,7 @@ Obtains the Morandi shadow color from the dominant color of the image and writes
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-ColorPicker-getMorandiShadowColor(): Color--><!--Device-ColorPicker-getMorandiShadowColor(): Color-End-->
 
@@ -376,6 +394,7 @@ Obtains the Morandi shadow color from the dominant color of the image and writes
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color value of the Morandi shadow color. If the image processing fails or the Morandi shadow color cannot be obtained, null is returned. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -404,6 +423,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getReverseColor
 
 ```TypeScript
@@ -416,7 +437,7 @@ Generates a reverse color based on the image brightness discrimination result, a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-ColorPicker-getReverseColor(): Color--><!--Device-ColorPicker-getReverseColor(): Color-End-->
 
@@ -430,6 +451,7 @@ Generates a reverse color based on the image brightness discrimination result, a
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color value of the reverse color. If the image processing fails or the reverse color cannot be generated, null is returned. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -458,6 +480,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getShadeDegree
 
 ```TypeScript
@@ -468,7 +492,7 @@ Obtains the shade degree of the image. When the shade degree cannot be determine
 
 **Since:** 22
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-ColorPicker-getShadeDegree(): PictureShadeDegree--><!--Device-ColorPicker-getShadeDegree(): PictureShadeDegree-End-->
 
@@ -488,6 +512,7 @@ Obtains the shade degree of the image. When the shade degree cannot be determine
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -516,6 +541,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getTopProportionColorsAndPercentage
 
 ```TypeScript
@@ -526,7 +553,7 @@ Synchronously returns the top proportion colors and their corresponding percenta
 
 **Since:** 22
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-ColorPicker-getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>--><!--Device-ColorPicker-getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>-End-->
 
@@ -544,7 +571,7 @@ Synchronously returns the top proportion colors and their corresponding percenta
 
 | Type | Description |
 | --- | --- |
-| Map&lt;[Color](arkts-arkgraphics2d-effectkit-color-i.md) &#124; null, number &#124; null&gt; | Map of the top colorCount color values and their corresponding percentages by proportion in the image. The percentage value range is [0, 1].   - If the number of colors obtained is less than the value of colorCount, the map size is the actual   number obtained.   - If the colors fail to be obtained or the number of colors obtained is less than 1, Map() is returned. |
+| Map&lt;[Color](arkts-arkgraphics2d-effectkit-color-i.md) &#124; null, number &#124; null&gt; | Map of the top colorCount color values and their corresponding percentages by proportion in the image. The percentage value range is [0, 1].           - If the number of colors obtained is less than the value of colorCount, the map size is the actual   number obtained.           - If the colors fail to be obtained or the number of colors obtained is less than 1, Map() is returned. |
 
 **Error codes:**
 
@@ -552,6 +579,7 @@ Synchronously returns the top proportion colors and their corresponding percenta
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -581,3 +609,5 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   });
 });
 ```
+
+<!--DelEnd-->

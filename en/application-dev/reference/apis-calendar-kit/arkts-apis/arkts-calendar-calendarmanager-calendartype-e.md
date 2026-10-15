@@ -12,38 +12,6 @@ Enumerates the account types.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
-## LOCAL
-
-```TypeScript
-LOCAL = 'local'
-```
-
-Local account.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-CalendarType-LOCAL = 'local'--><!--Device-CalendarType-LOCAL = 'local'-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
-## EMAIL
-
-```TypeScript
-EMAIL = 'email'
-```
-
-Email account.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-CalendarType-EMAIL = 'email'--><!--Device-CalendarType-EMAIL = 'email'-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
 ## BIRTHDAY
 
 ```TypeScript
@@ -73,6 +41,38 @@ CalDAV account.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-CalendarType-CALDAV = 'caldav'--><!--Device-CalendarType-CALDAV = 'caldav'-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## EMAIL
+
+```TypeScript
+EMAIL = 'email'
+```
+
+Email account.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CalendarType-EMAIL = 'email'--><!--Device-CalendarType-EMAIL = 'email'-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## LOCAL
+
+```TypeScript
+LOCAL = 'local'
+```
+
+Local account.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CalendarType-LOCAL = 'local'--><!--Device-CalendarType-LOCAL = 'local'-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 

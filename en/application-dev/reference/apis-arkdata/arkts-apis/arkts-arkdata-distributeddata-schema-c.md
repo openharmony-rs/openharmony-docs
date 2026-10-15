@@ -10,7 +10,7 @@ Defines the schema of a KV store. You can create a **Schema** object and place i
 
 **Deprecated since:** 9
 
-**Substitutes:** Schema
+**Substitutes:** [Schema](arkts-arkdata-distributedkvstore-schema-c.md)
 
 <!--Device-distributedData-class Schema--><!--Device-distributedData-class Schema-End-->
 
@@ -33,7 +33,7 @@ A constructor used to create a **Schema** instance.
 
 **Deprecated since:** 9
 
-**Substitutes:** constructor
+**Substitutes:** [constructor](arkts-arkdata-distributedkvstore-schema-c.md#constructor)
 
 <!--Device-Schema-constructor()--><!--Device-Schema-constructor()-End-->
 
@@ -53,7 +53,7 @@ String array in JSON format.
 
 **Deprecated since:** 9
 
-**Substitutes:** indexes
+**Substitutes:** [indexes](arkts-arkdata-distributedkvstore-schema-c.md#indexes)
 
 <!--Device-Schema-indexes: Array<string>--><!--Device-Schema-indexes: Array<string>-End-->
 
@@ -73,7 +73,7 @@ Schema mode.
 
 **Deprecated since:** 9
 
-**Substitutes:** mode
+**Substitutes:** [mode](arkts-arkdata-distributedkvstore-schema-c.md#mode)
 
 <!--Device-Schema-mode: number--><!--Device-Schema-mode: number-End-->
 
@@ -93,7 +93,7 @@ JSON root object.
 
 **Deprecated since:** 9
 
-**Substitutes:** root
+**Substitutes:** [root](arkts-arkdata-distributedkvstore-schema-c.md#root)
 
 <!--Device-Schema-root: FieldNode--><!--Device-Schema-root: FieldNode-End-->
 
@@ -113,7 +113,7 @@ Size of a skip of the schema.
 
 **Deprecated since:** 9
 
-**Substitutes:** skip
+**Substitutes:** [skip](arkts-arkdata-distributedkvstore-schema-c.md#skip)
 
 <!--Device-Schema-skip: number--><!--Device-Schema-skip: number-End-->
 

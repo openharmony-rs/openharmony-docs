@@ -6,6 +6,8 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="unprepare1"></a>
+
 ## unprepare
 
 ```TypeScript
@@ -18,7 +20,7 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 **Deprecated since:** 11
 
-**Substitutes:** [unprepareCooperate](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [unprepareCooperate](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void--><!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void-End-->
 
@@ -39,6 +41,7 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,8 +60,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="unprepare-1"></a>
+
+<a id="unprepare2"></a>
 
 ## unprepare
 
@@ -93,6 +98,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -108,3 +114,5 @@ try {
   console.error(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+<!--DelEnd-->

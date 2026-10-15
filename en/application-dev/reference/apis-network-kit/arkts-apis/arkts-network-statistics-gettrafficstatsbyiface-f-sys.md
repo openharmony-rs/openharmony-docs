@@ -6,6 +6,8 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
+<a id="gettrafficstatsbyiface1"></a>
+
 ## getTrafficStatsByIface
 
 ```TypeScript
@@ -43,6 +45,7 @@ Obtains the historical data traffic of the specified NIC. This API uses an async
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-failed-to-read-the-database) | Failed to read the database. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,7 +55,10 @@ import { statistics } from '@kit.NetworkKit';
 let iFaceInfo: statistics.IfaceInfo | null = null;
 if (iFaceInfo) {
   statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByIface bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -73,8 +79,10 @@ if (iFaceInfo) {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="gettrafficstatsbyiface-1"></a>
+
+<a id="gettrafficstatsbyiface2"></a>
 
 ## getTrafficStatsByIface
 
@@ -122,6 +130,7 @@ Obtains the historical data traffic of the specified NIC. This API uses a promis
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-failed-to-read-the-database) | Failed to read the database. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -149,3 +158,5 @@ if (iFaceInfo) {
   });
 }
 ```
+
+<!--DelEnd-->

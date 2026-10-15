@@ -12,6 +12,48 @@ Type of the single-line text input box.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Email
+
+```TypeScript
+Email
+```
+
+Email address input mode.
+
+Supports digits, letters, underscores, decimal points, !, #, $, %, &, ', ", *, +, -, /, =, ?, ^,`, {, |, }, ~, and @ (only one is supported). The email address format must comply with the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-InputType-Email--><!--Device-InputType-Email-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NEW_PASSWORD
+
+```TypeScript
+NEW_PASSWORD = 11
+```
+
+New password input mode.
+
+By default, the entered text is briefly displayed and then becomes dots. Since API version 12, the entered text is directly displayed as dots on PC/2-in-1 devices.
+
+On TV devices, the eye icon is not displayed at the end of the input box by default; on other devices, the eye icon is displayed at the end of the input box by default.
+
+In password input mode, [decoration](arkts-arkui-textinput-comp-attribute.md#decoration), [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline), [lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight), and [fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature) do not take effect. When the password vault is enabled, automatic generation of a new password is supported.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-InputType-NEW_PASSWORD = 11--><!--Device-InputType-NEW_PASSWORD = 11-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Normal
 
 ```TypeScript
@@ -48,63 +90,23 @@ Negative numbers and decimals are not supported.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PhoneNumber
+## NUMBER_DECIMAL
 
 ```TypeScript
-PhoneNumber
+NUMBER_DECIMAL = 12
 ```
 
-Phone number input mode.
+Number input mode with a decimal point.
 
-Supports digits, spaces, +, -, *, #, (, and ), with no length limit.
+Supports digits and a decimal point (only one decimal point is allowed). Negative numbers (including negative integers and negative decimals) are not supported. To support negative number input, use the [inputFilter](arkts-arkui-textinput-comp-attribute.md#inputfilter) attribute to implement negative number filtering.
 
-**Since:** 9
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-InputType-PhoneNumber--><!--Device-InputType-PhoneNumber-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Email
-
-```TypeScript
-Email
-```
-
-Email address input mode.
-
-Supports digits, letters, underscores, decimal points, !, #, $, %, &, ', ", *, +, -, /, =, ?, ^,`, {, |, }, ~, and @ (only one is supported). The email address format must comply with the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-InputType-Email--><!--Device-InputType-Email-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Password
-
-```TypeScript
-Password
-```
-
-Password input mode.
-
-By default, the entered text is briefly displayed and then becomes dots. Since API version 12, the entered text is directly displayed as dots on PC/2-in-1 devices.
-
-On TV devices, the eye icon is not displayed at the end of the input box by default; on other devices, the eye icon is displayed at the end of the input box by default.
-
-In password input mode, [decoration](arkts-arkui-textinput-comp-attribute.md#decoration), [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline), [lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight), and [fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature) do not take effect.
-
-When the password vault is enabled, auto-save and auto-fill of the username and password are supported.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-InputType-Password--><!--Device-InputType-Password-End-->
+<!--Device-InputType-NUMBER_DECIMAL = 12--><!--Device-InputType-NUMBER_DECIMAL = 12-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,67 +134,63 @@ In password input mode, [decoration](arkts-arkui-textinput-comp-attribute.md#dec
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## USER_NAME
+## ONE_TIME_CODE
 
 ```TypeScript
-USER_NAME = 10
+ONE_TIME_CODE = 14
 ```
 
-Username input mode with no special restrictions.
+Verification code input mode with no special restrictions. In this mode, the system input method is pulled up by default after the component gains focus.
 
-When the password vault is enabled, auto-save and auto-fill of the username are supported, which are used together with [InputType.Password](arkts-arkui-textinput-comp-inputtype-e.md), [InputType.NUMBER_PASSWORD](arkts-arkui-textinput-comp-inputtype-e.md), and [InputType.NEW_PASSWORD](arkts-arkui-textinput-comp-inputtype-e.md) to complete paired filling of the username and password.
-
-**Since:** 11
+**Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-InputType-USER_NAME = 10--><!--Device-InputType-USER_NAME = 10-End-->
+<!--Device-InputType-ONE_TIME_CODE = 14--><!--Device-InputType-ONE_TIME_CODE = 14-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NEW_PASSWORD
+## Password
 
 ```TypeScript
-NEW_PASSWORD = 11
+Password
 ```
 
-New password input mode.
+Password input mode.
 
 By default, the entered text is briefly displayed and then becomes dots. Since API version 12, the entered text is directly displayed as dots on PC/2-in-1 devices.
 
 On TV devices, the eye icon is not displayed at the end of the input box by default; on other devices, the eye icon is displayed at the end of the input box by default.
 
-In password input mode, [decoration](arkts-arkui-textinput-comp-attribute.md#decoration), [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline), [lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight), and [fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature) do not take effect. When the password vault is enabled, automatic generation of a new password is supported.
+In password input mode, [decoration](arkts-arkui-textinput-comp-attribute.md#decoration), [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline), [lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight), and [fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature) do not take effect.
 
-**Since:** 11
+When the password vault is enabled, auto-save and auto-fill of the username and password are supported.
 
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-InputType-NEW_PASSWORD = 11--><!--Device-InputType-NEW_PASSWORD = 11-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## NUMBER_DECIMAL
-
-```TypeScript
-NUMBER_DECIMAL = 12
-```
-
-Number input mode with a decimal point.
-
-Supports digits and a decimal point (only one decimal point is allowed). Negative numbers (including negative integers and negative decimals) are not supported. To support negative number input, use the [inputFilter](arkts-arkui-textinput-comp-attribute.md#inputfilter) attribute to implement negative number filtering.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
+**Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-InputType-NUMBER_DECIMAL = 12--><!--Device-InputType-NUMBER_DECIMAL = 12-End-->
+<!--Device-InputType-Password--><!--Device-InputType-Password-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PhoneNumber
+
+```TypeScript
+PhoneNumber
+```
+
+Phone number input mode.
+
+Supports digits, spaces, +, -, *, #, (, and ), with no length limit.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-InputType-PhoneNumber--><!--Device-InputType-PhoneNumber-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,20 +212,22 @@ Input mode with a URL, with no special restrictions.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ONE_TIME_CODE
+## USER_NAME
 
 ```TypeScript
-ONE_TIME_CODE = 14
+USER_NAME = 10
 ```
 
-Verification code input mode with no special restrictions. In this mode, the system input method is pulled up by default after the component gains focus.
+Username input mode with no special restrictions.
 
-**Since:** 20
+When the password vault is enabled, auto-save and auto-fill of the username are supported, which are used together with [InputType.Password](arkts-arkui-textinput-comp-inputtype-e.md), [InputType.NUMBER_PASSWORD](arkts-arkui-textinput-comp-inputtype-e.md), and [InputType.NEW_PASSWORD](arkts-arkui-textinput-comp-inputtype-e.md) to complete paired filling of the username and password.
+
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-InputType-ONE_TIME_CODE = 14--><!--Device-InputType-ONE_TIME_CODE = 14-End-->
+<!--Device-InputType-USER_NAME = 10--><!--Device-InputType-USER_NAME = 10-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -32,7 +32,7 @@ optional moduleName that used to ask getFormsInfo to return form infos with the 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfoFilter-moduleName?: string--><!--Device-FormInfoFilter-moduleName?: string-End-->
 

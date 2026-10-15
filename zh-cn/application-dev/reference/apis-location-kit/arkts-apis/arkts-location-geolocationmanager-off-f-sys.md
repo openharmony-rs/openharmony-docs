@@ -40,6 +40,7 @@ function off(type: 'locatingRequiredDataChange', callback?: Callback<Array<Locat
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call ${geoLocationManager.off('locatingRequiredDataChange')} due to limited device capabilities. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,6 +57,8 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('locationIconStatusChange')
@@ -90,6 +93,7 @@ function off(type: 'locationIconStatusChange', callback?: Callback<LocationIconS
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call ${geoLocationManager.off('locationIconStatusChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -105,3 +109,5 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->

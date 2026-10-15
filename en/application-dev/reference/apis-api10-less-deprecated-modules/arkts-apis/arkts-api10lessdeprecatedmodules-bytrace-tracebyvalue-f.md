@@ -17,7 +17,7 @@ Defines a numeric variable that indicates the number of timeslice trace tasks.
 
 **Deprecated since:** 8
 
-**Substitutes:** traceByValue
+**Substitutes:** [traceByValue](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md)
 
 <!--Device-bytrace-function traceByValue(name: string, count: number): void--><!--Device-bytrace-function traceByValue(name: string, count: number): void-End-->
 

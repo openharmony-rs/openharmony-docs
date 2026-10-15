@@ -32,7 +32,7 @@ allowDownloadIntermediateCa?: boolean
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-allowDownloadIntermediateCa?: boolean--><!--Device-CertChainValidationParameters-allowDownloadIntermediateCa?: boolean-End-->
 
@@ -50,7 +50,7 @@ certCRLs?: Array<CertCRLCollection>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-certCRLs?: Array<CertCRLCollection>--><!--Device-CertChainValidationParameters-certCRLs?: Array<CertCRLCollection>-End-->
 
@@ -68,7 +68,7 @@ date?: string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-date?: string--><!--Device-CertChainValidationParameters-date?: string-End-->
 
@@ -86,7 +86,7 @@ keyUsage?: Array<KeyUsageType>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-keyUsage?: Array<KeyUsageType>--><!--Device-CertChainValidationParameters-keyUsage?: Array<KeyUsageType>-End-->
 
@@ -104,7 +104,7 @@ policy?: ValidationPolicyType
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-policy?: ValidationPolicyType--><!--Device-CertChainValidationParameters-policy?: ValidationPolicyType-End-->
 
@@ -122,7 +122,7 @@ revocationCheckParam?: RevocationCheckParameter
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-revocationCheckParam?: RevocationCheckParameter--><!--Device-CertChainValidationParameters-revocationCheckParam?: RevocationCheckParameter-End-->
 
@@ -140,7 +140,7 @@ sslHostname?: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-sslHostname?: string--><!--Device-CertChainValidationParameters-sslHostname?: string-End-->
 
@@ -158,7 +158,7 @@ trustAnchors: Array<X509TrustAnchor>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-trustAnchors: Array<X509TrustAnchor>--><!--Device-CertChainValidationParameters-trustAnchors: Array<X509TrustAnchor>-End-->
 
@@ -178,7 +178,7 @@ trustSystemCa?: boolean
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertChainValidationParameters-trustSystemCa?: boolean--><!--Device-CertChainValidationParameters-trustSystemCa?: boolean-End-->
 

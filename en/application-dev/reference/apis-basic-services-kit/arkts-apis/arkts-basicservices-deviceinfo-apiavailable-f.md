@@ -28,7 +28,7 @@ Checks whether a specified API version is available on the current device. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| version | string &#124; number | Yes | API version number to be verified. The value can be an integer or in the dotted format.   - String format shall be in M.S.F. (e.g., "26.0.0", "5.0.1"):   - For API 26.0.0 & 26.0.0+ (version &gt;= 26.0.0): Represents both OpenHarmony and Distribution OS API versions   - For API 26.0.0- (version &lt; 26.0.0): Represents Distribution OS API version   - Number format (e.g., 13): Represents OpenHarmony SDK API version (API 26- only)   M&gt;=26,0&lt;=S&lt;=99,0&lt;=F&lt;=99. A compilation error occurs when an invalid literal is input. |
+| version | string &#124; number | Yes | API version number to be verified. The value can be an integer or in the dotted format.           - String format shall be in M.S.F. (e.g., "26.0.0", "5.0.1"):           - For API 26.0.0 & 26.0.0+ (version &gt;= 26.0.0): Represents both OpenHarmony and Distribution OS API versions           - For API 26.0.0- (version &lt; 26.0.0): Represents Distribution OS API version           - Number format (e.g., 13): Represents OpenHarmony SDK API version (API 26- only)   M&gt;=26,0&lt;=S&lt;=99,0&lt;=F&lt;=99. A compilation error occurs when an invalid literal is input. |
 
 **Return value:**
 

@@ -30,7 +30,7 @@ Wi-Fi bssid(MAC): the length is 6.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiDeviceConfig-bssid?: string--><!--Device-WifiDeviceConfig-bssid?: string-End-->
 
@@ -48,7 +48,7 @@ Wi-Fi bssid type.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiDeviceConfig-bssidType?: DeviceAddressType--><!--Device-WifiDeviceConfig-bssidType?: DeviceAddressType-End-->
 
@@ -98,7 +98,7 @@ Wi-Fi key: maximum length is 64.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiDeviceConfig-preSharedKey: string--><!--Device-WifiDeviceConfig-preSharedKey: string-End-->
 
@@ -116,7 +116,7 @@ Security type: reference definition of WifiSecurityType
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiDeviceConfig-securityType: WifiSecurityType--><!--Device-WifiDeviceConfig-securityType: WifiSecurityType-End-->
 
@@ -152,7 +152,7 @@ Wi-Fi SSID: the maximum length is 32.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WifiDeviceConfig-ssid: string--><!--Device-WifiDeviceConfig-ssid: string-End-->
 

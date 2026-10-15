@@ -49,6 +49,7 @@ function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Arra
 | 13900010 | Try again. |
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid bundleName. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,3 +68,5 @@ cloudSyncManager.getDowngradeDownloadTaskState(bundles).then((results: Array<clo
   console.error(`getDowngradeDownloadTaskState failed, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

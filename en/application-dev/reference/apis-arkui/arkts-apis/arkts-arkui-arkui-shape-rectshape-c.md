@@ -8,7 +8,7 @@ Represents a rectangle shape used in the **clipShape** and **maskShape** APIs.
 
 This API inherits from [BaseShape](arkts-arkui-arkui-shape-baseshape-c.md).
 
-**Inheritance/Implementation:** RectShape extends BaseShape<RectShape>
+**Inheritance/Implementation:** RectShape extends BaseShape&lt;RectShape&gt;
 
 **Since:** 12
 

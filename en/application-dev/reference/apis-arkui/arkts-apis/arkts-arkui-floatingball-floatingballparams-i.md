@@ -61,9 +61,9 @@ The color of the floating ball content, in hexadecimal format without opacity (e
 **Type:** string
 
 **Default:** Set different default values according to the 'backgroundColor'.
-- If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF',
+        - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF',
 otherwise is '#99000000'
-- If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
+        - If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
 
 **Since:** 26.0.0
 
@@ -152,9 +152,9 @@ The color of the floating ball title, in hexadecimal format without opacity (e.g
 **Type:** string
 
 **Default:** Set different default values according to the 'backgroundColor'.
-- If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF',
+        - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF',
 otherwise is '#E5000000'.
-- If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
+        - If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
 
 **Since:** 26.0.0
 

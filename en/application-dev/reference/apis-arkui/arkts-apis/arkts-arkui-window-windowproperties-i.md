@@ -30,7 +30,7 @@ Screen brightness of the window. The brightness can be set by calling [setWindow
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowProperties-brightness: double--><!--Device-WindowProperties-brightness: double-End-->
 
@@ -48,7 +48,7 @@ ID of the screen where the window is located. By default, the ID of the main scr
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-displayId?: long--><!--Device-WindowProperties-displayId?: long-End-->
 
@@ -60,13 +60,13 @@ ID of the screen where the window is located. By default, the ID of the main scr
 drawableRect: Rect
 ```
 
-Size of the rectangle that can be drawn in the window. The upper boundary and left boundary are calculated relative to the top-left vertex of the window. In the stage model, this property should be obtained after [loadContent()](arkts-arkui-window-window-i.md#loadcontent) or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent) is called to load the page content.
+Size of the rectangle that can be drawn in the window. The upper boundary and left boundary are calculated relative to the top-left vertex of the window. In the stage model, this property should be obtained after [loadContent()](arkts-arkui-window-window-i.md#loadcontent1) or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent1) is called to load the page content.
 
 **Type:** [Rect](arkts-arkui-window-rect-i.md)
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-drawableRect: Rect--><!--Device-WindowProperties-drawableRect: Rect-End-->
 
@@ -84,7 +84,7 @@ Whether the window is focusable. **true** if focusable, **false** otherwise.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-focusable: boolean--><!--Device-WindowProperties-focusable: boolean-End-->
 
@@ -118,7 +118,7 @@ Window ID. The value is an integer.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-id: int--><!--Device-WindowProperties-id: int-End-->
 
@@ -136,7 +136,7 @@ Whether the status bar is hidden when **isLayoutFullScreen** is set to **true**.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-isFullScreen: boolean--><!--Device-WindowProperties-isFullScreen: boolean-End-->
 
@@ -154,7 +154,7 @@ Whether the screen is always on. **true** if always on, **false** otherwise.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowProperties-isKeepScreenOn: boolean--><!--Device-WindowProperties-isKeepScreenOn: boolean-End-->
 
@@ -176,7 +176,7 @@ In other cases, the return value is **false**.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-isLayoutFullScreen: boolean--><!--Device-WindowProperties-isLayoutFullScreen: boolean-End-->
 
@@ -188,13 +188,13 @@ In other cases, the return value is **false**.
 isPrivacyMode: boolean
 ```
 
-Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. You can call [setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode-1) to set the privacy mode of the window.
+Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. You can call [setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode2) to set the privacy mode of the window.
 
 **Type:** boolean
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-isPrivacyMode: boolean--><!--Device-WindowProperties-isPrivacyMode: boolean-End-->
 
@@ -212,7 +212,7 @@ Whether the window background is transparent. **true** if transparent, **false**
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-isTransparent: boolean--><!--Device-WindowProperties-isTransparent: boolean-End-->
 
@@ -230,7 +230,7 @@ Window name. The default value is an empty string.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-WindowProperties-name?: string--><!--Device-WindowProperties-name?: string-End-->
 
@@ -248,7 +248,7 @@ Whether the window is touchable. **true** if touchable, **false** otherwise.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-touchable: boolean--><!--Device-WindowProperties-touchable: boolean-End-->
 
@@ -266,7 +266,7 @@ Window size, which can be obtained from the page lifecycle [onPageShow](../arkts
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowProperties-windowRect: Rect--><!--Device-WindowProperties-windowRect: Rect-End-->
 
@@ -286,7 +286,7 @@ Window type
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-WindowProperties-windowType?: WindowType--><!--Device-WindowProperties-windowType?: WindowType-End-->
 
@@ -348,7 +348,7 @@ Window type.
 
 **Substitutes:** [windowType](#windowtype)
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowProperties-type: WindowType--><!--Device-WindowProperties-type: WindowType-End-->
 

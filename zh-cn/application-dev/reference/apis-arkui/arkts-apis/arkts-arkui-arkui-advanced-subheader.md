@@ -391,6 +391,8 @@ struct SubHeaderExample {
 
 从API version 18开始，在[OperationOption](arkts-arkui-arkui-advanced-subheader-operationoption-c.md)中新增defaultFocus接口。
 
+
+
 ```TypeScript
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
 
@@ -411,6 +413,42 @@ struct SubHeaderExample {
             Prompt.showToast({ message: 'demo' });
           }
         }]
+      })
+    }
+  }
+}
+```
+
+### 示例10（设置子标题尾部图标）
+
+该示例主要演示子标题设置endIcon尾部图标，包括普通图片资源和Symbol图标两种形式。
+
+从API版本26.0.1开始，[SubHeader](#subheader-1)新增endIcon和endIconSymbolOptions属性。
+
+```TypeScript
+import { SubHeader } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // 图标+二级标题+尾部图标（Image）
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.startIcon'),
+        secondaryTitle: '二级标题',
+        endIcon: $r('app.media.startIcon')
+      })
+      SubHeader({
+        // 图标+二级标题+尾部图标（Symbol）
+        icon: $r('sys.media.ohos_ic_public_email'),
+        secondaryTitle: '二级标题',
+        endIcon: $r('sys.symbol.ohos_lungs'),
+        endIconSymbolOptions: {
+          renderingStrategy: SymbolRenderingStrategy.MULTIPLE_COLOR,
+          fontColor: [Color.Blue, Color.Grey, Color.Green]
+        }
       })
     }
   }

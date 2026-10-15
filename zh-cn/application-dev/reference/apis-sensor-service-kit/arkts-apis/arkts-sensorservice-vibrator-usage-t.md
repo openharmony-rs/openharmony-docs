@@ -12,7 +12,7 @@ type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication''tou
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-vibrator-type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |  'touch' | 'media' | 'physicalFeedback' | 'simulateReality'--><!--Device-vibrator-type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |  'touch' | 'media' | 'physicalFeedback' | 'simulateReality'-End-->
 

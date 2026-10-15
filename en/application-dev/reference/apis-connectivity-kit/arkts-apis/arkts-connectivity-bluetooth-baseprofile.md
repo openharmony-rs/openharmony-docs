@@ -4,8 +4,6 @@ Provides basic profile methods.
 
 **Since:** 10
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace baseProfile--><!--Device-unnamed-declare namespace baseProfile-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

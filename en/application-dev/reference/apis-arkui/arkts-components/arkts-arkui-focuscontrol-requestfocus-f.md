@@ -10,6 +10,11 @@ Requests focus transfer to the specified component during the next frame renderi
 
 For scenarios requiring immediate focus changes, it is recommended that you use the focus synchronization transfer API [requestFocus](../arkts-apis/arkts-arkui-arkui-uicontext-focuscontroller-c.md#requestfocus) in **FocusController**.
 
+> **NOTE:** 
+> 
+> The following components support focus control: TextInput, TextArea, Search, Button, Text, Image, List, and
+> Grid. Currently, the running effect of the focus event can be displayed only on a real device.
+
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.

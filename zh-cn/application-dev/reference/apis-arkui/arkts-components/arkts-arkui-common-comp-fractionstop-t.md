@@ -6,6 +6,8 @@ declare type FractionStop = [ number, number ]
 
 定义模糊段。
 
+**类型：** [ number, number ]
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type FractionStop = [ number, number ]
 <!--Device-unnamed-declare type FractionStop = [ number, number ]--><!--Device-unnamed-declare type FractionStop = [ number, number ]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [ number, number ]

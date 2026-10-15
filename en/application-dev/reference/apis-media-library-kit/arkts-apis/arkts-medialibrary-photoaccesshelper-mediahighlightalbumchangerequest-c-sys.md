@@ -51,6 +51,7 @@ Constructor.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,6 +76,8 @@ async function example(context: Context) {
     new photoAccessHelper.MediaHighlightAlbumChangeRequest(highlightAlbum);
 }
 ```
+
+<!--DelEnd-->
 
 ## setHighlightAttribute
 
@@ -110,6 +113,7 @@ Sets the specified attribute value in the highlights album.
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error.It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -144,3 +148,5 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->

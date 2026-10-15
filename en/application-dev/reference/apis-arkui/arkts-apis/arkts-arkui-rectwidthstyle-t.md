@@ -6,6 +6,8 @@ declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectW
 
 Enumerates the rectangle width styles.
 
+**Type:** import('../api/@ohos.graphics.text').default.RectWidthStyle
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Enumerates the rectangle width styles.
 <!--Device-unnamed-declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle--><!--Device-unnamed-declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.text').default.RectWidthStyle

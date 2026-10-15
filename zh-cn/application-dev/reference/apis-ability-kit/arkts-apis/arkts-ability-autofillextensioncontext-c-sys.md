@@ -50,11 +50,12 @@ reloadInModal(customData: CustomData): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | If the input parameter is not valid parameter. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 通过点击账号密码输入框触发自动填充服务时，在[AutoFillExtensionAbility](arkts-ability-app-ability-autofillextensionability-autofillextensionability-c-sys.md)的onFillRequest生命周期中拉起账号选择界面。
@@ -147,3 +148,5 @@ struct AccountPage {
   }
 }
 ```
+
+<!--DelEnd-->

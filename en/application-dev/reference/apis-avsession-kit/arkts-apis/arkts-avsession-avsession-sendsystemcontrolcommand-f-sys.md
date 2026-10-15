@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="sendsystemcontrolcommand1"></a>
+
 ## sendSystemControlCommand
 
 ```TypeScript
@@ -42,6 +44,7 @@ Send system control command.The system automatically selects the recipient.
 | [6600105](../errorcode-avsession.md#6600105-invalid-session-command) | Invalid session command. |
 | [6600107](../errorcode-avsession.md#6600107-too-many-commands-or-events) | Too many commands or events. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,8 +69,10 @@ avSession.sendSystemControlCommand(avcommand, () => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="sendsystemcontrolcommand-1"></a>
+
+<a id="sendsystemcontrolcommand2"></a>
 
 ## sendSystemControlCommand
 
@@ -110,6 +115,7 @@ Send system control command.The system automatically selects the recipient.
 | [6600105](../errorcode-avsession.md#6600105-invalid-session-command) | Invalid session command. |
 | [6600107](../errorcode-avsession.md#6600107-too-many-commands-or-events) | Too many commands or events. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -133,3 +139,5 @@ avSession.sendSystemControlCommand(avcommand).then(() => {
   console.info('Succeeded in sending system control command.');
 });
 ```
+
+<!--DelEnd-->

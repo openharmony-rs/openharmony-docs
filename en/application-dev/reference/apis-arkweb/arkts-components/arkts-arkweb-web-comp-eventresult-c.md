@@ -32,6 +32,8 @@ Constructs a **EventResult** object.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+<a id="setgestureeventresult1"></a>
+
 ## setGestureEventResult
 
 ```TypeScript
@@ -58,7 +60,7 @@ Sets the gesture event consumption result.
 
 For details, see [onNativeEmbedGestureEvent](./arkts-basic-components-web-events.md#onnativeembedgestureevent).
 
-<a id="setgestureeventresult-1"></a>
+<a id="setgestureeventresult2"></a>
 
 ## setGestureEventResult
 

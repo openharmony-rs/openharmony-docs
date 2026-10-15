@@ -4,8 +4,6 @@ The **linkEnhance** module delivers highly efficient Bluetooth connectivity and 
 
 **Since:** 20
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace linkEnhance--><!--Device-unnamed-declare namespace linkEnhance-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
@@ -22,8 +20,8 @@ import { linkEnhance } from '@kit.DistributedServiceKit';
 
 | Name | Description |
 | --- | --- |
-| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md) | Creates a **Connection** object on the device that functions as the client. After the **Connection** object is created, subscribe to **on('connectResult')** and call **connect()** to initiate a connection request to the server. After the connection is successful, call **sendData()** to send data. If the connection is not required, call **close()** to destroy the **Connection** object to release resources. |
-| [createServer](arkts-distributedservice-linkenhance-createserver-f.md) | Creates a **Server** object. After **start()** is called, the device can be connected to other devices as a server. After using the object, call **close()** to destroy the **Server** object to release resources. To use the object again, you need to create another **Server** object. |
+| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md#createconnection) | Creates a **Connection** object on the device that functions as the client. After the **Connection** object is created, subscribe to **on('connectResult')** and call **connect()** to initiate a connection request to the server. After the connection is successful, call **sendData()** to send data. If the connection is not required, call **close()** to destroy the **Connection** object to release resources. |
+| [createServer](arkts-distributedservice-linkenhance-createserver-f.md#createserver) | Creates a **Server** object. After **start()** is called, the device can be connected to other devices as a server. After using the object, call **close()** to destroy the **Server** object to release resources. To use the object again, you need to create another **Server** object. |
 
 ### Interfaces
 

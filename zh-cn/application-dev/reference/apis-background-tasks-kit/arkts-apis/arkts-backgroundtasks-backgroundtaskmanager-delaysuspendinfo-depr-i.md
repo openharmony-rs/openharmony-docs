@@ -37,7 +37,7 @@ actualDelayTime: number
 
 **废弃版本：** 9
 
-**替代接口：** DelaySuspendInfo
+**替代接口：** [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-i.md)
 
 <!--Device-DelaySuspendInfo-actualDelayTime: number--><!--Device-DelaySuspendInfo-actualDelayTime: number-End-->
 
@@ -57,7 +57,7 @@ requestId: number
 
 **废弃版本：** 9
 
-**替代接口：** DelaySuspendInfo
+**替代接口：** [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-i.md)
 
 <!--Device-DelaySuspendInfo-requestId: number--><!--Device-DelaySuspendInfo-requestId: number-End-->
 

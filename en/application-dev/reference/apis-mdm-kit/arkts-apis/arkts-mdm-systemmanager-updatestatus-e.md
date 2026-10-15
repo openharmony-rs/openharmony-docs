@@ -28,38 +28,6 @@ The system update package of the specified version does not exist.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## UPDATE_WAITING
-
-```TypeScript
-UPDATE_WAITING = -3
-```
-
-The system update package is waiting to be installed.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UpdateStatus-UPDATE_WAITING = -3--><!--Device-UpdateStatus-UPDATE_WAITING = -3-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## UPDATING
-
-```TypeScript
-UPDATING = -2
-```
-
-The system update is being performed.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UpdateStatus-UPDATING = -2--><!--Device-UpdateStatus-UPDATING = -2-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## UPDATE_FAILURE
 
 ```TypeScript
@@ -89,5 +57,37 @@ The update is successful.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-UpdateStatus-UPDATE_SUCCESS = 0--><!--Device-UpdateStatus-UPDATE_SUCCESS = 0-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## UPDATE_WAITING
+
+```TypeScript
+UPDATE_WAITING = -3
+```
+
+The system update package is waiting to be installed.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UpdateStatus-UPDATE_WAITING = -3--><!--Device-UpdateStatus-UPDATE_WAITING = -3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## UPDATING
+
+```TypeScript
+UPDATING = -2
+```
+
+The system update is being performed.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UpdateStatus-UPDATING = -2--><!--Device-UpdateStatus-UPDATING = -2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

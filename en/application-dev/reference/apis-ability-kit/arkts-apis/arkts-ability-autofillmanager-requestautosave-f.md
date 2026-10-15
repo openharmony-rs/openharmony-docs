@@ -6,6 +6,8 @@
 import { autoFillManager } from '@kit.AbilityKit';
 ```
 
+<a id="requestautosave1"></a>
+
 ## requestAutoSave
 
 ```TypeScript
@@ -18,7 +20,7 @@ Requests to automatically save the widget data. This API uses an asynchronous ca
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-autoFillManager-export function requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void--><!--Device-autoFillManager-export function requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void-End-->
 
@@ -140,7 +142,7 @@ struct Index {
 ```
 
 
-<a id="requestautosave-1"></a>
+<a id="requestautosave2"></a>
 
 ## requestAutoSave
 
@@ -154,7 +156,7 @@ Trigger an auto save request.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-autoFillManager-export function requestAutoSave(context: UIContext, request: SaveRequest, callback?: AutoSaveCallback): void--><!--Device-autoFillManager-export function requestAutoSave(context: UIContext, request: SaveRequest, callback?: AutoSaveCallback): void-End-->
 

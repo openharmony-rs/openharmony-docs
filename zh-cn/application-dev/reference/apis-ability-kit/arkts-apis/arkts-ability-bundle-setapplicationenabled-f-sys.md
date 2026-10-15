@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="setapplicationenabled1"></a>
+
 ## setApplicationEnabled
 
 ```TypeScript
@@ -36,6 +38,7 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: 
 | isEnable | boolean | 是 | 指定是否启用应用程序。true表示启用，false表示禁用。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,8 +68,10 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setapplicationenabled-1"></a>
+
+<a id="setapplicationenabled2"></a>
 
 ## setApplicationEnabled
 
@@ -103,6 +108,9 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<v
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 参见 [setApplicationEnabled](#setapplicationenabled)
+
+<!--DelEnd-->

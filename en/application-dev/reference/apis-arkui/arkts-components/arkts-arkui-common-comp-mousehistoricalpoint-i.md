@@ -27,7 +27,7 @@ frequency and improves performance.
 displayX: number
 ```
 
-X coordinate of the mouse pointer relative to the upper-left corner of the entire screen.
+X coordinate of the mouse pointer relative to the upper-left corner of the current app screen.
 
 Unit: vp
 
@@ -49,7 +49,7 @@ Unit: vp
 displayY: number
 ```
 
-Y coordinate of the mouse pointer relative to the upper-left corner of the entire screen.
+Y coordinate of the mouse pointer relative to the upper-left corner of the current app screen.
 
 Unit: vp
 
@@ -115,7 +115,7 @@ Unit: vp
 timestamp: number
 ```
 
-Timestamp of the mouse event.
+Timestamp of the mouse event, indicating the interval between the time when the event is triggered and the time when the system starts.
 
 Unit: ns
 
@@ -181,7 +181,7 @@ Unit: vp
 x: number
 ```
 
-X coordinate of the mouse pointer relative to the upper-left corner of the clicked component.
+X coordinate of the mouse pointer relative to the upper-left corner of the event responder.
 
 Unit: vp
 
@@ -203,7 +203,7 @@ Unit: vp
 y: number
 ```
 
-Y coordinate of the mouse pointer relative to the upper-left corner of the clicked component.
+Y coordinate of the mouse pointer relative to the upper-left corner of the event responder.
 
 Unit: vp
 

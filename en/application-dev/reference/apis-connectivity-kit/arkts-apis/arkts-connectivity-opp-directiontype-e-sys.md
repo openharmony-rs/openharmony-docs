@@ -14,24 +14,6 @@ Enum for file transfer direction.
 
 **System API:** This is a system API.
 
-## OUTBOUND
-
-```TypeScript
-OUTBOUND = 0
-```
-
-The file transfer direction to send.
-
-**Since:** 16
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DirectionType-OUTBOUND = 0--><!--Device-DirectionType-OUTBOUND = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
 ## INBOUND
 
 ```TypeScript
@@ -45,6 +27,24 @@ The file transfer direction to receive.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DirectionType-INBOUND = 1--><!--Device-DirectionType-INBOUND = 1-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## OUTBOUND
+
+```TypeScript
+OUTBOUND = 0
+```
+
+The file transfer direction to send.
+
+**Since:** 16
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DirectionType-OUTBOUND = 0--><!--Device-DirectionType-OUTBOUND = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

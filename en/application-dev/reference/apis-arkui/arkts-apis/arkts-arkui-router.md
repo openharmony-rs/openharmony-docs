@@ -1,6 +1,6 @@
-# @ohos.router(Page Routing(Not Recommended))
+# @ohos.router(Page Routing)
 
-The **Router** module provides APIs to access pages through URLs. You can use the APIs to navigate to a specified page in an application, replace the current page with another one in the same application, and return to the previous page or a specified page.
+This module provides page routing capabilities, including supporting page navigation and replacement via URLs or named routes, returning to the previous page or a specified page, managing the page stack, obtaining page states and navigation parameters, and setting page return confirm dialog boxes. It is applicable to scenarios where page navigation and flow are required within an application.
 
 For routing management, it is recommended that you use the [Navigation](../../../ui/arkts-navigation-architecture.md) component instead as your application routing framework.
 
@@ -11,7 +11,7 @@ For routing management, it is recommended that you use the [Navigation](../../..
 > 
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md).
 > 
-> - When using [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)or [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)with a callback to return the result, be aware that the stack information obtained through the callback using APIs such as [getLength](arkts-arkui-arkui-uicontext-router-c.md#getlength) represents an intermediate state during the navigation operation. This temporary state might differ from the final stack information available after the stack operation is complete.
+> - When using [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl) or [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute) with a callback to return the result, be aware that the stack information obtained through the callback using APIs such as [getStackSize](arkts-arkui-arkui-uicontext-router-c.md#getstacksize) represents an intermediate state during the navigation operation. This temporary state might differ from the final stack information obtained through [getStackSize](arkts-arkui-arkui-uicontext-router-c.md#getstacksize) after the stack operation is complete.
 
 **Since:** 8
 
@@ -31,42 +31,42 @@ import { router } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [back](arkts-arkui-router-back-f.md#back) | Returns to the previous page or a specified page, which deletes all pages between the current page and the target page. |
-| [back](arkts-arkui-router-back-f.md#back-1) | Returns to the specified page, which deletes all pages between the current page and the target page. |
-| [clear](arkts-arkui-router-clear-f.md) | Clears all historical pages in the stack and retains only the current page at the top of the stack. |
-| [disableAlertBeforeBackPage](arkts-arkui-router-disablealertbeforebackpage-f.md) | Disables the display of a confirm dialog box before returning to the previous page. |
-| [enableAlertBeforeBackPage](arkts-arkui-router-enablealertbeforebackpage-f.md) | Enables the display of a confirm dialog box before returning to the previous page. |
-| [getLength](arkts-arkui-router-getlength-f.md) | Obtains the number of pages in the current stack. |
-| [getParams](arkts-arkui-router-getparams-f.md) | Obtains the parameters passed from the page that initiates redirection to the current page. |
-| [getState](arkts-arkui-router-getstate-f.md) | Obtains state information about the page at the top of the navigation stack. |
-| [getStateByIndex](arkts-arkui-router-getstatebyindex-f.md) | Obtains the status information about a page by its index. |
-| [getStateByUrl](arkts-arkui-router-getstatebyurl-f.md) | Obtains the status information about a page by its URL. |
-| [hideAlertBeforeBackPage](arkts-arkui-router-hidealertbeforebackpage-f.md) | Disables the display of a confirm dialog box before returning to the previous page. |
-| [push](arkts-arkui-router-push-f.md) | Navigates to a specified page in the application. |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute) | Navigates to a page using the named route. This API uses a promise to return the result. |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute-1) | Navigates to a page using the named route. This API uses a promise to return the result. |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute-2) | Navigates to a page using the named route. This API uses a promise to return the result. |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute-3) | Navigates to a page using the named route. This API uses a promise to return the result. |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl) | Navigates to a specified page in the application. |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl-1) | Navigates to a specified page in the application. |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl-2) | Navigates to a specified page in the application. |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl-3) | Navigates to a specified page in the application. |
-| [replace](arkts-arkui-router-replace-f.md) | Replaces the current page with another one in the application and destroys the current page. |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute) | Replaces the current page with another one using the named route and destroys the current page. |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute-1) | Replaces the current page with another one using the named route and destroys the current page. |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute-2) | Replaces the current page with another one using the named route and destroys the current page. |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute-3) | Replaces the current page with another one using the named route and destroys the current page. |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl) | Replaces the current page with another one in the application and destroys the current page. |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl-1) | Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl-2) | Replaces the current page with another one in the application and destroys the current page. |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl-3) | Replaces the current page with another one in the application and destroys the current page. |
-| [showAlertBeforeBackPage](arkts-arkui-router-showalertbeforebackpage-f.md) | Enables the display of a confirm dialog box before returning to the previous page. |
+| [back](arkts-arkui-router-back-f.md#back1) | Returns to the previous page or a specified page, and removes all pages between the current page and the specified page. If [showAlertBeforeBackPage](arkts-arkui-router-showalertbeforebackpage-f.md) has been called to enable the return confirm dialog box, a confirm dialog box will be displayed before the return operation is executed. The return is performed only after the user confirms; if the user cancels, the return is not performed. |
+| [back](arkts-arkui-router-back-f.md#back2) | Returns to a specified page, and removes all pages between the current page and the specified page. If [showAlertBeforeBackPage](arkts-arkui-router-showalertbeforebackpage-f.md) has been called to enable the return confirm dialog box, a confirm dialog box will be displayed before the return operation is executed. The return is performed only after the user confirms; if the user cancels, the return is not performed. |
+| [clear](arkts-arkui-router-clear-f.md#clear) | Clears all historical pages in the stack and retains only the current page at the top of the stack. |
+| [disableAlertBeforeBackPage](arkts-arkui-router-disablealertbeforebackpage-f.md#disablealertbeforebackpage) | Disables the display of a confirm dialog box before returning to the previous page. After this API is called, the return confirm dialog box enabled by [enableAlertBeforeBackPage](arkts-arkui-router-enablealertbeforebackpage-f.md) will be closed, and the [back](arkts-arkui-router-back-f.md) operation will no longer display a confirm dialog box but will directly perform the page return. |
+| [enableAlertBeforeBackPage](arkts-arkui-router-enablealertbeforebackpage-f.md#enablealertbeforebackpage) | Enables the display of a confirm dialog box before returning to the previous page. After this API is called, a confirm dialog box will be displayed when [back](arkts-arkui-router-back-f.md) is executed to return to a page. The page return operation is performed only after the user confirms; if the user cancels, the return is not performed. This is applicable to scenarios where you need to prevent data loss caused by accidental return operations, for example, when the user is filling in a form, editing a document, or making a payment, a confirm dialog box is displayed to avoid accidental exit. |
+| [getLength](arkts-arkui-router-getlength-f.md#getlength) | Obtains the number of pages in the current stack. |
+| [getParams](arkts-arkui-router-getparams-f.md#getparams) | Obtains the parameters passed from the page that initiates redirection to the current page. |
+| [getState](arkts-arkui-router-getstate-f.md#getstate) | Obtains state information about the page at the top of the navigation stack. |
+| [getStateByIndex](arkts-arkui-router-getstatebyindex-f.md#getstatebyindex) | Obtains the status information about a page by its index. |
+| [getStateByUrl](arkts-arkui-router-getstatebyurl-f.md#getstatebyurl) | Obtains the status information about a page by its URL. |
+| [hideAlertBeforeBackPage](arkts-arkui-router-hidealertbeforebackpage-f.md#hidealertbeforebackpage) | Disables the display of a confirm dialog box before returning to the previous page. After this API is called, the return confirm dialog box enabled by [showAlertBeforeBackPage](arkts-arkui-router-showalertbeforebackpage-f.md) will be closed, and the [back](arkts-arkui-router-back-f.md) operation will no longer display a confirm dialog box but will directly perform the page return. |
+| [push](arkts-arkui-router-push-f.md#push) | Navigates to a specified page in the application. |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute1) | Navigates to a page using the named route. |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute2) | Navigates to a page using the named route. |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute3) | Navigates to a page using the named route. |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute4) | Navigates to a page using the named route. |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl1) | Navigates to a specified page in the application. |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl2) | Navigates to a specified page in the application. |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl3) | Navigates to a specified page in the application. |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl4) | Navigates to a specified page in the application. |
+| [replace](arkts-arkui-router-replace-f.md#replace) | Replaces the current page with a page within the application and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute1) | Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute2) | Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute3) | Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute4) | Replaces the current page with the specified named route page and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl1) | Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl2) | Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl3) | Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl4) | Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component. |
+| [showAlertBeforeBackPage](arkts-arkui-router-showalertbeforebackpage-f.md#showalertbeforebackpage) | Enables the display of a confirm dialog box before returning to the previous page. After this API is called, a confirm dialog box will be displayed when [back](arkts-arkui-router-back-f.md) is executed to return to a page. The page return operation is performed only after the user confirms. This is applicable to scenarios where you need to prevent data loss caused by accidental return operations, for example, when the user is filling in a form, editing a document, or making a payment, a confirm dialog box is displayed to avoid accidental exit. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md) | Describes the page routing state. |
+| [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md) | Describes the confirm dialog box. |
 | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Describes the named route options. |
 | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | Describes the page routing options. |
 | [RouterState](arkts-arkui-router-routerstate-i.md) | Describes the page routing state. |

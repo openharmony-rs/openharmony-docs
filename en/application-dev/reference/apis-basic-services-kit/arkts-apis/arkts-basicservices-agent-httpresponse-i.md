@@ -30,7 +30,7 @@ HTTP response header.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HttpResponse-readonly headers: Map<string, Array<string>>--><!--Device-HttpResponse-readonly headers: Map<string, Array<string>>-End-->
 
@@ -48,7 +48,7 @@ HTTP response cause.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HttpResponse-readonly reason: string--><!--Device-HttpResponse-readonly reason: string-End-->
 
@@ -66,7 +66,7 @@ HTTP response status code.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HttpResponse-readonly statusCode: int--><!--Device-HttpResponse-readonly statusCode: int-End-->
 
@@ -84,7 +84,7 @@ HTTP version.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HttpResponse-readonly version: string--><!--Device-HttpResponse-readonly version: string-End-->
 

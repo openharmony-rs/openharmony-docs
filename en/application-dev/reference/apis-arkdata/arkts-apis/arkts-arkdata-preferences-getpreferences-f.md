@@ -6,6 +6,8 @@
 import { preferences } from '@kit.ArkData';
 ```
 
+<a id="getpreferences1"></a>
+
 ## getPreferences
 
 ```TypeScript
@@ -16,7 +18,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function getPreferences(context: Context, name: string, callback: AsyncCallback<Preferences>): void--><!--Device-preferences-function getPreferences(context: Context, name: string, callback: AsyncCallback<Preferences>): void-End-->
 
@@ -82,7 +84,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getpreferences-1"></a>
+<a id="getpreferences2"></a>
 
 ## getPreferences
 
@@ -94,7 +96,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function getPreferences(context: Context, options: Options, callback: AsyncCallback<Preferences>): void--><!--Device-preferences-function getPreferences(context: Context, options: Options, callback: AsyncCallback<Preferences>): void-End-->
 
@@ -113,7 +115,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [15501001](../errorcode-preferences.md#15501001-stage-model-required) | The operations is supported in stage mode only. |
 | [15501002](../errorcode-preferences.md#15501002-invalid-datagroupid-parameter-in-options) | Invalid dataGroupId. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error.<br>**Applicable version:** 11 and later |
@@ -166,7 +168,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getpreferences-2"></a>
+<a id="getpreferences3"></a>
 
 ## getPreferences
 
@@ -178,7 +180,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function getPreferences(context: Context, name: string): Promise<Preferences>--><!--Device-preferences-function getPreferences(context: Context, name: string): Promise<Preferences>-End-->
 
@@ -248,7 +250,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getpreferences-3"></a>
+<a id="getpreferences4"></a>
 
 ## getPreferences
 
@@ -260,7 +262,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-preferences-function getPreferences(context: Context, options: Options): Promise<Preferences>--><!--Device-preferences-function getPreferences(context: Context, options: Options): Promise<Preferences>-End-->
 
@@ -284,7 +286,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [15501001](../errorcode-preferences.md#15501001-stage-model-required) | The operations is supported in stage mode only. |
 | [15501002](../errorcode-preferences.md#15501002-invalid-datagroupid-parameter-in-options) | Invalid dataGroupId. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error.<br>**Applicable version:** 11 and later |

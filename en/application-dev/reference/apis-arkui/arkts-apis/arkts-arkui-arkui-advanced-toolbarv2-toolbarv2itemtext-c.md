@@ -4,7 +4,7 @@
 export declare class ToolBarV2ItemText
 ```
 
-Declare type ToolBarV2ItemText
+Defines the text of a toolbar item.
 
 **Since:** 18
 
@@ -26,7 +26,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 constructor(options: ToolBarV2ItemTextOptions)
 ```
 
-The constructor used to create a ToolBarV2ItemText object.
+A constructor used to create a **ToolBarV2ItemText** instance.
 
 **Since:** 18
 
@@ -50,7 +50,11 @@ The constructor used to create a ToolBarV2ItemText object.
 activatedColor?: ColorMetrics
 ```
 
-Text fontColor when the item is activated.
+Font color of the toolbar item in the activated state.
+
+</div>Default value: **$r('sys.color.font_emphasize')**.
+
+Decorator: @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -72,7 +76,11 @@ Text fontColor when the item is activated.
 color?: ColorMetrics
 ```
 
-Define text fontColor.
+Font color of the toolbar item.
+
+Default value: **$r('sys.color.font_primary')**.
+
+Decorator: @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -94,7 +102,9 @@ Define text fontColor.
 text: ResourceStr
 ```
 
-Define text content.
+Text of the toolbar item.
+
+Decorator: @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

@@ -12,20 +12,6 @@ enum DistributedType
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## DISTRIBUTED_DEVICE
-
-```TypeScript
-DISTRIBUTED_DEVICE = 0
-```
-
-表示在不同设备之间分布式的数据库表。
-
-**起始版本：** 10
-
-<!--Device-DistributedType-DISTRIBUTED_DEVICE = 0--><!--Device-DistributedType-DISTRIBUTED_DEVICE = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## DISTRIBUTED_CLOUD
 
 ```TypeScript
@@ -43,3 +29,17 @@ DISTRIBUTED_CLOUD = 1
 <!--Device-DistributedType-DISTRIBUTED_CLOUD = 1--><!--Device-DistributedType-DISTRIBUTED_CLOUD = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+## DISTRIBUTED_DEVICE
+
+```TypeScript
+DISTRIBUTED_DEVICE = 0
+```
+
+表示在不同设备之间分布式的数据库表。
+
+**起始版本：** 10
+
+<!--Device-DistributedType-DISTRIBUTED_DEVICE = 0--><!--Device-DistributedType-DISTRIBUTED_DEVICE = 0-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

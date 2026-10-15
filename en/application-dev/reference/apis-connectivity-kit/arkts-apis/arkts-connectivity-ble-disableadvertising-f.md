@@ -6,6 +6,8 @@
 import { ble } from '@kit.ConnectivityKit';
 ```
 
+<a id="disableadvertising1"></a>
+
 ## disableAdvertising
 
 ```TypeScript
@@ -36,7 +38,7 @@ Disable the advertising with a specific ID temporarily.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
@@ -63,7 +65,8 @@ try {
     let setting: ble.AdvertiseSetting = {
         interval:150,
         txPower:0,
-        connectable:true
+        connectable:true,
+        isExtended:false
     };
     let manufactureDataUnit: ble.ManufactureData = {
         manufactureId:4567,
@@ -87,7 +90,7 @@ try {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
-        duration: 0
+        duration: 300
     }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
@@ -99,10 +102,13 @@ try {
         }
     });
 
-    let advertisingDisableParams: ble.AdvertisingDisableParams = {
-        advertisingId: advHandle
+    let advertisingEnableParams: ble.AdvertisingEnableParams = {
+        advertisingId: advHandle,
+        duration: 0
     }
-    ble.disableAdvertising(advertisingDisableParams, (err) => {
+
+    // after 3s, advertising disabled, then enable the advertising
+    ble.enableAdvertising(advertisingEnableParams, (err) => {
         if (err) {
             return;
         }
@@ -113,7 +119,7 @@ try {
 ```
 
 
-<a id="disableadvertising-1"></a>
+<a id="disableadvertising2"></a>
 
 ## disableAdvertising
 
@@ -150,7 +156,7 @@ Disable the advertising with a specific ID temporarily.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
@@ -177,7 +183,8 @@ try {
     let setting: ble.AdvertiseSetting = {
         interval:150,
         txPower:0,
-        connectable:true
+        connectable:true,
+        isExtended:false
     };
     let manufactureDataUnit: ble.ManufactureData = {
         manufactureId:4567,
@@ -201,7 +208,7 @@ try {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
-        duration: 0
+        duration: 300
     }
     let advHandle = 0xFF;
     ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
@@ -213,10 +220,13 @@ try {
         }
     });
 
-    let advertisingDisableParams: ble.AdvertisingDisableParams = {
-        advertisingId: advHandle
+    let advertisingEnableParams: ble.AdvertisingEnableParams = {
+        advertisingId: advHandle,
+        duration: 0
     }
-    ble.disableAdvertising(advertisingDisableParams)
+
+    // after 3s, advertising disabled, then enable the advertising
+    ble.enableAdvertising(advertisingEnableParams)
         .then(() => {
             console.info("enable success");
     });

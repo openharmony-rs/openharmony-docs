@@ -12,35 +12,19 @@ enum ErrorReason
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## RSP_SUCCESS
+## RSP_INVALID_PARAM
 
 ```TypeScript
-RSP_SUCCESS = 0
+RSP_INVALID_PARAM = 4
 ```
 
-成功无异常。
+无效参数。建议主机检查请求中的参数是否超出本端声明的范围或不符合报告描述符的定义。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ErrorReason-RSP_SUCCESS = 0--><!--Device-ErrorReason-RSP_SUCCESS = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## RSP_NOT_READY
-
-```TypeScript
-RSP_NOT_READY = 1
-```
-
-设备未准备好处理请求。建议主机稍后重试。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ErrorReason-RSP_NOT_READY = 1--><!--Device-ErrorReason-RSP_NOT_READY = 1-End-->
+<!--Device-ErrorReason-RSP_INVALID_PARAM = 4--><!--Device-ErrorReason-RSP_INVALID_PARAM = 4-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -60,35 +44,35 @@ RSP_INVALID_REPORT_ID = 2
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## RSP_UNSUPPORTED_REQ
+## RSP_NOT_READY
 
 ```TypeScript
-RSP_UNSUPPORTED_REQ = 3
+RSP_NOT_READY = 1
 ```
 
-当前请求不支持，建议主机检查当前请求类型或报告类型是否在当前协议模式下被本端支持。
+设备未准备好处理请求。建议主机稍后重试。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3--><!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3-End-->
+<!--Device-ErrorReason-RSP_NOT_READY = 1--><!--Device-ErrorReason-RSP_NOT_READY = 1-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## RSP_INVALID_PARAM
+## RSP_SUCCESS
 
 ```TypeScript
-RSP_INVALID_PARAM = 4
+RSP_SUCCESS = 0
 ```
 
-无效参数。建议主机检查请求中的参数是否超出本端声明的范围或不符合报告描述符的定义。
+成功无异常。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ErrorReason-RSP_INVALID_PARAM = 4--><!--Device-ErrorReason-RSP_INVALID_PARAM = 4-End-->
+<!--Device-ErrorReason-RSP_SUCCESS = 0--><!--Device-ErrorReason-RSP_SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -105,5 +89,21 @@ RSP_UNKNOWN = 14
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ErrorReason-RSP_UNKNOWN = 14--><!--Device-ErrorReason-RSP_UNKNOWN = 14-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## RSP_UNSUPPORTED_REQ
+
+```TypeScript
+RSP_UNSUPPORTED_REQ = 3
+```
+
+当前请求不支持，建议主机检查当前请求类型或报告类型是否在当前协议模式下被本端支持。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3--><!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

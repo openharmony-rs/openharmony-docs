@@ -12,17 +12,31 @@ Enumerates the ability states. This enum can be used together with [AbilityRunni
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## INITIAL
+## BACKGROUND
 
 ```TypeScript
-INITIAL = 0
+BACKGROUND = 10
 ```
 
-The ability is in the initial state.
+The ability is in the background state.
 
 **Since:** 14
 
-<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
+<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## BACKGROUNDING
+
+```TypeScript
+BACKGROUNDING = 12
+```
+
+The ability is in the state of being switched to the background.
+
+**Since:** 14
+
+<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,20 +68,6 @@ The ability is in the foreground state.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## BACKGROUND
-
-```TypeScript
-BACKGROUND = 10
-```
-
-The ability is in the background state.
-
-**Since:** 14
-
-<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
 ## FOREGROUNDING
 
 ```TypeScript
@@ -82,16 +82,16 @@ The ability is in the state of being switched to the foreground.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## BACKGROUNDING
+## INITIAL
 
 ```TypeScript
-BACKGROUNDING = 12
+INITIAL = 0
 ```
 
-The ability is in the state of being switched to the background.
+The ability is in the initial state.
 
 **Since:** 14
 
-<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
+<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

@@ -13,10 +13,10 @@ Defines the graphics attributes of custom nodes (RenderNode), including geometri
 
 | Name | Description |
 | --- | --- |
-| [borderRadiuses](arkts-arkui-graphics-borderradiuses-f.md) | Generates a **borderRadiuses** object with the specified radius for all border corners. |
-| [borderStyles](arkts-arkui-graphics-borderstyles-f.md) | Generates a border style object with the specified border style color for all borders. |
-| [edgeColors](arkts-arkui-graphics-edgecolors-f.md) | Generates an **edgeColors** object with the specified edge color for all edges. |
-| [edgeWidths](arkts-arkui-graphics-edgewidths-f.md) | Generates an **edgeWidths** object with the specified edge width for all edges. |
+| [borderRadiuses](arkts-arkui-graphics-borderradiuses-f.md#borderradiuses) | Generates a **borderRadiuses** object with the specified radius for all border corners. |
+| [borderStyles](arkts-arkui-graphics-borderstyles-f.md#borderstyles) | Generates a border style object with the specified border style color for all borders. |
+| [edgeColors](arkts-arkui-graphics-edgecolors-f.md#edgecolors) | Generates an **edgeColors** object with the specified edge color for all edges. |
+| [edgeWidths](arkts-arkui-graphics-edgewidths-f.md#edgewidths) | Generates an **edgeWidths** object with the specified edge width for all edges. |
 
 ### Classes
 

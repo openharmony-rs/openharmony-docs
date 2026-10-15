@@ -84,9 +84,9 @@ desiredPixelFormat?: PixelMapFormat
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-desiredPixelFormat?: PixelMapFormat--><!--Device-DecodingOptions-desiredPixelFormat?: PixelMapFormat-End-->
 
@@ -106,9 +106,9 @@ desiredRegion?: Region
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-desiredRegion?: Region--><!--Device-DecodingOptions-desiredRegion?: Region-End-->
 
@@ -128,9 +128,9 @@ desiredSize?: Size
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-desiredSize?: Size--><!--Device-DecodingOptions-desiredSize?: Size-End-->
 
@@ -150,9 +150,9 @@ editable?: boolean
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-editable?: boolean--><!--Device-DecodingOptions-editable?: boolean-End-->
 
@@ -170,9 +170,9 @@ fitDensity?: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-fitDensity?: int--><!--Device-DecodingOptions-fitDensity?: int-End-->
 
@@ -190,9 +190,9 @@ index?: number
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-index?: int--><!--Device-DecodingOptions-index?: int-End-->
 
@@ -210,9 +210,9 @@ rotate?: number
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-rotate?: int--><!--Device-DecodingOptions-rotate?: int-End-->
 
@@ -230,9 +230,9 @@ sampleSize?: number
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-DecodingOptions-sampleSize?: int--><!--Device-DecodingOptions-sampleSize?: int-End-->
 

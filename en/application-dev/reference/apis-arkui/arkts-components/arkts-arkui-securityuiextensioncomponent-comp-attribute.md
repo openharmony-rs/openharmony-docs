@@ -8,7 +8,7 @@ The [universal attributes](arkts-arkui-common-comp.md) are supported.
 
 The following events are supported:
 
-**Inheritance/Implementation:** SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>
+**Inheritance/Implementation:** SecurityUIExtensionComponentAttribute extends CommonMethod&lt;SecurityUIExtensionComponentAttribute&gt;
 
 **Since:** 26.0.0
 

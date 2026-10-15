@@ -16,19 +16,19 @@ Enumerates the fault types.
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-## NO_SPECIFIC
+## APP_FREEZE
 
 ```TypeScript
-NO_SPECIFIC = 0
+APP_FREEZE = 4
 ```
 
-No specific fault type.
+Application freezing.
 
 **Since:** 8
 
 **Deprecated since:** 18
 
-<!--Device-FaultType-NO_SPECIFIC = 0--><!--Device-FaultType-NO_SPECIFIC = 0-End-->
+<!--Device-FaultType-APP_FREEZE = 4--><!--Device-FaultType-APP_FREEZE = 4-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -64,18 +64,18 @@ JS program crash.
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-## APP_FREEZE
+## NO_SPECIFIC
 
 ```TypeScript
-APP_FREEZE = 4
+NO_SPECIFIC = 0
 ```
 
-Application freezing.
+No specific fault type.
 
 **Since:** 8
 
 **Deprecated since:** 18
 
-<!--Device-FaultType-APP_FREEZE = 4--><!--Device-FaultType-APP_FREEZE = 4-End-->
+<!--Device-FaultType-NO_SPECIFIC = 0--><!--Device-FaultType-NO_SPECIFIC = 0-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger

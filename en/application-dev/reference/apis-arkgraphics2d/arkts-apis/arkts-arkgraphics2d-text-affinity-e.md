@@ -12,22 +12,6 @@ Enumerates the affinity modes.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## UPSTREAM
-
-```TypeScript
-UPSTREAM = 0
-```
-
-The position has affinity for the upstream side of the text position.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
-
-<!--Device-Affinity-UPSTREAM = 0--><!--Device-Affinity-UPSTREAM = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## DOWNSTREAM
 
 ```TypeScript
@@ -38,8 +22,24 @@ The position has affinity for the downstream side of the text position.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Affinity-DOWNSTREAM = 1--><!--Device-Affinity-DOWNSTREAM = 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## UPSTREAM
+
+```TypeScript
+UPSTREAM = 0
+```
+
+The position has affinity for the upstream side of the text position.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Affinity-UPSTREAM = 0--><!--Device-Affinity-UPSTREAM = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

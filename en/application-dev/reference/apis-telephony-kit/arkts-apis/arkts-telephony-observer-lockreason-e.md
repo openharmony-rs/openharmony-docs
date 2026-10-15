@@ -26,6 +26,34 @@ No lock.
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
+## SIM_PC_PIN
+
+```TypeScript
+SIM_PC_PIN = 9
+```
+
+Organization PIN lock.
+
+**Since:** 8
+
+<!--Device-LockReason-SIM_PC_PIN = 9--><!--Device-LockReason-SIM_PC_PIN = 9-End-->
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
+## SIM_PC_PUK
+
+```TypeScript
+SIM_PC_PUK = 10
+```
+
+Organization PUK lock.
+
+**Since:** 8
+
+<!--Device-LockReason-SIM_PC_PUK = 10--><!--Device-LockReason-SIM_PC_PUK = 10-End-->
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
 ## SIM_PIN
 
 ```TypeScript
@@ -37,20 +65,6 @@ PIN lock.
 **Since:** 8
 
 <!--Device-LockReason-SIM_PIN = 1--><!--Device-LockReason-SIM_PIN = 1-End-->
-
-**System capability:** SystemCapability.Telephony.StateRegistry
-
-## SIM_PUK
-
-```TypeScript
-SIM_PUK = 2
-```
-
-PUK lock.
-
-**Since:** 8
-
-<!--Device-LockReason-SIM_PUK = 2--><!--Device-LockReason-SIM_PUK = 2-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -82,34 +96,6 @@ Network PUK lock.
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
-## SIM_PU_PIN
-
-```TypeScript
-SIM_PU_PIN = 5
-```
-
-Subnet PIN lock.
-
-**Since:** 8
-
-<!--Device-LockReason-SIM_PU_PIN = 5--><!--Device-LockReason-SIM_PU_PIN = 5-End-->
-
-**System capability:** SystemCapability.Telephony.StateRegistry
-
-## SIM_PU_PUK
-
-```TypeScript
-SIM_PU_PUK = 6
-```
-
-Subnet PUK lock.
-
-**Since:** 8
-
-<!--Device-LockReason-SIM_PU_PUK = 6--><!--Device-LockReason-SIM_PU_PUK = 6-End-->
-
-**System capability:** SystemCapability.Telephony.StateRegistry
-
 ## SIM_PP_PIN
 
 ```TypeScript
@@ -138,31 +124,45 @@ Service provider PUK lock.
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
-## SIM_PC_PIN
+## SIM_PU_PIN
 
 ```TypeScript
-SIM_PC_PIN = 9
+SIM_PU_PIN = 5
 ```
 
-Organization PIN lock.
+Subnet PIN lock.
 
 **Since:** 8
 
-<!--Device-LockReason-SIM_PC_PIN = 9--><!--Device-LockReason-SIM_PC_PIN = 9-End-->
+<!--Device-LockReason-SIM_PU_PIN = 5--><!--Device-LockReason-SIM_PU_PIN = 5-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
-## SIM_PC_PUK
+## SIM_PU_PUK
 
 ```TypeScript
-SIM_PC_PUK = 10
+SIM_PU_PUK = 6
 ```
 
-Organization PUK lock.
+Subnet PUK lock.
 
 **Since:** 8
 
-<!--Device-LockReason-SIM_PC_PUK = 10--><!--Device-LockReason-SIM_PC_PUK = 10-End-->
+<!--Device-LockReason-SIM_PU_PUK = 6--><!--Device-LockReason-SIM_PU_PUK = 6-End-->
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
+## SIM_PUK
+
+```TypeScript
+SIM_PUK = 2
+```
+
+PUK lock.
+
+**Since:** 8
+
+<!--Device-LockReason-SIM_PUK = 2--><!--Device-LockReason-SIM_PUK = 2-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 

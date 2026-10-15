@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="cancelasbundle1"></a>
+
 ## cancelAsBundle
 
 ```TypeScript
@@ -44,7 +46,7 @@ Cancels a notification published through the reminder agent. This API uses an as
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -52,6 +54,7 @@ Cancels a notification published through the reminder agent. This API uses an as
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,18 +65,20 @@ let cancelAsBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("cancelAsBundle success");
+        console.info('cancelAsBundle success');
     }
 }
 // Bundle name of the application whose notification function is taken over by the reminder agent
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // Use the actual user ID when calling the API.
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="cancelasbundle-1"></a>
+
+<a id="cancelasbundle2"></a>
 
 ## cancelAsBundle
 
@@ -113,7 +118,7 @@ Cancels a notification published through the reminder agent. This API uses a pro
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -121,24 +126,27 @@ Cancels a notification published through the reminder agent. This API uses a pro
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Bundle name of the application whose notification function is taken over by the reminder agent
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // Use the actual user ID when calling the API.
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
+<!--DelEnd-->
 
-<a id="cancelasbundle-2"></a>
+
+<a id="cancelasbundle3"></a>
 
 ## cancelAsBundle
 
@@ -177,7 +185,7 @@ Cancels a notification published through the reminder agent. This API uses a pro
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -186,17 +194,20 @@ Cancels a notification published through the reminder agent. This API uses a pro
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

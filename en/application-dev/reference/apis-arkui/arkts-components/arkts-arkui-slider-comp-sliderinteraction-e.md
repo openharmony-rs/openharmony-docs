@@ -36,24 +36,6 @@ Users can drag the slider or touch the track to move the slider. The slider move
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SLIDE_ONLY
-
-```TypeScript
-SLIDE_ONLY = 1
-```
-
-Users are not allowed to move the slider by touching the slider.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-SliderInteraction-SLIDE_ONLY = 1--><!--Device-SliderInteraction-SLIDE_ONLY = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## SLIDE_AND_CLICK_UP
 
 ```TypeScript
@@ -69,5 +51,23 @@ Users can drag the slider or touch the track to move the slider. The slider move
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SliderInteraction-SLIDE_AND_CLICK_UP = 2--><!--Device-SliderInteraction-SLIDE_AND_CLICK_UP = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SLIDE_ONLY
+
+```TypeScript
+SLIDE_ONLY = 1
+```
+
+Users are not allowed to move the slider by touching the slider.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SliderInteraction-SLIDE_ONLY = 1--><!--Device-SliderInteraction-SLIDE_ONLY = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

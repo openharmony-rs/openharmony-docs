@@ -44,7 +44,7 @@ Post-Quantum Cryptography key encapsulation operation, supporting key management
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-feature-not-supported) | Algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-missing-key-algorithm-parameter) | Algorithm parameters are missing, please check the algorithm parameters. |
 | [12000003](../errorcode-huks.md#12000003-invalid-key-algorithm-parameter) | The algorithm parameters are invalid, please check the algorithm parameters. |

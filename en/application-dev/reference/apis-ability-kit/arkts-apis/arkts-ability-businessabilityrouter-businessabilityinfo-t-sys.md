@@ -8,6 +8,8 @@ Obtains business ability info.
 
 @typedef { _BusinessAbilityInfo.BusinessAbilityInfo }
 
+**Type:** [_BusinessAbilityInfo.BusinessAbilityInfo](arkts-ability-businessabilityinfo-i-sys.md)
+
 **Since:** 10
 
 <!--Device-businessAbilityRouter-export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo--><!--Device-businessAbilityRouter-export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo-End-->
@@ -15,5 +17,3 @@ Obtains business ability info.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** [_BusinessAbilityInfo.BusinessAbilityInfo](arkts-ability-businessabilityinfo-i-sys.md)

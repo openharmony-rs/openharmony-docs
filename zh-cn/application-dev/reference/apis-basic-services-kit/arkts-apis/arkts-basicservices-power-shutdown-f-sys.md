@@ -39,6 +39,7 @@ function shutdown(reason: string): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; |
 | [4900101](../errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,3 +49,5 @@ try {
     console.error(`Failed to shutdown. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

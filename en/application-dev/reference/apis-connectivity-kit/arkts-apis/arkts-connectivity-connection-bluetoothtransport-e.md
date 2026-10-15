@@ -28,22 +28,6 @@ The value of bluetooth transport BR/EDR.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## TRANSPORT_LE
-
-```TypeScript
-TRANSPORT_LE = 1
-```
-
-The value of bluetooth transport LE.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-BluetoothTransport-TRANSPORT_LE = 1--><!--Device-BluetoothTransport-TRANSPORT_LE = 1-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## TRANSPORT_DUAL
 
 ```TypeScript
@@ -57,6 +41,22 @@ The value of bluetooth transport DUAL.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-BluetoothTransport-TRANSPORT_DUAL = 2--><!--Device-BluetoothTransport-TRANSPORT_DUAL = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## TRANSPORT_LE
+
+```TypeScript
+TRANSPORT_LE = 1
+```
+
+The value of bluetooth transport LE.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BluetoothTransport-TRANSPORT_LE = 1--><!--Device-BluetoothTransport-TRANSPORT_LE = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

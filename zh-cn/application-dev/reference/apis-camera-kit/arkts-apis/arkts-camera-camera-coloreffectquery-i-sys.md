@@ -49,6 +49,7 @@ Obtains the supported color effects.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,3 +58,5 @@ function getSupportedColorEffects(session: camera.PhotoSessionForSys): Array<cam
   return colorEffects;
 }
 ```
+
+<!--DelEnd-->

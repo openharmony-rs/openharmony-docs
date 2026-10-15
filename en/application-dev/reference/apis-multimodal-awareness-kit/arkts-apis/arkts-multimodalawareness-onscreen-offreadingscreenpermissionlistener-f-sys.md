@@ -41,14 +41,17 @@ Disables the screen content access permission monitoring.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 try {
   onScreen.offReadingScreenPermissionListener();
   console.info(`offReadingScreenPermissionListener succeeded.`);
 } catch (err) {
-  console.error('offReadingScreenPermissionListener failed, errCode = ' + err.code);
+  console.error(`offReadingScreenPermissionListener failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

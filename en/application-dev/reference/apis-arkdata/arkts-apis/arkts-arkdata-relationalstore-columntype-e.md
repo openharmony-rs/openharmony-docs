@@ -12,78 +12,6 @@ Enumerates the types of the column data. Use the enum name rather than the enum 
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## NULL
-
-```TypeScript
-NULL = 0
-```
-
-The value in the column is null.
-
-**Since:** 18
-
-<!--Device-ColumnType-NULL = 0--><!--Device-ColumnType-NULL = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## INTEGER
-
-```TypeScript
-INTEGER = 1
-```
-
-64-bit integer.
-
-The column can hold 8-bit (including Boolean values), 16-bit, 32-bit, and 64-bit integers. If the 64-bit integer is greater than 2^53 or less than -2^53, use [getString](arkts-arkdata-relationalstore-resultset-i.md#getstring) to convert the 64-bit integer to a string.
-
-**Since:** 18
-
-<!--Device-ColumnType-INTEGER = 1--><!--Device-ColumnType-INTEGER = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## REAL
-
-```TypeScript
-REAL = 2
-```
-
-The value in the column is a floating point number.
-
-**Since:** 18
-
-<!--Device-ColumnType-REAL = 2--><!--Device-ColumnType-REAL = 2-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## TEXT
-
-```TypeScript
-TEXT = 3
-```
-
-The value in the column is a string.
-
-**Since:** 18
-
-<!--Device-ColumnType-TEXT = 3--><!--Device-ColumnType-TEXT = 3-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## BLOB
-
-```TypeScript
-BLOB = 4
-```
-
-The value in the column is a Uint8Array.
-
-**Since:** 18
-
-<!--Device-ColumnType-BLOB = 4--><!--Device-ColumnType-BLOB = 4-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## ASSET
 
 ```TypeScript
@@ -112,6 +40,20 @@ The value in the column is an array of assets.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+## BLOB
+
+```TypeScript
+BLOB = 4
+```
+
+The value in the column is a Uint8Array.
+
+**Since:** 18
+
+<!--Device-ColumnType-BLOB = 4--><!--Device-ColumnType-BLOB = 4-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 ## FLOAT_VECTOR
 
 ```TypeScript
@@ -123,6 +65,64 @@ The value in the column is a Float32Array.
 **Since:** 18
 
 <!--Device-ColumnType-FLOAT_VECTOR = 7--><!--Device-ColumnType-FLOAT_VECTOR = 7-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## INTEGER
+
+```TypeScript
+INTEGER = 1
+```
+
+64-bit integer.
+
+The column can hold 8-bit (including Boolean values), 16-bit, 32-bit, and 64-bit integers. If the 64-bit integer is greater than 2^53 or less than -2^53, use [getString](arkts-arkdata-relationalstore-resultset-i.md#getstring) to convert the 64-bit integer to a string.
+
+**Since:** 18
+
+<!--Device-ColumnType-INTEGER = 1--><!--Device-ColumnType-INTEGER = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## NULL
+
+```TypeScript
+NULL = 0
+```
+
+The value in the column is null.
+
+**Since:** 18
+
+<!--Device-ColumnType-NULL = 0--><!--Device-ColumnType-NULL = 0-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## REAL
+
+```TypeScript
+REAL = 2
+```
+
+The value in the column is a floating point number.
+
+**Since:** 18
+
+<!--Device-ColumnType-REAL = 2--><!--Device-ColumnType-REAL = 2-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## TEXT
+
+```TypeScript
+TEXT = 3
+```
+
+The value in the column is a string.
+
+**Since:** 18
+
+<!--Device-ColumnType-TEXT = 3--><!--Device-ColumnType-TEXT = 3-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

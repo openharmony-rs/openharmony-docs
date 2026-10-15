@@ -22,7 +22,7 @@ UTF-8.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EncodingType-ENCODING_UTF8 = 0--><!--Device-EncodingType-ENCODING_UTF8 = 0-End-->
 

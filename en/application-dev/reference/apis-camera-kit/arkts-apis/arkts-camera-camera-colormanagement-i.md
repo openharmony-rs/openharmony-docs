@@ -32,7 +32,7 @@ Obtains the color space in use.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-ColorManagement-getActiveColorSpace(): colorSpaceManager.ColorSpace--><!--Device-ColorManagement-getActiveColorSpace(): colorSpaceManager.ColorSpace-End-->
 
@@ -112,7 +112,7 @@ Recording mode:
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-ColorManagement-setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void--><!--Device-ColorManagement-setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void-End-->
 

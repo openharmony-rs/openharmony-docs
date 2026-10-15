@@ -12,22 +12,6 @@ enum RevocationCheckOptions
 
 **系统能力：** SystemCapability.Security.Cert
 
-## REVOCATION_CHECK_OPTION_PREFER_OCSP
-
-```TypeScript
-REVOCATION_CHECK_OPTION_PREFER_OCSP = 0
-```
-
-优先采用OCSP进行校验，默认采用CRL校验。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_PREFER_OCSP = 0--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_PREFER_OCSP = 0-End-->
-
-**系统能力：** SystemCapability.Security.Cert
-
 ## REVOCATION_CHECK_OPTION_ACCESS_NETWORK
 
 ```TypeScript
@@ -38,41 +22,9 @@ REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1-End-->
-
-**系统能力：** SystemCapability.Security.Cert
-
-## REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER
-
-```TypeScript
-REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2
-```
-
-当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2-End-->
-
-**系统能力：** SystemCapability.Security.Cert
-
-## REVOCATION_CHECK_OPTION_FALLBACK_LOCAL
-
-```TypeScript
-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3
-```
-
-当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -90,9 +42,57 @@ REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE = 4
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE = 4--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE = 4-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+## REVOCATION_CHECK_OPTION_FALLBACK_LOCAL
+
+```TypeScript
+REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3
+```
+
+当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+## REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER
+
+```TypeScript
+REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2
+```
+
+当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+## REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR
+
+```TypeScript
+REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6
+```
+
+如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达可能导致证书链校验失败。
+
+**起始版本：** 23
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -110,24 +110,24 @@ REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
-## REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR
+## REVOCATION_CHECK_OPTION_PREFER_OCSP
 
 ```TypeScript
-REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6
+REVOCATION_CHECK_OPTION_PREFER_OCSP = 0
 ```
 
-如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达可能导致证书链校验失败。
+优先采用OCSP进行校验，默认采用CRL校验。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6-End-->
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_PREFER_OCSP = 0--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_PREFER_OCSP = 0-End-->
 
 **系统能力：** SystemCapability.Security.Cert

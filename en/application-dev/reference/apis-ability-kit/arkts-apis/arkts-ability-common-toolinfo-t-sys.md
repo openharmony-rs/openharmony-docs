@@ -8,6 +8,8 @@ Define basic information about the CLI tool.
 
 @typedef { _ToolInfo }
 
+**Type:** _ToolInfo
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Define basic information about the CLI tool.
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _ToolInfo

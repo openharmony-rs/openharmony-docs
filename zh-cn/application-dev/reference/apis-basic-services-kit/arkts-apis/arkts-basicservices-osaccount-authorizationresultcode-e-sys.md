@@ -14,24 +14,6 @@ enum AuthorizationResultCode
 
 **系统接口：** 此接口为系统接口。
 
-## AUTHORIZATION_SUCCESS
-
-```TypeScript
-AUTHORIZATION_SUCCESS = 0
-```
-
-表示授权成功。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizationResultCode-AUTHORIZATION_SUCCESS = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_SUCCESS = 0-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
 ## AUTHORIZATION_CANCELED
 
 ```TypeScript
@@ -45,6 +27,24 @@ AUTHORIZATION_CANCELED = 12300301
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AuthorizationResultCode-AUTHORIZATION_CANCELED = 12300301--><!--Device-AuthorizationResultCode-AUTHORIZATION_CANCELED = 12300301-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## AUTHORIZATION_DENIED
+
+```TypeScript
+AUTHORIZATION_DENIED = 12300303
+```
+
+表示因不符合授权规则，如账号类型不是管理员、设备类型不支持等原因而拒绝授权。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303--><!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -74,24 +74,6 @@ AUTHORIZATION_INTERACTION_NOT_ALLOWED = 12300302
 
 **系统接口：** 此接口为系统接口。
 
-## AUTHORIZATION_DENIED
-
-```TypeScript
-AUTHORIZATION_DENIED = 12300303
-```
-
-表示因不符合授权规则，如账号类型不是管理员、设备类型不支持等原因而拒绝授权。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303--><!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
 ## AUTHORIZATION_SERVICE_BUSY
 
 ```TypeScript
@@ -107,6 +89,24 @@ AUTHORIZATION_SERVICE_BUSY = 12300304
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AuthorizationResultCode-AUTHORIZATION_SERVICE_BUSY = 12300304--><!--Device-AuthorizationResultCode-AUTHORIZATION_SERVICE_BUSY = 12300304-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## AUTHORIZATION_SUCCESS
+
+```TypeScript
+AUTHORIZATION_SUCCESS = 0
+```
+
+表示授权成功。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AuthorizationResultCode-AUTHORIZATION_SUCCESS = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

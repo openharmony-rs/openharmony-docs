@@ -6,6 +6,8 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="share1"></a>
+
 ## share
 
 ```TypeScript
@@ -39,9 +41,10 @@ function share(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,8 +73,10 @@ cloudData.sharing.share('sharing_resource_test', participants, (err: BusinessErr
 });
 ```
 
+<!--DelEnd-->
 
-<a id="share-1"></a>
+
+<a id="share2"></a>
 
 ## share
 
@@ -110,9 +115,10 @@ function share(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -138,3 +144,5 @@ cloudData.sharing.share('sharing_resource_test', participants).then((result) => 
   console.error(`share failed, code is ${err.code},message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -22,7 +22,7 @@ function makeCallWithToken(phoneNumber: string, options?: MakeCallOptions): Prom
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-call-function makeCallWithToken(phoneNumber: string, options?: MakeCallOptions): Promise<string>--><!--Device-call-function makeCallWithToken(phoneNumber: string, options?: MakeCallOptions): Promise<string>-End-->
 

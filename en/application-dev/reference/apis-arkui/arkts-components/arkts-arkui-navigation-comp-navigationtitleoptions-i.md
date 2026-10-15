@@ -6,6 +6,21 @@ declare interface NavigationTitleOptions
 
 Defines the title bar options.
 
+> **systemMaterial attribute description**
+> 
+> The title bar material takes effect on the background of the back button, the background of the menu button, and
+> the background of the **More** dialog box of the menu. When the application-level system material switch is set to
+> **disable**, the title bar material effect does not take effect regardless of the value of **systemMaterial**. For
+> details about the application-level system material switch, see
+> [MaterialState](../arkts-apis/arkts-arkui-uimaterial-materialstate-e.md). The effects of different values for the
+> system material of the title bar are as follows:
+> 
+> - **undefined** (default value): When the application-level system material switch is set to **default**, the title bar has no material effect. When the application-level system material switch is set to **enable**, the default immersive material effect takes effect on the title bar.
+> 
+> - [Material.empty](../arkts-apis/arkts-arkui-uimaterial-material-c.md#empty): The title bar has no material effect.
+> 
+> - [Material](../arkts-apis/arkts-arkui-uimaterial-material-c.md): When the application-level system material switch is set to **default** or **enable**, the specified material effect takes effect.
+
 **Since:** 11
 
 <!--Device-unnamed-declare interface NavigationTitleOptions--><!--Device-unnamed-declare interface NavigationTitleOptions-End-->
@@ -18,7 +33,7 @@ Defines the title bar options.
 backgroundBlurStyle?: BlurStyle
 ```
 
-Background blur style of the title bar. If this parameter is not set, the background blur effect is disabled.
+Background blur style of the title bar. After this parameter is set, the title bar will apply the specified blur style. If this parameter is not set, the background blur effect is disabled.
 
 **Type:** [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)
 
@@ -64,7 +79,7 @@ Avoid using this API in conjunction with **backgroundEffect**.
 backgroundColor?: ResourceColor
 ```
 
-Background color of the title bar. If this parameter is not set, the default color is used.
+Background color of the title bar. After this parameter is set, the background color of the title bar is displayed in the specified color. If this parameter is not set, the default color is used.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -137,8 +152,7 @@ Whether to respond when the device is in semi-folded mode.
 Observe the following when using this API:
 
 1. Make sure the **Navigation** component is in full screen.
-2. When the title bar is in [Free](arkts-arkui-navigation-comp-navigationtitlemode-e.md) display mode or in [STANDARD](arkts-arkui-navigation-comp-barstyle-e.md) layout
-style, this API has no effect.
+2. When the title bar is in [Free](arkts-arkui-navigation-comp-navigationtitlemode-e.md) display mode or in [STANDARD](arkts-arkui-navigation-comp-barstyle-e.md) layout style, this API has no effect.
 
 **true**: yes; **false**: no
 
@@ -194,10 +208,8 @@ Padding at the end of the title bar.
 
 Only supported in one of the following scenarios:
 
-1. Using a non-custom menu, that is, the
-[menu value](arkts-arkui-navigation-comp-attribute.md#menus) is Array&lt;NavigationMenuItem&gt;
-2. Using a non-custom menu without a menu in the upper right corner, that is,
-the [title value](arkts-arkui-navigation-comp-attribute.md#title) type is **ResourceStr** or **NavigationCommonTitle**
+1. Using non-custom menus, that is, the [menus](arkts-arkui-navigation-comp-attribute.md#menus1) attribute adopts the Array<NavigationMenuItem> type.
+2. Using no top-right menu with a non-custom title, that is, the [title](arkts-arkui-navigation-comp-attribute.md#title) type is **ResourceStr** or **NavigationCommonTitle**.
 
 Default value:
 
@@ -228,7 +240,7 @@ Padding at the start of the title bar.
 Only supported in one of the following scenarios:
 
 1. Displaying the back icon, that is, [hideBackButton](arkts-arkui-navigation-comp-attribute.md#hidebackbutton) is **false**
-2. Using a non-custom title, that is, the [title value](arkts-arkui-navigation-comp-attribute.md#title) type is **ResourceStr** or **NavigationCommonTitle**
+2. Using a non-custom title, that is, the [title](arkts-arkui-navigation-comp-attribute.md#title) type is **ResourceStr** or **NavigationCommonTitle**.
 
 Default value:
 
@@ -254,7 +266,7 @@ LengthMetrics.resource(**$r('sys.float.margin_left')**)
 scrollEffectOptions?: ScrollEffectOptions
 ```
 
-Title scroll blur style.
+Scroll blur effect options of the title bar. The default value is **undefined**, indicating that the scroll blur effect is disabled for the title bar.
 
 **Type:** [ScrollEffectOptions](arkts-arkui-navigation-comp-scrolleffectoptions-i.md)
 
@@ -298,7 +310,7 @@ For example, if the modifier is used to set font size attributes, such as **font
 systemMaterial?: Material
 ```
 
-Set system-styled materials for the TitleBar. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the titleBar. Device Behavior Differences:The effect of the same material may vary across different devices depending on their computing power.
+System material of the title bar. The default value is **undefined**. The system material effect depends on the device computing power. For details, see [@ohos.arkui.uiMaterial (System Material)](../arkts-apis/arkts-arkui-arkui-uimaterial.md).
 
 **Type:** [Material](arkts-arkui-navigation-comp-material-t.md)
 

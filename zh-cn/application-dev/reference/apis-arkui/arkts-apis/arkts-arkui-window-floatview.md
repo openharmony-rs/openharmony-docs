@@ -18,22 +18,21 @@
 **全局悬浮窗和标准悬浮窗对比**
 
 - 共同点：全局悬浮窗和标准悬浮窗均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI。  
-- 区别：  
-- 全局悬浮窗由开发者管理并实现UI绘制，无统一UI及动效。  
-- 标准悬浮窗由系统管理并统一绘制UI，动效更为高端精致。  
-- 标准悬浮窗支持与[闪控球](arkts-arkui-window-floatingball.md)互相绑定联合使用，实现更复杂场景。
+- 区别：
+
+  - 全局悬浮窗由开发者管理并实现UI绘制，无统一UI及动效。  
+  - 标准悬浮窗由系统管理并统一绘制UI，动效更为高端精致。  
+  - 标准悬浮窗支持与[闪控球](arkts-arkui-window-floatingball.md)互相绑定联合使用，实现更复杂场景。
 
 **起始版本：** 26.0.0
 
 > **说明：** 
 > 
-> - 针对系统能力SystemCapability.Window.SessionManager，请先使用canIUse()接口判断当前设备是否支持此syscap及对应接口。
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../../../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 > 
 > - 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace floatView--><!--Device-unnamed-declare namespace floatView-End-->
 
@@ -51,11 +50,11 @@ import { floatView } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [bind](arkts-arkui-floatview-bind-f.md) | 绑定标准悬浮窗和闪控球。需要先创建[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)，且均未启动。使用Promise异步回调。 |
-| [create](arkts-arkui-floatview-create-f.md) | 创建标准悬浮窗控制器。使用Promise异步回调。 |
-| [getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md) | 根据传入的模板类型获取对应标准悬浮窗窗口的限制，单位为px。 |
-| [isFloatViewEnabled](arkts-arkui-floatview-isfloatviewenabled-f.md) | 判断当前设备是否支持标准悬浮窗功能。 |
-| [unbind](arkts-arkui-floatview-unbind-f.md) | 解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)均停止后才可解绑。使用Promise异步回调。 |
+| [bind](arkts-arkui-floatview-bind-f.md#bind) | 绑定标准悬浮窗和闪控球。需要先创建[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)，且均未启动。使用Promise异步回调。 |
+| [create](arkts-arkui-floatview-create-f.md#create) | 创建标准悬浮窗控制器。使用Promise异步回调。 |
+| [getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits) | 根据传入的模板类型获取对应标准悬浮窗窗口的限制，单位为px。 |
+| [isFloatViewEnabled](arkts-arkui-floatview-isfloatviewenabled-f.md#isfloatviewenabled) | 判断当前设备是否支持标准悬浮窗功能。 |
+| [unbind](arkts-arkui-floatview-unbind-f.md#unbind) | 解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)均停止后才可解绑。使用Promise异步回调。 |
 
 ### 接口
 

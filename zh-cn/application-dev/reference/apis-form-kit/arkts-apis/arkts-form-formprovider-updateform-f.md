@@ -6,6 +6,8 @@
 import { formProvider } from '@kit.FormKit';
 ```
 
+<a id="updateform1"></a>
+
 ## updateForm
 
 ```TypeScript
@@ -20,12 +22,12 @@ function updateForm(
 
 > **说明：** 
 > 
-> 从API version 26.0.1开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过30张。API version 20至API version 26.0.1之前，刷新数据总大小不超过10MB，刷新图片数量不超
-> 过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图
+> 片会显示异常。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-formProvider-function updateForm(    formId: string,    formBindingData: formBindingData.FormBindingData,    callback: AsyncCallback<void>  ): void--><!--Device-formProvider-function updateForm(    formId: string,    formBindingData: formBindingData.FormBindingData,    callback: AsyncCallback<void>  ): void-End-->
 
@@ -77,7 +79,7 @@ try {
 ```
 
 
-<a id="updateform-1"></a>
+<a id="updateform2"></a>
 
 ## updateForm
 
@@ -89,12 +91,12 @@ function updateForm(formId: string, formBindingData: formBindingData.FormBinding
 
 > **说明：** 
 > 
-> 从API version 26.0.1开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过30张。API version 20至API version 26.0.1之前，刷新数据总大小不超过10MB，刷新图片数量不超
-> 过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图
+> 片会显示异常。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-formProvider-function updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise<void>--><!--Device-formProvider-function updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise<void>-End-->
 

@@ -1,7 +1,18 @@
-# @ohos.graphics.text
+# @ohos.graphics.text(文本模块)
 
-文本模块
+本模块提供一系列用于文本布局和字体管理的编程接口。文本布局相关的接口旨在提供高质量的排版，包括字符到字形的转换、字距调整、换行、对齐、文本测量等。字体管理接口提供字体注册、字体描述符、字体集管理等功能。
 
+该模块提供以下创建复杂样式的文本段落的常用类：
+
+- [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)：文本样式，控制文本的字体类型、大小、间距等属性。  
+- [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md)：字体集，控制各种不同的字体。  
+- [FontDescriptor](arkts-arkgraphics2d-text-fontdescriptor-i.md)：字体描述符信息。  
+- [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md)：段落样式，控制整个段落的断行策略、断词策略等属性。  
+- [ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)：段落生成器，控制生成不同的段落对象。  
+- [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md)：段落，由ParagraphBuilder类调用[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build)接口构建而成。  
+- [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)：行排版器，由ParagraphBuilder类调用[buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset)接口构建而成。  
+- [TextLine](arkts-arkgraphics2d-text-textline-c.md)：以行为单位的段落文本的载体，由Paragraph类调用[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines)接口获取。  
+- [Run](arkts-arkgraphics2d-text-run-c.md)：文本排版单元，由TextLine类调用[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取。
 
 **起始版本：** 12
 
@@ -21,16 +32,16 @@ import { text } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md) | 根据字体文件路径获取包含的字体文件数。 |
-| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md) | 根据字体名称和类型获取字体描述符，使用Promise异步回调。 |
-| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md) | 根据字体文件路径获取字体描述符数组。使用Promise异步回调。 |
-| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md) | 获取指定字体类型的所有字体文件路径。 |
-| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md) | 根据字体文件路径获取字体unicode数组。使用Promise异步回调。 |
-| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md) | 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。 |
-| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md) | 检查系统是否支持指定的字体文件。可在加载自定义字体前预先验证字体文件的可用性，避免因字体不支持导致文本渲染异常。 |
-| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md) | 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。 |
-| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md) | 用于设置文字渲染高对比度模式。 |
-| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md) | 设置字符映射到.notdef（未定义）字形时要使用的字形类型。 |
+| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md#getfontcount) | 根据字体文件路径获取包含的字体文件数。 |
+| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md#getfontdescriptorbyfullname) | 根据字体名称和类型获取字体描述符，使用Promise异步回调。 |
+| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md#getfontdescriptorsfrompath) | 根据字体文件路径获取字体描述符数组。使用Promise异步回调。 |
+| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md#getfontpathsbytype) | 获取指定字体类型的所有字体文件路径。 |
+| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md#getfontunicodeset) | 根据字体文件路径获取字体unicode数组。使用Promise异步回调。 |
+| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype) | 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。 |
+| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md#isfontsupported) | 检查系统是否支持指定的字体文件。可在加载自定义字体前预先验证字体文件的可用性，避免因字体不支持导致文本渲染异常。 |
+| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md#matchfontdescriptors) | 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。 |
+| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md#settexthighcontrast) | 用于设置文字渲染高对比度模式。 |
+| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md#settextundefinedglyphdisplay) | 设置字符映射到.notdef（未定义）字形时要使用的字形类型。 |
 
 ### 类
 

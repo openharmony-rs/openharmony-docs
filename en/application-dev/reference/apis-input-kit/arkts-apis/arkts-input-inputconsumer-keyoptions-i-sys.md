@@ -4,7 +4,7 @@
 interface KeyOptions
 ```
 
-Represents combination key options.
+Represents key combination options.
 
 **Since:** 8
 
@@ -28,7 +28,7 @@ finalKey: number
 
 Final key. This parameter is mandatory. A callback is triggered by the final key.
 
-For example, in the combination keys **Ctrl+Alt+A**, **A** is called the final key.
+For example, in the combination keys **Ctrl+Alt+A**, **A** is the final key.
 
 **Type:** number
 
@@ -46,11 +46,11 @@ For example, in the combination keys **Ctrl+Alt+A**, **A** is called the final k
 finalKeyDownDuration: number
 ```
 
-Duration for holding down the key, in μs.
+Duration for which the final key is held down, in microseconds (μs).
 
-If the value of this field is **0**, a callback is triggered immediately.
+When finalKeyDownDuration is 0, the callback function is triggered immediately.
 
-If the value of this field is greater than **0** and **isFinalKeyDown** is **true**, a callback is triggered when the key keeps being pressed after the specified duration expires. If **isFinalKeyDown** is **false**, a callback is triggered when the key is released before the specified duration expires.
+When finalKeyDownDuration is greater than 0 and isFinalKeyDown is true, the callback function is triggered after the final key is held down for longer than the set duration; when isFinalKeyDown is false, the callback function is triggered when the time from pressing to releasing the final key is shorter than the set duration.
 
 **Type:** number
 
@@ -106,9 +106,9 @@ Whether to report repeated key events. The value **true** means to report repeat
 preKeys: Array<number>
 ```
 
-Preceding key set. The number of preceding keys ranges from 0 to 4. There is no requirement on the sequence of the keys.
+Set of preKeys, with the number ranging from 0 to 4. The order of preKeys is not required.
 
-For example, in the combination keys **Ctrl+Alt+A**, **Ctrl+Alt** are called preceding keys.
+For example, in the key combination Ctrl+Alt+A, Ctrl+Alt are the preKeys.
 
 **Type:** Array&lt;number&gt;
 
@@ -126,7 +126,7 @@ For example, in the combination keys **Ctrl+Alt+A**, **Ctrl+Alt** are called pre
 triggerType?: KeyCommandTriggerType
 ```
 
-Trigger type, which indicates that the conditions for triggering the callback expected by the shortcut key are met. Once this value is set, isFinalKeyDown and isRepeat will be ignored. This property is only for use in APIs that take KeyCommandCallback as the callback function and must be specified.
+Trigger mode. The value can be PRESSED (1), REPEAT_PRESSED (2), or ALL_RELEASED (3). The command trigger mode is enabled. Once this value is set, isFinalKeyDown and isRepeat are ignored. This parameter is optional for the [inputConsumer.on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey) API and mandatory for the [inputConsumer.onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey2) API.
 
 **Type:** [KeyCommandTriggerType](arkts-input-inputconsumer-keycommandtriggertype-e-sys.md)
 

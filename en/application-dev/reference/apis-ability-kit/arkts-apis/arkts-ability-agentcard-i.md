@@ -28,7 +28,7 @@ A unique identifier for the agent card.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-agentId: string--><!--Device-AgentCard-agentId: string-End-->
 
@@ -48,7 +48,7 @@ Application-related information for the agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-appInfo: AgentAppInfo--><!--Device-AgentCard-appInfo: AgentAppInfo-End-->
 
@@ -68,7 +68,7 @@ Capability set supported by the agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-capabilities?: AgentCapabilities--><!--Device-AgentCard-capabilities?: AgentCapabilities-End-->
 
@@ -88,7 +88,7 @@ The category of this agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-category: string--><!--Device-AgentCard-category: string-End-->
 
@@ -108,7 +108,7 @@ The set of interaction modes that the agent supports across all skills. This can
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-defaultInputModes: Array<string>--><!--Device-AgentCard-defaultInputModes: Array<string>-End-->
 
@@ -128,7 +128,7 @@ The media types supported as outputs from this agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-defaultOutputModes: Array<string>--><!--Device-AgentCard-defaultOutputModes: Array<string>-End-->
 
@@ -148,7 +148,7 @@ The description of the Agent's function.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-description: string--><!--Device-AgentCard-description: string-End-->
 
@@ -168,7 +168,7 @@ Url for the Agent's documentation.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-documentationUrl?: string--><!--Device-AgentCard-documentationUrl?: string-End-->
 
@@ -188,7 +188,7 @@ Extension configuration items for the agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-extension?: string--><!--Device-AgentCard-extension?: string-End-->
 
@@ -208,7 +208,7 @@ A url to an icon for the agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-iconUrl: string--><!--Device-AgentCard-iconUrl: string-End-->
 
@@ -228,7 +228,7 @@ The name of the Agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-name: string--><!--Device-AgentCard-name: string-End-->
 
@@ -248,7 +248,7 @@ Service provider information for the Agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-provider?: AgentProvider--><!--Device-AgentCard-provider?: AgentProvider-End-->
 
@@ -268,7 +268,7 @@ Skills represent the abilities of an agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-skills: Array<AgentSkill>--><!--Device-AgentCard-skills: Array<AgentSkill>-End-->
 
@@ -290,7 +290,7 @@ The type of the AgentCard. When `type` is `agentConstant.AgentCardType.LOW_CODE`
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AgentCard-type?: agentConstant.AgentCardType--><!--Device-AgentCard-type?: agentConstant.AgentCardType-End-->
 
@@ -310,7 +310,7 @@ Version of the Agent (format defined by provider, e.g., "1.0.0").
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentCard-version: string--><!--Device-AgentCard-version: string-End-->
 

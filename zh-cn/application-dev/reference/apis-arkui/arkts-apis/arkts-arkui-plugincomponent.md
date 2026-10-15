@@ -1,4 +1,4 @@
-# @ohos.pluginComponent(PluginComponentManager)
+# @ohos.pluginComponent(插件组件管理器)
 
 本模块供插件组件的使用方请求组件与数据，供提供方发送组件模板和数据。
 

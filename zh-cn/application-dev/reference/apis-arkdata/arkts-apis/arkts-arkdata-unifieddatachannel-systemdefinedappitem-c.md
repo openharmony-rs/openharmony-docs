@@ -34,7 +34,7 @@ get abilityName(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-get abilityName(): string--><!--Device-SystemDefinedAppItem-get abilityName(): string-End-->
 
@@ -52,7 +52,7 @@ set abilityName(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-set abilityName(value: string)--><!--Device-SystemDefinedAppItem-set abilityName(value: string)-End-->
 
@@ -72,7 +72,7 @@ get appIconId(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-get appIconId(): string--><!--Device-SystemDefinedAppItem-get appIconId(): string-End-->
 
@@ -90,7 +90,7 @@ set appIconId(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-set appIconId(value: string)--><!--Device-SystemDefinedAppItem-set appIconId(value: string)-End-->
 
@@ -110,7 +110,7 @@ get appId(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-get appId(): string--><!--Device-SystemDefinedAppItem-get appId(): string-End-->
 
@@ -128,7 +128,7 @@ set appId(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-set appId(value: string)--><!--Device-SystemDefinedAppItem-set appId(value: string)-End-->
 
@@ -148,7 +148,7 @@ get appLabelId(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-get appLabelId(): string--><!--Device-SystemDefinedAppItem-get appLabelId(): string-End-->
 
@@ -166,7 +166,7 @@ set appLabelId(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-set appLabelId(value: string)--><!--Device-SystemDefinedAppItem-set appLabelId(value: string)-End-->
 
@@ -186,7 +186,7 @@ get appName(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-get appName(): string--><!--Device-SystemDefinedAppItem-get appName(): string-End-->
 
@@ -204,7 +204,7 @@ set appName(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-set appName(value: string)--><!--Device-SystemDefinedAppItem-set appName(value: string)-End-->
 
@@ -224,7 +224,7 @@ get bundleName(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-get bundleName(): string--><!--Device-SystemDefinedAppItem-get bundleName(): string-End-->
 
@@ -242,7 +242,7 @@ set bundleName(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemDefinedAppItem-set bundleName(value: string)--><!--Device-SystemDefinedAppItem-set bundleName(value: string)-End-->
 

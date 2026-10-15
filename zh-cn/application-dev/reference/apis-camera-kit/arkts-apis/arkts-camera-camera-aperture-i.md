@@ -32,7 +32,7 @@ getPhysicalAperture(): number
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-Aperture-getPhysicalAperture(): double--><!--Device-Aperture-getPhysicalAperture(): double-End-->
 
@@ -62,7 +62,7 @@ setPhysicalAperture(aperture: number): void
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-Aperture-setPhysicalAperture(aperture: double): void--><!--Device-Aperture-setPhysicalAperture(aperture: double): void-End-->
 

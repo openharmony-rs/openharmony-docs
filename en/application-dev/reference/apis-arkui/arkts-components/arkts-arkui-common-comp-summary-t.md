@@ -6,6 +6,8 @@ declare type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Su
 
 Provides a summary of drag-related data.
 
+**Type:** import('../api/@ohos.data.unifiedDataChannel').default.Summary
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Provides a summary of drag-related data.
 <!--Device-unnamed-declare type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Summary--><!--Device-unnamed-declare type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Summary-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.data.unifiedDataChannel').default.Summary

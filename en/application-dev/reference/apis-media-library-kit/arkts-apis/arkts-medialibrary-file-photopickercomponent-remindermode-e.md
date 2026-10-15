@@ -12,6 +12,22 @@ Enumerates the types of the reminder when the number of selected items reaches t
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## MASK
+
+```TypeScript
+MASK = 2
+```
+
+Grayed-out hint.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ReminderMode-MASK = 2--><!--Device-ReminderMode-MASK = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## NONE
 
 ```TypeScript
@@ -41,21 +57,5 @@ Toast message.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ReminderMode-TOAST = 1--><!--Device-ReminderMode-TOAST = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## MASK
-
-```TypeScript
-MASK = 2
-```
-
-Grayed-out hint.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ReminderMode-MASK = 2--><!--Device-ReminderMode-MASK = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -12,6 +12,20 @@ Enumerates the join styles of a pen. The join style defines the shape of the joi
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+## BEVEL_JOIN
+
+```TypeScript
+BEVEL_JOIN = 2
+```
+
+Beveled corner.
+
+**Since:** 12
+
+<!--Device-JoinStyle-BEVEL_JOIN = 2--><!--Device-JoinStyle-BEVEL_JOIN = 2-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
 ## MITER_JOIN
 
 ```TypeScript
@@ -37,19 +51,5 @@ Round corner.
 **Since:** 12
 
 <!--Device-JoinStyle-ROUND_JOIN = 1--><!--Device-JoinStyle-ROUND_JOIN = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## BEVEL_JOIN
-
-```TypeScript
-BEVEL_JOIN = 2
-```
-
-Beveled corner.
-
-**Since:** 12
-
-<!--Device-JoinStyle-BEVEL_JOIN = 2--><!--Device-JoinStyle-BEVEL_JOIN = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

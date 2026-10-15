@@ -71,4 +71,7 @@ Starts a new service extension ability. If the target service extension ability 
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-caller-released) | The caller has been released. |
 
+<!--Del-->
 **Examples**
+
+<!--DelEnd-->

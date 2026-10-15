@@ -8,10 +8,10 @@ export type Position3 = Vec3
 
 @typedef { Vec3 }
 
+**类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
+
 **起始版本：** 12
 
 <!--Device-unnamed-export type Position3 = Vec3--><!--Device-unnamed-export type Position3 = Vec3-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)

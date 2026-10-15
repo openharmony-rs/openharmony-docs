@@ -56,17 +56,18 @@ Requests a transient task.
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-let myReason = 'test requestSuspendDelay';
+// Reason for requesting the transient task
+let delayReason = 'test requestSuspendDelay';
 try {
-  let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+  let delayInfo = backgroundTaskManager.requestSuspendDelay(delayReason, () => {
   // Callback function, which is triggered when the transient task is about to time out. The application can carry out data clear and annotation, and cancel the task in the callback.
   // The callback is independent of the service of the application. After the request for the transient task is successful, the application normally executes its own service logic.
-    console.info("Request suspension delay will time out.");
+    console.info('Request suspension delay will time out.');
   })
-  let id = delayInfo.requestId;
+  let requestId = delayInfo.requestId;
   let time = delayInfo.actualDelayTime;
-  console.info("The requestId is: " + id);
-  console.info("The actualDelayTime is: " + time);
+  console.info('The requestId is: ' + requestId);
+  console.info('The actualDelayTime is: ' + time);
 } catch (error) {
   console.error(`requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }

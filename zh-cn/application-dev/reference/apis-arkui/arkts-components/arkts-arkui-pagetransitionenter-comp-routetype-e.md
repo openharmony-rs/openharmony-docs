@@ -28,22 +28,6 @@ None = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Push
-
-```TypeScript
-Push = 1
-```
-
-跳转到下一页面，例如从PageA跳转到PageB。对于PageA，指定RouteType为None或Push的PageTransitionExit组件样式生效；对于PageB，指定RouteType为None或Push的PageTransitionEnter组件样式生效。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-RouteType-Push = 1--><!--Device-RouteType-Push = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Pop
 
 ```TypeScript
@@ -57,5 +41,21 @@ Pop = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-RouteType-Pop = 2--><!--Device-RouteType-Pop = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Push
+
+```TypeScript
+Push = 1
+```
+
+跳转到下一页面，例如从PageA跳转到PageB。对于PageA，指定RouteType为None或Push的PageTransitionExit组件样式生效；对于PageB，指定RouteType为None或Push的PageTransitionEnter组件样式生效。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RouteType-Push = 1--><!--Device-RouteType-Push = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

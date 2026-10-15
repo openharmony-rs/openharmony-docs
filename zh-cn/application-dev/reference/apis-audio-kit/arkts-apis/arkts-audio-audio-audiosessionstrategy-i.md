@@ -32,7 +32,7 @@ concurrencyMode: AudioConcurrencyMode
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AudioSessionStrategy-concurrencyMode: AudioConcurrencyMode--><!--Device-AudioSessionStrategy-concurrencyMode: AudioConcurrencyMode-End-->
 

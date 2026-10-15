@@ -24,13 +24,13 @@ import { window } from '@kit.ArkUI';
 focusOnShow?: boolean
 ```
 
-窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-2)显示时是否自动获焦，默认为true。该参数对主窗、模态窗、dialog窗口不生效。
+窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow3)显示时是否自动获焦，默认为true。该参数对主窗、模态窗、dialog窗口不生效。
 
 **类型：** boolean
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-ShowWindowOptions-focusOnShow?: boolean--><!--Device-ShowWindowOptions-focusOnShow?: boolean-End-->
 

@@ -28,6 +28,22 @@ ACCOUNT_LOGIN = 0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+## CLOUD_DATA_CHANGE
+
+```TypeScript
+CLOUD_DATA_CHANGE = 3
+```
+
+云端数据变更触发模式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3--><!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
 ## CLOUD_SWITCH_ON
 
 ```TypeScript
@@ -57,22 +73,6 @@ NETWORK_RECOVER = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoSyncTriggerMode-NETWORK_RECOVER = 2--><!--Device-AutoSyncTriggerMode-NETWORK_RECOVER = 2-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-## CLOUD_DATA_CHANGE
-
-```TypeScript
-CLOUD_DATA_CHANGE = 3
-```
-
-云端数据变更触发模式。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3--><!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

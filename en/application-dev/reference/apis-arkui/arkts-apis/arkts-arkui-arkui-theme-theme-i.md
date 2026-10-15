@@ -4,7 +4,7 @@
 export declare interface Theme
 ```
 
-Defines the struct of Theme.
+Defines the **Theme** object in use, which can be obtained through [onWillApplyTheme](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onwillapplytheme).
 
 **Since:** 12
 
@@ -24,7 +24,7 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 colors: Colors
 ```
 
-Define tokens associated with color resources.
+Color resources of the theme.
 
 **Type:** [Colors](arkts-arkui-arkui-theme-colors-i.md)
 

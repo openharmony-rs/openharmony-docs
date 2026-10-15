@@ -16,4 +16,4 @@ type TouchGuideType = 'touchBegin' | 'touchEnd' | 'touchGuideGesture'
 | --- | --- |
 | 'touchBegin' | 表示触摸浏览时开始触摸。 |
 | 'touchEnd' | 表示触摸浏览时结束触摸。 |
-| 'touchGuideGesture' | 表示触摸浏览手势。 [since 26.0.0] |
+| 'touchGuideGesture' | 表示触摸浏览手势。<br>**起始版本：** 26.0.0 |

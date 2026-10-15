@@ -52,7 +52,7 @@ You need to restore the component display status as required in the drag end cal
 data?: unifiedDataChannel.UnifiedData
 ```
 
-Data carried in the dragging process.
+Data carried during the drag process. When both this parameter and **dataLoadParams** are set, **dataLoadParams** takes effect.
 
 The default value is null.
 
@@ -138,7 +138,7 @@ ID of the touch point on the screen when dragging is started. The value is an in
 previewOptions?: DragPreviewOptions
 ```
 
-Processing mode of the drag preview and the display of the number badge during dragging.
+Processing mode of the drag preview backdrop and display of the badge count during the drag process. Pass this parameter when you need to customize the drag preview backdrop effect or the badge count display mode. If this parameter is not passed, the system default drag preview backdrop processing mode and badge count display policy are used.
 
 **Type:** [DragPreviewOptions](../arkts-components/arkts-arkui-common-comp-dragpreviewoptions-i.md)
 

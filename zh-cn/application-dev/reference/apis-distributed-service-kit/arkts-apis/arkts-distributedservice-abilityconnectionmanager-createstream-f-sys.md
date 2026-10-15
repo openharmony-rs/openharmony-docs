@@ -47,6 +47,7 @@ function createStream(sessionId: number, param: StreamParam): Promise<number>
 | [32300003](../errorcode-device-manager.md#32300003-比特率不支持) | Bitrate not supported. |
 | [32300004](../errorcode-device-manager.md#32300004-色彩空间不支持) | Color space not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,3 +73,5 @@ abilityConnectionManager.createStream(sessionId, {name: 'receive', role: 0}).the
   abilityConnectionManager.startStream(streamId);
 })
 ```
+
+<!--DelEnd-->

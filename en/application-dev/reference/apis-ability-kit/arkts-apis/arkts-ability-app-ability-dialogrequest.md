@@ -26,8 +26,8 @@ import { dialogRequest } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getRequestCallback](arkts-ability-dialogrequest-getrequestcallback-f.md) | Obtains the request callback from Want. |
-| [getRequestInfo](arkts-ability-dialogrequest-getrequestinfo-f.md) |  |
+| [getRequestCallback](arkts-ability-dialogrequest-getrequestcallback-f.md#getrequestcallback) | Obtains the request callback from Want. |
+| [getRequestInfo](arkts-ability-dialogrequest-getrequestinfo-f.md#getrequestinfo) |  |
 
 ### Interfaces
 

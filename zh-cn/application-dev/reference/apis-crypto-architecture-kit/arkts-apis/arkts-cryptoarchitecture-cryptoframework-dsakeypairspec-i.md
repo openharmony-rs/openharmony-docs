@@ -36,7 +36,7 @@ params: DSACommonParamsSpec
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DSAKeyPairSpec-params: DSACommonParamsSpec--><!--Device-DSAKeyPairSpec-params: DSACommonParamsSpec-End-->
 
@@ -56,7 +56,7 @@ DSA算法的公钥pk。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DSAKeyPairSpec-pk: bigint--><!--Device-DSAKeyPairSpec-pk: bigint-End-->
 
@@ -76,7 +76,7 @@ DSA算法的私钥sk。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DSAKeyPairSpec-sk: bigint--><!--Device-DSAKeyPairSpec-sk: bigint-End-->
 

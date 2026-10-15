@@ -32,19 +32,19 @@ Indicates that all the data size of the bundle is obtained.
 
 **System API:** This is a system API.
 
-## GET_BUNDLE_WITHOUT_INSTALL_SIZE
+## GET_BUNDLE_WITHOUT_CACHE_SIZE
 
 ```TypeScript
-GET_BUNDLE_WITHOUT_INSTALL_SIZE = 0x00000001
+GET_BUNDLE_WITHOUT_CACHE_SIZE = 0x00000004
 ```
 
-Indicates that the installation size is excluded from the bundle statistics.
+Indicates that the cache size is excluded from the bundle statistics.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_INSTALL_SIZE = 0x00000001--><!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_INSTALL_SIZE = 0x00000001-End-->
+<!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_CACHE_SIZE = 0x00000004--><!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_CACHE_SIZE = 0x00000004-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -68,19 +68,19 @@ Indicates that the data size is excluded from the bundle statistics.
 
 **System API:** This is a system API.
 
-## GET_BUNDLE_WITHOUT_CACHE_SIZE
+## GET_BUNDLE_WITHOUT_INSTALL_SIZE
 
 ```TypeScript
-GET_BUNDLE_WITHOUT_CACHE_SIZE = 0x00000004
+GET_BUNDLE_WITHOUT_INSTALL_SIZE = 0x00000001
 ```
 
-Indicates that the cache size is excluded from the bundle statistics.
+Indicates that the installation size is excluded from the bundle statistics.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_CACHE_SIZE = 0x00000004--><!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_CACHE_SIZE = 0x00000004-End-->
+<!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_INSTALL_SIZE = 0x00000001--><!--Device-GetBundleStatsFlag-GET_BUNDLE_WITHOUT_INSTALL_SIZE = 0x00000001-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

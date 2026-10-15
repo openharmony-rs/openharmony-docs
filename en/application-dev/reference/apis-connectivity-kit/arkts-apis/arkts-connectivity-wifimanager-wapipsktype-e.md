@@ -4,7 +4,7 @@
 enum WapiPskType
 ```
 
-Describes the WAPI pre-shared key Type. @enum { int }
+Describes the WAPI pre-shared key Type.
 
 **Since:** 12
 

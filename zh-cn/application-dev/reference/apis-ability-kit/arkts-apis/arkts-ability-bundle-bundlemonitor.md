@@ -1,4 +1,4 @@
-# @ohos.bundle.bundleMonitor
+# @ohos.bundle.bundleMonitor(bundleMonitor模块)
 
 本模块提供监听应用安装，卸载，更新的能力。
 

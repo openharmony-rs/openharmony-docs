@@ -6,6 +6,8 @@ type BundleStatsMap = Record<string, BundleStatsInfo>
 
 FA模型的使用信息属性集合。
 
+**类型：** Record&lt;string, [BundleStatsInfo](arkts-backgroundtasks-usagestatistics-bundlestatsinfo-i-sys.md)&gt;
+
 **起始版本：** 9
 
 <!--Device-usageStatistics-type BundleStatsMap = Record<string, BundleStatsInfo>--><!--Device-usageStatistics-type BundleStatsMap = Record<string, BundleStatsInfo>-End-->
@@ -13,5 +15,3 @@ FA模型的使用信息属性集合。
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** Record&lt;string, [BundleStatsInfo](arkts-backgroundtasks-usagestatistics-bundlestatsinfo-i-sys.md)&gt;

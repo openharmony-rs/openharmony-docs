@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getprofilebyability1"></a>
+
 ## getProfileByAbility
 
 ```TypeScript
@@ -14,15 +16,15 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 
 Obtains the JSON string array of the current application's configuration file based on the given module name, ability name, and metadata name (name configured under **metadata** in [abilities](../../../quick-start/module-configuration-file.md#abilities) of the **module.json5** file). This API uses an asynchronous callback to return the result.
 
-> NOTE
+> **NOTE:** 
 > 
 > If the profile uses the resource reference format, the return value retains this format (for example,
 > **$string:res_id**). You can obtain the referenced resources through related APIs of the
-> [resource manager module](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md).
+> [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md).
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-bundleManager-function getProfileByAbility(moduleName: string, abilityName: string, metadataName: string, callback: AsyncCallback<Array<string>>): void--><!--Device-bundleManager-function getProfileByAbility(moduleName: string, abilityName: string, metadataName: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -35,7 +37,7 @@ Obtains the JSON string array of the current application's configuration file ba
 | moduleName | string | Yes | Module name. |
 | abilityName | string | Yes | Name of the UIAbility component. |
 | metadataName | string | Yes | [Metadata name](../../../quick-start/module-configuration-file.md#metadata) of the UIAbility component, that is, **name** of the **metadata** tag under [abilities](../../../quick-start/module-configuration-file.md#abilities) in the **module.json5** file. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is **Array&lt;string&gt;**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, err is undefined and data is the obtained Array<string>; otherwise, err is an error object. |
 
 **Error codes:**
 
@@ -73,7 +75,7 @@ try {
 ```
 
 
-<a id="getprofilebyability-1"></a>
+<a id="getprofilebyability2"></a>
 
 ## getProfileByAbility
 
@@ -83,15 +85,15 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 
 Obtains the JSON string array of the current application's configuration file based on the given module name, ability name, and metadata name (name configured under **metadata** in [abilities](../../../quick-start/module-configuration-file.md#abilities) of the **module.json5** file). This API uses a promise to return the result.
 
-> NOTE
+> **NOTE:** 
 > 
 > If the profile uses the resource reference format, the return value retains this format (for example,
 > **$string:res_id**). You can obtain the referenced resources through related APIs of the
-> [resource manager module](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md).
+> [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md).
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-bundleManager-function getProfileByAbility(moduleName: string, abilityName: string, metadataName?: string): Promise<Array<string>>--><!--Device-bundleManager-function getProfileByAbility(moduleName: string, abilityName: string, metadataName?: string): Promise<Array<string>>-End-->
 

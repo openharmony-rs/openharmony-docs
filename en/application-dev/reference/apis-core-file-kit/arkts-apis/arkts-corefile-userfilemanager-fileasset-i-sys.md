@@ -24,6 +24,8 @@ Provides APIs for encapsulating file asset attributes.
 import { userFileManager } from '@kit.CoreFileKit';
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -51,6 +53,7 @@ Closes a file. This API uses an asynchronous callback to return the result.
 | fd | number | Yes | File descriptor of the file to close. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -83,7 +86,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="close-1"></a>
+<!--DelEnd-->
+
+<a id="close2"></a>
 
 ## close
 
@@ -117,6 +122,7 @@ Closes this file. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -143,6 +149,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="commitmodify1"></a>
 
 ## commitModify
 
@@ -172,6 +182,7 @@ Commits the modification on the file metadata to the database. This API uses an 
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -205,7 +216,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="commitmodify-1"></a>
+<!--DelEnd-->
+
+<a id="commitmodify2"></a>
 
 ## commitModify
 
@@ -235,6 +248,7 @@ Commits the modification on the file metadata to the database. This API uses a p
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -267,6 +281,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="favorite1"></a>
+
 ## favorite
 
 ```TypeScript
@@ -296,6 +314,7 @@ Favorites or unfavorites a file. This API uses an asynchronous callback to retur
 | isFavorite | boolean | Yes | Whether to favorite or unfavorite the file. The value **true** means to favorite the file; the value **false** means the opposite. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -322,7 +341,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="favorite-1"></a>
+<!--DelEnd-->
+
+<a id="favorite2"></a>
 
 ## favorite
 
@@ -358,6 +379,7 @@ Favorites or unfavorites this file asset. This API uses a promise to return the 
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -382,6 +404,8 @@ async function example(mgr: userFileManager.UserFileManager) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## get
 
@@ -415,6 +439,7 @@ Obtains the value of a **FileAsset** parameter.
 | --- | --- |
 | [MemberType](arkts-corefile-userfilemanager-membertype-t-sys.md) | Returns the member parameter. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -440,6 +465,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getexif1"></a>
 
 ## getExif
 
@@ -521,6 +550,7 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -561,7 +591,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getexif-1"></a>
+<!--DelEnd-->
+
+<a id="getexif2"></a>
 
 ## getExif
 
@@ -643,6 +675,7 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -673,6 +706,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getthumbnail1"></a>
+
 ## getThumbnail
 
 ```TypeScript
@@ -701,6 +738,7 @@ Obtains the thumbnail of a file. This API uses an asynchronous callback to retur
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Yes | Callback used to return the PixelMap of the thumbnail. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -728,7 +766,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getthumbnail-1"></a>
+<!--DelEnd-->
+
+<a id="getthumbnail2"></a>
 
 ## getThumbnail
 
@@ -759,6 +799,7 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 | size | [image.Size](../../apis-image-kit/arkts-apis/arkts-image-image-size-i.md) | Yes | Size of the thumbnail. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Yes | Callback used to return the PixelMap of the thumbnail. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -788,7 +829,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getthumbnail-2"></a>
+<!--DelEnd-->
+
+<a id="getthumbnail3"></a>
 
 ## getThumbnail
 
@@ -824,6 +867,7 @@ Obtains the file thumbnail of the given size. This API uses a promise to return 
 | --- | --- |
 | Promise&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Promise that returns the PixelMap of the thumbnail. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -851,6 +895,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="open1"></a>
 
 ## open
 
@@ -886,6 +934,7 @@ Opens this file asset. This API uses an asynchronous callback to return the resu
 | mode | string | Yes | Mode of opening the file, for example, **'r'** (read-only), **'w'** (write-only), and **'rw'** (read-write). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the file descriptor of the file opened. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -906,7 +955,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="open-1"></a>
+<!--DelEnd-->
+
+<a id="open2"></a>
 
 ## open
 
@@ -947,6 +998,7 @@ Opens this file asset. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;number&gt; | Promise that returns the file descriptor of the file opened. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -969,6 +1021,8 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## set
 
@@ -997,6 +1051,7 @@ Sets a **FileAsset** parameter.
 | member | string | Yes | Member parameter name, for example, **ImageVideoKey.DISPLAY_NAME**. |
 | value | string | Yes | Value to set. Only the values of **DISPLAY_NAME** and **TITLE** can be changed. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -1021,6 +1076,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="sethidden1"></a>
 
 ## setHidden
 
@@ -1060,6 +1119,7 @@ The private files set to hidden state are located in the private album (in hidde
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
 | 13900020 | if parameter is invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -1086,7 +1146,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="sethidden-1"></a>
+<!--DelEnd-->
+
+<a id="sethidden2"></a>
 
 ## setHidden
 
@@ -1131,6 +1193,7 @@ The private files set to hidden state are located in the private album (in hidde
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
 | 13900020 | if parameter is invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -1158,6 +1221,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setusercomment1"></a>
 
 ## setUserComment
 
@@ -1199,6 +1266,7 @@ Sets user comment information of an image or video. This API uses an asynchronou
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -1230,7 +1298,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="setusercomment-1"></a>
+<!--DelEnd-->
+
+<a id="setusercomment2"></a>
 
 ## setUserComment
 
@@ -1277,6 +1347,7 @@ Sets user comment information of an image or video. This API uses a promise to r
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -1301,6 +1372,8 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## displayName
 

@@ -4,31 +4,11 @@
 declare enum AccessibilitySamePageMode
 ```
 
-Enumerates the same-page modes for cross-process embedded components and their host applications. @enum { number }
+Enumerates the same-page modes for cross-process embedded components and their host applications.
 
 **Since:** 18
 
 <!--Device-unnamed-declare enum AccessibilitySamePageMode--><!--Device-unnamed-declare enum AccessibilitySamePageMode-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## SEMI_SILENT
-
-```TypeScript
-SEMI_SILENT = 0
-```
-
-Ignores initial page loading events and root node page events from the cross-process embedded component.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
-
-<!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0--><!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +29,25 @@ Ignores all page events from the cross-process embedded component.
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
 <!--Device-AccessibilitySamePageMode-FULL_SILENT = 1--><!--Device-AccessibilitySamePageMode-FULL_SILENT = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SEMI_SILENT
+
+```TypeScript
+SEMI_SILENT = 0
+```
+
+Ignores initial page loading events and root node page events from the cross-process embedded component.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0--><!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

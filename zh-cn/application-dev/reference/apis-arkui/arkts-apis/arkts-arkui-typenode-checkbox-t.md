@@ -6,6 +6,8 @@ type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>
 
 Checkbox类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxInterface, [CheckboxAttribute](../arkts-components/arkts-arkui-checkbox-comp-attribute.md)&gt;
+
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Checkbox类型的FrameNode节点类型。
 <!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>--><!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxInterface, [CheckboxAttribute](../arkts-components/arkts-arkui-checkbox-comp-attribute.md)&gt;

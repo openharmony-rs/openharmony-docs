@@ -14,24 +14,6 @@ rtt通话模式
 
 **系统接口：** 此接口为系统接口。
 
-## LOCAL_REQUEST_UPGRADE
-
-```TypeScript
-LOCAL_REQUEST_UPGRADE = 0
-```
-
-本端请求升级
-
-**起始版本：** 22
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0--><!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## LOCAL_REQUEST_DOWNGRADE
 
 ```TypeScript
@@ -45,6 +27,24 @@ LOCAL_REQUEST_DOWNGRADE = 1
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-ImsRttMode-LOCAL_REQUEST_DOWNGRADE = 1--><!--Device-ImsRttMode-LOCAL_REQUEST_DOWNGRADE = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## LOCAL_REQUEST_UPGRADE
+
+```TypeScript
+LOCAL_REQUEST_UPGRADE = 0
+```
+
+本端请求升级
+
+**起始版本：** 22
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0--><!--Device-ImsRttMode-LOCAL_REQUEST_UPGRADE = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

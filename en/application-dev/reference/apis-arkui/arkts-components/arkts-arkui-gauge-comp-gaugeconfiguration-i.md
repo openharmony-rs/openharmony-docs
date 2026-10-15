@@ -6,7 +6,7 @@ declare interface GaugeConfiguration extends CommonConfiguration<GaugeConfigurat
 
 You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** GaugeConfiguration extends CommonConfiguration<GaugeConfiguration>
+**Inheritance/Implementation:** GaugeConfiguration extends CommonConfiguration&lt;GaugeConfiguration&gt;
 
 **Since:** 12
 

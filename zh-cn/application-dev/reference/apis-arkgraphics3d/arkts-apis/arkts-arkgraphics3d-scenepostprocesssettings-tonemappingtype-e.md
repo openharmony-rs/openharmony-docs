@@ -6,8 +6,6 @@ export enum ToneMappingType
 
 色调映射类型枚举。
 
-@enum { int }
-
 **起始版本：** 12
 
 <!--Device-unnamed-export enum ToneMappingType--><!--Device-unnamed-export enum ToneMappingType-End-->

@@ -40,7 +40,7 @@ Destroys the **Connection** object to release resources. If the device needs to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Examples**
 
@@ -90,7 +90,7 @@ Connects to the server on the client after the **Connection** object is successf
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390204](../errorcode-link-enhance.md#32390204-number-of-connections-exceeding-the-limit) | The number of connection exceeds the limit. |
 | [32390300](../errorcode-link-enhance.md#32390300-internal-error) | Internal error. |
 
@@ -143,7 +143,7 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Examples**
 
@@ -199,7 +199,7 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Examples**
 
@@ -250,7 +250,7 @@ Unregisters the listener for **connectResult** events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -308,7 +308,7 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -366,7 +366,7 @@ Unregisters the listener for **dataReceived** events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -425,7 +425,7 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -483,7 +483,7 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -538,7 +538,7 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -594,7 +594,7 @@ Sends data to the server after a connection is established successfully. When th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 | [32390205](../errorcode-link-enhance.md#32390205-connection-unavailable) | Connection is not ready. |
 | [32390300](../errorcode-link-enhance.md#32390300-internal-error) | Internal error. |

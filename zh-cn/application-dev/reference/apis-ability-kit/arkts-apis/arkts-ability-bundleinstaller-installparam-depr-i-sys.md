@@ -24,7 +24,7 @@ export interface InstallParam
 installFlag: number
 ```
 
-指示安装标志, 默认值：1。 &lt;/br&gt;取值范围：&lt;/br&gt;1: 覆盖安装。&lt;/br&gt;16: 免安装。
+指示安装标志，默认值：1。 </br>取值范围：</br>1: 覆盖安装。</br>16: 免安装。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ isKeepData: boolean
 userId: number
 ```
 
-指示用户id, 默认值：调用方的userId。
+指示用户id，默认值：调用方的userId。
 
 **类型：** number
 

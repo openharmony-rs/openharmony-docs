@@ -14,19 +14,19 @@ export enum FusionFenceType
 
 **系统接口：** 此接口为系统接口。
 
-## GNSS
+## BLUETOOTH
 
 ```TypeScript
-GNSS = 1
+BLUETOOTH = 8
 ```
 
-四位二进制数的最低位，表示GNSS围栏。
+四位二进制数的最高位，表示蓝牙围栏。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FusionFenceType-GNSS = 1--><!--Device-FusionFenceType-GNSS = 1-End-->
+<!--Device-FusionFenceType-BLUETOOTH = 8--><!--Device-FusionFenceType-BLUETOOTH = 8-End-->
 
 **系统能力：** SystemCapability.Location.Location.Geofence
 
@@ -50,6 +50,24 @@ CELLULAR = 2
 
 **系统接口：** 此接口为系统接口。
 
+## GNSS
+
+```TypeScript
+GNSS = 1
+```
+
+四位二进制数的最低位，表示GNSS围栏。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FusionFenceType-GNSS = 1--><!--Device-FusionFenceType-GNSS = 1-End-->
+
+**系统能力：** SystemCapability.Location.Location.Geofence
+
+**系统接口：** 此接口为系统接口。
+
 ## WIFI
 
 ```TypeScript
@@ -63,24 +81,6 @@ WIFI = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FusionFenceType-WIFI = 4--><!--Device-FusionFenceType-WIFI = 4-End-->
-
-**系统能力：** SystemCapability.Location.Location.Geofence
-
-**系统接口：** 此接口为系统接口。
-
-## BLUETOOTH
-
-```TypeScript
-BLUETOOTH = 8
-```
-
-四位二进制数的最高位，表示蓝牙围栏。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FusionFenceType-BLUETOOTH = 8--><!--Device-FusionFenceType-BLUETOOTH = 8-End-->
 
 **系统能力：** SystemCapability.Location.Location.Geofence
 

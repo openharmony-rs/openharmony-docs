@@ -12,34 +12,6 @@ enum KeyboardType
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-表示无按键设备。
-
-**起始版本：** 9
-
-<!--Device-KeyboardType-NONE = 0--><!--Device-KeyboardType-NONE = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
-
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 1
-```
-
-表示未知按键设备。
-
-**起始版本：** 9
-
-<!--Device-KeyboardType-UNKNOWN = 1--><!--Device-KeyboardType-UNKNOWN = 1-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
-
 ## ALPHABETIC_KEYBOARD
 
 ```TypeScript
@@ -82,6 +54,20 @@ HANDWRITING_PEN = 4
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+表示无按键设备。
+
+**起始版本：** 9
+
+<!--Device-KeyboardType-NONE = 0--><!--Device-KeyboardType-NONE = 0-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+
 ## REMOTE_CONTROL
 
 ```TypeScript
@@ -93,5 +79,19 @@ REMOTE_CONTROL = 5
 **起始版本：** 9
 
 <!--Device-KeyboardType-REMOTE_CONTROL = 5--><!--Device-KeyboardType-REMOTE_CONTROL = 5-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 1
+```
+
+表示未知按键设备。
+
+**起始版本：** 9
+
+<!--Device-KeyboardType-UNKNOWN = 1--><!--Device-KeyboardType-UNKNOWN = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice

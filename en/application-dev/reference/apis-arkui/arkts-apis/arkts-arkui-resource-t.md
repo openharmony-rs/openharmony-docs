@@ -14,6 +14,8 @@ Defines reference resources for component attributes. Resource files must be sto
 > 
 > - $rawfile does not support preview through the [Previewer](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-previewer-arkts-js).
 
+**Type:** import('../api/global/resource').Resource
+
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
@@ -23,5 +25,3 @@ Defines reference resources for component attributes. Resource files must be sto
 <!--Device-unnamed-declare type Resource = import('../api/global/resource').Resource--><!--Device-unnamed-declare type Resource = import('../api/global/resource').Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/global/resource').Resource

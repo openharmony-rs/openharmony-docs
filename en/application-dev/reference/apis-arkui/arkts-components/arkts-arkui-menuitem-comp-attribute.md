@@ -6,7 +6,7 @@ declare class MenuItemAttribute extends CommonMethod<MenuItemAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** MenuItemAttribute extends CommonMethod<MenuItemAttribute>
+**Inheritance/Implementation:** MenuItemAttribute extends CommonMethod&lt;MenuItemAttribute&gt;
 
 **Since:** 9
 

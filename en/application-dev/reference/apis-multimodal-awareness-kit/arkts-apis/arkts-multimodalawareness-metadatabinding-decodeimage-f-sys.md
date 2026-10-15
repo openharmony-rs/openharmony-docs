@@ -38,10 +38,11 @@ Decodes the information carried in the image. This API uses a promise to return 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [32100001](../errorcode-metadataBinding.md#32100001-file-creation-failed) | Internal handling failed. |
 | [32100003](../errorcode-metadataBinding.md#32100003-decoding-failed) | Decode process fail. Possible causes:<br>1. Image is not an encoded Image. <br>2. Image destroyed, decoding failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,11 +50,15 @@ import { image } from '@kit.ImageKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let encodeImage: image.PixelMap | undefined = undefined;
-let captureMetadata: string = "";
-metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
+// encodedImage must be obtained from an image processed by the encodeImage API.
+let encodedImage: image.PixelMap | undefined = undefined;
+let captureMetadata: string = '';
+metadataBinding.decodeImage(encodedImage).then((metadata: string) => {
+  // Save the metadata parsed from the image to the captureMetadata variable for later use.
   captureMetadata = metadata;
 }).catch((error: BusinessError) => {
-  console.error("decode image error" + error);
+  console.error(`Failed to decode image. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

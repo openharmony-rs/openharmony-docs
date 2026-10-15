@@ -37,7 +37,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 }
 
 > When padding is set to 0 for the input box, you can set
-> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius) to 0 to
+> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius1) to 0 to
 > prevent the cursor from being truncated. If the cursor is displayed abnormally at the edge of the text box, check
 > whether this is caused by the padding and borderRadius attributes.
 > 
@@ -45,7 +45,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 > the text width. During adaptation, the component width is limited by the constraintSize attribute and the maximum
 > and minimum widths passed by the parent container. For other usage, see [Sizing](arkts-arkui-common-comp.md).
 
-**Inheritance/Implementation:** TextInputAttribute extends CommonMethod<TextInputAttribute>
+**Inheritance/Implementation:** TextInputAttribute extends CommonMethod&lt;TextInputAttribute&gt;
 
 **Since:** 7
 
@@ -101,6 +101,8 @@ Sets the display mode of the scroll bar in the inline input style editing state.
 | --- | --- | --- | --- |
 | value | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Display mode of the scroll bar in the inline input style editing state. This attribute takes effect only when the inline mode is set. |
 
+<a id="cancelbutton1"></a>
+
 ## cancelButton
 
 ```TypeScript
@@ -129,7 +131,7 @@ style: CancelButtonStyle.INPUT
 | --- | --- | --- | --- |
 | options | [CancelButtonOptions](arkts-arkui-search-comp-cancelbuttonoptions-i.md) | Yes | Style options of the right-side clear button.<br>**Since:** 18 |
 
-<a id="cancelbutton-1"></a>
+<a id="cancelbutton2"></a>
 
 ## cancelButton
 
@@ -719,11 +721,11 @@ fontFeature(value: string)
 
 Sets the font feature of the text style, such as monospaced digits.
 
-The format is: normal \| \&lt;feature-tag-value\&gt;
+The format is: normal \| \<feature-tag-value\>
 
-The format of \&lt;feature-tag-value\&gt; is: \&lt;string\&gt; \[ \&lt;integer\&gt; \| on \| off ]
+The format of \<feature-tag-value\> is: \<string\> \[ \<integer\> \| on \| off ]
 
-There can be multiple \&lt;feature-tag-value\&gt; values, separated by commas (,).
+There can be multiple \<feature-tag-value\> values, separated by commas (,).
 
 For example, the input format for using monospaced digits is "ss01" on.
 
@@ -741,7 +743,7 @@ For example, the input format for using monospaced digits is "ss01" on.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Text feature effect, used to set the advanced typography capabilities of OpenType fonts (such as monospaced digits and ligatures). The format is normal or &lt;feature-tag-value&gt;, for example, "ss01" on. |
+| value | string | Yes | Text feature effect, used to set the advanced typography capabilities of OpenType fonts (such as monospaced digits and ligatures). The format is normal or<feature-tag-value>, for example, "ss01" on. |
 
 ## fontSize
 
@@ -2237,7 +2239,7 @@ Sets the horizontal alignment of text in the input box. When not set through thi
 
 TextAlign.Start, TextAlign.Center, and TextAlign.End are supported. TextAlign.JUSTIFY is processed as TextAlign.Start.
 
-The [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute can be used to control the vertical position of the text paragraph. This component does not support controlling the horizontal position of the text paragraph through the align attribute.
+The [align](arkts-arkui-common-comp-commonmethod-c.md#align1) attribute can be used to control the vertical position of the text paragraph. This component does not support controlling the horizontal position of the text paragraph through the align attribute.
 
 - Alignment.TopStart, Alignment.Top, Alignment.TopEnd: The content is aligned to the top.  
 - Alignment.Start, Alignment.Center, Alignment.End: The content is vertically centered.  

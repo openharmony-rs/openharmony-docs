@@ -20,7 +20,9 @@ Optional attributes of the sheet. Inherits from [BindOptions](arkts-arkui-common
 blurSnapshot?: BlurSnapshotOptions
 ```
 
-Options for blur snapshot optimization of the sheet. When this property is set, blur optimization is enabled and the sheet background will be rendered using a blur snapshot. This property cannot be dynamically switched after the sheet is presented.
+Blur snapshot optimization option of the sheet popup, used to reduce the computational overhead of blur rendering. When a significant increase in power consumption is observed while using **blurStyle** or **systemMaterial** to set the blur or material effect, you can enable blur optimization. After it is enabled, if the sheet popup is configured with **blurStyle** or **systemMaterial**, its blur effect is rendered using snapshots to reduce computational overhead; if **blurStyle** or **systemMaterial** is not set, enabling **enableBlurSnapshot** does not produce a blur optimization effect. This attribute does not support dynamic switching between a value and undefined after the sheet popup is displayed. If you attempt to switch it after the popup is displayed, the setting does not take effect. The POPUP type of the sheet popup does not support blur optimization. If **enableBlurSnapshot** is set to true on the POPUP type, the setting does not take effect.
+
+Default value: undefined, which disables blur optimization
 
 **Type:** [BlurSnapshotOptions](arkts-arkui-common-comp-blursnapshotoptions-i-sys.md)
 
@@ -62,7 +64,9 @@ System material effect of the close button. Default value: **undefined**, indica
 edgeLightMode?: EdgeLightMode
 ```
 
-Edge light animation mode of the sheet. Default value: EdgeLightMode.EDGELIGHT_DISABLED .
+Sets the edge light effect animation mode of the sheet popup. The edge light flow animation takes effect only when [SheetType](arkts-arkui-common-comp-sheettype-e.md) is BOTTOM. When this attribute is not set, the edge light effect animation is disabled by default. For the edge light effect animation of the sheet popup, EDGELIGHT_AUTO: disabled on all computing devices; EDGELIGHT_ENABLED: enables the edge light effect animation; EDGELIGHT_DISABLED: disables the edge light effect animation.
+
+Default value: EdgeLightMode.EDGELIGHT_DISABLED
 
 **Type:** [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md)
 
@@ -84,9 +88,9 @@ Edge light animation mode of the sheet. Default value: EdgeLightMode.EDGELIGHT_D
 offset?: Position
 ```
 
-Offset of the sheet. Bottom spacing, which is effective only when the sheet is a bottom sheet. The **detents** property of [SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md) is not supported. This property has no effect when the y-axis value is set to a positive number.
+Sets the offset of the sheet popup. The bottom spacing can be set only when the sheet popup is a bottom popup. The **detents** attribute in [SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md) of the sheet popup is not supported. When the y-axis is set to a positive number, the setting does not take effect and falls back to the default value 0vp.
 
-Default value: 0 vp for both the x-axis and y-axis
+Default value: the x-axis coordinate is 0vp, and the y-axis coordinate is 0vp.
 
 **Type:** Position
 

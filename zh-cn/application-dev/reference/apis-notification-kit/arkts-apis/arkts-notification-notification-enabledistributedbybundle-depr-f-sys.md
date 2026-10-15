@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="enabledistributedbybundle1"></a>
+
 ## enableDistributedByBundle
 
 ```TypeScript
@@ -36,7 +38,7 @@ function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callba
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 应用程序是否支持分布式通知的回调函数。 |
 
 
-<a id="enabledistributedbybundle-1"></a>
+<a id="enabledistributedbybundle2"></a>
 
 ## enableDistributedByBundle
 

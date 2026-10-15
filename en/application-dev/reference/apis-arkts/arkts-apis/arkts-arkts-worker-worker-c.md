@@ -36,7 +36,7 @@ Creates a worker instance
 
 **Deprecated since:** 9
 
-**Substitutes:** constructor
+**Substitutes:** [constructor](arkts-arkts-worker-threadworker-c.md#constructor)
 
 <!--Device-Worker-constructor(scriptURL: string, options?: WorkerOptions)--><!--Device-Worker-constructor(scriptURL: string, options?: WorkerOptions)-End-->
 
@@ -73,7 +73,7 @@ Removes an event listener to the worker.
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-arkts-worker-threadworker-c.md#off)
 
 <!--Device-Worker-off(type: string, listener?: EventListener): void--><!--Device-Worker-off(type: string, listener?: EventListener): void-End-->
 
@@ -109,7 +109,7 @@ Adds an event listener to the worker.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-arkts-worker-threadworker-c.md#on)
 
 <!--Device-Worker-on(type: string, listener: EventListener): void--><!--Device-Worker-on(type: string, listener: EventListener): void-End-->
 
@@ -146,7 +146,7 @@ Adds an event listener to the worker and removes the event listener automaticall
 
 **Deprecated since:** 9
 
-**Substitutes:** once
+**Substitutes:** [once](arkts-arkts-worker-threadworker-c.md#once)
 
 <!--Device-Worker-once(type: string, listener: EventListener): void--><!--Device-Worker-once(type: string, listener: EventListener): void-End-->
 
@@ -183,7 +183,7 @@ The onerror attribute of the worker specifies the event handler to be called whe
 
 **Deprecated since:** 9
 
-**Substitutes:** onerror
+**Substitutes:** [onerror](arkts-arkts-worker-threadworker-c.md#onerror)
 
 <!--Device-Worker-onerror?: (err: ErrorEvent) => void--><!--Device-Worker-onerror?: (err: ErrorEvent) => void-End-->
 
@@ -207,7 +207,7 @@ Called when the Worker thread exits. The event handler is executed in the host t
 
 **Deprecated since:** 9
 
-**Substitutes:** onexit
+**Substitutes:** [onexit](arkts-arkts-worker-threadworker-c.md#onexit)
 
 <!--Device-Worker-onexit?: (code: number) => void--><!--Device-Worker-onexit?: (code: number) => void-End-->
 
@@ -231,7 +231,7 @@ The onmessage attribute of the worker specifies the event handler to be called t
 
 **Deprecated since:** 9
 
-**Substitutes:** onmessage
+**Substitutes:** [onmessage](arkts-arkts-worker-threadworker-c.md#onmessage)
 
 <!--Device-Worker-onmessage?: (event: MessageEvent) => void--><!--Device-Worker-onmessage?: (event: MessageEvent) => void-End-->
 
@@ -255,7 +255,7 @@ The onmessage attribute of the worker specifies the event handler when the worke
 
 **Deprecated since:** 9
 
-**Substitutes:** onmessageerror
+**Substitutes:** [onmessageerror](arkts-arkts-worker-threadworker-c.md#onmessageerror)
 
 <!--Device-Worker-onmessageerror?: (event: MessageEvent) => void--><!--Device-Worker-onmessageerror?: (event: MessageEvent) => void-End-->
 
@@ -266,6 +266,8 @@ The onmessage attribute of the worker specifies the event handler when the worke
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | event | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | Yes |  |
+
+<a id="postmessage1"></a>
 
 ## postMessage
 
@@ -279,7 +281,7 @@ Sends a message to the worker thread. The data is transferred using the structur
 
 **Deprecated since:** 9
 
-**Substitutes:** postMessage
+**Substitutes:** [postMessage](arkts-arkts-worker-threadworker-c.md#postmessage)
 
 <!--Device-Worker-postMessage(message: Object, transfer: ArrayBuffer[]): void--><!--Device-Worker-postMessage(message: Object, transfer: ArrayBuffer[]): void-End-->
 
@@ -304,7 +306,7 @@ let buffer = new ArrayBuffer(8);
 workerInstance.postMessage(buffer, [buffer]);
 ```
 
-<a id="postmessage-1"></a>
+<a id="postmessage2"></a>
 
 ## postMessage
 
@@ -318,7 +320,7 @@ Sends a message to the worker thread. The data is transferred using the structur
 
 **Deprecated since:** 9
 
-**Substitutes:** postMessage
+**Substitutes:** [postMessage](arkts-arkts-worker-threadworker-c.md#postmessage)
 
 <!--Device-Worker-postMessage(message: Object, options?: PostMessageOptions): void--><!--Device-Worker-postMessage(message: Object, options?: PostMessageOptions): void-End-->
 
@@ -357,7 +359,7 @@ Terminates the worker thread to stop the worker from receiving messages
 
 **Deprecated since:** 9
 
-**Substitutes:** terminate
+**Substitutes:** [terminate](arkts-arkts-worker-threadworker-c.md#terminate)
 
 <!--Device-Worker-terminate(): void--><!--Device-Worker-terminate(): void-End-->
 

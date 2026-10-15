@@ -12,35 +12,19 @@ Describe the error reason.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## RSP_SUCCESS
+## RSP_INVALID_PARAM
 
 ```TypeScript
-RSP_SUCCESS = 0
+RSP_INVALID_PARAM = 4
 ```
 
-Constant representing success response for set report.
+Constant representing error response for set report due to invalid parameter.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ErrorReason-RSP_SUCCESS = 0--><!--Device-ErrorReason-RSP_SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## RSP_NOT_READY
-
-```TypeScript
-RSP_NOT_READY = 1
-```
-
-Constant representing error response for set report due to not ready.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ErrorReason-RSP_NOT_READY = 1--><!--Device-ErrorReason-RSP_NOT_READY = 1-End-->
+<!--Device-ErrorReason-RSP_INVALID_PARAM = 4--><!--Device-ErrorReason-RSP_INVALID_PARAM = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -60,35 +44,35 @@ Constant representing error response for set report due to invalid report ID.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## RSP_UNSUPPORTED_REQ
+## RSP_NOT_READY
 
 ```TypeScript
-RSP_UNSUPPORTED_REQ = 3
+RSP_NOT_READY = 1
 ```
 
-Constant representing error response for set report due to unsupported request.
+Constant representing error response for set report due to not ready.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3--><!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3-End-->
+<!--Device-ErrorReason-RSP_NOT_READY = 1--><!--Device-ErrorReason-RSP_NOT_READY = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## RSP_INVALID_PARAM
+## RSP_SUCCESS
 
 ```TypeScript
-RSP_INVALID_PARAM = 4
+RSP_SUCCESS = 0
 ```
 
-Constant representing error response for set report due to invalid parameter.
+Constant representing success response for set report.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ErrorReason-RSP_INVALID_PARAM = 4--><!--Device-ErrorReason-RSP_INVALID_PARAM = 4-End-->
+<!--Device-ErrorReason-RSP_SUCCESS = 0--><!--Device-ErrorReason-RSP_SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -105,5 +89,21 @@ Constant representing error response for Set Report with unknown reason.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ErrorReason-RSP_UNKNOWN = 14--><!--Device-ErrorReason-RSP_UNKNOWN = 14-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## RSP_UNSUPPORTED_REQ
+
+```TypeScript
+RSP_UNSUPPORTED_REQ = 3
+```
+
+Constant representing error response for set report due to unsupported request.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3--><!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

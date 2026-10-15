@@ -265,31 +265,31 @@ struct TextTimerDemo {
 
   build() {
     Column({ space: 10 }) {
-      Text('Set the font color').fontColor(0xCCCCCC)
+      Text ('Set the font color').fontColor(0xCCCCCC)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontColor(Color.Blue)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontColor(Color.Gray)
 
-      Text('Set the font size').fontColor(0xCCCCCC)
+      Text ('Set the font size').fontColor(0xCCCCCC)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontSize(10)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontSize(30)
 
-      Text('Set the font style').fontColor(0xCCCCCC)
+      Text ('Set the font style').fontColor(0xCCCCCC)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontStyle(FontStyle.Normal)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontStyle(FontStyle.Italic)
 
-      Text('Set the font weight').fontColor(0xCCCCCC)
+      Text ('Set the font weight').fontColor(0xCCCCCC)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontWeight(FontWeight.Lighter)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontWeight(FontWeight.Bolder)
 
-      Text('Set the font family').fontColor(0xCCCCCC)
+      Text ('Set the font family').fontColor(0xCCCCCC)
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
         .fontFamily('HMOS Color Emoji')
       TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
@@ -302,11 +302,11 @@ struct TextTimerDemo {
 }
 ```
 
-### Example 6: Setting the Initial Timing Time
+### Example 6: Setting the Initial Time
 
-This example sets the initial timing time of the timer through the startTime attribute of [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md).
+This example shows how to set the initial time for the timer using the startTime attribute of [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md).
 
-Since API version 26.0.0, the startTime attribute has been added to [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md).
+The startTime attribute is added to [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md) since API version 26.0.0.
 
 ```TypeScript
 // xxx.ets

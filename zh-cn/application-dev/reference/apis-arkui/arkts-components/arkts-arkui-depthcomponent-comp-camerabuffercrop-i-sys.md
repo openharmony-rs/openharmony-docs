@@ -66,7 +66,7 @@ cropOffset: CropOffset
 
 裁剪区域偏移量。
 
-**类型：** CropOffset
+**类型：** [CropOffset](arkts-arkui-depthcomponent-comp-cropoffset-i-sys.md)
 
 **起始版本：** 26.0.0
 

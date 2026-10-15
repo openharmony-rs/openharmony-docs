@@ -4,9 +4,11 @@
 export type ContinueCallback = _ContinueCallback
 ```
 
-表示跨设备迁移Mission完成后，返回迁移结果的回调函数，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md)
+表示跨设备迁移Mission完成后，返回迁移结果的回调函数，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission1)
 
 @typedef { _ContinueCallback }
+
+**类型：** _ContinueCallback
 
 **起始版本：** 10
 
@@ -17,5 +19,3 @@ export type ContinueCallback = _ContinueCallback
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _ContinueCallback

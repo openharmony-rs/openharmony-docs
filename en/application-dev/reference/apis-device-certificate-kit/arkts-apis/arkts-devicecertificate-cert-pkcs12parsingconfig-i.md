@@ -32,7 +32,7 @@ Whether to obtain the certificate. The default value is **true**. **true**: yes;
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Pkcs12ParsingConfig-needsCert?: boolean--><!--Device-Pkcs12ParsingConfig-needsCert?: boolean-End-->
 
@@ -52,7 +52,7 @@ Whether to obtain other certificates. The default value is **false**. **true**: 
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Pkcs12ParsingConfig-needsOtherCerts?: boolean--><!--Device-Pkcs12ParsingConfig-needsOtherCerts?: boolean-End-->
 
@@ -74,7 +74,7 @@ Whether to obtain the private key. The default value is **true**.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Pkcs12ParsingConfig-needsPrivateKey?: boolean--><!--Device-Pkcs12ParsingConfig-needsPrivateKey?: boolean-End-->
 
@@ -92,7 +92,7 @@ Password.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Pkcs12ParsingConfig-password: string--><!--Device-Pkcs12ParsingConfig-password: string-End-->
 
@@ -116,7 +116,7 @@ Format of the private key to be obtained. Currently, the PEM and DER formats are
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Pkcs12ParsingConfig-privateKeyFormat?: EncodingBaseFormat--><!--Device-Pkcs12ParsingConfig-privateKeyFormat?: EncodingBaseFormat-End-->
 

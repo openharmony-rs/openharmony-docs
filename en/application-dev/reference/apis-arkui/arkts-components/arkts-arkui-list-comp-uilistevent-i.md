@@ -4,7 +4,7 @@
 declare interface UIListEvent extends UIScrollableCommonEvent
 ```
 
-Represents the return value of the [getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-1) method in **frameNode**, which can be used to set scroll events for a **List** node.
+Represents the return value of the [getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent2) method in **frameNode**, which can be used to set scroll events for a **List** node.
 
 **UIListEvent** inherits from [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md).
 

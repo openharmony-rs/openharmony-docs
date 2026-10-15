@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="getdlpgatheringpolicy1"></a>
+
 ## getDLPGatheringPolicy
 
 ```TypeScript
@@ -42,6 +44,7 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,8 +57,10 @@ dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.Gathe
 }); // Obtain the sandbox gathering policy.
 ```
 
+<!--DelEnd-->
 
-<a id="getdlpgatheringpolicy-1"></a>
+
+<a id="getdlpgatheringpolicy2"></a>
 
 ## getDLPGatheringPolicy
 
@@ -94,6 +99,7 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -107,3 +113,5 @@ dlpPermission.getDLPGatheringPolicy((err, gatheringPolicy) => {
   }
 }); // Obtain the sandbox gathering policy.
 ```
+
+<!--DelEnd-->

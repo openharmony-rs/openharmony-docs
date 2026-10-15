@@ -241,6 +241,36 @@ Obtains the size and position of a child component relative to its container.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
 
+## getScrollState
+
+```TypeScript
+getScrollState(): ScrollState
+```
+
+Obtains the current scroll state of the scrollable component bound to this scroller.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-Scroller-getScrollState(): ScrollState--><!--Device-Scroller-getScrollState(): ScrollState-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | Current scroll state. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
+
 ## isAtEnd
 
 ```TypeScript
@@ -355,7 +385,9 @@ By default, the **Scroll** component comes with an animation, while the **Grid**
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | Yes | Edge position to scroll to. |
-| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | No | Mode of scrolling to the edge position.<br>&lt;em&gt;Atomic service API&lt;/em&gt;: This API can be used in atomic services since API version 12.<br>**Since:** 12 |
+| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | No | Mode of scrolling to the edge position.<br><em>Atomic service API</em>: This API can be used in atomic services since API version 12.<br>**Since:** 12 |
+
+<a id="scrollpage1"></a>
 
 ## scrollPage
 
@@ -381,7 +413,7 @@ Scrolls to the next or previous page.
 | --- | --- | --- | --- |
 | value | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | Yes | Paging mode. It contains the **next** (whether to page down) and **animation** (whether to enable the paging animation) fields, which are used to specify the paging behavior.<br>**Since:** 14 |
 
-<a id="scrollpage-1"></a>
+<a id="scrollpage2"></a>
 
 ## scrollPage
 
@@ -407,7 +439,7 @@ Scrolls to the next or previous page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | { next: boolean; direction?: Axis } | Yes | next: Whether to turn to the next page. The value &lt;em&gt;true&lt;/em&gt; means to scroll to the next page, and &lt;em&gt;false&lt;/em&gt; means to scroll to the previous page. direction: Scrolling direction: horizontal or vertical. |
+| value | { next: boolean; direction?: Axis } | Yes | next: Whether to turn to the next page. The value<em>true</em> means to scroll to the next page, and <em>false</em> means to scroll to the previous page. direction: Scrolling direction: horizontal or vertical. |
 
 ## scrollTo
 
@@ -461,7 +493,7 @@ When the smooth animation is enabled, all items passed through are loaded and la
 > 
 > 2. When refreshing the data source in [LazyForEach](arkts-arkui-lazyforeach-comp.md), [ForEach](arkts-arkui-foreach-comp-attribute.md#foreachattribute), or [Repeat](arkts-arkui-repeat-comp.md), ensure that this API is called after the data refresh is complete.
 > 
-> 3. Since API version 11, [contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset) and [contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset) are supported in **List**. Since API version 22,contentStartOffsetand contentEndOffsetcan be set in the **Grid** and **WaterFlow** components.
+> 3. Since API version 11, [contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset1) and [contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset1) are supported in **List**. Since API version 22,contentStartOffsetand contentEndOffsetcan be set in the **Grid** and **WaterFlow** components.
 > 
 > - When **contentStartOffset** is set for the scroll container component and **ScrollAlign** is set to **START**,the head of the specified item is aligned with the **contentStartOffset** position of the scroll container component when scrolling ends.
 > 

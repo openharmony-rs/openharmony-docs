@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="getimsshortmessageformat1"></a>
+
 ## getImsShortMessageFormat
 
 ```TypeScript
@@ -39,6 +41,7 @@ Obtains the SMS format supported by the IMS, for example, **3gpp**, **3gpp2**, o
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,8 +53,10 @@ sms.getImsShortMessageFormat((err: BusinessError, data: string) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getimsshortmessageformat-1"></a>
+
+<a id="getimsshortmessageformat2"></a>
 
 ## getImsShortMessageFormat
 
@@ -84,6 +89,7 @@ Obtains the SMS format supported by the IMS, for example, **3gpp**, **3gpp2**, o
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -96,3 +102,5 @@ sms.getImsShortMessageFormat().then((data: string) => {
     console.error(`getImsShortMessageFormat failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

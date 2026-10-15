@@ -32,7 +32,7 @@ Type of window rectangle coordinate system.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-RotationChangeResult-rectType: RectType--><!--Device-RotationChangeResult-rectType: RectType-End-->
 
@@ -50,7 +50,7 @@ Information about the window's rectangle relative to the screen or parent window
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-RotationChangeResult-windowRect: Rect--><!--Device-RotationChangeResult-windowRect: Rect-End-->
 

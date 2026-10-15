@@ -38,6 +38,9 @@ The function of window animation finished callback.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->

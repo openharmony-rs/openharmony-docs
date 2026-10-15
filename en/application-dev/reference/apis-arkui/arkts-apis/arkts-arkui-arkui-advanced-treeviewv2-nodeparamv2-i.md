@@ -4,7 +4,7 @@
 export interface NodeParamV2
 ```
 
-Declare NodeParamV2
+Defines the node parameter API, which is used to configure the properties of a tree node.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,9 @@ import { CallbackParamV2, NodeParamV2, TreeControllerV2, TreeListenerV2, TreeLis
 container?: OnContainerCallback
 ```
 
-set subcomponent binded on tree item.
+Right-click child component container bound to the node. The child component is decorated by **@Builder**. Pass this parameter when a right-click menu or custom right-click operation needs to be provided for the node. If it is not passed, the node does not display a right-click menu.
+
+Default value: **() =&gt; void**, which means no right-click child component container is bound.
 
 **Since:** 26.0.0
 
@@ -42,7 +44,13 @@ set subcomponent binded on tree item.
 currentNodeId?: number
 ```
 
-Set currentNodeId.
+Current child node ID.
+
+Value range: greater than or equal to -1.
+
+It cannot be the root node ID or null; otherwise, an exception is thrown. Two identical **currentNodeId** values cannot be set.
+
+Default value: **-1**, which means the node ID is not specified and is automatically assigned by the system.
 
 **Type:** number
 
@@ -62,7 +70,9 @@ Set currentNodeId.
 editIcon?: ResourceStr
 ```
 
-Set edit icon resource.
+Edit icon used to customize the icon displayed when the node enters the editing state. Pass this parameter when an icon different from the default state needs to be displayed in the node editing state. If it is not passed, the node displays the same icon as in the non-editing state in the editing state. When **symbolEditIconStyle** is also set, only the symbol edit icon is displayed and **editIcon** does not take effect.
+
+Default value: empty string, which means no custom edit icon is displayed in the editing state.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -82,7 +92,9 @@ Set edit icon resource.
 icon?: ResourceStr
 ```
 
-Set the icon resource.
+Icon used to customize the default icon of the node. Pass this parameter when a custom icon needs to be specified for the node. If it is not passed, the node displays the system default icon. When **symbolIconStyle** is also set, only the symbol icon is displayed and **icon** does not take effect.
+
+Default value: empty string, which means no custom icon is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -102,7 +114,7 @@ Set the icon resource.
 isFolder?: boolean
 ```
 
-Whether the node is a directory. Default value: false. true: The node is a directory. false: The node is not a directory.
+Whether the node is a folder. The value **true** indicates a directory node that can contain child nodes (used when a parent node that can be expanded is required); the value **false** indicates a leaf node that cannot contain child nodes (used when a non-expandable terminal node is required). If this parameter is not passed, the default value **false** (leaf node) is used.
 
 **Type:** boolean
 
@@ -122,7 +134,11 @@ Whether the node is a directory. Default value: false. true: The node is a direc
 parentNodeId?: number
 ```
 
-Set the parentNodeId.
+Parent node ID.
+
+Value range: greater than or equal to -1.
+
+Default value: **-1**, which is the root node ID. If the value is less than -1, the node is invalid and is not displayed in the tree view.
 
 **Type:** number
 
@@ -142,7 +158,9 @@ Set the parentNodeId.
 primaryTitle?: ResourceStr
 ```
 
-Set primary title content.
+Primary title.
+
+Default value: empty string, which means no primary title is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -162,7 +180,9 @@ Set primary title content.
 secondaryTitle?: ResourceStr
 ```
 
-Set secondary title content.
+Secondary title.
+
+Default value: empty string, which means no secondary title is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -182,7 +202,9 @@ Set secondary title content.
 selectedIcon?: ResourceStr
 ```
 
-Set selected icon resource.
+Selected icon used to customize the icon displayed when the node is selected. Pass this parameter when an icon different from the default state needs to be displayed in the node selection state. If it is not passed, the node displays the same icon as in the unselected state after being selected. When **symbolSelectedIconStyle** is also set, only the symbol selected icon is displayed and **selectedIcon** does not take effect.
+
+Default value: empty string, which means no custom selected icon is displayed when the node is selected.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -202,7 +224,9 @@ Set selected icon resource.
 symbolEditIconStyle?: SymbolGlyphModifier
 ```
 
-Set edit symbol resource.
+Symbol edit icon style used to set the system symbol icon in the node editing state. Pass this parameter when a system symbol icon is required as the edit icon (for example, when consistency with the system style and dynamic color support are needed). If it is not passed, the node displays the same icon as in the non-editing state in the editing state. Its priority is higher than that of **editIcon**. When both **symbolEditIconStyle** and **editIcon** are set, only the symbol edit icon is displayed.
+
+Default value: **undefined**
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -222,7 +246,9 @@ Set edit symbol resource.
 symbolIconStyle?: SymbolGlyphModifier
 ```
 
-Set the symbol resource.
+Symbol icon style used to set the system symbol icon. Pass this parameter when a system symbol icon is required (for example, when consistency with the system style and dynamic color support are needed). If it is not passed, the icon specified by the **icon** parameter is used. Its display priority is higher than that of icon. When both **symbolIconStyle** and **icon** are set, only the symbol icon is displayed.
+
+Default value: **undefined**, which means no Symbol icon is displayed.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -242,7 +268,9 @@ Set the symbol resource.
 symbolSelectedIconStyle?: SymbolGlyphModifier
 ```
 
-Set selected symbol resource.
+Symbol selected icon style used to set the system Symbol icon when the node is selected. Pass this parameter when a system symbol icon is required as the selected icon (for example, when consistency with the system style and dynamic color support are needed). If it is not passed, the node displays the same icon as in the unselected state after being selected. Its priority is higher than that of **selectedIcon**. When both **symbolSelectedIconStyle** and **selectedIcon** are set, only the symbol selected icon is displayed.
+
+Default value: **undefined**
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 

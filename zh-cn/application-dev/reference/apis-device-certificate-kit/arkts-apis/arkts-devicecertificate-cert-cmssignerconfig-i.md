@@ -32,7 +32,7 @@ addAttr?: boolean
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsSignerConfig-addAttr?: boolean--><!--Device-CmsSignerConfig-addAttr?: boolean-End-->
 
@@ -52,7 +52,7 @@ addCert?: boolean
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsSignerConfig-addCert?: boolean--><!--Device-CmsSignerConfig-addCert?: boolean-End-->
 
@@ -72,7 +72,7 @@ addSmimeCapAttr?: boolean
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsSignerConfig-addSmimeCapAttr?: boolean--><!--Device-CmsSignerConfig-addSmimeCapAttr?: boolean-End-->
 
@@ -90,7 +90,7 @@ mdName: string
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsSignerConfig-mdName: string--><!--Device-CmsSignerConfig-mdName: string-End-->
 
@@ -114,7 +114,7 @@ RSA签名填充方式。默认值为：PKCS1_PADDING。<br>当设置为 PKCS1_PS
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsSignerConfig-rsaSignaturePadding?: CmsRsaSignaturePadding--><!--Device-CmsSignerConfig-rsaSignaturePadding?: CmsRsaSignaturePadding-End-->
 

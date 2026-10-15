@@ -48,6 +48,7 @@ Called once to initialize the extension ability.
 | --- | --- | --- | --- |
 | want | object | Yes | Indicates connection information about the wallpaper extension ability. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,6 +61,8 @@ class WallpaperExt extends WallpaperExtensionAbility {
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDestroy
 
@@ -81,6 +84,7 @@ Called once to destroy the extension ability.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -92,6 +96,8 @@ class WallpaperExt extends WallpaperExtensionAbility {
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## onWallpaperChange
 
@@ -119,6 +125,7 @@ The onWallpaperChange callback is triggered when the user modifies the wallpaper
 | --- | --- | --- | --- |
 | wallpaperType | number | Yes | Indicates the wallpaper type. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -131,3 +138,5 @@ class WallpaperExt extends WallpaperExtensionAbility {
     }
 }
 ```
+
+<!--DelEnd-->

@@ -14,17 +14,17 @@ Enumerates the device-cloud file sync states.
 
 **System API:** This is a system API.
 
-## UPLOADING
+## COMPLETED
 
 ```TypeScript
-UPLOADING = 0
+COMPLETED = 2
 ```
 
-The file is being uploaded.
+Sync completed.
 
 **Since:** 11
 
-<!--Device-FileSyncState-UPLOADING = 0--><!--Device-FileSyncState-UPLOADING = 0-End-->
+<!--Device-FileSyncState-COMPLETED = 2--><!--Device-FileSyncState-COMPLETED = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -41,22 +41,6 @@ The file is being downloaded.
 **Since:** 11
 
 <!--Device-FileSyncState-DOWNLOADING = 1--><!--Device-FileSyncState-DOWNLOADING = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**System API:** This is a system API.
-
-## COMPLETED
-
-```TypeScript
-COMPLETED = 2
-```
-
-Sync completed.
-
-**Since:** 11
-
-<!--Device-FileSyncState-COMPLETED = 2--><!--Device-FileSyncState-COMPLETED = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -94,6 +78,22 @@ The file is going to be uploaded.
 
 **System API:** This is a system API.
 
+## UPLOAD_FAILURE
+
+```TypeScript
+UPLOAD_FAILURE = 6
+```
+
+The file fails to be uploaded.
+
+**Since:** 12
+
+<!--Device-FileSyncState-UPLOAD_FAILURE = 6--><!--Device-FileSyncState-UPLOAD_FAILURE = 6-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**System API:** This is a system API.
+
 ## UPLOAD_SUCCESS
 
 ```TypeScript
@@ -110,17 +110,17 @@ The file has been successfully uploaded.
 
 **System API:** This is a system API.
 
-## UPLOAD_FAILURE
+## UPLOADING
 
 ```TypeScript
-UPLOAD_FAILURE = 6
+UPLOADING = 0
 ```
 
-The file fails to be uploaded.
+The file is being uploaded.
 
-**Since:** 12
+**Since:** 11
 
-<!--Device-FileSyncState-UPLOAD_FAILURE = 6--><!--Device-FileSyncState-UPLOAD_FAILURE = 6-End-->
+<!--Device-FileSyncState-UPLOADING = 0--><!--Device-FileSyncState-UPLOADING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

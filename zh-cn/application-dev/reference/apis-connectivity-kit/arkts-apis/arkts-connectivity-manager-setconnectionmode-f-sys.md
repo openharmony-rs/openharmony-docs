@@ -12,13 +12,15 @@ import { manager } from '@kit.ConnectivityKit';
 function setConnectionMode(mode: ConnectionMode, duration: number): Promise<void>
 ```
 
-设置连接模式。使用Promise异步回调。
+设置连接模式。使用Promise异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-manager-function setConnectionMode(mode: ConnectionMode, duration: int): Promise<void>--><!--Device-manager-function setConnectionMode(mode: ConnectionMode, duration: int): Promise<void>-End-->
 
@@ -43,9 +45,9 @@ function setConnectionMode(mode: ConnectionMode, duration: number): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the chip does not support it. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100040](../errorcode-nearlink-service.md#36100040-整数超出范围) | Integer out of range. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |

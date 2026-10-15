@@ -8,7 +8,7 @@ The [universal attributes](arkts-arkui-common-comp.md) are supported.
 
 The following events are supported:
 
-**Inheritance/Implementation:** DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
+**Inheritance/Implementation:** DynamicComponentAttribute extends CommonMethod&lt;DynamicComponentAttribute&gt;
 
 **Since:** 26.0.0
 

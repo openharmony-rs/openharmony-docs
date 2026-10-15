@@ -32,7 +32,7 @@ Sets the OIS mode.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-OIS-setOISMode(mode: OISMode): void--><!--Device-OIS-setOISMode(mode: OISMode): void-End-->
 
@@ -63,7 +63,7 @@ Sets custom OIS bias values for each axis.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-OIS-setOISModeCustom(pitch: double, yaw: double): void--><!--Device-OIS-setOISModeCustom(pitch: double, yaw: double): void-End-->
 

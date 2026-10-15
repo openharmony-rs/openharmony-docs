@@ -4,11 +4,31 @@
 export interface AppProvisionInfo
 ```
 
-应用[HarmonyAppProvision配置文件](../../../security/app-provision-structure.md)中的信息。
+应用[HarmonyAppProvision配置文件](../../../security/app-provision-structure.md)中的信息，可以通过[getAppProvisionInfo](arkts-ability-bundlemanager-getappprovisioninfo-f-sys.md)获取。
 
 **起始版本：** 10
 
 <!--Device-unnamed-export interface AppProvisionInfo--><!--Device-unnamed-export interface AppProvisionInfo-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+## additionalInfo
+
+```TypeScript
+readonly additionalInfo?: string
+```
+
+应用程序的Additional信息。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppProvisionInfo-readonly additionalInfo?: string--><!--Device-AppProvisionInfo-readonly additionalInfo?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -63,6 +83,46 @@ readonly appIdentifier: string
 **起始版本：** 11
 
 <!--Device-AppProvisionInfo-readonly appIdentifier: string--><!--Device-AppProvisionInfo-readonly appIdentifier: string-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+## appIndex
+
+```TypeScript
+readonly appIndex?: number
+```
+
+应用的索引。取值限定为整数。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppProvisionInfo-readonly appIndex?: int--><!--Device-AppProvisionInfo-readonly appIndex?: int-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+## appServiceCapabilities
+
+```TypeScript
+readonly appServiceCapabilities?: string
+```
+
+应用的ServiceCapabilities。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppProvisionInfo-readonly appServiceCapabilities?: string--><!--Device-AppProvisionInfo-readonly appServiceCapabilities?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -153,6 +213,26 @@ readonly organization: string
 **起始版本：** 12
 
 <!--Device-AppProvisionInfo-readonly organization: string--><!--Device-AppProvisionInfo-readonly organization: string-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+## specifiedDistributionType
+
+```TypeScript
+readonly specifiedDistributionType?: string
+```
+
+应用指定的分发类型。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppProvisionInfo-readonly specifiedDistributionType?: string--><!--Device-AppProvisionInfo-readonly specifiedDistributionType?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

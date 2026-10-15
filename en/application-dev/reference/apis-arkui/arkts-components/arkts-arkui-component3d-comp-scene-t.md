@@ -8,6 +8,8 @@ Provides methods for controlling the 3d scene
 
 @typedef { import('../api/@ohos.graphics.scene').Scene }
 
+**Type:** import('../api/@ohos.graphics.scene').Scene
+
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
@@ -15,5 +17,3 @@ Provides methods for controlling the 3d scene
 <!--Device-unnamed-declare type Scene = import('../api/@ohos.graphics.scene').Scene--><!--Device-unnamed-declare type Scene = import('../api/@ohos.graphics.scene').Scene-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
-
-**Type:** import('../api/@ohos.graphics.scene').Scene

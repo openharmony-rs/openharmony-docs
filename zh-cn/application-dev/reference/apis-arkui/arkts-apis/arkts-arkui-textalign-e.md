@@ -30,24 +30,6 @@ Center = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Start
-
-```TypeScript
-Start = 1
-```
-
-水平对齐首部。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextAlign-Start = 1--><!--Device-TextAlign-Start = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## End
 
 ```TypeScript
@@ -123,5 +105,23 @@ RIGHT = 5
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-TextAlign-RIGHT = 5--><!--Device-TextAlign-RIGHT = 5-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Start
+
+```TypeScript
+Start = 1
+```
+
+水平对齐首部。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextAlign-Start = 1--><!--Device-TextAlign-Start = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

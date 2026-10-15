@@ -6,6 +6,8 @@
 import { sharing } from '@kit.NetworkKit';
 ```
 
+<a id="getstatstxbytes1"></a>
+
 ## getStatsTxBytes
 
 ```TypeScript
@@ -40,6 +42,7 @@ function getStatsTxBytes(callback: AsyncCallback<number>): void
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ sharing.getStatsTxBytes((error: BusinessError, data: number) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getstatstxbytes-1"></a>
+
+<a id="getstatstxbytes2"></a>
 
 ## getStatsTxBytes
 
@@ -89,6 +94,7 @@ function getStatsTxBytes(): Promise<number>
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -104,3 +110,5 @@ sharing
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

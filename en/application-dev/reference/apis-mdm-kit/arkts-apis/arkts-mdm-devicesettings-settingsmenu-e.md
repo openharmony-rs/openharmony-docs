@@ -12,323 +12,19 @@ Describes the setting item list.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## ACCOUNT_ID
+## ABOUT_DEVICE
 
 ```TypeScript
-ACCOUNT_ID = 0
+ABOUT_DEVICE = 22
 ```
 
-Account.
+About.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingsMenu-ACCOUNT_ID = 0--><!--Device-SettingsMenu-ACCOUNT_ID = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## WIFI
-
-```TypeScript
-WIFI = 1
-```
-
-Wi-Fi.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-WIFI = 1--><!--Device-SettingsMenu-WIFI = 1-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## WIFI_PROXY_SETTINGS
-
-```TypeScript
-WIFI_PROXY_SETTINGS = 2
-```
-
-WLAN proxy.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-WIFI_PROXY_SETTINGS = 2--><!--Device-SettingsMenu-WIFI_PROXY_SETTINGS = 2-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## WIFI_IP_SETTINGS
-
-```TypeScript
-WIFI_IP_SETTINGS = 3
-```
-
-WLAN IP.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-WIFI_IP_SETTINGS = 3--><!--Device-SettingsMenu-WIFI_IP_SETTINGS = 3-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## BLUETOOTH
-
-```TypeScript
-BLUETOOTH = 4
-```
-
-Bluetooth/NearLink & Bluetooth.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-BLUETOOTH = 4--><!--Device-SettingsMenu-BLUETOOTH = 4-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## NETWORK
-
-```TypeScript
-NETWORK = 5
-```
-
-Network.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-NETWORK = 5--><!--Device-SettingsMenu-NETWORK = 5-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MOBILE_NETWORK
-
-```TypeScript
-MOBILE_NETWORK = 6
-```
-
-Mobile network.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-MOBILE_NETWORK = 6--><!--Device-SettingsMenu-MOBILE_NETWORK = 6-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SUPER_DEVICE
-
-```TypeScript
-SUPER_DEVICE = 7
-```
-
-More connectivity options - Super Device.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-SUPER_DEVICE = 7--><!--Device-SettingsMenu-SUPER_DEVICE = 7-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MORE_CONNECTIVITY_OPTIONS
-
-```TypeScript
-MORE_CONNECTIVITY_OPTIONS = 8
-```
-
-More connectivity options.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-MORE_CONNECTIVITY_OPTIONS = 8--><!--Device-SettingsMenu-MORE_CONNECTIVITY_OPTIONS = 8-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## HOME_SCREEN_STYLE
-
-```TypeScript
-HOME_SCREEN_STYLE = 9
-```
-
-Home screen & style.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-HOME_SCREEN_STYLE = 9--><!--Device-SettingsMenu-HOME_SCREEN_STYLE = 9-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DISPLAY_BRIGHTNESS
-
-```TypeScript
-DISPLAY_BRIGHTNESS = 10
-```
-
-Display & brightness.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-DISPLAY_BRIGHTNESS = 10--><!--Device-SettingsMenu-DISPLAY_BRIGHTNESS = 10-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SOUND_VIBRATION
-
-```TypeScript
-SOUND_VIBRATION = 11
-```
-
-Sounds & vibration.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-SOUND_VIBRATION = 11--><!--Device-SettingsMenu-SOUND_VIBRATION = 11-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## NOTIFICATIONS
-
-```TypeScript
-NOTIFICATIONS = 12
-```
-
-Notifications & status bar.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-NOTIFICATIONS = 12--><!--Device-SettingsMenu-NOTIFICATIONS = 12-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## BIOMETRICS_PASSWORD
-
-```TypeScript
-BIOMETRICS_PASSWORD = 13
-```
-
-Biometrics & screen lock.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-BIOMETRICS_PASSWORD = 13--><!--Device-SettingsMenu-BIOMETRICS_PASSWORD = 13-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## APPS_AND_SERVICES
-
-```TypeScript
-APPS_AND_SERVICES = 14
-```
-
-Apps & services.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-APPS_AND_SERVICES = 14--><!--Device-SettingsMenu-APPS_AND_SERVICES = 14-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## BATTERY
-
-```TypeScript
-BATTERY = 15
-```
-
-Battery.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-BATTERY = 15--><!--Device-SettingsMenu-BATTERY = 15-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## STORAGE
-
-```TypeScript
-STORAGE = 16
-```
-
-Storage.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-STORAGE = 16--><!--Device-SettingsMenu-STORAGE = 16-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## PRIVACY_AND_SECURITY
-
-```TypeScript
-PRIVACY_AND_SECURITY = 17
-```
-
-Privacy & security.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-PRIVACY_AND_SECURITY = 17--><!--Device-SettingsMenu-PRIVACY_AND_SECURITY = 17-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DIGITAL_BALANCE
-
-```TypeScript
-DIGITAL_BALANCE = 18
-```
-
-Digital Balance.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-DIGITAL_BALANCE = 18--><!--Device-SettingsMenu-DIGITAL_BALANCE = 18-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SMART_ASSISTANT
-
-```TypeScript
-SMART_ASSISTANT = 19
-```
-
-Smart assistant.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-SMART_ASSISTANT = 19--><!--Device-SettingsMenu-SMART_ASSISTANT = 19-End-->
+<!--Device-SettingsMenu-ABOUT_DEVICE = 22--><!--Device-SettingsMenu-ABOUT_DEVICE = 22-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -348,259 +44,19 @@ Accessibility.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SYSTEM
+## ACCOUNT_ID
 
 ```TypeScript
-SYSTEM = 21
+ACCOUNT_ID = 0
 ```
 
-System.
+Account.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingsMenu-SYSTEM = 21--><!--Device-SettingsMenu-SYSTEM = 21-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## ABOUT_DEVICE
-
-```TypeScript
-ABOUT_DEVICE = 22
-```
-
-About.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-ABOUT_DEVICE = 22--><!--Device-SettingsMenu-ABOUT_DEVICE = 22-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SYSTEM_NAVIGATION
-
-```TypeScript
-SYSTEM_NAVIGATION = 23
-```
-
-System - system navigation.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-SYSTEM_NAVIGATION = 23--><!--Device-SettingsMenu-SYSTEM_NAVIGATION = 23-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## LANGUAGE_REGION
-
-```TypeScript
-LANGUAGE_REGION = 24
-```
-
-System - Language & region.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-LANGUAGE_REGION = 24--><!--Device-SettingsMenu-LANGUAGE_REGION = 24-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## INPUT_METHODS
-
-```TypeScript
-INPUT_METHODS = 25
-```
-
-System - Input method.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-INPUT_METHODS = 25--><!--Device-SettingsMenu-INPUT_METHODS = 25-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DATE_TIME
-
-```TypeScript
-DATE_TIME = 26
-```
-
-System - Date & time.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-DATE_TIME = 26--><!--Device-SettingsMenu-DATE_TIME = 26-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DATA_CLONE
-
-```TypeScript
-DATA_CLONE = 27
-```
-
-System - Data Clone.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-DATA_CLONE = 27--><!--Device-SettingsMenu-DATA_CLONE = 27-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## BACKUP_SETTINGS
-
-```TypeScript
-BACKUP_SETTINGS = 28
-```
-
-System - Backup & Restore.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-BACKUP_SETTINGS = 28--><!--Device-SettingsMenu-BACKUP_SETTINGS = 28-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## RESET
-
-```TypeScript
-RESET = 29
-```
-
-System - Reset.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-RESET = 29--><!--Device-SettingsMenu-RESET = 29-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SUPERHUB
-
-```TypeScript
-SUPERHUB = 30
-```
-
-System - SuperHub.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-SUPERHUB = 30--><!--Device-SettingsMenu-SUPERHUB = 30-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## USER_EXPERIENCE
-
-```TypeScript
-USER_EXPERIENCE = 31
-```
-
-System - User Experience Improvement Program.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-USER_EXPERIENCE = 31--><!--Device-SettingsMenu-USER_EXPERIENCE = 31-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SCREEN_CAST
-
-```TypeScript
-SCREEN_CAST = 32
-```
-
-More connectivity options - ScreenCast.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-SCREEN_CAST = 32--><!--Device-SettingsMenu-SCREEN_CAST = 32-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## PRINTERS_SCANNERS
-
-```TypeScript
-PRINTERS_SCANNERS = 33
-```
-
-Printers & scanners.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-PRINTERS_SCANNERS = 33--><!--Device-SettingsMenu-PRINTERS_SCANNERS = 33-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MOBILE_DATA
-
-```TypeScript
-MOBILE_DATA = 34
-```
-
-Mobile network - Mobile data.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-MOBILE_DATA = 34--><!--Device-SettingsMenu-MOBILE_DATA = 34-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## PERSONAL_HOTSPOT
-
-```TypeScript
-PERSONAL_HOTSPOT = 35
-```
-
-Mobile network - Personal hotspot.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-PERSONAL_HOTSPOT = 35--><!--Device-SettingsMenu-PERSONAL_HOTSPOT = 35-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SIM_MANAGEMENT
-
-```TypeScript
-SIM_MANAGEMENT = 36
-```
-
-Mobile network - SIM management.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsMenu-SIM_MANAGEMENT = 36--><!--Device-SettingsMenu-SIM_MANAGEMENT = 36-End-->
+<!--Device-SettingsMenu-ACCOUNT_ID = 0--><!--Device-SettingsMenu-ACCOUNT_ID = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -620,6 +76,214 @@ Mobile network - Airplane mode.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## APP_DUPLICATOR
+
+```TypeScript
+APP_DUPLICATOR = 41
+```
+
+System - App duplicator.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-APP_DUPLICATOR = 41--><!--Device-SettingsMenu-APP_DUPLICATOR = 41-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## APPS_AND_SERVICES
+
+```TypeScript
+APPS_AND_SERVICES = 14
+```
+
+Apps & services.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-APPS_AND_SERVICES = 14--><!--Device-SettingsMenu-APPS_AND_SERVICES = 14-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## BACKUP_SETTINGS
+
+```TypeScript
+BACKUP_SETTINGS = 28
+```
+
+System - Backup & Restore.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-BACKUP_SETTINGS = 28--><!--Device-SettingsMenu-BACKUP_SETTINGS = 28-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## BATTERY
+
+```TypeScript
+BATTERY = 15
+```
+
+Battery.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-BATTERY = 15--><!--Device-SettingsMenu-BATTERY = 15-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## BIOMETRICS_PASSWORD
+
+```TypeScript
+BIOMETRICS_PASSWORD = 13
+```
+
+Biometrics & screen lock.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-BIOMETRICS_PASSWORD = 13--><!--Device-SettingsMenu-BIOMETRICS_PASSWORD = 13-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## BLUETOOTH
+
+```TypeScript
+BLUETOOTH = 4
+```
+
+Bluetooth/NearLink & Bluetooth.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-BLUETOOTH = 4--><!--Device-SettingsMenu-BLUETOOTH = 4-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## DATA_CLONE
+
+```TypeScript
+DATA_CLONE = 27
+```
+
+System - Data Clone.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-DATA_CLONE = 27--><!--Device-SettingsMenu-DATA_CLONE = 27-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## DATE_TIME
+
+```TypeScript
+DATE_TIME = 26
+```
+
+System - Date & time.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-DATE_TIME = 26--><!--Device-SettingsMenu-DATE_TIME = 26-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## DIGITAL_BALANCE
+
+```TypeScript
+DIGITAL_BALANCE = 18
+```
+
+Digital Balance.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-DIGITAL_BALANCE = 18--><!--Device-SettingsMenu-DIGITAL_BALANCE = 18-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## DISPLAY_BRIGHTNESS
+
+```TypeScript
+DISPLAY_BRIGHTNESS = 10
+```
+
+Display & brightness.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-DISPLAY_BRIGHTNESS = 10--><!--Device-SettingsMenu-DISPLAY_BRIGHTNESS = 10-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## HOME_SCREEN_STYLE
+
+```TypeScript
+HOME_SCREEN_STYLE = 9
+```
+
+Home screen & style.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-HOME_SCREEN_STYLE = 9--><!--Device-SettingsMenu-HOME_SCREEN_STYLE = 9-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## INPUT_METHODS
+
+```TypeScript
+INPUT_METHODS = 25
+```
+
+System - Input method.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-INPUT_METHODS = 25--><!--Device-SettingsMenu-INPUT_METHODS = 25-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## LANGUAGE_REGION
+
+```TypeScript
+LANGUAGE_REGION = 24
+```
+
+System - Language & region.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-LANGUAGE_REGION = 24--><!--Device-SettingsMenu-LANGUAGE_REGION = 24-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## MANAGE_DATA_USAGE
 
 ```TypeScript
@@ -636,19 +300,307 @@ Mobile network - Management data usage.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## VPN_SETTINGS
+## MOBILE_DATA
 
 ```TypeScript
-VPN_SETTINGS = 39
+MOBILE_DATA = 34
 ```
 
-Mobile network - VPN.
+Mobile network - Mobile data.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingsMenu-VPN_SETTINGS = 39--><!--Device-SettingsMenu-VPN_SETTINGS = 39-End-->
+<!--Device-SettingsMenu-MOBILE_DATA = 34--><!--Device-SettingsMenu-MOBILE_DATA = 34-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MOBILE_NETWORK
+
+```TypeScript
+MOBILE_NETWORK = 6
+```
+
+Mobile network.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-MOBILE_NETWORK = 6--><!--Device-SettingsMenu-MOBILE_NETWORK = 6-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MORE_CONNECTIVITY_OPTIONS
+
+```TypeScript
+MORE_CONNECTIVITY_OPTIONS = 8
+```
+
+More connectivity options.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-MORE_CONNECTIVITY_OPTIONS = 8--><!--Device-SettingsMenu-MORE_CONNECTIVITY_OPTIONS = 8-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## NETWORK
+
+```TypeScript
+NETWORK = 5
+```
+
+Network.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-NETWORK = 5--><!--Device-SettingsMenu-NETWORK = 5-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## NOTIFICATIONS
+
+```TypeScript
+NOTIFICATIONS = 12
+```
+
+Notifications & status bar.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-NOTIFICATIONS = 12--><!--Device-SettingsMenu-NOTIFICATIONS = 12-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## PERSONAL_HOTSPOT
+
+```TypeScript
+PERSONAL_HOTSPOT = 35
+```
+
+Mobile network - Personal hotspot.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-PERSONAL_HOTSPOT = 35--><!--Device-SettingsMenu-PERSONAL_HOTSPOT = 35-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## PRINTERS_SCANNERS
+
+```TypeScript
+PRINTERS_SCANNERS = 33
+```
+
+Printers & scanners.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-PRINTERS_SCANNERS = 33--><!--Device-SettingsMenu-PRINTERS_SCANNERS = 33-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## PRIVACY_AND_SECURITY
+
+```TypeScript
+PRIVACY_AND_SECURITY = 17
+```
+
+Privacy & security.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-PRIVACY_AND_SECURITY = 17--><!--Device-SettingsMenu-PRIVACY_AND_SECURITY = 17-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## RESET
+
+```TypeScript
+RESET = 29
+```
+
+System - Reset.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-RESET = 29--><!--Device-SettingsMenu-RESET = 29-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SCREEN_CAST
+
+```TypeScript
+SCREEN_CAST = 32
+```
+
+More connectivity options - ScreenCast.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SCREEN_CAST = 32--><!--Device-SettingsMenu-SCREEN_CAST = 32-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SEARCH
+
+```TypeScript
+SEARCH = 42
+```
+
+Search.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SEARCH = 42--><!--Device-SettingsMenu-SEARCH = 42-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SIM_MANAGEMENT
+
+```TypeScript
+SIM_MANAGEMENT = 36
+```
+
+Mobile network - SIM management.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SIM_MANAGEMENT = 36--><!--Device-SettingsMenu-SIM_MANAGEMENT = 36-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SMART_ASSISTANT
+
+```TypeScript
+SMART_ASSISTANT = 19
+```
+
+Smart assistant.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SMART_ASSISTANT = 19--><!--Device-SettingsMenu-SMART_ASSISTANT = 19-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SOUND_VIBRATION
+
+```TypeScript
+SOUND_VIBRATION = 11
+```
+
+Sounds & vibration.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SOUND_VIBRATION = 11--><!--Device-SettingsMenu-SOUND_VIBRATION = 11-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## STORAGE
+
+```TypeScript
+STORAGE = 16
+```
+
+Storage.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-STORAGE = 16--><!--Device-SettingsMenu-STORAGE = 16-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SUPER_DEVICE
+
+```TypeScript
+SUPER_DEVICE = 7
+```
+
+More connectivity options - Super Device.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SUPER_DEVICE = 7--><!--Device-SettingsMenu-SUPER_DEVICE = 7-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SUPERHUB
+
+```TypeScript
+SUPERHUB = 30
+```
+
+System - SuperHub.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SUPERHUB = 30--><!--Device-SettingsMenu-SUPERHUB = 30-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SYSTEM
+
+```TypeScript
+SYSTEM = 21
+```
+
+System.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SYSTEM = 21--><!--Device-SettingsMenu-SYSTEM = 21-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SYSTEM_NAVIGATION
+
+```TypeScript
+SYSTEM_NAVIGATION = 23
+```
+
+System - system navigation.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-SYSTEM_NAVIGATION = 23--><!--Device-SettingsMenu-SYSTEM_NAVIGATION = 23-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -668,34 +620,82 @@ Display & brightness - Text & display size.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## APP_DUPLICATOR
+## USER_EXPERIENCE
 
 ```TypeScript
-APP_DUPLICATOR = 41
+USER_EXPERIENCE = 31
 ```
 
-System - App duplicator.
+System - User Experience Improvement Program.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingsMenu-APP_DUPLICATOR = 41--><!--Device-SettingsMenu-APP_DUPLICATOR = 41-End-->
+<!--Device-SettingsMenu-USER_EXPERIENCE = 31--><!--Device-SettingsMenu-USER_EXPERIENCE = 31-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SEARCH
+## VPN_SETTINGS
 
 ```TypeScript
-SEARCH = 42
+VPN_SETTINGS = 39
 ```
 
-Search.
+Mobile network - VPN.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingsMenu-SEARCH = 42--><!--Device-SettingsMenu-SEARCH = 42-End-->
+<!--Device-SettingsMenu-VPN_SETTINGS = 39--><!--Device-SettingsMenu-VPN_SETTINGS = 39-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## WIFI
+
+```TypeScript
+WIFI = 1
+```
+
+Wi-Fi.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-WIFI = 1--><!--Device-SettingsMenu-WIFI = 1-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## WIFI_IP_SETTINGS
+
+```TypeScript
+WIFI_IP_SETTINGS = 3
+```
+
+WLAN IP.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-WIFI_IP_SETTINGS = 3--><!--Device-SettingsMenu-WIFI_IP_SETTINGS = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## WIFI_PROXY_SETTINGS
+
+```TypeScript
+WIFI_PROXY_SETTINGS = 2
+```
+
+WLAN proxy.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsMenu-WIFI_PROXY_SETTINGS = 2--><!--Device-SettingsMenu-WIFI_PROXY_SETTINGS = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

@@ -14,24 +14,6 @@ enum ExecuteModeForConfiguration
 
 **系统接口：** 此接口为系统接口。
 
-## FOREGROUND
-
-```TypeScript
-FOREGROUND = 0
-```
-
-表示支持与UIAbility组件绑定的意图在前台运行。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExecuteModeForConfiguration-FOREGROUND = 0--><!--Device-ExecuteModeForConfiguration-FOREGROUND = 0-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## BACKGROUND
 
 ```TypeScript
@@ -45,6 +27,24 @@ BACKGROUND = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ExecuteModeForConfiguration-BACKGROUND = 1--><!--Device-ExecuteModeForConfiguration-BACKGROUND = 1-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+## FOREGROUND
+
+```TypeScript
+FOREGROUND = 0
+```
+
+表示支持与UIAbility组件绑定的意图在前台运行。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExecuteModeForConfiguration-FOREGROUND = 0--><!--Device-ExecuteModeForConfiguration-FOREGROUND = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

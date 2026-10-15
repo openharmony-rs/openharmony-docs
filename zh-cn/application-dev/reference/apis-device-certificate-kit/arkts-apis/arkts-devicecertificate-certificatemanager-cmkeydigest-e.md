@@ -12,20 +12,6 @@ export enum CmKeyDigest
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## CM_DIGEST_NONE
-
-```TypeScript
-CM_DIGEST_NONE = 0
-```
-
-选用此项时，表示由应用程序对待签名、验签的数据进行摘要计算。
-
-**起始版本：** 11
-
-<!--Device-CmKeyDigest-CM_DIGEST_NONE = 0--><!--Device-CmKeyDigest-CM_DIGEST_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManager
-
 ## CM_DIGEST_MD5
 
 ```TypeScript
@@ -37,6 +23,20 @@ MD5摘要算法。
 **起始版本：** 11
 
 <!--Device-CmKeyDigest-CM_DIGEST_MD5 = 1--><!--Device-CmKeyDigest-CM_DIGEST_MD5 = 1-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## CM_DIGEST_NONE
+
+```TypeScript
+CM_DIGEST_NONE = 0
+```
+
+选用此项时，表示由应用程序对待签名、验签的数据进行摘要计算。
+
+**起始版本：** 11
+
+<!--Device-CmKeyDigest-CM_DIGEST_NONE = 0--><!--Device-CmKeyDigest-CM_DIGEST_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 

@@ -8,7 +8,7 @@ WebContextMenuResult是ArkWeb组件中用于处理上下文菜单（长按页面
 
 开发者通常在需要自定义Web组件上下文菜单行为时使用WebContextMenuResult。通过`onContextMenuShow`事件回调获取WebContextMenuResult实例，结合WebContextMenuParam提供的菜单上下文信息，判断用户操作场景并调用相应的响应方法，从而实现自定义菜单交互逻辑。若开发者不执行任何菜单响应操作，则必须调用`closeContextMenu`方法关闭菜单。
 
-示例代码参考[onContextMenuShow&lt;sup&gt;9+&lt;/sup&gt;](arkts-arkweb-web-comp-attribute.md#oncontextmenushow)。
+示例代码参考[onContextMenuShow<sup>9+</sup>](arkts-arkweb-web-comp-attribute.md#oncontextmenushow)。
 
 **起始版本：** 9
 

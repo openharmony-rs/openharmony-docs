@@ -6,12 +6,12 @@ export type TlsV11CipherSuite = TlsV10CipherSuite
 
 TLS1.1的加密套件声明函数，与TLS1.0的加密套件相同。
 
+**类型：** [TlsV10CipherSuite](arkts-network-http-tlsv10ciphersuite-t.md)
+
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-http-export type TlsV11CipherSuite = TlsV10CipherSuite--><!--Device-http-export type TlsV11CipherSuite = TlsV10CipherSuite-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
-
-**类型：** [TlsV10CipherSuite](arkts-network-http-tlsv10ciphersuite-t.md)

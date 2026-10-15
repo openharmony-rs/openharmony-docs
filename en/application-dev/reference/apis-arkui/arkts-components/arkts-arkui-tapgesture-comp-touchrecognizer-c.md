@@ -4,7 +4,7 @@
 declare class TouchRecognizer
 ```
 
-Represents a touch gesture recognizer.
+Defines the touch gesture recognizer object, which supports obtaining touch target information, canceling the current touch interaction, and determining whether the bound node belongs to a specified component subtree. It is applicable to touch processing and event distribution control scenarios.
 
 **Since:** 20
 
@@ -18,7 +18,7 @@ Represents a touch gesture recognizer.
 cancelTouch(): void
 ```
 
-Sends a touch cancellation event to this touch gesture recognizer.
+Sends a touch cancellation event to the current touch gesture recognizer. It is applicable to scenarios such as page state changes, dialog box interruptions, or business logic that needs to actively terminate the current touch interaction.
 
 **Since:** 20
 
@@ -60,7 +60,7 @@ Obtains the information about the component corresponding to this touch gesture 
 isHostBelongsTo(uniqueId: number): boolean
 ```
 
-Returns whether the node bound to the current touch gesture recognizer is a descendant of the specified component.
+Returns whether the node bound to the current touch gesture recognizer is a descendant node of the passed-in component. It is applicable to scenarios where it is determined whether an event comes from the target component subtree during touch processing or gesture distribution.
 
 **Since:** 26.0.0
 
@@ -76,10 +76,10 @@ Returns whether the node bound to the current touch gesture recognizer is a desc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uniqueId | number | Yes | Unique ID of the component. This ID can be obtained via the [getUniqueId](arkts-arkui-tapgesture-comp-eventtargetinfo-c.md#getuniqueid) API. |
+| uniqueId | number | Yes | Unique ID of the component. This ID can be obtained via the [getUniqueId](arkts-arkui-tapgesture-comp-eventtargetinfo-c.md#getuniqueid) API.<br>If the value does not match any component unique ID, **false** is returned. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the node bound to the current touch gesture recognizer is a descendant of the specified component. Returns **true** if the bound node is a descendant, and **false** otherwise. |
+| boolean | Whether the node bound to the current touch gesture recognizer is a descendant node of the passed-in component. The value **true** indicates that the current bound node is a descendant node of the passed-in component, and **false** indicates the opposite. |

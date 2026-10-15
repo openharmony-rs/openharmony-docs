@@ -6,7 +6,7 @@ export interface BusinessError<T = void> extends Error
 
 Defines an error parameter. This API inherits from the **Error** class and is used to pass standard error information, including the error code and optional additional information.
 
-@typedef BusinessError [since 6 - 11] @typedef BusinessError&lt;T = void&gt; [since 12]
+@typedef BusinessError [since 6 - 11] @typedef BusinessError<T = void> [since 12]
 
 **Inheritance/Implementation:** BusinessError extends Error
 

@@ -11,7 +11,7 @@ Repeat结合，它的懒加载行为和ForEach一致。
 
 如果可滚动组件嵌套List组件，并且滚动方向相同，List组件又没有设置主轴尺寸时，List组件会全量加载子组件，导致懒加载失效。该场景推荐使用List嵌套[ListItemGroup](arkts-arkui-listitemgroup-comp.md)组件以优化性能。
 
-List的预加载是指除了加载显示区域内可见的子组件外，还支持在空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount)设置预加载的数量。默认会预加载显示区域上下各一屏子组件（最大预加载16行子组件）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
+List的预加载是指除了加载显示区域内可见的子组件外，还支持在空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount1)设置预加载的数量。默认会预加载显示区域上下各一屏子组件（最大预加载16行子组件）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
 
 - 当List和ForEach结合，如果设置了cachedCount，除了会布局显示区域内子组件外，还会在空闲时隙预布局显示区域外cachedCount范围内的子组件。  
 - 当List和LazyForEach结合，如果设置了cachedCount，除了会创建和布局显示区域内子组件外，还会在空闲时隙预创建和预布局显示区域外cachedCount范围内的子组件。  
@@ -80,12 +80,12 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| ChainAnimationOptions | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
+| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
 | [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | 收起[EXPANDED](arkts-arkui-listitem-comp-swipeactionstate-e.md)状态[ListItem](arkts-arkui-listitem-comp.md)回调事件集合，用于设置收起动画完成后回调事件。 |
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | 定义List组件的系统返回键行为。 |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | 用于设置List或ListItemGroup组件的分割线样式。 |
 | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | 用于设置List组件参数。 |
-| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-1)方法的返回值，可用于给List节点设置滚动事件。 |
+| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent2)方法的返回值，可用于给List节点设置滚动事件。 |
 | [VisibleListContentInfo](arkts-arkui-list-comp-visiblelistcontentinfo-i.md) | 用于表示List可见内容区子组件的详细信息。 |
 
 ### 类型
@@ -99,7 +99,7 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| ChainEdgeEffect | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
+| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
 | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | 设置子组件在List交叉轴方向的对齐方式。 |
 | [ListItemGroupArea](arkts-arkui-list-comp-listitemgrouparea-e.md) | 枚举了ListItemGroup各个区域。 |
 | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | 设置列表项滚动结束对齐效果。 |
@@ -113,7 +113,7 @@ List(options?: ListOptions)
 
 该示例实现了设置纵向列表，并在当前显示界面发生改变时回调索引。
 
-ListDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给List提供子组件。
+ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List提供子组件。
 
 ```TypeScript
 // ListDataSource.ets
@@ -210,7 +210,7 @@ struct ListExample {
       .listDirection(Axis.Vertical) // 排列方向
       .scrollBar(BarState.Off)
       .friction(0.6)
-      .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分界线
+      .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分割线
       .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
       .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
         console.info('first' + firstIndex);
@@ -226,7 +226,7 @@ struct ListExample {
                     ' end index in group: ' + end.itemIndexInGroup);
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset);
+         console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
       })
       .width('90%')
     }
@@ -419,7 +419,7 @@ struct ListExample {
 
 ### 示例5（跳转准确）
 
-该示例通过设置[childrenMainSize](arkts-arkui-list-comp-attribute.md#childrenmainsize)属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
+该示例通过设置[childrenMainSize](#childrenmainsize12)属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
 
 如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
@@ -605,11 +605,11 @@ struct ListItemGroupExample {
                   .height(100)
                   .fontSize(20)
                   .textAlign(TextAlign.Center)
-                  .backgroundColor(this.itemBackgroundColorArr[index * 3 +subIndex] ? 0x68B4FF: 0xFFFFFF)
+                  .backgroundColor(this.itemBackgroundColorArr[index * 3 + subIndex] ? 0x68B4FF : 0xFFFFFF)
               }
             }, (item: string) => item)
           }
-          .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
+          .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分割线
         }, (item: TimeTable) => item.title)
       }
       .width('90%')
@@ -667,7 +667,7 @@ ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示�
 
 
 ```TypeScript
-import { LengthMetrics } from '@kit.ArkUI'
+import { LengthMetrics } from '@kit.ArkUI';
 import { ListDataSource } from './ListDataSource';
 @Entry
 @Component
@@ -738,7 +738,7 @@ struct ListExample {
 
 ### 示例9（设置折行走焦）
 
-从API version 20开始，该示例通过[focusWrapMode](arkts-arkui-list-comp-attribute.md#focuswrapmode)接口，实现了List组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
 
 
 
@@ -831,7 +831,7 @@ struct ListExample {
 
 ### 示例11（设置滚动条的边距）
 
-从API version 20开始，该示例展示了通过scrollBarMargin属性设置滚动条边距并避让[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset)、[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset)区域的效果。
+从API version 20开始，该示例展示了通过[scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20)属性设置滚动条边距并避让[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)区域的效果。
 
 
 
@@ -875,7 +875,7 @@ struct ListScrollBarMarginExample {
 
 ### 示例12（使用onMove进行拖拽）
 
-从API version 12开始，该示例展示了使用ForEach的onMove接口进行拖拽排序的效果，支持拖动到List边缘时触发List的自动滚动。
+从API version 12开始，该示例展示了使用ForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到List边缘时触发List的自动滚动。
 
 
 
@@ -1151,13 +1151,13 @@ struct Index {
 
 ### 示例16（实现ListItemGroup中点击项的居中效果）
 
-该示例使用[scrollToItemInGroup](arkts-arkui-list-comp-listscroller-c.md#scrolltoitemingroup)接口，实现了点击ListItemGroup中的ListItem时将其居中的效果。
+该示例使用[scrollToItemInGroup](arkts-arkui-list-comp-listscroller-c.md#scrolltoitemingroup)接口，实现了单击[ListItemGroup](./ts-container-listitemgroup.md)中的[ListItem](./ts-container-listitem.md)时将其居中的效果。
 
 
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
-
+import { BusinessError } from '@kit.BasicServicesKit';
 class Contact {
   key: string = util.generateRandomUUID(true);
   name: string;
@@ -1232,10 +1232,15 @@ struct ContactsList {
               TapGesture({ count: 1 })
                 .onAction((event: GestureEvent) => {
                   if (event) {
-                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
-                    console.info('第', index + 1, '个ListItemGroup的第', subIndex + 1, '个ListItem的 x:', itemRect.x,
-                      ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
-                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                    try {
+                      const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                      console.info('第', index + 1, '个ListItemGroup的第', subIndex + 1, '个ListItem的 x:', itemRect.x,
+                        ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
+                      this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                    } catch (err) {
+                      let error: BusinessError = err as BusinessError;
+                      console.error(`getItemRectInGroup or scrollToItemInGroup failed, error code: ${error.code}, message: ${error.message}`);
+                    }
                   }
                 })
             )
@@ -1255,9 +1260,9 @@ struct ContactsList {
 
 ### 示例17（设置多选聚拢动画）
 
-该示例通过打开List多选聚拢动画开关，实现了通过bindContextMenu在ListItem上长按弹出菜单时聚拢显示范围内被选中的ListItem。
+该示例通过打开List多选聚拢动画开关，实现了通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)在ListItem上长按弹出菜单时聚拢显示范围内被选中的ListItem。
 
-从API version 23开始，List组件新增editModeOptions接口，可以设置多选聚拢动画开关。
+从API version 23开始，List组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 

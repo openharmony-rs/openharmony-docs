@@ -26,7 +26,7 @@ function setSync(key: string, value: string): void
 
 **废弃版本：** 9
 
-**替代接口：** setSync
+**替代接口：** [setSync](arkts-basicservices-systemparameterenhance-setsync-f-sys.md)
 
 <!--Device-systemParameter-function setSync(key: string, value: string): void--><!--Device-systemParameter-function setSync(key: string, value: string): void-End-->
 
@@ -41,6 +41,7 @@ function setSync(key: string, value: string): void
 | key | string | 是 | 待设置的系统参数key。 |
 | value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
   console.error(`Failed to set system parameter. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

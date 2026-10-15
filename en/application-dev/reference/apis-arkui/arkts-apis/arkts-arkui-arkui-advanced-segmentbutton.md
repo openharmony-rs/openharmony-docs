@@ -1,5 +1,15 @@
 # @ohos.arkui.advanced.SegmentButton
 
+The segment button component includes tab-style segment buttons and capsule-style segment buttons. Tab-style segment
+ buttons are suitable for switching between pages or content areas. Capsule-style segment buttons are suitable for
+ single-select or multi-select scenarios, including capsule-style single-select segment buttons and capsule-style
+ multi-select segment buttons. This component supports custom appearance attributes such as text color, font size,
+ font weight, background color, image size, padding, and background blur material. It supports three button styles:
+ text-only, icon-only, and icon + text. It also provides capabilities such as accessibility reading, layout direction
+ mirroring, custom rounded corners, and property animation, making it suitable for scenarios where you need to quickly
+ build a segmented selection interface that complies with design specifications.
+
+
 ## Modules to Import
 
 ```TypeScript
@@ -20,21 +30,21 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, Tab
 
 | Name | Description |
 | --- | --- |
-| [SegmentButton](arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md) | The segment button component includes tab-style segment buttons and capsule-style segment buttons. Tab-style segment buttons are suitable for switching between pages or content areas. Capsule-style segment buttons are suitable for single-select or multi-select scenarios, including capsule-style single-select segment buttons and capsule-style multi-select segment buttons. This component supports custom appearance attributes such as text color, font size, font weight, background color, image size, padding, and background blur material. It supports three button styles: text-only, icon-only, and icon + text. It also provides capabilities such as accessibility reading, layout direction mirroring, custom rounded corners, and property animation, making it suitable for scenarios where you need to quickly build a segmented selection interface that complies with design specifications. |
+| [SegmentButton](arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md) | Creates a tab-style or capsule-style segment button. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
 | [CapsuleSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonconstructionoptions-i.md) | Represents configuration options for creating a **SegmentButton** component consisting of capsule-style segment buttons. |
-| [CapsuleSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonoptions-i.md) | Provides configuration options for capsule-style segment buttons. Inherits from [CapsuleSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonconstructionoptions-i.md). |
+| [CapsuleSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonoptions-i.md) | Provides configuration options for capsule-style segment buttons. |
 | [CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i.md) | Defines the customizable attributes of a segment button component. |
 | [SegmentButtonIconItem](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttoniconitem-i.md) | Icon button information. |
 | [SegmentButtonIconTextItem](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonicontextitem-i.md) | Icon and text button information. |
 | [SegmentButtonItemOptionsConstructorOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptionsconstructoroptions-i.md) | Construct parameters for SegmentButtonItemOptions. |
 | [SegmentButtonTextItem](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttontextitem-i.md) | Text button information. |
 | [TabSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonconstructionoptions-i.md) | Creates a SegmentButtonOptions object of the tab type. |
-| [TabSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonoptions-i.md) | Provides configuration options for tab-style segment buttons. Inherits from [TabSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonconstructionoptions-i.md). |
+| [TabSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonoptions-i.md) | Provides configuration options for tab-style segment buttons. |
 
 ### Types
 

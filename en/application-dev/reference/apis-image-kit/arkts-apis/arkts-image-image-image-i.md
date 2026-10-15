@@ -6,9 +6,9 @@ interface Image
 
 The **Image** class is used to obtain image content.
 
-An Image instance is returned when [readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage) and [readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage) are called.
+An Image instance is returned when [readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage1) and [readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage1) are called.
 
-Image properties are initialized only during image creation and cannot be changed later. These properties do not affect the actual image content. You should always rely on the properties written by the image producer, that is, the content actually sent to the [ImageReceiver](arkts-image-image-imagereceiver-i.md) by the data source. Images occupy a large amount of memory. When you finish using an Image instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Image properties are initialized only during image creation and cannot be changed later. These properties do not affect the actual image content. You should always rely on the properties written by the image producer, that is, the content actually sent to the [ImageReceiver](arkts-image-image-imagereceiver-i.md) by the data source. Images occupy a large amount of memory. When you finish using an Image instance, call [release](#release1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 9
 
@@ -62,6 +62,8 @@ function GetBufferData(img: image.Image) {
 }
 ```
 
+<a id="getcomponent1"></a>
+
 ## getComponent
 
 ```TypeScript
@@ -99,7 +101,7 @@ async function GetComponent(img : image.Image) {
 }
 ```
 
-<a id="getcomponent-1"></a>
+<a id="getcomponent2"></a>
 
 ## getComponent
 
@@ -189,6 +191,8 @@ async function GetMetadata(img : image.Image) {
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -231,7 +235,7 @@ async function Release(img : image.Image) {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -353,7 +357,7 @@ For details about the best practices of camera preview and photo capture, see [D
 readonly timestamp: number
 ```
 
-Image timestamp. Timestamps, measured in nanoseconds, are usually monotonically increasing. The specific meaning and baseline of these timestamps are determined by the image producer, which is the camera in the camera preview and photo scenarios. As a result, images from different producers may carry timestamps with distinct meanings and baselines, making direct comparison between them infeasible. To obtain the generation time of a photo, you can use [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty) to read the related Exif information.
+Image timestamp. Timestamps, measured in nanoseconds, are usually monotonically increasing. The specific meaning and baseline of these timestamps are determined by the image producer, which is the camera in the camera preview and photo scenarios. As a result, images from different producers may carry timestamps with distinct meanings and baselines, making direct comparison between them infeasible. To obtain the generation time of a photo, you can use [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty1) to read the related Exif information.
 
 **Type:** number
 

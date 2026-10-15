@@ -46,10 +46,11 @@ function getRemoteDeviceType(deviceId: string): Promise<DeviceType>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 12 - 17 |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs.<br>**适用版本：** 18+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->

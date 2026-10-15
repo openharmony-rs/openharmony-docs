@@ -30,17 +30,17 @@ GET_APPLICATION_INFO_DEFAULT = 0x00000000
 
 **系统接口：** 此接口为系统接口。
 
-## GET_APPLICATION_INFO_WITH_PERMISSION
+## GET_APPLICATION_INFO_WITH_DISABLE
 
 ```TypeScript
-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001
+GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004
 ```
 
-用于获取包含permission的applicationInfo。
+用于获取包含禁用应用程序的applicationInfo。
 
 **起始版本：** 9
 
-<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001-End-->
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -62,17 +62,17 @@ GET_APPLICATION_INFO_WITH_METADATA = 0x00000002
 
 **系统接口：** 此接口为系统接口。
 
-## GET_APPLICATION_INFO_WITH_DISABLE
+## GET_APPLICATION_INFO_WITH_PERMISSION
 
 ```TypeScript
-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004
+GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001
 ```
 
-用于获取包含禁用应用程序的applicationInfo。
+用于获取包含permission的applicationInfo。
 
 **起始版本：** 9
 
-<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004-End-->
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

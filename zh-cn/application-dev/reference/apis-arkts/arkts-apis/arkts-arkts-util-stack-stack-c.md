@@ -90,7 +90,7 @@ Stack的构造函数。调用后创建一个空的Stack实例对象，初始leng
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Stack-constructor()--><!--Device-Stack-constructor()-End-->
 
@@ -167,7 +167,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Stack-isEmpty(): boolean--><!--Device-Stack-isEmpty(): boolean-End-->
 
@@ -208,7 +208,7 @@ locate(element: T): number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Stack-locate(element: T): int--><!--Device-Stack-locate(element: T): int-End-->
 
@@ -255,7 +255,7 @@ peek(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Stack-peek(): T--><!--Device-Stack-peek(): T-End-->
 
@@ -297,7 +297,7 @@ pop(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Stack-pop(): T--><!--Device-Stack-pop(): T-End-->
 
@@ -340,7 +340,7 @@ push(item: T): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Stack-push(item: T): T--><!--Device-Stack-push(item: T): T-End-->
 

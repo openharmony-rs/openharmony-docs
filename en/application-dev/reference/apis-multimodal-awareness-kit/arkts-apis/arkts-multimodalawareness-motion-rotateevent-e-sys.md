@@ -14,6 +14,60 @@ Enum for rotate event.
 
 **System API:** This is a system API.
 
+## INVERTED
+
+```TypeScript
+INVERTED = 2
+```
+
+Indicates the device is inverted.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RotateEvent-INVERTED = 2--><!--Device-RotateEvent-INVERTED = 2-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
+**System API:** This is a system API.
+
+## LEFT
+
+```TypeScript
+LEFT = 1
+```
+
+Indicates the device is rotated left.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RotateEvent-LEFT = 1--><!--Device-RotateEvent-LEFT = 1-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
+**System API:** This is a system API.
+
+## RIGHT
+
+```TypeScript
+RIGHT = 3
+```
+
+Indicates the device is rotated right.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RotateEvent-RIGHT = 3--><!--Device-RotateEvent-RIGHT = 3-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
+**System API:** This is a system API.
+
 ## UNCHANGED
 
 ```TypeScript
@@ -45,60 +99,6 @@ Indicates the device is upright.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-RotateEvent-UPRIGHT = 0--><!--Device-RotateEvent-UPRIGHT = 0-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
-**System API:** This is a system API.
-
-## LEFT
-
-```TypeScript
-LEFT = 1
-```
-
-Indicates the device is rotated left.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-RotateEvent-LEFT = 1--><!--Device-RotateEvent-LEFT = 1-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
-**System API:** This is a system API.
-
-## INVERTED
-
-```TypeScript
-INVERTED = 2
-```
-
-Indicates the device is inverted.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-RotateEvent-INVERTED = 2--><!--Device-RotateEvent-INVERTED = 2-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
-**System API:** This is a system API.
-
-## RIGHT
-
-```TypeScript
-RIGHT = 3
-```
-
-Indicates the device is rotated right.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-RotateEvent-RIGHT = 3--><!--Device-RotateEvent-RIGHT = 3-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 

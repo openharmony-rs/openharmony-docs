@@ -12,24 +12,6 @@ declare enum GridDirection
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Row
-
-```TypeScript
-Row
-```
-
-主轴布局方向沿水平方向布局，即自左往右先填满一行，再去填下一行。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-GridDirection-Row--><!--Device-GridDirection-Row-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Column
 
 ```TypeScript
@@ -48,24 +30,6 @@ Column
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## RowReverse
-
-```TypeScript
-RowReverse
-```
-
-主轴布局方向沿水平方向反向布局，即自右往左先填满一行，再去填下一行。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-GridDirection-RowReverse--><!--Device-GridDirection-RowReverse-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## ColumnReverse
 
 ```TypeScript
@@ -81,5 +45,41 @@ ColumnReverse
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-GridDirection-ColumnReverse--><!--Device-GridDirection-ColumnReverse-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Row
+
+```TypeScript
+Row
+```
+
+主轴布局方向沿水平方向布局，即自左往右先填满一行，再去填下一行。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridDirection-Row--><!--Device-GridDirection-Row-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## RowReverse
+
+```TypeScript
+RowReverse
+```
+
+主轴布局方向沿水平方向反向布局，即自右往左先填满一行，再去填下一行。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridDirection-RowReverse--><!--Device-GridDirection-RowReverse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,14 +12,6 @@ export declare struct SelectTitleBar
 > 
 > - 如果SelectTitleBar设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SelectTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SelectTitleBar设置通用属性和通用事件。
 
-## 子组件
-
-无
-
-## SelectTitleBarAttribute
-
-不支持通用事件。
-
 **起始版本：** 10
 
 **装饰器类型：** @Component
@@ -27,6 +19,14 @@ export declare struct SelectTitleBar
 <!--Device-unnamed-export declare struct SelectTitleBar--><!--Device-unnamed-export declare struct SelectTitleBar-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 子组件
+
+无
+
+## SelectTitleBarAttribute
+
+不支持通用事件。
 
 ## 导入模块
 
@@ -114,7 +114,7 @@ onSelected?: ((index: number) => void)
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-SelectTitleBar-onSelected?: ((index: number) => void)--><!--Device-SelectTitleBar-onSelected?: ((index: number) => void)-End-->
 

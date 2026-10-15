@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getforegroundapplications1"></a>
+
 ## getForegroundApplications
 
 ```TypeScript
@@ -33,6 +35,7 @@ function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>)
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AppStateData](arkts-ability-appstatedata-c.md)&gt;&gt; | 是 | 回调函数，返回所有当前处于前台的应用信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,8 +50,10 @@ appManager.getForegroundApplications((err, data) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getforegroundapplications-1"></a>
+
+<a id="getforegroundapplications2"></a>
 
 ## getForegroundApplications
 
@@ -78,6 +83,7 @@ function getForegroundApplications(): Promise<Array<AppStateData>>
 | --- | --- |
 | Promise&lt;Array&lt;[AppStateData](arkts-ability-appstatedata-c.md)&gt;&gt; | Promise对象，返回所有当前处于前台的应用信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -92,3 +98,5 @@ appManager.getForegroundApplications()
     console.error(`GetForegroundApplications failed, error code: ${err.code}, error msg: ${err.message}.`);
   });
 ```
+
+<!--DelEnd-->

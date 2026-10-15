@@ -12,13 +12,13 @@ Enumerates the gesture recognizer states.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## READY
+## BLOCKED
 
 ```TypeScript
-READY = 0
+BLOCKED = 3
 ```
 
-Ready.
+Blocked.
 
 **Since:** 12
 
@@ -26,7 +26,7 @@ Ready.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-GestureRecognizerState-READY = 0--><!--Device-GestureRecognizerState-READY = 0-End-->
+<!--Device-GestureRecognizerState-BLOCKED = 3--><!--Device-GestureRecognizerState-BLOCKED = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +48,24 @@ Detecting.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## FAILED
+
+```TypeScript
+FAILED = 5
+```
+
+Failed.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureRecognizerState-FAILED = 5--><!--Device-GestureRecognizerState-FAILED = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## PENDING
 
 ```TypeScript
@@ -66,13 +84,13 @@ Pending.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BLOCKED
+## READY
 
 ```TypeScript
-BLOCKED = 3
+READY = 0
 ```
 
-Blocked.
+Ready.
 
 **Since:** 12
 
@@ -80,7 +98,7 @@ Blocked.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-GestureRecognizerState-BLOCKED = 3--><!--Device-GestureRecognizerState-BLOCKED = 3-End-->
+<!--Device-GestureRecognizerState-READY = 0--><!--Device-GestureRecognizerState-READY = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,23 +117,5 @@ Successful.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GestureRecognizerState-SUCCESSFUL = 4--><!--Device-GestureRecognizerState-SUCCESSFUL = 4-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## FAILED
-
-```TypeScript
-FAILED = 5
-```
-
-Failed.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-GestureRecognizerState-FAILED = 5--><!--Device-GestureRecognizerState-FAILED = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

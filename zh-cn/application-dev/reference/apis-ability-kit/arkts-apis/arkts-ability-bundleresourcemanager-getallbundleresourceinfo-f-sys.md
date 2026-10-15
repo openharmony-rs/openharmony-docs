@@ -6,6 +6,8 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallbundleresourceinfo1"></a>
+
 ## getAllBundleResourceInfo
 
 ```TypeScript
@@ -29,7 +31,7 @@ function getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resourceFlags | number | 是 | 指定返回的BundleResourceInfo所包含的信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md)&gt;&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -39,6 +41,7 @@ function getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,8 +84,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getallbundleresourceinfo-1"></a>
+
+<a id="getallbundleresourceinfo2"></a>
 
 ## getAllBundleResourceInfo
 
@@ -122,6 +127,9 @@ function getAllBundleResourceInfo(resourceFlags: number): Promise<Array<BundleRe
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 参见 [getAllBundleResourceInfo](#getallbundleresourceinfo)
+
+<!--DelEnd-->

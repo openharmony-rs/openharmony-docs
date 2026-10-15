@@ -12,19 +12,19 @@ Defines the window configuration corresponding to this ability. The configuratio
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## WINDOW_MODE_UNDEFINED
+## WINDOW_MODE_FLOATING
 
 ```TypeScript
-WINDOW_MODE_UNDEFINED = 0
+WINDOW_MODE_FLOATING = 102
 ```
 
-The PageAbility is in an undefined window display mode.
+The PageAbility is displayed in floating window mode.
 
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
 
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0-End-->
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -76,18 +76,18 @@ The right screen in horizontal direction or the lower screen in vertical directi
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## WINDOW_MODE_FLOATING
+## WINDOW_MODE_UNDEFINED
 
 ```TypeScript
-WINDOW_MODE_FLOATING = 102
+WINDOW_MODE_UNDEFINED = 0
 ```
 
-The PageAbility is displayed in floating window mode.
+The PageAbility is in an undefined window display mode.
 
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
 
-<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102-End-->
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel

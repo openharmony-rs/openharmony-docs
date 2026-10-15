@@ -1,4 +1,4 @@
-# deprecated PermissionOptions
+# PermissionOptions
 
 ```TypeScript
 interface PermissionOptions

@@ -43,7 +43,7 @@ FolderStack(options?: FolderStackOptions)
 | 名称 | 说明 |
 | --- | --- |
 | [FolderStackOptions](arkts-arkui-folderstack-comp-folderstackoptions-i.md) | FolderStack悬停态配置项对象，用于描述悬停态状态下需要移到上半屏的子组件相关信息。 |
-| [HoverEventParam](arkts-arkui-folderstack-comp-hovereventparam-i.md) |  |
+| [HoverEventParam](arkts-arkui-folderstack-comp-hovereventparam-i.md) | FolderStack悬停事件参数，包含设备折叠状态、悬停态和应用旋转角度等信息。 |
 | [OnFoldStatusChangeInfo](arkts-arkui-folderstack-comp-onfoldstatuschangeinfo-i.md) | 折叠状态改变时的信息，仅在横屏状态下生效。 |
 
 ### 类型

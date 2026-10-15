@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="getkeyproperties1"></a>
+
 ## getKeyProperties
 
 ```TypeScript
@@ -17,14 +19,14 @@ function getKeyProperties(keyAlias: string, options: HuksOptions, callback: Asyn
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.getKeyItemProperties&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-getkeyitemproperties-f.md)
+> [huks.getKeyItemProperties<sup>9+</sup>](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md)( keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt; )
+**替代接口：** [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties1)( keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt; )
 
 <!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -53,7 +55,7 @@ huks.getKeyProperties(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
-<a id="getkeyproperties-1"></a>
+<a id="getkeyproperties2"></a>
 
 ## getKeyProperties
 
@@ -66,14 +68,14 @@ function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksR
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.getKeyItemProperties&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-1)
+> [huks.getKeyItemProperties<sup>9+</sup>](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-1)(keyAlias: string, options: HuksOptions)
+**替代接口：** [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 

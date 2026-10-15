@@ -39,6 +39,7 @@ function off(type: 'printerStateChange', callback?: Callback<boolean>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,6 +49,8 @@ print.off('printerStateChange', (data: boolean) => {
     console.info('off printerStateChange data : ' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('jobStateChange')
@@ -83,6 +86,7 @@ function off(type: 'jobStateChange', callback?: Callback<boolean>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -92,6 +96,8 @@ print.off('jobStateChange', (data: boolean) => {
     console.info('offJobStateChanged data : ' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('extInfoChange')
@@ -127,6 +133,7 @@ function off(type: 'extInfoChange', callback?: Callback<boolean>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -136,3 +143,5 @@ print.off('extInfoChange', (data: boolean) => {
     console.info('offExtInfoChange data : ' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->

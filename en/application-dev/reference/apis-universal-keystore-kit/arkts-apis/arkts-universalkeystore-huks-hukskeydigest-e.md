@@ -14,26 +14,6 @@ Enumerates the digest algorithms.
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_DIGEST_NONE
-
-```TypeScript
-HUKS_DIGEST_NONE = 0
-```
-
-No digest algorithm
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0--><!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
 ## HUKS_DIGEST_MD5
 
 ```TypeScript
@@ -54,25 +34,25 @@ MD5
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_DIGEST_SM3
+## HUKS_DIGEST_NONE
 
 ```TypeScript
-HUKS_DIGEST_SM3 = 2
+HUKS_DIGEST_NONE = 0
 ```
 
-SM3
+No digest algorithm
 
-**Since:** 9
+**Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2--><!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2-End-->
+<!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0--><!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 9 to 11: SystemCapability.Security.Huks.Extension
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SHA1
 
@@ -173,3 +153,23 @@ SHA-512
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_DIGEST_SM3
+
+```TypeScript
+HUKS_DIGEST_SM3 = 2
+```
+
+SM3
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2--><!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 9 to 11: SystemCapability.Security.Huks.Extension

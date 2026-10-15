@@ -42,6 +42,7 @@ function getSharedDirectoryInfo(): Promise<Array<SharedDirectoryInfo>>
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ async function getSharedDirectoryInfo() {
   }
 }
 ```
+
+<!--DelEnd-->

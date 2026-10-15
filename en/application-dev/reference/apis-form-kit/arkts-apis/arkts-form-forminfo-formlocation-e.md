@@ -12,6 +12,22 @@ Enumerates the widget locations.
 
 **System capability:** SystemCapability.Ability.Form
 
+## AI_SUGGESTION
+
+```TypeScript
+AI_SUGGESTION = 7
+```
+
+The widget is located in the area of AI Suggestions.
+
+**Since:** 20
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-FormLocation-AI_SUGGESTION = 7--><!--Device-FormLocation-AI_SUGGESTION = 7-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
 ## DESKTOP
 
 ```TypeScript
@@ -22,7 +38,7 @@ The widget is located on the home screen.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FormLocation-DESKTOP = 0--><!--Device-FormLocation-DESKTOP = 0-End-->
 
@@ -38,7 +54,7 @@ The widget is located in the widget center of the home screen.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FormLocation-FORM_CENTER = 1--><!--Device-FormLocation-FORM_CENTER = 1-End-->
 
@@ -54,7 +70,7 @@ The widget is located in the widget manager of the home screen.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FormLocation-FORM_MANAGER = 2--><!--Device-FormLocation-FORM_MANAGER = 2-End-->
 
@@ -70,7 +86,7 @@ The widget is located on the minus 1 screen.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FormLocation-NEGATIVE_SCREEN = 3--><!--Device-FormLocation-NEGATIVE_SCREEN = 3-End-->
 
@@ -86,25 +102,9 @@ The widget is located on the locked screen.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FormLocation-SCREEN_LOCK = 6--><!--Device-FormLocation-SCREEN_LOCK = 6-End-->
-
-**System capability:** SystemCapability.Ability.Form
-
-## AI_SUGGESTION
-
-```TypeScript
-AI_SUGGESTION = 7
-```
-
-The widget is located in the area of AI Suggestions.
-
-**Since:** 20
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
-
-<!--Device-FormLocation-AI_SUGGESTION = 7--><!--Device-FormLocation-AI_SUGGESTION = 7-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -120,7 +120,7 @@ The widget is located on landscape standby screen.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-FormLocation-STANDBY = 8--><!--Device-FormLocation-STANDBY = 8-End-->
 

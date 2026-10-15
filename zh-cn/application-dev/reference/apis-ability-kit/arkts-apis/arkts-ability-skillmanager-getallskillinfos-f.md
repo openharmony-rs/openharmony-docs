@@ -14,6 +14,10 @@ function getAllSkillInfos(flags: number, userId?: number): Promise<Array<SkillIn
 
 获取设备上安装应用的所有技能信息。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 跨用户查询时还需要 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE or ohos.permission.MANAGE_SKILL
@@ -30,8 +34,8 @@ function getAllSkillInfos(flags: number, userId?: number): Promise<Array<SkillIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| flags | number | 是 | [SkillInfoFlag](arkts-ability-skillmanager-skillinfoflag-e.md) - 指定返回的SkillInfo所包含的信息。详情请参考SkillInfoFlag。 |
-| userId | number | 否 | 指定查询的用户ID，可以通过getOsAccountLocalId获取。默认值：调用方所在用户。取值范围：大于等于0。 |
+| flags | number | 是 | 指定返回的SkillInfo所包含的信息。详情请参考[SkillInfoFlag](arkts-ability-skillmanager-skillinfoflag-e.md)。 |
+| userId | number | 否 | 指定查询的用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。<br>默认值：调用方所在用户。<br>取值范围：大于等于0。 |
 
 **返回值：**
 

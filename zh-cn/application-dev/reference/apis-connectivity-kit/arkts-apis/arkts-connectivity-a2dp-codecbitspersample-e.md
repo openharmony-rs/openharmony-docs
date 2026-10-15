@@ -12,20 +12,6 @@ enum CodecBitsPerSample
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_BITS_PER_SAMPLE_NONE
-
-```TypeScript
-CODEC_BITS_PER_SAMPLE_NONE = 0
-```
-
-位深未知。
-
-**起始版本：** 11
-
-<!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0--><!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## CODEC_BITS_PER_SAMPLE_16
 
 ```TypeScript
@@ -65,5 +51,19 @@ CODEC_BITS_PER_SAMPLE_32 = 3
 **起始版本：** 11
 
 <!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_32 = 3--><!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_32 = 3-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## CODEC_BITS_PER_SAMPLE_NONE
+
+```TypeScript
+CODEC_BITS_PER_SAMPLE_NONE = 0
+```
+
+位深未知。
+
+**起始版本：** 11
+
+<!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0--><!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

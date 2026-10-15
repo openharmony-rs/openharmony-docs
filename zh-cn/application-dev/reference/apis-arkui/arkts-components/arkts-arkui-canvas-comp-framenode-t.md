@@ -4,7 +4,9 @@
 declare type FrameNode = import('../api/arkui/FrameNode').FrameNode
 ```
 
-Import the frame node type object for Canvas.
+为Canvas导入FrameNode类型对象。
+
+**类型：** import('../api/arkui/FrameNode').FrameNode
 
 **起始版本：** 13
 
@@ -15,5 +17,3 @@ Import the frame node type object for Canvas.
 <!--Device-unnamed-declare type FrameNode = import('../api/arkui/FrameNode').FrameNode--><!--Device-unnamed-declare type FrameNode = import('../api/arkui/FrameNode').FrameNode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/arkui/FrameNode').FrameNode

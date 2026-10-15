@@ -14,22 +14,6 @@ Enumerates the space optimization states.
 
 **System API:** This is a system API.
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-The space is being optimized.
-
-**Since:** 17
-
-<!--Device-OptimizeState-RUNNING = 0--><!--Device-OptimizeState-RUNNING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**System API:** This is a system API.
-
 ## COMPLETED
 
 ```TypeScript
@@ -57,6 +41,22 @@ Space optimization failed.
 **Since:** 17
 
 <!--Device-OptimizeState-FAILED = 2--><!--Device-OptimizeState-FAILED = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**System API:** This is a system API.
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+The space is being optimized.
+
+**Since:** 17
+
+<!--Device-OptimizeState-RUNNING = 0--><!--Device-OptimizeState-RUNNING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

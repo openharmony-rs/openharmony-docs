@@ -6,6 +6,8 @@ type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>
 
 Represents a FrameNode of the **Swiper** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SwiperInterface, [SwiperAttribute](../arkts-components/arkts-arkui-swiper-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Swiper** type.
 <!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>--><!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SwiperInterface, [SwiperAttribute](../arkts-components/arkts-arkui-swiper-comp-attribute.md)&gt;

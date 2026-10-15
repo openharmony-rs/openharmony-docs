@@ -37,12 +37,13 @@ function off(type: 'callDetailsChange', callback?: Callback<CallAttributeOptions
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -50,6 +51,8 @@ call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('callEventChange')
@@ -83,12 +86,13 @@ function off(type: 'callEventChange', callback?: Callback<CallEventOptions>): vo
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,6 +100,8 @@ call.off('callEventChange', (data: call.CallEventOptions) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('callDisconnectedCause')
@@ -129,12 +135,13 @@ function off(type: 'callDisconnectedCause', callback?: Callback<DisconnectedDeta
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -142,6 +149,8 @@ call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('mmiCodeResult')
@@ -175,12 +184,13 @@ function off(type: 'mmiCodeResult', callback?: Callback<MmiCodeResults>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -188,6 +198,8 @@ call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('audioDeviceChange')
@@ -221,12 +233,13 @@ function off(type: 'audioDeviceChange', callback?: Callback<AudioDeviceCallbackI
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -234,6 +247,8 @@ call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('postDialDelay')
@@ -267,12 +282,13 @@ function off(type: 'postDialDelay', callback?: Callback<string>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -280,6 +296,8 @@ call.off('postDialDelay', (data: string) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('imsCallModeChange')
@@ -313,12 +331,13 @@ function off(type: 'imsCallModeChange', callback?: Callback<ImsCallModeInfo>): v
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -328,6 +347,8 @@ call.off('imsCallModeChange', (data: call.ImsCallModeInfo) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('callSessionEvent')
@@ -361,12 +382,13 @@ function off(type: 'callSessionEvent', callback?: Callback<CallSessionEvent>): v
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -376,6 +398,8 @@ call.off('callSessionEvent', (data: call.CallSessionEvent) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('peerDimensionsChange')
@@ -409,12 +433,13 @@ function off(type: 'peerDimensionsChange', callback?: Callback<PeerDimensionsDet
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -424,6 +449,8 @@ call.off('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('cameraCapabilitiesChange')
@@ -457,12 +484,13 @@ function off(type: 'cameraCapabilitiesChange', callback?: Callback<CameraCapabil
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -470,3 +498,5 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -26,20 +26,6 @@ COUNTRY_CODE_FROM_LOCALE = 1
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-## COUNTRY_CODE_FROM_SIM
-
-```TypeScript
-COUNTRY_CODE_FROM_SIM = 2
-```
-
-从SIM卡中获取到的国家码。
-
-**起始版本：** 9
-
-<!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2--><!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
 ## COUNTRY_CODE_FROM_LOCATION
 
 ```TypeScript
@@ -65,5 +51,19 @@ COUNTRY_CODE_FROM_NETWORK = 4
 **起始版本：** 9
 
 <!--Device-CountryCodeType-COUNTRY_CODE_FROM_NETWORK = 4--><!--Device-CountryCodeType-COUNTRY_CODE_FROM_NETWORK = 4-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## COUNTRY_CODE_FROM_SIM
+
+```TypeScript
+COUNTRY_CODE_FROM_SIM = 2
+```
+
+从SIM卡中获取到的国家码。
+
+**起始版本：** 9
+
+<!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2--><!--Device-CountryCodeType-COUNTRY_CODE_FROM_SIM = 2-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core

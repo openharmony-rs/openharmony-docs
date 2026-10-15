@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace pan--><!--Device-unnamed-declare namespace pan-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
@@ -22,7 +20,7 @@ import { pan } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createPanProfile](arkts-connectivity-pan-createpanprofile-f.md) | 创建蓝牙PAN实例。通过该实例可使用本端作为NAP设备和PANU设备的接口，如：获取和其他设备间的蓝牙个人局域网服务连接状态。 |
+| [createPanProfile](arkts-connectivity-pan-createpanprofile-f.md#createpanprofile) | 创建蓝牙PAN实例。通过该实例可使用本端作为NAP设备和PANU设备的接口，如：获取和其他设备间的蓝牙个人局域网服务连接状态。 |
 
 ### 接口
 

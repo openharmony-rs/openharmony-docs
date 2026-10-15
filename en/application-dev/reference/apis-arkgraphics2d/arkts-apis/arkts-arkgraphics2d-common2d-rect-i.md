@@ -30,7 +30,7 @@ Y coordinate of the lower right corner of the rectangle. The value is a floating
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Rect-bottom: double--><!--Device-Rect-bottom: double-End-->
 
@@ -48,7 +48,7 @@ X coordinate of the upper left corner of the rectangle. The value is a floating 
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Rect-left: double--><!--Device-Rect-left: double-End-->
 
@@ -66,7 +66,7 @@ X coordinate of the lower right corner of the rectangle. The value is a floating
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Rect-right: double--><!--Device-Rect-right: double-End-->
 
@@ -84,7 +84,7 @@ Y coordinate of the upper left corner of the rectangle. The value is a floating 
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Rect-top: double--><!--Device-Rect-top: double-End-->
 

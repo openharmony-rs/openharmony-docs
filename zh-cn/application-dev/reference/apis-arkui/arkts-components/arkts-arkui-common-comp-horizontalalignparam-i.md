@@ -20,17 +20,15 @@ declare interface HorizontalAlignParam
 align: HorizontalAlign
 ```
 
-Sets the horizontal alignment relative to the anchor component.
-
-Anonymous Object Rectification
+设置相对于锚点组件的水平对齐方式。Anonymous Object Rectification
 
 **类型：** [HorizontalAlign](../arkts-apis/arkts-arkui-horizontalalign-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-HorizontalAlignParam-align: HorizontalAlign--><!--Device-HorizontalAlignParam-align: HorizontalAlign-End-->
 
@@ -42,17 +40,15 @@ Anonymous Object Rectification
 anchor: string
 ```
 
-Specifies the anchor component
-
-Anonymous Object Rectification
+设置作为锚点的组件的id值。Anonymous Object Rectification
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-HorizontalAlignParam-anchor: string--><!--Device-HorizontalAlignParam-anchor: string-End-->
 

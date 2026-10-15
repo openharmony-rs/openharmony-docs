@@ -96,6 +96,8 @@ try {
 }
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -150,6 +152,8 @@ Query the total size of cached files.
 | --- | --- |
 | 13900010 | Try again. |
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -198,7 +202,7 @@ try {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -206,7 +210,7 @@ try {
 off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void
 ```
 
-Removes the listener added via the [on](#on-1) API for file batch downloads.
+Removes the listener added via the [on](#on2) API for file batch downloads.
 
 **Since:** 20
 
@@ -246,6 +250,8 @@ try {
   console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="on1"></a>
 
 ## on
 
@@ -293,7 +299,7 @@ try {
 }
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -345,6 +351,8 @@ try {
   console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="start1"></a>
 
 ## start
 
@@ -408,7 +416,7 @@ fileCache.start(uri).then(() => {
 });
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -522,6 +530,8 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 });
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -577,7 +587,7 @@ fileCache.stop(uri, true).then(() => {
 });
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 

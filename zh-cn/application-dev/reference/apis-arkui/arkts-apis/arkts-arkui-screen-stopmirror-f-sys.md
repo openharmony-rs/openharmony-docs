@@ -6,6 +6,8 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="stopmirror1"></a>
+
 ## stopMirror
 
 ```TypeScript
@@ -37,6 +39,7 @@ function stopMirror(mirrorScreen:Array<number>, callback: AsyncCallback<void>): 
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="stopmirror-1"></a>
+
+<a id="stopmirror2"></a>
 
 ## stopMirror
 
@@ -91,9 +96,10 @@ function stopMirror(mirrorScreen:Array<number>): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -108,3 +114,5 @@ screen.stopMirror(mirrorScreenIds).then(() => {
   console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -1,12 +1,12 @@
 # ArkTS API<!--arkts-arkgraphics3d-->
 
-- [@ohos.graphics.scene(3D场景模块导出)](arkts-arkgraphics3d-graphics-scene.md)
+- [@ohos.graphics.scene（3D场景模块导出）](arkts-arkgraphics3d-graphics-scene.md)
 - graphics3d<!--arkts-arkgraphics3d-graphics3d-->
-  - [Scene(3D场景声明)](arkts-arkgraphics3d-scene.md)
+  - [Scene（3D场景声明）](arkts-arkgraphics3d-scene.md)
     - [PCFConfig](arkts-arkgraphics3d-scene-pcfconfig-c.md)
     - [Scene](arkts-arkgraphics3d-scene-c.md)
     <!--Del-->
-    - [Scene(系统接口)](arkts-arkgraphics3d-scene-c-sys.md)<!--DelEnd-->
+    - [Scene（系统接口）](arkts-arkgraphics3d-scene-c-sys.md)<!--DelEnd-->
     - [SoftShadowConfig](arkts-arkgraphics3d-scene-softshadowconfig-c.md)
     - [CameraParameters](arkts-arkgraphics3d-scene-cameraparameters-i.md)
     - [EffectParameters](arkts-arkgraphics3d-scene-effectparameters-i.md)
@@ -17,26 +17,26 @@
     - [RenderParameters](arkts-arkgraphics3d-scene-renderparameters-i.md)
     - [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md)
     <!--Del-->
-    - [RenderResourceFactory(系统接口)](arkts-arkgraphics3d-scene-renderresourcefactory-i-sys.md)<!--DelEnd-->
+    - [RenderResourceFactory（系统接口）](arkts-arkgraphics3d-scene-renderresourcefactory-i-sys.md)<!--DelEnd-->
     - [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md)
     <!--Del-->
-    - [SceneLoadParams(系统接口)](arkts-arkgraphics3d-scene-sceneloadparams-i-sys.md)<!--DelEnd-->
+    - [SceneLoadParams（系统接口）](arkts-arkgraphics3d-scene-sceneloadparams-i-sys.md)<!--DelEnd-->
     - [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md)
     - [SceneResourceFactory](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md)
     - [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md)
   <!--Del-->
-  - [SceneBoidsSim(3D场景群体模拟类型声明)](arkts-arkgraphics3d-sceneboidssim.md)<!--DelEnd-->
+  - [SceneBoidsSim（3D场景群体模拟类型声明）](arkts-arkgraphics3d-sceneboidssim.md)<!--DelEnd-->
     <!--Del-->
-    - [BoidsSimPlugin(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md)<!--DelEnd-->
+    - [BoidsSimPlugin（系统接口）](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md)<!--DelEnd-->
     <!--Del-->
-    - [BoidsSimWorld(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimworld-c-sys.md)<!--DelEnd-->
+    - [BoidsSimWorld（系统接口）](arkts-arkgraphics3d-sceneboidssim-boidssimworld-c-sys.md)<!--DelEnd-->
     <!--Del-->
-    - [BoidsSimGravityParameters(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md)<!--DelEnd-->
+    - [BoidsSimGravityParameters（系统接口）](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md)<!--DelEnd-->
     <!--Del-->
-    - [BoidsSimParameters(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md)<!--DelEnd-->
+    - [BoidsSimParameters（系统接口）](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md)<!--DelEnd-->
     <!--Del-->
-    - [BoidsSimRepulsionParameters(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md)<!--DelEnd-->
-  - [SceneNodes(3D场景节点类型声明)](arkts-arkgraphics3d-scenenodes.md)
+    - [BoidsSimRepulsionParameters（系统接口）](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md)<!--DelEnd-->
+  - [SceneNodes（3D场景节点类型声明）](arkts-arkgraphics3d-scenenodes.md)
     - [Camera](arkts-arkgraphics3d-scenenodes-camera-i.md)
     - [Container](arkts-arkgraphics3d-scenenodes-container-i.md)
     - [DirectionalLight](arkts-arkgraphics3d-scenenodes-directionallight-i.md)
@@ -47,14 +47,14 @@
     - [SpotLight](arkts-arkgraphics3d-scenenodes-spotlight-i.md)
     - [LightType](arkts-arkgraphics3d-scenenodes-lighttype-e.md)
     - [NodeType](arkts-arkgraphics3d-scenenodes-nodetype-e.md)
-  - [ScenePostProcessSettings(3D场景后处理设置类型声明)](arkts-arkgraphics3d-scenepostprocesssettings.md)
+  - [ScenePostProcessSettings（3D场景后处理设置类型声明）](arkts-arkgraphics3d-scenepostprocesssettings.md)
     - [BloomSettings](arkts-arkgraphics3d-scenepostprocesssettings-bloomsettings-i.md)
     - [ColorFringeSettings](arkts-arkgraphics3d-scenepostprocesssettings-colorfringesettings-i.md)
     - [PostProcessSettings](arkts-arkgraphics3d-scenepostprocesssettings-postprocesssettings-i.md)
     - [ToneMappingSettings](arkts-arkgraphics3d-scenepostprocesssettings-tonemappingsettings-i.md)
     - [VignetteSettings](arkts-arkgraphics3d-scenepostprocesssettings-vignettesettings-i.md)
     - [ToneMappingType](arkts-arkgraphics3d-scenepostprocesssettings-tonemappingtype-e.md)
-  - [SceneResources(3D场景资源类型声明)](arkts-arkgraphics3d-sceneresources.md)
+  - [SceneResources（3D场景资源类型声明）](arkts-arkgraphics3d-sceneresources.md)
     - [Animation](arkts-arkgraphics3d-sceneresources-animation-i.md)
     - [Blend](arkts-arkgraphics3d-sceneresources-blend-i.md)
     - [Effect](arkts-arkgraphics3d-sceneresources-effect-i.md)
@@ -76,17 +76,17 @@
     - [SubMesh](arkts-arkgraphics3d-sceneresources-submesh-i.md)
     - [UnlitMaterial](arkts-arkgraphics3d-sceneresources-unlitmaterial-i.md)
     <!--Del-->
-    - [UnlitShadowAlphaMaterial(系统接口)](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md)<!--DelEnd-->
+    - [UnlitShadowAlphaMaterial（系统接口）](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md)<!--DelEnd-->
     - [CullMode](arkts-arkgraphics3d-sceneresources-cullmode-e.md)
     - [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md)
     - [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md)
     <!--Del-->
-    - [MaterialType(系统接口)](arkts-arkgraphics3d-sceneresources-materialtype-e-sys.md)<!--DelEnd-->
+    - [MaterialType（系统接口）](arkts-arkgraphics3d-sceneresources-materialtype-e-sys.md)<!--DelEnd-->
     - [PolygonMode](arkts-arkgraphics3d-sceneresources-polygonmode-e.md)
     - [SamplerAddressMode](arkts-arkgraphics3d-sceneresources-sampleraddressmode-e.md)
     - [SamplerFilter](arkts-arkgraphics3d-sceneresources-samplerfilter-e.md)
     - [SceneResourceType](arkts-arkgraphics3d-sceneresources-sceneresourcetype-e.md)
-  - [SceneTypes(3D场景通用类型声明)](arkts-arkgraphics3d-scenetypes.md)
+  - [SceneTypes（3D场景通用类型声明）](arkts-arkgraphics3d-scenetypes.md)
     - [CubeGeometry](arkts-arkgraphics3d-scenetypes-cubegeometry-c.md)
     - [CustomGeometry](arkts-arkgraphics3d-scenetypes-customgeometry-c.md)
     - [CylinderGeometry](arkts-arkgraphics3d-scenetypes-cylindergeometry-c.md)

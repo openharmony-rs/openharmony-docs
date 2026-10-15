@@ -12,17 +12,17 @@ export enum HoldingHandStatus
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
-## NOT_HELD
+## BOTH_HANDS_HELD
 
 ```TypeScript
-NOT_HELD = 0
+BOTH_HANDS_HELD = 3
 ```
 
-表示未握持。
+表示双手握持。
 
 **起始版本：** 20
 
-<!--Device-HoldingHandStatus-NOT_HELD = 0--><!--Device-HoldingHandStatus-NOT_HELD = 0-End-->
+<!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3--><!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
@@ -40,6 +40,20 @@ LEFT_HAND_HELD = 1
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
+## NOT_HELD
+
+```TypeScript
+NOT_HELD = 0
+```
+
+表示未握持。
+
+**起始版本：** 20
+
+<!--Device-HoldingHandStatus-NOT_HELD = 0--><!--Device-HoldingHandStatus-NOT_HELD = 0-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.Motion
+
 ## RIGHT_HAND_HELD
 
 ```TypeScript
@@ -51,20 +65,6 @@ RIGHT_HAND_HELD = 2
 **起始版本：** 20
 
 <!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2--><!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.Motion
-
-## BOTH_HANDS_HELD
-
-```TypeScript
-BOTH_HANDS_HELD = 3
-```
-
-表示双手握持。
-
-**起始版本：** 20
-
-<!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3--><!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 

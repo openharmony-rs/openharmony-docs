@@ -32,6 +32,8 @@ includeDeviceName?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-AdvertisingData-includeDeviceName?: boolean--><!--Device-AdvertisingData-includeDeviceName?: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ manufacturerData?: ManufacturerData[]
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertisingData-manufacturerData?: ManufacturerData[]--><!--Device-AdvertisingData-manufacturerData?: ManufacturerData[]-End-->
 
@@ -68,6 +72,8 @@ serviceData?: ServiceData[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-AdvertisingData-serviceData?: ServiceData[]--><!--Device-AdvertisingData-serviceData?: ServiceData[]-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -85,6 +91,8 @@ serviceUuids?: string[]
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertisingData-serviceUuids?: string[]--><!--Device-AdvertisingData-serviceUuids?: string[]-End-->
 

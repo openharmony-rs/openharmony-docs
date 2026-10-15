@@ -10,7 +10,7 @@ Enumerates the KV store security levels.
 
 **Deprecated since:** 9
 
-**Substitutes:** SecurityLevel
+**Substitutes:** [SecurityLevel](arkts-arkdata-distributedkvstore-securitylevel-e.md)
 
 <!--Device-distributedData-enum SecurityLevel--><!--Device-distributedData-enum SecurityLevel-End-->
 
@@ -60,7 +60,7 @@ Low security level. If data leakage occurs, minor impact will be caused. For exa
 
 **Deprecated since:** 9
 
-**Substitutes:** S1
+**Substitutes:** [S1](arkts-arkdata-distributedkvstore-securitylevel-e.md#s1)
 
 <!--Device-SecurityLevel-S1 = 2--><!--Device-SecurityLevel-S1 = 2-End-->
 
@@ -78,7 +78,7 @@ Medium security level. If data leakage occurs, moderate impact will be caused. F
 
 **Deprecated since:** 9
 
-**Substitutes:** S2
+**Substitutes:** [S2](arkts-arkdata-distributedkvstore-securitylevel-e.md#s2)
 
 <!--Device-SecurityLevel-S2 = 3--><!--Device-SecurityLevel-S2 = 3-End-->
 
@@ -96,7 +96,7 @@ High security level. If data leakage occurs, major impact will be caused. For ex
 
 **Deprecated since:** 9
 
-**Substitutes:** S3
+**Substitutes:** [S3](arkts-arkdata-distributedkvstore-securitylevel-e.md#s3)
 
 <!--Device-SecurityLevel-S3 = 5--><!--Device-SecurityLevel-S3 = 5-End-->
 
@@ -114,7 +114,7 @@ Critical security level. If data leakage occurs, severe impact will be caused. F
 
 **Deprecated since:** 9
 
-**Substitutes:** S4
+**Substitutes:** [S4](arkts-arkdata-distributedkvstore-securitylevel-e.md#s4)
 
 <!--Device-SecurityLevel-S4 = 6--><!--Device-SecurityLevel-S4 = 6-End-->
 

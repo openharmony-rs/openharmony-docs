@@ -12,20 +12,6 @@ enum ImageFormat
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## YCBCR_422_SP
-
-```TypeScript
-YCBCR_422_SP = 1000
-```
-
-YCBCR422半平面格式。
-
-**起始版本：** 9
-
-<!--Device-ImageFormat-YCBCR_422_SP = 1000--><!--Device-ImageFormat-YCBCR_422_SP = 1000-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## JPEG
 
 ```TypeScript
@@ -37,5 +23,19 @@ JPEG编码格式。
 **起始版本：** 9
 
 <!--Device-ImageFormat-JPEG = 2000--><!--Device-ImageFormat-JPEG = 2000-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## YCBCR_422_SP
+
+```TypeScript
+YCBCR_422_SP = 1000
+```
+
+YCBCR422半平面格式。
+
+**起始版本：** 9
+
+<!--Device-ImageFormat-YCBCR_422_SP = 1000--><!--Device-ImageFormat-YCBCR_422_SP = 1000-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

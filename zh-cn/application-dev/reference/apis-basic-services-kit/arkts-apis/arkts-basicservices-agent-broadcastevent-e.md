@@ -8,7 +8,7 @@ enum BroadcastEvent
 
 上传下载SA具有'ohos.permission.SEND_TASK_COMPLETE_EVENT'权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
 
-调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](arkts-basicservices-commoneventdata-commoneventdata-i.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。
+调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](arkts-basicservices-commoneventdata-i.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。
 
 <!--Del-->
 

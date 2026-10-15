@@ -22,19 +22,21 @@ Enumerates the ability types.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
-## UNKNOWN
+## DATA
 
 ```TypeScript
-UNKNOWN = 0
+DATA = 3
 ```
 
-Unknown ability type.
+PA developed using the Data template to provide unified data access for external systems.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-<!--Device-AbilityType-UNKNOWN = 0--><!--Device-AbilityType-UNKNOWN = 0-End-->
+**Substitutes:** [DATA](arkts-ability-bundlemanager-abilitytype-e.md#data)
+
+<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -74,20 +76,18 @@ PA developed using the Service template to provide the capability of running tas
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
-## DATA
+## UNKNOWN
 
 ```TypeScript
-DATA = 3
+UNKNOWN = 0
 ```
 
-PA developed using the Data template to provide unified data access for external systems.
+Unknown ability type.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [DATA](arkts-ability-bundlemanager-abilitytype-e.md#data)
-
-<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
+<!--Device-AbilityType-UNKNOWN = 0--><!--Device-AbilityType-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

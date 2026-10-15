@@ -6,7 +6,7 @@ declare class ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
 
 除支持[通用属性](arkts-arkui-common-comp.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md)和滚动组件通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
 
 **继承/实现关系：** ScrollAttribute extends ScrollableCommonMethod&lt;ScrollAttribute&gt;
 
@@ -551,6 +551,8 @@ scrollBar(barState: BarState)
 | --- | --- | --- | --- |
 | barState | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | 是 | 滚动条状态。<br>默认值：BarState.Auto |
 
+<a id="scrollbarcolor1"></a>
+
 ## scrollBarColor
 
 ```TypeScript
@@ -575,7 +577,7 @@ scrollBarColor(color: Color | number | string)
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | 是 | 滚动条的颜色。<br>默认值：'#66182431'<br>number为HEX格式颜色，支持rgb或者argb，取值范围：[0x0, 0xFFFFFFFF]，示例：0xffffff。<br>string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
-<a id="scrollbarcolor-1"></a>
+<a id="scrollbarcolor2"></a>
 
 ## scrollBarColor
 
@@ -583,7 +585,7 @@ scrollBarColor(color: Color | number | string)
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor1)相比，color参数开始支持Resource类型。
 
 **起始版本：** 22
 
@@ -600,6 +602,8 @@ scrollBarColor(color: Color | number | string | Resource)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的颜色。<br>默认值：'#66182431'<br>number为HEX格式颜色，支持rgb或者argb，取值范围：[0x0, 0xFFFFFFFF]，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+
+<a id="scrollbarwidth1"></a>
 
 ## scrollBarWidth
 
@@ -625,7 +629,7 @@ scrollBarWidth(value: number | string)
 | --- | --- | --- | --- |
 | value | number &#124; string | 是 | 滚动条的宽度。<br>默认值：4<br>单位：vp <br>取值范围：设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。 |
 
-<a id="scrollbarwidth-1"></a>
+<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 

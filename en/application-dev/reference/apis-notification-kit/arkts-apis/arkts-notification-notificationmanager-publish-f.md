@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="publish1"></a>
+
 ## publish
 
 ```TypeScript
@@ -24,11 +26,11 @@ After a notification is published, it will be displayed as a notification widget
 
 **See also:**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-2) checks whether notification is enabled for the specified application.
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled3) checks whether notification is enabled for the specified application.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-1) cancels a published notification based on the notification ID and label.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel2) cancels a published notification based on the notification ID and label.
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md) cancels all notifications of this application.
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall1) cancels all notifications of this application.
 
 **Parameters:**
 
@@ -41,14 +43,14 @@ After a notification is published, it will be displayed as a notification widget
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600004](../errorcode-notification.md#1600004-notification-disabled) | Notification disabled. |
 | [1600005](../errorcode-notification.md#1600005-notification-slot-disabled) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist.<br>**Applicable version:** 11 and later |
-| [1600009](../errorcode-notification.md#1600009-notification-sending-limit-reached) | The notification sending frequency reaches the upper limit. |
+| [1600009](../errorcode-notification.md#1600009-notification-sending-frequency-limit-reached) | The notification sending frequency reaches the upper limit. |
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 | [1600014](../errorcode-notification.md#1600014-no-related-permission) | No permission.<br>**Applicable version:** 11 and later |
 | [1600015](../errorcode-notification.md#1600015-duplicate-configurations-not-allowed-for-the-current-notification-status) | The current notification status does not support duplicate configurations.<br>**Applicable version:** 11 and later |
@@ -76,9 +78,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };
@@ -86,7 +88,7 @@ notificationManager.publish(notificationRequest, publishCallback);
 ```
 
 
-<a id="publish-1"></a>
+<a id="publish2"></a>
 
 ## publish
 
@@ -108,7 +110,7 @@ After a notification is published, it will be displayed as a notification card i
 
 [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md) checks whether notification is enabled for the specified application.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) cancels a published notification based on the notification ID and label.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel3) cancels a published notification based on the notification ID and label.
 
 [cancelAll](arkts-notification-notificationmanager-cancelall-f.md) cancels all notifications of this application.
 
@@ -128,14 +130,14 @@ After a notification is published, it will be displayed as a notification card i
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600004](../errorcode-notification.md#1600004-notification-disabled) | Notification disabled. |
 | [1600005](../errorcode-notification.md#1600005-notification-slot-disabled) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist.<br>**Applicable version:** 11 and later |
-| [1600009](../errorcode-notification.md#1600009-notification-sending-limit-reached) | The notification sending frequency reaches the upper limit. |
+| [1600009](../errorcode-notification.md#1600009-notification-sending-frequency-limit-reached) | The notification sending frequency reaches the upper limit. |
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 | [1600014](../errorcode-notification.md#1600014-no-related-permission) | No permission.<br>**Applicable version:** 11 and later |
 | [1600015](../errorcode-notification.md#1600015-duplicate-configurations-not-allowed-for-the-current-notification-status) | The current notification status does not support duplicate configurations.<br>**Applicable version:** 11 and later |
@@ -155,9 +157,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };

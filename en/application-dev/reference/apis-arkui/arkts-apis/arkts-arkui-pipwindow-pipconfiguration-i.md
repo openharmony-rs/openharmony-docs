@@ -30,7 +30,7 @@ Original XComponent controller.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-componentController: XComponentController--><!--Device-PiPConfiguration-componentController: XComponentController-End-->
 
@@ -42,13 +42,13 @@ Original XComponent controller.
 contentHeight?: number
 ```
 
-Height of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](arkts-arkui-pipwindow-create-f.md#create-1), the default value is 1080. When the PiP controller is created [not in typeNode mode](arkts-arkui-pipwindow-create-f.md), the default value is the height of the XComponent.
+Height of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](arkts-arkui-pipwindow-create-f.md#create2), the default value is 1080. When the PiP controller is created [not in typeNode mode](arkts-arkui-pipwindow-create-f.md#create1), the default value is the height of the XComponent.
 
 **Type:** number
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-contentHeight?: int--><!--Device-PiPConfiguration-contentHeight?: int-End-->
 
@@ -60,13 +60,13 @@ Height of the original content, in px. It is used to determine the aspect ratio 
 contentWidth?: number
 ```
 
-Width of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](arkts-arkui-pipwindow-create-f.md#create-1), the default value is 1920. When the PiP controller is created [not in typeNode mode](arkts-arkui-pipwindow-create-f.md), the default value is the width of the XComponent.
+Width of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](arkts-arkui-pipwindow-create-f.md#create2), the default value is 1920. When the PiP controller is created [not in typeNode mode](arkts-arkui-pipwindow-create-f.md#create1), the default value is the width of the XComponent.
 
 **Type:** number
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-contentWidth?: int--><!--Device-PiPConfiguration-contentWidth?: int-End-->
 
@@ -84,7 +84,7 @@ Context environment.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-context: BaseContext--><!--Device-PiPConfiguration-context: BaseContext-End-->
 
@@ -102,7 +102,7 @@ A list of optional component groups of the PiP controller. An application can co
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>--><!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>-End-->
 
@@ -130,7 +130,7 @@ This API can be properly called on phones and tablets. If it is called on other 
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean--><!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean-End-->
 
@@ -148,7 +148,7 @@ Custom UI controller, which is used to implement the custom UI features on the P
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-customUIController?: NodeController--><!--Device-PiPConfiguration-customUIController?: NodeController-End-->
 
@@ -174,7 +174,7 @@ If no value is passed, **0** is used.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-PiPConfiguration-defaultWindowSizeType?: int--><!--Device-PiPConfiguration-defaultWindowSizeType?: int-End-->
 
@@ -194,7 +194,7 @@ ID of the subpage under the **Navigation** component. After the Full-screen Wind
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PiPConfiguration-handleId?: int--><!--Device-PiPConfiguration-handleId?: int-End-->
 
@@ -212,7 +212,7 @@ A page-level UI state storage unit. In multi-instance scenarios, it can be used 
 
 **Since:** 17
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 17.
+**Atomic service API:** This API can be used in atomic services since API version 17.
 
 <!--Device-PiPConfiguration-localStorage?: LocalStorage--><!--Device-PiPConfiguration-localStorage?: LocalStorage-End-->
 
@@ -237,7 +237,7 @@ The original page can be restored from the PiP window.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-navigationId?: string--><!--Device-PiPConfiguration-navigationId?: string-End-->
 
@@ -255,7 +255,7 @@ Template type, which is used to distinguish video playback, video call, video me
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPConfiguration-templateType?: PiPTemplateType--><!--Device-PiPConfiguration-templateType?: PiPTemplateType-End-->
 

@@ -12,17 +12,17 @@ Enumerates the album types,
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## USER
+## SOURCE
 
 ```TypeScript
-USER = 0
+SOURCE = 2048
 ```
 
-User album.
+Album created by an application.
 
-**Since:** 10
+**Since:** 23
 
-<!--Device-AlbumType-USER = 0--><!--Device-AlbumType-USER = 0-End-->
+<!--Device-AlbumType-SOURCE = 2048--><!--Device-AlbumType-SOURCE = 2048-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,16 +40,16 @@ System album.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SOURCE
+## USER
 
 ```TypeScript
-SOURCE = 2048
+USER = 0
 ```
 
-Album created by an application.
+User album.
 
-**Since:** 23
+**Since:** 10
 
-<!--Device-AlbumType-SOURCE = 2048--><!--Device-AlbumType-SOURCE = 2048-End-->
+<!--Device-AlbumType-USER = 0--><!--Device-AlbumType-USER = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

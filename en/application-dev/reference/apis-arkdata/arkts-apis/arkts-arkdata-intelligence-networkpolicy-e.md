@@ -12,22 +12,6 @@ Indicates network policy.
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-## WIFI_ONLY
-
-```TypeScript
-WIFI_ONLY = 0
-```
-
-Using WiFi.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-NetworkPolicy-WIFI_ONLY = 0--><!--Device-NetworkPolicy-WIFI_ONLY = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
-
 ## WIFI_AND_CELLULAR
 
 ```TypeScript
@@ -41,5 +25,21 @@ Using WiFi and Cellular.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-NetworkPolicy-WIFI_AND_CELLULAR = 1--><!--Device-NetworkPolicy-WIFI_AND_CELLULAR = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+## WIFI_ONLY
+
+```TypeScript
+WIFI_ONLY = 0
+```
+
+Using WiFi.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NetworkPolicy-WIFI_ONLY = 0--><!--Device-NetworkPolicy-WIFI_ONLY = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core

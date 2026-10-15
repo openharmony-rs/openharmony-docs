@@ -1048,7 +1048,7 @@ struct StyledStringSetLineheightParagraphstyleDemo {
 
 ### 示例6（设置自定义绘制Span）
 
-从API version 12开始，该示例通过[CustomSpan](arkts-arkui-customspan-c.md)接口和measureTextSize实现属性字符串设置自定义绘制Span。
+从API version 12开始，该示例通过[CustomSpan](arkts-arkui-customspan-c.md)接口和[measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12)实现属性字符串设置自定义绘制Span。
 
 从API版本26.0.0开始，CustomSpanMeasureInfo新增maxWidth、layoutPolicy属性。
 
@@ -1876,7 +1876,7 @@ struct leadingMarginSpanDemo {
 
 ### 示例16（使用supportSvg2属性时，SVG图片的显示效果）
 
-从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](arkts-arkui-resourceimageattachmentoptions-i.md)设置supportSvg2属性，使SVG标签解析能力增强功能的SVG易用性提升能力生效。
+从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](arkts-arkui-resourceimageattachmentoptions-i.md)设置supportSvg2属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
 
 
 
@@ -1946,7 +1946,7 @@ struct StyledStringProcessDemo {
 
 ### 示例17（设置字体配置）
 
-该示例通过TextStyleInterface中的fontConfigs实现属性字符串的字体配置。
+该示例通过TextStyleInterface中的[fontConfigs](ts-text-common.md#fontconfigs24对象说明)实现属性字符串的字体配置。
 
 从API version 24开始，TextStyleInterface新增fontConfigs属性。
 
@@ -2054,9 +2054,9 @@ struct StyledStringFontConfigsDemo {
 
 ### 示例18（fromHtml转换）
 
-该示例通过[fromHtml](arkts-arkui-styledstring-c.md#fromhtml)接口，将HTML中&lt;cite&gt;、&lt;dfn&gt;、&lt;small&gt;、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、&lt;ol&gt;、<ul>、<li>标签转换为属性字符串。
+该示例通过[fromHtml](arkts-arkui-styledstring-c.md#fromhtml)接口，将HTML中<cite>、<dfn>、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签转换为属性字符串。
 
-从API版本26.0.0开始，fromHtml新增支持&lt;cite&gt;、&lt;dfn&gt;、&lt;small&gt;、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、&lt;ol&gt;、<ul>、<li>标签。
+从API版本26.0.0开始，fromHtml新增支持<cite>、<dfn>、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签。
 
 
 
@@ -2369,29 +2369,38 @@ struct TailIndentsExample {
 
 ### 示例22（设置图片拉伸）
 
-该示例通过设置ImageAttachment中的resizable属性，对图片不同方向进行拉伸。
+该示例通过设置ImageAttachment中的resizable属性，分别使用slice和lattice选项对图片进行拉伸。
 
-从API版本26.1.0开始，ImageAttachment接口新增resizable属性。
+从API版本26.0.1开始，ImageAttachment接口新增resizable属性。
 
 ```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
 @Entry
 @Component
 struct StyledStringResizablePage {
   controller: TextController = new TextController();
+  private xDivs: Array<number> = [1, 2, 200];
+  private yDivs: Array<number> = [1, 2, 200];
+  private fXCount: number = 3;
+  private fYCount: number = 3;
+  private drawingLattice: DrawingLattice =
+    drawing.Lattice.createImageLattice(this.xDivs, this.yDivs, this.fXCount, this.fYCount);
+
   build() {
     Column({ space: 20 }) {
       Text('StyledString resizable Demo')
-        .fontSize(28)
+        .fontSize(25)
         .fontWeight(FontWeight.Bold)
 
       Text(undefined, { controller: this.controller })
         .width('90%')
         .margin({ top: 10 })
-        .fontSize(28)
+        .fontSize(25)
         .onAppear(() => {
-          let mutableStyledString2: MutableStyledString = new MutableStyledString(new ImageAttachment({
+          let sliceStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
             resourceValue: $r('app.media.landscape'),
-            size: { width: 260, height: 260 },
+            size: { width: 200, height: 200 },
             resizable: {
               slice: {
                 left: '200px',
@@ -2401,13 +2410,22 @@ struct StyledStringResizablePage {
               }
             }
           }));
+          let latticeStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 200, height: 200 },
+            resizable: {
+              lattice: this.drawingLattice
+            }
+          }));
           let mutableStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
             resourceValue: $r('app.media.landscape'),
-            size: { width: 260, height: 260 },
+            size: { width: 200, height: 200 },
           }));
           mutableStyledString.insertString(0, "原图\n")
-          mutableStyledString.insertString(mutableStyledString.length, "\n设置Resizable后\n")
-          mutableStyledString.appendStyledString(mutableStyledString2);
+          mutableStyledString.insertString(mutableStyledString.length, "\n设置slice后\n")
+          mutableStyledString.appendStyledString(sliceStyledString);
+          mutableStyledString.insertString(mutableStyledString.length, "\n设置lattice后\n")
+          mutableStyledString.appendStyledString(latticeStyledString);
           this.controller.setStyledString(mutableStyledString);
         })
     }

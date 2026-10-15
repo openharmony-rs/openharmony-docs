@@ -12,22 +12,6 @@ Enumerates the video playback states.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## PLAYING
-
-```TypeScript
-PLAYING = 0
-```
-
-The video is being played.
-
-**Since:** 14
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-VideoPlayerState-PLAYING = 0--><!--Device-VideoPlayerState-PLAYING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## PAUSED
 
 ```TypeScript
@@ -44,19 +28,35 @@ Video playback is paused.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## STOPPED
+## PLAYING
 
 ```TypeScript
-STOPPED = 2
+PLAYING = 0
 ```
 
-Video playback is stopped.
+The video is being played.
 
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-VideoPlayerState-STOPPED = 2--><!--Device-VideoPlayerState-STOPPED = 2-End-->
+<!--Device-VideoPlayerState-PLAYING = 0--><!--Device-VideoPlayerState-PLAYING = 0-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## SEEK_FINISH
+
+```TypeScript
+SEEK_FINISH = 4
+```
+
+Finished dragging the progress bar.
+
+**Since:** 14
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-VideoPlayerState-SEEK_FINISH = 4--><!--Device-VideoPlayerState-SEEK_FINISH = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -76,18 +76,18 @@ Started dragging the progress bar.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SEEK_FINISH
+## STOPPED
 
 ```TypeScript
-SEEK_FINISH = 4
+STOPPED = 2
 ```
 
-Finished dragging the progress bar.
+Video playback is stopped.
 
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-VideoPlayerState-SEEK_FINISH = 4--><!--Device-VideoPlayerState-SEEK_FINISH = 4-End-->
+<!--Device-VideoPlayerState-STOPPED = 2--><!--Device-VideoPlayerState-STOPPED = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

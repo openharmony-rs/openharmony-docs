@@ -12,6 +12,20 @@ Enumerates the statuses of sensitive data keys under the lock screen.
 
 **System capability:** SystemCapability.Security.ScreenLockFileManager
 
+## KEY_EXIST
+
+```TypeScript
+KEY_EXIST = 0
+```
+
+The key exists. This status indicates that sensitive data under lock screen can be operated normally.
+
+**Since:** 18
+
+<!--Device-KeyStatus-KEY_EXIST = 0--><!--Device-KeyStatus-KEY_EXIST = 0-End-->
+
+**System capability:** SystemCapability.Security.ScreenLockFileManager
+
 ## KEY_NOT_EXIST
 
 ```TypeScript
@@ -37,19 +51,5 @@ The key has been released. This status indicates that sensitive data under lock 
 **Since:** 18
 
 <!--Device-KeyStatus-KEY_RELEASED = -1--><!--Device-KeyStatus-KEY_RELEASED = -1-End-->
-
-**System capability:** SystemCapability.Security.ScreenLockFileManager
-
-## KEY_EXIST
-
-```TypeScript
-KEY_EXIST = 0
-```
-
-The key exists. This status indicates that sensitive data under lock screen can be operated normally.
-
-**Since:** 18
-
-<!--Device-KeyStatus-KEY_EXIST = 0--><!--Device-KeyStatus-KEY_EXIST = 0-End-->
 
 **System capability:** SystemCapability.Security.ScreenLockFileManager

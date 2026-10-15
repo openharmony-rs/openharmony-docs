@@ -18,6 +18,26 @@ Describes the event received by the application when the volume is changed.
 import { audio } from '@kit.AudioKit';
 ```
 
+## appUid
+
+```TypeScript
+appUid?: number
+```
+
+Application UID.
+
+**Type:** number
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VolumeEvent-appUid?: int--><!--Device-VolumeEvent-appUid?: int-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**System API:** This is a system API.
+
 ## networkId
 
 ```TypeScript

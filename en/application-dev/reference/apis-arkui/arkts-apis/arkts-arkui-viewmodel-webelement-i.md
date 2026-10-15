@@ -4,7 +4,7 @@
 export interface WebElement extends Element
 ```
 
-The &lt;web&gt; component is a container for displaying web page content.
+The <web> component is a container for displaying web page content.
 
 @extends Element @interface WebElement
 

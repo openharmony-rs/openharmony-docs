@@ -1,13 +1,8 @@
-# deprecated ReqPermissionDetail
+# ReqPermissionDetail
 
 ```TypeScript
 export interface ReqPermissionDetail
 ```
-
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)替代。
 
 应用运行时需向系统申请的权限集合的详细信息。
 
@@ -15,7 +10,7 @@ export interface ReqPermissionDetail
 
 **废弃版本：** 9
 
-**替代接口：** bundleInfo
+**替代接口：** [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)
 
 <!--Device-unnamed-export interface ReqPermissionDetail--><!--Device-unnamed-export interface ReqPermissionDetail-End-->
 

@@ -42,7 +42,7 @@ SceneOptions used by constructor
 
 | Name | Description |
 | --- | --- |
-| [ModelType](arkts-arkui-component3d-comp-modeltype-e.md) | The enum of model type @enum { number } |
+| [ModelType](arkts-arkui-component3d-comp-modeltype-e.md) | The enum of model type |
 
 ## Examples
 

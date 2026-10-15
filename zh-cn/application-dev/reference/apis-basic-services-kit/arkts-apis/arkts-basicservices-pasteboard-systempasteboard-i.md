@@ -18,6 +18,8 @@ interface SystemPasteboard
 import { pasteboard } from '@kit.BasicServicesKit';
 ```
 
+<a id="cleardata1"></a>
+
 ## clearData
 
 ```TypeScript
@@ -28,7 +30,7 @@ clearData(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-clearData(callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-clearData(callback: AsyncCallback<void>): void-End-->
 
@@ -44,7 +46,7 @@ clearData(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -61,7 +63,7 @@ systemPasteboard.clearData((err, data) => {
 });
 ```
 
-<a id="cleardata-1"></a>
+<a id="cleardata2"></a>
 
 ## clearData
 
@@ -73,7 +75,7 @@ clearData(): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-clearData(): Promise<void>--><!--Device-SystemPasteboard-clearData(): Promise<void>-End-->
 
@@ -108,7 +110,7 @@ clearDataSync(): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-clearDataSync(): void--><!--Device-SystemPasteboard-clearDataSync(): void-End-->
 
@@ -162,7 +164,7 @@ detectPatterns(patterns: Array<Pattern>): Promise<Array<Pattern>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -197,7 +199,7 @@ getChangeCount(): number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getChangeCount(): long--><!--Device-SystemPasteboard-getChangeCount(): long-End-->
 
@@ -223,6 +225,8 @@ try {
 };
 ```
 
+<a id="getdata1"></a>
+
 ## getData
 
 ```TypeScript
@@ -239,7 +243,7 @@ getData(callback: AsyncCallback<PasteData>): void
 - API版本12+：ohos.permission.READ_PASTEBOARD
 - API版本9-11：N/A
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getData(callback: AsyncCallback<PasteData>): void--><!--Device-SystemPasteboard-getData(callback: AsyncCallback<PasteData>): void-End-->
 
@@ -255,7 +259,7 @@ getData(callback: AsyncCallback<PasteData>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-另外一个复制或粘贴正在进行) | Another copy or paste operation is in progress. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 12+ |
 
@@ -277,7 +281,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 });
 ```
 
-<a id="getdata-1"></a>
+<a id="getdata2"></a>
 
 ## getData
 
@@ -295,7 +299,7 @@ getData(): Promise<PasteData>
 - API版本12+：ohos.permission.READ_PASTEBOARD
 - API版本9-11：N/A
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getData(): Promise<PasteData>--><!--Device-SystemPasteboard-getData(): Promise<PasteData>-End-->
 
@@ -340,7 +344,7 @@ getDataSource(): string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getDataSource(): string--><!--Device-SystemPasteboard-getDataSource(): string-End-->
 
@@ -376,7 +380,7 @@ try {
 getDataSync(): PasteData
 ```
 
-读取系统剪贴板内容，此接口为同步接口。适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口[getData](#getdata)。
+读取系统剪贴板内容，此接口为同步接口。适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口[getData](#getdata1)。
 
 应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
 
@@ -386,7 +390,7 @@ getDataSync(): PasteData
 - API版本12+：ohos.permission.READ_PASTEBOARD
 - API版本11：N/A
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getDataSync(): PasteData--><!--Device-SystemPasteboard-getDataSync(): PasteData-End-->
 
@@ -431,7 +435,7 @@ getDataWithProgress(params: GetDataParams): Promise<PasteData>
 
 **需要权限：** ohos.permission.READ_PASTEBOARD
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getDataWithProgress(params: GetDataParams): Promise<PasteData>--><!--Device-SystemPasteboard-getDataWithProgress(params: GetDataParams): Promise<PasteData>-End-->
 
@@ -493,7 +497,7 @@ struct PasteboardTest {
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
                 console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
-                console.error(`Failed to get PasteData. CerrorCode: ${err.code}, errorMessage: ${err.message}.`);
+                console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
               })
           })
         }
@@ -513,7 +517,7 @@ getMimeTypes(): Promise<Array<string>>
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getMimeTypes(): Promise<Array<string>>--><!--Device-SystemPasteboard-getMimeTypes(): Promise<Array<string>>-End-->
 
@@ -544,7 +548,7 @@ systemPasteboard.getMimeTypes().then((data: Array<string>) => {
 getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>
 ```
 
-读取系统剪贴板内容，使用Promise异步回调。适用于需要使用标准化数据结构[UnifiedData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-unifieddata-c.md)进行跨应用数据交换的场景。当应用需要与其他支持UnifiedData的应用进行数据共享，或需要处理复杂的多类型数据时，使用本接口。与[getData](#getdata)相比，getUnifiedData提供了更标准化的数据格式。
+读取系统剪贴板内容，使用Promise异步回调。适用于需要使用标准化数据结构[UnifiedData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-unifieddata-c.md)进行跨应用数据交换的场景。当应用需要与其他支持UnifiedData的应用进行数据共享，或需要处理复杂的多类型数据时，使用本接口。与[getData](#getdata1)相比，getUnifiedData提供了更标准化的数据格式。
 
 应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
 
@@ -552,7 +556,7 @@ getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>
 
 **需要权限：** ohos.permission.READ_PASTEBOARD
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>--><!--Device-SystemPasteboard-getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>-End-->
 
@@ -605,7 +609,7 @@ getUnifiedDataSync(): unifiedDataChannel.UnifiedData
 
 **需要权限：** ohos.permission.READ_PASTEBOARD
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-getUnifiedDataSync(): unifiedDataChannel.UnifiedData--><!--Device-SystemPasteboard-getUnifiedDataSync(): unifiedDataChannel.UnifiedData-End-->
 
@@ -638,6 +642,8 @@ try {
 };
 ```
 
+<a id="hasdata1"></a>
+
 ## hasData
 
 ```TypeScript
@@ -648,7 +654,7 @@ hasData(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-hasData(callback: AsyncCallback<boolean>): void--><!--Device-SystemPasteboard-hasData(callback: AsyncCallback<boolean>): void-End-->
 
@@ -664,7 +670,7 @@ hasData(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -681,7 +687,7 @@ systemPasteboard.hasData((err: BusinessError, data: boolean) => {
 });
 ```
 
-<a id="hasdata-1"></a>
+<a id="hasdata2"></a>
 
 ## hasData
 
@@ -693,7 +699,7 @@ hasData(): Promise<boolean>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-hasData(): Promise<boolean>--><!--Device-SystemPasteboard-hasData(): Promise<boolean>-End-->
 
@@ -728,7 +734,7 @@ hasDataSync(): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-hasDataSync(): boolean--><!--Device-SystemPasteboard-hasDataSync(): boolean-End-->
 
@@ -768,7 +774,7 @@ hasDataType(mimeType: string): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-hasDataType(mimeType: string): boolean--><!--Device-SystemPasteboard-hasDataType(mimeType: string): boolean-End-->
 
@@ -790,7 +796,7 @@ hasDataType(mimeType: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [12900005](../errorcode-pasteboard.md#12900005-请求超时) | Excessive processing time for internal data. |
 
 **示例**
@@ -815,7 +821,7 @@ hasRemoteData(): boolean
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-hasRemoteData(): boolean--><!--Device-SystemPasteboard-hasRemoteData(): boolean-End-->
 
@@ -846,7 +852,7 @@ isRemoteData(): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-isRemoteData(): boolean--><!--Device-SystemPasteboard-isRemoteData(): boolean-End-->
 
@@ -905,7 +911,7 @@ off(type: 'update', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -983,7 +989,7 @@ on(type: 'update', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -1106,7 +1112,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12 - 13 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [12900006](../errorcode-pasteboard.md#12900006-设置已存在) | Settings already exist. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 14+ |
 
@@ -1122,6 +1128,8 @@ try {
 }
 ```
 
+<a id="setdata1"></a>
+
 ## setData
 
 ```TypeScript
@@ -1132,7 +1140,7 @@ setData(data: PasteData, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-setData(data: PasteData, callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-setData(data: PasteData, callback: AsyncCallback<void>): void-End-->
 
@@ -1149,7 +1157,7 @@ setData(data: PasteData, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-另外一个复制或粘贴正在进行) | Another copy or paste operation is in progress. |
 | [27787278](../errorcode-pasteboard.md#27787278-禁止复制) | Replication is prohibited. |
 
@@ -1170,7 +1178,7 @@ systemPasteboard.setData(pasteData, (err, data) => {
 });
 ```
 
-<a id="setdata-1"></a>
+<a id="setdata2"></a>
 
 ## setData
 
@@ -1182,7 +1190,7 @@ setData(data: PasteData): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-setData(data: PasteData): Promise<void>--><!--Device-SystemPasteboard-setData(data: PasteData): Promise<void>-End-->
 
@@ -1204,7 +1212,7 @@ setData(data: PasteData): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-另外一个复制或粘贴正在进行) | Another copy or paste operation is in progress. |
 | [27787278](../errorcode-pasteboard.md#27787278-禁止复制) | Replication is prohibited. |
 
@@ -1235,7 +1243,7 @@ setDataSync(data: PasteData): void
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-setDataSync(data: PasteData): void--><!--Device-SystemPasteboard-setDataSync(data: PasteData): void-End-->
 
@@ -1251,7 +1259,7 @@ setDataSync(data: PasteData): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [12900005](../errorcode-pasteboard.md#12900005-请求超时) | Excessive processing time for internal data. |
 
 **示例**
@@ -1277,7 +1285,7 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise<void>--><!--Device-SystemPasteboard-setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise<void>-End-->
 
@@ -1299,7 +1307,7 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-另外一个复制或粘贴正在进行) | Another copy or paste operation is in progress. |
 | [27787278](../errorcode-pasteboard.md#27787278-禁止复制) | Replication is prohibited. |
 
@@ -1340,7 +1348,7 @@ setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemPasteboard-setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void--><!--Device-SystemPasteboard-setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void-End-->
 
@@ -1356,7 +1364,7 @@ setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [12900005](../errorcode-pasteboard.md#12900005-请求超时) | Excessive processing time for internal data. |
 
 **示例**
@@ -1389,6 +1397,8 @@ try {
 };
 ```
 
+<a id="clear1"></a>
+
 ## clear
 
 ```TypeScript
@@ -1401,7 +1411,7 @@ clear(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [clearData](#cleardata)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [clearData](#cleardata1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void-End-->
 
@@ -1417,7 +1427,7 @@ clear(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -1432,7 +1442,7 @@ systemPasteboard.clear((err, data) => {
 });
 ```
 
-<a id="clear-1"></a>
+<a id="clear2"></a>
 
 ## clear
 
@@ -1471,6 +1481,8 @@ systemPasteboard.clear().then((data) => {
 });
 ```
 
+<a id="getpastedata1"></a>
+
 ## getPasteData
 
 ```TypeScript
@@ -1483,7 +1495,7 @@ getPasteData(callback: AsyncCallback<PasteData>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getData](#getdata)(callback: AsyncCallback&lt;PasteData&gt;)
+**替代接口：** [getData](#getdata1)(callback: AsyncCallback&lt;PasteData&gt;)
 
 <!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void--><!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void-End-->
 
@@ -1499,7 +1511,7 @@ getPasteData(callback: AsyncCallback<PasteData>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -1519,7 +1531,7 @@ systemPasteboard.getPasteData((err: BusinessError, pasteData: pasteboard.PasteDa
 });
 ```
 
-<a id="getpastedata-1"></a>
+<a id="getpastedata2"></a>
 
 ## getPasteData
 
@@ -1561,6 +1573,8 @@ systemPasteboard.getPasteData().then((pasteData: pasteboard.PasteData) => {
 });
 ```
 
+<a id="haspastedata1"></a>
+
 ## hasPasteData
 
 ```TypeScript
@@ -1573,7 +1587,7 @@ hasPasteData(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [hasData](#hasdata)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [hasData](#hasdata1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void--><!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void-End-->
 
@@ -1589,7 +1603,7 @@ hasPasteData(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -1606,7 +1620,7 @@ systemPasteboard.hasPasteData((err: BusinessError, data: boolean) => {
 });
 ```
 
-<a id="haspastedata-1"></a>
+<a id="haspastedata2"></a>
 
 ## hasPasteData
 
@@ -1645,6 +1659,8 @@ systemPasteboard.hasPasteData().then((data: boolean) => {
 });
 ```
 
+<a id="setpastedata1"></a>
+
 ## setPasteData
 
 ```TypeScript
@@ -1657,7 +1673,7 @@ setPasteData(data: PasteData, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [setData](#setdata)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setData](#setdata1)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void-End-->
 
@@ -1674,7 +1690,7 @@ setPasteData(data: PasteData, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -1690,7 +1706,7 @@ systemPasteboard.setPasteData(pasteData, (err, data) => {
 });
 ```
 
-<a id="setpastedata-1"></a>
+<a id="setpastedata2"></a>
 
 ## setPasteData
 
@@ -1704,7 +1720,7 @@ setPasteData(data: PasteData): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [setData](#setdata-1)(data: PasteData)
+**替代接口：** [setData](#setdata2)(data: PasteData)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>--><!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>-End-->
 

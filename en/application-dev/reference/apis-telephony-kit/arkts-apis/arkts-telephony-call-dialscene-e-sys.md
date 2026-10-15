@@ -14,6 +14,22 @@ Enumerates dialup scenarios.
 
 **System API:** This is a system API.
 
+## CALL_EMERGENCY
+
+```TypeScript
+CALL_EMERGENCY = 2
+```
+
+Emergency call.
+
+**Since:** 8
+
+<!--Device-DialScene-CALL_EMERGENCY = 2--><!--Device-DialScene-CALL_EMERGENCY = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
 ## CALL_NORMAL
 
 ```TypeScript
@@ -41,22 +57,6 @@ Privileged call.
 **Since:** 8
 
 <!--Device-DialScene-CALL_PRIVILEGED = 1--><!--Device-DialScene-CALL_PRIVILEGED = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## CALL_EMERGENCY
-
-```TypeScript
-CALL_EMERGENCY = 2
-```
-
-Emergency call.
-
-**Since:** 8
-
-<!--Device-DialScene-CALL_EMERGENCY = 2--><!--Device-DialScene-CALL_EMERGENCY = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

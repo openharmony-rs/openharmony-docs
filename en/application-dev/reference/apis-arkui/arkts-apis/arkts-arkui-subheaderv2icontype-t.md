@@ -4,9 +4,7 @@
 declare type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 ```
 
-SubHeaderV2IconType
-
-@typedef { ResourceStr | SymbolGlyphModifier } SubHeaderV2IconType
+Defines the union type for the icon content.
 
 **Since:** 18
 
@@ -20,5 +18,5 @@ SubHeaderV2IconType
 
 | Type | Description |
 | --- | --- |
-| [ResourceStr](arkts-arkui-resourcestr-t.md) |  |
-| [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md) |  |
+| [ResourceStr](arkts-arkui-resourcestr-t.md) | Resource type for defining common icons. |
+| [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md) | Symbol type for defining symbol icons. |

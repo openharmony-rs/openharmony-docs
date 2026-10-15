@@ -32,24 +32,6 @@ ALARM = 1
 
 **系统接口：** 此接口为系统接口。
 
-## NOTIFICATION
-
-```TypeScript
-NOTIFICATION = 2
-```
-
-表示通知触发闪烁。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BlinkingScenario-NOTIFICATION = 2--><!--Device-BlinkingScenario-NOTIFICATION = 2-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## CALL
 
 ```TypeScript
@@ -63,6 +45,24 @@ CALL = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BlinkingScenario-CALL = 3--><!--Device-BlinkingScenario-CALL = 3-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## NOTIFICATION
+
+```TypeScript
+NOTIFICATION = 2
+```
+
+表示通知触发闪烁。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BlinkingScenario-NOTIFICATION = 2--><!--Device-BlinkingScenario-NOTIFICATION = 2-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

@@ -30,7 +30,7 @@ Horizontal coordinate. The value is a floating point number.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Point-x: double--><!--Device-Point-x: double-End-->
 
@@ -48,7 +48,7 @@ Vertical coordinate. The value is a floating point number.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Point-y: double--><!--Device-Point-y: double-End-->
 

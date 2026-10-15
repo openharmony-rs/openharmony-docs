@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="cleanbundlecachefiles1"></a>
+
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -31,7 +33,7 @@ No permission is required when the caller clears its own cache.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If clearing the application cache directory data is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -43,6 +45,7 @@ No permission is required when the caller clears its own cache.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700030](../errorcode-bundle.md#17700030-failure-in-clearing-cache-files) | The specified bundle does not support clearing of cache files. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,8 +69,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="cleanbundlecachefiles-1"></a>
+
+<a id="cleanbundlecachefiles2"></a>
 
 ## cleanBundleCacheFiles
 
@@ -99,7 +104,7 @@ No permission is required when the caller clears its own cache.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. If clearing the cache files fails, an error object is thrown. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -111,6 +116,7 @@ No permission is required when the caller clears its own cache.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700030](../errorcode-bundle.md#17700030-failure-in-clearing-cache-files) | The specified bundle does not support clearing of cache files. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -132,8 +138,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="cleanbundlecachefiles-2"></a>
+
+<a id="cleanbundlecachefiles3"></a>
 
 ## cleanBundleCacheFiles
 
@@ -166,7 +174,7 @@ No permission is required when the caller clears its own cache.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. If clearing the cache files fails, an error object is thrown. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -179,6 +187,7 @@ No permission is required when the caller clears its own cache.
 | [17700030](../errorcode-bundle.md#17700030-failure-in-clearing-cache-files) | The specified bundle does not support clearing of cache files. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -200,3 +209,5 @@ try {
   hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

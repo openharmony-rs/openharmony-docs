@@ -28,7 +28,7 @@ A blender for changing the background color of the component. Currently, only th
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-VisualEffect-backgroundColorBlender(blender: BrightnessBlender): VisualEffect--><!--Device-VisualEffect-backgroundColorBlender(blender: BrightnessBlender): VisualEffect-End-->
 
@@ -48,6 +48,7 @@ A blender for changing the background color of the component. Currently, only th
 | --- | --- |
 | [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | Returns the VisualEffect with the background color change effect attached. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,6 +60,8 @@ let visualEffect = uiEffect.createEffect();
 // Add the blender to the component to change the component background color.
 visualEffect.backgroundColorBlender(blender);
 ```
+
+<!--DelEnd-->
 
 ## borderLight
 
@@ -98,6 +101,7 @@ Adds a 3D lighting effect to the border of a rounded rectangle component.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -141,6 +145,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## colorGradient
 
 ```TypeScript
@@ -179,6 +185,7 @@ Adds a color gradient effect to the component.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -217,6 +224,8 @@ struct ColorGradientExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## distortionCollapse
 
@@ -260,6 +269,7 @@ capture, such as systemMaterial, backgroundEffect, brightness, and blur, will no
 | --- | --- |
 | [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | Returns the VisualEffect with the nonlinear deformation effect attached. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -287,6 +297,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## glassMarbleEffect
 
@@ -363,6 +375,7 @@ Adds a material effect to the component. The material effect simulates the optic
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -420,3 +433,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

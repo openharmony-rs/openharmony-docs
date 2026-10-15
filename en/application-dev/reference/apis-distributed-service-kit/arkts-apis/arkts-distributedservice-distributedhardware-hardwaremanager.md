@@ -29,9 +29,9 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 | Name | Description |
 | --- | --- |
-| [pauseDistributedHardware](arkts-distributedservice-hardwaremanager-pausedistributedhardware-f-sys.md) | Pauses the distributed hardware service on the controlled device. This API uses a promise to return the result. |
-| [resumeDistributedHardware](arkts-distributedservice-hardwaremanager-resumedistributedhardware-f-sys.md) | Resumes the distributed hardware service on the controlled device. This API uses a promise to return the result. |
-| [stopDistributedHardware](arkts-distributedservice-hardwaremanager-stopdistributedhardware-f-sys.md) | Stops the distributed hardware service on the controlled device. This API uses a promise to return the result. |
+| [pauseDistributedHardware](arkts-distributedservice-hardwaremanager-pausedistributedhardware-f-sys.md#pausedistributedhardware) | Pauses the distributed hardware service on the controlled device. This API uses a promise to return the result. |
+| [resumeDistributedHardware](arkts-distributedservice-hardwaremanager-resumedistributedhardware-f-sys.md#resumedistributedhardware) | Resumes the distributed hardware service on the controlled device. This API uses a promise to return the result. |
+| [stopDistributedHardware](arkts-distributedservice-hardwaremanager-stopdistributedhardware-f-sys.md#stopdistributedhardware) | Stops the distributed hardware service on the controlled device. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

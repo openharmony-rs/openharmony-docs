@@ -41,3 +41,24 @@ function addAllowedPrinterIPAddressesForDevice(ipAddresses: Array<string>): void
 | [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | 9200019 | The policy list has exceeded the limit. |
+
+**示例**
+
+```TypeScript
+import { common, systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+// 调用本接口前，先查询设备是否支持打印机IP地址策略特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY);
+if (isSupported) {
+  try {
+    systemManager.addAllowedPrinterIPAddressesForDevice(ipArray);
+    console.info('Succeeded in adding the allowed printer IP Addresses for the device.');
+  } catch (err) {
+    console.error(`Failed to add the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The printer IP address policy feature is not supported.');
+}
+```

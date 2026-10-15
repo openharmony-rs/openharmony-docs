@@ -140,7 +140,7 @@ clipRect: Region
 readonly format: number
 ```
 
-图像格式，参考[OH_NativeBuffer_Format](../../apis-arkgraphics2d/c-apis/capi-buffer-common-h.md#oh_nativebuffer_format)。
+图像格式，参考[OH_NativeBuffer_Format](../../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。
 
 **类型：** number
 
@@ -180,7 +180,7 @@ Image对象所存储的数据是预览流还是拍照流，取决于应用将rec
 readonly timestamp: number
 ```
 
-图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty)接口读取相关的EXIF信息。
+图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty1)接口读取相关的EXIF信息。
 
 **类型：** number
 

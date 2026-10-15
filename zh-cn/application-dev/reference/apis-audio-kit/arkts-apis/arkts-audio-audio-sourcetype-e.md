@@ -12,6 +12,22 @@ enum SourceType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+## SOURCE_TYPE_CAMCORDER
+
+```TypeScript
+SOURCE_TYPE_CAMCORDER = 13
+```
+
+录像的音频源。
+
+SystemCapability.Multimedia.Audio.Core
+
+**起始版本：** 13
+
+<!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13--><!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 ## SOURCE_TYPE_INVALID
 
 ```TypeScript
@@ -25,6 +41,22 @@ SystemCapability.Multimedia.Audio.Core
 **起始版本：** 8
 
 <!--Device-SourceType-SOURCE_TYPE_INVALID = -1--><!--Device-SourceType-SOURCE_TYPE_INVALID = -1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## SOURCE_TYPE_LIVE
+
+```TypeScript
+SOURCE_TYPE_LIVE = 17
+```
+
+直播场景的音频源，在支持的设备上会提供系统回声消除能力。
+
+SystemCapability.Multimedia.Audio.Core
+
+**起始版本：** 20
+
+<!--Device-SourceType-SOURCE_TYPE_LIVE = 17--><!--Device-SourceType-SOURCE_TYPE_LIVE = 17-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -44,43 +76,21 @@ SystemCapability.Multimedia.Audio.Core
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## SOURCE_TYPE_VOICE_RECOGNITION
+## SOURCE_TYPE_UNPROCESSED
 
 ```TypeScript
-SOURCE_TYPE_VOICE_RECOGNITION = 1
+SOURCE_TYPE_UNPROCESSED = 14
 ```
 
-语音识别源。
+麦克风纯净录音的音频源（系统不做任何算法处理）。
 
 SystemCapability.Multimedia.Audio.Core
 
-**起始版本：** 9
+**起始版本：** 14
 
-<!--Device-SourceType-SOURCE_TYPE_VOICE_RECOGNITION = 1--><!--Device-SourceType-SOURCE_TYPE_VOICE_RECOGNITION = 1-End-->
+<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## SOURCE_TYPE_PLAYBACK_CAPTURE
-
-```TypeScript
-SOURCE_TYPE_PLAYBACK_CAPTURE = 2
-```
-
-播放音频流（内录）录制音频源。
-
-SystemCapability.Multimedia.Audio.PlaybackCapture
-
-从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../../apis-media-kit/c-apis/capi-avscreencapture.md)替代。
-
-**起始版本：** 10
-
-**废弃版本：** 12
-
-**替代接口：** OH_AVScreenCapture in native interface.
-
-<!--Device-SourceType-SOURCE_TYPE_PLAYBACK_CAPTURE = 2--><!--Device-SourceType-SOURCE_TYPE_PLAYBACK_CAPTURE = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
 ## SOURCE_TYPE_VOICE_COMMUNICATION
 
@@ -114,50 +124,40 @@ SystemCapability.Multimedia.Audio.Core
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## SOURCE_TYPE_CAMCORDER
+## SOURCE_TYPE_VOICE_RECOGNITION
 
 ```TypeScript
-SOURCE_TYPE_CAMCORDER = 13
+SOURCE_TYPE_VOICE_RECOGNITION = 1
 ```
 
-录像的音频源。
+语音识别源。
 
 SystemCapability.Multimedia.Audio.Core
 
-**起始版本：** 13
+**起始版本：** 9
 
-<!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13--><!--Device-SourceType-SOURCE_TYPE_CAMCORDER = 13-End-->
+<!--Device-SourceType-SOURCE_TYPE_VOICE_RECOGNITION = 1--><!--Device-SourceType-SOURCE_TYPE_VOICE_RECOGNITION = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## SOURCE_TYPE_UNPROCESSED
+## SOURCE_TYPE_PLAYBACK_CAPTURE
 
 ```TypeScript
-SOURCE_TYPE_UNPROCESSED = 14
+SOURCE_TYPE_PLAYBACK_CAPTURE = 2
 ```
 
-麦克风纯净录音的音频源（系统不做任何算法处理）。
+播放音频流（内录）录制音频源。
 
-SystemCapability.Multimedia.Audio.Core
+SystemCapability.Multimedia.Audio.PlaybackCapture
 
-**起始版本：** 14
+从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
 
-<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED = 14-End-->
+**起始版本：** 10
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
+**废弃版本：** 12
 
-## SOURCE_TYPE_LIVE
+**替代接口：** OH_AVScreenCapture in native interface.
 
-```TypeScript
-SOURCE_TYPE_LIVE = 17
-```
+<!--Device-SourceType-SOURCE_TYPE_PLAYBACK_CAPTURE = 2--><!--Device-SourceType-SOURCE_TYPE_PLAYBACK_CAPTURE = 2-End-->
 
-直播场景的音频源，在支持的设备上会提供系统回声消除能力。
-
-SystemCapability.Multimedia.Audio.Core
-
-**起始版本：** 20
-
-<!--Device-SourceType-SOURCE_TYPE_LIVE = 17--><!--Device-SourceType-SOURCE_TYPE_LIVE = 17-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture

@@ -12,24 +12,6 @@ Enumerates the display level modes of the dialog box.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## OVERLAY
-
-```TypeScript
-OVERLAY = 0
-```
-
-The dialog box is displayed at the root node level of the application window and remains visible during navigation.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-LevelMode-OVERLAY = 0--><!--Device-LevelMode-OVERLAY = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## EMBEDDED
 
 ```TypeScript
@@ -45,5 +27,23 @@ The dialog box is a child of the page's route/navigation and is hidden when the 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-LevelMode-EMBEDDED = 1--><!--Device-LevelMode-EMBEDDED = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## OVERLAY
+
+```TypeScript
+OVERLAY = 0
+```
+
+The dialog box is displayed at the root node level of the application window and remains visible during navigation.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-LevelMode-OVERLAY = 0--><!--Device-LevelMode-OVERLAY = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

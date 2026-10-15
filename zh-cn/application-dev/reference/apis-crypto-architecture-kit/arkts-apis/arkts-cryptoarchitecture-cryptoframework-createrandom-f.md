@@ -20,7 +20,7 @@ function createRandom(): Random
 - API版本12+：此接口可在Stage模型和FA模型下使用。
 - API版本9-11：此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-cryptoFramework-function createRandom(): Random--><!--Device-cryptoFramework-function createRandom(): Random-End-->
 

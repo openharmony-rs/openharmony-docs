@@ -32,7 +32,7 @@ encryptionAlgorithm?: PbesEncryptionAlgorithm
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-PbesParams-encryptionAlgorithm?: PbesEncryptionAlgorithm--><!--Device-PbesParams-encryptionAlgorithm?: PbesEncryptionAlgorithm-End-->
 
@@ -52,7 +52,7 @@ iterations?: number
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-PbesParams-iterations?: int--><!--Device-PbesParams-iterations?: int-End-->
 
@@ -72,7 +72,7 @@ saltLen?: number
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-PbesParams-saltLen?: int--><!--Device-PbesParams-saltLen?: int-End-->
 

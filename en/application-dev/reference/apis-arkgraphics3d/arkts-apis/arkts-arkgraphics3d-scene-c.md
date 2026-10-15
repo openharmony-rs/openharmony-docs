@@ -193,7 +193,7 @@ Obtains the rendering context associated with the current graphics object.
 
 | Type | Description |
 | --- | --- |
-| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) &#124; null | Rendering context associated with the current object, or null if no rendering context is associated. @static |
+| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) &#124; null | Rendering context associated with the current object, or null if no rendering context is associated. |
 
 **Examples**
 
@@ -390,6 +390,8 @@ function ImportSceneTest() {
 }
 ```
 
+<a id="load1"></a>
+
 ## load
 
 ```TypeScript
@@ -414,7 +416,7 @@ Loads a resource by path. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise used to return the Scene object created. @static |
+| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise used to return the Scene object created. |
 
 **Examples**
 

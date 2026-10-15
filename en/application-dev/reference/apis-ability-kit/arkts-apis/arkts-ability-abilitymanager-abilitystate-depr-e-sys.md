@@ -18,21 +18,41 @@ Enumerates the ability states.
 
 **System API:** This is a system API.
 
-## INITIAL
+## BACKGROUND
 
 ```TypeScript
-INITIAL = 0
+BACKGROUND = 10
 ```
 
-The ability is in the initial state.
+The ability is running in the background.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [INITIAL](arkts-ability-abilitymanager-abilitystate-e.md#initial)
+**Substitutes:** [BACKGROUND](arkts-ability-abilitymanager-abilitystate-e.md#background)
 
-<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
+<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+## BACKGROUNDING
+
+```TypeScript
+BACKGROUNDING = 12
+```
+
+The ability is being switched to the background.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [BACKGROUNDING](arkts-ability-abilitymanager-abilitystate-e.md#backgrounding)
+
+<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -58,26 +78,6 @@ The ability is running in the foreground.
 
 **System API:** This is a system API.
 
-## BACKGROUND
-
-```TypeScript
-BACKGROUND = 10
-```
-
-The ability is running in the background.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [BACKGROUND](arkts-ability-abilitymanager-abilitystate-e.md#background)
-
-<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
 ## FOREGROUNDING
 
 ```TypeScript
@@ -98,21 +98,21 @@ The ability is being switched to the foreground.
 
 **System API:** This is a system API.
 
-## BACKGROUNDING
+## INITIAL
 
 ```TypeScript
-BACKGROUNDING = 12
+INITIAL = 0
 ```
 
-The ability is being switched to the background.
+The ability is in the initial state.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [BACKGROUNDING](arkts-ability-abilitymanager-abilitystate-e.md#backgrounding)
+**Substitutes:** [INITIAL](arkts-ability-abilitymanager-abilitystate-e.md#initial)
 
-<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
+<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

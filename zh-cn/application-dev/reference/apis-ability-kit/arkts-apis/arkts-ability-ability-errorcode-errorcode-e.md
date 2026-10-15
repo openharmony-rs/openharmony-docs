@@ -12,20 +12,6 @@ ErrorCode定义启动Ability时返回的错误码，包括无效的参数、权�
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## PERMISSION_DENY
-
-```TypeScript
-PERMISSION_DENY = -3
-```
-
-权限拒绝。
-
-**起始版本：** 6
-
-<!--Device-ErrorCode-PERMISSION_DENY = -3--><!--Device-ErrorCode-PERMISSION_DENY = -3-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 ## ABILITY_NOT_FOUND
 
 ```TypeScript
@@ -65,5 +51,19 @@ NO_ERROR = 0
 **起始版本：** 6
 
 <!--Device-ErrorCode-NO_ERROR = 0--><!--Device-ErrorCode-NO_ERROR = 0-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## PERMISSION_DENY
+
+```TypeScript
+PERMISSION_DENY = -3
+```
+
+权限拒绝。
+
+**起始版本：** 6
+
+<!--Device-ErrorCode-PERMISSION_DENY = -3--><!--Device-ErrorCode-PERMISSION_DENY = -3-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

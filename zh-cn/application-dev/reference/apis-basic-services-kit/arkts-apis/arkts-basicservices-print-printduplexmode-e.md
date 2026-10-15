@@ -12,20 +12,6 @@ enum PrintDuplexMode
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## DUPLEX_MODE_NONE
-
-```TypeScript
-DUPLEX_MODE_NONE = 0
-```
-
-表示单面打印。
-
-**起始版本：** 11
-
-<!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0--><!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## DUPLEX_MODE_LONG_EDGE
 
 ```TypeScript
@@ -37,6 +23,20 @@ DUPLEX_MODE_LONG_EDGE = 1
 **起始版本：** 11
 
 <!--Device-PrintDuplexMode-DUPLEX_MODE_LONG_EDGE = 1--><!--Device-PrintDuplexMode-DUPLEX_MODE_LONG_EDGE = 1-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## DUPLEX_MODE_NONE
+
+```TypeScript
+DUPLEX_MODE_NONE = 0
+```
+
+表示单面打印。
+
+**起始版本：** 11
+
+<!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0--><!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

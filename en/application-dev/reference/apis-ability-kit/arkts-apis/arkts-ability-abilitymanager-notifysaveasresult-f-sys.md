@@ -6,6 +6,8 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="notifysaveasresult1"></a>
+
 ## notifySaveAsResult
 
 ```TypeScript
@@ -30,7 +32,7 @@ Used by the [Data Loss Prevention (DLP)](../../apis-data-protection-kit/arkts-ap
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | Information returned to the caller. |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | Yes | Information returned to the caller. |
 | requestCode | number | Yes | Request code passed in by the DLP management application. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the API call is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
@@ -38,13 +40,13 @@ Used by the [Data Loss Prevention (DLP)](../../apis-data-protection-kit/arkts-ap
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
 
-<a id="notifysaveasresult-1"></a>
+<a id="notifysaveasresult2"></a>
 
 ## notifySaveAsResult
 
@@ -70,7 +72,7 @@ Used by the [Data Loss Prevention (DLP)](../../apis-data-protection-kit/arkts-ap
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | Information returned to the caller. |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | Yes | Information returned to the caller. |
 | requestCode | number | Yes | Request code passed in by the DLP management application. |
 
 **Return value:**
@@ -83,7 +85,7 @@ Used by the [Data Loss Prevention (DLP)](../../apis-data-protection-kit/arkts-ap
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |

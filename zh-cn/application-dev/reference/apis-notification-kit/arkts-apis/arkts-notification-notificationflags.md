@@ -6,14 +6,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-notificationflags-i.md) | 描述通知标志位。 |
+| [NotificationFlags](arkts-notification-notificationflags-i.md) | 描述通知标志位。 |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-notificationflags-i-sys.md) | 描述通知标志位。 |
+| [NotificationFlags](arkts-notification-notificationflags-i-sys.md) | 描述通知标志位。 |
 <!--DelEnd-->
 
 ### 枚举

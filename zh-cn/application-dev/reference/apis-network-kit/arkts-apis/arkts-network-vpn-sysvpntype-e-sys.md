@@ -56,29 +56,15 @@ IKEV2_IPSEC_RSA = 3
 
 **系统接口：** 此接口为系统接口。
 
-## L2TP_IPSEC_PSK
+## IPSEC_HYBRID_RSA
 
 ```TypeScript
-L2TP_IPSEC_PSK = 4
+IPSEC_HYBRID_RSA = 8
 ```
 
 **起始版本：** 12
 
-<!--Device-SysVpnType-L2TP_IPSEC_PSK = 4--><!--Device-SysVpnType-L2TP_IPSEC_PSK = 4-End-->
-
-**系统能力：** SystemCapability.Communication.NetManager.Vpn
-
-**系统接口：** 此接口为系统接口。
-
-## L2TP_IPSEC_RSA
-
-```TypeScript
-L2TP_IPSEC_RSA = 5
-```
-
-**起始版本：** 12
-
-<!--Device-SysVpnType-L2TP_IPSEC_RSA = 5--><!--Device-SysVpnType-L2TP_IPSEC_RSA = 5-End-->
+<!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8--><!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -112,15 +98,29 @@ IPSEC_XAUTH_RSA = 7
 
 **系统接口：** 此接口为系统接口。
 
-## IPSEC_HYBRID_RSA
+## L2TP_IPSEC_PSK
 
 ```TypeScript
-IPSEC_HYBRID_RSA = 8
+L2TP_IPSEC_PSK = 4
 ```
 
 **起始版本：** 12
 
-<!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8--><!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8-End-->
+<!--Device-SysVpnType-L2TP_IPSEC_PSK = 4--><!--Device-SysVpnType-L2TP_IPSEC_PSK = 4-End-->
+
+**系统能力：** SystemCapability.Communication.NetManager.Vpn
+
+**系统接口：** 此接口为系统接口。
+
+## L2TP_IPSEC_RSA
+
+```TypeScript
+L2TP_IPSEC_RSA = 5
+```
+
+**起始版本：** 12
+
+<!--Device-SysVpnType-L2TP_IPSEC_RSA = 5--><!--Device-SysVpnType-L2TP_IPSEC_RSA = 5-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 

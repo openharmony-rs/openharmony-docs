@@ -16,5 +16,5 @@ type IconType = Resource | image.PixelMap
 
 | 类型 | 说明 |
 | --- | --- |
-| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 表示值类型为图片资源。 |
+| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | 表示值类型为图片资源。 |
 | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 表示值类型为图片。 |

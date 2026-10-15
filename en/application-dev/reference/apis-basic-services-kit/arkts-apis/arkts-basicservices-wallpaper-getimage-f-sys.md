@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="getimage1"></a>
+
 ## getImage
 
 ```TypeScript
@@ -39,6 +41,7 @@ Obtains the default pixel map of a wallpaper of the specified type. Returns the 
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,8 +57,10 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErr
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getimage-1"></a>
+
+<a id="getimage2"></a>
 
 ## getImage
 
@@ -95,6 +100,7 @@ Obtains the default pixel map of a wallpaper of the specified type. Returns the 
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -107,3 +113,5 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.P
   console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

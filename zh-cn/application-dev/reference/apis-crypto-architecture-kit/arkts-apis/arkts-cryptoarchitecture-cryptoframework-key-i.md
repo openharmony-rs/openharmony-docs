@@ -4,7 +4,7 @@
 interface Key
 ```
 
-密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3)方法。
+密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4)方法。
 
 <br>密钥通过子类密钥生成器来生成，详见子类描述。具体子类有：[SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md)、[PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md)、[PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md)。
 
@@ -36,7 +36,7 @@ getEncoded(): DataBlob
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Key-getEncoded(): DataBlob--><!--Device-Key-getEncoded(): DataBlob-End-->
 
@@ -83,7 +83,7 @@ getKeySize(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Key-getKeySize(): int--><!--Device-Key-getKeySize(): int-End-->
 
@@ -129,7 +129,7 @@ readonly algName: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Key-readonly algName: string--><!--Device-Key-readonly algName: string-End-->
 
@@ -149,7 +149,7 @@ readonly format: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Key-readonly format: string--><!--Device-Key-readonly format: string-End-->
 

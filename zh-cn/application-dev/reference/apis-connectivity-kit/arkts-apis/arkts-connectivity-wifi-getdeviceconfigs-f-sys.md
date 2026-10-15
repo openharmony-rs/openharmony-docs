@@ -34,6 +34,7 @@ function getDeviceConfigs(): Array<WifiDeviceConfig>
 | --- | --- |
 | Array&lt;[WifiDeviceConfig](arkts-connectivity-wifi-wifideviceconfig-i.md)&gt; | 网络配置信息的数组。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

@@ -14,22 +14,6 @@ enum OptimizeState
 
 **系统接口：** 此接口为系统接口。
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-正在优化空间。
-
-**起始版本：** 17
-
-<!--Device-OptimizeState-RUNNING = 0--><!--Device-OptimizeState-RUNNING = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## COMPLETED
 
 ```TypeScript
@@ -57,6 +41,22 @@ FAILED = 2
 **起始版本：** 17
 
 <!--Device-OptimizeState-FAILED = 2--><!--Device-OptimizeState-FAILED = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口：** 此接口为系统接口。
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+正在优化空间。
+
+**起始版本：** 17
+
+<!--Device-OptimizeState-RUNNING = 0--><!--Device-OptimizeState-RUNNING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

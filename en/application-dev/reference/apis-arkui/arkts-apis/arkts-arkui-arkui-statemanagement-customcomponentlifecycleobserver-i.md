@@ -173,7 +173,7 @@ Called when a reusable custom component is re-added to the node tree from the ca
 
 > **NOTE:** 
 > 
-> - In a state management V1 component, the **aboutToReuse** function can have one input parameter or no parameter. The input parameter **params** is recommended to be of the Record\&lt;string, Object \| undefined \| null\&gt; type.
+> - In a state management V1 component, the **aboutToReuse** function can have one input parameter or no parameter. The input parameter **params** is recommended to be of the Record\<string, Object \| undefined \| null\> type.
 > 
 > - In a state management V2 component, the **aboutToReuse** function has no input parameter.
 

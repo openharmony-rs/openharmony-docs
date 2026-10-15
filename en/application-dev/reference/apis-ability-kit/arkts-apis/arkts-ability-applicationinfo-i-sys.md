@@ -4,7 +4,7 @@
 export interface ApplicationInfo
 ```
 
-The module defines the application information.
+The module defines the application information. An application can obtain its own application information through [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md), with **GET_BUNDLE_INFO_WITH_APPLICATION** passed in to [bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md).
 
 **Since:** 9
 
@@ -38,7 +38,7 @@ Indicates the reserved flag of the application.
 readonly flags?: number
 ```
 
-Indicates the flags of the application.
+Status set between the current application and the current user. Each bit indicates a specific Boolean status. For details about the values, see [ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md).
 
 **Type:** number
 

@@ -4,7 +4,7 @@
 enum JsMessageType
 ```
 
-[runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext-1)接口脚本执行后返回的结果的类型。
+[runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2)接口脚本执行后返回的结果的类型。
 
 **起始版本：** 10
 
@@ -12,67 +12,19 @@ enum JsMessageType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## NOT_SUPPORT
+## ARRAY
 
 ```TypeScript
-NOT_SUPPORT = 0
+ARRAY = 5
 ```
 
-不支持的数据类型。
+数组类型。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-JsMessageType-NOT_SUPPORT = 0--><!--Device-JsMessageType-NOT_SUPPORT = 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## STRING
-
-```TypeScript
-STRING = 1
-```
-
-字符串类型。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-JsMessageType-STRING = 1--><!--Device-JsMessageType-STRING = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## NUMBER
-
-```TypeScript
-NUMBER = 2
-```
-
-数值类型。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-JsMessageType-NUMBER = 2--><!--Device-JsMessageType-NUMBER = 2-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## BOOLEAN
-
-```TypeScript
-BOOLEAN = 3
-```
-
-布尔类型。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-JsMessageType-BOOLEAN = 3--><!--Device-JsMessageType-BOOLEAN = 3-End-->
+<!--Device-JsMessageType-ARRAY = 5--><!--Device-JsMessageType-ARRAY = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -92,18 +44,66 @@ ARRAY_BUFFER = 4
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## ARRAY
+## BOOLEAN
 
 ```TypeScript
-ARRAY = 5
+BOOLEAN = 3
 ```
 
-数组类型。
+布尔类型。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-JsMessageType-ARRAY = 5--><!--Device-JsMessageType-ARRAY = 5-End-->
+<!--Device-JsMessageType-BOOLEAN = 3--><!--Device-JsMessageType-BOOLEAN = 3-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## NOT_SUPPORT
+
+```TypeScript
+NOT_SUPPORT = 0
+```
+
+不支持的数据类型。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageType-NOT_SUPPORT = 0--><!--Device-JsMessageType-NOT_SUPPORT = 0-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## NUMBER
+
+```TypeScript
+NUMBER = 2
+```
+
+数值类型。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageType-NUMBER = 2--><!--Device-JsMessageType-NUMBER = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## STRING
+
+```TypeScript
+STRING = 1
+```
+
+字符串类型。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageType-STRING = 1--><!--Device-JsMessageType-STRING = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

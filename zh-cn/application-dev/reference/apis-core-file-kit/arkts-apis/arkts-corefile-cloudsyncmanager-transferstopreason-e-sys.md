@@ -14,24 +14,6 @@ enum TransferStopReason
 
 **系统接口：** 此接口为系统接口。
 
-## SWITCH_OFF
-
-```TypeScript
-SWITCH_OFF = 0
-```
-
-搬迁过程中，云服务开关关闭。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TransferStopReason-SWITCH_OFF = 0--><!--Device-TransferStopReason-SWITCH_OFF = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-**系统接口：** 此接口为系统接口。
-
 ## ACCOUNT_LOGOUT
 
 ```TypeScript
@@ -63,6 +45,24 @@ OTHER_REASON = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TransferStopReason-OTHER_REASON = 2--><!--Device-TransferStopReason-OTHER_REASON = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**系统接口：** 此接口为系统接口。
+
+## SWITCH_OFF
+
+```TypeScript
+SWITCH_OFF = 0
+```
+
+搬迁过程中，云服务开关关闭。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TransferStopReason-SWITCH_OFF = 0--><!--Device-TransferStopReason-SWITCH_OFF = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

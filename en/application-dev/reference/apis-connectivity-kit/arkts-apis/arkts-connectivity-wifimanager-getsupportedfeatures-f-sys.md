@@ -39,6 +39,7 @@ Obtain the features supported by the device. To check whether this device suppor
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2401000](../errorcode-wifi.md#2401000-sta-internal-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,3 +52,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
+<a id="updatecontinuationstate1"></a>
+
 ## updateContinuationState
 
 ```TypeScript
@@ -72,7 +74,7 @@ try {
 ```
 
 
-<a id="updatecontinuationstate-1"></a>
+<a id="updatecontinuationstate2"></a>
 
 ## updateContinuationState
 

@@ -40,6 +40,7 @@ function updateNetwork(config: WifiDeviceConfig): number
 | --- | --- |
 | number | 返回更新的网络配置ID，如果值为-1表示更新失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +72,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

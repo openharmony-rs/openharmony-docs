@@ -47,6 +47,7 @@ Batch obtains reminders of specified applications. This API uses a promise to re
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,3 +67,5 @@ notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notifica
     console.error(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

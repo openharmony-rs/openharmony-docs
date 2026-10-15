@@ -4,7 +4,7 @@
 interface UploadTask
 ```
 
-上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md)获取。
+上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile2)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile1)获取。
 
 **起始版本：** 6
 
@@ -17,6 +17,8 @@ interface UploadTask
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -62,7 +64,7 @@ uploadTask.delete((err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -384,6 +386,8 @@ let upFailCallback = (taskStates: Array<request.TaskState>) => {
 uploadTask.on('fail', upFailCallback);
 ```
 
+<a id="remove1"></a>
+
 ## remove
 
 ```TypeScript
@@ -395,13 +399,13 @@ remove(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [delete](#delete)替代。
+> [delete](#delete1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete](#delete)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [delete](#delete1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -435,7 +439,7 @@ uploadTask.remove((err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="remove-1"></a>
+<a id="remove2"></a>
 
 ## remove
 

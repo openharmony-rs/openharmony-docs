@@ -12,42 +12,6 @@ Enumerates the key generation modes.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_KEY_FLAG_IMPORT_KEY
-
-```TypeScript
-HUKS_KEY_FLAG_IMPORT_KEY = 1
-```
-
-Import a key using an API.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeyFlag-HUKS_KEY_FLAG_IMPORT_KEY = 1--><!--Device-HuksKeyFlag-HUKS_KEY_FLAG_IMPORT_KEY = 1-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_KEY_FLAG_GENERATE_KEY
-
-```TypeScript
-HUKS_KEY_FLAG_GENERATE_KEY = 2
-```
-
-Generate a key by using an API.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeyFlag-HUKS_KEY_FLAG_GENERATE_KEY = 2--><!--Device-HuksKeyFlag-HUKS_KEY_FLAG_GENERATE_KEY = 2-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
 ## HUKS_KEY_FLAG_AGREE_KEY
 
 ```TypeScript
@@ -81,5 +45,41 @@ Derive a key by using an API.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HuksKeyFlag-HUKS_KEY_FLAG_DERIVE_KEY = 4--><!--Device-HuksKeyFlag-HUKS_KEY_FLAG_DERIVE_KEY = 4-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_KEY_FLAG_GENERATE_KEY
+
+```TypeScript
+HUKS_KEY_FLAG_GENERATE_KEY = 2
+```
+
+Generate a key by using an API.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyFlag-HUKS_KEY_FLAG_GENERATE_KEY = 2--><!--Device-HuksKeyFlag-HUKS_KEY_FLAG_GENERATE_KEY = 2-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_KEY_FLAG_IMPORT_KEY
+
+```TypeScript
+HUKS_KEY_FLAG_IMPORT_KEY = 1
+```
+
+Import a key using an API.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyFlag-HUKS_KEY_FLAG_IMPORT_KEY = 1--><!--Device-HuksKeyFlag-HUKS_KEY_FLAG_IMPORT_KEY = 1-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core

@@ -63,7 +63,7 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 | 13900042 | Unknown error |
 
 
-<a id="movefile-1"></a>
+<a id="movefile2"></a>
 
 ## moveFile
 
@@ -116,7 +116,7 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 | 13900042 | Unknown error |
 
 
-<a id="movefile-2"></a>
+<a id="movefile3"></a>
 
 ## moveFile
 

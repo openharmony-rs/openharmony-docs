@@ -6,6 +6,8 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="obtainallworks1"></a>
+
 ## obtainAllWorks
 
 ```TypeScript
@@ -18,7 +20,7 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 **Deprecated since:** 10
 
-**Substitutes:** [obtainAllWorks](#obtainallworks-1)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
+**Substitutes:** [obtainAllWorks](#obtainallworks2)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,39 +44,39 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
 
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) =>{
-    if (error) {
-      console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-    }
-  });
+workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) => {
+  if (error) {
+    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
-    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-  })
+workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
+  console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+})
 ```
 
 
-<a id="obtainallworks-1"></a>
+<a id="obtainallworks2"></a>
 
 ## obtainAllWorks
 
@@ -102,28 +104,28 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
 
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) =>{
-    if (error) {
-      console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-    }
-  });
+workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) => {
+  if (error) {
+    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 
-<a id="obtainallworks-2"></a>
+<a id="obtainallworks3"></a>
 
 ## obtainAllWorks
 
@@ -151,20 +153,20 @@ Obtains all the deferred tasks. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
 
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
-    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-  })
+workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
+  console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+})
 ```

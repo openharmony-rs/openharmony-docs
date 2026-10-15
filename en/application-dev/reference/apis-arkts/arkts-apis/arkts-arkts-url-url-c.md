@@ -18,7 +18,7 @@ The interface of URL is used to parse, construct, normalize, and encode URLs.
 import { url } from '@kit.ArkTS';
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -30,7 +30,7 @@ A no-argument constructor used to create a URL. It returns a URL object after pa
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URL-constructor()--><!--Device-URL-constructor()-End-->
 
@@ -52,6 +52,8 @@ new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is 
 new url.URL('https://www.example.com', ); // Output https://www.example.com/
 new url.URL('https://www.example.com', b); // Output https://www.example.com/
 ```
+
+<a id="constructor1"></a>
 
 ## constructor
 
@@ -105,7 +107,7 @@ Parses a URL.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URL-static parseURL(url: string, base?: string | URL): URL--><!--Device-URL-static parseURL(url: string, base?: string | URL): URL-End-->
 
@@ -116,7 +118,7 @@ Parses a URL.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string | Yes | A string representing an absolute or a relative URL. In the case of a relative URL, you must specify base to parse the final URL. In the case of an absolute URL, the passed base will be ignored. |
-| base | string &#124; URL | No | Either a string or an object. The default value is undefined.   - string: string.   - URL: URL object.   This parameter is used when url is a relative URL. |
+| base | string &#124; URL | No | Either a string or an object. The default value is undefined.           - string: string.           - URL: URL object.   This parameter is used when url is a relative URL. |
 
 **Return value:**
 
@@ -157,7 +159,7 @@ Converts the parsed URL into a JSON string.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URL-toJSON(): string--><!--Device-URL-toJSON(): string-End-->
 
@@ -186,7 +188,7 @@ Converts the parsed URL into a string.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-URL-toString(): string--><!--Device-URL-toString(): string-End-->
 
@@ -435,7 +437,7 @@ Gets the URLSearchParams object that represents the URL query parameter. This pr
 
 **Deprecated since:** 9
 
-**Substitutes:** params
+**Substitutes:** [params](#params)
 
 <!--Device-URL-readonly searchParams: URLSearchParams--><!--Device-URL-readonly searchParams: URLSearchParams-End-->
 

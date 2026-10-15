@@ -32,7 +32,7 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSta
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AtManager-checkAccessToken(tokenID: int, permissionName: Permissions): Promise<GrantStatus>--><!--Device-AtManager-checkAccessToken(tokenID: int, permissionName: Permissions): Promise<GrantStatus>-End-->
 
@@ -96,7 +96,7 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AtManager-checkAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus--><!--Device-AtManager-checkAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus-End-->
 
@@ -119,7 +119,7 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
 
 **示例**
@@ -154,7 +154,7 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AtManager-getSelfPermissionStatus(permissionName: Permissions): PermissionStatus--><!--Device-AtManager-getSelfPermissionStatus(permissionName: Permissions): PermissionStatus-End-->
 
@@ -353,7 +353,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](arkts-ability-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法打开设置页面。 |
-| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为manual_settings类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
+| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](../../../security/AccessToken/app -permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
@@ -411,7 +411,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AtManager-requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>--><!--Device-AtManager-requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>-End-->
 
@@ -434,7 +434,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not supported. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | [12100013](../errorcode-access-token.md#12100013-全局开关已开启) | The specific global switch is already open. |
@@ -481,7 +481,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AtManager-requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>): Promise<Array<GrantStatus>>--><!--Device-AtManager-requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>): Promise<Array<GrantStatus>>-End-->
 
@@ -531,6 +531,8 @@ atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((
 });
 ```
 
+<a id="requestpermissionsfromuser1"></a>
+
 ## requestPermissionsFromUser
 
 ```TypeScript
@@ -553,7 +555,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void--><!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void-End-->
 
@@ -603,7 +605,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
 });
 ```
 
-<a id="requestpermissionsfromuser-1"></a>
+<a id="requestpermissionsfromuser2"></a>
 
 ## requestPermissionsFromUser
 
@@ -623,7 +625,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>--><!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>-End-->
 
@@ -675,6 +677,8 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
   console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="verifyaccesstoken1"></a>
 
 ## verifyAccessToken
 
@@ -732,7 +736,7 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 });
 ```
 
-<a id="verifyaccesstoken-1"></a>
+<a id="verifyaccesstoken2"></a>
 
 ## verifyAccessToken
 
@@ -829,7 +833,7 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
 
 **示例**

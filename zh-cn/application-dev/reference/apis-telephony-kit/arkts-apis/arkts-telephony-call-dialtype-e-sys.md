@@ -30,22 +30,6 @@ DIAL_CARRIER_TYPE = 0
 
 **系统接口：** 此接口为系统接口。
 
-## DIAL_VOICE_MAIL_TYPE
-
-```TypeScript
-DIAL_VOICE_MAIL_TYPE = 1
-```
-
-语音邮件拨号类型。
-
-**起始版本：** 8
-
-<!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1--><!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## DIAL_OTT_TYPE
 
 ```TypeScript
@@ -57,6 +41,22 @@ OTT拨号类型。
 **起始版本：** 8
 
 <!--Device-DialType-DIAL_OTT_TYPE = 2--><!--Device-DialType-DIAL_OTT_TYPE = 2-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## DIAL_VOICE_MAIL_TYPE
+
+```TypeScript
+DIAL_VOICE_MAIL_TYPE = 1
+```
+
+语音邮件拨号类型。
+
+**起始版本：** 8
+
+<!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1--><!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

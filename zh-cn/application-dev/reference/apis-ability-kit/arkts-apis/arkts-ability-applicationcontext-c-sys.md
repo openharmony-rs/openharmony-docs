@@ -28,7 +28,7 @@ preloadUIExtensionAbility(want: Want): Promise<void>
 
 被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
 
-被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
+支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从onCreate继续完成UIExtensionAbility的生命周期。
 
 **起始版本：** 12
 
@@ -46,7 +46,7 @@ preloadUIExtensionAbility(want: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | 预加载UIExtensionAbility的want信息。 |
+| want | [Want](arkts-ability-want-i.md) | 是 | 预加载UIExtensionAbility的want信息。 |
 
 **返回值：**
 
@@ -67,6 +67,7 @@ preloadUIExtensionAbility(want: Want): Promise<void>
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -108,6 +109,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getprocessrunninginformation1"></a>
+
 ## getProcessRunningInformation
 
 ```TypeScript
@@ -143,6 +148,7 @@ getProcessRunningInformation(): Promise<Array<ProcessInformation>>
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -162,7 +168,9 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-<a id="getprocessrunninginformation-1"></a>
+<!--DelEnd-->
+
+<a id="getprocessrunninginformation2"></a>
 
 ## getProcessRunningInformation
 
@@ -199,6 +207,7 @@ getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -218,6 +227,8 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## registerAbilityLifecycleCallback
 
@@ -255,6 +266,7 @@ registerAbilityLifecycleCallback(abilityLifecycleCallback: AbilityLifecycleCallb
 | --- | --- |
 | number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.unregisterAbilityLifecycleCallback()](#unregisterabilitylifecyclecallback)方法中取消注册对应的callback。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -313,6 +325,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## registerEnvironmentCallback
 
 ```TypeScript
@@ -349,6 +363,7 @@ registerEnvironmentCallback(environmentCallback: EnvironmentCallback): number
 | --- | --- |
 | number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.unregisterEnvironmentCallback](#unregisterenvironmentcallback)方法中取消注册对应的callback。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -382,6 +397,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="unregisterabilitylifecyclecallback1"></a>
+
 ## unregisterAbilityLifecycleCallback
 
 ```TypeScript
@@ -413,6 +432,7 @@ unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback<v
 | callbackId | number | 是 | 通过[ApplicationContext.registerAbilityLifecycleCallback](#registerabilitylifecyclecallback)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -441,7 +461,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="unregisterabilitylifecyclecallback-1"></a>
+<!--DelEnd-->
+
+<a id="unregisterabilitylifecyclecallback2"></a>
 
 ## unregisterAbilityLifecycleCallback
 
@@ -485,6 +507,7 @@ unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -506,6 +529,10 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="unregisterenvironmentcallback1"></a>
 
 ## unregisterEnvironmentCallback
 
@@ -538,6 +565,7 @@ unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback<voi
 | callbackId | number | 是 | 通过[ApplicationContext.registerEnvironmentCallback](#registerenvironmentcallback)接口注册监听系统环境变化时返回的ID。 |
 | envcallback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -565,7 +593,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="unregisterenvironmentcallback-1"></a>
+<!--DelEnd-->
+
+<a id="unregisterenvironmentcallback2"></a>
 
 ## unregisterEnvironmentCallback
 
@@ -607,6 +637,7 @@ unregisterEnvironmentCallback(callbackId: number): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -627,3 +658,5 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

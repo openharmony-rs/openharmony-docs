@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="cancel1"></a>
+
 ## cancel
 
 ```TypeScript
@@ -26,9 +28,9 @@ Compared with notificationManager.cancel(id, label, callback), which includes th
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md) cancels all notifications of this application.
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall1) cancels all notifications of this application.
 
 [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md) cancels notifications under a notification group of this application.
 
@@ -43,7 +45,7 @@ Compared with notificationManager.cancel(id, label, callback), which includes th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -66,7 +68,7 @@ notificationManager.cancel(0, cancelCallback);
 ```
 
 
-<a id="cancel-1"></a>
+<a id="cancel2"></a>
 
 ## cancel
 
@@ -88,9 +90,9 @@ Compared with notificationManager.cancel(id, callback), which requires only the 
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md) cancels all notifications of this application.
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall1) cancels all notifications of this application.
 
 [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md) cancels notifications under a notification group of this application.
 
@@ -106,7 +108,7 @@ Compared with notificationManager.cancel(id, callback), which requires only the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -125,11 +127,11 @@ let cancelCallback = (err: BusinessError): void => {
     console.info(`Succeeded in canceling notification.`);
   } 
 }
-notificationManager.cancel(0, "label", cancelCallback);
+notificationManager.cancel(0, 'label', cancelCallback);
 ```
 
 
-<a id="cancel-2"></a>
+<a id="cancel3"></a>
 
 ## cancel
 
@@ -149,11 +151,11 @@ After cancellation, the corresponding notification will be removed from the noti
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
 
 [cancelAll](arkts-notification-notificationmanager-cancelall-f.md) cancels all notifications of this application.
 
-[cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md#cancelgroup-1) cancels notifications under a notification group of this application.
+[cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md#cancelgroup2) cancels notifications under a notification group of this application.
 
 **Parameters:**
 
@@ -172,7 +174,7 @@ After cancellation, the corresponding notification will be removed from the noti
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |

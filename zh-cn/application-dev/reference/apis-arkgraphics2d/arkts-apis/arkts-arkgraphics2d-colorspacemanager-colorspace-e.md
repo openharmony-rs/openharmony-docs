@@ -12,22 +12,6 @@ enum ColorSpace
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-未知的色域类型。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-UNKNOWN = 0--><!--Device-ColorSpace-UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
 ## ADOBE_RGB_1998
 
 ```TypeScript
@@ -42,211 +26,9 @@ RGB色域为Adobe RGB(1998)类型。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ColorSpace-ADOBE_RGB_1998 = 1--><!--Device-ColorSpace-ADOBE_RGB_1998 = 1-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## DCI_P3
-
-```TypeScript
-DCI_P3 = 2
-```
-
-RGB色域为DCI-P3类型。
-
-转换函数为Gamma 2.6类型。
-
-编码范围为Full类型。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-DCI_P3 = 2--><!--Device-ColorSpace-DCI_P3 = 2-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## DISPLAY_P3
-
-```TypeScript
-DISPLAY_P3 = 3
-```
-
-RGB色域为Display P3类型。
-
-转换函数为SRGB类型。
-
-编码范围为Full类型。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-DISPLAY_P3 = 3--><!--Device-ColorSpace-DISPLAY_P3 = 3-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## SRGB
-
-```TypeScript
-SRGB = 4
-```
-
-RGB色域为SRGB类型。
-
-转换函数为SRGB类型。
-
-编码范围为Full类型。
-
-系统默认色域类型。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-SRGB = 4--><!--Device-ColorSpace-SRGB = 4-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT709
-
-```TypeScript
-BT709 = 6
-```
-
-RGB色域为BT709类型。
-
-转换函数为BT709类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT709 = 6--><!--Device-ColorSpace-BT709 = 6-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT601_EBU
-
-```TypeScript
-BT601_EBU = 7
-```
-
-RGB色域为BT601_P类型。
-
-转换函数为BT709类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT601_EBU = 7--><!--Device-ColorSpace-BT601_EBU = 7-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT601_SMPTE_C
-
-```TypeScript
-BT601_SMPTE_C = 8
-```
-
-RGB色域为BT601_N类型。
-
-转换函数为BT709类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT601_SMPTE_C = 8--><!--Device-ColorSpace-BT601_SMPTE_C = 8-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT2020_HLG
-
-```TypeScript
-BT2020_HLG = 9
-```
-
-RGB色域为BT2020类型。
-
-转换函数为HLG类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT2020_HLG = 9--><!--Device-ColorSpace-BT2020_HLG = 9-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT2020_PQ
-
-```TypeScript
-BT2020_PQ = 10
-```
-
-RGB色域为BT2020类型。
-
-转换函数为PQ类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT2020_PQ = 10--><!--Device-ColorSpace-BT2020_PQ = 10-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## P3_HLG
-
-```TypeScript
-P3_HLG = 11
-```
-
-RGB色域为Display P3类型。
-
-转换函数为HLG类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-P3_HLG = 11--><!--Device-ColorSpace-P3_HLG = 11-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## P3_PQ
-
-```TypeScript
-P3_PQ = 12
-```
-
-RGB色域为Display P3类型。
-
-转换函数为PQ类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-P3_PQ = 12--><!--Device-ColorSpace-P3_PQ = 12-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -264,109 +46,29 @@ RGB色域为Adobe RGB(1998)类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ColorSpace-ADOBE_RGB_1998_LIMIT = 13--><!--Device-ColorSpace-ADOBE_RGB_1998_LIMIT = 13-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## DISPLAY_P3_LIMIT
+## BT2020_HLG
 
 ```TypeScript
-DISPLAY_P3_LIMIT = 14
+BT2020_HLG = 9
 ```
 
-RGB色域为Display P3类型。
+RGB色域为BT2020类型。
 
-转换函数为SRGB类型。
+转换函数为HLG类型。
 
-编码范围为Limit类型。
+编码范围为Full类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ColorSpace-DISPLAY_P3_LIMIT = 14--><!--Device-ColorSpace-DISPLAY_P3_LIMIT = 14-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## SRGB_LIMIT
-
-```TypeScript
-SRGB_LIMIT = 15
-```
-
-RGB色域为SRGB类型。
-
-转换函数为SRGB类型。
-
-编码范围为Limit类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-SRGB_LIMIT = 15--><!--Device-ColorSpace-SRGB_LIMIT = 15-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT709_LIMIT
-
-```TypeScript
-BT709_LIMIT = 16
-```
-
-RGB色域为BT709类型。
-
-转换函数为BT709类型。
-
-编码范围为Limit类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT709_LIMIT = 16--><!--Device-ColorSpace-BT709_LIMIT = 16-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT601_EBU_LIMIT
-
-```TypeScript
-BT601_EBU_LIMIT = 17
-```
-
-RGB色域为BT601_P类型。
-
-转换函数为BT709类型。
-
-编码范围为Limit类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT601_EBU_LIMIT = 17--><!--Device-ColorSpace-BT601_EBU_LIMIT = 17-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## BT601_SMPTE_C_LIMIT
-
-```TypeScript
-BT601_SMPTE_C_LIMIT = 18
-```
-
-RGB色域为BT601_N类型。
-
-转换函数为BT709类型。
-
-编码范围为Limit类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-BT601_SMPTE_C_LIMIT = 18--><!--Device-ColorSpace-BT601_SMPTE_C_LIMIT = 18-End-->
+<!--Device-ColorSpace-BT2020_HLG = 9--><!--Device-ColorSpace-BT2020_HLG = 9-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -384,9 +86,29 @@ RGB色域为BT2020类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ColorSpace-BT2020_HLG_LIMIT = 19--><!--Device-ColorSpace-BT2020_HLG_LIMIT = 19-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## BT2020_PQ
+
+```TypeScript
+BT2020_PQ = 10
+```
+
+RGB色域为BT2020类型。
+
+转换函数为PQ类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-BT2020_PQ = 10--><!--Device-ColorSpace-BT2020_PQ = 10-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -404,227 +126,165 @@ RGB色域为BT2020类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ColorSpace-BT2020_PQ_LIMIT = 20--><!--Device-ColorSpace-BT2020_PQ_LIMIT = 20-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## P3_HLG_LIMIT
+## BT601_EBU
 
 ```TypeScript
-P3_HLG_LIMIT = 21
+BT601_EBU = 7
 ```
 
-RGB色域为Display P3类型。
+RGB色域为BT601_P类型。
 
-转换函数为HLG类型。
+转换函数为BT709类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-BT601_EBU = 7--><!--Device-ColorSpace-BT601_EBU = 7-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## BT601_EBU_LIMIT
+
+```TypeScript
+BT601_EBU_LIMIT = 17
+```
+
+RGB色域为BT601_P类型。
+
+转换函数为BT709类型。
 
 编码范围为Limit类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ColorSpace-P3_HLG_LIMIT = 21--><!--Device-ColorSpace-P3_HLG_LIMIT = 21-End-->
+<!--Device-ColorSpace-BT601_EBU_LIMIT = 17--><!--Device-ColorSpace-BT601_EBU_LIMIT = 17-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## P3_PQ_LIMIT
+## BT601_SMPTE_C
 
 ```TypeScript
-P3_PQ_LIMIT = 22
+BT601_SMPTE_C = 8
 ```
 
-RGB色域为Display P3类型。
+RGB色域为BT601_N类型。
 
-转换函数为PQ类型。
+转换函数为BT709类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-BT601_SMPTE_C = 8--><!--Device-ColorSpace-BT601_SMPTE_C = 8-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## BT601_SMPTE_C_LIMIT
+
+```TypeScript
+BT601_SMPTE_C_LIMIT = 18
+```
+
+RGB色域为BT601_N类型。
+
+转换函数为BT709类型。
 
 编码范围为Limit类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ColorSpace-P3_PQ_LIMIT = 22--><!--Device-ColorSpace-P3_PQ_LIMIT = 22-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## LINEAR_P3
-
-```TypeScript
-LINEAR_P3 = 23
-```
-
-RGB色域为Display P3类型。
-
-转换函数为Linear类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-LINEAR_P3 = 23--><!--Device-ColorSpace-LINEAR_P3 = 23-End-->
+<!--Device-ColorSpace-BT601_SMPTE_C_LIMIT = 18--><!--Device-ColorSpace-BT601_SMPTE_C_LIMIT = 18-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## LINEAR_SRGB
+## BT709
 
 ```TypeScript
-LINEAR_SRGB = 24
+BT709 = 6
 ```
-
-RGB色域为SRGB类型。
-
-转换函数为Linear类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-LINEAR_SRGB = 24--><!--Device-ColorSpace-LINEAR_SRGB = 24-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## LINEAR_BT709
-
-```TypeScript
-LINEAR_BT709 = LINEAR_SRGB
-```
-
-与LINEAR_SRGB相同。
 
 RGB色域为BT709类型。
 
-转换函数为Linear类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-LINEAR_BT709 = LINEAR_SRGB--><!--Device-ColorSpace-LINEAR_BT709 = LINEAR_SRGB-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## LINEAR_BT2020
-
-```TypeScript
-LINEAR_BT2020 = 25
-```
-
-RGB色域为BT2020类型。
-
-转换函数为Linear类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-LINEAR_BT2020 = 25--><!--Device-ColorSpace-LINEAR_BT2020 = 25-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## DISPLAY_SRGB
-
-```TypeScript
-DISPLAY_SRGB = SRGB
-```
-
-与SRGB相同。
-
-RGB色域为SRGB类型。
-
-转换函数为SRGB类型。
+转换函数为BT709类型。
 
 编码范围为Full类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ColorSpace-DISPLAY_SRGB = SRGB--><!--Device-ColorSpace-DISPLAY_SRGB = SRGB-End-->
+<!--Device-ColorSpace-BT709 = 6--><!--Device-ColorSpace-BT709 = 6-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## DISPLAY_P3_SRGB
+## BT709_LIMIT
 
 ```TypeScript
-DISPLAY_P3_SRGB = DISPLAY_P3
+BT709_LIMIT = 16
 ```
 
-与DISPLAY_P3相同。
+RGB色域为BT709类型。
 
-RGB色域为Display P3类型。
+转换函数为BT709类型。
 
-转换函数为SRGB类型。
-
-编码范围为Full类型。
+编码范围为Limit类型。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ColorSpace-DISPLAY_P3_SRGB = DISPLAY_P3--><!--Device-ColorSpace-DISPLAY_P3_SRGB = DISPLAY_P3-End-->
+<!--Device-ColorSpace-BT709_LIMIT = 16--><!--Device-ColorSpace-BT709_LIMIT = 16-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## DISPLAY_P3_HLG
+## CUSTOM
 
 ```TypeScript
-DISPLAY_P3_HLG = P3_HLG
+CUSTOM = 5
 ```
 
-与P3_HLG相同。
+用户自定义色域类型。
 
-RGB色域为Display P3类型。
+**起始版本：** 9
 
-转换函数为HLG类型。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-CUSTOM = 5--><!--Device-ColorSpace-CUSTOM = 5-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## DCI_P3
+
+```TypeScript
+DCI_P3 = 2
+```
+
+RGB色域为DCI-P3类型。
+
+转换函数为Gamma 2.6类型。
 
 编码范围为Full类型。
 
-**起始版本：** 11
+**起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ColorSpace-DISPLAY_P3_HLG = P3_HLG--><!--Device-ColorSpace-DISPLAY_P3_HLG = P3_HLG-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## DISPLAY_P3_PQ
-
-```TypeScript
-DISPLAY_P3_PQ = P3_PQ
-```
-
-与P3_PQ相同。
-
-RGB色域为Display P3类型。
-
-转换函数为PQ类型。
-
-编码范围为Full类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ColorSpace-DISPLAY_P3_PQ = P3_PQ--><!--Device-ColorSpace-DISPLAY_P3_PQ = P3_PQ-End-->
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-## H_LOG
-
-```TypeScript
-H_LOG = 26
-```
-
-RGB色域为BT2020类型。
-
-转换函数为LOG类型。
-
-**起始版本：** 18
-
-<!--Device-ColorSpace-H_LOG = 26--><!--Device-ColorSpace-H_LOG = 26-End-->
+<!--Device-ColorSpace-DCI_P3 = 2--><!--Device-ColorSpace-DCI_P3 = 2-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -646,18 +306,358 @@ RGB色域为DISPLAY BT2020类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-## CUSTOM
+## DISPLAY_P3
 
 ```TypeScript
-CUSTOM = 5
+DISPLAY_P3 = 3
 ```
 
-用户自定义色域类型。
+RGB色域为Display P3类型。
+
+转换函数为SRGB类型。
+
+编码范围为Full类型。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ColorSpace-CUSTOM = 5--><!--Device-ColorSpace-CUSTOM = 5-End-->
+<!--Device-ColorSpace-DISPLAY_P3 = 3--><!--Device-ColorSpace-DISPLAY_P3 = 3-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## DISPLAY_P3_HLG
+
+```TypeScript
+DISPLAY_P3_HLG = P3_HLG
+```
+
+与P3_HLG相同。
+
+RGB色域为Display P3类型。
+
+转换函数为HLG类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-DISPLAY_P3_HLG = P3_HLG--><!--Device-ColorSpace-DISPLAY_P3_HLG = P3_HLG-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## DISPLAY_P3_LIMIT
+
+```TypeScript
+DISPLAY_P3_LIMIT = 14
+```
+
+RGB色域为Display P3类型。
+
+转换函数为SRGB类型。
+
+编码范围为Limit类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-DISPLAY_P3_LIMIT = 14--><!--Device-ColorSpace-DISPLAY_P3_LIMIT = 14-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## DISPLAY_P3_PQ
+
+```TypeScript
+DISPLAY_P3_PQ = P3_PQ
+```
+
+与P3_PQ相同。
+
+RGB色域为Display P3类型。
+
+转换函数为PQ类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-DISPLAY_P3_PQ = P3_PQ--><!--Device-ColorSpace-DISPLAY_P3_PQ = P3_PQ-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## DISPLAY_P3_SRGB
+
+```TypeScript
+DISPLAY_P3_SRGB = DISPLAY_P3
+```
+
+与DISPLAY_P3相同。
+
+RGB色域为Display P3类型。
+
+转换函数为SRGB类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-DISPLAY_P3_SRGB = DISPLAY_P3--><!--Device-ColorSpace-DISPLAY_P3_SRGB = DISPLAY_P3-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## DISPLAY_SRGB
+
+```TypeScript
+DISPLAY_SRGB = SRGB
+```
+
+与SRGB相同。
+
+RGB色域为SRGB类型。
+
+转换函数为SRGB类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-DISPLAY_SRGB = SRGB--><!--Device-ColorSpace-DISPLAY_SRGB = SRGB-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## H_LOG
+
+```TypeScript
+H_LOG = 26
+```
+
+RGB色域为BT2020类型。
+
+转换函数为LOG类型。
+
+**起始版本：** 18
+
+<!--Device-ColorSpace-H_LOG = 26--><!--Device-ColorSpace-H_LOG = 26-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## LINEAR_BT2020
+
+```TypeScript
+LINEAR_BT2020 = 25
+```
+
+RGB色域为BT2020类型。
+
+转换函数为Linear类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-LINEAR_BT2020 = 25--><!--Device-ColorSpace-LINEAR_BT2020 = 25-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## LINEAR_BT709
+
+```TypeScript
+LINEAR_BT709 = LINEAR_SRGB
+```
+
+与LINEAR_SRGB相同。
+
+RGB色域为BT709类型。
+
+转换函数为Linear类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-LINEAR_BT709 = LINEAR_SRGB--><!--Device-ColorSpace-LINEAR_BT709 = LINEAR_SRGB-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## LINEAR_P3
+
+```TypeScript
+LINEAR_P3 = 23
+```
+
+RGB色域为Display P3类型。
+
+转换函数为Linear类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-LINEAR_P3 = 23--><!--Device-ColorSpace-LINEAR_P3 = 23-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## LINEAR_SRGB
+
+```TypeScript
+LINEAR_SRGB = 24
+```
+
+RGB色域为SRGB类型。
+
+转换函数为Linear类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-LINEAR_SRGB = 24--><!--Device-ColorSpace-LINEAR_SRGB = 24-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## P3_HLG
+
+```TypeScript
+P3_HLG = 11
+```
+
+RGB色域为Display P3类型。
+
+转换函数为HLG类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-P3_HLG = 11--><!--Device-ColorSpace-P3_HLG = 11-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## P3_HLG_LIMIT
+
+```TypeScript
+P3_HLG_LIMIT = 21
+```
+
+RGB色域为Display P3类型。
+
+转换函数为HLG类型。
+
+编码范围为Limit类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-P3_HLG_LIMIT = 21--><!--Device-ColorSpace-P3_HLG_LIMIT = 21-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## P3_PQ
+
+```TypeScript
+P3_PQ = 12
+```
+
+RGB色域为Display P3类型。
+
+转换函数为PQ类型。
+
+编码范围为Full类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-P3_PQ = 12--><!--Device-ColorSpace-P3_PQ = 12-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## P3_PQ_LIMIT
+
+```TypeScript
+P3_PQ_LIMIT = 22
+```
+
+RGB色域为Display P3类型。
+
+转换函数为PQ类型。
+
+编码范围为Limit类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-P3_PQ_LIMIT = 22--><!--Device-ColorSpace-P3_PQ_LIMIT = 22-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## SRGB
+
+```TypeScript
+SRGB = 4
+```
+
+RGB色域为SRGB类型。
+
+转换函数为SRGB类型。
+
+编码范围为Full类型。
+
+系统默认色域类型。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-SRGB = 4--><!--Device-ColorSpace-SRGB = 4-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## SRGB_LIMIT
+
+```TypeScript
+SRGB_LIMIT = 15
+```
+
+RGB色域为SRGB类型。
+
+转换函数为SRGB类型。
+
+编码范围为Limit类型。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-SRGB_LIMIT = 15--><!--Device-ColorSpace-SRGB_LIMIT = 15-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+未知的色域类型。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorSpace-UNKNOWN = 0--><!--Device-ColorSpace-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core

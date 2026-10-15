@@ -30,7 +30,7 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest--><!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest-End-->
 
@@ -57,7 +57,7 @@ static create(strategy: PerfTestStrategy): PerfTest
 | [32400001](../errorcode-perftest.md#32400001-初始化失败) | Initialization failed. |
 | [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 | [32400003](../errorcode-perftest.md#32400003-参数校验失败) | Parameter verification failed. |
-| [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. @static |
+| [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. |
 
 **示例**
 
@@ -98,7 +98,7 @@ destroy(): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PerfTest-destroy(): void--><!--Device-PerfTest-destroy(): void-End-->
 
@@ -147,7 +147,7 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult--><!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult-End-->
 
@@ -210,7 +210,7 @@ run(): Promise<void>
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PerfTest-run(): Promise<void>--><!--Device-PerfTest-run(): Promise<void>-End-->
 

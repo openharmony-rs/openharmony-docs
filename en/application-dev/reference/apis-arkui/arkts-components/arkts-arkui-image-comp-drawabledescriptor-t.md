@@ -6,6 +6,8 @@ declare type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor
 
 Represents a parameter object for the **Image** component.
 
+**Type:** import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a parameter object for the **Image** component.
 <!--Device-unnamed-declare type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor--><!--Device-unnamed-declare type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor

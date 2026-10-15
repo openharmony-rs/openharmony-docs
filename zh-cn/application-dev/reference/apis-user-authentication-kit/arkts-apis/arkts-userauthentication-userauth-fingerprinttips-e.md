@@ -14,22 +14,6 @@ enum FingerprintTips
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## FINGERPRINT_AUTH_TIP_GOOD
-
-```TypeScript
-FINGERPRINT_AUTH_TIP_GOOD = 0
-```
-
-获取的指纹图像良好。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
 ## FINGERPRINT_AUTH_TIP_DIRTY
 
 ```TypeScript
@@ -43,6 +27,22 @@ FINGERPRINT_AUTH_TIP_DIRTY = 1
 **废弃版本：** 11
 
 <!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## FINGERPRINT_AUTH_TIP_GOOD
+
+```TypeScript
+FINGERPRINT_AUTH_TIP_GOOD = 0
+```
+
+获取的指纹图像良好。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 

@@ -14,33 +14,17 @@ Describes a spatial device type group.
 
 **System API:** This is a system API.
 
-## SPATIAL_DEVICE_TYPE_NONE
+## SPATIAL_DEVICE_TYPE_GLASSES
 
 ```TypeScript
-SPATIAL_DEVICE_TYPE_NONE = 0
+SPATIAL_DEVICE_TYPE_GLASSES = 4
 ```
 
-Audio Spatial Device Type none.
+Audio Spatial Device Type glasses.
 
 **Since:** 11
 
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Spatialization
-
-**System API:** This is a system API.
-
-## SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE
-
-```TypeScript
-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1
-```
-
-Audio Spatial Device Type in-ear headphone.
-
-**Since:** 11
-
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1-End-->
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -62,33 +46,33 @@ Audio Spatial Device Type half-in-ear headphone.
 
 **System API:** This is a system API.
 
-## SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE
+## SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE
 
 ```TypeScript
-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3
+SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1
 ```
 
-Audio Spatial Device Type over-ear headphone.
+Audio Spatial Device Type in-ear headphone.
 
 **Since:** 11
 
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3-End-->
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 
 **System API:** This is a system API.
 
-## SPATIAL_DEVICE_TYPE_GLASSES
+## SPATIAL_DEVICE_TYPE_NONE
 
 ```TypeScript
-SPATIAL_DEVICE_TYPE_GLASSES = 4
+SPATIAL_DEVICE_TYPE_NONE = 0
 ```
 
-Audio Spatial Device Type glasses.
+Audio Spatial Device Type none.
 
 **Since:** 11
 
-<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_GLASSES = 4-End-->
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -105,6 +89,22 @@ Audio Spatial Device Type others.
 **Since:** 11
 
 <!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OTHERS = 5--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OTHERS = 5-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Spatialization
+
+**System API:** This is a system API.
+
+## SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE
+
+```TypeScript
+SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3
+```
+
+Audio Spatial Device Type over-ear headphone.
+
+**Since:** 11
+
+<!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3--><!--Device-AudioSpatialDeviceType-SPATIAL_DEVICE_TYPE_OVER_EAR_HEADPHONE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 

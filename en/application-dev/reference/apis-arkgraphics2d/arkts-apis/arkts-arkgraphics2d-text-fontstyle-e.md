@@ -12,22 +12,6 @@ Enumerates the font styles.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-Normal.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
-
-<!--Device-FontStyle-NORMAL = 0--><!--Device-FontStyle-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## ITALIC
 
 ```TypeScript
@@ -38,9 +22,25 @@ Italic. If no italic version is available for the current font, the oblique vers
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontStyle-ITALIC = 1--><!--Device-FontStyle-ITALIC = 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+Normal.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-FontStyle-NORMAL = 0--><!--Device-FontStyle-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -54,7 +54,7 @@ Oblique. If no oblique version is available for the current font, the italic ver
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontStyle-OBLIQUE = 2--><!--Device-FontStyle-OBLIQUE = 2-End-->
 

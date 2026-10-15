@@ -36,7 +36,7 @@ Sets the confirmation of pairing with a certain device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
@@ -46,8 +46,8 @@ Sets the confirmation of pairing with a certain device.
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-// Subscribe to the pinRequired event and configure the pairing confirmation after receiving a pairing request from the peer device.
-function onReceivePinRequiredEvent(data: connection.PinRequiredParam) { // data is the input parameter for the pairing request.
+// Subscribe to the "pinRequired" pairing request event and set the pairing confirmation after receiving the peer pairing request.
+function onReceivePinRequiredEvent(data: connection.PinRequiredParam) { // data is the input parameter of the pairing request, that is, the pairing request parameter.
     console.info('pin required  = '+ JSON.stringify(data));
     connection.setDevicePairingConfirmation(data.deviceId, true);
 }

@@ -22,7 +22,7 @@ EXTENSION_ENTRY_TYPE_ENTRY = 0
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtensionEntryType-EXTENSION_ENTRY_TYPE_ENTRY = 0--><!--Device-ExtensionEntryType-EXTENSION_ENTRY_TYPE_ENTRY = 0-End-->
 
@@ -38,7 +38,7 @@ EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtensionEntryType-EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL = 1--><!--Device-ExtensionEntryType-EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL = 1-End-->
 
@@ -54,7 +54,7 @@ EXTENSION_ENTRY_TYPE_ENTRY_VALUE = 2
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtensionEntryType-EXTENSION_ENTRY_TYPE_ENTRY_VALUE = 2--><!--Device-ExtensionEntryType-EXTENSION_ENTRY_TYPE_ENTRY_VALUE = 2-End-->
 

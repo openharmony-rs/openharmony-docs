@@ -62,11 +62,11 @@ key: number
 
 Key value.
 
-**Note:** Since API version 26.0.0, the [KEYCODE_FINGERPRINT_SLIDE_UP](arkts-input-multimodalinput-keycode-keycode-e.md) and [KEYCODE_FINGERPRINT_SLIDE_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md) keys are supported. The keys are not universal device keys. Before using them, check whether the current device supports the reporting of related key events. For details, see [Preferential Response of System Function Keys](../../../device/input/keypressed-guidelines.md).
+**Note:** Since API version 26.0.0, the [KEYCODE_FINGERPRINT_SLIDE_UP](arkts-input-multimodalinput-keycode-keycode-e.md) key and [KEYCODE_FINGERPRINT_SLIDE_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md) key are newly supported. These are not universal key values across devices. Before using them, check whether the current device supports reporting the related key events. For details, see [Development Guide for Prioritized Response to System Function Keys](../../../device/input/keypressed-guidelines.md).
 
-Since API version 21, the [KEYCODE_MEDIA_PLAY_PAUSE](arkts-input-multimodalinput-keycode-keycode-e.md), [KEYCODE_MEDIA_NEXT](arkts-input-multimodalinput-keycode-keycode-e.md), and [KEYCODE_MEDIA_PREVIOUS](arkts-input-multimodalinput-keycode-keycode-e.md) keys are supported.
+Since API version 21, the [KEYCODE_MEDIA_PLAY_PAUSE](arkts-input-multimodalinput-keycode-keycode-e.md) key, [KEYCODE_MEDIA_NEXT](arkts-input-multimodalinput-keycode-keycode-e.md) key, and [KEYCODE_MEDIA_PREVIOUS](arkts-input-multimodalinput-keycode-keycode-e.md) key are newly supported.
 
-In API version 20 or earlier versions, only the [KEYCODE_VOLUME_UP](arkts-input-multimodalinput-keycode-keycode-e.md) and [KEYCODE_VOLUME_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md) keys are supported.
+For API version 20 and earlier, only the [KEYCODE_VOLUME_UP](arkts-input-multimodalinput-keycode-keycode-e.md) key and [KEYCODE_VOLUME_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md) key are supported.
 
 **Type:** number
 

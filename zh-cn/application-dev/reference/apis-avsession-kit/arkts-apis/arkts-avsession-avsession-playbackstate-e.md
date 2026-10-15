@@ -12,67 +12,51 @@ enum PlaybackState
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-## PLAYBACK_STATE_INITIAL
+## PLAYBACK_STATE_BUFFERING
 
 ```TypeScript
-PLAYBACK_STATE_INITIAL = 0
+PLAYBACK_STATE_BUFFERING = 11
 ```
 
-初始状态。
+缓冲。
 
-**起始版本：** 10
+**起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-PlaybackState-PLAYBACK_STATE_INITIAL = 0--><!--Device-PlaybackState-PLAYBACK_STATE_INITIAL = 0-End-->
+<!--Device-PlaybackState-PLAYBACK_STATE_BUFFERING = 11--><!--Device-PlaybackState-PLAYBACK_STATE_BUFFERING = 11-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-## PLAYBACK_STATE_PREPARE
+## PLAYBACK_STATE_COMPLETED
 
 ```TypeScript
-PLAYBACK_STATE_PREPARE = 1
+PLAYBACK_STATE_COMPLETED = 7
 ```
 
-播放准备状态。
+播放完成。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-PlaybackState-PLAYBACK_STATE_PREPARE = 1--><!--Device-PlaybackState-PLAYBACK_STATE_PREPARE = 1-End-->
+<!--Device-PlaybackState-PLAYBACK_STATE_COMPLETED = 7--><!--Device-PlaybackState-PLAYBACK_STATE_COMPLETED = 7-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-## PLAYBACK_STATE_PLAY
+## PLAYBACK_STATE_ERROR
 
 ```TypeScript
-PLAYBACK_STATE_PLAY = 2
+PLAYBACK_STATE_ERROR = 9
 ```
 
-正在播放。
+错误。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-PlaybackState-PLAYBACK_STATE_PLAY = 2--><!--Device-PlaybackState-PLAYBACK_STATE_PLAY = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## PLAYBACK_STATE_PAUSE
-
-```TypeScript
-PLAYBACK_STATE_PAUSE = 3
-```
-
-暂停。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-PlaybackState-PLAYBACK_STATE_PAUSE = 3--><!--Device-PlaybackState-PLAYBACK_STATE_PAUSE = 3-End-->
+<!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 9--><!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 9-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -86,9 +70,105 @@ PLAYBACK_STATE_FAST_FORWARD = 4
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_FAST_FORWARD = 4--><!--Device-PlaybackState-PLAYBACK_STATE_FAST_FORWARD = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## PLAYBACK_STATE_IDLE
+
+```TypeScript
+PLAYBACK_STATE_IDLE = 10
+```
+
+空闲状态。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackState-PLAYBACK_STATE_IDLE = 10--><!--Device-PlaybackState-PLAYBACK_STATE_IDLE = 10-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## PLAYBACK_STATE_INITIAL
+
+```TypeScript
+PLAYBACK_STATE_INITIAL = 0
+```
+
+初始状态。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackState-PLAYBACK_STATE_INITIAL = 0--><!--Device-PlaybackState-PLAYBACK_STATE_INITIAL = 0-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## PLAYBACK_STATE_PAUSE
+
+```TypeScript
+PLAYBACK_STATE_PAUSE = 3
+```
+
+暂停。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackState-PLAYBACK_STATE_PAUSE = 3--><!--Device-PlaybackState-PLAYBACK_STATE_PAUSE = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## PLAYBACK_STATE_PLAY
+
+```TypeScript
+PLAYBACK_STATE_PLAY = 2
+```
+
+正在播放。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackState-PLAYBACK_STATE_PLAY = 2--><!--Device-PlaybackState-PLAYBACK_STATE_PLAY = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## PLAYBACK_STATE_PREPARE
+
+```TypeScript
+PLAYBACK_STATE_PREPARE = 1
+```
+
+播放准备状态。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackState-PLAYBACK_STATE_PREPARE = 1--><!--Device-PlaybackState-PLAYBACK_STATE_PREPARE = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## PLAYBACK_STATE_RELEASED
+
+```TypeScript
+PLAYBACK_STATE_RELEASED = 8
+```
+
+释放。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackState-PLAYBACK_STATE_RELEASED = 8--><!--Device-PlaybackState-PLAYBACK_STATE_RELEASED = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -102,7 +182,7 @@ PLAYBACK_STATE_REWIND = 5
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_REWIND = 5--><!--Device-PlaybackState-PLAYBACK_STATE_REWIND = 5-End-->
 
@@ -118,88 +198,8 @@ PLAYBACK_STATE_STOP = 6
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_STOP = 6--><!--Device-PlaybackState-PLAYBACK_STATE_STOP = 6-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## PLAYBACK_STATE_COMPLETED
-
-```TypeScript
-PLAYBACK_STATE_COMPLETED = 7
-```
-
-播放完成。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-PlaybackState-PLAYBACK_STATE_COMPLETED = 7--><!--Device-PlaybackState-PLAYBACK_STATE_COMPLETED = 7-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## PLAYBACK_STATE_RELEASED
-
-```TypeScript
-PLAYBACK_STATE_RELEASED = 8
-```
-
-释放。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-PlaybackState-PLAYBACK_STATE_RELEASED = 8--><!--Device-PlaybackState-PLAYBACK_STATE_RELEASED = 8-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## PLAYBACK_STATE_ERROR
-
-```TypeScript
-PLAYBACK_STATE_ERROR = 9
-```
-
-错误。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 9--><!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 9-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## PLAYBACK_STATE_IDLE
-
-```TypeScript
-PLAYBACK_STATE_IDLE = 10
-```
-
-空闲状态。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-PlaybackState-PLAYBACK_STATE_IDLE = 10--><!--Device-PlaybackState-PLAYBACK_STATE_IDLE = 10-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## PLAYBACK_STATE_BUFFERING
-
-```TypeScript
-PLAYBACK_STATE_BUFFERING = 11
-```
-
-缓冲。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-PlaybackState-PLAYBACK_STATE_BUFFERING = 11--><!--Device-PlaybackState-PLAYBACK_STATE_BUFFERING = 11-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core

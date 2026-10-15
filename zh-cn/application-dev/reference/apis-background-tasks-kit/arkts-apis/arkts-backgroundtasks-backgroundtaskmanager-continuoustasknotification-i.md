@@ -30,7 +30,7 @@ contentType: notificationManager.ContentType
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskNotification-contentType: notificationManager.ContentType--><!--Device-ContinuousTaskNotification-contentType: notificationManager.ContentType-End-->
 
@@ -48,7 +48,7 @@ continuousTaskId?: number
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskNotification-continuousTaskId?: int--><!--Device-ContinuousTaskNotification-continuousTaskId?: int-End-->
 
@@ -66,7 +66,7 @@ notificationId: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskNotification-notificationId: int--><!--Device-ContinuousTaskNotification-notificationId: int-End-->
 
@@ -86,7 +86,7 @@ slotType: notificationManager.SlotType
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskNotification-slotType: notificationManager.SlotType--><!--Device-ContinuousTaskNotification-slotType: notificationManager.SlotType-End-->
 

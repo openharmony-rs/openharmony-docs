@@ -6,6 +6,8 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getoperationtype1"></a>
+
 ## getOperationType
 
 ```TypeScript
@@ -16,7 +18,7 @@ function getOperationType(agent: WantAgent, callback: AsyncCallback<number>): vo
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-wantAgent-function getOperationType(agent: WantAgent, callback: AsyncCallback<int>): void--><!--Device-wantAgent-function getOperationType(agent: WantAgent, callback: AsyncCallback<int>): void-End-->
 
@@ -33,7 +35,7 @@ function getOperationType(agent: WantAgent, callback: AsyncCallback<number>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000015](../errorcode-ability.md#16000015-服务超时) | Service timeout. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
@@ -108,7 +110,7 @@ try {
 ```
 
 
-<a id="getoperationtype-1"></a>
+<a id="getoperationtype2"></a>
 
 ## getOperationType
 
@@ -120,7 +122,7 @@ function getOperationType(agent: WantAgent): Promise<number>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-wantAgent-function getOperationType(agent: WantAgent): Promise<int>--><!--Device-wantAgent-function getOperationType(agent: WantAgent): Promise<int>-End-->
 
@@ -142,7 +144,7 @@ function getOperationType(agent: WantAgent): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000015](../errorcode-ability.md#16000015-服务超时) | Service timeout. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |

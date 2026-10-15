@@ -22,4 +22,5 @@ import { url } from '@kit.ArkTS';
 | --- | --- |
 | [URL](arkts-arkts-url-url-c.md) | The interface of URL is used to parse, construct, normalize, and encode URLs. |
 | [URLParams](arkts-arkts-url-urlparams-c.md) | The URLParams interface defines some practical methods to process URL query strings. |
+| [URLUtil](arkts-arkts-url-urlutil-c.md) | The URLUtil class provides utility methods related to URLs. |
 | [URLSearchParams](arkts-arkts-url-urlsearchparams-c.md) | The URLSearchParams interface defines some practical methods to process URL query strings. |

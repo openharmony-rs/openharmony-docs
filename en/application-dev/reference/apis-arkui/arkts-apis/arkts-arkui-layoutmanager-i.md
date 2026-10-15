@@ -11,6 +11,12 @@ Implements a layout manager object.
 > After the text content is changed, you must wait for the layout to be completed before you can obtain the most up-
 > to-date layout information.
 
+**Since:** 12
+
+<!--Device-unnamed-declare interface LayoutManager--><!--Device-unnamed-declare interface LayoutManager-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Objects to Import
 
 Take the Text component as an example. For a complete example, see [Example 10: Obtaining Text Information](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) of the Text component.
@@ -20,11 +26,7 @@ controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
-**Since:** 12
-
-<!--Device-unnamed-declare interface LayoutManager--><!--Device-unnamed-declare interface LayoutManager-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+<a id="getcharacterpositionatcoordinate1"></a>
 
 ## getCharacterPositionAtCoordinate
 
@@ -63,7 +65,7 @@ Obtains the position information of the character closest to the specified coord
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | Character position information. When [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to the component, this API returns undefined. |
 
-<a id="getcharacterpositionatcoordinate-1"></a>
+<a id="getcharacterpositionatcoordinate2"></a>
 
 ## getCharacterPositionAtCoordinate
 
@@ -74,7 +76,7 @@ getCharacterPositionAtCoordinate(
 
 Obtains the position information of the character closest to the specified coordinate based on the specified encoding type.
 
-Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character position through the encoding parameter.
+Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate1), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character position through the encoding parameter.
 
 > **NOTE:** 
 > 
@@ -104,6 +106,8 @@ Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordina
 | Type | Description |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | Character position. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
+
+<a id="getcharacterrangeforglyphrange1"></a>
 
 ## getCharacterRangeForGlyphRange
 
@@ -149,7 +153,7 @@ Its glyph index range is [0, 7]. Since a Chinese character occupies 3 bytes, its
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | The array contains two elements: the first element is the character range, and the second element is the actual glyph range. <br>When the returned range is an abnormal value, the elements in the range are -1. <br>When the [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component, this API returns undefined. |
 
-<a id="getcharacterrangeforglyphrange-1"></a>
+<a id="getcharacterrangeforglyphrange2"></a>
 
 ## getCharacterRangeForGlyphRange
 
@@ -159,7 +163,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 Obtains the character range and the actual glyph range based on the specified encoding type and text glyph range.
 
-Compared with [getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the **encoding** parameter.
+Compared with [getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange1), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the **encoding** parameter.
 
 > **NOTE:** 
 > 
@@ -238,6 +242,8 @@ Obtains the position information of the character close to the given coordinate.
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | Character position information. When [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component, an invalid value is returned. |
 
+<a id="getglyphrangeforcharacterrange1"></a>
+
 ## getGlyphRangeForCharacterRange
 
 ```TypeScript
@@ -282,7 +288,7 @@ The glyph index range of the character "世" is [0, 1]. Since a Chinese characte
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | The array contains two elements: the first element is the glyph range, and the second element is the actual character range. <br>When the returned range is an abnormal value, the elements in the range are -1. <br>When [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component, this API returns undefined. |
 
-<a id="getglyphrangeforcharacterrange-1"></a>
+<a id="getglyphrangeforcharacterrange2"></a>
 
 ## getGlyphRangeForCharacterRange
 
@@ -292,7 +298,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 Obtains the glyph range and the actual character range based on the specified encoding type and text character range.
 
-Compared with [getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange), this interface supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the encoding parameter.
+Compared with [getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange1), this interface supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the encoding parameter.
 
 > **NOTE:** 
 > 

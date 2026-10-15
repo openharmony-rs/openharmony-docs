@@ -12,22 +12,6 @@ Enumerates the modes in which the **Web** component uses HTTPDNS.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## OFF
-
-```TypeScript
-OFF = 0
-```
-
-HTTPDNS is not used. It can be used to revoke the previously used HTTPDNS configuration.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-SecureDnsMode-OFF = 0--><!--Device-SecureDnsMode-OFF = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## AUTO
 
 ```TypeScript
@@ -41,6 +25,22 @@ HTTPDNS is used in automatic mode. If the specified HTTPDNS server is unavailabl
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SecureDnsMode-AUTO = 1--><!--Device-SecureDnsMode-AUTO = 1-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## OFF
+
+```TypeScript
+OFF = 0
+```
+
+HTTPDNS is not used. It can be used to revoke the previously used HTTPDNS configuration.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecureDnsMode-OFF = 0--><!--Device-SecureDnsMode-OFF = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

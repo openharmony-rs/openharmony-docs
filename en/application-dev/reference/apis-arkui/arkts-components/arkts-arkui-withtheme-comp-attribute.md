@@ -4,9 +4,9 @@
 declare class WithThemeAttribute
 ```
 
-The universal attributes are not supported.
+The [universal attributes](arkts-arkui-common-comp.md) are not supported.
 
-The universal events are not supported.
+The [universal events](arkts-arkui-common-comp.md) are not supported.
 
 **Since:** 12
 

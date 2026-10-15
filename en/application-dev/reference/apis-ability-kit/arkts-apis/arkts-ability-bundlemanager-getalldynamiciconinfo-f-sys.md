@@ -49,6 +49,7 @@ To obtain the dynamic icon information of all applications and all application c
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700306](../errorcode-bundle.md#17700306-failed-to-obtain-the-dynamic-icon) | Failed to obtain the dynamic icon. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,3 +70,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

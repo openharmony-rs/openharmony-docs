@@ -13,7 +13,7 @@ function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPic
     allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture
 ```
 
-Create an &lt;b&gt;AuxiliaryPicture&lt;/b&gt; object, the memory type used by the AuxiliaryPicture can be specified by allocatorType IMAGE_ALLOCATOR_TYPE. By default, the system selects the memory type based on the image type, image size, platform capability, etc. When processing the AuxiliaryPicture returned by this interface, please always consider the impact of stride. The created auxiliary picture is initialized with the input pixels.
+Create an <b>AuxiliaryPicture</b> object, the memory type used by the AuxiliaryPicture can be specified by allocatorType IMAGE_ALLOCATOR_TYPE. By default, the system selects the memory type based on the image type, image size, platform capability, etc. When processing the AuxiliaryPicture returned by this interface, please always consider the impact of stride. The created auxiliary picture is initialized with the input pixels.
 
 **Since:** 24
 

@@ -32,19 +32,73 @@ ATOMIC_UNKNOWN = 0
 
 **系统接口：** 此接口为系统接口。
 
-## FACE_RELATIVE_POSITION
+## BLOWING_STATUS
 
 ```TypeScript
-FACE_RELATIVE_POSITION = 1
+BLOWING_STATUS = 11
 ```
 
-表示检测人脸相对于屏幕。
+表示检测用户吹气数据。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1--><!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1-End-->
+<!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11--><!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
+
+**系统接口：** 此接口为系统接口。
+
+## ENV_SOUND
+
+```TypeScript
+ENV_SOUND = 13
+```
+
+表示检测用户环境音强度。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatusAtomicCap-ENV_SOUND = 13--><!--Device-UserStatusAtomicCap-ENV_SOUND = 13-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
+
+**系统接口：** 此接口为系统接口。
+
+## EYE_GAZE_SCREEN
+
+```TypeScript
+EYE_GAZE_SCREEN = 15
+```
+
+表示检测用户是否注视屏幕。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15--><!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
+
+**系统接口：** 此接口为系统接口。
+
+## FACE_ANGLE
+
+```TypeScript
+FACE_ANGLE = 4
+```
+
+表示检测人脸相对于屏幕的角度。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatusAtomicCap-FACE_ANGLE = 4--><!--Device-UserStatusAtomicCap-FACE_ANGLE = 4-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -68,6 +122,24 @@ FACE_NUM_CHANGE = 2
 
 **系统接口：** 此接口为系统接口。
 
+## FACE_RELATIVE_POSITION
+
+```TypeScript
+FACE_RELATIVE_POSITION = 1
+```
+
+表示检测人脸相对于屏幕。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1--><!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
+
+**系统接口：** 此接口为系统接口。
+
 ## GESTURE
 
 ```TypeScript
@@ -86,19 +158,55 @@ GESTURE = 3
 
 **系统接口：** 此接口为系统接口。
 
-## FACE_ANGLE
+## MOOD_STATUS
 
 ```TypeScript
-FACE_ANGLE = 4
+MOOD_STATUS = 12
 ```
 
-表示检测人脸相对于屏幕的角度。
+表示检测用户情绪数据。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserStatusAtomicCap-FACE_ANGLE = 4--><!--Device-UserStatusAtomicCap-FACE_ANGLE = 4-End-->
+<!--Device-UserStatusAtomicCap-MOOD_STATUS = 12--><!--Device-UserStatusAtomicCap-MOOD_STATUS = 12-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
+
+**系统接口：** 此接口为系统接口。
+
+## NOISE_SOUND
+
+```TypeScript
+NOISE_SOUND = 14
+```
+
+表示检测用户噪音强度。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatusAtomicCap-NOISE_SOUND = 14--><!--Device-UserStatusAtomicCap-NOISE_SOUND = 14-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
+
+**系统接口：** 此接口为系统接口。
+
+## SENSOR_ACCELEROMETER
+
+```TypeScript
+SENSOR_ACCELEROMETER = 7
+```
+
+表示检测传感器加速度计数据。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7--><!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -140,24 +248,6 @@ SENSOR_GYROSCOPE = 6
 
 **系统接口：** 此接口为系统接口。
 
-## SENSOR_ACCELEROMETER
-
-```TypeScript
-SENSOR_ACCELEROMETER = 7
-```
-
-表示检测传感器加速度计数据。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7--><!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
-
-**系统接口：** 此接口为系统接口。
-
 ## SENSOR_LINEAR_ACCELERATION
 
 ```TypeScript
@@ -171,24 +261,6 @@ SENSOR_LINEAR_ACCELERATION = 8
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserStatusAtomicCap-SENSOR_LINEAR_ACCELERATION = 8--><!--Device-UserStatusAtomicCap-SENSOR_LINEAR_ACCELERATION = 8-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
-
-**系统接口：** 此接口为系统接口。
-
-## SENSOR_ROTATION_VECTOR
-
-```TypeScript
-SENSOR_ROTATION_VECTOR = 9
-```
-
-表示检测传感器旋转矢量数据。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9--><!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -212,91 +284,19 @@ SENSOR_ORIENTATION = 10
 
 **系统接口：** 此接口为系统接口。
 
-## BLOWING_STATUS
+## SENSOR_ROTATION_VECTOR
 
 ```TypeScript
-BLOWING_STATUS = 11
+SENSOR_ROTATION_VECTOR = 9
 ```
 
-表示检测用户吹气数据。
+表示检测传感器旋转矢量数据。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11--><!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
-
-**系统接口：** 此接口为系统接口。
-
-## MOOD_STATUS
-
-```TypeScript
-MOOD_STATUS = 12
-```
-
-表示检测用户情绪数据。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusAtomicCap-MOOD_STATUS = 12--><!--Device-UserStatusAtomicCap-MOOD_STATUS = 12-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
-
-**系统接口：** 此接口为系统接口。
-
-## ENV_SOUND
-
-```TypeScript
-ENV_SOUND = 13
-```
-
-表示检测用户环境音强度。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusAtomicCap-ENV_SOUND = 13--><!--Device-UserStatusAtomicCap-ENV_SOUND = 13-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
-
-**系统接口：** 此接口为系统接口。
-
-## NOISE_SOUND
-
-```TypeScript
-NOISE_SOUND = 14
-```
-
-表示检测用户噪音强度。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusAtomicCap-NOISE_SOUND = 14--><!--Device-UserStatusAtomicCap-NOISE_SOUND = 14-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.UserStatus
-
-**系统接口：** 此接口为系统接口。
-
-## EYE_GAZE_SCREEN
-
-```TypeScript
-EYE_GAZE_SCREEN = 15
-```
-
-表示检测用户是否注视屏幕。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15--><!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15-End-->
+<!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9--><!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 

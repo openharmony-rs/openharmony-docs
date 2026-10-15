@@ -24,7 +24,7 @@ Abilities that use the permission.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UsedScene-abilities: Array<string>--><!--Device-UsedScene-abilities: Array<string>-End-->
 
@@ -42,7 +42,7 @@ Time when the permission is used. The value can be **inuse** or **always**.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-UsedScene-when: string--><!--Device-UsedScene-when: string-End-->
 

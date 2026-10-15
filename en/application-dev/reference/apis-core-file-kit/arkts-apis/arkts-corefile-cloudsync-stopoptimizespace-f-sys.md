@@ -33,6 +33,7 @@ Synchronously stops optimizing cloud resource space. This method is used with **
 | 13600001 | IPC error. |
 | 22400005 | Inner error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
 cloudSync.startOptimizeSpace(para, callback);
 cloudSync.stopOptimizeSpace();   // Stop space optimization.
 ```
+
+<!--DelEnd-->

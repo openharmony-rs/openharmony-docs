@@ -12,6 +12,8 @@ Define DynamicNode.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="onmove1"></a>
+
 ## onMove
 
 ```TypeScript
@@ -42,7 +44,7 @@ Callback for data movement during drag sorting. It takes effect only when the pa
 | --- | --- |
 | T | Current component. |
 
-<a id="onmove-1"></a>
+<a id="onmove2"></a>
 
 ## onMove
 

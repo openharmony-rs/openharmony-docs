@@ -12,20 +12,6 @@ Enumerates the audio renderer rates.
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
-## RENDER_RATE_NORMAL
-
-```TypeScript
-RENDER_RATE_NORMAL = 0
-```
-
-Normal rate.
-
-**Since:** 8
-
-<!--Device-AudioRendererRate-RENDER_RATE_NORMAL = 0--><!--Device-AudioRendererRate-RENDER_RATE_NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Renderer
-
 ## RENDER_RATE_DOUBLE
 
 ```TypeScript
@@ -51,5 +37,19 @@ RENDER_RATE_HALF = 2
 **Since:** 8
 
 <!--Device-AudioRendererRate-RENDER_RATE_HALF = 2--><!--Device-AudioRendererRate-RENDER_RATE_HALF = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+## RENDER_RATE_NORMAL
+
+```TypeScript
+RENDER_RATE_NORMAL = 0
+```
+
+Normal rate.
+
+**Since:** 8
+
+<!--Device-AudioRendererRate-RENDER_RATE_NORMAL = 0--><!--Device-AudioRendererRate-RENDER_RATE_NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer

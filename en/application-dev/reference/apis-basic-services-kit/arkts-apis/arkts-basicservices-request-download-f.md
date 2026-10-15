@@ -6,6 +6,8 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="download1"></a>
+
 ## download
 
 ```TypeScript
@@ -18,7 +20,7 @@ Downloads a file. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md)(context: BaseContext, config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;)
+**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile1)(context: BaseContext, config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -57,7 +59,7 @@ filePath: 'xxx/xxxxx.hap'}, (err: BusinessError, data: request.DownloadTask) => 
 ```
 
 
-<a id="download-1"></a>
+<a id="download2"></a>
 
 ## download
 
@@ -71,7 +73,7 @@ Downloads a file. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)(context: BaseContext, config: DownloadConfig)
+**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile2)(context: BaseContext, config: DownloadConfig)
 
 **Required permissions:** ohos.permission.INTERNET
 

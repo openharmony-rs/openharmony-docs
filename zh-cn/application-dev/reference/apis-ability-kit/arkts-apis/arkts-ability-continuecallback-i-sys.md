@@ -34,6 +34,7 @@ Mission迁移完成后调用，回调参数result返回迁移结果。当目标�
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,3 +65,5 @@ distributedMissionManager.continueMission(
   console.info(`continueMission finished`);
 });
 ```
+
+<!--DelEnd-->

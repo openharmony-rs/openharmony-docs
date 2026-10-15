@@ -53,10 +53,11 @@ Proactively triggers screen content awareness and obtains the current screen awa
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-specified-capability-not-supported) | The application or page is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'UiImage'
@@ -73,6 +74,8 @@ try {
     await onScreen.trigger(onscreenAwarenessCap, onscreenAwarenessOptions);
   console.info(`trigger resultCode: ${info.resultCode}`);
 } catch (err) {
-  console.error('trigger failed, errCode = ' + err.code);
+  console.error(`trigger failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

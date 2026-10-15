@@ -68,7 +68,7 @@ Default value: **'#00000000'**
 safeAreaEdges?: Array<SafeAreaEdge>
 ```
 
-Edges for expanding the safe area.
+Edges of the expanded safe area.
 
 Default value: **[SafeAreaEdge.TOP]**
 
@@ -90,7 +90,7 @@ Default value: **[SafeAreaEdge.TOP]**
 safeAreaTypes?: Array<SafeAreaType>
 ```
 
-Types of the expanded safe areas.
+Types of the expanded safe area.
 
 Default value: **[SafeAreaType.SYSTEM]**
 

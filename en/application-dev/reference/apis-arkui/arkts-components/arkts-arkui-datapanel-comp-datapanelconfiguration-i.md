@@ -6,7 +6,7 @@ declare interface DataPanelConfiguration extends CommonConfiguration<DataPanelCo
 
 You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** DataPanelConfiguration extends CommonConfiguration<DataPanelConfiguration>
+**Inheritance/Implementation:** DataPanelConfiguration extends CommonConfiguration&lt;DataPanelConfiguration&gt;
 
 **Since:** 12
 

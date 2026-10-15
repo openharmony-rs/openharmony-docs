@@ -12,17 +12,17 @@ Describes the type of the extended edit action on the text box.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## SELECT_ALL
+## COPY
 
 ```TypeScript
-SELECT_ALL = 0
+COPY = 4
 ```
 
-Select all.
+Copy.
 
 **Since:** 10
 
-<!--Device-ExtendAction-SELECT_ALL = 0--><!--Device-ExtendAction-SELECT_ALL = 0-End-->
+<!--Device-ExtendAction-COPY = 4--><!--Device-ExtendAction-COPY = 4-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,20 +40,6 @@ Cut.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## COPY
-
-```TypeScript
-COPY = 4
-```
-
-Copy.
-
-**Since:** 10
-
-<!--Device-ExtendAction-COPY = 4--><!--Device-ExtendAction-COPY = 4-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
 ## PASTE
 
 ```TypeScript
@@ -65,5 +51,19 @@ Paste.
 **Since:** 10
 
 <!--Device-ExtendAction-PASTE = 5--><!--Device-ExtendAction-PASTE = 5-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## SELECT_ALL
+
+```TypeScript
+SELECT_ALL = 0
+```
+
+Select all.
+
+**Since:** 10
+
+<!--Device-ExtendAction-SELECT_ALL = 0--><!--Device-ExtendAction-SELECT_ALL = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

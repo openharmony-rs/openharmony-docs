@@ -42,8 +42,11 @@ function cancelPairedDevice(deviceId: string): boolean
 | --- | --- |
 | boolean | 启动取消配对，成功返回true，否则返回false。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let result : boolean = bluetooth.cancelPairedDevice("XX:XX:XX:XX:XX:XX");
 ```
+
+<!--DelEnd-->

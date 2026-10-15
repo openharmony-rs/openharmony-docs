@@ -40,6 +40,7 @@ function setHotspotConfig(config: HotspotConfig): boolean
 | --- | --- |
 | boolean | true:操作成功， false:操作失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

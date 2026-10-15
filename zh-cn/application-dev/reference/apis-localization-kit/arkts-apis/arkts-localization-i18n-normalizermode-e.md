@@ -22,7 +22,7 @@ NFC范式。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NormalizerMode-NFC = 1--><!--Device-NormalizerMode-NFC = 1-End-->
 
@@ -38,7 +38,7 @@ NFD范式。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NormalizerMode-NFD = 2--><!--Device-NormalizerMode-NFD = 2-End-->
 
@@ -54,7 +54,7 @@ NFKC范式。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NormalizerMode-NFKC = 3--><!--Device-NormalizerMode-NFKC = 3-End-->
 
@@ -70,7 +70,7 @@ NFKD范式。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NormalizerMode-NFKD = 4--><!--Device-NormalizerMode-NFKD = 4-End-->
 

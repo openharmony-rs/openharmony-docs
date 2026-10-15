@@ -52,6 +52,7 @@ Gets current audio effect properties.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,6 +66,8 @@ try {
   console.error(`getAudioEffectProperty ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSupportedAudioEffectProperty
 
@@ -98,6 +101,7 @@ Gets supported audio effect properties based on current devices.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -111,6 +115,8 @@ try {
   console.error(`getSupportedAudioEffectProperty ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isAudioSeparationEffectSupported
 
@@ -142,6 +148,7 @@ Checks whether the current device supports audio separation effect in system.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -150,6 +157,8 @@ import { audio } from '@kit.AudioKit';
 let isSupported: boolean = audioEffectManager.isAudioSeparationEffectSupported();
 console.info(`Audio separation effect is supported: ${isSupported}`);
 ```
+
+<!--DelEnd-->
 
 ## offAudioSeparationEffectEnabledChange
 
@@ -182,6 +191,7 @@ Unsubscribes from the system audio separation effect enabled state change event.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -189,6 +199,8 @@ import { audio } from '@kit.AudioKit';
 
 audioEffectManager.offAudioSeparationEffectEnabledChange();
 ```
+
+<!--DelEnd-->
 
 ## onAudioSeparationEffectEnabledChange
 
@@ -220,6 +232,7 @@ Subscribes to system audio separation effect enabled state change event. The aud
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -229,6 +242,8 @@ audioEffectManager.onAudioSeparationEffectEnabledChange((isEnabled: boolean) => 
   console.info(`Audio separation effect enabled state changed: ${isEnabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAudioEffectProperty
 
@@ -260,9 +275,10 @@ Sets current audio effect properties.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Possible causes: 1. More than one effect property name of the same effect property category are in the input array. 2. The input audioEffectProperties are not supported by the current device. 3. The name or category of the input audioEffectProperties is incorrect. |
+| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Possible causes:         1. More than one effect property name of the same effect property category are in the input array.         2. The input audioEffectProperties are not supported by the current device.         3. The name or category of the input audioEffectProperties is incorrect. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -277,6 +293,8 @@ try {
   console.error(`setAudioEffectProperty ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setAudioSeparationEffectEnabled
 
@@ -322,6 +340,7 @@ Sets audio separation effect enable or disable for specific application process,
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Effect is not supported in this device. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio service error occurs like service died. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -334,6 +353,8 @@ audioEffectManager.setAudioSeparationEffectEnabled(true, 10001).then(() => {
   console.error(`Failed to set audio separation effect enabled. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAudioSeparationEffectVolume
 
@@ -378,6 +399,7 @@ Sets audio separation effect volume for specific volume type. This API uses a pr
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Effect is not supported in this device. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio service error occurs like service died. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -390,3 +412,5 @@ audioEffectManager.setAudioSeparationEffectVolume(audio.AudioSeparationVolumeTyp
   console.error(`Failed to set audio separation effect volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -82,7 +82,7 @@ Adds an element to this PlainArray.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-add(key: int, value: T): void--><!--Device-PlainArray-add(key: int, value: T): void-End-->
 
@@ -119,7 +119,7 @@ Clears this PlainArray and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-clear(): void--><!--Device-PlainArray-clear(): void-End-->
 
@@ -152,7 +152,7 @@ Clones this PlainArray and returns a copy. The modification to the copy does not
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-clone(): PlainArray<T>--><!--Device-PlainArray-clone(): PlainArray<T>-End-->
 
@@ -190,7 +190,7 @@ A constructor used to create a **PlainArray** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-constructor()--><!--Device-PlainArray-constructor()-End-->
 
@@ -316,7 +316,7 @@ Obtains the index of the element with the specified key in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-getIndexOfKey(key: int): int--><!--Device-PlainArray-getIndexOfKey(key: int): int-End-->
 
@@ -360,7 +360,7 @@ Obtains the index of the first occurrence of an element with the specified value
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-getIndexOfValue(value: T): int--><!--Device-PlainArray-getIndexOfValue(value: T): int-End-->
 
@@ -404,7 +404,7 @@ Obtains the key of the element at the specified position in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-getKeyAt(index: int): int--><!--Device-PlainArray-getKeyAt(index: int): int-End-->
 
@@ -448,7 +448,7 @@ Obtains the value of an element at the specified position in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-getValueAt(index: int): T--><!--Device-PlainArray-getValueAt(index: int): T-End-->
 
@@ -493,7 +493,7 @@ Checks whether PlainArray has the specified key.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-has(key: int): boolean--><!--Device-PlainArray-has(key: int): boolean-End-->
 
@@ -536,7 +536,7 @@ Checks whether this PlainArray is empty.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-isEmpty(): boolean--><!--Device-PlainArray-isEmpty(): boolean-End-->
 
@@ -660,7 +660,7 @@ Removes elements within the specified range.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-removeRangeFrom(index: int, size: int): int--><!--Device-PlainArray-removeRangeFrom(index: int, size: int): int-End-->
 
@@ -706,7 +706,7 @@ Sets a value for an element at the specified position in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-setValueAt(index: int, value: T): void--><!--Device-PlainArray-setValueAt(index: int, value: T): void-End-->
 
@@ -747,7 +747,7 @@ Obtains a string that contains all elements in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlainArray-toString(): String--><!--Device-PlainArray-toString(): String-End-->
 

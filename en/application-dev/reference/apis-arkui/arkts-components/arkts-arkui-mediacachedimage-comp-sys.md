@@ -34,6 +34,7 @@ Image resource to be obtained.
 | --- | --- |
 | [ASTCResource](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md) | Defines the resource which can use ASTC. |
 
+<!--Del-->
 ## Examples
 
 This example loads images of basic types.
@@ -70,3 +71,5 @@ struct MediaCachedImageExample {
   }
 }
 ```
+
+<!--DelEnd-->

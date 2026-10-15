@@ -30,7 +30,7 @@ Network transmission capabilities and bearer types of the data network.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-NetCapabilityInfo-netCap: NetCapabilities--><!--Device-NetCapabilityInfo-netCap: NetCapabilities-End-->
 
@@ -48,7 +48,7 @@ Network handle.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-NetCapabilityInfo-netHandle: NetHandle--><!--Device-NetCapabilityInfo-netHandle: NetHandle-End-->
 

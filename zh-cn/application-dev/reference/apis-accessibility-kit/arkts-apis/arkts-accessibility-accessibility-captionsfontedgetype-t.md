@@ -8,9 +8,9 @@ type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropS
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-accessibility-type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropShadow'--><!--Device-accessibility-type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropShadow'-End-->
 

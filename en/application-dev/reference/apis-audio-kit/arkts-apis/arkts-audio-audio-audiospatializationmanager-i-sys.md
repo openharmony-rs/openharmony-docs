@@ -91,6 +91,7 @@ Gets the current spatial audio source type.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -105,6 +106,8 @@ try {
   console.error(`ERROR: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSpatializationSceneType
 
@@ -134,6 +137,7 @@ Get spatialization rendering scene type.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -148,6 +152,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isAdaptiveSpatialRenderingEnabled
 
@@ -184,6 +190,7 @@ Checks whether the adaptive spatial rendering is enabled by the specified device
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -216,7 +223,9 @@ try {
 }
 ```
 
-<a id="isheadtrackingenabled-1"></a>
+<!--DelEnd-->
+
+<a id="isheadtrackingenabled2"></a>
 
 ## isHeadTrackingEnabled
 
@@ -254,6 +263,7 @@ Checks whether the head tracking is enabled by the specified device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -283,6 +293,10 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="isheadtrackingenabled1"></a>
 
 ## isHeadTrackingEnabled
 
@@ -316,6 +330,7 @@ Checks whether the head tracking is enabled.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -330,6 +345,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isHeadTrackingSupported
 
@@ -359,6 +376,7 @@ Checks whether head tracking is supported by system.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -373,6 +391,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isHeadTrackingSupportedForDevice
 
@@ -410,6 +430,7 @@ Checks whether head tracking is supported by the specified device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -439,6 +460,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isPersonalizedSpatializationEnabled
 
@@ -507,7 +530,7 @@ Checks whether personalized spatialization is supported by system.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
-<a id="isspatializationenabled-1"></a>
+<a id="isspatializationenabled2"></a>
 
 ## isSpatializationEnabled
 
@@ -545,6 +568,7 @@ Checks whether the spatialization is enabled by the specified device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -574,6 +598,10 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="isspatializationenabled1"></a>
 
 ## isSpatializationEnabled
 
@@ -607,6 +635,7 @@ Checks whether the spatialization is enabled.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -621,6 +650,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isSpatializationSupported
 
@@ -650,6 +681,7 @@ Checks whether spatialization is supported by system.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -663,6 +695,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isSpatializationSupportedForDevice
 
@@ -700,6 +734,7 @@ Checks whether spatialization is supported by the specified device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -729,6 +764,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('spatializationEnabledChangeForAnyDevice')
 
@@ -761,6 +798,7 @@ Unsubscribes to the spatialization enable state change events by the specified d
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -779,6 +817,8 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', spatial
 
 audioSpatializationManager.off('spatializationEnabledChangeForAnyDevice', spatializationEnabledChangeForAnyDeviceCallback);
 ```
+
+<!--DelEnd-->
 
 ## off('headTrackingEnabledChangeForAnyDevice')
 
@@ -811,6 +851,7 @@ Unsubscribes to the head tracking enable state change events by the specified de
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -830,6 +871,8 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', headTrack
 audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);
 ```
 
+<!--DelEnd-->
+
 ## off('spatializationEnabledChange')
 
 ```TypeScript
@@ -842,7 +885,7 @@ Unsubscribes to the spatialization enable state change events.
 
 **Deprecated since:** 12
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-audio-audio-audiospatializationmanager-i.md#off)
 
 <!--Device-AudioSpatializationManager-off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void--><!--Device-AudioSpatializationManager-off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void-End-->
 
@@ -865,6 +908,7 @@ Unsubscribes to the spatialization enable state change events.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -881,6 +925,8 @@ audioSpatializationManager.on('spatializationEnabledChange', spatializationEnabl
 audioSpatializationManager.off('spatializationEnabledChange', spatializationEnabledChangeCallback);
 ```
 
+<!--DelEnd-->
+
 ## off('headTrackingEnabledChange')
 
 ```TypeScript
@@ -893,7 +939,7 @@ Unsubscribes to the head tracking enable state change events.
 
 **Deprecated since:** 12
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-audio-audio-audiospatializationmanager-i.md#off)
 
 <!--Device-AudioSpatializationManager-off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void--><!--Device-AudioSpatializationManager-off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void-End-->
 
@@ -916,6 +962,7 @@ Unsubscribes to the head tracking enable state change events.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -933,6 +980,8 @@ audioSpatializationManager.on('headTrackingEnabledChange', headTrackingEnabledCh
 
 audioSpatializationManager.off('headTrackingEnabledChange', headTrackingEnabledChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## offAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
@@ -963,6 +1012,7 @@ Unsubscribes to the adaptive spatial rendering enable state change events by the
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -981,6 +1031,8 @@ audioSpatializationManager.onAdaptiveSpatialRenderingEnabledChangeForAnyDevice(a
 
 audioSpatializationManager.offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(adaptiveSpatialRenderingEnabledChangeForAnyDeviceCallback);
 ```
+
+<!--DelEnd-->
 
 ## offPersonalizedSpatializationEnabledChangeForAnyDevice
 
@@ -1044,6 +1096,7 @@ Unsubscribes from the spatial audio source type change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1059,6 +1112,8 @@ let spatialAudioSourceTypeChangeCallback = (spatialAudioSourceType: audio.Spatia
 audioSpatializationManager.onSpatialAudioSourceTypeChange(spatialAudioSourceTypeChangeCallback);
 audioSpatializationManager.offSpatialAudioSourceTypeChange(spatialAudioSourceTypeChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## on('spatializationEnabledChangeForAnyDevice')
 
@@ -1091,6 +1146,7 @@ Subscribes to the spatialization enable state change events by the specified dev
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1101,6 +1157,8 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', (audioS
   console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('headTrackingEnabledChangeForAnyDevice')
 
@@ -1133,6 +1191,7 @@ Subscribes to the head tracking enable state change events by the specified devi
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1143,6 +1202,8 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', (audioSpa
   console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('spatializationEnabledChange')
 
@@ -1156,7 +1217,7 @@ Subscribes to the spatialization enable state change events. When the spatializa
 
 **Deprecated since:** 12
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-audio-audio-audiospatializationmanager-i.md#on)
 
 <!--Device-AudioSpatializationManager-on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void--><!--Device-AudioSpatializationManager-on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void-End-->
 
@@ -1179,6 +1240,7 @@ Subscribes to the spatialization enable state change events. When the spatializa
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1188,6 +1250,8 @@ audioSpatializationManager.on('spatializationEnabledChange', (isSpatializationEn
   console.info(`isSpatializationEnabled: ${isSpatializationEnabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('headTrackingEnabledChange')
 
@@ -1201,7 +1265,7 @@ Subscribes to the head tracking enable state change events. When the head tracki
 
 **Deprecated since:** 12
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-audio-audio-audiospatializationmanager-i.md#on)
 
 <!--Device-AudioSpatializationManager-on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void--><!--Device-AudioSpatializationManager-on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void-End-->
 
@@ -1224,6 +1288,7 @@ Subscribes to the head tracking enable state change events. When the head tracki
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1233,6 +1298,8 @@ audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnable
   console.info(`isHeadTrackingEnabled: ${isHeadTrackingEnabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
@@ -1263,6 +1330,7 @@ Subscribes to the adaptive spatial rendering enable state change events by the s
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1273,6 +1341,8 @@ audioSpatializationManager.onAdaptiveSpatialRenderingEnabledChangeForAnyDevice((
   console.info(`isAdaptiveSpatialRenderingEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onPersonalizedSpatializationEnabledChangeForAnyDevice
 
@@ -1336,6 +1406,7 @@ Subscribes to the spatial audio source type change events. When the current spat
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1345,6 +1416,8 @@ audioSpatializationManager.onSpatialAudioSourceTypeChange((spatialAudioSourceTyp
   console.info(`spatial audio source type changed to: ${spatialAudioSourceType}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAdaptiveSpatialRenderingEnabled
 
@@ -1386,6 +1459,7 @@ Sets the adaptive spatial rendering enabled or disabled by the specified device.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported on the device. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1416,7 +1490,9 @@ audioSpatializationManager.setAdaptiveSpatialRenderingEnabled(deviceDescriptor, 
 });
 ```
 
-<a id="setheadtrackingenabled-2"></a>
+<!--DelEnd-->
+
+<a id="setheadtrackingenabled3"></a>
 
 ## setHeadTrackingEnabled
 
@@ -1458,6 +1534,7 @@ Sets the head tracking enabled or disabled by the specified device. This method 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1486,6 +1563,10 @@ audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setheadtrackingenabled1"></a>
 
 ## setHeadTrackingEnabled
 
@@ -1525,6 +1606,7 @@ Sets the head tracking enabled or disabled. This method uses an asynchronous cal
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1542,7 +1624,9 @@ audioSpatializationManager.setHeadTrackingEnabled(enable, (err: BusinessError) =
 });
 ```
 
-<a id="setheadtrackingenabled-1"></a>
+<!--DelEnd-->
+
+<a id="setheadtrackingenabled2"></a>
 
 ## setHeadTrackingEnabled
 
@@ -1586,6 +1670,7 @@ Sets the head tracking enabled or disabled. This method uses a promise to return
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1600,6 +1685,8 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setPersonalizedSpatializationEnabled
 
@@ -1642,7 +1729,7 @@ Set the personalized spatialization enabled or disabled by the specified device.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported on the device. |
 
-<a id="setspatializationenabled-2"></a>
+<a id="setspatializationenabled3"></a>
 
 ## setSpatializationEnabled
 
@@ -1684,6 +1771,7 @@ Sets the spatialization enabled or disabled by the specified device. This method
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1712,6 +1800,10 @@ audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).t
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setspatializationenabled1"></a>
 
 ## setSpatializationEnabled
 
@@ -1751,6 +1843,7 @@ Sets the spatialization enabled or disabled. This method uses an asynchronous ca
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1768,7 +1861,9 @@ audioSpatializationManager.setSpatializationEnabled(enable, (err: BusinessError)
 });
 ```
 
-<a id="setspatializationenabled-1"></a>
+<!--DelEnd-->
+
+<a id="setspatializationenabled2"></a>
 
 ## setSpatializationEnabled
 
@@ -1812,6 +1907,7 @@ Sets the spatialization enabled or disabled. This method uses a promise to retur
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1826,6 +1922,8 @@ audioSpatializationManager.setSpatializationEnabled(enable).then(() => {
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setSpatializationSceneType
 
@@ -1860,6 +1958,7 @@ Set spatialization rendering scene type.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1874,6 +1973,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## updateSpatialDeviceState
 
@@ -1908,6 +2009,7 @@ Updates the spatial device state.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1929,3 +2031,5 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->

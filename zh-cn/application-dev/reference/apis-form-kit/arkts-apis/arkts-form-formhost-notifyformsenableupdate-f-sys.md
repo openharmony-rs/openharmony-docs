@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="notifyformsenableupdate1"></a>
+
 ## notifyFormsEnableUpdate
 
 ```TypeScript
@@ -48,6 +50,7 @@ function notifyFormsEnableUpdate(
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,8 +69,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="notifyformsenableupdate-1"></a>
+
+<a id="notifyformsenableupdate2"></a>
 
 ## notifyFormsEnableUpdate
 
@@ -112,6 +117,7 @@ function notifyFormsEnableUpdate(formIds: Array<string>, isEnableUpdate: boolean
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -129,3 +135,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

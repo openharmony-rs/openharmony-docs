@@ -4,7 +4,7 @@
 export interface ApplicationInfo
 ```
 
-应用程序信息。
+应用程序信息，可以通过[bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)获取自身的应用程序信息，其中参数[bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md)至少包含GET_BUNDLE_INFO_WITH_APPLICATION。
 
 **起始版本：** 9
 
@@ -18,13 +18,13 @@ export interface ApplicationInfo
 readonly accessTokenId: number
 ```
 
-应用程序的accessTokenId，应用的身份标识，在程序访问控制校验接口中使用。
+应用程序的accessTokenId，应用的身份标识，在[checkAccessToken](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken)中使用。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly accessTokenId: long--><!--Device-ApplicationInfo-readonly accessTokenId: long-End-->
 
@@ -36,13 +36,13 @@ readonly accessTokenId: number
 readonly appDistributionType: string
 ```
 
-应用程序签名证书的分发类型，分为： &lt;li&gt;app_gallery：应用市场安装的应用。<!--RP1--><!--RP1End--> &lt;li&gt; enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。<!--RP2--><!--RP2End-->&lt;li&gt; enterprise_mdm：企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)。<!--Del-->需要被激活[管理员特权](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md)后，才能安装普通企业应用。<!--DelEnd--><!--RP3--><!--RP3End--> &lt;li&gt;enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)以及离线安装器分发安装。<!--RP4--><!--RP4End-->&lt;li&gt;os_integration：预置应用，三方应用无法申请配置。&lt;li&gt;crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废弃。&lt;li&gt;internaltesting：应用市场内测的应用。<!--RP5--><!--RP5End-->&lt;li&gt;none：其他。
+应用程序签名证书的分发类型，分为： <li>app_gallery：应用市场安装的应用。<!--RP1--><!--RP1End--> <li> enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。<!--RP2--><!--RP2End--><li> enterprise_mdm：企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)。<!--Del-->需要通过调用[enableAdmin](../../../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口激活管理员特权后，才能安装普通企业应用。<!--DelEnd--><!--RP3--><!--RP3End--> <li>enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)以及离线安装器分发安装。<!--RP4--><!--RP4End--><li>os_integration：预置应用，三方应用无法申请配置。<li>crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废弃。<li> internaltesting：应用市场内测的应用。<!--RP5--><!--RP5End--><li>none：其他。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly appDistributionType: string--><!--Device-ApplicationInfo-readonly appDistributionType: string-End-->
 
@@ -54,7 +54,7 @@ readonly appDistributionType: string
 readonly appIndex: number
 ```
 
-应用包的分身索引标识，仅在分身应用中生效。
+应用包的分身索引标识，仅在分身应用中生效。取值为整数，范围：[0-5]，0表示主应用，1-5表示分身应用。
 
 **类型：** number
 
@@ -70,13 +70,13 @@ readonly appIndex: number
 readonly appProvisionType: string
 ```
 
-应用程序签名证书文件的类型，分为debug和release两种类型。
+应用程序签名证书文件的类型，分为'debug'和'release'两种类型。'debug'类型用于开发测试阶段，可调试和验证功能；'release'类型用于生产环境中正式发布的应用。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly appProvisionType: string--><!--Device-ApplicationInfo-readonly appProvisionType: string-End-->
 
@@ -88,13 +88,13 @@ readonly appProvisionType: string
 readonly bundleType: bundleManager.BundleType
 ```
 
-标识包的类型，取值为APP（应用）或者ATOMIC_SERVICE（原子化服务）。
+标识包的类型，取值为APP（应用）或者ATOMIC_SERVICE（原子化服务）。APP为传统的应用形态，需要用户主动安装；ATOMIC_SERVICE为原子化服务形态，即点即用，无需安装。开发者可根据此字段判断当前应用的类型并进行差异化处理。
 
 **类型：** [bundleManager.BundleType](arkts-ability-bundlemanager-bundletype-e.md)
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly bundleType: bundleManager.BundleType--><!--Device-ApplicationInfo-readonly bundleType: bundleManager.BundleType-End-->
 
@@ -112,7 +112,7 @@ readonly cloudFileSyncEnabled: boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly cloudFileSyncEnabled: boolean--><!--Device-ApplicationInfo-readonly cloudFileSyncEnabled: boolean-End-->
 
@@ -130,7 +130,7 @@ readonly cloudStructuredDataSyncEnabled?: boolean
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly cloudStructuredDataSyncEnabled?: boolean--><!--Device-ApplicationInfo-readonly cloudStructuredDataSyncEnabled?: boolean-End-->
 
@@ -148,7 +148,7 @@ readonly codePath: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly codePath: string--><!--Device-ApplicationInfo-readonly codePath: string-End-->
 
@@ -166,7 +166,7 @@ readonly dataUnclearable: boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly dataUnclearable: boolean--><!--Device-ApplicationInfo-readonly dataUnclearable: boolean-End-->
 
@@ -184,7 +184,7 @@ readonly debug: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly debug: boolean--><!--Device-ApplicationInfo-readonly debug: boolean-End-->
 
@@ -202,7 +202,7 @@ readonly description: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly description: string--><!--Device-ApplicationInfo-readonly description: string-End-->
 
@@ -220,7 +220,7 @@ readonly descriptionId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly descriptionId: long--><!--Device-ApplicationInfo-readonly descriptionId: long-End-->
 
@@ -232,13 +232,13 @@ readonly descriptionId: number
 readonly descriptionResource: Resource
 ```
 
-应用程序的描述资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)来获取详细的资源数据信息。
+应用程序的描述资源信息，包含了该资源信息的bundleName、moduleName和id，可以调用全球化的接口[getStringValue](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue)，传入参数descriptionResource.id来获取详细的资源数据信息。
 
-**类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
+**类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly descriptionResource: Resource--><!--Device-ApplicationInfo-readonly descriptionResource: Resource-End-->
 
@@ -256,7 +256,7 @@ readonly enabled: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly enabled: boolean--><!--Device-ApplicationInfo-readonly enabled: boolean-End-->
 
@@ -274,7 +274,7 @@ readonly icon: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly icon: string--><!--Device-ApplicationInfo-readonly icon: string-End-->
 
@@ -292,7 +292,7 @@ readonly iconId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly iconId: long--><!--Device-ApplicationInfo-readonly iconId: long-End-->
 
@@ -304,13 +304,13 @@ readonly iconId: number
 readonly iconResource: Resource
 ```
 
-应用程序的图标资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)来获取详细的资源数据信息。
+应用程序的图标资源信息，包含了该资源信息的bundleName、moduleName和id，可以调用全球化的接口[getMediaContentBase64](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64)，传入参数iconResource.id来获取详细的资源数据信息。
 
-**类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
+**类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly iconResource: Resource--><!--Device-ApplicationInfo-readonly iconResource: Resource-End-->
 
@@ -334,7 +334,7 @@ readonly installSource: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly installSource: string--><!--Device-ApplicationInfo-readonly installSource: string-End-->
 
@@ -352,7 +352,7 @@ readonly label: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly label: string--><!--Device-ApplicationInfo-readonly label: string-End-->
 
@@ -370,7 +370,7 @@ readonly labelId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly labelId: long--><!--Device-ApplicationInfo-readonly labelId: long-End-->
 
@@ -382,13 +382,13 @@ readonly labelId: number
 readonly labelResource: Resource
 ```
 
-应用程序的名称资源信息，包含了该资源信息的bundleName、moduleName 和 id，可以调用全球化的接口[getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)来获取详细的资源数据信息。
+应用程序的名称资源信息，包含了该资源信息的bundleName、moduleName和id，可以调用全球化的接口[getStringValue](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue)，传入参数labelResource.id来获取详细的资源数据信息。
 
-**类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
+**类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly labelResource: Resource--><!--Device-ApplicationInfo-readonly labelResource: Resource-End-->
 
@@ -406,7 +406,7 @@ readonly metadataArray: Array<ModuleMetadata>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly metadataArray: Array<ModuleMetadata>--><!--Device-ApplicationInfo-readonly metadataArray: Array<ModuleMetadata>-End-->
 
@@ -418,7 +418,7 @@ readonly metadataArray: Array<ModuleMetadata>
 readonly multiAppMode: MultiAppMode
 ```
 
-应用多开模式。
+应用多开模式。适用于管理企业多账号（如工作账号和个人账号同时登录）、多环境并行（如测试环境和生产环境）、社交多身份（如个人账号和工作账号）等需要同时运行多个应用实例的场景。
 
 **类型：** [MultiAppMode](arkts-ability-applicationinfo-multiappmode-i.md)
 
@@ -440,7 +440,7 @@ readonly name: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly name: string--><!--Device-ApplicationInfo-readonly name: string-End-->
 
@@ -476,7 +476,7 @@ readonly permissions: Array<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly permissions: Array<string>--><!--Device-ApplicationInfo-readonly permissions: Array<string>-End-->
 
@@ -494,7 +494,7 @@ readonly process: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly process: string--><!--Device-ApplicationInfo-readonly process: string-End-->
 
@@ -512,7 +512,7 @@ readonly releaseType: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly releaseType: string--><!--Device-ApplicationInfo-readonly releaseType: string-End-->
 
@@ -530,7 +530,7 @@ readonly removable: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly removable: boolean--><!--Device-ApplicationInfo-readonly removable: boolean-End-->
 
@@ -548,7 +548,7 @@ readonly systemApp: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly systemApp: boolean--><!--Device-ApplicationInfo-readonly systemApp: boolean-End-->
 
@@ -566,7 +566,7 @@ readonly uid: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ApplicationInfo-readonly uid: int--><!--Device-ApplicationInfo-readonly uid: int-End-->
 

@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getDeveloperIds(appDistributionType?: number): Array<string>
 ```
 
-根据给定的应用[appDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md)获取当前用户下的所有开发者ID列表。
+根据给定的应用[appDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md)获取当前用户下的所有开发者ID列表。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **起始版本：** 12
 
@@ -34,7 +34,7 @@ function getDeveloperIds(appDistributionType?: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 同步返回Array&lt;string&gt;。 |
+| Array&lt;string&gt; | 同步返回Array<string>。 |
 
 **错误码：**
 
@@ -44,6 +44,7 @@ function getDeveloperIds(appDistributionType?: number): Array<string>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,3 +62,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getDeveloperIds failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

@@ -1,4 +1,4 @@
-# RecoverableApplicationInfo
+# RecoverableApplicationInfo(RecoverableApplicationInfo)
 
 ## Summary
 

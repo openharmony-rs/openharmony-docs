@@ -12,15 +12,19 @@ import { scan } from '@kit.ConnectivityKit';
 function offDeviceFound(callback?: Callback<ScanResults[]>): void
 ```
 
-Unsubscribes from NearLink scanning results. This API uses an asynchronous callback to return the result.
+Unsubscribes from NearLink scanning results. This API uses an asynchronous callback to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-scan-function offDeviceFound(callback?: Callback<ScanResults[]>): void--><!--Device-scan-function offDeviceFound(callback?: Callback<ScanResults[]>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md) Subscribes to the NearLink scanning result event.
 
 **Parameters:**
 
@@ -32,4 +36,4 @@ Unsubscribes from NearLink scanning results. This API uses an asynchronous callb
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because the chip does not support it. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported. |

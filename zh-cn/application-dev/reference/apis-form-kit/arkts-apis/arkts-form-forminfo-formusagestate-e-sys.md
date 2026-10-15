@@ -14,22 +14,6 @@ enum FormUsageState
 
 **系统接口：** 此接口为系统接口。
 
-## USED
-
-```TypeScript
-USED = 0
-```
-
-表示卡片在使用中。
-
-**起始版本：** 11
-
-<!--Device-FormUsageState-USED = 0--><!--Device-FormUsageState-USED = 0-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
 ## UNUSED
 
 ```TypeScript
@@ -41,6 +25,22 @@ UNUSED = 1
 **起始版本：** 11
 
 <!--Device-FormUsageState-UNUSED = 1--><!--Device-FormUsageState-UNUSED = 1-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## USED
+
+```TypeScript
+USED = 0
+```
+
+表示卡片在使用中。
+
+**起始版本：** 11
+
+<!--Device-FormUsageState-USED = 0--><!--Device-FormUsageState-USED = 0-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 

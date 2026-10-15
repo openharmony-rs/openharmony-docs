@@ -6,13 +6,15 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="print1"></a>
+
 ## print
 
 ```TypeScript
 function print(files: Array<string>, callback: AsyncCallback<PrintTask>): void
 ```
 
-打印接口，传入文件进行打印，使用callback异步回调。拉起系统打印预览界面，需要使用[print](#print-3)接口，传入context。
+打印接口，传入文件进行打印，使用callback异步回调。拉起系统打印预览界面，需要使用[print](#print4)接口，传入context。
 
 **起始版本：** 10
 
@@ -58,7 +60,7 @@ print.print([fileUri.getUriFromPath(filePath)], (error: BusinessError, printTask
 ```
 
 
-<a id="print-1"></a>
+<a id="print2"></a>
 
 ## print
 
@@ -66,7 +68,7 @@ print.print([fileUri.getUriFromPath(filePath)], (error: BusinessError, printTask
 function print(files: Array<string>): Promise<PrintTask>
 ```
 
-打印接口，传入文件进行打印，使用Promise异步回调。拉起系统打印预览界面，需要使用[print](#print-3)接口，传入context。
+打印接口，传入文件进行打印，使用Promise异步回调。拉起系统打印预览界面，需要使用[print](#print4)接口，传入context。
 
 **起始版本：** 10
 
@@ -115,7 +117,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 ```
 
 
-<a id="print-2"></a>
+<a id="print3"></a>
 
 ## print
 
@@ -186,7 +188,7 @@ struct Index {
 ```
 
 
-<a id="print-3"></a>
+<a id="print4"></a>
 
 ## print
 
@@ -260,7 +262,7 @@ struct Index {
 ```
 
 
-<a id="print-4"></a>
+<a id="print5"></a>
 
 ## print
 

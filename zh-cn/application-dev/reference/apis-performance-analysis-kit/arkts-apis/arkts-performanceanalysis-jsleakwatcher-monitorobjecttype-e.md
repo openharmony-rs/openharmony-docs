@@ -12,6 +12,22 @@ export enum MonitorObjectType
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
+## ABILITY
+
+```TypeScript
+ABILITY = 1 << 4
+```
+
+监测Ability组件类型。
+
+**起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-MonitorObjectType-ABILITY = 1 << 4--><!--Device-MonitorObjectType-ABILITY = 1 << 4-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiChecker
+
 ## ALL
 
 ```TypeScript
@@ -44,22 +60,6 @@ CUSTOM_COMPONENT = 1 << 0
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
-## WINDOW
-
-```TypeScript
-WINDOW = 1 << 1
-```
-
-监测Window组件类型。
-
-**起始版本：** 24
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-MonitorObjectType-WINDOW = 1 << 1--><!--Device-MonitorObjectType-WINDOW = 1 << 1-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiChecker
-
 ## NODE_CONTAINER
 
 ```TypeScript
@@ -76,6 +76,22 @@ NODE_CONTAINER = 1 << 2
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
+## WINDOW
+
+```TypeScript
+WINDOW = 1 << 1
+```
+
+监测Window组件类型。
+
+**起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-MonitorObjectType-WINDOW = 1 << 1--><!--Device-MonitorObjectType-WINDOW = 1 << 1-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiChecker
+
 ## X_COMPONENT
 
 ```TypeScript
@@ -89,21 +105,5 @@ X_COMPONENT = 1 << 3
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-MonitorObjectType-X_COMPONENT = 1 << 3--><!--Device-MonitorObjectType-X_COMPONENT = 1 << 3-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiChecker
-
-## ABILITY
-
-```TypeScript
-ABILITY = 1 << 4
-```
-
-监测Ability组件类型。
-
-**起始版本：** 24
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-MonitorObjectType-ABILITY = 1 << 4--><!--Device-MonitorObjectType-ABILITY = 1 << 4-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker

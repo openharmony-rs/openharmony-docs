@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="exportkey1"></a>
+
 ## exportKey
 
 ```TypeScript
@@ -17,14 +19,14 @@ function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.exportKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-exportkeyitem-f.md)
+> [huks.exportKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
+**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem1)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
 
 <!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -53,7 +55,7 @@ huks.exportKey(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
-<a id="exportkey-1"></a>
+<a id="exportkey2"></a>
 
 ## exportKey
 
@@ -66,13 +68,13 @@ function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.exportKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem-1)替代。
+> [huks.exportKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem-1)(keyAlias: string, options: HuksOptions)
+**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 

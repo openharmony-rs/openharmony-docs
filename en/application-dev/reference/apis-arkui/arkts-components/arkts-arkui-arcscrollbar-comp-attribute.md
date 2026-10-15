@@ -6,7 +6,7 @@ export declare class ArcScrollBarAttribute extends CommonMethod<ArcScrollBarAttr
 
 Defines the arc scroll bar attribute functions.
 
-**Inheritance/Implementation:** ArcScrollBarAttribute extends CommonMethod<ArcScrollBarAttribute>
+**Inheritance/Implementation:** ArcScrollBarAttribute extends CommonMethod&lt;ArcScrollBarAttribute&gt;
 
 **Since:** 18
 

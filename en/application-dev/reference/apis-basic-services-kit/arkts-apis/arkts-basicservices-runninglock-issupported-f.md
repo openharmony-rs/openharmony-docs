@@ -36,7 +36,7 @@ Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types;         2. Parameter verification failed. |
 
 **Examples**
 

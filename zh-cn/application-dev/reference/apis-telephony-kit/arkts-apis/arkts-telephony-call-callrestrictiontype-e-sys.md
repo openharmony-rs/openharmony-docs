@@ -14,6 +14,22 @@ export enum CallRestrictionType
 
 **系统接口：** 此接口为系统接口。
 
+## RESTRICTION_TYPE_ALL_CALLS
+
+```TypeScript
+RESTRICTION_TYPE_ALL_CALLS = 5
+```
+
+限制所有通话。
+
+**起始版本：** 8
+
+<!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
 ## RESTRICTION_TYPE_ALL_INCOMING
 
 ```TypeScript
@@ -41,6 +57,22 @@ RESTRICTION_TYPE_ALL_OUTGOING = 1
 **起始版本：** 8
 
 <!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_OUTGOING = 1--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_OUTGOING = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## RESTRICTION_TYPE_INCOMING_SERVICES
+
+```TypeScript
+RESTRICTION_TYPE_INCOMING_SERVICES = 7
+```
+
+限制呼入业务。
+
+**起始版本：** 8
+
+<!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7--><!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -78,38 +110,6 @@ RESTRICTION_TYPE_INTERNATIONAL_EXCLUDING_HOME = 3
 
 **系统接口：** 此接口为系统接口。
 
-## RESTRICTION_TYPE_ROAMING_INCOMING
-
-```TypeScript
-RESTRICTION_TYPE_ROAMING_INCOMING = 4
-```
-
-限制漫游呼入。
-
-**起始版本：** 8
-
-<!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
-## RESTRICTION_TYPE_ALL_CALLS
-
-```TypeScript
-RESTRICTION_TYPE_ALL_CALLS = 5
-```
-
-限制所有通话。
-
-**起始版本：** 8
-
-<!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ALL_CALLS = 5-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## RESTRICTION_TYPE_OUTGOING_SERVICES
 
 ```TypeScript
@@ -126,17 +126,17 @@ RESTRICTION_TYPE_OUTGOING_SERVICES = 6
 
 **系统接口：** 此接口为系统接口。
 
-## RESTRICTION_TYPE_INCOMING_SERVICES
+## RESTRICTION_TYPE_ROAMING_INCOMING
 
 ```TypeScript
-RESTRICTION_TYPE_INCOMING_SERVICES = 7
+RESTRICTION_TYPE_ROAMING_INCOMING = 4
 ```
 
-限制呼入业务。
+限制漫游呼入。
 
 **起始版本：** 8
 
-<!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7--><!--Device-CallRestrictionType-RESTRICTION_TYPE_INCOMING_SERVICES = 7-End-->
+<!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4--><!--Device-CallRestrictionType-RESTRICTION_TYPE_ROAMING_INCOMING = 4-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

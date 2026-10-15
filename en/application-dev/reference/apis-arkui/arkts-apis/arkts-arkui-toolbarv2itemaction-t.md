@@ -4,7 +4,7 @@
 export type ToolBarV2ItemAction = (index: number) => void
 ```
 
-Defines the action callback of ToolBarV2Item.
+Defines the callback for the click event of a toolbar item.
 
 **Since:** 18
 
@@ -20,4 +20,4 @@ Defines the action callback of ToolBarV2Item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes |  |
+| index | number | Yes | Index of the toolbar item that triggers the click event. |

@@ -42,6 +42,7 @@ Stops a mechanical device from moving.
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-device-not-connected) | Device not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ mechanicManager.stopMoving(0)
   });
 console.info('Stop succeeded');
 ```
+
+<!--DelEnd-->

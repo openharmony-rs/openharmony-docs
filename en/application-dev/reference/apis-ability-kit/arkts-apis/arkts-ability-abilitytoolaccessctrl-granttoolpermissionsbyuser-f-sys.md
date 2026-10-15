@@ -50,6 +50,7 @@ Grants tool permissions based on user authorization results. This function grant
 | [24010004](../errorcode-abilityToolAccessCtrl-sys.md#24010004-permission-does-not-exist) | Invalid permission. A permission in permissionInfo does not exist. |
 | [24010005](../errorcode-abilityToolAccessCtrl-sys.md#24010005-authorization-failed) | Grant permission failed. The application specified by the tokenID is not allowed to be granted with the specified permission, the specified permission cannot be granted by user, etc. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,3 +76,5 @@ abilityToolAccessCtrl.grantToolPermissionsByUser(userAuthResult).then((data: Arr
   console.error(`grantToolPermissionsByUser fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="setdiscoverable1"></a>
+
 ## setDiscoverable
 
 ```TypeScript
@@ -36,6 +38,7 @@ function setDiscoverable(enable: boolean, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -44,8 +47,10 @@ avSession.setDiscoverable(true, () => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setdiscoverable-1"></a>
+
+<a id="setdiscoverable2"></a>
 
 ## setDiscoverable
 
@@ -82,6 +87,7 @@ function setDiscoverable(enable: boolean): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -89,3 +95,5 @@ avSession.setDiscoverable(true).then(() => {
   console.info('Succeeded in setting discoverable.');
 });
 ```
+
+<!--DelEnd-->

@@ -12,17 +12,17 @@ enum AudioLoopbackReverbPreset
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-## ORIGINAL
+## CONCERT
 
 ```TypeScript
-ORIGINAL = 1
+CONCERT = 4
 ```
 
-保持原始混响，不进行任何增强。
+提供类似演唱会的混响效果。
 
 **起始版本：** 21
 
-<!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1--><!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1-End-->
+<!--Device-AudioLoopbackReverbPreset-CONCERT = 4--><!--Device-AudioLoopbackReverbPreset-CONCERT = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -40,6 +40,20 @@ KTV = 2
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+## ORIGINAL
+
+```TypeScript
+ORIGINAL = 1
+```
+
+保持原始混响，不进行任何增强。
+
+**起始版本：** 21
+
+<!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1--><!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
 ## THEATER
 
 ```TypeScript
@@ -51,19 +65,5 @@ THEATER = 3
 **起始版本：** 21
 
 <!--Device-AudioLoopbackReverbPreset-THEATER = 3--><!--Device-AudioLoopbackReverbPreset-THEATER = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-## CONCERT
-
-```TypeScript
-CONCERT = 4
-```
-
-提供类似演唱会的混响效果。
-
-**起始版本：** 21
-
-<!--Device-AudioLoopbackReverbPreset-CONCERT = 4--><!--Device-AudioLoopbackReverbPreset-CONCERT = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer

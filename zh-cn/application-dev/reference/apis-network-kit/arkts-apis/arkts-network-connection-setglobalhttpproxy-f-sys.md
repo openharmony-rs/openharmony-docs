@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="setglobalhttpproxy1"></a>
+
 ## setGlobalHttpProxy
 
 ```TypeScript
@@ -28,7 +30,7 @@ function setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| httpProxy | HttpProxy | 是 | 网络全局Http代理配置信息。 |
+| httpProxy | [HttpProxy](arkts-network-connection-httpproxy-i.md) | 是 | 网络全局Http代理配置信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当成功设置网络全局Http代理配置信息时，error为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -42,6 +44,7 @@ function setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback<void>)
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,8 +67,10 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setglobalhttpproxy-1"></a>
+
+<a id="setglobalhttpproxy2"></a>
 
 ## setGlobalHttpProxy
 
@@ -89,7 +94,7 @@ function setGlobalHttpProxy(httpProxy: HttpProxy): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| httpProxy | HttpProxy | 是 | 网络全局Http代理配置信息。 |
+| httpProxy | [HttpProxy](arkts-network-connection-httpproxy-i.md) | 是 | 网络全局Http代理配置信息。 |
 
 **返回值：**
 
@@ -108,6 +113,7 @@ function setGlobalHttpProxy(httpProxy: HttpProxy): Promise<void>
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,3 +132,5 @@ connection.setGlobalHttpProxy({
   console.error(JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

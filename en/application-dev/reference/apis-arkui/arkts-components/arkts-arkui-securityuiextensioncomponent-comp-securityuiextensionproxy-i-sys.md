@@ -4,7 +4,7 @@
 declare interface SecurityUIExtensionProxy
 ```
 
-Implements a **SecurityUIExtensionProxy** instance for the component host to send data to, subscribe to, or unsubscribe from the started ability through the connection established between the two parties.
+Used to send data to the launched **Ability** and subscribe to and unsubscribe from event callbacks after a successful connection is established.
 
 **Since:** 26.0.0
 
@@ -20,7 +20,7 @@ Implements a **SecurityUIExtensionProxy** instance for the component host to sen
 off(type: 'asyncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 ```
 
-Unsubscribes from the callback triggered for the asynchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+Unsubscribes from the callback triggered when the launched **Ability** performs asynchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -36,8 +36,8 @@ Unsubscribes from the callback triggered for the asynchronous registration of th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'asyncReceiverRegister' | Yes | The value is fixed to **asyncReceiverRegister**, indicating unsubscription from the callback triggered for asynchronous registration of the extended ability. |
-| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | No | Callback function. If this parameter is left empty, it means unsubscribing from all callbacks triggered after **UIExtensionAbility**'s asynchronous registration. If thisparameter is not empty, it means unsubscribing from callbacks corresponding to **type**. |
+| type | 'asyncReceiverRegister' | Yes | Fixed value **'asyncReceiverRegister'**, used to unsubscribe from the callback triggered when the launched **Ability** performs asynchronous registration. |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | No | Callback function. If this parameter is left empty, all callbacks for asynchronous registration are unsubscribed. If it is not empty, the specified callback for asynchronous registration is unsubscribed. |
 
 ## off('syncReceiverRegister')
 
@@ -45,7 +45,7 @@ Unsubscribes from the callback triggered for the asynchronous registration of th
 off(type: 'syncReceiverRegister', callback?: Callback<UIExtensionProxy>): void
 ```
 
-Unsubscribes from the callback triggered for the synchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+Unsubscribes from the callback triggered when the launched **Ability** performs synchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -61,8 +61,8 @@ Unsubscribes from the callback triggered for the synchronous registration of the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'syncReceiverRegister' | Yes | The value is fixed to **syncReceiverRegister**, indicating unsubscription to the asynchronous registration of the extension ability. |
-| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | No | Callback to unsubscribe from. If this parameter is left empty, it means unsubscribing from all callbacks triggered after **UIExtensionAbility**'s synchronous registration. |
+| type | 'syncReceiverRegister' | Yes | Fixed value **'syncReceiverRegister'**, used to unsubscribe from the callback triggered when the launched **Ability** performs synchronous registration. |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | No | Callback function. If it is empty, unsubscribes from all synchronously registered callbacks. If it is not empty, unsubscribes from the specified synchronously registered callback. |
 
 ## on('asyncReceiverRegister')
 
@@ -70,7 +70,7 @@ Unsubscribes from the callback triggered for the synchronous registration of the
 on(type: 'asyncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 ```
 
-Subscribes to the callback triggered for asynchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+After a successful connection is established, subscribes to the callback triggered when the launched **Ability** performs asynchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -86,8 +86,8 @@ Subscribes to the callback triggered for asynchronous registration of the starte
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'asyncReceiverRegister' | Yes | The value is fixed to **asyncReceiverRegister**, indicating a subscription to the callback triggered for asynchronous registration of the extended ability. |
-| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | Yes | Callback triggered after the extension ability registers a [setReceiveDataCallback](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md#setreceivedatacallback). |
+| type | 'asyncReceiverRegister' | Yes | Fixed value **'asyncReceiverRegister'**, which indicates the callback triggered when the launched **Ability** performs asynchronous registration. |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | Yes | Callback triggered after the launched **Ability** registers [setReceiveDataCallback](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md#setreceivedatacallback). |
 
 ## on('syncReceiverRegister')
 
@@ -95,7 +95,7 @@ Subscribes to the callback triggered for asynchronous registration of the starte
 on(type: 'syncReceiverRegister', callback: Callback<UIExtensionProxy>): void
 ```
 
-Subscribes to the callback triggered for synchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+After a successful connection is established, subscribes to the callback triggered when the launched **Ability** performs synchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -111,8 +111,8 @@ Subscribes to the callback triggered for synchronous registration of the started
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'syncReceiverRegister' | Yes | The value is fixed to **syncReceiverRegister**, indicating subscription to the asynchronous registration of the extension ability. |
-| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | Yes | Callback triggered after the extension ability registers a [setReceiveDataForResultCallback](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md#setreceivedataforresultcallback). |
+| type | 'syncReceiverRegister' | Yes | Fixed value **'syncReceiverRegister'**, which indicates the callback triggered when the launched **Ability** performs synchronous registration. |
+| callback | Callback&lt;[UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)&gt; | Yes | Callback function. Callback triggered after the launched **Ability** registers [setReceiveDataForResultCallback](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md#setreceivedataforresultcallback). |
 
 ## send
 
@@ -120,7 +120,7 @@ Subscribes to the callback triggered for synchronous registration of the started
 send(data: Record<string, Object>): void
 ```
 
-Asynchronously sends data to the ability started by the component host through the connection established between the two parties.
+Used to send data to the launched **Ability** after a successful connection is established, providing asynchronous sending capability. The data will be received and processed by the extension **Ability** through [setReceiveDataCallback](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md#setreceivedatacallback).
 
 **Since:** 26.0.0
 
@@ -136,7 +136,7 @@ Asynchronously sends data to the ability started by the component host through t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | Record&lt;string, Object&gt; | Yes | Data to be asynchronously sent to the started **UIExtensionAbility**. |
+| data | Record&lt;string, Object&gt; | Yes | Data asynchronously sent to the launched **Ability**. |
 
 ## sendSync
 
@@ -144,7 +144,7 @@ Asynchronously sends data to the ability started by the component host through t
 sendSync(data: Record<string, Object>): Record<string, Object>
 ```
 
-Synchronously sends data to the ability started by the component host through the connection established between the two parties.
+Sends data to the launched **Ability** after a successful connection is established. The data will be processed by the launched **Ability** through **setReceiveDataForResultCallback** and the result will be returned.
 
 **Since:** 26.0.0
 
@@ -160,17 +160,17 @@ Synchronously sends data to the ability started by the component host through th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | Record&lt;string, Object&gt; | Yes | Data to be synchronously sent to the started **UIExtensionAbility**. |
+| data | Record&lt;string, Object&gt; | Yes | Data synchronously sent to the launched **Ability**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Record&lt;string, Object&gt; | Data returned by the extension ability. |
+| Record&lt;string, Object&gt; | Response data returned by the launched **Ability** after processing the synchronous send request. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [100011](../errorcode-uiextension.md#100011-no-synchronous-callback-registered) | No callback has been registered to response this request. |
+| [100011](../errorcode-uiextension.md#100011-no-synchronous-callback-registered) | No callback has been registered to respond to this request. |
 | [100012](../errorcode-uiextension.md#100012-data-transfer-failure) | Transferring data failed. |

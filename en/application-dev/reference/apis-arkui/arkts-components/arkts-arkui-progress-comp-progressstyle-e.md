@@ -12,6 +12,42 @@ Enumerates progress indicator styles.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Capsule
+
+```TypeScript
+Capsule
+```
+
+Capsule style. The progress display effect at the arc ends is the same as that of Eclipse, and the progress display effect in the middle is the same as that of Linear. Since API version 9, when the height is greater than the width, it is adaptively displayed vertically.
+
+**Since:** 8
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ProgressStyle-Capsule--><!--Device-ProgressStyle-Capsule-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Eclipse
+
+```TypeScript
+Eclipse
+```
+
+Eclipse style, which visualizes the progress in a way similar to the moon waxing from new to full.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ProgressStyle-Eclipse--><!--Device-ProgressStyle-Eclipse-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Linear
 
 ```TypeScript
@@ -48,24 +84,6 @@ Ring without scale. The ring is gradually displayed until it is completely fille
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Eclipse
-
-```TypeScript
-Eclipse
-```
-
-Eclipse style, which visualizes the progress in a way similar to the moon waxing from new to full.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-ProgressStyle-Eclipse--><!--Device-ProgressStyle-Eclipse-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## ScaleRing
 
 ```TypeScript
@@ -81,23 +99,5 @@ Ring with scale. Displays a progress effect similar to a clock scale. Since API 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-ProgressStyle-ScaleRing--><!--Device-ProgressStyle-ScaleRing-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Capsule
-
-```TypeScript
-Capsule
-```
-
-Capsule style. The progress display effect at the arc ends is the same as that of Eclipse, and the progress display effect in the middle is the same as that of Linear. Since API version 9, when the height is greater than the width, it is adaptively displayed vertically.
-
-**Since:** 8
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-ProgressStyle-Capsule--><!--Device-ProgressStyle-Capsule-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

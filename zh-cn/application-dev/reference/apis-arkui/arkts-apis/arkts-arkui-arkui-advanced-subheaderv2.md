@@ -575,6 +575,8 @@ struct SubHeaderExample {
 
 从API version 18开始，在[SubHeaderV2OperationItem](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2operationitemoptions-i.md)中新增defaultFocus接口。
 
+
+
 ```TypeScript
 import {
   SubHeaderV2OperationType,
@@ -617,6 +619,56 @@ struct SubHeaderExample {
           operationItems: this.operationItems
         });
       }
+    }
+  }
+}
+```
+
+### 示例10（设置子标题尾部图标）
+
+该示例主要演示子标题设置endIcon尾部图标，包括普通图片资源和Symbol图标两种形式。
+
+从API版本26.0.1开始，[SubHeaderV2](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2-s.md)新增endIcon属性。
+
+```TypeScript
+import {
+  SubHeaderV2,
+  SubHeaderV2Title,
+  SubHeaderV2IconType,
+  SymbolGlyphModifier
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ secondaryTitle: '二级标题' });
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  @Local endIcon: SubHeaderV2IconType = $r('app.media.startIcon');
+  @Local endIconSymbol: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'));
+
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      secondaryTitle: '二级标题'
+    });
+    this.endIconSymbol = new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'))
+      .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+      .fontColor([Color.Blue, Color.Grey, Color.Green]);
+  }
+
+  build() {
+    Column() {
+      // 图标+二级标题+尾部图标（Image）
+      SubHeaderV2({
+        icon: $r('sys.media.ohos_ic_public_email'),
+        endIcon: this.endIcon,
+        title: this.title
+      })
+      // 图标+二级标题+尾部图标（Symbol）
+      SubHeaderV2({
+        icon: $r('sys.media.ohos_ic_public_email'),
+        endIcon: this.endIconSymbol,
+        title: this.title
+      })
     }
   }
 }

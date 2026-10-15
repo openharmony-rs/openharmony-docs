@@ -276,7 +276,7 @@ getUrl(): string
 
 获取重定向或因HSTS而更改后的URL。
 
-风险提示：若想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkweb-webview-webviewcontroller-c.md#getlastjavascriptproxycallingframeurl)。
+风险提示：若想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](arkts-arkweb-webview-webviewcontroller-c.md#getlastjavascriptproxycallingframeurl)。
 
 **起始版本：** 12
 
@@ -302,7 +302,7 @@ getUrl(): string
 setCustomErrorCode(customErrorCode: number): void
 ```
 
-给当前的Response设置自定义错误码。详情参考WebResourceError.getCustomErrorCode。
+给当前的Response设置自定义错误码。详情参考[WebResourceError.getCustomErrorCode](../arkts-components/arkts-arkweb-web-comp-webresourceerror-c.md#getcustomerrorcode)。
 
 **起始版本：** 26.0.1
 

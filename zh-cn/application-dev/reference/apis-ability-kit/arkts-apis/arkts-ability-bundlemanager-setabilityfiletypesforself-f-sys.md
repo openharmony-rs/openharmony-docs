@@ -40,8 +40,9 @@ function setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fil
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not found. |
-| [17700351](../errorcode-bundle.md#17700351-无效的文件类型) | Invalid fileTypes. Possible causes: 1. The array length exceeds 1024; 2. The array contains an empty item; 3. An item exceeds 512 characters; 4. The array contains wildcard or general.object. |
+| [17700351](../errorcode-bundle.md#17700351-无效的文件类型) | Invalid fileTypes. Possible causes:         1. The array length exceeds 1024;         2. The array contains an empty item;         3. An item exceeds 512 characters;         4. The array contains wildcard or general.object. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,3 +62,5 @@ try {
   hilog.error(0x0000, 'testTag', 'setAbilityFileTypesForSelf failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

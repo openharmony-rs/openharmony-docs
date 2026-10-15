@@ -14,38 +14,6 @@ Enumerates the types of ability states to filter. It can be used with [AppStateF
 
 **System API:** This is a system API.
 
-## CREATE
-
-```TypeScript
-CREATE = 1 << 0
-```
-
-The ability is being created. It corresponds to the state **ABILITY_STATE_CREATE** in [Ability States](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability-states).
-
-**Since:** 21
-
-<!--Device-FilterAbilityStateType-CREATE = 1 << 0--><!--Device-FilterAbilityStateType-CREATE = 1 << 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
-## FOREGROUND
-
-```TypeScript
-FOREGROUND = 1 << 1
-```
-
-The ability is running in the foreground. It corresponds to the state **ABILITY_STATE_FOREGROUND** in [Ability States](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability-states).
-
-**Since:** 21
-
-<!--Device-FilterAbilityStateType-FOREGROUND = 1 << 1--><!--Device-FilterAbilityStateType-FOREGROUND = 1 << 1-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
 ## BACKGROUND
 
 ```TypeScript
@@ -62,6 +30,22 @@ The ability is running in the background. It corresponds to the state **ABILITY_
 
 **System API:** This is a system API.
 
+## CREATE
+
+```TypeScript
+CREATE = 1 << 0
+```
+
+The ability is being created. It corresponds to the state **ABILITY_STATE_CREATE** in [Ability States](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability-states).
+
+**Since:** 21
+
+<!--Device-FilterAbilityStateType-CREATE = 1 << 0--><!--Device-FilterAbilityStateType-CREATE = 1 << 0-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
 ## DESTROY
 
 ```TypeScript
@@ -73,6 +57,22 @@ The ability has been destroyed. It corresponds to the state **ABILITY_STATE_TERM
 **Since:** 21
 
 <!--Device-FilterAbilityStateType-DESTROY = 1 << 3--><!--Device-FilterAbilityStateType-DESTROY = 1 << 3-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+## FOREGROUND
+
+```TypeScript
+FOREGROUND = 1 << 1
+```
+
+The ability is running in the foreground. It corresponds to the state **ABILITY_STATE_FOREGROUND** in [Ability States](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability-states).
+
+**Since:** 21
+
+<!--Device-FilterAbilityStateType-FOREGROUND = 1 << 1--><!--Device-FilterAbilityStateType-FOREGROUND = 1 << 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

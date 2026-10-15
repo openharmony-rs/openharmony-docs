@@ -6,6 +6,8 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="settouchpadrightclicktype1"></a>
+
 ## setTouchpadRightClickType
 
 ```TypeScript
@@ -26,16 +28,17 @@ Sets the touchpad right-click menu type. This API uses an asynchronous callback 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [RightClickType](arkts-input-pointer-rightclicktype-e.md) | Yes | Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad. <br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON&lt;sup&gt;20+&lt;/sup&gt;: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON&lt;sup&gt;20+&lt;/sup&gt;: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad. <br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**. |
+| type | [RightClickType](arkts-input-pointer-rightclicktype-e.md) | Yes | Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad. <br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad. <br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,8 +70,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="settouchpadrightclicktype-1"></a>
+
+<a id="settouchpadrightclicktype2"></a>
 
 ## setTouchpadRightClickType
 
@@ -90,7 +95,7 @@ Sets the touchpad right-click menu type. This API uses a promise to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [RightClickType](arkts-input-pointer-rightclicktype-e.md) | Yes | Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad. <br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON&lt;sup&gt;20+&lt;/sup&gt;: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON&lt;sup&gt;20+&lt;/sup&gt;: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad. <br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**. |
+| type | [RightClickType](arkts-input-pointer-rightclicktype-e.md) | Yes | Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad. <br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad. <br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad. <br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**. |
 
 **Return value:**
 
@@ -102,9 +107,10 @@ Sets the touchpad right-click menu type. This API uses a promise to return the r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -133,3 +139,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

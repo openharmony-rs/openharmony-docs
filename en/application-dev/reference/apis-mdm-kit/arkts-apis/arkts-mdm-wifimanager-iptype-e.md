@@ -12,22 +12,6 @@ Enumerates the IP address types.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## STATIC
-
-```TypeScript
-STATIC = 0
-```
-
-Static IP address, which is used in scenarios where a fixed IP address is required, for example, a fixed IP address of an office printer.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-IpType-STATIC = 0--><!--Device-IpType-STATIC = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## DHCP
 
 ```TypeScript
@@ -41,6 +25,22 @@ Dynamic Host Configuration Protocol (DHCP), which is a service that automaticall
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-IpType-DHCP = 1--><!--Device-IpType-DHCP = 1-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## STATIC
+
+```TypeScript
+STATIC = 0
+```
+
+Static IP address, which is used in scenarios where a fixed IP address is required, for example, a fixed IP address of an office printer.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IpType-STATIC = 0--><!--Device-IpType-STATIC = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

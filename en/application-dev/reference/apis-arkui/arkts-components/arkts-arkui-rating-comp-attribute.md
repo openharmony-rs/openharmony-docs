@@ -6,13 +6,15 @@ declare class RatingAttribute extends CommonMethod<RatingAttribute>
 
 In addition to the universal attributes, the following attributes are supported.
 
-**Inheritance/Implementation:** RatingAttribute extends CommonMethod<RatingAttribute>
+**Inheritance/Implementation:** RatingAttribute extends CommonMethod&lt;RatingAttribute&gt;
 
 **Since:** 7
 
 <!--Device-unnamed-declare class RatingAttribute extends CommonMethod<RatingAttribute>--><!--Device-unnamed-declare class RatingAttribute extends CommonMethod<RatingAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="contentmodifier1"></a>
 
 ## contentModifier
 
@@ -38,7 +40,7 @@ Creates a content modifier. You need to customize a class to implement the **Con
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[RatingConfiguration](arkts-arkui-rating-comp-ratingconfiguration-i.md)&gt; | Yes | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
-<a id="contentmodifier-1"></a>
+<a id="contentmodifier2"></a>
 
 ## contentModifier
 
@@ -46,7 +48,7 @@ Creates a content modifier. You need to customize a class to implement the **Con
 contentModifier(modifier: Optional<ContentModifier<RatingConfiguration>>)
 ```
 
-Creates a content modifier. Compared with [contentModifier](#contentmodifier), this API supports the **undefined** type for the **modifier** parameter. If **modifier** is set to **undefined**, no content modifier is used.
+Creates a content modifier. Compared with [contentModifier](#contentmodifier1), this API supports the **undefined** type for the **modifier** parameter. If **modifier** is set to **undefined**, no content modifier is used.
 
 **Since:** 18
 
@@ -63,6 +65,8 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier), t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[RatingConfiguration](arkts-arkui-rating-comp-ratingconfiguration-i.md)&gt;&gt; | Yes | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. <br>If **modifier** is set to **undefined**, no content modifier is used. |
+
+<a id="onchange1"></a>
 
 ## onChange
 
@@ -90,7 +94,7 @@ Triggered when the rating value changes.
 | --- | --- | --- | --- |
 | callback | (value: number) =&gt; void | Yes |  |
 
-<a id="onchange-1"></a>
+<a id="onchange2"></a>
 
 ## onChange
 
@@ -98,7 +102,7 @@ Triggered when the rating value changes.
 onChange(callback: Optional<OnRatingChangeCallback>)
 ```
 
-Triggered when the rating value changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the rating value changes. Compared with [onChange](#onchange1), this API supports the **undefined** type for the **callback** parameter.
 
 **Since:** 18
 
@@ -117,6 +121,8 @@ Triggered when the rating value changes. Compared with [onChange](#onchange), th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnRatingChangeCallback](arkts-arkui-rating-comp-onratingchangecallback-t.md)&gt; | Yes | Defines the callback triggered when the rating value changes.<br>If **callback** is set to **undefined**, the callback function is not used. |
+
+<a id="stars1"></a>
 
 ## stars
 
@@ -144,7 +150,7 @@ Sets the total number of stars. The default value is **5**.
 | --- | --- | --- | --- |
 | value | number | Yes | Total number of stars.<br>Value range: greater than 0. Values less than or equal to 0 are treated as **5**. |
 
-<a id="stars-1"></a>
+<a id="stars2"></a>
 
 ## stars
 
@@ -152,7 +158,7 @@ Sets the total number of stars. The default value is **5**.
 stars(starCount: Optional<number>)
 ```
 
-Sets the total number of stars. Compared with [stars](#stars), this API supports the **undefined** type for the **starCount** parameter. If **starCount** is set to **undefined**, the default value **5** is used.
+Sets the total number of stars. Compared with [stars](#stars1), this API supports the **undefined** type for the **starCount** parameter. If **starCount** is set to **undefined**, the default value **5** is used.
 
 **Since:** 18
 
@@ -171,6 +177,8 @@ Sets the total number of stars. Compared with [stars](#stars), this API supports
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | starCount | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Total number of stars.<br>Value range: greater than 0. If the value is less than or equal to 0 or is **undefined**, the value **5** is displayed. |
+
+<a id="starstyle1"></a>
 
 ## starStyle
 
@@ -202,7 +210,7 @@ By default, the image is loaded in asynchronous mode. Synchronous loading is not
 | --- | --- | --- | --- |
 | options | [StarStyleOptions](arkts-arkui-rating-comp-starstyleoptions-i.md) | Yes | Star style.<br>**NOTE:** <br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed. <br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image. <br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured.<br>**Since:** 18 |
 
-<a id="starstyle-1"></a>
+<a id="starstyle2"></a>
 
 ## starStyle
 
@@ -216,7 +224,7 @@ Local and network images are supported. The PixelMap type is not supported.
 
 By default, the image is loaded in asynchronous mode. Synchronous loading is not supported.
 
-Compared with [starStyle](#starstyle), this API supports the **undefined** type for the **options** parameter.
+Compared with [starStyle](#starstyle1), this API supports the **undefined** type for the **options** parameter.
 
 **Since:** 18
 
@@ -235,6 +243,8 @@ Compared with [starStyle](#starstyle), this API supports the **undefined** type 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[StarStyleOptions](arkts-arkui-rating-comp-starstyleoptions-i.md)&gt; | Yes | Star style.<br>**NOTE:** <br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed. <br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image. <br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured. |
+
+<a id="stepsize1"></a>
 
 ## stepSize
 
@@ -262,7 +272,7 @@ Sets the step for rating. Values less than 0.1 are treated as the default value.
 | --- | --- | --- | --- |
 | value | number | Yes | Step for rating.<br>Value range: [0.1, stars] |
 
-<a id="stepsize-1"></a>
+<a id="stepsize2"></a>
 
 ## stepSize
 
@@ -270,7 +280,7 @@ Sets the step for rating. Values less than 0.1 are treated as the default value.
 stepSize(size: Optional<number>)
 ```
 
-Sets the step for rating. Values less than 0.1 are treated as the default value. Compared with [stepSize](#stepsize), this API supports the **undefined** type for the **size** parameter. If **size** is set to **undefined**, the default value **0.5** is used.
+Sets the step for rating. Values less than 0.1 are treated as the default value. Compared with [stepSize](#stepsize1), this API supports the **undefined** type for the **size** parameter. If **size** is set to **undefined**, the default value **0.5** is used.
 
 **Since:** 18
 

@@ -97,7 +97,7 @@ onProcess(bundleName: string, process: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13500006 | Tar error |
 | 13500008 | Untar error |
 | 13600001 | IPC error |
@@ -107,6 +107,7 @@ onProcess(bundleName: string, process: string): void
 | 13900020 | Invalid argument |
 | 13900025 | No space left on device |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -117,6 +118,8 @@ onProcess: (bundleName: string, process: string) => {
   console.info('onProcess processInfo : ' + process);
 }
 ```
+
+<!--DelEnd-->
 
 ## onResultReport
 
@@ -148,13 +151,14 @@ onResultReport(bundleName: string, result: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900005 | I/O error |
 | 13900011 | Out of memory |
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -165,6 +169,8 @@ onResultReport: (bundleName: string, result: string) => {
   console.info('onResultReport result : ' + result);
 }
 ```
+
+<!--DelEnd-->
 
 ## onAllBundlesEnd
 
@@ -235,7 +241,7 @@ onBundleBegin: AsyncCallback<string, void | string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13500001 | The application is not added to the backup or restore |
 | 13500002 | Failed to start application extension Procedure |
 | 13600001 | IPC error |
@@ -266,7 +272,7 @@ onBundleEnd: AsyncCallback<string, void | string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13500003 | Backup or restore timed out |
 | 13500004 | Application extension death |
 | 13600001 | IPC error |

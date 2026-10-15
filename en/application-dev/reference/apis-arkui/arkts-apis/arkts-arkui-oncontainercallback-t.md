@@ -4,7 +4,7 @@
 declare type OnContainerCallback = () => void
 ```
 
-Set subcomponent binded on tree item.
+Defines a container callback function type, which is used to define child component callbacks bound to tree nodes.
 
 **Since:** 26.0.0
 

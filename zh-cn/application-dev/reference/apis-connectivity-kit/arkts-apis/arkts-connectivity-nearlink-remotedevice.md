@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace remoteDevice--><!--Device-unnamed-declare namespace remoteDevice-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -22,21 +20,21 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md) | 创建远端设备实例。 |
-| [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md) | 取消订阅逻辑链路连接状态变化事件。使用callback异步回调。 |
-| [offConnectionStateChange](arkts-connectivity-remotedevice-offconnectionstatechange-f.md) | 取消订阅连接状态变化事件。使用callback异步回调。 |
-| [offPairingStateChange](arkts-connectivity-remotedevice-offpairingstatechange-f.md) | 取消订阅配对状态变化事件。使用callback异步回调。 |
-| [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md) | 订阅逻辑链路连接状态变化事件。使用callback异步回调。适用于需要在逻辑链路建立或断开时触发相应处理的场景，如数据传输前的链路就绪检查或断连后的资源清理。与[remoteDevice.onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md)监听设备层级连接状态不同，本接口监听逻辑链路层级的连接状态。 |
-| [onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md) | 订阅连接状态变化事件。使用callback异步回调。与[remoteDevice.onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md)监听逻辑链路层级连接状态不同，本接口监听设备层级的连接状态变化。 |
-| [onPairingStateChange](arkts-connectivity-remotedevice-onpairingstatechange-f.md) | 订阅配对状态变化事件。使用callback异步回调。 |
+| [createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md#createremotedevice) | 创建远端设备实例。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md#offacbstatechange) | 取消订阅逻辑链路连接状态变化事件。使用callback异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [offConnectionStateChange](arkts-connectivity-remotedevice-offconnectionstatechange-f.md#offconnectionstatechange) | 取消订阅连接状态变化事件。使用callback异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [offPairingStateChange](arkts-connectivity-remotedevice-offpairingstatechange-f.md#offpairingstatechange) | 取消订阅配对状态变化事件。使用callback异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md#onacbstatechange) | 订阅逻辑链路连接状态变化事件。使用callback异步回调。适用于需要在逻辑链路建立或断开时触发相应处理的场景，如数据传输前的链路就绪检查或断连后的资源清理。与[remoteDevice.onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md)监听设备层级连接状态不同，本接口监听逻辑链路层级的连接状态。 |
+| [onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md#onconnectionstatechange) | 订阅连接状态变化事件。使用callback异步回调。与[remoteDevice.onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md)监听逻辑链路层级连接状态不同，本接口监听设备层级的连接状态变化。 |
+| [onPairingStateChange](arkts-connectivity-remotedevice-onpairingstatechange-f.md#onpairingstatechange) | 订阅配对状态变化事件。使用callback异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md) | 取消订阅来自远端星闪设备的配对请求事件。 |
-| [onPairingRequest](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md) | 订阅来自远程NearLink设备的配对请求事件。如果用户被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。回调返回真实设备地址，否则返回随机设备地址 |
+| [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md#offpairingrequest) | 取消订阅来自远端星闪设备的配对请求事件。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [onPairingRequest](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md#onpairingrequest) | 订阅来自远程NearLink设备的配对请求事件。如果用户被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。回调返回真实设备地址，否则返回随机设备地址 |
 <!--DelEnd-->
 
 ### 接口

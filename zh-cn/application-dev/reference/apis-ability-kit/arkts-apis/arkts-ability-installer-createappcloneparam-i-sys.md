@@ -44,11 +44,7 @@ appIndex?: number
 parameters?: Array<Parameters>
 ```
 
-扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：&lt;/br&gt;  
-- "ohos.bms.param.disableInstallEventReport"：若对应value值为"true"，表示分身创建完成后不发送安装广播事件。  
-若不传入该键或value值非"true"，则正常发送安装广播。&lt;/br&gt;  
-- "ohos.bms.param.bundleEnableState"：若对应value值为"false"，表示分身创建后处于禁用状态（enabled为false）。  
-若对应value值为"true"或不传入该键，表示分身创建后处于启用状态（enabled为true，默认行为）。
+创建分身应用扩展参数，默认值为空。Parameters.key取值支持：</br>- "ohos.bms.param.disableInstallEventReport"：value值建议为string类型的"true"或"false"。若对应value值为"true"，表示分身创建完成后不发送安装广播事件；若对应value值为"false"或其他非"true"的值，则正常发送安装广播。不传入该键时，正常发送安装广播（默认行为）。</br>- "ohos.bms.param.bundleEnableState"：value值建议为string类型的"true"或"false"。若对应value值为"true"，表示分身创建后处于启用状态（enabled为true）；若对应value值为"false"或其他非"true"的值，表示分身创建后处于禁用状态（enabled为false）。不传入该键时，表示分身创建后处于启用状态（enabled为true，默认行为）。</br> </br>。
 
 **类型：** Array&lt;Parameters&gt;
 
@@ -68,7 +64,7 @@ parameters?: Array<Parameters>
 userId?: number
 ```
 
-指定创建分身应用所在的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。
+指定创建分身应用所在的用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。
 
 **类型：** number
 

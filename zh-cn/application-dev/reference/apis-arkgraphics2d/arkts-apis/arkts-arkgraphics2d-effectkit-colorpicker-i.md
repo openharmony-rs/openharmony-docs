@@ -4,7 +4,7 @@
 interface ColorPicker
 ```
 
-取色类，用于从一张图像数据中获取它的主要颜色，适用于UI主题色提取、图片配色分析、智能配色推荐等场景，可帮助开发者基于图片内容动态生成和谐的配色方案。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md)创建一个ColorPicker实例。
+取色类，用于从一张图像数据中获取它的主要颜色，适用于UI主题色提取、图片配色分析、智能配色推荐等场景，可帮助开发者基于图片内容动态生成和谐的配色方案。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker1)创建一个ColorPicker实例。
 
 **起始版本：** 9
 
@@ -28,9 +28,9 @@ getAverageColor(): Color
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getAverageColor(): Color--><!--Device-ColorPicker-getAverageColor(): Color-End-->
 
@@ -85,9 +85,9 @@ getHighestSaturationColor(): Color
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getHighestSaturationColor(): Color--><!--Device-ColorPicker-getHighestSaturationColor(): Color-End-->
 
@@ -142,9 +142,9 @@ getLargestProportionColor(): Color
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getLargestProportionColor(): Color--><!--Device-ColorPicker-getLargestProportionColor(): Color-End-->
 
@@ -199,9 +199,9 @@ getMainColor(): Promise<Color>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getMainColor(): Promise<Color>--><!--Device-ColorPicker-getMainColor(): Promise<Color>-End-->
 
@@ -258,9 +258,9 @@ getMainColorSync(): Color
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getMainColorSync(): Color--><!--Device-ColorPicker-getMainColorSync(): Color-End-->
 
@@ -315,9 +315,9 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getTopProportionColors(colorCount: int): Array<Color | null>--><!--Device-ColorPicker-getTopProportionColors(colorCount: int): Array<Color | null>-End-->
 
@@ -333,7 +333,7 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[Color](arkts-arkgraphics2d-effectkit-color-i.md) &#124; null&gt; | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。   - 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。   - 取色失败或取色个数小于1返回`[null]`。 |
+| Array&lt;[Color](arkts-arkgraphics2d-effectkit-color-i.md) &#124; null&gt; | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。           - 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。           - 取色失败或取色个数小于1返回`[null]`。 |
 
 **示例**
 
@@ -382,9 +382,9 @@ isBlackOrWhiteOrGrayColor(color: number): boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-isBlackOrWhiteOrGrayColor(color: long): boolean--><!--Device-ColorPicker-isBlackOrWhiteOrGrayColor(color: long): boolean-End-->
 

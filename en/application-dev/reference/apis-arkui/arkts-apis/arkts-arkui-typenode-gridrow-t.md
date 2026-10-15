@@ -6,6 +6,8 @@ type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>
 
 Represents a FrameNode of the **GridRow** type. This type of node only allows child components of the **GridCol** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;GridRowInterface, [GridRowAttribute](../arkts-components/arkts-arkui-gridrow-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **GridRow** type. This type of node only allows ch
 <!--Device-typeNode-type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>--><!--Device-typeNode-type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;GridRowInterface, [GridRowAttribute](../arkts-components/arkts-arkui-gridrow-comp-attribute.md)&gt;

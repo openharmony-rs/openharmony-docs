@@ -14,17 +14,17 @@ export enum NetBackgroundPolicy
 
 **系统接口：** 此接口为系统接口。
 
-## NET_BACKGROUND_POLICY_NONE
+## NET_BACKGROUND_POLICY_DISABLE
 
 ```TypeScript
-NET_BACKGROUND_POLICY_NONE = 0
+NET_BACKGROUND_POLICY_DISABLE = 2
 ```
 
-默认值。
+应用在后台不可以使用计量网路。
 
 **起始版本：** 10
 
-<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0-End-->
+<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -46,17 +46,17 @@ NET_BACKGROUND_POLICY_ENABLE = 1
 
 **系统接口：** 此接口为系统接口。
 
-## NET_BACKGROUND_POLICY_DISABLE
+## NET_BACKGROUND_POLICY_NONE
 
 ```TypeScript
-NET_BACKGROUND_POLICY_DISABLE = 2
+NET_BACKGROUND_POLICY_NONE = 0
 ```
 
-应用在后台不可以使用计量网路。
+默认值。
 
 **起始版本：** 10
 
-<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2-End-->
+<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 

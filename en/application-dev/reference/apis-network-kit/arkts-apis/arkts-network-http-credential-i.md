@@ -30,7 +30,7 @@ Password of credential. Default is ''.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Credential-password: string--><!--Device-Credential-password: string-End-->
 
@@ -48,7 +48,7 @@ Username of credential. Default is ''.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Credential-username: string--><!--Device-Credential-username: string-End-->
 

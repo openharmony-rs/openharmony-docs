@@ -6,6 +6,8 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="getrealtime1"></a>
+
 ## getRealTime
 
 ```TypeScript
@@ -57,7 +59,7 @@ try {
 ```
 
 
-<a id="getrealtime-1"></a>
+<a id="getrealtime2"></a>
 
 ## getRealTime
 
@@ -109,7 +111,7 @@ try {
 ```
 
 
-<a id="getrealtime-2"></a>
+<a id="getrealtime3"></a>
 
 ## getRealTime
 

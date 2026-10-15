@@ -48,6 +48,7 @@ Asynchronously triggers a predefined operation encration encapsulated in a Wanta
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
 | [16000153](../errorcode-ability.md#16000153-wantagent-object-is-canceled) | The WantAgent has been canceled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -122,3 +123,5 @@ class MyAbility extends UIAbility {
    }
  }
 ```
+
+<!--DelEnd-->

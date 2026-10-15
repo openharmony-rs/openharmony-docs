@@ -22,7 +22,7 @@ VIDEO_SCALE_TYPE_FIT = 0
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoScaleType-VIDEO_SCALE_TYPE_FIT = 0--><!--Device-VideoScaleType-VIDEO_SCALE_TYPE_FIT = 0-End-->
 
@@ -38,7 +38,7 @@ VIDEO_SCALE_TYPE_FIT_CROP = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoScaleType-VIDEO_SCALE_TYPE_FIT_CROP = 1--><!--Device-VideoScaleType-VIDEO_SCALE_TYPE_FIT_CROP = 1-End-->
 
@@ -54,7 +54,7 @@ VIDEO_SCALE_TYPE_SCALED_ASPECT = 2
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoScaleType-VIDEO_SCALE_TYPE_SCALED_ASPECT = 2--><!--Device-VideoScaleType-VIDEO_SCALE_TYPE_SCALED_ASPECT = 2-End-->
 

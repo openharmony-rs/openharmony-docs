@@ -12,22 +12,6 @@ export enum HuksUserAuthType
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-## HUKS_USER_AUTH_TYPE_FINGERPRINT
-
-```TypeScript
-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0
-```
-
-表示用户认证类型为指纹。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0--><!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0-End-->
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
 ## HUKS_USER_AUTH_TYPE_FACE
 
 ```TypeScript
@@ -41,6 +25,22 @@ HUKS_USER_AUTH_TYPE_FACE = 1 << 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FACE = 1 << 1--><!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FACE = 1 << 1-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+## HUKS_USER_AUTH_TYPE_FINGERPRINT
+
+```TypeScript
+HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0
+```
+
+表示用户认证类型为指纹。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0--><!--Device-HuksUserAuthType-HUKS_USER_AUTH_TYPE_FINGERPRINT = 1 << 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

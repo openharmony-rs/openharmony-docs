@@ -6,20 +6,26 @@ The **UiTest** module provides UI automation test capabilities, such as componen
  This module provides the following functions:
 
 - [On<sup>9+</sup>](arkts-test-uitest-on-c.md): provides UI component feature description APIs for component filtering and matching.
- - [Component<sup>9+</sup>](arkts-test-uitest-component-c.md): represents a component on the UI and provides APIs for obtaining
+
+- [Component<sup>9+</sup>](arkts-test-uitest-component-c.md): represents a component on the UI and provides APIs for obtaining
  component attributes, clicking a component, scrolling to search for a component, and text injection.
- - [Driver<sup>9+</sup>](arkts-test-uitest-driver-c.md): works as the entry class and provides APIs for features such as component
+
+- [Driver<sup>9+</sup>](arkts-test-uitest-driver-c.md): works as the entry class and provides APIs for features such as component
  matching/search, key injection, coordinate clicking/sliding, and screenshot.
- - [UiWindow<sup>9+</sup>](arkts-test-uitest-uiwindow-c.md): represents a window object on the UI and provides APIs for obtaining window attributes,
+
+- [UiWindow<sup>9+</sup>](arkts-test-uitest-uiwindow-c.md): represents a window object on the UI and provides APIs for obtaining window attributes,
  dragging windows, and adjusting window sizes.
- - [By<sup>(deprecated)</sup>](arkts-test-uitest-con.md#by): provides UI component feature description APIs for component filtering and
+
+- [By<sup>(deprecated)</sup>](arkts-test-uitest-con.md#by): provides UI component feature description APIs for component filtering and
  matching. This API is supported since API version 8 and deprecated since API version 9.
  You are advised to use [On](arkts-test-uitest-on-c.md) instead.
- - [UiComponent<sup>(deprecated)</sup>](arkts-test-uitest-uicomponent-c.md): represents a component on the UI and provides APIs for
+
+- [UiComponent<sup>(deprecated)</sup>](arkts-test-uitest-uicomponent-c.md): represents a component on the UI and provides APIs for
  obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
  This API is supported since API version 8 and deprecated since API version 9.
  You are advised to use [Component<sup>9+</sup>](arkts-test-uitest-component-c.md) instead.
- - [UiDriver<sup>(deprecated)</sup>](arkts-test-uitest-uidriver-c.md): works as the entry class and provides APIs for features such as
+
+- [UiDriver<sup>(deprecated)</sup>](arkts-test-uitest-uidriver-c.md): works as the entry class and provides APIs for features such as
  component matching/search, key injection, coordinate clicking/sliding, and screenshot.
  This API is supported since API version 8 and deprecated since API version 9.
  You are advised to use [Driver<sup>9+</sup>](arkts-test-uitest-driver-c.md) instead.
@@ -45,14 +51,14 @@ import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 
 | Name | Description |
 | --- | --- |
-| [By](arkts-test-uitest-by-c.md) | The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components. |
 | [Component](arkts-test-uitest-component-c.md) | Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. All APIs provided in this class use a promise to return the result and must be invoked using **await**. |
 | [Driver](arkts-test-uitest-driver-c.md) | The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**. |
 | [On](arkts-test-uitest-on-c.md) | Since API version 9, the UiTest framework provides a wide range of UI component feature description APIs in the **On** class to filter and match components. |
 | [PointerMatrix](arkts-test-uitest-pointermatrix-c.md) | Implements a **PointerMatrix** object that stores coordinates and behaviors of each action of each finger in a multi-touch operation. After creating an object using create, use [setPoint](arkts-test-uitest-pointermatrix-c.md#setpoint) to set the coordinates of each finger at each step. Then pass the coordinates to [injectMultiPointerAction](arkts-test-uitest-driver-c.md#injectmultipointeraction) to perform a multi-finger operation. |
+| [UiWindow](arkts-test-uitest-uiwindow-c.md) | The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size. All APIs provided in this class use a promise to return the result and must be invoked using **await**. |
+| [By](arkts-test-uitest-by-c.md) | The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components. |
 | [UiComponent](arkts-test-uitest-uicomponent-c.md) | In **UiTest**, the **UiComponent** class represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. All APIs provided in this class use a promise to return the result and must be invoked using **await**. |
 | [UiDriver](arkts-test-uitest-uidriver-c.md) | The **UiDriver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. All APIs provided by this class, except **UiDriver.create()**, use a promise to return the result and must be invoked using **await**. |
-| [UiWindow](arkts-test-uitest-uiwindow-c.md) | The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size. All APIs provided in this class use a promise to return the result and must be invoked using **await**. |
 
 ### Interfaces
 
@@ -91,5 +97,5 @@ import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 
 | Name | Description |
 | --- | --- |
-| [BY](arkts-test-uitest-con.md#by) | The static builder for building [By](arkts-test-uitest-by-c.md)object conveniently,usage example:BY.text('txt').enabled(true). |
 | [ON](arkts-test-uitest-con.md#on) | The static builder for building [On](arkts-test-uitest-on-c.md)object conveniently,usage example:ON.text('txt').enabled(true). |
+| [BY](arkts-test-uitest-con.md#by) | The static builder for building [By](arkts-test-uitest-by-c.md)object conveniently,usage example:BY.text('txt').enabled(true). |

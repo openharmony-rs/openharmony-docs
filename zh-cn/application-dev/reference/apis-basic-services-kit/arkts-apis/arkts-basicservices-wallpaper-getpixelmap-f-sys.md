@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="getpixelmap1"></a>
+
 ## getPixelMap
 
 ```TypeScript
@@ -36,6 +38,7 @@ function getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback<image
 | wallpaperType | [WallpaperType](arkts-basicservices-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | 回调函数。当获取壁纸图片的像素图对象成功，err为undefined，data为获取到的像素图对象；否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,8 +54,10 @@ wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: Business
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getpixelmap-1"></a>
+
+<a id="getpixelmap2"></a>
 
 ## getPixelMap
 
@@ -89,6 +94,7 @@ function getPixelMap(wallpaperType: WallpaperType): Promise<image.PixelMap>
 | --- | --- |
 | Promise&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Promise对象，返回壁纸图片的像素图对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -101,3 +107,5 @@ wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: imag
   console.error(`Failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

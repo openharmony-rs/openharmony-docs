@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function updateSpatialActionEnableStatus(event: number): void
 ```
 
-Updates the awareness enabling event when the app subscribes to the function.
+Updates the start/stop status of spatial action awareness.
 
 **Since:** 26.0.1
 
@@ -30,14 +30,14 @@ Updates the awareness enabling event when the app subscribes to the function.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | number | Yes | Awareness enabling event. 0: end; 1: start. |
+| event | number | Yes | Start/stop status value. 0: end 1: start The value must be an integer. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system capability. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-specified-capability-not-supported) | Specific capability not supported. |

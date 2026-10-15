@@ -42,6 +42,8 @@ X coordinate of the cursor or stylus position in the coordinate system of the cu
 
 Unit: vp.
 
+Value range: [0, +∞).
+
 **Type:** number
 
 **Since:** 15
@@ -63,6 +65,8 @@ displayY?: number
 Y coordinate of the cursor or stylus position in the coordinate system of the current screen window.
 
 Unit: vp.
+
+Value range: [0, +∞).
 
 **Type:** number
 
@@ -134,6 +138,8 @@ X coordinate of the cursor or stylus position in the coordinate system of the cu
 
 Unit: vp.
 
+Value range: [0, +∞).
+
 **Type:** number
 
 **Since:** 15
@@ -155,6 +161,8 @@ windowY?: number
 Y coordinate of the cursor or stylus position in the coordinate system of the current application window.
 
 Unit: vp.
+
+Value range: [0, +∞).
 
 **Type:** number
 
@@ -178,6 +186,8 @@ X coordinate of the cursor or stylus position in the [component coordinate syste
 
 Unit: vp.
 
+Value range: [0, +∞).
+
 **Type:** number
 
 **Since:** 15
@@ -199,6 +209,8 @@ y?: number
 Y coordinate of the cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the current component.
 
 Unit: vp.
+
+Value range: [0, +∞).
 
 **Type:** number
 

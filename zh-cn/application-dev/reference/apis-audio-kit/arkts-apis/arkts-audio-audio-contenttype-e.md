@@ -20,39 +20,21 @@ enum ContentType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## CONTENT_TYPE_UNKNOWN
+## CONTENT_TYPE_MOVIE
 
 ```TypeScript
-CONTENT_TYPE_UNKNOWN = 0
+CONTENT_TYPE_MOVIE = 3
 ```
 
-未知类型。
+电影。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [STREAM_USAGE_UNKNOWN](arkts-audio-audio-streamusage-e.md#stream_usage_unknown)
+**替代接口：** [STREAM_USAGE_MOVIE](arkts-audio-audio-streamusage-e.md#stream_usage_movie)
 
-<!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0--><!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## CONTENT_TYPE_SPEECH
-
-```TypeScript
-CONTENT_TYPE_SPEECH = 1
-```
-
-语音。
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md#stream_usage_voice_communication)
-
-<!--Device-ContentType-CONTENT_TYPE_SPEECH = 1--><!--Device-ContentType-CONTENT_TYPE_SPEECH = 1-End-->
+<!--Device-ContentType-CONTENT_TYPE_MOVIE = 3--><!--Device-ContentType-CONTENT_TYPE_MOVIE = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -74,21 +56,21 @@ CONTENT_TYPE_MUSIC = 2
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## CONTENT_TYPE_MOVIE
+## CONTENT_TYPE_RINGTONE
 
 ```TypeScript
-CONTENT_TYPE_MOVIE = 3
+CONTENT_TYPE_RINGTONE = 5
 ```
 
-电影。
+铃声。
 
-**起始版本：** 7
+**起始版本：** 8
 
 **废弃版本：** 10
 
-**替代接口：** [STREAM_USAGE_MOVIE](arkts-audio-audio-streamusage-e.md#stream_usage_movie)
+**替代接口：** [STREAM_USAGE_RINGTONE](arkts-audio-audio-streamusage-e.md#stream_usage_ringtone)
 
-<!--Device-ContentType-CONTENT_TYPE_MOVIE = 3--><!--Device-ContentType-CONTENT_TYPE_MOVIE = 3-End-->
+<!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5--><!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -110,20 +92,38 @@ CONTENT_TYPE_SONIFICATION = 4
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## CONTENT_TYPE_RINGTONE
+## CONTENT_TYPE_SPEECH
 
 ```TypeScript
-CONTENT_TYPE_RINGTONE = 5
+CONTENT_TYPE_SPEECH = 1
 ```
 
-铃声。
+语音。
 
-**起始版本：** 8
+**起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [STREAM_USAGE_RINGTONE](arkts-audio-audio-streamusage-e.md#stream_usage_ringtone)
+**替代接口：** [STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md#stream_usage_voice_communication)
 
-<!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5--><!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5-End-->
+<!--Device-ContentType-CONTENT_TYPE_SPEECH = 1--><!--Device-ContentType-CONTENT_TYPE_SPEECH = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## CONTENT_TYPE_UNKNOWN
+
+```TypeScript
+CONTENT_TYPE_UNKNOWN = 0
+```
+
+未知类型。
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [STREAM_USAGE_UNKNOWN](arkts-audio-audio-streamusage-e.md#stream_usage_unknown)
+
+<!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0--><!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

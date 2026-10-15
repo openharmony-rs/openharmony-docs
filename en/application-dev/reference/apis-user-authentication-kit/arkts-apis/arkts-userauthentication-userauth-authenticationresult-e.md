@@ -16,57 +16,37 @@ Enumerates the authentication results.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## NO_SUPPORT
+## BUSY
 
 ```TypeScript
-NO_SUPPORT = -1
+BUSY = 5
 ```
 
-The device does not support the current authentication mode.
+The authentication service is not available. Try again later.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#type_not_support)
+**Substitutes:** [BUSY](arkts-userauthentication-userauth-resultcode-e.md#busy)
 
-<!--Device-AuthenticationResult-NO_SUPPORT = -1--><!--Device-AuthenticationResult-NO_SUPPORT = -1-End-->
+<!--Device-AuthenticationResult-BUSY = 5--><!--Device-AuthenticationResult-BUSY = 5-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## SUCCESS
+## CAMERA_FAIL
 
 ```TypeScript
-SUCCESS = 0
+CAMERA_FAIL = 4
 ```
 
-The authentication is successful.
+The camera failed to start.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [SUCCESS](arkts-userauthentication-userauth-resultcode-e.md#success)
-
-<!--Device-AuthenticationResult-SUCCESS = 0--><!--Device-AuthenticationResult-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-## COMPARE_FAILURE
-
-```TypeScript
-COMPARE_FAILURE = 1
-```
-
-The feature comparison failed.
-
-**Since:** 6
-
-**Deprecated since:** 8
-
-**Substitutes:** [FAIL](arkts-userauthentication-userauth-resultcode-e.md#fail)
-
-<!--Device-AuthenticationResult-COMPARE_FAILURE = 1--><!--Device-AuthenticationResult-COMPARE_FAILURE = 1-End-->
+<!--Device-AuthenticationResult-CAMERA_FAIL = 4--><!--Device-AuthenticationResult-CAMERA_FAIL = 4-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -88,55 +68,39 @@ The authentication was canceled by the user.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## TIMEOUT
+## COMPARE_FAILURE
 
 ```TypeScript
-TIMEOUT = 3
+COMPARE_FAILURE = 1
 ```
 
-The authentication has timed out.
+The feature comparison failed.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [TIMEOUT](arkts-userauthentication-userauth-resultcode-e.md#timeout)
+**Substitutes:** [FAIL](arkts-userauthentication-userauth-resultcode-e.md#fail)
 
-<!--Device-AuthenticationResult-TIMEOUT = 3--><!--Device-AuthenticationResult-TIMEOUT = 3-End-->
+<!--Device-AuthenticationResult-COMPARE_FAILURE = 1--><!--Device-AuthenticationResult-COMPARE_FAILURE = 1-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## CAMERA_FAIL
+## GENERAL_ERROR
 
 ```TypeScript
-CAMERA_FAIL = 4
+GENERAL_ERROR = 100
 ```
 
-The camera failed to start.
+Other errors.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-<!--Device-AuthenticationResult-CAMERA_FAIL = 4--><!--Device-AuthenticationResult-CAMERA_FAIL = 4-End-->
+**Substitutes:** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#general_error)
 
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-## BUSY
-
-```TypeScript
-BUSY = 5
-```
-
-The authentication service is not available. Try again later.
-
-**Since:** 6
-
-**Deprecated since:** 8
-
-**Substitutes:** [BUSY](arkts-userauthentication-userauth-resultcode-e.md#busy)
-
-<!--Device-AuthenticationResult-BUSY = 5--><!--Device-AuthenticationResult-BUSY = 5-End-->
+<!--Device-AuthenticationResult-GENERAL_ERROR = 100--><!--Device-AuthenticationResult-GENERAL_ERROR = 100-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -176,6 +140,24 @@ The user account is locked because the number of authentication failures has rea
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
+## NO_SUPPORT
+
+```TypeScript
+NO_SUPPORT = -1
+```
+
+The device does not support the current authentication mode.
+
+**Since:** 6
+
+**Deprecated since:** 8
+
+**Substitutes:** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#type_not_support)
+
+<!--Device-AuthenticationResult-NO_SUPPORT = -1--><!--Device-AuthenticationResult-NO_SUPPORT = -1-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
 ## NOT_ENROLLED
 
 ```TypeScript
@@ -194,20 +176,38 @@ No authentication credential is registered.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## GENERAL_ERROR
+## SUCCESS
 
 ```TypeScript
-GENERAL_ERROR = 100
+SUCCESS = 0
 ```
 
-Other errors.
+The authentication is successful.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#general_error)
+**Substitutes:** [SUCCESS](arkts-userauthentication-userauth-resultcode-e.md#success)
 
-<!--Device-AuthenticationResult-GENERAL_ERROR = 100--><!--Device-AuthenticationResult-GENERAL_ERROR = 100-End-->
+<!--Device-AuthenticationResult-SUCCESS = 0--><!--Device-AuthenticationResult-SUCCESS = 0-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 3
+```
+
+The authentication has timed out.
+
+**Since:** 6
+
+**Deprecated since:** 8
+
+**Substitutes:** [TIMEOUT](arkts-userauthentication-userauth-resultcode-e.md#timeout)
+
+<!--Device-AuthenticationResult-TIMEOUT = 3--><!--Device-AuthenticationResult-TIMEOUT = 3-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

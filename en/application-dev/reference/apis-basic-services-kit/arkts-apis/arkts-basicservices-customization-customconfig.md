@@ -20,4 +20,4 @@ import { customConfig } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md) | Obtains a pre-installed channel ID of this application. |
+| [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md#getchannelid) | Obtains a pre-installed channel ID of this application. |

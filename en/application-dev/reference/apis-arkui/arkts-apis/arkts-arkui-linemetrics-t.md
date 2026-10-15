@@ -6,6 +6,8 @@ declare type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetr
 
 Describes the measurement information of a single line in the text layout.
 
+**Type:** import('../api/@ohos.graphics.text').default.LineMetrics
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Describes the measurement information of a single line in the text layout.
 <!--Device-unnamed-declare type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetrics--><!--Device-unnamed-declare type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.text').default.LineMetrics

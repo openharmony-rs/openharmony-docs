@@ -4,7 +4,7 @@
 export class ScrollActionProposal extends TargetedGestureProposal
 ```
 
-Smart gesture scroll action handling. The default direction is forward scrolling, including right and down. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this typetriggers a scroll operation on the target component.
+Smart gesture scroll action handling, with the default direction being forward scrolling, including rightward and downward. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this typetriggers the scroll operation of the target component.
 
 **Inheritance/Implementation:** ScrollActionProposal extends [TargetedGestureProposal](arkts-arkui-arkui-uicontext-targetedgestureproposal-c.md)
 
@@ -29,7 +29,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 constructor(node: FrameNode, distance: number)
 ```
 
-Constructor for the smart gesture scroll action handling.
+Constructor for smart gesture scroll action handling.
 
 **Since:** 26.0.0
 
@@ -54,7 +54,7 @@ Constructor for the smart gesture scroll action handling.
 distance?: number
 ```
 
-Scroll distance of the smart gesture.
+Smart gesture scroll distance.
 
 Value range: [0, +∞). Values less than 0 are treated as 0.
 

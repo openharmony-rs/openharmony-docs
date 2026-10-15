@@ -18,6 +18,36 @@ You can determine whether the operation is forcibly performed by the system base
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
+## INTERRUPT_HINT_DUCK
+
+```TypeScript
+INTERRUPT_HINT_DUCK = 4
+```
+
+A hint is displayed, indicating that audio ducking starts and the audio is played at a lower volume.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4--><!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+## INTERRUPT_HINT_MUTE
+
+```TypeScript
+INTERRUPT_HINT_MUTE = 6
+```
+
+A hint is displayed, indicating that the audio is muted.
+
+**Since:** 20
+
+<!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6--><!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
 ## INTERRUPT_HINT_NONE
 
 ```TypeScript
@@ -28,27 +58,9 @@ None.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptHint-INTERRUPT_HINT_NONE = 0--><!--Device-InterruptHint-INTERRUPT_HINT_NONE = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Renderer
-
-## INTERRUPT_HINT_RESUME
-
-```TypeScript
-INTERRUPT_HINT_RESUME = 1
-```
-
-A hint is displayed, indicating that the audio stream is restored. The application can proactively trigger operations related to rendering or recording.
-
-This operation cannot be forcibly performed by the system, and the corresponding [InterruptForceType](arkts-audio-audio-interruptforcetype-e.md) must be **INTERRUPT_SHARE**.
-
-**Since:** 7
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1--><!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -64,9 +76,27 @@ When the audio focus is available, the **INTERRUPT_HINT_RESUME** event is receiv
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptHint-INTERRUPT_HINT_PAUSE = 2--><!--Device-InterruptHint-INTERRUPT_HINT_PAUSE = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+## INTERRUPT_HINT_RESUME
+
+```TypeScript
+INTERRUPT_HINT_RESUME = 1
+```
+
+A hint is displayed, indicating that the audio stream is restored. The application can proactively trigger operations related to rendering or recording.
+
+This operation cannot be forcibly performed by the system, and the corresponding [InterruptForceType](arkts-audio-audio-interruptforcetype-e.md) must be **INTERRUPT_SHARE**.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1--><!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -80,25 +110,9 @@ A hint is displayed, indicating that the audio stream stops and the audio focus 
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptHint-INTERRUPT_HINT_STOP = 3--><!--Device-InterruptHint-INTERRUPT_HINT_STOP = 3-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Renderer
-
-## INTERRUPT_HINT_DUCK
-
-```TypeScript
-INTERRUPT_HINT_DUCK = 4
-```
-
-A hint is displayed, indicating that audio ducking starts and the audio is played at a lower volume.
-
-**Since:** 7
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4--><!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -112,23 +126,9 @@ A hint is displayed, indicating that audio ducking ends and the audio is played 
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptHint-INTERRUPT_HINT_UNDUCK = 5--><!--Device-InterruptHint-INTERRUPT_HINT_UNDUCK = 5-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Renderer
-
-## INTERRUPT_HINT_MUTE
-
-```TypeScript
-INTERRUPT_HINT_MUTE = 6
-```
-
-A hint is displayed, indicating that the audio is muted.
-
-**Since:** 20
-
-<!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6--><!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 

@@ -34,6 +34,7 @@ Disables Wi-Fi.
 | --- | --- |
 | boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

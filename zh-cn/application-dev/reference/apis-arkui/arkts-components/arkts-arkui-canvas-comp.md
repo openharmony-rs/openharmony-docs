@@ -32,7 +32,7 @@ Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 否 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见CanvasRenderingContext2D对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见DrawingRenderingContext对象。<br>异常值null和undefined按未设置context处理。 |
+| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 否 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](#canvas)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](#canvas)对象。<br>异常值null和undefined按未设置context处理。 |
 
 ## Canvas
 
@@ -58,7 +58,7 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 是 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见CanvasRenderingContext2D对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见DrawingRenderingContext对象。<br>异常值null和undefined按未设置context处理。 |
+| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 是 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](#canvas)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](#canvas)对象。<br>异常值null和undefined按未设置context处理。 |
 | imageAIOptions | [ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-i.md) | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按[ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-i.md)的默认值处理，默认取值为{ type: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT], aiController: new ImageAnalyzerController() }，即开启主体识别和文字识别功能。 |
 
 ## Canvas
@@ -71,7 +71,7 @@ Canvas(params: CanvasParams)
 
 > **说明：** 
 > 
-> - 使用本接口创建的Canvas组件将在[onReady&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkui-canvas-comp-attribute.md#onready-1)回调的入参中返回一个DrawingRenderingContext&lt;sup&gt;12+&lt;/sup&gt;对象，可用于在该Canvas组件上进行绘制。
+> - 使用本接口创建的Canvas组件将在[onReady<sup>23+</sup>](arkts-arkui-canvas-comp-attribute.md#onready2)回调的入参中返回一个[DrawingRenderingContext<sup>12+</sup>](#canvas)对象，可用于在该Canvas组件上进行绘制。
 > 
 > - 使用本接口创建的Canvas组件在组件不可见时将不响应绘制指令。
 > 
@@ -101,7 +101,6 @@ Canvas(params: CanvasParams)
 | --- | --- |
 | [CanvasParams](arkts-arkui-canvas-comp-canvasparams-i.md) | 定义Canvas的具体配置参数。 |
 | [CanvasPattern](arkts-arkui-canvas-comp-canvaspattern-i.md) | 一个Object对象，使用[createPattern](arkts-arkui-canvas-comp-canvasrenderer-c.md#createpattern)方法创建，通过指定图像和重复方式创建图片填充的模板。 |
-| [OffscreenCanvasRenderingContext2DInterface](arkts-arkui-canvas-comp-offscreencanvasrenderingcontext2dinterface-i.md) | 使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制，绘制对象可以是形状、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓存区，然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制，绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。 |
 | [RenderingContextOptions](arkts-arkui-canvas-comp-renderingcontextoptions-i.md) | 定义渲染上下文的具体配置参数。 |
 | [Size](arkts-arkui-canvas-comp-size-i.md) | DrawingRenderingContext的尺寸信息。 |
 | [TextMetrics](arkts-arkui-canvas-comp-textmetrics-i.md) | 文本的尺寸信息。 |
@@ -117,14 +116,14 @@ Canvas(params: CanvasParams)
 | [CanvasTextAlign](arkts-arkui-canvas-comp-canvastextalign-t.md) | 定义文本对齐方式的类型。取值类型为下表类型中的并集。 |
 | [CanvasTextBaseline](arkts-arkui-canvas-comp-canvastextbaseline-t.md) | 定义文本基线类型。取值类型为下表类型中的并集。 |
 | [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md) | 可用于向DrawingRenderingContext上绘制内容的画布对象。 |
-| [FrameNode](arkts-arkui-canvas-comp-framenode-t.md) | Import the frame node type object for Canvas. |
+| [FrameNode](arkts-arkui-canvas-comp-framenode-t.md) | 为Canvas导入FrameNode类型对象。 |
 | [ImageSmoothingQuality](arkts-arkui-canvas-comp-imagesmoothingquality-t.md) | 定义图片平滑度类型。取值类型为下表类型中的并集。 |
 
 ## 示例
 
 ### 示例1（使用CanvasRenderingContext2D中的方法）
 
-该示例实现了如何在Canvas组件使用CanvasRenderingContext2D中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)中的方法进行绘制。
 
 
 
@@ -154,7 +153,7 @@ struct CanvasExample {
 
 ### 示例2（使用DrawingRenderingContext中的方法）
 
-该示例实现了如何在Canvas组件使用DrawingRenderingContext中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[DrawingRenderingContext](./ts-drawingrenderingcontext.md)中的方法进行绘制。
 
 
 
@@ -184,7 +183,7 @@ struct CanvasExample {
 
 ### 示例3（使用attributeModifier动态设置Canvas组件的属性及方法）
 
-该示例展示了如何使用attributeModifier动态设置Canvas组件的[enableAnalyzer](arkts-arkui-canvas-comp-attribute.md#enableanalyzer)属性和[onReady](arkts-arkui-canvas-comp-attribute.md#onready)方法。
+该示例展示了如何使用[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置Canvas组件的[enableAnalyzer](#enableanalyzer12)属性和[onReady](#onready)方法。
 
 > 说明：
 > 

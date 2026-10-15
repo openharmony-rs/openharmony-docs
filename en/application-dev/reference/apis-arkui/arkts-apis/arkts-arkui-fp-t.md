@@ -6,6 +6,8 @@ declare type FP = `${number}fp`
 
 Defines a length in fp.
 
+**Type:** `${number}fp`
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines a length in fp.
 <!--Device-unnamed-declare type FP = `${number}fp`--><!--Device-unnamed-declare type FP = `${number}fp`-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** `${number}fp`

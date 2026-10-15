@@ -36,9 +36,10 @@ Called when a saving request fails to be processed.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,6 +110,8 @@ struct SavePage {
 }
 ```
 
+<!--DelEnd-->
+
 ## onSuccess
 
 ```TypeScript
@@ -131,9 +134,10 @@ Called when a saving request is successfully processed.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -203,3 +207,5 @@ struct SavePage {
   }
 }
 ```
+
+<!--DelEnd-->

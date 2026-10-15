@@ -62,8 +62,6 @@ Default value: empty string.
 
 When the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **Since:** 26.0.0
@@ -102,8 +100,6 @@ Default value: **"auto"**
 
 When the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** string
 
 **Default:** auto
@@ -131,8 +127,6 @@ Whether to display the close icon. The value **true** means the close icon is di
 Default value: **false**
 
 When the value is **undefined**, the default value is used.
-
-Decorator: **@Trace**
 
 **Type:** boolean
 
@@ -164,8 +158,6 @@ Default value:
 
 When the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ChipV2CloseConfig](arkts-arkui-arkui-advanced-chipv2-chipv2closeconfig-i.md)
 
 **Since:** 26.0.0
@@ -187,8 +179,6 @@ public label: ChipV2Label
 ```
 
 **ChipV2** text.
-
-Decorator: **@Trace**
 
 **Type:** [ChipV2Label](arkts-arkui-arkui-advanced-chipv2-chipv2label-c.md)
 
@@ -216,8 +206,6 @@ Default value: no prefix image icon.
 
 When the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ChipV2PrefixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageicon-c.md)
 
 **Since:** 26.0.0
@@ -243,8 +231,6 @@ Prefix symbol icon, used to display a symbol icon before the **ChipV2** text. Se
 Default value: no prefix symbol icon.
 
 When the value is **undefined**, the default value is used.
-
-Decorator: **@Trace**
 
 **Type:** [ChipV2PrefixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymbolicon-c.md)
 
@@ -272,8 +258,6 @@ Default value: no suffix image icon displayed.
 
 When the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ChipV2SuffixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffiximageicon-c.md)
 
 **Since:** 26.0.0
@@ -299,8 +283,6 @@ Suffix symbol icon, used to display a symbol icon after the **ChipV2** text. Whe
 Default value: no suffix symbol icon displayed.
 
 When the value is **undefined**, the default value is used.
-
-Decorator: **@Trace**
 
 **Type:** [ChipV2SuffixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymbolicon-c.md)
 

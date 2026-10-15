@@ -30,22 +30,6 @@ AUDIO_2_VOICE_TX = 0
 
 **系统接口：** 此接口为系统接口。
 
-## AUDIO_MIX_2_VOICE_TX
-
-```TypeScript
-AUDIO_MIX_2_VOICE_TX = 1
-```
-
-媒体音频流和MIC音频流均生效。
-
-**起始版本：** 12
-
-<!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1--><!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-**系统接口：** 此接口为系统接口。
-
 ## AUDIO_2_VOICE_TX_EX
 
 ```TypeScript
@@ -57,6 +41,22 @@ AUDIO_2_VOICE_TX_EX = 2
 **起始版本：** 12
 
 <!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX_EX = 2--><!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX_EX = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**系统接口：** 此接口为系统接口。
+
+## AUDIO_MIX_2_VOICE_TX
+
+```TypeScript
+AUDIO_MIX_2_VOICE_TX = 1
+```
+
+媒体音频流和MIC音频流均生效。
+
+**起始版本：** 12
+
+<!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1--><!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

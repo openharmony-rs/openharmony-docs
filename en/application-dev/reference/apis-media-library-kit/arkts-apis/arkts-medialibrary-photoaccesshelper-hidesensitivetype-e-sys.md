@@ -14,6 +14,25 @@ Enumerates the types of data masking applied to media resources when accessed by
 
 **System API:** This is a system API.
 
+## DEFAULT
+
+```TypeScript
+DEFAULT = 4
+```
+
+Applies data masking based on the [ohos.permission.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location) permission. The specifications are as follows:
+
+- If this permission is available, no masking is applied.  
+- If this permission is unavailable, geographic location is masked.
+
+**Since:** 23
+
+<!--Device-HideSensitiveType-DEFAULT = 4--><!--Device-HideSensitiveType-DEFAULT = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
 ## HIDE_LOCATION_AND_SHOOTING_PARAM
 
 ```TypeScript
@@ -73,25 +92,6 @@ No data masking is applied.
 **Since:** 12
 
 <!--Device-HideSensitiveType-NO_HIDE_SENSITIVE_TYPE = 3--><!--Device-HideSensitiveType-NO_HIDE_SENSITIVE_TYPE = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 4
-```
-
-Applies data masking based on the [ohos.permission.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location) permission. The specifications are as follows:
-
-- If this permission is available, no masking is applied.  
-- If this permission is unavailable, geographic location is masked.
-
-**Since:** 23
-
-<!--Device-HideSensitiveType-DEFAULT = 4--><!--Device-HideSensitiveType-DEFAULT = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -20,7 +20,7 @@ Stops any form of vibration.
 
 **Required permissions:** ohos.permission.VIBRATE
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-vibrator-function stopVibrationSync(): void--><!--Device-vibrator-function stopVibrationSync(): void-End-->
 

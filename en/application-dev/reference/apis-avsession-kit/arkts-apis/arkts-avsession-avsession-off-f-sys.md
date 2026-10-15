@@ -37,6 +37,7 @@ Unregister session create callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,6 +62,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('sessionDestroy')
@@ -94,6 +97,7 @@ Unregister session destroy callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -118,6 +122,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('topSessionChange')
@@ -151,6 +157,7 @@ Unregister top session changed callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -175,6 +182,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('sessionServiceDie')
@@ -208,11 +217,14 @@ Unregister Session service death callback, notifying the application to clean up
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 avSession.off('sessionServiceDie');
 ```
+
+<!--DelEnd-->
 
 
 ## off('distributedSessionChange')
@@ -246,11 +258,14 @@ Unregister distributed session changed callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
 ```
+
+<!--DelEnd-->
 
 
 ## off('deviceAvailable')
@@ -283,11 +298,14 @@ Unregister device discovery callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 avSession.off('deviceAvailable');
 ```
+
+<!--DelEnd-->
 
 
 ## off('deviceOffline')
@@ -320,11 +338,14 @@ Unregister device offline callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 avSession.off('deviceOffline');
 ```
+
+<!--DelEnd-->
 
 
 ## off('deviceLogEvent')
@@ -355,15 +376,18 @@ UnRegister log event callback.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-session-does-not-exist) | The session does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 avSession.off('deviceLogEvent');
 ```
+
+<!--DelEnd-->
 
 
 ## off('deviceStateChanged')
@@ -398,8 +422,11 @@ Unregisters a system callback for the device connection phase.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 avSession.off('deviceStateChanged');
 ```
+
+<!--DelEnd-->

@@ -12,7 +12,7 @@ const MAX_BATCH_SIZE = 128
 
 **废弃版本：** 9
 
-**替代接口：** MAX_BATCH_SIZE
+**替代接口：** [MAX_BATCH_SIZE](arkts-arkdata-distributedkvstore-constants-i.md#max_batch_size)
 
 <!--Device-Constants-const MAX_BATCH_SIZE = 128--><!--Device-Constants-const MAX_BATCH_SIZE = 128-End-->
 
@@ -30,7 +30,7 @@ const MAX_KEY_LENGTH = 1024
 
 **废弃版本：** 9
 
-**替代接口：** MAX_KEY_LENGTH
+**替代接口：** [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_key_length)
 
 <!--Device-Constants-const MAX_KEY_LENGTH = 1024--><!--Device-Constants-const MAX_KEY_LENGTH = 1024-End-->
 
@@ -66,7 +66,7 @@ const MAX_QUERY_LENGTH = 512000
 
 **废弃版本：** 9
 
-**替代接口：** MAX_QUERY_LENGTH
+**替代接口：** [MAX_QUERY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_query_length)
 
 <!--Device-Constants-const MAX_QUERY_LENGTH = 512000--><!--Device-Constants-const MAX_QUERY_LENGTH = 512000-End-->
 
@@ -84,7 +84,7 @@ const MAX_STORE_ID_LENGTH = 128
 
 **废弃版本：** 9
 
-**替代接口：** MAX_STORE_ID_LENGTH
+**替代接口：** [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_store_id_length)
 
 <!--Device-Constants-const MAX_STORE_ID_LENGTH = 128--><!--Device-Constants-const MAX_STORE_ID_LENGTH = 128-End-->
 
@@ -102,7 +102,7 @@ const MAX_VALUE_LENGTH = 4194303
 
 **废弃版本：** 9
 
-**替代接口：** MAX_VALUE_LENGTH
+**替代接口：** [MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_value_length)
 
 <!--Device-Constants-const MAX_VALUE_LENGTH = 4194303--><!--Device-Constants-const MAX_VALUE_LENGTH = 4194303-End-->
 

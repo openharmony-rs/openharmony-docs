@@ -6,6 +6,8 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
+<a id="getdisposedstatus1"></a>
+
 ## getDisposedStatus
 
 ```TypeScript
@@ -41,6 +43,7 @@ function getDisposedStatus(appId: string, callback: AsyncCallback<Want>): void
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,8 +67,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getdisposedstatus-1"></a>
+
+<a id="getdisposedstatus2"></a>
 
 ## getDisposedStatus
 
@@ -107,6 +112,7 @@ function getDisposedStatus(appId: string): Promise<Want>
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -128,3 +134,5 @@ try {
   console.error('getDisposedStatus failed ' + message);
 }
 ```
+
+<!--DelEnd-->

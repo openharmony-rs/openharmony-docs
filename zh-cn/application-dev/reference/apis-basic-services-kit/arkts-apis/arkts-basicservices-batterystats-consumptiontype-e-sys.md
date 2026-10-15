@@ -14,22 +14,6 @@ export enum ConsumptionType
 
 **系统接口：** 此接口为系统接口。
 
-## CONSUMPTION_TYPE_INVALID
-
-```TypeScript
-CONSUMPTION_TYPE_INVALID = -17
-```
-
-表示电量消耗类型未知。
-
-**起始版本：** 8
-
-<!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17--><!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17-End-->
-
-**系统能力：** SystemCapability.PowerManager.BatteryStatistics
-
-**系统接口：** 此接口为系统接口。
-
 ## CONSUMPTION_TYPE_APP
 
 ```TypeScript
@@ -73,6 +57,22 @@ CONSUMPTION_TYPE_IDLE
 **起始版本：** 8
 
 <!--Device-ConsumptionType-CONSUMPTION_TYPE_IDLE--><!--Device-ConsumptionType-CONSUMPTION_TYPE_IDLE-End-->
+
+**系统能力：** SystemCapability.PowerManager.BatteryStatistics
+
+**系统接口：** 此接口为系统接口。
+
+## CONSUMPTION_TYPE_INVALID
+
+```TypeScript
+CONSUMPTION_TYPE_INVALID = -17
+```
+
+表示电量消耗类型未知。
+
+**起始版本：** 8
+
+<!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17--><!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 

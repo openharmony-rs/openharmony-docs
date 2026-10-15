@@ -6,6 +6,8 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="addnotificationslot1"></a>
+
 ## addNotificationSlot
 
 ```TypeScript
@@ -24,14 +26,14 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | Yes | Notification slot instance. Only the **notificationType** property can be set. |
+| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-i.md) | Yes | Notification slot instance. Only the **notificationType** property can be set. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the notification slot is added, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -54,7 +56,7 @@ reminderAgentManager.addNotificationSlot(mySlot, (err: BusinessError) => {
 ```
 
 
-<a id="addnotificationslot-1"></a>
+<a id="addnotificationslot2"></a>
 
 ## addNotificationSlot
 
@@ -74,7 +76,7 @@ Adds a notification slot. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | Yes | Notification slot instance. Only the **notificationType** property can be set. |
+| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-i.md) | Yes | Notification slot instance. Only the **notificationType** property can be set. |
 
 **Return value:**
 
@@ -86,7 +88,7 @@ Adds a notification slot. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

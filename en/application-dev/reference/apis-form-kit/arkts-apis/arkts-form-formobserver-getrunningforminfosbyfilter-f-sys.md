@@ -6,6 +6,8 @@
 import { formObserver } from '@kit.FormKit';
 ```
 
+<a id="getrunningforminfosbyfilter1"></a>
+
 ## getRunningFormInfosByFilter
 
 ```TypeScript
@@ -51,8 +53,39 @@ Obtains the RunningFormInfo objects by FormProviderFilter.
 | [16500100](../errorcode-form.md#16500100-failed-to-obtain-widget-configuration-information) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
+<!--Del-->
+**Examples**
 
-<a id="getrunningforminfosbyfilter-1"></a>
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formInstanceFilter: formInfo.FormProviderFilter = {
+  bundleName: "com.example.formprovide",
+  abilityName: "EntryFormAbility",
+  formName: "widget",
+  moduleName: "entry"
+}
+try {
+  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
+    (error: BusinessError, data: formInfo.RunningFormInfo[]) => {
+      if (error) {
+        console.error(`error, code: ${error.code}, message: ${error.message}`);
+      } else {
+        data.forEach(data => {
+          console.info(`formObserver getRunningFormInfosByFilter success, formId: ${data.formId}`);
+        });
+      }
+    });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="getrunningforminfosbyfilter2"></a>
 
 ## getRunningFormInfosByFilter
 
@@ -94,3 +127,10 @@ Obtains the RunningFormInfo objects by FormProviderFilter.
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-failed-to-obtain-widget-configuration-information) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
+
+<!--Del-->
+**Examples**
+
+See [getRunningFormInfosByFilter](#getrunningforminfosbyfilter)
+
+<!--DelEnd-->

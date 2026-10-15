@@ -6,6 +6,8 @@ export type Version = _PackInfo.Version
 
 Defines the version in the **pack.info** file.
 
+**Type:** [_PackInfo.Version](arkts-ability-bundlepackinfo-version-i-sys.md)
+
 **Since:** 9
 
 <!--Device-freeInstall-export type Version = _PackInfo.Version--><!--Device-freeInstall-export type Version = _PackInfo.Version-End-->
@@ -13,5 +15,3 @@ Defines the version in the **pack.info** file.
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
-
-**Type:** [_PackInfo.Version](arkts-ability-bundlepackinfo-version-i-sys.md)

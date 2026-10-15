@@ -6,6 +6,8 @@ declare type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').Sy
 
 Defines custom icon symbol configurations.
 
+**Type:** import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines custom icon symbol configurations.
 <!--Device-unnamed-declare type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier--><!--Device-unnamed-declare type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier

@@ -6,39 +6,9 @@ export enum OperationMode
 
 Enumerates the uri operate mode types.
 
-@enum { int } OperationMode
-
 **Since:** 11
 
 <!--Device-fileShare-export enum OperationMode--><!--Device-fileShare-export enum OperationMode-End-->
-
-**System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
-## READ_MODE
-
-```TypeScript
-READ_MODE = 0b1
-```
-
-Indicates read permissions.
-
-**Since:** 11
-
-<!--Device-OperationMode-READ_MODE = 0b1--><!--Device-OperationMode-READ_MODE = 0b1-End-->
-
-**System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
-## WRITE_MODE
-
-```TypeScript
-WRITE_MODE = 0b10
-```
-
-Indicates write permissions.
-
-**Since:** 11
-
-<!--Device-OperationMode-WRITE_MODE = 0b10--><!--Device-OperationMode-WRITE_MODE = 0b10-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -70,6 +40,20 @@ Indicates deleting permissions.
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+## READ_MODE
+
+```TypeScript
+READ_MODE = 0b1
+```
+
+Indicates read permissions.
+
+**Since:** 11
+
+<!--Device-OperationMode-READ_MODE = 0b1--><!--Device-OperationMode-READ_MODE = 0b1-End-->
+
+**System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 ## RENAME_MODE
 
 ```TypeScript
@@ -81,5 +65,19 @@ Indicates renaming permissions.
 **Since:** 20
 
 <!--Device-OperationMode-RENAME_MODE = 0b10000--><!--Device-OperationMode-RENAME_MODE = 0b10000-End-->
+
+**System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+## WRITE_MODE
+
+```TypeScript
+WRITE_MODE = 0b10
+```
+
+Indicates write permissions.
+
+**Since:** 11
+
+<!--Device-OperationMode-WRITE_MODE = 0b10--><!--Device-OperationMode-WRITE_MODE = 0b10-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization

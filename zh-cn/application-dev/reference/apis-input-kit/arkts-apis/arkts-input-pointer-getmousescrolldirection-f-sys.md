@@ -34,10 +34,11 @@ function getMouseScrollDirection(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

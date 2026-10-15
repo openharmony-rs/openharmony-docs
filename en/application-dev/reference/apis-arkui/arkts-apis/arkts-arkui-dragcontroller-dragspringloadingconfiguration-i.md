@@ -24,7 +24,7 @@ import { dragController } from '@kit.ArkUI';
 stillTimeLimit?: number
 ```
 
-Time (in ms) required to remain stationary to enter the BEGIN state of hover detection. Value range: integer in the [0, 2&lt;sup&gt;31&lt;/sup&gt;-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **500**.
+Time (in ms) required to remain stationary to enter the BEGIN state of hover detection. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **500**.
 
 **Type:** number
 
@@ -44,7 +44,7 @@ Time (in ms) required to remain stationary to enter the BEGIN state of hover det
 updateInterval?: number
 ```
 
-Time interval (in ms) at which update notifications are sent after hover detection enters the UPDATE state. Value range: integer in the [0, 2&lt;sup&gt;31&lt;/sup&gt;-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.
+Time interval (in ms) at which update notifications are sent after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.
 
 **Type:** number
 
@@ -64,7 +64,7 @@ Time interval (in ms) at which update notifications are sent after hover detecti
 updateNotifyCount?: number
 ```
 
-Maximum number of update notifications after hover detection enters the UPDATE state. Value range: integer in the [0, 2&lt;sup&gt;31&lt;/sup&gt;-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **3**.
+Maximum number of update notifications after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **3**.
 
 **Type:** number
 
@@ -84,7 +84,7 @@ Maximum number of update notifications after hover detection enters the UPDATE s
 updateToFinishInterval?: number
 ```
 
-Maximum waiting time (in ms) from the UPDATE state to the END state. Value range: integer in the [0, 2&lt;sup&gt;31&lt;/sup&gt;-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.
+Maximum waiting time (in ms) from the UPDATE state to the END state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.
 
 **Type:** number
 

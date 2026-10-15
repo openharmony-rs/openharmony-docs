@@ -6,6 +6,8 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="addkeepaliveapps1"></a>
+
 ## addKeepAliveApps
 
 ```TypeScript
@@ -73,7 +75,7 @@ try {
 ```
 
 
-<a id="addkeepaliveapps-1"></a>
+<a id="addkeepaliveapps2"></a>
 
 ## addKeepAliveApps
 

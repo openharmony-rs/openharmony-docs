@@ -6,9 +6,9 @@ declare class CommonShapeMethod<T> extends CommonMethod<T>
 
 CommonShapeMethod
 
-@extends CommonMethod&lt;T&gt;
+@extends CommonMethod<T>
 
-**继承/实现关系：** CommonShapeMethod extends CommonMethod<T>
+**继承/实现关系：** CommonShapeMethod extends CommonMethod&lt;T&gt;
 
 **起始版本：** 11
 
@@ -24,7 +24,7 @@ constructor()
 
 constructor.
 
-**起始版本：** 9
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 

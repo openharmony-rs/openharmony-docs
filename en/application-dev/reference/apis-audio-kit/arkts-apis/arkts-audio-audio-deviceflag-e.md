@@ -12,17 +12,17 @@ Enumerates the audio device flags.
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
-## OUTPUT_DEVICES_FLAG
+## ALL_DEVICES_FLAG
 
 ```TypeScript
-OUTPUT_DEVICES_FLAG = 1
+ALL_DEVICES_FLAG = 3
 ```
 
-Output devices.
+All devices.
 
 **Since:** 7
 
-<!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1--><!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1-End-->
+<!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3--><!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -40,16 +40,16 @@ Input devices.
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
-## ALL_DEVICES_FLAG
+## OUTPUT_DEVICES_FLAG
 
 ```TypeScript
-ALL_DEVICES_FLAG = 3
+OUTPUT_DEVICES_FLAG = 1
 ```
 
-All devices.
+Output devices.
 
 **Since:** 7
 
-<!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3--><!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3-End-->
+<!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1--><!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device

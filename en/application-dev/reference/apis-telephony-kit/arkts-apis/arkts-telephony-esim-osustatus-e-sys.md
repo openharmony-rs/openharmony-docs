@@ -14,17 +14,17 @@ Defines the OS upgrade status.
 
 **System API:** This is a system API.
 
-## EUICC_UPGRADE_IN_PROGRESS
+## EUICC_UPGRADE_ALREADY_LATEST
 
 ```TypeScript
-EUICC_UPGRADE_IN_PROGRESS = 1
+EUICC_UPGRADE_ALREADY_LATEST = 4
 ```
 
-Upgrading.
+Already the latest version.
 
 **Since:** 18
 
-<!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1--><!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1-End-->
+<!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4--><!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -46,33 +46,17 @@ Upgrade failed.
 
 **System API:** This is a system API.
 
-## EUICC_UPGRADE_SUCCESSFUL
+## EUICC_UPGRADE_IN_PROGRESS
 
 ```TypeScript
-EUICC_UPGRADE_SUCCESSFUL = 3
+EUICC_UPGRADE_IN_PROGRESS = 1
 ```
 
-Update succeeded.
+Upgrading.
 
 **Since:** 18
 
-<!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3--><!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## EUICC_UPGRADE_ALREADY_LATEST
-
-```TypeScript
-EUICC_UPGRADE_ALREADY_LATEST = 4
-```
-
-Already the latest version.
-
-**Since:** 18
-
-<!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4--><!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4-End-->
+<!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1--><!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -89,6 +73,22 @@ Update service unavailable.
 **Since:** 18
 
 <!--Device-OsuStatus-EUICC_UPGRADE_SERVICE_UNAVAILABLE = 5--><!--Device-OsuStatus-EUICC_UPGRADE_SERVICE_UNAVAILABLE = 5-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## EUICC_UPGRADE_SUCCESSFUL
+
+```TypeScript
+EUICC_UPGRADE_SUCCESSFUL = 3
+```
+
+Update succeeded.
+
+**Since:** 18
+
+<!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3--><!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

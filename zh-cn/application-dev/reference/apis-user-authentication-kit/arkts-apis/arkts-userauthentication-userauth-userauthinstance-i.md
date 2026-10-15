@@ -40,7 +40,7 @@ cancel(): void
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthInstance-cancel(): void--><!--Device-UserAuthInstance-cancel(): void-End-->
 
@@ -386,7 +386,7 @@ start(): void
 - API版本20+：ohos.permission.ACCESS_BIOMETRIC or ohos.permission.USER_AUTH_FROM_BACKGROUND
 - API版本10-19：ohos.permission.ACCESS_BIOMETRIC
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthInstance-start(): void--><!--Device-UserAuthInstance-start(): void-End-->
 

@@ -6,6 +6,8 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getalllauncherabilityinfo1"></a>
+
 ## getAllLauncherAbilityInfo
 
 ```TypeScript
@@ -28,8 +30,8 @@ function getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback<Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherbundlemanager-launcherabilityinfo-t.md)&gt;&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)信息。否则为错误对象。 |
+| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherbundlemanager-launcherabilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为指定用户下所有应用的LauncherAbilityInfo信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -41,6 +43,7 @@ function getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback<Array
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not support. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,8 +66,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getalllauncherabilityinfo-1"></a>
+
+<a id="getalllauncherabilityinfo2"></a>
 
 ## getAllLauncherAbilityInfo
 
@@ -88,7 +93,7 @@ function getAllLauncherAbilityInfo(userId: number) : Promise<Array<LauncherAbili
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
+| userId | number | 是 | 被查询的用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
@@ -106,6 +111,7 @@ function getAllLauncherAbilityInfo(userId: number) : Promise<Array<LauncherAbili
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not support. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +131,5 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+
+<!--DelEnd-->

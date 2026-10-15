@@ -14,24 +14,6 @@ Enumerates the execution modes supported by an [intent developed using a configu
 
 **System API:** This is a system API.
 
-## FOREGROUND
-
-```TypeScript
-FOREGROUND = 0
-```
-
-The intent bound to the UIAbility can run in the foreground.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ExecuteModeForConfiguration-FOREGROUND = 0--><!--Device-ExecuteModeForConfiguration-FOREGROUND = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
 ## BACKGROUND
 
 ```TypeScript
@@ -45,6 +27,24 @@ The intent bound to the UIAbility can run in the background.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ExecuteModeForConfiguration-BACKGROUND = 1--><!--Device-ExecuteModeForConfiguration-BACKGROUND = 1-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+## FOREGROUND
+
+```TypeScript
+FOREGROUND = 0
+```
+
+The intent bound to the UIAbility can run in the foreground.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteModeForConfiguration-FOREGROUND = 0--><!--Device-ExecuteModeForConfiguration-FOREGROUND = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

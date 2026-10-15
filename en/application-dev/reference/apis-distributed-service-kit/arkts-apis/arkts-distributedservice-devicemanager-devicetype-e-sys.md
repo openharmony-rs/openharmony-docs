@@ -16,37 +16,19 @@ Enumerates the device types.
 
 **System API:** This is a system API.
 
-## UNKNOWN_TYPE
+## CAR
 
 ```TypeScript
-UNKNOWN_TYPE = 0
+CAR = 0x83
 ```
 
-Unknown device type.
+Car.
 
 **Since:** 7
 
 **Deprecated since:** 11
 
-<!--Device-DeviceType-UNKNOWN_TYPE = 0--><!--Device-DeviceType-UNKNOWN_TYPE = 0-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
-## SPEAKER
-
-```TypeScript
-SPEAKER = 0x0A
-```
-
-Smart speaker.
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-<!--Device-DeviceType-SPEAKER = 0x0A--><!--Device-DeviceType-SPEAKER = 0x0A-End-->
+<!--Device-DeviceType-CAR = 0x83--><!--Device-DeviceType-CAR = 0x83-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -70,6 +52,24 @@ Phone.
 
 **System API:** This is a system API.
 
+## SPEAKER
+
+```TypeScript
+SPEAKER = 0x0A
+```
+
+Smart speaker.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-DeviceType-SPEAKER = 0x0A--><!--Device-DeviceType-SPEAKER = 0x0A-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
 ## TABLET
 
 ```TypeScript
@@ -88,42 +88,6 @@ Tablet
 
 **System API:** This is a system API.
 
-## WEARABLE
-
-```TypeScript
-WEARABLE = 0x6D
-```
-
-Wearable
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-<!--Device-DeviceType-WEARABLE = 0x6D--><!--Device-DeviceType-WEARABLE = 0x6D-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
-## CAR
-
-```TypeScript
-CAR = 0x83
-```
-
-Car.
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-<!--Device-DeviceType-CAR = 0x83--><!--Device-DeviceType-CAR = 0x83-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
 ## TV
 
 ```TypeScript
@@ -137,6 +101,42 @@ Smart TV
 **Deprecated since:** 11
 
 <!--Device-DeviceType-TV = 0x9C--><!--Device-DeviceType-TV = 0x9C-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
+## UNKNOWN_TYPE
+
+```TypeScript
+UNKNOWN_TYPE = 0
+```
+
+Unknown device type.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-DeviceType-UNKNOWN_TYPE = 0--><!--Device-DeviceType-UNKNOWN_TYPE = 0-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
+## WEARABLE
+
+```TypeScript
+WEARABLE = 0x6D
+```
+
+Wearable
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-DeviceType-WEARABLE = 0x6D--><!--Device-DeviceType-WEARABLE = 0x6D-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

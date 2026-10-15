@@ -405,7 +405,7 @@ defaultPickerItemHeight?: number | string
 **类型：** number &#124; string
 
 **默认值：** 
-- API版本11+：56 vp (selected) and 36 vp (unselected)
+- API版本11+：56 vp（选中项）和36 vp（非选中项）
 
 **起始版本：** 8
 
@@ -552,7 +552,7 @@ enableHoverMode?: boolean
 
 **类型：** boolean
 
-**默认值：** false - meaning not to enable the hover mode.
+**默认值：** false - 表示不开启悬停模式。
 
 **起始版本：** 14
 

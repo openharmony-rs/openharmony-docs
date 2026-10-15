@@ -6,7 +6,7 @@ declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
 
 In addition to the universal attributes, the following attributes are supported.
 
-**Inheritance/Implementation:** ListItemAttribute extends CommonMethod<ListItemAttribute>
+**Inheritance/Implementation:** ListItemAttribute extends CommonMethod&lt;ListItemAttribute&gt;
 
 **Since:** 7
 

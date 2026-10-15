@@ -12,13 +12,13 @@ Enumerates states of the custom dialog box.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## UNINITIALIZED
+## APPEARED
 
 ```TypeScript
-UNINITIALIZED = 0
+APPEARED = 3
 ```
 
-State before the controller is bound to the dialog box.
+State after the dialog display appearance ends.
 
 **Since:** 20
 
@@ -26,25 +26,7 @@ State before the controller is bound to the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-CommonState-UNINITIALIZED = 0--><!--Device-CommonState-UNINITIALIZED = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## INITIALIZED
-
-```TypeScript
-INITIALIZED = 1
-```
-
-State after the controller is bound to the dialog box.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-CommonState-INITIALIZED = 1--><!--Device-CommonState-INITIALIZED = 1-End-->
+<!--Device-CommonState-APPEARED = 3--><!--Device-CommonState-APPEARED = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +48,13 @@ State during the dialog box appearance animation.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## APPEARED
+## DISAPPEARED
 
 ```TypeScript
-APPEARED = 3
+DISAPPEARED = 5
 ```
 
-State after the dialog display appearance ends.
+State after the dialog box disappearance animation ends.
 
 **Since:** 20
 
@@ -80,7 +62,7 @@ State after the dialog display appearance ends.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-CommonState-APPEARED = 3--><!--Device-CommonState-APPEARED = 3-End-->
+<!--Device-CommonState-DISAPPEARED = 5--><!--Device-CommonState-DISAPPEARED = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,13 +84,13 @@ State during the dialog box disappearance animation.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## DISAPPEARED
+## INITIALIZED
 
 ```TypeScript
-DISAPPEARED = 5
+INITIALIZED = 1
 ```
 
-State after the dialog box disappearance animation ends.
+State after the controller is bound to the dialog box.
 
 **Since:** 20
 
@@ -116,6 +98,24 @@ State after the dialog box disappearance animation ends.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-CommonState-DISAPPEARED = 5--><!--Device-CommonState-DISAPPEARED = 5-End-->
+<!--Device-CommonState-INITIALIZED = 1--><!--Device-CommonState-INITIALIZED = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## UNINITIALIZED
+
+```TypeScript
+UNINITIALIZED = 0
+```
+
+State before the controller is bound to the dialog box.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonState-UNINITIALIZED = 0--><!--Device-CommonState-UNINITIALIZED = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

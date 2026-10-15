@@ -4,7 +4,7 @@
 declare interface DragEvent
 ```
 
-Provides information about the drag event.
+A **DragEvent** object contains information about the current drag operation. It provides APIs for obtaining drag coordinates, data, results, preview information, velocity, display information, and drag source information.
 
 **Since:** 7
 
@@ -73,7 +73,7 @@ Obtains drag-related data.
 getDisplayId(): number
 ```
 
-Obtains the ID of the screen where the current drag event occurs. This API is not supported in the [onDragEnd](arkts-arkui-common-comp-commonmethod-c.md#ondragend) callback.
+Obtains the ID of the screen where the current drag event occurs. This API can be used in a multi-screen drag scenario to identify the screen where the drag occurs and adapt the target screen processing logic. This API is not supported in the [onDragEnd](arkts-arkui-common-comp-commonmethod-c.md#ondragend) callback.
 
 **Since:** 20
 
@@ -145,7 +145,7 @@ Obtains the y-coordinate of the drag point relative to the upper left corner of 
 getDragSource(): string
 ```
 
-Obtains the package name of the drag source application.
+Obtains the package name of the drag initiator. This API can be used in cross-application drag scenarios to identify the source application of the data, and to perform data reception verification or service processing based on the source application.
 
 **Since:** 20
 
@@ -161,7 +161,7 @@ Obtains the package name of the drag source application.
 
 | Type | Description |
 | --- | --- |
-| string | Package name of the drag source application. |
+| string | Package name of the drag initiator. |
 
 ## getGlobalDisplayX
 
@@ -445,7 +445,7 @@ Obtains the y-coordinate of the drag point relative to the upper left corner of 
 isRemote(): boolean
 ```
 
-Checks whether the drag operation is cross-device.
+Checks whether the drag operation is cross-device. This API can be used to distinguish a local drag from a cross-device drag in cross-device drag scenarios, and adjust data transmission, permission verification, or prompt logic accordingly.
 
 **Since:** 20
 
@@ -469,7 +469,7 @@ Checks whether the drag operation is cross-device.
 setData(unifiedData: UnifiedData): void
 ```
 
-Sets drag-related data in **DragEvent**.
+Sets drag-related data in **DragEvent**. When used together with [setDataLoadParams](#setdataloadparams), the method called last takes effect.
 
 **Since:** 10
 
@@ -509,7 +509,7 @@ Sets the parameters for deferred data loading from the drag source. This API pro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dataLoadParams | [DataLoadParams](arkts-arkui-common-comp-dataloadparams-t.md) | Yes | Data loading parameters used during a drop operation. |
+| dataLoadParams | [DataLoadParams](arkts-arkui-common-comp-dataloadparams-t.md) | Yes | Data loading parameters used when the drag initiator provides data with a delay, used to provide the loading method of the actual drag data to the system when the user drops on the target application. |
 
 ## setResult
 
@@ -541,7 +541,7 @@ Sets the drag result in **DragEvent**.
 startDataLoading(options: DataSyncOptions): string
 ```
 
-Asynchronously obtains drag data and notifies you of the current data synchronization progress. This API is only supported in the **onDrop** callback.
+Asynchronously obtains drag data and notifies you of the current data synchronization progress. This API is only supported in the **onDrop** callback. When using this API to obtain data, set **disableDataPrefetch** in [DropOptions](arkts-arkui-common-comp-dropoptions-i.md) to **true** to prevent the drag data from being prefetched.
 
 **Since:** 15
 
@@ -630,7 +630,7 @@ Obtains the y-coordinate of the drag point relative to the upper left corner of 
 autoHideComponentUniqueIds?: number[]
 ```
 
-Set the uniqueId or uniqueId array of components that need to be automatically hidden during dragging. This property takes effect only in onDragStart. After the drag starts successfully, the system hides the target components before the drag preview window is shown. Developers need to restore component visibility in onDragEnd or onDrop based on service requirements.
+Set the uniqueId or uniqueId array of components that need to be automatically hidden during dragging. This property takes effect only in onDragStart. After the drag starts successfully, the system hides the target components before the drag preview window is shown. If the drag source itself also needs to be hidden, the uniqueId of the drag source component must be passed in as well. The uniqueId of a component can be obtained through UIContext.getFrameNodeById() together with FrameNode.getUniqueId(). Developers need to restore component visibility in onDragEnd or onDrop based on service requirements.
 
 **Type:** number[]
 
@@ -650,7 +650,7 @@ Set the uniqueId or uniqueId array of components that need to be automatically h
 dragBehavior: DragBehavior
 ```
 
-Copy or paste mode.
+Switches the badge display state between copy and cut modes.
 
 Default value: **DragBehavior.COPY**
 

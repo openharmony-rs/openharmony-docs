@@ -28,17 +28,19 @@ Bundle name of the album.
 
 **System API:** This is a system API.
 
-## DATE_MODIFIED
+## CLOUD_ID
 
 ```TypeScript
-DATE_MODIFIED = 'date_modified'
+CLOUD_ID = 'cloud_id'
 ```
 
-Timestamp when the album was modified, in milliseconds.
+The cloudId of album.
 
-**Since:** 18
+**Since:** 26.0.1
 
-<!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'--><!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'-End-->
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'--><!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -60,17 +62,35 @@ Source URI of the album cover.
 
 **System API:** This is a system API.
 
-## UPLOAD_STATUS
+## DATE_MODIFIED
 
 ```TypeScript
-UPLOAD_STATUS = 'upload_status'
+DATE_MODIFIED = 'date_modified'
 ```
 
-Synchronization status of the album.
+Timestamp when the album was modified, in milliseconds.
 
-**Since:** 22
+**Since:** 18
 
-<!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'--><!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'-End-->
+<!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'--><!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## FILE_HIDDEN
+
+```TypeScript
+FILE_HIDDEN = 'file_hidden'
+```
+
+directory hidden state of filemanager
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'--><!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -94,19 +114,19 @@ Hidden status.
 
 **System API:** This is a system API.
 
-## FILE_HIDDEN
+## SHARE_ALBUM_OWNER
 
 ```TypeScript
-FILE_HIDDEN = 'file_hidden'
+SHARE_ALBUM_OWNER = 'share_album_owner'
 ```
 
-directory hidden state of filemanager
+The owner of share album.
 
-**Since:** 26.0.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'--><!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'-End-->
+<!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'--><!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -148,37 +168,17 @@ The risk type of share album.
 
 **System API:** This is a system API.
 
-## SHARE_ALBUM_OWNER
+## UPLOAD_STATUS
 
 ```TypeScript
-SHARE_ALBUM_OWNER = 'share_album_owner'
+UPLOAD_STATUS = 'upload_status'
 ```
 
-The owner of share album.
+Synchronization status of the album.
 
-**Since:** 26.0.1
+**Since:** 22
 
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'--><!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## CLOUD_ID
-
-```TypeScript
-CLOUD_ID = 'cloud_id'
-```
-
-The cloudId of album.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'--><!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'-End-->
+<!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'--><!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

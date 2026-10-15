@@ -12,43 +12,23 @@ Enumerates the sticky styles.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## None
+## BOTH
 
 ```TypeScript
-None = 0
+BOTH = 3
 ```
 
-In the **ListItemGroup** component, the header is not pinned to the top, and the footer is not pinned to the bottom.
+The header of the ListItemGroup is sticky at the top, and the footer is sticky at the bottom.
 
-**Since:** 9
+**Since:** 20
 
-**Model restriction:** This API can be used in both the stage model and FA model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+**Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
-<!--Device-StickyStyle-None = 0--><!--Device-StickyStyle-None = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Header
-
-```TypeScript
-Header = 1
-```
-
-In the **ListItemGroup** component, the header is pinned to the top, and the footer is not pinned to the bottom.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-StickyStyle-Header = 1--><!--Device-StickyStyle-Header = 1-End-->
+<!--Device-StickyStyle-BOTH = 3--><!--Device-StickyStyle-BOTH = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,22 +52,42 @@ In the **ListItemGroup** component, the footer is pinned to the bottom, and the 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTH
+## Header
 
 ```TypeScript
-BOTH = 3
+Header = 1
 ```
 
-The header of the ListItemGroup is sticky at the top, and the footer is sticky at the bottom.
+In the **ListItemGroup** component, the header is pinned to the top, and the footer is not pinned to the bottom.
 
-**Since:** 20
+**Since:** 9
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 20.
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-StickyStyle-BOTH = 3--><!--Device-StickyStyle-BOTH = 3-End-->
+<!--Device-StickyStyle-Header = 1--><!--Device-StickyStyle-Header = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None = 0
+```
+
+In the **ListItemGroup** component, the header is not pinned to the top, and the footer is not pinned to the bottom.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StickyStyle-None = 0--><!--Device-StickyStyle-None = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

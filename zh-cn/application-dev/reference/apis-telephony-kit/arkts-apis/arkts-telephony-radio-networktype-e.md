@@ -12,34 +12,6 @@ export enum NetworkType
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## NETWORK_TYPE_UNKNOWN
-
-```TypeScript
-NETWORK_TYPE_UNKNOWN = 0
-```
-
-未知网络类型。
-
-**起始版本：** 6
-
-<!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0--><!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## NETWORK_TYPE_GSM
-
-```TypeScript
-NETWORK_TYPE_GSM = 1
-```
-
-网络类型为GSM(Global System For Mobile Communication)。
-
-**起始版本：** 6
-
-<!--Device-NetworkType-NETWORK_TYPE_GSM = 1--><!--Device-NetworkType-NETWORK_TYPE_GSM = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
 ## NETWORK_TYPE_CDMA
 
 ```TypeScript
@@ -54,31 +26,17 @@ NETWORK_TYPE_CDMA = 2
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## NETWORK_TYPE_WCDMA
+## NETWORK_TYPE_GSM
 
 ```TypeScript
-NETWORK_TYPE_WCDMA = 3
+NETWORK_TYPE_GSM = 1
 ```
 
-网络类型为WCDMA(Wideband Code Division Multiple Access)。
+网络类型为GSM(Global System For Mobile Communication)。
 
 **起始版本：** 6
 
-<!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3--><!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## NETWORK_TYPE_TDSCDMA
-
-```TypeScript
-NETWORK_TYPE_TDSCDMA = 4
-```
-
-网络类型为TDSCDMA(TimeDivision-Synchronous Code Division Multiple Access)。
-
-**起始版本：** 6
-
-<!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4--><!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4-End-->
+<!--Device-NetworkType-NETWORK_TYPE_GSM = 1--><!--Device-NetworkType-NETWORK_TYPE_GSM = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -107,5 +65,47 @@ NETWORK_TYPE_NR = 6
 **起始版本：** 6
 
 <!--Device-NetworkType-NETWORK_TYPE_NR = 6--><!--Device-NetworkType-NETWORK_TYPE_NR = 6-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## NETWORK_TYPE_TDSCDMA
+
+```TypeScript
+NETWORK_TYPE_TDSCDMA = 4
+```
+
+网络类型为TDSCDMA(TimeDivision-Synchronous Code Division Multiple Access)。
+
+**起始版本：** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4--><!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## NETWORK_TYPE_UNKNOWN
+
+```TypeScript
+NETWORK_TYPE_UNKNOWN = 0
+```
+
+未知网络类型。
+
+**起始版本：** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0--><!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## NETWORK_TYPE_WCDMA
+
+```TypeScript
+NETWORK_TYPE_WCDMA = 3
+```
+
+网络类型为WCDMA(Wideband Code Division Multiple Access)。
+
+**起始版本：** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3--><!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService

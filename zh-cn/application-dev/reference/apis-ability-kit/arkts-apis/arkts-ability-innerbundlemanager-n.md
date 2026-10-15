@@ -1,17 +1,10 @@
-# innerBundleManager
+# innerBundleManager（innerBundleManager模块）
 
 ```TypeScript
 declare namespace innerBundleManager
 ```
 
 本模块提供launcher应用使用的接口。
-
-> **说明：** 
-> 
-> 本模块从API version 9开始不再支持。建议使用[launcherBundleManager](arkts-ability-bundle-launcherbundlemanager.md)
-> 及[bundleMonitor](arkts-ability-bundle-bundlemonitor.md)替代。
-> 
-> 本模块为系统接口。
 
 **起始版本：** 8
 
@@ -38,14 +31,14 @@ import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLauncherAbilityInfos](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md#getlauncherabilityinfos) | 根据给定的Bundle名称获取LauncherAbilityInfos，使用callback异步回调。 |
-| [getLauncherAbilityInfos](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md#getlauncherabilityinfos-1) | 根据给定的Bundle名称获取LauncherAbilityInfos，使用Promise异步回调。 |
-| [on](arkts-ability-innerbundlemanager-on-f-sys.md#onbundlestatuschange) | 注册Callback。 |
-| [on](arkts-ability-innerbundlemanager-on-f-sys.md#onbundlestatuschange) | 注册Callback。 |
-| [off](arkts-ability-innerbundlemanager-off-f-sys.md#offbundlestatuschange) | 取消注册Callback。 |
-| [off](arkts-ability-innerbundlemanager-off-f-sys.md#offbundlestatuschange) | 取消注册Callback。 |
-| [getAllLauncherAbilityInfos](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md#getalllauncherabilityinfos) | 获取所有的LauncherAbilityInfos，使用callback异步回调。 |
-| [getAllLauncherAbilityInfos](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md#getalllauncherabilityinfos-1) | 获取LauncherAbilityInfos，使用Promise异步回调。 |
-| [getShortcutInfos](arkts-ability-innerbundlemanager-getshortcutinfos-f-sys.md#getshortcutinfos) | 根据给定的Bundle名称获取快捷方式信息，使用callback异步回调。 |
-| [getShortcutInfos](arkts-ability-innerbundlemanager-getshortcutinfos-f-sys.md#getshortcutinfos-1) | 根据给定的Bundle名称获取快捷方式信息，使用Promise异步回调。 |
+| [getAllLauncherAbilityInfos](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md#getalllauncherabilityinfos1) | 获取所有的LauncherAbilityInfos，使用callback异步回调。 |
+| [getAllLauncherAbilityInfos](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md#getalllauncherabilityinfos2) | 获取LauncherAbilityInfos，使用Promise异步回调。 |
+| [getLauncherAbilityInfos](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md#getlauncherabilityinfos1) | 根据给定的Bundle名称获取LauncherAbilityInfos，使用callback异步回调。 |
+| [getLauncherAbilityInfos](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md#getlauncherabilityinfos2) | 根据给定的Bundle名称获取LauncherAbilityInfos，使用Promise异步回调。 |
+| [getShortcutInfos](arkts-ability-innerbundlemanager-getshortcutinfos-f-sys.md#getshortcutinfos1) | 根据给定的Bundle名称获取快捷方式信息，使用callback异步回调。 |
+| [getShortcutInfos](arkts-ability-innerbundlemanager-getshortcutinfos-f-sys.md#getshortcutinfos2) | 根据给定的Bundle名称获取快捷方式信息，使用Promise异步回调。 |
+| [off('BundleStatusChange')](arkts-ability-innerbundlemanager-off-f-sys.md#offbundlestatuschange) | 取消注册Callback。 |
+| [off('BundleStatusChange')](arkts-ability-innerbundlemanager-off-f-sys.md#offbundlestatuschange) | 取消注册Callback。 |
+| [on('BundleStatusChange')](arkts-ability-innerbundlemanager-on-f-sys.md#onbundlestatuschange) | 注册Callback。 |
+| [on('BundleStatusChange')](arkts-ability-innerbundlemanager-on-f-sys.md#onbundlestatuschange) | 注册Callback。 |
 <!--DelEnd-->

@@ -30,7 +30,7 @@ readonly isTorchActive: boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-TorchStatusInfo-readonly isTorchActive: boolean--><!--Device-TorchStatusInfo-readonly isTorchActive: boolean-End-->
 
@@ -48,7 +48,7 @@ readonly isTorchAvailable: boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-TorchStatusInfo-readonly isTorchAvailable: boolean--><!--Device-TorchStatusInfo-readonly isTorchAvailable: boolean-End-->
 
@@ -66,7 +66,7 @@ readonly torchLevel: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-TorchStatusInfo-readonly torchLevel: double--><!--Device-TorchStatusInfo-readonly torchLevel: double-End-->
 

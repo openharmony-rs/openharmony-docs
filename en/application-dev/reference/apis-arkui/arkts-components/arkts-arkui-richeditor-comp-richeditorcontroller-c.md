@@ -14,12 +14,6 @@ Implements the **RichEditor** component controller. Inherits from [RichEditorBas
 > [addSymbolSpan](#addsymbolspan)) are called. The component automatically scrolls to keep
 > the end of the inserted content visible.
 
-## Objects to Import
-
-```ts
-controller: RichEditorController = new RichEditorController();
-```
-
 **Inheritance/Implementation:** RichEditorController extends [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md)
 
 **Since:** 10
@@ -27,6 +21,12 @@ controller: RichEditorController = new RichEditorController();
 <!--Device-unnamed-declare class RichEditorController extends RichEditorBaseController--><!--Device-unnamed-declare class RichEditorController extends RichEditorBaseController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Objects to Import
+
+```ts
+controller: RichEditorController = new RichEditorController();
+```
 
 ## addBuilderSpan
 
@@ -59,7 +59,7 @@ Adds a custom layout (**BuilderSpan**) to **RichEditor**.
 > 
 > - If the component cursor is blinking, the cursor position is updated to after the newly inserted builder after insertion.
 > 
-> - For the node text of [addBuilderSpan](#addbuilderspan), the [enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector),[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig), and [enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector) functions do not take effect.Only the following universal attributes are supported: [size](arkts-arkui-common-comp-commonmethod-c.md#size),[padding](arkts-arkui-common-comp-commonmethod-c.md#padding), [margin](arkts-arkui-common-comp-commonmethod-c.md#margin),[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio), [borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle),[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor),[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius),[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),[opacity](arkts-arkui-common-comp.md), [blur](arkts-arkui-common-comp-commonmethod-c.md#blur),[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur),[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow),[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale),[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness),[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate), [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast),[invert](arkts-arkui-common-comp-commonmethod-c.md#invert),[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia),[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate),[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend),[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur),[clip](arkts-arkui-common-comp-commonmethod-c.md#clip), [mask](arkts-arkui-common-comp-commonmethod-c.md#mask),[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle),[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup),[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext),[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription),[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel),[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect),[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect),[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect).
+> - For the node text of [addBuilderSpan](#addbuilderspan), the [enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector),[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig), and [enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector) functions do not take effect.Only the following universal attributes are supported: [size](arkts-arkui-common-comp-commonmethod-c.md#size),[padding](arkts-arkui-common-comp-commonmethod-c.md#padding), [margin](arkts-arkui-common-comp-commonmethod-c.md#margin),[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio), [borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle),[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor),[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius1),[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1),[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),[opacity](arkts-arkui-common-comp.md), [blur](arkts-arkui-common-comp-commonmethod-c.md#blur1),[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur1),[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1),[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale1),[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness1),[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate1), [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast1),[invert](arkts-arkui-common-comp-commonmethod-c.md#invert1),[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia1),[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate1),[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend1),[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur1),[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1), [mask](arkts-arkui-common-comp-commonmethod-c.md#mask1),[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle),[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup1),[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1),[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription1),[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel),[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect1),[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect1),[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1).
 
 **Since:** 11
 

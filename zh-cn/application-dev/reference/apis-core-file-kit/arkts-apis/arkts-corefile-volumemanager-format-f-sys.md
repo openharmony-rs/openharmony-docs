@@ -6,6 +6,8 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="format1"></a>
+
 ## format
 
 ```TypeScript
@@ -46,7 +48,7 @@ function format(volumeId: string, fsType: string, callback: AsyncCallback<void>)
 | 13900042 | Unknown error. |
 
 
-<a id="format-1"></a>
+<a id="format2"></a>
 
 ## format
 

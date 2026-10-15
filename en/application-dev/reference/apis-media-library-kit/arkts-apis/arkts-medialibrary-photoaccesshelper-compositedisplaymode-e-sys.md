@@ -14,22 +14,6 @@ Enumerates the display modes available for a composite image.
 
 **System API:** This is a system API.
 
-## DEFAULT
-
-```TypeScript
-DEFAULT = 0
-```
-
-Displays the original composite image.
-
-**Since:** 23
-
-<!--Device-CompositeDisplayMode-DEFAULT = 0--><!--Device-CompositeDisplayMode-DEFAULT = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## CLOUD_ENHANCEMENT
 
 ```TypeScript
@@ -41,6 +25,22 @@ Displays the cloud-enhanced composite image.
 **Since:** 23
 
 <!--Device-CompositeDisplayMode-CLOUD_ENHANCEMENT = 1--><!--Device-CompositeDisplayMode-CLOUD_ENHANCEMENT = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## DEFAULT
+
+```TypeScript
+DEFAULT = 0
+```
+
+Displays the original composite image.
+
+**Since:** 23
+
+<!--Device-CompositeDisplayMode-DEFAULT = 0--><!--Device-CompositeDisplayMode-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

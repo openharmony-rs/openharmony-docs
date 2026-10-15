@@ -18,6 +18,8 @@ Defines a **WebSocket** object. Before invoking WebSocket APIs, you need to call
 import { webSocket } from '@kit.NetworkKit';
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -30,7 +32,7 @@ Closes the WebSocket connection. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-close(callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-close(callback: AsyncCallback<boolean>): void-End-->
 
@@ -65,7 +67,7 @@ ws.close((err: BusinessError) => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -79,7 +81,7 @@ Closes the WebSocket connection based on the options parameter. This API uses an
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-close(options: WebSocketCloseOptions, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-close(options: WebSocketCloseOptions, callback: AsyncCallback<boolean>): void-End-->
 
@@ -121,7 +123,7 @@ ws.close(options, (err: BusinessError) => {
 });
 ```
 
-<a id="close-2"></a>
+<a id="close3"></a>
 
 ## close
 
@@ -135,7 +137,7 @@ Closes a WebSocket connection based on the specified options. This API uses a pr
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-close(options?: WebSocketCloseOptions): Promise<boolean>--><!--Device-WebSocket-close(options?: WebSocketCloseOptions): Promise<boolean>-End-->
 
@@ -179,6 +181,8 @@ promise.then((value: boolean) => {
 });
 ```
 
+<a id="connect1"></a>
+
 ## connect
 
 ```TypeScript
@@ -204,7 +208,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-connect(url: string, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-connect(url: string, callback: AsyncCallback<boolean>): void-End-->
 
@@ -246,7 +250,7 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
 });
 ```
 
-<a id="connect-1"></a>
+<a id="connect2"></a>
 
 ## connect
 
@@ -273,7 +277,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback<boolean>): void-End-->
 
@@ -340,7 +344,7 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
 });
 ```
 
-<a id="connect-2"></a>
+<a id="connect3"></a>
 
 ## connect
 
@@ -367,7 +371,7 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-connect(url: string, options?: WebSocketRequestOptions): Promise<boolean>--><!--Device-WebSocket-connect(url: string, options?: WebSocketRequestOptions): Promise<boolean>-End-->
 
@@ -691,7 +695,7 @@ ws.off('headerReceive');
 on(type: 'open', callback: AsyncCallback<Object>): void
 ```
 
-Subscribes to WebSocket open events. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect) is called to initiate a connection request.
+Subscribes to WebSocket open events. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect1) is called to initiate a connection request.
 
 **Since:** 6
 
@@ -938,6 +942,8 @@ ws.on('headerReceive', (data) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -950,7 +956,7 @@ Sends data through a WebSocket connection. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-send(data: string | ArrayBuffer, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-send(data: string | ArrayBuffer, callback: AsyncCallback<boolean>): void-End-->
 
@@ -1001,7 +1007,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 });
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 
@@ -1015,7 +1021,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebSocket-send(data: string | ArrayBuffer): Promise<boolean>--><!--Device-WebSocket-send(data: string | ArrayBuffer): Promise<boolean>-End-->
 

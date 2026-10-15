@@ -36,6 +36,9 @@ onAnimationFinish(): void
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->

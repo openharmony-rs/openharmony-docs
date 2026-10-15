@@ -16,21 +16,21 @@ SVG资源限制等级枚举。
 
 **系统接口：** 此接口为系统接口。
 
-## NONE
+## HIGH
 
 ```TypeScript
-NONE = 0
+HIGH = 3
 ```
 
-使用系统默认的SVG资源限制。
+使用高等级限制，允许使用更少SVG资源预算。
 
-该等级不会关闭SVG资源保护。
+该等级适用于简单SVG图像，如图标和基础的UI资源。
 
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SVGResourceLimitLevel-NONE = 0--><!--Device-SVGResourceLimitLevel-NONE = 0-End-->
+<!--Device-SVGResourceLimitLevel-HIGH = 3--><!--Device-SVGResourceLimitLevel-HIGH = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -76,21 +76,21 @@ MEDIUM = 2
 
 **系统接口：** 此接口为系统接口。
 
-## HIGH
+## NONE
 
 ```TypeScript
-HIGH = 3
+NONE = 0
 ```
 
-使用高等级限制，允许使用更少SVG资源预算。
+使用系统默认的SVG资源限制。
 
-该等级适用于简单SVG图像，如图标和基础的UI资源。
+该等级不会关闭SVG资源保护。
 
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SVGResourceLimitLevel-HIGH = 3--><!--Device-SVGResourceLimitLevel-HIGH = 3-End-->
+<!--Device-SVGResourceLimitLevel-NONE = 0--><!--Device-SVGResourceLimitLevel-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

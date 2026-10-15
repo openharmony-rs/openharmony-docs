@@ -6,6 +6,8 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getalldisplay1"></a>
+
 ## getAllDisplay
 
 ```TypeScript
@@ -18,7 +20,7 @@ Obtains all Display objects. This API uses an asynchronous callback to return th
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md)(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;)
+**Substitutes:** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays1)(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;)
 
 <!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void-End-->
 
@@ -46,7 +48,7 @@ display.getAllDisplay((err: BusinessError, data: Array<display.Display>) => {
 ```
 
 
-<a id="getalldisplay-1"></a>
+<a id="getalldisplay2"></a>
 
 ## getAllDisplay
 

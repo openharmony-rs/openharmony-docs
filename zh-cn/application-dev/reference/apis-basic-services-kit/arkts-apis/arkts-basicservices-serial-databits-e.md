@@ -12,6 +12,22 @@ enum DataBits
 
 **系统能力：** SystemCapability.BusManager.Serial
 
+## EIGHT
+
+```TypeScript
+EIGHT = 8
+```
+
+8个数据位。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DataBits-EIGHT = 8--><!--Device-DataBits-EIGHT = 8-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
 ## FIVE
 
 ```TypeScript
@@ -25,22 +41,6 @@ FIVE = 5
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataBits-FIVE = 5--><!--Device-DataBits-FIVE = 5-End-->
-
-**系统能力：** SystemCapability.BusManager.Serial
-
-## SIX
-
-```TypeScript
-SIX = 6
-```
-
-6个数据位。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DataBits-SIX = 6--><!--Device-DataBits-SIX = 6-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -60,18 +60,18 @@ SEVEN = 7
 
 **系统能力：** SystemCapability.BusManager.Serial
 
-## EIGHT
+## SIX
 
 ```TypeScript
-EIGHT = 8
+SIX = 6
 ```
 
-8个数据位。
+6个数据位。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DataBits-EIGHT = 8--><!--Device-DataBits-EIGHT = 8-End-->
+<!--Device-DataBits-SIX = 6--><!--Device-DataBits-SIX = 6-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial

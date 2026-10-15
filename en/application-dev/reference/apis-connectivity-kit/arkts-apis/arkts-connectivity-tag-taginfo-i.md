@@ -32,7 +32,7 @@ Supported tag technologies. Each number is a constant indicating the supported t
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TagInfo-technology: int[]--><!--Device-TagInfo-technology: int[]-End-->
 
@@ -52,7 +52,7 @@ Tag unique identifier (UID), which consists of hexadecimal numbers ranging from 
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TagInfo-uid: int[]--><!--Device-TagInfo-uid: int[]-End-->
 

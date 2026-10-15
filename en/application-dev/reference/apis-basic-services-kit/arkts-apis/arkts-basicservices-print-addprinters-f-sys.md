@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="addprinters1"></a>
+
 ## addPrinters
 
 ```TypeScript
@@ -39,6 +41,7 @@ Adds printers. This API uses an asynchronous callback to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,8 +66,10 @@ print.addPrinters([printerInfo], (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="addprinters-1"></a>
+
+<a id="addprinters2"></a>
 
 ## addPrinters
 
@@ -104,6 +109,7 @@ Adds printers. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -125,3 +131,5 @@ print.addPrinters([printerInfo]).then(() => {
     console.error(`Failed to add printers. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

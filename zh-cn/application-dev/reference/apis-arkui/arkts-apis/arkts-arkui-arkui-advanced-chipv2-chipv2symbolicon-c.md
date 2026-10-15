@@ -6,8 +6,6 @@ export abstract class ChipV2SymbolIcon extends ChipV2Icon
 
 ChipV2SymbolIcon定义Symbol图标类。
 
-继承自[ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)。
-
 **继承/实现关系：** ChipV2SymbolIcon extends [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 
 **起始版本：** 26.0.0
@@ -60,9 +58,9 @@ public activated?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)修改动效类型及[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
+不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1)修改动效类型及[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
@@ -88,9 +86,9 @@ public normal?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)修改动效类型及[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
+不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1)修改动效类型及[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 

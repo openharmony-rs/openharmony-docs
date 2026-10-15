@@ -12,6 +12,20 @@ Enumerates the status code returned after data processing is complete.
 
 **System capability:** SystemCapability.USB.USBManager
 
+## TRANSFER_CANCELED
+
+```TypeScript
+TRANSFER_CANCELED = 3
+```
+
+Transfer canceled.
+
+**Since:** 18
+
+<!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3--><!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
 ## TRANSFER_COMPLETED
 
 ```TypeScript
@@ -40,48 +54,6 @@ Transfer failed.
 
 **System capability:** SystemCapability.USB.USBManager
 
-## TRANSFER_TIMED_OUT
-
-```TypeScript
-TRANSFER_TIMED_OUT = 2
-```
-
-Transfer timed out.
-
-**Since:** 18
-
-<!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2--><!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-## TRANSFER_CANCELED
-
-```TypeScript
-TRANSFER_CANCELED = 3
-```
-
-Transfer canceled.
-
-**Since:** 18
-
-<!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3--><!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-## TRANSFER_STALL
-
-```TypeScript
-TRANSFER_STALL = 4
-```
-
-Stall detected (bulk/interrupt endpoint).
-
-**Since:** 18
-
-<!--Device-UsbTransferStatus-TRANSFER_STALL = 4--><!--Device-UsbTransferStatus-TRANSFER_STALL = 4-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
 ## TRANSFER_NO_DEVICE
 
 ```TypeScript
@@ -107,5 +79,33 @@ Device sent more data than requested.
 **Since:** 18
 
 <!--Device-UsbTransferStatus-TRANSFER_OVERFLOW = 6--><!--Device-UsbTransferStatus-TRANSFER_OVERFLOW = 6-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+## TRANSFER_STALL
+
+```TypeScript
+TRANSFER_STALL = 4
+```
+
+Stall detected (bulk/interrupt endpoint).
+
+**Since:** 18
+
+<!--Device-UsbTransferStatus-TRANSFER_STALL = 4--><!--Device-UsbTransferStatus-TRANSFER_STALL = 4-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+## TRANSFER_TIMED_OUT
+
+```TypeScript
+TRANSFER_TIMED_OUT = 2
+```
+
+Transfer timed out.
+
+**Since:** 18
+
+<!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2--><!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2-End-->
 
 **System capability:** SystemCapability.USB.USBManager

@@ -30,9 +30,9 @@ Keyword identifier in the variable font property key-value pair, such as 'wght' 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.1.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 <!--Device-FontVariation-axis: string--><!--Device-FontVariation-axis: string-End-->
 
@@ -50,9 +50,9 @@ Whether to normalize. If the value is **true**, the value range of the value fie
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.1.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 <!--Device-FontVariation-isNormalized?: boolean--><!--Device-FontVariation-isNormalized?: boolean-End-->
 
@@ -70,9 +70,9 @@ Value in the font variation key-value pair.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.1.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 <!--Device-FontVariation-value: double--><!--Device-FontVariation-value: double-End-->
 

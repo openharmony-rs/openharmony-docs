@@ -6,7 +6,7 @@ declare class CommonAttribute extends CommonMethod<CommonAttribute>
 
 CommonAttribute for ide.
 
-**Inheritance/Implementation:** CommonAttribute extends CommonMethod<CommonAttribute>
+**Inheritance/Implementation:** CommonAttribute extends CommonMethod&lt;CommonAttribute&gt;
 
 **Since:** 7
 

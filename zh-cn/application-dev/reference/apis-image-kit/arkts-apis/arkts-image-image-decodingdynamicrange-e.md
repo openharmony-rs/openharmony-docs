@@ -26,20 +26,6 @@ AUTO = 0
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## SDR
-
-```TypeScript
-SDR = 1
-```
-
-按照标准动态范围处理图片。
-
-**起始版本：** 12
-
-<!--Device-DecodingDynamicRange-SDR = 1--><!--Device-DecodingDynamicRange-SDR = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## HDR
 
 ```TypeScript
@@ -51,5 +37,19 @@ HDR = 2
 **起始版本：** 12
 
 <!--Device-DecodingDynamicRange-HDR = 2--><!--Device-DecodingDynamicRange-HDR = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## SDR
+
+```TypeScript
+SDR = 1
+```
+
+按照标准动态范围处理图片。
+
+**起始版本：** 12
+
+<!--Device-DecodingDynamicRange-SDR = 1--><!--Device-DecodingDynamicRange-SDR = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

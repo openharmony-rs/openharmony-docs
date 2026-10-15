@@ -31,32 +31,32 @@ import { usb } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [bulkTransfer](arkts-basicservices-usb-bulktransfer-f.md) | Performs bulk transfer. |
-| [claimInterface](arkts-basicservices-usb-claiminterface-f.md) | Claims a USB interface. |
-| [closePipe](arkts-basicservices-usb-closepipe-f.md) | Closes a USB device pipe. |
-| [connectDevice](arkts-basicservices-usb-connectdevice-f.md) | Connects to a USB device. |
-| [controlTransfer](arkts-basicservices-usb-controltransfer-f.md) | Performs control transfer. |
-| [getDevices](arkts-basicservices-usb-getdevices-f.md) | Obtains the USB device list. |
-| [getFileDescriptor](arkts-basicservices-usb-getfiledescriptor-f.md) | Obtains the file descriptor. |
-| [getRawDescriptor](arkts-basicservices-usb-getrawdescriptor-f.md) | Obtains the raw USB descriptor. |
-| [hasRight](arkts-basicservices-usb-hasright-f.md) | Checks whether the application has the permission to access the device. |
-| [releaseInterface](arkts-basicservices-usb-releaseinterface-f.md) | Releases a USB interface. |
-| [requestRight](arkts-basicservices-usb-requestright-f.md) | Requests the temporary permission for the application to access a USB device. This API uses a promise to return the result. System applications are granted the device access permission by default, and you do not need to apply for the permission separately. |
-| [setConfiguration](arkts-basicservices-usb-setconfiguration-f.md) | Sets the device configuration. |
-| [setInterface](arkts-basicservices-usb-setinterface-f.md) | Sets a USB interface. |
+| [bulkTransfer](arkts-basicservices-usb-bulktransfer-f.md#bulktransfer) | Performs bulk transfer. |
+| [claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface) | Claims a USB interface. |
+| [closePipe](arkts-basicservices-usb-closepipe-f.md#closepipe) | Closes a USB device pipe. |
+| [connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice) | Connects to a USB device. |
+| [controlTransfer](arkts-basicservices-usb-controltransfer-f.md#controltransfer) | Performs control transfer. |
+| [getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices) | Obtains the USB device list. |
+| [getFileDescriptor](arkts-basicservices-usb-getfiledescriptor-f.md#getfiledescriptor) | Obtains the file descriptor. |
+| [getRawDescriptor](arkts-basicservices-usb-getrawdescriptor-f.md#getrawdescriptor) | Obtains the raw USB descriptor. |
+| [hasRight](arkts-basicservices-usb-hasright-f.md#hasright) | Checks whether the application has the permission to access the device. |
+| [releaseInterface](arkts-basicservices-usb-releaseinterface-f.md#releaseinterface) | Releases a USB interface. |
+| [requestRight](arkts-basicservices-usb-requestright-f.md#requestright) | Requests the temporary permission for the application to access a USB device. This API uses a promise to return the result. System applications are granted the device access permission by default, and you do not need to apply for the permission separately. |
+| [setConfiguration](arkts-basicservices-usb-setconfiguration-f.md#setconfiguration) | Sets the device configuration. |
+| [setInterface](arkts-basicservices-usb-setinterface-f.md#setinterface) | Sets a USB interface. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [getCurrentFunctions](arkts-basicservices-usb-getcurrentfunctions-f-sys.md) | Obtains the numeric mask combination for the USB function list in Device mode. |
-| [getPorts](arkts-basicservices-usb-getports-f-sys.md) | Obtains the list of all physical USB ports. |
-| [getSupportedModes](arkts-basicservices-usb-getsupportedmodes-f-sys.md) | Obtains the mask combination for the supported mode list of a given USB port. |
-| [setCurrentFunctions](arkts-basicservices-usb-setcurrentfunctions-f-sys.md) | Sets the current USB function list in Device mode. |
-| [setPortRoles](arkts-basicservices-usb-setportroles-f-sys.md) | Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). |
-| [usbFunctionsFromString](arkts-basicservices-usb-usbfunctionsfromstring-f-sys.md) | Converts the USB function list in the string format to a numeric mask in Device mode. |
-| [usbFunctionsToString](arkts-basicservices-usb-usbfunctionstostring-f-sys.md) | Converts the USB function list in the numeric mask format to a string in Device mode. |
+| [getCurrentFunctions](arkts-basicservices-usb-getcurrentfunctions-f-sys.md#getcurrentfunctions) | Obtains the numeric mask combination for the USB function list in Device mode. |
+| [getPorts](arkts-basicservices-usb-getports-f-sys.md#getports) | Obtains the list of all physical USB ports. |
+| [getSupportedModes](arkts-basicservices-usb-getsupportedmodes-f-sys.md#getsupportedmodes) | Obtains the mask combination for the supported mode list of a given USB port. |
+| [setCurrentFunctions](arkts-basicservices-usb-setcurrentfunctions-f-sys.md#setcurrentfunctions) | Sets the current USB function list in Device mode. |
+| [setPortRoles](arkts-basicservices-usb-setportroles-f-sys.md#setportroles) | Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). |
+| [usbFunctionsFromString](arkts-basicservices-usb-usbfunctionsfromstring-f-sys.md#usbfunctionsfromstring) | Converts the USB function list in the string format to a numeric mask in Device mode. |
+| [usbFunctionsToString](arkts-basicservices-usb-usbfunctionstostring-f-sys.md#usbfunctionstostring) | Converts the USB function list in the numeric mask format to a string in Device mode. |
 <!--DelEnd-->
 
 ### Interfaces

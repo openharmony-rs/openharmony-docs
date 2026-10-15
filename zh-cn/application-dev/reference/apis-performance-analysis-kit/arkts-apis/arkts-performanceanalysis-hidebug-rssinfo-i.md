@@ -32,7 +32,7 @@ rss: bigint
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-RssInfo-rss: bigint--><!--Device-RssInfo-rss: bigint-End-->
 
@@ -52,7 +52,7 @@ swapRss: bigint
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-RssInfo-swapRss: bigint--><!--Device-RssInfo-swapRss: bigint-End-->
 

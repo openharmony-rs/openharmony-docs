@@ -6,7 +6,7 @@ declare class LineAttribute extends CommonShapeMethod<LineAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [common attributes for drawing components](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
-**Inheritance/Implementation:** LineAttribute extends CommonShapeMethod<LineAttribute>
+**Inheritance/Implementation:** LineAttribute extends CommonShapeMethod&lt;LineAttribute&gt;
 
 **Since:** 7
 

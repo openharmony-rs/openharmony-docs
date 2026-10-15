@@ -12,51 +12,19 @@ Enumerates the event service types.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
-## MEETING
+## CLASS
 
 ```TypeScript
-MEETING = 'Meeting'
+CLASS = 'Class'
 ```
 
-Join a meeting.
+Join class.
 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ServiceType-MEETING = 'Meeting'--><!--Device-ServiceType-MEETING = 'Meeting'-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
-## WATCHING
-
-```TypeScript
-WATCHING = 'Watching'
-```
-
-Watch a video.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ServiceType-WATCHING = 'Watching'--><!--Device-ServiceType-WATCHING = 'Watching'-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
-## REPAYMENT
-
-```TypeScript
-REPAYMENT = 'Repayment'
-```
-
-Make a payment.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ServiceType-REPAYMENT = 'Repayment'--><!--Device-ServiceType-REPAYMENT = 'Repayment'-End-->
+<!--Device-ServiceType-CLASS = 'Class'--><!--Device-ServiceType-CLASS = 'Class'-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -76,6 +44,38 @@ Watch live TV.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
+## MEETING
+
+```TypeScript
+MEETING = 'Meeting'
+```
+
+Join a meeting.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ServiceType-MEETING = 'Meeting'--><!--Device-ServiceType-MEETING = 'Meeting'-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## REPAYMENT
+
+```TypeScript
+REPAYMENT = 'Repayment'
+```
+
+Make a payment.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ServiceType-REPAYMENT = 'Repayment'--><!--Device-ServiceType-REPAYMENT = 'Repayment'-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
 ## SHOPPING
 
 ```TypeScript
@@ -89,38 +89,6 @@ Go shopping.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ServiceType-SHOPPING = 'Shopping'--><!--Device-ServiceType-SHOPPING = 'Shopping'-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
-## TRIP
-
-```TypeScript
-TRIP = 'Trip'
-```
-
-View the trip.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ServiceType-TRIP = 'Trip'--><!--Device-ServiceType-TRIP = 'Trip'-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
-## CLASS
-
-```TypeScript
-CLASS = 'Class'
-```
-
-Join class.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ServiceType-CLASS = 'Class'--><!--Device-ServiceType-CLASS = 'Class'-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -153,5 +121,37 @@ Start exercising.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ServiceType-SPORTS_EXERCISE = 'SportsExercise'--><!--Device-ServiceType-SPORTS_EXERCISE = 'SportsExercise'-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## TRIP
+
+```TypeScript
+TRIP = 'Trip'
+```
+
+View the trip.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ServiceType-TRIP = 'Trip'--><!--Device-ServiceType-TRIP = 'Trip'-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## WATCHING
+
+```TypeScript
+WATCHING = 'Watching'
+```
+
+Watch a video.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ServiceType-WATCHING = 'Watching'--><!--Device-ServiceType-WATCHING = 'Watching'-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

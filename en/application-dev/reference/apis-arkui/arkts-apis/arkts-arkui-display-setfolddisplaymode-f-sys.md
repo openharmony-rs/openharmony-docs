@@ -6,6 +6,8 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="setfolddisplaymode1"></a>
+
 ## setFoldDisplayMode
 
 ```TypeScript
@@ -36,6 +38,7 @@ Sets the display mode of the foldable device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,8 +53,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setfolddisplaymode-1"></a>
+
+<a id="setfolddisplaymode2"></a>
 
 ## setFoldDisplayMode
 
@@ -83,6 +88,7 @@ Sets the display mode of the foldable device, with the reason for the change spe
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -96,3 +102,5 @@ try {
   console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->

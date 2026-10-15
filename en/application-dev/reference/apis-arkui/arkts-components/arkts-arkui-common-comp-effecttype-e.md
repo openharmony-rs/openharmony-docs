@@ -27,7 +27,7 @@ Enum of using the effects template mode.
 DEFAULT = 0
 ```
 
-Define use the effects template defined by the parent effectComponent.
+Uses the effect template <!--Del-->defined by the parent EffectComponent <!--DelEnd-->to render the component effect.
 
 **Since:** 14
 
@@ -45,7 +45,7 @@ Define use the effects template defined by the parent effectComponent.
 WINDOW_EFFECT = 1
 ```
 
-Define use the effects template defined by the window.
+Uses the effect template defined by the window to render the component effect.
 
 **Since:** 14
 

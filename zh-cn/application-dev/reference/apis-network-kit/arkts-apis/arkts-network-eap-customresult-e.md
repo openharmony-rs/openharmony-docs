@@ -28,20 +28,6 @@ RESULT_FAIL = 0
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
-## RESULT_NEXT
-
-```TypeScript
-RESULT_NEXT = 1
-```
-
-本部分校验成功，校验下一步骤
-
-**起始版本：** 20
-
-<!--Device-CustomResult-RESULT_NEXT = 1--><!--Device-CustomResult-RESULT_NEXT = 1-End-->
-
-**系统能力：** SystemCapability.Communication.NetManager.Eap
-
 ## RESULT_FINISH
 
 ```TypeScript
@@ -53,5 +39,19 @@ RESULT_FINISH = 2
 **起始版本：** 20
 
 <!--Device-CustomResult-RESULT_FINISH = 2--><!--Device-CustomResult-RESULT_FINISH = 2-End-->
+
+**系统能力：** SystemCapability.Communication.NetManager.Eap
+
+## RESULT_NEXT
+
+```TypeScript
+RESULT_NEXT = 1
+```
+
+本部分校验成功，校验下一步骤
+
+**起始版本：** 20
+
+<!--Device-CustomResult-RESULT_NEXT = 1--><!--Device-CustomResult-RESULT_NEXT = 1-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap

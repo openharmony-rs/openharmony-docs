@@ -34,7 +34,7 @@ The system triggers this callback when the AgentExtensionAbility receives a secu
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentExtensionAbility-onAuth(proxy: AgentHostProxy, handshakeData: string): void--><!--Device-AgentExtensionAbility-onAuth(proxy: AgentHostProxy, handshakeData: string): void-End-->
 
@@ -59,7 +59,7 @@ Called back when an agent extension is connected to an ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentExtensionAbility-onConnect(want: Want, proxy: AgentHostProxy): void--><!--Device-AgentExtensionAbility-onConnect(want: Want, proxy: AgentHostProxy): void-End-->
 
@@ -84,7 +84,7 @@ The system triggers this callback when an AgentExtensionAbility instance is crea
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentExtensionAbility-onCreate(want: Want): void--><!--Device-AgentExtensionAbility-onCreate(want: Want): void-End-->
 
@@ -108,7 +108,7 @@ The system triggers this callback when the AgentExtensionAbility receives data s
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentExtensionAbility-onData(proxy: AgentHostProxy, data: string): void--><!--Device-AgentExtensionAbility-onData(proxy: AgentHostProxy, data: string): void-End-->
 
@@ -133,7 +133,7 @@ Called back before an agent service extension is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentExtensionAbility-onDestroy(): void--><!--Device-AgentExtensionAbility-onDestroy(): void-End-->
 
@@ -151,7 +151,7 @@ Called back when ability connected to an agent service extension is disconnected
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentExtensionAbility-onDisconnect(want: Want, proxy: AgentHostProxy): void--><!--Device-AgentExtensionAbility-onDisconnect(want: Want, proxy: AgentHostProxy): void-End-->
 
@@ -178,7 +178,7 @@ Context of the AgentExtensionAbility.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentExtensionAbility-context: AgentExtensionContext--><!--Device-AgentExtensionAbility-context: AgentExtensionContext-End-->
 

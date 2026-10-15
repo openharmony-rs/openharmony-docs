@@ -52,6 +52,7 @@ Obtains the face identifier on the cover of a portrait album or group photo albu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
@@ -82,3 +83,5 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
+
+<!--DelEnd-->

@@ -30,7 +30,7 @@ albumCoverUri?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-albumCoverUri?: string--><!--Device-AVMediaDescription-albumCoverUri?: string-End-->
 
@@ -48,7 +48,7 @@ albumTitle?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-albumTitle?: string--><!--Device-AVMediaDescription-albumTitle?: string-End-->
 
@@ -66,7 +66,7 @@ appName?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-appName?: string--><!--Device-AVMediaDescription-appName?: string-End-->
 
@@ -84,7 +84,7 @@ artist?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-artist?: string--><!--Device-AVMediaDescription-artist?: string-End-->
 
@@ -100,13 +100,13 @@ assetId: string
 
 - 该属性发生变化则其他元数据属性都将被刷新。  
 - 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。  
-- 当该属性设为空值时，调用[setAVMetadata](arkts-avsession-avsession-avsession-i.md#setavmetadata-1)方法将失败，返回错误码6600101。
+- 当该属性设为空值时，调用[setAVMetadata](arkts-avsession-avsession-avsession-i.md#setavmetadata2)方法将失败，返回错误码6600101。
 
 **类型：** string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-assetId: string--><!--Device-AVMediaDescription-assetId: string-End-->
 
@@ -124,7 +124,7 @@ creditsPosition?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-creditsPosition?: int--><!--Device-AVMediaDescription-creditsPosition?: int-End-->
 
@@ -158,7 +158,7 @@ description?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-description?: string--><!--Device-AVMediaDescription-description?: string-End-->
 
@@ -178,7 +178,7 @@ displayTags?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-displayTags?: int--><!--Device-AVMediaDescription-displayTags?: int-End-->
 
@@ -212,7 +212,7 @@ duration?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-duration?: int--><!--Device-AVMediaDescription-duration?: int-End-->
 
@@ -226,7 +226,7 @@ extras?: {[key: string]: Object}
 
 播放列表媒体额外字段。
 
-从API版本26.0.0开始，DLNA投播场景下支持将[ExtraKey](arkts-avsession-avsession-extrakey-e.md)中DLNA_CURRENT_URI_METADATA和DLNA_DIDL_LITE两个键的值传递给对端设备，键值对的值需传入符合XML格式的字符串。如传入入参`{[avSession.ExtraKey.DLNA_CURRENT_URI_METADATA]: '&lt;xxtv&gt;...&lt;/xxtv&gt;'}`。
+从API版本26.0.0开始，DLNA投播场景下支持将[ExtraKey](arkts-avsession-avsession-extrakey-e.md)中DLNA_CURRENT_URI_METADATA和DLNA_DIDL_LITE两个键的值传递给对端设备，键值对的值需传入符合XML格式的字符串。如传入入参`{[avSession.ExtraKey.DLNA_CURRENT_URI_METADATA]: '<xxtv>...</xxtv>'}`。
 
 - 非DLNA投播场景不生效。  
 - 非字符串类型不生效。  
@@ -256,7 +256,7 @@ fdSrc?: media.AVFileDescriptor
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-fdSrc?: media.AVFileDescriptor--><!--Device-AVMediaDescription-fdSrc?: media.AVFileDescriptor-End-->
 
@@ -274,7 +274,7 @@ launchClientData?: string
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-launchClientData?: string--><!--Device-AVMediaDescription-launchClientData?: string-End-->
 
@@ -294,7 +294,7 @@ lyricContent?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-lyricContent?: string--><!--Device-AVMediaDescription-lyricContent?: string-End-->
 
@@ -312,7 +312,7 @@ lyricUri?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-lyricUri?: string--><!--Device-AVMediaDescription-lyricUri?: string-End-->
 
@@ -339,7 +339,7 @@ mediaImage?: image.PixelMap | string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-mediaImage?: image.PixelMap | string--><!--Device-AVMediaDescription-mediaImage?: image.PixelMap | string-End-->
 
@@ -357,7 +357,7 @@ mediaSize?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-mediaSize?: int--><!--Device-AVMediaDescription-mediaSize?: int-End-->
 
@@ -375,7 +375,7 @@ mediaType?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-mediaType?: string--><!--Device-AVMediaDescription-mediaType?: string-End-->
 
@@ -393,7 +393,7 @@ mediaUri?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-mediaUri?: string--><!--Device-AVMediaDescription-mediaUri?: string-End-->
 
@@ -411,7 +411,7 @@ pcmSrc?: boolean
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-pcmSrc?: boolean--><!--Device-AVMediaDescription-pcmSrc?: boolean-End-->
 
@@ -429,7 +429,7 @@ startPosition?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-startPosition?: int--><!--Device-AVMediaDescription-startPosition?: int-End-->
 
@@ -447,7 +447,7 @@ subtitle?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-subtitle?: string--><!--Device-AVMediaDescription-subtitle?: string-End-->
 
@@ -465,7 +465,7 @@ title?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVMediaDescription-title?: string--><!--Device-AVMediaDescription-title?: string-End-->
 

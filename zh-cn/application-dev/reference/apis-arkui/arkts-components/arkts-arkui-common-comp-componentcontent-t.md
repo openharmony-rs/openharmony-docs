@@ -6,6 +6,8 @@ declare type ComponentContent<T = Object> = import('../api/arkui/ComponentConten
 
 组件内容的实体封装。
 
+**类型：** import('../api/arkui/ComponentContent').ComponentContent&lt;T&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type ComponentContent<T = Object> = import('../api/arkui/ComponentConten
 <!--Device-unnamed-declare type ComponentContent<T = Object> = import('../api/arkui/ComponentContent').ComponentContent<T>--><!--Device-unnamed-declare type ComponentContent<T = Object> = import('../api/arkui/ComponentContent').ComponentContent<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/arkui/ComponentContent').ComponentContent&lt;T&gt;

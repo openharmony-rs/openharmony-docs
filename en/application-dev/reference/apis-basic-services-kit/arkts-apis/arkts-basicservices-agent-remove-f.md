@@ -6,6 +6,8 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="remove1"></a>
+
 ## remove
 
 ```TypeScript
@@ -16,7 +18,7 @@ Removes a specified task of the invoker. If the task is being executed, the task
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-agent-function remove(id: string, callback: AsyncCallback<void>): void--><!--Device-agent-function remove(id: string, callback: AsyncCallback<void>): void-End-->
 
@@ -38,7 +40,7 @@ Removes a specified task of the invoker. If the task is being executed, the task
 | [21900006](../errorcode-request.md#21900006-task-not-found) | Task removed or not found. |
 
 
-<a id="remove-1"></a>
+<a id="remove2"></a>
 
 ## remove
 
@@ -50,7 +52,7 @@ Removes a specified task of the invoker. If the task is being executed, the task
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-agent-function remove(id: string): Promise<void>--><!--Device-agent-function remove(id: string): Promise<void>-End-->
 

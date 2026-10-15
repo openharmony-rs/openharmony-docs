@@ -30,7 +30,7 @@ locatingPriority: LocatingPriority
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SingleLocationRequest-locatingPriority: LocatingPriority--><!--Device-SingleLocationRequest-locatingPriority: LocatingPriority-End-->
 
@@ -48,7 +48,7 @@ locatingTimeoutMs: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SingleLocationRequest-locatingTimeoutMs: int--><!--Device-SingleLocationRequest-locatingTimeoutMs: int-End-->
 
@@ -68,7 +68,7 @@ needPoi?: boolean
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-SingleLocationRequest-needPoi?: boolean--><!--Device-SingleLocationRequest-needPoi?: boolean-End-->
 

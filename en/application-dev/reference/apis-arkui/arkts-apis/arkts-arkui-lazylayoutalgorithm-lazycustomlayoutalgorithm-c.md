@@ -4,7 +4,13 @@
 export class LazyCustomLayoutAlgorithm implements LazyLayoutAlgorithm
 ```
 
-Defines the lazy custom layout algorithm.
+A custom lazy loading layout algorithm class. It supports custom measurement and arrangement of child components by overriding [onMeasure](#onmeasure) and [onLayout](#onlayout).
+
+> **NOTE:** 
+> 
+> The object of the **LazyCustomLayoutAlgorithm** class can be used as the input parameter of the
+> [LazyDynamicLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md) component to specify
+> a layout algorithm.
 
 **Inheritance/Implementation:** LazyCustomLayoutAlgorithm implements [LazyLayoutAlgorithm](arkts-arkui-lazylayoutalgorithm-i.md)
 
@@ -20,7 +26,7 @@ Defines the lazy custom layout algorithm.
 constructor(option?: LazyCustomLayoutAlgorithmOptions)
 ```
 
-Constructor.
+Constructor of the custom lazy loading layout algorithm class.
 
 **Since:** 26.0.0
 
@@ -36,7 +42,7 @@ Constructor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| option | [LazyCustomLayoutAlgorithmOptions](arkts-arkui-lazylayoutalgorithm-lazycustomlayoutalgorithmoptions-i.md) | No | set properties of lazy custom layout algorithm. |
+| option | [LazyCustomLayoutAlgorithmOptions](arkts-arkui-lazylayoutalgorithm-lazycustomlayoutalgorithmoptions-i.md) | No | Input parameters for constructing the custom lazy loading layout algorithm, which are used to set the axis direction of the layout algorithm. This parameter needs to be passed when the main axis direction needs to be specified. If not passed, the main axis direction is **Axis.Vertical**. |
 
 ## onLayout
 
@@ -44,7 +50,13 @@ Constructor.
 onLayout(self: FrameNode, position: Position): void
 ```
 
-Method to assign a position to the DynamicLayout FrameNode and each of its children. It can be used to specify the layout location of DynamicLayout FrameNode and its children.
+Customizes the position of the child component to be arranged. When the position of the lazy loading dynamic layout component is determined, the ArkUI framework will transfer the FrameNode and layout position of the component to you through **onLayout**. State variables should not be changed in this callback.
+
+> **NOTE:** 
+> 
+> - In this callback, you can call the [getChild()](arkts-arkui-framenode-c.md#getchild1) API of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode and call the [layout()](arkts-arkui-framenode-c.md#layout) API of [FrameNode](arkts-arkui-framenode-c.md) to set the position of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](arkts-arkui-lazylayoutalgorithm-i.md)of the **LazyDynamicLayout** component.
+> 
+> - When calling [getChild()](arkts-arkui-framenode-c.md#getchild1) in this callback to obtain a child component, you must pass [ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components. When calling [getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount) to obtain the total number of child components, you must pass [ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components.
 
 **Since:** 26.0.0
 
@@ -60,8 +72,8 @@ Method to assign a position to the DynamicLayout FrameNode and each of its child
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| self | [FrameNode](arkts-arkui-framenode-c.md) | Yes | The FrameNode of DynamicLayout component. |
-| position | [Position](arkts-arkui-position-t.md) | Yes | The position of the node, will be used when executing layout method. |
+| self | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Entity node of the lazy loading dynamic layout component in the component tree. |
+| position | [Position](arkts-arkui-position-t.md) | Yes | Position information used when the lazy loading dynamic layout component is laid out. |
 
 ## onMeasure
 
@@ -69,7 +81,13 @@ Method to assign a position to the DynamicLayout FrameNode and each of its child
 onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelper): void
 ```
 
-Method to measure the DynamicLayout FrameNode and its content to determine the measured size.
+Customizes the size of the child component to be measured. When the size of the lazy loading dynamic layout component is determined, the ArkUI framework will transfer the FrameNode, layout constraint, and lazy loading auxiliary object corresponding to the component to you through **onMeasure**. State variables should not be changed in this callback.
+
+> **NOTE:** 
+> 
+> - In this callback, you can call the [getChild()](arkts-arkui-framenode-c.md#getchild1) API of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode and call the [measure()](arkts-arkui-framenode-c.md#measure) API of [FrameNode](arkts-arkui-framenode-c.md) to measure the size of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](arkts-arkui-lazylayoutalgorithm-i.md)of the **LazyDynamicLayout** component.
+> 
+> - When calling [getChild()](arkts-arkui-framenode-c.md#getchild1) in this callback to obtain a child component, you must pass [ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components. When calling [getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount) to obtain the total number of child components, you must pass [ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components.
 
 **Since:** 26.0.0
 
@@ -85,6 +103,6 @@ Method to measure the DynamicLayout FrameNode and its content to determine the m
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| self | [FrameNode](arkts-arkui-framenode-c.md) | Yes | The FrameNode of DynamicLayout component. |
-| constraint | [LayoutConstraint](arkts-arkui-framenode-layoutconstraint-i.md) | Yes | The layout constraint of the node, which will be used in measure process. |
-| helper | [LazyLayoutHelper](arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md) | No | The helper object for lazy layout algorithm, which provides layout direction and view position information. If undefined, it indicates that the current component is not used under a scrollable component and does not support lazy layout. |
+| self | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Entity node of the lazy loading dynamic layout component in the component tree. |
+| constraint | [LayoutConstraint](arkts-arkui-framenode-layoutconstraint-i.md) | Yes | Layout constraint used when the lazy loading dynamic layout component is measured. |
+| helper | [LazyLayoutHelper](arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md) | No | Lazy loading layout auxiliary object, which provides the layout direction and visible area position information. If the value is **undefined**, lazy loading is not supported. The value of **helper** is **undefined** in the following scenarios: <br>1. Lazy loading is not supported when the [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md) component uses the multi-column mode or uses the section mode with any section being in multi-column format. <br>2. Lazy loading is not supported when any of [lanes](../arkts-components/arkts-arkui-list-comp-attribute.md#lanes), [chainAnimation](../arkts-components/arkts-arkui-list-comp-attribute.md#chainanimation), and [scrollSnapAlign](../arkts-components/arkts-arkui-list-comp-attribute.md#scrollsnapalign) is set for the [List](../arkts-components/arkts-arkui-list-comp.md) component. |

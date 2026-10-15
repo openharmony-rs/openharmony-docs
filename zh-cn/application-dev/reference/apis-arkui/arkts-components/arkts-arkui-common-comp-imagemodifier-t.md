@@ -8,6 +8,8 @@ ImageModifier
 
 @typedef { import('../api/arkui/ImageModifier').ImageModifier } ImageModifier
 
+**类型：** import('../api/arkui/ImageModifier').ImageModifier
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ ImageModifier
 <!--Device-unnamed-declare type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier--><!--Device-unnamed-declare type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/arkui/ImageModifier').ImageModifier

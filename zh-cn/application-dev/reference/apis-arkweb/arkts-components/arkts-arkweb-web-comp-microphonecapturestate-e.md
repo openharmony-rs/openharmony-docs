@@ -12,6 +12,20 @@ declare enum MicrophoneCaptureState
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## ACTIVE
+
+```TypeScript
+ACTIVE = 2
+```
+
+麦克风捕获中。
+
+**起始版本：** 23
+
+<!--Device-MicrophoneCaptureState-ACTIVE = 2--><!--Device-MicrophoneCaptureState-ACTIVE = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## NONE
 
 ```TypeScript
@@ -37,19 +51,5 @@ PAUSED = 1
 **起始版本：** 23
 
 <!--Device-MicrophoneCaptureState-PAUSED = 1--><!--Device-MicrophoneCaptureState-PAUSED = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## ACTIVE
-
-```TypeScript
-ACTIVE = 2
-```
-
-麦克风捕获中。
-
-**起始版本：** 23
-
-<!--Device-MicrophoneCaptureState-ACTIVE = 2--><!--Device-MicrophoneCaptureState-ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

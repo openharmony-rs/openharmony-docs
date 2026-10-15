@@ -42,6 +42,28 @@ Registers the callback when the **policy** changes. This API uses an asynchronou
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  policy: policy.NetUidPolicy
+}
+
+try {
+  policy.on('netUidPolicyChange', (data: Data) => {
+    console.info('on netUidPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netUidPolicyChange error: ' + JSON.stringify(err));
+}
+```
+
+<!--DelEnd-->
+
 
 ## on('netUidRuleChange')
 
@@ -78,6 +100,28 @@ Registers the callback when the **rule** changes. This API uses an asynchronous 
 | [2100001](../errorcode-net-connection.md#2100001-invalid-parameter-value) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  rule: policy.NetUidRule
+}
+
+try {
+  policy.on('netUidRuleChange', (data: Data) => {
+    console.info('on netUidRuleChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netUidRuleChange error: ' + JSON.stringify(err));
+}
+```
+
+<!--DelEnd-->
 
 
 ## on('netMeteredIfacesChange')
@@ -116,6 +160,23 @@ Registers the callback when the **iface** changes. This API uses an asynchronous
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+try {
+  policy.on('netMeteredIfacesChange', (data: string[]) => {
+    console.info('on netMeteredIfacesChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netMeteredIfacesChange error: ' + JSON.stringify(err));
+}
+```
+
+<!--DelEnd-->
+
 
 ## on('netQuotaPolicyChange')
 
@@ -153,6 +214,28 @@ Registers the callback for network quota policy changes. This API uses an asynch
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  policy: policy.NetUidPolicy
+}
+
+try {
+  policy.on('netQuotaPolicyChange', (data: policy.NetQuotaPolicy[]) => {
+    console.info('on netQuotaPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netQuotaPolicyChange error: ' + JSON.stringify(err));
+}
+```
+
+<!--DelEnd-->
+
 
 ## on('netBackgroundPolicyChange')
 
@@ -189,3 +272,20 @@ Registers the callback for background network policy changes. This API uses an a
 | [2100001](../errorcode-net-connection.md#2100001-invalid-parameter-value) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+try {
+  policy.on('netBackgroundPolicyChange', (data: boolean) => {
+    console.info('on netBackgroundPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netBackgroundPolicyChange error: ' + JSON.stringify(err));
+}
+```
+
+<!--DelEnd-->

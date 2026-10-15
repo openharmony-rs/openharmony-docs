@@ -12,76 +12,6 @@ export enum SatelliteConstellationCategory
 
 **系统能力：** SystemCapability.Location.Location.Gnss
 
-## CONSTELLATION_CATEGORY_UNKNOWN
-
-```TypeScript
-CONSTELLATION_CATEGORY_UNKNOWN = 0
-```
-
-默认值。
-
-**起始版本：** 12
-
-<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_UNKNOWN = 0--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Location.Location.Gnss
-
-## CONSTELLATION_CATEGORY_GPS
-
-```TypeScript
-CONSTELLATION_CATEGORY_GPS = 1
-```
-
-GPS（Global Positioning System），即全球定位系统，是美国研制发射的一种以人造地球卫星为基础的高精度无线电导航的定位系统。
-
-**起始版本：** 12
-
-<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GPS = 1--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GPS = 1-End-->
-
-**系统能力：** SystemCapability.Location.Location.Gnss
-
-## CONSTELLATION_CATEGORY_SBAS
-
-```TypeScript
-CONSTELLATION_CATEGORY_SBAS = 2
-```
-
-SBAS（Satellite-Based Augmentation System），即星基增强系统，通过地球静止轨道（GEO）卫星搭载卫星导航增强信号转发器，可以向用户播发星历误差、卫星钟差、电离层延迟等多种修正信息，实现对于原有卫星导航系统定位精度的改进。
-
-**起始版本：** 12
-
-<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_SBAS = 2--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_SBAS = 2-End-->
-
-**系统能力：** SystemCapability.Location.Location.Gnss
-
-## CONSTELLATION_CATEGORY_GLONASS
-
-```TypeScript
-CONSTELLATION_CATEGORY_GLONASS = 3
-```
-
-GLONASS（GLOBAL NAVIGATION SATELLITE SYSTEM），是苏联/俄罗斯研制卫星导航系统。
-
-**起始版本：** 12
-
-<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GLONASS = 3--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GLONASS = 3-End-->
-
-**系统能力：** SystemCapability.Location.Location.Gnss
-
-## CONSTELLATION_CATEGORY_QZSS
-
-```TypeScript
-CONSTELLATION_CATEGORY_QZSS = 4
-```
-
-QZSS（Quasi-Zenith Satellite System），即准天顶卫星系统，是以三颗人造卫星透过时间转移完成全球定位系统区域性功能的卫星扩增系统，是日本研发的卫星系统。
-
-**起始版本：** 12
-
-<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_QZSS = 4--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_QZSS = 4-End-->
-
-**系统能力：** SystemCapability.Location.Location.Gnss
-
 ## CONSTELLATION_CATEGORY_BEIDOU
 
 ```TypeScript
@@ -110,6 +40,34 @@ GALILEO（Galileo satellite navigation system），即伽利略卫星导航系�
 
 **系统能力：** SystemCapability.Location.Location.Gnss
 
+## CONSTELLATION_CATEGORY_GLONASS
+
+```TypeScript
+CONSTELLATION_CATEGORY_GLONASS = 3
+```
+
+GLONASS（GLOBAL NAVIGATION SATELLITE SYSTEM），是苏联/俄罗斯研制卫星导航系统。
+
+**起始版本：** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GLONASS = 3--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GLONASS = 3-End-->
+
+**系统能力：** SystemCapability.Location.Location.Gnss
+
+## CONSTELLATION_CATEGORY_GPS
+
+```TypeScript
+CONSTELLATION_CATEGORY_GPS = 1
+```
+
+GPS（Global Positioning System），即全球定位系统，是美国研制发射的一种以人造地球卫星为基础的高精度无线电导航的定位系统。
+
+**起始版本：** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GPS = 1--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GPS = 1-End-->
+
+**系统能力：** SystemCapability.Location.Location.Gnss
+
 ## CONSTELLATION_CATEGORY_IRNSS
 
 ```TypeScript
@@ -121,5 +79,47 @@ IRNSS（Indian Regional Navigation Satellite System），即印度区域导航�
 **起始版本：** 12
 
 <!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_IRNSS = 7--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_IRNSS = 7-End-->
+
+**系统能力：** SystemCapability.Location.Location.Gnss
+
+## CONSTELLATION_CATEGORY_QZSS
+
+```TypeScript
+CONSTELLATION_CATEGORY_QZSS = 4
+```
+
+QZSS（Quasi-Zenith Satellite System），即准天顶卫星系统，是以三颗人造卫星透过时间转移完成全球定位系统区域性功能的卫星扩增系统，是日本研发的卫星系统。
+
+**起始版本：** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_QZSS = 4--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_QZSS = 4-End-->
+
+**系统能力：** SystemCapability.Location.Location.Gnss
+
+## CONSTELLATION_CATEGORY_SBAS
+
+```TypeScript
+CONSTELLATION_CATEGORY_SBAS = 2
+```
+
+SBAS（Satellite-Based Augmentation System），即星基增强系统，通过地球静止轨道（GEO）卫星搭载卫星导航增强信号转发器，可以向用户播发星历误差、卫星钟差、电离层延迟等多种修正信息，实现对于原有卫星导航系统定位精度的改进。
+
+**起始版本：** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_SBAS = 2--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_SBAS = 2-End-->
+
+**系统能力：** SystemCapability.Location.Location.Gnss
+
+## CONSTELLATION_CATEGORY_UNKNOWN
+
+```TypeScript
+CONSTELLATION_CATEGORY_UNKNOWN = 0
+```
+
+默认值。
+
+**起始版本：** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_UNKNOWN = 0--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Location.Location.Gnss

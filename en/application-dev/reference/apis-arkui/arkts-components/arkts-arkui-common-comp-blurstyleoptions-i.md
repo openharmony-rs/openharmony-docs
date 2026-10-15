@@ -90,15 +90,13 @@ Default value: **ThemeColorMode.SYSTEM**
 scale?: number
 ```
 
-Foreground blur scale.
+Define the scale of blur effect. The range of value is [0, 1]. The larger the value, the more obvious the blurring effect.
 
 Default value: **1.0**
 
 Value range: [0.0, 1.0]
 
-**1.0** indicates the highest blur degree.
-
-**0.0** indicates the lowest blur degree.
+A value of 0 indicates no blur effect and a value of 1 indicates a complete blur effect.
 
 **Type:** number
 

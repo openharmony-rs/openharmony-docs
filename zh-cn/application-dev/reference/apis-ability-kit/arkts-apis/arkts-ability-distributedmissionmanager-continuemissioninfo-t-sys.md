@@ -8,6 +8,8 @@ export type ContinueMissionInfo = _ContinueMissionInfo
 
 @typedef { _ContinueMissionInfo }
 
+**类型：** _ContinueMissionInfo
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ export type ContinueMissionInfo = _ContinueMissionInfo
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _ContinueMissionInfo

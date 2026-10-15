@@ -12,13 +12,13 @@ declare enum TextContentAlign
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
+## BOTTOM
 
 ```TypeScript
-TOP = 0
+BOTTOM = 2
 ```
 
-内容区顶部对齐。
+内容区底部对齐。
 
 **起始版本：** 21
 
@@ -26,7 +26,7 @@ TOP = 0
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextContentAlign-TOP = 0--><!--Device-TextContentAlign-TOP = 0-End-->
+<!--Device-TextContentAlign-BOTTOM = 2--><!--Device-TextContentAlign-BOTTOM = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ CENTER = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTTOM
+## TOP
 
 ```TypeScript
-BOTTOM = 2
+TOP = 0
 ```
 
-内容区底部对齐。
+内容区顶部对齐。
 
 **起始版本：** 21
 
@@ -62,6 +62,6 @@ BOTTOM = 2
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextContentAlign-BOTTOM = 2--><!--Device-TextContentAlign-BOTTOM = 2-End-->
+<!--Device-TextContentAlign-TOP = 0--><!--Device-TextContentAlign-TOP = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

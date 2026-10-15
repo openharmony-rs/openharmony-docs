@@ -12,45 +12,17 @@ Enumerates touch tool types.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## FINGER
+## AIRBRUSH
 
 ```TypeScript
-FINGER = 0
+AIRBRUSH = 5
 ```
 
-Finger.
+Air brush.
 
 **Since:** 9
 
-<!--Device-ToolType-FINGER = 0--><!--Device-ToolType-FINGER = 0-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-## PEN
-
-```TypeScript
-PEN = 1
-```
-
-Stylus.
-
-**Since:** 9
-
-<!--Device-ToolType-PEN = 1--><!--Device-ToolType-PEN = 1-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-## RUBBER
-
-```TypeScript
-RUBBER = 2
-```
-
-Eraser.
-
-**Since:** 9
-
-<!--Device-ToolType-RUBBER = 2--><!--Device-ToolType-RUBBER = 2-End-->
+<!--Device-ToolType-AIRBRUSH = 5--><!--Device-ToolType-AIRBRUSH = 5-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -68,31 +40,31 @@ Brush.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## PENCIL
+## FINGER
 
 ```TypeScript
-PENCIL = 4
+FINGER = 0
 ```
 
-Pencil.
+Finger.
 
 **Since:** 9
 
-<!--Device-ToolType-PENCIL = 4--><!--Device-ToolType-PENCIL = 4-End-->
+<!--Device-ToolType-FINGER = 0--><!--Device-ToolType-FINGER = 0-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## AIRBRUSH
+## LENS
 
 ```TypeScript
-AIRBRUSH = 5
+LENS = 7
 ```
 
-Air brush.
+Lens.
 
 **Since:** 9
 
-<!--Device-ToolType-AIRBRUSH = 5--><!--Device-ToolType-AIRBRUSH = 5-End-->
+<!--Device-ToolType-LENS = 7--><!--Device-ToolType-LENS = 7-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -110,16 +82,44 @@ Mouse.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## LENS
+## PEN
 
 ```TypeScript
-LENS = 7
+PEN = 1
 ```
 
-Lens.
+Stylus.
 
 **Since:** 9
 
-<!--Device-ToolType-LENS = 7--><!--Device-ToolType-LENS = 7-End-->
+<!--Device-ToolType-PEN = 1--><!--Device-ToolType-PEN = 1-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## PENCIL
+
+```TypeScript
+PENCIL = 4
+```
+
+Pencil.
+
+**Since:** 9
+
+<!--Device-ToolType-PENCIL = 4--><!--Device-ToolType-PENCIL = 4-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## RUBBER
+
+```TypeScript
+RUBBER = 2
+```
+
+Eraser.
+
+**Since:** 9
+
+<!--Device-ToolType-RUBBER = 2--><!--Device-ToolType-RUBBER = 2-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

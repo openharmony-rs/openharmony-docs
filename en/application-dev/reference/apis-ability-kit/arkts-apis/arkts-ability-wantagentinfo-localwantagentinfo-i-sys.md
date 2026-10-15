@@ -20,7 +20,7 @@ Defines the information required for triggering a local WantAgent object. The in
 operationType?: abilityWantAgent.OperationType
 ```
 
-Type of the operation to execute.
+Type of the action that will be executed, used to specify the trigger mode of the WantAgent (for example, starting an ability or sending an event). For details about the values, see the OperationType enum description.
 
 **Type:** [abilityWantAgent.OperationType](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-wantagent.md)
 
@@ -40,7 +40,7 @@ Type of the operation to execute.
 requestCode: number
 ```
 
-Custom request code, which is used to identify the operation to execute.
+Request code defined by the developer, used to identify the action that will be executed, so that the corresponding action can be identified and matched by this request code later. A unique value is recommended to avoid confusion.
 
 **Type:** number
 
@@ -60,7 +60,7 @@ Custom request code, which is used to identify the operation to execute.
 wants: Array<Want>
 ```
 
-Array of all Want objects. Currently, only one Want object is supported. If multiple values are passed in, only the first member in the array is used.
+List of actions that will be executed. Currently, only one Want is supported. When multiple Wants are passed in, the system uses only the first member of the wants array and ignores the others.
 
 **Type:** Array&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt;
 

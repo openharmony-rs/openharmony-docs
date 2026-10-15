@@ -14,22 +14,6 @@ Enumerates the types of the file to read.
 
 **System API:** This is a system API.
 
-## ORIGINAL_MODE
-
-```TypeScript
-ORIGINAL_MODE = 0
-```
-
-Original file.
-
-**Since:** 11
-
-<!--Device-SourceMode-ORIGINAL_MODE = 0--><!--Device-SourceMode-ORIGINAL_MODE = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## EDITED_MODE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Edited file.
 **Since:** 11
 
 <!--Device-SourceMode-EDITED_MODE = 1--><!--Device-SourceMode-EDITED_MODE = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## ORIGINAL_MODE
+
+```TypeScript
+ORIGINAL_MODE = 0
+```
+
+Original file.
+
+**Since:** 11
+
+<!--Device-SourceMode-ORIGINAL_MODE = 0--><!--Device-SourceMode-ORIGINAL_MODE = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

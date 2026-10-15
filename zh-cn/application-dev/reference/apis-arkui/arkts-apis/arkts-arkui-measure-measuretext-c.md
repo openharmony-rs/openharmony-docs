@@ -36,7 +36,7 @@ static measureText(options: MeasureOptions): number
 
 **废弃版本：** 18
 
-**替代接口：** measureText
+**替代接口：** [measureText](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretext)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -98,7 +98,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 **废弃版本：** 18
 
-**替代接口：** measureTextSize
+**替代接口：** [measureTextSize](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretextsize)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

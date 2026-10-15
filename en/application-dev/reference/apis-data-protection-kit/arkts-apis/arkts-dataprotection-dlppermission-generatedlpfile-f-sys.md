@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="generatedlpfile1"></a>
+
 ## generateDLPFile
 
 ```TypeScript
@@ -30,8 +32,8 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | Yes | Authorization information, which includes the authorized user list, owner account, and contact account information. |
 
 **Return value:**
@@ -46,7 +48,7 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -56,6 +58,7 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -94,8 +97,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
 
-<a id="generatedlpfile-1"></a>
+
+<a id="generatedlpfile2"></a>
 
 ## generateDLPFile
 
@@ -121,8 +126,8 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | Yes | Authorization information, which includes the authorized user list, owner account, and contact account information. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | Yes | Callback used to return the result. If the DLP file generation is successful, **err** is **undefined**, and **data** is the DLP file information obtained. Otherwise, **err** is an error object. |
 
@@ -132,7 +137,7 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -142,6 +147,7 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 | [19100009](../errorcode-dlp.md#19100009-failed-to-operate-the-dlp-file) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -174,3 +180,5 @@ dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // Generat
   fileIo.closeSync(dlp);
 });
 ```
+
+<!--DelEnd-->

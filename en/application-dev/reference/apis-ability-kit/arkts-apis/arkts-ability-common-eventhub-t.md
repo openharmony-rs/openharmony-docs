@@ -6,6 +6,8 @@ export type EventHub = _EventHub.default
 
 Defines EventHub, which is an event communication mechanism based on the publish-subscribe pattern.
 
+**Type:** _EventHub.default
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines EventHub, which is an event communication mechanism based on the publish
 <!--Device-common-export type EventHub = _EventHub.default--><!--Device-common-export type EventHub = _EventHub.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _EventHub.default

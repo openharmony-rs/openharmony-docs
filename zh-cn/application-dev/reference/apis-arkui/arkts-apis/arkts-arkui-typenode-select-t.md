@@ -6,6 +6,8 @@ type Select = TypedFrameNode<SelectInterface, SelectAttribute>
 
 Select类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SelectInterface, [SelectAttribute](../arkts-components/arkts-arkui-select-comp-attribute.md)&gt;
+
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Select类型的FrameNode节点类型。
 <!--Device-typeNode-type Select = TypedFrameNode<SelectInterface, SelectAttribute>--><!--Device-typeNode-type Select = TypedFrameNode<SelectInterface, SelectAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SelectInterface, [SelectAttribute](../arkts-components/arkts-arkui-select-comp-attribute.md)&gt;

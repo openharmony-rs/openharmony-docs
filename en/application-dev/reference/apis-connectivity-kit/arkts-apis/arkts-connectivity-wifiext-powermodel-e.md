@@ -6,8 +6,6 @@ export enum PowerModel
 
 The power model enumeration.
 
-@enum { number } PowerModel
-
 **Since:** 8
 
 **Deprecated since:** 9
@@ -15,24 +13,6 @@ The power model enumeration.
 **Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
 <!--Device-wifiext-export enum PowerModel--><!--Device-wifiext-export enum PowerModel-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.AP.Extension
-
-## SLEEPING
-
-```TypeScript
-SLEEPING = 0
-```
-
-Sleeping model.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
-
-<!--Device-PowerModel-SLEEPING = 0--><!--Device-PowerModel-SLEEPING = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
@@ -51,6 +31,24 @@ General model.
 **Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
 <!--Device-PowerModel-GENERAL = 1--><!--Device-PowerModel-GENERAL = 1-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.AP.Extension
+
+## SLEEPING
+
+```TypeScript
+SLEEPING = 0
+```
+
+Sleeping model.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
+
+<!--Device-PowerModel-SLEEPING = 0--><!--Device-PowerModel-SLEEPING = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 

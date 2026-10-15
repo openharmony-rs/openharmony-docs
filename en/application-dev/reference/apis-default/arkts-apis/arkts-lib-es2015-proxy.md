@@ -18,4 +18,4 @@
 
 | Name | Description |
 | --- | --- |
-| [Proxy](arkts-lib-es2015-proxy-p.md) |  |
+| [Proxy](arkts-lib-es2015-proxy-p.md#proxy) |  |

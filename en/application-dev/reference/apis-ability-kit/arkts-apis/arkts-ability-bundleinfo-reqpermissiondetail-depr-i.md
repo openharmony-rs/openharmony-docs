@@ -8,15 +8,14 @@ export interface ReqPermissionDetail
 > **NOTE:** 
 > 
 > This API has been supported since API version 7 and deprecated since API version 9. You are advised to use
-> ReqPermissionDetail instead.
-
-Provides the detailed information of the permissions to request from the system.
+> [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md) instead.
+> Provides the detailed information of the permissions to request from the system.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** bundleInfo
+**Substitutes:** [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)
 
 <!--Device-unnamed-export interface ReqPermissionDetail--><!--Device-unnamed-export interface ReqPermissionDetail-End-->
 

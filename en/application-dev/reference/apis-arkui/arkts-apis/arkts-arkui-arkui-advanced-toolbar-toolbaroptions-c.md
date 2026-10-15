@@ -6,7 +6,7 @@ export declare class ToolBarOptions extends Array<ToolBarOption>
 
 Inherits from Array&lt;[ToolBarOption](arkts-arkui-arkui-advanced-toolbar-toolbaroption-c.md)&gt;.
 
-**Inheritance/Implementation:** ToolBarOptions extends Array<ToolBarOption>
+**Inheritance/Implementation:** ToolBarOptions extends Array&lt;ToolBarOption&gt;
 
 **Since:** 10
 

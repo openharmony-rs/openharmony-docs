@@ -6,6 +6,8 @@ type Marquee = TypedFrameNode<MarqueeInterface, MarqueeAttribute>
 
 Represents a FrameNode of the **Marquee** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;MarqueeInterface, [MarqueeAttribute](../arkts-components/arkts-arkui-marquee-comp-attribute.md)&gt;
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Marquee** type.
 <!--Device-typeNode-type Marquee = TypedFrameNode<MarqueeInterface, MarqueeAttribute>--><!--Device-typeNode-type Marquee = TypedFrameNode<MarqueeInterface, MarqueeAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;MarqueeInterface, [MarqueeAttribute](../arkts-components/arkts-arkui-marquee-comp-attribute.md)&gt;

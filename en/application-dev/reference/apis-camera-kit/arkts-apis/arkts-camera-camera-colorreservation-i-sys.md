@@ -51,7 +51,10 @@ Obtains the color reservation type in use.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
+
+<!--DelEnd-->
 
 ## setColorReservation
 
@@ -80,11 +83,12 @@ Sets a color reservation type. Before the setting, call [getSupportedColorReserv
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -100,3 +104,5 @@ function setColorReservation(session: camera.VideoSessionForSys, type: camera.Co
   }
 }
 ```
+
+<!--DelEnd-->

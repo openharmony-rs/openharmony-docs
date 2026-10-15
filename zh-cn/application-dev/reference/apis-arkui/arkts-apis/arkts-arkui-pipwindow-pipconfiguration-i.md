@@ -30,7 +30,7 @@ componentController: XComponentController
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-componentController: XComponentController--><!--Device-PiPConfiguration-componentController: XComponentController-End-->
 
@@ -42,13 +42,13 @@ componentController: XComponentController
 contentHeight?: number
 ```
 
-原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md)创建PiPController时，不传值则默认为XComponent组件的高度。
+原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create2)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create1)创建PiPController时，不传值则默认为XComponent组件的高度。
 
 **类型：** number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-contentHeight?: int--><!--Device-PiPConfiguration-contentHeight?: int-End-->
 
@@ -60,13 +60,13 @@ contentHeight?: number
 contentWidth?: number
 ```
 
-原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md)创建PiPController时，不传值则默认为XComponent组件的宽度。
+原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create2)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create1)创建PiPController时，不传值则默认为XComponent组件的宽度。
 
 **类型：** number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-contentWidth?: int--><!--Device-PiPConfiguration-contentWidth?: int-End-->
 
@@ -84,7 +84,7 @@ context: BaseContext
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-context: BaseContext--><!--Device-PiPConfiguration-context: BaseContext-End-->
 
@@ -102,7 +102,7 @@ controlGroups?: Array<PiPControlGroup>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>--><!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>-End-->
 
@@ -130,7 +130,7 @@ false：表示关闭画中画四角吸附功能。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean--><!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean-End-->
 
@@ -148,7 +148,7 @@ customUIController?: NodeController
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-customUIController?: NodeController--><!--Device-PiPConfiguration-customUIController?: NodeController-End-->
 
@@ -174,7 +174,7 @@ defaultWindowSizeType?: number
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-defaultWindowSizeType?: int--><!--Device-PiPConfiguration-defaultWindowSizeType?: int-End-->
 
@@ -194,7 +194,7 @@ navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-handleId?: int--><!--Device-PiPConfiguration-handleId?: int-End-->
 
@@ -212,7 +212,7 @@ localStorage?: LocalStorage
 
 **起始版本：** 17
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本17开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-localStorage?: LocalStorage--><!--Device-PiPConfiguration-localStorage?: LocalStorage-End-->
 
@@ -236,7 +236,7 @@ navigation控件ID，不传值则默认不需要缓存页面。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-navigationId?: string--><!--Device-PiPConfiguration-navigationId?: string-End-->
 
@@ -254,7 +254,7 @@ templateType?: PiPTemplateType
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPConfiguration-templateType?: PiPTemplateType--><!--Device-PiPConfiguration-templateType?: PiPTemplateType-End-->
 

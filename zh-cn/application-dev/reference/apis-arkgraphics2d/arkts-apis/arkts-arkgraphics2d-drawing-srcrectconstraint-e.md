@@ -12,20 +12,6 @@ enum SrcRectConstraint
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## STRICT
-
-```TypeScript
-STRICT = 0
-```
-
-严格限制采样范围在源矩形区域内，速度较慢。
-
-**起始版本：** 12
-
-<!--Device-SrcRectConstraint-STRICT = 0--><!--Device-SrcRectConstraint-STRICT = 0-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
 ## FAST
 
 ```TypeScript
@@ -37,5 +23,19 @@ FAST = 1
 **起始版本：** 12
 
 <!--Device-SrcRectConstraint-FAST = 1--><!--Device-SrcRectConstraint-FAST = 1-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## STRICT
+
+```TypeScript
+STRICT = 0
+```
+
+严格限制采样范围在源矩形区域内，速度较慢。
+
+**起始版本：** 12
+
+<!--Device-SrcRectConstraint-STRICT = 0--><!--Device-SrcRectConstraint-STRICT = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

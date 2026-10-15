@@ -4,7 +4,7 @@
 export class DragController
 ```
 
-Provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein.
+Provides drag-and-drag control capabilities, supporting the proactive initiation of dragging with attached drag information when the application receives events such as touch or long press. It also supports creating drag actions, obtaining the drag preview, controlling drag event reporting and drag start requests, canceling drag data loading, and displaying the drop-disallowed badge when dropping onto a target area is not allowed.
 
 > **NOTE:** 
 > 
@@ -63,11 +63,12 @@ Cancels the data loading initiated by the [startDataLoading](../arkts-components
 createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: dragController.DragInfo): dragController.DragAction
 ```
 
-Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the drag handle point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation.
+Creates a drag action object, explicitly specifying the drag preview (multiple previews are supported), drag data, and touch-down point. If a drag initiated by an existing DragAction object is not yet finished, a new DragAction object cannot be created, and the API throws an exception. After the lifecycle of a DragAction object ends, the callbacks registered on it become invalid. Therefore, you need to hold the object while receiving its callbacks, and overwrite it with a new object returned by **createDragAction** before each drag initiation.
 
 > **NOTE:** 
 > 
-> For optimal drag and drop performance, limit the number of drag previews.
+> You are advised to limit the number of drag previews to avoid increased drag start latency caused by a large
+> number of previews.
 
 **Since:** 11
 
@@ -251,7 +252,7 @@ struct DragControllerPage {
 enableDropDisallowedBadge(enabled: boolean): void
 ```
 
-Specifies whether to enable the display of a disallowed badge when dragged content is incompatible with a component's configured [allowDrop](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#allowdrop) types. When a component can accept or process dragged dataor returns **DragBehavior.COPY** to indicate copy mode processing, the drag preview shows a plus icon with data count badge. When the component returns **DragBehavior.MOVE** to indicate cut mode processing, only the data count badge appears. When this feature is enabled, the system automatically displays a disallowed badge during drag operations if the dragged data types are incompatible with the target component's allowed drop types. This API currently does not support [UIExtension](arkts-arkui-arkui-uiextension.md).
+Enables the display of the drop-disallowed badge when the dragged data type does not intersect with the data types allowed by the component's [allowDrop](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#allowdrop) configuration. When a component can accept or process dragged data or returns **DragBehavior.COPY** to indicate copy mode processing, the drag preview shows a plus icon with data count badge. When the component returns **DragBehavior.MOVE** to indicate cut mode processing, only the data count badge appears. When this feature is enabled, the system automatically displays a disallowed badge during drag operations if the dragged data types are incompatible with the target component's allowed drop types. This API currently does not support [UIExtension](arkts-arkui-arkui-uiextension.md).
 
 **Since:** 20
 
@@ -267,7 +268,7 @@ Specifies whether to enable the display of a disallowed badge when dragged conte
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable the display of a disallowed badge when dragged content is incompatible with a component's configured [allowDrop](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#allowdrop) types. The value **true** means to enable the display of a disallowed badge, and **false** means the opposite. The default value is **false**. |
+| enabled | boolean | Yes | Whether to enable the display of a disallowed badge when dragged content is incompatible with the data types allowed by the component's [allowDrop](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#allowdrop) configuration, a drag-disallowed badge can be displayed. During a drag operation on a target component, the **enableDropDisallowedBadge** method can be used to check whether the drag-disallowed badge should be displayed. The value **true** means to enable the display of a disallowed badge, and **false** means the opposite. The default value is **false**. |
 
 **Examples**
 
@@ -322,6 +323,8 @@ struct Index {
 }
 ```
 
+<a id="executedrag1"></a>
+
 ## executeDrag
 
 ```TypeScript
@@ -346,8 +349,8 @@ Initiates a drag action, with the object to be dragged and the drag information 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | custom | [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](../arkts-components/arkts-arkui-common-comp-dragiteminfo-i.md) | Yes | Object to be dragged.<br> **NOTE:** <br>The global builder is not supported. If the [Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) component is used in the builder, enable synchronous loading, that is, set the [syncLoad](../arkts-components/arkts-arkui-image-comp-attribute.md#syncload) attribute of the component to **true**. The builder is used only to generate the image displayed during the current dragging. If the root component of the builder has zero width or height, it will cause failure in drag image generation, which in turn breaks the entire drag operation. Changes to the builder, if any, apply to the next dragging, but not to the current dragging. |
-| dragInfo | [dragController.DragInfo](arkts-arkui-dragcontroller-draginfo-i.md) | Yes | Drag information. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[dragController.DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md)&gt; | Yes | Callback used to return the result.<br>- **event**: drag event information that includes only the drag result.<br>- **extraParams**: extra information about the drag event.<br>**Since:** 12 |
+| dragInfo | [dragController.DragInfo](arkts-arkui-dragcontroller-draginfo-i.md) | Yes | Drag information object, used to specify drag configuration such as the touch point that initiates the drag, data carried during the drag, and extra information. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[dragController.DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md)&gt; | Yes | Callback used to return the drag result. The callback parameters include **err** and **data**. **err** indicates the error information, and **data** indicates the drag event result. **data.event** provides the drag event information, which includes only the drag result. **data.extraParams** provides additional information about the drag event.<br>**Since:** 12 |
 
 **Error codes:**
 
@@ -415,7 +418,7 @@ struct DragControllerPage {
 }
 ```
 
-<a id="executedrag-1"></a>
+<a id="executedrag2"></a>
 
 ## executeDrag
 
@@ -448,7 +451,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 | Type | Description |
 | --- | --- |
 | Promise&lt;{ event: DragEvent, extraParams: string }&gt; | Callback used to return the result.<br>- **event**: drag event information that includes only the drag result. <br>- **extraParams**: extra information about the drag event.<br>**Since:** 11 |
-| Promise&lt;[dragController.DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md)&gt; | A Promise with the drag event information.<br>**Since:** 12 |
+| Promise&lt;[dragController.DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md)&gt; | Promise used to return the result. **resolve** returns the drag end result.<br>- **event**: drag event information that includes only the drag result.<br>- **extraParams**: extra information about the drag event. **reject** returns the error information.<br>**Since:** 12 |
 
 **Error codes:**
 
@@ -565,7 +568,7 @@ Obtains the **DragPreview** object, which represents the preview displayed durin
 
 | Type | Description |
 | --- | --- |
-| [dragController.DragPreview](arkts-arkui-dragcontroller-dragpreview-c.md) | **DragPreview** object. It provides the API for setting the preview style. It does not work in the **OnDrop** and **OnDragEnd** callbacks. |
+| [dragController.DragPreview](arkts-arkui-dragcontroller-dragpreview-c.md) | **DragPreview** object. It provides the API for setting the preview style. Setting the drop preview style using this object in the **onDrop** or **onDragEnd** callback does not take effect. |
 
 **Examples**
 
@@ -577,7 +580,7 @@ See the example for animate.
 notifyDragStartRequest(requestStatus: dragController.DragStartRequestStatus): void
 ```
 
-Controls whether the application can initiate a drag operation.
+Controls whether the application can initiate a drag operation. This API is typically used in conjunction with the **onPreDrag** and **onDragStart** callbacks of the component. When a drag starts but the data is not yet ready, you can call **notifyDragStartRequest(DragStartRequestStatus.WAITING)** in the **onDragStart** callback to prevent the drag from starting immediately. Once the drag data and preview resources are ready, call **notifyDragStartRequest(DragStartRequestStatus.READY)** to allow the drag to proceed. If the status is not reported correctly according to the drag preparation process, the drag may fail to start as expected, or it may start before the drag data is fully prepared.
 
 **Since:** 18
 
@@ -593,7 +596,7 @@ Controls whether the application can initiate a drag operation.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| requestStatus | [dragController.DragStartRequestStatus](arkts-arkui-dragcontroller-dragstartrequeststatus-e.md) | Yes | Whether the application can initiate a drag operation. |
+| requestStatus | [dragController.DragStartRequestStatus](arkts-arkui-dragcontroller-dragstartrequeststatus-e.md) | Yes | Whether the application can initiate a drag operation. The value **WAITING** indicates that the application data is still being prepared and dragging is not allowed to start. The value **READY** indicates that the application data has been prepared and dragging is allowed to proceed. |
 
 **Examples**
 
@@ -677,7 +680,7 @@ struct NormalEts {
 setDragEventStrictReportingEnabled(enable: boolean): void
 ```
 
-Sets whether the **onDragLeave** callback of the parent component is triggered when an item is dragged from the parent to the child component.
+Sets whether the **onDragLeave** callback of the parent component is triggered when a drag object is dragged from a parent component to a child component.
 
 **Since:** 12
 
@@ -693,7 +696,7 @@ Sets whether the **onDragLeave** callback of the parent component is triggered w
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether the **onDragLeave** callback of the parent component is triggered when an item is dragged from the parent to the child component. The value **true** means the **onDragLeave** callback of the parent component is triggered, and **false** means the opposite. |
+| enable | boolean | Yes | Whether the **onDragLeave** callback of the parent component is triggered when a drag object is dragged from a parent component to a child component. The value **true** indicates yes, and the value **false** indicates no. |
 
 **Examples**
 

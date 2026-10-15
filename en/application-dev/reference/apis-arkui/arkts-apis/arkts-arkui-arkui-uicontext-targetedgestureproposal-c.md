@@ -29,7 +29,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 node: FrameNode
 ```
 
-Target node that handles the current smart gesture.
+Target node for handling the current smart gesture.
 
 **Type:** [FrameNode](arkts-arkui-framenode-c.md)
 

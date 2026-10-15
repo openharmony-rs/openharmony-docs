@@ -32,7 +32,7 @@ PBES algorithm type. The default value is **AES_256_CBC**.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PbesParams-encryptionAlgorithm?: PbesEncryptionAlgorithm--><!--Device-PbesParams-encryptionAlgorithm?: PbesEncryptionAlgorithm-End-->
 
@@ -52,7 +52,7 @@ Number of iterations. The default value is **2048**. The value must be a positiv
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PbesParams-iterations?: int--><!--Device-PbesParams-iterations?: int-End-->
 
@@ -72,7 +72,7 @@ Length of the salt value. The default value is **16**, and the minimum value is 
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-PbesParams-saltLen?: int--><!--Device-PbesParams-saltLen?: int-End-->
 

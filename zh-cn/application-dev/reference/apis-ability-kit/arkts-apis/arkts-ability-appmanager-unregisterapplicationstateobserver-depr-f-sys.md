@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="unregisterapplicationstateobserver1"></a>
+
 ## unregisterApplicationStateObserver
 
 ```TypeScript
@@ -34,6 +36,7 @@ function unregisterApplicationStateObserver(observerId: number, callback: AsyncC
 | observerId | number | 是 | 表示观察者的编号代码。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示指定的callback回调方法。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ function unregisterApplicationStateObserverCallback(err: BusinessError) {
 appManager.unregisterApplicationStateObserver(observerId, unregisterApplicationStateObserverCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="unregisterapplicationstateobserver-1"></a>
+
+<a id="unregisterapplicationstateobserver2"></a>
 
 ## unregisterApplicationStateObserver
 
@@ -89,6 +94,7 @@ function unregisterApplicationStateObserver(observerId: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -105,3 +111,5 @@ appManager.unregisterApplicationStateObserver(observerId)
     console.error(`unregisterApplicationStateObserver failed, err code: ${err.code}, err msg: ${err.message}.`);
 });
 ```
+
+<!--DelEnd-->

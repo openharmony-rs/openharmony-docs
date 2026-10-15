@@ -63,8 +63,6 @@
   <!--Del-->
   - [AuthTokenType(system api)](arkts-userauthentication-useraccessctrl-authtokentype-e-sys.md)<!--DelEnd-->
 - [@ohos.userIAM.userAuth(User Authentication)](arkts-userauthentication-useriam-userauth.md)
-  - [getAuthenticator](arkts-userauthentication-userauth-getauthenticator-f.md)
-  - [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
   - [getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md)
   - [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md)
   - [getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md)
@@ -80,16 +78,13 @@
   - [sendNotice(system api)](arkts-userauthentication-userauth-sendnotice-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [unregisterRemoteAuthCallback(system api)](arkts-userauthentication-userauth-unregisterremoteauthcallback-f-sys.md)<!--DelEnd-->
+  - [getAuthenticator](arkts-userauthentication-userauth-getauthenticator-f.md)
+  - [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
   - [UserAuth](arkts-userauthentication-userauth-userauth-c.md)
-  - [Authenticator](arkts-userauthentication-userauth-authenticator-i.md)
-  - [AuthEvent](arkts-userauthentication-userauth-authevent-i.md)
-  - [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
   - [AuthLockState](arkts-userauthentication-userauth-authlockstate-i.md)
   - [AuthParam](arkts-userauthentication-userauth-authparam-i.md)
   <!--Del-->
   - [AuthParam(system api)](arkts-userauthentication-userauth-authparam-i-sys.md)<!--DelEnd-->
-  - [AuthResult](arkts-userauthentication-userauth-authresult-i.md)
-  - [AuthResultInfo](arkts-userauthentication-userauth-authresultinfo-i.md)
   - [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md)
   - [EnrolledState](arkts-userauthentication-userauth-enrolledstate-i.md)
   - [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)
@@ -97,9 +92,7 @@
   - [IAuthWidgetCallback(system api)](arkts-userauthentication-userauth-iauthwidgetcallback-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [IRemoteAuthCallback(system api)](arkts-userauthentication-userauth-iremoteauthcallback-i-sys.md)<!--DelEnd-->
-  - [IUserAuthCallback](arkts-userauthentication-userauth-iuserauthcallback-i.md)
   - [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md)
-  - [TipInfo](arkts-userauthentication-userauth-tipinfo-i.md)
   - [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md)
   - [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md)
   <!--Del-->
@@ -109,23 +102,26 @@
   - [WidgetParam](arkts-userauthentication-userauth-widgetparam-i.md)
   <!--Del-->
   - [WidgetParam(system api)](arkts-userauthentication-userauth-widgetparam-i-sys.md)<!--DelEnd-->
-  - [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md)
+  - [Authenticator](arkts-userauthentication-userauth-authenticator-i.md)
+  - [AuthEvent](arkts-userauthentication-userauth-authevent-i.md)
+  - [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
+  - [AuthResult](arkts-userauthentication-userauth-authresult-i.md)
+  - [AuthResultInfo](arkts-userauthentication-userauth-authresultinfo-i.md)
+  - [IUserAuthCallback](arkts-userauthentication-userauth-iuserauthcallback-i.md)
+  - [TipInfo](arkts-userauthentication-userauth-tipinfo-i.md)
   - [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md)
-  - [AuthType](arkts-userauthentication-userauth-authtype-t.md)
-  - [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md)
   <!--Del-->
   - [ResultCallback(system api)](arkts-userauthentication-userauth-resultcallback-t-sys.md)<!--DelEnd-->
-  - [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md)
   - [UserRecognitionResultCallback](arkts-userauthentication-userauth-userrecognitionresultcallback-t.md)
   <!--Del-->
   - [WidgetParamCallback(system api)](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md)<!--DelEnd-->
-  - [AuthenticationResult](arkts-userauthentication-userauth-authenticationresult-e.md)
+  - [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md)
+  - [AuthType](arkts-userauthentication-userauth-authtype-t.md)
+  - [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md)
+  - [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md)
   - [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
-  - [FaceTips](arkts-userauthentication-userauth-facetips-e.md)
-  - [FingerprintTips](arkts-userauthentication-userauth-fingerprinttips-e.md)
   <!--Del-->
   - [NoticeType(system api)](arkts-userauthentication-userauth-noticetype-e-sys.md)<!--DelEnd-->
-  - [ResultCode](arkts-userauthentication-userauth-resultcode-e.md)
   - [ReuseMode](arkts-userauthentication-userauth-reusemode-e.md)
   - [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md)
   <!--Del-->
@@ -137,6 +133,10 @@
   - [UserRecognitionStatus](arkts-userauthentication-userauth-userrecognitionstatus-e.md)
   <!--Del-->
   - [WindowModeType(system api)](arkts-userauthentication-userauth-windowmodetype-e-sys.md)<!--DelEnd-->
+  - [AuthenticationResult](arkts-userauthentication-userauth-authenticationresult-e.md)
+  - [FaceTips](arkts-userauthentication-userauth-facetips-e.md)
+  - [FingerprintTips](arkts-userauthentication-userauth-fingerprinttips-e.md)
+  - [ResultCode](arkts-userauthentication-userauth-resultcode-e.md)
   - [Constants](arkts-userauthentication-userauth-con.md)
 - [@ohos.userIAM.userAuthIcon(Embedded User Authentication Icons)](arkts-userauthentication-useriam-userauthicon.md)
   - [UserAuthIcon](arkts-userauthentication-useriam-userauthicon-userauthicon-s.md)

@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="opendlpfile1"></a>
+
 ## openDLPFile
 
 ```TypeScript
@@ -32,7 +34,7 @@ DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ciphertextFd | number | 是 | 加密文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，fd的值被截断。 |
+| ciphertextFd | number | 是 | 加密文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 | appId | string | 是 | 调用方身份。最小8字节，最大1024字节。超出范围时抛出错误码401。 |
 
 **返回值：**
@@ -47,7 +49,7 @@ DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先�
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -61,6 +63,7 @@ DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先�
 | [19100019](../errorcode-dlp.md#19100019-dlp文件已过期) | The DLP file has expired. |
 | [19100020](../errorcode-dlp.md#19100020-网络未连接) | No network connection. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -92,8 +95,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
 
-<a id="opendlpfile-1"></a>
+
+<a id="opendlpfile2"></a>
 
 ## openDLPFile
 
@@ -117,7 +122,7 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ciphertextFd | number | 是 | 加密文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，fd的值被截断。 |
+| ciphertextFd | number | 是 | 加密文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 | appId | string | 是 | 调用方身份。最小8字节，最大1024字节。超出范围时抛出错误码401。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | 是 | 回调函数。用于接收打开DLP文件的结果。回调参数包括：err（错误对象，成功时为undefined）和res（DLPFile对象，表示打开的DLP文件）。 |
 
@@ -127,7 +132,7 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -141,6 +146,7 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 | [19100019](../errorcode-dlp.md#19100019-dlp文件已过期) | The DLP file has expired. |
 | [19100020](../errorcode-dlp.md#19100020-网络未连接) | No network connection. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -171,3 +177,5 @@ dlpPermission.openDLPFile(file, appId, async (err, res) => { // 打开DLP文件�
   }
 });
 ```
+
+<!--DelEnd-->

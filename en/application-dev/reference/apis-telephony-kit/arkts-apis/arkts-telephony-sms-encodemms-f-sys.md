@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="encodemms1"></a>
+
 ## encodeMms
 
 ```TypeScript
@@ -40,6 +42,7 @@ MMS message code. This API uses an asynchronous callback to return the result.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,8 +63,10 @@ sms.encodeMms(mmsInformation, (err: BusinessError, data: number[]) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="encodemms-1"></a>
+
+<a id="encodemms2"></a>
 
 ## encodeMms
 
@@ -102,6 +107,7 @@ MMS message code. This API uses a promise to return the result.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -123,3 +129,5 @@ sms.encodeMms(mmsInformation).then((data: number[]) => {
     console.error(`encodeMms failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -96,7 +96,7 @@ MDNS服务的名字。
 serviceType: string
 ```
 
-MDNS服务的类型。格式：_&lt;name&gt;.&lt;_tcp/_udp&gt;，name长度小于63字符并且不能包含字符'.'。
+MDNS服务的类型。格式：_<name>.&lt;_tcp/_udp&gt;，name长度小于63字符并且不能包含字符'.'。
 
 **类型：** string
 

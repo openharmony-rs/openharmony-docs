@@ -30,6 +30,7 @@ Marks the end of a user scene. Call this API when the scene ends.
 | --- | --- | --- | --- |
 | scene | string | Yes | User scene ID, which must be strictly consistent with that in **begin**; otherwise, the monitoring will be invalid. |
 
+<!--Del-->
 **Examples**
 
 End point of the user scene where the user taps an icon to launch an application.
@@ -37,3 +38,5 @@ End point of the user scene where the user taps an icon to launch an application
 ```TypeScript
 performanceMonitor.end("LAUNCHER_APP_LAUNCH_FROM_ICON");
 ```
+
+<!--DelEnd-->

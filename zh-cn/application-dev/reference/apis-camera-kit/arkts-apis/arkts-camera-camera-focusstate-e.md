@@ -12,22 +12,6 @@ enum FocusState
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-## FOCUS_STATE_SCAN
-
-```TypeScript
-FOCUS_STATE_SCAN = 0
-```
-
-触发对焦。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-FocusState-FOCUS_STATE_SCAN = 0--><!--Device-FocusState-FOCUS_STATE_SCAN = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 ## FOCUS_STATE_FOCUSED
 
 ```TypeScript
@@ -38,9 +22,25 @@ FOCUS_STATE_FOCUSED = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-FocusState-FOCUS_STATE_FOCUSED = 1--><!--Device-FocusState-FOCUS_STATE_FOCUSED = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## FOCUS_STATE_SCAN
+
+```TypeScript
+FOCUS_STATE_SCAN = 0
+```
+
+触发对焦。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-FocusState-FOCUS_STATE_SCAN = 0--><!--Device-FocusState-FOCUS_STATE_SCAN = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -54,7 +54,7 @@ FOCUS_STATE_UNFOCUSED = 2
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-FocusState-FOCUS_STATE_UNFOCUSED = 2--><!--Device-FocusState-FOCUS_STATE_UNFOCUSED = 2-End-->
 

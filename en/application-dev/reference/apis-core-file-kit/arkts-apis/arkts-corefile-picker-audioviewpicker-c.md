@@ -18,6 +18,8 @@ Provides APIs for selecting and saving audio clips. Before using the APIs of **A
 import { picker } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -28,7 +30,7 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AudioViewPicker-constructor()--><!--Device-AudioViewPicker-constructor()-End-->
 
@@ -40,7 +42,7 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 let audioPicker = new picker.AudioViewPicker(); // Construction without parameter is not recommended. There is a possibility that the AudioViewPicker instance fails to start.
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -52,7 +54,7 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AudioViewPicker-constructor(context: Context)--><!--Device-AudioViewPicker-constructor(context: Context)-End-->
 
@@ -92,6 +94,8 @@ struct Index {
 }
 ```
 
+<a id="save1"></a>
+
 ## save
 
 ```TypeScript
@@ -102,7 +106,7 @@ Starts an **audioPicker** page (currently, a **documentPicker** page is displaye
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>-End-->
 
@@ -143,7 +147,7 @@ async function example16(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save-1"></a>
+<a id="save2"></a>
 
 ## save
 
@@ -191,7 +195,7 @@ async function example17(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save-2"></a>
+<a id="save3"></a>
 
 ## save
 
@@ -236,6 +240,8 @@ async function example18(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
+<a id="select1"></a>
+
 ## select
 
 ```TypeScript
@@ -246,7 +252,7 @@ Starts an **audioPicker** page for the user to select one or more audio clips. T
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>-End-->
 
@@ -286,7 +292,7 @@ async function example13(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="select-1"></a>
+<a id="select2"></a>
 
 ## select
 
@@ -333,7 +339,7 @@ async function example14(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="select-2"></a>
+<a id="select3"></a>
 
 ## select
 

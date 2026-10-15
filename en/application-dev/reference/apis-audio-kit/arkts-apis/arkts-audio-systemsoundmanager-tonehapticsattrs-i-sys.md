@@ -48,11 +48,14 @@ Get file name of haptics.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneHapticsAttrs.getFileName();
 ```
+
+<!--DelEnd-->
 
 ## getGentleFileName
 
@@ -82,11 +85,14 @@ Get file name of gentle haptics.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneHapticsAttrs.getGentleFileName();
 ```
+
+<!--DelEnd-->
 
 ## getGentleTitle
 
@@ -116,11 +122,14 @@ Get title of gentle haptics.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneHapticsAttrs.getGentleTitle();
 ```
+
+<!--DelEnd-->
 
 ## getGentleUri
 
@@ -150,11 +159,14 @@ Get gentle haptics URI.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneHapticsAttrs.getGentleUri();
 ```
+
+<!--DelEnd-->
 
 ## getTitle
 
@@ -184,11 +196,14 @@ Get title of haptics.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneHapticsAttrs.getTitle();
 ```
+
+<!--DelEnd-->
 
 ## getUri
 
@@ -218,8 +233,11 @@ Get haptics uri.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 toneHapticsAttrs.getUri();
 ```
+
+<!--DelEnd-->

@@ -6,7 +6,7 @@ declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>
 
 Defines StepperItem Component instance.
 
-**Inheritance/Implementation:** StepperItemAttribute extends CommonMethod<StepperItemAttribute>
+**Inheritance/Implementation:** StepperItemAttribute extends CommonMethod&lt;StepperItemAttribute&gt;
 
 **Since:** 8
 
@@ -25,8 +25,6 @@ nextLabel(value: string)
 ```
 
 Sets the text label of the button on the right. The default value is **Start** for the last page and **Next** for the other pages.
-
-> **NOTE:** 
 
 **Since:** 8
 
@@ -54,8 +52,6 @@ prevLabel(value: string)
 
 Sets the text label of the button on the left, which is not displayed on the first page. When the **Stepper** contains more than one page, the default value for all pages except the first page is **Back**.
 
-> **NOTE:** 
-
 **Since:** 8
 
 **Deprecated since:** 22
@@ -81,8 +77,6 @@ status(value?: ItemState)
 ```
 
 Sets the display status of **nextLabel** in the stepper.
-
-> **NOTE:** 
 
 **Since:** 8
 

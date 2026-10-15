@@ -12,19 +12,19 @@ export enum ErrorCode
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## NO_ERROR
+## ABILITY_NOT_FOUND
 
 ```TypeScript
-NO_ERROR = 0
+ABILITY_NOT_FOUND = -2
 ```
 
-没有异常。
+找不到ABILITY。
 
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-ErrorCode-NO_ERROR = 0--><!--Device-ErrorCode-NO_ERROR = 0-End-->
+<!--Device-ErrorCode-ABILITY_NOT_FOUND = -2--><!--Device-ErrorCode-ABILITY_NOT_FOUND = -2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -44,19 +44,19 @@ INVALID_PARAMETER = -1
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## ABILITY_NOT_FOUND
+## NO_ERROR
 
 ```TypeScript
-ABILITY_NOT_FOUND = -2
+NO_ERROR = 0
 ```
 
-找不到ABILITY。
+没有异常。
 
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-ErrorCode-ABILITY_NOT_FOUND = -2--><!--Device-ErrorCode-ABILITY_NOT_FOUND = -2-End-->
+<!--Device-ErrorCode-NO_ERROR = 0--><!--Device-ErrorCode-NO_ERROR = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 

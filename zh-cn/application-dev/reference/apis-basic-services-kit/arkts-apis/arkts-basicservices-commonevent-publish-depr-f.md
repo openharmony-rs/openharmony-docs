@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="publish1"></a>
+
 ## publish
 
 ```TypeScript
@@ -17,7 +19,7 @@ function publish(event: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md)(event: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish1)(event: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void-End-->
 
@@ -49,7 +51,7 @@ commonEvent.publish("event", publishCallBack);
 ```
 
 
-<a id="publish-1"></a>
+<a id="publish2"></a>
 
 ## publish
 
@@ -63,7 +65,7 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-1)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish2)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void-End-->
 
@@ -74,7 +76,7 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 表示要发布的公共事件。 |
-| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
+| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示发布公共事件的回调方法。 |
 
 **示例**

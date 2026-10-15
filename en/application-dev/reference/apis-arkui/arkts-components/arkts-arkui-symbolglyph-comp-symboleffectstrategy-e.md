@@ -12,6 +12,26 @@ Enumerates symbol effect types. Once applied, the symbol effect becomes active i
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## HIERARCHICAL
+
+```TypeScript
+HIERARCHICAL = 2
+```
+
+Hierarchical effect.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SymbolEffectStrategy-HIERARCHICAL = 2--><!--Device-SymbolEffectStrategy-HIERARCHICAL = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## NONE
 
 ```TypeScript
@@ -49,25 +69,5 @@ Scale effect as a whole.
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-SymbolEffectStrategy-SCALE = 1--><!--Device-SymbolEffectStrategy-SCALE = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## HIERARCHICAL
-
-```TypeScript
-HIERARCHICAL = 2
-```
-
-Hierarchical effect.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
-
-<!--Device-SymbolEffectStrategy-HIERARCHICAL = 2--><!--Device-SymbolEffectStrategy-HIERARCHICAL = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

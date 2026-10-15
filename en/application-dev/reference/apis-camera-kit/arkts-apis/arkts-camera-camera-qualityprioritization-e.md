@@ -22,7 +22,7 @@ Prioritizes high-quality video recording.
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-QualityPrioritization-HIGH_QUALITY = 0--><!--Device-QualityPrioritization-HIGH_QUALITY = 0-End-->
 
@@ -38,7 +38,7 @@ Prioritizes video recording quality while balancing power consumption.
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-QualityPrioritization-POWER_BALANCE = 1--><!--Device-QualityPrioritization-POWER_BALANCE = 1-End-->
 

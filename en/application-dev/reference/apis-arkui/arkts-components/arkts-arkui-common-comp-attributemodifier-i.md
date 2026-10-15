@@ -11,6 +11,12 @@ You need a custom class to implement the **AttributeModifier** API.
 > In the following APIs, setting the same value or object for the same attribute of the **instance** object will not
 > trigger an update.
 
+**Since:** 11
+
+<!--Device-unnamed-declare interface AttributeModifier<T>--><!--Device-unnamed-declare interface AttributeModifier<T>-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Attribute Type Support Scope
 
 | Name | Description |  
@@ -103,7 +109,7 @@ You need a custom class to implement the **AttributeModifier** API.
 | WaterFlowAttribute | [Attributes](arkts-arkui-waterflow-comp-attribute.md#waterflowattribute) of WaterFlow. |
 | XComponentAttribute | [Attributes](arkts-arkui-xcomponent-comp-attribute.md#xcomponentattribute) of XComponent. |
 | ParticleAttribute | [Attributes](arkts-arkui-particle-comp-attribute.md#particleattribute) of Particle. |
-| UIPickerComponentAttribute&lt;sup&gt;22+&lt;/sup&gt; | [Attributes](arkts-arkui-uipickercomponent-comp-attribute.md#uipickercomponentattribute) of UIPickerComponent. |
+| UIPickerComponentAttribute<sup>22+</sup> | [Attributes](arkts-arkui-uipickercomponent-comp-attribute.md#uipickercomponentattribute) of UIPickerComponent. |
 | <!--DelRow-->EffectComponentAttribute | [Attributes](arkts-arkui-effectcomponent-comp-attribute.md#effectcomponentattribute-system-api) of EffectComponent. |
 | <!--DelRow-->FormComponentAttribute | [Attributes](arkts-arkui-formcomponent-comp-attribute.md#formcomponentattribute-system-api) of FormComponent. |
 | <!--DelRow-->PluginComponentAttribute | [Attributes](arkts-arkui-plugincomponent-comp-attribute.md#plugincomponentattribute-system-api) of PluginComponent. |
@@ -137,13 +143,7 @@ supported, specifically the following attribute methods: [attributeModifier](ark
 
 When unsupported or unimplemented attributes are used, exceptions such as "Method not implemented.", "is not callable", or "Builder is not supported." are thrown. For details about the supported scope of modifiers, see[attributeModifier Support for Attributes and Events](../../../ui/arkts-user-defined-extension-attributeModifier.md#attributemodifier-support-for-attributes-and-events).
 
-@interface AttributeModifier&lt;T&gt;
-
-**Since:** 11
-
-<!--Device-unnamed-declare interface AttributeModifier<T>--><!--Device-unnamed-declare interface AttributeModifier<T>-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+@interface AttributeModifier<T>
 
 ## applyDisabledAttribute
 

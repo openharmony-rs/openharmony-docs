@@ -1,5 +1,14 @@
 # @ohos.arkui.advanced.Chip
 
+Chip组件用于标签展示和交互场景，支持自定义样式、图标、激活态等功能，适用于搜索框历史记录、邮件发送列表等场景，可快速实现标签的创建、删除和交互能力。
+
+> **说明：**
+ >
+ > - 如果Chip设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，
+ > 编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Chip本身。
+ > 这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Chip设置通用属性和通用事件。
+
+
 ## 导入模块
 
 ```TypeScript
@@ -12,7 +21,7 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 
 | 名称 | 说明 |
 | --- | --- |
-| [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md) | Chip组件用于标签展示和交互场景，支持自定义样式、图标、激活态等功能，适用于搜索框历史记录、邮件发送列表等场景，可快速实现标签的创建、删除和交互能力。 |
+| [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip) | 创建Chip组件。 |
 
 ### 接口
 

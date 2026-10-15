@@ -89,7 +89,7 @@ add(element: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Queue-add(element: T): boolean--><!--Device-Queue-add(element: T): boolean-End-->
 
@@ -142,7 +142,7 @@ Queue的构造函数，创建一个新的Queue实例，初始长度为0。Queue�
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Queue-constructor()--><!--Device-Queue-constructor()-End-->
 
@@ -219,7 +219,7 @@ getFirst(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Queue-getFirst(): T--><!--Device-Queue-getFirst(): T-End-->
 
@@ -261,7 +261,7 @@ pop(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Queue-pop(): T--><!--Device-Queue-pop(): T-End-->
 

@@ -161,7 +161,7 @@ Connection timeout interval. The default value is **60000**, in ms. The input va
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-connectTimeout?: int--><!--Device-HttpRequestOptions-connectTimeout?: int-End-->
 
@@ -258,7 +258,7 @@ Type of the returned data. This parameter is not used by default. If this parame
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-expectDataType?: HttpDataType--><!--Device-HttpRequestOptions-expectDataType?: HttpDataType-End-->
 
@@ -298,7 +298,7 @@ HTTP request parameters. Parameters of the string type need to be encoded before
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-extraData?: string | Object | ArrayBuffer--><!--Device-HttpRequestOptions-extraData?: string | Object | ArrayBuffer-End-->
 
@@ -314,13 +314,13 @@ HTTP request header. If the request method is POST, PUT, DELETE, or null, the de
 
 If the header contains fields of numeric type, the maximum value must be an int64 integer.
 
-The header field supports the JSON format (as shown in [Example](../../../reference/apis-network-kit/js-apis-http.md#example)) and the Record&lt;string, string&gt; format.
+The header field supports the JSON format (as shown in [Example](../../../reference/apis-network-kit/js-apis-http.md#example)) and the Record<string, string> format.
 
 **Type:** Object
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-header?: Object--><!--Device-HttpRequestOptions-header?: Object-End-->
 
@@ -399,7 +399,7 @@ Request method. The default value is **GET**.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-method?: RequestMethod--><!--Device-HttpRequestOptions-method?: RequestMethod-End-->
 
@@ -449,7 +449,7 @@ Priority of concurrent HTTP/HTTPS requests. A larger value indicates a higher pr
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-priority?: int--><!--Device-HttpRequestOptions-priority?: int-End-->
 
@@ -495,7 +495,7 @@ The value **0** indicates no timeout.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-readTimeout?: int--><!--Device-HttpRequestOptions-readTimeout?: int-End-->
 
@@ -667,7 +667,7 @@ Whether to use the cache. The value **true** indicates that the cache is prefere
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-usingCache?: boolean--><!--Device-HttpRequestOptions-usingCache?: boolean-End-->
 
@@ -685,7 +685,7 @@ Protocol. The default value is automatically specified by the system.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-usingProtocol?: HttpProtocol--><!--Device-HttpRequestOptions-usingProtocol?: HttpProtocol-End-->
 
@@ -708,7 +708,7 @@ no proxy is used.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequestOptions-usingProxy?: boolean | HttpProxy--><!--Device-HttpRequestOptions-usingProxy?: boolean | HttpProxy-End-->
 

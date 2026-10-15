@@ -43,13 +43,12 @@ Called when the system starts scheduling the deferred task.
 **Examples**
 
 ```TypeScript
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStart(workInfo: workScheduler.WorkInfo) {
-      console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
-          bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  onWorkStart(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
 }
 ```
@@ -79,13 +78,12 @@ Called when the system stops scheduling the deferred task. This callback is trig
 **Examples**
 
 ```TypeScript
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStop(workInfo: workScheduler.WorkInfo) {
-      console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
-          bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  onWorkStop(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
 }
 ```

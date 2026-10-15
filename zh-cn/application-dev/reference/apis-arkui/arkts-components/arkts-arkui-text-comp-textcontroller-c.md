@@ -6,17 +6,17 @@ declare class TextController
 
 Text组件的控制器。
 
-## 导入对象
-
-```ts
-controller: TextController = new TextController()
-```
-
 **起始版本：** 11
 
 <!--Device-unnamed-declare class TextController--><!--Device-unnamed-declare class TextController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```ts
+controller: TextController = new TextController()
+```
 
 ## closeSelectionMenu
 

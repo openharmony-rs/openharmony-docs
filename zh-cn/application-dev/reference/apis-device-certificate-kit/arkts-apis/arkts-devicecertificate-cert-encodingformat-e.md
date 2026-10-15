@@ -22,7 +22,7 @@ DER格式。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-EncodingFormat-FORMAT_DER = 0--><!--Device-EncodingFormat-FORMAT_DER = 0-End-->
 
@@ -38,7 +38,7 @@ PEM格式。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-EncodingFormat-FORMAT_PEM = 1--><!--Device-EncodingFormat-FORMAT_PEM = 1-End-->
 
@@ -54,7 +54,7 @@ PKCS7格式。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-EncodingFormat-FORMAT_PKCS7 = 2--><!--Device-EncodingFormat-FORMAT_PKCS7 = 2-End-->
 

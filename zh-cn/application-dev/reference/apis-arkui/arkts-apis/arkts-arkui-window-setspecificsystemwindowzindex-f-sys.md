@@ -48,6 +48,7 @@ function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): 
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`Failed to set zIndex. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->

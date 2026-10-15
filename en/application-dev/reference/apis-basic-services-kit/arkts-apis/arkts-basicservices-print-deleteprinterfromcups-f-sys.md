@@ -45,6 +45,7 @@ Delete a printer from cups.
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ print.deletePrinterFromCups(printerName).then(() => {
     console.error(`Failed to delete printer from cups. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

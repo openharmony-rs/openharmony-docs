@@ -66,6 +66,14 @@ async function setConfiguration() {
     return;
   }
   let config: usbManager.USBConfiguration = device.configs?.[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let claimRet: number = usbManager.claimInterface(devicePipe, interfaces);
+  if (claimRet !== 0) {
+    console.error(`claim interface failed`);
+    usbManager.closePipe(devicePipe);
+    return;
+  }
+  // 设置设备配置，将设备切换为指定的配置
   let ret: number = usbManager.setConfiguration(devicePipe, config);
   console.info(`setConfiguration = ${ret}`);
   usbManager.closePipe(devicePipe);

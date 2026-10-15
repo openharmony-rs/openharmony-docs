@@ -37,7 +37,7 @@ declare function truncate(path: string, len?: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="truncate-1"></a>
+<a id="truncate2"></a>
 
 ## truncate
 
@@ -65,7 +65,7 @@ declare function truncate(path: string, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
 
-<a id="truncate-2"></a>
+<a id="truncate3"></a>
 
 ## truncate
 

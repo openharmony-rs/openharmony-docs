@@ -36,7 +36,7 @@ Close the worker thread to stop the worker from receiving messages
 
 **Deprecated since:** 9
 
-**Substitutes:** close
+**Substitutes:** [close](arkts-arkts-worker-threadworkerglobalscope-i.md#close)
 
 <!--Device-DedicatedWorkerGlobalScope-close(): void--><!--Device-DedicatedWorkerGlobalScope-close(): void-End-->
 
@@ -74,7 +74,7 @@ The onmessage attribute of parentPort specifies the event handler to be called t
 
 **Deprecated since:** 9
 
-**Substitutes:** onmessage
+**Substitutes:** [onmessage](arkts-arkts-worker-threadworkerglobalscope-i.md#onmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void--><!--Device-DedicatedWorkerGlobalScope-onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void-End-->
 
@@ -99,7 +99,7 @@ The onmessage attribute of parentPort specifies the event handler to be called t
 
 **Deprecated since:** 9
 
-**Substitutes:** onmessageerror
+**Substitutes:** [onmessageerror](arkts-arkts-worker-threadworkerglobalscope-i.md#onmessageerror)
 
 <!--Device-DedicatedWorkerGlobalScope-onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void--><!--Device-DedicatedWorkerGlobalScope-onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void-End-->
 
@@ -111,6 +111,8 @@ The onmessage attribute of parentPort specifies the event handler to be called t
 | --- | --- | --- | --- |
 | this | [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | Yes |  |
 | ev | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | Yes |  |
+
+<a id="postmessage1"></a>
 
 ## postMessage
 
@@ -124,7 +126,7 @@ Send a message to be host thread from the worker
 
 **Deprecated since:** 9
 
-**Substitutes:** postMessage
+**Substitutes:** [postMessage](arkts-arkts-worker-threadworkerglobalscope-i.md#postmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: Transferable[]): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: Transferable[]): void-End-->
 
@@ -185,7 +187,7 @@ parentPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-<a id="postmessage-1"></a>
+<a id="postmessage2"></a>
 
 ## postMessage
 
@@ -199,7 +201,7 @@ Send a message to be host thread from the worker
 
 **Deprecated since:** 9
 
-**Substitutes:** postMessage
+**Substitutes:** [postMessage](arkts-arkts-worker-threadworkerglobalscope-i.md#postmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void-End-->
 
@@ -235,7 +237,7 @@ parentPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-<a id="postmessage-2"></a>
+<a id="postmessage3"></a>
 
 ## postMessage
 
@@ -249,7 +251,7 @@ Send a message to host thread from the worker
 
 **Deprecated since:** 9
 
-**Substitutes:** postMessage
+**Substitutes:** [postMessage](arkts-arkts-worker-threadworkerglobalscope-i.md#postmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void-End-->
 

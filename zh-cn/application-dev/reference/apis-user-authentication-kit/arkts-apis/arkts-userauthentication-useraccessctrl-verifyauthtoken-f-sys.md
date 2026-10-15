@@ -50,13 +50,13 @@ function verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Prom
 | [12500015](../errorcode-useriam.md#12500015-authtoken完整性校验失败) | AuthToken integrity check failed. |
 | [12500016](../errorcode-useriam.md#12500016-authtoken过期) | AuthToken has expired. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAccessCtrl } from '@kit.UserAuthenticationKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+import { userAccessCtrl, userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();
@@ -119,3 +119,5 @@ try {
   console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

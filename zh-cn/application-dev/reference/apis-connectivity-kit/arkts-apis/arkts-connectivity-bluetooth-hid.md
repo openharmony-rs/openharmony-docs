@@ -22,8 +22,8 @@ import { hid } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md) | 创建蓝牙HID Device实例。通过该实例可使用本端作为HID Device的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
-| [createHidHostProfile](arkts-connectivity-hid-createhidhostprofile-f.md) | 创建蓝牙HID Host实例。通过该实例可使用本端作为HID Host的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
+| [createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md#createhiddeviceprofile) | 创建蓝牙HID Device实例。通过该实例可使用本端作为HID Device的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
+| [createHidHostProfile](arkts-connectivity-hid-createhidhostprofile-f.md#createhidhostprofile) | 创建蓝牙HID Host实例。通过该实例可使用本端作为HID Host的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
 
 ### 接口
 
@@ -42,7 +42,7 @@ import { hid } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| HidHostProfile | HidHostProfile类提供蓝牙HID设备的连接和断开等管理功能，适用于系统应用中管理蓝牙HID设备的场景。使用HidHostProfile方法之前需要创建该类的实例进行操作，通过[createHidHostProfile()](arkts-connectivity-hid-createhidhostprofile-f.md)方法构造此实例。 |
+| [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md) | HidHostProfile类提供蓝牙HID设备的连接和断开等管理功能，适用于系统应用中管理蓝牙HID设备的场景。使用HidHostProfile方法之前需要创建该类的实例进行操作，通过[createHidHostProfile()](arkts-connectivity-hid-createhidhostprofile-f.md)方法构造此实例。 |
 <!--DelEnd-->
 
 ### 类型

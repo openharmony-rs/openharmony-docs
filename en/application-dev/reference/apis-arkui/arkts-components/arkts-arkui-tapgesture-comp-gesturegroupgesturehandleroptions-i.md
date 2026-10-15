@@ -42,7 +42,7 @@ To add both single-tap and double-tap gestures for a component, add two [TapGest
 mode: GestureMode
 ```
 
-Recognition mode of combined gestures.
+Gesture recognition mode of the gesture group. It applies to scenarios where multiple gestures need to be recognized in sequence, in parallel, or mutually exclusively.
 
 Default value: **GestureMode.Sequence**
 

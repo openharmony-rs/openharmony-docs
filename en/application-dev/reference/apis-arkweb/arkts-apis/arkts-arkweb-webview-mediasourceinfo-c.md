@@ -26,6 +26,10 @@ format: string
 
 Format of the media source, which may be empty. You need to determine the format by yourself.
 
+Read-only: No
+
+Optional: No
+
 **Type:** string
 
 **Since:** 12
@@ -44,6 +48,10 @@ source: string
 
 Address of the media source.
 
+Read-only: No
+
+Optional: No
+
 **Type:** string
 
 **Since:** 12
@@ -61,6 +69,10 @@ type: SourceType
 ```
 
 Type of the media source.
+
+Read-only: No
+
+Optional: No
 
 **Type:** [SourceType](arkts-arkweb-webview-sourcetype-e.md)
 

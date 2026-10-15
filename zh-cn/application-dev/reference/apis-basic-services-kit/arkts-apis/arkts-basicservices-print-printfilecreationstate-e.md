@@ -26,20 +26,6 @@ PRINT_FILE_CREATED = 0
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## PRINT_FILE_CREATION_FAILED
-
-```TypeScript
-PRINT_FILE_CREATION_FAILED = 1
-```
-
-表示打印文件创建失败。
-
-**起始版本：** 11
-
-<!--Device-PrintFileCreationState-PRINT_FILE_CREATION_FAILED = 1--><!--Device-PrintFileCreationState-PRINT_FILE_CREATION_FAILED = 1-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## PRINT_FILE_CREATED_UNRENDERED
 
 ```TypeScript
@@ -51,5 +37,19 @@ PRINT_FILE_CREATED_UNRENDERED = 2
 **起始版本：** 11
 
 <!--Device-PrintFileCreationState-PRINT_FILE_CREATED_UNRENDERED = 2--><!--Device-PrintFileCreationState-PRINT_FILE_CREATED_UNRENDERED = 2-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## PRINT_FILE_CREATION_FAILED
+
+```TypeScript
+PRINT_FILE_CREATION_FAILED = 1
+```
+
+表示打印文件创建失败。
+
+**起始版本：** 11
+
+<!--Device-PrintFileCreationState-PRINT_FILE_CREATION_FAILED = 1--><!--Device-PrintFileCreationState-PRINT_FILE_CREATION_FAILED = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

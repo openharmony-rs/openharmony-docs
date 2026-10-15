@@ -8,7 +8,7 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-text-type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean--><!--Device-text-type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean-End-->
 

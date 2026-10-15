@@ -42,6 +42,7 @@ Updates the size of the widget.
 | [16501001](../errorcode-form.md#16501001-widget-id-not-exist) | The ID of the form to be operated does not exist. |
 | [16501012](../errorcode-form.md#16501012-incorrect-widget-dimension) | The dimension parameter is incorrect |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

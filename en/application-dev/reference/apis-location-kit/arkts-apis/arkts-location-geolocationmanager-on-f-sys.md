@@ -43,6 +43,7 @@ Subscribe to changes in WiFi/BT scanning information, and use the WiFi/BT scanni
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.on('locatingRequiredDataChange')} due to limited device capabilities. |
 | [3301800](../errorcode-geoLocationManager.md#3301800-failed-to-start-wi-fi-or-bluetooth-scanning) | Failed to start WiFi or Bluetooth scanning. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,6 +59,8 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('locationIconStatusChange')
@@ -92,6 +95,7 @@ Subscribe location icon status changed.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.on('locationIconStatusChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -106,3 +110,5 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->

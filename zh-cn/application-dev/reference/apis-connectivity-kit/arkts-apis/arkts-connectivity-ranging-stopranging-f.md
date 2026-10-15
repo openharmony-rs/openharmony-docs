@@ -18,7 +18,7 @@ function stopRanging(callback: Callback<RangingResult>, params?: RangingParams):
 
 此方法同时释放测距占用的资源。为实现正确的资源管理，[startRanging](arkts-connectivity-ranging-startranging-f.md)测距启动后必须调用stopRanging停止测距，避免测距资源泄漏。
 
-测距状态的变化通过[onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md)回调进行通知。
+测距状态的变化通过onRangingStateChange回调进行通知。
 
 如果未调用过[startRanging](arkts-connectivity-ranging-startranging-f.md)直接调用[stopRanging](arkts-connectivity-ranging-stopranging-f.md)将抛出设备未发起测距错误34900050。
 

@@ -14,33 +14,17 @@ Indicates the type of IMS service.
 
 **系统接口：** 此接口为系统接口。
 
-## TYPE_VOICE
+## TYPE_SMS
 
 ```TypeScript
-TYPE_VOICE = 0
+TYPE_SMS = 3
 ```
 
-Indicates voice service.
+Indicates SMS service.
 
 **起始版本：** 9
 
-<!--Device-ImsServiceType-TYPE_VOICE = 0--><!--Device-ImsServiceType-TYPE_VOICE = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-**系统接口：** 此接口为系统接口。
-
-## TYPE_VIDEO
-
-```TypeScript
-TYPE_VIDEO = 1
-```
-
-Indicates video service.
-
-**起始版本：** 9
-
-<!--Device-ImsServiceType-TYPE_VIDEO = 1--><!--Device-ImsServiceType-TYPE_VIDEO = 1-End-->
+<!--Device-ImsServiceType-TYPE_SMS = 3--><!--Device-ImsServiceType-TYPE_SMS = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -62,17 +46,33 @@ Indicates UT service.
 
 **系统接口：** 此接口为系统接口。
 
-## TYPE_SMS
+## TYPE_VIDEO
 
 ```TypeScript
-TYPE_SMS = 3
+TYPE_VIDEO = 1
 ```
 
-Indicates SMS service.
+Indicates video service.
 
 **起始版本：** 9
 
-<!--Device-ImsServiceType-TYPE_SMS = 3--><!--Device-ImsServiceType-TYPE_SMS = 3-End-->
+<!--Device-ImsServiceType-TYPE_VIDEO = 1--><!--Device-ImsServiceType-TYPE_VIDEO = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**系统接口：** 此接口为系统接口。
+
+## TYPE_VOICE
+
+```TypeScript
+TYPE_VOICE = 0
+```
+
+Indicates voice service.
+
+**起始版本：** 9
+
+<!--Device-ImsServiceType-TYPE_VOICE = 0--><!--Device-ImsServiceType-TYPE_VOICE = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

@@ -24,7 +24,7 @@ Name of the shared bundle on which the current module depends.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Dependency-readonly bundleName: string--><!--Device-Dependency-readonly bundleName: string-End-->
 
@@ -42,7 +42,7 @@ Module name of the shared bundle on which the current module depends.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Dependency-readonly moduleName: string--><!--Device-Dependency-readonly moduleName: string-End-->
 
@@ -60,7 +60,7 @@ Version number of the shared bundle.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Dependency-readonly versionCode: long--><!--Device-Dependency-readonly versionCode: long-End-->
 

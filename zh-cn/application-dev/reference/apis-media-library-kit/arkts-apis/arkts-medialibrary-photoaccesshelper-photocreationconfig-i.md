@@ -30,7 +30,7 @@ fileNameExtension: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoCreationConfig-fileNameExtension: string--><!--Device-PhotoCreationConfig-fileNameExtension: string-End-->
 
@@ -48,7 +48,7 @@ photoType: PhotoType
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoCreationConfig-photoType: PhotoType--><!--Device-PhotoCreationConfig-photoType: PhotoType-End-->
 
@@ -66,7 +66,7 @@ subtype?: PhotoSubtype
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoCreationConfig-subtype?: PhotoSubtype--><!--Device-PhotoCreationConfig-subtype?: PhotoSubtype-End-->
 
@@ -88,7 +88,7 @@ title?: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoCreationConfig-title?: string--><!--Device-PhotoCreationConfig-title?: string-End-->
 

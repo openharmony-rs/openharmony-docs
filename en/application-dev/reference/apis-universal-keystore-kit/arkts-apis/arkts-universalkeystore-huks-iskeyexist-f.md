@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="iskeyexist1"></a>
+
 ## isKeyExist
 
 ```TypeScript
@@ -18,7 +20,7 @@ Checks whether a key exists. This API uses an asynchronous callback to return th
 
 **Deprecated since:** 9
 
-**Substitutes:** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist1)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void--><!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void-End-->
 
@@ -47,7 +49,7 @@ huks.isKeyExist(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
-<a id="iskeyexist-1"></a>
+<a id="iskeyexist2"></a>
 
 ## isKeyExist
 
@@ -61,7 +63,7 @@ Checks whether a key exists. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist-1)(keyAlias: string, options: HuksOptions)
+**Substitutes:** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>--><!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>-End-->
 

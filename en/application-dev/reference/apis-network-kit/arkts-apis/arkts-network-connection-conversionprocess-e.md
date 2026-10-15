@@ -12,20 +12,6 @@ Enumerates the parameters of the ASCII/Unicode transcoding process.
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
-## NO_CONFIGURATION
-
-```TypeScript
-NO_CONFIGURATION = 0
-```
-
-Only domain names with assigned Unicode code points can be converted. (Unicode assigns a unique number to each character. This number is called a code point.)
-
-**Since:** 23
-
-<!--Device-ConversionProcess-NO_CONFIGURATION = 0--><!--Device-ConversionProcess-NO_CONFIGURATION = 0-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
 ## ALLOW_UNASSIGNED
 
 ```TypeScript
@@ -37,6 +23,20 @@ Allows the translation of domain names that contain unassigned Unicode code poin
 **Since:** 23
 
 <!--Device-ConversionProcess-ALLOW_UNASSIGNED = 1--><!--Device-ConversionProcess-ALLOW_UNASSIGNED = 1-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+## NO_CONFIGURATION
+
+```TypeScript
+NO_CONFIGURATION = 0
+```
+
+Only domain names with assigned Unicode code points can be converted. (Unicode assigns a unique number to each character. This number is called a code point.)
+
+**Since:** 23
+
+<!--Device-ConversionProcess-NO_CONFIGURATION = 0--><!--Device-ConversionProcess-NO_CONFIGURATION = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

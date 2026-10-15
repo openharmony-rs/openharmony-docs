@@ -30,7 +30,7 @@ apertures: Array<number>
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhysicalAperture-apertures: Array<double>--><!--Device-PhysicalAperture-apertures: Array<double>-End-->
 
@@ -48,7 +48,7 @@ zoomRange: ZoomRange
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhysicalAperture-zoomRange: ZoomRange--><!--Device-PhysicalAperture-zoomRange: ZoomRange-End-->
 

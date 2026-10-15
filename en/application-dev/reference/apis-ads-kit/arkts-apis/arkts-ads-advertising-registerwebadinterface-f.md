@@ -6,6 +6,8 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
+<a id="registerwebadinterface1"></a>
+
 ## registerWebAdInterface
 
 ```TypeScript
@@ -66,7 +68,7 @@ struct Index {
 ```
 
 
-<a id="registerwebadinterface-1"></a>
+<a id="registerwebadinterface2"></a>
 
 ## registerWebAdInterface
 

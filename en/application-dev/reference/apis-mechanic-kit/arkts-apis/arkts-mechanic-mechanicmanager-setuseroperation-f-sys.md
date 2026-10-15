@@ -40,6 +40,7 @@ Sets a user operation.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -47,3 +48,5 @@ console.info('User operate');
 mechanicManager.setUserOperation(mechanicManager.Operation.CONNECT, "58:51:9e:e7:79:6d", "operatingParams");
 console.info('User operation was successful');
 ```
+
+<!--DelEnd-->

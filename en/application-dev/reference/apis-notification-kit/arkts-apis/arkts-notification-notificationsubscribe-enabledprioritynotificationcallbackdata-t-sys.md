@@ -6,6 +6,8 @@ export type EnabledPriorityNotificationCallbackData = _EnabledPriorityNotificati
 
 Describes the main switch state for priority notification.
 
+**Type:** _EnabledPriorityNotificationCallbackData
+
 **Since:** 23
 
 <!--Device-notificationSubscribe-export type EnabledPriorityNotificationCallbackData = _EnabledPriorityNotificationCallbackData--><!--Device-notificationSubscribe-export type EnabledPriorityNotificationCallbackData = _EnabledPriorityNotificationCallbackData-End-->
@@ -13,5 +15,3 @@ Describes the main switch state for priority notification.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _EnabledPriorityNotificationCallbackData

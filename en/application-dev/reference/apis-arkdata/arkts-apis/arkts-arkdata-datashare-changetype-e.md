@@ -12,22 +12,6 @@ Enumerates the data change types.
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
-## INSERT
-
-```TypeScript
-INSERT = 0
-```
-
-Data is inserted.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ChangeType-INSERT = 0--><!--Device-ChangeType-INSERT = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
-
 ## DELETE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Data is deleted.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ChangeType-DELETE = 1--><!--Device-ChangeType-DELETE = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+## INSERT
+
+```TypeScript
+INSERT = 0
+```
+
+Data is inserted.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChangeType-INSERT = 0--><!--Device-ChangeType-INSERT = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 

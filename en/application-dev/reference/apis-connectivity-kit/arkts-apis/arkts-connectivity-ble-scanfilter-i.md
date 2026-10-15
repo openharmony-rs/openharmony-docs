@@ -50,7 +50,7 @@ The address of a BLE peripheral device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-deviceId?: string--><!--Device-ScanFilter-deviceId?: string-End-->
 
@@ -70,7 +70,7 @@ Manufacture data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-manufactureData?: ArrayBuffer--><!--Device-ScanFilter-manufactureData?: ArrayBuffer-End-->
 
@@ -90,7 +90,7 @@ Manufacture data mask.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-manufactureDataMask?: ArrayBuffer--><!--Device-ScanFilter-manufactureDataMask?: ArrayBuffer-End-->
 
@@ -110,7 +110,7 @@ Manufacture id.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-manufactureId?: int--><!--Device-ScanFilter-manufactureId?: int-End-->
 
@@ -130,7 +130,7 @@ The name of a BLE peripheral device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-name?: string--><!--Device-ScanFilter-name?: string-End-->
 
@@ -150,7 +150,7 @@ RSSI threshold for filtering advertising that pass through.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-ScanFilter-rssiThreshold?: int--><!--Device-ScanFilter-rssiThreshold?: int-End-->
 
@@ -170,7 +170,7 @@ Service data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-serviceData?: ArrayBuffer--><!--Device-ScanFilter-serviceData?: ArrayBuffer-End-->
 
@@ -190,7 +190,7 @@ Service data mask.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-serviceDataMask?: ArrayBuffer--><!--Device-ScanFilter-serviceDataMask?: ArrayBuffer-End-->
 
@@ -210,7 +210,7 @@ Service solicitation UUID.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-serviceSolicitationUuid?: string--><!--Device-ScanFilter-serviceSolicitationUuid?: string-End-->
 
@@ -230,7 +230,7 @@ Service solicitation UUID mask.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-serviceSolicitationUuidMask?: string--><!--Device-ScanFilter-serviceSolicitationUuidMask?: string-End-->
 
@@ -250,7 +250,7 @@ The service UUID of a BLE peripheral device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-serviceUuid?: string--><!--Device-ScanFilter-serviceUuid?: string-End-->
 
@@ -270,7 +270,7 @@ Service UUID mask.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanFilter-serviceUuidMask?: string--><!--Device-ScanFilter-serviceUuidMask?: string-End-->
 

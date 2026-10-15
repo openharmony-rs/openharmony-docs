@@ -12,20 +12,6 @@ Enumerates the directions of cursor movement of the input method.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## CURSOR_UP
-
-```TypeScript
-CURSOR_UP = 1
-```
-
-Upward.
-
-**Since:** 10
-
-<!--Device-Direction-CURSOR_UP = 1--><!--Device-Direction-CURSOR_UP = 1-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
 ## CURSOR_DOWN
 
 ```TypeScript
@@ -65,5 +51,19 @@ Rightward.
 **Since:** 10
 
 <!--Device-Direction-CURSOR_RIGHT--><!--Device-Direction-CURSOR_RIGHT-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## CURSOR_UP
+
+```TypeScript
+CURSOR_UP = 1
+```
+
+Upward.
+
+**Since:** 10
+
+<!--Device-Direction-CURSOR_UP = 1--><!--Device-Direction-CURSOR_UP = 1-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

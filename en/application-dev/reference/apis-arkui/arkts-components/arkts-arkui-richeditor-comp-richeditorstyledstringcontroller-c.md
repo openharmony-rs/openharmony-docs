@@ -6,12 +6,6 @@ declare class RichEditorStyledStringController extends RichEditorBaseController 
 
 Represents the controller of the **RichEditor** component built with the styled string. Inherits from [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md).
 
-## Objects to Import
-
-```ts
-controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-```
-
 **Inheritance/Implementation:** RichEditorStyledStringController extends [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md) and implements [StyledStringController](../arkts-apis/arkts-arkui-styledstringcontroller-i.md)
 
 **Since:** 12
@@ -19,6 +13,12 @@ controller: RichEditorStyledStringController = new RichEditorStyledStringControl
 <!--Device-unnamed-declare class RichEditorStyledStringController extends RichEditorBaseController implements StyledStringController--><!--Device-unnamed-declare class RichEditorStyledStringController extends RichEditorBaseController implements StyledStringController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Objects to Import
+
+```ts
+controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+```
 
 ## getSelection
 

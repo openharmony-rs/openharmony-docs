@@ -8,6 +8,8 @@ The context of form extension. It allows access to formExtension-specific resour
 
 @typedef { _FormExtensionContext.default }
 
+**Type:** _FormExtensionContext.default
+
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ The context of form extension. It allows access to formExtension-specific resour
 <!--Device-common-export type FormExtensionContext = _FormExtensionContext.default--><!--Device-common-export type FormExtensionContext = _FormExtensionContext.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _FormExtensionContext.default

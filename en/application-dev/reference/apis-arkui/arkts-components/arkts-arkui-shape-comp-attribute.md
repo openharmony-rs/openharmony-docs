@@ -6,7 +6,7 @@ declare class ShapeAttribute extends CommonMethod<ShapeAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal drawing attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
-**Inheritance/Implementation:** ShapeAttribute extends CommonMethod<ShapeAttribute>
+**Inheritance/Implementation:** ShapeAttribute extends CommonMethod&lt;ShapeAttribute&gt;
 
 **Since:** 7
 
@@ -106,7 +106,7 @@ The coordinate array is stored in row-major order. After the original image is e
 > 
 > **mesh** takes effect only when a **pixelMap** object is passed to the shape, and the effect applies to the
 > passed **pixelMap** object. It produces the same result as
-> [drawPixelMapMesh&lt;sup&gt;12+&lt;/sup&gt;](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#drawpixelmapmesh) in the
+> [drawPixelMapMesh<sup>12+</sup>](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#drawpixelmapmesh) in the
 > [drawing module](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-graphics-drawing.md). It is recommended that you use
 > **drawPixelMapMesh**.
 
@@ -180,7 +180,7 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | Array defining the dash pattern for the shape outline. Elements alternate between dash length and gap length.<br>Default value: **[]** (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE:** <br>Empty array: solid line<br>Even- numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -&gt; gap b -&gt; dash c -&gt; gap d -&gt; dash a -&gt; ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -&gt; gap b -&gt; dash c -&gt; gap a -&gt; dash b -&gt; gap c -&gt; dash a -&gt; ... |
+| value | Array&lt;any&gt; | Yes | Array defining the dash pattern for the shape outline. Elements alternate between dash length and gap length.<br>Default value: **[]** (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE:** <br>Empty array: solid line<br>Even- numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ... |
 
 ## strokeDashOffset
 

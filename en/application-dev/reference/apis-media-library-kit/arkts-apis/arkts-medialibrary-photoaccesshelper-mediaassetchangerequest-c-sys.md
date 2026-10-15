@@ -20,7 +20,7 @@ Represents a media asset change request.
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
-<a id="addresource-2"></a>
+<a id="addresource3"></a>
 
 ## addResource
 
@@ -58,6 +58,7 @@ Adds resources using **PhotoProxy** data.
 | 14000011 | System inner fail |
 | 14000016 | Operation Not Support |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -82,6 +83,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## addResourceForPicker
 
@@ -116,6 +119,8 @@ Adds a resource using fileUri from file management directory
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) |  |
+
+<a id="createassetrequest1"></a>
 
 ## createAssetRequest
 
@@ -166,6 +171,7 @@ For API versions 10 to 17, the following characters are considered invalid: . ..
 | 14000001 | Invalid display name |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -186,6 +192,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## deleteAssetsPermanentlyWithUri
 
@@ -235,6 +243,7 @@ Permanently deletes images or videos in batches by URI. The deleted images or vi
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500 . |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out; |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -248,6 +257,8 @@ async function example(context: Context, assetUri: string) {
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## deleteCloudAssetsWithUri
 
@@ -297,6 +308,7 @@ Deletes cloud media assets to the trash in batches. This API uses a promise to r
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500 . |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out; |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -309,6 +321,8 @@ async function example(context: Context, assetUri: string) {
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## deleteLocalAssetsPermanently
 
@@ -355,6 +369,7 @@ Permanently deletes images or videos in batches. This API uses a promise to retu
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -377,6 +392,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## deleteLocalAssetsPermanentlyWithUri
 
@@ -423,6 +440,7 @@ Permanently deletes images or video assets in batches by URI. This API uses a pr
 | 13900020 | Invalid argument |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -452,6 +470,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 }
 ```
+
+<!--DelEnd-->
 
 ## deleteLocalAssetsWithUri
 
@@ -501,6 +521,7 @@ Deletes local media assets to the trash in batches. This API uses a promise to r
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500 . |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1.Database corrupted; <br>2.The file system is abnormal; <br>3.The IPC request timed out; |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -513,6 +534,8 @@ async function example(context: Context, assetUri: string) {
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## setAppLinkInfo
 
@@ -544,6 +567,7 @@ Sets the information about the app link association.
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: The input parameter's length is not within the valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -564,6 +588,8 @@ async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string,
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## setAppLinkState
 
@@ -597,6 +623,7 @@ Sets the status of the app link association.
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -616,6 +643,8 @@ async function example(asset: photoAccessHelper.PhotoAsset, context: Context) {
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## setCameraEditData
 
@@ -679,6 +708,7 @@ Sets the Key for the Ultra Snapshot feature, which allows the camera to take pho
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -697,6 +727,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setCompositeDisplayMode
 
@@ -734,6 +766,7 @@ Sets the display mode of the composite image. This API uses a promise to return 
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameter verification failed. Possible causes:<br>1. The compositeDisplayMode is not within the supported range. <br>2. The original file does not exist locally in PhotoAsset. <br>3. The PhotoAsset is not a composite asset. <br>4. The original file format is not within the supported range. <br>5. The original file has been edited. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -758,6 +791,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## setEditData
 
@@ -789,6 +824,7 @@ Saves the edited data of an asset.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -821,6 +857,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<!--DelEnd-->
+
 ## setEffectMode
 
 ```TypeScript
@@ -852,6 +890,7 @@ Sets the effect of this moving photo.
 | 14000011 | System inner fail |
 | 14000016 | Operation Not Support |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -874,6 +913,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setHasAppLink
 
@@ -905,6 +946,7 @@ Sets the status of the app link association.
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -930,6 +972,8 @@ async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## setHidden
 
@@ -961,6 +1005,7 @@ Hides this file.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | System inner fail. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -987,6 +1032,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## setHiddenAttribute
 
@@ -1017,9 +1064,10 @@ set hidden state of asset.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The asset is not exist; |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>The asset is not exist; |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error.It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -1046,6 +1094,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setLivePhoto4dStatus
 
@@ -1110,6 +1160,7 @@ Sets location information.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -1136,6 +1187,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## setMovingPhotoVersion
 
@@ -1169,6 +1222,7 @@ Saves MovingPhoto version which is used to determine what special efficacy is su
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Parameter error, only supports 9. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1195,6 +1249,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## setSupportedWatermarkType
 
@@ -1226,6 +1282,7 @@ Sets the watermark type supported by photos.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1250,6 +1307,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setTitleByFile
 
@@ -1280,9 +1339,10 @@ set title by filemanger.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The asset is not exist; |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>The asset is not exist; |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error.It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -1308,6 +1368,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setUserComment
 
@@ -1339,6 +1401,7 @@ Sets the user comment information of this media asset.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -1366,6 +1429,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## setVideoEnhancementAttr
 

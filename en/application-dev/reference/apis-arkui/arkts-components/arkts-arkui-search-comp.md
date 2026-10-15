@@ -63,9 +63,9 @@ Defines the constructor of Search.
 
 ## Examples
 
-### Example 1 (Setting and Obtaining the Cursor Position)
+### Example 1: Setting and Obtaining the Caret Position
 
-Since API version 8, this example implements the setting and obtaining of the cursor position through [controller](arkts-arkui-search-comp-searchcontroller-c.md).
+This example demonstrates how to set and obtain the caret position using [controller](arkts-arkui-search-comp-searchcontroller-c.md), available since API version 8.
 
 
 
@@ -100,12 +100,12 @@ struct SearchExample {
         .margin(20)
       Button('Set caretPosition 1')
         .onClick(() => {
-          // Set the cursor position after the first character of the input.
+          // Move the caret to after the first entered character.
           this.controller.caretPosition(1);
         })
       Button('Get CaretOffset')
         .onClick(() => {
-          // Obtain the cursor position information.
+          // Obtain the caret position information.
           this.positionInfo = this.controller.getCaretOffset();
         })
     }.width('100%')
@@ -113,9 +113,9 @@ struct SearchExample {
 }
 ```
 
-### Example 2 (Setting the Search and Delete Icons)
+### Example 2: Setting Search and Delete Icons
 
-This example demonstrates the effect of setting the search and delete icons through the [searchButton](#searchbutton) (from API version 8), [searchIcon](#searchicon10) (from API version 10), and [cancelButton](#cancelbutton10) (from API version 10) attributes.
+This example demonstrates the effect of setting the search and delete icons using the [searchButton](#searchbutton) (available since API version 8), [searchIcon](#searchicon10) (available since API version 10), and [cancelButton](#cancelbutton10) (available since API version 10) attributes.
 
 
 
@@ -160,11 +160,11 @@ struct SearchExample {
 }
 ```
 
-### Example 3 (Setting a Custom Keyboard)
+### Example 3: Implementing a Custom Keyboard
 
-This example uses the [customKeyboard](#customkeyboard10) (from API version 10) attribute to set the input parameter type in value to [CustomBuilder](ts-types.md#custombuilder8) and ComponentContent, respectively, implementing the custom keyboard feature.
+This example implements a custom keyboard using the [customKeyboard](#customkeyboard10) attribute (available since API version 10) to set the input parameter type in value to [CustomBuilder](ts-types.md#custombuilder8) and ComponentContent.
 
-From API version 22, the [customKeyboard](#customkeyboard10) attribute adds the input parameter type ComponentContent.
+Since API version 22, ComponentContent is added to the input parameter type of [customKeyboard](#customkeyboard10).
 
 
 
@@ -187,7 +187,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
   Column() {
     Row() {
       Button('x').onClick(() => {
-        // Close the custom keyboard.
+        // Disable the custom keyboard.
         builderParams.controller.stopEditing();
       }).margin(10)
     }
@@ -215,7 +215,7 @@ struct SearchExample {
   @State supportAvoidance: boolean = true;
 
   aboutToAppear(): void {
-    // Create the ComponentContent.
+    // Create a ComponentContent instance.
     this.componentContent =
       new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
@@ -236,9 +236,9 @@ struct SearchExample {
 }
 ```
 
-### Example 4 (Setting the Enter Key Type of the Input Method)
+### Example 4: Setting the Enter Key Type
 
-This example uses the [enterKeyType](#enterkeytype12) (from API version 12) attribute to dynamically switch the Enter key type of the input method.
+This example demonstrates how to dynamically switch the enter key type using the [enterKeyType](#enterkeytype12) attribute, available since API version 12.
 
 
 
@@ -252,7 +252,7 @@ struct SearchExample {
   @State index: number = 0;
   build() {
     Column({ space: 20 }) {
-      Search({ placeholder: 'Please enter text', value: this.text })
+      Search({ placeholder: 'Enter text', value: this.text })
         .width(380)
         .enterKeyType(this.enterTypes[this.index])
         .onChange((value: string) => {
@@ -270,9 +270,9 @@ struct SearchExample {
 }
 ```
 
-### Example 5 (Setting the Text Style)
+### Example 5: Setting the Text Style
 
-Since API version 12, this example shows text effects in different styles through the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes.
+This example showcases various text styles by using the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes, available since API version 12.
 
 
 
@@ -318,9 +318,9 @@ struct SearchExample {
 }
 ```
 
-### Example 6 (Setting Text Feature Effects)
+### Example 6: Setting Font Features
 
-This example uses the [fontFeature](#fontfeature12) (since API version 12) attribute to implement the display effect of text under different font features.
+This example demonstrates how to display text with different font features using the [fontFeature](#fontfeature12) attribute, available since API version 12.
 
 
 
@@ -347,9 +347,9 @@ struct SearchExample {
 }
 ```
 
-### Example 7 (Custom Keyboard Avoidance)
+### Example 7: Setting Custom Keyboard Avoidance
 
-This example uses the [customKeyboard](#customkeyboard10) (since API version 10) attribute to configure the [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) (since API version 12) interface to implement custom keyboard avoidance.
+This example implements the custom keyboard avoidance effect by configuring the [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) API (available since API version 12) through the [customKeyboard](#customkeyboard10) attribute (available since API version 10).
 
 
 
@@ -363,13 +363,13 @@ struct SearchExample {
   @State height1: string | number = '80%';
   @State supportAvoidance: boolean = true;
 
-  // Custom keyboard component
+  // Create a custom keyboard component.
   @Builder
   CustomKeyboardBuilder() {
     Column() {
       Row() {
         Button('x').onClick(() => {
-          // Close the custom keyboard
+          // Disable the custom keyboard.
           this.controller.stopEditing();
         }).margin(10)
       }
@@ -409,7 +409,7 @@ struct SearchExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      Search({ controller: this.controller, value: this.inputValue })// Bind the custom keyboard
+      Search({ controller: this.controller, value: this.inputValue }) // Bind a custom keyboard.
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
         .border({ width: 1 })
@@ -421,9 +421,9 @@ struct SearchExample {
 }
 ```
 
-### Example 8 (Setting Text Auto-Adaptation)
+### Example 8: Setting Text Auto-Adaptation
 
-Since API version 12, this example demonstrates the effect of adaptive font size through the [minFontSize](#minfontsize12) and [maxFontSize](#maxfontsize12) attributes.
+This example implements the text auto-adaptation effect by using the [minFontSize](#minfontsize12) and [maxFontSize](#maxfontsize12) attributes, both available since API version 12.
 
 
 
@@ -451,9 +451,9 @@ struct SearchExample {
 }
 ```
 
-### Example 9 (Supports Insert and Delete Callbacks)
+### Example 9: Setting Insert and Delete Callbacks
 
-Since API version 12, this example implements the insert and delete effects through the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12), and [onDidDelete](#ondiddelete12) APIs. Since API version 15, it shows the specific information when the text content is about to change through the [onWillChange](#onwillchange15) API.
+This example implements the text insertion and deletion effects using the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12), and [onDidDelete](#ondiddelete12) APIs, available since API version 12. The [onWillChange](#onwillchange15) API, available since API version 15, is used to display detailed information about the text content to be changed.
 
 
 
@@ -499,7 +499,7 @@ struct SearchExample {
   build() {
     Row() {
       Column() {
-        Search({ value: 'Search supports insert callback text' })
+        Search({ value: 'Insert callbacks are supported' })
           .height(60)
           .onWillInsert((info: InsertValue) => {
             this.insertValue = info.insertValue;
@@ -528,7 +528,7 @@ struct SearchExample {
         Text('options-oldPreviewText-offset:' + this.changeState1.changeTextChangeOldPreviewOffset).height(20)
         Text('options-oldPreviewText-value:' + this.changeState1.changeTextChangeOldPreviewValue).height(20)
 
-        Search({ value: 'Search supports delete callback text b' })
+        Search({ value: 'Delete callbacks are supported' })
           .height(60)
           .onWillDelete((info: DeleteValue) => {
             this.deleteValue = info.deleteValue;
@@ -536,7 +536,7 @@ struct SearchExample {
             return true;
           })
           .onWillChange((info: EditableTextChangeValue) => {
-            // Handle the text change information.
+            // Process text change information.
             this.changeState2.SetInfo(info);
             return true;
           })
@@ -568,9 +568,9 @@ struct SearchExample {
 }
 ```
 
-### Example 10 (Custom Menu for Text Extension)
+### Example 10: Setting Custom Menu Extensions
 
-Since API version 12, this example uses the [editMenuOptions](#editmenuoptions12) API to set the text content, icon, and callback of custom menu extension items. In addition, menu data can be set in the [onPrepareMenu](ts-text-common.md#attributes-1) callback (since API version 20).
+This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can also be configured through the [onPrepareMenu](ts-text-common.md#properties-1) callback (available since API version 20).
 
 
 
@@ -583,7 +583,7 @@ struct SearchExample {
   @State endIndex: number = 0;
   onCreateMenu = (menuItems: Array<TextMenuItem>) => {
     // Create the first custom menu item for menu extension.
-    // $r('app.media.startIcon') needs to be replaced with the image resource file required by the developer.
+    // Replace $r('app.media.startIcon') with the image resource file you use.
     let item1: TextMenuItem = {
       content: 'create1',
       icon: $r('app.media.startIcon'),
@@ -598,16 +598,16 @@ struct SearchExample {
     // Add the custom menu items to the menu list: item1 to the end and item2 to the beginning.
     menuItems.push(item1);
     menuItems.unshift(item2);
-    // Find and remove the system AI writing menu item.
+    // Find and remove the system AI-assisted writing menu item.
     let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.AI_WRITER));
     if (targetIndex !== -1) {
-      menuItems.splice(targetIndex, 1); // Delete one element from the target index.
+      menuItems.splice(targetIndex, 1); // Delete an element at the target index.
     }
-    // Remove the auto-fill menu item.
+    // Remove the autofill menu item.
     // TextMenuItemId.autoFill is supported since API version 23.
     targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
     if (targetIndex !== -1) {
-      menuItems.splice(targetIndex, 1); // Delete one element from the target index.
+      menuItems.splice(targetIndex, 1); // Delete an element at the target index.
     }
     return menuItems;
   }
@@ -630,9 +630,9 @@ struct SearchExample {
     }
     return false;
   }
-  // $r('app.media.startIcon') needs to be replaced with the image resource file required by the developer.
+  // Replace $r('app.media.startIcon') with the image resource file you use.
   onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
-    // Create a dynamic menu item whose content includes the current selection end position.
+    // Create a dynamic menu item, which contains the current selection end position.
     let item1: TextMenuItem = {
       content: 'prepare1_' + this.endIndex,
       icon: $r('app.media.startIcon'),
@@ -664,9 +664,9 @@ struct SearchExample {
 }
 ```
 
-### Example 11 (Setting a Symbol-Type Clear Button)
+### Example 11: Setting a Custom Symbol-Type Cancel Button
 
-Since API version 10, this example uses the [searchIcon](#searchicon10) and [cancelButton](#cancelbutton10) attributes to demonstrate the effect of customizing the style of the symbol-type clear button on the right.
+This example demonstrates how to use the [searchIcon](#searchicon10) and [cancelButton](#cancelbutton10) attributes to customize the style of the symbol-type cancel button on the right side of the text box, available since API version 10.
 
 
 
@@ -704,11 +704,11 @@ struct SearchExample {
 }
 ```
 
-### Example 12 (Setting Whether Text Can Be Copied)
+### Example 12: Setting Whether Text is Copyable
 
-This example uses the [copyOption](#copyoption9), [onWillCopy](#onwillcopy), and [onWillCut](#onwillcut) APIs to show how to set text copying, how to intercept system copying, and how to intercept system cutting.
+This example shows how to set text copying, intercept system copying, and intercept system cutting using [copyOption](#copyoption9), [onWillCopy](#onwillcopy), and [onWillCut](#onwillcut).
 
-Since API version 26.0.0, the [onWillCopy](#onwillcopy) and [onWillCut](#onwillcut) APIs are added.
+The [onWillCopy](#onwillcopy) and [onWillCut](#onwillcut) APIs are added since API version 26.0.0.
 
 
 
@@ -773,9 +773,9 @@ struct SearchExample {
 }
 ```
 
-### Example 13 (Setting Text Horizontal Alignment/Cursor Style/Selected Background Color)
+### Example 13: Setting the Horizontal Alignment, Caret Style, and Background Color of the Selected Text
 
-This example uses the [textAlign](#textalign9) (since API version 9), [caretStyle](#caretstyle10) (since API version 10), and [selectedBackgroundColor](#selectedbackgroundcolor12) (since API version 12) attributes to demonstrate how to set the horizontal alignment of text, the cursor style, and the selected background color.
+This example demonstrates how to set the horizontal alignment, caret style, and background color of the selected text using the [textAlign](#textalign9) (available since API version 9), [caretStyle](#caretstyle10) (available since API version 10), and [selectedBackgroundColor](#selectedbackgroundcolor12) (available since API version 12) attributes.
 
 
 
@@ -803,9 +803,9 @@ struct SearchExample {
 }
 ```
 
-### Example 14 (Setting Default Focus and Bringing Up the Soft Keyboard)
+### Example 14: Configuring the Text Box to Receive Default Focus and Bring Up the Soft Keyboard
 
-This example shows how to set default focus and bring up the soft keyboard by using the [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9) (from API version 9) and [enableKeyboardOnFocus](#enablekeyboardonfocus10) (from API version 10) attributes.
+This example demonstrates how to configure the text box to receive default focus and bring up the soft keyboard using the [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9) (available since API version 9) and [enableKeyboardOnFocus](#enablekeyboardonfocus10) (available since API version 10) attributes.
 
 
 
@@ -838,9 +838,9 @@ struct SearchExample {
 }
 ```
 
-### Example 15 (Disabling the System Text Selection Menu)
+### Example 15: Disabling the System Text Selection Menu
 
-This example shows how to disable the system text selection menu through the [selectionMenuHidden](#selectionmenuhidden10) attribute (from API version 10).
+This example demonstrates how to disable the system text selection menu by using the [selectionMenuHidden](#selectionmenuhidden10) attribute, available since API version 10.
 
 
 
@@ -866,9 +866,9 @@ struct SearchExample {
 }
 ```
 
-### Example 16 (Filtering the Input Text)
+### Example 16: Setting Input Filtering
 
-Since API version 12, this example uses the [inputFilter](#inputfilter12) attribute to show how to filter the input text to restrict the input content.
+This example demonstrates how to set input filtering using the [inputFilter](#inputfilter12) attribute, available since API version 12.
 
 
 
@@ -899,9 +899,9 @@ struct SearchExample {
 }
 ```
 
-### Example 17 (Selecting Text Content in a Specified Range)
+### Example 17: Setting Text Selection for a Specified Region
 
-This example uses [setTextSelection](#settextselection12) (from API version 12) to demonstrate how to select text content in a specified range and the show/hide policy of the menu.
+This example demonstrates how to set text selection for a specified region and the display/hide strategy of the menu using the [setTextSelection](#settextselection12) API, available since API version 12.
 
 
 
@@ -940,9 +940,9 @@ struct SearchExample {
 }
 ```
 
-### Example 18 (Setting the Text Scroll Event)
+### Example 18: Handling Text Scrolling Events
 
-Since API version 10, this example shows how to set the callback for the text scroll event through the [onContentScroll](#oncontentscroll10) event.
+This example demonstrates how to set the callback for text scrolling events using the [onContentScroll](#oncontentscroll10) event, available since API version 10.
 
 
 
@@ -973,15 +973,15 @@ struct SearchExample {
 }
 ```
 
-### Example 19 (Setting the Minimum and Maximum Font Ranges)
+### Example 19: Setting the Minimum and Maximum Font Scale Factors
 
-Since API version 18, this example uses [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) to set the minimum and maximum font display ranges. After the system font size is adjusted, the text font size will not exceed the ranges set by [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18). The following example shows the zoom-in and zoom-out effects of the Search component after the system font is adjusted under different font size limit conditions.
+Since API version 18, [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) are used to set the minimum and maximum font scale factors. When the system font size is adjusted, the text font size remains within the range defined by [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18). The following example demonstrates how the Search component scales its font size according to system font size changes, within different font size limits.
 
 ```TypeScript
-// Enable the application to scale with the system.
-// In AppScope/resources/base, create a folder named profile.
-// In AppScope/resources/base/profile, create a file named configuration.json.
-// In AppScope/resources/base/profile/configuration.json, add the following code.
+// Enable application font scaling to follow system settings.
+// Create a new directory named profile in the following path: AppScope/resources/base.
+// Inside the newly created profile directory, create a file named configuration.json.
+// Add the following code to the configuration.json file:
 {
   "configuration": {
     "fontSizeScale": "followSystem",
@@ -991,7 +991,7 @@ Since API version 18, this example uses [minFontScale](#minfontscale18) and [max
 ```
 
 ```TypeScript
-// In AppScope/app.json5, modify the following code.
+// Modify the app.json5 file in AppScope as follows:
 {
   "app": {
     "bundleName": "com.example.myapplication",
@@ -1020,15 +1020,15 @@ struct SearchExample {
   build() {
     Column() {
       Column() {
-        Text('System font becomes larger and smaller, larger and smaller aaaaaaaAAAAAA')
+        Text('System font scales up and down: aaaaaaaAAAAAA')
         Blank(30)
         Text('minFontScale = ' + this.minFontScale)
         Text('maxFontScale = ' + this.maxFontScale)
         Search({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
         })
-          .minFontScale(this.minFontScale) // Set the minimum font scale factor. If the parameter is undefined, the default system scale factor is used.
-          .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is undefined, the default system scale factor is used.
+          .minFontScale(this.minFontScale) // Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
+          .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
 
         Blank(30)
 
@@ -1037,19 +1037,19 @@ struct SearchExample {
         Search({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
         })
-          .minFontScale(this.minFontScale2) // Set the minimum font scale factor. If the parameter is undefined, the system default scale factor is used.
-          .maxFontScale(this.maxFontScale2) // Set the maximum font scale factor. If the parameter is undefined, the system default scale factor is used.
+          .minFontScale(this.minFontScale2) // Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
+          .maxFontScale(this.maxFontScale2) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
       }.width('100%')
     }
   }
 }
 ```
 
-### Example 20 (Setting Text Stroke)
+### Example 20: Setting Text Stroke
 
-Since API version 20, this example uses the [strokeWidth](#strokewidth20) and [strokeColor](#strokecolor20) attributes to set the stroke width and color of the text.
+This example demonstrates how to set the stroke width and color for text using the [strokeWidth](#strokewidth20) and [strokeColor](#strokecolor20) attributes, available since API version 20.
 
-Since API version 26.0.0, the [strokeJoinStyle](#strokejoinstyle) API is added to set the corner style of the text stroke.
+The [strokeJoinStyle](#strokejoinstyle) API is added since API version 26.0.0 to set the stroke join style for text.
 
 
 
@@ -1096,9 +1096,9 @@ struct SearchExample {
 }
 ```
 
-### Example 21 (Setting Automatic Spacing Between Chinese and Western Characters)
+### Example 21: Configuring Automatic Spacing Between Chinese and Western Text
 
-Since API version 20, this example sets automatic spacing between Chinese and Western characters through the [enableAutoSpacing](#enableautospacing20) attribute.
+This example demonstrates how to configure automatic spacing between Chinese and Western characters using the [enableAutoSpacing](#enableautospacing20) attribute, available since API version 20.
 
 
 
@@ -1110,11 +1110,11 @@ struct SearchExample {
   build() {
     Row() {
       Column() {
-        Text('Enable automatic spacing between Chinese and Western characters').margin(5)
-        Search({value: 'Chinese and Western Auto Spacing'})
+        Text('Automatic spacing: Enabled').margin(5)
+        Search({value: '中文Text'})
           .enableAutoSpacing(true)
-        Text('Disable automatic spacing between Chinese and Western characters').margin(5)
-        Search({value: 'Chinese and Western Auto Spacing'})
+        Text('Automatic spacing: Disabled').margin(5)
+        Search({value: '中文Text'})
           .enableAutoSpacing(false)
       }.height('100%')
     }
@@ -1123,9 +1123,9 @@ struct SearchExample {
 }
 ```
 
-### Example 22 (Setting the placeholder rich text style)
+### Example 22: Setting the Placeholder Rich Text Style
 
-Since API version 22, this example sets the placeholder rich text style through the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API.
+This example illustrates how to set the placeholder rich text style using the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API, available since API version 22.
 
 
 
@@ -1137,7 +1137,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Component
 struct SearchExample {
   styledString: MutableStyledString =
-    new MutableStyledString('Input box rich text: text',
+    new MutableStyledString('Text box rich text: Text',
       [
         {
           start: 0,
@@ -1171,7 +1171,7 @@ struct SearchExample {
   controller: SearchController = new SearchController();
 
   aboutToAppear() {
-    // Set the placeholder rich text style.
+    // Set the placeholder rich text format.
     this.controller.setStyledPlaceholder(this.styledString)
   }
 
@@ -1192,9 +1192,9 @@ struct SearchExample {
 }
 ```
 
-### Example 23 (Setting IME Extension Information)
+### Example 23: Setting Input Method Extension Information
 
-Since API version 22, this example uses [IMEClient](ts-text-common.md#imeclient20)'s setExtraConfig to set the IME extension information.
+This example illustrates how to set input method extension information using the setExtraConfig method of [IMEClient](ts-text-common.md#imeclient20), available since API version 22.
 
 ```TypeScript
 // xxx.ets
@@ -1203,13 +1203,13 @@ Since API version 22, this example uses [IMEClient](ts-text-common.md#imeclient2
 struct SearchExample {
   build() {
     Column() {
-      Search({ value: 'Execute the onWillAttachIME callback before the input method is pulled up' })
+      Search({ value: 'Execute onWillAttachIME callback before launching the input method' })
         .onWillAttachIME((client: IMEClient) => {
-          // Set the IME extension information, including the custom properties of the Search component.
+          // Set the extended information of the input method, including the custom attributes of the Search component.
           client.setExtraConfig({
             customSettings: {
-              name: "Search", // Custom property: component name.
-              id: client.nodeId // Custom property: node ID.
+              name: "Search", // Custom attribute: component name
+              id: client.nodeId // Custom attribute: node ID
             }
           })
         })
@@ -1218,9 +1218,9 @@ struct SearchExample {
 }
 ```
 
-### Example 24 (Setting the Search Box Divider Color)
+### Example 24: Setting the Color of the Text Box Divider
 
-Since API version 23, this example sets the search box divider color through the [dividerColor](#dividercolor23) API.
+This example demonstrates how to set the color of the text box divider using the [dividerColor](#dividercolor23) API, supported since API version 23.
 
 
 
@@ -1235,7 +1235,7 @@ struct SearchExample {
   @State colorTypeARGB: ColorMetrics = ColorMetrics.numeric(0x3300FF00);
   @State colorTypeColorWithSpace: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 0, 1.0, 0, 1.0);
   @State colorTypeRGBA: ColorMetrics = ColorMetrics.rgba(255, 0, 0, 1.0);
-  // Replace with the resource file required by the developer.
+  // Replace the file with the image resource file you use.
   @State colorTypeRes: ColorMetrics = ColorMetrics.resourceColor($r('app.color.color'));
   @State colorType: ColorMetrics[] =
     [this.colorTypeRGB, this.colorTypeARGB, this.colorTypeColorWithSpace, this.colorTypeRGBA, this.colorTypeRes];
@@ -1259,11 +1259,11 @@ struct SearchExample {
 }
 ```
 
-### Example 25 (Setting Leading Punctuation Compression)
+### Example 25: Setting Leading Punctuation Compression
 
-This example uses the [compressLeadingPunctuation](#compressleadingpunctuation23) API to set leading punctuation compression. When a punctuation mark with spacing on the left is at the beginning of a line, the punctuation directly compresses the spacing to the left boundary.
+This example demonstrates how to set leading punctuation compression using the [compressLeadingPunctuation](#compressleadingpunctuation23) API. If a punctuation mark with a leading space appears at the start of a line, the punctuation mark will be compressed to the left boundary.
 
-Since API version 23, the compressLeadingPunctuation API is supported.
+The compressLeadingPunctuation API is supported since API version 23.
 
 
 
@@ -1274,12 +1274,12 @@ Since API version 23, the compressLeadingPunctuation API is supported.
 struct Index {
   build() {
     Column(){
-      Search({ value: '\u300C Leading punctuation compression enabled' })
+      Search({ value: '\u300CLeading punctuation compression enabled' })
         .compressLeadingPunctuation(true)
         .margin(5)
         .textFont({size:30})
         .width("90%")
-      Search({ value: '\u300C Leading punctuation compression disabled' })
+      Search({ value: '\u300CLeading punctuation compression disabled' })
         .compressLeadingPunctuation(false)
         .textFont({size:30})
         .width("90%")
@@ -1288,11 +1288,11 @@ struct Index {
 }
 ```
 
-### Example 26 (Setting Adaptive Spacing)
+### Example 26: Setting Adaptive Spacing
 
-This example uses the [includeFontPadding](#includefontpadding23) API to increase the spacing of the first and last lines, and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
+This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
 
-Since API version 23, the [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are added.
+The [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are supported since API version 23.
 
 
 
@@ -1311,7 +1311,7 @@ struct Index {
     Column() {
       Search({
         value: this.displayText,
-        placeholder: 'Please enter content...'
+        placeholder: 'Enter'
       })
         .includeFontPadding(this.include)
         .fallbackLineSpacing(this.fallback)
@@ -1324,14 +1324,14 @@ struct Index {
 
       Scroll() {
         Column() {
-          // --- Buttons related to includeFontPadding ---
+          // --- Buttons related to IncludeFontPadding ---
           Button('Set includePadding: ' + this.include)
             .onClick(() => {
               this.include = this.include === false ? true : false;
             })
             .margin({ bottom: 10 })
 
-          // --- Buttons related to fallbackLineSpacing ---
+          // --- Button related to FallbackLineSpacing ---
           Button('Set fallbackLineSpacing: ' + this.fallback)
             .onClick(() => {
               this.fallback = this.fallback === false ? true : false;
@@ -1355,11 +1355,11 @@ struct Index {
 }
 ```
 
-### Example 27 (Setting the Backplate Style for Text Dragging)
+### Example 27: Setting the Drag Preview Style for Text Being Dragged
 
-This example uses the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API to set the backplate style for text dragging.
+This example demonstrates how to set the drag preview style for text being dragged using the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API.
 
-The selectedDragPreviewStyle API is added from API version 23.
+The selectedDragPreviewStyle API is supported since API version 23.
 
 
 
@@ -1382,11 +1382,11 @@ struct SearchTest {
 }
 ```
 
-### Example 28 (Deleting the Last Character in the Text Box)
+### Example 28: Deleting the Last Character in a Text Box
 
-This example calls the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API to delete the last character in the text box.
+This example demonstrates how to delete the last character in a text box using the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API.
 
-The [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API is available from API version 23.
+The [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API is supported since API version 23.
 
 
 
@@ -1398,7 +1398,7 @@ struct Page {
 
   build() {
     Column() {
-      Search({ placeholder: 'Search box example', controller: this.controller })
+      Search({ placeholder: 'Enter', controller: this.controller })
       Button('Delete backward')
         .onClick(() => {
           this.controller.deleteBackward();
@@ -1408,11 +1408,11 @@ struct Page {
 }
 ```
 
-### Example 29 (Setting the Text Layout Direction)
+### Example 29: Setting the Text Layout Direction
 
-This example sets the text layout direction through the [textDirection](#textdirection23) API.
+This example demonstrates how to set the text layout direction using the [textDirection](#textdirection23) API.
 
-Since API version 23, the textDirection API is added.
+The textDirection API is supported since API version 23.
 
 
 
@@ -1421,24 +1421,24 @@ Since API version 23, the textDirection API is added.
 @Entry
 @Component
 struct SearchExample {
-  @State text: string = 'Search text layout direction example';
+  @State text: string = 'Search text direction example';
 
   build() {
     Column({ space: 3 }) {
-      Text('Search text layout direction RTL, layout direction default')
+      Text('Search text direction: RTL, component layout direction: default')
         .fontSize(12).width('90%').margin(5)
       Search({ value: this.text })
         .width('95%')
         .height(40)
         .textDirection(TextDirection.RTL)
-      Text('Search text layout direction RTL, layout direction default, text horizontal alignment LEFT')
+      Text('Search text direction: RTL, component layout direction: default, horizontal alignment: LEFT')
         .fontSize(12).width('90%').margin(5)
       Search({ value: this.text })
         .width('95%')
         .height(40)
         .textDirection(TextDirection.RTL)
         .textAlign(TextAlign.LEFT)
-      Text('Search text layout direction LTR, layout direction RTL')
+      Text('Search text direction: LTR, component layout direction: RTL')
         .fontSize(12).width('90%').margin(5)
       Search({ value: this.text })
         .width('95%')
@@ -1452,11 +1452,11 @@ struct SearchExample {
 }
 ```
 
-### Example 30 (Scroll the Specified Range of Text into the Visible Area)
+### Example 30: Scrolling the Text in a Specified Range to the Visible Area
 
-This example uses [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) to scroll the text outside the visible area into the visible area.
+This example demonstrates how to scroll the text in a specified range to the visible area using the [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) API.
 
-Since API version 23, the scrollToVisible API is added.
+The scrollToVisible API is supported since API version 23.
 
 
 
@@ -1473,7 +1473,7 @@ struct SearchExample {
       Search({ value: this.text, controller: this.controller })
         .width(336)
         .height(56)
-      Button('Scroll text into the visible area').onClick(()=> {
+      Button('Scroll Text to Visible Area').onClick(()=> {
         this.controller.scrollToVisible({ start: 22, end: 30})
       })
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
@@ -1481,9 +1481,9 @@ struct SearchExample {
 }
 ```
 
-### Example 31 (Setting the Text Shader Effect)
+### Example 31: Setting the Text Shader Effect
 
-This example uses the [shaderStyle](#shaderstyle) API to apply a shader effect to the text in the Search component.
+This example demonstrates how to use [shaderStyle](#shaderstyle) to set the text shader effect in the Search component.
 
 Since API version 26.0.0, the shaderStyle API is added.
 
@@ -1518,14 +1518,14 @@ struct ShaderColorStyle {
     };
   build() {
     Column({ space: 5 }) {
-      Text('Linear gradient with an angle of 45°').fontSize(18).width('90%')
+      Text('Linear gradient with angle setting to 45°').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       Search({ value: this.message })
         .minFontSize(20)
         .width('80%')
         .height(40)
         .shaderStyle(this.linearGradientOptions1)
-      Text('Linear gradient with the direction of LeftTop').fontSize(18).width('90%')
+      Text('Linear gradient with direction setting to LeftTop').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       Search({ value: this.message })
         .minFontSize(20)
@@ -1551,17 +1551,17 @@ struct ShaderColorStyle {
 }
 ```
 
-### Example 32 (Setting the AI Menu for Text Selection)
+### Example 32: Setting an AI Menu for Text Selection
 
-This example configures the AI menu feature for text selection through [enableSelectedDataDetector](#enableselecteddatadetector22).
+This example demonstrates how to configure the AI menu for text selection using the [enableSelectedDataDetector](#enableselecteddatadetector22) API.
 
-Since API version 22, enableSelectedDataDetector is added.
+The enableSelectedDataDetector API is added in API version 22.
 
 ```TypeScript
 @Entry
 @Component
 struct SearchExample {
-  exampleText: string = 'Example URL: www.example.com';
+  exampleText: string ='Example website: www.example.com';
 
   build() {
     Column() {

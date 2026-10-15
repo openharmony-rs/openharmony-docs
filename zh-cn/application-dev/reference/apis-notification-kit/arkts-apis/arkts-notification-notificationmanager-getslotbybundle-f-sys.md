@@ -14,7 +14,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 
 获取指定应用指定类型的通知渠道。使用Promise异步回调。
 
-获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md)创建通知渠道。
+获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot1)创建通知渠道。
 
 **起始版本：** 12
 
@@ -45,7 +45,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -53,6 +53,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,3 +71,5 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
     console.error(`getSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

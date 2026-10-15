@@ -18,7 +18,7 @@ function createComponentObserver(id: string): ComponentObserver
 
 **废弃版本：** 18
 
-**替代接口：** createComponentObserver
+**替代接口：** [createComponentObserver](arkts-arkui-arkui-uicontext-uiinspector-c.md#createcomponentobserver)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

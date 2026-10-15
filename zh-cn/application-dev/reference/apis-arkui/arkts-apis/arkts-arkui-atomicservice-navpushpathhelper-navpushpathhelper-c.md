@@ -44,6 +44,8 @@ NavPushPathHelper的构造函数。
 | --- | --- | --- | --- |
 | navPathStack | [NavPathStack](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md) | 是 | [Navigation](../arkts-components/arkts-arkui-navigation-comp.md)路由栈。 |
 
+<a id="pushdestination1"></a>
+
 ## pushDestination
 
 ```TypeScript
@@ -84,7 +86,7 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
-<a id="pushdestination-1"></a>
+<a id="pushdestination2"></a>
 
 ## pushDestination
 
@@ -122,11 +124,13 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
+
+<a id="pushdestinationbyname1"></a>
 
 ## pushDestinationByName
 
@@ -169,7 +173,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
-<a id="pushdestinationbyname-1"></a>
+<a id="pushdestinationbyname2"></a>
 
 ## pushDestinationByName
 
@@ -214,6 +218,8 @@ pushDestinationByName(moduleName: string, name: string, param: Object,
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="pushpath1"></a>
+
 ## pushPath
 
 ```TypeScript
@@ -250,7 +256,7 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<voi
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
-<a id="pushpath-1"></a>
+<a id="pushpath2"></a>
 
 ## pushPath
 
@@ -290,6 +296,8 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="pushpathbyname1"></a>
+
 ## pushPathByName
 
 ```TypeScript
@@ -327,7 +335,7 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
-<a id="pushpathbyname-1"></a>
+<a id="pushpathbyname2"></a>
 
 ## pushPathByName
 
@@ -368,6 +376,8 @@ pushPathByName(moduleName: string, name: string, param: Object,
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="replacepath1"></a>
+
 ## replacePath
 
 ```TypeScript
@@ -404,7 +414,7 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
-<a id="replacepath-1"></a>
+<a id="replacepath2"></a>
 
 ## replacePath
 

@@ -63,7 +63,7 @@ readonly request: NotificationRequest
 
 Notification content.
 
-**Type:** [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)
+**Type:** [NotificationRequest](arkts-notification-notificationrequest-i.md)
 
 **Since:** 7
 
@@ -81,7 +81,7 @@ readonly sortingMap?: NotificationSortingMap
 
 Notification sorting information.
 
-**Type:** [NotificationSortingMap](arkts-notification-notificationsortingmap-notificationsortingmap-i-sys.md)
+**Type:** [NotificationSortingMap](arkts-notification-notificationsortingmap-i-sys.md)
 
 **Since:** 7
 

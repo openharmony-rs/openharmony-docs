@@ -12,6 +12,38 @@ export enum StopCode
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
+## EXECUTE_ERROR
+
+```TypeScript
+EXECUTE_ERROR = 4
+```
+
+执行任务异常。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StopCode-EXECUTE_ERROR = 4--><!--Device-StopCode-EXECUTE_ERROR = 4-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+## PERCEPTIBLE_ERROR
+
+```TypeScript
+PERCEPTIBLE_ERROR = 2
+```
+
+任务执行中发生可感知任务错误
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StopCode-PERCEPTIBLE_ERROR = 2--><!--Device-StopCode-PERCEPTIBLE_ERROR = 2-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
 ## SUCCESS
 
 ```TypeScript
@@ -44,22 +76,6 @@ SYSTEM_ERROR = 1
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-## PERCEPTIBLE_ERROR
-
-```TypeScript
-PERCEPTIBLE_ERROR = 2
-```
-
-任务执行中发生可感知任务错误
-
-**起始版本：** 26.2.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StopCode-PERCEPTIBLE_ERROR = 2--><!--Device-StopCode-PERCEPTIBLE_ERROR = 2-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
-
 ## TIMEOUT_ERROR
 
 ```TypeScript
@@ -73,21 +89,5 @@ TIMEOUT_ERROR = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StopCode-TIMEOUT_ERROR = 3--><!--Device-StopCode-TIMEOUT_ERROR = 3-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
-
-## EXECUTE_ERROR
-
-```TypeScript
-EXECUTE_ERROR = 4
-```
-
-执行任务异常。
-
-**起始版本：** 26.2.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-StopCode-EXECUTE_ERROR = 4--><!--Device-StopCode-EXECUTE_ERROR = 4-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler

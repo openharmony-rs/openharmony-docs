@@ -30,7 +30,7 @@ ID of this capture action.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-FrameShutterEndInfo-captureId: int--><!--Device-FrameShutterEndInfo-captureId: int-End-->
 

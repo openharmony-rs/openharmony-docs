@@ -48,6 +48,7 @@ export function verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): 
 | [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-服务内部错误) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | [24010003](../errorcode-abilityToolAccessCtrl-sys.md#24010003-环境错误) | The account is not logged in, network is unavailable, timeout, etc. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ abilityToolAccessCtrl.verifyControlledDevicePackage(ticketInfo).then((data: Arra
   console.error(`verifyControlledDevicePackage fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

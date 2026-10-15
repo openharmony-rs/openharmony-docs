@@ -14,50 +14,6 @@ export enum BackgroundTaskSubmode
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SUBMODE_CAR_KEY_NORMAL_NOTIFICATION
-
-```TypeScript
-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1
-```
-
-车钥匙类型，通知类型为普通文本通知。
-
-**起始版本：** 21
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1--><!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SUBMODE_NORMAL_NOTIFICATION
-
-```TypeScript
-SUBMODE_NORMAL_NOTIFICATION = 2
-```
-
-普通文本通知。
-
-**起始版本：** 21
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2--><!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SUBMODE_LIVE_VIEW_NOTIFICATION
-
-```TypeScript
-SUBMODE_LIVE_VIEW_NOTIFICATION = 3
-```
-
-实况窗通知。
-
-**起始版本：** 21
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3--><!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
 ## SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION
 
 ```TypeScript
@@ -68,25 +24,9 @@ SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-BackgroundTaskSubmode-SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4--><!--Device-BackgroundTaskSubmode-SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SUBMODE_AVSESSION_AUDIO_PLAYBACK
-
-```TypeScript
-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5
-```
-
-已接入[AVSession](../../../media/avsession/avsession-overview.md)的音视频播放场景，不发送通知。
-
-**起始版本：** 22
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5--><!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -104,31 +44,47 @@ SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION = 6
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION
+## SUBMODE_AVSESSION_AUDIO_PLAYBACK
 
 ```TypeScript
-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7
+SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5
 ```
 
-录屏，通知类型为普通文本通知。
+已接入[AVSession](../../../media/avsession/avsession-overview.md)的音视频播放场景，不发送通知。
 
 **起始版本：** 22
 
-<!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7--><!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5--><!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION
+## SUBMODE_CAR_KEY_NORMAL_NOTIFICATION
 
 ```TypeScript
-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8
+SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1
 ```
 
-通话，通知类型为普通文本通知。
+车钥匙类型，通知类型为普通文本通知。
 
-**起始版本：** 22
+**起始版本：** 21
 
-<!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8--><!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8-End-->
+<!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1--><!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SUBMODE_LIVE_VIEW_NOTIFICATION
+
+```TypeScript
+SUBMODE_LIVE_VIEW_NOTIFICATION = 3
+```
+
+实况窗通知。
+
+**起始版本：** 21
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3--><!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -146,6 +102,36 @@ SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION = 9
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+## SUBMODE_NORMAL_NOTIFICATION
+
+```TypeScript
+SUBMODE_NORMAL_NOTIFICATION = 2
+```
+
+普通文本通知。
+
+**起始版本：** 21
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2--><!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION
+
+```TypeScript
+SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7
+```
+
+录屏，通知类型为普通文本通知。
+
+**起始版本：** 22
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7--><!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
 ## SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION
 
 ```TypeScript
@@ -157,6 +143,20 @@ SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION = 10
 **起始版本：** 22
 
 <!--Device-BackgroundTaskSubmode-SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION = 10--><!--Device-BackgroundTaskSubmode-SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION = 10-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION
+
+```TypeScript
+SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8
+```
+
+通话，通知类型为普通文本通知。
+
+**起始版本：** 22
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8--><!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

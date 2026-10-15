@@ -4,29 +4,11 @@
 declare enum Curve
 ```
 
-插值曲线，动效请参考<!--RP1-->贝塞尔曲线<!--RP1End-->。
+插值曲线，动效请参考<!--RP1-->[贝塞尔曲线](../../../../design/ux-design/animation-attributes.md)<!--RP1End-->。
 
 **起始版本：** 7
 
 <!--Device-unnamed-declare enum Curve--><!--Device-unnamed-declare enum Curve-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Linear
-
-```TypeScript
-Linear
-```
-
-表示动画在整个过程中速度保持一致。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Curve-Linear--><!--Device-Curve-Linear-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,24 +48,6 @@ EaseIn
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## EaseOut
-
-```TypeScript
-EaseOut
-```
-
-表示动画以低速结束，CubicBezier(0.0, 0.0, 0.58, 1.0)。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Curve-EaseOut--><!--Device-Curve-EaseOut-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## EaseInOut
 
 ```TypeScript
@@ -102,13 +66,13 @@ EaseInOut
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## FastOutSlowIn
+## EaseOut
 
 ```TypeScript
-FastOutSlowIn
+EaseOut
 ```
 
-标准曲线，CubicBezier(0.4, 0.0, 0.2, 1.0)。
+表示动画以低速结束，CubicBezier(0.0, 0.0, 0.58, 1.0)。
 
 **起始版本：** 7
 
@@ -116,43 +80,7 @@ FastOutSlowIn
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Curve-FastOutSlowIn--><!--Device-Curve-FastOutSlowIn-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## LinearOutSlowIn
-
-```TypeScript
-LinearOutSlowIn
-```
-
-减速曲线，CubicBezier(0.0, 0.0, 0.2, 1.0)。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Curve-LinearOutSlowIn--><!--Device-Curve-LinearOutSlowIn-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## FastOutLinearIn
-
-```TypeScript
-FastOutLinearIn
-```
-
-加速曲线，CubicBezier(0.4, 0.0, 1.0, 1.0)。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Curve-FastOutLinearIn--><!--Device-Curve-FastOutLinearIn-End-->
+<!--Device-Curve-EaseOut--><!--Device-Curve-EaseOut-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,13 +102,13 @@ ExtremeDeceleration
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Sharp
+## FastOutLinearIn
 
 ```TypeScript
-Sharp
+FastOutLinearIn
 ```
 
-锐利曲线，CubicBezier(0.33, 0.0, 0.67, 1.0)。
+加速曲线，CubicBezier(0.4, 0.0, 1.0, 1.0)。
 
 **起始版本：** 7
 
@@ -188,7 +116,79 @@ Sharp
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Curve-Sharp--><!--Device-Curve-Sharp-End-->
+<!--Device-Curve-FastOutLinearIn--><!--Device-Curve-FastOutLinearIn-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## FastOutSlowIn
+
+```TypeScript
+FastOutSlowIn
+```
+
+标准曲线，CubicBezier(0.4, 0.0, 0.2, 1.0)。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Curve-FastOutSlowIn--><!--Device-Curve-FastOutSlowIn-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Friction
+
+```TypeScript
+Friction
+```
+
+阻尼曲线，CubicBezier(0.2, 0.0, 0.2, 1.0)。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Curve-Friction--><!--Device-Curve-Friction-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Linear
+
+```TypeScript
+Linear
+```
+
+表示动画在整个过程中速度保持一致。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Curve-Linear--><!--Device-Curve-Linear-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## LinearOutSlowIn
+
+```TypeScript
+LinearOutSlowIn
+```
+
+减速曲线，CubicBezier(0.0, 0.0, 0.2, 1.0)。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Curve-LinearOutSlowIn--><!--Device-Curve-LinearOutSlowIn-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,6 +210,24 @@ Rhythm
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## Sharp
+
+```TypeScript
+Sharp
+```
+
+锐利曲线，CubicBezier(0.33, 0.0, 0.67, 1.0)。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Curve-Sharp--><!--Device-Curve-Sharp-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## Smooth
 
 ```TypeScript
@@ -225,23 +243,5 @@ Smooth
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-Curve-Smooth--><!--Device-Curve-Smooth-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Friction
-
-```TypeScript
-Friction
-```
-
-阻尼曲线，CubicBezier(0.2, 0.0, 0.2, 1.0)。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Curve-Friction--><!--Device-Curve-Friction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

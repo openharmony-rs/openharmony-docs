@@ -20,14 +20,14 @@ import { map } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createMapMseProfile](arkts-connectivity-map-createmapmseprofile-f.md) | 创建蓝牙消息访问协议中的MSE实例。通过该实例可使用本端作为MSE设备时提供的接口，如：获取和其他设备间的蓝牙消息服务连接状态。适用于蓝牙消息同步、车载蓝牙消息查看等场景。 |
+| [createMapMseProfile](arkts-connectivity-map-createmapmseprofile-f.md#createmapmseprofile) | 创建蓝牙消息访问协议中的MSE实例。通过该实例可使用本端作为MSE设备时提供的接口，如：获取和其他设备间的蓝牙消息服务连接状态。适用于蓝牙消息同步、车载蓝牙消息查看等场景。 |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| MapMseProfile | 该实例表示蓝牙消息访问协议中的MSE角色。 |
+| [MapMseProfile](arkts-connectivity-map-mapmseprofile-i-sys.md) | 该实例表示蓝牙消息访问协议中的MSE角色。 |
 <!--DelEnd-->
 
 ### 类型

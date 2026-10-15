@@ -14,24 +14,6 @@ enum RenderTarget
 
 **系统接口：** 此接口为系统接口。
 
-## PLAYBACK
-
-```TypeScript
-PLAYBACK = 0
-```
-
-播放模式（音频渲染器的默认模式）。
-
-在此模式下，音频将通过音频渲染器正常播放。
-
-**起始版本：** 22
-
-<!--Device-RenderTarget-PLAYBACK = 0--><!--Device-RenderTarget-PLAYBACK = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## INJECT_TO_VOICE_COMMUNICATION_CAPTURE
 
 ```TypeScript
@@ -45,6 +27,24 @@ INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1
 **起始版本：** 22
 
 <!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1--><!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PLAYBACK
+
+```TypeScript
+PLAYBACK = 0
+```
+
+播放模式（音频渲染器的默认模式）。
+
+在此模式下，音频将通过音频渲染器正常播放。
+
+**起始版本：** 22
+
+<!--Device-RenderTarget-PLAYBACK = 0--><!--Device-RenderTarget-PLAYBACK = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

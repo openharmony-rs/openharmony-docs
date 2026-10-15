@@ -25,6 +25,8 @@ Matches a string with this regular expression, and returns an array containing t
 | --- | --- | --- | --- |
 | string | string | Yes |  |
 
+<a id="symbolreplace1"></a>
+
 ## [Symbol.replace]
 
 ```TypeScript
@@ -42,7 +44,7 @@ Replaces text in a string, using this regular expression.
 | string | string | Yes |  |
 | replaceValue | string | Yes |  |
 
-<a id="symbolreplace-1"></a>
+<a id="symbolreplace2"></a>
 
 ## [Symbol.replace]
 

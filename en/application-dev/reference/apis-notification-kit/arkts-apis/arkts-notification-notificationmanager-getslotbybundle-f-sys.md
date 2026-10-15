@@ -14,7 +14,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 
 Obtains a notification slot of a specified application. This API uses a promise to return the result.
 
-Before obtaining the notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md).
+Before obtaining the notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot1).
 
 **Since:** 12
 
@@ -45,7 +45,7 @@ Before obtaining the notification slot, create a slot through [addSlot](arkts-no
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
@@ -53,13 +53,14 @@ Before obtaining the notification slot, create a slot through [addSlot](arkts-no
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotType = notificationManager.SlotType.LIVE_VIEW;
@@ -70,3 +71,5 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
     console.error(`getSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

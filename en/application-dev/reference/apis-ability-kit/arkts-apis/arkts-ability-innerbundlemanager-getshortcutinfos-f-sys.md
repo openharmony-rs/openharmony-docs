@@ -6,6 +6,8 @@
 import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
+<a id="getshortcutinfos1"></a>
+
 ## getShortcutInfos
 
 ```TypeScript
@@ -17,14 +19,13 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 > **NOTE:** 
 > 
 > This API has been supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)
-> instead.
+> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)(bundleName :string, callback: AsyncCallback&lt;Array&lt;ShortcutInfo&gt;&gt;)
+**Substitutes:** [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -39,10 +40,10 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return an array of the shortcut information. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return an array of the shortcut information. |
 
 
-<a id="getshortcutinfos-1"></a>
+<a id="getshortcutinfos2"></a>
 
 ## getShortcutInfos
 
@@ -55,14 +56,13 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 > **NOTE:** 
 > 
 > This API has been supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)
-> instead.
+> [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)(bundleName :string, callback: AsyncCallback&lt;Array&lt;ShortcutInfo&gt;&gt;)
+**Substitutes:** [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -82,4 +82,4 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)&gt;&gt; | Promise used to return an array of the shortcut information. |
+| Promise&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md)&gt;&gt; | Promise used to return an array of the shortcut information. |

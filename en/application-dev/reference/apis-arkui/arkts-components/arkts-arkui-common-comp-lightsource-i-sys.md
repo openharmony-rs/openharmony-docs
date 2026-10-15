@@ -42,7 +42,7 @@ Default value: **Color.White**
 intensity: number
 ```
 
-Intensity of the light source. The recommended value range is 0-1. When the intensity is **0**, the light source does not emit light.
+Light source intensity. The value range is [0, +∞). If the value is out of range, the default value **0** is used. When the light source intensity is **0**, the light source does not emit light.
 
 **Type:** number
 

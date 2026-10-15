@@ -39,6 +39,7 @@ Obtains all applications that have requested the ohos.permission.SUBSCRIBE_NOTIF
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notifi
   console.error(`getAllSubscriptionBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

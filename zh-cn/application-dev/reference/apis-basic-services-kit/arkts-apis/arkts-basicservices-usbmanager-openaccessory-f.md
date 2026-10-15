@@ -50,6 +50,7 @@ function openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 ```TypeScript
 import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 async function openAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -58,13 +59,16 @@ async function openAccessory() {
       return;
     }
     let handle = usbManager.openAccessory(accList?.[0]);
-    console.info(`openAccessory success`);
+    console.info(`Succeeded in openAccessory`);
     let arrayBuffer = new ArrayBuffer(4096);
+    // 通过配件句柄中的文件描述符读取配件发送的数据
     let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
     console.info('readSync ret: ' + readLength.toString(10));
+    // 关闭配件文件描述符，释放句柄资源
     usbManager.closeAccessory(handle);
   } catch (error) {
-    console.error(`openAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`openAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```

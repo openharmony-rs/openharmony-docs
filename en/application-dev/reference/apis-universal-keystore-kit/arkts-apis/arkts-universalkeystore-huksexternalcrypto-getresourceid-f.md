@@ -39,13 +39,13 @@ Obtain the resource ID of the provider.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000002](../errorcode-huks.md#12000002-missing-key-algorithm-parameter) | The ability name, bundle name parameter or resource information is missing. |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed. |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | The provider is not found. |
 | [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | The memory is insufficient. |
-| [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | Input parameters are invalid. Possible causes: 1. The providerName length is invalid. 2. The parameters contain invalid tags or invalid value types. |
+| [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | Input parameters are invalid. Possible causes:         1. The providerName length is invalid.         2. The parameters contain invalid tags or invalid value types. |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | The provider or UKey is busy. |
 

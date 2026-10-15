@@ -6,6 +6,8 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
+<a id="createfrombuilder1"></a>
+
 ## createFromBuilder
 
 ```TypeScript
@@ -29,7 +31,7 @@ function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image
 
 **废弃版本：** 18
 
-**替代接口：** createFromBuilder
+**替代接口：** [createFromBuilder](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#createfrombuilder)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -120,7 +122,7 @@ struct OffscreenSnapshotExample {
 ```
 
 
-<a id="createfrombuilder-1"></a>
+<a id="createfrombuilder2"></a>
 
 ## createFromBuilder
 
@@ -145,7 +147,7 @@ function createFromBuilder(builder: CustomBuilder, delay?: number,
 
 **废弃版本：** 18
 
-**替代接口：** createFromBuilder
+**替代接口：** [createFromBuilder](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#createfrombuilder)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

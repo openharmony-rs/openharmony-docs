@@ -21,7 +21,7 @@ function traceByValue(name: string, count: number): void
 
 **废弃版本：** 8
 
-**替代接口：** traceByValue
+**替代接口：** [traceByValue](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md)
 
 <!--Device-bytrace-function traceByValue(name: string, count: number): void--><!--Device-bytrace-function traceByValue(name: string, count: number): void-End-->
 

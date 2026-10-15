@@ -6,6 +6,8 @@ export type VoiceContentOptions = _VoiceContentOptions
 
 Describes the properties of the voice content options for notification subscription.
 
+**Type:** _VoiceContentOptions
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Describes the properties of the voice content options for notification subscript
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _VoiceContentOptions

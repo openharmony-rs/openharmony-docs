@@ -6,6 +6,8 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="startabilityforresult1"></a>
+
 ## startAbilityForResult
 
 ```TypeScript
@@ -14,10 +16,10 @@ function startAbilityForResult(parameter: StartAbilityParameter, callback: Async
 
 Starts an ability. This API uses an asynchronous callback to return the result. The following situations may be possible for a started ability:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) to terminate the ability. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1) to terminate the ability. The result is returned to the caller.  
 - If an exception occurs, for example, the ability is killed, an exception message, in which **resultCode** is  
 **-1**, is returned to the caller.  
-- If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -36,8 +38,8 @@ Starts an ability. This API uses an asynchronous callback to return the result. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | Yes | Ability to start. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is an AbilityResult object; otherwise, err is an error object. |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | Yes | Ability to start. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is an AbilityResult object; otherwise, err is an error object. |
 
 **Examples**
 
@@ -71,7 +73,7 @@ featureAbility.startAbilityForResult(
 ```
 
 
-<a id="startabilityforresult-1"></a>
+<a id="startabilityforresult2"></a>
 
 ## startAbilityForResult
 
@@ -81,10 +83,10 @@ function startAbilityForResult(parameter: StartAbilityParameter): Promise<Abilit
 
 Starts an ability. This API uses a promise to return the result. The following situations may be possible for a started ability:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) to terminate the ability. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1) to terminate the ability. The result is returned to the caller.  
 - If an exception occurs, for example, the ability is killed, an exception message, in which **resultCode** is  
 **-1**, is returned to the caller.  
-- If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -103,13 +105,13 @@ Starts an ability. This API uses a promise to return the result. The following s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | Yes | Ability to start. |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | Yes | Ability to start. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise used to return the result. |
 
 **Examples**
 

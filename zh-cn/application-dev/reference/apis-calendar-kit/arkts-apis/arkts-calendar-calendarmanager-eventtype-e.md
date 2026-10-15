@@ -12,22 +12,6 @@ enum EventType
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-普通日程，例如会议，闹钟等日常提醒的日程。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-EventType-NORMAL = 0--><!--Device-EventType-NORMAL = 0-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
 ## IMPORTANT
 
 ```TypeScript
@@ -41,5 +25,21 @@ IMPORTANT = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-EventType-IMPORTANT = 1--><!--Device-EventType-IMPORTANT = 1-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+普通日程，例如会议，闹钟等日常提醒的日程。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventType-NORMAL = 0--><!--Device-EventType-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData

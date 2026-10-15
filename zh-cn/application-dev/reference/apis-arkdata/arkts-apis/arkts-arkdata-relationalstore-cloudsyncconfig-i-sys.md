@@ -37,3 +37,23 @@ downloadOnly?: boolean
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
+
+## fullSync
+
+```TypeScript
+fullSync?: boolean
+```
+
+是否进行全量同步。true表示将云端全量数据同步到本地，false表示仅同步自上次端云同步以来的增量数据。默认值为false。
+
+**类型：** boolean
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CloudSyncConfig-fullSync?: boolean--><!--Device-CloudSyncConfig-fullSync?: boolean-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**系统接口：** 此接口为系统接口。

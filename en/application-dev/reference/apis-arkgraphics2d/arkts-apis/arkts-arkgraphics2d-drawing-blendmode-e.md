@@ -26,255 +26,17 @@ r = 0, sets the destination pixels to fully transparent.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## SRC
+## COLOR
 
 ```TypeScript
-SRC = 1
+COLOR = 27
 ```
 
-r = s (all channels of the result equal those of the source), replaces the destination pixels with the source pixels.
+Uses the hue and saturation of the source pixels and the brightness of the destination pixels.
 
 **Since:** 11
 
-<!--Device-BlendMode-SRC = 1--><!--Device-BlendMode-SRC = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## DST
-
-```TypeScript
-DST = 2
-```
-
-r = d (all channels of the result equal those of the destination), keeps the destination pixels unchanged.
-
-**Since:** 11
-
-<!--Device-BlendMode-DST = 2--><!--Device-BlendMode-DST = 2-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## SRC_OVER
-
-```TypeScript
-SRC_OVER = 3
-```
-
-r = s + (1 - sa) * d, draws the source pixels over the destination pixels, considering the source's transparency.
-
-**Since:** 11
-
-<!--Device-BlendMode-SRC_OVER = 3--><!--Device-BlendMode-SRC_OVER = 3-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## DST_OVER
-
-```TypeScript
-DST_OVER = 4
-```
-
-r = d + (1 - da) * s, draws the destination pixels over the source pixels, considering the destination's transparency.
-
-**Since:** 11
-
-<!--Device-BlendMode-DST_OVER = 4--><!--Device-BlendMode-DST_OVER = 4-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## SRC_IN
-
-```TypeScript
-SRC_IN = 5
-```
-
-r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.
-
-**Since:** 11
-
-<!--Device-BlendMode-SRC_IN = 5--><!--Device-BlendMode-SRC_IN = 5-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## DST_IN
-
-```TypeScript
-DST_IN = 6
-```
-
-r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.
-
-**Since:** 11
-
-<!--Device-BlendMode-DST_IN = 6--><!--Device-BlendMode-DST_IN = 6-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## SRC_OUT
-
-```TypeScript
-SRC_OUT = 7
-```
-
-r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.
-
-**Since:** 11
-
-<!--Device-BlendMode-SRC_OUT = 7--><!--Device-BlendMode-SRC_OUT = 7-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## DST_OUT
-
-```TypeScript
-DST_OUT = 8
-```
-
-r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.
-
-**Since:** 11
-
-<!--Device-BlendMode-DST_OUT = 8--><!--Device-BlendMode-DST_OUT = 8-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## SRC_ATOP
-
-```TypeScript
-SRC_ATOP = 9
-```
-
-r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.
-
-**Since:** 11
-
-<!--Device-BlendMode-SRC_ATOP = 9--><!--Device-BlendMode-SRC_ATOP = 9-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## DST_ATOP
-
-```TypeScript
-DST_ATOP = 10
-```
-
-r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.
-
-**Since:** 11
-
-<!--Device-BlendMode-DST_ATOP = 10--><!--Device-BlendMode-DST_ATOP = 10-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## XOR
-
-```TypeScript
-XOR = 11
-```
-
-r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.
-
-**Since:** 11
-
-<!--Device-BlendMode-XOR = 11--><!--Device-BlendMode-XOR = 11-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## PLUS
-
-```TypeScript
-PLUS = 12
-```
-
-r = min(s + d, 1), adds the color values of the source and destination pixels.
-
-**Since:** 11
-
-<!--Device-BlendMode-PLUS = 12--><!--Device-BlendMode-PLUS = 12-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## MODULATE
-
-```TypeScript
-MODULATE = 13
-```
-
-r = s * d, multiplies the color values of the source and destination pixels.
-
-**Since:** 11
-
-<!--Device-BlendMode-MODULATE = 13--><!--Device-BlendMode-MODULATE = 13-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## SCREEN
-
-```TypeScript
-SCREEN = 14
-```
-
-r = s + d - s * d, inverts the color values of the source and destination pixels, multiplies them, and then inverts the result, typically producing a brighter outcome.
-
-**Since:** 11
-
-<!--Device-BlendMode-SCREEN = 14--><!--Device-BlendMode-SCREEN = 14-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## OVERLAY
-
-```TypeScript
-OVERLAY = 15
-```
-
-Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the destination pixels, enhancing contrast.
-
-**Since:** 11
-
-<!--Device-BlendMode-OVERLAY = 15--><!--Device-BlendMode-OVERLAY = 15-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## DARKEN
-
-```TypeScript
-DARKEN = 16
-```
-
-rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d, takes the darker color values between the source and destination pixels.
-
-**Since:** 11
-
-<!--Device-BlendMode-DARKEN = 16--><!--Device-BlendMode-DARKEN = 16-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## LIGHTEN
-
-```TypeScript
-LIGHTEN = 17
-```
-
-rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d, takes the lighter color values between the source and destination pixels.
-
-**Since:** 11
-
-<!--Device-BlendMode-LIGHTEN = 17--><!--Device-BlendMode-LIGHTEN = 17-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## COLOR_DODGE
-
-```TypeScript
-COLOR_DODGE = 18
-```
-
-Brightens the destination pixels by reducing contrast to reflect the source pixels.
-
-**Since:** 11
-
-<!--Device-BlendMode-COLOR_DODGE = 18--><!--Device-BlendMode-COLOR_DODGE = 18-End-->
+<!--Device-BlendMode-COLOR = 27--><!--Device-BlendMode-COLOR = 27-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -292,31 +54,31 @@ Darkens the destination pixels by increasing contrast to reflect the source pixe
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## HARD_LIGHT
+## COLOR_DODGE
 
 ```TypeScript
-HARD_LIGHT = 20
+COLOR_DODGE = 18
 ```
 
-Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.
+Brightens the destination pixels by reducing contrast to reflect the source pixels.
 
 **Since:** 11
 
-<!--Device-BlendMode-HARD_LIGHT = 20--><!--Device-BlendMode-HARD_LIGHT = 20-End-->
+<!--Device-BlendMode-COLOR_DODGE = 18--><!--Device-BlendMode-COLOR_DODGE = 18-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## SOFT_LIGHT
+## DARKEN
 
 ```TypeScript
-SOFT_LIGHT = 21
+DARKEN = 16
 ```
 
-Softly brightens or darkens the destination pixels based on the brightness of the source pixels.
+rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d, takes the darker color values between the source and destination pixels.
 
 **Since:** 11
 
-<!--Device-BlendMode-SOFT_LIGHT = 21--><!--Device-BlendMode-SOFT_LIGHT = 21-End-->
+<!--Device-BlendMode-DARKEN = 16--><!--Device-BlendMode-DARKEN = 16-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -334,6 +96,76 @@ rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the di
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+## DST
+
+```TypeScript
+DST = 2
+```
+
+r = d (all channels of the result equal those of the destination), keeps the destination pixels unchanged.
+
+**Since:** 11
+
+<!--Device-BlendMode-DST = 2--><!--Device-BlendMode-DST = 2-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## DST_ATOP
+
+```TypeScript
+DST_ATOP = 10
+```
+
+r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.
+
+**Since:** 11
+
+<!--Device-BlendMode-DST_ATOP = 10--><!--Device-BlendMode-DST_ATOP = 10-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## DST_IN
+
+```TypeScript
+DST_IN = 6
+```
+
+r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.
+
+**Since:** 11
+
+<!--Device-BlendMode-DST_IN = 6--><!--Device-BlendMode-DST_IN = 6-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## DST_OUT
+
+```TypeScript
+DST_OUT = 8
+```
+
+r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.
+
+**Since:** 11
+
+<!--Device-BlendMode-DST_OUT = 8--><!--Device-BlendMode-DST_OUT = 8-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## DST_OVER
+
+```TypeScript
+DST_OVER = 4
+```
+
+r = d + (1 - da) * s, draws the destination pixels over the source pixels, considering the destination's transparency.
+
+**Since:** 11
+
+<!--Device-BlendMode-DST_OVER = 4--><!--Device-BlendMode-DST_OVER = 4-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
 ## EXCLUSION
 
 ```TypeScript
@@ -348,17 +180,17 @@ rc = s + d - two(s * d), ra = s + (1 - sa) * d, similar to **DIFFERENCE** but wi
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## MULTIPLY
+## HARD_LIGHT
 
 ```TypeScript
-MULTIPLY = 24
+HARD_LIGHT = 20
 ```
 
-r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.
+Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.
 
 **Since:** 11
 
-<!--Device-BlendMode-MULTIPLY = 24--><!--Device-BlendMode-MULTIPLY = 24-End-->
+<!--Device-BlendMode-HARD_LIGHT = 20--><!--Device-BlendMode-HARD_LIGHT = 20-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -376,31 +208,17 @@ Uses the hue of the source pixels and the saturation and brightness of the desti
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## SATURATION
+## LIGHTEN
 
 ```TypeScript
-SATURATION = 26
+LIGHTEN = 17
 ```
 
-Uses the saturation of the source pixels and the hue and brightness of the destination pixels.
+rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d, takes the lighter color values between the source and destination pixels.
 
 **Since:** 11
 
-<!--Device-BlendMode-SATURATION = 26--><!--Device-BlendMode-SATURATION = 26-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## COLOR
-
-```TypeScript
-COLOR = 27
-```
-
-Uses the hue and saturation of the source pixels and the brightness of the destination pixels.
-
-**Since:** 11
-
-<!--Device-BlendMode-COLOR = 27--><!--Device-BlendMode-COLOR = 27-End-->
+<!--Device-BlendMode-LIGHTEN = 17--><!--Device-BlendMode-LIGHTEN = 17-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -415,5 +233,187 @@ Uses the brightness of the source pixels and the hue and saturation of the desti
 **Since:** 11
 
 <!--Device-BlendMode-LUMINOSITY = 28--><!--Device-BlendMode-LUMINOSITY = 28-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## MODULATE
+
+```TypeScript
+MODULATE = 13
+```
+
+r = s * d, multiplies the color values of the source and destination pixels.
+
+**Since:** 11
+
+<!--Device-BlendMode-MODULATE = 13--><!--Device-BlendMode-MODULATE = 13-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## MULTIPLY
+
+```TypeScript
+MULTIPLY = 24
+```
+
+r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.
+
+**Since:** 11
+
+<!--Device-BlendMode-MULTIPLY = 24--><!--Device-BlendMode-MULTIPLY = 24-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## OVERLAY
+
+```TypeScript
+OVERLAY = 15
+```
+
+Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the destination pixels, enhancing contrast.
+
+**Since:** 11
+
+<!--Device-BlendMode-OVERLAY = 15--><!--Device-BlendMode-OVERLAY = 15-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## PLUS
+
+```TypeScript
+PLUS = 12
+```
+
+r = min(s + d, 1), adds the color values of the source and destination pixels.
+
+**Since:** 11
+
+<!--Device-BlendMode-PLUS = 12--><!--Device-BlendMode-PLUS = 12-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SATURATION
+
+```TypeScript
+SATURATION = 26
+```
+
+Uses the saturation of the source pixels and the hue and brightness of the destination pixels.
+
+**Since:** 11
+
+<!--Device-BlendMode-SATURATION = 26--><!--Device-BlendMode-SATURATION = 26-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SCREEN
+
+```TypeScript
+SCREEN = 14
+```
+
+r = s + d - s * d, inverts the color values of the source and destination pixels, multiplies them, and then inverts the result, typically producing a brighter outcome.
+
+**Since:** 11
+
+<!--Device-BlendMode-SCREEN = 14--><!--Device-BlendMode-SCREEN = 14-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SOFT_LIGHT
+
+```TypeScript
+SOFT_LIGHT = 21
+```
+
+Softly brightens or darkens the destination pixels based on the brightness of the source pixels.
+
+**Since:** 11
+
+<!--Device-BlendMode-SOFT_LIGHT = 21--><!--Device-BlendMode-SOFT_LIGHT = 21-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SRC
+
+```TypeScript
+SRC = 1
+```
+
+r = s (all channels of the result equal those of the source), replaces the destination pixels with the source pixels.
+
+**Since:** 11
+
+<!--Device-BlendMode-SRC = 1--><!--Device-BlendMode-SRC = 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SRC_ATOP
+
+```TypeScript
+SRC_ATOP = 9
+```
+
+r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.
+
+**Since:** 11
+
+<!--Device-BlendMode-SRC_ATOP = 9--><!--Device-BlendMode-SRC_ATOP = 9-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SRC_IN
+
+```TypeScript
+SRC_IN = 5
+```
+
+r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.
+
+**Since:** 11
+
+<!--Device-BlendMode-SRC_IN = 5--><!--Device-BlendMode-SRC_IN = 5-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SRC_OUT
+
+```TypeScript
+SRC_OUT = 7
+```
+
+r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.
+
+**Since:** 11
+
+<!--Device-BlendMode-SRC_OUT = 7--><!--Device-BlendMode-SRC_OUT = 7-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SRC_OVER
+
+```TypeScript
+SRC_OVER = 3
+```
+
+r = s + (1 - sa) * d, draws the source pixels over the destination pixels, considering the source's transparency.
+
+**Since:** 11
+
+<!--Device-BlendMode-SRC_OVER = 3--><!--Device-BlendMode-SRC_OVER = 3-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## XOR
+
+```TypeScript
+XOR = 11
+```
+
+r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.
+
+**Since:** 11
+
+<!--Device-BlendMode-XOR = 11--><!--Device-BlendMode-XOR = 11-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

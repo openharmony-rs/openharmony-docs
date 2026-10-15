@@ -12,60 +12,6 @@ Defines the text data detector type.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PHONE_NUMBER
-
-```TypeScript
-PHONE_NUMBER = 0
-```
-
-Phone number.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-TextDataDetectorType-PHONE_NUMBER = 0--><!--Device-TextDataDetectorType-PHONE_NUMBER = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## URL
-
-```TypeScript
-URL = 1
-```
-
-URL.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-TextDataDetectorType-URL = 1--><!--Device-TextDataDetectorType-URL = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## EMAIL
-
-```TypeScript
-EMAIL = 2
-```
-
-Email address.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-TextDataDetectorType-EMAIL = 2--><!--Device-TextDataDetectorType-EMAIL = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## ADDRESS
 
 ```TypeScript
@@ -99,5 +45,59 @@ Date and time
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-TextDataDetectorType-DATE_TIME = 4--><!--Device-TextDataDetectorType-DATE_TIME = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## EMAIL
+
+```TypeScript
+EMAIL = 2
+```
+
+Email address.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDataDetectorType-EMAIL = 2--><!--Device-TextDataDetectorType-EMAIL = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PHONE_NUMBER
+
+```TypeScript
+PHONE_NUMBER = 0
+```
+
+Phone number.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDataDetectorType-PHONE_NUMBER = 0--><!--Device-TextDataDetectorType-PHONE_NUMBER = 0-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## URL
+
+```TypeScript
+URL = 1
+```
+
+URL.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDataDetectorType-URL = 1--><!--Device-TextDataDetectorType-URL = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

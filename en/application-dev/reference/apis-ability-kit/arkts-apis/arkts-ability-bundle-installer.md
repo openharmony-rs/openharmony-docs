@@ -1,10 +1,10 @@
-# @ohos.bundle.installer
+# @ohos.bundle.installer(installer Module)
 
 The module provides APIs for you to install, uninstall, and recover bundles on devices.
 
 > **NOTE:** 
 > 
-> The APIs provided by this module are system APIs.
+> The APIs of this module are system APIs.
 
 **Since:** 9
 
@@ -27,9 +27,9 @@ import { installer } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller) | Obtains a BundleInstaller object. This API uses an asynchronous callback to return the result. |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller-1) | Obtains a BundleInstaller object. This API uses a promise to return the result. |
-| [getBundleInstallerSync](arkts-ability-installer-getbundleinstallersync-f-sys.md) | Obtains a BundleInstaller object. This API is a synchronous API. |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller1) | Obtains a BundleInstaller object. This API uses an asynchronous callback to return the result. |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller2) | Obtains a BundleInstaller object. This API uses a promise to return the result. |
+| [getBundleInstallerSync](arkts-ability-installer-getbundleinstallersync-f-sys.md#getbundleinstallersync) | Obtains and returns a BundleInstaller object. The API may return null when the call fails, so verify the return value before use. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -46,5 +46,5 @@ import { installer } from '@kit.AbilityKit';
 | [PGOParam](arkts-ability-installer-pgoparam-i-sys.md) | Defines the parameters of the PGO configuration file. |
 | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | Defines the parameters for installing or uninstalling a plugin. |
 | [UninstallParam](arkts-ability-installer-uninstallparam-i-sys.md) | Defines the parameters required for the uninstall of a shared bundle. |
-| [VerifyCodeParam](arkts-ability-installer-verifycodeparam-i-sys.md) | Defines the information about the code signature file. |
+| [VerifyCodeParam](arkts-ability-installer-verifycodeparam-i-sys.md) | > Starting from API version 11, the code signature file of an application is integrated into the installation > package, rather than being specified by using this field. > Defines the information about the code signature file. |
 <!--DelEnd-->

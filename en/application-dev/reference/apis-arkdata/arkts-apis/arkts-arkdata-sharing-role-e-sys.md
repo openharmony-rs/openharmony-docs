@@ -14,22 +14,6 @@ Enumerates the roles of the participants in a device-cloud share.
 
 **System API:** This is a system API.
 
-## ROLE_INVITER
-
-```TypeScript
-ROLE_INVITER = 0
-```
-
-Inviter, the one who shares data. Use the enum name rather than the enum value.
-
-**Since:** 11
-
-<!--Device-Role-ROLE_INVITER = 0--><!--Device-Role-ROLE_INVITER = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**System API:** This is a system API.
-
 ## ROLE_INVITEE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Invitee, the one who can use the shared data. Use the enum name rather than the 
 **Since:** 11
 
 <!--Device-Role-ROLE_INVITEE = 1--><!--Device-Role-ROLE_INVITEE = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**System API:** This is a system API.
+
+## ROLE_INVITER
+
+```TypeScript
+ROLE_INVITER = 0
+```
+
+Inviter, the one who shares data. Use the enum name rather than the enum value.
+
+**Since:** 11
+
+<!--Device-Role-ROLE_INVITER = 0--><!--Device-Role-ROLE_INVITER = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

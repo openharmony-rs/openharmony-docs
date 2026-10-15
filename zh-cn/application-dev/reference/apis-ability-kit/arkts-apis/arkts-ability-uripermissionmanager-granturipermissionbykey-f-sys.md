@@ -26,7 +26,7 @@ function grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 目标UDMF数据唯一标识。key必须由调用方通过[unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../../database/unified-data-channels.md)。 |
+| key | string | 是 | 目标UDMF数据唯一标识。key必须由调用方通过[unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata1)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../../database/unified-data-channels.md)。 |
 | flag | [wantConstant.Flags](arkts-ability-wantconstant-flags-e.md) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
 | targetTokenId | number | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md)获取。 |
 
@@ -40,8 +40,8 @@ function grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000058](../errorcode-ability.md#16000058-指定的uri-flag无效) | Invalid URI flag. |
 | [16000060](../errorcode-ability.md#16000060-不支持沙箱应用授权uri) | A sandbox application cannot grant URI permission. |
@@ -49,6 +49,7 @@ function grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTo
 | [16000092](../errorcode-ability.md#16000092-无权限授权uri) | No permission to authorize the URI. |
 | [16000094](../errorcode-ability.md#16000094-目标应用的token-id无效) | The target token ID is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,3 +82,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

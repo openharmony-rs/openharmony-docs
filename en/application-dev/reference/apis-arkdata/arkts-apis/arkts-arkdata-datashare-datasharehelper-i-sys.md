@@ -4,7 +4,7 @@
 interface DataShareHelper
 ```
 
-Provides a **DataShareHelper** instance to access or manage data on the server. Before calling an API provided by **DataShareHelper**, you must create a **DataShareHelper** instance using [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md).
+Provides a **DataShareHelper** instance to access or manage data on the server. Before calling an API provided by **DataShareHelper**, you must create a **DataShareHelper** instance using [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper1).
 
 **Since:** 9
 
@@ -53,10 +53,11 @@ In silent scenarios, the total size of the **uri**, **subscriberId**, and **temp
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700011](../errorcode-datashare.md#15700011-uri-does-not-exist) | The URI is not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,6 +79,10 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).addTemplate(uri, subscriberId, template);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="batchinsert1"></a>
 
 ## batchInsert
 
@@ -112,9 +117,10 @@ In non-silent scenarios, the size of the **values** parameter and the **uri** pa
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -143,7 +149,9 @@ try {
 }
 ```
 
-<a id="batchinsert-1"></a>
+<!--DelEnd-->
+
+<a id="batchinsert2"></a>
 
 ## batchInsert
 
@@ -183,9 +191,10 @@ In non-silent scenarios, the size of the **values** parameter and the **uri** pa
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -211,6 +220,8 @@ try {
   console.error(`Failed to batch insert. Code: ${code}, message: ${message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## batchUpdate
 
@@ -249,10 +260,11 @@ In non-silent scenarios, the size of the **operations** parameter passed in this
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700000](../errorcode-datashare.md#15700000-internal-error) | Inner error. Possible causes: 1.The internal status is abnormal; 2.The interface is incorrectly used; 3.Permission configuration error; 4.A system error. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -311,6 +323,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## close
 
 ```TypeScript
@@ -342,6 +356,7 @@ Closes the **DataShareHelper** instance. After this API is called, the instance 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 19 and later |
 | [15700000](../errorcode-datashare.md#15700000-internal-error) | Inner error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -349,6 +364,10 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).close();
 }
 ```
+
+<!--DelEnd-->
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -385,9 +404,10 @@ In silent scenarios, the total size of the **uri** and **predicates** parameters
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -414,7 +434,9 @@ try {
 }
 ```
 
-<a id="delete-1"></a>
+<!--DelEnd-->
+
+<a id="delete2"></a>
 
 ## delete
 
@@ -456,9 +478,10 @@ In silent scenarios, the total size of the **uri** and **predicates** parameters
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -482,6 +505,8 @@ try {
   console.error(`Failed to delete. Code: ${code}, message: ${message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## delTemplate
 
@@ -515,10 +540,11 @@ In silent scenarios, the total size of the **uri** and **subscriberId** paramete
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700011](../errorcode-datashare.md#15700011-uri-does-not-exist) | The URI is not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -540,6 +566,10 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).delTemplate(uri, subscriberId);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="denormalizeuri1"></a>
 
 ## denormalizeUri
 
@@ -571,9 +601,10 @@ Denormalizes a URI. This API uses an asynchronous callback to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -591,7 +622,9 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-<a id="denormalizeuri-1"></a>
+<!--DelEnd-->
+
+<a id="denormalizeuri2"></a>
 
 ## denormalizeUri
 
@@ -628,9 +661,10 @@ Denormalizes a URI. This API uses a promise to return the result. Silent access 
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -645,6 +679,10 @@ if (dataShareHelper != undefined) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getpublisheddata1"></a>
 
 ## getPublishedData
 
@@ -678,10 +716,11 @@ In silent scenarios, the size of the **bundleName** parameter passed in this API
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700012](../errorcode-datashare.md#15700012-data-area-not-exist) | The data area does not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -695,7 +734,9 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-<a id="getpublisheddata-1"></a>
+<!--DelEnd-->
+
+<a id="getpublisheddata2"></a>
 
 ## getPublishedData
 
@@ -734,10 +775,11 @@ In silent scenarios, the size of the **bundleName** parameter passed in this API
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700012](../errorcode-datashare.md#15700012-data-area-not-exist) | The data area does not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -745,6 +787,10 @@ if (dataShareHelper != undefined) {
   let publishedData: Promise<Array<dataShare.PublishedItem>> = (dataShareHelper as dataShare.DataShareHelper).getPublishedData("com.acts.ohos.data.datasharetest");
 }
 ```
+
+<!--DelEnd-->
+
+<a id="insert1"></a>
 
 ## insert
 
@@ -781,9 +827,10 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -819,7 +866,9 @@ try {
 }
 ```
 
-<a id="insert-1"></a>
+<!--DelEnd-->
+
+<a id="insert2"></a>
 
 ## insert
 
@@ -861,9 +910,10 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -897,6 +947,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="normalizeuri1"></a>
+
 ## normalizeUri
 
 ```TypeScript
@@ -927,9 +981,10 @@ Normalizes a **DataShare** URI. The **DataShare** URI can be used only by the lo
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -947,7 +1002,9 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-<a id="normalizeuri-1"></a>
+<!--DelEnd-->
+
+<a id="normalizeuri2"></a>
 
 ## normalizeUri
 
@@ -984,9 +1041,10 @@ Normalizes a **DataShare** URI. The **DataShare** URI can be used only by the lo
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1001,6 +1059,10 @@ if (dataShareHelper != undefined) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="notifychange1"></a>
 
 ## notifyChange
 
@@ -1037,6 +1099,7 @@ In non-silent scenarios, the size of the **uri** parameter passed in this API ca
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Mandatory parameters are left unspecified.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1048,7 +1111,9 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-<a id="notifychange-1"></a>
+<!--DelEnd-->
+
+<a id="notifychange2"></a>
 
 ## notifyChange
 
@@ -1090,6 +1155,7 @@ In non-silent scenarios, the size of the **uri** parameter passed in this API ca
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Mandatory parameters are left unspecified.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1099,7 +1165,9 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-<a id="notifychange-2"></a>
+<!--DelEnd-->
+
+<a id="notifychange3"></a>
 
 ## notifyChange
 
@@ -1138,9 +1206,10 @@ In non-silent scenarios, the size of the **data** parameter passed in this API c
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1158,6 +1227,8 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(changeData);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('dataChange')
 
@@ -1190,9 +1261,10 @@ Unsubscribes from the data change of the specified URI. This API corresponds to 
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1206,7 +1278,9 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-<a id="off-1"></a>
+<!--DelEnd-->
+
+<a id="off2"></a>
 
 ## off
 
@@ -1214,7 +1288,7 @@ if (dataShareHelper != undefined) {
 off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCallback<ChangeInfo>): void
 ```
 
-Unsubscribes from the data change of the specified URI. This API corresponds to the [on](#on-1) API.
+Unsubscribes from the data change of the specified URI. This API corresponds to the [on](#on2) API.
 
 **Since:** 12
 
@@ -1233,16 +1307,17 @@ Unsubscribes from the data change of the specified URI. This API corresponds to 
 | event | 'dataChange' | Yes | Event/callback type. The value is **'dataChange'**, which indicates the data change. |
 | type | [SubscriptionType](arkts-arkdata-datashare-subscriptiontype-e-sys.md) | Yes | Subscription type. |
 | uri | string | Yes | URI of the data to be observed. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ChangeInfo](arkts-arkdata-relationalstore-changeinfo-i.md)&gt; | No | Callback to unregister. If this parameter is **undefined**, **null**, or left empty, this API unregisters all callbacks for the specified URI. If this parameter is specified, the callback must be the one registered in [on('datachange')](#on-1). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ChangeInfo](arkts-arkdata-relationalstore-changeinfo-i.md)&gt; | No | Callback to unregister. If this parameter is **undefined**, **null**, or left empty, this API unregisters all callbacks for the specified URI. If this parameter is specified, the callback must be the one registered in [on('datachange')](#on2). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1257,6 +1332,8 @@ if (dataShareHelper !== undefined) {
   (dataShareHelper as dataShare.DataShareHelper).off("dataChange", dataShare.SubscriptionType.SUBSCRIPTION_TYPE_EXACT_URI, uri, callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('rdbDataChange')
 
@@ -1301,9 +1378,10 @@ Unsubscribes from the changes of the data corresponding to the specified URI and
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1313,6 +1391,8 @@ if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).off("rdbDataChange", [uri], templateId);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('publishedDataChange')
 
@@ -1357,9 +1437,10 @@ Unsubscribes from the change of the published data. Only silent access is suppor
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1375,6 +1456,8 @@ if (dataShareHelper != undefined) {
 }
 ```
 
+<!--DelEnd-->
+
 ## on('dataChange')
 
 ```TypeScript
@@ -1383,7 +1466,7 @@ on(type: 'dataChange', uri: string, callback: AsyncCallback<void>): void
 
 Subscribes to the data change of the specified URI. After an observer is registered, the subscriber will receive a notification when the **notifyChange** API is called. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription. An application can subscribe to a single URI for a maximum of 51 times.
 
-Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange-1) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access.
+Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange2) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access.
 
 **Since:** 9
 
@@ -1408,9 +1491,10 @@ Notification triggering: In non-silent scenarios, a notification is published if
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types.<br>**Applicable version:** 12 and later |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1423,7 +1507,9 @@ if (dataShareHelper !== undefined) {
 }
 ```
 
-<a id="on-1"></a>
+<!--DelEnd-->
+
+<a id="on2"></a>
 
 ## on
 
@@ -1433,7 +1519,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 
 Subscribes to the data change of the specified URI. After a change notification is registered, the subscriber will receive a notification when the **notifyChange** API is called. The change notification contains the data change type, URI of the data changed, and the changed data. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription. An application can subscribe to a single URI for a maximum of 51 times.
 
-Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange-2) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access, but **changeInfo** in the callback is invalid.
+Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange3) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access, but **changeInfo** in the callback is invalid.
 
 **Since:** 12
 
@@ -1459,9 +1545,10 @@ Notification triggering: In non-silent scenarios, a notification is published if
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1475,6 +1562,8 @@ if (dataShareHelper !== undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on('dataChange', dataShare.SubscriptionType.SUBSCRIPTION_TYPE_EXACT_URI, uri, callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('rdbDataChange')
 
@@ -1519,9 +1608,10 @@ Subscribes to the changes of the data corresponding to the specified URI and tem
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1546,6 +1636,8 @@ if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).on("rdbDataChange", [uri], templateId, onCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('publishedDataChange')
 
@@ -1590,9 +1682,10 @@ Subscribes to the change of the published data. Only silent access is supported.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1617,6 +1710,10 @@ if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).on('publishedDataChange', uris, subscriberId, onPublishCallback);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="publish1"></a>
 
 ## publish
 
@@ -1657,10 +1754,11 @@ In silent scenarios, the total size of the **data** and **bundleName** parameter
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700012](../errorcode-datashare.md#15700012-data-area-not-exist) | The data area is not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1682,7 +1780,9 @@ try {
 }
 ```
 
-<a id="publish-1"></a>
+<!--DelEnd-->
+
+<a id="publish2"></a>
 
 ## publish
 
@@ -1721,10 +1821,11 @@ In silent scenarios, the total size of the **data** and **bundleName** parameter
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700012](../errorcode-datashare.md#15700012-data-area-not-exist) | The data area is not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1742,7 +1843,9 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-<a id="publish-2"></a>
+<!--DelEnd-->
+
+<a id="publish3"></a>
 
 ## publish
 
@@ -1783,10 +1886,11 @@ In silent scenarios, the total size of the **data** and **bundleName** parameter
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700012](../errorcode-datashare.md#15700012-data-area-not-exist) | The data area is not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1798,6 +1902,10 @@ if (dataShareHelper != undefined) {
   let result: Promise<Array<dataShare.OperationResult>> = (dataShareHelper as dataShare.DataShareHelper).publish(dataArray, "com.acts.ohos.data.datasharetest");
 }
 ```
+
+<!--DelEnd-->
+
+<a id="query1"></a>
 
 ## query
 
@@ -1842,9 +1950,10 @@ When this API is used to query database data, if the query content exceeds the r
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1872,7 +1981,9 @@ try {
 }
 ```
 
-<a id="query-1"></a>
+<!--DelEnd-->
+
+<a id="query2"></a>
 
 ## query
 
@@ -1921,9 +2032,10 @@ When this API is used to query database data, if the query content exceeds the r
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1948,6 +2060,10 @@ try {
   console.error(`Failed to query. Code: ${code}, message: ${message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="update1"></a>
 
 ## update
 
@@ -1990,9 +2106,10 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2030,7 +2147,9 @@ try {
 }
 ```
 
-<a id="update-1"></a>
+<!--DelEnd-->
+
+<a id="update2"></a>
 
 ## update
 
@@ -2073,9 +2192,10 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2110,3 +2230,5 @@ try {
   console.error(`Failed to update. Code: ${code}, message: ${message}`);
 }
 ```
+
+<!--DelEnd-->

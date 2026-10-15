@@ -12,6 +12,24 @@ Sets the click effect level and animation parameters.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## HEAVY
+
+```TypeScript
+HEAVY = 2
+```
+
+Large area (heavy), spring animation, stiffness: 240, damping: 28, initial velocity: 0, default scale 95%.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ClickEffectLevel-HEAVY = 2--><!--Device-ClickEffectLevel-HEAVY = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## LIGHT
 
 ```TypeScript
@@ -45,23 +63,5 @@ Medium area (stable), spring animation, stiffness: 350, damping: 35, initial vel
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ClickEffectLevel-MIDDLE = 1--><!--Device-ClickEffectLevel-MIDDLE = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## HEAVY
-
-```TypeScript
-HEAVY = 2
-```
-
-Large area (heavy), spring animation, stiffness: 240, damping: 28, initial velocity: 0, default scale 95%.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ClickEffectLevel-HEAVY = 2--><!--Device-ClickEffectLevel-HEAVY = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

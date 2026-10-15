@@ -96,7 +96,7 @@ A constructor used to create a **Scope** object with the specified upper and low
 
 **Deprecated since:** 9
 
-**Substitutes:** constructor
+**Substitutes:** [constructor](arkts-arkts-util-scopehelper-c.md#constructor)
 
 <!--Device-Scope-constructor(lowerObj: ScopeType, upperObj: ScopeType)--><!--Device-Scope-constructor(lowerObj: ScopeType, upperObj: ScopeType)-End-->
 
@@ -139,6 +139,8 @@ console.info("range = " + range);
 // Output: range = [30, 40]
 ```
 
+<a id="contains1"></a>
+
 ## contains
 
 ```TypeScript
@@ -151,7 +153,7 @@ Checks whether a value is within this **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** contains
+**Substitutes:** [contains](arkts-arkts-util-scopehelper-c.md#contains)
 
 <!--Device-Scope-contains(value: ScopeType): boolean--><!--Device-Scope-contains(value: ScopeType): boolean-End-->
 
@@ -201,7 +203,7 @@ console.info("result = " + result);
 // Output: result = true
 ```
 
-<a id="contains-1"></a>
+<a id="contains2"></a>
 
 ## contains
 
@@ -215,7 +217,7 @@ Checks whether a range is within this **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** contains
+**Substitutes:** [contains](arkts-arkts-util-scopehelper-c.md#contains)
 
 <!--Device-Scope-contains(range: Scope): boolean--><!--Device-Scope-contains(range: Scope): boolean-End-->
 
@@ -267,6 +269,8 @@ console.info("result = " + result);
 // Output: result = false
 ```
 
+<a id="expand1"></a>
+
 ## expand
 
 ```TypeScript
@@ -279,7 +283,7 @@ Obtains the union set of this **Scope** and the given lower and upper limits.
 
 **Deprecated since:** 9
 
-**Substitutes:** expand
+**Substitutes:** [expand](arkts-arkts-util-scopehelper-c.md#expand)
 
 <!--Device-Scope-expand(lowerObj: ScopeType, upperObj: ScopeType): Scope--><!--Device-Scope-expand(lowerObj: ScopeType, upperObj: ScopeType): Scope-End-->
 
@@ -331,7 +335,7 @@ console.info("result = " + result);
 // Output: result = [30, 40]
 ```
 
-<a id="expand-1"></a>
+<a id="expand2"></a>
 
 ## expand
 
@@ -345,7 +349,7 @@ Obtains the union set of this **Scope** and the given **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** expand
+**Substitutes:** [expand](arkts-arkts-util-scopehelper-c.md#expand)
 
 <!--Device-Scope-expand(range: Scope): Scope--><!--Device-Scope-expand(range: Scope): Scope-End-->
 
@@ -397,7 +401,7 @@ console.info("result = " + result);
 // Output: result = [30, 40]
 ```
 
-<a id="expand-2"></a>
+<a id="expand3"></a>
 
 ## expand
 
@@ -411,7 +415,7 @@ Obtains the union set of this **Scope** and the given value.
 
 **Deprecated since:** 9
 
-**Substitutes:** expand
+**Substitutes:** [expand](arkts-arkts-util-scopehelper-c.md#expand)
 
 <!--Device-Scope-expand(value: ScopeType): Scope--><!--Device-Scope-expand(value: ScopeType): Scope-End-->
 
@@ -571,6 +575,8 @@ console.info("result = " + result);
 // Output: result = 40
 ```
 
+<a id="intersect1"></a>
+
 ## intersect
 
 ```TypeScript
@@ -583,7 +589,7 @@ Obtains the intersection of this **Scope** and the given **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** intersect
+**Substitutes:** [intersect](arkts-arkts-util-scopehelper-c.md#intersect)
 
 <!--Device-Scope-intersect(range: Scope): Scope--><!--Device-Scope-intersect(range: Scope): Scope-End-->
 
@@ -635,7 +641,7 @@ console.info("result = " + result);
   // Output: result = [35, 39]
 ```
 
-<a id="intersect-1"></a>
+<a id="intersect2"></a>
 
 ## intersect
 
@@ -649,7 +655,7 @@ Obtains the intersection of this **Scope** and the given lower and upper limits.
 
 **Deprecated since:** 9
 
-**Substitutes:** intersect
+**Substitutes:** [intersect](arkts-arkts-util-scopehelper-c.md#intersect)
 
 <!--Device-Scope-intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope--><!--Device-Scope-intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope-End-->
 
@@ -713,7 +719,7 @@ Obtains a string representation that contains this **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** toString
+**Substitutes:** [toString](arkts-arkts-util-scopehelper-c.md#tostring)
 
 <!--Device-Scope-toString(): string--><!--Device-Scope-toString(): string-End-->
 

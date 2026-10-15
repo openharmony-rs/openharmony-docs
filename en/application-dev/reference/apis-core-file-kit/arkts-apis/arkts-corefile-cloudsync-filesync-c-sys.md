@@ -18,7 +18,7 @@ Provides APIs for the file manager application to perform device-cloud sync of t
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -49,11 +49,14 @@ A constructor used to create a **FileSync** instance.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let fileSync = new cloudSync.FileSync("com.ohos.demo")
 ```
+
+<!--DelEnd-->
 
 ## getUploadList
 

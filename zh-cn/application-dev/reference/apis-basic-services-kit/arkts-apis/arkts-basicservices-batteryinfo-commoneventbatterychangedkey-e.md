@@ -4,7 +4,7 @@
 export enum CommonEventBatteryChangedKey
 ```
 
-表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。开发者需先订阅COMMON_EVENT_BATTERY_CHANGED，在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。详细使用方法请参见@ohos.commonEventManager (公共事件模块)。
+表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。开发者需先订阅[COMMON_EVENT_BATTERY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_battery_changed)，在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](../../../reference/api-basic-services/js-apis-commonEventManager.md)。
 
 **起始版本：** 9
 
@@ -12,17 +12,17 @@ export enum CommonEventBatteryChangedKey
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## EXTRA_SOC
+## EXTRA_CAPACITY_LEVEL
 
 ```TypeScript
-EXTRA_SOC = 'soc'
+EXTRA_CAPACITY_LEVEL = 'capacityLevel'
 ```
 
-表示剩余电池电量百分比的查询键。
+表示当前设备电池电量等级的查询键。
 
 **起始版本：** 9
 
-<!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'--><!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'-End-->
+<!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -68,17 +68,31 @@ EXTRA_PLUGGED_TYPE = 'pluggedType'
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## EXTRA_VOLTAGE
+## EXTRA_PRESENT
 
 ```TypeScript
-EXTRA_VOLTAGE = 'voltage'
+EXTRA_PRESENT = 'present'
 ```
 
-表示当前设备电池电压的查询键。
+表示当前设备是否支持电池或者电池是否在位的查询键。
 
 **起始版本：** 9
 
-<!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'--><!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'-End-->
+<!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'-End-->
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+## EXTRA_SOC
+
+```TypeScript
+EXTRA_SOC = 'soc'
+```
+
+表示剩余电池电量百分比的查询键。
+
+**起始版本：** 9
+
+<!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'--><!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -110,30 +124,16 @@ EXTRA_TEMPERATURE = 'temperature'
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## EXTRA_PRESENT
+## EXTRA_VOLTAGE
 
 ```TypeScript
-EXTRA_PRESENT = 'present'
+EXTRA_VOLTAGE = 'voltage'
 ```
 
-表示当前设备是否支持电池或者电池是否在位的查询键。
+表示当前设备电池电压的查询键。
 
 **起始版本：** 9
 
-<!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'-End-->
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-## EXTRA_CAPACITY_LEVEL
-
-```TypeScript
-EXTRA_CAPACITY_LEVEL = 'capacityLevel'
-```
-
-表示当前设备电池电量等级的查询键。
-
-**起始版本：** 9
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'-End-->
+<!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'--><!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core

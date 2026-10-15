@@ -18,9 +18,9 @@ Universal attributes are supported. The width and height can be set.
 > 
 > [outline](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md#outline),
 > 
-> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow),
+> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1),
 > 
-> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), and
+> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), and
 > 
 > [pointLight](#pointlight). The above effects are drawn on the shape after
 > union,
@@ -41,7 +41,7 @@ Universal attributes are supported. The width and height can be set.
 > 
 > component **UnionEffectContainer**. This prevents the deterioration of the union effect.
 
-**Inheritance/Implementation:** UnionEffectContainerAttribute extends CommonMethod<UnionEffectContainerAttribute>
+**Inheritance/Implementation:** UnionEffectContainerAttribute extends CommonMethod&lt;UnionEffectContainerAttribute&gt;
 
 **Since:** 23
 

@@ -48,6 +48,7 @@ Checks whether the silent reminder is enabled. This API uses a promise to return
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,7 +56,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
     hilog.info(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled success, switchState:  ${JSON.stringify(data)}.`);
@@ -63,3 +64,5 @@ notificationManager.isSilentReminderEnabled(bundle).then((data: notificationMana
     hilog.error(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

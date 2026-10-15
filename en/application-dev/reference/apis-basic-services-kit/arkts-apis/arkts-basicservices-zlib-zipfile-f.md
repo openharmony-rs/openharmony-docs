@@ -18,7 +18,7 @@ Zips a file. The execution result is returned after the compression is complete.
 
 **Deprecated since:** 9
 
-**Substitutes:** [compressFile](arkts-basicservices-zlib-compressfile-f.md)(inFile: string, outFile: string, options: Options, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile1)(inFile: string, outFile: string, options: Options, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-zlib-function zipFile(inFile: string, outFile: string, options: Options): Promise<void>--><!--Device-zlib-function zipFile(inFile: string, outFile: string, options: Options): Promise<void>-End-->
 

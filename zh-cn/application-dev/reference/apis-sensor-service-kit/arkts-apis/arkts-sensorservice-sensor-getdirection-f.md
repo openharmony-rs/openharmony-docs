@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getdirection1"></a>
+
 ## getDirection
 
 ```TypeScript
@@ -56,7 +58,7 @@ sensor.getDirection([1, 0, 0, 0, 1, 0, 0, 0, 1], (err: BusinessError, data: Arra
 ```
 
 
-<a id="getdirection-1"></a>
+<a id="getdirection2"></a>
 
 ## getDirection
 

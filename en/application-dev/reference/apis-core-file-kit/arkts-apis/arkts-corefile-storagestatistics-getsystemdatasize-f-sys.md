@@ -41,6 +41,7 @@ Get the system data size.
 | 13600001 | IPC error. |
 | 13600018 | Failed to query the system data size. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,3 +54,5 @@ storageStatistics.getSystemDataSize().then((systemDataSize: number) => {
   console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="createkvmanager1"></a>
+
 ## createKVManager
 
 ```TypeScript
@@ -17,7 +19,7 @@ Creates a **KVManager** instance to manage KV stores. This API uses an asynchron
 
 **Deprecated since:** 9
 
-**Substitutes:** createKVManager
+**Substitutes:** [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md)
 
 <!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void--><!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void-End-->
 
@@ -56,7 +58,7 @@ try {
 ```
 
 
-<a id="createkvmanager-1"></a>
+<a id="createkvmanager2"></a>
 
 ## createKVManager
 
@@ -70,7 +72,7 @@ Creates a **KVManager** instance to manage KV stores. This API uses a promise to
 
 **Deprecated since:** 9
 
-**Substitutes:** createKVManager
+**Substitutes:** [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md)
 
 <!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>--><!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>-End-->
 

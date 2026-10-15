@@ -6,6 +6,8 @@ declare type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 导入RectShape类型对象。
 
+**类型：** import('../api/@ohos.arkui.shape').RectShape
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type RectShape = import('../api/@ohos.arkui.shape').RectShape
 <!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape--><!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.shape').RectShape

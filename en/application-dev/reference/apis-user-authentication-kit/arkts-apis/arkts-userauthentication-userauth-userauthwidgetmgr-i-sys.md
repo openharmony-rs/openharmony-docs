@@ -50,6 +50,7 @@ Unsubscribes from command events from the user authentication framework. The aut
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-common-error-code-of-the-identity-authentication-system) | General operation error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,6 +72,8 @@ try {
   console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('command')
 
@@ -102,6 +105,7 @@ Subscribes to command events from the user authentication framework. The authent
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-common-error-code-of-the-identity-authentication-system) | General operation error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -123,3 +127,5 @@ try {
   console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

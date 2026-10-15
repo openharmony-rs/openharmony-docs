@@ -4,7 +4,7 @@
 interface AuthOptions
 ```
 
-表示认证用户[auth](arkts-basicservices-osaccount-userauth-c-sys.md#auth-1)的可选参数集合。
+表示认证用户[auth](arkts-basicservices-osaccount-userauth-c-sys.md#auth2)的可选参数集合。
 
 **起始版本：** 12
 

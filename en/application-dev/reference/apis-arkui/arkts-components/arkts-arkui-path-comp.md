@@ -44,30 +44,6 @@ For example, the command string **commands('M0 20 L50 50 L50 100 Z')** defines a
 Path(options?: PathOptions)
 ```
 
-Creates a **Path** object instance, which is used to generate a closed custom shape based on the drawing path.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-PathInterface-new (options?: PathOptions): PathAttribute--><!--Device-PathInterface-new (options?: PathOptions): PathAttribute-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the drawing attributes of the **Path** component.<br>If this parameter is not set, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. <br>**Note:** Since API version 18, the PathOptions parameter must be used in the stage model. |
-
-## Path
-
-```TypeScript
-Path(options?: PathOptions)
-```
-
 Creates a **Path** component, which is used to generate a closed custom shape based on the drawing path.
 
 **Since:** 7
@@ -84,7 +60,31 @@ Creates a **Path** component, which is used to generate a closed custom shape ba
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the **Path** component drawing attributes.<br>If this parameter is omitted, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>Abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. <br>**Note:** Since API version 18, when the **PathOptions** parameter is used, it can be used only in the stage model. |
+| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the **Path** component drawing attributes.<br>If this parameter is omitted, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>Abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
+
+## Path
+
+```TypeScript
+Path(options?: PathOptions)
+```
+
+Creates a **Path** object instance, which is used to generate a closed custom shape based on the drawing path.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PathInterface-new (options?: PathOptions): PathAttribute--><!--Device-PathInterface-new (options?: PathOptions): PathAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the drawing attributes of the **Path** component.<br>If this parameter is not set, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
 
 ## Summary
 

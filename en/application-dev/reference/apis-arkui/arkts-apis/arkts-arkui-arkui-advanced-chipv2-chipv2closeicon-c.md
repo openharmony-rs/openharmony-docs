@@ -6,8 +6,6 @@ export declare class ChipV2CloseIcon extends ChipV2Accessibility
 
 Defines the functional attribute class for the close icon of the **ChipV2** component, including accessibility attribute.
 
-This API inherits from [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md).
-
 **Inheritance/Implementation:** ChipV2CloseIcon extends [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md)
 
 **Since:** 26.0.0
@@ -65,8 +63,6 @@ When **size** is not **ChipV2Size.SMALL**, the default value is `$r('sys.float.c
 Unit: fp
 
 If the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 

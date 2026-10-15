@@ -60,7 +60,7 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="copyfile-1"></a>
+<a id="copyfile2"></a>
 
 ## copyFile
 
@@ -109,7 +109,7 @@ declare function copyFile(src: string | number, dest: string | number, callback:
 | 13900042 | Unknown error |
 
 
-<a id="copyfile-2"></a>
+<a id="copyfile3"></a>
 
 ## copyFile
 

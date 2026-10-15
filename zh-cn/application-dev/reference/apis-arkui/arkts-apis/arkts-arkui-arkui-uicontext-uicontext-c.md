@@ -702,6 +702,8 @@ struct Index {
 }
 ```
 
+<a id="createanimator1"></a>
+
 ## createAnimator
 
 ```TypeScript
@@ -773,7 +775,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="createanimator-1"></a>
+<a id="createanimator2"></a>
 
 ## createAnimator
 
@@ -781,7 +783,7 @@ export default class EntryAbility extends UIAbility {
 createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与[createAnimator](#createanimator)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[createAnimator](#createanimator1)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
 
 **起始版本：** 18
 
@@ -1110,7 +1112,7 @@ fp2px(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -1406,7 +1408,7 @@ getComponentSnapshot(): ComponentSnapshot
 
 **示例**
 
-完整示例请参考ComponentSnapshot中的示例。
+完整示例请参考[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)中的示例。
 
 ## getComponentUtils
 
@@ -1486,7 +1488,7 @@ Get object cursor controller.
 
 **示例**
 
-完整示例请参考CursorController中的示例。
+完整示例请参考[CursorController](arkts-apis-uicontext-cursorcontroller.md)中的示例。
 
 ## getDialogPresenter
 
@@ -1514,7 +1516,7 @@ getDialogPresenter(): DialogPresenter
 
 **示例**
 
-完整示例请参考DialogPresenter中的示例。
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
 
 ## getDragController
 
@@ -1542,7 +1544,7 @@ Get DragController.
 
 **示例**
 
-完整示例请参考DragController中的示例。
+完整示例请参考[DragController](./arkts-apis-uicontext-dragcontroller.md)中的示例。
 
 ## getFilteredInspectorTree
 
@@ -1755,7 +1757,7 @@ getFocusController(): FocusController
 
 **示例**
 
-完整示例请参考FocusController中的示例。
+完整示例请参考[FocusController](arkts-apis-uicontext-focuscontroller.md)中的示例。
 
 ## getFont
 
@@ -1783,7 +1785,7 @@ getFont(): Font
 
 **示例**
 
-完整示例请参考Font中的示例。
+完整示例请参考[Font](arkts-apis-uicontext-font.md)中的示例。
 
 ## getFrameNodeById
 
@@ -1828,9 +1830,10 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 通过组件的uniqueId获取组件树的实体节点。
 
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
-2. 当uniqueId对应的是自定义组件时：  
-- 若其有渲染内容，且没有被[@Reusable装饰器](../../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。  
-- 若其无渲染内容，或者被[@Reusable装饰器](../../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。  
+2. 当uniqueId对应的是自定义组件时：
+
+      - 若其有渲染内容，且没有被[@Reusable装饰器](../../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。  
+      - 若其无渲染内容，或者被[@Reusable装饰器](../../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。  
 3. 当uniqueId无对应的组件时，返回null。
 
 **起始版本：** 12
@@ -1995,7 +1998,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 **示例**
 
-完整示例请参考示例4（设置键盘避让模式为压缩）、示例5（设置键盘避让模式为上抬）以及示例6（切换避让模式）。
+完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
 
 ```TypeScript
 // EntryAbility.ets
@@ -2149,7 +2152,7 @@ getMagnifier(): Magnifier
 
 **示例**
 
-参考Magnifier的bind接口示例。
+参考[Magnifier](arkts-apis-uicontext-magnifier.md)的bind接口示例。
 
 ## getMaxFontScale
 
@@ -2219,7 +2222,7 @@ getMeasureUtils(): MeasureUtils
 
 **示例**
 
-完整示例请参考MeasureUtils中的示例。
+完整示例请参考[MeasureUtils](arkts-apis-uicontext-measureutils.md)中的示例。
 
 ## getMediaQuery
 
@@ -2309,7 +2312,7 @@ Obtains the OverlayManager object.
 
 **示例**
 
-完整示例请参考OverlayManager中的示例。
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
 ## getOverlayManagerOptions
 
@@ -2337,7 +2340,7 @@ Get object OverlayManagerOptions.
 
 **示例**
 
-完整示例请参考OverlayManager中的示例。
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
 ## getPageInfoByUniqueId
 
@@ -2640,7 +2643,7 @@ get object PromptAction.
 
 **示例**
 
-完整示例请参考PromptAction中的示例。
+完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
 ## getRouter
 
@@ -2791,7 +2794,7 @@ getTextMenuController(): TextMenuController
 
 **示例**
 
-参考TextMenuController接口示例。
+参考[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)接口示例。
 
 ## getUIInspector
 
@@ -2819,7 +2822,7 @@ getUIInspector(): UIInspector
 
 **示例**
 
-完整示例请参考UIInspector中的示例。
+完整示例请参考[UIInspector](./arkts-apis-uicontext-uiinspector.md)中的示例。
 
 ## getUIObserver
 
@@ -3130,7 +3133,7 @@ struct Index {
 isAvailable(): boolean
 ```
 
-判断UIContext对象对应的UI实例是否有效。使用getUIContext方法获取UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对象无对应的UI实例；多次[loadContent](arkts-arkui-window-window-i.md#loadcontent)后，旧的UI实例会失效。多窗口应用场景，当窗口关闭后，该窗口的UI实例失效。总而言之，当UIContext对象没有对应的后端UI实例时，该对象是无效的。
+判断UIContext对象对应的UI实例是否有效。使用getUIContext方法获取UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对象无对应的UI实例；多次[loadContent](arkts-arkui-window-window-i.md#loadcontent1)后，旧的UI实例会失效。多窗口应用场景，当窗口关闭后，该窗口的UI实例失效。总而言之，当UIContext对象没有对应的后端UI实例时，该对象是无效的。
 
 **起始版本：** 20
 
@@ -3396,7 +3399,7 @@ lpx2px(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -3715,7 +3718,7 @@ px2fp(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -3777,7 +3780,7 @@ px2lpx(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -3840,7 +3843,7 @@ px2vp(value: number): number
 
 > **说明：** 
 > 
-> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent1)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 > 
 > 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -4410,7 +4413,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 **示例**
 
-完整示例请参考示例4（设置键盘避让模式为压缩）、示例5（设置键盘避让模式为上抬）以及示例6（切换避让模式）。
+完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
 
 ```TypeScript
 // EntryAbility.ets
@@ -4459,7 +4462,7 @@ Init OverlayManager.
 
 **示例**
 
-完整示例请参考OverlayManager中的示例。
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
 ## setPixelRoundMode
 
@@ -4803,6 +4806,8 @@ struct DatePickerDialogExample {
 }
 ```
 
+<a id="showtextpickerdialog1"></a>
+
 ## showTextPickerDialog
 
 ```TypeScript
@@ -4882,7 +4887,7 @@ struct TextPickerDialogExample {
 }
 ```
 
-<a id="showtextpickerdialog-1"></a>
+<a id="showtextpickerdialog2"></a>
 
 ## showTextPickerDialog
 
@@ -5187,7 +5192,7 @@ vp2px(value: number): number
 
 > **说明：** 
 > 
-> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent1)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 > 
 > 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 

@@ -20,7 +20,7 @@ Provides the parameters of the swipe gesture handler. Inherits from [BaseHandler
 direction?: SwipeDirection
 ```
 
-Directions in which the swipe gesture can be recognized.
+Swipe direction that triggers the swipe gesture. **SwipeDirection.All** applies to scenarios where a swipe in any direction can trigger the action; **SwipeDirection.Horizontal** applies to scenarios where only horizontal swipes are responded to, such as page turning or carousel switching; **SwipeDirection.Vertical** applies to scenarios where only vertical swipes are responded to, such as switching content up and down; **SwipeDirection.None** applies to scenarios where the swipe gesture is not triggered for the time being.
 
 Default value: **SwipeDirection.All**
 
@@ -42,11 +42,9 @@ Default value: **SwipeDirection.All**
 fingers?: number
 ```
 
-Minimum number of fingers to trigger a swipe gesture. The value ranges from 1 to 10.
+Minimum number of fingers required to trigger a swipe. Value range: [1, 10]. If the value is out of range, the default value is used. Set this parameter to 1 when a single-finger swipe is sufficient to trigger the action; set it to a value from 2 to 10 when you need to reduce accidental touches and require multi-finger coordination to trigger the swipe.
 
 Default value: **1**
-
-Value range: [1, 10]
 
 **Type:** number
 
@@ -66,9 +64,11 @@ Value range: [1, 10]
 speed?: number
 ```
 
-Minimum speed of the swipe gesture.
+Minimum speed for recognizing a swipe. Set a smaller positive threshold when you need to recognize swipes more sensitively; set a larger threshold when you need to reduce the chance of ordinary pans being misrecognized as swipes. It is recommended to use the default value first and then adjust it based on interaction sensitivity and accidental touch conditions.
 
 Default value: 100 vp/s
+
+Value range: (0, +∞), unit: vp/s
 
 **NOTE:** 
 

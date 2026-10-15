@@ -18,7 +18,7 @@ function disableUsb(admin: Want, disable: boolean): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -46,8 +46,9 @@ function disableUsb(admin: Want, disable: boolean): void
 | [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ try {
   console.error(`Failed to disable USB. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

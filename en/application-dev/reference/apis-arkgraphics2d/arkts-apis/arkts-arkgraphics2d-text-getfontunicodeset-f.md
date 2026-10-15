@@ -18,7 +18,7 @@ An empty array is returned if the font file is not found, the font file path is 
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-text-function getFontUnicodeSet(path: string | Resource, index: int) : Promise<Array<int>>--><!--Device-text-function getFontUnicodeSet(path: string | Resource, index: int) : Promise<Array<int>>-End-->
 
@@ -28,7 +28,7 @@ An empty array is returned if the font file is not found, the font file path is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to query, which must be "file:// + absolute path of the font file" or $rawfile('file name in the resources/rawfile directory of the project'). |
+| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Path of the font file to query, which must be "file:// + absolute path of the font file" or $rawfile('file name in the resources/rawfile directory of the project'). |
 | index | number | Yes | Index of the font to load when the font file format is ttc/otc. The value ranges from 0 to count-1, where count is the number of fonts contained in the font file. For non-ttc/otc files, the index can only be 0. If this parameter is negative or exceeds the actual index range of the font file, an empty array is returned. |
 
 **Return value:**

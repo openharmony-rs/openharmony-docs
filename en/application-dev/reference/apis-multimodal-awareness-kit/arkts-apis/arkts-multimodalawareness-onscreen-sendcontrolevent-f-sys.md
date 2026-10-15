@@ -46,6 +46,7 @@ If the target window is displayed on the screen, you can use this API to send sc
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 | [34000005](../errorcode-onScreen.md#34000005-target-not-found) | The target is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,18 +70,20 @@ try {
          };
       }
    }).catch((err: BusinessError) => {
-      console.error("get page content failed, errCode = " + err.code);
+      console.error(`get page content failed, Code: ${err.code}, message: ${err.message}`);
    });
 } catch (err) {
-   console.error('invoke failed, errCode = ' + err.code);
+   console.error(`invoke failed, Code: ${err.code}, message: ${err.message}`);
 }
 if (event != undefined) {
    try {
       onScreen.sendControlEvent(event).catch((err: BusinessError) => {
-         console.error("send control event failed, errCode =" + err.code);
+         console.error(`send control event failed, Code: ${err.code}, message: ${err.message}`);
       })
    } catch (err) {
-      console.error('invoke failed, errCode = ' + err.code);
+      console.error(`invoke failed, Code: ${err.code}, message: ${err.message}`);
    }
 }
 ```
+
+<!--DelEnd-->

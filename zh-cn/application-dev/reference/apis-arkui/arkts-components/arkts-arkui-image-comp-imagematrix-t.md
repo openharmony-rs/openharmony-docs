@@ -6,6 +6,8 @@ declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transi
 
 当前的矩阵对象。
 
+**类型：** import ('../api/@ohos.matrix4').default.Matrix4Transit
+
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transi
 <!--Device-unnamed-declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transit--><!--Device-unnamed-declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import ('../api/@ohos.matrix4').default.Matrix4Transit

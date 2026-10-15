@@ -6,6 +6,8 @@
 import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
+<a id="stoptimer1"></a>
+
 ## stopTimer
 
 ```TypeScript
@@ -36,6 +38,7 @@ Stops the timer. This API uses an asynchronous callback to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,8 +71,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="stoptimer-1"></a>
+
+<a id="stoptimer2"></a>
 
 ## stopTimer
 
@@ -106,6 +111,7 @@ Stops a timer. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -135,3 +141,5 @@ try {
   console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
 }
 ```
+
+<!--DelEnd-->

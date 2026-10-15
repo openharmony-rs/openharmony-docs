@@ -24,7 +24,7 @@ import { image } from '@kit.ImageKit';
 displayPrimariesX: Array<number>
 ```
 
-The X-coordinate of the primary colors. Specifies the normalized X-coordinates of the display device's three primary colors. The values are stored in an array of length 3, in the order of red, green, and blue (r, g, b). Each value is represented in units of 0.00002 and must fall within the range [0.0, 1.0].
+归一化后显示设备三基色的X坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。
 
 **类型：** Array&lt;number&gt;
 
@@ -40,7 +40,7 @@ The X-coordinate of the primary colors. Specifies the normalized X-coordinates o
 displayPrimariesY: Array<number>
 ```
 
-The Y-coordinate of the primary colors. Specifies the normalized Y-coordinates of the display device's three primary colors. The values are stored in an array of length 3, in the order of red, green, and blue (r, g, b). Each value is represented in units of 0.00002 and must fall within the range [0.0, 1.0].
+归一化后显示设备三基色的Y坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。
 
 **类型：** Array&lt;number&gt;
 
@@ -56,9 +56,7 @@ The Y-coordinate of the primary colors. Specifies the normalized Y-coordinates o
 maxContentLightLevel: number
 ```
 
-Maximum brightness of displayed content.
-
-The value is measured in units of 1, with a maximum allowed value of 65,535.
+显示内容的最大亮度。浮点数，以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。
 
 **类型：** number
 
@@ -74,9 +72,7 @@ The value is measured in units of 1, with a maximum allowed value of 65,535.
 maxFrameAverageLightLevel: number
 ```
 
-Maximum average brightness of displayed content.
-
-The value is measured in units of 1, with a maximum allowed value of 65,535.
+显示内容的最大平均亮度。浮点数，以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。
 
 **类型：** number
 
@@ -92,9 +88,7 @@ The value is measured in units of 1, with a maximum allowed value of 65,535.
 maxLuminance: number
 ```
 
-Maximum luminance of the image's primary display. The value is measured in units of 1, with a maximum allowed value of 65,535.
-
-Unit:nit.
+图像主监视器最大亮度。浮点数，以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。
 
 **类型：** number
 
@@ -110,9 +104,7 @@ Unit:nit.
 minLuminance: number
 ```
 
-Minimum luminance of the image's primary display.
-
-The value is measured in units of 0.0001, with a maximum allowed value of 6.55535.
+图像主监视器最小亮度。以0.0001为单位，取值范围是[0, 6.5535]。单位：尼特（nit）。
 
 **类型：** number
 
@@ -128,9 +120,7 @@ The value is measured in units of 0.0001, with a maximum allowed value of 6.5553
 whitePointX: number
 ```
 
-The X-coordinate of the white point value. Specifies the normalized X-coordinate of the white point.
-
-The value is represented in units of 0.00002 and must fall within the range [0.0, 1.0].
+归一化后白点值的X坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。
 
 **类型：** number
 
@@ -146,9 +136,7 @@ The value is represented in units of 0.00002 and must fall within the range [0.0
 whitePointY: number
 ```
 
-The Y-coordinate of the white point value. Specifies the normalized Y-coordinate of the white point.
-
-The value is represented in units of 0.00002 and must fall within the range [0.0, 1.0].
+归一化后白点值的Y坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。
 
 **类型：** number
 

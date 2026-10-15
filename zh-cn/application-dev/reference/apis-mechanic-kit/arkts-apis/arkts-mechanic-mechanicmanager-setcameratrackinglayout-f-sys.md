@@ -37,6 +37,7 @@ function setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -44,3 +45,5 @@ console.info('Set layout');
 mechanicManager.setCameraTrackingLayout(mechanicManager.CameraTrackingLayout.LEFT);
 console.info('Set layout successful');
 ```
+
+<!--DelEnd-->

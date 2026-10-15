@@ -12,20 +12,6 @@ enum SubscribeType
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## SUBSCRIBE_TYPE_REMOTE
-
-```TypeScript
-SUBSCRIBE_TYPE_REMOTE = 0
-```
-
-订阅远程数据更改。
-
-**起始版本：** 9
-
-<!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## SUBSCRIBE_TYPE_CLOUD
 
 ```TypeScript
@@ -73,5 +59,19 @@ SUBSCRIBE_TYPE_LOCAL_DETAILS
 **起始版本：** 12
 
 <!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL_DETAILS--><!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL_DETAILS-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## SUBSCRIBE_TYPE_REMOTE
+
+```TypeScript
+SUBSCRIBE_TYPE_REMOTE = 0
+```
+
+订阅远程数据更改。
+
+**起始版本：** 9
+
+<!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

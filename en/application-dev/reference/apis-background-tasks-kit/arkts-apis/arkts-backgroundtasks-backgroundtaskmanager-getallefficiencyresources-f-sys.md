@@ -37,6 +37,7 @@ Obtains all information about the requested efficiency resources, including the 
 | [18700002](../errorcode-backgroundTaskMgr.md#18700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
 | [18700004](../errorcode-backgroundTaskMgr.md#18700004-system-service-failure) | System service operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,3 +54,5 @@ try {
     console.error(`Operation getAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

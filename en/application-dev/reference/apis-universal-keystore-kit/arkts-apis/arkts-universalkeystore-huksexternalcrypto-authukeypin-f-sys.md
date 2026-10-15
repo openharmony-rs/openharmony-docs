@@ -26,7 +26,7 @@ Authenticates a UKey PIN. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| resourceId | string | Yes | Resource ID of a container in the UKey, which can be obtained using [certificateManagerDialog.openAuthorizeDialog22+](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1). The result contains **resourceId**. |
+| resourceId | string | Yes | Resource ID of a container in the UKey, which can be obtained using [certificateManagerDialog.openAuthorizeDialog22+](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog2). The result contains **resourceId**. |
 | params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | Yes | Parameters to be passed during the operation. The mandatory tag is [HUKS_EXT_CRYPTO_TAG_UKEY_PIN](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md). |
 
 **Return value:**
@@ -40,7 +40,7 @@ Authenticates a UKey PIN. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application and is not allowed to use system applications. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed. |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | the UKey driver operation failed. |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | queried entity does not exist. |
@@ -52,6 +52,7 @@ Authenticates a UKey PIN. This API uses a promise to return the result.
 | [12000022](../errorcode-huks.md#12000022-incorrect-ukey-pin) | the UKey PIN is incorrect. |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -82,3 +83,5 @@ huksExternalCrypto.authUkeyPin(testResourceId, extProperties)
         console.info(`promise: authUkeyPin success`);
     });
 ```
+
+<!--DelEnd-->

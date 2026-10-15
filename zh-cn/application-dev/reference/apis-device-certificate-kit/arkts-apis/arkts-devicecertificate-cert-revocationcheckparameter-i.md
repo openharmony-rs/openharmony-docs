@@ -34,7 +34,7 @@ crlDownloadURI?: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckParameter-crlDownloadURI?: string--><!--Device-RevocationCheckParameter-crlDownloadURI?: string-End-->
 
@@ -54,7 +54,7 @@ ocspDigest?: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckParameter-ocspDigest?: string--><!--Device-RevocationCheckParameter-ocspDigest?: string-End-->
 
@@ -72,7 +72,7 @@ ocspRequestExtension?: Array<Uint8Array>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckParameter-ocspRequestExtension?: Array<Uint8Array>--><!--Device-RevocationCheckParameter-ocspRequestExtension?: Array<Uint8Array>-End-->
 
@@ -90,7 +90,7 @@ ocspResponderCert?: X509Cert
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckParameter-ocspResponderCert?: X509Cert--><!--Device-RevocationCheckParameter-ocspResponderCert?: X509Cert-End-->
 
@@ -112,7 +112,7 @@ ocspResponderURI?: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckParameter-ocspResponderURI?: string--><!--Device-RevocationCheckParameter-ocspResponderURI?: string-End-->
 
@@ -130,7 +130,7 @@ ocspResponses?: Uint8Array
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckParameter-ocspResponses?: Uint8Array--><!--Device-RevocationCheckParameter-ocspResponses?: Uint8Array-End-->
 
@@ -148,7 +148,7 @@ options?: Array<RevocationCheckOptions>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RevocationCheckParameter-options?: Array<RevocationCheckOptions>--><!--Device-RevocationCheckParameter-options?: Array<RevocationCheckOptions>-End-->
 

@@ -4,7 +4,7 @@
 declare class PanRecognizer extends GestureRecognizer
 ```
 
-Gesture recognizer object.
+Defines the pan gesture recognizer object, which inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) and supports querying pan gesture attributes, recognition direction, minimum pan distance, and pan thresholds for different input sources. It is applicable to querying the pan gesture recognition configuration.
 
 **Inheritance/Implementation:** PanRecognizer extends [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)
 
@@ -44,7 +44,7 @@ Obtains the recognized direction of the current pan gesture recognizer.
 getDistance(): number
 ```
 
-Obtains the minimum pan distance required to trigger this pan gesture recognizer.
+Returns the minimum pan distance that triggers the current pan gesture recognizer. The default pan threshold is 5 vp.
 
 **Since:** 19
 
@@ -60,7 +60,7 @@ Obtains the minimum pan distance required to trigger this pan gesture recognizer
 
 | Type | Description |
 | --- | --- |
-| number | Minimum swipe distance. Unit: vp. |
+| number | Minimum pan distance that triggers the current pan gesture recognizer. If the minimum pan distance is not configured, the default pan threshold 5vp is returned. Unit: vp |
 
 ## getDistanceMap
 
@@ -68,7 +68,7 @@ Obtains the minimum pan distance required to trigger this pan gesture recognizer
 getDistanceMap(): Map<SourceTool, number>
 ```
 
-Obtains the minimum pan distances required for different input sources to trigger this pan gesture recognizer.
+Returns the minimum pan distance that triggers the pan gesture recognizer for different input sources. The default pan threshold is 5 vp.
 
 > **NOTE:** 
 > 

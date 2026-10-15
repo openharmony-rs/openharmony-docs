@@ -8,13 +8,15 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** TextPickerAttribute extends CommonMethod<TextPickerAttribute>
+**Inheritance/Implementation:** TextPickerAttribute extends CommonMethod&lt;TextPickerAttribute&gt;
 
 **Since:** 8
 
 <!--Device-unnamed-declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>--><!--Device-unnamed-declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="canloop1"></a>
 
 ## canLoop
 
@@ -40,7 +42,7 @@ Sets whether to enable loop scrolling.
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether circular scrolling is supported.<br>- true: Circular scrolling is supported. <br>- false: Circular scrolling is not supported. <br>Default value: true |
 
-<a id="canloop-1"></a>
+<a id="canloop2"></a>
 
 ## canLoop
 
@@ -48,7 +50,7 @@ Sets whether to enable loop scrolling.
 canLoop(isLoop: Optional<boolean>)
 ```
 
-Sets whether to enable loop scrolling. Compared with [canLoop&lt;sup&gt;10+&lt;/sup&gt;](#canloop), this API supports the **undefined** type for the **isLoop** parameter.
+Sets whether to enable loop scrolling. Compared with [canLoop<sup>10+</sup>](#canloop1), this API supports the **undefined** type for the **isLoop** parameter.
 
 **Since:** 18
 
@@ -65,6 +67,8 @@ Sets whether to enable loop scrolling. Compared with [canLoop&lt;sup&gt;10+&lt;/
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | isLoop | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether cyclic scrolling is supported.<br>- true: Cyclic scrolling is supported. <br>- false: Cyclic scrolling is not supported. <br>Default value: true <br>When the value of isLoop is undefined, the default value is used. |
+
+<a id="defaultpickeritemheight1"></a>
 
 ## defaultPickerItemHeight
 
@@ -90,7 +94,7 @@ Sets the height of the picker items.
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes | Height of the selected item.<br>Value range: <br>number type: [0, +∞), in vp. <br>string type: only the string form of a number type value is supported, for example, "56". <br>Default value: 56 vp for the selected item and 36 vp for the unselected item. <br>**Note:** <br>After this parameter is set, the height of both the selected item and the unselected item is the set value. <br>When the value of value is negative, the default value is used. |
 
-<a id="defaultpickeritemheight-1"></a>
+<a id="defaultpickeritemheight2"></a>
 
 ## defaultPickerItemHeight
 
@@ -98,7 +102,7 @@ Sets the height of the picker items.
 defaultPickerItemHeight(height: Optional<number | string>)
 ```
 
-Sets the height of the picker items. Compared with [defaultPickerItemHeight](#defaultpickeritemheight), this API supports the **undefined** type for the **height** parameter.
+Sets the height of the picker items. Compared with [defaultPickerItemHeight](#defaultpickeritemheight1), this API supports the **undefined** type for the **height** parameter.
 
 **Since:** 18
 
@@ -188,6 +192,8 @@ Sets whether to disable the animation effect of text style changes during scroll
 | --- | --- | --- | --- |
 | disabled | boolean | Yes | Whether to disable the animation of text style changes during scrolling. <br>- true: Disables the animation of text style changes. <br>- false: Does not disable the animation of text style changes. <br>Default value: false <br>**Note:** <br>When set to true, there is no animation of font size, font weight, or font color changes during scrolling, and the text is displayed in the style set by [defaultTextStyle](#defaulttextstyle). If [defaultTextStyle](#defaulttextstyle) is not set, the default style of the [Text](arkts-arkui-text-comp.md) component is used. When set to false, the system default animation of text style changes during scrolling is used. |
 
+<a id="disappeartextstyle1"></a>
+
 ## disappearTextStyle
 
 ```TypeScript
@@ -212,7 +218,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the edge items.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>**Note:** If this method is not called to set the style, the default value is used. |
 
-<a id="disappeartextstyle-1"></a>
+<a id="disappeartextstyle2"></a>
 
 ## disappearTextStyle
 
@@ -220,7 +226,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle&lt;sup&gt;10+&lt;/sup&gt;](#disappeartextstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -238,7 +244,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the edge items.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
-<a id="disappeartextstyle-2"></a>
+<a id="disappeartextstyle3"></a>
 
 ## disappearTextStyle
 
@@ -246,7 +252,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of edge items (the second item above or below the selected item). Compared with [disappearTextStyle&lt;sup&gt;18+&lt;/sup&gt;](#disappeartextstyle-1), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
+Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>18+</sup>](#disappeartextstyle2), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
 
 **Since:** 20
 
@@ -263,6 +269,8 @@ Sets the text color, font size, font weight, maximum font size, minimum font siz
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Text color, font size, font weight, maximum font size, minimum font size, and overflow handling of the edge items.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>When the value of style is undefined, the default value is used. |
+
+<a id="divider1"></a>
 
 ## divider
 
@@ -288,9 +296,9 @@ If the sum of **startMargin** and **endMargin** in [DividerOptions](arkts-arkui-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) &#124; null | Yes |  |
+| value | [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) &#124; null | Yes | Divider style. To customize the width, margin, and color of the divider, pass the **DividerOptions** object. To hide the divider, pass **null**. If no value is passed, the default style is used.<br>Default value: <br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>} <br>1. If **value** is set to a valid [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) object, the divider is rendered using the specified style. <br>2. If **value** is **null**, the divider is hidden. |
 
-<a id="divider-1"></a>
+<a id="divider2"></a>
 
 ## divider
 
@@ -298,7 +306,7 @@ If the sum of **startMargin** and **endMargin** in [DividerOptions](arkts-arkui-
 divider(textDivider: Optional<DividerOptions | null>)
 ```
 
-Sets the divider style. If not explicitly set, the divider uses the default style. Compared with [divider&lt;sup&gt;12+&lt;/sup&gt;](#divider), this API supports the **undefined** type for the **textDivider** parameter.
+Sets the divider style. If not explicitly set, the divider uses the default style. Compared with [divider<sup>12+</sup>](#divider1), this API supports the **undefined** type for the **textDivider** parameter.
 
 If the sum of **startMargin** and **endMargin** in [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) exceeds the component's width, both margins are automatically reset to 0.
 
@@ -342,6 +350,8 @@ Sets whether to enable haptic feedback.
 | --- | --- | --- | --- |
 | enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable haptic feedback.<br>- true: Enables haptic feedback. <br>- false: Disables haptic feedback. <br>Default value: true <br>After it is set to true, whether it takes effect depends on whether the system hardware supports it. If the hardware does not support haptic feedback, enabling this feature does not produce a haptic feedback effect, nor does it throw an exception. |
 
+<a id="gradientheight1"></a>
+
 ## gradientHeight
 
 ```TypeScript
@@ -366,7 +376,7 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Fade height of the upper and lower edges of the content area.<br>Default value: 36vp <br>Value range: [0, +∞), percentage supported. <br>**NOTE:** <br>1. When value is set to a percentage, 100% indicates half the height of TextPicker. <br>2. When value is set to 0, the fade effect is not displayed. <br>3. When value is set to a number that exceeds half the height of TextPicker, the default value is used. <br>4. When the value is negative, the default value is used. |
 
-<a id="gradientheight-1"></a>
+<a id="gradientheight2"></a>
 
 ## gradientHeight
 
@@ -374,7 +384,7 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 gradientHeight(height: Optional<Dimension>)
 ```
 
-Sets the height of the fade effect applied to the top and bottom edges of the content area. If no setting is specified, a default fade effect is used. Compared with [gradientHeight&lt;sup&gt;12+&lt;/sup&gt;](#gradientheight), this API supports the **undefined** type for the **height** parameter.
+Sets the height of the fade effect applied to the top and bottom edges of the content area. If no setting is specified, a default fade effect is used. Compared with [gradientHeight<sup>12+</sup>](#gradientheight1), this API supports the **undefined** type for the **height** parameter.
 
 **Since:** 18
 
@@ -391,6 +401,8 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt; | Yes | Fade height of the upper and lower edges of the content area.<br>Default value: 36vp <br>Value range: [0, +∞), percentage supported. <br>**Note:** <br>1. When height is set to a percentage, 100% means half the height of the TextPicker. <br>2. When height is set to 0, the fade effect is not displayed. <br>3. When height is set to a number that exceeds half the height of the TextPicker, the default value is used. <br>4. When the value of height is undefined or negative, the default value is used. |
+
+<a id="onchange1"></a>
 
 ## onChange
 
@@ -416,9 +428,9 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (value: string[], index: number[]) =&gt; void | Yes |  |
+| callback | (value: string[], index: number[]) =&gt; void | Yes | Callback invoked when the text picker snaps to the selected item. The callback returns the text and index of the selected item. |
 
-<a id="onchange-1"></a>
+<a id="onchange2"></a>
 
 ## onChange
 
@@ -426,7 +438,7 @@ This callback is triggered only after the scroll animation completes. To obtain 
 onChange(callback: Optional<OnTextPickerChangeCallback>)
 ```
 
-Triggered when the options settle at the selected item position after the text content of TextPicker is scrolled. It is triggered when the user scrolls the picker and the selected item changes. It cannot be triggered by modifying the two-way bound state variable (such as selected). When a text list or an image-plus-text list is displayed, the value is the text value of the selected item. When an image list is displayed, the value is empty. Compared with [onChange](#onchange), the callback parameter adds support for the undefined type.
+Triggered when the options settle at the selected item position after the text content of TextPicker is scrolled. It is triggered when the user scrolls the picker and the selected item changes. It cannot be triggered by modifying the two-way bound state variable (such as selected). When a text list or an image-plus-text list is displayed, the value is the text value of the selected item. When an image list is displayed, the value is empty. Compared with [onChange](#onchange1), the callback parameter adds support for the undefined type.
 
 This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea) instead.
 
@@ -458,7 +470,7 @@ Triggered when an option enters the selection zone during text picker scrolling 
 > 
 > - The difference from the [onChange](#onchange)event is that this event is triggered earlier than the [onChange](#onchange)event. onEnterSelectedArea is triggered when an option enters the selected area during sliding, and is suitable for obtaining index value changes in real time, applicable to scenarios that require a quick response to user sliding. onChange is triggered after sliding ends and the selected item is settled, and is suitable for obtaining the finally confirmed selected value, applicable to scenarios that require obtaining the user's final selection.
 > 
-> - The difference from the [onScrollStop](#onscrollstop) event is that onEnterSelectedArea focuses on the logical state of an option entering the selected area, while onScrollStop focuses on the complete stop of the scrolling behavior. Use onEnterSelectedArea when an earlier response to index changes is required, and use [onScrollStop](#onscrollstop) when confirmation that scrolling has completely stopped is required.
+> - The difference from the [onScrollStop](#onscrollstop1) event is that onEnterSelectedArea focuses on the logical state of an option entering the selected area, while onScrollStop focuses on the complete stop of the scrolling behavior. Use onEnterSelectedArea when an earlier response to index changes is required, and use [onScrollStop](#onscrollstop1) when confirmation that scrolling has completely stopped is required.
 > 
 > - In multi-column linkage scenarios, using this callback is not recommended. This callback identifies the node at which an option enters the divider area during sliding. The options that change accordingly do not involve sliding, so in the callback return value, only the value of the currently sliding column changes normally, while the values of the other non-sliding columns remain unchanged.
 > 
@@ -479,6 +491,8 @@ Triggered when an option enters the selection zone during text picker scrolling 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpicker-comp-textpickerenterselectedareacallback-t.md) | Yes | Callback invoked when an option enters the divider area during sliding of the TextPicker. Callback signature: (value: string &#124; string[], index: number &#124; number[]) =&gt; void, where value is the text of the currently selected item, and index is the index of the currently selected item (starting from 0). |
+
+<a id="onscrollstop1"></a>
 
 ## onScrollStop
 
@@ -512,7 +526,7 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 | --- | --- | --- | --- |
 | callback | [TextPickerScrollStopCallback](arkts-arkui-textpicker-comp-textpickerscrollstopcallback-t.md) | Yes | Triggered when the option column of the text picker stops scrolling. Callback signature: (value: string &#124; string[], index: number &#124; number[]) =&gt; void, where value is the text of the currently selected item, and index is the index of the currently selected item (starting from 0). |
 
-<a id="onscrollstop-1"></a>
+<a id="onscrollstop2"></a>
 
 ## onScrollStop
 
@@ -520,7 +534,7 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 onScrollStop(callback: Optional<TextPickerScrollStopCallback>)
 ```
 
-Triggered when the scrolling in the text picker stops. Compared with [onScrollStop&lt;sup&gt;14+&lt;/sup&gt;](#onscrollstop), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the scrolling in the text picker stops. Compared with [onScrollStop<sup>14+</sup>](#onscrollstop1), this API supports the **undefined** type for the **callback** parameter.
 
 If the scrolling is initiated by a gesture, this event is triggered when the finger is lifted from the screen and the scrolling stops.
 
@@ -570,6 +584,8 @@ Sets the background style of selected items.
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerBackgroundStyle](arkts-arkui-textpicker-comp-pickerbackgroundstyle-i.md)&gt; | Yes | Color and border radius of the background of the selected item. In multi-column mode, the color and border radius of the background of the selected item are set for all columns at the same time.<br>Default value: <br>{<br>color: $r('sys.color.comp_background_tertiary'), <br>borderRadius: $r('sys.float.corner_radius_level12') <br>} |
 
+<a id="selectedindex1"></a>
+
 ## selectedIndex
 
 ```TypeScript
@@ -594,7 +610,7 @@ Sets the index of the selected item or items in the data list. This setting take
 | --- | --- | --- | --- |
 | value | number[] | Yes | Index of the selected item in the data selection list. The index starts from 0.<br>Default value: **0** <br>If the value is negative or exceeds the maximum index of the data selection list, the default value is used. <br> |
 
-<a id="selectedindex-1"></a>
+<a id="selectedindex2"></a>
 
 ## selectedIndex
 
@@ -602,7 +618,7 @@ Sets the index of the selected item or items in the data list. This setting take
 selectedIndex(index: Optional<number[]>)
 ```
 
-Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md). Use the number type for single-column pickers. Use the number[] type for multi-column pickers. Compared with [selectedIndex&lt;sup&gt;10+&lt;/sup&gt;](#selectedindex), this API supports the **undefined** type for the **index** parameter.
+Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md). Use the number type for single-column pickers. Use the number[] type for multi-column pickers. Compared with [selectedIndex<sup>10+</sup>](#selectedindex1), this API supports the **undefined** type for the **index** parameter.
 
 **Since:** 18
 
@@ -619,6 +635,8 @@ Sets the index of the selected item or items in the data list. This setting take
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | Yes | Index of the selected item in the data selection list. The index starts from 0. <br>Default value: **0** <br>If the value of **index** is **undefined**, the value of **selected** in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) is used. <br>If the value of **index** is a negative number or exceeds the maximum index value of the data selection list, the default value is used. <br> |
+
+<a id="selectedtextstyle1"></a>
 
 ## selectedTextStyle
 
@@ -644,7 +662,7 @@ Sets the text color, font size, and font weight of the selected item.
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the selected item.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>**Note:** If this method is not called to set the style, the default value is used. |
 
-<a id="selectedtextstyle-1"></a>
+<a id="selectedtextstyle2"></a>
 
 ## selectedTextStyle
 
@@ -652,7 +670,7 @@ Sets the text color, font size, and font weight of the selected item.
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle&lt;sup&gt;10+&lt;/sup&gt;](#selectedtextstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -670,7 +688,7 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the selected item.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
-<a id="selectedtextstyle-2"></a>
+<a id="selectedtextstyle3"></a>
 
 ## selectedTextStyle
 
@@ -678,7 +696,7 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of the selected item. Compared with [selectedTextStyle&lt;sup&gt;18+&lt;/sup&gt;](#selectedtextstyle-1), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
+Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of the selected item. Compared with [selectedTextStyle<sup>18+</sup>](#selectedtextstyle2), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
 
 **Since:** 20
 
@@ -695,6 +713,8 @@ Sets the text color, font size, font weight, maximum font size, minimum font siz
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Text color, font size, font weight, maximum font size, minimum font size, and truncation mode of the selected item's overlong text.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>When the value of style is undefined, the default value is used. |
+
+<a id="textstyle1"></a>
 
 ## textStyle
 
@@ -720,7 +740,7 @@ Sets the text color, font size, and font weight of candidate items (the first it
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the options.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>**Note:** When this method is not called to set the style, the default value is used. |
 
-<a id="textstyle-1"></a>
+<a id="textstyle2"></a>
 
 ## textStyle
 
@@ -728,7 +748,7 @@ Sets the text color, font size, and font weight of candidate items (the first it
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of candidate items (the first item immediately above or below the selected item). Compared with [textStyle&lt;sup&gt;10+&lt;/sup&gt;](#textstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of candidate items (the first item immediately above or below the selected item). Compared with [textStyle<sup>10+</sup>](#textstyle1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -746,7 +766,7 @@ Sets the text color, font size, and font weight of candidate items (the first it
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the options to be selected.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
-<a id="textstyle-2"></a>
+<a id="textstyle3"></a>
 
 ## textStyle
 
@@ -754,7 +774,7 @@ Sets the text color, font size, and font weight of candidate items (the first it
 textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of candidate items (the first item immediately above or below the selected item). Compared with [textStyle&lt;sup&gt;18+&lt;/sup&gt;](#textstyle-1), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
+Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of candidate items (the first item immediately above or below the selected item). Compared with [textStyle<sup>18+</sup>](#textstyle2), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
 
 **Since:** 20
 
@@ -799,7 +819,7 @@ Triggered when the OK button in the dialog box is clicked. This event can be tri
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (value: string, index: number) =&gt; void | Yes |  |
+| callback | (value: string, index: number) =&gt; void | Yes | Callback invoked when the OK button in the dialog box is clicked. The callback returns the text and index of the selected item. |
 
 ## onCancel
 

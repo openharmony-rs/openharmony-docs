@@ -403,7 +403,7 @@ Restores the UID and PID to those of the remote user. This API is a static metho
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| identity | string | Yes | String that contains the remote user UID and PID. Its length must be less than 40960. are returned by **resetCallingIdentity**. |
+| identity | string | Yes | String that contains the remote user UID and PID. Its length must be less than         40960. are returned by **resetCallingIdentity**. |
 
 **Error codes:**
 

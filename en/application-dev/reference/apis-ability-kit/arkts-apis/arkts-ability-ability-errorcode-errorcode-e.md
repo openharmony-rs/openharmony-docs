@@ -12,20 +12,6 @@ Enumerates the error codes that may be returned when an ability is started.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## PERMISSION_DENY
-
-```TypeScript
-PERMISSION_DENY = -3
-```
-
-Permission denied.
-
-**Since:** 6
-
-<!--Device-ErrorCode-PERMISSION_DENY = -3--><!--Device-ErrorCode-PERMISSION_DENY = -3-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
 ## ABILITY_NOT_FOUND
 
 ```TypeScript
@@ -65,5 +51,19 @@ No error.
 **Since:** 6
 
 <!--Device-ErrorCode-NO_ERROR = 0--><!--Device-ErrorCode-NO_ERROR = 0-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## PERMISSION_DENY
+
+```TypeScript
+PERMISSION_DENY = -3
+```
+
+Permission denied.
+
+**Since:** 6
+
+<!--Device-ErrorCode-PERMISSION_DENY = -3--><!--Device-ErrorCode-PERMISSION_DENY = -3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

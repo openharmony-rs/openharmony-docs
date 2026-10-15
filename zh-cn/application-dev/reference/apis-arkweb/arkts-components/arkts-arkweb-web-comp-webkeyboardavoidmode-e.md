@@ -12,19 +12,19 @@ declare enum WebKeyboardAvoidMode
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## RESIZE_VISUAL
+## OVERLAYS_CONTENT
 
 ```TypeScript
-RESIZE_VISUAL = 0
+OVERLAYS_CONTENT = 2
 ```
 
-软键盘避让时，仅调整可视视口大小，不调整布局视口大小。
+不调整任何视口大小，不会触发软键盘避让。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0--><!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0-End-->
+<!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2--><!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ RESIZE_CONTENT = 1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## OVERLAYS_CONTENT
+## RESIZE_VISUAL
 
 ```TypeScript
-OVERLAYS_CONTENT = 2
+RESIZE_VISUAL = 0
 ```
 
-不调整任何视口大小，不会触发软键盘避让。
+软键盘避让时，仅调整可视视口大小，不调整布局视口大小。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2--><!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2-End-->
+<!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0--><!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

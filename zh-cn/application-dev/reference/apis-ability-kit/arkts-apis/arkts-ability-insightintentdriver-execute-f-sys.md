@@ -6,6 +6,8 @@
 import { insightIntentDriver } from '@kit.AbilityKit';
 ```
 
+<a id="execute1"></a>
+
 ## execute
 
 ```TypeScript
@@ -39,7 +41,7 @@ function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.Exec
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -57,6 +59,7 @@ function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.Exec
 | [16000137](../errorcode-ability.md#16000137-跨设备执行意图连接失败) | Cross-device execution failed due to a connection error.<br>**适用版本：** 26.0.0+ |
 | [16000138](../errorcode-ability.md#16000138-跨设备执行意图设备断连) | Device disconnected during cross-device intent execution.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -91,8 +94,10 @@ import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
   }
 ```
 
+<!--DelEnd-->
 
-<a id="execute-1"></a>
+
+<a id="execute2"></a>
 
 ## execute
 
@@ -132,7 +137,7 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -150,6 +155,7 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 | [16000137](../errorcode-ability.md#16000137-跨设备执行意图连接失败) | Cross-device execution failed due to a connection error.<br>**适用版本：** 26.0.0+ |
 | [16000138](../errorcode-ability.md#16000138-跨设备执行意图设备断连) | Device disconnected during cross-device intent execution.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -177,3 +183,5 @@ import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
     }
   }
 ```
+
+<!--DelEnd-->

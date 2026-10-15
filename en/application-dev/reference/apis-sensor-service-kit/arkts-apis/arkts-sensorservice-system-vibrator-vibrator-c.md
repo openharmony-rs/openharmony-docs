@@ -37,14 +37,14 @@ Use this API to trigger device vibration such as alarm clock vibration, incoming
 > **NOTE:** 
 > 
 > For devices other than lite wearables, you are advised to use
-> [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md)
+> [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)
 > since API version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md)(effect: VibrateEffect, attribute: VibrateAttribute, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)(effect: VibrateEffect, attribute: VibrateAttribute, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.VIBRATE
 

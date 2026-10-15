@@ -34,7 +34,7 @@ HTTP status code returned by the server.
 
 **Deprecated since:** 9
 
-**Substitutes:** statusCode
+**Substitutes:** [statusCode](arkts-basicservices-agent-httpresponse-i.md#statuscode)
 
 <!--Device-UploadResponse-code: number--><!--Device-UploadResponse-code: number-End-->
 
@@ -54,7 +54,7 @@ Content returned by the server. The value type is determined by the type in the 
 
 **Deprecated since:** 9
 
-**Substitutes:** extras
+**Substitutes:** [extras](arkts-basicservices-agent-progress-i.md#extras)
 
 <!--Device-UploadResponse-data: string--><!--Device-UploadResponse-data: string-End-->
 
@@ -74,7 +74,7 @@ Headers returned by the server.
 
 **Deprecated since:** 9
 
-**Substitutes:** headers
+**Substitutes:** [headers](arkts-basicservices-agent-httpresponse-i.md#headers)
 
 <!--Device-UploadResponse-headers: Object--><!--Device-UploadResponse-headers: Object-End-->
 

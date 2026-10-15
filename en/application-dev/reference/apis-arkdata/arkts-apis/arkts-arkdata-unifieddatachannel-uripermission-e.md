@@ -28,9 +28,9 @@ drag-and-drop operation. If an authorization policy is configured for a piece of
 - Default level: If no authorization policy is configured for either a single piece of data or  
 UnifiedDataProperties, proxy authorization is performed according to the default drag-and-drop logic. The default logic is as follows:
 
-- FileUri data (FileUri UDS or the File, Image, Video, Audio, and Folder UDC types): In the drag-and-drop  
+        - FileUri data (FileUri UDS or the File, Image, Video, Audio, and Folder UDC types): In the drag-and-drop  
 scenario, the default authorization is READ+WRITE+PERSIST (read + write + persistent authorization).  
-- HTML data: read authorization is granted only for the URIs under the img tag in the HTML text.
+        - HTML data: read authorization is granted only for the URIs under the img tag in the HTML text.
 
 **Since:** 26.0.0
 
@@ -50,9 +50,27 @@ No permissions granted.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-UriPermission-NONE = 0--><!--Device-UriPermission-NONE = 0-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
+
+## PERSIST
+
+```TypeScript
+PERSIST = 3
+```
+
+Permission to persist files.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-UriPermission-PERSIST = 3--><!--Device-UriPermission-PERSIST = 3-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -68,7 +86,7 @@ Permission to read or view data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-UriPermission-READ = 1--><!--Device-UriPermission-READ = 1-End-->
 
@@ -86,26 +104,8 @@ Permission to modify data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-UriPermission-WRITE = 2--><!--Device-UriPermission-WRITE = 2-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.UDMF.Core
-
-## PERSIST
-
-```TypeScript
-PERSIST = 3
-```
-
-Permission to persist files.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
-
-<!--Device-UriPermission-PERSIST = 3--><!--Device-UriPermission-PERSIST = 3-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

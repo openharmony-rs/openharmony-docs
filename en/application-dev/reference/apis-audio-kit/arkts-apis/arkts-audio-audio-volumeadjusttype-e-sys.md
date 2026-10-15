@@ -14,22 +14,6 @@ Enumerates volume adjustment types.
 
 **System API:** This is a system API.
 
-## VOLUME_UP
-
-```TypeScript
-VOLUME_UP = 0
-```
-
-Adjust volume up.
-
-**Since:** 10
-
-<!--Device-VolumeAdjustType-VOLUME_UP = 0--><!--Device-VolumeAdjustType-VOLUME_UP = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**System API:** This is a system API.
-
 ## VOLUME_DOWN
 
 ```TypeScript
@@ -41,6 +25,22 @@ Adjust volume down.
 **Since:** 10
 
 <!--Device-VolumeAdjustType-VOLUME_DOWN = 1--><!--Device-VolumeAdjustType-VOLUME_DOWN = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**System API:** This is a system API.
+
+## VOLUME_UP
+
+```TypeScript
+VOLUME_UP = 0
+```
+
+Adjust volume up.
+
+**Since:** 10
+
+<!--Device-VolumeAdjustType-VOLUME_UP = 0--><!--Device-VolumeAdjustType-VOLUME_UP = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 

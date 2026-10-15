@@ -34,7 +34,7 @@ static back(options?: BackRouterOptions): void
 
 **废弃版本：** 8
 
-**替代接口：** back
+**替代接口：** [back](arkts-arkui-router-back-f.md)
 
 <!--Device-Router-static back(options?: BackRouterOptions): void--><!--Device-Router-static back(options?: BackRouterOptions): void-End-->
 
@@ -58,7 +58,7 @@ static clear(): void
 
 **废弃版本：** 8
 
-**替代接口：** clear
+**替代接口：** [clear](arkts-arkui-router-clear-f.md)
 
 <!--Device-Router-static clear(): void--><!--Device-Router-static clear(): void-End-->
 
@@ -76,7 +76,7 @@ static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): 
 
 **废弃版本：** 8
 
-**替代接口：** hideAlertBeforeBackPage
+**替代接口：** [hideAlertBeforeBackPage](arkts-arkui-router-hidealertbeforebackpage-f.md)
 
 <!--Device-Router-static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void--><!--Device-Router-static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void-End-->
 
@@ -100,7 +100,7 @@ static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): voi
 
 **废弃版本：** 8
 
-**替代接口：** showAlertBeforeBackPage
+**替代接口：** [showAlertBeforeBackPage](arkts-arkui-router-showalertbeforebackpage-f.md)
 
 <!--Device-Router-static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void--><!--Device-Router-static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void-End-->
 
@@ -124,7 +124,7 @@ static getLength(): string
 
 **废弃版本：** 8
 
-**替代接口：** getLength
+**替代接口：** [getLength](arkts-arkui-router-getlength-f.md)
 
 <!--Device-Router-static getLength(): string--><!--Device-Router-static getLength(): string-End-->
 
@@ -148,7 +148,7 @@ static getParams(): ParamsInterface
 
 **废弃版本：** 8
 
-**替代接口：** getParams
+**替代接口：** [getParams](arkts-arkui-router-getparams-f.md)
 
 <!--Device-Router-static getParams(): ParamsInterface--><!--Device-Router-static getParams(): ParamsInterface-End-->
 
@@ -172,7 +172,7 @@ static getState(): RouterState
 
 **废弃版本：** 8
 
-**替代接口：** getState
+**替代接口：** [getState](arkts-arkui-router-getstate-f.md)
 
 <!--Device-Router-static getState(): RouterState--><!--Device-Router-static getState(): RouterState-End-->
 
@@ -200,7 +200,7 @@ static push(options: RouterOptions): void
 
 **废弃版本：** 8
 
-**替代接口：** push
+**替代接口：** [push](arkts-arkui-router-push-f.md)
 
 <!--Device-Router-static push(options: RouterOptions): void--><!--Device-Router-static push(options: RouterOptions): void-End-->
 
@@ -224,7 +224,7 @@ static replace(options: RouterOptions): void
 
 **废弃版本：** 8
 
-**替代接口：** replace
+**替代接口：** [replace](arkts-arkui-router-replace-f.md)
 
 <!--Device-Router-static replace(options: RouterOptions): void--><!--Device-Router-static replace(options: RouterOptions): void-End-->
 

@@ -12,24 +12,6 @@ Enumerates the optical image stabilization (OIS) mode.
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
-## OFF
-
-```TypeScript
-OFF = 0
-```
-
-OIS is disabled.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
-
-<!--Device-OISMode-OFF = 0--><!--Device-OISMode-OFF = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
 ## AUTO
 
 ```TypeScript
@@ -42,7 +24,7 @@ OIS is automatically controlled.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-OISMode-AUTO = 1--><!--Device-OISMode-AUTO = 1-End-->
 
@@ -60,8 +42,26 @@ OIS is controlled by the application.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-OISMode-CUSTOM = 2--><!--Device-OISMode-CUSTOM = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+## OFF
+
+```TypeScript
+OFF = 0
+```
+
+OIS is disabled.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-OISMode-OFF = 0--><!--Device-OISMode-OFF = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

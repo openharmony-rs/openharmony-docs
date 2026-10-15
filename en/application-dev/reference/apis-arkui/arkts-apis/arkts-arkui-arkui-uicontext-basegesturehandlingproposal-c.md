@@ -4,7 +4,7 @@
 export abstract class BaseGestureHandlingProposal
 ```
 
-Base class for smart gesture handling. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, the callback parameter type is an instance of a specific subclass type.
+Base class for smart gesture handling. When the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API is used to dynamically customize smart gesture behaviors, the callback parameter is an instance of a specific subclass type.
 
 **Since:** 26.0.0
 
@@ -27,7 +27,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 action: SmartGestureAction
 ```
 
-Final action of the smart gesture.
+Final action executed by the smart gesture.
 
 **Type:** [SmartGestureAction](arkts-arkui-smartgestureaction-e.md)
 

@@ -4,7 +4,7 @@
 interface WorkStateStyle
 ```
 
-Work state style.
+工作状态样式。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Work state style.
 offDayMarkColor?: ResourceColor
 ```
 
-Style of day color.
+休息日标记颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -46,7 +46,7 @@ Style of day color.
 offDayMarkSize?: number
 ```
 
-Style of day size.
+休息日标记大小。
 
 **类型：** number
 
@@ -70,7 +70,7 @@ Style of day size.
 workDayMarkColor?: ResourceColor
 ```
 
-Style of day color.
+工作日标记颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -94,7 +94,7 @@ Style of day color.
 workDayMarkSize?: number
 ```
 
-Style of day size.
+工作日标记大小。
 
 **类型：** number
 
@@ -118,7 +118,7 @@ Style of day size.
 workStateHorizontalMovingDistance?: number
 ```
 
-Style of distance.
+工作状态水平移动距离。
 
 **类型：** number
 
@@ -142,7 +142,7 @@ Style of distance.
 workStateVerticalMovingDistance?: number
 ```
 
-Style of distance.
+工作状态垂直移动距离。
 
 **类型：** number
 
@@ -166,7 +166,7 @@ Style of distance.
 workStateWidth?: number
 ```
 
-Style of width.
+工作状态宽度。
 
 **类型：** number
 

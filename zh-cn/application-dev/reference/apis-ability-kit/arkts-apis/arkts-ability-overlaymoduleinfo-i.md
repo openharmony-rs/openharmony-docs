@@ -4,7 +4,7 @@
 export interface OverlayModuleInfo
 ```
 
-OverlayModuleInfo信息，可以通过[overlay.getOverlayModuleInfo](arkts-ability-overlay-getoverlaymoduleinfo-f.md#getoverlaymoduleinfo-1)接口获取当前应用中具有overlay特征模块的OverlayModuleInfo信息。
+OverlayModuleInfo信息，可以通过[overlay.getOverlayModuleInfo](arkts-ability-overlay-getoverlaymoduleinfo-f.md)接口获取当前应用中具有overlay特征模块的OverlayModuleInfo信息。
 
 **起始版本：** 10
 
@@ -18,7 +18,7 @@ OverlayModuleInfo信息，可以通过[overlay.getOverlayModuleInfo](arkts-abili
 readonly bundleName: string
 ```
 
-overlay特征module所属的应用的bundle名称。
+overlay特征模块所属应用的bundle名称。
 
 **类型：** string
 
@@ -34,7 +34,7 @@ overlay特征module所属的应用的bundle名称。
 readonly moduleName: string
 ```
 
-overlay特征module的名称。
+overlay特征模块名称。
 
 **类型：** string
 
@@ -50,7 +50,7 @@ overlay特征module的名称。
 readonly priority: number
 ```
 
-overlay特征module的优先级。取值为整数，取值范围1 ~ 100，数值越大优先级越高。
+overlay特征模块的优先级。取值为整数，取值范围：[1, 100]，数值越大优先级越高。
 
 **类型：** number
 
@@ -66,7 +66,7 @@ overlay特征module的优先级。取值为整数，取值范围1 ~ 100，数值
 readonly state: number
 ```
 
-overlay特征module的[禁用使能状态](arkts-ability-overlay-setoverlayenabled-f.md#setoverlayenabled-1)。0代表禁用状态，1代表使能状态。
+overlay特征模块的禁用启用状态。取值为整数，取值范围：[0, 2]，0代表禁用状态，1代表启用状态，2代表无效状态。
 
 **类型：** number
 
@@ -82,7 +82,7 @@ overlay特征module的[禁用使能状态](arkts-ability-overlay-setoverlayenabl
 readonly targetModuleName: string
 ```
 
-overlay特征指定的目标module的名称，表示当前overlay包的资源需要替换生效的模块名称。
+overlay特征模块作用目标的模块名称，表示当前overlay包的资源需要替换生效的模块名称。
 
 **类型：** string
 

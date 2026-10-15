@@ -12,17 +12,17 @@ enum ComponentType
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-## YUV_Y
+## JPEG
 
 ```TypeScript
-YUV_Y = 1
+JPEG = 4
 ```
 
-亮度信息。
+JPEG 类型。
 
 **起始版本：** 9
 
-<!--Device-ComponentType-YUV_Y = 1--><!--Device-ComponentType-YUV_Y = 1-End-->
+<!--Device-ComponentType-JPEG = 4--><!--Device-ComponentType-JPEG = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -54,16 +54,16 @@ YUV_V = 3
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-## JPEG
+## YUV_Y
 
 ```TypeScript
-JPEG = 4
+YUV_Y = 1
 ```
 
-JPEG 类型。
+亮度信息。
 
 **起始版本：** 9
 
-<!--Device-ComponentType-JPEG = 4--><!--Device-ComponentType-JPEG = 4-End-->
+<!--Device-ComponentType-YUV_Y = 1--><!--Device-ComponentType-YUV_Y = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver

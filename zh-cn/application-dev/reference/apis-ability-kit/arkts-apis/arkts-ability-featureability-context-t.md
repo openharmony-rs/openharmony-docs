@@ -6,6 +6,8 @@ export type Context = _Context
 
 Context模块。
 
+**类型：** _Context
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -13,5 +15,3 @@ Context模块。
 <!--Device-featureAbility-export type Context = _Context--><!--Device-featureAbility-export type Context = _Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _Context

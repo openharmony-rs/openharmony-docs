@@ -20,12 +20,12 @@ import { sendableRelationalStore } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [fromSendableAsset](arkts-arkdata-sendablerelationalstore-fromsendableasset-f.md) | Converts the asset data that can be passed across threads into the data that cannot be passed across threads. |
-| [fromSendableValues](arkts-arkdata-sendablerelationalstore-fromsendablevalues-f.md) | Converts the array data that can be passed across threads into the data that cannot be passed across threads. |
-| [fromSendableValuesBucket](arkts-arkdata-sendablerelationalstore-fromsendablevaluesbucket-f.md) | Converts a KV pair that can be passed across threads into the data that cannot be passed across threads. |
-| [toSendableAsset](arkts-arkdata-sendablerelationalstore-tosendableasset-f.md) | Converts the asset data that cannot be passed across threads into the data that can be passed across threads. |
-| [toSendableValues](arkts-arkdata-sendablerelationalstore-tosendablevalues-f.md) | Converts the array data that cannot be passed across threads into the data that can be passed across threads. |
-| [toSendableValuesBucket](arkts-arkdata-sendablerelationalstore-tosendablevaluesbucket-f.md) | Converts a key-value (KV) pair that cannot be passed across threads into the data that can be passed across threads. |
+| [fromSendableAsset](arkts-arkdata-sendablerelationalstore-fromsendableasset-f.md#fromsendableasset) | Converts the asset data that can be passed across threads into the data that cannot be passed across threads. |
+| [fromSendableValues](arkts-arkdata-sendablerelationalstore-fromsendablevalues-f.md#fromsendablevalues) | Converts the array data that can be passed across threads into the data that cannot be passed across threads. |
+| [fromSendableValuesBucket](arkts-arkdata-sendablerelationalstore-fromsendablevaluesbucket-f.md#fromsendablevaluesbucket) | Converts a KV pair that can be passed across threads into the data that cannot be passed across threads. |
+| [toSendableAsset](arkts-arkdata-sendablerelationalstore-tosendableasset-f.md#tosendableasset) | Converts the asset data that cannot be passed across threads into the data that can be passed across threads. |
+| [toSendableValues](arkts-arkdata-sendablerelationalstore-tosendablevalues-f.md#tosendablevalues) | Converts the array data that cannot be passed across threads into the data that can be passed across threads. |
+| [toSendableValuesBucket](arkts-arkdata-sendablerelationalstore-tosendablevaluesbucket-f.md#tosendablevaluesbucket) | Converts a key-value (KV) pair that cannot be passed across threads into the data that can be passed across threads. |
 
 ### Interfaces
 

@@ -6,26 +6,19 @@ declare enum SeekMode
 
 视频跳转模式选项。
 
-| 名称 |值| 说明 |  
-| ---------------- |--| ---------------------------- |  
-| PreviousKeyframe |0| 跳转到当前播放位置之前最近的关键帧。 |
-| NextKeyframe |1| 跳转到当前播放位置之后最近的关键帧。 |
-| ClosestKeyframe |2| 跳转到距离当前播放位置最近的关键帧。 |
-| Accurate |3| 精准跳转到指定时间点，不论是否为关键帧。精度高但可能需要解码更多帧。 |
-
 **起始版本：** 8
 
 <!--Device-unnamed-declare enum SeekMode--><!--Device-unnamed-declare enum SeekMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## PreviousKeyframe
+## Accurate
 
 ```TypeScript
-PreviousKeyframe
+Accurate
 ```
 
-Seek to the nearest previous keyframe.
+精准跳转到指定时间点，不论是否为关键帧。精度高但可能需要解码更多帧。
 
 **起始版本：** 8
 
@@ -33,25 +26,7 @@ Seek to the nearest previous keyframe.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-SeekMode-PreviousKeyframe--><!--Device-SeekMode-PreviousKeyframe-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## NextKeyframe
-
-```TypeScript
-NextKeyframe
-```
-
-Seek to the nearest next keyframe.
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-SeekMode-NextKeyframe--><!--Device-SeekMode-NextKeyframe-End-->
+<!--Device-SeekMode-Accurate--><!--Device-SeekMode-Accurate-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +36,7 @@ Seek to the nearest next keyframe.
 ClosestKeyframe
 ```
 
-Seek to the nearest keyframe.
+跳转到距离当前播放位置最近的关键帧。
 
 **起始版本：** 8
 
@@ -73,13 +48,13 @@ Seek to the nearest keyframe.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Accurate
+## NextKeyframe
 
 ```TypeScript
-Accurate
+NextKeyframe
 ```
 
-Seek to a specific frame, regardless of whether the frame is a keyframe.
+跳转到当前播放位置之后最近的关键帧。
 
 **起始版本：** 8
 
@@ -87,6 +62,24 @@ Seek to a specific frame, regardless of whether the frame is a keyframe.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-SeekMode-Accurate--><!--Device-SeekMode-Accurate-End-->
+<!--Device-SeekMode-NextKeyframe--><!--Device-SeekMode-NextKeyframe-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PreviousKeyframe
+
+```TypeScript
+PreviousKeyframe
+```
+
+跳转到当前播放位置之前最近的关键帧。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SeekMode-PreviousKeyframe--><!--Device-SeekMode-PreviousKeyframe-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

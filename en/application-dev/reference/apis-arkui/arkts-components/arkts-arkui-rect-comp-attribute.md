@@ -6,7 +6,7 @@ declare class RectAttribute extends CommonShapeMethod<RectAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal drawing attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
-**Inheritance/Implementation:** RectAttribute extends CommonShapeMethod<RectAttribute>
+**Inheritance/Implementation:** RectAttribute extends CommonShapeMethod&lt;RectAttribute&gt;
 
 **Since:** 7
 

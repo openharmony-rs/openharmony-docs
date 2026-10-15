@@ -6,6 +6,8 @@ declare type UIContext = import('../api/@ohos.arkui.UIContext').UIContext
 
 UIContext
 
+**类型：** import('../api/@ohos.arkui.UIContext').UIContext
+
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ UIContext
 <!--Device-unnamed-declare type UIContext = import('../api/@ohos.arkui.UIContext').UIContext--><!--Device-unnamed-declare type UIContext = import('../api/@ohos.arkui.UIContext').UIContext-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.UIContext').UIContext

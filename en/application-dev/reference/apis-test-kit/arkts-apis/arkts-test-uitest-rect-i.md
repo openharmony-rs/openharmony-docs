@@ -33,7 +33,7 @@ Y coordinate of the lower right corner of the component border, in pixels. The v
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Rect-bottom: int--><!--Device-Rect-bottom: int-End-->
 
@@ -53,7 +53,7 @@ ID of the display to which the component border belongs. The value is an integer
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-Rect-displayId?: int--><!--Device-Rect-displayId?: int-End-->
 
@@ -73,7 +73,7 @@ X coordinate of the upper left corner of the component border, in pixels. The va
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Rect-left: int--><!--Device-Rect-left: int-End-->
 
@@ -93,7 +93,7 @@ X coordinate of the lower right corner of the component border, in pixels. The v
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Rect-right: int--><!--Device-Rect-right: int-End-->
 
@@ -113,7 +113,7 @@ Y coordinate of the upper left corner of the component border, in pixels. The va
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Rect-top: int--><!--Device-Rect-top: int-End-->
 

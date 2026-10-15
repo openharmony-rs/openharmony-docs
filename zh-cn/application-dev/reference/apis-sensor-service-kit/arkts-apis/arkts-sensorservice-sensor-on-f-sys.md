@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -38,6 +40,7 @@ function on(type: SensorId.COLOR, callback: Callback<ColorResponse>, options?: O
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br><br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,8 +61,10 @@ try{
 }
 ```
 
+<!--DelEnd-->
 
-<a id="on-1"></a>
+
+<a id="on2"></a>
 
 ## on
 
@@ -93,6 +98,7 @@ function on(type: SensorId.SAR, callback: Callback<SarResponse>, options?: Optio
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br><br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -111,3 +117,5 @@ try {
   console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
 }
 ```
+
+<!--DelEnd-->

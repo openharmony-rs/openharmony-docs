@@ -32,6 +32,8 @@ address: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ScanResults-address: string--><!--Device-ScanResults-address: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ data: ArrayBuffer
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanResults-data: ArrayBuffer--><!--Device-ScanResults-data: ArrayBuffer-End-->
 
@@ -68,6 +72,8 @@ deviceClass?: nearlinkConstant.DeviceClass
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ScanResults-deviceClass?: nearlinkConstant.DeviceClass--><!--Device-ScanResults-deviceClass?: nearlinkConstant.DeviceClass-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -86,7 +92,29 @@ deviceName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-ScanResults-deviceName: string--><!--Device-ScanResults-deviceName: string-End-->
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+## frameType
+
+```TypeScript
+frameType?: nearlinkConstant.FrameType
+```
+
+表示接收到的广播报文的帧类型。若不返回该字段，则帧类型为**FRAME_TYPE_1**。
+
+**类型：** [nearlinkConstant.FrameType](arkts-connectivity-nearlinkconstant-frametype-e.md)
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScanResults-frameType?: nearlinkConstant.FrameType--><!--Device-ScanResults-frameType?: nearlinkConstant.FrameType-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -103,6 +131,8 @@ isConnectable: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanResults-isConnectable: boolean--><!--Device-ScanResults-isConnectable: boolean-End-->
 
@@ -121,6 +151,8 @@ rssi: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanResults-rssi: int--><!--Device-ScanResults-rssi: int-End-->
 

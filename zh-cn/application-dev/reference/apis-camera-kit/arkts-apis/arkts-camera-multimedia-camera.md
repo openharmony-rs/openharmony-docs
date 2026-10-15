@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCameraManager](arkts-camera-camera-getcameramanager-f.md) | 获取相机管理器实例，同步返回结果。 |
+| [getCameraManager](arkts-camera-camera-getcameramanager-f.md#getcameramanager) | 获取相机管理器实例，同步返回结果。 |
 
 <!--Del-->
 ### 类（系统接口）
@@ -55,7 +55,6 @@ import { camera } from '@kit.CameraKit';
 | [CameraStatusInfo](arkts-camera-camera-camerastatusinfo-i.md) | 相机管理器回调返回的接口实例，该实例表示相机状态信息。 |
 | [CaptureEndInfo](arkts-camera-camera-captureendinfo-i.md) | 拍照停止信息。 |
 | [CapturePhoto](arkts-camera-camera-capturephoto-i.md) | 获取全质量图和未压缩图的对象。 |
-| [CaptureSession](arkts-camera-camera-capturesession-i.md) | 拍照会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能(录像，拍照)。 |
 | [CaptureStartInfo](arkts-camera-camera-capturestartinfo-i.md) | 拍照开始信息。 |
 | [ColorManagement](arkts-camera-camera-colormanagement-i.md) | ColorManagement继承自[ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md)。 |
 | [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md) | 色彩管理类，用于查询色彩空间参数。 |
@@ -97,7 +96,7 @@ import { camera } from '@kit.CameraKit';
 | [Photo](arkts-camera-camera-photo-i.md) | 全质量图对象。 |
 | [PhotoCaptureSetting](arkts-camera-camera-photocapturesetting-i.md) | 拍摄照片的设置。 |
 | [PhotoOutput](arkts-camera-camera-photooutput-i.md) | 拍照会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。 |
-| [PhotoSession](arkts-camera-camera-photosession-i.md) | PhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、ManualExposure、ManualFocus、ManualIso、OIS、Aperture。 |
+| [PhotoSession](arkts-camera-camera-photosession-i.md) | PhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ManualExposure](../../../reference/apis-camera-kit/arkts-apis-camera-ManualExposure.md)、[ManualFocus](../../../reference/apis-camera-kit/arkts-apis-camera-ManualFocus.md)、[ManualIso](../../../reference/apis-camera-kit/arkts-apis-camera-ManualIso.md)、[OIS](../../../reference/apis-camera-kit/arkts-apis-camera-OIS.md)、[Aperture](../../../reference/apis-camera-kit/arkts-apis-camera-Aperture.md)。 |
 | [PhysicalAperture](arkts-camera-camera-physicalaperture-i.md) | 物理光圈对象。 |
 | [Point](arkts-camera-camera-point-i.md) | 点坐标用于对焦和曝光配置。 |
 | [PreviewOutput](arkts-camera-camera-previewoutput-i.md) | 预览输出类。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。 |
@@ -112,13 +111,14 @@ import { camera } from '@kit.CameraKit';
 | [TorchStatusInfo](arkts-camera-camera-torchstatusinfo-i.md) | 手电筒回调返回的接口实例，表示手电筒状态信息。 |
 | [VideoOutput](arkts-camera-camera-videooutput-i.md) | 录像会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。 |
 | [VideoProfile](arkts-camera-camera-videoprofile-i.md) | 视频配置信息项，继承[Profile](arkts-camera-camera-profile-i.md)。 |
-| [VideoSession](arkts-camera-camera-videosession-i.md) | VideoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[Stabilization](arkts-camera-camera-stabilization-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ControlCenter](arkts-camera-camera-controlcenter-i.md)、ManualExposure、ManualFocus、ManualIso、OIS、Aperture。 |
+| [VideoSession](arkts-camera-camera-videosession-i.md) | VideoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[Stabilization](arkts-camera-camera-stabilization-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ControlCenter](arkts-camera-camera-controlcenter-i.md)、[ManualExposure](arkts-camera-camera-manualexposure-i.md)、[ManualFocus](arkts-camera-camera-manualfocus-i.md)、[ManualIso](arkts-camera-camera-manualiso-i.md)、[OIS](arkts-camera-camera-ois-i.md)、and [Aperture](arkts-camera-camera-aperture-i.md)。 |
 | [WhiteBalance](arkts-camera-camera-whitebalance-i.md) | WhiteBalance继承自[WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md)。 |
 | [WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md) | 提供了查询设备对指定的白平衡模式是否支持，以及获取设备支持的白平衡模式范围的方法。 |
 | [Zoom](arkts-camera-camera-zoom-i.md) | Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。 |
 | [ZoomPointInfo](arkts-camera-camera-zoompointinfo-i.md) | 等效焦距信息。 |
 | [ZoomQuery](arkts-camera-camera-zoomquery-i.md) | 提供了与设备的缩放相关的查询功能，包括获取支持的缩放比例范围。 |
 | [ZoomRange](arkts-camera-camera-zoomrange-i.md) | 变焦范围。 |
+| [CaptureSession](arkts-camera-camera-capturesession-i.md) | 拍照会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能(录像，拍照)。 |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -135,7 +135,9 @@ import { camera } from '@kit.CameraKit';
 | [CameraInput](arkts-camera-camera-camerainput-i-sys.md) | 相机设备输入对象。 |
 | [CameraManager](arkts-camera-camera-cameramanager-i-sys.md) | 相机管理器类，使用前需要通过[getCameraManager](arkts-camera-camera-getcameramanager-f.md)接口获取相机管理实例。 |
 | [CameraOutputCapability](arkts-camera-camera-cameraoutputcapability-i-sys.md) | 相机输出能力项。 |
-| [CaptureSession](arkts-camera-camera-capturesession-i-sys.md) | 拍照会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能(录像，拍照)。 |
+| [CameraSharedStatusInfo](arkts-camera-camera-camerasharedstatusinfo-i-sys.md) | 相机共享状态信息。 |
+| [ColorControls](arkts-camera-camera-colorcontrols-i-sys.md) | 实现色彩控制功能。它继承自[ColorControlsQuery](arkts-camera-camera-colorcontrolsquery-i-sys.md). |
+| [ColorControlsQuery](arkts-camera-camera-colorcontrolsquery-i-sys.md) | 设备色彩控制查询对象。 |
 | [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md) | ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md) Provides the APIs to obtain and set the lens color effect. |
 | [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md) | Provides the API to obtain the color effects supported. |
 | [ColorReservation](arkts-camera-camera-colorreservation-i-sys.md) | ColorReservation extends [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md) Provides API for obtaining and setting a color reservation type. |
@@ -173,7 +175,7 @@ import { camera } from '@kit.CameraKit';
 | [PhotoConflictFunctions](arkts-camera-camera-photoconflictfunctions-i-sys.md) | Photo Conflict Functions object. |
 | [PhotoFunctions](arkts-camera-camera-photofunctions-i-sys.md) | Photo Functions object. |
 | [PhotoOutput](arkts-camera-camera-photooutput-i-sys.md) | 拍照会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。 |
-| [PhotoSession](arkts-camera-camera-photosession-i-sys.md) | PhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、ManualExposure、ManualFocus、ManualIso、OIS、Aperture。 |
+| [PhotoSession](arkts-camera-camera-photosession-i-sys.md) | PhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ManualExposure](../../../reference/apis-camera-kit/arkts-apis-camera-ManualExposure.md)、[ManualFocus](../../../reference/apis-camera-kit/arkts-apis-camera-ManualFocus.md)、[ManualIso](../../../reference/apis-camera-kit/arkts-apis-camera-ManualIso.md)、[OIS](../../../reference/apis-camera-kit/arkts-apis-camera-OIS.md)、[Aperture](../../../reference/apis-camera-kit/arkts-apis-camera-Aperture.md)。 |
 | [PhotoSessionForSys](arkts-camera-camera-photosessionforsys-i-sys.md) | Implements a photo session for system applications, which sets the parameters of the normal photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md). |
 | [Portrait](arkts-camera-camera-portrait-i-sys.md) | Portrait: inherits from [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md). Provides the APIs for portrait photo settings. |
 | [PortraitPhotoConflictFunctions](arkts-camera-camera-portraitphotoconflictfunctions-i-sys.md) | Portrait Photo Conflict Functions object. |
@@ -186,6 +188,7 @@ import { camera } from '@kit.CameraKit';
 | [ProfessionalVideoSession](arkts-camera-camera-professionalvideosession-i-sys.md) | ProfessionalVideoSession extends Session, AutoExposure, ManualExposure, Focus, ManualFocus, WhiteBalance, ManualIso, Flash, Zoom, ColorEffect, Aperture Implements a professional video session, which sets the parameters of the professional video mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md). |
 | [QuickShotPhotoSession](arkts-camera-camera-quickshotphotosession-i-sys.md) | Quick shot photo session object. |
 | [QuickThumbnail](arkts-camera-camera-quickthumbnail-i-sys.md) | Quick thumbnail object |
+| [RGBBias](arkts-camera-camera-rgbbias-i-sys.md) | RGB 偏置值。 |
 | [SceneDetection](arkts-camera-camera-scenedetection-i-sys.md) | Provides the scene detection capability. It inherits from [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md). |
 | [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md) | Provides the scene detection and query capabilities. |
 | [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md) | Describes the scene feature detection result. |
@@ -199,13 +202,11 @@ import { camera } from '@kit.CameraKit';
 | [VideoConflictFunctions](arkts-camera-camera-videoconflictfunctions-i-sys.md) | Video Conflict Functions object. |
 | [VideoFunctions](arkts-camera-camera-videofunctions-i-sys.md) | Video Functions object. |
 | [VideoOutput](arkts-camera-camera-videooutput-i-sys.md) | 录像会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。 |
-| [VideoSession](arkts-camera-camera-videosession-i-sys.md) | VideoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[Stabilization](arkts-camera-camera-stabilization-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ControlCenter](arkts-camera-camera-controlcenter-i.md)、ManualExposure、ManualFocus、ManualIso、OIS、Aperture。 |
+| [VideoSession](arkts-camera-camera-videosession-i-sys.md) | VideoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[Stabilization](arkts-camera-camera-stabilization-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ControlCenter](arkts-camera-camera-controlcenter-i.md)、[ManualExposure](arkts-camera-camera-manualexposure-i.md)、[ManualFocus](arkts-camera-camera-manualfocus-i.md)、[ManualIso](arkts-camera-camera-manualiso-i.md)、[OIS](arkts-camera-camera-ois-i.md)、and [Aperture](arkts-camera-camera-aperture-i.md)。 |
 | [VideoSessionForSys](arkts-camera-camera-videosessionforsys-i-sys.md) | Implements a video session for system applications, which sets the parameters of the normal video mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md). |
-| [WhiteBalance](arkts-camera-camera-whitebalance-i-sys.md) | WhiteBalance继承自[WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md)。 |
-| [WhiteBalanceGains](arkts-camera-camera-whitebalancegains-i-sys.md) | RGB white balance gain values. |
-| [WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i-sys.md) | 提供了查询设备对指定的白平衡模式是否支持，以及获取设备支持的白平衡模式范围的方法。 |
 | [Zoom](arkts-camera-camera-zoom-i-sys.md) | Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。 |
 | [ZoomQuery](arkts-camera-camera-zoomquery-i-sys.md) | 提供了与设备的缩放相关的查询功能，包括获取支持的缩放比例范围。 |
+| [CaptureSession](arkts-camera-camera-capturesession-i-sys.md) | 拍照会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能(录像，拍照)。 |
 <!--DelEnd-->
 
 ### 类型
@@ -266,6 +267,7 @@ import { camera } from '@kit.CameraKit';
 | [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e-sys.md) | 相机错误码。 |
 | [CameraFormat](arkts-camera-camera-cameraformat-e-sys.md) | 枚举，输出格式。 |
 | [CameraImagingMode](arkts-camera-camera-cameraimagingmode-e-sys.md) | Enumerates the camera imaging modes. |
+| [CameraSharedStatus](arkts-camera-camera-camerasharedstatus-e-sys.md) | 相机共享状态枚举。 |
 | [ColorEffectType](arkts-camera-camera-coloreffecttype-e-sys.md) | Enumerates the color effect types. |
 | [ColorReservationType](arkts-camera-camera-colorreservationtype-e-sys.md) | Enumerates the color reservation types. |
 | [DeferredDeliveryImageType](arkts-camera-camera-deferreddeliveryimagetype-e-sys.md) | Enumerates the deferred delivery image types. In deferred delivery, photo and video capture are divided into two phases. In the first phase, an image or video is output to users at a relatively fast speed. In the second phase, a higher-resolution image or video is output again after optimization processing. |

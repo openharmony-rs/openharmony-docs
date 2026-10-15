@@ -51,6 +51,7 @@ Checks whether the device supports slow-motion detection.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config.<br>**Applicable version:** 12 - 18 |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,6 +69,8 @@ function isSlowMotionDetectionSupported(slowMotionVideoSession: camera.SlowMotio
   return isSupported;
 }
 ```
+
+<!--DelEnd-->
 
 ## off('error')
 
@@ -98,6 +101,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -105,6 +109,8 @@ function unregisterSessionError(slowMotionVideoSession: camera.SlowMotionVideoSe
   slowMotionVideoSession.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusStateChange')
 
@@ -135,6 +141,7 @@ Unsubscribes from focus state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -142,6 +149,8 @@ function unregisterFocusStateChange(slowMotionVideoSession: camera.SlowMotionVid
   slowMotionVideoSession.off('focusStateChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('smoothZoomInfoAvailable')
 
@@ -172,6 +181,7 @@ Unsubscribes from smooth zoom state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -179,6 +189,8 @@ function unregisterSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideo
   slowMotionVideoSession.off('smoothZoomInfoAvailable');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('slowMotionStatus')
 
@@ -209,6 +221,7 @@ Unsubscribes from slow-motion status change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -216,6 +229,8 @@ function unregisterSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVid
   slowMotionVideoSession.off('slowMotionStatus');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -246,6 +261,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -259,6 +275,8 @@ function registerSessionError(slowMotionVideoSession: camera.SlowMotionVideoSess
   slowMotionVideoSession.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusStateChange')
 
@@ -289,6 +307,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -306,6 +325,8 @@ function registerFocusStateChange(slowMotionVideoSession: camera.SlowMotionVideo
   slowMotionVideoSession.on('focusStateChange', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('smoothZoomInfoAvailable')
 
@@ -336,6 +357,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -353,6 +375,8 @@ function registerSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideoSe
   slowMotionVideoSession.on('smoothZoomInfoAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('slowMotionStatus')
 
@@ -383,6 +407,7 @@ Subscribes to slow-motion status change events. This API uses an asynchronous ca
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -400,6 +425,8 @@ function registerSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVideo
   slowMotionVideoSession.on('slowMotionStatus', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSlowMotionDetectionArea
 
@@ -431,6 +458,7 @@ Sets an area for slow-motion detection.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect.<br>**Applicable version:** 12 - 18 |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config.<br>**Applicable version:** 12 - 18 |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -446,3 +474,5 @@ function setSlowMotionDetectionArea(slowMotionVideoSession: camera.SlowMotionVid
   }
 }
 ```
+
+<!--DelEnd-->

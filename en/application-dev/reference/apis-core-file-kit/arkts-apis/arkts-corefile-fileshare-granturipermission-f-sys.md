@@ -6,6 +6,8 @@
 import { fileShare } from '@kit.CoreFileKit';
 ```
 
+<a id="granturipermission1"></a>
+
 ## grantUriPermission
 
 ```TypeScript
@@ -47,6 +49,7 @@ Provides grant uri permission for app
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 14300001 | IPC error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,8 +75,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="granturipermission-1"></a>
+
+<a id="granturipermission2"></a>
 
 ## grantUriPermission
 
@@ -116,6 +121,7 @@ Provides grant uri permission for app
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 14300001 | IPC error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -139,8 +145,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="granturipermission-2"></a>
+
+<a id="granturipermission3"></a>
 
 ## grantUriPermission
 
@@ -184,6 +192,7 @@ Grant URI permissions for an application.
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -208,3 +217,5 @@ async function grantUriPermissionExample() {
   }
 }
 ```
+
+<!--DelEnd-->

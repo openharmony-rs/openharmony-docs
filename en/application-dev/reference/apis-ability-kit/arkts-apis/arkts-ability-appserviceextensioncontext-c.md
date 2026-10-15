@@ -41,7 +41,7 @@ Connects this AppServiceExtensionAbility to a ServiceExtensionAbility. It enable
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want information about the target ability, such as the ability name and bundle name. |
-| callback | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | Yes | Callback used to return the information indicating that the connection is successful, failed, or interrupted. |
+| callback | [ConnectOptions](arkts-ability-connectoptions-i.md) | Yes | Callback used to return the information indicating that the connection is successful, failed, or interrupted. |
 
 **Return value:**
 

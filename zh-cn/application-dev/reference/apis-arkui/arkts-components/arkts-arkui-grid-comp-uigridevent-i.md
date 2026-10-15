@@ -4,7 +4,7 @@
 declare interface UIGridEvent extends UIScrollableCommonEvent
 ```
 
-frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-3)方法的返回值，可用于给Grid节点设置滚动事件。
+frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent4)方法的返回值，可用于给Grid节点设置滚动事件。
 
 UIGridEvent继承于[UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md)。
 

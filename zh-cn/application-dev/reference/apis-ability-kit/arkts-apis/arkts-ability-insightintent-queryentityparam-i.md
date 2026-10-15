@@ -52,7 +52,7 @@ queryType: QueryType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-QueryEntityParam-queryType: QueryType--><!--Device-QueryEntityParam-queryType: QueryType-End-->
 

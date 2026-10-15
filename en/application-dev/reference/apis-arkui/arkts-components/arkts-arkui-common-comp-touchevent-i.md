@@ -20,7 +20,7 @@ Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). In non-event 
 getHistoricalPoints(): Array<HistoricalPoint>
 ```
 
-Obtains all historical touch points for the current frame. The touch event frequency per frame varies by device. This API can be called only in [TouchEvent](arkts-arkui-common-comp-touchevent-i.md). This API is only available within [TouchEvent](arkts-arkui-common-comp-touchevent-i.md) during [onTouch](arkts-arkui-common-comp-commonmethod-c.md#ontouch) invocations. Typically, [onTouch](arkts-arkui-common-comp-commonmethod-c.md#ontouch) is invoked once per frame. If multiple [TouchEvent](arkts-arkui-common-comp-touchevent-i.md) instances are received in a single frame, the last point is returned through **onTouch**, and the remaining points are stored as historical points. For multi-touch events within the same frame, multiple** onTouch** calls may occur.
+Obtains all historical touch points for the current frame. The touch event frequency per frame varies by device. This API can be called only in [TouchEvent](arkts-arkui-common-comp-touchevent-i.md) to obtain information about the historical points of the current frame when [onTouch](arkts-arkui-common-comp-commonmethod-c.md#ontouch) is triggered. Typically, [onTouch](arkts-arkui-common-comp-commonmethod-c.md#ontouch) is invoked once per frame. If multiple [TouchEvent](arkts-arkui-common-comp-touchevent-i.md) instances are received in a single frame, the last point is returned through **onTouch**, and the remaining points are stored as historical points. For multi-touch events within the same frame, multiple **onTouch** calls may occur.
 
 **Since:** 10
 
@@ -44,7 +44,7 @@ Obtains all historical touch points for the current frame. The touch event frequ
 preventDefault: () => void
 ```
 
-Blocks the default event.
+Blocks the default event. This is applicable to scenarios where the default behavior of a component needs to be intercepted and custom processing needs to be performed.
 
 **NOTE:** 
 

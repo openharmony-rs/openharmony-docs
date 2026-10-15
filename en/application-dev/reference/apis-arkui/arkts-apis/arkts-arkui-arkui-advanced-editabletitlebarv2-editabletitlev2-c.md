@@ -4,7 +4,7 @@
 export declare class EditableTitleV2
 ```
 
-Declaration of the title configuration.
+Defines the title configuration class, which is decorated with **@ObservedV2** and supports state observation.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 constructor(options?: EditableTitleV2Options)
 ```
 
-Constructor of EditableTitleV2.
+A constructor used to create an **EditableTitleV2** instance.
 
 **Since:** 26.0.0
 
@@ -42,7 +42,7 @@ Constructor of EditableTitleV2.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EditableTitleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2options-i.md) | No | The options of the title |
+| options | [EditableTitleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2options-i.md) | No | Title configuration options.<br>Default value: undefined. If this parameter is not passed, the default value of each attribute is used. |
 
 ## mainTitle
 
@@ -51,6 +51,10 @@ public mainTitle: ResourceStr
 ```
 
 Main title content.
+
+Default value: **''**, indicating that the title content is empty.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -74,7 +78,11 @@ Main title content.
 public subTitle?: ResourceStr
 ```
 
-Subtitle content.
+Subtitle content. Pass this parameter when supplementary information needs to be displayed below the title.
+
+Default value: **undefined**, indicating that the subtitle is not displayed.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

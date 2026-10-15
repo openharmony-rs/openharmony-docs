@@ -4,7 +4,7 @@
 declare class GestureRecognizer
 ```
 
-Gesture recognizer object.
+Defines the gesture recognizer object, which supports querying gesture tag, type, state, and target component information, controlling the enabled state of the recognizer, blocking the current recognition process, and determining whether the bound node belongs to a specified component subtree. It is applicable to gesture recognition state management and gesture competition handling scenarios.
 
 **Since:** 12
 
@@ -210,7 +210,7 @@ Checks whether the preset gesture detects the number of fingers on the screen.
 isHostBelongsTo(uniqueId: number): boolean
 ```
 
-Returns whether the node bound to the current gesture recognizer is a descendant of the specified component.
+Returns whether the node bound to the current gesture recognizer is a descendant node of the passed-in component. It is applicable to scenarios where it is determined whether an event comes from the target component subtree during touch processing or gesture distribution.
 
 **Since:** 26.0.0
 
@@ -226,13 +226,13 @@ Returns whether the node bound to the current gesture recognizer is a descendant
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uniqueId | number | Yes | Unique ID of the component. This ID can be obtained via the [getUniqueId](arkts-arkui-tapgesture-comp-eventtargetinfo-c.md#getuniqueid) API. |
+| uniqueId | number | Yes | Unique ID of the component. This ID can be obtained via the [getUniqueId](arkts-arkui-tapgesture-comp-eventtargetinfo-c.md#getuniqueid) API.<br>If the value is abnormal, **false** is returned. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the node bound to the current gesture recognizer is a descendant of the specified component. Returns **true** if the bound node is a descendant, and **false** otherwise. |
+| boolean | Whether the node bound to the current gesture recognizer is a descendant node of the passed-in component. The value **true** indicates that the current bound node is a descendant node of the passed-in component, and **false** indicates the opposite. |
 
 ## isValid
 
@@ -262,7 +262,7 @@ Whether the current gesture recognizer is valid.
 preventBegin(): void
 ```
 
-Prevents a gesture recognizer from participating in the current gesture recognition before all fingers are lifted. If the system has already determined the result of the gesture recognizer (regardless of success or failure), calling this API will be ineffective. Unlike GestureRecognizer.[setEnabled](#setenabled)(isEnabled: boolean), which only affects callback execution, this API prevents the recognizer from participating in the recognition process entirely.
+Blocks the gesture recognizer from participating in the current gesture recognition before all fingers are lifted. It is applicable to scenarios such as custom gesture competition or temporarily giving up the current gesture recognition based on business conditions. If the system has already determined the result of this gesture recognizer (whether successful or not), calling this API has no effect. This method differs from GestureRecognizer.[setEnabled](#setenabled)(isEnabled: boolean). [setEnabled](#setenabled) does not block the gesture recognizer object from participating in the gesture recognition process, but only affects whether the callback function corresponding to the gesture is executed.
 
 **Since:** 20
 
@@ -296,4 +296,4 @@ Sets the enabled state of this gesture recognizer.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | boolean | Yes | Enabled state to set. The value **true** means that the gesture recognizer is enabled and will trigger events, and **false** means the opposite. |
+| isEnabled | boolean | Yes | Enabled status of the gesture recognizer. The value **true** indicates that the current gesture recognizer can call back app events, and **false** indicates that it does not call back app events.<br>Currently, this takes effect only when set for [PanRecognizer](arkts-arkui-tapgesture-comp-panrecognizer-c.md). |

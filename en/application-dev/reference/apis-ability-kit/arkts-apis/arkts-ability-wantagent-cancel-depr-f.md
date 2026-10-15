@@ -5,13 +5,15 @@
 ```TypeScript
 ```
 
+<a id="cancel1"></a>
+
 ## cancel
 
 ```TypeScript
 function cancel(agent: WantAgent, callback: AsyncCallback<void>): void
 ```
 
-Cancel a WantAgent. Only the application that creates the WantAgent can cancel it.
+Cancels a WantAgent object. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
@@ -87,7 +89,7 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="cancel-1"></a>
+<a id="cancel2"></a>
 
 ## cancel
 
@@ -95,7 +97,7 @@ wantAgent.getWantAgent({
 function cancel(agent: WantAgent): Promise<void>
 ```
 
-Cancel a WantAgent. Only the application that creates the WantAgent can cancel it.
+Cancels a WantAgent object. This API uses a promise to return the result.
 
 **Since:** 7
 

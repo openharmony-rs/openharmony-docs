@@ -12,23 +12,17 @@ Enumerates the types of **RunningLock** objects.
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
-## BACKGROUND
+## BACKGROUND_USER_IDLE
 
 ```TypeScript
-BACKGROUND = 1
+BACKGROUND_USER_IDLE = 129
 ```
 
-A lock that prevents the system from entering sleep mode when the screen is off.
+A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../../basic-services/powermgr/runningLock/runningLock-dev.md).
 
-**NOTE:** 
+**Since:** 23
 
-This parameter is supported since API version 7 and deprecated since API version 10.
-
-**Since:** 7
-
-**Deprecated since:** 10
-
-<!--Device-RunningLockType-BACKGROUND = 1--><!--Device-RunningLockType-BACKGROUND = 1-End-->
+<!--Device-RunningLockType-BACKGROUND_USER_IDLE = 129--><!--Device-RunningLockType-BACKGROUND_USER_IDLE = 129-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
@@ -46,16 +40,22 @@ A lock that enables the proximity sensor and turns on or off the screen based on
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
-## BACKGROUND_USER_IDLE
+## BACKGROUND
 
 ```TypeScript
-BACKGROUND_USER_IDLE = 129
+BACKGROUND = 1
 ```
 
-A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../../basic-services/powermgr/runningLock/runningLock-dev.md).
+A lock that prevents the system from entering sleep mode when the screen is off.
 
-**Since:** 23
+**NOTE:** 
 
-<!--Device-RunningLockType-BACKGROUND_USER_IDLE = 129--><!--Device-RunningLockType-BACKGROUND_USER_IDLE = 129-End-->
+This parameter is supported since API version 7 and deprecated since API version 10.
+
+**Since:** 7
+
+**Deprecated since:** 10
+
+<!--Device-RunningLockType-BACKGROUND = 1--><!--Device-RunningLockType-BACKGROUND = 1-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core

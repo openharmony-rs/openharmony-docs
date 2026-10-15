@@ -43,7 +43,7 @@ Specifies that the target component is located after the given feature component
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-On-afterComponent(com: Component): On--><!--Device-On-afterComponent(com: Component): On-End-->
 
@@ -94,7 +94,7 @@ Specifies that the target component is located before the given feature componen
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-On-beforeComponent(com: Component): On--><!--Device-On-beforeComponent(com: Component): On-End-->
 
@@ -143,7 +143,7 @@ Specifies the display to which the target component belongs.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-On-belongingDisplay(displayId: int): On--><!--Device-On-belongingDisplay(displayId: int): On-End-->
 
@@ -155,7 +155,7 @@ Specifies the display to which the target component belongs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0. <br>**Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md) to obtain all current **display** objects and use them to obtain the corresponding display IDs. |
+| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0. <br>**Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getalldisplays1) to obtain all current **display** objects and use them to obtain the corresponding display IDs. |
 
 **Return value:**
 
@@ -188,7 +188,7 @@ Specifies the checkable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-checkable(b?: boolean): On--><!--Device-On-checkable(b?: boolean): On-End-->
 
@@ -233,7 +233,7 @@ Specifies the checked attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-checked(b?: boolean): On--><!--Device-On-checked(b?: boolean): On-End-->
 
@@ -278,7 +278,7 @@ Specifies the clickable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-clickable(b?: boolean): On--><!--Device-On-clickable(b?: boolean): On-End-->
 
@@ -323,7 +323,7 @@ Specifies the description of the target component. Multiple match patterns are s
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-description(val: string, pattern?: MatchPattern): On--><!--Device-On-description(val: string, pattern?: MatchPattern): On-End-->
 
@@ -369,7 +369,7 @@ Specifies the enabled attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-enabled(b?: boolean): On--><!--Device-On-enabled(b?: boolean): On-End-->
 
@@ -414,7 +414,7 @@ Specifies the focused attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-focused(b?: boolean): On--><!--Device-On-focused(b?: boolean): On-End-->
 
@@ -459,7 +459,7 @@ Specifies the hint text attribute of the target component.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-On-hint(val: string, pattern?: MatchPattern): On--><!--Device-On-hint(val: string, pattern?: MatchPattern): On-End-->
 
@@ -495,6 +495,8 @@ import { MatchPattern, On, ON } from '@kit.TestKit';
 let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
 ```
 
+<a id="id1"></a>
+
 ## id
 
 ```TypeScript
@@ -505,7 +507,7 @@ Specifies the ID attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-id(id: string): On--><!--Device-On-id(id: string): On-End-->
 
@@ -540,7 +542,7 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the ID attribute of the target component.
 ```
 
-<a id="id-1"></a>
+<a id="id2"></a>
 
 ## id
 
@@ -552,7 +554,7 @@ Specifies the **id** attribute and match pattern of the target component.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-On-id(id: string, pattern: MatchPattern): On--><!--Device-On-id(id: string, pattern: MatchPattern): On-End-->
 
@@ -598,7 +600,7 @@ Specifies that the target component is located within the given application wind
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-inWindow(bundleName: string): On--><!--Device-On-inWindow(bundleName: string): On-End-->
 
@@ -643,7 +645,7 @@ Specifies that the target component is located after the given attribute compone
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-isAfter(on: On): On--><!--Device-On-isAfter(on: On): On-End-->
 
@@ -689,7 +691,7 @@ Specifies that the target component is located before the given attribute compon
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-isBefore(on: On): On--><!--Device-On-isBefore(on: On): On-End-->
 
@@ -735,7 +737,7 @@ Specifies the long-clickable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-longClickable(b?: boolean): On--><!--Device-On-longClickable(b?: boolean): On-End-->
 
@@ -787,7 +789,7 @@ Specifies the text content and text matching pattern of the component.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-On-originalText(text: string, pattern?: MatchPattern): On--><!--Device-On-originalText(text: string, pattern?: MatchPattern): On-End-->
 
@@ -833,7 +835,7 @@ Specifies the scrollable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-scrollable(b?: boolean): On--><!--Device-On-scrollable(b?: boolean): On-End-->
 
@@ -878,7 +880,7 @@ Specifies the selected attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-selected(b?: boolean): On--><!--Device-On-selected(b?: boolean): On-End-->
 
@@ -930,7 +932,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-text(txt: string, pattern?: MatchPattern): On--><!--Device-On-text(txt: string, pattern?: MatchPattern): On-End-->
 
@@ -966,6 +968,8 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
 ```
 
+<a id="type1"></a>
+
 ## type
 
 ```TypeScript
@@ -976,7 +980,7 @@ Specifies the type attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-type(tp: string): On--><!--Device-On-type(tp: string): On-End-->
 
@@ -1011,7 +1015,7 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
-<a id="type-1"></a>
+<a id="type2"></a>
 
 ## type
 
@@ -1023,7 +1027,7 @@ Specifies the **type** attribute and match pattern of the target component.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-On-type(tp: string, pattern: MatchPattern): On--><!--Device-On-type(tp: string, pattern: MatchPattern): On-End-->
 
@@ -1069,7 +1073,7 @@ Specifies that the target component is located within the given attribute compon
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-On-within(on: On): On--><!--Device-On-within(on: On): On-End-->
 
@@ -1117,7 +1121,7 @@ Specifies that the target component is located within the given feature componen
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-On-withinComponent(com: Component): On--><!--Device-On-withinComponent(com: Component): On-End-->
 

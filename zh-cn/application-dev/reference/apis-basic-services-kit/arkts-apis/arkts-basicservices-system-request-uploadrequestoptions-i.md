@@ -32,7 +32,7 @@ Called when the execution is completed.
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-UploadRequestOptions-complete?: () => void--><!--Device-UploadRequestOptions-complete?: () => void-End-->
 
@@ -50,7 +50,7 @@ Called when uploading fails.
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-UploadRequestOptions-fail?: (data: any, code: number) => void--><!--Device-UploadRequestOptions-fail?: (data: any, code: number) => void-End-->
 
@@ -75,7 +75,7 @@ Called when the files are uploaded successfully.
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-UploadRequestOptions-success?: (data: UploadResponse) => void--><!--Device-UploadRequestOptions-success?: (data: UploadResponse) => void-End-->
 
@@ -101,7 +101,7 @@ Form data in the request body.
 
 **废弃版本：** 9
 
-**替代接口：** data
+**替代接口：** [data](arkts-basicservices-agent-config-i.md#data)
 
 <!--Device-UploadRequestOptions-data?: Array<RequestData>--><!--Device-UploadRequestOptions-data?: Array<RequestData>-End-->
 
@@ -121,7 +121,7 @@ List of files to upload, which is submitted through multipart/form-data.
 
 **废弃版本：** 9
 
-**替代接口：** data
+**替代接口：** [data](arkts-basicservices-agent-config-i.md#data)
 
 <!--Device-UploadRequestOptions-files: Array<RequestFile>--><!--Device-UploadRequestOptions-files: Array<RequestFile>-End-->
 
@@ -141,7 +141,7 @@ Request header.
 
 **废弃版本：** 9
 
-**替代接口：** headers
+**替代接口：** [headers](arkts-basicservices-agent-config-i.md#headers)
 
 <!--Device-UploadRequestOptions-header?: Object--><!--Device-UploadRequestOptions-header?: Object-End-->
 
@@ -161,7 +161,7 @@ Request methods available: POST and PUT. The default value is POST.
 
 **废弃版本：** 9
 
-**替代接口：** method
+**替代接口：** [method](arkts-basicservices-agent-config-i.md#method)
 
 <!--Device-UploadRequestOptions-method?: string--><!--Device-UploadRequestOptions-method?: string-End-->
 
@@ -181,7 +181,7 @@ Resource URL.
 
 **废弃版本：** 9
 
-**替代接口：** url
+**替代接口：** [url](arkts-basicservices-agent-config-i.md#url)
 
 <!--Device-UploadRequestOptions-url: string--><!--Device-UploadRequestOptions-url: string-End-->
 

@@ -18,9 +18,7 @@ Describes the animation information of the **Swiper** component.
 currentOffset: number
 ```
 
-Offset of the currently displayed element relative to the start position of the **Swiper** along the main axis. Unit: vp
-
-Default value: **0**
+Offset of the currently displayed element of the **Swiper** relative to the start position of the Swiper in the main axis direction. The unit is vp, and the default value is **0**.
 
 **Type:** number
 
@@ -42,9 +40,7 @@ Default value: **0**
 targetOffset: number
 ```
 
-Offset of the target element relative to the start position of the **Swiper** along the main axis. Unit: vp
-
-Default value: **0**
+Offset of the animation target element of the **Swiper** relative to the start position of the Swiper in the main axis direction. The unit is vp, and the default value is **0**.
 
 **Type:** number
 
@@ -66,9 +62,7 @@ Default value: **0**
 velocity: number
 ```
 
-Hands-off velocity at the beginning of the animation. Unit: VP/S
-
-Default value: **0**
+Release velocity of the **Swiper** when the release animation starts. The unit is vp/s, and the default value is **0**.
 
 **Type:** number
 

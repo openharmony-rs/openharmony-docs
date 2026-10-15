@@ -46,7 +46,7 @@ build函数用于构造ChipGroupV2IconGroupSuffix组件。
 iconBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -72,7 +72,7 @@ items: Array<ChipGroupV2IconItemConfig | SymbolGlyphModifier | ChipGroupV2Symbol
 
 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** Array&lt;[ChipGroupV2IconItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2iconitemconfig-i.md) &#124; SymbolGlyphModifier &#124; [ChipGroupV2SymbolItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2symbolitemconfig-i.md)&gt;
+**类型：** Array&lt;[ChipGroupV2IconItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2iconitemconfig-i.md) &#124; [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md) &#124; [ChipGroupV2SymbolItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2symbolitemconfig-i.md)&gt;
 
 **起始版本：** 26.0.0
 

@@ -12,19 +12,19 @@ Enumerates how the player preloads media data.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## NONE
+## AUTO
 
 ```TypeScript
-NONE = 0
+AUTO = 2
 ```
 
-No media data is preloaded.
+A sufficient amount of media data is preloaded to ensure smooth playback
 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-Preload-NONE = 0--><!--Device-Preload-NONE = 0-End-->
+<!--Device-Preload-AUTO = 2--><!--Device-Preload-AUTO = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -44,18 +44,18 @@ Only the metadata of the media is preloaded.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## AUTO
+## NONE
 
 ```TypeScript
-AUTO = 2
+NONE = 0
 ```
 
-A sufficient amount of media data is preloaded to ensure smooth playback
+No media data is preloaded.
 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-Preload-AUTO = 2--><!--Device-Preload-AUTO = 2-End-->
+<!--Device-Preload-NONE = 0--><!--Device-Preload-NONE = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

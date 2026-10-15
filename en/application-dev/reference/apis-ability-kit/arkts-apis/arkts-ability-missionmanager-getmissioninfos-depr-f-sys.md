@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getmissioninfos1"></a>
+
 ## getMissionInfos
 
 ```TypeScript
@@ -35,6 +37,7 @@ Obtains information about all missions. This API uses an asynchronous callback t
 | numMax | number | Yes | Maximum number of missions whose information can be obtained. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt;&gt; | Yes | Callback used to return the array of mission information obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,8 +54,10 @@ missionManager.getMissionInfos('', 10, (error, missions) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getmissioninfos-1"></a>
+
+<a id="getmissioninfos2"></a>
 
 ## getMissionInfos
 
@@ -89,6 +94,7 @@ Obtains information about all missions. This API uses a promise to return the re
 | --- | --- |
 | Promise&lt;Array&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt;&gt; | Promise used to return the array of mission information obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -106,3 +112,5 @@ try {
   console.error(`getMissionInfos failed. Cause: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

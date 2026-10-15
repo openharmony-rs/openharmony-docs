@@ -34,6 +34,6 @@ Obtains an **Authenticator** instance for user authentication.
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
-
+  
 let authenticator = userAuth.getAuthenticator();
 ```

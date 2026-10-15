@@ -47,3 +47,25 @@ function getBundleExtensionPolicyInfo(bundleName: string, userId: number): Bundl
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Non-system APP calling system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let userId = 100;
+
+try {
+  let info: bundleManager.BundleExtensionPolicyInfo = bundleManager.getBundleExtensionPolicyInfo(bundleName, userId);
+  hilog.info(0x0000, 'testTag', 'getBundleExtensionPolicyInfo successfully: %{public}s', JSON.stringify(info));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleExtensionPolicyInfo failed: %{public}s', message);
+}
+```
+
+<!--DelEnd-->

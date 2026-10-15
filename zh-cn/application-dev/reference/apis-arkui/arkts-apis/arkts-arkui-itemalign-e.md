@@ -32,13 +32,13 @@ Auto
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Start
+## Baseline
 
 ```TypeScript
-Start
+Baseline
 ```
 
-元素在Flex容器中，沿交叉轴方向首部对齐。
+元素在Flex容器中，交叉轴方向文本基线对齐。
 
 **起始版本：** 7
 
@@ -48,7 +48,7 @@ Start
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ItemAlign-Start--><!--Device-ItemAlign-Start-End-->
+<!--Device-ItemAlign-Baseline--><!--Device-ItemAlign-Baseline-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,13 +92,13 @@ End
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Baseline
+## Start
 
 ```TypeScript
-Baseline
+Start
 ```
 
-元素在Flex容器中，交叉轴方向文本基线对齐。
+元素在Flex容器中，沿交叉轴方向首部对齐。
 
 **起始版本：** 7
 
@@ -108,7 +108,7 @@ Baseline
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ItemAlign-Baseline--><!--Device-ItemAlign-Baseline-End-->
+<!--Device-ItemAlign-Start--><!--Device-ItemAlign-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

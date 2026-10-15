@@ -4,15 +4,17 @@
 declare class NavigationAttribute extends CommonMethod<NavigationAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** NavigationAttribute extends CommonMethod<NavigationAttribute>
+**Inheritance/Implementation:** NavigationAttribute extends CommonMethod&lt;NavigationAttribute&gt;
 
 **Since:** 8
 
 <!--Device-unnamed-declare class NavigationAttribute extends CommonMethod<NavigationAttribute>--><!--Device-unnamed-declare class NavigationAttribute extends CommonMethod<NavigationAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="backbuttonicon1"></a>
 
 ## backButtonIcon
 
@@ -24,9 +26,12 @@ Sets the icon of the back button in the title bar.
 
 > **NOTE:** 
 > 
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the
-> **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change
-> the type of animation effects through the **symbolEffect** attribute.
+> The SymbolGlyphModifier object's
+> [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size,
+> [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation
+> effect, and
+> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1) attribute
+> cannot be used to change the animation effect type.
 
 **Since:** 9
 
@@ -42,7 +47,7 @@ Sets the icon of the back button in the title bar.
 | --- | --- | --- | --- |
 | value | string &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | Yes | Icon of the back button in the title bar.<br>**Since:** 12 |
 
-<a id="backbuttonicon-1"></a>
+<a id="backbuttonicon2"></a>
 
 ## backButtonIcon
 
@@ -53,12 +58,9 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 Sets the icon and accessibility text for the back button on the title bar.
 
 > **NOTE:** 
-> 
 > This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
-> 
 > The following are not allowed: modify the icon size through the **fontSize** attribute of the
-> **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change
-> the type of animation effects through the **symbolEffect** attribute.
+> **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 **Since:** 19
 
@@ -83,7 +85,7 @@ Sets the icon and accessibility text for the back button on the title bar.
 configuration(config: NavigationConfiguration)
 ```
 
-Sets Navigation configuration.
+Sets navigation configuration items, including the maximum size of the routing stack.
 
 **Since:** 26.0.0
 
@@ -99,7 +101,7 @@ Sets Navigation configuration.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [NavigationConfiguration](arkts-arkui-navigation-comp-navigationconfiguration-i.md) | Yes | Navigation configuration options. |
+| config | [NavigationConfiguration](arkts-arkui-navigation-comp-navigationconfiguration-i.md) | Yes | Navigation configuration item. |
 
 ## customNavContentTransition
 
@@ -128,7 +130,7 @@ Defines the callback of the custom transition animation.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| delegate | (from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation)     =&gt; NavigationAnimatedTransition &#124; undefined | Yes | Defines the callback of the custom transition animation.<br>from: Destination page to exit.<br>to: Destination page to enter.<br>operation: Transition type.<br> **NavigationAnimatedTransition**: protocol object for custom transition animations.<br>**undefined**: undefined, executing the default transition animation effect. |
+| delegate | (from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation)     =&gt; NavigationAnimatedTransition &#124; undefined | Yes | Defines the callback of the custom transition animation.<br>from: Destination page to exit.<br>to: Destination page to enter.<br>operation: Transition type.<br> **NavigationAnimatedTransition**: protocol object for custom transition animations. <br>**undefined**: undefined, executing the default transition animation effect. |
 
 ## divider
 
@@ -176,7 +178,7 @@ Sets whether to display a drag bar in split-column scenarios. This attribute has
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the drag bar. By default, there is no drag bar.<br> **true**: yes; **false**: no<br>If the input parameter is invalid, the value **false** is used. |
+| isEnabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the drag bar. By default, there is no drag bar.<br>**true**: yes; **false**: no <br>If the input parameter is invalid, the value **false** is used. |
 
 ## enableModeChangeAnimation
 
@@ -200,7 +202,7 @@ Sets whether to enable the animation for switching between single- and split-col
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the animation for switching between single- and split- column modes.<br>**true**: yes; **false**: no<br>If the input parameter is invalid, the value **true** is used. |
+| isEnabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the animation for switching between single- and split- column modes.<br>**true**: yes; **false**: no <br>If the input parameter is invalid, the value **true** is used. |
 
 ## enableToolBarAdaptation
 
@@ -208,7 +210,7 @@ Sets whether to enable the animation for switching between single- and split-col
 enableToolBarAdaptation(enable: Optional<boolean>)
 ```
 
-Sets whether to enable toolbar adaptation ([toolbarConfiguration](#toolbarconfiguration)) for the **Navigation** and **NavDestination** components. If this feature is disabled, the bottom toolbar ([toolbarConfiguration](#toolbarconfiguration)) will no longer be moved into the menu in the upper right corner of the page. This API does not apply to custom menus; using it requires defining the [menu](#menus) via the [NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md) API.
+Sets whether to enable toolbar adaptation ([toolbarConfiguration](#toolbarconfiguration)) for the **Navigation** and **NavDestination** components. If this feature is disabled, the bottom toolbar ([toolbarConfiguration](#toolbarconfiguration)) will no longer be moved into the menu in the upper right corner of the page. This API does not apply to custom menus; using it requires defining the [menu](#menus1) via the [NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md) API.
 
 **Since:** 19
 
@@ -232,7 +234,11 @@ Sets whether to enable toolbar adaptation ([toolbarConfiguration](#toolbarconfig
 enableVisibilityLifecycleWithContentCover(isEnabled: Optional<boolean>)
 ```
 
-Sets whether to enable the linkage between the [onShown](arkts-arkui-navdestination-comp-attribute.md#onshown) and [onHidden](arkts-arkui-navdestination-comp-attribute.md#onhidden) lifecycle callbacks of the NavDestination page and the full-modal triggering.
+Sets whether to enable the linkage between the [onShown](arkts-arkui-navdestination-comp-attribute.md#onshown) and [onHidden](arkts-arkui-navdestination-comp-attribute.md#onhidden) lifecycle callbacks of the [NavDestination](arkts-arkui-navdestination-comp.md) page and the full-modal triggering.
+
+> **NOTE:** 
+> 
+> This API can be called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 23.
 
 **Since:** 21
 
@@ -248,7 +254,7 @@ Sets whether to enable the linkage between the [onShown](arkts-arkui-navdestinat
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the linkage between the **onShown** and **onHidden** lifecycle callbacks of the NavDestination page and the full-modal triggering.<br>Default value: **true**<br> **true**: When a full-modal page is shown, the current **NavDestination** page triggers **onHidden**. When the full-modal pages is dismissed, the page triggers **onShown**.<br>**false**: The **onShown** and **onHidden** callbacks of the **NavDestination** page are not triggered by the showing or dismissing of a full-modal page. |
+| isEnabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the linkage between the **onShown** and **onHidden** lifecycle callbacks of the **NavDestination** page and the full-modal triggering.<br>Default value: **true** <br>**true**: When a full-modal page is shown, the current **NavDestination** page triggers **onHidden**. When the full-modal page is dismissed, the page triggers **onShown**. <br>**false**: The **onShown** and **onHidden** callbacks of the **NavDestination** page are not triggered by the showing or dismissing of a full-modal page. |
 
 ## hideBackButton
 
@@ -270,7 +276,7 @@ Sets whether to hide the back button in the title bar. The back button takes eff
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to hide the back button in the title bar.<br>**true**: Hide the back button in the title bar.<br>**false**: Show the back button in the title bar.<br>If the input parameter is invalid, the value **false** is used. |
+| value | boolean | Yes | Whether to hide the back button in the title bar.<br>**true**: Hide the back button in the title bar. <br>**false**: Show the back button in the title bar. <br>If the input parameter is invalid, the value **false** is used. |
 
 ## hideNavBar
 
@@ -294,7 +300,9 @@ From API version 9 to API version 10, this attribute takes effect only in split-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to hide the navigation page.<br>**true**: yes<br>**false**: no<br>If the input parameter is invalid, the value **false** is used. |
+| value | boolean | Yes | Whether to hide the navigation page.<br>Default value: **false** <br>**true**: yes <br>**false**: no <br>If the input parameter is invalid, the value **false** is used. |
+
+<a id="hidetitlebar1"></a>
 
 ## hideTitleBar
 
@@ -316,9 +324,9 @@ Specifies whether to hide the title bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to hide the title bar.<br>**true**: yes<br>**false**: no<br>If the input parameter is invalid, the value **false** is used. |
+| value | boolean | Yes | Whether to hide the title bar.<br>Default value: **false** <br>**true**: yes <br>**false**: no <br>If the input parameter is invalid, the value **false** is used. |
 
-<a id="hidetitlebar-1"></a>
+<a id="hidetitlebar2"></a>
 
 ## hideTitleBar
 
@@ -326,7 +334,7 @@ Specifies whether to hide the title bar.
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar), this API adds the capability to control whether to animate the visibility change of the title bar.
+Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar1), this API adds the capability to control whether to animate the visibility change of the title bar.
 
 **Since:** 13
 
@@ -342,8 +350,10 @@ Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hide | boolean | Yes | Whether to hide the title bar.<br>**true**: yes<br>**false**: no<br>If the input parameter is invalid, the value **false** is used. |
-| animated | boolean | Yes | Whether to animate the visibility change.<br>**true**: yes<br> **false**: no<br>If the input parameter is invalid, the value **false** is used. |
+| hide | boolean | Yes | Whether to hide the title bar.<br>Default value: **false** <br>**true**: yes <br>**false**: no <br>If the input parameter is invalid, the value **false** is used. |
+| animated | boolean | Yes | Whether to animate the visibility change.<br>Default value: **false** <br>**true**: yes <br> **false**: no <br>If the input parameter is invalid, the value **false** is used. |
+
+<a id="hidetoolbar1"></a>
 
 ## hideToolBar
 
@@ -365,9 +375,9 @@ Specifies whether to hide the toolbar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to hide the toolbar.<br>**true**: Hide the toolbar. <br>**false**: Display the toolbar.<br>If the input parameter is invalid, the value **false** is used. |
+| value | boolean | Yes | Whether to hide the toolbar.<br>Default value: **false** <br>**true**: Hide the toolbar. <br>**false**: Display the toolbar. <br>If the input parameter is invalid, the value **false** is used. |
 
-<a id="hidetoolbar-1"></a>
+<a id="hidetoolbar2"></a>
 
 ## hideToolBar
 
@@ -375,7 +385,7 @@ Specifies whether to hide the toolbar.
 hideToolBar(hide: boolean, animated: boolean)
 ```
 
-Specifies whether to hide the toolbar. Compared with [hideToolBar](#hidetoolbar), this API adds the capability to control whether to animate the visibility change of the toolbar.
+Specifies whether to hide the toolbar. Compared with [hideToolBar](#hidetoolbar1), this API adds the capability to control whether to animate the visibility change of the toolbar.
 
 **Since:** 13
 
@@ -391,8 +401,8 @@ Specifies whether to hide the toolbar. Compared with [hideToolBar](#hidetoolbar)
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hide | boolean | Yes | Whether to hide the toolbar.<br>**true**: Hide the toolbar. <br>**false**: Display the toolbar.<br>If the input parameter is invalid, the value **false** is used. |
-| animated | boolean | Yes | Whether to animate the visibility change.<br>**true**: yes<br>**false**: no<br>If the input parameter is invalid, the value **false** is used. |
+| hide | boolean | Yes | Whether to hide the toolbar.<br>Default value: **false** <br>**true**: Hide the toolbar. <br>**false**: Display the toolbar. <br>If the input parameter is invalid, the value **false** is used. |
+| animated | boolean | Yes | Whether to animate the visibility change.<br>Default value: **false** <br>**true**: yes <br>**false**: no <br>If the input parameter is invalid, the value **false** is used. |
 
 ## ignoreLayoutSafeArea
 
@@ -411,7 +421,7 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 > 
 > - If the component extends into the non-safe area, events triggered within that area (such as click events) might be intercepted by the system. This allows the system to prioritize responses to system components such as the status bar.
 > 
-> - To allow a component to extend into non-safe areas, the title bar and toolbar must be hidden or set to [STACK](arkts-arkui-navigation-comp-barstyle-e.md) mode.
+> - To allow a component to extend into non-safe areas, the title bar and toolbar must be hidden or set to [STACK](arkts-arkui-navigation-comp-barstyle-e.md) mode. Otherwise, the component cannot extend into non-safe areas.
 
 **Since:** 12
 
@@ -427,8 +437,10 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | No | Types of non-safe areas to extend into.<br>Default value:<br> [LayoutSafeAreaType.SYSTEM] |
-| edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | No | Edges for expanding the safe area.<br> Default value:<br> [LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM] |
+| types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | No | Types of non-safe areas to extend into.<br>Default value: <br>[LayoutSafeAreaType.SYSTEM] |
+| edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | No | Edges for expanding the safe area.<br> Default value: <br>[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM] |
+
+<a id="menus1"></a>
 
 ## menus
 
@@ -437,12 +449,6 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 ```
 
 Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
-
-> **NOTE:** 
-> 
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the
-> **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change
-> the type of animation effects through the **symbolEffect** attribute.
 
 **Since:** 8
 
@@ -458,7 +464,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 | --- | --- | --- | --- |
 | value | Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Menu items in the upper right corner of the page. |
 
-<a id="menus-1"></a>
+<a id="menus2"></a>
 
 ## menus
 
@@ -466,7 +472,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
+Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus1), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
 
 > **NOTE:** 
 > 
@@ -515,7 +521,7 @@ Minimum width of the navigation bar content area (effective in split-column mode
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Minimum width of the content area on the navigation page.<br>Default value: **360**<br>Unit: vp<br>**undefined**: No action is taken, and the minimum width of the navigation page remains consistent with the default value.<br>Breakpoint calculation in Auto mode: default 600 vp = minNavBarWidth (240 vp) + minContentWidth (360 vp) |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Minimum width of the content area on the navigation page.<br>Default value: **360** <br>Unit: vp <br>**undefined**: No action is taken, and the minimum width of the navigation page remains consistent with the default value. <br>Breakpoint calculation in Auto mode: default 600 vp = minNavBarWidth (240 vp) + minContentWidth (360 vp) |
 
 ## mode
 
@@ -523,7 +529,7 @@ Minimum width of the navigation bar content area (effective in split-column mode
 mode(value: NavigationMode)
 ```
 
-Sets the display mode of the navigation page.
+Sets the display mode of the navigation page. The options are **Stack**, **Split**, **Auto**, and **AUTO_WITH_ASPECT_RATIO**.
 
 **Since:** 9
 
@@ -537,7 +543,7 @@ Sets the display mode of the navigation page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NavigationMode](arkts-arkui-navigation-comp-navigationmode-e.md) | Yes | Display mode of the navigation page.<br>Default value: **NavigationMode.Auto**<br>At the default settings, the component adapts to a single column or two columns based on the component width. |
+| value | [NavigationMode](arkts-arkui-navigation-comp-navigationmode-e.md) | Yes | Display mode of the navigation page.<br>Default value: **NavigationMode.Auto** <br>At the default settings, the component adapts to a single column or two columns based on the component width. |
 
 ## navBarPosition
 
@@ -583,7 +589,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Width of the navigation page.<br>Default value: **240**<br>Unit: vp<br>**undefined**: No action is taken, and the navigation page width remains consistent with the default value. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Width of the navigation page.<br>Default value: **240** <br>Unit: vp <br>**undefined**: No action is taken, and the navigation page width remains consistent with the default value. |
 
 ## navBarWidthRange
 
@@ -597,13 +603,10 @@ Divider dragging range:
 
 | Condition| Dragging Range |  
 | ----| ----------- |  
-|Both **navBarWidthRange** and **minContentWidth** are set.| Range set by **navBarWidthRange**if the value set by **minContentWidth** is satisfied|
-
+|Both **navBarWidthRange** and **minContentWidth** are set.| Range set by **navBarWidthRange** if the value set by **minContentWidth** is satisfied|
 |Neither **navBarWidthRange** nor **minContentWidth** is set.| Default minimum and maximum ranges of **navBarWidthRange**|
-
-|Only the **navBarWidthRange** attribute is set.| Range set by **navBarWidthRange**,where the maximum dragging range cannot exceed the default value of **minContentWidth**|
-
-|Only the **minContentWidth** attribute is set.| Default minimum and maximum ranges of **navBarWidthRange**|  
+|Only the **navBarWidthRange** attribute is set.| Range set by **navBarWidthRange**, where the maximum dragging range cannot exceed the default value of **minContentWidth**|
+|Only the **minContentWidth** attribute is set.| Default minimum and maximum ranges of **navBarWidthRange**|
 |Only the **navBarWidth** attribute is set.| Dragging not supported|
 
 **Since:** 10
@@ -746,7 +749,7 @@ Sets whether the **Navigation** component is recoverable. If set to recoverable,
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| recoverable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the **Navigation** component is recoverable. By default, it is not recoverable.<br>**true**: yes<br>**false**: no<br>If the input parameter is invalid, the value **false** is used. |
+| recoverable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the **Navigation** component is recoverable. By default, it is not recoverable.<br>**true**: yes <br>**false**: no <br>If the input parameter is invalid, the value **false** is used. |
 
 ## splitPlaceholder
 
@@ -782,8 +785,7 @@ Sets the style of the system status bar when the home page of the **Navigation**
 
 > **NOTE:** 
 > 
-> 1. Avoid using the **systemBarStyle** attribute in conjunction with the status bar style APIs in the **Window**module, such as [setWindowSystemBarProperties](../../../reference/apis-arkui/arkts-apis-window-Window.md#setwindowsystembarproperties9).
-> 
+> 1. Avoid using the **systemBarStyle** attribute in conjunction with the status bar style APIs in the **Window**module, such as [setWindowSystemBarProperties](../arkts-apis/arkts-arkui-window-window-i.md#setwindowsystembarproperties2).
 > 
 > 2. When you first set the **systemBarStyle** attribute for a **Navigation** or **NavDestination** component, the current status bar style is saved for potential future restoration.
 > 
@@ -843,8 +845,8 @@ Sets the page title.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [NavigationCommonTitle](arkts-arkui-navigation-comp-navigationcommontitle-i.md) &#124; [NavigationCustomTitle](arkts-arkui-navigation-comp-navigationcustomtitle-i.md) | Yes | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect.<br>When the title string is too long:<br>- If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped.<br> - If a subtitle is set, the subtitle is scaled down and then clipped.<br>**Since:** 10 |
-| options | [NavigationTitleOptions](arkts-arkui-navigation-comp-navigationtitleoptions-i.md) | No | Defines the title bar options. Title bar options include the background color, background blur style, blur options, background properties, layout style, and padding at the start and end of the title bar, as well as main title attribute modifier, subtitle attribute modifier, and whether to respond when the device is in semi-folded mode..<br>**Since:** 11 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [NavigationCommonTitle](arkts-arkui-navigation-comp-navigationcommontitle-i.md) &#124; [NavigationCustomTitle](arkts-arkui-navigation-comp-navigationcustomtitle-i.md) | Yes | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect. <br>When the title string is too long: <br>- If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped. <br> - If a subtitle is set, the subtitle is scaled down and then clipped.<br>**Since:** 10 |
+| options | [NavigationTitleOptions](arkts-arkui-navigation-comp-navigationtitleoptions-i.md) | No | Defines the title bar options. Title bar options include the background color, background blur style, blur options, background properties, layout style, scroll blur effect, padding at the start and end of the title bar, main title attribute modifier, subtitle attribute modifier, and whether to respond when the device is in semi-folded mode.<br><br>**Since:** 11 |
 
 ## titleMode
 
@@ -879,10 +881,6 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 > **NOTE:** 
 > 
 > This API can be called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 20.
-> 
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the
-> **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change
-> the type of animation effects through the **symbolEffect** attribute.
 
 **Since:** 10
 
@@ -898,8 +896,8 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Content of the toolbar. When configured with Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt;, the toolbar follows the rules below:<br>Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed into an automatically generated **More** icon. In landscape mode, toolbar behavior depends on the display mode: <br>- If the display mode is [Split](arkts-arkui-navigation-comp-navigationmode-e.md), the toolbar maintains the portrait mode. <br>- If the display mode is [Stack](arkts-arkui-navigation-comp-navigationmode-e.md), the toolbar must be used together with Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8), the toolbar does not follow the above rules. |
-| options | [NavigationToolbarOptions](arkts-arkui-navigation-comp-navigationtoolbaroptions-i.md) | No | Toolbar options. Toolbar options include the background color, background blur style and blur option, background properties, and layout mode of the toolbar, as well as whether to hide the toolbar text, and options for the toolbar's more button menu..<br>**Since:** 11 |
+| value | Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Content of the toolbar. When configured with Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt;, the toolbar follows the rules below: <br>Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area. <br>In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed into an automatically generated **More** icon. In landscape mode, toolbar behavior depends on the display mode: <br>- If the display mode is [Split](arkts-arkui-navigation-comp-navigationmode-e.md), the toolbar maintains the portrait mode. <br>- If the display mode is [Stack](arkts-arkui-navigation-comp-navigationmode-e.md), the toolbar must be used together with Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen. <br>When configured with [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8), the toolbar does not follow the above rules. |
+| options | [NavigationToolbarOptions](arkts-arkui-navigation-comp-navigationtoolbaroptions-i.md) | No | Toolbar options. Toolbar options include the background color, background blur style and blur option, background properties, and layout mode of the toolbar, as well as whether to hide the toolbar text, and options for the toolbar's more button menu.<br>**Since:** 11 |
 
 ## subTitle
 
@@ -908,8 +906,6 @@ subTitle(value: string)
 ```
 
 Sets the page subtitle.
-
-> **NOTE:** 
 
 **Since:** 8
 
@@ -934,8 +930,6 @@ toolBar(value: object | CustomBuilder)
 ```
 
 Sets the content of the toolbar. If this attribute is not set, no toolbar is displayed. Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area. If any item contains overlong text and there are fewer than five items, the toolbar will reduce the text size progressively, wrap the text over two lines if necessary, and then clip the text to fit.
-
-**object**
 
 **Since:** 8
 

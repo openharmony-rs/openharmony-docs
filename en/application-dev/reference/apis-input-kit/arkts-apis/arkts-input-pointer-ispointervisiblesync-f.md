@@ -12,7 +12,7 @@ import { pointer } from '@kit.InputKit';
 function isPointerVisibleSync(): boolean
 ```
 
-Checks whether the mouse pointer is visible in the current window. This API returns the result synchronously.
+Obtains the display/hidden state of the current window. This state reflects the cursor display/hidden state of the multimodal process for the process where the window resides, not the actual cursor display/hidden status. Whether the cursor is correctly displayed/hidden is also affected by the render service process. This API is called synchronously.
 
 **Since:** 10
 

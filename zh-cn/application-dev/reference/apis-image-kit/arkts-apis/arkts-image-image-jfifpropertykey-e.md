@@ -30,6 +30,54 @@ enum JfifPropertyKey
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## DENSITY_UNIT
+
+```TypeScript
+DENSITY_UNIT = 'JfifDensityUnit'
+```
+
+JFIF density unit.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-JfifPropertyKey-DENSITY_UNIT = 'JfifDensityUnit'--><!--Device-JfifPropertyKey-DENSITY_UNIT = 'JfifDensityUnit'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## IS_PROGRESSIVE
+
+```TypeScript
+IS_PROGRESSIVE = 'JfifIsProgressive'
+```
+
+whether the JFIF image is progressive.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-JfifPropertyKey-IS_PROGRESSIVE = 'JfifIsProgressive'--><!--Device-JfifPropertyKey-IS_PROGRESSIVE = 'JfifIsProgressive'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## VERSION
+
+```TypeScript
+VERSION = 'JfifVersion'
+```
+
+JFIF version.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-JfifPropertyKey-VERSION = 'JfifVersion'--><!--Device-JfifPropertyKey-VERSION = 'JfifVersion'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## X_DENSITY
 
 ```TypeScript
@@ -59,53 +107,5 @@ JFIF y density.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-JfifPropertyKey-Y_DENSITY = 'JfifYDensity'--><!--Device-JfifPropertyKey-Y_DENSITY = 'JfifYDensity'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## DENSITY_UNIT
-
-```TypeScript
-DENSITY_UNIT = 'JfifDensityUnit'
-```
-
-JFIF density unit.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-JfifPropertyKey-DENSITY_UNIT = 'JfifDensityUnit'--><!--Device-JfifPropertyKey-DENSITY_UNIT = 'JfifDensityUnit'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## VERSION
-
-```TypeScript
-VERSION = 'JfifVersion'
-```
-
-JFIF version.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-JfifPropertyKey-VERSION = 'JfifVersion'--><!--Device-JfifPropertyKey-VERSION = 'JfifVersion'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## IS_PROGRESSIVE
-
-```TypeScript
-IS_PROGRESSIVE = 'JfifIsProgressive'
-```
-
-whether the JFIF image is progressive.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-JfifPropertyKey-IS_PROGRESSIVE = 'JfifIsProgressive'--><!--Device-JfifPropertyKey-IS_PROGRESSIVE = 'JfifIsProgressive'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

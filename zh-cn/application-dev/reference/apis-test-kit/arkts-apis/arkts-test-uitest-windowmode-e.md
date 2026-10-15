@@ -14,6 +14,24 @@ declare enum WindowMode
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
 
+## FLOATING
+
+```TypeScript
+FLOATING = 3
+```
+
+浮动窗口。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowMode-FLOATING = 3--><!--Device-WindowMode-FLOATING = 3-End-->
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
 ## FULLSCREEN
 
 ```TypeScript
@@ -24,7 +42,7 @@ FULLSCREEN = 0
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowMode-FULLSCREEN = 0--><!--Device-WindowMode-FULLSCREEN = 0-End-->
 
@@ -42,7 +60,7 @@ PRIMARY = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowMode-PRIMARY = 1--><!--Device-WindowMode-PRIMARY = 1-End-->
 
@@ -60,27 +78,9 @@ SECONDARY = 2
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowMode-SECONDARY = 2--><!--Device-WindowMode-SECONDARY = 2-End-->
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## FLOATING
-
-```TypeScript
-FLOATING = 3
-```
-
-浮动窗口。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-WindowMode-FLOATING = 3--><!--Device-WindowMode-FLOATING = 3-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 

@@ -30,7 +30,7 @@ Blur radius, a floating-point value in physical pixels (px), with a default valu
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextShadow-blurRadius?: double--><!--Device-TextShadow-blurRadius?: double-End-->
 
@@ -48,7 +48,7 @@ Color of the text shadow. The default value is black Color(255, 0, 0, 0).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextShadow-color?: common2D.Color--><!--Device-TextShadow-color?: common2D.Color-End-->
 
@@ -66,7 +66,7 @@ Offset position of the text shadow relative to the current text. The horizontal 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextShadow-point?: common2D.Point--><!--Device-TextShadow-point?: common2D.Point-End-->
 

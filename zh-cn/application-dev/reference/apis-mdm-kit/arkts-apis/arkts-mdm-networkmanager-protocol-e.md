@@ -28,6 +28,22 @@ ALL = 0
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## ICMP
+
+```TypeScript
+ICMP = 3
+```
+
+网络协议ICMP。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Protocol-ICMP = 3--><!--Device-Protocol-ICMP = 3-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## TCP
 
 ```TypeScript
@@ -57,21 +73,5 @@ UDP = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Protocol-UDP = 2--><!--Device-Protocol-UDP = 2-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## ICMP
-
-```TypeScript
-ICMP = 3
-```
-
-网络协议ICMP。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Protocol-ICMP = 3--><!--Device-Protocol-ICMP = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

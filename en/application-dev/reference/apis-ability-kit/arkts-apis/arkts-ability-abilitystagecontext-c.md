@@ -20,7 +20,7 @@ The AbilityStageContext module implements the context of an ability stage. It in
 config: Configuration
 ```
 
-Environment variables.
+Configuration object.
 
 **Type:** [Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 
@@ -28,7 +28,7 @@ Environment variables.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityStageContext-config: Configuration--><!--Device-AbilityStageContext-config: Configuration-End-->
 
@@ -40,7 +40,7 @@ Environment variables.
 currentHapModuleInfo: HapModuleInfo
 ```
 
-ModuleInfo object corresponding to the ability stage.
+HapModuleInfo object corresponding to the AbilityStage, which can be used to obtain information such as the name and path of the current module.
 
 **Type:** [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)
 
@@ -48,7 +48,7 @@ ModuleInfo object corresponding to the ability stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityStageContext-currentHapModuleInfo: HapModuleInfo--><!--Device-AbilityStageContext-currentHapModuleInfo: HapModuleInfo-End-->
 
@@ -60,7 +60,7 @@ ModuleInfo object corresponding to the ability stage.
 launchElement?: ElementName
 ```
 
-Indicates launch ElementName object of the abilityStage.
+Element name information when the AbilityStage is created.
 
 **Type:** [ElementName](arkts-ability-elementname-i.md)
 
@@ -68,7 +68,7 @@ Indicates launch ElementName object of the abilityStage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AbilityStageContext-launchElement?: ElementName--><!--Device-AbilityStageContext-launchElement?: ElementName-End-->
 

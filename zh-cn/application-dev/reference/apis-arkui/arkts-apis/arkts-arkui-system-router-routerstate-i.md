@@ -10,7 +10,7 @@ export interface RouterState
 
 **废弃版本：** 8
 
-**替代接口：** RouterState
+**替代接口：** [RouterState](arkts-arkui-router-routerstate-i.md)
 
 <!--Device-unnamed-export interface RouterState--><!--Device-unnamed-export interface RouterState-End-->
 
@@ -36,7 +36,7 @@ index: number
 
 **废弃版本：** 8
 
-**替代接口：** index
+**替代接口：** [index](arkts-arkui-router-routerstate-i.md#index)
 
 <!--Device-RouterState-index: number--><!--Device-RouterState-index: number-End-->
 
@@ -56,7 +56,7 @@ name: string
 
 **废弃版本：** 8
 
-**替代接口：** name
+**替代接口：** [name](arkts-arkui-router-routerstate-i.md#name)
 
 <!--Device-RouterState-name: string--><!--Device-RouterState-name: string-End-->
 
@@ -76,7 +76,7 @@ path: string
 
 **废弃版本：** 8
 
-**替代接口：** path
+**替代接口：** [path](arkts-arkui-router-routerstate-i.md#path)
 
 <!--Device-RouterState-path: string--><!--Device-RouterState-path: string-End-->
 

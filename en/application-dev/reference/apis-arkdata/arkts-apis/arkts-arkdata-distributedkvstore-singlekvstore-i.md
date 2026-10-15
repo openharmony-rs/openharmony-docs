@@ -18,6 +18,8 @@ Provides APIs for data management in a single KV store, such as adding data, del
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="backup1"></a>
+
 ## backup
 
 ```TypeScript
@@ -68,7 +70,7 @@ try {
 }
 ```
 
-<a id="backup-1"></a>
+<a id="backup2"></a>
 
 ## backup
 
@@ -179,13 +181,15 @@ try {
 }
 ```
 
+<a id="closeresultset1"></a>
+
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset-1). This API uses an asynchronous callback to return the result.
+Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset2). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -238,7 +242,7 @@ try {
 }
 ```
 
-<a id="closeresultset-1"></a>
+<a id="closeresultset2"></a>
 
 ## closeResultSet
 
@@ -246,7 +250,7 @@ try {
 closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 ```
 
-Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset-1). This API uses a promise to return the result.
+Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset2). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -301,6 +305,8 @@ try {
 }
 ```
 
+<a id="commit1"></a>
+
 ## commit
 
 ```TypeScript
@@ -348,7 +354,7 @@ try {
 }
 ```
 
-<a id="commit-1"></a>
+<a id="commit2"></a>
 
 ## commit
 
@@ -394,6 +400,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -457,7 +465,7 @@ try {
 }
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -522,6 +530,8 @@ try {
 }
 ```
 
+<a id="deletebackup1"></a>
+
 ## deleteBackup
 
 ```TypeScript
@@ -571,7 +581,7 @@ try {
 }
 ```
 
-<a id="deletebackup-1"></a>
+<a id="deletebackup2"></a>
 
 ## deleteBackup
 
@@ -680,6 +690,8 @@ try {
 }
 ```
 
+<a id="deletebatch1"></a>
+
 ## deleteBatch
 
 ```TypeScript
@@ -755,7 +767,7 @@ try {
 }
 ```
 
-<a id="deletebatch-1"></a>
+<a id="deletebatch2"></a>
 
 ## deleteBatch
 
@@ -833,6 +845,8 @@ try {
 }
 ```
 
+<a id="enablesync1"></a>
+
 ## enableSync
 
 ```TypeScript
@@ -881,7 +895,7 @@ try {
 }
 ```
 
-<a id="enablesync-1"></a>
+<a id="enablesync2"></a>
 
 ## enableSync
 
@@ -933,6 +947,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="get1"></a>
 
 ## get
 
@@ -1022,7 +1038,7 @@ try {
 }
 ```
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -1117,6 +1133,8 @@ try {
 }
 ```
 
+<a id="getentries1"></a>
+
 ## getEntries
 
 ```TypeScript
@@ -1191,7 +1209,7 @@ try {
 }
 ```
 
-<a id="getentries-1"></a>
+<a id="getentries2"></a>
 
 ## getEntries
 
@@ -1268,7 +1286,7 @@ try {
 }
 ```
 
-<a id="getentries-2"></a>
+<a id="getentries3"></a>
 
 ## getEntries
 
@@ -1347,7 +1365,7 @@ try {
 }
 ```
 
-<a id="getentries-3"></a>
+<a id="getentries4"></a>
 
 ## getEntries
 
@@ -1425,6 +1443,8 @@ try {
   console.error(`Failed to get Entries. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getresultset1"></a>
 
 ## getResultSet
 
@@ -1509,7 +1529,7 @@ try {
 }
 ```
 
-<a id="getresultset-1"></a>
+<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -1591,7 +1611,7 @@ try {
 }
 ```
 
-<a id="getresultset-2"></a>
+<a id="getresultset3"></a>
 
 ## getResultSet
 
@@ -1668,7 +1688,7 @@ try {
 }
 ```
 
-<a id="getresultset-3"></a>
+<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -1742,6 +1762,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getresultsize1"></a>
 
 ## getResultSize
 
@@ -1817,7 +1839,7 @@ try {
 }
 ```
 
-<a id="getresultsize-1"></a>
+<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -1892,6 +1914,8 @@ try {
 }
 ```
 
+<a id="getsecuritylevel1"></a>
+
 ## getSecurityLevel
 
 ```TypeScript
@@ -1939,7 +1963,7 @@ try {
 }
 ```
 
-<a id="getsecuritylevel-1"></a>
+<a id="getsecuritylevel2"></a>
 
 ## getSecurityLevel
 
@@ -1985,6 +2009,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="off1"></a>
 
 ## off
 
@@ -2048,7 +2074,7 @@ class KvstoreModel {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -2111,6 +2137,8 @@ class KvstoreModel {
 }
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -2156,7 +2184,7 @@ try {
 }
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -2207,6 +2235,8 @@ try {
   console.error(`Failed to subscribe syncComplete. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="put1"></a>
 
 ## put
 
@@ -2279,7 +2309,7 @@ try {
 }
 ```
 
-<a id="put-1"></a>
+<a id="put2"></a>
 
 ## put
 
@@ -2322,6 +2352,8 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 **Examples**
 
 See [put](#put)
+
+<a id="putbatch1"></a>
 
 ## putBatch
 
@@ -2398,7 +2430,7 @@ try {
 }
 ```
 
-<a id="putbatch-1"></a>
+<a id="putbatch2"></a>
 
 ## putBatch
 
@@ -2519,6 +2551,8 @@ try {
 }
 ```
 
+<a id="removedevicedata1"></a>
+
 ## removeDeviceData
 
 ```TypeScript
@@ -2599,7 +2633,7 @@ try {
 }
 ```
 
-<a id="removedevicedata-1"></a>
+<a id="removedevicedata2"></a>
 
 ## removeDeviceData
 
@@ -2676,6 +2710,8 @@ try {
 }
 ```
 
+<a id="restore1"></a>
+
 ## restore
 
 ```TypeScript
@@ -2726,7 +2762,7 @@ try {
 }
 ```
 
-<a id="restore-1"></a>
+<a id="restore2"></a>
 
 ## restore
 
@@ -2837,6 +2873,8 @@ try {
 }
 ```
 
+<a id="rollback1"></a>
+
 ## rollback
 
 ```TypeScript
@@ -2884,7 +2922,7 @@ try {
 }
 ```
 
-<a id="rollback-1"></a>
+<a id="rollback2"></a>
 
 ## rollback
 
@@ -2930,6 +2968,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="setsyncparam1"></a>
 
 ## setSyncParam
 
@@ -2985,7 +3025,7 @@ try {
 }
 ```
 
-<a id="setsyncparam-1"></a>
+<a id="setsyncparam2"></a>
 
 ## setSyncParam
 
@@ -3044,6 +3084,8 @@ try {
 }
 ```
 
+<a id="setsyncrange1"></a>
+
 ## setSyncRange
 
 ```TypeScript
@@ -3095,7 +3137,7 @@ try {
 }
 ```
 
-<a id="setsyncrange-1"></a>
+<a id="setsyncrange2"></a>
 
 ## setSyncRange
 
@@ -3150,6 +3192,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="starttransaction1"></a>
 
 ## startTransaction
 
@@ -3230,7 +3274,7 @@ try {
 }
 ```
 
-<a id="starttransaction-1"></a>
+<a id="starttransaction2"></a>
 
 ## startTransaction
 
@@ -3280,6 +3324,8 @@ try {
   console.error(`Failed to start Transaction. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="sync1"></a>
 
 ## sync
 
@@ -3378,7 +3424,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="sync-1"></a>
+<a id="sync2"></a>
 
 ## sync
 

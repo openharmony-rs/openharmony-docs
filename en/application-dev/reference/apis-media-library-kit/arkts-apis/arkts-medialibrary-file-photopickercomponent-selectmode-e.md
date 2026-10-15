@@ -12,22 +12,6 @@ Enumerates the selection modes.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SINGLE_SELECT
-
-```TypeScript
-SINGLE_SELECT = 0
-```
-
-Select a single option.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-SelectMode-SINGLE_SELECT = 0--><!--Device-SelectMode-SINGLE_SELECT = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## MULTI_SELECT
 
 ```TypeScript
@@ -41,5 +25,21 @@ Select multiple options.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SelectMode-MULTI_SELECT = 1--><!--Device-SelectMode-MULTI_SELECT = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## SINGLE_SELECT
+
+```TypeScript
+SINGLE_SELECT = 0
+```
+
+Select a single option.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SelectMode-SINGLE_SELECT = 0--><!--Device-SelectMode-SINGLE_SELECT = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

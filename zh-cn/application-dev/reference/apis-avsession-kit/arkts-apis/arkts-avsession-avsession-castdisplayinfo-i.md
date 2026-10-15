@@ -30,7 +30,7 @@ height: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CastDisplayInfo-height: int--><!--Device-CastDisplayInfo-height: int-End-->
 
@@ -48,7 +48,7 @@ id: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CastDisplayInfo-id: long--><!--Device-CastDisplayInfo-id: long-End-->
 
@@ -66,7 +66,7 @@ name: string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CastDisplayInfo-name: string--><!--Device-CastDisplayInfo-name: string-End-->
 
@@ -84,7 +84,7 @@ state: CastDisplayState
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CastDisplayInfo-state: CastDisplayState--><!--Device-CastDisplayInfo-state: CastDisplayState-End-->
 
@@ -102,7 +102,7 @@ width: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CastDisplayInfo-width: int--><!--Device-CastDisplayInfo-width: int-End-->
 

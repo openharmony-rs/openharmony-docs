@@ -6,6 +6,8 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="getsimplenumberformatbyskeleton1"></a>
+
 ## getSimpleNumberFormatBySkeleton
 
 ```TypeScript
@@ -16,7 +18,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat--><!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat-End-->
 
@@ -57,7 +59,7 @@ try {
 ```
 
 
-<a id="getsimplenumberformatbyskeleton-1"></a>
+<a id="getsimplenumberformatbyskeleton2"></a>
 
 ## getSimpleNumberFormatBySkeleton
 
@@ -71,7 +73,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 **废弃版本：** 20
 
-**替代接口：** [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md)(skeleton: string, locale?: Intl.Locale)
+**替代接口：** [getSimpleNumberFormatBySkeleton](#getsimplenumberformatbyskeleton1)(skeleton: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

@@ -52,7 +52,12 @@ async function hasRight(): Promise<boolean> {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  try {
+    await usbManager.requestRight(device.name);
+    } catch (err) {
+    console.error(`request right failed. Code: ${err.code}, message: ${err.message}`);
+    return false;
+  }
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
   return right;

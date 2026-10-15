@@ -6,6 +6,8 @@ export type RecoverableApplicationInfo = _RecoverableApplicationInfo
 
 预置应用被卸载后可以恢复的预置应用信息。
 
+**类型：** _RecoverableApplicationInfo
+
 **起始版本：** 11
 
 <!--Device-bundleManager-export type RecoverableApplicationInfo = _RecoverableApplicationInfo--><!--Device-bundleManager-export type RecoverableApplicationInfo = _RecoverableApplicationInfo-End-->
@@ -13,5 +15,3 @@ export type RecoverableApplicationInfo = _RecoverableApplicationInfo
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _RecoverableApplicationInfo

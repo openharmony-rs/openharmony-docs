@@ -51,6 +51,8 @@ addPath(path: Path2D, transform?: Matrix2D): void
 | path | [Path2D](arkts-arkui-canvas-comp-path2d-c.md) | 是 | 需要添加到当前路径的路径对象。<br>异常值undefined和null按无效值处理。 |
 | transform | Matrix2D | 否 | 新增路径的变换矩阵对象，用于对添加的路径进行平移、旋转、缩放等变换。当需要对添加的路径进行图形变换时传入此参数，不需要变换时可不传。不传入时默认为null，表示不对路径进行变换。<br>异常值undefined和null按无效值处理。<br>默认值：null |
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -71,7 +73,7 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -99,7 +101,7 @@ constructor(unit: LengthMetricsUnit)
 | --- | --- | --- | --- |
 | unit | LengthMetricsUnit | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 
@@ -127,7 +129,7 @@ constructor(path: Path2D)
 | --- | --- | --- | --- |
 | path | [Path2D](arkts-arkui-canvas-comp-path2d-c.md) | 是 | 需要复制的路径对象，新创建的Path2D对象将包含与原路径相同的路径数据。异常值null和undefined时创建空路径对象。 |
 
-<a id="constructor-3"></a>
+<a id="constructor4"></a>
 
 ## constructor
 
@@ -156,7 +158,7 @@ constructor(path: Path2D, unit: LengthMetricsUnit)
 | path | [Path2D](arkts-arkui-canvas-comp-path2d-c.md) | 是 | 需要复制的Path2D路径对象，用于基于现有路径创建新的Path2D对象。传入的路径对象不会被修改，新创建的对象将包含该路径的完整副本。 |
 | unit | LengthMetricsUnit | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
 
-<a id="constructor-4"></a>
+<a id="constructor5"></a>
 
 ## constructor
 
@@ -184,7 +186,7 @@ constructor(d: string)
 | --- | --- | --- | --- |
 | d | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考SVG路径描述规范，异常值按无效值处理。 |
 
-<a id="constructor-5"></a>
+<a id="constructor6"></a>
 
 ## constructor
 

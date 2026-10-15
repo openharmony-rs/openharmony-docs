@@ -4,7 +4,7 @@
 export interface MenuElement extends Element
 ```
 
-The &lt;menu&gt; component provides menus as temporary pop-up windows to display operations that can be performed by users.
+The <menu> component provides menus as temporary pop-up windows to display operations that can be performed by users.
 
 @extends Element @interface MenuElement
 

@@ -12,34 +12,6 @@ enum ConflictResolution
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## ON_CONFLICT_NONE
-
-```TypeScript
-ON_CONFLICT_NONE = 0
-```
-
-表示当冲突发生时，不做任何处理。
-
-**起始版本：** 10
-
-<!--Device-ConflictResolution-ON_CONFLICT_NONE = 0--><!--Device-ConflictResolution-ON_CONFLICT_NONE = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## ON_CONFLICT_ROLLBACK
-
-```TypeScript
-ON_CONFLICT_ROLLBACK = 1
-```
-
-表示当冲突发生时，中止SQL语句并回滚当前事务。
-
-**起始版本：** 10
-
-<!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1--><!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## ON_CONFLICT_ABORT
 
 ```TypeScript
@@ -82,6 +54,20 @@ ON_CONFLICT_IGNORE = 4
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+## ON_CONFLICT_NONE
+
+```TypeScript
+ON_CONFLICT_NONE = 0
+```
+
+表示当冲突发生时，不做任何处理。
+
+**起始版本：** 10
+
+<!--Device-ConflictResolution-ON_CONFLICT_NONE = 0--><!--Device-ConflictResolution-ON_CONFLICT_NONE = 0-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 ## ON_CONFLICT_REPLACE
 
 ```TypeScript
@@ -93,5 +79,19 @@ ON_CONFLICT_REPLACE = 5
 **起始版本：** 10
 
 <!--Device-ConflictResolution-ON_CONFLICT_REPLACE = 5--><!--Device-ConflictResolution-ON_CONFLICT_REPLACE = 5-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## ON_CONFLICT_ROLLBACK
+
+```TypeScript
+ON_CONFLICT_ROLLBACK = 1
+```
+
+表示当冲突发生时，中止SQL语句并回滚当前事务。
+
+**起始版本：** 10
+
+<!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1--><!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

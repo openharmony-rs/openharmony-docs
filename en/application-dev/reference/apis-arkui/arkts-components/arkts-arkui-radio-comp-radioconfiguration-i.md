@@ -6,7 +6,7 @@ declare interface RadioConfiguration extends CommonConfiguration<RadioConfigurat
 
 You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** RadioConfiguration extends CommonConfiguration<RadioConfiguration>
+**Inheritance/Implementation:** RadioConfiguration extends CommonConfiguration&lt;RadioConfiguration&gt;
 
 **Since:** 12
 

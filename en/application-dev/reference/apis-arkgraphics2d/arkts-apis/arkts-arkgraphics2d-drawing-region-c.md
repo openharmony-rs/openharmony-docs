@@ -26,6 +26,8 @@ Describes a region, which is used to describe the region where the shape can be 
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -90,7 +92,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -139,7 +141,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 

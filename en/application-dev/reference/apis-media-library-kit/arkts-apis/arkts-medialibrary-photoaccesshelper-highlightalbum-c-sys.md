@@ -50,6 +50,7 @@ Constructor.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,6 +70,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   albumFetchResult.close();
 }
 ```
+
+<!--DelEnd-->
 
 ## deleteHighlightAlbums
 
@@ -110,6 +113,7 @@ Deletes highlight albums.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,6 +142,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getHighlightAlbumInfo
 
@@ -178,6 +184,7 @@ Obtains specific information about the **Highlights** album.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -206,6 +213,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getHighlightResource
 
@@ -246,6 +255,7 @@ Obtains the ArrayBuffer for caching the specified asset.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error. Possible causes:<br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -272,6 +282,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setHighlightUserActionData
 
@@ -313,6 +325,7 @@ Sets the user behavior data for the **Highlights** album.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -338,6 +351,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setSubTitle
 
@@ -387,6 +402,7 @@ The subtitle must meet the following requirements:
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -416,3 +432,5 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->

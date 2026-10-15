@@ -8,6 +8,8 @@ Defines component edge widths for absolute directions.
 
 To reference this object, at least one parameter must be passed.
 
+**Type:** EdgeWidths
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ To reference this object, at least one parameter must be passed.
 <!--Device-unnamed-declare type EdgeWidth = EdgeWidths--><!--Device-unnamed-declare type EdgeWidth = EdgeWidths-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** EdgeWidths

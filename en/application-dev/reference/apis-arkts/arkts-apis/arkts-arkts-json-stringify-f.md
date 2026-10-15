@@ -6,6 +6,8 @@
 import { JSON } from '@kit.ArkTS';
 ```
 
+<a id="stringify1"></a>
+
 ## stringify
 
 ```TypeScript
@@ -37,7 +39,7 @@ Converts an ArkTS object or array into a JSON string. In the case of a container
 | string | Return a JSON text. |
 
 
-<a id="stringify-1"></a>
+<a id="stringify2"></a>
 
 ## stringify
 

@@ -6,6 +6,8 @@ declare type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetr
 
 用于描述文本布局中单行文字的度量信息。
 
+**类型：** import('../api/@ohos.graphics.text').default.LineMetrics
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetr
 <!--Device-unnamed-declare type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetrics--><!--Device-unnamed-declare type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.graphics.text').default.LineMetrics

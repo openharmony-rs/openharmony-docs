@@ -6,6 +6,8 @@ declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transi
 
 Represents the current matrix object.
 
+**Type:** import ('../api/@ohos.matrix4').default.Matrix4Transit
+
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents the current matrix object.
 <!--Device-unnamed-declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transit--><!--Device-unnamed-declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transit-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import ('../api/@ohos.matrix4').default.Matrix4Transit

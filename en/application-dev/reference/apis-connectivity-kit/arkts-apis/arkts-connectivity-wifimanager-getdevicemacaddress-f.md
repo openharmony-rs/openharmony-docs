@@ -18,6 +18,8 @@ Obtain the MAC address of a Wi-Fi device. Wi-Fi must be enabled. The MAC address
 
 **Required permissions:** ohos.permission.GET_WIFI_LOCAL_MAC and ohos.permission.GET_WIFI_INFO
 
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
 <!--Device-wifiManager-function getDeviceMacAddress(): string[]--><!--Device-wifiManager-function getDeviceMacAddress(): string[]-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

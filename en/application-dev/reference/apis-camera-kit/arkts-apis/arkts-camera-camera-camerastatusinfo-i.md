@@ -30,7 +30,7 @@ Camera device.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraStatusInfo-camera: CameraDevice--><!--Device-CameraStatusInfo-camera: CameraDevice-End-->
 
@@ -48,7 +48,7 @@ Camera status.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraStatusInfo-status: CameraStatus--><!--Device-CameraStatusInfo-status: CameraStatus-End-->
 

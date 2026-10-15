@@ -18,21 +18,21 @@ declare class InputMethodExtensionContext extends ExtensionContext
 
 // 1. 定义InputMethodExtensionAbility子类
 class InputMethodExtAbility extends InputMethodExtensionAbility {
- onCreate(want) {
- // 获取上下文对象
- let context = this.context; // InputMethodExtensionContext实例
- }
+  onCreate(want) {
+    // 获取上下文对象
+    let context = this.context; // InputMethodExtensionContext实例
+  }
 
- onDestroy() {
- // 在生命周期回调中销毁自身
- this.context.destroy();
- }
+  onDestroy() {
+    // 在生命周期回调中销毁自身
+    this.context.destroy();
+  }
 }
 
 // 2. 拉起目标应用（如输入法设置页面）
 let targetWant = {
- bundleName: "com.example.settings",
- abilityName: "SettingsAbility"
+  bundleName: "com.example.settings",
+  abilityName: "SettingsAbility"
 };
 this.context.startAbility(targetWant);
 ```
@@ -56,6 +56,8 @@ this.context.startAbility(targetWant);
 ```TypeScript
 import { InputMethodExtensionContext } from '@kit.IMEKit';
 ```
+
+<a id="destroy1"></a>
 
 ## destroy
 
@@ -103,7 +105,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-<a id="destroy-1"></a>
+<a id="destroy2"></a>
 
 ## destroy
 

@@ -6,6 +6,8 @@ declare type Content = import('../api/@ohos.arkui.node').Content
 
 Defines a base class for **ComponentContent** and **NodeContent**.
 
+**Type:** import('../api/@ohos.arkui.node').Content
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines a base class for **ComponentContent** and **NodeContent**.
 <!--Device-unnamed-declare type Content = import('../api/@ohos.arkui.node').Content--><!--Device-unnamed-declare type Content = import('../api/@ohos.arkui.node').Content-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.node').Content

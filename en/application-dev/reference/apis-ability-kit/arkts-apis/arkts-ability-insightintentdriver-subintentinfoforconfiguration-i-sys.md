@@ -46,7 +46,7 @@ Entity information contained in the intent.
 readonly form?: FormIntentInfo
 ```
 
-Information about the widget bound to the intent.
+Indicates the card information bound to the intent.
 
 **Type:** [FormIntentInfo](arkts-ability-insightintentdriver-formintentinfo-i-sys.md)
 

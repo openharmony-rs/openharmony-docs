@@ -105,7 +105,7 @@ struct Index {
         }
 
         Column() {
-          Text('Layered')
+          Text('Multilayer')
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
@@ -115,21 +115,21 @@ struct Index {
 
       Row() {
         Column() {
-          Text('No animation')
+          Text('No effect')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.NONE)
         }
 
         Column() {
-          Text('Overall scale animation')
+          Text('Overall scale effect')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.SCALE)
         }
 
         Column() {
-          Text('Hierarchical animation')
+          Text('Hierarchical effect')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
@@ -142,7 +142,7 @@ struct Index {
 
 ### Example 2: Setting Symbol and Shadow Effects
 
-Starting from API version 12, this example uses the [symbolEffect](#symboleffect12) attribute to demonstrate the effects of various animations and the shadow effect combined with [symbolShadow](arkts-arkui-symbolglyph-comp-attribute.md#symbolshadow) (starting from API version 20). Among them, disabling animations and quick replacement animations require API version 20 or later.
+This example demonstrates various symbol effects using the [symbolEffect](#symboleffect12) attribute (available since API version 12) and shadow effects with [symbolShadow](arkts-arkui-symbolglyph-comp-attribute.md#symbolshadow) (available since API version 20). The slash overlay and cross-fade transition are supported since API version 20.
 
 
 
@@ -172,7 +172,7 @@ struct Index {
     Column() {
       Row() {
         Column() {
-          Text('Variable color animation')
+          Text('Variable color effect')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
@@ -183,11 +183,11 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text('Replacement animation')
+          Text('Replacement effect')
           SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
             .fontSize(96)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.triggerValueReplace)
-          Button('Trigger')
+          Button('trigger')
             .onClick(() => {
               this.replaceFlag = !this.replaceFlag;
               this.triggerValueReplace = this.triggerValueReplace + 1;
@@ -198,12 +198,12 @@ struct Index {
 
       Row() {
         Column() {
-          Text('Disabled animation')
+          Text('Slash overlay')
           SymbolGlyph(this.replaceFlag1 ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
             .fontSize(96)
             .renderingStrategy(this.renderMode)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.LAYER, ReplaceEffectType.SLASH_OVERLAY), this.triggerValueReplace1)
-          Button('Trigger')
+          Button('trigger')
             .onClick(() => {
               this.replaceFlag1 = !this.replaceFlag1;
               this.triggerValueReplace1 = this.triggerValueReplace1 + 1;
@@ -211,11 +211,11 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text('Fast replacement animation')
+          Text('Cross-fade transition')
           SymbolGlyph(this.replaceFlag2 ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
             .fontSize(96)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE), this.triggerValueReplace2)
-          Button('Trigger')
+          Button('trigger')
             .onClick(() => {
               this.replaceFlag2 = !this.replaceFlag2;
               this.triggerValueReplace2 = this.triggerValueReplace2 + 1;
@@ -223,7 +223,7 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text('Shadow capability')
+          Text('Shadow effect')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
@@ -246,7 +246,7 @@ struct Index {
 
 ### Example 3: Setting Gradient Color Effects
 
-Starting from API version 20, this example uses the [shaderStyle](#shaderstyle20) interface to implement the function of displaying the SymbolGlyph component as a gradient color.
+This example demonstrates how to apply gradient colors to SymbolGlyph components using the [shaderStyle](#shaderstyle20) API, available since API version 20.
 
 
 
@@ -384,11 +384,11 @@ struct Index {
 }
 ```
 
-### Example 4 (Setting the SymbolGlyph Color)
+### Example 4: Setting the Color for the SymbolGlyph Component
 
-This example passes a ColorMetrics type parameter through the [fontColor](#fontcolor-1) attribute to set the color of the SymbolGlyph component.
+This example demonstrates how to use the [fontColor](#fontcolor-1) attribute to pass a parameter of the ColorMetrics type to set the color of the SymbolGlyph component.
 
-Starting from API version 26.0.0, [fontColor](#fontcolor-1) is newly supported.
+[fontColor](#fontcolor-1) is supported since API version 26.0.0.
 
 
 
@@ -435,11 +435,11 @@ struct Index {
 }
 ```
 
-### Example 5 (Setting Font Weight)
+### Example 5: Setting the Font Weight
 
-This example uses the [fontWeight](#fontweight-1) attribute to demonstrate the effects of different font weight configurations of SymbolGlyph: the first row of symbol glyphs shows the effects of setting the font weight values to 220 and 660 respectively after enabling variable font weight; the second row of symbol glyphs shows the effects of setting the font weight to follow and not follow the automatic update of the device's system font weight level after setting the device's system font weight to bold.
+This example shows how to use the [fontWeight](#fontweight-1) attribute to display the effects of SymbolGlyph with different font weights. The symbol in the first line displays the effect of setting the font weight to 220 and 660 after the variable font weight is enabled. The symbol in the second line displays the effect of automatically updating or not updating the font weight after the system font weight is set to bold.
 
-Since API version 26.0.0, the [fontWeight](#fontweight-1) attribute is added.
+The [fontWeight](#fontweight-1) attribute is added since API version 26.0.0.
 
 ```TypeScript
 // xxx.ets
@@ -451,7 +451,7 @@ struct Index {
       Row() {
         Column() {
           Text('font weight: 220')
-          // ohos_trash is a system preset trash can symbol.
+          // ohos_trash is the trash can symbol preset by the system.
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(220, { enableVariableFontWeight: true })
             .fontSize(96)
@@ -461,7 +461,7 @@ struct Index {
         }
         Column() {
           Text('font weight: 660')
-          // ohos_trash is a system preset trash can symbol.
+          // ohos_trash is the trash can symbol preset by the system.
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(660, { enableVariableFontWeight: true })
             .fontSize(96)
@@ -476,7 +476,7 @@ struct Index {
       Row() {
         Column() {
           Text('device category: true')
-          // ohos_trash is a system preset trash can symbol.
+          // ohos_trash is the trash can symbol preset by the system.
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: true })
             .fontSize(96)
@@ -486,7 +486,7 @@ struct Index {
         }
         Column() {
           Text('device category: false')
-          // ohos_trash is a system preset trash can symbol.
+          // ohos_trash is the trash can symbol preset by the system.
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: false })
             .fontSize(96)

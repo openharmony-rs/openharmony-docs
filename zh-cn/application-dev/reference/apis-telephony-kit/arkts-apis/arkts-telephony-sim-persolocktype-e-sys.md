@@ -14,6 +14,38 @@ Indicates the personalized lock types.
 
 **系统接口：** 此接口为系统接口。
 
+## PC_PIN_LOCK
+
+```TypeScript
+PC_PIN_LOCK = 6
+```
+
+Indicates corporate personalization of PIN lock(refer 3GPP TS 22.022 [33]).
+
+**起始版本：** 8
+
+<!--Device-PersoLockType-PC_PIN_LOCK = 6--><!--Device-PersoLockType-PC_PIN_LOCK = 6-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**系统接口：** 此接口为系统接口。
+
+## PC_PUK_LOCK
+
+```TypeScript
+PC_PUK_LOCK = 7
+```
+
+Indicates corporate personalization of PUK lock(refer 3GPP TS 22.022 [33]).
+
+**起始版本：** 8
+
+<!--Device-PersoLockType-PC_PUK_LOCK = 7--><!--Device-PersoLockType-PC_PUK_LOCK = 7-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**系统接口：** 此接口为系统接口。
+
 ## PN_PIN_LOCK
 
 ```TypeScript
@@ -41,38 +73,6 @@ Indicates network personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 **起始版本：** 8
 
 <!--Device-PersoLockType-PN_PUK_LOCK = 1--><!--Device-PersoLockType-PN_PUK_LOCK = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-**系统接口：** 此接口为系统接口。
-
-## PU_PIN_LOCK
-
-```TypeScript
-PU_PIN_LOCK = 2
-```
-
-Indicates network subset personalization of PIN lock(refer 3GPP TS 22.022 [33]).
-
-**起始版本：** 8
-
-<!--Device-PersoLockType-PU_PIN_LOCK = 2--><!--Device-PersoLockType-PU_PIN_LOCK = 2-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-**系统接口：** 此接口为系统接口。
-
-## PU_PUK_LOCK
-
-```TypeScript
-PU_PUK_LOCK = 3
-```
-
-Indicates network subset personalization of PUK lock(refer 3GPP TS 22.022 [33]).
-
-**起始版本：** 8
-
-<!--Device-PersoLockType-PU_PUK_LOCK = 3--><!--Device-PersoLockType-PU_PUK_LOCK = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -110,33 +110,33 @@ Indicates service provider personalization of PUK lock(refer 3GPP TS 22.022 [33]
 
 **系统接口：** 此接口为系统接口。
 
-## PC_PIN_LOCK
+## PU_PIN_LOCK
 
 ```TypeScript
-PC_PIN_LOCK = 6
+PU_PIN_LOCK = 2
 ```
 
-Indicates corporate personalization of PIN lock(refer 3GPP TS 22.022 [33]).
+Indicates network subset personalization of PIN lock(refer 3GPP TS 22.022 [33]).
 
 **起始版本：** 8
 
-<!--Device-PersoLockType-PC_PIN_LOCK = 6--><!--Device-PersoLockType-PC_PIN_LOCK = 6-End-->
+<!--Device-PersoLockType-PU_PIN_LOCK = 2--><!--Device-PersoLockType-PU_PIN_LOCK = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **系统接口：** 此接口为系统接口。
 
-## PC_PUK_LOCK
+## PU_PUK_LOCK
 
 ```TypeScript
-PC_PUK_LOCK = 7
+PU_PUK_LOCK = 3
 ```
 
-Indicates corporate personalization of PUK lock(refer 3GPP TS 22.022 [33]).
+Indicates network subset personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 
 **起始版本：** 8
 
-<!--Device-PersoLockType-PC_PUK_LOCK = 7--><!--Device-PersoLockType-PC_PUK_LOCK = 7-End-->
+<!--Device-PersoLockType-PU_PUK_LOCK = 3--><!--Device-PersoLockType-PU_PUK_LOCK = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

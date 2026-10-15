@@ -6,8 +6,6 @@ declare interface SpringBackAction
 
 Defines sheet spring back action
 
-@interface SpringBackAction
-
 **Since:** 12
 
 <!--Device-unnamed-declare interface SpringBackAction--><!--Device-unnamed-declare interface SpringBackAction-End-->
@@ -20,7 +18,7 @@ Defines sheet spring back action
 springBack: Callback<void>
 ```
 
-Defines spring back function
+Callback to control the interactive spring back before the sheet is dismissed.
 
 **Type:** [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt;
 

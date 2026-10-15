@@ -52,6 +52,7 @@ static addPreferredLanguage(language: string, index?: number): void
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,6 +69,8 @@ try {
   console.error(`call System.addPreferredLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemCollations
 
@@ -97,6 +100,7 @@ static getSystemCollations(): Map<string, string>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -110,6 +114,8 @@ try {
   console.error(`call System.getSystemCollations failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemMeasurements
 
@@ -131,7 +137,7 @@ static getSystemMeasurements(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Map&lt;string, string&gt; | 系统支持的度量衡及其名称。其中Map的key表示度量衡的标识，value表示度量衡的名称。支持的度量衡如下：   - metric：公制。   - uksystem：英制。   - ussystem：美制。 |
+| Map&lt;string, string&gt; | 系统支持的度量衡及其名称。其中Map的key表示度量衡的标识，value表示度量衡的名称。支持的度量衡如下：           - metric：公制。           - uksystem：英制。           - ussystem：美制。 |
 
 **错误码：**
 
@@ -139,6 +145,7 @@ static getSystemMeasurements(): Map<string, string>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -152,6 +159,8 @@ try {
   console.error(`call System.getSystemMeasurements failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemNumberingSystems
 
@@ -181,6 +190,7 @@ static getSystemNumberingSystems(): Map<string, string>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -194,6 +204,8 @@ try {
   console.error(`call System.getSystemNumberingSystems failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemNumberPatterns
 
@@ -223,6 +235,7 @@ static getSystemNumberPatterns(): Map<string, string>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -236,6 +249,8 @@ try {
   console.error(`call System.getSystemNumberPatterns failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSystemNumericalDatePatterns
 
@@ -265,6 +280,7 @@ static getSystemNumericalDatePatterns(): Map<string, string>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -278,6 +294,8 @@ try {
   console.error(`call System.getSystemNumericalDatePatterns failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingCollation
 
@@ -307,6 +325,7 @@ static getUsingCollation(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -320,6 +339,8 @@ try {
   console.error(`call System.getUsingCollation failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingMeasurement
 
@@ -341,7 +362,7 @@ static getUsingMeasurement(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 系统当前使用的度量衡，取值及对应含义如下：   - metric：公制。   - uksystem：英制。   - ussystem：美制。 |
+| string | 系统当前使用的度量衡，取值及对应含义如下：                   - metric：公制。                   - uksystem：英制。                   - ussystem：美制。 |
 
 **错误码：**
 
@@ -349,6 +370,7 @@ static getUsingMeasurement(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -362,6 +384,8 @@ try {
   console.error(`call System.getUsingMeasurement failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingNumberingSystem
 
@@ -391,6 +415,7 @@ static getUsingNumberingSystem(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -404,6 +429,8 @@ try {
   console.error(`call System.getUsingNumberingSystem failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingNumberPattern
 
@@ -433,6 +460,7 @@ static getUsingNumberPattern(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -446,6 +474,8 @@ try {
   console.error(`call System.getUsingNumberPattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getUsingNumericalDatePattern
 
@@ -475,6 +505,7 @@ static getUsingNumericalDatePattern(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -488,6 +519,8 @@ try {
   console.error(`call System.getUsingNumericalDatePattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## removePreferredLanguage
 
@@ -522,6 +555,7 @@ static removePreferredLanguage(index: number): void
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed.<br>**适用版本：** 9 - 24 |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -537,6 +571,8 @@ try {
   console.error(`call System.removePreferredLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## set24HourClock
 
@@ -571,6 +607,7 @@ static set24HourClock(option: boolean): void
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed.<br>**适用版本：** 9 - 24 |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -585,6 +622,8 @@ try {
   console.error(`call System.set24HourClock failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setFirstDayOfWeek
 
@@ -618,6 +657,7 @@ static setFirstDayOfWeek(type: WeekDay): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -631,6 +671,8 @@ try {
   console.error(`call System.setFirstDayOfWeek failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemCollation
 
@@ -664,6 +706,7 @@ static setSystemCollation(identifier: string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -677,6 +720,8 @@ try {
   console.error(`call System.setSystemCollation failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemLanguage
 
@@ -711,6 +756,7 @@ static setSystemLanguage(language: string): void
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -725,6 +771,8 @@ try {
   console.error(`call System.setSystemLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemMeasurement
 
@@ -758,6 +806,7 @@ static setSystemMeasurement(identifier: string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -771,6 +820,8 @@ try {
   console.error(`call System.setSystemMeasurement failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemNumberingSystem
 
@@ -804,6 +855,7 @@ static setSystemNumberingSystem(identifier: string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -817,6 +869,8 @@ try {
   console.error(`call System.setSystemNumberingSystem failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemNumberPattern
 
@@ -850,6 +904,7 @@ static setSystemNumberPattern(pattern: string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -863,6 +918,8 @@ try {
   console.error(`call System.setSystemNumberPattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemNumericalDatePattern
 
@@ -896,6 +953,7 @@ static setSystemNumericalDatePattern(identifier : string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -909,6 +967,8 @@ try {
   console.error(`call System.setSystemNumericalDatePattern failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemRegion
 
@@ -943,6 +1003,7 @@ static setSystemRegion(region: string): void
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -956,6 +1017,8 @@ try {
   console.error(`call System.setSystemRegion failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setTemperatureType
 
@@ -989,6 +1052,7 @@ static setTemperatureType(type: TemperatureType): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1002,6 +1066,8 @@ try {
   console.error(`call System.setTemperatureType failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setUsingLocalDigit
 
@@ -1036,6 +1102,7 @@ static setUsingLocalDigit(flag: boolean): void
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed.<br>**适用版本：** 9 - 24 |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1049,6 +1116,8 @@ try {
   console.error(`call System.setUsingLocalDigit failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setSystemLocale
 
@@ -1084,6 +1153,7 @@ static setSystemLocale(locale: string): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1097,3 +1167,5 @@ try {
   console.error(`call System.setSystemLocale failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->

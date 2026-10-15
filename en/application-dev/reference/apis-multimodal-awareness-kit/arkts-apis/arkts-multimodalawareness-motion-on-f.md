@@ -37,27 +37,28 @@ If the device does not support this function, error code 801 is returned.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. An attempt was made to subscribe operatingHandChanged<br> event forbidden by permission: ohos.permission.ACTIVITY_MOTION or ohos.permission.DETECT_GESTURE. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:<br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
 | [31500001](../errorcode-motion.md#31500001-service-exception) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500002](../errorcode-motion.md#31500002-subscription-failed) | Subscription failed. Possible causes: 1. Callback registration failure;<br> 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
 
 **Examples**
 
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+import { motion } from '@kit.MultimodalAwarenessKit';
 
 let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
-    console.info('callback succeeded' + data);
+    console.info('operatingHandStatus: ' + data);
 };
 
 try {
     motion.on('operatingHandChanged', callback);  
-    console.info("on succeeded");
+    console.info('on succeeded');
 } catch (err) {
     let error = err as BusinessError;
-    console.error("Failed on and err code is " + error.code);
+    console.error(`Failed to subscribe operatingHandChanged. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -89,8 +90,8 @@ Subscribes to the holding hand status change awareness event. The system uses se
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. An attempt was made to subscribe holdingHandChanged<br> event forbidden by permission: ohos.permission.DETECT_GESTURE. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:<br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
 | [31500001](../errorcode-motion.md#31500001-service-exception) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500002](../errorcode-motion.md#31500002-subscription-failed) | Subscription failed. Possible causes: 1. Callback registration failure;<br> 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
 
@@ -100,7 +101,7 @@ Subscribes to the holding hand status change awareness event. The system uses se
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
-  console.info('callback succeeded: ' + data);
+  console.info('holdingHandStatus: ' + data);
 };
 
 try {
@@ -108,6 +109,6 @@ try {
   console.info('on succeeded');
 } catch (err) {
   let error = err as BusinessError;
-  console.error('Failed on; err code = ' + error.code);
+  console.error(`Failed to subscribe holdingHandChanged. Code: ${error.code}, message: ${error.message}`);
 }
 ```

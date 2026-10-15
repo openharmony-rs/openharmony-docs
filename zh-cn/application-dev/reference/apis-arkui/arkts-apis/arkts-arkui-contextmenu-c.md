@@ -4,7 +4,7 @@
 declare class ContextMenu
 ```
 
-在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)属性绑定的菜单。
+在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)属性绑定的菜单。
 
 **起始版本：** 8
 
@@ -18,7 +18,7 @@ declare class ContextMenu
 static close()
 ```
 
-在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)绑定的菜单。常用于页面跳转、拖拽开始等需要主动关闭已显示菜单的交互场景。
+在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)绑定的菜单。常用于页面跳转、拖拽开始等需要主动关闭已显示菜单的交互场景。
 
 > **说明：** 
 > 
@@ -34,7 +34,7 @@ static close()
 
 **废弃版本：** 18
 
-**替代接口：** close
+**替代接口：** [close](arkts-arkui-arkui-uicontext-contextmenucontroller-c.md#close)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

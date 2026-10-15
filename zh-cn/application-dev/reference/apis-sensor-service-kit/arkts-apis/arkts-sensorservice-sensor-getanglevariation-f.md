@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getanglevariation1"></a>
+
 ## getAngleVariation
 
 ```TypeScript
@@ -75,7 +77,7 @@ try {
 ```
 
 
-<a id="getanglevariation-1"></a>
+<a id="getanglevariation2"></a>
 
 ## getAngleVariation
 

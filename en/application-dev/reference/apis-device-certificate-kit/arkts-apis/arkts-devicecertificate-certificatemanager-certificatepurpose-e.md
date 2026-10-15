@@ -12,20 +12,6 @@ Enumerates the usage of a credential.
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## PURPOSE_DEFAULT
-
-```TypeScript
-PURPOSE_DEFAULT = 0
-```
-
-Default usage, which is used for credential signing.
-
-**Since:** 22
-
-<!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0--><!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0-End-->
-
-**System capability:** SystemCapability.Security.CertificateManager
-
 ## PURPOSE_ALL
 
 ```TypeScript
@@ -40,17 +26,17 @@ Query of all credentials.
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## PURPOSE_SIGN
+## PURPOSE_DEFAULT
 
 ```TypeScript
-PURPOSE_SIGN = 2
+PURPOSE_DEFAULT = 0
 ```
 
-Credential signing.
+Default usage, which is used for credential signing.
 
 **Since:** 22
 
-<!--Device-CertificatePurpose-PURPOSE_SIGN = 2--><!--Device-CertificatePurpose-PURPOSE_SIGN = 2-End-->
+<!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0--><!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -65,5 +51,19 @@ Credential encryption.
 **Since:** 22
 
 <!--Device-CertificatePurpose-PURPOSE_ENCRYPT = 3--><!--Device-CertificatePurpose-PURPOSE_ENCRYPT = 3-End-->
+
+**System capability:** SystemCapability.Security.CertificateManager
+
+## PURPOSE_SIGN
+
+```TypeScript
+PURPOSE_SIGN = 2
+```
+
+Credential signing.
+
+**Since:** 22
+
+<!--Device-CertificatePurpose-PURPOSE_SIGN = 2--><!--Device-CertificatePurpose-PURPOSE_SIGN = 2-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

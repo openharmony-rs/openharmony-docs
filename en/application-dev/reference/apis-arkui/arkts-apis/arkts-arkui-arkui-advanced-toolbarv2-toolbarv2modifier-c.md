@@ -4,7 +4,7 @@
 export declare class ToolBarV2Modifier
 ```
 
-Declare ToolBarV2Modifier used in ToolBar
+Provides methods for setting the toolbar height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which takes effect only when the number of items is fewer than five), and whether to display the pressed state effect (**stateEffect**).
 
 **Since:** 18
 
@@ -24,7 +24,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 ```
 
-Sets the backgroundColor of the toolBarV2.
+Sets the background color of the toolbar. This method can be called for custom drawing.
 
 **Since:** 18
 
@@ -46,7 +46,7 @@ Sets the backgroundColor of the toolBarV2.
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | returns the instance of the ToolBarV2Modifier. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object after setting the background color, which can be used for chained calls to further customize the toolbar style. |
 
 ## height
 
@@ -54,7 +54,7 @@ Sets the backgroundColor of the toolBarV2.
 height(height: LengthMetrics): ToolBarV2Modifier
 ```
 
-Sets the height of the toolBarV2.
+Sets the height of the toolbar. This method can be called for custom drawing. This height does not include the divider height.
 
 **Since:** 18
 
@@ -76,7 +76,7 @@ Sets the height of the toolBarV2.
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | returns the instance of the ToolBarV2Modifier. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object after setting the height, which can be used for chained calls to other methods to further customize the toolbar style. |
 
 ## padding
 
@@ -84,7 +84,7 @@ Sets the height of the toolBarV2.
 padding(padding: LengthMetrics): ToolBarV2Modifier
 ```
 
-Sets the left and right padding of the toolbarV2.
+Sets the left and right padding of the toolbar. This method can be called for custom drawing.
 
 **Since:** 18
 
@@ -106,7 +106,7 @@ Sets the left and right padding of the toolbarV2.
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | returns the instance of the ToolBarV2Modifier. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object with the padding set, which can be used for chained calls to further customize the toolbar style. |
 
 ## stateEffect
 
@@ -114,7 +114,7 @@ Sets the left and right padding of the toolbarV2.
 stateEffect(stateEffect: boolean): ToolBarV2Modifier
 ```
 
-Sets whether or not to display the press status effect.
+Sets whether to display the pressed state effect.
 
 **Since:** 18
 
@@ -136,4 +136,4 @@ Sets whether or not to display the press status effect.
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | returns the instance of the ToolBarV2Modifier. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object with the pressed state effect set, which can be used for chained calls to other methods to further customize the toolbar style. |

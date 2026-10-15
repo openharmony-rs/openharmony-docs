@@ -37,7 +37,7 @@ aa命令隐式拉起Ability时可以通过设置"--pb appLinkingOnly true/false"
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-OpenLinkOptions-appLinkingOnly?: boolean--><!--Device-OpenLinkOptions-appLinkingOnly?: boolean-End-->
 
@@ -57,7 +57,7 @@ completionHandler?: CompletionHandler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-OpenLinkOptions-completionHandler?: CompletionHandler--><!--Device-OpenLinkOptions-completionHandler?: CompletionHandler-End-->
 
@@ -84,7 +84,7 @@ hideFailureTipDialog?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-OpenLinkOptions-hideFailureTipDialog?: boolean--><!--Device-OpenLinkOptions-hideFailureTipDialog?: boolean-End-->
 

@@ -6,7 +6,7 @@ interface Display
 
 Implements a Display instance, with attributes and APIs defined.
 
-Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md) or [getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md) to obtain a Display instance.
+Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays1) or [getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md) to obtain a Display instance.
 
 **Since:** 7
 
@@ -19,6 +19,8 @@ Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-d
 ```TypeScript
 import { display } from '@kit.ArkUI';
 ```
+
+<a id="hasimmersivewindow1"></a>
 
 ## hasImmersiveWindow
 
@@ -51,6 +53,7 @@ Checks whether this display contains an immersive window. This API uses an async
 | [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,7 +74,9 @@ displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
 });
 ```
 
-<a id="hasimmersivewindow-1"></a>
+<!--DelEnd-->
+
+<a id="hasimmersivewindow2"></a>
 
 ## hasImmersiveWindow
 
@@ -104,6 +109,7 @@ Checks whether this display contains an immersive window. This API uses a promis
 | [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -121,3 +127,5 @@ promise.then((data) => {
   console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

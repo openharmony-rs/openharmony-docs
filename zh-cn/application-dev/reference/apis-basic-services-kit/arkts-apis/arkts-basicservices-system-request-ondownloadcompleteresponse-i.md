@@ -8,7 +8,7 @@ export interface OnDownloadCompleteResponse
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-unnamed-export interface OnDownloadCompleteResponse--><!--Device-unnamed-export interface OnDownloadCompleteResponse-End-->
 

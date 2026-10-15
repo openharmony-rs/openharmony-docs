@@ -6,6 +6,8 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
+<a id="gettrafficstatsbyuid1"></a>
+
 ## getTrafficStatsByUid
 
 ```TypeScript
@@ -43,6 +45,7 @@ Obtains the historical data traffic of the specified application. This API uses 
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-failed-to-read-the-database) | Failed to read the database. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,7 +64,10 @@ let uidInfo: statistics.UidInfo = {
 statistics.getTrafficStatsByUid(
   uidInfo,
   (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByUid bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -82,8 +88,10 @@ statistics.getTrafficStatsByUid(
 );
 ```
 
+<!--DelEnd-->
 
-<a id="gettrafficstatsbyuid-1"></a>
+
+<a id="gettrafficstatsbyuid2"></a>
 
 ## getTrafficStatsByUid
 
@@ -127,6 +135,7 @@ Obtains the historical data traffic of the specified application. This API uses 
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-failed-to-read-the-database) | Failed to read the database. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -148,3 +157,5 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
   console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
 })
 ```
+
+<!--DelEnd-->

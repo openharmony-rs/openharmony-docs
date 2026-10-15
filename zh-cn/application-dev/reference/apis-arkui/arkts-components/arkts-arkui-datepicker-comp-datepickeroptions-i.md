@@ -87,7 +87,7 @@ mode?: DatePickerMode
 
 **类型：** [DatePickerMode](arkts-arkui-datepicker-comp-datepickermode-e.md)
 
-**默认值：** DatePickerMode.DATE - which means to display three columns: year, month, and day. <br>Decimal values are rounded off.
+**默认值：** DatePickerMode.DATE - 即显示年、月、日三列。<br>小数值会被取整。
 
 **起始版本：** 18
 

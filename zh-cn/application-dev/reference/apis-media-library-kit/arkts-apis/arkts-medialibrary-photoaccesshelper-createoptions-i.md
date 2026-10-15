@@ -35,7 +35,7 @@ subtype?: PhotoSubtype
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CreateOptions-subtype?: PhotoSubtype--><!--Device-CreateOptions-subtype?: PhotoSubtype-End-->
 
@@ -53,7 +53,7 @@ title?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-CreateOptions-title?: string--><!--Device-CreateOptions-title?: string-End-->
 

@@ -26,7 +26,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 actionName?: string
 ```
 
-描述通知中显示的操作按钮（与通知[NotificationActionButton](arkts-notification-notificationactionbutton-notificationactionbutton-i.md)中title字段保持一致）。
+描述通知中显示的操作按钮（与通知[NotificationActionButton](arkts-notification-notificationactionbutton-i.md)中title字段保持一致）。
 
 **类型：** string
 
@@ -85,7 +85,7 @@ operationType?: number
 userInput?: string
 ```
 
-用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](arkts-notification-notificationuserinput-notificationuserinput-i.md)中inputKey字段保持一致）。
+用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](arkts-notification-notificationuserinput-i.md)中inputKey字段保持一致）。
 
 **类型：** string
 

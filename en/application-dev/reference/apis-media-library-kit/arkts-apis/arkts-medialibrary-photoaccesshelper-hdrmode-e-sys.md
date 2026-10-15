@@ -30,17 +30,17 @@ Default type.
 
 **System API:** This is a system API.
 
-## HDR_ISO_SINGLE
+## HDR_CUVA
 
 ```TypeScript
-HDR_ISO_SINGLE = 1
+HDR_CUVA = 3
 ```
 
-Single-layer HDR image that complies with ISO specifications.
+HDR image taken by a legacy device or camera.
 
 **Since:** 22
 
-<!--Device-HdrMode-HDR_ISO_SINGLE = 1--><!--Device-HdrMode-HDR_ISO_SINGLE = 1-End-->
+<!--Device-HdrMode-HDR_CUVA = 3--><!--Device-HdrMode-HDR_CUVA = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,33 +62,17 @@ Dual-layer HDR images that comply with ISO specifications.
 
 **System API:** This is a system API.
 
-## HDR_CUVA
+## HDR_ISO_SINGLE
 
 ```TypeScript
-HDR_CUVA = 3
+HDR_ISO_SINGLE = 1
 ```
 
-HDR image taken by a legacy device or camera.
+Single-layer HDR image that complies with ISO specifications.
 
 **Since:** 22
 
-<!--Device-HdrMode-HDR_CUVA = 3--><!--Device-HdrMode-HDR_CUVA = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## HDR_VIVID_SINGLE
-
-```TypeScript
-HDR_VIVID_SINGLE = 4
-```
-
-Single-layer image that complies with the HDR Vivid standard.
-
-**Since:** 22
-
-<!--Device-HdrMode-HDR_VIVID_SINGLE = 4--><!--Device-HdrMode-HDR_VIVID_SINGLE = 4-End-->
+<!--Device-HdrMode-HDR_ISO_SINGLE = 1--><!--Device-HdrMode-HDR_ISO_SINGLE = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -105,6 +89,22 @@ Dual-layer image that complies with the HDR Vivid standard.
 **Since:** 22
 
 <!--Device-HdrMode-HDR_VIVID_DUAL = 5--><!--Device-HdrMode-HDR_VIVID_DUAL = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## HDR_VIVID_SINGLE
+
+```TypeScript
+HDR_VIVID_SINGLE = 4
+```
+
+Single-layer image that complies with the HDR Vivid standard.
+
+**Since:** 22
+
+<!--Device-HdrMode-HDR_VIVID_SINGLE = 4--><!--Device-HdrMode-HDR_VIVID_SINGLE = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -64,7 +64,7 @@ Obtains the locale that best matches a region from the specified locale list.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-I18NUtil-static getBestMatchLocale(locale: string, localeList: string[]): string--><!--Device-I18NUtil-static getBestMatchLocale(locale: string, localeList: string[]): string-End-->
 
@@ -115,7 +115,7 @@ Obtains the sequence of the year, month, and day in the specified locale.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-I18NUtil-static getDateOrder(locale: string): string--><!--Device-I18NUtil-static getDateOrder(locale: string): string-End-->
 
@@ -153,7 +153,7 @@ For example, the two-letter language code of Chinese is **zh**, and the correspo
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-I18NUtil-static getThreeLetterLanguage(locale: string): string--><!--Device-I18NUtil-static getThreeLetterLanguage(locale: string): string-End-->
 
@@ -204,7 +204,7 @@ For example, the two-letter region code of China is **CN**, and the correspondin
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-I18NUtil-static getThreeLetterRegion(locale: string): string--><!--Device-I18NUtil-static getThreeLetterRegion(locale: string): string-End-->
 
@@ -253,7 +253,7 @@ Obtains the localized expression of the specified time in the specified locale.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-I18NUtil-static getTimePeriodName(hour:int, locale?: string): string--><!--Device-I18NUtil-static getTimePeriodName(hour:int, locale?: string): string-End-->
 
@@ -293,6 +293,8 @@ try {
 }
 ```
 
+<a id="getunicodewrappedfilepath1"></a>
+
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -305,7 +307,7 @@ For example, "/data/out/tmp" is changed to "tmp/out/data/" after localization.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl.Locale): string--><!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl.Locale): string-End-->
 
@@ -349,7 +351,7 @@ try {
 }
 ```
 
-<a id="getunicodewrappedfilepath-1"></a>
+<a id="getunicodewrappedfilepath2"></a>
 
 ## getUnicodeWrappedFilePath
 
@@ -365,7 +367,7 @@ For example, "/data/out/tmp" is changed to "tmp/out/data/" after localization.
 
 **Deprecated since:** 20
 
-**Substitutes:** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath)(path: string, delimiter?: string, locale?: Intl.Locale)
+**Substitutes:** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath1)(path: string, delimiter?: string, locale?: Intl.Locale)
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
@@ -468,7 +470,7 @@ Converts one measurement unit into another and formats the unit based on the spe
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-I18NUtil-static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string, style?: string): string--><!--Device-I18NUtil-static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string, style?: string): string-End-->
 

@@ -29,8 +29,8 @@ export const enum UriPermission
 - UnifiedData级别：UnifiedDataProperties中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。  
 - 默认级别：若单个数据和UnifiedDataProperties均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：
 
-- FileUri类型数据（FileUri UDS或File、Image、Video、Audio、Folder五个UDC类型）：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。  
-- HTML类型数据，仅针对HTML文本中img标签下的uri做读授权。
+      - FileUri类型数据（FileUri UDS或File、Image、Video、Audio、Folder五个UDC类型）：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。  
+      - HTML类型数据，仅针对HTML文本中img标签下的uri做读授权。
 
 **起始版本：** 26.0.0
 
@@ -50,9 +50,27 @@ NONE = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-UriPermission-NONE = 0--><!--Device-UriPermission-NONE = 0-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## PERSIST
+
+```TypeScript
+PERSIST = 3
+```
+
+表示持久化文件的权限。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UriPermission-PERSIST = 3--><!--Device-UriPermission-PERSIST = 3-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -68,7 +86,7 @@ READ = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-UriPermission-READ = 1--><!--Device-UriPermission-READ = 1-End-->
 
@@ -86,26 +104,8 @@ WRITE = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-UriPermission-WRITE = 2--><!--Device-UriPermission-WRITE = 2-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
-
-## PERSIST
-
-```TypeScript
-PERSIST = 3
-```
-
-表示持久化文件的权限。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-UriPermission-PERSIST = 3--><!--Device-UriPermission-PERSIST = 3-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core

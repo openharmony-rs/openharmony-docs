@@ -71,7 +71,6 @@ import { formInfo } from '@kit.FormKit';
 
 | Name | Description |
 | --- | --- |
-| [ColorMode](arkts-form-forminfo-colormode-e.md) | Color mode. |
 | [FormDimension](arkts-form-forminfo-formdimension-e.md) | Defines the FormDimension enum. |
 | [FormLocation](arkts-form-forminfo-formlocation-e.md) | Enumerates the widget locations. |
 | [FormParam](arkts-form-forminfo-formparam-e.md) | Enumerates widget parameters. |
@@ -81,6 +80,7 @@ import { formInfo } from '@kit.FormKit';
 | [FormUpdateReason](arkts-form-forminfo-formupdatereason-e.md) | Form update reason. |
 | [LaunchReason](arkts-form-forminfo-launchreason-e.md) | Indicates the launch reason of a form. |
 | [VisibilityType](arkts-form-forminfo-visibilitytype-e.md) | The visibility of a form. |
+| [ColorMode](arkts-form-forminfo-colormode-e.md) | Color mode. |
 
 <!--Del-->
 ### Enums(System API)

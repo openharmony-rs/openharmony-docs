@@ -6,6 +6,8 @@ declare type NavBar = 'navBar'
 
 Defines the name of the navigation home page.
 
+**Type:** 'navBar'
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the name of the navigation home page.
 <!--Device-unnamed-declare type NavBar = 'navBar'--><!--Device-unnamed-declare type NavBar = 'navBar'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** 'navBar'

@@ -74,6 +74,7 @@ async function setInterface() {
     usbManager.closePipe(devicePipe);
     return;
   }
+  // 切换接口到指定的备用设置，使端点配置与传输类型匹配
   ret = usbManager.setInterface(devicePipe, interfaces);
   console.info(`setInterface = ${ret}`);
   ret = usbManager.releaseInterface(devicePipe, interfaces);

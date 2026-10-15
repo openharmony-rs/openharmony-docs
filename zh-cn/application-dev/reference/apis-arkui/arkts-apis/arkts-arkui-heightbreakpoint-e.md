@@ -14,13 +14,13 @@ declare enum HeightBreakpoint
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## HEIGHT_SM
+## HEIGHT_LG
 
 ```TypeScript
-HEIGHT_SM = 0
+HEIGHT_LG = 2
 ```
 
-窗口高宽比小于0.8。
+窗口高宽比大于等于1.2。
 
 **起始版本：** 13
 
@@ -28,7 +28,7 @@ HEIGHT_SM = 0
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
-<!--Device-HeightBreakpoint-HEIGHT_SM = 0--><!--Device-HeightBreakpoint-HEIGHT_SM = 0-End-->
+<!--Device-HeightBreakpoint-HEIGHT_LG = 2--><!--Device-HeightBreakpoint-HEIGHT_LG = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,13 +50,13 @@ HEIGHT_MD = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## HEIGHT_LG
+## HEIGHT_SM
 
 ```TypeScript
-HEIGHT_LG = 2
+HEIGHT_SM = 0
 ```
 
-窗口高宽比大于等于1.2。
+窗口高宽比小于0.8。
 
 **起始版本：** 13
 
@@ -64,6 +64,6 @@ HEIGHT_LG = 2
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
-<!--Device-HeightBreakpoint-HEIGHT_LG = 2--><!--Device-HeightBreakpoint-HEIGHT_LG = 2-End-->
+<!--Device-HeightBreakpoint-HEIGHT_SM = 0--><!--Device-HeightBreakpoint-HEIGHT_SM = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

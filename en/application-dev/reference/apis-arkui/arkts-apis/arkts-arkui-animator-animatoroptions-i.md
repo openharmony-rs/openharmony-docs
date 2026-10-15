@@ -28,6 +28,8 @@ Start point of the animation interpolation.
 
 Note: This setting affects the input parameter value of the [onFrame](../../../reference/apis-arkui/js-apis-animator.md#properties) callback.
 
+Value range: (-∞, +∞).
+
 Default value: **0**
 
 **Type:** number
@@ -47,6 +49,8 @@ delay: number
 ```
 
 Animation delay duration, in milliseconds. Value **0** means that there is no delay. If the value specified is a negative number, the animation starts playing ahead of its scheduled time. If the amount of time by which the playback is advanced exceeds the total duration of the animation, the animation immediately skips to its end state.
+
+Value range: (-∞, +∞).
 
 Default value: **0**
 
@@ -140,6 +144,8 @@ End point of animation interpolation.
 
 Note: This setting affects the input parameter value of the [onFrame](../../../reference/apis-arkui/js-apis-animator.md#properties) callback.
 
+Value range: (-∞, +∞).
+
 Default value: **1**
 
 **Type:** number
@@ -185,6 +191,8 @@ iterations: number
 ```
 
 Number of times that the animation is played. The value **0** means the animation is not played, **-1** means the animation is played for an unlimited number of times, and a positive integer means the animation is played that specific number of times.
+
+Value range: integers greater than or equal to -1.
 
 Note: Any negative value other than **-1** is treated as invalid. For invalid values, the animation is played once.
 

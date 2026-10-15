@@ -48,7 +48,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 
 | 类型 | 说明 |
 | --- | --- |
-| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] &#124; [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md) &#124; undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array&lt;IReusableInfo&gt;`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] &#124; [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md) &#124; undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例**
 

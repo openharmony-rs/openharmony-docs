@@ -12,7 +12,7 @@ import { installer } from '@kit.AbilityKit';
 function getBundleInstallerSync(): BundleInstaller
 ```
 
-Obtains a BundleInstaller object. This API is a synchronous API.
+Obtains and returns a BundleInstaller object. The API may return null when the call fails, so verify the return value before use.
 
 **Since:** 10
 

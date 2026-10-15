@@ -16,7 +16,7 @@ function openFormManager(want: Want): void
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-formProvider-function openFormManager(want: Want): void--><!--Device-formProvider-function openFormManager(want: Want): void-End-->
 

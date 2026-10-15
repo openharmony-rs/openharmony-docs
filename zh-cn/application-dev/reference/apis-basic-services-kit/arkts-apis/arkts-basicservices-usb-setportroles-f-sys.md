@@ -40,6 +40,7 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -50,3 +51,5 @@ usb.setPortRoles(portId, usb.PowerRoleType.SOURCE, usb.DataRoleType.HOST).then((
     console.error('usb setPortRoles failed: ' + err.code + ' message: ' + err.message);
 });
 ```
+
+<!--DelEnd-->

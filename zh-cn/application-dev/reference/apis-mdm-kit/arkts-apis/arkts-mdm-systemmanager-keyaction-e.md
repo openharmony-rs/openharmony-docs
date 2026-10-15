@@ -12,22 +12,6 @@ enum KeyAction
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = -1
-```
-
-除按下和抬起动作以外，其他按键动作。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-KeyAction-UNKNOWN = -1--><!--Device-KeyAction-UNKNOWN = -1-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## DOWN
 
 ```TypeScript
@@ -41,6 +25,22 @@ DOWN = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyAction-DOWN = 0--><!--Device-KeyAction-DOWN = 0-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = -1
+```
+
+除按下和抬起动作以外，其他按键动作。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyAction-UNKNOWN = -1--><!--Device-KeyAction-UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

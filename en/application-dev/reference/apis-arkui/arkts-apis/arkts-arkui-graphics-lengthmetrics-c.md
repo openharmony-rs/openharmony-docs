@@ -228,7 +228,7 @@ Represents the length of a resource of the Resource type.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Value of the length property. |
+| value | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Value of the length property. |
 
 **Return value:**
 

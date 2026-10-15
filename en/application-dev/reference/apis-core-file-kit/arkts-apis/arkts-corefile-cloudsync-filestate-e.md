@@ -26,20 +26,6 @@ Initial state after the first download.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## UPLOADING
-
-```TypeScript
-UPLOADING = 1
-```
-
-The file is being uploaded.
-
-**Since:** 20
-
-<!--Device-FileState-UPLOADING = 1--><!--Device-FileState-UPLOADING = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## STOPPED
 
 ```TypeScript
@@ -68,6 +54,20 @@ The file is going to be uploaded.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+## UPLOAD_FAILURE
+
+```TypeScript
+UPLOAD_FAILURE = 5
+```
+
+The file fails to be uploaded.
+
+**Since:** 20
+
+<!--Device-FileState-UPLOAD_FAILURE = 5--><!--Device-FileState-UPLOAD_FAILURE = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
 ## UPLOAD_SUCCESS
 
 ```TypeScript
@@ -82,16 +82,16 @@ The file has been successfully uploaded.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## UPLOAD_FAILURE
+## UPLOADING
 
 ```TypeScript
-UPLOAD_FAILURE = 5
+UPLOADING = 1
 ```
 
-The file fails to be uploaded.
+The file is being uploaded.
 
 **Since:** 20
 
-<!--Device-FileState-UPLOAD_FAILURE = 5--><!--Device-FileState-UPLOAD_FAILURE = 5-End-->
+<!--Device-FileState-UPLOADING = 1--><!--Device-FileState-UPLOADING = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

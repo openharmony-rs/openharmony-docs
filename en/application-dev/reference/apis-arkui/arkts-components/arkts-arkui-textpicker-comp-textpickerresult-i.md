@@ -46,7 +46,7 @@ When the picker contains text only or both text and imagery, **value** indicates
 
 For an image list, **value** is empty.
 
-The value must be within the range defined by the **range** attribute and cannot contain the escape character ().
+The value must be within the range defined by the **range** attribute and cannot contain the escape character (\).
 
 **Type:** string[]
 

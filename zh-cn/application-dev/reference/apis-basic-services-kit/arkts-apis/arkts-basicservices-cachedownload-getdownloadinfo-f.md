@@ -44,3 +44,43 @@ function getDownloadInfo(url: string): DownloadInfo | undefined
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
+
+**示例**
+
+```TypeScript
+import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 设置下载信息列表大小。  
+  cacheDownload.setDownloadInfoListSize(2048);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
+}
+
+// 提供缓存下载任务的配置选项。
+let options: cacheDownload.CacheDownloadOptions = {};
+
+try {
+  // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
+  cacheDownload.download("https://www.example.com", options);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
+}
+
+// 处理其他业务逻辑。
+
+try {
+  // 在缓存下载完成后，获取缓存下载的信息。
+  let downloadInfo = cacheDownload.getDownloadInfo("https://www.example.com");
+  if (downloadInfo == undefined) {
+    console.error(`CacheDownload get download info undefined.`);
+  } else {
+    console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
+  }
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
+}
+```

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="createsubscriber1"></a>
+
 ## createSubscriber
 
 ```TypeScript
@@ -20,7 +22,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 
 **Deprecated since:** 9
 
-**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md)( subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt; )
+**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber1)( subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt; )
 
 <!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void--><!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void-End-->
 
@@ -30,8 +32,8 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-commoneventsubscribeinfo-i.md) | Yes | Subscriber information. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md)&gt; | Yes | Callback used to return the result. |
+| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-i.md) | Yes | Subscriber information. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Examples**
 
@@ -61,7 +63,7 @@ commonEvent.createSubscriber(subscribeInfo, createCallBack);
 ```
 
 
-<a id="createsubscriber-1"></a>
+<a id="createsubscriber2"></a>
 
 ## createSubscriber
 
@@ -75,7 +77,7 @@ Creates a subscriber. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)(subscribeInfo: CommonEventSubscribeInfo)
+**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber2)(subscribeInfo: CommonEventSubscribeInfo)
 
 <!--Device-commonEvent-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>--><!--Device-commonEvent-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>-End-->
 
@@ -85,13 +87,13 @@ Creates a subscriber. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-commoneventsubscribeinfo-i.md) | Yes | Subscriber information. |
+| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-i.md) | Yes | Subscriber information. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md)&gt; | Promise used to return the subscriber object. |
+| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | Promise used to return the subscriber object. |
 
 **Examples**
 

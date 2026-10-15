@@ -140,7 +140,7 @@ getHdrComposedPixelmap(): Promise<PixelMap>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7600901](../errorcode-image.md#7600901-未知错误) | Inner unknown error. Please check the logs for detailed information. |
-| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. e.g.,1. The picture does not has a gainmap. 2. MainPixelMap's allocator type is not DMA. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. e.g.,1. The picture does not has a gainmap.         2. MainPixelMap's allocator type is not DMA. |
 
 **示例**
 
@@ -357,7 +357,7 @@ hdrComposeToMainPixelmap(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. e.g.,1. The picture does not have a gainmap. 2. pixelMap's allocator type is not DMA. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. e.g.,1. The picture does not have a gainmap.         2. pixelMap's allocator type is not DMA. |
 
 **示例**
 
@@ -404,7 +404,7 @@ marshalling(sequence: rpc.MessageSequence): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception. 3. Decode process exception. 4. Insufficient memory. |
+| [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.         3. Decode process exception. 4. Insufficient memory. |
 
 **示例**
 
@@ -570,7 +570,7 @@ setMainPixelmap(pixelmap: PixelMap): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7700204](../errorcode-image.md#7700204-无效参数) | 参数错误。 |
+| [7700204](../errorcode-image.md#7700204-无效参数) | 参数错误。PixelMap对象为空或已被释放。 |
 
 **示例**
 

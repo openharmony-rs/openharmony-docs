@@ -10,7 +10,7 @@ KVStore数据库实例，提供增加数据、删除数据和订阅数据变更�
 
 **废弃版本：** 9
 
-**替代接口：** SingleKVStore
+**替代接口：** [SingleKVStore](arkts-arkdata-distributedkvstore-singlekvstore-i.md)
 
 <!--Device-distributedData-interface KVStore--><!--Device-distributedData-interface KVStore-End-->
 
@@ -20,6 +20,8 @@ KVStore数据库实例，提供增加数据、删除数据和订阅数据变更�
 
 ```TypeScript
 ```
+
+<a id="commit1"></a>
 
 ## commit
 
@@ -33,7 +35,7 @@ commit(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** commit
+**替代接口：** [commit](arkts-arkdata-distributedkvstore-singlekvstore-i.md#commit)
 
 <!--Device-KVStore-commit(callback: AsyncCallback<void>): void--><!--Device-KVStore-commit(callback: AsyncCallback<void>): void-End-->
 
@@ -62,7 +64,7 @@ try {
 }
 ```
 
-<a id="commit-1"></a>
+<a id="commit2"></a>
 
 ## commit
 
@@ -76,7 +78,7 @@ commit(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** commit
+**替代接口：** [commit](arkts-arkdata-distributedkvstore-singlekvstore-i.md#commit)
 
 <!--Device-KVStore-commit(): Promise<void>--><!--Device-KVStore-commit(): Promise<void>-End-->
 
@@ -103,6 +105,8 @@ try {
 }
 ```
 
+<a id="delete1"></a>
+
 ## delete
 
 ```TypeScript
@@ -115,7 +119,7 @@ delete(key: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** delete
+**替代接口：** [delete](arkts-arkdata-distributedkvstore-singlekvstore-i.md#delete)
 
 <!--Device-KVStore-delete(key: string, callback: AsyncCallback<void>): void--><!--Device-KVStore-delete(key: string, callback: AsyncCallback<void>): void-End-->
 
@@ -154,7 +158,7 @@ try {
 }
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -168,7 +172,7 @@ delete(key: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** delete
+**替代接口：** [delete](arkts-arkdata-distributedkvstore-singlekvstore-i.md#delete)
 
 <!--Device-KVStore-delete(key: string): Promise<void>--><!--Device-KVStore-delete(key: string): Promise<void>-End-->
 
@@ -208,6 +212,8 @@ try {
 }
 ```
 
+<a id="deletebatch1"></a>
+
 ## deleteBatch
 
 ```TypeScript
@@ -220,7 +226,7 @@ deleteBatch(keys: string[], callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** deleteBatch
+**替代接口：** [deleteBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#deletebatch)
 
 <!--Device-KVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void--><!--Device-KVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void-End-->
 
@@ -264,7 +270,7 @@ try {
 }
 ```
 
-<a id="deletebatch-1"></a>
+<a id="deletebatch2"></a>
 
 ## deleteBatch
 
@@ -278,7 +284,7 @@ deleteBatch(keys: string[]): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** deleteBatch
+**替代接口：** [deleteBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#deletebatch)
 
 <!--Device-KVStore-deleteBatch(keys: string[]): Promise<void>--><!--Device-KVStore-deleteBatch(keys: string[]): Promise<void>-End-->
 
@@ -331,6 +337,8 @@ try {
 }
 ```
 
+<a id="enablesync1"></a>
+
 ## enableSync
 
 ```TypeScript
@@ -343,7 +351,7 @@ enableSync(enabled: boolean, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** enableSync
+**替代接口：** [enableSync](arkts-arkdata-distributedkvstore-singlekvstore-i.md#enablesync)
 
 <!--Device-KVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void--><!--Device-KVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -373,7 +381,7 @@ try {
 }
 ```
 
-<a id="enablesync-1"></a>
+<a id="enablesync2"></a>
 
 ## enableSync
 
@@ -387,7 +395,7 @@ enableSync(enabled: boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** enableSync
+**替代接口：** [enableSync](arkts-arkdata-distributedkvstore-singlekvstore-i.md#enablesync)
 
 <!--Device-KVStore-enableSync(enabled: boolean): Promise<void>--><!--Device-KVStore-enableSync(enabled: boolean): Promise<void>-End-->
 
@@ -420,6 +428,8 @@ try {
 }
 ```
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -432,7 +442,7 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 
 **废弃版本：** 9
 
-**替代接口：** off
+**替代接口：** [off](arkts-arkdata-distributedkvstore-singlekvstore-i.md#off)
 
 <!--Device-KVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void--><!--Device-KVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void-End-->
 
@@ -466,7 +476,7 @@ class KvstoreModel {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -480,7 +490,7 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 
 **废弃版本：** 9
 
-**替代接口：** off
+**替代接口：** [off](arkts-arkdata-distributedkvstore-singlekvstore-i.md#off)
 
 <!--Device-KVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void--><!--Device-KVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void-End-->
 
@@ -514,6 +524,8 @@ class KvstoreModel {
 }
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -526,7 +538,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)
 
 <!--Device-KVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void--><!--Device-KVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void-End-->
 
@@ -549,7 +561,7 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 });
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -563,7 +575,7 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)
 
 <!--Device-KVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void--><!--Device-KVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void-End-->
 
@@ -585,6 +597,8 @@ kvStore.on('syncComplete', function (data) {
 });
 ```
 
+<a id="put1"></a>
+
 ## put
 
 ```TypeScript
@@ -597,7 +611,7 @@ put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncC
 
 **废弃版本：** 9
 
-**替代接口：** put
+**替代接口：** [put](arkts-arkdata-distributedkvstore-singlekvstore-i.md#put)
 
 <!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback<void>): void--><!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -630,7 +644,7 @@ try {
 }
 ```
 
-<a id="put-1"></a>
+<a id="put2"></a>
 
 ## put
 
@@ -644,7 +658,7 @@ put(key: string, value: Uint8Array | string | number | boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** put
+**替代接口：** [put](arkts-arkdata-distributedkvstore-singlekvstore-i.md#put)
 
 <!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean): Promise<void>--><!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean): Promise<void>-End-->
 
@@ -680,6 +694,8 @@ try {
 }
 ```
 
+<a id="putbatch1"></a>
+
 ## putBatch
 
 ```TypeScript
@@ -692,7 +708,7 @@ putBatch(entries: Entry[], callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** putBatch
+**替代接口：** [putBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#putbatch)
 
 <!--Device-KVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void--><!--Device-KVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void-End-->
 
@@ -736,7 +752,7 @@ try {
 }
 ```
 
-<a id="putbatch-1"></a>
+<a id="putbatch2"></a>
 
 ## putBatch
 
@@ -750,7 +766,7 @@ putBatch(entries: Entry[]): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** putBatch
+**替代接口：** [putBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#putbatch)
 
 <!--Device-KVStore-putBatch(entries: Entry[]): Promise<void>--><!--Device-KVStore-putBatch(entries: Entry[]): Promise<void>-End-->
 
@@ -802,6 +818,8 @@ try {
 }
 ```
 
+<a id="rollback1"></a>
+
 ## rollback
 
 ```TypeScript
@@ -814,7 +832,7 @@ rollback(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** rollback
+**替代接口：** [rollback](arkts-arkdata-distributedkvstore-singlekvstore-i.md#rollback)
 
 <!--Device-KVStore-rollback(callback: AsyncCallback<void>): void--><!--Device-KVStore-rollback(callback: AsyncCallback<void>): void-End-->
 
@@ -843,7 +861,7 @@ try {
 }
 ```
 
-<a id="rollback-1"></a>
+<a id="rollback2"></a>
 
 ## rollback
 
@@ -857,7 +875,7 @@ rollback(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** rollback
+**替代接口：** [rollback](arkts-arkdata-distributedkvstore-singlekvstore-i.md#rollback)
 
 <!--Device-KVStore-rollback(): Promise<void>--><!--Device-KVStore-rollback(): Promise<void>-End-->
 
@@ -884,6 +902,8 @@ try {
 }
 ```
 
+<a id="setsyncrange1"></a>
+
 ## setSyncRange
 
 ```TypeScript
@@ -896,7 +916,7 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: Asy
 
 **废弃版本：** 9
 
-**替代接口：** setSyncRange
+**替代接口：** [setSyncRange](arkts-arkdata-distributedkvstore-singlekvstore-i.md#setsyncrange)
 
 <!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void--><!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void-End-->
 
@@ -925,7 +945,7 @@ try {
 }
 ```
 
-<a id="setsyncrange-1"></a>
+<a id="setsyncrange2"></a>
 
 ## setSyncRange
 
@@ -939,7 +959,7 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void
 
 **废弃版本：** 9
 
-**替代接口：** setSyncRange
+**替代接口：** [setSyncRange](arkts-arkdata-distributedkvstore-singlekvstore-i.md#setsyncrange)
 
 <!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>--><!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>-End-->
 
@@ -975,6 +995,8 @@ try {
 }
 ```
 
+<a id="starttransaction1"></a>
+
 ## startTransaction
 
 ```TypeScript
@@ -987,7 +1009,7 @@ startTransaction(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** startTransaction
+**替代接口：** [startTransaction](arkts-arkdata-distributedkvstore-singlekvstore-i.md#starttransaction)
 
 <!--Device-KVStore-startTransaction(callback: AsyncCallback<void>): void--><!--Device-KVStore-startTransaction(callback: AsyncCallback<void>): void-End-->
 
@@ -1036,7 +1058,7 @@ try {
 }
 ```
 
-<a id="starttransaction-1"></a>
+<a id="starttransaction2"></a>
 
 ## startTransaction
 
@@ -1050,7 +1072,7 @@ startTransaction(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** startTransaction
+**替代接口：** [startTransaction](arkts-arkdata-distributedkvstore-singlekvstore-i.md#starttransaction)
 
 <!--Device-KVStore-startTransaction(): Promise<void>--><!--Device-KVStore-startTransaction(): Promise<void>-End-->
 

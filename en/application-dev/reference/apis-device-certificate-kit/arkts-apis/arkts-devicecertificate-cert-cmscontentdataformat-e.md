@@ -22,7 +22,7 @@ Binary.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-CmsContentDataFormat-BINARY = 0--><!--Device-CmsContentDataFormat-BINARY = 0-End-->
 
@@ -38,7 +38,7 @@ Text.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-CmsContentDataFormat-TEXT = 1--><!--Device-CmsContentDataFormat-TEXT = 1-End-->
 

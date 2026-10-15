@@ -145,7 +145,7 @@ A constructor used to create a **LruBuffer** instance. The default capacity of t
 
 **Deprecated since:** 9
 
-**Substitutes:** constructor
+**Substitutes:** [constructor](arkts-arkts-util-lrucache-c.md#constructor)
 
 <!--Device-LruBuffer-constructor(capacity?: number)--><!--Device-LruBuffer-constructor(capacity?: number)-End-->
 
@@ -784,7 +784,7 @@ Total number of values in this cache.
 
 **Deprecated since:** 9
 
-**Substitutes:** length
+**Substitutes:** [length](arkts-arkts-util-lrucache-c.md#length)
 
 <!--Device-LruBuffer-length: number--><!--Device-LruBuffer-length: number-End-->
 

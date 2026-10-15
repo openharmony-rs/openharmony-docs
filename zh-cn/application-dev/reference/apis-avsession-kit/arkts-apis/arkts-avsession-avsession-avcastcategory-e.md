@@ -22,7 +22,7 @@ CATEGORY_LOCAL = 0
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastCategory-CATEGORY_LOCAL = 0--><!--Device-AVCastCategory-CATEGORY_LOCAL = 0-End-->
 
@@ -38,7 +38,7 @@ CATEGORY_REMOTE = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastCategory-CATEGORY_REMOTE = 1--><!--Device-AVCastCategory-CATEGORY_REMOTE = 1-End-->
 

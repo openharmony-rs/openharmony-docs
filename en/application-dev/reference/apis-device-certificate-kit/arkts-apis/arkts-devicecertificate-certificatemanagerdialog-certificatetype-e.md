@@ -28,22 +28,6 @@ CA certificate.
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
-## CREDENTIAL_USER
-
-```TypeScript
-CREDENTIAL_USER = 2
-```
-
-User public credential.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-CertificateType-CREDENTIAL_USER = 2--><!--Device-CertificateType-CREDENTIAL_USER = 2-End-->
-
-**System capability:** SystemCapability.Security.CertificateManagerDialog
-
 ## CREDENTIAL_APP
 
 ```TypeScript
@@ -57,6 +41,22 @@ Private credential of an application.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-CertificateType-CREDENTIAL_APP = 3--><!--Device-CertificateType-CREDENTIAL_APP = 3-End-->
+
+**System capability:** SystemCapability.Security.CertificateManagerDialog
+
+## CREDENTIAL_SYSTEM
+
+```TypeScript
+CREDENTIAL_SYSTEM = 5
+```
+
+System credential.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CertificateType-CREDENTIAL_SYSTEM = 5--><!--Device-CertificateType-CREDENTIAL_SYSTEM = 5-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
@@ -76,18 +76,18 @@ USB Key credential.
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
-## CREDENTIAL_SYSTEM
+## CREDENTIAL_USER
 
 ```TypeScript
-CREDENTIAL_SYSTEM = 5
+CREDENTIAL_USER = 2
 ```
 
-System credential.
+User public credential.
 
-**Since:** 23
+**Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-CertificateType-CREDENTIAL_SYSTEM = 5--><!--Device-CertificateType-CREDENTIAL_SYSTEM = 5-End-->
+<!--Device-CertificateType-CREDENTIAL_USER = 2--><!--Device-CertificateType-CREDENTIAL_USER = 2-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog

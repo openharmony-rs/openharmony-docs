@@ -4,7 +4,7 @@
 interface PdfConfiguration
 ```
 
-Input parameter of the [createPdf](arkts-arkweb-webview-webviewcontroller-c.md#createpdf) function.
+Input parameter of the [createPdf](arkts-arkweb-webview-webviewcontroller-c.md#createpdf1) function.
 
 > **NOTE:** 
 > 

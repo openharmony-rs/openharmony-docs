@@ -39,6 +39,7 @@ Checks whether the priority notification is enabled.
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,3 +52,5 @@ notificationManager.isPriorityEnabled().then((result : boolean) => {
     hilog.error(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

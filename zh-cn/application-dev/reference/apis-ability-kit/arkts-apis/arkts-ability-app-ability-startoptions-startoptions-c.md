@@ -4,7 +4,7 @@
 declare class StartOptions
 ```
 
-StartOptions可以作为启动UIAbility接口（例如[startAbility()](arkts-ability-uiabilitycontext-c.md#startability-1)）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
+StartOptions可以作为启动UIAbility接口（例如[startAbility()](arkts-ability-uiabilitycontext-c.md#startability2)）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
 
 **起始版本：** 9
 
@@ -32,7 +32,7 @@ completionHandler?: CompletionHandler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-StartOptions-completionHandler?: CompletionHandler--><!--Device-StartOptions-completionHandler?: CompletionHandler-End-->
 
@@ -62,7 +62,7 @@ displayId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-StartOptions-displayId?: long--><!--Device-StartOptions-displayId?: long-End-->
 
@@ -102,7 +102,7 @@ maxWindowHeight?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -124,7 +124,7 @@ maxWindowWidth?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -146,7 +146,7 @@ minWindowHeight?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -168,7 +168,7 @@ minWindowWidth?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -177,6 +177,31 @@ minWindowWidth?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartOptions-minWindowWidth?: int--><!--Device-StartOptions-minWindowWidth?: int-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## preferDefaultBrowser
+
+```TypeScript
+preferDefaultBrowser?: boolean
+```
+
+当目标URI为**http**或**https**链接时，是否优先使用默认浏览器打开该链接。取值为**true**时表示使用默认浏览器，取值为**false**时表示使用正常的startAbility流程。
+
+**约束：**
+
+1. 该功能仅在目标URI以**http**或**https**开头时生效。
+2. 若无默认浏览器可用，则使用正常的startAbility流程。
+
+**类型：** boolean
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-StartOptions-preferDefaultBrowser?: boolean--><!--Device-StartOptions-preferDefaultBrowser?: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -312,7 +337,7 @@ supportWindowModes?: Array<bundleManager.SupportWindowMode>
 - SPLIT：支持分屏模式。通常需要配合FULL_SCREEN或FLOATING一起使用，不建议只配置SPLIT。当仅配置SPLIT时，2in1设备上的窗口默认为悬浮窗模式，支持进入分屏模式；Tablet设备上的窗口默认为全屏模  
 式，支持进入分屏模式。
 
-在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下同时配置FULL_SCREEN和SPLIT时，如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
+在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下同时配置FULL_SCREEN和SPLIT时，如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
 
 **约束：**
 
@@ -358,7 +383,7 @@ windowHeight?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -380,7 +405,7 @@ windowLeft?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -420,7 +445,7 @@ windowTop?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -444,7 +469,7 @@ windowWidth?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
+该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** number
 
@@ -468,7 +493,7 @@ withAnimation?: boolean
 
 **约束：**
 
-该功能仅在[自由窗口状态](../../../windowmanager/window-terminology.md#freeform-window自由窗口)下生效，且调用方和目标方必须是同一应用。
+该功能仅在[自由窗口状态](../../../windowmanager/window-terminology.md#自由窗口)下生效，且调用方和目标方必须是同一应用。
 
 此参数不填时，默认为undefined，跟随系统默认动画效果。
 

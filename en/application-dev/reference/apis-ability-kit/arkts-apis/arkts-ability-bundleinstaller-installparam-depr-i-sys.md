@@ -4,7 +4,12 @@
 export interface InstallParam
 ```
 
-Describes the parameters required for bundle installation, recovery, or uninstall.
+
+> **NOTE:** 
+> 
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use
+> [InstallParam](arkts-ability-installer-installparam-i-sys.md) instead.
+> Describes the parameters required for bundle installation, recovery, or uninstall.
 
 **Since:** 7
 
@@ -24,13 +29,7 @@ Describes the parameters required for bundle installation, recovery, or uninstal
 installFlag: number
 ```
 
-Installation flag.
-
-The value can be:
-
-**1** (default): overwrite installation.
-
-**16**: installation-free.
+Install flag. Default value: 1. </br>Value range:</br>1: overwrite installation.</br>16: free installation.
 
 **Type:** number
 
@@ -78,7 +77,7 @@ Whether to retain the bundle data when the application is uninstalled. The defau
 userId: number
 ```
 
-User ID. The default value is the user ID of the caller.
+User ID. Default value: the userId of the caller.
 
 **Type:** number
 

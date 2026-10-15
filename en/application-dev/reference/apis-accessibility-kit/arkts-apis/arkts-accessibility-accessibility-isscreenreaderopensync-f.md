@@ -4,7 +4,7 @@
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## isScreenReaderOpenSync
@@ -17,9 +17,9 @@ Checks whether screen reader mode is enabled.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-accessibility-function isScreenReaderOpenSync(): boolean--><!--Device-accessibility-function isScreenReaderOpenSync(): boolean-End-->
 

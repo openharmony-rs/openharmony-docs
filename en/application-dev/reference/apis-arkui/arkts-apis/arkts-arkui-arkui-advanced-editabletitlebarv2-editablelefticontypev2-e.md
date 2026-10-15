@@ -4,7 +4,7 @@
 export declare enum EditableLeftIconTypeV2
 ```
 
-Declaration of the left icon type.
+Enumerates the left icon types.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Declaration of the left icon type.
 Back = 0
 ```
 
-The back type.
+Back icon type. Tapping it performs the route back operation by default.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ The back type.
 Cancel = 1
 ```
 
-The cancel type.
+Cancel icon type. Tapping it performs no default operation, and a custom callback is required.
 
 **Since:** 26.0.0
 

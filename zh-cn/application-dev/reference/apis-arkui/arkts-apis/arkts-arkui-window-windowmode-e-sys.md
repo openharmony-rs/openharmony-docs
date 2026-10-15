@@ -14,17 +14,17 @@ enum WindowMode
 
 **系统接口：** 此接口为系统接口。
 
-## UNDEFINED
+## FLOATING
 
 ```TypeScript
-UNDEFINED = 1
+FLOATING = 5
 ```
 
-表示APP未定义窗口模式。
+表示APP自由悬浮形式窗口模式。
 
 **起始版本：** 7
 
-<!--Device-WindowMode-UNDEFINED = 1--><!--Device-WindowMode-UNDEFINED = 1-End-->
+<!--Device-WindowMode-FLOATING = 5--><!--Device-WindowMode-FLOATING = 5-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -78,17 +78,17 @@ SECONDARY = 4
 
 **系统接口：** 此接口为系统接口。
 
-## FLOATING
+## UNDEFINED
 
 ```TypeScript
-FLOATING = 5
+UNDEFINED = 1
 ```
 
-表示APP自由悬浮形式窗口模式。
+表示APP未定义窗口模式。
 
 **起始版本：** 7
 
-<!--Device-WindowMode-FLOATING = 5--><!--Device-WindowMode-FLOATING = 5-End-->
+<!--Device-WindowMode-UNDEFINED = 1--><!--Device-WindowMode-UNDEFINED = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -22,10 +22,10 @@ Defines the callback type used in [onGestureCollectIntercept](arkts-arkui-common
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | recognizers | Array&lt;[GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)&gt; | Yes | Gesture recognizer objects of the component on the response chain. |
-| touchRecognizers | Array&lt;[TouchRecognizer](arkts-arkui-tapgesture-comp-touchrecognizer-c.md)&gt; | No | Touch recognizer objects of the component on the response chain.<br>The default value is **null**. |
+| touchRecognizers | Array&lt;[TouchRecognizer](arkts-arkui-tapgesture-comp-touchrecognizer-c.md)&gt; | No | Touch recognizer objects of the component on the response chain.<br>The default value is **null**, indicating that there is no touch recognizer object on the response chain. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [GestureCollectIntervention](../arkts-apis/arkts-arkui-gesturecollectintervention-e.md) | Gesture collection intervention result. |
+| [GestureCollectIntervention](../arkts-apis/arkts-arkui-gesturecollectintervention-e.md) | Gesture collection intervention result.<br>If the return value is not a **GestureCollectIntervention** enum value, it is processed as **GestureCollectIntervention.CONTINUE**. |

@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryabilityinfo1"></a>
+
 ## queryAbilityInfo
 
 ```TypeScript
@@ -32,7 +34,7 @@ function queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallb
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | abilityFlags | number | 是 | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](arkts-ability-bundlemanager-abilityflag-e.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;AbilityInfo&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<AbilityInfo>；否则为错误对象。 |
 
 **错误码：**
 
@@ -40,12 +42,13 @@ function queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -74,8 +77,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="queryabilityinfo-1"></a>
+
+<a id="queryabilityinfo2"></a>
 
 ## queryAbilityInfo
 
@@ -104,7 +109,7 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId: number, call
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | abilityFlags | number | 是 | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](arkts-ability-bundlemanager-abilityflag-e.md)。 |
 | userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;AbilityInfo&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<AbilityInfo>；否则为错误对象。 |
 
 **错误码：**
 
@@ -112,13 +117,14 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId: number, call
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -148,8 +154,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="queryabilityinfo-2"></a>
+
+<a id="queryabilityinfo3"></a>
 
 ## queryAbilityInfo
 
@@ -183,7 +191,7 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | Promise对象，返回Array&lt;AbilityInfo&gt;。 |
+| Promise&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | Promise对象，返回Array<[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)>。 |
 
 **错误码：**
 
@@ -191,13 +199,14 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Pr
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -249,8 +258,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="queryabilityinfo-3"></a>
+
+<a id="queryabilityinfo4"></a>
 
 ## queryAbilityInfo
 
@@ -292,13 +303,14 @@ function queryAbilityInfo(wants: Array<Want>, abilityFlags: number, userId?: num
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -329,3 +341,5 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

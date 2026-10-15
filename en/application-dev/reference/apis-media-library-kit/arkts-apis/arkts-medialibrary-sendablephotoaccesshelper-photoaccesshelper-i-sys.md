@@ -20,6 +20,8 @@ Helper functions to access photos and albums.
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+<a id="createasset1"></a>
+
 ## createAsset
 
 ```TypeScript
@@ -71,6 +73,7 @@ For API versions 10 to 17, the following characters are considered invalid: . ..
 | 14000001 | Invalid display name. |
 | 14000011 | Internal system error. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
@@ -89,7 +92,9 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 }
 ```
 
-<a id="createasset-1"></a>
+<!--DelEnd-->
+
+<a id="createasset2"></a>
 
 ## createAsset
 
@@ -143,6 +148,7 @@ For API versions 10 to 17, the following characters are considered invalid: . ..
 | 14000001 | Invalid display name. |
 | 14000011 | Internal system error. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
@@ -163,6 +169,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getHiddenAlbums
 
@@ -204,6 +212,7 @@ Obtains hidden albums based on the specified display mode and retrieval options.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
@@ -260,6 +269,8 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
 }
 ```
 
+<!--DelEnd-->
+
 ## getPhotoAssets
 
 ```TypeScript
@@ -298,6 +309,7 @@ Converts the **ValuesBucket** record to a **PhotoAsset** object.
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. Invalid value type in ValuesBucket; <br>2. Missing required column in ValuesBucket; <br>3. Array size exceeds 500. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](arkts-medialibrary-file-sendablephotoaccesshelper.md).
@@ -324,6 +336,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getShareAlbums
 

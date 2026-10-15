@@ -16,7 +16,7 @@ function getGlobalWindowMode(displayId?: number): Promise<number>
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-window-function getGlobalWindowMode(displayId?: long): Promise<int>--><!--Device-window-function getGlobalWindowMode(displayId?: long): Promise<int>-End-->
 
@@ -40,7 +40,7 @@ function getGlobalWindowMode(displayId?: number): Promise<number>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. function getGlobalWindowMode can not work correctly due to limited device capabilities. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal task error. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range;         2. The parameter format is incorrect. |
 
 **示例**
 

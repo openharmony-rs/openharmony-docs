@@ -6,6 +6,8 @@ declare type PX = `${number}px`
 
 Defines a length in px.
 
+**Type:** `${number}px`
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines a length in px.
 <!--Device-unnamed-declare type PX = `${number}px`--><!--Device-unnamed-declare type PX = `${number}px`-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** `${number}px`

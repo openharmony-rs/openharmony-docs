@@ -30,7 +30,7 @@ customDensity: number
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowDensityInfo-customDensity: double--><!--Device-WindowDensityInfo-customDensity: double-End-->
 
@@ -48,7 +48,7 @@ defaultDensity: number
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowDensityInfo-defaultDensity: double--><!--Device-WindowDensityInfo-defaultDensity: double-End-->
 
@@ -66,7 +66,7 @@ systemDensity: number
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowDensityInfo-systemDensity: double--><!--Device-WindowDensityInfo-systemDensity: double-End-->
 

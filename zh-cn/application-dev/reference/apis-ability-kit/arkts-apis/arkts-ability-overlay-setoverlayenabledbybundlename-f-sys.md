@@ -6,6 +6,8 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
+<a id="setoverlayenabledbybundlename1"></a>
+
 ## setOverlayEnabledByBundleName
 
 ```TypeScript
@@ -33,7 +35,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 | bundleName | string | 是 | 指定应用的bundle名称。 |
 | moduleName | string | 是 | 指定应用的overlay特征module的名称。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当设置指定应用的overlay module的禁用使能状态成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当设置指定应用的overlay module的禁用使能状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -47,6 +49,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 | [17700032](../errorcode-bundle.md#17700032-指定的应用不包含overlay特征的module) | The specified bundle does not contain any overlay module. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -73,8 +76,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setoverlayenabledbybundlename-1"></a>
+
+<a id="setoverlayenabledbybundlename2"></a>
 
 ## setOverlayEnabledByBundleName
 
@@ -84,7 +89,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 
 设置指定应用的overlay module的禁用使能状态。使用Promise异步回调。
 
-指定应用是调用方自身时不需要权限。
+指定应用是调用方自身时不需要权限。接口调用失败时可能返回null，需校验返回值后使用。
 
 **起始版本：** 10
 
@@ -122,6 +127,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 | [17700032](../errorcode-bundle.md#17700032-指定的应用不包含overlay特征的module) | The specified bundle does not contain any overlay module. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -146,3 +152,5 @@ try {
   console.error('setOverlayEnabledByBundleName failed due to err code: ' + code + ' ' + 'message:' + message);
 }
 ```
+
+<!--DelEnd-->

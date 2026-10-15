@@ -6,6 +6,8 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -31,7 +33,7 @@ Starts a ParticleAbility. This API uses an asynchronous callback to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | Yes | Ability to start. |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | Yes | Ability to start. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the ParticleAbility is started, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Examples**
@@ -64,7 +66,7 @@ particleAbility.startAbility(
 ```
 
 
-<a id="startability-1"></a>
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -91,7 +93,7 @@ Starts a ParticleAbility. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | Yes | Ability to start. |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | Yes | Ability to start. |
 
 **Return value:**
 

@@ -14,17 +14,17 @@ Enumerates the background network policies.
 
 **System API:** This is a system API.
 
-## NET_BACKGROUND_POLICY_NONE
+## NET_BACKGROUND_POLICY_DISABLE
 
 ```TypeScript
-NET_BACKGROUND_POLICY_NONE = 0
+NET_BACKGROUND_POLICY_DISABLE = 2
 ```
 
-No background network policy is specified. This is the default value.
+Applications running in the background are not allowed to access a metered network.
 
 **Since:** 10
 
-<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0-End-->
+<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -46,17 +46,17 @@ Background applications are allowed to access a metered network.
 
 **System API:** This is a system API.
 
-## NET_BACKGROUND_POLICY_DISABLE
+## NET_BACKGROUND_POLICY_NONE
 
 ```TypeScript
-NET_BACKGROUND_POLICY_DISABLE = 2
+NET_BACKGROUND_POLICY_NONE = 0
 ```
 
-Applications running in the background are not allowed to access a metered network.
+No background network policy is specified. This is the default value.
 
 **Since:** 10
 
-<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_DISABLE = 2-End-->
+<!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0--><!--Device-NetBackgroundPolicy-NET_BACKGROUND_POLICY_NONE = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

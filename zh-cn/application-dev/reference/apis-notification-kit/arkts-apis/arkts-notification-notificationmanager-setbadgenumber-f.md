@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setbadgenumber1"></a>
+
 ## setBadgeNumber
 
 ```TypeScript
@@ -22,7 +24,7 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) 获取当前应用的通知数量。
+**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount1) 获取当前应用的通知数量。
 
 **参数：**
 
@@ -35,7 +37,7 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -59,7 +61,7 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
 
-<a id="setbadgenumber-1"></a>
+<a id="setbadgenumber2"></a>
 
 ## setBadgeNumber
 
@@ -77,7 +79,7 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) 获取当前应用的通知数量。
+**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount1) 获取当前应用的通知数量。
 
 **参数：**
 
@@ -95,7 +97,7 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |

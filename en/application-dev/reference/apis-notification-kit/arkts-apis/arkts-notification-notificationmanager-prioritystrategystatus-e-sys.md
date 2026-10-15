@@ -14,6 +14,60 @@ Describes the application notification strategy.
 
 **System API:** This is a system API.
 
+## STATUS_ALL_PRIORITY
+
+```TypeScript
+STATUS_ALL_PRIORITY = 1 << 5
+```
+
+All.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PriorityStrategyStatus-STATUS_ALL_PRIORITY = 1 << 5--><!--Device-PriorityStrategyStatus-STATUS_ALL_PRIORITY = 1 << 5-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## STATUS_APPLICATION_DEFINED
+
+```TypeScript
+STATUS_APPLICATION_DEFINED = 1 << 4
+```
+
+Only application-defined.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PriorityStrategyStatus-STATUS_APPLICATION_DEFINED = 1 << 4--><!--Device-PriorityStrategyStatus-STATUS_APPLICATION_DEFINED = 1 << 4-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## STATUS_INTELLIGENT
+
+```TypeScript
+STATUS_INTELLIGENT = 1 << 2
+```
+
+Only intelligent recognition.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PriorityStrategyStatus-STATUS_INTELLIGENT = 1 << 2--><!--Device-PriorityStrategyStatus-STATUS_INTELLIGENT = 1 << 2-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
 ## STATUS_SYSTEM_DEFAULT
 
 ```TypeScript
@@ -50,24 +104,6 @@ Only system rule.
 
 **System API:** This is a system API.
 
-## STATUS_INTELLIGENT
-
-```TypeScript
-STATUS_INTELLIGENT = 1 << 2
-```
-
-Only intelligent recognition.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PriorityStrategyStatus-STATUS_INTELLIGENT = 1 << 2--><!--Device-PriorityStrategyStatus-STATUS_INTELLIGENT = 1 << 2-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
 ## STATUS_USER_DEFINED
 
 ```TypeScript
@@ -81,42 +117,6 @@ Only user-defined.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PriorityStrategyStatus-STATUS_USER_DEFINED = 1 << 3--><!--Device-PriorityStrategyStatus-STATUS_USER_DEFINED = 1 << 3-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
-## STATUS_APPLICATION_DEFINED
-
-```TypeScript
-STATUS_APPLICATION_DEFINED = 1 << 4
-```
-
-Only application-defined.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PriorityStrategyStatus-STATUS_APPLICATION_DEFINED = 1 << 4--><!--Device-PriorityStrategyStatus-STATUS_APPLICATION_DEFINED = 1 << 4-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
-## STATUS_ALL_PRIORITY
-
-```TypeScript
-STATUS_ALL_PRIORITY = 1 << 5
-```
-
-All.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PriorityStrategyStatus-STATUS_ALL_PRIORITY = 1 << 5--><!--Device-PriorityStrategyStatus-STATUS_ALL_PRIORITY = 1 << 5-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

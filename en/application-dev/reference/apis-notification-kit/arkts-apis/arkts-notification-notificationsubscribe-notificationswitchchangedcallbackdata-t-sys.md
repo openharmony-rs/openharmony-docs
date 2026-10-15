@@ -6,6 +6,8 @@ export type NotificationSwitchChangedCallbackData = _NotificationSwitchChangedCa
 
 Describes the notification switch state changes callback data.
 
+**Type:** _NotificationSwitchChangedCallbackData
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Describes the notification switch state changes callback data.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationSwitchChangedCallbackData

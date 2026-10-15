@@ -12,45 +12,17 @@ export declare enum ToolType
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## FINGER
+## AIRBRUSH
 
 ```TypeScript
-FINGER = 0
+AIRBRUSH = 5
 ```
 
-手指。
+气笔。
 
 **起始版本：** 9
 
-<!--Device-ToolType-FINGER = 0--><!--Device-ToolType-FINGER = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-## PEN
-
-```TypeScript
-PEN = 1
-```
-
-笔。
-
-**起始版本：** 9
-
-<!--Device-ToolType-PEN = 1--><!--Device-ToolType-PEN = 1-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-## RUBBER
-
-```TypeScript
-RUBBER = 2
-```
-
-橡皮擦。
-
-**起始版本：** 9
-
-<!--Device-ToolType-RUBBER = 2--><!--Device-ToolType-RUBBER = 2-End-->
+<!--Device-ToolType-AIRBRUSH = 5--><!--Device-ToolType-AIRBRUSH = 5-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -68,31 +40,31 @@ BRUSH = 3
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## PENCIL
+## FINGER
 
 ```TypeScript
-PENCIL = 4
+FINGER = 0
 ```
 
-铅笔。
+手指。
 
 **起始版本：** 9
 
-<!--Device-ToolType-PENCIL = 4--><!--Device-ToolType-PENCIL = 4-End-->
+<!--Device-ToolType-FINGER = 0--><!--Device-ToolType-FINGER = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## AIRBRUSH
+## LENS
 
 ```TypeScript
-AIRBRUSH = 5
+LENS = 7
 ```
 
-气笔。
+透镜。
 
 **起始版本：** 9
 
-<!--Device-ToolType-AIRBRUSH = 5--><!--Device-ToolType-AIRBRUSH = 5-End-->
+<!--Device-ToolType-LENS = 7--><!--Device-ToolType-LENS = 7-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -110,16 +82,44 @@ MOUSE = 6
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## LENS
+## PEN
 
 ```TypeScript
-LENS = 7
+PEN = 1
 ```
 
-透镜。
+笔。
 
 **起始版本：** 9
 
-<!--Device-ToolType-LENS = 7--><!--Device-ToolType-LENS = 7-End-->
+<!--Device-ToolType-PEN = 1--><!--Device-ToolType-PEN = 1-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## PENCIL
+
+```TypeScript
+PENCIL = 4
+```
+
+铅笔。
+
+**起始版本：** 9
+
+<!--Device-ToolType-PENCIL = 4--><!--Device-ToolType-PENCIL = 4-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## RUBBER
+
+```TypeScript
+RUBBER = 2
+```
+
+橡皮擦。
+
+**起始版本：** 9
+
+<!--Device-ToolType-RUBBER = 2--><!--Device-ToolType-RUBBER = 2-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core

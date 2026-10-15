@@ -193,7 +193,7 @@ static getDefaultRenderContext(): RenderContext | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) &#124; null | 返回当前对象关联的渲染上下文，若对象尚未关联任何渲染上下文，则返回null。@static |
+| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) &#124; null | 返回当前对象关联的渲染上下文，若对象尚未关联任何渲染上下文，则返回null。 |
 
 **示例**
 
@@ -390,6 +390,8 @@ function ImportSceneTest() {
 }
 ```
 
+<a id="load1"></a>
+
 ## load
 
 ```TypeScript
@@ -414,7 +416,7 @@ static load(uri? : ResourceStr): Promise<Scene>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise对象，返回场景对象。@static |
+| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise对象，返回场景对象。 |
 
 **示例**
 

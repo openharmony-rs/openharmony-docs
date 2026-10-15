@@ -6,13 +6,15 @@
 import { router } from '@kit.ArkUI';
 ```
 
+<a id="replaceurl1"></a>
+
 ## replaceUrl
 
 ```TypeScript
 function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one in the application and destroys the current page.
+Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 > **NOTE:** 
 > 
@@ -22,7 +24,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl1)(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -35,7 +37,7 @@ Replaces the current page with another one in the application and destroys the c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | Yes | Description of the new page. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result.<br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
@@ -71,7 +73,7 @@ router.replaceUrl({
 ```
 
 
-<a id="replaceurl-1"></a>
+<a id="replaceurl2"></a>
 
 ## replaceUrl
 
@@ -89,7 +91,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)(options: router.RouterOptions)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl2)(options: router.RouterOptions)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -107,7 +109,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -145,7 +147,7 @@ router.replaceUrl({
 ```
 
 
-<a id="replaceurl-2"></a>
+<a id="replaceurl3"></a>
 
 ## replaceUrl
 
@@ -153,7 +155,7 @@ router.replaceUrl({
 function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one in the application and destroys the current page.
+Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 > **NOTE:** 
 > 
@@ -163,7 +165,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-2)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl3)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -176,8 +178,8 @@ Replaces the current page with another one in the application and destroys the c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | Yes | Description of the new page. |
-| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Routing mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Mode used for replacing the page. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result.<br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
@@ -213,7 +215,7 @@ router.replaceUrl({
 ```
 
 
-<a id="replaceurl-3"></a>
+<a id="replaceurl4"></a>
 
 ## replaceUrl
 
@@ -221,7 +223,7 @@ router.replaceUrl({
 function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one in the application and destroys the current page.
+Replaces the current page with another one in the application and destroys the current page. This API cannot be used to configure page transition effects. To configure page transition effects, use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 > **NOTE:** 
 > 
@@ -231,7 +233,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-3)(options: router.RouterOptions, mode: router.RouterMode)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl4)(options: router.RouterOptions, mode: router.RouterMode)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -244,13 +246,13 @@ Replaces the current page with another one in the application and destroys the c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | Yes | Description of the new page. |
-| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Routing mode. |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Mode for page replacement. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

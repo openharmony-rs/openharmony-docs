@@ -8,7 +8,7 @@ declare interface ResponseRegion
 
 > **说明：** 
 > 
-> - 当父组件设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)为true时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
+> - 当父组件设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)为true时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
 > 
 > - 如果触摸热区未配置输入工具类型，触摸位置和大小均采用默认值。
 > 

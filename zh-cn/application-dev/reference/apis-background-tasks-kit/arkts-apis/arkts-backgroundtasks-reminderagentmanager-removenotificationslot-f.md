@@ -6,6 +6,8 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="removenotificationslot1"></a>
+
 ## removeNotificationSlot
 
 ```TypeScript
@@ -31,7 +33,7 @@ function removeNotificationSlot(slotType: notification.SlotType, callback: Async
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -51,7 +53,7 @@ reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT
 ```
 
 
-<a id="removenotificationslot-1"></a>
+<a id="removenotificationslot2"></a>
 
 ## removeNotificationSlot
 
@@ -83,7 +85,7 @@ function removeNotificationSlot(slotType: notification.SlotType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

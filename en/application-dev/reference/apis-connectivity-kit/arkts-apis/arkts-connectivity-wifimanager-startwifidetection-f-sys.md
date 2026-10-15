@@ -34,6 +34,7 @@ Start Wi-Fi network detection
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta-disabled) | Wi-Fi STA disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

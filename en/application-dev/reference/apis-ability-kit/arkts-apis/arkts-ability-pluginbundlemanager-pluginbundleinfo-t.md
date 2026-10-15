@@ -4,7 +4,9 @@
 export type PluginBundleInfo = _PluginBundleInfo
 ```
 
-Indicates the information about a plugin.
+Plugin information.
+
+**Type:** _PluginBundleInfo
 
 **Since:** 26.0.0
 
@@ -13,5 +15,3 @@ Indicates the information about a plugin.
 <!--Device-pluginBundleManager-export type PluginBundleInfo = _PluginBundleInfo--><!--Device-pluginBundleManager-export type PluginBundleInfo = _PluginBundleInfo-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Type:** _PluginBundleInfo

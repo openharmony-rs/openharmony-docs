@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="unregisterapplicationstateobserver1"></a>
+
 ## unregisterApplicationStateObserver
 
 ```TypeScript
@@ -34,6 +36,7 @@ Unregister application state observer.
 | observerId | number | Yes | Indicates the number code of the observer. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Represents the specified callback method. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,8 +55,10 @@ function unregisterApplicationStateObserverCallback(err: BusinessError) {
 appManager.unregisterApplicationStateObserver(observerId, unregisterApplicationStateObserverCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="unregisterapplicationstateobserver-1"></a>
+
+<a id="unregisterapplicationstateobserver2"></a>
 
 ## unregisterApplicationStateObserver
 
@@ -89,6 +94,7 @@ Unregister application state observer.
 | --- | --- |
 | Promise&lt;void&gt; | The promise returned by the function. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -105,3 +111,5 @@ appManager.unregisterApplicationStateObserver(observerId)
     console.error(`unregisterApplicationStateObserver failed, err code: ${err.code}, err msg: ${err.message}.`);
 });
 ```
+
+<!--DelEnd-->

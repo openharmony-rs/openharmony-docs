@@ -214,7 +214,7 @@ start(elementName: ElementName, aidList: string[]): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HceService-start(elementName: ElementName, aidList: string[]): void--><!--Device-HceService-start(elementName: ElementName, aidList: string[]): void-End-->
 
@@ -250,7 +250,7 @@ stop(elementName: ElementName): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HceService-stop(elementName: ElementName): void--><!--Device-HceService-stop(elementName: ElementName): void-End-->
 
@@ -271,6 +271,8 @@ stop(elementName: ElementName): void
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3100301](../errorcode-nfc.md#3100301-nfc卡模拟状态异常) | Card emulation running state is abnormal in service. |
 
+<a id="transmit1"></a>
+
 ## transmit
 
 ```TypeScript
@@ -285,7 +287,7 @@ transmit(response: number[]): Promise<void>
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HceService-transmit(response: int[]): Promise<void>--><!--Device-HceService-transmit(response: int[]): Promise<void>-End-->
 
@@ -346,7 +348,7 @@ hceService.transmit(responseData).then(() => {
 console.info("transmit Promise end.");
 ```
 
-<a id="transmit-1"></a>
+<a id="transmit2"></a>
 
 ## transmit
 
@@ -362,7 +364,7 @@ transmit(response: number[], callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HceService-transmit(response: int[], callback: AsyncCallback<void>): void--><!--Device-HceService-transmit(response: int[], callback: AsyncCallback<void>): void-End-->
 

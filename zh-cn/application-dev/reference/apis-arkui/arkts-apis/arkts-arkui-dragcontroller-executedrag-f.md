@@ -6,6 +6,8 @@
 import { dragController } from '@kit.ArkUI';
 ```
 
+<a id="executedrag1"></a>
+
 ## executeDrag
 
 ```TypeScript
@@ -19,7 +21,7 @@ Execute a drag event.
 
 **废弃版本：** 18
 
-**替代接口：** executeDrag
+**替代接口：** [executeDrag](arkts-arkui-arkui-uicontext-dragcontroller-c.md#executedrag)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,7 +50,7 @@ Execute a drag event.
 
 > 说明：
 > 
-> 推荐通过使用UIContext中的[getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI上下文关联的DragController对象。
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI上下文关联的DragController对象。
 
 ```TypeScript
 import { dragController } from '@kit.ArkUI';
@@ -93,10 +95,12 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               }
-              let eve: DragInfo = new DragInfo();
               this.getUIContext().getDragController().executeDrag(() => {
                 this.DraggingBuilder()
               }, dragInfo, (err, eve) => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                if (err || !eve?.event) {
+                  return;
+                }
                 if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -128,7 +132,7 @@ struct DragControllerPage {
 ```
 
 
-<a id="executedrag-1"></a>
+<a id="executedrag2"></a>
 
 ## executeDrag
 
@@ -148,7 +152,7 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 **废弃版本：** 18
 
-**替代接口：** executeDrag
+**替代接口：** [executeDrag](arkts-arkui-arkui-uicontext-dragcontroller-c.md#executedrag)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -183,7 +187,7 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 > 说明：
 > 
-> 推荐通过使用UIContext中的[getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI上下文关联的DragController对象。
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI上下文关联的DragController对象。
 
 ```TypeScript
 import { dragController } from '@kit.ArkUI';
@@ -257,7 +261,6 @@ struct DragControllerPage {
                 },
                 extraInfo: "DragItemInfoTest"
               }
-              let eve: DragInfo = new DragInfo();
               this.getUIContext()
                 .getDragController()
                 .executeDrag(dragItemInfo, dragInfo) // 建议使用 this.getUIContext().getDragController().executeDrag()接口

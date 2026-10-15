@@ -28,22 +28,6 @@ CONFLICT_POLICY_DEFAULT = 0
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## CONFLICT_POLICY_TIME_FIRST
-
-```TypeScript
-CONFLICT_POLICY_TIME_FIRST = 1
-```
-
-基于时间优先的冲突策略。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AssetConflictPolicy-CONFLICT_POLICY_TIME_FIRST = 1--><!--Device-AssetConflictPolicy-CONFLICT_POLICY_TIME_FIRST = 1-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## CONFLICT_POLICY_TEMP_PATH
 
 ```TypeScript
@@ -57,5 +41,21 @@ CONFLICT_POLICY_TEMP_PATH = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AssetConflictPolicy-CONFLICT_POLICY_TEMP_PATH = 2--><!--Device-AssetConflictPolicy-CONFLICT_POLICY_TEMP_PATH = 2-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## CONFLICT_POLICY_TIME_FIRST
+
+```TypeScript
+CONFLICT_POLICY_TIME_FIRST = 1
+```
+
+基于时间优先的冲突策略。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AssetConflictPolicy-CONFLICT_POLICY_TIME_FIRST = 1--><!--Device-AssetConflictPolicy-CONFLICT_POLICY_TIME_FIRST = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

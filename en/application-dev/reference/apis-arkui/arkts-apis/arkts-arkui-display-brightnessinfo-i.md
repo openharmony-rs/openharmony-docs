@@ -34,7 +34,7 @@ Position of the brightness bar corresponding to the current screen brightness. T
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-BrightnessInfo-readonly brightnessPosition?: double--><!--Device-BrightnessInfo-readonly brightnessPosition?: double-End-->
 
@@ -52,7 +52,7 @@ Dynamic brightness headroom. The value is a floating-point number greater than 0
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-BrightnessInfo-readonly currentHeadroom: double--><!--Device-BrightnessInfo-readonly currentHeadroom: double-End-->
 
@@ -70,7 +70,7 @@ Maximum brightness headroom. The value is a floating-point number greater than 0
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-BrightnessInfo-readonly maxHeadroom: double--><!--Device-BrightnessInfo-readonly maxHeadroom: double-End-->
 
@@ -88,7 +88,7 @@ Screen brightness, in nit. The value is a floating-point number greater than 0. 
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-BrightnessInfo-readonly sdrNits: double--><!--Device-BrightnessInfo-readonly sdrNits: double-End-->
 

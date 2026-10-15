@@ -38,7 +38,7 @@ Indicates the ciphertext data, also known as C2.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SM2CipherTextSpec-cipherTextData: Uint8Array--><!--Device-SM2CipherTextSpec-cipherTextData: Uint8Array-End-->
 
@@ -56,7 +56,7 @@ Indicates the hash data, also known as C3.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SM2CipherTextSpec-hashData: Uint8Array--><!--Device-SM2CipherTextSpec-hashData: Uint8Array-End-->
 
@@ -74,7 +74,7 @@ Indicates the x coordinate, also known as C1x.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SM2CipherTextSpec-xCoordinate: bigint--><!--Device-SM2CipherTextSpec-xCoordinate: bigint-End-->
 
@@ -92,7 +92,7 @@ Indicates the y coordinate, also known as C1y.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SM2CipherTextSpec-yCoordinate: bigint--><!--Device-SM2CipherTextSpec-yCoordinate: bigint-End-->
 

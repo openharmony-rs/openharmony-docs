@@ -12,24 +12,6 @@ Sets the alignment mode of an element on the main axis of the container.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Start
-
-```TypeScript
-Start
-```
-
-The child components are aligned with the start edge of the main axis. The first component is aligned with the main -start, and subsequent components are aligned with the previous one.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-FlexAlign-Start--><!--Device-FlexAlign-Start-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Center
 
 ```TypeScript
@@ -66,24 +48,6 @@ The child components are aligned with the end edge of the main axis. The last co
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SpaceBetween
-
-```TypeScript
-SpaceBetween
-```
-
-The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, the last component is aligned with the main-end, and the remaining components are distributed so that the space between any two adjacent components is the same.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-FlexAlign-SpaceBetween--><!--Device-FlexAlign-SpaceBetween-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## SpaceAround
 
 ```TypeScript
@@ -102,6 +66,24 @@ The child components are evenly distributed along the main axis. The space betwe
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## SpaceBetween
+
+```TypeScript
+SpaceBetween
+```
+
+The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, the last component is aligned with the main-end, and the remaining components are distributed so that the space between any two adjacent components is the same.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-FlexAlign-SpaceBetween--><!--Device-FlexAlign-SpaceBetween-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## SpaceEvenly
 
 ```TypeScript
@@ -117,5 +99,23 @@ The child components are evenly distributed along the main axis. The space betwe
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-FlexAlign-SpaceEvenly--><!--Device-FlexAlign-SpaceEvenly-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Start
+
+```TypeScript
+Start
+```
+
+The child components are aligned with the start edge of the main axis. The first component is aligned with the main -start, and subsequent components are aligned with the previous one.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-FlexAlign-Start--><!--Device-FlexAlign-Start-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

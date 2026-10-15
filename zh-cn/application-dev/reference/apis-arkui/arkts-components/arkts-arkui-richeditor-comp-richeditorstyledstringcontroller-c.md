@@ -6,12 +6,6 @@ declare class RichEditorStyledStringController extends RichEditorBaseController 
 
 使用属性字符串构建的RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md)。
 
-## 导入对象
-
-```ts
-controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-```
-
 **继承/实现关系：** RichEditorStyledStringController extends [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md) implements [StyledStringController](../arkts-apis/arkts-arkui-styledstringcontroller-i.md)
 
 **起始版本：** 12
@@ -19,6 +13,12 @@ controller: RichEditorStyledStringController = new RichEditorStyledStringControl
 <!--Device-unnamed-declare class RichEditorStyledStringController extends RichEditorBaseController implements StyledStringController--><!--Device-unnamed-declare class RichEditorStyledStringController extends RichEditorBaseController implements StyledStringController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```ts
+controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+```
 
 ## getSelection
 

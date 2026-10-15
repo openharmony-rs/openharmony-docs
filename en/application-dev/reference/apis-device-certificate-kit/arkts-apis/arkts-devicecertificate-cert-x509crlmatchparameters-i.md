@@ -30,7 +30,7 @@ CRL issuer, in DER format.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CRLMatchParameters-issuer?: Array<Uint8Array>--><!--Device-X509CRLMatchParameters-issuer?: Array<Uint8Array>-End-->
 
@@ -48,7 +48,7 @@ Maximum value of the CRL number.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CRLMatchParameters-maxCRL?: bigint--><!--Device-X509CRLMatchParameters-maxCRL?: bigint-End-->
 
@@ -66,7 +66,7 @@ Minimum value of the CRL number.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CRLMatchParameters-minCRL?: bigint--><!--Device-X509CRLMatchParameters-minCRL?: bigint-End-->
 
@@ -84,7 +84,7 @@ CRL update time.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CRLMatchParameters-updateDateTime?: string--><!--Device-X509CRLMatchParameters-updateDateTime?: string-End-->
 
@@ -102,7 +102,7 @@ Certificate object.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CRLMatchParameters-x509Cert?: X509Cert--><!--Device-X509CRLMatchParameters-x509Cert?: X509Cert-End-->
 

@@ -16,7 +16,7 @@ function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-commonEventManager-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void--><!--Device-commonEventManager-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void-End-->
 
@@ -33,7 +33,7 @@ function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1500007](../errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
@@ -88,7 +88,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // subscriber不再使用时需要将其置为null，避免内存泄露
+      // subscriber不再使用时需要将其置为null，避免内存泄漏
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });

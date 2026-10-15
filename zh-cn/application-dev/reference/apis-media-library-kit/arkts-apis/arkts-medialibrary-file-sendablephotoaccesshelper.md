@@ -1,4 +1,4 @@
-# @ohos.file.sendablePhotoAccessHelper(Helper functions to access image and video assets)
+# @ohos.file.sendablePhotoAccessHelper(基于Sendable对象的相册管理模块)
 
 该模块基于[Sendable](../../../arkts-utils/arkts-sendable.md)对象，提供相册管理功能，包括创建相册和访问、修改相册中的媒体数据。
 
@@ -20,14 +20,14 @@ import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f.md) | 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
+| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f.md#getphotoaccesshelper1) | 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper-1) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
+| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper2) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
 <!--DelEnd-->
 
 ### 接口

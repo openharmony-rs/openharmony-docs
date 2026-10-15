@@ -45,6 +45,7 @@ function removeFusionFence(identifier: string): Promise<void>
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301602](../errorcode-geoLocationManager.md#3301602-地理围栏id错误导致删除围栏失败) | Failed to delete a fusion fence due to an incorrect identifier. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error("removeFusionFence: error=" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

@@ -32,6 +32,8 @@ Cancels the suspension delay.
 **Examples**
 
 ```TypeScript
-let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+
+let delayInfo = backgroundTaskManager.requestSuspendDelay('test', () => {});
 backgroundTaskManager.cancelSuspendDelay(delayInfo.requestId);
 ```

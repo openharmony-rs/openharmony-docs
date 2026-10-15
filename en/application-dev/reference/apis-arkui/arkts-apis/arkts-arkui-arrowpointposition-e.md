@@ -12,24 +12,6 @@ Sets the position of the bubble arrow.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## START
-
-```TypeScript
-START = 'Start'
-```
-
-On the leftmost side of the parent component in the horizontal layout; on the top of the parent component in the vertical layout.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ArrowPointPosition-START = 'Start'--><!--Device-ArrowPointPosition-START = 'Start'-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## CENTER
 
 ```TypeScript
@@ -63,5 +45,23 @@ On the rightmost side of the parent component in the horizontal layout; at the b
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ArrowPointPosition-END = 'End'--><!--Device-ArrowPointPosition-END = 'End'-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## START
+
+```TypeScript
+START = 'Start'
+```
+
+On the leftmost side of the parent component in the horizontal layout; on the top of the parent component in the vertical layout.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ArrowPointPosition-START = 'Start'--><!--Device-ArrowPointPosition-START = 'Start'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

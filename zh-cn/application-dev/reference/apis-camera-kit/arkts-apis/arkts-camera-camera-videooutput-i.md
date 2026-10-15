@@ -33,7 +33,7 @@ enableMirror(enabled: boolean): void
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-enableMirror(enabled: boolean): void--><!--Device-VideoOutput-enableMirror(enabled: boolean): void-End-->
 
@@ -82,7 +82,7 @@ getActiveFrameRate(): FrameRateRange
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-getActiveFrameRate(): FrameRateRange--><!--Device-VideoOutput-getActiveFrameRate(): FrameRateRange-End-->
 
@@ -113,7 +113,7 @@ getActiveProfile(): VideoProfile
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-getActiveProfile(): VideoProfile--><!--Device-VideoOutput-getActiveProfile(): VideoProfile-End-->
 
@@ -136,7 +136,7 @@ getActiveProfile(): VideoProfile
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.Profile | undefined {
+function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.VideoProfile | undefined {
   let activeProfile: camera.VideoProfile | undefined = undefined;
   try {
     activeProfile = videoOutput.getActiveProfile();
@@ -159,7 +159,7 @@ getSupportedFrameRates(): Array<FrameRateRange>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-getSupportedFrameRates(): Array<FrameRateRange>--><!--Device-VideoOutput-getSupportedFrameRates(): Array<FrameRateRange>-End-->
 
@@ -195,7 +195,7 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-getVideoRotation(deviceDegree?: int): ImageRotation--><!--Device-VideoOutput-getVideoRotation(deviceDegree?: int): ImageRotation-End-->
 
@@ -248,7 +248,7 @@ function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): came
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The videoOutput.getVideoRotation call failed. error code: ${err.code}`);
   }
   return videoRotation;
 }
@@ -294,7 +294,7 @@ isMirrorSupported(): boolean
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-isMirrorSupported(): boolean--><!--Device-VideoOutput-isMirrorSupported(): boolean-End-->
 
@@ -564,7 +564,7 @@ setFrameRate(minFps: number, maxFps: number): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-setFrameRate(minFps: int, maxFps: int): void--><!--Device-VideoOutput-setFrameRate(minFps: int, maxFps: int): void-End-->
 
@@ -592,6 +592,8 @@ function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Arra
 }
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -602,7 +604,7 @@ start(callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-start(callback: AsyncCallback<void>): void--><!--Device-VideoOutput-start(callback: AsyncCallback<void>): void-End-->
 
@@ -628,7 +630,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function startVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.start((err: BusinessError) => {
-    if (err.code) {
+    if (err) {
       console.error(`Failed to start the video output, error code: ${err.code}.`);
       return;
     }
@@ -637,7 +639,7 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -649,7 +651,7 @@ start(): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-start(): Promise<void>--><!--Device-VideoOutput-start(): Promise<void>-End-->
 
@@ -682,6 +684,8 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -692,7 +696,7 @@ stop(callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-stop(callback: AsyncCallback<void>): void--><!--Device-VideoOutput-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -714,7 +718,7 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -726,7 +730,7 @@ stop(): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoOutput-stop(): Promise<void>--><!--Device-VideoOutput-stop(): Promise<void>-End-->
 

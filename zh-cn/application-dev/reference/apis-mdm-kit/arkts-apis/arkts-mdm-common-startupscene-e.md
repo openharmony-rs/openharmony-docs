@@ -12,19 +12,19 @@ export enum StartupScene
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## USER_SETUP
+## DEVICE_PROVISION
 
 ```TypeScript
-USER_SETUP = 0
+DEVICE_PROVISION = 2
 ```
 
-子用户被首次切换并完成其开机向导场景（仅限PC）。后续再次切换该子用户不会触发回调。
+首次开机完成开机向导场景。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-StartupScene-USER_SETUP = 0--><!--Device-StartupScene-USER_SETUP = 0-End-->
+<!--Device-StartupScene-DEVICE_PROVISION = 2--><!--Device-StartupScene-DEVICE_PROVISION = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,18 +44,18 @@ OTA升级完成场景。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DEVICE_PROVISION
+## USER_SETUP
 
 ```TypeScript
-DEVICE_PROVISION = 2
+USER_SETUP = 0
 ```
 
-首次开机完成开机向导场景。
+子用户被首次切换并完成其开机向导场景（仅限PC）。后续再次切换该子用户不会触发回调。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-StartupScene-DEVICE_PROVISION = 2--><!--Device-StartupScene-DEVICE_PROVISION = 2-End-->
+<!--Device-StartupScene-USER_SETUP = 0--><!--Device-StartupScene-USER_SETUP = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

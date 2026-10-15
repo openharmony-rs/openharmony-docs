@@ -6,8 +6,6 @@ export interface SuffixImageIconOptions extends IconOptions
 
 后缀图标选项的类型。
 
-继承自[IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)。
-
 **继承/实现关系：** SuffixImageIconOptions extends [IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)
 
 **起始版本：** 14

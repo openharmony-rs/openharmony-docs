@@ -12,19 +12,19 @@ enum FloatViewState
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## STARTED
+## ERROR
 
 ```TypeScript
-STARTED = 1
+ERROR = 6
 ```
 
-标准悬浮窗已启动并显示。
+标准悬浮窗发生异常。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewState-STARTED = 1--><!--Device-FloatViewState-STARTED = 1-End-->
+<!--Device-FloatViewState-ERROR = 6--><!--Device-FloatViewState-ERROR = 6-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,19 +44,19 @@ HIDDEN = 2
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## STOPPED
+## IN_FLOATING_BALL
 
 ```TypeScript
-STOPPED = 3
+IN_FLOATING_BALL = 5
 ```
 
-标准悬浮窗已停止。
+标准悬浮窗切换为闪控球。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewState-STOPPED = 3--><!--Device-FloatViewState-STOPPED = 3-End-->
+<!--Device-FloatViewState-IN_FLOATING_BALL = 5--><!--Device-FloatViewState-IN_FLOATING_BALL = 5-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -76,34 +76,34 @@ IN_SIDEBAR = 4
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## IN_FLOATING_BALL
+## STARTED
 
 ```TypeScript
-IN_FLOATING_BALL = 5
+STARTED = 1
 ```
 
-标准悬浮窗切换为闪控球。
+标准悬浮窗已启动并显示。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewState-IN_FLOATING_BALL = 5--><!--Device-FloatViewState-IN_FLOATING_BALL = 5-End-->
+<!--Device-FloatViewState-STARTED = 1--><!--Device-FloatViewState-STARTED = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## ERROR
+## STOPPED
 
 ```TypeScript
-ERROR = 6
+STOPPED = 3
 ```
 
-标准悬浮窗发生异常。
+标准悬浮窗已停止。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FloatViewState-ERROR = 6--><!--Device-FloatViewState-ERROR = 6-End-->
+<!--Device-FloatViewState-STOPPED = 3--><!--Device-FloatViewState-STOPPED = 3-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

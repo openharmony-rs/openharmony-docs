@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="getallsimmessages1"></a>
+
 ## getAllSimMessages
 
 ```TypeScript
@@ -43,6 +45,7 @@ function getAllSimMessages(slotId: number, callback: AsyncCallback<Array<SimShor
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ sms.getAllSimMessages(slotId, (err: BusinessError, data: sms.SimShortMessage[]) 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getallsimmessages-1"></a>
+
+<a id="getallsimmessages2"></a>
 
 ## getAllSimMessages
 
@@ -100,6 +105,7 @@ function getAllSimMessages(slotId: number): Promise<Array<SimShortMessage>>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,3 +120,5 @@ promise.then((data: sms.SimShortMessage[]) => {
     console.error(`getAllSimMessages failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

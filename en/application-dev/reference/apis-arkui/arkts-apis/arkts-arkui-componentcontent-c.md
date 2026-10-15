@@ -24,6 +24,8 @@ You can create an entity encapsulation component in either of the following ways
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -110,7 +112,7 @@ struct Index {
 }
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -199,7 +201,7 @@ struct Index {
 }
 ```
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 

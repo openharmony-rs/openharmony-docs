@@ -12,22 +12,6 @@ declare enum SideBarPosition
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Start
-
-```TypeScript
-Start
-```
-
-侧边栏位于容器左侧。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-SideBarPosition-Start--><!--Device-SideBarPosition-Start-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## End
 
 ```TypeScript
@@ -41,5 +25,21 @@ End
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SideBarPosition-End--><!--Device-SideBarPosition-End-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Start
+
+```TypeScript
+Start
+```
+
+侧边栏位于容器左侧。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SideBarPosition-Start--><!--Device-SideBarPosition-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

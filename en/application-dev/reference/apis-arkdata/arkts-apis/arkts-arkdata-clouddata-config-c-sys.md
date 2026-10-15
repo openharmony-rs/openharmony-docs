@@ -63,8 +63,9 @@ Queries the last synchronization information in batch
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. the accountId is empty; 2. the bundlename is null; 3. the number of bundleInfos exceeds the upper limit or the number is 0. |
+| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. the accountId is empty;         2. the bundlename is null; 3. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -87,6 +88,10 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="changeappcloudswitch1"></a>
 
 ## changeAppCloudSwitch
 
@@ -126,9 +131,10 @@ Changes the device-cloud synergy setting for an application. This API uses an as
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -150,7 +156,9 @@ try {
 }
 ```
 
-<a id="changeappcloudswitch-1"></a>
+<!--DelEnd-->
+
+<a id="changeappcloudswitch2"></a>
 
 ## changeAppCloudSwitch
 
@@ -190,9 +198,10 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -212,7 +221,9 @@ try {
 }
 ```
 
-<a id="changeappcloudswitch-2"></a>
+<!--DelEnd-->
+
+<a id="changeappcloudswitch3"></a>
 
 ## changeAppCloudSwitch
 
@@ -262,6 +273,7 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -291,6 +303,10 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="clear1"></a>
 
 ## clear
 
@@ -328,9 +344,10 @@ Clears the cloud data locally. This API uses an asynchronous callback to return 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -356,7 +373,9 @@ try {
 }
 ```
 
-<a id="clear-1"></a>
+<!--DelEnd-->
+
+<a id="clear2"></a>
 
 ## clear
 
@@ -395,9 +414,10 @@ Clears the cloud data locally. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -421,7 +441,9 @@ try {
 }
 ```
 
-<a id="clear-2"></a>
+<!--DelEnd-->
+
+<a id="clear3"></a>
 
 ## clear
 
@@ -469,6 +491,7 @@ Clears the cloud data locally. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -504,6 +527,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## cloudSync
 
@@ -552,6 +577,7 @@ Synchronizes data of a specified application on the device to the cloud. This AP
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. Empty conditions;<br>2. Missing GROUP BY clause. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -571,6 +597,8 @@ try {
   console.error(`Failed to sync cloud data. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## cloudSyncEx
 
@@ -619,6 +647,7 @@ Sync data to cloud. This API uses a promise to return the result.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. Empty conditions. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -648,6 +677,10 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="disablecloud1"></a>
 
 ## disableCloud
 
@@ -680,9 +713,10 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -703,7 +737,9 @@ try {
 }
 ```
 
-<a id="disablecloud-1"></a>
+<!--DelEnd-->
+
+<a id="disablecloud2"></a>
 
 ## disableCloud
 
@@ -741,9 +777,10 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -761,6 +798,10 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="enablecloud1"></a>
 
 ## enableCloud
 
@@ -798,9 +839,10 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -822,7 +864,9 @@ try {
 }
 ```
 
-<a id="enablecloud-1"></a>
+<!--DelEnd-->
+
+<a id="enablecloud2"></a>
 
 ## enableCloud
 
@@ -861,9 +905,10 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -882,6 +927,10 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="notifydatachange1"></a>
 
 ## notifyDataChange
 
@@ -920,9 +969,10 @@ Notifies the data changes in the cloud. This API uses a promise to return the re
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -945,7 +995,9 @@ try {
 }
 ```
 
-<a id="notifydatachange-1"></a>
+<!--DelEnd-->
+
+<a id="notifydatachange2"></a>
 
 ## notifyDataChange
 
@@ -978,9 +1030,10 @@ Notifies the data changes in the cloud with the specified information, such as t
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1004,7 +1057,9 @@ try {
 }
 ```
 
-<a id="notifydatachange-2"></a>
+<!--DelEnd-->
+
+<a id="notifydatachange3"></a>
 
 ## notifyDataChange
 
@@ -1038,9 +1093,10 @@ Notifies the data changes of a user in the cloud. This API uses an asynchronous 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1065,7 +1121,9 @@ try {
 }
 ```
 
-<a id="notifydatachange-3"></a>
+<!--DelEnd-->
+
+<a id="notifydatachange4"></a>
 
 ## notifyDataChange
 
@@ -1104,9 +1162,10 @@ Notifies the data changes in the cloud. This API uses a promise to return the re
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1126,7 +1185,9 @@ try {
 }
 ```
 
-<a id="notifydatachange-4"></a>
+<!--DelEnd-->
+
+<a id="notifydatachange5"></a>
 
 ## notifyDataChange
 
@@ -1160,9 +1221,10 @@ Notifies the data changes in the cloud. This API uses an asynchronous callback t
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1183,6 +1245,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## offSyncInfoChanged
 
@@ -1223,6 +1287,7 @@ Remove specified observer of specified type from the database.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null;<br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1261,6 +1326,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## onSyncInfoChanged
 
@@ -1301,6 +1368,7 @@ Subscribes to changes in the sync information of a specified application.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null;<br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1320,6 +1388,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## queryLastSyncInfo
 
@@ -1363,9 +1433,10 @@ Queries information about the last device-cloud sync. This API uses a promise to
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1385,6 +1456,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## queryStatistics
 
@@ -1428,9 +1501,10 @@ Queries device-cloud data statistics, which include the data not synced, data sy
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1446,6 +1520,8 @@ cloudData.Config.queryStatistics(accountId, bundleName, storeId).then((result) =
   console.error(`Failed to query statistics. Error code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setGlobalCloudStrategy
 
@@ -1484,9 +1560,10 @@ Sets a global device-cloud sync strategy. This API uses a promise to return the 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1498,6 +1575,8 @@ cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudDa
   console.error(`Failed to set global cloud strategy. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## stopCloudSync
 
@@ -1540,6 +1619,7 @@ Stops syncing data to the cloud.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null;<br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1561,3 +1641,5 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

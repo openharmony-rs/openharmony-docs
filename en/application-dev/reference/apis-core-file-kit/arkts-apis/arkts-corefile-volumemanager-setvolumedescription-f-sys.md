@@ -6,6 +6,8 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="setvolumedescription1"></a>
+
 ## setVolumeDescription
 
 ```TypeScript
@@ -46,7 +48,7 @@ Sets volume description. This API uses an asynchronous callback to return the re
 | 13900042 | Unknown error. |
 
 
-<a id="setvolumedescription-1"></a>
+<a id="setvolumedescription2"></a>
 
 ## setVolumeDescription
 

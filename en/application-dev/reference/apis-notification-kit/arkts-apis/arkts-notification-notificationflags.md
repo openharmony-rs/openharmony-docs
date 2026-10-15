@@ -11,14 +11,14 @@ The **NotificationFlags** module describes the notification flags. An applicatio
 
 | Name | Description |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-notificationflags-i.md) | Defines the notification flags. |
+| [NotificationFlags](arkts-notification-notificationflags-i.md) | Defines the notification flags. |
 
 <!--Del-->
 ### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-notificationflags-i-sys.md) | Defines the notification flags. |
+| [NotificationFlags](arkts-notification-notificationflags-i-sys.md) | Defines the notification flags. |
 <!--DelEnd-->
 
 ### Enums

@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getApplicationLabel(bundleName: string, appIndex: number): Promise<string>
 ```
 
-Obtains the name of an application with the specified package name and clone index. This API uses a promise to return the result.
+Obtains the app name based on the given bundle name and app index. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -29,13 +29,13 @@ Obtains the name of an application with the specified package name and clone ind
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. |
-| appIndex | number | Yes | Index of the application. The value ranges from 0 to 5. The value 0 indicates the main application, and the values 1 to 5 indicate the indexes of application clones. |
+| appIndex | number | Yes | Application index. The value ranges from 0 to 5, where 0 indicates the main application and 1 to 5 indicate the indexes of clone applications. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the result. If the operation is successful, the application name is returned. Otherwise, an error object is returned. |
+| Promise&lt;string&gt; | Promise used to return the result. If the call succeeds, it returns a list of application name; if the call fails, it returns an error object. |
 
 **Error codes:**
 

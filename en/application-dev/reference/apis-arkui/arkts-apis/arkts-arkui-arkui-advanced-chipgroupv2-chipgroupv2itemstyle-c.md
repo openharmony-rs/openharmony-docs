@@ -56,8 +56,6 @@ Default value: **$r('sys.color.ohos_id_color_button_normal')**
 
 If the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -78,11 +76,9 @@ Decorator: **@Trace**
 public backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
+System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
 
 Default value: **undefined**, no material style is applied.
-
-Decorator: **@Trace**
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -110,8 +106,6 @@ Default value: **$r('sys.color.ohos_id_color_text_primary')**
 
 If the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -138,8 +132,6 @@ Default value: **$r('sys.color.ohos_id_color_emphasize')**
 
 If the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -160,11 +152,9 @@ Decorator: **@Trace**
 public selectedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-System material style of the component in the selected state. After this attribute is set, when the **ChipV2** is selected, this material style is applied, replacing the **backgroundSystemMaterial** in the unselected state. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
+System material style of the component in the selected state. After this attribute is set, when the **ChipV2** is selected, this material style is applied, replacing the **backgroundSystemMaterial** in the unselected state. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
 
 Default value: **undefined**, no material style is applied.
-
-Decorator: **@Trace**
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -192,8 +182,6 @@ Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**
 
 If the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -219,8 +207,6 @@ Size of **ChipV2**.
 Default value: **ChipV2Size.NORMAL**
 
 If the value is **undefined**, the default value is used.
-
-Decorator: **@Trace**
 
 **Type:** [ChipV2Size](arkts-arkui-arkui-advanced-chipv2-chipv2size-e.md) &#124; [SizeT](arkts-arkui-graphics-sizet-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt;
 

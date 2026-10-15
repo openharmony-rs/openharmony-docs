@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="disabledynamicicon1"></a>
+
 ## disableDynamicIcon
 
 ```TypeScript
@@ -46,6 +48,7 @@ function disableDynamicIcon(bundleName: string): Promise<void>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700305](../errorcode-bundle.md#17700305-动态图标去使能失败) | Failed to disable the dynamic icon. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="disabledynamicicon-1"></a>
+
+<a id="disabledynamicicon2"></a>
 
 ## disableDynamicIcon
 
@@ -116,6 +121,7 @@ function disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 | [17700305](../errorcode-bundle.md#17700305-动态图标去使能失败) | Failed to disable the dynamic icon. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -137,3 +143,5 @@ try {
   hilog.error(0x0000, 'testTag', 'disableDynamicIcon failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

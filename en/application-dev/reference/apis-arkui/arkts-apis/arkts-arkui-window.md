@@ -6,7 +6,8 @@ The Window module provides basic window management capabilities, such as creatin
 This module provides the following common window-related functions:
 
 - [Window](arkts-arkui-window-n.md): window instance, which is the basic unit managed by the window manager.
- - [WindowStage](arkts-arkui-window-windowstage-i.md): window manager that manages windows.
+
+- [WindowStage](arkts-arkui-window-windowstage-i.md): window manager that manages windows.
 
 > **NOTE**
  >

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="removeslot1"></a>
+
 ## removeSlot
 
 ```TypeScript
@@ -31,7 +33,7 @@ function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 
-<a id="removeslot-1"></a>
+<a id="removeslot2"></a>
 
 ## removeSlot
 

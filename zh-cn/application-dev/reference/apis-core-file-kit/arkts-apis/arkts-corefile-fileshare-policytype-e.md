@@ -6,25 +6,9 @@ export enum PolicyType
 
 枚举所查询策略信息对应的授权模式。
 
-@enum { int } policyType
-
 **起始版本：** 15
 
 <!--Device-fileShare-export enum PolicyType--><!--Device-fileShare-export enum PolicyType-End-->
-
-**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
-## TEMPORARY_TYPE
-
-```TypeScript
-TEMPORARY_TYPE = 0
-```
-
-临时授权。
-
-**起始版本：** 15
-
-<!--Device-PolicyType-TEMPORARY_TYPE = 0--><!--Device-PolicyType-TEMPORARY_TYPE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -39,5 +23,19 @@ PERSISTENT_TYPE = 1
 **起始版本：** 15
 
 <!--Device-PolicyType-PERSISTENT_TYPE = 1--><!--Device-PolicyType-PERSISTENT_TYPE = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+## TEMPORARY_TYPE
+
+```TypeScript
+TEMPORARY_TYPE = 0
+```
+
+临时授权。
+
+**起始版本：** 15
+
+<!--Device-PolicyType-TEMPORARY_TYPE = 0--><!--Device-PolicyType-TEMPORARY_TYPE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization

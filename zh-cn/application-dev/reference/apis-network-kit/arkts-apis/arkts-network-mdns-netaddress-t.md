@@ -6,6 +6,8 @@ type NetAddress = connection.NetAddress
 
 获取网络地址。
 
+**类型：** [connection.NetAddress](arkts-network-connection-netaddress-i.md)
+
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -13,5 +15,3 @@ type NetAddress = connection.NetAddress
 <!--Device-mdns-type NetAddress = connection.NetAddress--><!--Device-mdns-type NetAddress = connection.NetAddress-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
-
-**类型：** [connection.NetAddress](arkts-network-connection-netaddress-i.md)

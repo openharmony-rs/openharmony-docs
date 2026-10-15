@@ -26,7 +26,7 @@ The operation is forcibly performed by the system.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptForceType-INTERRUPT_FORCE = 0--><!--Device-InterruptForceType-INTERRUPT_FORCE = 0-End-->
 
@@ -42,7 +42,7 @@ The operation will not be performed by the system. [InterruptHint](arkts-audio-a
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptForceType-INTERRUPT_SHARE = 1--><!--Device-InterruptForceType-INTERRUPT_SHARE = 1-End-->
 

@@ -66,7 +66,7 @@ setCookie()
 
 **废弃版本：** 9
 
-**替代接口：** setCookie
+**替代接口：** [setCookie](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md#setcookie)
 
 <!--Device-WebCookie-setCookie()--><!--Device-WebCookie-setCookie()-End-->
 

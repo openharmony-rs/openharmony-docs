@@ -38,6 +38,7 @@ function recordInputEventTime(type: ActionType, sourceType: SourceType, time: nu
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ let time = systemDateTime.getTime(false);
 // 更新用户触发事件类型与时间
 performanceMonitor.recordInputEventTime(performanceMonitor.ActionType.LAST_UP, performanceMonitor.SourceType.PERF_MOUSE_EVENT, time);
 ```
+
+<!--DelEnd-->

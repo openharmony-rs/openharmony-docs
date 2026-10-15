@@ -30,7 +30,7 @@ data: Uint8Array
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-ProvisionRequest-data: Uint8Array--><!--Device-ProvisionRequest-data: Uint8Array-End-->
 
@@ -48,7 +48,7 @@ Provision服务（设备证书请求服务）URL。需符合URL格式规范，�
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-ProvisionRequest-defaultURL: string--><!--Device-ProvisionRequest-defaultURL: string-End-->
 

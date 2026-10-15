@@ -44,6 +44,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | acquire | number | 是 |  |
 | extraInfo | Uint8Array | 是 |  |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,6 +60,8 @@ let idmCallback: osAccount.IIdmCallback = {
   }
 };
 ```
+
+<!--DelEnd-->
 
 ## onResult
 
@@ -83,6 +86,7 @@ onResult: (result: number, extraInfo: RequestResult) => void
 | result | number | 是 |  |
 | extraInfo | [RequestResult](arkts-basicservices-osaccount-requestresult-i-sys.md) | 是 |  |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -93,3 +97,5 @@ let idmCallback: osAccount.IIdmCallback = {
   }
 };
 ```
+
+<!--DelEnd-->

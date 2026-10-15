@@ -12,7 +12,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: string, userId?: number, appIndex?: number): Array<ShortcutInfo>
 ```
 
-Obtains shortcut info by bundleName, moduleName, abilityName, userId and appIndex. If you need to obtains shortcut info under the current user, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED needs to be applied for. If you need to obtains shortcut info under other users, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS need to be applied for.
+Queries the shortcut information of a specified UIAbility under a specified user.
 
 **Since:** 24
 
@@ -30,17 +30,17 @@ Obtains shortcut info by bundleName, moduleName, abilityName, userId and appInde
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Indicates the bundle name. |
-| moduleName | string | Yes | Indicates the module name. |
-| abilityName | string | Yes | Indicates the ability name. |
-| userId | number | No | Indicates the user ID. |
-| appIndex | number | No | Indicates the index of clone app. |
+| bundleName | string | Yes | Bundle name of the application. |
+| moduleName | string | Yes | Name of the module. |
+| abilityName | string | Yes | Name of the UIAbility component. |
+| userId | number | No | User ID, which can be obtained through [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). <br>Default value: the user where the caller is located.<br>Value range: greater than or equal to 0. |
+| appIndex | number | No | Application index. The value is an integer ranging from 0 to 5. The value 0 indicates the main application, and the values 1 to 5 indicate the indexes of clone applications.<br>Default value: 0 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)&gt; | An array of ShortcutInfo objects. |
+| Array&lt;[ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)&gt; | Returns an array of [ShortcutInfo](arkts-ability-shortcutinfo-i.md) of the specified UIAbility under the specified user. |
 
 **Error codes:**
 
@@ -56,6 +56,7 @@ Obtains shortcut info by bundleName, moduleName, abilityName, userId and appInde
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,3 +114,5 @@ try {
   console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

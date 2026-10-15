@@ -6,7 +6,7 @@ export type SkillType = _SkillType
 
 技能类型的枚举。
 
-@typedef { _SkillType }
+**类型：** _SkillType
 
 **起始版本：** 26.0.0
 
@@ -17,5 +17,3 @@ export type SkillType = _SkillType
 <!--Device-skillManager-export type SkillType = _SkillType--><!--Device-skillManager-export type SkillType = _SkillType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**类型：** _SkillType

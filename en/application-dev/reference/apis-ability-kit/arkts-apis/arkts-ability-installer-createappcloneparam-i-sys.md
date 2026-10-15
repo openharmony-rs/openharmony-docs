@@ -44,7 +44,8 @@ Index of the clone. The default value is the currently available minimum index.
 parameters?: Array<Parameters>
 ```
 
-Extended parameters, represented as an array of the Parameters type. The default value is empty. The options of **Parameters.key** are as follows:  
+Extended parameters, represented as an array of the Parameters type. The default value is empty. The options of **Parameters.key** are as follows:
+
 - **ohos.bms.param.disableInstallEventReport**: If the value is **true**, the installation event  
 is not sent after the clone is created. If this key is not present or the value is not **true**, the installation event is sent as usual.  
 - **ohos.bms.param.bundleEnableState**: If the value is **false**, the clone is created in disabled state  
@@ -68,7 +69,7 @@ is not sent after the clone is created. If this key is not present or the value 
 userId?: number
 ```
 
-ID of the user for whom the clone is to be created. You can obtain the user ID by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller.
+Specifies the user ID for creating the app clone. You can obtain the user ID by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). Default value: the user of the caller.
 
 **Type:** number
 

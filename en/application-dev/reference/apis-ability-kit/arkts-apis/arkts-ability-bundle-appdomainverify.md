@@ -6,8 +6,6 @@ This module provides app domain verification info.
 
 **Since:** 13
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace appDomainVerify--><!--Device-unnamed-declare namespace appDomainVerify-End-->
 
 **System capability:** SystemCapability.BundleManager.AppDomainVerify
@@ -27,6 +25,6 @@ import { appDomainVerify } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [queryAssociatedBundleNames](arkts-ability-appdomainverify-queryassociatedbundlenames-f-sys.md) | query bundleNames associated with domain. |
-| [queryAssociatedDomains](arkts-ability-appdomainverify-queryassociateddomains-f-sys.md) | query domains verify associated with bundleName. |
+| [queryAssociatedBundleNames](arkts-ability-appdomainverify-queryassociatedbundlenames-f-sys.md#queryassociatedbundlenames) | query bundleNames associated with domain. |
+| [queryAssociatedDomains](arkts-ability-appdomainverify-queryassociateddomains-f-sys.md#queryassociateddomains) | query domains verify associated with bundleName. |
 <!--DelEnd-->

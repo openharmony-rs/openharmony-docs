@@ -1,14 +1,12 @@
 # @ohos.arkui.uiMaterial(System Material)
 
-This module provides APIs for system materials. Different system materials correspond to different UI effects, including the background color ([backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)), border color ([borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)), border width ([borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)), and shadow ([shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)).
+This module provides APIs for system materials. Different system materials correspond to different UI effects, including the background color ([backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)), border color ([borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)), border width ([borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)), and shadow ([shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)).
 
 > **NOTE:** 
 > 
 > - This topic describes only system APIs provided by the module. For details about other public APIs, see [System Material](arkts-arkui-arkui-uimaterial.md).
 
 **Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace uiMaterial--><!--Device-unnamed-declare namespace uiMaterial-End-->
 
@@ -26,17 +24,17 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md) | Obtains the global material level, which is related to the device computing power. This configuration item is defined by the device and cannot be modified. |
-| [getMaterialInfo](arkts-arkui-uimaterial-getmaterialinfo-f.md) | Obtains the material configuration information of this application. The returned configuration information comes from the metadata configured in the [module.json5](../../../quick-start/module-configuration-file.md) file of the application. |
-| [isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md) | Checks whether the current device supports immersive system materials ([ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)). This configuration item is defined by the device and cannot be modified. |
+| [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md#getglobalmateriallevel) | Obtains the global material level, which is related to the device computing power. This configuration item is defined by the device and cannot be modified. |
+| [getMaterialInfo](arkts-arkui-uimaterial-getmaterialinfo-f.md#getmaterialinfo) | Obtains the material configuration information of this application. The returned configuration information comes from the metadata configured in the [module.json5](../../../quick-start/module-configuration-file.md) file of the application. |
+| [isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md#isimmersivematerialsupported) | Checks whether the current device supports immersive system materials ([ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)). This configuration item is defined by the device and cannot be modified. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
-| [convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to the child components of [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
+| [convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md#converttoecmaterial) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
+| [convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md#converttoecsubmaterial) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to the child components of [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
 <!--DelEnd-->
 
 ### Classes
@@ -89,103 +87,6 @@ import { uiMaterial } from '@kit.ArkUI';
 <!--DelEnd-->
 
 ## Examples
-
-### Example 1: Setting the System Material
-
-This example shows how to apply the Material object of a semi-transparent material to a component using the [systemMaterial](../arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23) attribute.
-
-
-
-```TypeScript
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SystemMaterialPage {
-  build() {
-    Column() {
-      Stack() {
-        Image($r('app.media.bg1')) // Replace $r('app.media.bg1') with the image resource file you use.
-          .width('100%')
-          .height('100%')
-
-        Column()
-          .width(100)
-          .height(50)
-          .position({ x: 50, y: 350 })
-          .systemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT })) // Use the semi-transparent system material effect.
-      }
-      .height('90%')
-      .width('90%')
-    }
-    .height('100%')
-    .width('100%')
-    .alignItems(HorizontalAlign.Center)
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-### Example 2 (Setting the System Material Using EffectComponent)
-
-This example shows how to set [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) on [EffectComponent](../arkui-ts/ts-container-effectcomponent-sys.md) and its child components, including directly using EC-style materials and applying the materials after conversion through [uiMaterial.convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md) and [uiMaterial.convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md).
-
-Since API version 26.0.0, the uiMaterial.convertToECMaterial and uiMaterial.convertToECSubMaterial APIs are added.
-
-```TypeScript
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @State myMaterialBase: uiMaterial.ImmersiveMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-  });
-  @State myMaterialEC: uiMaterial.ImmersiveMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: uiMaterial.ImmersiveStyle.ULTRA_THIN_EC,
-  });
-  @State myMaterialECSub: uiMaterial.ImmersiveMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: uiMaterial.ImmersiveStyle.ULTRA_THIN_EC_SUB,
-  });
-
-  build() {
-    Stack() {
-      // Replace $r('app.media.startIcon') with the actual resource file.
-      Image($r('app.media.startIcon'))
-      Row() {
-        // It is recommended to use different styles to set materials for EffectComponent and its child components.
-        EffectComponent() {
-          Row() {
-            Column()
-              .width(100)
-              .height(100)
-              .systemMaterial(this.myMaterialECSub)
-              .margin(5)
-          }
-        }
-        .systemMaterial(this.myMaterialEC)
-
-        EffectComponent() {
-          Row() {
-            Column()
-              .width(100)
-              .height(100)
-              .systemMaterial(uiMaterial.convertToECSubMaterial(this.myMaterialBase))
-              .margin(5)
-
-            Column()
-              .width(100)
-              .height(100)
-              .systemMaterial(uiMaterial.convertToECSubMaterial(this.myMaterialBase))
-              .margin(5)
-          }
-        }
-        .systemMaterial(uiMaterial.convertToECMaterial(this.myMaterialBase))
-      }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
 
 ### Example 1: Configuring the Immersive System Material
 
@@ -534,6 +435,103 @@ struct MaterialLevelPage {
     .width('100%')
     .height('100%')
     .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+### Example 1: Setting the System Material
+
+This example shows how to apply the Material object of a semi-transparent material to a component using the [systemMaterial](../arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23) attribute.
+
+
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SystemMaterialPage {
+  build() {
+    Column() {
+      Stack() {
+        Image($r('app.media.bg1')) // Replace $r('app.media.bg1') with the image resource file you use.
+          .width('100%')
+          .height('100%')
+
+        Column()
+          .width(100)
+          .height(50)
+          .position({ x: 50, y: 350 })
+          .systemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT })) // Use the semi-transparent system material effect.
+      }
+      .height('90%')
+      .width('90%')
+    }
+    .height('100%')
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+### Example 2 (Setting the System Material Using EffectComponent)
+
+This example shows how to set [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) on [EffectComponent](../arkui-ts/ts-container-effectcomponent-sys.md) and its child components, including directly using EC-style materials and applying the materials after conversion through [uiMaterial.convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md) and [uiMaterial.convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md).
+
+Since API version 26.0.0, the uiMaterial.convertToECMaterial and uiMaterial.convertToECSubMaterial APIs are added.
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State myMaterialBase: uiMaterial.ImmersiveMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+  });
+  @State myMaterialEC: uiMaterial.ImmersiveMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN_EC,
+  });
+  @State myMaterialECSub: uiMaterial.ImmersiveMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN_EC_SUB,
+  });
+
+  build() {
+    Stack() {
+      // Replace $r('app.media.startIcon') with the actual resource file.
+      Image($r('app.media.startIcon'))
+      Row() {
+        // It is recommended to use different styles to set materials for EffectComponent and its child components.
+        EffectComponent() {
+          Row() {
+            Column()
+              .width(100)
+              .height(100)
+              .systemMaterial(this.myMaterialECSub)
+              .margin(5)
+          }
+        }
+        .systemMaterial(this.myMaterialEC)
+
+        EffectComponent() {
+          Row() {
+            Column()
+              .width(100)
+              .height(100)
+              .systemMaterial(uiMaterial.convertToECSubMaterial(this.myMaterialBase))
+              .margin(5)
+
+            Column()
+              .width(100)
+              .height(100)
+              .systemMaterial(uiMaterial.convertToECSubMaterial(this.myMaterialBase))
+              .margin(5)
+          }
+        }
+        .systemMaterial(uiMaterial.convertToECMaterial(this.myMaterialBase))
+      }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    }
   }
 }
 ```

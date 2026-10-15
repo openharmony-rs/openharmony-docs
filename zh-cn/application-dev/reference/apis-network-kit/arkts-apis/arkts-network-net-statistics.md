@@ -30,55 +30,55 @@ import { statistics } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAllRxBytes](arkts-network-statistics-getallrxbytes-f.md#getallrxbytes) | 获取所有网卡从最近一次开机开始至接口调用时刻的下行流量总和(单位:字节)。使用callback异步回调。 |
-| [getAllRxBytes](arkts-network-statistics-getallrxbytes-f.md#getallrxbytes-1) | 获取所有网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
-| [getAllTxBytes](arkts-network-statistics-getalltxbytes-f.md#getalltxbytes) | 获取所有网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
-| [getAllTxBytes](arkts-network-statistics-getalltxbytes-f.md#getalltxbytes-1) | 获取所有网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
-| [getCellularRxBytes](arkts-network-statistics-getcellularrxbytes-f.md#getcellularrxbytes) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。 |
-| [getCellularRxBytes](arkts-network-statistics-getcellularrxbytes-f.md#getcellularrxbytes-1) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
-| [getCellularTxBytes](arkts-network-statistics-getcellulartxbytes-f.md#getcellulartxbytes) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
-| [getCellularTxBytes](arkts-network-statistics-getcellulartxbytes-f.md#getcellulartxbytes-1) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
-| [getIfaceRxBytes](arkts-network-statistics-getifacerxbytes-f.md#getifacerxbytes) | 获取指定网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。 |
-| [getIfaceRxBytes](arkts-network-statistics-getifacerxbytes-f.md#getifacerxbytes-1) | 获取指定网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
-| [getIfaceTxBytes](arkts-network-statistics-getifacetxbytes-f.md#getifacetxbytes) | 获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
-| [getIfaceTxBytes](arkts-network-statistics-getifacetxbytes-f.md#getifacetxbytes-1) | 获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
-| [getSelfTrafficStats](arkts-network-statistics-getselftrafficstats-f.md) | 获取指定时间段内，本应用在指定网络中的流量使用情况。使用Promise异步回调。 |
-| [getSockfdRxBytes](arkts-network-statistics-getsockfdrxbytes-f.md#getsockfdrxbytes) | 获取指定Socket的下行流量（单位：字节）。使用callback异步回调。 |
-| [getSockfdRxBytes](arkts-network-statistics-getsockfdrxbytes-f.md#getsockfdrxbytes-1) | 获取指定Socket的下行流量（单位：字节）。使用Promise异步回调。 |
-| [getSockfdTxBytes](arkts-network-statistics-getsockfdtxbytes-f.md#getsockfdtxbytes) | 获取指定Socket的上行流量（单位：字节）。使用callback异步回调。 |
-| [getSockfdTxBytes](arkts-network-statistics-getsockfdtxbytes-f.md#getsockfdtxbytes-1) | 获取指定Socket的上行流量（单位：字节）。使用Promise异步回调。 |
-| [getUidRxBytes](arkts-network-statistics-getuidrxbytes-f.md#getuidrxbytes) | 获取指定应用从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。 |
-| [getUidRxBytes](arkts-network-statistics-getuidrxbytes-f.md#getuidrxbytes-1) | 获取指定应用从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
-| [getUidTxBytes](arkts-network-statistics-getuidtxbytes-f.md#getuidtxbytes) | 获取指定应用从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
-| [getUidTxBytes](arkts-network-statistics-getuidtxbytes-f.md#getuidtxbytes-1) | 获取指定应用从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getAllRxBytes](arkts-network-statistics-getallrxbytes-f.md#getallrxbytes1) | 获取所有网卡从最近一次开机开始至接口调用时刻的下行流量总和(单位:字节)。使用callback异步回调。 |
+| [getAllRxBytes](arkts-network-statistics-getallrxbytes-f.md#getallrxbytes2) | 获取所有网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getAllTxBytes](arkts-network-statistics-getalltxbytes-f.md#getalltxbytes1) | 获取所有网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
+| [getAllTxBytes](arkts-network-statistics-getalltxbytes-f.md#getalltxbytes2) | 获取所有网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getCellularRxBytes](arkts-network-statistics-getcellularrxbytes-f.md#getcellularrxbytes1) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。 |
+| [getCellularRxBytes](arkts-network-statistics-getcellularrxbytes-f.md#getcellularrxbytes2) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getCellularTxBytes](arkts-network-statistics-getcellulartxbytes-f.md#getcellulartxbytes1) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
+| [getCellularTxBytes](arkts-network-statistics-getcellulartxbytes-f.md#getcellulartxbytes2) | 获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getIfaceRxBytes](arkts-network-statistics-getifacerxbytes-f.md#getifacerxbytes1) | 获取指定网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。 |
+| [getIfaceRxBytes](arkts-network-statistics-getifacerxbytes-f.md#getifacerxbytes2) | 获取指定网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getIfaceTxBytes](arkts-network-statistics-getifacetxbytes-f.md#getifacetxbytes1) | 获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
+| [getIfaceTxBytes](arkts-network-statistics-getifacetxbytes-f.md#getifacetxbytes2) | 获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getSelfTrafficStats](arkts-network-statistics-getselftrafficstats-f.md#getselftrafficstats) | 获取指定时间段内，本应用在指定网络中的流量使用情况。使用Promise异步回调。 |
+| [getSockfdRxBytes](arkts-network-statistics-getsockfdrxbytes-f.md#getsockfdrxbytes1) | 获取指定Socket的下行流量（单位：字节）。使用callback异步回调。 |
+| [getSockfdRxBytes](arkts-network-statistics-getsockfdrxbytes-f.md#getsockfdrxbytes2) | 获取指定Socket的下行流量（单位：字节）。使用Promise异步回调。 |
+| [getSockfdTxBytes](arkts-network-statistics-getsockfdtxbytes-f.md#getsockfdtxbytes1) | 获取指定Socket的上行流量（单位：字节）。使用callback异步回调。 |
+| [getSockfdTxBytes](arkts-network-statistics-getsockfdtxbytes-f.md#getsockfdtxbytes2) | 获取指定Socket的上行流量（单位：字节）。使用Promise异步回调。 |
+| [getUidRxBytes](arkts-network-statistics-getuidrxbytes-f.md#getuidrxbytes1) | 获取指定应用从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。 |
+| [getUidRxBytes](arkts-network-statistics-getuidrxbytes-f.md#getuidrxbytes2) | 获取指定应用从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。 |
+| [getUidTxBytes](arkts-network-statistics-getuidtxbytes-f.md#getuidtxbytes1) | 获取指定应用从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。 |
+| [getUidTxBytes](arkts-network-statistics-getuidtxbytes-f.md#getuidtxbytes2) | 获取指定应用从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getMonthTrafficStats](arkts-network-statistics-getmonthtrafficstats-f-sys.md) | 获取蜂窝实时下行流量，使用 callback 异步回调。 |
-| [getTrafficPlanInfo](arkts-network-statistics-gettrafficplaninfo-f-sys.md) | 获取流量计划信息。 |
-| [getTrafficStatsByIface](arkts-network-statistics-gettrafficstatsbyiface-f-sys.md#gettrafficstatsbyiface) | 获取指定网卡历史流量信息，使用 callback 异步回调。 |
-| [getTrafficStatsByIface](arkts-network-statistics-gettrafficstatsbyiface-f-sys.md#gettrafficstatsbyiface-1) | 获取指定网卡历史流量信息，使用 Promise 异步回调。 |
-| [getTrafficStatsByNetwork](arkts-network-statistics-gettrafficstatsbynetwork-f-sys.md) | 获取指定时间段内所有应用在指定网络中的流量使用详情，使用 Promise 异步回调。 |
-| [getTrafficStatsByUid](arkts-network-statistics-gettrafficstatsbyuid-f-sys.md#gettrafficstatsbyuid) | 获取指定应用历史流量信息，使用 callback 异步回调。 |
-| [getTrafficStatsByUid](arkts-network-statistics-gettrafficstatsbyuid-f-sys.md#gettrafficstatsbyuid-1) | 获取指定应用历史流量信息，使用 Promise 异步回调。 |
-| [getTrafficStatsByUidNetwork](arkts-network-statistics-gettrafficstatsbyuidnetwork-f-sys.md) | 获取指定时间段内，应用在指定网络中的流量使用详情，使用 Promise 异步回调。 |
-| [off](arkts-network-statistics-off-f-sys.md#offnetstatschange) | 取消订阅流量改变事件通知。使用callback异步回调。 |
-| [on](arkts-network-statistics-on-f-sys.md#onnetstatschange) | 订阅流量改变事件通知。使用callback异步回调。 |
-| [setCalibrationTraffic](arkts-network-statistics-setcalibrationtraffic-f-sys.md) | 设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用Promise异步回调。 |
-| [setTrafficPlanInfo](arkts-network-statistics-settrafficplaninfo-f-sys.md) | 设置流量计划信息。 |
-| [updateIfacesStats](arkts-network-statistics-updateifacesstats-f-sys.md) | 更新网络接口统计数据。 |
-| [updateStatsData](arkts-network-statistics-updatestatsdata-f-sys.md) | 更新网络统计数据。 |
+| [getMonthTrafficStats](arkts-network-statistics-getmonthtrafficstats-f-sys.md#getmonthtrafficstats) | 获取蜂窝实时下行流量，使用 callback 异步回调。 |
+| [getTrafficPlanInfo](arkts-network-statistics-gettrafficplaninfo-f-sys.md#gettrafficplaninfo) | 获取流量计划信息。 |
+| [getTrafficStatsByIface](arkts-network-statistics-gettrafficstatsbyiface-f-sys.md#gettrafficstatsbyiface1) | 获取指定网卡历史流量信息，使用 callback 异步回调。 |
+| [getTrafficStatsByIface](arkts-network-statistics-gettrafficstatsbyiface-f-sys.md#gettrafficstatsbyiface2) | 获取指定网卡历史流量信息，使用 Promise 异步回调。 |
+| [getTrafficStatsByNetwork](arkts-network-statistics-gettrafficstatsbynetwork-f-sys.md#gettrafficstatsbynetwork) | 获取指定时间段内所有应用在指定网络中的流量使用详情，使用 Promise 异步回调。 |
+| [getTrafficStatsByUid](arkts-network-statistics-gettrafficstatsbyuid-f-sys.md#gettrafficstatsbyuid1) | 获取指定应用历史流量信息，使用 callback 异步回调。 |
+| [getTrafficStatsByUid](arkts-network-statistics-gettrafficstatsbyuid-f-sys.md#gettrafficstatsbyuid2) | 获取指定应用历史流量信息，使用 Promise 异步回调。 |
+| [getTrafficStatsByUidNetwork](arkts-network-statistics-gettrafficstatsbyuidnetwork-f-sys.md#gettrafficstatsbyuidnetwork) | 获取指定时间段内，应用在指定网络中的流量使用详情，使用 Promise 异步回调。 |
+| [off('netStatsChange')](arkts-network-statistics-off-f-sys.md#offnetstatschange) | 取消订阅流量改变事件通知。使用callback异步回调。 |
+| [on('netStatsChange')](arkts-network-statistics-on-f-sys.md#onnetstatschange) | 订阅流量改变事件通知。使用callback异步回调。 |
+| [setCalibrationTraffic](arkts-network-statistics-setcalibrationtraffic-f-sys.md#setcalibrationtraffic) | 设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用Promise异步回调。 |
+| [setTrafficPlanInfo](arkts-network-statistics-settrafficplaninfo-f-sys.md#settrafficplaninfo) | 设置流量计划信息。 |
+| [updateIfacesStats](arkts-network-statistics-updateifacesstats-f-sys.md#updateifacesstats) | 更新网络接口统计数据。 |
+| [updateStatsData](arkts-network-statistics-updatestatsdata-f-sys.md#updatestatsdata) | 更新网络统计数据。 |
 <!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| NetStatsInfo | 获取的历史流量信息。 |
-| NetworkInfo | 网络信息。 |
+| [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) | 获取的历史流量信息。 |
+| [NetworkInfo](arkts-network-statistics-networkinfo-i.md) | 网络信息。 |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -101,7 +101,7 @@ import { statistics } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md) | NetStatsInfo for every UID. Key is UID. NetStatsInfo for every UID. Key is UID. |
+| [UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md) | [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID. [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID. |
 <!--DelEnd-->
 
 <!--Del-->

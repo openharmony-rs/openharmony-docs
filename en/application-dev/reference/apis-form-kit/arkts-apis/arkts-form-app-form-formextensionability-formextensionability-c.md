@@ -74,7 +74,7 @@ Called to notify the widget provider that a widget is being created.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormExtensionAbility-onAddForm(want: Want): formBindingData.FormBindingData--><!--Device-FormExtensionAbility-onAddForm(want: Want): formBindingData.FormBindingData-End-->
 
@@ -124,7 +124,7 @@ Called to notify the widget provider that a temporary widget has been converted 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormExtensionAbility-onCastToNormalForm(formId: string): void--><!--Device-FormExtensionAbility-onCastToNormalForm(formId: string): void-End-->
 
@@ -219,7 +219,7 @@ Called when system configuration items change. The **onConfigurationUpdate** cal
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormExtensionAbility-onConfigurationUpdate(newConfig: Configuration): void--><!--Device-FormExtensionAbility-onConfigurationUpdate(newConfig: Configuration): void-End-->
 
@@ -258,7 +258,7 @@ Called to instruct the widget provider to process the widget event.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormExtensionAbility-onFormEvent(formId: string, message: string): void--><!--Device-FormExtensionAbility-onFormEvent(formId: string, message: string): void-End-->
 
@@ -295,7 +295,7 @@ Called when the widget location changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FormExtensionAbility-onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void--><!--Device-FormExtensionAbility-onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void-End-->
 
@@ -339,7 +339,7 @@ Called to notify the widget provider that a widget is being destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormExtensionAbility-onRemoveForm(formId: string): void--><!--Device-FormExtensionAbility-onRemoveForm(formId: string): void-End-->
 
@@ -375,7 +375,7 @@ Called when the widget size changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FormExtensionAbility-onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void--><!--Device-FormExtensionAbility-onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void-End-->
 
@@ -437,13 +437,13 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 onUpdateForm(formId: string, wantParams?: Record<string, Object>): void
 ```
 
-Called to notify the widget provider that a widget is being updated, with update parameters carried. After obtaining the latest data, your application should call [updateForm](arkts-form-formprovider-updateform-f.md) of **formProvider** to update the widget data.
+Called to notify the widget provider that a widget is being updated, with update parameters carried. After obtaining the latest data, your application should call [updateForm](arkts-form-formprovider-updateform-f.md#updateform1) of **formProvider** to update the widget data.
 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormExtensionAbility-onUpdateForm(formId: string, wantParams?: Record<string, Object>): void--><!--Device-FormExtensionAbility-onUpdateForm(formId: string, wantParams?: Record<string, Object>): void-End-->
 
@@ -496,7 +496,7 @@ This API can be used in atomic services since API version 11.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormExtensionAbility-context: FormExtensionContext--><!--Device-FormExtensionAbility-context: FormExtensionContext-End-->
 

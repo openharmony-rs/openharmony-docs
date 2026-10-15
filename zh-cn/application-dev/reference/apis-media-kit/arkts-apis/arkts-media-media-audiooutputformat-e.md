@@ -21,43 +21,23 @@ enum AudioOutputFormat
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
-## DEFAULT
+## AAC_ADTS
 
 ```TypeScript
-DEFAULT = 0
+AAC_ADTS = 6
 ```
 
-默认封装格式。
+封装为ADTS（Audio Data Transport Stream）格式，是AAC音频的传输流格式。
 
-仅做接口定义，暂不支持使用。
-
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议根据具体情况选择[ContainerFormatType](arkts-media-media-containerformattype-e.md)中的一项替代。
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](arkts-media-media-containerformattype-e.md)中的CFT_AAC替代。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-<!--Device-AudioOutputFormat-DEFAULT = 0--><!--Device-AudioOutputFormat-DEFAULT = 0-End-->
+**替代接口：** [CFT_AAC](arkts-media-media-containerformattype-e.md#cft_aac)
 
-**系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
-
-## MPEG_4
-
-```TypeScript
-MPEG_4 = 2
-```
-
-封装为MPEG-4格式。
-
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](arkts-media-media-containerformattype-e.md)中的CFT_MPEG_4替代。
-
-**起始版本：** 6
-
-**废弃版本：** 8
-
-**替代接口：** [CFT_MPEG_4](arkts-media-media-containerformattype-e.md#cft_mpeg_4)
-
-<!--Device-AudioOutputFormat-MPEG_4 = 2--><!--Device-AudioOutputFormat-MPEG_4 = 2-End-->
+<!--Device-AudioOutputFormat-AAC_ADTS = 6--><!--Device-AudioOutputFormat-AAC_ADTS = 6-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -105,22 +85,42 @@ AMR_WB = 4
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
-## AAC_ADTS
+## DEFAULT
 
 ```TypeScript
-AAC_ADTS = 6
+DEFAULT = 0
 ```
 
-封装为ADTS（Audio Data Transport Stream）格式，是AAC音频的传输流格式。
+默认封装格式。
 
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](arkts-media-media-containerformattype-e.md)中的CFT_AAC替代。
+仅做接口定义，暂不支持使用。
+
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议根据具体情况选择[ContainerFormatType](arkts-media-media-containerformattype-e.md)中的一项替代。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [CFT_AAC](arkts-media-media-containerformattype-e.md#cft_aac)
+<!--Device-AudioOutputFormat-DEFAULT = 0--><!--Device-AudioOutputFormat-DEFAULT = 0-End-->
 
-<!--Device-AudioOutputFormat-AAC_ADTS = 6--><!--Device-AudioOutputFormat-AAC_ADTS = 6-End-->
+**系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+## MPEG_4
+
+```TypeScript
+MPEG_4 = 2
+```
+
+封装为MPEG-4格式。
+
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](arkts-media-media-containerformattype-e.md)中的CFT_MPEG_4替代。
+
+**起始版本：** 6
+
+**废弃版本：** 8
+
+**替代接口：** [CFT_MPEG_4](arkts-media-media-containerformattype-e.md#cft_mpeg_4)
+
+<!--Device-AudioOutputFormat-MPEG_4 = 2--><!--Device-AudioOutputFormat-MPEG_4 = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder

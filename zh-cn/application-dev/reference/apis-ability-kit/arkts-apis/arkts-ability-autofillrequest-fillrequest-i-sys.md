@@ -1,4 +1,4 @@
-# FillRequest（系统接口）
+# FillRequest
 
 ```TypeScript
 export interface FillRequest
@@ -6,13 +6,11 @@ export interface FillRequest
 
 自动填充的填充请求。
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
 <!--Device-unnamed-export interface FillRequest--><!--Device-unnamed-export interface FillRequest-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**系统接口：** 此接口为系统接口。
 
 ## customData
 
@@ -53,50 +51,6 @@ false：当前拉起模态窗。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FillRequest-isPopup: boolean--><!--Device-FillRequest-isPopup: boolean-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**系统接口：** 此接口为系统接口。
-
-## type
-
-```TypeScript
-type: AutoFillType
-```
-
-自动填充类型。
-
-**类型：** [AutoFillType](arkts-ability-autofilltype-e-sys.md)
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FillRequest-type: AutoFillType--><!--Device-FillRequest-type: AutoFillType-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**系统接口：** 此接口为系统接口。
-
-## viewData
-
-```TypeScript
-viewData: ViewData
-```
-
-查看数据。填充请求的页面基本信息。
-
-**类型：** [ViewData](arkts-ability-viewdata-i.md)
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FillRequest-viewData: ViewData--><!--Device-FillRequest-viewData: ViewData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

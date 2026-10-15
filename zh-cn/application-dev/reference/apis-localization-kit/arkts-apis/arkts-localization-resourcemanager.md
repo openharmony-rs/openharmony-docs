@@ -15,17 +15,17 @@ Configuration配置包括语言-文字-国家地区、横竖屏、颜色模式�
 - FA模型需要先导入模块，再调用[getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md)接口获取资源管理对象。  
 - 从API version 9开始，Stage模型无需导入模块，支持通过Context获取资源管理resourceManager对象。Context的更多介绍请参考[应用上下文Context](../../../application-models/application-context-stage.md)。
 
- ```ts
- import { UIAbility } from '@kit.AbilityKit';
- import { window } from '@kit.ArkUI';
+  ```ts
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
 
- export default class EntryAbility extends UIAbility {
- onWindowStageCreate(windowStage: window.WindowStage) {
- let context = this.context;
- let resourceManager = context.resourceManager;
- }
- }
- ```
+  export default class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+      let context = this.context;
+      let resourceManager = context.resourceManager;
+    }
+  }
+  ```
 
 **起始版本：** 6
 
@@ -45,12 +45,12 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取当前应用的资源管理对象。使用callback异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-1) | 获取指定应用的资源管理对象。使用callback异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-2) | 获取当前应用的资源管理对象。使用Promise异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-3) | 获取指定应用的资源管理对象。使用Promise异步回调。 |
-| [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md) | 获取系统资源管理对象，用于访问系统预置的资源。 |
-| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md) | 获取系统资源管理对象，用于访问系统预置的资源。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager1) | 获取当前应用的资源管理对象。使用callback异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager2) | 获取指定应用的资源管理对象。使用callback异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager3) | 获取当前应用的资源管理对象。使用Promise异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager4) | 获取指定应用的资源管理对象。使用Promise异步回调。 |
+| [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md#getsysresourcemanager) | 获取系统资源管理对象，用于访问系统预置的资源。 |
+| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md#getsystemresourcemanager) | 获取系统资源管理对象，用于访问系统预置的资源。 |
 
 ### 类
 
@@ -63,8 +63,8 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md) | 异步回调接口 |
 | [ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md) | 提供访问应用资源和系统资源的能力，可访问的资源范围为当前Context对应的HAP/HSP模块中的资源以及所有的系统资源。 |
+| [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md) | 异步回调接口 |
 
 ### 类型
 

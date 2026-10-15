@@ -34,7 +34,7 @@ Obtains the wallpaper colors for the wallpaper of the specified type. Returns rg
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)&gt; | the Array&lt;RgbaColor&gt; returned by the function. |
+| Array&lt;[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)&gt; | the Array<[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)> returned by the function. |
 
 **Error codes:**
 
@@ -43,6 +43,7 @@ Obtains the wallpaper colors for the wallpaper of the specified type. Returns rg
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,3 +54,5 @@ try {
     console.error(`failed to getColorsSync. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

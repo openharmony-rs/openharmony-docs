@@ -12,61 +12,21 @@ Enumerates the reasons for the last exit of the ability. You can use it together
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## UNKNOWN
+## APP_FREEZE
 
 ```TypeScript
-UNKNOWN = 0
+APP_FREEZE = 5
 ```
 
-Unknown reason.
+The ability exits due to [application freeze](../../../dfx/appfreeze-guidelines.md).
 
-**Since:** 9
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-LastExitReason-UNKNOWN = 0--><!--Device-LastExitReason-UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## ABILITY_NOT_RESPONDING
-
-```TypeScript
-ABILITY_NOT_RESPONDING = 1
-```
-
-The ability does not respond.
-
-**Since:** 9
-
-**Deprecated since:** 10
-
-**Substitutes:** [APP_FREEZE](#app_freeze)
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-LastExitReason-ABILITY_NOT_RESPONDING = 1--><!--Device-LastExitReason-ABILITY_NOT_RESPONDING = 1-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## NORMAL
-
-```TypeScript
-NORMAL = 2
-```
-
-The ability exits normally because the user closes the application.
-
-Note: If the application process is forcibly terminated using methods not provided by Ability Kit, such as calling [process.exit()](../../apis-arkts/arkts-apis/arkts-arkts-process-exit-f.md) or using the kernel **kill** command, the reason for the last exit is also reported as **NORMAL**.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-LastExitReason-NORMAL = 2--><!--Device-LastExitReason-NORMAL = 2-End-->
+<!--Device-LastExitReason-APP_FREEZE = 5--><!--Device-LastExitReason-APP_FREEZE = 5-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -82,7 +42,7 @@ The ability exits due to [process crash](../../../dfx/cppcrash-guidelines.md).
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LastExitReason-CPP_CRASH = 3--><!--Device-LastExitReason-CPP_CRASH = 3-End-->
 
@@ -100,27 +60,29 @@ The ability exits due to a JS_ERROR fault triggered when an application has a JS
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LastExitReason-JS_ERROR = 4--><!--Device-LastExitReason-JS_ERROR = 4-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## APP_FREEZE
+## NORMAL
 
 ```TypeScript
-APP_FREEZE = 5
+NORMAL = 2
 ```
 
-The ability exits due to [application freeze](../../../dfx/appfreeze-guidelines.md).
+The ability exits normally because the user closes the application.
 
-**Since:** 10
+Note: If the application process is forcibly terminated using methods not provided by Ability Kit, such as calling [process.exit()](../../apis-arkts/arkts-apis/arkts-arkts-process-exit-f.md) or using the kernel **kill** command, the reason for the last exit is also reported as **NORMAL**.
+
+**Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-LastExitReason-APP_FREEZE = 5--><!--Device-LastExitReason-APP_FREEZE = 5-End-->
+<!--Device-LastExitReason-NORMAL = 2--><!--Device-LastExitReason-NORMAL = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -138,7 +100,7 @@ Note: This API will be deprecated. You are advised to use **RESOURCE_CONTROL** i
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LastExitReason-PERFORMANCE_CONTROL = 6--><!--Device-LastExitReason-PERFORMANCE_CONTROL = 6-End-->
 
@@ -164,9 +126,45 @@ priority.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LastExitReason-RESOURCE_CONTROL = 7--><!--Device-LastExitReason-RESOURCE_CONTROL = 7-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## SIGNAL
+
+```TypeScript
+SIGNAL = 10
+```
+
+The ability exits because it receives a kill signal from the system.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-LastExitReason-SIGNAL = 10--><!--Device-LastExitReason-SIGNAL = 10-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+Unknown reason.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LastExitReason-UNKNOWN = 0--><!--Device-LastExitReason-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -182,7 +180,7 @@ The application exits due to an upgrade.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LastExitReason-UPGRADE = 8--><!--Device-LastExitReason-UPGRADE = 8-End-->
 
@@ -200,26 +198,28 @@ The ability exits because it receives a request from the multitasking center.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-LastExitReason-USER_REQUEST = 9--><!--Device-LastExitReason-USER_REQUEST = 9-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## SIGNAL
+## ABILITY_NOT_RESPONDING
 
 ```TypeScript
-SIGNAL = 10
+ABILITY_NOT_RESPONDING = 1
 ```
 
-The ability exits because it receives a kill signal from the system.
+The ability does not respond.
 
-**Since:** 18
+**Since:** 9
+
+**Deprecated since:** 10
+
+**Substitutes:** [APP_FREEZE](#app_freeze)
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
-
-<!--Device-LastExitReason-SIGNAL = 10--><!--Device-LastExitReason-SIGNAL = 10-End-->
+<!--Device-LastExitReason-ABILITY_NOT_RESPONDING = 1--><!--Device-LastExitReason-ABILITY_NOT_RESPONDING = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

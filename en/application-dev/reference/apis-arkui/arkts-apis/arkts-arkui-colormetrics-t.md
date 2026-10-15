@@ -6,6 +6,8 @@ declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
 
 Defines ColorMetrics.
 
+**Type:** import('../api/arkui/Graphics').ColorMetrics
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines ColorMetrics.
 <!--Device-unnamed-declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics--><!--Device-unnamed-declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/Graphics').ColorMetrics

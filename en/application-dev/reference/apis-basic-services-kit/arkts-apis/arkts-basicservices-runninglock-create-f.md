@@ -6,6 +6,8 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="create1"></a>
+
 ## create
 
 ```TypeScript
@@ -35,7 +37,7 @@ Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | If the permission is denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types;         2. Parameter verification failed. |
 
 **Examples**
 
@@ -50,7 +52,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 ```
 
 
-<a id="create-1"></a>
+<a id="create2"></a>
 
 ## create
 
@@ -86,7 +88,7 @@ Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | If the permission is denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types;         2. Parameter verification failed. |
 
 **Examples**
 

@@ -30,7 +30,7 @@ Maximum frame rate. Unit: FPS
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-FrameRateRange-readonly max: int--><!--Device-FrameRateRange-readonly max: int-End-->
 
@@ -48,7 +48,7 @@ Minimum frame rate. Unit: FPS
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-FrameRateRange-readonly min: int--><!--Device-FrameRateRange-readonly min: int-End-->
 

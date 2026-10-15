@@ -6,6 +6,8 @@ declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode'
 
 Intention corresponding to the key.
 
+**Type:** import('../api/@ohos.multimodalInput.intentionCode').IntentionCode
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Intention corresponding to the key.
 <!--Device-unnamed-declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').IntentionCode--><!--Device-unnamed-declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').IntentionCode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.multimodalInput.intentionCode').IntentionCode

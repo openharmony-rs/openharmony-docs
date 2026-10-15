@@ -12,80 +12,6 @@ Enumerates blur styles.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Thin
-
-```TypeScript
-Thin
-```
-
-Thin material.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-BlurStyle-Thin--><!--Device-BlurStyle-Thin-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Regular
-
-```TypeScript
-Regular
-```
-
-Regular material.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-BlurStyle-Regular--><!--Device-BlurStyle-Regular-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Thick
-
-```TypeScript
-Thick
-```
-
-Thick material.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-BlurStyle-Thick--><!--Device-BlurStyle-Thick-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## BACKGROUND_THIN
-
-```TypeScript
-BACKGROUND_THIN
-```
-
-Material that creates the minimum depth of field effect.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
-
-<!--Device-BlurStyle-BACKGROUND_THIN--><!--Device-BlurStyle-BACKGROUND_THIN-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## BACKGROUND_REGULAR
 
 ```TypeScript
@@ -126,6 +52,26 @@ Material that creates a high shallow depth of field effect.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## BACKGROUND_THIN
+
+```TypeScript
+BACKGROUND_THIN
+```
+
+Material that creates the minimum depth of field effect.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-BlurStyle-BACKGROUND_THIN--><!--Device-BlurStyle-BACKGROUND_THIN-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## BACKGROUND_ULTRA_THICK
 
 ```TypeScript
@@ -143,66 +89,6 @@ Material that creates the maximum depth of field effect.
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
 <!--Device-BlurStyle-BACKGROUND_ULTRA_THICK--><!--Device-BlurStyle-BACKGROUND_ULTRA_THICK-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## NONE
-
-```TypeScript
-NONE
-```
-
-No blur.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 10.
-
-<!--Device-BlurStyle-NONE--><!--Device-BlurStyle-NONE-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## COMPONENT_ULTRA_THIN
-
-```TypeScript
-COMPONENT_ULTRA_THIN = 8
-```
-
-Component ultra-thin material.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
-
-<!--Device-BlurStyle-COMPONENT_ULTRA_THIN = 8--><!--Device-BlurStyle-COMPONENT_ULTRA_THIN = 8-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## COMPONENT_THIN
-
-```TypeScript
-COMPONENT_THIN = 9
-```
-
-Component thin material.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
-
-<!--Device-BlurStyle-COMPONENT_THIN = 9--><!--Device-BlurStyle-COMPONENT_THIN = 9-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,6 +132,26 @@ Component thick material.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## COMPONENT_THIN
+
+```TypeScript
+COMPONENT_THIN = 9
+```
+
+Component thin material.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-BlurStyle-COMPONENT_THIN = 9--><!--Device-BlurStyle-COMPONENT_THIN = 9-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## COMPONENT_ULTRA_THICK
 
 ```TypeScript
@@ -263,5 +169,99 @@ Component ultra-thick material.
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
 <!--Device-BlurStyle-COMPONENT_ULTRA_THICK = 12--><!--Device-BlurStyle-COMPONENT_ULTRA_THICK = 12-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## COMPONENT_ULTRA_THIN
+
+```TypeScript
+COMPONENT_ULTRA_THIN = 8
+```
+
+Component ultra-thin material.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-BlurStyle-COMPONENT_ULTRA_THIN = 8--><!--Device-BlurStyle-COMPONENT_ULTRA_THIN = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NONE
+
+```TypeScript
+NONE
+```
+
+No blur.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-BlurStyle-NONE--><!--Device-BlurStyle-NONE-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Regular
+
+```TypeScript
+Regular
+```
+
+Regular material.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BlurStyle-Regular--><!--Device-BlurStyle-Regular-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Thick
+
+```TypeScript
+Thick
+```
+
+Thick material.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BlurStyle-Thick--><!--Device-BlurStyle-Thick-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Thin
+
+```TypeScript
+Thin
+```
+
+Thin material.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BlurStyle-Thin--><!--Device-BlurStyle-Thin-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

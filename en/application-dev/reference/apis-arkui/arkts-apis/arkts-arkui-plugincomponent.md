@@ -28,7 +28,7 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [pluginComponentManager](arkts-arkui-plugincomponentmanager-n.md) | Implements a plugin component manager. |
+| [pluginComponentManager](arkts-arkui-plugincomponentmanager-n.md) | Implements a plugin component manager, which provides management capabilities such as requesting, pushing, and event listening for plug-in components. |
 
 ### Interfaces
 

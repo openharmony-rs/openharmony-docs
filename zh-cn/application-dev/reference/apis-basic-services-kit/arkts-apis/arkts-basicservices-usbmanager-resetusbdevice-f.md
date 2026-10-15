@@ -58,7 +58,7 @@ import {BusinessError} from '@kit.BasicServicesKit';
 async function resetUsbDevice() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
-    console.error(`device list is empty`);
+    console.info(`device list is empty`);
     return;
   }
 
@@ -73,9 +73,11 @@ async function resetUsbDevice() {
     return;
   }
   try {
+    // 重置USB设备，重置后此前设置的配置和接口设置将被清除，调用前需确认相关业务已结束
     let ret: boolean = usbManager.resetUsbDevice(devicePipe);
     console.info(`resetUsbDevice  = ${ret}`);
-  } catch (err) {
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
     console.error(`Failed to reset USB device. Code: ${err.code}, message: ${err.message}`);
   }
   usbManager.closePipe(devicePipe);

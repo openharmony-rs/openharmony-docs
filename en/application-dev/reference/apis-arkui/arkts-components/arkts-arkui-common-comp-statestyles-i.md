@@ -6,6 +6,12 @@ declare interface StateStyles
 
 State-specific styles for the component.
 
+> **NOTE:** 
+> 
+> - The selected state style depends on the value of the component's selected attribute, which can be changed through a click event or **$$**.
+> 
+> - When both **clicked** and **pressed** are used on the same component, only the last registered state takes effect.
+
 **Since:** 8
 
 <!--Device-unnamed-declare interface StateStyles--><!--Device-unnamed-declare interface StateStyles-End-->

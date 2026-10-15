@@ -12,22 +12,6 @@ Enumerates the types of attendees invited to a conference event.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
-## REQUIRED
-
-```TypeScript
-REQUIRED = 1
-```
-
-Required attendee.
-
-**Since:** 18
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-AttendeeType-REQUIRED = 1--><!--Device-AttendeeType-REQUIRED = 1-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
 ## OPTIONAL
 
 ```TypeScript
@@ -41,6 +25,22 @@ Optional attendee.
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-AttendeeType-OPTIONAL = 2--><!--Device-AttendeeType-OPTIONAL = 2-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## REQUIRED
+
+```TypeScript
+REQUIRED = 1
+```
+
+Required attendee.
+
+**Since:** 18
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AttendeeType-REQUIRED = 1--><!--Device-AttendeeType-REQUIRED = 1-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 

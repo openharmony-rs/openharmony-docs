@@ -4,7 +4,7 @@
 export enum Operation
 ```
 
-Enumerates the user operations. @enum { int }
+Enumerates the user operations.
 
 **Since:** 20
 

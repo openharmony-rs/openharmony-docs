@@ -49,6 +49,26 @@ Called when the system acquire the form data.
 | object | Returns the wantParams object.<br>**Since:** 10 |
 | Record&lt;string, Object&gt; | Returns the wantParams object.<br>**Since:** 11 |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onAcquireFormData(formId: string) {
+    console.info(`FormExtensionAbility onAcquireFormData, formId: ${formId}`);
+    let wantParams: Record<string, Object> = {
+      'temperature': '20',
+      'time': '2022-8-8 09:59',
+    };
+    return wantParams;
+  }
+}
+```
+
+<!--DelEnd-->
+
 ## onShareForm
 
 ```TypeScript
@@ -79,3 +99,23 @@ Called when the system shares the form.
 | --- | --- |
 | object | Returns the wantParams object.<br>**Since:** 9 - 10 |
 | Record&lt;string, Object&gt; | Returns the wantParams object.<br>**Since:** 11 |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onShareForm(formId: string) {
+    console.info(`FormExtensionAbility onShareForm, formId: ${formId}`);
+    let wantParams: Record<string, Object> = {
+      'temperature': '20',
+      'time': '2022-8-8 09:59',
+    };
+    return wantParams;
+  }
+}
+```
+
+<!--DelEnd-->

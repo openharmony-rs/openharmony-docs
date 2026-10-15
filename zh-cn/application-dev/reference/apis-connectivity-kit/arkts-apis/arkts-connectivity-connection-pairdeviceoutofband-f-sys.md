@@ -53,6 +53,7 @@ function pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | 
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -83,3 +84,5 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

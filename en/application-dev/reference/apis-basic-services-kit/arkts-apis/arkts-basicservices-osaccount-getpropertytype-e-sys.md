@@ -30,33 +30,17 @@ Authentication credential subtype.
 
 **System API:** This is a system API.
 
-## REMAIN_TIMES
+## CREDENTIAL_LENGTH
 
 ```TypeScript
-REMAIN_TIMES = 2
+CREDENTIAL_LENGTH = 7
 ```
 
-Number of remaining times.
+Credential length.
 
-**Since:** 8
+**Since:** 20
 
-<!--Device-GetPropertyType-REMAIN_TIMES = 2--><!--Device-GetPropertyType-REMAIN_TIMES = 2-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## FREEZING_TIME
-
-```TypeScript
-FREEZING_TIME = 3
-```
-
-Freezing time.
-
-**Since:** 8
-
-<!--Device-GetPropertyType-FREEZING_TIME = 3--><!--Device-GetPropertyType-FREEZING_TIME = 3-End-->
+<!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7--><!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -78,17 +62,17 @@ Enrollment progress.
 
 **System API:** This is a system API.
 
-## SENSOR_INFO
+## FREEZING_TIME
 
 ```TypeScript
-SENSOR_INFO = 5
+FREEZING_TIME = 3
 ```
 
-Sensor information.
+Freezing time.
 
-**Since:** 10
+**Since:** 8
 
-<!--Device-GetPropertyType-SENSOR_INFO = 5--><!--Device-GetPropertyType-SENSOR_INFO = 5-End-->
+<!--Device-GetPropertyType-FREEZING_TIME = 3--><!--Device-GetPropertyType-FREEZING_TIME = 3-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -110,17 +94,33 @@ Next freezing time.
 
 **System API:** This is a system API.
 
-## CREDENTIAL_LENGTH
+## REMAIN_TIMES
 
 ```TypeScript
-CREDENTIAL_LENGTH = 7
+REMAIN_TIMES = 2
 ```
 
-Credential length.
+Number of remaining times.
 
-**Since:** 20
+**Since:** 8
 
-<!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7--><!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7-End-->
+<!--Device-GetPropertyType-REMAIN_TIMES = 2--><!--Device-GetPropertyType-REMAIN_TIMES = 2-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## SENSOR_INFO
+
+```TypeScript
+SENSOR_INFO = 5
+```
+
+Sensor information.
+
+**Since:** 10
+
+<!--Device-GetPropertyType-SENSOR_INFO = 5--><!--Device-GetPropertyType-SENSOR_INFO = 5-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

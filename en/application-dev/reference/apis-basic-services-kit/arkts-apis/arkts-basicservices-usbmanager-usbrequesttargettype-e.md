@@ -26,20 +26,6 @@ The control request target is set to the USB device, which is used to control th
 
 **System capability:** SystemCapability.USB.USBManager
 
-## USB_REQUEST_TARGET_INTERFACE
-
-```TypeScript
-USB_REQUEST_TARGET_INTERFACE = 1
-```
-
-The control request target is set to an interface of the USB device, which is used to control the interface, for example, setting the interface features or obtaining the interface descriptor.
-
-**Since:** 9
-
-<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
 ## USB_REQUEST_TARGET_ENDPOINT
 
 ```TypeScript
@@ -51,6 +37,20 @@ The control request target is set to an endpoint of the USB device, which is use
 **Since:** 9
 
 <!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+## USB_REQUEST_TARGET_INTERFACE
+
+```TypeScript
+USB_REQUEST_TARGET_INTERFACE = 1
+```
+
+The control request target is set to an interface of the USB device, which is used to control the interface, for example, setting the interface features or obtaining the interface descriptor.
+
+**Since:** 9
+
+<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

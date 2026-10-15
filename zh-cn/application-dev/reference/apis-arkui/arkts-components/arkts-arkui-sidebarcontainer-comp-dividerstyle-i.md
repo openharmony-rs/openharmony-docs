@@ -14,7 +14,7 @@ interface DividerStyle
 
 > 当[showSideBar](arkts-arkui-sidebarcontainer-comp-attribute.md#showsidebar)属性未设置时，依据组件大小进行自动显示：
 
-> - 小于[minSideBarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#minsidebarwidth) +[minContentWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#mincontentwidth)：默认不显示侧边栏。
+> - 小于[minSideBarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#minsidebarwidth1) +[minContentWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#mincontentwidth)：默认不显示侧边栏。
 > 
 > - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
 
@@ -120,7 +120,7 @@ strokeWidth: Length
 
 **说明：** 
 
-分割线的宽度不支持百分比设置。优先级低于[通用属性height](arkts-arkui-common-comp-commonmethod-c.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。
+分割线的宽度不支持百分比设置。优先级低于[通用属性height](arkts-arkui-common-comp-commonmethod-c.md#height1)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 

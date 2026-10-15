@@ -26,20 +26,6 @@ ADMIN = 0
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-## NORMAL
-
-```TypeScript
-NORMAL = 1
-```
-
-普通账号。
-
-**起始版本：** 7
-
-<!--Device-OsAccountType-NORMAL = 1--><!--Device-OsAccountType-NORMAL = 1-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
 ## GUEST
 
 ```TypeScript
@@ -51,5 +37,19 @@ GUEST = 2
 **起始版本：** 7
 
 <!--Device-OsAccountType-GUEST = 2--><!--Device-OsAccountType-GUEST = 2-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+## NORMAL
+
+```TypeScript
+NORMAL = 1
+```
+
+普通账号。
+
+**起始版本：** 7
+
+<!--Device-OsAccountType-NORMAL = 1--><!--Device-OsAccountType-NORMAL = 1-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount

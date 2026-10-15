@@ -15,6 +15,7 @@ Defines the final search result after decryption, indicating whether a match was
 ## Modules to Import
 
 ```TypeScript
+import { privacyComputation } from '@kit.DataProtectionKit';
 ```
 
 ## attachedValues

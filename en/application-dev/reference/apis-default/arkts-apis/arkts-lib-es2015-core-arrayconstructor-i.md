@@ -9,6 +9,8 @@ interface ArrayConstructor
 ```TypeScript
 ```
 
+<a id="from1"></a>
+
 ## from
 
 ```TypeScript
@@ -25,7 +27,7 @@ Creates an array from an array-like object.
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;T&gt; | Yes |  |
 
-<a id="from-1"></a>
+<a id="from2"></a>
 
 ## from
 

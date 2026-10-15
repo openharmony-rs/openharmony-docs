@@ -4,7 +4,7 @@
 type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions
 ```
 
-Defines a callback to intercept the soft keyboard initiated from editable elements on a web page. This event is typically called when the **\&lt;input&gt;** tag on the web page is clicked.
+Defines a callback to intercept the soft keyboard initiated from editable elements on a web page. This event is typically called when the **\<input>** tag on the web page is clicked.
 
 **Since:** 12
 

@@ -12,20 +12,6 @@ export enum PowerMode
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
-## SLEEPING
-
-```TypeScript
-SLEEPING = 0
-```
-
-睡眠模式。
-
-**起始版本：** 9
-
-<!--Device-PowerMode-SLEEPING = 0--><!--Device-PowerMode-SLEEPING = 0-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 ## GENERAL
 
 ```TypeScript
@@ -37,6 +23,20 @@ GENERAL = 1
 **起始版本：** 9
 
 <!--Device-PowerMode-GENERAL = 1--><!--Device-PowerMode-GENERAL = 1-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## SLEEPING
+
+```TypeScript
+SLEEPING = 0
+```
+
+睡眠模式。
+
+**起始版本：** 9
+
+<!--Device-PowerMode-SLEEPING = 0--><!--Device-PowerMode-SLEEPING = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

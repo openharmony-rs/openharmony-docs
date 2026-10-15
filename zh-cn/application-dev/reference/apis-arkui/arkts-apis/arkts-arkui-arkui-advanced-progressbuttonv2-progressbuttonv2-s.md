@@ -4,21 +4,13 @@
 export declare struct ProgressButtonV2
 ```
 
-文本下载按钮，可显示具体的下载进度。
-
-该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制文本下载按钮的数据和状态，实现更高效的用户界面刷新。
+创建ProgressButtonV2组件。
 
 设备行为差异：该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 > **说明：** 
 > 
 > - 如果ProgressButtonV2设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ProgressButtonV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ProgressButtonV2设置通用属性和通用事件。
-
-## 导入模块
-
-``` ts
-import { ColorMetrics, LengthMetrics, ProgressButtonV2, ProgressButtonV2Color } from '@kit.ArkUI';
-```
 
 **起始版本：** 18
 

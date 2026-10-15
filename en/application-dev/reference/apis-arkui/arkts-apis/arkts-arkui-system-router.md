@@ -37,7 +37,7 @@ import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, Ena
 
 | Name | Description |
 | --- | --- |
-| [ParamsInterface](arkts-arkui-paramsinterface-t.md) | List of routing parameters. |
+| [ParamsInterface](arkts-arkui-paramsinterface-t.md) |  |
 
 ## Examples
 

@@ -48,24 +48,6 @@ Finger.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PEN
-
-```TypeScript
-PEN = 2
-```
-
-Stylus.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-ResponseRegionSupportedTool-PEN = 2--><!--Device-ResponseRegionSupportedTool-PEN = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## MOUSE
 
 ```TypeScript
@@ -81,5 +63,23 @@ Mouse.
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ResponseRegionSupportedTool-MOUSE = 3--><!--Device-ResponseRegionSupportedTool-MOUSE = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PEN
+
+```TypeScript
+PEN = 2
+```
+
+Stylus.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResponseRegionSupportedTool-PEN = 2--><!--Device-ResponseRegionSupportedTool-PEN = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

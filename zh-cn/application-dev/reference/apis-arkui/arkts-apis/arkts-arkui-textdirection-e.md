@@ -12,6 +12,42 @@ declare enum TextDirection
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## AUTO
+
+```TypeScript
+AUTO = 3
+```
+
+遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDirection-AUTO = 3--><!--Device-TextDirection-AUTO = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DEFAULT
+
+```TypeScript
+DEFAULT = 2
+```
+
+文本排版方向遵循组件布局方向。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDirection-DEFAULT = 2--><!--Device-TextDirection-DEFAULT = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## LTR
 
 ```TypeScript
@@ -45,41 +81,5 @@ RTL = 1
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextDirection-RTL = 1--><!--Device-TextDirection-RTL = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 2
-```
-
-文本排版方向遵循组件布局方向。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
-
-<!--Device-TextDirection-DEFAULT = 2--><!--Device-TextDirection-DEFAULT = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## AUTO
-
-```TypeScript
-AUTO = 3
-```
-
-遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
-
-<!--Device-TextDirection-AUTO = 3--><!--Device-TextDirection-AUTO = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

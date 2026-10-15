@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getprocessrunninginfos1"></a>
+
 ## getProcessRunningInfos
 
 ```TypeScript
@@ -49,7 +51,7 @@ appManager.getProcessRunningInfos().then((data) => {
 ```
 
 
-<a id="getprocessrunninginfos-1"></a>
+<a id="getprocessrunninginfos2"></a>
 
 ## getProcessRunningInfos
 

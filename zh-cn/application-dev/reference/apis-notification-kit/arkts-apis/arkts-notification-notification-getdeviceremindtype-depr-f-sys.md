@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getdeviceremindtype1"></a>
+
 ## getDeviceRemindType
 
 ```TypeScript
@@ -34,7 +36,7 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | 是 | 获取通知提醒方式的回调函数。 |
 
 
-<a id="getdeviceremindtype-1"></a>
+<a id="getdeviceremindtype2"></a>
 
 ## getDeviceRemindType
 

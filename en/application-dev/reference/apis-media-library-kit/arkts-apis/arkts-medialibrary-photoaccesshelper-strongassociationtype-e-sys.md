@@ -14,22 +14,6 @@ Enumerates the strong association types of photos.
 
 **System API:** This is a system API.
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-Common photo.
-
-**Since:** 20
-
-<!--Device-StrongAssociationType-NORMAL = 0--><!--Device-StrongAssociationType-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## CLOUD_ENHANCEMENT
 
 ```TypeScript
@@ -41,6 +25,22 @@ Cloud-enhanced photo.
 **Since:** 20
 
 <!--Device-StrongAssociationType-CLOUD_ENHANCEMENT = 1--><!--Device-StrongAssociationType-CLOUD_ENHANCEMENT = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+Common photo.
+
+**Since:** 20
+
+<!--Device-StrongAssociationType-NORMAL = 0--><!--Device-StrongAssociationType-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

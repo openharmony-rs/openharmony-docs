@@ -47,6 +47,7 @@ function getReminderInfoByBundles(bundles: Array<BundleOption>) : Promise<Array<
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notifica
     console.error(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

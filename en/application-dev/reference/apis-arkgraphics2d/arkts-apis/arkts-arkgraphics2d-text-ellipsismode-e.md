@@ -14,19 +14,19 @@ Enumerates the ellipsis styles.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## START
+## END
 
 ```TypeScript
-START = 0
+END = 2
 ```
 
-Ellipsis at the beginning. This enumerated value is valid only when **maxLines** is set to **1** in [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md).
+Ellipsis at the end. This enumerated value is valid when **maxLines** is set to any value in [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-<!--Device-EllipsisMode-START = 0--><!--Device-EllipsisMode-START = 0-End-->
+<!--Device-EllipsisMode-END = 2--><!--Device-EllipsisMode-END = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -40,41 +40,9 @@ Ellipsis in the middle. This enumerated value is valid only when **maxLines** is
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-EllipsisMode-MIDDLE = 1--><!--Device-EllipsisMode-MIDDLE = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## END
-
-```TypeScript
-END = 2
-```
-
-Ellipsis at the end. This enumerated value is valid when **maxLines** is set to any value in [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md).
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
-
-<!--Device-EllipsisMode-END = 2--><!--Device-EllipsisMode-END = 2-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## MULTILINE_START
-
-```TypeScript
-MULTILINE_START = 3
-```
-
-Ellipsis at the beginning. This enumerated value is valid when **maxLines** is set to any value in [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md).
-
-**Since:** 24
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
-
-<!--Device-EllipsisMode-MULTILINE_START = 3--><!--Device-EllipsisMode-MULTILINE_START = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -88,8 +56,40 @@ Ellipsis in the middle. This enumerated value is valid when **maxLines** is set 
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-EllipsisMode-MULTILINE_MIDDLE = 4--><!--Device-EllipsisMode-MULTILINE_MIDDLE = 4-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## MULTILINE_START
+
+```TypeScript
+MULTILINE_START = 3
+```
+
+Ellipsis at the beginning. This enumerated value is valid when **maxLines** is set to any value in [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md).
+
+**Since:** 24
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-EllipsisMode-MULTILINE_START = 3--><!--Device-EllipsisMode-MULTILINE_START = 3-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## START
+
+```TypeScript
+START = 0
+```
+
+Ellipsis at the beginning. This enumerated value is valid only when **maxLines** is set to **1** in [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md).
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-EllipsisMode-START = 0--><!--Device-EllipsisMode-START = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

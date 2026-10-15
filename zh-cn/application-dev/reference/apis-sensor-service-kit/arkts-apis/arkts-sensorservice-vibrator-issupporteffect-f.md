@@ -6,13 +6,15 @@
 import { vibrator } from '@kit.SensorServiceKit';
 ```
 
+<a id="issupporteffect1"></a>
+
 ## isSupportEffect
 
 ```TypeScript
 function isSupportEffect(effectId: string, callback: AsyncCallback<boolean>): void
 ```
 
-查询当前设备是否支持传入的预置振动效果effectId。使用callback异步回调。当开发者需要在触发预置振动前确认当前设备是否支持指定的振动效果时使用此接口。由于不同设备可能预置不同的振动效果，建议在使用[vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md)的VibratePreset类型前先调用此接口查询，避免在不支持的设备上触发振动效果不佳。调用成功后，通过callback返回boolean结果：返回true表示设备支持该effectId，可直接用于startVibration；返回false表示不支持，此时使用该effectId触发振动可能效果不佳或无法振动。
+查询当前设备是否支持传入的预置振动效果effectId。使用callback异步回调。当开发者需要在触发预置振动前确认当前设备是否支持指定的振动效果时使用此接口。由于不同设备可能预置不同的振动效果，建议在使用[vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)的VibratePreset类型前先调用此接口查询，避免在不支持的设备上触发振动效果不佳。调用成功后，通过callback返回boolean结果：返回true表示设备支持该effectId，可直接用于startVibration；返回false表示不支持，此时使用该effectId触发振动可能效果不佳或无法振动。
 
 **起始版本：** 10
 
@@ -25,7 +27,7 @@ function isSupportEffect(effectId: string, callback: AsyncCallback<boolean>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | effectId | string | 是 | 待确认的预置振动效果ID。字符串最大长度64，超出部分截取前64个字符。使用场景：不同设备预置的振动效果可能不同，需传入具体的effectId查询是否支持。取值可参考[EffectId](arkts-sensorservice-vibrator-effectid-e.md)和[HapticFeedback](arkts-sensorservice-vibrator-hapticfeedback-e.md)中定义的值。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)；返回false表示不支持，使用该effectId触发振动可能效果不佳。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)；返回false表示不支持，使用该effectId触发振动可能效果不佳。 |
 
 **错误码：**
 
@@ -78,7 +80,7 @@ try {
 ```
 
 
-<a id="issupporteffect-1"></a>
+<a id="issupporteffect2"></a>
 
 ## isSupportEffect
 
@@ -104,7 +106,7 @@ function isSupportEffect(effectId: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)；返回false表示不支持，使用该effectId触发振动可能效果不佳。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示设备支持该effectId，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration2)；返回false表示不支持，使用该effectId触发振动可能效果不佳。 |
 
 **错误码：**
 

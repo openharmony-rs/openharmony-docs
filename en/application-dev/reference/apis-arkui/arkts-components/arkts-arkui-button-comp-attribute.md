@@ -8,7 +8,7 @@ In addition to the universal attributes, the following attributes are supported.
 
 The universal events are supported.
 
-**Inheritance/Implementation:** ButtonAttribute extends CommonMethod<ButtonAttribute>
+**Inheritance/Implementation:** ButtonAttribute extends CommonMethod&lt;ButtonAttribute&gt;
 
 **Since:** 7
 
@@ -22,7 +22,7 @@ The universal events are supported.
 buttonStyle(value: ButtonStyleMode)
 ```
 
-Sets the style and primacy for the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
+Sets the style and primacy for the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [fontColor](#fontcolor), and [role](#role) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 > **NOTE:** 
 > 
@@ -308,7 +308,7 @@ Sets the minimum font scale factor for text.
 role(value: ButtonRole)
 ```
 
-Sets the role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
+Sets the role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 **Since:** 12
 

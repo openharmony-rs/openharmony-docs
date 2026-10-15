@@ -6,6 +6,8 @@ export type AutoFillRect = _AutoFillRect.default
 
 Defines the rectangle used for auto-fill.
 
+**Type:** _AutoFillRect.default
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the rectangle used for auto-fill.
 <!--Device-autoFillManager-export type AutoFillRect = _AutoFillRect.default--><!--Device-autoFillManager-export type AutoFillRect = _AutoFillRect.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Type:** _AutoFillRect.default

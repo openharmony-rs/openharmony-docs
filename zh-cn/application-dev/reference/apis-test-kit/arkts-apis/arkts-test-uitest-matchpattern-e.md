@@ -14,26 +14,6 @@ declare enum MatchPattern
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
 
-## EQUALS
-
-```TypeScript
-EQUALS = 0
-```
-
-等于给定值。
-
-从API version 11开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MatchPattern-EQUALS = 0--><!--Device-MatchPattern-EQUALS = 0-End-->
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## CONTAINS
 
 ```TypeScript
@@ -46,29 +26,9 @@ CONTAINS = 1
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-MatchPattern-CONTAINS = 1--><!--Device-MatchPattern-CONTAINS = 1-End-->
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## STARTS_WITH
-
-```TypeScript
-STARTS_WITH = 2
-```
-
-以给定值开始。
-
-从API version 11开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MatchPattern-STARTS_WITH = 2--><!--Device-MatchPattern-STARTS_WITH = 2-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -86,9 +46,29 @@ ENDS_WITH = 3
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-MatchPattern-ENDS_WITH = 3--><!--Device-MatchPattern-ENDS_WITH = 3-End-->
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## EQUALS
+
+```TypeScript
+EQUALS = 0
+```
+
+等于给定值。
+
+从API version 11开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MatchPattern-EQUALS = 0--><!--Device-MatchPattern-EQUALS = 0-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -106,7 +86,7 @@ REG_EXP = 4
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-MatchPattern-REG_EXP = 4--><!--Device-MatchPattern-REG_EXP = 4-End-->
 
@@ -126,9 +106,29 @@ REG_EXP_ICASE = 5
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-MatchPattern-REG_EXP_ICASE = 5--><!--Device-MatchPattern-REG_EXP_ICASE = 5-End-->
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## STARTS_WITH
+
+```TypeScript
+STARTS_WITH = 2
+```
+
+以给定值开始。
+
+从API version 11开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MatchPattern-STARTS_WITH = 2--><!--Device-MatchPattern-STARTS_WITH = 2-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 

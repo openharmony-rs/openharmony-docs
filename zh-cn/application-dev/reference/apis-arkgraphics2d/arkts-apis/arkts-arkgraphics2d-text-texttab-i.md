@@ -30,7 +30,7 @@ alignment: TextAlign
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextTab-alignment: TextAlign--><!--Device-TextTab-alignment: TextAlign-End-->
 
@@ -48,7 +48,7 @@ location: number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextTab-location: double--><!--Device-TextTab-location: double-End-->
 

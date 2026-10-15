@@ -6,6 +6,8 @@ type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>
 
 Represents a FrameNode of the **Checkbox** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxInterface, [CheckboxAttribute](../arkts-components/arkts-arkui-checkbox-comp-attribute.md)&gt;
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Checkbox** type.
 <!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>--><!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxInterface, [CheckboxAttribute](../arkts-components/arkts-arkui-checkbox-comp-attribute.md)&gt;

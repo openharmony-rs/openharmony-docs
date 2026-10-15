@@ -28,38 +28,6 @@ NO_UPDATE_PACKAGE = -4
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## UPDATE_WAITING
-
-```TypeScript
-UPDATE_WAITING = -3
-```
-
-系统更新包等待安装中。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UpdateStatus-UPDATE_WAITING = -3--><!--Device-UpdateStatus-UPDATE_WAITING = -3-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## UPDATING
-
-```TypeScript
-UPDATING = -2
-```
-
-正在更新。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UpdateStatus-UPDATING = -2--><!--Device-UpdateStatus-UPDATING = -2-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## UPDATE_FAILURE
 
 ```TypeScript
@@ -89,5 +57,37 @@ UPDATE_SUCCESS = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UpdateStatus-UPDATE_SUCCESS = 0--><!--Device-UpdateStatus-UPDATE_SUCCESS = 0-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## UPDATE_WAITING
+
+```TypeScript
+UPDATE_WAITING = -3
+```
+
+系统更新包等待安装中。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UpdateStatus-UPDATE_WAITING = -3--><!--Device-UpdateStatus-UPDATE_WAITING = -3-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## UPDATING
+
+```TypeScript
+UPDATING = -2
+```
+
+正在更新。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UpdateStatus-UPDATING = -2--><!--Device-UpdateStatus-UPDATING = -2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

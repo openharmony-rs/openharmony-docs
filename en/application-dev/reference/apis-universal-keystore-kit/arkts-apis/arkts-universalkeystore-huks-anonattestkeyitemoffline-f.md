@@ -49,7 +49,7 @@ Obtains an anonymous key certificate in offline mode. This API uses a promise to
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-feature-not-supported) | The algorithm mode is not supported. |
 | [12000004](../errorcode-huks.md#12000004-file-error) | The file operation failed. |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | The IPC communication failed. |
@@ -57,7 +57,7 @@ Obtains an anonymous key certificate in offline mode. This API uses a promise to
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | The queried entity does not exist. |
 | [12000012](../errorcode-huks.md#12000012-external-error) | The device environment or input parameter is abnormal. |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | The memory is insufficient. |
-| [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | The parameter is incorrect. Possible causes: 1. A mandatory parameter is left empty. 2. The parameter type is incorrect. 3. The parameter verification failed. 4. The group ID specified by the access group tag is invalid. |
+| [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | The parameter is incorrect. Possible causes:         1. A mandatory parameter is left empty.         2. The parameter type is incorrect.         3. The parameter verification failed.         4. The group ID specified by the access group tag is invalid. |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | The operation times out. This may be caused by network jitter. You can try again later. |
 | 12000027 | The network is unavailable. Check network connections. |
 

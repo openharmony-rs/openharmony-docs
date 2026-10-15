@@ -4,7 +4,7 @@
 export interface DLPFile
 ```
 
-管理DLPFile的实例，表示一个DLP文件对象，需要通过[generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md)获取DLPFile的实例。DLPFile对象代表一个已打开的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closedlpfile)方法释放资源，避免文件句柄泄漏。DLPFile对象在跨进程传递时，需要进行授权。
+管理DLPFile的实例，表示一个DLP文件对象，需要通过[generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md#generatedlpfile1) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile1)获取DLPFile的实例。DLPFile对象代表一个已打开的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closedlpfile)方法释放资源，避免文件句柄泄漏。DLPFile对象在跨进程传递时，需要进行授权。
 
 **起始版本：** 10
 
@@ -20,6 +20,8 @@ export interface DLPFile
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="adddlplinkfile1"></a>
+
 ## addDLPLinkFile
 
 ```TypeScript
@@ -28,7 +30,7 @@ addDLPLinkFile(linkFileName: string): Promise<void>
 
 在FUSE文件系统（Filesystem in Userspace）添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文件的读写操作会同步到实际DLP文件。使用Promise异步回调。
 
-在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile)移除DLP link文件。
+在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile1)移除DLP link文件。
 
 DLP应用需要通过标准文件接口访问加密文件内容时，先添加link文件将DLP文件映射为虚拟明文文件，应用可像操作普通文件一样读写该link文件。
 
@@ -60,12 +62,13 @@ DLP应用需要通过标准文件接口访问加密文件内容时，先添加li
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,7 +101,9 @@ async function exampleFunction() {
 exampleFunction();
 ```
 
-<a id="adddlplinkfile-1"></a>
+<!--DelEnd-->
+
+<a id="adddlplinkfile2"></a>
 
 ## addDLPLinkFile
 
@@ -108,7 +113,7 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 
 在FUSE文件系统添加link文件。使用callback异步回调。调用成功后，在FUSE文件系统中创建一个映射到DLP文件密文的虚拟文件。
 
-在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile)移除DLP link文件。
+在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile1)移除DLP link文件。
 
 DLP应用需要通过标准文件接口访问加密文件内容时使用此接口。
 
@@ -135,12 +140,13 @@ DLP应用需要通过标准文件接口访问加密文件内容时使用此接�
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -176,6 +182,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
+
+<a id="closedlpfile1"></a>
+
 ## closeDLPFile
 
 ```TypeScript
@@ -184,7 +194,7 @@ closeDLPFile(): Promise<void>
 
 关闭DLPFile，释放对象。使用Promise异步回调。
 
-调用[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md)成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
+调用[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile1)成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
 文件所有者决定关闭DLP文件时使用此接口。
 
@@ -219,6 +229,7 @@ closeDLPFile(): Promise<void>
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -250,7 +261,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="closedlpfile-1"></a>
+<!--DelEnd-->
+
+<a id="closedlpfile2"></a>
 
 ## closeDLPFile
 
@@ -296,6 +309,7 @@ closeDLPFile(callback: AsyncCallback<void>): void
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -330,6 +344,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
+
+<a id="deletedlplinkfile1"></a>
+
 ## deleteDLPLinkFile
 
 ```TypeScript
@@ -338,7 +356,7 @@ deleteDLPLinkFile(linkFileName: string): Promise<void>
 
 删除FUSE文件系统中创建的link文件。使用Promise异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
 
-在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加DLP link文件。
+在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile1)添加DLP link文件。
 
 DLP文件访问结束后清理link文件映射时使用此接口。
 
@@ -370,12 +388,13 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -409,7 +428,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="deletedlplinkfile-1"></a>
+<!--DelEnd-->
+
+<a id="deletedlplinkfile2"></a>
 
 ## deleteDLPLinkFile
 
@@ -419,7 +440,7 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 
 删除FUSE文件系统中创建的link文件，使用callback异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
 
-在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加DLP link文件。
+在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile1)添加DLP link文件。
 
 DLP文件访问结束后清理link文件映射时使用此接口。
 
@@ -446,12 +467,13 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -488,6 +510,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
+
+<a id="recoverdlpfile1"></a>
+
 ## recoverDLPFile
 
 ```TypeScript
@@ -512,7 +538,7 @@ recoverDLPFile(plaintextFd: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup &gt;-1时，fd的值被截断。 |
+| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup >-1时，fd的值被截断。 |
 
 **返回值：**
 
@@ -526,7 +552,7 @@ recoverDLPFile(plaintextFd: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -538,6 +564,7 @@ recoverDLPFile(plaintextFd: number): Promise<void>
 | [19100010](../errorcode-dlp.md#19100010-只读dlp文件) | The DLP file is read only. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -574,7 +601,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="recoverdlpfile-1"></a>
+<!--DelEnd-->
+
+<a id="recoverdlpfile2"></a>
 
 ## recoverDLPFile
 
@@ -600,7 +629,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup &gt;-1时，fd的值被截断。 |
+| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup >-1时，fd的值被截断。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收恢复明文文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
 
 **错误码：**
@@ -609,7 +638,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -621,6 +650,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void
 | [19100010](../errorcode-dlp.md#19100010-只读dlp文件) | The DLP file is read only. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -658,6 +688,10 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
+
+<a id="replacedlplinkfile1"></a>
 
 ## replaceDLPLinkFile
 
@@ -697,12 +731,13 @@ replaceDLPLinkFile(linkFileName: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -738,7 +773,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="replacedlplinkfile-1"></a>
+<!--DelEnd-->
+
+<a id="replacedlplinkfile2"></a>
 
 ## replaceDLPLinkFile
 
@@ -773,12 +810,13 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -816,6 +854,10 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
+
+<a id="resumefuselink1"></a>
 
 ## resumeFuseLink
 
@@ -856,6 +898,7 @@ link文件替换完成后，需要恢复读写关联以继续正常的文件访�
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -890,7 +933,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="resumefuselink-1"></a>
+<!--DelEnd-->
+
+<a id="resumefuselink2"></a>
 
 ## resumeFuseLink
 
@@ -932,6 +977,7 @@ link文件替换完成后需要恢复读写关联。
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -968,6 +1014,10 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
+
+<a id="stopfuselink1"></a>
 
 ## stopFuseLink
 
@@ -1008,6 +1058,7 @@ stopFuseLink(): Promise<void>
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1040,7 +1091,9 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-<a id="stopfuselink-1"></a>
+<!--DelEnd-->
+
+<a id="stopfuselink2"></a>
 
 ## stopFuseLink
 
@@ -1082,6 +1135,7 @@ stopFuseLink(callback: AsyncCallback<void>): void
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1117,6 +1171,8 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
+
+<!--DelEnd-->
 
 ## dlpProperty
 

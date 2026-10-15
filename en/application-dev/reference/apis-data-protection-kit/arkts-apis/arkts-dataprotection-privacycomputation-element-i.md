@@ -15,6 +15,7 @@ Defines a dataset element used in privacy search. Each element contains a key fo
 ## Modules to Import
 
 ```TypeScript
+import { privacyComputation } from '@kit.DataProtectionKit';
 ```
 
 ## elemKey
@@ -63,7 +64,7 @@ The value associated with the element key. This field is used in PIR protocol to
 hashAlg?: HashAlg
 ```
 
-The hash algorithm used for hashing the element key. If not specified, the element key will be used with SHA256 default.
+The hash algorithm used for hashing the element key. If not specified, the element key will be used with no hash algorithm default.
 
 **Type:** [HashAlg](arkts-dataprotection-privacycomputation-hashalg-e.md)
 

@@ -6,6 +6,8 @@ export type ExtensionAbilityInfo = _ExtensionAbilityInfo.ExtensionAbilityInfo
 
 ExtensionAbility信息。
 
+**类型：** [_ExtensionAbilityInfo.ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)
+
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -13,5 +15,3 @@ ExtensionAbility信息。
 <!--Device-bundleManager-export type ExtensionAbilityInfo = _ExtensionAbilityInfo.ExtensionAbilityInfo--><!--Device-bundleManager-export type ExtensionAbilityInfo = _ExtensionAbilityInfo.ExtensionAbilityInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**类型：** [_ExtensionAbilityInfo.ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)

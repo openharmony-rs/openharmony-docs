@@ -20,9 +20,13 @@ Custom Component base class and it is migrated from class CustomComponent.
 aboutToAppear?(): void
 ```
 
-aboutToAppear Method and it is migrated from class CustomComponent.
+Invoked after a new instance of the custom component is created and before its **build()** function is executed. You can change [state variables](../../../ui/state-management/arkts-state-management-glossary.md#state-variable) in the **aboutToAppear** function, and the changes will take effect in the subsequent execution of the **build()** function. The **aboutToAppear** lifecycle of a custom component that implements [custom layout](#onmeasuresize) is triggered during the layout process. For details about how to use it, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
 
-The aboutToAppear function is executed after a new instance of the custom component is created, before its build() function is executed.
+> **NOTE:** 
+> 
+> * In this callback function, it is recommended that you only perform initialization logic for the current node component. Avoid high-time-consuming operations that may block the main thread. For high-time-consuming operations, consider caching or asynchronous solutions. For best practices, see [Optimizing Performance of UI Components: Avoiding Time-Consuming Operations During the Lifecycle of Custom Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-component-performance-optimization#section18755173594714).
+> 
+> * In scenarios where components need to be frequently created and destroyed, this callback will be called frequently. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread: Component Lifecycle Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section418843713435).
 
 **Since:** 7
 
@@ -42,9 +46,13 @@ The aboutToAppear function is executed after a new instance of the custom compon
 aboutToDisappear?(): void
 ```
 
-aboutToDisappear Method and it is migrated from class CustomComponent.
+Executed when the custom component is destructed and destroyed. Do not change state variables in the **aboutToDisappear** function. In particular, modifying the \@Link variable may cause unstable app behavior. For details about how to use it, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md). It is not recommended to trigger logic such as [creating a custom dialog box](../arkts-apis/arkts-arkui-customdialogcontroller-c.md#open) after the **aboutToDisappear** function is called, because this may cause abnormal app behavior due to the loss of component tree information, for example, [\@Consume](../../../ui/state-management/arkts-provide-and-consume.md) cannot find the corresponding [\@Provide](../../../ui/state-management/arkts-provide-and-consume.md), or the dialog box displays a blank screen without components.
 
-The aboutToDisappear function executes before a custom component is destroyed.
+> **NOTE:** 
+> 
+> In scenarios where components need to be frequently created and destroyed, this callback will be called
+> frequently. For best practices, see
+> [Optimizing Time-Consuming Operations in the Main Thread: Component Lifecycle Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section418843713435).
 
 **Since:** 7
 
@@ -64,7 +72,7 @@ The aboutToDisappear function executes before a custom component is destroyed.
 aboutToRecycle?(): void
 ```
 
-aboutToRecycle Method and it is migrated from class CustomComponent.
+Invoked before a reusable component is added to the reuse cache from the node tree. When the component is subsequently reused from the reuse cache, the [aboutToReuse](../../../ui/state-management/arkts-page-custom-components-lifecycle.md#abouttoreuse10) lifecycle callback is triggered. In frequently invoked scenarios, avoid performing time-consuming operations in it, otherwise frame loss and lag may occur.
 
 **Since:** 10
 
@@ -82,7 +90,7 @@ aboutToRecycle Method and it is migrated from class CustomComponent.
 build(): void
 ```
 
-Customize the pop-up content constructor and it is migrated from class CustomComponent.
+The **build()** function is used to define the declarative UI description of a custom component. Every custom component must define a **build()** function.
 
 **Since:** 7
 
@@ -174,7 +182,7 @@ Get uniqueId of the custom component and it is migrated from class CustomCompone
 onBackPress?(): void | boolean
 ```
 
-Invoked when a user clicks the back button on a router-managed page (a custom component decorated with [\@Entry](../../../ui/state-management/arkts-create-custom-components.md#entry)). The value **true** means that the page executes its own return logic, and **false** (default) means that the default return logic is used.
+Takes effect on a router-managed page (a custom component decorated with [\@Entry](../../../ui/state-management/arkts-create-custom-components.md#entry)) and is triggered when the user clicks the back button. The value **true** indicates that the page handles the back logic by itself and does not perform page routing; the value **false** indicates that the default routing back logic is used. If no return value is set, it is processed as **false**. Typical use cases include: blocking the back action to prompt the user to save when the page has unsaved edits, and popping up a custom confirmation dialog box to replace the default system back behavior.
 
 **Since:** 7
 
@@ -190,9 +198,7 @@ Invoked when a user clicks the back button on a router-managed page (a custom co
 onDidBuild?(): void
 ```
 
-The callback method after the custom component is built and it is migrated from class CustomComponent.
-
-Triggered when the custom component has been built.
+Invoked after the **build()** function of the custom component is executed. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
 
 **Since:** 12
 
@@ -210,7 +216,7 @@ Triggered when the custom component has been built.
 onFormRecover?(statusData: string): void
 ```
 
-onFormRecover Method, this is only for ArkTS form, it is migrated from class CustomComponent.
+Invoked when the widget is recovered. The widget provider can obtain the data saved by the widget manager during widget recycling. This data can be saved to the widget manager using the [onFormRecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md#onformrecycle11) callback.
 
 **Since:** 11
 
@@ -228,7 +234,7 @@ onFormRecover Method, this is only for ArkTS form, it is migrated from class Cus
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| statusData | string | Yes | indicate status data of ArkTS form UI, which is acquired by calling onFormRecycle, it is used to recover form |
+| statusData | string | Yes | Data saved by the widget manager during widget recycling. |
 
 ## onFormRecycle
 
@@ -236,7 +242,7 @@ onFormRecover Method, this is only for ArkTS form, it is migrated from class Cus
 onFormRecycle?(): string
 ```
 
-onFormRecycle Method, this is only for ArkTS form, if form was marked recyclable by form user, when system memory is low, it will be recycled after calling this method, you should return a string of params that you wish to be saved, it will be passed back as params in onFormRecover, in which you can recover the form, it is migrated from class CustomComponent.
+Invoked when the widget is recycled. The widget provider can return the data to be saved by the widget manager. This data is passed back to the widget provider using the [onFormRecover](../../../ui/state-management/arkts-page-custom-components-lifecycle.md#onformrecover11) API when the widget is recovered.
 
 **Since:** 11
 
@@ -254,7 +260,7 @@ onFormRecycle Method, this is only for ArkTS form, if form was marked recyclable
 
 | Type | Description |
 | --- | --- |
-| string | status data of ArkTS form UI, this data will be passed in when recover form later |
+| string | Data that the widget provider requests the widget manager to save. |
 
 ## onMeasureSize
 
@@ -300,7 +306,7 @@ Invoked when the custom component needs to determine its size. Through this call
 onNewParam?(param: ESObject): void
 ```
 
-Triggered when the Entry custom component has been pushed with singleton mode.
+Invoked when a page in the routing stack is moved to the top of the stack in the singleton mode of [RouterMode](../arkts-apis/arkts-arkui-router-routermode-e.md). This callback takes effect only for custom components decorated with [\@Entry](../../../ui/state-management/arkts-create-custom-components.md#entry) within the [router](../arkts-apis/arkts-arkui-router.md) page stack.
 
 **Since:** 19
 
@@ -316,7 +322,7 @@ Triggered when the Entry custom component has been pushed with singleton mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [ESObject](../../apis-default/arkts-apis/arkts-esobject-t.md) | Yes | New parameters pushed with singleton mode. |
+| param | [ESObject](../../apis-default/arkts-apis/arkts-esobject-t.md) | Yes | Data passed to the target page during routing. It is consistent with the data passed by the **params** field in **router.pushUrl()**, and its structure is defined by the developer. |
 
 ## onPageHide
 
@@ -327,7 +333,7 @@ onPageHide?(): void
 Invoked each time a router-managed page (a custom component decorated with [\@Entry](../../../ui/state-management/arkts-create-custom-components.md#entry)) is hidden, including scenarios such as route navigation and the application moving to the background.
 
 > **NOTE:** 
-
+> 
 > To ensure smooth UI responsiveness, avoid executing time-consuming operations within the callback function that
 > may block the main thread. For resource-intensive tasks such as camera resource deallocation, consider
 > implementing asynchronous solutions. For best practices, see
@@ -347,7 +353,7 @@ Invoked each time a router-managed page (a custom component decorated with [\@En
 onPageShow?(): void
 ```
 
-Invoked each time a router-managed page (a custom component decorated with [\@Entry](../../../ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route navigation and the application returning to the foreground.
+Invoked each time a router-managed page (a custom component decorated with [\@Entry](../../../ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route redirection and the app entering the foreground. It is recommended that you avoid performing time- consuming operations that block the main thread in this callback function, so as not to affect page display performance.
 
 **Since:** 7
 
@@ -389,12 +395,10 @@ Invoked when the custom component needs to determine the positions of its child 
 onWillApplyTheme?(theme: Theme): void
 ```
 
-Invoked before the **build()** function of a new instance of the custom component is executed, to obtain the **Theme** object of the component context. You can change state variables in **onWillApplyTheme**. The change will take effect when you execute the **build()** function next time.
-
-> * * Note: * *Since API version 18, this API can be used in the status management V2 component.
+Invoked before the **build()** function of a new instance of the custom component is executed, to obtain the **Theme** object of the component context. Unlike **aboutToAppear**, **onWillApplyTheme** is used to initialize state variables based on the **Theme** object, while **aboutToAppear** is used for general initialization logic. You can change state variables in **onWillApplyTheme**, and the changes will take effect in the subsequent execution of the **build()** function.
 
 > **NOTE:** 
-
+> 
 > Since API version 18, this API is supported in the components of V2.
 
 **Since:** 12
@@ -411,7 +415,7 @@ Invoked before the **build()** function of a new instance of the custom componen
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| theme | [Theme](arkts-arkui-common-comp-theme-t.md) | Yes | Current theme object of the custom component. |
+| theme | [Theme](arkts-arkui-common-comp-theme-t.md) | Yes | **Theme** object currently in effect for the custom component. In the callback, you can use this object to obtain resources such as theme colors to update the style variables of the component. |
 
 ## pageTransition
 
@@ -419,7 +423,7 @@ Invoked before the **build()** function of a new instance of the custom componen
 pageTransition?(): void
 ```
 
-PageTransition Method and it is migrated from class CustomComponent. Implement Animation when enter this page or move to other pages.
+Defines the transition animations for page entry and page exit.
 
 **Since:** 9
 
@@ -428,6 +432,8 @@ PageTransition Method and it is migrated from class CustomComponent. Implement A
 <!--Device-BaseCustomComponent-pageTransition?(): void--><!--Device-BaseCustomComponent-pageTransition?(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="querynavdestinationinfo1"></a>
 
 ## queryNavDestinationInfo
 
@@ -453,7 +459,7 @@ Queries the **NavDestination** information of this custom component. This API ha
 | --- | --- |
 | [NavDestinationInfo](arkts-arkui-common-comp-navdestinationinfo-t.md) &#124; undefined | **NavDestinationInfo** instance obtained. |
 
-<a id="querynavdestinationinfo-1"></a>
+<a id="querynavdestinationinfo2"></a>
 
 ## queryNavDestinationInfo
 

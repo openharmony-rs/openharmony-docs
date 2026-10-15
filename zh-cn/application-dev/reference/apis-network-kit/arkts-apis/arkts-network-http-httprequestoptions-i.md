@@ -158,7 +158,7 @@ connectTimeout?: number
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-connectTimeout?: int--><!--Device-HttpRequestOptions-connectTimeout?: int-End-->
 
@@ -251,7 +251,7 @@ expectDataType?: HttpDataType
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-expectDataType?: HttpDataType--><!--Device-HttpRequestOptions-expectDataType?: HttpDataType-End-->
 
@@ -289,7 +289,7 @@ extraData?: string | Object | ArrayBuffer
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-extraData?: string | Object | ArrayBuffer--><!--Device-HttpRequestOptions-extraData?: string | Object | ArrayBuffer-End-->
 
@@ -305,13 +305,13 @@ HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默�
 
 如果head中包含number类型的字段，最大支持int64的整数。
 
-header字段支持JSON格式如 [完整示例](../../../reference/apis-network-kit/js-apis-http.md#完整示例) 和Record&lt;string, string&gt;格式输入。
+header字段支持JSON格式如 [完整示例](../../../reference/apis-network-kit/js-apis-http.md#完整示例) 和Record<string, string>格式输入。
 
 **类型：** Object
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-header?: Object--><!--Device-HttpRequestOptions-header?: Object-End-->
 
@@ -386,7 +386,7 @@ method?: RequestMethod
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-method?: RequestMethod--><!--Device-HttpRequestOptions-method?: RequestMethod-End-->
 
@@ -436,7 +436,7 @@ HTTP/HTTPS请求并发优先级，值越大优先级越高，范围[1,1000]，�
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-priority?: int--><!--Device-HttpRequestOptions-priority?: int-End-->
 
@@ -478,7 +478,7 @@ readTimeout?: number
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-readTimeout?: int--><!--Device-HttpRequestOptions-readTimeout?: int-End-->
 
@@ -644,7 +644,7 @@ usingCache?: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-usingCache?: boolean--><!--Device-HttpRequestOptions-usingCache?: boolean-End-->
 
@@ -662,7 +662,7 @@ HTTP请求使用的协议版本。未指定时，由系统自动协商最适合�
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-usingProtocol?: HttpProtocol--><!--Device-HttpRequestOptions-usingProtocol?: HttpProtocol-End-->
 
@@ -684,7 +684,7 @@ HTTP代理配置，该项不配置时默认使用系统代理。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequestOptions-usingProxy?: boolean | HttpProxy--><!--Device-HttpRequestOptions-usingProxy?: boolean | HttpProxy-End-->
 

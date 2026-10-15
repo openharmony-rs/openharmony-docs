@@ -14,22 +14,6 @@ Enumerates the camera portrait theme types.
 
 **系统接口：** 此接口为系统接口。
 
-## NATURAL
-
-```TypeScript
-NATURAL = 0
-```
-
-Natural portrait theme type.
-
-**起始版本：** 14
-
-<!--Device-PortraitThemeType-NATURAL = 0--><!--Device-PortraitThemeType-NATURAL = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## DELICATE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Delicate portrait theme type.
 **起始版本：** 14
 
 <!--Device-PortraitThemeType-DELICATE = 1--><!--Device-PortraitThemeType-DELICATE = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+## NATURAL
+
+```TypeScript
+NATURAL = 0
+```
+
+Natural portrait theme type.
+
+**起始版本：** 14
+
+<!--Device-PortraitThemeType-NATURAL = 0--><!--Device-PortraitThemeType-NATURAL = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

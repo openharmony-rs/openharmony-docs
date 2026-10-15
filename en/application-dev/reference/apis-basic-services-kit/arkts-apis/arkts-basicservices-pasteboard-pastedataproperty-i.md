@@ -48,7 +48,7 @@ Whether the pasteboard content is for local access only. The default value is **
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataProperty-localOnly: boolean--><!--Device-PasteDataProperty-localOnly: boolean-End-->
 
@@ -66,7 +66,7 @@ Data types of all records in PasteData.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataProperty-readonly mimeTypes: Array<string>--><!--Device-PasteDataProperty-readonly mimeTypes: Array<string>-End-->
 
@@ -84,7 +84,7 @@ Pasteable ranges of PasteData. The default value is **CROSSDEVICE**.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataProperty-shareOption: ShareOption--><!--Device-PasteDataProperty-shareOption: ShareOption-End-->
 
@@ -102,7 +102,7 @@ Custom tag. This parameter is left empty by default.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataProperty-tag: string--><!--Device-PasteDataProperty-tag: string-End-->
 
@@ -120,7 +120,7 @@ Timestamp when data is written to the pasteboard (unit: nanoseconds since the de
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataProperty-readonly timestamp: long--><!--Device-PasteDataProperty-readonly timestamp: long-End-->
 

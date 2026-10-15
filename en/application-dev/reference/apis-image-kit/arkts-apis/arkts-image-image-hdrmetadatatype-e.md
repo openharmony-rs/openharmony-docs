@@ -12,17 +12,17 @@ Enumerates the values available for **HDR_METADATA_TYPE** in [HdrMetadataKey](ar
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## NONE
+## ALTERNATE
 
 ```TypeScript
-NONE = 0
+ALTERNATE = 3
 ```
 
-No metadata.
+Metadata used for synthesized HDR graphics.
 
 **Since:** 12
 
-<!--Device-HdrMetadataType-NONE = 0--><!--Device-HdrMetadataType-NONE = 0-End-->
+<!--Device-HdrMetadataType-ALTERNATE = 3--><!--Device-HdrMetadataType-ALTERNATE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -54,16 +54,16 @@ Metadata used for gain maps.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## ALTERNATE
+## NONE
 
 ```TypeScript
-ALTERNATE = 3
+NONE = 0
 ```
 
-Metadata used for synthesized HDR graphics.
+No metadata.
 
 **Since:** 12
 
-<!--Device-HdrMetadataType-ALTERNATE = 3--><!--Device-HdrMetadataType-ALTERNATE = 3-End-->
+<!--Device-HdrMetadataType-NONE = 0--><!--Device-HdrMetadataType-NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

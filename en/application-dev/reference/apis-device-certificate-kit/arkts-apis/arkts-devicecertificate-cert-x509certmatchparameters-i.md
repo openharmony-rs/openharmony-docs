@@ -30,7 +30,7 @@ Key of the certificate authority (CA).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-authorityKeyIdentifier?: Uint8Array--><!--Device-X509CertMatchParameters-authorityKeyIdentifier?: Uint8Array-End-->
 
@@ -48,7 +48,7 @@ Certificate policy.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-certPolicy?: Array<string>--><!--Device-X509CertMatchParameters-certPolicy?: Array<string>-End-->
 
@@ -66,7 +66,7 @@ Extended key usage.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-extendedKeyUsage?: Array<string>--><!--Device-X509CertMatchParameters-extendedKeyUsage?: Array<string>-End-->
 
@@ -84,7 +84,7 @@ Certificate issuer, in DER format.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-issuer?: Uint8Array--><!--Device-X509CertMatchParameters-issuer?: Uint8Array-End-->
 
@@ -102,7 +102,7 @@ Whether to match the key usage. **true**: yes; **false**: no.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-keyUsage?: Array<boolean>--><!--Device-X509CertMatchParameters-keyUsage?: Array<boolean>-End-->
 
@@ -120,7 +120,7 @@ Whether to match all SANs of the certificate. **true**: yes; **false**: no.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-matchAllSubjectAltNames?: boolean--><!--Device-X509CertMatchParameters-matchAllSubjectAltNames?: boolean-End-->
 
@@ -138,7 +138,7 @@ Minimum length of the certification path (chain of trust) that can be built from
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-minPathLenConstraint?: int--><!--Device-X509CertMatchParameters-minPathLenConstraint?: int-End-->
 
@@ -156,7 +156,7 @@ Constraints on the subject names that can be included in certificates.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-nameConstraints?: Uint8Array--><!--Device-X509CertMatchParameters-nameConstraints?: Uint8Array-End-->
 
@@ -176,7 +176,7 @@ Specifies the certificate private key. string indicates a private key in PEM for
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-X509CertMatchParameters-privateKey?: string | Uint8Array--><!--Device-X509CertMatchParameters-privateKey?: string | Uint8Array-End-->
 
@@ -194,7 +194,7 @@ Validity period of the certificate private key.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-privateKeyValid?: string--><!--Device-X509CertMatchParameters-privateKeyValid?: string-End-->
 
@@ -212,7 +212,7 @@ Public key of the certificate, in DER format.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-publicKey?: DataBlob--><!--Device-X509CertMatchParameters-publicKey?: DataBlob-End-->
 
@@ -230,7 +230,7 @@ Algorithm of the certificate public key.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-publicKeyAlgID?: string--><!--Device-X509CertMatchParameters-publicKeyAlgID?: string-End-->
 
@@ -248,7 +248,7 @@ Serial number of the certificate.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-serialNumber?: bigint--><!--Device-X509CertMatchParameters-serialNumber?: bigint-End-->
 
@@ -266,7 +266,7 @@ Certificate subject name, in DER format.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-subject?: Uint8Array--><!--Device-X509CertMatchParameters-subject?: Uint8Array-End-->
 
@@ -284,7 +284,7 @@ Subject Alternative Names (SANs) of the certificate.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-subjectAlternativeNames?: Array<GeneralName>--><!--Device-X509CertMatchParameters-subjectAlternativeNames?: Array<GeneralName>-End-->
 
@@ -302,7 +302,7 @@ Identifier of the public key of the certificate's subject.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-subjectKeyIdentifier?: Uint8Array--><!--Device-X509CertMatchParameters-subjectKeyIdentifier?: Uint8Array-End-->
 
@@ -320,7 +320,7 @@ Certificate validity period.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-validDate?: string--><!--Device-X509CertMatchParameters-validDate?: string-End-->
 
@@ -338,7 +338,7 @@ Certificate object.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X509CertMatchParameters-x509Cert?: X509Cert--><!--Device-X509CertMatchParameters-x509Cert?: X509Cert-End-->
 

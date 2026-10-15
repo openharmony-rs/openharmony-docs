@@ -49,6 +49,7 @@ function getInterceptedRecords(userId: number, requestParam: RequestParam): Prom
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [29400000](../errorcode-net-netfirewall.md#29400000-指定用户不存在) | The specified user does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,3 +68,5 @@ netFirewall.getInterceptedRecords(100, interceptRecordParam).then((result: netFi
   console.error("get intercept records failed: " + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

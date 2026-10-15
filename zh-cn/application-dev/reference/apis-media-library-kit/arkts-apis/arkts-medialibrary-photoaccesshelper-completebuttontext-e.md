@@ -12,6 +12,22 @@ enum CompleteButtonText
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## TEXT_ADD
+
+```TypeScript
+TEXT_ADD = 2
+```
+
+显示“添加”。
+
+**起始版本：** 14
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-CompleteButtonText-TEXT_ADD = 2--><!--Device-CompleteButtonText-TEXT_ADD = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## TEXT_DONE
 
 ```TypeScript
@@ -22,7 +38,7 @@ TEXT_DONE = 0
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-CompleteButtonText-TEXT_DONE = 0--><!--Device-CompleteButtonText-TEXT_DONE = 0-End-->
 
@@ -38,24 +54,8 @@ TEXT_SEND = 1
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-CompleteButtonText-TEXT_SEND = 1--><!--Device-CompleteButtonText-TEXT_SEND = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## TEXT_ADD
-
-```TypeScript
-TEXT_ADD = 2
-```
-
-显示“添加”。
-
-**起始版本：** 14
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-CompleteButtonText-TEXT_ADD = 2--><!--Device-CompleteButtonText-TEXT_ADD = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

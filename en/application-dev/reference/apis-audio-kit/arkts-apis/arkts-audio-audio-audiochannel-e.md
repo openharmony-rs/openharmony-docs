@@ -26,6 +26,62 @@ One audio channel (mono).
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## CHANNEL_10
+
+```TypeScript
+CHANNEL_10 = 10
+```
+
+Ten audio channels.
+
+**Since:** 11
+
+<!--Device-AudioChannel-CHANNEL_10 = 10--><!--Device-AudioChannel-CHANNEL_10 = 10-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## CHANNEL_12
+
+```TypeScript
+CHANNEL_12 = 12
+```
+
+Twelve audio channels.
+
+**Since:** 11
+
+<!--Device-AudioChannel-CHANNEL_12 = 12--><!--Device-AudioChannel-CHANNEL_12 = 12-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## CHANNEL_14
+
+```TypeScript
+CHANNEL_14 = 14
+```
+
+Fourteen audio channels.
+
+**Since:** 11
+
+<!--Device-AudioChannel-CHANNEL_14 = 14--><!--Device-AudioChannel-CHANNEL_14 = 14-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## CHANNEL_16
+
+```TypeScript
+CHANNEL_16 = 16
+```
+
+Sixteen audio channels.
+
+**Since:** 11
+
+<!--Device-AudioChannel-CHANNEL_16 = 16--><!--Device-AudioChannel-CHANNEL_16 = 16-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## CHANNEL_2
 
 ```TypeScript
@@ -135,61 +191,5 @@ Nine audio channels.
 **Since:** 11
 
 <!--Device-AudioChannel-CHANNEL_9 = 9--><!--Device-AudioChannel-CHANNEL_9 = 9-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_10
-
-```TypeScript
-CHANNEL_10 = 10
-```
-
-Ten audio channels.
-
-**Since:** 11
-
-<!--Device-AudioChannel-CHANNEL_10 = 10--><!--Device-AudioChannel-CHANNEL_10 = 10-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_12
-
-```TypeScript
-CHANNEL_12 = 12
-```
-
-Twelve audio channels.
-
-**Since:** 11
-
-<!--Device-AudioChannel-CHANNEL_12 = 12--><!--Device-AudioChannel-CHANNEL_12 = 12-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_14
-
-```TypeScript
-CHANNEL_14 = 14
-```
-
-Fourteen audio channels.
-
-**Since:** 11
-
-<!--Device-AudioChannel-CHANNEL_14 = 14--><!--Device-AudioChannel-CHANNEL_14 = 14-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_16
-
-```TypeScript
-CHANNEL_16 = 16
-```
-
-Sixteen audio channels.
-
-**Since:** 11
-
-<!--Device-AudioChannel-CHANNEL_16 = 16--><!--Device-AudioChannel-CHANNEL_16 = 16-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

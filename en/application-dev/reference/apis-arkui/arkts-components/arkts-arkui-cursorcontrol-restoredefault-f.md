@@ -6,7 +6,7 @@
 function restoreDefault(): void
 ```
 
-Restores the mouse cursor to the default arrow style. This API can be used globally in method statements.
+A global API that can be used in component methods or event callbacks. Calling this API restores the mouse cursor to the default arrow style, for example, restoring the default cursor when the mouse leaves a hover area, when a component loses focus, or when an interaction ends.
 
 **Since:** 11
 

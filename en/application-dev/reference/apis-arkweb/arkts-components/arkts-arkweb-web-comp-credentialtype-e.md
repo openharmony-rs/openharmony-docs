@@ -12,20 +12,6 @@ Defines the credential types used for identity authentication.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## CREDENTIAL_USER
-
-```TypeScript
-CREDENTIAL_USER = 2
-```
-
-User credential.
-
-**Since:** 22
-
-<!--Device-CredentialType-CREDENTIAL_USER = 2--><!--Device-CredentialType-CREDENTIAL_USER = 2-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## CREDENTIAL_APP
 
 ```TypeScript
@@ -51,5 +37,19 @@ UKey credential.
 **Since:** 22
 
 <!--Device-CredentialType-CREDENTIAL_UKEY = 4--><!--Device-CredentialType-CREDENTIAL_UKEY = 4-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## CREDENTIAL_USER
+
+```TypeScript
+CREDENTIAL_USER = 2
+```
+
+User credential.
+
+**Since:** 22
+
+<!--Device-CredentialType-CREDENTIAL_USER = 2--><!--Device-CredentialType-CREDENTIAL_USER = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

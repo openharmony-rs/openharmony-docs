@@ -1,5 +1,7 @@
 # getAttribute
 
+<a id="getattribute1"></a>
+
 ## getAttribute
 
 ```TypeScript
@@ -73,7 +75,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-1"></a>
+<a id="getattribute2"></a>
 
 ## getAttribute
 
@@ -147,7 +149,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-2"></a>
+<a id="getattribute3"></a>
 
 ## getAttribute
 
@@ -221,7 +223,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-3"></a>
+<a id="getattribute4"></a>
 
 ## getAttribute
 
@@ -295,7 +297,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-4"></a>
+<a id="getattribute5"></a>
 
 ## getAttribute
 
@@ -369,7 +371,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-5"></a>
+<a id="getattribute6"></a>
 
 ## getAttribute
 
@@ -407,7 +409,7 @@ Obtains the attributes of a **Swiper** node. If the node is not created using Ar
 See the example for createNode('Swiper')12+.
 
 
-<a id="getattribute-6"></a>
+<a id="getattribute7"></a>
 
 ## getAttribute
 
@@ -480,7 +482,7 @@ struct Sample {
 ```
 
 
-<a id="getattribute-7"></a>
+<a id="getattribute8"></a>
 
 ## getAttribute
 
@@ -518,7 +520,7 @@ Obtains the attributes of a **Scroll** node. If the node is not created using Ar
 See the example for createNode('Scroll').
 
 
-<a id="getattribute-8"></a>
+<a id="getattribute9"></a>
 
 ## getAttribute
 
@@ -592,7 +594,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-9"></a>
+<a id="getattribute10"></a>
 
 ## getAttribute
 
@@ -663,7 +665,7 @@ struct Sample {
 ```
 
 
-<a id="getattribute-10"></a>
+<a id="getattribute11"></a>
 
 ## getAttribute
 
@@ -743,7 +745,7 @@ struct Sample {
 ```
 
 
-<a id="getattribute-11"></a>
+<a id="getattribute12"></a>
 
 ## getAttribute
 
@@ -781,7 +783,7 @@ Obtains the attributes of a **List** node. If the node is not created using ArkT
 See the example for createNode('List').
 
 
-<a id="getattribute-12"></a>
+<a id="getattribute13"></a>
 
 ## getAttribute
 
@@ -819,7 +821,7 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 See the example for createNode('List').
 
 
-<a id="getattribute-13"></a>
+<a id="getattribute14"></a>
 
 ## getAttribute
 
@@ -890,7 +892,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-14"></a>
+<a id="getattribute15"></a>
 
 ## getAttribute
 
@@ -967,7 +969,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-15"></a>
+<a id="getattribute16"></a>
 
 ## getAttribute
 
@@ -1007,7 +1009,7 @@ typeNode.getAttribute(node, 'ListItemGroup');
 ```
 
 
-<a id="getattribute-16"></a>
+<a id="getattribute17"></a>
 
 ## getAttribute
 
@@ -1045,7 +1047,7 @@ Obtains the attributes of a **WaterFlow** node. If the node is not created using
 See the example for createNode('WaterFlow').
 
 
-<a id="getattribute-17"></a>
+<a id="getattribute18"></a>
 
 ## getAttribute
 
@@ -1083,7 +1085,7 @@ Obtains the attributes of a **FlowItem** node. If the node is not created using 
 See the example for createNode('WaterFlow').
 
 
-<a id="getattribute-18"></a>
+<a id="getattribute19"></a>
 
 ## getAttribute
 
@@ -1123,7 +1125,7 @@ typeNode.getAttribute(node, 'XComponent');
 ```
 
 
-<a id="getattribute-19"></a>
+<a id="getattribute20"></a>
 
 ## getAttribute
 
@@ -1202,7 +1204,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-20"></a>
+<a id="getattribute21"></a>
 
 ## getAttribute
 
@@ -1280,7 +1282,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-21"></a>
+<a id="getattribute22"></a>
 
 ## getAttribute
 
@@ -1353,7 +1355,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-22"></a>
+<a id="getattribute23"></a>
 
 ## getAttribute
 
@@ -1426,7 +1428,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-23"></a>
+<a id="getattribute24"></a>
 
 ## getAttribute
 
@@ -1497,7 +1499,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute-24"></a>
+<a id="getattribute25"></a>
 
 ## getAttribute
 
@@ -1535,7 +1537,7 @@ Obtains the attributes of a **Grid** node. If the node is not created using ArkT
 See the example for createNode('Grid').
 
 
-<a id="getattribute-25"></a>
+<a id="getattribute26"></a>
 
 ## getAttribute
 

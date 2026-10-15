@@ -8,6 +8,16 @@ AdsBlockManager is a class in the ArkWeb framework used to manage the ad filteri
 
 The core mechanism of AdsBlockManager is based on a two-tier AllowedList/DisallowedList strategy using domain suffix matching: the DisallowedList is used to disable ad filtering for specific websites, while the AllowedList has a higher priority and can re-enable ad filtering for certain subdomains within the scope of the DisallowedList. After successful internal parsing, ad filtering rules are persistently stored and do not need to be set again after an app restart. However, they are not persistent and must be reconfigured after an app restart.
 
+> **NOTE:** 
+> 
+> - The initial APIs of this module are supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
+> 
+> - The initial APIs of this class are supported since API version 12.
+> 
+> - The sample effect is subject to the actual device.
+> 
+> - Static methods must be used on the user interface (UI) thread.
+
 **Since:** 12
 
 <!--Device-webview-class AdsBlockManager--><!--Device-webview-class AdsBlockManager-End-->

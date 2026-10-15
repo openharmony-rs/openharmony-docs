@@ -8,7 +8,7 @@ export interface ErrorCallback<T extends Error = BusinessError>
 
 回调返回的信息为[BusinessError](arkts-basicservices-base-businesserror-i.md)类型的错误参数。
 
-@typedef ErrorCallback [since 6 - 10] @typedef ErrorCallback&lt;T extends Error = BusinessError&gt; [since 11]
+@typedef ErrorCallback [since 6 - 10] @typedef ErrorCallback<T extends Error = BusinessError> [since 11]
 
 **起始版本：** 6
 

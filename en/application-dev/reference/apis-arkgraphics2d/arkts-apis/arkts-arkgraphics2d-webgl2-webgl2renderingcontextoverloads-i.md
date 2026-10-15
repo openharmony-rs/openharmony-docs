@@ -12,6 +12,8 @@ WebGL 2.0
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL2
 
+<a id="bufferdata1"></a>
+
 ## bufferData
 
 ```TypeScript
@@ -36,7 +38,7 @@ Sets buffer data
 | size | [webgl.GLsizeiptr](arkts-arkgraphics2d-glsizeiptr-t.md) | Yes | Buffer size |
 | usage | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Buffer usage |
 
-<a id="bufferdata-1"></a>
+<a id="bufferdata2"></a>
 
 ## bufferData
 
@@ -62,7 +64,7 @@ Sets buffer data from BufferSource
 | srcData | BufferSource &#124; null | Yes | Buffer data |
 | usage | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Buffer usage |
 
-<a id="bufferdata-2"></a>
+<a id="bufferdata3"></a>
 
 ## bufferData
 
@@ -96,6 +98,8 @@ Sets buffer data from ArrayBufferView with offset
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Source offset |
 | length | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | [Length](../../apis-arkui/arkts-apis/arkts-arkui-length-t.md) |
 
+<a id="buffersubdata1"></a>
+
 ## bufferSubData
 
 ```TypeScript
@@ -120,7 +124,7 @@ Sets buffer sub data
 | dstByteOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Destination byte offset |
 | srcData | BufferSource | Yes | Source data |
 
-<a id="buffersubdata-1"></a>
+<a id="buffersubdata2"></a>
 
 ## bufferSubData
 
@@ -153,6 +157,8 @@ Sets buffer sub data with offset
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Source data |
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Source offset |
 | length | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | [Length](../../apis-arkui/arkts-apis/arkts-arkui-length-t.md) |
+
+<a id="compressedteximage2d1"></a>
 
 ## compressedTexImage2D
 
@@ -192,7 +198,7 @@ Compressed texture image 2D from PBO offset
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
 
-<a id="compressedteximage2d-1"></a>
+<a id="compressedteximage2d2"></a>
 
 ## compressedTexImage2D
 
@@ -234,6 +240,8 @@ Compressed texture image 2D from ArrayBufferView
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source offset |
 | srcLengthOverride | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source length override |
 
+<a id="compressedtexsubimage2d1"></a>
+
 ## compressedTexSubImage2D
 
 ```TypeScript
@@ -274,7 +282,7 @@ Compressed texture sub image 2D from PBO offset
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
 
-<a id="compressedtexsubimage2d-1"></a>
+<a id="compressedtexsubimage2d2"></a>
 
 ## compressedTexSubImage2D
 
@@ -318,6 +326,8 @@ Compressed texture sub image 2D from ArrayBufferView
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source offset |
 | srcLengthOverride | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source length override |
 
+<a id="readpixels1"></a>
+
 ## readPixels
 
 ```TypeScript
@@ -354,7 +364,7 @@ Reads pixels from the framebuffer to ArrayBufferView
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | dstData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Destination data |
 
-<a id="readpixels-1"></a>
+<a id="readpixels2"></a>
 
 ## readPixels
 
@@ -392,7 +402,7 @@ Reads pixels from the framebuffer to PBO offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
 
-<a id="readpixels-2"></a>
+<a id="readpixels3"></a>
 
 ## readPixels
 
@@ -431,6 +441,8 @@ Reads pixels from the framebuffer to ArrayBufferView with offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | dstData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Destination data |
 | dstOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Destination offset |
+
+<a id="teximage2d1"></a>
 
 ## texImage2D
 
@@ -472,7 +484,7 @@ Sets texture image 2D from pixels
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pixels | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Pixel data |
 
-<a id="teximage2d-1"></a>
+<a id="teximage2d2"></a>
 
 ## texImage2D
 
@@ -508,7 +520,7 @@ Sets texture image 2D from TexImageSource
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="teximage2d-2"></a>
+<a id="teximage2d3"></a>
 
 ## texImage2D
 
@@ -550,7 +562,7 @@ Sets texture image 2D from PBO offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
-<a id="teximage2d-3"></a>
+<a id="teximage2d4"></a>
 
 ## texImage2D
 
@@ -592,7 +604,7 @@ Sets texture image 2D from TexImageSource
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="teximage2d-4"></a>
+<a id="teximage2d5"></a>
 
 ## texImage2D
 
@@ -636,6 +648,8 @@ Sets texture image 2D from ArrayBufferView with offset
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Source data |
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Source offset |
 
+<a id="texsubimage2d1"></a>
+
 ## texSubImage2D
 
 ```TypeScript
@@ -676,7 +690,7 @@ Sets texture sub image 2D from pixels
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pixels | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Pixel data |
 
-<a id="texsubimage2d-1"></a>
+<a id="texsubimage2d2"></a>
 
 ## texSubImage2D
 
@@ -714,7 +728,7 @@ Sets texture sub image 2D from TexImageSource
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="texsubimage2d-2"></a>
+<a id="texsubimage2d3"></a>
 
 ## texSubImage2D
 
@@ -756,7 +770,7 @@ Sets texture sub image 2D from PBO offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
-<a id="texsubimage2d-3"></a>
+<a id="texsubimage2d4"></a>
 
 ## texSubImage2D
 
@@ -798,7 +812,7 @@ Sets texture sub image 2D from TexImageSource
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="texsubimage2d-4"></a>
+<a id="texsubimage2d5"></a>
 
 ## texSubImage2D
 

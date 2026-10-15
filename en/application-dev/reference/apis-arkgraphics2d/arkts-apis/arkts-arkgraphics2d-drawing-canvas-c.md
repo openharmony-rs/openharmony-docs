@@ -127,13 +127,15 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="clear1"></a>
+
 ## clear
 
 ```TypeScript
 clear(color: common2D.Color): void
 ```
 
-Clears the canvas with a given color. This API has the same effect as [drawColor](#drawcolor).
+Clears the canvas with a given color. This API has the same effect as [drawColor](#drawcolor1).
 
 **Since:** 12
 
@@ -168,7 +170,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="clear-1"></a>
+<a id="clear2"></a>
 
 ## clear
 
@@ -439,7 +441,7 @@ Creates a **Canvas** object that uses a **PixelMap** as the drawing target.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Canvas-constructor(pixelmap: image.PixelMap)--><!--Device-Canvas-constructor(pixelmap: image.PixelMap)-End-->
 
@@ -725,6 +727,8 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="drawcolor1"></a>
+
 ## drawColor
 
 ```TypeScript
@@ -772,7 +776,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawcolor-1"></a>
+<a id="drawcolor2"></a>
 
 ## drawColor
 
@@ -780,7 +784,7 @@ class DrawingRenderNode extends RenderNode {
 drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: BlendMode): void
 ```
 
-Fills the drawable area of the canvas with the specified color and [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md). This API provides better performance than [drawColor](#drawcolor) and is recommended.
+Fills the drawable area of the canvas with the specified color and [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md). This API provides better performance than [drawColor](#drawcolor1) and is recommended.
 
 **Since:** 12
 
@@ -792,10 +796,10 @@ Fills the drawable area of the canvas with the specified color and [BlendMode](a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alpha | number | Yes | Alpha channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down. |
+| alpha | number | Yes | Alpha channel value of the color in ARGB format. The value is an integer ranging from 0 to         255. Any passed-in floating point number is rounded down. |
 | red | number | Yes | Red channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down. |
-| green | number | Yes | Green channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down. |
-| blue | number | Yes | Blue channel value of the color in ARGB format. The value is an integer ranging from 0 to 2 55. Any passed-in floating point number is rounded down. |
+| green | number | Yes | Green channel value of the color in ARGB format. The value is an integer ranging from 0 to         255. Any passed-in floating point number is rounded down. |
+| blue | number | Yes | Blue channel value of the color in ARGB format. The value is an integer ranging from 0 to 2         55. Any passed-in floating point number is rounded down. |
 | blendMode | [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md) | No | Blend mode. The default mode is **SRC_OVER**. |
 
 **Error codes:**
@@ -818,7 +822,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawcolor-2"></a>
+<a id="drawcolor3"></a>
 
 ## drawColor
 
@@ -1685,6 +1689,8 @@ Replays drawing commands.
 | --- | --- | --- | --- |
 | recordCmd | [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md) | Yes | Recorded drawing command. |
 
+<a id="drawrect1"></a>
+
 ## drawRect
 
 ```TypeScript
@@ -1730,7 +1736,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawrect-1"></a>
+<a id="drawrect2"></a>
 
 ## drawRect
 
@@ -1738,7 +1744,7 @@ class DrawingRenderNode extends RenderNode {
 drawRect(left: number, top: number, right: number, bottom: number): void
 ```
 
-Draws a rectangle. By default, black is used for filling. This API provides better performance than [drawRect](#drawrect) and is recommended.
+Draws a rectangle. By default, black is used for filling. This API provides better performance than [drawRect](#drawrect1) and is recommended.
 
 **Since:** 12
 
@@ -1870,6 +1876,8 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="drawshadow1"></a>
+
 ## drawShadow
 
 ```TypeScript
@@ -1934,7 +1942,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawshadow-1"></a>
+<a id="drawshadow2"></a>
 
 ## drawShadow
 

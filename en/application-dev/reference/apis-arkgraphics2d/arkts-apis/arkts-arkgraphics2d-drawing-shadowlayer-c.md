@@ -26,6 +26,8 @@ Implements a shadow layer.
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="create1"></a>
+
 ## create
 
 ```TypeScript
@@ -75,7 +77,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="create-2"></a>
+<a id="create3"></a>
 
 ## create
 

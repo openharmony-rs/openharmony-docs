@@ -6,7 +6,7 @@ interface RdbStore
 
 提供管理关系数据库（RDB）方法的接口。
 
-在使用以下相关接口前，请使用[executeSql](#executesql)接口初始化数据库表结构和相关数据。
+在使用以下相关接口前，请使用[executeSql](#executesql1)接口初始化数据库表结构和相关数据。
 
 **起始版本：** 7
 
@@ -22,6 +22,8 @@ interface RdbStore
 
 ```TypeScript
 ```
+
+<a id="batchinsert1"></a>
 
 ## batchInsert
 
@@ -99,7 +101,7 @@ rdbStore.batchInsert("EMPLOYEE", valueBuckets, (status: number, insertNum: numbe
 })
 ```
 
-<a id="batchinsert-1"></a>
+<a id="batchinsert2"></a>
 
 ## batchInsert
 
@@ -275,6 +277,8 @@ data_rdb.getRdbStore(this.context, "RdbTest.db", 1, async (err: BusinessError, r
 })
 ```
 
+<a id="delete1"></a>
+
 ## delete
 
 ```TypeScript
@@ -314,7 +318,7 @@ rdbStore.delete(predicates, (err: BusinessError, rows: number) => {
 })
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -359,6 +363,8 @@ promise.then((rows: number) => {
 })
 ```
 
+<a id="executesql1"></a>
+
 ## executeSql
 
 ```TypeScript
@@ -398,7 +404,7 @@ rdbStore.executeSql(SQL_DELETE_TABLE, ['zhangsan'], (err: BusinessError) => {
 })
 ```
 
-<a id="executesql-1"></a>
+<a id="executesql2"></a>
 
 ## executeSql
 
@@ -442,6 +448,8 @@ promise.then(() => {
   console.error("ExecuteSql failed, err: " + err)
 })
 ```
+
+<a id="insert1"></a>
 
 ## insert
 
@@ -498,7 +506,7 @@ rdbStore.insert("EMPLOYEE", valueBucket, (status: number, rowId: number) => {
 })
 ```
 
-<a id="insert-1"></a>
+<a id="insert2"></a>
 
 ## insert
 
@@ -559,6 +567,8 @@ promise.then((rowId: BusinessError) => {
 })
 ```
 
+<a id="obtaindistributedtablename1"></a>
+
 ## obtainDistributedTableName
 
 ```TypeScript
@@ -570,7 +580,7 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 > **说明：** 
 > 
 > 其中device通过调用<!--RP1-->
-> deviceManager.getTrustedDeviceListSync
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 8
@@ -619,7 +629,7 @@ rdbStore.obtainDistributedTableName(deviceId, "EMPLOYEE", (err: BusinessError, t
 })
 ```
 
-<a id="obtaindistributedtablename-1"></a>
+<a id="obtaindistributedtablename2"></a>
 
 ## obtainDistributedTableName
 
@@ -632,7 +642,7 @@ obtainDistributedTableName(device: string, table: string): Promise<string>
 > **说明：** 
 > 
 > 其中device通过调用<!--RP1-->
-> deviceManager.getTrustedDeviceListSync
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 8
@@ -709,7 +719,7 @@ off(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>)
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | [SubscribeType](arkts-arkdata-rdb-subscribetype-e.md) | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array<string>为数据库中的数据发生改变的对端设备ID。 |
 
 **示例**
 
@@ -751,7 +761,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>):
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | [SubscribeType](arkts-arkdata-rdb-subscribetype-e.md) | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array<string>为数据库中的数据发生改变的对端设备ID。 |
 
 **示例**
 
@@ -768,6 +778,8 @@ try {
   console.error('Register observer failed')
 }
 ```
+
+<a id="query1"></a>
 
 ## query
 
@@ -810,7 +822,7 @@ rdbStore.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err: Busin
 })
 ```
 
-<a id="query-1"></a>
+<a id="query2"></a>
 
 ## query
 
@@ -857,6 +869,8 @@ promise.then((resultSet: void) => {
 })
 ```
 
+<a id="querysql1"></a>
+
 ## querySql
 
 ```TypeScript
@@ -896,7 +910,7 @@ rdbStore.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = ?", 
 })
 ```
 
-<a id="querysql-1"></a>
+<a id="querysql2"></a>
 
 ## querySql
 
@@ -993,6 +1007,8 @@ data_rdb.getRdbStore(this,context, "RdbTest.db", 1, async (err: BusinessError, r
 })
 ```
 
+<a id="setdistributedtables1"></a>
+
 ## setDistributedTables
 
 ```TypeScript
@@ -1032,7 +1048,7 @@ rdbStore.setDistributedTables(["EMPLOYEE"], (err: BusinessError) => {
 })
 ```
 
-<a id="setdistributedtables-1"></a>
+<a id="setdistributedtables2"></a>
 
 ## setDistributedTables
 
@@ -1076,6 +1092,8 @@ promise.then(() => {
   console.error("SetDistributedTables failed, err: " + err)
 })
 ```
+
+<a id="sync1"></a>
 
 ## sync
 
@@ -1138,7 +1156,7 @@ rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates, (err: BusinessError,
 })
 ```
 
-<a id="sync-1"></a>
+<a id="sync2"></a>
 
 ## sync
 
@@ -1205,6 +1223,8 @@ promise.then((result: void) =>{
 })
 ```
 
+<a id="update1"></a>
+
 ## update
 
 ```TypeScript
@@ -1262,7 +1282,7 @@ rdbStore.update(valueBucket, predicates, (err: BusinessError, rows: number) => {
 })
 ```
 
-<a id="update-1"></a>
+<a id="update2"></a>
 
 ## update
 

@@ -14,19 +14,19 @@ enum SwitchMode
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## SMOOTH
+## CLOSEST
 
 ```TypeScript
-SMOOTH = 0
+CLOSEST = 2
 ```
 
-表示切换后视频平滑播放，该模式切换存在延迟，不会立即生效。
+表示从距离当前播放时间点最近的帧开始播放，该模式立即切换，切换后会卡住3到5s，然后恢复播放。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-SwitchMode-SMOOTH = 0--><!--Device-SwitchMode-SMOOTH = 0-End-->
+<!--Device-SwitchMode-CLOSEST = 2--><!--Device-SwitchMode-CLOSEST = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -40,24 +40,24 @@ SEGMENT = 1
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SwitchMode-SEGMENT = 1--><!--Device-SwitchMode-SEGMENT = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## CLOSEST
+## SMOOTH
 
 ```TypeScript
-CLOSEST = 2
+SMOOTH = 0
 ```
 
-表示从距离当前播放时间点最近的帧开始播放，该模式立即切换，切换后会卡住3到5s，然后恢复播放。
+表示切换后视频平滑播放，该模式切换存在延迟，不会立即生效。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-SwitchMode-CLOSEST = 2--><!--Device-SwitchMode-CLOSEST = 2-End-->
+<!--Device-SwitchMode-SMOOTH = 0--><!--Device-SwitchMode-SMOOTH = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

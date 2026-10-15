@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querykey1"></a>
+
 ## queryKey
 
 ```TypeScript
@@ -18,7 +20,7 @@ Queries the key of a contact based on the specified contact ID. This API uses an
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryKey](#querykey-1)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [queryKey](#querykey2)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -49,7 +51,7 @@ contact.queryKey(1, (err: BusinessError, data) => {
 ```
 
 
-<a id="querykey-1"></a>
+<a id="querykey2"></a>
 
 ## queryKey
 
@@ -105,7 +107,7 @@ contact.queryKey(context, 1, (err: BusinessError, data) => {
 ```
 
 
-<a id="querykey-2"></a>
+<a id="querykey3"></a>
 
 ## queryKey
 
@@ -119,7 +121,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryKey](#querykey-3)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [queryKey](#querykey4)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -155,7 +157,7 @@ contact.queryKey(1, {
 ```
 
 
-<a id="querykey-3"></a>
+<a id="querykey4"></a>
 
 ## queryKey
 
@@ -216,7 +218,7 @@ contact.queryKey(context, 1, {
 ```
 
 
-<a id="querykey-4"></a>
+<a id="querykey5"></a>
 
 ## queryKey
 
@@ -230,7 +232,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryKey](#querykey-5)(context: Context, id: number, holder?: Holder)
+**Substitutes:** [queryKey](#querykey6)(context: Context, id: number, holder?: Holder)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -267,7 +269,7 @@ promise.then((data) => {
 ```
 
 
-<a id="querykey-5"></a>
+<a id="querykey6"></a>
 
 ## queryKey
 

@@ -24,7 +24,7 @@ SHA1 digest algorithm.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OcspDigest-SHA1 = 0--><!--Device-OcspDigest-SHA1 = 0-End-->
 
@@ -42,7 +42,7 @@ SHA224 digest algorithm.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OcspDigest-SHA224 = 1--><!--Device-OcspDigest-SHA224 = 1-End-->
 
@@ -60,7 +60,7 @@ SHA256 digest algorithm.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OcspDigest-SHA256 = 2--><!--Device-OcspDigest-SHA256 = 2-End-->
 
@@ -78,7 +78,7 @@ SHA384 digest algorithm.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OcspDigest-SHA384 = 3--><!--Device-OcspDigest-SHA384 = 3-End-->
 
@@ -96,7 +96,7 @@ SHA512 digest algorithm.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-OcspDigest-SHA512 = 4--><!--Device-OcspDigest-SHA512 = 4-End-->
 

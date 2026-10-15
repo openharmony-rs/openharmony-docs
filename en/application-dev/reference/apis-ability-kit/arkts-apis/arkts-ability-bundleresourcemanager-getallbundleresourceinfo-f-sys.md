@@ -6,6 +6,8 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallbundleresourceinfo1"></a>
+
 ## getAllBundleResourceInfo
 
 ```TypeScript
@@ -29,7 +31,7 @@ Obtains the bundle resource information of all applications based on the given r
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | resourceFlags | number | Yes | Type of the resource information to obtain. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a BundleResourceInfo array. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **undefined** and **data** is a BundleResourceInfo array. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -39,6 +41,7 @@ Obtains the bundle resource information of all applications based on the given r
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -80,8 +83,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getallbundleresourceinfo-1"></a>
+
+<a id="getallbundleresourceinfo2"></a>
 
 ## getAllBundleResourceInfo
 
@@ -121,6 +126,9 @@ Obtains the bundle resource information of all applications based on the given r
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 See [getAllBundleResourceInfo](#getallbundleresourceinfo)
+
+<!--DelEnd-->

@@ -638,7 +638,7 @@ autoHideComponentUniqueIds?: number[]
 
 组件的uniqueId可通过[UIContext.getFrameNodeById()](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getframenodebyid)配合[FrameNode.getUniqueId()](../arkts-apis/arkts-arkui-framenode-c.md#getuniqueid)获取。
 
-开发者应在[onDragEnd](arkts-arkui-common-comp-commonmethod-c.md#ondragend)或[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中恢复组件显示状态。
+开发者应在[onDragEnd](arkts-arkui-common-comp-commonmethod-c.md#ondragend)或[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop1)中恢复组件显示状态。
 
 **类型：** number[]
 

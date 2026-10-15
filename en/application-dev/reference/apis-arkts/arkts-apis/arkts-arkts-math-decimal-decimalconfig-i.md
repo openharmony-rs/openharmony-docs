@@ -30,7 +30,7 @@ The value that determines whether cryptographically-secure pseudo-random number 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-crypto?: boolean--><!--Device-DecimalConfig-crypto?: boolean-End-->
 
@@ -48,7 +48,7 @@ If object has a 'defaults' property with value true then the new constructor wil
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-defaults?: boolean--><!--Device-DecimalConfig-defaults?: boolean-End-->
 
@@ -66,7 +66,7 @@ The positive exponent limit, i.e. the exponent value above which overflow to Inf
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-maxE?: double--><!--Device-DecimalConfig-maxE?: double-End-->
 
@@ -84,7 +84,7 @@ The negative exponent limit, i.e. the exponent value below which underflow to ze
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-minE?: double--><!--Device-DecimalConfig-minE?: double-End-->
 
@@ -102,7 +102,7 @@ The modulo mode used when calculating the modulus: a mod n. Default value: 1 (RO
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-modulo?: Modulo--><!--Device-DecimalConfig-modulo?: Modulo-End-->
 
@@ -120,7 +120,7 @@ The maximum number of significant digits of the result of an operation. Default 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-precision?: double--><!--Device-DecimalConfig-precision?: double-End-->
 
@@ -138,7 +138,7 @@ The default rounding mode used when rounding the result of an operation to preci
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-rounding?: Rounding--><!--Device-DecimalConfig-rounding?: Rounding-End-->
 
@@ -156,7 +156,7 @@ The negative exponent value at and below which toString returns exponential nota
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-toExpNeg?: double--><!--Device-DecimalConfig-toExpNeg?: double-End-->
 
@@ -174,7 +174,7 @@ The positive exponent value at and above which toString returns exponential nota
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DecimalConfig-toExpPos?: double--><!--Device-DecimalConfig-toExpPos?: double-End-->
 

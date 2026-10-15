@@ -6,6 +6,8 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getworkstatus1"></a>
+
 ## getWorkStatus
 
 ```TypeScript
@@ -33,29 +35,29 @@ Obtains the information a deferred task. This API uses an asynchronous callback 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Check on workInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Input param failed. |
 
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
-    if (error) {
-      console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-    }
-  });
+workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
+  if (error) {
+    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 
-<a id="getworkstatus-1"></a>
+<a id="getworkstatus2"></a>
 
 ## getWorkStatus
 
@@ -89,21 +91,21 @@ Obtains the information a deferred task. This API uses a promise to return the r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [9700001](../errorcode-workScheduler.md#9700001-memory-operation-failure) | Memory operation failed. |
-| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [9700002](../errorcode-workScheduler.md#9700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [9700003](../errorcode-workScheduler.md#9700003-system-service-failure) | System service operation failed. |
-| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Check on workInfo failed. |
+| [9700004](../errorcode-workScheduler.md#9700004-parameter-verification-failed) | Input param failed. |
 
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-  })
+workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+})
 ```

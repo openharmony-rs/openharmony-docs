@@ -14,17 +14,21 @@ function onPairingRequest(callback: Callback<PairingRequestParam>): void
 
 Subscribes to pairing request events from remote NearLink devices.
 
-This event is accessible only to system applications that granted the ohos.permission.NEARLINK_ACCESS permission. If the application is granted the ohos.permission.GET_NEARLINK_PEER_MAC permission, the callback returns the real device address; otherwise, a random device address is returned.
+This event is accessible only to system applications that granted the ohos.permission.NEARLINK_ACCESS permission. If the application is granted the ohos.permission.GET_NEARLINK_PEER_MAC permission, the callback returns the real device address; otherwise, a random device address is returned. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-remoteDevice-function onPairingRequest(callback: Callback<PairingRequestParam>): void--><!--Device-remoteDevice-function onPairingRequest(callback: Callback<PairingRequestParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.
+
+**See also:** [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md) Unsubscribes from the pairing request event.
 
 **Parameters:**
 
@@ -36,5 +40,5 @@ This event is accessible only to system applications that granted the ohos.permi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because the chip does not support it. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |

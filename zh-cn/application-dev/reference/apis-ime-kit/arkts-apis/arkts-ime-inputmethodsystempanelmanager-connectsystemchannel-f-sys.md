@@ -39,4 +39,4 @@ function connectSystemChannel(): Promise<void>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
-| [12800026](../errorcode-inputmethod-framework.md#12800026-输入法系统面板错误) | input method system panel error. Possible causes: 1. the system panel not connected. 2. ipc failed due to the large amount of data transferred or other reasons. 3. the caller is not system panel. |
+| [12800026](../errorcode-inputmethod-framework.md#12800026-输入法系统面板错误) | input method system panel error. Possible causes:         1. the system panel not connected. 2. ipc failed due to the large amount of data transferred or other reasons.         3. the caller is not system panel. |

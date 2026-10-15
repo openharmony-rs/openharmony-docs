@@ -12,24 +12,6 @@ declare enum SheetMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## OVERLAY
-
-```TypeScript
-OVERLAY = 0
-```
-
-设置半模态面板在当前UIContext内顶层显示，在所有页面之上。和弹窗类组件显示在一个层级。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-SheetMode-OVERLAY = 0--><!--Device-SheetMode-OVERLAY = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## EMBEDDED
 
 ```TypeScript
@@ -53,5 +35,23 @@ EMBEDDED = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SheetMode-EMBEDDED = 1--><!--Device-SheetMode-EMBEDDED = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## OVERLAY
+
+```TypeScript
+OVERLAY = 0
+```
+
+设置半模态面板在当前UIContext内顶层显示，在所有页面之上。和弹窗类组件显示在一个层级。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetMode-OVERLAY = 0--><!--Device-SheetMode-OVERLAY = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,19 +12,19 @@ declare enum WebNavigationType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## UNKNOWN
+## MAIN_FRAME_EXISTING_ENTRY
 
 ```TypeScript
-UNKNOWN = 0
+MAIN_FRAME_EXISTING_ENTRY = 2
 ```
 
-未知类型。
+主文档上产生的到已有的历史节点的跳转。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-WebNavigationType-UNKNOWN = 0--><!--Device-WebNavigationType-UNKNOWN = 0-End-->
+<!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2--><!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ MAIN_FRAME_NEW_ENTRY = 1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## MAIN_FRAME_EXISTING_ENTRY
+## NAVIGATION_TYPE_AUTO_SUBFRAME
 
 ```TypeScript
-MAIN_FRAME_EXISTING_ENTRY = 2
+NAVIGATION_TYPE_AUTO_SUBFRAME = 5
 ```
 
-主文档上产生的到已有的历史节点的跳转。
+子文档上产生的非用户触发的跳转。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2--><!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2-End-->
+<!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5--><!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -76,18 +76,18 @@ NAVIGATION_TYPE_NEW_SUBFRAME = 4
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## NAVIGATION_TYPE_AUTO_SUBFRAME
+## UNKNOWN
 
 ```TypeScript
-NAVIGATION_TYPE_AUTO_SUBFRAME = 5
+UNKNOWN = 0
 ```
 
-子文档上产生的非用户触发的跳转。
+未知类型。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5--><!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5-End-->
+<!--Device-WebNavigationType-UNKNOWN = 0--><!--Device-WebNavigationType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

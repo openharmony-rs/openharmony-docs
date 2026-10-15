@@ -1,4 +1,4 @@
-# worker(线程管理)
+# worker（线程管理）
 
 ```TypeScript
 declare namespace worker
@@ -39,5 +39,5 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 
 | 名称 | 说明 |
 | --- | --- |
-| [parentPort](arkts-arkts-worker-con.md#parentport) | Worker线程用于与宿主线程通信的对象。 |
 | [workerPort](arkts-arkts-worker-con.md#workerport) | Worker线程用于与宿主线程通信的对象。 |
+| [parentPort](arkts-arkts-worker-con.md#parentport) | Worker线程用于与宿主线程通信的对象。 |

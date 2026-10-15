@@ -24,7 +24,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 authTrustLevel?: AuthTrustLevel
 ```
 
-认证信任级别。仅在状态为[MATCH](arkts-userauthentication-userauth-userrecognitionstatus-e.md#match)时有效。具体取值请参见[AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)。
+认证信任等级。仅在status为MATCH时有效。
 
 **类型：** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
 
@@ -32,7 +32,7 @@ authTrustLevel?: AuthTrustLevel
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserRecognitionResult-authTrustLevel?: AuthTrustLevel--><!--Device-UserRecognitionResult-authTrustLevel?: AuthTrustLevel-End-->
 
@@ -44,7 +44,7 @@ authTrustLevel?: AuthTrustLevel
 status: UserRecognitionStatus
 ```
 
-识别状态。取值请参见[UserRecognitionStatus](arkts-userauthentication-userauth-userrecognitionstatus-e.md)。
+识别状态。
 
 **类型：** [UserRecognitionStatus](arkts-userauthentication-userauth-userrecognitionstatus-e.md)
 
@@ -52,7 +52,7 @@ status: UserRecognitionStatus
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserRecognitionResult-status: UserRecognitionStatus--><!--Device-UserRecognitionResult-status: UserRecognitionStatus-End-->
 
@@ -64,7 +64,7 @@ status: UserRecognitionStatus
 userId: number
 ```
 
-识别出的用户ID，非负整数。取值限定为整数。
+识别的系统用户ID，为非负整数。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ userId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserRecognitionResult-userId: int--><!--Device-UserRecognitionResult-userId: int-End-->
 
@@ -84,7 +84,7 @@ userId: number
 userInfo: string
 ```
 
-识别出的用户信息。
+识别用户的信息。
 
 **类型：** string
 
@@ -92,7 +92,7 @@ userInfo: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserRecognitionResult-userInfo: string--><!--Device-UserRecognitionResult-userInfo: string-End-->
 

@@ -24,6 +24,8 @@ ReactiveComponentContent表示组件内容的实体封装，其对象支持在�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -110,7 +112,7 @@ struct Index {
 }
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -199,7 +201,7 @@ struct Index {
 }
 ```
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 

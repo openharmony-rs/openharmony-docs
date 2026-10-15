@@ -26,7 +26,7 @@ Sets a value for the specified key.
 
 **Deprecated since:** 9
 
-**Substitutes:** setSync
+**Substitutes:** [setSync](arkts-basicservices-systemparameterenhance-setsync-f-sys.md)
 
 <!--Device-systemParameter-function setSync(key: string, value: string): void--><!--Device-systemParameter-function setSync(key: string, value: string): void-End-->
 
@@ -41,6 +41,7 @@ Sets a value for the specified key.
 | key | string | Yes | Key to be set. |
 | value | string | Yes | Value to set. For details about length limit, see [Parameter Management](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md). |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
   console.error(`Failed to set system parameter. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

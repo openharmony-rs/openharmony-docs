@@ -53,6 +53,7 @@ Deletes a cache file. This API returns the result synchronously.
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,7 +72,9 @@ try {
 }
 ```
 
-<a id="constructor-1"></a>
+<!--DelEnd-->
+
+<a id="constructor2"></a>
 
 ## constructor
 

@@ -40,7 +40,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [CullMode](arkts-arkgraphics3d-sceneresources-cullmode-e.md) | 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。 |
-| [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md) | 环境背景类型枚举，用于定义场景的背景呈现方式。@enum { int } |
+| [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md) | 环境背景类型枚举，用于定义场景的背景呈现方式。 |
 | [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md) | 场景中物体材质类型枚举，定义材质的渲染方式。 |
 | [PolygonMode](arkts-arkgraphics3d-sceneresources-polygonmode-e.md) | 控制多边形绘制模式的枚举。 |
 | [SamplerAddressMode](arkts-arkgraphics3d-sceneresources-sampleraddressmode-e.md) | 采样器寻址模式枚举，用于控制纹理坐标超出[0, 1]范围时的处理方式。 |

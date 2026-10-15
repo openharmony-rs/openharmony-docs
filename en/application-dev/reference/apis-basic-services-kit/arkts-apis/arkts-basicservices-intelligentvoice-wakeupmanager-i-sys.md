@@ -52,6 +52,7 @@ Clears user data.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,6 +66,8 @@ if (wakeupManager != null) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## enrollWithWakeupFilesForResult
 
@@ -108,6 +111,7 @@ Enrolls with wakeup files for result. This method uses a promise to return the e
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -128,6 +132,8 @@ if (wakeupManager != null) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## getParameter
 
@@ -169,6 +175,7 @@ Obtains the value of an intelligent voice parameter. This method uses a promise 
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -183,6 +190,8 @@ if (wakeupManager != null) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## getUploadFiles
 
@@ -225,6 +234,7 @@ Obtains files needed to upload. This method uses a promise to return the files n
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -239,6 +249,8 @@ if (wakeupManager != null) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## getWakeupSourceFiles
 
@@ -273,6 +285,7 @@ Obtains wakeup source files. This method uses a promise to return the wakeup sou
 | [22700101](../errorcode-intelligentVoice.md#22700101-insufficient-memory) | No memory. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -288,6 +301,8 @@ if (wakeupManager != null) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## setParameter
 
@@ -330,6 +345,7 @@ Sets an intelligent voice parameter. This method uses a promise to return the re
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -343,3 +359,5 @@ if (wakeupManager != null) {
   });
 }
 ```
+
+<!--DelEnd-->

@@ -5,7 +5,7 @@ interface PhotoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus
       AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS, Aperture
 ```
 
-PhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、ManualExposure、ManualFocus、ManualIso、OIS、Aperture。
+PhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ManualExposure](../../../reference/apis-camera-kit/arkts-apis-camera-ManualExposure.md)、[ManualFocus](../../../reference/apis-camera-kit/arkts-apis-camera-ManualFocus.md)、[ManualIso](../../../reference/apis-camera-kit/arkts-apis-camera-ManualIso.md)、[OIS](../../../reference/apis-camera-kit/arkts-apis-camera-OIS.md)、[Aperture](../../../reference/apis-camera-kit/arkts-apis-camera-Aperture.md)。
 
 普通拍照模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、色彩空间、微距、手动曝光、手动对焦、手动ISO、光学防抖及光圈的操作。
 
@@ -37,7 +37,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSession-canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boolean--><!--Device-PhotoSession-canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boolean-End-->
 
@@ -235,7 +235,7 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback<AutoDeviceSwi
 **示例**
 
 ```TypeScript
-function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
+function unregisterAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
   photoSession.off('autoDeviceSwitchStatusChange');
 }
 ```
@@ -283,7 +283,7 @@ offExposureInfoChange(callback?: Callback<ExposureInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSession-offExposureInfoChange(callback?: Callback<ExposureInfo>): void--><!--Device-PhotoSession-offExposureInfoChange(callback?: Callback<ExposureInfo>): void-End-->
 
@@ -315,7 +315,7 @@ offIsoInfoChange(callback?: Callback<IsoInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSession-offIsoInfoChange(callback?: Callback<IsoInfo>): void--><!--Device-PhotoSession-offIsoInfoChange(callback?: Callback<IsoInfo>): void-End-->
 
@@ -359,7 +359,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | 监听事件，固定为'error'，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用[beginConfig](arkts-camera-camera-session-i.md#beginconfig)，[commitConfig](arkts-camera-camera-session-i.md#commitconfig)，[addInput](arkts-camera-camera-session-i.md#addinput)等接口发生错误时返回错误信息。 |
+| type | 'error' | 是 | 监听事件，固定为'error'，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用[beginConfig](arkts-camera-camera-session-i.md#beginconfig)，[commitConfig](arkts-camera-camera-session-i.md#commitconfig1)，[addInput](arkts-camera-camera-session-i.md#addinput)等接口发生错误时返回错误信息。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **示例**
@@ -615,7 +615,7 @@ onExposureInfoChange(callback: Callback<ExposureInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSession-onExposureInfoChange(callback: Callback<ExposureInfo>): void--><!--Device-PhotoSession-onExposureInfoChange(callback: Callback<ExposureInfo>): void-End-->
 
@@ -649,7 +649,7 @@ onIsoInfoChange(callback: Callback<IsoInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSession-onIsoInfoChange(callback: Callback<IsoInfo>): void--><!--Device-PhotoSession-onIsoInfoChange(callback: Callback<IsoInfo>): void-End-->
 
@@ -681,7 +681,7 @@ preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSession-preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void--><!--Device-PhotoSession-preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void-End-->
 

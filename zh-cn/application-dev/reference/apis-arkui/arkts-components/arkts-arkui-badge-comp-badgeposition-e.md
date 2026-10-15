@@ -12,13 +12,13 @@ declare enum BadgePosition
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## RightTop
+## Left
 
 ```TypeScript
-RightTop
+Left
 ```
 
-标记显示在右上角。
+标记显示在左侧纵向居中。
 
 **起始版本：** 7
 
@@ -26,7 +26,7 @@ RightTop
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BadgePosition-RightTop--><!--Device-BadgePosition-RightTop-End-->
+<!--Device-BadgePosition-Left--><!--Device-BadgePosition-Left-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ Right
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Left
+## RightTop
 
 ```TypeScript
-Left
+RightTop
 ```
 
-标记显示在左侧纵向居中。
+标记显示在右上角。
 
 **起始版本：** 7
 
@@ -62,6 +62,6 @@ Left
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-BadgePosition-Left--><!--Device-BadgePosition-Left-End-->
+<!--Device-BadgePosition-RightTop--><!--Device-BadgePosition-RightTop-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

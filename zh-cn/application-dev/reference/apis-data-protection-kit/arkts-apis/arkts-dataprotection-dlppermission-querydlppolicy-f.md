@@ -32,7 +32,7 @@ function queryDlpPolicy(dlpFd: number): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dlpFd | number | 是 | 待查询策略的DLP文件的dlpFd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当dlpFd小于0时，打印错误日志，函数停止运行；当dlpFd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，dlpFd的值被截断。 |
+| dlpFd | number | 是 | 待查询策略的DLP文件的dlpFd。取值范围为[0, 2<sup>31</sup>-1]。当dlpFd小于0时，打印错误日志，函数停止运行；当dlpFd大于2<sup>31</sup>-1时，dlpFd的值被截断。 |
 
 **返回值：**
 

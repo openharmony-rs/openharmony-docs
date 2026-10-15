@@ -12,19 +12,19 @@ export enum ProfileConnectionState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## STATE_DISCONNECTED
+## STATE_CONNECTED
 
 ```TypeScript
-STATE_DISCONNECTED = 0
+STATE_CONNECTED = 2
 ```
 
-表示Profile已断开连接。
+表示Profile已连接。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0--><!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0-End-->
+<!--Device-ProfileConnectionState-STATE_CONNECTED = 2--><!--Device-ProfileConnectionState-STATE_CONNECTED = 2-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -38,25 +38,25 @@ STATE_CONNECTING = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ProfileConnectionState-STATE_CONNECTING = 1--><!--Device-ProfileConnectionState-STATE_CONNECTING = 1-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## STATE_CONNECTED
+## STATE_DISCONNECTED
 
 ```TypeScript
-STATE_CONNECTED = 2
+STATE_DISCONNECTED = 0
 ```
 
-表示Profile已连接。
+表示Profile已断开连接。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ProfileConnectionState-STATE_CONNECTED = 2--><!--Device-ProfileConnectionState-STATE_CONNECTED = 2-End-->
+<!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0--><!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -70,7 +70,7 @@ STATE_DISCONNECTING = 3
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ProfileConnectionState-STATE_DISCONNECTING = 3--><!--Device-ProfileConnectionState-STATE_DISCONNECTING = 3-End-->
 

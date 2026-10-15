@@ -12,6 +12,24 @@ declare enum SaveButtonOnClickResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## CANCELED_BY_USER
+
+```TypeScript
+CANCELED_BY_USER = 2
+```
+
+保存控件点击后，弹窗中用户取消授权。仅在调用[userCancelEvent](arkts-arkui-savebutton-comp-attribute.md#usercancelevent)并设置参数为true时，回调结果中才会返回该值。
+
+**起始版本：** 21
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonOnClickResult-CANCELED_BY_USER = 2--><!--Device-SaveButtonOnClickResult-CANCELED_BY_USER = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## SUCCESS
 
 ```TypeScript
@@ -45,23 +63,5 @@ TEMPORARY_AUTHORIZATION_FAILED = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SaveButtonOnClickResult-TEMPORARY_AUTHORIZATION_FAILED = 1--><!--Device-SaveButtonOnClickResult-TEMPORARY_AUTHORIZATION_FAILED = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CANCELED_BY_USER
-
-```TypeScript
-CANCELED_BY_USER = 2
-```
-
-保存控件点击后，弹窗中用户取消授权。仅在调用[userCancelEvent](arkts-arkui-savebutton-comp-attribute.md#usercancelevent)并设置参数为true时，回调结果中才会返回该值。
-
-**起始版本：** 21
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
-
-<!--Device-SaveButtonOnClickResult-CANCELED_BY_USER = 2--><!--Device-SaveButtonOnClickResult-CANCELED_BY_USER = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

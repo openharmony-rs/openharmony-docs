@@ -6,6 +6,8 @@ declare type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').def
 
 落入操作时使用的数据加载参数。
 
+**类型：** import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').def
 <!--Device-unnamed-declare type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams--><!--Device-unnamed-declare type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams

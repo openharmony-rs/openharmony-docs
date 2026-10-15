@@ -6,6 +6,8 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="switchinputmethod1"></a>
+
 ## switchInputMethod
 
 ```TypeScript
@@ -64,7 +66,7 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 ```
 
 
-<a id="switchinputmethod-1"></a>
+<a id="switchinputmethod2"></a>
 
 ## switchInputMethod
 

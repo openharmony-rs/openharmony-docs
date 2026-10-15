@@ -324,6 +324,8 @@ moveToTop(name: string, animated?: boolean): number
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
 
+<a id="pop1"></a>
+
 ## pop
 
 ```TypeScript
@@ -358,7 +360,7 @@ pop(animated?: boolean): NavPathInfo | undefined
 | --- | --- |
 | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
 
-<a id="pop-1"></a>
+<a id="pop2"></a>
 
 ## pop
 
@@ -395,6 +397,8 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 | --- | --- |
 | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
 
+<a id="poptoindex1"></a>
+
 ## popToIndex
 
 ```TypeScript
@@ -420,7 +424,7 @@ popToIndex(index: number, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。<br>取值范围：[0, +∞)。超出范围时操作不生效。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
-<a id="poptoindex-1"></a>
+<a id="poptoindex2"></a>
 
 ## popToIndex
 
@@ -447,6 +451,8 @@ popToIndex(index: number, result: Object, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。<br>取值范围：[0, +∞)。超出范围时操作不生效。 |
 | result | Object | 是 | 页面自定义处理结果。具体内容由开发者自定义，建议包含明确的业务标识和处理结果数据。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
+
+<a id="poptoname1"></a>
 
 ## popToName
 
@@ -479,7 +485,7 @@ popToName(name: string, animated?: boolean): number
 | --- | --- |
 | number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞). |
 
-<a id="poptoname-1"></a>
+<a id="poptoname2"></a>
 
 ## popToName
 
@@ -513,6 +519,8 @@ popToName(name: string, result: Object, animated?: boolean): number
 | --- | --- |
 | number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞). |
 
+<a id="pushpath1"></a>
+
 ## pushPath
 
 ```TypeScript
@@ -539,7 +547,7 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。<br>默认值：DETAIL_PAGE |
 
-<a id="pushpath-1"></a>
+<a id="pushpath2"></a>
 
 ## pushPath
 
@@ -566,6 +574,8 @@ pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): 
 | info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段，使用其他字段将被忽略。省略时使用默认动画配置。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。<br>默认值：DETAIL_PAGE |
+
+<a id="pushpathbyname1"></a>
 
 ## pushPathByName
 
@@ -594,7 +604,7 @@ pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPo
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。<br>默认值：DETAIL_PAGE |
 
-<a id="pushpathbyname-1"></a>
+<a id="pushpathbyname2"></a>
 
 ## pushPathByName
 
@@ -685,6 +695,8 @@ removeByName(name: string): number
 | --- | --- |
 | number | 返回删除的NavDestination页面数量。 |
 
+<a id="replacepath1"></a>
+
 ## replacePath
 
 ```TypeScript
@@ -710,7 +722,7 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 | info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
-<a id="replacepath-1"></a>
+<a id="replacepath2"></a>
 
 ## replacePath
 

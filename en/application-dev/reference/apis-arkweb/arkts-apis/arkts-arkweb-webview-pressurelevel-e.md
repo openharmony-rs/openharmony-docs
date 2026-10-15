@@ -12,22 +12,6 @@ Enumerates the memory pressure levels. When an application clears the cache occu
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## MEMORY_PRESSURE_LEVEL_MODERATE
-
-```TypeScript
-MEMORY_PRESSURE_LEVEL_MODERATE = 1
-```
-
-Moderate memory pressure level. At this level, the **Web** kernel attempts to release the cache that has low reallocation overhead and does not need to be used immediately.
-
-**Since:** 14
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1--><!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## MEMORY_PRESSURE_LEVEL_CRITICAL
 
 ```TypeScript
@@ -41,5 +25,21 @@ Critical memory pressure level. At this level, the **Web** kernel attempts to re
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_CRITICAL = 2--><!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_CRITICAL = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## MEMORY_PRESSURE_LEVEL_MODERATE
+
+```TypeScript
+MEMORY_PRESSURE_LEVEL_MODERATE = 1
+```
+
+Moderate memory pressure level. At this level, the **Web** kernel attempts to release the cache that has low reallocation overhead and does not need to be used immediately.
+
+**Since:** 14
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1--><!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

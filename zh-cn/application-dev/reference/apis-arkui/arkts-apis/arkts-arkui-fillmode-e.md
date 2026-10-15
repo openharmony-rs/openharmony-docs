@@ -12,46 +12,6 @@ declare enum FillMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## None
-
-```TypeScript
-None
-```
-
-动画未执行时，不应用任何样式到目标；播放完成后，恢复初始默认状态。
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FillMode-None--><!--Device-FillMode-None-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Forwards
-
-```TypeScript
-Forwards
-```
-
-目标将保留动画执行期间最后一个关键帧的状态。
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FillMode-Forwards--><!--Device-FillMode-Forwards-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Backwards
 
 ```TypeScript
@@ -89,5 +49,45 @@ Both
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-FillMode-Both--><!--Device-FillMode-Both-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Forwards
+
+```TypeScript
+Forwards
+```
+
+目标将保留动画执行期间最后一个关键帧的状态。
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FillMode-Forwards--><!--Device-FillMode-Forwards-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None
+```
+
+动画未执行时，不应用任何样式到目标；播放完成后，恢复初始默认状态。
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FillMode-None--><!--Device-FillMode-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

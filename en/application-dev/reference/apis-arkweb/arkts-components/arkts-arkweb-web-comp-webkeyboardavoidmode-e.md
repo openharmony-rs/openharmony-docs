@@ -12,19 +12,19 @@ Enumerates the soft keyboard avoidance modes.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## RESIZE_VISUAL
+## OVERLAYS_CONTENT
 
 ```TypeScript
-RESIZE_VISUAL = 0
+OVERLAYS_CONTENT = 2
 ```
 
-For soft keyboard avoidance, the visual viewport is resized, but not the layout viewport.
+No viewport is resized, and soft keyboard avoidance is not triggered.
 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0--><!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0-End-->
+<!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2--><!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ For soft keyboard avoidance, both the visual viewport and layout viewport are re
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## OVERLAYS_CONTENT
+## RESIZE_VISUAL
 
 ```TypeScript
-OVERLAYS_CONTENT = 2
+RESIZE_VISUAL = 0
 ```
 
-No viewport is resized, and soft keyboard avoidance is not triggered.
+For soft keyboard avoidance, the visual viewport is resized, but not the layout viewport.
 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2--><!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2-End-->
+<!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0--><!--Device-WebKeyboardAvoidMode-RESIZE_VISUAL = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

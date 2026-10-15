@@ -6,7 +6,7 @@
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
-<a id="push-1"></a>
+<a id="push2"></a>
 
 ## push
 
@@ -14,7 +14,7 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 function push(param: PushParameterForStage, callback: AsyncCallback<void>): void
 ```
 
-Plugin component push method used to send the information of the template it provides.
+Proactively pushes the component and data to the component user. This API applies to scenarios where the plug-in component template needs to be proactively pushed, for example, cross-application content sharing and proactive refresh of home screen cards. **push** is proactively initiated by the component provider, while **request** is proactively initiated by the component user. Note that the two have similar parameter structures but opposite meanings of **owner** and **target**, so do not confuse them. The component user must listen for the received data through the **onPush** event. For details about the event listener API, see [@ohos.pluginComponent (PluginComponentManager)](../../../reference/apis-arkui/js-apis-plugincomponent.md#plugincomponentmanageron).
 
 **Since:** 9
 
@@ -30,9 +30,10 @@ Plugin component push method used to send the information of the template it pro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [PushParameterForStage](arkts-arkui-plugincomponentmanager-pushparameterforstage-i-sys.md) | Yes | Plugin component push parameters for stage. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Plugin component push event callback. |
+| param | [PushParameterForStage](arkts-arkui-plugincomponentmanager-pushparameterforstage-i-sys.md) | Yes | Parameters to be sent by the component provider. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Asynchronous callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ pluginComponentManager.push(
   }
 )
 ```
+
+<!--DelEnd-->

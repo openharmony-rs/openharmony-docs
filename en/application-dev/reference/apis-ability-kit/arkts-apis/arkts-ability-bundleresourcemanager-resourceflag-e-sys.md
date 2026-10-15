@@ -30,17 +30,33 @@ Both the application icon and label are obtained.
 
 **System API:** This is a system API.
 
-## GET_RESOURCE_INFO_WITH_LABEL
+## GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY
 
 ```TypeScript
-GET_RESOURCE_INFO_WITH_LABEL = 0x00000002
+GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY = 0x00000020
 ```
 
-Only the application label is obtained.
+The resource information about abilities that show icons only on the home screen is obtained. It is valid only in the [getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md) and [getAllLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md) APIs.
 
-**Since:** 11
+**Since:** 20
 
-<!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_LABEL = 0x00000002--><!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_LABEL = 0x00000002-End-->
+<!--Device-ResourceFlag-GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY = 0x00000020--><!--Device-ResourceFlag-GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY = 0x00000020-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Resource
+
+**System API:** This is a system API.
+
+## GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR
+
+```TypeScript
+GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010
+```
+
+The [drawableDescriptor](../../../reference/apis-arkui/js-apis-arkui-drawableDescriptor-sys.md) object of the application icon is obtained.
+
+**Since:** 12
+
+<!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010--><!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -62,6 +78,22 @@ Only the application icon is obtained.
 
 **System API:** This is a system API.
 
+## GET_RESOURCE_INFO_WITH_LABEL
+
+```TypeScript
+GET_RESOURCE_INFO_WITH_LABEL = 0x00000002
+```
+
+Only the application label is obtained.
+
+**Since:** 11
+
+<!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_LABEL = 0x00000002--><!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_LABEL = 0x00000002-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Resource
+
+**System API:** This is a system API.
+
 ## GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL
 
 ```TypeScript
@@ -73,38 +105,6 @@ The obtained information is sorted by label. It must be used together with **GET
 **Since:** 11
 
 <!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL = 0x00000008--><!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL = 0x00000008-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.Resource
-
-**System API:** This is a system API.
-
-## GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR
-
-```TypeScript
-GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010
-```
-
-The [drawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor.md) object of the application icon is obtained.
-
-**Since:** 12
-
-<!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010--><!--Device-ResourceFlag-GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.Resource
-
-**System API:** This is a system API.
-
-## GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY
-
-```TypeScript
-GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY = 0x00000020
-```
-
-The resource information about abilities that show icons only on the home screen is obtained. It is valid only in the [getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md) and [getAllLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md) APIs.
-
-**Since:** 20
-
-<!--Device-ResourceFlag-GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY = 0x00000020--><!--Device-ResourceFlag-GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY = 0x00000020-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 

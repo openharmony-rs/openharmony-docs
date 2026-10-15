@@ -14,24 +14,6 @@ enum Role
 
 **系统接口：** 此接口为系统接口。
 
-## CONTROLLER
-
-```TypeScript
-CONTROLLER = 0x01
-```
-
-控制器设备。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-Role-CONTROLLER = 0x01--><!--Device-Role-CONTROLLER = 0x01-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-**系统接口：** 此接口为系统接口。
-
 ## CONTROLLED
 
 ```TypeScript
@@ -45,6 +27,24 @@ CONTROLLED = 0x02
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-Role-CONTROLLED = 0x02--><!--Device-Role-CONTROLLED = 0x02-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+**系统接口：** 此接口为系统接口。
+
+## CONTROLLER
+
+```TypeScript
+CONTROLLER = 0x01
+```
+
+控制器设备。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-Role-CONTROLLER = 0x01--><!--Device-Role-CONTROLLER = 0x01-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

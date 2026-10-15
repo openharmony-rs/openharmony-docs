@@ -42,6 +42,7 @@ Calling this API will invalidate the result set and release all its resources.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,6 +50,8 @@ if (resultSet != undefined) {
   (resultSet as DataShareResultSet).close();
 }
 ```
+
+<!--DelEnd-->
 
 ## getBlob
 
@@ -82,6 +85,7 @@ If the specified column or key is empty or the value is not of the Blob type, yo
 | --- | --- |
 | Uint8Array | Value obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -96,6 +100,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getColumnIndex
 
@@ -129,6 +135,7 @@ The column name is passed in as an input parameter.
 | --- | --- |
 | number | Column index obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,6 +145,8 @@ if (resultSet != undefined) {
   console.info('resultSet.getColumnIndex: ' + getColumnIndex);
 }
 ```
+
+<!--DelEnd-->
 
 ## getColumnName
 
@@ -171,6 +180,7 @@ The column index is passed in as an input parameter.
 | --- | --- |
 | string | Column name obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -180,6 +190,8 @@ if (resultSet != undefined) {
   console.info('resultSet.getColumnName: ' + getColumnName);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDataType
 
@@ -213,6 +225,7 @@ If the specified column or key is empty or the value is not of the DataType type
 | --- | --- |
 | [DataType](arkts-arkdata-data-datashareresultset-datatype-e-sys.md) | Data type obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -227,6 +240,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getDouble
 
@@ -260,6 +275,7 @@ If the specified column or key is empty or the value is not of the double type, 
 | --- | --- |
 | number | Value obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -274,6 +290,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getLong
 
@@ -307,6 +325,7 @@ If the specified column or key is empty or the value is not of the long type, yo
 | --- | --- |
 | number | Value obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -321,6 +340,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getString
 
@@ -354,6 +375,7 @@ If the specified column or key is empty or the value is not of the string type, 
 | --- | --- |
 | string | Value obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -368,6 +390,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## goTo
 
@@ -399,6 +423,7 @@ Moves based on the specified offset.
 | --- | --- |
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -408,6 +433,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goTo: ' + isGoTo);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToFirstRow
 
@@ -433,6 +460,7 @@ Moves to the first row of the result set.
 | --- | --- |
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -442,6 +470,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToFirstRow: ' + isGoToFirstRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToLastRow
 
@@ -467,6 +497,7 @@ Moves to the last row of the result set.
 | --- | --- |
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -475,6 +506,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToLastRow: ' + isGoToLastRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToNextRow
 
@@ -500,6 +533,7 @@ Moves to the next row in the result set.
 | --- | --- |
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -508,6 +542,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToNextRow: ' + isGoToNextRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToPreviousRow
 
@@ -533,6 +569,7 @@ Moves to the previous row in the result set.
 | --- | --- |
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -541,6 +578,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToPreviousRow: ' + isGoToPreviousRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToRow
 
@@ -572,6 +611,7 @@ Moves to the specified row in the result set.
 | --- | --- |
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -581,6 +621,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToRow: ' + isGoToRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## columnCount
 

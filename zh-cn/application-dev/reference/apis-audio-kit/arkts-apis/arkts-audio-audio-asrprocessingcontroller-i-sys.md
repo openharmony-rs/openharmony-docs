@@ -49,11 +49,14 @@ getAsrAecMode(): AsrAecMode
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let mode = asrProcessingController.getAsrAecMode();
 ```
+
+<!--DelEnd-->
 
 ## getAsrNoiseSuppressionMode
 
@@ -84,11 +87,14 @@ getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let mode = asrProcessingController.getAsrNoiseSuppressionMode();
 ```
+
+<!--DelEnd-->
 
 ## getAsrWhisperDetectionMode
 
@@ -119,11 +125,14 @@ getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let mode = asrProcessingController.getAsrWhisperDetectionMode();
 ```
+
+<!--DelEnd-->
 
 ## isWhispering
 
@@ -154,11 +163,14 @@ isWhispering(): boolean
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let flag = asrProcessingController.isWhispering();
 ```
+
+<!--DelEnd-->
 
 ## setAsrAecMode
 
@@ -197,11 +209,14 @@ setAsrAecMode(mode: AsrAecMode): boolean
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrAecMode(audio.AsrAecMode.BYPASS);
 ```
+
+<!--DelEnd-->
 
 ## setAsrNoiseSuppressionMode
 
@@ -240,11 +255,14 @@ setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrNoiseSuppressionMode(audio.AsrNoiseSuppressionMode.BYPASS);
 ```
+
+<!--DelEnd-->
 
 ## setAsrVoiceControlMode
 
@@ -284,11 +302,14 @@ setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrVoiceControlMode(audio.AsrVoiceControlMode.AUDIO_2_VOICE_TX, true);
 ```
+
+<!--DelEnd-->
 
 ## setAsrVoiceMuteMode
 
@@ -328,11 +349,14 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
 ```
+
+<!--DelEnd-->
 
 ## setAsrWhisperDetectionMode
 
@@ -371,8 +395,11 @@ setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let flag = asrProcessingController.setAsrWhisperDetectionMode(audio.AsrWhisperDetectionMode.BYPASS);
 ```
+
+<!--DelEnd-->

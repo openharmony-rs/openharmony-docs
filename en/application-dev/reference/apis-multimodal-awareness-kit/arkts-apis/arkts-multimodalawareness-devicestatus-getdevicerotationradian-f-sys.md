@@ -38,6 +38,7 @@ The posture data contains the rotation angles of the x, y, and z axes, that is, 
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [32500001](../errorcode-deviceStatus.md#32500001-abnormal-service) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,9 +49,11 @@ try {
    deviceStatus.getDeviceRotationRadian().then((radian: deviceStatus.DeviceRotationRadian) => {
       console.info('x:' + radian.x + ' y:' + radian.y + ' z:' + radian.z);
    }).catch((err: BusinessError) => {
-      console.error('get device rotation radian failed, errmsg:' + err);
-   })
+      console.error(`Failed to get device rotation radians. Code: ${err.code}, message: ${err.message}`);
+   });
 } catch (err) {
-   console.error('invoke failed, errmsg:' + err)
+   console.error(`Failed to invoke. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

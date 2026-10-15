@@ -4,14 +4,14 @@
 export class ContinuousTaskRequest
 ```
 
-通常作为[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-3)和[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口的入参，用于指定申请或更新的长时任务信息。其中：
+通常作为[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning4)和[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2)接口的入参，用于指定申请或更新的长时任务信息。其中：
 
-1. 通过[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-3)接口申请长时任务时，如果待申请长时任务与当前应用下已存在长时任务，两者的主类型和子类型均相同，且combinedTaskNotification均取值为true，则会合并通知。否则不会合并通知。
+1. 通过[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning4)接口申请长时任务时，如果待申请长时任务与当前应用下已存在长时任务，两者的主类型和子类型均相同，且combinedTaskNotification均取值为true，则会合并通知。否则不会合并通知。
 2. 如果长时任务本身没有通知，则不会合并，长时任务类型是否会通知请参考[BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)。
 3. 如果长时任务类型中包含数据传输类型，则不会合并通知。
 4. 通知合并后不能取消合并，已合并的不能更新成不合并。
 5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。
-6. 通过[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
+6. 通过[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
 7. 从API version 22开始支持特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的长时任务。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
 
 **起始版本：** 21
@@ -48,7 +48,7 @@ checkSpecialScenarioAuth(context: Context): Promise<UserAuthResult>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。<br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。<br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 
 **返回值：**
 
@@ -162,7 +162,7 @@ isModeSupported(): boolean
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskRequest-isModeSupported(): boolean--><!--Device-ContinuousTaskRequest-isModeSupported(): boolean-End-->
 
@@ -227,7 +227,7 @@ requestAuthFromUser(context: Context, callback: Callback<UserAuthResult>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。<br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。<br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)&gt; | 是 | 用户操作后，返回授权结果。 |
 
 **错误码：**
@@ -349,7 +349,7 @@ get backgroundTaskModes(): BackgroundTaskMode[]
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskRequest-get backgroundTaskModes(): BackgroundTaskMode[]--><!--Device-ContinuousTaskRequest-get backgroundTaskModes(): BackgroundTaskMode[]-End-->
 
@@ -367,7 +367,7 @@ set backgroundTaskModes(value: BackgroundTaskMode[])
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskRequest-set backgroundTaskModes(value: BackgroundTaskMode[])--><!--Device-ContinuousTaskRequest-set backgroundTaskModes(value: BackgroundTaskMode[])-End-->
 
@@ -387,7 +387,7 @@ get backgroundTaskSubmodes(): BackgroundTaskSubmode[]
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskRequest-get backgroundTaskSubmodes(): BackgroundTaskSubmode[]--><!--Device-ContinuousTaskRequest-get backgroundTaskSubmodes(): BackgroundTaskSubmode[]-End-->
 
@@ -405,7 +405,7 @@ set backgroundTaskSubmodes(value: BackgroundTaskSubmode[])
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskRequest-set backgroundTaskSubmodes(value: BackgroundTaskSubmode[])--><!--Device-ContinuousTaskRequest-set backgroundTaskSubmodes(value: BackgroundTaskSubmode[])-End-->
 
@@ -419,7 +419,7 @@ combinedTaskNotification?: boolean
 
 是否合并通知，true表示合并，false表示不合并，默认为false。
 
-**说明：** 该属性在[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。
+**说明：** 该属性在[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。
 
 **类型：** boolean
 
@@ -441,9 +441,9 @@ continuousTaskId?: number
 
 **说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。
 
-作为[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口入参时，该属性必填，且必须是存在的ID。
+作为[updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2)接口入参时，该属性必填，且必须是存在的ID。
 
-可以通过[getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks-1)接口查看当前所有长时任务信息。
+可以通过[getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks2)接口查看当前所有长时任务信息。
 
 **类型：** number
 
@@ -463,9 +463,9 @@ progressInfo?: ProgressInfo
 
 通知进度信息。
 
-**说明：** 该属性仅适用于通过[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-3)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)。
+**说明：** 该属性仅适用于通过[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning4)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)。
 
-在[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)接口中不允许使用该属性。
+在[updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2)接口中不允许使用该属性。
 
 **类型：** [ProgressInfo](arkts-backgroundtasks-backgroundtaskmanager-progressinfo-i.md)
 
@@ -491,7 +491,7 @@ get wantAgent(): WantAgent
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskRequest-get wantAgent(): WantAgent--><!--Device-ContinuousTaskRequest-get wantAgent(): WantAgent-End-->
 
@@ -507,7 +507,7 @@ set wantAgent(value: WantAgent)
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContinuousTaskRequest-set wantAgent(value: WantAgent)--><!--Device-ContinuousTaskRequest-set wantAgent(value: WantAgent)-End-->
 

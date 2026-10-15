@@ -30,9 +30,9 @@ Offset for data reading, in bytes.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-PositionArea-offset: int--><!--Device-PositionArea-offset: int-End-->
 
@@ -50,9 +50,9 @@ Pixels of the image. Only pixel data in BGRA_8888 format is supported.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-PositionArea-pixels: ArrayBuffer--><!--Device-PositionArea-pixels: ArrayBuffer-End-->
 
@@ -70,9 +70,9 @@ Region to read or write. The width of the region to write plus the X coordinate 
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-PositionArea-region: Region--><!--Device-PositionArea-region: Region-End-->
 
@@ -90,9 +90,9 @@ Number of bytes from one row of pixels in memory to the next row of pixels in me
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-PositionArea-stride: int--><!--Device-PositionArea-stride: int-End-->
 

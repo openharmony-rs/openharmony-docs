@@ -14,19 +14,19 @@ The module defines whether an application supports the multi-app mode.
 
 **System API:** This is a system API.
 
-## NOT_SUPPORTED
+## APP_CLONE
 
 ```TypeScript
-NOT_SUPPORTED = 0
+APP_CLONE = 2
 ```
 
-The application does not support the multi-app mode.
+The application supports the app-clone mode. The app-clone mode allows creating independent copy instances for the application, with each instance having its own data space, suitable for scenarios that require isolated user data.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-MultiAppMode-NOT_SUPPORTED = 0--><!--Device-MultiAppMode-NOT_SUPPORTED = 0-End-->
+<!--Device-MultiAppMode-APP_CLONE = 2--><!--Device-MultiAppMode-APP_CLONE = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -54,19 +54,19 @@ The application supports the multi-instance mode. When an application is set to 
 
 **System API:** This is a system API.
 
-## APP_CLONE
+## NOT_SUPPORTED
 
 ```TypeScript
-APP_CLONE = 2
+NOT_SUPPORTED = 0
 ```
 
-The application supports the app-clone mode. The app-clone mode allows creating independent copy instances for the application, with each instance having its own data space, suitable for scenarios that require isolated user data.
+The application does not support the multi-app mode.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-MultiAppMode-APP_CLONE = 2--><!--Device-MultiAppMode-APP_CLONE = 2-End-->
+<!--Device-MultiAppMode-NOT_SUPPORTED = 0--><!--Device-MultiAppMode-NOT_SUPPORTED = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

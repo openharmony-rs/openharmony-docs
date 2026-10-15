@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setdistributedenable1"></a>
+
 ## setDistributedEnable
 
 ```TypeScript
@@ -41,13 +43,14 @@ Sets whether to enable distributed notification on this device. This API uses an
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600010](../errorcode-notification.md#1600010-distributed-operation-failed) | Distributed operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,15 +60,17 @@ let setDistributedEnableCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnable success");
+        console.info('setDistributedEnable success');
     }
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="setdistributedenable-1"></a>
+
+<a id="setdistributedenable2"></a>
 
 ## setDistributedEnable
 
@@ -107,13 +112,14 @@ Sets whether to enable distributed notification on this device. This API uses a 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600010](../errorcode-notification.md#1600010-distributed-operation-failed) | Distributed operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -121,8 +127,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
-    console.info("setDistributedEnable success");
+    console.info('setDistributedEnable success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

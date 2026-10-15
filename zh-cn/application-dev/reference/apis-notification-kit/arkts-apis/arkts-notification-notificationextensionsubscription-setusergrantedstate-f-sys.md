@@ -47,12 +47,13 @@ function setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Prom
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
-  // 应改为开发者需要查询的目标应用信息
+  // 应改为开发者需要设置的目标应用信息
   bundle: 'com.example.testnotification',
 };
 notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
@@ -61,3 +62,5 @@ notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then((
   console.error(`setUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

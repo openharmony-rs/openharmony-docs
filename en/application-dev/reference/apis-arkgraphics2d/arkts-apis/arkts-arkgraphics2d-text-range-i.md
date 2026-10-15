@@ -30,7 +30,7 @@ Index of the rightmost point of the interval. The value is an integer.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Range-end: int--><!--Device-Range-end: int-End-->
 
@@ -48,7 +48,7 @@ Index of the leftmost point of the interval. The value is an integer.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Range-start: int--><!--Device-Range-start: int-End-->
 

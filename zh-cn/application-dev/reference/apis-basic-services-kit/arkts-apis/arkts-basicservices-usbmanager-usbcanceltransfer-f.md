@@ -46,7 +46,7 @@ function usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 > 说明：
 > 
-> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用接口的必要流程。实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用。具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 ```TypeScript
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
@@ -66,7 +66,7 @@ async function usbCancelTransfer() {
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicePipe === undefined) {
-    console.info(`connect device fail`);
+    console.error(`connect device fail`);
     return;
   }
   // 获取endpoint端点地址。
@@ -74,11 +74,12 @@ async function usbCancelTransfer() {
     return value.direction === 0 && value.type === 2;
   });
   if (endpoint === undefined) {
-    console.info(`invalid endpoint`);
+    console.error(`invalid endpoint`);
     return;
   }
   // 声明接口控制权，force参数为true表示强制获取。
-  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     usbManager.closePipe(devicePipe);

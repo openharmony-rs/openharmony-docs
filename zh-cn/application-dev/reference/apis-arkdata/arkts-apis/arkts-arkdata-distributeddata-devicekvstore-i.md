@@ -12,7 +12,7 @@ interface DeviceKVStore extends KVStore
 
 **废弃版本：** 9
 
-**替代接口：** DeviceKVStore
+**替代接口：** [DeviceKVStore](arkts-arkdata-distributedkvstore-devicekvstore-i.md)
 
 <!--Device-distributedData-interface DeviceKVStore extends KVStore--><!--Device-distributedData-interface DeviceKVStore extends KVStore-End-->
 
@@ -23,13 +23,15 @@ interface DeviceKVStore extends KVStore
 ```TypeScript
 ```
 
+<a id="closeresultset1"></a>
+
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由DeviceKVStore.getResultSet返回的KvStoreResultSet对象，使用callback异步回调。
+关闭由[DeviceKVStore.getResultSet](../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -67,7 +69,7 @@ try {
 }
 ```
 
-<a id="closeresultset-1"></a>
+<a id="closeresultset2"></a>
 
 ## closeResultSet
 
@@ -75,7 +77,7 @@ try {
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-关闭由DeviceKVStore.getResultSet返回的KvStoreResultSet对象，使用Promise异步回调。
+关闭由[DeviceKVStore.getResultSet](../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -116,6 +118,8 @@ try {
 }
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -128,7 +132,7 @@ get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | nu
 
 **废弃版本：** 9
 
-**替代接口：** get
+**替代接口：** [get](arkts-arkdata-distributedkvstore-devicekvstore-i.md#get)
 
 <!--Device-DeviceKVStore-get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | number | Uint8Array>): void--><!--Device-DeviceKVStore-get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | number | Uint8Array>): void-End-->
 
@@ -160,7 +164,7 @@ try{
 }
 ```
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -174,7 +178,7 @@ get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Arr
 
 **废弃版本：** 9
 
-**替代接口：** get
+**替代接口：** [get](arkts-arkdata-distributedkvstore-devicekvstore-i.md#get)
 
 <!--Device-DeviceKVStore-get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Array>--><!--Device-DeviceKVStore-get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Array>-End-->
 
@@ -215,6 +219,8 @@ try {
 }
 ```
 
+<a id="getentries1"></a>
+
 ## getEntries
 
 ```TypeScript
@@ -227,7 +233,7 @@ getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>
 
 **废弃版本：** 9
 
-**替代接口：** getEntries
+**替代接口：** [getEntries](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getentries)
 
 <!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>): void--><!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>): void-End-->
 
@@ -272,7 +278,7 @@ try {
 }
 ```
 
-<a id="getentries-1"></a>
+<a id="getentries2"></a>
 
 ## getEntries
 
@@ -286,7 +292,7 @@ getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
 
 **废弃版本：** 9
 
-**替代接口：** getEntries
+**替代接口：** [getEntries](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getentries)
 
 <!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>--><!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>-End-->
 
@@ -342,7 +348,7 @@ try {
 }
 ```
 
-<a id="getentries-2"></a>
+<a id="getentries3"></a>
 
 ## getEntries
 
@@ -356,7 +362,7 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 
 **废弃版本：** 9
 
-**替代接口：** getEntries
+**替代接口：** [getEntries](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getentries)
 
 <!--Device-DeviceKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-DeviceKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void-End-->
 
@@ -405,7 +411,7 @@ try {
 }
 ```
 
-<a id="getentries-3"></a>
+<a id="getentries4"></a>
 
 ## getEntries
 
@@ -419,7 +425,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 **废弃版本：** 9
 
-**替代接口：** getEntries
+**替代接口：** [getEntries](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getentries)
 
 <!--Device-DeviceKVStore-getEntries(query: Query): Promise<Entry[]>--><!--Device-DeviceKVStore-getEntries(query: Query): Promise<Entry[]>-End-->
 
@@ -474,7 +480,7 @@ try {
 }
 ```
 
-<a id="getentries-4"></a>
+<a id="getentries5"></a>
 
 ## getEntries
 
@@ -488,7 +494,7 @@ getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): vo
 
 **废弃版本：** 9
 
-**替代接口：** getEntries
+**替代接口：** [getEntries](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getentries)
 
 <!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): void-End-->
 
@@ -538,7 +544,7 @@ try {
 }
 ```
 
-<a id="getentries-5"></a>
+<a id="getentries6"></a>
 
 ## getEntries
 
@@ -552,7 +558,7 @@ getEntries(deviceId: string, query: Query): Promise<Entry[]>
 
 **废弃版本：** 9
 
-**替代接口：** getEntries
+**替代接口：** [getEntries](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getentries)
 
 <!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query): Promise<Entry[]>--><!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query): Promise<Entry[]>-End-->
 
@@ -609,6 +615,8 @@ try {
 }
 ```
 
+<a id="getresultset1"></a>
+
 ## getResultSet
 
 ```TypeScript
@@ -621,7 +629,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KvStor
 
 **废弃版本：** 9
 
-**替代接口：** getResultSet
+**替代接口：** [getResultSet](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultset)
 
 <!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void-End-->
 
@@ -653,7 +661,7 @@ try {
 }
 ```
 
-<a id="getresultset-1"></a>
+<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -667,7 +675,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise<KvStoreResultSet>
 
 **废弃版本：** 9
 
-**替代接口：** getResultSet
+**替代接口：** [getResultSet](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultset)
 
 <!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string): Promise<KvStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string): Promise<KvStoreResultSet>-End-->
 
@@ -708,7 +716,7 @@ try {
 }
 ```
 
-<a id="getresultset-2"></a>
+<a id="getresultset3"></a>
 
 ## getResultSet
 
@@ -722,7 +730,7 @@ getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 
 **废弃版本：** 9
 
-**替代接口：** getResultSet
+**替代接口：** [getResultSet](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultset)
 
 <!--Device-DeviceKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void-End-->
 
@@ -771,7 +779,7 @@ try {
 }
 ```
 
-<a id="getresultset-3"></a>
+<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -785,7 +793,7 @@ getResultSet(query: Query): Promise<KvStoreResultSet>
 
 **废弃版本：** 9
 
-**替代接口：** getResultSet
+**替代接口：** [getResultSet](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultset)
 
 <!--Device-DeviceKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>-End-->
 
@@ -846,7 +854,7 @@ try {
 }
 ```
 
-<a id="getresultset-4"></a>
+<a id="getresultset5"></a>
 
 ## getResultSet
 
@@ -860,7 +868,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KvStoreResu
 
 **废弃版本：** 9
 
-**替代接口：** getResultSet
+**替代接口：** [getResultSet](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultset)
 
 <!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KvStoreResultSet>): void-End-->
 
@@ -909,7 +917,7 @@ try {
 }
 ```
 
-<a id="getresultset-5"></a>
+<a id="getresultset6"></a>
 
 ## getResultSet
 
@@ -923,7 +931,7 @@ getResultSet(deviceId: string, query: Query): Promise<KvStoreResultSet>
 
 **废弃版本：** 9
 
-**替代接口：** getResultSet
+**替代接口：** [getResultSet](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultset)
 
 <!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query): Promise<KvStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query): Promise<KvStoreResultSet>-End-->
 
@@ -986,6 +994,8 @@ try {
 }
 ```
 
+<a id="getresultsize1"></a>
+
 ## getResultSize
 
 ```TypeScript
@@ -998,7 +1008,7 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** getResultSize
+**替代接口：** [getResultSize](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultsize)
 
 <!--Device-DeviceKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void--><!--Device-DeviceKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void-End-->
 
@@ -1042,7 +1052,7 @@ try {
 }
 ```
 
-<a id="getresultsize-1"></a>
+<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -1056,7 +1066,7 @@ getResultSize(query: Query): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** getResultSize
+**替代接口：** [getResultSize](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultsize)
 
 <!--Device-DeviceKVStore-getResultSize(query: Query): Promise<number>--><!--Device-DeviceKVStore-getResultSize(query: Query): Promise<number>-End-->
 
@@ -1109,7 +1119,7 @@ try {
 }
 ```
 
-<a id="getresultsize-2"></a>
+<a id="getresultsize3"></a>
 
 ## getResultSize
 
@@ -1123,7 +1133,7 @@ getResultSize(deviceId: string, query: Query, callback: AsyncCallback<number>): 
 
 **废弃版本：** 9
 
-**替代接口：** getResultSize
+**替代接口：** [getResultSize](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultsize)
 
 <!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query, callback: AsyncCallback<number>): void--><!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query, callback: AsyncCallback<number>): void-End-->
 
@@ -1167,7 +1177,7 @@ try {
 }
 ```
 
-<a id="getresultsize-3"></a>
+<a id="getresultsize4"></a>
 
 ## getResultSize
 
@@ -1181,7 +1191,7 @@ getResultSize(deviceId: string, query: Query): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** getResultSize
+**替代接口：** [getResultSize](arkts-arkdata-distributedkvstore-devicekvstore-i.md#getresultsize)
 
 <!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query): Promise<number>--><!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query): Promise<number>-End-->
 
@@ -1234,6 +1244,8 @@ try {
 }
 ```
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -1280,7 +1292,7 @@ class KvstoreModel {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -1328,6 +1340,8 @@ class KvstoreModel {
 }
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -1363,7 +1377,7 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 });
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -1409,6 +1423,8 @@ try {
     console.error('syncComplete put e ' + e);
 }
 ```
+
+<a id="removedevicedata1"></a>
 
 ## removeDeviceData
 
@@ -1461,7 +1477,7 @@ try {
 }
 ```
 
-<a id="removedevicedata-1"></a>
+<a id="removedevicedata2"></a>
 
 ## removeDeviceData
 

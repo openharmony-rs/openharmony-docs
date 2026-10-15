@@ -22,7 +22,7 @@ AVC.
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-VideoCodecType-AVC = 0--><!--Device-VideoCodecType-AVC = 0-End-->
 
@@ -38,7 +38,7 @@ HEVC.
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-VideoCodecType-HEVC = 1--><!--Device-VideoCodecType-HEVC = 1-End-->
 

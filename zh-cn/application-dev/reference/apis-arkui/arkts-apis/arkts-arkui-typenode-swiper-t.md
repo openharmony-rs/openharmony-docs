@@ -6,6 +6,8 @@ type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>
 
 Swiper类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SwiperInterface, [SwiperAttribute](../arkts-components/arkts-arkui-swiper-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Swiper类型的FrameNode节点类型。
 <!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>--><!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SwiperInterface, [SwiperAttribute](../arkts-components/arkts-arkui-swiper-comp-attribute.md)&gt;

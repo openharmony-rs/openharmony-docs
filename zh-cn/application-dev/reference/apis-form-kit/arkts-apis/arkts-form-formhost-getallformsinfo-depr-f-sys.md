@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getallformsinfo1"></a>
+
 ## getAllFormsInfo
 
 ```TypeScript
@@ -33,6 +35,7 @@ function getAllFormsInfo(callback: AsyncCallback<Array<formInfo.FormInfo>>): voi
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[formInfo.FormInfo](arkts-form-forminfo-forminfo-i.md)&gt;&gt; | 是 | 回调函数。当获取设备上所有应用提供的卡片信息成功，error为undefined，data为查询到的卡片信息；否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,8 +51,10 @@ formHost.getAllFormsInfo((error: Base.BusinessError, data: formInfo.FormInfo[]) 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getallformsinfo-1"></a>
+
+<a id="getallformsinfo2"></a>
 
 ## getAllFormsInfo
 
@@ -79,6 +84,7 @@ function getAllFormsInfo(): Promise<Array<formInfo.FormInfo>>
 | --- | --- |
 | Promise&lt;Array&lt;[formInfo.FormInfo](arkts-form-forminfo-forminfo-i.md)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -91,3 +97,5 @@ formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
   console.error(`formHost getAllFormsInfo, error: ${JSON.stringify(error)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -86,6 +86,7 @@ runningMultiInstances?: Array<RunningMultiInstanceInfo>
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -108,3 +109,5 @@ try {
   console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
 }
 ```
+
+<!--DelEnd-->

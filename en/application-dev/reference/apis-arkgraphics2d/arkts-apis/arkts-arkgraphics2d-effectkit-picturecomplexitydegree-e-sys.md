@@ -14,17 +14,17 @@ Enumerates the complexity degree of the image.
 
 **System API:** This is a system API.
 
-## UNKNOWN_COMPLEXITY_DEGREE_PICTURE
+## MODERATE_COMPLEXITY_PICTURE
 
 ```TypeScript
-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0
+MODERATE_COMPLEXITY_PICTURE = 2
 ```
 
-Default value. The complexity degree of the image is unknown.
+The complexity degree of the image is moderate.
 
 **Since:** 22
 
-<!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0--><!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0-End-->
+<!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2--><!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -46,17 +46,17 @@ The complexity degree of the image is pure.
 
 **System API:** This is a system API.
 
-## MODERATE_COMPLEXITY_PICTURE
+## UNKNOWN_COMPLEXITY_DEGREE_PICTURE
 
 ```TypeScript
-MODERATE_COMPLEXITY_PICTURE = 2
+UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0
 ```
 
-The complexity degree of the image is moderate.
+Default value. The complexity degree of the image is unknown.
 
 **Since:** 22
 
-<!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2--><!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2-End-->
+<!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0--><!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

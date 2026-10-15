@@ -38,3 +38,16 @@ function isWeakPinEnabled(): boolean
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
+
+**示例**
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+ 
+try {
+  let result: boolean = securityManager.isWeakPinEnabled();
+  console.info(`Succeeded in checking weak pin enabled, result: ${result}`);
+} catch (err) {
+  console.error(`Failed to check weak pin enabled. Code: ${err.code}, message: ${err.message}`);
+}
+```

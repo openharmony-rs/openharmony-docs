@@ -37,6 +37,7 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ print.discoverUsbPrinters().then((printers : print.PrinterInformation[]) => {
     console.error(`Failed to discover USB printers. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

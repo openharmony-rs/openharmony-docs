@@ -43,7 +43,7 @@ afterComponent(com: Component): On
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-afterComponent(com: Component): On--><!--Device-On-afterComponent(com: Component): On-End-->
 
@@ -94,7 +94,7 @@ beforeComponent(com: Component): On
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-beforeComponent(com: Component): On--><!--Device-On-beforeComponent(com: Component): On-End-->
 
@@ -143,7 +143,7 @@ belongingDisplay(displayId: number): On
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-belongingDisplay(displayId: int): On--><!--Device-On-belongingDisplay(displayId: int): On-End-->
 
@@ -155,7 +155,7 @@ belongingDisplay(displayId: number): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | number | 是 | 指定控件所属屏幕ID，取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
+| displayId | number | 是 | 指定控件所属屏幕ID，取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getalldisplays1)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
 
 **返回值：**
 
@@ -188,7 +188,7 @@ checkable(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-checkable(b?: boolean): On--><!--Device-On-checkable(b?: boolean): On-End-->
 
@@ -233,7 +233,7 @@ checked(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-checked(b?: boolean): On--><!--Device-On-checked(b?: boolean): On-End-->
 
@@ -278,7 +278,7 @@ clickable(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-clickable(b?: boolean): On--><!--Device-On-clickable(b?: boolean): On-End-->
 
@@ -323,7 +323,7 @@ description(val: string, pattern?: MatchPattern): On
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-description(val: string, pattern?: MatchPattern): On--><!--Device-On-description(val: string, pattern?: MatchPattern): On-End-->
 
@@ -369,7 +369,7 @@ enabled(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-enabled(b?: boolean): On--><!--Device-On-enabled(b?: boolean): On-End-->
 
@@ -414,7 +414,7 @@ focused(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-focused(b?: boolean): On--><!--Device-On-focused(b?: boolean): On-End-->
 
@@ -459,7 +459,7 @@ hint(val: string, pattern?: MatchPattern): On
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-hint(val: string, pattern?: MatchPattern): On--><!--Device-On-hint(val: string, pattern?: MatchPattern): On-End-->
 
@@ -495,6 +495,8 @@ import { MatchPattern, On, ON } from '@kit.TestKit';
 let on: On = ON.hint('welcome', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的提示文本属性。
 ```
 
+<a id="id1"></a>
+
 ## id
 
 ```TypeScript
@@ -505,7 +507,7 @@ id(id: string): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-id(id: string): On--><!--Device-On-id(id: string): On-End-->
 
@@ -540,7 +542,7 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
 ```
 
-<a id="id-1"></a>
+<a id="id2"></a>
 
 ## id
 
@@ -552,7 +554,7 @@ id(id: string, pattern: MatchPattern): On
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-id(id: string, pattern: MatchPattern): On--><!--Device-On-id(id: string, pattern: MatchPattern): On-End-->
 
@@ -598,7 +600,7 @@ inWindow(bundleName: string): On
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-inWindow(bundleName: string): On--><!--Device-On-inWindow(bundleName: string): On-End-->
 
@@ -643,7 +645,7 @@ isAfter(on: On): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-isAfter(on: On): On--><!--Device-On-isAfter(on: On): On-End-->
 
@@ -689,7 +691,7 @@ isBefore(on: On): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-isBefore(on: On): On--><!--Device-On-isBefore(on: On): On-End-->
 
@@ -735,7 +737,7 @@ longClickable(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-longClickable(b?: boolean): On--><!--Device-On-longClickable(b?: boolean): On-End-->
 
@@ -786,7 +788,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-originalText(text: string, pattern?: MatchPattern): On--><!--Device-On-originalText(text: string, pattern?: MatchPattern): On-End-->
 
@@ -832,7 +834,7 @@ scrollable(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-scrollable(b?: boolean): On--><!--Device-On-scrollable(b?: boolean): On-End-->
 
@@ -877,7 +879,7 @@ selected(b?: boolean): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-selected(b?: boolean): On--><!--Device-On-selected(b?: boolean): On-End-->
 
@@ -928,7 +930,7 @@ text(txt: string, pattern?: MatchPattern): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-text(txt: string, pattern?: MatchPattern): On--><!--Device-On-text(txt: string, pattern?: MatchPattern): On-End-->
 
@@ -964,6 +966,8 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
 ```
 
+<a id="type1"></a>
+
 ## type
 
 ```TypeScript
@@ -974,7 +978,7 @@ type(tp: string): On
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-type(tp: string): On--><!--Device-On-type(tp: string): On-End-->
 
@@ -1009,7 +1013,7 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
-<a id="type-1"></a>
+<a id="type2"></a>
 
 ## type
 
@@ -1021,7 +1025,7 @@ type(tp: string, pattern: MatchPattern): On
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-type(tp: string, pattern: MatchPattern): On--><!--Device-On-type(tp: string, pattern: MatchPattern): On-End-->
 
@@ -1067,7 +1071,7 @@ within(on: On): On
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-within(on: On): On--><!--Device-On-within(on: On): On-End-->
 
@@ -1115,7 +1119,7 @@ withinComponent(com: Component): On
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-On-withinComponent(com: Component): On--><!--Device-On-withinComponent(com: Component): On-End-->
 

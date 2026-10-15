@@ -42,9 +42,11 @@ Value range: [0, 65535), where higher values indicate stronger pressure.
 size: number
 ```
 
-Size of the contact area size between the finger and screen in the touch event corresponding to the historical point.
+Size of the touch area between the finger and the screen in the touch event corresponding to the historical point.
 
 Default value: **0**
+
+Value range: [0, +∞).
 
 **Type:** number
 

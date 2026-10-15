@@ -32,8 +32,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md) | 创建一个设备管理实例，是分布式设备管理方法的调用入口。该实例用于获取可信设备列表以及本地设备的名称、类型、标识和网络标识等信息。当设备管理实例不再使用时，应调用releaseDeviceManager释放该实例，避免资源泄漏。 |
-| [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md) | 设备管理实例不再使用后，通过该方法释放DeviceManager实例。 |
+| [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md#createdevicemanager) | 创建一个设备管理实例，是分布式设备管理方法的调用入口。该实例用于获取可信设备列表以及本地设备的名称、类型、标识和网络标识等信息。当设备管理实例不再使用时，应调用releaseDeviceManager释放该实例，避免资源泄漏。 |
+| [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md#releasedevicemanager) | 设备管理实例不再使用后，通过该方法释放DeviceManager实例。 |
 
 ### 接口
 

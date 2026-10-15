@@ -49,6 +49,8 @@ stable.
 import { http } from '@kit.NetworkKit';
 ```
 
+<a id="delete1"></a>
+
 ## delete
 
 ```TypeScript
@@ -59,7 +61,7 @@ Disables the cache and deletes the data in it. This API uses an asynchronous cal
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpResponseCache-delete(callback: AsyncCallback<void>): void--><!--Device-HttpResponseCache-delete(callback: AsyncCallback<void>): void-End-->
 
@@ -109,7 +111,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 });
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -121,7 +123,7 @@ Disables the cache and deletes the data in it. This API uses a promise to return
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpResponseCache-delete(): Promise<void>--><!--Device-HttpResponseCache-delete(): Promise<void>-End-->
 
@@ -209,6 +211,8 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 });
 ```
 
+<a id="flush1"></a>
+
 ## flush
 
 ```TypeScript
@@ -219,7 +223,7 @@ Flushes data in the cache to the file system so that the cached data can be acce
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpResponseCache-flush(callback: AsyncCallback<void>): void--><!--Device-HttpResponseCache-flush(callback: AsyncCallback<void>): void-End-->
 
@@ -237,7 +241,7 @@ Flushes data in the cache to the file system so that the cached data can be acce
 
 flush(callback: AsyncCallback<void>): void
 
-Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses an asynchronous callback to return the result. Cached data includes the response header (header), response body (result), cookies, request time (requestTime), and response time (responseTime).
+Writes the data in the cache to the file system so that all cached data can be accessed in the next HTTP request. This API uses an asynchronous callback to return the result. The cached data includes the response header, response body (result), cookies, request time (requestTime), and response time (responseTime).
 
 Atomic service API: This API can be used in atomic services since API version 11.
 
@@ -268,7 +272,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
 });
 ```
 
-<a id="flush-1"></a>
+<a id="flush2"></a>
 
 ## flush
 
@@ -298,7 +302,7 @@ Flushes data in the cache to the file system so that the cached data can be acce
 
 flush(): Promise<void>
 
-Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
+Writes the data in the cache to the file system so that all cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
 
 Atomic service API: This API can be used in atomic services since API version 11.
 
@@ -316,7 +320,7 @@ let promise = httpRequest.request("EXAMPLE_URL");
 
 promise.then((data: http.HttpResponse) => {
   httpResponseCache.flush().then(() => {
-    console.error('flush success');
+    console.info('flush success');
   }).catch((err: BusinessError) => {
     console.error('flush fail');
   });

@@ -56,6 +56,7 @@ Changes the confirmation state of a share invitation. This API uses a promise to
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;void&gt;&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -77,6 +78,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## changePrivilege
 
@@ -114,6 +117,7 @@ Changes the privilege (operation permissions) on the shared data. This API uses 
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -145,6 +149,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## confirmInvitation
 
@@ -182,6 +188,7 @@ Confirms the invitation for a share. This API uses a promise to return the resul
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;string&gt;&gt; | Promise used to return the shared resource ID. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -204,6 +211,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## exit
 
@@ -235,6 +244,7 @@ Exits a device-cloud share. This API uses a promise to return the result. The ap
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;void&gt;&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -256,6 +266,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## queryParticipants
 
@@ -291,6 +303,7 @@ Queries the participants of a share. This API uses a promise to return the resul
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt; | Promise used to return the participants obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -343,6 +356,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 }
 ```
 
+<!--DelEnd-->
+
 ## queryParticipantsByInvitation
 
 ```TypeScript
@@ -377,6 +392,7 @@ Queries the participants of a share based on the invitation code. This API uses 
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt; | Promise used to return the participants obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -429,6 +445,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 }
 ```
 
+<!--DelEnd-->
+
 ## share
 
 ```TypeScript
@@ -465,6 +483,7 @@ Shares data. This API uses a promise to return the result. The application that 
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -496,6 +515,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## unshare
 
@@ -533,6 +554,7 @@ Unshares data. This API uses a promise to return the result. The application, sh
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -564,3 +586,5 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->

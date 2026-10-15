@@ -12,6 +12,22 @@ declare enum SharedTransitionEffectType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## Exchange
+
+```TypeScript
+Exchange
+```
+
+将源页面元素移动到目标页面元素的位置并适当缩放。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SharedTransitionEffectType-Exchange--><!--Device-SharedTransitionEffectType-Exchange-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## Static
 
 ```TypeScript
@@ -27,21 +43,5 @@ Static
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SharedTransitionEffectType-Static--><!--Device-SharedTransitionEffectType-Static-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Exchange
-
-```TypeScript
-Exchange
-```
-
-将源页面元素移动到目标页面元素的位置并适当缩放。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-SharedTransitionEffectType-Exchange--><!--Device-SharedTransitionEffectType-Exchange-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

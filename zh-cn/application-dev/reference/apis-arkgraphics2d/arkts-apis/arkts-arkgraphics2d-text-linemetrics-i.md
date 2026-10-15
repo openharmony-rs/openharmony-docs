@@ -30,7 +30,7 @@ ascent: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-ascent: double--><!--Device-LineMetrics-ascent: double-End-->
 
@@ -48,7 +48,7 @@ baseline: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-baseline: double--><!--Device-LineMetrics-baseline: double-End-->
 
@@ -66,7 +66,7 @@ descent: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-descent: double--><!--Device-LineMetrics-descent: double-End-->
 
@@ -84,7 +84,7 @@ endIndex: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-endIndex: int--><!--Device-LineMetrics-endIndex: int-End-->
 
@@ -102,7 +102,7 @@ height: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-height: double--><!--Device-LineMetrics-height: double-End-->
 
@@ -120,7 +120,7 @@ left: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-left: double--><!--Device-LineMetrics-left: double-End-->
 
@@ -138,7 +138,7 @@ lineNumber: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-lineNumber: int--><!--Device-LineMetrics-lineNumber: int-End-->
 
@@ -156,7 +156,7 @@ runMetrics: Map<number, RunMetrics>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-runMetrics: Map<int, RunMetrics>--><!--Device-LineMetrics-runMetrics: Map<int, RunMetrics>-End-->
 
@@ -174,7 +174,7 @@ startIndex: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-startIndex: int--><!--Device-LineMetrics-startIndex: int-End-->
 
@@ -192,7 +192,7 @@ topHeight: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-topHeight: double--><!--Device-LineMetrics-topHeight: double-End-->
 
@@ -210,7 +210,7 @@ width: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-LineMetrics-width: double--><!--Device-LineMetrics-width: double-End-->
 

@@ -60,6 +60,7 @@ Sends session data to the target device. The target device must be a trusted dev
 | [2004003](../errorcode-conversation.md#2004003-failure-to-send-data) | Failed to send data. |
 | [2004004](../errorcode-conversation.md#2004004-peer-confirmation-timeout) | Timeout while waiting for acknowledgement from the remote side. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -84,3 +85,5 @@ try {
   console.error(`postConversationData errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
+
+<!--DelEnd-->

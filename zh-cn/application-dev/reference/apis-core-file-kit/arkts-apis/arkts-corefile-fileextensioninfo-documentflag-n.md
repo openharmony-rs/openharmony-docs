@@ -1,4 +1,4 @@
-# DocumentFlag(公共文件访问与管理属性信息)
+# DocumentFlag（公共文件访问与管理属性信息）
 
 ```TypeScript
 namespace DocumentFlag
@@ -9,8 +9,6 @@ namespace DocumentFlag
 **起始版本：** 9
 
 **废弃版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-fileExtensionInfo-namespace DocumentFlag--><!--Device-fileExtensionInfo-namespace DocumentFlag-End-->
 
@@ -31,8 +29,8 @@ import { fileExtensionInfo } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [REPRESENTS_FILE](arkts-corefile-documentflag-con-sys.md#represents_file) | 代表文件。 |
 | [REPRESENTS_DIR](arkts-corefile-documentflag-con-sys.md#represents_dir) | 代表目录。 |
+| [REPRESENTS_FILE](arkts-corefile-documentflag-con-sys.md#represents_file) | 代表文件。 |
 | [SUPPORTS_READ](arkts-corefile-documentflag-con-sys.md#supports_read) | 此设备支持读。 |
 | [SUPPORTS_WRITE](arkts-corefile-documentflag-con-sys.md#supports_write) | 此设备支持写。 |
 <!--DelEnd-->

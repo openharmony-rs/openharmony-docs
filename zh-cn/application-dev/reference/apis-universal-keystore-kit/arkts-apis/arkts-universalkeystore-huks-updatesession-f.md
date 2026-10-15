@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="updatesession1"></a>
+
 ## updateSession
 
 ```TypeScript
@@ -38,8 +40,8 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
@@ -60,7 +62,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 
-<a id="updatesession-1"></a>
+<a id="updatesession2"></a>
 
 ## updateSession
 
@@ -96,8 +98,8 @@ Updates the key operation by segment. This API uses an asynchronous callback to 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
@@ -114,7 +116,7 @@ Updates the key operation by segment. This API uses an asynchronous callback to 
 | [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 
-<a id="updatesession-2"></a>
+<a id="updatesession3"></a>
 
 ## updateSession
 
@@ -152,8 +154,8 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |

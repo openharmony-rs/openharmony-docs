@@ -12,19 +12,23 @@ Enumerates the identity authentication types. This enum defines the authenticati
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## PIN
+## COMPANION_DEVICE
 
 ```TypeScript
-PIN = 1
+COMPANION_DEVICE = 64
 ```
 
-PIN authentication. It indicates that the user enters the PIN to complete authentication. PIN authentication has a high security level of ATL4. It is applicable to scenarios requiring high security, such as payment and confirmation of important operations. However, users need to manually enter information, which is not as convenient as biometric authentication.
+Companion device authentication. It indicates that the user completes authentication through a worn companion device. Companion device authentication supports multiple authentication trust levels. For details about the classification principle, see [Principles for Classifying Biometric Authentication Trust Levels](../../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels).
 
-**Since:** 10
+**Note:** Concurrent authentication with other authentication types (**PIN**\/**FACE**\/**FINGERPRINT**) is not supported.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Since:** 26.0.0
 
-<!--Device-UserAuthType-PIN = 1--><!--Device-UserAuthType-PIN = 1-End-->
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-UserAuthType-COMPANION_DEVICE = 64--><!--Device-UserAuthType-COMPANION_DEVICE = 64-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -34,11 +38,11 @@ PIN authentication. It indicates that the user enters the PIN to complete authen
 FACE = 2
 ```
 
-Face authentication. It indicates that the system checks whether the facial features of a user match the enrolled face. Face authentication supports different levels of liveness detection. For details about the classification principles, see [Principles for Classifying Biometric Authentication Trust Levels](../../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels). The advantage is convenient user experience, but the disadvantage is that there are certain requirements on the device and lighting conditions.
+Face authentication. It indicates that the user completes authentication through face recognition, and the system verifies the match between the user's facial features and the enrolled face. Face authentication supports different levels of liveness detection. For details about the classification principle, see [Principles for Classifying Biometric Authentication Trust Levels](../../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels). The advantage is convenient user experience, but the disadvantage is that there are certain requirements on the device and lighting conditions.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-UserAuthType-FACE = 2--><!--Device-UserAuthType-FACE = 2-End-->
 
@@ -50,30 +54,28 @@ Face authentication. It indicates that the system checks whether the facial feat
 FINGERPRINT = 4
 ```
 
-Fingerprint authentication. It indicates that the user is authenticated through the fingerprint sensor. The system checks whether the user fingerprint matches the enrolled fingerprint. Fingerprint authentication supports multiple trust levels. For details about the classification principles, see [Principles for Classifying Biometric Authentication Trust Levels](../../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels). It is applicable to medium-security scenarios. The advantage is that the operation is simple and quick. The disadvantage is that the device must be equipped with a fingerprint sensor, and wet hands or fingerprint abrasion may affect the recognition effect.
+Fingerprint authentication. It indicates that the user completes authentication through the fingerprint sensor, and the system verifies the match between the user's fingerprint features and the enrolled fingerprint. Fingerprint authentication supports multiple authentication trust levels. For details about the classification principle, see [Principles for Classifying Biometric Authentication Trust Levels](../../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels). It is applicable to medium-security scenarios. The advantage is that the operation is simple and quick. The disadvantage is that the device must be equipped with a fingerprint sensor, and wet hands or fingerprint abrasion may affect the recognition effect.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-UserAuthType-FINGERPRINT = 4--><!--Device-UserAuthType-FINGERPRINT = 4-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## COMPANION_DEVICE
+## PIN
 
 ```TypeScript
-COMPANION_DEVICE = 64
+PIN = 1
 ```
 
-Companion device authentication. It indicates that the user completes the authentication through the companion device. Companion device authentication supports multiple trust levels. For details about the classification principles, see [Principles for Classifying Biometric Authentication Trust Levels](../../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels).
+PIN authentication. It indicates that the user enters the PIN to complete authentication. PIN authentication offers high security, with an authentication trust level up to ATL4, and is suitable for high-security scenarios such as payment and important operation confirmation. The user needs to enter the password manually, which is less convenient than biometric authentication.
 
-**Since:** 26.0.0
+**Since:** 10
 
-**Model restriction:** This API can be used only in the stage model.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
-
-<!--Device-UserAuthType-COMPANION_DEVICE = 64--><!--Device-UserAuthType-COMPANION_DEVICE = 64-End-->
+<!--Device-UserAuthType-PIN = 1--><!--Device-UserAuthType-PIN = 1-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

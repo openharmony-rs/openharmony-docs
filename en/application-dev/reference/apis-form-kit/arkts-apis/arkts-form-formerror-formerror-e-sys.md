@@ -6,8 +6,6 @@ enum FormError
 
 Error of form.
 
-@enum { int }
-
 **Since:** 8
 
 <!--Device-formError-enum FormError--><!--Device-formError-enum FormError-End-->

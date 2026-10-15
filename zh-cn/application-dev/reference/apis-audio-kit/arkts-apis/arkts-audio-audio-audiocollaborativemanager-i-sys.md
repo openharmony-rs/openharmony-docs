@@ -57,6 +57,7 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -87,6 +88,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## isCollaborativePlaybackSupported
 
 ```TypeScript
@@ -115,6 +118,7 @@ isCollaborativePlaybackSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -129,6 +133,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isCollaborativePlaybackSupportedForDevice
 
@@ -201,8 +207,9 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes: 1. The specified device is not an A2DP device. 2. The specified device is not connected. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes:                                                             1. The specified device is not an A2DP device.                                                             2. The specified device is not connected. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -231,3 +238,5 @@ audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescrip
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->

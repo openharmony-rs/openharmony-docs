@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function onRefueling(callback: Callback<RefuelingInfo>): void
 ```
 
-开启加油感知，订阅加油感知结果。如果不支持该功能，将不回调。支持的能力可以通过getAllCapacityList方法获取。
+订阅补能状态感知结果。设备不支持该能力时抛出34000002错误码，可调用 getAllCapabilityList查询设备可用能力。通过callback异步返回数据。
 
 **起始版本：** 26.0.1
 
@@ -30,12 +30,12 @@ function onRefueling(callback: Callback<RefuelingInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | 是 | 获取对应能力数据的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | 是 | 回调函数，用于返回补能识别数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |

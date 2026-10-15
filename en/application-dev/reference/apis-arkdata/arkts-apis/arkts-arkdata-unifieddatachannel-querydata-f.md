@@ -6,6 +6,8 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
+<a id="querydata1"></a>
+
 ## queryData
 
 ```TypeScript
@@ -18,7 +20,7 @@ Queries data in the UDMF public data channel. This API uses an asynchronous call
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-unifiedDataChannel-function queryData(options: Options, callback: AsyncCallback<Array<UnifiedData>>): void--><!--Device-unifiedDataChannel-function queryData(options: Options, callback: AsyncCallback<Array<UnifiedData>>): void-End-->
 
@@ -72,7 +74,7 @@ try {
 ```
 
 
-<a id="querydata-1"></a>
+<a id="querydata2"></a>
 
 ## queryData
 
@@ -86,7 +88,7 @@ Queries data in the UDMF public data channel. This API uses a promise to return 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-unifiedDataChannel-function queryData(options: Options): Promise<Array<UnifiedData>>--><!--Device-unifiedDataChannel-function queryData(options: Options): Promise<Array<UnifiedData>>-End-->
 

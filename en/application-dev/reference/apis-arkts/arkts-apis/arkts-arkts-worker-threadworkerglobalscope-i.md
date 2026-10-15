@@ -212,6 +212,8 @@ Called when the Worker thread receives a message that cannot be deserialized. Th
 | [10200004](../errorcode-utils.md#10200004-worker-instance-is-not-running) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-api-not-supported-in-the-worker-thread) | The called API is not supported in the worker thread. |
 
+<a id="postmessage1"></a>
+
 ## postMessage
 
 ```TypeScript
@@ -266,7 +268,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
-<a id="postmessage-1"></a>
+<a id="postmessage2"></a>
 
 ## postMessage
 

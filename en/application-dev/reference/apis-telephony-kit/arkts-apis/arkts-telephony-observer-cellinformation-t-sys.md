@@ -6,6 +6,8 @@ type CellInformation = radio.CellInformation
 
 Describes current cell information.
 
+**Type:** [radio.CellInformation](arkts-telephony-radio-cellinformation-i.md)
+
 **Since:** 6
 
 <!--Device-observer-type CellInformation = radio.CellInformation--><!--Device-observer-type CellInformation = radio.CellInformation-End-->
@@ -13,5 +15,3 @@ Describes current cell information.
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **System API:** This is a system API.
-
-**Type:** [radio.CellInformation](arkts-telephony-radio-cellinformation-i.md)

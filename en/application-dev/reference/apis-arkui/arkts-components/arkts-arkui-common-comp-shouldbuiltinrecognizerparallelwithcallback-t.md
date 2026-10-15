@@ -27,4 +27,4 @@ Represents the callback used to set the parallel relationship between built-in g
 
 | Type | Description |
 | --- | --- |
-| [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) | Gesture recognizer that is bound in parallel with the current recognizer. |
+| [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) | Gesture recognizer that establishes a parallel relationship with the current recognizer; **undefined** indicates that no parallel relationship is established. |

@@ -42,6 +42,7 @@ function listFile(): Array<FileInfo>
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,3 +57,5 @@ for(let i = 0; i < fileinfos.length; i++){
   console.info('ctime: ' + fileinfos[i].ctime);
 }
 ```
+
+<!--DelEnd-->

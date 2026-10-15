@@ -4,7 +4,7 @@
 export class PageSwitchActionProposal extends TargetedGestureProposal
 ```
 
-Smart gesture page switch action handling. The default direction is forward page switching, including right and down. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this typetriggers a page switching operation on the target component.
+Handles the smart gesture page turning action. The default direction is forward page turning, including rightward and downward. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this typetriggers the page turning operation of the target component.
 
 **Inheritance/Implementation:** PageSwitchActionProposal extends [TargetedGestureProposal](arkts-arkui-arkui-uicontext-targetedgestureproposal-c.md)
 
@@ -29,7 +29,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 constructor(node: FrameNode, pageCount: number)
 ```
 
-Constructor for the smart gesture page switch action handling.
+Constructor for the smart gesture page turning action handling.
 
 **Since:** 26.0.0
 
@@ -45,8 +45,8 @@ Constructor for the smart gesture page switch action handling.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Target node that responds to the page switch action. |
-| pageCount | number | Yes | Number of pages to switch.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: pages. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Target node that responds to the page turning action. |
+| pageCount | number | Yes | Number of pages to turn.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: page. |
 
 ## pageCount
 
@@ -54,11 +54,11 @@ Constructor for the smart gesture page switch action handling.
 pageCount: number
 ```
 
-Number of pages to switch in the smart gesture.
+Number of pages for the smart gesture page turning.
 
 Value range: [0, +∞). Values less than 0 are treated as 0.
 
-Unit: pages.
+Unit: page.
 
 **Type:** number
 

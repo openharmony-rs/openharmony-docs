@@ -4,7 +4,7 @@
 export declare class ThemeControl
 ```
 
-Class ThemeControl provides the Theme management for whole Ability and pages.
+Implements a **ThemeControl** object to apply the custom theme to the components in the application.
 
 **Since:** 12
 
@@ -24,10 +24,7 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 static setDefaultTheme(theme: CustomTheme): void
 ```
 
-Sets the default Theme:
-
-- for whole Ability when invoked from the Ability level code.  
-- for the ArkUI page and for later opened pages when invoked at the ArkUI page level.
+Sets a custom theme as the default, application-level theme, applying it to all components within the application. When using this API within a page, ensure that the API is called before the page's **build** API executes. When using this API within a UIAbility, ensure that the API is called in the callback after windowStage. [loadContent](arkts-arkui-window-windowstage-i.md#loadcontent1) during the **onWindowStageCreate** lifecycle phase. For a complete implementation example, see [Setting Custom Theme Colors for Application Components](../../../ui/theme_skinning.md#setting-custom-theme-colors-for-application-components).
 
 **Since:** 12
 
@@ -43,4 +40,4 @@ Sets the default Theme:
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| theme | [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | Yes |  |
+| theme | [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | Yes | Defines a custom theme object. |

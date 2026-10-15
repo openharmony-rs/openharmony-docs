@@ -6,17 +6,17 @@ declare class TextTimerController
 
 TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组件仅支持绑定一个控制器，组件创建完成后相关指令才能被调用。一个TextTimerController只能控制最后一个绑定此TextTimerController的TextTimer组件。
 
-## 导入对象
-
-``` ts
-textTimerController: TextTimerController = new TextTimerController();
-```
-
 **起始版本：** 8
 
 <!--Device-unnamed-declare class TextTimerController--><!--Device-unnamed-declare class TextTimerController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+``` ts
+textTimerController: TextTimerController = new TextTimerController();
+```
 
 ## constructor
 

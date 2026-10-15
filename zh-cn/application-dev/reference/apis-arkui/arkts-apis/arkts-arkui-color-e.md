@@ -12,26 +12,6 @@ declare enum Color
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## White
-
-```TypeScript
-White
-```
-
-![white](../../../reference/apis-arkui/arkui-ts/figures/white.png)
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Color-White--><!--Device-Color-White-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Black
 
 ```TypeScript
@@ -212,26 +192,6 @@ Red
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Yellow
-
-```TypeScript
-Yellow
-```
-
-![yellow](../../../reference/apis-arkui/arkui-ts/figures/yellow.png)
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Color-Yellow--><!--Device-Color-Yellow-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Transparent
 
 ```TypeScript
@@ -249,5 +209,45 @@ Transparent
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-Color-Transparent--><!--Device-Color-Transparent-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## White
+
+```TypeScript
+White
+```
+
+![white](../../../reference/apis-arkui/arkui-ts/figures/white.png)
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Color-White--><!--Device-Color-White-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Yellow
+
+```TypeScript
+Yellow
+```
+
+![yellow](../../../reference/apis-arkui/arkui-ts/figures/yellow.png)
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Color-Yellow--><!--Device-Color-Yellow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

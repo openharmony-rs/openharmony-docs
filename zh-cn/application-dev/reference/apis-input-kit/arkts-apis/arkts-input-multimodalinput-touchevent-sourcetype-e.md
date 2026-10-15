@@ -12,20 +12,6 @@ export declare enum SourceType
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## TOUCH_SCREEN
-
-```TypeScript
-TOUCH_SCREEN = 0
-```
-
-触摸屏。
-
-**起始版本：** 9
-
-<!--Device-SourceType-TOUCH_SCREEN = 0--><!--Device-SourceType-TOUCH_SCREEN = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
 ## PEN
 
 ```TypeScript
@@ -51,5 +37,19 @@ TOUCH_PAD = 2
 **起始版本：** 9
 
 <!--Device-SourceType-TOUCH_PAD = 2--><!--Device-SourceType-TOUCH_PAD = 2-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## TOUCH_SCREEN
+
+```TypeScript
+TOUCH_SCREEN = 0
+```
+
+触摸屏。
+
+**起始版本：** 9
+
+<!--Device-SourceType-TOUCH_SCREEN = 0--><!--Device-SourceType-TOUCH_SCREEN = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core

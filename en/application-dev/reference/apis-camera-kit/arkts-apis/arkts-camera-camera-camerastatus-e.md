@@ -22,25 +22,9 @@ A camera appears.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraStatus-CAMERA_STATUS_APPEAR = 0--><!--Device-CameraStatus-CAMERA_STATUS_APPEAR = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-## CAMERA_STATUS_DISAPPEAR
-
-```TypeScript
-CAMERA_STATUS_DISAPPEAR = 1
-```
-
-The camera disappears.
-
-**Since:** 10
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
-
-<!--Device-CameraStatus-CAMERA_STATUS_DISAPPEAR = 1--><!--Device-CameraStatus-CAMERA_STATUS_DISAPPEAR = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -54,9 +38,25 @@ The camera is available.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraStatus-CAMERA_STATUS_AVAILABLE = 2--><!--Device-CameraStatus-CAMERA_STATUS_AVAILABLE = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+## CAMERA_STATUS_DISAPPEAR
+
+```TypeScript
+CAMERA_STATUS_DISAPPEAR = 1
+```
+
+The camera disappears.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-CameraStatus-CAMERA_STATUS_DISAPPEAR = 1--><!--Device-CameraStatus-CAMERA_STATUS_DISAPPEAR = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -70,7 +70,7 @@ The camera is unavailable.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraStatus-CAMERA_STATUS_UNAVAILABLE = 3--><!--Device-CameraStatus-CAMERA_STATUS_UNAVAILABLE = 3-End-->
 

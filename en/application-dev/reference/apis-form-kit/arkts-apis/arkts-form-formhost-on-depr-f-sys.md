@@ -36,3 +36,16 @@ Subscribes to widget uninstall events. This API uses an asynchronous callback to
 | --- | --- | --- | --- |
 | type | 'formUninstall' | Yes | Event type. The value **'formUninstall'** indicates a widget uninstallation event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | Yes | Callback used to return the widget ID. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+formHost.on('formUninstall', (formId: string) => {
+  console.info(`formHost on formUninstall, formId: ${formId}`);
+});
+```
+
+<!--DelEnd-->

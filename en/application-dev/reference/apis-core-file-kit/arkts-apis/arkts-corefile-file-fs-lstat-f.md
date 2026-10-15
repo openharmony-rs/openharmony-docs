@@ -48,7 +48,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 | 13900042 | Unknown error |
 
 
-<a id="lstat-1"></a>
+<a id="lstat2"></a>
 
 ## lstat
 

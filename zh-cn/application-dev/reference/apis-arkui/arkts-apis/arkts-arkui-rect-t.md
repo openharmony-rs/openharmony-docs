@@ -6,6 +6,8 @@ export type Rect = common2D.Rect
 
 用于设置矩形的形状。
 
+**类型：** [common2D.Rect](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-common2d-rect-i.md)
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type Rect = common2D.Rect
 <!--Device-unnamed-export type Rect = common2D.Rect--><!--Device-unnamed-export type Rect = common2D.Rect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [common2D.Rect](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-common2d-rect-i.md)

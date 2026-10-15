@@ -40,7 +40,7 @@ Destroys the **Server** object to release related resources. To interact with th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Examples**
 
@@ -92,7 +92,7 @@ Unregisters the callback listener for **connectionAccepted** event. This API mus
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -151,7 +151,7 @@ Unregisters the callback listener for **serverStopped** event. This API must be 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -210,7 +210,7 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -269,7 +269,7 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
 **Examples**
@@ -321,7 +321,7 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390202](../errorcode-link-enhance.md#32390202-number-of-services-exceeding-the-limit) | The number of servers exceeds the limit. |
 | [32390300](../errorcode-link-enhance.md#32390300-internal-error) | Internal error. |
 
@@ -367,7 +367,7 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Examples**
 

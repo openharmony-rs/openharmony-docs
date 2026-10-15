@@ -30,7 +30,7 @@ Creates a [PerfTest](arkts-test-test-perftest-perftest-c.md) object and returns 
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest--><!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest-End-->
 
@@ -57,7 +57,7 @@ Creates a [PerfTest](arkts-test-test-perftest-perftest-c.md) object and returns 
 | [32400001](../errorcode-perftest.md#32400001-initialization-failed) | Initialization failed. |
 | [32400002](../errorcode-perftest.md#32400002-internal-error) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 | [32400003](../errorcode-perftest.md#32400003-parameter-verification-failed) | Parameter verification failed. |
-| [32400007](../errorcode-perftest.md#32400007-api-does-not-support-concurrent-calls) | The API does not support concurrent calls. @static |
+| [32400007](../errorcode-perftest.md#32400007-api-does-not-support-concurrent-calls) | The API does not support concurrent calls. |
 
 **Examples**
 
@@ -98,7 +98,7 @@ Destroys the **PerfTest** object to release the resources occupied by the object
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTest-destroy(): void--><!--Device-PerfTest-destroy(): void-End-->
 
@@ -147,7 +147,7 @@ Obtains the measurement data of a specified performance metric. This method must
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult--><!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult-End-->
 
@@ -210,7 +210,7 @@ Runs a performance test, iteratively executes test code segments based on the co
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTest-run(): Promise<void>--><!--Device-PerfTest-run(): Promise<void>-End-->
 

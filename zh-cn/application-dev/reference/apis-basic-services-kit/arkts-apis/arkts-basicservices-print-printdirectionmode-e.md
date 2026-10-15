@@ -26,20 +26,6 @@ DIRECTION_MODE_AUTO = 0
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## DIRECTION_MODE_PORTRAIT
-
-```TypeScript
-DIRECTION_MODE_PORTRAIT = 1
-```
-
-表示纵向打印。
-
-**起始版本：** 11
-
-<!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1--><!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## DIRECTION_MODE_LANDSCAPE
 
 ```TypeScript
@@ -51,5 +37,19 @@ DIRECTION_MODE_LANDSCAPE = 2
 **起始版本：** 11
 
 <!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2--><!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## DIRECTION_MODE_PORTRAIT
+
+```TypeScript
+DIRECTION_MODE_PORTRAIT = 1
+```
+
+表示纵向打印。
+
+**起始版本：** 11
+
+<!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1--><!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

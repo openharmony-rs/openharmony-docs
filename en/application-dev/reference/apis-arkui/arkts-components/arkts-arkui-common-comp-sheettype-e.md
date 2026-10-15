@@ -18,7 +18,7 @@ Defines the sheet type.
 BOTTOM = 0
 ```
 
-Defines bottom sheet type.
+Bottom dialog box.
 
 **Since:** 11
 
@@ -36,7 +36,7 @@ Defines bottom sheet type.
 CENTER = 1
 ```
 
-Defines center sheet type.
+Center dialog box.
 
 **Since:** 11
 
@@ -48,13 +48,31 @@ Defines center sheet type.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## CONTENT_COVER
+
+```TypeScript
+CONTENT_COVER = 4
+```
+
+Full-screen dialog box.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SheetType-CONTENT_COVER = 4--><!--Device-SheetType-CONTENT_COVER = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## POPUP
 
 ```TypeScript
 POPUP = 2
 ```
 
-Defines popup sheet type.
+Follow-hand dialog box. The follow-hand dialog box panel does not support follow-hand sliding, and swiping down does not close the panel.
 
 **Since:** 11
 
@@ -72,7 +90,7 @@ Defines popup sheet type.
 SIDE = 3
 ```
 
-Defines side sheet type.
+Side dialog box.
 
 **Since:** 20
 
@@ -81,23 +99,5 @@ Defines side sheet type.
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-SheetType-SIDE = 3--><!--Device-SheetType-SIDE = 3-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## CONTENT_COVER
-
-```TypeScript
-CONTENT_COVER = 4
-```
-
-Defines content cover type.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-SheetType-CONTENT_COVER = 4--><!--Device-SheetType-CONTENT_COVER = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

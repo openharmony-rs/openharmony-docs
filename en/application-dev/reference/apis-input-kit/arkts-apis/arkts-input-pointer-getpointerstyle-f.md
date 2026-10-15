@@ -6,6 +6,8 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="getpointerstyle1"></a>
+
 ## getPointerStyle
 
 ```TypeScript
@@ -31,7 +33,7 @@ Obtains the mouse pointer style type of a specified window. This API can obtain 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -78,7 +80,7 @@ struct Index {
 ```
 
 
-<a id="getpointerstyle-1"></a>
+<a id="getpointerstyle2"></a>
 
 ## getPointerStyle
 
@@ -110,7 +112,7 @@ Obtains the mouse pointer style type. This API can obtain only the mouse pointer
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

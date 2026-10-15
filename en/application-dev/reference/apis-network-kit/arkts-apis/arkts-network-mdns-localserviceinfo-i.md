@@ -96,7 +96,7 @@ MDNS service name.
 serviceType: string
 ```
 
-MDNS service type. The value is in the format of **_&lt;name&gt;.&lt;_tcp/_udp&gt;**, where **name** contains a maximum of 63 characters excluding periods (.).
+MDNS service type. The value is in the format of **_<name>.&lt;_tcp/_udp&gt;**, where **name** contains a maximum of 63 characters excluding periods (.).
 
 **Type:** string
 

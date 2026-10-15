@@ -6,6 +6,8 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
+<a id="deletedisposedstatus1"></a>
+
 ## deleteDisposedStatus
 
 ```TypeScript
@@ -28,8 +30,8 @@ function deleteDisposedStatus(appId: string, callback: AsyncCallback<void>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br> **说明：** <br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](arkts-ability-bundleinfo-signatureinfo-i.md)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置处置状态成功时，err返回null；否则回调函数返回具体错误对象。 |
+| appId | string | 是 | 要删除处置状态的应用的appId或appIdentifier。使用appId设置的处置状态只能通过appId删除，使用appIdentifier设置的同理。<br> **说明：** <br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除处置状态成功时，err返回null；否则回调函数返回具体错误对象。 |
 
 **错误码：**
 
@@ -41,6 +43,7 @@ function deleteDisposedStatus(appId: string, callback: AsyncCallback<void>): voi
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="deletedisposedstatus-1"></a>
+
+<a id="deletedisposedstatus2"></a>
 
 ## deleteDisposedStatus
 
@@ -71,7 +76,7 @@ try {
 function deleteDisposedStatus(appId: string): Promise<void>
 ```
 
-删除应用的处置状态。使用promise异步回调，成功返回null，失败返回对应错误信息。
+删除应用的处置状态。使用Promise异步回调，成功返回null，失败返回对应错误信息。
 
 **起始版本：** 9
 
@@ -87,7 +92,7 @@ function deleteDisposedStatus(appId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br> **说明：** <br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](arkts-ability-bundleinfo-signatureinfo-i.md)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
+| appId | string | 是 | 要删除处置状态的应用的appId或appIdentifier。使用appId设置的处置状态只能通过appId删除，使用appIdentifier设置的同理。<br> **说明：** <br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
 
 **返回值：**
 
@@ -105,6 +110,7 @@ function deleteDisposedStatus(appId: string): Promise<void>
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,3 +132,5 @@ try {
   console.error('deleteDisposedStatus failed ' + message);
 }
 ```
+
+<!--DelEnd-->

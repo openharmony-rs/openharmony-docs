@@ -12,7 +12,7 @@ import { dragController } from '@kit.ArkUI';
 function createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: DragInfo): DragAction
 ```
 
-Initiates a drag action, with the object to be dragged and the drag information passed in. This API uses a promise to return the result.
+Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the drag handle point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation.
 
 > **NOTE:** 
 > 
@@ -24,7 +24,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 **Deprecated since:** 18
 
-**Substitutes:** createDragAction
+**Substitutes:** [createDragAction](arkts-arkui-arkui-uicontext-dragcontroller-c.md#createdragaction)
 
 **Model restriction:** This API can be used only in the stage model.
 

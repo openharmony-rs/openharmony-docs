@@ -4,7 +4,7 @@
 interface FloatingTabBarStyle
 ```
 
-Provides an interface for the options for the floating bar mode.
+Defines the floating style of the tab bar.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,11 @@ Provides an interface for the options for the floating bar mode.
 adaptToHandedness?: boolean
 ```
 
-Whether to adapt to the handedness.
+Whether to follow the left-right layout of the operating hand.
+
+The value **true** means to follow the left-right layout of the operating hand; the value **false** means not to follow the left-right layout of the operating hand.
+
+Default value: **false**
 
 **Type:** boolean
 
@@ -40,7 +44,11 @@ Whether to adapt to the handedness.
 barBottomMargin?: Length
 ```
 
-The distance between the bar and the bottom of tab. It cannot be set in percentage.
+Distance from the tab bar to the bottom of the **Tabs**.
+
+Value range: [0, +∞)
+
+Default value: 28 vp.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -60,7 +68,11 @@ The distance between the bar and the bottom of tab. It cannot be set in percenta
 barSideMargin?: Length
 ```
 
-The width of the left and right margins of the bar. It cannot be set in percentage.
+Left and right margins in the default width calculation rule of the tab bar.
+
+Value range: [0, +∞)
+
+When the **Tabs** width is less than 600 vp, the default value is 16 vp. When the **Tabs** width is between 600 vp and 840 vp, the default value is 24 vp. When the **Tabs** width is greater than 840 vp, the default value is 32 vp.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -80,7 +92,7 @@ The width of the left and right margins of the bar. It cannot be set in percenta
 barWidth?: FloatingTabBarWidth
 ```
 
-The bar width of the tab width at different breakpoints.
+Width of the tab bar at different **Tabs** widths. For the default width calculation rule, see [FloatingTabBarWidth](arkts-arkui-tabs-comp-floatingtabbarwidth-i.md).
 
 **Type:** [FloatingTabBarWidth](arkts-arkui-tabs-comp-floatingtabbarwidth-i.md)
 
@@ -100,7 +112,7 @@ The bar width of the tab width at different breakpoints.
 maskColor?: ResourceColor
 ```
 
-The color of the mask.
+Color of the mask. The mask display area is rendered with a transparency gradient based on the mask color, with the opacity decreasing from bottom to top. In light mode, the default value is **#CCF1F3F5**, displayed as white. In dark mode, the default value is **#99000000**, displayed as black.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -120,7 +132,7 @@ The color of the mask.
 maskHeight?: Length
 ```
 
-The height of the mask. It cannot be set in percentage.
+Height of the mask. The upper edge of the mask display is 16 vp higher than the upper edge of the tab bar by default.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -140,7 +152,7 @@ The height of the mask. It cannot be set in percentage.
 systemMaterial?: UIMaterial.ImmersiveMaterial
 ```
 
-The style of the material.
+Immersive material style of the tab bar backplate.
 
 **Type:** [UIMaterial.ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)
 

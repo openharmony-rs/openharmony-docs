@@ -4,7 +4,7 @@
 export interface CallbackParamV2
 ```
 
-Declare CallbackParamV2
+Defines the node callback parameter API, used to pass parameter information of node event callbacks.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,13 @@ import { CallbackParamV2, NodeParamV2, TreeControllerV2, TreeListenerV2, TreeLis
 childIndex?: number
 ```
 
-Get the childIndex.
+Child index.
+
+Value range: greater than or equal to -1.
+
+Default value: **-1**
+
+Valid only in the node move event, indicating the position index after the move.
 
 **Type:** number
 
@@ -44,7 +50,9 @@ Get the childIndex.
 currentNodeId: number
 ```
 
-Get the currentNodeId.
+ID of the current node.
+
+Value range: greater than or equal to 0.
 
 **Type:** number
 
@@ -64,7 +72,11 @@ Get the currentNodeId.
 parentNodeId?: number
 ```
 
-Get the parentNodeId.
+ID of the current parent node.
+
+Value range: greater than or equal to -1.
+
+Default value: **-1**
 
 **Type:** number
 

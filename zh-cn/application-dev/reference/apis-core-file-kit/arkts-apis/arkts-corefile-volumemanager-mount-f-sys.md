@@ -6,6 +6,8 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="mount1"></a>
+
 ## mount
 
 ```TypeScript
@@ -46,7 +48,7 @@ function mount(volumeId: string, callback: AsyncCallback<void>): void
 | 13900042 | Unknown error. |
 
 
-<a id="mount-1"></a>
+<a id="mount2"></a>
 
 ## mount
 

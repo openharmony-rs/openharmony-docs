@@ -12,20 +12,6 @@ Enumerates the UKey PIN authentication states.
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
-## HUKS_EXT_CRYPTO_PIN_NO_AUTH
-
-```TypeScript
-HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0
-```
-
-The UKey PIN is not authenticated.
-
-**Since:** 22
-
-<!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0--><!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0-End-->
-
-**System capability:** SystemCapability.Security.Huks.CryptoExtension
-
 ## HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED
 
 ```TypeScript
@@ -51,5 +37,19 @@ The UKey PIN is locked.
 **Since:** 22
 
 <!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_LOCKED = 2--><!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_LOCKED = 2-End-->
+
+**System capability:** SystemCapability.Security.Huks.CryptoExtension
+
+## HUKS_EXT_CRYPTO_PIN_NO_AUTH
+
+```TypeScript
+HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0
+```
+
+The UKey PIN is not authenticated.
+
+**Since:** 22
+
+<!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0--><!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension

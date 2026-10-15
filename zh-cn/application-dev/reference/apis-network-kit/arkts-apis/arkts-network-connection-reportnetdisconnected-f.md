@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="reportnetdisconnected1"></a>
+
 ## reportNetDisconnected
 
 ```TypeScript
@@ -61,7 +63,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
 ```
 
 
-<a id="reportnetdisconnected-1"></a>
+<a id="reportnetdisconnected2"></a>
 
 ## reportNetDisconnected
 

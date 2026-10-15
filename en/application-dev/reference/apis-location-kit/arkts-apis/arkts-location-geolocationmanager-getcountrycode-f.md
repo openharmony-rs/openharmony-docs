@@ -6,6 +6,8 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
+<a id="getcountrycode1"></a>
+
 ## getCountryCode
 
 ```TypeScript
@@ -30,7 +32,7 @@ Obtain the current country code.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.getCountryCode} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 | [3301500](../errorcode-geoLocationManager.md#3301500-area-information-query-failed) | Failed to query the area information. |
@@ -55,7 +57,7 @@ try {
 ```
 
 
-<a id="getcountrycode-1"></a>
+<a id="getcountrycode2"></a>
 
 ## getCountryCode
 

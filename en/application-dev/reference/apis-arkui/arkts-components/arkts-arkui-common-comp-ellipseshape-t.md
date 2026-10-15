@@ -6,6 +6,8 @@ declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 Defines the EllipseShape type.
 
+**Type:** import('../api/@ohos.arkui.shape').EllipseShape
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines the EllipseShape type.
 <!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape--><!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.shape').EllipseShape

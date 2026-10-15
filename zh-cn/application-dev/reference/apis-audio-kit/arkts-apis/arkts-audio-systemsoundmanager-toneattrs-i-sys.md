@@ -4,7 +4,7 @@
 interface ToneAttrs
 ```
 
-管理铃声属性。在调用ToneAttrs&lt;sup&gt;12+&lt;/sup&gt;的接口前，需要先通过[createCustomizedToneAttrs](arkts-audio-systemsoundmanager-createcustomizedtoneattrs-f-sys.md)或[getDefaultRingtoneAttrs](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getdefaultringtoneattrs)、[getRingtoneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneattrlist)等方法获取实例。
+管理铃声属性。在调用ToneAttrs<sup>12+</sup>的接口前，需要先通过[createCustomizedToneAttrs](arkts-audio-systemsoundmanager-createcustomizedtoneattrs-f-sys.md)或[getDefaultRingtoneAttrs](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getdefaultringtoneattrs)、[getRingtoneAttrList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getringtoneattrlist)等方法获取实例。
 
 **起始版本：** 12
 
@@ -48,11 +48,14 @@ getCategory(): number
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 toneAttrs.getCategory();
 ```
+
+<!--DelEnd-->
 
 ## getCustomizedType
 
@@ -82,11 +85,14 @@ getCustomizedType(): ToneCustomizedType
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 toneAttrs.getCustomizedType();
 ```
+
+<!--DelEnd-->
 
 ## getFileName
 
@@ -116,11 +122,14 @@ getFileName(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 toneAttrs.getFileName();
 ```
+
+<!--DelEnd-->
 
 ## getMediaType
 
@@ -150,11 +159,14 @@ getMediaType():MediaType
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 toneAttrs.getMediaType();
 ```
+
+<!--DelEnd-->
 
 ## getTitle
 
@@ -184,11 +196,14 @@ getTitle(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 toneAttrs.getTitle();
 ```
+
+<!--DelEnd-->
 
 ## getUri
 
@@ -220,11 +235,14 @@ getUri(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 toneAttrs.getUri();
 ```
+
+<!--DelEnd-->
 
 ## setCategory
 
@@ -255,6 +273,7 @@ setCategory(category: number): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -262,6 +281,8 @@ let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM; // 需更改为实际所需类型常量。
 toneAttrs.setCategory(categoryValue);
 ```
+
+<!--DelEnd-->
 
 ## setFileName
 
@@ -292,6 +313,7 @@ setFileName(name: string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -299,6 +321,8 @@ let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 let fileName = 'textFileName';
 toneAttrs.setFileName(fileName);
 ```
+
+<!--DelEnd-->
 
 ## setMediaType
 
@@ -328,6 +352,7 @@ setMediaType(type:MediaType):void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -335,6 +360,8 @@ let type: systemSoundManager.MediaType = systemSoundManager.MediaType.VIDEO; // 
 let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 toneAttrs.setMediaType(type);
 ```
+
+<!--DelEnd-->
 
 ## setTitle
 
@@ -365,6 +392,7 @@ setTitle(title: string): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -372,3 +400,5 @@ let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
 let title = 'text';
 toneAttrs.setTitle(title);
 ```
+
+<!--DelEnd-->

@@ -12,17 +12,17 @@ Enumerates the color component types of images.
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
-## YUV_Y
+## JPEG
 
 ```TypeScript
-YUV_Y = 1
+JPEG = 4
 ```
 
-Luminance component.
+JPEG type.
 
 **Since:** 9
 
-<!--Device-ComponentType-YUV_Y = 1--><!--Device-ComponentType-YUV_Y = 1-End-->
+<!--Device-ComponentType-JPEG = 4--><!--Device-ComponentType-JPEG = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -54,16 +54,16 @@ Chrominance component.
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
-## JPEG
+## YUV_Y
 
 ```TypeScript
-JPEG = 4
+YUV_Y = 1
 ```
 
-JPEG type.
+Luminance component.
 
 **Since:** 9
 
-<!--Device-ComponentType-JPEG = 4--><!--Device-ComponentType-JPEG = 4-End-->
+<!--Device-ComponentType-YUV_Y = 1--><!--Device-ComponentType-YUV_Y = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver

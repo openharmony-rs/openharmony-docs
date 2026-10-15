@@ -26,6 +26,8 @@ class Lattice
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createimagelattice1"></a>
+
 ## createImageLattice
 
 ```TypeScript
@@ -80,7 +82,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="createimagelattice-2"></a>
+<a id="createimagelattice3"></a>
 
 ## createImageLattice
 

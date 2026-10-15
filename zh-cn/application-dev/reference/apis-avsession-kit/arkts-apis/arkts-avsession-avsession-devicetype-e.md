@@ -12,51 +12,21 @@ enum DeviceType
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-## DEVICE_TYPE_LOCAL
+## DEVICE_TYPE_2IN1
 
 ```TypeScript
-DEVICE_TYPE_LOCAL = 0
+DEVICE_TYPE_2IN1 = 8
 ```
 
-本地播放类型设备。
+PC/2in1设备。
 
-**起始版本：** 10
+**起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceType-DEVICE_TYPE_LOCAL = 0--><!--Device-DeviceType-DEVICE_TYPE_LOCAL = 0-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-## DEVICE_TYPE_TV
-
-```TypeScript
-DEVICE_TYPE_TV = 2
-```
-
-电视设备。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-DeviceType-DEVICE_TYPE_TV = 2--><!--Device-DeviceType-DEVICE_TYPE_TV = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-## DEVICE_TYPE_SMART_SPEAKER
-
-```TypeScript
-DEVICE_TYPE_SMART_SPEAKER = 3
-```
-
-音箱设备。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-DeviceType-DEVICE_TYPE_SMART_SPEAKER = 3--><!--Device-DeviceType-DEVICE_TYPE_SMART_SPEAKER = 3-End-->
+<!--Device-DeviceType-DEVICE_TYPE_2IN1 = 8--><!--Device-DeviceType-DEVICE_TYPE_2IN1 = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -70,7 +40,7 @@ DEVICE_TYPE_BLUETOOTH = 10
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_BLUETOOTH = 10--><!--Device-DeviceType-DEVICE_TYPE_BLUETOOTH = 10-End-->
 
@@ -88,27 +58,9 @@ DEVICE_TYPE_CAR = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_CAR = 4--><!--Device-DeviceType-DEVICE_TYPE_CAR = 4-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-## DEVICE_TYPE_PAD
-
-```TypeScript
-DEVICE_TYPE_PAD = 6
-```
-
-平板设备。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-DeviceType-DEVICE_TYPE_PAD = 6--><!--Device-DeviceType-DEVICE_TYPE_PAD = 6-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -124,27 +76,9 @@ DEVICE_TYPE_DEFAULT_CAST_PLUS_STREAM = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_DEFAULT_CAST_PLUS_STREAM = 7--><!--Device-DeviceType-DEVICE_TYPE_DEFAULT_CAST_PLUS_STREAM = 7-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-## DEVICE_TYPE_2IN1
-
-```TypeScript
-DEVICE_TYPE_2IN1 = 8
-```
-
-PC/2in1设备。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-DeviceType-DEVICE_TYPE_2IN1 = 8--><!--Device-DeviceType-DEVICE_TYPE_2IN1 = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -160,8 +94,74 @@ HiPlay设备。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_HIPLAY = 15--><!--Device-DeviceType-DEVICE_TYPE_HIPLAY = 15-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+## DEVICE_TYPE_LOCAL
+
+```TypeScript
+DEVICE_TYPE_LOCAL = 0
+```
+
+本地播放类型设备。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeviceType-DEVICE_TYPE_LOCAL = 0--><!--Device-DeviceType-DEVICE_TYPE_LOCAL = 0-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## DEVICE_TYPE_PAD
+
+```TypeScript
+DEVICE_TYPE_PAD = 6
+```
+
+平板设备。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeviceType-DEVICE_TYPE_PAD = 6--><!--Device-DeviceType-DEVICE_TYPE_PAD = 6-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+## DEVICE_TYPE_SMART_SPEAKER
+
+```TypeScript
+DEVICE_TYPE_SMART_SPEAKER = 3
+```
+
+音箱设备。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeviceType-DEVICE_TYPE_SMART_SPEAKER = 3--><!--Device-DeviceType-DEVICE_TYPE_SMART_SPEAKER = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+## DEVICE_TYPE_TV
+
+```TypeScript
+DEVICE_TYPE_TV = 2
+```
+
+电视设备。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeviceType-DEVICE_TYPE_TV = 2--><!--Device-DeviceType-DEVICE_TYPE_TV = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast

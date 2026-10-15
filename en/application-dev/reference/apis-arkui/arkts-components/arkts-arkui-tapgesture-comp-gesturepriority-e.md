@@ -4,7 +4,7 @@
 declare enum GesturePriority
 ```
 
-Enumerates gesture priority levels.
+Defines the priority of the bound gesture, which is suitable for scenarios where the response order of gestures needs to be controlled or gesture conflicts need to be handled when multiple gestures are bound at the same time.
 
 **Since:** 12
 

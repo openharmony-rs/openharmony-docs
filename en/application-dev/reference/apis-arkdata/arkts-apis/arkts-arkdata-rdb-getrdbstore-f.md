@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getrdbstore1"></a>
+
 ## getRdbStore
 
 ```TypeScript
@@ -33,7 +35,7 @@ Obtains an RDB store. This API uses an asynchronous callback to return the resul
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RdbStore](arkts-arkdata-rdb-rdbstore-i.md)&gt; | Yes | Callback used to return the RDB store obtained. |
 
 
-<a id="getrdbstore-1"></a>
+<a id="getrdbstore2"></a>
 
 ## getRdbStore
 

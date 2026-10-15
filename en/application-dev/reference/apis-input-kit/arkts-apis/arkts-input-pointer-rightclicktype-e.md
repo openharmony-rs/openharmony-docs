@@ -12,20 +12,6 @@ Enumerates shortcut menu triggering modes.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## TOUCHPAD_RIGHT_BUTTON
-
-```TypeScript
-TOUCHPAD_RIGHT_BUTTON = 1
-```
-
-Tapping the right-button area of the touchpad.
-
-**Since:** 10
-
-<!--Device-RightClickType-TOUCHPAD_RIGHT_BUTTON = 1--><!--Device-RightClickType-TOUCHPAD_RIGHT_BUTTON = 1-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
 ## TOUCHPAD_LEFT_BUTTON
 
 ```TypeScript
@@ -37,6 +23,20 @@ Tapping the left-button area of the touchpad.
 **Since:** 10
 
 <!--Device-RightClickType-TOUCHPAD_LEFT_BUTTON = 2--><!--Device-RightClickType-TOUCHPAD_LEFT_BUTTON = 2-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## TOUCHPAD_RIGHT_BUTTON
+
+```TypeScript
+TOUCHPAD_RIGHT_BUTTON = 1
+```
+
+Tapping the right-button area of the touchpad.
+
+**Since:** 10
+
+<!--Device-RightClickType-TOUCHPAD_RIGHT_BUTTON = 1--><!--Device-RightClickType-TOUCHPAD_RIGHT_BUTTON = 1-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -54,20 +54,6 @@ Tapping or pressing the touchpad with two fingers.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON
-
-```TypeScript
-TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4
-```
-
-Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.
-
-**Since:** 20
-
-<!--Device-RightClickType-TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4--><!--Device-RightClickType-TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
 ## TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON
 
 ```TypeScript
@@ -79,5 +65,19 @@ Tapping or pressing the touchpad with two fingers, or tapping the left-button ar
 **Since:** 20
 
 <!--Device-RightClickType-TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON = 5--><!--Device-RightClickType-TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON = 5-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON
+
+```TypeScript
+TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4
+```
+
+Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.
+
+**Since:** 20
+
+<!--Device-RightClickType-TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4--><!--Device-RightClickType-TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer

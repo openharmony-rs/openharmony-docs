@@ -14,22 +14,6 @@ enum RuleType
 
 **系统接口：** 此接口为系统接口。
 
-## WHOLE_WORD
-
-```TypeScript
-WHOLE_WORD = 1
-```
-
-全词匹配类型。
-
-**起始版本：** 9
-
-<!--Device-RuleType-WHOLE_WORD = 1--><!--Device-RuleType-WHOLE_WORD = 1-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiSysEvent
-
-**系统接口：** 此接口为系统接口。
-
 ## PREFIX
 
 ```TypeScript
@@ -57,6 +41,22 @@ REGULAR = 3
 **起始版本：** 9
 
 <!--Device-RuleType-REGULAR = 3--><!--Device-RuleType-REGULAR = 3-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
+
+## WHOLE_WORD
+
+```TypeScript
+WHOLE_WORD = 1
+```
+
+全词匹配类型。
+
+**起始版本：** 9
+
+<!--Device-RuleType-WHOLE_WORD = 1--><!--Device-RuleType-WHOLE_WORD = 1-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 

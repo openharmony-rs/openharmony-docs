@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getpermissiondef1"></a>
+
 ## getPermissionDef
 
 ```TypeScript
@@ -29,7 +31,7 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | permissionName | string | 是 | 表示权限名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;PermissionDef&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的PermissionDef；否则为错误对象。 |
 
 **错误码：**
 
@@ -40,6 +42,7 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700006](../errorcode-bundle.md#17700006-查询的权限不存在) | The specified permission is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getpermissiondef-1"></a>
+
+<a id="getpermissiondef2"></a>
 
 ## getPermissionDef
 
@@ -93,7 +98,7 @@ function getPermissionDef(permissionName: string): Promise<PermissionDef>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | Promise对象，返回Array&lt;PermissionDef&gt;对象。 |
+| Promise&lt;[PermissionDef](arkts-ability-bundlemanager-permissiondef-t-sys.md)&gt; | Promise对象，返回查询到的权限结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -104,6 +109,7 @@ function getPermissionDef(permissionName: string): Promise<PermissionDef>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700006](../errorcode-bundle.md#17700006-查询的权限不存在) | The specified permission is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -123,3 +129,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getPermissionDef failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

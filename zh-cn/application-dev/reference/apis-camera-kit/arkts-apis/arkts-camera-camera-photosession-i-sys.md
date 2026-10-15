@@ -120,6 +120,7 @@ Unsubscribe from camera feature detection status change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -127,6 +128,8 @@ function unregisterFeatureDetectionStatus(photoSession: camera.PhotoSession, fea
   photoSession.off('featureDetection', featureType);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('effectSuggestionChange')
 
@@ -180,6 +183,7 @@ Unsubscribes from LCD flash status change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -187,6 +191,8 @@ function unregisterLcdFlashStatus(photoSession: camera.PhotoSession): void {
   photoSession.off('lcdFlashStatus');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('featureDetection')
 
@@ -218,6 +224,7 @@ Subscribe to scene feature detection status change events. This API uses an asyn
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -236,6 +243,8 @@ function registerFeatureDetectionStatus(photoSession: camera.PhotoSession, featu
   photoSession.on('featureDetection', featureType, callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('effectSuggestionChange')
 
@@ -289,6 +298,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -307,3 +317,5 @@ function registerLcdFlashStatus(photoSession: camera.PhotoSession): void {
   photoSession.on('lcdFlashStatus', callback);
 }
 ```
+
+<!--DelEnd-->

@@ -32,13 +32,13 @@ height?: Length
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
-**起始版本：** 18
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-PolygonOptions-height?: Length--><!--Device-PolygonOptions-height?: Length-End-->
 
@@ -60,13 +60,13 @@ width?: Length
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
-**起始版本：** 18
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-PolygonOptions-width?: Length--><!--Device-PolygonOptions-width?: Length-End-->
 

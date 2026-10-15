@@ -6,8 +6,6 @@ export declare enum PixelMapFormat
 
 Enumerates pixel map formats.
 
-@enum { int }
-
 **Since:** 14
 
 <!--Device-unnamed-export declare enum PixelMapFormat--><!--Device-unnamed-export declare enum PixelMapFormat-End-->

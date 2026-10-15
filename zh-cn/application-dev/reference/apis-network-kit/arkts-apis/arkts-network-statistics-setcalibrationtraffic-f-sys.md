@@ -51,6 +51,7 @@ function setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffi
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error, such as nullptr. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
   console.error(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

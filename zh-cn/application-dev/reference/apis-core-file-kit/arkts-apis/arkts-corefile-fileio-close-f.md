@@ -36,7 +36,7 @@ declare function close(fd: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 

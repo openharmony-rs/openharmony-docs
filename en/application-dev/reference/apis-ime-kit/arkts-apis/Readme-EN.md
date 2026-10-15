@@ -11,8 +11,6 @@
   - [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f.md)
   <!--Del-->
   - [getDefaultInputMethod(system api)](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md)<!--DelEnd-->
-  - [getInputMethodController](arkts-ime-inputmethod-getinputmethodcontroller-f.md)
-  - [getInputMethodSetting](arkts-ime-inputmethod-getinputmethodsetting-f.md)
   - [getSetting](arkts-ime-inputmethod-getsetting-f.md)
   - [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f.md)
   <!--Del-->
@@ -27,6 +25,8 @@
   - [switchInputMethod(system api)](arkts-ime-inputmethod-switchinputmethod-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [switchInputMethodWithUserId(system api)](arkts-ime-inputmethod-switchinputmethodwithuserid-f-sys.md)<!--DelEnd-->
+  - [getInputMethodController](arkts-ime-inputmethod-getinputmethodcontroller-f.md)
+  - [getInputMethodSetting](arkts-ime-inputmethod-getinputmethodsetting-f.md)
   - [AttachOptions](arkts-ime-inputmethod-attachoptions-i.md)
   - [CursorInfo](arkts-ime-inputmethod-cursorinfo-i.md)
   - [FunctionKey](arkts-ime-inputmethod-functionkey-i.md)
@@ -66,10 +66,10 @@
   - [PanelFlag](arkts-ime-inputmethod-panel-panelflag-e.md)
   - [PanelType](arkts-ime-inputmethod-panel-paneltype-e.md)
 - [@ohos.inputMethodEngine(Input Method Service)](arkts-ime-inputmethodengine.md)
-  - [createKeyboardDelegate](arkts-ime-inputmethodengine-createkeyboarddelegate-f.md)
   - [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md)
-  - [getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md)
   - [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md)
+  - [createKeyboardDelegate](arkts-ime-inputmethodengine-createkeyboarddelegate-f.md)
+  - [getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md)
   - [AttachOptions](arkts-ime-inputmethodengine-attachoptions-i.md)
   - [EditorAttribute](arkts-ime-inputmethodengine-editorattribute-i.md)
   <!--Del-->
@@ -80,7 +80,6 @@
   - [ImmersiveEffect(system api)](arkts-ime-inputmethodengine-immersiveeffect-i-sys.md)<!--DelEnd-->
   - [InputClient](arkts-ime-inputmethodengine-inputclient-i.md)
   - [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md)
-  - [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md)
   - [KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)
   - [KeyboardController](arkts-ime-inputmethodengine-keyboardcontroller-i.md)
   - [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md)
@@ -94,8 +93,9 @@
   - [PanelRect](arkts-ime-inputmethodengine-panelrect-i.md)
   - [Range](arkts-ime-inputmethodengine-range-i.md)
   - [SystemPanelInsets](arkts-ime-inputmethodengine-systempanelinsets-i.md)
-  - [TextInputClient](arkts-ime-inputmethodengine-textinputclient-i.md)
   - [WindowInfo](arkts-ime-inputmethodengine-windowinfo-i.md)
+  - [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md)
+  - [TextInputClient](arkts-ime-inputmethodengine-textinputclient-i.md)
   - [CommandDataType](arkts-ime-inputmethodengine-commanddatatype-t.md)
   - [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md)
   <!--Del-->

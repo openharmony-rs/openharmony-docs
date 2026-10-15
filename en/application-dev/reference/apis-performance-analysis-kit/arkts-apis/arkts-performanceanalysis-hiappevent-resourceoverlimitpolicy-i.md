@@ -43,7 +43,7 @@ the application may exit in advance due to a freeze event triggered by a perform
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ResourceOverlimitPolicy-jsHeapLogtype?: string--><!--Device-ResourceOverlimitPolicy-jsHeapLogtype?: string-End-->
 
@@ -71,7 +71,7 @@ Note: The enabling behavior of an application takes effect only in its current l
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-ResourceOverlimitPolicy-pageSwitchLogEnable?: boolean--><!--Device-ResourceOverlimitPolicy-pageSwitchLogEnable?: boolean-End-->
 
@@ -91,7 +91,7 @@ This parameter is used to control whether to output refined external log file na
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ResourceOverlimitPolicy-useRefinedLogFileName?: boolean--><!--Device-ResourceOverlimitPolicy-useRefinedLogFileName?: boolean-End-->
 

@@ -4,7 +4,7 @@
 export interface BundleInfo
 ```
 
-The module defines the bundle information.
+The module defines the bundle information. An application can obtain its own bundle information through [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md), with [bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md) set to the information to be contained in the returned [BundleInfo](arkts-ability-bundleinfo-i.md).
 
 **Since:** 9
 
@@ -52,7 +52,7 @@ Application information. The information can be obtained by passing in **GET_BUN
 readonly buildVersion?: string
 ```
 
-Build version number of the application package, which identifies different build version packages under the same release version. It corresponds to the buildVersion field in the app.json5 file.
+Build version number of the application package, which identifies different build version packages under the same release version. It corresponds to the **buildVersion** field in the [app.json5](../../../quick-start/app-configuration-file.md) file.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Build version number of the application package, which identifies different buil
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-BundleInfo-readonly buildVersion?: string--><!--Device-BundleInfo-readonly buildVersion?: string-End-->
 
@@ -78,7 +78,7 @@ Timestamp for the initial installation of the application package. It measures t
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-BundleInfo-readonly firstInstallTime?: long--><!--Device-BundleInfo-readonly firstInstallTime?: long-End-->
 
@@ -96,7 +96,7 @@ Module configuration information. The information can be obtained by passing in 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly hapModulesInfo: Array<HapModuleInfo>--><!--Device-BundleInfo-readonly hapModulesInfo: Array<HapModuleInfo>-End-->
 
@@ -118,7 +118,7 @@ If the current time is not obtained when the device is powered on for the first 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly installTime: long--><!--Device-BundleInfo-readonly installTime: long-End-->
 
@@ -136,7 +136,7 @@ Minimum compatible version of the application package in the distributed scenari
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly minCompatibleVersionCode: int--><!--Device-BundleInfo-readonly minCompatibleVersionCode: int-End-->
 
@@ -154,7 +154,7 @@ Name of the application package. It corresponds to the **bundleName** field in t
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly name: string--><!--Device-BundleInfo-readonly name: string-End-->
 
@@ -172,7 +172,7 @@ Permission grant state. The information can be obtained by passing in **GET_BUND
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly permissionGrantStates: Array<bundleManager.PermissionGrantState>--><!--Device-BundleInfo-readonly permissionGrantStates: Array<bundleManager.PermissionGrantState>-End-->
 
@@ -190,7 +190,7 @@ Detailed information of the permissions to request from the system. The informat
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly reqPermissionDetails: Array<ReqPermissionDetail>--><!--Device-BundleInfo-readonly reqPermissionDetails: Array<ReqPermissionDetail>-End-->
 
@@ -208,7 +208,7 @@ Router table of the application. The table is obtained by deduplicating and comb
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-BundleInfo-readonly routerMap: Array<RouterItem>--><!--Device-BundleInfo-readonly routerMap: Array<RouterItem>-End-->
 
@@ -244,7 +244,7 @@ Target version of the application. It corresponds to the **targetAPIVersion** fi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly targetVersion: int--><!--Device-BundleInfo-readonly targetVersion: int-End-->
 
@@ -262,7 +262,7 @@ Timestamp for the last update of the application package. It measures the millis
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly updateTime: long--><!--Device-BundleInfo-readonly updateTime: long-End-->
 
@@ -280,7 +280,7 @@ Vendor of the application package. It corresponds to the **vendor** field in the
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly vendor: string--><!--Device-BundleInfo-readonly vendor: string-End-->
 
@@ -298,7 +298,7 @@ Version code of the application package. It corresponds to the **versionCode** f
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly versionCode: long--><!--Device-BundleInfo-readonly versionCode: long-End-->
 
@@ -316,7 +316,7 @@ Version description of the application package. It corresponds to the **versionN
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleInfo-readonly versionName: string--><!--Device-BundleInfo-readonly versionName: string-End-->
 

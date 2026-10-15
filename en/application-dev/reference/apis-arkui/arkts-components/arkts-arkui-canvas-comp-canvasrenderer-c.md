@@ -73,6 +73,8 @@ Clears the drawn content in the specified area.
 | w | number | Yes | Width of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no drawing is performed.<br>Default unit: vp |
 | h | number | Yes | Height of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no drawing is performed.<br>Default unit: vp |
 
+<a id="clip1"></a>
+
 ## clip
 
 ```TypeScript
@@ -99,7 +101,7 @@ Sets the current path as the clipping path.
 | --- | --- | --- | --- |
 | fillRule | [CanvasFillRule](arkts-arkui-canvas-comp-canvasfillrule-t.md) | No | Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"** |
 
-<a id="clip-1"></a>
+<a id="clip2"></a>
 
 ## clip
 
@@ -164,6 +166,8 @@ Creates a conic gradient.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-canvas-comp-canvasgradient-c.md) | New **CanvasGradient** object used to create a gradient effect on the offscreen canvas. |
 
+<a id="createimagedata1"></a>
+
 ## createImageData
 
 ```TypeScript
@@ -197,7 +201,7 @@ Creates a new **ImageData** object with the specified width and height based on 
 | --- | --- |
 | [ImageData](arkts-arkui-canvas-comp-imagedata-c.md) | New **ImageData** object. |
 
-<a id="createimagedata-1"></a>
+<a id="createimagedata2"></a>
 
 ## createImageData
 
@@ -336,6 +340,8 @@ Creates a radial gradient color.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-canvas-comp-canvasgradient-c.md) | New **CanvasGradient** object used to create a gradient effect on the offscreen canvas. |
 
+<a id="drawimage1"></a>
+
 ## drawImage
 
 ```TypeScript
@@ -364,7 +370,7 @@ Draws an image.
 | dx | number | Yes | X-coordinate of the upper left corner of the drawing area.<br> Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
 | dy | number | Yes | Y-coordinate of the upper left corner of the drawing area.<br> Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
 
-<a id="drawimage-1"></a>
+<a id="drawimage2"></a>
 
 ## drawImage
 
@@ -396,7 +402,7 @@ Draws the image by stretching or compressing it.
 | dw | number | Yes | Width of the drawing area. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
 | dh | number | Yes | Height of the drawing area. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
 
-<a id="drawimage-2"></a>
+<a id="drawimage3"></a>
 
 ## drawImage
 
@@ -442,6 +448,8 @@ Draws the image after cropping, stretching, or compressing it.
 | dw | number | Yes | Width of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp |
 | dh | number | Yes | Height of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp |
 
+<a id="fill1"></a>
+
 ## fill
 
 ```TypeScript
@@ -468,7 +476,7 @@ Fills the current path.
 | --- | --- | --- | --- |
 | fillRule | [CanvasFillRule](arkts-arkui-canvas-comp-canvasfillrule-t.md) | No | Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"** |
 
-<a id="fill-1"></a>
+<a id="fill2"></a>
 
 ## fill
 
@@ -707,6 +715,8 @@ Returns a text measurement object, through which the width of the specified text
 | --- | --- |
 | [TextMetrics](arkts-arkui-canvas-comp-textmetrics-i.md) | Text metrics.<br>If an invalid value (**undefined** or **null**) is passed in, the text is processed as "undefined" or "null". |
 
+<a id="putimagedata1"></a>
+
 ## putImageData
 
 ```TypeScript
@@ -735,7 +745,7 @@ Fills a new rectangular area with **ImageData** data.
 | dx | number &#124; string | Yes | Offset of the fill area on the x-axis.<br> Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br> Default unit: vp |
 | dy | number &#124; string | Yes | Offset of the fill area on the y-axis.<br> Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br> Default unit: vp |
 
-<a id="putimagedata-1"></a>
+<a id="putimagedata2"></a>
 
 ## putImageData
 
@@ -1003,6 +1013,8 @@ Draws the currently passed-in **PixelMap** object on the canvas. For the **setPi
 | --- | --- | --- | --- |
 | value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | No | **PixelMap** object that contains pixel values.<br>Abnormal values **undefined** and **null** are treated as invalid values and will not be drawn.<br> Default value: **null** |
 
+<a id="settransform1"></a>
+
 ## setTransform
 
 ```TypeScript
@@ -1046,7 +1058,7 @@ The **setTransform** method uses the same parameters as the **transform()** meth
 | e | number | Yes | **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other drawing APIs with valid parameters continue to render correctly.<br>Default unit: vp |
 | f | number | Yes | **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other drawing APIs with valid parameters continue to render correctly.<br>Default unit: vp |
 
-<a id="settransform-1"></a>
+<a id="settransform2"></a>
 
 ## setTransform
 
@@ -1074,6 +1086,8 @@ Resets the existing transform matrix and creates a new one with the **Matrix2D**
 | --- | --- | --- | --- |
 | transform | Matrix2D | No | Transformation matrix.<br>Exception values **undefined** and **null** are treated as invalid values.<br>Default value: **null** |
 
+<a id="stroke1"></a>
+
 ## stroke
 
 ```TypeScript
@@ -1094,7 +1108,7 @@ Performs a stroke operation based on the current path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="stroke-1"></a>
+<a id="stroke2"></a>
 
 ## stroke
 
@@ -1383,23 +1397,23 @@ Sets image filters. Any number of filters can be combined. This is a write-only 
 Available values are as follows:
 
 - **'none'**: No filter effect.  
-- **'blur(`&lt;length&gt;`)'**: Applies Gaussian blur to the image. The value range is  
+- **'blur(`<length>`)'**: Applies Gaussian blur to the image. The value range is  
 > = 0. Supported units: px, vp, rem. Default value: **blur(0px)**.
-- **'brightness([`&lt;number&gt;`\|`&lt;percentage&gt;`])'**: Applies a linear multiplier to the  
+- **'brightness([`<number>`\|`<percentage>`])'**: Applies a linear multiplier to the  
 image, making it appear brighter or darker. Supports numeric and percentage parameters. The value range is &gt;= 0. Default value: **brightness(1)**.  
-- **'contrast([`&lt;number&gt;`\|`&lt;percentage&gt;`])'**: Adjusts the contrast of the image. Supports  
+- **'contrast([`<number>`\|`<percentage>`])'**: Adjusts the contrast of the image. Supports  
 numeric and percentage parameters. The value range is &gt;= 0. Default value: **contrast(1)**.  
-- **'grayscale([`&lt;number&gt;`\|`&lt;percentage&gt;`])'**: Converts the image to grayscale. Supports  
+- **'grayscale([`<number>`\|`<percentage>`])'**: Converts the image to grayscale. Supports  
 numeric and percentage parameters. The value range is [0, 1]. Default value: **grayscale(0)**.  
-- **'hue-rotate(`&lt;angle&gt;`)'**: Applies hue rotation to the image. The value range is  
+- **'hue-rotate(`<angle>`)'**: Applies hue rotation to the image. The value range is  
 0deg-360deg. Default value: **hue-rotate(0deg)**.  
-- **'invert([`&lt;number&gt;`\|`&lt;percentage&gt;`])'**: Inverts the input image. Supports numeric and  
+- **'invert([`<number>`\|`<percentage>`])'**: Inverts the input image. Supports numeric and  
 percentage parameters. The value range is [0, 1]. Default value: **invert(0)**.  
-- **'opacity([`&lt;number&gt;`\|`&lt;percentage&gt;`])'**: Adjusts the transparency of the image. Supports  
+- **'opacity([`<number>`\|`<percentage>`])'**: Adjusts the transparency of the image. Supports  
 numeric and percentage parameters. The value range is [0, 1]. Default value: **opacity(1)**.  
-- **'saturate([`&lt;number&gt;`\|`&lt;percentage&gt;`])'**: Adjusts the saturation of the image. Supports  
+- **'saturate([`<number>`\|`<percentage>`])'**: Adjusts the saturation of the image. Supports  
 numeric and percentage parameters. The value range is &gt;= 0. Default value: **saturate(1)**.  
-- **'sepia([`&lt;number&gt;`\|`&lt;percentage&gt;`])'**: Converts the image to sepia. Supports numeric and  
+- **'sepia([`<number>`\|`<percentage>`])'**: Converts the image to sepia. Supports numeric and  
 percentage parameters. The value range is [0, 1]. Default value: **sepia(0)**.
 
 **Type:** string

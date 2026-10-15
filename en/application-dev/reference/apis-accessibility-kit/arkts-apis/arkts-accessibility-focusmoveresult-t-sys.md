@@ -6,6 +6,8 @@ export type FocusMoveResult = _FocusMoveResult
 
 Return value type of the accessibility node query. For details, see [FocusMoveResult](arkts-accessibility-accessibilityextensioncontext-focusmoveresult-i-sys.md).
 
+**Type:** _FocusMoveResult
+
 **Since:** 23
 
 <!--Device-unnamed-export type FocusMoveResult = _FocusMoveResult--><!--Device-unnamed-export type FocusMoveResult = _FocusMoveResult-End-->
@@ -13,5 +15,3 @@ Return value type of the accessibility node query. For details, see [FocusMoveRe
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
-
-**Type:** _FocusMoveResult

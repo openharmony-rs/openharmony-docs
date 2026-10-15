@@ -26,7 +26,7 @@ function connectToCandidateConfigWithUserAction(networkId: number): Promise<void
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-wifiManager-function connectToCandidateConfigWithUserAction(networkId: int): Promise<void>--><!--Device-wifiManager-function connectToCandidateConfigWithUserAction(networkId: int): Promise<void>-End-->
 

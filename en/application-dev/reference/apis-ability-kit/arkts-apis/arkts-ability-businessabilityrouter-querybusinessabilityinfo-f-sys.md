@@ -6,6 +6,8 @@
 import { businessAbilityRouter } from '@kit.AbilityKit';
 ```
 
+<a id="querybusinessabilityinfo1"></a>
+
 ## queryBusinessAbilityInfo
 
 ```TypeScript
@@ -38,10 +40,11 @@ Query the business ability info of by the given filter. ohos.permission.GET_BUND
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | non-system app called system api. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,8 +67,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="querybusinessabilityinfo-1"></a>
+
+<a id="querybusinessabilityinfo2"></a>
 
 ## queryBusinessAbilityInfo
 
@@ -101,10 +106,11 @@ Query the business ability info of by the given filter. ohos.permission.GET_BUND
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | non-system app called system api. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -125,3 +131,5 @@ try {
   console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```
+
+<!--DelEnd-->

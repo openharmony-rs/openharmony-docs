@@ -38,6 +38,7 @@ Obtains all system credentials. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [17500001](../errorcode-certManager.md#17500001-internal-error) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   console.error(`Failed to get all system app certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

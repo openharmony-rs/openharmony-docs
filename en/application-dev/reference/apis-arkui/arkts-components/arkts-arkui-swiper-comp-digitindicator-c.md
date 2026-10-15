@@ -16,7 +16,7 @@ A constructor used to create a **DigitIndicator** object. It inherits from [Indi
 > 
 > The mirror display of the page number depends on the RTL status of the system.
 
-**Inheritance/Implementation:** DigitIndicator extends Indicator<DigitIndicator>
+**Inheritance/Implementation:** DigitIndicator extends Indicator&lt;DigitIndicator&gt;
 
 **Since:** 10
 
@@ -30,15 +30,7 @@ A constructor used to create a **DigitIndicator** object. It inherits from [Indi
 constructor()
 ```
 
-A constructor used to create a **DotIndicator** object.
-
-> **NOTE:** 
-> 
-> - When pressed, the navigation indicator is zoomed in to 1.33 times. To account for this, there is a certain distance between the navigation indicator's visible boundary and its actual boundary in the non-pressed state.The distance increases with the value of **itemWidth**, **itemHeight**, **selectedItemWidth**, and
-> **selectedItemHeight**.
-> 
-> - If there are too many pages and dot-style indicators exceed the page, you are advised to use the
-> **maxDisplayCount** parameter to set the number of dots to be displayed.
+A constructor used to create a **DigitIndicator** object.
 
 **Since:** 10
 
@@ -58,7 +50,7 @@ A constructor used to create a **DotIndicator** object.
 digitFont(value: Font): DigitIndicator
 ```
 
-Sets the font style of the digit-style navigation indicator.
+Sets the font style of the numeric navigation indicator of the **Swiper** component. When pages are turned by group, the number of child nodes displayed by the numeric navigation indicator does not include placeholder nodes.
 
 **Since:** 10
 
@@ -76,13 +68,13 @@ Sets the font style of the digit-style navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Font style of the digit-style navigation indicator.<br>Only the **size** and **weight** parameters in **Font** are adjustable. Setting **family** and **style** has no effect.<br>Default value:<br>{size:?14,?weight:?FontWeight.Normal?} |
+| value | Font | Yes | Font style of the digit-style navigation indicator.<br>Only the **size** and **weight** parameters in **Font** are adjustable. Setting **family** and **style** has no effect. <br>Default value: <br>{ size: 14, weight: FontWeight.Normal } |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Current digit-style navigation indicator. |
+| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |
 
 ## fontColor
 
@@ -114,7 +106,7 @@ Sets the font color of the digit-style navigation indicator.
 
 | Type | Description |
 | --- | --- |
-| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Current digit-style navigation indicator. |
+| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |
 
 ## selectedDigitFont
 
@@ -140,13 +132,13 @@ Sets the font style of the selected digit-style navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Font style of the selected digit-style navigation indicator.<br>Default value:<br>{?size:?14,?weight:?FontWeight.Normal?} |
+| value | Font | Yes | Font style of the selected digit-style navigation indicator.<br>Default value: <br>{ size: 14, weight: FontWeight.Normal } |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Current digit-style navigation indicator. |
+| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |
 
 ## selectedFontColor
 
@@ -178,4 +170,4 @@ Sets the font color of the selected digit-style navigation indicator.
 
 | Type | Description |
 | --- | --- |
-| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Current digit-style navigation indicator. |
+| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |

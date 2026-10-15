@@ -6,6 +6,8 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="sendenvelopecmd1"></a>
+
 ## sendEnvelopeCmd
 
 ```TypeScript
@@ -38,13 +40,14 @@ Send envelope command to SIM card.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | No SIM card found. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,8 +59,10 @@ sim.sendEnvelopeCmd(0, "ls", (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="sendenvelopecmd-1"></a>
+
+<a id="sendenvelopecmd2"></a>
 
 ## sendEnvelopeCmd
 
@@ -96,13 +101,14 @@ Send envelope command to SIM card.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | No SIM card found. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -115,3 +121,5 @@ sim.sendEnvelopeCmd(0, "ls").then(() => {
     console.error(`sendEnvelopeCmd failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

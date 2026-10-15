@@ -47,6 +47,7 @@ Stops flash blinking or screen blinking.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed.<br>A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality.Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ try {
   console.error(`Failed to call stopBlinking, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

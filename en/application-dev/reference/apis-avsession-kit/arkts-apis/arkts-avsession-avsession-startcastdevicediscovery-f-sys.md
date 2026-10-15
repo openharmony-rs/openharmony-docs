@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="startcastdevicediscovery1"></a>
+
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -34,6 +36,7 @@ Start device discovery.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -42,8 +45,10 @@ avSession.startCastDeviceDiscovery(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="startcastdevicediscovery-1"></a>
+
+<a id="startcastdevicediscovery2"></a>
 
 ## startCastDeviceDiscovery
 
@@ -75,6 +80,7 @@ Start device discovery.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -84,8 +90,10 @@ avSession.startCastDeviceDiscovery(filter, () => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="startcastdevicediscovery-2"></a>
+
+<a id="startcastdevicediscovery3"></a>
 
 ## startCastDeviceDiscovery
 
@@ -123,6 +131,7 @@ Start device discovery.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -132,3 +141,5 @@ avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
   console.info('Succeeded in starting cast device discovery.');
 });
 ```
+
+<!--DelEnd-->

@@ -14,38 +14,6 @@ Enumerates the screen hopping states.
 
 **System API:** This is a system API.
 
-## COOPERATE_PREPARE
-
-```TypeScript
-COOPERATE_PREPARE = 0
-```
-
-The preparation for screen hopping is finished.
-
-**Since:** 11
-
-<!--Device-CooperateState-COOPERATE_PREPARE = 0--><!--Device-CooperateState-COOPERATE_PREPARE = 0-End-->
-
-**System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**System API:** This is a system API.
-
-## COOPERATE_UNPREPARE
-
-```TypeScript
-COOPERATE_UNPREPARE = 1
-```
-
-The preparation for screen hopping is cancelled.
-
-**Since:** 11
-
-<!--Device-CooperateState-COOPERATE_UNPREPARE = 1--><!--Device-CooperateState-COOPERATE_UNPREPARE = 1-End-->
-
-**System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**System API:** This is a system API.
-
 ## COOPERATE_ACTIVATE
 
 ```TypeScript
@@ -57,22 +25,6 @@ Screen hopping starts.
 **Since:** 11
 
 <!--Device-CooperateState-COOPERATE_ACTIVATE = 2--><!--Device-CooperateState-COOPERATE_ACTIVATE = 2-End-->
-
-**System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**System API:** This is a system API.
-
-## COOPERATE_ACTIVATE_SUCCESS
-
-```TypeScript
-COOPERATE_ACTIVATE_SUCCESS = 3
-```
-
-Starting screen hopping succeeds.
-
-**Since:** 11
-
-<!--Device-CooperateState-COOPERATE_ACTIVATE_SUCCESS = 3--><!--Device-CooperateState-COOPERATE_ACTIVATE_SUCCESS = 3-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -94,17 +46,17 @@ Screen hopping fails to start.
 
 **System API:** This is a system API.
 
-## COOPERATE_DEACTIVATE_SUCCESS
+## COOPERATE_ACTIVATE_SUCCESS
 
 ```TypeScript
-COOPERATE_DEACTIVATE_SUCCESS = 5
+COOPERATE_ACTIVATE_SUCCESS = 3
 ```
 
-Stopping screen hopping succeeds.
+Starting screen hopping succeeds.
 
 **Since:** 11
 
-<!--Device-CooperateState-COOPERATE_DEACTIVATE_SUCCESS = 5--><!--Device-CooperateState-COOPERATE_DEACTIVATE_SUCCESS = 5-End-->
+<!--Device-CooperateState-COOPERATE_ACTIVATE_SUCCESS = 3--><!--Device-CooperateState-COOPERATE_ACTIVATE_SUCCESS = 3-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -126,6 +78,38 @@ Screen hopping fails to stop.
 
 **System API:** This is a system API.
 
+## COOPERATE_DEACTIVATE_SUCCESS
+
+```TypeScript
+COOPERATE_DEACTIVATE_SUCCESS = 5
+```
+
+Stopping screen hopping succeeds.
+
+**Since:** 11
+
+<!--Device-CooperateState-COOPERATE_DEACTIVATE_SUCCESS = 5--><!--Device-CooperateState-COOPERATE_DEACTIVATE_SUCCESS = 5-End-->
+
+**System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**System API:** This is a system API.
+
+## COOPERATE_PREPARE
+
+```TypeScript
+COOPERATE_PREPARE = 0
+```
+
+The preparation for screen hopping is finished.
+
+**Since:** 11
+
+<!--Device-CooperateState-COOPERATE_PREPARE = 0--><!--Device-CooperateState-COOPERATE_PREPARE = 0-End-->
+
+**System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**System API:** This is a system API.
+
 ## COOPERATE_SESSION_DISCONNECTED
 
 ```TypeScript
@@ -137,6 +121,22 @@ The screen hopping session is disconnected.
 **Since:** 11
 
 <!--Device-CooperateState-COOPERATE_SESSION_DISCONNECTED = 7--><!--Device-CooperateState-COOPERATE_SESSION_DISCONNECTED = 7-End-->
+
+**System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**System API:** This is a system API.
+
+## COOPERATE_UNPREPARE
+
+```TypeScript
+COOPERATE_UNPREPARE = 1
+```
+
+The preparation for screen hopping is cancelled.
+
+**Since:** 11
+
+<!--Device-CooperateState-COOPERATE_UNPREPARE = 1--><!--Device-CooperateState-COOPERATE_UNPREPARE = 1-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

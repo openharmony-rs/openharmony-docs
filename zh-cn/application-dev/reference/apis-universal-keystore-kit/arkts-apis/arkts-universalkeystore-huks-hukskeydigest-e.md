@@ -14,26 +14,6 @@ export enum HuksKeyDigest
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本8-11：SystemCapability.Security.Huks.Extension
 
-## HUKS_DIGEST_NONE
-
-```TypeScript
-HUKS_DIGEST_NONE = 0
-```
-
-表示无摘要算法。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0--><!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0-End-->
-
-**系统能力：** 
-- API版本12+：SystemCapability.Security.Huks.Core
-- API版本8-11：SystemCapability.Security.Huks.Extension
-
 ## HUKS_DIGEST_MD5
 
 ```TypeScript
@@ -54,25 +34,25 @@ HUKS_DIGEST_MD5 = 1
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本8-11：SystemCapability.Security.Huks.Extension
 
-## HUKS_DIGEST_SM3
+## HUKS_DIGEST_NONE
 
 ```TypeScript
-HUKS_DIGEST_SM3 = 2
+HUKS_DIGEST_NONE = 0
 ```
 
-表示SM3摘要算法。
+表示无摘要算法。
 
-**起始版本：** 9
+**起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2--><!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2-End-->
+<!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0--><!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
-- API版本9-11：SystemCapability.Security.Huks.Extension
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SHA1
 
@@ -173,3 +153,23 @@ HUKS_DIGEST_SHA512 = 14
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本8-11：SystemCapability.Security.Huks.Extension
+
+## HUKS_DIGEST_SM3
+
+```TypeScript
+HUKS_DIGEST_SM3 = 2
+```
+
+表示SM3摘要算法。
+
+**起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2--><!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本9-11：SystemCapability.Security.Huks.Extension

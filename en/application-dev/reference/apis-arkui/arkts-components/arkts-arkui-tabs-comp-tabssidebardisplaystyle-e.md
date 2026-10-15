@@ -12,24 +12,6 @@ Enumerates the display styles of the tab side bar.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## EMBED
-
-```TypeScript
-EMBED = 0
-```
-
-The embedded style. The tab bar is embedded in the content area of the **Tabs** container, taking up space within it.
-
-**Since:** 26.2.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
-
-<!--Device-TabsSidebarDisplayStyle-EMBED = 0--><!--Device-TabsSidebarDisplayStyle-EMBED = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## DISPLACE
 
 ```TypeScript
@@ -45,5 +27,23 @@ The displaced style. The tab bar is displayed as a sidebar, pushing the content 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-TabsSidebarDisplayStyle-DISPLACE = 1--><!--Device-TabsSidebarDisplayStyle-DISPLACE = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## EMBED
+
+```TypeScript
+EMBED = 0
+```
+
+The embedded style. The tab bar is embedded in the content area of the **Tabs** container, taking up space within it.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsSidebarDisplayStyle-EMBED = 0--><!--Device-TabsSidebarDisplayStyle-EMBED = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

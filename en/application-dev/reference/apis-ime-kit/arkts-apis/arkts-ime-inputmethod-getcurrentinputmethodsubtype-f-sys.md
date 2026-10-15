@@ -6,7 +6,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getcurrentinputmethodsubtype-1"></a>
+<a id="getcurrentinputmethodsubtype2"></a>
 
 ## getCurrentInputMethodSubtype
 
@@ -48,6 +48,7 @@ Get the current input method subtype of a specified user.
 | [12800024](../errorcode-inputmethod-framework.md#12800024-specified-user-not-in-the-foreground) | the specified user is not in the foreground. |
 | [12800025](../errorcode-inputmethod-framework.md#12800025-cross-user-operation-denied) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   console.error(`Failed to getCurrentInputMethodSubtype. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

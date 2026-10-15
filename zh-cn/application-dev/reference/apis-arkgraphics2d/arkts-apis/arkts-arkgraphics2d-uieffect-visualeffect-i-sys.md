@@ -28,7 +28,7 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-VisualEffect-backgroundColorBlender(blender: BrightnessBlender): VisualEffect--><!--Device-VisualEffect-backgroundColorBlender(blender: BrightnessBlender): VisualEffect-End-->
 
@@ -46,8 +46,9 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回添加了背景颜色更改效果的VisualEffect。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回添加了背景颜色更改效果的VisualEffect。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,6 +60,8 @@ let visualEffect = uiEffect.createEffect();
 // 将混合器添加至组件上以改变组件背景颜色
 visualEffect.backgroundColorBlender(blender);
 ```
+
+<!--DelEnd-->
 
 ## borderLight
 
@@ -90,14 +93,15 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回了具有边框光照效果的VisualEffect。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回了具有边框光照效果的VisualEffect。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -141,6 +145,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## colorGradient
 
 ```TypeScript
@@ -171,14 +177,15 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回具有颜色渐变效果的VisualEffect。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回具有颜色渐变效果的VisualEffect。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -218,6 +225,8 @@ struct ColorGradientExample {
 }
 ```
 
+<!--DelEnd-->
+
 ## distortionCollapse
 
 ```TypeScript
@@ -248,14 +257,15 @@ backgroundEffect、brightness、blur等需要截屏的接口无法截取到正�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distortionParam | DistortionParam | 是 | 非线性形变效果的参数。 |
+| distortionParam | [DistortionParam](../../apis-arkui/arkts-components/arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md) | 是 | 非线性形变效果的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回添加了非线性形变效果的VisualEffect。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回添加了非线性形变效果的VisualEffect。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -283,6 +293,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## glassMarbleEffect
 
@@ -319,7 +331,78 @@ glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSp
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回附加了玻璃弹珠效果的VisualEffect。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回附加了玻璃弹珠效果的VisualEffect。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct GlassMarbleEffectExample {
+  @State reflectionMap: image.PixelMap | null = null;
+  @State contentMask: image.PixelMap | null = null;
+
+  aboutToAppear(): void {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    context.resourceManager.getMediaContent($r('app.media.reflection').id).then((val: Uint8Array) => {
+      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
+      let imageSource: image.ImageSource = image.createImageSource(buffer);
+      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+        this.reflectionMap = pixelMap;
+      });
+    });
+    context.resourceManager.getMediaContent($r('app.media.content_mask').id).then((val: Uint8Array) => {
+      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
+      let imageSource: image.ImageSource = image.createImageSource(buffer);
+      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+        this.contentMask = pixelMap;
+      });
+    });
+  }
+
+  build() {
+    Column() {
+      Image($r('app.media.bg'))
+        .width('100%')
+        .height('100%')
+        // 为组件添加玻璃弹珠效果。
+        .visualEffect(uiEffect.createEffect().glassMarbleEffect(
+          {
+            averageBgColor: { red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0 },
+            opacity: 0.8,
+            shadowOffset: 0.1,
+            shadowRadius: 0.5,
+            shadowEdgeSoftness: 0.5,
+            shadowOpacity: 0.5,
+            causticOffset: 0.0,
+            causticRadius: 0.5,
+            causticEdgeSoftness: 0.5,
+            causticOpacity: 0.5,
+            shapeScale: 0.9,
+            reflectionMap: this.reflectionMap!
+          },
+          { center: [0.5, 0.5], radius: 0.5 },
+          {
+            contentMask: uiEffect.Mask.createPixelMapMask(this.contentMask!),
+            contentTintColor: { red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5 },
+            contentScale: 0.8,
+            contentSaturation: 0.8,
+            contentDispersion: 0.2
+          }
+        ))
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+<!--DelEnd-->
 
 ## liquidMaterial
 
@@ -351,14 +434,15 @@ liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMa
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回具有材质效果的VisualEffect。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回具有材质效果的VisualEffect。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -416,3 +500,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

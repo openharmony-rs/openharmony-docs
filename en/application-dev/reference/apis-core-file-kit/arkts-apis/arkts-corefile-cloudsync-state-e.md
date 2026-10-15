@@ -12,20 +12,6 @@ Enumerates the download states of a cloud file.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-The cloud file is being downloaded.
-
-**Since:** 11
-
-<!--Device-State-RUNNING = 0--><!--Device-State-RUNNING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## COMPLETED
 
 ```TypeScript
@@ -51,6 +37,20 @@ The cloud file download failed.
 **Since:** 11
 
 <!--Device-State-FAILED = 2--><!--Device-State-FAILED = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+The cloud file is being downloaded.
+
+**Since:** 11
+
+<!--Device-State-RUNNING = 0--><!--Device-State-RUNNING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

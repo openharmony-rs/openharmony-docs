@@ -6,6 +6,8 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="stopbackgroundrunning1"></a>
+
 ## stopBackgroundRunning
 
 ```TypeScript
@@ -16,7 +18,7 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>): void--><!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>): void-End-->
 
@@ -48,18 +50,18 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-function callback(error: BusinessError, data: void) {
+const callback = (error: BusinessError, data: void) => {
   if (error) {
     console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
   } else {
-    console.info("Operation stopBackgroundRunning succeeded");
+    console.info('Operation stopBackgroundRunning succeeded');
   }
 }
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
       backgroundTaskManager.stopBackgroundRunning(this.context, callback);
     } catch (error) {
@@ -70,7 +72,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="stopbackgroundrunning-1"></a>
+<a id="stopbackgroundrunning2"></a>
 
 ## stopBackgroundRunning
 
@@ -82,7 +84,7 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context): Promise<void>--><!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context): Promise<void>-End-->
 
@@ -119,13 +121,13 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
       backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-        console.info("Operation stopBackgroundRunning succeeded");
+        console.info('Operation stopBackgroundRunning succeeded');
       }).catch((error: BusinessError) => {
         console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
       });
@@ -137,7 +139,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="stopbackgroundrunning-2"></a>
+<a id="stopbackgroundrunning3"></a>
 
 ## stopBackgroundRunning
 
@@ -145,11 +147,11 @@ export default class EntryAbility extends UIAbility {
 function stopBackgroundRunning(context: Context, continuousTaskId: number): Promise<void>
 ```
 
-Cancels a continuous task with the specified ID. This API uses a promise to return the result. You can also call the [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md) API to cancel all continuous tasks in the current UIAbility.
+Cancels a continuous task with the specified ID. This API uses a promise to return the result. You can also call the [stopBackgroundRunning](#stopbackgroundrunning1) API to cancel all continuous tasks in the current UIAbility.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, continuousTaskId: int): Promise<void>--><!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, continuousTaskId: int): Promise<void>-End-->
 
@@ -160,7 +162,7 @@ Cancels a continuous task with the specified ID. This API uses a promise to retu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Application context. <br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md).<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model. |
-| continuousTaskId | number | Yes | Continuous task ID. <br>The value should be an integer. <br>Note: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-3) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks-1) API. |
+| continuousTaskId | number | Yes | Continuous task ID. <br>The value should be an integer. <br>Note: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning4) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks2) API. |
 
 **Return value:**
 
@@ -183,14 +185,14 @@ Cancels a continuous task with the specified ID. This API uses a promise to retu
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   continuousTaskId: number = 0;
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
       backgroundTaskManager.stopBackgroundRunning(this.context, this.continuousTaskId).then(() => {
-        console.info("Operation stopBackgroundRunning succeeded");
+        console.info('Operation stopBackgroundRunning succeeded');
       }).catch((error: BusinessError) => {
         console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
       });

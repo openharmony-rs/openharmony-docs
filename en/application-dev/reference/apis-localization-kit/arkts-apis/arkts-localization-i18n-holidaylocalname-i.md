@@ -30,7 +30,7 @@ Language, for example, **ar**, **en**, or **tr**.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HolidayLocalName-language: string--><!--Device-HolidayLocalName-language: string-End-->
 
@@ -48,7 +48,7 @@ Local name of a holiday. For example, the Turkish name of Sacrifice Feast is Kur
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HolidayLocalName-name: string--><!--Device-HolidayLocalName-name: string-End-->
 

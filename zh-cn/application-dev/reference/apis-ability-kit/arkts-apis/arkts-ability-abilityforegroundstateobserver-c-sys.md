@@ -36,6 +36,7 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 | --- | --- | --- | --- |
 | abilityStateData | [AbilityStateData](arkts-ability-abilitystatedata-c.md) | 是 | Ability状态信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
   console.error(`error code: ${code}, error msg: ${message}`);
 }
 ```
+
+<!--DelEnd-->

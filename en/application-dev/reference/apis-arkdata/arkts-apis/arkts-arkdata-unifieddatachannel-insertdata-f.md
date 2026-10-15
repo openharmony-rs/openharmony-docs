@@ -6,6 +6,8 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
+<a id="insertdata1"></a>
+
 ## insertData
 
 ```TypeScript
@@ -20,7 +22,7 @@ Implementation mechanism After receiving the UnifiedData object, the system veri
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-unifiedDataChannel-function insertData(options: Options, data: UnifiedData, callback: AsyncCallback<string>): void--><!--Device-unifiedDataChannel-function insertData(options: Options, data: UnifiedData, callback: AsyncCallback<string>): void-End-->
 
@@ -72,7 +74,7 @@ try {
 ```
 
 
-<a id="insertdata-1"></a>
+<a id="insertdata2"></a>
 
 ## insertData
 
@@ -86,7 +88,7 @@ Writes data to the public data channel of UDMF and generates a unique identifier
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-unifiedDataChannel-function insertData(options: Options, data: UnifiedData): Promise<string>--><!--Device-unifiedDataChannel-function insertData(options: Options, data: UnifiedData): Promise<string>-End-->
 

@@ -4,9 +4,9 @@
 declare class TapGestureHandler extends GestureHandler<TapGestureHandler>
 ```
 
-Defines a type of gesture handler object for tap gestures.
+Defines the tap gesture handler object type, which is used to recognize tap interactions on a component. It is suitable for touch scenarios such as single tap, multiple taps, or multi-finger tap, and supports configuring recognition conditions such as the tap count and the number of triggering fingers.
 
-**Inheritance/Implementation:** TapGestureHandler extends GestureHandler<TapGestureHandler>
+**Inheritance/Implementation:** TapGestureHandler extends GestureHandler&lt;TapGestureHandler&gt;
 
 **Since:** 12
 
@@ -36,7 +36,7 @@ Constructor used to create a tap gesture handler instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TapGestureHandlerOptions](arkts-arkui-tapgesture-comp-tapgesturehandleroptions-i.md) | No | Parameters of the tap gesture handler. |
+| options | [TapGestureHandlerOptions](arkts-arkui-tapgesture-comp-tapgesturehandleroptions-i.md) | No | Tap gesture handler configuration options. Pass this parameter when you need to customize the number of consecutive taps, the number of fingers that trigger the tap, the finger count check, or the tap gesture movement threshold. If this parameter is not passed, the default tap gesture handler configuration is used, for example, the number of consecutive taps is 1, the number of fingers that trigger the tap is 1, and the number of fingers touching the screen is not checked by default. |
 
 ## onAction
 

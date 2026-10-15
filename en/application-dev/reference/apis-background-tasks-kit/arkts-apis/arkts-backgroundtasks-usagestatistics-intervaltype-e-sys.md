@@ -14,17 +14,17 @@ Declares interval type.
 
 **System API:** This is a system API.
 
-## BY_OPTIMIZED
+## BY_ANNUALLY
 
 ```TypeScript
-BY_OPTIMIZED = 0
+BY_ANNUALLY = 4
 ```
 
-Indicates the interval type that will determine the optimal interval based on the start and end time.
+Indicates the annually interval.
 
 **Since:** 9
 
-<!--Device-IntervalType-BY_OPTIMIZED = 0--><!--Device-IntervalType-BY_OPTIMIZED = 0-End-->
+<!--Device-IntervalType-BY_ANNUALLY = 4--><!--Device-IntervalType-BY_ANNUALLY = 4-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -46,22 +46,6 @@ Indicates the daily interval.
 
 **System API:** This is a system API.
 
-## BY_WEEKLY
-
-```TypeScript
-BY_WEEKLY = 2
-```
-
-Indicates the weekly interval.
-
-**Since:** 9
-
-<!--Device-IntervalType-BY_WEEKLY = 2--><!--Device-IntervalType-BY_WEEKLY = 2-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
-
-**System API:** This is a system API.
-
 ## BY_MONTHLY
 
 ```TypeScript
@@ -78,17 +62,33 @@ Indicates the monthly interval.
 
 **System API:** This is a system API.
 
-## BY_ANNUALLY
+## BY_OPTIMIZED
 
 ```TypeScript
-BY_ANNUALLY = 4
+BY_OPTIMIZED = 0
 ```
 
-Indicates the annually interval.
+Indicates the interval type that will determine the optimal interval based on the start and end time.
 
 **Since:** 9
 
-<!--Device-IntervalType-BY_ANNUALLY = 4--><!--Device-IntervalType-BY_ANNUALLY = 4-End-->
+<!--Device-IntervalType-BY_OPTIMIZED = 0--><!--Device-IntervalType-BY_OPTIMIZED = 0-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**System API:** This is a system API.
+
+## BY_WEEKLY
+
+```TypeScript
+BY_WEEKLY = 2
+```
+
+Indicates the weekly interval.
+
+**Since:** 9
+
+<!--Device-IntervalType-BY_WEEKLY = 2--><!--Device-IntervalType-BY_WEEKLY = 2-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 

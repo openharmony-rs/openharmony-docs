@@ -38,6 +38,7 @@ function on(type: 'scanDeviceAdd', callback: Callback<ScannerDevice>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,6 +48,8 @@ scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
     console.info('scan device add: ' + JSON.stringify(device));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('scanDeviceDel')
@@ -81,6 +84,7 @@ function on(type: 'scanDeviceDel', callback: Callback<ScannerDevice>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -90,3 +94,5 @@ scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
     console.info('scan device delete: ' + JSON.stringify(device));
 });
 ```
+
+<!--DelEnd-->

@@ -48,6 +48,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,6 +56,8 @@ async function releaseDepthData(depthData: camera.DepthData): Promise<void> {
   await depthData.release();
 }
 ```
+
+<!--DelEnd-->
 
 ## dataAccuracy
 

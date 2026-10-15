@@ -6,7 +6,7 @@ declare class RichTextAttribute extends CommonMethod<RichTextAttribute>
 
 Defines the RichText attribute functions.
 
-**Inheritance/Implementation:** RichTextAttribute extends CommonMethod<RichTextAttribute>
+**Inheritance/Implementation:** RichTextAttribute extends CommonMethod&lt;RichTextAttribute&gt;
 
 **Since:** 8
 

@@ -30,7 +30,7 @@ Unusable areas (bounding rectangles) designed for punch holes and notches. If th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CutoutInfo-readonly boundingRects: Array<Rect>--><!--Device-CutoutInfo-readonly boundingRects: Array<Rect>-End-->
 
@@ -48,7 +48,7 @@ Curved area on a waterfall display.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CutoutInfo-readonly waterfallDisplayAreaRects: WaterfallDisplayAreaRects--><!--Device-CutoutInfo-readonly waterfallDisplayAreaRects: WaterfallDisplayAreaRects-End-->
 

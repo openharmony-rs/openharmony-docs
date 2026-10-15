@@ -4,7 +4,7 @@
 export declare class EditableLeftIconV2
 ```
 
-Declaration of the left icon configuration.
+Defines the left icon configuration class, which is decorated with **@ObservedV2** and supports state observation.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 constructor(options?: EditableLeftIconV2Options)
 ```
 
-Constructor of EditableLeftIconV2.
+A constructor used to create an **EditableLeftIconV2** instance.
 
 **Since:** 26.0.0
 
@@ -42,7 +42,7 @@ Constructor of EditableLeftIconV2.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EditableLeftIconV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticonv2options-i.md) | No | The options of the left icon |
+| options | [EditableLeftIconV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticonv2options-i.md) | No | Options for the left icon configuration.<br>Default value: **undefined**. If this parameter is not passed, the default configuration is used. |
 
 ## onAction
 
@@ -50,7 +50,9 @@ Constructor of EditableLeftIconV2.
 public onAction?: OnActionCallback
 ```
 
-Callback function when click on the left icon.
+Callback triggered when the left icon is tapped. If not set, the Back type performs route return by default, and the Cancel type has no operation.
+
+**Decorator:** @Trace
 
 **Since:** 26.0.0
 
@@ -70,7 +72,15 @@ Callback function when click on the left icon.
 public defaultFocus: boolean
 ```
 
-Whether to get focus by default.
+Whether to obtain focus by default.
+
+**true**: Obtains focus.
+
+**false**: Does not obtain focus.
+
+Default value: **false**. If multiple operable areas in the title bar are set as the default focus, the first one in display order among the operable areas set as the default focus is the default focus.
+
+**Decorator:** @Trace
 
 **Type:** boolean
 
@@ -94,7 +104,11 @@ Whether to get focus by default.
 public iconType: EditableLeftIconTypeV2
 ```
 
-Icon type, Back or Cancel.
+Type of the left icon, which determines the style and default tap behavior of the left icon. When the type is Back, route return is performed by default on tap. When the type is Cancel, there is no default operation on tap, and a custom callback must be configured through the **onAction** attribute.
+
+Default value: **EditableLeftIconTypeV2.Back**.
+
+**Decorator:** @Trace
 
 **Type:** [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md)
 

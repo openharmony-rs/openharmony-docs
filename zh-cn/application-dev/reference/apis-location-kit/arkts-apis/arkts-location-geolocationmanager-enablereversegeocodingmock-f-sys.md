@@ -35,6 +35,7 @@ function enableReverseGeocodingMock(): void
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 20+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->

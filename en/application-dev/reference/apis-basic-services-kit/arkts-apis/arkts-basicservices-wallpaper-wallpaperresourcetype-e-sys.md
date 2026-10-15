@@ -6,8 +6,6 @@ enum WallpaperResourceType
 
 Indicates the resource type of the wallpaper.
 
-@enum { int } WallpaperResourceType
-
 **Since:** 10
 
 <!--Device-wallpaper-enum WallpaperResourceType--><!--Device-wallpaper-enum WallpaperResourceType-End-->
@@ -27,6 +25,22 @@ Indicates the default wallpaper resource.
 **Since:** 10
 
 <!--Device-WallpaperResourceType-DEFAULT--><!--Device-WallpaperResourceType-DEFAULT-End-->
+
+**System capability:** SystemCapability.MiscServices.Wallpaper
+
+**System API:** This is a system API.
+
+## PACKAGE
+
+```TypeScript
+PACKAGE
+```
+
+Indicates the package wallpaper resource.
+
+**Since:** 10
+
+<!--Device-WallpaperResourceType-PACKAGE--><!--Device-WallpaperResourceType-PACKAGE-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
@@ -59,22 +73,6 @@ Indicates the video wallpaper resource.
 **Since:** 10
 
 <!--Device-WallpaperResourceType-VIDEO--><!--Device-WallpaperResourceType-VIDEO-End-->
-
-**System capability:** SystemCapability.MiscServices.Wallpaper
-
-**System API:** This is a system API.
-
-## PACKAGE
-
-```TypeScript
-PACKAGE
-```
-
-Indicates the package wallpaper resource.
-
-**Since:** 10
-
-<!--Device-WallpaperResourceType-PACKAGE--><!--Device-WallpaperResourceType-PACKAGE-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

@@ -28,22 +28,6 @@ Auto
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Scale
-
-```TypeScript
-Scale
-```
-
-放大缩小的效果。
-
-**起始版本：** 8
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-HoverEffect-Scale--><!--Device-HoverEffect-Scale-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Highlight
 
 ```TypeScript
@@ -73,5 +57,21 @@ None
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HoverEffect-None--><!--Device-HoverEffect-None-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Scale
+
+```TypeScript
+Scale
+```
+
+放大缩小的效果。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HoverEffect-Scale--><!--Device-HoverEffect-Scale-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

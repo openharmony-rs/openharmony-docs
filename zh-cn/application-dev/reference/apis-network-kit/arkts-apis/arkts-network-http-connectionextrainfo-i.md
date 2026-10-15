@@ -132,7 +132,7 @@ request请求过程中的客户端端口，取值范围[1, 65535]。
 networkProtocolName: string
 ```
 
-[request](arkts-network-http-httprequest-i.md#request)请求过程中的HTTP协议版本，如'HTTP/1.0'，'HTTP/1.1'，'HTTP/2'，'HTTP/2 over TLS'，'HTTP/3'，'Unknown/Non-HTTP'等。
+[request](arkts-network-http-httprequest-i.md#request1)请求过程中的HTTP协议版本，如'HTTP/1.0'，'HTTP/1.1'，'HTTP/2'，'HTTP/2 over TLS'，'HTTP/3'，'Unknown/Non-HTTP'等。
 
 **类型：** string
 

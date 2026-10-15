@@ -12,21 +12,21 @@ Preferred compatible mode.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## DEFAULT
+## COMPATIBLE
 
 ```TypeScript
-DEFAULT = 0
+COMPATIBLE = 2
 ```
 
-Performs transcoding based on the configured asset compatibility capabilities.
+All assets are transcoded to the most widely compatible format.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-<!--Device-PreferredCompatibleMode-DEFAULT = 0--><!--Device-PreferredCompatibleMode-DEFAULT = 0-End-->
+<!--Device-PreferredCompatibleMode-COMPATIBLE = 2--><!--Device-PreferredCompatibleMode-COMPATIBLE = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -42,26 +42,26 @@ No transcoding is performed. The asset is returned in its original format.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-PreferredCompatibleMode-CURRENT = 1--><!--Device-PreferredCompatibleMode-CURRENT = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## COMPATIBLE
+## DEFAULT
 
 ```TypeScript
-COMPATIBLE = 2
+DEFAULT = 0
 ```
 
-All assets are transcoded to the most widely compatible format.
+Performs transcoding based on the configured asset compatibility capabilities.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-<!--Device-PreferredCompatibleMode-COMPATIBLE = 2--><!--Device-PreferredCompatibleMode-COMPATIBLE = 2-End-->
+<!--Device-PreferredCompatibleMode-DEFAULT = 0--><!--Device-PreferredCompatibleMode-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

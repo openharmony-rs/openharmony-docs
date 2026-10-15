@@ -6,19 +6,21 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querycontactsbyphonenumber1"></a>
+
 ## queryContactsByPhoneNumber
 
 ```TypeScript
 function queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-1)(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber2)(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -50,7 +52,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', (err: BusinessError, data) => 
 ```
 
 
-<a id="querycontactsbyphonenumber-1"></a>
+<a id="querycontactsbyphonenumber2"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -58,7 +60,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', (err: BusinessError, data) => 
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 10
 
@@ -106,7 +108,7 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', (err: BusinessError, 
 ```
 
 
-<a id="querycontactsbyphonenumber-2"></a>
+<a id="querycontactsbyphonenumber3"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -114,13 +116,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', (err: BusinessError, 
 function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-3)(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber4)(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -157,7 +159,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', {
 ```
 
 
-<a id="querycontactsbyphonenumber-3"></a>
+<a id="querycontactsbyphonenumber4"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -165,7 +167,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', {
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 10
 
@@ -218,7 +220,7 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 ```
 
 
-<a id="querycontactsbyphonenumber-4"></a>
+<a id="querycontactsbyphonenumber5"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -226,13 +228,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 function queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-5)(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber6)(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -266,7 +268,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', {
 ```
 
 
-<a id="querycontactsbyphonenumber-5"></a>
+<a id="querycontactsbyphonenumber6"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -274,7 +276,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', {
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 10
 
@@ -325,7 +327,7 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 ```
 
 
-<a id="querycontactsbyphonenumber-6"></a>
+<a id="querycontactsbyphonenumber7"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -333,13 +335,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-7)(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber8)(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -378,7 +380,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', {
 ```
 
 
-<a id="querycontactsbyphonenumber-7"></a>
+<a id="querycontactsbyphonenumber8"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -387,7 +389,7 @@ function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holde
     callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 10
 
@@ -443,7 +445,7 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 ```
 
 
-<a id="querycontactsbyphonenumber-8"></a>
+<a id="querycontactsbyphonenumber9"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -451,13 +453,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 function queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-9)(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
+**Substitutes:** [queryContactsByPhoneNumber](#querycontactsbyphonenumber10)(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -497,7 +499,7 @@ promise.then((data) => {
 ```
 
 
-<a id="querycontactsbyphonenumber-9"></a>
+<a id="querycontactsbyphonenumber10"></a>
 
 ## queryContactsByPhoneNumber
 
@@ -505,7 +507,7 @@ promise.then((data) => {
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-7) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 **Since:** 10
 

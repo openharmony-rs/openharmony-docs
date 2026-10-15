@@ -30,7 +30,7 @@ Get the file path
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ExternalLogWrapper-getFilePath(): string--><!--Device-ExternalLogWrapper-getFilePath(): string-End-->
 
@@ -54,7 +54,7 @@ Get the generation time point (ms) of the file
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ExternalLogWrapper-getGenerationTime(): long--><!--Device-ExternalLogWrapper-getGenerationTime(): long-End-->
 
@@ -78,7 +78,7 @@ Get the file size in kb
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ExternalLogWrapper-getSizeInKb(): long--><!--Device-ExternalLogWrapper-getSizeInKb(): long-End-->
 
@@ -102,7 +102,7 @@ Get the system event of the file
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ExternalLogWrapper-getSysEvent(): string--><!--Device-ExternalLogWrapper-getSysEvent(): string-End-->
 

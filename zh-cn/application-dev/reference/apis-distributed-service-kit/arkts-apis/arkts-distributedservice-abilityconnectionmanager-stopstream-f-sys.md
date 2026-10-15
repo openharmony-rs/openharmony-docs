@@ -37,6 +37,7 @@ function stopStream(streamId: number): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,3 +48,5 @@ let streamId = 100;
 hilog.info(0x0000, 'testTag', 'stopStream called');
 abilityConnectionManager.stopStream(streamId);
 ```
+
+<!--DelEnd-->

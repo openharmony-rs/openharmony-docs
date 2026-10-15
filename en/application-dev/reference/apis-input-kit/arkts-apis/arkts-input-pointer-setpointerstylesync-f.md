@@ -25,14 +25,14 @@ Sets the mouse pointer style type for a specified window and returns the result 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | windowId | number | Yes | Window ID. The value is an integer greater than or equal to 0. <br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window can be set properly. <br>If the window ID is valid but the window does not exist, the mouse pointer style can also be set properly. <br>The result can be obtained through [getPointerStyleSync](arkts-input-pointer-getpointerstylesync-f.md). |
-| pointerStyle | [PointerStyle](arkts-input-pointer-pointerstyle-e.md) | Yes | Pointer style. |
+| pointerStyle | [PointerStyle](arkts-input-pointer-pointerstyle-e.md) | Yes | Mouse pointer style. DEVELOPER_DEFINED_ICON cannot be passed in as a parameter. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br> When the windowId value is -1, the system permission is required to set the global style.  **ArkTS mode:** This error code applies only to ArkTS-Sta. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br> When the windowId value is -1, the system permission is required to set the global style.  **ArkTS mode:** This error code applies only to ArkTS-Sta. |
 
 **Examples**
 

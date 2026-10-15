@@ -6,8 +6,6 @@ declare enum ReusableMemOptStrategy
 
 可复用自定义组件内存优化策略枚举。
 
-@enum { number }
-
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-declare enum ReusableMemOptStrategy--><!--Device-unnamed-declare enum ReusableMemOptStrategy-End-->

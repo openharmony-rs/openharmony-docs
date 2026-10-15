@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="connectprinter1"></a>
+
 ## connectPrinter
 
 ```TypeScript
@@ -56,7 +58,7 @@ print.connectPrinter(printerId, (error: BusinessError) => {
 ```
 
 
-<a id="connectprinter-1"></a>
+<a id="connectprinter2"></a>
 
 ## connectPrinter
 

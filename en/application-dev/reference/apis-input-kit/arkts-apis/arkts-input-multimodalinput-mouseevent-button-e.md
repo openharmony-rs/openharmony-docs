@@ -12,6 +12,48 @@ Enumerates mouse buttons.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
+## BACK
+
+```TypeScript
+BACK = 6
+```
+
+Back button.
+
+**Since:** 9
+
+<!--Device-Button-BACK = 6--><!--Device-Button-BACK = 6-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## EXTRA
+
+```TypeScript
+EXTRA = 4
+```
+
+Extended button.
+
+**Since:** 9
+
+<!--Device-Button-EXTRA = 4--><!--Device-Button-EXTRA = 4-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## FORWARD
+
+```TypeScript
+FORWARD = 5
+```
+
+Forward button.
+
+**Since:** 9
+
+<!--Device-Button-FORWARD = 5--><!--Device-Button-FORWARD = 5-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
 ## LEFT
 
 ```TypeScript
@@ -65,48 +107,6 @@ Side button.
 **Since:** 9
 
 <!--Device-Button-SIDE = 3--><!--Device-Button-SIDE = 3-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-## EXTRA
-
-```TypeScript
-EXTRA = 4
-```
-
-Extended button.
-
-**Since:** 9
-
-<!--Device-Button-EXTRA = 4--><!--Device-Button-EXTRA = 4-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-## FORWARD
-
-```TypeScript
-FORWARD = 5
-```
-
-Forward button.
-
-**Since:** 9
-
-<!--Device-Button-FORWARD = 5--><!--Device-Button-FORWARD = 5-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-## BACK
-
-```TypeScript
-BACK = 6
-```
-
-Back button.
-
-**Since:** 9
-
-<!--Device-Button-BACK = 6--><!--Device-Button-BACK = 6-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 

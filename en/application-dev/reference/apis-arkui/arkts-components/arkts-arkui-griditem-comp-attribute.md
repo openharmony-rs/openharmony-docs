@@ -4,7 +4,7 @@
 declare class GridItemAttribute extends CommonMethod<GridItemAttribute>
 ```
 
-**Inheritance/Implementation:** GridItemAttribute extends CommonMethod<GridItemAttribute>
+**Inheritance/Implementation:** GridItemAttribute extends CommonMethod&lt;GridItemAttribute&gt;
 
 **Since:** 7
 

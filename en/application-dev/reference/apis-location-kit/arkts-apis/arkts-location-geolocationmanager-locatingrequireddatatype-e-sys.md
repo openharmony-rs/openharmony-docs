@@ -14,22 +14,6 @@ Enum for locating required data type.
 
 **System API:** This is a system API.
 
-## WIFI
-
-```TypeScript
-WIFI = 1
-```
-
-Obtains WiFi scanning information for locating.
-
-**Since:** 10
-
-<!--Device-LocatingRequiredDataType-WIFI = 1--><!--Device-LocatingRequiredDataType-WIFI = 1-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-**System API:** This is a system API.
-
 ## BLUETOOTH
 
 ```TypeScript
@@ -57,6 +41,22 @@ Obtaining cellular cell information for locating.
 **Since:** 23
 
 <!--Device-LocatingRequiredDataType-CELLULAR = 3--><!--Device-LocatingRequiredDataType-CELLULAR = 3-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+**System API:** This is a system API.
+
+## WIFI
+
+```TypeScript
+WIFI = 1
+```
+
+Obtains WiFi scanning information for locating.
+
+**Since:** 10
+
+<!--Device-LocatingRequiredDataType-WIFI = 1--><!--Device-LocatingRequiredDataType-WIFI = 1-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

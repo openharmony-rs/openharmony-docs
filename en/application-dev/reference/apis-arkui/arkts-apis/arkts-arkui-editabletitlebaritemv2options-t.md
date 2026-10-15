@@ -4,7 +4,9 @@
 export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 ```
 
-Indicates the options of the image item.
+Defines the type alias of the left avatar item configuration options.
+
+**Type:** [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md)
 
 **Since:** 26.0.0
 
@@ -15,5 +17,3 @@ Indicates the options of the image item.
 <!--Device-unnamed-export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options--><!--Device-unnamed-export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md)

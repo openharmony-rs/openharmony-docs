@@ -4,7 +4,7 @@
 export declare interface EditableSaveButtonV2Options
 ```
 
-Indicates the options of the save button.
+Defines the save button configuration options.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 onAction?: OnActionCallback
 ```
 
-Callback function when click on the save button.
+Callback triggered when the save button is tapped. If not set, no response occurs when the button is tapped.
 
 **Since:** 26.0.0
 
@@ -42,7 +42,13 @@ Callback function when click on the save button.
 defaultFocus?: boolean
 ```
 
-Whether to get focus by default.
+Whether to obtain focus by default.
+
+**true**: yes.
+
+**false**: no.
+
+Default value: **false**.
 
 **Type:** boolean
 
@@ -64,7 +70,13 @@ Whether to get focus by default.
 isRequired?: boolean
 ```
 
-Whether to show the save button.
+Whether to display the save button.
+
+**true**: yes.
+
+**false**: no.
+
+Default value: **true**.
 
 **Type:** boolean
 

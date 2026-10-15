@@ -30,7 +30,7 @@ decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Kem-decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>--><!--Device-Kem-decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>-End-->
 
@@ -94,7 +94,7 @@ decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Kem-decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array--><!--Device-Kem-decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array-End-->
 
@@ -156,7 +156,7 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Kem-encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>--><!--Device-Kem-encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>-End-->
 
@@ -220,7 +220,7 @@ encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Kem-encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult--><!--Device-Kem-encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult-End-->
 

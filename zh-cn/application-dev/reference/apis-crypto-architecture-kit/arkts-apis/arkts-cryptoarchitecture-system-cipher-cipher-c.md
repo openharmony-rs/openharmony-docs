@@ -10,7 +10,7 @@ export default class Cipher
 
 **废弃版本：** 9
 
-**替代接口：** Cipher
+**替代接口：** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-unnamed-export default class Cipher--><!--Device-unnamed-export default class Cipher-End-->
 
@@ -34,7 +34,7 @@ static aes(options: CipherAesOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** Cipher
+**替代接口：** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-Cipher-static aes(options: CipherAesOptions): void--><!--Device-Cipher-static aes(options: CipherAesOptions): void-End-->
 
@@ -58,7 +58,7 @@ static rsa(options: CipherRsaOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** Cipher
+**替代接口：** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-Cipher-static rsa(options: CipherRsaOptions): void--><!--Device-Cipher-static rsa(options: CipherRsaOptions): void-End-->
 

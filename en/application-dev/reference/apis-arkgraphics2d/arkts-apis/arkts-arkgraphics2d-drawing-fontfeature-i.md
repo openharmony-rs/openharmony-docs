@@ -30,7 +30,7 @@ Name of a font feature. Common font feature names include **liga**, **frac**, an
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontFeature-name: string--><!--Device-FontFeature-name: string-End-->
 
@@ -48,7 +48,7 @@ Value of a font feature, which is a floating point number. You are advised to de
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontFeature-value: double--><!--Device-FontFeature-value: double-End-->
 

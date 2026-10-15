@@ -6,6 +6,8 @@
 import { formObserver } from '@kit.FormKit';
 ```
 
+<a id="getrunningforminfos1"></a>
+
 ## getRunningFormInfos
 
 ```TypeScript
@@ -41,6 +43,7 @@ function getRunningFormInfos(callback: AsyncCallback<Array<formInfo.RunningFormI
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getrunningforminfos-1"></a>
+
+<a id="getrunningforminfos2"></a>
 
 ## getRunningFormInfos
 
@@ -105,6 +110,7 @@ function getRunningFormInfos(
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,8 +132,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getrunningforminfos-2"></a>
+
+<a id="getrunningforminfos3"></a>
 
 ## getRunningFormInfos
 
@@ -169,6 +177,7 @@ function getRunningFormInfos(hostBundleName?: string): Promise<Array<formInfo.Ru
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -186,8 +195,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getrunningforminfos-3"></a>
+
+<a id="getrunningforminfos4"></a>
 
 ## getRunningFormInfos
 
@@ -233,6 +244,7 @@ function getRunningFormInfos(
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -249,3 +261,5 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -62,22 +62,6 @@ Indicates the fixed group.
 
 **System API:** This is a system API.
 
-## RARE_GROUP
-
-```TypeScript
-RARE_GROUP = 40
-```
-
-Indicates the rare group.
-
-**Since:** 9
-
-<!--Device-GroupType-RARE_GROUP = 40--><!--Device-GroupType-RARE_GROUP = 40-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
-
-**System API:** This is a system API.
-
 ## LIMITED_GROUP
 
 ```TypeScript
@@ -105,6 +89,22 @@ Indicates the never group.
 **Since:** 9
 
 <!--Device-GroupType-NEVER_GROUP = 60--><!--Device-GroupType-NEVER_GROUP = 60-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**System API:** This is a system API.
+
+## RARE_GROUP
+
+```TypeScript
+RARE_GROUP = 40
+```
+
+Indicates the rare group.
+
+**Since:** 9
+
+<!--Device-GroupType-RARE_GROUP = 40--><!--Device-GroupType-RARE_GROUP = 40-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 

@@ -70,7 +70,7 @@ Whether to enable haptic feedback during dragging.
 
 **true**: Enable haptic feedback during dragging.
 
-**false**: Disable haptic feedback during dragging. This parameter is effective only for previews with masks (configured using [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)).
+**false**: Disable haptic feedback during dragging. This parameter is effective only for previews with masks (configured using [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)).
 
 Note: The settings take effect only when the application has the **ohos.permission.VIBRATE** permission and the user has enabled haptic feedback.
 
@@ -100,7 +100,7 @@ Whether to disable the lift animation effect during dragging.
 
 **false**: Enable the lifting effect during dragging.
 
-With the value **true**, only the custom menu preview (set using [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)), also known as the long-press preview, is displayed if both the long-press preview and drag preview are configured.
+With the value **true**, only the custom menu preview (set using [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1)), also known as the long-press preview, is displayed if both the long-press preview and drag preview are configured.
 
 Default value: **false**
 
@@ -126,7 +126,7 @@ isMultiSelectionEnabled?: boolean
 
 Whether to enable multi-select clustering during drag operations. **true** to enable, **false** otherwise. This parameter takes effect only for the [grid items](arkts-arkui-griditem-comp.md) and [list items](arkts-arkui-listitem-comp.md) in the [Grid](arkts-arkui-grid-comp.md) and [List](arkts-arkui-list-comp.md) containers.
 
-When this feature is enabled, child components cannot be dragged individually. Preview priority: string in [dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview) &gt; PixelMap in **dragPreview**  
+When this feature is enabled, child components cannot be dragged individually. Preview priority: string in [dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview1) &gt; PixelMap in **dragPreview**  
 > component snapshot. Builder previews not supported.
 
 This parameter is incompatible with bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12) using **isShown** parameter.

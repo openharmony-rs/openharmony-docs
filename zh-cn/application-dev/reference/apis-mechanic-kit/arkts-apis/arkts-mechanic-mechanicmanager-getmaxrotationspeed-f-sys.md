@@ -42,6 +42,7 @@ Obtains the maximum rotation speed of a mechanical device.
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ console.info('Query rotation speed');
 let speedLimit: mechanicManager.RotationSpeed = mechanicManager.getMaxRotationSpeed(0);
 console.info(`'Query rotation speed successful, speed limit information:' ${speedLimit}`);
 ```
+
+<!--DelEnd-->

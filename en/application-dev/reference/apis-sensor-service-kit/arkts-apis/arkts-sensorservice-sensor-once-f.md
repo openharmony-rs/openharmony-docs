@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="once1"></a>
+
 ## once
 
 ```TypeScript
@@ -57,7 +59,7 @@ try {
 ```
 
 
-<a id="once-1"></a>
+<a id="once2"></a>
 
 ## once
 
@@ -113,7 +115,7 @@ try {
 ```
 
 
-<a id="once-2"></a>
+<a id="once3"></a>
 
 ## once
 
@@ -161,7 +163,7 @@ try {
 ```
 
 
-<a id="once-3"></a>
+<a id="once4"></a>
 
 ## once
 
@@ -209,7 +211,7 @@ try {
 ```
 
 
-<a id="once-4"></a>
+<a id="once5"></a>
 
 ## once
 
@@ -257,7 +259,7 @@ try {
 ```
 
 
-<a id="once-5"></a>
+<a id="once6"></a>
 
 ## once
 
@@ -307,7 +309,7 @@ try {
 ```
 
 
-<a id="once-6"></a>
+<a id="once7"></a>
 
 ## once
 
@@ -360,7 +362,7 @@ try {
 ```
 
 
-<a id="once-7"></a>
+<a id="once8"></a>
 
 ## once
 
@@ -416,7 +418,7 @@ try {
 ```
 
 
-<a id="once-8"></a>
+<a id="once9"></a>
 
 ## once
 
@@ -464,7 +466,7 @@ try {
 ```
 
 
-<a id="once-9"></a>
+<a id="once10"></a>
 
 ## once
 
@@ -515,7 +517,7 @@ try {
 ```
 
 
-<a id="once-10"></a>
+<a id="once11"></a>
 
 ## once
 
@@ -563,7 +565,7 @@ try {
 ```
 
 
-<a id="once-11"></a>
+<a id="once12"></a>
 
 ## once
 
@@ -616,7 +618,7 @@ try {
 ```
 
 
-<a id="once-12"></a>
+<a id="once13"></a>
 
 ## once
 
@@ -666,7 +668,7 @@ try {
 ```
 
 
-<a id="once-13"></a>
+<a id="once14"></a>
 
 ## once
 
@@ -719,7 +721,7 @@ try {
 ```
 
 
-<a id="once-14"></a>
+<a id="once15"></a>
 
 ## once
 
@@ -769,7 +771,7 @@ try {
 ```
 
 
-<a id="once-15"></a>
+<a id="once16"></a>
 
 ## once
 
@@ -825,7 +827,7 @@ try {
 ```
 
 
-<a id="once-16"></a>
+<a id="once17"></a>
 
 ## once
 
@@ -876,7 +878,7 @@ try {
 ```
 
 
-<a id="once-17"></a>
+<a id="once18"></a>
 
 ## once
 
@@ -924,7 +926,7 @@ try {
 ```
 
 
-<a id="once-18"></a>
+<a id="once19"></a>
 
 ## once
 
@@ -975,7 +977,7 @@ try {
 ```
 
 
-<a id="once-19"></a>
+<a id="once20"></a>
 
 ## once
 
@@ -1023,7 +1025,7 @@ try {
 ```
 
 
-<a id="once-20"></a>
+<a id="once21"></a>
 
 ## once
 
@@ -1071,7 +1073,7 @@ try {
 ```
 
 
-<a id="once-21"></a>
+<a id="once22"></a>
 
 ## once
 
@@ -1084,14 +1086,14 @@ Subscribes to only one data change of the acceleration sensor. This method appli
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.ACCELEROMETER](arkts-sensorservice-sensor-once-f.md)
+> [sensor.once.ACCELEROMETER](#once1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](arkts-sensorservice-sensor-once-f.md)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;)
+**Substitutes:** [once](#once1)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1119,7 +1121,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accele
 ```
 
 
-<a id="once-22"></a>
+<a id="once23"></a>
 
 ## once
 
@@ -1132,14 +1134,14 @@ Subscribes to only one data change of the uncalibrated acceleration sensor. This
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.ACCELEROMETER_UNCALIBRATED](#once-1)
+> [sensor.once.ACCELEROMETER_UNCALIBRATED](#once2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-1)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;)
+**Substitutes:** [once](#once2)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1170,7 +1172,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: 
 ```
 
 
-<a id="once-23"></a>
+<a id="once24"></a>
 
 ## once
 
@@ -1183,14 +1185,14 @@ Subscribes to only one data change of the ambient light sensor. This method appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.AMBIENT_LIGHT](#once-2)
+> [sensor.once.AMBIENT_LIGHT](#once3)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-2)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;)
+**Substitutes:** [once](#once3)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>): void-End-->
 
@@ -1214,7 +1216,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightR
 ```
 
 
-<a id="once-24"></a>
+<a id="once25"></a>
 
 ## once
 
@@ -1227,14 +1229,14 @@ Subscribes to only one data change of the ambient temperature sensor. This metho
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.AMBIENT_TEMPERATURE](#once-3)
+> [sensor.once.AMBIENT_TEMPERATURE](#once4)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-3)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;)
+**Substitutes:** [once](#once4)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>): void-End-->
 
@@ -1258,7 +1260,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.
 ```
 
 
-<a id="once-25"></a>
+<a id="once26"></a>
 
 ## once
 
@@ -1271,14 +1273,14 @@ Subscribes to only one data change of the barometer sensor. This method applies 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.BAROMETER](#once-4)
+> [sensor.once.BAROMETER](#once5)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-4)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;)
+**Substitutes:** [once](#once5)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>): void-End-->
 
@@ -1302,7 +1304,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerR
 ```
 
 
-<a id="once-26"></a>
+<a id="once27"></a>
 
 ## once
 
@@ -1315,14 +1317,14 @@ Subscribes to only one data change of the gravity sensor. This method applies to
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.GRAVITY](#once-5)
+> [sensor.once.GRAVITY](#once6)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-5)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;)
+**Substitutes:** [once](#once6)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>): void-End-->
 
@@ -1348,7 +1350,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespo
 ```
 
 
-<a id="once-27"></a>
+<a id="once28"></a>
 
 ## once
 
@@ -1361,14 +1363,14 @@ Subscribes to only one data change of the gyroscope sensor. This method applies 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.GYROSCOPE](#once-6)
+> [sensor.once.GYROSCOPE](#once7)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-6)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;)
+**Substitutes:** [once](#once7)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -1396,7 +1398,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeR
 ```
 
 
-<a id="once-28"></a>
+<a id="once29"></a>
 
 ## once
 
@@ -1409,14 +1411,14 @@ Subscribes to only one data change of the uncalibrated gyroscope sensor. This me
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.GYROSCOPE_UNCALIBRATED](#once-7)
+> [sensor.once.GYROSCOPE_UNCALIBRATED](#once8)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-7)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;)
+**Substitutes:** [once](#once8)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -1447,7 +1449,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sens
 ```
 
 
-<a id="once-29"></a>
+<a id="once30"></a>
 
 ## once
 
@@ -1460,14 +1462,14 @@ Subscribes to only one data change of the Hall effect sensor. This method applie
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.HALL](#once-8)
+> [sensor.once.HALL](#once9)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-8)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;)
+**Substitutes:** [once](#once9)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>): void-End-->
 
@@ -1491,7 +1493,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) =
 ```
 
 
-<a id="once-30"></a>
+<a id="once31"></a>
 
 ## once
 
@@ -1504,14 +1506,14 @@ Subscribes to only one data change of the heart rate sensor. This method applies
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.HEART_RATE](#once-9)
+> [sensor.once.HEART_RATE](#once10)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-9)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;)
+**Substitutes:** [once](#once10)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;)
 
 **Required permissions:** ohos.permission.HEART_RATE
 
@@ -1537,7 +1539,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, (data: sensor.HeartRate
 ```
 
 
-<a id="once-31"></a>
+<a id="once32"></a>
 
 ## once
 
@@ -1550,14 +1552,14 @@ Subscribes to only one data change of the humidity sensor. This method applies t
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.HUMIDITY](#once-10)
+> [sensor.once.HUMIDITY](#once11)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-10)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;)
+**Substitutes:** [once](#once11)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>): void-End-->
 
@@ -1581,7 +1583,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRes
 ```
 
 
-<a id="once-32"></a>
+<a id="once33"></a>
 
 ## once
 
@@ -1594,14 +1596,14 @@ Subscribes to only one data change of the linear acceleration sensor. This metho
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.LINEAR_ACCELEROMETER](#once-11)
+> [sensor.once.LINEAR_ACCELEROMETER](#once12)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-11)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;)
+**Substitutes:** [once](#once12)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1617,7 +1619,7 @@ Subscribes to only one data change of the linear acceleration sensor. This metho
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LinearAccelerometerResponse](arkts-sensorservice-sensor-linearaccelerometerresponse-i.md)&gt; | Yes | One-shot callback used to return the linear acceleration sensor data. The reported data type in the callback is **LinearAccelerometerResponse**. |
 
 
-<a id="once-33"></a>
+<a id="once34"></a>
 
 ## once
 
@@ -1630,14 +1632,14 @@ Subscribes to only one data change of the magnetic field sensor. This method app
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.MAGNETIC_FIELD](#once-12)
+> [sensor.once.MAGNETIC_FIELD](#once13)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-12)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;)
+**Substitutes:** [once](#once13)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>): void-End-->
 
@@ -1663,7 +1665,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magne
 ```
 
 
-<a id="once-34"></a>
+<a id="once35"></a>
 
 ## once
 
@@ -1676,14 +1678,14 @@ Subscribes to only one data change of the uncalibrated magnetic field sensor. Th
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#once-13)
+> [sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#once14)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-13)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
+**Substitutes:** [once](#once14)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>): void-End-->
 
@@ -1712,7 +1714,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data:
 ```
 
 
-<a id="once-35"></a>
+<a id="once36"></a>
 
 ## once
 
@@ -1725,14 +1727,14 @@ Subscribes to only one data change of the orientation sensor. This method applie
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.ORIENTATION](#once-14)
+> [sensor.once.ORIENTATION](#once15)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-14)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;)
+**Substitutes:** [once](#once15)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>): void-End-->
 
@@ -1758,7 +1760,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientat
 ```
 
 
-<a id="once-36"></a>
+<a id="once37"></a>
 
 ## once
 
@@ -1771,14 +1773,14 @@ Subscribes to only one data change of the pedometer sensor. This method applies 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.PEDOMETER](#once-15)
+> [sensor.once.PEDOMETER](#once16)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-15)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;)
+**Substitutes:** [once](#once16)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -1804,7 +1806,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerR
 ```
 
 
-<a id="once-37"></a>
+<a id="once38"></a>
 
 ## once
 
@@ -1817,14 +1819,14 @@ Subscribes to only one data change of the pedometer detection sensor. This metho
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.PEDOMETER_DETECTION](#once-16)
+> [sensor.once.PEDOMETER_DETECTION](#once17)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-16)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;)
+**Substitutes:** [once](#once17)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -1850,7 +1852,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.
 ```
 
 
-<a id="once-38"></a>
+<a id="once39"></a>
 
 ## once
 
@@ -1863,14 +1865,14 @@ Subscribes to only one data change of the proximity sensor. This method applies 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.PROXIMITY](#once-17)
+> [sensor.once.PROXIMITY](#once18)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-17)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;)
+**Substitutes:** [once](#once18)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>): void-End-->
 
@@ -1895,7 +1897,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityR
 ```
 
 
-<a id="once-39"></a>
+<a id="once40"></a>
 
 ## once
 
@@ -1908,14 +1910,14 @@ Subscribes to only one data change of the rotation vector sensor. This method ap
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.ROTATION_VECTOR](#once-18)
+> [sensor.once.ROTATION_VECTOR](#once19)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-18)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;)
+**Substitutes:** [once](#once19)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>): void-End-->
 
@@ -1942,7 +1944,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rota
 ```
 
 
-<a id="once-40"></a>
+<a id="once41"></a>
 
 ## once
 
@@ -1955,14 +1957,14 @@ Subscribes to only one data change of the significant motion sensor. This method
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.SIGNIFICANT_MOTION](#once-19)
+> [sensor.once.SIGNIFICANT_MOTION](#once20)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-19)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;)
+**Substitutes:** [once](#once20)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>): void-End-->
 
@@ -1986,7 +1988,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.S
 ```
 
 
-<a id="once-41"></a>
+<a id="once42"></a>
 
 ## once
 
@@ -1999,14 +2001,14 @@ Subscribes to only one data change of the wear detection sensor. This method app
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.once.WEAR_DETECTION](#once-20)
+> [sensor.once.WEAR_DETECTION](#once21)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [once](#once-20)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;)
+**Substitutes:** [once](#once21)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;)
 
 <!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>): void--><!--Device-sensor-function once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>): void-End-->
 

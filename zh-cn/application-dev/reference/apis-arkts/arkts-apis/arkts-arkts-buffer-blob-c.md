@@ -4,7 +4,7 @@
 class Blob
 ```
 
-将数据处理为blob类型。
+将数据处理为不可变的blob类型，用于封装大量二进制数据。
 
 **起始版本：** 9
 
@@ -28,7 +28,7 @@ arrayBuffer(): Promise<ArrayBuffer>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>--><!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>-End-->
 
@@ -102,7 +102,7 @@ slice(start?: number, end?: number, type?: string): Blob
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob--><!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob-End-->
 
@@ -143,7 +143,7 @@ text(): Promise<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Blob-text(): Promise<string>--><!--Device-Blob-text(): Promise<string>-End-->
 
@@ -180,7 +180,7 @@ Blob实例的总字节大小。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Blob-get size(): int--><!--Device-Blob-get size(): int-End-->
 
@@ -198,7 +198,7 @@ Blob实例的内容类型。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Blob-get type(): string--><!--Device-Blob-get type(): string-End-->
 

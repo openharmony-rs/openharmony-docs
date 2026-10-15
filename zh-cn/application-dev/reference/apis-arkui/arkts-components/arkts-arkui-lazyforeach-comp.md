@@ -173,3 +173,81 @@ struct MemoryOptimizeDemo {
   }
 }
 ```
+
+### 示例2（主动清理预加载的子组件）
+
+以下示例中，通过[LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md)的controller属性绑定了[LazyForEachController](#lazyforeachcontroller)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
+
+从API版本26.2.0开始，LazyForEachOptions新增controller属性。
+
+BasicDataSource代码见LazyForEach开发者指南末尾BasicDataSource示例代码：[string类型数组的BasicDataSource代码](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#string类型数组的basicdatasource代码)。
+
+```TypeScript
+import { BasicDataSource } from './BasicDataSource';
+
+class DataSource extends BasicDataSource {
+  public dataArray: string[] = [];
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Component
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@Component
+struct ClearCacheDemo {
+  private data: DataSource = new DataSource();
+  // 创建LazyForEachController对象
+  private controller: LazyForEachController = new LazyForEachController();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.pushData(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        // 通过LazyForEachOptions的controller字段绑定控制器
+        LazyForEach(this.data,
+          (item: string, index: number) => {
+            ListItem() {
+              ChildComponent()
+            }
+          },
+          (item: string, index: number) => item,
+          { controller: this.controller }
+        )
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理LazyForEach预加载的子组件
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```

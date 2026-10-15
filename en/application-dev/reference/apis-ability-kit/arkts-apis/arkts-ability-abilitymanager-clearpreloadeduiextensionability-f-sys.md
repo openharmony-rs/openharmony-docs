@@ -42,11 +42,12 @@ Clears a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiext
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not system-app, can not use system-api. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000003](../errorcode-ability.md#16000003-id-does-not-exist) | The specified ID does not exist. Possible causes: 1.The specified ID is incorrect; 2.The preloaded UIExtensionAbility has been loaded; 3.The preloaded UIExtensionAbility has been destroyed; |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,3 +70,5 @@ try {
   console.error(`clearPreloadedUIExtensionAbility failed, code is ${code}, message is ${message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -28,22 +28,6 @@ TRANSPORT_BR_EDR = 0
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## TRANSPORT_LE
-
-```TypeScript
-TRANSPORT_LE = 1
-```
-
-低功耗蓝牙（Bluetooth Low Energy，BLE）设备传输方式。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BluetoothTransport-TRANSPORT_LE = 1--><!--Device-BluetoothTransport-TRANSPORT_LE = 1-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## TRANSPORT_DUAL
 
 ```TypeScript
@@ -57,6 +41,22 @@ TRANSPORT_DUAL = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BluetoothTransport-TRANSPORT_DUAL = 2--><!--Device-BluetoothTransport-TRANSPORT_DUAL = 2-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## TRANSPORT_LE
+
+```TypeScript
+TRANSPORT_LE = 1
+```
+
+低功耗蓝牙（Bluetooth Low Energy，BLE）设备传输方式。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BluetoothTransport-TRANSPORT_LE = 1--><!--Device-BluetoothTransport-TRANSPORT_LE = 1-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

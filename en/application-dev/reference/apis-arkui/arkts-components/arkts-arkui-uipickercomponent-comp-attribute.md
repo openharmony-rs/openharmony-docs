@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** UIPickerComponentAttribute extends CommonMethod<UIPickerComponentAttribute>
+**Inheritance/Implementation:** UIPickerComponentAttribute extends CommonMethod&lt;UIPickerComponentAttribute&gt;
 
 **Since:** 22
 
@@ -46,7 +46,7 @@ Sets whether the option list can loop scrolling. When there are many options and
 displayedItemCount(count: Optional<number>)
 ```
 
-Sets the number of visible options in the **UIPickerComponent** container. If this API is not called, the number of visible options is 7 rows. Reduce the number of visible options when space needs to be saved, and increase it when more preview information needs to be provided. This attribute, together with [itemHeight](#itemheight), affects the display effect of the component. It is recommended to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute to ensure complete display.
+Sets the number of visible options in the **UIPickerComponent** container. If this API is not called, the number of visible options is 7 rows. Reduce the number of visible options when space needs to be saved, and increase it when more preview information needs to be provided. This attribute, together with [itemHeight](#itemheight), affects the display effect of the component. It is recommended to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height1) attribute to ensure complete display.
 
 **Since:** 26.0.0
 
@@ -96,7 +96,7 @@ To enable haptic feedback, configure the requestPermissions field in the "module
 itemHeight(height: Optional<LengthMetrics>)
 ```
 
-Sets the height of each option in the **UIPickerComponent** container. If this API is not called, the height of each option is 40 vp. When the option content is large or a larger font is required, you can increase the height to avoid content clipping. When the option content is concise or a compact display is required, you can decrease the height. This attribute, together with [displayedItemCount](#displayeditemcount), affects the display effect of the component. You are advised to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute to ensure complete display.
+Sets the height of each option in the **UIPickerComponent** container. If this API is not called, the height of each option is 40 vp. When the option content is large or a larger font is required, you can increase the height to avoid content clipping. When the option content is concise or a compact display is required, you can decrease the height. This attribute, together with [displayedItemCount](#displayeditemcount), affects the display effect of the component. You are advised to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height1) attribute to ensure complete display.
 
 **Since:** 26.0.0
 

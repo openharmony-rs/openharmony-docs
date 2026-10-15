@@ -26,17 +26,17 @@ Field name used for cursor-based search.
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-## ORIGIN_FIELD
+## DATA_STATUS_FIELD
 
 ```TypeScript
-ORIGIN_FIELD = '#_origin'
+DATA_STATUS_FIELD = '#_data_status'
 ```
 
-Field name used to specify the data source in cursor-based search.
+Data status in the cursor-based search result set. The value **0** indicates normal data status; **1** indicates that data is retained after the account is logged out; **2** indicates that data is deleted from the cloud; **3** indicates that data is deleted after the account is logged out.
 
-**Since:** 11
+**Since:** 12
 
-<!--Device-Field-ORIGIN_FIELD = '#_origin'--><!--Device-Field-ORIGIN_FIELD = '#_origin'-End-->
+<!--Device-Field-DATA_STATUS_FIELD = '#_data_status'--><!--Device-Field-DATA_STATUS_FIELD = '#_data_status'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -56,17 +56,17 @@ The value **true** means the dirty data is cleared; the value **false** means th
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-## DATA_STATUS_FIELD
+## ORIGIN_FIELD
 
 ```TypeScript
-DATA_STATUS_FIELD = '#_data_status'
+ORIGIN_FIELD = '#_origin'
 ```
 
-Data status in the cursor-based search result set. The value **0** indicates normal data status; **1** indicates that data is retained after the account is logged out; **2** indicates that data is deleted from the cloud; **3** indicates that data is deleted after the account is logged out.
+Field name used to specify the data source in cursor-based search.
 
-**Since:** 12
+**Since:** 11
 
-<!--Device-Field-DATA_STATUS_FIELD = '#_data_status'--><!--Device-Field-DATA_STATUS_FIELD = '#_data_status'-End-->
+<!--Device-Field-ORIGIN_FIELD = '#_origin'--><!--Device-Field-ORIGIN_FIELD = '#_origin'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

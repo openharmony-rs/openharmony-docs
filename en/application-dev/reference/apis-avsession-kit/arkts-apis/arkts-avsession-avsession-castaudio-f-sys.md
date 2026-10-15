@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="castaudio1"></a>
+
 ## castAudio
 
 ```TypeScript
@@ -43,6 +45,7 @@ Cast Audio to the remote devices or cast back local device
 | [6600102](../errorcode-avsession.md#6600102-session-does-not-exist) | The session does not exist. |
 | [6600104](../errorcode-avsession.md#6600104-remote-session-connection-failure) | The remote session connection failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,8 +65,10 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
 });
 ```
 
+<!--DelEnd-->
 
-<a id="castaudio-1"></a>
+
+<a id="castaudio2"></a>
 
 ## castAudio
 
@@ -107,6 +112,7 @@ Cast Audio to the remote devices or cast back local device
 | [6600102](../errorcode-avsession.md#6600102-session-does-not-exist) | The session does not exist. |
 | [6600104](../errorcode-avsession.md#6600104-remote-session-connection-failure) | The remote session connection failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -125,3 +131,5 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
   }
 });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { intelligentVoice } from '@kit.BasicServicesKit';
 ```
 
+<a id="createwakeupintelligentvoiceengine1"></a>
+
 ## createWakeupIntelligentVoiceEngine
 
 ```TypeScript
@@ -41,6 +43,7 @@ Obtains an [WakeupIntelligentVoiceEngine](arkts-basicservices-intelligentvoice-w
 | [22700101](../errorcode-intelligentVoice.md#22700101-insufficient-memory) | No memory. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,8 +64,10 @@ intelligentVoice.createWakeupIntelligentVoiceEngine(wakeupEngineDescriptor, (err
 });
 ```
 
+<!--DelEnd-->
 
-<a id="createwakeupintelligentvoiceengine-1"></a>
+
+<a id="createwakeupintelligentvoiceengine2"></a>
 
 ## createWakeupIntelligentVoiceEngine
 
@@ -104,6 +109,7 @@ Obtains an [WakeupIntelligentVoiceEngine](arkts-basicservices-intelligentvoice-w
 | [22700101](../errorcode-intelligentVoice.md#22700101-insufficient-memory) | No memory. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -121,3 +127,5 @@ intelligentVoice.createWakeupIntelligentVoiceEngine(wakeupEngineDescriptor).then
   console.error(`Failed to create wakeupIntelligentVoice engine, Code:${err.code}, message:${err.message}`);
 });
 ```
+
+<!--DelEnd-->

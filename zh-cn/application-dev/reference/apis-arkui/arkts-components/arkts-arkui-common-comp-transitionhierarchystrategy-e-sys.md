@@ -14,26 +14,6 @@ declare enum TransitionHierarchyStrategy
 
 **系统接口：** 此接口为系统接口。
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-无层级提拉，in/out组件保持原来的层级位置，受父组件scale、position影响。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12 - 12开始，该接口支持在原子化服务中使用。
-
-<!--Device-TransitionHierarchyStrategy-NONE = 0--><!--Device-TransitionHierarchyStrategy-NONE = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
-
 ## ADAPTIVE
 
 ```TypeScript
@@ -53,6 +33,26 @@ ADAPTIVE = 1
 **原子化服务API：** 从API版本12 - 12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TransitionHierarchyStrategy-ADAPTIVE = 1--><!--Device-TransitionHierarchyStrategy-ADAPTIVE = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+无层级提拉，in/out组件保持原来的层级位置，受父组件scale、position影响。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12 - 12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TransitionHierarchyStrategy-NONE = 0--><!--Device-TransitionHierarchyStrategy-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

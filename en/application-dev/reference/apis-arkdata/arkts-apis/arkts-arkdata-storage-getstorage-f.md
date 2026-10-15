@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getstorage1"></a>
+
 ## getStorage
 
 ```TypeScript
@@ -29,7 +31,7 @@ Reads the specified file and loads its data to the **Storage** instance for data
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Storage](arkts-arkdata-storage-storage-i.md)&gt; | Yes | Callback used to return the result. |
 
 
-<a id="getstorage-1"></a>
+<a id="getstorage2"></a>
 
 ## getStorage
 

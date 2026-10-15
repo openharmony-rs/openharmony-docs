@@ -6,7 +6,7 @@
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
-<a id="request-1"></a>
+<a id="request2"></a>
 
 ## request
 
@@ -33,6 +33,7 @@ function request(param: RequestParameterForStage, callback: AsyncCallback<Reques
 | param | [RequestParameterForStage](arkts-arkui-plugincomponentmanager-requestparameterforstage-i-sys.md) | 是 | 组件模板的详细请求信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestCallbackParameters](arkts-arkui-plugincomponentmanager-requestcallbackparameters-i.md)&gt; | 是 | 此次请求的异步回调，通过回调接口的参数返回请求响应的数据。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ pluginComponentManager.request(
   }
 )
 ```
+
+<!--DelEnd-->

@@ -30,7 +30,7 @@ Whether decorations are displayed in the child window. **true** if displayed, **
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SubWindowOptions-decorEnabled: boolean--><!--Device-SubWindowOptions-decorEnabled: boolean-End-->
 
@@ -48,7 +48,7 @@ Whether the modal property is enabled for the child window. **true** if enabled,
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SubWindowOptions-isModal?: boolean--><!--Device-SubWindowOptions-isModal?: boolean-End-->
 
@@ -68,7 +68,7 @@ This parameter can be used properly on devices that support the [freeform window
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-SubWindowOptions-maximizeSupported?: boolean--><!--Device-SubWindowOptions-maximizeSupported?: boolean-End-->
 
@@ -86,7 +86,7 @@ Modality type of the child window. This parameter takes effect only when the mod
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-SubWindowOptions-modalityType?: ModalityType--><!--Device-SubWindowOptions-modalityType?: ModalityType-End-->
 
@@ -106,7 +106,7 @@ This parameter can be properly used on 2-in-1 devices. If it is used as an input
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-SubWindowOptions-outlineEnabled?: boolean--><!--Device-SubWindowOptions-outlineEnabled?: boolean-End-->
 
@@ -124,7 +124,7 @@ Title of the child window. The title display area should not go past the left si
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SubWindowOptions-title: string--><!--Device-SubWindowOptions-title: string-End-->
 
@@ -136,13 +136,13 @@ Title of the child window. The title display area should not go past the left si
 windowRect?: Rect
 ```
 
-Rectangle of the child window, and the size of the child window is limited. For details, see [resize()](arkts-arkui-window-window-i.md#resize). If this parameter is not set and [showWindow()](arkts-arkui-window-window-i.md#showwindow) is not called, the default value {left: 0, top: 0, width: 0, height: 0} is used. For details, see [Setting a Child Window of an Application](../../../windowmanager/application-window-stage.md#setting-a-child-window-of-an-application).
+Rectangle of the child window, and the size of the child window is limited. For details, see [resize()](arkts-arkui-window-window-i.md#resize). If this parameter is not set and [showWindow()](arkts-arkui-window-window-i.md#showwindow1) is not called, the default value {left: 0, top: 0, width: 0, height: 0} is used. For details, see [Setting a Child Window of an Application](../../../windowmanager/application-window-stage.md#setting-a-child-window-of-an-application).
 
 **Type:** [Rect](arkts-arkui-window-rect-i.md)
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-SubWindowOptions-windowRect?: Rect--><!--Device-SubWindowOptions-windowRect?: Rect-End-->
 
@@ -160,7 +160,7 @@ Z-level of the child window. This parameter is valid only when the modal propert
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-SubWindowOptions-zLevel?: int--><!--Device-SubWindowOptions-zLevel?: int-End-->
 
@@ -180,7 +180,7 @@ Indicates whether loose the restriction of sub window z-level above parent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-SubWindowOptions-zLevelAboveParentLoosened?: boolean--><!--Device-SubWindowOptions-zLevelAboveParentLoosened?: boolean-End-->
 

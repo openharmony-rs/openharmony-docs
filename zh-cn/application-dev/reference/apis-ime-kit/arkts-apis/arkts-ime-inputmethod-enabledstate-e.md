@@ -12,20 +12,6 @@ export enum EnabledState
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## DISABLED
-
-```TypeScript
-DISABLED = 0
-```
-
-未启用。<br> <br>使用场景：输入法已被禁用，不能作为当前输入法使用。
-
-**起始版本：** 15
-
-<!--Device-EnabledState-DISABLED = 0--><!--Device-EnabledState-DISABLED = 0-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
 ## BASIC_MODE
 
 ```TypeScript
@@ -37,6 +23,20 @@ BASIC_MODE
 **起始版本：** 15
 
 <!--Device-EnabledState-BASIC_MODE--><!--Device-EnabledState-BASIC_MODE-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## DISABLED
+
+```TypeScript
+DISABLED = 0
+```
+
+未启用。<br> <br>使用场景：输入法已被禁用，不能作为当前输入法使用。
+
+**起始版本：** 15
+
+<!--Device-EnabledState-DISABLED = 0--><!--Device-EnabledState-DISABLED = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

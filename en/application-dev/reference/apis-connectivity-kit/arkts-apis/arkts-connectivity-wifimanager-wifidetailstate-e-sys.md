@@ -4,43 +4,11 @@
 enum WifiDetailState
 ```
 
-Wi-Fi detail state. @enum { int } WifiDetailState
+Wi-Fi detail state.
 
 **Since:** 12
 
 <!--Device-wifiManager-enum WifiDetailState--><!--Device-wifiManager-enum WifiDetailState-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = -1
-```
-
-state is unknown
-
-**Since:** 12
-
-<!--Device-WifiDetailState-UNKNOWN = -1--><!--Device-WifiDetailState-UNKNOWN = -1-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
-## INACTIVE
-
-```TypeScript
-INACTIVE = 0
-```
-
-wifi is closed
-
-**Since:** 12
-
-<!--Device-WifiDetailState-INACTIVE = 0--><!--Device-WifiDetailState-INACTIVE = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -94,6 +62,22 @@ wifi is closing
 
 **System API:** This is a system API.
 
+## INACTIVE
+
+```TypeScript
+INACTIVE = 0
+```
+
+wifi is closed
+
+**Since:** 12
+
+<!--Device-WifiDetailState-INACTIVE = 0--><!--Device-WifiDetailState-INACTIVE = 0-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+**System API:** This is a system API.
+
 ## SEMI_ACTIVATING
 
 ```TypeScript
@@ -121,6 +105,22 @@ wifi sta is semi active
 **Since:** 12
 
 <!--Device-WifiDetailState-SEMI_ACTIVE = 5--><!--Device-WifiDetailState-SEMI_ACTIVE = 5-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+**System API:** This is a system API.
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = -1
+```
+
+state is unknown
+
+**Since:** 12
+
+<!--Device-WifiDetailState-UNKNOWN = -1--><!--Device-WifiDetailState-UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

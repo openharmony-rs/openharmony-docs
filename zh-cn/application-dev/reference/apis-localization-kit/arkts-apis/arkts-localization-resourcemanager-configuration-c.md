@@ -30,7 +30,7 @@ colorMode: ColorMode
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-colorMode: ColorMode--><!--Device-Configuration-colorMode: ColorMode-End-->
 
@@ -48,7 +48,7 @@ deviceType: DeviceType
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-deviceType: DeviceType--><!--Device-Configuration-deviceType: DeviceType-End-->
 
@@ -66,7 +66,7 @@ direction: Direction
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-direction: Direction--><!--Device-Configuration-direction: Direction-End-->
 
@@ -84,7 +84,7 @@ locale: string
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-locale: string--><!--Device-Configuration-locale: string-End-->
 
@@ -102,7 +102,7 @@ mcc : number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-mcc : int--><!--Device-Configuration-mcc : int-End-->
 
@@ -120,7 +120,7 @@ mnc : number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-mnc : int--><!--Device-Configuration-mnc : int-End-->
 
@@ -138,7 +138,7 @@ screenDensity: ScreenDensity
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Configuration-screenDensity: ScreenDensity--><!--Device-Configuration-screenDensity: ScreenDensity-End-->
 

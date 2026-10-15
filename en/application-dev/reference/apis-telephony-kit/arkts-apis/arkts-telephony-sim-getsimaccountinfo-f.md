@@ -6,6 +6,8 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getsimaccountinfo1"></a>
+
 ## getSimAccountInfo
 
 ```TypeScript
@@ -42,7 +44,7 @@ Obtains SIM card account information. This API uses an asynchronous callback to 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 10 - 22 |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -62,7 +64,7 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 ```
 
 
-<a id="getsimaccountinfo-1"></a>
+<a id="getsimaccountinfo2"></a>
 
 ## getSimAccountInfo
 
@@ -105,7 +107,7 @@ Obtains SIM card account information. This API uses a promise to return the resu
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 10 - 22 |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |

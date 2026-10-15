@@ -6,11 +6,11 @@ interface ImageSource
 
 The **ImageSource** class provides APIs to obtain image information.
 
-Before calling any API in ImageSource, you must use [image.createImageSource](arkts-image-image-createimagesource-f.md) to create an ImageSource instance.
+Before calling any API in ImageSource, you must use [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource1) to create an ImageSource instance.
 
 All APIs in ImageSource cannot be called concurrently.
 
-Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](#release1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 6
 
@@ -136,7 +136,7 @@ async function CreatePicture(imageSourceObj : image.ImageSource) {
 createPictureAtIndex(index: number): Promise<Picture>
 ```
 
-Creates a **Picture** object using a specified image (only GIF and HEIF&lt;sup&gt;23+&lt;/sup&gt; images currently). This API uses a promise to return the result.
+Creates a **Picture** object using a specified image (only GIF and HEIF<sup>23+</sup> images currently). This API uses a promise to return the result.
 
 Images occupy a large amount of memory. When you finish using a Picture instance, call [release](arkts-image-image-picture-i.md#release) to free the memory promptly.
 
@@ -185,6 +185,8 @@ async function CreatePictures(imageSourceObj : image.ImageSource) {
   }
 }
 ```
+
+<a id="createpixelmap1"></a>
 
 ## createPixelMap
 
@@ -240,7 +242,7 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmap-2"></a>
+<a id="createpixelmap3"></a>
 
 ## createPixelMap
 
@@ -292,7 +294,7 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmap-4"></a>
+<a id="createpixelmap5"></a>
 
 ## createPixelMap
 
@@ -356,6 +358,8 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 }
 ```
 
+<a id="createpixelmaplist1"></a>
+
 ## createPixelMapList
 
 ```TypeScript
@@ -398,7 +402,7 @@ For dynamic images such as GIF and WebP images, this API returns the data of eac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980099](../errorcode-image.md#62980099-data-error-in-the-shared-memory) | The shared memory data is abnormal. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980103](../errorcode-image.md#62980103-unsupported-image-type) | The image data is not supported. |
@@ -434,7 +438,7 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmaplist-1"></a>
+<a id="createpixelmaplist2"></a>
 
 ## createPixelMapList
 
@@ -472,7 +476,7 @@ For dynamic images such as GIF and WebP images, this API returns the data of eac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980099](../errorcode-image.md#62980099-data-error-in-the-shared-memory) | The shared memory data is abnormal. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980103](../errorcode-image.md#62980103-unsupported-image-type) | The image data is not supported. |
@@ -502,7 +506,7 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmaplist-2"></a>
+<a id="createpixelmaplist3"></a>
 
 ## createPixelMapList
 
@@ -541,7 +545,7 @@ For dynamic images such as GIF and WebP images, this API returns the data of eac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980099](../errorcode-image.md#62980099-data-error-in-the-shared-memory) | The shared memory data is abnormal. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980103](../errorcode-image.md#62980103-unsupported-image-type) | The image data is not supported. |
@@ -685,7 +689,7 @@ Creates a PixelMap object based on decoding options and memory type. This API us
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [7700101](../errorcode-image.md#7700101-abnormal-image-source) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed. |
+| [7700101](../errorcode-image.md#7700101-abnormal-image-source) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete.         3. Read image data failed. 4. Codec create failed. |
 | [7700102](../errorcode-image.md#7700102-unsupported-mime-type) | Unsupported mimetype. |
 | [7700103](../errorcode-image.md#7700103-image-oversized) | Image too large. This status code is thrown when an error occurs during the process of checking size. |
 | [7700201](../errorcode-image.md#7700201-unsupported-memory-allocation-type) | Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata. |
@@ -762,7 +766,7 @@ Before releasing the instance, ensure that all asynchronous operations associate
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [7700101](../errorcode-image.md#7700101-abnormal-image-source) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed. |
+| [7700101](../errorcode-image.md#7700101-abnormal-image-source) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete.         3. Read image data failed. 4. Codec create failed. |
 | [7700102](../errorcode-image.md#7700102-unsupported-mime-type) | Unsupported mimetype. |
 | [7700103](../errorcode-image.md#7700103-image-oversized) | Image too large. This status code is thrown when an error occurs during the process of checking size. |
 | [7700201](../errorcode-image.md#7700201-unsupported-memory-allocation-type) | Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata. |
@@ -947,6 +951,8 @@ async function CreateThumbnailSync(imageSource: image.ImageSource): Promise<imag
 }
 ```
 
+<a id="getdelaytimelist1"></a>
+
 ## getDelayTimeList
 
 ```TypeScript
@@ -971,7 +977,7 @@ Obtains an array of delay times. This API uses a promise to return the result. T
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980110](../errorcode-image.md#62980110-incorrect-image-source-data) | The image source data is incorrect. |
 | [62980111](../errorcode-image.md#62980111-incomplete-image-source-data) | The image source data is incomplete. |
 | [62980115](../errorcode-image.md#62980115-invalid-image-parameter) | Invalid image parameter. |
@@ -994,7 +1000,7 @@ async function GetDelayTimeList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getdelaytimelist-1"></a>
+<a id="getdelaytimelist2"></a>
 
 ## getDelayTimeList
 
@@ -1020,7 +1026,7 @@ Obtains an array of delay times. This API uses an asynchronous callback to retur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980110](../errorcode-image.md#62980110-incorrect-image-source-data) | The image source data is incorrect. |
 | [62980111](../errorcode-image.md#62980111-incomplete-image-source-data) | The image source data is incomplete. |
 | [62980115](../errorcode-image.md#62980115-invalid-image-parameter) | Invalid image parameter. |
@@ -1069,7 +1075,7 @@ Obtains the list of disposal types. This API uses a promise to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980137](../errorcode-image.md#62980137-invalid-image-operation) | Invalid media operation. |
 | [62980149](../errorcode-image.md#62980149-invalid-image-parameter) | Invalid MIME type for the image source. |
@@ -1087,6 +1093,8 @@ async function GetDisposalTypeList(imageSourceObj : image.ImageSource) {
   })
 }
 ```
+
+<a id="getframecount1"></a>
 
 ## getFrameCount
 
@@ -1112,7 +1120,7 @@ Obtains the number of frames. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980111](../errorcode-image.md#62980111-incomplete-image-source-data) | The image source data is incomplete. |
 | [62980112](../errorcode-image.md#62980112-image-format-mismatch) | The image format does not match. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -1136,7 +1144,7 @@ async function GetFrameCount(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getframecount-1"></a>
+<a id="getframecount2"></a>
 
 ## getFrameCount
 
@@ -1162,7 +1170,7 @@ Obtains the number of frames. This API uses an asynchronous callback to return t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980111](../errorcode-image.md#62980111-incomplete-image-source-data) | The image source data is incomplete. |
 | [62980112](../errorcode-image.md#62980112-image-format-mismatch) | The image format does not match. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -1187,6 +1195,8 @@ async function GetFrameCount(imageSourceObj : image.ImageSource) {
   })
 }
 ```
+
+<a id="getimageinfo1"></a>
 
 ## getImageInfo
 
@@ -1229,7 +1239,7 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageinfo-2"></a>
+<a id="getimageinfo3"></a>
 
 ## getImageInfo
 
@@ -1271,7 +1281,7 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageinfo-4"></a>
+<a id="getimageinfo5"></a>
 
 ## getImageInfo
 
@@ -1377,7 +1387,7 @@ getImageProperties(key: Array<PropertyKey>): Promise<Record<PropertyKey, string|
 
 Obtains the values of properties with the given names in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF, WEBP&lt;sup&gt;23+&lt;/sup&gt;, or DNG&lt;sup&gt;23+&lt;/sup&gt;format and contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain Exif information. (The supported formats may vary depending on the hardware.)
 
 **Since:** 12
 
@@ -1402,7 +1412,7 @@ This API applies only to images that are in JPEG, PNG, HEIF, WEBP&lt;sup&gt;23+&
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed; |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980110](../errorcode-image.md#62980110-incorrect-image-source-data) | The image source data is incorrect. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
 | [62980116](../errorcode-image.md#62980116-decoding-failure) | Failed to decode the image. |
@@ -1422,6 +1432,8 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
 }
 ```
 
+<a id="getimageproperty1"></a>
+
 ## getImageProperty
 
 ```TypeScript
@@ -1430,7 +1442,7 @@ getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise<stri
 
 Obtains the value of a property with the specified index in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, WEBP&lt;sup&gt;23+&lt;/sup&gt;, or DNG&lt;sup&gt;23+&lt;/ sup&gt; format and contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, WEBP<sup>23+</sup>, or DNG<sup>23+</ sup> format and contain Exif information. (The supported formats may vary depending on the hardware.)
 
 **Since:** 11
 
@@ -1456,7 +1468,7 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types;3.Parameter verification failed; |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980103](../errorcode-image.md#62980103-unsupported-image-type) | The image data is not supported. |
 | [62980110](../errorcode-image.md#62980110-incorrect-image-source-data) | The image source data is incorrect. |
 | [62980111](../errorcode-image.md#62980111-incomplete-image-source-data) | The image source data is incomplete. |
@@ -1484,7 +1496,7 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty-1"></a>
+<a id="getimageproperty2"></a>
 
 ## getImageProperty
 
@@ -1494,13 +1506,13 @@ getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string
 
 Obtains the value of a property with the specified index in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, or WEBP&lt;sup&gt;23+&lt;/sup&gt; format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 **Since:** 7
 
 **Deprecated since:** 11
 
-**Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**Substitutes:** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>-End-->
 
@@ -1534,7 +1546,7 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty-2"></a>
+<a id="getimageproperty3"></a>
 
 ## getImageProperty
 
@@ -1544,13 +1556,13 @@ getImageProperty(key: string, callback: AsyncCallback<string>): void
 
 Obtains the value of a property with the specified index in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, or WEBP&lt;sup&gt;23+&lt;/sup&gt; format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 **Since:** 7
 
 **Deprecated since:** 11
 
-**Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**Substitutes:** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -1579,7 +1591,7 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty-3"></a>
+<a id="getimageproperty4"></a>
 
 ## getImageProperty
 
@@ -1587,13 +1599,13 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void
 ```
 
-Obtains the value of a property in this image. This API uses an asynchronous callback to return the result. This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, or WEBP&lt;sup&gt;23+&lt;/sup&gt; format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+Obtains the value of a property in this image. This API uses an asynchronous callback to return the result. This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 **Since:** 7
 
 **Deprecated since:** 11
 
-**Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**Substitutes:** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void-End-->
 
@@ -1634,7 +1646,7 @@ Obtains the value of a specified Exif property. This API returns the result sync
 
 > **NOTE:** 
 > 
-> - This API applies only to images that are in JPEG, PNG, HEIF, WEBP&lt;sup&gt;23+&lt;/sup&gt;, or DNG&lt;sup&gt;23+&lt;/sup&gt;format and contain Exif information. (The supported formats may vary depending on the hardware.)
+> - This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain Exif information. (The supported formats may vary depending on the hardware.)
 > 
 > - Exif information is metadata of the image, including shooting time, camera model, aperture, focal length, and ISO.
 > 
@@ -1691,7 +1703,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise<void>
 
 Modifies the values of properties in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF, or WEBP&lt;sup&gt;23+&lt;/sup&gt; format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE:** 
 > 
@@ -1759,7 +1771,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 
 > **NOTE:** 
 > 
-> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a URI.
+> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource1) instance by passing a URI.
 > 
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties).
 > 
@@ -1815,6 +1827,8 @@ async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource)
 }
 ```
 
+<a id="modifyimageproperty1"></a>
+
 ## modifyImageProperty
 
 ```TypeScript
@@ -1823,7 +1837,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise<void>
 
 Modifies the value of a property in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, or WEBP&lt;sup&gt;23+&lt;/sup&gt; format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE:** 
 > 
@@ -1878,7 +1892,7 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="modifyimageproperty-1"></a>
+<a id="modifyimageproperty2"></a>
 
 ## modifyImageProperty
 
@@ -1888,7 +1902,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 
 Modifies the value of a property in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, or WEBP&lt;sup&gt;23+&lt;/sup&gt; format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE:** 
 > 
@@ -1898,7 +1912,7 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 
 **Deprecated since:** 11
 
-**Substitutes:** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**Substitutes:** [modifyImageProperty](#modifyimageproperty1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>-End-->
 
@@ -1935,7 +1949,7 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="modifyimageproperty-2"></a>
+<a id="modifyimageproperty3"></a>
 
 ## modifyImageProperty
 
@@ -1945,7 +1959,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 
 Modifies the value of a property in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, or WEBP&lt;sup&gt;23+&lt;/sup&gt; format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE:** 
 > 
@@ -1955,7 +1969,7 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 
 **Deprecated since:** 11
 
-**Substitutes:** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**Substitutes:** [modifyImageProperty](#modifyimageproperty1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -2063,7 +2077,7 @@ This API applies only to images that are in JPEG, PNG, HEIF, WEBP, or DNG format
 | --- | --- |
 | [7700102](../errorcode-image.md#7700102-unsupported-mime-type) | Unsupported MIME type. |
 | [7700202](../errorcode-image.md#7700202-unsupported-metadata) | Unsupported metadata. |
-| [7700204](../errorcode-image.md#7700204-invalid-parameter) | Invalid parameter. Possible causes: 1. The index is negative. 2. The index is greater than or equal to the number of frames in the image. |
+| [7700204](../errorcode-image.md#7700204-invalid-parameter) | Invalid parameter. Possible causes: 1. The index is negative.         2. The index is greater than or equal to the number of frames in the image. |
 
 **Examples**
 
@@ -2145,7 +2159,7 @@ This API applies only to images that are in JPEG, PNG, HEIF, WEBP, DNG, or HEIFS
 | --- | --- |
 | [7700102](../errorcode-image.md#7700102-unsupported-mime-type) | Unsupported MIME type. |
 | [7700202](../errorcode-image.md#7700202-unsupported-metadata) | Unsupported metadata. |
-| [7700204](../errorcode-image.md#7700204-invalid-parameter) | Invalid parameter. Possible causes: 1.The index is negative. 2. The index is greater than or equal to the number of frames in the image. |
+| [7700204](../errorcode-image.md#7700204-invalid-parameter) | Invalid parameter. Possible causes: 1.The index is negative.         2. The index is greater than or equal to the number of frames in the image. |
 
 **Examples**
 
@@ -2165,6 +2179,8 @@ async function ReadImageMetadataByType(imageSource : image.ImageSource, type: im
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -2179,7 +2195,7 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ImageSource-release(callback: AsyncCallback<void>): void--><!--Device-ImageSource-release(callback: AsyncCallback<void>): void-End-->
 
@@ -2207,7 +2223,7 @@ async function Release(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -2223,7 +2239,7 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ImageSource-release(): Promise<void>--><!--Device-ImageSource-release(): Promise<void>-End-->
 
@@ -2248,6 +2264,8 @@ async function Release(imageSourceObj : image.ImageSource) {
   })
 }
 ```
+
+<a id="updatedata1"></a>
 
 ## updateData
 
@@ -2293,7 +2311,7 @@ async function UpdateDatay(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="updatedata-1"></a>
+<a id="updatedata2"></a>
 
 ## updateData
 
@@ -2352,7 +2370,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 
 > **NOTE:** 
 > 
-> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a URI.
+> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource1) instance by passing a URI.
 > 
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties).
 > 

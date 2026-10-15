@@ -12,34 +12,6 @@ Describes the patterns supported by the pasteboard.
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
-## URL
-
-```TypeScript
-URL = 0
-```
-
-URL.
-
-**Since:** 13
-
-<!--Device-Pattern-URL = 0--><!--Device-Pattern-URL = 0-End-->
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-## NUMBER
-
-```TypeScript
-NUMBER = 1
-```
-
-Number.
-
-**Since:** 13
-
-<!--Device-Pattern-NUMBER = 1--><!--Device-Pattern-NUMBER = 1-End-->
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
 ## EMAIL_ADDRESS
 
 ```TypeScript
@@ -51,6 +23,22 @@ Email address.
 **Since:** 13
 
 <!--Device-Pattern-EMAIL_ADDRESS = 2--><!--Device-Pattern-EMAIL_ADDRESS = 2-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+## FLIGHT_NUMBER
+
+```TypeScript
+FLIGHT_NUMBER = 4
+```
+
+Flight number. This API can be used only in the stage model.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Pattern-FLIGHT_NUMBER = 4--><!--Device-Pattern-FLIGHT_NUMBER = 4-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -70,18 +58,30 @@ HTTP URL. This API can be used only in the stage model.
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
-## FLIGHT_NUMBER
+## NUMBER
 
 ```TypeScript
-FLIGHT_NUMBER = 4
+NUMBER = 1
 ```
 
-Flight number. This API can be used only in the stage model.
+Number.
 
-**Since:** 24
+**Since:** 13
 
-**Model restriction:** This API can be used only in the stage model.
+<!--Device-Pattern-NUMBER = 1--><!--Device-Pattern-NUMBER = 1-End-->
 
-<!--Device-Pattern-FLIGHT_NUMBER = 4--><!--Device-Pattern-FLIGHT_NUMBER = 4-End-->
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+## URL
+
+```TypeScript
+URL = 0
+```
+
+URL.
+
+**Since:** 13
+
+<!--Device-Pattern-URL = 0--><!--Device-Pattern-URL = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard

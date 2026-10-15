@@ -12,7 +12,7 @@ import { window } from '@kit.ArkUI';
 function getSnapshot(windowId: number): Promise<image.PixelMap>
 ```
 
-获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-arkui-window-window-i.md#setwindowprivacymode-1)接口设置），截图结果为白屏。
+获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-arkui-window-window-i.md#setwindowprivacymode2)接口设置），截图结果为白屏。
 
 **起始版本：** 12
 
@@ -43,6 +43,7 @@ function getSnapshot(windowId: number): Promise<image.PixelMap>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`Failed to get snapshot. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->

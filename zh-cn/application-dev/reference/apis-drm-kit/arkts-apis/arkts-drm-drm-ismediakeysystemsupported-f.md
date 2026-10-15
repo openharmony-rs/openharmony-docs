@@ -6,6 +6,8 @@
 import { drm } from '@kit.DrmKit';
 ```
 
+<a id="ismediakeysystemsupported1"></a>
+
 ## isMediaKeySystemSupported
 
 ```TypeScript
@@ -16,7 +18,7 @@ function isMediaKeySystemSupported(name: string, mimeType: string, level: Conten
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean-End-->
 
@@ -54,7 +56,7 @@ console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 
-<a id="ismediakeysystemsupported-1"></a>
+<a id="ismediakeysystemsupported2"></a>
 
 ## isMediaKeySystemSupported
 
@@ -66,7 +68,7 @@ function isMediaKeySystemSupported(name: string, mimeType: string): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string): boolean-End-->
 
@@ -103,7 +105,7 @@ console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 
-<a id="ismediakeysystemsupported-2"></a>
+<a id="ismediakeysystemsupported3"></a>
 
 ## isMediaKeySystemSupported
 
@@ -115,7 +117,7 @@ function isMediaKeySystemSupported(name: string): boolean
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-drm-function isMediaKeySystemSupported(name: string): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string): boolean-End-->
 

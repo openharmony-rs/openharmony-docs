@@ -24,6 +24,10 @@ Defines LazyDynamicLayout Component.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+### Child Components
+
+Child components are supported.
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

@@ -14,17 +14,17 @@ export enum DataRoleType
 
 **系统接口：** 此接口为系统接口。
 
-## NONE
+## DEVICE
 
 ```TypeScript
-NONE = 0
+DEVICE = 2
 ```
 
-无。
+从设备角色。
 
 **起始版本：** 9
 
-<!--Device-DataRoleType-NONE = 0--><!--Device-DataRoleType-NONE = 0-End-->
+<!--Device-DataRoleType-DEVICE = 2--><!--Device-DataRoleType-DEVICE = 2-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -46,17 +46,17 @@ HOST = 1
 
 **系统接口：** 此接口为系统接口。
 
-## DEVICE
+## NONE
 
 ```TypeScript
-DEVICE = 2
+NONE = 0
 ```
 
-从设备角色。
+无。
 
 **起始版本：** 9
 
-<!--Device-DataRoleType-DEVICE = 2--><!--Device-DataRoleType-DEVICE = 2-End-->
+<!--Device-DataRoleType-NONE = 0--><!--Device-DataRoleType-NONE = 0-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

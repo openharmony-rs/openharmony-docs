@@ -6,10 +6,10 @@ export type NotificationTemplate = _NotificationTemplate
 
 通知模板。
 
+**类型：** _NotificationTemplate
+
 **起始版本：** 9
 
 <!--Device-notificationManager-export type NotificationTemplate = _NotificationTemplate--><!--Device-notificationManager-export type NotificationTemplate = _NotificationTemplate-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
-
-**类型：** _NotificationTemplate

@@ -50,6 +50,7 @@ export function grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Pr
 | [24010004](../errorcode-abilityToolAccessCtrl-sys.md#24010004-权限不存在) | Invalid permission. A permission in permissionInfo does not exist. |
 | [24010005](../errorcode-abilityToolAccessCtrl-sys.md#24010005-授权失败) | Grant permission failed. The application specified by the tokenID is not allowed to be granted with the specified permission, the specified permission cannot be granted by user, etc. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -75,3 +76,5 @@ abilityToolAccessCtrl.grantToolPermissionsByUser(userAuthResult).then((data: Arr
   console.error(`grantToolPermissionsByUser fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

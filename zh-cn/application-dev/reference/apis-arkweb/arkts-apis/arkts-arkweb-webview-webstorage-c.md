@@ -96,7 +96,7 @@ static deleteOrigin(origin: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](#getorigins-1)。 |
+| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](#getorigins2)。 |
 
 **错误码：**
 
@@ -226,6 +226,8 @@ struct WebComponent {
  </html>
 ```
 
+<a id="getoriginquota1"></a>
+
 ## getOriginQuota
 
 ```TypeScript
@@ -305,7 +307,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getoriginquota-1"></a>
+<a id="getoriginquota2"></a>
 
 ## getOriginQuota
 
@@ -381,6 +383,8 @@ struct WebComponent {
 }
 ```
 
+<a id="getorigins1"></a>
+
 ## getOrigins
 
 ```TypeScript
@@ -449,7 +453,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getorigins-1"></a>
+<a id="getorigins2"></a>
 
 ## getOrigins
 
@@ -518,6 +522,8 @@ struct WebComponent {
   }
 }
 ```
+
+<a id="getoriginusage1"></a>
 
 ## getOriginUsage
 
@@ -596,7 +602,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getoriginusage-1"></a>
+<a id="getoriginusage2"></a>
 
 ## getOriginUsage
 

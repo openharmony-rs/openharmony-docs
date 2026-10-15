@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="generatekey1"></a>
+
 ## generateKey
 
 ```TypeScript
@@ -17,14 +19,14 @@ function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.generateKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-generatekeyitem-f.md)
+> [huks.generateKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem1)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -76,7 +78,7 @@ huks.generateKey(keyAlias, options, (err, data) => {
 ```
 
 
-<a id="generatekey-1"></a>
+<a id="generatekey2"></a>
 
 ## generateKey
 
@@ -89,13 +91,13 @@ function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.generateKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem-1)替代。
+> [huks.generateKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem-1)(keyAlias: string, options: HuksOptions)
+**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 

@@ -40,6 +40,7 @@ Restrict Bluetooth BR/EDR ability on a device.
 | 2900001 | Service stopped. |
 | 2900099 | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<!--DelEnd-->

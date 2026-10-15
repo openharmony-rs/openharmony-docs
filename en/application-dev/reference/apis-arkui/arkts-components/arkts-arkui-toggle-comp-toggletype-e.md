@@ -12,6 +12,26 @@ Enumerates toggle types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Button
+
+```TypeScript
+Button
+```
+
+Status button type. If child content contains text, the text is displayed on the button. The default height is 28 vp, and there is no default width.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ToggleType-Button--><!--Device-ToggleType-Button-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Checkbox
 
 ```TypeScript
@@ -91,25 +111,5 @@ Default size:
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-ToggleType-Switch--><!--Device-ToggleType-Switch-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Button
-
-```TypeScript
-Button
-```
-
-Status button type. If child content contains text, the text is displayed on the button. The default height is 28 vp, and there is no default width.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-ToggleType-Button--><!--Device-ToggleType-Button-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

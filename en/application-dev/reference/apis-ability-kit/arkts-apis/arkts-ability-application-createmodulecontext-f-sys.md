@@ -6,7 +6,7 @@
 import { application } from '@kit.AbilityKit';
 ```
 
-<a id="createmodulecontext-1"></a>
+<a id="createmodulecontext2"></a>
 
 ## createModuleContext
 
@@ -59,6 +59,7 @@ Creates the context for a module. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -81,3 +82,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

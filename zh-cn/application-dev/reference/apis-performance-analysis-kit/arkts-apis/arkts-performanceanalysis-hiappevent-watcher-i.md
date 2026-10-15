@@ -36,7 +36,7 @@ appEventGroups：回调事件集合。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void--><!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void-End-->
 
@@ -65,7 +65,7 @@ holder：订阅数据持有者对象，可以通过其对订阅事件进行处�
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void--><!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void-End-->
 
@@ -91,7 +91,7 @@ appEventFilters?: AppEventFilter[]
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Watcher-appEventFilters?: AppEventFilter[]--><!--Device-Watcher-appEventFilters?: AppEventFilter[]-End-->
 
@@ -109,7 +109,7 @@ name: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Watcher-name: string--><!--Device-Watcher-name: string-End-->
 
@@ -127,7 +127,7 @@ triggerCondition?: TriggerCondition
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Watcher-triggerCondition?: TriggerCondition--><!--Device-Watcher-triggerCondition?: TriggerCondition-End-->
 

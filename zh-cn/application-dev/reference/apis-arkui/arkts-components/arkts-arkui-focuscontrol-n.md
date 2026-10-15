@@ -18,164 +18,9 @@ declare namespace focusControl
 
 | 名称 | 说明 |
 | --- | --- |
-| [requestFocus](arkts-arkui-focuscontrol-requestfocus-f.md) | 方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。 |
+| [requestFocus](arkts-arkui-focuscontrol-requestfocus-f.md#requestfocus) | 方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。 |
 
 ## 示例
-
-该示例主要演示通过foregroundBlurStyle为图片设置内容模糊效果。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ForegroundBlurStyleDemo {
-  build() {
-    Column() {
-      Text('Thin Material').fontSize(30).fontColor(0xCCCCCC)
-      // $r("app.media.bg")需要替换为开发者所需的图像资源文件。
-      Image($r('app.media.bg'))
-        .width(300)
-        .height(350)
-        .foregroundBlurStyle(BlurStyle.Thin,
-          { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 1.0 })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### 示例1（半模态设置边缘光效动画）
-
-以下示例通过设置edgeLightMode属性开启边缘光效动画，同时使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口实现了半透明材质效果。
-
-从API版本26.0.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增edgeLightMode属性。
-
-
-
-```TypeScript
-// xxx.ets
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
-  @State sheetHeight: number = 300;
-  @State sheetMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-  });
-
-  @Builder
-  sheetBuilder() {
-    Column({ space: 10 }) {
-      Text('Text')
-        .fontSize(20)
-        .margin(10)
-    }
-    .width('100%')
-    .height('100%')
-  }
-
-  build() {
-    Stack() {
-      // 请开发者替换为实际资源文件
-      Image($r('app.media.startIcon'))
-      Column() {
-        Button('open Sheet')
-          .onClick(() => {
-            this.isShow = true;
-          })
-          .fontSize(20)
-          .margin(10)
-          .bindSheet($$this.isShow, this.sheetBuilder(), {
-            height: this.sheetHeight,
-            backgroundColor: Color.Transparent,
-            edgeLightMode: EdgeLightMode.EDGELIGHT_ENABLED,
-            systemMaterial: this.sheetMaterial
-          })
-      }
-      .justifyContent(FlexAlign.Center)
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
-
-### 示例2（半模态设置模糊优化）
-
-以下示例通过设置blurSnapshot属性开启模糊优化。当使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口设置材质效果或使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的blurStyle接口设置模糊时发现功耗明显增加时，可以尝试开启模糊优化。
-
-从API版本26.0.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增blurSnapshot属性。
-
-```TypeScript
-// xxx.ets
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetTransitionExample {
-  @State isShow: boolean = false;
-  @State rotateAngle: number = 0;
-  @State sheetMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-  });
-
-  @Builder
-  sheetBuilder() {
-    Text('Context')
-  }
-
-  build() {
-    Stack() {
-      Button('This is Text')
-        .margin(100)
-        .rotate({
-          x: 0,
-          y: 0,
-          z: 1,
-          angle: this.rotateAngle
-        })
-        .onAppear(() => {
-          this.getUIContext()?.animateTo({
-            duration: 1200,
-            curve: Curve.Friction,
-            delay: 500,
-            iterations: -1,
-            expectedFrameRateRange: {
-              min: 10,
-              max: 120,
-              expected: 60,
-            }
-          }, () => {
-            this.rotateAngle = 360;
-          })
-        })
-      Column() {
-        Button('Open BindSheet')
-          .onClick(() => {
-            this.isShow = true;
-          })
-          .fontSize(20)
-          .margin(10)
-          .bindSheet($$this.isShow, this.sheetBuilder(), {
-            height: 400,
-            showClose: true,
-            backgroundColor: Color.Transparent,
-            // 若在设置blurStyle或者systemMaterial时发现功耗明显增加时，可以尝试开启模糊优化
-            blurStyle: BlurStyle.Thin,
-            // systemMaterial: this.sheetMaterial,
-            blurSnapshot: { enableFreeze: true },
-          })
-      }
-      .justifyContent(FlexAlign.Start)
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
 
 属性动画状态下添加运动模糊效果。
 
@@ -223,50 +68,6 @@ struct MotionBlurTest {
       }
     }.width('100%')
     .margin({ top: 50 })
-  }
-}
-```
-
-该示例通过setCursor实现了鼠标光标样式的设置。
-
-```TypeScript
-// xxx.ets
-import { pointer } from '@kit.InputKit';
-
-@Entry
-@Component
-struct CursorControlExample {
-  build() {
-    Column() {
-      Row()
-        .height(200)
-        .width(200)
-        .backgroundColor(Color.Green)
-        .position({ x: 60, y: 70 })
-        .onHover((flag) => {
-          if (flag) {
-            // 建议使用this.getUIContext().getCursorController().setCursor()
-            cursorControl.setCursor(pointer.PointerStyle.EAST);
-          } else {
-            // 建议使用this.getUIContext().getCursorController().restoreDefault()
-            cursorControl.restoreDefault();
-          }
-        })
-      Row()
-        .height(200)
-        .width(200)
-        .backgroundColor(Color.Blue)
-        .position({ x: 130, y: 120 })
-        .onHover((flag) => {
-          if (flag) {
-            // 建议使用this.getUIContext().getCursorController().setCursor()
-            cursorControl.setCursor(pointer.PointerStyle.WEST);
-          } else {
-            // 建议使用this.getUIContext().getCursorController().restoreDefault()
-            cursorControl.restoreDefault();
-          }
-        })
-    }.width('100%')
   }
 }
 ```
@@ -990,47 +791,6 @@ struct GridOnMoveExample {
 }
 ```
 
-该示例分别使用了不传参@Preview和传参的@Preview。
-
-```TypeScript
-@Entry
-@Preview
-@Component
-struct Index {
-  @State message: string = 'default Preview';
-
-  build() {
-    RelativeContainer() {
-      Text(this.message)
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@Preview({
-  title: 'PreviewParams',
-  width: 540,
-  height: 1170
-})
-@Component
-struct Test {
-  @State message: string = 'PreviewParams';
-
-  build() {
-    RelativeContainer() {
-      Text(this.message)
-        .fontSize(40)
-        .fontWeight(FontWeight.Bold)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
 ### 示例1（触摸测试模式为Block和Transparent的触摸测试效果）
 
 该示例通过设置不同的[HitTestMode](./ts-appendix-enums.md#hittestmode9)值演示了Block和Transparent的触摸测试效果。
@@ -1215,7 +975,7 @@ struct BlockDescendants {
 @Entry
 @Component
 struct Index {
-  @State @Watch('onModeChange') mode: number = HitTestMode.None;
+  @State @Watch('onModeChange') mode: HitTestMode = HitTestMode.None;
   @State modeStr: string = 'None';
 
   onModeChange() {
@@ -1840,618 +1600,6 @@ struct SafeAreaController {
 }
 ```
 
-### 示例1（设置组件获焦和走焦的效果）
-
-该示例通过配置[defaultFocus](#defaultfocus9)可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](arkts-arkui-common-comp-commonmethod-c.md#groupdefaultfocus)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch)可以使绑定的组件点击后立即获焦。
-
-示意图：
-
-首次进入时，焦点默认在defaultFocus绑定的TextInput组件上：
-
-
-
-首次按Tab键，焦点切换到tabIndex(1)的容器上，且自动走焦到内部第一个可获焦组件上：
-
-
-
-第二次按Tab键，焦点切换到tabIndex(2)的容器上，且自动走焦到其内部的groupDefaultFocus绑定的组件上：
-
-
-
-第三次按Tab键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了defaultFocus的组件上：
-
-
-
-点击绑定了focusOnTouch的组件，组件自身获焦，焦点框被清除，再按下Tab键后，显示焦点框：
-
-
-
-```TypeScript
-// focusTest.ets
-@Entry
-@Component
-struct FocusableExample {
-  @State inputValue: string = '';
-
-  build() {
-    Scroll() {
-      Row({ space: 20 }) {
-        Column({ space: 20 }) {
-          Column({ space: 5 }) {
-            Button('Group1')
-              .width(165)
-              .height(40)
-              .fontColor(Color.White)
-              .focusOnTouch(true) // 该Button组件点击后可获焦
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-                .focusOnTouch(true) // 该Button组件点击后可获焦
-            }
-
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-            }
-          }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
-          .tabIndex(1) // 该Column组件为按Tab键走焦的第一个获焦的组件
-          Column({ space: 5 }) {
-            Button('Group2')
-              .width(165)
-              .height(40)
-              .fontColor(Color.White)
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-                .groupDefaultFocus(true) // 该Button组件上级Column组件获焦时获焦
-            }
-
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-            }
-          }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
-          .tabIndex(2) // 该Column组件为按Tab键走焦的第二个获焦的组件
-        }
-
-        Column({ space: 5 }) {
-          TextInput({ placeholder: 'input', text: this.inputValue })
-            .onChange((value: string) => {
-              this.inputValue = value;
-            })
-            .width(156)
-            .defaultFocus(true) // 该TextInput组件为层级页面的初始默认焦点
-          Button('Group3')
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-
-          Button()
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-
-          Button()
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-        }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .tabIndex(3) // 该Column组件为按Tab键走焦的第三个获焦的组件
-      }.alignItems(VerticalAlign.Top)
-    }
-  }
-}
-```
-
-### 示例2（设置指定组件获焦）
-
-该示例通过配置[focusControl.requestFocus](#requestfocus9)使指定组件获取焦点。
-
-示意图：
-
-按下Tab键，激活焦点态显示。
-
-申请不存在的组件获焦：
-
-
-
-申请不可获焦的组件获焦：
-
-
-
-申请存在且可获焦的组件获焦：
-
-
-
-```TypeScript
-// requestFocus.ets
-@Entry
-@Component
-struct RequestFocusExample {
-  @State idList: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'LastPageId'];
-  @State selectId: string = 'LastPageId';
-
-  build() {
-    Column({ space: 20 }) {
-      Row({ space: 5 }) {
-        Button('id: ' + this.idList[0] + ' focusable(false)')
-          .width(180)
-          .height(70)
-          .fontColor(Color.White)
-          .id(this.idList[0])
-          .focusable(false)
-        Button('id: ' + this.idList[1])
-          .width(180).height(70).fontColor(Color.White)
-          .id(this.idList[1])
-      }
-
-      Row({ space: 5 }) {
-        Button('id: ' + this.idList[2])
-          .width(180).height(70).fontColor(Color.White)
-          .id(this.idList[2])
-        Button('id: ' + this.idList[3])
-          .width(180).height(70).fontColor(Color.White)
-          .id(this.idList[3])
-      }
-
-      Row({ space: 5 }) {
-        Button('id: ' + this.idList[4])
-          .width(180).height(70).fontColor(Color.White)
-          .id(this.idList[4])
-        Button('id: ' + this.idList[5])
-          .width(180).height(70).fontColor(Color.White)
-          .id(this.idList[5])
-      }
-
-      Row({ space: 5 }) {
-        Select([{ value: this.idList[0] },
-          { value: this.idList[1] },
-          { value: this.idList[2] },
-          { value: this.idList[3] },
-          { value: this.idList[4] },
-          { value: this.idList[5] },
-          { value: this.idList[6] }])
-          .value(this.selectId)
-          .onSelect((index: number) => {
-            this.selectId = this.idList[index];
-          })
-        Button('RequestFocus')
-          .width(180).height(70).fontColor(Color.White)
-          .onClick(() => {
-            // 建议使用this.getUIContext().getFocusController().requestFocus()
-            let res = focusControl.requestFocus(this.selectId); // 使选中的this.selectId的组件获焦
-            if (res) {
-              this.getUIContext().getPromptAction().showToast({ message: 'Request success' })
-            } else {
-              this.getUIContext().getPromptAction().showToast({ message: 'Request failed' })
-            }
-          })
-      }
-    }.width('100%').margin({ top: 20 })
-  }
-}
-```
-
-### 示例3（设置焦点框样式）
-
-该示例通过配置[focusBox](#focusbox12)修改组件的焦点框样式。
-
-
-
-```TypeScript
-import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct FocusBoxExample {
-  build() {
-    Column({ space: 30 }) {
-      Button('small black focus box')
-        .focusBox({
-          margin: new LengthMetrics(0),
-          strokeColor: ColorMetrics.rgba(0, 0, 0),
-        })
-      Button('large red focus box')
-        .focusBox({
-          margin: LengthMetrics.px(20),
-          strokeColor: ColorMetrics.rgba(255, 0, 0),
-          strokeWidth: LengthMetrics.px(10)
-        })
-    }
-    .alignItems(HorizontalAlign.Center)
-    .width('100%')
-  }
-}
-```
-
-### 示例4（设置焦点组走焦）
-
-该示例通过配置[focusScopePriority](arkts-arkui-common-comp-commonmethod-c.md#focusscopepriority)，可以使绑定的组件在所属容器首次获焦时成为焦点，配置[focusScopeId](arkts-arkui-common-comp-commonmethod-c.md#focusscopeid)，可以使绑定的容器组件成为焦点组。
-
-示意图：
-
-首次按下Tab键时，焦点转移到容器1中绑定focusScopePriority的组件上。
-
-
-
-继续按下Tab键，焦点转移到容器1下一个组件上。
-
-
-
-再次按下Tab键，焦点转移到容器1下一个组件上。
-
-
-
-继续按下Tab键，焦点转移到容器2中配置了focusScopePriority的组件上。
-
-
-
-继续按下Tab键，焦点转移到容器1中名为Group1的组件上。
-
-
-
-```TypeScript
-// focusTest.ets
-@Entry
-@Component
-struct FocusableExample {
-  @State inputValue: string = '';
-
-  build() {
-    Scroll() {
-      Row({ space: 20 }) {
-        Column({ space: 20 }) { // 标记为Column1
-          Column({ space: 5 }) {
-            Button('Group1')
-              .width(165)
-              .height(40)
-              .fontColor(Color.White)
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-            }
-
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-            }
-          }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
-
-          Column({ space: 5 }) {
-            Button('Group2')
-              .width(165)
-              .height(40)
-              .fontColor(Color.White)
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-                .focusScopePriority('ColumnScope1', FocusPriority.PRIOR) // Column1首次获焦时获焦
-            }
-
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-            }
-          }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
-        }
-        .focusScopeId('ColumnScope1')
-
-        Column({ space: 5 }) { // 标记为Column2
-          TextInput({ placeholder: 'input', text: this.inputValue })
-            .onChange((value: string) => {
-              this.inputValue = value
-            })
-            .width(156)
-          Button('Group3')
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-
-          Button()
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS) // Column2获焦时获焦
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-
-          Button()
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-        }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .focusScopeId('ColumnScope2', true) // Column2为焦点组
-      }.alignItems(VerticalAlign.Top)
-    }
-  }
-}
-```
-
-### 示例5（设置Tab走焦停留）
-
-该示例通过配置[tabStop](arkts-arkui-common-comp-commonmethod-c.md#tabstop)实现使用Tab走焦停留在组件上。
-
-示意图：
-
-连续按下两次Tab键，焦点转移到button2上。
-
-
-
-接着按下Tab键，焦点转移到配置了tabStop的组件。
-
-
-
-再按下Enter键，焦点转移至内部button3上。
-
-
-
-再按下ESC键，焦点转移到配置了tabStop的组件上。
-
-
-
-再按下Tab键，焦点循环走焦到button1上。
-
-
-
-```TypeScript
-import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct TabStop {
-  build() {
-    Column({ space: 20 }) {
-      Column({ space: 20 }) {
-        Column({ space: 20 }) {
-          Row({ space: 5 }) {
-            Button('button 1')
-              .width(200).height(70).fontColor(Color.White)
-              .focusBox({
-                margin: LengthMetrics.px(20),
-                strokeColor: ColorMetrics.rgba(23, 169, 141),
-                strokeWidth: LengthMetrics.px(10)
-              })
-          }
-
-          Row({ space: 5 }) {
-            Button('button 2')
-              .width(200).height(70).fontColor(Color.White)
-              .focusBox({
-                margin: LengthMetrics.px(20),
-                strokeColor: ColorMetrics.rgba(23, 169, 141),
-                strokeWidth: LengthMetrics.px(10)
-              })
-          }
-        }.width('80%').margin({ top: 30 }).borderColor(Color.Black)
-      }.width('95%').margin({ top: 60 }).borderColor(Color.Black)
-
-      Column({ space: 20 }) {
-        Column({ space: 20 }) {
-          Row({ space: 5 }) {
-            Button('button 3')
-              .width(200)
-              .height('70%')
-              .fontColor(Color.White)
-              .focusBox({
-                margin: LengthMetrics.px(20),
-                strokeColor: ColorMetrics.rgba(23, 169, 141),
-                strokeWidth: LengthMetrics.px(10)
-              })
-              .margin({ top: 15 })
-          }
-        }
-        .width('80%')
-        .height(120)
-        .borderColor(Color.Black)
-        .margin({ top: 10 })
-        .tabStop(true)
-        .focusBox({
-          margin: LengthMetrics.px(20),
-          strokeColor: ColorMetrics.rgba(23, 169, 141),
-          strokeWidth: LengthMetrics.px(10)
-        })
-        .borderWidth(1)
-      }.width('95%').margin({ top: 50 }).borderColor(Color.Black)
-    }
-  }
-}
-```
-
-### 示例6（设置自定义走焦）
-
-从API version 18开始，该示例通过配置[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)实现自定义走焦规则。
-
-如果不配置[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)，默认的按下Tab键的走焦顺序为：M->A->B->C->D->E->F；配置了[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)以后，走焦顺序变更为：M->D->F->B->C。
-
-```TypeScript
-class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  applyNormalAttribute(instance: ButtonAttribute): void {
-    instance.id('M');
-    instance.nextFocus({ forward: 'D', up: 'C', down: 'D' });
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State modifier: MyButtonModifier = new MyButtonModifier();
-  @State idList: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-  build() {
-    Column({ space: 10 }) {
-      Row({ space: 10 }) {
-        Button('id: M')
-          .attributeModifier(this.modifier)
-        Button('id: ' + this.idList[0])
-          .id(this.idList[0])
-          .nextFocus({
-            forward: 'C',
-            backward: 'M',
-            up: 'E',
-            right: 'F',
-            down: 'B',
-            left: 'D'
-          });
-        Button('id: ' + this.idList[1])
-          .id(this.idList[1])
-      }
-
-      Column({ space: 10 }) {
-        Button('id: ' + this.idList[2])
-          .id(this.idList[2]);
-        Button('id: ' + this.idList[3])
-          .id(this.idList[3])
-          .nextFocus({ forward: 'F' });
-      }
-
-      Row({ space: 10 }) {
-        Button('id: ' + this.idList[4])
-          .id(this.idList[4]);
-        Button('id: ' + this.idList[5])
-          .id(this.idList[5])
-          .nextFocus({ forward: 'B' });
-      }
-    }
-  }
-}
-```
-
-该示例通过Text组件设置组件尺寸变化事件，当Text尺寸变化时可以触发onSizeChange事件，获取oldValue和newValue参数。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AreaExample {
-  @State value: string = 'Text'
-  @State sizeValue: string = ''
-
-  build() {
-    Column() {
-      Text(this.value)
-        .backgroundColor(Color.Green)
-        .margin(30)
-        .fontSize(20)
-        .onClick(() => {
-          this.value = this.value + 'Text';
-        })
-        .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
-          console.info(`Ace: on size change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
-          this.sizeValue = JSON.stringify(newValue);
-        })
-      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
-    }
-    .width('100%').height('100%').margin({ top: 30 })
-  }
-}
-```
-
 ### 示例1（使用onAreaChange监听区域变化）
 
 该示例通过Text组件设置组件区域变化事件，当Text布局变化时可以触发onAreaChange事件，获取相关参数。
@@ -2488,7 +1636,7 @@ struct AreaExample {
 
 ### 示例2（使用onAreaChange自定义间隔监听区域变化）
 
-该示例通过设置[expectedUpdateInterval](arkts-arkui-common-comp-areachangeoptions-i.md)，当Text布局变化时可以触发[onAreaChange](#onareachange-1)事件，达到间隔回调的效果。
+该示例通过设置[expectedUpdateInterval](arkts-arkui-common-comp-areachangeoptions-i.md)为非默认值，当Text布局变化时可以触发[onAreaChange](#onareachange-1)事件，达到自定义间隔回调的效果。
 
 从API版本26.0.0开始，新增[onAreaChange](#onareachange-1)、[AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md)和[AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md)。
 
@@ -3230,190 +2378,6 @@ struct OnHoverMoveEventExample {
 }
 ```
 
-### 示例1（设置组件提亮）
-
-该示例主要通过advancedBlendMode给组件添加提亮效果。
-
-效果图如下：
-
-
-
-```TypeScript
-// xxx.ets
-import { uiEffect } from '@kit.ArkGraphics2D';
-
-// uiEffect.createBrightnessBlender创建BrightnessBlender实例用于给组件添加提亮效果
-let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
-  cubicRate: 0.5,
-  quadraticRate: 0.5,
-  linearRate: 0.5,
-  degree: 0.5,
-  saturation: 0.5,
-  positiveCoefficient: [2.3, 4.5, 2.0],
-  negativeCoefficient: [0.5, 2.0, 0.5],
-  fraction: 0.5
-});
-// 注意：使用自定义object作为Blender入参不会生效，请使用uiEffect.createBrightnessBlender方法创建Blender实例。
-let customBlender: uiEffect.BrightnessBlender = {
-  cubicRate: 0.5,
-  quadraticRate: 0.5,
-  linearRate: 0.5,
-  degree: 0.5,
-  saturation: 0.5,
-  positiveCoefficient: [2.3, 4.5, 2.0],
-  negativeCoefficient: [0.5, 2.0, 0.5],
-  fraction: 0.5
-};
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Stack() {
-      Image($r('app.media.img_1'))
-
-      Column() {
-        Text(String.fromCodePoint(0x1F600) + 'TEST')
-          .fontSize(60)
-
-        Text(String.fromCodePoint(0x1F600) + 'FAST')
-          .fontSize(60)
-          .advancedBlendMode(blender)
-
-        Text(String.fromCodePoint(0x1F600) + 'OFFSCREEN')
-          .fontSize(60)
-          .advancedBlendMode(blender, BlendApplyType.OFFSCREEN)
-
-        Text(String.fromCodePoint(0x1F600) + 'TEST')
-          .fontSize(60)
-          .advancedBlendMode(customBlender)
-      }
-    }
-  }
-}
-```
-
-### 示例2（设置节点组剔除属性）
-
-该示例演示在组件的属性动画场景下，如何通过使用节点组剔除属性excludeFromRenderGroup，避免节点组缓存反复失效。
-
-从API version 22开始，新增excludeFromRenderGroup属性。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ExcludeFromRenderGroupDemo {
-  readonly color1: ResourceColor = '#2787d9';
-  readonly color2: ResourceColor = '#ffc000';
-  @State myColor: ResourceColor = this.color1;
-  @State isExcluded: boolean = false;
-  animationCnt: number = 0;
-
-  build() {
-    Column() {
-      Column({ space: 10 }) {
-        Column()
-          .width(100)
-          .height(100)
-          .backgroundColor(this.myColor)
-          // 设置excludeFromRenderGroup属性。该组件做背景色动画时，实际显示效果需频繁更新属性，且该组件区域只占节点组区域的一部分，因此设置excludeFromRenderGroup属性以复用节点组缓存
-          .excludeFromRenderGroup(this.isExcluded)
-          .onClick(() => {
-            this.isExcluded = true; // 在播放动画前，修改节点组剔除属性为true
-            this.animationCnt++;
-            this.getUIContext().animateTo({
-              duration: 600,
-              onFinish: () => {
-                this.animationCnt--;
-                if (this.animationCnt === 0) { // animationCnt变为0表示所有动画都结束
-                  this.isExcluded = false; // 在组件动画结束后，组件上不再发生属性变化时，可以重置节点组剔除属性
-                }
-              }
-            }, () => {
-              this.myColor = (this.myColor === this.color1) ? this.color2 : this.color1;
-            })
-          })
-        // 节点组内的其他组件
-        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
-          .width(100)
-          .height(100)
-        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
-          .width(100)
-          .height(100)
-      }.renderGroup(true)
-      .width('100%')
-      .height('70%')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### 示例3（设置组件提亮并渐隐）
-
-从API version 23开始，该示例主要演示如何通过advancedBlendMode给组件同时添加提亮和渐隐效果。
-
-
-
-```TypeScript
-// xxx.ets
-import { uiEffect } from '@kit.ArkGraphics2D';
-
-// uiEffect.createBrightnessBlender创建BrightnessBlender实例用于给组件添加提亮效果
-let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
-  cubicRate: 0.5,
-  quadraticRate: 0.5,
-  linearRate: 0.5,
-  degree: 0.5,
-  saturation: 0.5,
-  positiveCoefficient: [2.3, 4.5, 2.0],
-  negativeCoefficient: [0.5, 2.0, 0.5],
-  fraction: 0.3
-});
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Stack() {
-        Column() {
-          Text(String.fromCodePoint(0x1F600) + ' BlendApplyType OFFSCREEN WITH BACKGROUND ' +
-          String.fromCodePoint(0x1F600))
-            .fontSize(35)
-            .fontColor(Color.Black)
-        }
-        .advancedBlendMode(blender, BlendApplyType.FAST)
-
-        Column()
-          .width('100%')
-          .height('100%')
-          .linearGradient({
-            direction: GradientDirection.Right,
-            colors: [
-              [Color.Transparent, 0.0],
-              [Color.Black, 0.50],
-              [Color.Black, 0.55],
-              [Color.Transparent, 1.0]
-            ]
-          })
-          .blendMode(BlendMode.DST_IN, BlendApplyType.FAST)
-      }
-      .advancedBlendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN_WITH_BACKGROUND)
-      .width('100%')
-      .height('20%')
-    }
-    .backgroundColor('rgb(254, 238, 239)')
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
 该示例展示了组件获焦和失焦的情况，按钮获焦和失焦时会改变按钮的颜色。
 
 ```TypeScript
@@ -3433,6 +2397,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.oneButtonColor = '#FFFFFF';
         })
@@ -3444,6 +2409,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.twoButtonColor = '#FFFFFF';
         })
@@ -3455,6 +2421,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.threeButtonColor = '#FFFFFF';
         })
@@ -3462,106 +2429,6 @@ struct FocusEventExample {
           this.threeButtonColor = '#90EE90';
         })
     }.width('100%').margin({ top: 20 })
-  }
-}
-```
-
-### 示例1（悬浮气泡的显示和消失）
-
-此示例为bindTips通过绑定Button产生悬浮气泡。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct TipsExample {
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      Button('Hover Tips')
-        .bindTips("Tips", {
-          appearingTime: 700,
-          disappearingTime: 300,
-          appearingTimeWithContinuousOperation: 300,
-          disappearingTimeWithContinuousOperation: 0,
-          enableArrow: true,
-        })
-        .position({ x: 100, y: 250 })
-    }.width('100%').padding({ top: 5 })
-  }
-}
-```
-
-### 示例2（多个悬浮气泡的显示和消失）
-
-此示例展示了如何使用bindTips配置多个悬浮气泡依次显示和消失。
-
-
-
-```TypeScript
-// xxx.ets
-
-@Entry
-@Component
-struct TipsExample {
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      Button('Hover Tips')
-        .bindTips("Tips", {
-          appearingTime: 700,
-          disappearingTime: 300,
-          appearingTimeWithContinuousOperation: 300,
-          disappearingTimeWithContinuousOperation: 0,
-          enableArrow: true,
-        })
-        .position({ x: 100, y: 250 })
-
-      Button('Hover Tips')
-        .bindTips("Tips", {
-          appearingTime: 700,
-          disappearingTime: 300,
-          appearingTimeWithContinuousOperation: 300,
-          disappearingTimeWithContinuousOperation: 0,
-          enableArrow: true,
-        })
-        .position({ x: 100, y: 350 })
-
-
-    }.width('100%').padding({ top: 5 })
-  }
-}
-```
-
-### 示例3（设置悬浮气泡的沉浸光感视效）
-
-该示例通过[TipsOptions](#tipsoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了bindTips的沉浸光感视效。
-
-该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
-
-从API版本26.0.0开始，在TipsOptions中新增了systemMaterial属性。
-
-```TypeScript
-// xxx.ets
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct TipsExample {
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      Button('Hover Tips')
-        .bindTips("悬浮气泡测试", {
-          // 控制是否设置系统材质接口
-          systemMaterial: new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.THIN
-          })
-        })
-        .position({ x: 100, y: 300 })
-    }.width('100%').padding({ top: 5 })
-    // 请开发者替换为实际资源文件
-    .backgroundImage($r("app.media.img"))
-    .backgroundImageSize({width: '100%', height: '100%'})
   }
 }
 ```
@@ -3708,7 +2575,7 @@ struct Index {
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置[onGestureJudgeBegin](arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin)实现了对长按、快滑、滑动、捏合和拖动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](ts-universal-events-click.md#baseevent8)的axisPinch属性获取双指缩放比例。
+该示例通过配置[onGestureJudgeBegin](arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin)读取长按、快滑、滑动和捏合手势的事件信息，并拒绝拖动手势。从API version 21开始，支持通过[BaseEvent](ts-universal-events-click.md#baseevent8)的axisPinch属性获取双指缩放比例。
 
 
 
@@ -3805,7 +2672,7 @@ struct Index {
 
 ### 示例2（自定义区域手势判定）
 
-该示例通过配置onGestureJudgeBegin，根据触发位置所在区域决定长按手势和拖动手势是否响应。
+该示例通过配置onGestureJudgeBegin，根据触发位置所在区域决定长按手势是否响应，并演示长按手势与拖动手势在上下区域的配合效果。
 
 
 
@@ -3834,7 +2701,7 @@ struct Index {
             Stack().width('200').height('100').backgroundColor(Color.Blue)
           }.width('200vp').height('200vp')
 
-          // Stack的下半区是绑定了拖动手势的图像区域
+          // Stack中的Image区域绑定了拖动手势
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
             .onDragStart(() => {
@@ -3881,9 +2748,9 @@ struct Index {
 }
 ```
 
-### 示例3（实时监测参与手势的有效触点的数量及其简要信息）
+### 示例3（获取参与手势判定的有效触点数量及其简要信息）
 
-该示例通过配置onGestureJudgeBegin回调，读取fingerInfos实时检测参与手势的有效触点数量、各个触点ID及其坐标。
+该示例通过配置onGestureJudgeBegin回调，读取fingerInfos获取参与手势判定的有效触点数量、各个触点ID及其坐标。
 
 ```TypeScript
 // xxx.ets
@@ -4188,7 +3055,7 @@ struct OnVisibleAreaChangeSample {
 
   build() {
     Column() {
-      Text(`onVisibleChange1 with measureFromViewport \nratio: ${this.ratio1}`)
+      Text(`onVisibleAreaChange1 and onVisibleAreaApproximateChange1 with measureFromViewport \nratio: ${this.ratio1}`)
       Column() {
         Row() {
           Row() {
@@ -4219,7 +3086,7 @@ struct OnVisibleAreaChangeSample {
       .height(200)
       .width(200)
 
-      Text(`onVisibleChange2 without measureFromViewport \nratio: ${this.ratio2}`)
+      Text(`onVisibleAreaChange2 and onVisibleAreaApproximateChange2 without measureFromViewport \nratio: ${this.ratio2}`)
       Column() {
         Row() {
           Row() {
@@ -4247,7 +3114,7 @@ struct OnVisibleAreaChangeSample {
       .height(200)
       .width(200)
 
-      Text(`parent set clip(true) onVisibleChange3 with measureFromViewport \nratio: ${this.ratio3}`)
+      Text(`parent set clip(true) onVisibleAreaChange3 and onVisibleAreaApproximateChange3 with measureFromViewport \nratio: ${this.ratio3}`)
       Column() {
         Row() {
           Row() {
@@ -4421,7 +3288,7 @@ struct KeyframeDemo {
         .scale({ x: this.myScale, y: this.myScale })
         .onClick(() => {
           if (!this.uiContext) {
-            console.info('no uiContext, keyframe failed');
+            console.error('no uiContext, keyframe failed');
             return;
           }
           this.myScale = 1;
@@ -4458,60 +3325,6 @@ struct KeyframeDemo {
           ]);
         })
     }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State lightIntensity: number = 0;
-  @State bloomValue: number = 0;
-
-  build() {
-    Row({ space: 20 }) {
-      Flex()
-        .pointLight({ illuminated: IlluminatedType.BORDER })
-        .backgroundColor(0x307af7)
-        .size({ width: 50, height: 50 })
-        .borderRadius(25)
-
-      Flex()
-        .pointLight({
-          lightSource: {
-            intensity: this.lightIntensity,
-            positionX: '50%',
-            positionY: '50%',
-            positionZ: 80
-          },
-          bloom: this.bloomValue
-        })
-        .animation({ duration: 333 })
-        .backgroundColor(0x307af7)
-        .size({ width: 50, height: 50 })
-        .borderRadius(25)
-        .onTouch((event: TouchEvent) => {
-          // 按下时增强光源强度和发光强度，松开或取消时恢复默认效果。
-          if (event.type === TouchType.Down) {
-            this.lightIntensity = 1;
-            this.bloomValue = 1;
-          } else if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
-            this.lightIntensity = 0;
-            this.bloomValue = 0;
-          }
-        })
-
-      Flex()
-        .pointLight({ illuminated: IlluminatedType.BORDER_CONTENT })
-        .backgroundColor(0x307af7)
-        .size({ width: 50, height: 50 })
-        .borderRadius(25)
-    }
-    .justifyContent(FlexAlign.Center)
-    .backgroundColor(Color.Black)
-    .size({ width: '100%', height: '100%' })
   }
 }
 ```
@@ -4631,264 +3444,31 @@ struct ProgressMaskExample {
 }
 ```
 
-### 示例1（通过DrawModifier进行自定义绘制）
+### 示例1（禁用默认点击音效）
 
-通过DrawModifier对[Text](ts-basic-components-text.md)组件进行自定义绘制。
+该示例通过配置enableClickSoundEffect属性，实现组件禁用默认点击音效，开发者可以在onClick回调中调用音频相关接口自定义播放音效。自定义播放音效可参考[SoundPool播放短音频指南](../../../media/media/using-soundpool-for-playback.md)。
 
-
+从API version 24开始，新增[enableClickSoundEffect](arkts-arkui-common-comp-commonmethod-c.md#enableclicksoundeffect)接口。
 
 ```TypeScript
-// xxx.ets
-import { drawing } from '@kit.ArkGraphics2D';
-import { AnimatorResult } from '@kit.ArkUI';
-
-// 继承DrawModifier实现自定义绘制控制器
-class MyFullDrawModifier extends DrawModifier {
-  public scaleX: number = 1;
-  public scaleY: number = 1;
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    super();
-    this.uiContext = uiContext;
-  }
-
-  // 重载drawBehind方法，自定义绘制背景  
-  drawBehind(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 255,
-      green: 0,
-      blue: 0
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    context.canvas.drawRect({
-      left: this.uiContext.vp2px(halfWidth - 50 * this.scaleX),
-      top: this.uiContext.vp2px(halfHeight - 50 * this.scaleY),
-      right: this.uiContext.vp2px(halfWidth + 50 * this.scaleX),
-      bottom: this.uiContext.vp2px(halfHeight + 50 * this.scaleY)
-    });
-  }
-
-  // 重载drawContent方法，自定义绘制内容
-  drawContent(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 255,
-      blue: 0
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    context.canvas.drawRect({
-      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
-      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
-      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
-      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
-    });
-  }
-
-  // 重载drawFront方法，自定义绘制内容前景
-  drawFront(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 0,
-      blue: 255
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
-      this.uiContext.vp2px(20 * radiusScale));
-  }
-}
-
-// 继承DrawModifier实现自定义绘制控制器，仅支持自定义绘制内容前景
-class MyFrontDrawModifier extends DrawModifier {
-  public scaleX: number = 1;
-  public scaleY: number = 1;
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    super();
-    this.uiContext = uiContext;
-  }
-
-  drawFront(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 0,
-      blue: 255
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
-      this.uiContext.vp2px(20 * radiusScale));
-  }
-}
-
 @Entry
 @Component
-struct DrawModifierExample {
-  private fullModifier: MyFullDrawModifier = new MyFullDrawModifier(this.getUIContext());
-  private frontModifier: MyFrontDrawModifier = new MyFrontDrawModifier(this.getUIContext());
-  private drawAnimator: AnimatorResult | undefined = undefined;
-  @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
-  private count = 0;
-
-  // 创建Animator对象并设置动画
-  create() {
-    let self = this;
-    this.drawAnimator = this.getUIContext().createAnimator({
-      duration: 1000,
-      easing: 'ease',
-      delay: 0,
-      fill: 'forwards',
-      direction: 'normal',
-      iterations: 1,
-      begin: 0,
-      end: 2
-    });
-    // 设置帧回调，动态更新缩放值并触发重绘
-    this.drawAnimator.onFrame = (value: number) => {
-      console.info('frame value =', value);
-      const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
-      tempModifier.scaleX = Math.abs(value - 1);
-      tempModifier.scaleY = Math.abs(value - 1);
-      // 主动触发重绘
-      self.modifier.invalidate();
-    };
-  }
-
+struct Index {
   build() {
     Column() {
-      Row() {
-        Text('test text')
-          .width(100)
-          .height(100)
-          .margin(10)
-          .backgroundColor(Color.Gray)
-          .onClick(() => {
-            const tempModifier = this.modifier as MyFullDrawModifier | MyFrontDrawModifier;
-            tempModifier.scaleX -= 0.1;
-            tempModifier.scaleY -= 0.1;
-          })
-          .drawModifier(this.modifier)
-      }
-
-      Row() {
-        Button('create')
-          .width(100)
-          .height(100)
-          .borderRadius(50)
-          .margin(10)
-          .onClick(() => {
-            this.create();
-          })
-        Button('play')
-          .width(100)
-          .height(100)
-          .borderRadius(50)
-          .margin(10)
-          .onClick(() => {
-            if (this.drawAnimator) {
-              this.drawAnimator.play();
-            }
-          })
-        Button('changeModifier')
-          .width(100)
-          .height(100)
-          .borderRadius(50)
-          .margin(10)
-          .onClick(() => {
-            this.count += 1;
-            if (this.count % 2 === 1) {
-              console.info('change to full modifier');
-              this.modifier = this.fullModifier;
-            } else {
-              console.info('change to front modifier');
-              this.modifier = this.frontModifier;
-            }
-          })
-      }
+      Button('点击')
+        .fontSize('20dp')
+        .height('60')
+        .width('200')
+        .enableClickSoundEffect(false)
+        .onClick(() => {
+          // 此处自定义播放点击音效，参考SoundPool播放短音频指南。
+        })
     }
     .width('100%')
     .height('100%')
-  }
-}
-```
-
-### 示例2（通过DrawModifier对容器的前景进行自定义绘制）
-
-通过DrawModifier对[Column](ts-container-column.md)容器的前景进行自定义绘制。
-
-```TypeScript
-// xxx.ets
-import { drawing } from '@kit.ArkGraphics2D';
-
-class MyForegroundDrawModifier extends DrawModifier {
-  public scaleX: number = 3;
-  public scaleY: number = 3;
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    super();
-    this.uiContext = uiContext;
-  }
-
-  // 重载drawForeground方法，实现自定义绘制前景
-  drawForeground(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 50,
-      blue: 100
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    context.canvas.drawRect({
-      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
-      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
-      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
-      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
-    });
-  }
-}
-
-@Entry
-@Component
-struct DrawModifierExample {
-  // 将自定义绘制前景的类实例化，传入UIContext实例
-  private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
-
-  build() {
-    Column() {
-      Text('此文本是子节点')
-        .fontSize(36)
-        .width('100%')
-        .height('100%')
-        .textAlign(TextAlign.Center)
-    }
-    .margin(50)
-    .width(280)
-    .height(300)
-    .backgroundColor(0x87CEEB)
-    // 调用此接口并传入自定义绘制前景的类实例，即可实现自定义绘制前景
-    .drawModifier(this.foregroundModifier)
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
   }
 }
 ```
@@ -4941,928 +3521,6 @@ struct FilterEffectExample {
     }
     .height('100%')
     .width('100%')
-  }
-}
-```
-
-### 示例1（设置组件快捷键）
-
-该示例通过设置组件的快捷键，同时按控制键+对应的字符可以触发组件响应快捷键，并触发onClick事件或自定义事件。
-
-
-
-```TypeScript
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column({ space: 5 }) {
-        Text(this.message);
-        Button('Test short cut 1').onClick(() => {
-          this.message = 'I clicked Button 1';
-          console.info('I clicked 1');
-        }).keyboardShortcut('.', [ModifierKey.SHIFT, ModifierKey.CTRL, ModifierKey.ALT])
-          .onKeyEvent((event: KeyEvent) => {
-            console.info('event.keyCode: ' + JSON.stringify(event));
-          });
-        Button('Test short cut 2').onClick(() => {
-          this.message = 'I clicked Button 2';
-          console.info('I clicked 2');
-        }).keyboardShortcut('1', [ModifierKey.CTRL]);
-        Button('Test short cut 3').onClick(() => {
-          this.message = 'I clicked Button 3';
-          console.info('I clicked 3');
-        }).keyboardShortcut('A', [ModifierKey.SHIFT]);
-        Button('Test short cut 4').onClick(() => {
-          this.message = 'I clicked Button 4';
-          console.info('I clicked 4');
-        }).keyboardShortcut(FunctionKey.F5, [], () => {
-          this.message = 'I clicked Button 4';
-          console.info('I clicked user callback.');
-        }).keyboardShortcut(FunctionKey.F3, []);
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### 示例2（快捷键的绑定和解除绑定）
-
-该示例演示了如何实现快捷键的绑定和解除绑定。
-
-```TypeScript
-@Entry
-@Component
-struct Index {
-  @State message: string = 'disable';
-  @State shortCutEnable: boolean = false;
-  @State keyValue: string = '';
-
-  build() {
-    Row() {
-      Column({ space: 5 }) {
-        Text('Ctrl+A is ' + this.message);
-        Button('Test short cut').onClick(() => {
-          this.message = 'I clicked Button';
-          console.info('I clicked');
-        }).keyboardShortcut(this.keyValue, [ModifierKey.CTRL]);
-        Button(this.message + 'shortCut').onClick(() => {
-          this.shortCutEnable = !this.shortCutEnable;
-          this.message = this.shortCutEnable ? 'enable' : 'disable';
-          this.keyValue = this.shortCutEnable ? 'a' : '';
-        });
-        Button('multi-shortcut').onClick(() => {
-          console.info('Trigger keyboard shortcut success.');
-        }).keyboardShortcut('q', [ModifierKey.CTRL])
-          .keyboardShortcut('w', [ModifierKey.CTRL])
-          .keyboardShortcut('', []); // 不生效，绑定了多个快捷键的组件不能解除绑定快捷键
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### 示例1（设置无障碍文本和无障碍说明）
-
-该示例主要演示accessibilityText无障碍文本和accessibilityDescription无障碍说明的播报内容。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @Builder
-  customAccessibilityNode() {
-    Column() {
-      Text(`virtual node`)
-    }
-    .width(10)
-    .height(10)
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('文本1')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text("文本2")
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-      .accessibilityGroup(true)
-      .accessibilityLevel("yes")
-      .accessibilityText("分组") // 无障碍文本的内容，若组件既拥有文本属性又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。
-      .accessibilityDescription("Column组件可以被选中，播报的内容是“分组”")
-      .accessibilityVirtualNode(this.customAccessibilityNode)
-      .accessibilityChecked(true)
-      .accessibilitySelected(undefined)
-    }
-    .height('100%')
-  }
-}
-```
-
-### 示例2（设置无障碍组）
-
-该示例主要演示优先使用子组件的无障碍文本进行朗读。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column({ space: 10 }) {
-      Text('123456')
-        .focusable(true)
-        .borderRadius(5)
-        .accessibilityText("有accessibility有text优先读accessibility")
-        .accessibilityLevel("yes")
-      Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
-      Button("无accessibility有text 读text").accessibilityLevel("yes")
-      Button()
-      Button('btn123').accessibilityText('有accessibility有text btn123').accessibilityLevel('yes')
-      Button('btn123').accessibilityLevel("yes")
-    }
-    .accessibilityGroup(true, { accessibilityPreferred: true })
-    .borderWidth(5)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### 示例3（设置首焦点和组件的下一个焦点）
-
-该示例主要演示accessibilityDefaultFocus屏幕朗读当前页默认首焦点和accessibilityNextFocusId走焦过程中组件的下一个焦点。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column({ space: 20 }) {
-      Text('Text Demo 1')
-        .fontSize(50)
-        .accessibilityLevel('yes')
-        .accessibilityNextFocusId('text3')
-      Text('Text Demo 2')
-        .id('text2')
-        .fontSize(50)
-        .accessibilityLevel('yes')
-        .accessibilityDefaultFocus(true)  // 设置该组件为屏幕朗读当前页默认首焦点
-        .accessibilityNextFocusId('text4')
-      Text('Text Demo 3')
-        .id('text3')
-        .fontSize(50)
-        .accessibilityLevel('yes')
-        .accessibilityNextFocusId('text2')
-      Text('Text Demo 4')
-        .id('text4')
-        .fontSize(50)
-        .accessibilityLevel('yes')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### 示例4（设置无障碍组件类型和文本提示信息）
-
-该示例主要演示accessibilityRole无障碍组件类型和accessibilityTextHint设置组件的文本提示信息（仅在与车机交互的场景下供车机的无障碍服务监听并响应）。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isDownloading: boolean = false;
-  @State hintStr: string = '点击开始下载';
-
-  build() {
-    Column({ space: 20 }) {
-      Button(this.isDownloading ? '下载中' : '点击下载')
-        .accessibilityLevel('yes')
-        .accessibilityTextHint(this.hintStr)
-        .onClick(() => {
-          this.isDownloading = !this.isDownloading;
-          this.hintStr = this.isDownloading ? '状态变为下载中' : '状态变为暂停下载';
-        })
-      TextInput({ placeholder: '请输入手机号码' })
-        .accessibilityLevel('yes')
-        .accessibilityTextHint('请输入11位手机号码')
-        .width('80%')
-      Text('按照按钮类型播报')
-        .accessibilityLevel('yes')
-        .accessibilityRole(AccessibilityRoleType.BUTTON)
-        .accessibilityTextHint('屏幕朗读播报时，该组件将按照按钮类型进行播报')
-        .fontSize(30)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### 示例5（设置无障碍屏幕朗读滚动和焦点绿框绘制）
-
-该示例主要演示accessibilityScrollTriggerable设置无障碍节点是否支持屏幕朗读滚动、accessibilityFocusDrawLevel设置无障碍焦点绿框的绘制层级和accessibilityUseSamePage为跨进程嵌入式显示的组件（如[EmbeddedComponent](ts-container-embedded-component.md)）设置同page模式。
-
-
-
-```TypeScript
-// xxx.ets
-import { Want } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Message: ';
-  private want: Want = {
-    // EmbeddedComponent提供方的bundleName，根据实际情况配置。
-    bundleName: 'com.example.embeddeddemo',
-    // EmbeddedComponent提供方的abilityName，根据实际情况配置。
-    abilityName: 'ExampleEmbeddedAbility',
-  }
-
-  build() {
-    Row() {
-      List() {
-        ListItem() {
-          Column() {
-            Text(this.message)
-              .fontSize(18)
-              .fontColor('#2D2D2D')
-              .fontWeight(FontWeight.Medium)
-            Column() {
-              EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-                .onTerminated((info) => {
-                  this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
-                })
-                .onError((error) => {
-                  this.message = 'Error: code = ' + error.code;
-                })
-                .accessibilityUseSamePage(AccessibilitySamePageMode.FULL_SILENT)
-                .width('90%')
-                .height('50%')
-                .backgroundColor('#F0F0F0')
-                .borderRadius(8)
-                .borderWidth(1)
-                .borderColor('#D9D9D9')
-
-              Stack() {
-                Column() {
-                  Text('文本1')
-                    .fontSize(18)
-                    .fontColor('#2D2D2D')
-                    .fontWeight(FontWeight.Medium)
-                  Text('文本1')
-                    .fontSize(18)
-                    .fontColor('#2D2D2D')
-                    .fontWeight(FontWeight.Medium)
-                    .accessibilityFocusDrawLevel(FocusDrawLevel.TOP)
-                }
-                .padding({ top: 8, bottom: 8 })
-
-                Column() {
-                  Text('文本2')
-                    .fontSize(18)
-                    .fontColor('#FFFFFF')
-                    .fontWeight(FontWeight.Medium)
-                  Text('文本2')
-                    .fontSize(18)
-                    .fontColor('#FFFFFF')
-                    .fontWeight(FontWeight.Medium)
-                }
-                .backgroundColor('#4A90E2')
-                .padding({
-                  left: 12,
-                  right: 12,
-                  top: 10,
-                  bottom: 10
-                })
-                .borderRadius(6)
-              }
-              .width('100%')
-              .margin({ top: 10, bottom: 10 })
-            }
-            .width('100%')
-            .height('100%')
-            .margin({ top: 15 })
-            .accessibilityText($r('app.string.app_name'))
-            .accessibilityDescription($r('app.string.module_desc'))
-
-            Column() {
-              Text('文本4')
-                .fontSize(18)
-                .fontWeight(FontWeight.Medium)
-            }
-            .margin({ top: 15 })
-          }
-          .width('100%')
-        }
-      }
-      .accessibilityScrollTriggerable(false)
-      .width('100%')
-    }
-    .height('100%')
-    .backgroundColor('#F7F9FC')
-  }
-}
-```
-
-### 示例6（设置无障碍聚合功能下的子组件状态和操作接管功能）
-
-该示例主要演示使用accessibilityGroup的可选参数stateControllerRoleType或者stateControllerId来选择一个特定子组件接管其无障碍状态信息，可选参数actionControllerRoleType或者actionControllerId来选择一个特定子组件接管其无障碍控制操作。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-
-  build() {
-    Column({ space: 20 }) {
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
-        Text('是否开启功能')
-        Toggle({ type: ToggleType.Switch, isOn: false })
-          .selectedColor('#007DFF')
-          .switchPointColor('#FFFFFF')
-          .onChange((isOn: boolean) => {
-            console.info('Component status:' + isOn);
-          })
-      }
-      .accessibilityGroup(true, {
-        stateControllerRoleType: AccessibilityRoleType.TOGGLER,
-        actionControllerRoleType: AccessibilityRoleType.TOGGLER
-      })
-      .width('80%')
-      .border({ color: Color.Black, width: 2 })
-
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
-        Text("是否开启功能")
-        Toggle({ type: ToggleType.Switch, isOn: false })
-          .selectedColor('#007DFF')
-          .switchPointColor('#FFFFFF')
-          .onChange((isOn: boolean) => {
-            console.info('Component status:' + isOn);
-          })
-          .id("TestToggle")
-      }
-      .accessibilityGroup(true, {
-        stateControllerId: "TestToggle",
-        actionControllerId: "TestToggle"
-      })
-      .width('80%')
-      .border({ color: Color.Black, width: 2 })
-
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### 示例7（设置无障碍组件状态播报信息）
-
-该示例主要通过[accessibilityStateDescription](#accessibilitystatedescription23)接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
-
-从API version 23开始，新增accessibilityStateDescription接口。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isSelected: boolean = false;
-
-  build() {
-    Column({ space: 20 }) {
-      Button(this.isSelected ? '已点赞' : '未点赞')
-        .accessibilityLevel('yes')
-        .onClick(() => {
-          this.isSelected = !this.isSelected;
-        })
-        .accessibilityStateDescription(this.isSelected ? '已点赞' : '未点赞')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### 示例8（设置无障碍操作选项修改组件滑动步数）
-
-本示例主要演示如何通过[accessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明)中的scrollStep参数，自定义组件的滑动步数。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
-
-从API version 23开始，新增AccessibilityActionOptions。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column({ space: 20 }) {
-      Row() {
-        Slider({
-          min: 0,
-          max: 100,
-          style: SliderStyle.OutSet
-        })
-        // 调整屏幕朗读手势下slider滑动的步数
-        .accessibilityActionOptions({ scrollStep: 10 })
-      }
-      .width('80%')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### 示例9（设置自定义无障碍操作）
-
-本示例主要演示如何使用[accessibilityCustomActions](arkts-arkui-common-comp-commonmethod-c.md#accessibilitycustomactions)为组件设置自定义无障碍操作。开发者可以按操作名为组件进行自定义操作的回调绑定。
-
-从API版本26.0.0开始，新增accessibilityCustomActions。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State listData: Array<string> = ['列表项1', '列表项2', '列表项3', '列表项4'];
-
-  build() {
-    Column() {
-      List({ space: 10 }) {
-        ForEach(this.listData, (item: string, index: number) => {
-          ListItem() {
-            Row() {
-              Text(item)
-                .fontSize(16)
-              Blank()
-              Text('删除')
-                .fontSize(14)
-                .fontColor(Color.Red)
-            }
-            .width('100%')
-            .padding(10)
-            .onClick(() => {
-              console.info('[TestTag] click success!')
-            })
-            .accessibilityLevel('yes')
-            .accessibilityCustomActions([
-              {
-                name: 'deleteItem',
-                onAction: () => {
-                  this.listData.splice(index, 1);
-                }
-              }
-            ])
-          }
-        }, (item: string) => item)
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
-
-### 示例1（设置Text多态样式）
-
-该示例展示了[stateStyles](#statestyles)设置状态为hovered、pressed和disabled时Text组件的样式变化。
-
-从API版本26.0.0开始，[stateStyles](#statestyles)新增hovered属性。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct StyleExample {
-  @State isEnable: boolean = true
-
-  @Styles
-  hoveredStyles(): void {
-    .backgroundColor('#12db70')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Dashed)
-    .borderWidth(2)
-    .borderColor('#33000000')
-    .width(120)
-    .height(30)
-    .opacity(1)
-  }
-
-  @Styles
-  pressedStyles(): void {
-    .backgroundColor('#ED6F21')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Dashed)
-    .borderWidth(2)
-    .borderColor('#33000000')
-    .width(120)
-    .height(30)
-    .opacity(1)
-  }
-
-  @Styles
-  disabledStyles(): void {
-    .backgroundColor('#E5E5E5')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Solid)
-    .borderWidth(2)
-    .borderColor('#2a4c1919')
-    .width(90)
-    .height(25)
-    .opacity(1)
-  }
-
-  @Styles
-  normalStyles(): void {
-    .backgroundColor('#0A59F7')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Solid)
-    .borderWidth(2)
-    .borderColor('#33000000')
-    .width(100)
-    .height(25)
-    .opacity(1)
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
-      Text('normal')
-        .fontSize(14)
-        .fontColor(Color.White)
-        .opacity(0.5)
-        // stateStyles设置组件无状态时的样式
-        .stateStyles({
-          normal: this.normalStyles,
-        })
-        .margin({ bottom: 20 })
-        .textAlign(TextAlign.Center)
-      Text('hovered')
-        .backgroundColor('#0A59F7')
-        .borderRadius(20)
-        .borderStyle(BorderStyle.Dotted)
-        .borderWidth(2)
-        .borderColor(Color.Red)
-        .width(100)
-        .height(25)
-        .opacity(1)
-        .fontSize(14)
-        .fontColor(Color.White)
-        // stateStyles设置组件鼠标悬浮状态时的样式
-        .stateStyles({
-          hovered: this.hoveredStyles,
-        })
-        .margin({ bottom: 20 })
-        .textAlign(TextAlign.Center)
-      Text('pressed')
-        .backgroundColor('#0A59F7')
-        .borderRadius(20)
-        .borderStyle(BorderStyle.Dotted)
-        .borderWidth(2)
-        .borderColor(Color.Red)
-        .width(100)
-        .height(25)
-        .opacity(1)
-        .fontSize(14)
-        .fontColor(Color.White)
-        // stateStyles设置组件按下状态时的样式
-        .stateStyles({
-          pressed: this.pressedStyles,
-        })
-        .margin({ bottom: 20 })
-        .textAlign(TextAlign.Center)
-      Text(this.isEnable ? 'effective' : 'disabled')
-        .backgroundColor('#0A59F7')
-        .borderRadius(20)
-        .borderStyle(BorderStyle.Solid)
-        .borderWidth(2)
-        .borderColor(Color.Gray)
-        .width(100)
-        .height(25)
-        .opacity(1)
-        .fontSize(14)
-        .fontColor(Color.White)
-        .enabled(this.isEnable)
-        // stateStyles设置组件禁用状态时的样式
-        .stateStyles({
-          disabled: this.disabledStyles,
-        })
-        .textAlign(TextAlign.Center)
-      Text('control disabled')
-        .onClick(() => {
-          this.isEnable = !this.isEnable;
-          console.info(`${this.isEnable}`);
-        })
-    }
-    .width(350).height(300)
-  }
-}
-```
-
-### 示例2（设置Radio多态样式）
-
-该示例展示了状态为selected时Radio组件的样式变化。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isRadio1Selected: boolean = false
-  @State isRadio2Selected: boolean = false
-
-  @Styles
-  normalStyles(): void {
-    .backgroundColor('#E5E5E1')
-  }
-
-  @Styles
-  selectStyles(): void {
-    .backgroundColor('#ED6F21')
-    .borderWidth(2)
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Column() {
-        Text('Radio1')
-          .fontSize(25)
-        Radio({ value: 'Radio1', group: 'radioGroup1' })
-          .checked(this.isRadio1Selected)
-          .height(50)
-          .width(50)
-          .borderWidth(0)
-          .borderRadius(30)
-          .onClick(() => {
-            this.isRadio1Selected = !this.isRadio1Selected;
-          })
-          .stateStyles({
-            normal: this.normalStyles,
-            selected: this.selectStyles,
-          })
-      }
-      .margin(30)
-
-      Column() {
-        Text('Radio2')
-          .fontSize(25)
-        Radio({ value: 'Radio2', group: 'radioGroup2' })
-          .checked($$this.isRadio2Selected)
-          .height(50)
-          .width(50)
-          .borderWidth(0)
-          .borderRadius(30)
-          .stateStyles({
-            normal: this.normalStyles,
-            selected: this.selectStyles,
-          })
-      }
-      .margin(30)
-    }.padding({ top: 30 })
-  }
-}
-```
-
-### 示例3（设置Builder多态样式）
-
-该示例展示了状态为pressed时@Builder中自定义组件的样式变化。
-
-```TypeScript
-import { ComponentContent } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Component
-struct Child {
-  build() {
-    Row()
-      .zIndex(10)
-      .width(200)
-      .height(200)
-      .stateStyles({
-        normal: {
-          .backgroundColor(Color.Blue)
-        },
-        pressed: {
-          .backgroundColor(Color.Black)
-        }
-      })
-  }
-}
-
-@Builder
-function buildText() {
-  Child()
-}
-
-@Entry
-@Component
-struct Index {
-  private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
-
-  build() {
-    Column() {
-      Button().margin({ top: 200 }).onClick(() => {
-        this.getUIContext()
-          .getPromptAction()
-          .openCustomDialog(this.contentNode)
-          .then(() => {
-            console.info('OpenCustomDialog complete.');
-          })
-          .catch((error: BusinessError) => {
-            let message = error.message;
-            let code = error.code;
-            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
-          });
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-该示例主要展示如何通过组件标识接口，获取特定id组件的属性，以及如何向该id的组件触发事件。
-
-```TypeScript
-// xxx.ets
-import { IntentionCode } from '@kit.InputKit';
-
-class Utils {
-  static rectLeft: number;
-  static rectTop: number;
-  static rectRight: number;
-  static rectBottom: number;
-  static rectValue: Record<string, number>;
-
-  // 获取组件所占矩形区域坐标
-  static getComponentRect(key: string): Record<string, number> {
-    let strJson = getInspectorByKey(key);
-    let obj: Record<string, string> = JSON.parse(strJson);
-    console.info('[getInspectorByKey] current component obj is: ' + JSON.stringify(obj));
-    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
-    console.info('[getInspectorByKey] rectInfo is: ' + rectInfo);
-    Utils.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0]; // 组件左上角相对于窗口左上角的水平方向坐标
-    Utils.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1]; // 组件左上角相对于窗口左上角的垂直方向坐标
-    Utils.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0]; // 组件右下角相对于窗口左上角的水平方向坐标
-    Utils.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // 组件右下角相对于窗口左上角的垂直方向坐标
-    return Utils.rectValue = {
-      "left": Utils.rectLeft,
-      "top": Utils.rectTop,
-      "right": Utils.rectRight,
-      "bottom": Utils.rectBottom
-    };
-  };
-}
-
-@Entry
-@Component
-struct IdExample {
-  @State text: string = '';
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-
-      Button() {
-        Text('onKeyTab').fontSize(25).fontWeight(FontWeight.Bold)
-      }.margin({ top: 20 }).backgroundColor('#0D9FFB')
-      .onKeyEvent(() => {
-        this.text = 'onKeyTab';
-      })
-
-      Button() {
-        Text('click to start').fontSize(25).fontWeight(FontWeight.Bold)
-      }.margin({ top: 20 })
-      .onClick(() => {
-        console.info(getInspectorByKey('click'));
-        console.info(JSON.stringify(getInspectorTree()));
-        this.text = "Button 'click to start' is clicked";
-        setTimeout(() => {
-          sendEventByKey('longClick', 11, ''); // 向id为"longClick"的组件发送长按事件
-        }, 2000)
-      }).id('click')
-
-      Button() {
-        Text('longClick').fontSize(25).fontWeight(FontWeight.Bold)
-      }.margin({ top: 20 }).backgroundColor('#0D9FFB')
-      .gesture(
-        LongPressGesture().onActionEnd(() => {
-          console.info('long clicked');
-          this.text = "Button 'longClick' is longclicked";
-          setTimeout(() => {
-            let rect = Utils.getComponentRect('onTouch'); // 获取id为"onTouch"组件的矩形区域坐标
-            let touchPoint: TouchObject = {
-              id: 1,
-              type: TouchType.Down,
-              x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
-              y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
-              windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-              windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
-              displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
-              displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
-              screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-              screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
-            };
-            sendTouchEvent(touchPoint); // 发送触摸事件
-            touchPoint.type = TouchType.Up;
-            sendTouchEvent(touchPoint); // 发送触摸事件
-          }, 2000)
-        })).id('longClick')
-
-      Button() {
-        Text('onTouch').fontSize(25).fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule).margin({ top: 20 })
-      .onClick(() => {
-        console.info('onTouch is clicked');
-        this.text = "Button 'onTouch' is clicked";
-        setTimeout(() => {
-          let rect = Utils.getComponentRect('onMouse'); // 获取id为"onMouse"组件的矩形区域坐标
-          let mouseEvent: MouseEvent = {
-            button: MouseButton.Left,
-            action: MouseAction.Press,
-            x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
-            y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
-            windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-            windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
-            displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
-            displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
-            screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-            screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
-            stopPropagation: () => {
-            },
-            timestamp: 1,
-            target: {
-              area: {
-                width: 1,
-                height: 1,
-                position: {
-                  x: 1,
-                  y: 1
-                },
-                globalPosition: {
-                  x: 1,
-                  y: 1
-                }
-              }
-            },
-            source: SourceType.Mouse,
-            pressure: 1,
-            tiltX: 1,
-            tiltY: 1,
-            sourceTool: SourceTool.Unknown
-          };
-          sendMouseEvent(mouseEvent); // 发送鼠标事件
-        }, 2000)
-      }).id('onTouch')
-
-      Button() {
-        Text('onMouse').fontSize(25).fontWeight(FontWeight.Bold)
-      }.margin({ top: 20 }).backgroundColor('#0D9FFB')
-      .onMouse(() => {
-        console.info('onMouse');
-        this.text = "Button 'onMouse' in onMouse";
-        setTimeout(() => {
-          let keyEvent: KeyEvent = {
-            type: KeyType.Down,
-            keyCode: 2049,
-            keyText: 'tab',
-            keySource: 4,
-            deviceId: 0,
-            metaKey: 0,
-            timestamp: 0,
-            stopPropagation: () => {
-            },
-            intentionCode: IntentionCode.INTENTION_DOWN
-          };
-          sendKeyEvent(keyEvent); // 发送按键事件
-        }, 2000)
-      }).id('onMouse')
-
-      Text(this.text).fontSize(25).padding(15)
-    }
-    .width('100%').height('100%')
   }
 }
 ```
@@ -6626,173 +4284,11 @@ struct SheetMaterialExample {
 }
 ```
 
-### 示例11（半模态自定义按钮材质）
-
-该示例通过closeButtonMaterial属性自定义半模态关闭按钮的材质效果，对比未设置（使用systemMaterial内置材质）、关闭材质、自定义材质三种状态。
-
-从API版本26.1.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增closeButtonMaterial属性。
-
-未设置closeButtonMaterial时，关闭按钮使用systemMaterial带来的内置材质效果。
-
-
-
-设置closeButtonMaterial为uiMaterial.Material.empty时，关闭按钮无材质效果。
-
-
-
-设置closeButtonMaterial为自定义材质时，关闭按钮使用自定义材质效果。
-
-
-
-```TypeScript
-// xxx.ets
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
-  @State myMaterial: SystemUiMaterial | undefined = undefined;
-  @State myCloseIconMaterial: SystemUiMaterial | undefined = undefined;
-
-  @Builder
-  myBuilder() {
-    Column({ space: 10 }) {
-      Text('Content')
-        .fontSize(30)
-    }
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-
-  build() {
-    Stack() {
-      Column() {
-        Button('按钮带有默认材质')
-          .onClick(() => {
-            this.myMaterial = new uiMaterial.ImmersiveMaterial({
-              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
-            });
-            this.myCloseIconMaterial = undefined;
-            this.isShow = true;
-          })
-          .fontSize(20)
-          .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
-            height: SheetSize.MEDIUM,
-            systemMaterial: this.myMaterial,
-            closeButtonMaterial: this.myCloseIconMaterial,
-          })
-        Button('按钮关闭材质')
-          .onClick(() => {
-            this.myMaterial = new uiMaterial.ImmersiveMaterial({
-              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
-            });
-            this.myCloseIconMaterial = uiMaterial.Material.empty;
-            this.isShow = true;
-          })
-          .fontSize(20)
-          .margin(10)
-        Button('按钮设置自定义材质')
-          .onClick(() => {
-            this.myMaterial = new uiMaterial.ImmersiveMaterial({
-              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
-            });
-            this.myCloseIconMaterial = new uiMaterial.ImmersiveMaterial({
-              style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-            });
-            this.isShow = true;
-          })
-          .fontSize(20)
-          .margin(10)
-      }
-      .justifyContent(FlexAlign.Center)
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
-
-### 示例12（半模态标题栏背景模糊）
-
-该示例通过titleBarBackgroundBlur属性设置半模态标题栏背景渐变模糊效果。同时配合titleBarHoverMode设置为STACK堆叠模式，使标题栏悬浮于内容区上方时模糊效果可见。
-
-从API版本26.1.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarBackgroundBlur属性。
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Column()
-        .backgroundColor(Color.Pink)
-        .height(200)
-        .width('100%')
-      Column()
-        .backgroundColor(Color.Orange)
-        .height(200)
-        .width('100%')
-      Column()
-        .backgroundColor(Color.Pink)
-        .height(200)
-        .width('100%')
-      Column()
-        .backgroundColor(Color.Orange)
-        .height(200)
-        .width('100%')
-      Column()
-        .backgroundColor(Color.Pink)
-        .height(200)
-        .width('100%')
-      Column()
-        .backgroundColor(Color.Orange)
-        .height(200)
-        .width('100%')
-    }
-    .width('100%')
-  }
-
-  build() {
-    Stack() {
-      Column() {
-        Button('拉起半模态')
-          .onClick(() => {
-            this.isShow = true;
-          })
-          .fontSize(20)
-          .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
-            height: SheetSize.MEDIUM,
-            title: { title: '标题' },
-            titleBarHoverMode: SheetTitleBarHoverMode.STACK,
-            titleBarBackgroundBlur: {
-              blurStyle: SheetTitleBarBackgroundBlur.GRADIENT,
-            },
-          })
-      }
-      .justifyContent(FlexAlign.Center)
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
-
-### 示例13（半模态标题栏悬浮模式）
+### 示例11（半模态设置标题栏悬浮模式）
 
 该示例通过titleBarHoverMode属性设置半模态标题栏为STACK堆叠模式，标题栏悬浮在内容区上方。
 
-从API版本26.1.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarHoverMode属性。
+从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarHoverMode属性。
 
 
 
@@ -6857,11 +4353,11 @@ struct SheetMaterialExample {
 }
 ```
 
-### 示例14（半模态滚动条状态）
+### 示例12（半模态自定义滚动条状态）
 
 该示例通过scrollBarState属性设置半模态内容区滚动条的显示状态，点击按钮在[BarState](ts-appendix-enums.md#barstate)的Off、On、Auto和未设置之间切换。
 
-从API版本26.1.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增scrollBarState属性。
+从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增scrollBarState属性。
 
 ```TypeScript
 // xxx.ets
@@ -6937,919 +4433,6 @@ struct SheetMaterialExample {
       .width('100%')
       .height('100%')
     }
-  }
-}
-```
-
-### 示例1（支持滚动手势）
-
-该示例通过设置[enableScrollInteraction](#enablescrollinteraction11)属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
-
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
-
-
-
-```TypeScript
-// xxx.ets
-import { ListDataSource } from './ListDataSource';
-
-@Entry
-@Component
-struct ListExample {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
-  build() {
-    Column() {
-      List({ space: 20, initialIndex: 0 }) {
-        LazyForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('' + item)
-              .width('100%')
-              .height(100)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(10)
-              .backgroundColor(0xFFFFFF)
-          }
-        }, (item: number) => item.toString())
-      }
-      .enableScrollInteraction(true)
-      .listDirection(Axis.Vertical) // 排列方向
-      .scrollBar(BarState.Off)
-      .friction(0.6)
-      .divider({
-        strokeWidth: 2,
-        color: 0xFFFFFF,
-        startMargin: 20,
-        endMargin: 20
-      }) // 每行之间的分界线
-      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
-      .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
-        console.info('first' + firstIndex);
-        console.info('last' + lastIndex);
-        console.info('center' + centerIndex);
-      })
-      .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo) => {
-        console.info(' start index: ' + start.index +
-          ' start item group area: ' + start.itemGroupArea +
-          ' start index in group: ' + start.itemIndexInGroup);
-        console.info(' end index: ' + end.index +
-          ' end item group area: ' + end.itemGroupArea +
-          ' end index in group: ' + end.itemIndexInGroup);
-      })
-      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
-      })
-      .width('90%')
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xDCDCDC)
-    .padding({ top: 5 })
-  }
-}
-```
-
-### 示例2（设置边缘渐隐）
-
-该示例通过设置[fadingEdge](#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。
-
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-import { ListDataSource } from './ListDataSource';
-
-@Entry
-@Component
-struct ListExample {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
-  scrollerForList: Scroller = new Scroller();
-
-  build() {
-    Column() {
-
-      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
-        LazyForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('' + item)
-              .width('100%')
-              .height(100)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(10)
-              .backgroundColor(0xFFFFFF)
-          }
-        }, (item: number) => item.toString())
-      }
-      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xDCDCDC)
-    .padding({ top: 5 })
-  }
-}
-```
-
-### 示例3（设置裁剪区域）
-
-该示例通过设置[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性，改变组件的内容层裁剪区域。
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ScrollExample {
-  scroller: Scroller = new Scroller();
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  @State clipContent: ContentClipMode | RectShape | undefined = undefined;
-
-  build() {
-    Column() {
-      Scroll(this.scroller) {
-        Column() {
-          ForEach(this.arr, (item: number) => {
-            Text(item.toString())
-              .width(300)
-              .height(80)
-              .fontSize(20)
-              .textAlign(TextAlign.Center)
-              .backgroundColor(Color.Grey)
-          }, (item: number) => item.toString())
-        }
-      }
-      .backgroundColor(Color.Blue)
-      .clipContent(this.clipContent)
-      .scrollBar(BarState.Off)
-      .friction(0.6)
-      .width(300)
-      .height('50%')
-      .padding(10)
-      .safeAreaPadding(LengthMetrics.vp(10))
-      .initialOffset({ yOffset: 80 })
-      .margin({ top: 20 })
-
-      Button('clipContent SAFE_AREA')
-        .onClick(() => {
-          this.clipContent = ContentClipMode.SAFE_AREA;
-        }).margin({ top: 30 })
-
-      Button('clipContent BOUNDARY')
-        .onClick(() => {
-          this.clipContent = ContentClipMode.BOUNDARY;
-        }).margin({ top: 35 })
-
-      Button('clipContent CONTENT_ONLY')
-        .onClick(() => {
-          this.clipContent = ContentClipMode.CONTENT_ONLY;
-        }).margin({ top: 40 })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
-  }
-}
-```
-
-### 示例4（设置滚动条边距）
-
-从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
-
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
-
-```TypeScript
-// xxx.ets
-import { ListDataSource } from './ListDataSource';
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ListExample {
-  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  @State scrollBarMargin: ScrollBarMargin = { start: LengthMetrics.vp(0), end: LengthMetrics.vp(0) };
-
-  build() {
-    Stack({ alignContent: Alignment.TopStart }) {
-      Column() {
-        List({ space: 20, initialIndex: 0 }) {
-          LazyForEach(this.arr, (item: number) => {
-            ListItem() {
-              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
-                Text('' + item)
-                  .width('100%')
-                  .height(80)
-                  .fontSize(20)
-                  .textAlign(TextAlign.Center)
-                  .borderRadius(10)
-                  .backgroundColor(Color.White)
-                  .flexShrink(1)
-              }
-            }
-          }, (item: number) => item.toString())
-        }.width('90%')
-        .friction(0.6)
-        .scrollBar(BarState.On)
-        .scrollBarMargin(this.scrollBarMargin)
-      }.width('100%')
-
-      Button('scrollBarMargin')
-        .onClick(() => {
-          this.scrollBarMargin = { start: LengthMetrics.vp(45), end: LengthMetrics.vp(70) };
-        }).margin({ top: 5, left: 20 })
-
-      Button('scrollBarMargin2')
-        .onClick(() => {
-          this.scrollBarMargin = { start: LengthMetrics.vp(15), end: LengthMetrics.vp(100) };
-        }).margin({ top: 200, left: 20 })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
-  }
-}
-```
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isShow: boolean = false
-
-  build() {
-    Stack({ alignContent: Alignment.Center }) {
-      if (this.isShow) {
-        Image($r('app.media.pic'))
-          .autoResize(false)
-          .clip(true)
-          .width(300)
-          .height(400)
-          .offset({ y: 100 })
-          .geometryTransition("picture", { hierarchyStrategy: TransitionHierarchyStrategy.ADAPTIVE })
-          .transition(TransitionEffect.OPACITY)
-      } else {
-        // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
-        // 套多层容器为了说明相对布局约束传递
-        Column() {
-          Column() {
-            Image($r('app.media.icon'))
-              .width('100%').height('100%')
-          }.width('100%').height('100%')
-        }
-        .width(80)
-        .height(80)
-        // geometryTransition会同步圆角，但仅限于geometryTransition绑定处，此处绑定的是容器
-        // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
-        .borderRadius(20)
-        .clip(true)
-        .geometryTransition("picture", { hierarchyStrategy: TransitionHierarchyStrategy.ADAPTIVE })
-        // transition保证组件离场不被立即析构，可设置其他转场效果
-        .transition(TransitionEffect.OPACITY)
-      }
-    }
-    .onClick(() => {
-      this.getUIContext()?.animateTo({ duration: 1000 }, () => {
-        this.isShow = !this.isShow;
-      })
-    })
-  }
-}
-```
-
-### 示例1（弹出不同类型的气泡）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中的keyboardAvoidMode属性，设置气泡是否避让软键盘。
-
-从API version 15开始，分别在PopupOptions和CustomPopupOptions中新增了keyboardAvoidMode属性。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-  @State customPopup: boolean = false;
-
-  // Popup构造器定义弹框内容
-  @Builder popupBuilder() {
-    Row({ space: 2 }) {
-      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
-      Image($r('app.media.icon')).width(24).height(24).margin({ left: -5 })
-      Text('Custom Popup').fontSize(10)
-    }.width(100).height(50).padding(5)
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions类型设置弹框内容
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with PopupOptions',
-          placement: Placement.Top,
-          showInSubWindow: false,
-          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 设置气泡避让软键盘
-          primaryButton: {
-            value: 'confirm',
-            action: () => {
-              this.handlePopup = !this.handlePopup;
-              console.info('confirm Button click');
-            }
-          },
-          // 第二个按钮
-          secondaryButton: {
-            value: 'cancel',
-            action: () => {
-              this.handlePopup = !this.handlePopup;
-              console.info('cancel Button click');
-            }
-          },
-          onStateChange: (e) => {
-            console.info(JSON.stringify(e.isVisible));
-            if (!e.isVisible) {
-              this.handlePopup = false;
-            }
-          }
-        })
-        .position({ x: 100, y: 150 })
-
-
-      // CustomPopupOptions类型设置弹框内容
-      Button('CustomPopupOptions')
-        .onClick(() => {
-          this.customPopup = !this.customPopup;
-        })
-        .bindPopup(this.customPopup, {
-          builder: this.popupBuilder,
-          placement: Placement.Top,
-          mask: { color: '#33000000' },
-          popupColor: Color.Yellow,
-          enableArrow: true,
-          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 设置气泡避让软键盘
-          showInSubWindow: false,
-          onStateChange: (e) => {
-            if (!e.isVisible) {
-              this.customPopup = false;
-            }
-          }
-        })
-        .position({ x: 80, y: 300 })
-    }.width('100%').padding({ top: 5 })
-  }
-}
-```
-
-### 示例2（设置气泡的文本样式）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的messageOptions属性，实现了弹出自定义文本样式的气泡。
-
-
-
-```TypeScript
-// xxx.ets
-
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-
-  build() {
-    Column({ space: 100 }) {
-      Button('PopupOptions').margin(100)
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          // PopupOptions类型气泡的内容
-          message: 'This is a popup with PopupOptions',
-          messageOptions: {
-            // 气泡的文本样式
-            textColor: Color.Red,
-            font: {
-              size: '14vp',
-              style: FontStyle.Italic,
-              weight: FontWeight.Bolder
-            }
-          },
-          placement: Placement.Bottom,
-          enableArrow: false, // 气泡弹出时不显示箭头
-          targetSpace: '15vp',
-          onStateChange: (e) => {
-            console.info(JSON.stringify(e.isVisible));
-            if (!e.isVisible) {
-              this.handlePopup = false;
-            }
-          }
-        })
-    }.margin(20)
-  }
-}
-```
-
-### 示例3（设置气泡的样式）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的arrowHeight、arrowWidth、radius、shadow和popupColor属性，实现了气泡箭头以及气泡本身的样式。
-
-
-
-```TypeScript
-// xxx.ets
-
-@Entry
-@Component
-struct PopupExample {
-  @State customPopup: boolean = false;
-  @State handlePopup: boolean = false;
-
-  build() {
-    Column({ space: 100 }) {
-      Button('popup')
-        .margin({ top: 50 })
-        .onClick(() => {
-          this.customPopup = !this.customPopup;
-        })
-        .bindPopup(this.customPopup!!, {
-          message: 'this is a popup',
-          arrowHeight: 20, // 设置气泡箭头高度
-          arrowWidth: 20, // 设置气泡箭头宽度
-          radius: 20, // 设置气泡的圆角
-          shadow: ShadowStyle.OUTER_DEFAULT_XS, // 设置气泡的阴影
-        })
-
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup!!, {
-          width: 300,
-          message: 'This is a popup with PopupOptions',
-          arrowPointPosition: ArrowPointPosition.START, // 设置箭头的位置
-          backgroundBlurStyle: BlurStyle.NONE, // 关闭气泡的模糊背景
-          popupColor: Color.Red, // 设置气泡的背景色
-          autoCancel: true,
-        })
-    }
-    .width('100%')
-  }
-}
-```
-
-### 示例4（设置气泡的动效）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中的transition属性，实现了气泡显示以及退出的动效。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-  @State customPopup: boolean = false;
-
-  // Popup构造器定义弹框内容
-  @Builder
-  popupBuilder() {
-    Row() {
-      Text('Custom Popup with transitionEffect').fontSize(10)
-    }.height(50).padding(5)
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions类型设置弹框内容
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with transitionEffect',
-          placement: Placement.Top,
-          showInSubWindow: false,
-          onStateChange: (e) => {
-            console.info(JSON.stringify(e.isVisible));
-            if (!e.isVisible) {
-              this.handlePopup = false;
-            }
-          },
-          // 设置气泡显示动效为透明度动效与平移动效的组合效果，无退出动效
-          transition: TransitionEffect.asymmetric(
-            TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
-              TransitionEffect.translate({ x: 50, y: 50 })),
-            TransitionEffect.IDENTITY)
-        })
-        .position({ x: 100, y: 150 })
-
-      // CustomPopupOptions类型设置弹框内容
-      Button('CustomPopupOptions')
-        .onClick(() => {
-          this.customPopup = !this.customPopup;
-        })
-        .bindPopup(this.customPopup, {
-          builder: this.popupBuilder,
-          placement: Placement.Top,
-          showInSubWindow: false,
-          onStateChange: (e) => {
-            if (!e.isVisible) {
-              this.customPopup = false;
-            }
-          },
-          // 设置气泡显示动效与退出动效为缩放动效
-          transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
-        })
-        .position({ x: 80, y: 300 })
-    }.width('100%').padding({ top: 5 })
-  }
-}
-```
-
-### 示例5（为气泡添加事件）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的onWillDismiss属性，实现了当气泡退出时，拦截退出事件并执行回调函数。
-
-
-
-```TypeScript
-// xxx.ets
-
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-  build() {
-    Column() {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = true;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with PopupOptions',
-          messageOptions: {
-            textColor: Color.Red,
-            font: {
-              size: '14vp',
-              style: FontStyle.Italic,
-              weight: FontWeight.Bolder
-            }
-          },
-          placement: Placement.Bottom,
-          enableArrow: false,
-          targetSpace: '15vp',
-          onStateChange: (e) => {
-            if (!e.isVisible) {
-              this.handlePopup = false;
-            }
-          },
-          /**
-           * 气泡即将关闭前拦截回调
-           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
-           */
-          onWillDismiss: (
-            (dismissPopupAction: DismissPopupAction) => {
-              console.info('dismissReason:' + JSON.stringify(dismissPopupAction.reason));
-              if (dismissPopupAction.reason === DismissReason.PRESS_BACK) {
-                dismissPopupAction.dismiss();
-              }
-            }
-          )
-        })
-    }.margin(20)
-  }
-}
-```
-
-### 示例6（为气泡拦截退出事件）
-
-该示例将[PopupOptions](#popupoptions类型说明)的onWillDismiss属性设为false，使气泡不响应退出事件。同时，配置[PopupOptions](#popupoptions类型说明)的followTransformOfTarget属性，设置气泡是否跟随宿主组件变换。
-
-
-
-```TypeScript
-// xxx.ets
-
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-  private timer: number = -1;
-
-  build() {
-    Column() {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = true;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with PopupOptions',
-          messageOptions: {
-            textColor: Color.Red,
-            font: {
-              size: '14vp',
-              style: FontStyle.Italic,
-              weight: FontWeight.Bolder
-            }
-          },
-          placement: Placement.Bottom,
-          enableArrow: false,
-          targetSpace: '15vp',
-          // 气泡跟随按钮的平移、缩放等变换同步变动
-          followTransformOfTarget: true,
-          onStateChange: (e) => {
-            // 设置气泡显示6秒后自动关闭
-            if (e.isVisible) {
-              this.timer = setTimeout(() => {
-                this.handlePopup = false;
-              }, 6000);
-            } else {
-              this.handlePopup = false;
-              if (this.timer !== -1) {
-                clearTimeout(this.timer);
-                this.timer = -1;
-              }
-            }
-          },
-          // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出
-          onWillDismiss: false
-        })
-    }.margin(20)
-  }
-}
-```
-
-### 示例7（为气泡内外描边设置线性渐变）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient属性，为气泡设置内外描边线性渐变的颜色和方向。
-
-从API version 20开始，在PopupOptions中新增了outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient属性。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false
-
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup
-        })
-        /**
-         * 为按钮绑定气泡
-         * 第一个参数：气泡显隐控制变量
-         * message：气泡内部展示文本
-         * placement.Top：气泡从按钮上方弹出
-         * outlineWidth：外描边线宽度1vp
-         * outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
-         * borderWidth：弹窗内部边框宽度1vp
-         * borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
-         */
-        .bindPopup(this.handlePopup!!, {
-          message: 'This is a popup with PopupOptions',
-          placement: Placement.Top,
-          outlineWidth: 1,
-          outlineLinearGradient: {
-            direction: GradientDirection.Top,
-            colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
-          },
-          borderWidth: 1,
-          borderLinearGradient: {
-            direction: GradientDirection.Bottom,
-            colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
-          }
-        })
-        .position({ x: 100, y: 150 }) 
-    }.width('100%').padding({ top: 5 })
-  }
-}
-```
-
-### 示例8（设置气泡避让绑定的组件模式）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)的avoidTarget属性，实现气泡对其绑定组件的避让。
-
-从API version 20开始，在PopupOptions中新增了avoidTarget属性。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup
-        })
-        .bindPopup(this.handlePopup!!, {
-          message: 'popup message '.repeat(200),
-          placement: Placement.Top,
-          // 气泡在剩余显示空间不足的情况下，在最大空间处压缩显示
-          avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
-        })
-        .position({ x: 100, y: 150 }) 
-    }.width('100%').padding({ top: 5 })
-  }
-}
-```
-
-### 示例9（设置Popup的沉浸光感视觉效果）
-
-该示例通过[PopupOptions](#popupoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了Popup的沉浸光感视效。
-
-该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
-
-从API版本26.0.0开始，在PopupOptions中新增了systemMaterial属性。
-
-未设置系统材质时：
-
-
-
-设置系统材质后：
-
-
-
-```TypeScript
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup
-        })
-        /**
-         * 绑定气泡至按钮
-         * 第一个参数：气泡显示控制布尔值
-         * message：气泡内展示文本
-         * placement.Top：气泡弹出位置在按钮上方
-         * systemMaterial：为气泡配置沉浸式磨砂材质
-         * ImmersiveStyle.THIN：薄款磨砂，中等通透度
-         */
-        .bindPopup(this.handlePopup!!, {
-          message: 'This is a popup with PopupOptions',
-          placement: Placement.Top,
-          // 控制是否设置系统材质接口
-          systemMaterial: new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.THIN
-          })
-        })
-        .position({ x: 100, y: 300 })
-    }.width('100%')
-    // 请开发者替换为实际资源文件
-    .backgroundImage($r('app.media.img'))
-    .backgroundImageSize({ width: '100%', height: '100%' })
-  }
-}
-```
-
-### 示例10（自定义气泡背景效果参数）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)的backgroundBlurStyleOptions和backgroundEffect属性，实现自定义气泡背景效果。
-
-从API版本26.0.0开始，在PopupOptions中新增了backgroundBlurStyleOptions和backgroundEffect属性。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-
-  build() {
-    Flex({ direction: FlexDirection.Column }) {
-      Button('Popup自定义背景效果1')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup
-        })
-        /**
-         * 绑定气泡，使用系统标准化磨砂模糊样式
-         * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
-         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
-         * colorMode.LIGHT：浅色主题调色模式
-         * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
-         * scale：磨砂通透缩放系数0.5
-         * blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
-         */
-        .bindPopup(this.handlePopup!!, {
-          message: 'popup message '.repeat(20),
-          backgroundBlurStyleOptions: {
-            colorMode: ThemeColorMode.LIGHT,
-            adaptiveColor: AdaptiveColor.AVERAGE,
-            scale: 0.5,
-            blurOptions: { grayscale: [20, 20] },
-          }
-        })
-        .position({ x: 100, y: 150 }) 
-
-      Button('Popup自定义背景效果2')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup
-        })
-        /**
-         * 绑定气泡，使用完全自定义混合背景特效
-         * radius：背景模糊半径60，模糊程度更高
-         * saturation：饱和度0，画面去色黑白化
-         * brightness：亮度1，保持原始亮度不变
-         * color：叠加粉色底色
-         * blurOptions.grayscale：灰度滤镜参数
-         */
-        .bindPopup(this.handlePopup!!, {
-          message: 'popup message '.repeat(20),
-          backgroundEffect: {
-            radius: 60,
-            saturation: 0,
-            brightness: 1,
-            color: Color.Pink,
-            blurOptions: { grayscale: [20, 20] }
-          }
-        })
-        .position({ x: 100, y: 400 }) 
-    }.width('100%')
-    // 请开发者替换为实际资源文件
-    .backgroundImage($r('app.media.img'))
-    .backgroundImageSize({ width: '100%', height: '100%' })
-  }
-}
-```
-
-### 示例11（设置气泡的显示层级模式）
-
-该示例通过配置[PopupOptions](#popupoptions类型说明)的levelMode属性，实现气泡在页面内嵌入显示。点击按钮后页面级的气泡不会显示在下一个路由页面中。
-
-从API版本26.0.0开始，在PopupOptions中新增了levelMode属性。
-
-```TypeScript
-import { LevelMode } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct PopupExample {
-  @State handlePopup: boolean = false;
-
-  build() {
-    Column() {
-      Button('PopupOptions EMBEDDED')
-        .id('targetButton')
-        .onClick(() => {
-          // 切换气泡显示/隐藏状态
-          this.handlePopup = !this.handlePopup;
-          // 延迟500ms跳转路由，确保气泡动画播放完成
-          setTimeout(() => {
-            // pages/PageTwo需要开发者替换为实际路由名称
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'}).catch(() => {
-              console.error("route to PageTwo error!")
-            })
-          }, 500)
-        })
-        /**
-         * 绑定气泡到当前按钮
-         * 第一个参数：气泡显示控制布尔值
-         * message：气泡内展示文本
-         * levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
-         */
-        .bindPopup(this.handlePopup!!, {
-          message: 'This is an embedded popup',
-          levelMode: LevelMode.EMBEDDED,
-        })
-        .position({ x: 60, y: 300 })
-    }.width('100%').padding({ top: 5 })
-  }
-}
-```
-
-PageTwo页面：
-
-```TypeScript
-@Entry
-@Component
-struct PageTwo {
-  build() {
-    Column() {
-      Text("This is next page")
-    }
-    .position({ x: 120, y: 300 })
   }
 }
 ```
@@ -8101,6 +4684,7 @@ struct KeyEventExample {
   build() {
     Column({ space: 10 }) {
       Button('KeyEvent')
+        .defaultFocus(true)
         .onKeyEvent((event?: KeyEvent) => {
           if (event) {
             if (event.type === KeyType.Down) {
@@ -8143,11 +4727,12 @@ struct PreImeEventExample {
       Search({
         placeholder: 'Search...'
       })
+        .defaultFocus(true)
         .width('80%')
         .height('40vp')
         .border({ radius: '20vp' })
         .onKeyPreIme((event: KeyEvent) => {
-          // 使用方向左键不生效
+          // 使方向左键失效
           if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }
@@ -8221,135 +4806,6 @@ struct KeyEventExample {
           'KeyText:' + event.keyText;
       }
     })
-  }
-}
-```
-
-### 示例1（设置onAccessibilityActionIntercept拦截点击事件）
-
-该示例演示在无障碍模式下，通过onAccessibilityActionIntercept事件在Toggle组件点击事件触发前进行拦截，并弹出确认对话框由用户确认是否放行该点击事件。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OnAccessibilityActionInterceptExample {
-  @State private isOn: boolean = false;
-
-  build() {
-    NavDestination() {
-      Column() {
-        Text('onAccessibilityActionIntercept')
-        Row() {
-          Text('Label message')
-          Blank()
-          Toggle({ type: ToggleType.Switch, isOn: $$this.isOn })
-            .onAccessibilityActionIntercept((action: AccessibilityAction) => {
-              // 无障碍点击操作触发时，弹出确认对话框由用户决定是否放行
-              if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
-                this.getUIContext().showAlertDialog({
-                  title: '标题',
-                  message: '内容信息',
-                  primaryButton: {
-                    value: '确认',
-                    action: () => {
-                      this.isOn = !this.isOn;
-                    }
-                  },
-                  secondaryButton: {
-                    value: '取消',
-                    action: () => {
-                    }
-                  }
-                });
-                // 拦截本次点击，阻止组件默认点击行为
-                return AccessibilityActionInterceptResult.ACTION_INTERCEPT;
-              } else {
-                // 其他无障碍操作不拦截，直接放行
-                return AccessibilityActionInterceptResult.ACTION_CONTINUE;
-              }
-            })
-        }.width('100%')
-      }
-      .padding(24)
-      .width('100%')
-    }
-  }
-}
-```
-
-### 示例2（设置onAccessibilityFocus回调函数）
-
-从API version 18开始，当获焦、失焦状态发生变化时，触发该回调函数。本示例展示了[onAccessibilityFocus](arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityfocus)的基本用法，聚焦到"onAccessibilityFocus takes effect"时，会打印"[testingTag] isFocus current is true"，当聚焦到"onAccessibilityFocus takes effect"以外的位置时，会打印"[testingTag] isFocus current is false"。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OnAccessibilityFocusExample {
-
-  build() {
-    NavDestination() {
-      Column() {
-        Text("onAccessibilityFocus doesn't take effect")
-        Text('onAccessibilityFocus takes effect')
-          .onAccessibilityFocus((isFocus: boolean) => {
-            console.info(`[testingTag] isFocus current is ${isFocus}`);
-          })
-      }
-      .padding(24)
-      .width('100%')
-    }
-  }
-}
-```
-
-该示例通过onTouchIntercept修改组件的HitTestMode属性。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  isPolygon(event: TouchEvent) {
-    return true;
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('hello world')
-          .backgroundColor(Color.Blue)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            console.info('Text click');
-          })
-      }
-      .width(400)
-      .height(300)
-      .backgroundColor(Color.Pink)
-      .onClick(() => {
-        console.info('Column click');
-      })
-      // 调用onTouchIntercept修改该组件的HitTestMode属性
-      .onTouchIntercept((event: TouchEvent) => {
-        console.info('OnTouchIntercept + ' + JSON.stringify(event));
-        // 使用touches时需要先校验是否为空
-        if (event && event.touches) {
-          let touches = event.touches;
-          for (let i = 0; touches[i] != null; i++) {
-            console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
-          }
-        }
-        // 当满足自定义拦截条件时，返回HitTestMode.None使该组件不参与触摸测试
-        if (this.isPolygon(event)) {
-          return HitTestMode.None;
-        }
-        return HitTestMode.Default;
-      })
-    }
-    .width('100%')
   }
 }
 ```
@@ -9071,646 +5527,6 @@ struct Demo {
 }
 ```
 
-### 示例1（逐帧布局的效果）
-
-以下示例通过改变Text组件宽度实现逐帧布局的效果。
-
-
-
-```TypeScript
-@AnimatableExtend(Text)
-function animatableWidth(width: number) {
-  .width(width)
-}
-
-@Entry
-@Component
-struct AnimatablePropertyExample {
-  @State textWidth: number = 80;
-
-  build() {
-    Column() {
-      Text("AnimatableProperty")
-        .animatableWidth(this.textWidth)
-        .animation({ duration: 2000, curve: Curve.Ease })
-      Button("Play")
-        .onClick(() => {
-          this.textWidth = this.textWidth === 80 ? 160 : 80;
-        })
-    }.width("100%")
-    .padding(10)
-  }
-}
-```
-
-### 示例2（折线的动画效果）
-
-以下示例实现折线的动画效果。
-
-```TypeScript
-class Point {
-  x: number
-  y: number
-
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
-
-  plus(rhs: Point): Point {
-    return new Point(this.x + rhs.x, this.y + rhs.y);
-  }
-
-  subtract(rhs: Point): Point {
-    return new Point(this.x - rhs.x, this.y - rhs.y);
-  }
-
-  multiply(scale: number): Point {
-    return new Point(this.x * scale, this.y * scale);
-  }
-
-  equals(rhs: Point): boolean {
-    return this.x === rhs.x && this.y === rhs.y;
-  }
-}
-
-// PointVector实现了AnimatableArithmetic<T>接口
-class PointVector extends Array<Point> implements AnimatableArithmetic<PointVector> {
-  constructor(value: Array<Point>) {
-    super();
-    value.forEach(point => this.push(point));
-  }
-
-  plus(rhs: PointVector): PointVector {
-    let result = new PointVector([]);
-    const len = Math.min(this.length, rhs.length);
-    for (let i = 0; i < len; i++) {
-      result.push((this as Array<Point>)[i].plus((rhs as Array<Point>)[i]));
-    }
-    return result;
-  }
-
-  subtract(rhs: PointVector): PointVector {
-    let result = new PointVector([]);
-    const len = Math.min(this.length, rhs.length);
-    for (let i = 0; i < len; i++) {
-      result.push((this as Array<Point>)[i].subtract((rhs as Array<Point>)[i]));
-    }
-    return result;
-  }
-
-  multiply(scale: number): PointVector {
-    let result = new PointVector([]);
-    for (let i = 0; i < this.length; i++) {
-      result.push((this as Array<Point>)[i].multiply(scale));
-    }
-    return result;
-  }
-
-  equals(rhs: PointVector): boolean {
-    if (this.length !== rhs.length) {
-      return false;
-    }
-    for (let i = 0; i < this.length; i++) {
-      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  get(): Array<Object[]> {
-    let result: Array<Object[]> = [];
-    this.forEach(point => result.push([point.x, point.y]));
-    return result;
-  }
-}
-
-@AnimatableExtend(Polyline)
-function animatablePoints(points: PointVector) {
-  // 将PointVector转换为Polyline的points属性所需的数组格式
-  .points(points.get())
-}
-
-@Entry
-@Component
-struct AnimatablePropertyExample {
-  @State points: PointVector = new PointVector([
-    new Point(50, Math.random() * 200),
-    new Point(100, Math.random() * 200),
-    new Point(150, Math.random() * 200),
-    new Point(200, Math.random() * 200),
-    new Point(250, Math.random() * 200),
-  ])
-
-  build() {
-    Column() {
-      Polyline()
-        .animatablePoints(this.points)
-        .animation({ duration: 1000, curve: Curve.Ease }) // 设置动画参数
-        .size({ height: 220, width: 300 })
-        .fill(Color.Green)
-        .stroke(Color.Red)
-        .backgroundColor('#eeaacc')
-      Button("Play")
-        .onClick(() => {
-          // points是实现了可动画协议的数据类型，points在动画过程中可按照定义的运算规则、动画参数从之前的PointVector变为新的PointVector数据，产生每一帧的PointVector数据，进而产生动画
-          this.points = new PointVector([
-            new Point(50, Math.random() * 200),
-            new Point(100, Math.random() * 200),
-            new Point(150, Math.random() * 200),
-            new Point(200, Math.random() * 200),
-            new Point(250, Math.random() * 200),
-          ]);
-        })
-    }.width("100%")
-    .padding(10)
-  }
-}
-```
-
-### 示例1（对齐方式和主轴方向上的布局）
-
-设置内容在元素内的对齐方式和子元素在父组件主轴方向上的布局。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PositionExample1 {
-  build() {
-    Column() {
-      Column({ space: 10 }) {
-        // 元素内容 < 元素宽高，设置内容在元素内的对齐方式
-        Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Stack() {
-          Text('First show in bottom end').height('65%').backgroundColor(0xD2B48C)
-          Text('Second show in bottom end').backgroundColor(0xF5DEB3).opacity(0.9)
-        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
-        .align(Alignment.BottomEnd)
-        Stack() {
-          Text('top start')
-        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
-        .align(Alignment.TopStart)
-
-        // 父组件设置direction为Direction.Ltr，子元素从左到右排列
-        Text('direction').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Row() {
-          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
-          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
-          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
-          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
-        }
-        .width('90%')
-        .direction(Direction.Ltr)
-        // 父组件设置direction为Direction.Rtl，子元素从右到左排列
-        Row() {
-          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
-          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
-          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
-          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
-        }
-        .width('90%')
-        .direction(Direction.Rtl)
-      }
-    }
-    .width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### 示例2（位置偏移）
-
-基于父组件、相对定位、锚点作出位置偏移。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PositionExample2 {
-  build() {
-    Column({ space: 20 }) {
-      // 设置子组件左上角相对于父组件左上角的偏移位置
-      Text('position').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('1').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('2 position(30, 10)')
-          .size({ width: '60%', height: '30' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .align(Alignment.Start)
-          .position({ x: 30, y: 10 })
-        Text('3').size({ width: '45%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('4 position(50%, 70%)')
-          .size({ width: '50%', height: '50' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .position({ x: '50%', y: '70%' })
-      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
-
-      // 相对于起点偏移，其中x为最终定位点距离起点水平方向间距，x>0往左，反之向右。
-      // y为最终定位点距离起点垂直方向间距，y>0向上，反之向下
-      Text('markAnchor').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Stack({ alignContent: Alignment.TopStart }) {
-        Row()
-          .size({ width: '100', height: '100' })
-          .backgroundColor(0xdeb887)
-        Text('text')
-          .fontSize('30px')
-          .textAlign(TextAlign.Center)
-          .size({ width: 25, height: 25 })
-          .backgroundColor(Color.Green)
-          .markAnchor({ x: 25, y: 25 })
-        Text('text')
-          .fontSize('30px')
-          .textAlign(TextAlign.Center)
-          .size({ width: 25, height: 25 })
-          .backgroundColor(Color.Green)
-          .markAnchor({ x: -100, y: -25 })
-        Text('text')
-          .fontSize('30px')
-          .textAlign(TextAlign.Center)
-          .size({ width: 25, height: 25 })
-          .backgroundColor(Color.Green)
-          .markAnchor({ x: 25, y: -25 })
-      }.margin({ top: 25 }).border({ width: 1, style: BorderStyle.Dashed })
-
-      // 相对定位，x>0向右偏移，反之向左，y>0向下偏移，反之向上
-      Text('offset').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('1').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('2  offset(15, 30)')
-          .size({ width: 120, height: '50' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .align(Alignment.Start)
-          .offset({ x: 15, y: 30 })
-        Text('3').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('4 offset(-5%, 20%)')
-          .size({ width: 100, height: '50' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .offset({ x: '-5%', y: '20%' })
-      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
-    }
-    .width('100%').margin({ top: 25 })
-  }
-}
-```
-
-### 示例3（绝对定位和相对偏移）
-
-使用position设置绝对定位，确定子组件相对父组件的位置。使用offset设置相对偏移，组件相对原本的布局位置进行偏移。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Example3 {
-  build() {
-    Column({ space: 20 }) {
-      Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('bottom:0, right:0')
-          .size({ width: '30%', height: '50' })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ bottom: 0, right: 0 })
-        Text('top:0, left:0')
-          .size({ width: '30%', height: '50' })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ top: 0, left: 0 })
-        Text('top:10%, left:50%')
-          .size({ width: '50%', height: '30' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ top: '10%', left: '50%' })
-        Text('bottom:0, left:30')
-          .size({ width: '50%', height: '30' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ bottom: 0, left: 30 })
-      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
-
-
-      Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('1')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('2 top:30, left:0')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .offset({ top: 30, left: 0 })
-        Text('3')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('4 bottom:10, right:30')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(12)
-          .textAlign(TextAlign.Center)
-          .offset({ bottom: 10, right: 30 })
-      }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
-    }.width('100%').margin({ top: 25 })
-  }
-}
-```
-
-### 示例4（镜像效果）
-
-通用布局属性支持[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。下述示例从上到下依次通过[position](#position)、[offset](#offset)和[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
-
-镜像前效果：
-
-
-
-镜像后效果如下，镜像生效条件请参考[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)：
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Example4 {
-  private scroller: Scroller = new Scroller()
-
-  build() {
-    Column() {
-      Stack({ alignContent: Alignment.End }) {
-        Scroll(this.scroller) {
-          Flex({ direction: FlexDirection.Column }) {
-            RelativeContainer() {
-              Row() {
-              }
-              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // position接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(0, 74, 175)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .position({ left: '200px', top: '100px' }) // position接口中的参数使用Edges类型，不支持镜像翻转效果
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(39, 135, 217)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // offset接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(0, 74, 175)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .offset({ left: 100, top: 200 }) // offset接口中的参数使用Edges类型，不支持镜像翻转效果
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(39, 135, 217)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .markAnchor({
-                start: LengthMetrics.fp(100),
-                top: LengthMetrics.fp(-350)
-              }) // markAnchor接口中的参数使用LocalizedPosition类型，支持镜像翻转效果
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(0, 74, 175)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .markAnchor({ x: '100fp', y: '-350fp' }) // markAnchor接口中的参数使用Position类型，不支持镜像翻转效果
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(39, 135, 217)')
-              .padding(50)
-              .margin(50)
-            }
-            .backgroundColor(Color.White)
-            .padding(50)
-            .margin(50)
-          }
-        }
-        .width('100%')
-        .scrollBar(BarState.Off)
-        .scrollable(ScrollDirection.Vertical)
-
-        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
-          Text()
-            .width(20)
-            .height(100)
-            .borderRadius(10)
-            .backgroundColor('#C0C0C0')
-        }.width(20).backgroundColor('#ededed')
-      }
-    }.height('90%')
-  }
-}
-```
-
-### 示例5（align属性适配镜像特性）
-
-设置内容在元素内的对齐方式和子元素在父组件主轴方向上的布局。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct buttonTestDemo {
-  @State isLocalizedAlignment: LocalizedAlignment[] =
-    [LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END, LocalizedAlignment.START,
-      LocalizedAlignment.CENTER, LocalizedAlignment.END, LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM,
-      LocalizedAlignment.BOTTOM_END]
-  @State isLocalizedAlignmentIndex: number = 4
-  @State isDirection: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto]
-  @State isDirectionIndex: number = 0
-
-  build() {
-    Row() {
-      Column() {
-
-        Row({ space: 5 }) {
-          Button('START')
-            .onClick(() => {
-              this.isLocalizedAlignmentIndex = 3
-            })
-          Button('CENTER')
-            .onClick(() => {
-              this.isLocalizedAlignmentIndex = 4
-            })
-          Button('END')
-            .onClick(() => {
-              this.isLocalizedAlignmentIndex = 5
-            })
-        }.margin(20)
-
-        Row({ space: 5 }) {
-          Button('Ltr')
-            .onClick(() => {
-              this.isDirectionIndex = 0
-            })
-          Button('Rtl')
-            .onClick(() => {
-              this.isDirectionIndex = 1
-            })
-          Button('Auto')
-            .onClick(() => {
-              this.isDirectionIndex = 2
-            })
-        }.margin(20)
-
-        Row() {
-          Button('OK', { type: ButtonType.Capsule, stateEffect: true })
-            .backgroundColor(0x317aff)
-            .width(200)
-            .height(100)
-            .direction(this.isDirection[this.isDirectionIndex])
-            .align(this.isLocalizedAlignment[this.isLocalizedAlignmentIndex])
-        }.margin(20)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### 示例6（layoutGravity属性单独设置Stack组件中子组件的对齐规则）
-
-更改Stack中Text的位置。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index5 {
-  private layoutGravityArr: LocalizedAlignment[] = [
-    LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END,
-    LocalizedAlignment.START, LocalizedAlignment.CENTER, LocalizedAlignment.END,
-    LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM, LocalizedAlignment.BOTTOM_END];
-  @State layoutGravityIndex: number = 0;
-  private directionArr: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto];
-  @State directionIndex: number = 0;
-
-  build() {
-    Row() {
-      Column() {
-        Stack({
-          alignContent: Alignment.TopStart
-        }) {
-          Text('StackChildAlign_TopStart').fontSize(15)
-          Text('Child Text')
-            .width(150)
-            .height(150)
-            .backgroundColor(Color.Yellow)
-            .fontSize(15)
-            .layoutGravity(this.layoutGravityArr[this.layoutGravityIndex])
-        }
-        .width('100%')
-        .height(400)
-        .backgroundColor(Color.Grey)
-        .margin({ top: 10, bottom: 10 })
-        .direction(this.directionArr[this.directionIndex])
-
-        Button("LayoutGravity: " + this.layoutGravityArr[this.layoutGravityIndex])
-          .width(300)
-          .fontSize(16)
-          .onClick(() => {
-            this.layoutGravityIndex = ++this.layoutGravityIndex % this.layoutGravityArr.length;
-          })
-          .margin({ bottom: 10 })
-
-        Button("Direction: " + this.directionArr[this.directionIndex])
-          .width(150)
-          .fontSize(16)
-          .onClick(() => {
-            this.directionIndex = ++this.directionIndex % this.directionArr.length;
-          })
-          .margin({ bottom: 10 })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-该示例主要显示通过[opacity](#opacity)设置组件的不透明度。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OpacityExample {
-  build() {
-    Column({ space: 5 }) {
-      Text('opacity(1)').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Text().width('90%').height(50).opacity(1).backgroundColor(0xAFEEEE)
-      Text('opacity(0.7)').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Text().width('90%').height(50).opacity(0.7).backgroundColor(0xAFEEEE)
-      Text('opacity(0.4)').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Text().width('90%').height(50).opacity(0.4).backgroundColor(0xAFEEEE)
-      Text('opacity(0.1)').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Text().width('90%').height(50).opacity(0.1).backgroundColor(0xAFEEEE)
-      Text('opacity(0)').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Text().width('90%').height(50).opacity(0).backgroundColor(0xAFEEEE)
-    }
-    .width('100%')
-    .padding({ top: 5 })
-  }
-}
-```
-
 该示例通过为[Navigation](ts-basic-components-navigation.md)下的[Button](ts-basic-components-button.md)组件绑定toolbar通用属性，为标题栏NavBar分栏开头位置添加包含两个[Button](ts-basic-components-button.md)组件的工具栏项。为[NavDestination](ts-basic-components-navdestination.md)下的[Text](ts-basic-components-text.md)组件绑定toolbar通用属性，为标题栏NavDestination分栏末尾位置添加两个工具栏项，分别包含一个滑动条组件和一个搜索框组件。
 
 ```TypeScript
@@ -9883,8 +5699,11 @@ struct ImageExample {
           .width('100%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.TEXT])
           .onDrop((event?: DragEvent, extraParams?: string) => {
-            this.uri = JSON.parse(extraParams as string)?.extraInfo;
-            this.disallowedBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
+            if (extraParams === undefined) { return; }
+            const dropInfo = JSON.parse(extraParams);
+            this.uri = dropInfo?.extraInfo;
+            if (typeof dropInfo.insertIndex !== 'number') { return; }
+            this.disallowedBlockArr.splice(dropInfo.insertIndex, 0, this.uri);
             console.info('ondrop not udmf data');
           })
           .border({ width: 1 })
@@ -9921,7 +5740,9 @@ struct ImageExample {
               if (arr.length > 0) {
                 let image = arr[0] as unifiedDataChannel.Image;
                 this.uri = image.imageUri;
-                this.allowedBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
+                const dropInfo = JSON.parse(extraParams ?? '{}');
+                if (typeof dropInfo.insertIndex !== 'number') { return; }
+                this.allowedBlockArr.splice(dropInfo.insertIndex, 0, this.uri);
               } else {
                 console.info(`dragData arr is null`);
               }
@@ -10175,7 +5996,7 @@ struct DragPreviewOptionsDemo {
           .width('100%')
           .draggable(true)
           .dragPreviewOptions({
-            modifier: this.myModifier.opacity(this.opacityList[this.opacityIndex]) as ImageModifier
+            modifier: this.myModifier.opacity(this.opacityList[this.opacityIndex] ?? 1) as ImageModifier
           })
       }
       .width('50%')
@@ -10305,7 +6126,7 @@ struct ImageDrag {
           .width('70%')
           .height('70%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-          .onDrop((event: DragEvent, extraParams: string) => {
+          .onDrop((event: DragEvent, extraParams?: string) => {
             if (extraParams === null || extraParams === undefined) {
               return;
             }
@@ -10315,7 +6136,10 @@ struct ImageDrag {
             if (typeof uri == 'string') {
               this.targetImage1 = uri;
               try {
-                request.downloadFile(this.context, {
+                  const context = this.context;
+                  const filesDir = this.filesDir;
+                  if (context === undefined || filesDir === undefined) { return; }
+                  request.downloadFile(context, {
                   url: uri,
                   filePath: this.filesDir + '/example.png'
                 }).then((downloadTask: request.DownloadTask) => {
@@ -10348,11 +6172,11 @@ struct ImageDrag {
           .width('70%')
           .height('70%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-          .onDrop((event: DragEvent, extraParams: string) => {
+          .onDrop((event: DragEvent, extraParams?: string) => {
             // 通过uniformTypeDescriptor获取图片
             let data: UnifiedData = event.getData();
             let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-            if (records[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
+            if (records.length > 0 && records[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
               let image: unifiedDataChannel.Image = records[0] as unifiedDataChannel.Image;
               this.targetImage2 = image.imageUri;
             }
@@ -10377,11 +6201,11 @@ struct ImageDrag {
           .width('70%')
           .height('70%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP])
-          .onDrop(async (event: DragEvent, extraParams: string) => {
+          .onDrop(async (event: DragEvent, extraParams?: string) => {
             // 通过uniformTypeDescriptor获取图片
             let data: UnifiedData = event.getData();
             let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-            if (records[0].getType() === uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP) {
+            if (records.length > 0 && records[0].getType() === uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP) {
               let record: unifiedDataChannel.SystemDefinedPixelMap =
                 records[0] as unifiedDataChannel.SystemDefinedPixelMap;
               this.targetImage3 = await this.createPixelMap(record);
@@ -10391,13 +6215,17 @@ struct ImageDrag {
               let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 98 };
               const path: string = this.context?.cacheDir + "/pixel_map.jpg";
               let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-              imagePackerApi.packToFile(this.targetImage3, file.fd, packOpts).then(() => {
-                // 直接打包进文件
-                fileIo.closeSync(file);
-              }).catch((error: BusinessError) => {
-                fileIo.closeSync(file);
-                console.error('Failed to pack the image. And the error is: ' + error);
-              });
+              if (this.targetImage3 !== null && typeof this.targetImage3 !== 'string') {
+                imagePackerApi.packToFile(this.targetImage3, file.fd, packOpts).then(() => {
+                  // 直接打包进文件
+                  imagePackerApi.release();
+                  fileIo.closeSync(file);
+                }).catch((error: BusinessError) => {
+                  imagePackerApi.release();
+                  fileIo.closeSync(file);
+                  console.error('Failed to pack the image. And the error is: ' + error);
+                });
+              }
             }
           })
       }
@@ -10457,7 +6285,7 @@ struct DragPreviewDemo {
           .width('30%')
           .draggable(true)
           .dragPreviewOptions({},
-            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true, enableHapticFeedback: true })
+            { defaultAnimationBeforeLifting: true, enableHapticFeedback: true })
           .bindContextMenu(this.menuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
             console.info('Image onDragStart');
@@ -10958,146 +6786,11 @@ struct DragPreviewMaterialDemo {
 }
 ```
 
-### 示例1（if else范式下的共享元素实现）
-
-该示例主要演示if else范式下的共享元素效果集成。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isShow: boolean = false;
-
-  build() {
-    Stack({ alignContent: Alignment.Center }) {
-      if (this.isShow) {
-        // 图片使用Resource资源，需用户自定义
-        Image($r('app.media.pic'))
-          .autoResize(false)
-          .clip(true)
-          .width(300)
-          .height(400)
-          .offset({ y: 100 })
-          .geometryTransition('picture')
-          .transition(TransitionEffect.OPACITY)
-      } else {
-        // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
-        // 套多层容器为了说明相对布局约束传递
-        Column() {
-          Column() {
-            // 图片使用Resource资源，需用户自定义
-            Image($r('app.media.icon'))
-              .width('100%').height('100%')
-          }.width('100%').height('100%')
-        }
-        .width(80)
-        .height(80)
-        // geometryTransition会同步圆角，但仅限于geometryTransition绑定处，此处绑定的是容器
-        // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
-        .borderRadius(20)
-        .clip(true)
-        .geometryTransition('picture')
-        // transition保证组件离场不被立即析构，可设置其他转场效果
-        .transition(TransitionEffect.OPACITY)
-      }
-    }
-    .onClick(() => {
-      this.getUIContext().animateTo({ duration: 1000 }, () => {
-        this.isShow = !this.isShow;
-      });
-    })
-  }
-}
-```
-
-### 示例2（if范式下使用follow实现跟随效果）
-
-该示例主要演示if范式下使用follow参数实现不下树的组件的跟随效果。
-
-```TypeScript
-// xxx.ets
-const FOLLOW_TRUE_ID: string = 'follow_true_id';
-const FOLLOW_FALSE_ID: string = 'follow_false_id';
-
-@Entry
-@Component
-struct Index {
-  @State isFollow: boolean = false;
-  @State isShow: boolean = false;
-  @State geometryId: string = '';
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Column()
-        .backgroundColor('#ff663399')
-        .size({ width: 100, height: 100 })
-        .position({ x: 200, y: 500 })
-        .borderRadius(25)
-        .clip(true)
-        .geometryTransition(this.geometryId)
-        .transition(TransitionEffect.OPACITY)
-    }
-    .size({ width: '100%', height: '100%' })
-    .backgroundColor("#33000000")
-    .transition(TransitionEffect.OPACITY)
-  }
-
-  build() {
-    Stack() {
-      if (this.isFollow) {
-        Column()
-          .backgroundColor('#ff103460')
-          .size({ width: 100, height: 100 })
-          .position({ x: 30, y: 30 })
-          .borderRadius(50)
-          // follow为true时，一镜到底转场期间该组件会下树做跟随效果
-          .geometryTransition(FOLLOW_TRUE_ID, { follow: true })
-          .transition(TransitionEffect.OPACITY)
-      } else {
-        Column()
-          .backgroundColor('#ff103460')
-          .size({ width: 100, height: 100 })
-          .position({ x: 30, y: 30 })
-          .borderRadius(50)
-          // follow为false时，一镜到底转场期间该组件会留在原地不做跟随
-          .geometryTransition(FOLLOW_FALSE_ID, { follow: false })
-          .transition(TransitionEffect.OPACITY)
-      }
-
-      Button('follow: ' + (this.isFollow ? 'true' : 'false'))
-        .onClick(() => {
-          this.isFollow = !this.isFollow;
-          this.geometryId = this.isFollow ? FOLLOW_TRUE_ID : FOLLOW_FALSE_ID;
-        })
-        .size({ width: 200, height: 50 })
-        .backgroundColor('#ff6b879b')
-    }
-    .size({ width: '100%', height: '100%' })
-    .bindContentCover(this.isShow, this.myBuilder(), {
-      // 模态页面实现一镜到底动效时，需要设置modalTransition为ModalTransition.NONE
-      modalTransition: ModalTransition.NONE,
-      onWillDismiss: () => {
-        // 侧滑关闭模态页面时，通过animateTo创造动画环境实现一镜到底动效
-        this.getUIContext().animateTo({ duration: 350 }, () => {
-          this.isShow = !this.isShow;
-        });
-      }
-    })
-    .onClick(() => {
-      // 点击弹出模态页
-      this.getUIContext().animateTo({ duration: 350 }, () => {
-        this.isShow = !this.isShow;
-      });
-    })
-  }
-}
-```
+### 示例1（onAttach和onDetach事件）
 
 该示例通过按钮控制组件的挂载和卸载，触发onAttach和onDetach事件。
+
+
 
 ```TypeScript
 // xxx.ets
@@ -11136,67 +6829,43 @@ struct AppearExample {
 }
 ```
 
-### 示例1（使用前景色设置）
+### 示例2（onAppear和onDisAppear事件）
 
-该示例主要演示通过foregroundColor设置前景色。
-
-
+该示例通过按钮控制组件的显示和消失，触发onAppear和onDisAppear事件。
 
 ```TypeScript
 // xxx.ets
 @Entry
 @Component
-struct ForegroundColorExample {
-  build() {
-    Column({ space: 100 }) {
-      // 绘制一个直径为150的圆，默认填充色为黑色
-      Circle({ width: 150, height: 200 }).margin(20)
-      // 绘制一个直径为150的圆，设置前景色为橙色
-      Circle({ width: 150, height: 200 }).foregroundColor(Color.Orange)
-    }.width('100%').backgroundColor(Color.Gray)
-  }
-}
-```
+struct AppearDisappearExample {
+  @State isShow: boolean = true;
+  @State changeAppear: string = '点我隐藏显示组件';
+  private myText: string = 'Text for onDisAppear';
 
-### 示例2（设置前景色为组件背景色反色）
-
-该示例通过[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).INVERT将前景色设置为背景色反色。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ColoringStrategyExample {
-  build() {
-    Column({ space: 100 }) {
-      // 绘制一个直径为150的圆，默认填充色为黑色
-      Circle({ width: 150, height: 200 })
-      // 绘制一个直径为150的圆，设置前景色为组件背景色的反色
-      Circle({ width: 150, height: 200 })
-        .backgroundColor(Color.Black)
-        .foregroundColor(ColoringStrategy.INVERT)
-    }.width('100%')
-  }
-}
-```
-
-### 示例3（前景色未继承父组件）
-
-该示例主要演示组件同时设置前景色和背景色与只设置背景色的效果对比。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ForegroundColorInherit {
   build() {
     Column() {
-      Button('设置前景色为橙色').fontSize(20).foregroundColor(Color.Orange).backgroundColor(Color.Gray)
-      Divider()
-      Button('未设置前景色继承自父组件').fontSize(20).backgroundColor(Color.Gray)
-    }.foregroundColor(Color.Pink)
+      Button(this.changeAppear)
+        .onClick(() => {
+          this.isShow = !this.isShow;
+        }).margin(15)
+      if (this.isShow) {
+        Text(this.myText).fontSize(26).fontWeight(FontWeight.Bold)
+          .onAppear(() => {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'The text is shown',
+              duration: 2000,
+              bottom: 500
+            })
+          })
+          .onDisAppear(() => {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'The text is hidden',
+              duration: 2000,
+              bottom: 500
+            })
+          })
+      }
+    }.padding(30).width('100%')
   }
 }
 ```
@@ -11279,7 +6948,7 @@ struct TouchTargetExample {
 
 ```TypeScript
 // xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
+import { LengthMetrics, ResponseRegionSupportedTool } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -11489,255 +7158,6 @@ struct ToggleExample {
 }
 ```
 
-### 示例1（为组件添加图形变换效果）
-
-该示例通过[rotate](#rotate)、[translate](#translate)、[scale](#scale)、[transform](#transform)为组件添加旋转、平移、缩放、变换矩阵效果。
-
-
-
-```TypeScript
-// xxx.ets
-import { matrix4 } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct TransformExample {
-  build() {
-    Column() {
-      Text('rotate').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
-      Row()
-        .rotate({
-          x: 0,
-          y: 0,
-          z: 1,
-          centerX: '50%',
-          centerY: '50%',
-          angle: 300
-        }) // 组件以矢量(0,0,1)为旋转轴，绕中心点顺时针旋转300度
-        .width(100).height(100).backgroundColor(0xAFEEEE)
-
-      Text('translate').width('90%').fontColor(0xCCCCCC).padding(10).fontSize(14)
-      Row()
-        .translate({ x: 100, y: 10 }) // x轴方向平移100，y轴方向平移10
-        .width(100)
-        .height(100)
-        .backgroundColor(0xAFEEEE)
-        .margin({ bottom: 10 })
-
-      Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
-      Row()
-        .scale({ x: 2, y: 0.5 }) // 高度缩小一倍，宽度放大一倍，z轴在2D下无效果
-        .width(100).height(100).backgroundColor(0xAFEEEE)
-
-      Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
-      Row()
-        .width(100).height(100).backgroundColor(0xAFEEEE)
-        .transform(matrix4.identity().translate({ x: 50, y: 50 }).scale({ x: 1.5, y: 1 }).rotate({
-          x: 0,
-          y: 0,
-          z: 1,
-          angle: 60
-        }))
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### 示例2（设置旋转视距）
-
-该示例通过[perspective](#rotateoptions对象说明)为组件添加视距效果。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State prep: number = 10;
-
-  build() {
-    Row() {
-      Column() {
-        Stack()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Red)
-          .rotate({ y: 1, angle: 45, perspective: this.prep })
-        Button('change prep')
-          .margin({ top: 100 })
-          .onClick(() => {
-            this.getUIContext()?.animateTo({
-              duration: 2000,
-              curve: Curve.EaseIn,
-              iterations: 1,
-              playMode: PlayMode.Normal,
-              onFinish: () => {
-                console.info('play end');
-              }
-            }, () => {
-              this.prep = 500; // 组件视距从10变换到500
-            })
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### 示例3（按中心点旋转）
-
-该示例通过设置[rotate](#rotate)和[transform](#transform)为不同的参数实现相同的旋转效果。
-
-
-
-```TypeScript
-import { matrix4 } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct MatrixExample {
-  build() {
-    Column({ space: 100 }) {
-      Text('Hello1')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-
-      Text('Hello2')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .rotate({
-          // 绕(100vp,60vp)的锚点旋转90度，rotate或scale的centerX、centerY为组件锚点
-          z: 1,
-          angle: 90,
-          centerX: 100,
-          centerY: 60
-        })
-
-      Text('Hello3')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .transform(matrix4.identity()
-          .rotate({
-            // 组件锚点(centerX,centerY)默认为(50%,50%)，即锚点在(50vp,30vp)
-            // transform的rotate指定(centerX,centerY)为(50vp,30vp)，相对于在组件本身锚点基础上再额外偏移(50vp,30vp)
-            // 此次变换相当于绕(100vp,60vp)旋转，和"Hello2"实现同样的旋转效果
-            z: 1,
-            angle: 90,
-            centerX: this.getUIContext().vp2px(50),
-            centerY: this.getUIContext().vp2px(30)
-          }))
-
-      Text('Hello4')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .scale({
-          // 当设置x或y时，centerX和centerY才能生效
-          // 设置组件锚点为(100vp,60vp)
-          x: 1,
-          y: 1,
-          centerX: 100,
-          centerY: 60
-        }) // transform的rotate不指定centerX、centerY，此次旋转的中心相对于组件本身锚点没有额外偏移
-          // 该组件通过scale设置的锚点，绕(100vp,60vp)进行旋转，和"Hello2"实现同样的旋转效果
-        .transform(matrix4.identity().rotate({ z: 1, angle: 90 }))
-    }.width('100%')
-    .height('100%')
-  }
-}
-```
-
-### 示例4（通过transform3D实现图形变换）
-
-从API version 20开始，该示例通过设置[transform3D](arkts-arkui-common-comp-commonmethod-c.md#transform3d)实现图形变换效果。
-
-
-
-```TypeScript
-import { matrix4 } from '@kit.ArkUI';
-
-// 初始化3D变换矩阵，用于演示transform3D的图形变换效果
-let matrix: matrix4.Matrix4Transit = matrix4.init([
-  0.53033, 0, -0.53033, 0.00053033,
-  0, 0.75, 0, 0,
-  0.707107, 0, 0.707107, -0.000707107,
-  0, 0, 0, 1
-]);
-
-@Entry
-@Component
-struct Transform3DExample {
-  build() {
-    Column() {
-      Stack() {
-        Stack()
-          .width(200)
-          .height(100)
-          .backgroundColor(Color.Grey)
-        Stack()
-          .width(200)
-          .height(100)
-          .backgroundColor(Color.Blue)
-          .transform3D(matrix)
-      }
-    }.width('100%')
-  }
-}
-```
-
-### 示例5（按各轴旋转角的方式实现旋转）
-
-从API version 20开始，该示例通过设置rotate的[RotateAngleOptions](#rotateangleoptions20对象说明)参数实现旋转效果。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        Stack()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Blue)
-          .rotate({ angleZ: -45 })
-        Button('rotateAngle')
-          .width('40%')
-          .margin({ top: 100 })
-          .rotate({ angleY: 30, centerX: '90%', perspective: 10 })
-        Image($r('app.media.startIcon'))
-          .width(200)
-          .height(200)
-          .rotate({
-            angleX: 60,
-            angleY: -125,
-            angleZ: 75,
-            centerX: 100,
-            centerZ: 20
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
 示例代码为点击图片所在区域跳转页面时，显示共享元素图片的自定义转场动效。
 
 ```TypeScript
@@ -11780,488 +7200,6 @@ struct PageBExample {
   pageTransition() {
     PageTransitionEnter({ type: RouteType.None, duration: 0 })
     PageTransitionExit({ type: RouteType.None, duration: 0 })
-  }
-}
-```
-
-### 示例1（实现沉浸式效果）
-
-该示例通过设置expandSafeArea属性向顶部和底部扩展安全区实现沉浸式效果。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SafeAreaExample1 {
-  build() {
-    Row() {
-      Column()
-        .width('100%')
-        .height('100%')
-        // $r('app.media.bg')需要替换为开发者所需的图像资源文件
-        .backgroundImage($r('app.media.bg'))
-        .backgroundImageSize(ImageSize.Cover)
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }.height('100%')
-  }
-}
-```
-
-### 示例2（同时设置固定宽高和expandSafeArea属性）
-
-该示例展示了同时设置固定宽高和expandSafeArea属性的效果。
-
-如下图：Column组件扩展至了顶部状态栏[SafeAreaEdge.TOP]，未扩展至底部导航条[SafeAreaEdge.BOTTOM]，扩展后的组件高度维持设置值不变。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SafeAreaExample2 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
-  build() {
-    Column() {
-      TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
-        .placeholderFont({ size: 14, weight: 400 })
-        .width(320).height(40).offset({y: 120})
-        .fontSize(14).fontColor(Color.Black)
-        .backgroundColor(Color.White)
-    }
-    .height('780')
-    .width('100%')
-    .backgroundColor('rgb(179,217,235)')
-    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-  }
-}
-```
-
-### 示例3（键盘避让时固定背景图位置）
-
-该示例通过为背景图组件设置expandSafeArea属性，来实现拉起键盘进行避让时，背景图保持不动的效果。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SafeAreaExample3 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
-  build() {
-    Row() {
-      Stack() {
-        Column()
-          .width('100%')
-          .height('100%')
-          // $r('app.media.bg')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.bg'))
-          .backgroundImageSize(ImageSize.Cover)
-          .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
-        Column() {
-          Button('Set caretPosition 1')
-            .onClick(() => {
-              this.controller.caretPosition(1)
-            })
-          TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
-            .placeholderFont({ size: 14, weight: 400 })
-            .width(320)
-            .height(40)
-            .offset({ y: 120 })
-            .fontSize(14)
-            .fontColor(Color.Black)
-            .backgroundColor(Color.White)
-        }.width('100%').alignItems(HorizontalAlign.Center)
-      }
-    }.height('100%')
-  }
-}
-```
-
-### 示例4（设置键盘避让模式为压缩）
-
-该示例通过调用setKeyboardAvoidMode设置键盘避让模式为RESIZE模式，实现键盘抬起时page的压缩效果。
-
-```TypeScript
-// EntryAbility.ets
-import { window, KeyboardAvoidMode } from '@kit.ArkUI';
-export default class EntryAbility extends UIAbility{
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/Index', (err, data) => {
-      // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
-      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
-}
-```
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct KeyboardAvoidExample1 {
-  build() {
-    Column() {
-      Row()
-        .width('100%')
-        .height('30%')
-        .backgroundColor(Color.Gray)
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-      Text('I can see the bottom of the page')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor('rgb(179,217,235)')
-        .layoutWeight(1)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### 示例5（设置键盘避让模式为上抬）
-
-该示例通过调用setKeyboardAvoidMode设置键盘避让模式为OFFSET模式，实现键盘抬起时page的上抬效果。但当输入光标距离屏幕底部的高度大于键盘高度时，page不会抬起，如本例中所示。
-
-```TypeScript
-// EntryAbility.ets
-import { window, KeyboardAvoidMode } from '@kit.ArkUI';
-export default class EntryAbility extends UIAbility{
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/Index', (err, data) => {
-      // 设置虚拟键盘抬起时把页面上抬直到露出光标
-      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
-}
-```
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct KeyboardAvoidExample2 {
-  build() {
-    Column() {
-      Row()
-        .width('100%')
-        .height('30%')
-        .backgroundColor(Color.Gray)
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-      Text('I can see the bottom of the page')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor('rgb(179,217,235)')
-        .layoutWeight(1)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### 示例6（切换避让模式）
-
-该示例通过调用setKeyboardAvoidMode来实现OFFSET、RESIZE和NONE模式之间的切换，实现三种不同的键盘避让效果。
-
-
-
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { KeyboardAvoidMode } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct KeyboardAvoidExample3 {
-  build() {
-    Column() {
-      Row({space:15}) {
-        Button('OFFSET')
-          .onClick(() => {
-            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
-            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
-          })
-          .layoutWeight(1)
-        Button('RESIZE')
-          .onClick(() => {
-            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
-          })
-          .layoutWeight(1)
-        Button('NONE')
-          .onClick(() => {
-            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.NONE);
-            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
-          })
-          .layoutWeight(1)
-      }
-      .height('30%')
-      .width('100%')
-      .backgroundColor(Color.Gray)
-
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-      
-      Text('I can see the bottom of the page')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor('rgb(179,217,235)')
-        .layoutWeight(1)
-      
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### 示例7（滚动类容器扩展安全区）
-
-该示例通过在滚动类容器内调用expandSafeArea属性实现沉浸式效果，Scroll内的Swiper可以延伸到状态栏上。
-
-
-
-```TypeScript
-class SwiperDataSource implements IDataSource {
-  private list: Array<Color> = []
-  constructor(list: Array<Color>) {
-    this.list = list
-  }
-  totalCount(): number {
-    return this.list.length
-  }
-  getData(index: number): Color {
-    return this.list[index]
-  }
-  registerDataChangeListener(listener: DataChangeListener): void {
-  }
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-  }
-}
-@Entry
-@Component
-struct ExpandSafeAreaTest {
-  private swiperController: SwiperController = new SwiperController()
-  private swiperData: SwiperDataSource = new SwiperDataSource([])
-  private list: Array<Color> = [
-    Color.Pink,
-    Color.Blue,
-    Color.Green
-  ]
-  aboutToAppear(): void {
-    this.swiperData = new SwiperDataSource(this.list)
-  }
-  build() {
-    Scroll() {
-      Column() {
-        Swiper(this.swiperController) {
-          LazyForEach(this.swiperData, (item: Color, index: number) => {
-            Column() {
-              Text('banner' + index).fontSize(50).fontColor(Color.White)
-            }
-            .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-            .width('100%')
-            .height(400)
-            .backgroundColor(item)
-          })
-        }
-        .loop(true)
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-        .clip(false)
-        Column(){
-          Text('Tab页Content').fontSize(50)
-        }.width('100%').height(1000)
-        .backgroundColor(Color.Grey)
-      }.expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }
-    .clip(false)
-    .edgeEffect(EdgeEffect.None)
-    .width('100%').height('100%')
-  }
-}
-```
-
-### 示例8（ignoreLayoutSafeArea延伸组件布局范围）
-
-该示例利用[ignoreLayoutSafeArea](#ignorelayoutsafearea20)改变组件位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区、系统状态栏共同组成的范围，取其左上部分，作左上对齐。
-
-
-
-```TypeScript
-import { LengthMetrics } from '@kit.ArkUI'
-
-@Entry
-@Component
-struct IgnoreLayoutSafeAreaTest1 {
-  build() {
-    Column() {
-      Stack() {
-        Row()
-          .backgroundColor('rgb(39, 135, 217)')
-          .width(75)  // 固定宽度
-          .height(75) // 固定高度
-          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.START, LayoutSafeAreaEdge.TOP])  // 设置布局区域延伸取左和上方向，至系统避让区SYSTEM
-        
-        Row()
-          .backgroundColor('rgb(0, 74, 175)')
-          .width(75)
-          .height(75)
-
-      }
-      .width(200)
-      .height(200)
-      .backgroundColor(Color.Gray)
-      .align(Alignment.TopStart)  // 子组件相对于Stack容器左上对齐
-      .padding({
-        left: 10  // 设置左侧10vp普通内边距
-      })
-      .safeAreaPadding(LengthMetrics.vp(10))  // 设置10vp安全区内边距（即组件级安全区）
-    }
-    .width('100%')
-  }
-}
-```
-
-### 示例9（ignoreLayoutSafeArea配合LayoutPolicy.matchParent延伸组件布局范围）
-
-该示例利用[ignoreLayoutSafeArea](#ignorelayoutsafearea20)和[LayoutPolicy.matchParent](ts-universal-attributes-size.md#layoutpolicy15)同时改变组件大小和位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区，取其右下部分并撑满可用空间。
-
-
-
-```TypeScript
-import { LengthMetrics } from '@kit.ArkUI'
-
-@Entry
-@Component
-struct IgnoreLayoutSafeAreaTest2 {
-  build() {
-    Column() {
-      Stack() {
-        Row()
-          .backgroundColor('rgb(39, 135, 217)')
-          .width(LayoutPolicy.matchParent)  // 自适应宽度
-          .height(LayoutPolicy.matchParent) // 自适应高度
-          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.END, LayoutSafeAreaEdge.BOTTOM])  // 设置布局区域延伸取右和下方向，至系统避让区SYSTEM
-
-        Row()
-          .backgroundColor('rgb(0, 74, 175)')
-          .width(LayoutPolicy.matchParent)
-          .height(LayoutPolicy.matchParent)
-
-      }
-      .width(200)
-      .height(200)
-      .backgroundColor(Color.Gray)
-      .align(Alignment.TopStart)  // 子组件相对于Stack容器左上对齐
-      .padding(10) // 设置10vp普通内边距
-      .safeAreaPadding(LengthMetrics.vp(10))  // 设置10vp安全区内边距（即组件级安全区）
-    }
-    .width('100%')
-  }
-}
-```
-
-### 示例10（expandSafeArea与ignoreLayoutSafeArea的区别）
-
-该示例展示了容器分别设置了expandSafeArea和ignoreLayoutSafeArea的布局效果和各自对子组件布局效果的影响。两种设置下，容器都可见地进行了延伸，但前者的子组件不受延伸影响，后者的子组件因父容器的延伸改变了位置。
-
-```TypeScript
-@Entry
-@Component
-struct IgnoreLayoutSafeAreaTest3 {
-  build() {
-    Row(){
-      Column(){
-        Stack(){
-          Stack(){
-
-          }
-          .width(30)
-          .height(30)
-          .backgroundColor('rgb(0, 74, 175)')
-        }
-        .width(100)
-        .height(100)
-        .backgroundColor('rgb(39, 135, 217)')
-        .align(Alignment.TopStart)
-
-        Text('基准效果').fontColor(Color.White)
-      }
-
-      Column(){
-        Stack(){
-          Stack(){
-
-          }
-          .width(30)
-          .height(30)
-          .backgroundColor('rgb(0, 74, 175)')
-        }
-        .width(100)
-        .height(100)
-        .backgroundColor('rgb(39, 135, 217)')
-        .align(Alignment.TopStart)
-        .expandSafeArea()  // 设置绘制区域延伸，自身绘制区域上抬，子组件相对屏幕位置不变
-
-        Text('expandSafeArea').fontColor(Color.White)
-      }
-
-      Column(){
-        Stack(){
-          Stack(){
-
-          }
-          .width(30)
-          .height(30)
-          .backgroundColor('rgb(0, 74, 175)')
-        }
-        .width(100)
-        .height(100)
-        .backgroundColor('rgb(39, 135, 217)')
-        .align(Alignment.TopStart)
-        .ignoreLayoutSafeArea()  // 设置布局区域延伸，自身布局区域上抬，子组件相对容器位置不变
-
-        Text('ignoreLayoutSafeArea').fontColor(Color.White)
-      }
-    }
-    .width('100%')
-    .backgroundColor(Color.Gray)
-    .justifyContent(FlexAlign.SpaceEvenly)
   }
 }
 ```
@@ -12321,7 +7259,7 @@ struct Index {
 
 ### 示例2（动态调整属性值）
 
-通过Slider接口动态调整[borderImage](arkts-arkui-common-comp-commonmethod-c.md#borderimage)接口中属性值。
+通过[Slider](../../apis-arkui/arkui-js/js-components-basic-slider.md)接口动态调整[borderImage](arkts-arkui-common-comp-commonmethod-c.md#borderimage)接口中属性值。
 
 
 
@@ -12571,150 +7509,6 @@ struct BorderImage {
       .width('100%')
     }
     .height('100%')
-  }
-}
-```
-
-### 示例1（父组件优先识别手势和父子组件同时触发手势）
-
-该示例通过配置priorityGesture和parallelGesture分别实现了父组件优先识别手势和父子组件同时触发手势。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct GestureSettingsExample {
-  @State priorityTestValue: string = ''
-  @State parallelTestValue: string = ''
-
-  build() {
-    Column() {
-      Column() {
-        Text('TapGesture:' + this.priorityTestValue).fontSize(28)
-          .gesture(
-            TapGesture()
-              .onAction(() => {
-                this.priorityTestValue += '\nText';
-              }))
-      }
-      .height(200)
-      .width(250)
-      .padding(20)
-      .margin(20)
-      .border({ width: 3 })
-      // 设置为priorityGesture时，点击文本会忽略Text组件的TapGesture手势事件，优先识别父组件Column的TapGesture手势事件
-      .priorityGesture(
-        TapGesture()
-          .onAction((event: GestureEvent) => {
-            this.priorityTestValue += '\nColumn';
-          }), GestureMask.IgnoreInternal)
-
-      Column() {
-        Text('TapGesture:' + this.parallelTestValue).fontSize(28)
-          .gesture(
-            TapGesture()
-              .onAction((event: GestureEvent) => {
-                this.parallelTestValue += '\nText';
-              }))
-      }
-      .height(200)
-      .width(250)
-      .padding(20)
-      .margin(20)
-      .border({ width: 3 })
-      // 设置为parallelGesture时，点击文本会同时触发子组件Text与父组件Column的TapGesture手势事件
-      .parallelGesture(
-        TapGesture()
-          .onAction((event: GestureEvent) => {
-            this.parallelTestValue += '\nColumn';
-          }), GestureMask.Normal)
-    }
-  }
-}
-```
-
-### 示例1 (使用onAccessibilityHover事件)
-
-该示例主要演示使用onAccessibilityHover事件，对无障碍模式下的按钮进行设置。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OnAccessibilityHoverEventExample {
-  @State hoverText: string = 'no hover';
-  @State color: Color = Color.Blue;
-
-  build() {
-    Column({ space: 20 }) {
-      Button(this.hoverText)
-        .width(180).height(80)
-        .backgroundColor(this.color)
-        .onAccessibilityHover((isHover: boolean) => {
-          // 通过onAccessibilityHover事件动态修改按钮在无障碍悬浮（手指触摸进入/退出）时的文本内容与背景颜色
-          if (isHover) {
-            this.hoverText = 'hover';
-            this.color = Color.Pink;
-          } else {
-            this.hoverText = 'no hover';
-            this.color = Color.Blue;
-          }
-        })
-    }.padding({ top: 30 }).width('100%')
-  }
-}
-```
-
-### 示例2 (捕获无法无障碍聚焦的组件的触摸事件)
-
-该示例代码在无障碍模式下通过onAccessibilityHoverTransparent接口捕获无法无障碍聚焦的组件的触摸事件，最后再将事件信息显示在组件下方的文本中。
-
-从API version 20开始，新增了[onAccessibilityHoverTransparent](arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityhovertransparent)接口。
-
-```TypeScript
-@Entry
-@Component
-struct OnAccessibilityHoverTransparentExample {
-  @State text: string = '';
-  @State eventType: string = '';
-
-  build() {
-    Column({ space: 50 }) {
-      Column() {
-        Button('Test Button')
-          .accessibilityLevel('no')
-      }.margin({ top: 20 })
-
-      Text(this.text)
-    }
-    .width('100%')
-    .height('100%')
-    .onAccessibilityHoverTransparent((event: TouchEvent) => {
-      if (event) {
-        // 手指按下触发
-        if (event.type === TouchType.HOVER_ENTER) {
-          this.eventType = 'HOVER_ENTER';
-        }
-        // 触摸移动时触发
-        if (event.type === TouchType.HOVER_MOVE) {
-          this.eventType = 'HOVER_MOVE';
-        }
-        // 抬手时触发
-        if (event.type === TouchType.HOVER_EXIT) {
-          this.eventType = 'HOVER_EXIT';
-        }
-        // 取消当前触发事件
-        if (event.type === TouchType.HOVER_CANCEL) {
-          this.eventType = 'HOVER_CANCEL';
-        }
-        this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
-          + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\nComponent globalPos:('
-          + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\nwidth:'
-          + event.target.area.width + '\nheight:' + event.target.area.height;
-      }
-    })
   }
 }
 ```
@@ -14641,7 +9435,7 @@ struct ContextMenuGridStyleExample {
 
 ### 示例1（获取鼠标事件相关参数）
 
-该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
+该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](arkts-arkui-common-comp-commonmethod-c.md#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的rawDeltaX、rawDeltaY、pressedButtons等参数。
 
 鼠标滚轮的处理请参考[轴事件示例](ts-universal-events-axis.md#示例)。
 
@@ -14724,11 +9518,10 @@ struct MouseEventExample {
                 this.action = 'LEAVE_WINDOW';
                 break;
             }
-            // 拼接鼠标事件全量信息并展示
+            // 拼接鼠标事件相关信息并展示
             this.mouseText = 'onMouse:\nButton = ' + this.mouseBtn +
               '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
               '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +
-              '\ntargetDisplayId = ' + event.targetDisplayId +
               '\nrawDeltaX = ' + event.rawDeltaX +
               '\nrawDeltaY = ' + event.rawDeltaY +
               '\nlength = ' + event.pressedButtons?.length;
@@ -14842,252 +9635,6 @@ struct VisibilityExample {
 }
 ```
 
-### 示例1（设置事件派发策略为FORWARD_COMPETITION）
-
-在该示例中，点击List下方空白区域后拖动，可使List滑动。点击Button按钮时，Button会响应onClick事件。
-
-
-
-```TypeScript
-// xxx.ets
-import { PromptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ListExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-  @State text: string = 'Button';
-
-  build() {
-    Column() {
-      List({ space: 12, initialIndex: 0 }) {
-        ForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('Item ' + item)
-              .width('100%')
-              .height(56)
-              .fontSize(16)
-              .textAlign(TextAlign.Start)
-          }.borderRadius(24)
-          .backgroundColor(Color.White)
-          .padding({ left: 12, right: 12 })
-        }, (item: number) => item.toString())
-      }
-      .listDirection(Axis.Vertical)
-      .scrollBar(BarState.Off)
-      .edgeEffect(EdgeEffect.Spring)
-      .onScrollIndex((start: number, end: number) => {
-        console.info(`first ${start}`);
-        console.info(`last ${end}`);
-      })
-      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
-      })
-      .width('100%')
-      .height('65%')
-      .id('MyList')
-
-      Button(this.text)
-        .width(312)
-        .height(40)
-        .id('MyButton')
-        .fontSize(16)
-        .fontWeight(FontWeight.Medium)
-        .margin({ top: 80 })
-        .onClick(() => {
-          this.text = 'click the button';
-          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
-        })
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xF1F3F5)
-    .justifyContent(FlexAlign.End)
-    .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchInfo) => {
-      for (let info of touchInfo) {
-        if (info.id === 'MyList') {
-          return { id: info.id, strategy: TouchTestStrategy.FORWARD_COMPETITION }
-        }
-      }
-      return { strategy: TouchTestStrategy.DEFAULT }
-    })
-  }
-}
-```
-
-### 示例2（设置事件派发策略为FORWARD）
-
-点击List下方空白区域后拖动，可以滑动List。点击Button按钮时，Button不会响应onClick事件。
-
-
-
-```TypeScript
-// xxx.ets
-import { PromptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ListExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-  @State text: string = 'Button';
-
-  build() {
-    Column() {
-      List({ space: 12, initialIndex: 0 }) {
-        ForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('Item ' + item)
-              .width('100%')
-              .height(56)
-              .fontSize(16)
-              .textAlign(TextAlign.Start)
-          }.borderRadius(24)
-          .backgroundColor(Color.White)
-          .padding({ left: 12, right: 12 })
-        }, (item: number) => item.toString())
-      }
-      .listDirection(Axis.Vertical)
-      .scrollBar(BarState.Off)
-      .edgeEffect(EdgeEffect.Spring)
-      .onScrollIndex((start: number, end: number) => {
-        console.info(`first ${start}`);
-        console.info(`last ${end}`);
-      })
-      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
-      })
-      .width('100%')
-      .height('65%')
-      .id('MyList')
-
-      Button(this.text)
-        .width(312)
-        .height(40)
-        .id('MyButton')
-        .fontSize(16)
-        .fontWeight(FontWeight.Medium)
-        .margin({ top: 80 })
-        .onClick(() => {
-          this.text = 'click the button';
-          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
-        })
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xF1F3F5)
-    .justifyContent(FlexAlign.End)
-    .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchInfo) => {
-      for (let info of touchInfo) {
-        if (info.id === 'MyList') {
-          return { id: info.id, strategy: TouchTestStrategy.FORWARD }
-        }
-      }
-      return { strategy: TouchTestStrategy.DEFAULT }
-    })
-  }
-}
-```
-
-### 示例3（设置事件派发策略为DEFAULT）
-
-点击List下方空白区域后拖动，List不会滑动。点击Button按钮时，Button会响应onClick事件。
-
-```TypeScript
-// xxx.ets
-import { PromptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ListExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-  @State text: string = 'Button';
-
-  build() {
-    Column() {
-      List({ space: 12, initialIndex: 0 }) {
-        ForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('Item ' + item)
-              .width('100%')
-              .height(56)
-              .fontSize(16)
-              .textAlign(TextAlign.Start)
-          }.borderRadius(24)
-          .backgroundColor(Color.White)
-          .padding({ left: 12, right: 12 })
-        }, (item: number) => item.toString())
-      }
-      .listDirection(Axis.Vertical)
-      .scrollBar(BarState.Off)
-      .edgeEffect(EdgeEffect.Spring)
-      .onScrollIndex((start: number, end: number) => {
-        console.info(`first ${start}`);
-        console.info(`last ${end}`);
-      })
-      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
-      })
-      .width('100%')
-      .height('65%')
-      .id('MyList')
-
-      Button(this.text)
-        .width(312)
-        .height(40)
-        .id('MyButton')
-        .fontSize(16)
-        .fontWeight(FontWeight.Medium)
-        .margin({ top: 80 })
-        .onClick(() => {
-          this.text = 'click the button';
-          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
-        })
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xF1F3F5)
-    .justifyContent(FlexAlign.End)
-    .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest(() => {
-      return { strategy: TouchTestStrategy.DEFAULT }
-    })
-  }
-}
-```
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct TouchableExample {
-  @State text1: string = '';
-  @State text2: string = '';
-
-  build() {
-    Stack() {
-      Rect()
-        .fill(Color.Gray).width(150).height(150)
-        .onClick(() => {
-          console.info(this.text1 = 'Rect Clicked');
-        })
-        .overlay(this.text1, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-      Ellipse()
-        .fill(Color.Pink).width(150).height(80)
-        .touchable(false) // 点击Ellipse区域，不会打印 “Ellipse Clicked”
-        .onClick(() => {
-          console.info(this.text2 = 'Ellipse Clicked');
-        })
-        .overlay(this.text2, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-    }.margin(100);
-  }
-}
-```
-
 该示例通过restoreId设置了List组件的分布式迁移标识。
 
 ```TypeScript
@@ -15173,34 +9720,6 @@ struct AnimateToImmediatelyExample {
           this.flag = !this.flag;
         })
     }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-该示例主要演示如何设置组件进行位移动画时的运动路径。此方法仅配置运动路径参数，需配合animateTo等动画触发方法及组件属性状态变化才能产生实际的位移动画效果，单独设置motionPath不会触发动画。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct MotionPathExample {
-  @State toggle: boolean = true;
-
-  build() {
-    Column() {
-      Button('click me').margin(50)
-        .motionPath({
-          path: 'Mstart.x start.y L300 200 L300 500 Lend.x end.y',
-          from: 0.0,
-          to: 1.0,
-          rotatable: true
-        }) // 设置运动路径：从起点经(300,200)、(300,500)到终点
-        .onClick(() => {
-          this.getUIContext()?.animateTo({ duration: 4000, curve: Curve.Linear }, () => {
-            this.toggle = !this.toggle; // 通过this.toggle变化组件的位置
-          });
-        })
-    }.width('100%').height('100%').alignItems(this.toggle ? HorizontalAlign.Start : HorizontalAlign.Center)
   }
 }
 ```
@@ -16395,16 +10914,16 @@ struct FatherControlChild {
 
 ### 示例1（设置跟手变形拖拽动画）
 
-该示例通过设置[dragAnimationType](#focuscontrol)为FOLLOW_HAND_MORPH实现跟手变形拖拽动画效果，并在拖拽结束时通过executeFollowHandMorphDropAnimation执行自定义落位动效。
+该示例通过设置[dragAnimationType](#focuscontrol)为FOLLOW_HAND_MORPH实现跟手变形拖拽动画效果，并在拖拽结束时通过[executeFollowHandMorphDropAnimation](arkts-arkui-common-comp-dragevent-i-sys.md#executefollowhandmorphdropanimation)执行自定义落位动效。
 
-从API版本26.0.0开始，新增[dragAnimationType](#focuscontrol)属性、executeFollowHandMorphDropAnimation方法、interruptFollowHandMorphDropAnimation方法。
+从API版本26.0.0开始，新增[dragAnimationType](#focuscontrol)属性、[executeFollowHandMorphDropAnimation](arkts-arkui-common-comp-dragevent-i-sys.md#executefollowhandmorphdropanimation)方法、[interruptFollowHandMorphDropAnimation](../arkts-apis/arkts-arkui-arkui-uicontext-dragcontroller-c-sys.md#interruptfollowhandmorphdropanimation)方法。
 
 ```TypeScript
 // xxx.ets
 // 动画参数类
 class AnimationOption {
-  CubicCurveEnable: boolean = false;
-  SpringEnable: boolean = false;
+  cubicCurveEnable: boolean = false;
+  springEnable: boolean = false;
   dropAnimationCurve: number[] = [];
   dropPosition: number[] = [];
   dropSize: number[] = [];
@@ -16466,8 +10985,8 @@ struct FollowHandMorphDemo {
 
           // 构建动画参数
           let animationOption = new AnimationOption();
-          animationOption.CubicCurveEnable = false;
-          animationOption.SpringEnable = true;
+          animationOption.cubicCurveEnable = false;
+          animationOption.springEnable = true;
           animationOption.dropAnimationCurve = [0.416, 0.99, 0];
           animationOption.dropPosition = [830, 600];
           animationOption.dropSize = [100, 100];
@@ -16501,125 +11020,6 @@ struct FollowHandMorphDemo {
     .height('100%')
     .padding(20)
     .backgroundColor('#FFFFFF')
-  }
-}
-```
-
-### 示例1（获取触摸事件相关参数）
-
-该示例中，按钮设置触摸事件，在点击按钮时可获取事件的相关参数。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct TouchExample {
-  @State text: string = '';
-  @State eventType: string = '';
-
-  build() {
-    Column() {
-      Button('Touch').height(40).width(100)
-        .onTouch((event?: TouchEvent) => {
-          if (event && event.sourceTool === SourceTool.Finger) {
-            if (event.type === TouchType.Down) {
-              this.eventType = 'Down';
-            }
-            if (event.type === TouchType.Up) {
-              this.eventType = 'Up';
-            }
-            if (event.type === TouchType.Move) {
-              this.eventType = 'Move';
-            }
-            // 1. 手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
-            // 2. 折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
-            if (event.type === TouchType.Cancel) {
-              this.eventType = 'Cancel';
-            }
-            if (event.touches.length > 0) {
-              this.text = 'TouchType:' + this.eventType
-                + '\nDistance between touch point and touch element:'
-                + '\n  id: ' + event.touches[0].id
-                + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
-                + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
-                + '\n  pressedTime: ' + event.touches[0].pressedTime
-                + '\n  pressure: ' + event.touches[0].pressure
-                + '\nComponent globalPos:'
-                + '\n  x: ' + event.target.area.globalPosition.x + '\n  y: ' + event.target.area.globalPosition.y
-                + '\n  width: ' + event.target.area.width + '\n  height: ' + event.target.area.height
-                + '\ntargetDisplayId: ' + event.targetDisplayId;
-            }
-          }
-        })
-      Button('Touch').height(50).width(200).margin(20)
-        .onTouch((event?: TouchEvent) => {
-          if (event) {
-            if (event.type === TouchType.Down) {
-              this.eventType = 'Down';
-            }
-            if (event.type === TouchType.Up) {
-              this.eventType = 'Up';
-            }
-            if (event.type === TouchType.Move) {
-              this.eventType = 'Move';
-            }
-            // 1. 手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
-            // 2. 折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
-            if (event.type === TouchType.Cancel) {
-              this.eventType = 'Cancel';
-            }
-            if (event.touches.length > 0) {
-              this.text = 'TouchType:' + this.eventType
-                + '\nDistance between touch point and touch element:'
-                + '\n  id: ' + event.touches[0].id
-                + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
-                + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
-                + '\n  pressedTime: ' + event.touches[0].pressedTime
-                + '\n  pressure: ' + event.touches[0].pressure
-                + '\nComponent globalPos:'
-                + '\n  x: ' + event.target.area.globalPosition.x + '\n  y: ' + event.target.area.globalPosition.y
-                + '\n  width: ' + event.target.area.width + '\n  height: ' + event.target.area.height
-                + '\ntargetDisplayId: ' + event.targetDisplayId;
-            }
-          }
-        })
-      Text(this.text)
-    }.width('100%').padding(30)
-  }
-}
-```
-
-### 示例2（获取组件实时位置）
-
-该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取触摸位置相对于当前组件实时位置左上角的坐标。
-
-从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct GetCurrentLocalPositionExample {
-  @State positionText: string = '';
-  @State textOffsetY: number = 0;
-
-  build() {
-    Column() {
-      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
-        .onTouch((event?: TouchEvent) => {
-          if (event) {
-            this.textOffsetY = -200;
-            setTimeout(() => {
-              let localPos: Coordinate2D | undefined = event.touches.length > 0 ? event.touches[0].getCurrentLocalPosition?.() : undefined;
-              this.positionText = `相对于当前组件实时位置左上角的坐标：\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
-            }, 2000);
-          }
-        })
-
-      Text(this.positionText)
-    }.width('100%')
   }
 }
 ```
@@ -16780,266 +11180,6 @@ struct Index {
 struct ReusableV2Component {
   build() {
     Text('content')
-  }
-}
-```
-
-### 示例1（通过string设置浮层）
-
-该示例通过传入string设置浮层。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OverlayExample {
-  build() {
-    Column() {
-      Column() {
-        Text('floating layer')
-          .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
-        Column() {
-          // $r('app.media.img')需要替换为开发者所需的图像资源文件
-          Image($r('app.media.img'))
-            .width(240).height(240)
-            .overlay('Winter is a beautiful season, especially when it snows.', {
-              align: Alignment.Bottom,
-              offset: { x: 0, y: -15 }
-            })
-        }.border({ color: Color.Black, width: 2 })
-      }.width('100%')
-    }.padding({ top: 20 })
-  }
-}
-```
-
-### 示例2（通过builder设置浮层）
-
-该示例通过传入builder设置浮层。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OverlayExample {
-  @Builder
-  overlayNode() {
-    Column() {
-      // $r('app.media.img1')需要替换为开发者所需的图像资源文件
-      Image($r('app.media.img1'))
-      Text('This is overlayNode').fontSize(20).fontColor(Color.White)
-    }
-    .width(180)
-    .height(180)
-    .alignItems(HorizontalAlign.Center)
-    .hitTestBehavior(HitTestMode.Transparent) // 配置浮层不阻塞交互
-  }
-
-  build() {
-    Column() {
-      // $r('app.media.img2')需要替换为开发者所需的图像资源文件
-      Image($r('app.media.img2'))
-        .overlay(this.overlayNode(), { align: Alignment.Center })
-        .objectFit(ImageFit.Contain)
-    }.width('100%')
-    .border({ color: Color.Black, width: 2 }).padding(20)
-  }
-}
-```
-
-### 示例3（通过ComponentContent设置浮层）
-
-该示例通过overlay传入ComponentContent，并通过update方法更新ComponentContent参数，使backgroundColor不断发生变化。
-
-```TypeScript
-// xxx.ets
-import { ComponentContent } from '@kit.ArkUI';
-
-class Params {
-  backgroundColor: string | Resource = '';
-
-  constructor(backgroundColor: string | Resource) {
-    this.backgroundColor = backgroundColor;
-  }
-}
-
-@Builder
-function overlayBuilder(params: Params) {
-  Row() {
-  }.width('100%').height('100%').backgroundColor(params.backgroundColor)
-}
-
-@Entry
-@Component
-struct OverlayContentPage {
-  @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
-  private uiContext: UIContext = this.getUIContext();
-  private overlayNode: ComponentContent<Params> =
-    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor));
-
-  aboutToAppear(): void {
-    setInterval(() => {
-      if (this.overlayColor.includes('0.6')) {
-        this.overlayColor = 'rgba(0, 0, 0, 0.1)';
-        this.overlayNode.update(new Params(this.overlayColor));
-      } else {
-        this.overlayColor = 'rgba(0, 0, 0, 0.6)';
-        this.overlayNode.update(new Params(this.overlayColor));
-      }
-    }, 1000);
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.overlayColor)
-          .fontSize(40)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
-    .overlay(this.overlayNode)
-  }
-}
-```
-
-### 示例1（在组件出现时创建动画）
-
-> 说明：
-> 
-> 直接使用animateTo可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)调用绑定实例的animateTo。
-
-该示例通过在onAppear方法中创建组件出现时的动画效果。
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AnimateToExample {
-  @State widthSize: number = 250;
-  @State heightSize: number = 100;
-  @State rotateAngle: number = 0;
-  private flag: boolean = true;
-
-  build() {
-    Column() {
-      Button('change size')
-        .width(this.widthSize)
-        .height(this.heightSize)
-        .margin(30)
-        .onClick(() => {
-          if (this.flag) {
-            // 建议使用this.getUIContext()?.animateTo()
-            animateTo({
-              duration: 2000,
-              curve: Curve.EaseOut,
-              iterations: 3,
-              playMode: PlayMode.Normal,
-              onFinish: () => {
-                console.info('play end');
-              }
-            }, () => {
-              this.widthSize = 150;
-              this.heightSize = 60;
-            })
-          } else {
-            // 建议使用this.getUIContext()?.animateTo()
-            animateTo({}, () => {
-              this.widthSize = 250;
-              this.heightSize = 100;
-            })
-          }
-          this.flag = !this.flag;
-        })
-      Button('stop rotating')
-        .margin(50)
-        .rotate({ x: 0, y: 0, z: 1, angle: this.rotateAngle })
-        .onAppear(() => {
-          // 组件出现时开始做动画
-          // 建议使用this.getUIContext()?.animateTo()
-          animateTo({
-            duration: 1200,
-            curve: Curve.Friction,
-            delay: 500,
-            iterations: -1, // 设置-1表示动画无限循环
-            playMode: PlayMode.Alternate,
-            expectedFrameRateRange: {
-              min: 10,
-              max: 120,
-              expected: 60,
-            }
-          }, () => {
-            this.rotateAngle = 90;
-          })
-        })
-        .onClick(() => {
-          // 建议使用this.getUIContext()?.animateTo()
-          animateTo({ duration: 0 }, () => {
-            // this.rotateAngle之前为90，在duration为0的动画中修改属性，可以停止该属性之前的动画，按新设置的属性显示
-            this.rotateAngle = 0;
-          })
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### 示例2（动画执行结束后组件消失）
-
-该示例主要演示如何实现在动画执行结束后组件消失。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AttrAnimationExample {
-  @State heightSize: number = 100;
-  @State isShow: boolean = true;
-  @State count: number = 0;
-  private isToBottom: boolean = true; // 向下
-
-  build() {
-    Column() {
-      if (this.isShow) {
-        Column()
-          .width(200)
-          .height(this.heightSize)
-          .backgroundColor('blue')
-          .onClick(() => {
-            // 建议使用this.getUIContext()?.animateTo()
-            animateTo({
-              duration: 2000,
-              curve: Curve.EaseOut,
-              iterations: 1,
-              playMode: PlayMode.Normal,
-              onFinish: () => {
-                // 动画完成时减少计数，计数归零表示所有动画已结束
-                this.count--;
-                if (this.count == 0 && !this.isToBottom) { // 组件只有在向下做完动画才会消失
-                  this.isShow = false;
-                }
-              }
-            }, () => {
-              // 动画开始时增加计数，用于在onFinish回调中判断动画是否完成
-              this.count++;
-              if (this.isToBottom) {
-                this.heightSize = 60;
-              } else {
-                this.heightSize = 100;
-              }
-              this.isToBottom = !this.isToBottom;
-            })
-          })
-      }
-    }.width('100%').height('100%').margin({ top: 5 })
-    .justifyContent(FlexAlign.End)
   }
 }
 ```
@@ -17770,6 +11910,6022 @@ struct Index {
 }
 ```
 
+该示例主要演示通过foregroundBlurStyle为图片设置内容模糊效果。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ForegroundBlurStyleDemo {
+  build() {
+    Column() {
+      Text('Thin Material').fontSize(30).fontColor(0xCCCCCC)
+      // $r("app.media.bg")需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+        .width(300)
+        .height(350)
+        .foregroundBlurStyle(BlurStyle.Thin,
+          { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 1.0 })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例1（半模态设置边缘光效动画）
+
+以下示例通过设置edgeLightMode属性开启边缘光效动画，同时使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口实现了半透明材质效果。
+
+从API版本26.0.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增edgeLightMode属性。
+
+
+
+```TypeScript
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State sheetHeight: number = 300;
+  @State sheetMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+  });
+
+  @Builder
+  sheetBuilder() {
+    Column({ space: 10 }) {
+      Text('Text')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Stack() {
+      // 请开发者替换为实际资源文件
+      Image($r('app.media.startIcon'))
+      Column() {
+        Button('open Sheet')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.sheetBuilder(), {
+            height: this.sheetHeight,
+            backgroundColor: Color.Transparent,
+            edgeLightMode: EdgeLightMode.EDGELIGHT_ENABLED,
+            systemMaterial: this.sheetMaterial
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+### 示例2（半模态设置模糊优化）
+
+以下示例通过设置blurSnapshot属性开启模糊优化。当使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口设置材质效果或使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的blurStyle接口设置模糊时发现功耗明显增加时，可以尝试开启模糊优化。
+
+从API版本26.0.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增blurSnapshot属性。
+
+
+
+```TypeScript
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetTransitionExample {
+  @State isShow: boolean = false;
+  @State rotateAngle: number = 0;
+  @State sheetMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+  });
+
+  @Builder
+  sheetBuilder() {
+    Text('Context')
+  }
+
+  build() {
+    Stack() {
+      Button('This is Text')
+        .margin(100)
+        .rotate({
+          x: 0,
+          y: 0,
+          z: 1,
+          angle: this.rotateAngle
+        })
+        .onAppear(() => {
+          this.getUIContext()?.animateTo({
+            duration: 1200,
+            curve: Curve.Friction,
+            delay: 500,
+            iterations: -1,
+            expectedFrameRateRange: {
+              min: 10,
+              max: 120,
+              expected: 60,
+            }
+          }, () => {
+            this.rotateAngle = 360;
+          })
+        })
+      Column() {
+        Button('Open BindSheet')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.sheetBuilder(), {
+            height: 400,
+            showClose: true,
+            backgroundColor: Color.Transparent,
+            // 若在设置blurStyle或者systemMaterial时发现功耗明显增加时，可以尝试开启模糊优化
+            blurStyle: BlurStyle.Thin,
+            // systemMaterial: this.sheetMaterial,
+            blurSnapshot: { enableFreeze: true },
+          })
+      }
+      .justifyContent(FlexAlign.Start)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+### 示例3（半模态自定义按钮材质）
+
+该示例通过closeButtonMaterial属性自定义半模态关闭按钮的材质效果，对比未设置（使用systemMaterial内置材质）、关闭材质、自定义材质三种状态。
+
+从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增closeButtonMaterial属性。
+
+未设置closeButtonMaterial时，关闭按钮使用systemMaterial带来的内置材质效果。
+
+
+
+设置closeButtonMaterial为uiMaterial.Material.empty时，关闭按钮无材质效果。
+
+
+
+设置closeButtonMaterial为自定义材质时，关闭按钮使用自定义材质效果。
+
+
+
+```TypeScript
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State myMaterial: SystemUiMaterial | undefined = undefined;
+  @State myCloseIconMaterial: SystemUiMaterial | undefined = undefined;
+
+  @Builder
+  myBuilder() {
+    Column({ space: 10 }) {
+      Text('Content')
+        .fontSize(30)
+    }
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('按钮带有默认材质')
+          .onClick(() => {
+            this.myMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+            });
+            this.myCloseIconMaterial = undefined;
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            systemMaterial: this.myMaterial,
+            closeButtonMaterial: this.myCloseIconMaterial,
+          })
+        Button('按钮关闭材质')
+          .onClick(() => {
+            this.myMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+            });
+            this.myCloseIconMaterial = uiMaterial.Material.empty;
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+        Button('按钮设置自定义材质')
+          .onClick(() => {
+            this.myMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+            });
+            this.myCloseIconMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            });
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+### 示例4（半模态设置标题栏背景模糊）
+
+该示例通过titleBarBackgroundBlur属性自定义半模态标题栏背景模糊效果。同时配合titleBarHoverMode设置为STACK堆叠模式，使标题栏悬浮于内容区上方时模糊效果可见。
+
+从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarBackgroundBlur属性。
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetTitleBarBlurExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+    }
+    .width('100%')
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('拉起半模态')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: '标题' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+            titleBarBackgroundBlur: {
+              blurStyle: SheetTitleBarBackgroundBlur.GRADIENT,
+              maskExtraHeight: LengthMetrics.vp(50),
+              effectiveDistance: LengthMetrics.vp(50),
+              maskColor: '#330000FF',
+            },
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+该示例通过setCursor实现了鼠标光标样式的设置。
+
+```TypeScript
+// xxx.ets
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct CursorControlExample {
+  build() {
+    Column() {
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Green)
+        .position({ x: 60, y: 70 })
+        .onHover((flag) => {
+          if (flag) {
+            // 建议使用this.getUIContext().getCursorController().setCursor()
+            cursorControl.setCursor(pointer.PointerStyle.EAST);
+          } else {
+            // 建议使用this.getUIContext().getCursorController().restoreDefault()
+            cursorControl.restoreDefault();
+          }
+        })
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Blue)
+        .position({ x: 130, y: 120 })
+        .onHover((flag) => {
+          if (flag) {
+            // 建议使用this.getUIContext().getCursorController().setCursor()
+            cursorControl.setCursor(pointer.PointerStyle.WEST);
+          } else {
+            // 建议使用this.getUIContext().getCursorController().restoreDefault()
+            cursorControl.restoreDefault();
+          }
+        })
+    }.width('100%')
+  }
+}
+```
+
+该示例分别使用了不传参@Preview和传参的@Preview。
+
+```TypeScript
+@Entry
+@Preview
+@Component
+struct Index {
+  @State message: string = 'default Preview';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Preview({
+  title: 'PreviewParams',
+  width: 540,
+  height: 1170
+})
+@Component
+struct Test {
+  @State message: string = 'PreviewParams';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontSize(40)
+        .fontWeight(FontWeight.Bold)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例1（设置组件获焦和走焦的效果）
+
+该示例通过配置[defaultFocus](#defaultfocus9)可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](arkts-arkui-common-comp-commonmethod-c.md#groupdefaultfocus)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch)可以使绑定的组件点击后立即获焦。
+
+示意图：
+
+首次进入时，焦点默认在defaultFocus绑定的TextInput组件上：
+
+
+
+首次按Tab键，焦点切换到tabIndex(1)的容器上，且自动走焦到内部第一个可获焦组件上：
+
+
+
+第二次按Tab键，焦点切换到tabIndex(2)的容器上，且自动走焦到其内部的groupDefaultFocus绑定的组件上：
+
+
+
+第三次按Tab键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部首个可获焦组件上：
+
+
+
+点击绑定了focusOnTouch的组件，组件自身获焦，焦点框被清除，再按下Tab键后，显示焦点框：
+
+
+
+```TypeScript
+// focusTest.ets
+@Entry
+@Component
+struct FocusableExample {
+  @State inputValue: string = '';
+
+  build() {
+    Scroll() {
+      Row({ space: 20 }) {
+        Column({ space: 20 }) {
+          Column({ space: 5 }) {
+            Button('Group1')
+              .width(165)
+              .height(40)
+              .fontColor(Color.White)
+              .focusOnTouch(true) // 该Button组件点击后可获焦
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+                .focusOnTouch(true) // 该Button组件点击后可获焦
+            }
+
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+          }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+          .tabIndex(1) // 该Column组件为按Tab键走焦的第一个获焦的组件
+          Column({ space: 5 }) {
+            Button('Group2')
+              .width(165)
+              .height(40)
+              .fontColor(Color.White)
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+                .groupDefaultFocus(true) // 该Button组件上级Column组件获焦时获焦
+            }
+
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+          }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+          .tabIndex(2) // 该Column组件为按Tab键走焦的第二个获焦的组件
+        }
+
+        Column({ space: 5 }) {
+          TextInput({ placeholder: 'input', text: this.inputValue })
+            .onChange((value: string) => {
+              this.inputValue = value;
+            })
+            .width(156)
+            .defaultFocus(true) // 该TextInput组件为层级页面的初始默认焦点
+          Button('Group3')
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+          Row({ space: 5 }) {
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+
+          Button()
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+          Row({ space: 5 }) {
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+
+          Button()
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+          Row({ space: 5 }) {
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+        }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
+        .tabIndex(3) // 该Column组件为按Tab键走焦的第三个获焦的组件
+      }.alignItems(VerticalAlign.Top)
+    }
+  }
+}
+```
+
+### 示例2（设置指定组件获焦）
+
+该示例通过配置[focusControl.requestFocus](#requestfocus9)使指定组件获取焦点。
+
+示意图：
+
+按下Tab键，激活焦点态显示。
+
+申请不存在的组件获焦：
+
+
+
+申请不可获焦的组件获焦：
+
+
+
+申请存在且可获焦的组件获焦：
+
+
+
+```TypeScript
+// requestFocus.ets
+@Entry
+@Component
+struct RequestFocusExample {
+  @State idList: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'LastPageId'];
+  @State selectId: string = 'LastPageId';
+
+  build() {
+    Column({ space: 20 }) {
+      Row({ space: 5 }) {
+        Button('id: ' + this.idList[0] + ' focusable(false)')
+          .width(180)
+          .height(70)
+          .fontColor(Color.White)
+          .id(this.idList[0])
+          .focusable(false)
+        Button('id: ' + this.idList[1])
+          .width(180).height(70).fontColor(Color.White)
+          .id(this.idList[1])
+      }
+
+      Row({ space: 5 }) {
+        Button('id: ' + this.idList[2])
+          .width(180).height(70).fontColor(Color.White)
+          .id(this.idList[2])
+        Button('id: ' + this.idList[3])
+          .width(180).height(70).fontColor(Color.White)
+          .id(this.idList[3])
+      }
+
+      Row({ space: 5 }) {
+        Button('id: ' + this.idList[4])
+          .width(180).height(70).fontColor(Color.White)
+          .id(this.idList[4])
+        Button('id: ' + this.idList[5])
+          .width(180).height(70).fontColor(Color.White)
+          .id(this.idList[5])
+      }
+
+      Row({ space: 5 }) {
+        Select([{ value: this.idList[0] },
+          { value: this.idList[1] },
+          { value: this.idList[2] },
+          { value: this.idList[3] },
+          { value: this.idList[4] },
+          { value: this.idList[5] },
+          { value: this.idList[6] }])
+          .value(this.selectId)
+          .onSelect((index: number) => {
+            this.selectId = this.idList[index];
+          })
+        Button('RequestFocus')
+          .width(180).height(70).fontColor(Color.White)
+          .onClick(() => {
+            // 建议使用this.getUIContext().getFocusController().requestFocus()
+            let res = focusControl.requestFocus(this.selectId); // 使选中的this.selectId的组件获焦
+            if (res) {
+              this.getUIContext().getPromptAction().showToast({ message: 'Request success' })
+            } else {
+              this.getUIContext().getPromptAction().showToast({ message: 'Request failed' })
+            }
+          })
+      }
+    }.width('100%').margin({ top: 20 })
+  }
+}
+```
+
+### 示例3（设置焦点框样式）
+
+该示例通过配置[focusBox](#focusbox12)修改组件的焦点框样式。
+
+
+
+```TypeScript
+import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct FocusBoxExample {
+  build() {
+    Column({ space: 30 }) {
+      Button('small black focus box')
+        .focusBox({
+          margin: new LengthMetrics(0),
+          strokeColor: ColorMetrics.rgba(0, 0, 0),
+        })
+      Button('large red focus box')
+        .focusBox({
+          margin: LengthMetrics.px(20),
+          strokeColor: ColorMetrics.rgba(255, 0, 0),
+          strokeWidth: LengthMetrics.px(10)
+        })
+    }
+    .alignItems(HorizontalAlign.Center)
+    .width('100%')
+  }
+}
+```
+
+### 示例4（设置焦点组走焦）
+
+该示例通过配置[focusScopePriority](arkts-arkui-common-comp-commonmethod-c.md#focusscopepriority)，可以使绑定的组件在所属容器首次获焦时成为焦点，配置[focusScopeId](arkts-arkui-common-comp-commonmethod-c.md#focusscopeid)，可以使绑定的容器组件成为焦点组。
+
+示意图：
+
+首次按下Tab键时，焦点转移到容器1中绑定focusScopePriority的组件上。
+
+
+
+继续按下Tab键，焦点转移到容器1下一个组件上。
+
+
+
+再次按下Tab键，焦点转移到容器1下一个组件上。
+
+
+
+继续按下Tab键，焦点转移到容器2中配置了focusScopePriority的组件上。
+
+
+
+继续按下Tab键，焦点转移到容器1中名为Group1的组件上。
+
+
+
+```TypeScript
+// focusTest.ets
+@Entry
+@Component
+struct FocusableExample {
+  @State inputValue: string = '';
+
+  build() {
+    Scroll() {
+      Row({ space: 20 }) {
+        Column({ space: 20 }) { // 标记为Column1
+          Column({ space: 5 }) {
+            Button('Group1')
+              .width(165)
+              .height(40)
+              .fontColor(Color.White)
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+          }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+
+          Column({ space: 5 }) {
+            Button('Group2')
+              .width(165)
+              .height(40)
+              .fontColor(Color.White)
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+                .focusScopePriority('ColumnScope1', FocusPriority.PRIOR) // Column1首次获焦时获焦
+            }
+
+            Row({ space: 5 }) {
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button()
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+          }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+        }
+        .focusScopeId('ColumnScope1')
+
+        Column({ space: 5 }) { // 标记为Column2
+          TextInput({ placeholder: 'input', text: this.inputValue })
+            .onChange((value: string) => {
+              this.inputValue = value
+            })
+            .width(156)
+          Button('Group3')
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+          Row({ space: 5 }) {
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+
+          Button()
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS) // Column2获焦时获焦
+          Row({ space: 5 }) {
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+
+          Button()
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+          Row({ space: 5 }) {
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button()
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+        }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
+        .focusScopeId('ColumnScope2', true) // Column2为焦点组
+      }.alignItems(VerticalAlign.Top)
+    }
+  }
+}
+```
+
+### 示例5（设置Tab走焦停留）
+
+该示例通过配置[tabStop](arkts-arkui-common-comp-commonmethod-c.md#tabstop)实现使用Tab走焦停留在组件上。
+
+示意图：
+
+连续按下两次Tab键，焦点转移到button2上。
+
+
+
+接着按下Tab键，焦点转移到配置了tabStop的组件。
+
+
+
+再按下Enter键，焦点转移至内部button3上。
+
+
+
+再按下ESC键，焦点转移到配置了tabStop的组件上。
+
+
+
+再按下Tab键，焦点循环走焦到button1上。
+
+
+
+```TypeScript
+import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabStop {
+  build() {
+    Column({ space: 20 }) {
+      Column({ space: 20 }) {
+        Column({ space: 20 }) {
+          Row({ space: 5 }) {
+            Button('button 1')
+              .width(200).height(70).fontColor(Color.White)
+              .focusBox({
+                margin: LengthMetrics.px(20),
+                strokeColor: ColorMetrics.rgba(23, 169, 141),
+                strokeWidth: LengthMetrics.px(10)
+              })
+          }
+
+          Row({ space: 5 }) {
+            Button('button 2')
+              .width(200).height(70).fontColor(Color.White)
+              .focusBox({
+                margin: LengthMetrics.px(20),
+                strokeColor: ColorMetrics.rgba(23, 169, 141),
+                strokeWidth: LengthMetrics.px(10)
+              })
+          }
+        }.width('80%').margin({ top: 30 }).borderColor(Color.Black)
+      }.width('95%').margin({ top: 60 }).borderColor(Color.Black)
+
+      Column({ space: 20 }) {
+        Column({ space: 20 }) {
+          Row({ space: 5 }) {
+            Button('button 3')
+              .width(200)
+              .height('70%')
+              .fontColor(Color.White)
+              .focusBox({
+                margin: LengthMetrics.px(20),
+                strokeColor: ColorMetrics.rgba(23, 169, 141),
+                strokeWidth: LengthMetrics.px(10)
+              })
+              .margin({ top: 15 })
+          }
+        }
+        .width('80%')
+        .height(120)
+        .borderColor(Color.Black)
+        .margin({ top: 10 })
+        .tabStop(true)
+        .focusBox({
+          margin: LengthMetrics.px(20),
+          strokeColor: ColorMetrics.rgba(23, 169, 141),
+          strokeWidth: LengthMetrics.px(10)
+        })
+        .borderWidth(1)
+      }.width('95%').margin({ top: 50 }).borderColor(Color.Black)
+    }
+  }
+}
+```
+
+### 示例6（设置自定义走焦）
+
+从API version 18开始，该示例通过配置[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)实现自定义走焦规则。
+
+如果不配置[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)，默认的按下Tab键的走焦顺序为：M->A->B->C->D->E->F；配置了[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)以后，Tab键前几次的走焦顺序变更为：M->D->F->B->C；焦点到达C后，C按照默认走焦规则继续移动。
+
+```TypeScript
+import { AttributeModifier, ButtonAttribute } from '@kit.ArkUI';
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.id('M');
+    instance.nextFocus({ forward: 'D', up: 'C', down: 'D' });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+  @State idList: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+  build() {
+    Column({ space: 10 }) {
+      Row({ space: 10 }) {
+        Button('id: M')
+          .attributeModifier(this.modifier)
+        Button('id: ' + this.idList[0])
+          .id(this.idList[0])
+          .nextFocus({
+            forward: 'C',
+            backward: 'M',
+            up: 'E',
+            right: 'F',
+            down: 'B',
+            left: 'D'
+          });
+        Button('id: ' + this.idList[1])
+          .id(this.idList[1])
+      }
+
+      Column({ space: 10 }) {
+        Button('id: ' + this.idList[2])
+          .id(this.idList[2]);
+        Button('id: ' + this.idList[3])
+          .id(this.idList[3])
+          .nextFocus({ forward: 'F' });
+      }
+
+      Row({ space: 10 }) {
+        Button('id: ' + this.idList[4])
+          .id(this.idList[4]);
+        Button('id: ' + this.idList[5])
+          .id(this.idList[5])
+          .nextFocus({ forward: 'B' });
+      }
+    }
+  }
+}
+```
+
+该示例通过Text组件设置组件尺寸变化事件，当Text尺寸变化时可以触发onSizeChange事件，获取oldValue和newValue参数。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AreaExample {
+  @State value: string = 'Text'
+  @State sizeValue: string = ''
+
+  build() {
+    Column() {
+      Text(this.value)
+        .backgroundColor(Color.Green)
+        .margin(30)
+        .fontSize(20)
+        .onClick(() => {
+          this.value = this.value + 'Text';
+        })
+        .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+          console.info(`Ace: on size change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
+          setTimeout(() => { this.sizeValue = JSON.stringify(newValue); }, 0);
+        })
+      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
+    }
+    .width('100%').height('100%').margin({ top: 30 })
+  }
+}
+```
+
+### 示例1（设置组件提亮）
+
+该示例主要通过advancedBlendMode给组件添加提亮效果。
+
+效果图如下：
+
+
+
+```TypeScript
+// xxx.ets
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// uiEffect.createBrightnessBlender创建BrightnessBlender实例用于给组件添加提亮效果
+let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
+  cubicRate: 0.5,
+  quadraticRate: 0.5,
+  linearRate: 0.5,
+  degree: 0.5,
+  saturation: 0.5,
+  positiveCoefficient: [2.3, 4.5, 2.0],
+  negativeCoefficient: [0.5, 2.0, 0.5],
+  fraction: 0.5
+});
+// 注意：使用自定义object作为Blender入参不会生效，请使用uiEffect.createBrightnessBlender方法创建Blender实例。
+let customBlender: uiEffect.BrightnessBlender = {
+  cubicRate: 0.5,
+  quadraticRate: 0.5,
+  linearRate: 0.5,
+  degree: 0.5,
+  saturation: 0.5,
+  positiveCoefficient: [2.3, 4.5, 2.0],
+  negativeCoefficient: [0.5, 2.0, 0.5],
+  fraction: 0.5
+};
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Stack() {
+      Image($r('app.media.img_1'))
+
+      Column() {
+        Text(String.fromCodePoint(0x1F600) + 'TEST')
+          .fontSize(60)
+
+        Text(String.fromCodePoint(0x1F600) + 'FAST')
+          .fontSize(60)
+          .advancedBlendMode(blender)
+
+        Text(String.fromCodePoint(0x1F600) + 'OFFSCREEN')
+          .fontSize(60)
+          .advancedBlendMode(blender, BlendApplyType.OFFSCREEN)
+
+        Text(String.fromCodePoint(0x1F600) + 'TEST')
+          .fontSize(60)
+          .advancedBlendMode(customBlender)
+      }
+    }
+  }
+}
+```
+
+### 示例2（设置节点组剔除属性）
+
+该示例演示在组件的属性动画场景下，如何通过使用节点组剔除属性[excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup)，避免节点组缓存反复失效。
+
+从API version 22开始，新增[excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup)属性。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ExcludeFromRenderGroupDemo {
+  readonly color1: ResourceColor = '#2787d9';
+  readonly color2: ResourceColor = '#ffc000';
+  @State myColor: ResourceColor = this.color1;
+  @State isExcluded: boolean = false;
+  animationCnt: number = 0;
+
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        Column()
+          .width(100)
+          .height(100)
+          .backgroundColor(this.myColor)
+          // 设置excludeFromRenderGroup属性。该组件做背景色动画时，实际显示效果需频繁更新属性，且该组件区域只占节点组区域的一部分，因此设置excludeFromRenderGroup属性以复用节点组缓存
+          .excludeFromRenderGroup(this.isExcluded)
+          .onClick(() => {
+            this.isExcluded = true; // 在播放动画前，修改节点组剔除属性为true
+            this.animationCnt++;
+            this.getUIContext().animateTo({
+              duration: 600,
+              onFinish: () => {
+                this.animationCnt--;
+                if (this.animationCnt === 0) { // animationCnt变为0表示所有动画都结束
+                  this.isExcluded = false; // 在组件动画结束后，组件上不再发生属性变化时，可以重置节点组剔除属性
+                }
+              }
+            }, () => {
+              this.myColor = (this.myColor === this.color1) ? this.color2 : this.color1;
+            })
+          })
+        // 节点组内的其他组件
+        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+          .width(100)
+          .height(100)
+        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+          .width(100)
+          .height(100)
+      }.renderGroup(true)
+      .width('100%')
+      .height('70%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例3（设置组件提亮并渐隐）
+
+从API version 23开始，该示例主要演示如何通过advancedBlendMode给组件同时添加提亮和渐隐效果。
+
+
+
+```TypeScript
+// xxx.ets
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// uiEffect.createBrightnessBlender创建BrightnessBlender实例用于给组件添加提亮效果
+let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
+  cubicRate: 0.5,
+  quadraticRate: 0.5,
+  linearRate: 0.5,
+  degree: 0.5,
+  saturation: 0.5,
+  positiveCoefficient: [2.3, 4.5, 2.0],
+  negativeCoefficient: [0.5, 2.0, 0.5],
+  fraction: 0.3
+});
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Stack() {
+        Column() {
+          Text(String.fromCodePoint(0x1F600) + ' BlendApplyType OFFSCREEN WITH BACKGROUND ' +
+          String.fromCodePoint(0x1F600))
+            .fontSize(35)
+            .fontColor(Color.Black)
+        }
+        .advancedBlendMode(blender, BlendApplyType.FAST)
+
+        Column()
+          .width('100%')
+          .height('100%')
+          .linearGradient({
+            direction: GradientDirection.Right,
+            colors: [
+              [Color.Transparent, 0.0],
+              [Color.Black, 0.50],
+              [Color.Black, 0.55],
+              [Color.Transparent, 1.0]
+            ]
+          })
+          .blendMode(BlendMode.DST_IN, BlendApplyType.FAST)
+      }
+      .advancedBlendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN_WITH_BACKGROUND)
+      .width('100%')
+      .height('20%')
+    }
+    .backgroundColor('rgb(254, 238, 239)')
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### 示例1（悬浮气泡的显示和消失）
+
+此示例为bindTips通过绑定Button产生悬浮气泡。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TipsExample {
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 250 })
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+### 示例2（多个悬浮气泡的显示和消失）
+
+此示例展示了如何使用bindTips配置多个悬浮气泡依次显示和消失。
+
+
+
+```TypeScript
+// xxx.ets
+
+@Entry
+@Component
+struct TipsExample {
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 250 })
+
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 350 })
+
+
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+### 示例3（设置悬浮气泡的沉浸光感视效）
+
+该示例通过[TipsOptions](#tipsoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了bindTips的沉浸光感视效。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
+从API版本26.0.0开始，在TipsOptions中新增了systemMaterial属性。
+
+```TypeScript
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TipsExample {
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Hover Tips')
+        .bindTips("悬浮气泡测试", {
+          // 控制是否设置系统材质接口
+          systemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THIN
+          })
+        })
+        .position({ x: 100, y: 300 })
+    }.width('100%').padding({ top: 5 })
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width: '100%', height: '100%'})
+  }
+}
+```
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State lightIntensity: number = 0;
+  @State bloomValue: number = 0;
+
+  build() {
+    Row({ space: 20 }) {
+      Flex()
+        .pointLight({ illuminated: IlluminatedType.BORDER })
+        .backgroundColor(0x307af7)
+        .size({ width: 50, height: 50 })
+        .borderRadius(25)
+
+      Flex()
+        .pointLight({
+          lightSource: {
+            intensity: this.lightIntensity,
+            positionX: '50%',
+            positionY: '50%',
+            positionZ: 80
+          },
+          bloom: this.bloomValue
+        })
+        .animation({ duration: 333 })
+        .backgroundColor(0x307af7)
+        .size({ width: 50, height: 50 })
+        .borderRadius(25)
+        .onTouch((event: TouchEvent) => {
+          // 按下时增强光源强度和发光强度，松开或取消时恢复默认效果。
+          if (event.type === TouchType.Down) {
+            this.lightIntensity = 1;
+            this.bloomValue = 1;
+          } else if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
+            this.lightIntensity = 0;
+            this.bloomValue = 0;
+          }
+        })
+
+      Flex()
+        .pointLight({ illuminated: IlluminatedType.BORDER_CONTENT })
+        .backgroundColor(0x307af7)
+        .size({ width: 50, height: 50 })
+        .borderRadius(25)
+    }
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor(Color.Black)
+    .size({ width: '100%', height: '100%' })
+  }
+}
+```
+
+### 示例1（通过DrawModifier进行自定义绘制）
+
+通过DrawModifier对[Text](ts-basic-components-text.md)组件进行自定义绘制。
+
+
+
+```TypeScript
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@kit.ArkUI';
+
+// 继承DrawModifier实现自定义绘制控制器
+class MyFullDrawModifier extends DrawModifier {
+  public scaleX: number = 1;
+  public scaleY: number = 1;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  // 重载drawBehind方法，自定义绘制背景  
+  drawBehind(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 50 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 50 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 50 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 50 * this.scaleY)
+    });
+  }
+
+  // 重载drawContent方法，自定义绘制内容
+  drawContent(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 255,
+      blue: 0
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
+    });
+  }
+
+  // 重载drawFront方法，自定义绘制内容前景
+  drawFront(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 0,
+      blue: 255
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    const radiusScale = (this.scaleX + this.scaleY) / 2;
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
+  }
+}
+
+// 继承DrawModifier实现自定义绘制控制器，仅支持自定义绘制内容前景
+class MyFrontDrawModifier extends DrawModifier {
+  public scaleX: number = 1;
+  public scaleY: number = 1;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  drawFront(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 0,
+      blue: 255
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    const radiusScale = (this.scaleX + this.scaleY) / 2;
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
+  }
+}
+
+@Entry
+@Component
+struct DrawModifierExample {
+  private fullModifier: MyFullDrawModifier = new MyFullDrawModifier(this.getUIContext());
+  private frontModifier: MyFrontDrawModifier = new MyFrontDrawModifier(this.getUIContext());
+  private drawAnimator: AnimatorResult | undefined = undefined;
+  @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
+  private count = 0;
+
+  // 创建Animator对象并设置动画
+  create() {
+    let self = this;
+    this.drawAnimator = this.getUIContext().createAnimator({
+      duration: 1000,
+      easing: 'ease',
+      delay: 0,
+      fill: 'forwards',
+      direction: 'normal',
+      iterations: 1,
+      begin: 0,
+      end: 2
+    });
+    // 设置帧回调，动态更新缩放值并触发重绘
+    this.drawAnimator.onFrame = (value: number) => {
+      console.info('frame value =', value);
+      const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
+      tempModifier.scaleX = Math.abs(value - 1);
+      tempModifier.scaleY = Math.abs(value - 1);
+      // 主动触发重绘
+      self.modifier.invalidate();
+    };
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text('test text')
+          .width(100)
+          .height(100)
+          .margin(10)
+          .backgroundColor(Color.Gray)
+          .onClick(() => {
+            const tempModifier = this.modifier as MyFullDrawModifier | MyFrontDrawModifier;
+            tempModifier.scaleX -= 0.1;
+            tempModifier.scaleY -= 0.1;
+          })
+          .drawModifier(this.modifier)
+      }
+
+      Row() {
+        Button('create')
+          .width(100)
+          .height(100)
+          .borderRadius(50)
+          .margin(10)
+          .onClick(() => {
+            this.create();
+          })
+        Button('play')
+          .width(100)
+          .height(100)
+          .borderRadius(50)
+          .margin(10)
+          .onClick(() => {
+            if (this.drawAnimator) {
+              this.drawAnimator.play();
+            }
+          })
+        Button('changeModifier')
+          .width(100)
+          .height(100)
+          .borderRadius(50)
+          .margin(10)
+          .onClick(() => {
+            this.count += 1;
+            if (this.count % 2 === 1) {
+              console.info('change to full modifier');
+              this.modifier = this.fullModifier;
+            } else {
+              console.info('change to front modifier');
+              this.modifier = this.frontModifier;
+            }
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### 示例2（通过DrawModifier对容器的前景进行自定义绘制）
+
+通过DrawModifier对[Column](ts-container-column.md)容器的前景进行自定义绘制。
+
+```TypeScript
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+
+class MyForegroundDrawModifier extends DrawModifier {
+  public scaleX: number = 3;
+  public scaleY: number = 3;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  // 重载drawForeground方法，实现自定义绘制前景
+  drawForeground(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 50,
+      blue: 100
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
+    });
+  }
+}
+
+@Entry
+@Component
+struct DrawModifierExample {
+  // 将自定义绘制前景的类实例化，传入UIContext实例
+  private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
+
+  build() {
+    Column() {
+      Text('此文本是子节点')
+        .fontSize(36)
+        .width('100%')
+        .height('100%')
+        .textAlign(TextAlign.Center)
+    }
+    .margin(50)
+    .width(280)
+    .height(300)
+    .backgroundColor(0x87CEEB)
+    // 调用此接口并传入自定义绘制前景的类实例，即可实现自定义绘制前景
+    .drawModifier(this.foregroundModifier)
+  }
+}
+```
+
+### 示例1（设置组件快捷键）
+
+该示例通过设置组件的快捷键，同时按控制键+对应的字符可以触发组件响应快捷键，并触发onClick事件或自定义事件。
+
+
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column({ space: 5 }) {
+        Text(this.message);
+        Button('Test short cut 1').onClick(() => {
+          this.message = 'I clicked Button 1';
+          console.info('I clicked 1');
+        }).keyboardShortcut('.', [ModifierKey.SHIFT, ModifierKey.CTRL, ModifierKey.ALT])
+          .onKeyEvent((event: KeyEvent) => {
+            console.info('event.keyCode: ' + JSON.stringify(event));
+          });
+        Button('Test short cut 2').onClick(() => {
+          this.message = 'I clicked Button 2';
+          console.info('I clicked 2');
+        }).keyboardShortcut('1', [ModifierKey.CTRL]);
+        Button('Test short cut 3').onClick(() => {
+          this.message = 'I clicked Button 3';
+          console.info('I clicked 3');
+        }).keyboardShortcut('A', [ModifierKey.SHIFT]);
+        Button('Test short cut 4').onClick(() => {
+          this.message = 'I clicked Button 4';
+          console.info('I clicked 4');
+        }).keyboardShortcut(FunctionKey.F5, [], () => {
+          this.message = 'I clicked Button 4';
+          console.info('I clicked user callback.');
+        }).keyboardShortcut(FunctionKey.F3, []);
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### 示例2（快捷键的绑定和解除绑定）
+
+该示例演示了如何实现快捷键的绑定和解除绑定。
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  @State message: string = 'disable';
+  @State shortCutEnable: boolean = false;
+  @State keyValue: string = '';
+
+  build() {
+    Row() {
+      Column({ space: 5 }) {
+        Text('Ctrl+A is ' + this.message);
+        Button('Test short cut').onClick(() => {
+          this.message = 'I clicked Button';
+          console.info('I clicked');
+        }).keyboardShortcut(this.keyValue, [ModifierKey.CTRL]);
+        Button(this.message + 'shortCut').onClick(() => {
+          this.shortCutEnable = !this.shortCutEnable;
+          this.message = this.shortCutEnable ? 'enable' : 'disable';
+          this.keyValue = this.shortCutEnable ? 'a' : '';
+        });
+        Button('multi-shortcut').onClick(() => {
+          console.info('Trigger keyboard shortcut success.');
+        }).keyboardShortcut('q', [ModifierKey.CTRL])
+          .keyboardShortcut('w', [ModifierKey.CTRL])
+          .keyboardShortcut('', []); // 不生效，绑定了多个快捷键的组件不能解除绑定快捷键
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### 示例1（设置无障碍文本和无障碍说明）
+
+该示例主要演示accessibilityText无障碍文本和accessibilityDescription无障碍说明的播报内容。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @Builder
+  customAccessibilityNode() {
+    Column() {
+      Text(`virtual node`)
+    }
+    .width(10)
+    .height(10)
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('文本1')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Text("文本2")
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+      .accessibilityGroup(true)
+      .accessibilityLevel("yes")
+      .accessibilityText("分组") // 无障碍文本的内容，若组件既拥有文本属性又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。
+      .accessibilityDescription("Column组件可以被选中，播报的内容是“分组”")
+      .accessibilityVirtualNode(this.customAccessibilityNode)
+      .accessibilityChecked(true)
+      .accessibilitySelected(undefined)
+    }
+    .height('100%')
+  }
+}
+```
+
+### 示例2（设置无障碍组）
+
+该示例主要演示优先使用子组件的无障碍文本进行朗读。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 10 }) {
+      Text('123456')
+        .focusable(true)
+        .borderRadius(5)
+        .accessibilityText("有accessibility有text优先读accessibility")
+        .accessibilityLevel("yes")
+      Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
+      Button("无accessibility有text 读text").accessibilityLevel("yes")
+      Button()
+      Button('btn123').accessibilityText('有accessibility有text btn123').accessibilityLevel('yes')
+      Button('btn123').accessibilityLevel("yes")
+    }
+    .accessibilityGroup(true, { accessibilityPreferred: true })
+    .borderWidth(5)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### 示例3（设置首焦点和组件的下一个焦点）
+
+该示例主要演示accessibilityDefaultFocus屏幕朗读当前页默认首焦点和accessibilityNextFocusId走焦过程中组件的下一个焦点。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 20 }) {
+      Text('Text Demo 1')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+        .accessibilityNextFocusId('text3')
+      Text('Text Demo 2')
+        .id('text2')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+        .accessibilityDefaultFocus(true)  // 设置该组件为屏幕朗读当前页默认首焦点
+        .accessibilityNextFocusId('text4')
+      Text('Text Demo 3')
+        .id('text3')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+        .accessibilityNextFocusId('text2')
+      Text('Text Demo 4')
+        .id('text4')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例4（设置无障碍组件类型和文本提示信息）
+
+该示例主要演示accessibilityRole无障碍组件类型和accessibilityTextHint设置组件的文本提示信息（仅在与车机交互的场景下供车机的无障碍服务监听并响应）。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isDownloading: boolean = false;
+  @State hintStr: string = '点击开始下载';
+
+  build() {
+    Column({ space: 20 }) {
+      Button(this.isDownloading ? '下载中' : '点击下载')
+        .accessibilityLevel('yes')
+        .accessibilityTextHint(this.hintStr)
+        .onClick(() => {
+          this.isDownloading = !this.isDownloading;
+          this.hintStr = this.isDownloading ? '状态变为下载中' : '状态变为暂停下载';
+        })
+      TextInput({ placeholder: '请输入手机号码' })
+        .accessibilityLevel('yes')
+        .accessibilityTextHint('请输入11位手机号码')
+        .width('80%')
+      Text('按照按钮类型播报')
+        .accessibilityLevel('yes')
+        .accessibilityRole(AccessibilityRoleType.BUTTON)
+        .accessibilityTextHint('屏幕朗读播报时，该组件将按照按钮类型进行播报')
+        .fontSize(30)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例5（设置无障碍屏幕朗读滚动和焦点绿框绘制）
+
+该示例主要演示accessibilityScrollTriggerable设置无障碍节点是否支持屏幕朗读滚动、accessibilityFocusDrawLevel设置无障碍焦点绿框的绘制层级和accessibilityUseSamePage为跨进程嵌入式显示的组件（如[EmbeddedComponent](ts-container-embedded-component.md)）设置同page模式。
+
+
+
+```TypeScript
+// xxx.ets
+import { Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Message: ';
+  private want: Want = {
+    // EmbeddedComponent提供方的bundleName，根据实际情况配置。
+    bundleName: 'com.example.embeddeddemo',
+    // EmbeddedComponent提供方的abilityName，根据实际情况配置。
+    abilityName: 'ExampleEmbeddedAbility',
+  }
+
+  build() {
+    Row() {
+      List() {
+        ListItem() {
+          Column() {
+            Text(this.message)
+              .fontSize(18)
+              .fontColor('#2D2D2D')
+              .fontWeight(FontWeight.Medium)
+            Column() {
+              EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+                .onTerminated((info) => {
+                  this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
+                })
+                .onError((error) => {
+                  this.message = 'Error: code = ' + error.code;
+                })
+                .accessibilityUseSamePage(AccessibilitySamePageMode.FULL_SILENT)
+                .width('90%')
+                .height('50%')
+                .backgroundColor('#F0F0F0')
+                .borderRadius(8)
+                .borderWidth(1)
+                .borderColor('#D9D9D9')
+
+              Stack() {
+                Column() {
+                  Text('文本1')
+                    .fontSize(18)
+                    .fontColor('#2D2D2D')
+                    .fontWeight(FontWeight.Medium)
+                  Text('文本1')
+                    .fontSize(18)
+                    .fontColor('#2D2D2D')
+                    .fontWeight(FontWeight.Medium)
+                    .accessibilityFocusDrawLevel(FocusDrawLevel.TOP)
+                }
+                .padding({ top: 8, bottom: 8 })
+
+                Column() {
+                  Text('文本2')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .fontWeight(FontWeight.Medium)
+                  Text('文本2')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .fontWeight(FontWeight.Medium)
+                }
+                .backgroundColor('#4A90E2')
+                .padding({
+                  left: 12,
+                  right: 12,
+                  top: 10,
+                  bottom: 10
+                })
+                .borderRadius(6)
+              }
+              .width('100%')
+              .margin({ top: 10, bottom: 10 })
+            }
+            .width('100%')
+            .height('100%')
+            .margin({ top: 15 })
+            .accessibilityText($r('app.string.app_name'))
+            .accessibilityDescription($r('app.string.module_desc'))
+
+            Column() {
+              Text('文本4')
+                .fontSize(18)
+                .fontWeight(FontWeight.Medium)
+            }
+            .margin({ top: 15 })
+          }
+          .width('100%')
+        }
+      }
+      .accessibilityScrollTriggerable(false)
+      .width('100%')
+    }
+    .height('100%')
+    .backgroundColor('#F7F9FC')
+  }
+}
+```
+
+### 示例6（设置无障碍聚合功能下的子组件状态和操作接管功能）
+
+该示例主要演示使用accessibilityGroup的可选参数stateControllerRoleType或者stateControllerId来选择一个特定子组件接管其无障碍状态信息，可选参数actionControllerRoleType或者actionControllerId来选择一个特定子组件接管其无障碍控制操作。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Column({ space: 20 }) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
+        Text('是否开启功能')
+        Toggle({ type: ToggleType.Switch, isOn: false })
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+      .accessibilityGroup(true, {
+        stateControllerRoleType: AccessibilityRoleType.TOGGLER,
+        actionControllerRoleType: AccessibilityRoleType.TOGGLER
+      })
+      .width('80%')
+      .border({ color: Color.Black, width: 2 })
+
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
+        Text("是否开启功能")
+        Toggle({ type: ToggleType.Switch, isOn: false })
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+          .id("TestToggle")
+      }
+      .accessibilityGroup(true, {
+        stateControllerId: "TestToggle",
+        actionControllerId: "TestToggle"
+      })
+      .width('80%')
+      .border({ color: Color.Black, width: 2 })
+
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例7（设置无障碍组件状态播报信息）
+
+该示例主要通过[accessibilityStateDescription](#accessibilitystatedescription23)接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
+
+从API version 23开始，新增accessibilityStateDescription接口。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isSelected: boolean = false;
+
+  build() {
+    Column({ space: 20 }) {
+      Button(this.isSelected ? '已点赞' : '未点赞')
+        .accessibilityLevel('yes')
+        .onClick(() => {
+          this.isSelected = !this.isSelected;
+        })
+        .accessibilityStateDescription(this.isSelected ? '已点赞' : '未点赞')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例8（设置无障碍操作选项修改组件滑动步数）
+
+本示例主要演示如何通过[accessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明)中的scrollStep参数，自定义组件的滑动步数。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
+
+从API version 23开始，新增AccessibilityActionOptions。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 20 }) {
+      Row() {
+        Slider({
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        })
+        // 调整屏幕朗读手势下slider滑动的步数
+        .accessibilityActionOptions({ scrollStep: 10 })
+      }
+      .width('80%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例9（设置自定义无障碍操作）
+
+本示例主要演示如何使用[accessibilityCustomActions](arkts-arkui-common-comp-commonmethod-c.md#accessibilitycustomactions)为组件设置自定义无障碍操作。开发者可以按操作名为组件进行自定义操作的回调绑定。
+
+从API版本26.0.0开始，新增accessibilityCustomActions。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State listData: Array<string> = ['列表项1', '列表项2', '列表项3', '列表项4'];
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        ForEach(this.listData, (item: string, index: number) => {
+          ListItem() {
+            Row() {
+              Text(item)
+                .fontSize(16)
+              Blank()
+              Text('删除')
+                .fontSize(14)
+                .fontColor(Color.Red)
+            }
+            .width('100%')
+            .padding(10)
+            .onClick(() => {
+              console.info('[TestTag] click success!')
+            })
+            .accessibilityLevel('yes')
+            .accessibilityCustomActions([
+              {
+                name: 'deleteItem',
+                onAction: () => {
+                  this.listData.splice(index, 1);
+                }
+              }
+            ])
+          }
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+### 示例1（设置Text多态样式）
+
+该示例展示了[stateStyles](#statestyles)设置状态为hovered、pressed和disabled时Text组件的样式变化。
+
+从API版本26.0.0开始，[stateStyles](#statestyles)新增hovered属性。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct StyleExample {
+  @State isEnable: boolean = true
+
+  @Styles
+  hoveredStyles(): void {
+    .backgroundColor('#12db70')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Dashed)
+    .borderWidth(2)
+    .borderColor('#33000000')
+    .width(120)
+    .height(30)
+    .opacity(1)
+  }
+
+  @Styles
+  pressedStyles(): void {
+    .backgroundColor('#ED6F21')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Dashed)
+    .borderWidth(2)
+    .borderColor('#33000000')
+    .width(120)
+    .height(30)
+    .opacity(1)
+  }
+
+  @Styles
+  disabledStyles(): void {
+    .backgroundColor('#E5E5E5')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Solid)
+    .borderWidth(2)
+    .borderColor('#2a4c1919')
+    .width(90)
+    .height(25)
+    .opacity(1)
+  }
+
+  @Styles
+  normalStyles(): void {
+    .backgroundColor('#0A59F7')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Solid)
+    .borderWidth(2)
+    .borderColor('#33000000')
+    .width(100)
+    .height(25)
+    .opacity(1)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Text('normal')
+        .fontSize(14)
+        .fontColor(Color.White)
+        .opacity(0.5)
+        // stateStyles设置组件无状态时的样式
+        .stateStyles({
+          normal: this.normalStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text('hovered')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Dotted)
+        .borderWidth(2)
+        .borderColor(Color.Red)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        // stateStyles设置组件鼠标悬浮状态时的样式
+        .stateStyles({
+          hovered: this.hoveredStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text('pressed')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Dotted)
+        .borderWidth(2)
+        .borderColor(Color.Red)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        // stateStyles设置组件按下状态时的样式
+        .stateStyles({
+          pressed: this.pressedStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text(this.isEnable ? 'effective' : 'disabled')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Solid)
+        .borderWidth(2)
+        .borderColor(Color.Gray)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        .enabled(this.isEnable)
+        // stateStyles设置组件禁用状态时的样式
+        .stateStyles({
+          disabled: this.disabledStyles,
+        })
+        .textAlign(TextAlign.Center)
+      Text('control disabled')
+        .onClick(() => {
+          this.isEnable = !this.isEnable;
+          console.info(`${this.isEnable}`);
+        })
+    }
+    .width(350).height(300)
+  }
+}
+```
+
+### 示例2（设置Radio多态样式）
+
+该示例展示了状态为selected时Radio组件的样式变化。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isRadio1Selected: boolean = false
+  @State isRadio2Selected: boolean = false
+
+  @Styles
+  normalStyles(): void {
+    .backgroundColor('#E5E5E1')
+  }
+
+  @Styles
+  selectStyles(): void {
+    .backgroundColor('#ED6F21')
+    .borderWidth(2)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Column() {
+        Text('Radio1')
+          .fontSize(25)
+        Radio({ value: 'Radio1', group: 'radioGroup1' })
+          .checked(this.isRadio1Selected)
+          .height(50)
+          .width(50)
+          .borderWidth(0)
+          .borderRadius(30)
+          .onClick(() => {
+            this.isRadio1Selected = !this.isRadio1Selected;
+          })
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles,
+          })
+      }
+      .margin(30)
+
+      Column() {
+        Text('Radio2')
+          .fontSize(25)
+        Radio({ value: 'Radio2', group: 'radioGroup2' })
+          .checked($$this.isRadio2Selected)
+          .height(50)
+          .width(50)
+          .borderWidth(0)
+          .borderRadius(30)
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles,
+          })
+      }
+      .margin(30)
+    }.padding({ top: 30 })
+  }
+}
+```
+
+### 示例3（设置Builder多态样式）
+
+该示例展示了状态为pressed时@Builder中自定义组件的样式变化。
+
+```TypeScript
+import { ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Component
+struct Child {
+  build() {
+    Row()
+      .zIndex(10)
+      .width(200)
+      .height(200)
+      .stateStyles({
+        normal: {
+          .backgroundColor(Color.Blue)
+        },
+        pressed: {
+          .backgroundColor(Color.Black)
+        }
+      })
+  }
+}
+
+@Builder
+function buildText() {
+  Child()
+}
+
+@Entry
+@Component
+struct Index {
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
+
+  build() {
+    Column() {
+      Button().margin({ top: 200 }).onClick(() => {
+        this.getUIContext()
+          .getPromptAction()
+          .openCustomDialog(this.contentNode)
+          .then(() => {
+            console.info('OpenCustomDialog complete.');
+          })
+          .catch((error: BusinessError) => {
+            let message = error.message;
+            let code = error.code;
+            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+          });
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+该示例主要展示如何通过组件标识接口，获取特定id组件的属性，以及如何向该id的组件触发事件。
+
+```TypeScript
+// xxx.ets
+import { IntentionCode } from '@kit.InputKit';
+
+class Utils {
+  static rectLeft: number;
+  static rectTop: number;
+  static rectRight: number;
+  static rectBottom: number;
+  static rectValue: Record<string, number>;
+
+  // 获取组件所占矩形区域坐标
+  static getComponentRect(key: string): Record<string, number> {
+    let strJson = getInspectorByKey(key);
+    let obj: Record<string, string> = JSON.parse(strJson);
+    console.info('[getInspectorByKey] current component obj is: ' + JSON.stringify(obj));
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
+    console.info('[getInspectorByKey] rectInfo is: ' + rectInfo);
+    Utils.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0]; // 组件左上角相对于窗口左上角的水平方向坐标
+    Utils.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1]; // 组件左上角相对于窗口左上角的垂直方向坐标
+    Utils.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0]; // 组件右下角相对于窗口左上角的水平方向坐标
+    Utils.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // 组件右下角相对于窗口左上角的垂直方向坐标
+    return Utils.rectValue = {
+      "left": Utils.rectLeft,
+      "top": Utils.rectTop,
+      "right": Utils.rectRight,
+      "bottom": Utils.rectBottom
+    };
+  };
+}
+
+@Entry
+@Component
+struct IdExample {
+  @State text: string = '';
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+
+      Button() {
+        Text('onKeyTab').fontSize(25).fontWeight(FontWeight.Bold)
+      }.margin({ top: 20 }).backgroundColor('#0D9FFB')
+      .onKeyEvent(() => {
+        this.text = 'onKeyTab';
+      })
+
+      Button() {
+        Text('click to start').fontSize(25).fontWeight(FontWeight.Bold)
+      }.margin({ top: 20 })
+      .onClick(() => {
+        console.info(getInspectorByKey('click'));
+        console.info(JSON.stringify(getInspectorTree()));
+        this.text = "Button 'click to start' is clicked";
+        setTimeout(() => {
+          sendEventByKey('longClick', 11, ''); // 向id为"longClick"的组件发送长按事件
+        }, 2000)
+      }).id('click')
+
+      Button() {
+        Text('longClick').fontSize(25).fontWeight(FontWeight.Bold)
+      }.margin({ top: 20 }).backgroundColor('#0D9FFB')
+      .gesture(
+        LongPressGesture().onActionEnd(() => {
+          console.info('long clicked');
+          this.text = "Button 'longClick' is longclicked";
+          setTimeout(() => {
+            let rect = Utils.getComponentRect('onTouch'); // 获取id为"onTouch"组件的矩形区域坐标
+            let touchPoint: TouchObject = {
+              id: 1,
+              type: TouchType.Down,
+              x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
+              y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
+              windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+              windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
+              displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
+              displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+              screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+              screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
+            };
+            sendTouchEvent(touchPoint); // 发送触摸事件
+            touchPoint.type = TouchType.Up;
+            sendTouchEvent(touchPoint); // 发送触摸事件
+          }, 2000)
+        })).id('longClick')
+
+      Button() {
+        Text('onTouch').fontSize(25).fontWeight(FontWeight.Bold)
+      }.type(ButtonType.Capsule).margin({ top: 20 })
+      .onClick(() => {
+        console.info('onTouch is clicked');
+        this.text = "Button 'onTouch' is clicked";
+        setTimeout(() => {
+          let rect = Utils.getComponentRect('onMouse'); // 获取id为"onMouse"组件的矩形区域坐标
+          let mouseEvent: MouseEvent = {
+            button: MouseButton.Left,
+            action: MouseAction.Press,
+            x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
+            y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
+            windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+            windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
+            displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
+            displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+            screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+            screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
+            stopPropagation: () => {
+            },
+            timestamp: 1,
+            target: {
+              area: {
+                width: 1,
+                height: 1,
+                position: {
+                  x: 1,
+                  y: 1
+                },
+                globalPosition: {
+                  x: 1,
+                  y: 1
+                }
+              }
+            },
+            source: SourceType.Mouse,
+            pressure: 1,
+            tiltX: 1,
+            tiltY: 1,
+            sourceTool: SourceTool.Unknown
+          };
+          sendMouseEvent(mouseEvent); // 发送鼠标事件
+        }, 2000)
+      }).id('onTouch')
+
+      Button() {
+        Text('onMouse').fontSize(25).fontWeight(FontWeight.Bold)
+      }.margin({ top: 20 }).backgroundColor('#0D9FFB')
+      .onMouse(() => {
+        console.info('onMouse');
+        this.text = "Button 'onMouse' in onMouse";
+        setTimeout(() => {
+          let keyEvent: KeyEvent = {
+            type: KeyType.Down,
+            keyCode: 2049,
+            keyText: 'tab',
+            keySource: 4,
+            deviceId: 0,
+            metaKey: 0,
+            timestamp: 0,
+            stopPropagation: () => {
+            },
+            intentionCode: IntentionCode.INTENTION_DOWN
+          };
+          sendKeyEvent(keyEvent); // 发送按键事件
+        }, 2000)
+      }).id('onMouse')
+
+      Text(this.text).fontSize(25).padding(15)
+    }
+    .width('100%').height('100%')
+  }
+}
+```
+
+### 示例1（支持滚动手势）
+
+该示例通过设置[enableScrollInteraction](#enablescrollinteraction11)属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+
+
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .enableScrollInteraction(true)
+      .listDirection(Axis.Vertical) // 排列方向
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .divider({
+        strokeWidth: 2,
+        color: 0xFFFFFF,
+        startMargin: 20,
+        endMargin: 20
+      }) // 每行之间的分界线
+      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
+      .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
+        console.info('first' + firstIndex);
+        console.info('last' + lastIndex);
+        console.info('center' + centerIndex);
+      })
+      .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo) => {
+        console.info(' start index: ' + start.index +
+          ' start item group area: ' + start.itemGroupArea +
+          ' start index in group: ' + start.itemIndexInGroup);
+        console.info(' end index: ' + end.index +
+          ' end item group area: ' + end.itemGroupArea +
+          ' end index in group: ' + end.itemIndexInGroup);
+      })
+      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
+        console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
+      })
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
+  }
+}
+```
+
+### 示例2（设置边缘渐隐）
+
+该示例通过设置[fadingEdge](#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
+  }
+}
+```
+
+### 示例3（设置裁剪区域）
+
+该示例通过设置[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性，改变组件的内容层裁剪区域。
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ScrollExample {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  @State clipContent: ContentClipMode | RectShape | undefined = undefined;
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          ForEach(this.arr, (item: number) => {
+            Text(item.toString())
+              .width(300)
+              .height(80)
+              .fontSize(20)
+              .textAlign(TextAlign.Center)
+              .backgroundColor(Color.Grey)
+          }, (item: number) => item.toString())
+        }
+      }
+      .backgroundColor(Color.Blue)
+      .clipContent(this.clipContent)
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .width(300)
+      .height('50%')
+      .padding(10)
+      .safeAreaPadding(LengthMetrics.vp(10))
+      .initialOffset({ yOffset: 80 })
+      .margin({ top: 20 })
+
+      Button('clipContent SAFE_AREA')
+        .onClick(() => {
+          this.clipContent = ContentClipMode.SAFE_AREA;
+        }).margin({ top: 30 })
+
+      Button('clipContent BOUNDARY')
+        .onClick(() => {
+          this.clipContent = ContentClipMode.BOUNDARY;
+        }).margin({ top: 35 })
+
+      Button('clipContent CONTENT_ONLY')
+        .onClick(() => {
+          this.clipContent = ContentClipMode.CONTENT_ONLY;
+        }).margin({ top: 40 })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
+
+### 示例4（设置滚动条边距）
+
+从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ListExample {
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State scrollBarMargin: ScrollBarMargin = { start: LengthMetrics.vp(0), end: LengthMetrics.vp(0) };
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart }) {
+      Column() {
+        List({ space: 20, initialIndex: 0 }) {
+          LazyForEach(this.arr, (item: number) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
+                Text('' + item)
+                  .width('100%')
+                  .height(80)
+                  .fontSize(20)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(Color.White)
+                  .flexShrink(1)
+              }
+            }
+          }, (item: number) => item.toString())
+        }.width('90%')
+        .friction(0.6)
+        .scrollBar(BarState.On)
+        .scrollBarMargin(this.scrollBarMargin)
+      }.width('100%')
+
+      Button('scrollBarMargin')
+        .onClick(() => {
+          this.scrollBarMargin = { start: LengthMetrics.vp(45), end: LengthMetrics.vp(70) };
+        }).margin({ top: 5, left: 20 })
+
+      Button('scrollBarMargin2')
+        .onClick(() => {
+          this.scrollBarMargin = { start: LengthMetrics.vp(15), end: LengthMetrics.vp(100) };
+        }).margin({ top: 200, left: 20 })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+  }
+}
+```
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isShow: boolean = false
+
+  build() {
+    Stack({ alignContent: Alignment.Center }) {
+      if (this.isShow) {
+        Image($r('app.media.pic'))
+          .autoResize(false)
+          .clip(true)
+          .width(300)
+          .height(400)
+          .offset({ y: 100 })
+          .geometryTransition("picture", { hierarchyStrategy: TransitionHierarchyStrategy.ADAPTIVE })
+          .transition(TransitionEffect.OPACITY)
+      } else {
+        // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
+        // 套多层容器为了说明相对布局约束传递
+        Column() {
+          Column() {
+            Image($r('app.media.icon'))
+              .width('100%').height('100%')
+          }.width('100%').height('100%')
+        }
+        .width(80)
+        .height(80)
+        // geometryTransition会同步圆角，但仅限于geometryTransition绑定处，此处绑定的是容器
+        // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
+        .borderRadius(20)
+        .clip(true)
+        .geometryTransition("picture", { hierarchyStrategy: TransitionHierarchyStrategy.ADAPTIVE })
+        // transition保证组件离场不被立即析构，可设置其他转场效果
+        .transition(TransitionEffect.OPACITY)
+      }
+    }
+    .onClick(() => {
+      this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+        this.isShow = !this.isShow;
+      })
+    })
+  }
+}
+```
+
+### 示例1（弹出不同类型的气泡）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中的keyboardAvoidMode属性，设置气泡是否避让软键盘。
+
+从API version 15开始，分别在PopupOptions和CustomPopupOptions中新增了keyboardAvoidMode属性。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+  @State customPopup: boolean = false;
+
+  // Popup构造器定义弹框内容
+  @Builder popupBuilder() {
+    Row({ space: 2 }) {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.icon')).width(24).height(24).margin({ left: -5 })
+      Text('Custom Popup').fontSize(10)
+    }.width(100).height(50).padding(5)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      // PopupOptions类型设置弹框内容
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup;
+        })
+        .bindPopup(this.handlePopup, {
+          message: 'This is a popup with PopupOptions',
+          placement: Placement.Top,
+          showInSubWindow: false,
+          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 设置气泡避让软键盘
+          primaryButton: {
+            value: 'confirm',
+            action: () => {
+              this.handlePopup = !this.handlePopup;
+              console.info('confirm Button click');
+            }
+          },
+          // 第二个按钮
+          secondaryButton: {
+            value: 'cancel',
+            action: () => {
+              this.handlePopup = !this.handlePopup;
+              console.info('cancel Button click');
+            }
+          },
+          onStateChange: (e) => {
+            console.info(JSON.stringify(e.isVisible));
+            if (!e.isVisible) {
+              this.handlePopup = false;
+            }
+          }
+        })
+        .position({ x: 100, y: 150 })
+
+
+      // CustomPopupOptions类型设置弹框内容
+      Button('CustomPopupOptions')
+        .onClick(() => {
+          this.customPopup = !this.customPopup;
+        })
+        .bindPopup(this.customPopup, {
+          builder: this.popupBuilder,
+          placement: Placement.Top,
+          mask: { color: '#33000000' },
+          popupColor: Color.Yellow,
+          enableArrow: true,
+          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 设置气泡避让软键盘
+          showInSubWindow: false,
+          onStateChange: (e) => {
+            if (!e.isVisible) {
+              this.customPopup = false;
+            }
+          }
+        })
+        .position({ x: 80, y: 300 })
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+### 示例2（设置气泡的文本样式）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)中的messageOptions属性，实现了弹出自定义文本样式的气泡。
+
+
+
+```TypeScript
+// xxx.ets
+
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Column({ space: 100 }) {
+      Button('PopupOptions').margin(100)
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup;
+        })
+        .bindPopup(this.handlePopup, {
+          // PopupOptions类型气泡的内容
+          message: 'This is a popup with PopupOptions',
+          messageOptions: {
+            // 气泡的文本样式
+            textColor: Color.Red,
+            font: {
+              size: '14vp',
+              style: FontStyle.Italic,
+              weight: FontWeight.Bolder
+            }
+          },
+          placement: Placement.Bottom,
+          enableArrow: false, // 气泡弹出时不显示箭头
+          targetSpace: '15vp',
+          onStateChange: (e) => {
+            console.info(JSON.stringify(e.isVisible));
+            if (!e.isVisible) {
+              this.handlePopup = false;
+            }
+          }
+        })
+    }.margin(20)
+  }
+}
+```
+
+### 示例3（设置气泡的样式）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)中的arrowHeight、arrowWidth、radius、shadow和popupColor属性，实现了气泡箭头以及气泡本身的样式。
+
+
+
+```TypeScript
+// xxx.ets
+
+@Entry
+@Component
+struct PopupExample {
+  @State customPopup: boolean = false;
+  @State handlePopup: boolean = false;
+
+  build() {
+    Column({ space: 100 }) {
+      Button('popup')
+        .margin({ top: 50 })
+        .onClick(() => {
+          this.customPopup = !this.customPopup;
+        })
+        .bindPopup(this.customPopup!!, {
+          message: 'this is a popup',
+          arrowHeight: 20, // 设置气泡箭头高度
+          arrowWidth: 20, // 设置气泡箭头宽度
+          radius: 20, // 设置气泡的圆角
+          shadow: ShadowStyle.OUTER_DEFAULT_XS, // 设置气泡的阴影
+        })
+
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup;
+        })
+        .bindPopup(this.handlePopup!!, {
+          width: 300,
+          message: 'This is a popup with PopupOptions',
+          arrowPointPosition: ArrowPointPosition.START, // 设置箭头的位置
+          backgroundBlurStyle: BlurStyle.NONE, // 关闭气泡的模糊背景
+          popupColor: Color.Red, // 设置气泡的背景色
+          autoCancel: true,
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+### 示例4（设置气泡的动效）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中的transition属性，实现了气泡显示以及退出的动效。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+  @State customPopup: boolean = false;
+
+  // Popup构造器定义弹框内容
+  @Builder
+  popupBuilder() {
+    Row() {
+      Text('Custom Popup with transitionEffect').fontSize(10)
+    }.height(50).padding(5)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      // PopupOptions类型设置弹框内容
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup;
+        })
+        .bindPopup(this.handlePopup, {
+          message: 'This is a popup with transitionEffect',
+          placement: Placement.Top,
+          showInSubWindow: false,
+          onStateChange: (e) => {
+            console.info(JSON.stringify(e.isVisible));
+            if (!e.isVisible) {
+              this.handlePopup = false;
+            }
+          },
+          // 设置气泡显示动效为透明度动效与平移动效的组合效果，无退出动效
+          transition: TransitionEffect.asymmetric(
+            TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
+              TransitionEffect.translate({ x: 50, y: 50 })),
+            TransitionEffect.IDENTITY)
+        })
+        .position({ x: 100, y: 150 })
+
+      // CustomPopupOptions类型设置弹框内容
+      Button('CustomPopupOptions')
+        .onClick(() => {
+          this.customPopup = !this.customPopup;
+        })
+        .bindPopup(this.customPopup, {
+          builder: this.popupBuilder,
+          placement: Placement.Top,
+          showInSubWindow: false,
+          onStateChange: (e) => {
+            if (!e.isVisible) {
+              this.customPopup = false;
+            }
+          },
+          // 设置气泡显示动效与退出动效为缩放动效
+          transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
+        })
+        .position({ x: 80, y: 300 })
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+### 示例5（为气泡添加事件）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)中的onWillDismiss属性，实现了当气泡退出时，拦截退出事件并执行回调函数。
+
+
+
+```TypeScript
+// xxx.ets
+
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+  build() {
+    Column() {
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = true;
+        })
+        .bindPopup(this.handlePopup, {
+          message: 'This is a popup with PopupOptions',
+          messageOptions: {
+            textColor: Color.Red,
+            font: {
+              size: '14vp',
+              style: FontStyle.Italic,
+              weight: FontWeight.Bolder
+            }
+          },
+          placement: Placement.Bottom,
+          enableArrow: false,
+          targetSpace: '15vp',
+          onStateChange: (e) => {
+            if (!e.isVisible) {
+              this.handlePopup = false;
+            }
+          },
+          /**
+           * 气泡即将关闭前拦截回调
+           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
+           */
+          onWillDismiss: (
+            (dismissPopupAction: DismissPopupAction) => {
+              console.info('dismissReason:' + JSON.stringify(dismissPopupAction.reason));
+              if (dismissPopupAction.reason === DismissReason.PRESS_BACK) {
+                dismissPopupAction.dismiss();
+              }
+            }
+          )
+        })
+    }.margin(20)
+  }
+}
+```
+
+### 示例6（为气泡拦截退出事件）
+
+该示例将[PopupOptions](#popupoptions类型说明)的onWillDismiss属性设为false，使气泡不响应退出事件。同时，配置[PopupOptions](#popupoptions类型说明)的followTransformOfTarget属性，设置气泡是否跟随宿主组件变换。
+
+
+
+```TypeScript
+// xxx.ets
+
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+  private timer: number = -1;
+
+  build() {
+    Column() {
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = true;
+        })
+        .bindPopup(this.handlePopup, {
+          message: 'This is a popup with PopupOptions',
+          messageOptions: {
+            textColor: Color.Red,
+            font: {
+              size: '14vp',
+              style: FontStyle.Italic,
+              weight: FontWeight.Bolder
+            }
+          },
+          placement: Placement.Bottom,
+          enableArrow: false,
+          targetSpace: '15vp',
+          // 气泡跟随按钮的平移、缩放等变换同步变动
+          followTransformOfTarget: true,
+          onStateChange: (e) => {
+            // 设置气泡显示6秒后自动关闭
+            if (e.isVisible) {
+              this.timer = setTimeout(() => {
+                this.handlePopup = false;
+              }, 6000);
+            } else {
+              this.handlePopup = false;
+              if (this.timer !== -1) {
+                clearTimeout(this.timer);
+                this.timer = -1;
+              }
+            }
+          },
+          // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出
+          onWillDismiss: false
+        })
+    }.margin(20)
+  }
+}
+```
+
+### 示例7（为气泡内外描边设置线性渐变）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)中的outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient属性，为气泡设置内外描边线性渐变的颜色和方向。
+
+从API version 20开始，在PopupOptions中新增了outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient属性。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        /**
+         * 为按钮绑定气泡
+         * 第一个参数：气泡显隐控制变量
+         * message：气泡内部展示文本
+         * placement.Top：气泡从按钮上方弹出
+         * outlineWidth：外描边线宽度1vp
+         * outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
+         * borderWidth：弹窗内部边框宽度1vp
+         * borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
+         */
+        .bindPopup(this.handlePopup!!, {
+          message: 'This is a popup with PopupOptions',
+          placement: Placement.Top,
+          outlineWidth: 1,
+          outlineLinearGradient: {
+            direction: GradientDirection.Top,
+            colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
+          },
+          borderWidth: 1,
+          borderLinearGradient: {
+            direction: GradientDirection.Bottom,
+            colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
+          }
+        })
+        .position({ x: 100, y: 150 }) 
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+### 示例8（设置气泡避让绑定的组件模式）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)的avoidTarget属性，实现气泡对其绑定组件的避让。
+
+从API version 20开始，在PopupOptions中新增了avoidTarget属性。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        .bindPopup(this.handlePopup!!, {
+          message: 'popup message '.repeat(200),
+          placement: Placement.Top,
+          // 气泡在剩余显示空间不足的情况下，在最大空间处压缩显示
+          avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
+        })
+        .position({ x: 100, y: 150 }) 
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+### 示例9（设置Popup的沉浸光感视觉效果）
+
+该示例通过[PopupOptions](#popupoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了Popup的沉浸光感视效。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
+从API版本26.0.0开始，在PopupOptions中新增了systemMaterial属性。
+
+未设置系统材质时：
+
+
+
+设置系统材质后：
+
+
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        /**
+         * 绑定气泡至按钮
+         * 第一个参数：气泡显示控制布尔值
+         * message：气泡内展示文本
+         * placement.Top：气泡弹出位置在按钮上方
+         * systemMaterial：为气泡配置沉浸式磨砂材质
+         * ImmersiveStyle.THIN：薄款磨砂，中等通透度
+         */
+        .bindPopup(this.handlePopup!!, {
+          message: 'This is a popup with PopupOptions',
+          placement: Placement.Top,
+          // 控制是否设置系统材质接口
+          systemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THIN
+          })
+        })
+        .position({ x: 100, y: 300 })
+    }.width('100%')
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r('app.media.img'))
+    .backgroundImageSize({ width: '100%', height: '100%' })
+  }
+}
+```
+
+### 示例10（自定义气泡背景效果参数）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)的backgroundBlurStyleOptions和backgroundEffect属性，实现自定义气泡背景效果。
+
+从API版本26.0.0开始，在PopupOptions中新增了backgroundBlurStyleOptions和backgroundEffect属性。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Popup自定义背景效果1')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        /**
+         * 绑定气泡，使用系统标准化磨砂模糊样式
+         * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
+         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
+         * colorMode.LIGHT：浅色主题调色模式
+         * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
+         * scale：磨砂通透缩放系数0.5
+         * blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
+         */
+        .bindPopup(this.handlePopup!!, {
+          message: 'popup message '.repeat(20),
+          backgroundBlurStyleOptions: {
+            colorMode: ThemeColorMode.LIGHT,
+            adaptiveColor: AdaptiveColor.AVERAGE,
+            scale: 0.5,
+            blurOptions: { grayscale: [20, 20] },
+          }
+        })
+        .position({ x: 100, y: 150 }) 
+
+      Button('Popup自定义背景效果2')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        /**
+         * 绑定气泡，使用完全自定义混合背景特效
+         * radius：背景模糊半径60，模糊程度更高
+         * saturation：饱和度0，画面去色黑白化
+         * brightness：亮度1，保持原始亮度不变
+         * color：叠加粉色底色
+         * blurOptions.grayscale：灰度滤镜参数
+         */
+        .bindPopup(this.handlePopup!!, {
+          message: 'popup message '.repeat(20),
+          backgroundEffect: {
+            radius: 60,
+            saturation: 0,
+            brightness: 1,
+            color: Color.Pink,
+            blurOptions: { grayscale: [20, 20] }
+          }
+        })
+        .position({ x: 100, y: 400 }) 
+    }.width('100%')
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r('app.media.img'))
+    .backgroundImageSize({ width: '100%', height: '100%' })
+  }
+}
+```
+
+### 示例11（设置气泡的显示层级模式）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)的levelMode属性，实现气泡在页面内嵌入显示。点击按钮后页面级的气泡不会显示在下一个路由页面中。
+
+从API版本26.0.0开始，在PopupOptions中新增了levelMode属性。
+
+```TypeScript
+import { LevelMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Column() {
+      Button('PopupOptions EMBEDDED')
+        .id('targetButton')
+        .onClick(() => {
+          // 切换气泡显示/隐藏状态
+          this.handlePopup = !this.handlePopup;
+          // 延迟500ms跳转路由，确保气泡动画播放完成
+          setTimeout(() => {
+            // pages/PageTwo需要开发者替换为实际路由名称
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'}).catch(() => {
+              console.error("route to PageTwo error!")
+            })
+          }, 500)
+        })
+        /**
+         * 绑定气泡到当前按钮
+         * 第一个参数：气泡显示控制布尔值
+         * message：气泡内展示文本
+         * levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
+         */
+        .bindPopup(this.handlePopup!!, {
+          message: 'This is an embedded popup',
+          levelMode: LevelMode.EMBEDDED,
+        })
+        .position({ x: 60, y: 300 })
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+PageTwo页面：
+
+```TypeScript
+@Entry
+@Component
+struct PageTwo {
+  build() {
+    Column() {
+      Text("This is next page")
+    }
+    .position({ x: 120, y: 300 })
+  }
+}
+```
+
+### 示例1（设置onAccessibilityActionIntercept拦截点击事件）
+
+该示例演示在无障碍模式下，通过onAccessibilityActionIntercept事件在Toggle组件点击事件触发前进行拦截，并弹出确认对话框由用户确认是否放行该点击事件。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OnAccessibilityActionInterceptExample {
+  @State private isOn: boolean = false;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('onAccessibilityActionIntercept')
+        Row() {
+          Text('Label message')
+          Blank()
+          Toggle({ type: ToggleType.Switch, isOn: $$this.isOn })
+            .onAccessibilityActionIntercept((action: AccessibilityAction) => {
+              // 无障碍点击操作触发时，弹出确认对话框由用户决定是否放行
+              if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
+                this.getUIContext().showAlertDialog({
+                  title: '标题',
+                  message: '内容信息',
+                  primaryButton: {
+                    value: '确认',
+                    action: () => {
+                      this.isOn = !this.isOn;
+                    }
+                  },
+                  secondaryButton: {
+                    value: '取消',
+                    action: () => {
+                    }
+                  }
+                });
+                // 拦截本次点击，阻止组件默认点击行为
+                return AccessibilityActionInterceptResult.ACTION_INTERCEPT;
+              } else {
+                // 其他无障碍操作不拦截，直接放行
+                return AccessibilityActionInterceptResult.ACTION_CONTINUE;
+              }
+            })
+        }.width('100%')
+      }
+      .padding(24)
+      .width('100%')
+    }
+  }
+}
+```
+
+### 示例2（设置onAccessibilityFocus回调函数）
+
+从API version 18开始，当获焦、失焦状态发生变化时，触发该回调函数。本示例展示了[onAccessibilityFocus](arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityfocus)的基本用法，聚焦到"onAccessibilityFocus takes effect"时，会打印"[testingTag] isFocus current is true"，当聚焦到"onAccessibilityFocus takes effect"以外的位置时，会打印"[testingTag] isFocus current is false"。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OnAccessibilityFocusExample {
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("onAccessibilityFocus doesn't take effect")
+        Text('onAccessibilityFocus takes effect')
+          .onAccessibilityFocus((isFocus: boolean) => {
+            console.info(`[testingTag] isFocus current is ${isFocus}`);
+          })
+      }
+      .padding(24)
+      .width('100%')
+    }
+  }
+}
+```
+
+该示例通过onTouchIntercept修改组件的HitTestMode属性。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  isPolygon(event: TouchEvent) {
+    return true;
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('hello world')
+          .backgroundColor(Color.Blue)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            console.info('Text click');
+          })
+      }
+      .width(400)
+      .height(300)
+      .backgroundColor(Color.Pink)
+      .onClick(() => {
+        console.info('Column click');
+      })
+      // 调用onTouchIntercept修改该组件的HitTestMode属性
+      .onTouchIntercept((event: TouchEvent) => {
+        console.info('OnTouchIntercept + ' + JSON.stringify(event));
+        // 使用touches时需要先校验是否为空
+        if (event && event.touches) {
+          let touches = event.touches;
+          for (let i = 0; touches[i] != null; i++) {
+            console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
+          }
+        }
+        // 当满足自定义拦截条件时，返回HitTestMode.None使该组件不参与触摸测试
+        if (this.isPolygon(event)) {
+          return HitTestMode.None;
+        }
+        return HitTestMode.Default;
+      })
+    }
+    .width('100%')
+  }
+}
+```
+
+### 示例1（菜单设置沉浸式材质、非线性形变与流光）
+
+该示例通过[bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu8)为组件绑定菜单（长按或右键触发），并通过[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)设置系统材质[systemMaterial](./ts-universal-attributes-menu.md#contextmenuoptions10)，以及非线性形变[distortionMode](arkts-arkui-common-comp-contextmenuoptions-i.md)和流光[edgeLightMode](arkts-arkui-common-comp-contextmenuoptions-i.md)，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)新增distortionMode和edgeLightMode属性。
+
+```TypeScript
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MenuMaterialExample {
+  // 沉浸式材质对象
+  @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.THICK,
+  });
+
+  @Builder MenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Menu1' })
+        .onClick(() => {
+          console.info('handle Menu1 select');
+        })
+      MenuItem({ content: 'Menu2' })
+        .onClick(() => {
+          console.info('handle Menu2 select');
+        })
+    }
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Text('click to show Menu')
+          .fontSize(20)
+          .margin({ top: 20 })
+          .bindMenu(this.MenuBuilder, {
+            // 设置沉浸式材质
+            systemMaterial: this.myMaterial,
+            // 非线性形变自适应
+            distortionMode: DistortionMode.DISTORTION_AUTO,
+            // 流光自适应
+            edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+          })
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+### 示例1（逐帧布局的效果）
+
+以下示例通过改变Text组件宽度实现逐帧布局的效果。
+
+
+
+```TypeScript
+@AnimatableExtend(Text)
+function animatableWidth(width: number) {
+  .width(width)
+}
+
+@Entry
+@Component
+struct AnimatablePropertyExample {
+  @State textWidth: number = 80;
+
+  build() {
+    Column() {
+      Text("AnimatableProperty")
+        .animatableWidth(this.textWidth)
+        .animation({ duration: 2000, curve: Curve.Ease })
+      Button("Play")
+        .onClick(() => {
+          this.textWidth = this.textWidth === 80 ? 160 : 80;
+        })
+    }.width("100%")
+    .padding(10)
+  }
+}
+```
+
+### 示例2（折线的动画效果）
+
+以下示例实现折线的动画效果。
+
+```TypeScript
+class Point {
+  x: number
+  y: number
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  plus(rhs: Point): Point {
+    return new Point(this.x + rhs.x, this.y + rhs.y);
+  }
+
+  subtract(rhs: Point): Point {
+    return new Point(this.x - rhs.x, this.y - rhs.y);
+  }
+
+  multiply(scale: number): Point {
+    return new Point(this.x * scale, this.y * scale);
+  }
+
+  equals(rhs: Point): boolean {
+    return this.x === rhs.x && this.y === rhs.y;
+  }
+}
+
+// PointVector实现了AnimatableArithmetic<T>接口
+class PointVector extends Array<Point> implements AnimatableArithmetic<PointVector> {
+  constructor(value: Array<Point>) {
+    super();
+    value.forEach(point => this.push(point));
+  }
+
+  plus(rhs: PointVector): PointVector {
+    let result = new PointVector([]);
+    const len = Math.min(this.length, rhs.length);
+    for (let i = 0; i < len; i++) {
+      result.push((this as Array<Point>)[i].plus((rhs as Array<Point>)[i]));
+    }
+    return result;
+  }
+
+  subtract(rhs: PointVector): PointVector {
+    let result = new PointVector([]);
+    const len = Math.min(this.length, rhs.length);
+    for (let i = 0; i < len; i++) {
+      result.push((this as Array<Point>)[i].subtract((rhs as Array<Point>)[i]));
+    }
+    return result;
+  }
+
+  multiply(scale: number): PointVector {
+    let result = new PointVector([]);
+    for (let i = 0; i < this.length; i++) {
+      result.push((this as Array<Point>)[i].multiply(scale));
+    }
+    return result;
+  }
+
+  equals(rhs: PointVector): boolean {
+    if (this.length !== rhs.length) {
+      return false;
+    }
+    for (let i = 0; i < this.length; i++) {
+      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  get(): Array<Object[]> {
+    let result: Array<Object[]> = [];
+    this.forEach(point => result.push([point.x, point.y]));
+    return result;
+  }
+}
+
+@AnimatableExtend(Polyline)
+function animatablePoints(points: PointVector) {
+  // 将PointVector转换为Polyline的points属性所需的数组格式
+  .points(points.get())
+}
+
+@Entry
+@Component
+struct AnimatablePropertyExample {
+  @State points: PointVector = new PointVector([
+    new Point(50, Math.random() * 200),
+    new Point(100, Math.random() * 200),
+    new Point(150, Math.random() * 200),
+    new Point(200, Math.random() * 200),
+    new Point(250, Math.random() * 200),
+  ])
+
+  build() {
+    Column() {
+      Polyline()
+        .animatablePoints(this.points)
+        .animation({ duration: 1000, curve: Curve.Ease }) // 设置动画参数
+        .size({ height: 220, width: 300 })
+        .fill(Color.Green)
+        .stroke(Color.Red)
+        .backgroundColor('#eeaacc')
+      Button("Play")
+        .onClick(() => {
+          // points是实现了可动画协议的数据类型，points在动画过程中可按照定义的运算规则、动画参数从之前的PointVector变为新的PointVector数据，产生每一帧的PointVector数据，进而产生动画
+          this.points = new PointVector([
+            new Point(50, Math.random() * 200),
+            new Point(100, Math.random() * 200),
+            new Point(150, Math.random() * 200),
+            new Point(200, Math.random() * 200),
+            new Point(250, Math.random() * 200),
+          ]);
+        })
+    }.width("100%")
+    .padding(10)
+  }
+}
+```
+
+### 示例1（对齐方式和主轴方向上的布局）
+
+设置内容在元素内的对齐方式和子元素在父组件主轴方向上的布局。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PositionExample1 {
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        // 元素内容 < 元素宽高，设置内容在元素内的对齐方式
+        Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Stack() {
+          Text('First show in bottom end').height('65%').backgroundColor(0xD2B48C)
+          Text('Second show in bottom end').backgroundColor(0xF5DEB3).opacity(0.9)
+        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
+        .align(Alignment.BottomEnd)
+        Stack() {
+          Text('top start')
+        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
+        .align(Alignment.TopStart)
+
+        // 父组件设置direction为Direction.Ltr，子元素从左到右排列
+        Text('direction').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+        }
+        .width('90%')
+        .direction(Direction.Ltr)
+        // 父组件设置direction为Direction.Rtl，子元素从右到左排列
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+        }
+        .width('90%')
+        .direction(Direction.Rtl)
+      }
+    }
+    .width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### 示例2（位置偏移）
+
+基于父组件、相对定位、锚点作出位置偏移。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PositionExample2 {
+  build() {
+    Column({ space: 20 }) {
+      // 设置子组件左上角相对于父组件左上角的偏移位置
+      Text('position').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 position(30, 10)')
+          .size({ width: '60%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .position({ x: 30, y: 10 })
+        Text('3').size({ width: '45%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 position(50%, 70%)')
+          .size({ width: '50%', height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .position({ x: '50%', y: '70%' })
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+      // 相对于起点偏移，其中x为最终定位点距离起点水平方向间距，x>0往左，反之向右。
+      // y为最终定位点距离起点垂直方向间距，y>0向上，反之向下
+      Text('markAnchor').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Stack({ alignContent: Alignment.TopStart }) {
+        Row()
+          .size({ width: '100', height: '100' })
+          .backgroundColor(0xdeb887)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: 25 })
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: -100, y: -25 })
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: -25 })
+      }.margin({ top: 25 }).border({ width: 1, style: BorderStyle.Dashed })
+
+      // 相对定位，x>0向右偏移，反之向左，y>0向下偏移，反之向上
+      Text('offset').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2  offset(15, 30)')
+          .size({ width: 120, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .offset({ x: 15, y: 30 })
+        Text('3').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 offset(-5%, 20%)')
+          .size({ width: 100, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .offset({ x: '-5%', y: '20%' })
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+    }
+    .width('100%').margin({ top: 25 })
+  }
+}
+```
+
+### 示例3（绝对定位和相对偏移）
+
+使用position设置绝对定位，确定子组件相对父组件的位置。使用offset设置相对偏移，组件相对原本的布局位置进行偏移。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Example3 {
+  build() {
+    Column({ space: 20 }) {
+      Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('bottom:0, right:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, right: 0 })
+        Text('top:0, left:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: 0, left: 0 })
+        Text('top:10%, left:50%')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: '10%', left: '50%' })
+        Text('bottom:0, left:30')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, left: 30 })
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+
+      Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 top:30, left:0')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .offset({ top: 30, left: 0 })
+        Text('3')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(12)
+          .textAlign(TextAlign.Center)
+          .offset({ bottom: 10, right: 30 })
+      }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
+    }.width('100%').margin({ top: 25 })
+  }
+}
+```
+
+### 示例4（镜像效果）
+
+通用布局属性支持[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。下述示例从上到下依次通过[position](#position)、[offset](#offset)和[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
+
+镜像前效果：
+
+
+
+镜像后效果如下，镜像生效条件请参考[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)：
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example4 {
+  private scroller: Scroller = new Scroller()
+
+  build() {
+    Column() {
+      Stack({ alignContent: Alignment.End }) {
+        Scroll(this.scroller) {
+          Flex({ direction: FlexDirection.Column }) {
+            RelativeContainer() {
+              Row() {
+              }
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // position接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .position({ left: '200px', top: '100px' }) // position接口中的参数使用Edges类型，不支持镜像翻转效果
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // offset接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .offset({ left: 100, top: 200 }) // offset接口中的参数使用Edges类型，不支持镜像翻转效果
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .markAnchor({
+                start: LengthMetrics.fp(100),
+                top: LengthMetrics.fp(-350)
+              }) // markAnchor接口中的参数使用LocalizedPosition类型，支持镜像翻转效果
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .markAnchor({ x: '100fp', y: '-350fp' }) // markAnchor接口中的参数使用Position类型，不支持镜像翻转效果
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+            }
+            .backgroundColor(Color.White)
+            .padding(50)
+            .margin(50)
+          }
+        }
+        .width('100%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
+          Text()
+            .width(20)
+            .height(100)
+            .borderRadius(10)
+            .backgroundColor('#C0C0C0')
+        }.width(20).backgroundColor('#ededed')
+      }
+    }.height('90%')
+  }
+}
+```
+
+### 示例5（align属性适配镜像特性）
+
+设置内容在元素内的对齐方式和子元素在父组件主轴方向上的布局。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct buttonTestDemo {
+  @State isLocalizedAlignment: LocalizedAlignment[] =
+    [LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END, LocalizedAlignment.START,
+      LocalizedAlignment.CENTER, LocalizedAlignment.END, LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM,
+      LocalizedAlignment.BOTTOM_END]
+  @State isLocalizedAlignmentIndex: number = 4
+  @State isDirection: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto]
+  @State isDirectionIndex: number = 0
+
+  build() {
+    Row() {
+      Column() {
+
+        Row({ space: 5 }) {
+          Button('START')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 3
+            })
+          Button('CENTER')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 4
+            })
+          Button('END')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 5
+            })
+        }.margin(20)
+
+        Row({ space: 5 }) {
+          Button('Ltr')
+            .onClick(() => {
+              this.isDirectionIndex = 0
+            })
+          Button('Rtl')
+            .onClick(() => {
+              this.isDirectionIndex = 1
+            })
+          Button('Auto')
+            .onClick(() => {
+              this.isDirectionIndex = 2
+            })
+        }.margin(20)
+
+        Row() {
+          Button('OK', { type: ButtonType.Capsule, stateEffect: true })
+            .backgroundColor(0x317aff)
+            .width(200)
+            .height(100)
+            .direction(this.isDirection[this.isDirectionIndex])
+            .align(this.isLocalizedAlignment[this.isLocalizedAlignmentIndex])
+        }.margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### 示例6（layoutGravity属性单独设置Stack组件中子组件的对齐规则）
+
+更改Stack中Text的位置。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index5 {
+  private layoutGravityArr: LocalizedAlignment[] = [
+    LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END,
+    LocalizedAlignment.START, LocalizedAlignment.CENTER, LocalizedAlignment.END,
+    LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM, LocalizedAlignment.BOTTOM_END];
+  @State layoutGravityIndex: number = 0;
+  private directionArr: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto];
+  @State directionIndex: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Stack({
+          alignContent: Alignment.TopStart
+        }) {
+          Text('StackChildAlign_TopStart').fontSize(15)
+          Text('Child Text')
+            .width(150)
+            .height(150)
+            .backgroundColor(Color.Yellow)
+            .fontSize(15)
+            .layoutGravity(this.layoutGravityArr[this.layoutGravityIndex])
+        }
+        .width('100%')
+        .height(400)
+        .backgroundColor(Color.Grey)
+        .margin({ top: 10, bottom: 10 })
+        .direction(this.directionArr[this.directionIndex])
+
+        Button("LayoutGravity: " + this.layoutGravityArr[this.layoutGravityIndex])
+          .width(300)
+          .fontSize(16)
+          .onClick(() => {
+            this.layoutGravityIndex = ++this.layoutGravityIndex % this.layoutGravityArr.length;
+          })
+          .margin({ bottom: 10 })
+
+        Button("Direction: " + this.directionArr[this.directionIndex])
+          .width(150)
+          .fontSize(16)
+          .onClick(() => {
+            this.directionIndex = ++this.directionIndex % this.directionArr.length;
+          })
+          .margin({ bottom: 10 })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+该示例主要显示通过[opacity](#opacity)设置组件的不透明度。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OpacityExample {
+  build() {
+    Column({ space: 5 }) {
+      Text('opacity(1)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Text().width('90%').height(50).opacity(1).backgroundColor(0xAFEEEE)
+      Text('opacity(0.7)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Text().width('90%').height(50).opacity(0.7).backgroundColor(0xAFEEEE)
+      Text('opacity(0.4)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Text().width('90%').height(50).opacity(0.4).backgroundColor(0xAFEEEE)
+      Text('opacity(0.1)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Text().width('90%').height(50).opacity(0.1).backgroundColor(0xAFEEEE)
+      Text('opacity(0)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Text().width('90%').height(50).opacity(0).backgroundColor(0xAFEEEE)
+    }
+    .width('100%')
+    .padding({ top: 5 })
+  }
+}
+```
+
+### 示例1（if else范式下的共享元素实现）
+
+该示例主要演示if else范式下的共享元素效果集成。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isShow: boolean = false;
+  @State geometryId: string = 'picture';
+
+  build() {
+    Stack({ alignContent: Alignment.Center }) {
+      if (this.isShow) {
+        // 图片使用Resource资源，需用户自定义
+        Image($r('app.media.pic'))
+          .autoResize(false)
+          .clip(true)
+          .width(300)
+          .height(400)
+          .offset({ y: 100 })
+          .geometryTransition(this.geometryId)
+          .transition(TransitionEffect.OPACITY)
+          // 在打断场景下，即动画过程中点击页面触发下一次转场，如果不加id，则会出现重影
+          // 加了id之后，新建的图片会复用之前的图片节点，不会重新创建节点，也就不会有重影问题
+          // 加id的规则为加在if和else下的第一个节点上，有多个并列节点则也需要进行添加
+          .id('item1')
+      } else {
+        // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
+        // 套多层容器为了说明相对布局约束传递
+        Column() {
+          Column() {
+            // 图片使用Resource资源，需用户自定义
+            Image($r('app.media.icon'))
+              .width('100%').height('100%')
+          }.width('100%').height('100%')
+        }
+        .width(80)
+        .height(80)
+        // geometryTransition会同步圆角，但仅限于geometryTransition绑定处，此处绑定的是容器
+        // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
+        .borderRadius(20)
+        .clip(true)
+        .geometryTransition(this.geometryId)
+        // transition保证组件离场不被立即析构，可设置其他转场效果
+        .transition(TransitionEffect.OPACITY)
+        .id('item2')
+      }
+    }
+    .onClick(() => {
+      this.geometryId = 'picture';
+      this.getUIContext().animateTo({ duration: 1000, onFinish: () => {
+        this.geometryId = '';
+      } }, () => {
+        this.isShow = !this.isShow;
+      });
+    })
+  }
+}
+```
+
+### 示例2（if范式下使用follow实现跟随效果）
+
+该示例主要演示if范式下使用follow参数实现不下树的组件的跟随效果。
+
+```TypeScript
+// xxx.ets
+const FOLLOW_TRUE_ID: string = 'follow_true_id';
+const FOLLOW_FALSE_ID: string = 'follow_false_id';
+
+@Entry
+@Component
+struct Index {
+  @State isFollow: boolean = false;
+  @State isShow: boolean = false;
+  @State geometryId: string = '';
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor('#ff663399')
+        .size({ width: 100, height: 100 })
+        .position({ x: 200, y: 500 })
+        .borderRadius(25)
+        .clip(true)
+        .geometryTransition(this.geometryId)
+        .transition(TransitionEffect.OPACITY)
+    }
+    .size({ width: '100%', height: '100%' })
+    .backgroundColor("#33000000")
+    .transition(TransitionEffect.OPACITY)
+  }
+
+  build() {
+    Stack() {
+      if (this.isFollow) {
+        Column()
+          .backgroundColor('#ff103460')
+          .size({ width: 100, height: 100 })
+          .position({ x: 30, y: 30 })
+          .borderRadius(50)
+          // follow为true时，一镜到底转场期间该组件会下树做跟随效果
+          .geometryTransition(FOLLOW_TRUE_ID, { follow: true })
+          .transition(TransitionEffect.OPACITY)
+      } else {
+        Column()
+          .backgroundColor('#ff103460')
+          .size({ width: 100, height: 100 })
+          .position({ x: 30, y: 30 })
+          .borderRadius(50)
+          // follow为false时，一镜到底转场期间该组件会留在原地不做跟随
+          .geometryTransition(FOLLOW_FALSE_ID, { follow: false })
+          .transition(TransitionEffect.OPACITY)
+      }
+
+      Button('follow: ' + (this.isFollow ? 'true' : 'false'))
+        .onClick(() => {
+          this.isFollow = !this.isFollow;
+          this.geometryId = this.isFollow ? FOLLOW_TRUE_ID : FOLLOW_FALSE_ID;
+        })
+        .size({ width: 200, height: 50 })
+        .backgroundColor('#ff6b879b')
+    }
+    .size({ width: '100%', height: '100%' })
+    .bindContentCover(this.isShow, this.myBuilder(), {
+      // 模态页面实现一镜到底动效时，需要设置modalTransition为ModalTransition.NONE
+      modalTransition: ModalTransition.NONE,
+      onWillDismiss: () => {
+        // 侧滑关闭模态页面时，通过animateTo创造动画环境实现一镜到底动效
+        this.getUIContext().animateTo({ duration: 350 }, () => {
+          this.isShow = !this.isShow;
+        });
+      }
+    })
+    .onClick(() => {
+      // 点击弹出模态页
+      this.getUIContext().animateTo({ duration: 350 }, () => {
+        this.isShow = !this.isShow;
+      });
+    })
+  }
+}
+```
+
+### 示例1（使用前景色设置）
+
+该示例主要演示通过foregroundColor设置前景色。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ForegroundColorExample {
+  build() {
+    Column({ space: 100 }) {
+      // 绘制一个直径为150的圆，默认填充色为黑色
+      Circle({ width: 150, height: 200 }).margin(20)
+      // 绘制一个直径为150的圆，设置前景色为橙色
+      Circle({ width: 150, height: 200 }).foregroundColor(Color.Orange)
+    }.width('100%').backgroundColor(Color.Gray)
+  }
+}
+```
+
+### 示例2（设置前景色为组件背景色反色）
+
+该示例通过[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).INVERT将前景色设置为背景色反色。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ColoringStrategyExample {
+  build() {
+    Column({ space: 100 }) {
+      // 绘制一个直径为150的圆，默认填充色为黑色
+      Circle({ width: 150, height: 200 })
+      // 绘制一个直径为150的圆，设置前景色为组件背景色的反色
+      Circle({ width: 150, height: 200 })
+        .backgroundColor(Color.Black)
+        .foregroundColor(ColoringStrategy.INVERT)
+    }.width('100%')
+  }
+}
+```
+
+### 示例3（前景色未继承父组件）
+
+该示例主要演示组件同时设置前景色和背景色与只设置背景色的效果对比。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ForegroundColorInherit {
+  build() {
+    Column() {
+      Button('设置前景色为橙色').fontSize(20).foregroundColor(Color.Orange).backgroundColor(Color.Gray)
+      Divider()
+      Button('未设置前景色继承自父组件').fontSize(20).backgroundColor(Color.Gray)
+    }.foregroundColor(Color.Pink)
+  }
+}
+```
+
+### 示例1（为组件添加图形变换效果）
+
+该示例通过[rotate](#rotate)、[translate](#translate)、[scale](#scale)、[transform](#transform)为组件添加旋转、平移、缩放、变换矩阵效果。
+
+
+
+```TypeScript
+// xxx.ets
+import { matrix4 } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TransformExample {
+  build() {
+    Column() {
+      Text('rotate').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
+      Row()
+        .rotate({
+          x: 0,
+          y: 0,
+          z: 1,
+          centerX: '50%',
+          centerY: '50%',
+          angle: 300
+        }) // 组件以矢量(0,0,1)为旋转轴，绕中心点顺时针旋转300度
+        .width(100).height(100).backgroundColor(0xAFEEEE)
+
+      Text('translate').width('90%').fontColor(0xCCCCCC).padding(10).fontSize(14)
+      Row()
+        .translate({ x: 100, y: 10 }) // x轴方向平移100，y轴方向平移10
+        .width(100)
+        .height(100)
+        .backgroundColor(0xAFEEEE)
+        .margin({ bottom: 10 })
+
+      Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
+      Row()
+        .scale({ x: 2, y: 0.5 }) // 高度缩小一倍，宽度放大一倍，z轴在2D下无效果
+        .width(100).height(100).backgroundColor(0xAFEEEE)
+
+      Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
+      Row()
+        .width(100).height(100).backgroundColor(0xAFEEEE)
+        .transform(matrix4.identity().translate({ x: 50, y: 50 }).scale({ x: 1.5, y: 1 }).rotate({
+          x: 0,
+          y: 0,
+          z: 1,
+          angle: 60
+        }))
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### 示例2（设置旋转视距）
+
+该示例通过[perspective](#rotateoptions对象说明)为组件添加视距效果。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State prep: number = 10;
+
+  build() {
+    Row() {
+      Column() {
+        Stack()
+          .width(100)
+          .height(100)
+          .backgroundColor(Color.Red)
+          .rotate({ y: 1, angle: 45, perspective: this.prep })
+        Button('change prep')
+          .margin({ top: 100 })
+          .onClick(() => {
+            this.getUIContext()?.animateTo({
+              duration: 2000,
+              curve: Curve.EaseIn,
+              iterations: 1,
+              playMode: PlayMode.Normal,
+              onFinish: () => {
+                console.info('play end');
+              }
+            }, () => {
+              this.prep = 500; // 组件视距从10变换到500
+            })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### 示例3（按中心点旋转）
+
+该示例通过设置[rotate](#rotate)和[transform](#transform)为不同的参数实现相同的旋转效果。
+
+
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+
+      Text('Hello2')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          // 绕(100vp,60vp)的锚点旋转90度，rotate或scale的centerX、centerY为组件锚点
+          z: 1,
+          angle: 90,
+          centerX: 100,
+          centerY: 60
+        })
+
+      Text('Hello3')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .transform(matrix4.identity()
+          .rotate({
+            // 组件锚点(centerX,centerY)默认为(50%,50%)，即锚点在(50vp,30vp)
+            // transform的rotate指定(centerX,centerY)为(50vp,30vp)，相对于在组件本身锚点基础上再额外偏移(50vp,30vp)
+            // 此次变换相当于绕(100vp,60vp)旋转，和"Hello2"实现同样的旋转效果
+            z: 1,
+            angle: 90,
+            centerX: this.getUIContext().vp2px(50),
+            centerY: this.getUIContext().vp2px(30)
+          }))
+
+      Text('Hello4')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .scale({
+          // 当设置x或y时，centerX和centerY才能生效
+          // 设置组件锚点为(100vp,60vp)
+          x: 1,
+          y: 1,
+          centerX: 100,
+          centerY: 60
+        }) // transform的rotate不指定centerX、centerY，此次旋转的中心相对于组件本身锚点没有额外偏移
+          // 该组件通过scale设置的锚点，绕(100vp,60vp)进行旋转，和"Hello2"实现同样的旋转效果
+        .transform(matrix4.identity().rotate({ z: 1, angle: 90 }))
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+### 示例4（通过transform3D实现图形变换）
+
+从API version 20开始，该示例通过设置[transform3D](arkts-arkui-common-comp-commonmethod-c.md#transform3d)实现图形变换效果。
+
+
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+
+// 初始化3D变换矩阵，用于演示transform3D的图形变换效果
+let matrix: matrix4.Matrix4Transit = matrix4.init([
+  0.53033, 0, -0.53033, 0.00053033,
+  0, 0.75, 0, 0,
+  0.707107, 0, 0.707107, -0.000707107,
+  0, 0, 0, 1
+]);
+
+@Entry
+@Component
+struct Transform3DExample {
+  build() {
+    Column() {
+      Stack() {
+        Stack()
+          .width(200)
+          .height(100)
+          .backgroundColor(Color.Grey)
+        Stack()
+          .width(200)
+          .height(100)
+          .backgroundColor(Color.Blue)
+          .transform3D(matrix)
+      }
+    }.width('100%')
+  }
+}
+```
+
+### 示例5（按各轴旋转角的方式实现旋转）
+
+从API version 20开始，该示例通过设置rotate的[RotateAngleOptions](#rotateangleoptions20对象说明)参数实现旋转效果。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Stack()
+          .width(100)
+          .height(100)
+          .backgroundColor(Color.Blue)
+          .rotate({ angleZ: -45 })
+        Button('rotateAngle')
+          .width('40%')
+          .margin({ top: 100 })
+          .rotate({ angleY: 30, centerX: '90%', perspective: 10 })
+        Image($r('app.media.startIcon'))
+          .width(200)
+          .height(200)
+          .rotate({
+            angleX: 60,
+            angleY: -125,
+            angleZ: 75,
+            centerX: 100,
+            centerZ: 20
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### 示例1（实现沉浸式效果）
+
+该示例通过设置expandSafeArea属性向顶部和底部扩展安全区实现沉浸式效果。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SafeAreaExample1 {
+  build() {
+    Row() {
+      Column()
+        .width('100%')
+        .height('100%')
+        // $r('app.media.bg')需要替换为开发者所需的图像资源文件
+        .backgroundImage($r('app.media.bg'))
+        .backgroundImageSize(ImageSize.Cover)
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }.height('100%')
+  }
+}
+```
+
+### 示例2（同时设置固定宽高和expandSafeArea属性）
+
+该示例展示了同时设置固定宽高和expandSafeArea属性的效果。
+
+如下图：Column组件扩展至了顶部状态栏[SafeAreaEdge.TOP]，未扩展至底部导航条[SafeAreaEdge.BOTTOM]，扩展后的组件高度维持设置值不变。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SafeAreaExample2 {
+  @State text: string = ''
+  controller: TextInputController = new TextInputController()
+
+  build() {
+    Column() {
+      TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderFont({ size: 14, weight: 400 })
+        .width(320).height(40).offset({y: 120})
+        .fontSize(14).fontColor(Color.Black)
+        .backgroundColor(Color.White)
+    }
+    .height('780')
+    .width('100%')
+    .backgroundColor('rgb(179,217,235)')
+    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+  }
+}
+```
+
+### 示例3（键盘避让时固定背景图位置）
+
+该示例通过为背景图组件设置expandSafeArea属性，来实现拉起键盘进行避让时，背景图保持不动的效果。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SafeAreaExample3 {
+  @State text: string = ''
+  controller: TextInputController = new TextInputController()
+
+  build() {
+    Row() {
+      Stack() {
+        Column()
+          .width('100%')
+          .height('100%')
+          // $r('app.media.bg')需要替换为开发者所需的图像资源文件
+          .backgroundImage($r('app.media.bg'))
+          .backgroundImageSize(ImageSize.Cover)
+          .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
+        Column() {
+          Button('Set caretPosition 1')
+            .onClick(() => {
+              this.controller.caretPosition(1)
+            })
+          TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
+            .placeholderFont({ size: 14, weight: 400 })
+            .width(320)
+            .height(40)
+            .offset({ y: 120 })
+            .fontSize(14)
+            .fontColor(Color.Black)
+            .backgroundColor(Color.White)
+        }.width('100%').alignItems(HorizontalAlign.Center)
+      }
+    }.height('100%')
+  }
+}
+```
+
+### 示例4（设置键盘避让模式为压缩）
+
+该示例通过调用setKeyboardAvoidMode设置键盘避让模式为RESIZE模式，实现键盘抬起时page的压缩效果。
+
+```TypeScript
+// EntryAbility.ets
+import { window, KeyboardAvoidMode } from '@kit.ArkUI';
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct KeyboardAvoidExample1 {
+  build() {
+    Column() {
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### 示例5（设置键盘避让模式为上抬）
+
+该示例通过调用setKeyboardAvoidMode设置键盘避让模式为OFFSET模式，实现键盘抬起时page的上抬效果。但当输入光标距离屏幕底部的高度大于键盘高度时，page不会抬起，如本例中所示。
+
+```TypeScript
+// EntryAbility.ets
+import { window, KeyboardAvoidMode } from '@kit.ArkUI';
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      // 设置虚拟键盘抬起时把页面上抬直到露出光标
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct KeyboardAvoidExample2 {
+  build() {
+    Column() {
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### 示例6（切换避让模式）
+
+该示例通过调用setKeyboardAvoidMode来实现OFFSET、RESIZE和NONE模式之间的切换，实现三种不同的键盘避让效果。
+
+
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { KeyboardAvoidMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyboardAvoidExample3 {
+  build() {
+    Column() {
+      Row({space:15}) {
+        Button('OFFSET')
+          .onClick(() => {
+            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
+          })
+          .layoutWeight(1)
+        Button('RESIZE')
+          .onClick(() => {
+            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
+          })
+          .layoutWeight(1)
+        Button('NONE')
+          .onClick(() => {
+            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.NONE);
+            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
+          })
+          .layoutWeight(1)
+      }
+      .height('30%')
+      .width('100%')
+      .backgroundColor(Color.Gray)
+
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+      
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### 示例7（滚动类容器扩展安全区）
+
+该示例通过在滚动类容器内调用expandSafeArea属性实现沉浸式效果，Scroll内的Swiper可以延伸到状态栏上。
+
+
+
+```TypeScript
+class SwiperDataSource implements IDataSource {
+  private list: Array<Color> = []
+  constructor(list: Array<Color>) {
+    this.list = list
+  }
+  totalCount(): number {
+    return this.list.length
+  }
+  getData(index: number): Color {
+    return this.list[index]
+  }
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+@Entry
+@Component
+struct ExpandSafeAreaTest {
+  private swiperController: SwiperController = new SwiperController()
+  private swiperData: SwiperDataSource = new SwiperDataSource([])
+  private list: Array<Color> = [
+    Color.Pink,
+    Color.Blue,
+    Color.Green
+  ]
+  aboutToAppear(): void {
+    this.swiperData = new SwiperDataSource(this.list)
+  }
+  build() {
+    Scroll() {
+      Column() {
+        Swiper(this.swiperController) {
+          LazyForEach(this.swiperData, (item: Color, index: number) => {
+            Column() {
+              Text('banner' + index).fontSize(50).fontColor(Color.White)
+            }
+            .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+            .width('100%')
+            .height(400)
+            .backgroundColor(item)
+          })
+        }
+        .loop(true)
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+        .clip(false)
+        Column(){
+          Text('Tab页Content').fontSize(50)
+        }.width('100%').height(1000)
+        .backgroundColor(Color.Grey)
+      }.expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }
+    .clip(false)
+    .edgeEffect(EdgeEffect.None)
+    .width('100%').height('100%')
+  }
+}
+```
+
+### 示例8（ignoreLayoutSafeArea延伸组件布局范围）
+
+该示例利用[ignoreLayoutSafeArea](#ignorelayoutsafearea20)改变组件位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区、系统状态栏共同组成的范围，取其左上部分，作左上对齐。
+
+
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct IgnoreLayoutSafeAreaTest1 {
+  build() {
+    Column() {
+      Stack() {
+        Row()
+          .backgroundColor('rgb(39, 135, 217)')
+          .width(75)  // 固定宽度
+          .height(75) // 固定高度
+          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.START, LayoutSafeAreaEdge.TOP])  // 设置布局区域延伸取左和上方向，至系统避让区SYSTEM
+        
+        Row()
+          .backgroundColor('rgb(0, 74, 175)')
+          .width(75)
+          .height(75)
+
+      }
+      .width(200)
+      .height(200)
+      .backgroundColor(Color.Gray)
+      .align(Alignment.TopStart)  // 子组件相对于Stack容器左上对齐
+      .padding({
+        left: 10  // 设置左侧10vp普通内边距
+      })
+      .safeAreaPadding(LengthMetrics.vp(10))  // 设置10vp安全区内边距（即组件级安全区）
+    }
+    .width('100%')
+  }
+}
+```
+
+### 示例9（ignoreLayoutSafeArea配合LayoutPolicy.matchParent延伸组件布局范围）
+
+该示例利用[ignoreLayoutSafeArea](#ignorelayoutsafearea20)和[LayoutPolicy.matchParent](ts-universal-attributes-size.md#layoutpolicy15)同时改变组件大小和位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区，取其右下部分并撑满可用空间。
+
+
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct IgnoreLayoutSafeAreaTest2 {
+  build() {
+    Column() {
+      Stack() {
+        Row()
+          .backgroundColor('rgb(39, 135, 217)')
+          .width(LayoutPolicy.matchParent)  // 自适应宽度
+          .height(LayoutPolicy.matchParent) // 自适应高度
+          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.END, LayoutSafeAreaEdge.BOTTOM])  // 设置布局区域延伸取右和下方向，至系统避让区SYSTEM
+
+        Row()
+          .backgroundColor('rgb(0, 74, 175)')
+          .width(LayoutPolicy.matchParent)
+          .height(LayoutPolicy.matchParent)
+
+      }
+      .width(200)
+      .height(200)
+      .backgroundColor(Color.Gray)
+      .align(Alignment.TopStart)  // 子组件相对于Stack容器左上对齐
+      .padding(10) // 设置10vp普通内边距
+      .safeAreaPadding(LengthMetrics.vp(10))  // 设置10vp安全区内边距（即组件级安全区）
+    }
+    .width('100%')
+  }
+}
+```
+
+### 示例10（expandSafeArea与ignoreLayoutSafeArea的区别）
+
+该示例展示了容器分别设置了expandSafeArea和ignoreLayoutSafeArea的布局效果和各自对子组件布局效果的影响。两种设置下，容器都可见地进行了延伸，但前者的子组件不受延伸影响，后者的子组件因父容器的延伸改变了位置。
+
+```TypeScript
+@Entry
+@Component
+struct IgnoreLayoutSafeAreaTest3 {
+  build() {
+    Row(){
+      Column(){
+        Stack(){
+          Stack(){
+
+          }
+          .width(30)
+          .height(30)
+          .backgroundColor('rgb(0, 74, 175)')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('rgb(39, 135, 217)')
+        .align(Alignment.TopStart)
+
+        Text('基准效果').fontColor(Color.White)
+      }
+
+      Column(){
+        Stack(){
+          Stack(){
+
+          }
+          .width(30)
+          .height(30)
+          .backgroundColor('rgb(0, 74, 175)')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('rgb(39, 135, 217)')
+        .align(Alignment.TopStart)
+        .expandSafeArea()  // 设置绘制区域延伸，自身绘制区域上抬，子组件相对屏幕位置不变
+
+        Text('expandSafeArea').fontColor(Color.White)
+      }
+
+      Column(){
+        Stack(){
+          Stack(){
+
+          }
+          .width(30)
+          .height(30)
+          .backgroundColor('rgb(0, 74, 175)')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('rgb(39, 135, 217)')
+        .align(Alignment.TopStart)
+        .ignoreLayoutSafeArea()  // 设置布局区域延伸，自身布局区域上抬，子组件相对容器位置不变
+
+        Text('ignoreLayoutSafeArea').fontColor(Color.White)
+      }
+    }
+    .width('100%')
+    .backgroundColor(Color.Gray)
+    .justifyContent(FlexAlign.SpaceEvenly)
+  }
+}
+```
+
+### 示例1（父组件优先识别手势和父子组件同时触发手势）
+
+该示例通过配置priorityGesture和parallelGesture分别实现了父组件优先识别手势和父子组件同时触发手势。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GestureSettingsExample {
+  @State priorityTestValue: string = ''
+  @State parallelTestValue: string = ''
+
+  build() {
+    Column() {
+      Column() {
+        Text('TapGesture:' + this.priorityTestValue).fontSize(28)
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                this.priorityTestValue += '\nText';
+              }))
+      }
+      .height(200)
+      .width(250)
+      .padding(20)
+      .margin(20)
+      .border({ width: 3 })
+      // 设置为priorityGesture时，点击文本会忽略Text组件的TapGesture手势事件，优先识别父组件Column的TapGesture手势事件
+      .priorityGesture(
+        TapGesture()
+          .onAction((event: GestureEvent) => {
+            this.priorityTestValue += '\nColumn';
+          }), GestureMask.IgnoreInternal)
+
+      Column() {
+        Text('TapGesture:' + this.parallelTestValue).fontSize(28)
+          .gesture(
+            TapGesture()
+              .onAction((event: GestureEvent) => {
+                this.parallelTestValue += '\nText';
+              }))
+      }
+      .height(200)
+      .width(250)
+      .padding(20)
+      .margin(20)
+      .border({ width: 3 })
+      // 设置为parallelGesture时，点击文本会同时触发子组件Text与父组件Column的TapGesture手势事件
+      .parallelGesture(
+        TapGesture()
+          .onAction((event: GestureEvent) => {
+            this.parallelTestValue += '\nColumn';
+          }), GestureMask.Normal)
+    }
+  }
+}
+```
+
+### 示例1 (使用onAccessibilityHover事件)
+
+该示例主要演示使用onAccessibilityHover事件，对无障碍模式下的按钮进行设置。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OnAccessibilityHoverEventExample {
+  @State hoverText: string = 'no hover';
+  @State color: Color = Color.Blue;
+
+  build() {
+    Column({ space: 20 }) {
+      Button(this.hoverText)
+        .width(180).height(80)
+        .backgroundColor(this.color)
+        .onAccessibilityHover((isHover: boolean) => {
+          // 通过onAccessibilityHover事件动态修改按钮在无障碍悬浮（手指触摸进入/退出）时的文本内容与背景颜色
+          if (isHover) {
+            this.hoverText = 'hover';
+            this.color = Color.Pink;
+          } else {
+            this.hoverText = 'no hover';
+            this.color = Color.Blue;
+          }
+        })
+    }.padding({ top: 30 }).width('100%')
+  }
+}
+```
+
+### 示例2 (捕获无法无障碍聚焦的组件的触摸事件)
+
+该示例代码在无障碍模式下通过onAccessibilityHoverTransparent接口捕获无法无障碍聚焦的组件的触摸事件，最后再将事件信息显示在组件下方的文本中。
+
+从API version 20开始，新增了[onAccessibilityHoverTransparent](arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityhovertransparent)接口。
+
+```TypeScript
+@Entry
+@Component
+struct OnAccessibilityHoverTransparentExample {
+  @State text: string = '';
+  @State eventType: string = '';
+
+  build() {
+    Column({ space: 50 }) {
+      Column() {
+        Button('Test Button')
+          .accessibilityLevel('no')
+      }.margin({ top: 20 })
+
+      Text(this.text)
+    }
+    .width('100%')
+    .height('100%')
+    .onAccessibilityHoverTransparent((event: TouchEvent) => {
+      if (event) {
+        // 手指按下触发
+        if (event.type === TouchType.HOVER_ENTER) {
+          this.eventType = 'HOVER_ENTER';
+        }
+        // 触摸移动时触发
+        if (event.type === TouchType.HOVER_MOVE) {
+          this.eventType = 'HOVER_MOVE';
+        }
+        // 抬手时触发
+        if (event.type === TouchType.HOVER_EXIT) {
+          this.eventType = 'HOVER_EXIT';
+        }
+        // 取消当前触发事件
+        if (event.type === TouchType.HOVER_CANCEL) {
+          this.eventType = 'HOVER_CANCEL';
+        }
+        this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
+          + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\nComponent globalPos:('
+          + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\nwidth:'
+          + event.target.area.width + '\nheight:' + event.target.area.height;
+      }
+    })
+  }
+}
+```
+
+### 示例1（设置事件派发策略为FORWARD_COMPETITION）
+
+在该示例中，点击List下方空白区域后拖动，可使List滑动。点击Button按钮时，Button会响应onClick事件。
+
+
+
+```TypeScript
+// xxx.ets
+import { PromptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+  @State text: string = 'Button';
+
+  build() {
+    Column() {
+      List({ space: 12, initialIndex: 0 }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('Item ' + item)
+              .width('100%')
+              .height(56)
+              .fontSize(16)
+              .textAlign(TextAlign.Start)
+          }.borderRadius(24)
+          .backgroundColor(Color.White)
+          .padding({ left: 12, right: 12 })
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .scrollBar(BarState.Off)
+      .edgeEffect(EdgeEffect.Spring)
+      .onScrollIndex((start: number, end: number) => {
+        console.info(`first ${start}`);
+        console.info(`last ${end}`);
+      })
+      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
+      })
+      .width('100%')
+      .height('65%')
+      .id('MyList')
+
+      Button(this.text)
+        .width(312)
+        .height(40)
+        .id('MyButton')
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .margin({ top: 80 })
+        .onClick(() => {
+          this.text = 'click the button';
+          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+    .justifyContent(FlexAlign.End)
+    .padding({ left: 12, right: 12, bottom: 24 })
+    .onChildTouchTest((touchInfo) => {
+      for (let info of touchInfo) {
+        if (info.id === 'MyList') {
+          return { id: info.id, strategy: TouchTestStrategy.FORWARD_COMPETITION }
+        }
+      }
+      return { strategy: TouchTestStrategy.DEFAULT }
+    })
+  }
+}
+```
+
+### 示例2（设置事件派发策略为FORWARD）
+
+点击List下方空白区域后拖动，可以滑动List。点击Button按钮时，Button不会响应onClick事件。
+
+
+
+```TypeScript
+// xxx.ets
+import { PromptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+  @State text: string = 'Button';
+
+  build() {
+    Column() {
+      List({ space: 12, initialIndex: 0 }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('Item ' + item)
+              .width('100%')
+              .height(56)
+              .fontSize(16)
+              .textAlign(TextAlign.Start)
+          }.borderRadius(24)
+          .backgroundColor(Color.White)
+          .padding({ left: 12, right: 12 })
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .scrollBar(BarState.Off)
+      .edgeEffect(EdgeEffect.Spring)
+      .onScrollIndex((start: number, end: number) => {
+        console.info(`first ${start}`);
+        console.info(`last ${end}`);
+      })
+      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
+      })
+      .width('100%')
+      .height('65%')
+      .id('MyList')
+
+      Button(this.text)
+        .width(312)
+        .height(40)
+        .id('MyButton')
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .margin({ top: 80 })
+        .onClick(() => {
+          this.text = 'click the button';
+          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+    .justifyContent(FlexAlign.End)
+    .padding({ left: 12, right: 12, bottom: 24 })
+    .onChildTouchTest((touchInfo) => {
+      for (let info of touchInfo) {
+        if (info.id === 'MyList') {
+          return { id: info.id, strategy: TouchTestStrategy.FORWARD }
+        }
+      }
+      return { strategy: TouchTestStrategy.DEFAULT }
+    })
+  }
+}
+```
+
+### 示例3（设置事件派发策略为DEFAULT）
+
+点击List下方空白区域后拖动，List不会滑动。点击Button按钮时，Button会响应onClick事件。
+
+```TypeScript
+// xxx.ets
+import { PromptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+  @State text: string = 'Button';
+
+  build() {
+    Column() {
+      List({ space: 12, initialIndex: 0 }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('Item ' + item)
+              .width('100%')
+              .height(56)
+              .fontSize(16)
+              .textAlign(TextAlign.Start)
+          }.borderRadius(24)
+          .backgroundColor(Color.White)
+          .padding({ left: 12, right: 12 })
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .scrollBar(BarState.Off)
+      .edgeEffect(EdgeEffect.Spring)
+      .onScrollIndex((start: number, end: number) => {
+        console.info(`first ${start}`);
+        console.info(`last ${end}`);
+      })
+      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
+      })
+      .width('100%')
+      .height('65%')
+      .id('MyList')
+
+      Button(this.text)
+        .width(312)
+        .height(40)
+        .id('MyButton')
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .margin({ top: 80 })
+        .onClick(() => {
+          this.text = 'click the button';
+          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+    .justifyContent(FlexAlign.End)
+    .padding({ left: 12, right: 12, bottom: 24 })
+    .onChildTouchTest(() => {
+      return { strategy: TouchTestStrategy.DEFAULT }
+    })
+  }
+}
+```
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TouchableExample {
+  @State text1: string = '';
+  @State text2: string = '';
+
+  build() {
+    Stack() {
+      Rect()
+        .fill(Color.Gray).width(150).height(150)
+        .onClick(() => {
+          console.info(this.text1 = 'Rect Clicked');
+        })
+        .overlay(this.text1, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+      Ellipse()
+        .fill(Color.Pink).width(150).height(80)
+        .touchable(false) // 点击Ellipse区域，不会打印 “Ellipse Clicked”
+        .onClick(() => {
+          console.info(this.text2 = 'Ellipse Clicked');
+        })
+        .overlay(this.text2, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+    }.margin(100);
+  }
+}
+```
+
+该示例主要演示如何设置组件进行位移动画时的运动路径。此方法仅配置运动路径参数，需配合animateTo等动画触发方法及组件属性状态变化才能产生实际的位移动画效果，单独设置motionPath不会触发动画。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct MotionPathExample {
+  @State toggle: boolean = true;
+
+  build() {
+    Column() {
+      Button('click me').margin(50)
+        .motionPath({
+          path: 'Mstart.x start.y L300 200 L300 500 Lend.x end.y',
+          from: 0.0,
+          to: 1.0,
+          rotatable: true
+        }) // 设置运动路径：从起点经(300,200)、(300,500)到终点
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ duration: 4000, curve: Curve.Linear }, () => {
+            this.toggle = !this.toggle; // 通过this.toggle变化组件的位置
+          });
+        })
+    }.width('100%').height('100%').alignItems(this.toggle ? HorizontalAlign.Start : HorizontalAlign.Center)
+  }
+}
+```
+
+### 示例1（获取触摸事件相关参数）
+
+该示例中，按钮设置触摸事件，在点击按钮时可获取事件的相关参数。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TouchExample {
+  @State text: string = '';
+  @State eventType: string = '';
+
+  build() {
+    Column() {
+      Button('Touch').height(40).width(100)
+        .onTouch((event?: TouchEvent) => {
+          if (event && event.sourceTool === SourceTool.Finger) {
+            if (event.type === TouchType.Down) {
+              this.eventType = 'Down';
+            }
+            if (event.type === TouchType.Up) {
+              this.eventType = 'Up';
+            }
+            if (event.type === TouchType.Move) {
+              this.eventType = 'Move';
+            }
+            // 1. 手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
+            // 2. 折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
+            if (event.type === TouchType.Cancel) {
+              this.eventType = 'Cancel';
+            }
+            if (event.touches.length > 0) {
+              this.text = 'TouchType:' + this.eventType
+                + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
+                + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
+                + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
+                + '\n  pressedTime: ' + event.touches[0].pressedTime
+                + '\n  pressure: ' + event.touches[0].pressure
+                + '\nComponent globalPos:'
+                + '\n  x: ' + event.target.area.globalPosition.x + '\n  y: ' + event.target.area.globalPosition.y
+                + '\n  width: ' + event.target.area.width + '\n  height: ' + event.target.area.height
+                + '\ntargetDisplayId: ' + event.targetDisplayId;
+            }
+          }
+        })
+      Button('Touch').height(50).width(200).margin(20)
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
+            if (event.type === TouchType.Down) {
+              this.eventType = 'Down';
+            }
+            if (event.type === TouchType.Up) {
+              this.eventType = 'Up';
+            }
+            if (event.type === TouchType.Move) {
+              this.eventType = 'Move';
+            }
+            // 1. 手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
+            // 2. 折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
+            if (event.type === TouchType.Cancel) {
+              this.eventType = 'Cancel';
+            }
+            if (event.touches.length > 0) {
+              this.text = 'TouchType:' + this.eventType
+                + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
+                + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
+                + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
+                + '\n  pressedTime: ' + event.touches[0].pressedTime
+                + '\n  pressure: ' + event.touches[0].pressure
+                + '\nComponent globalPos:'
+                + '\n  x: ' + event.target.area.globalPosition.x + '\n  y: ' + event.target.area.globalPosition.y
+                + '\n  width: ' + event.target.area.width + '\n  height: ' + event.target.area.height
+                + '\ntargetDisplayId: ' + event.targetDisplayId;
+            }
+          }
+        })
+      Text(this.text)
+    }.width('100%').padding(30)
+  }
+}
+```
+
+### 示例2（获取组件实时位置）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取触摸位置相对于当前组件实时位置左上角的坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.touches.length > 0 ? event.touches[0].getCurrentLocalPosition?.() : undefined;
+              this.positionText = `相对于当前组件实时位置左上角的坐标：\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+### 示例1（通过string设置浮层）
+
+该示例通过传入string设置浮层。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OverlayExample {
+  build() {
+    Column() {
+      Column() {
+        Text('floating layer')
+          .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
+        Column() {
+          // $r('app.media.img')需要替换为开发者所需的图像资源文件
+          Image($r('app.media.img'))
+            .width(240).height(240)
+            .overlay('Winter is a beautiful season, especially when it snows.', {
+              align: Alignment.Bottom,
+              offset: { x: 0, y: -15 }
+            })
+        }.border({ color: Color.Black, width: 2 })
+      }.width('100%')
+    }.padding({ top: 20 })
+  }
+}
+```
+
+### 示例2（通过builder设置浮层）
+
+该示例通过传入builder设置浮层。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OverlayExample {
+  @Builder
+  overlayNode() {
+    Column() {
+      // $r('app.media.img1')需要替换为开发者所需的图像资源文件
+      Image($r('app.media.img1'))
+      Text('This is overlayNode').fontSize(20).fontColor(Color.White)
+    }
+    .width(180)
+    .height(180)
+    .alignItems(HorizontalAlign.Center)
+    .hitTestBehavior(HitTestMode.Transparent) // 配置浮层不阻塞交互
+  }
+
+  build() {
+    Column() {
+      // $r('app.media.img2')需要替换为开发者所需的图像资源文件
+      Image($r('app.media.img2'))
+        .overlay(this.overlayNode(), { align: Alignment.Center })
+        .objectFit(ImageFit.Contain)
+    }.width('100%')
+    .border({ color: Color.Black, width: 2 }).padding(20)
+  }
+}
+```
+
+### 示例3（通过ComponentContent设置浮层）
+
+该示例通过overlay传入ComponentContent，并通过update方法更新ComponentContent参数，使backgroundColor不断发生变化。
+
+```TypeScript
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+class Params {
+  backgroundColor: string | Resource = '';
+
+  constructor(backgroundColor: string | Resource) {
+    this.backgroundColor = backgroundColor;
+  }
+}
+
+@Builder
+function overlayBuilder(params: Params) {
+  Row() {
+  }.width('100%').height('100%').backgroundColor(params.backgroundColor)
+}
+
+@Entry
+@Component
+struct OverlayContentPage {
+  @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: ComponentContent<Params> =
+    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor));
+  private timer: number = -1;
+
+  aboutToAppear(): void {
+    this.timer = setInterval(() => {
+      if (this.overlayColor.includes('0.6')) {
+        this.overlayColor = 'rgba(0, 0, 0, 0.1)';
+        this.overlayNode.update(new Params(this.overlayColor));
+      } else {
+        this.overlayColor = 'rgba(0, 0, 0, 0.6)';
+        this.overlayNode.update(new Params(this.overlayColor));
+      }
+    }, 1000);
+  }
+  aboutToDisappear(): void {
+    clearInterval(this.timer);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.overlayColor)
+          .fontSize(40)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .overlay(this.overlayNode)
+  }
+}
+```
+
+### 示例1（在组件出现时创建动画）
+
+> 说明：
+> 
+> 直接使用animateTo可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)调用绑定实例的animateTo。
+
+该示例通过在onAppear方法中创建组件出现时的动画效果。
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AnimateToExample {
+  @State widthSize: number = 250;
+  @State heightSize: number = 100;
+  @State rotateAngle: number = 0;
+  private flag: boolean = true;
+
+  build() {
+    Column() {
+      Button('change size')
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            // 建议使用this.getUIContext()?.animateTo()
+            animateTo({
+              duration: 2000,
+              curve: Curve.EaseOut,
+              iterations: 3,
+              playMode: PlayMode.Normal,
+              onFinish: () => {
+                console.info('play end');
+              }
+            }, () => {
+              this.widthSize = 150;
+              this.heightSize = 60;
+            })
+          } else {
+            // 建议使用this.getUIContext()?.animateTo()
+            animateTo({}, () => {
+              this.widthSize = 250;
+              this.heightSize = 100;
+            })
+          }
+          this.flag = !this.flag;
+        })
+      Button('stop rotating')
+        .margin(50)
+        .rotate({ x: 0, y: 0, z: 1, angle: this.rotateAngle })
+        .onAppear(() => {
+          // 组件出现时开始做动画
+          // 建议使用this.getUIContext()?.animateTo()
+          animateTo({
+            duration: 1200,
+            curve: Curve.Friction,
+            delay: 500,
+            iterations: -1, // 设置-1表示动画无限循环
+            playMode: PlayMode.Alternate,
+            expectedFrameRateRange: {
+              min: 10,
+              max: 120,
+              expected: 60,
+            }
+          }, () => {
+            this.rotateAngle = 90;
+          })
+        })
+        .onClick(() => {
+          // 建议使用this.getUIContext()?.animateTo()
+          animateTo({ duration: 0 }, () => {
+            // this.rotateAngle之前为90，在duration为0的动画中修改属性，可以停止该属性之前的动画，按新设置的属性显示
+            this.rotateAngle = 0;
+          })
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### 示例2（动画执行结束后组件消失）
+
+该示例主要演示如何实现在动画执行结束后组件消失。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AttrAnimationExample {
+  @State heightSize: number = 100;
+  @State isShow: boolean = true;
+  @State count: number = 0;
+  private isToBottom: boolean = true; // 向下
+
+  build() {
+    Column() {
+      if (this.isShow) {
+        Column()
+          .width(200)
+          .height(this.heightSize)
+          .backgroundColor('blue')
+          .onClick(() => {
+            // 建议使用this.getUIContext()?.animateTo()
+            animateTo({
+              duration: 2000,
+              curve: Curve.EaseOut,
+              iterations: 1,
+              playMode: PlayMode.Normal,
+              onFinish: () => {
+                // 动画完成时减少计数，计数归零表示所有动画已结束
+                this.count--;
+                if (this.count == 0 && !this.isToBottom) { // 组件只有在向下做完动画才会消失
+                  this.isShow = false;
+                }
+              }
+            }, () => {
+              // 动画开始时增加计数，用于在onFinish回调中判断动画是否完成
+              this.count++;
+              if (this.isToBottom) {
+                this.heightSize = 60;
+              } else {
+                this.heightSize = 100;
+              }
+              this.isToBottom = !this.isToBottom;
+            })
+          })
+      }
+    }.width('100%').height('100%').margin({ top: 5 })
+    .justifyContent(FlexAlign.End)
+  }
+}
+```
+
 ```TypeScript
 // 组件添加allowForceDark(false)属性后，说明对当前组件及其所有子组件均不使用反色相关能力。
 @Entry
@@ -18244,7 +18400,7 @@ struct ImageExample {
                       // 类型匹配成功，记录数据Uri
                       let image = arr[0] as unifiedDataChannel.Image;
                       this.uri = image.imageUri;
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, this.uri);
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -18731,8 +18887,10 @@ struct VideoExample {
                 if (dragData != null) {
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
-                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.FILE_URI) {
+                      let fileUri = arr[0].getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, fileUri.oriUri);
+
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -18743,7 +18901,7 @@ struct VideoExample {
                 console.info(`percentage: ${progress.progress}`);
               };
             let info: unifiedDataChannel.DataLoadInfo =
-              { types: new Set([uniformTypeDescriptor.UniformDataType.VIDEO]), recordCount: 100 };
+              { types: new Set([uniformTypeDescriptor.UniformDataType.FILE_URI]), recordCount: 1 };
             let options: DataSyncOptions = {
               destUri: destUri,
               fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,

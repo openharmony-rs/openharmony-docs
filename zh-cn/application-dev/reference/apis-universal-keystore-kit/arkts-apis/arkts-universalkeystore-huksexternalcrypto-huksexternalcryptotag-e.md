@@ -12,17 +12,29 @@ export enum HuksExternalCryptoTag
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
-## HUKS_EXT_CRYPTO_TAG_UKEY_PIN
+## HUKS_EXT_CRYPTO_TAG_ABILITY_INFO
 
 ```TypeScript
-HUKS_EXT_CRYPTO_TAG_UKEY_PIN = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200001
+HUKS_EXT_CRYPTO_TAG_ABILITY_INFO = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200008
 ```
 
-表示PIN码的TAG。
+表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。
 
-**起始版本：** 22
+HUKS_EXT_CRYPTO_TAG_ABILITY_NAME中的JSON列表由多个JSON对象组成，每个JSON对象包含两个字段：AbilityName和index。字段应遵循以下要求：
 
-<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UKEY_PIN = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200001--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UKEY_PIN = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200001-End-->
+1.AbilityName：长度范围为1~128字节。
+
+2.index：其值为resourceId，最大长度为512字节。允许单个CryptoExtension下该字段为空，为空时传输空字符串，该字段不允许重复。在搜索时优先匹配index对应的UIExtensionAbility，当不存在时返回index为空的UIExtensionAbility。
+
+26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_ABILITY_INFO = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200008--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_ABILITY_INFO = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200008-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -40,6 +52,24 @@ HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
+## HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME
+
+```TypeScript
+HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200009
+```
+
+表示CryptoExtensionAbility所属的HAP Bundle名称。
+
+26.0.0
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200009--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200009-End-->
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
 ## HUKS_EXT_CRYPTO_TAG_EXTRA_DATA
 
 ```TypeScript
@@ -51,20 +81,6 @@ HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_T
 **起始版本：** 22
 
 <!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200003--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200003-End-->
-
-**系统能力：** SystemCapability.Security.Huks.CryptoExtension
-
-## HUKS_EXT_CRYPTO_TAG_UID
-
-```TypeScript
-HUKS_EXT_CRYPTO_TAG_UID = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT | 200004
-```
-
-表示调用方的uid。
-
-**起始版本：** 22
-
-<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UID = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT | 200004--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UID = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT | 200004-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -100,46 +116,46 @@ HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TA
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
-## HUKS_EXT_CRYPTO_TAG_ABILITY_INFO
+## HUKS_EXT_CRYPTO_TAG_TIMEOUT
 
 ```TypeScript
-HUKS_EXT_CRYPTO_TAG_ABILITY_INFO = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200008
+HUKS_EXT_CRYPTO_TAG_TIMEOUT = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 200006
 ```
 
-表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见provider注册示例。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。
+表示异步超时时间，单位为秒，可由业务逻辑自定义。
 
-HUKS_EXT_CRYPTO_TAG_ABILITY_NAME中的JSON列表由多个JSON对象组成，每个JSON对象包含两个字段：AbilityName和index。字段应遵循以下要求：
+**起始版本：** 26.0.1
 
-1.AbilityName：长度范围为1~128字节。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-2.index：其值为resourceId，最大长度为512字节。允许单个CryptoExtension下该字段为空，为空时传输空字符串，该字段不允许重复。在搜索时优先匹配index对应的UIExtensionAbility，当不存在时返回index为空的UIExtensionAbility。
-
-26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_ABILITY_INFO = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200008--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_ABILITY_INFO = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200008-End-->
+<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_TIMEOUT = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 200006--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_TIMEOUT = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 200006-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
-## HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME
+## HUKS_EXT_CRYPTO_TAG_UID
 
 ```TypeScript
-HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200009
+HUKS_EXT_CRYPTO_TAG_UID = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT | 200004
 ```
 
-表示CryptoExtensionAbility所属的HAP Bundle名称。
+表示调用方的uid。
 
-26.0.0
+**起始版本：** 22
 
-**起始版本：** 26.0.0
+<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UID = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT | 200004--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UID = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT | 200004-End-->
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
-<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200009--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200009-End-->
+## HUKS_EXT_CRYPTO_TAG_UKEY_PIN
+
+```TypeScript
+HUKS_EXT_CRYPTO_TAG_UKEY_PIN = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200001
+```
+
+表示PIN码的TAG。
+
+**起始版本：** 22
+
+<!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UKEY_PIN = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200001--><!--Device-HuksExternalCryptoTag-HUKS_EXT_CRYPTO_TAG_UKEY_PIN = HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 200001-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension

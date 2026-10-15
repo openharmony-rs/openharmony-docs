@@ -28,22 +28,6 @@ EXIST = 0
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-## WRITE
-
-```TypeScript
-WRITE = 2
-```
-
-文件是否具有写入权限。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-AccessModeType-WRITE = 2--><!--Device-AccessModeType-WRITE = 2-End-->
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
 ## READ
 
 ```TypeScript
@@ -73,5 +57,21 @@ READ_WRITE = 6
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AccessModeType-READ_WRITE = 6--><!--Device-AccessModeType-READ_WRITE = 6-End-->
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## WRITE
+
+```TypeScript
+WRITE = 2
+```
+
+文件是否具有写入权限。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AccessModeType-WRITE = 2--><!--Device-AccessModeType-WRITE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO

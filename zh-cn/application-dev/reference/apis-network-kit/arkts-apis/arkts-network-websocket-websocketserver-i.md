@@ -458,7 +458,7 @@ send(data: string | ArrayBuffer, connection: WebSocketConnection): Promise<boole
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | string &#124; ArrayBuffer | 是 | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。最大支持发送5242864字节数据(即5 * 1024   * 1024 - 16)，超过该大小会返回401错误码。 |
+| data | string &#124; ArrayBuffer | 是 | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。最大支持发送5242864字节数据(即5 * 1024           * 1024 - 16)，超过该大小会返回401错误码。 |
 | connection | [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md) | 是 | 发送的客户端信息。 |
 
 **返回值：**

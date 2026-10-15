@@ -18,9 +18,9 @@ Defines a scroll snapping mode object.
 enableSnapToEnd?: boolean
 ```
 
-Whether to enable the snap to end feature. When scroll snapping is defined for the &lt;em&gt;Scroll&lt;/em&gt; component, setting this parameter to &lt;em&gt;false&lt;/em&gt; enables the component to scroll between the end and the last page.
+Whether to enable the snap to end feature. When scroll snapping is defined for the <em>Scroll</em> component, setting this parameter to <em>false</em> enables the component to scroll between the end and the last page.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. Default value: &lt;em&gt;true&lt;/em&gt; <br>2. This attribute takes effect only when &lt;em&gt;snapPagination&lt;/em&gt; is set to a value of the &lt;em&gt;Array\&lt;Dimension\&gt;&lt;/em&gt; type; it does not work with values of the &lt;em&gt;Dimension&lt;/em&gt; type. </p>
+<p><strong>NOTE</strong> <br>1. Default value: <em>true</em> <br>2. This attribute takes effect only when <em>snapPagination</em> is set to a value of the <em>Array\<Dimension\></em> type; it does not work with values of the <em>Dimension</em> type. </p>
 
 **Type:** boolean
 
@@ -42,9 +42,9 @@ Whether to enable the snap to end feature. When scroll snapping is defined for t
 enableSnapToStart?: boolean
 ```
 
-Whether to enable the snap to start feature. When scroll snapping is defined for the &lt;em&gt;Scroll&lt;/em&gt; component, setting this parameter to &lt;em&gt;false&lt;/em&gt; enables the component to scroll between the start and the first page.
+Whether to enable the snap to start feature. When scroll snapping is defined for the <em>Scroll</em> component, setting this parameter to <em>false</em> enables the component to scroll between the start and the first page.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. Default value: &lt;em&gt;true&lt;/em&gt; <br>2. This attribute takes effect only when &lt;em&gt;snapPagination&lt;/em&gt; is set to a value of the &lt;em&gt;Array\&lt;Dimension\&gt;&lt;/em&gt; type; it does not work with values of the &lt;em&gt;Dimension&lt;/em&gt; type. </p>
+<p><strong>NOTE</strong> <br>1. Default value: <em>true</em> <br>2. This attribute takes effect only when <em>snapPagination</em> is set to a value of the <em>Array\<Dimension\></em> type; it does not work with values of the <em>Dimension</em> type. </p>
 
 **Type:** boolean
 
@@ -91,7 +91,7 @@ snapPagination?: Dimension | Array<Dimension>
 
 Pagination points for scroll snapping.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. If the value is of the Dimension type, it indicates the size of each page, and the system will paginate based on this size. <br>2. If the value is of the Array\&lt;Dimension\&gt; type, each &lt;em&gt;Dimension&lt;/em&gt; represents a pagination point, and the system will paginate accordingly. Each &lt;em&gt;Dimension&lt;/em&gt; value must be within the [0, scrollable distance] range. <br>3. If this parameter is not set or &lt;em&gt;Dimension&lt;/em&gt; is set to a value less than or equal to 0, the value is regarded as an invalid value. In this case, there is no scroll snapping. When the value is of the Array\&lt;Dimension\&gt; type, the items in the array must be monotonically increasing. <br>4. When the value is a percentage, the actual size is the product of the viewport of the &lt;em&gt;Scroll&lt;/em&gt; component and the percentage value. </p>
+<p><strong>NOTE</strong> <br>1. If the value is of the Dimension type, it indicates the size of each page, and the system will paginate based on this size. <br>2. If the value is of the Array\<Dimension\> type, each <em>Dimension</em> represents a pagination point, and the system will paginate accordingly. Each <em>Dimension</em> value must be within the [0, scrollable distance] range. <br>3. If this parameter is not set or <em>Dimension</em> is set to a value less than or equal to 0, the value is regarded as an invalid value. In this case, there is no scroll snapping. When the value is of the Array\<Dimension\> type, the items in the array must be monotonically increasing. <br>4. When the value is a percentage, the actual size is the product of the viewport of the <em>Scroll</em> component and the percentage value. </p>
 
 **Type:** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; Array&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt;
 

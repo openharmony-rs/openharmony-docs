@@ -36,7 +36,7 @@ Event type. The value TYPE_ACTIVATED means the focus gain event, and TYPE_INTERR
 
 **Deprecated since:** 9
 
-**Substitutes:** eventType
+**Substitutes:** [eventType](arkts-audio-audio-interruptevent-i.md#eventtype)
 
 <!--Device-InterruptAction-actionType: InterruptActionType--><!--Device-InterruptAction-actionType: InterruptActionType-End-->
 
@@ -96,7 +96,7 @@ Type of the audio interruption event.
 
 **Deprecated since:** 9
 
-**Substitutes:** eventType
+**Substitutes:** [eventType](arkts-audio-audio-interruptevent-i.md#eventtype)
 
 <!--Device-InterruptAction-type?: InterruptType--><!--Device-InterruptAction-type?: InterruptType-End-->
 

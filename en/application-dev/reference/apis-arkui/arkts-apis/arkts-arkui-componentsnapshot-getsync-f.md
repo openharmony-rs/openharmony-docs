@@ -34,13 +34,13 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | id | string | Yes | ID of the target component. |
-| options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. |
+| options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom options related to the snapshot, which are passed when custom snapshot behavior is needed, for example, setting the scale ratio, waiting for rendering to complete, snapshot area, color space, or dynamic range. Default snapshot configuration is used when this parameter is not passed. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Promise used to return the result. |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | **PixelMap** object of the component snapshot, which represents the captured component image. |
 
 **Error codes:**
 

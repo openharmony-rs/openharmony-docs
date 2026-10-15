@@ -20,6 +20,8 @@ export class AnimatedDrawableDescriptor extends DrawableDescriptor
 import { DrawableDescriptor, LayeredDrawableDescriptor, PixelMapDrawableDescriptor, AnimationOptions, AnimatedDrawableDescriptor, AnimationController, DrawableDescriptorLoadedResult, AnimationStopMode, PictureDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -77,7 +79,7 @@ struct Example {
 }
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -101,7 +103,7 @@ AnimatedDrawableDescriptor的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; Array&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | 动图资源地址或者[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)对象构成的数组。<br> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://&lt;bundleName&gt;/&lt;sandboxPath&gt;），BASE64字符串。 |
+| src | [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; Array&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | 动图资源地址或者[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)对象构成的数组。<br> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://<bundleName>/<sandboxPath>），BASE64字符串。 |
 | options | [AnimationOptions](arkts-arkui-arkui-drawabledescriptor-animationoptions-i.md) | 否 | 动画控制参数。 |
 
 **示例**
@@ -158,7 +160,7 @@ getAnimationController(id?: string): AnimationController | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 否 | 组件的id。<br>当[Image](../arkts-components/arkts-arkui-image-comp.md)组件与AnimatedDrawableDescriptor确保1比1持有（仅传入一个[Image](../arkts-components/arkts-arkui-image-comp.md)组件）时，id非必填；<br>若同一AnimatedDrawableDescriptor需绑定多个[Image](../arkts-components/arkts-arkui-image-comp.md)组件，则必须设置唯一id以准确获取对应组件的动画控制器（唯一性由开发者保证）。<br>此规则基于动画系统设计原则：动画数据可多组件共享，但各组件动画独立运行，AnimationController与组件严格1比1持有关系（一个组件一个AnimationController对象）。<br>另外，[AnimatedDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)支持不可见时自动暂停播放功能，详见[onVisibleAreaChange] [onVisibleAreaChange](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)。 |
+| id | string | 否 | 组件的id。<br>当[Image](../arkts-components/arkts-arkui-image-comp.md)组件与AnimatedDrawableDescriptor确保1比1持有（仅传入一个[Image](../arkts-components/arkts-arkui-image-comp.md)组件）时，id非必填；<br>若同一AnimatedDrawableDescriptor需绑定多个[Image](../arkts-components/arkts-arkui-image-comp.md)组件，则必须设置唯一id以准确获取对应组件的动画控制器（唯一性由开发者保证）。<br>此规则基于动画系统设计原则：动画数据可多组件共享，但各组件动画独立运行，AnimationController与组件严格1比1持有关系（一个组件一个AnimationController对象）。<br>另外，[AnimatedDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)支持不可见时自动暂停播放功能，详见[onVisibleAreaChange] [onVisibleAreaChange](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1)。 |
 
 **返回值：**
 
@@ -168,7 +170,7 @@ getAnimationController(id?: string): AnimationController | undefined
 
 **示例**
 
-Image组件与AnimatedDrawableDescriptor保持1比1持有关系，示例代码如下。
+[Image](../arkui-ts/ts-basic-components-image.md)组件与AnimatedDrawableDescriptor保持1比1持有关系，示例代码如下。
 
 ```TypeScript
 import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';
@@ -202,7 +204,7 @@ struct Example {
 }
 ```
 
-Image组件与AnimatedDrawableDescriptor保持1比N持有关系，示例代码如下。
+[Image](../arkui-ts/ts-basic-components-image.md)组件与AnimatedDrawableDescriptor保持1比N持有关系，示例代码如下。
 
 ```TypeScript
 import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';

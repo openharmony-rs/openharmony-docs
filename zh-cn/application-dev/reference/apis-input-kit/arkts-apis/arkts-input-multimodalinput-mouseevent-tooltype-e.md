@@ -12,17 +12,17 @@ export declare enum ToolType
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## UNKNOWN
+## JOYSTICK
 
 ```TypeScript
-UNKNOWN = 0
+JOYSTICK = 2
 ```
 
-未知类型。
+操纵杆。
 
 **起始版本：** 11
 
-<!--Device-ToolType-UNKNOWN = 0--><!--Device-ToolType-UNKNOWN = 0-End-->
+<!--Device-ToolType-JOYSTICK = 2--><!--Device-ToolType-JOYSTICK = 2-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -40,20 +40,6 @@ MOUSE = 1
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## JOYSTICK
-
-```TypeScript
-JOYSTICK = 2
-```
-
-操纵杆。
-
-**起始版本：** 11
-
-<!--Device-ToolType-JOYSTICK = 2--><!--Device-ToolType-JOYSTICK = 2-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
 ## TOUCHPAD
 
 ```TypeScript
@@ -65,5 +51,19 @@ TOUCHPAD = 3
 **起始版本：** 11
 
 <!--Device-ToolType-TOUCHPAD = 3--><!--Device-ToolType-TOUCHPAD = 3-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+未知类型。
+
+**起始版本：** 11
+
+<!--Device-ToolType-UNKNOWN = 0--><!--Device-ToolType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core

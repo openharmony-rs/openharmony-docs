@@ -36,7 +36,7 @@ Checks whether the specified card slot supports the eSIM function.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [3120001](../errorcode-telephony.md#3120001-service-connection-error) | Service connection failed. |
 | [3120002](../errorcode-telephony.md#3120002-system-internal-error) | System internal error. |
 

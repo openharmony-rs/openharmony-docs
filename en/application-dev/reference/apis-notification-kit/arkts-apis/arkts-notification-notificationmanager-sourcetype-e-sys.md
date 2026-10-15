@@ -14,22 +14,6 @@ Defines the notification source type.
 
 **System API:** This is a system API.
 
-## TYPE_NORMAL
-
-```TypeScript
-TYPE_NORMAL = 0
-```
-
-Normal notification.
-
-**Since:** 9
-
-<!--Device-SourceType-TYPE_NORMAL = 0--><!--Device-SourceType-TYPE_NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
 ## TYPE_CONTINUOUS
 
 ```TypeScript
@@ -41,6 +25,22 @@ Continuous notification.
 **Since:** 9
 
 <!--Device-SourceType-TYPE_CONTINUOUS = 1--><!--Device-SourceType-TYPE_CONTINUOUS = 1-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## TYPE_NORMAL
+
+```TypeScript
+TYPE_NORMAL = 0
+```
+
+Normal notification.
+
+**Since:** 9
+
+<!--Device-SourceType-TYPE_NORMAL = 0--><!--Device-SourceType-TYPE_NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -26,11 +26,13 @@ import { appControl } from '@kit.AbilityKit';
 appId: string
 ```
 
-appId or appIdentifier of the target application. Identical appId and appIdentifier values indicate the same application instance. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.
+appId or appIdentifier of the application for which the disposed rule is to be set. appId and appIdentifier can identify the same application. Therefore, for the same application, if the disposed rule is set using appIdentifier, it can overwrite the rule previously set using appId, and vice versa.
 
 **NOTE:** 
 
-**appId** is also the unique identifier of an app. For details, see [What is appIdentifier](../../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information).
+appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [Obtaining the appId of an Application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).
+
+[appIdentifier](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For detailed information, see [What Is appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [Obtaining the appIdentifier of an Application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information).
 
 **Type:** string
 

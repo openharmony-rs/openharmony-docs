@@ -12,8 +12,9 @@ export interface OnscreenAwarenessCap
 
 * 逻辑关系：capList 与 groupId 互为补充必填项，至少需提供其一，且不为空。  
 * 校验规则：调用接口时，系统会单独检测capList和groupId。  
-* 能力列表：按能力项或分组ID使用屏上感知功能，具体定义如下。  
-* capList支持能力列表按具体业务场景预设的能力，可进行单一订阅或者触发，如下：
+* 能力列表：按能力项或分组ID使用屏上感知功能，具体定义如下。
+
+    * capList支持能力列表按具体业务场景预设的能力，可进行单一订阅或者触发，如下：
 
 |capList支持能力列表|功能说明|  
 | ---- | ------ |  
@@ -28,7 +29,7 @@ export interface OnscreenAwarenessCap
 |InjectEvent|注入事件。起始版本：26.0.0|
 |CollectStrategy|获取屏幕采集策略。起始版本：26.0.0|
 
-* groupId支持能力列表<br>按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
+    * groupId支持能力列表<br>按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
 
 |groupId支持能力列表|对应子项能力|功能说明|  
 | ---- | ------ | ------|  

@@ -30,24 +30,6 @@ Normal text style.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SUPERSCRIPT
-
-```TypeScript
-SUPERSCRIPT = 1
-```
-
-Superscript text style.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-SuperscriptStyle-SUPERSCRIPT = 1--><!--Device-SuperscriptStyle-SUPERSCRIPT = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## SUBSCRIPT
 
 ```TypeScript
@@ -63,5 +45,23 @@ Subscript text style.
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-SuperscriptStyle-SUBSCRIPT = 2--><!--Device-SuperscriptStyle-SUBSCRIPT = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SUPERSCRIPT
+
+```TypeScript
+SUPERSCRIPT = 1
+```
+
+Superscript text style.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SuperscriptStyle-SUPERSCRIPT = 1--><!--Device-SuperscriptStyle-SUPERSCRIPT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,22 +12,6 @@ declare enum GestureMask
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Normal
-
-```TypeScript
-Normal
-```
-
-不屏蔽子组件的手势，按照默认手势识别顺序进行识别。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-GestureMask-Normal--><!--Device-GestureMask-Normal-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## IgnoreInternal
 
 ```TypeScript
@@ -41,5 +25,21 @@ Ignore internal gestures and recognize the current gesture first.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-GestureMask-IgnoreInternal--><!--Device-GestureMask-IgnoreInternal-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Normal
+
+```TypeScript
+Normal
+```
+
+不屏蔽子组件的手势，按照默认手势识别顺序进行识别。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureMask-Normal--><!--Device-GestureMask-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

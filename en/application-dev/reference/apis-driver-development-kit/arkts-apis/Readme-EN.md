@@ -4,16 +4,16 @@
   - [DriverExtensionAbility](arkts-driverdevelopment-app-ability-driverextensionability-driverextensionability-c.md)
   - [DriverExtensionContext](arkts-driverdevelopment-driverextensioncontext-t.md)
 - [@ohos.driver.deviceManager(Peripheral Management)](arkts-driverdevelopment-driver-devicemanager.md)
-  - [bindDevice](arkts-driverdevelopment-devicemanager-binddevice-f.md)
-  - [bindDeviceDriver](arkts-driverdevelopment-devicemanager-binddevicedriver-f.md)
   - [bindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-binddriverwithdeviceid-f.md)
   <!--Del-->
   - [queryDeviceInfo(system api)](arkts-driverdevelopment-devicemanager-querydeviceinfo-f-sys.md)<!--DelEnd-->
   - [queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md)
   <!--Del-->
   - [queryDriverInfo(system api)](arkts-driverdevelopment-devicemanager-querydriverinfo-f-sys.md)<!--DelEnd-->
-  - [unbindDevice](arkts-driverdevelopment-devicemanager-unbinddevice-f.md)
   - [unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md)
+  - [bindDevice](arkts-driverdevelopment-devicemanager-binddevice-f.md)
+  - [bindDeviceDriver](arkts-driverdevelopment-devicemanager-binddevicedriver-f.md)
+  - [unbindDevice](arkts-driverdevelopment-devicemanager-unbinddevice-f.md)
   - [Device](arkts-driverdevelopment-devicemanager-device-i.md)
   <!--Del-->
   - [DeviceInfo(system api)](arkts-driverdevelopment-devicemanager-deviceinfo-i-sys.md)<!--DelEnd-->

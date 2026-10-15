@@ -6,6 +6,8 @@
 import { startupManager } from '@kit.AbilityKit';
 ```
 
+<a id="run1"></a>
+
 ## run
 
 ```TypeScript
@@ -17,7 +19,7 @@ Runs startup tasks or loads .so files.
 > **NOTE:** 
 > 
 > This API cannot be used to run startup tasks defined in a feature-type HAP. To run those tasks, use
-> [startupManager.run](#run-1)
+> [startupManager.run](#run2)
 > .
 
 **Since:** 12
@@ -45,7 +47,7 @@ Runs startup tasks or loads .so files.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [28800001](../errorcode-ability.md#28800001-startup-task-or-dependency-not-found) | Startup task or its dependency not found. |
 | [28800002](../errorcode-ability.md#28800002-circular-dependencies-between-startup-tasks) | The startup tasks have circular dependencies. |
@@ -82,7 +84,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="run-1"></a>
+<a id="run2"></a>
 
 ## run
 

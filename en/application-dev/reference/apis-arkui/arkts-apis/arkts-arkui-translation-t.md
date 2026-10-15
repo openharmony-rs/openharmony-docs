@@ -6,6 +6,8 @@ export type Translation = Vector2
 
 Sets the translation amount of the component.
 
+**Type:** [Vector2](arkts-arkui-graphics-vector2-i.md)
+
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Sets the translation amount of the component.
 <!--Device-unnamed-export type Translation = Vector2--><!--Device-unnamed-export type Translation = Vector2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [Vector2](arkts-arkui-graphics-vector2-i.md)

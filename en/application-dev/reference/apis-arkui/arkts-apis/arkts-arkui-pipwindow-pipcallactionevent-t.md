@@ -8,7 +8,7 @@ Defines the PiP action event in a video call.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PiPWindow-type PiPCallActionEvent = 'hangUp' | 'micStateChanged' | 'videoStateChanged' | 'voiceStateChanged'--><!--Device-PiPWindow-type PiPCallActionEvent = 'hangUp' | 'micStateChanged' | 'videoStateChanged' | 'voiceStateChanged'-End-->
 
@@ -19,4 +19,4 @@ Defines the PiP action event in a video call.
 | 'hangUp' | The video call is hung up. |
 | 'micStateChanged' | The microphone is muted or unmuted. |
 | 'videoStateChanged' | The camera is turned on or off. |
-| 'voiceStateChanged' | The speaker is muted or unmuted. [since 12] |
+| 'voiceStateChanged' | The speaker is muted or unmuted.<br>**Since:** 12 |

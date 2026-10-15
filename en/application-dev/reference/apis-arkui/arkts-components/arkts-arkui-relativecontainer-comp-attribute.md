@@ -13,13 +13,15 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>
+**Inheritance/Implementation:** RelativeContainerAttribute extends CommonMethod&lt;RelativeContainerAttribute&gt;
 
 **Since:** 9
 
 <!--Device-unnamed-declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>--><!--Device-unnamed-declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="barrier1"></a>
 
 ## barrier
 
@@ -45,7 +47,7 @@ Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#sett
 | --- | --- | --- | --- |
 | value | Array&lt;[BarrierStyle](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)&gt; | Yes | Barrier in the **RelativeContainer** container, used to define the ID, direction, and dependent components of the barrier. Child components can use the barrier as an anchor for alignment and positioning. |
 
-<a id="barrier-1"></a>
+<a id="barrier2"></a>
 
 ## barrier
 

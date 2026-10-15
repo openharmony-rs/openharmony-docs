@@ -32,7 +32,7 @@ The filter type is defined by the MIME type, for example, image/jpeg and video/m
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-MimeTypeFilter-mimeTypeArray: Array<string>--><!--Device-MimeTypeFilter-mimeTypeArray: Array<string>-End-->
 

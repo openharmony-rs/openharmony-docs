@@ -18,7 +18,7 @@ KeyEvent object description.
 getModifierKeyState?(keys: Array<string>): boolean
 ```
 
-Obtains the pressed status of modifier keys.
+Obtains the pressed state of modifier keys. It is suitable for scenarios such as key combination judgment or shortcut key processing that require identifying whether modifier keys such as Ctrl, Alt, and Shift are pressed.
 
 **Since:** 12
 
@@ -34,7 +34,7 @@ Obtains the pressed status of modifier keys.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keys | Array&lt;string&gt; | Yes | Obtains the pressed status of modifier keys. For details about the error message, see the following error codes. The following modifier keys are supported: 'Ctrl'&#124; 'Alt' &#124; 'Shift'.<br>**NOTE:** <br>This API is not supported in stylus scenarios. |
+| keys | Array&lt;string&gt; | Yes | List of modifier keys. Supported modifier keys include 'Ctrl'&#124; 'Alt' &#124; 'Shift'. If an unsupported modifier key is passed in, error code 401 is thrown.<br>**NOTE:** <br>This API is not supported in stylus scenarios. |
 
 **Return value:**
 
@@ -226,7 +226,7 @@ Name of the key.
 metaKey: number
 ```
 
-State of the Meta key (the key located next to the **Ctrl** key in the lower left corner of the keyboard, or the key marked with a window logo) when the key event occurs. The value **1** indicates that the Meta key is pressed, and **0** indicates that it is not pressed.
+State of the Meta key (the key marked with a window logo, next to the **Ctrl** or **Alt** key at the lower-left corner of the keyboard) when the key event occurs. The value **1** indicates that the Meta key is pressed, and **0** indicates that it is not pressed.
 
 **Type:** number
 

@@ -6,7 +6,7 @@ declare class EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
 
 The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal attributes for drawing components](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
+**Inheritance/Implementation:** EllipseAttribute extends CommonShapeMethod&lt;EllipseAttribute&gt;
 
 **Since:** 7
 

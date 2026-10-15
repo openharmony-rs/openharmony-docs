@@ -12,19 +12,19 @@ enum VideoCallControlGroup
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## MICROPHONE_SWITCH
+## CAMERA_SWITCH
 
 ```TypeScript
-MICROPHONE_SWITCH = 201
+CAMERA_SWITCH = 203
 ```
 
-打开/关闭麦克风控件组。
+打开/关闭摄像头控件组。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201--><!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201-End-->
+<!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203--><!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -38,25 +38,25 @@ HANG_UP_BUTTON = 202
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202--><!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## CAMERA_SWITCH
+## MICROPHONE_SWITCH
 
 ```TypeScript
-CAMERA_SWITCH = 203
+MICROPHONE_SWITCH = 201
 ```
 
-打开/关闭摄像头控件组。
+打开/关闭麦克风控件组。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203--><!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203-End-->
+<!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201--><!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -70,7 +70,7 @@ MUTE_SWITCH = 204
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoCallControlGroup-MUTE_SWITCH = 204--><!--Device-VideoCallControlGroup-MUTE_SWITCH = 204-End-->
 

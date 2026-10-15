@@ -6,6 +6,8 @@
 import { sharing } from '@kit.NetworkKit';
 ```
 
+<a id="getsharingifaces1"></a>
+
 ## getSharingIfaces
 
 ```TypeScript
@@ -42,6 +44,7 @@ function getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback<Arra
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ sharing.getSharingIfaces(SHARING_BLUETOOTH, (error: BusinessError, data: string[
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getsharingifaces-1"></a>
+
+<a id="getsharingifaces2"></a>
 
 ## getSharingIfaces
 
@@ -99,6 +104,7 @@ function getSharingIfaces(state: SharingIfaceState): Promise<Array<string>>
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -115,3 +121,5 @@ sharing
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

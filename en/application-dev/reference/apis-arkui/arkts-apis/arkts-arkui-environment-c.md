@@ -6,6 +6,12 @@ declare class Environment
 
 Provides the capability to query device environment states. It can inject system environment variables (such as the dark/light mode, language, font scale, and layout direction) into AppStorage, enabling applications to perceive and respond to device environment changes. For details about how to use it on the UI, see [Environment: Device Environment Query](../../../ui/state-management/arkts-environment.md).
 
+**Since:** 7
+
+<!--Device-unnamed-declare class Environment--><!--Device-unnamed-declare class Environment-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Built-in Environment Variables
 
 | key | Type | Description |  
@@ -16,12 +22,6 @@ Provides the capability to query device environment states. It can inject system
 | fontWeightScale | number | Font weight ratio. |
 | layoutDirection | [LayoutDirection](arkts-arkui-layoutdirection-e.md) | Layout direction. The options are as follows:<br> - **LayoutDirection.LTR**: left to right;<br> - **LayoutDirection.RTL**: right to left;<br> - **LayoutDirection.Auto**: follows the system settings. |
 | languageCode | string | Current system language, which is in lowercase letters, for example, **zh**. |
-
-**Since:** 7
-
-<!--Device-unnamed-declare class Environment--><!--Device-unnamed-declare class Environment-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## envProp
 

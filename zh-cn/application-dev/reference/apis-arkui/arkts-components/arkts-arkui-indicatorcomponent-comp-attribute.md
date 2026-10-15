@@ -6,7 +6,7 @@ declare class IndicatorComponentAttribute extends CommonMethod<IndicatorComponen
 
 除支持通用属性外，还支持以下属性。
 
-@extends CommonMethod&lt;IndicatorComponentAttribute&gt;
+@extends CommonMethod<IndicatorComponentAttribute>
 
 **继承/实现关系：** IndicatorComponentAttribute extends CommonMethod&lt;IndicatorComponentAttribute&gt;
 

@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="setbackgroundallowed1"></a>
+
 ## setBackgroundAllowed
 
 ```TypeScript
@@ -42,6 +44,7 @@ Sets whether background applications are allowed to access the network. This API
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,8 +55,10 @@ policy.setBackgroundAllowed(true, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setbackgroundallowed-1"></a>
+
+<a id="setbackgroundallowed2"></a>
 
 ## setBackgroundAllowed
 
@@ -96,6 +101,7 @@ Sets whether background applications are allowed to access the network. This API
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -107,3 +113,5 @@ policy.setBackgroundAllowed(true).then(() => {
   console.error(JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

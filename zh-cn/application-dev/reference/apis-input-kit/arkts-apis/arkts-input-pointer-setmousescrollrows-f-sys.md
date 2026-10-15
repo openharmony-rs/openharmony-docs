@@ -6,6 +6,8 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="setmousescrollrows1"></a>
+
 ## setMouseScrollRows
 
 ```TypeScript
@@ -26,16 +28,17 @@ function setMouseScrollRows(rows: number, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rows | number | 是 | 鼠标滚动行数，范围[1, 100]，默认为3。 |
+| rows | number | 是 | 鼠标滚动行数，取值范围[1, 100]，默认为3。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setmousescrollrows-1"></a>
+
+<a id="setmousescrollrows2"></a>
 
 ## setMouseScrollRows
 
@@ -90,7 +95,7 @@ function setMouseScrollRows(rows: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rows | number | 是 | 鼠标滚动行数，范围[1, 100]，默认为3。 |
+| rows | number | 是 | 鼠标滚动行数，取值范围[1, 100]，默认为3。 |
 
 **返回值：**
 
@@ -102,9 +107,10 @@ function setMouseScrollRows(rows: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -133,3 +139,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

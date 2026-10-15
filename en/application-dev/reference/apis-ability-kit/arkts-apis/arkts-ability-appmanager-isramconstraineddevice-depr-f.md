@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="isramconstraineddevice1"></a>
+
 ## isRamConstrainedDevice
 
 ```TypeScript
@@ -43,7 +45,7 @@ appManager.isRamConstrainedDevice().then((data) => {
 ```
 
 
-<a id="isramconstraineddevice-1"></a>
+<a id="isramconstraineddevice2"></a>
 
 ## isRamConstrainedDevice
 

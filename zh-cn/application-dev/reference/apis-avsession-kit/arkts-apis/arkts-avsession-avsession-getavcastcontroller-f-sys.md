@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getavcastcontroller1"></a>
+
 ## getAVCastController
 
 ```TypeScript
@@ -43,6 +45,7 @@ function getAVCastController(sessionId: string, callback: AsyncCallback<AVCastCo
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -79,8 +82,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getavcastcontroller-2"></a>
+
+<a id="getavcastcontroller3"></a>
 
 ## getAVCastController
 
@@ -124,6 +129,7 @@ function getAVCastController(sessionId: string): Promise<AVCastController>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | server exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -159,3 +165,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

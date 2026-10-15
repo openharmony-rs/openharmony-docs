@@ -14,22 +14,6 @@ enum ProxyMethod
 
 **系统接口：** 此接口为系统接口。
 
-## METHOD_NONE
-
-```TypeScript
-METHOD_NONE = 0
-```
-
-不使用代理。
-
-**起始版本：** 10
-
-<!--Device-ProxyMethod-METHOD_NONE = 0--><!--Device-ProxyMethod-METHOD_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
 ## METHOD_AUTO
 
 ```TypeScript
@@ -57,6 +41,22 @@ METHOD_MANUAL = 2
 **起始版本：** 10
 
 <!--Device-ProxyMethod-METHOD_MANUAL = 2--><!--Device-ProxyMethod-METHOD_MANUAL = 2-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## METHOD_NONE
+
+```TypeScript
+METHOD_NONE = 0
+```
+
+不使用代理。
+
+**起始版本：** 10
+
+<!--Device-ProxyMethod-METHOD_NONE = 0--><!--Device-ProxyMethod-METHOD_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

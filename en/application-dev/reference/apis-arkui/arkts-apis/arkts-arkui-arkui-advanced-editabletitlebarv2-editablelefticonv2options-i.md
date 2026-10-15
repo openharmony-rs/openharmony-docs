@@ -4,7 +4,7 @@
 export declare interface EditableLeftIconV2Options
 ```
 
-Indicates the options of the left icon.
+Defines the left icon configuration options.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 onAction?: OnActionCallback
 ```
 
-Callback function when click on the left icon.
+Callback triggered when the left icon is tapped. If not set, the Back type performs route return by default, and the Cancel type has no operation.
 
 **Since:** 26.0.0
 
@@ -42,7 +42,15 @@ Callback function when click on the left icon.
 defaultFocus?: boolean
 ```
 
-Whether to get focus by default.
+Whether to obtain focus by default.
+
+**true**: Obtains focus.
+
+**false**: Does not obtain focus.
+
+Default value: **false**.
+
+If multiple operable areas of the title bar are set as the default focus, the first operable area in display order among those set as the default focus is the default focus.
 
 **Type:** boolean
 
@@ -64,7 +72,9 @@ Whether to get focus by default.
 iconType?: EditableLeftIconTypeV2
 ```
 
-Icon type, Back or Cancel.
+Type of the left icon, which determines the style and default click behavior of the left icon. For the Back type, the route back operation is performed by default when clicked. For the Cancel type, no default operation is performed when clicked, and a custom callback is required.
+
+Default value: **EditableLeftIconTypeV2.Back**.
 
 **Type:** [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md)
 

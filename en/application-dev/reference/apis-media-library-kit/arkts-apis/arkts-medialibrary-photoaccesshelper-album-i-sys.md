@@ -61,6 +61,7 @@ Gets album attribute info.
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. Unsupported attribute; <br>2. The attrs size exceed 20; <br>3. Empty or duplicate attribute; |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error.It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -101,6 +102,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<!--DelEnd-->
+
 ## getFaceId
 
 ```TypeScript
@@ -133,6 +136,7 @@ Obtains the face identifier on the cover of a portrait album or group photo albu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -173,6 +177,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getFusionAssetsInfo
 
@@ -243,9 +249,10 @@ Obtains portrait album assets that meet filter criteria.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails.<br>Possible causes: The input parameter is not within the valid range. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -304,6 +311,10 @@ async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : P
 }
 ```
 
+<!--DelEnd-->
+
+<a id="deleteassets1"></a>
+
 ## deleteAssets
 
 ```TypeScript
@@ -348,6 +359,7 @@ Deletes image or video assets from the trash. Before the operation, ensure that 
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -380,7 +392,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="deleteassets-1"></a>
+<!--DelEnd-->
+
+<a id="deleteassets2"></a>
 
 ## deleteAssets
 
@@ -431,6 +445,7 @@ Deletes image or video assets from the trash. Before the operation, ensure that 
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -461,6 +476,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="recoverassets1"></a>
 
 ## recoverAssets
 
@@ -501,6 +520,7 @@ Recovers image or video assets from the trash. Before the operation, ensure that
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -533,7 +553,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="recoverassets-1"></a>
+<!--DelEnd-->
+
+<a id="recoverassets2"></a>
 
 ## recoverAssets
 
@@ -579,6 +601,7 @@ Recovers image or video assets from the trash. Before the operation, ensure that
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -609,6 +632,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setcoveruri1"></a>
 
 ## setCoverUri
 
@@ -646,9 +673,10 @@ Sets the cover of the user album. This API uses an asynchronous callback to retu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
-| 13900020 | Invalid argument. Possible causes:<br>1.This operation is not supported for this album type. |
+| 13900020 | Invalid argument. Possible causes:<br>This operation is not supported for this album type. |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -681,7 +709,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="setcoveruri-1"></a>
+<!--DelEnd-->
+
+<a id="setcoveruri2"></a>
 
 ## setCoverUri
 
@@ -724,9 +754,10 @@ Sets the cover of the user album. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
-| 13900020 | Invalid argument. Possible causes:<br>1.This operation is not supported for this album type. |
+| 13900020 | Invalid argument. Possible causes:<br>This operation is not supported for this album type. |
 | 14000011 | System inner fail |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -758,6 +789,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## cloudId
 

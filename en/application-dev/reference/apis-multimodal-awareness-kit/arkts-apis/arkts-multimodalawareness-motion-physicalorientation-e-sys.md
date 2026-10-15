@@ -14,73 +14,19 @@ Enum for physical orientation detected by the sensor.
 
 **System API:** This is a system API.
 
-## UPRIGHT
+## FACE_DOWN
 
 ```TypeScript
-UPRIGHT = 0
+FACE_DOWN = 5
 ```
 
-Indicates upright.
+Indicates face down.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PhysicalOrientation-UPRIGHT = 0--><!--Device-PhysicalOrientation-UPRIGHT = 0-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
-**System API:** This is a system API.
-
-## LEFT
-
-```TypeScript
-LEFT = 1
-```
-
-Indicates left.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PhysicalOrientation-LEFT = 1--><!--Device-PhysicalOrientation-LEFT = 1-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
-**System API:** This is a system API.
-
-## INVERTED
-
-```TypeScript
-INVERTED = 2
-```
-
-Indicates the physical orientation is inverted.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PhysicalOrientation-INVERTED = 2--><!--Device-PhysicalOrientation-INVERTED = 2-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
-**System API:** This is a system API.
-
-## RIGHT
-
-```TypeScript
-RIGHT = 3
-```
-
-Indicates right.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PhysicalOrientation-RIGHT = 3--><!--Device-PhysicalOrientation-RIGHT = 3-End-->
+<!--Device-PhysicalOrientation-FACE_DOWN = 5--><!--Device-PhysicalOrientation-FACE_DOWN = 5-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
@@ -104,19 +50,73 @@ Indicates face up.
 
 **System API:** This is a system API.
 
-## FACE_DOWN
+## INVERTED
 
 ```TypeScript
-FACE_DOWN = 5
+INVERTED = 2
 ```
 
-Indicates face down.
+Indicates the physical orientation is inverted.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PhysicalOrientation-FACE_DOWN = 5--><!--Device-PhysicalOrientation-FACE_DOWN = 5-End-->
+<!--Device-PhysicalOrientation-INVERTED = 2--><!--Device-PhysicalOrientation-INVERTED = 2-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
+**System API:** This is a system API.
+
+## LEFT
+
+```TypeScript
+LEFT = 1
+```
+
+Indicates left.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhysicalOrientation-LEFT = 1--><!--Device-PhysicalOrientation-LEFT = 1-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
+**System API:** This is a system API.
+
+## RIGHT
+
+```TypeScript
+RIGHT = 3
+```
+
+Indicates right.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhysicalOrientation-RIGHT = 3--><!--Device-PhysicalOrientation-RIGHT = 3-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
+**System API:** This is a system API.
+
+## UPRIGHT
+
+```TypeScript
+UPRIGHT = 0
+```
+
+Indicates upright.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhysicalOrientation-UPRIGHT = 0--><!--Device-PhysicalOrientation-UPRIGHT = 0-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 

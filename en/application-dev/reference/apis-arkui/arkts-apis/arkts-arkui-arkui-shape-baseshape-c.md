@@ -6,7 +6,7 @@ declare class BaseShape<T> extends CommonShapeMethod<T>
 
 This API inherits from [CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md).
 
-**Inheritance/Implementation:** BaseShape extends CommonShapeMethod<T>
+**Inheritance/Implementation:** BaseShape extends CommonShapeMethod&lt;T&gt;
 
 **Since:** 12
 

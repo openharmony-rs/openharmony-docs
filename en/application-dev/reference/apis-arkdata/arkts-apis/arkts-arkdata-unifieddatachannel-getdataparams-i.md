@@ -32,7 +32,7 @@ Indicates progress and data listener when getting unified data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-dataProgressListener: DataProgressListener--><!--Device-GetDataParams-dataProgressListener: DataProgressListener-End-->
 
@@ -52,7 +52,7 @@ Indicates the supported data information.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-GetDataParams-acceptableInfo?: DataLoadInfo--><!--Device-GetDataParams-acceptableInfo?: DataLoadInfo-End-->
 
@@ -72,7 +72,7 @@ Indicates the dest path uri where copy file will be copied to sandbox of applica
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-destUri?: string--><!--Device-GetDataParams-destUri?: string-End-->
 
@@ -92,7 +92,7 @@ Indicates file conflict options when dest path has file with same name.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions--><!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions-End-->
 
@@ -112,7 +112,7 @@ Indicates whether to use default system progress indicator.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-progressIndicator: ProgressIndicator--><!--Device-GetDataParams-progressIndicator: ProgressIndicator-End-->
 

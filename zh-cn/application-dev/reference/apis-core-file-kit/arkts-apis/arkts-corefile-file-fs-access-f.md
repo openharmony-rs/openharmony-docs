@@ -55,7 +55,7 @@ declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 | 13900042 | Unknown error |
 
 
-<a id="access-1"></a>
+<a id="access2"></a>
 
 ## access
 
@@ -98,7 +98,7 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 | 13900042 | Unknown error |
 
 
-<a id="access-2"></a>
+<a id="access3"></a>
 
 ## access
 

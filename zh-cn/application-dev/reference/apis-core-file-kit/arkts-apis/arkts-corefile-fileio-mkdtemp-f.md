@@ -36,7 +36,7 @@ declare function mkdtemp(prefix: string): Promise<string>
 | Promise&lt;string&gt; | Promise对象。返回生成的唯一目录路径。 |
 
 
-<a id="mkdtemp-1"></a>
+<a id="mkdtemp2"></a>
 
 ## mkdtemp
 

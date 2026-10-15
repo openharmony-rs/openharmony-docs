@@ -6,7 +6,7 @@
 export declare function clearMonitorForCrownEvents(): void
 ```
 
-Removes the digital crown events monitor function.
+Clears the rotating crown event monitor for the page.
 
 **Since:** 24
 

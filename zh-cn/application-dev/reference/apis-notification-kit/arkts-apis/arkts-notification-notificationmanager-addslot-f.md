@@ -6,7 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="addslot-2"></a>
+<a id="addslot3"></a>
 
 ## addSlot
 
@@ -26,11 +26,11 @@ function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 
 **参见：**
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md) 获取指定类型的通知渠道。
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot1) 获取指定类型的通知渠道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) 删除当前应用指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot1) 删除当前应用指定类型的通知渠道。
 
-[removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) 删除所有渠道通知。
+[removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md#removeallslots1) 删除所有渠道通知。
 
 **参数：**
 
@@ -43,7 +43,7 @@ function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -55,18 +55,18 @@ function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlot回调
-let addSlotCallBack = (err: BusinessError): void => {
+let addSlotCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
   } else {
     console.info(`Succeeded in adding slot.`);
   }
 }
-notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallback);
 ```
 
 
-<a id="addslot-3"></a>
+<a id="addslot4"></a>
 
 ## addSlot
 
@@ -88,7 +88,7 @@ function addSlot(type: SlotType): Promise<void>
 
 [getSlot](arkts-notification-notificationmanager-getslot-f.md) 获取指定类型的通知渠道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除当前应用指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot2) 删除当前应用指定类型的通知渠道。
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) 删除当前应用的所有渠道通知。
 
@@ -108,7 +108,7 @@ function addSlot(type: SlotType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |

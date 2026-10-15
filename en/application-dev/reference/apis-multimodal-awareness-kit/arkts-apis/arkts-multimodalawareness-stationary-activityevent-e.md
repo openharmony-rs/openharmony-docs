@@ -26,20 +26,6 @@ Enter event.
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Stationary
 
-## EXIT
-
-```TypeScript
-EXIT = 2
-```
-
-Exit event.
-
-**Since:** 9
-
-<!--Device-ActivityEvent-EXIT = 2--><!--Device-ActivityEvent-EXIT = 2-End-->
-
-**System capability:** SystemCapability.Msdp.DeviceStatus.Stationary
-
 ## ENTER_EXIT
 
 ```TypeScript
@@ -51,5 +37,19 @@ Enter and exit events.
 **Since:** 9
 
 <!--Device-ActivityEvent-ENTER_EXIT = 3--><!--Device-ActivityEvent-ENTER_EXIT = 3-End-->
+
+**System capability:** SystemCapability.Msdp.DeviceStatus.Stationary
+
+## EXIT
+
+```TypeScript
+EXIT = 2
+```
+
+Exit event.
+
+**Since:** 9
+
+<!--Device-ActivityEvent-EXIT = 2--><!--Device-ActivityEvent-EXIT = 2-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Stationary

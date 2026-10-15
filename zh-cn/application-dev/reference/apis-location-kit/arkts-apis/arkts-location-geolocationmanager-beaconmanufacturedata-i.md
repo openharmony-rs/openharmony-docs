@@ -30,7 +30,7 @@ manufactureData: ArrayBuffer
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconManufactureData-manufactureData: ArrayBuffer--><!--Device-BeaconManufactureData-manufactureData: ArrayBuffer-End-->
 
@@ -48,7 +48,7 @@ manufactureDataMask: ArrayBuffer
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconManufactureData-manufactureDataMask: ArrayBuffer--><!--Device-BeaconManufactureData-manufactureDataMask: ArrayBuffer-End-->
 
@@ -66,7 +66,7 @@ manufactureId: number
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconManufactureData-manufactureId: int--><!--Device-BeaconManufactureData-manufactureId: int-End-->
 

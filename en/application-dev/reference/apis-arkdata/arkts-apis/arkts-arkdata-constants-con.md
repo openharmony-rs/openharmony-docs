@@ -12,7 +12,7 @@ max batch operation size. Maximum number of batch operations.
 
 **Deprecated since:** 9
 
-**Substitutes:** MAX_BATCH_SIZE
+**Substitutes:** [MAX_BATCH_SIZE](arkts-arkdata-distributedkvstore-constants-i.md#max_batch_size)
 
 <!--Device-Constants-const MAX_BATCH_SIZE = 128--><!--Device-Constants-const MAX_BATCH_SIZE = 128-End-->
 
@@ -30,7 +30,7 @@ max key length. Maximum length of a key in the KV store, in bytes.
 
 **Deprecated since:** 9
 
-**Substitutes:** MAX_KEY_LENGTH
+**Substitutes:** [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_key_length)
 
 <!--Device-Constants-const MAX_KEY_LENGTH = 1024--><!--Device-Constants-const MAX_KEY_LENGTH = 1024-End-->
 
@@ -66,7 +66,7 @@ max query length. Maximum query length, in bytes.
 
 **Deprecated since:** 9
 
-**Substitutes:** MAX_QUERY_LENGTH
+**Substitutes:** [MAX_QUERY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_query_length)
 
 <!--Device-Constants-const MAX_QUERY_LENGTH = 512000--><!--Device-Constants-const MAX_QUERY_LENGTH = 512000-End-->
 
@@ -84,7 +84,7 @@ max store id length. Maximum length of a KV store ID, in bytes.
 
 **Deprecated since:** 9
 
-**Substitutes:** MAX_STORE_ID_LENGTH
+**Substitutes:** [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_store_id_length)
 
 <!--Device-Constants-const MAX_STORE_ID_LENGTH = 128--><!--Device-Constants-const MAX_STORE_ID_LENGTH = 128-End-->
 
@@ -102,7 +102,7 @@ max value length. Maximum length of a value in the KV store, in bytes.
 
 **Deprecated since:** 9
 
-**Substitutes:** MAX_VALUE_LENGTH
+**Substitutes:** [MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md#max_value_length)
 
 <!--Device-Constants-const MAX_VALUE_LENGTH = 4194303--><!--Device-Constants-const MAX_VALUE_LENGTH = 4194303-End-->
 

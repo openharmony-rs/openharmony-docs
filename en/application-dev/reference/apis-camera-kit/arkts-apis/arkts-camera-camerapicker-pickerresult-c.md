@@ -30,7 +30,7 @@ Media type.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerResult-mediaType: PickerMediaType--><!--Device-PickerResult-mediaType: PickerMediaType-End-->
 
@@ -48,7 +48,7 @@ Result code. The value **0** means that the processing is successful, and **-1**
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerResult-resultCode: int--><!--Device-PickerResult-resultCode: int-End-->
 
@@ -66,7 +66,7 @@ URI of the result. If **saveUri** is empty, **resultUri** is a public media path
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerResult-resultUri: string--><!--Device-PickerResult-resultUri: string-End-->
 

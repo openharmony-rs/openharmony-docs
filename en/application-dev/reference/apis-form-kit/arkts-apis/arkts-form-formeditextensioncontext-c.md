@@ -18,6 +18,40 @@ declare class FormEditExtensionContext extends UIExtensionContext
 
 **System capability:** SystemCapability.Ability.Form
 
+## setWindowBackgroundColor
+
+```TypeScript
+setWindowBackgroundColor(color: string): Promise<void>
+```
+
+Sets the background color for the FormEditExtensionAbility.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormEditExtensionContext-setWindowBackgroundColor(color: string): Promise<void>--><!--Device-FormEditExtensionContext-setWindowBackgroundColor(color: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| color | string | Yes | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **#00FF00** or **#FF00FF00**. It can also be a resource string. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16500050](../errorcode-form.md#16500050-ipc-failure) | An IPC connection error happened. |
+
 ## startSecondPage
 
 ```TypeScript
@@ -44,7 +78,7 @@ Starts the widget provider page to be edited. This API uses a promise to return 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise used to return the ability result. |
+| Promise&lt;[AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-i.md)&gt; | Promise used to return the ability result. |
 
 **Error codes:**
 

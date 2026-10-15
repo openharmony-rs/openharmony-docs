@@ -7,10 +7,9 @@ declare interface PasteButtonOptions
 用于设置粘贴控件的图标、文本、按钮类型等属性。
 
 > **说明：** 
+> 
 > - 建议icon或text至少传入一个。
-> 
 > - 如果icon、text都不传入，PasteButton将使用默认样式创建，默认样式：PasteIconStyle默认样式为LINES；PasteDescription默认样式为PASTE；ButtonType默认样式为Capsule。
-> 
 > - icon、text和buttonType不支持动态修改。这是因为安全控件的样式和属性在创建时已通过系统校验，动态修改可能导致控件样式不符合安全控件规范，从而影响授权的有效性。
 
 **起始版本：** 10

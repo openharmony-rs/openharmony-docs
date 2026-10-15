@@ -86,6 +86,7 @@ Information about a multi-instance application with the specific bundle name in 
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -108,3 +109,5 @@ try {
   console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
 }
 ```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 export interface CarAwarenessOptions
 ```
 
-汽车感知信息接口
+车辆感知订阅配置选项接口。
 
 **起始版本：** 26.0.1
 
@@ -26,7 +26,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 parameters?: Record<string, Object>
 ```
 
-自定义键值对格式的感知参数。
+自定义感知参数键值对，用于传入特定能力的配置项。
 
 **类型：** Record&lt;string, Object&gt;
 

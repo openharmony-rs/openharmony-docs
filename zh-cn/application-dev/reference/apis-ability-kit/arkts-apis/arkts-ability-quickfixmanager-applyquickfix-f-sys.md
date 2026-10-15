@@ -6,6 +6,8 @@
 import { quickFixManager } from '@kit.AbilityKit';
 ```
 
+<a id="applyquickfix1"></a>
+
 ## applyQuickFix
 
 ```TypeScript
@@ -37,10 +39,11 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCal
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [18500002](../errorcode-ability.md#18500002-指定的补丁包无效) | Invalid patch package. |
 | [18500008](../errorcode-ability.md#18500008-快速修复内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,8 +63,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="applyquickfix-1"></a>
+
+<a id="applyquickfix2"></a>
 
 ## applyQuickFix
 
@@ -99,10 +104,11 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [18500002](../errorcode-ability.md#18500002-指定的补丁包无效) | Invalid patch package. |
 | [18500008](../errorcode-ability.md#18500008-快速修复内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -121,3 +127,5 @@ try {
   console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -45,10 +45,11 @@ Disables proactive awareness on screen content and unsubscribes from a screen aw
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
    groupId: 'SmartEdge'
 }
@@ -58,6 +59,8 @@ try {
     console.info(`unsubscribe resultCode: ${info[0].resultCode}`);
   });
 } catch (err) {
-  console.error('unsubscribe failed, errCode = ' + err.code);
+  console.error(`unsubscribe failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

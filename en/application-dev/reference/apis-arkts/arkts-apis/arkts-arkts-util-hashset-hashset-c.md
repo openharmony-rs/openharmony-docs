@@ -92,7 +92,7 @@ Adds elements to this HashSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-add(value: T): boolean--><!--Device-HashSet-add(value: T): boolean-End-->
 
@@ -134,7 +134,7 @@ Clears this HashSet and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-clear(): void--><!--Device-HashSet-clear(): void-End-->
 
@@ -167,7 +167,7 @@ A constructor used to create a **HashSet** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-constructor()--><!--Device-HashSet-constructor()-End-->
 
@@ -195,7 +195,7 @@ Returns an iterator that contains all the elements in this HashSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-entries(): IterableIterator<[T, T]>--><!--Device-HashSet-entries(): IterableIterator<[T, T]>-End-->
 
@@ -306,7 +306,7 @@ Checks whether this HashSet has the specified element.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-has(value: T): boolean--><!--Device-HashSet-has(value: T): boolean-End-->
 
@@ -349,7 +349,7 @@ Checks whether this HashSet is empty (contains no element).
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-isEmpty(): boolean--><!--Device-HashSet-isEmpty(): boolean-End-->
 
@@ -385,7 +385,7 @@ Removes an element from this HashSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-remove(value: T): boolean--><!--Device-HashSet-remove(value: T): boolean-End-->
 
@@ -429,7 +429,7 @@ Returns an iterator that contains all the values in this HashSet.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashSet-values(): IterableIterator<T>--><!--Device-HashSet-values(): IterableIterator<T>-End-->
 

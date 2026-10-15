@@ -8,7 +8,7 @@ declare class DatePickerAttribute extends CommonMethod<DatePickerAttribute>
 
 除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-@extends CommonMethod [since 8 - 10] @extends CommonMethod&lt;DatePickerAttribute&gt; [since 11]
+@extends CommonMethod [since 8 - 10] @extends CommonMethod<DatePickerAttribute> [since 11]
 
 **继承/实现关系：** DatePickerAttribute extends CommonMethod&lt;DatePickerAttribute&gt;
 
@@ -66,6 +66,8 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 | --- | --- | --- | --- |
 | sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | 是 | 表冠响应灵敏度。<br>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
 
+<a id="disappeartextstyle1"></a>
+
 ## disappearTextStyle
 
 ```TypeScript
@@ -90,7 +92,7 @@ disappearTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 边缘项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
-<a id="disappeartextstyle-1"></a>
+<a id="disappeartextstyle2"></a>
 
 ## disappearTextStyle
 
@@ -98,7 +100,7 @@ disappearTextStyle(value: PickerTextStyle)
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。与[disappearTextStyle&lt;sup&gt;10+&lt;/sup&gt;](#disappeartextstyle)相比，style参数新增了对undefined类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -140,6 +142,8 @@ enableHapticFeedback(enable: Optional<boolean>)
 | --- | --- | --- | --- |
 | enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置是否开启触控反馈。<br>- true：开启触控反馈。<br>- false：不开启触控反馈。<br>默认值：true <br>设置为true后，其生效情况取决于系统的硬件是否支持。<br>当enable的值为undefined时，使用默认值。 |
 
+<a id="lunar1"></a>
+
 ## lunar
 
 ```TypeScript
@@ -168,7 +172,7 @@ lunar(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 日期是否显示为农历。<br>- true：显示为农历。<br>- false：不显示为农历。<br>默认值：false |
 
-<a id="lunar-1"></a>
+<a id="lunar2"></a>
 
 ## lunar
 
@@ -176,7 +180,7 @@ lunar(value: boolean)
 lunar(isLunar: Optional<boolean>)
 ```
 
-设置日期是否显示为农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
+设置日期是否显示为农历。与[lunar](#lunar1)相比，isLunar参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -197,6 +201,8 @@ lunar(isLunar: Optional<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isLunar | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 日期是否显示为农历。<br>- true：显示为农历。<br>- false：不显示为农历。<br>默认值：false <br>当isLunar的值为undefined时，使用默认值。 |
+
+<a id="ondatechange1"></a>
 
 ## onDateChange
 
@@ -222,7 +228,7 @@ onDateChange(callback: Callback<Date>)
 | --- | --- | --- | --- |
 | callback | Callback&lt;Date&gt; | 是 | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。适用于需要在用户确认日期选择后获取选中日期、更新界面或执行业务逻辑的场景。<br>**适用版本：** 18 |
 
-<a id="ondatechange-1"></a>
+<a id="ondatechange2"></a>
 
 ## onDateChange
 
@@ -230,7 +236,7 @@ onDateChange(callback: Callback<Date>)
 onDateChange(callback: Optional<Callback<Date>>)
 ```
 
-滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onDateChange&lt;sup&gt;10+&lt;/sup&gt;](#ondatechange)相比，callback参数新增了对undefined类型的支持。
+滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onDateChange<sup>10+</sup>](#ondatechange1)相比，callback参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -251,6 +257,8 @@ onDateChange(callback: Optional<Callback<Date>>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;Date&gt;&gt; | 是 | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。适用于需要在用户确认日期选择后获取选中日期、更新界面或执行业务逻辑的场景。<br>当callback的值为undefined时，不使用回调函数。 |
+
+<a id="selectedtextstyle1"></a>
 
 ## selectedTextStyle
 
@@ -276,7 +284,7 @@ selectedTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 选中项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} |
 
-<a id="selectedtextstyle-1"></a>
+<a id="selectedtextstyle2"></a>
 
 ## selectedTextStyle
 
@@ -284,7 +292,7 @@ selectedTextStyle(value: PickerTextStyle)
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置选中项的文本样式。与[selectedTextStyle&lt;sup&gt;10+&lt;/sup&gt;](#selectedtextstyle)相比，style参数新增了对undefined类型的支持。
+设置选中项的文本样式。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -301,6 +309,8 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | 是 | 选中项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>当style的值为undefined时，使用默认值。 |
+
+<a id="textstyle1"></a>
 
 ## textStyle
 
@@ -326,7 +336,7 @@ textStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 待选项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
-<a id="textstyle-1"></a>
+<a id="textstyle2"></a>
 
 ## textStyle
 
@@ -334,7 +344,7 @@ textStyle(value: PickerTextStyle)
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本样式。与[textStyle&lt;sup&gt;10+&lt;/sup&gt;](#textstyle)相比，style参数新增了对undefined类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本样式。与[textStyle<sup>10+</sup>](#textstyle1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -360,13 +370,13 @@ onChange(callback: (value: DatePickerResult) => void)
 
 滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
 
-从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange)替代。
+从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 10
 
-**替代接口：** [onDateChange](#ondatechange)(callback: Callback&lt;Date&gt;)
+**替代接口：** [onDateChange](#ondatechange1)(callback: Callback&lt;Date&gt;)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 

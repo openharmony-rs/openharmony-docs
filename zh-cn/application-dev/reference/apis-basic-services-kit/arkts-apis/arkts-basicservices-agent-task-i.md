@@ -4,7 +4,7 @@
 interface Task
 ```
 
-上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-1)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md)获取。
+上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create2)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create1)获取。
 
 > **说明：** 
 > 
@@ -21,6 +21,8 @@ interface Task
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
+
+<a id="off1"></a>
 
 ## off
 
@@ -56,7 +58,7 @@ off(event: 'progress', callback?: (progress: Progress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10 |
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -92,7 +94,7 @@ off(event: 'completed', callback?: (progress: Progress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 
-<a id="off-2"></a>
+<a id="off3"></a>
 
 ## off
 
@@ -128,7 +130,7 @@ off(event: 'failed', callback?: (progress: Progress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 
-<a id="off-3"></a>
+<a id="off4"></a>
 
 ## off
 
@@ -161,7 +163,7 @@ off(event: 'pause', callback?: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="off-4"></a>
+<a id="off5"></a>
 
 ## off
 
@@ -194,7 +196,7 @@ off(event: 'resume', callback?: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="off-5"></a>
+<a id="off6"></a>
 
 ## off
 
@@ -227,7 +229,7 @@ off(event: 'remove', callback?: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 
-<a id="off-6"></a>
+<a id="off7"></a>
 
 ## off
 
@@ -262,7 +264,7 @@ off(event: 'response', callback?: Callback<HttpResponse>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="off-7"></a>
+<a id="off8"></a>
 
 ## off
 
@@ -295,7 +297,7 @@ off(event: 'faultOccur', callback?: Callback<Faults>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="off-8"></a>
+<a id="off9"></a>
 
 ## off
 
@@ -327,6 +329,8 @@ off(event: 'wait', callback?: Callback<WaitingReason>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+
+<a id="on1"></a>
 
 ## on
 
@@ -362,7 +366,7 @@ on(event: 'progress', callback: (progress: Progress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10 |
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -398,7 +402,7 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10 |
 
-<a id="on-2"></a>
+<a id="on3"></a>
 
 ## on
 
@@ -406,7 +410,7 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 on(event: 'failed', callback: (progress: Progress) => void): void
 ```
 
-订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show-1)查看错误原因。
+订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show2)查看错误原因。
 
 > **说明：** 
 > 
@@ -434,7 +438,7 @@ on(event: 'failed', callback: (progress: Progress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 
-<a id="on-3"></a>
+<a id="on4"></a>
 
 ## on
 
@@ -467,7 +471,7 @@ on(event: 'pause', callback: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="on-4"></a>
+<a id="on5"></a>
 
 ## on
 
@@ -500,7 +504,7 @@ on(event: 'resume', callback: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="on-5"></a>
+<a id="on6"></a>
 
 ## on
 
@@ -533,7 +537,7 @@ on(event: 'remove', callback: (progress: Progress) => void): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="on-6"></a>
+<a id="on7"></a>
 
 ## on
 
@@ -568,7 +572,7 @@ on(event: 'response', callback: Callback<HttpResponse>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="on-7"></a>
+<a id="on8"></a>
 
 ## on
 
@@ -601,7 +605,7 @@ on(event: 'faultOccur', callback: Callback<Faults>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
-<a id="on-8"></a>
+<a id="on9"></a>
 
 ## on
 
@@ -634,13 +638,15 @@ on(event: 'wait', callback: Callback<WaitingReason>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
+<a id="pause1"></a>
+
 ## pause
 
 ```TypeScript
 pause(callback: AsyncCallback<void>): void
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume)恢复。使用callback异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume1)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -662,7 +668,7 @@ pause(callback: AsyncCallback<void>): void
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="pause-1"></a>
+<a id="pause2"></a>
 
 ## pause
 
@@ -670,7 +676,7 @@ pause(callback: AsyncCallback<void>): void
 pause(): Promise<void>
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume)恢复。使用Promise异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume1)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -691,6 +697,8 @@ pause(): Promise<void>
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
+
+<a id="resume1"></a>
 
 ## resume
 
@@ -723,7 +731,7 @@ resume(callback: AsyncCallback<void>): void
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="resume-1"></a>
+<a id="resume2"></a>
 
 ## resume
 
@@ -789,6 +797,8 @@ setMaxSpeed(speed: number): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -810,7 +820,7 @@ start(callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Task-start(callback: AsyncCallback<void>): void--><!--Device-Task-start(callback: AsyncCallback<void>): void-End-->
 
@@ -830,7 +840,7 @@ start(callback: AsyncCallback<void>): void
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -853,7 +863,7 @@ start(): Promise<void>
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Task-start(): Promise<void>--><!--Device-Task-start(): Promise<void>-End-->
 
@@ -873,17 +883,19 @@ start(): Promise<void>
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
 stop(callback: AsyncCallback<void>): void
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start)恢复。使用callback异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start1)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Task-stop(callback: AsyncCallback<void>): void--><!--Device-Task-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -902,7 +914,7 @@ stop(callback: AsyncCallback<void>): void
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -910,11 +922,11 @@ stop(callback: AsyncCallback<void>): void
 stop(): Promise<void>
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start)恢复。使用Promise异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start1)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Task-stop(): Promise<void>--><!--Device-Task-stop(): Promise<void>-End-->
 
@@ -945,7 +957,7 @@ config: Config
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Task-config: Config--><!--Device-Task-config: Config-End-->
 
@@ -963,7 +975,7 @@ readonly tid: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Task-readonly tid: string--><!--Device-Task-readonly tid: string-End-->
 

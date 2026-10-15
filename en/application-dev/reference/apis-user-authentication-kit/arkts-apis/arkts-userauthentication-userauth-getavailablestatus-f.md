@@ -18,7 +18,7 @@ Checks whether the specified authentication capability is supported. This API is
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-userAuth-function getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): void--><!--Device-userAuth-function getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): void-End-->
 
@@ -52,6 +52,6 @@ try {
   userAuth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL3);
   console.info('current auth trust level is supported');
 } catch (error) {
-  console.error(`current auth trust level is not supported. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to check auth trust level. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```

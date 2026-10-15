@@ -19,7 +19,7 @@ Check whether the WLAN scan results match the WLAN BSSID list.
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-geoLocationManager-function isWlanBssidMatched(      wlanBssidArray: Array<string>, rssiThreshold: int, needStartScan: boolean): Promise<boolean>--><!--Device-geoLocationManager-function isWlanBssidMatched(      wlanBssidArray: Array<string>, rssiThreshold: int, needStartScan: boolean): Promise<boolean>-End-->
 

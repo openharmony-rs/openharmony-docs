@@ -12,20 +12,6 @@ Enumerates the types of image files to save.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## JPEG
-
-```TypeScript
-JPEG = 1
-```
-
-JPEG.
-
-**Since:** 13
-
-<!--Device-ImageFileType-JPEG = 1--><!--Device-ImageFileType-JPEG = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## HEIF
 
 ```TypeScript
@@ -37,5 +23,19 @@ HEIF.
 **Since:** 13
 
 <!--Device-ImageFileType-HEIF = 2--><!--Device-ImageFileType-HEIF = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## JPEG
+
+```TypeScript
+JPEG = 1
+```
+
+JPEG.
+
+**Since:** 13
+
+<!--Device-ImageFileType-JPEG = 1--><!--Device-ImageFileType-JPEG = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

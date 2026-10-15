@@ -6,6 +6,8 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
+<a id="getoverlaymoduleinfobybundlename1"></a>
+
 ## getOverlayModuleInfoByBundleName
 
 ```TypeScript
@@ -32,7 +34,7 @@ No permission is required when the specified application is the caller itself.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result, which is an array of [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md), used to return the result. When the [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) information of all modules in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object. |
 
 **Error codes:**
 
@@ -44,6 +46,7 @@ No permission is required when the specified application is the caller itself.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700032](../errorcode-bundle.md#17700032-application-does-not-contain-a-module-with-the-overlay-feature) | The specified bundle does not contain any overlay module. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,8 +71,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getoverlaymoduleinfobybundlename-1"></a>
+
+<a id="getoverlaymoduleinfobybundlename2"></a>
 
 ## getOverlayModuleInfoByBundleName
 
@@ -96,8 +101,8 @@ No permission is required when the specified application is the caller itself.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. |
-| moduleName | string | Yes | Name of the module with the overlay feature. If this parameter is not specified, the API obtains the information of all modules with the overlay feature in that application. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result, which is an array of [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| moduleName | string | Yes | Name of the overlay feature module in the specified application. When this field is omitted, the query API queries the OverlayModuleInfo information of all modules in the specified application. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). When the [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) information of the specified module in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object. |
 
 **Error codes:**
 
@@ -111,6 +116,7 @@ No permission is required when the specified application is the caller itself.
 | [17700032](../errorcode-bundle.md#17700032-application-does-not-contain-a-module-with-the-overlay-feature) | The specified bundle does not contain any overlay module. |
 | [17700033](../errorcode-bundle.md#17700033-module-is-not-configured-with-the-overlay-feature) | The specified module is not an overlay module. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,8 +142,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getoverlaymoduleinfobybundlename-2"></a>
+
+<a id="getoverlaymoduleinfobybundlename3"></a>
 
 ## getOverlayModuleInfoByBundleName
 
@@ -145,7 +153,7 @@ try {
 function getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: string): Promise<Array<OverlayModuleInfo>>
 ```
 
-Obtains the information about a module with the overlay feature in another application. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo information of the specified module in the specified application. This API uses a promise to return the result.
 
 No permission is required when the specified application is the caller itself.
 
@@ -184,6 +192,7 @@ No permission is required when the specified application is the caller itself.
 | [17700032](../errorcode-bundle.md#17700032-application-does-not-contain-a-module-with-the-overlay-feature) | The specified bundle does not contain any overlay module. |
 | [17700033](../errorcode-bundle.md#17700033-module-is-not-configured-with-the-overlay-feature) | The specified module is not an overlay module. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -204,3 +213,5 @@ let moduleName = "feature";
   }
 })();
 ```
+
+<!--DelEnd-->

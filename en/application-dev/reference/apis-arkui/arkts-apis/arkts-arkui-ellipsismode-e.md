@@ -12,24 +12,6 @@ Sets the position of ellipsis.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## START
-
-```TypeScript
-START = 0
-```
-
-An ellipsis is used at the start of the line of text. This applies to single-line text scenarios.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-EllipsisMode-START = 0--><!--Device-EllipsisMode-START = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## CENTER
 
 ```TypeScript
@@ -66,6 +48,24 @@ An ellipsis is used at the end of the line of text. This applies to single-line 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## MULTILINE_CENTER
+
+```TypeScript
+MULTILINE_CENTER = 4
+```
+
+An ellipsis is used at the center of the line of text. This applies to single-line and multi-line text scenarios.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-EllipsisMode-MULTILINE_CENTER = 4--><!--Device-EllipsisMode-MULTILINE_CENTER = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## MULTILINE_START
 
 ```TypeScript
@@ -84,20 +84,20 @@ An ellipsis is used at the start of the line of text. This applies to single-lin
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## MULTILINE_CENTER
+## START
 
 ```TypeScript
-MULTILINE_CENTER = 4
+START = 0
 ```
 
-An ellipsis is used at the center of the line of text. This applies to single-line and multi-line text scenarios.
+An ellipsis is used at the start of the line of text. This applies to single-line text scenarios.
 
-**Since:** 24
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-EllipsisMode-MULTILINE_CENTER = 4--><!--Device-EllipsisMode-MULTILINE_CENTER = 4-End-->
+<!--Device-EllipsisMode-START = 0--><!--Device-EllipsisMode-START = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

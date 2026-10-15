@@ -6,7 +6,7 @@ The **Stepper** component provides a step navigator, suitable for guiding users 
 
 ## Child Components
 
-Only the child component StepperItem is supported.
+Only the child component [StepperItem](arkts-arkui-stepperitem-comp.md) is supported.
 
 ## Stepper
 
@@ -15,8 +15,6 @@ Stepper(value?: { index?: number })
 ```
 
 Creates a **Stepper** component.
-
-> **NOTE:** 
 
 **Since:** 8
 
@@ -34,7 +32,7 @@ Creates a **Stepper** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | { index?: number } | No | Index of the **StepperItem** that is currently displayed.<br>Default value: **0**<br> Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). |
+| value | { index?: number } | No | Index of the **StepperItem** that is currently displayed. <br>Default value: **0** <br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). |
 
 ## Summary
 

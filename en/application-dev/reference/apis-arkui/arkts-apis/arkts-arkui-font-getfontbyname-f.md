@@ -22,7 +22,7 @@ Obtains information about a system font based on the font name.
 
 **Deprecated since:** 18
 
-**Substitutes:** getFontByName
+**Substitutes:** [getFontByName](arkts-arkui-arkui-uicontext-font-c.md#getfontbyname)
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -12,185 +12,31 @@ Mouse pointer style types.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## DEFAULT
+## AECH_DEVELOPER_DEFINED_ICON
 
 ```TypeScript
-DEFAULT = 0
+AECH_DEVELOPER_DEFINED_ICON = 47
 ```
 
-Default
+Custom circular pointer
 
-**Since:** 9
+**Since:** 22
 
-<!--Device-PointerStyle-DEFAULT = 0--><!--Device-PointerStyle-DEFAULT = 0-End-->
+<!--Device-PointerStyle-AECH_DEVELOPER_DEFINED_ICON = 47--><!--Device-PointerStyle-AECH_DEVELOPER_DEFINED_ICON = 47-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## EAST
+## COLOR_SUCKER
 
 ```TypeScript
-EAST = 1
+COLOR_SUCKER = 16
 ```
 
-East arrow
+Color picker
 
 **Since:** 9
 
-<!--Device-PointerStyle-EAST = 1--><!--Device-PointerStyle-EAST = 1-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## WEST
-
-```TypeScript
-WEST = 2
-```
-
-West arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-WEST = 2--><!--Device-PointerStyle-WEST = 2-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## SOUTH
-
-```TypeScript
-SOUTH = 3
-```
-
-South arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-SOUTH = 3--><!--Device-PointerStyle-SOUTH = 3-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## NORTH
-
-```TypeScript
-NORTH = 4
-```
-
-North arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-NORTH = 4--><!--Device-PointerStyle-NORTH = 4-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## WEST_EAST
-
-```TypeScript
-WEST_EAST = 5
-```
-
-West-east arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-WEST_EAST = 5--><!--Device-PointerStyle-WEST_EAST = 5-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## NORTH_SOUTH
-
-```TypeScript
-NORTH_SOUTH = 6
-```
-
-North-south arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-NORTH_SOUTH = 6--><!--Device-PointerStyle-NORTH_SOUTH = 6-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## NORTH_EAST
-
-```TypeScript
-NORTH_EAST = 7
-```
-
-North-east arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-NORTH_EAST = 7--><!--Device-PointerStyle-NORTH_EAST = 7-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## NORTH_WEST
-
-```TypeScript
-NORTH_WEST = 8
-```
-
-North-west arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-NORTH_WEST = 8--><!--Device-PointerStyle-NORTH_WEST = 8-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## SOUTH_EAST
-
-```TypeScript
-SOUTH_EAST = 9
-```
-
-South-east arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-SOUTH_EAST = 9--><!--Device-PointerStyle-SOUTH_EAST = 9-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## SOUTH_WEST
-
-```TypeScript
-SOUTH_WEST = 10
-```
-
-South-west arrow
-
-**Since:** 9
-
-<!--Device-PointerStyle-SOUTH_WEST = 10--><!--Device-PointerStyle-SOUTH_WEST = 10-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## NORTH_EAST_SOUTH_WEST
-
-```TypeScript
-NORTH_EAST_SOUTH_WEST = 11
-```
-
-North-east and south-west adjustment
-
-**Since:** 9
-
-<!--Device-PointerStyle-NORTH_EAST_SOUTH_WEST = 11--><!--Device-PointerStyle-NORTH_EAST_SOUTH_WEST = 11-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## NORTH_WEST_SOUTH_EAST
-
-```TypeScript
-NORTH_WEST_SOUTH_EAST = 12
-```
-
-North-west and south-east adjustment
-
-**Since:** 9
-
-<!--Device-PointerStyle-NORTH_WEST_SOUTH_EAST = 12--><!--Device-PointerStyle-NORTH_WEST_SOUTH_EAST = 12-End-->
+<!--Device-PointerStyle-COLOR_SUCKER = 16--><!--Device-PointerStyle-COLOR_SUCKER = 16-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -208,6 +54,20 @@ Cross (accurate selection)
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
+## CURSOR_CIRCLE
+
+```TypeScript
+CURSOR_CIRCLE = 41
+```
+
+Circle
+
+**Since:** 10
+
+<!--Device-PointerStyle-CURSOR_CIRCLE = 41--><!--Device-PointerStyle-CURSOR_CIRCLE = 41-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
 ## CURSOR_COPY
 
 ```TypeScript
@@ -219,6 +79,20 @@ Copy
 **Since:** 9
 
 <!--Device-PointerStyle-CURSOR_COPY = 14--><!--Device-PointerStyle-CURSOR_COPY = 14-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## CURSOR_CROSS
+
+```TypeScript
+CURSOR_CROSS = 40
+```
+
+Cross
+
+**Since:** 10
+
+<!--Device-PointerStyle-CURSOR_CROSS = 40--><!--Device-PointerStyle-CURSOR_CROSS = 40-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -236,17 +110,45 @@ Forbid
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## COLOR_SUCKER
+## DEFAULT
 
 ```TypeScript
-COLOR_SUCKER = 16
+DEFAULT = 0
 ```
 
-Color picker
+Default
 
 **Since:** 9
 
-<!--Device-PointerStyle-COLOR_SUCKER = 16--><!--Device-PointerStyle-COLOR_SUCKER = 16-End-->
+<!--Device-PointerStyle-DEFAULT = 0--><!--Device-PointerStyle-DEFAULT = 0-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## DEVELOPER_DEFINED_ICON
+
+```TypeScript
+DEVELOPER_DEFINED_ICON = -100
+```
+
+Custom pointer. You can use [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md) to set a custom pointer. The custom pointer cannot be directly set using [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md). Custom pointer style, set via the API. This value is used by **getPointerStyle** to return data in specific scenarios (obtaining the style on a window where a custom pointer style has been set). It cannot be used as an input parameter of the **setCustomCursor** or **setPointerStyle** API.
+
+**Since:** 22
+
+<!--Device-PointerStyle-DEVELOPER_DEFINED_ICON = -100--><!--Device-PointerStyle-DEVELOPER_DEFINED_ICON = -100-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## EAST
+
+```TypeScript
+EAST = 1
+```
+
+East arrow
+
+**Since:** 9
+
+<!--Device-PointerStyle-EAST = 1--><!--Device-PointerStyle-EAST = 1-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -284,7 +186,7 @@ Opening hand
 HAND_POINTING = 19
 ```
 
-Hand-shaped pointer
+Hand pointer
 
 **Since:** 9
 
@@ -306,115 +208,75 @@ Help
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## MOVE
+## HORIZONTAL_TEXT_CURSOR
 
 ```TypeScript
-MOVE = 21
+HORIZONTAL_TEXT_CURSOR = 39
 ```
 
-Move
+Selecting text horizontally
 
-**Since:** 9
+**Since:** 10
 
-<!--Device-PointerStyle-MOVE = 21--><!--Device-PointerStyle-MOVE = 21-End-->
+<!--Device-PointerStyle-HORIZONTAL_TEXT_CURSOR = 39--><!--Device-PointerStyle-HORIZONTAL_TEXT_CURSOR = 39-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## RESIZE_LEFT_RIGHT
+## LASER_CURSOR
 
 ```TypeScript
-RESIZE_LEFT_RIGHT = 22
+LASER_CURSOR = 49
 ```
 
-Left and right resizing
+Hover cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly. <br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to page up and down, which is suitable for scenarios such as PPT presentations and air operations.
 
-**Since:** 9
+**Since:** 22
 
-<!--Device-PointerStyle-RESIZE_LEFT_RIGHT = 22--><!--Device-PointerStyle-RESIZE_LEFT_RIGHT = 22-End-->
+<!--Device-PointerStyle-LASER_CURSOR = 49--><!--Device-PointerStyle-LASER_CURSOR = 49-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## RESIZE_UP_DOWN
+## LASER_CURSOR_DOT
 
 ```TypeScript
-RESIZE_UP_DOWN = 23
+LASER_CURSOR_DOT = 50
 ```
 
-Up and down resizing
+Click cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly. <br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to page up and down, which is suitable for scenarios such as PPT presentations and air operations.
 
-**Since:** 9
+**Since:** 22
 
-<!--Device-PointerStyle-RESIZE_UP_DOWN = 23--><!--Device-PointerStyle-RESIZE_UP_DOWN = 23-End-->
+<!--Device-PointerStyle-LASER_CURSOR_DOT = 50--><!--Device-PointerStyle-LASER_CURSOR_DOT = 50-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## SCREENSHOT_CHOOSE
+## LASER_CURSOR_DOT_RED
 
 ```TypeScript
-SCREENSHOT_CHOOSE = 24
+LASER_CURSOR_DOT_RED = 51
 ```
 
-Screenshot crosshair
+Laser pointer cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly. <br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to page up and down, which is suitable for scenarios such as PPT presentations and air operations.
 
-**Since:** 9
+**Since:** 22
 
-<!--Device-PointerStyle-SCREENSHOT_CHOOSE = 24--><!--Device-PointerStyle-SCREENSHOT_CHOOSE = 24-End-->
+<!--Device-PointerStyle-LASER_CURSOR_DOT_RED = 51--><!--Device-PointerStyle-LASER_CURSOR_DOT_RED = 51-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## SCREENSHOT_CURSOR
+## LOADING
 
 ```TypeScript
-SCREENSHOT_CURSOR = 25
+LOADING = 42
 ```
 
-Screenshot
+Animated cursor for loading
 
-**Since:** 9
+**Since:** 10
 
-<!--Device-PointerStyle-SCREENSHOT_CURSOR = 25--><!--Device-PointerStyle-SCREENSHOT_CURSOR = 25-End-->
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## TEXT_CURSOR
-
-```TypeScript
-TEXT_CURSOR = 26
-```
-
-Text selection
-
-**Since:** 9
-
-<!--Device-PointerStyle-TEXT_CURSOR = 26--><!--Device-PointerStyle-TEXT_CURSOR = 26-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## ZOOM_IN
-
-```TypeScript
-ZOOM_IN = 27
-```
-
-Zoom in
-
-**Since:** 9
-
-<!--Device-PointerStyle-ZOOM_IN = 27--><!--Device-PointerStyle-ZOOM_IN = 27-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## ZOOM_OUT
-
-```TypeScript
-ZOOM_OUT = 28
-```
-
-Zoom out
-
-**Since:** 9
-
-<!--Device-PointerStyle-ZOOM_OUT = 28--><!--Device-PointerStyle-ZOOM_OUT = 28-End-->
+<!--Device-PointerStyle-LOADING = 42--><!--Device-PointerStyle-LOADING = 42-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -432,31 +294,17 @@ Scrolling east
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## MIDDLE_BTN_WEST
+## MIDDLE_BTN_EAST_WEST
 
 ```TypeScript
-MIDDLE_BTN_WEST = 30
+MIDDLE_BTN_EAST_WEST = 44
 ```
 
-Scrolling west
+Scrolling east-west
 
-**Since:** 9
+**Since:** 18
 
-<!--Device-PointerStyle-MIDDLE_BTN_WEST = 30--><!--Device-PointerStyle-MIDDLE_BTN_WEST = 30-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## MIDDLE_BTN_SOUTH
-
-```TypeScript
-MIDDLE_BTN_SOUTH = 31
-```
-
-Scrolling south
-
-**Since:** 9
-
-<!--Device-PointerStyle-MIDDLE_BTN_SOUTH = 31--><!--Device-PointerStyle-MIDDLE_BTN_SOUTH = 31-End-->
+<!--Device-PointerStyle-MIDDLE_BTN_EAST_WEST = 44--><!--Device-PointerStyle-MIDDLE_BTN_EAST_WEST = 44-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -474,20 +322,6 @@ Scrolling north
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## MIDDLE_BTN_NORTH_SOUTH
-
-```TypeScript
-MIDDLE_BTN_NORTH_SOUTH = 33
-```
-
-Scrolling north-south
-
-**Since:** 9
-
-<!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH = 33--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH = 33-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
 ## MIDDLE_BTN_NORTH_EAST
 
 ```TypeScript
@@ -502,6 +336,34 @@ Scrolling north-east
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
+## MIDDLE_BTN_NORTH_SOUTH
+
+```TypeScript
+MIDDLE_BTN_NORTH_SOUTH = 33
+```
+
+Scrolling north-south
+
+**Since:** 9
+
+<!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH = 33--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH = 33-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## MIDDLE_BTN_NORTH_SOUTH_WEST_EAST
+
+```TypeScript
+MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38
+```
+
+Moving as a cone in four directions
+
+**Since:** 9
+
+<!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
 ## MIDDLE_BTN_NORTH_WEST
 
 ```TypeScript
@@ -513,6 +375,20 @@ Scrolling north-west
 **Since:** 9
 
 <!--Device-PointerStyle-MIDDLE_BTN_NORTH_WEST = 35--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_WEST = 35-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## MIDDLE_BTN_SOUTH
+
+```TypeScript
+MIDDLE_BTN_SOUTH = 31
+```
+
+Scrolling south
+
+**Since:** 9
+
+<!--Device-PointerStyle-MIDDLE_BTN_SOUTH = 31--><!--Device-PointerStyle-MIDDLE_BTN_SOUTH = 31-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -544,75 +420,143 @@ Scrolling south-west
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## MIDDLE_BTN_NORTH_SOUTH_WEST_EAST
+## MIDDLE_BTN_WEST
 
 ```TypeScript
-MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38
+MIDDLE_BTN_WEST = 30
 ```
 
-Moving as a cone in four directions
+Scrolling west
 
 **Since:** 9
 
-<!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38-End-->
+<!--Device-PointerStyle-MIDDLE_BTN_WEST = 30--><!--Device-PointerStyle-MIDDLE_BTN_WEST = 30-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## HORIZONTAL_TEXT_CURSOR
+## MOVE
 
 ```TypeScript
-HORIZONTAL_TEXT_CURSOR = 39
+MOVE = 21
 ```
 
-Horizontal text selection
+Move
 
-**Since:** 10
+**Since:** 9
 
-<!--Device-PointerStyle-HORIZONTAL_TEXT_CURSOR = 39--><!--Device-PointerStyle-HORIZONTAL_TEXT_CURSOR = 39-End-->
+<!--Device-PointerStyle-MOVE = 21--><!--Device-PointerStyle-MOVE = 21-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## CURSOR_CROSS
+## NORTH
 
 ```TypeScript
-CURSOR_CROSS = 40
+NORTH = 4
 ```
 
-Cross
+North arrow
 
-**Since:** 10
+**Since:** 9
 
-<!--Device-PointerStyle-CURSOR_CROSS = 40--><!--Device-PointerStyle-CURSOR_CROSS = 40-End-->
+<!--Device-PointerStyle-NORTH = 4--><!--Device-PointerStyle-NORTH = 4-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## CURSOR_CIRCLE
+## NORTH_EAST
 
 ```TypeScript
-CURSOR_CIRCLE = 41
+NORTH_EAST = 7
 ```
 
-Circle
+North-east arrow
 
-**Since:** 10
+**Since:** 9
 
-<!--Device-PointerStyle-CURSOR_CIRCLE = 41--><!--Device-PointerStyle-CURSOR_CIRCLE = 41-End-->
+<!--Device-PointerStyle-NORTH_EAST = 7--><!--Device-PointerStyle-NORTH_EAST = 7-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## LOADING
+## NORTH_EAST_SOUTH_WEST
 
 ```TypeScript
-LOADING = 42
+NORTH_EAST_SOUTH_WEST = 11
 ```
 
-Animation loading
+North-east and south-west adjustment
 
-**Since:** 10
+**Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+<!--Device-PointerStyle-NORTH_EAST_SOUTH_WEST = 11--><!--Device-PointerStyle-NORTH_EAST_SOUTH_WEST = 11-End-->
 
-<!--Device-PointerStyle-LOADING = 42--><!--Device-PointerStyle-LOADING = 42-End-->
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## NORTH_SOUTH
+
+```TypeScript
+NORTH_SOUTH = 6
+```
+
+North-south arrow
+
+**Since:** 9
+
+<!--Device-PointerStyle-NORTH_SOUTH = 6--><!--Device-PointerStyle-NORTH_SOUTH = 6-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## NORTH_WEST
+
+```TypeScript
+NORTH_WEST = 8
+```
+
+North-west arrow
+
+**Since:** 9
+
+<!--Device-PointerStyle-NORTH_WEST = 8--><!--Device-PointerStyle-NORTH_WEST = 8-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## NORTH_WEST_SOUTH_EAST
+
+```TypeScript
+NORTH_WEST_SOUTH_EAST = 12
+```
+
+North-west and south-east adjustment
+
+**Since:** 9
+
+<!--Device-PointerStyle-NORTH_WEST_SOUTH_EAST = 12--><!--Device-PointerStyle-NORTH_WEST_SOUTH_EAST = 12-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## RESIZE_LEFT_RIGHT
+
+```TypeScript
+RESIZE_LEFT_RIGHT = 22
+```
+
+Left and right resizing
+
+**Since:** 9
+
+<!--Device-PointerStyle-RESIZE_LEFT_RIGHT = 22--><!--Device-PointerStyle-RESIZE_LEFT_RIGHT = 22-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## RESIZE_UP_DOWN
+
+```TypeScript
+RESIZE_UP_DOWN = 23
+```
+
+Up and down resizing
+
+**Since:** 9
+
+<!--Device-PointerStyle-RESIZE_UP_DOWN = 23--><!--Device-PointerStyle-RESIZE_UP_DOWN = 23-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -622,27 +566,13 @@ Animation loading
 RUNNING = 43
 ```
 
-Animation running in the background
+Animated cursor for background loading
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PointerStyle-RUNNING = 43--><!--Device-PointerStyle-RUNNING = 43-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## MIDDLE_BTN_EAST_WEST
-
-```TypeScript
-MIDDLE_BTN_EAST_WEST = 44
-```
-
-Scrolling east-west
-
-**Since:** 18
-
-<!--Device-PointerStyle-MIDDLE_BTN_EAST_WEST = 44--><!--Device-PointerStyle-MIDDLE_BTN_EAST_WEST = 44-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -652,7 +582,7 @@ Scrolling east-west
 RUNNING_LEFT = 45
 ```
 
-Running in the background (extension 1)
+Animated cursor for background running (extension 1)
 
 **Since:** 22
 
@@ -666,25 +596,11 @@ Running in the background (extension 1)
 RUNNING_RIGHT = 46
 ```
 
-Running in the background (extension 2)
+Animated cursor for background running (extension 2)
 
 **Since:** 22
 
 <!--Device-PointerStyle-RUNNING_RIGHT = 46--><!--Device-PointerStyle-RUNNING_RIGHT = 46-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Pointer
-
-## AECH_DEVELOPER_DEFINED_ICON
-
-```TypeScript
-AECH_DEVELOPER_DEFINED_ICON = 47
-```
-
-Custom circular pointer
-
-**Since:** 22
-
-<!--Device-PointerStyle-AECH_DEVELOPER_DEFINED_ICON = 47--><!--Device-PointerStyle-AECH_DEVELOPER_DEFINED_ICON = 47-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -702,64 +618,142 @@ Screen recording
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## LASER_CURSOR
+## SCREENSHOT_CHOOSE
 
 ```TypeScript
-LASER_CURSOR = 49
+SCREENSHOT_CHOOSE = 24
 ```
 
-Floating This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.
+Screenshot crosshair
 
-In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used for PPT presentation and air gesture control.
+**Since:** 9
 
-**Since:** 22
-
-<!--Device-PointerStyle-LASER_CURSOR = 49--><!--Device-PointerStyle-LASER_CURSOR = 49-End-->
+<!--Device-PointerStyle-SCREENSHOT_CHOOSE = 24--><!--Device-PointerStyle-SCREENSHOT_CHOOSE = 24-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## LASER_CURSOR_DOT
+## SCREENSHOT_CURSOR
 
 ```TypeScript
-LASER_CURSOR_DOT = 50
+SCREENSHOT_CURSOR = 25
 ```
 
-Click This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.
+Screenshot
 
-In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used for PPT presentation and air gesture control.
+**Since:** 9
 
-**Since:** 22
-
-<!--Device-PointerStyle-LASER_CURSOR_DOT = 50--><!--Device-PointerStyle-LASER_CURSOR_DOT = 50-End-->
+<!--Device-PointerStyle-SCREENSHOT_CURSOR = 25--><!--Device-PointerStyle-SCREENSHOT_CURSOR = 25-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## LASER_CURSOR_DOT_RED
+## SOUTH
 
 ```TypeScript
-LASER_CURSOR_DOT_RED = 51
+SOUTH = 3
 ```
 
-Laser pointer This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.
+South arrow
 
-In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used for PPT presentation and air gesture control.
+**Since:** 9
 
-**Since:** 22
-
-<!--Device-PointerStyle-LASER_CURSOR_DOT_RED = 51--><!--Device-PointerStyle-LASER_CURSOR_DOT_RED = 51-End-->
+<!--Device-PointerStyle-SOUTH = 3--><!--Device-PointerStyle-SOUTH = 3-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
-## DEVELOPER_DEFINED_ICON
+## SOUTH_EAST
 
 ```TypeScript
-DEVELOPER_DEFINED_ICON = -100
+SOUTH_EAST = 9
 ```
 
-Custom pointer. You can use [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md) to set a custom pointer. The custom pointer cannot be directly set using [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md).
+South-east arrow
 
-**Since:** 22
+**Since:** 9
 
-<!--Device-PointerStyle-DEVELOPER_DEFINED_ICON = -100--><!--Device-PointerStyle-DEVELOPER_DEFINED_ICON = -100-End-->
+<!--Device-PointerStyle-SOUTH_EAST = 9--><!--Device-PointerStyle-SOUTH_EAST = 9-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## SOUTH_WEST
+
+```TypeScript
+SOUTH_WEST = 10
+```
+
+South-west arrow
+
+**Since:** 9
+
+<!--Device-PointerStyle-SOUTH_WEST = 10--><!--Device-PointerStyle-SOUTH_WEST = 10-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## TEXT_CURSOR
+
+```TypeScript
+TEXT_CURSOR = 26
+```
+
+Text selection
+
+**Since:** 9
+
+<!--Device-PointerStyle-TEXT_CURSOR = 26--><!--Device-PointerStyle-TEXT_CURSOR = 26-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## WEST
+
+```TypeScript
+WEST = 2
+```
+
+West arrow
+
+**Since:** 9
+
+<!--Device-PointerStyle-WEST = 2--><!--Device-PointerStyle-WEST = 2-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## WEST_EAST
+
+```TypeScript
+WEST_EAST = 5
+```
+
+West-east arrow
+
+**Since:** 9
+
+<!--Device-PointerStyle-WEST_EAST = 5--><!--Device-PointerStyle-WEST_EAST = 5-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## ZOOM_IN
+
+```TypeScript
+ZOOM_IN = 27
+```
+
+Zoom in
+
+**Since:** 9
+
+<!--Device-PointerStyle-ZOOM_IN = 27--><!--Device-PointerStyle-ZOOM_IN = 27-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Pointer
+
+## ZOOM_OUT
+
+```TypeScript
+ZOOM_OUT = 28
+```
+
+Zoom out
+
+**Since:** 9
+
+<!--Device-PointerStyle-ZOOM_OUT = 28--><!--Device-PointerStyle-ZOOM_OUT = 28-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer

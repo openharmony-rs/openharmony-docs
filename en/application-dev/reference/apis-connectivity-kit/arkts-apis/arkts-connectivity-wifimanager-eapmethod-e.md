@@ -4,11 +4,39 @@
 enum EapMethod
 ```
 
-Wi-Fi EAP method. @enum { int }
+Wi-Fi EAP method.
 
 **Since:** 10
 
 <!--Device-wifiManager-enum EapMethod--><!--Device-wifiManager-enum EapMethod-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+## EAP_AKA
+
+```TypeScript
+EAP_AKA
+```
+
+EAP AKA
+
+**Since:** 10
+
+<!--Device-EapMethod-EAP_AKA--><!--Device-EapMethod-EAP_AKA-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+## EAP_AKA_PRIME
+
+```TypeScript
+EAP_AKA_PRIME
+```
+
+EAP AKA PRIME
+
+**Since:** 10
+
+<!--Device-EapMethod-EAP_AKA_PRIME--><!--Device-EapMethod-EAP_AKA_PRIME-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -40,34 +68,6 @@ EAP PEAP
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## EAP_TLS
-
-```TypeScript
-EAP_TLS
-```
-
-EAP TLS
-
-**Since:** 10
-
-<!--Device-EapMethod-EAP_TLS--><!--Device-EapMethod-EAP_TLS-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-## EAP_TTLS
-
-```TypeScript
-EAP_TTLS
-```
-
-EAP TTLS
-
-**Since:** 10
-
-<!--Device-EapMethod-EAP_TTLS--><!--Device-EapMethod-EAP_TTLS-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
 ## EAP_PWD
 
 ```TypeScript
@@ -96,31 +96,31 @@ EAP SIM
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## EAP_AKA
+## EAP_TLS
 
 ```TypeScript
-EAP_AKA
+EAP_TLS
 ```
 
-EAP AKA
+EAP TLS
 
 **Since:** 10
 
-<!--Device-EapMethod-EAP_AKA--><!--Device-EapMethod-EAP_AKA-End-->
+<!--Device-EapMethod-EAP_TLS--><!--Device-EapMethod-EAP_TLS-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## EAP_AKA_PRIME
+## EAP_TTLS
 
 ```TypeScript
-EAP_AKA_PRIME
+EAP_TTLS
 ```
 
-EAP AKA PRIME
+EAP TTLS
 
 **Since:** 10
 
-<!--Device-EapMethod-EAP_AKA_PRIME--><!--Device-EapMethod-EAP_AKA_PRIME-End-->
+<!--Device-EapMethod-EAP_TTLS--><!--Device-EapMethod-EAP_TTLS-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

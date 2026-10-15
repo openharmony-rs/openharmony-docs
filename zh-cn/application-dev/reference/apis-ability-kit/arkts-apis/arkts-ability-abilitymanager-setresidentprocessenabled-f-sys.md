@@ -43,11 +43,12 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1.Non empty package name needs to be provided; 2.The second parameter needs to provide a Boolean type setting value. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200006](../errorcode-ability.md#16200006-没有权限设置常驻进程使能状态) | The caller application can only set the resident status of the configured process. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +72,5 @@ try {
   console.error(`setResidentProcessEnabled failed, code is ${code}, message is ${message}`);
 }
 ```
+
+<!--DelEnd-->

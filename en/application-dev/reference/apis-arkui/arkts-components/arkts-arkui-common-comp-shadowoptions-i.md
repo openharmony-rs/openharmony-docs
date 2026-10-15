@@ -18,17 +18,17 @@ Provides the shadow attributes, including the blur radius, color, and offset alo
 color?: Color | string | Resource | ColoringStrategy
 ```
 
-Color of the shadow.
+Shadow color.
 
-The default color is black.
+The default value is black.
 
 **NOTE:** 
 
-Since API version 11, this API supports **ColoringStrategy**, which cannot be used with ArkTS widgets or the [textShadow](arkts-arkui-text-comp-attribute.md#textshadow) attribute.
+Starting from API version 11, this interface supports using ColoringStrategy to implement smart color picking. The smart color picking feature is not supported in ArkTS cards or [textShadow](arkts-arkui-text-comp-attribute.md#textshadow).
 
-With **ColoringStrategy**, the average color or primary color can be obtained, and the obtained color is applied to the shadow drawing area.
+Currently, only average color picking and primary color picking are supported. The smart color picking area is the shadow drawing area.
 
-The **'average'** string can be used to trigger the mode for obtaining the average color, and the **'primary'** string for obtaining the primary color.
+The 'average' string can be used to trigger the smart average color picking mode, and the 'primary' string can be used to trigger the smart primary color mode.
 
 **Type:** [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)
 
@@ -48,15 +48,13 @@ The **'average'** string can be used to trigger the mode for obtaining the avera
 fill?: boolean
 ```
 
-Whether to fill the inside of the component with shadow. **true**: Fill the inside of the component with shadow.
+Whether the shadow is filled internally. The value true indicates that the shadow is filled internally, and false indicates that the shadow is filled externally.
 
-**false**: Do not fill the inside of the component with shadow.
-
-Default value: **false**.
+Default value: false.
 
 **NOTE:** 
 
-This attribute does not take effect in [textShadow](arkts-arkui-text-comp-attribute.md#textshadow).
+This field does not take effect in [textShadow](arkts-arkui-text-comp-attribute.md#textshadow).
 
 **Type:** boolean
 
@@ -78,17 +76,17 @@ This attribute does not take effect in [textShadow](arkts-arkui-text-comp-attrib
 offsetX?: number | Resource
 ```
 
-Offset of the shadow along the x-axis.
+X-axis offset of the shadow.
 
-Default value: **0**
+Default value: 0
 
 Unit: px
 
 **NOTE:** 
 
-To use a value in the unit of vp, you can use [vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px) to convert the value.
+To use a value in vp, call [vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px) to convert it.
 
-If **offsetX** is of the Resource type, its value must be of the number type.
+If offsetX is of the Resource type, the value passed in must be of the number type.
 
 **Type:** number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
@@ -108,17 +106,17 @@ If **offsetX** is of the Resource type, its value must be of the number type.
 offsetY?: number | Resource
 ```
 
-Offset of the shadow along the y-axis.
+Y-axis offset of the shadow.
 
-Default value: **0**
+Default value: 0
 
 Unit: px
 
 **NOTE:** 
 
-To use a value in the unit of vp, you can use [vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px) to convert the value.
+To use a value in vp, call [vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px) to convert it.
 
-If **offsetY** is of the Resource type, its value must be of the number type.
+If offsetY is of the Resource type, the value passed in must be of the number type.
 
 **Type:** number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
@@ -138,19 +136,19 @@ If **offsetY** is of the Resource type, its value must be of the number type.
 radius: number | Resource
 ```
 
-Blur radius of the shadow.
+Shadow blur radius.
 
-Value range: [0, +∞)
+Value range: [0, +∞). Starting from API version 26.0.0, the value range changes to (-∞, +∞).
 
 Unit: px
 
 **NOTE:** 
 
-A value less than 0 evaluates to the value **0**.
+Before API version 26.0.0, when a value less than 0 is set, it is processed as 0, in which case no shadow is drawn. Starting from API version 26.0.0, the set value is the final value. When the value is 0, the shadow is still drawn; when a negative value is set, no shadow is drawn.
 
-To use a value in the unit of vp, you can use [vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px) to convert the value.
+To use a value in vp, call [vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px) to convert it.
 
-If **radius** is of the Resource type, its value must be of the number type.
+If radius is of the Resource type, the value passed in must be of the number type.
 
 **Type:** number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
@@ -172,7 +170,7 @@ type?: ShadowType
 
 Shadow type.
 
-Default value: **COLOR**
+Default value: COLOR
 
 **Type:** [ShadowType](arkts-arkui-common-comp-shadowtype-e.md)
 

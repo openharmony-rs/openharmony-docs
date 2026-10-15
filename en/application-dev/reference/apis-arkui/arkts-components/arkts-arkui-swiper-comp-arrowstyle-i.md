@@ -142,7 +142,7 @@ Percentage values are not supported.
 isSidebarMiddle?: boolean
 ```
 
-Whether the arrow is centered on both sides of the **Swiper** component. The value **true** means that the arrow is centered on both sides of the **Swiper** component, and **false** means that the arrow is show on either side of the navigation indicator.
+Whether the arrow is centered on both sides of the **Swiper** component. The value **true** means that the arrow is centered on both sides of the **Swiper** component, and **false** means that the arrow is shown on either side of the navigation indicator.
 
 Default value: **false**.
 

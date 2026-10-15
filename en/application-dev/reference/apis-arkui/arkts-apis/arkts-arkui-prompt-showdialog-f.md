@@ -6,6 +6,8 @@
 import { prompt } from '@kit.ArkUI';
 ```
 
+<a id="showdialog1"></a>
+
 ## showDialog
 
 ```TypeScript
@@ -18,7 +20,7 @@ Shows a dialog box. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** showDialog
+**Substitutes:** [showDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#showdialog)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -60,7 +62,7 @@ prompt.showDialog({
 ```
 
 
-<a id="showdialog-1"></a>
+<a id="showdialog2"></a>
 
 ## showDialog
 
@@ -74,7 +76,7 @@ Shows a dialog box. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** showDialog
+**Substitutes:** [showDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#showdialog)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

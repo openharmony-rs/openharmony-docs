@@ -38,7 +38,7 @@ appEventGroups: event group.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void--><!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void-End-->
 
@@ -67,7 +67,7 @@ Subscription callback. This parameter takes effect only when it is passed togeth
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void--><!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void-End-->
 
@@ -93,7 +93,7 @@ Subscription filtering condition. This parameter is passed only when subscriptio
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Watcher-appEventFilters?: AppEventFilter[]--><!--Device-Watcher-appEventFilters?: AppEventFilter[]-End-->
 
@@ -111,7 +111,7 @@ Unique name of a watcher. The value contains a maximum of 32 characters, includi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Watcher-name: string--><!--Device-Watcher-name: string-End-->
 
@@ -129,7 +129,7 @@ Subscription callback triggering condition. This parameter takes effect only whe
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Watcher-triggerCondition?: TriggerCondition--><!--Device-Watcher-triggerCondition?: TriggerCondition-End-->
 

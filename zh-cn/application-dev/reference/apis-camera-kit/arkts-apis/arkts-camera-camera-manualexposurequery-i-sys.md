@@ -48,6 +48,7 @@ Obtains the supported manual exposure durations.
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,3 +57,5 @@ function getSupportedExposureRange(nightPhotoSession: camera.NightPhotoSession):
   return exposureRange;
 }
 ```
+
+<!--DelEnd-->

@@ -6,7 +6,7 @@ interface Display
 
 屏幕实例。描述Display对象的属性和方法。
 
-下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays1)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
 
 **起始版本：** 7
 
@@ -19,6 +19,8 @@ interface Display
 ```TypeScript
 import { display } from '@kit.ArkUI';
 ```
+
+<a id="hasimmersivewindow1"></a>
 
 ## hasImmersiveWindow
 
@@ -47,10 +49,11 @@ hasImmersiveWindow(callback: AsyncCallback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,7 +74,9 @@ displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
 });
 ```
 
-<a id="hasimmersivewindow-1"></a>
+<!--DelEnd-->
+
+<a id="hasimmersivewindow2"></a>
 
 ## hasImmersiveWindow
 
@@ -100,10 +105,11 @@ hasImmersiveWindow(): Promise<boolean>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -121,3 +127,5 @@ promise.then((data) => {
   console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

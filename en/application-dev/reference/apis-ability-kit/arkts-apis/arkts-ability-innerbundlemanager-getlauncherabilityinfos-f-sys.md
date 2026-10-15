@@ -6,6 +6,8 @@
 import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
+<a id="getlauncherabilityinfos1"></a>
+
 ## getLauncherAbilityInfos
 
 ```TypeScript
@@ -25,7 +27,7 @@ Obtains an array of the launcher ability information based on a given bundle nam
 
 **Deprecated since:** 9
 
-**Substitutes:** [getLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md)(bundleName: string, userId: number, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;)
+**Substitutes:** [getLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -41,10 +43,10 @@ Obtains an array of the launcher ability information based on a given bundle nam
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
 | userId | number | Yes | User ID. The value must be greater than or equal to 0. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Yes | Callback used to return an array of the launcher ability information. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Yes | Callback used to return an array of the launcher ability information. |
 
 
-<a id="getlauncherabilityinfos-1"></a>
+<a id="getlauncherabilityinfos2"></a>
 
 ## getLauncherAbilityInfos
 
@@ -64,7 +66,7 @@ Obtains an array of the launcher ability information based on a given bundle nam
 
 **Deprecated since:** 9
 
-**Substitutes:** [getLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md)(bundleName: string, userId: number, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;)
+**Substitutes:** [getLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -85,4 +87,4 @@ Obtains an array of the launcher ability information based on a given bundle nam
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Promise used to return an array of the launcher ability information. |
+| Promise&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Promise used to return an array of the launcher ability information. |

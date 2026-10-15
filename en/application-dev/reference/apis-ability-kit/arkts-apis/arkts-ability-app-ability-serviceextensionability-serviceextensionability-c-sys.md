@@ -44,6 +44,7 @@ Called when the configuration of this ServiceExtensionAbility is updated.
 | --- | --- | --- | --- |
 | newConfig | [Configuration](arkts-ability-app-ability-configuration-configuration-i.md) | Yes | New configuration. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,6 +56,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onConnect
 
@@ -86,6 +89,7 @@ Called following **onCreate()** when a ServiceExtensionAbility is started by cal
 | --- | --- |
 | [rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md) &#124; Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | RemoteObject or Promise used to return a RemoteObject, which is used for communication between the client and server. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -133,6 +137,8 @@ class ServiceExt extends ServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onCreate
 
 ```TypeScript
@@ -157,6 +163,7 @@ Called to initialize the service logic when a ServiceExtensionAbility is being c
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want information related to this ServiceExtensionAbility, including the ability name and bundle name. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -168,6 +175,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDestroy
 
@@ -187,6 +196,7 @@ Called to clear resources when this ServiceExtensionAbility is being destroyed.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -198,6 +208,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDisconnect
 
@@ -223,6 +235,7 @@ Called when a client is disconnected from this ServiceExtensionAbility. This API
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want information related to this ServiceExtensionAbility, including the ability name and bundle name. |
 
+<!--Del-->
 **Examples**
 
 A synchronous callback example is as follows:
@@ -249,6 +262,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDump
 
@@ -280,6 +295,7 @@ Dumps the client information.
 | --- | --- |
 | Array&lt;string&gt; | Array of client information. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -292,6 +308,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onReconnect
 
@@ -317,6 +335,7 @@ Called when a new client attempts to connect to this ServiceExtensionAbility aft
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want information related to this ServiceExtensionAbility, including the ability name and bundle name. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -328,6 +347,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onRequest
 
@@ -354,6 +375,7 @@ Called following **onCreate()** when a ServiceExtensionAbility is started by cal
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want information related to this ServiceExtensionAbility, including the ability name and bundle name. |
 | startId | number | Yes | Number of times the instance has been started. The initial value is **1** for the first start, and it increments automatically for subsequent starts. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -365,6 +387,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

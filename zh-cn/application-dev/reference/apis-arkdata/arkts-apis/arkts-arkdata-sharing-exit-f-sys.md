@@ -6,6 +6,8 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="exit1"></a>
+
 ## exit
 
 ```TypeScript
@@ -34,9 +36,10 @@ function exit(sharingResource: string, callback: AsyncCallback<Result<void>>): v
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,8 +54,10 @@ cloudData.sharing.exit('sharing_resource_test', (err: BusinessError, result) => 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="exit-1"></a>
+
+<a id="exit2"></a>
 
 ## exit
 
@@ -87,9 +92,10 @@ function exit(sharingResource: string): Promise<Result<void>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -101,3 +107,5 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
   console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

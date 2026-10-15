@@ -41,6 +41,7 @@ Switches the uninstall state of an application. This API is independent of EDM a
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700060](../errorcode-bundle.md#17700060-specified-application-cannot-be-uninstalled) | The specified application cannot be uninstalled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
   hilog.error(0x0000, 'testTag', 'switchUninstallState failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

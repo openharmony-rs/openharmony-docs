@@ -30,7 +30,7 @@ NDEF record ID, which consists of hexadecimal numbers ranging from **0x00** to *
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefRecord-id: int[]--><!--Device-NdefRecord-id: int[]-End-->
 
@@ -48,7 +48,7 @@ NDEF payload, which consists of hexadecimal numbers ranging from **0x00** to **0
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefRecord-payload: int[]--><!--Device-NdefRecord-payload: int[]-End-->
 
@@ -66,7 +66,7 @@ Record type definition (RTD) of the NDEF record. It consists of hexadecimal numb
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefRecord-rtdType: int[]--><!--Device-NdefRecord-rtdType: int[]-End-->
 
@@ -84,7 +84,7 @@ Type name field (TNF) of the NDEF record.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NdefRecord-tnf: int--><!--Device-NdefRecord-tnf: int-End-->
 

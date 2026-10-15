@@ -26,6 +26,8 @@ OffscreenCanvas组件用于绘制自定义图形。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -53,7 +55,7 @@ constructor(width: number, height: number)
 | width | number | 是 | OffscreenCanvas组件的宽度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
 | height | number | 是 | OffscreenCanvas组件的高度。<br>异常值NaN和Infinity按无效值处理。<br>默认单位为vp。 |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

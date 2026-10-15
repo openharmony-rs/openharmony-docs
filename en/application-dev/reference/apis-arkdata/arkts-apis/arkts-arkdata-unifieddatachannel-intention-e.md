@@ -24,7 +24,7 @@ Public data channel.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Intention-DATA_HUB = 'DataHub'--><!--Device-Intention-DATA_HUB = 'DataHub'-End-->
 
@@ -48,21 +48,21 @@ Channel in which data can be dragged and dropped.
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-## SYSTEM_SHARE
+## MENU
 
 ```TypeScript
-SYSTEM_SHARE = 'SystemShare'
+MENU = 'Menu'
 ```
 
-Data channel of the system sharing type.
+Data channel of the menu type.
 
-**Use scenario**: This API is used to share data across applications in system sharing scenarios.
+**Use scenario**: This API is used to share data across applications in the shortcut menu.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-Intention-SYSTEM_SHARE = 'SystemShare'--><!--Device-Intention-SYSTEM_SHARE = 'SystemShare'-End-->
+<!--Device-Intention-MENU = 'Menu'--><!--Device-Intention-MENU = 'Menu'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -84,20 +84,20 @@ Data channel of the picker type.
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-## MENU
+## SYSTEM_SHARE
 
 ```TypeScript
-MENU = 'Menu'
+SYSTEM_SHARE = 'SystemShare'
 ```
 
-Data channel of the menu type.
+Data channel of the system sharing type.
 
-**Use scenario**: This API is used to share data across applications in the shortcut menu.
+**Use scenario**: This API is used to share data across applications in system sharing scenarios.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-Intention-MENU = 'Menu'--><!--Device-Intention-MENU = 'Menu'-End-->
+<!--Device-Intention-SYSTEM_SHARE = 'SystemShare'--><!--Device-Intention-SYSTEM_SHARE = 'SystemShare'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

@@ -32,7 +32,7 @@ Indicates the peer device address
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-BLEConnectionChangeState-deviceId: string--><!--Device-BLEConnectionChangeState-deviceId: string-End-->
 
@@ -52,7 +52,7 @@ Reason of the disconnection of the gatt connection.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BLEConnectionChangeState-reason?: GattDisconnectReason--><!--Device-BLEConnectionChangeState-reason?: GattDisconnectReason-End-->
 
@@ -72,7 +72,7 @@ Reason message of the disconnection of the gatt connection.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-BLEConnectionChangeState-reasonMessage?: string--><!--Device-BLEConnectionChangeState-reasonMessage?: string-End-->
 
@@ -92,7 +92,7 @@ Connection state of the Gatt profile
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-BLEConnectionChangeState-state: ProfileConnectionState--><!--Device-BLEConnectionChangeState-state: ProfileConnectionState-End-->
 

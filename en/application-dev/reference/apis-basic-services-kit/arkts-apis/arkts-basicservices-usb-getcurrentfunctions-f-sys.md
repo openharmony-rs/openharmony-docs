@@ -32,8 +32,11 @@ Obtains the numeric mask combination for the USB function list in Device mode.
 | --- | --- |
 | [FunctionType](arkts-basicservices-usb-functiontype-e-sys.md) | Numeric mask combination for the USB function list. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let ret = usb.getCurrentFunctions();
 ```
+
+<!--DelEnd-->

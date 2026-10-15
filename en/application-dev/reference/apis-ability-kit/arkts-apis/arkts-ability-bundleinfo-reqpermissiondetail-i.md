@@ -28,7 +28,7 @@ Name of the module that requests the permission.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ReqPermissionDetail-moduleName: string--><!--Device-ReqPermissionDetail-moduleName: string-End-->
 
@@ -46,7 +46,7 @@ name: string
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ReqPermissionDetail-name: string--><!--Device-ReqPermissionDetail-name: string-End-->
 
@@ -64,7 +64,7 @@ Reason for requesting the permission.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ReqPermissionDetail-reason: string--><!--Device-ReqPermissionDetail-reason: string-End-->
 
@@ -82,7 +82,7 @@ ID of the reason for requesting the permission.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ReqPermissionDetail-reasonId: long--><!--Device-ReqPermissionDetail-reasonId: long-End-->
 
@@ -100,7 +100,7 @@ Use scenario and timing for using the permission.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ReqPermissionDetail-usedScene: UsedScene--><!--Device-ReqPermissionDetail-usedScene: UsedScene-End-->
 

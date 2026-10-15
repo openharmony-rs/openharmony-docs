@@ -5,13 +5,15 @@
 ```TypeScript
 ```
 
+<a id="getuid1"></a>
+
 ## getUid
 
 ```TypeScript
 function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 ```
 
-Obtains the UID of a WantAgent.
+Obtains the user ID of a WantAgent object. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
@@ -87,7 +89,7 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getuid-1"></a>
+<a id="getuid2"></a>
 
 ## getUid
 
@@ -95,7 +97,7 @@ wantAgent.getWantAgent({
 function getUid(agent: WantAgent): Promise<number>
 ```
 
-Obtains the UID of a WantAgent.
+Obtains the user ID of a WantAgent object. This API uses a promise to return the result.
 
 **Since:** 7
 
@@ -119,7 +121,7 @@ Obtains the UID of a WantAgent.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Returns the UID of the [WantAgent](arkts-ability-wantagent-depr-t.md) if any; returns `-1` otherwise. |
+| Promise&lt;number&gt; | Promise used to return the user ID. |
 
 **Examples**
 

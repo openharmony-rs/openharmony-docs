@@ -4,9 +4,7 @@
 interface BundleChangedInfo
 ```
 
-This module defines the result information of monitoring install, update and uninstall.
-
-@typedef BundleChangedInfo
+Application Change Information.
 
 **Since:** 9
 
@@ -28,7 +26,7 @@ import { bundleMonitor } from '@kit.AbilityKit';
 readonly appIndex: number
 ```
 
-The app index of clone app
+Index of the application clone whose status changes.
 
 **Type:** number
 
@@ -46,7 +44,7 @@ The app index of clone app
 readonly bundleName: string
 ```
 
-The bundle name
+Name of the bundle whose status changes.
 
 **Type:** string
 
@@ -64,7 +62,7 @@ The bundle name
 readonly userId: number
 ```
 
-The user id
+ID of the user for whom the bundle status changes. You can obtain the ID by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid).
 
 **Type:** number
 

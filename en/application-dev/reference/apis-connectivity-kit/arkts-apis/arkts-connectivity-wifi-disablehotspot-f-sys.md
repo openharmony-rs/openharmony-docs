@@ -36,6 +36,7 @@ Disables a Wi-Fi hotspot.
 | --- | --- |
 | boolean | Returns `true` if this method is called successfully, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -47,3 +48,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

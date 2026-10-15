@@ -30,7 +30,7 @@ If the progress indicator provided by the system is not used, the system reports
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-ProgressInfo-progress: int--><!--Device-ProgressInfo-progress: int-End-->
 

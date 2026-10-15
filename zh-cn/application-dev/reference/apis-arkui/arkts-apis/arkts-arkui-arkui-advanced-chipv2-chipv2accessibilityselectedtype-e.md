@@ -12,24 +12,6 @@ ChipV2AccessibilitySelectedType是ChipV2可指定的选中态类型，用于控�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## CLICKED
-
-```TypeScript
-CLICKED = 0
-```
-
-单击型。组件不向无障碍辅助服务报告任何选中状态，仅作为可单击组件使用。适用于执行某个操作但不保持状态的场景，如普通按钮。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0--><!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## CHECKED
 
 ```TypeScript
@@ -45,6 +27,24 @@ CHECKED = 1
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ChipV2AccessibilitySelectedType-CHECKED = 1--><!--Device-ChipV2AccessibilitySelectedType-CHECKED = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CLICKED
+
+```TypeScript
+CLICKED = 0
+```
+
+单击型。组件不向无障碍辅助服务报告任何选中状态，仅作为可单击组件使用。适用于执行某个操作但不保持状态的场景，如普通按钮。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0--><!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

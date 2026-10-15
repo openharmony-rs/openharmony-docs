@@ -34,7 +34,7 @@ clearMem(): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-clearMem(): void--><!--Device-PriKey-clearMem(): void-End-->
 
@@ -70,7 +70,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int--><!--Device-PriKey-getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int-End-->
 
@@ -94,7 +94,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -153,7 +153,7 @@ getEncodedDer(format: string): DataBlob
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getEncodedDer(format: string): DataBlob--><!--Device-PriKey-getEncodedDer(format: string): DataBlob-End-->
 
@@ -175,7 +175,7 @@ getEncodedDer(format: string): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -198,6 +198,8 @@ async function testGetEncodedDer() {
 }
 ```
 
+<a id="getencodedpem1"></a>
+
 ## getEncodedPem
 
 ```TypeScript
@@ -208,7 +210,7 @@ getEncodedPem(format: string): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getEncodedPem(format: string): string--><!--Device-PriKey-getEncodedPem(format: string): string-End-->
 
@@ -230,7 +232,7 @@ getEncodedPem(format: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -267,7 +269,7 @@ function testPriKeyPkcs1ToPkcs8BySync1024() {
 }
 ```
 
-<a id="getencodedpem-1"></a>
+<a id="getencodedpem2"></a>
 
 ## getEncodedPem
 
@@ -279,7 +281,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getEncodedPem(format: string, config: KeyEncodingConfig): string--><!--Device-PriKey-getEncodedPem(format: string, config: KeyEncodingConfig): string-End-->
 
@@ -302,7 +304,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -354,7 +356,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>--><!--Device-PriKey-getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>-End-->
 
@@ -409,7 +411,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array--><!--Device-PriKey-getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array-End-->
 
@@ -460,7 +462,7 @@ getPubKey(): Promise<PubKey>
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getPubKey(): Promise<PubKey>--><!--Device-PriKey-getPubKey(): Promise<PubKey>-End-->
 
@@ -563,7 +565,7 @@ getPubKeySync(): PubKey
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-PriKey-getPubKeySync(): PubKey--><!--Device-PriKey-getPubKeySync(): PubKey-End-->
 

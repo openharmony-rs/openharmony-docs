@@ -4,7 +4,7 @@
 interface TonePlayer
 ```
 
-提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md)创建实例。
+提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer1)创建实例。
 
 **起始版本：** 9
 
@@ -19,6 +19,8 @@ interface TonePlayer
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
+
+<a id="load1"></a>
 
 ## load
 
@@ -43,6 +45,7 @@ load(type: ToneType, callback: AsyncCallback<void>): void
 | type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | 配置的音调类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当加载DTMF音调配置成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,7 +61,9 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
 });
 ```
 
-<a id="load-1"></a>
+<!--DelEnd-->
+
+<a id="load2"></a>
 
 ## load
 
@@ -88,6 +93,7 @@ load(type: ToneType): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -97,6 +103,10 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
   console.error('promise call load fail');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="release1"></a>
 
 ## release
 
@@ -120,6 +130,7 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放与此TonePlayer对象关联的资源成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -135,7 +146,9 @@ tonePlayer.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<!--DelEnd-->
+
+<a id="release2"></a>
 
 ## release
 
@@ -159,6 +172,7 @@ release(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -168,6 +182,10 @@ tonePlayer.release().then(() => {
   console.error('promise call release fail');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="start1"></a>
 
 ## start
 
@@ -191,6 +209,7 @@ start(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动DTMF音调播放成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -206,7 +225,9 @@ tonePlayer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<!--DelEnd-->
+
+<a id="start2"></a>
 
 ## start
 
@@ -230,6 +251,7 @@ start(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -239,6 +261,10 @@ tonePlayer.start().then(() => {
   console.error('promise call start fail');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="stop1"></a>
 
 ## stop
 
@@ -262,6 +288,7 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止当前正在播放的音调成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -277,7 +304,9 @@ tonePlayer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop-1"></a>
+<!--DelEnd-->
+
+<a id="stop2"></a>
 
 ## stop
 
@@ -301,6 +330,7 @@ stop(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -310,3 +340,5 @@ tonePlayer.stop().then(() => {
   console.error('promise call stop fail');
 });
 ```
+
+<!--DelEnd-->

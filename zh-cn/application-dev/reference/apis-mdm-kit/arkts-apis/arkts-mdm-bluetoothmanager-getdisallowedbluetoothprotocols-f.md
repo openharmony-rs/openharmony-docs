@@ -6,6 +6,8 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedbluetoothprotocols1"></a>
+
 ## getDisallowedBluetoothProtocols
 
 ```TypeScript
@@ -69,7 +71,7 @@ try {
 ```
 
 
-<a id="getdisallowedbluetoothprotocols-1"></a>
+<a id="getdisallowedbluetoothprotocols2"></a>
 
 ## getDisallowedBluetoothProtocols
 
@@ -81,7 +83,7 @@ function getDisallowedBluetoothProtocols(admin: Want | null, accountId: number, 
 
 > **说明：** 
 > 
-> 1. 本接口与[getDisallowedBluetoothProtocols&lt;sup&gt;20+&lt;/sup&gt;](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md)接口为重载接口。本接口增加了policy参数，用于按传输策略查询对应的禁用配置。
+> 1. 本接口与[getDisallowedBluetoothProtocols<sup>20+</sup>](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md)接口为重载接口。本接口增加了policy参数，用于按传输策略查询对应的禁用配置。
 
 **起始版本：** 26.0.0
 

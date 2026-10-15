@@ -4,7 +4,7 @@
 interface AVPlayer
 ```
 
-播放管理类，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-media-media-createavplayer-f.md)构建一个AVPlayer实例。
+播放管理类，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer1)构建一个AVPlayer实例。
 
 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](arkts-media-media-avplayer-i.md#onstatechange)：监听播放状态机AVPlayerState切换。[on('error')](arkts-media-media-avplayer-i.md#onerror)：监听错误事件。
 
@@ -38,7 +38,7 @@ enableCameraPostprocessing(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVPlayer-enableCameraPostprocessing(): Promise<void>--><!--Device-AVPlayer-enableCameraPostprocessing(): Promise<void>-End-->
 
@@ -60,7 +60,10 @@ enableCameraPostprocessing(): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 
+<!--Del-->
 **示例**
+
+<!--DelEnd-->
 
 ## forceLoadVideo
 
@@ -98,6 +101,7 @@ forceLoadVideo(force: boolean): Promise<void>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -107,6 +111,8 @@ async function test(){
   avPlayer.forceLoadVideo(true);
 }
 ```
+
+<!--DelEnd-->
 
 ## getCurrentTrack
 
@@ -148,6 +154,7 @@ getCurrentTrack(trackType: MediaType): Promise<number>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -166,6 +173,8 @@ async function test(){
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## enableStartFrameRateOpt
 

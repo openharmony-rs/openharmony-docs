@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="cancelall1"></a>
+
 ## cancelAll
 
 ```TypeScript
@@ -24,9 +26,9 @@ After cancellation, all notifications of the current application will be removed
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-1) cancels a published notification based on the notification ID and label.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel2) cancels a published notification based on the notification ID and label.
 
 **Parameters:**
 
@@ -38,7 +40,7 @@ After cancellation, all notifications of the current application will be removed
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -60,7 +62,7 @@ notificationManager.cancelAll(cancelAllCallback);
 ```
 
 
-<a id="cancelall-1"></a>
+<a id="cancelall2"></a>
 
 ## cancelAll
 
@@ -80,9 +82,9 @@ After cancellation, all notifications of the current application will be removed
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish-1) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish2) publishes a notification.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) cancels a notification with the specified ID.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel3) cancels a notification with the specified ID.
 
 **Return value:**
 

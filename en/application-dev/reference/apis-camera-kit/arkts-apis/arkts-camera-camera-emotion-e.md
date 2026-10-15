@@ -22,7 +22,7 @@ Neutral.
 
 **Since:** 26.0.0
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-Emotion-NEUTRAL = 0--><!--Device-Emotion-NEUTRAL = 0-End-->
 
@@ -38,7 +38,7 @@ Sad.
 
 **Since:** 26.0.0
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-Emotion-SADNESS = 1--><!--Device-Emotion-SADNESS = 1-End-->
 
@@ -54,7 +54,7 @@ Smile.
 
 **Since:** 26.0.0
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-Emotion-SMILE = 2--><!--Device-Emotion-SMILE = 2-End-->
 
@@ -70,7 +70,7 @@ Surprise.
 
 **Since:** 26.0.0
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-Emotion-SURPRISE = 3--><!--Device-Emotion-SURPRISE = 3-End-->
 

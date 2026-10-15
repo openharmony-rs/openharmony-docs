@@ -6,6 +6,8 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
+<a id="getcfgdirlist1"></a>
+
 ## getCfgDirList
 
 ```TypeScript
@@ -26,7 +28,7 @@ Obtains a list of configuration level directories, in ascending order of priorit
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the result. If the list of configuration level directories is successfully obtained, &lt;strong&gt;err&lt;/strong&gt; is &lt;strong&gt;undefined&lt;/strong&gt;, and &lt;strong&gt;data&lt;/strong&gt; is the obtained list. Otherwise, &lt;strong&gt;err&lt;/strong&gt; is an error object. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the result. If the list of configuration level directories is successfully obtained,<strong>err</strong> is <strong>undefined</strong>, and <strong>data</strong> is the obtained list. Otherwise, <strong>err</strong> is an error object. |
 
 **Error codes:**
 
@@ -35,7 +37,7 @@ Obtains a list of configuration level directories, in ascending order of priorit
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getcfgdirlist-1"></a>
+<a id="getcfgdirlist2"></a>
 
 ## getCfgDirList
 

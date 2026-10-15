@@ -44,7 +44,7 @@ static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceColor | ResourceColor | 是 | ResourceColor格式的颜色值（支持所有的4种输入，示例中提供10个示例输入）。其中第4种类型[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)只接受``$r('belonging.type.name')``构造方法，需要确保该资源在main/resources/base/element目录下已定义(app支持color、string和integer，sys只支持color)。 |
+| resourceColor | ResourceColor | 是 | ResourceColor格式的颜色值（支持所有的4种输入，示例中提供10个示例输入）。其中第4种类型[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)只接受``$r('belonging.type.name')``构造方法，需要确保该资源在main/resources/base/element目录下已定义(app支持color、string和integer，sys只支持color)。 |
 
 **返回值：**
 

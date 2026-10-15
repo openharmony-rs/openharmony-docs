@@ -36,6 +36,7 @@ Called when the first frame of the ability is rendered.
 | --- | --- | --- | --- |
 | data | [AbilityFirstFrameStateData](arkts-ability-abilityfirstframestatedata-i-sys.md) | Yes | Data returned after the first frame is rendered. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,3 +59,5 @@ try {
   console.error(`appmanager.on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
+
+<!--DelEnd-->

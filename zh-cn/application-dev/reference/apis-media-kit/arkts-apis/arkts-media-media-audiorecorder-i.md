@@ -55,7 +55,7 @@ on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset'
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'prepare' &#124; 'start' &#124; 'pause' &#124; 'resume' &#124; 'stop' &#124; 'release' &#124; 'reset' | 是 | 录制事件回调类型，支持的事件包括：'prepare' &#124; 'start' &#124; 'pause' &#124; 'resume' &#124; 'stop' &#124; 'release' &#124; 'reset'。<br>   - 'prepare' ：完成prepare调用，音频录制参数设置完成，触发该事件。<br>   - 'start' ：完成start调用，音频录制开始，触发该事件。<br>   - 'pause' ：完成pause调用，音频暂停录制，触发该事件。<br>   - 'resume' ：完成resume调用，音频恢复录制，触发该事件。<br>   - 'stop' ：完成stop调用，音频停止录制，触发该事件。<br>   - 'release' ：完成release调用，音频释放录制资源，触发该事件。<br>   - 'reset' ：完成reset调用，音频重置为初始状态，触发该事件。 |
+| type | 'prepare' &#124; 'start' &#124; 'pause' &#124; 'resume' &#124; 'stop' &#124; 'release' &#124; 'reset' | 是 | 录制事件回调类型，支持的事件包括：'prepare' &#124; 'start' &#124; 'pause' &#124; 'resume' &#124; 'stop' &#124; 'release' &#124; 'reset'。<br>           - 'prepare' ：完成prepare调用，音频录制参数设置完成，触发该事件。<br>           - 'start' ：完成start调用，音频录制开始，触发该事件。<br>           - 'pause' ：完成pause调用，音频暂停录制，触发该事件。<br>           - 'resume' ：完成resume调用，音频恢复录制，触发该事件。<br>           - 'stop' ：完成stop调用，音频停止录制，触发该事件。<br>           - 'release' ：完成release调用，音频释放录制资源，触发该事件。<br>           - 'reset' ：完成reset调用，音频重置为初始状态，触发该事件。 |
 | callback | () =&gt; void | 是 | 录制事件回调方法。 |
 
 ## on('error')
@@ -100,13 +100,13 @@ pause(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVRecorder.pause](arkts-media-media-avrecorder-i.md#pause)替代。
+> [AVRecorder.pause](arkts-media-media-avrecorder-i.md#pause1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [pause](arkts-media-media-avrecorder-i.md#pause)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [pause](arkts-media-media-avrecorder-i.md#pause1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-pause(): void--><!--Device-AudioRecorder-pause(): void-End-->
 
@@ -123,14 +123,14 @@ prepare(config: AudioRecorderConfig): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVRecorder.prepare](arkts-media-media-avrecorder-i.md#prepare)
+> [AVRecorder.prepare](arkts-media-media-avrecorder-i.md#prepare1)
 > 替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [prepare](arkts-media-media-avrecorder-i.md#prepare)(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [prepare](arkts-media-media-avrecorder-i.md#prepare1)(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -161,13 +161,13 @@ release(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVRecorder.release](arkts-media-media-avrecorder-i.md#release)替代。
+> [AVRecorder.release](arkts-media-media-avrecorder-i.md#release1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [release](arkts-media-media-avrecorder-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [release](arkts-media-media-avrecorder-i.md#release1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-release(): void--><!--Device-AudioRecorder-release(): void-End-->
 
@@ -186,13 +186,13 @@ reset(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVRecorder.reset](arkts-media-media-avrecorder-i.md#reset)替代。
+> [AVRecorder.reset](arkts-media-media-avrecorder-i.md#reset1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [reset](arkts-media-media-avrecorder-i.md#reset)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [reset](arkts-media-media-avrecorder-i.md#reset1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-reset(): void--><!--Device-AudioRecorder-reset(): void-End-->
 
@@ -209,13 +209,13 @@ resume(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVRecorder.resume](arkts-media-media-avrecorder-i.md#resume)替代。
+> [AVRecorder.resume](arkts-media-media-avrecorder-i.md#resume1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [resume](arkts-media-media-avrecorder-i.md#resume)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [resume](arkts-media-media-avrecorder-i.md#resume1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-resume(): void--><!--Device-AudioRecorder-resume(): void-End-->
 
@@ -232,13 +232,13 @@ start(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVRecorder.start](arkts-media-media-avrecorder-i.md#start)替代。
+> [AVRecorder.start](arkts-media-media-avrecorder-i.md#start1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [start](arkts-media-media-avrecorder-i.md#start)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [start](arkts-media-media-avrecorder-i.md#start1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-start(): void--><!--Device-AudioRecorder-start(): void-End-->
 
@@ -255,13 +255,13 @@ stop(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVRecorder.stop](arkts-media-media-avrecorder-i.md#stop)替代。
+> [AVRecorder.stop](arkts-media-media-avrecorder-i.md#stop1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [stop](arkts-media-media-avrecorder-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-media-media-avrecorder-i.md#stop1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-stop(): void--><!--Device-AudioRecorder-stop(): void-End-->
 

@@ -8,6 +8,8 @@ Parameters corresponding to continue mission.
 
 @typedef { _ContinueDeviceInfo }
 
+**Type:** _ContinueDeviceInfo
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Parameters corresponding to continue mission.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
-
-**Type:** _ContinueDeviceInfo

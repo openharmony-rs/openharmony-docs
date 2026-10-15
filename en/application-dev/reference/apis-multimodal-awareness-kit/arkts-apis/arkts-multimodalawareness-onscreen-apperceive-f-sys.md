@@ -53,17 +53,20 @@ Proactively triggers screen content awareness to obtain the screen content for s
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-specified-capability-not-supported) | The application or page is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   groupId: 'SmartEdge'
 }
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.apperceive(onscreenAwarenessCap);
-  console.error(`apperceive resultCode: ${info[0].resultCode}`);
+  console.info(`apperceive resultCode: ${info[0].resultCode}`);
 } catch (err) {
-  console.info(`apperceive failed, error: ${err}`);
+  console.error(`apperceive failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

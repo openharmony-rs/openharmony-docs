@@ -12,13 +12,13 @@ export enum HuksTagType
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-## HUKS_TAG_TYPE_INVALID
+## HUKS_TAG_TYPE_BOOL
 
 ```TypeScript
-HUKS_TAG_TYPE_INVALID = 0 << 28
+HUKS_TAG_TYPE_BOOL = 4 << 28
 ```
 
-表示非法的Tag类型。
+表示该Tag的数据类型为boolean。
 
 **起始版本：** 8
 
@@ -26,7 +26,25 @@ HUKS_TAG_TYPE_INVALID = 0 << 28
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksTagType-HUKS_TAG_TYPE_INVALID = 0 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_INVALID = 0 << 28-End-->
+<!--Device-HuksTagType-HUKS_TAG_TYPE_BOOL = 4 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_BOOL = 4 << 28-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+## HUKS_TAG_TYPE_BYTES
+
+```TypeScript
+HUKS_TAG_TYPE_BYTES = 5 << 28
+```
+
+表示该Tag的数据类型为Uint8Array。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksTagType-HUKS_TAG_TYPE_BYTES = 5 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_BYTES = 5 << 28-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -45,6 +63,24 @@ HUKS_TAG_TYPE_INT = 1 << 28
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksTagType-HUKS_TAG_TYPE_INT = 1 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_INT = 1 << 28-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+## HUKS_TAG_TYPE_INVALID
+
+```TypeScript
+HUKS_TAG_TYPE_INVALID = 0 << 28
+```
+
+表示非法的Tag类型。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksTagType-HUKS_TAG_TYPE_INVALID = 0 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_INVALID = 0 << 28-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -81,41 +117,5 @@ HUKS_TAG_TYPE_ULONG = 3 << 28
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksTagType-HUKS_TAG_TYPE_ULONG = 3 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_ULONG = 3 << 28-End-->
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-## HUKS_TAG_TYPE_BOOL
-
-```TypeScript
-HUKS_TAG_TYPE_BOOL = 4 << 28
-```
-
-表示该Tag的数据类型为boolean。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksTagType-HUKS_TAG_TYPE_BOOL = 4 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_BOOL = 4 << 28-End-->
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-## HUKS_TAG_TYPE_BYTES
-
-```TypeScript
-HUKS_TAG_TYPE_BYTES = 5 << 28
-```
-
-表示该Tag的数据类型为Uint8Array。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksTagType-HUKS_TAG_TYPE_BYTES = 5 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_BYTES = 5 << 28-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core

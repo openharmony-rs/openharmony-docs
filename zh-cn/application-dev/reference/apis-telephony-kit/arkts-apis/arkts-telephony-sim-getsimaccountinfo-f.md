@@ -6,6 +6,8 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getsimaccountinfo1"></a>
+
 ## getSimAccountInfo
 
 ```TypeScript
@@ -38,7 +40,7 @@ function getSimAccountInfo(slotId: number, callback: AsyncCallback<IccAccountInf
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 10 - 22 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -62,7 +64,7 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 ```
 
 
-<a id="getsimaccountinfo-1"></a>
+<a id="getsimaccountinfo2"></a>
 
 ## getSimAccountInfo
 
@@ -101,7 +103,7 @@ function getSimAccountInfo(slotId: number): Promise<IccAccountInfo>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 10 - 22 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |

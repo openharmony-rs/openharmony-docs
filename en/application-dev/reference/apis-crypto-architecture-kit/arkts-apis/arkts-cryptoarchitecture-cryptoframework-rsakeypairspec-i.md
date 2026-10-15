@@ -36,7 +36,7 @@ Common parameters of the public and private keys in the RSA algorithm.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-RSAKeyPairSpec-params: RSACommonParamsSpec--><!--Device-RSAKeyPairSpec-params: RSACommonParamsSpec-End-->
 
@@ -56,7 +56,7 @@ Public key **pk** in the RSA algorithm.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-RSAKeyPairSpec-pk: bigint--><!--Device-RSAKeyPairSpec-pk: bigint-End-->
 
@@ -76,7 +76,7 @@ Private key **sk** in the RSA algorithm.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-RSAKeyPairSpec-sk: bigint--><!--Device-RSAKeyPairSpec-sk: bigint-End-->
 

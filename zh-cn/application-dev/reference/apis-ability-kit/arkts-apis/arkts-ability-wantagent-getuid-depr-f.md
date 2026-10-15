@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getuid1"></a>
+
 ## getUid
 
 ```TypeScript
@@ -87,7 +89,7 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getuid-1"></a>
+<a id="getuid2"></a>
 
 ## getUid
 

@@ -4,7 +4,7 @@
 declare class SwipeRecognizer extends GestureRecognizer
 ```
 
-Implements a swipe gesture recognizer. Inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md).
+Defines the swipe gesture recognizer object, which inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) and supports querying the velocity threshold and swipe direction of the swipe gesture. It is applicable to querying the swipe gesture recognition configuration.
 
 **Inheritance/Implementation:** SwipeRecognizer extends [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)
 
@@ -44,7 +44,7 @@ Obtains the direction for recognizing swipe gestures.
 getVelocityThreshold(): number
 ```
 
-Obtains the minimum velocity required for the swipe gesture to be recognized.
+Returns the minimum velocity threshold for the preset swipe gesture recognizer to recognize a swipe. The default minimum velocity is 100 vp/s.
 
 **Since:** 18
 
@@ -60,4 +60,4 @@ Obtains the minimum velocity required for the swipe gesture to be recognized.
 
 | Type | Description |
 | --- | --- |
-| number | Minimum velocity required for the swipe gesture to be recognized, in vp/s.<br>Value range: [0, +∞) |
+| number | Minimum velocity threshold for the preset swipe gesture recognizer to recognize a swipe, in vp/s. If no velocity threshold is configured, the default value 100vp/s is returned.<br>Value range: [0, +∞) |

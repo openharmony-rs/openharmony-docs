@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="getimsshortmessageformat1"></a>
+
 ## getImsShortMessageFormat
 
 ```TypeScript
@@ -39,6 +41,7 @@ function getImsShortMessageFormat(callback: AsyncCallback<string>): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -50,8 +53,10 @@ sms.getImsShortMessageFormat((err: BusinessError, data: string) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getimsshortmessageformat-1"></a>
+
+<a id="getimsshortmessageformat2"></a>
 
 ## getImsShortMessageFormat
 
@@ -84,6 +89,7 @@ function getImsShortMessageFormat(): Promise<string>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +102,5 @@ sms.getImsShortMessageFormat().then((data: string) => {
     console.error(`getImsShortMessageFormat failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -14,22 +14,6 @@ enum VideoEnhancementType
 
 **系统接口：** 此接口为系统接口。
 
-## QUALITY_ENHANCEMENT_LOCAL
-
-```TypeScript
-QUALITY_ENHANCEMENT_LOCAL = 0
-```
-
-在端侧增强处理。
-
-**起始版本：** 13
-
-<!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL = 0--><!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## QUALITY_ENHANCEMENT_CLOUD
 
 ```TypeScript
@@ -41,6 +25,22 @@ QUALITY_ENHANCEMENT_CLOUD = 1
 **起始版本：** 13
 
 <!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_CLOUD = 1--><!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_CLOUD = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## QUALITY_ENHANCEMENT_LOCAL
+
+```TypeScript
+QUALITY_ENHANCEMENT_LOCAL = 0
+```
+
+在端侧增强处理。
+
+**起始版本：** 13
+
+<!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL = 0--><!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

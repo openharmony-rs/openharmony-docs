@@ -62,9 +62,11 @@ Index of the current page. During a finger swipe, this value remains constant as
 offset: number
 ```
 
-Displacement of the scroll action, which is signed to indicate different swipe directions. A positive value indicates a swipe from index=1 to index=0, while a negative value indicates a swipe from index=0 to index=1.
+Offset of this swipe, with a sign. The positive and negative signs indicate different page turn directions. Unit: vp
 
-This value represents the offset for each frame during a finger swipe and the distance for page turning when the mouse wheel or keyboard navigation is used.
+A positive value indicates turning from index=1 to index=0, and a negative value indicates turning from index=0 to index=1.
+
+In the finger swipe scenario, this value is the offset passed down in each frame of the swipe event. In the scenarios of scrolling the mouse wheel and using keyboard arrow keys for navigation, this value represents the distance of the upcoming page turn.
 
 **Type:** number
 

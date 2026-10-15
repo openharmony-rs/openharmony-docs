@@ -14,48 +14,6 @@ This API is used to define the notification reminder behavior level of Notificat
 
 **System capability:** SystemCapability.Notification.Notification
 
-## LEVEL_NONE
-
-```TypeScript
-LEVEL_NONE = 0
-```
-
-Notification is disabled.
-
-**Since:** 9
-
-<!--Device-SlotLevel-LEVEL_NONE = 0--><!--Device-SlotLevel-LEVEL_NONE = 0-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-## LEVEL_MIN
-
-```TypeScript
-LEVEL_MIN = 1
-```
-
-Notification is enabled, but the notification icon is not displayed in the status bar, with no alert tone and banner.
-
-**Since:** 9
-
-<!--Device-SlotLevel-LEVEL_MIN = 1--><!--Device-SlotLevel-LEVEL_MIN = 1-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-## LEVEL_LOW
-
-```TypeScript
-LEVEL_LOW = 2
-```
-
-Notification is enabled, and the notification icon is displayed in the status bar, with no alert tone and banner.
-
-**Since:** 9
-
-<!--Device-SlotLevel-LEVEL_LOW = 2--><!--Device-SlotLevel-LEVEL_LOW = 2-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
 ## LEVEL_DEFAULT
 
 ```TypeScript
@@ -81,5 +39,47 @@ Notification is enabled, and the notification icon is displayed in the status ba
 **Since:** 9
 
 <!--Device-SlotLevel-LEVEL_HIGH = 4--><!--Device-SlotLevel-LEVEL_HIGH = 4-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## LEVEL_LOW
+
+```TypeScript
+LEVEL_LOW = 2
+```
+
+Notification is enabled, and the notification icon is displayed in the status bar, with no alert tone and banner.
+
+**Since:** 9
+
+<!--Device-SlotLevel-LEVEL_LOW = 2--><!--Device-SlotLevel-LEVEL_LOW = 2-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## LEVEL_MIN
+
+```TypeScript
+LEVEL_MIN = 1
+```
+
+Notification is enabled, but the notification icon is not displayed in the status bar, with no alert tone and banner.
+
+**Since:** 9
+
+<!--Device-SlotLevel-LEVEL_MIN = 1--><!--Device-SlotLevel-LEVEL_MIN = 1-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## LEVEL_NONE
+
+```TypeScript
+LEVEL_NONE = 0
+```
+
+Notification is disabled.
+
+**Since:** 9
+
+<!--Device-SlotLevel-LEVEL_NONE = 0--><!--Device-SlotLevel-LEVEL_NONE = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification

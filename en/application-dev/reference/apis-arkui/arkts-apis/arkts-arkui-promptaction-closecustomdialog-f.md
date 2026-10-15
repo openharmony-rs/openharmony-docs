@@ -24,7 +24,7 @@ Closes the specified custom dialog box.
 
 **Deprecated since:** 18
 
-**Substitutes:** closeCustomDialog
+**Substitutes:** [closeCustomDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#closecustomdialog)
 
 **Model restriction:** This API can be used only in the stage model.
 

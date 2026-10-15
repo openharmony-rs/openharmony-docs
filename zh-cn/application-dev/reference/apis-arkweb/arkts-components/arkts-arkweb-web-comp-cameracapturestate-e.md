@@ -12,6 +12,20 @@ declare enum CameraCaptureState
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## ACTIVE
+
+```TypeScript
+ACTIVE = 2
+```
+
+摄像头捕获中。
+
+**起始版本：** 23
+
+<!--Device-CameraCaptureState-ACTIVE = 2--><!--Device-CameraCaptureState-ACTIVE = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## NONE
 
 ```TypeScript
@@ -37,19 +51,5 @@ PAUSED = 1
 **起始版本：** 23
 
 <!--Device-CameraCaptureState-PAUSED = 1--><!--Device-CameraCaptureState-PAUSED = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## ACTIVE
-
-```TypeScript
-ACTIVE = 2
-```
-
-摄像头捕获中。
-
-**起始版本：** 23
-
-<!--Device-CameraCaptureState-ACTIVE = 2--><!--Device-CameraCaptureState-ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

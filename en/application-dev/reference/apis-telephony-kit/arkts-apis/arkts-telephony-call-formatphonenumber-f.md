@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="formatphonenumber1"></a>
+
 ## formatPhoneNumber
 
 ```TypeScript
@@ -34,7 +36,7 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -58,7 +60,7 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
 ```
 
 
-<a id="formatphonenumber-1"></a>
+<a id="formatphonenumber2"></a>
 
 ## formatPhoneNumber
 
@@ -93,7 +95,7 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -115,7 +117,7 @@ call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
 ```
 
 
-<a id="formatphonenumber-2"></a>
+<a id="formatphonenumber3"></a>
 
 ## formatPhoneNumber
 
@@ -144,7 +146,7 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |

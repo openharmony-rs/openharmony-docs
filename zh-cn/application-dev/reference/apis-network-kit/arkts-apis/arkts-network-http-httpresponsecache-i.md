@@ -40,6 +40,8 @@ export interface HttpResponseCache
 import { http } from '@kit.NetworkKit';
 ```
 
+<a id="delete1"></a>
+
 ## delete
 
 ```TypeScript
@@ -50,7 +52,7 @@ delete(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpResponseCache-delete(callback: AsyncCallback<void>): void--><!--Device-HttpResponseCache-delete(callback: AsyncCallback<void>): void-End-->
 
@@ -88,7 +90,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 });
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -100,7 +102,7 @@ delete(): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpResponseCache-delete(): Promise<void>--><!--Device-HttpResponseCache-delete(): Promise<void>-End-->
 
@@ -132,6 +134,8 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 });
 ```
 
+<a id="flush1"></a>
+
 ## flush
 
 ```TypeScript
@@ -142,7 +146,7 @@ flush(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpResponseCache-flush(callback: AsyncCallback<void>): void--><!--Device-HttpResponseCache-flush(callback: AsyncCallback<void>): void-End-->
 
@@ -179,7 +183,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
 });
 ```
 
-<a id="flush-1"></a>
+<a id="flush2"></a>
 
 ## flush
 

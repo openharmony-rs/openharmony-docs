@@ -26,7 +26,7 @@ Checks whether the current device supports shortcuts.
 
 | Type | Description |
 | --- | --- |
-| boolean | Indicates whether the current device supports shortcuts. The return value true indicates that the current device supports shortcuts; the return value false indicates that the current device does not support shortcuts. |
+| boolean | Indicates whether the current device supports shortcuts.<br>The return value **true** indicates that the current device supports shortcuts; the return value **false** indicates that the current device does not support shortcuts. |
 
 **Examples**
 

@@ -4,7 +4,7 @@
 export interface PluginBundleInfo
 ```
 
-插件信息。
+插件信息，通过接口[pluginBundleManager.getAllLocalPluginInfoForSelf](arkts-ability-pluginbundlemanager-getalllocalplugininfoforself-f.md)获取当前应用已通过自分发方式安装的所有插件信息。该信息包含插件的名称、图标、版本号及模块信息，用于管理已安装的插件，并基于版本号和模块信息进行兼容性检查与更新。
 
 **起始版本：** 26.0.0
 
@@ -18,7 +18,7 @@ export interface PluginBundleInfo
 readonly icon: string
 ```
 
-插件的图标。
+插件的图标。对应[app.json5](../../../quick-start/app-configuration-file.md#配置文件标签)中配置的icon字段。
 
 **类型：** string
 
@@ -34,7 +34,7 @@ readonly icon: string
 readonly iconId: number
 ```
 
-插件图标的资源id值。
+插件图标的资源ID值。是编译构建时根据插件配置的icon自动生成的资源ID。
 
 **类型：** number
 
@@ -50,7 +50,7 @@ readonly iconId: number
 readonly label: string
 ```
 
-插件的名称。
+插件的名称。对应[app.json5](../../../quick-start/app-configuration-file.md#配置文件标签)中配置的label字段。
 
 **类型：** string
 
@@ -66,7 +66,7 @@ readonly label: string
 readonly labelId: number
 ```
 
-插件名称的资源id值。
+插件名称的资源ID值。是编译构建时根据插件配置的label自动生成的资源ID。
 
 **类型：** number
 
@@ -82,7 +82,7 @@ readonly labelId: number
 readonly pluginBundleName: string
 ```
 
-安装插件的应用包名。
+安装插件的应用包名。对应[app.json5](../../../quick-start/app-configuration-file.md#配置文件标签)中配置的bundleName字段。
 
 **类型：** string
 
@@ -114,7 +114,7 @@ readonly pluginModuleInfos: Array<PluginModuleInfo>
 readonly versionCode: number
 ```
 
-插件的版本号。
+插件的版本号。对应[app.json5](../../../quick-start/app-configuration-file.md#配置文件标签)中配置的versionCode字段。
 
 **类型：** number
 
@@ -130,7 +130,7 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-插件的版本名称。
+插件的版本名称。对应[app.json5](../../../quick-start/app-configuration-file.md#配置文件标签)中配置的versionName字段。
 
 **类型：** string
 

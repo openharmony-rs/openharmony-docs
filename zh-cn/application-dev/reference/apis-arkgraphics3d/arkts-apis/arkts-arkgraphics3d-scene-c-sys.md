@@ -12,7 +12,7 @@ export declare class Scene
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="load-1"></a>
+<a id="load2"></a>
 
 ## load
 
@@ -45,6 +45,7 @@ static load(uri: ResourceStr, param: SceneLoadParams):Promise<Scene>
 | --- | --- |
 | Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise对象，返回场景对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,3 +57,5 @@ function loadModelWithParams(): Promise<Scene> {
   return scene;
 }
 ```
+
+<!--DelEnd-->

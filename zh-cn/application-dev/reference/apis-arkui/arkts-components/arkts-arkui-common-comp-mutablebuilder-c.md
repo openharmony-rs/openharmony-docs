@@ -1,4 +1,4 @@
-# type MutableBuilder
+# MutableBuilder
 
 ```TypeScript
 declare class MutableBuilder<Args extends Object[]> extends WrappedBuilder<Args>

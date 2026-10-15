@@ -36,7 +36,7 @@ Obtains the specified system GC statistics based on parameters.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes:         1. Invalid parameter, a string parameter required.         2. Invalid parameter, unknown property. |
 
 **Examples**
 

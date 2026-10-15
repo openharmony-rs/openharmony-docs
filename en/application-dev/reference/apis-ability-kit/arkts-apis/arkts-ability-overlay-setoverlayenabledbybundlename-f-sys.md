@@ -6,6 +6,8 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
+<a id="setoverlayenabledbybundlename1"></a>
+
 ## setOverlayEnabledByBundleName
 
 ```TypeScript
@@ -33,7 +35,7 @@ No permission is required when the specified application is the caller itself.
 | bundleName | string | Yes | Bundle name of the application. |
 | moduleName | string | Yes | Name of the module with the overlay feature. |
 | isEnabled | boolean | Yes | Whether to enable the module with the overlay feature. **true** to enable, **false** otherwise. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). Callback invoked when the disable/enable state of the overlay module of the specified application is set successfully. In this case, err is undefined; otherwise, err is an error object. |
 
 **Error codes:**
 
@@ -47,6 +49,7 @@ No permission is required when the specified application is the caller itself.
 | [17700032](../errorcode-bundle.md#17700032-application-does-not-contain-a-module-with-the-overlay-feature) | The specified bundle does not contain any overlay module. |
 | [17700033](../errorcode-bundle.md#17700033-module-is-not-configured-with-the-overlay-feature) | The specified module is not an overlay module. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -73,8 +76,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setoverlayenabledbybundlename-1"></a>
+
+<a id="setoverlayenabledbybundlename2"></a>
 
 ## setOverlayEnabledByBundleName
 
@@ -84,7 +89,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 
 Enables or disables a module with the overlay feature in another application. This API uses a promise to return the result.
 
-No permission is required when the specified application is the caller itself.
+No permission is required when the specified application is the caller itself. If the API call fails, null may be returned. Verify the return value before using it.
 
 **Since:** 10
 
@@ -122,6 +127,7 @@ No permission is required when the specified application is the caller itself.
 | [17700032](../errorcode-bundle.md#17700032-application-does-not-contain-a-module-with-the-overlay-feature) | The specified bundle does not contain any overlay module. |
 | [17700033](../errorcode-bundle.md#17700033-module-is-not-configured-with-the-overlay-feature) | The specified module is not an overlay module. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -146,3 +152,5 @@ try {
   console.error('setOverlayEnabledByBundleName failed due to err code: ' + code + ' ' + 'message:' + message);
 }
 ```
+
+<!--DelEnd-->

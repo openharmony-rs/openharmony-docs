@@ -6,7 +6,7 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
-<a id="setvalue-2"></a>
+<a id="setvalue3"></a>
 
 ## setValue
 
@@ -50,7 +50,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (st
 ```
 
 
-<a id="setvalue-3"></a>
+<a id="setvalue4"></a>
 
 ## setValue
 
@@ -99,7 +99,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100').the
 ```
 
 
-<a id="setvalue-4"></a>
+<a id="setvalue5"></a>
 
 ## setValue
 

@@ -6,6 +6,8 @@ declare type Degree = `${number}deg`
 
 角度类型，用于描述以deg为单位的角度。
 
+**类型：** `${number}deg`
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type Degree = `${number}deg`
 <!--Device-unnamed-declare type Degree = `${number}deg`--><!--Device-unnamed-declare type Degree = `${number}deg`-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** `${number}deg`

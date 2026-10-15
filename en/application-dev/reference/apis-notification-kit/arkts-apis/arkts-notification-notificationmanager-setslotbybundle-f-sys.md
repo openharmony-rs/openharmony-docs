@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setslotbybundle1"></a>
+
 ## setSlotByBundle
 
 ```TypeScript
@@ -14,7 +16,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 
 Sets the notification slot for a specified application. This API uses an asynchronous callback to return the result.
 
-Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md).
+Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot1).
 
 **Since:** 9
 
@@ -40,13 +42,14 @@ Before setting a notification slot, create a slot through [addSlot](arkts-notifi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,11 +59,11 @@ let setSlotByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSlotByBundle success");
+        console.info('setSlotByBundle success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
@@ -68,8 +71,10 @@ let notificationSlot: notificationManager.NotificationSlot = {
 notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="setslotbybundle-1"></a>
+
+<a id="setslotbybundle2"></a>
 
 ## setSlotByBundle
 
@@ -79,7 +84,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 
 Sets the notification slot for a specified application. This API uses a promise to return the result.
 
-Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md).
+Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot1).
 
 **Since:** 9
 
@@ -110,20 +115,21 @@ Before setting a notification slot, create a slot through [addSlot](arkts-notifi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -131,8 +137,10 @@ let notificationSlot: notificationManager.NotificationSlot = {
 };
 
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
-    console.info("setSlotByBundle success");
+    console.info('setSlotByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

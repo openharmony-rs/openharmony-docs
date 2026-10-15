@@ -26,7 +26,7 @@ DATA_HUB = 'DataHub'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Intention-DATA_HUB = 'DataHub'--><!--Device-Intention-DATA_HUB = 'DataHub'-End-->
 
@@ -50,21 +50,21 @@ DRAG = 'Drag'
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-## SYSTEM_SHARE
+## MENU
 
 ```TypeScript
-SYSTEM_SHARE = 'SystemShare'
+MENU = 'Menu'
 ```
 
-系统分享类型数据通道。
+菜单类型数据通道。
 
-**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。
+**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Intention-SYSTEM_SHARE = 'SystemShare'--><!--Device-Intention-SYSTEM_SHARE = 'SystemShare'-End-->
+<!--Device-Intention-MENU = 'Menu'--><!--Device-Intention-MENU = 'Menu'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -86,20 +86,20 @@ Picker类型数据通道。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-## MENU
+## SYSTEM_SHARE
 
 ```TypeScript
-MENU = 'Menu'
+SYSTEM_SHARE = 'SystemShare'
 ```
 
-菜单类型数据通道。
+系统分享类型数据通道。
 
-**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。
+**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Intention-MENU = 'Menu'--><!--Device-Intention-MENU = 'Menu'-End-->
+<!--Device-Intention-SYSTEM_SHARE = 'SystemShare'--><!--Device-Intention-SYSTEM_SHARE = 'SystemShare'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core

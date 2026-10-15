@@ -36,6 +36,7 @@ Obtains the MAC address of a Wi-Fi device. Wi-Fi must be enabled.
 | --- | --- |
 | string[] | Returns the MAC address of the Wi-Fi device. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

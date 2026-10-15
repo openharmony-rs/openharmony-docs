@@ -46,22 +46,6 @@ Indicates the DSDS 3.0 Mode.
 
 **System API:** This is a system API.
 
-## DSDS_MODE_V5_TDM
-
-```TypeScript
-DSDS_MODE_V5_TDM = 2
-```
-
-Indicates the DSDS 5.0 TDM Mode.
-
-**Since:** 11
-
-<!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2--><!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-**System API:** This is a system API.
-
 ## DSDS_MODE_V5_DSDA
 
 ```TypeScript
@@ -73,6 +57,22 @@ Indicates the DSDS 5.0 DSDA Mode.
 **Since:** 11
 
 <!--Device-DsdsMode-DSDS_MODE_V5_DSDA = 3--><!--Device-DsdsMode-DSDS_MODE_V5_DSDA = 3-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**System API:** This is a system API.
+
+## DSDS_MODE_V5_TDM
+
+```TypeScript
+DSDS_MODE_V5_TDM = 2
+```
+
+Indicates the DSDS 5.0 TDM Mode.
+
+**Since:** 11
+
+<!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2--><!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

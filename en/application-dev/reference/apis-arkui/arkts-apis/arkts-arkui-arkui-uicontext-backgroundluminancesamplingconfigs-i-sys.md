@@ -4,7 +4,7 @@
 export interface BackgroundLuminanceSamplingConfigs
 ```
 
-Sets the background luminance sampling parameters.
+Defines the background luminance sampling parameter configuration.
 
 **Since:** 23
 
@@ -29,7 +29,9 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 brightThreshold?: number
 ```
 
-Light color brightness threshold. The value must be an integer in the range of [0, 255]. The dark color brightness threshold must be less than the light color brightness threshold.
+Light brightness threshold. The value is an integer in the range [0, 255]. The light brightness threshold must be greater than the dark brightness threshold. When you need to adjust the sensitivity of light‑color detection, you can customize this value. A lower value makes the light‑color detection more lenient, while a higher value makes it more stringent.
+
+Default value: 220
 
 **Type:** number
 
@@ -51,7 +53,9 @@ Light color brightness threshold. The value must be an integer in the range of [
 darkThreshold?: number
 ```
 
-Dark color brightness threshold. The value must be an integer in the range of [0, 255]. The dark color brightness threshold must be less than the light color brightness threshold.
+Dark brightness threshold. The value is an integer in the range [0, 255]. The dark brightness threshold must be less than the light brightness threshold. When you need to adjust the sensitivity of dark‑color detection, you can customize this value. A higher value makes the dark‑color detection more lenient, while a lower value makes it more stringent.
+
+Default value: 150
 
 **Type:** number
 
@@ -73,9 +77,9 @@ Dark color brightness threshold. The value must be an integer in the range of [0
 region?: Edges<LengthMetrics>
 ```
 
-Sample area offset relative to the component, calculated from the component's upper left corner as the reference point.
+Offset of the sampling area relative to the component, calculated based on the upper left corner of the component. It is recommended to set the sampling area within the visible range to avoid inaccurate sampling results caused by excessive offset.
 
-The component's own area is used by default.
+The component's own region is used by default.
 
 **Type:** [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt;
 
@@ -95,7 +99,9 @@ The component's own area is used by default.
 samplingInterval?: number
 ```
 
-Color sampling interval, in milliseconds. The minimum value is 180 ms.
+Sampling interval, in milliseconds. Value range: ≥180 ms. Set a smaller value (for example, 180–300 ms) when more frequent background color sampling responses are needed, and set a larger value (for example, 500–1000 ms) to conserve system resources.
+
+Default value: 500 ms
 
 **Type:** number
 

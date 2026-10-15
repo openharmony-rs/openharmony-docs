@@ -89,7 +89,7 @@ When the application is in the foreground and there is no valid authorization, t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | 12300302 | User interaction is required but not allowed. Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground. Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext. |
 | 12300304 | Authorization service is busy. Possible cause: Another authorization is being processed. |

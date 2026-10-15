@@ -6,6 +6,8 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
+<a id="addcandidateconfig1"></a>
+
 ## addCandidateConfig
 
 ```TypeScript
@@ -18,7 +20,7 @@ Add a specified candidate hotspot configuration and returns the networkId. This 
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig): Promise<int>--><!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig): Promise<int>-End-->
 
@@ -41,7 +43,7 @@ Add a specified candidate hotspot configuration and returns the networkId. This 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 
@@ -67,7 +69,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
-<a id="addcandidateconfig-1"></a>
+<a id="addcandidateconfig2"></a>
 
 ## addCandidateConfig
 
@@ -81,7 +83,7 @@ Add a specified candidate hotspot configuration and returns the networkId. This 
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>): void--><!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>): void-End-->
 
@@ -99,7 +101,7 @@ Add a specified candidate hotspot configuration and returns the networkId. This 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 

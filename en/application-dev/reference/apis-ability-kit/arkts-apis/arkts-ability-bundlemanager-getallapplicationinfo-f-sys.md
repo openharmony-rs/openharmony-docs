@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallapplicationinfo1"></a>
+
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -28,8 +30,8 @@ Obtains all the application information in the system based on the given applica
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appFlags | number | Yes | Type of the application information to obtain. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of application information obtained. Otherwise, **err** is an error object. |
+| appFlags | number | Yes | Information contained in the returned ApplicationInfo. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, **err** is **undefined**, and data is the Array<ApplicationInfo> obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -39,6 +41,7 @@ Obtains all the application information in the system based on the given applica
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getallapplicationinfo-1"></a>
+
+<a id="getallapplicationinfo2"></a>
 
 ## getAllApplicationInfo
 
@@ -88,9 +93,9 @@ Obtains all the application information in the system based on the given applica
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appFlags | number | Yes | Type of the application information to obtain. |
+| appFlags | number | Yes | Information contained in the returned ApplicationInfo. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
 | userId | number | Yes | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of application information obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, **err** is **undefined**, and data is the Array<ApplicationInfo> obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -101,6 +106,7 @@ Obtains all the application information in the system based on the given applica
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -125,8 +131,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getallapplicationinfo-2"></a>
+
+<a id="getallapplicationinfo3"></a>
 
 ## getAllApplicationInfo
 
@@ -150,7 +158,7 @@ Obtains all the application information in the system based on the given applica
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appFlags | number | Yes | Type of the application information to obtain. |
+| appFlags | number | Yes | Information contained in the returned ApplicationInfo. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
 | userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. The value must be greater than or equal to 0. |
 
 **Return value:**
@@ -168,6 +176,7 @@ Obtains all the application information in the system based on the given applica
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -188,3 +197,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllApplicationInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

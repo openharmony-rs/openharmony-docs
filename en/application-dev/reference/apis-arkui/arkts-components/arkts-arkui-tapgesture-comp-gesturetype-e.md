@@ -4,7 +4,7 @@
 enum GestureType
 ```
 
-Enumerates gesture recognizer types.
+Enumerates gesture types.
 
 **Since:** 11
 
@@ -12,13 +12,31 @@ Enumerates gesture recognizer types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TAP_GESTURE
+## BOX_SELECT_GESTURE
 
 ```TypeScript
-TAP_GESTURE = 0
+BOX_SELECT_GESTURE = 8
 ```
 
-Tap gesture.
+Mouse box selection gesture in a scrollable container. It is a special pan gesture used to create a selection area by dragging the mouse in a scrollable container to select multiple elements in batches.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-GestureType-BOX_SELECT_GESTURE = 8--><!--Device-GestureType-BOX_SELECT_GESTURE = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## CLICK
+
+```TypeScript
+CLICK = 7
+```
+
+Click.
 
 **Since:** 11
 
@@ -26,7 +44,43 @@ Tap gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-GestureType-TAP_GESTURE = 0--><!--Device-GestureType-TAP_GESTURE = 0-End-->
+<!--Device-GestureType-CLICK = 7--><!--Device-GestureType-CLICK = 7-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## CONTEXT_MENU_HOVER_GESTURE
+
+```TypeScript
+CONTEXT_MENU_HOVER_GESTURE = 11
+```
+
+Context menu hover gesture. It is a special type of long-press gesture and triggers the **hoverScale** animation effect of the menu during the long-press process (this behavior requires enabling the **hoverScaleInterruption** attribute of [ContextMenuAnimationOptions](arkts-arkui-common-comp-contextmenuanimationoptions-i.md) for support).
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11--><!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DRAG
+
+```TypeScript
+DRAG = 6
+```
+
+Drag.
+
+**Since:** 11
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureType-DRAG = 6--><!--Device-GestureType-DRAG = 6-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,24 +138,6 @@ Pinch gesture.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SWIPE_GESTURE
-
-```TypeScript
-SWIPE_GESTURE = 4
-```
-
-Swipe gesture.
-
-**Since:** 11
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-GestureType-SWIPE_GESTURE = 4--><!--Device-GestureType-SWIPE_GESTURE = 4-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## ROTATION_GESTURE
 
 ```TypeScript
@@ -120,13 +156,13 @@ Rotation gesture.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## DRAG
+## SWIPE_GESTURE
 
 ```TypeScript
-DRAG = 6
+SWIPE_GESTURE = 4
 ```
 
-Drag.
+Swipe gesture.
 
 **Since:** 11
 
@@ -134,17 +170,17 @@ Drag.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-GestureType-DRAG = 6--><!--Device-GestureType-DRAG = 6-End-->
+<!--Device-GestureType-SWIPE_GESTURE = 4--><!--Device-GestureType-SWIPE_GESTURE = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CLICK
+## TAP_GESTURE
 
 ```TypeScript
-CLICK = 7
+TAP_GESTURE = 0
 ```
 
-Click.
+Tap gesture.
 
 **Since:** 11
 
@@ -152,43 +188,7 @@ Click.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-GestureType-CLICK = 7--><!--Device-GestureType-CLICK = 7-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## BOX_SELECT_GESTURE
-
-```TypeScript
-BOX_SELECT_GESTURE = 8
-```
-
-Swipe gesture used to create a selection area by dragging with the mouse within a scroll container, enabling the batch selection of multiple elements.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-<!--Device-GestureType-BOX_SELECT_GESTURE = 8--><!--Device-GestureType-BOX_SELECT_GESTURE = 8-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## WEB_SCROLL_GESTURE
-
-```TypeScript
-WEB_SCROLL_GESTURE = 9
-```
-
-Swipe gesture used to control the scrolling behavior of a **Web** component.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-<!--Device-GestureType-WEB_SCROLL_GESTURE = 9--><!--Device-GestureType-WEB_SCROLL_GESTURE = 9-End-->
+<!--Device-GestureType-TAP_GESTURE = 0--><!--Device-GestureType-TAP_GESTURE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -198,7 +198,7 @@ Swipe gesture used to control the scrolling behavior of a **Web** component.
 TEXT_FIELD_SELECT_GESTURE = 10
 ```
 
-Swipe gesture used to select text content by dragging within an input box component.
+Text selection gesture. It is a special pan gesture used to select text content by dragging in an input box component.
 
 **Since:** 23
 
@@ -210,13 +210,13 @@ Swipe gesture used to select text content by dragging within an input box compon
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CONTEXT_MENU_HOVER_GESTURE
+## WEB_SCROLL_GESTURE
 
 ```TypeScript
-CONTEXT_MENU_HOVER_GESTURE = 11
+WEB_SCROLL_GESTURE = 9
 ```
 
-Context menu hover gesture. It is a special type of long-press gesture and triggers the **hoverScale** animation effect of the menu during the long-press process (this behavior requires enabling the **hoverScaleInterruption** attribute of [ContextMenuAnimationOptions](arkts-arkui-common-comp-contextmenuanimationoptions-i.md) for support).
+Web component scroll gesture. It is a special pan gesture used to control the scrolling behavior within the **Web** component.
 
 **Since:** 23
 
@@ -224,6 +224,6 @@ Context menu hover gesture. It is a special type of long-press gesture and trigg
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
-<!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11--><!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11-End-->
+<!--Device-GestureType-WEB_SCROLL_GESTURE = 9--><!--Device-GestureType-WEB_SCROLL_GESTURE = 9-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

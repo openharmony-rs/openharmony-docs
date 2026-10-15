@@ -4,7 +4,7 @@
 declare class IndicatorComponentController
 ```
 
-Provides methods for switching components.
+Controller of the **Indicator** component. You can bind this object to the **Indicator** component to control page turning. By passing the same **IndicatorComponentController** instance to the constructor of the **IndicatorComponent** and the **indicator** attribute of the **Swiper** component, you can bind the **Indicator** and **Swiper** components for linkage.
 
 **Since:** 15
 
@@ -18,7 +18,7 @@ Provides methods for switching components.
 changeIndex(index: number, useAnimation?: boolean):void
 ```
 
-Controlling IndicatorComponent to change to the specified subcomponent.
+Navigates to the specified indicator. Before using this method, ensure that the controller has been bound to the **Indicator** component. This is applicable to scenarios where you need to jump to a specified indicator.
 
 **Since:** 15
 
@@ -36,8 +36,8 @@ Controlling IndicatorComponent to change to the specified subcomponent.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | The index of item to be redirected. |
-| useAnimation | boolean | No | If true, swipe to index item with animation. If false, swipe to index item without animation. The default value is false. |
+| index | number | Yes | Index value of the specified indicator.<br>**Note:** <br>If the set value is less than 0 or greater than the maximum indicator index, 0 is used. |
+| useAnimation | boolean | No | Whether to use an animation for when the target index is reached. The value **true** means to use an animation, and **false** means the opposite.<br>Default value: **false**. |
 
 ## constructor
 
@@ -45,7 +45,7 @@ Controlling IndicatorComponent to change to the specified subcomponent.
 constructor()
 ```
 
-constructor.
+A constructor used to create an **IndicatorComponentController** object.
 
 **Since:** 15
 
@@ -65,7 +65,7 @@ constructor.
 showNext():void
 ```
 
-Called when the next child component is displayed.
+Moves to the next indicator. When bound to a **Swiper** component, it also controls the **Swiper** to switch to the next page. This is applicable to scenarios where the indicator switching is controlled through buttons or other interaction methods.
 
 **Since:** 15
 
@@ -85,7 +85,7 @@ Called when the next child component is displayed.
 showPrevious():void
 ```
 
-Called when the previous subcomponent is displayed.
+Moves to the previous indicator. When bound to a **Swiper** component, it also controls the **Swiper** to switch to the previous page. This is applicable to scenarios where the indicator switching is controlled through buttons or other interaction methods.
 
 **Since:** 15
 

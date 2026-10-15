@@ -6,7 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="createcontroller-1"></a>
+<a id="createcontroller2"></a>
 
 ## createController
 

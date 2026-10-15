@@ -47,9 +47,10 @@ Move a window to the target display. The window must be a main window.
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not found or has been destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: The window is not a main window. |
-| [1300008](../errorcode-window.md#1300008-display-device-exception) | Invalid display. Possible cause: 1. DisplayId is a negative number or not exists. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. The userId is not exist. |
+| [1300008](../errorcode-window.md#1300008-display-device-exception) | Invalid display. Possible cause:         1. DisplayId is a negative number or not exists. |
+| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. The userId is not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -83,3 +84,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

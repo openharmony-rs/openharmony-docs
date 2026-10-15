@@ -46,7 +46,7 @@ autoDeletedTime?: number
 
 自动清除的时间。
 
-数据格式：时间戳，单位：ms，具体请参考[NotificationRequest.autoDeletedTime](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md#autodeletedtime)
+数据格式：时间戳，单位：ms，具体请参考[NotificationRequest.autoDeletedTime](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md#autodeletedtime)
 
 **类型：** number
 
@@ -364,7 +364,7 @@ snoozeTimes?: number
 tapDismissed?: boolean
 ```
 
-通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md#tapdismissed)
+通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md#tapdismissed)
 
 - true：点击通知消息或通知按钮后，自动删除当前通知。  
 - false：点击通知消息或通知按钮后，保留当前通知。

@@ -6,6 +6,8 @@
 import { wearDetection } from '@kit.ConnectivityKit';
 ```
 
+<a id="isweardetectionsupported1"></a>
+
 ## isWearDetectionSupported
 
 ```TypeScript
@@ -37,12 +39,13 @@ Checks whether the device supports wear detection.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,8 +58,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="isweardetectionsupported-1"></a>
+
+<a id="isweardetectionsupported2"></a>
 
 ## isWearDetectionSupported
 
@@ -94,12 +99,13 @@ Checks whether the device supports wear detection.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -111,3 +117,5 @@ try {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
 ```
+
+<!--DelEnd-->

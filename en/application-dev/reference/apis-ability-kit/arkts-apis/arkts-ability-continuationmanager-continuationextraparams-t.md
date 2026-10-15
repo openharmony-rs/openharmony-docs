@@ -6,6 +6,8 @@ export type ContinuationExtraParams = _ContinuationExtraParams
 
 Defines the extra parameters required by the device selection module in the continuation management entry.
 
+**Type:** _ContinuationExtraParams
+
 **Since:** 10
 
 **Deprecated since:** 22
@@ -19,5 +21,3 @@ Defines the extra parameters required by the device selection module in the cont
 <!--Device-continuationManager-export type ContinuationExtraParams = _ContinuationExtraParams--><!--Device-continuationManager-export type ContinuationExtraParams = _ContinuationExtraParams-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
-
-**Type:** _ContinuationExtraParams

@@ -46,9 +46,9 @@ function installLocalPlugin(pluginFilePaths: Array<string>): Promise<void>
 | [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the plugin because the HSP path is invalid or the HSP is too large. |
 | [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the plugin because they have different configuration information. |
 | [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the plugin because of insufficient system disk space. |
-| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the plugin since the version of the plugin to install is too early. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the plugin because the version of the plugin to install is too early. |
 | [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the plugin because the code signature verification failed. |
 | [17700052](../errorcode-bundle.md#17700052-非开发者模式下不允许安装调试自分发插件或调试应用) | Failed to install the plugin because debug bundle cannot be installed under non-developer mode. |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the plugin because a plugin with the same<br>bundle name but different signature information exists on the device. |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the plugin because a plugin with the same bundle name but different signature information exists on the device. |
 | [17700087](../errorcode-bundle.md#17700087-当前设备不支持安装插件) | Failed to install the plugin because the current device does not support plugins. |
 | [17700091](../errorcode-bundle.md#17700091-插件与主体同包名) | Failed to install the plugin because the plugin name is the same as the host bundle name. |

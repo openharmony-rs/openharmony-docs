@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="notifyformsprivacyprotected1"></a>
+
 ## notifyFormsPrivacyProtected
 
 ```TypeScript
@@ -47,6 +49,7 @@ function notifyFormsPrivacyProtected(
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,8 +68,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="notifyformsprivacyprotected-1"></a>
+
+<a id="notifyformsprivacyprotected2"></a>
 
 ## notifyFormsPrivacyProtected
 
@@ -110,6 +115,9 @@ function notifyFormsPrivacyProtected(formIds: Array<string>, isProtected: boolea
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+<!--Del-->
 **示例**
 
 参见 [notifyFormsPrivacyProtected](#notifyformsprivacyprotected)
+
+<!--DelEnd-->

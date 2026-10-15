@@ -44,22 +44,6 @@ NO_RULE_FOLLOWED = 1
 
 **系统接口：** 此接口为系统接口。
 
-## SIM_DEFAULT
-
-```TypeScript
-SIM_DEFAULT = 10
-```
-
-跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。
-
-**起始版本：** 11
-
-<!--Device-FollowXMode-SIM_DEFAULT = 10--><!--Device-FollowXMode-SIM_DEFAULT = 10-End-->
-
-**系统能力：** SystemCapability.Customization.ConfigPolicy
-
-**系统接口：** 此接口为系统接口。
-
 ## SIM_1
 
 ```TypeScript
@@ -87,6 +71,22 @@ SIM_2 = 12
 **起始版本：** 11
 
 <!--Device-FollowXMode-SIM_2 = 12--><!--Device-FollowXMode-SIM_2 = 12-End-->
+
+**系统能力：** SystemCapability.Customization.ConfigPolicy
+
+**系统接口：** 此接口为系统接口。
+
+## SIM_DEFAULT
+
+```TypeScript
+SIM_DEFAULT = 10
+```
+
+跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。
+
+**起始版本：** 11
+
+<!--Device-FollowXMode-SIM_DEFAULT = 10--><!--Device-FollowXMode-SIM_DEFAULT = 10-End-->
 
 **系统能力：** SystemCapability.Customization.ConfigPolicy
 

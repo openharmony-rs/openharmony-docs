@@ -28,6 +28,38 @@ Any network type.
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
+## NETWORK_TYPE_BLUETOOTH
+
+```TypeScript
+NETWORK_TYPE_BLUETOOTH = 3
+```
+
+Bluetooth network.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NetworkType-NETWORK_TYPE_BLUETOOTH = 3--><!--Device-NetworkType-NETWORK_TYPE_BLUETOOTH = 3-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
+
+## NETWORK_TYPE_ETHERNET
+
+```TypeScript
+NETWORK_TYPE_ETHERNET = 5
+```
+
+Ethernet.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NetworkType-NETWORK_TYPE_ETHERNET = 5--><!--Device-NetworkType-NETWORK_TYPE_ETHERNET = 5-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
+
 ## NETWORK_TYPE_MOBILE
 
 ```TypeScript
@@ -60,22 +92,6 @@ Wi-Fi network.
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
-## NETWORK_TYPE_BLUETOOTH
-
-```TypeScript
-NETWORK_TYPE_BLUETOOTH = 3
-```
-
-Bluetooth network.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-NetworkType-NETWORK_TYPE_BLUETOOTH = 3--><!--Device-NetworkType-NETWORK_TYPE_BLUETOOTH = 3-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
-
 ## NETWORK_TYPE_WIFI_P2P
 
 ```TypeScript
@@ -89,21 +105,5 @@ Wi-Fi P2P network.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-NetworkType-NETWORK_TYPE_WIFI_P2P = 4--><!--Device-NetworkType-NETWORK_TYPE_WIFI_P2P = 4-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
-
-## NETWORK_TYPE_ETHERNET
-
-```TypeScript
-NETWORK_TYPE_ETHERNET = 5
-```
-
-Ethernet.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-NetworkType-NETWORK_TYPE_ETHERNET = 5--><!--Device-NetworkType-NETWORK_TYPE_ETHERNET = 5-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler

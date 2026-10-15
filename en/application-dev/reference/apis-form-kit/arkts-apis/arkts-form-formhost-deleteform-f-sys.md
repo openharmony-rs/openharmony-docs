@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="deleteform1"></a>
+
 ## deleteForm
 
 ```TypeScript
@@ -44,8 +46,31 @@ Deletes a widget. After this API is called, the application can no longer use th
 | [16501001](../errorcode-form.md#16501001-widget-id-not-exist) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 
+<!--Del-->
+**Examples**
 
-<a id="deleteform-1"></a>
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.deleteForm(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('formHost deleteForm success');
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="deleteform2"></a>
 
 ## deleteForm
 
@@ -89,3 +114,23 @@ Deletes a widget. After this API is called, the application can no longer use th
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 | [16501001](../errorcode-form.md#16501001-widget-id-not-exist) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.deleteForm(formId).then(() => {
+    console.info('formHost deleteForm success');
+  }).catch((error: BusinessError) => {
+    console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

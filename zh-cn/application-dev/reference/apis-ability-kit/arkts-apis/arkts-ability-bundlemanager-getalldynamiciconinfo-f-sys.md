@@ -49,6 +49,7 @@ function getAllDynamicIconInfo(userId?: number): Promise<Array<DynamicIconInfo>>
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700306](../errorcode-bundle.md#17700306-动态图标查询失败) | Failed to obtain the dynamic icon. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -69,3 +70,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

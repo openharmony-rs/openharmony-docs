@@ -12,13 +12,13 @@ RefreshStatus刷新状态枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Inactive
+## Done
 
 ```TypeScript
-Inactive
+Done
 ```
 
-默认未下拉状态。
+刷新结束，返回初始状态（顶部）。
 
 **起始版本：** 8
 
@@ -26,7 +26,7 @@ Inactive
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-RefreshStatus-Inactive--><!--Device-RefreshStatus-Inactive-End-->
+<!--Device-RefreshStatus-Done--><!--Device-RefreshStatus-Done-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +47,24 @@ Drag
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-RefreshStatus-Drag--><!--Device-RefreshStatus-Drag-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Inactive
+
+```TypeScript
+Inactive
+```
+
+默认未下拉状态。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshStatus-Inactive--><!--Device-RefreshStatus-Inactive-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,23 +103,5 @@ After the pull-down, it rebounds to the refresh distance and enters the refresh 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-RefreshStatus-Refresh--><!--Device-RefreshStatus-Refresh-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Done
-
-```TypeScript
-Done
-```
-
-刷新结束，返回初始状态（顶部）。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-RefreshStatus-Done--><!--Device-RefreshStatus-Done-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

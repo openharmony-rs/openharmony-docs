@@ -6,6 +6,8 @@ declare type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConf
 
 输入法扩展信息。
 
+**类型：** import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig
+
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConf
 <!--Device-unnamed-declare type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig--><!--Device-unnamed-declare type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig

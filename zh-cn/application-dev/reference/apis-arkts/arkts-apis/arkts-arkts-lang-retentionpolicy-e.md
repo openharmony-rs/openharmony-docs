@@ -12,22 +12,6 @@ export const enum RetentionPolicy
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## SOURCE
-
-```TypeScript
-SOURCE = 'source'
-```
-
-注解将在编译期被移除。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RetentionPolicy-SOURCE = 'source'--><!--Device-RetentionPolicy-SOURCE = 'source'-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## BYTECODE
 
 ```TypeScript
@@ -41,5 +25,21 @@ BYTECODE = 'bytecode'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-RetentionPolicy-BYTECODE = 'bytecode'--><!--Device-RetentionPolicy-BYTECODE = 'bytecode'-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## SOURCE
+
+```TypeScript
+SOURCE = 'source'
+```
+
+注解将在编译期被移除。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RetentionPolicy-SOURCE = 'source'--><!--Device-RetentionPolicy-SOURCE = 'source'-End-->
 
 **系统能力：** SystemCapability.Utils.Lang

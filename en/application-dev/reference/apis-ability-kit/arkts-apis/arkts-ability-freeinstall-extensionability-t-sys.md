@@ -6,6 +6,8 @@ export type ExtensionAbility = _PackInfo.ExtensionAbility
 
 Defines the ExtensionAbility configuration information.
 
+**Type:** [_PackInfo.ExtensionAbility](arkts-ability-bundlepackinfo-extensionability-i-sys.md)
+
 **Since:** 9
 
 <!--Device-freeInstall-export type ExtensionAbility = _PackInfo.ExtensionAbility--><!--Device-freeInstall-export type ExtensionAbility = _PackInfo.ExtensionAbility-End-->
@@ -13,5 +15,3 @@ Defines the ExtensionAbility configuration information.
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
-
-**Type:** [_PackInfo.ExtensionAbility](arkts-ability-bundlepackinfo-extensionability-i-sys.md)

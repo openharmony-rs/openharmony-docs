@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="setformsrecyclable1"></a>
+
 ## setFormsRecyclable
 
 ```TypeScript
@@ -49,8 +51,29 @@ Sets widgets to be recyclable. This API uses a promise to return the result.
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
+<!--Del-->
+**Examples**
 
-<a id="setformsrecyclable-1"></a>
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.setFormsRecyclable(formIds).then(() => {
+    console.info('setFormsRecyclable success');
+  }).catch((err: BusinessError) => {
+    console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="setformsrecyclable2"></a>
 
 ## setFormsRecyclable
 
@@ -89,3 +112,24 @@ Sets widgets to be recyclable. This API uses an asynchronous callback to return 
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.setFormsRecyclable(formIds, (err: BusinessError) => {
+    if (err) {
+      console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

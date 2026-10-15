@@ -4,6 +4,8 @@
 declare interface HoverEventParam
 ```
 
+FolderStack悬停事件参数，包含设备折叠状态、悬停态和应用旋转角度等信息。
+
 **起始版本：** 12
 
 <!--Device-unnamed-declare interface HoverEventParam--><!--Device-unnamed-declare interface HoverEventParam-End-->

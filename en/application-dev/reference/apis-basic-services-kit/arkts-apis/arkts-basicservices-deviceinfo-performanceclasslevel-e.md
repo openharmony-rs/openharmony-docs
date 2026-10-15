@@ -26,20 +26,6 @@ High
 
 **System capability:** SystemCapability.Startup.SystemInfo
 
-## CLASS_LEVEL_MEDIUM
-
-```TypeScript
-CLASS_LEVEL_MEDIUM
-```
-
-Medium
-
-**Since:** 19
-
-<!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM--><!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM-End-->
-
-**System capability:** SystemCapability.Startup.SystemInfo
-
 ## CLASS_LEVEL_LOW
 
 ```TypeScript
@@ -51,5 +37,19 @@ Low
 **Since:** 19
 
 <!--Device-PerformanceClassLevel-CLASS_LEVEL_LOW--><!--Device-PerformanceClassLevel-CLASS_LEVEL_LOW-End-->
+
+**System capability:** SystemCapability.Startup.SystemInfo
+
+## CLASS_LEVEL_MEDIUM
+
+```TypeScript
+CLASS_LEVEL_MEDIUM
+```
+
+Medium
+
+**Since:** 19
+
+<!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM--><!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo

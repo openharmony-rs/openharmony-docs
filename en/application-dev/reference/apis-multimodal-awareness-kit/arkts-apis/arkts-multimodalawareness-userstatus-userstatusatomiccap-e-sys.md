@@ -32,19 +32,73 @@ Unknown atomic capability.
 
 **System API:** This is a system API.
 
-## FACE_RELATIVE_POSITION
+## BLOWING_STATUS
 
 ```TypeScript
-FACE_RELATIVE_POSITION = 1
+BLOWING_STATUS = 11
 ```
 
-Detects face position relative to screen.
+Detects user blow data.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1--><!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1-End-->
+<!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11--><!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+**System API:** This is a system API.
+
+## ENV_SOUND
+
+```TypeScript
+ENV_SOUND = 13
+```
+
+Detects user ambient sound intensity.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-ENV_SOUND = 13--><!--Device-UserStatusAtomicCap-ENV_SOUND = 13-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+**System API:** This is a system API.
+
+## EYE_GAZE_SCREEN
+
+```TypeScript
+EYE_GAZE_SCREEN = 15
+```
+
+Detects whether user is gazing at screen.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15--><!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+**System API:** This is a system API.
+
+## FACE_ANGLE
+
+```TypeScript
+FACE_ANGLE = 4
+```
+
+Detects face angle relative to screen.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-FACE_ANGLE = 4--><!--Device-UserStatusAtomicCap-FACE_ANGLE = 4-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -68,6 +122,24 @@ Detects face number changes.
 
 **System API:** This is a system API.
 
+## FACE_RELATIVE_POSITION
+
+```TypeScript
+FACE_RELATIVE_POSITION = 1
+```
+
+Detects face position relative to screen.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1--><!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+**System API:** This is a system API.
+
 ## GESTURE
 
 ```TypeScript
@@ -86,19 +158,55 @@ Detects user hand gestures.
 
 **System API:** This is a system API.
 
-## FACE_ANGLE
+## MOOD_STATUS
 
 ```TypeScript
-FACE_ANGLE = 4
+MOOD_STATUS = 12
 ```
 
-Detects face angle relative to screen.
+Detects user emotion data.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-UserStatusAtomicCap-FACE_ANGLE = 4--><!--Device-UserStatusAtomicCap-FACE_ANGLE = 4-End-->
+<!--Device-UserStatusAtomicCap-MOOD_STATUS = 12--><!--Device-UserStatusAtomicCap-MOOD_STATUS = 12-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+**System API:** This is a system API.
+
+## NOISE_SOUND
+
+```TypeScript
+NOISE_SOUND = 14
+```
+
+Detects user noise intensity.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-NOISE_SOUND = 14--><!--Device-UserStatusAtomicCap-NOISE_SOUND = 14-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+**System API:** This is a system API.
+
+## SENSOR_ACCELEROMETER
+
+```TypeScript
+SENSOR_ACCELEROMETER = 7
+```
+
+Detects sensor accelerometer data.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7--><!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -140,24 +248,6 @@ Detects sensor gyroscope data.
 
 **System API:** This is a system API.
 
-## SENSOR_ACCELEROMETER
-
-```TypeScript
-SENSOR_ACCELEROMETER = 7
-```
-
-Detects sensor accelerometer data.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7--><!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
-**System API:** This is a system API.
-
 ## SENSOR_LINEAR_ACCELERATION
 
 ```TypeScript
@@ -171,24 +261,6 @@ Detects sensor linear acceleration data.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-UserStatusAtomicCap-SENSOR_LINEAR_ACCELERATION = 8--><!--Device-UserStatusAtomicCap-SENSOR_LINEAR_ACCELERATION = 8-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
-**System API:** This is a system API.
-
-## SENSOR_ROTATION_VECTOR
-
-```TypeScript
-SENSOR_ROTATION_VECTOR = 9
-```
-
-Detects sensor rotation vector data.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9--><!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -212,91 +284,19 @@ Detects sensor orientation data.
 
 **System API:** This is a system API.
 
-## BLOWING_STATUS
+## SENSOR_ROTATION_VECTOR
 
 ```TypeScript
-BLOWING_STATUS = 11
+SENSOR_ROTATION_VECTOR = 9
 ```
 
-Detects user blow data.
+Detects sensor rotation vector data.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11--><!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
-**System API:** This is a system API.
-
-## MOOD_STATUS
-
-```TypeScript
-MOOD_STATUS = 12
-```
-
-Detects user emotion data.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserStatusAtomicCap-MOOD_STATUS = 12--><!--Device-UserStatusAtomicCap-MOOD_STATUS = 12-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
-**System API:** This is a system API.
-
-## ENV_SOUND
-
-```TypeScript
-ENV_SOUND = 13
-```
-
-Detects user ambient sound intensity.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserStatusAtomicCap-ENV_SOUND = 13--><!--Device-UserStatusAtomicCap-ENV_SOUND = 13-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
-**System API:** This is a system API.
-
-## NOISE_SOUND
-
-```TypeScript
-NOISE_SOUND = 14
-```
-
-Detects user noise intensity.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserStatusAtomicCap-NOISE_SOUND = 14--><!--Device-UserStatusAtomicCap-NOISE_SOUND = 14-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
-**System API:** This is a system API.
-
-## EYE_GAZE_SCREEN
-
-```TypeScript
-EYE_GAZE_SCREEN = 15
-```
-
-Detects whether user is gazing at screen.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15--><!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15-End-->
+<!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9--><!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

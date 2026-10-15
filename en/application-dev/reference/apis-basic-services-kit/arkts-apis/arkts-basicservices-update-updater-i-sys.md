@@ -38,6 +38,8 @@ status, and terminating the upgrade.
 import { update } from '@kit.BasicServicesKit';
 ```
 
+<a id="checknewversion1"></a>
+
 ## checkNewVersion
 
 ```TypeScript
@@ -93,6 +95,7 @@ properly deployed and accessible.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -124,7 +127,9 @@ try {
 }
 ```
 
-<a id="checknewversion-1"></a>
+<!--DelEnd-->
+
+<a id="checknewversion2"></a>
 
 ## checkNewVersion
 
@@ -181,6 +186,7 @@ properly deployed and accessible.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -210,6 +216,10 @@ try {
   console.error(`Fail to checkNewVersion. Code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="clearerror1"></a>
 
 ## clearError
 
@@ -264,6 +274,7 @@ abnormal status.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -305,7 +316,9 @@ try {
 }
 ```
 
-<a id="clearerror-1"></a>
+<!--DelEnd-->
+
+<a id="clearerror2"></a>
 
 ## clearError
 
@@ -365,6 +378,7 @@ abnormal status.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -401,6 +415,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="download1"></a>
 
 ## download
 
@@ -465,6 +483,7 @@ message will be returned, indicating that the current version is the latest vers
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -507,7 +526,9 @@ try {
 }
 ```
 
-<a id="download-1"></a>
+<!--DelEnd-->
+
+<a id="download2"></a>
 
 ## download
 
@@ -575,6 +596,7 @@ message will be returned, indicating that the current version is the latest vers
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -612,6 +634,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getcurrentversiondescription1"></a>
 
 ## getCurrentVersionDescription
 
@@ -667,6 +693,7 @@ then call this method to obtain the detailed description for display.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -701,7 +728,9 @@ try {
 }
 ```
 
-<a id="getcurrentversiondescription-1"></a>
+<!--DelEnd-->
+
+<a id="getcurrentversiondescription2"></a>
 
 ## getCurrentVersionDescription
 
@@ -757,6 +786,7 @@ then call this method to obtain the detailed description for display.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -788,6 +818,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getcurrentversioninfo1"></a>
 
 ## getCurrentVersionInfo
 
@@ -827,6 +861,7 @@ This method reads the current version information from the local system files an
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -860,7 +895,9 @@ try {
 }
 ```
 
-<a id="getcurrentversioninfo-1"></a>
+<!--DelEnd-->
+
+<a id="getcurrentversioninfo2"></a>
 
 ## getCurrentVersionInfo
 
@@ -900,6 +937,7 @@ This method reads the current version information from the local system files an
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -927,6 +965,10 @@ try {
   console.error(`Fail to get updater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getnewversiondescription1"></a>
 
 ## getNewVersionDescription
 
@@ -980,6 +1022,7 @@ information.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1020,7 +1063,9 @@ try {
 }
 ```
 
-<a id="getnewversiondescription-1"></a>
+<!--DelEnd-->
+
+<a id="getnewversiondescription2"></a>
 
 ## getNewVersionDescription
 
@@ -1077,6 +1122,7 @@ information.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1117,6 +1163,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getnewversioninfo1"></a>
 
 ## getNewVersionInfo
 
@@ -1179,6 +1229,7 @@ only when **isExistNewVersion** is **true**.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1208,7 +1259,9 @@ try {
 }
 ```
 
-<a id="getnewversioninfo-1"></a>
+<!--DelEnd-->
+
+<a id="getnewversioninfo2"></a>
 
 ## getNewVersionInfo
 
@@ -1272,6 +1325,7 @@ only when **isExistNewVersion** is **true**.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1298,6 +1352,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="gettaskinfo1"></a>
 
 ## getTaskInfo
 
@@ -1357,6 +1415,7 @@ determine the follow-up procedure.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1387,7 +1446,9 @@ try {
 }
 ```
 
-<a id="gettaskinfo-1"></a>
+<!--DelEnd-->
+
+<a id="gettaskinfo2"></a>
 
 ## getTaskInfo
 
@@ -1447,6 +1508,7 @@ determine the follow-up procedure.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1474,6 +1536,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getupgradepolicy1"></a>
 
 ## getUpgradePolicy
 
@@ -1513,6 +1579,7 @@ This method queries the upgrade policy configuration from the system upgrade ser
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1542,7 +1609,9 @@ try {
 }
 ```
 
-<a id="getupgradepolicy-1"></a>
+<!--DelEnd-->
+
+<a id="getupgradepolicy2"></a>
 
 ## getUpgradePolicy
 
@@ -1582,6 +1651,7 @@ This method queries the upgrade policy configuration from the system upgrade ser
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1608,6 +1678,8 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off
 
@@ -1651,6 +1723,7 @@ release resources in a timely manner.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1677,6 +1750,8 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## on
 
@@ -1730,6 +1805,7 @@ or **EVENT_UPGRADE_SUCCESS**) is received.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1756,6 +1832,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="pausedownload1"></a>
 
 ## pauseDownload
 
@@ -1814,6 +1894,7 @@ resume the download and complete the installation first.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1854,7 +1935,9 @@ try {
 }
 ```
 
-<a id="pausedownload-1"></a>
+<!--DelEnd-->
+
+<a id="pausedownload2"></a>
 
 ## pauseDownload
 
@@ -1914,6 +1997,7 @@ resume the download and complete the installation first.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1951,6 +2035,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="resumedownload1"></a>
 
 ## resumeDownload
 
@@ -2002,6 +2090,7 @@ The process is as follows: Read the progress status saved when the download is p
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2042,7 +2131,9 @@ try {
 }
 ```
 
-<a id="resumedownload-1"></a>
+<!--DelEnd-->
+
+<a id="resumedownload2"></a>
 
 ## resumeDownload
 
@@ -2095,6 +2186,7 @@ The process is as follows: Read the progress status saved when the download is p
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2131,6 +2223,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setupgradepolicy1"></a>
 
 ## setUpgradePolicy
 
@@ -2173,6 +2269,7 @@ The process is as follows: Verify the validity of the policy parameters. Write t
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2207,7 +2304,9 @@ try {
 }
 ```
 
-<a id="setupgradepolicy-1"></a>
+<!--DelEnd-->
+
+<a id="setupgradepolicy2"></a>
 
 ## setUpgradePolicy
 
@@ -2255,6 +2354,7 @@ The process is as follows: Verify the validity of the policy parameters. Write t
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2286,6 +2386,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="terminateupgrade1"></a>
 
 ## terminateUpgrade
 
@@ -2339,6 +2443,7 @@ The process is as follows: Check the current task status, and only download or i
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2367,7 +2472,9 @@ try {
 }
 ```
 
-<a id="terminateupgrade-1"></a>
+<!--DelEnd-->
+
+<a id="terminateupgrade2"></a>
 
 ## terminateUpgrade
 
@@ -2421,6 +2528,7 @@ The process is as follows: Check the current task status, and only download or i
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2446,6 +2554,10 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="upgrade1"></a>
 
 ## upgrade
 
@@ -2507,6 +2619,7 @@ If the **upgrade** method fails (the status is **UPGRADE_FAIL**), you must call 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2546,7 +2659,9 @@ try {
 }
 ```
 
-<a id="upgrade-1"></a>
+<!--DelEnd-->
+
+<a id="upgrade2"></a>
 
 ## upgrade
 
@@ -2612,6 +2727,7 @@ If the **upgrade** method fails (the status is **UPGRADE_FAIL**), you must call 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -2648,3 +2764,5 @@ try {
   console.error(`Fail to get onlineUpdater error: ${error}`);
 }
 ```
+
+<!--DelEnd-->

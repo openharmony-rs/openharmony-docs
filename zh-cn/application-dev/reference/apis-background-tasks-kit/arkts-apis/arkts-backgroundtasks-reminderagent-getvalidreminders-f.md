@@ -6,6 +6,8 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getvalidreminders1"></a>
+
 ## getValidReminders
 
 ```TypeScript
@@ -62,7 +64,7 @@ reminderAgent.getValidReminders((err: BusinessError, reminders: Array<reminderAg
 ```
 
 
-<a id="getvalidreminders-1"></a>
+<a id="getvalidreminders2"></a>
 
 ## getValidReminders
 

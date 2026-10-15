@@ -46,17 +46,17 @@ CAMERA = 1
 
 **系统接口：** 此接口为系统接口。
 
-## SCREEN
+## MIC
 
 ```TypeScript
-SCREEN = 8
+MIC = 1024
 ```
 
-表示分布式屏幕。
+表示分布式麦克风。
 
 **起始版本：** 11
 
-<!--Device-DistributedHardwareType-SCREEN = 8--><!--Device-DistributedHardwareType-SCREEN = 8-End-->
+<!--Device-DistributedHardwareType-MIC = 1024--><!--Device-DistributedHardwareType-MIC = 1024-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
@@ -94,17 +94,17 @@ MODEM_SPEAKER = 512
 
 **系统接口：** 此接口为系统接口。
 
-## MIC
+## SCREEN
 
 ```TypeScript
-MIC = 1024
+SCREEN = 8
 ```
 
-表示分布式麦克风。
+表示分布式屏幕。
 
 **起始版本：** 11
 
-<!--Device-DistributedHardwareType-MIC = 1024--><!--Device-DistributedHardwareType-MIC = 1024-End-->
+<!--Device-DistributedHardwareType-SCREEN = 8--><!--Device-DistributedHardwareType-SCREEN = 8-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DistributedHardwareFWK
 

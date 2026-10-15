@@ -14,22 +14,6 @@ Defines the heartbeat broadcast policy.
 
 **System API:** This is a system API.
 
-## TEMP_STOP_HEARTBEAT
-
-```TypeScript
-TEMP_STOP_HEARTBEAT = 100
-```
-
-Stops the heartbeat broadcast temporarily, and resumes it upon timeout expiration.
-
-**Since:** 15
-
-<!--Device-StrategyForHeartbeat-TEMP_STOP_HEARTBEAT = 100--><!--Device-StrategyForHeartbeat-TEMP_STOP_HEARTBEAT = 100-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
 ## START_HEARTBEAT
 
 ```TypeScript
@@ -41,6 +25,22 @@ Starts heartbeat broadcast.
 **Since:** 15
 
 <!--Device-StrategyForHeartbeat-START_HEARTBEAT = 101--><!--Device-StrategyForHeartbeat-START_HEARTBEAT = 101-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
+## TEMP_STOP_HEARTBEAT
+
+```TypeScript
+TEMP_STOP_HEARTBEAT = 100
+```
+
+Stops the heartbeat broadcast temporarily, and resumes it upon timeout expiration.
+
+**Since:** 15
+
+<!--Device-StrategyForHeartbeat-TEMP_STOP_HEARTBEAT = 100--><!--Device-StrategyForHeartbeat-TEMP_STOP_HEARTBEAT = 100-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

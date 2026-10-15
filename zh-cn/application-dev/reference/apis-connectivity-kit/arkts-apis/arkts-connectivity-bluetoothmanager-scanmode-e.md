@@ -18,24 +18,6 @@ enum ScanMode
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## SCAN_MODE_NONE
-
-```TypeScript
-SCAN_MODE_NONE = 0
-```
-
-没有扫描模式。
-
-**起始版本：** 9
-
-**废弃版本：** 10
-
-**替代接口：** [SCAN_MODE_NONE](arkts-connectivity-connection-scanmode-e.md#scan_mode_none)
-
-<!--Device-ScanMode-SCAN_MODE_NONE = 0--><!--Device-ScanMode-SCAN_MODE_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## SCAN_MODE_CONNECTABLE
 
 ```TypeScript
@@ -51,6 +33,42 @@ SCAN_MODE_CONNECTABLE = 1
 **替代接口：** [SCAN_MODE_CONNECTABLE](arkts-connectivity-connection-scanmode-e.md#scan_mode_connectable)
 
 <!--Device-ScanMode-SCAN_MODE_CONNECTABLE = 1--><!--Device-ScanMode-SCAN_MODE_CONNECTABLE = 1-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE
+
+```TypeScript
+SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE = 4
+```
+
+可连接general发现模式。
+
+**起始版本：** 9
+
+**废弃版本：** 10
+
+**替代接口：** [SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE](arkts-connectivity-connection-scanmode-e.md#scan_mode_connectable_general_discoverable)
+
+<!--Device-ScanMode-SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE = 4--><!--Device-ScanMode-SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE = 4-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE
+
+```TypeScript
+SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE = 5
+```
+
+可连接limited发现模式。
+
+**起始版本：** 9
+
+**废弃版本：** 10
+
+**替代接口：** [SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE](arkts-connectivity-connection-scanmode-e.md#scan_mode_connectable_limited_discoverable)
+
+<!--Device-ScanMode-SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE = 5--><!--Device-ScanMode-SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE = 5-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -90,38 +108,20 @@ limited发现模式。
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE
+## SCAN_MODE_NONE
 
 ```TypeScript
-SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE = 4
+SCAN_MODE_NONE = 0
 ```
 
-可连接general发现模式。
+没有扫描模式。
 
 **起始版本：** 9
 
 **废弃版本：** 10
 
-**替代接口：** [SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE](arkts-connectivity-connection-scanmode-e.md#scan_mode_connectable_general_discoverable)
+**替代接口：** [SCAN_MODE_NONE](arkts-connectivity-connection-scanmode-e.md#scan_mode_none)
 
-<!--Device-ScanMode-SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE = 4--><!--Device-ScanMode-SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE = 4-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE
-
-```TypeScript
-SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE = 5
-```
-
-可连接limited发现模式。
-
-**起始版本：** 9
-
-**废弃版本：** 10
-
-**替代接口：** [SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE](arkts-connectivity-connection-scanmode-e.md#scan_mode_connectable_limited_discoverable)
-
-<!--Device-ScanMode-SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE = 5--><!--Device-ScanMode-SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE = 5-End-->
+<!--Device-ScanMode-SCAN_MODE_NONE = 0--><!--Device-ScanMode-SCAN_MODE_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

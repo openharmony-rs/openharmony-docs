@@ -66,7 +66,7 @@ maxFontSize?: number | ResourceStr
 
 Maximum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.
 
-Value range: [minFontSize, +∞)
+Value range: [minFontSize, +∞) This parameter does not take effect when the value is abnormal.
 
 **Type:** number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -91,7 +91,7 @@ maxLines?: number
 
 Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. You can use **textOverflow** to specify how to represent text overflow. Default value: **1**
 
-Value range: [1, +∞)
+Value range: [1, +∞) If the value is abnormal, the default value is used.
 
 **Type:** number
 
@@ -113,7 +113,7 @@ minFontSize?: number | ResourceStr
 
 Minimum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.
 
-Value range: (0, +∞)
+Value range: (0, +∞) This parameter does not take effect when the value is abnormal.
 
 **Type:** number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 

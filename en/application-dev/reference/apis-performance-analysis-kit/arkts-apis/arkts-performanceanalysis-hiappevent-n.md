@@ -36,54 +36,54 @@ import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 | Name | Description |
 | --- | --- |
-| [configure](arkts-performanceanalysis-hiappevent-configure-f.md) | Configures the application event logging function, such as setting the logging switch and directory storage quota. |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md#write) | Writes events of the **AppEventInfo** type. This API uses a promise to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md#write-1) | Writes events of the **AppEventInfo** type. This API uses an asynchronous callback to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
-| [setEventParam](arkts-performanceanalysis-hiappevent-seteventparam-f.md) | Sets custom event parameters. This API uses a promise to return the result. During the same lifecycle, system events and application events can be associated through event domain and event name.System events only support crash, freeze and resource leak events. |
-| [setEventConfig](arkts-performanceanalysis-hiappevent-seteventconfig-f.md) | Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name. |
-| [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md) | Adds an event watcher. You can use the callback of the event watcher to subscribe to events. |
-| [removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md) | Removes an event watcher. |
-| [clearData](arkts-performanceanalysis-hiappevent-cleardata-f.md) | Clears local logging data of the application. |
-| [setUserId](arkts-performanceanalysis-hiappevent-setuserid-f.md) | Sets a user ID, which is used for association when a [Processor](arkts-performanceanalysis-hiappevent-processor-i.md) is configured. |
-| [getUserId](arkts-performanceanalysis-hiappevent-getuserid-f.md) | Obtains the value set through **setUserId**. |
-| [setUserProperty](arkts-performanceanalysis-hiappevent-setuserproperty-f.md) | Sets a user property, which is used for association when a [Processor](arkts-performanceanalysis-hiappevent-processor-i.md) is configured. |
-| [getUserProperty](arkts-performanceanalysis-hiappevent-getuserproperty-f.md) | Obtains the value set through **setUserProperty**. |
-| [addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md) | Adds the configuration information of the data processor, such as the event name received by it. |
-| [addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md) | Adds the configuration information of the data processor. The configuration file contains information such as the name of the event received by the data processor. This API uses a promise to return the result. |
-| [removeProcessor](arkts-performanceanalysis-hiappevent-removeprocessor-f.md) | Removes the data processor of a reported event. |
-| [configEventPolicy](arkts-performanceanalysis-hiappevent-configeventpolicy-f.md) | Sets a system event configuration policy. This API uses a promise to return the result. |
-| [registerExternalLogManager](arkts-performanceanalysis-hiappevent-registerexternallogmanager-f.md) | Register external log manager |
-| [isExternalLogManagerRegistered](arkts-performanceanalysis-hiappevent-isexternallogmanagerregistered-f.md) | Query if external log manager is already registered |
+| [addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md#addprocessor) | Adds the configuration information of the data processor, such as the event name received by it. |
+| [addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md#addprocessorfromconfig) | Adds the configuration information of the data processor. The configuration file contains information such as the name of the event received by the data processor. This API uses a promise to return the result. |
+| [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md#addwatcher) | Adds an event watcher. You can use the callback of the event watcher to subscribe to events. |
+| [clearData](arkts-performanceanalysis-hiappevent-cleardata-f.md#cleardata) | Clears local logging data of the application. |
+| [configEventPolicy](arkts-performanceanalysis-hiappevent-configeventpolicy-f.md#configeventpolicy) | Sets a system event configuration policy. This API uses a promise to return the result. |
+| [configure](arkts-performanceanalysis-hiappevent-configure-f.md#configure) | Configures the application event logging function, such as setting the logging switch and directory storage quota. |
+| [getUserId](arkts-performanceanalysis-hiappevent-getuserid-f.md#getuserid) | Obtains the value set through **setUserId**. |
+| [getUserProperty](arkts-performanceanalysis-hiappevent-getuserproperty-f.md#getuserproperty) | Obtains the value set through **setUserProperty**. |
+| [isExternalLogManagerRegistered](arkts-performanceanalysis-hiappevent-isexternallogmanagerregistered-f.md#isexternallogmanagerregistered) | Query if external log manager is already registered |
+| [registerExternalLogManager](arkts-performanceanalysis-hiappevent-registerexternallogmanager-f.md#registerexternallogmanager) | Register external log manager |
+| [removeProcessor](arkts-performanceanalysis-hiappevent-removeprocessor-f.md#removeprocessor) | Removes the data processor of a reported event. |
+| [removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md#removewatcher) | Removes an event watcher. |
+| [setEventConfig](arkts-performanceanalysis-hiappevent-seteventconfig-f.md#seteventconfig) | Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name. |
+| [setEventParam](arkts-performanceanalysis-hiappevent-seteventparam-f.md#seteventparam) | Sets custom event parameters. This API uses a promise to return the result. During the same lifecycle, system events and application events can be associated through event domain and event name.System events only support crash, freeze and resource leak events. |
+| [setUserId](arkts-performanceanalysis-hiappevent-setuserid-f.md#setuserid) | Sets a user ID, which is used for association when a [Processor](arkts-performanceanalysis-hiappevent-processor-i.md) is configured. |
+| [setUserProperty](arkts-performanceanalysis-hiappevent-setuserproperty-f.md#setuserproperty) | Sets a user property, which is used for association when a [Processor](arkts-performanceanalysis-hiappevent-processor-i.md) is configured. |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write1) | Writes events of the **AppEventInfo** type. This API uses a promise to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write2) | Writes events of the **AppEventInfo** type. This API uses an asynchronous callback to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](arkts-performanceanalysis-hiappevent-event-n.md)). The events written by this API can be subscribed to through ([addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)). |
 
 ### Classes
 
 | Name | Description |
 | --- | --- |
 | [AppEventPackageHolder](arkts-performanceanalysis-hiappevent-appeventpackageholder-c.md) | Defines a subscription data holder for processing event information. |
-| [ExternalLogManager](arkts-performanceanalysis-hiappevent-externallogmanager-c.md) | Defines an external log manager for external log management. |
 | [ExternalLogContainer](arkts-performanceanalysis-hiappevent-externallogcontainer-c.md) | An external log container including all external log files. |
+| [ExternalLogManager](arkts-performanceanalysis-hiappevent-externallogmanager-c.md) | Defines an external log manager for external log management. |
 | [ExternalLogWrapper](arkts-performanceanalysis-hiappevent-externallogwrapper-c.md) | The wrapper of external log, providing various information. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [ConfigOption](arkts-performanceanalysis-hiappevent-configoption-i.md) | Provides configuration options for application event logging. |
-| [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md) | Defines parameters of the event information. |
-| [AppEventPackage](arkts-performanceanalysis-hiappevent-appeventpackage-i.md) | Defines parameters of an **AppEventPackage** object. This API is used to obtain detail information about an event package, which is obtained using the [takeNext](arkts-performanceanalysis-hiappevent-appeventpackageholder-c.md#takenext) API. |
-| [TriggerCondition](arkts-performanceanalysis-hiappevent-triggercondition-i.md) | Defines the triggering condition parameters of the **onTrigger** callback of a [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md). |
+| [AddressSanitizerPolicy](arkts-performanceanalysis-hiappevent-addresssanitizerpolicy-i.md) | Defines the address sanitizer event configuration policy. |
+| [AppCrashPolicy](arkts-performanceanalysis-hiappevent-appcrashpolicy-i.md) | Defines the application crash event configuration policy. |
 | [AppEventFilter](arkts-performanceanalysis-hiappevent-appeventfilter-i.md) | Defines parameters of subscription filtering conditions of a [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md). This API is used to set event filtering conditions in the event watcher to ensure that only the events that meet the filtering conditions are subscribed to. |
 | [AppEventGroup](arkts-performanceanalysis-hiappevent-appeventgroup-i.md) | Defines parameters of the event group returned by the subscription. This API can be used to obtain detail information about an event group, which is often used in the **onReceive** callback of [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md). |
-| [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md) | Defines parameters for a **Watcher** object. This API is used to configure and manage event watchers to subscribe to and process specified events. |
+| [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md) | Defines parameters of the event information. |
+| [AppEventPackage](arkts-performanceanalysis-hiappevent-appeventpackage-i.md) | Defines parameters of an **AppEventPackage** object. This API is used to obtain detail information about an event package, which is obtained using the [takeNext](arkts-performanceanalysis-hiappevent-appeventpackageholder-c.md#takenext) API. |
 | [AppEventReportConfig](arkts-performanceanalysis-hiappevent-appeventreportconfig-i.md) | Defines the event configuration for the data processor to report. |
-| [Processor](arkts-performanceanalysis-hiappevent-processor-i.md) | Defines a data processor for reporting and managing events. You can customize processor configurations as required. |
-| [MainThreadJankPolicy](arkts-performanceanalysis-hiappevent-mainthreadjankpolicy-i.md) | Defines the configuration policy for the main thread jank event. |
-| [CpuUsageHighPolicy](arkts-performanceanalysis-hiappevent-cpuusagehighpolicy-i.md) | Defines the configuration policy for the high CPU usage event. |
-| [AppCrashPolicy](arkts-performanceanalysis-hiappevent-appcrashpolicy-i.md) | Defines the application crash event configuration policy. |
 | [AppFreezePolicy](arkts-performanceanalysis-hiappevent-appfreezepolicy-i.md) | Defines the application freeze event configuration policy. |
-| [ResourceOverlimitPolicy](arkts-performanceanalysis-hiappevent-resourceoverlimitpolicy-i.md) | Defines the resource leak event configuration policy. |
-| [AddressSanitizerPolicy](arkts-performanceanalysis-hiappevent-addresssanitizerpolicy-i.md) | Defines the address sanitizer event configuration policy. |
+| [ConfigOption](arkts-performanceanalysis-hiappevent-configoption-i.md) | Provides configuration options for application event logging. |
+| [CpuUsageHighPolicy](arkts-performanceanalysis-hiappevent-cpuusagehighpolicy-i.md) | Defines the configuration policy for the high CPU usage event. |
 | [EventPolicy](arkts-performanceanalysis-hiappevent-eventpolicy-i.md) | Defines the system event configuration policy, which is set by calling [configEventPolicy](arkts-performanceanalysis-hiappevent-configeventpolicy-f.md). |
+| [MainThreadJankPolicy](arkts-performanceanalysis-hiappevent-mainthreadjankpolicy-i.md) | Defines the configuration policy for the main thread jank event. |
+| [Processor](arkts-performanceanalysis-hiappevent-processor-i.md) | Defines a data processor for reporting and managing events. You can customize processor configurations as required. |
+| [ResourceOverlimitPolicy](arkts-performanceanalysis-hiappevent-resourceoverlimitpolicy-i.md) | Defines the resource leak event configuration policy. |
+| [TriggerCondition](arkts-performanceanalysis-hiappevent-triggercondition-i.md) | Defines the triggering condition parameters of the **onTrigger** callback of a [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md). |
+| [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md) | Defines parameters for a **Watcher** object. This API is used to configure and manage event watchers to subscribe to and process specified events. |
 
 ### Types
 

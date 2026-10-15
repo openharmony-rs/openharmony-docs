@@ -1,10 +1,10 @@
 # TabContent
 
-The **TabContent** component is used only in the **Tabs** component. It corresponds to the content view of a switched tab page.
+The **TabContent** component is used to define the content view of each tab in the [Tabs](arkts-arkui-tabs-comp.md) component. It supports features such as rendering a single child component, content cropping control, and customizing the page in approved sample mode. This component is applicable to application scenarios where multiple tabs need to be switched, such as category navigation and function module switching. It helps developers quickly implement content display and interaction by page.
 
 > **NOTE:** 
-
-> - By default, the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute of this component is set to **true**.If you want to extend the content area to the outside of the component, disable the **clip** attribute first.
+> 
+> - By default, the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute of this component is set to **true**.If you want to extend the content area to the outside of the component, disable the **clip** attribute first.
 
 ## Child Components
 
@@ -25,6 +25,11 @@ TabContent()
 
 Creates the **TabContent** component, which represents the content associated with a specific tab.
 
+> **NOTE:** 
+> 
+> The **TabContent** component can only be used as a child component of the **Tabs** component. Otherwise, the
+> component cannot be displayed properly.
+
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
@@ -44,7 +49,7 @@ Creates the **TabContent** component, which represents the content associated wi
 | [IndicatorStyle](arkts-arkui-tabcontent-comp-indicatorstyle-i.md) | Represents an indicator style object. |
 | [LabelStyle](arkts-arkui-tabcontent-comp-labelstyle-i.md) | Represents a style object for the label text and font. |
 | [TabBarBadgeStyle](arkts-arkui-tabcontent-comp-tabbarbadgestyle-i.md) | Represents a tab bar badge style object. |
-| [TabBarIconStyle](arkts-arkui-tabcontent-comp-tabbariconstyle-i.md) | Represents a label icon style object. |
+| [TabBarIconStyle](arkts-arkui-tabcontent-comp-tabbariconstyle-i.md) | Represents a tab bar icon style object. |
 | [TabBarOptions](arkts-arkui-tabcontent-comp-tabbaroptions-i.md) | Defines the options for configuring images and text content on the tabs. |
 
 ### Types

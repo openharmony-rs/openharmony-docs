@@ -4,7 +4,7 @@
 declare interface IsolatedOptions
 ```
 
-Describes the optional construction parameters during **IsolatedComponent** construction.
+Used to pass construction parameters during **IsolatedComponent** construction.
 
 **Since:** 12
 
@@ -20,7 +20,7 @@ Describes the optional construction parameters during **IsolatedComponent** cons
 want: Want
 ```
 
-.abc file information to load.
+The .abc file information to load. The .abc file runs in the restricted worker specified by the **worker** parameter. The parameters of the **Want** object must contain the following fields: **resourcePath** (resource path, which must be a .hap file path), **abcPath** (.abc file path verified by [verifyAbc](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-verifyabc-f-sys.md), which must start with '/abcs'), and **entryPoint** (.abc entry point, in the format of 'bundleName/page path').
 
 **Type:** [Want](arkts-arkui-isolatedcomponent-comp-want-t-sys.md)
 
@@ -40,7 +40,7 @@ want: Want
 worker: RestrictedWorker
 ```
 
-Restricted Worker thread where the .abc file is running.
+Restricted worker that runs the .abc file. Note that layout rendering and event delivery between the main thread and the restricted worker thread are asynchronous.
 
 **Type:** [RestrictedWorker](arkts-arkui-isolatedcomponent-comp-restrictedworker-t-sys.md)
 

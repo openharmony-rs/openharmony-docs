@@ -19,17 +19,17 @@ Enumerates the immersive modes of the input method.<br> <br>
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## NONE_IMMERSIVE
+## DARK_IMMERSIVE
 
 ```TypeScript
-NONE_IMMERSIVE = 0
+DARK_IMMERSIVE
 ```
 
-Default immersive mode, the panel is not in immersive mode.
+Dark immersive mode.
 
 **Since:** 15
 
-<!--Device-ImmersiveMode-NONE_IMMERSIVE = 0--><!--Device-ImmersiveMode-NONE_IMMERSIVE = 0-End-->
+<!--Device-ImmersiveMode-DARK_IMMERSIVE--><!--Device-ImmersiveMode-DARK_IMMERSIVE-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -61,16 +61,16 @@ Light immersive mode.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## DARK_IMMERSIVE
+## NONE_IMMERSIVE
 
 ```TypeScript
-DARK_IMMERSIVE
+NONE_IMMERSIVE = 0
 ```
 
-Dark immersive mode.
+Default immersive mode, the panel is not in immersive mode.
 
 **Since:** 15
 
-<!--Device-ImmersiveMode-DARK_IMMERSIVE--><!--Device-ImmersiveMode-DARK_IMMERSIVE-End-->
+<!--Device-ImmersiveMode-NONE_IMMERSIVE = 0--><!--Device-ImmersiveMode-NONE_IMMERSIVE = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

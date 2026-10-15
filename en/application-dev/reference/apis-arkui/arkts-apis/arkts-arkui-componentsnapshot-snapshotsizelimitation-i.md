@@ -24,9 +24,9 @@ import { componentSnapshot } from '@kit.ArkUI';
 maxHeight: number
 ```
 
-Maximum height of a component screenshot.
+Maximum height for the component snapshot.
 
-The normal value range is (0, +∞). A value of -1 indicates that the component snapshot size limitation query failed.
+Value range: [0, +∞).
 
 Unit: px.
 
@@ -48,9 +48,9 @@ Unit: px.
 maxWidth: number
 ```
 
-Maximum width of a component screenshot.
+Maximum width for the component snapshot.
 
-The normal value range is (0, +∞). A value of -1 indicates that the component snapshot size limitation query failed.
+Value range: [0, +∞).
 
 Unit: px.
 

@@ -39,3 +39,24 @@ function removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array<string>): 
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { common, systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+// 调用本接口前，先查询设备是否支持打印机IP地址策略特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY);
+if (isSupported) {
+  try {
+    systemManager.removeAllowedPrinterIPAddressesForAccount(ipArray);
+    console.info('Succeeded in removing the allowed printer IP Addresses for current user.');
+  } catch (err) {
+    console.error(`Failed to remove the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The printer IP address policy feature is not supported.');
+}
+```

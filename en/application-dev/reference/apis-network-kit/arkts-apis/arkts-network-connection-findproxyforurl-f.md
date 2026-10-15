@@ -20,7 +20,7 @@ Parses the specified URL proxy address based on the configured PAC script and re
 
 > 2. If no PAC script is set before this interface is called, an empty string is returned.
 
-> 3. The [setPacFileUrl](arkts-network-connection-setpacfileurl-f.md) API supports parsing scripts and enabling the PAC proxy capability on PC/2in1&lt;sup&gt;20+&lt;/sup&gt;, Phone&lt;sup&gt;23+&lt;/sup&gt;, Tablet&lt;sup&gt;23+&lt;/sup&gt; and TV&lt;sup&gt;23+&lt;/sup&gt; devices.Therefore, this API can be used to obtain the PAC proxy information on the preceding devices. For wearable devices, this API does not take effect, and an empty string is returned.
+> 3. The [setPacFileUrl](arkts-network-connection-setpacfileurl-f.md) API supports parsing scripts and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup> and TV<sup>23+</sup> devices.Therefore, this API can be used to obtain the PAC proxy information on the preceding devices. For wearable devices, this API does not take effect, and an empty string is returned.
 
 **Since:** 20
 

@@ -24,7 +24,7 @@ function closeCustomDialog(dialogId: number): void
 
 **废弃版本：** 18
 
-**替代接口：** closeCustomDialog
+**替代接口：** [closeCustomDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#closecustomdialog)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

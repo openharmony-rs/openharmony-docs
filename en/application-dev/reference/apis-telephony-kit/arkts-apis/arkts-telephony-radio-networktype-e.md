@@ -12,34 +12,6 @@ Enumerates network types.
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## NETWORK_TYPE_UNKNOWN
-
-```TypeScript
-NETWORK_TYPE_UNKNOWN = 0
-```
-
-Unknown network.
-
-**Since:** 6
-
-<!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0--><!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-## NETWORK_TYPE_GSM
-
-```TypeScript
-NETWORK_TYPE_GSM = 1
-```
-
-GSM network.
-
-**Since:** 6
-
-<!--Device-NetworkType-NETWORK_TYPE_GSM = 1--><!--Device-NetworkType-NETWORK_TYPE_GSM = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
 ## NETWORK_TYPE_CDMA
 
 ```TypeScript
@@ -54,31 +26,17 @@ CDMA network.
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## NETWORK_TYPE_WCDMA
+## NETWORK_TYPE_GSM
 
 ```TypeScript
-NETWORK_TYPE_WCDMA = 3
+NETWORK_TYPE_GSM = 1
 ```
 
-WCDMA network.
+GSM network.
 
 **Since:** 6
 
-<!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3--><!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-## NETWORK_TYPE_TDSCDMA
-
-```TypeScript
-NETWORK_TYPE_TDSCDMA = 4
-```
-
-TD-SCDMA network.
-
-**Since:** 6
-
-<!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4--><!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4-End-->
+<!--Device-NetworkType-NETWORK_TYPE_GSM = 1--><!--Device-NetworkType-NETWORK_TYPE_GSM = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -107,5 +65,47 @@ NR network.
 **Since:** 6
 
 <!--Device-NetworkType-NETWORK_TYPE_NR = 6--><!--Device-NetworkType-NETWORK_TYPE_NR = 6-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## NETWORK_TYPE_TDSCDMA
+
+```TypeScript
+NETWORK_TYPE_TDSCDMA = 4
+```
+
+TD-SCDMA network.
+
+**Since:** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4--><!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## NETWORK_TYPE_UNKNOWN
+
+```TypeScript
+NETWORK_TYPE_UNKNOWN = 0
+```
+
+Unknown network.
+
+**Since:** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0--><!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## NETWORK_TYPE_WCDMA
+
+```TypeScript
+NETWORK_TYPE_WCDMA = 3
+```
+
+WCDMA network.
+
+**Since:** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3--><!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

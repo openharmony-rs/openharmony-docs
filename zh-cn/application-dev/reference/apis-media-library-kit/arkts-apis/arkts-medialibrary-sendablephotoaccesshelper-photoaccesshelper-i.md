@@ -20,7 +20,7 @@ interface PhotoAccessHelper extends lang.ISendable
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
-<a id="createasset-2"></a>
+<a id="createasset3"></a>
 
 ## createAsset
 
@@ -62,7 +62,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes:         1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -87,6 +87,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
+
+<a id="getalbums1"></a>
 
 ## getAlbums
 
@@ -158,7 +160,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 }
 ```
 
-<a id="getalbums-1"></a>
+<a id="getalbums2"></a>
 
 ## getAlbums
 
@@ -198,7 +200,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: photoAccessHelper.Fe
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>2. System internal error, album query returned null, possible causes: 1. Database exception; 2. IPC timeout. Please retry; <br>3. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, failed to create boolean value, possible causes:         1. Memory insufficient; 2. IPC timeout. Please retry; <br>2. System internal error, album query returned null, possible causes:         1. Database exception; 2. IPC timeout. Please retry; <br>3. System internal error, possible causes:         1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -266,7 +268,7 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise<FetchResult<PhotoAss
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes:         1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例**
 
@@ -333,7 +335,7 @@ getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes:         1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例**
 

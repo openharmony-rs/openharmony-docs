@@ -16,35 +16,19 @@ Enumerates the device types.
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-## DEVICE_TYPE_PHONE
+## DEVICE_TYPE_2IN1
 
 ```TypeScript
-DEVICE_TYPE_PHONE = 0x00
+DEVICE_TYPE_2IN1 = 0x07
 ```
 
-Phone
+PC/2-in-1 device
 
-**Since:** 6
+**Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-DeviceType-DEVICE_TYPE_PHONE = 0x00--><!--Device-DeviceType-DEVICE_TYPE_PHONE = 0x00-End-->
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-## DEVICE_TYPE_TABLET
-
-```TypeScript
-DEVICE_TYPE_TABLET = 0x01
-```
-
-Tablet
-
-**Since:** 6
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-DeviceType-DEVICE_TYPE_TABLET = 0x01--><!--Device-DeviceType-DEVICE_TYPE_TABLET = 0x01-End-->
+<!--Device-DeviceType-DEVICE_TYPE_2IN1 = 0x07--><!--Device-DeviceType-DEVICE_TYPE_2IN1 = 0x07-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -58,7 +42,7 @@ Head unit
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-DeviceType-DEVICE_TYPE_CAR = 0x02--><!--Device-DeviceType-DEVICE_TYPE_CAR = 0x02-End-->
 
@@ -74,9 +58,41 @@ Indicates a PC.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-DeviceType-DEVICE_TYPE_PC = 0x03--><!--Device-DeviceType-DEVICE_TYPE_PC = 0x03-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+## DEVICE_TYPE_PHONE
+
+```TypeScript
+DEVICE_TYPE_PHONE = 0x00
+```
+
+Phone
+
+**Since:** 6
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DeviceType-DEVICE_TYPE_PHONE = 0x00--><!--Device-DeviceType-DEVICE_TYPE_PHONE = 0x00-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+## DEVICE_TYPE_TABLET
+
+```TypeScript
+DEVICE_TYPE_TABLET = 0x01
+```
+
+Tablet
+
+**Since:** 6
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DeviceType-DEVICE_TYPE_TABLET = 0x01--><!--Device-DeviceType-DEVICE_TYPE_TABLET = 0x01-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -90,7 +106,7 @@ Smart TV
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-DeviceType-DEVICE_TYPE_TV = 0x04--><!--Device-DeviceType-DEVICE_TYPE_TV = 0x04-End-->
 
@@ -106,24 +122,8 @@ Wearable
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-DeviceType-DEVICE_TYPE_WEARABLE = 0x06--><!--Device-DeviceType-DEVICE_TYPE_WEARABLE = 0x06-End-->
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-## DEVICE_TYPE_2IN1
-
-```TypeScript
-DEVICE_TYPE_2IN1 = 0x07
-```
-
-PC/2-in-1 device
-
-**Since:** 11
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-DeviceType-DEVICE_TYPE_2IN1 = 0x07--><!--Device-DeviceType-DEVICE_TYPE_2IN1 = 0x07-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager

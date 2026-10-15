@@ -6,6 +6,8 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
+<a id="getstate1"></a>
+
 ## getState
 
 ```TypeScript
@@ -37,9 +39,10 @@ Obtains the state of the screen hopping switch. This API uses an asynchronous ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,8 +74,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getstate-1"></a>
+
+<a id="getstate2"></a>
 
 ## getState
 
@@ -104,15 +109,16 @@ Checks whether screen hopping is enabled. This API uses a promise to return the 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;{ state: boolean }&gt; | Promise used to return the state of the screen hopping switch. **true** if enabled and **false** if disabled.<br>**Since:** 12 |
+| Promise&lt;{ state: boolean }&gt; | Promise used to return the state of the screen hopping switch. **true** if enabled and **false** if disabled. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -137,3 +143,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

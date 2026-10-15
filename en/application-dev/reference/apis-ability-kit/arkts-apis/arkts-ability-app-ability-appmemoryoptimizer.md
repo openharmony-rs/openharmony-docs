@@ -4,8 +4,6 @@ appMemoryOptimizer provides application memory optimization capabilities, includ
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace appMemoryOptimizer--><!--Device-unnamed-declare namespace appMemoryOptimizer-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
@@ -22,5 +20,5 @@ import { appMemoryOptimizer } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [evictFilePages](arkts-ability-appmemoryoptimizer-evictfilepages-f.md) | Sends a request to the system to release file page cache of specified files. The system determines whether to actually perform the release based on the current memory status, and success is not guaranteed. |
-| [evictModuleFilePages](arkts-ability-appmemoryoptimizer-evictmodulefilepages-f.md) | Sends a request to the system to release file page cache of specified modules. The system determines whether to actually perform the release based on the current memory status, and success is not guaranteed. The system reads the memory_optimizer.json configuration file of the corresponding module, obtains the evictFilePages array, and performs file page cache eviction on the files in the array. |
+| [evictFilePages](arkts-ability-appmemoryoptimizer-evictfilepages-f.md#evictfilepages) | Sends a request to the system to release file page cache of specified files. The system determines whether to actually perform the release based on the current memory status, and success is not guaranteed. |
+| [evictModuleFilePages](arkts-ability-appmemoryoptimizer-evictmodulefilepages-f.md#evictmodulefilepages) | Sends a request to the system to release file page cache of specified modules. The system determines whether to actually perform the release based on the current memory status, and success is not guaranteed. The system reads the memory_optimizer.json configuration file of the corresponding module, obtains the evictFilePages array, and performs file page cache eviction on the files in the array. |

@@ -22,7 +22,7 @@ Permission denied.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PermissionGrantState-PERMISSION_DENIED = -1--><!--Device-PermissionGrantState-PERMISSION_DENIED = -1-End-->
 
@@ -38,7 +38,7 @@ Permission granted.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PermissionGrantState-PERMISSION_GRANTED = 0--><!--Device-PermissionGrantState-PERMISSION_GRANTED = 0-End-->
 

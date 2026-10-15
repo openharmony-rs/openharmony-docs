@@ -12,34 +12,6 @@ Defines the modes of opening a new window in the WebView, including pop-up windo
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## NEW_POPUP
-
-```TypeScript
-NEW_POPUP = 0
-```
-
-Open in a new pop-up window.
-
-**Since:** 23
-
-<!--Device-NavigationPolicy-NEW_POPUP = 0--><!--Device-NavigationPolicy-NEW_POPUP = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## NEW_WINDOW
-
-```TypeScript
-NEW_WINDOW = 1
-```
-
-Open in a new window.
-
-**Since:** 23
-
-<!--Device-NavigationPolicy-NEW_WINDOW = 1--><!--Device-NavigationPolicy-NEW_WINDOW = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## NEW_BACKGROUND_TAB
 
 ```TypeScript
@@ -65,5 +37,33 @@ Open in a new tab in foreground.
 **Since:** 23
 
 <!--Device-NavigationPolicy-NEW_FOREGROUND_TAB = 3--><!--Device-NavigationPolicy-NEW_FOREGROUND_TAB = 3-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## NEW_POPUP
+
+```TypeScript
+NEW_POPUP = 0
+```
+
+Open in a new pop-up window.
+
+**Since:** 23
+
+<!--Device-NavigationPolicy-NEW_POPUP = 0--><!--Device-NavigationPolicy-NEW_POPUP = 0-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## NEW_WINDOW
+
+```TypeScript
+NEW_WINDOW = 1
+```
+
+Open in a new window.
+
+**Since:** 23
+
+<!--Device-NavigationPolicy-NEW_WINDOW = 1--><!--Device-NavigationPolicy-NEW_WINDOW = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

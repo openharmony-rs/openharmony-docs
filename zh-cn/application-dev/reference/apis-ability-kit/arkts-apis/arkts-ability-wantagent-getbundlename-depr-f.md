@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getbundlename1"></a>
+
 ## getBundleName
 
 ```TypeScript
@@ -87,7 +89,7 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getbundlename-1"></a>
+<a id="getbundlename2"></a>
 
 ## getBundleName
 

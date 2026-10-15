@@ -6,8 +6,6 @@ export enum SkillType
 
 Enumerates the skill types.
 
-@enum { int }
-
 **Since:** 26.0.0
 
 <!--Device-unnamed-export enum SkillType--><!--Device-unnamed-export enum SkillType-End-->

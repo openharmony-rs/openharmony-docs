@@ -40,7 +40,7 @@ Connects this UIExtensionAbility to a ServiceExtensionAbility. It enables commun
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want information required for connecting to the ServiceExtensionAbility, including the ability name and bundle name. |
-| options | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | Yes | Callback used to return the information indicating that the connection is successful, failed, or interrupted. |
+| options | [ConnectOptions](arkts-ability-connectoptions-i.md) | Yes | Callback used to return the information indicating that the connection is successful, failed, or interrupted. |
 
 **Return value:**
 
@@ -107,7 +107,7 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -118,6 +118,8 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 | [16000013](../errorcode-ability.md#16000013-application-controlled-by-edm) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [16000055](../errorcode-ability.md#16000055-installation-free-timeout) | Installation-free timed out. |
+
+<a id="disconnectserviceextensionability1"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -150,7 +152,7 @@ Disconnects from a ServiceExtensionAbility. Once the connection is terminated, s
 | [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
-<a id="disconnectserviceextensionability-1"></a>
+<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -220,7 +222,7 @@ Disconnects from a UIServiceExtensionAbility. This API uses a promise to return 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
@@ -232,10 +234,10 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<Abilit
 
 Opens an atomic service in an independent window and returns the result. This API uses a promise to return the result. The following situations may be possible for a started atomic service:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the atomic service. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the atomic service. The result is returned to the caller.  
 - If an exception occurs, for example, the atomic service is killed, an error message, in which **resultCode** is  
 **-1**, is returned to the caller.  
-- If different applications call this API to start an atomic service and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the atomic service, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start an atomic service and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the atomic service, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -261,7 +263,7 @@ Opens an atomic service in an independent window and returns the result. This AP
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise used to return the information to the caller. |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise used to return the information to the caller. |
 
 **Error codes:**
 
@@ -288,7 +290,7 @@ Starts a UIAbility by using App Linking or Deep Linking. This API uses a promise
 - The **actions** field must contain **ohos.want.action.viewData**.  
 - The **entities** field must contain **entity.system.browsable**.  
 - The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.  
-If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult). If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
+If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult1). If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
 > **NOTE:** 
 > 
@@ -309,7 +311,7 @@ If you want to obtain the result after the started UIAbility is terminated, set 
 | --- | --- | --- | --- |
 | link | string | Yes | URL to open, which must be in the standard format. |
 | options | [OpenLinkOptions](arkts-ability-app-ability-openlinkoptions-openlinkoptions-i.md) | No | Options of the URL. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | No | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | No | Callback used to return the result. |
 
 **Return value:**
 
@@ -403,6 +405,8 @@ Sets the dark/light color mode for this UIExtensionAbility. Before calling this 
 | --- | --- |
 | [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -465,7 +469,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 | [16000079](../errorcode-ability.md#16000079-app_instance_key-cannot-be-specified) | The APP_INSTANCE_KEY cannot be specified.<br>**Applicable version:** 14 and later |
 | [16000080](../errorcode-ability.md#16000080-new-instances-cannot-be-created) | Creating a new instance is not supported.<br>**Applicable version:** 14 and later |
 
-<a id="startability-1"></a>
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -528,7 +532,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 | [16000079](../errorcode-ability.md#16000079-app_instance_key-cannot-be-specified) | The APP_INSTANCE_KEY cannot be specified.<br>**Applicable version:** 14 and later |
 | [16000080](../errorcode-ability.md#16000080-new-instances-cannot-be-created) | Creating a new instance is not supported.<br>**Applicable version:** 14 and later |
 
-<a id="startability-2"></a>
+<a id="startability3"></a>
 
 ## startAbility
 
@@ -598,6 +602,8 @@ Starts a UIAbility. This API uses a promise to return the result.
 | [16000079](../errorcode-ability.md#16000079-app_instance_key-cannot-be-specified) | The APP_INSTANCE_KEY cannot be specified.<br>**Applicable version:** 14 and later |
 | [16000080](../errorcode-ability.md#16000080-new-instances-cannot-be-created) | Creating a new instance is not supported.<br>**Applicable version:** 14 and later |
 
+<a id="startabilityforresult1"></a>
+
 ## startAbilityForResult
 
 ```TypeScript
@@ -606,10 +612,10 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the UIAbility. The result is returned to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**  
 , is returned to the initiator UIAbility.  
-- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -629,7 +635,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
 
@@ -665,7 +671,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 | [16000079](../errorcode-ability.md#16000079-app_instance_key-cannot-be-specified) | The APP_INSTANCE_KEY cannot be specified.<br>**Applicable version:** 14 and later |
 | [16000080](../errorcode-ability.md#16000080-new-instances-cannot-be-created) | Creating a new instance is not supported.<br>**Applicable version:** 14 and later |
 
-<a id="startabilityforresult-1"></a>
+<a id="startabilityforresult2"></a>
 
 ## startAbilityForResult
 
@@ -675,10 +681,10 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the UIAbility. The result is returned to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**  
 , is returned to the initiator UIAbility.  
-- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -699,7 +705,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start. |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | Yes | Extra parameters used for starting the UIAbility. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
 
@@ -733,7 +739,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 | [16000079](../errorcode-ability.md#16000079-app_instance_key-cannot-be-specified) | The APP_INSTANCE_KEY cannot be specified.<br>**Applicable version:** 14 and later |
 | [16000080](../errorcode-ability.md#16000080-new-instances-cannot-be-created) | Creating a new instance is not supported.<br>**Applicable version:** 14 and later |
 
-<a id="startabilityforresult-2"></a>
+<a id="startabilityforresult3"></a>
 
 ## startAbilityForResult
 
@@ -743,10 +749,10 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the UIAbility. The result is returned to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**  
 , is returned to the initiator UIAbility.  
-- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -772,7 +778,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise used to return the exit result of the launched UIAbility. |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise used to return the exit result of the launched UIAbility. |
 
 **Error codes:**
 
@@ -846,7 +852,7 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -859,6 +865,8 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 | [16000019](../errorcode-ability.md#16000019-no-matching-ability-found-for-implicit-start) | No matching ability is found. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | The caller has been released. |
+
+<a id="terminateself1"></a>
 
 ## terminateSelf
 
@@ -888,7 +896,7 @@ Destroys this UIExtensionAbility and closes the corresponding window. This API u
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-<a id="terminateself-1"></a>
+<a id="terminateself2"></a>
 
 ## terminateSelf
 
@@ -912,6 +920,8 @@ Destroys this UIExtensionAbility and closes the corresponding window. This API u
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="terminateselfwithresult1"></a>
+
 ## terminateSelfWithResult
 
 ```TypeScript
@@ -932,7 +942,7 @@ Destroys this UIExtensionAbility, closes the corresponding window, and returns t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | Information returned to the caller of the UIExtensionAbility. |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | Yes | Information returned to the caller of the UIExtensionAbility. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -941,7 +951,7 @@ Destroys this UIExtensionAbility, closes the corresponding window, and returns t
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-<a id="terminateselfwithresult-1"></a>
+<a id="terminateselfwithresult2"></a>
 
 ## terminateSelfWithResult
 
@@ -963,7 +973,7 @@ Destroys this UIExtensionAbility, closes the corresponding window, and returns t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | Information returned to the caller of the UIExtensionAbility. |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | Yes | Information returned to the caller of the UIExtensionAbility. |
 
 **Return value:**
 

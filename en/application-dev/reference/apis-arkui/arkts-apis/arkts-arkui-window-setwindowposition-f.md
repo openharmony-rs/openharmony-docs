@@ -22,6 +22,8 @@ The supported adjustments are as follows:
 
 Setting the global topmost state requires the ohos.permission.WINDOW_TOPMOST permission.
 
+Main windows on a virtual screen are not supported. If the window to be adjusted or the target main window specified by **insertAfter** is on a virtual screen, error code 1300008 is returned.
+
 **Since:** 26.0.1
 
 **Required permissions:** ohos.permission.WINDOW_TOPMOST
@@ -36,7 +38,7 @@ Setting the global topmost state requires the ohos.permission.WINDOW_TOPMOST per
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| list | Array&lt;[WindowPositionParams](arkts-arkui-window-windowpositionparams-i.md)&gt; | Yes | List of window position options to adjust. The list must not be empty. |
+| list | Array&lt;[WindowPositionParams](arkts-arkui-window-windowpositionparams-i.md)&gt; | Yes | List of window position options to adjust. The list must not be empty, and the maximum number of window position options cannot exceed 50. |
 
 **Return value:**
 
@@ -50,6 +52,8 @@ Setting the global topmost state requires the ohos.permission.WINDOW_TOPMOST per
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window to be adjusted cannot be found: not created, has been destroyed or not belong to current process; 2. The target main window specified by insertAfter cannot be found: not created, has been destroyed or not belong to current process; |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window to be adjusted cannot be found: not created, has been destroyed or not belong to current process;         2. The target main window specified by insertAfter cannot be found: not created or has been destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
+| [1300008](../errorcode-window.md#1300008-display-device-exception) | The display device is abnormal. Possible cause: The window to be adjusted or the target main window specified by insertAfter is on a virtual screen. |
+| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |

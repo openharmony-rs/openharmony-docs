@@ -28,22 +28,6 @@ DARK = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## LIGHT
-
-```TypeScript
-LIGHT = 2
-```
-
-背景底色为白色。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-BackgroundTheme-LIGHT = 2--><!--Device-BackgroundTheme-LIGHT = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## DEFAULT
 
 ```TypeScript
@@ -57,5 +41,21 @@ DEFAULT = 3
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-BackgroundTheme-DEFAULT = 3--><!--Device-BackgroundTheme-DEFAULT = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## LIGHT
+
+```TypeScript
+LIGHT = 2
+```
+
+背景底色为白色。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackgroundTheme-LIGHT = 2--><!--Device-BackgroundTheme-LIGHT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

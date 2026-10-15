@@ -12,6 +12,20 @@ Describes the priority type of a notification.
 
 **System capability:** SystemCapability.Notification.Notification
 
+## AT_ME
+
+```TypeScript
+AT_ME = 'AT_ME'
+```
+
+Message that mentions me.
+
+**Since:** 23
+
+<!--Device-PriorityNotificationType-AT_ME = 'AT_ME'--><!--Device-PriorityNotificationType-AT_ME = 'AT_ME'-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
 ## OTHER
 
 ```TypeScript
@@ -40,17 +54,17 @@ Primary contact.
 
 **System capability:** SystemCapability.Notification.Notification
 
-## AT_ME
+## SCHEDULE_REMINDER
 
 ```TypeScript
-AT_ME = 'AT_ME'
+SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'
 ```
 
-Message that mentions me.
+Schedule reminder.
 
 **Since:** 23
 
-<!--Device-PriorityNotificationType-AT_ME = 'AT_ME'--><!--Device-PriorityNotificationType-AT_ME = 'AT_ME'-End-->
+<!--Device-PriorityNotificationType-SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'--><!--Device-PriorityNotificationType-SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -65,19 +79,5 @@ Urgent message.
 **Since:** 23
 
 <!--Device-PriorityNotificationType-URGENT_MESSAGE = 'URGENT_MESSAGE'--><!--Device-PriorityNotificationType-URGENT_MESSAGE = 'URGENT_MESSAGE'-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-## SCHEDULE_REMINDER
-
-```TypeScript
-SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'
-```
-
-Schedule reminder.
-
-**Since:** 23
-
-<!--Device-PriorityNotificationType-SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'--><!--Device-PriorityNotificationType-SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'-End-->
 
 **System capability:** SystemCapability.Notification.Notification

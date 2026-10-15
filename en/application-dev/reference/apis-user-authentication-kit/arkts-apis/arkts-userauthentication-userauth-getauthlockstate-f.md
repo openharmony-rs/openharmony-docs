@@ -18,7 +18,7 @@ Queries the lockout state of the specified authentication type. This API uses a 
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-userAuth-function getAuthLockState(authType: UserAuthType): Promise<AuthLockState>--><!--Device-userAuth-function getAuthLockState(authType: UserAuthType): Promise<AuthLockState>-End-->
 
@@ -53,11 +53,11 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let queryType = userAuth.UserAuthType.PIN;
-let authLockState : userAuth.AuthLockState = {
-  isLocked : false,
-  remainingAuthAttempts : 0,
-  lockoutDuration : 0
-}
+let authLockState: userAuth.AuthLockState = {
+  isLocked: false,
+  remainingAuthAttempts: 0,
+  lockoutDuration: 0
+};
 
 userAuth.getAuthLockState(queryType)
   .then((result: userAuth.AuthLockState) => {
@@ -65,6 +65,6 @@ userAuth.getAuthLockState(queryType)
     console.info('get auth lock state successfully.');
   })
   .catch((err: BusinessError) => {
-    console.error(`get auth lock state failed, err code is : ${err?.code}, err message is : ${err?.message}`);
-  })
+    console.error(`Failed to get auth lock state. Code: ${err?.code}, message: ${err?.message}`);
+  });
 ```

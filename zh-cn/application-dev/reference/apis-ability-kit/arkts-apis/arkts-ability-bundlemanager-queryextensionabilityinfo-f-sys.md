@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryextensionabilityinfo1"></a>
+
 ## queryExtensionAbilityInfo
 
 ```TypeScript
@@ -33,8 +35,8 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | extensionAbilityType | [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 是 | 标识extensionAbility的类型。 |
-| extensionAbilityFlags | number | 是 | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到Array&lt;ExtensionAbilityInfo&gt;；否则为错误对象。 |
+| extensionAbilityFlags | number | 是 | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到Array<ExtensionAbilityInfo>；否则为错误对象。 |
 
 **错误码：**
 
@@ -42,11 +44,12 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -76,8 +79,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="queryextensionabilityinfo-1"></a>
+
+<a id="queryextensionabilityinfo2"></a>
 
 ## queryExtensionAbilityInfo
 
@@ -105,9 +110,9 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | extensionAbilityType | [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 是 | 标识extensionAbility的类型。 |
-| extensionAbilityFlags | number | 是 | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| extensionAbilityFlags | number | 是 | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
 | userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到Array&lt;ExtensionAbilityInfo&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到Array<ExtensionAbilityInfo>；否则为错误对象。 |
 
 **错误码：**
 
@@ -115,12 +120,13 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -151,8 +157,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="queryextensionabilityinfo-2"></a>
+
+<a id="queryextensionabilityinfo3"></a>
 
 ## queryExtensionAbilityInfo
 
@@ -180,14 +188,14 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | extensionAbilityType | [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 是 | 标识extensionAbility的类型。 |
-| extensionAbilityFlags | number | 是 | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| extensionAbilityFlags | number | 是 | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
 | userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | Promise对象，返回Array&lt;ExtensionAbilityInfo&gt;。 |
+| Promise&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | Promise对象，返回Array<[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)>。 |
 
 **错误码：**
 
@@ -195,12 +203,13 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -253,3 +262,5 @@ try {
   hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

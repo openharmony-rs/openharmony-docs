@@ -6,7 +6,9 @@ export type ToolSummary = _ToolSummary
 
 Define basic summary information about the CLI tool.
 
-@typedef { _ToolInfo }
+@typedef { _ToolSummary }
+
+**Type:** _ToolSummary
 
 **Since:** 26.0.0
 
@@ -17,5 +19,3 @@ Define basic summary information about the CLI tool.
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _ToolSummary

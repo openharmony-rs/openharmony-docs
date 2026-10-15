@@ -43,7 +43,7 @@ Sets a custom environment variable that can be read by descendant custom compone
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | [CustomEnvKey](arkts-arkui-common-comp-customenvkey-c.md)&lt;T&gt; | Yes | Key of the custom environment variable. |
-| value | T | Yes | Value of the custom environment variable. The type T of value corresponds to the type T of CustomEnvKey&lt;T&gt;. |
+| value | T | Yes | Value of the custom environment variable. The type T of value corresponds to the type T of CustomEnvKey<T>. |
 
 ## env
 
@@ -74,4 +74,4 @@ Sets the system environment variable within the scope. The currently officially 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | [WritableSystemEnvKey](arkts-arkui-common-comp-writablesystemenvkey-c.md)&lt;T&gt; | Yes | System environment variable key. Currently, **WritableEnvKey.FONT_SCALE** and **WritableEnvKey.DIRECTION** are officially supported. |
-| value | T | Yes | System environment variable value. The type T of **value** corresponds to the type T in **WritableSystemEnvKey&lt;T&gt;**. When `key` is `WritableEnvKey.FONT_SCALE`, the type of `value` is number. When `key` is `WritableEnvKey.DIRECTION`, the type of `value` is Direction. |
+| value | T | Yes | System environment variable value. The type T of **value** corresponds to the type T in **WritableSystemEnvKey<T>**. When `key` is `WritableEnvKey.FONT_SCALE`, the type of `value` is number. When `key` is `WritableEnvKey.DIRECTION`, the type of `value` is Direction. |

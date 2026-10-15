@@ -45,6 +45,7 @@ Subscribe to distance measurement result data.
 | [35100002](../errorcode-spatialAwareness.md#35100002-subscription-failed) | Subscription failed. |
 | [35100004](../errorcode-spatialAwareness.md#35100004-invalid-parameter) | Parameter invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,9 +60,11 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call onDistanceMeasure start');
    try {
       spatialAwareness.onDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ${data.distance}');
+         console.info(`result = ${data.distance}`);
       });
    } catch (err) {
-      console.error('call onDistanceMeasure failed, errCode = ' + err.code);
+      console.error(`call onDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
+
+<!--DelEnd-->

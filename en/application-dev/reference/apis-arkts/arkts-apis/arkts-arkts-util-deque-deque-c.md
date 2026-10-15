@@ -91,7 +91,7 @@ A constructor used to create a **Deque** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-constructor()--><!--Device-Deque-constructor()-End-->
 
@@ -167,7 +167,7 @@ Obtains the first element of this Deque.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-getFirst(): T--><!--Device-Deque-getFirst(): T-End-->
 
@@ -208,7 +208,7 @@ Obtains the last element of this Deque.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-getLast(): T--><!--Device-Deque-getLast(): T-End-->
 
@@ -249,7 +249,7 @@ Checks whether this Deque has the specified element.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-has(element: T): boolean--><!--Device-Deque-has(element: T): boolean-End-->
 
@@ -292,7 +292,7 @@ Inserts an element at the end of this Deque.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-insertEnd(element: T): void--><!--Device-Deque-insertEnd(element: T): void-End-->
 
@@ -339,7 +339,7 @@ Inserts an element at the front of this Deque.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-insertFront(element: T): void--><!--Device-Deque-insertFront(element: T): void-End-->
 
@@ -386,7 +386,7 @@ Removes the first element of this Deque.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-popFirst(): T--><!--Device-Deque-popFirst(): T-End-->
 
@@ -428,7 +428,7 @@ Removes the last element of this Deque.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Deque-popLast(): T--><!--Device-Deque-popLast(): T-End-->
 

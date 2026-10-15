@@ -12,20 +12,6 @@ declare enum LocationType
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-## LOCAL
-
-```TypeScript
-LOCAL = 1 << 0
-```
-
-文件在本地存在。
-
-**起始版本：** 11
-
-<!--Device-LocationType-LOCAL = 1 << 0--><!--Device-LocationType-LOCAL = 1 << 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
 ## CLOUD
 
 ```TypeScript
@@ -37,5 +23,19 @@ CLOUD = 1 << 1
 **起始版本：** 11
 
 <!--Device-LocationType-CLOUD = 1 << 1--><!--Device-LocationType-CLOUD = 1 << 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## LOCAL
+
+```TypeScript
+LOCAL = 1 << 0
+```
+
+文件在本地存在。
+
+**起始版本：** 11
+
+<!--Device-LocationType-LOCAL = 1 << 0--><!--Device-LocationType-LOCAL = 1 << 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO

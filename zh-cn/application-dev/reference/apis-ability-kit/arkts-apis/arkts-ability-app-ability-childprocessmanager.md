@@ -39,13 +39,13 @@ import { childProcessManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getChildProcessInfos](arkts-ability-childprocessmanager-getchildprocessinfos-f.md) | 获取当前应用的子进程信息。该接口使用promise返回的结果。返回的子进程包括通过创建的子进程[startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md) (在APP_SPAWN_FORK模式)，[startArkChildProcess](arkts-ability-childprocessmanager-startarkchildprocess-f.md)，以及[startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md).【OH_Ability_CreateNativeChildProcess】【OH_Ability_CreateNativeChildProcessWithConfigs】【OH_Ability_StartNativeChildProcess】【OH_Ability_StartNativeChildProcessWithConfigs】 |
-| [isArkChildProcessSupported](arkts-ability-childprocessmanager-isarkchildprocesssupported-f.md) | 查询是否允许调用者在此设备上创建ArkTS子进程 |
-| [isNativeChildProcessSupported](arkts-ability-childprocessmanager-isnativechildprocesssupported-f.md) | 查询是否允许调用者在此设备上创建Native子进程 |
-| [startArkChildProcess](arkts-ability-childprocessmanager-startarkchildprocess-f.md) | 启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。 |
-| [startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md) | 启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。 |
-| [startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md#startchildprocess-1) | 启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用callback异步回调。 |
-| [startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md) | 启动[Native子进程](../../../application-models/ability-terminology.md#native子进程)。使用Promise异步回调。 |
+| [getChildProcessInfos](arkts-ability-childprocessmanager-getchildprocessinfos-f.md#getchildprocessinfos) | 获取当前应用的子进程信息。该接口使用promise返回的结果。返回的子进程包括通过创建的子进程[startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md) (在APP_SPAWN_FORK模式)，[startArkChildProcess](arkts-ability-childprocessmanager-startarkchildprocess-f.md)，以及[startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md).【OH_Ability_CreateNativeChildProcess】【OH_Ability_CreateNativeChildProcessWithConfigs】【OH_Ability_StartNativeChildProcess】【OH_Ability_StartNativeChildProcessWithConfigs】 |
+| [isArkChildProcessSupported](arkts-ability-childprocessmanager-isarkchildprocesssupported-f.md#isarkchildprocesssupported) | 查询是否允许调用者在此设备上创建ArkTS子进程 |
+| [isNativeChildProcessSupported](arkts-ability-childprocessmanager-isnativechildprocesssupported-f.md#isnativechildprocesssupported) | 查询是否允许调用者在此设备上创建Native子进程 |
+| [startArkChildProcess](arkts-ability-childprocessmanager-startarkchildprocess-f.md#startarkchildprocess) | 启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。 |
+| [startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md#startchildprocess1) | 启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。 |
+| [startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md#startchildprocess2) | 启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用callback异步回调。 |
+| [startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md#startnativechildprocess) | 启动[Native子进程](../../../application-models/ability-terminology.md#native子进程)。使用Promise异步回调。 |
 
 ### 类型
 

@@ -40,9 +40,10 @@ This API can be properly called on devices other than wearables. If it is called
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,19 +52,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onCheckNotification = (info : notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
     console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
     if(info.notificationId == 1){
-        let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
+        let result: notificationManager.NotificationCheckResult =  { code: 1, message: 'testMsg1'};
         return result;
     } else {
-        let result: notificationManager.NotificationCheckResult =   { code: 0, message: "testMsg0"};
+        let result: notificationManager.NotificationCheckResult =   { code: 0, message: 'testMsg0'};
         return result;
     }
 }
 try{
-    notificationManager.on("checkNotification", onCheckNotification);
+    notificationManager.on('checkNotification', onCheckNotification);
 } catch (err){
     console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('checkNotification')
@@ -103,11 +106,12 @@ This API can be properly called on devices other than wearables. If it is called
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -117,12 +121,14 @@ try{
   notificationManager.on('checkNotification',{
     contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
     slotType: notificationManager.SlotType.LIVE_VIEW ,
-    extraInfoKeys: ["event"],
+    extraInfoKeys: ['event'],
   },
     async (checkInfo)=>{
-      return { code: 1, message: "INVALID_PARAMETERS"};
+      return { code: 1, message: 'INVALID_PARAMETERS'};
   },);
 } catch (err) {
   console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

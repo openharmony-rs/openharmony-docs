@@ -125,6 +125,8 @@ let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('
 let ret : boolean = device.disconnect();
 ```
 
+<a id="getdevicename1"></a>
+
 ## getDeviceName
 
 ```TypeScript
@@ -163,7 +165,7 @@ let deviceName : void = gattClient.getDeviceName((err : BusinessError, data : st
 })
 ```
 
-<a id="getdevicename-1"></a>
+<a id="getdevicename2"></a>
 
 ## getDeviceName
 
@@ -200,6 +202,8 @@ gattClient.getDeviceName().then((data) => {
     console.info('device name' + JSON.stringify(data));
 })
 ```
+
+<a id="getrssivalue1"></a>
 
 ## getRssiValue
 
@@ -240,7 +244,7 @@ gattClient.getRssiValue((err : BusinessError, data : number)=> {
 })
 ```
 
-<a id="getrssivalue-1"></a>
+<a id="getrssivalue2"></a>
 
 ## getRssiValue
 
@@ -277,6 +281,8 @@ gattClient.getRssiValue().then((data : number) => {
     console.info('rssi' + JSON.stringify(data));
 })
 ```
+
+<a id="getservices1"></a>
 
 ## getServices
 
@@ -325,7 +331,7 @@ device.connect();
 device.getServices(getServices);
 ```
 
-<a id="getservices-1"></a>
+<a id="getservices2"></a>
 
 ## getServices
 
@@ -509,6 +515,8 @@ let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('
 device.on('BLEConnectionStateChange', ConnectStateChanged);
 ```
 
+<a id="readcharacteristicvalue1"></a>
+
 ## readCharacteristicValue
 
 ```TypeScript
@@ -568,7 +576,7 @@ characteristicValue: bufferCCC, descriptors:descriptors};
 device.readCharacteristicValue(characteristic, readCcc);
 ```
 
-<a id="readcharacteristicvalue-1"></a>
+<a id="readcharacteristicvalue2"></a>
 
 ## readCharacteristicValue
 
@@ -625,6 +633,8 @@ characteristicValue: bufferCCC, descriptors:descriptors};
 device.readCharacteristicValue(characteristic);
 ```
 
+<a id="readdescriptorvalue1"></a>
+
 ## readDescriptorValue
 
 ```TypeScript
@@ -674,7 +684,7 @@ let descriptor : bluetooth.BLEDescriptor = {serviceUuid: '00001810-0000-1000-800
 device.readDescriptorValue(descriptor, readDesc);
 ```
 
-<a id="readdescriptorvalue-1"></a>
+<a id="readdescriptorvalue2"></a>
 
 ## readDescriptorValue
 

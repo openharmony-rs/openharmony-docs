@@ -34,8 +34,11 @@ Checks whether the screen is currently locked.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let isLocked = screenLock.isLocked();
 ```
+
+<!--DelEnd-->

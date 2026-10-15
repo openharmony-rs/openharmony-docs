@@ -12,7 +12,7 @@ import { distributedBundleManager } from '@kit.AbilityKit';
 function getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise<number>
 ```
 
-获取指定远程设备上指定包名的应用版本信息。使用Promise异步回调。
+获取指定远程设备上指定包名的应用版本号。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -30,14 +30,14 @@ function getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | 远程设备ID。可以通过[getAvailableDeviceList](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)获取所有可信设备列表，取值为可信设备信息下networkId字段。 |
+| deviceId | string | 是 | 远程设备ID。可以通过[getAvailableDeviceList](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)获取所有可信设备列表，取值为可信设备信息下networkId字段。 |
 | bundleName | string | 是 | 应用的包名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
+| Promise&lt;number&gt; | Promise对象，调用成功返回版本号；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -50,6 +50,7 @@ function getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promi
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,3 +69,5 @@ try {
   console.error(`getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}`);
 }
 ```
+
+<!--DelEnd-->

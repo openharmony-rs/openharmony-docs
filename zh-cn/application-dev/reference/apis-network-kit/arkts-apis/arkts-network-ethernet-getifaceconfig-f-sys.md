@@ -6,6 +6,8 @@
 import { ethernet } from '@kit.NetworkKit';
 ```
 
+<a id="getifaceconfig1"></a>
+
 ## getIfaceConfig
 
 ```TypeScript
@@ -43,6 +45,7 @@ function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfigur
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,8 +66,10 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getifaceconfig-1"></a>
+
+<a id="getifaceconfig2"></a>
 
 ## getIfaceConfig
 
@@ -108,6 +113,7 @@ function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,3 +131,5 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
   console.error("getIfaceConfig promise error = " + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

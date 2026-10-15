@@ -32,24 +32,6 @@ Indicates that the screen lock is unlocked using the default system authenticati
 
 **System API:** This is a system API.
 
-## EXTENDED_AUTH_ONLY
-
-```TypeScript
-EXTENDED_AUTH_ONLY = 1
-```
-
-Indicates that the screen lock is unlocked using only the extended authentication mode.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1--><!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1-End-->
-
-**System capability:** SystemCapability.MiscServices.ScreenLock
-
-**System API:** This is a system API.
-
 ## EXTENDED_AUTH_AND_SYSTEM
 
 ```TypeScript
@@ -63,6 +45,24 @@ Indicates that the screen lock is unlocked using the extended and system authent
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-UnlockPolicy-EXTENDED_AUTH_AND_SYSTEM = 2--><!--Device-UnlockPolicy-EXTENDED_AUTH_AND_SYSTEM = 2-End-->
+
+**System capability:** SystemCapability.MiscServices.ScreenLock
+
+**System API:** This is a system API.
+
+## EXTENDED_AUTH_ONLY
+
+```TypeScript
+EXTENDED_AUTH_ONLY = 1
+```
+
+Indicates that the screen lock is unlocked using only the extended authentication mode.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1--><!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

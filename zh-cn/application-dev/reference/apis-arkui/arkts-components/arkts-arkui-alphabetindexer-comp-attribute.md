@@ -4,7 +4,7 @@
 declare class AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
 ```
 
-[width](arkts-arkui-common-comp-commonmethod-c.md#width)属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。
+[width](arkts-arkui-common-comp-commonmethod-c.md#width1)属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。
 
 [padding](arkts-arkui-common-comp-commonmethod-c.md#padding)属性默认为4vp。
 
@@ -143,7 +143,7 @@ font(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 未选中索引项文本样式。<br>默认值：<br>API version 11及以前：<br>{<br>size:'12.0fp',<br> style: FontStyle.Normal,<br> weight:FontWeight.Regular,<br> family:'HarmonyOS Sans'<br>}<br>API version 12及以后：&lt;br/ &gt;{<br>size:'10.0vp',<br> style:FontStyle.Normal,<br> weight:FontWeight.Medium,<br> family:'HarmonyOS Sans'&lt; br/&gt;} |
+| value | Font | 是 | 未选中索引项文本样式。<br>默认值：<br>API version 11及以前：<br>{<br>size:'12.0fp',<br> style: FontStyle.Normal,<br> weight:FontWeight.Regular,<br> family:'HarmonyOS Sans'<br>}<br>API version 12及以后：<br/ >{<br>size:'10.0vp',<br> style:FontStyle.Normal,<br> weight:FontWeight.Medium,<br> family:'HarmonyOS Sans'&lt; br/&gt;} |
 
 ## itemBorderRadius
 
@@ -609,7 +609,7 @@ selectedFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 选中项文本样式。<br>默认值：<br>API version 11及以前：<br>{<br>size:'12.0fp',<br> style: FontStyle.Normal,<br> weight:FontWeight.Regular,<br> family:'HarmonyOS Sans'<br>}<br>API version 12及以后：&lt;br/ &gt;{<br>size:'10.0vp',<br> style:FontStyle.Normal,<br> weight:FontWeight.Medium,<br> family:'HarmonyOS Sans'&lt; br/&gt;} |
+| value | Font | 是 | 选中项文本样式。<br>默认值：<br>API version 11及以前：<br>{<br>size:'12.0fp',<br> style: FontStyle.Normal,<br> weight:FontWeight.Regular,<br> family:'HarmonyOS Sans'<br>}<br>API version 12及以后：<br/ >{<br>size:'10.0vp',<br> style:FontStyle.Normal,<br> weight:FontWeight.Medium,<br> family:'HarmonyOS Sans'&lt; br/&gt;} |
 
 ## usingPopup
 

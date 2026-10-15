@@ -12,24 +12,6 @@ Enumerates the types of gestures to be listened for.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TAP
-
-```TypeScript
-TAP = 0
-```
-
-The tap gesture.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-GestureListenerType-TAP = 0--><!--Device-GestureListenerType-TAP = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## LONG_PRESS
 
 ```TypeScript
@@ -84,6 +66,24 @@ The pinch gesture.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## ROTATION
+
+```TypeScript
+ROTATION = 5
+```
+
+The rotation gesture.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-GestureListenerType-ROTATION = 5--><!--Device-GestureListenerType-ROTATION = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## SWIPE
 
 ```TypeScript
@@ -102,13 +102,13 @@ The swipe gesture.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ROTATION
+## TAP
 
 ```TypeScript
-ROTATION = 5
+TAP = 0
 ```
 
-The rotation gesture.
+The tap gesture.
 
 **Since:** 20
 
@@ -116,6 +116,6 @@ The rotation gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-GestureListenerType-ROTATION = 5--><!--Device-GestureListenerType-ROTATION = 5-End-->
+<!--Device-GestureListenerType-TAP = 0--><!--Device-GestureListenerType-TAP = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,7 +20,7 @@ Provides APIs for querying data in a device KV store and performing cross-device
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="getresultset-8"></a>
+<a id="getresultset9"></a>
 
 ## getResultSet
 
@@ -57,6 +57,7 @@ Obtains the KVStoreResultSet object matching the local device ID and specified p
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -387,7 +388,9 @@ try {
 }
 ```
 
-<a id="getresultset-9"></a>
+<!--DelEnd-->
+
+<a id="getresultset10"></a>
 
 ## getResultSet
 
@@ -429,6 +432,7 @@ Obtains the KVStoreResultSet object matching the local device ID and specified p
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -759,7 +763,9 @@ try {
 }
 ```
 
-<a id="getresultset-10"></a>
+<!--DelEnd-->
+
+<a id="getresultset11"></a>
 
 ## getResultSet
 
@@ -797,6 +803,7 @@ Obtains the KVStoreResultSet object matching a specified Device ID and Predicate
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1127,7 +1134,9 @@ try {
 }
 ```
 
-<a id="getresultset-11"></a>
+<!--DelEnd-->
+
+<a id="getresultset12"></a>
 
 ## getResultSet
 
@@ -1170,6 +1179,7 @@ Obtains the KVStoreResultSet object matching a specified Device ID and Predicate
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1499,3 +1509,5 @@ try {
   console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

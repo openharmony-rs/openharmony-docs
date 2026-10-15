@@ -6,7 +6,7 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryappkeystate-1"></a>
+<a id="queryappkeystate2"></a>
 
 ## queryAppKeyState
 
@@ -49,6 +49,7 @@ Queries the status of a specified type of sensitive data key under the lock scre
 | [29300001](../errorcode-screenLockFileManager.md#29300001-invalid-parameter) | Invalid DataType. |
 | [29300002](../errorcode-screenLockFileManager.md#29300002-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -73,3 +74,5 @@ try {
     hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

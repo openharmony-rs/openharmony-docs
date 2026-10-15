@@ -19,14 +19,14 @@ Registers the listener for the request event.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | source | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Information about the request sender. |
-| name | string | Yes | Template name. |
-| data | [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md) | Yes | Data. |
+| name | string | Yes | Name of the requested component. |
+| data | [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md) | Yes | Data content transmitted in the request event, stored in key-value pairs. The key and value types are defined by the service. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [RequestEventResult](arkts-arkui-plugincomponentmanager-requesteventresult-i.md) | Provides the result returned after the request listener is registered and the requested event is received. |
+| [RequestEventResult](arkts-arkui-plugincomponentmanager-requesteventresult-i.md) | Data type for responding to a request event after the request listener is registered. |
 
 **Examples**
 

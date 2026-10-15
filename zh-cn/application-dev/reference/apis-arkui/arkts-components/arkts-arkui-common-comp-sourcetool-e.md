@@ -12,22 +12,6 @@ declare enum SourceTool
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Unknown
-
-```TypeScript
-Unknown
-```
-
-未知输入源。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-SourceTool-Unknown--><!--Device-SourceTool-Unknown-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Finger
 
 ```TypeScript
@@ -44,19 +28,21 @@ Finger
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Pen
+## JOYSTICK
 
 ```TypeScript
-Pen
+JOYSTICK
 ```
 
-手写笔输入。
+手柄输入。
 
-**起始版本：** 9
+**起始版本：** 12
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SourceTool-Pen--><!--Device-SourceTool-Pen-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SourceTool-JOYSTICK--><!--Device-SourceTool-JOYSTICK-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +64,22 @@ MOUSE
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## Pen
+
+```TypeScript
+Pen
+```
+
+手写笔输入。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SourceTool-Pen--><!--Device-SourceTool-Pen-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## TOUCHPAD
 
 ```TypeScript
@@ -96,20 +98,18 @@ TOUCHPAD
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## JOYSTICK
+## Unknown
 
 ```TypeScript
-JOYSTICK
+Unknown
 ```
 
-手柄输入。
+未知输入源。
 
-**起始版本：** 12
+**起始版本：** 9
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-SourceTool-JOYSTICK--><!--Device-SourceTool-JOYSTICK-End-->
+<!--Device-SourceTool-Unknown--><!--Device-SourceTool-Unknown-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

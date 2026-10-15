@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="removeslot1"></a>
+
 ## removeSlot
 
 ```TypeScript
@@ -26,7 +28,7 @@ After deletion, the corresponding type of notification slot and its configuratio
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) adds a notification slot of a specified type.
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md) obtains a notification slot of a specified type.
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot1) obtains a notification slot of a specified type.
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) removes all notification slots for this application.
 
@@ -41,7 +43,7 @@ After deletion, the corresponding type of notification slot and its configuratio
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -64,7 +66,7 @@ notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
 
-<a id="removeslot-1"></a>
+<a id="removeslot2"></a>
 
 ## removeSlot
 
@@ -86,7 +88,7 @@ After deletion, the corresponding notification slot and its configuration will b
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) adds a notification slot of a specified type.
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-2) obtains a notification slot of a specified type.
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot3) obtains a notification slot of a specified type.
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) removes all notification slots for this application.
 
@@ -106,7 +108,7 @@ After deletion, the corresponding notification slot and its configuration will b
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |

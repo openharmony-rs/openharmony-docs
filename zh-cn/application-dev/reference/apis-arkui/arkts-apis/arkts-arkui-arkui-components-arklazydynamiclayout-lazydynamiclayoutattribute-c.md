@@ -6,7 +6,7 @@ export declare class LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamic
 
 定义LazyDynamicLayout组件。
 
-@extends CommonMethod&lt;LazyDynamicLayoutAttribute&gt;
+@extends CommonMethod<LazyDynamicLayoutAttribute>
 
 **继承/实现关系：** LazyDynamicLayoutAttribute extends CommonMethod&lt;LazyDynamicLayoutAttribute&gt;
 

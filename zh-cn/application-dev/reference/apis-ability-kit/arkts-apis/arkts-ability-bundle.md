@@ -1,6 +1,6 @@
-# @ohos.bundle
+# @ohos.bundle(Bundle模块)
 
-本模块提供应用信息查询能力，支持[包信息](arkts-ability-bundleinfo.md)、应用信息、Ability组件信息等信息的查询，以及应用禁用状态的查询、设置等。
+本模块提供应用信息查询能力，支持[包信息](arkts-ability-bundleinfo.md)、[应用信息](arkts-ability-applicationinfo-depr-i.md)、[Ability组件信息](arkts-ability-abilityinfo-depr-i.md)等信息的查询，以及应用禁用状态的查询、设置等。
 
 > **说明：** 
 > 
@@ -28,53 +28,59 @@ import { bundle } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md) | 通过bundleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)，使用callback异步回调。 |
-| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md#getabilityicon-1) | 通过bundleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)，使用Promise异步回调。 |
-| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md) | 通过Bundle名称和组件名获取Ability组件信息，使用callback异步回调。 |
-| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-1) | 通过Bundle名称和组件名获取Ability组件信息，使用Promise形式异步回调。 |
-| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md) | 通过Bundle名称和Ability组件名获取应用名称，使用callback异步回调。 |
-| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md#getabilitylabel-1) | 通过Bundle名称和ability名称获取应用名称，使用Promise异步回调。 |
-| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md) | 获取指定用户下所有已安装的应用信息，使用callback异步回调。 |
-| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo-1) | 获取调用方所在用户下已安装的应用信息，使用callback异步回调。 |
-| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo-2) | 获取指定用户下所有已安装的应用信息，使用promise异步回调。 |
-| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md) | 获取系统中指定用户下所有的BundleInfo，使用callback异步回调。 |
-| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo-1) | 获取当前用户所有的BundleInfo，使用callback异步回调。 |
-| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo-2) | 获取指定用户所有的BundleInfo，使用Promise形式异步回调。 |
-| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md) | 根据给定的Bundle名称获取指定用户下的ApplicationInfo，使用callback异步回调。 |
-| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-1) | 根据给定的Bundle名称获取ApplicationInfo，使用callback异步回调。 |
-| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo-2) | 根据给定的Bundle名称获取ApplicationInfo。使用Promise异步回调。 |
-| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md) | 获取有关HAP中包含的应用程序包的信息，使用callback异步回调。 |
-| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md#getbundlearchiveinfo-1) | 获取有关HAP中包含的应用程序包的信息，使用Promise异步回调。 |
-| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md) | 根据给定的Bundle名称获取BundleInfo，使用callback异步回调。 |
-| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1) | 根据给定的Bundle名称获取BundleInfo，使用callback异步回调。 |
-| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-2) | 根据给定的Bundle名称获取BundleInfo，使用Promise异步回调。 |
-| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md) | 查询拉起指定应用的want对象，使用callback异步回调。 |
-| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md#getlaunchwantforbundle-1) | 查询拉起指定应用的want对象，使用Promise异步回调。 |
-| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md) |  |
-| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md#getnameforuid-1) | 通过uid获取对应的Bundle名称，使用Promise异步回调。 |
-| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md) | 根据给定的AbilityInfo查询ability是否已经启用，使用callback异步回调。 |
-| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md#isabilityenabled-1) | 根据给定的AbilityInfo查询ability是否已经启用，使用Promise异步回调。 |
-| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md) | 根据给定的bundleName查询指定应用程序是否已经启用，使用callback异步回调。 |
-| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md#isapplicationenabled-1) | 根据给定的bundleName查询指定应用程序是否已经启用，使用Promise异步回调。 |
-| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md) | 根据给定的意图获取指定用户下Ability信息，使用callback异步回调。 |
-| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant-1) | 根据给定的意图获取Ability信息，使用callback异步回调。 |
-| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant-2) | 根据给定的意图获取Ability组件信息，使用Promise异步回调。 |
+| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md#getabilityicon1) | 通过bundleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)，使用callback异步回调。 |
+| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md#getabilityicon2) | 通过bundleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)，使用Promise异步回调。 |
+| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo1) | 通过Bundle名称和组件名获取Ability组件信息，使用callback异步回调。 |
+| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo2) | 通过Bundle名称和组件名获取Ability组件信息，使用Promise形式异步回调。 |
+| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md#getabilitylabel1) | 通过Bundle名称和Ability组件名获取应用名称，使用callback异步回调。 |
+| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md#getabilitylabel2) | 通过Bundle名称和ability名称获取应用名称，使用Promise异步回调。 |
+| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo1) | 获取指定用户下所有已安装的应用信息，使用callback异步回调。 |
+| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo2) | 获取调用方所在用户下已安装的应用信息，使用callback异步回调。 |
+| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo3) | 获取指定用户下所有已安装的应用信息，使用promise异步回调。 |
+| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo1) | 获取系统中指定用户下所有的BundleInfo，使用callback异步回调。 |
+| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo2) | 获取当前用户所有的BundleInfo，使用callback异步回调。 |
+| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo3) | 获取指定用户所有的BundleInfo，使用Promise形式异步回调。 |
+| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo1) | 根据给定的Bundle名称获取指定用户下的ApplicationInfo，使用callback异步回调。 |
+| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo2) | 根据给定的Bundle名称获取ApplicationInfo，使用callback异步回调。 |
+| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo3) | 根据给定的Bundle名称获取ApplicationInfo。使用Promise异步回调。 |
+| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md#getbundlearchiveinfo1) | 获取有关HAP中包含的应用程序包的信息，使用callback异步回调。 |
+| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md#getbundlearchiveinfo2) | 获取有关HAP中包含的应用程序包的信息，使用Promise异步回调。 |
+| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo1) | 根据给定的Bundle名称获取BundleInfo，使用callback异步回调。 |
+| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo2) | 根据给定的Bundle名称获取BundleInfo，使用callback异步回调。 |
+| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo3) | 根据给定的Bundle名称获取BundleInfo，使用Promise异步回调。 |
+| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md#getlaunchwantforbundle1) | 查询拉起指定应用的want对象，使用callback异步回调。 |
+| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md#getlaunchwantforbundle2) | 查询拉起指定应用的want对象，使用Promise异步回调。 |
+| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md#getnameforuid1) |  |
+| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md#getnameforuid2) | 通过uid获取对应的Bundle名称，使用Promise异步回调。 |
+| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md#isabilityenabled1) | 根据给定的AbilityInfo查询ability是否已经启用，使用callback异步回调。 |
+| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md#isabilityenabled2) | 根据给定的AbilityInfo查询ability是否已经启用，使用Promise异步回调。 |
+| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md#isapplicationenabled1) | 根据给定的bundleName查询指定应用程序是否已经启用，使用callback异步回调。 |
+| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md#isapplicationenabled2) | 根据给定的bundleName查询指定应用程序是否已经启用，使用Promise异步回调。 |
+| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant1) | 根据给定的意图获取指定用户下Ability信息，使用callback异步回调。 |
+| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant2) | 根据给定的意图获取Ability信息，使用callback异步回调。 |
+| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant3) | 根据给定的意图获取Ability组件信息，使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles) | 清除指定应用程序的缓存数据，使用callback异步回调。 |
-| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles-1) | 清除指定应用程序的缓存数据，使用Promise异步回调。 |
-| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller) | 获取用于安装包的接口，使用callback异步回调。 |
-| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller-1) | 获取用于安装包的接口，使用Promise异步回调，返回安装接口对象。 |
-| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef) | 按权限名称获取权限的详细信息，使用callback异步回调。 |
-| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef-1) | 按权限名称获取权限的详细信息，使用promise异步回调。 |
-| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled) | 设置是否启用指定的Ability组件，使用callback异步回调。 |
-| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled-1) | 设置是否启用指定的Ability组件，使用Promise异步回调。 |
-| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled) | 设置是否启用指定的应用程序，使用callback异步回调。 |
-| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled-1) | 设置是否启用指定的应用程序，使用Promise异步回调。 |
+| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles1) | 清除指定应用程序的缓存数据，使用callback异步回调。 |
+| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles2) | 清除指定应用程序的缓存数据，使用Promise异步回调。 |
+| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos1) |  |
+| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos2) |  |
+| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos3) |  |
+| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos1) |  |
+| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos2) |  |
+| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos3) |  |
+| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller1) | 获取用于安装包的接口，使用callback异步回调。 |
+| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller2) | 获取用于安装包的接口，使用Promise异步回调，返回安装接口对象。 |
+| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef1) | 按权限名称获取权限的详细信息，使用callback异步回调。 |
+| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef2) | 按权限名称获取权限的详细信息，使用promise异步回调。 |
+| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled1) | 设置是否启用指定的Ability组件，使用callback异步回调。 |
+| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled2) | 设置是否启用指定的Ability组件，使用Promise异步回调。 |
+| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled1) | 设置是否启用指定的应用程序，使用callback异步回调。 |
+| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled2) | 设置是否启用指定的应用程序，使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口
@@ -95,3 +101,14 @@ import { bundle } from '@kit.AbilityKit';
 | [GrantStatus](arkts-ability-bundle-grantstatus-e.md) |  |
 | [InstallErrorCode](arkts-ability-bundle-installerrorcode-e.md) |  |
 | [LaunchMode](arkts-ability-bundle-launchmode-e.md) |  |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ModuleRemoveFlag](arkts-ability-bundle-moduleremoveflag-e-sys.md) | 模块移除时与卡片、快捷方式是否有关联的标志。 |
+| [QueryShortCutFlag](arkts-ability-bundle-queryshortcutflag-e-sys.md) | 用于指定快捷方式查询范围的标志。 |
+| [ShortcutExistence](arkts-ability-bundle-shortcutexistence-e-sys.md) | 查询快捷方式是否存在时返回的结果。 |
+| [SignatureCompareResult](arkts-ability-bundle-signaturecompareresult-e-sys.md) | 签名校验结果。 |
+<!--DelEnd-->

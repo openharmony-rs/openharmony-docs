@@ -4,9 +4,9 @@
 declare const SyncMonitor: MonitorDecorator
 ```
 
-Define SyncMonitor MethodDecorator. Decorator path parameters are the same as defined for Monitor. The function decorator is functionally equivalent to the UIUtils.addMonitor API with isSynchronous enabled. SyncMonitor must contain at least one path item, with multiple path items separated by commas. Path items are either observed attribute names or array item indices.The path in SyncMonitor supports wildcard at the end of a path item, but path items must never appear at the beginning or in the middle of a path. All other paths using one or more wildcard are invalid.
+\@SyncMonitor is used for state management V2 to synchronously listen to the changes of state variables, enabling deep listening for state variables. It is applicable to scenarios where precise listening to deep state changes, such as changes in nested object properties and in elements in an array, is required. This addresses the issue that traditional listening methods cannot detect changes in deep-level properties, thereby improving the accuracy of state management and development efficiency.
 
-Functions decorated with @SyncMonitor can be used in @ObservedV2 objects and @ComponentV2.
+For details, see [\@SyncMonitor Decorator: Synchronous Listening for Value Changes of the State Variables](../../../ui/state-management/arkts-new-syncmonitor.md).
 
 **Since:** 23
 

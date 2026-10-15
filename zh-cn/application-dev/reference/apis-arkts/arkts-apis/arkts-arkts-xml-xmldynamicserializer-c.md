@@ -36,7 +36,7 @@ addEmptyElement(name: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-addEmptyElement(name: string): void--><!--Device-XmlDynamicSerializer-addEmptyElement(name: string): void-End-->
 
@@ -78,7 +78,7 @@ constructor(encoding?: string)
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-constructor(encoding?: string)--><!--Device-XmlDynamicSerializer-constructor(encoding?: string)-End-->
 
@@ -116,7 +116,7 @@ endElement(): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-endElement(): void--><!--Device-XmlDynamicSerializer-endElement(): void-End-->
 
@@ -154,7 +154,7 @@ getOutput(): ArrayBuffer
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-getOutput(): ArrayBuffer--><!--Device-XmlDynamicSerializer-getOutput(): ArrayBuffer-End-->
 
@@ -195,7 +195,7 @@ setAttributes(name: string, value: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-setAttributes(name: string, value: string): void--><!--Device-XmlDynamicSerializer-setAttributes(name: string, value: string): void-End-->
 
@@ -245,7 +245,7 @@ setCdata(text: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-setCdata(text: string): void--><!--Device-XmlDynamicSerializer-setCdata(text: string): void-End-->
 
@@ -287,7 +287,7 @@ setComment(text: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-setComment(text: string): void--><!--Device-XmlDynamicSerializer-setComment(text: string): void-End-->
 
@@ -329,7 +329,7 @@ setDeclaration(): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-setDeclaration(): void--><!--Device-XmlDynamicSerializer-setDeclaration(): void-End-->
 
@@ -365,7 +365,7 @@ setDocType(text: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-setDocType(text: string): void--><!--Device-XmlDynamicSerializer-setDocType(text: string): void-End-->
 
@@ -414,7 +414,7 @@ setNamespace(prefix: string, namespace: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-setNamespace(prefix: string, namespace: string): void--><!--Device-XmlDynamicSerializer-setNamespace(prefix: string, namespace: string): void-End-->
 
@@ -464,7 +464,7 @@ setText(text: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-setText(text: string): void--><!--Device-XmlDynamicSerializer-setText(text: string): void-End-->
 
@@ -515,7 +515,7 @@ startElement(name: string): void
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-XmlDynamicSerializer-startElement(name: string): void--><!--Device-XmlDynamicSerializer-startElement(name: string): void-End-->
 

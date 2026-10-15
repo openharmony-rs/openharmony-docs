@@ -14,97 +14,49 @@ Enumerates event IDs.
 
 **System API:** This is a system API.
 
-## EVENT_TASK_BASE
+## EVENT_APPLY_START
 
 ```TypeScript
-EVENT_TASK_BASE = EventClassify.TASK
+EVENT_APPLY_START = 0x0100000e
 ```
 
-Task event.
+Applying the upgrade.
 
 **Since:** 9
 
-<!--Device-EventId-EVENT_TASK_BASE = EventClassify.TASK--><!--Device-EventId-EVENT_TASK_BASE = EventClassify.TASK-End-->
+<!--Device-EventId-EVENT_APPLY_START = 0x0100000e--><!--Device-EventId-EVENT_APPLY_START = 0x0100000e-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
 
-## EVENT_TASK_RECEIVE
+## EVENT_APPLY_WAIT
 
 ```TypeScript
-EVENT_TASK_RECEIVE = 0x01000001
+EVENT_APPLY_WAIT = 0x0100000d
 ```
 
-Task received.
+Waiting for applying the upgrade.
 
 **Since:** 9
 
-<!--Device-EventId-EVENT_TASK_RECEIVE = 0x01000001--><!--Device-EventId-EVENT_TASK_RECEIVE = 0x01000001-End-->
+<!--Device-EventId-EVENT_APPLY_WAIT = 0x0100000d--><!--Device-EventId-EVENT_APPLY_WAIT = 0x0100000d-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
 
-## EVENT_TASK_CANCEL
+## EVENT_DOWNLOAD_FAIL
 
 ```TypeScript
-EVENT_TASK_CANCEL = 0x01000002
+EVENT_DOWNLOAD_FAIL = 0x01000009
 ```
 
-Task cancelled.
+Download failed.
 
 **Since:** 9
 
-<!--Device-EventId-EVENT_TASK_CANCEL = 0x01000002--><!--Device-EventId-EVENT_TASK_CANCEL = 0x01000002-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## EVENT_DOWNLOAD_WAIT
-
-```TypeScript
-EVENT_DOWNLOAD_WAIT = 0x01000003
-```
-
-Waiting for download.
-
-**Since:** 9
-
-<!--Device-EventId-EVENT_DOWNLOAD_WAIT = 0x01000003--><!--Device-EventId-EVENT_DOWNLOAD_WAIT = 0x01000003-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## EVENT_DOWNLOAD_START
-
-```TypeScript
-EVENT_DOWNLOAD_START = 0x01000004
-```
-
-Download started.
-
-**Since:** 9
-
-<!--Device-EventId-EVENT_DOWNLOAD_START = 0x01000004--><!--Device-EventId-EVENT_DOWNLOAD_START = 0x01000004-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## EVENT_DOWNLOAD_UPDATE
-
-```TypeScript
-EVENT_DOWNLOAD_UPDATE = 0x01000005
-```
-
-Download progress update.
-
-**Since:** 9
-
-<!--Device-EventId-EVENT_DOWNLOAD_UPDATE = 0x01000005--><!--Device-EventId-EVENT_DOWNLOAD_UPDATE = 0x01000005-End-->
+<!--Device-EventId-EVENT_DOWNLOAD_FAIL = 0x01000009--><!--Device-EventId-EVENT_DOWNLOAD_FAIL = 0x01000009-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -142,6 +94,22 @@ Download resumed.
 
 **System API:** This is a system API.
 
+## EVENT_DOWNLOAD_START
+
+```TypeScript
+EVENT_DOWNLOAD_START = 0x01000004
+```
+
+Download started.
+
+**Since:** 9
+
+<!--Device-EventId-EVENT_DOWNLOAD_START = 0x01000004--><!--Device-EventId-EVENT_DOWNLOAD_START = 0x01000004-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
 ## EVENT_DOWNLOAD_SUCCESS
 
 ```TypeScript
@@ -158,33 +126,97 @@ Download succeeded.
 
 **System API:** This is a system API.
 
-## EVENT_DOWNLOAD_FAIL
+## EVENT_DOWNLOAD_UPDATE
 
 ```TypeScript
-EVENT_DOWNLOAD_FAIL = 0x01000009
+EVENT_DOWNLOAD_UPDATE = 0x01000005
 ```
 
-Download failed.
+Download progress update.
 
 **Since:** 9
 
-<!--Device-EventId-EVENT_DOWNLOAD_FAIL = 0x01000009--><!--Device-EventId-EVENT_DOWNLOAD_FAIL = 0x01000009-End-->
+<!--Device-EventId-EVENT_DOWNLOAD_UPDATE = 0x01000005--><!--Device-EventId-EVENT_DOWNLOAD_UPDATE = 0x01000005-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
 
-## EVENT_UPGRADE_WAIT
+## EVENT_DOWNLOAD_WAIT
 
 ```TypeScript
-EVENT_UPGRADE_WAIT = 0x0100000a
+EVENT_DOWNLOAD_WAIT = 0x01000003
 ```
 
-Waiting for upgrade.
+Waiting for download.
 
 **Since:** 9
 
-<!--Device-EventId-EVENT_UPGRADE_WAIT = 0x0100000a--><!--Device-EventId-EVENT_UPGRADE_WAIT = 0x0100000a-End-->
+<!--Device-EventId-EVENT_DOWNLOAD_WAIT = 0x01000003--><!--Device-EventId-EVENT_DOWNLOAD_WAIT = 0x01000003-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## EVENT_TASK_BASE
+
+```TypeScript
+EVENT_TASK_BASE = EventClassify.TASK
+```
+
+Task event.
+
+**Since:** 9
+
+<!--Device-EventId-EVENT_TASK_BASE = EventClassify.TASK--><!--Device-EventId-EVENT_TASK_BASE = EventClassify.TASK-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## EVENT_TASK_CANCEL
+
+```TypeScript
+EVENT_TASK_CANCEL = 0x01000002
+```
+
+Task cancelled.
+
+**Since:** 9
+
+<!--Device-EventId-EVENT_TASK_CANCEL = 0x01000002--><!--Device-EventId-EVENT_TASK_CANCEL = 0x01000002-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## EVENT_TASK_RECEIVE
+
+```TypeScript
+EVENT_TASK_RECEIVE = 0x01000001
+```
+
+Task received.
+
+**Since:** 9
+
+<!--Device-EventId-EVENT_TASK_RECEIVE = 0x01000001--><!--Device-EventId-EVENT_TASK_RECEIVE = 0x01000001-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## EVENT_UPGRADE_FAIL
+
+```TypeScript
+EVENT_UPGRADE_FAIL = 0x01000010
+```
+
+Update failed.
+
+**Since:** 9
+
+<!--Device-EventId-EVENT_UPGRADE_FAIL = 0x01000010--><!--Device-EventId-EVENT_UPGRADE_FAIL = 0x01000010-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -206,54 +238,6 @@ Upgrade started.
 
 **System API:** This is a system API.
 
-## EVENT_UPGRADE_UPDATE
-
-```TypeScript
-EVENT_UPGRADE_UPDATE = 0x0100000c
-```
-
-Upgrade in progress.
-
-**Since:** 9
-
-<!--Device-EventId-EVENT_UPGRADE_UPDATE = 0x0100000c--><!--Device-EventId-EVENT_UPGRADE_UPDATE = 0x0100000c-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## EVENT_APPLY_WAIT
-
-```TypeScript
-EVENT_APPLY_WAIT = 0x0100000d
-```
-
-Waiting for applying the upgrade.
-
-**Since:** 9
-
-<!--Device-EventId-EVENT_APPLY_WAIT = 0x0100000d--><!--Device-EventId-EVENT_APPLY_WAIT = 0x0100000d-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## EVENT_APPLY_START
-
-```TypeScript
-EVENT_APPLY_START = 0x0100000e
-```
-
-Applying the upgrade.
-
-**Since:** 9
-
-<!--Device-EventId-EVENT_APPLY_START = 0x0100000e--><!--Device-EventId-EVENT_APPLY_START = 0x0100000e-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
 ## EVENT_UPGRADE_SUCCESS
 
 ```TypeScript
@@ -270,17 +254,33 @@ Upgrade succeeded.
 
 **System API:** This is a system API.
 
-## EVENT_UPGRADE_FAIL
+## EVENT_UPGRADE_UPDATE
 
 ```TypeScript
-EVENT_UPGRADE_FAIL = 0x01000010
+EVENT_UPGRADE_UPDATE = 0x0100000c
 ```
 
-Update failed.
+Upgrade in progress.
 
 **Since:** 9
 
-<!--Device-EventId-EVENT_UPGRADE_FAIL = 0x01000010--><!--Device-EventId-EVENT_UPGRADE_FAIL = 0x01000010-End-->
+<!--Device-EventId-EVENT_UPGRADE_UPDATE = 0x0100000c--><!--Device-EventId-EVENT_UPGRADE_UPDATE = 0x0100000c-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## EVENT_UPGRADE_WAIT
+
+```TypeScript
+EVENT_UPGRADE_WAIT = 0x0100000a
+```
+
+Waiting for upgrade.
+
+**Since:** 9
+
+<!--Device-EventId-EVENT_UPGRADE_WAIT = 0x0100000a--><!--Device-EventId-EVENT_UPGRADE_WAIT = 0x0100000a-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

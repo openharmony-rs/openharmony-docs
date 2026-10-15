@@ -42,6 +42,7 @@ Obtains the status of the rotation axes.
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-device-not-connected) | Device not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ console.info('Query the rotation axis status');
 let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotationAxesStatus(0);
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
+
+<!--DelEnd-->

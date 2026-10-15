@@ -4,7 +4,7 @@
 export class ToolBarV2SymbolGlyph
 ```
 
-Defines toolBarV2 symbolGlyph.
+Defines the icon symbol options.
 
 **Since:** 18
 
@@ -26,7 +26,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 constructor(options: ToolBarV2SymbolGlyphOptions)
 ```
 
-The constructor used to create a ToolBarV2SymbolGlyph object.
+A constructor used to create a **ToolBarV2SymbolGlyph** object.
 
 **Since:** 18
 
@@ -50,7 +50,13 @@ The constructor used to create a ToolBarV2SymbolGlyph object.
 activated?: SymbolGlyphModifier
 ```
 
-Modifier of toolbarV2's activated symbol.
+Icon symbol of the toolbar item in activated state.
+
+Default value:
+
+**fontColor**: **$r('sys.color.icon_emphasize')**, **fontSize**: **24vp**
+
+Decorator: @Trace
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -72,7 +78,9 @@ Modifier of toolbarV2's activated symbol.
 normal: SymbolGlyphModifier
 ```
 
-Modifier of toolbarV2's normal symbol.
+Icon symbol of the toolbar item in normal state.
+
+Decorator: @Trace
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 

@@ -8,7 +8,7 @@
 > 
 > - 该组件滚动的前提是主轴方向大小小于内容大小。
 > 
-> - Scroll组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)的默认值为true。
+> - Scroll组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)的默认值为true。
 > 
 > - Scroll组件的高度超出屏幕显示范围时，可以通过设置通用属性[layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)让Scroll高度适应主轴的剩余空间。
 > 
@@ -61,7 +61,7 @@ Scroll(scroller?: Scroller)
 | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | 翻页模式的参数选项。 |
 | [ScrollSnapOptions](arkts-arkui-scroll-comp-scrollsnapoptions-i.md) | 限位滚动模式对象。 |
 | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | 滑动到指定Index的参数选项。 |
-| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | frameNode中[getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md)方法的返回值，可用于给Scroll节点设置滚动事件。 |
+| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | frameNode中[getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent1)方法的返回值，可用于给Scroll节点设置滚动事件。 |
 
 ### 类型
 
@@ -265,7 +265,7 @@ struct NestedScroll {
 
 ### 示例3（嵌套滚动实现方式二）
 
-该示例使用[nestedScroll](arkts-arkui-scroll-comp-attribute.md#nestedscroll)属性实现了内层List组件和外层Scroll组件的嵌套滚动。
+该示例使用[nestedScroll](#nestedscroll10)属性实现了内层List组件和外层Scroll组件的嵌套滚动。
 
 
 
@@ -333,7 +333,7 @@ struct StickyNestedScroll {
 
 ### 示例4（嵌套滚动父组件向子组件传递滚动）
 
-该示例使用[enableScrollInteraction](arkts-arkui-scroll-comp-attribute.md#enablescrollinteraction)属性和onScrollFrameBegin事件实现了父组件向子组件传递滚动。
+该示例使用[enableScrollInteraction](#enablescrollinteraction10)属性和[onScrollFrameBegin](#onscrollframebegin9)事件实现了父组件向子组件传递滚动。
 
 
 
@@ -589,7 +589,7 @@ struct ScrollExample {
 
 ### 示例8（单边边缘效果）
 
-该示例通过[edgeEffect](arkts-arkui-scroll-comp-attribute.md#edgeeffect)接口，实现了Scroll组件设置单边边缘效果。
+该示例通过[edgeEffect](#edgeeffect)接口，实现了Scroll组件设置单边边缘效果。
 
 
 
@@ -659,7 +659,7 @@ struct EnablePagingExample {
 
 ### 示例10（设置过界停留）
 
-该示例通过scrollTo接口，实现了Scroll组件设置过界停留效果。
+该示例通过[scrollTo](#scrollto)接口，实现了Scroll组件设置过界停留效果。
 
 
 

@@ -161,7 +161,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-调用this.getUIContext().getSharedLocalStorage()获取上下文，再获取DragController对象以执行后续拖拽操作。
+调用this.getUIContext().getSharedLocalStorage()获取共享LocalStorage，再获取DragController对象以执行后续拖拽操作。
 
 ```TypeScript
 import { dragController, UIContext } from '@kit.ArkUI';
@@ -208,7 +208,8 @@ struct DragControllerPage {
               extraParams: ''
             };
             try {
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo);
+              let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+              this.dragAction = uiContext.getDragController().createDragAction(this.customBuilders, dragInfo);
               if (!this.dragAction) {
                 console.info('listener dragAction is null');
                 return;
@@ -321,6 +322,8 @@ struct Index {
 }
 ```
 
+<a id="executedrag1"></a>
+
 ## executeDrag
 
 ```TypeScript
@@ -361,11 +364,6 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
-
 @Entry
 @Component
 struct DragControllerPage {
@@ -396,7 +394,7 @@ struct DragControllerPage {
               this.getUIContext().getDragController().executeDrag(() => {
                 this.DraggingBuilder()
               }, dragInfo, (err, dragEventParam) => {
-                if (dragEventParam.event) {
+                if (!err && dragEventParam?.event) {
                   if (dragEventParam.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
                   } else if (dragEventParam.event.getResult() == DragResult.DRAG_FAILED) {
@@ -414,7 +412,7 @@ struct DragControllerPage {
 }
 ```
 
-<a id="executedrag-1"></a>
+<a id="executedrag2"></a>
 
 ## executeDrag
 
@@ -462,11 +460,6 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 import { dragController } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel } from '@kit.ArkData';
-
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
 
 @Entry
 @Component
@@ -530,6 +523,7 @@ struct DragControllerPage {
                     }
                   })
                   .catch((err: Error) => {
+                    console.error(`Failed to execute drag. Cause: ${err.message}`);
                   })
               });
             }
@@ -622,6 +616,7 @@ struct NormalEts {
         this.previewData = {
           pixelMap: this.pixmap
         };
+        this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
       });
 
       let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
@@ -629,8 +624,6 @@ struct NormalEts {
       let unifiedData = new unifiedDataChannel.UnifiedData(data);
       this.unifiedData1 = unifiedData;
       this.finished = true;
-
-      this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
     }, 4000);
     this.timeout1 = timeout;
   }

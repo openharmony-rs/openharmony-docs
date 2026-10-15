@@ -6,6 +6,8 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
+<a id="remove1"></a>
+
 ## remove
 
 ```TypeScript
@@ -44,13 +46,14 @@ Removes a notification based on the bundle information and notification key. Thi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,22 +64,24 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="remove-1"></a>
+
+<a id="remove2"></a>
 
 ## remove
 
@@ -116,13 +121,14 @@ Removes a notification based on the bundle information and notification key. Thi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -130,22 +136,24 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
   console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
+<!--DelEnd-->
 
-<a id="remove-2"></a>
+
+<a id="remove3"></a>
 
 ## remove
 
@@ -169,7 +177,7 @@ Removes a notification based on the specified unique notification ID. This API u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hashCode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume) callback. |
+| hashCode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume) callback. |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | Yes | Reason for removing the notification. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
@@ -179,12 +187,13 @@ Removes a notification based on the specified unique notification ID. This API u
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -195,15 +204,17 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason, removeCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="remove-3"></a>
+
+<a id="remove4"></a>
 
 ## remove
 
@@ -227,7 +238,7 @@ Removes specified notifications. This API uses an asynchronous callback to retur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hashCodes | Array&lt;String&gt; | Yes | Array of unique notification IDs. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume) callback. |
+| hashCodes | Array&lt;String&gt; | Yes | Array of unique notification IDs. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume) callback. |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | Yes | Reason for removing the notification. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
@@ -237,11 +248,12 @@ Removes specified notifications. This API uses an asynchronous callback to retur
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -252,15 +264,17 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason, removeCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="remove-4"></a>
+
+<a id="remove5"></a>
 
 ## remove
 
@@ -284,7 +298,7 @@ Removes a notification based on the specified unique notification ID. This API u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hashCode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume) callback. |
+| hashCode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume) callback. |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | Yes | Reason for removing the notification. |
 
 **Return value:**
@@ -299,12 +313,13 @@ Removes a notification based on the specified unique notification ID. This API u
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -313,14 +328,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
   console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
+<!--DelEnd-->
 
-<a id="remove-5"></a>
+
+<a id="remove6"></a>
 
 ## remove
 
@@ -359,11 +376,12 @@ Removes specified notifications. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -372,8 +390,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
   console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

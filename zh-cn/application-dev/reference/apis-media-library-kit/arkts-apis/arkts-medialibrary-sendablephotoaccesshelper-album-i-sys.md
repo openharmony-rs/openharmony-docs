@@ -52,6 +52,7 @@ getFaceId(): Promise<string>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error |
 
+<!--Del-->
 **示例**
 
 phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
@@ -82,3 +83,5 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
+
+<!--DelEnd-->

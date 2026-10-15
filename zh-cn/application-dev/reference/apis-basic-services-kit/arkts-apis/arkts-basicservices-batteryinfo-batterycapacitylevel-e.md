@@ -12,17 +12,17 @@ export enum BatteryCapacityLevel
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_NONE
+## LEVEL_CRITICAL
 
 ```TypeScript
-LEVEL_NONE
+LEVEL_CRITICAL
 ```
 
-表示电池电量等级为未知电量。说明系统无法获得当前的电池电量等级。
+表示电池电量等级为极低电量。
 
-**起始版本：** 23
+**起始版本：** 9
 
-<!--Device-BatteryCapacityLevel-LEVEL_NONE--><!--Device-BatteryCapacityLevel-LEVEL_NONE-End-->
+<!--Device-BatteryCapacityLevel-LEVEL_CRITICAL--><!--Device-BatteryCapacityLevel-LEVEL_CRITICAL-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -54,20 +54,6 @@ LEVEL_HIGH
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_NORMAL
-
-```TypeScript
-LEVEL_NORMAL
-```
-
-表示电池电量等级为正常电量。
-
-**起始版本：** 9
-
-<!--Device-BatteryCapacityLevel-LEVEL_NORMAL--><!--Device-BatteryCapacityLevel-LEVEL_NORMAL-End-->
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
 ## LEVEL_LOW
 
 ```TypeScript
@@ -82,31 +68,31 @@ LEVEL_LOW
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_WARNING
+## LEVEL_NONE
 
 ```TypeScript
-LEVEL_WARNING
+LEVEL_NONE
 ```
 
-表示电池电量等级为告警电量。
+表示电池电量等级为未知电量。说明系统无法获得当前的电池电量等级。
 
-**起始版本：** 9
+**起始版本：** 23
 
-<!--Device-BatteryCapacityLevel-LEVEL_WARNING--><!--Device-BatteryCapacityLevel-LEVEL_WARNING-End-->
+<!--Device-BatteryCapacityLevel-LEVEL_NONE--><!--Device-BatteryCapacityLevel-LEVEL_NONE-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_CRITICAL
+## LEVEL_NORMAL
 
 ```TypeScript
-LEVEL_CRITICAL
+LEVEL_NORMAL
 ```
 
-表示电池电量等级为极低电量。
+表示电池电量等级为正常电量。
 
 **起始版本：** 9
 
-<!--Device-BatteryCapacityLevel-LEVEL_CRITICAL--><!--Device-BatteryCapacityLevel-LEVEL_CRITICAL-End-->
+<!--Device-BatteryCapacityLevel-LEVEL_NORMAL--><!--Device-BatteryCapacityLevel-LEVEL_NORMAL-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -121,5 +107,19 @@ LEVEL_SHUTDOWN
 **起始版本：** 9
 
 <!--Device-BatteryCapacityLevel-LEVEL_SHUTDOWN--><!--Device-BatteryCapacityLevel-LEVEL_SHUTDOWN-End-->
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+## LEVEL_WARNING
+
+```TypeScript
+LEVEL_WARNING
+```
+
+表示电池电量等级为告警电量。
+
+**起始版本：** 9
+
+<!--Device-BatteryCapacityLevel-LEVEL_WARNING--><!--Device-BatteryCapacityLevel-LEVEL_WARNING-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core

@@ -18,21 +18,41 @@ Ability的状态信息。
 
 **系统接口：** 此接口为系统接口。
 
-## INITIAL
+## BACKGROUND
 
 ```TypeScript
-INITIAL = 0
+BACKGROUND = 10
 ```
 
-表示Ability为初始化状态。
+表示Ability处于后台。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [INITIAL](arkts-ability-abilitymanager-abilitystate-e.md#initial)
+**替代接口：** [BACKGROUND](arkts-ability-abilitymanager-abilitystate-e.md#background)
 
-<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
+<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+## BACKGROUNDING
+
+```TypeScript
+BACKGROUNDING = 12
+```
+
+表示Ability处于后台调度中。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [BACKGROUNDING](arkts-ability-abilitymanager-abilitystate-e.md#backgrounding)
+
+<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -58,26 +78,6 @@ FOREGROUND = 9
 
 **系统接口：** 此接口为系统接口。
 
-## BACKGROUND
-
-```TypeScript
-BACKGROUND = 10
-```
-
-表示Ability处于后台。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [BACKGROUND](arkts-ability-abilitymanager-abilitystate-e.md#background)
-
-<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## FOREGROUNDING
 
 ```TypeScript
@@ -98,21 +98,21 @@ FOREGROUNDING = 11
 
 **系统接口：** 此接口为系统接口。
 
-## BACKGROUNDING
+## INITIAL
 
 ```TypeScript
-BACKGROUNDING = 12
+INITIAL = 0
 ```
 
-表示Ability处于后台调度中。
+表示Ability为初始化状态。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [BACKGROUNDING](arkts-ability-abilitymanager-abilitystate-e.md#backgrounding)
+**替代接口：** [INITIAL](arkts-ability-abilitymanager-abilitystate-e.md#initial)
 
-<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
+<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

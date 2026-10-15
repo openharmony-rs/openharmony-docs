@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="hasmatchedcalllog1"></a>
+
 ## hasMatchedCallLog
 
 ```TypeScript
@@ -70,7 +72,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 ```
 
 
-<a id="hasmatchedcalllog-1"></a>
+<a id="hasmatchedcalllog2"></a>
 
 ## hasMatchedCallLog
 

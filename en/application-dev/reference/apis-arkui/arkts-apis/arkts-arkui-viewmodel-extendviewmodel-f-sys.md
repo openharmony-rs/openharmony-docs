@@ -28,4 +28,4 @@ export declare function extendViewModel<T extends ViewModel, Data>(
 
 | Type | Description |
 | --- | --- |
-| [ViewModel](arkts-arkui-viewmodel-viewmodel-i.md) & Data |  |
+| [ViewModel](arkts-arkui-viewmodel-i.md) & Data |  |

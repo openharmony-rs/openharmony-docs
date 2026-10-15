@@ -1,6 +1,6 @@
 # @ohos.ability.wantConstant(wantConstant)
 
-wantConstant模块提供want中操作want常数和解释Flags说明的能力。
+wantConstant模块提供Want常量的操作方法，并说明Flags标志位的含义。
 
 **起始版本：** 6
 

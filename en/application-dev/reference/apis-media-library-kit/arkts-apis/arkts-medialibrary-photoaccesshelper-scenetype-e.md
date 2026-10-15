@@ -24,7 +24,7 @@ Tap the grid icon to browse the large image.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-SceneType-GRID_TO_PHOTO_BROWSER = 0--><!--Device-SceneType-GRID_TO_PHOTO_BROWSER = 0-End-->
 
@@ -42,7 +42,7 @@ Swipe left or right in the large image scene.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-SceneType-PHOTO_BROWSER_SWIPE = 1--><!--Device-SceneType-PHOTO_BROWSER_SWIPE = 1-End-->
 

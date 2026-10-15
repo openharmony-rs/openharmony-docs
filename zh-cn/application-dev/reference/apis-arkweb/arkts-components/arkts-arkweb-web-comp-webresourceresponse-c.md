@@ -222,6 +222,33 @@ setReasonMessage(reason: string): void
 | --- | --- | --- | --- |
 | reason | string | 是 | 要设置的资源响应的状态码描述。状态码描述是对状态码的文本说明，通常与状态码对应使用，例如状态码为200时描述可设为“OK”，状态码为404时描述可设为“Not Found”。该描述会包含在HTTP响应中，便于客户端或开发者了解响应结果。 |
 
+## setResponseBody
+
+```TypeScript
+setResponseBody(data:string | number | Resource | ArrayBuffer): void
+```
+
+设置响应数据。
+
+> **说明：** 
+> - 该API支持基于Resource对象获取HSP资源，而 { setResponseData } 不支持该功能。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebResourceResponse-setResponseBody(data:string | number | Resource | ArrayBuffer): void--><!--Device-WebResourceResponse-setResponseBody(data:string | number | Resource | ArrayBuffer): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| data | string &#124; number &#124; Resource &#124; ArrayBuffer | 是 | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄。Resource表示rawfile资源或HSP资源。ArrayBuffer表示二进制数据。 |
+
+**示例**
+
 ## setResponseCode
 
 ```TypeScript

@@ -36,7 +36,7 @@ onerror属性用于指定Worker在执行过程中发生异常被调用的回调�
 
 **废弃版本：** 9
 
-**替代接口：** onerror
+**替代接口：** [onerror](arkts-arkts-worker-globalscope-i.md#onerror)
 
 <!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void--><!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void-End-->
 
@@ -62,7 +62,7 @@ Worker的名字，new Worker时指定。
 
 **废弃版本：** 9
 
-**替代接口：** name
+**替代接口：** [name](arkts-arkts-worker-globalscope-i.md#name)
 
 <!--Device-WorkerGlobalScope-readonly name: string--><!--Device-WorkerGlobalScope-readonly name: string-End-->
 
@@ -82,7 +82,7 @@ readonly self: WorkerGlobalScope & typeof globalThis
 
 **废弃版本：** 9
 
-**替代接口：** self
+**替代接口：** [self](arkts-arkts-worker-globalscope-i.md#self)
 
 <!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis--><!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis-End-->
 

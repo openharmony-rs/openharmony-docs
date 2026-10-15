@@ -16,13 +16,13 @@ Defines the values of **deviceType** used in **RootInfo**.
 
 **System API:** This is a system API.
 
-## DEVICE_LOCAL_DISK
+## DEVICE_EXTERNAL_CLOUD
 
 ```TypeScript
-DEVICE_LOCAL_DISK = 1
+DEVICE_EXTERNAL_CLOUD = 7
 ```
 
-Local disk.
+Cloud disk.
 
 **Since:** 9
 
@@ -30,67 +30,7 @@ Local disk.
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceType-DEVICE_LOCAL_DISK = 1--><!--Device-DeviceType-DEVICE_LOCAL_DISK = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileService
-
-**System API:** This is a system API.
-
-## DEVICE_SHARED_DISK
-
-```TypeScript
-DEVICE_SHARED_DISK = 2
-```
-
-Shared disk.
-
-**Since:** 9
-
-**Deprecated since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceType-DEVICE_SHARED_DISK = 2--><!--Device-DeviceType-DEVICE_SHARED_DISK = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileService
-
-**System API:** This is a system API.
-
-## DEVICE_SHARED_TERMINAL
-
-```TypeScript
-DEVICE_SHARED_TERMINAL = 3
-```
-
-Distributed network device.
-
-**Since:** 9
-
-**Deprecated since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceType-DEVICE_SHARED_TERMINAL = 3--><!--Device-DeviceType-DEVICE_SHARED_TERMINAL = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileService
-
-**System API:** This is a system API.
-
-## DEVICE_NETWORK_NEIGHBORHOODS
-
-```TypeScript
-DEVICE_NETWORK_NEIGHBORHOODS = 4
-```
-
-Network neighbor device.
-
-**Since:** 9
-
-**Deprecated since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceType-DEVICE_NETWORK_NEIGHBORHOODS = 4--><!--Device-DeviceType-DEVICE_NETWORK_NEIGHBORHOODS = 4-End-->
+<!--Device-DeviceType-DEVICE_EXTERNAL_CLOUD = 7--><!--Device-DeviceType-DEVICE_EXTERNAL_CLOUD = 7-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -136,13 +76,13 @@ USB device.
 
 **System API:** This is a system API.
 
-## DEVICE_EXTERNAL_CLOUD
+## DEVICE_LOCAL_DISK
 
 ```TypeScript
-DEVICE_EXTERNAL_CLOUD = 7
+DEVICE_LOCAL_DISK = 1
 ```
 
-Cloud disk.
+Local disk.
 
 **Since:** 9
 
@@ -150,7 +90,67 @@ Cloud disk.
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceType-DEVICE_EXTERNAL_CLOUD = 7--><!--Device-DeviceType-DEVICE_EXTERNAL_CLOUD = 7-End-->
+<!--Device-DeviceType-DEVICE_LOCAL_DISK = 1--><!--Device-DeviceType-DEVICE_LOCAL_DISK = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileService
+
+**System API:** This is a system API.
+
+## DEVICE_NETWORK_NEIGHBORHOODS
+
+```TypeScript
+DEVICE_NETWORK_NEIGHBORHOODS = 4
+```
+
+Network neighbor device.
+
+**Since:** 9
+
+**Deprecated since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceType-DEVICE_NETWORK_NEIGHBORHOODS = 4--><!--Device-DeviceType-DEVICE_NETWORK_NEIGHBORHOODS = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileService
+
+**System API:** This is a system API.
+
+## DEVICE_SHARED_DISK
+
+```TypeScript
+DEVICE_SHARED_DISK = 2
+```
+
+Shared disk.
+
+**Since:** 9
+
+**Deprecated since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceType-DEVICE_SHARED_DISK = 2--><!--Device-DeviceType-DEVICE_SHARED_DISK = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileService
+
+**System API:** This is a system API.
+
+## DEVICE_SHARED_TERMINAL
+
+```TypeScript
+DEVICE_SHARED_TERMINAL = 3
+```
+
+Distributed network device.
+
+**Since:** 9
+
+**Deprecated since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceType-DEVICE_SHARED_TERMINAL = 3--><!--Device-DeviceType-DEVICE_SHARED_TERMINAL = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

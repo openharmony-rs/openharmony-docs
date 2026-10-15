@@ -12,22 +12,6 @@ enum StateChangeReason
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## USER
-
-```TypeScript
-USER = 1
-```
-
-表示用户行为造成的状态切换，由用户或客户端主动调用接口产生。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-StateChangeReason-USER = 1--><!--Device-StateChangeReason-USER = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
 ## BACKGROUND
 
 ```TypeScript
@@ -38,8 +22,24 @@ BACKGROUND = 2
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-StateChangeReason-BACKGROUND = 2--><!--Device-StateChangeReason-BACKGROUND = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## USER
+
+```TypeScript
+USER = 1
+```
+
+表示用户行为造成的状态切换，由用户或客户端主动调用接口产生。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-StateChangeReason-USER = 1--><!--Device-StateChangeReason-USER = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

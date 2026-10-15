@@ -22,7 +22,7 @@ HIGH_QUALITY = 0
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-QualityPrioritization-HIGH_QUALITY = 0--><!--Device-QualityPrioritization-HIGH_QUALITY = 0-End-->
 
@@ -38,7 +38,7 @@ POWER_BALANCE = 1
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-QualityPrioritization-POWER_BALANCE = 1--><!--Device-QualityPrioritization-POWER_BALANCE = 1-End-->
 

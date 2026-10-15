@@ -28,7 +28,7 @@ Deletes the disposed status for an application or an application clone. This API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE:** <br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](arkts-ability-bundleinfo-signatureinfo-i.md) is also the unique identifier of an app. For details, see [What is appIdentifier](../../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId | string | Yes | appId or appIdentifier of the application whose disposition status is to be deleted. The disposition status set using appId can only be deleted using appId, and the same applies to the disposition status set using appIdentifier.<br>**NOTE:** <br> appId is the unique identifier of the application, determined by the bundle name and signature information of the application. For details about how to obtain it, see [Obtaining the appId of an application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). <br> [appIdentifier](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For details, see [What is appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [Obtaining the appIdentifier of an application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
 | appIndex | number | No | Index of the application clone. The default value is **0**.<br> The value **0** means to delete the disposed status of the main application. A value greater than 0 means to delete the disposed status of the application clone.<br>**Since:** 12 |
 
 **Error codes:**
@@ -42,6 +42,7 @@ Deletes the disposed status for an application or an application clone. This API
 | [17700005](../errorcode-bundle.md#17700005-appid-is-an-empty-string) | The specified app ID is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex is not in the valid range.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
   console.error('deleteDisposedStatusSync failed ' + message);
 }
 ```
+
+<!--DelEnd-->

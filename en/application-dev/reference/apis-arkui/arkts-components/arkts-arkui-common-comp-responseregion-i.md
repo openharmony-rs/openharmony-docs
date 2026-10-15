@@ -8,7 +8,7 @@ Defines a touch target consisting of an input tool type, touch position, and siz
 
 > **NOTE:** 
 > 
-> - When the parent component has [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) set to **true**, child component interaction is affected by the parent component's response region. Children outside the parent component's response region won't respond to gestures or events.
+> - When the parent component has [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) set to **true**, child component interaction is affected by the parent component's response region. Children outside the parent component's response region won't respond to gestures or events.
 > 
 > - If the input tool type, touch position, and size are not configured for a touch target, default values are used.
 > 

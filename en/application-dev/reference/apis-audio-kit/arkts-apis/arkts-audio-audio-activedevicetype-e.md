@@ -16,24 +16,6 @@ Enumerates the active device types.
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
-## SPEAKER
-
-```TypeScript
-SPEAKER = 2
-```
-
-Speaker.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** SPEAKER
-
-<!--Device-ActiveDeviceType-SPEAKER = 2--><!--Device-ActiveDeviceType-SPEAKER = 2-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
 ## BLUETOOTH_SCO
 
 ```TypeScript
@@ -46,8 +28,26 @@ Bluetooth device using Synchronous Connection Oriented (SCO) links.
 
 **Deprecated since:** 9
 
-**Substitutes:** BLUETOOTH_SCO
+**Substitutes:** [BLUETOOTH_SCO](arkts-audio-audio-devicetype-e.md#bluetooth_sco)
 
 <!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7--><!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+## SPEAKER
+
+```TypeScript
+SPEAKER = 2
+```
+
+Speaker.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [SPEAKER](arkts-audio-audio-communicationdevicetype-e.md#speaker)
+
+<!--Device-ActiveDeviceType-SPEAKER = 2--><!--Device-ActiveDeviceType-SPEAKER = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device

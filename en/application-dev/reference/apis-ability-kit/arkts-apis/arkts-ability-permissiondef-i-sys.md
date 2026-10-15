@@ -6,10 +6,6 @@ export interface PermissionDef
 
 The module provides permission details defined in the [module.json5](../../../quick-start/module-configuration-file.md) file. The information can be obtained using [bundleManager.getPermissionDef](arkts-ability-bundlemanager-getpermissiondef-f-sys.md).
 
-> **NOTE:** 
-> 
-> The APIs provided by this module are system APIs.
-
 **Since:** 9
 
 <!--Device-unnamed-export interface PermissionDef--><!--Device-unnamed-export interface PermissionDef-End-->
@@ -24,7 +20,7 @@ The module provides permission details defined in the [module.json5](../../../qu
 readonly descriptionId: number
 ```
 
-ID of the permission description.
+Resource ID of the permission description.
 
 **Type:** number
 
@@ -60,7 +56,7 @@ readonly grantMode: number
 readonly labelId: number
 ```
 
-ID of the permission label.
+Resource ID of the permission label, used to display the permission name.
 
 **Type:** number
 
@@ -78,7 +74,7 @@ ID of the permission label.
 readonly permissionName: string
 ```
 
-Name of the permission.
+Permission name.
 
 **Type:** string
 

@@ -40,6 +40,7 @@ Obtains a **UserFileManager** instance. This instance can be used to access and 
 | --- | --- |
 | [UserFileManager](arkts-corefile-userfilemanager-userfilemanager-i-sys.md) | **UserFileManager** instance obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,3 +62,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

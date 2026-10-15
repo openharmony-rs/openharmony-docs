@@ -12,20 +12,6 @@ Web组件的销毁模式，当Web组件销毁时，销毁模式会影响Web内�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## NORMAL_MODE
-
-```TypeScript
-NORMAL_MODE = 0
-```
-
-普通模式，由系统决定Web组件资源的销毁时机。
-
-**起始版本：** 20
-
-<!--Device-WebDestroyMode-NORMAL_MODE = 0--><!--Device-WebDestroyMode-NORMAL_MODE = 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## FAST_MODE
 
 ```TypeScript
@@ -37,5 +23,19 @@ FAST_MODE = 1
 **起始版本：** 20
 
 <!--Device-WebDestroyMode-FAST_MODE = 1--><!--Device-WebDestroyMode-FAST_MODE = 1-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## NORMAL_MODE
+
+```TypeScript
+NORMAL_MODE = 0
+```
+
+普通模式，由系统决定Web组件资源的销毁时机。
+
+**起始版本：** 20
+
+<!--Device-WebDestroyMode-NORMAL_MODE = 0--><!--Device-WebDestroyMode-NORMAL_MODE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

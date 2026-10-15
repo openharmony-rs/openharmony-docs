@@ -12,20 +12,6 @@ Enumerates the soft keyboard states of the input method.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-None.
-
-**Since:** 10
-
-<!--Device-KeyboardStatus-NONE = 0--><!--Device-KeyboardStatus-NONE = 0-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
 ## HIDE
 
 ```TypeScript
@@ -37,6 +23,20 @@ Hidden.
 **Since:** 10
 
 <!--Device-KeyboardStatus-HIDE = 1--><!--Device-KeyboardStatus-HIDE = 1-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+None.
+
+**Since:** 10
+
+<!--Device-KeyboardStatus-NONE = 0--><!--Device-KeyboardStatus-NONE = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="getdeviceidletrustlist1"></a>
+
 ## getDeviceIdleTrustlist
 
 ```TypeScript
@@ -41,6 +43,7 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,8 +55,10 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getdeviceidletrustlist-1"></a>
+
+<a id="getdeviceidletrustlist2"></a>
 
 ## getDeviceIdleTrustlist
 
@@ -89,17 +94,17 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getDeviceIdleTrustlist()
-  .then((data: number[]) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
+policy.getDeviceIdleTrustlist().then((data: number[]) => {
+  console.info(JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
+
+<!--DelEnd-->

@@ -6,7 +6,7 @@
 import { connection } from '@kit.ConnectivityKit';
 ```
 
-<a id="disconnectallowedprofiles-1"></a>
+<a id="disconnectallowedprofiles2"></a>
 
 ## disconnectAllowedProfiles
 
@@ -47,7 +47,7 @@ Disconnects all allowed bluetooth profiles between the local and remote device.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs.<br>**Applicable version:** 11 - 24 |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 11 - 24 |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed.<br>**Applicable version:** 11 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |

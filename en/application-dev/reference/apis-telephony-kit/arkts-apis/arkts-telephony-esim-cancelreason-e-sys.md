@@ -46,22 +46,6 @@ The download has been delayed. You can restart it later.
 
 **System API:** This is a system API.
 
-## CANCEL_REASON_TIMEOUT
-
-```TypeScript
-CANCEL_REASON_TIMEOUT = 2
-```
-
-The download has timed out. You can restart it later.
-
-**Since:** 18
-
-<!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2--><!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## CANCEL_REASON_PPR_NOT_ALLOWED
 
 ```TypeScript
@@ -73,6 +57,22 @@ The installation cannot be performed because the authorization table or other in
 **Since:** 18
 
 <!--Device-CancelReason-CANCEL_REASON_PPR_NOT_ALLOWED = 3--><!--Device-CancelReason-CANCEL_REASON_PPR_NOT_ALLOWED = 3-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## CANCEL_REASON_TIMEOUT
+
+```TypeScript
+CANCEL_REASON_TIMEOUT = 2
+```
+
+The download has timed out. You can restart it later.
+
+**Since:** 18
+
+<!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2--><!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

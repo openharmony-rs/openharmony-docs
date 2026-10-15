@@ -6,6 +6,8 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
+<a id="setpermissionusedrecordtogglestatus1"></a>
+
 ## setPermissionUsedRecordToggleStatus
 
 ```TypeScript
@@ -44,13 +46,14 @@ status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addper
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_RECORD_TOGGLE". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system app. Interface caller is not a system app. |
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**适用版本：** 26.0.1+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,8 +68,10 @@ privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setpermissionusedrecordtogglestatus-1"></a>
+
+<a id="setpermissionusedrecordtogglestatus2"></a>
 
 ## setPermissionUsedRecordToggleStatus
 
@@ -111,10 +116,11 @@ status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addper
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system app. Interface caller is not a system app. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The specified subProfileId does not exist for the current user. |
-| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md). |
+| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus1). |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -128,3 +134,5 @@ privacyManager.setPermissionUsedRecordToggleStatus(true, subProfileId).then(() =
   console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

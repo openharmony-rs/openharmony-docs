@@ -6,6 +6,8 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getallsimaccountinfolist1"></a>
+
 ## getAllSimAccountInfoList
 
 ```TypeScript
@@ -42,6 +44,7 @@ Get the list of all SIM card account information.
 | [8300004](../errorcode-telephony.md#8300004-sim-card-not-detected) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ sim.getAllSimAccountInfoList((err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getallsimaccountinfolist-1"></a>
+
+<a id="getallsimaccountinfolist2"></a>
 
 ## getAllSimAccountInfoList
 
@@ -91,6 +96,7 @@ Get the list of all SIM card account information.
 | [8300004](../errorcode-telephony.md#8300004-sim-card-not-detected) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -107,3 +113,5 @@ async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | nu
     }
   }
 ```
+
+<!--DelEnd-->

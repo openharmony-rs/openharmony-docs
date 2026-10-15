@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 ```
 
-Obtains the Want used to launch the bundle based on the given bundle name and user ID. This API returns the result synchronously.
+Obtains the **Want** parameters for starting an application based on the given bundle name and user ID.
 
 **Since:** 24
 
@@ -28,8 +28,8 @@ Obtains the Want used to launch the bundle based on the given bundle name and us
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name. |
-| userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. The value must be greater than or equal to 0. |
+| bundleName | string | Yes | Bundle name of the application. |
+| userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). <br>Default value: the user to which the caller belongs.<br>Value range: greater than or equal to 0. |
 
 **Return value:**
 
@@ -43,7 +43,7 @@ Obtains the Want used to launch the bundle based on the given bundle name and us
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 10 - 23 |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user id is not found. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |

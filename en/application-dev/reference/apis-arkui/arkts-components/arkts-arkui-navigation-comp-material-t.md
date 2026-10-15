@@ -4,7 +4,9 @@
 declare type Material = import('../api/@ohos.arkui.uiMaterial').default.Material
 ```
 
-Import the Material type for Navigation.
+Provides the system material, which is used when the system material attribute of the title bar is set.
+
+**Type:** import('../api/@ohos.arkui.uiMaterial').default.Material
 
 **Since:** 26.0.0
 
@@ -15,5 +17,3 @@ Import the Material type for Navigation.
 <!--Device-unnamed-declare type Material = import('../api/@ohos.arkui.uiMaterial').default.Material--><!--Device-unnamed-declare type Material = import('../api/@ohos.arkui.uiMaterial').default.Material-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.uiMaterial').default.Material

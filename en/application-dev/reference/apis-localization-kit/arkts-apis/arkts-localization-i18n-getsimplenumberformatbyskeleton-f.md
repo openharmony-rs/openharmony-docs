@@ -6,6 +6,8 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="getsimplenumberformatbyskeleton1"></a>
+
 ## getSimpleNumberFormatBySkeleton
 
 ```TypeScript
@@ -16,7 +18,7 @@ Obtains a **SimpleNumberFormat** object based on the specified skeleton.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat--><!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat-End-->
 
@@ -57,7 +59,7 @@ try {
 ```
 
 
-<a id="getsimplenumberformatbyskeleton-1"></a>
+<a id="getsimplenumberformatbyskeleton2"></a>
 
 ## getSimpleNumberFormatBySkeleton
 
@@ -71,7 +73,7 @@ Obtains a **SimpleNumberFormat** object based on the specified skeleton.
 
 **Deprecated since:** 20
 
-**Substitutes:** [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md)(skeleton: string, locale?: Intl.Locale)
+**Substitutes:** [getSimpleNumberFormatBySkeleton](#getsimplenumberformatbyskeleton1)(skeleton: string, locale?: Intl.Locale)
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 

@@ -24,7 +24,7 @@ readonly bundleName: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Dependency-readonly bundleName: string--><!--Device-Dependency-readonly bundleName: string-End-->
 
@@ -42,7 +42,7 @@ readonly moduleName: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Dependency-readonly moduleName: string--><!--Device-Dependency-readonly moduleName: string-End-->
 
@@ -60,7 +60,7 @@ readonly versionCode: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Dependency-readonly versionCode: long--><!--Device-Dependency-readonly versionCode: long-End-->
 

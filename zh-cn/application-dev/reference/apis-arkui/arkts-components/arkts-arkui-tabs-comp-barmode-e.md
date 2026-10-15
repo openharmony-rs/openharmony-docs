@@ -12,22 +12,6 @@ TabBar布局模式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Scrollable
-
-```TypeScript
-Scrollable = 0
-```
-
-每一个TabBar均使用实际布局宽度，超过总长度（横向Tabs的[barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth)，纵向Tabs的[barHeight](arkts-arkui-tabs-comp-attribute.md#barheight)）后可滑动。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-BarMode-Scrollable = 0--><!--Device-BarMode-Scrollable = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Fixed
 
 ```TypeScript
@@ -41,5 +25,21 @@ Fixed = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-BarMode-Fixed = 1--><!--Device-BarMode-Fixed = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Scrollable
+
+```TypeScript
+Scrollable = 0
+```
+
+每一个TabBar均使用实际布局宽度，超过总长度（横向Tabs的[barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth)，纵向Tabs的[barHeight](arkts-arkui-tabs-comp-attribute.md#barheight1)）后可滑动。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-BarMode-Scrollable = 0--><!--Device-BarMode-Scrollable = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

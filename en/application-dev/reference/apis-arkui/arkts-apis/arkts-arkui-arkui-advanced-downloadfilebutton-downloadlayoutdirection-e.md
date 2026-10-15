@@ -6,8 +6,6 @@ export declare enum DownloadLayoutDirection
 
 Enum for DownloadDescription
 
-@enum { number }
-
 **Since:** 12
 
 <!--Device-unnamed-export declare enum DownloadLayoutDirection--><!--Device-unnamed-export declare enum DownloadLayoutDirection-End-->

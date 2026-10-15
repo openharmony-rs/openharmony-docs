@@ -6,7 +6,7 @@ declare interface TextClockConfiguration extends CommonConfiguration<TextClockCo
 
 You need a custom class to implement the **ContentModifier** API.
 
-**Inheritance/Implementation:** TextClockConfiguration extends CommonConfiguration<TextClockConfiguration>
+**Inheritance/Implementation:** TextClockConfiguration extends CommonConfiguration&lt;TextClockConfiguration&gt;
 
 **Since:** 12
 

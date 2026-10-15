@@ -6,8 +6,6 @@ export enum CameraTrackingLayout
 
 相机跟踪布局
 
-@enum { int }
-
 **起始版本：** 20
 
 <!--Device-mechanicManager-export enum CameraTrackingLayout--><!--Device-mechanicManager-export enum CameraTrackingLayout-End-->

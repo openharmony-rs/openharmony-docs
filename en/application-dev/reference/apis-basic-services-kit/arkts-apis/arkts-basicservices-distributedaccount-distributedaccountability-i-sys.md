@@ -18,6 +18,8 @@ Provides APIs for querying and updating the login state of a distributed account
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="getosaccountdistributedinfobylocalid1"></a>
+
 ## getOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -49,11 +51,12 @@ Obtains the distributed account information about an OS account. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -76,7 +79,9 @@ try {
 }
 ```
 
-<a id="getosaccountdistributedinfobylocalid-1"></a>
+<!--DelEnd-->
+
+<a id="getosaccountdistributedinfobylocalid2"></a>
 
 ## getOsAccountDistributedInfoByLocalId
 
@@ -114,11 +119,12 @@ Obtains the distributed account information about an OS account. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,6 +144,10 @@ try {
   console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setosaccountdistributedinfobylocalid1"></a>
 
 ## setOsAccountDistributedInfoByLocalId
 
@@ -169,8 +179,8 @@ Sets the distributed account information about an OS account. This API uses an a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid distributedInfo. |
@@ -178,6 +188,7 @@ Sets the distributed account information about an OS account. This API uses an a
 | [12300008](../errorcode-account.md#12300008-restricted-account) | Restricted OS account. |
 | 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -201,7 +212,9 @@ try {
 }
 ```
 
-<a id="setosaccountdistributedinfobylocalid-1"></a>
+<!--DelEnd-->
+
+<a id="setosaccountdistributedinfobylocalid2"></a>
 
 ## setOsAccountDistributedInfoByLocalId
 
@@ -238,8 +251,8 @@ Sets the distributed account information about an OS account. This API uses a pr
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid distributedInfo. |
@@ -247,6 +260,7 @@ Sets the distributed account information about an OS account. This API uses a pr
 | [12300008](../errorcode-account.md#12300008-restricted-account) | Restricted OS account. |
 | 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>**Applicable version:** 26.0.0 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -267,3 +281,5 @@ try {
   console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

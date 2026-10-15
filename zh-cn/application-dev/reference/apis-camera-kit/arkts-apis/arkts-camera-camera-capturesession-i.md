@@ -124,6 +124,8 @@ beginConfig(): void
 | --- | --- |
 | [7400105](../errorcode-camera.md#7400105-会话配置被锁定) | Session config locked. |
 
+<a id="commitconfig1"></a>
+
 ## commitConfig
 
 ```TypeScript
@@ -140,7 +142,7 @@ commitConfig(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [commitConfig](arkts-camera-camera-session-i.md#commitconfig)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [commitConfig](arkts-camera-camera-session-i.md#commitconfig1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void-End-->
 
@@ -159,7 +161,7 @@ commitConfig(callback: AsyncCallback<void>): void
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="commitconfig-1"></a>
+<a id="commitconfig2"></a>
 
 ## commitConfig
 
@@ -884,6 +886,8 @@ on(type: 'error', callback: ErrorCallback): void
 | type | 'error' | 是 | 监听事件，固定为'error'，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用[beginConfig](#beginconfig)，[commitConfig](#commitconfig)，[addInput](#addinput)等接口发生错误时返回错误信息。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -900,7 +904,7 @@ release(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [release](arkts-camera-camera-session-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [release](arkts-camera-camera-session-i.md#release1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-release(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-release(callback: AsyncCallback<void>): void-End-->
 
@@ -918,7 +922,7 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -1309,6 +1313,8 @@ setZoomRatio(zoomRatio: number): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -1325,7 +1331,7 @@ start(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [start](arkts-camera-camera-session-i.md#start1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-start(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-start(callback: AsyncCallback<void>): void-End-->
 
@@ -1344,7 +1350,7 @@ start(callback: AsyncCallback<void>): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -1381,6 +1387,8 @@ start(): Promise<void>
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -1397,7 +1405,7 @@ stop(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-camera-camera-session-i.md#stop1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -1415,7 +1423,7 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 

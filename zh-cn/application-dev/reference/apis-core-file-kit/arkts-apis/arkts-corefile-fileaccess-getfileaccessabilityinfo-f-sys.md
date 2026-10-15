@@ -6,6 +6,8 @@
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
+<a id="getfileaccessabilityinfo1"></a>
+
 ## getFileAccessAbilityInfo
 
 ```TypeScript
@@ -32,7 +34,7 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | 是 | The callback is used to return a Array&lt;Want&gt; object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | 是 | The callback is used to return a Array<[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)> object. |
 
 **错误码：**
 
@@ -69,6 +71,7 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -90,8 +93,10 @@ async function getFileAccessAbilityInfo() {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getfileaccessabilityinfo-1"></a>
+
+<a id="getfileaccessabilityinfo2"></a>
 
 ## getFileAccessAbilityInfo
 
@@ -156,6 +161,7 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -172,3 +178,5 @@ async function getFileAccessAbilityInfo() {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@ export type DataAbilityOperation = _DataAbilityOperation
 
 DataAbilityOperation二级模块。
 
+**类型：** _DataAbilityOperation
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -13,5 +15,3 @@ DataAbilityOperation二级模块。
 <!--Device-ability-export type DataAbilityOperation = _DataAbilityOperation--><!--Device-ability-export type DataAbilityOperation = _DataAbilityOperation-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**类型：** _DataAbilityOperation

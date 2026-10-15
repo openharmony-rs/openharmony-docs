@@ -12,6 +12,22 @@ const enum BigIntMode
 
 **系统能力：** SystemCapability.Utils.Lang
 
+## ALWAYS_PARSE_AS_BIGINT
+
+```TypeScript
+ALWAYS_PARSE_AS_BIGINT = 2
+```
+
+所有整数都解析为BigInt。适用于需要所有整数都以BigInt形式保留精度的场景，如高精度数值计算。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BigIntMode-ALWAYS_PARSE_AS_BIGINT = 2--><!--Device-BigIntMode-ALWAYS_PARSE_AS_BIGINT = 2-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
 ## DEFAULT
 
 ```TypeScript
@@ -41,21 +57,5 @@ PARSE_AS_BIGINT = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-BigIntMode-PARSE_AS_BIGINT = 1--><!--Device-BigIntMode-PARSE_AS_BIGINT = 1-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## ALWAYS_PARSE_AS_BIGINT
-
-```TypeScript
-ALWAYS_PARSE_AS_BIGINT = 2
-```
-
-所有整数都解析为BigInt。适用于需要所有整数都以BigInt形式保留精度的场景，如高精度数值计算。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-BigIntMode-ALWAYS_PARSE_AS_BIGINT = 2--><!--Device-BigIntMode-ALWAYS_PARSE_AS_BIGINT = 2-End-->
 
 **系统能力：** SystemCapability.Utils.Lang

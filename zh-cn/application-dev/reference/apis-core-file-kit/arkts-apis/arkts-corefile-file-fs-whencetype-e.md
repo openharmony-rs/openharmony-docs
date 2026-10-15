@@ -12,20 +12,6 @@ declare enum WhenceType
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-## SEEK_SET
-
-```TypeScript
-SEEK_SET = 0
-```
-
-文件起始位置处。
-
-**起始版本：** 11
-
-<!--Device-WhenceType-SEEK_SET = 0--><!--Device-WhenceType-SEEK_SET = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
 ## SEEK_CUR
 
 ```TypeScript
@@ -51,5 +37,19 @@ SEEK_END = 2
 **起始版本：** 11
 
 <!--Device-WhenceType-SEEK_END = 2--><!--Device-WhenceType-SEEK_END = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## SEEK_SET
+
+```TypeScript
+SEEK_SET = 0
+```
+
+文件起始位置处。
+
+**起始版本：** 11
+
+<!--Device-WhenceType-SEEK_SET = 0--><!--Device-WhenceType-SEEK_SET = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO

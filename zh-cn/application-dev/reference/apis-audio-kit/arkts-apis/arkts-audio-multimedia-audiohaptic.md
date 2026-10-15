@@ -20,7 +20,7 @@ import { audioHaptic } from '@kit.AudioKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md) | 获取音振管理器。 |
+| [getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md#getaudiohapticmanager) | 获取音振管理器。 |
 
 ### 接口
 

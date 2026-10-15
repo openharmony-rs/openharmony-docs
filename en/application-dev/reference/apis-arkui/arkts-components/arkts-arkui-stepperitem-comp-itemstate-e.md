@@ -16,30 +16,6 @@ Display status of **nextLabel** in the stepper.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Normal
-
-```TypeScript
-Normal
-```
-
-The button on the right is clickable and can navigate users to the next **StepperItem** when it is clicked.
-
-**NOTE:** 
-
-This API is supported since API version 8 and deprecated since API version 22. You are advised to use [index](arkts-arkui-swiper-comp-attribute.md#index) instead.
-
-**Since:** 8
-
-**Deprecated since:** 22
-
-**Substitutes:** index
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ItemState-Normal--><!--Device-ItemState-Normal-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Disabled
 
 ```TypeScript
@@ -64,27 +40,27 @@ This API is supported since API version 8 and deprecated since API version 22. Y
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Waiting
+## Normal
 
 ```TypeScript
-Waiting
+Normal
 ```
 
-The button on the right is not displayed, and a progress bar is displayed instead.
+The button on the right is clickable and can navigate users to the next **StepperItem** when it is clicked.
 
 **NOTE:** 
 
-This API is supported since API version 8 and deprecated since API version 22. You are advised to use Swiper instead.
+This API is supported since API version 8 and deprecated since API version 22. You are advised to use [index](arkts-arkui-swiper-comp-attribute.md#index) instead.
 
 **Since:** 8
 
 **Deprecated since:** 22
 
-**Substitutes:** Swiper
+**Substitutes:** index
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ItemState-Waiting--><!--Device-ItemState-Waiting-End-->
+<!--Device-ItemState-Normal--><!--Device-ItemState-Normal-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,5 +85,29 @@ This API is supported since API version 8 and deprecated since API version 22. Y
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ItemState-Skip--><!--Device-ItemState-Skip-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Waiting
+
+```TypeScript
+Waiting
+```
+
+The button on the right is not displayed, and a progress bar is displayed instead.
+
+**NOTE:** 
+
+This API is supported since API version 8 and deprecated since API version 22. You are advised to use [Swiper](arkts-arkui-swiper-comp.md) instead.
+
+**Since:** 8
+
+**Deprecated since:** 22
+
+**Substitutes:** Swiper
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ItemState-Waiting--><!--Device-ItemState-Waiting-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

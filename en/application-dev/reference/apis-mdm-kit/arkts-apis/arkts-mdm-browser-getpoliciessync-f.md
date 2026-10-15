@@ -6,6 +6,8 @@
 import { browser } from '@kit.MDMKit';
 ```
 
+<a id="getpoliciessync1"></a>
+
 ## getPoliciesSync
 
 ```TypeScript
@@ -40,7 +42,7 @@ Obtains the browser policy by app ID.
 | Error Code ID | Error Message |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -66,7 +68,7 @@ try {
 ```
 
 
-<a id="getpoliciessync-1"></a>
+<a id="getpoliciessync2"></a>
 
 ## getPoliciesSync
 
@@ -102,7 +104,7 @@ Obtains the policy set for a specified browser based on **appid**. This API is a
 | Error Code ID | Error Message |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

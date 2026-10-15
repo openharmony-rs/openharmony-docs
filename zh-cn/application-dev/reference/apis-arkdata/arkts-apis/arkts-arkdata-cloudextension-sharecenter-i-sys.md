@@ -56,6 +56,7 @@ changeConfirmation(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;void&gt;&gt; | Promise对象，返回更改共享邀请的结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -77,6 +78,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## changePrivilege
 
@@ -114,6 +117,7 @@ changePrivilege(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回更改权限的结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -145,6 +149,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## confirmInvitation
 
@@ -182,6 +188,7 @@ confirmInvitation(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;string&gt;&gt; | Promise对象，返回确认端云共享邀请数据的共享资源标识。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -204,6 +211,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## exit
 
@@ -235,6 +244,7 @@ exit(userId: number, bundleName: string, sharingResource: string): Promise<Resul
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;void&gt;&gt; | Promise对象，返回退出共享的结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -256,6 +266,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## queryParticipants
 
@@ -291,6 +303,7 @@ queryParticipants(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt; | Promise对象，返回查询共享参与者的结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -343,6 +356,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 }
 ```
 
+<!--DelEnd-->
+
 ## queryParticipantsByInvitation
 
 ```TypeScript
@@ -377,6 +392,7 @@ queryParticipantsByInvitation(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt; | Promise对象，返回根据邀请码查询共享参与者的结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -429,6 +445,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 }
 ```
 
+<!--DelEnd-->
+
 ## share
 
 ```TypeScript
@@ -465,6 +483,7 @@ share(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回发起共享的结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -496,6 +515,8 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## unshare
 
@@ -533,6 +554,7 @@ unshare(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[cloudData.sharing.Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回取消共享的结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -564,3 +586,5 @@ class MyShareCenter implements cloudExtension.ShareCenter {
   // ...
 }
 ```
+
+<!--DelEnd-->

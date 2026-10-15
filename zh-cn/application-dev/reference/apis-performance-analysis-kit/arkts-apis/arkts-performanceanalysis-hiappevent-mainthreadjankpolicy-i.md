@@ -36,7 +36,7 @@ false：达到设置的采样次数时停止采样。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-MainThreadJankPolicy-autoStopSampling?: boolean--><!--Device-MainThreadJankPolicy-autoStopSampling?: boolean-End-->
 
@@ -54,7 +54,7 @@ ignoreStartupTime?: number
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-MainThreadJankPolicy-ignoreStartupTime?: int--><!--Device-MainThreadJankPolicy-ignoreStartupTime?: int-End-->
 
@@ -83,7 +83,7 @@ logType=2：仅采集trace。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-MainThreadJankPolicy-logType?: int--><!--Device-MainThreadJankPolicy-logType?: int-End-->
 
@@ -105,7 +105,7 @@ reportTimesPerApp?: number
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-MainThreadJankPolicy-reportTimesPerApp?: int--><!--Device-MainThreadJankPolicy-reportTimesPerApp?: int-End-->
 
@@ -131,7 +131,7 @@ sampleCount?: number
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-MainThreadJankPolicy-sampleCount?: int--><!--Device-MainThreadJankPolicy-sampleCount?: int-End-->
 
@@ -149,7 +149,7 @@ sampleInterval?: number
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-MainThreadJankPolicy-sampleInterval?: int--><!--Device-MainThreadJankPolicy-sampleInterval?: int-End-->
 

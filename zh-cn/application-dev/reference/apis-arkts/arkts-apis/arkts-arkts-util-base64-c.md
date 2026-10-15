@@ -43,7 +43,7 @@ constructor()
 **示例**
 
 ```TypeScript
-let base64 = new  util.Base64();
+let base64 = new util.Base64();
 ```
 
 ## decode

@@ -33,7 +33,7 @@ action: Action
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-action: Action--><!--Device-Config-action: Action-End-->
 
@@ -54,7 +54,7 @@ begins?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-begins?: long--><!--Device-Config-begins?: long-End-->
 
@@ -73,7 +73,7 @@ data?: string | Array<FormItem>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-data?: string | Array<FormItem>--><!--Device-Config-data?: string | Array<FormItem>-End-->
 
@@ -91,7 +91,7 @@ description?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-description?: string--><!--Device-Config-description?: string-End-->
 
@@ -112,7 +112,7 @@ ends?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-ends?: long--><!--Device-Config-ends?: long-End-->
 
@@ -151,7 +151,7 @@ gauge?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-gauge?: boolean--><!--Device-Config-gauge?: boolean-End-->
 
@@ -190,7 +190,7 @@ index?: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-index?: int--><!--Device-Config-index?: int-End-->
 
@@ -213,7 +213,7 @@ metered?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-metered?: boolean--><!--Device-Config-metered?: boolean-End-->
 
@@ -234,7 +234,7 @@ method?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-method?: string--><!--Device-Config-method?: string-End-->
 
@@ -268,7 +268,7 @@ mode?: Mode
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-mode?: Mode--><!--Device-Config-mode?: Mode-End-->
 
@@ -309,7 +309,7 @@ network?: Network
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-network?: Network--><!--Device-Config-network?: Network-End-->
 
@@ -350,7 +350,7 @@ overwrite?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-overwrite?: boolean--><!--Device-Config-overwrite?: boolean-End-->
 
@@ -371,7 +371,7 @@ precise?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-precise?: boolean--><!--Device-Config-precise?: boolean-End-->
 
@@ -401,7 +401,7 @@ proxy?: string
 
 设置代理地址，其最大长度为512个字符，默认为空。
 
-代理地址格式:"http://&lt;domain or address&gt;:&lt;port&gt;"
+代理地址格式:"http://<domain or address>:<port>"
 
 **类型：** string
 
@@ -426,7 +426,7 @@ redirect?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-redirect?: boolean--><!--Device-Config-redirect?: boolean-End-->
 
@@ -447,7 +447,7 @@ retry?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-retry?: boolean--><!--Device-Config-retry?: boolean-End-->
 
@@ -468,7 +468,7 @@ roaming?: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-roaming?: boolean--><!--Device-Config-roaming?: boolean-End-->
 
@@ -497,7 +497,7 @@ internal://cache/path/to/file.txt"。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-saveas?: string--><!--Device-Config-saveas?: string-End-->
 
@@ -533,7 +533,7 @@ title?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-title?: string--><!--Device-Config-title?: string-End-->
 
@@ -545,13 +545,13 @@ title?: string
 token?: string
 ```
 
-任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](arkts-basicservices-agent-touch-f.md)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。
+任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](arkts-basicservices-agent-touch-f.md#touch1)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。
 
 **类型：** string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-token?: string--><!--Device-Config-token?: string-End-->
 
@@ -569,7 +569,7 @@ url: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Config-url: string--><!--Device-Config-url: string-End-->
 

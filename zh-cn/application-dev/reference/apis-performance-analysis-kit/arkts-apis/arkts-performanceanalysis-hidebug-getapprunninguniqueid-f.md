@@ -18,7 +18,7 @@ function getAppRunningUniqueId(): string
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 <!--Device-hidebug-function getAppRunningUniqueId(): string--><!--Device-hidebug-function getAppRunningUniqueId(): string-End-->
 
@@ -29,3 +29,12 @@ function getAppRunningUniqueId(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 返回运行唯一标识ID字符串。失败时返回空字符串。 |
+
+**示例**
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let apprunningId = hidebug.getAppRunningUniqueId();
+console.info(`apprunningId: ${apprunningId}`);
+```

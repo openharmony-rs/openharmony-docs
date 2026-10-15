@@ -48,13 +48,13 @@ The page is about to be destroyed.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_PAGE_SHOW
+## ON_BACK_PRESS
 
 ```TypeScript
-ON_PAGE_SHOW = 2
+ON_BACK_PRESS = 4
 ```
 
-The page is displayed.
+The page is returned.
 
 **Since:** 11
 
@@ -62,7 +62,7 @@ The page is displayed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-RouterPageState-ON_PAGE_SHOW = 2--><!--Device-RouterPageState-ON_PAGE_SHOW = 2-End-->
+<!--Device-RouterPageState-ON_BACK_PRESS = 4--><!--Device-RouterPageState-ON_BACK_PRESS = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,13 +84,13 @@ The page is hidden.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_BACK_PRESS
+## ON_PAGE_SHOW
 
 ```TypeScript
-ON_BACK_PRESS = 4
+ON_PAGE_SHOW = 2
 ```
 
-The page is returned.
+The page is displayed.
 
 **Since:** 11
 
@@ -98,6 +98,6 @@ The page is returned.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-RouterPageState-ON_BACK_PRESS = 4--><!--Device-RouterPageState-ON_BACK_PRESS = 4-End-->
+<!--Device-RouterPageState-ON_PAGE_SHOW = 2--><!--Device-RouterPageState-ON_PAGE_SHOW = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

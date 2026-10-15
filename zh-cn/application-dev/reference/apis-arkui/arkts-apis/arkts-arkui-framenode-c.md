@@ -535,6 +535,67 @@ struct Index {
 }
 ```
 
+## dispatchInputEvent
+
+```TypeScript
+dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+```
+
+向当前FrameNode派发输入事件，并可指定竞争策略。支持TouchEvent、MouseEvent和AxisEvent。KeyEvent请使用[dispatchKeyEvent](#dispatchkeyevent)派发。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean--><!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [InputEventType](arkts-arkui-inputeventtype-t.md) | 是 | 需要派发的输入事件。 |
+| competitionStrategy | [CompetitionStrategy](arkts-arkui-competitionstrategy-e.md) | 否 | 派发事件时使用的竞争策略。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 是否成功派发事件。 |
+
+## dispatchKeyEvent
+
+```TypeScript
+dispatchKeyEvent(event: KeyEvent): boolean
+```
+
+向当前FrameNode派发按键事件。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean--><!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [KeyEvent](../arkts-components/arkts-arkui-common-comp-keyevent-i.md) | 是 | 需要派发的按键事件。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 按键事件是否被消费。 |
+
 ## dispose
 
 ```TypeScript
@@ -844,6 +905,8 @@ struct Index {
 }
 ```
 
+<a id="getchild1"></a>
+
 ## getChild
 
 ```TypeScript
@@ -878,7 +941,7 @@ getChild(index: number): FrameNode | null
 
 请参考节点操作示例。
 
-<a id="getchild-1"></a>
+<a id="getchild2"></a>
 
 ## getChild
 
@@ -915,6 +978,8 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 请参考LazyForEach场景节点操作示例。
 
+<a id="getchildrencount1"></a>
+
 ## getChildrenCount
 
 ```TypeScript
@@ -943,7 +1008,7 @@ getChildrenCount(): number
 
 请参考节点操作示例。
 
-<a id="getchildrencount-1"></a>
+<a id="getchildrencount2"></a>
 
 ## getChildrenCount
 
@@ -1935,7 +2000,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2111,7 +2176,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2286,7 +2351,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -3673,7 +3738,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | targetParent | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 目标父节点。<br>targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
-| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。&lt;br/ &gt;若参数无效或不指定，则添加到目标FrameNode的最后。<br>默认值：-1 |
+| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。<br/>若参数无效或不指定，则添加到目标FrameNode的最后。<br>默认值：-1 |
 
 **错误码：**
 

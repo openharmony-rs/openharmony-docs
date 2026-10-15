@@ -6,6 +6,8 @@ type Stack = TypedFrameNode<StackInterface, StackAttribute>
 
 Represents a FrameNode of the **Stack** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;StackInterface, [StackAttribute](../arkts-components/arkts-arkui-stack-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Stack** type.
 <!--Device-typeNode-type Stack = TypedFrameNode<StackInterface, StackAttribute>--><!--Device-typeNode-type Stack = TypedFrameNode<StackInterface, StackAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;StackInterface, [StackAttribute](../arkts-components/arkts-arkui-stack-comp-attribute.md)&gt;

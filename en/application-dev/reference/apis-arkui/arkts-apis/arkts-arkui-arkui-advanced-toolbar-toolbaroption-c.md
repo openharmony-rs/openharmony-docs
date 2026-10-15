@@ -26,7 +26,7 @@ import { ItemState, ToolBar, ToolBarOption, ToolBarOptions, ToolBarModifier } fr
 action?: () => void
 ```
 
-Click event of the toolbar item.
+Tap event of the toolbar item. If not passed in, tapping the item does not trigger any action.
 
 **Since:** 10
 
@@ -44,9 +44,9 @@ Click event of the toolbar item.
 accessibilityDescription?: ResourceStr
 ```
 
-Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.
+Accessibility description of the toolbar item. Used to explain the function and operation consequences of the current component to users in detail, especially when such information cannot be directly obtained from the component text alone. When the component is selected, the content of the text attribute and the accessibility description attribute are announced in sequence.
 
-Default value: **"Double-tap to activate"**
+Default value: "Double-tap with one finger to execute".
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -66,17 +66,17 @@ Default value: **"Double-tap to activate"**
 accessibilityLevel?: string
 ```
 
-Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.
+Accessibility level of the toolbar item. Used to control whether the current item can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: This option is treated as "yes" by the system for this component.
+**"auto"**: The current component is converted to **"yes"**.
 
-**"yes"**: The component can be recognized by accessibility services.
+**"yes"**: The current component can be recognized by accessibility services.
 
-**"no"**: The component cannot be recognized by accessibility services.
+**"no"**: The current component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.
 
 Default value: **"auto"**
 
@@ -100,9 +100,9 @@ Default value: **"auto"**
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+Accessibility text attribute of the toolbar item. When the component does not contain a text attribute, the screen reader does not announce it when this component is selected. Developers can set accessibility text for components that do not contain text information, so that the screen reader announces the text content when this component is selected.
 
-Default value: value of **content**
+Default value: the content of the current item's content attribute.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -122,9 +122,11 @@ Default value: value of **content**
 activatedIconColor?: ResourceColor
 ```
 
-Icon fill color of the toolbar option in the activated state.
+Fill color of the toolbar item icon in the activated state.
 
-Default value: **$r('sys.color.icon_emphasize')**
+Default value: **$r('sys.color.icon_emphasize')**.
+
+When the **toolBarSymbolOptions** attribute is set, this parameter does not take effect.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -188,9 +190,9 @@ icon?: Resource
 
 Icon of the toolbar item.
 
-If this parameter is not set or is set to **undefined**, the icon is not displayed.
+By default, if not set or set to **undefined**, the icon is not displayed.
 
-If **toolBarSymbolOptions** has input parameters, **icon** is ineffective.
+When the **toolBarSymbolOptions** attribute is set, the icon attribute does not take effect.
 
 **Type:** [Resource](arkts-arkui-resource-t.md)
 
@@ -210,9 +212,11 @@ If **toolBarSymbolOptions** has input parameters, **icon** is ineffective.
 iconColor?: ResourceColor
 ```
 
-Icon fill color of the toolbar item.
+Fill color of the toolbar item icon.
 
-Default value: **$r('sys.color.icon_primary')**
+Default value: $r('sys.color.icon_primary').
+
+When the toolBarSymbolOptions attribute is set, this parameter does not take effect.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -276,7 +280,7 @@ Default value: **$r('sys.color.font_primary')**
 toolBarSymbolOptions?: ToolBarSymbolGlyphOptions
 ```
 
-Icon symbol options of the toolbar item.
+Icon attribute of the toolbar item, of the symbol type. After this parameter is set, the **icon** attribute does not take effect.
 
 **Type:** [ToolBarSymbolGlyphOptions](arkts-arkui-arkui-advanced-toolbar-toolbarsymbolglyphoptions-i.md)
 

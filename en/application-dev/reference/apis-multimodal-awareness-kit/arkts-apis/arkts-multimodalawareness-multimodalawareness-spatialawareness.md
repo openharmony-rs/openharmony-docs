@@ -4,8 +4,6 @@ This module provides the capability to subscribe to report the distance measurem
 
 **Since:** 23
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace spatialAwareness--><!--Device-unnamed-declare namespace spatialAwareness-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
@@ -25,10 +23,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [offDistanceMeasure](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md) | Unsubscribe from distance measurement result data. |
-| [offIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-offindoororoutdooridentify-f-sys.md) | Unsubscribe from the results of indoor and outdoor recognition. |
-| [onDistanceMeasure](arkts-multimodalawareness-spatialawareness-ondistancemeasure-f-sys.md) | Subscribe to distance measurement result data. |
-| [onIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-onindoororoutdooridentify-f-sys.md) | Subscribe to the results of indoorand outdoor identification. |
+| [offDistanceMeasure](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md#offdistancemeasure) | Unsubscribe from distance measurement result data. |
+| [offIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-offindoororoutdooridentify-f-sys.md#offindoororoutdooridentify) | Unsubscribe from the results of indoor and outdoor recognition. |
+| [onDistanceMeasure](arkts-multimodalawareness-spatialawareness-ondistancemeasure-f-sys.md#ondistancemeasure) | Subscribe to distance measurement result data. |
+| [onIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-onindoororoutdooridentify-f-sys.md#onindoororoutdooridentify) | Subscribe to the results of indoorand outdoor identification. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -48,6 +46,6 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | --- | --- |
 | [DistanceRank](arkts-multimodalawareness-spatialawareness-distancerank-e-sys.md) | Enum for distance rank. |
 | [PositionRelativeToDoor](arkts-multimodalawareness-spatialawareness-positionrelativetodoor-e-sys.md) | Enum for identification result inside and outside the door |
-| [ReportingMode](arkts-multimodalawareness-spatialawareness-reportingmode-e-sys.md) | Enum for distance measurement result reporting modes. @enum { int } ReportingMode |
+| [ReportingMode](arkts-multimodalawareness-spatialawareness-reportingmode-e-sys.md) | Enum for distance measurement result reporting modes. |
 | [TechnologyType](arkts-multimodalawareness-spatialawareness-technologytype-e-sys.md) | Enum for distance measurement technology types. |
 <!--DelEnd-->

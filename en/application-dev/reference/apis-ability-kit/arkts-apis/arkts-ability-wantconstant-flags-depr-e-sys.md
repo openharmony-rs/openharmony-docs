@@ -16,6 +16,24 @@ Enumerates the flags that specify how the Want will be handled.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
+## FLAG_ABILITY_CONTINUATION_REVERSIBLE
+
+```TypeScript
+FLAG_ABILITY_CONTINUATION_REVERSIBLE = 0x00000400
+```
+
+Indicates that ability continuation is reversible.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Flags-FLAG_ABILITY_CONTINUATION_REVERSIBLE = 0x00000400--><!--Device-Flags-FLAG_ABILITY_CONTINUATION_REVERSIBLE = 0x00000400-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+**System API:** This is a system API.
+
 ## FLAG_AUTH_PERSISTABLE_URI_PERMISSION
 
 ```TypeScript
@@ -47,24 +65,6 @@ Grants the permission to verify URIs by prefix matching.
 **Deprecated since:** 9
 
 <!--Device-Flags-FLAG_AUTH_PREFIX_URI_PERMISSION = 0x00000080--><!--Device-Flags-FLAG_AUTH_PREFIX_URI_PERMISSION = 0x00000080-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-**System API:** This is a system API.
-
-## FLAG_ABILITY_CONTINUATION_REVERSIBLE
-
-```TypeScript
-FLAG_ABILITY_CONTINUATION_REVERSIBLE = 0x00000400
-```
-
-Indicates that ability continuation is reversible.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Flags-FLAG_ABILITY_CONTINUATION_REVERSIBLE = 0x00000400--><!--Device-Flags-FLAG_ABILITY_CONTINUATION_REVERSIBLE = 0x00000400-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 

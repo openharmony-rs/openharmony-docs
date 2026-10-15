@@ -14,22 +14,6 @@ Enumerates disposition types.
 
 **System API:** This is a system API.
 
-## FROM_DATA
-
-```TypeScript
-FROM_DATA = 0
-```
-
-Data source.
-
-**Since:** 8
-
-<!--Device-DispositionType-FROM_DATA = 0--><!--Device-DispositionType-FROM_DATA = 0-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
-**System API:** This is a system API.
-
 ## ATTACHMENT
 
 ```TypeScript
@@ -41,6 +25,22 @@ Attachment.
 **Since:** 8
 
 <!--Device-DispositionType-ATTACHMENT = 1--><!--Device-DispositionType-ATTACHMENT = 1-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+**System API:** This is a system API.
+
+## FROM_DATA
+
+```TypeScript
+FROM_DATA = 0
+```
+
+Data source.
+
+**Since:** 8
+
+<!--Device-DispositionType-FROM_DATA = 0--><!--Device-DispositionType-FROM_DATA = 0-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

@@ -6,6 +6,8 @@ export type UpdateOperation = dataShare.UpdateOperation
 
 Represents the batch update operation information.
 
+**Type:** [dataShare.UpdateOperation](arkts-arkdata-datashare-updateoperation-i-sys.md)
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents the batch update operation information.
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **System API:** This is a system API.
-
-**Type:** [dataShare.UpdateOperation](arkts-arkdata-datashare-updateoperation-i-sys.md)

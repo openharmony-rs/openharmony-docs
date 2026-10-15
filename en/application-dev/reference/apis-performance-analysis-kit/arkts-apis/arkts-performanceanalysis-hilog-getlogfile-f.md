@@ -18,7 +18,7 @@ Returns the list of hilog log file paths in the sandbox for the specified recent
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-hilog-function getLogFile(latestSeconds: int): Array<string>--><!--Device-hilog-function getLogFile(latestSeconds: int): Array<string>-End-->
 
@@ -41,11 +41,12 @@ Returns the list of hilog log file paths in the sandbox for the specified recent
 Obtain the files that have been modified within 5 minutes.
 
 ```TypeScript
-hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
-hilog.flush();
-let logs = hilog.getLogFile(300);
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let timeInterval = 300
+let logs = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+hilog.flush();
 ```
 
 Log result:

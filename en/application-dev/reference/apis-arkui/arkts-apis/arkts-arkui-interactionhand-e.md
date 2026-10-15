@@ -12,24 +12,6 @@ Enumerates how an input event is triggered.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-Unspecified.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-InteractionHand-NONE = 0--><!--Device-InteractionHand-NONE = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## LEFT
 
 ```TypeScript
@@ -45,6 +27,24 @@ Left-hand interaction.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-InteractionHand-LEFT = 1--><!--Device-InteractionHand-LEFT = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+Unspecified.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-InteractionHand-NONE = 0--><!--Device-InteractionHand-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

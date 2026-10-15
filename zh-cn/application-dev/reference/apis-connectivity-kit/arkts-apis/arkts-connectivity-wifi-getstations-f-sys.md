@@ -34,6 +34,7 @@ function getStations(): Array<StationInfo>
 | --- | --- |
 | Array&lt;[StationInfo](arkts-connectivity-wifi-stationinfo-i-sys.md)&gt; | 连接的设备数组。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

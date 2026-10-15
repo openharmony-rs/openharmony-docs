@@ -18,6 +18,8 @@ interface DistributedAccountAbility
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="getosaccountdistributedinfo1"></a>
+
 ## getOsAccountDistributedInfo
 
 ```TypeScript
@@ -70,7 +72,7 @@ try {
 }
 ```
 
-<a id="getosaccountdistributedinfo-1"></a>
+<a id="getosaccountdistributedinfo2"></a>
 
 ## getOsAccountDistributedInfo
 
@@ -119,6 +121,8 @@ try {
   console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="setosaccountdistributedinfo1"></a>
 
 ## setOsAccountDistributedInfo
 
@@ -178,7 +182,7 @@ try {
 }
 ```
 
-<a id="setosaccountdistributedinfo-1"></a>
+<a id="setosaccountdistributedinfo2"></a>
 
 ## setOsAccountDistributedInfo
 
@@ -241,6 +245,8 @@ try {
 }
 ```
 
+<a id="queryosaccountdistributedinfo1"></a>
+
 ## queryOsAccountDistributedInfo
 
 ```TypeScript
@@ -252,14 +258,14 @@ queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
+> [getOsAccountDistributedInfo](#getosaccountdistributedinfo1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)(callback: AsyncCallback&lt;DistributedInfo&gt;)
+**替代接口：** [getOsAccountDistributedInfo](#getosaccountdistributedinfo1)(callback: AsyncCallback&lt;DistributedInfo&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -290,7 +296,7 @@ accountAbility.queryOsAccountDistributedInfo(
   });
 ```
 
-<a id="queryosaccountdistributedinfo-1"></a>
+<a id="queryosaccountdistributedinfo2"></a>
 
 ## queryOsAccountDistributedInfo
 
@@ -338,6 +344,8 @@ accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.Di
 });
 ```
 
+<a id="updateosaccountdistributedinfo1"></a>
+
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -349,14 +357,14 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo1)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -390,7 +398,7 @@ accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) 
 });
 ```
 
-<a id="updateosaccountdistributedinfo-1"></a>
+<a id="updateosaccountdistributedinfo2"></a>
 
 ## updateOsAccountDistributedInfo
 
@@ -403,14 +411,14 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo-1)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo-1)(accountInfo: DistributedInfo)
+**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo2)(accountInfo: DistributedInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 

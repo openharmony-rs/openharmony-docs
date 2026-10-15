@@ -12,98 +12,6 @@ enum ErrorCode
 
 **系统能力：** SystemCapability.Security.Asset
 
-## PERMISSION_DENIED
-
-```TypeScript
-PERMISSION_DENIED = 201
-```
-
-权限校验失败，应用无权限使用该API，需要申请权限。
-
-**起始版本：** 11
-
-<!--Device-ErrorCode-PERMISSION_DENIED = 201--><!--Device-ErrorCode-PERMISSION_DENIED = 201-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## NOT_SYSTEM_APPLICATION
-
-```TypeScript
-NOT_SYSTEM_APPLICATION = 202
-```
-
-权限校验失败，非系统应用使用了系统API。
-
-**起始版本：** 12
-
-<!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202--><!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## INVALID_ARGUMENT
-
-```TypeScript
-INVALID_ARGUMENT = 401
-```
-
-参数错误。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-INVALID_ARGUMENT = 401--><!--Device-ErrorCode-INVALID_ARGUMENT = 401-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## SERVICE_UNAVAILABLE
-
-```TypeScript
-SERVICE_UNAVAILABLE = 24000001
-```
-
-关键资产服务不可用。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001--><!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## NOT_FOUND
-
-```TypeScript
-NOT_FOUND = 24000002
-```
-
-未找到关键资产。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-NOT_FOUND = 24000002--><!--Device-ErrorCode-NOT_FOUND = 24000002-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## DUPLICATED
-
-```TypeScript
-DUPLICATED = 24000003
-```
-
-关键资产已存在。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-DUPLICATED = 24000003--><!--Device-ErrorCode-DUPLICATED = 24000003-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
 ## ACCESS_DENIED
 
 ```TypeScript
@@ -120,35 +28,67 @@ ACCESS_DENIED = 24000004
 
 **系统能力：** SystemCapability.Security.Asset
 
-## STATUS_MISMATCH
+## ACCESS_TOKEN_ERROR
 
 ```TypeScript
-STATUS_MISMATCH = 24000005
+ACCESS_TOKEN_ERROR = 24000013
 ```
 
-锁屏状态不匹配。
+访问控制服务异常。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
-<!--Device-ErrorCode-STATUS_MISMATCH = 24000005--><!--Device-ErrorCode-STATUS_MISMATCH = 24000005-End-->
+<!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013--><!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
-## OUT_OF_MEMORY
+## ACCOUNT_ERROR
 
 ```TypeScript
-OUT_OF_MEMORY = 24000006
+ACCOUNT_ERROR = 24000012
 ```
 
-系统内存不足。
+账号系统服务异常。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
-<!--Device-ErrorCode-OUT_OF_MEMORY = 24000006--><!--Device-ErrorCode-OUT_OF_MEMORY = 24000006-End-->
+<!--Device-ErrorCode-ACCOUNT_ERROR = 24000012--><!--Device-ErrorCode-ACCOUNT_ERROR = 24000012-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## BMS_ERROR
+
+```TypeScript
+BMS_ERROR = 24000011
+```
+
+包管理服务异常。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-BMS_ERROR = 24000011--><!--Device-ErrorCode-BMS_ERROR = 24000011-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## CRYPTO_ERROR
+
+```TypeScript
+CRYPTO_ERROR = 24000009
+```
+
+算法库操作失败。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-CRYPTO_ERROR = 24000009--><!--Device-ErrorCode-CRYPTO_ERROR = 24000009-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -184,83 +124,19 @@ DATABASE_ERROR = 24000008
 
 **系统能力：** SystemCapability.Security.Asset
 
-## CRYPTO_ERROR
+## DUPLICATED
 
 ```TypeScript
-CRYPTO_ERROR = 24000009
+DUPLICATED = 24000003
 ```
 
-算法库操作失败。
+关键资产已存在。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
-<!--Device-ErrorCode-CRYPTO_ERROR = 24000009--><!--Device-ErrorCode-CRYPTO_ERROR = 24000009-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## IPC_ERROR
-
-```TypeScript
-IPC_ERROR = 24000010
-```
-
-进程通信错误。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-IPC_ERROR = 24000010--><!--Device-ErrorCode-IPC_ERROR = 24000010-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## BMS_ERROR
-
-```TypeScript
-BMS_ERROR = 24000011
-```
-
-包管理服务异常。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-BMS_ERROR = 24000011--><!--Device-ErrorCode-BMS_ERROR = 24000011-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## ACCOUNT_ERROR
-
-```TypeScript
-ACCOUNT_ERROR = 24000012
-```
-
-账号系统服务异常。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-ACCOUNT_ERROR = 24000012--><!--Device-ErrorCode-ACCOUNT_ERROR = 24000012-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-## ACCESS_TOKEN_ERROR
-
-```TypeScript
-ACCESS_TOKEN_ERROR = 24000013
-```
-
-访问控制服务异常。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013--><!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013-End-->
+<!--Device-ErrorCode-DUPLICATED = 24000003--><!--Device-ErrorCode-DUPLICATED = 24000003-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -296,6 +172,58 @@ GET_SYSTEM_TIME_ERROR = 24000015
 
 **系统能力：** SystemCapability.Security.Asset
 
+## INCONSISTENT_ATTRIBUTE
+
+```TypeScript
+INCONSISTENT_ATTRIBUTE = 24000019
+```
+
+属性值不一致。
+
+26.0.0
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019--><!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## INVALID_ARGUMENT
+
+```TypeScript
+INVALID_ARGUMENT = 401
+```
+
+参数错误。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-INVALID_ARGUMENT = 401--><!--Device-ErrorCode-INVALID_ARGUMENT = 401-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## IPC_ERROR
+
+```TypeScript
+IPC_ERROR = 24000010
+```
+
+进程通信错误。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-IPC_ERROR = 24000010--><!--Device-ErrorCode-IPC_ERROR = 24000010-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
 ## LIMIT_EXCEEDED
 
 ```TypeScript
@@ -312,19 +240,49 @@ LIMIT_EXCEEDED = 24000016
 
 **系统能力：** SystemCapability.Security.Asset
 
-## UNSUPPORTED
+## NOT_FOUND
 
 ```TypeScript
-UNSUPPORTED = 24000017
+NOT_FOUND = 24000002
 ```
 
-该子功能不支持。
+未找到关键资产。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
-<!--Device-ErrorCode-UNSUPPORTED = 24000017--><!--Device-ErrorCode-UNSUPPORTED = 24000017-End-->
+<!--Device-ErrorCode-NOT_FOUND = 24000002--><!--Device-ErrorCode-NOT_FOUND = 24000002-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## NOT_SYSTEM_APPLICATION
+
+```TypeScript
+NOT_SYSTEM_APPLICATION = 202
+```
+
+权限校验失败，非系统应用使用了系统API。
+
+**起始版本：** 12
+
+<!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202--><!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## OUT_OF_MEMORY
+
+```TypeScript
+OUT_OF_MEMORY = 24000006
+```
+
+系统内存不足。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-OUT_OF_MEMORY = 24000006--><!--Device-ErrorCode-OUT_OF_MEMORY = 24000006-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -344,22 +302,64 @@ PARAM_VERIFICATION_FAILED = 24000018
 
 **系统能力：** SystemCapability.Security.Asset
 
-## INCONSISTENT_ATTRIBUTE
+## PERMISSION_DENIED
 
 ```TypeScript
-INCONSISTENT_ATTRIBUTE = 24000019
+PERMISSION_DENIED = 201
 ```
 
-属性值不一致。
+权限校验失败，应用无权限使用该API，需要申请权限。
 
-26.0.0
+**起始版本：** 11
 
-**起始版本：** 26.0.0
+<!--Device-ErrorCode-PERMISSION_DENIED = 201--><!--Device-ErrorCode-PERMISSION_DENIED = 201-End-->
 
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
+**系统能力：** SystemCapability.Security.Asset
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+## SERVICE_UNAVAILABLE
 
-<!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019--><!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019-End-->
+```TypeScript
+SERVICE_UNAVAILABLE = 24000001
+```
+
+关键资产服务不可用。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001--><!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## STATUS_MISMATCH
+
+```TypeScript
+STATUS_MISMATCH = 24000005
+```
+
+锁屏状态不匹配。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-STATUS_MISMATCH = 24000005--><!--Device-ErrorCode-STATUS_MISMATCH = 24000005-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## UNSUPPORTED
+
+```TypeScript
+UNSUPPORTED = 24000017
+```
+
+该子功能不支持。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-ErrorCode-UNSUPPORTED = 24000017--><!--Device-ErrorCode-UNSUPPORTED = 24000017-End-->
 
 **系统能力：** SystemCapability.Security.Asset

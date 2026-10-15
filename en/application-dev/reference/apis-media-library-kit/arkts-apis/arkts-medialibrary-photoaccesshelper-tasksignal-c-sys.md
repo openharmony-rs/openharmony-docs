@@ -49,6 +49,7 @@ cancel batch operation.
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. No task can be canceled. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`cancel batch operation failed with error: ${err.code}, ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

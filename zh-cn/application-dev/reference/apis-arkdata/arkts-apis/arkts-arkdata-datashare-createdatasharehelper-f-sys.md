@@ -6,6 +6,8 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
+<a id="createdatasharehelper1"></a>
+
 ## createDataShareHelper
 
 ```TypeScript
@@ -15,7 +17,7 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 创建DataShareHelper实例。使用callback异步回调。<br>  
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
@@ -40,9 +42,10 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,8 +75,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="createdatasharehelper-1"></a>
+
+<a id="createdatasharehelper2"></a>
 
 ## createDataShareHelper
 
@@ -89,7 +94,7 @@ function createDataShareHelper(
 创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用callback异步回调。<br>  
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -115,9 +120,10 @@ function createDataShareHelper(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -147,8 +153,10 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="createdatasharehelper-2"></a>
+
+<a id="createdatasharehelper3"></a>
 
 ## createDataShareHelper
 
@@ -163,7 +171,7 @@ function createDataShareHelper(
 创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用Promise异步回调。<br>  
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
@@ -194,9 +202,10 @@ function createDataShareHelper(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -223,3 +232,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

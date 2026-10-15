@@ -12,22 +12,6 @@ enum Parity
 
 **系统能力：** SystemCapability.BusManager.Serial
 
-## NONE
-
-```TypeScript
-NONE = 'none'
-```
-
-无校验。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Parity-NONE = 'none'--><!--Device-Parity-NONE = 'none'-End-->
-
-**系统能力：** SystemCapability.BusManager.Serial
-
 ## EVEN
 
 ```TypeScript
@@ -44,22 +28,6 @@ EVEN = 'even'
 
 **系统能力：** SystemCapability.BusManager.Serial
 
-## ODD
-
-```TypeScript
-ODD = 'odd'
-```
-
-奇校验。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Parity-ODD = 'odd'--><!--Device-Parity-ODD = 'odd'-End-->
-
-**系统能力：** SystemCapability.BusManager.Serial
-
 ## MARK
 
 ```TypeScript
@@ -73,6 +41,38 @@ MARK = 'mark'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Parity-MARK = 'mark'--><!--Device-Parity-MARK = 'mark'-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+## NONE
+
+```TypeScript
+NONE = 'none'
+```
+
+无校验。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Parity-NONE = 'none'--><!--Device-Parity-NONE = 'none'-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+## ODD
+
+```TypeScript
+ODD = 'odd'
+```
+
+奇校验。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Parity-ODD = 'odd'--><!--Device-Parity-ODD = 'odd'-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 

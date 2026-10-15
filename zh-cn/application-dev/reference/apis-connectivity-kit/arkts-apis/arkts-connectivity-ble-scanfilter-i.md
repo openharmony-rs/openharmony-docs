@@ -54,7 +54,7 @@ deviceId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-deviceId?: string--><!--Device-ScanFilter-deviceId?: string-End-->
 
@@ -74,7 +74,7 @@ manufactureData?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-manufactureData?: ArrayBuffer--><!--Device-ScanFilter-manufactureData?: ArrayBuffer-End-->
 
@@ -94,7 +94,7 @@ manufactureDataMask?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-manufactureDataMask?: ArrayBuffer--><!--Device-ScanFilter-manufactureDataMask?: ArrayBuffer-End-->
 
@@ -114,7 +114,7 @@ manufactureId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-manufactureId?: int--><!--Device-ScanFilter-manufactureId?: int-End-->
 
@@ -134,7 +134,7 @@ name?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-name?: string--><!--Device-ScanFilter-name?: string-End-->
 
@@ -154,7 +154,7 @@ rssiThreshold?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-rssiThreshold?: int--><!--Device-ScanFilter-rssiThreshold?: int-End-->
 
@@ -174,7 +174,7 @@ serviceData?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-serviceData?: ArrayBuffer--><!--Device-ScanFilter-serviceData?: ArrayBuffer-End-->
 
@@ -194,7 +194,7 @@ serviceDataMask?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-serviceDataMask?: ArrayBuffer--><!--Device-ScanFilter-serviceDataMask?: ArrayBuffer-End-->
 
@@ -214,7 +214,7 @@ serviceSolicitationUuid?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-serviceSolicitationUuid?: string--><!--Device-ScanFilter-serviceSolicitationUuid?: string-End-->
 
@@ -234,7 +234,7 @@ serviceSolicitationUuidMask?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-serviceSolicitationUuidMask?: string--><!--Device-ScanFilter-serviceSolicitationUuidMask?: string-End-->
 
@@ -254,7 +254,7 @@ serviceUuid?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-serviceUuid?: string--><!--Device-ScanFilter-serviceUuid?: string-End-->
 
@@ -274,7 +274,7 @@ serviceUuidMask?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilter-serviceUuidMask?: string--><!--Device-ScanFilter-serviceUuidMask?: string-End-->
 

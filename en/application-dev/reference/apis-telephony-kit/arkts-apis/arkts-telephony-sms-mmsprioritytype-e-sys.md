@@ -14,6 +14,22 @@ Enumerates MMS message priorities.
 
 **System API:** This is a system API.
 
+## MMS_HIGH
+
+```TypeScript
+MMS_HIGH = 130
+```
+
+High priority.
+
+**Since:** 8
+
+<!--Device-MmsPriorityType-MMS_HIGH = 130--><!--Device-MmsPriorityType-MMS_HIGH = 130-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+**System API:** This is a system API.
+
 ## MMS_LOW
 
 ```TypeScript
@@ -41,22 +57,6 @@ Normal priority.
 **Since:** 8
 
 <!--Device-MmsPriorityType-MMS_NORMAL = 129--><!--Device-MmsPriorityType-MMS_NORMAL = 129-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
-**System API:** This is a system API.
-
-## MMS_HIGH
-
-```TypeScript
-MMS_HIGH = 130
-```
-
-High priority.
-
-**Since:** 8
-
-<!--Device-MmsPriorityType-MMS_HIGH = 130--><!--Device-MmsPriorityType-MMS_HIGH = 130-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

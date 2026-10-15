@@ -6,6 +6,8 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
+<a id="registerwebadinterface1"></a>
+
 ## registerWebAdInterface
 
 ```TypeScript
@@ -26,14 +28,14 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | web_webview.WebviewController | 是 | Web组件控制器。 |
+| controller | [web_webview.WebviewController](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) | 是 | Web组件控制器。 |
 | context | [common.UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) | 是 | UIAbility的上下文环境。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
 **示例**
@@ -66,7 +68,7 @@ struct Index {
 ```
 
 
-<a id="registerwebadinterface-1"></a>
+<a id="registerwebadinterface2"></a>
 
 ## registerWebAdInterface
 
@@ -89,7 +91,7 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | web_webview.WebviewController | 是 | Web组件控制器。 |
+| controller | [web_webview.WebviewController](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) | 是 | Web组件控制器。 |
 | context | [common.UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) | 是 | UIAbility的上下文环境。 |
 | needRefresh | boolean | 是 | 是否需要刷新页面（true: 需要；false: 不需要）。 |
 
@@ -97,7 +99,7 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
 **示例**

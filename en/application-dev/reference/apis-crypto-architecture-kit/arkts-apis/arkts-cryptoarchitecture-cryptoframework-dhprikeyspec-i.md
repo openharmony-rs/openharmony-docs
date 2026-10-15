@@ -36,7 +36,7 @@ Common parameters of the public and private keys in the DH algorithm.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DHPriKeySpec-params: DHCommonParamsSpec--><!--Device-DHPriKeySpec-params: DHCommonParamsSpec-End-->
 
@@ -56,7 +56,7 @@ Private key **sk** in the DH algorithm.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DHPriKeySpec-sk: bigint--><!--Device-DHPriKeySpec-sk: bigint-End-->
 

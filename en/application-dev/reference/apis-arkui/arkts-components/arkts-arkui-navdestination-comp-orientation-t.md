@@ -6,6 +6,8 @@ declare type Orientation = import('../api/@ohos.window').default.Orientation
 
 Defines an instance object of the Orientation type.
 
+**Type:** import('../api/@ohos.window').default.Orientation
+
 **Since:** 19
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines an instance object of the Orientation type.
 <!--Device-unnamed-declare type Orientation = import('../api/@ohos.window').default.Orientation--><!--Device-unnamed-declare type Orientation = import('../api/@ohos.window').default.Orientation-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.window').default.Orientation

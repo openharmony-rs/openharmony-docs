@@ -46,7 +46,7 @@ autoDeletedTime?: number
 
 Time when the notification is automatically cleared.
 
-The data format is timestamp, in milliseconds. For details, please refer to [NotificationRequest.autoDeletedTime](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md#autodeletedtime)
+The data format is timestamp, in milliseconds. For details, please refer to [NotificationRequest.autoDeletedTime](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md#autodeletedtime)
 
 **Type:** number
 
@@ -364,7 +364,7 @@ Number of reminder snooze times. The default value is **0**. (It is not applicab
 tapDismissed?: boolean
 ```
 
-Whether the reminder is automatically cleared. The default value is **true**. For details, see [NotificationRequest.tapDismissed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md#tapdismissed)
+Whether the reminder is automatically cleared. The default value is **true**. For details, see [NotificationRequest.tapDismissed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md#tapdismissed)
 
 - **true** (default): The reminder is automatically cleared after the notification or button is tapped.  
 - **false**: The reminder is retained after the notification or button is tapped.

@@ -4,7 +4,7 @@
 export declare class OperationOption
 ```
 
-Declare type OperationOption
+Declare type OperationOption.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 action?: () => void
 ```
 
-Right-side button click event.
+Tap event of the right button in the subtitle.
 
 **Since:** 10
 
@@ -42,9 +42,9 @@ Right-side button click event.
 accessibilityDescription?: ResourceStr
 ```
 
-Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.
+Accessibility description of the right button in the subtitle. This description is used to explain the current component to the user in detail. Developers should provide a relatively detailed text description for this attribute of the component to help users understand the action to be performed and its possible consequences, especially when these consequences cannot be directly learned from the component's attributes and accessibility text alone. If a component has both a text attribute and an accessibility description attribute, when the component is selected, the system first announces the component's text attribute, and then announces the content of the accessibility description attribute.
 
-Default value: "Loading" when the operation type is **LOADING** and **"Double-tap to activate"** otherwise.
+Default value: When the type is **LOADING**, the default value is "Loading". For other types, the default value is"Single-tap with one finger to execute".
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -64,17 +64,17 @@ Default value: "Loading" when the operation type is **LOADING** and **"Double-ta
 accessibilityLevel?: string
 ```
 
-Accessibility level. It determines whether the component can be recognized by accessibility services.
+Accessibility level of the right button in the subtitle. Used to control whether the current item can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: This option is treated as "yes" by the system for this component.
+**"auto"**: The current component is converted to "yes".
 
-**"yes"**: The component can be recognized by accessibility services.
+**"yes"**: The current component can be recognized by accessibility services.
 
-**"no"**: The component cannot be recognized by accessibility services.
+**"no"**: The current component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.
 
 Default value: **"auto"**
 
@@ -98,9 +98,9 @@ Default value: **"auto"**
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+Accessibility text attribute of the right button in the subtitle. When a component does not contain a text attribute, the screen reader does not announce anything when this component is selected, and the user cannot clearly know which component is currently selected. To address this issue, developers can set accessibility text for components that do not contain text information. When the screen reader selects this component, it announces the content of the accessibility text, helping screen reader users clearly know which component they have selected.
 
-Default value: value of the **value** property if the operation type is **TEXT_ARROW** or **BUTTON** and an empty string otherwise.
+Default value: When the type is **TEXT_ARROW** or **BUTTON**, the default value is the value attribute content of the current item. For other types, the default value is **" "**.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -120,11 +120,11 @@ Default value: value of the **value** property if the operation type is **TEXT_A
 defaultFocus?: boolean
 ```
 
-Whether to receive default focus.
+Whether the right button in the subtitle is the default focus.
 
-**true**: Receive default focus.
+**true**: The right button in the subtitle is the default focus.
 
-**false**: Do not receive default focus.
+**false**: The right button in the subtitle is not the default focus.
 
 Default value: **false**
 
@@ -148,7 +148,7 @@ Default value: **false**
 id?: string
 ```
 
-Set the id for the operation.
+Right button ID in the subtitle. Set this parameter when an ID needs to be set for the right button in the subtitle. When omitted, this parameter is not set. indicating that no right button ID is set in the subtitle. Default value: **undefined**.
 
 **Type:** string
 
@@ -168,7 +168,7 @@ Set the id for the operation.
 value: ResourceStr
 ```
 
-Text content.
+Operation area element content. When **operationType** is **TEXT_ARROW** or **BUTTON**, **value** is the text content; when **operationType** is **ICON_GROUP**, **value** is the icon resource.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

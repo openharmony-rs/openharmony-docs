@@ -22,7 +22,7 @@ Work state style.
 offDayMarkColor?: ResourceColor
 ```
 
-Style of day color.
+Off day mark color.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -46,7 +46,7 @@ Style of day color.
 offDayMarkSize?: number
 ```
 
-Style of day size.
+Off day mark size.
 
 **Type:** number
 
@@ -70,7 +70,7 @@ Style of day size.
 workDayMarkColor?: ResourceColor
 ```
 
-Style of day color.
+Work day mark color.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -94,7 +94,7 @@ Style of day color.
 workDayMarkSize?: number
 ```
 
-Style of day size.
+Work day mark size.
 
 **Type:** number
 
@@ -118,7 +118,7 @@ Style of day size.
 workStateHorizontalMovingDistance?: number
 ```
 
-Style of distance.
+Horizontal moving distance of the work state.
 
 **Type:** number
 
@@ -142,7 +142,7 @@ Style of distance.
 workStateVerticalMovingDistance?: number
 ```
 
-Style of distance.
+Vertical moving distance of the work state.
 
 **Type:** number
 

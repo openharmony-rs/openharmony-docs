@@ -12,6 +12,42 @@ export enum HuksKeyPadding
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
+## HUKS_PADDING_ISO_IEC_9796_2
+
+```TypeScript
+HUKS_PADDING_ISO_IEC_9796_2 = 6
+```
+
+表示使用ISO_IEC_9796_2填充算法<!--Del-->（暂不支持）<!--DelEnd-->。
+
+**起始版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+## HUKS_PADDING_ISO_IEC_9797_1
+
+```TypeScript
+HUKS_PADDING_ISO_IEC_9797_1 = 7
+```
+
+表示使用ISO_IEC_9797_1填充算法<!--Del-->（暂不支持）<!--DelEnd-->。
+
+**起始版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
 ## HUKS_PADDING_NONE
 
 ```TypeScript
@@ -45,26 +81,6 @@ HUKS_PADDING_OAEP = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksKeyPadding-HUKS_PADDING_OAEP = 1--><!--Device-HuksKeyPadding-HUKS_PADDING_OAEP = 1-End-->
-
-**系统能力：** 
-- API版本12+：SystemCapability.Security.Huks.Core
-- API版本8-11：SystemCapability.Security.Huks.Extension
-
-## HUKS_PADDING_PSS
-
-```TypeScript
-HUKS_PADDING_PSS = 2
-```
-
-表示使用PSS填充算法。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2--><!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -128,38 +144,22 @@ HUKS_PADDING_PKCS7 = 5
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-## HUKS_PADDING_ISO_IEC_9796_2
+## HUKS_PADDING_PSS
 
 ```TypeScript
-HUKS_PADDING_ISO_IEC_9796_2 = 6
+HUKS_PADDING_PSS = 2
 ```
 
-表示使用ISO_IEC_9796_2填充算法<!--Del-->（暂不支持）<!--DelEnd-->。
+表示使用PSS填充算法。
 
-**起始版本：** 12
+**起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6-End-->
+<!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2--><!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2-End-->
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-## HUKS_PADDING_ISO_IEC_9797_1
-
-```TypeScript
-HUKS_PADDING_ISO_IEC_9797_1 = 7
-```
-
-表示使用ISO_IEC_9797_1填充算法<!--Del-->（暂不支持）<!--DelEnd-->。
-
-**起始版本：** 12
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7-End-->
-
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension

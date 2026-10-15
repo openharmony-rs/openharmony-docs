@@ -6,6 +6,8 @@ type TextArea = TypedFrameNode<TextAreaInterface, TextAreaAttribute>
 
 Represents a FrameNode of the **TextArea** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextAreaInterface, [TextAreaAttribute](../arkts-components/arkts-arkui-textarea-comp-attribute.md)&gt;
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **TextArea** type.
 <!--Device-typeNode-type TextArea = TypedFrameNode<TextAreaInterface, TextAreaAttribute>--><!--Device-typeNode-type TextArea = TypedFrameNode<TextAreaInterface, TextAreaAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextAreaInterface, [TextAreaAttribute](../arkts-components/arkts-arkui-textarea-comp-attribute.md)&gt;

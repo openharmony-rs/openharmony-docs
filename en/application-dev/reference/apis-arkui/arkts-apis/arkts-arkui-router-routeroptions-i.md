@@ -6,6 +6,10 @@ interface RouterOptions
 
 Describes the page routing options.
 
+> **NOTE:** 
+> 
+> The page routing stack supports a maximum of 32 pages.
+
 **Since:** 8
 
 <!--Device-router-interface RouterOptions--><!--Device-router-interface RouterOptions-End-->
@@ -24,11 +28,11 @@ import { router } from '@kit.ArkUI';
 params?: Object
 ```
 
-Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. The target page can use **router.getParams()** to obtain the passed parameters, for example, **this.keyValue** (**keyValue** is the value of a key in **params**). In the web-like paradigm, these parameters can be directly used on the target page. If the field specified by **key** already exists on the target page, the passed value of the key will be displayed.
+Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. After navigation to the target page, use **router.getParams()** to obtain the passed parameters. In addition, in the web-like paradigm, parameters can also be used directly on the page, for example, **this.keyValue** (where **keyValue** is the value of a key in the **params** parameter during navigation). If the target page already has this parameter, its value will be overwritten by the passed parameter value.
 
 **NOTE:** 
 
-The **params** parameter can only carry serializable data. Objects returned by methods and system APIs (for example, **PixelMap** objects defined and returned by media APIs) cannot be passed. To pass such objects, extract from them the basic type attributes to be passed, and then construct objects of the object type.
+The **params** parameter can only pass serializable parameters. It cannot pass methods or objects returned by system APIs (for example, the **PixelMap** object defined and returned by media APIs). Passing non-serializable parameters may cause parameter transfer failure or application running exceptions. You are advised to extract the basic-type attributes that need to be passed from the objects returned by system APIs, and construct an object- type object for passing.
 
 **Type:** Object
 
@@ -72,13 +76,17 @@ If an application is switched to the background and is later closed by the syste
 url: string
 ```
 
-URL of the target page, in either of the following formats:
+URL of the target page, which can be in either of the following formats:
 
-- Absolute path of the page. The value is available in the pages list in the **config.json** file, for example:  
-- pages/index/index  
-- pages/detail/detail  
-- special value. If the value of **url** is **"/"**, the application navigates to the home page. By default, the  
-home page is set to the first item in the **src** value array.
+- Absolute page path, provided by the **pages** list in the configuration file, for example:
+
+  - pages/index/index
+
+  - pages/detail/detail
+
+- Special value. If the value of **url** is **"/"**, the home page is redirected to. The home page defaults to the first data item in the **src** array of the page navigation configuration.
+
+If a nonexistent or invalid URL path is passed in, the navigation fails. For details about the error codes, see the error code description of each API.
 
 **Type:** string
 

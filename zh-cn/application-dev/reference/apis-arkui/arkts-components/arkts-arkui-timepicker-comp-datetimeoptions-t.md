@@ -6,6 +6,8 @@ declare type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptio
 
 时间、日期格式化时可设置的配置项。
 
+**类型：** import('../api/@ohos.intl').default.DateTimeOptions
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptio
 <!--Device-unnamed-declare type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptions--><!--Device-unnamed-declare type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.intl').default.DateTimeOptions

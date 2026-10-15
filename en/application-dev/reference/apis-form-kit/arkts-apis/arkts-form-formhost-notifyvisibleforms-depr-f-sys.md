@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="notifyvisibleforms1"></a>
+
 ## notifyVisibleForms
 
 ```TypeScript
@@ -34,8 +36,24 @@ Instructs the widget framework to make a widget visible. After this API is calle
 | formIds | Array&lt;string&gt; | Yes | List of widget IDs. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If a notification is sent to the widget framework to make the widget visible, **error** is undefined; otherwise, **error** is an error object. |
 
+<!--Del-->
+**Examples**
 
-<a id="notifyvisibleforms-1"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyVisibleForms(formIds, (error: Base.BusinessError) => {
+  if (error.code) {
+    console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
+  }
+});
+```
+
+<!--DelEnd-->
+
+
+<a id="notifyvisibleforms2"></a>
 
 ## notifyVisibleForms
 
@@ -70,3 +88,19 @@ Instructs the widget framework to make a widget visible. After this API is calle
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyVisibleForms(formIds).then(() => {
+  console.info('formHost notifyVisibleForms success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
+});
+```
+
+<!--DelEnd-->

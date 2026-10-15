@@ -32,8 +32,11 @@ function getPorts(): Array<USBPort>
 | --- | --- |
 | Array&lt;[USBPort](arkts-basicservices-usb-usbport-i-sys.md)&gt; | USB端口描述信息列表。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let ret = usb.getPorts();
 ```
+
+<!--DelEnd-->

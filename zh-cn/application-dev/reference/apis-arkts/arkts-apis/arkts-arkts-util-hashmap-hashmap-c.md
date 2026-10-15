@@ -102,7 +102,7 @@ clear(): void
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-clear(): void--><!--Device-HashMap-clear(): void-End-->
 
@@ -135,7 +135,7 @@ constructor()
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-constructor()--><!--Device-HashMap-constructor()-End-->
 
@@ -166,7 +166,7 @@ entries(): IterableIterator<[K, V]>
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-entries(): IterableIterator<[K, V]>--><!--Device-HashMap-entries(): IterableIterator<[K, V]>-End-->
 
@@ -322,7 +322,7 @@ hasKey(key: K): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-hasKey(key: K): boolean--><!--Device-HashMap-hasKey(key: K): boolean-End-->
 
@@ -365,7 +365,7 @@ hasValue(value: V): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-hasValue(value: V): boolean--><!--Device-HashMap-hasValue(value: V): boolean-End-->
 
@@ -408,7 +408,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-isEmpty(): boolean--><!--Device-HashMap-isEmpty(): boolean-End-->
 
@@ -447,7 +447,7 @@ keys(): IterableIterator<K>
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-keys(): IterableIterator<K>--><!--Device-HashMap-keys(): IterableIterator<K>-End-->
 
@@ -533,7 +533,7 @@ replace(key: K, newValue: V): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-replace(key: K, newValue: V): boolean--><!--Device-HashMap-replace(key: K, newValue: V): boolean-End-->
 
@@ -577,7 +577,7 @@ set(key: K, value: V): Object
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-set(key: K, value: V): Object--><!--Device-HashMap-set(key: K, value: V): Object-End-->
 
@@ -620,7 +620,7 @@ setAll(map: HashMap<K, V>): void
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-setAll(map: HashMap<K, V>): void--><!--Device-HashMap-setAll(map: HashMap<K, V>): void-End-->
 
@@ -664,7 +664,7 @@ values(): IterableIterator<V>
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HashMap-values(): IterableIterator<V>--><!--Device-HashMap-values(): IterableIterator<V>-End-->
 

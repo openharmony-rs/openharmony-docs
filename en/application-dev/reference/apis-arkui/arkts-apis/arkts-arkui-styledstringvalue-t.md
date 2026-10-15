@@ -27,8 +27,8 @@ Defines the style for a styled string.
 | [ImageAttachment](arkts-arkui-imageattachment-c.md) | Image style. |
 | [ParagraphStyle](arkts-arkui-paragraphstyle-c.md) | Text paragraph style. |
 | [LineHeightStyle](arkts-arkui-lineheightstyle-c.md) | Text line height style. |
-| [UrlStyle](arkts-arkui-urlstyle-c.md) | URL style. [since 14] |
+| [UrlStyle](arkts-arkui-urlstyle-c.md) | URL style.<br>**Since:** 14 |
 | [CustomSpan](arkts-arkui-customspan-c.md) | Custom span style. |
 | [UserDataSpan](arkts-arkui-userdataspan-c.md) | User data span style. |
-| [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md) | Text background color style. [since 14] |
-| [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | Text line spacing style. [since 26.0.0] |
+| [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md) | Text background color style.<br>**Since:** 14 |
+| [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | Text line spacing style.<br>**Since:** 26.0.0 |

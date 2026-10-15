@@ -54,7 +54,7 @@ Indicates the url of a link
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Hyperlink-get url(): string--><!--Device-Hyperlink-get url(): string-End-->
 
@@ -72,7 +72,7 @@ Indicates the url of a link
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Hyperlink-set url(value: string)--><!--Device-Hyperlink-set url(value: string)-End-->
 

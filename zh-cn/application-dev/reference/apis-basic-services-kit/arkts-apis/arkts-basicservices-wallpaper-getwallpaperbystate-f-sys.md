@@ -12,7 +12,7 @@ import { wallpaper } from '@kit.BasicServicesKit';
 function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState, rotateState: RotateState): Promise<image.PixelMap>
 ```
 
-获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land -&gt; unfolded-port -&gt;normal-port。使用Promise异步回调。
+获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land -> unfolded-port ->normal-port。使用Promise异步回调。
 
 **起始版本：** 14
 
@@ -46,6 +46,7 @@ function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState,
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,3 +59,5 @@ wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper
   console.error(`Failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

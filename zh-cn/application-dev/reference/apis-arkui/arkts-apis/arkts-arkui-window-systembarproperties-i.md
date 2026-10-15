@@ -32,7 +32,7 @@ enableNavigationBarAnimation?: boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-enableNavigationBarAnimation?: boolean--><!--Device-SystemBarProperties-enableNavigationBarAnimation?: boolean-End-->
 
@@ -50,7 +50,7 @@ enableStatusBarAnimation?: boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-enableStatusBarAnimation?: boolean--><!--Device-SystemBarProperties-enableStatusBarAnimation?: boolean-End-->
 
@@ -70,7 +70,7 @@ isNavigationBarLightIcon?: boolean
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-isNavigationBarLightIcon?: boolean--><!--Device-SystemBarProperties-isNavigationBarLightIcon?: boolean-End-->
 
@@ -88,7 +88,7 @@ isStatusBarLightIcon?: boolean
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-isStatusBarLightIcon?: boolean--><!--Device-SystemBarProperties-isStatusBarLightIcon?: boolean-End-->
 
@@ -108,7 +108,7 @@ navigationBarColor?: string
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-navigationBarColor?: string--><!--Device-SystemBarProperties-navigationBarColor?: string-End-->
 
@@ -128,7 +128,7 @@ navigationBarContentColor?: string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-navigationBarContentColor?: string--><!--Device-SystemBarProperties-navigationBarContentColor?: string-End-->
 
@@ -146,7 +146,7 @@ statusBarColor?: string
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-statusBarColor?: string--><!--Device-SystemBarProperties-statusBarColor?: string-End-->
 
@@ -164,7 +164,7 @@ statusBarContentColor?: string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SystemBarProperties-statusBarContentColor?: string--><!--Device-SystemBarProperties-statusBarContentColor?: string-End-->
 

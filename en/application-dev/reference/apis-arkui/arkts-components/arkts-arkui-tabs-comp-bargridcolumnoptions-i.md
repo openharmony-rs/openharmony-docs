@@ -4,7 +4,7 @@
 interface BarGridColumnOptions
 ```
 
-Implements a **BarGridColumnOptions** object for setting the visible area of the tab bar in grid mode, including the column margin and gutter, as well as the number of columns occupied by tabs under small, medium, and large screen sizes.
+Defines an object for setting the grid layout of the tab bar, including the column margin and gutter in grid mode, and the number of columns occupied by tabs on small, medium, and large screens.
 
 **Since:** 10
 
@@ -18,9 +18,7 @@ Implements a **BarGridColumnOptions** object for setting the visible area of the
 gutter?: Dimension
 ```
 
-Column gutter (that is, gap between columns) in grid mode. It cannot be set in percentage.
-
-Default value: **24.0**
+Column gutter in grid mode. Percentage setting is not supported. Value range: [0, +∞). Default value: **24.0**
 
 Unit: vp
 
@@ -42,9 +40,9 @@ Unit: vp
 lg?: number
 ```
 
-Number of columns occupied by a tab on a screen whose width is greater than or equal to 840 vp but less than 1024 vp.
+Number of columns occupied by tabs on a large screen. A non-negative even number or -1 (-1 indicates that the tabs occupy the full width of the tab bar). A large screen is greater than or equal to 840 vp but less than 1024 vp.
 
-The value must be a non-negative even number. The default value is **-1**, indicating that the tab takes up the entire width of the tab bar.
+Default value: **-1**
 
 **Type:** number
 
@@ -64,9 +62,7 @@ The value must be a non-negative even number. The default value is **-1**, indic
 margin?: Dimension
 ```
 
-Column margin in grid mode. It cannot be set in percentage.
-
-Default value: **24.0**
+Column margin in grid mode. Percentage setting is not supported. Value range: [0, +∞). Default value: **24.0**
 
 Unit: vp
 
@@ -88,9 +84,9 @@ Unit: vp
 md?: number
 ```
 
-Number of columns occupied by a tab on a screen whose width is greater than or equal to 600 vp but less than 800 vp.
+Number of columns occupied by tabs on a medium screen. A non-negative even number or -1 (-1 indicates that the tabs occupy the full width of the tab bar). A medium screen is greater than or equal to 600 vp but less than 800 vp.
 
-The value must be a non-negative even number. The default value is **-1**, indicating that the tab takes up the entire width of the tab bar.
+Default value: **-1**
 
 **Type:** number
 
@@ -110,9 +106,9 @@ The value must be a non-negative even number. The default value is **-1**, indic
 sm?: number
 ```
 
-Number of columns occupied by a tab on a screen whose width is greater than or equal to 320 vp but less than 600 vp.
+Number of columns occupied by tabs on a small screen. A non-negative even number or -1 (-1 indicates that the tabs occupy the full width of the tab bar). A small screen is greater than or equal to 320 vp but less than 600 vp.
 
-The value must be a non-negative even number. The default value is **-1**, indicating that the tab takes up the entire width of the tab bar.
+Default value: **-1**
 
 **Type:** number
 

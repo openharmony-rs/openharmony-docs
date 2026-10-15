@@ -12,13 +12,13 @@ import { router } from '@kit.ArkUI';
 function replace(options: RouterOptions): void
 ```
 
-Replaces the current page with another one in the application and destroys the current page.
+Replaces the current page with a page within the application and destroys the current page. Page transition animation is not supported. If you need to set the animation, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)(options: router.RouterOptions)
+**Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl2)(options: router.RouterOptions)
 
 <!--Device-router-function replace(options: RouterOptions): void--><!--Device-router-function replace(options: RouterOptions): void-End-->
 

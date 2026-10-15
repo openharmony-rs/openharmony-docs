@@ -8,6 +8,8 @@ declare type LocalizedMargin = LocalizedPadding
 
 引入该对象时，至少传入一个参数。
 
+**类型：** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -19,5 +21,3 @@ declare type LocalizedMargin = LocalizedPadding
 <!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding--><!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)

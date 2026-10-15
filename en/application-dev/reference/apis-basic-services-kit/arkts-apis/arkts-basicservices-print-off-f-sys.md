@@ -39,6 +39,7 @@ Unregisters the listener for printer state change events. This API uses a callba
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,6 +49,8 @@ print.off('printerStateChange', (data: boolean) => {
     console.info('off printerStateChange data : ' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('jobStateChange')
@@ -83,6 +86,7 @@ Unregisters the listener for print job state change events. This API uses a call
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -92,6 +96,8 @@ print.off('jobStateChange', (data: boolean) => {
     console.info('offJobStateChanged data : ' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('extInfoChange')
@@ -127,6 +133,7 @@ Unregisters the listener for printer extension information change events. This A
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,3 +143,5 @@ print.off('extInfoChange', (data: boolean) => {
     console.info('offExtInfoChange data : ' + JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->

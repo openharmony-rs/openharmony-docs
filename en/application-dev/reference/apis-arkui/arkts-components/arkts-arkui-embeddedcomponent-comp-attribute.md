@@ -6,11 +6,17 @@ declare class EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentA
 
 The [universal attributes](arkts-arkui-common-comp.md) are supported.
 
+> **NOTE:** 
+
+> The default and minimum width and height of the **EmbeddedComponent** are both 10 vp. The following width- and
+> height-related attributes are not supported: **constraintSize**, **aspectRatio**, **layoutWeight**,
+> **flexBasis**, **flexGrow**, and **flexShrink**.
+
 Event information related to screen coordinates is converted based on the position, width, and height of the **EmbeddedComponent**, before being transferred to the EmbeddedUIExtensionAbility for processing.
 
 Universal events, such as the [click event](arkts-arkui-common-comp.md), are not supported. Only the following events are supported.
 
-**Inheritance/Implementation:** EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
+**Inheritance/Implementation:** EmbeddedComponentAttribute extends CommonMethod&lt;EmbeddedComponentAttribute&gt;
 
 **Since:** 12
 
@@ -24,7 +30,7 @@ Universal events, such as the [click event](arkts-arkui-common-comp.md), are not
 onDrawReady(callback: Callback<void>)
 ```
 
-Callback called when the EmbeddedUIExtensionAbility draw the first frame.
+Triggered when the launched [EmbeddedUIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-embeddeduiextensionability-embeddeduiextensionability-c.md) draws its first frame.
 
 **Since:** 26.0.0
 
@@ -40,7 +46,7 @@ Callback called when the EmbeddedUIExtensionAbility draw the first frame.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;void&gt; | Yes |  |
+| callback | Callback&lt;void&gt; | Yes | Callback invoked when the first frame is drawn by the **EmbeddedUIExtensionAbility**. |
 
 ## onError
 
@@ -68,7 +74,7 @@ Called when an error occurs during the running of the started EmbeddedUIExtensio
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | import('../api/@ohos.base').ErrorCallback | Yes | Callback used to return the error information of the [BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md) type. The error information can be obtained and processed based on the **code**, **name**, and **message** parameters. |
+| callback | import('../api/@ohos.base').ErrorCallback | Yes | Callback used to receive error information. The input parameter type is [BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md). You can obtain error information through **code**, **name**, and **message** in the parameter and handle it accordingly. |
 
 ## onTerminated
 
@@ -76,7 +82,7 @@ Called when an error occurs during the running of the started EmbeddedUIExtensio
 onTerminated(callback: import('../api/@ohos.base').Callback<TerminationInfo>)
 ```
 
-Triggered when the the launched EmbeddedUIExtensionAbility exits normally by calling [terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#terminateself).
+Triggered when the the launched EmbeddedUIExtensionAbility exits normally by calling [terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#terminateselfwithresult1) or [terminateSelf](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#terminateself1).
 
 > **NOTE:** 
 > 
@@ -96,4 +102,4 @@ Triggered when the the launched EmbeddedUIExtensionAbility exits normally by cal
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | import('../api/@ohos.base').Callback&lt;[TerminationInfo](arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt; | Yes | Callback used to return the result from the EmbeddedUIExtensionAbility. |
+| callback | import('../api/@ohos.base').Callback&lt;[TerminationInfo](arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt; | Yes | Callback used to receive the return result of **EmbeddedUIExtensionAbility**. The input parameter type is [TerminationInfo](arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md). |

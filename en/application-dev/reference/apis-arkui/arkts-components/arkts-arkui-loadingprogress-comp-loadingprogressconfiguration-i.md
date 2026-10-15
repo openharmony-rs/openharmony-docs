@@ -6,7 +6,7 @@ declare interface LoadingProgressConfiguration extends CommonConfiguration<Loadi
 
 You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** LoadingProgressConfiguration extends CommonConfiguration<LoadingProgressConfiguration>
+**Inheritance/Implementation:** LoadingProgressConfiguration extends CommonConfiguration&lt;LoadingProgressConfiguration&gt;
 
 **Since:** 12
 

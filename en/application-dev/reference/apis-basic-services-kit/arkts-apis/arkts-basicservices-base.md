@@ -8,7 +8,7 @@ The **Base** module defines the public callback types of ArkTS APIs, including t
 > **NOTE**
  >
  > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a
- >   superscript to indicate their earliest API version.
+ > superscript to indicate their earliest API version.
  > - Since API version 12, the APIs of this module are supported in ArkTS widgets.
 
 

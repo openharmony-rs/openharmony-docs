@@ -4,24 +4,29 @@
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
+
+<a id="getaccessibilityextensionlist1"></a>
 
 ## getAccessibilityExtensionList
 
 ```TypeScript
-function getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState): Promise<Array<AccessibilityAbilityInfo>>
+function getAccessibilityExtensionList(
+    abilityType: AbilityType,
+    stateType: AbilityState
+  ): Promise<Array<AccessibilityAbilityInfo>>
 ```
 
 查询辅助应用列表。使用Promise异步回调。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-accessibility-function getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState): Promise<Array<AccessibilityAbilityInfo>>--><!--Device-accessibility-function getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState): Promise<Array<AccessibilityAbilityInfo>>-End-->
+<!--Device-accessibility-function getAccessibilityExtensionList(    abilityType: AbilityType,    stateType: AbilityState  ): Promise<Array<AccessibilityAbilityInfo>>--><!--Device-accessibility-function getAccessibilityExtensionList(    abilityType: AbilityType,    stateType: AbilityState  ): Promise<Array<AccessibilityAbilityInfo>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -42,7 +47,7 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -89,23 +94,27 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 ```
 
 
-<a id="getaccessibilityextensionlist-1"></a>
+<a id="getaccessibilityextensionlist2"></a>
 
 ## getAccessibilityExtensionList
 
 ```TypeScript
-function getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback<Array<AccessibilityAbilityInfo>>): void
+function getAccessibilityExtensionList(
+    abilityType: AbilityType,
+    stateType: AbilityState,
+    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>
+  ): void
 ```
 
 查询辅助应用列表。使用callback异步回调。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-accessibility-function getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback<Array<AccessibilityAbilityInfo>>): void--><!--Device-accessibility-function getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback<Array<AccessibilityAbilityInfo>>): void-End-->
+<!--Device-accessibility-function getAccessibilityExtensionList(    abilityType: AbilityType,    stateType: AbilityState,    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>  ): void--><!--Device-accessibility-function getAccessibilityExtensionList(    abilityType: AbilityType,    stateType: AbilityState,    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>  ): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -121,7 +130,7 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 

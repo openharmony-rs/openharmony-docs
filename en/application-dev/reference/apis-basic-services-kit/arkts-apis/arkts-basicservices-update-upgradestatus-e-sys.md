@@ -14,49 +14,17 @@ Enumerates update states.
 
 **System API:** This is a system API.
 
-## WAITING_DOWNLOAD
+## APPLYING
 
 ```TypeScript
-WAITING_DOWNLOAD = 20
+APPLYING = 41
 ```
 
-Waiting for download.
+Applying the update.
 
 **Since:** 9
 
-<!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20--><!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## DOWNLOADING
-
-```TypeScript
-DOWNLOADING = 21
-```
-
-Downloading.
-
-**Since:** 9
-
-<!--Device-UpgradeStatus-DOWNLOADING = 21--><!--Device-UpgradeStatus-DOWNLOADING = 21-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## DOWNLOAD_PAUSED
-
-```TypeScript
-DOWNLOAD_PAUSED = 22
-```
-
-Download paused.
-
-**Since:** 9
-
-<!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22--><!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22-End-->
+<!--Device-UpgradeStatus-APPLYING = 41--><!--Device-UpgradeStatus-APPLYING = 41-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -78,17 +46,33 @@ Download failed.
 
 **System API:** This is a system API.
 
-## WAITING_INSTALL
+## DOWNLOAD_PAUSED
 
 ```TypeScript
-WAITING_INSTALL = 30
+DOWNLOAD_PAUSED = 22
 ```
 
-Waiting for installation.
+Download paused.
 
 **Since:** 9
 
-<!--Device-UpgradeStatus-WAITING_INSTALL = 30--><!--Device-UpgradeStatus-WAITING_INSTALL = 30-End-->
+<!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22--><!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## DOWNLOADING
+
+```TypeScript
+DOWNLOADING = 21
+```
+
+Downloading.
+
+**Since:** 9
+
+<!--Device-UpgradeStatus-DOWNLOADING = 21--><!--Device-UpgradeStatus-DOWNLOADING = 21-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -110,33 +94,17 @@ Updating.
 
 **System API:** This is a system API.
 
-## WAITING_APPLY
+## UPGRADE_FAIL
 
 ```TypeScript
-WAITING_APPLY = 40
+UPGRADE_FAIL = 51
 ```
 
-Waiting for applying the upgrade.
+Update failed.
 
 **Since:** 9
 
-<!--Device-UpgradeStatus-WAITING_APPLY = 40--><!--Device-UpgradeStatus-WAITING_APPLY = 40-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
-## APPLYING
-
-```TypeScript
-APPLYING = 41
-```
-
-Applying the update.
-
-**Since:** 9
-
-<!--Device-UpgradeStatus-APPLYING = 41--><!--Device-UpgradeStatus-APPLYING = 41-End-->
+<!--Device-UpgradeStatus-UPGRADE_FAIL = 51--><!--Device-UpgradeStatus-UPGRADE_FAIL = 51-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -158,17 +126,49 @@ Update succeeded.
 
 **System API:** This is a system API.
 
-## UPGRADE_FAIL
+## WAITING_APPLY
 
 ```TypeScript
-UPGRADE_FAIL = 51
+WAITING_APPLY = 40
 ```
 
-Update failed.
+Waiting for applying the upgrade.
 
 **Since:** 9
 
-<!--Device-UpgradeStatus-UPGRADE_FAIL = 51--><!--Device-UpgradeStatus-UPGRADE_FAIL = 51-End-->
+<!--Device-UpgradeStatus-WAITING_APPLY = 40--><!--Device-UpgradeStatus-WAITING_APPLY = 40-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## WAITING_DOWNLOAD
+
+```TypeScript
+WAITING_DOWNLOAD = 20
+```
+
+Waiting for download.
+
+**Since:** 9
+
+<!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20--><!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## WAITING_INSTALL
+
+```TypeScript
+WAITING_INSTALL = 30
+```
+
+Waiting for installation.
+
+**Since:** 9
+
+<!--Device-UpgradeStatus-WAITING_INSTALL = 30--><!--Device-UpgradeStatus-WAITING_INSTALL = 30-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

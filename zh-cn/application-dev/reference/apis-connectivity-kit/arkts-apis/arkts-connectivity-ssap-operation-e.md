@@ -12,6 +12,24 @@ enum Operation
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
+## NOTIFY
+
+```TypeScript
+NOTIFY = 0x08
+```
+
+表示支持通知。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Operation-NOTIFY = 0x08--><!--Device-Operation-NOTIFY = 0x08-End-->
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
 ## READABLE
 
 ```TypeScript
@@ -23,6 +41,8 @@ READABLE = 0x01
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Operation-READABLE = 0x01--><!--Device-Operation-READABLE = 0x01-End-->
 
@@ -40,6 +60,8 @@ WRITE_NO_RESPONSE = 0x02
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Operation-WRITE_NO_RESPONSE = 0x02--><!--Device-Operation-WRITE_NO_RESPONSE = 0x02-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -56,22 +78,8 @@ WRITE_WITH_RESPONSE = 0x04
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Operation-WRITE_WITH_RESPONSE = 0x04--><!--Device-Operation-WRITE_WITH_RESPONSE = 0x04-End-->
-
-**系统能力：** SystemCapability.Communication.NearLink.Base
-
-## NOTIFY
-
-```TypeScript
-NOTIFY = 0x08
-```
-
-表示支持通知。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Operation-NOTIFY = 0x08--><!--Device-Operation-NOTIFY = 0x08-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base

@@ -6,6 +6,8 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedpolicy1"></a>
+
 ## getDisallowedPolicy
 
 ```TypeScript
@@ -18,7 +20,7 @@ Queries whether a feature is disabled.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](#getdisallowedpolicy2)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -74,7 +76,7 @@ try {
 ```
 
 
-<a id="getdisallowedpolicy-1"></a>
+<a id="getdisallowedpolicy2"></a>
 
 ## getDisallowedPolicy
 

@@ -70,7 +70,7 @@ append(name: string, value: string): void
 
 **废弃版本：** 9
 
-**替代接口：** append
+**替代接口：** [append](arkts-arkts-url-urlparams-c.md#append)
 
 <!--Device-URLSearchParams-append(name: string, value: string): void--><!--Device-URLSearchParams-append(name: string, value: string): void-End-->
 
@@ -103,7 +103,7 @@ URLSearchParams的构造函数。
 
 **废弃版本：** 9
 
-**替代接口：** constructor
+**替代接口：** [constructor](arkts-arkts-url-urlparams-c.md#constructor)
 
 <!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)--><!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)-End-->
 
@@ -113,7 +113,7 @@ URLSearchParams的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| init | string[][] &#124; Record&lt;string, string&gt; &#124; string &#124; URLSearchParams | 否 | 入参对象。<br>- string[][]：字符串二维数组，每个内部数组包含两个元素，分别为键名和键值。<br>- Record&lt;string, string&gt;：对象列表。<br>- string：字符串，需遵循URL查询参数格式，如'key=value & key2=value2'。<br>- URLSearchParams：对象。<br>- 默认值：undefined。 |
+| init | string[][] &#124; Record&lt;string, string&gt; &#124; string &#124; URLSearchParams | 否 | 入参对象。<br>- string[][]：字符串二维数组，每个内部数组包含两个元素，分别为键名和键值。<br>- Record<string, string>：对象列表。<br>- string：字符串，需遵循URL查询参数格式，如'key=value & key2=value2'。<br>- URLSearchParams：对象。<br>- 默认值：undefined。 |
 
 **示例**
 
@@ -137,7 +137,7 @@ delete(name: string): void
 
 **废弃版本：** 9
 
-**替代接口：** delete
+**替代接口：** [delete](arkts-arkts-url-urlparams-c.md#delete)
 
 <!--Device-URLSearchParams-delete(name: string): void--><!--Device-URLSearchParams-delete(name: string): void-End-->
 
@@ -169,7 +169,7 @@ entries(): IterableIterator<[string, string]>
 
 **废弃版本：** 9
 
-**替代接口：** entries
+**替代接口：** [entries](arkts-arkts-url-urlparams-c.md#entries)
 
 <!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>--><!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>-End-->
 
@@ -205,7 +205,7 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) 
 
 **废弃版本：** 9
 
-**替代接口：** forEach
+**替代接口：** [forEach](arkts-arkts-url-urlparams-c.md#foreach)
 
 <!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void--><!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void-End-->
 
@@ -239,7 +239,7 @@ get(name: string): string | null
 
 **废弃版本：** 9
 
-**替代接口：** get
+**替代接口：** [get](arkts-arkts-url-urlparams-c.md#get)
 
 <!--Device-URLSearchParams-get(name: string): string | null--><!--Device-URLSearchParams-get(name: string): string | null-End-->
 
@@ -278,7 +278,7 @@ getAll(name: string): string[]
 
 **废弃版本：** 9
 
-**替代接口：** getAll
+**替代接口：** [getAll](arkts-arkts-url-urlparams-c.md#getall)
 
 <!--Device-URLSearchParams-getAll(name: string): string[]--><!--Device-URLSearchParams-getAll(name: string): string[]-End-->
 
@@ -317,7 +317,7 @@ has(name: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** has
+**替代接口：** [has](arkts-arkts-url-urlparams-c.md#has)
 
 <!--Device-URLSearchParams-has(name: string): boolean--><!--Device-URLSearchParams-has(name: string): boolean-End-->
 
@@ -355,7 +355,7 @@ keys(): IterableIterator<string>
 
 **废弃版本：** 9
 
-**替代接口：** keys
+**替代接口：** [keys](arkts-arkts-url-urlparams-c.md#keys)
 
 <!--Device-URLSearchParams-keys(): IterableIterator<string>--><!--Device-URLSearchParams-keys(): IterableIterator<string>-End-->
 
@@ -391,7 +391,7 @@ set(name: string, value: string): void
 
 **废弃版本：** 9
 
-**替代接口：** set
+**替代接口：** [set](arkts-arkts-url-urlparams-c.md#set)
 
 <!--Device-URLSearchParams-set(name: string, value: string): void--><!--Device-URLSearchParams-set(name: string, value: string): void-End-->
 
@@ -424,7 +424,7 @@ sort(): void
 
 **废弃版本：** 9
 
-**替代接口：** sort
+**替代接口：** [sort](arkts-arkts-url-urlparams-c.md#sort)
 
 <!--Device-URLSearchParams-sort(): void--><!--Device-URLSearchParams-sort(): void-End-->
 
@@ -450,7 +450,7 @@ toString(): string
 
 **废弃版本：** 9
 
-**替代接口：** toString
+**替代接口：** [toString](arkts-arkts-url-urlparams-c.md#tostring)
 
 <!--Device-URLSearchParams-toString(): string--><!--Device-URLSearchParams-toString(): string-End-->
 
@@ -483,7 +483,7 @@ values(): IterableIterator<string>
 
 **废弃版本：** 9
 
-**替代接口：** values
+**替代接口：** [values](arkts-arkts-url-urlparams-c.md#values)
 
 <!--Device-URLSearchParams-values(): IterableIterator<string>--><!--Device-URLSearchParams-values(): IterableIterator<string>-End-->
 

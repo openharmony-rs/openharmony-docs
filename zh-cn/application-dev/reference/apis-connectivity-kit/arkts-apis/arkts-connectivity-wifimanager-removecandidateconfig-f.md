@@ -6,6 +6,8 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
+<a id="removecandidateconfig1"></a>
+
 ## removeCandidateConfig
 
 ```TypeScript
@@ -21,7 +23,7 @@ function removeCandidateConfig(networkId: number): Promise<void>
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-wifiManager-function removeCandidateConfig(networkId: int): Promise<void>--><!--Device-wifiManager-function removeCandidateConfig(networkId: int): Promise<void>-End-->
 
@@ -44,7 +46,7 @@ function removeCandidateConfig(networkId: number): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
@@ -67,7 +69,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
-<a id="removecandidateconfig-1"></a>
+<a id="removecandidateconfig2"></a>
 
 ## removeCandidateConfig
 
@@ -84,7 +86,7 @@ function removeCandidateConfig(networkId: number, callback: AsyncCallback<void>)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-wifiManager-function removeCandidateConfig(networkId: int, callback: AsyncCallback<void>): void--><!--Device-wifiManager-function removeCandidateConfig(networkId: int, callback: AsyncCallback<void>): void-End-->
 
@@ -102,7 +104,7 @@ function removeCandidateConfig(networkId: number, callback: AsyncCallback<void>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |

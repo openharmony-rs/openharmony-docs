@@ -38,6 +38,7 @@ close(): void
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -45,6 +46,8 @@ if (resultSet != undefined) {
   (resultSet as DataShareResultSet).close();
 }
 ```
+
+<!--DelEnd-->
 
 ## getBlob
 
@@ -76,6 +79,7 @@ getBlob(columnIndex: number): Uint8Array
 | --- | --- |
 | Uint8Array | 以字节数组的形式返回指定列的值。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -90,6 +94,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getColumnIndex
 
@@ -121,6 +127,7 @@ getColumnIndex(columnName: string): number
 | --- | --- |
 | number | 返回指定列的索引。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -130,6 +137,8 @@ if (resultSet != undefined) {
   console.info('resultSet.getColumnIndex: ' + getColumnIndex);
 }
 ```
+
+<!--DelEnd-->
 
 ## getColumnName
 
@@ -161,6 +170,7 @@ getColumnName(columnIndex: number): string
 | --- | --- |
 | string | 返回指定列的名称。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -170,6 +180,8 @@ if (resultSet != undefined) {
   console.info('resultSet.getColumnName: ' + getColumnName);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDataType
 
@@ -201,6 +213,7 @@ getDataType(columnIndex: number): DataType
 | --- | --- |
 | [DataType](arkts-arkdata-data-datashareresultset-datatype-e-sys.md) | 返回指定列的类型。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -215,6 +228,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getDouble
 
@@ -246,6 +261,7 @@ getDouble(columnIndex: number): number
 | --- | --- |
 | number | 值类型为双浮点数形式返回指定列的值。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -260,6 +276,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getLong
 
@@ -291,6 +309,7 @@ getLong(columnIndex: number): number
 | --- | --- |
 | number | 以长整数值形式返回指定列的值。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -305,6 +324,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getString
 
@@ -336,6 +357,7 @@ getString(columnIndex: number): string
 | --- | --- |
 | string | 以字符串形式返回指定列的值。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -350,6 +372,8 @@ if (resultSet != undefined) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## goTo
 
@@ -381,6 +405,7 @@ goTo(offset: number): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -390,6 +415,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goTo: ' + isGoTo);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToFirstRow
 
@@ -415,6 +442,7 @@ goToFirstRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -424,6 +452,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToFirstRow: ' + isGoToFirstRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToLastRow
 
@@ -449,6 +479,7 @@ goToLastRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -457,6 +488,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToLastRow: ' + isGoToLastRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToNextRow
 
@@ -482,6 +515,7 @@ goToNextRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -490,6 +524,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToNextRow: ' + isGoToNextRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToPreviousRow
 
@@ -515,6 +551,7 @@ goToPreviousRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -523,6 +560,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToPreviousRow: ' + isGoToPreviousRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## goToRow
 
@@ -554,6 +593,7 @@ goToRow(position: number): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -563,6 +603,8 @@ if (resultSet != undefined) {
   console.info('resultSet.goToRow: ' + isGoToRow);
 }
 ```
+
+<!--DelEnd-->
 
 ## columnCount
 

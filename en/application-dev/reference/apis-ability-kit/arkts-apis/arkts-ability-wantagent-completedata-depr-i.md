@@ -27,7 +27,7 @@ Describes the data returned by after wantAgent.trigger is called.
 extraInfo?: { [key: string]: any }
 ```
 
-Extra data collected by the common event.
+Extra information.
 
 **Type:** { [key: string]: any }
 
@@ -49,7 +49,7 @@ Extra data collected by the common event.
 finalCode: number
 ```
 
-Request code used to trigger the WantAgent.
+Request code for triggering the WantAgent.
 
 **Type:** number
 
@@ -93,7 +93,7 @@ Final data collected by the common event.
 info: WantAgent
 ```
 
-Triggered WantAgent.
+WantAgent to trigger.
 
 **Type:** [WantAgent](arkts-ability-wantagent-depr-t.md)
 
@@ -115,7 +115,7 @@ Triggered WantAgent.
 want: Want
 ```
 
-Existing Want that is triggered.
+Want that exists and is triggered.
 
 **Type:** [Want](arkts-ability-app-ability-want-want-c.md)
 

@@ -43,7 +43,7 @@ Adds PasteData of an extra type to **PasteDataRecord**. The type added using thi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 
 **Examples**
 
@@ -88,7 +88,7 @@ Obtains data of the specified type from **PasteDataRecord**.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 
 **Examples**
 
@@ -143,7 +143,7 @@ Obtains the intersection of the input types and the types of the PasteData.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 
 **Examples**
 
@@ -171,7 +171,7 @@ Forcibly converts HTML, plain, and URI content in a **PasteDataRecord** to the p
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-toPlainText(): string--><!--Device-PasteDataRecord-toPlainText(): string-End-->
 
@@ -190,6 +190,8 @@ let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIME
 let text: string = record.toPlainText();
 console.info(`Succeeded in converting to text. Text: ${text}`);
 ```
+
+<a id="converttotext1"></a>
 
 ## convertToText
 
@@ -236,7 +238,7 @@ record.convertToText((err: BusinessError, data: string) => {
 });
 ```
 
-<a id="converttotext-1"></a>
+<a id="converttotext2"></a>
 
 ## convertToText
 
@@ -287,7 +289,7 @@ Content of custom data. Modifications to this attribute are ineffective.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-data: Record<string, ArrayBuffer>--><!--Device-PasteDataRecord-data: Record<string, ArrayBuffer>-End-->
 
@@ -305,7 +307,7 @@ HTML content, must conform to standard HTML format. Modifications to this attrib
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-htmlText: string--><!--Device-PasteDataRecord-htmlText: string-End-->
 
@@ -323,7 +325,7 @@ Default type of PasteDataRecord. Modifications to this attribute are ineffective
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-mimeType: string--><!--Device-PasteDataRecord-mimeType: string-End-->
 
@@ -341,7 +343,7 @@ PixelMap content. Modifications to this attribute are ineffective. To refresh th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-pixelMap: image.PixelMap--><!--Device-PasteDataRecord-pixelMap: image.PixelMap-End-->
 
@@ -359,7 +361,7 @@ Plain text. Modifications to this attribute are ineffective. To refresh the attr
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-plainText: string--><!--Device-PasteDataRecord-plainText: string-End-->
 
@@ -377,7 +379,7 @@ URI content, must conform to standard URI format. Modifications to this attribut
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-uri: string--><!--Device-PasteDataRecord-uri: string-End-->
 
@@ -395,7 +397,7 @@ Want content. Modifications to this attribute are ineffective. To refresh the at
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PasteDataRecord-want: Want--><!--Device-PasteDataRecord-want: Want-End-->
 

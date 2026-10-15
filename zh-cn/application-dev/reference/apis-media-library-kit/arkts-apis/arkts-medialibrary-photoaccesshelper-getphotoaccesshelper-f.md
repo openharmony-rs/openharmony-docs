@@ -6,6 +6,8 @@
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+<a id="getphotoaccesshelper1"></a>
+
 ## getPhotoAccessHelper
 
 ```TypeScript

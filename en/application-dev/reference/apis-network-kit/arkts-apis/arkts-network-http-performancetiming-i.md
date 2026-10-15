@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 dnsTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the DNS resolution is complete.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the DNS resolution is complete.
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 firstReceiveTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the first byte is received.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the first byte is received.
 
 **Type:** number
 
@@ -56,7 +56,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 firstSendTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the first byte is sent.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the first byte is sent.
 
 **Type:** number
 
@@ -72,7 +72,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 redirectTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when all redirection steps are complete.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when all redirection steps are complete.
 
 **Type:** number
 
@@ -88,7 +88,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 responseBodyTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the body resolution is complete.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the body resolution is complete.
 
 **Type:** number
 
@@ -104,7 +104,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 responseHeaderTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the header resolution is complete.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the header resolution is complete.
 
 **Type:** number
 
@@ -120,7 +120,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 tcpTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the TCP connection is complete.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the TCP connection is complete.
 
 **Type:** number
 
@@ -136,7 +136,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 tlsTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the TLS connection is complete.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the TLS connection is complete.
 
 **Type:** number
 
@@ -152,7 +152,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 totalFinishTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when the request is complete.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when the request is complete.
 
 **Type:** number
 
@@ -168,7 +168,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 totalTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request) is sent to the time when a callback is returned to the application.
+Duration from the time when the [request](arkts-network-http-httprequest-i.md#request1) is sent to the time when a callback is returned to the application.
 
 **Type:** number
 

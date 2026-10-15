@@ -20,7 +20,7 @@ SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据�
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="delete-2"></a>
+<a id="delete3"></a>
 
 ## delete
 
@@ -57,6 +57,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -111,7 +112,9 @@ try {
 }
 ```
 
-<a id="delete-3"></a>
+<!--DelEnd-->
+
+<a id="delete4"></a>
 
 ## delete
 
@@ -153,11 +156,14 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise<void>
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 参见 [delete](#delete)
 
-<a id="getresultset-4"></a>
+<!--DelEnd-->
+
+<a id="getresultset5"></a>
 
 ## getResultSet
 
@@ -194,6 +200,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -361,7 +368,9 @@ try {
 }
 ```
 
-<a id="getresultset-5"></a>
+<!--DelEnd-->
+
+<a id="getresultset6"></a>
 
 ## getResultSet
 
@@ -403,6 +412,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVSto
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -570,7 +580,9 @@ try {
 }
 ```
 
-<a id="putbatch-2"></a>
+<!--DelEnd-->
+
+<a id="putbatch3"></a>
 
 ## putBatch
 
@@ -607,6 +619,7 @@ putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -686,7 +699,9 @@ try {
 }
 ```
 
-<a id="putbatch-3"></a>
+<!--DelEnd-->
+
+<a id="putbatch4"></a>
 
 ## putBatch
 
@@ -728,6 +743,9 @@ putBatch(value: Array<ValuesBucket>): Promise<void>
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
 
+<!--Del-->
 **示例**
 
 参见 [putBatch](#putbatch)
+
+<!--DelEnd-->

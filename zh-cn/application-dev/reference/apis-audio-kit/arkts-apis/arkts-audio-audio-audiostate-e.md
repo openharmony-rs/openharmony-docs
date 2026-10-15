@@ -40,6 +40,20 @@ STATE_NEW = 0
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+## STATE_PAUSED
+
+```TypeScript
+STATE_PAUSED = 5
+```
+
+暂停状态。
+
+**起始版本：** 8
+
+<!--Device-AudioState-STATE_PAUSED = 5--><!--Device-AudioState-STATE_PAUSED = 5-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 ## STATE_PREPARED
 
 ```TypeScript
@@ -51,6 +65,20 @@ STATE_PREPARED = 1
 **起始版本：** 8
 
 <!--Device-AudioState-STATE_PREPARED = 1--><!--Device-AudioState-STATE_PREPARED = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## STATE_RELEASED
+
+```TypeScript
+STATE_RELEASED = 4
+```
+
+释放状态。
+
+**起始版本：** 8
+
+<!--Device-AudioState-STATE_RELEASED = 4--><!--Device-AudioState-STATE_RELEASED = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -79,33 +107,5 @@ STATE_STOPPED = 3
 **起始版本：** 8
 
 <!--Device-AudioState-STATE_STOPPED = 3--><!--Device-AudioState-STATE_STOPPED = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## STATE_RELEASED
-
-```TypeScript
-STATE_RELEASED = 4
-```
-
-释放状态。
-
-**起始版本：** 8
-
-<!--Device-AudioState-STATE_RELEASED = 4--><!--Device-AudioState-STATE_RELEASED = 4-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## STATE_PAUSED
-
-```TypeScript
-STATE_PAUSED = 5
-```
-
-暂停状态。
-
-**起始版本：** 8
-
-<!--Device-AudioState-STATE_PAUSED = 5--><!--Device-AudioState-STATE_PAUSED = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

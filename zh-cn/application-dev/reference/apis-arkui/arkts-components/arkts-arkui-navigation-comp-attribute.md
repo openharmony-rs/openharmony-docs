@@ -14,6 +14,8 @@ declare class NavigationAttribute extends CommonMethod<NavigationAttribute>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="backbuttonicon1"></a>
+
 ## backButtonIcon
 
 ```TypeScript
@@ -27,7 +29,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 > 不支持通过SymbolGlyphModifier对象的
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize)属性修改图标大小、
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)属性修改动效、
-> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)属性修改动效类型。
+> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1)属性修改动效类型。
 
 **起始版本：** 9
 
@@ -43,7 +45,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 | --- | --- | --- | --- |
 | value | string &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | 是 | 标题栏中返回键图标。<br>**适用版本：** 9 - 11 |
 
-<a id="backbuttonicon-1"></a>
+<a id="backbuttonicon2"></a>
 
 ## backButtonIcon
 
@@ -60,7 +62,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 > 不支持通过SymbolGlyphModifier对象的
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize)属性修改图标大小、
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)属性修改动效、
-> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)属性修改动效类型。
+> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1)属性修改动效类型。
 
 **起始版本：** 19
 
@@ -77,7 +79,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | icon | string &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | 是 | 标题栏中返回键图标。 |
-| accessibilityText | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 否 | 返回键无障碍播报内容。&lt;/br&gt;默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
+| accessibilityText | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 否 | 返回键无障碍播报内容。</br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ## configuration
 
@@ -210,7 +212,7 @@ enableModeChangeAnimation(isEnabled: Optional<boolean>)
 enableToolBarAdaptation(enable: Optional<boolean>)
 ```
 
-设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)接口来定义[菜单](#menus)。
+设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)接口来定义[菜单](#menus1)。
 
 **起始版本：** 19
 
@@ -302,6 +304,8 @@ hideNavBar(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否隐藏导航页。<br>默认值：false<br>true：隐藏导航页；false：显示导航页。<br>传入参数非法时，按false处理。 |
 
+<a id="hidetitlebar1"></a>
+
 ## hideTitleBar
 
 ```TypeScript
@@ -324,7 +328,7 @@ hideTitleBar(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否隐藏标题栏。<br>默认值：false<br>true：隐藏标题栏；false：显示标题栏。<br>传入参数非法时，按false处理。 |
 
-<a id="hidetitlebar-1"></a>
+<a id="hidetitlebar2"></a>
 
 ## hideTitleBar
 
@@ -332,7 +336,7 @@ hideTitleBar(value: boolean)
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
+设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar1)相比，新增标题栏显隐时是否使用动画。
 
 **起始版本：** 13
 
@@ -350,6 +354,8 @@ hideTitleBar(hide: boolean, animated: boolean)
 | --- | --- | --- | --- |
 | hide | boolean | 是 | 是否隐藏标题栏。<br>默认值：false<br>true：隐藏标题栏；false：显示标题栏。<br>传入参数非法时，按false处理。 |
 | animated | boolean | 是 | 设置是否使用动画显隐标题栏。<br>默认值：false<br>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br>传入参数非法时，按false处理。 |
+
+<a id="hidetoolbar1"></a>
 
 ## hideToolBar
 
@@ -373,7 +379,7 @@ hideToolBar(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否隐藏工具栏。<br>默认值：false<br>true：隐藏工具栏；false：显示工具栏。<br>传入参数非法时，按false处理。 |
 
-<a id="hidetoolbar-1"></a>
+<a id="hidetoolbar2"></a>
 
 ## hideToolBar
 
@@ -381,7 +387,7 @@ hideToolBar(value: boolean)
 hideToolBar(hide: boolean, animated: boolean)
 ```
 
-设置是否隐藏工具栏。与[hideToolBar](#hidetoolbar)相比，新增工具栏显隐时是否使用动画。
+设置是否隐藏工具栏。与[hideToolBar](#hidetoolbar1)相比，新增工具栏显隐时是否使用动画。
 
 **起始版本：** 13
 
@@ -435,6 +441,8 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 | types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | 否 | 配置扩展安全区域的类型。<br>默认值：<br>[LayoutSafeAreaType.SYSTEM] |
 | edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | 否 | 配置扩展安全区域的方向。<br> 默认值：<br> [LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。 |
 
+<a id="menus1"></a>
+
 ## menus
 
 ```TypeScript
@@ -457,7 +465,7 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 | --- | --- | --- | --- |
 | value | Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 页面右上角菜单。 |
 
-<a id="menus-1"></a>
+<a id="menus2"></a>
 
 ## menus
 
@@ -465,7 +473,7 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus1)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 > **说明：** 
 > 
@@ -722,7 +730,7 @@ recoverable(recoverable: Optional<boolean>)
 > 
 > 3. 恢复的过程中不可序列化的信息，例如不可序列化的参数与用户设置的onPop等，会被丢弃，无法恢复。
 > 
-> 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考示例18。
+> 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考[示例18](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例18设置navigation可恢复)。
 
 **起始版本：** 14
 

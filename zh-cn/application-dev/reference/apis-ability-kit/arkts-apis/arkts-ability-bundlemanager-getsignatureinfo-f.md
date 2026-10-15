@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getSignatureInfo(uid: number): SignatureInfo
 ```
 
-根据给定的uid获取对应应用的[签名信息](arkts-ability-bundleinfo-signatureinfo-i.md)。
+根据给定的uid获取对应应用的[签名信息](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)。
 
 **起始版本：** 18
 

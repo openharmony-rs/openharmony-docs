@@ -32,7 +32,29 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-ConnectionParams-address: string--><!--Device-ConnectionParams-address: string-End-->
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
+## frameType
+
+```TypeScript
+frameType?: nearlinkConstant.FrameType
+```
+
+NearLink radio frame type. The default value is **FRAME_TYPE_1**.
+
+**Type:** [nearlinkConstant.FrameType](arkts-connectivity-nearlinkconstant-frametype-e.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ConnectionParams-frameType?: nearlinkConstant.FrameType--><!--Device-ConnectionParams-frameType?: nearlinkConstant.FrameType-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -49,6 +71,8 @@ Data transfer mode with a remote device. The default value is **BASIC**.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ConnectionParams-transferMode?: TransferMode--><!--Device-ConnectionParams-transferMode?: TransferMode-End-->
 
@@ -67,6 +91,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ConnectionParams-uuid: string--><!--Device-ConnectionParams-uuid: string-End-->
 

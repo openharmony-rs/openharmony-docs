@@ -14,22 +14,6 @@ Obtains network information status.
 
 **系统接口：** 此接口为系统接口。
 
-## NETWORK_UNKNOWN
-
-```TypeScript
-NETWORK_UNKNOWN = 0
-```
-
-Indicates that the network state is unknown.
-
-**起始版本：** 6
-
-<!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0--><!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-**系统接口：** 此接口为系统接口。
-
 ## NETWORK_AVAILABLE
 
 ```TypeScript
@@ -73,6 +57,22 @@ Indicates that the network is unavailable for registration.
 **起始版本：** 6
 
 <!--Device-NetworkInformationState-NETWORK_FORBIDDEN = 3--><!--Device-NetworkInformationState-NETWORK_FORBIDDEN = 3-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**系统接口：** 此接口为系统接口。
+
+## NETWORK_UNKNOWN
+
+```TypeScript
+NETWORK_UNKNOWN = 0
+```
+
+Indicates that the network state is unknown.
+
+**起始版本：** 6
+
+<!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0--><!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

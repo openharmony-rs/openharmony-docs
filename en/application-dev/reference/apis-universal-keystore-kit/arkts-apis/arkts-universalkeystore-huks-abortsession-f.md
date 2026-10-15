@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="abortsession1"></a>
+
 ## abortSession
 
 ```TypeScript
@@ -36,8 +38,8 @@ Aborts a key operation. This API uses an asynchronous callback to return the res
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine or UKey driver |
@@ -418,7 +420,7 @@ export default {
 ```
 
 
-<a id="abortsession-1"></a>
+<a id="abortsession2"></a>
 
 ## abortSession
 
@@ -453,8 +455,8 @@ Aborts a key operation. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine or UKey driver |

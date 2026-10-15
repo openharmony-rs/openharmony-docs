@@ -6,6 +6,8 @@ declare type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier
 
 ImageModifier
 
+**Type:** import('../api/arkui/ImageModifier').ImageModifier
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ ImageModifier
 <!--Device-unnamed-declare type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier--><!--Device-unnamed-declare type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/ImageModifier').ImageModifier

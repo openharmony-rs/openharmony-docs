@@ -21,4 +21,4 @@ Defines the callback type for listening for click events in **UIObserver**.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | event | [ClickEvent](../arkts-components/arkts-arkui-common-comp-clickevent-i.md) | Yes | Information about the click event that triggers the callback. |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | No | Component bound to the click event. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | No | Bound component of the click event that triggers the event listener. When this parameter is not passed, the default value is **undefined**. |

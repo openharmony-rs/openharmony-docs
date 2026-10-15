@@ -50,7 +50,7 @@ This field is used to identify the discovery mode and supported capabilities of 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ScanResult-advertiseFlags?: int--><!--Device-ScanResult-advertiseFlags?: int-End-->
 
@@ -70,7 +70,7 @@ Map of advertising data fields.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ScanResult-advertisingDataMap?: Map<int, Uint8Array>--><!--Device-ScanResult-advertisingDataMap?: Map<int, Uint8Array>-End-->
 
@@ -90,7 +90,7 @@ Connectable of the remote device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanResult-connectable: boolean--><!--Device-ScanResult-connectable: boolean-End-->
 
@@ -110,7 +110,7 @@ The raw data of broadcast packet
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanResult-data: ArrayBuffer--><!--Device-ScanResult-data: ArrayBuffer-End-->
 
@@ -130,7 +130,7 @@ Address of the scanned device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanResult-deviceId: string--><!--Device-ScanResult-deviceId: string-End-->
 
@@ -150,7 +150,7 @@ The local name of the BLE device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanResult-deviceName: string--><!--Device-ScanResult-deviceName: string-End-->
 
@@ -170,7 +170,7 @@ Map of manufacturer data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ScanResult-manufacturerDataMap?: Map<int, Uint8Array>--><!--Device-ScanResult-manufacturerDataMap?: Map<int, Uint8Array>-End-->
 
@@ -190,7 +190,7 @@ RSSI of the remote device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScanResult-rssi: int--><!--Device-ScanResult-rssi: int-End-->
 
@@ -210,7 +210,7 @@ Map of service data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ScanResult-serviceDataMap?: Map<string, Uint8Array>--><!--Device-ScanResult-serviceDataMap?: Map<string, Uint8Array>-End-->
 
@@ -230,7 +230,7 @@ The list of service uuid.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ScanResult-serviceUuids?: string[]--><!--Device-ScanResult-serviceUuids?: string[]-End-->
 
@@ -250,7 +250,7 @@ The tx power level of the packet in dBm.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ScanResult-txPowerLevel?: int--><!--Device-ScanResult-txPowerLevel?: int-End-->
 

@@ -30,7 +30,7 @@ Name of the optional parameter.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-OptionsData-name: string--><!--Device-OptionsData-name: string-End-->
 
@@ -48,7 +48,7 @@ Value of the optional parameter.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-OptionsData-value: string--><!--Device-OptionsData-value: string-End-->
 

@@ -53,6 +53,7 @@ function createVlanInterface(ifName: string, vlanId: number): Promise<void>
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2100400](../errorcode-net-connection.md#2100400-传入网卡名不正确非以太网) | The input network interface name is incorrect. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ connection.createVlanInterface(ifName, vlanId).then(() => {
   console.error(`Failed to create vlan. Code:${error.code}, message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

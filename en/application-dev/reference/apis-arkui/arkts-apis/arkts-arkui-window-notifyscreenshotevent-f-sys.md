@@ -42,6 +42,7 @@ Notifies a screenshot event. This API uses a promise to return the result.
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ try {
   console.error(`Failed to notify screenshot event type. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->

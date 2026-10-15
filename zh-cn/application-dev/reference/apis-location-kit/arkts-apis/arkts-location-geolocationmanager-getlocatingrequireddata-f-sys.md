@@ -46,6 +46,7 @@ function getLocatingRequiredData(config: LocatingRequiredDataConfig): Promise<Ar
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call ${geoLocationManager.getLocatingRequiredData} due to limited device capabilities. |
 | [3301800](../errorcode-geoLocationManager.md#3301800-启动wi-fi或蓝牙扫描失败) | Failed to start WiFi or Bluetooth scanning. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->

@@ -12,19 +12,51 @@ enum UserAuthResultCode
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## SUCCESS
+## BUSY
 
 ```TypeScript
-SUCCESS = 12500000
+BUSY = 12500007
 ```
 
-执行成功。表示用户身份认证通过，认证令牌有效。应用可使用返回的token进行后续的安全操作。
+系统繁忙。表示认证服务正忙于处理其他请求，建议稍后重试。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-UserAuthResultCode-SUCCESS = 12500000--><!--Device-UserAuthResultCode-SUCCESS = 12500000-End-->
+<!--Device-UserAuthResultCode-BUSY = 12500007--><!--Device-UserAuthResultCode-BUSY = 12500007-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## CANCELED
+
+```TypeScript
+CANCELED = 12500003
+```
+
+认证取消。表示用户主动取消了认证操作或认证被系统取消。应用可根据业务逻辑决定是否重新发起认证。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UserAuthResultCode-CANCELED = 12500003--><!--Device-UserAuthResultCode-CANCELED = 12500003-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## CANCELED_FROM_WIDGET
+
+```TypeScript
+CANCELED_FROM_WIDGET = 12500011
+```
+
+用户取消了系统认证方式，选择应用自定义认证。表示用户点击了认证界面上的导航按钮，选择使用应用提供的自定义认证方式。应用需拉起自定义认证界面。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011--><!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -38,7 +70,7 @@ FAIL = 12500001
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResultCode-FAIL = 12500001--><!--Device-UserAuthResultCode-FAIL = 12500001-End-->
 
@@ -54,89 +86,9 @@ GENERAL_ERROR = 12500002
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResultCode-GENERAL_ERROR = 12500002--><!--Device-UserAuthResultCode-GENERAL_ERROR = 12500002-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## CANCELED
-
-```TypeScript
-CANCELED = 12500003
-```
-
-认证取消。表示用户主动取消了认证操作或认证被系统取消。应用可根据业务逻辑决定是否重新发起认证。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-UserAuthResultCode-CANCELED = 12500003--><!--Device-UserAuthResultCode-CANCELED = 12500003-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## TIMEOUT
-
-```TypeScript
-TIMEOUT = 12500004
-```
-
-认证超时。表示用户在规定时间内未完成认证交互（如未及时输入密码、未正视摄像头等）。建议提示用户重新尝试并注意操作时限。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-UserAuthResultCode-TIMEOUT = 12500004--><!--Device-UserAuthResultCode-TIMEOUT = 12500004-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## TYPE_NOT_SUPPORT
-
-```TypeScript
-TYPE_NOT_SUPPORT = 12500005
-```
-
-认证类型不支持。表示当前设备不支持指定的认证类型（如设备无指纹传感器却请求指纹认证）。建议检查设备能力或更换认证类型。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005--><!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## TRUST_LEVEL_NOT_SUPPORT
-
-```TypeScript
-TRUST_LEVEL_NOT_SUPPORT = 12500006
-```
-
-认证等级不支持。表示指定的认证可信等级高于当前认证类型所能达到的最高等级。建议降低认证等级或使用更安全的认证类型。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-UserAuthResultCode-TRUST_LEVEL_NOT_SUPPORT = 12500006--><!--Device-UserAuthResultCode-TRUST_LEVEL_NOT_SUPPORT = 12500006-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## BUSY
-
-```TypeScript
-BUSY = 12500007
-```
-
-系统繁忙。表示认证服务正忙于处理其他请求，建议稍后重试。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-UserAuthResultCode-BUSY = 12500007--><!--Device-UserAuthResultCode-BUSY = 12500007-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -150,7 +102,7 @@ INVALID_PARAMETERS = 12500008
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResultCode-INVALID_PARAMETERS = 12500008--><!--Device-UserAuthResultCode-INVALID_PARAMETERS = 12500008-End-->
 
@@ -166,7 +118,7 @@ LOCKED = 12500009
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResultCode-LOCKED = 12500009--><!--Device-UserAuthResultCode-LOCKED = 12500009-End-->
 
@@ -182,25 +134,9 @@ NOT_ENROLLED = 12500010
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResultCode-NOT_ENROLLED = 12500010--><!--Device-UserAuthResultCode-NOT_ENROLLED = 12500010-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## CANCELED_FROM_WIDGET
-
-```TypeScript
-CANCELED_FROM_WIDGET = 12500011
-```
-
-用户取消了系统认证方式，选择应用自定义认证。表示用户点击了认证界面上的导航按钮，选择使用应用提供的自定义认证方式。应用需拉起自定义认证界面。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011--><!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -214,8 +150,72 @@ PIN_EXPIRED = 12500013
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResultCode-PIN_EXPIRED = 12500013--><!--Device-UserAuthResultCode-PIN_EXPIRED = 12500013-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 12500000
+```
+
+执行成功。表示用户身份认证通过，认证令牌有效。应用可使用返回的token进行后续的安全操作。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UserAuthResultCode-SUCCESS = 12500000--><!--Device-UserAuthResultCode-SUCCESS = 12500000-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 12500004
+```
+
+认证超时。表示用户在规定时间内未完成认证交互（如未及时输入密码、未正视摄像头等）。建议提示用户重新尝试并注意操作时限。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UserAuthResultCode-TIMEOUT = 12500004--><!--Device-UserAuthResultCode-TIMEOUT = 12500004-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## TRUST_LEVEL_NOT_SUPPORT
+
+```TypeScript
+TRUST_LEVEL_NOT_SUPPORT = 12500006
+```
+
+认证等级不支持。表示指定的认证可信等级高于当前认证类型所能达到的最高等级。建议降低认证等级或使用更安全的认证类型。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UserAuthResultCode-TRUST_LEVEL_NOT_SUPPORT = 12500006--><!--Device-UserAuthResultCode-TRUST_LEVEL_NOT_SUPPORT = 12500006-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## TYPE_NOT_SUPPORT
+
+```TypeScript
+TYPE_NOT_SUPPORT = 12500005
+```
+
+认证类型不支持。表示当前设备不支持指定的认证类型（如设备无指纹传感器却请求指纹认证）。建议检查设备能力或更换认证类型。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005--><!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core

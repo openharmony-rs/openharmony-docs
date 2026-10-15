@@ -30,7 +30,7 @@ Component height, uint is vp.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-MenuPosition-height: int--><!--Device-MenuPosition-height: int-End-->
 
@@ -48,7 +48,7 @@ Component width, uint is vp.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-MenuPosition-width: int--><!--Device-MenuPosition-width: int-End-->
 
@@ -66,7 +66,7 @@ Coordinate x of the position of the component, uint is vp.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-MenuPosition-x: int--><!--Device-MenuPosition-x: int-End-->
 
@@ -84,7 +84,7 @@ Coordinate y of the position of the component, uint is vp.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-MenuPosition-y: int--><!--Device-MenuPosition-y: int-End-->
 

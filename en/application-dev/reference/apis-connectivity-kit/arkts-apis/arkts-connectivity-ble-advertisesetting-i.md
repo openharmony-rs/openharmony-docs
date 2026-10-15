@@ -32,7 +32,7 @@ Indicates whether the BLE is connectable, default is `true`
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AdvertiseSetting-connectable?: boolean--><!--Device-AdvertiseSetting-connectable?: boolean-End-->
 
@@ -52,7 +52,7 @@ Minimum slot value for the advertising interval, which is `32` (20 ms) Maximum s
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AdvertiseSetting-interval?: int--><!--Device-AdvertiseSetting-interval?: int-End-->
 
@@ -72,7 +72,7 @@ Indicates whether the advertisement is extended, default is `false`
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AdvertiseSetting-isExtended?: boolean--><!--Device-AdvertiseSetting-isExtended?: boolean-End-->
 
@@ -92,7 +92,7 @@ Minimum transmission power level for advertising, which is `-127` Maximum transm
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AdvertiseSetting-txPower?: int--><!--Device-AdvertiseSetting-txPower?: int-End-->
 

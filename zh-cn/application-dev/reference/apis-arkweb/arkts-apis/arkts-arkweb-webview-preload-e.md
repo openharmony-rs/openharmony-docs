@@ -12,19 +12,19 @@ enum Preload
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## NONE
+## AUTO
 
 ```TypeScript
-NONE = 0
+AUTO = 2
 ```
 
-不预加载。
+预加载足够多的媒体数据，以保证能流畅地播放。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-Preload-NONE = 0--><!--Device-Preload-NONE = 0-End-->
+<!--Device-Preload-AUTO = 2--><!--Device-Preload-AUTO = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,18 +44,18 @@ METADATA = 1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## AUTO
+## NONE
 
 ```TypeScript
-AUTO = 2
+NONE = 0
 ```
 
-预加载足够多的媒体数据，以保证能流畅地播放。
+不预加载。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-Preload-AUTO = 2--><!--Device-Preload-AUTO = 2-End-->
+<!--Device-Preload-NONE = 0--><!--Device-Preload-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

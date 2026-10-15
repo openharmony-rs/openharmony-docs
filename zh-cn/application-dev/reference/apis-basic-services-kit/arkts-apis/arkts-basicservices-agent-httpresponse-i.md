@@ -30,7 +30,7 @@ Http响应头部。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpResponse-readonly headers: Map<string, Array<string>>--><!--Device-HttpResponse-readonly headers: Map<string, Array<string>>-End-->
 
@@ -48,7 +48,7 @@ Http响应原因。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpResponse-readonly reason: string--><!--Device-HttpResponse-readonly reason: string-End-->
 
@@ -66,7 +66,7 @@ Http响应状态码。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpResponse-readonly statusCode: int--><!--Device-HttpResponse-readonly statusCode: int-End-->
 
@@ -84,7 +84,7 @@ Http版本。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpResponse-readonly version: string--><!--Device-HttpResponse-readonly version: string-End-->
 

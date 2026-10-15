@@ -6,6 +6,8 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="setglobalproxy1"></a>
+
 ## setGlobalProxy
 
 ```TypeScript
@@ -35,7 +37,7 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| httpProxy | connection.HttpProxy | 是 | 网络全局Http代理配置信息。 |
+| httpProxy | [connection.HttpProxy](../../apis-network-kit/arkts-apis/arkts-network-connection-httpproxy-i.md) | 是 | 网络全局Http代理配置信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
 
 **错误码：**
@@ -46,8 +48,9 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: 
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -79,8 +82,10 @@ networkManager.setGlobalProxy(wantTemp, httpProxy, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setglobalproxy-1"></a>
+
+<a id="setglobalproxy2"></a>
 
 ## setGlobalProxy
 
@@ -111,7 +116,7 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| httpProxy | connection.HttpProxy | 是 | 网络全局Http代理配置信息。 |
+| httpProxy | [connection.HttpProxy](../../apis-network-kit/arkts-apis/arkts-network-connection-httpproxy-i.md) | 是 | 网络全局Http代理配置信息。 |
 
 **返回值：**
 
@@ -127,8 +132,9 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise<v
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -158,3 +164,5 @@ networkManager.setGlobalProxy(wantTemp, httpProxy).then(() => {
   console.error(`Failed to set network global proxy. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

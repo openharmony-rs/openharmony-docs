@@ -6,13 +6,15 @@
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
+<a id="push1"></a>
+
 ## push
 
 ```TypeScript
 function push(param: PushParameters, callback: AsyncCallback<void>): void
 ```
 
-Pushes the component and data to the component user.
+Pushes the component and data to the component user. This API is applicable to scenarios where the provider needs to proactively notify the user to refresh the display after data is updated. <br>Cooperation method: The user must first call [on('push', callback)](../../../reference/apis-arkui/js-apis-plugincomponent.md#plugincomponentmanageron) to register a push event listener before receiving the components and data pushed through this API. If the user does not register the listener, the pushed data cannot be received.
 
 **Since:** 8
 
@@ -26,8 +28,8 @@ Pushes the component and data to the component user.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [PushParameters](arkts-arkui-plugincomponentmanager-pushparameters-i.md) | Yes |  |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes |  |
+| param | [PushParameters](arkts-arkui-plugincomponentmanager-pushparameters-i.md) | Yes | Detailed parameters for pushing the component. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Asynchronous callback used to return the result. |
 
 **Examples**
 

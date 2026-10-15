@@ -4,7 +4,7 @@
 interface GestureInterface<T>
 ```
 
-Defines the gesture API.
+Configures common attributes of gestures, supporting setting gesture tags and input types for gesture responses.
 
 **Since:** 11
 

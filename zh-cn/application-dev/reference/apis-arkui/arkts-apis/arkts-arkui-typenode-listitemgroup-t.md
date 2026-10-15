@@ -6,6 +6,8 @@ type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribu
 
 ListItemGroup类型的FrameNode节点类型。只允许添加[ListItem](../arkts-components/arkts-arkui-listitem-comp.md)类型子组件。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ListItemGroupInterface, [ListItemGroupAttribute](../arkts-components/arkts-arkui-listitemgroup-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ ListItemGroup类型的FrameNode节点类型。只允许添加[ListItem](../arkts
 <!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>--><!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ListItemGroupInterface, [ListItemGroupAttribute](../arkts-components/arkts-arkui-listitemgroup-comp-attribute.md)&gt;

@@ -4,7 +4,9 @@
 export type AppClonePreference = _BundleInfo.AppClonePreference
 ```
 
-Defines the AppClonePreference information.
+App clone preference, used to configure the selection policy between the main app and the clone app at app startup.
+
+**Type:** [_BundleInfo.AppClonePreference](arkts-ability-bundleinfo-appclonepreference-i-sys.md)
 
 **Since:** 26.0.0
 
@@ -15,5 +17,3 @@ Defines the AppClonePreference information.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
-
-**Type:** [_BundleInfo.AppClonePreference](arkts-ability-bundleinfo-appclonepreference-i-sys.md)

@@ -43,7 +43,7 @@ Opens the Ukey authentication dialog box of the USB Key credential. This API is 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because the certificate management application hap is not preinstalled in the system. |
-| [29700001](../errorcode-certManagerDialog.md#29700001-internal-error) | The certificate manager service processing failed. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| [29700001](../errorcode-certManagerDialog.md#29700001-internal-error) | The certificate manager service processing failed. Possible causes:         1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | [29700002](../errorcode-certManagerDialog.md#29700002-operation-canceled) | The user cancels the authentication operation. |
 | [29700003](../errorcode-certManagerDialog.md#29700003-failed-to-install-the-certificate) | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. |
 | [29700005](../errorcode-certManagerDialog.md#29700005-non-secure-operation) | The operation does not comply with the device security policy. Only the PC/2in1 device can open the dialog box of the UkeyAuthExtensionAbility type. |

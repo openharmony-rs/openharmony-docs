@@ -49,13 +49,3 @@ Subscribes to notifications based on the priority strategy. This API uses a prom
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-invalid-bundle-information) | The application does not implement the NotificationSubscriberExtensionAbility. |
-
-**Examples**
-
-```TypeScript
-notificationExtensionSubscription.subscribeNotification(0).then(() => {
-  console.info(`subscribeNotification successfully.`);
-}).catch((err: BusinessError) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
-});
-```

@@ -12,6 +12,24 @@ declare enum AnimationPropertyType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## OPACITY
+
+```TypeScript
+OPACITY = 3
+```
+
+透明度属性。该属性对应参数个数为1，属性的取值范围为[0,1]。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimationPropertyType-OPACITY = 3--><!--Device-AnimationPropertyType-OPACITY = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## ROTATION
 
 ```TypeScript
@@ -27,24 +45,6 @@ x、y、z方向的旋转角属性。该属性对应参数个数为3，属性的�
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AnimationPropertyType-ROTATION = 0--><!--Device-AnimationPropertyType-ROTATION = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## TRANSLATION
-
-```TypeScript
-TRANSLATION = 1
-```
-
-x、y方向的平移属性。该属性对应参数个数为2，属性的单位为px。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-AnimationPropertyType-TRANSLATION = 1--><!--Device-AnimationPropertyType-TRANSLATION = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +66,13 @@ x、y方向的缩放属性。该属性对应参数个数为2，属性的取值�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## OPACITY
+## TRANSLATION
 
 ```TypeScript
-OPACITY = 3
+TRANSLATION = 1
 ```
 
-透明度属性。该属性对应参数个数为1，属性的取值范围为[0,1]。
+x、y方向的平移属性。该属性对应参数个数为2，属性的单位为px。
 
 **起始版本：** 20
 
@@ -80,6 +80,6 @@ OPACITY = 3
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-AnimationPropertyType-OPACITY = 3--><!--Device-AnimationPropertyType-OPACITY = 3-End-->
+<!--Device-AnimationPropertyType-TRANSLATION = 1--><!--Device-AnimationPropertyType-TRANSLATION = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

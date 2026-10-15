@@ -4,7 +4,7 @@
 declare interface ForegroundBlurStyleOptions extends BlurStyleOptions
 ```
 
-Inherits from [BlurStyleOptions](arkts-arkui-common-comp-blurstyleoptions-i.md) to define the foreground blur options.
+Defines the options of ForegroundBlurStyle
 
 **Inheritance/Implementation:** ForegroundBlurStyleOptions extends [BlurStyleOptions](arkts-arkui-common-comp-blurstyleoptions-i.md)
 

@@ -6,6 +6,8 @@ declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 
 弹窗的显示顺序。
 
+**类型：** import('../api/@ohos.promptAction').LevelOrder
+
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 <!--Device-unnamed-declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder--><!--Device-unnamed-declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.promptAction').LevelOrder

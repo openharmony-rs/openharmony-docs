@@ -44,6 +44,7 @@ Rotates a mechanical device at the specified speed.
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-device-not-connected) | Device not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ mechanicManager.rotateBySpeed(0, degree, 500)
   });
 console.info('Rotate finish');
 ```
+
+<!--DelEnd-->

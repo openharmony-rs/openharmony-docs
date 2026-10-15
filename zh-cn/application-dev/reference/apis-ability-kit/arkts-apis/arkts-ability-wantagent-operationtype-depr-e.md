@@ -16,43 +16,23 @@ export enum OperationType
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## UNKNOWN_TYPE
+## SEND_COMMON_EVENT
 
 ```TypeScript
-UNKNOWN_TYPE = 0
+SEND_COMMON_EVENT
 ```
 
-不识别的类型。
+发送一个公共事件。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [UNKNOWN_TYPE](arkts-ability-wantagent-operationtype-e.md#unknown_type)
+**替代接口：** [SEND_COMMON_EVENT](arkts-ability-wantagent-operationtype-e.md#send_common_event)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-OperationType-UNKNOWN_TYPE = 0--><!--Device-OperationType-UNKNOWN_TYPE = 0-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## START_ABILITY
-
-```TypeScript
-START_ABILITY
-```
-
-开启一个有页面的Ability。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [START_ABILITY](arkts-ability-wantagent-operationtype-e.md#start_ability)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-OperationType-START_ABILITY--><!--Device-OperationType-START_ABILITY-End-->
+<!--Device-OperationType-SEND_COMMON_EVENT--><!--Device-OperationType-SEND_COMMON_EVENT-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,6 +56,26 @@ START_ABILITIES
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+## START_ABILITY
+
+```TypeScript
+START_ABILITY
+```
+
+开启一个有页面的Ability。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [START_ABILITY](arkts-ability-wantagent-operationtype-e.md#start_ability)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperationType-START_ABILITY--><!--Device-OperationType-START_ABILITY-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 ## START_SERVICE
 
 ```TypeScript
@@ -96,22 +96,22 @@ START_SERVICE
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## SEND_COMMON_EVENT
+## UNKNOWN_TYPE
 
 ```TypeScript
-SEND_COMMON_EVENT
+UNKNOWN_TYPE = 0
 ```
 
-发送一个公共事件。
+不识别的类型。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [SEND_COMMON_EVENT](arkts-ability-wantagent-operationtype-e.md#send_common_event)
+**替代接口：** [UNKNOWN_TYPE](arkts-ability-wantagent-operationtype-e.md#unknown_type)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-OperationType-SEND_COMMON_EVENT--><!--Device-OperationType-SEND_COMMON_EVENT-End-->
+<!--Device-OperationType-UNKNOWN_TYPE = 0--><!--Device-OperationType-UNKNOWN_TYPE = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

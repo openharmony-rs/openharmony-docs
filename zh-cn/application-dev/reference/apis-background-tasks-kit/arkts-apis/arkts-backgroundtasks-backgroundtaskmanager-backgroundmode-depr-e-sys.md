@@ -16,26 +16,6 @@ export enum BackgroundMode
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## WIFI_INTERACTION
-
-```TypeScript
-WIFI_INTERACTION = 7
-```
-
-WLAN相关
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** WIFI_INTERACTION
-
-<!--Device-BackgroundMode-WIFI_INTERACTION = 7--><!--Device-BackgroundMode-WIFI_INTERACTION = 7-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-**系统接口：** 此接口为系统接口。
-
 ## VOIP
 
 ```TypeScript
@@ -48,9 +28,29 @@ VOIP = 8
 
 **废弃版本：** 9
 
-**替代接口：** VOIP
+**替代接口：** [VOIP](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-e.md#voip)
 
 <!--Device-BackgroundMode-VOIP = 8--><!--Device-BackgroundMode-VOIP = 8-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统接口：** 此接口为系统接口。
+
+## WIFI_INTERACTION
+
+```TypeScript
+WIFI_INTERACTION = 7
+```
+
+WLAN相关
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [WIFI_INTERACTION](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-e-sys.md#wifi_interaction)
+
+<!--Device-BackgroundMode-WIFI_INTERACTION = 7--><!--Device-BackgroundMode-WIFI_INTERACTION = 7-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

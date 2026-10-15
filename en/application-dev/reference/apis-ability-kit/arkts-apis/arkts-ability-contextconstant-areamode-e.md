@@ -24,7 +24,7 @@ Device-level encryption. Directories with this encryption level are accessible a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AreaMode-EL1 = 0--><!--Device-AreaMode-EL1 = 0-End-->
 
@@ -42,7 +42,7 @@ User-level encryption. Directories with this encryption level are accessible onl
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AreaMode-EL2 = 1--><!--Device-AreaMode-EL2 = 1-End-->
 
@@ -54,19 +54,13 @@ User-level encryption. Directories with this encryption level are accessible onl
 EL3 = 2
 ```
 
-User-level encryption. The file permissions vary according to their scenarios.
-
-- An open file is always readable and writable regardless of whether the screen is locked.  
-- When the screen is locked, a closed file cannot be opened, read, or written. When the screen is unlocked, such  
-a file can be opened, read, and written.  
-- When the screen is locked, a file can be created and then opened and written but not read. When the screen is  
-unlocked, a file can be created and then opened, read, and written.
+User-level encryption area. The file permissions in different scenarios are as follows: Opened file: when locked, readable and writable; after unlocking, readable and writable. Unopened file: when locked, cannot be opened, not readable or writable; after unlocking, can be opened, readable and writable. Create a new file: when locked, can be created, can be opened, writable but not readable; after unlocking, can be created, can be opened, readable and writable.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AreaMode-EL3 = 2--><!--Device-AreaMode-EL3 = 2-End-->
 
@@ -78,20 +72,13 @@ unlocked, a file can be created and then opened, read, and written.
 EL4 = 3
 ```
 
-User-level encryption. The file permissions vary according to their scenarios.
-
-- When the screen is locked, an open file is not readable or writable. When the screen is unlocked, such a file  
-is readable and writable.  
-- When the screen is locked, a closed file cannot be opened, read, or written. When the screen is unlocked, such  
-a file can be opened, read, and written.  
-- When the screen is locked, a file cannot be created. When the screen is unlocked, a file can be created and  
-then opened, read, and written.
+User-level encryption area. The file permissions in different scenarios are as follows: Opened file: when locked, not readable or writable; after unlocking, readable and writable. Unopened file: when locked, cannot be opened, not readable or writable; after unlocking, can be opened, readable and writable. Create a new file: when locked, cannot be created; after unlocking, can be created, can be opened, readable and writable.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AreaMode-EL4 = 3--><!--Device-AreaMode-EL4 = 3-End-->
 
@@ -103,19 +90,13 @@ then opened, read, and written.
 EL5 = 4
 ```
 
-Application-level encryption. The file permissions vary according to their scenarios.
-
-- An open file is always readable and writable regardless of whether the screen is locked.
-
-When the screen is locked, a closed file can be opened, read, and written only if the reserved key is obtained by calling [Access](arkts-ability-screenlockfilemanager-acquireaccess-f.md). When the screen is unlocked, such a file can be opened, read, and written.
-
-A file can be created and then opened, read, and written regardless of whether the screen is locked.
+Application-level encryption area. The file permissions in different scenarios are as follows: Opened file: when locked, readable and writable; after unlocking, readable and writable. Unopened file: when locked, after calling the [Access](arkts-ability-screenlockfilemanager-acquireaccess-f.md) API to obtain the retained key, can be opened, readable and writable; otherwise, cannot be opened, not readable or writable; after unlocking, can be opened, readable and writable. Create a new file: when locked, can be created, can be opened, readable and writable; after unlocking, can be created, can be opened, readable and writable.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AreaMode-EL5 = 4--><!--Device-AreaMode-EL5 = 4-End-->
 

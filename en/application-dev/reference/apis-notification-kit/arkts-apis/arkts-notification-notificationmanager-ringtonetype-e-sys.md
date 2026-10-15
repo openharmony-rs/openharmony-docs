@@ -14,22 +14,6 @@ Enumerates the custom ringtone types.
 
 **System API:** This is a system API.
 
-## RINGTONE_TYPE_SYSTEM
-
-```TypeScript
-RINGTONE_TYPE_SYSTEM = 0
-```
-
-System ringtone.
-
-**Since:** 21
-
-<!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0--><!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
 ## RINGTONE_TYPE_LOCAL
 
 ```TypeScript
@@ -41,6 +25,22 @@ Local ringtone.
 **Since:** 21
 
 <!--Device-RingtoneType-RINGTONE_TYPE_LOCAL = 1--><!--Device-RingtoneType-RINGTONE_TYPE_LOCAL = 1-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## RINGTONE_TYPE_NONE
+
+```TypeScript
+RINGTONE_TYPE_NONE = 3
+```
+
+Non-custom ringtone.
+
+**Since:** 21
+
+<!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3--><!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -62,17 +62,17 @@ Online ringtone.
 
 **System API:** This is a system API.
 
-## RINGTONE_TYPE_NONE
+## RINGTONE_TYPE_SYSTEM
 
 ```TypeScript
-RINGTONE_TYPE_NONE = 3
+RINGTONE_TYPE_SYSTEM = 0
 ```
 
-Non-custom ringtone.
+System ringtone.
 
 **Since:** 21
 
-<!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3--><!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3-End-->
+<!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0--><!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

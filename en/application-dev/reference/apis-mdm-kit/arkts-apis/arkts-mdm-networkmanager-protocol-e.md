@@ -28,6 +28,22 @@ All network protocols.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## ICMP
+
+```TypeScript
+ICMP = 3
+```
+
+ICMP.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Protocol-ICMP = 3--><!--Device-Protocol-ICMP = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## TCP
 
 ```TypeScript
@@ -57,21 +73,5 @@ UDP.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Protocol-UDP = 2--><!--Device-Protocol-UDP = 2-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## ICMP
-
-```TypeScript
-ICMP = 3
-```
-
-ICMP.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Protocol-ICMP = 3--><!--Device-Protocol-ICMP = 3-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

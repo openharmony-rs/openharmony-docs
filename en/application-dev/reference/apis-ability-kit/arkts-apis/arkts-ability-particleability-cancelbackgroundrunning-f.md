@@ -6,6 +6,8 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
+<a id="cancelbackgroundrunning1"></a>
+
 ## cancelBackgroundRunning
 
 ```TypeScript
@@ -50,7 +52,7 @@ particleAbility.cancelBackgroundRunning(callback);
 ```
 
 
-<a id="cancelbackgroundrunning-1"></a>
+<a id="cancelbackgroundrunning2"></a>
 
 ## cancelBackgroundRunning
 

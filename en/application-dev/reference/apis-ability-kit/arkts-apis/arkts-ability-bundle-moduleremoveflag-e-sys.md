@@ -34,24 +34,6 @@ Not used by a widget.
 
 **System API:** This is a system API.
 
-## FLAG_MODULE_USED_BY_FORM
-
-```TypeScript
-FLAG_MODULE_USED_BY_FORM = 1
-```
-
-Used by a widget.
-
-**Since:** 9
-
-**Deprecated since:** 10
-
-<!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_FORM = 1--><!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_FORM = 1-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework
-
-**System API:** This is a system API.
-
 ## FLAG_MODULE_NOT_USED_BY_SHORTCUT
 
 ```TypeScript
@@ -65,6 +47,24 @@ Not used by a shortcut.
 **Deprecated since:** 10
 
 <!--Device-ModuleRemoveFlag-FLAG_MODULE_NOT_USED_BY_SHORTCUT = 2--><!--Device-ModuleRemoveFlag-FLAG_MODULE_NOT_USED_BY_SHORTCUT = 2-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+**System API:** This is a system API.
+
+## FLAG_MODULE_USED_BY_FORM
+
+```TypeScript
+FLAG_MODULE_USED_BY_FORM = 1
+```
+
+Used by a widget.
+
+**Since:** 9
+
+**Deprecated since:** 10
+
+<!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_FORM = 1--><!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_FORM = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

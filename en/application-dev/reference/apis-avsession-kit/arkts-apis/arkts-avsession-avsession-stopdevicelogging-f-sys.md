@@ -36,6 +36,7 @@ Stop the current device written even the discovery is ongoing.
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-session-does-not-exist) | The session does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -43,3 +44,5 @@ avSession.stopDeviceLogging().then(() => {
   console.info('Succeeded in stopping device logging.');
 });
 ```
+
+<!--DelEnd-->

@@ -12,6 +12,14 @@ export enum PermissionRequestToggleStatus
 - 在权限未授予时，拉起运行时权限弹窗或权限设置页面，请求用户授权。  
 - 订阅当前应用的权限状态变化事件，在权限状态变化后及时调整业务流程。
 
+**起始版本：** 12
+
+<!--Device-abilityAccessCtrl-export enum PermissionRequestToggleStatus--><!--Device-abilityAccessCtrl-export enum PermissionRequestToggleStatus-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
 ## 核心枚举类型
 
 - **[GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md)：** 权限授权状态枚举，用于表示当前权限的授权状态。  
@@ -31,14 +39,6 @@ export enum PermissionRequestToggleStatus
 - **[AtManager](arkts-ability-abilityaccessctrl-atmanager-i.md)：** 程序访问控制管理类，提供权限校验、权限弹窗申请、设置页授权引导和权限状态监听等能力。
 
 ![image_abilityAccessCtrl](../../../reference/apis-ability-kit/figures/abilityAccessCtrl.png)
-
-**起始版本：** 12
-
-<!--Device-abilityAccessCtrl-export enum PermissionRequestToggleStatus--><!--Device-abilityAccessCtrl-export enum PermissionRequestToggleStatus-End-->
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
 
 ## CLOSED
 

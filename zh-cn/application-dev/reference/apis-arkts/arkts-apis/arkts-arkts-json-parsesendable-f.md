@@ -12,9 +12,9 @@ import { JSON } from '@kit.ArkTS';
 function parseSendable(text: string, reviver?: SendableTransformer, options?: ParseOptions): ISendable | null
 ```
 
-解析JSON字符串，生成可直接跨并发实例（Worker或TaskPool）传递、无需拷贝的Sendable对象图。当解析后的JSON数据需要跨线程共享时，使用本接口替代[parse](arkts-arkts-json-parse-f.md)：解析结果直接创建于共享堆，调用返回后即可被各并发实例访问。
+解析JSON字符串，生成可直接跨并发实例（Worker或TaskPool）传递、无需拷贝的Sendable对象。当解析后的JSON数据需要跨线程共享时，使用本接口替代[parse](arkts-arkts-json-parse-f.md)：解析结果直接创建于共享堆，调用返回后即可被各并发实例访问。
 
-使用说明：&lt;ul&gt; &lt;li&gt;取值范围在"0"到"4294967294"之间的数字字符串键会作为元素下标存储；任意属性数量下所有键值均可完整访问与枚举。&lt;/li&gt; &lt;li&gt;重复键以后值为准，且枚举位置保持在首次出现的位置。&lt;/li&gt; &lt;li&gt;当options.parseReturnType为[MAP](arkts-arkts-json-parsereturntype-e.md#map)时，返回支持任意条数增删的Sendable Map；为[OBJECT](arkts-arkts-json-parsereturntype-e.md#object)（默认）时，返回不可扩展的Sendable对象，其已有属性可更新、不可新增或删除。&lt;/li&gt; &lt;/ul&gt;
+使用说明：<ul> <li>取值范围在"0"到"4294967294"之间且不含前导零、符号、小数或指数形式的数字字符串键会作为元素下标存储；"4294967295"及其他形式作为普通属性名。</li> <li>重复键以后值为准，且枚举位置保持在首次出现的位置。</li> <li>当options.parseReturnType为[MAP](arkts-arkts-json-parsereturntype-e.md#map)时，返回键始终为字符串、支持任意条数增删的collections.Map；为[OBJECT](arkts-arkts-json-parsereturntype-e.md#object)（默认）时，返回不可扩展的Sendable对象，其已有属性可更新、不可新增或删除。</li> </ul>
 
 **起始版本：** 26.0.1
 
@@ -38,4 +38,4 @@ function parseSendable(text: string, reviver?: SendableTransformer, options?: Pa
 
 | 类型 | 说明 |
 | --- | --- |
-| [ISendable](arkts-arkts-json-isendable-t.md) &#124; null | 返回与JSON文本对应的Sendable对象图；当JSON文本为'null'时返回null；当options.parseReturnType为[MAP](arkts-arkts-json-parsereturntype-e.md#map)时返回Sendable Map。 |
+| [ISendable](arkts-arkts-json-isendable-t.md) &#124; null | 返回与JSON字符串对应的Sendable对象；当JSON字符串为'null'时返回null；当options.parseReturnType为[MAP](arkts-arkts-json-parsereturntype-e.md#map)时返回collections.Map。 |

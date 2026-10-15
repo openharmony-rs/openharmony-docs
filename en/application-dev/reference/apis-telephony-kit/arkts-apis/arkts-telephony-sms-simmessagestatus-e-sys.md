@@ -46,22 +46,6 @@ Read state.
 
 **System API:** This is a system API.
 
-## SIM_MESSAGE_STATUS_UNREAD
-
-```TypeScript
-SIM_MESSAGE_STATUS_UNREAD = 3
-```
-
-Unread state.
-
-**Since:** 7
-
-<!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
-**System API:** This is a system API.
-
 ## SIM_MESSAGE_STATUS_SENT
 
 ```TypeScript
@@ -73,6 +57,22 @@ Storage of sent messages (applicable only to SMS).
 **Since:** 7
 
 <!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_SENT = 5--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_SENT = 5-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+**System API:** This is a system API.
+
+## SIM_MESSAGE_STATUS_UNREAD
+
+```TypeScript
+SIM_MESSAGE_STATUS_UNREAD = 3
+```
+
+Unread state.
+
+**Since:** 7
+
+<!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

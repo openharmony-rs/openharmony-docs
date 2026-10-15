@@ -36,6 +36,7 @@ Register a listener for axis state changes. The status of the rotation axis chan
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ mechanicManager.on("rotationAxesStatusChange", (result: mechanicManager.Rotation
 });
 console.info('Successful registration');
 ```
+
+<!--DelEnd-->

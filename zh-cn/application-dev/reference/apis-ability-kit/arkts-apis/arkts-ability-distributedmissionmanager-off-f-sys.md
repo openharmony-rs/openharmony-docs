@@ -40,6 +40,7 @@ function off(type: 'continueStateChange', callback?: Callback<ContinueCallbackIn
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,3 +55,5 @@ import { distributedMissionManager } from '@kit.AbilityKit';
     console.error(`continueStateChange failed. Code: ${err.code}, message: ${err.message}`);
   }
 ```
+
+<!--DelEnd-->

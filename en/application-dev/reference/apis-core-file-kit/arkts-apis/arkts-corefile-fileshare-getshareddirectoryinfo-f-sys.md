@@ -42,6 +42,7 @@ Gets the shared sandbox directories of applications
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ async function getSharedDirectoryInfo() {
   }
 }
 ```
+
+<!--DelEnd-->

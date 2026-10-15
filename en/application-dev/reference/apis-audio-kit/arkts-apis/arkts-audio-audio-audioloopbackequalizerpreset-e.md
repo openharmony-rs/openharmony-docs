@@ -12,6 +12,20 @@ Enumerates the equalizer types of audio loopback.
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
+## BRIGHT
+
+```TypeScript
+BRIGHT = 3
+```
+
+Enhances the brightness of vocals.
+
+**Since:** 21
+
+<!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3--><!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Capturer
+
 ## FLAT
 
 ```TypeScript
@@ -37,19 +51,5 @@ Enhances the fullness of vocals (default).
 **Since:** 21
 
 <!--Device-AudioLoopbackEqualizerPreset-FULL = 2--><!--Device-AudioLoopbackEqualizerPreset-FULL = 2-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Capturer
-
-## BRIGHT
-
-```TypeScript
-BRIGHT = 3
-```
-
-Enhances the brightness of vocals.
-
-**Since:** 21
-
-<!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3--><!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer

@@ -32,7 +32,7 @@ Accuracy of the sensor data, indicating the reliability of the reported data.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Response-accuracy: SensorAccuracy--><!--Device-Response-accuracy: SensorAccuracy-End-->
 
@@ -50,7 +50,7 @@ Timestamp when the sensor reports data. Time from device startup to data reporti
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Response-timestamp: long--><!--Device-Response-timestamp: long-End-->
 

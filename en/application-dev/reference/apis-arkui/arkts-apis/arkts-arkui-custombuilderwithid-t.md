@@ -20,4 +20,4 @@ Defines a type that can be used for component attributes and method parameters t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | number | Yes |  |
+| id | number | Yes | Component ID. |

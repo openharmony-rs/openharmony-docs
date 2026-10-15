@@ -12,19 +12,19 @@ The enum of BLE advertising state.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## STARTED
+## DISABLED
 
 ```TypeScript
-STARTED = 1
+DISABLED = 3
 ```
 
-advertising started.
+advertising temporarily disabled.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
+<!--Device-AdvertisingState-DISABLED = 3--><!--Device-AdvertisingState-DISABLED = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -44,19 +44,19 @@ advertising temporarily enabled.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## DISABLED
+## STARTED
 
 ```TypeScript
-DISABLED = 3
+STARTED = 1
 ```
 
-advertising temporarily disabled.
+advertising started.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AdvertisingState-DISABLED = 3--><!--Device-AdvertisingState-DISABLED = 3-End-->
+<!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

@@ -12,76 +12,6 @@ export enum CardType
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## UNKNOWN_CARD
-
-```TypeScript
-UNKNOWN_CARD = -1
-```
-
-未知类型。
-
-**起始版本：** 7
-
-<!--Device-CardType-UNKNOWN_CARD = -1--><!--Device-CardType-UNKNOWN_CARD = -1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## SINGLE_MODE_SIM_CARD
-
-```TypeScript
-SINGLE_MODE_SIM_CARD = 10
-```
-
-单SIM卡。
-
-**起始版本：** 7
-
-<!--Device-CardType-SINGLE_MODE_SIM_CARD = 10--><!--Device-CardType-SINGLE_MODE_SIM_CARD = 10-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## SINGLE_MODE_USIM_CARD
-
-```TypeScript
-SINGLE_MODE_USIM_CARD = 20
-```
-
-单USIM卡。
-
-**起始版本：** 7
-
-<!--Device-CardType-SINGLE_MODE_USIM_CARD = 20--><!--Device-CardType-SINGLE_MODE_USIM_CARD = 20-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## SINGLE_MODE_RUIM_CARD
-
-```TypeScript
-SINGLE_MODE_RUIM_CARD = 30
-```
-
-单RUIM卡。
-
-**起始版本：** 7
-
-<!--Device-CardType-SINGLE_MODE_RUIM_CARD = 30--><!--Device-CardType-SINGLE_MODE_RUIM_CARD = 30-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## DUAL_MODE_CG_CARD
-
-```TypeScript
-DUAL_MODE_CG_CARD = 40
-```
-
-双卡模式C+G。
-
-**起始版本：** 7
-
-<!--Device-CardType-DUAL_MODE_CG_CARD = 40--><!--Device-CardType-DUAL_MODE_CG_CARD = 40-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
 ## CT_NATIONAL_ROAMING_CARD
 
 ```TypeScript
@@ -107,6 +37,20 @@ CU_DUAL_MODE_CARD = 42
 **起始版本：** 7
 
 <!--Device-CardType-CU_DUAL_MODE_CARD = 42--><!--Device-CardType-CU_DUAL_MODE_CARD = 42-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## DUAL_MODE_CG_CARD
+
+```TypeScript
+DUAL_MODE_CG_CARD = 40
+```
+
+双卡模式C+G。
+
+**起始版本：** 7
+
+<!--Device-CardType-DUAL_MODE_CG_CARD = 40--><!--Device-CardType-DUAL_MODE_CG_CARD = 40-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -149,5 +93,61 @@ SINGLE_MODE_ISIM_CARD = 60
 **起始版本：** 8
 
 <!--Device-CardType-SINGLE_MODE_ISIM_CARD = 60--><!--Device-CardType-SINGLE_MODE_ISIM_CARD = 60-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## SINGLE_MODE_RUIM_CARD
+
+```TypeScript
+SINGLE_MODE_RUIM_CARD = 30
+```
+
+单RUIM卡。
+
+**起始版本：** 7
+
+<!--Device-CardType-SINGLE_MODE_RUIM_CARD = 30--><!--Device-CardType-SINGLE_MODE_RUIM_CARD = 30-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## SINGLE_MODE_SIM_CARD
+
+```TypeScript
+SINGLE_MODE_SIM_CARD = 10
+```
+
+单SIM卡。
+
+**起始版本：** 7
+
+<!--Device-CardType-SINGLE_MODE_SIM_CARD = 10--><!--Device-CardType-SINGLE_MODE_SIM_CARD = 10-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## SINGLE_MODE_USIM_CARD
+
+```TypeScript
+SINGLE_MODE_USIM_CARD = 20
+```
+
+单USIM卡。
+
+**起始版本：** 7
+
+<!--Device-CardType-SINGLE_MODE_USIM_CARD = 20--><!--Device-CardType-SINGLE_MODE_USIM_CARD = 20-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## UNKNOWN_CARD
+
+```TypeScript
+UNKNOWN_CARD = -1
+```
+
+未知类型。
+
+**起始版本：** 7
+
+<!--Device-CardType-UNKNOWN_CARD = -1--><!--Device-CardType-UNKNOWN_CARD = -1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService

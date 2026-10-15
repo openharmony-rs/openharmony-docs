@@ -38,6 +38,7 @@ Obtains an [IntelligentVoiceManager](arkts-basicservices-intelligentvoice-intell
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [22700101](../errorcode-intelligentVoice.md#22700101-insufficient-memory) | No memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,3 +52,5 @@ try {
   console.error(`Get IntelligentVoiceManager failed. Code:${error.code}, message:${error.message}`);
 }
 ```
+
+<!--DelEnd-->

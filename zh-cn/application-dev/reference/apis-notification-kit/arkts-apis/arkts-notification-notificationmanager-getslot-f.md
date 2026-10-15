@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getslot1"></a>
+
 ## getSlot
 
 ```TypeScript
@@ -41,7 +43,7 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -64,7 +66,7 @@ notificationManager.getSlot(slotType, getSlotCallback);
 ```
 
 
-<a id="getslot-2"></a>
+<a id="getslot3"></a>
 
 ## getSlot
 
@@ -86,7 +88,7 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot2) 删除指定类型的通知渠道。
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) 删除所有通知渠道。
 
@@ -106,7 +108,7 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |

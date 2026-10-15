@@ -8,7 +8,7 @@ The [universal attributes](arkts-arkui-common-comp.md) are supported, but the [a
 
 The [universal events](arkts-arkui-common-comp.md) are supported.
 
-**Inheritance/Implementation:** NodeContainerAttribute extends CommonMethod<NodeContainerAttribute>
+**Inheritance/Implementation:** NodeContainerAttribute extends CommonMethod&lt;NodeContainerAttribute&gt;
 
 **Since:** 11
 

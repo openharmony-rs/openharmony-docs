@@ -16,86 +16,6 @@ enum EventType
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## START_DOCUMENT
-
-```TypeScript
-START_DOCUMENT
-```
-
-启动文件事件。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-EventType-START_DOCUMENT--><!--Device-EventType-START_DOCUMENT-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## END_DOCUMENT
-
-```TypeScript
-END_DOCUMENT
-```
-
-结束文件事件。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-EventType-END_DOCUMENT--><!--Device-EventType-END_DOCUMENT-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## START_TAG
-
-```TypeScript
-START_TAG
-```
-
-启动标签事件。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-EventType-START_TAG--><!--Device-EventType-START_TAG-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## END_TAG
-
-```TypeScript
-END_TAG
-```
-
-结束标签事件。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-EventType-END_TAG--><!--Device-EventType-END_TAG-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## TEXT
-
-```TypeScript
-TEXT
-```
-
-文本事件。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-EventType-TEXT--><!--Device-EventType-TEXT-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## CDSECT
 
 ```TypeScript
@@ -106,7 +26,7 @@ CDATA事件。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-EventType-CDSECT--><!--Device-EventType-CDSECT-End-->
 
@@ -122,7 +42,7 @@ XML注释事件。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-EventType-COMMENT--><!--Device-EventType-COMMENT-End-->
 
@@ -138,25 +58,41 @@ XML文档类型声明事件。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-EventType-DOCDECL--><!--Device-EventType-DOCDECL-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## INSTRUCTION
+## END_DOCUMENT
 
 ```TypeScript
-INSTRUCTION
+END_DOCUMENT
 ```
 
-XML处理指令声明事件。
+结束文件事件。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-EventType-INSTRUCTION--><!--Device-EventType-INSTRUCTION-End-->
+<!--Device-EventType-END_DOCUMENT--><!--Device-EventType-END_DOCUMENT-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## END_TAG
+
+```TypeScript
+END_TAG
+```
+
+结束标签事件。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventType-END_TAG--><!--Device-EventType-END_TAG-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -170,9 +106,73 @@ ENTITY_REFERENCE
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-EventType-ENTITY_REFERENCE--><!--Device-EventType-ENTITY_REFERENCE-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## INSTRUCTION
+
+```TypeScript
+INSTRUCTION
+```
+
+XML处理指令声明事件。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventType-INSTRUCTION--><!--Device-EventType-INSTRUCTION-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## START_DOCUMENT
+
+```TypeScript
+START_DOCUMENT
+```
+
+启动文件事件。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventType-START_DOCUMENT--><!--Device-EventType-START_DOCUMENT-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## START_TAG
+
+```TypeScript
+START_TAG
+```
+
+启动标签事件。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventType-START_TAG--><!--Device-EventType-START_TAG-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## TEXT
+
+```TypeScript
+TEXT
+```
+
+文本事件。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventType-TEXT--><!--Device-EventType-TEXT-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -186,7 +186,7 @@ WHITESPACE
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-EventType-WHITESPACE--><!--Device-EventType-WHITESPACE-End-->
 

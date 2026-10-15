@@ -6,7 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isdistributedenabled-2"></a>
+<a id="isdistributedenabled3"></a>
 
 ## isDistributedEnabled
 
@@ -30,7 +30,7 @@ Checks whether a device enables cross-device notification. This API uses a promi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceType | string | Yes | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>   - **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**:   PC<br>- **tablet**: tablet |
+| deviceType | string | Yes | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>           - **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**:   PC<br>- **tablet**: tablet |
 
 **Return value:**
 
@@ -45,6 +45,7 @@ Checks whether a device enables cross-device notification. This API uses a promi
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,7 +58,7 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
         console.info('isDistributedEnabled succeeded, result = ' + data);
       }).catch((err: BusinessError) => {
@@ -69,3 +70,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

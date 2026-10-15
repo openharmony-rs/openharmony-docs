@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="dial1"></a>
+
 ## dial
 
 ```TypeScript
@@ -22,7 +24,7 @@ function dial(phoneNumber: string, options: DialOptions, callback: AsyncCallback
 
 **废弃版本：** 9
 
-**替代接口：** dialCall
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -52,7 +54,7 @@ call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
 ```
 
 
-<a id="dial-1"></a>
+<a id="dial2"></a>
 
 ## dial
 
@@ -70,7 +72,7 @@ function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** dialCall
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -107,7 +109,7 @@ call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
 ```
 
 
-<a id="dial-2"></a>
+<a id="dial3"></a>
 
 ## dial
 
@@ -125,7 +127,7 @@ function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** dialCall
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
 
 **需要权限：** ohos.permission.PLACE_CALL
 

@@ -6,6 +6,12 @@ declare class CustomDialogController
 
 Defines the controller of the custom dialog box.
 
+**Since:** 7
+
+<!--Device-unnamed-declare class CustomDialogController--><!--Device-unnamed-declare class CustomDialogController-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Objects to Import
 
 ```ts
@@ -19,12 +25,6 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 > - **CustomDialogController** is effective only when it is a member variable of the @CustomDialog and @Component decorated struct and is defined in the @Component decorated struct. For details, see the following example.
 > 
 > - You can pass in multiple other controllers in the CustomDialog to open one or more other CustomDialogs in the CustomDialog. In this case, you must place the controller pointing to the self behind all controllers.
-
-**Since:** 7
-
-<!--Device-unnamed-declare class CustomDialogController--><!--Device-unnamed-declare class CustomDialogController-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## close
 
@@ -55,8 +55,8 @@ Constructor for a custom dialog box.
 > **NOTE:** 
 > 
 > Custom dialog box parameters do not support dynamic updates. However, by setting **customStyle** to **true** and
-> configuring [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),
-> [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),
+> configuring [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1),
+> [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1),
 > and [size](../arkts-components/arkts-arkui-common-comp.md)-related attributes on the custom component, you can implement dynamic updates via
 > state variables bound to these attributes.
 > 

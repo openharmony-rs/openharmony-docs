@@ -30,7 +30,7 @@ Comment.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-comment?: ArrayBuffer--><!--Device-GzHeader-comment?: ArrayBuffer-End-->
 
@@ -48,7 +48,7 @@ Returns **True** after reading the gzip file header.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-done?: boolean--><!--Device-GzHeader-done?: boolean-End-->
 
@@ -66,7 +66,7 @@ Extra field.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-extra?: ArrayBuffer--><!--Device-GzHeader-extra?: ArrayBuffer-End-->
 
@@ -84,7 +84,7 @@ Length of the extra field.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-extraLen?: int--><!--Device-GzHeader-extraLen?: int-End-->
 
@@ -102,7 +102,7 @@ Returns **True** if the **crc** header exists.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-hcrc?: boolean--><!--Device-GzHeader-hcrc?: boolean-End-->
 
@@ -120,7 +120,7 @@ Returns **True** if the compressed data is considered text.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-isText?: boolean--><!--Device-GzHeader-isText?: boolean-End-->
 
@@ -138,7 +138,7 @@ File name.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-name?: ArrayBuffer--><!--Device-GzHeader-name?: ArrayBuffer-End-->
 
@@ -156,7 +156,7 @@ Operating system.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-os?: int--><!--Device-GzHeader-os?: int-End-->
 
@@ -174,7 +174,7 @@ Modification time.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-time?: long--><!--Device-GzHeader-time?: long-End-->
 
@@ -192,7 +192,7 @@ Extra flag.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GzHeader-xflags?: int--><!--Device-GzHeader-xflags?: int-End-->
 

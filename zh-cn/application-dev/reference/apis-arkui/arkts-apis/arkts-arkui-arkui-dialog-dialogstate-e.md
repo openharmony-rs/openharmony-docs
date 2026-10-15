@@ -12,13 +12,13 @@ Dialog状态的枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## UNINITIALIZED
+## APPEARED
 
 ```TypeScript
-UNINITIALIZED = 0
+APPEARED = 3
 ```
 
-表示它未初始化。
+表示它出现了。
 
 **起始版本：** 26.0.1
 
@@ -26,25 +26,7 @@ UNINITIALIZED = 0
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
-<!--Device-DialogState-UNINITIALIZED = 0--><!--Device-DialogState-UNINITIALIZED = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## INITIALIZED
-
-```TypeScript
-INITIALIZED = 1
-```
-
-表示已初始化。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
-<!--Device-DialogState-INITIALIZED = 1--><!--Device-DialogState-INITIALIZED = 1-End-->
+<!--Device-DialogState-APPEARED = 3--><!--Device-DialogState-APPEARED = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +48,13 @@ APPEARING = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## APPEARED
+## DISAPPEARED
 
 ```TypeScript
-APPEARED = 3
+DISAPPEARED = 5
 ```
 
-表示它出现了。
+表示它消失了。
 
 **起始版本：** 26.0.1
 
@@ -80,7 +62,7 @@ APPEARED = 3
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
-<!--Device-DialogState-APPEARED = 3--><!--Device-DialogState-APPEARED = 3-End-->
+<!--Device-DialogState-DISAPPEARED = 5--><!--Device-DialogState-DISAPPEARED = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,13 +84,13 @@ DISAPPEARING = 4
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DISAPPEARED
+## INITIALIZED
 
 ```TypeScript
-DISAPPEARED = 5
+INITIALIZED = 1
 ```
 
-表示它消失了。
+表示已初始化。
 
 **起始版本：** 26.0.1
 
@@ -116,6 +98,24 @@ DISAPPEARED = 5
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
-<!--Device-DialogState-DISAPPEARED = 5--><!--Device-DialogState-DISAPPEARED = 5-End-->
+<!--Device-DialogState-INITIALIZED = 1--><!--Device-DialogState-INITIALIZED = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## UNINITIALIZED
+
+```TypeScript
+UNINITIALIZED = 0
+```
+
+表示它未初始化。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogState-UNINITIALIZED = 0--><!--Device-DialogState-UNINITIALIZED = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,13 +12,13 @@ Enumerates toolbar item states.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ENABLE
+## ACTIVATE
 
 ```TypeScript
-ENABLE = 1
+ACTIVATE = 3
 ```
 
-The toolbar item is enabled.
+The toolbar item is activated.
 
 **Since:** 10
 
@@ -26,7 +26,7 @@ The toolbar item is enabled.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ItemState-ENABLE = 1--><!--Device-ItemState-ENABLE = 1-End-->
+<!--Device-ItemState-ACTIVATE = 3--><!--Device-ItemState-ACTIVATE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ The toolbar item is disabled.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ACTIVATE
+## ENABLE
 
 ```TypeScript
-ACTIVATE = 3
+ENABLE = 1
 ```
 
-The toolbar item is activated.
+The toolbar item is enabled.
 
 **Since:** 10
 
@@ -62,6 +62,6 @@ The toolbar item is activated.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ItemState-ACTIVATE = 3--><!--Device-ItemState-ACTIVATE = 3-End-->
+<!--Device-ItemState-ENABLE = 1--><!--Device-ItemState-ENABLE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

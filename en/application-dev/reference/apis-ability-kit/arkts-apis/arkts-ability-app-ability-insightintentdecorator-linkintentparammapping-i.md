@@ -4,7 +4,7 @@
 declare interface LinkIntentParamMapping
 ```
 
-LinkIntentParamMapping defines the mapping between intent parameters and URI information for the [@InsightIntentLink](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator.
+LinkIntentParamMapping defines the mapping between intent parameters and URI information for the [@InsightIntentLink](arkts-ability-app-ability-insightintentdecorator-insightintentlink-d.md#insightintentlink) decorator.
 
 **Since:** 20
 

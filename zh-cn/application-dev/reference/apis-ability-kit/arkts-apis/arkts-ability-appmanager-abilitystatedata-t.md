@@ -6,10 +6,10 @@ export type AbilityStateData = _AbilityStateData.default
 
 Ability状态信息。
 
+**类型：** _AbilityStateData.default
+
 **起始版本：** 14
 
 <!--Device-appManager-export type AbilityStateData = _AbilityStateData.default--><!--Device-appManager-export type AbilityStateData = _AbilityStateData.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _AbilityStateData.default

@@ -74,6 +74,7 @@ Instructs the bottom layer to prepare for zooming, for example, powering on the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -89,6 +90,8 @@ function prepareZoom(sessionExtendsZoom: camera.Zoom): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setZoomCenterPoint
 
@@ -142,6 +145,7 @@ Instructs the bottom layer to unprepare for zooming.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -157,3 +161,5 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
   }
 }
 ```
+
+<!--DelEnd-->

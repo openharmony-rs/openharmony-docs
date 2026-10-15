@@ -6,7 +6,7 @@ declare class CommonShapeMethod<T> extends CommonMethod<T>
 
 CommonShapeMethod
 
-**Inheritance/Implementation:** CommonShapeMethod extends CommonMethod<T>
+**Inheritance/Implementation:** CommonShapeMethod extends CommonMethod&lt;T&gt;
 
 **Since:** 7
 

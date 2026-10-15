@@ -6,6 +6,8 @@
 import { preferences } from '@kit.ArkData';
 ```
 
+<a id="deletepreferences1"></a>
+
 ## deletePreferences
 
 ```TypeScript
@@ -20,7 +22,7 @@ function deletePreferences(context: Context, name: string, callback: AsyncCallba
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-preferences-function deletePreferences(context: Context, name: string, callback: AsyncCallback<void>): void--><!--Device-preferences-function deletePreferences(context: Context, name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -83,7 +85,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deletepreferences-1"></a>
+<a id="deletepreferences2"></a>
 
 ## deletePreferences
 
@@ -99,7 +101,7 @@ function deletePreferences(context: Context, options: Options, callback: AsyncCa
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-preferences-function deletePreferences(context: Context, options: Options, callback: AsyncCallback<void>): void--><!--Device-preferences-function deletePreferences(context: Context, options: Options, callback: AsyncCallback<void>): void-End-->
 
@@ -167,7 +169,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deletepreferences-2"></a>
+<a id="deletepreferences3"></a>
 
 ## deletePreferences
 
@@ -183,7 +185,7 @@ function deletePreferences(context: Context, name: string): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-preferences-function deletePreferences(context: Context, name: string): Promise<void>--><!--Device-preferences-function deletePreferences(context: Context, name: string): Promise<void>-End-->
 
@@ -249,7 +251,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deletepreferences-3"></a>
+<a id="deletepreferences4"></a>
 
 ## deletePreferences
 
@@ -265,7 +267,7 @@ function deletePreferences(context: Context, options: Options): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-preferences-function deletePreferences(context: Context, options: Options): Promise<void>--><!--Device-preferences-function deletePreferences(context: Context, options: Options): Promise<void>-End-->
 

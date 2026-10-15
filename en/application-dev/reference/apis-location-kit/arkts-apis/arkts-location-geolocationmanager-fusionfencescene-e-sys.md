@@ -32,19 +32,19 @@ Indicates the airport scene.
 
 **System API:** This is a system API.
 
-## TRAIN_STATION
+## SHOP
 
 ```TypeScript
-TRAIN_STATION = 2
+SHOP = 4
 ```
 
-Indicates the train station scene.
+Indicates the shop scene.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FusionFenceScene-TRAIN_STATION = 2--><!--Device-FusionFenceScene-TRAIN_STATION = 2-End-->
+<!--Device-FusionFenceScene-SHOP = 4--><!--Device-FusionFenceScene-SHOP = 4-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -68,19 +68,19 @@ Indicates the subway scene.
 
 **System API:** This is a system API.
 
-## SHOP
+## TRAIN_STATION
 
 ```TypeScript
-SHOP = 4
+TRAIN_STATION = 2
 ```
 
-Indicates the shop scene.
+Indicates the train station scene.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FusionFenceScene-SHOP = 4--><!--Device-FusionFenceScene-SHOP = 4-End-->
+<!--Device-FusionFenceScene-TRAIN_STATION = 2--><!--Device-FusionFenceScene-TRAIN_STATION = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

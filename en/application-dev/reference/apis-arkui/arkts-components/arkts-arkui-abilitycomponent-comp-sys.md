@@ -51,6 +51,7 @@ Construct the ability component. Called when the ability component is used.
 
 ## Summary
 
+<!--Del-->
 ## Examples
 
 ```TypeScript
@@ -77,3 +78,5 @@ struct MyComponent {
   }
 }
 ```
+
+<!--DelEnd-->

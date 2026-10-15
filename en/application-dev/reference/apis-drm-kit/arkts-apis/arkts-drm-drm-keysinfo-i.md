@@ -30,7 +30,7 @@ Media key ID.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-KeysInfo-keyId: Uint8Array--><!--Device-KeysInfo-keyId: Uint8Array-End-->
 
@@ -48,7 +48,7 @@ Media key status.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-KeysInfo-value: string--><!--Device-KeysInfo-value: string-End-->
 

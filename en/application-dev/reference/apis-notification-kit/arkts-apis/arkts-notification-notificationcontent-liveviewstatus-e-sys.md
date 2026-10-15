@@ -30,22 +30,6 @@ The live view is created.
 
 **System API:** This is a system API.
 
-## LIVE_VIEW_INCREMENTAL_UPDATE
-
-```TypeScript
-LIVE_VIEW_INCREMENTAL_UPDATE = 1
-```
-
-The live view is updated in incremental mode.
-
-**Since:** 11
-
-<!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1--><!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1-End-->
-
-**System capability:** SystemCapability.Security.AccessToken
-
-**System API:** This is a system API.
-
 ## LIVE_VIEW_END
 
 ```TypeScript
@@ -73,6 +57,22 @@ The live view is updated in full mode.
 **Since:** 11
 
 <!--Device-LiveViewStatus-LIVE_VIEW_FULL_UPDATE = 3--><!--Device-LiveViewStatus-LIVE_VIEW_FULL_UPDATE = 3-End-->
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**System API:** This is a system API.
+
+## LIVE_VIEW_INCREMENTAL_UPDATE
+
+```TypeScript
+LIVE_VIEW_INCREMENTAL_UPDATE = 1
+```
+
+The live view is updated in incremental mode.
+
+**Since:** 11
+
+<!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1--><!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

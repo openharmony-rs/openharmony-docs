@@ -32,7 +32,7 @@ appEventInfos: Array<AppEventInfo>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackage-appEventInfos: Array<AppEventInfo>--><!--Device-AppEventPackage-appEventInfos: Array<AppEventInfo>-End-->
 
@@ -52,7 +52,7 @@ data: string[]
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackage-data: string[]--><!--Device-AppEventPackage-data: string[]-End-->
 
@@ -72,7 +72,7 @@ packageId: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackage-packageId: int--><!--Device-AppEventPackage-packageId: int-End-->
 
@@ -92,7 +92,7 @@ row: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackage-row: int--><!--Device-AppEventPackage-row: int-End-->
 
@@ -112,7 +112,7 @@ size: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppEventPackage-size: int--><!--Device-AppEventPackage-size: int-End-->
 

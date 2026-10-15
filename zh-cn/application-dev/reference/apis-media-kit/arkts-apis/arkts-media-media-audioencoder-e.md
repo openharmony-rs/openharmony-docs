@@ -21,15 +21,13 @@ enum AudioEncoder
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
-## DEFAULT
+## AAC_LC
 
 ```TypeScript
-DEFAULT = 0
+AAC_LC = 3
 ```
 
-默认编码格式。
-
-仅做接口定义，暂不支持使用。
+AAC-LC（Advanced Audio Coding Low Complexity）编码格式。
 
 **说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](arkts-media-media-codecmimetype-e.md)中的AUDIO_AAC替代。
 
@@ -37,7 +35,9 @@ DEFAULT = 0
 
 **废弃版本：** 8
 
-<!--Device-AudioEncoder-DEFAULT = 0--><!--Device-AudioEncoder-DEFAULT = 0-End-->
+**替代接口：** [AUDIO_AAC](arkts-media-media-codecmimetype-e.md#audio_aac)
+
+<!--Device-AudioEncoder-AAC_LC = 3--><!--Device-AudioEncoder-AAC_LC = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -85,13 +85,15 @@ AMR-WB(Adaptive Multi Rate-Wide Band Speech Codec) 编码格式。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
-## AAC_LC
+## DEFAULT
 
 ```TypeScript
-AAC_LC = 3
+DEFAULT = 0
 ```
 
-AAC-LC（Advanced Audio Coding Low Complexity）编码格式。
+默认编码格式。
+
+仅做接口定义，暂不支持使用。
 
 **说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](arkts-media-media-codecmimetype-e.md)中的AUDIO_AAC替代。
 
@@ -99,9 +101,7 @@ AAC-LC（Advanced Audio Coding Low Complexity）编码格式。
 
 **废弃版本：** 8
 
-**替代接口：** [AUDIO_AAC](arkts-media-media-codecmimetype-e.md#audio_aac)
-
-<!--Device-AudioEncoder-AAC_LC = 3--><!--Device-AudioEncoder-AAC_LC = 3-End-->
+<!--Device-AudioEncoder-DEFAULT = 0--><!--Device-AudioEncoder-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 

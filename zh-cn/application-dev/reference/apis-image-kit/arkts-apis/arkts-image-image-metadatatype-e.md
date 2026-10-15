@@ -12,6 +12,38 @@ enum MetadataType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## AVIS_METADATA
+
+```TypeScript
+AVIS_METADATA = 23
+```
+
+AVIS图片元数据。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MetadataType-AVIS_METADATA = 23--><!--Device-MetadataType-AVIS_METADATA = 23-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## DNG_METADATA
+
+```TypeScript
+DNG_METADATA = 16
+```
+
+DNG图片元数据。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MetadataType-DNG_METADATA = 16--><!--Device-MetadataType-DNG_METADATA = 16-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## EXIF_METADATA
 
 ```TypeScript
@@ -70,35 +102,19 @@ HEIF序列图片元数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## DNG_METADATA
+## JFIF_METADATA
 
 ```TypeScript
-DNG_METADATA = 16
+JFIF_METADATA = 20
 ```
 
-DNG图片元数据。
+JFIF图片元数据。
 
-**起始版本：** 24
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MetadataType-DNG_METADATA = 16--><!--Device-MetadataType-DNG_METADATA = 16-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## WEBP_METADATA
-
-```TypeScript
-WEBP_METADATA = 17
-```
-
-WebP图片元数据。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MetadataType-WEBP_METADATA = 17--><!--Device-MetadataType-WEBP_METADATA = 17-End-->
+<!--Device-MetadataType-JFIF_METADATA = 20--><!--Device-MetadataType-JFIF_METADATA = 20-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -118,22 +134,6 @@ PNG图片元数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## JFIF_METADATA
-
-```TypeScript
-JFIF_METADATA = 20
-```
-
-JFIF图片元数据。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MetadataType-JFIF_METADATA = 20--><!--Device-MetadataType-JFIF_METADATA = 20-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## TIFF_METADATA
 
 ```TypeScript
@@ -150,6 +150,22 @@ TIFF图片元数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## WEBP_METADATA
+
+```TypeScript
+WEBP_METADATA = 17
+```
+
+WebP图片元数据。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MetadataType-WEBP_METADATA = 17--><!--Device-MetadataType-WEBP_METADATA = 17-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## XMP_METADATA
 
 ```TypeScript
@@ -163,21 +179,5 @@ XMP图片元数据。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MetadataType-XMP_METADATA = 22--><!--Device-MetadataType-XMP_METADATA = 22-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## AVIS_METADATA
-
-```TypeScript
-AVIS_METADATA = 23
-```
-
-AVIS图片元数据。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MetadataType-AVIS_METADATA = 23--><!--Device-MetadataType-AVIS_METADATA = 23-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

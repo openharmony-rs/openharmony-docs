@@ -6,7 +6,7 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="getpasswordpolicy-2"></a>
+<a id="getpasswordpolicy3"></a>
 
 ## getPasswordPolicy
 
@@ -38,6 +38,7 @@ Obtains the device screen lock password policy.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,3 +51,5 @@ try {
   console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

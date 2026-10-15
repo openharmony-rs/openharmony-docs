@@ -18,7 +18,7 @@ Describes the coordinates of the motion blur anchor.
 x: number
 ```
 
-X-coordinate of the anchor. The value range is [0.0, 1.0].
+Anchor coordinate x value. The value range is [0.0, 1.0], where 0.0 indicates the left edge of the component, 1.0 indicates the right edge of the component, and 0.5 indicates the horizontal center.
 
 **Type:** number
 
@@ -38,7 +38,7 @@ X-coordinate of the anchor. The value range is [0.0, 1.0].
 y: number
 ```
 
-Y-coordinate of the anchor. The value range is [0.0, 1.0].
+Anchor coordinate y value. The value range is [0.0, 1.0], where 0.0 indicates the top edge of the component, 1.0 indicates the bottom edge of the component, and 0.5 indicates the vertical center.
 
 **Type:** number
 

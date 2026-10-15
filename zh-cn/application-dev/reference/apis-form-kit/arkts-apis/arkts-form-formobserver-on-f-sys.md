@@ -38,6 +38,7 @@ function on(type: 'formAdd', observerCallback: Callback<formInfo.RunningFormInfo
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,6 +50,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.on('formAdd', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('formAdd')
@@ -84,6 +87,7 @@ function on(type: 'formAdd', hostBundleName: string, observerCallback: Callback<
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -97,6 +101,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.on('formAdd', bundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('formRemove')
@@ -131,6 +137,7 @@ function on(type: 'formRemove', observerCallback: Callback<formInfo.RunningFormI
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -142,6 +149,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.on('formRemove', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('formRemove')
@@ -177,6 +186,7 @@ function on(type: 'formRemove', hostBundleName: string, observerCallback: Callba
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -190,6 +200,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.on('formRemove', bundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('notifyVisible')
@@ -226,6 +238,7 @@ function on(type: 'notifyVisible', observerCallback: Callback<Array<formInfo.Run
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -239,6 +252,8 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 
 formObserver.on('notifyVisible', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('notifyVisible')
@@ -280,6 +295,7 @@ function on(
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -295,6 +311,8 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 
 formObserver.on('notifyVisible', bundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('notifyInvisible')
@@ -331,6 +349,7 @@ function on(type: 'notifyInvisible', observerCallback: Callback<Array<formInfo.R
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -344,6 +363,8 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 
 formObserver.on('notifyInvisible', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('notifyInvisible')
@@ -418,6 +439,7 @@ function on(type: 'router', observerCallback: Callback<formInfo.RunningFormInfo>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -428,6 +450,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.on('router', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('router')
@@ -463,6 +487,7 @@ function on(type: 'router', hostBundleName: string, observerCallback: Callback<f
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -474,6 +499,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.on('router', hostBundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('message')
@@ -508,6 +535,7 @@ function on(type: 'message', observerCallback: Callback<formInfo.RunningFormInfo
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -518,6 +546,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.on('message', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('message')
@@ -553,6 +583,7 @@ function on(type: 'message', hostBundleName: string, observerCallback: Callback<
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -564,6 +595,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.on('message', hostBundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('call')
@@ -598,6 +631,7 @@ function on(type: 'call', observerCallback: Callback<formInfo.RunningFormInfo>):
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -608,6 +642,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.on('call', callback);
 ```
+
+<!--DelEnd-->
 
 
 ## on('call')
@@ -643,6 +679,7 @@ function on(type: 'call', hostBundleName: string, observerCallback: Callback<for
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -654,3 +691,5 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.on('call', hostBundleName, callback);
 ```
+
+<!--DelEnd-->

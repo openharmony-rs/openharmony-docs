@@ -12,17 +12,17 @@ Enumerates the types of the floating ball template.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## STATIC
+## EMPHATIC
 
 ```TypeScript
-STATIC = 1
+EMPHATIC = 3
 ```
 
-Static layout, which provides a title and an icon. When this template is used, the **title** and **icon** parameters in **FloatingBallParams** must be passed.
+Emphasized text layout, which provides an icon, a title, and content. When this template is used, the **title** parameter in **FloatingBallParams** must be passed.
 
 **Since:** 20
 
-<!--Device-FloatingBallTemplate-STATIC = 1--><!--Device-FloatingBallTemplate-STATIC = 1-End-->
+<!--Device-FloatingBallTemplate-EMPHATIC = 3--><!--Device-FloatingBallTemplate-EMPHATIC = 3-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -40,20 +40,6 @@ Standard text layout, which provides a title and content. When this template is 
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## EMPHATIC
-
-```TypeScript
-EMPHATIC = 3
-```
-
-Emphasized text layout, which provides an icon, a title, and content. When this template is used, the **title** parameter in **FloatingBallParams** must be passed.
-
-**Since:** 20
-
-<!--Device-FloatingBallTemplate-EMPHATIC = 3--><!--Device-FloatingBallTemplate-EMPHATIC = 3-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
 ## SIMPLE
 
 ```TypeScript
@@ -65,5 +51,19 @@ Plain text layout, which provides only a title. When this template is used, the 
 **Since:** 20
 
 <!--Device-FloatingBallTemplate-SIMPLE = 4--><!--Device-FloatingBallTemplate-SIMPLE = 4-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## STATIC
+
+```TypeScript
+STATIC = 1
+```
+
+Static layout, which provides a title and an icon. When this template is used, the **title** and **icon** parameters in **FloatingBallParams** must be passed.
+
+**Since:** 20
+
+<!--Device-FloatingBallTemplate-STATIC = 1--><!--Device-FloatingBallTemplate-STATIC = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

@@ -145,3 +145,91 @@ struct Index {
   }
 }
 ```
+
+### 示例1（文本对话框设置沉浸式材质、非线性形变与流光）
+
+该示例通过调用showDialog，设置ShowDialogOptions中的系统材质systemMaterial，以及非线性形变distortionMode和流光edgeLightMode，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，ShowDialogOptions新增distortionMode和edgeLightMode属性。
+
+该示例配图为设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+
+
+该示例配图为未设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShowDialogExample {
+  build() {
+    Column() {
+      Button("showDialog")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showDialog({
+            title: 'showDialog Title',
+            message: 'showDialog Text',
+            buttons: [
+              { text: 'button1', color: '#0000ff' },
+              { text: 'button2', color: '#0000ff' }
+            ],
+            // 设置沉浸式材质
+            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+            // 非线性形变自适应
+            distortionMode: DistortionMode.DISTORTION_AUTO,
+            // 流光自适应
+            edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+### 示例2（操作菜单设置沉浸式材质、非线性形变与流光）
+
+该示例通过调用[showActionMenu](./arkts-apis-uicontext-promptaction.md#showactionmenu11)，设置ActionMenuOptions中的系统材质systemMaterial，以及非线性形变distortionMode和流光edgeLightMode，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，ActionMenuOptions新增distortionMode和edgeLightMode属性。
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShowActionMenuExample {
+  build() {
+    Column() {
+      Button("showActionMenu")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showActionMenu({
+            title: 'showActionMenu Title',
+            buttons: [
+              { text: 'button1', color: '#0000ff' },
+              { text: 'button2', color: '#0000ff' },
+              { text: 'button3', color: '#0000ff' }
+            ],
+            // 设置沉浸式材质
+            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+            // 非线性形变自适应
+            distortionMode: DistortionMode.DISTORTION_AUTO,
+            // 流光自适应
+            edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```

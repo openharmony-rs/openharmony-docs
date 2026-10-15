@@ -20,7 +20,7 @@ Defines the options to be passed when constructing **SecurityUIExtensionComponen
 dpiFollowStrategy?: SecurityDpiFollowStrategy
 ```
 
-Resolution following strategy for **SecurityUIExtensionComponent**, used to control whether the embedded **UIExtensionAbility** content follows the host application's resolution or uses its own resolution. Default value: **FOLLOW_UI_EXTENSION_ABILITY_DPI**.
+Resolution following strategy for **SecurityUIExtensionComponent**, used to control whether the embedded **UIExtensionAbility** content follows the host application's resolution or uses its own resolution.<br>Default value: **FOLLOW_UI_EXTENSION_ABILITY_DPI**
 
 **Type:** [SecurityDpiFollowStrategy](arkts-arkui-securityuiextensioncomponent-comp-securitydpifollowstrategy-e-sys.md)
 
@@ -42,7 +42,7 @@ Resolution following strategy for **SecurityUIExtensionComponent**, used to cont
 isTransferringCaller?: boolean
 ```
 
-Whether the **UIExtensionComponent** forwards the upper-level caller information when it is used for nesting. **true**: yes; **false**: no. The default value is **false**.
+Whether to forward the Caller information of the upper-level caller (that is, the identity information of the **Ability** that initiates the call) when **SecurityUIExtensionComponent** is nested, so as to support call chain passing in multi-level nesting scenarios.<br>**true**: forwards the Caller information of the upper level; **false**: does not forward the Caller information of the upper level.<br>Default value: **false**
 
 **Type:** boolean
 
@@ -64,7 +64,7 @@ Whether the **UIExtensionComponent** forwards the upper-level caller information
 placeholder?: ComponentContent
 ```
 
-Placeholder to be displayed before the **SecurityUIExtensionComponent** establishes a connection with the **UIExtensionAbility**.
+Placeholder displayed before the connection between **SecurityUIExtensionComponent** and the **UIExtensionAbility** is established. No placeholder is displayed if this attribute is not set.
 
 **Type:** ComponentContent
 

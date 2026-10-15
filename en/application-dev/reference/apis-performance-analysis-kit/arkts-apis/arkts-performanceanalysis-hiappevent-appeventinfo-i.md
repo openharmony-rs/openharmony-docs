@@ -30,7 +30,7 @@ Event domain. The value is a string of up to 32 characters, including digits (0 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventInfo-domain: string--><!--Device-AppEventInfo-domain: string-End-->
 
@@ -48,7 +48,7 @@ Event type.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventInfo-eventType: EventType--><!--Device-AppEventInfo-eventType: EventType-End-->
 
@@ -66,7 +66,7 @@ Event name. The value is string that contains a maximum of 48 characters, includ
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventInfo-name: string--><!--Device-AppEventInfo-name: string-End-->
 

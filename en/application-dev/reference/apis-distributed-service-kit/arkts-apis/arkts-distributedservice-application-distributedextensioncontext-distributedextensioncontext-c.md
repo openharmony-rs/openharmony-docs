@@ -28,7 +28,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 Connects to a remote Service extension ability.
 
-This method connects to a Service extension ability on a remote device. You must implement the [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md) interface to obtain the proxy of the target service extension when connected.
+This method connects to a Service extension ability on a remote device. You must implement the [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md) interface to obtain the proxy of the target service extension when connected.
 
 **Since:** 26.0.0
 
@@ -43,7 +43,7 @@ This method connects to a Service extension ability on a remote device. You must
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Indicates the service extension to connect. |
-| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md) | Yes | Indicates the callback of connection. |
+| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md) | Yes | Indicates the callback of connection. |
 
 **Return value:**
 
@@ -55,7 +55,7 @@ This method connects to a Service extension ability on a remote device. You must
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |

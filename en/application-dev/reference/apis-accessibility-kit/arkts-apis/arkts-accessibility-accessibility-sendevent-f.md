@@ -4,8 +4,10 @@
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
+
+<a id="sendevent1"></a>
 
 ## sendEvent
 
@@ -19,7 +21,7 @@ Sends an accessibility event. The event will be distributed to registered access
 
 **Deprecated since:** 9
 
-**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md)(event: EventInfo, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent1)(event: EventInfo, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-accessibility-function sendEvent(event: EventInfo, callback: AsyncCallback<void>): void--><!--Device-accessibility-function sendEvent(event: EventInfo, callback: AsyncCallback<void>): void-End-->
 
@@ -54,7 +56,7 @@ accessibility.sendEvent(eventInfo, (err: BusinessError) => {
 ```
 
 
-<a id="sendevent-1"></a>
+<a id="sendevent2"></a>
 
 ## sendEvent
 
@@ -68,7 +70,7 @@ Sends an accessibility event. The event will be distributed to registered access
 
 **Deprecated since:** 9
 
-**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent-1)(event: EventInfo)
+**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent2)(event: EventInfo)
 
 <!--Device-accessibility-function sendEvent(event: EventInfo): Promise<void>--><!--Device-accessibility-function sendEvent(event: EventInfo): Promise<void>-End-->
 

@@ -4,7 +4,7 @@
 export interface HapModuleInfo
 ```
 
-HAP信息。
+HAP信息，可以通过[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)获取自身的HAP信息，其中参数[bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md)至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE。
 
 **起始版本：** 9
 
@@ -18,7 +18,7 @@ HAP信息。
 readonly codePhysicalPath?: string
 ```
 
-标识模块的物理安装路径。
+模块的物理安装路径。
 
 **类型：** string
 

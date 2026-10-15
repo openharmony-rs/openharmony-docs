@@ -1,6 +1,6 @@
-# @ohos.bundle.bundleMonitor
+# @ohos.bundle.bundleMonitor(bundleMonitor Module)
 
-Bundle monitor
+The module provides APIs for listening for bundle installation, uninstall, and updates.
 
 @namespace bundleMonitor
 
@@ -25,8 +25,8 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [off](arkts-ability-bundlemonitor-off-f-sys.md) | Unregister to monitor the installation status |
-| [on](arkts-ability-bundlemonitor-on-f-sys.md) | Register to monitor the installation status |
+| [off](arkts-ability-bundlemonitor-off-f-sys.md) | Unsubscribes from bundle installation, uninstall, and update events. This API uses an asynchronous callback to return the result. |
+| [on](arkts-ability-bundlemonitor-on-f-sys.md) | Subscribes to bundle installation, uninstall, and update events. This API uses an asynchronous callback to return the result. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -34,7 +34,7 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md) | This module defines the result information of monitoring install, update and uninstall. |
+| [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md) | Application Change Information. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -42,5 +42,5 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [BundleChangedEvent](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md) | Indicates the event type of bundle change |
+| [BundleChangedEvent](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md) | Enumerates the types of events to listen for. |
 <!--DelEnd-->

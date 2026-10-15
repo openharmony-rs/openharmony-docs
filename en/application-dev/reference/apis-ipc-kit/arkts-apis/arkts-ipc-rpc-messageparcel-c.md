@@ -553,6 +553,8 @@ try {
 }
 ```
 
+<a id="readbooleanarray1"></a>
+
 ## readBooleanArray
 
 ```TypeScript
@@ -565,7 +567,7 @@ Reads the Boolean array from this **MessageParcel** object and writes it to the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray)(dataIn: boolean[])
+**Substitutes:** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray1)(dataIn: boolean[])
 
 <!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void--><!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void-End-->
 
@@ -595,7 +597,7 @@ try {
 }
 ```
 
-<a id="readbooleanarray-1"></a>
+<a id="readbooleanarray2"></a>
 
 ## readBooleanArray
 
@@ -679,6 +681,8 @@ try {
 }
 ```
 
+<a id="readbytearray1"></a>
+
 ## readByteArray
 
 ```TypeScript
@@ -721,7 +725,7 @@ try {
 }
 ```
 
-<a id="readbytearray-1"></a>
+<a id="readbytearray2"></a>
 
 ## readByteArray
 
@@ -806,6 +810,8 @@ try {
 }
 ```
 
+<a id="readchararray1"></a>
+
 ## readCharArray
 
 ```TypeScript
@@ -848,7 +854,7 @@ try {
 }
 ```
 
-<a id="readchararray-1"></a>
+<a id="readchararray2"></a>
 
 ## readCharArray
 
@@ -932,6 +938,8 @@ try {
 }
 ```
 
+<a id="readdoublearray1"></a>
+
 ## readDoubleArray
 
 ```TypeScript
@@ -974,7 +982,7 @@ try {
 }
 ```
 
-<a id="readdoublearray-1"></a>
+<a id="readdoublearray2"></a>
 
 ## readDoubleArray
 
@@ -1197,6 +1205,8 @@ try {
 }
 ```
 
+<a id="readfloatarray1"></a>
+
 ## readFloatArray
 
 ```TypeScript
@@ -1239,7 +1249,7 @@ try {
 }
 ```
 
-<a id="readfloatarray-1"></a>
+<a id="readfloatarray2"></a>
 
 ## readFloatArray
 
@@ -1323,6 +1333,8 @@ try {
 }
 ```
 
+<a id="readintarray1"></a>
+
 ## readIntArray
 
 ```TypeScript
@@ -1365,7 +1377,7 @@ try {
 }
 ```
 
-<a id="readintarray-1"></a>
+<a id="readintarray2"></a>
 
 ## readIntArray
 
@@ -1489,6 +1501,8 @@ try {
 }
 ```
 
+<a id="readlongarray1"></a>
+
 ## readLongArray
 
 ```TypeScript
@@ -1531,7 +1545,7 @@ try {
 }
 ```
 
-<a id="readlongarray-1"></a>
+<a id="readlongarray2"></a>
 
 ## readLongArray
 
@@ -1674,6 +1688,8 @@ try {
 }
 ```
 
+<a id="readremoteobjectarray1"></a>
+
 ## readRemoteObjectArray
 
 ```TypeScript
@@ -1686,7 +1702,7 @@ Reads the **IRemoteObject** array from this **MessageParcel** object and writes 
 
 **Deprecated since:** 9
 
-**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
+**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray1)(objects: IRemoteObject[])
 
 <!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void--><!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void-End-->
 
@@ -1728,7 +1744,7 @@ try {
 }
 ```
 
-<a id="readremoteobjectarray-1"></a>
+<a id="readremoteobjectarray2"></a>
 
 ## readRemoteObjectArray
 
@@ -1742,7 +1758,7 @@ Reads the **IRemoteObject** array from this **MessageParcel** object.
 
 **Deprecated since:** 9
 
-**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
+**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray1)(objects: IRemoteObject[])
 
 <!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]--><!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]-End-->
 
@@ -1957,6 +1973,8 @@ try {
 }
 ```
 
+<a id="readshortarray1"></a>
+
 ## readShortArray
 
 ```TypeScript
@@ -1999,7 +2017,7 @@ try {
 }
 ```
 
-<a id="readshortarray-1"></a>
+<a id="readshortarray2"></a>
 
 ## readShortArray
 
@@ -2083,6 +2101,8 @@ try {
 }
 ```
 
+<a id="readstringarray1"></a>
+
 ## readStringArray
 
 ```TypeScript
@@ -2095,7 +2115,7 @@ Reads the string array from this **MessageParcel** object and writes it to the c
 
 **Deprecated since:** 9
 
-**Substitutes:** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray)(dataIn: string[])
+**Substitutes:** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray1)(dataIn: string[])
 
 <!--Device-MessageParcel-readStringArray(dataIn: string[]): void--><!--Device-MessageParcel-readStringArray(dataIn: string[]): void-End-->
 
@@ -2125,7 +2145,7 @@ try {
 }
 ```
 
-<a id="readstringarray-1"></a>
+<a id="readstringarray2"></a>
 
 ## readStringArray
 

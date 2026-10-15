@@ -12,20 +12,6 @@ Enumerates the audio session scenes.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## AUDIO_SESSION_SCENE_MEDIA
-
-```TypeScript
-AUDIO_SESSION_SCENE_MEDIA = 0
-```
-
-Scene for media.
-
-**Since:** 20
-
-<!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_MEDIA = 0--><!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_MEDIA = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
 ## AUDIO_SESSION_SCENE_GAME
 
 ```TypeScript
@@ -40,6 +26,20 @@ Scene for game.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## AUDIO_SESSION_SCENE_MEDIA
+
+```TypeScript
+AUDIO_SESSION_SCENE_MEDIA = 0
+```
+
+Scene for media.
+
+**Since:** 20
+
+<!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_MEDIA = 0--><!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_MEDIA = 0-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## AUDIO_SESSION_SCENE_VOICE_COMMUNICATION
 
 ```TypeScript
@@ -51,5 +51,21 @@ Scene for voice communication.
 **Since:** 20
 
 <!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2--><!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## AUDIO_SESSION_SCENE_VOICE_MESSAGE
+
+```TypeScript
+AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3
+```
+
+Scene for voice message.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3--><!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

@@ -48,6 +48,17 @@ Determine whether the local device supports PAN.
 | --- | --- |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+try {
+    let panProfile: pan.PanProfile = pan.createPanProfile();
+    let isPanSupported: boolean = panProfile.isPanSupported();
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 ## isTetheringOn
 
 ```TypeScript
@@ -83,11 +94,10 @@ Obtains the tethering enable or disable.
 **Examples**
 
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
-    panProfile.isTetheringOn();
+    let isTetheringOn: boolean = panProfile.isTetheringOn();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```

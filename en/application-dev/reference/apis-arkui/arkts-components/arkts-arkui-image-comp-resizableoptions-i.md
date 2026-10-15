@@ -24,7 +24,7 @@ Lattice object, which is used to divide the image by lattice.
 
 **NOTE:** 
 
-Use the [createImageLattice](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-lattice-c.md#createimagelattice) API of **@ohos.graphics.drawing** to create a **Lattice** type as the input parameter. Lattices located at both even columns and even rows are fixed; those at other positions are stretched according to **slice**.
+Use the [createImageLattice](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-lattice-c.md#createimagelattice1) API of **@ohos.graphics.drawing** to create a **Lattice** type as the input parameter. Lattices located at both even columns and even rows are fixed; those at other positions are stretched according to **slice**.
 
 This parameter does not take effect for the [backgroundImageResizable](arkts-arkui-common-comp-commonmethod-c.md#backgroundimageresizable) API.
 

@@ -65,14 +65,14 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 // Obtain the authentication tip information via a callback.
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.on('tip', {
-    callback : (result : userAuth.TipInfo) => {
+    callback: (result: userAuth.TipInfo) => {
       switch (result.tip) {
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT:
           // Do something.
@@ -88,7 +88,7 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 ```

@@ -46,22 +46,6 @@ CANCEL_REASON_POSTPONED = 1
 
 **系统接口：** 此接口为系统接口。
 
-## CANCEL_REASON_TIMEOUT
-
-```TypeScript
-CANCEL_REASON_TIMEOUT = 2
-```
-
-下载已超时，稍后可以重新启动。
-
-**起始版本：** 18
-
-<!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2--><!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
 ## CANCEL_REASON_PPR_NOT_ALLOWED
 
 ```TypeScript
@@ -73,6 +57,22 @@ CANCEL_REASON_PPR_NOT_ALLOWED = 3
 **起始版本：** 18
 
 <!--Device-CancelReason-CANCEL_REASON_PPR_NOT_ALLOWED = 3--><!--Device-CancelReason-CANCEL_REASON_PPR_NOT_ALLOWED = 3-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## CANCEL_REASON_TIMEOUT
+
+```TypeScript
+CANCEL_REASON_TIMEOUT = 2
+```
+
+下载已超时，稍后可以重新启动。
+
+**起始版本：** 18
+
+<!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2--><!--Device-CancelReason-CANCEL_REASON_TIMEOUT = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 

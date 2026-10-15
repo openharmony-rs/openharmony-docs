@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="removeprinters1"></a>
+
 ## removePrinters
 
 ```TypeScript
@@ -39,6 +41,7 @@ Removes printers. This API uses an asynchronous callback to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,8 +58,10 @@ print.removePrinters([printerId], (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="removeprinters-1"></a>
+
+<a id="removeprinters2"></a>
 
 ## removePrinters
 
@@ -96,6 +101,7 @@ Removes printers. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,3 +115,5 @@ print.removePrinters([printerId]).then(() => {
     console.error(`Failed to remove printers. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -28,22 +28,6 @@ PHOTO_PROXY = 3
 
 **系统接口：** 此接口为系统接口。
 
-## PRIVATE_MOVING_PHOTO_RESOURCE
-
-```TypeScript
-PRIVATE_MOVING_PHOTO_RESOURCE = 4
-```
-
-表示私有动态照片资源。
-
-**起始版本：** 13
-
-<!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## PRIVATE_MOVING_PHOTO_METADATA
 
 ```TypeScript
@@ -55,6 +39,22 @@ PRIVATE_MOVING_PHOTO_METADATA = 5
 **起始版本：** 18
 
 <!--Device-ResourceType-PRIVATE_MOVING_PHOTO_METADATA = 5--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_METADATA = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PRIVATE_MOVING_PHOTO_RESOURCE
+
+```TypeScript
+PRIVATE_MOVING_PHOTO_RESOURCE = 4
+```
+
+表示私有动态照片资源。
+
+**起始版本：** 13
+
+<!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -676,6 +676,8 @@ try {
 }
 ```
 
+<a id="readbooleanarray1"></a>
+
 ## readBooleanArray
 
 ```TypeScript
@@ -723,7 +725,7 @@ try {
 }
 ```
 
-<a id="readbooleanarray-1"></a>
+<a id="readbooleanarray2"></a>
 
 ## readBooleanArray
 
@@ -821,6 +823,8 @@ try {
 }
 ```
 
+<a id="readbytearray1"></a>
+
 ## readByteArray
 
 ```TypeScript
@@ -870,7 +874,7 @@ try {
 }
 ```
 
-<a id="readbytearray-1"></a>
+<a id="readbytearray2"></a>
 
 ## readByteArray
 
@@ -964,6 +968,8 @@ try {
 }
 ```
 
+<a id="readchararray1"></a>
+
 ## readCharArray
 
 ```TypeScript
@@ -1011,7 +1017,7 @@ try {
 }
 ```
 
-<a id="readchararray-1"></a>
+<a id="readchararray2"></a>
 
 ## readCharArray
 
@@ -1109,6 +1115,8 @@ try {
 }
 ```
 
+<a id="readdoublearray1"></a>
+
 ## readDoubleArray
 
 ```TypeScript
@@ -1156,7 +1164,7 @@ try {
 }
 ```
 
-<a id="readdoublearray-1"></a>
+<a id="readdoublearray2"></a>
 
 ## readDoubleArray
 
@@ -1412,6 +1420,8 @@ try {
 }
 ```
 
+<a id="readfloatarray1"></a>
+
 ## readFloatArray
 
 ```TypeScript
@@ -1459,7 +1469,7 @@ try {
 }
 ```
 
-<a id="readfloatarray-1"></a>
+<a id="readfloatarray2"></a>
 
 ## readFloatArray
 
@@ -1519,7 +1529,7 @@ Reads the integer from this **MessageSequence** object.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MessageSequence-readInt(): int--><!--Device-MessageSequence-readInt(): int-End-->
 
@@ -1556,6 +1566,8 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
+
+<a id="readintarray1"></a>
 
 ## readIntArray
 
@@ -1607,7 +1619,7 @@ try {
 }
 ```
 
-<a id="readintarray-1"></a>
+<a id="readintarray2"></a>
 
 ## readIntArray
 
@@ -1752,6 +1764,8 @@ try {
 }
 ```
 
+<a id="readlongarray1"></a>
+
 ## readLongArray
 
 ```TypeScript
@@ -1799,7 +1813,7 @@ try {
 }
 ```
 
-<a id="readlongarray-1"></a>
+<a id="readlongarray2"></a>
 
 ## readLongArray
 
@@ -2115,6 +2129,8 @@ try {
 }
 ```
 
+<a id="readremoteobjectarray1"></a>
+
 ## readRemoteObjectArray
 
 ```TypeScript
@@ -2177,7 +2193,7 @@ try {
 }
 ```
 
-<a id="readremoteobjectarray-1"></a>
+<a id="readremoteobjectarray2"></a>
 
 ## readRemoteObjectArray
 
@@ -2284,6 +2300,8 @@ try {
 }
 ```
 
+<a id="readshortarray1"></a>
+
 ## readShortArray
 
 ```TypeScript
@@ -2331,7 +2349,7 @@ try {
 }
 ```
 
-<a id="readshortarray-1"></a>
+<a id="readshortarray2"></a>
 
 ## readShortArray
 
@@ -2390,7 +2408,7 @@ Reads the string from this **MessageSequence** object.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MessageSequence-readString(): string--><!--Device-MessageSequence-readString(): string-End-->
 
@@ -2427,6 +2445,8 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
+
+<a id="readstringarray1"></a>
 
 ## readStringArray
 
@@ -2479,7 +2499,7 @@ try {
 }
 ```
 
-<a id="readstringarray-1"></a>
+<a id="readstringarray2"></a>
 
 ## readStringArray
 
@@ -2933,7 +2953,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 Writes a Boolean array to this **MessageSequence** object.
 
-- This method and the [readBooleanArray](#readbooleanarray) method  
+- This method and the [readBooleanArray](#readbooleanarray1) method  
 must be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 
@@ -3427,7 +3447,7 @@ Writes an integer to this **MessageSequence** object. After this method is calle
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MessageSequence-writeInt(val: int): void--><!--Device-MessageSequence-writeInt(val: int): void-End-->
 
@@ -3987,7 +4007,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 Writes an **IRemoteObject** array to this **MessageSequence** object. This method is applicable to scenarios where multiple remote objects need to be passed, such as registering multiple service proxies in batches, passing multiple callback APIs, and managing multiple service endpoints.
 
-- This method and the [readRemoteObjectArray](#readremoteobjectarray) method must be used in pairs.  
+- This method and the [readRemoteObjectArray](#readremoteobjectarray1) method must be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 
 **Since:** 9
@@ -4153,7 +4173,7 @@ bytes.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MessageSequence-writeString(val: string): void--><!--Device-MessageSequence-writeString(val: string): void-End-->
 
@@ -4198,7 +4218,7 @@ writeStringArray(stringArray: string[]): void
 
 Writes a string array to this **MessageSequence** object.
 
-- This method and the [readStringArray](#readstringarray) method must  
+- This method and the [readStringArray](#readstringarray1) method must  
 be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 

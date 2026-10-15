@@ -6,6 +6,8 @@
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="tracebyvalue1"></a>
+
 ## traceByValue
 
 ```TypeScript
@@ -18,7 +20,7 @@ Since API version 19, you are advised to use the [traceByValue](arkts-performanc
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-hiTraceMeter-function traceByValue(name: string, count: long): void--><!--Device-hiTraceMeter-function traceByValue(name: string, count: long): void-End-->
 
@@ -42,7 +44,7 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);  // When myTestCount chang
 ```
 
 
-<a id="tracebyvalue-1"></a>
+<a id="tracebyvalue2"></a>
 
 ## traceByValue
 
@@ -54,7 +56,7 @@ Traces an integer with the trace output level specified. It is used to mark the 
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-hiTraceMeter-function traceByValue(level: HiTraceOutputLevel, name: string, count: long): void--><!--Device-hiTraceMeter-function traceByValue(level: HiTraceOutputLevel, name: string, count: long): void-End-->
 

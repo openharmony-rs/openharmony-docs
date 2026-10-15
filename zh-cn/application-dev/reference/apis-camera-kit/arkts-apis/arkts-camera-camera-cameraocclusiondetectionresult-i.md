@@ -30,7 +30,7 @@ readonly isCameraLensDirty: boolean
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraOcclusionDetectionResult-readonly isCameraLensDirty: boolean--><!--Device-CameraOcclusionDetectionResult-readonly isCameraLensDirty: boolean-End-->
 
@@ -48,7 +48,7 @@ readonly isCameraOccluded: boolean
 
 **起始版本：** 23
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraOcclusionDetectionResult-readonly isCameraOccluded: boolean--><!--Device-CameraOcclusionDetectionResult-readonly isCameraOccluded: boolean-End-->
 

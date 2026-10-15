@@ -12,13 +12,13 @@ declare enum RadioIndicatorType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TICK
+## CUSTOM
 
 ```TypeScript
-TICK = 0
+CUSTOM = 2
 ```
 
-选中样式为系统默认TICK图标。
+选中样式为indicatorBuilder中的内容。
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ TICK = 0
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RadioIndicatorType-TICK = 0--><!--Device-RadioIndicatorType-TICK = 0-End-->
+<!--Device-RadioIndicatorType-CUSTOM = 2--><!--Device-RadioIndicatorType-CUSTOM = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,13 +52,13 @@ DOT = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## CUSTOM
+## TICK
 
 ```TypeScript
-CUSTOM = 2
+TICK = 0
 ```
 
-选中样式为indicatorBuilder中的内容。
+选中样式为系统默认TICK图标。
 
 **起始版本：** 12
 
@@ -68,6 +68,6 @@ CUSTOM = 2
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RadioIndicatorType-CUSTOM = 2--><!--Device-RadioIndicatorType-CUSTOM = 2-End-->
+<!--Device-RadioIndicatorType-TICK = 0--><!--Device-RadioIndicatorType-TICK = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

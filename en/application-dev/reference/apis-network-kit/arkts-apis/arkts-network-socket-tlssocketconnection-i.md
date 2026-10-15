@@ -23,6 +23,8 @@ Defines a **TLSSocketConnection** object, that is, the connection between the TL
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -96,7 +98,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -166,6 +168,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
+
+<a id="getciphersuite1"></a>
 
 ## getCipherSuite
 
@@ -239,7 +243,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getciphersuite-1"></a>
+<a id="getciphersuite2"></a>
 
 ## getCipherSuite
 
@@ -383,6 +387,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
+<a id="getremoteaddress1"></a>
+
 ## getRemoteAddress
 
 ```TypeScript
@@ -453,7 +459,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getremoteaddress-1"></a>
+<a id="getremoteaddress2"></a>
 
 ## getRemoteAddress
 
@@ -521,6 +527,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
+
+<a id="getremotecertificate1"></a>
 
 ## getRemoteCertificate
 
@@ -636,7 +644,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getremotecertificate-1"></a>
+<a id="getremotecertificate2"></a>
 
 ## getRemoteCertificate
 
@@ -751,6 +759,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
+<a id="getsignaturealgorithms1"></a>
+
 ## getSignatureAlgorithms
 
 ```TypeScript
@@ -821,7 +831,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getsignaturealgorithms-1"></a>
+<a id="getsignaturealgorithms2"></a>
 
 ## getSignatureAlgorithms
 
@@ -904,7 +914,7 @@ Obtains the file descriptor of a TLSSocketConnection connection. This API uses a
 > 
 > - This API returns **-1** in abnormal cases such as disconnection and socket closed (for example, after the close API is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-tcpsocketconnection-i.md#close) method to close the socket connection, instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-tcpsocketconnection-i.md#close1) method to close the socket connection, instead of directly operating the file descriptor.
 
 **Since:** 23
 
@@ -1389,6 +1399,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -1464,7 +1476,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 

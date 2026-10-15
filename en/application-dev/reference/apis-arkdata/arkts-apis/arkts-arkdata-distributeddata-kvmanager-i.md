@@ -4,13 +4,13 @@
 interface KVManager
 ```
 
-Creates a **KVManager** object to obtain KV store information. Before calling any method in **KVManager**, you must use [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md) to create a **KVManager** object.
+Creates a **KVManager** object to obtain KV store information. Before calling any method in **KVManager**, you must use [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager1) to create a **KVManager** object.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** KVManager
+**Substitutes:** [KVManager](arkts-arkdata-distributedkvstore-kvmanager-i.md)
 
 <!--Device-distributedData-interface KVManager--><!--Device-distributedData-interface KVManager-End-->
 
@@ -20,6 +20,8 @@ Creates a **KVManager** object to obtain KV store information. Before calling an
 
 ```TypeScript
 ```
+
+<a id="closekvstore1"></a>
 
 ## closeKVStore
 
@@ -33,7 +35,7 @@ Closes a KV store. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** closeKVStore
+**Substitutes:** [closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore)
 
 <!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void-End-->
 
@@ -75,7 +77,7 @@ try {
 }
 ```
 
-<a id="closekvstore-1"></a>
+<a id="closekvstore2"></a>
 
 ## closeKVStore
 
@@ -89,7 +91,7 @@ Closes a KV store. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** closeKVStore
+**Substitutes:** [closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore)
 
 <!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>-End-->
 
@@ -140,6 +142,8 @@ try {
 }
 ```
 
+<a id="deletekvstore1"></a>
+
 ## deleteKVStore
 
 ```TypeScript
@@ -152,7 +156,7 @@ Deletes a KV store. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** deleteKVStore
+**Substitutes:** [deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore)
 
 <!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void-End-->
 
@@ -193,7 +197,7 @@ try {
 }
 ```
 
-<a id="deletekvstore-1"></a>
+<a id="deletekvstore2"></a>
 
 ## deleteKVStore
 
@@ -207,7 +211,7 @@ Deletes a KV store. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** deleteKVStore
+**Substitutes:** [deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore)
 
 <!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>-End-->
 
@@ -257,19 +261,21 @@ try {
 }
 ```
 
+<a id="getallkvstoreid1"></a>
+
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore). This API uses an asynchronous callback to return the result.
+Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore1). This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** getAllKVStoreId
+**Substitutes:** [getAllKVStoreId](arkts-arkdata-distributedkvstore-kvmanager-i.md#getallkvstoreid)
 
 <!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void--><!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void-End-->
 
@@ -296,7 +302,7 @@ try {
 }
 ```
 
-<a id="getallkvstoreid-1"></a>
+<a id="getallkvstoreid2"></a>
 
 ## getAllKVStoreId
 
@@ -304,13 +310,13 @@ try {
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore). This API uses a promise to return the result.
+Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore1). This API uses a promise to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** getAllKVStoreId
+**Substitutes:** [getAllKVStoreId](arkts-arkdata-distributedkvstore-kvmanager-i.md#getallkvstoreid)
 
 <!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>--><!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>-End-->
 
@@ -345,6 +351,8 @@ try {
 }
 ```
 
+<a id="getkvstore1"></a>
+
 ## getKVStore
 
 ```TypeScript
@@ -357,7 +365,7 @@ Creates and obtains a KV store. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** getKVStore
+**Substitutes:** [getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore)
 
 <!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>-End-->
 
@@ -401,7 +409,7 @@ try {
 }
 ```
 
-<a id="getkvstore-1"></a>
+<a id="getkvstore2"></a>
 
 ## getKVStore
 
@@ -415,7 +423,7 @@ Creates and obtains a KV store. This API uses an asynchronous callback to return
 
 **Deprecated since:** 9
 
-**Substitutes:** getKVStore
+**Substitutes:** [getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore)
 
 <!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void-End-->
 
@@ -468,7 +476,7 @@ Unsubscribes from service status changes.
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-arkdata-distributedkvstore-kvmanager-i.md#off)
 
 <!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void--><!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void-End-->
 
@@ -508,7 +516,7 @@ Subscribes to service status changes.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-arkdata-distributedkvstore-kvmanager-i.md#on)
 
 <!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void--><!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void-End-->
 

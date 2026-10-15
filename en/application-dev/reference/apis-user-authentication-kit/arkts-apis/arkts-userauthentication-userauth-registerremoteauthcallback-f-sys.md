@@ -40,6 +40,7 @@ Registers a remote authentication callback. This API is used to register a callb
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-common-error-code-of-the-identity-authentication-system) | General operation error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,3 +69,5 @@ try {
   console.error(`failed to register remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

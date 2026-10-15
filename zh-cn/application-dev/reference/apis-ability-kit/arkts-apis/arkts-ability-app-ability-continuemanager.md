@@ -6,8 +6,6 @@ continueManager提供了应用跨端迁移的管理能力，如获取应用跨�
 
 **起始版本：** 18
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace continueManager--><!--Device-unnamed-declare namespace continueManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -24,8 +22,8 @@ import { continueManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [off](arkts-ability-continuemanager-off-f.md#offpreparecontinue) | 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。 |
-| [on](arkts-ability-continuemanager-on-f.md#onpreparecontinue) | 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用状态连续的场景。 |
+| [off('prepareContinue')](arkts-ability-continuemanager-off-f.md#offpreparecontinue) | 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。 |
+| [on('prepareContinue')](arkts-ability-continuemanager-on-f.md#onpreparecontinue) | 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用状态连续的场景。 |
 
 ### 接口
 

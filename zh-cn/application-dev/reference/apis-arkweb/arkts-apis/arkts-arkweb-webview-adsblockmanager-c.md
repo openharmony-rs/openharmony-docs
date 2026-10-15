@@ -8,6 +8,16 @@ AdsBlockManager是ArkWeb框架中用于管理Web组件广告过滤功能的类�
 
 AdsBlockManager的核心机制基于域名后缀匹配的AllowedList/DisallowedList双层策略：DisallowedList用于禁用特定网站的广告过滤，而AllowedList具有更高优先级，可在DisallowedList的范围内重新开启部分子域名的广告过滤。广告过滤规则内部解析成功后会被持久化存储，应用重启后无需重复设置；而域名黑白名单不会持久化，应用重启后需重新配置。
 
+> **说明：** 
+> 
+> - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 
+> - 本Class首批接口从API version 12开始支持。
+> 
+> - 示例效果请以真机运行为准。
+> 
+> - 静态方法必须在用户界面（UI）线程上使用。
+
 **起始版本：** 12
 
 <!--Device-webview-class AdsBlockManager--><!--Device-webview-class AdsBlockManager-End-->

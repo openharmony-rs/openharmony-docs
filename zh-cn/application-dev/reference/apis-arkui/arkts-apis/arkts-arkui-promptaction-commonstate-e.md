@@ -12,13 +12,13 @@ enum CommonState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## UNINITIALIZED
+## APPEARED
 
 ```TypeScript
-UNINITIALIZED = 0
+APPEARED = 3
 ```
 
-未初始化，控制器未与dialog绑定时。
+已显示，dialog显示动画结束。
 
 **起始版本：** 20
 
@@ -26,25 +26,7 @@ UNINITIALIZED = 0
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-CommonState-UNINITIALIZED = 0--><!--Device-CommonState-UNINITIALIZED = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## INITIALIZED
-
-```TypeScript
-INITIALIZED = 1
-```
-
-已初始化，控制器与dialog绑定后。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-CommonState-INITIALIZED = 1--><!--Device-CommonState-INITIALIZED = 1-End-->
+<!--Device-CommonState-APPEARED = 3--><!--Device-CommonState-APPEARED = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +48,13 @@ APPEARING = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## APPEARED
+## DISAPPEARED
 
 ```TypeScript
-APPEARED = 3
+DISAPPEARED = 5
 ```
 
-已显示，dialog显示动画结束。
+已消失，dialog消失动画结束后。
 
 **起始版本：** 20
 
@@ -80,7 +62,7 @@ APPEARED = 3
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-CommonState-APPEARED = 3--><!--Device-CommonState-APPEARED = 3-End-->
+<!--Device-CommonState-DISAPPEARED = 5--><!--Device-CommonState-DISAPPEARED = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,13 +84,13 @@ DISAPPEARING = 4
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DISAPPEARED
+## INITIALIZED
 
 ```TypeScript
-DISAPPEARED = 5
+INITIALIZED = 1
 ```
 
-已消失，dialog消失动画结束后。
+已初始化，控制器与dialog绑定后。
 
 **起始版本：** 20
 
@@ -116,6 +98,24 @@ DISAPPEARED = 5
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-CommonState-DISAPPEARED = 5--><!--Device-CommonState-DISAPPEARED = 5-End-->
+<!--Device-CommonState-INITIALIZED = 1--><!--Device-CommonState-INITIALIZED = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## UNINITIALIZED
+
+```TypeScript
+UNINITIALIZED = 0
+```
+
+未初始化，控制器未与dialog绑定时。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonState-UNINITIALIZED = 0--><!--Device-CommonState-UNINITIALIZED = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

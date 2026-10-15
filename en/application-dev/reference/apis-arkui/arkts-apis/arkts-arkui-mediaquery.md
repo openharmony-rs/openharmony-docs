@@ -26,7 +26,7 @@ import { mediaquery } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [matchMediaSync](arkts-arkui-mediaquery-matchmediasync-f.md) | Sets the media query criteria and returns the corresponding listening handle. |
+| [matchMediaSync](arkts-arkui-mediaquery-matchmediasync-f.md#matchmediasync) | Sets the media query criteria and returns the corresponding listening handle. |
 
 ### Interfaces
 

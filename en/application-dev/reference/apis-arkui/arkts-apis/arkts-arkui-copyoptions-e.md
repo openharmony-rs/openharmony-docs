@@ -12,26 +12,6 @@ Sets the copy options.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## None
-
-```TypeScript
-None = 0
-```
-
-Copy disabled.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-CopyOptions-None = 0--><!--Device-CopyOptions-None = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## InApp
 
 ```TypeScript
@@ -69,6 +49,26 @@ Copy and paste across all applications on the device.
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-CopyOptions-LocalDevice = 2--><!--Device-CopyOptions-LocalDevice = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None = 0
+```
+
+Copy disabled.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CopyOptions-None = 0--><!--Device-CopyOptions-None = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

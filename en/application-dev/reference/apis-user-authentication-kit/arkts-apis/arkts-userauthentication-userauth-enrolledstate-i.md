@@ -32,7 +32,7 @@ Number of enrolled credentials. This parameter indicates the number of credentia
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EnrolledState-credentialCount: int--><!--Device-EnrolledState-credentialCount: int-End-->
 
@@ -52,7 +52,7 @@ Credential digest, which is randomly generated when a credential is added. This 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EnrolledState-credentialDigest: int--><!--Device-EnrolledState-credentialDigest: int-End-->
 

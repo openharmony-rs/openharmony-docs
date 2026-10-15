@@ -60,7 +60,11 @@ Name of the current page, that is, the file name.
 params: Object
 ```
 
-Parameters carried on the current page.
+Parameters carried by the current page.
+
+**Note:** 
+
+The **params** parameter can only pass serializable parameters. It cannot pass methods or objects returned by system APIs (for example, the **PixelMap** object defined and returned by media APIs). You are advised to extract the basic-type attributes that need to be passed from the objects returned by system APIs, and construct an object for passing.
 
 **Type:** Object
 

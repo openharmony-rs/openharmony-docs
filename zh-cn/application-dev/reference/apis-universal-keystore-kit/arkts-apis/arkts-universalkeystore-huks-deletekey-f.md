@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="deletekey1"></a>
+
 ## deleteKey
 
 ```TypeScript
@@ -17,14 +19,14 @@ function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.deleteKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-deletekeyitem-f.md)
+> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem1)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -53,7 +55,7 @@ huks.deleteKey(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
-<a id="deletekey-1"></a>
+<a id="deletekey2"></a>
 
 ## deleteKey
 
@@ -66,13 +68,13 @@ function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.deleteKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)替代。
+> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)(keyAlias: string, options: HuksOptions)
+**替代接口：** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 

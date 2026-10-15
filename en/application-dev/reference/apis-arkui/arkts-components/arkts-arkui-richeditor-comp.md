@@ -168,7 +168,7 @@ struct Index {
 
       Row() {
         Button("Update Style: Bold").onClick(() => {
-          // Update the style of the selected text to make the font bold.
+          // Update the style of the selected text and make the font bold.
           this.controller.updateSpanStyle({
             start: this.start,
             end: this.end,
@@ -200,7 +200,7 @@ struct Index {
           })
         })
         Button("Delete Selection").onClick(() => {
-          // Delete the text and image content within the selected range.
+          // Delete the text and image content in the selected range.
           this.controller.deleteSpans({
             start: this.start,
             end: this.end
@@ -371,7 +371,7 @@ The paste menu item in this example involves reading pasteboard data. Therefore,
 
 > NOTE
 > 
-> The system does not provide preset icons such as bold and italic. The sample code uses the default system icons. When using them, developers need to replace the resources in icons with their own.
+> Icons in bold and italics are not preset in the system. The sample code uses the default icons. You need to replace the icons in icons with the desired icons.
 
 
 
@@ -486,7 +486,7 @@ struct SelectionMenu {
             this.start = value.selection[0];
             this.end = value.selection[1];
           })
-          // Bind a custom selection menu triggered by long press to a Span of the TEXT type.
+          // Bind a custom selection menu triggered by a long press to a span of the TEXT type.
           .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, ResponseType.LongPress, { onDisappear: () => {
             this.sliderShow = false;
           }})
@@ -507,7 +507,7 @@ struct SelectionMenu {
     }.height('100%')
   }
 
-  // Write the text and style information of the selected content to the clipboard so that the style can be restored when pasting.
+  // Write the text and style information of the selected content to the clipboard. The style can be restored during pasting.
   pushDataToPasteboard(richEditorSelection: RichEditorSelection) {
     let sysBoard = pasteboard.getSystemPasteboard();
     let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, '');
@@ -544,7 +544,7 @@ struct SelectionMenu {
     })
   }
 
-  // Read the content and style information from the clipboard, restore the style, and insert it into the component.
+  // Read the content and style information from the clipboard, restore the style, and insert the content into the component.
   popDataFromPasteboard(richEditorSelection: RichEditorSelection) {
     let start = richEditorSelection.selection[0];
     let end = richEditorSelection.selection[1];
@@ -628,7 +628,7 @@ struct SelectionMenu {
     }.width(256)
   }
 
-  // Icon panel: the five icons correspond to bold toggle (0), italic toggle (1), underline toggle (2), font size slider (3), and color toggle (4).
+  //Icon panel: The five icons correspond to bold switch (0), italic switch (1), underline switch (2), font size slider (3), and color switch (4).
   @Builder iconPanel() {
     Column() {
       Row({ space: 2 }) {
@@ -714,7 +714,7 @@ struct SelectionMenu {
                     this.controller.updateSpanStyle({
                       start: offset + start,
                       end: offset + end,
-                      textStyle: this.textStyle 
+                      textStyle: this.textStyle
                     })
                   }
                 })
@@ -1167,7 +1167,7 @@ struct Index {
       Column() {
         RichEditor(this.options)
           .onReady(() => {
-            // Bind tap and long-press gesture callbacks to the text span.
+            // Bind the click and long-press gesture callbacks to the text span.
             this.controller.addTextSpan('Area1\n', {
               style:
               {
@@ -1176,11 +1176,11 @@ struct Index {
               },
               gesture:
               {
-                // Update the text identifier when tapped.
+                // Update the text identifier when the text is clicked.
                 onClick: () => {
                   this.textFlag = "Area1 is onClick.";
                 },
-                // Update the text identifier when long-pressed.
+                // Update the text identifier when the text is long-pressed.
                 onLongPress: () => {
                   this.textFlag = "Area1 is onLongPress.";
                 }
@@ -1195,11 +1195,11 @@ struct Index {
               },
               gesture:
               {
-                // Update the text identifier when tapped.
+                // Update the text identifier when the text is clicked.
                 onClick: () => {
                   this.textFlag = "Area2 is onClick.";
                 },
-                // Update the text identifier when long-pressed.
+                // Update the text identifier when the text is long-pressed.
                 onLongPress: () => {
                   this.textFlag = "Area2 is onLongPress.";
                 }
@@ -1388,7 +1388,7 @@ class LeadingMarginCreator {
     return fontSizeLevel;
   }
 
-  // Obtain the margin ratio level.
+  // Obtain the margin level.
   public getMarginLevel(Width: number) {
     let marginLevel: number = 1;
     if (Width == 40) {
@@ -1611,7 +1611,7 @@ struct Index {
 
 ### Example 8: Setting Text Weight and Shadow
 
-Sets the font weight and shadow of the text through the [updateSpanStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updatespanstyle) API.
+This example demonstrates how to set the text font weight and shadow using the [updateSpanStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updatespanstyle) API.
 
 
 
@@ -1742,7 +1742,7 @@ struct Index {
     Column() {
       Column({ space: 5 }) {
         Text('direction:Row').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Row }) { // Child components are laid out in a row along the main axis of the container.
+        Flex({ direction: FlexDirection.Row }) { // The child components are arranged in the same direction as the main axis runs along the rows.
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(50).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
@@ -1754,7 +1754,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:RowReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.RowReverse }) { // Child components are laid out in a reverse row along the main axis of the container.
+        Flex({ direction: FlexDirection.RowReverse }) { // The child components are arranged opposite to the Row direction.
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(50).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
@@ -1766,7 +1766,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:Column').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Column }) { // Child components are laid out in a column along the main axis of the container.
+        Flex({ direction: FlexDirection.Column }) { // The child components are arranged in the same direction as the main axis runs down the columns.
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(40).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
@@ -1778,7 +1778,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:ColumnReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.ColumnReverse }) { // Child components are laid out in a reverse column along the main axis of the container.
+        Flex({ direction: FlexDirection.ColumnReverse }) { // The child components are arranged opposite to the Column direction.
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(40).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
@@ -2388,9 +2388,9 @@ struct TextExample7 {
               });
           })
           .copyOptions(CopyOptions.InApp)
-          // Enable text special entity recognition.
+          // Enable the special text entity recognition feature.
           .enableDataDetector(this.enableDataDetector)
-          // Configure the text recognition type and the recognition result update callback.
+          // Configure the text recognition type and the callback for updating the identification result.
           .dataDetectorConfig({types : this.types, onDetectResultUpdate: (result: string)=>{}})
           .borderWidth(1)
           .padding(10)
@@ -2402,9 +2402,9 @@ struct TextExample7 {
 }
 ```
 
-### Example 12: Setting Cursor, Handle, and Highlight Colors
+### Example 12: Setting Caret, Handle, and Highlight Colors
 
-Sets the cursor and handle colors of the input box through the [caretColor](#caretcolor12) attribute, and sets the highlight color of selected text through the [selectedBackgroundColor](#selectedbackgroundcolor12) attribute.
+This example shows how to set the caret and handle colors using the [caretColor](#caretcolor12) attribute and the background color of the selected text using the [selectedBackgroundColor](#selectedbackgroundcolor12) attribute.
 
 
 
@@ -2430,8 +2430,8 @@ struct RichEditorDemo {
         .width("100%")
         .border({ width: 1, radius: 5 })
         .key('RichEditor')
-        .caretColor(this.color) // Cursor color
-        .selectedBackgroundColor(this.color) // Selected background color
+        .caretColor(this.color) // Caret color.
+        .selectedBackgroundColor(this.color) // Background color of the selected content.
         .margin({ top: 50 })
     }
     .width('100%')
@@ -2582,10 +2582,10 @@ struct RichEditorDemo {
         .onReady(() => {
           this.controller.addTextSpan('RichEditor preventDefault');
         })
-        // Customize the paste event to block the system default paste behavior.
+        // Customize the paste event to prevent the default paste behavior.
         .onPaste((event?: PasteEvent) => {
           if (event != undefined && event.preventDefault) {
-            // Block the system default paste operation.
+            // Prevent the default paste operation.
             event.preventDefault();
           }
         })
@@ -2600,7 +2600,7 @@ struct RichEditorDemo {
 
 ### Example 15: Setting Text Feature Effects
 
-This example sets the font feature effect ([fontFeature](arkts-arkui-richeditor-comp-richeditortextstyle-i.md)) through the [addTextSpan](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addtextspan) API. When the FontFeature attribute with the "ss01" feature is added, the number "0" changes from the original oval shape to a shape with rounded corners. In addition, the stroke join style of the text is set through the strokeJoinStyle API of [RichEditorTextStyle](arkts-arkui-richeditor-comp-richeditortextstyle-i.md).
+This example shows how to set the text feature effect ([fontFeature](arkts-arkui-richeditor-comp-richeditortextstyle-i.md)) using the [addTextSpan](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addtextspan) API. This example sets the FontFeature attribute to ss01, which changes the digit "0" from its original oval shape to a shape with rounded corners. In addition, you can use the strokeJoinStyle API of [RichEditorTextStyle](arkts-arkui-richeditor-comp-richeditortextstyle-i.md) to set the text stroke join style.
 
 Since API version 26.0.0, the strokeJoinStyle API is added to [RichEditorTextStyle](arkts-arkui-richeditor-comp-richeditortextstyle-i.md).
 
@@ -2670,7 +2670,7 @@ struct RichEditorExample {
   CustomKeyboardBuilder() {
     Column() {
       Row() {
-        Button('Add Sticker Pack').onClick(() => {
+        Button('Add Stickers').onClick(() => {
           this.controller.addTextSpan("\uD83D\uDE0A",
             {
               style:
@@ -2751,7 +2751,7 @@ struct RichEditorOnEditingChange {
     Column() {
       Row() {
         Button("View isEditing() Value:").onClick(() => {
-          // Obtain the current editing state of the rich text.
+          // Obtain the editing status of the rich text.
           this.controllerIsEditing = this.controller.isEditing();
         })
           .padding(5)
@@ -2803,7 +2803,7 @@ struct RichEditorExample {
         .borderColor(Color.Red)
         .width("100%")
         .onReady(() => {
-          this.controller.addTextSpan('Test text TestWord', { style: { fontColor: Color.Orange, fontSize: 30 } });
+          this.controller.addTextSpan('TestWord', { style: { fontColor: Color.Orange, fontSize: 30 } });
           this.controller.updateSpanStyle({
             start: -1,
             end: -1,
@@ -2880,7 +2880,7 @@ struct RichEditorExample {
 }
 ```
 
-### Example 19: Configuring the Enter Key Function of the Input Method
+### Example 19: Configuring the Enter Key Feature of the Input Method
 
 This example demonstrates how to set the Enter key type of the soft keyboard using the [enterKeyType](#enterkeytype12) attribute.
 
@@ -3093,7 +3093,7 @@ struct Index {
 
       RichEditor(this.secondaryOptions)
         .onReady(() => {
-        this.secondaryController.addTextSpan("Convert this text into a styled string");
+        this.secondaryController.addTextSpan("Convert the text into a styled string.");
       })
         .height("10%")
         .width("100%")
@@ -3181,7 +3181,7 @@ struct Index {
         Row({space:2}) {
           // Convert a styled string into a span.
           Button("Call fromStyledString").onClick(() => {
-            this.secondaryController.addTextSpan("Call fromStyledString:" +JSON.stringify(this.secondaryController.fromStyledString(this.mutableStyledString)));
+            this.secondaryController.addTextSpan("Call fromStyledString: " +JSON.stringify(this.secondaryController.fromStyledString(this.mutableStyledString)));
           })
           // Convert the component content within the given range to a styled string.
           Button("Call toStyledString").onClick(() => {
@@ -3362,7 +3362,7 @@ struct RichEditorExample {
 
 ### Example 24: Setting Common Component Attributes
 
-Since API version 18, this example uses the [barState](#barstate13) attribute to set the display mode of the component scrollbar. It uses the [enableKeyboardOnFocus](#enablekeyboardonfocus12) attribute to set whether to proactively pull up the soft keyboard when the component gains focus by means other than tapping. It uses the [enableHapticFeedback](#enablehapticfeedback13) attribute to set whether the component supports haptic feedback. It uses the [getPreviewText](#getpreviewtext12) API to obtain the preview text of the component. It uses the [stopBackPress](#stopbackpress18) attribute to set whether to prevent the back key from being passed to other components or the application side.Since API version 21, this example uses the [scrollBarColor](#scrollbarcolor21) attribute to set the scrollbar color of the RichEditor component.
+This example shows how to set common attributes for the component. This includes the following:- Set the scrollbar display mode using [barState](#barstate13) (available since API version 18). - Configure whether the soft keyboard is automatically displayed when the component gains focus via non‑click triggers, using [enableKeyboardOnFocus](#enablekeyboardonfocus12). - Enable or disable haptic feedback for the component using [enableHapticFeedback](#enablehapticfeedback13). - Obtain preview text information using [getPreviewText](#getpreviewtext12). - Specify whether to prevent the back button press from being propagated to other components or apps, using [stopBackPress](#stopbackpress18).This example shows how to set the scrollbar color of the RichEditor component using the [scrollBarColor](#scrollbarcolor21) attribute, available since API version 21.
 
 
 
@@ -3397,7 +3397,7 @@ struct RichEditorExample {
           });
         })
         .onDidIMEInput((value: TextRange) => {
-          this.secondaryController.addTextSpan("\n" + "The onDidIMEInput callback is triggered. The input range of the current input method is: (" + value.start + "," + value.end + ")", {
+          this.secondaryController.addTextSpan("\n" + "onDidIMEInput callback triggered. Input range: (" + value.start + "," + value.end + ")", {
             style: {
               fontColor: Color.Gray,
               fontSize: 10
@@ -3405,7 +3405,7 @@ struct RichEditorExample {
           });
         })
         .onSelectionChange((value: RichEditorRange) => {
-          this.secondaryController.addTextSpan("\n" + "The onSelectionChange callback is triggered. The start range information is: (" + value.start + "," + value.end + ")", {
+          this.secondaryController.addTextSpan("\n" + "onSelectionChange callback triggered. Input range: (" + value.start + "," + value.end + ")", {
             style: {
               fontColor: Color.Gray,
               fontSize: 10
@@ -3444,7 +3444,7 @@ struct RichEditorExample {
         .height(30)
         .fontSize(13)
         .onClick(() => {
-          this.secondaryController.addTextSpan("\nObtain the preview text:" + JSON.stringify(this.controller.getPreviewText()));
+          this.secondaryController.addTextSpan("\nObtain the preview text: " + JSON.stringify(this.controller.getPreviewText()));
         })
     }
   }
@@ -3675,7 +3675,7 @@ struct StyledUndo {
                 }
               });
           })
-          Button("Insert Image").onClick () => {
+          Button("Insert Image").onClick(() => {
             // Replace $r('app.media.startIcon') with the image resource file you use.
             this.controller.addImageSpan($r('app.media.startIcon'),
               {
@@ -3882,7 +3882,7 @@ struct RichEditorExample {
 
 ### Example 30: Setting Text Decoration Thickness and Multiple Decorations
 
-This example demonstrates how to use [thicknessScale](ts-universal-styled-string.md#decorationstyle) to set the thickness of text decoration and [enableMultiType](ts-universal-styled-string.md#decorationoptions20) to set multiple decorations, available since API version 20.
+This example demonstrates how to use thicknessScale of [DecorationStyle](ts-universal-styled-string.md#decorationstyle) to set the thickness of text decoration and [enableMultiType](ts-universal-styled-string.md#decorationoptions20) to set multiple decorations, available since API version 20.
 
 
 
@@ -3949,7 +3949,7 @@ struct Index {
       Button('Add Multi-Decoration Text')
         .fontSize(20)
         .onClick(() => {
-          let mutableString: MutableStyledString = new MutableStyledString('Set multiple decoration lines for rich text', [
+          let mutableString: MutableStyledString = new MutableStyledString('Set multiple text decorations for RichEditor.', [
             {
               start: 0,
               length: 9,
@@ -4028,7 +4028,7 @@ struct AutoSpacing {
     Column() {
       Column() {
         Row({ space: 2 }) {
-          Button("Insert Chinese & Western Text").onClick(() => {
+          Button("Insert Chinese & Western Text").onClick(() ==> {
             this.controller.addTextSpan("Add a text span",
               {
                 style:
@@ -4090,7 +4090,7 @@ struct AutoSpacing {
                   size: ["100px", "100px"]
                 }
               });
-            this.controller.addTextSpan("Auto spacing between Chinese and Western text",
+            this.controller.addTextSpan("中文Text",
               {
                 style:
                 {
@@ -4127,7 +4127,7 @@ This example demonstrates how to configure the AI menu for text selection using 
 struct SelectedDataDetectorDemo {
   controller: RichEditorController = new RichEditorController();
   textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
-  exampleText: string = 'Example website: www.example.com';
+  exampleText: string ='Example website: www.example.com';
 
   build() {
     Column() {
@@ -4246,7 +4246,7 @@ struct RichEditorExample {
         .width("100%")
         .onReady(() => {
           // Set the initial text for testing.
-          this.controller.addTextSpan('Click DELETE to test the deletion function', {
+          this.controller.addTextSpan ('Click DELETE to test the deletion function', {
             style: {
               fontColor: Color.Black,
               fontSize: 16
@@ -4332,7 +4332,7 @@ struct RichEditorExample {
           .width("45%")
           .height("10%")
           .margin({ right: 10 })
-        Button ('Disable Font Padding')
+        Button('Disable Font Padding')
           .onClick(() => {
             this.includeFontPadding = false;
           })
@@ -4346,13 +4346,13 @@ struct RichEditorExample {
 }
 ```
 
-### Example 36 (Setting Leading Punctuation Compression and Trailing Punctuation Hanging)
+### Example 36: Setting Leading Punctuation Compression and Trailing Punctuation Hanging
 
-This example uses [compressLeadingPunctuation](#compressleadingpunctuation23) to set leading punctuation compression, and [punctuationOverflow](#punctuationoverflow) to set trailing punctuation hanging.
+This example shows how to use [compressLeadingPunctuation](#compressleadingpunctuation23) to set the punctuation compression at the beginning of a line, and use [punctuationOverflow](#punctuationoverflow) to set the punctuation hanging at the end of a line.
 
-After the text wraps automatically, the remaining content (including punctuation) must fit into the previous line for punctuation hanging to take effect.
+After the text is automatically wrapped, the punctuation hanging takes effect only when the remaining content (including punctuation) can be placed in the previous line.
 
-Since API version 23, the compressLeadingPunctuation API is added.
+The compressLeadingPunctuation API is supported since API version 23.
 
 Since API version 26.0.0, the punctuationOverflow API is added.
 
@@ -4388,10 +4388,10 @@ struct PunctuationDemo {
         Button('Disable Leading Punctuation Compression').onClick(() => {
           this.compressLeadingPunctuation = false;
         }).margin(5)
-        Button('Enable line-end punctuation hanging').onClick(() => {
+        Button('Enable Trailing Punctuation Hanging').onClick(() => {
           this.punctuationOverflow = true;
         }).margin(5)
-        Button('Disable line-end punctuation hanging').onClick(() => {
+        Button('Disable Trailing Punctuation Hanging').onClick(() => {
           this.punctuationOverflow = false;
         }).margin(5)
       }
@@ -4461,10 +4461,10 @@ struct SingleLineDemo {
           .margin(10)
       }
       Row() {
-        Button('Apply Single-Line Mode').onClick((event: ClickEvent) => {
+        Button('Single-Line Mode').onClick((event: ClickEvent) => {
           this.enableSingleLine = true;
         }).margin(5)
-        Button('Apply Multi-Line Mode').onClick((event: ClickEvent) => {
+        Button('Multi-Line Mode').onClick((event: ClickEvent) => {
           this.enableSingleLine = false;
         }).margin(5)
       }
@@ -4555,7 +4555,7 @@ struct RichEditorExample {
 
 ### Example 40: Enabling/Disabling Orphan Character Optimization
 
-This example uses the [orphanCharOptimization](#orphancharoptimization) API to enable orphan character optimization, ensuring that no orphan character appears on the last line of a paragraph.
+This example shows how to enable orphan character optimization using the [orphanCharOptimization](#orphancharoptimization) API to ensure that no orphan character appears in the last line of a paragraph.
 
 The orphanCharOptimization API is supported since API version 26.0.0.
 
@@ -4617,7 +4617,7 @@ The horizontalScrolling API is added since API version 26.0.0.
 struct HorizontalScrollDemo {
   controller: RichEditorController = new RichEditorController();
   textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 30 } };
-  exampleText: string = 'This is a very long sample text\n';
+  exampleText: string = 'This is an ultra-long sample text.\n';
   @State enableHorizontalScroll: boolean = false;
 
   build() {
@@ -4646,11 +4646,11 @@ struct HorizontalScrollDemo {
 }
 ```
 
-### Example 42 (Setting a Text Shader Effect)
+### Example 42: Setting the Text Shader Effect
 
-This example implements a text shader effect through the shaderStyle API in [RichEditorParagraphStyle](arkts-arkui-richeditor-comp-richeditorparagraphstyle-i.md).
+This example demonstrates how to use the shaderStyle API in [RichEditorParagraphStyle](arkts-arkui-richeditor-comp-richeditorparagraphstyle-i.md) to set the text shader effect.
 
-Since API version 26.0.0, RichEditorParagraphStyle adds the shaderStyle API.
+Since API version 26.0.0, the shaderStyle API is added to RichEditorParagraphStyle.
 
 
 
@@ -4692,7 +4692,7 @@ struct ShaderColorStyle {
 
   build() {
     Column({ space: 5 }) {
-      Text('Linear gradient at a 45° angle').fontSize(18).width('90%')
+      Text('Linear gradient with angle setting to 45°').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       RichEditor(this.options)
         .width('80%')
@@ -4716,7 +4716,7 @@ struct ShaderColorStyle {
             }
           }
         }).borderWidth(1)
-      Text('Linear gradient with direction LeftTop').fontSize(18).width('90%')
+      Text('Linear gradient with direction setting to LeftTop').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       RichEditor(this.secondaryOptions)
         .width('80%')
@@ -4749,9 +4749,9 @@ struct ShaderColorStyle {
 }
 ```
 
-### Example 43 (Scroll Text in a Specified Range into the Visible Area)
+### Example 43: Scrolling the Text in a Specified Range to the Visible Area
 
-This example uses [scrollToVisible](#scrolltovisible) to scroll text outside the visible area into the visible area.
+This example demonstrates how to scroll the text in a specified range to the visible area using the [scrollToVisible](#scrolltovisible) API.
 
 Since API version 26.0.0, the scrollToVisible API is added.
 
@@ -4776,10 +4776,10 @@ struct ScrollToVisibleDemo {
         .height('150vp')
         .border({ width: 1, color: Color.Black })
         .margin(10)
-      Button('Scroll the first paragraph of text into view').onClick((event: ClickEvent) => {
+      Button('Scroll First Paragraph to Visible Area').onClick((event: ClickEvent) => {
         this.controller.scrollToVisible({start: 0, end: 7});
       }).margin(5)
-      Button('Scroll the last paragraph of text into view').onClick((event: ClickEvent) => {
+      Button('Scroll Last Paragraph to Visible Area').onClick((event: ClickEvent) => {
         this.controller.scrollToVisible({start: 64, end: 71});
       }).margin(5)
     }
@@ -4787,11 +4787,11 @@ struct ScrollToVisibleDemo {
 }
 ```
 
-### Example 44 (Setting Image Stretching)
+### Example 44: Setting Image Resizing
 
-This example stretches an image in different directions by setting the resizable attribute of [RichEditorImageSpanStyle](arkts-arkui-richeditor-comp-richeditorimagespanstyle-i.md).
+This example shows how to use the resizable attribute of [RichEditorImageSpanStyle](arkts-arkui-richeditor-comp-richeditorimagespanstyle-i.md) to stretch the image in different directions.
 
-Since API version 26.1.0, the resizable attribute is added to RichEditorImageSpanStyle.
+The resizable attribute is added to RichEditorImageSpanStyle since API version 26.0.1.
 
 ```TypeScript
 @Entry
@@ -4819,7 +4819,7 @@ struct RichEditorResizablePage {
               size: [260, 260],
             }
           });
-          this.controller.addTextSpan('\nResizable stretching effect of ImageSpan in RichEditor\n', {
+          this.controller.addTextSpan('\nStretching effect using resizable of ImageSpan in RichEditor\n', {
             style: {
               fontColor: Color.Black,
               fontSize: 28

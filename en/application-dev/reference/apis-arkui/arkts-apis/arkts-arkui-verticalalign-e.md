@@ -12,13 +12,13 @@ Sets the vertical alignment mode of child components.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Top
+## Bottom
 
 ```TypeScript
-Top
+Bottom
 ```
 
-Top aligned.
+Bottom aligned.
 
 **Since:** 7
 
@@ -28,7 +28,7 @@ Top aligned.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-VerticalAlign-Top--><!--Device-VerticalAlign-Top-End-->
+<!--Device-VerticalAlign-Bottom--><!--Device-VerticalAlign-Bottom-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,13 +52,13 @@ Center aligned. This is the default alignment mode.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Bottom
+## Top
 
 ```TypeScript
-Bottom
+Top
 ```
 
-Bottom aligned.
+Top aligned.
 
 **Since:** 7
 
@@ -68,6 +68,6 @@ Bottom aligned.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-VerticalAlign-Bottom--><!--Device-VerticalAlign-Bottom-End-->
+<!--Device-VerticalAlign-Top--><!--Device-VerticalAlign-Top-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

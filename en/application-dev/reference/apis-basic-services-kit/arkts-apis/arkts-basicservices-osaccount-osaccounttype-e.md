@@ -26,20 +26,6 @@ Administrator account.
 
 **System capability:** SystemCapability.Account.OsAccount
 
-## NORMAL
-
-```TypeScript
-NORMAL = 1
-```
-
-Normal account.
-
-**Since:** 7
-
-<!--Device-OsAccountType-NORMAL = 1--><!--Device-OsAccountType-NORMAL = 1-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
 ## GUEST
 
 ```TypeScript
@@ -51,5 +37,19 @@ Guest account.
 **Since:** 7
 
 <!--Device-OsAccountType-GUEST = 2--><!--Device-OsAccountType-GUEST = 2-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+## NORMAL
+
+```TypeScript
+NORMAL = 1
+```
+
+Normal account.
+
+**Since:** 7
+
+<!--Device-OsAccountType-NORMAL = 1--><!--Device-OsAccountType-NORMAL = 1-End-->
 
 **System capability:** SystemCapability.Account.OsAccount

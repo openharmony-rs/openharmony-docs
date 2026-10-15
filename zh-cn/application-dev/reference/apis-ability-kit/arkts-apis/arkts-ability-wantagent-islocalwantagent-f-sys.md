@@ -42,6 +42,7 @@ function isLocalWantAgent(agent: WantAgent): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System app. Interface caller is not a system app. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -86,3 +87,5 @@ try {
   console.error('call isLocalWantAgent failed');
 }
 ```
+
+<!--DelEnd-->

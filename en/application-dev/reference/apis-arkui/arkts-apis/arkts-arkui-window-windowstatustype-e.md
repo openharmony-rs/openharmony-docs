@@ -12,19 +12,19 @@ Enumerates the window modes.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## UNDEFINED
+## FLOATING
 
 ```TypeScript
-UNDEFINED = 0
+FLOATING = 4
 ```
 
-The window mode is not defined by the application.
+The application is displayed in a floating window.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-WindowStatusType-UNDEFINED = 0--><!--Device-WindowStatusType-UNDEFINED = 0-End-->
+<!--Device-WindowStatusType-FLOATING = 4--><!--Device-WindowStatusType-FLOATING = 4-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -38,7 +38,7 @@ The application is displayed in full screen.
 
 In [freeform window](../../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no dock, title bar, or status bar displayed by default.
 
-You can use [maximize()](arkts-arkui-window-window-i.md#maximize) and [setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown) to configure whether to display the title bar and dock upon hovering over the hot zone.
+You can use [maximize()](arkts-arkui-window-window-i.md#maximize1) and [setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown) to configure whether to display the title bar and dock upon hovering over the hot zone.
 
 The last call takes precedence when both the **maximize()** and **setTitleAndDockHoverShown()** APIs are called.
 
@@ -46,7 +46,7 @@ In non-[freeform window](../../../windowmanager/window-terminology.md#freeform-w
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowStatusType-FULL_SCREEN = 1--><!--Device-WindowStatusType-FULL_SCREEN = 1-End-->
 
@@ -62,7 +62,7 @@ The application window is maximized. In [freeform window](../../../windowmanager
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowStatusType-MAXIMIZE = 2--><!--Device-WindowStatusType-MAXIMIZE = 2-End-->
 
@@ -78,25 +78,9 @@ The application window is minimized.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowStatusType-MINIMIZE = 3--><!--Device-WindowStatusType-MINIMIZE = 3-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
-## FLOATING
-
-```TypeScript
-FLOATING = 4
-```
-
-The application is displayed in a floating window.
-
-**Since:** 11
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-WindowStatusType-FLOATING = 4--><!--Device-WindowStatusType-FLOATING = 4-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -110,8 +94,24 @@ The application is displayed in split-screen mode.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowStatusType-SPLIT_SCREEN = 5--><!--Device-WindowStatusType-SPLIT_SCREEN = 5-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## UNDEFINED
+
+```TypeScript
+UNDEFINED = 0
+```
+
+The window mode is not defined by the application.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WindowStatusType-UNDEFINED = 0--><!--Device-WindowStatusType-UNDEFINED = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

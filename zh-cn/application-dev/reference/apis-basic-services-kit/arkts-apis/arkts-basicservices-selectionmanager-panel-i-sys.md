@@ -62,6 +62,7 @@ moveTo(x: number, y: number): Promise<void>
 | [33600001](../errorcode-selection.md#33600001-划词服务调用异常) | Selection service invocation exception. |
 | [33600002](../errorcode-selection.md#33600002-划词面板已被销毁) | This selection window has been destroyed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -78,3 +79,5 @@ try {
   console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

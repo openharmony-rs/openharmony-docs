@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="enableformsupdate1"></a>
+
 ## enableFormsUpdate
 
 ```TypeScript
@@ -43,8 +45,29 @@ Instructs the widget framework to make a widget updatable. After this API is cal
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 
+<!--Del-->
+**Examples**
 
-<a id="enableformsupdate-1"></a>
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.enableFormsUpdate(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="enableformsupdate2"></a>
 
 ## enableFormsUpdate
 
@@ -87,3 +110,24 @@ Instructs the widget framework to make a widget updatable. After this API is cal
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.enableFormsUpdate(formId).then(() => {
+    console.info('formHost enableFormsUpdate success');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

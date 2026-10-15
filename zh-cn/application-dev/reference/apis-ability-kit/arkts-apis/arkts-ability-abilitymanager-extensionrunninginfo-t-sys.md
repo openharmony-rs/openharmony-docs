@@ -6,6 +6,8 @@ export type ExtensionRunningInfo = _ExtensionRunningInfo
 
 ExtensionRunningInfo二级模块。
 
+**类型：** _ExtensionRunningInfo
+
 **起始版本：** 9
 
 <!--Device-abilityManager-export type ExtensionRunningInfo = _ExtensionRunningInfo--><!--Device-abilityManager-export type ExtensionRunningInfo = _ExtensionRunningInfo-End-->
@@ -13,5 +15,3 @@ ExtensionRunningInfo二级模块。
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _ExtensionRunningInfo

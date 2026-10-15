@@ -6,8 +6,6 @@ enum AVMusicTemplateType
 
 Enumeration of AVMusicTemplate type.
 
-@enum { string }
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-enum AVMusicTemplateType--><!--Device-avMusicTemplate-enum AVMusicTemplateType-End-->

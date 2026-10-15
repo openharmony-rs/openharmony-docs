@@ -6,6 +6,8 @@ export type MissionSnapshot = _MissionSnapshot
 
 Mission snapshot corresponding to mission.
 
+**Type:** _MissionSnapshot
+
 **Since:** 9
 
 <!--Device-missionManager-export type MissionSnapshot = _MissionSnapshot--><!--Device-missionManager-export type MissionSnapshot = _MissionSnapshot-End-->
@@ -13,5 +15,3 @@ Mission snapshot corresponding to mission.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
-
-**Type:** _MissionSnapshot

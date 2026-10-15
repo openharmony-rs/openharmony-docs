@@ -12,6 +12,22 @@ export enum AbilityType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+## DATA
+
+```TypeScript
+DATA = 3
+```
+
+表示基于Data模板开发的[ParticleAbility](arkts-ability-ability-particleability.md)，用于对外部提供统一的数据访问对象。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
 ## PAGE
 
 ```TypeScript
@@ -41,21 +57,5 @@ SERVICE = 2
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-AbilityType-SERVICE = 2--><!--Device-AbilityType-SERVICE = 2-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## DATA
-
-```TypeScript
-DATA = 3
-```
-
-表示基于Data模板开发的[ParticleAbility](arkts-ability-ability-particleability.md)，用于对外部提供统一的数据访问对象。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core

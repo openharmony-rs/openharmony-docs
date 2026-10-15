@@ -6,6 +6,8 @@ declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.Vis
 
 导入VisualEffect类型对象。
 
+**类型：** import('../api/@ohos.graphics.uiEffect').default.VisualEffect
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.Vis
 <!--Device-unnamed-declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect--><!--Device-unnamed-declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.graphics.uiEffect').default.VisualEffect

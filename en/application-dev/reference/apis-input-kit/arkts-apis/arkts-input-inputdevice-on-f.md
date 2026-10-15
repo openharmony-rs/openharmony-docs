@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function on(type: 'change', listener: Callback<DeviceListener>): void
 ```
 
-Registers a listener for input device hot-swap events. This feature requires connecting external devices such as a mouse, keyboard, or touchscreen. This API uses an asynchronous callback to return the result. You are advised to execute this operation on the main application thread and unregister the listener before the thread exits.
+Enables listening for device hot swap events. When performing this operation, you need to connect to external devices such as a mouse, keyboard, and touchscreen. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -31,7 +31,7 @@ Registers a listener for input device hot-swap events. This feature requires con
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

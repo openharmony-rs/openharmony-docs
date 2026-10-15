@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getallsessiondescriptors1"></a>
+
 ## getAllSessionDescriptors
 
 ```TypeScript
@@ -38,6 +40,7 @@ Get all avsession descriptors of the system
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,3 +70,5 @@ struct Index {
   } 
 }
 ```
+
+<!--DelEnd-->

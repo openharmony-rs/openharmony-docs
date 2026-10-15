@@ -51,6 +51,7 @@ Obtains the portrait effect in use.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 11 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,6 +60,8 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
   return portraitEffect;
 }
 ```
+
+<!--DelEnd-->
 
 ## setPortraitEffect
 
@@ -89,6 +92,7 @@ Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](ar
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 11 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -106,3 +110,5 @@ function setPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession, po
   }
 }
 ```
+
+<!--DelEnd-->

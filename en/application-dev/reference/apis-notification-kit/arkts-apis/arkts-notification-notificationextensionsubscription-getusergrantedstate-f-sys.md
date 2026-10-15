@@ -46,6 +46,7 @@ Obtains the enabling state of the **Allow access to notifications on this device
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-invalid-bundle-information) | The specified bundle is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
   console.error(`getUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

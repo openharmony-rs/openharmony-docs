@@ -14,6 +14,38 @@ The font size is positively correlated with the screen pixel density. By monitor
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
+## SCREEN_DENSITY_LDPI
+
+```TypeScript
+SCREEN_DENSITY_LDPI = 240
+```
+
+The pixel density of the screen is 'LDPI'.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScreenDensity-SCREEN_DENSITY_LDPI = 240--><!--Device-ScreenDensity-SCREEN_DENSITY_LDPI = 240-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## SCREEN_DENSITY_MDPI
+
+```TypeScript
+SCREEN_DENSITY_MDPI = 160
+```
+
+The pixel density of the screen is 'MDPI'.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScreenDensity-SCREEN_DENSITY_MDPI = 160--><!--Device-ScreenDensity-SCREEN_DENSITY_MDPI = 160-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
 ## SCREEN_DENSITY_NOT_SET
 
 ```TypeScript
@@ -24,7 +56,7 @@ The screen pixel density is not set.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_DENSITY_NOT_SET = 0--><!--Device-ScreenDensity-SCREEN_DENSITY_NOT_SET = 0-End-->
 
@@ -40,41 +72,9 @@ The pixel density of the screen is 'SDPI'.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_DENSITY_SDPI = 120--><!--Device-ScreenDensity-SCREEN_DENSITY_SDPI = 120-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## SCREEN_DENSITY_MDPI
-
-```TypeScript
-SCREEN_DENSITY_MDPI = 160
-```
-
-The pixel density of the screen is 'MDPI'.
-
-**Since:** 9
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_MDPI = 160--><!--Device-ScreenDensity-SCREEN_DENSITY_MDPI = 160-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## SCREEN_DENSITY_LDPI
-
-```TypeScript
-SCREEN_DENSITY_LDPI = 240
-```
-
-The pixel density of the screen is 'LDPI'.
-
-**Since:** 9
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-ScreenDensity-SCREEN_DENSITY_LDPI = 240--><!--Device-ScreenDensity-SCREEN_DENSITY_LDPI = 240-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -88,7 +88,7 @@ The pixel density of the screen is 'XLDPI'.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_DENSITY_XLDPI = 320--><!--Device-ScreenDensity-SCREEN_DENSITY_XLDPI = 320-End-->
 
@@ -104,7 +104,7 @@ The pixel density of the screen is 'XXLDPI'.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_DENSITY_XXLDPI = 480--><!--Device-ScreenDensity-SCREEN_DENSITY_XXLDPI = 480-End-->
 
@@ -120,7 +120,7 @@ The pixel density of the screen is 'XXXLDPI'.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScreenDensity-SCREEN_DENSITY_XXXLDPI = 640--><!--Device-ScreenDensity-SCREEN_DENSITY_XXXLDPI = 640-End-->
 

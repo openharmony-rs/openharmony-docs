@@ -6,6 +6,8 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getshortcutinfosync1"></a>
+
 ## getShortcutInfoSync
 
 ```TypeScript
@@ -49,6 +51,7 @@ function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,8 +68,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getshortcutinfosync-1"></a>
+
+<a id="getshortcutinfosync2"></a>
 
 ## getShortcutInfoSync
 
@@ -93,7 +98,7 @@ function getShortcutInfoSync(bundleName: string, userId: number): Array<Shortcut
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
@@ -113,6 +118,7 @@ function getShortcutInfoSync(bundleName: string, userId: number): Array<Shortcut
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -128,3 +134,5 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+
+<!--DelEnd-->

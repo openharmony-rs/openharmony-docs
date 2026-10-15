@@ -30,7 +30,7 @@ certEncParams?: PbesParams
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12CreationConfig-certEncParams?: PbesParams--><!--Device-Pkcs12CreationConfig-certEncParams?: PbesParams-End-->
 
@@ -50,7 +50,7 @@ encryptCert?: boolean
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12CreationConfig-encryptCert?: boolean--><!--Device-Pkcs12CreationConfig-encryptCert?: boolean-End-->
 
@@ -68,7 +68,7 @@ keyEncParams?: PbesParams
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12CreationConfig-keyEncParams?: PbesParams--><!--Device-Pkcs12CreationConfig-keyEncParams?: PbesParams-End-->
 
@@ -88,7 +88,7 @@ macDigestAlgorithm?: Pkcs12MacDigestAlgorithm
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12CreationConfig-macDigestAlgorithm?: Pkcs12MacDigestAlgorithm--><!--Device-Pkcs12CreationConfig-macDigestAlgorithm?: Pkcs12MacDigestAlgorithm-End-->
 
@@ -108,7 +108,7 @@ macIterations?: number
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12CreationConfig-macIterations?: int--><!--Device-Pkcs12CreationConfig-macIterations?: int-End-->
 
@@ -128,7 +128,7 @@ macSaltLen?: number
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12CreationConfig-macSaltLen?: int--><!--Device-Pkcs12CreationConfig-macSaltLen?: int-End-->
 
@@ -146,7 +146,7 @@ password: string
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-Pkcs12CreationConfig-password: string--><!--Device-Pkcs12CreationConfig-password: string-End-->
 

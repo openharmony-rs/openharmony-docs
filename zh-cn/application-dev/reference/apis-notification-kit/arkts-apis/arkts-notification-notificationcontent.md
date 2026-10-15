@@ -9,7 +9,7 @@
 | [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md) | 描述普通文本通知，用于展示标题和正文内容，是其他通知类型的基础内容结构。其他通知类型（如长文本、多行文本、图片、实况窗）均继承本接口，在此基础上扩展各自特有字段。 |
 | [NotificationButton](arkts-notification-notificationcontent-notificationbutton-i.md) | 描述通知按钮，用于在实况窗中展示可交互的按钮。 |
 | [NotificationCapsule](arkts-notification-notificationcontent-notificationcapsule-i.md) | 描述通知胶囊，用于在实况窗中展示胶囊形态。 |
-| [NotificationContent](arkts-notification-notificationcontent-notificationcontent-i.md) | 通知内容。 |
+| [NotificationContent](arkts-notification-notificationcontent-i.md) | 通知内容。 |
 | [NotificationLongTextContent](arkts-notification-notificationcontent-notificationlongtextcontent-i.md) | 描述长文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。 |
 | [NotificationMultiLineContent](arkts-notification-notificationcontent-notificationmultilinecontent-i.md) | 描述多行文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。 |
 | [NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md) | 描述附有图片的通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。 |
@@ -24,7 +24,7 @@
 | --- | --- |
 | [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i-sys.md) | 描述普通文本通知，用于展示标题和正文内容，是其他通知类型的基础内容结构。其他通知类型（如长文本、多行文本、图片、实况窗）均继承本接口，在此基础上扩展各自特有字段。 |
 | [NotificationCapsule](arkts-notification-notificationcontent-notificationcapsule-i-sys.md) | 描述通知胶囊，用于在实况窗中展示胶囊形态。 |
-| [NotificationContent](arkts-notification-notificationcontent-notificationcontent-i-sys.md) | 通知内容。 |
+| [NotificationContent](arkts-notification-notificationcontent-i-sys.md) | 通知内容。 |
 | [NotificationIconButton](arkts-notification-notificationcontent-notificationiconbutton-i-sys.md) | 描述系统通知按钮。 |
 | [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md) | 描述普通实况通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。 |
 | [NotificationMultiLineContent](arkts-notification-notificationcontent-notificationmultilinecontent-i-sys.md) | 描述多行文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。 |

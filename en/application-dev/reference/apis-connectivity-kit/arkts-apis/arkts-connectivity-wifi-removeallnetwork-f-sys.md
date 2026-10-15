@@ -34,6 +34,7 @@ Removes all the saved Wi-Fi configurations.
 | --- | --- |
 | boolean | Returns `true` if all the saved Wi-Fi configurations are removed; returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

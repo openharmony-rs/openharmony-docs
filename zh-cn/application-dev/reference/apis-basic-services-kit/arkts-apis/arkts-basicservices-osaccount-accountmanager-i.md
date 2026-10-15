@@ -18,6 +18,8 @@ interface AccountManager
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="checkmultiosaccountenabled1"></a>
+
 ## checkMultiOsAccountEnabled
 
 ```TypeScript
@@ -65,7 +67,7 @@ try {
 }
 ```
 
-<a id="checkmultiosaccountenabled-1"></a>
+<a id="checkmultiosaccountenabled2"></a>
 
 ## checkMultiOsAccountEnabled
 
@@ -110,6 +112,8 @@ try {
   console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="checkosaccounttestable1"></a>
 
 ## checkOsAccountTestable
 
@@ -158,7 +162,7 @@ try {
 }
 ```
 
-<a id="checkosaccounttestable-1"></a>
+<a id="checkosaccounttestable2"></a>
 
 ## checkOsAccountTestable
 
@@ -203,6 +207,8 @@ try {
   console.error(`checkOsAccountTestable exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getactivatedosaccountlocalids1"></a>
 
 ## getActivatedOsAccountLocalIds
 
@@ -254,7 +260,7 @@ try {
 }
 ```
 
-<a id="getactivatedosaccountlocalids-1"></a>
+<a id="getactivatedosaccountlocalids2"></a>
 
 ## getActivatedOsAccountLocalIds
 
@@ -300,6 +306,8 @@ try {
 }
 ```
 
+<a id="getforegroundosaccountlocalid1"></a>
+
 ## getForegroundOsAccountLocalId
 
 ```TypeScript
@@ -343,6 +351,8 @@ try {
   console.error(`getForegroundOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getosaccountcount1"></a>
 
 ## getOsAccountCount
 
@@ -394,7 +404,7 @@ try {
 }
 ```
 
-<a id="getosaccountcount-1"></a>
+<a id="getosaccountcount2"></a>
 
 ## getOsAccountCount
 
@@ -500,6 +510,8 @@ accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccoun
 })
 ```
 
+<a id="getosaccountlocalid1"></a>
+
 ## getOsAccountLocalId
 
 ```TypeScript
@@ -547,7 +559,7 @@ try {
 }
 ```
 
-<a id="getosaccountlocalid-1"></a>
+<a id="getosaccountlocalid2"></a>
 
 ## getOsAccountLocalId
 
@@ -592,6 +604,8 @@ try {
   console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getosaccountlocalidfordomain1"></a>
 
 ## getOsAccountLocalIdForDomain
 
@@ -647,7 +661,7 @@ try {
 }
 ```
 
-<a id="getosaccountlocalidfordomain-1"></a>
+<a id="getosaccountlocalidfordomain2"></a>
 
 ## getOsAccountLocalIdForDomain
 
@@ -706,6 +720,8 @@ try {
 }
 ```
 
+<a id="getosaccountlocalidforserialnumber1"></a>
+
 ## getOsAccountLocalIdForSerialNumber
 
 ```TypeScript
@@ -760,7 +776,7 @@ try {
 }
 ```
 
-<a id="getosaccountlocalidforserialnumber-1"></a>
+<a id="getosaccountlocalidforserialnumber2"></a>
 
 ## getOsAccountLocalIdForSerialNumber
 
@@ -819,6 +835,8 @@ try {
 }
 ```
 
+<a id="getosaccountlocalidforuid1"></a>
+
 ## getOsAccountLocalIdForUid
 
 ```TypeScript
@@ -872,7 +890,7 @@ try {
 }
 ```
 
-<a id="getosaccountlocalidforuid-1"></a>
+<a id="getosaccountlocalidforuid2"></a>
 
 ## getOsAccountLocalIdForUid
 
@@ -1132,6 +1150,8 @@ try {
 }
 ```
 
+<a id="getosaccounttype1"></a>
+
 ## getOsAccountType
 
 ```TypeScript
@@ -1179,7 +1199,7 @@ try {
 }
 ```
 
-<a id="getosaccounttype-1"></a>
+<a id="getosaccounttype2"></a>
 
 ## getOsAccountType
 
@@ -1224,6 +1244,8 @@ try {
   console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="getserialnumberforosaccountlocalid1"></a>
 
 ## getSerialNumberForOsAccountLocalId
 
@@ -1279,7 +1301,7 @@ try {
 }
 ```
 
-<a id="getserialnumberforosaccountlocalid-1"></a>
+<a id="getserialnumberforosaccountlocalid2"></a>
 
 ## getSerialNumberForOsAccountLocalId
 
@@ -1338,6 +1360,8 @@ try {
 }
 ```
 
+<a id="isosaccountconstraintenabled1"></a>
+
 ## isOsAccountConstraintEnabled
 
 ```TypeScript
@@ -1392,6 +1416,8 @@ try {
 }
 ```
 
+<a id="isosaccountunlocked1"></a>
+
 ## isOsAccountUnlocked
 
 ```TypeScript
@@ -1435,6 +1461,8 @@ try {
   console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="querydistributedvirtualdeviceid1"></a>
 
 ## queryDistributedVirtualDeviceId
 
@@ -1486,7 +1514,7 @@ try {
 }
 ```
 
-<a id="querydistributedvirtualdeviceid-1"></a>
+<a id="querydistributedvirtualdeviceid2"></a>
 
 ## queryDistributedVirtualDeviceId
 
@@ -1534,6 +1562,8 @@ try {
   console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<a id="checkosaccountactivated1"></a>
 
 ## checkOsAccountActivated
 
@@ -1598,7 +1628,7 @@ try {
 }
 ```
 
-<a id="checkosaccountactivated-1"></a>
+<a id="checkosaccountactivated2"></a>
 
 ## checkOsAccountActivated
 
@@ -1666,6 +1696,8 @@ try {
 }
 ```
 
+<a id="checkosaccountconstraintenabled1"></a>
+
 ## checkOsAccountConstraintEnabled
 
 ```TypeScript
@@ -1731,7 +1763,7 @@ try {
 }
 ```
 
-<a id="checkosaccountconstraintenabled-1"></a>
+<a id="checkosaccountconstraintenabled2"></a>
 
 ## checkOsAccountConstraintEnabled
 
@@ -1801,6 +1833,8 @@ try {
 }
 ```
 
+<a id="checkosaccountverified1"></a>
+
 ## checkOsAccountVerified
 
 ```TypeScript
@@ -1856,7 +1890,7 @@ try {
 }
 ```
 
-<a id="checkosaccountverified-1"></a>
+<a id="checkosaccountverified2"></a>
 
 ## checkOsAccountVerified
 
@@ -1911,7 +1945,7 @@ try {
 }
 ```
 
-<a id="checkosaccountverified-2"></a>
+<a id="checkosaccountverified3"></a>
 
 ## checkOsAccountVerified
 
@@ -1974,7 +2008,7 @@ try {
 }
 ```
 
-<a id="checkosaccountverified-3"></a>
+<a id="checkosaccountverified4"></a>
 
 ## checkOsAccountVerified
 
@@ -2040,6 +2074,8 @@ try {
 }
 ```
 
+<a id="getcreatedosaccountscount1"></a>
+
 ## getCreatedOsAccountsCount
 
 ```TypeScript
@@ -2086,7 +2122,7 @@ accountManager.getCreatedOsAccountsCount((err: BusinessError, count: number)=>{
 });
 ```
 
-<a id="getcreatedosaccountscount-1"></a>
+<a id="getcreatedosaccountscount2"></a>
 
 ## getCreatedOsAccountsCount
 
@@ -2131,6 +2167,8 @@ accountManager.getCreatedOsAccountsCount().then((count: number) => {
   console.error(`getCreatedOsAccountsCount failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getcurrentosaccount1"></a>
 
 ## getCurrentOsAccount
 
@@ -2189,7 +2227,7 @@ try {
 }
 ```
 
-<a id="getcurrentosaccount-1"></a>
+<a id="getcurrentosaccount2"></a>
 
 ## getCurrentOsAccount
 
@@ -2246,6 +2284,8 @@ try {
 }
 ```
 
+<a id="getdistributedvirtualdeviceid1"></a>
+
 ## getDistributedVirtualDeviceId
 
 ```TypeScript
@@ -2257,14 +2297,14 @@ getDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)
+> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)(callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid1)(callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2293,7 +2333,7 @@ accountManager.getDistributedVirtualDeviceId((err: BusinessError, virtualID: str
 });
 ```
 
-<a id="getdistributedvirtualdeviceid-1"></a>
+<a id="getdistributedvirtualdeviceid2"></a>
 
 ## getDistributedVirtualDeviceId
 
@@ -2338,6 +2378,8 @@ accountManager.getDistributedVirtualDeviceId().then((virtualID: string) => {
   console.error(`getDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getosaccountallconstraints1"></a>
 
 ## getOsAccountAllConstraints
 
@@ -2387,7 +2429,7 @@ accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constrai
 });
 ```
 
-<a id="getosaccountallconstraints-1"></a>
+<a id="getosaccountallconstraints2"></a>
 
 ## getOsAccountAllConstraints
 
@@ -2439,6 +2481,8 @@ accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) 
   console.error(`getOsAccountAllConstraints err: code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getosaccountconstraints1"></a>
 
 ## getOsAccountConstraints
 
@@ -2503,7 +2547,7 @@ try {
 }
 ```
 
-<a id="getosaccountconstraints-1"></a>
+<a id="getosaccountconstraints2"></a>
 
 ## getOsAccountConstraints
 
@@ -2571,6 +2615,8 @@ try {
 }
 ```
 
+<a id="getosaccountlocalidbyserialnumber1"></a>
+
 ## getOsAccountLocalIdBySerialNumber
 
 ```TypeScript
@@ -2620,7 +2666,7 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err: BusinessErr
 });
 ```
 
-<a id="getosaccountlocalidbyserialnumber-1"></a>
+<a id="getosaccountlocalidbyserialnumber2"></a>
 
 ## getOsAccountLocalIdBySerialNumber
 
@@ -2674,6 +2720,8 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber).then((localId: nu
 });
 ```
 
+<a id="getosaccountlocalidfromdomain1"></a>
+
 ## getOsAccountLocalIdFromDomain
 
 ```TypeScript
@@ -2723,7 +2771,7 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo, (err: BusinessError, lo
 });
 ```
 
-<a id="getosaccountlocalidfromdomain-1"></a>
+<a id="getosaccountlocalidfromdomain2"></a>
 
 ## getOsAccountLocalIdFromDomain
 
@@ -2736,14 +2784,14 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain-1)
+> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain-1)(domainInfo: DomainAccountInfo)
+**替代接口：** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain2)(domainInfo: DomainAccountInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2776,6 +2824,8 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo).then((localId: number) 
   console.error(`getOsAccountLocalIdFromDomain failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getosaccountlocalidfromprocess1"></a>
 
 ## getOsAccountLocalIdFromProcess
 
@@ -2821,7 +2871,7 @@ accountManager.getOsAccountLocalIdFromProcess((err: BusinessError, localId: numb
 });
 ```
 
-<a id="getosaccountlocalidfromprocess-1"></a>
+<a id="getosaccountlocalidfromprocess2"></a>
 
 ## getOsAccountLocalIdFromProcess
 
@@ -2864,6 +2914,8 @@ accountManager.getOsAccountLocalIdFromProcess().then((localId: number) => {
   console.error(`getOsAccountLocalIdFromProcess failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getosaccountlocalidfromuid1"></a>
 
 ## getOsAccountLocalIdFromUid
 
@@ -2914,7 +2966,7 @@ accountManager.getOsAccountLocalIdFromUid(uid, (err: BusinessError, localId: num
 });
 ```
 
-<a id="getosaccountlocalidfromuid-1"></a>
+<a id="getosaccountlocalidfromuid2"></a>
 
 ## getOsAccountLocalIdFromUid
 
@@ -2967,6 +3019,8 @@ accountManager.getOsAccountLocalIdFromUid(uid).then((localId: number) => {
 });
 ```
 
+<a id="getosaccounttypefromprocess1"></a>
+
 ## getOsAccountTypeFromProcess
 
 ```TypeScript
@@ -2978,13 +3032,13 @@ getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountType](#getosaccounttype)替代。
+> [getOsAccountType](#getosaccounttype1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountType](#getosaccounttype)(callback: AsyncCallback&lt;OsAccountType&gt;)
+**替代接口：** [getOsAccountType](#getosaccounttype1)(callback: AsyncCallback&lt;OsAccountType&gt;)
 
 <!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void--><!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void-End-->
 
@@ -3011,7 +3065,7 @@ accountManager.getOsAccountTypeFromProcess((err: BusinessError, accountType: osA
 });
 ```
 
-<a id="getosaccounttypefromprocess-1"></a>
+<a id="getosaccounttypefromprocess2"></a>
 
 ## getOsAccountTypeFromProcess
 
@@ -3054,6 +3108,8 @@ accountManager.getOsAccountTypeFromProcess().then((accountType: osAccount.OsAcco
   console.error(`getOsAccountTypeFromProcess err: code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getserialnumberbyosaccountlocalid1"></a>
 
 ## getSerialNumberByOsAccountLocalId
 
@@ -3105,7 +3161,7 @@ accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, s
 });
 ```
 
-<a id="getserialnumberbyosaccountlocalid-1"></a>
+<a id="getserialnumberbyosaccountlocalid2"></a>
 
 ## getSerialNumberByOsAccountLocalId
 
@@ -3160,6 +3216,8 @@ accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: nu
 });
 ```
 
+<a id="ismultiosaccountenable1"></a>
+
 ## isMultiOsAccountEnable
 
 ```TypeScript
@@ -3171,14 +3229,14 @@ isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)
+> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3205,7 +3263,7 @@ accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) =
 });
 ```
 
-<a id="ismultiosaccountenable-1"></a>
+<a id="ismultiosaccountenable2"></a>
 
 ## isMultiOsAccountEnable
 
@@ -3248,6 +3306,8 @@ accountManager.isMultiOsAccountEnable().then((isEnabled: boolean) => {
   console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="isosaccountactived1"></a>
 
 ## isOsAccountActived
 
@@ -3297,7 +3357,7 @@ accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boole
 });
 ```
 
-<a id="isosaccountactived-1"></a>
+<a id="isosaccountactived2"></a>
 
 ## isOsAccountActived
 
@@ -3350,6 +3410,8 @@ accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
 });
 ```
 
+<a id="isosaccountconstraintenable1"></a>
+
 ## isOsAccountConstraintEnable
 
 ```TypeScript
@@ -3400,7 +3462,7 @@ accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessEr
 });
 ```
 
-<a id="isosaccountconstraintenable-1"></a>
+<a id="isosaccountconstraintenable2"></a>
 
 ## isOsAccountConstraintEnable
 
@@ -3455,6 +3517,8 @@ accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled:
 });
 ```
 
+<a id="isosaccountverified1"></a>
+
 ## isOsAccountVerified
 
 ```TypeScript
@@ -3466,14 +3530,14 @@ isOsAccountVerified(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkOsAccountVerified](#checkosaccountverified)
+> [checkOsAccountVerified](#checkosaccountverified1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountVerified](#checkosaccountverified)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkOsAccountVerified](#checkosaccountverified1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -3502,7 +3566,7 @@ accountManager.isOsAccountVerified((err: BusinessError, isVerified: boolean) => 
 });
 ```
 
-<a id="isosaccountverified-1"></a>
+<a id="isosaccountverified2"></a>
 
 ## isOsAccountVerified
 
@@ -3550,7 +3614,7 @@ accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boo
 });
 ```
 
-<a id="isosaccountverified-2"></a>
+<a id="isosaccountverified3"></a>
 
 ## isOsAccountVerified
 
@@ -3599,6 +3663,8 @@ accountManager.isOsAccountVerified().then((isVerified: boolean) => {
 });
 ```
 
+<a id="istestosaccount1"></a>
+
 ## isTestOsAccount
 
 ```TypeScript
@@ -3610,14 +3676,14 @@ isTestOsAccount(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkOsAccountTestable](#checkosaccounttestable)
+> [checkOsAccountTestable](#checkosaccounttestable1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountTestable](#checkosaccounttestable)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkOsAccountTestable](#checkosaccounttestable1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3644,7 +3710,7 @@ accountManager.isTestOsAccount((err: BusinessError, isTestable: boolean) => {
 });
 ```
 
-<a id="istestosaccount-1"></a>
+<a id="istestosaccount2"></a>
 
 ## isTestOsAccount
 
@@ -3687,6 +3753,8 @@ let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     console.error(`isTestOsAccount failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="queryactivatedosaccountids1"></a>
 
 ## queryActivatedOsAccountIds
 
@@ -3736,7 +3804,7 @@ accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]
 });
 ```
 
-<a id="queryactivatedosaccountids-1"></a>
+<a id="queryactivatedosaccountids2"></a>
 
 ## queryActivatedOsAccountIds
 
@@ -3779,6 +3847,8 @@ accountManager.queryActivatedOsAccountIds().then((idArray: number[]) => {
   console.error(`queryActivatedOsAccountIds err: code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="querycurrentosaccount1"></a>
 
 ## queryCurrentOsAccount
 
@@ -3823,7 +3893,7 @@ accountManager.queryCurrentOsAccount((err: BusinessError, curAccountInfo: osAcco
 });
 ```
 
-<a id="querycurrentosaccount-1"></a>
+<a id="querycurrentosaccount2"></a>
 
 ## queryCurrentOsAccount
 

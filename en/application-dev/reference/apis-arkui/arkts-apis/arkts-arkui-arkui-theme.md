@@ -1,4 +1,4 @@
-# @ohos.arkui.theme(Theme)
+# @ohos.arkui.theme
 
 ## Modules to Import
 
@@ -12,21 +12,21 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 
 | Name | Description |
 | --- | --- |
-| [ThemeControl](arkts-arkui-arkui-theme-themecontrol-c.md) | Class ThemeControl provides the Theme management for whole Ability and pages. |
+| [ThemeControl](arkts-arkui-arkui-theme-themecontrol-c.md) | Implements a **ThemeControl** object to apply the custom theme to the components in the application. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [Colors](arkts-arkui-arkui-theme-colors-i.md) | Defines the struct of Colors. |
-| [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | Defines the struct of CustomTheme. |
-| [Theme](arkts-arkui-arkui-theme-theme-i.md) | Defines the struct of Theme. |
+| [Colors](arkts-arkui-arkui-theme-colors-i.md) | Defines the color resources of a theme. |
+| [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | Defines a custom theme object. |
+| [Theme](arkts-arkui-arkui-theme-theme-i.md) | Defines the **Theme** object in use, which can be obtained through [onWillApplyTheme](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onwillapplytheme). |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [CustomColors](arkts-arkui-customcolors-t.md) | Defines the struct of CustomColors. |
+| [CustomColors](arkts-arkui-customcolors-t.md) | Defines the type for custom theme color resources. |
 | [CustomDarkColors](arkts-arkui-customdarkcolors-t.md) | Defines the struct of CustomDarkColors. |
 
 ## Examples

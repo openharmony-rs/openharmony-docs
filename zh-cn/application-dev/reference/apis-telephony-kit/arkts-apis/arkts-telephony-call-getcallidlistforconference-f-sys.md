@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="getcallidlistforconference1"></a>
+
 ## getCallIdListForConference
 
 ```TypeScript
@@ -34,12 +36,13 @@ function getCallIdListForConference(callId: number, callback: AsyncCallback<Arra
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,8 +57,10 @@ call.getCallIdListForConference(1, (err: BusinessError, data: Array<string>) => 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getcallidlistforconference-1"></a>
+
+<a id="getcallidlistforconference2"></a>
 
 ## getCallIdListForConference
 
@@ -90,12 +95,13 @@ function getCallIdListForConference(callId: number): Promise<Array<string>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -107,3 +113,5 @@ call.getCallIdListForConference(1).then((data: Array<string>) => {
     console.error(`getCallIdListForConference fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

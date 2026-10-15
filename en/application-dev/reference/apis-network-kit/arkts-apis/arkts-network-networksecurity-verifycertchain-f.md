@@ -52,3 +52,38 @@ Verifies the server certificate chain and returns a sorted chain.
 | [2305027](../errorcode-net-networkSecurity.md#2305027-untrusted-certificate) | Certificate is untrusted. |
 | [2305062](../errorcode-net-networkSecurity.md#2305062-hostname-verification-failed) | Invalid hostname. |
 | [2305069](../errorcode-net-networkSecurity.md#2305069-invalid-certificate-verification-context) | Invalid certificate verification context. |
+
+**Examples**
+
+```TypeScript
+import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Define certificate blobs
+const cert1: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n... (server certificate) ...\n-----END CERTIFICATE-----',
+};
+
+const cert2: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n... (intermediate certificate) ...\n-----END CERTIFICATE-----',
+};
+
+const caCert: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n... (CA certificate) ...\n-----END CERTIFICATE-----',
+};
+
+// Verify and build sorted cert chain
+networkSecurity.verifyCertChain([cert1, cert2], caCert, "example.com")
+  .then((sortedChain: Array<networkSecurity.CertBlob>) => {
+    console.info('Certificate chain verified and sorted, chain length:', sortedChain.length);
+    for (let i = 0; i < sortedChain.length; i++) {
+      console.info(`Certificate ${i}: type=${sortedChain[i].type}, data=${sortedChain[i].data}`);
+    }
+  })
+  .catch((error: BusinessError) => {
+    console.error('Certificate chain verification failed:', error);
+  });
+```

@@ -6,8 +6,6 @@ export interface ChipV2CloseConfig extends ChipV2AccessibilityConfig
 
 ChipV2CloseConfig用于定义ChipV2组件关闭图标的功能属性配置，包括无障碍功能属性。
 
-继承自[ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md)。
-
 **继承/实现关系：** ChipV2CloseConfig extends [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md)
 
 **起始版本：** 26.0.0

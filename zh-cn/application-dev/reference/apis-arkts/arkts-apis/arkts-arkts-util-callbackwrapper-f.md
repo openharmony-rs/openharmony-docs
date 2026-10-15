@@ -73,7 +73,7 @@ async function fn(args: Array<string | number | Function>) {
 let cb = util.callbackWrapper(fn);
 let args: Array<string | number | Function> = ['hello world', 8]
 cb(args, (err : Object, ret : string) => {
-  if (err) throw new Error;
+  if (err) throw new Error();
   console.info(ret); // 输出结果：hello world
 });
 ```

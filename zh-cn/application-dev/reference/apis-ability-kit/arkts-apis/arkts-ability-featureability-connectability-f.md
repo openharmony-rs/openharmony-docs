@@ -33,7 +33,7 @@ function connectAbility(request: Want, options: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示被连接的ServiceAbility。 |
-| options | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | 是 | 表示连接回调函数。 |
+| options | [ConnectOptions](arkts-ability-connectoptions-i.md) | 是 | 表示连接回调函数。 |
 
 **返回值：**
 

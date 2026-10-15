@@ -6,7 +6,7 @@ declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>
 
 Declare navigator properties.
 
-**Inheritance/Implementation:** NavigatorAttribute extends CommonMethod<NavigatorAttribute>
+**Inheritance/Implementation:** NavigatorAttribute extends CommonMethod&lt;NavigatorAttribute&gt;
 
 **Since:** 7
 

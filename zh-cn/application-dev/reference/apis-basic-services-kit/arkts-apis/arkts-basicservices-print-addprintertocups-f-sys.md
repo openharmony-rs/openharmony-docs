@@ -48,6 +48,7 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application. |
 | [13100003](../errorcode-print.md#13100003-打印服务异常) | Add a printer to cups failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ print.addPrinterToCups(printerUri, printerName, printerMake).then((result: boole
     console.error(`Failed to add printer to cups. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

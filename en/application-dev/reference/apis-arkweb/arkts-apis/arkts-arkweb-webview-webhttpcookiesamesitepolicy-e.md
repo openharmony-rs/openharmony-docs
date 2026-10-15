@@ -12,20 +12,6 @@ Enumerates the policies for sending cookies in cross-site requests.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-Cookies can be carried in cross-site requests, but the **secure** attribute must be set.
-
-**Since:** 23
-
-<!--Device-WebHttpCookieSameSitePolicy-NONE = 0--><!--Device-WebHttpCookieSameSitePolicy-NONE = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## LAX
 
 ```TypeScript
@@ -37,6 +23,20 @@ Cookies can be carried in specific cross-site requests, such as navigation scena
 **Since:** 23
 
 <!--Device-WebHttpCookieSameSitePolicy-LAX = 1--><!--Device-WebHttpCookieSameSitePolicy-LAX = 1-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+Cookies can be carried in cross-site requests, but the **secure** attribute must be set.
+
+**Since:** 23
+
+<!--Device-WebHttpCookieSameSitePolicy-NONE = 0--><!--Device-WebHttpCookieSameSitePolicy-NONE = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

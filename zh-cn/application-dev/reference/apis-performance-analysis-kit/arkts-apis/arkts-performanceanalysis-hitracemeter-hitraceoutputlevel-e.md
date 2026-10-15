@@ -14,6 +14,38 @@ enum HiTraceOutputLevel
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
+## COMMERCIAL
+
+```TypeScript
+COMMERCIAL = 3
+```
+
+用于nolog版本的输出级别，优先级最高。nolog版本阈值为COMMERCIAL。
+
+**起始版本：** 19
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-HiTraceOutputLevel-COMMERCIAL = 3--><!--Device-HiTraceOutputLevel-COMMERCIAL = 3-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
+## CRITICAL
+
+```TypeScript
+CRITICAL = 2
+```
+
+用于log版本的输出级别，优先级高于INFO，用于需要重点关注的trace事件。
+
+**起始版本：** 19
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-HiTraceOutputLevel-CRITICAL = 2--><!--Device-HiTraceOutputLevel-CRITICAL = 2-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 ## DEBUG
 
 ```TypeScript
@@ -24,7 +56,7 @@ DEBUG = 0
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-HiTraceOutputLevel-DEBUG = 0--><!--Device-HiTraceOutputLevel-DEBUG = 0-End-->
 
@@ -40,41 +72,9 @@ INFO = 1
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-HiTraceOutputLevel-INFO = 1--><!--Device-HiTraceOutputLevel-INFO = 1-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiTrace
-
-## CRITICAL
-
-```TypeScript
-CRITICAL = 2
-```
-
-用于log版本的输出级别，优先级高于INFO，用于需要重点关注的trace事件。
-
-**起始版本：** 19
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-HiTraceOutputLevel-CRITICAL = 2--><!--Device-HiTraceOutputLevel-CRITICAL = 2-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiTrace
-
-## COMMERCIAL
-
-```TypeScript
-COMMERCIAL = 3
-```
-
-用于nolog版本的输出级别，优先级最高。nolog版本阈值为COMMERCIAL。
-
-**起始版本：** 19
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-HiTraceOutputLevel-COMMERCIAL = 3--><!--Device-HiTraceOutputLevel-COMMERCIAL = 3-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -88,7 +88,7 @@ MAX = COMMERCIAL
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-HiTraceOutputLevel-MAX = COMMERCIAL--><!--Device-HiTraceOutputLevel-MAX = COMMERCIAL-End-->
 

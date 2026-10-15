@@ -4,7 +4,11 @@
 export declare const InsightIntentLink: ((intentInfo: LinkIntentDecoratorInfo) => ClassDecorator)
 ```
 
-Define InsightIntentLink.
+Decorates a URI link in the current application as an intent, enabling AI entries to quickly jump to the current application via the defined intent. For details on the parameters supported by this decorator, see [LinkIntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-linkintentdecoratorinfo-i.md).
+
+> **NOTE:** 
+> The URI format must comply with the requirements described in
+> [Application Link Description](../../../application-models/app-uri-config.md).
 
 **Since:** 20
 

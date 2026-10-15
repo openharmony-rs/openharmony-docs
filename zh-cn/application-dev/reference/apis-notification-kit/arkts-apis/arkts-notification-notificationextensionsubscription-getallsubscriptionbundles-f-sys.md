@@ -39,6 +39,7 @@ function getAllSubscriptionBundles(): Promise<BundleOption[]>
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,3 +49,5 @@ notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notifi
   console.error(`getAllSubscriptionBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

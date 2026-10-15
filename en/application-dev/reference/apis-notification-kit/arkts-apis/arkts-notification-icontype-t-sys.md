@@ -16,5 +16,5 @@ Describes the icon types.
 
 | Type | Description |
 | --- | --- |
-| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Image resource. |
+| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Image resource. |
 | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Image. |

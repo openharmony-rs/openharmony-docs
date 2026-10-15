@@ -6,6 +6,8 @@ declare type Theme = import('../api/@ohos.arkui.theme').Theme
 
 主题对象。
 
+**类型：** import('../api/@ohos.arkui.theme').Theme
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type Theme = import('../api/@ohos.arkui.theme').Theme
 <!--Device-unnamed-declare type Theme = import('../api/@ohos.arkui.theme').Theme--><!--Device-unnamed-declare type Theme = import('../api/@ohos.arkui.theme').Theme-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.theme').Theme

@@ -6,6 +6,8 @@ export type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo
 
 Defines the information in the [HarmonyAppProvision configuration file](../../../security/app-provision-structure.md).
 
+**Type:** [_AppProvisionInfo.AppProvisionInfo](arkts-ability-appprovisioninfo-i-sys.md)
+
 **Since:** 10
 
 <!--Device-bundleManager-export type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo--><!--Device-bundleManager-export type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo-End-->
@@ -13,5 +15,3 @@ Defines the information in the [HarmonyAppProvision configuration file](../../..
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
-
-**Type:** [_AppProvisionInfo.AppProvisionInfo](arkts-ability-appprovisioninfo-i-sys.md)

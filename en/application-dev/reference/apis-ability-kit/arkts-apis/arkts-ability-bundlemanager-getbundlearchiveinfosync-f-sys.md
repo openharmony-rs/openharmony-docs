@@ -35,7 +35,7 @@ Obtains the bundle information based on the given HAP file path and bundle flags
 
 | Type | Description |
 | --- | --- |
-| [BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md) | Bundle information obtained. |
+| [BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md) | Returns the queried application bundle information. |
 
 **Error codes:**
 
@@ -46,6 +46,7 @@ Obtains the bundle information based on the given HAP file path and bundle flags
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700022](../errorcode-bundle.md#17700022-invalid-source-file) | The hapFilePath is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleArchiveInfoSync failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

@@ -8,9 +8,9 @@ Target actions supported by the app. Target actions that require configuration p
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-accessibility-type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |  'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |  'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'--><!--Device-accessibility-type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |  'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |  'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'-End-->
 
@@ -34,12 +34,12 @@ Target actions supported by the app. Target actions that require configuration p
 | 'scrollForward' | Scroll forward. The parameter **scrollType** must be configured, with the value **'fullScreen'** or **'halfScreen'**. |
 | 'scrollBackward' | Scroll backward. The parameter **scrollType** must be configured, with the value **'fullScreen'** or **'halfScreen'**. |
 | 'setSelection' | Set the text selection range. The parameters **selectTextBegin**, **selectTextEnd**, and **selectTextInForWard** must be configured, with the values being the start coordinate, end coordinate, and whether to select forward. |
-| 'setCursorPosition' | Set the cursor position. The parameter **offset** must be configured, with the value being the character offset of the cursor. [since 12] |
-| 'home' | Return to the home screen. [since 12] |
-| 'back' | Return to the previous level. [since 12] |
-| 'recentTask' | Open recent tasks. [since 12] |
-| 'notificationCenter' | Open the notification panel. [since 12] |
-| 'controlCenter' | Open the control center. [since 12] |
-| 'common' | No specific action, used for scenarios such as active focus and active announcement. [since 12] |
-| 'injectAction' | Inject an action. The parameter **injectActionType** must be configured, with the value being the type of the injected action. [since 26.0.0] |
-| 'executeCustomAction' | Execute a custom action. The parameter **customAction** must be configured, with the value being the name of the custom action. [since 26.0.0] |
+| 'setCursorPosition' | Set the cursor position. The parameter **offset** must be configured, with the value being the character offset of the cursor.<br>**Since:** 12 |
+| 'home' | Return to the home screen.<br>**Since:** 12 |
+| 'back' | Return to the previous level.<br>**Since:** 12 |
+| 'recentTask' | Open recent tasks.<br>**Since:** 12 |
+| 'notificationCenter' | Open the notification panel.<br>**Since:** 12 |
+| 'controlCenter' | Open the control center.<br>**Since:** 12 |
+| 'common' | No specific action, used for scenarios such as active focus and active announcement.<br>**Since:** 12 |
+| 'injectAction' | Inject an action. The parameter **injectActionType** must be configured, with the value being the type of the injected action.<br>**Since:** 26.0.0 |
+| 'executeCustomAction' | Execute a custom action. The parameter **customAction** must be configured, with the value being the name of the custom action.<br>**Since:** 26.0.0 |

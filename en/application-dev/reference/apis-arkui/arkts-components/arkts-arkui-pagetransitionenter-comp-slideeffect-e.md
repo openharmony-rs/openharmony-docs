@@ -12,6 +12,46 @@ Defines the slide-in and slide-out effects for page transitions.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Bottom
+
+```TypeScript
+Bottom
+```
+
+When set for entrance, it indicates sliding in from the bottom; when set for exit, it indicates sliding out to the bottom.
+
+**Atomic service API:** Since API version 11, this interface is supported in atomic services.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SlideEffect-Bottom--><!--Device-SlideEffect-Bottom-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## END
+
+```TypeScript
+END = 6
+```
+
+When set for LTR entrance, it indicates sliding in from the right; for exit, it indicates sliding out to the right. When set for RTL entrance, it indicates sliding in from the left; for exit, it indicates sliding out to the left.
+
+**Atomic service API:** Since API version 12, this interface is supported in atomic services.
+
+**Model constraint:** This interface can be used only under the Stage model.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SlideEffect-END = 6--><!--Device-SlideEffect-END = 6-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Left
 
 ```TypeScript
@@ -48,42 +88,6 @@ When set for entrance, it indicates sliding in from the right; when set for exit
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Top
-
-```TypeScript
-Top
-```
-
-When set for entrance, it indicates sliding in from the top; when set for exit, it indicates sliding out to the top.
-
-**Atomic service API:** Since API version 11, this interface is supported in atomic services.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-SlideEffect-Top--><!--Device-SlideEffect-Top-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Bottom
-
-```TypeScript
-Bottom
-```
-
-When set for entrance, it indicates sliding in from the bottom; when set for exit, it indicates sliding out to the bottom.
-
-**Atomic service API:** Since API version 11, this interface is supported in atomic services.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-SlideEffect-Bottom--><!--Device-SlideEffect-Bottom-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## START
 
 ```TypeScript
@@ -106,24 +110,20 @@ When set for LTR entrance, it indicates sliding in from the left; for exit, it i
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## END
+## Top
 
 ```TypeScript
-END = 6
+Top
 ```
 
-When set for LTR entrance, it indicates sliding in from the right; for exit, it indicates sliding out to the right. When set for RTL entrance, it indicates sliding in from the left; for exit, it indicates sliding out to the left.
+When set for entrance, it indicates sliding in from the top; when set for exit, it indicates sliding out to the top.
 
-**Atomic service API:** Since API version 12, this interface is supported in atomic services.
+**Atomic service API:** Since API version 11, this interface is supported in atomic services.
 
-**Model constraint:** This interface can be used only under the Stage model.
+**Since:** 7
 
-**Since:** 12
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-SlideEffect-END = 6--><!--Device-SlideEffect-END = 6-End-->
+<!--Device-SlideEffect-Top--><!--Device-SlideEffect-Top-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

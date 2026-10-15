@@ -12,6 +12,22 @@ Enumerates the charging types that trigger deferred task callback.
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
+## CHARGING_PLUGGED_AC
+
+```TypeScript
+CHARGING_PLUGGED_AC = 1
+```
+
+AC charging.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChargingType-CHARGING_PLUGGED_AC = 1--><!--Device-ChargingType-CHARGING_PLUGGED_AC = 1-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
+
 ## CHARGING_PLUGGED_ANY
 
 ```TypeScript
@@ -25,22 +41,6 @@ Any charging type.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ChargingType-CHARGING_PLUGGED_ANY = 0--><!--Device-ChargingType-CHARGING_PLUGGED_ANY = 0-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
-
-## CHARGING_PLUGGED_AC
-
-```TypeScript
-CHARGING_PLUGGED_AC = 1
-```
-
-DC charging.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ChargingType-CHARGING_PLUGGED_AC = 1--><!--Device-ChargingType-CHARGING_PLUGGED_AC = 1-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

@@ -12,19 +12,19 @@ Enumerates application collaboration key values.
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
-## PEER_INFO
+## COLLABORATE_TYPE
 
 ```TypeScript
-PEER_INFO = 'ohos.collaboration.key.peerInfo'
+COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'
 ```
 
-Key value of the peer device information.
+Key value of the collaboration type.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'--><!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'-End-->
+<!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'--><!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -44,18 +44,18 @@ Key value of the connection option.
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
-## COLLABORATE_TYPE
+## PEER_INFO
 
 ```TypeScript
-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'
+PEER_INFO = 'ohos.collaboration.key.peerInfo'
 ```
 
-Key value of the collaboration type.
+Key value of the peer device information.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'--><!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'-End-->
+<!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'--><!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

@@ -17,26 +17,6 @@ declare enum HitTestMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Default
-
-```TypeScript
-Default
-```
-
-默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。
-
-**起始版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-HitTestMode-Default--><!--Device-HitTestMode-Default-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Block
 
 ```TypeScript
@@ -57,43 +37,23 @@ Block
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Transparent
+## BLOCK_DESCENDANTS
 
 ```TypeScript
-Transparent
+BLOCK_DESCENDANTS
 ```
 
-自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。
+自身不响应触摸测试，并且所有的后代（孩子、孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
 
-**起始版本：** 9
+**起始版本：** 20
 
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-HitTestMode-Transparent--><!--Device-HitTestMode-Transparent-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## None
-
-```TypeScript
-None
-```
-
-自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。
-
-**起始版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-HitTestMode-None--><!--Device-HitTestMode-None-End-->
+<!--Device-HitTestMode-BLOCK_DESCENDANTS--><!--Device-HitTestMode-BLOCK_DESCENDANTS-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,22 +77,62 @@ BLOCK_HIERARCHY
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BLOCK_DESCENDANTS
+## Default
 
 ```TypeScript
-BLOCK_DESCENDANTS
+Default
 ```
 
-自身不响应触摸测试，并且所有的后代（孩子、孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
+默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。
 
-**起始版本：** 20
+**起始版本：** 9
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-HitTestMode-BLOCK_DESCENDANTS--><!--Device-HitTestMode-BLOCK_DESCENDANTS-End-->
+<!--Device-HitTestMode-Default--><!--Device-HitTestMode-Default-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None
+```
+
+自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。
+
+**起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-HitTestMode-None--><!--Device-HitTestMode-None-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Transparent
+
+```TypeScript
+Transparent
+```
+
+自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。
+
+**起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-HitTestMode-Transparent--><!--Device-HitTestMode-Transparent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

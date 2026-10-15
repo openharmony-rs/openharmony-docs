@@ -1,4 +1,4 @@
-# ExtensionAbilityInfo
+# ExtensionAbilityInfo(ExtensionAbilityInfo)
 
 ## Summary
 

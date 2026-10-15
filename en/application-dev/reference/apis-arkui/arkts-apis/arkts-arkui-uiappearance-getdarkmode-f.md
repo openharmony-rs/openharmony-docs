@@ -12,12 +12,12 @@ import { uiAppearance } from '@kit.ArkUI';
 function getDarkMode(): DarkMode
 ```
 
-Obtains the current system dark mode configuration.
+Obtains the current system color mode configuration. This API is applicable to scenarios where the application UI theme needs to be dynamically adapted based on the system appearance mode, such as implementing automatic switching between dark and light theme styles within the application.
 
 <!--Del-->
 
 > **NOTE:** 
-
+> 
 > This API is a system API in API version 19 and earlier. Using this API requires the
 > [ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)
 > permission.
@@ -44,7 +44,7 @@ Obtains the current system dark mode configuration.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 10 - 19 |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 10 - 19 |
 | [500001](../errorcode-uiappearance.md#500001-internal-error) | Internal error. |
 
 **Examples**

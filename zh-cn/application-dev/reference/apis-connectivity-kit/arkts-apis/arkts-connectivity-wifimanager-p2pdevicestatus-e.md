@@ -12,6 +12,20 @@ enum P2pDeviceStatus
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+## AVAILABLE
+
+```TypeScript
+AVAILABLE = 3
+```
+
+可用状态。
+
+**起始版本：** 9
+
+<!--Device-P2pDeviceStatus-AVAILABLE = 3--><!--Device-P2pDeviceStatus-AVAILABLE = 3-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
 ## CONNECTED
 
 ```TypeScript
@@ -23,20 +37,6 @@ CONNECTED = 0
 **起始版本：** 9
 
 <!--Device-P2pDeviceStatus-CONNECTED = 0--><!--Device-P2pDeviceStatus-CONNECTED = 0-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
-## INVITED
-
-```TypeScript
-INVITED = 1
-```
-
-邀请状态。
-
-**起始版本：** 9
-
-<!--Device-P2pDeviceStatus-INVITED = 1--><!--Device-P2pDeviceStatus-INVITED = 1-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -54,17 +54,17 @@ FAILED = 2
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-## AVAILABLE
+## INVITED
 
 ```TypeScript
-AVAILABLE = 3
+INVITED = 1
 ```
 
-可用状态。
+邀请状态。
 
 **起始版本：** 9
 
-<!--Device-P2pDeviceStatus-AVAILABLE = 3--><!--Device-P2pDeviceStatus-AVAILABLE = 3-End-->
+<!--Device-P2pDeviceStatus-INVITED = 1--><!--Device-P2pDeviceStatus-INVITED = 1-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 

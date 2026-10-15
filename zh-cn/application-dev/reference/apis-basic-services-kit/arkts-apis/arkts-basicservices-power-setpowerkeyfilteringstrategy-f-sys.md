@@ -40,6 +40,7 @@ function setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [4900101](../errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ try {
     console.error(`Failed to set power key filtering strategy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

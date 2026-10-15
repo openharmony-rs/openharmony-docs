@@ -27,8 +27,8 @@ declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetSty
 | [ImageAttachment](arkts-arkui-imageattachment-c.md) | 图片样式。 |
 | [ParagraphStyle](arkts-arkui-paragraphstyle-c.md) | 文本段落样式。 |
 | [LineHeightStyle](arkts-arkui-lineheightstyle-c.md) | 文本行高样式。 |
-| [UrlStyle](arkts-arkui-urlstyle-c.md) | 超链接样式。 [since 14] |
+| [UrlStyle](arkts-arkui-urlstyle-c.md) | 超链接样式。<br>**起始版本：** 14 |
 | [CustomSpan](arkts-arkui-customspan-c.md) | 自定义绘制Span样式。 |
 | [UserDataSpan](arkts-arkui-userdataspan-c.md) | UserDataSpan样式。 |
-| [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md) | 文本背景颜色样式。 [since 14] |
-| [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | 文本行间距样式。 [since 26.0.0] |
+| [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md) | 文本背景颜色样式。<br>**起始版本：** 14 |
+| [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | 文本行间距样式。<br>**起始版本：** 26.0.0 |

@@ -1,14 +1,14 @@
 # UIExtensionComponent(System API) (System API)
 
-**UIExtensionComponent** is used to embed UIs provided by other applications in the local application UI. The embedded content runs in another process, and the local application does not participate in its layout and rendering.
+**UIExtensionComponent** is used to embed UIs provided by other apps in the local page. The displayed content runs in another process, and the local app does not participate in its layout or rendering. Through process isolation, secure UI isolation and crash isolation between apps can be achieved, while supporting independent development and deployment of modules.
 
-It is usually used in modular development scenarios where process isolation is required.
+It is usually used in modular development scenarios where process isolation is required, such as embedding functional modules provided by third-party apps and implementing UI capability extension between apps.
 
 ## Constraints
 
 This component does not support preview.
 
-The ability to be started must be a UIExtensionAbility, an extension ability with UI. For details about how to implement a UIExtensionAbility, see [@ohos.app.ability.UIExtensionAbility (Base Class for ExtensionAbilities with UI)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md).
+The launched Ability (app component) must be a UI-enabled Ability extension. For details about how to implement a UI-enabled Ability extension, see [@ohos.app.ability.UIExtensionAbility (Base Class for ExtensionAbilities with UI)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md).
 
 The width and height of the component must be explicitly set to non-zero valid values.
 
@@ -43,8 +43,8 @@ Construct the UIExtensionComponent.<br> Called when the UIExtensionComponent is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| want | import('../api/@ohos.app.ability.Want').default | Yes | Ability to start. |
-| options | [UIExtensionOptions](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md) | No | Construction parameters. |
+| want | import('../api/@ohos.app.ability.Want').default | Yes | Ability to load, which must be a UI-capable Ability extension. In the **parameters** of Want, set the **ability.want.params.uiExtensionType** field, whose value must be consistent with the type configured for the extension Ability in **module.json5**. |
+| options | [UIExtensionOptions](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md) | No | Construction parameters to pass, used to customize the configuration of **UIExtensionComponent** (such as setting the placeholder, DPI following policy, window mode following policy, etc.). Pass this parameter when the preceding configurations need to be customized; otherwise, the default configuration is used. |
 
 ## Summary
 
@@ -52,9 +52,9 @@ Construct the UIExtensionComponent.<br> Called when the UIExtensionComponent is 
 
 | Name | Description |
 | --- | --- |
-| [TerminationInfo](arkts-arkui-uiextensioncomponent-comp-terminationinfo-i-sys.md) | Indicates the information when the provider of the embedded UI is terminated. |
-| [UIExtensionOptions](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md) | Describes the optional construction parameters during **UIExtensionComponent** construction. |
-| [UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md) | Implements a **UIExtensionProxy** instance for the component host to send data to, subscribe to, or unsubscribe from the started UIExtensionAbility through the connection established between the two parties. |
+| [TerminationInfo](arkts-arkui-uiextensioncomponent-comp-terminationinfo-i-sys.md) | Triggered when the started UIExtensionAbility exits properly by calling **terminateSelfWithResult** or **terminateSelf**. |
+| [UIExtensionOptions](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md) | Used to pass optional construction parameters when the **UIExtensionComponent** is constructed. |
+| [UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md) | Used for the component user to send data to the launched Ability and to subscribe to and unsubscribe from the registration events of the extension Ability after a connection is successfully established between the two parties. |
 
 ### Types
 
@@ -69,6 +69,7 @@ Construct the UIExtensionComponent.<br> Called when the UIExtensionComponent is 
 | [DpiFollowStrategy](arkts-arkui-uiextensioncomponent-comp-dpifollowstrategy-e-sys.md) | Enumeration of different types of DpiFollowStrategy. |
 | [WindowModeFollowStrategy](arkts-arkui-uiextensioncomponent-comp-windowmodefollowstrategy-e-sys.md) | Enumerates the following strategies of the window mode. |
 
+<!--Del-->
 ## Examples
 
 ### Example 1: Loading a UIExtension
@@ -480,3 +481,5 @@ struct Extension {
   }
 }
 ```
+
+<!--DelEnd-->

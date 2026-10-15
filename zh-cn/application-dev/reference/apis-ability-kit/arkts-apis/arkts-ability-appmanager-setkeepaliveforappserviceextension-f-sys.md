@@ -54,6 +54,7 @@ function setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean
 | [16000203](../errorcode-ability.md#16000203-无法更改appserviceextensionability保活状态) | Cannot change the keep-alive status. |
 | [16000204](../errorcode-ability.md#16000204-指定的应用未安装在userid为1的用户下) | The target bundle is not in u1. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -73,3 +74,5 @@ try {
   console.error(`[appManager] setKeepAliveForAppServiceExtension error: ${code}, ${message}`);
 }
 ```
+
+<!--DelEnd-->

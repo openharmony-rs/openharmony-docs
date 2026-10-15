@@ -12,7 +12,7 @@ ConsoleMessage is an object that encapsulates JavaScript console output informat
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -29,6 +29,8 @@ Constructs a **ConsoleMessage** object.
 <!--Device-ConsoleMessage-constructor()--><!--Device-ConsoleMessage-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
+
+<a id="constructor1"></a>
 
 ## constructor
 

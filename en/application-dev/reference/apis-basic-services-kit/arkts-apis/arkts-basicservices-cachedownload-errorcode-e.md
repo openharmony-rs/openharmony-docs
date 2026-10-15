@@ -12,20 +12,6 @@ Enumerates the specific types of returned error code.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
-## OTHERS
-
-```TypeScript
-OTHERS = 0xFF
-```
-
-Other types of errors that are not classified.
-
-**Since:** 23
-
-<!--Device-ErrorCode-OTHERS = 0xFF--><!--Device-ErrorCode-OTHERS = 0xFF-End-->
-
-**System capability:** SystemCapability.Request.FileTransferAgent
-
 ## DNS
 
 ```TypeScript
@@ -40,17 +26,31 @@ DNS-related errors.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
-## TCP
+## HTTP
 
 ```TypeScript
-TCP = 0x10
+HTTP = 0x30
 ```
 
-TCP-related errors.
+HTTP-related errors.
 
 **Since:** 23
 
-<!--Device-ErrorCode-TCP = 0x10--><!--Device-ErrorCode-TCP = 0x10-End-->
+<!--Device-ErrorCode-HTTP = 0x30--><!--Device-ErrorCode-HTTP = 0x30-End-->
+
+**System capability:** SystemCapability.Request.FileTransferAgent
+
+## OTHERS
+
+```TypeScript
+OTHERS = 0xFF
+```
+
+Other types of errors that are not classified.
+
+**Since:** 23
+
+<!--Device-ErrorCode-OTHERS = 0xFF--><!--Device-ErrorCode-OTHERS = 0xFF-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -68,16 +68,16 @@ SSL-related errors.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
-## HTTP
+## TCP
 
 ```TypeScript
-HTTP = 0x30
+TCP = 0x10
 ```
 
-HTTP-related errors.
+TCP-related errors.
 
 **Since:** 23
 
-<!--Device-ErrorCode-HTTP = 0x30--><!--Device-ErrorCode-HTTP = 0x30-End-->
+<!--Device-ErrorCode-TCP = 0x10--><!--Device-ErrorCode-TCP = 0x10-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

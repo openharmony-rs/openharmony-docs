@@ -16,24 +16,6 @@ enum FormState
 
 **系统能力：** SystemCapability.Ability.Form
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = -1
-```
-
-表示未知状态。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [UNKNOWN](arkts-form-forminfo-formstate-e.md#unknown)
-
-<!--Device-FormState-UNKNOWN = -1--><!--Device-FormState-UNKNOWN = -1-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
 ## DEFAULT
 
 ```TypeScript
@@ -67,5 +49,23 @@ READY = 1
 **替代接口：** [READY](arkts-form-forminfo-formstate-e.md#ready)
 
 <!--Device-FormState-READY = 1--><!--Device-FormState-READY = 1-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = -1
+```
+
+表示未知状态。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [UNKNOWN](arkts-form-forminfo-formstate-e.md#unknown)
+
+<!--Device-FormState-UNKNOWN = -1--><!--Device-FormState-UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.Ability.Form

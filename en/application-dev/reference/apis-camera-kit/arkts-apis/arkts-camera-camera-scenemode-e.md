@@ -22,7 +22,7 @@ Normal photo mode. For details, see [PhotoSession](arkts-camera-camera-photosess
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-SceneMode-NORMAL_PHOTO = 1--><!--Device-SceneMode-NORMAL_PHOTO = 1-End-->
 
@@ -38,7 +38,7 @@ Normal record mode. For details, see [VideoSession](arkts-camera-camera-videoses
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-SceneMode-NORMAL_VIDEO = 2--><!--Device-SceneMode-NORMAL_VIDEO = 2-End-->
 
@@ -54,7 +54,7 @@ Secure mode. For details, see [SecureSession](arkts-camera-camera-securesession-
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-SceneMode-SECURE_PHOTO = 12--><!--Device-SceneMode-SECURE_PHOTO = 12-End-->
 

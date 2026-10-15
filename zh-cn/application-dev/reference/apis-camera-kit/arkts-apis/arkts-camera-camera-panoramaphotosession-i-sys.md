@@ -51,6 +51,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,6 +59,8 @@ function unregisterSessionError(panoramaPhotoSession: camera.PanoramaPhotoSessio
   panoramaPhotoSession.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusStateChange')
 
@@ -88,6 +91,7 @@ Unsubscribes from focus state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -95,6 +99,8 @@ function unregisterFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSe
   panoramaPhotoSession.off('focusStateChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -125,6 +131,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -138,6 +145,8 @@ function registerSessionError(panoramaPhotoSession: camera.PanoramaPhotoSession)
   panoramaPhotoSession.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusStateChange')
 
@@ -168,6 +177,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -185,3 +195,5 @@ function registerFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSess
   panoramaPhotoSession.on('focusStateChange', callback);
 }
 ```
+
+<!--DelEnd-->

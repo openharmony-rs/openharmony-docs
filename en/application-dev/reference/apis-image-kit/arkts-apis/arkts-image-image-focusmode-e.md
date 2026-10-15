@@ -28,22 +28,6 @@ Intelligent autofocus.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## AF_S
-
-```TypeScript
-AF_S = 1
-```
-
-Single autofocus.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FocusMode-AF_S = 1--><!--Device-FocusMode-AF_S = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## AF_C
 
 ```TypeScript
@@ -57,6 +41,22 @@ Continuous auto focus.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-FocusMode-AF_C = 2--><!--Device-FocusMode-AF_C = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## AF_S
+
+```TypeScript
+AF_S = 1
+```
+
+Single autofocus.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FocusMode-AF_S = 1--><!--Device-FocusMode-AF_S = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

@@ -40,6 +40,7 @@ function setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ try {
     console.error(`Failed to set car key dfx data. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

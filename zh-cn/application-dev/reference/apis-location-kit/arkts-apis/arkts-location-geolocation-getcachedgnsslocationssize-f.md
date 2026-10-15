@@ -6,6 +6,8 @@
 import { geolocation } from '@kit.LocationKit';
 ```
 
+<a id="getcachedgnsslocationssize1"></a>
+
 ## getCachedGnssLocationsSize
 
 ```TypeScript
@@ -47,7 +49,7 @@ geolocation.getCachedGnssLocationsSize((err, size) => {
 ```
 
 
-<a id="getcachedgnsslocationssize-1"></a>
+<a id="getcachedgnsslocationssize2"></a>
 
 ## getCachedGnssLocationsSize
 

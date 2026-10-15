@@ -34,7 +34,7 @@ Height of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Rect-height: double--><!--Device-Rect-height: double-End-->
 
@@ -52,7 +52,7 @@ X coordinate of the top-left corner of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Rect-topLeftX: double--><!--Device-Rect-topLeftX: double-End-->
 
@@ -70,7 +70,7 @@ Y coordinate of the top-left corner of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Rect-topLeftY: double--><!--Device-Rect-topLeftY: double-End-->
 
@@ -88,7 +88,7 @@ Width of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Rect-width: double--><!--Device-Rect-width: double-End-->
 

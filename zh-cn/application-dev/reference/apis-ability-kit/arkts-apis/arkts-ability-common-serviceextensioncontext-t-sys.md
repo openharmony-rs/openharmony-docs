@@ -6,6 +6,8 @@ export type ServiceExtensionContext = _ServiceExtensionContext.default
 
 ServiceExtensionContext二级模块。
 
+**类型：** _ServiceExtensionContext.default
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ ServiceExtensionContext二级模块。
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _ServiceExtensionContext.default

@@ -14,6 +14,22 @@ Enumerates the entity constants of the Want object. **entity** specifies additio
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
+## ENTITY_BROWSABLE
+
+```TypeScript
+ENTITY_BROWSABLE = 'entity.system.browsable'
+```
+
+Browser type entity.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'--><!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
 ## ENTITY_DEFAULT
 
 ```TypeScript
@@ -46,38 +62,6 @@ Home screen entity.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
-## ENTITY_VOICE
-
-```TypeScript
-ENTITY_VOICE = 'entity.system.voice'
-```
-
-Voice interaction entity.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'--><!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
-## ENTITY_BROWSABLE
-
-```TypeScript
-ENTITY_BROWSABLE = 'entity.system.browsable'
-```
-
-Browser type entity.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-<!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'--><!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityBase
-
 ## ENTITY_VIDEO
 
 ```TypeScript
@@ -91,5 +75,21 @@ Video type entity.
 **Deprecated since:** 9
 
 <!--Device-Entity-ENTITY_VIDEO = 'entity.system.video'--><!--Device-Entity-ENTITY_VIDEO = 'entity.system.video'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+## ENTITY_VOICE
+
+```TypeScript
+ENTITY_VOICE = 'entity.system.voice'
+```
+
+Voice interaction entity.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+<!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'--><!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase

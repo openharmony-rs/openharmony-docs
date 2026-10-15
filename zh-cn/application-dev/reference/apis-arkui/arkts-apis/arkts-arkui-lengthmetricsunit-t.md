@@ -6,6 +6,8 @@ declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUn
 
 定义长度属性单位。
 
+**类型：** import('../api/arkui/Graphics').LengthMetricsUnit
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUn
 <!--Device-unnamed-declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit--><!--Device-unnamed-declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/arkui/Graphics').LengthMetricsUnit

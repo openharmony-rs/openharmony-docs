@@ -6,6 +6,8 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
+<a id="flushcachedgnsslocations1"></a>
+
 ## flushCachedGnssLocations
 
 ```TypeScript
@@ -33,7 +35,7 @@ All prepared GNSS locations are returned to the application through the callback
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.flushCachedGnssLocations} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 | [3301100](../errorcode-geoLocationManager.md#3301100-positioning-failed-because-the-location-switch-is-turned-off) | The location switch is off. |
@@ -56,7 +58,7 @@ try {
 ```
 
 
-<a id="flushcachedgnsslocations-1"></a>
+<a id="flushcachedgnsslocations2"></a>
 
 ## flushCachedGnssLocations
 

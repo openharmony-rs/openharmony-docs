@@ -4,7 +4,7 @@
 interface QueryParam
 ```
 
-查询洞察意图实体时的Param。
+意图实体查询参数，用于筛选设备上符合条件的意图实体。
 
 @typedef QueryParam
 
@@ -28,7 +28,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 bundleName: string
 ```
 
-套餐名称。
+目标意图实体所属的应用包名称。
 
 **类型：** string
 
@@ -48,7 +48,7 @@ bundleName: string
 className: string
 ```
 
-实体类名称。
+表示[@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity)修饰的目标意图实体的类名。
 
 **类型：** string
 
@@ -68,7 +68,7 @@ className: string
 intentName: string
 ```
 
-意图名称。
+目标意图实体所属的意图名称。
 
 **类型：** string
 
@@ -88,7 +88,7 @@ intentName: string
 moduleName: string
 ```
 
-模块名称。
+目标意图实体所属的模块名称。
 
 **类型：** string
 
@@ -108,7 +108,7 @@ moduleName: string
 queryEntityParam: insightIntent.QueryEntityParam
 ```
 
-查询实体的param。
+意图实体查询参数，包含查询模式及查询条件，用于指定意图实体查询方式。
 
 **类型：** [insightIntent.QueryEntityParam](arkts-ability-insightintent-queryentityparam-i.md)
 
@@ -128,7 +128,11 @@ queryEntityParam: insightIntent.QueryEntityParam
 userId?: number
 ```
 
-目标用户ID。如果调用方应用的用户ID与目标用户ID不一致，则需要申请权限：oos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。取值范围为全体整数。
+目标意图实体所属的用户ID。
+
+> **说明：** 
+> 
+> 如果调用方应用的用户ID与目标意图实体所属的用户ID不同，则需要申请权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
 **类型：** number
 

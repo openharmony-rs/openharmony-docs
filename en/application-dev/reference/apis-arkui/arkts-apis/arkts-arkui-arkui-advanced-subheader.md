@@ -12,15 +12,15 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 
 | Name | Description |
 | --- | --- |
-| [OperationOption](arkts-arkui-arkui-advanced-subheader-operationoption-c.md) | Declare type OperationOption |
-| [SelectOptions](arkts-arkui-arkui-advanced-subheader-selectoptions-c.md) | Declare type SelectOption |
-| [SymbolOptions](arkts-arkui-arkui-advanced-subheader-symboloptions-c.md) | Declare type SymbolOptions |
+| [OperationOption](arkts-arkui-arkui-advanced-subheader-operationoption-c.md) | Declare type OperationOption. |
+| [SelectOptions](arkts-arkui-arkui-advanced-subheader-selectoptions-c.md) | Declare type SelectOption. |
+| [SymbolOptions](arkts-arkui-arkui-advanced-subheader-symboloptions-c.md) | Declare type SymbolOptions. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md) | The **SubHeader** component is positioned at the top of list items or content sections, organizing lists or content into distinct groups. The subheader text summarizes the content within each respective section. |
+| [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md) | The **SubHeader** component is used at the top of list items or content items to divide the list or content into sections, with the subtitle name summarizing the content of each section. It supports various style configurations, including icons, primary and secondary titles, dropdown selectors, and operation buttons, meeting content partitioning and navigation needs in different scenarios and enhancing the visual hierarchy and user experience of the UI. It is suitable for list grouping, categorized content display, form partitioning, and other scenarios. |
 
 ### Enums
 

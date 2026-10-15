@@ -22,6 +22,8 @@ offsetX: number
 
 Offset of the gesture event on the x-axis relative to the original area of the current component, in vp. A positive value means to pan from left to right, and a negative value means the opposite.
 
+Value range: (-∞, +∞)
+
 **Type:** number
 
 **Since:** 11
@@ -41,6 +43,8 @@ offsetY: number
 ```
 
 Offset of the gesture event on the y-axis relative to the original area of the current component, in vp. A positive value means to pan from top to bottom, and a negative value means the opposite.
+
+Value range: (-∞, +∞)
 
 **Type:** number
 
@@ -62,6 +66,8 @@ velocity: number
 
 Velocity along the main axis. The value is the arithmetic square root of the sum of squares of the velocity along the x- and y-axis. The unit is vp/s.
 
+Value range: [0, +∞)
+
 **Type:** number
 
 **Since:** 11
@@ -82,6 +88,8 @@ velocityX: number
 
 Velocity along the x-axis. The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from left to right, and it is negative if the movement is from right to left. The unit is vp/s.
 
+Value range: (-∞, +∞)
+
 **Type:** number
 
 **Since:** 11
@@ -101,6 +109,8 @@ velocityY: number
 ```
 
 Velocity along the y-axis. The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from top to bottom, and it is negative if the movement is from bottom to top. The unit is vp/s.
+
+Value range: (-∞, +∞)
 
 **Type:** number
 

@@ -6,6 +6,8 @@ declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.Navi
 
 NavigationInfo实例对象。
 
+**类型：** import('../api/@ohos.arkui.observer').default.NavigationInfo
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ NavigationInfo实例对象。
 <!--Device-unnamed-declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo--><!--Device-unnamed-declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.observer').default.NavigationInfo

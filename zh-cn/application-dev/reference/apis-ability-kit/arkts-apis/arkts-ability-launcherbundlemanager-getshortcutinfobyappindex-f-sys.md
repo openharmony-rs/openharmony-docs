@@ -49,6 +49,7 @@ function getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array<
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   console.error(`Failed to getShortcutInfoByAppIndex. Code: ${code}, message: ${message}`);
 }
 ```
+
+<!--DelEnd-->

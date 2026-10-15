@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="setcbconfig1"></a>
+
 ## setCBConfig
 
 ```TypeScript
@@ -43,6 +45,7 @@ Sets the cell broadcast configuration. This API uses an asynchronous callback to
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,8 +64,10 @@ sms.setCBConfig(cbConfigOptions, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setcbconfig-1"></a>
+
+<a id="setcbconfig2"></a>
 
 ## setCBConfig
 
@@ -106,6 +111,7 @@ Sets the cell broadcast configuration. This API uses a promise to return the res
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -126,3 +132,5 @@ promise.then(() => {
     console.error(`setCBConfig failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

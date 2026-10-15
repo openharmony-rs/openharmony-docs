@@ -6,6 +6,8 @@ export type NotificationSorting = _NotificationSorting
 
 The **NotificationSorting** module provides APIs for defining the sorting information of active notifications.
 
+**Type:** _NotificationSorting
+
 **Since:** 9
 
 <!--Device-notificationManager-export type NotificationSorting = _NotificationSorting--><!--Device-notificationManager-export type NotificationSorting = _NotificationSorting-End-->
@@ -13,5 +15,3 @@ The **NotificationSorting** module provides APIs for defining the sorting inform
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationSorting

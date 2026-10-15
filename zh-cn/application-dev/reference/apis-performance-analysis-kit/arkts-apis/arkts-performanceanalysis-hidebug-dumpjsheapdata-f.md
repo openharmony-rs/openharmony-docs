@@ -6,6 +6,8 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="dumpjsheapdata1"></a>
+
 ## dumpJsHeapData
 
 ```TypeScript
@@ -19,6 +21,10 @@ function dumpJsHeapData(filename : string) : void
 > 由于虚拟机堆导出极其耗时，且该接口为同步接口，建议不要在上架版本中调用该接口，以避免应用冻屏，影响用户体验。
 
 **起始版本：** 9
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 
 <!--Device-hidebug-function dumpJsHeapData(filename : string) : void--><!--Device-hidebug-function dumpJsHeapData(filename : string) : void-End-->
 
@@ -50,7 +56,7 @@ try {
 ```
 
 
-<a id="dumpjsheapdata-1"></a>
+<a id="dumpjsheapdata2"></a>
 
 ## dumpJsHeapData
 
@@ -66,9 +72,13 @@ function dumpJsHeapData(filename : string, needClean : boolean) : void
 
 **起始版本：** 24
 
+**废弃版本：** 26.2.0
+
+**替代接口：** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-hidebug-function dumpJsHeapData(filename : string, needClean : boolean) : void--><!--Device-hidebug-function dumpJsHeapData(filename : string, needClean : boolean) : void-End-->
 

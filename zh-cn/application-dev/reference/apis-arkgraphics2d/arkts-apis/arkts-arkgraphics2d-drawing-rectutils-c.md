@@ -103,6 +103,8 @@ let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
 let y = drawing.RectUtils.centerY(rect);
 ```
 
+<a id="contains1"></a>
+
 ## contains
 
 ```TypeScript
@@ -141,7 +143,7 @@ let isContains = drawing.RectUtils.contains(rect2, rect);
 console.info('isContains: ', isContains);
 ```
 
-<a id="contains-1"></a>
+<a id="contains2"></a>
 
 ## contains
 
@@ -183,7 +185,7 @@ let isContains = drawing.RectUtils.contains(rect, 10, 20, 30, 40);
 console.info('isContains: ', isContains);
 ```
 
-<a id="contains-2"></a>
+<a id="contains3"></a>
 
 ## contains
 

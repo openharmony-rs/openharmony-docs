@@ -4,7 +4,7 @@
 export declare class XComponentNode extends FrameNode
 ```
 
-Defines XComponent Node.
+Provides APIs for the XComponentNode, which represents an XComponent in the component tree. You can write EGL/OpenGL ES and media data and display it on the XComponent, whose render type can be dynamically modified. It is suitable for scenarios where native self-rendering content needs to be embedded in the ArkUI component tree.
 
 @extends FrameNode
 
@@ -26,7 +26,7 @@ Defines XComponent Node.
 changeRenderType(type: NodeRenderType): boolean
 ```
 
-Set the render type of the builderNode.
+Dynamically changes the render type of the **XComponentNode**. The render policy can be switched dynamically at runtime, which is suitable for scenarios where different render types are selected based on content rendering requirements. For example, the **DISPLAY** type can be used when direct EGL/OpenGL ES drawing on the component is required; the **TEXTURE** type can be used when the rendered content needs to participate in composition as a texture (such as implementing semi-transparent overlay effects or off-screen rendering).
 
 **Since:** 11
 
@@ -44,13 +44,13 @@ Set the render type of the builderNode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [NodeRenderType](arkts-arkui-buildernode-noderendertype-e.md) | Yes | render type |
+| type | [NodeRenderType](arkts-arkui-buildernode-noderendertype-e.md) | Yes | Target render type to change, specified using the NodeRenderType enumeration. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns if change the render type successfully. |
+| boolean | Whether the render type is changed successfully. The value **true** indicates that the render type is changed successfully, and **false** indicates the opposite. |
 
 ## constructor
 
@@ -59,7 +59,7 @@ constructor(uiContext: UIContext, options: RenderOptions,
     id: string, type: XComponentType, libraryName?: string)
 ```
 
-constructor.
+Constructor used to create an XComponentNode. <br>You need to explicitly specify **selfIdealSize** in RenderOptions. Otherwise, the XComponentNode's content size is empty, resulting in no content being displayed.
 
 **Since:** 11
 
@@ -77,11 +77,11 @@ constructor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | UIContext used to create the FrameNode |
-| options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | Yes | Render options of the Builder Node |
-| id | string | Yes | XComponent id defined by the application |
-| type | [XComponentType](arkts-arkui-xcomponenttype-e.md) | Yes | XComponent type |
-| libraryName | string | No | The name of the library to be loaded by XComponent |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | UI context. For details about how to obtain it, see Obtaining UI Context. |
+| options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | Yes | Rendering options of an XComponentNode, used to set node rendering related parameters such as the ideal size (**selfIdealSize**). |
+| id | string | Yes | Unique ID of the **XComponent**. The value can contain a maximum of 128 characters. If the length exceeds the limit, the API fails to create the component. For details, see [XComponent](../arkui-ts/ts-basic-components-xcomponent.md). |
+| type | [XComponentType](arkts-arkui-xcomponenttype-e.md) | Yes | Type of the **XComponent**, specified using the [XComponentType](../arkui-ts/ts-appendix-enums.md#xcomponenttype10) enumeration. For details, see [XComponent](../arkui-ts/ts-basic-components-xcomponent.md). |
+| libraryName | string | No | Name of the dynamic library compiled and output at the native layer. If this parameter is not passed, the native dynamic library is not loaded by default. For details, see [XComponent](../arkui-ts/ts-basic-components-xcomponent.md). |
 
 ## onCreate
 
@@ -89,7 +89,7 @@ constructor.
 onCreate(event?: Object): void
 ```
 
-Called when the XComponent surface has been created.
+Called when the XComponentNode loading is complete.
 
 **Since:** 11
 
@@ -107,7 +107,7 @@ Called when the XComponent surface has been created.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | Object | No | event from native when the library loaded |
+| event | Object | No | Event parameter of the **XComponent** instance, used to obtain the context of the **XComponent** instance. The APIs mounted on the context are defined by you at the C++ layer, and you can call the APIs registered at the native layer through this context. |
 
 ## onDestroy
 
@@ -115,7 +115,7 @@ Called when the XComponent surface has been created.
 onDestroy(): void
 ```
 
-Called when the XComponent surface has been destroyed.
+Called when the XComponentNode is destroyed.
 
 **Since:** 11
 

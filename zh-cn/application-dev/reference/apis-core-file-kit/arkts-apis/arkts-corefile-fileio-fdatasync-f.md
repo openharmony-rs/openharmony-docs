@@ -36,7 +36,7 @@ declare function fdatasync(fd: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="fdatasync-1"></a>
+<a id="fdatasync2"></a>
 
 ## fdatasync
 

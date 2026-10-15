@@ -6,6 +6,8 @@ export type Trigger = _Trigger
 
 Defines the details for triggering a geofence.
 
+**Type:** _Trigger
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the details for triggering a geofence.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _Trigger

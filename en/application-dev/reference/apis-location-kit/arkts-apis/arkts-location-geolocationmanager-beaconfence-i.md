@@ -30,7 +30,7 @@ Beacon fence information type.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BeaconFence-beaconFenceInfoType: BeaconFenceInfoType--><!--Device-BeaconFence-beaconFenceInfoType: BeaconFenceInfoType-End-->
 
@@ -48,7 +48,7 @@ Identifier of the beacon fence.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BeaconFence-identifier: string--><!--Device-BeaconFence-identifier: string-End-->
 
@@ -66,7 +66,7 @@ Beacon equipment manufacture data.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BeaconFence-manufactureData?: BeaconManufactureData--><!--Device-BeaconFence-manufactureData?: BeaconManufactureData-End-->
 

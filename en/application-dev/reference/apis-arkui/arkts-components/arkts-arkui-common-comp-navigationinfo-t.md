@@ -6,6 +6,8 @@ declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.Navi
 
 The navigation information.
 
+**Type:** import('../api/@ohos.arkui.observer').default.NavigationInfo
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ The navigation information.
 <!--Device-unnamed-declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo--><!--Device-unnamed-declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.observer').default.NavigationInfo

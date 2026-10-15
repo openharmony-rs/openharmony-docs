@@ -70,7 +70,7 @@ Appends a specified key/value pair as a new search parameter.
 
 **Deprecated since:** 9
 
-**Substitutes:** append
+**Substitutes:** [append](arkts-arkts-url-urlparams-c.md#append)
 
 <!--Device-URLSearchParams-append(name: string, value: string): void--><!--Device-URLSearchParams-append(name: string, value: string): void-End-->
 
@@ -103,7 +103,7 @@ A parameterized constructor used to create an URLSearchParams instance. As the i
 
 **Deprecated since:** 9
 
-**Substitutes:** constructor
+**Substitutes:** [constructor](arkts-arkts-url-urlparams-c.md#constructor)
 
 <!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)--><!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)-End-->
 
@@ -137,7 +137,7 @@ Deletes the given search parameter and its associated value,from the list of all
 
 **Deprecated since:** 9
 
-**Substitutes:** delete
+**Substitutes:** [delete](arkts-arkts-url-urlparams-c.md#delete)
 
 <!--Device-URLSearchParams-delete(name: string): void--><!--Device-URLSearchParams-delete(name: string): void-End-->
 
@@ -169,7 +169,7 @@ Returns an ES6 iterator. Each item of the iterator is a JavaScript Array. The fi
 
 **Deprecated since:** 9
 
-**Substitutes:** entries
+**Substitutes:** [entries](arkts-arkts-url-urlparams-c.md#entries)
 
 <!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>--><!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>-End-->
 
@@ -205,7 +205,7 @@ Callback functions are used to traverse key-value pairs on the URLSearchParams i
 
 **Deprecated since:** 9
 
-**Substitutes:** forEach
+**Substitutes:** [forEach](arkts-arkts-url-urlparams-c.md#foreach)
 
 <!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void--><!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void-End-->
 
@@ -239,7 +239,7 @@ Returns the first value associated to the given search parameter.
 
 **Deprecated since:** 9
 
-**Substitutes:** get
+**Substitutes:** [get](arkts-arkts-url-urlparams-c.md#get)
 
 <!--Device-URLSearchParams-get(name: string): string | null--><!--Device-URLSearchParams-get(name: string): string | null-End-->
 
@@ -278,7 +278,7 @@ Returns all key-value pairs associated with a given search parameter as an array
 
 **Deprecated since:** 9
 
-**Substitutes:** getAll
+**Substitutes:** [getAll](arkts-arkts-url-urlparams-c.md#getall)
 
 <!--Device-URLSearchParams-getAll(name: string): string[]--><!--Device-URLSearchParams-getAll(name: string): string[]-End-->
 
@@ -317,7 +317,7 @@ Returns a Boolean that indicates whether a parameter with the specified name exi
 
 **Deprecated since:** 9
 
-**Substitutes:** has
+**Substitutes:** [has](arkts-arkts-url-urlparams-c.md#has)
 
 <!--Device-URLSearchParams-has(name: string): boolean--><!--Device-URLSearchParams-has(name: string): boolean-End-->
 
@@ -355,7 +355,7 @@ Returns an iterator allowing to go through all keys contained in this object.
 
 **Deprecated since:** 9
 
-**Substitutes:** keys
+**Substitutes:** [keys](arkts-arkts-url-urlparams-c.md#keys)
 
 <!--Device-URLSearchParams-keys(): IterableIterator<string>--><!--Device-URLSearchParams-keys(): IterableIterator<string>-End-->
 
@@ -391,7 +391,7 @@ Sets the value associated with a given search parameter to the given value. If t
 
 **Deprecated since:** 9
 
-**Substitutes:** set
+**Substitutes:** [set](arkts-arkts-url-urlparams-c.md#set)
 
 <!--Device-URLSearchParams-set(name: string, value: string): void--><!--Device-URLSearchParams-set(name: string, value: string): void-End-->
 
@@ -424,7 +424,7 @@ Sort all key/value pairs contained in this object in place and return undefined.
 
 **Deprecated since:** 9
 
-**Substitutes:** sort
+**Substitutes:** [sort](arkts-arkts-url-urlparams-c.md#sort)
 
 <!--Device-URLSearchParams-sort(): void--><!--Device-URLSearchParams-sort(): void-End-->
 
@@ -450,7 +450,7 @@ Returns a query string suitable for use in a URL.
 
 **Deprecated since:** 9
 
-**Substitutes:** toString
+**Substitutes:** [toString](arkts-arkts-url-urlparams-c.md#tostring)
 
 <!--Device-URLSearchParams-toString(): string--><!--Device-URLSearchParams-toString(): string-End-->
 
@@ -483,7 +483,7 @@ Returns an iterator allowing to go through all values contained in this object.
 
 **Deprecated since:** 9
 
-**Substitutes:** values
+**Substitutes:** [values](arkts-arkts-url-urlparams-c.md#values)
 
 <!--Device-URLSearchParams-values(): IterableIterator<string>--><!--Device-URLSearchParams-values(): IterableIterator<string>-End-->
 

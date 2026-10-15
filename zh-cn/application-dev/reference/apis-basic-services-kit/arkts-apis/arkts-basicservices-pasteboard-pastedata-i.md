@@ -4,7 +4,7 @@
 interface PasteData
 ```
 
-剪贴板内容对象。剪贴板内容包含一个或者多个内容条目（[PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)）以及属性描述对象（[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)）。在调用PasteData的接口前，需要先通过[createData()](arkts-basicservices-pasteboard-createdata-f.md)或[getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata)获取一个PasteData对象。
+剪贴板内容对象。剪贴板内容包含一个或者多个内容条目（[PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)）以及属性描述对象（[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)）。在调用PasteData的接口前，需要先通过[createData()](arkts-basicservices-pasteboard-createdata-f.md#createdata1)或[getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata1)获取一个PasteData对象。
 
 **起始版本：** 6
 
@@ -18,6 +18,8 @@ interface PasteData
 import { pasteboard } from '@kit.BasicServicesKit';
 ```
 
+<a id="addrecord1"></a>
+
 ## addRecord
 
 ```TypeScript
@@ -28,7 +30,7 @@ addRecord(record: PasteDataRecord): void
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-addRecord(record: PasteDataRecord): void--><!--Device-PasteData-addRecord(record: PasteDataRecord): void-End-->
 
@@ -53,7 +55,7 @@ pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
 
-<a id="addrecord-1"></a>
+<a id="addrecord2"></a>
 
 ## addRecord
 
@@ -65,7 +67,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-addRecord(mimeType: string, value: ValueType): void--><!--Device-PasteData-addRecord(mimeType: string, value: ValueType): void-End-->
 
@@ -82,7 +84,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 | [12900002](../errorcode-pasteboard.md#12900002-record数量超过最大限制) | The number of records exceeds the upper limit.<br>**适用版本：** 9 |
 
 **示例**
@@ -104,7 +106,7 @@ getMimeTypes(): Array<string>
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getMimeTypes(): Array<string>--><!--Device-PasteData-getMimeTypes(): Array<string>-End-->
 
@@ -133,7 +135,7 @@ getPrimaryHtml(): string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getPrimaryHtml(): string--><!--Device-PasteData-getPrimaryHtml(): string-End-->
 
@@ -168,7 +170,7 @@ getPrimaryMimeType(): string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getPrimaryMimeType(): string--><!--Device-PasteData-getPrimaryMimeType(): string-End-->
 
@@ -197,7 +199,7 @@ getPrimaryPixelMap(): image.PixelMap
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getPrimaryPixelMap(): image.PixelMap--><!--Device-PasteData-getPrimaryPixelMap(): image.PixelMap-End-->
 
@@ -241,7 +243,7 @@ getPrimaryText(): string
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getPrimaryText(): string--><!--Device-PasteData-getPrimaryText(): string-End-->
 
@@ -280,7 +282,7 @@ getPrimaryUri(): string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getPrimaryUri(): string--><!--Device-PasteData-getPrimaryUri(): string-End-->
 
@@ -315,7 +317,7 @@ getPrimaryWant(): Want
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getPrimaryWant(): Want--><!--Device-PasteData-getPrimaryWant(): Want-End-->
 
@@ -351,7 +353,7 @@ getProperty(): PasteDataProperty
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getProperty(): PasteDataProperty--><!--Device-PasteData-getProperty(): PasteDataProperty-End-->
 
@@ -380,7 +382,7 @@ getRecord(index: number): PasteDataRecord
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getRecord(index: int): PasteDataRecord--><!--Device-PasteData-getRecord(index: int): PasteDataRecord-End-->
 
@@ -402,7 +404,7 @@ getRecord(index: number): PasteDataRecord
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-索引超过范围) | The index is out of range. |
 
 **示例**
@@ -422,7 +424,7 @@ getRecordCount(): number
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getRecordCount(): int--><!--Device-PasteData-getRecordCount(): int-End-->
 
@@ -451,7 +453,7 @@ getTag(): string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-getTag(): string--><!--Device-PasteData-getTag(): string-End-->
 
@@ -480,7 +482,7 @@ hasType(mimeType: string): boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-hasType(mimeType: string): boolean--><!--Device-PasteData-hasType(mimeType: string): boolean-End-->
 
@@ -490,7 +492,7 @@ hasType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mimeType | string | 是 | 待查询的数据类型。可以是常量中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型；也可以是自定义的MIME类型，数据类型的字符串长度不能超过1024字节。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型；也可以是自定义的MIME类型，数据类型的字符串长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -502,7 +504,7 @@ hasType(mimeType: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -591,7 +593,7 @@ removeRecord(index: number): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-removeRecord(index: int): void--><!--Device-PasteData-removeRecord(index: int): void-End-->
 
@@ -607,7 +609,7 @@ removeRecord(index: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-索引超过范围) | The index is out of range. |
 
 **示例**
@@ -627,7 +629,7 @@ replaceRecord(index: number, record: PasteDataRecord): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-replaceRecord(index: int, record: PasteDataRecord): void--><!--Device-PasteData-replaceRecord(index: int, record: PasteDataRecord): void-End-->
 
@@ -644,7 +646,7 @@ replaceRecord(index: number, record: PasteDataRecord): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-索引超过范围) | The index is out of range. |
 
 **示例**
@@ -665,7 +667,7 @@ setProperty(property: PasteDataProperty): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteData-setProperty(property: PasteDataProperty): void--><!--Device-PasteData-setProperty(property: PasteDataProperty): void-End-->
 
@@ -681,7 +683,7 @@ setProperty(property: PasteDataProperty): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -745,7 +747,7 @@ addHtmlRecord(htmlText: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addHtmlRecord(htmlText: string): void--><!--Device-PasteData-addHtmlRecord(htmlText: string): void-End-->
 
@@ -777,7 +779,7 @@ addTextRecord(text: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addTextRecord(text: string): void--><!--Device-PasteData-addTextRecord(text: string): void-End-->
 
@@ -808,7 +810,7 @@ addUriRecord(uri: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addUriRecord(uri: string): void--><!--Device-PasteData-addUriRecord(uri: string): void-End-->
 
@@ -839,7 +841,7 @@ addWantRecord(want: Want): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addWantRecord(want: Want): void--><!--Device-PasteData-addWantRecord(want: Want): void-End-->
 
@@ -898,7 +900,7 @@ getRecordAt(index: number): PasteDataRecord
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -929,7 +931,7 @@ hasMimeType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mimeType | string | 是 | 待查询的数据类型。可以是常量中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -941,7 +943,7 @@ hasMimeType(mimeType: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 
@@ -984,7 +986,7 @@ removeRecordAt(index: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **示例**
 

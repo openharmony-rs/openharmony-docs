@@ -6,6 +6,8 @@ export type LocalWantAgentInfo = _LocalWantAgentInfo
 
 Provides the information required to create a local WantAgent.
 
+**Type:** _LocalWantAgentInfo
+
 **Since:** 20
 
 <!--Device-wantAgent-export type LocalWantAgentInfo = _LocalWantAgentInfo--><!--Device-wantAgent-export type LocalWantAgentInfo = _LocalWantAgentInfo-End-->
@@ -13,5 +15,3 @@ Provides the information required to create a local WantAgent.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _LocalWantAgentInfo

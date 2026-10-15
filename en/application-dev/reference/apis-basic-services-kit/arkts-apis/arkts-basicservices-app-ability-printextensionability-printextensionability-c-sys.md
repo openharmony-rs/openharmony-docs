@@ -54,6 +54,7 @@ Called once to request preview and send result to Print SA.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,3 +69,5 @@ export default class HWPrintExtension extends PrintExtensionAbility {
     }
 }
 ```
+
+<!--DelEnd-->

@@ -25,6 +25,8 @@ Matches a string or an object that supports being matched against, and returns a
 | --- | --- | --- | --- |
 | matcher | { [Symbol.match](string: string): RegExpMatchArray &#124; null; } | Yes |  |
 
+<a id="replace1"></a>
+
 ## replace
 
 ```TypeScript
@@ -42,7 +44,7 @@ Passes a string and {@linkcode replaceValue} to the `[Symbol.replace]` method on
 | searchValue | { [Symbol.replace](string: string, replaceValue: string): string; } | Yes |  |
 | replaceValue | string | Yes |  |
 
-<a id="replace-1"></a>
+<a id="replace2"></a>
 
 ## replace
 

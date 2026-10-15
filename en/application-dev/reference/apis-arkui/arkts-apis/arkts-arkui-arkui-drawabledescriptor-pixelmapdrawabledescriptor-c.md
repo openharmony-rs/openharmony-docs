@@ -20,6 +20,8 @@ Implements a **PixelMapDrawableDescriptor** object, which can be created by pass
 import { DrawableDescriptor, LayeredDrawableDescriptor, PixelMapDrawableDescriptor, AnimationOptions, AnimatedDrawableDescriptor, AnimationController, DrawableDescriptorLoadedResult, AnimationStopMode, PictureDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -70,7 +72,7 @@ struct PixelMapDrawableDescriptorExample {
 }
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -94,7 +96,7 @@ A constructor used to create a **PixelMapDrawableDescriptor** object through the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| src | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) &#124; [ResourceStr](arkts-arkui-resourcestr-t.md) | No | Image resource. A PixelMap image data, application resource, system resource, sandbox path (**file://&lt;bundleName&gt;/&lt;sandboxPath&gt;**), and Base64 character string can be passed to create a **PixelMapDrawableDescriptor** object. |
+| src | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) &#124; [ResourceStr](arkts-arkui-resourcestr-t.md) | No | Image resource. A PixelMap image data, application resource, system resource, sandbox path (**file://<bundleName>/<sandboxPath>**), and Base64 character string can be passed to create a **PixelMapDrawableDescriptor** object. |
 
 **Examples**
 

@@ -6,6 +6,8 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="isprinterdisabled1"></a>
+
 ## isPrinterDisabled
 
 ```TypeScript
@@ -18,7 +20,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy2)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -45,8 +47,9 @@ Queries whether the printing capability of a device is disabled. This API uses a
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,8 +71,10 @@ restrictions.isPrinterDisabled(wantTemp, (err, result) => {
 })
 ```
 
+<!--DelEnd-->
 
-<a id="isprinterdisabled-1"></a>
+
+<a id="isprinterdisabled2"></a>
 
 ## isPrinterDisabled
 
@@ -83,7 +88,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy2)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -115,8 +120,9 @@ Queries whether the printing capability of a device is disabled. This API uses a
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,3 +142,5 @@ restrictions.isPrinterDisabled(wantTemp).then((result) => {
   console.error(`Failed to query is the printing function disabled or not. Code is ${err.code}, message is ${err.message}`);
 })
 ```
+
+<!--DelEnd-->

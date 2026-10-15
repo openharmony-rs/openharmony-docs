@@ -44,6 +44,7 @@ Called to notify the caller that data is obtained.
 | callback | [IInputData](arkts-basicservices-osaccount-iinputdata-i-sys.md) | Yes |  |
 | options | [GetInputDataOptions](arkts-basicservices-osaccount-getinputdataoptions-i-sys.md) | Yes |  |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
 let result = pinAuth.registerInputer(inputer);
 console.info('registerInputer result: ' + result);
 ```
+
+<!--DelEnd-->

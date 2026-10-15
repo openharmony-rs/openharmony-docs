@@ -6,8 +6,6 @@ export abstract class ChipV2ImageIcon extends ChipV2Icon
 
 Defines the base class of icon images.
 
-This API inherits from [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md).
-
 **Inheritance/Implementation:** ChipV2ImageIcon extends [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 
 **Since:** 26.0.0
@@ -62,8 +60,6 @@ If the value is **undefined**, the default value is used.
 
 This attribute takes effect only when the image format is SVG.
 
-**Decorator:** @Trace
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -92,8 +88,6 @@ If the value is **undefined**, the default value is used.
 
 This attribute takes effect only when the image format is SVG.
 
-**Decorator:** @Trace
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -117,8 +111,6 @@ public modifier?: ImageModifier
 Icon modifier, which is used to set common attributes of the icon. Pass this parameter when you need to dynamically modify icon attributes (such as **opacity** and **objectFit**) through the modifier. If this parameter is not passed or is **undefined**, the modifier is not applied, and the icon uses the default attribute settings.
 
 Default value: **undefined**, meaning the modifier is not applied.
-
-**Decorator:** @Trace
 
 **Type:** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -153,8 +145,6 @@ Unit: vp
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [SizeT](arkts-arkui-graphics-sizet-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt;
 
 **Since:** 26.0.0
@@ -176,8 +166,6 @@ public src: ResourceStr
 ```
 
 Icon image or image address reference.
-
-**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

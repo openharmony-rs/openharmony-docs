@@ -20,6 +20,8 @@ interface SymKeyGenerator
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="convertkey1"></a>
+
 ## convertKey
 
 ```TypeScript
@@ -37,7 +39,7 @@ convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SymKeyGenerator-convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void--><!--Device-SymKeyGenerator-convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void-End-->
 
@@ -56,7 +58,7 @@ convertKey(key: DataBlob, callback: AsyncCallback<SymKey>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
@@ -83,7 +85,7 @@ function testConvertKey() {
 }
 ```
 
-<a id="convertkey-1"></a>
+<a id="convertkey2"></a>
 
 ## convertKey
 
@@ -95,7 +97,7 @@ convertKey(key: DataBlob): Promise<SymKey>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SymKeyGenerator-convertKey(key: DataBlob): Promise<SymKey>--><!--Device-SymKeyGenerator-convertKey(key: DataBlob): Promise<SymKey>-End-->
 
@@ -119,7 +121,7 @@ convertKey(key: DataBlob): Promise<SymKey>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
@@ -168,7 +170,7 @@ convertKeySync(key: DataBlob): SymKey
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SymKeyGenerator-convertKeySync(key: DataBlob): SymKey--><!--Device-SymKeyGenerator-convertKeySync(key: DataBlob): SymKey-End-->
 
@@ -190,7 +192,7 @@ convertKeySync(key: DataBlob): SymKey
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
@@ -213,6 +215,8 @@ function testConvertKeySync() {
 }
 ```
 
+<a id="generatesymkey1"></a>
+
 ## generateSymKey
 
 ```TypeScript
@@ -227,12 +231,12 @@ generateSymKey(callback: AsyncCallback<SymKey>): void
 > 
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥
 > 数据（如256位的密钥数据）。如果未指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过
-> [convertKey](#convertkey)
+> [convertKey](#convertkey1)
 > 方式生成对称密钥数据。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SymKeyGenerator-generateSymKey(callback: AsyncCallback<SymKey>): void--><!--Device-SymKeyGenerator-generateSymKey(callback: AsyncCallback<SymKey>): void-End-->
 
@@ -265,7 +269,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   });
 ```
 
-<a id="generatesymkey-1"></a>
+<a id="generatesymkey2"></a>
 
 ## generateSymKey
 
@@ -279,7 +283,7 @@ generateSymKey(): Promise<SymKey>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SymKeyGenerator-generateSymKey(): Promise<SymKey>--><!--Device-SymKeyGenerator-generateSymKey(): Promise<SymKey>-End-->
 
@@ -337,7 +341,7 @@ generateSymKeySync(): SymKey
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SymKeyGenerator-generateSymKeySync(): SymKey--><!--Device-SymKeyGenerator-generateSymKeySync(): SymKey-End-->
 
@@ -384,7 +388,7 @@ readonly algName: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SymKeyGenerator-readonly algName: string--><!--Device-SymKeyGenerator-readonly algName: string-End-->
 

@@ -32,9 +32,9 @@ Unit:px.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Size-height: int--><!--Device-Size-height: int-End-->
 
@@ -54,9 +54,9 @@ Unit:px.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Size-width: int--><!--Device-Size-width: int-End-->
 

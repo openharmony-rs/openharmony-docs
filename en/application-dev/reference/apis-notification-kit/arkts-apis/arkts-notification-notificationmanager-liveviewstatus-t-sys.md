@@ -6,6 +6,8 @@ export type LiveViewStatus = _LiveViewStatus
 
 Enumerates the statuses of the common live view.
 
+**Type:** _LiveViewStatus
+
 **Since:** 11
 
 <!--Device-notificationManager-export type LiveViewStatus = _LiveViewStatus--><!--Device-notificationManager-export type LiveViewStatus = _LiveViewStatus-End-->
@@ -13,5 +15,3 @@ Enumerates the statuses of the common live view.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _LiveViewStatus

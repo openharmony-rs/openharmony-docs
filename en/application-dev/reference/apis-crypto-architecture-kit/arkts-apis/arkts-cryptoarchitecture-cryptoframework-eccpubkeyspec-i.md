@@ -36,7 +36,7 @@ Common parameters of the public and private keys in the ECC algorithm.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ECCPubKeySpec-params: ECCCommonParamsSpec--><!--Device-ECCPubKeySpec-params: ECCCommonParamsSpec-End-->
 
@@ -56,7 +56,7 @@ Public key **pk** in the ECC algorithm.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ECCPubKeySpec-pk: Point--><!--Device-ECCPubKeySpec-pk: Point-End-->
 

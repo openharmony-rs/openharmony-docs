@@ -6,13 +6,13 @@ export interface IsoDepTag extends TagSession
 
 Provides APIs to access ISO-DEP (ISO 14443-4) properties and I/O operations on a tag. This class inherits from **TagSession**.
 
-**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
+**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-i.md).
 
 For details about how to obtain an **IsoDepTag** object, see [NFC Tag Read/Write Development](../../../connectivity/nfc/nfc-tag-access-guide.md).
 
 The following describes the unique APIs of **IsoDepTag**.
 
-**Inheritance/Implementation:** IsoDepTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**Inheritance/Implementation:** IsoDepTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **Since:** 9
 
@@ -30,7 +30,7 @@ Obtains the higher-layer response bytes for the given tag. This API applies only
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-IsoDepTag-getHiLayerResponse(): int[]--><!--Device-IsoDepTag-getHiLayerResponse(): int[]-End-->
 
@@ -62,7 +62,7 @@ Obtains the historical bytes for the given tag. This API applies only to the Iso
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-IsoDepTag-getHistoricalBytes(): int[]--><!--Device-IsoDepTag-getHistoricalBytes(): int[]-End-->
 
@@ -84,6 +84,8 @@ let historicalBytes : number[] = isoDep.getHistoricalBytes();
 console.info("isoDep historicalBytes: " + historicalBytes);
 ```
 
+<a id="isextendedapdusupported1"></a>
+
 ## isExtendedApduSupported
 
 ```TypeScript
@@ -96,7 +98,7 @@ Checks whether extended APDUs are supported. This API uses a promise to return t
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-IsoDepTag-isExtendedApduSupported(): Promise<boolean>--><!--Device-IsoDepTag-isExtendedApduSupported(): Promise<boolean>-End-->
 
@@ -145,7 +147,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="isextendedapdusupported-1"></a>
+<a id="isextendedapdusupported2"></a>
 
 ## isExtendedApduSupported
 
@@ -159,7 +161,7 @@ Checks whether extended APDUs are supported. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-IsoDepTag-isExtendedApduSupported(callback: AsyncCallback<boolean>): void--><!--Device-IsoDepTag-isExtendedApduSupported(callback: AsyncCallback<boolean>): void-End-->
 

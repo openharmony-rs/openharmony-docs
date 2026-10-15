@@ -6,6 +6,8 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="gettopwindow1"></a>
+
 ## getTopWindow
 
 ```TypeScript
@@ -17,13 +19,13 @@ function getTopWindow(callback: AsyncCallback<Window>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md)替代。
+> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -55,7 +57,7 @@ window.getTopWindow((err: BusinessError, data) => {
 ```
 
 
-<a id="gettopwindow-1"></a>
+<a id="gettopwindow2"></a>
 
 ## getTopWindow
 
@@ -67,13 +69,13 @@ function getTopWindow(): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow2)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow2)(ctx: BaseContext)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -103,7 +105,7 @@ promise.then((data)=> {
 ```
 
 
-<a id="gettopwindow-2"></a>
+<a id="gettopwindow3"></a>
 
 ## getTopWindow
 
@@ -115,13 +117,13 @@ function getTopWindow(ctx: BaseContext): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow2)(ctx: BaseContext)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>--><!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>-End-->
 
@@ -147,7 +149,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     let promise = window.getTopWindow(this.context);
@@ -162,7 +164,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="gettopwindow-3"></a>
+<a id="gettopwindow4"></a>
 
 ## getTopWindow
 
@@ -175,13 +177,13 @@ function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，参数ctx传入null或undefined时，可能会导致callback无法得到执行，建议使用
-> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md)替代。
+> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void-End-->
 
@@ -202,7 +204,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage){
+  onWindowStageCreate(windowStage: window.WindowStage){
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     try {

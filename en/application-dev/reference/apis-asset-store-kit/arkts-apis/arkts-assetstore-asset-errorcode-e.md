@@ -12,98 +12,6 @@ Enumerates the error codes.
 
 **System capability:** SystemCapability.Security.Asset
 
-## PERMISSION_DENIED
-
-```TypeScript
-PERMISSION_DENIED = 201
-```
-
-Permission verification failed. The application does not have the permission required to call the API.
-
-**Since:** 11
-
-<!--Device-ErrorCode-PERMISSION_DENIED = 201--><!--Device-ErrorCode-PERMISSION_DENIED = 201-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## NOT_SYSTEM_APPLICATION
-
-```TypeScript
-NOT_SYSTEM_APPLICATION = 202
-```
-
-Permission verification failed. A non-system application calls a system API.
-
-**Since:** 12
-
-<!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202--><!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## INVALID_ARGUMENT
-
-```TypeScript
-INVALID_ARGUMENT = 401
-```
-
-The argument is invalid.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-INVALID_ARGUMENT = 401--><!--Device-ErrorCode-INVALID_ARGUMENT = 401-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## SERVICE_UNAVAILABLE
-
-```TypeScript
-SERVICE_UNAVAILABLE = 24000001
-```
-
-The ASSET service is unavailable.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001--><!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## NOT_FOUND
-
-```TypeScript
-NOT_FOUND = 24000002
-```
-
-Failed to find the asset.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-NOT_FOUND = 24000002--><!--Device-ErrorCode-NOT_FOUND = 24000002-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## DUPLICATED
-
-```TypeScript
-DUPLICATED = 24000003
-```
-
-The specified asset already exists.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-DUPLICATED = 24000003--><!--Device-ErrorCode-DUPLICATED = 24000003-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
 ## ACCESS_DENIED
 
 ```TypeScript
@@ -120,35 +28,67 @@ The access to the asset is denied.
 
 **System capability:** SystemCapability.Security.Asset
 
-## STATUS_MISMATCH
+## ACCESS_TOKEN_ERROR
 
 ```TypeScript
-STATUS_MISMATCH = 24000005
+ACCESS_TOKEN_ERROR = 24000013
 ```
 
-The screen lock status does not match.
+The Access Token service is abnormal.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-ErrorCode-STATUS_MISMATCH = 24000005--><!--Device-ErrorCode-STATUS_MISMATCH = 24000005-End-->
+<!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013--><!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
-## OUT_OF_MEMORY
+## ACCOUNT_ERROR
 
 ```TypeScript
-OUT_OF_MEMORY = 24000006
+ACCOUNT_ERROR = 24000012
 ```
 
-The system memory is insufficient.
+The account service is abnormal.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-ErrorCode-OUT_OF_MEMORY = 24000006--><!--Device-ErrorCode-OUT_OF_MEMORY = 24000006-End-->
+<!--Device-ErrorCode-ACCOUNT_ERROR = 24000012--><!--Device-ErrorCode-ACCOUNT_ERROR = 24000012-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## BMS_ERROR
+
+```TypeScript
+BMS_ERROR = 24000011
+```
+
+The Bundle Manager service is abnormal.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-BMS_ERROR = 24000011--><!--Device-ErrorCode-BMS_ERROR = 24000011-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## CRYPTO_ERROR
+
+```TypeScript
+CRYPTO_ERROR = 24000009
+```
+
+The crypto operation failed.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-CRYPTO_ERROR = 24000009--><!--Device-ErrorCode-CRYPTO_ERROR = 24000009-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -184,83 +124,19 @@ The database operation failed.
 
 **System capability:** SystemCapability.Security.Asset
 
-## CRYPTO_ERROR
+## DUPLICATED
 
 ```TypeScript
-CRYPTO_ERROR = 24000009
+DUPLICATED = 24000003
 ```
 
-The crypto operation failed.
+The specified asset already exists.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-ErrorCode-CRYPTO_ERROR = 24000009--><!--Device-ErrorCode-CRYPTO_ERROR = 24000009-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## IPC_ERROR
-
-```TypeScript
-IPC_ERROR = 24000010
-```
-
-IPC failed.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-IPC_ERROR = 24000010--><!--Device-ErrorCode-IPC_ERROR = 24000010-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## BMS_ERROR
-
-```TypeScript
-BMS_ERROR = 24000011
-```
-
-The Bundle Manager service is abnormal.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-BMS_ERROR = 24000011--><!--Device-ErrorCode-BMS_ERROR = 24000011-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## ACCOUNT_ERROR
-
-```TypeScript
-ACCOUNT_ERROR = 24000012
-```
-
-The account service is abnormal.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-ACCOUNT_ERROR = 24000012--><!--Device-ErrorCode-ACCOUNT_ERROR = 24000012-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## ACCESS_TOKEN_ERROR
-
-```TypeScript
-ACCESS_TOKEN_ERROR = 24000013
-```
-
-The Access Token service is abnormal.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013--><!--Device-ErrorCode-ACCESS_TOKEN_ERROR = 24000013-End-->
+<!--Device-ErrorCode-DUPLICATED = 24000003--><!--Device-ErrorCode-DUPLICATED = 24000003-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -296,6 +172,56 @@ Failed to obtain the system time.
 
 **System capability:** SystemCapability.Security.Asset
 
+## INCONSISTENT_ATTRIBUTE
+
+```TypeScript
+INCONSISTENT_ATTRIBUTE = 24000019
+```
+
+The error code indicates that the attributes required to be consistent are inconsistent.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019--><!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## INVALID_ARGUMENT
+
+```TypeScript
+INVALID_ARGUMENT = 401
+```
+
+The argument is invalid.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-INVALID_ARGUMENT = 401--><!--Device-ErrorCode-INVALID_ARGUMENT = 401-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## IPC_ERROR
+
+```TypeScript
+IPC_ERROR = 24000010
+```
+
+IPC failed.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-IPC_ERROR = 24000010--><!--Device-ErrorCode-IPC_ERROR = 24000010-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
 ## LIMIT_EXCEEDED
 
 ```TypeScript
@@ -312,19 +238,49 @@ The number of cached records exceeds the upper limit.
 
 **System capability:** SystemCapability.Security.Asset
 
-## UNSUPPORTED
+## NOT_FOUND
 
 ```TypeScript
-UNSUPPORTED = 24000017
+NOT_FOUND = 24000002
 ```
 
-The feature is not supported.
+Failed to find the asset.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-ErrorCode-UNSUPPORTED = 24000017--><!--Device-ErrorCode-UNSUPPORTED = 24000017-End-->
+<!--Device-ErrorCode-NOT_FOUND = 24000002--><!--Device-ErrorCode-NOT_FOUND = 24000002-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## NOT_SYSTEM_APPLICATION
+
+```TypeScript
+NOT_SYSTEM_APPLICATION = 202
+```
+
+Permission verification failed. A non-system application calls a system API.
+
+**Since:** 12
+
+<!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202--><!--Device-ErrorCode-NOT_SYSTEM_APPLICATION = 202-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## OUT_OF_MEMORY
+
+```TypeScript
+OUT_OF_MEMORY = 24000006
+```
+
+The system memory is insufficient.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-OUT_OF_MEMORY = 24000006--><!--Device-ErrorCode-OUT_OF_MEMORY = 24000006-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -344,20 +300,64 @@ Parameter verification failed.
 
 **System capability:** SystemCapability.Security.Asset
 
-## INCONSISTENT_ATTRIBUTE
+## PERMISSION_DENIED
 
 ```TypeScript
-INCONSISTENT_ATTRIBUTE = 24000019
+PERMISSION_DENIED = 201
 ```
 
-The error code indicates that the attributes required to be consistent are inconsistent.
+Permission verification failed. The application does not have the permission required to call the API.
 
-**Since:** 26.0.0
+**Since:** 11
 
-**Model restriction:** This API can be used in both the stage model and FA model.
+<!--Device-ErrorCode-PERMISSION_DENIED = 201--><!--Device-ErrorCode-PERMISSION_DENIED = 201-End-->
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**System capability:** SystemCapability.Security.Asset
 
-<!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019--><!--Device-ErrorCode-INCONSISTENT_ATTRIBUTE = 24000019-End-->
+## SERVICE_UNAVAILABLE
+
+```TypeScript
+SERVICE_UNAVAILABLE = 24000001
+```
+
+The ASSET service is unavailable.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001--><!--Device-ErrorCode-SERVICE_UNAVAILABLE = 24000001-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## STATUS_MISMATCH
+
+```TypeScript
+STATUS_MISMATCH = 24000005
+```
+
+The screen lock status does not match.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-STATUS_MISMATCH = 24000005--><!--Device-ErrorCode-STATUS_MISMATCH = 24000005-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## UNSUPPORTED
+
+```TypeScript
+UNSUPPORTED = 24000017
+```
+
+The feature is not supported.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ErrorCode-UNSUPPORTED = 24000017--><!--Device-ErrorCode-UNSUPPORTED = 24000017-End-->
 
 **System capability:** SystemCapability.Security.Asset

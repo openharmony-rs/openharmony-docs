@@ -45,6 +45,7 @@ function offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 | [35100003](../errorcode-spatialAwareness.md#35100003-取消订阅失败) | Unsubscription failed. |
 | [35100004](../errorcode-spatialAwareness.md#35100004-无效参数) | Parameter invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
       console.error(`call offDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
+
+<!--DelEnd-->

@@ -5,13 +5,15 @@
 ```TypeScript
 ```
 
+<a id="getwantagent1"></a>
+
 ## getWantAgent
 
 ```TypeScript
 function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
 ```
 
-Obtains a WantAgent object.
+Creates a WantAgent object. If the creation fails, a null WantAgent object is returned. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
@@ -29,7 +31,7 @@ Obtains a WantAgent object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagentinfo-wantagentinfo-i.md) | Yes | about the WantAgent object to obtain. |
+| info | [WantAgentInfo](arkts-ability-wantagentinfo-i.md) | Yes | about the WantAgent object to obtain. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | Yes | Callback method for obtaining the user ID of WantAgent instance. |
 
 **Examples**
@@ -76,7 +78,7 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getwantagent-1"></a>
+<a id="getwantagent2"></a>
 
 ## getWantAgent
 
@@ -84,7 +86,7 @@ wantAgent.getWantAgent({
 function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
 ```
 
-Obtains a WantAgent object.
+Creates a WantAgent object. If the creation fails, a null WantAgent object is returned. This API uses a promise to return the result.
 
 **Since:** 7
 
@@ -102,13 +104,13 @@ Obtains a WantAgent object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagentinfo-wantagentinfo-i.md) | Yes | about the WantAgent object to obtain. |
+| info | [WantAgentInfo](arkts-ability-wantagentinfo-i.md) | Yes | about the WantAgent object to obtain. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | Returns the created [WantAgent](arkts-ability-wantagent-depr-t.md) object. |
+| Promise&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | Promise object used to return the WantAgent instance for triggering the specified operation. |
 
 **Examples**
 

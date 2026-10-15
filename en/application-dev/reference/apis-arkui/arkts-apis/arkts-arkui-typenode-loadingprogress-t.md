@@ -6,6 +6,8 @@ type LoadingProgress = TypedFrameNode<LoadingProgressInterface, LoadingProgressA
 
 Represents a FrameNode of the **LoadingProgress** type. This type of node does not allow child components to be added.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;LoadingProgressInterface, [LoadingProgressAttribute](../arkts-components/arkts-arkui-loadingprogress-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **LoadingProgress** type. This type of node does n
 <!--Device-typeNode-type LoadingProgress = TypedFrameNode<LoadingProgressInterface, LoadingProgressAttribute>--><!--Device-typeNode-type LoadingProgress = TypedFrameNode<LoadingProgressInterface, LoadingProgressAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;LoadingProgressInterface, [LoadingProgressAttribute](../arkts-components/arkts-arkui-loadingprogress-comp-attribute.md)&gt;

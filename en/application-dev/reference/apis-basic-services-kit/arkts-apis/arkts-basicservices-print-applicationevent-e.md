@@ -12,17 +12,17 @@ Enumerates print application events.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## APPLICATION_CREATED
+## APPLICATION_CLOSED_FOR_CANCELED
 
 ```TypeScript
-APPLICATION_CREATED = 0
+APPLICATION_CLOSED_FOR_CANCELED = 2
 ```
 
-Starts the print application.
+Closes the print application by clicking **Cancel**.
 
 **Since:** 14
 
-<!--Device-ApplicationEvent-APPLICATION_CREATED = 0--><!--Device-ApplicationEvent-APPLICATION_CREATED = 0-End-->
+<!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2--><!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -40,16 +40,16 @@ Closes the print application by clicking **Start**.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## APPLICATION_CLOSED_FOR_CANCELED
+## APPLICATION_CREATED
 
 ```TypeScript
-APPLICATION_CLOSED_FOR_CANCELED = 2
+APPLICATION_CREATED = 0
 ```
 
-Closes the print application by clicking **Cancel**.
+Starts the print application.
 
 **Since:** 14
 
-<!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2--><!--Device-ApplicationEvent-APPLICATION_CLOSED_FOR_CANCELED = 2-End-->
+<!--Device-ApplicationEvent-APPLICATION_CREATED = 0--><!--Device-ApplicationEvent-APPLICATION_CREATED = 0-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

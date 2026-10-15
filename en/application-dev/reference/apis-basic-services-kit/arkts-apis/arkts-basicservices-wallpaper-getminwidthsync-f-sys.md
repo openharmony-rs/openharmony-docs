@@ -34,6 +34,7 @@ Obtains the minimum width of the wallpaper. in pixels. returns 0 if no wallpaper
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -44,3 +45,5 @@ try {
   console.error(`failed to getMinWidthSync. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

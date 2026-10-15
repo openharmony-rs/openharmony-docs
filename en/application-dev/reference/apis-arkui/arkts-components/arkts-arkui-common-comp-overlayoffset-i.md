@@ -26,6 +26,8 @@ x?: number
 
 Horizontal offset.
 
+Default value: **0**
+
 Unit: vp.
 
 **Type:** number
@@ -47,6 +49,8 @@ y?: number
 ```
 
 Vertical offset.
+
+Default value: **0**
 
 Unit: vp.
 

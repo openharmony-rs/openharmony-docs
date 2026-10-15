@@ -12,20 +12,6 @@ Enumerates the printer states.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## PRINTER_IDLE
-
-```TypeScript
-PRINTER_IDLE = 0
-```
-
-The printer is idle.
-
-**Since:** 14
-
-<!--Device-PrinterStatus-PRINTER_IDLE = 0--><!--Device-PrinterStatus-PRINTER_IDLE = 0-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## PRINTER_BUSY
 
 ```TypeScript
@@ -37,6 +23,20 @@ The printer is busy.
 **Since:** 14
 
 <!--Device-PrinterStatus-PRINTER_BUSY = 1--><!--Device-PrinterStatus-PRINTER_BUSY = 1-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## PRINTER_IDLE
+
+```TypeScript
+PRINTER_IDLE = 0
+```
+
+The printer is idle.
+
+**Since:** 14
+
+<!--Device-PrinterStatus-PRINTER_IDLE = 0--><!--Device-PrinterStatus-PRINTER_IDLE = 0-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

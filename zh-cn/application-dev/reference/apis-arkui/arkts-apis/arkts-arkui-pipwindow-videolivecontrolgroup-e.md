@@ -12,22 +12,6 @@ enum VideoLiveControlGroup
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## VIDEO_PLAY_PAUSE
-
-```TypeScript
-VIDEO_PLAY_PAUSE = 401
-```
-
-播放/暂停直播控件组。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-VideoLiveControlGroup-VIDEO_PLAY_PAUSE = 401--><!--Device-VideoLiveControlGroup-VIDEO_PLAY_PAUSE = 401-End-->
-
-**系统能力：** SystemCapability.Window.SessionManager
-
 ## MUTE_SWITCH
 
 ```TypeScript
@@ -38,8 +22,24 @@ MUTE_SWITCH = 402
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoLiveControlGroup-MUTE_SWITCH = 402--><!--Device-VideoLiveControlGroup-MUTE_SWITCH = 402-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## VIDEO_PLAY_PAUSE
+
+```TypeScript
+VIDEO_PLAY_PAUSE = 401
+```
+
+播放/暂停直播控件组。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoLiveControlGroup-VIDEO_PLAY_PAUSE = 401--><!--Device-VideoLiveControlGroup-VIDEO_PLAY_PAUSE = 401-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

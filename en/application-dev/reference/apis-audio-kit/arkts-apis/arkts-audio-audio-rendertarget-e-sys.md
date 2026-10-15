@@ -14,22 +14,6 @@ Audio render target.
 
 **System API:** This is a system API.
 
-## PLAYBACK
-
-```TypeScript
-PLAYBACK = 0
-```
-
-Playback. Under this target, the audio renderer will be played out. This is the default target of audio renderer.
-
-**Since:** 22
-
-<!--Device-RenderTarget-PLAYBACK = 0--><!--Device-RenderTarget-PLAYBACK = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-**System API:** This is a system API.
-
 ## INJECT_TO_VOICE_COMMUNICATION_CAPTURE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Inject to voice communication capture. Under this target, the audio renderer wil
 **Since:** 22
 
 <!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1--><!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+**System API:** This is a system API.
+
+## PLAYBACK
+
+```TypeScript
+PLAYBACK = 0
+```
+
+Playback. Under this target, the audio renderer will be played out. This is the default target of audio renderer.
+
+**Since:** 22
+
+<!--Device-RenderTarget-PLAYBACK = 0--><!--Device-RenderTarget-PLAYBACK = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

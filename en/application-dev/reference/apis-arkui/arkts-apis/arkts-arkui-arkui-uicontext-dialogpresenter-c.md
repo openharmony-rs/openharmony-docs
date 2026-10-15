@@ -58,6 +58,8 @@ Dismisses a dialog box. Accepts either the dialog ID (returned by present) or th
 | [103301](../errorcode-promptAction.md#103301-dialog-content-error) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-custom-dialog-box-not-found) | Dialog content not found. The ComponentContent cannot be found. |
 
+<a id="present1"></a>
+
 ## present
 
 ```TypeScript
@@ -95,7 +97,7 @@ Presents a fixed-style dialog box.
 | [103306](../errorcode-promptAction.md#103306-node-mount-failure-causes-dialog-box-to-fail-to-open) | The dialog cannot be opened due to node mount failure. |
 | [103308](../errorcode-promptAction.md#103308-dialog-box-cannot-be-opened-due-to-subwindow-creation-failure) | The dialog cannot be opened due to subwindow create failure. |
 
-<a id="present-1"></a>
+<a id="present2"></a>
 
 ## present
 

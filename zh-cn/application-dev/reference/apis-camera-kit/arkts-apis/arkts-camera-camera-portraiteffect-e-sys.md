@@ -14,22 +14,6 @@ Enumerates the portrait effects.
 
 **系统接口：** 此接口为系统接口。
 
-## OFF
-
-```TypeScript
-OFF = 0
-```
-
-Disabled.
-
-**起始版本：** 10
-
-<!--Device-PortraitEffect-OFF = 0--><!--Device-PortraitEffect-OFF = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## CIRCLES
 
 ```TypeScript
@@ -57,6 +41,22 @@ Heart-shaped.
 **起始版本：** 11
 
 <!--Device-PortraitEffect-HEART = 2--><!--Device-PortraitEffect-HEART = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+## OFF
+
+```TypeScript
+OFF = 0
+```
+
+Disabled.
+
+**起始版本：** 10
+
+<!--Device-PortraitEffect-OFF = 0--><!--Device-PortraitEffect-OFF = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

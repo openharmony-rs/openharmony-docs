@@ -52,6 +52,7 @@ Deletes data from a cloud database table. This API uses a promise to return the 
 | --- | --- |
 | Promise&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise used to return the deleted data and operation result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,6 +68,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## generateId
 
@@ -96,6 +99,7 @@ Generates IDs for the data records inserted to the cloud database. The IDs are u
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Array&lt;string&gt;&gt;&gt; | Promise used to return the generated IDs in Result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,6 +117,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## heartbeat
 
@@ -142,6 +148,7 @@ Extends the lock period of the database. This API uses a promise to return the r
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[LockInfo](arkts-arkdata-cloudextension-lockinfo-i-sys.md)&gt;&gt; | Promise used to return the lock ID and lock period. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -165,6 +172,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## insert
 
@@ -200,6 +209,7 @@ Inserts data to a cloud database table. This API uses a promise to return the re
 | --- | --- |
 | Promise&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise used to return the inserted data and operation result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -215,6 +225,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## lock
 
@@ -238,6 +250,7 @@ Locks this cloud database. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[LockInfo](arkts-arkdata-cloudextension-lockinfo-i-sys.md)&gt;&gt; | Promise used to return the lock ID and lock period. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -261,6 +274,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## query
 
@@ -293,6 +308,7 @@ Queries data in a cloud database table. This API uses a promise to return the re
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[CloudData](arkts-arkdata-cloudextension-clouddata-i-sys.md)&gt;&gt; | Promise used to return the data and operation result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -315,6 +331,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## unlock
 
@@ -344,6 +362,7 @@ Unlocks a cloud database. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;boolean&gt;&gt; | Promise used to return the result. The value true means the operation is successful; the value false means the opposite. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -362,6 +381,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->
 
 ## update
 
@@ -397,6 +418,7 @@ Updates data in the cloud. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;Array&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise used to return the update result and updated data. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -412,3 +434,5 @@ class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 ```
+
+<!--DelEnd-->

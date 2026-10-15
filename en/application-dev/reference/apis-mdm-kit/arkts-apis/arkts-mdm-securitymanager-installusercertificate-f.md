@@ -6,6 +6,8 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
+<a id="installusercertificate1"></a>
+
 ## installUserCertificate
 
 ```TypeScript
@@ -45,7 +47,7 @@ Installs a user certificate. This API uses a promise to return the result. Enter
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [9201001](../errorcode-enterpriseDeviceManager.md#9201001-failed-to-manage-the-certificate) | Failed to manage the certificate. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -79,7 +81,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 ```
 
 
-<a id="installusercertificate-1"></a>
+<a id="installusercertificate2"></a>
 
 ## installUserCertificate
 

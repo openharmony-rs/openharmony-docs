@@ -1,6 +1,6 @@
 # @ohos.app.ability.abilityDelegatorRegistry(AbilityDelegatorRegistry)
 
-AbilityDelegatorRegistry是自动化测试框架使用指南模块，该模块用于获取[AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md)和[AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md)对象，其中[AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md)对象提供添加用于监视指定ability的生命周期状态更改的[AbilityMonitor](../../apis-ability-kit/arkts-apis/arkts-ability-abilitymonitor-i.md)对象的能力，[AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md)对象提供获取当前测试参数的能力。
+AbilityDelegatorRegistry是自动化测试框架使用指南模块，该模块用于获取[AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md)和[AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md)对象，其中[AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md)对象提供添加用于监视指定ability的生命周期状态更改的[AbilityMonitor](../../apis-ability-kit/arkts-apis/arkts-ability-abilitymonitor-i.md)对象的能力，[AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md)对象提供获取当前测试参数的能力。
 
 > **说明：** 
 > 
@@ -26,8 +26,8 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md) | 获取应用程序的[AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md)对象，该对象能够使用调度测试框架的相关功能。 |
-| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md) | 获取单元测试参数[AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md)对象。 |
+| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md#getabilitydelegator) | 获取应用程序的[AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md)对象，该对象能够使用调度测试框架的相关功能。 |
+| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md#getarguments) | 获取单元测试参数[AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md)对象。 |
 
 ### 类型
 

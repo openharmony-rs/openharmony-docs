@@ -10,7 +10,7 @@ Defines the parameters for routing back.
 
 **Deprecated since:** 8
 
-**Substitutes:** RouterOptions
+**Substitutes:** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-unnamed-export interface BackRouterOptions--><!--Device-unnamed-export interface BackRouterOptions-End-->
 
@@ -28,7 +28,7 @@ import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, Ena
 params?: Object
 ```
 
-Data that needs to be passed to the target page during redirection.
+Data to be passed to the target page when the page is returned.
 
 **Type:** Object
 
@@ -36,7 +36,7 @@ Data that needs to be passed to the target page during redirection.
 
 **Deprecated since:** 8
 
-**Substitutes:** params
+**Substitutes:** [params](arkts-arkui-router-routeroptions-i.md#params)
 
 <!--Device-BackRouterOptions-params?: Object--><!--Device-BackRouterOptions-params?: Object-End-->
 
@@ -56,7 +56,7 @@ URI of the page to return to. If the specified page does not exist in the page s
 
 **Deprecated since:** 8
 
-**Substitutes:** url
+**Substitutes:** [url](arkts-arkui-router-routeroptions-i.md#url)
 
 <!--Device-BackRouterOptions-uri?: string--><!--Device-BackRouterOptions-uri?: string-End-->
 

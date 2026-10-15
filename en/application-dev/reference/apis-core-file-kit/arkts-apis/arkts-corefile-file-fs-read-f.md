@@ -56,7 +56,7 @@ Reads file data. This API uses a promise to return the result.
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
-<a id="read-1"></a>
+<a id="read2"></a>
 
 ## read
 
@@ -97,7 +97,7 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 | 13900042 | Unknown error |
 
 
-<a id="read-2"></a>
+<a id="read3"></a>
 
 ## read
 

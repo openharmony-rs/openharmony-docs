@@ -4,7 +4,7 @@
 export declare class ToolBarV2ItemImage
 ```
 
-Declare type ToolBarV2ItemImage
+Defines the icon content of a toolbar item.
 
 **Since:** 18
 
@@ -26,7 +26,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 constructor(options: ToolBarV2ItemImageOptions)
 ```
 
-The constructor used to create a ToolBarV2ItemImage object.
+A constructor used to create a **ToolBarV2ItemImage** instance.
 
 **Since:** 18
 
@@ -50,7 +50,11 @@ The constructor used to create a ToolBarV2ItemImage object.
 activatedColor?: ColorMetrics
 ```
 
-Icon fillColor when the item is activated.
+Color of the icon when the toolbar item is activated.
+
+Default value: **$r('sys.color.icon_emphasize')**.
+
+Decorator: @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -72,7 +76,11 @@ Icon fillColor when the item is activated.
 color?: ColorMetrics
 ```
 
-Define icon fillColor.
+Color of the icon.
+
+Default value: **$r('sys.color.icon_primary')**.
+
+Decorator: @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -94,7 +102,9 @@ Define icon fillColor.
 src: ResourceStr
 ```
 
-Define icon resource.
+Icon of the toolbar item.
+
+Decorator: @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

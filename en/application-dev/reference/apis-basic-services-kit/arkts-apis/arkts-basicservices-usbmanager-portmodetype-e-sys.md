@@ -14,38 +14,6 @@ Enumerates USB port mode types.
 
 **System API:** This is a system API.
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-None.
-
-**Since:** 9
-
-<!--Device-PortModeType-NONE = 0--><!--Device-PortModeType-NONE = 0-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
-## UFP
-
-```TypeScript
-UFP = 1
-```
-
-Upstream facing port, which functions as the sink of power supply.
-
-**Since:** 9
-
-<!--Device-PortModeType-UFP = 1--><!--Device-PortModeType-UFP = 1-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
 ## DFP
 
 ```TypeScript
@@ -78,6 +46,22 @@ Dynamic reconfiguration port (DRP), which can function as the DFP (host) or UFP 
 
 **System API:** This is a system API.
 
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+None.
+
+**Since:** 9
+
+<!--Device-PortModeType-NONE = 0--><!--Device-PortModeType-NONE = 0-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
 ## NUM_MODES
 
 ```TypeScript
@@ -89,6 +73,22 @@ Not supported currently.
 **Since:** 9
 
 <!--Device-PortModeType-NUM_MODES = 4--><!--Device-PortModeType-NUM_MODES = 4-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
+## UFP
+
+```TypeScript
+UFP = 1
+```
+
+Upstream facing port, which functions as the sink of power supply.
+
+**Since:** 9
+
+<!--Device-PortModeType-UFP = 1--><!--Device-PortModeType-UFP = 1-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

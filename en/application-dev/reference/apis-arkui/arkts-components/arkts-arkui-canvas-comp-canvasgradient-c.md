@@ -12,6 +12,8 @@ A gradient object that allows multiple color breakpoints to be set through the *
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="addcolorstop1"></a>
+
 ## addColorStop
 
 ```TypeScript
@@ -72,7 +74,7 @@ struct AddColorStop {
 }
 ```
 
-<a id="addcolorstop-1"></a>
+<a id="addcolorstop2"></a>
 
 ## addColorStop
 

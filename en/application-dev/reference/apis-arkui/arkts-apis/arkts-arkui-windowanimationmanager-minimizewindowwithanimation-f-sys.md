@@ -6,6 +6,8 @@
 import { windowAnimationManager } from '@kit.ArkUI';
 ```
 
+<a id="minimizewindowwithanimation1"></a>
+
 ## minimizeWindowWithAnimation
 
 ```TypeScript
@@ -30,6 +32,7 @@ Minimize the window target with animation.
 | windowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | The window target to be minimized. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | Yes | Returns the animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -94,8 +97,10 @@ windowAnimationManager.minimizeWindowWithAnimation(target, (err: BusinessError, 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="minimizewindowwithanimation-1"></a>
+
+<a id="minimizewindowwithanimation2"></a>
 
 ## minimizeWindowWithAnimation
 
@@ -125,6 +130,7 @@ Minimize the window target with animation.
 | --- | --- |
 | Promise&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | Promise used to return the animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -177,3 +183,5 @@ promise.then((data: windowAnimationManager.WindowAnimationFinishedCallback) => {
     return;
 });
 ```
+
+<!--DelEnd-->

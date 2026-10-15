@@ -6,6 +6,8 @@
 import { backup } from '@kit.CoreFileKit';
 ```
 
+<a id="getlocalcapabilities1"></a>
+
 ## getLocalCapabilities
 
 ```TypeScript
@@ -40,6 +42,7 @@ Obtain a Json file that describes local capabilities.
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,8 +81,10 @@ The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getlocalcapabilities-1"></a>
+
+<a id="getlocalcapabilities2"></a>
 
 ## getLocalCapabilities
 
@@ -115,6 +120,7 @@ Obtain a Json file that describes local capabilities.
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -156,8 +162,10 @@ The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getlocalcapabilities-2"></a>
+
+<a id="getlocalcapabilities3"></a>
 
 ## getLocalCapabilities
 
@@ -202,6 +210,7 @@ Obtain a json file that describes local capabilities.
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -224,3 +233,5 @@ async function getLocalCapabilities() {
   }
 }
 ```
+
+<!--DelEnd-->

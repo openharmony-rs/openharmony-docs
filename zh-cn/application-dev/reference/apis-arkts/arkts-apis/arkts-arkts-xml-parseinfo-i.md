@@ -30,7 +30,7 @@ ArkTS-Sta: getAttributeCount(): int
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getAttributeCount(): int--><!--Device-ParseInfo-getAttributeCount(): int-End-->
 
@@ -74,7 +74,7 @@ ArkTS-Sta: getColumnNumber(): int
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getColumnNumber(): int--><!--Device-ParseInfo-getColumnNumber(): int-End-->
 
@@ -122,7 +122,7 @@ ArkTS-Sta: getDepth(): int
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getDepth(): int--><!--Device-ParseInfo-getDepth(): int-End-->
 
@@ -170,7 +170,7 @@ ArkTS-Sta: getLineNumber(): int
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getLineNumber(): int--><!--Device-ParseInfo-getLineNumber(): int-End-->
 
@@ -212,7 +212,7 @@ getName(): string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getName(): string--><!--Device-ParseInfo-getName(): string-End-->
 
@@ -254,7 +254,7 @@ getNamespace(): string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getNamespace(): string--><!--Device-ParseInfo-getNamespace(): string-End-->
 
@@ -300,7 +300,7 @@ getPrefix(): string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getPrefix(): string--><!--Device-ParseInfo-getPrefix(): string-End-->
 
@@ -346,7 +346,7 @@ getText(): string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-getText(): string--><!--Device-ParseInfo-getText(): string-End-->
 
@@ -388,7 +388,7 @@ isEmptyElementTag(): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-isEmptyElementTag(): boolean--><!--Device-ParseInfo-isEmptyElementTag(): boolean-End-->
 
@@ -434,7 +434,7 @@ isWhitespace(): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ParseInfo-isWhitespace(): boolean--><!--Device-ParseInfo-isWhitespace(): boolean-End-->
 

@@ -49,6 +49,7 @@ Obtains the supported portrait effects.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 11 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,3 +58,5 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
   return portraitEffects;
 }
 ```
+
+<!--DelEnd-->

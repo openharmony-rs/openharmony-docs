@@ -28,22 +28,6 @@ No audio or video playback is started on the page.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## PLAYING
-
-```TypeScript
-PLAYING = 1
-```
-
-The audio and video on the page are being played.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-MediaPlaybackState-PLAYING = 1--><!--Device-MediaPlaybackState-PLAYING = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## PAUSED
 
 ```TypeScript
@@ -57,6 +41,22 @@ The audio and video on the page are paused.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MediaPlaybackState-PAUSED = 2--><!--Device-MediaPlaybackState-PAUSED = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## PLAYING
+
+```TypeScript
+PLAYING = 1
+```
+
+The audio and video on the page are being played.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MediaPlaybackState-PLAYING = 1--><!--Device-MediaPlaybackState-PLAYING = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

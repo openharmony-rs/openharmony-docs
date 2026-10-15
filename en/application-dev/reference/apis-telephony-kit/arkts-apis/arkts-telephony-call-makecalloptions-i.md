@@ -32,7 +32,7 @@ Whether the third-party app supports custom accessibility features. Default valu
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MakeCallOptions-isCustomAccessibility?: boolean--><!--Device-MakeCallOptions-isCustomAccessibility?: boolean-End-->
 
@@ -52,7 +52,7 @@ Whether to hide the dial screen. **true**: yes; **false**: no.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-MakeCallOptions-isHideDialScreen?: boolean--><!--Device-MakeCallOptions-isHideDialScreen?: boolean-End-->
 

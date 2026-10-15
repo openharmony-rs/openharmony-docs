@@ -12,20 +12,6 @@ Describes the codec channel mode.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_CHANNEL_MODE_NONE
-
-```TypeScript
-CODEC_CHANNEL_MODE_NONE = 0
-```
-
-Codec channel mode none.
-
-**Since:** 11
-
-<!--Device-CodecChannelMode-CODEC_CHANNEL_MODE_NONE = 0--><!--Device-CodecChannelMode-CODEC_CHANNEL_MODE_NONE = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## CODEC_CHANNEL_MODE_MONO
 
 ```TypeScript
@@ -37,6 +23,20 @@ Codec channel mode MONO.
 **Since:** 11
 
 <!--Device-CodecChannelMode-CODEC_CHANNEL_MODE_MONO = 1--><!--Device-CodecChannelMode-CODEC_CHANNEL_MODE_MONO = 1-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## CODEC_CHANNEL_MODE_NONE
+
+```TypeScript
+CODEC_CHANNEL_MODE_NONE = 0
+```
+
+Codec channel mode none.
+
+**Since:** 11
+
+<!--Device-CodecChannelMode-CODEC_CHANNEL_MODE_NONE = 0--><!--Device-CodecChannelMode-CODEC_CHANNEL_MODE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

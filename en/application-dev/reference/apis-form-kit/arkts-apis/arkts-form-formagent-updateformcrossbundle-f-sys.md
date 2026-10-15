@@ -51,3 +51,29 @@ Updates a widget by cross bundle. This API uses a promise to return the result.
 | [16501001](../errorcode-form.md#16501001-widget-id-not-exist) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form to be operated has been deleted already. |
 | [16501007](../errorcode-form.md#16501007-untrusted-widget) | The form to be operated is not trusted. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formBindingData, formAgent } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '123456789'; // Widget ID of the form. Replace it with the actual widget ID.
+try {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  };
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formAgent.updateFormCrossBundle(formId, obj).then(() => {
+    console.info('formAgent updateFormCrossBundle success');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error?.code}, message: ${error?.message}`);
+}
+```
+
+<!--DelEnd-->

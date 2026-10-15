@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isdistributedenabledbybundle1"></a>
+
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -18,7 +20,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle-2)(bundle: BundleOption, deviceType: string)
+**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle3)(bundle: BundleOption, deviceType: string)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -41,7 +43,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -49,6 +51,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 | [1600010](../errorcode-notification.md#1600010-分布式操作失败) | Distributed operation failed. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="isdistributedenabledbybundle-1"></a>
+
+<a id="isdistributedenabledbybundle2"></a>
 
 ## isDistributedEnabledByBundle
 
@@ -82,7 +87,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle-2)(bundle: BundleOption, deviceType: string)
+**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle3)(bundle: BundleOption, deviceType: string)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -110,7 +115,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -118,6 +123,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 | [1600010](../errorcode-notification.md#1600010-分布式操作失败) | Distributed operation failed. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -133,8 +139,10 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 });
 ```
 
+<!--DelEnd-->
 
-<a id="isdistributedenabledbybundle-2"></a>
+
+<a id="isdistributedenabledbybundle3"></a>
 
 ## isDistributedEnabledByBundle
 
@@ -173,7 +181,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string):
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -182,6 +190,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string):
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -191,10 +200,12 @@ let bundle: notificationManager.BundleOption = {
     bundle: 'bundleName1',
     uid: 1
 };
-let deviceType: string = 'phone';
+let deviceType: string = 'wearable';
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

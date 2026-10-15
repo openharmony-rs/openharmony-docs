@@ -4,22 +4,22 @@
 interface Poly1305ParamsSpec extends ParamsSpec
 ```
 
-Encapsulates the parameters for encryption or decryption using the ChaCha20-Poly1305 AEAD mode, which requires a nonce, AAD, and an authentication tag. It is a child class of [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) and used as a parameter in [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using the ChaCha20-Poly1305 AEAD mode, which requires a nonce, AAD, and an authentication tag. It is a child class of [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) and used as a parameter in [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4) for symmetric encryption or decryption.
 
 <br>Applicable to [ChaCha20-Poly1305](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20).
 
 > **NOTE:** 
 > 
 > Before passing a value to
-> [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3), specify
+> [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4), specify
 > **algName** for its parent class [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md).
 > 
 > When the Poly1305 mode is used for encryption, you need to extract the last 16 bytes from the
 > [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) returned by
-> [doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1) or
+> [doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal2) or
 > [doFinalSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinalsync) and use them as **authTag** in
 > [Poly1305ParamsSpec](arkts-cryptoarchitecture-cryptoframework-poly1305paramsspec-i.md) for
-> [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3) or
+> [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init4) or
 > [initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync) during decryption.
 
 **Inheritance/Implementation:** Poly1305ParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)
@@ -48,7 +48,7 @@ Additional authenticated data.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Poly1305ParamsSpec-aad: DataBlob--><!--Device-Poly1305ParamsSpec-aad: DataBlob-End-->
 
@@ -66,7 +66,7 @@ Authentication tag, which is of 16 bytes.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Poly1305ParamsSpec-authTag: DataBlob--><!--Device-Poly1305ParamsSpec-authTag: DataBlob-End-->
 
@@ -84,7 +84,7 @@ Nonce (passed as the **iv** field), which is of 12 bytes.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Poly1305ParamsSpec-iv: DataBlob--><!--Device-Poly1305ParamsSpec-iv: DataBlob-End-->
 

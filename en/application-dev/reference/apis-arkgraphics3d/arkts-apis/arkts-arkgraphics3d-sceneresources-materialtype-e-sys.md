@@ -6,8 +6,6 @@ export enum MaterialType
 
 Enumerates the material types in a scene. The material type defines how materials in a scene are rendered.
 
-@enum { int }
-
 **Since:** 12
 
 <!--Device-unnamed-export enum MaterialType--><!--Device-unnamed-export enum MaterialType-End-->

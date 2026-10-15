@@ -4,7 +4,7 @@
 export class LazyLayoutHelper
 ```
 
-Helper class for lazy layout algorithm. Provides layout direction and view position information for lazy layout.
+Lazy loading layout auxiliary class, which provides the layout direction and visible area position information.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Helper class for lazy layout algorithm. Provides layout direction and view posit
 getLazyLayoutDirection(): LazyLayoutDirection
 ```
 
-Get the lazy layout direction.
+Obtains the lazy loading layout direction. This API can be used to determine whether to start layout from the beginning or end of the content in custom measurement.
 
 **Since:** 26.0.0
 
@@ -34,7 +34,7 @@ Get the lazy layout direction.
 
 | Type | Description |
 | --- | --- |
-| [LazyLayoutDirection](arkts-arkui-lazylayoutalgorithm-lazylayoutdirection-e.md) | The lazy layout direction. |
+| [LazyLayoutDirection](arkts-arkui-lazylayoutalgorithm-lazylayoutdirection-e.md) | Lazy loading layout direction. |
 
 ## getViewEnd
 
@@ -42,7 +42,7 @@ Get the lazy layout direction.
 getViewEnd(): number
 ```
 
-Get the end position of the visible view.
+Obtains the end position of the visible area. It can be used together with [getViewStart](#getviewstart) to determine the visible area range for custom measurement.
 
 **Since:** 26.0.0
 
@@ -58,7 +58,7 @@ Get the end position of the visible view.
 
 | Type | Description |
 | --- | --- |
-| number | The end position of the visible view.<br>Unit: px. |
+| number | End position of the visible area.<br>The unit is px. |
 
 ## getViewStart
 
@@ -66,7 +66,7 @@ Get the end position of the visible view.
 getViewStart(): number
 ```
 
-Get the start position of the visible view.
+Obtains the start position of the visible area. It can be used together with [getViewEnd](#getviewend) to determine the visible area range for custom measurement.
 
 **Since:** 26.0.0
 
@@ -82,7 +82,7 @@ Get the start position of the visible view.
 
 | Type | Description |
 | --- | --- |
-| number | The start position of the visible view.<br>Unit: px. |
+| number | Start position of the visible area.<br>The unit is px. |
 
 ## setAdjustedOffset
 
@@ -90,7 +90,11 @@ Get the start position of the visible view.
 setAdjustedOffset(offset: number): void
 ```
 
-Set the adjusted offset for the lazy layout.
+Sets an adjusted offset for lazy loading.
+
+When parameters such as the number of layout columns and spacing change, this API needs to be called to adjust the offset to keep the relative position of the first child component in the visible area unchanged.
+
+Take the vertical layout as an example. When the layout direction is **LazyLayoutDirection.FORWARD**, the offset set by this API is the adjustment value of the upper boundary of the container. When the layout direction is **LazyLayoutDirection.BACKWARD**, the offset set by this API is the adjustment value of the lower boundary of the container.
 
 **Since:** 26.0.0
 
@@ -106,7 +110,7 @@ Set the adjusted offset for the lazy layout.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| offset | number | Yes | The adjusted offset value to set.<br>Unit: px. |
+| offset | number | Yes | Adjusted offset. A positive value indicates that the position is adjusted towards the end of the content, and a negative value indicates that the position is adjusted towards the start of the content. The unit is px.<br>The value should be an integer. |
 
 ## setChildrenInactive
 
@@ -114,9 +118,15 @@ Set the adjusted offset for the lazy layout.
 setChildrenInactive(children: number[]): void
 ```
 
-Set children inactive.
+Sets a child component to the inactive state.
 
-If child components are generated via ForEach or Repeat without virtualScroll, they will not be displayed after being set to inactive. If child components are generated via LazyForEach or Repeat with virtualScroll, they will be destroyed or recycled after being set to inactive. LazyForEach and Repeat with virtualScroll only support consecutive active child components; setting a child component to inactive between two active child components will not take effect. Child components laid out outside the display area will be automatically set to inactive.
+If a child component is generated through [ForEach](../arkts-components/arkts-arkui-foreach-comp-attribute.md#foreachattribute) or [Repeat](../arkts-components/arkts-arkui-repeat-comp.md) (with [virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll) disabled), it will not be displayed after being set to the inactive state.
+
+If a child component is generated through [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md) or [Repeat](../arkts-components/arkts-arkui-repeat-comp.md) (with [virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll) enabled), it will be destroyed or recycled after being set to the inactive state.
+
+[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md) or [Repeat](../arkts-components/arkts-arkui-repeat-comp.md) (with [virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll) enabled) supports only consecutive active child components. Setting a child component to the inactive state between two active child components does not take effect.
+
+Child components outside the visible area are automatically set to the inactive state.
 
 **Since:** 26.0.0
 
@@ -132,4 +142,4 @@ If child components are generated via ForEach or Repeat without virtualScroll, t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| children | number[] | Yes | The indices of child components to set inactive. |
+| children | number[] | Yes | Index array of child components to be set to the inactive state. An index must be a non-negative integer within the range [0, Total child components - 1]. The index outside this range does not take effect. |

@@ -30,7 +30,7 @@ beacon围栏的参数配置。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconFenceRequest-beacon: BeaconFence--><!--Device-BeaconFenceRequest-beacon: BeaconFence-End-->
 
@@ -48,7 +48,7 @@ fenceExtensionAbilityName?: string
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconFenceRequest-fenceExtensionAbilityName?: string--><!--Device-BeaconFenceRequest-fenceExtensionAbilityName?: string-End-->
 
@@ -66,7 +66,7 @@ beacon围栏事件信息。默认值为undefined。仅支持前台回调。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-BeaconFenceRequest-transitionCallback?: Callback<GeofenceTransition>--><!--Device-BeaconFenceRequest-transitionCallback?: Callback<GeofenceTransition>-End-->
 

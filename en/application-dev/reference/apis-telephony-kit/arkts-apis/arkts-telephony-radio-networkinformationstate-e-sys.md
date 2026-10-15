@@ -14,22 +14,6 @@ Obtains network information status.
 
 **System API:** This is a system API.
 
-## NETWORK_UNKNOWN
-
-```TypeScript
-NETWORK_UNKNOWN = 0
-```
-
-Indicates that the network state is unknown.
-
-**Since:** 6
-
-<!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0--><!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-**System API:** This is a system API.
-
 ## NETWORK_AVAILABLE
 
 ```TypeScript
@@ -73,6 +57,22 @@ Indicates that the network is unavailable for registration.
 **Since:** 6
 
 <!--Device-NetworkInformationState-NETWORK_FORBIDDEN = 3--><!--Device-NetworkInformationState-NETWORK_FORBIDDEN = 3-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**System API:** This is a system API.
+
+## NETWORK_UNKNOWN
+
+```TypeScript
+NETWORK_UNKNOWN = 0
+```
+
+Indicates that the network state is unknown.
+
+**Since:** 6
+
+<!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0--><!--Device-NetworkInformationState-NETWORK_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

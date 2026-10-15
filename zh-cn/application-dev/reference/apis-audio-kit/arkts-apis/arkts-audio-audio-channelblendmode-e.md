@@ -12,34 +12,6 @@ enum ChannelBlendMode
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## MODE_DEFAULT
-
-```TypeScript
-MODE_DEFAULT = 0
-```
-
-无声道混合。
-
-**起始版本：** 11
-
-<!--Device-ChannelBlendMode-MODE_DEFAULT = 0--><!--Device-ChannelBlendMode-MODE_DEFAULT = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## MODE_BLEND_LR
-
-```TypeScript
-MODE_BLEND_LR = 1
-```
-
-混合左右声道。
-
-**起始版本：** 11
-
-<!--Device-ChannelBlendMode-MODE_BLEND_LR = 1--><!--Device-ChannelBlendMode-MODE_BLEND_LR = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 ## MODE_ALL_LEFT
 
 ```TypeScript
@@ -65,5 +37,33 @@ MODE_ALL_RIGHT = 3
 **起始版本：** 11
 
 <!--Device-ChannelBlendMode-MODE_ALL_RIGHT = 3--><!--Device-ChannelBlendMode-MODE_ALL_RIGHT = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## MODE_BLEND_LR
+
+```TypeScript
+MODE_BLEND_LR = 1
+```
+
+混合左右声道。
+
+**起始版本：** 11
+
+<!--Device-ChannelBlendMode-MODE_BLEND_LR = 1--><!--Device-ChannelBlendMode-MODE_BLEND_LR = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## MODE_DEFAULT
+
+```TypeScript
+MODE_DEFAULT = 0
+```
+
+无声道混合。
+
+**起始版本：** 11
+
+<!--Device-ChannelBlendMode-MODE_DEFAULT = 0--><!--Device-ChannelBlendMode-MODE_DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

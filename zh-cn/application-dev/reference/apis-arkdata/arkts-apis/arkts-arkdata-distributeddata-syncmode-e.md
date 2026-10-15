@@ -10,7 +10,7 @@ enum SyncMode
 
 **废弃版本：** 9
 
-**替代接口：** SyncMode
+**替代接口：** [SyncMode](arkts-arkdata-distributedkvstore-syncmode-e.md)
 
 <!--Device-distributedData-enum SyncMode--><!--Device-distributedData-enum SyncMode-End-->
 
@@ -28,7 +28,7 @@ PULL_ONLY = 0
 
 **废弃版本：** 9
 
-**替代接口：** PULL_ONLY
+**替代接口：** [PULL_ONLY](arkts-arkdata-distributedkvstore-syncmode-e.md#pull_only)
 
 <!--Device-SyncMode-PULL_ONLY = 0--><!--Device-SyncMode-PULL_ONLY = 0-End-->
 
@@ -46,7 +46,7 @@ PUSH_ONLY = 1
 
 **废弃版本：** 9
 
-**替代接口：** PUSH_ONLY
+**替代接口：** [PUSH_ONLY](arkts-arkdata-distributedkvstore-syncmode-e.md#push_only)
 
 <!--Device-SyncMode-PUSH_ONLY = 1--><!--Device-SyncMode-PUSH_ONLY = 1-End-->
 
@@ -64,7 +64,7 @@ PUSH_PULL = 2
 
 **废弃版本：** 9
 
-**替代接口：** PUSH_PULL
+**替代接口：** [PUSH_PULL](arkts-arkdata-distributedkvstore-syncmode-e.md#push_pull)
 
 <!--Device-SyncMode-PUSH_PULL = 2--><!--Device-SyncMode-PUSH_PULL = 2-End-->
 

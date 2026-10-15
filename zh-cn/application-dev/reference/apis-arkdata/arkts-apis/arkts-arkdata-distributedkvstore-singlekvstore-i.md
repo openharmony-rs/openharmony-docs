@@ -20,6 +20,8 @@ SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据�
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="backup1"></a>
+
 ## backup
 
 ```TypeScript
@@ -70,7 +72,7 @@ try {
 }
 ```
 
-<a id="backup-1"></a>
+<a id="backup2"></a>
 
 ## backup
 
@@ -181,13 +183,15 @@ try {
 }
 ```
 
+<a id="closeresultset1"></a>
+
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用callback异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
+关闭由[SingleKVStore.getResultSet](#getresultset2)返回的KVStoreResultSet对象，使用callback异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **起始版本：** 9
 
@@ -240,7 +244,7 @@ try {
 }
 ```
 
-<a id="closeresultset-1"></a>
+<a id="closeresultset2"></a>
 
 ## closeResultSet
 
@@ -248,7 +252,7 @@ try {
 closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用Promise异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
+关闭由[SingleKVStore.getResultSet](#getresultset2)返回的KVStoreResultSet对象，使用Promise异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **起始版本：** 9
 
@@ -303,13 +307,15 @@ try {
 }
 ```
 
+<a id="commit1"></a>
+
 ## commit
 
 ```TypeScript
 commit(callback: AsyncCallback<void>): void
 ```
 
-提交SingleKVStore数据库中的事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
+提交SingleKVStore数据库中的事务，使用callback异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **起始版本：** 9
 
@@ -350,7 +356,7 @@ try {
 }
 ```
 
-<a id="commit-1"></a>
+<a id="commit2"></a>
 
 ## commit
 
@@ -358,7 +364,7 @@ try {
 commit(): Promise<void>
 ```
 
-提交SingleKVStore数据库中的事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
+提交SingleKVStore数据库中的事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **起始版本：** 9
 
@@ -396,6 +402,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -459,7 +467,7 @@ try {
 }
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -524,13 +532,15 @@ try {
 }
 ```
 
+<a id="deletebackup1"></a>
+
 ## deleteBackup
 
 ```TypeScript
 deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, number]>>): void
 ```
 
-根据指定名称从默认路径（context.databaseDir）删除备份文件，使用callback异步回调。删除备份文件后，将无法再通过[restore](#restore-1)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用callback异步回调。删除备份文件后，将无法再通过[restore](#restore2)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
 
 **起始版本：** 9
 
@@ -573,7 +583,7 @@ try {
 }
 ```
 
-<a id="deletebackup-1"></a>
+<a id="deletebackup2"></a>
 
 ## deleteBackup
 
@@ -581,7 +591,7 @@ try {
 deleteBackup(files: Array<string>): Promise<Array<[string, number]>>
 ```
 
-根据指定名称从默认路径（context.databaseDir）删除备份文件，使用Promise异步回调。删除备份文件后，将无法再通过[restore](#restore)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用Promise异步回调。删除备份文件后，将无法再通过[restore](#restore1)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
 
 **起始版本：** 9
 
@@ -682,6 +692,8 @@ try {
 }
 ```
 
+<a id="deletebatch1"></a>
+
 ## deleteBatch
 
 ```TypeScript
@@ -757,7 +769,7 @@ try {
 }
 ```
 
-<a id="deletebatch-1"></a>
+<a id="deletebatch2"></a>
 
 ## deleteBatch
 
@@ -835,6 +847,8 @@ try {
 }
 ```
 
+<a id="enablesync1"></a>
+
 ## enableSync
 
 ```TypeScript
@@ -883,7 +897,7 @@ try {
 }
 ```
 
-<a id="enablesync-1"></a>
+<a id="enablesync2"></a>
 
 ## enableSync
 
@@ -935,6 +949,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="get1"></a>
 
 ## get
 
@@ -1024,7 +1040,7 @@ try {
 }
 ```
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -1119,6 +1135,8 @@ try {
 }
 ```
 
+<a id="getentries1"></a>
+
 ## getEntries
 
 ```TypeScript
@@ -1193,7 +1211,7 @@ try {
 }
 ```
 
-<a id="getentries-1"></a>
+<a id="getentries2"></a>
 
 ## getEntries
 
@@ -1270,7 +1288,7 @@ try {
 }
 ```
 
-<a id="getentries-2"></a>
+<a id="getentries3"></a>
 
 ## getEntries
 
@@ -1349,7 +1367,7 @@ try {
 }
 ```
 
-<a id="getentries-3"></a>
+<a id="getentries4"></a>
 
 ## getEntries
 
@@ -1428,13 +1446,15 @@ try {
 }
 ```
 
+<a id="getresultset1"></a>
+
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-从SingleKVStore数据库中获取具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+从SingleKVStore数据库中获取具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1511,7 +1531,7 @@ try {
 }
 ```
 
-<a id="getresultset-1"></a>
+<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -1519,7 +1539,7 @@ try {
 getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
-从SingleKVStore数据库中获取具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+从SingleKVStore数据库中获取具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1593,7 +1613,7 @@ try {
 }
 ```
 
-<a id="getresultset-2"></a>
+<a id="getresultset3"></a>
 
 ## getResultSet
 
@@ -1601,7 +1621,7 @@ try {
 getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-获取与指定Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+获取与指定Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1670,7 +1690,7 @@ try {
 }
 ```
 
-<a id="getresultset-3"></a>
+<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -1678,7 +1698,7 @@ try {
 getResultSet(query: Query): Promise<KVStoreResultSet>
 ```
 
-获取与指定Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+获取与指定Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1744,6 +1764,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getresultsize1"></a>
 
 ## getResultSize
 
@@ -1819,7 +1841,7 @@ try {
 }
 ```
 
-<a id="getresultsize-1"></a>
+<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -1894,6 +1916,8 @@ try {
 }
 ```
 
+<a id="getsecuritylevel1"></a>
+
 ## getSecurityLevel
 
 ```TypeScript
@@ -1941,7 +1965,7 @@ try {
 }
 ```
 
-<a id="getsecuritylevel-1"></a>
+<a id="getsecuritylevel2"></a>
 
 ## getSecurityLevel
 
@@ -1988,13 +2012,15 @@ try {
 }
 ```
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
 off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 ```
 
-取消订阅数据变更通知。必须先调用[on('dataChange')](#on)订阅后，才能调用off取消订阅。
+取消订阅数据变更通知。必须先调用[on('dataChange')](#on1)订阅后，才能调用off取消订阅。
 
 **起始版本：** 9
 
@@ -2050,7 +2076,7 @@ class KvstoreModel {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -2058,7 +2084,7 @@ class KvstoreModel {
 off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void
 ```
 
-取消订阅端端同步完成事件回调通知。必须先调用[on('syncComplete')](#on-1)订阅后，才能调用off取消订阅。
+取消订阅端端同步完成事件回调通知。必须先调用[on('syncComplete')](#on2)订阅后，才能调用off取消订阅。
 
 **起始版本：** 9
 
@@ -2113,13 +2139,15 @@ class KvstoreModel {
 }
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
 on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void
 ```
 
-订阅指定类型的数据变更通知。调用on订阅后，在不需要监听时必须调用[off('dataChange')](#off)取消订阅。
+订阅指定类型的数据变更通知。调用on订阅后，在不需要监听时必须调用[off('dataChange')](#off1)取消订阅。
 
 **起始版本：** 9
 
@@ -2158,7 +2186,7 @@ try {
 }
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -2166,7 +2194,7 @@ try {
 on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 ```
 
-订阅端端同步完成事件回调通知。调用on订阅后，在不需要监听时必须调用[off('syncComplete')](#off-1)取消订阅。
+订阅端端同步完成事件回调通知。调用on订阅后，在不需要监听时必须调用[off('syncComplete')](#off2)取消订阅。
 
 **起始版本：** 9
 
@@ -2209,6 +2237,8 @@ try {
   console.error(`Failed to subscribe syncComplete. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="put1"></a>
 
 ## put
 
@@ -2281,7 +2311,7 @@ try {
 }
 ```
 
-<a id="put-1"></a>
+<a id="put2"></a>
 
 ## put
 
@@ -2324,6 +2354,8 @@ put(key: string, value: Uint8Array | string | number | boolean): Promise<void>
 **示例**
 
 参见 [put](#put)
+
+<a id="putbatch1"></a>
 
 ## putBatch
 
@@ -2400,7 +2432,7 @@ try {
 }
 ```
 
-<a id="putbatch-1"></a>
+<a id="putbatch2"></a>
 
 ## putBatch
 
@@ -2525,6 +2557,8 @@ try {
 }
 ```
 
+<a id="removedevicedata1"></a>
+
 ## removeDeviceData
 
 ```TypeScript
@@ -2605,7 +2639,7 @@ try {
 }
 ```
 
-<a id="removedevicedata-1"></a>
+<a id="removedevicedata2"></a>
 
 ## removeDeviceData
 
@@ -2682,6 +2716,8 @@ try {
 }
 ```
 
+<a id="restore1"></a>
+
 ## restore
 
 ```TypeScript
@@ -2732,7 +2768,7 @@ try {
 }
 ```
 
-<a id="restore-1"></a>
+<a id="restore2"></a>
 
 ## restore
 
@@ -2843,13 +2879,15 @@ try {
 }
 ```
 
+<a id="rollback1"></a>
+
 ## rollback
 
 ```TypeScript
 rollback(callback: AsyncCallback<void>): void
 ```
 
-在SingleKVStore数据库中回滚事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
+在SingleKVStore数据库中回滚事务，使用callback异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **起始版本：** 9
 
@@ -2890,7 +2928,7 @@ try {
 }
 ```
 
-<a id="rollback-1"></a>
+<a id="rollback2"></a>
 
 ## rollback
 
@@ -2898,7 +2936,7 @@ try {
 rollback(): Promise<void>
 ```
 
-在SingleKVStore数据库中回滚事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
+在SingleKVStore数据库中回滚事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **起始版本：** 9
 
@@ -2936,6 +2974,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="setsyncparam1"></a>
 
 ## setSyncParam
 
@@ -2992,7 +3032,7 @@ try {
 }
 ```
 
-<a id="setsyncparam-1"></a>
+<a id="setsyncparam2"></a>
 
 ## setSyncParam
 
@@ -3052,6 +3092,8 @@ try {
 }
 ```
 
+<a id="setsyncrange1"></a>
+
 ## setSyncRange
 
 ```TypeScript
@@ -3103,7 +3145,7 @@ try {
 }
 ```
 
-<a id="setsyncrange-1"></a>
+<a id="setsyncrange2"></a>
 
 ## setSyncRange
 
@@ -3159,13 +3201,15 @@ try {
 }
 ```
 
+<a id="starttransaction1"></a>
+
 ## startTransaction
 
 ```TypeScript
 startTransaction(callback: AsyncCallback<void>): void
 ```
 
-启动SingleKVStore数据库中的事务，使用callback异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
+启动SingleKVStore数据库中的事务，使用callback异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit1)提交或[rollback](#rollback1)回滚才会结束事务。
 
 **起始版本：** 9
 
@@ -3238,7 +3282,7 @@ try {
 }
 ```
 
-<a id="starttransaction-1"></a>
+<a id="starttransaction2"></a>
 
 ## startTransaction
 
@@ -3246,7 +3290,7 @@ try {
 startTransaction(): Promise<void>
 ```
 
-启动SingleKVStore数据库中的事务，使用Promise异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
+启动SingleKVStore数据库中的事务，使用Promise异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit1)提交或[rollback](#rollback1)回滚才会结束事务。
 
 **起始版本：** 9
 
@@ -3289,13 +3333,15 @@ try {
 }
 ```
 
+<a id="sync1"></a>
+
 ## sync
 
 ```TypeScript
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 ```
 
-在手动同步方式下，触发数据库端端同步。同步结果可通过订阅[on('syncComplete')](#on-1)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
+在手动同步方式下，触发数据库端端同步。同步结果可通过订阅[on('syncComplete')](#on2)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
 
 > **说明：** 
 > 
@@ -3385,7 +3431,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="sync-1"></a>
+<a id="sync2"></a>
 
 ## sync
 
@@ -3393,7 +3439,7 @@ export default class EntryAbility extends UIAbility {
 sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 ```
 
-在手动同步方式下，触发数据库端端同步，支持按查询条件过滤同步数据。同步结果可通过订阅[on('syncComplete')](#on-1)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
+在手动同步方式下，触发数据库端端同步，支持按查询条件过滤同步数据。同步结果可通过订阅[on('syncComplete')](#on2)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
 
 > **说明：** 
 > 

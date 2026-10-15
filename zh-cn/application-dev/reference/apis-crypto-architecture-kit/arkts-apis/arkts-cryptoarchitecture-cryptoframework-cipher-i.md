@@ -4,7 +4,7 @@
 interface Cipher
 ```
 
-加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](#init-3)、[update()](#update)、[doFinal()](#dofinal-1)方法完成加解密操作。
+加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](#init4)、[update()](#update1)、[doFinal()](#dofinal2)方法完成加解密操作。
 
 <br>完整的加解密流程示例可参考[开发指南](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
@@ -28,6 +28,8 @@ interface Cipher
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
+
+<a id="dofinal1"></a>
 
 ## doFinal
 
@@ -58,7 +60,7 @@ doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -67,6 +69,8 @@ doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 **示例**
 
 更多加解密流程的完整示例请参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
+
+ArkTS示例：
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -116,6 +120,122 @@ function cipherByCallback() {
 }
 ```
 
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```TypeScript
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128Test">Aes128加解密异步测试</input>
+</div>
+```
+
+```TypeScript
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```TypeScript
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "This is a test";
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128Test() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams, function (err) {
+          if (err) {
+              console.error('Encrypt init failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          let inData = StringToUint8Array(plainText);
+          cipher.doFinal({ data: inData }, function (err, encryptOutput) {
+              if (err) {
+                  console.error('Encrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+              let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+              dec.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams, function (err) {
+                  if (err) {
+                      console.error('Decrypt init failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  dec.doFinal({ data: encryptOutput.data }, function (err, decryptOutput) {
+                      if (err) {
+                          console.error('Decrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Decrypt successfully: ' + decryptOutput.data);
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`aes128Test failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128Test() {
+        aes128Test();
+    }
+};
+```
+
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
 
 ```TypeScript
@@ -161,7 +281,7 @@ async function cipherByPromise() {
 }
 ```
 
-<a id="dofinal-1"></a>
+<a id="dofinal2"></a>
 
 ## doFinal
 
@@ -207,7 +327,7 @@ authTag为末尾的16字节；CCM模式下，authTag为末尾的12字节。其�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -216,6 +336,8 @@ authTag为末尾的16字节；CCM模式下，authTag为末尾的12字节。其�
 **示例**
 
 更多加解密流程的完整示例请参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
+
+ArkTS示例：
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -265,7 +387,123 @@ function cipherByCallback() {
 }
 ```
 
-<a id="dofinal-3"></a>
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```TypeScript
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128Test">Aes128加解密异步测试</input>
+</div>
+```
+
+```TypeScript
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```TypeScript
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "This is a test";
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128Test() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams, function (err) {
+          if (err) {
+              console.error('Encrypt init failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          let inData = StringToUint8Array(plainText);
+          cipher.doFinal({ data: inData }, function (err, encryptOutput) {
+              if (err) {
+                  console.error('Encrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+              let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+              dec.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams, function (err) {
+                  if (err) {
+                      console.error('Decrypt init failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  dec.doFinal({ data: encryptOutput.data }, function (err, decryptOutput) {
+                      if (err) {
+                          console.error('Decrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Decrypt successfully: ' + decryptOutput.data);
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`aes128Test failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128Test() {
+        aes128Test();
+    }
+};
+```
+
+<a id="dofinal4"></a>
 
 ## doFinal
 
@@ -301,7 +539,7 @@ doFinal(data: DataBlob): Promise<DataBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
@@ -311,6 +549,8 @@ doFinal(data: DataBlob): Promise<DataBlob>
 **示例**
 
 更多加解密流程的完整示例请参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
+
+ArkTS示例：
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -358,6 +598,122 @@ function cipherByCallback() {
     });
   });
 }
+```
+
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```TypeScript
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128Test">Aes128加解密异步测试</input>
+</div>
+```
+
+```TypeScript
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```TypeScript
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "This is a test";
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128Test() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams, function (err) {
+          if (err) {
+              console.error('Encrypt init failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          let inData = StringToUint8Array(plainText);
+          cipher.doFinal({ data: inData }, function (err, encryptOutput) {
+              if (err) {
+                  console.error('Encrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+              let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+              dec.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams, function (err) {
+                  if (err) {
+                      console.error('Decrypt init failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  dec.doFinal({ data: encryptOutput.data }, function (err, decryptOutput) {
+                      if (err) {
+                          console.error('Decrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Decrypt successfully: ' + decryptOutput.data);
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`aes128Test failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128Test() {
+        aes128Test();
+    }
+};
 ```
 
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
@@ -405,7 +761,7 @@ async function cipherByPromise() {
 }
 ```
 
-<a id="dofinal-4"></a>
+<a id="dofinal5"></a>
 
 ## doFinal
 
@@ -457,7 +813,7 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
@@ -527,7 +883,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 （2）在RSA和SM2非对称加解密中，使用**doFinal**方法加解密传入的数据，并使用Promise异步回调获取加密或解密结果。如果数据量较大，可以多次调用**doFinal**，拼接结果以获得完整的明文或密文。
 
-<br>关于其他注意事项，请参见[doFinal()](#dofinal-1)中的**说明：** 。
+<br>关于其他注意事项，请参见[doFinal()](#dofinal2)中的**说明：** 。
 
 <br><br>**说明：** <br>建议优先使用异步API，doFinal。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 
@@ -555,13 +911,15 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**适用版本：** 22+ |
 
 **示例**
+
+ArkTS示例：
 
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
 
@@ -608,6 +966,100 @@ async function cipherBySync() {
 }
 ```
 
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```TypeScript
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128TestSync">Aes128加解密同步测试</input>
+</div>
+```
+
+```TypeScript
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```TypeScript
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128TestSync() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      let inData = StringToUint8Array("This is a test");
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams);
+      let encryptOutput = cipher.doFinalSync({ data: inData });
+      console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+
+      let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      dec.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams);
+      let decryptOutput = dec.doFinalSync({ data: encryptOutput.data });
+      console.info('Decrypt successfully: ' + decryptOutput.data);
+  } catch (error) {
+      console.error(`aes128TestSync failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128TestSync() {
+        aes128TestSync();
+    }
+};
+```
+
 ## getCipherSpec
 
 ```TypeScript
@@ -618,7 +1070,7 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Cipher-getCipherSpec(itemType: CipherSpecItem): string | Uint8Array--><!--Device-Cipher-getCipherSpec(itemType: CipherSpecItem): string | Uint8Array-End-->
 
@@ -642,7 +1094,7 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -659,6 +1111,8 @@ function testGetCipherSpec() {
   console.info('getCipherSpec: mdName =' + mdName);
 }
 ```
+
+<a id="init1"></a>
 
 ## init
 
@@ -693,13 +1147,13 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec, callback: AsyncCallback<v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**适用版本：** 22+ |
 
-<a id="init-1"></a>
+<a id="init2"></a>
 
 ## init
 
@@ -713,7 +1167,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Cipher-init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback<void>): void--><!--Device-Cipher-init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback<void>): void-End-->
 
@@ -734,13 +1188,13 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**适用版本：** 22+ |
 
-<a id="init-2"></a>
+<a id="init3"></a>
 
 ## init
 
@@ -780,14 +1234,14 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**适用版本：** 22+ |
 
-<a id="init-3"></a>
+<a id="init4"></a>
 
 ## init
 
@@ -801,7 +1255,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Cipher-init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise<void>--><!--Device-Cipher-init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise<void>-End-->
 
@@ -827,7 +1281,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -847,7 +1301,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Cipher-initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void--><!--Device-Cipher-initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void-End-->
 
@@ -865,7 +1319,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -881,7 +1335,7 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Cipher-setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void--><!--Device-Cipher-setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void-End-->
 
@@ -900,7 +1354,7 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -918,6 +1372,8 @@ function testSetCipherSpec() {
 }
 ```
 
+<a id="update1"></a>
+
 ## update
 
 ```TypeScript
@@ -926,7 +1382,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 更新要分段加密或解密的数据。使用Callback异步回调。
 
-<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](#init-3)初始化后，才能使用本函数。
+<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](#init4)初始化后，才能使用本函数。
 
 > **说明：** 
 > 
@@ -962,13 +1418,13 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**适用版本：** 22+ |
 
-<a id="update-2"></a>
+<a id="update3"></a>
 
 ## update
 
@@ -978,7 +1434,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 分段更新加密或者解密数据操作。使用Promise异步回调。
 
-<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](#init-3)初始化后，才能使用本函数。
+<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](#init4)初始化后，才能使用本函数。
 
 > **说明：** 
 > 
@@ -1019,7 +1475,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
@@ -1064,7 +1520,7 @@ updateSync(data: DataBlob): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -1082,7 +1538,7 @@ readonly algName: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Cipher-readonly algName: string--><!--Device-Cipher-readonly algName: string-End-->
 

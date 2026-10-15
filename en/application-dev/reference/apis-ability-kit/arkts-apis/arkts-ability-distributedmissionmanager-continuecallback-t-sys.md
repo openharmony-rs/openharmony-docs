@@ -8,6 +8,8 @@ ContinueCallback registered for notify continue result.
 
 @typedef { _ContinueCallback }
 
+**Type:** _ContinueCallback
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ ContinueCallback registered for notify continue result.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
-
-**Type:** _ContinueCallback

@@ -54,7 +54,7 @@ Indicates the content of text
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PlainText-get textContent(): string--><!--Device-PlainText-get textContent(): string-End-->
 
@@ -72,7 +72,7 @@ Indicates the content of text
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PlainText-set textContent(value: string)--><!--Device-PlainText-set textContent(value: string)-End-->
 

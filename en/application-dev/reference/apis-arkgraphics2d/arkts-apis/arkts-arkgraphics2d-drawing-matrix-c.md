@@ -4,7 +4,7 @@
 class Matrix
 ```
 
-Implements a matrix. A 3 x 3 matrix is shown as below.![matrix_3x3](../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG) Elements in the matrix from left to right and from top to bottom respectively represent a horizontal scale coefficient, a horizontal skew coefficient, a horizontal translation coefficient, a vertical skew coefficient, a vertical scale coefficient, a vertical translation coefficient, an X-axis perspective coefficient, a Y-axis perspective coefficient, and a perspective scale coefficient. If (x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;) is the source coordinate point, (x&lt;sub&gt;2&lt;/sub&gt;, y&lt;sub&gt;2&lt;/sub&gt;) is the coordinate point obtained by transforming the source coordinate point using the matrix, then the relationship between the two coordinate points is as follows:![matrix_xy](../../../reference/apis-arkgraphics2d/figures/matrix_xy.PNG)
+Implements a matrix. A 3 x 3 matrix is shown as below.![matrix_3x3](../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG) Elements in the matrix from left to right and from top to bottom respectively represent a horizontal scale coefficient, a horizontal skew coefficient, a horizontal translation coefficient, a vertical skew coefficient, a vertical scale coefficient, a vertical translation coefficient, an X-axis perspective coefficient, a Y-axis perspective coefficient, and a perspective scale coefficient. If (x<sub>1</sub>, y<sub>1</sub>) is the source coordinate point, (x<sub>2</sub>, y<sub>2</sub>) is the coordinate point obtained by transforming the source coordinate point using the matrix, then the relationship between the two coordinate points is as follows:![matrix_xy](../../../reference/apis-arkgraphics2d/figures/matrix_xy.PNG)
 
 > **NOTE:** 
 > 
@@ -25,6 +25,8 @@ Implements a matrix. A 3 x 3 matrix is shown as below.![matrix_3x3](../../../ref
 ```TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
 ```
+
+<a id="constructor1"></a>
 
 ## constructor
 
@@ -48,7 +50,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let matrix = new drawing.Matrix();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -918,6 +920,8 @@ matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
 matrix1.setConcat(matrix2, matrix1);
 ```
 
+<a id="setmatrix1"></a>
+
 ## setMatrix
 
 ```TypeScript
@@ -954,7 +958,7 @@ let value : Array<number> = [2, 2, 2, 2, 2, 2, 2, 2, 2];
 matrix.setMatrix(value);
 ```
 
-<a id="setmatrix-1"></a>
+<a id="setmatrix2"></a>
 
 ## setMatrix
 

@@ -14,17 +14,17 @@ Enumerates SMS encoding schemes.
 
 **System API:** This is a system API.
 
-## SMS_ENCODING_UNKNOWN
+## SMS_ENCODING_16BIT
 
 ```TypeScript
-SMS_ENCODING_UNKNOWN = 0
+SMS_ENCODING_16BIT = 3
 ```
 
-Unknown code.
+16-digit code.
 
 **Since:** 8
 
-<!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0--><!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0-End-->
+<!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3--><!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -62,17 +62,17 @@ SMS_ENCODING_8BIT = 2
 
 **System API:** This is a system API.
 
-## SMS_ENCODING_16BIT
+## SMS_ENCODING_UNKNOWN
 
 ```TypeScript
-SMS_ENCODING_16BIT = 3
+SMS_ENCODING_UNKNOWN = 0
 ```
 
-16-digit code.
+Unknown code.
 
 **Since:** 8
 
-<!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3--><!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3-End-->
+<!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0--><!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

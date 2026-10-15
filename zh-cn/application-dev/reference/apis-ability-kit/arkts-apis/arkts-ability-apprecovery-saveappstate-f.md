@@ -6,6 +6,8 @@
 import { appRecovery } from '@kit.AbilityKit';
 ```
 
+<a id="saveappstate1"></a>
+
 ## saveAppState
 
 ```TypeScript
@@ -51,7 +53,7 @@ try {
 ```
 
 
-<a id="saveappstate-1"></a>
+<a id="saveappstate2"></a>
 
 ## saveAppState
 
@@ -65,7 +67,7 @@ function saveAppState(context?: UIAbilityContext): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean--><!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean-End-->
 

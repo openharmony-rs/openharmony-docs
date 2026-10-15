@@ -44,7 +44,7 @@ function startPassiveRanging(capabilityType: RangingTypes): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, 2147483647)。该句柄用于：1. 在[stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md)中指定要停止的被动测距会话。 2. 在[onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md)回调的[stateInfo.handle](arkts-connectivity-ranging-rangingstatechangeinfo-i.md)中标识对应的被动测距 会话。 |
+| Promise&lt;number&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, 2147483647)。该句柄用于：1. 在[stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md)中指定要停止的被动测距会话。         2. 在onRangingStateChange回调的[stateInfo.handle](arkts-connectivity-ranging-rangingstatechangeinfo-i.md)中标识对应的被动测距 会话。 |
 
 **错误码：**
 

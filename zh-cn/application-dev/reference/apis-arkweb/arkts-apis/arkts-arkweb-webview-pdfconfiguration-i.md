@@ -4,7 +4,7 @@
 interface PdfConfiguration
 ```
 
-[createPdf](arkts-arkweb-webview-webviewcontroller-c.md#createpdf)函数输入参数。
+[createPdf](arkts-arkweb-webview-webviewcontroller-c.md#createpdf1)函数输入参数。
 
 > **说明：** 
 > 

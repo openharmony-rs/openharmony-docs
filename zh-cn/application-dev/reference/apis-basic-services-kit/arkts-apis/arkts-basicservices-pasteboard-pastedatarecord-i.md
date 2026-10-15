@@ -36,14 +36,14 @@ addEntry(type: string, value: ValueType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 剪贴板数据对应的MIME类型，可以是常量中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
+| type | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
 | value | [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | 是 | 自定义数据内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -88,7 +88,7 @@ getData(type: string): Promise<ValueType>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -143,7 +143,7 @@ getValidTypes(types: Array<string>): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -171,7 +171,7 @@ toPlainText(): string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-toPlainText(): string--><!--Device-PasteDataRecord-toPlainText(): string-End-->
 
@@ -190,6 +190,8 @@ let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIME
 let text: string = record.toPlainText();
 console.info(`Succeeded in converting to text. Text: ${text}`);
 ```
+
+<a id="converttotext1"></a>
 
 ## convertToText
 
@@ -236,7 +238,7 @@ record.convertToText((err: BusinessError, data: string) => {
 });
 ```
 
-<a id="converttotext-1"></a>
+<a id="converttotext2"></a>
 
 ## convertToText
 
@@ -287,7 +289,7 @@ data: Record<string, ArrayBuffer>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-data: Record<string, ArrayBuffer>--><!--Device-PasteDataRecord-data: Record<string, ArrayBuffer>-End-->
 
@@ -305,7 +307,7 @@ HTML内容，需符合标准HTML格式。对此属性的修改无效，如需刷
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-htmlText: string--><!--Device-PasteDataRecord-htmlText: string-End-->
 
@@ -323,7 +325,7 @@ mimeType: string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-mimeType: string--><!--Device-PasteDataRecord-mimeType: string-End-->
 
@@ -341,7 +343,7 @@ PixelMap内容。对此属性的修改无效，如需刷新属性值，请使用
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-pixelMap: image.PixelMap--><!--Device-PasteDataRecord-pixelMap: image.PixelMap-End-->
 
@@ -359,7 +361,7 @@ plainText: string
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-plainText: string--><!--Device-PasteDataRecord-plainText: string-End-->
 
@@ -377,7 +379,7 @@ URI内容，需符合标准URI格式。对此属性的修改无效，如需刷�
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-uri: string--><!--Device-PasteDataRecord-uri: string-End-->
 
@@ -395,7 +397,7 @@ Want内容。对此属性的修改无效，如需刷新属性值，请使用[add
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PasteDataRecord-want: Want--><!--Device-PasteDataRecord-want: Want-End-->
 

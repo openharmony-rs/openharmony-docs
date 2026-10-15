@@ -327,7 +327,7 @@ struct Index {
 
 This example shows how to stretch the ImageSpan image in different directions using the slice option of the [resizable](#resizable) attribute.
 
-Since API version 26.1.0, the resizable attribute is added.
+Since API version 26.0.1, the resizable attribute is added.
 
 ```TypeScript
 @Entry

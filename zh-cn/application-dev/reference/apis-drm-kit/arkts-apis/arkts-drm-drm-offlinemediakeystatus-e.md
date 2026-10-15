@@ -12,6 +12,22 @@ enum OfflineMediaKeyStatus
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
+## OFFLINE_MEDIA_KEY_STATUS_INACTIVE
+
+```TypeScript
+OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2
+```
+
+失活状态。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2--><!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
 ## OFFLINE_MEDIA_KEY_STATUS_UNKNOWN
 
 ```TypeScript
@@ -22,7 +38,7 @@ OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0--><!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0-End-->
 
@@ -38,24 +54,8 @@ OFFLINE_MEDIA_KEY_STATUS_USABLE = 1
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_USABLE = 1--><!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_USABLE = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Drm.Core
-
-## OFFLINE_MEDIA_KEY_STATUS_INACTIVE
-
-```TypeScript
-OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2
-```
-
-失活状态。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2--><!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core

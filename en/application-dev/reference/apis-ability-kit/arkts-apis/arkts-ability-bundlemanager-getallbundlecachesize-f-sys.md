@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAllBundleCacheSize(): Promise<number>
 ```
 
-Obtains the global cache size. This API uses a promise to return the result.
+Obtains the size of the global cache, in bytes. This API uses a promise to return the result.
 
 It is not possible to obtain the cache of applications that are currently running or have been granted the "AllowAppDataNotCleared" privilege as specified in the[application configuration guide](../../../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
 
@@ -39,6 +39,7 @@ It is not possible to obtain the cache of applications that are currently runnin
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllBundleCacheSize failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

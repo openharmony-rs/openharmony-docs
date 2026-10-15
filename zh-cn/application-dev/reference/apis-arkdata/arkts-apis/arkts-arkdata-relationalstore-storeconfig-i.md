@@ -48,7 +48,7 @@ autoCleanDirtyData?: boolean
 
 指定是否自动清理云端删除后同步到本地的数据，true表示自动清理，false表示手动清理，默认自动清理。
 
-对于端云协同的数据库，当云端删除的数据同步到设备端时，可通过该参数设置设备端是否自动清理。手动清理可以通过[cleanDirtyData&lt;sup&gt;11+&lt;/sup&gt;](arkts-arkdata-relationalstore-rdbstore-i.md#cleandirtydata)接口清理。
+对于端云协同的数据库，当云端删除的数据同步到设备端时，可通过该参数设置设备端是否自动清理。手动清理可以通过[cleanDirtyData<sup>11+</sup>](arkts-arkdata-relationalstore-rdbstore-i.md#cleandirtydata)接口清理。
 
 从API version 11开始，支持此可选参数。
 

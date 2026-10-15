@@ -27,6 +27,8 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
+<a id="back1"></a>
+
 ## back
 
 ```TypeScript
@@ -62,7 +64,7 @@ let router: Router = uiContext.getRouter();
 router.back({url:'pages/detail'});
 ```
 
-<a id="back-1"></a>
+<a id="back2"></a>
 
 ## back
 
@@ -391,6 +393,8 @@ let router: Router = uiContext.getRouter();
 router.hideAlertBeforeBackPage();
 ```
 
+<a id="pushnamedroute1"></a>
+
 ## pushNamedRoute
 
 ```TypeScript
@@ -472,7 +476,7 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute-1"></a>
+<a id="pushnamedroute2"></a>
 
 ## pushNamedRoute
 
@@ -559,7 +563,7 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute-2"></a>
+<a id="pushnamedroute3"></a>
 
 ## pushNamedRoute
 
@@ -567,7 +571,7 @@ struct Index {
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Navigates to a page using the named route. This API uses an asynchronous callback to return the result. Compared with [pushNamedRoute](#pushnamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a page using the named route. This API uses an asynchronous callback to return the result. Compared with [pushNamedRoute](#pushnamedroute1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -650,7 +654,7 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute-3"></a>
+<a id="pushnamedroute4"></a>
 
 ## pushNamedRoute
 
@@ -658,7 +662,7 @@ struct Index {
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Navigates to a page using the named route. This API uses a promise to return the result. Compared with [pushNamedRoute](#pushnamedroute-1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a page using the named route. This API uses a promise to return the result. Compared with [pushNamedRoute](#pushnamedroute2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -743,6 +747,8 @@ struct Index {
 }
 ```
 
+<a id="pushurl1"></a>
+
 ## pushUrl
 
 ```TypeScript
@@ -825,7 +831,7 @@ struct Index {
 }
 ```
 
-<a id="pushurl-1"></a>
+<a id="pushurl2"></a>
 
 ## pushUrl
 
@@ -976,7 +982,7 @@ struct Second {
 }
 ```
 
-<a id="pushurl-2"></a>
+<a id="pushurl3"></a>
 
 ## pushUrl
 
@@ -984,7 +990,7 @@ struct Second {
 pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Navigates to a specified page in the application. This API uses an asynchronous callback to return the result. Compared with [pushUrl](#pushurl), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a specified page in the application. This API uses an asynchronous callback to return the result. Compared with [pushUrl](#pushurl1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1067,7 +1073,7 @@ struct Index {
 }
 ```
 
-<a id="pushurl-3"></a>
+<a id="pushurl4"></a>
 
 ## pushUrl
 
@@ -1075,7 +1081,7 @@ struct Index {
 pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Navigates to a specified page in the application. This API uses a promise to return the result. Compared with [pushUrl](#pushurl-1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a specified page in the application. This API uses a promise to return the result. Compared with [pushUrl](#pushurl2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1162,6 +1168,8 @@ struct Index {
 }
 ```
 
+<a id="replacenamedroute1"></a>
+
 ## replaceNamedRoute
 
 ```TypeScript
@@ -1239,7 +1247,7 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute-1"></a>
+<a id="replacenamedroute2"></a>
 
 ## replaceNamedRoute
 
@@ -1322,7 +1330,7 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute-2"></a>
+<a id="replacenamedroute3"></a>
 
 ## replaceNamedRoute
 
@@ -1330,7 +1338,7 @@ struct Index {
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1409,7 +1417,7 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute-3"></a>
+<a id="replacenamedroute4"></a>
 
 ## replaceNamedRoute
 
@@ -1417,7 +1425,7 @@ struct Index {
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute-1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1499,6 +1507,8 @@ struct Index {
 }
 ```
 
+<a id="replaceurl1"></a>
+
 ## replaceUrl
 
 ```TypeScript
@@ -1576,7 +1586,7 @@ struct Index {
 }
 ```
 
-<a id="replaceurl-1"></a>
+<a id="replaceurl2"></a>
 
 ## replaceUrl
 
@@ -1659,7 +1669,7 @@ struct Index {
 }
 ```
 
-<a id="replaceurl-2"></a>
+<a id="replaceurl3"></a>
 
 ## replaceUrl
 
@@ -1667,7 +1677,7 @@ struct Index {
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1746,7 +1756,7 @@ struct Index {
 }
 ```
 
-<a id="replaceurl-3"></a>
+<a id="replaceurl4"></a>
 
 ## replaceUrl
 
@@ -1754,7 +1764,7 @@ struct Index {
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl-1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 

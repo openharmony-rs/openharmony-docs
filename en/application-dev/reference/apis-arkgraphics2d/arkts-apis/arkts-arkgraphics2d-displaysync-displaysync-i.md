@@ -28,7 +28,7 @@ Unsubscribes from change events of each frame.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-DisplaySync-off(type: 'frame', callback?: Callback<IntervalInfo>): void--><!--Device-DisplaySync-off(type: 'frame', callback?: Callback<IntervalInfo>): void-End-->
 
@@ -66,7 +66,7 @@ Subscribes to change events of each frame.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-DisplaySync-on(type: 'frame', callback: Callback<IntervalInfo>): void--><!--Device-DisplaySync-on(type: 'frame', callback: Callback<IntervalInfo>): void-End-->
 
@@ -104,7 +104,7 @@ Sets the expected frame rate range.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-DisplaySync-setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void--><!--Device-DisplaySync-setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void-End-->
 
@@ -149,7 +149,7 @@ Starts callback for each frame.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-DisplaySync-start(): void--><!--Device-DisplaySync-start(): void-End-->
 
@@ -219,7 +219,7 @@ Stops callback for each frame.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-DisplaySync-stop(): void--><!--Device-DisplaySync-stop(): void-End-->
 

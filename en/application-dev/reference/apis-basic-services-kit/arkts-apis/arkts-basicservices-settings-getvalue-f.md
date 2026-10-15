@@ -6,6 +6,8 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
+<a id="getvalue1"></a>
+
 ## getValue
 
 ```TypeScript
@@ -18,7 +20,7 @@ Obtains the value of a specified character string in the database.
 
 **Deprecated since:** 9
 
-**Substitutes:** getValue
+**Substitutes:** [getValue](arkts-basicservices-settings-getvalue-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -30,7 +32,7 @@ Obtains the value of a specified character string in the database.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-dataabilityhelper-i.md) | Yes | Indicates the [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-dataabilityhelper-i.md) used to access the database. |
+| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-i.md) | Yes | Indicates the [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-i.md) used to access the database. |
 | name | string | Yes | Indicates the name of the character string. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;object&gt; | Yes | The callback of getValue result. |
 
@@ -51,7 +53,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 ```
 
 
-<a id="getvalue-1"></a>
+<a id="getvalue2"></a>
 
 ## getValue
 
@@ -65,7 +67,7 @@ Obtains the value of a specified character string in the database.
 
 **Deprecated since:** 9
 
-**Substitutes:** getValue
+**Substitutes:** [getValue](arkts-basicservices-settings-getvalue-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -77,7 +79,7 @@ Obtains the value of a specified character string in the database.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-dataabilityhelper-i.md) | Yes | Indicates the [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-dataabilityhelper-i.md) used to access the database. |
+| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-i.md) | Yes | Indicates the [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-i.md) used to access the database. |
 | name | string | Yes | Indicates the name of the character string. |
 
 **Return value:**
@@ -99,7 +101,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value
 ```
 
 
-<a id="getvalue-2"></a>
+<a id="getvalue3"></a>
 
 ## getValue
 
@@ -143,7 +145,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 ```
 
 
-<a id="getvalue-3"></a>
+<a id="getvalue4"></a>
 
 ## getValue
 
@@ -188,7 +190,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS).then((valu
 ```
 
 
-<a id="getvalue-4"></a>
+<a id="getvalue5"></a>
 
 ## getValue
 

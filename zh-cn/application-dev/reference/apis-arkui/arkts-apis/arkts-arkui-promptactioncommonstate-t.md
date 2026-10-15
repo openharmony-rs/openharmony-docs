@@ -6,6 +6,8 @@ declare type PromptActionCommonState = import('../api/@ohos.promptAction').promp
 
 自定义弹窗的状态。
 
+**类型：** import('../api/@ohos.promptAction').promptAction.CommonState
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type PromptActionCommonState = import('../api/@ohos.promptAction').promp
 <!--Device-unnamed-declare type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState--><!--Device-unnamed-declare type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.promptAction').promptAction.CommonState

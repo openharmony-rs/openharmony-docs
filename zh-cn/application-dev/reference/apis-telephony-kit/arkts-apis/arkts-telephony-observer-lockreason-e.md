@@ -26,6 +26,34 @@ SIM_NONE = 0
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
 
+## SIM_PC_PIN
+
+```TypeScript
+SIM_PC_PIN = 9
+```
+
+组织PIN锁。
+
+**起始版本：** 8
+
+<!--Device-LockReason-SIM_PC_PIN = 9--><!--Device-LockReason-SIM_PC_PIN = 9-End-->
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
+## SIM_PC_PUK
+
+```TypeScript
+SIM_PC_PUK = 10
+```
+
+组织PUK锁。
+
+**起始版本：** 8
+
+<!--Device-LockReason-SIM_PC_PUK = 10--><!--Device-LockReason-SIM_PC_PUK = 10-End-->
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
 ## SIM_PIN
 
 ```TypeScript
@@ -37,20 +65,6 @@ PIN锁。
 **起始版本：** 8
 
 <!--Device-LockReason-SIM_PIN = 1--><!--Device-LockReason-SIM_PIN = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.StateRegistry
-
-## SIM_PUK
-
-```TypeScript
-SIM_PUK = 2
-```
-
-PUK锁。
-
-**起始版本：** 8
-
-<!--Device-LockReason-SIM_PUK = 2--><!--Device-LockReason-SIM_PUK = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
 
@@ -82,34 +96,6 @@ SIM_PN_PUK = 4
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
 
-## SIM_PU_PIN
-
-```TypeScript
-SIM_PU_PIN = 5
-```
-
-子网PIN锁。
-
-**起始版本：** 8
-
-<!--Device-LockReason-SIM_PU_PIN = 5--><!--Device-LockReason-SIM_PU_PIN = 5-End-->
-
-**系统能力：** SystemCapability.Telephony.StateRegistry
-
-## SIM_PU_PUK
-
-```TypeScript
-SIM_PU_PUK = 6
-```
-
-子网PUK锁。
-
-**起始版本：** 8
-
-<!--Device-LockReason-SIM_PU_PUK = 6--><!--Device-LockReason-SIM_PU_PUK = 6-End-->
-
-**系统能力：** SystemCapability.Telephony.StateRegistry
-
 ## SIM_PP_PIN
 
 ```TypeScript
@@ -138,31 +124,45 @@ SIM_PP_PUK = 8
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
 
-## SIM_PC_PIN
+## SIM_PU_PIN
 
 ```TypeScript
-SIM_PC_PIN = 9
+SIM_PU_PIN = 5
 ```
 
-组织PIN锁。
+子网PIN锁。
 
 **起始版本：** 8
 
-<!--Device-LockReason-SIM_PC_PIN = 9--><!--Device-LockReason-SIM_PC_PIN = 9-End-->
+<!--Device-LockReason-SIM_PU_PIN = 5--><!--Device-LockReason-SIM_PU_PIN = 5-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
 
-## SIM_PC_PUK
+## SIM_PU_PUK
 
 ```TypeScript
-SIM_PC_PUK = 10
+SIM_PU_PUK = 6
 ```
 
-组织PUK锁。
+子网PUK锁。
 
 **起始版本：** 8
 
-<!--Device-LockReason-SIM_PC_PUK = 10--><!--Device-LockReason-SIM_PC_PUK = 10-End-->
+<!--Device-LockReason-SIM_PU_PUK = 6--><!--Device-LockReason-SIM_PU_PUK = 6-End-->
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
+## SIM_PUK
+
+```TypeScript
+SIM_PUK = 2
+```
+
+PUK锁。
+
+**起始版本：** 8
+
+<!--Device-LockReason-SIM_PUK = 2--><!--Device-LockReason-SIM_PUK = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
 

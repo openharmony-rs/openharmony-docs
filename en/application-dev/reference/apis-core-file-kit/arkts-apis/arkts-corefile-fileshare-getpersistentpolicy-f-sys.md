@@ -49,6 +49,7 @@ Get all persistence permissions for the application.
 | 13900011 | Out of memory |
 | 13900020 | Invalid tokenID |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -70,3 +71,5 @@ async function getPersistentPolicyExample() {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -14,22 +14,6 @@ Enumerates description file formats.
 
 **System API:** This is a system API.
 
-## STANDARD
-
-```TypeScript
-STANDARD = 0
-```
-
-Standard format. This format is applicable to scenarios where complete description is required.
-
-**Since:** 9
-
-<!--Device-DescriptionFormat-STANDARD = 0--><!--Device-DescriptionFormat-STANDARD = 0-End-->
-
-**System capability:** SystemCapability.Update.UpdateService
-
-**System API:** This is a system API.
-
 ## SIMPLIFIED
 
 ```TypeScript
@@ -41,6 +25,22 @@ Simple format. This format is applicable to scenarios where only simplified desc
 **Since:** 9
 
 <!--Device-DescriptionFormat-SIMPLIFIED = 1--><!--Device-DescriptionFormat-SIMPLIFIED = 1-End-->
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**System API:** This is a system API.
+
+## STANDARD
+
+```TypeScript
+STANDARD = 0
+```
+
+Standard format. This format is applicable to scenarios where complete description is required.
+
+**Since:** 9
+
+<!--Device-DescriptionFormat-STANDARD = 0--><!--Device-DescriptionFormat-STANDARD = 0-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

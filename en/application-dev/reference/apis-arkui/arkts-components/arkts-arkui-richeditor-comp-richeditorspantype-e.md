@@ -12,21 +12,39 @@ Enumerates span types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TEXT
+## BUILDER
 
 ```TypeScript
-TEXT = 0
+BUILDER = 3
 ```
 
-Text span.
+Span of the custom layout type.
 
-**Since:** 10
+**Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-RichEditorSpanType-TEXT = 0--><!--Device-RichEditorSpanType-TEXT = 0-End-->
+<!--Device-RichEditorSpanType-BUILDER = 3--><!--Device-RichEditorSpanType-BUILDER = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DEFAULT
+
+```TypeScript
+DEFAULT = 4
+```
+
+When a menu of this type is registered but no TEXT, IMAGE, MIXED, or BUILDER menu is registered, the text type, image type, mixed text-image type, and custom layout type all trigger and display the menu corresponding to this type.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-RichEditorSpanType-DEFAULT = 4--><!--Device-RichEditorSpanType-DEFAULT = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,38 +84,20 @@ Mixed text and image span.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BUILDER
+## TEXT
 
 ```TypeScript
-BUILDER = 3
+TEXT = 0
 ```
 
-Span of the custom layout type.
+Text span.
 
-**Since:** 12
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-RichEditorSpanType-BUILDER = 3--><!--Device-RichEditorSpanType-BUILDER = 3-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 4
-```
-
-When a menu of this type is registered but no TEXT, IMAGE, MIXED, or BUILDER menu is registered, the text type, image type, mixed text-image type, and custom layout type all trigger and display the menu corresponding to this type.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-RichEditorSpanType-DEFAULT = 4--><!--Device-RichEditorSpanType-DEFAULT = 4-End-->
+<!--Device-RichEditorSpanType-TEXT = 0--><!--Device-RichEditorSpanType-TEXT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

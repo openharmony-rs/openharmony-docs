@@ -12,6 +12,20 @@ enum JoinStyle
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+## BEVEL_JOIN
+
+```TypeScript
+BEVEL_JOIN = 2
+```
+
+转角类型为平头。
+
+**起始版本：** 12
+
+<!--Device-JoinStyle-BEVEL_JOIN = 2--><!--Device-JoinStyle-BEVEL_JOIN = 2-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
 ## MITER_JOIN
 
 ```TypeScript
@@ -37,19 +51,5 @@ ROUND_JOIN = 1
 **起始版本：** 12
 
 <!--Device-JoinStyle-ROUND_JOIN = 1--><!--Device-JoinStyle-ROUND_JOIN = 1-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## BEVEL_JOIN
-
-```TypeScript
-BEVEL_JOIN = 2
-```
-
-转角类型为平头。
-
-**起始版本：** 12
-
-<!--Device-JoinStyle-BEVEL_JOIN = 2--><!--Device-JoinStyle-BEVEL_JOIN = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

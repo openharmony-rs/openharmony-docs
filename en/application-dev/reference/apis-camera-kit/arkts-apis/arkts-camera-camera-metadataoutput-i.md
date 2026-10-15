@@ -30,7 +30,7 @@ Adds the types of metadata objects to be detected.
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-MetadataOutput-addMetadataObjectTypes(types: Array<MetadataObjectType>): void--><!--Device-MetadataOutput-addMetadataObjectTypes(types: Array<MetadataObjectType>): void-End-->
 
@@ -79,7 +79,7 @@ Checks whether the device supports the function of locking a metadata object (su
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MetadataOutput-isLockMetadataObjectTrackingSupported(): boolean--><!--Device-MetadataOutput-isLockMetadataObjectTrackingSupported(): boolean-End-->
 
@@ -118,7 +118,7 @@ Locks a metadata object (such as a cat or dog face) for tracking.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MetadataOutput-lockMetadataObjectTracking(point: Point): void--><!--Device-MetadataOutput-lockMetadataObjectTracking(point: Point): void-End-->
 
@@ -310,7 +310,7 @@ Removes the types of metadata objects to be detected.
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-MetadataOutput-removeMetadataObjectTypes(types: Array<MetadataObjectType>): void--><!--Device-MetadataOutput-removeMetadataObjectTypes(types: Array<MetadataObjectType>): void-End-->
 
@@ -347,6 +347,8 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 }
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -357,7 +359,7 @@ Starts to output metadata. This API uses an asynchronous callback to return the 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-MetadataOutput-start(callback: AsyncCallback<void>): void--><!--Device-MetadataOutput-start(callback: AsyncCallback<void>): void-End-->
 
@@ -392,7 +394,7 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -404,7 +406,7 @@ Starts to output metadata. This API uses a promise to return the result.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-MetadataOutput-start(): Promise<void>--><!--Device-MetadataOutput-start(): Promise<void>-End-->
 
@@ -437,6 +439,8 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -447,7 +451,7 @@ Stops outputting metadata. This API uses an asynchronous callback to return the 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-MetadataOutput-stop(callback: AsyncCallback<void>): void--><!--Device-MetadataOutput-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -475,7 +479,7 @@ function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -487,7 +491,7 @@ Stops outputting metadata. This API uses a promise to return the result.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-MetadataOutput-stop(): Promise<void>--><!--Device-MetadataOutput-stop(): Promise<void>-End-->
 
@@ -525,7 +529,7 @@ Unlocks the metadata object (such as a cat or dog face) for tracking.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-MetadataOutput-unlockMetadataObjectTracking(): void--><!--Device-MetadataOutput-unlockMetadataObjectTracking(): void-End-->
 

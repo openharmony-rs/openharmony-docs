@@ -8,9 +8,9 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear''click' | 'long
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-accessibility-type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |  'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |  'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |  'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |   'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate' | 'focusInvisible'--><!--Device-accessibility-type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |  'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |  'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |  'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |   'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate' | 'focusInvisible'-End-->
 
@@ -29,11 +29,11 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear''click' | 'long
 | 'textUpdate' | 表示组件文本已更改的事件。 |
 | 'textSelectionUpdate' | 表示选定文本已更改的事件，当前版本暂不支持。 |
 | 'scroll' | 表示滚动视图的事件。 |
-| 'requestFocusForAccessibility' | 表示主动聚焦的事件。 [since 12] |
-| 'announceForAccessibility' | 表示主动播报的事件。 [since 12] |
-| 'requestFocusForAccessibilityNotInterrupt' | 表示主动聚焦不打断的事件。 [since 18] |
-| 'announceForAccessibilityNotInterrupt' | 表示主动播报不打断的事件。 [since 18] |
-| 'scrolling' | 表示滚动视图中有item被滚出屏幕的事件。 [since 18] |
-| 'pageActive' | 表示页面变化的事件，值固定为'pageActive'字符串。 [since 23] |
-| 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。 [since 26.0.0] |
-| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。 [since 26.0.0] |
+| 'requestFocusForAccessibility' | 表示主动聚焦的事件。<br>**起始版本：** 12 |
+| 'announceForAccessibility' | 表示主动播报的事件。<br>**起始版本：** 12 |
+| 'requestFocusForAccessibilityNotInterrupt' | 表示主动聚焦不打断的事件。<br>**起始版本：** 18 |
+| 'announceForAccessibilityNotInterrupt' | 表示主动播报不打断的事件。<br>**起始版本：** 18 |
+| 'scrolling' | 表示滚动视图中有item被滚出屏幕的事件。<br>**起始版本：** 18 |
+| 'pageActive' | 表示页面变化的事件，值固定为'pageActive'字符串。<br>**起始版本：** 23 |
+| 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**起始版本：** 26.0.0 |
+| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<br>**起始版本：** 26.0.0 |

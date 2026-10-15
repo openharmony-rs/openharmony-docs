@@ -58,7 +58,7 @@ declare function write(
 | 13900042 | Unknown error |
 
 
-<a id="write-1"></a>
+<a id="write2"></a>
 
 ## write
 
@@ -102,7 +102,7 @@ declare function write(fd: number, buffer: ArrayBuffer | string, callback: Async
 | 13900042 | Unknown error |
 
 
-<a id="write-2"></a>
+<a id="write3"></a>
 
 ## write
 

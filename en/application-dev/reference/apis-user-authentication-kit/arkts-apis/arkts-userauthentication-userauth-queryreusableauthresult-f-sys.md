@@ -46,6 +46,7 @@ Queries whether there is any reusable identity authentication result. This API i
 | [12500008](../errorcode-useriam.md#12500008-parameter-verification-failed) | The parameter is out of range. |
 | [12500017](../errorcode-useriam.md#12500017-authentication-result-reuse-failed) | Failed to reuse authentication result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -74,3 +75,5 @@ try {
   console.error(`query reuse auth result failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

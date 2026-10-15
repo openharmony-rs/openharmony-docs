@@ -12,46 +12,6 @@ Sets the animation playback mode.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Normal
-
-```TypeScript
-Normal
-```
-
-The animation is played forwards.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-PlayMode-Normal--><!--Device-PlayMode-Normal-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Reverse
-
-```TypeScript
-Reverse
-```
-
-The animation is played backwards.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-PlayMode-Reverse--><!--Device-PlayMode-Reverse-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Alternate
 
 ```TypeScript
@@ -89,5 +49,45 @@ The animation is played backwards for an odd number of times (1, 3, 5...) and fo
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-PlayMode-AlternateReverse--><!--Device-PlayMode-AlternateReverse-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Normal
+
+```TypeScript
+Normal
+```
+
+The animation is played forwards.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PlayMode-Normal--><!--Device-PlayMode-Normal-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Reverse
+
+```TypeScript
+Reverse
+```
+
+The animation is played backwards.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PlayMode-Reverse--><!--Device-PlayMode-Reverse-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

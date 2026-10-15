@@ -19,17 +19,17 @@ export enum ImmersiveMode
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## NONE_IMMERSIVE
+## DARK_IMMERSIVE
 
 ```TypeScript
-NONE_IMMERSIVE = 0
+DARK_IMMERSIVE
 ```
 
-不使用沉浸模式。
+深色沉浸模式。
 
 **起始版本：** 15
 
-<!--Device-ImmersiveMode-NONE_IMMERSIVE = 0--><!--Device-ImmersiveMode-NONE_IMMERSIVE = 0-End-->
+<!--Device-ImmersiveMode-DARK_IMMERSIVE--><!--Device-ImmersiveMode-DARK_IMMERSIVE-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -61,16 +61,16 @@ LIGHT_IMMERSIVE
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## DARK_IMMERSIVE
+## NONE_IMMERSIVE
 
 ```TypeScript
-DARK_IMMERSIVE
+NONE_IMMERSIVE = 0
 ```
 
-深色沉浸模式。
+不使用沉浸模式。
 
 **起始版本：** 15
 
-<!--Device-ImmersiveMode-DARK_IMMERSIVE--><!--Device-ImmersiveMode-DARK_IMMERSIVE-End-->
+<!--Device-ImmersiveMode-NONE_IMMERSIVE = 0--><!--Device-ImmersiveMode-NONE_IMMERSIVE = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

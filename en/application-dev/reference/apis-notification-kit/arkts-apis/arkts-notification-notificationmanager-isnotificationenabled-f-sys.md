@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isnotificationenabled1"></a>
+
 ## isNotificationEnabled
 
 ```TypeScript
@@ -37,12 +39,13 @@ Checks whether notification is enabled for the specified application. This API u
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,14 +60,16 @@ let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void =>
 }
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="isnotificationenabled-1"></a>
+
+<a id="isnotificationenabled2"></a>
 
 ## isNotificationEnabled
 
@@ -102,19 +107,20 @@ Checks whether notification is enabled for the specified application. This API u
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name was not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -123,8 +129,10 @@ notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="isnotificationenabled-4"></a>
+
+<a id="isnotificationenabled5"></a>
 
 ## isNotificationEnabled
 
@@ -157,12 +165,13 @@ Checks whether notification is enabled for a specified user. This API uses an as
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -182,8 +191,10 @@ let userId: number = 1;
 notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="isnotificationenabled-5"></a>
+
+<a id="isnotificationenabled6"></a>
 
 ## isNotificationEnabled
 
@@ -221,12 +232,13 @@ Checks whether notification is enabled for a specified user. This API uses a pro
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -241,3 +253,5 @@ notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
     console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="getnetquotapolicies1"></a>
+
 ## getNetQuotaPolicies
 
 ```TypeScript
@@ -41,6 +43,7 @@ Obtains the metering network policy. This API uses an asynchronous callback to r
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,8 +55,10 @@ policy.getNetQuotaPolicies((error: BusinessError, data: policy.NetQuotaPolicy[])
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getnetquotapolicies-1"></a>
+
+<a id="getnetquotapolicies2"></a>
 
 ## getNetQuotaPolicies
 
@@ -89,6 +94,7 @@ Obtains the metering network policy. This API uses a promise to return the resul
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -103,3 +109,5 @@ policy
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

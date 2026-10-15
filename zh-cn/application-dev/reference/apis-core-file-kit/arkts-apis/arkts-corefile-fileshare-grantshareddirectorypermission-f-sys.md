@@ -41,6 +41,7 @@ function grantSharedDirectoryPermission(): Promise<void>
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | 13900001 | Operation not permitted. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ async function grantSharedDirectoryPermission() {
   }
 }
 ```
+
+<!--DelEnd-->

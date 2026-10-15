@@ -12,7 +12,7 @@ import { infraredEmitter } from '@kit.InputKit';
 function getInfraredFrequencies(): Array<InfraredFrequency>
 ```
 
-Queries the frequency range of IR signals supported by the device.
+Queries the frequency range of the infrared signals supported by the device. It is recommended that you first use [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md) to check whether the device supports an infrared emitter.
 
 **Since:** 15
 
@@ -26,14 +26,14 @@ Queries the frequency range of IR signals supported by the device.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[InfraredFrequency](arkts-input-infraredemitter-infraredfrequency-i.md)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.<br>Since API version 23, one group of maximum and minimum frequencies, both of which are **0** Hz, are returned. |
+| Array&lt;[InfraredFrequency](arkts-input-infraredemitter-infraredfrequency-i.md)&gt; | Frequency range of the infrared signal, containing multiple sets of maximum and minimum frequencies.<br>Since API version 23, when the device does not have an infrared emitter, a set of maximum and minimum frequencies is returned, both 0 Hz. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application.<br>**Applicable version:** 12 - 14 |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 - 14 |
 
 **Examples**
 

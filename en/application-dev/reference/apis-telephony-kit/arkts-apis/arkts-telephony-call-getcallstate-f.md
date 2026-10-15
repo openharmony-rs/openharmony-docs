@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="getcallstate1"></a>
+
 ## getCallState
 
 ```TypeScript
@@ -41,7 +43,7 @@ call.getCallState((err: BusinessError, data: call.CallState) => {
 ```
 
 
-<a id="getcallstate-1"></a>
+<a id="getcallstate2"></a>
 
 ## getCallState
 

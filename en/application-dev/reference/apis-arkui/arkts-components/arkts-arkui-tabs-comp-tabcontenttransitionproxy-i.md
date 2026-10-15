@@ -4,7 +4,7 @@
 declare interface TabContentTransitionProxy
 ```
 
-Implements the proxy object returned during the execution of the custom switching animation of the **Tabs** component. You can use this object to obtain the start and target pages for the custom tab switching animation. In addition, you can call the **finishTransition** API of this object to notify the **Tabs** component of the ending of the custom animation.
+Implements the proxy object returned during the execution of the custom switching animation of the **Tabs** component. You can use this object to obtain the information about the start and target pages of the custom animation. You can also call the **finishTransition** API of this object to notify the **Tabs** component that the custom animation has finished playing.
 
 **Since:** 11
 
@@ -18,7 +18,7 @@ Implements the proxy object returned during the execution of the custom switchin
 finishTransition(): void
 ```
 
-Notifies the **Tabs** component that the custom animation has finished playing.
+Notifies the **Tabs** component that the custom animation of this page has ended.
 
 **Since:** 11
 
@@ -38,7 +38,7 @@ Notifies the **Tabs** component that the custom animation has finished playing.
 from: number
 ```
 
-Zero-based index of the source page in the custom animation.
+Index of the start page of the custom animation. The index starts from 0.
 
 **Type:** number
 
@@ -60,7 +60,7 @@ Zero-based index of the source page in the custom animation.
 to: number
 ```
 
-Zero-based index of the target page in the custom animation.
+Index of the target page of the custom animation. The index starts from 0.
 
 **Type:** number
 

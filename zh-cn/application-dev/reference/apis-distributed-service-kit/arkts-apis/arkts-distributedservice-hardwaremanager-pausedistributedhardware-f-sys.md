@@ -46,6 +46,7 @@ function pauseDistributedHardware(description: HardwareDescriptor): Promise<void
 | 24200101 | The specified distributed hardware is not started. |
 | 24200102 | The specified source device is not connected. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,3 +68,5 @@ try {
   console.error(`pause distributed hardware failed, code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

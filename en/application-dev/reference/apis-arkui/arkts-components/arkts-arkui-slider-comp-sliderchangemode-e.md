@@ -32,15 +32,15 @@ The user touches or clicks the thumb.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Moving
+## Click
 
 ```TypeScript
-Moving
+Click
 ```
 
-The user is dragging the slider.
+The user moves the thumb by clicking the track.
 
-**Since:** 7
+**Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -48,7 +48,7 @@ The user is dragging the slider.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-SliderChangeMode-Moving--><!--Device-SliderChangeMode-Moving-End-->
+<!--Device-SliderChangeMode-Click--><!--Device-SliderChangeMode-Click-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,15 +76,15 @@ This state is triggered when the user releases the slider by a gesture or mouse,
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Click
+## Moving
 
 ```TypeScript
-Click
+Moving
 ```
 
-The user moves the thumb by clicking the track.
+The user is dragging the slider.
 
-**Since:** 8
+**Since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -92,6 +92,6 @@ The user moves the thumb by clicking the track.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-SliderChangeMode-Click--><!--Device-SliderChangeMode-Click-End-->
+<!--Device-SliderChangeMode-Moving--><!--Device-SliderChangeMode-Moving-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -14,6 +14,40 @@ FormEditExtensionContext是[FormEditExtensionAbility](arkts-form-app-form-formed
 
 **系统能力：** SystemCapability.Ability.Form
 
+## setWindowBackgroundColor
+
+```TypeScript
+setWindowBackgroundColor(color: string): Promise<void>
+```
+
+设置卡片编辑页的背景色
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FormEditExtensionContext-setWindowBackgroundColor(color: string): Promise<void>--><!--Device-FormEditExtensionContext-setWindowBackgroundColor(color: string): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| color | string | 是 | 要设置的背景颜色。该值是一个十六进制 RGB 或 ARGB 颜色代码，不区分大小写，例如 **#00FF00** 或 **#FF00FF00**。它也可以是一个资源字符串。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 不返回值 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [16500050](../errorcode-form.md#16500050-进程间通信失败) | An IPC connection error happened. |
+
 ## startSecondPage
 
 ```TypeScript
@@ -43,7 +77,7 @@ startSecondPage(want: Want): Promise<AbilityResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise对象，返回被启动方退出时的结果码和数据。 |
+| Promise&lt;[AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-i.md)&gt; | Promise对象，返回被启动方退出时的结果码和数据。 |
 
 **错误码：**
 
@@ -120,7 +154,7 @@ startUIAbility(want: Want): Promise<void>
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16000130](../../apis-ability-kit/errorcode-ability.md#16000130-uiability不属于调用方) | The target UIAbility does not belong to the caller. |
 | [16501014](../errorcode-form.md#16501014-半模态卡片编辑页不在前台) | The form edit page is not in the foreground. The current operation is not supported. |
-| 16000121 | The target component type is not a UIAbility. |
+| [16000121](../../apis-ability-kit/errorcode-ability.md#16000121-待启动的目标组件类型不是uiability) | The target component type is not a UIAbility. |
 
 **示例**
 

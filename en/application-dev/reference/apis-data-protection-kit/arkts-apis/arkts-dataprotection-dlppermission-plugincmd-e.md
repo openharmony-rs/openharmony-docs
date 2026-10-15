@@ -12,22 +12,6 @@ Enumerates command codes for the plugin of an enterprise security application.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
-## CMD_BASE_INSTALL_PLUGIN
-
-```TypeScript
-CMD_BASE_INSTALL_PLUGIN = 0x1001
-```
-
-Command for delivering the plugin file name.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PluginCmd-CMD_BASE_INSTALL_PLUGIN = 0x1001--><!--Device-PluginCmd-CMD_BASE_INSTALL_PLUGIN = 0x1001-End-->
-
-**System capability:** SystemCapability.Security.DataLossPrevention
-
 ## CMD_BASE_INSTALL_CONFIG_FILE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Command for delivering the plugin configuration file name.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PluginCmd-CMD_BASE_INSTALL_CONFIG_FILE = 0x1002--><!--Device-PluginCmd-CMD_BASE_INSTALL_CONFIG_FILE = 0x1002-End-->
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
+## CMD_BASE_INSTALL_PLUGIN
+
+```TypeScript
+CMD_BASE_INSTALL_PLUGIN = 0x1001
+```
+
+Command for delivering the plugin file name.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PluginCmd-CMD_BASE_INSTALL_PLUGIN = 0x1001--><!--Device-PluginCmd-CMD_BASE_INSTALL_PLUGIN = 0x1001-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -60,22 +60,6 @@ Command for delivering the suffix filter file name.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
-## CMD_BASE_UNINSTALL_PLUGIN
-
-```TypeScript
-CMD_BASE_UNINSTALL_PLUGIN = 0x1004
-```
-
-Command for uninstalling the plugin and removing all related files.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PluginCmd-CMD_BASE_UNINSTALL_PLUGIN = 0x1004--><!--Device-PluginCmd-CMD_BASE_UNINSTALL_PLUGIN = 0x1004-End-->
-
-**System capability:** SystemCapability.Security.DataLossPrevention
-
 ## CMD_BASE_QUERY_TRANSPARENT_CRYPTO_STATUS
 
 ```TypeScript
@@ -89,6 +73,22 @@ Command for querying whether transparent encryption and decryption is enabled.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PluginCmd-CMD_BASE_QUERY_TRANSPARENT_CRYPTO_STATUS = 0x1005--><!--Device-PluginCmd-CMD_BASE_QUERY_TRANSPARENT_CRYPTO_STATUS = 0x1005-End-->
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
+## CMD_BASE_UNINSTALL_PLUGIN
+
+```TypeScript
+CMD_BASE_UNINSTALL_PLUGIN = 0x1004
+```
+
+Command for uninstalling the plugin and removing all related files.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PluginCmd-CMD_BASE_UNINSTALL_PLUGIN = 0x1004--><!--Device-PluginCmd-CMD_BASE_UNINSTALL_PLUGIN = 0x1004-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

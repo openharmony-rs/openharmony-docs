@@ -49,6 +49,7 @@ function subscribe(capability: OnscreenAwarenessCap,
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-指定能力不支持) | The application or page is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,3 +73,5 @@ try {
    console.error(`subscribe failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -43,6 +43,7 @@ Sets a rectangle on the screen to mirror mode. This API uses a promise to return
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,3 +66,5 @@ screen.makeMirrorWithRegion(mainScreenId, mirrorScreenIds, mainScreenRegion).the
   console.error(`Failed to set screen area mirroring. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

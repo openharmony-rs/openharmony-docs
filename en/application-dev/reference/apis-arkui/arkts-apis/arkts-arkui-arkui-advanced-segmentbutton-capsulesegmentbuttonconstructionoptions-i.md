@@ -6,8 +6,6 @@ interface CapsuleSegmentButtonConstructionOptions extends CommonSegmentButtonOpt
 
 Represents configuration options for creating a **SegmentButton** component consisting of capsule-style segment buttons.
 
-Inherits from [CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i.md).
-
 **Inheritance/Implementation:** CapsuleSegmentButtonConstructionOptions extends [CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i.md)
 
 **Since:** 11

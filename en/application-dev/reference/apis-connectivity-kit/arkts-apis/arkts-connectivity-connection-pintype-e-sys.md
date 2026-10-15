@@ -14,19 +14,37 @@ Enum for the type of pairing to a remote device
 
 **System API:** This is a system API.
 
-## PIN_TYPE_ENTER_PIN_CODE
+## PIN_TYPE_CONFIRM_PASSKEY
 
 ```TypeScript
-PIN_TYPE_ENTER_PIN_CODE = 0
+PIN_TYPE_CONFIRM_PASSKEY = 2
 ```
 
-The user needs to enter the pin code displayed on the peer device.
+The user needs to confirm the passkey displayed on the local device.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PinType-PIN_TYPE_ENTER_PIN_CODE = 0--><!--Device-PinType-PIN_TYPE_ENTER_PIN_CODE = 0-End-->
+<!--Device-PinType-PIN_TYPE_CONFIRM_PASSKEY = 2--><!--Device-PinType-PIN_TYPE_CONFIRM_PASSKEY = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## PIN_TYPE_DISPLAY_PIN_CODE
+
+```TypeScript
+PIN_TYPE_DISPLAY_PIN_CODE = 5
+```
+
+The user needs to enter the pin code displayed on the peer device, used for bluetooth 2.0.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PinType-PIN_TYPE_DISPLAY_PIN_CODE = 5--><!--Device-PinType-PIN_TYPE_DISPLAY_PIN_CODE = 5-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -50,19 +68,19 @@ The user needs to enter the passkey displayed on the peer device.
 
 **System API:** This is a system API.
 
-## PIN_TYPE_CONFIRM_PASSKEY
+## PIN_TYPE_ENTER_PIN_CODE
 
 ```TypeScript
-PIN_TYPE_CONFIRM_PASSKEY = 2
+PIN_TYPE_ENTER_PIN_CODE = 0
 ```
 
-The user needs to confirm the passkey displayed on the local device.
+The user needs to enter the pin code displayed on the peer device.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PinType-PIN_TYPE_CONFIRM_PASSKEY = 2--><!--Device-PinType-PIN_TYPE_CONFIRM_PASSKEY = 2-End-->
+<!--Device-PinType-PIN_TYPE_ENTER_PIN_CODE = 0--><!--Device-PinType-PIN_TYPE_ENTER_PIN_CODE = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -99,24 +117,6 @@ The user needs to enter the passkey displayed on the local device on the peer de
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PinType-PIN_TYPE_NOTIFY_PASSKEY = 4--><!--Device-PinType-PIN_TYPE_NOTIFY_PASSKEY = 4-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
-## PIN_TYPE_DISPLAY_PIN_CODE
-
-```TypeScript
-PIN_TYPE_DISPLAY_PIN_CODE = 5
-```
-
-The user needs to enter the pin code displayed on the peer device, used for bluetooth 2.0.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PinType-PIN_TYPE_DISPLAY_PIN_CODE = 5--><!--Device-PinType-PIN_TYPE_DISPLAY_PIN_CODE = 5-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

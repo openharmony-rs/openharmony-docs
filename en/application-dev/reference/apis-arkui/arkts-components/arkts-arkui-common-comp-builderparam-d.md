@@ -4,7 +4,7 @@
 declare const BuilderParam: PropertyDecorator
 ```
 
-**\@BuilderParam** is used to decorate variables that point to [\@Builder](arkts-arkui-common-comp-builder-d.md#builder) functions, enabling a custom component to receive externally passed **\@Builder** functions for custom rendering of UI content. It is suitable for scenarios where the parent component's UI building logic needs to be passed to a child component to achieve dynamic customization of component content.
+**\@BuilderParam** is used to decorate variables that point to [\@Builder](arkts-arkui-common-comp-con.md#builder) functions, enabling a custom component to receive externally passed **\@Builder** functions for custom rendering of UI content. It is suitable for scenarios where the parent component's UI building logic needs to be passed to a child component to achieve dynamic customization of component content.
 
 For details, see the development guide: [\@BuilderParam Decorator: Referencing the @Builder Function](../../../ui/state-management/arkts-builderparam.md).
 

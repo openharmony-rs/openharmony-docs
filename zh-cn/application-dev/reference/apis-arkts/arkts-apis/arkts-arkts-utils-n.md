@@ -1,4 +1,4 @@
-# utils(Defines the utils for ArkTS)
+# utils（Defines the utils for ArkTS）
 
 ```TypeScript
 declare namespace utils
@@ -22,14 +22,14 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [locks](arkts-arkts-utils-locks-n.md) | 为了解决多并发实例间的数据竞争问题，ArkTS语言基础库引入了异步锁能力。为了开发者的开发效率，AsyncLock对象支持跨并发实例引用传递。 |
 | [ASON](arkts-arkts-utils-ason-n.md) | 为支持将JSON字符串解析为共享数据，即Sendable支持的数据类型，ArkTS语言基础库新增了ASON工具。ASON工具支持解析JSON字符串并生成共享数据，用于跨并发实例引用传递，同时也支持将共享数据转换为JSON字符串。 |
+| [locks](arkts-arkts-utils-locks-n.md) | 为了解决多并发实例间的数据竞争问题，ArkTS语言基础库引入了异步锁能力。为了开发者的开发效率，AsyncLock对象支持跨并发实例引用传递。 |
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [isSendable](arkts-arkts-utils-issendable-f.md) | 检查ArkTS值是否为Sendable。 |
+| [isSendable](arkts-arkts-utils-issendable-f.md#issendable) | 检查ArkTS值是否为Sendable。 |
 
 ### 类
 

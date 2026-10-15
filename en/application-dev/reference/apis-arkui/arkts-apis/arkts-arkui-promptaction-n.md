@@ -16,8 +16,6 @@ This module provides API for creating and displaying toasts, dialog boxes, and a
 
 **Since:** 9
 
-**Model restriction:** This API can be used in both the stage model and FA model.
-
 <!--Device-unnamed-declare namespace promptAction--><!--Device-unnamed-declare namespace promptAction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -34,15 +32,15 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [showToast](arkts-arkui-promptaction-showtoast-f.md) | Creates and displays a toast. |
-| [openToast](arkts-arkui-promptaction-opentoast-f.md) | Shows a toast. This API uses a promise to return the toast ID. |
-| [closeToast](arkts-arkui-promptaction-closetoast-f.md) | Closes the specified toast. |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | Creates and displays a dialog box. This API uses an asynchronous callback to return the result. |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog-1) | Creates and displays a dialog box in the given settings. This API uses a promise to return the result. |
-| [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md) | Opens a custom dialog box. This API uses a promise to return the result. |
-| [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md) | Closes the specified custom dialog box. |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | Creates and displays an action menu. This API uses an asynchronous callback to return the result. |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu-1) | Creates and displays an action menu in the given settings. This API uses a promise to return the result. |
+| [closeToast](arkts-arkui-promptaction-closetoast-f.md#closetoast) | Closes the specified toast. |
+| [openToast](arkts-arkui-promptaction-opentoast-f.md#opentoast) | Shows a toast. This API uses a promise to return the toast ID. |
+| [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md#closecustomdialog) | Closes the specified custom dialog box. |
+| [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md#opencustomdialog) | Opens a custom dialog box. This API uses a promise to return the result. |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu1) | Creates and displays an action menu. This API uses an asynchronous callback to return the result. |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu2) | Creates and displays an action menu in the given settings. This API uses a promise to return the result. |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog1) | Creates and displays a dialog box. This API uses an asynchronous callback to return the result. |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog2) | Creates and displays a dialog box in the given settings. This API uses a promise to return the result. |
+| [showToast](arkts-arkui-promptaction-showtoast-f.md#showtoast) | Creates and displays a toast. |
 
 ### Classes
 
@@ -55,42 +53,42 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md) |  |
-| [Button](arkts-arkui-promptaction-button-i.md) | Describes the menu item button in the action menu. |
-| [ShowDialogSuccessResponse](arkts-arkui-promptaction-showdialogsuccessresponse-i.md) | Describes the dialog box response result. |
-| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md) | Describes the options for showing the dialog box. |
+| [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md) | Describes the options for showing the action menu. |
+| [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md) | Describes the action menu response result. |
 | [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) | Defines the options of the dialog box. |
+| [Button](arkts-arkui-promptaction-button-i.md) | Describes the menu item button in the action menu. |
 | [CustomDialogOptions](arkts-arkui-promptaction-customdialogoptions-i.md) | Extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) to provide enhanced customization capabilities for the dialog box. |
 | [DialogOptions](arkts-arkui-promptaction-dialogoptions-i.md) | Extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) to provide enhanced customization capabilities for the dialog box. |
-| [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md) | Describes the action menu response result. |
-| [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md) | Describes the options for showing the action menu. |
+| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md) | Describes the options for showing the dialog box. |
+| [ShowDialogSuccessResponse](arkts-arkui-promptaction-showdialogsuccessresponse-i.md) | Describes the dialog box response result. |
+| [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md) |  |
 
 <!--Del-->
 ### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
-| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i-sys.md) | Describes the options for showing the dialog box. |
-| [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i-sys.md) | Defines the options of the dialog box. |
 | [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i-sys.md) | Describes the options for showing the action menu. |
+| [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i-sys.md) | Defines the options of the dialog box. |
+| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i-sys.md) | Describes the options for showing the dialog box. |
 <!--DelEnd-->
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [DialogOptionsCornerRadius](arkts-arkui-promptaction-dialogoptionscornerradius-t.md) | Defines the allowed data types for specifying the background corner radius of a dialog box. |
-| [DialogOptionsBorderWidth](arkts-arkui-promptaction-dialogoptionsborderwidth-t.md) | Defines the allowed data types for specifying the background border width of a dialog box. |
 | [DialogOptionsBorderColor](arkts-arkui-promptaction-dialogoptionsbordercolor-t.md) | Defines the allowed data types for specifying the background border color of a dialog box. |
 | [DialogOptionsBorderStyle](arkts-arkui-promptaction-dialogoptionsborderstyle-t.md) | Defines the allowed data types for specifying the background border style of a dialog box. |
+| [DialogOptionsBorderWidth](arkts-arkui-promptaction-dialogoptionsborderwidth-t.md) | Defines the allowed data types for specifying the background border width of a dialog box. |
+| [DialogOptionsCornerRadius](arkts-arkui-promptaction-dialogoptionscornerradius-t.md) | Defines the allowed data types for specifying the background corner radius of a dialog box. |
 | [DialogOptionsShadow](arkts-arkui-promptaction-dialogoptionsshadow-t.md) | Defines the allowed data types for specifying the background shadow of a dialog box. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [ToastShowMode](arkts-arkui-promptaction-toastshowmode-e.md) | Enumerates display modes for toasts. By default, the toast is displayed within the application and supports display in subwindows. |
 | [CommonState](arkts-arkui-promptaction-commonstate-e.md) | Enumerates states of the custom dialog box. |
+| [ToastShowMode](arkts-arkui-promptaction-toastshowmode-e.md) | Enumerates display modes for toasts. By default, the toast is displayed within the application and supports display in subwindows. |
 
 <!--Del-->
 ### Enums(System API)

@@ -12,24 +12,6 @@ declare enum AdaptiveColor
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DEFAULT
-
-```TypeScript
-DEFAULT = 0
-```
-
-不使用取色模糊。使用系统预设颜色作为蒙版颜色。采用非DEFAULT方式的取色计算耗时高于DEFAULT方式。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-AdaptiveColor-DEFAULT = 0--><!--Device-AdaptiveColor-DEFAULT = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## AVERAGE
 
 ```TypeScript
@@ -45,5 +27,23 @@ AVERAGE = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdaptiveColor-AVERAGE = 1--><!--Device-AdaptiveColor-AVERAGE = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DEFAULT
+
+```TypeScript
+DEFAULT = 0
+```
+
+不使用取色模糊。使用系统预设颜色作为蒙版颜色。采用非DEFAULT方式的取色计算耗时高于DEFAULT方式。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AdaptiveColor-DEFAULT = 0--><!--Device-AdaptiveColor-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

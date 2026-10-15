@@ -12,24 +12,6 @@ Enumerates the raw input event types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOUCH
-
-```TypeScript
-TOUCH = 0
-```
-
-Touch event.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-RawInputEventType-TOUCH = 0--><!--Device-RawInputEventType-TOUCH = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## MOUSE
 
 ```TypeScript
@@ -45,5 +27,23 @@ Mouse event.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-RawInputEventType-MOUSE = 1--><!--Device-RawInputEventType-MOUSE = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TOUCH
+
+```TypeScript
+TOUCH = 0
+```
+
+Touch event.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RawInputEventType-TOUCH = 0--><!--Device-RawInputEventType-TOUCH = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

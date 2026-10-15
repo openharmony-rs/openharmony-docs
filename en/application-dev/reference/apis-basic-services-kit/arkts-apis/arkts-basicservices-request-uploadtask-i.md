@@ -4,7 +4,7 @@
 interface UploadTask
 ```
 
-Implements file uploads. Before using any APIs of this class, you must obtain an **UploadTask** object, from a promise through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1) or from a callback through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md).
+Implements file uploads. Before using any APIs of this class, you must obtain an **UploadTask** object, from a promise through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile2) or from a callback through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile1).
 
 **Since:** 6
 
@@ -17,6 +17,8 @@ Implements file uploads. Before using any APIs of this class, you must obtain an
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -63,7 +65,7 @@ uploadTask.delete((err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -387,6 +389,8 @@ let upFailCallback = (taskStates: Array<request.TaskState>) => {
 uploadTask.on('fail', upFailCallback);
 ```
 
+<a id="remove1"></a>
+
 ## remove
 
 ```TypeScript
@@ -399,7 +403,7 @@ Deletes the upload task. This API uses an asynchronous callback to return the re
 
 **Deprecated since:** 9
 
-**Substitutes:** [delete](#delete)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [delete](#delete1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -433,7 +437,7 @@ uploadTask.remove((err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="remove-1"></a>
+<a id="remove2"></a>
 
 ## remove
 

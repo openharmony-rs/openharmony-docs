@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="disableairplanemode1"></a>
+
 ## disableAirplaneMode
 
 ```TypeScript
@@ -40,6 +42,7 @@ Disables airplane mode. This API uses an asynchronous callback to return the res
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,8 +54,10 @@ connection.disableAirplaneMode((error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="disableairplanemode-1"></a>
+
+<a id="disableairplanemode2"></a>
 
 ## disableAirplaneMode
 
@@ -87,6 +92,7 @@ Disables airplane mode. This API uses a promise to return the result.
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -96,3 +102,5 @@ connection.disableAirplaneMode().then((error: void) => {
   console.error(JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

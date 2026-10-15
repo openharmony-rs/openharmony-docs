@@ -14,13 +14,13 @@ Enumerates the types of keys to import. By default, a public key is imported. Th
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 9 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_TYPE_PUBLIC_KEY
+## HUKS_KEY_TYPE_KEY_PAIR
 
 ```TypeScript
-HUKS_KEY_TYPE_PUBLIC_KEY = 0
+HUKS_KEY_TYPE_KEY_PAIR = 2
 ```
 
-Public key
+Public and private key pair
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Public key
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0-End-->
+<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -54,13 +54,13 @@ Private key
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 9 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_TYPE_KEY_PAIR
+## HUKS_KEY_TYPE_PUBLIC_KEY
 
 ```TypeScript
-HUKS_KEY_TYPE_KEY_PAIR = 2
+HUKS_KEY_TYPE_PUBLIC_KEY = 0
 ```
 
-Public and private key pair
+Public key
 
 **Since:** 9
 
@@ -68,7 +68,7 @@ Public and private key pair
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2-End-->
+<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core

@@ -21,4 +21,4 @@ Represents the function used by the **MultiNavigation** component to load naviga
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | Yes | ID of the navigation destination page. |
-| param | object | No | Parameters passed when the page is created during navigation. |
+| param | object | No | Parameter passed when creating a page through route navigation. Default: no parameter is passed when not provided. |

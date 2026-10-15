@@ -12,22 +12,6 @@ The device security level policy
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DEFAULT_ENFORCED
-
-```TypeScript
-DEFAULT_ENFORCED = 0
-```
-
-Disallowed switch device security level.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceSecurityLevelPolicy-DEFAULT_ENFORCED = 0--><!--Device-DeviceSecurityLevelPolicy-DEFAULT_ENFORCED = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## ALLOW_BALANCED
 
 ```TypeScript
@@ -57,5 +41,21 @@ Allowed switch to device security level2, disallowed switch to device security l
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DeviceSecurityLevelPolicy-ALLOW_FLEXIBLE = 2--><!--Device-DeviceSecurityLevelPolicy-ALLOW_FLEXIBLE = 2-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## DEFAULT_ENFORCED
+
+```TypeScript
+DEFAULT_ENFORCED = 0
+```
+
+Disallowed switch device security level.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceSecurityLevelPolicy-DEFAULT_ENFORCED = 0--><!--Device-DeviceSecurityLevelPolicy-DEFAULT_ENFORCED = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

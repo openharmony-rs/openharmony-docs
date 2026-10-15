@@ -8,7 +8,7 @@ Defines TapGesture Component.
 TapGesture(value?: TapGestureParameters)
 ```
 
-Creates a tap gesture. Inherits from [GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md).
+Creates a tap gesture. Inherits from [GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md).
 
 When triggered by keyboard or gamepad input, the gesture event's [SourceTool](arkts-arkui-common-comp-sourcetool-e.md) is **Unknown**, and SourceType is **KEY** or **JOYSTICK**.
 
@@ -60,9 +60,9 @@ Triggered when the tap gesture is recognized.
 | [FingerInfo](arkts-arkui-tapgesture-comp-fingerinfo-i.md) | Defines the finger information type. |
 | [GestureEvent](arkts-arkui-tapgesture-comp-gestureevent-i.md) | Defines the gesture event information. Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
 | [GestureGroupGestureHandlerOptions](arkts-arkui-tapgesture-comp-gesturegroupgesturehandleroptions-i.md) | Provides the parameters of the gesture group handler. |
-| [GestureGroupInterface](arkts-arkui-tapgesture-comp-gesturegroupinterface-i.md) | Combined gestures integrate two or more gestures into a compound gesture, supporting sequential recognition, parallel recognition, and exclusive recognition. |
+| [GestureGroupInterface](arkts-arkui-tapgesture-comp-gesturegroupinterface-i.md) | Combined gestures integrate two or more gestures into a compound gesture, supporting sequential recognition, parallel recognition, and exclusive recognition. They are suitable for scenarios where multiple basic gestures need to be combined on the same component and their recognition order, parallel relationship, or exclusive relationship needs to be controlled, helping developers implement more complex gesture interaction logic. |
 | [GestureInfo](arkts-arkui-tapgesture-comp-gestureinfo-i.md) | Defines the gesture information type. |
-| [GestureInterface](arkts-arkui-tapgesture-comp-gestureinterface-i.md) | Defines the gesture API. |
+| [GestureInterface](arkts-arkui-tapgesture-comp-gestureinterface-i.md) | Configures common attributes of gestures, supporting setting gesture tags and input types for gesture responses. |
 | [LongPressGestureEvent](arkts-arkui-tapgesture-comp-longpressgestureevent-i.md) | Inherits from [BaseGestureEvent](arkts-arkui-tapgesture-comp-basegestureevent-i.md). This object can be passed as the **event** parameter of [onGestureJudgeBegin](arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin). |
 | [LongPressGestureHandlerOptions](arkts-arkui-tapgesture-comp-longpressgesturehandleroptions-i.md) | Provides the parameters of the long press gesture handler. Inherits from [BaseHandlerOptions](arkts-arkui-tapgesture-comp-basehandleroptions-i.md). |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) | **LongPressGesture** is used to trigger a long press gesture. This gesture requires one or more fingers to be held down for a specified duration, which is 500 ms by default and can be adjusted using the **duration** parameter. |
@@ -86,7 +86,7 @@ Triggered when the tap gesture is recognized.
 
 | Name | Description |
 | --- | --- |
-| [GestureType](arkts-arkui-tapgesture-comp-gesturetype-t.md) | Defines the Gesture Type. |
+| [GestureType](arkts-arkui-tapgesture-comp-gesturetype-t.md) | Enumerates gesture types. |
 
 ### Enums
 
@@ -95,7 +95,7 @@ Triggered when the tap gesture is recognized.
 | [GestureJudgeResult](arkts-arkui-tapgesture-comp-gesturejudgeresult-e.md) | Enumerates gesture competition results. |
 | [GestureMask](arkts-arkui-tapgesture-comp-gesturemask-e.md) | Enumerates masking modes of child component gestures. |
 | [GestureMode](arkts-arkui-tapgesture-comp-gesturemode-e.md) | Defines the recognition mode of a gesture group. |
-| [GesturePriority](arkts-arkui-tapgesture-comp-gesturepriority-e.md) | Enumerates gesture priority levels. |
+| [GesturePriority](arkts-arkui-tapgesture-comp-gesturepriority-e.md) | Defines the priority of the bound gesture, which is suitable for scenarios where the response order of gestures needs to be controlled or gesture conflicts need to be handled when multiple gestures are bound at the same time. |
 | [GestureRecognizerState](arkts-arkui-tapgesture-comp-gesturerecognizerstate-e.md) | Enumerates the gesture recognizer states. |
 | [PanDirection](arkts-arkui-tapgesture-comp-pandirection-e.md) | Enumerates the pan directions. Unlike **SwipeDirection**, **PanDirection** has no angular restrictions. |
 | [SwipeDirection](arkts-arkui-tapgesture-comp-swipedirection-e.md) | Enumerates the directions in which the swipe gesture can be recognized. |

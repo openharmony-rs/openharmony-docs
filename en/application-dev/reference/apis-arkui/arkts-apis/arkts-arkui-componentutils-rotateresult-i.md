@@ -46,7 +46,7 @@ Unit: deg
 centerX: number
 ```
 
-X-coordinate of the center point.
+X-axis coordinate of the transform center point.
 
 Unit: vp
 
@@ -68,7 +68,7 @@ Unit: vp
 centerY: number
 ```
 
-Y-coordinate of the center point.
+Y-axis coordinate of the transform center point.
 
 Unit: vp
 
@@ -130,7 +130,7 @@ Y-coordinate of the rotation vector.
 z: number
 ```
 
-Z coordinate of the rotation vector.
+Z-coordinate of the rotation vector.
 
 **Type:** number
 

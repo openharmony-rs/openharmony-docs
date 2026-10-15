@@ -46,22 +46,6 @@ THIS_DEVICE = 1 << 0
 
 **系统能力：** SystemCapability.Security.Asset
 
-## TRUSTED_DEVICE
-
-```TypeScript
-TRUSTED_DEVICE = 1 << 1
-```
-
-只在可信设备间进行同步，如克隆场景。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-SyncType-TRUSTED_DEVICE = 1 << 1--><!--Device-SyncType-TRUSTED_DEVICE = 1 << 1-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
 ## TRUSTED_ACCOUNT
 
 ```TypeScript
@@ -77,5 +61,21 @@ TRUSTED_ACCOUNT = 1 << 2
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-SyncType-TRUSTED_ACCOUNT = 1 << 2--><!--Device-SyncType-TRUSTED_ACCOUNT = 1 << 2-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## TRUSTED_DEVICE
+
+```TypeScript
+TRUSTED_DEVICE = 1 << 1
+```
+
+只在可信设备间进行同步，如克隆场景。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-SyncType-TRUSTED_DEVICE = 1 << 1--><!--Device-SyncType-TRUSTED_DEVICE = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Security.Asset

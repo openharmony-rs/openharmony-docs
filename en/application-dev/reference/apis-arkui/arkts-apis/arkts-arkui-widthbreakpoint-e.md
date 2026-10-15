@@ -14,13 +14,13 @@ The following table lists default width breakpoint thresholds for typical device
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## WIDTH_XS
+## WIDTH_LG
 
 ```TypeScript
-WIDTH_XS = 0
+WIDTH_LG = 3
 ```
 
-The window width is less than 320 vp.
+The window width is greater than or equal to 840 vp and less than 1440 vp.
 
 **Since:** 13
 
@@ -28,25 +28,7 @@ The window width is less than 320 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
-<!--Device-WidthBreakpoint-WIDTH_XS = 0--><!--Device-WidthBreakpoint-WIDTH_XS = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## WIDTH_SM
-
-```TypeScript
-WIDTH_SM = 1
-```
-
-The window width is greater than or equal to 320 vp and less than 600 vp.
-
-**Since:** 13
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 13.
-
-<!--Device-WidthBreakpoint-WIDTH_SM = 1--><!--Device-WidthBreakpoint-WIDTH_SM = 1-End-->
+<!--Device-WidthBreakpoint-WIDTH_LG = 3--><!--Device-WidthBreakpoint-WIDTH_LG = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,13 +50,13 @@ The window width is greater than or equal to 600 vp and less than 840 vp.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## WIDTH_LG
+## WIDTH_SM
 
 ```TypeScript
-WIDTH_LG = 3
+WIDTH_SM = 1
 ```
 
-The window width is greater than or equal to 840 vp and less than 1440 vp.
+The window width is greater than or equal to 320 vp and less than 600 vp.
 
 **Since:** 13
 
@@ -82,7 +64,7 @@ The window width is greater than or equal to 840 vp and less than 1440 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
-<!--Device-WidthBreakpoint-WIDTH_LG = 3--><!--Device-WidthBreakpoint-WIDTH_LG = 3-End-->
+<!--Device-WidthBreakpoint-WIDTH_SM = 1--><!--Device-WidthBreakpoint-WIDTH_SM = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,5 +83,23 @@ The window width is greater than or equal to 1440 vp.
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
 <!--Device-WidthBreakpoint-WIDTH_XL = 4--><!--Device-WidthBreakpoint-WIDTH_XL = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## WIDTH_XS
+
+```TypeScript
+WIDTH_XS = 0
+```
+
+The window width is less than 320 vp.
+
+**Since:** 13
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-WidthBreakpoint-WIDTH_XS = 0--><!--Device-WidthBreakpoint-WIDTH_XS = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

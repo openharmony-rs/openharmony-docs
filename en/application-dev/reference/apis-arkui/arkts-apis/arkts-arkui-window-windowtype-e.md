@@ -28,19 +28,21 @@ Child window of an application.
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
-## TYPE_SYSTEM_ALERT
+## TYPE_DIALOG
 
 ```TypeScript
-TYPE_SYSTEM_ALERT = 1
+TYPE_DIALOG = 16
 ```
 
-System alert window.
+Modal window.
 
-**Since:** 7
+**Since:** 10
 
-**Deprecated since:** 11
+**Model restriction:** This API can be used only in the stage model.
 
-<!--Device-WindowType-TYPE_SYSTEM_ALERT = 1--><!--Device-WindowType-TYPE_SYSTEM_ALERT = 1-End-->
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WindowType-TYPE_DIALOG = 16--><!--Device-WindowType-TYPE_DIALOG = 16-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -56,27 +58,9 @@ Global floating window.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowType-TYPE_FLOAT = 8--><!--Device-WindowType-TYPE_FLOAT = 8-End-->
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-## TYPE_DIALOG
-
-```TypeScript
-TYPE_DIALOG = 16
-```
-
-Modal window.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-WindowType-TYPE_DIALOG = 16--><!--Device-WindowType-TYPE_DIALOG = 16-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -93,5 +77,21 @@ This window type cannot be used during window creation.
 **Since:** 18
 
 <!--Device-WindowType-TYPE_MAIN = 32--><!--Device-WindowType-TYPE_MAIN = 32-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## TYPE_SYSTEM_ALERT
+
+```TypeScript
+TYPE_SYSTEM_ALERT = 1
+```
+
+System alert window.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-WindowType-TYPE_SYSTEM_ALERT = 1--><!--Device-WindowType-TYPE_SYSTEM_ALERT = 1-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

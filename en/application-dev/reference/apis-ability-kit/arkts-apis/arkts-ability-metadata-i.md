@@ -4,9 +4,7 @@
 export interface Metadata
 ```
 
-The module defines a metadata object. An application can obtain the metadata through [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md), with **GET_BUNDLE_INFO_WITH_METADATA** passed in for [bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md). This object is contained in ApplicationInfo, HapModuleInfo, AbilityInfo, and [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md).
-
-The module provides the configuration about the module, UIAbility, and ExtensionAbility. The value is of the array type. The configuration is valid only for the current module, UIAbility, or ExtensionAbility.
+Represents a metadata object, which can be obtained through [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md), where the **bundleFlags** parameter must contain at least GET_BUNDLE_INFO_WITH_METADATA. This object is included in [ApplicationInfo](arkts-ability-applicationinfo-i.md), [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md), [AbilityInfo](arkts-ability-abilityinfo-i.md), and [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md).
 
 **Since:** 9
 
@@ -20,13 +18,13 @@ The module provides the configuration about the module, UIAbility, and Extension
 name: string
 ```
 
-Indicates the metadata name
+Metadata name.
 
 **Type:** string
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Metadata-name: string--><!--Device-Metadata-name: string-End-->
 
@@ -38,13 +36,13 @@ Indicates the metadata name
 resource: string
 ```
 
-Indicates the metadata resource
+Metadata resource descriptor. For example, $profile:config_file indicates that the config_file.json file is configured in the profile directory.
 
 **Type:** string
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Metadata-resource: string--><!--Device-Metadata-resource: string-End-->
 
@@ -56,13 +54,13 @@ Indicates the metadata resource
 value: string
 ```
 
-Indicates the metadata value
+Metadata value.
 
 **Type:** string
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Metadata-value: string--><!--Device-Metadata-value: string-End-->
 
@@ -74,13 +72,13 @@ Indicates the metadata value
 readonly valueId?: number
 ```
 
-Indicates the value id of the metadata
+Metadata value ID. When valueId is not 0, the current metadata value is a custom configuration, and valueId must be used to obtain the corresponding value from the resource manager. When valueId is 0, the current metadata value is a fixed string.
 
 **Type:** number
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Metadata-readonly valueId?: long--><!--Device-Metadata-readonly valueId?: long-End-->
 

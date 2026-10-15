@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="isimssmssupported1"></a>
+
 ## isImsSmsSupported
 
 ```TypeScript
@@ -40,6 +42,7 @@ Checks whether SMS is supported on IMS. This API uses an asynchronous callback t
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,8 +55,10 @@ sms.isImsSmsSupported(slotId, (err: BusinessError, data: boolean) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="isimssmssupported-1"></a>
+
+<a id="isimssmssupported2"></a>
 
 ## isImsSmsSupported
 
@@ -94,6 +99,7 @@ Checks whether SMS is supported on IMS. This API uses a promise to return the re
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -108,3 +114,5 @@ promise.then((data: boolean) => {
     console.error(`isImsSmsSupported failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -46,6 +46,7 @@ function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -87,3 +88,5 @@ try {
   console.error('createLocalWantAgent failed');
 }
 ```
+
+<!--DelEnd-->

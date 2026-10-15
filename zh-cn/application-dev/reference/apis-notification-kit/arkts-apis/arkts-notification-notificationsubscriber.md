@@ -14,7 +14,7 @@
 | [EnabledPriorityNotificationCallbackData](arkts-notification-notificationsubscriber-enabledprioritynotificationcallbackdata-i-sys.md) | 通知优先级总开关状态。 |
 | [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscriber-enabledsilentremindercallbackdata-i-sys.md) | 应用通知静默提醒开关状态的回调函数类型。 |
 | [NotificationClassification](arkts-notification-notificationsubscriber-notificationclassification-i-sys.md) | 通知分类信息。 |
-| [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | 提供订阅者接收到新通知、取消通知等的回调方法。 |
+| [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 提供订阅者接收到新通知、取消通知等的回调方法。 |
 | [NotificationSwitchChangedCallbackData](arkts-notification-notificationsubscriber-notificationswitchchangedcallbackdata-i-sys.md) | 通知开关状态变化的回调函数类型。 |
 | [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) | 返回携带系统属性值的通知信息。 |
 | [VoiceContent](arkts-notification-notificationsubscriber-voicecontent-i-sys.md) | 通知语音播报内容。 |

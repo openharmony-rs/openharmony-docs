@@ -30,7 +30,7 @@ contextRecoveryInfo: ContextRecoveryInfo
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSelectResult-contextRecoveryInfo: ContextRecoveryInfo--><!--Device-PhotoSelectResult-contextRecoveryInfo: ContextRecoveryInfo-End-->
 
@@ -48,7 +48,7 @@ isOriginalPhoto: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSelectResult-isOriginalPhoto: boolean--><!--Device-PhotoSelectResult-isOriginalPhoto: boolean-End-->
 
@@ -68,7 +68,7 @@ movingPhotoBadgeStates: Array<MovingPhotoBadgeStateType>
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSelectResult-movingPhotoBadgeStates: Array<MovingPhotoBadgeStateType>--><!--Device-PhotoSelectResult-movingPhotoBadgeStates: Array<MovingPhotoBadgeStateType>-End-->
 
@@ -82,7 +82,7 @@ photoUris: Array<string>
 
 返回图库选择后的媒体文件的URI数组。
 
-此URI数组只能通过临时授权的方式调用[photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)接口去使用，具体使用方式请参考[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
+此URI数组只能通过临时授权的方式调用[photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets1)接口去使用，具体使用方式请参考[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **注意：**
 
@@ -92,7 +92,7 @@ photoUris: Array<string>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoSelectResult-photoUris: Array<string>--><!--Device-PhotoSelectResult-photoUris: Array<string>-End-->
 

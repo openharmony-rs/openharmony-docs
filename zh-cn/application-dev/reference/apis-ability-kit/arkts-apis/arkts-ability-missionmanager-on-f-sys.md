@@ -41,10 +41,11 @@ function on(type: 'mission', listener: MissionListener): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -111,3 +112,118 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
+
+
+## on('missionEvent')
+
+```TypeScript
+function on(type: 'missionEvent', listener: MissionListener): number
+```
+
+注册系统任务状态监听器。
+
+**起始版本：** 9
+
+**废弃版本：** 10
+
+**替代接口：** [on](#onmission)(type: 'mission', listener: MissionListener)
+
+**需要权限：** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function on(type: 'missionEvent', listener: MissionListener): long--><!--Device-missionManager-function on(type: 'missionEvent', listener: MissionListener): long-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'missionEvent' | 是 | 监听的任务名称。固定值：'missionEvent'，表示系统任务状态监听器。 |
+| listener | [MissionListener](arkts-ability-missionmanager-missionlistener-t-sys.md) | 是 | 系统任务监听器。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 监听器的index值，由系统创建，在注册系统任务状态监听时分配，和监听器一一对应。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (missionEvent: number) => {console.info('--------onMissionCreated-------');},
+  onMissionDestroyed: (missionEvent: number) => {console.info('--------onMissionDestroyed-------');},
+  onMissionSnapshotChanged: (missionEvent: number) => {console.info('--------onMissionSnapshotChanged-------');},
+  onMissionMovedToFront: (missionEvent: number) => {console.info('--------onMissionMovedToFront-------');},
+  onMissionIconUpdated: (missionEvent: number, icon: image.PixelMap) => {console.info('--------onMissionIconUpdated-------');},
+  onMissionClosed: (missionEvent: number) => {console.info('--------onMissionClosed-------');},
+  onMissionLabelUpdated: (missionEvent: number) => {console.info('--------onMissionLabelUpdated-------');}
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('missionEvent', listenerId).catch((error: BusinessError) => {
+          console.error(`MissionManager.off failed. Code: ${error.code}, message: ${error.message}`);
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('missionEvent', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+<!--DelEnd-->

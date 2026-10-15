@@ -12,6 +12,22 @@ Enumerates the font hinting types.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+## FULL
+
+```TypeScript
+FULL = 3
+```
+
+Full font hinting is used to improve contrast.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-FontHinting-FULL = 3--><!--Device-FontHinting-FULL = 3-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
 ## NONE
 
 ```TypeScript
@@ -22,25 +38,9 @@ No font hinting is used.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontHinting-NONE = 0--><!--Device-FontHinting-NONE = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## SLIGHT
-
-```TypeScript
-SLIGHT = 1
-```
-
-Slight font hinting is used to improve contrast.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
-
-<!--Device-FontHinting-SLIGHT = 1--><!--Device-FontHinting-SLIGHT = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -54,24 +54,24 @@ Normal font hinting is used to improve contrast.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontHinting-NORMAL = 2--><!--Device-FontHinting-NORMAL = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## FULL
+## SLIGHT
 
 ```TypeScript
-FULL = 3
+SLIGHT = 1
 ```
 
-Full font hinting is used to improve contrast.
+Slight font hinting is used to improve contrast.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-<!--Device-FontHinting-FULL = 3--><!--Device-FontHinting-FULL = 3-End-->
+<!--Device-FontHinting-SLIGHT = 1--><!--Device-FontHinting-SLIGHT = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

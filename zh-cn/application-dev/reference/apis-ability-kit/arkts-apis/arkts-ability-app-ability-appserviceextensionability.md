@@ -10,10 +10,13 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
  > 本模块接口仅可在Stage模型下使用。
 
 ## 约束限制
- - 当前仅支持PC/2in1设备。
- - 应用集成AppServiceExtensionAbility的组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请，申请方
+
+- 当前仅支持PC/2in1设备。
+
+- 应用集成AppServiceExtensionAbility的组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请，申请方
  式参考权限申请指导。
- - 为保障系统安全性和稳定性，防止AppServiceExtensionAbility滥用系统资源，系统对其能力进行管控，不支持@ohos.window (窗口)。
+
+- 为保障系统安全性和稳定性，防止AppServiceExtensionAbility滥用系统资源，系统对其能力进行管控，不支持@ohos.window (窗口)。
 
 ## 生命周期
 
@@ -22,7 +25,7 @@ AppServiceExtensionAbility提供了[onCreate()](arkts-ability-app-ability-appser
  [onDestroy()](arkts-ability-app-ability-appserviceextensionability-appserviceextensionability-c.md#ondestroy)生命周期回调，开发者可根据需要重写对应的回调方法。下图展示了AppServiceExtensionAbility的生命
  周期。
 
-![AppServiceExtensionAbility-lifecycle](../figures/AppServiceExtensionAbility-lifecycle.png)
+![AppServiceExtensionAbility-lifecycle](../../../application-models/figures/AppServiceExtensionAbility-lifecycle.png)
 
 - **onCreate**
 

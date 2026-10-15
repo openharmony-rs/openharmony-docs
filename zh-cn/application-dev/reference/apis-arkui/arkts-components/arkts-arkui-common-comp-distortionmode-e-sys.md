@@ -32,24 +32,6 @@ distortion动画自适应实现
 
 **系统接口：** 此接口为系统接口。
 
-## DISTORTION_ENABLED
-
-```TypeScript
-DISTORTION_ENABLED = 1
-```
-
-distortion动画一直使能
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DistortionMode-DISTORTION_ENABLED = 1--><!--Device-DistortionMode-DISTORTION_ENABLED = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
-
 ## DISTORTION_DISABLED
 
 ```TypeScript
@@ -63,6 +45,24 @@ DISTORTION_DISABLED = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DistortionMode-DISTORTION_DISABLED = 2--><!--Device-DistortionMode-DISTORTION_DISABLED = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## DISTORTION_ENABLED
+
+```TypeScript
+DISTORTION_ENABLED = 1
+```
+
+distortion动画一直使能
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DistortionMode-DISTORTION_ENABLED = 1--><!--Device-DistortionMode-DISTORTION_ENABLED = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -14,6 +14,24 @@ export enum KeyCommandTriggerType
 
 **系统接口：** 此接口为系统接口。
 
+## ALL_RELEASED
+
+```TypeScript
+ALL_RELEASED = 3
+```
+
+按下按键或抬起按键时均会触发回调。包括自动重复按下的按键。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyCommandTriggerType-ALL_RELEASED = 3--><!--Device-KeyCommandTriggerType-ALL_RELEASED = 3-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**系统接口：** 此接口为系统接口。
+
 ## PRESSED
 
 ```TypeScript
@@ -45,24 +63,6 @@ REPEAT_PRESSED = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyCommandTriggerType-REPEAT_PRESSED = 2--><!--Device-KeyCommandTriggerType-REPEAT_PRESSED = 2-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
-
-**系统接口：** 此接口为系统接口。
-
-## ALL_RELEASED
-
-```TypeScript
-ALL_RELEASED = 3
-```
-
-按下按键或抬起按键时均会触发回调。包括自动重复按下的按键。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-KeyCommandTriggerType-ALL_RELEASED = 3--><!--Device-KeyCommandTriggerType-ALL_RELEASED = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 

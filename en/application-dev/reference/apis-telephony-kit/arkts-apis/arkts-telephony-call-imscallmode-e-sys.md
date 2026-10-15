@@ -30,22 +30,6 @@ Audio call only.
 
 **System API:** This is a system API.
 
-## CALL_MODE_SEND_ONLY
-
-```TypeScript
-CALL_MODE_SEND_ONLY = 1
-```
-
-Sending calls only.
-
-**Since:** 8
-
-<!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1--><!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## CALL_MODE_RECEIVE_ONLY
 
 ```TypeScript
@@ -57,6 +41,22 @@ Receiving calls only.
 **Since:** 8
 
 <!--Device-ImsCallMode-CALL_MODE_RECEIVE_ONLY = 2--><!--Device-ImsCallMode-CALL_MODE_RECEIVE_ONLY = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## CALL_MODE_SEND_ONLY
+
+```TypeScript
+CALL_MODE_SEND_ONLY = 1
+```
+
+Sending calls only.
+
+**Since:** 8
+
+<!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1--><!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

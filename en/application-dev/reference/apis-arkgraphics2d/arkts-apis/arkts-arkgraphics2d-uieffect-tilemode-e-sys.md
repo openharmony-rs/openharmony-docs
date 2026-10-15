@@ -30,17 +30,17 @@ Clamp mode.
 
 **System API:** This is a system API.
 
-## REPEAT
+## DECAL
 
 ```TypeScript
-REPEAT = 1
+DECAL = 3
 ```
 
-Repeat mode.
+Decal mode.
 
 **Since:** 12
 
-<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
+<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,17 +62,17 @@ Mirror mode.
 
 **System API:** This is a system API.
 
-## DECAL
+## REPEAT
 
 ```TypeScript
-DECAL = 3
+REPEAT = 1
 ```
 
-Decal mode.
+Repeat mode.
 
 **Since:** 12
 
-<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
+<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

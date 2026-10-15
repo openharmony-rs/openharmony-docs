@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="getappmemorysize1"></a>
+
 ## getAppMemorySize
 
 ```TypeScript
@@ -16,7 +18,7 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function getAppMemorySize(): Promise<int>--><!--Device-appManager-function getAppMemorySize(): Promise<int>-End-->
 
@@ -48,7 +50,7 @@ appManager.getAppMemorySize().then((data) => {
 ```
 
 
-<a id="getappmemorysize-1"></a>
+<a id="getappmemorysize2"></a>
 
 ## getAppMemorySize
 
@@ -60,7 +62,7 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function getAppMemorySize(callback: AsyncCallback<int>): void--><!--Device-appManager-function getAppMemorySize(callback: AsyncCallback<int>): void-End-->
 
@@ -76,7 +78,7 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
 **Examples**

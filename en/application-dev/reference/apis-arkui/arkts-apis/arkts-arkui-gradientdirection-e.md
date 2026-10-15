@@ -12,66 +12,6 @@ Sets the direction of the linear gradient.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Left
-
-```TypeScript
-Left = 0
-```
-
-From right to left.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-GradientDirection-Left = 0--><!--Device-GradientDirection-Left = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Top
-
-```TypeScript
-Top = 1
-```
-
-From bottom to top.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-GradientDirection-Top = 1--><!--Device-GradientDirection-Top = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Right
-
-```TypeScript
-Right = 2
-```
-
-From left to right.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-GradientDirection-Right = 2--><!--Device-GradientDirection-Right = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Bottom
 
 ```TypeScript
@@ -92,13 +32,13 @@ From top to bottom.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LeftTop
+## Left
 
 ```TypeScript
-LeftTop = 4
+Left = 0
 ```
 
-From top left to bottom right.
+From right to left.
 
 **Since:** 7
 
@@ -108,7 +48,7 @@ From top left to bottom right.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-GradientDirection-LeftTop = 4--><!--Device-GradientDirection-LeftTop = 4-End-->
+<!--Device-GradientDirection-Left = 0--><!--Device-GradientDirection-Left = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,13 +72,13 @@ From bottom left to top right.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## RightTop
+## LeftTop
 
 ```TypeScript
-RightTop = 6
+LeftTop = 4
 ```
 
-From top right to bottom left.
+From top left to bottom right.
 
 **Since:** 7
 
@@ -148,7 +88,47 @@ From top right to bottom left.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-GradientDirection-RightTop = 6--><!--Device-GradientDirection-RightTop = 6-End-->
+<!--Device-GradientDirection-LeftTop = 4--><!--Device-GradientDirection-LeftTop = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None = 8
+```
+
+None.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GradientDirection-None = 8--><!--Device-GradientDirection-None = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Right
+
+```TypeScript
+Right = 2
+```
+
+From left to right.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GradientDirection-Right = 2--><!--Device-GradientDirection-Right = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,13 +152,13 @@ From bottom right to top left.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## None
+## RightTop
 
 ```TypeScript
-None = 8
+RightTop = 6
 ```
 
-None.
+From top right to bottom left.
 
 **Since:** 7
 
@@ -188,6 +168,26 @@ None.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-GradientDirection-None = 8--><!--Device-GradientDirection-None = 8-End-->
+<!--Device-GradientDirection-RightTop = 6--><!--Device-GradientDirection-RightTop = 6-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Top
+
+```TypeScript
+Top = 1
+```
+
+From bottom to top.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GradientDirection-Top = 1--><!--Device-GradientDirection-Top = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

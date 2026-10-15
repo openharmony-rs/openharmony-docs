@@ -1,5 +1,9 @@
 # @ohos.arkui.advanced.ChipGroup
 
+ChipGroup组件提供操作块群组能力，支持单选或多选模式，可自定义样式、图标和间距，支持选中状态管理和事件回调。
+ 适用于文件分类、资源筛选、标签选择、内容分组等多种场景，帮助开发者快速实现选择功能，提供统一的视觉和交互体验。
+
+
 ## 导入模块
 
 ```TypeScript
@@ -12,8 +16,8 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChipGroup](arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md) | ChipGroup组件提供操作块群组能力，支持单选或多选模式，可自定义样式、图标和间距，支持选中状态管理和事件回调。适用于文件分类、资源筛选、标签选择、内容分组等多种场景，帮助开发者快速实现选择功能，提供统一的视觉和交互体验。 |
-| [IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md) | ChipGroup组件提供操作块群组能力，支持单选或多选模式，可自定义样式、图标和间距，支持选中状态管理和事件回调。适用于文件分类、资源筛选、标签选择、内容分组等多种场景，帮助开发者快速实现选择功能，提供统一的视觉和交互体验。 |
+| [ChipGroup](arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md) | 创建ChipGroup组件。 |
+| [IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md) | 用于定义ChipGroup的后缀区域图标属性，在ChipGroup组件最右侧显示自定义内容的可配置suffix属性中使用。 |
 
 ### 接口
 
@@ -643,7 +647,7 @@ export struct ChipGroupExample2 {
 
 该示例通过配置backgroundSystemMaterial和iconBackgroundSystemMaterial实现系统材质样式，开启自动反色功能使文本颜色适配背景色。
 
-从API版本26.0.0开始，ChipGroup新增backgroundSystemMaterial属性，[IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md)新增iconBackgroundSystemMaterial属性。
+从API版本26.0.0开始，[ChipGroup](#chipgroup-1)新增backgroundSystemMaterial属性，[IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md)新增iconBackgroundSystemMaterial属性。
 
 该示例配图为高算力设备强档效果。
 
@@ -731,7 +735,7 @@ struct ChipGroupMaterialExample {
 
 该示例通过配置selectedBackgroundSystemMaterial实现组件选中状态的系统材质样式，开启自动反色功能使文本颜色适配背景色。
 
-从API版本26.0.0开始，ChipGroup新增selectedBackgroundSystemMaterial属性。
+从API版本26.0.0开始，[ChipGroup](#chipgroup-1)新增selectedBackgroundSystemMaterial属性。
 
 ```TypeScript
 import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier, uiMaterial } from '@kit.ArkUI';

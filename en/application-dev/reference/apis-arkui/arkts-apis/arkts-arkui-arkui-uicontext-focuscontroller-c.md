@@ -4,7 +4,7 @@
 export class FocusController
 ```
 
-Provides capabilities to control focus, including features such as clearing, moving, and activating focus.
+Provides the capability to control focus, including clearing, moving, and activating focus. This is suitable for scenarios where you need to manage the focus state of a page or component and control focus navigation. It helps you optimize focus interaction experiences with input methods such as keyboards.
 
 > **NOTE:** 
 > 
@@ -162,7 +162,7 @@ struct ClearFocusExample {
 isActive(): boolean
 ```
 
-Obtains the focus activation state of the UI instance.
+Obtains the focus activation state of the UI instance. This is suitable for scenarios where you need to decide whether to enable direction-based focus navigation or update focus prompts based on the current focus activation state.
 
 For details about the focus activation state, see [Basic Concepts](../../../ui/arkts-common-events-focus-event.md#basic-concepts).
 
@@ -238,7 +238,7 @@ struct IsActiveExample {
 requestFocus(key: string): void
 ```
 
-Transfers focus to a component node by the component ID, which is effective immediately.
+Transfers focus to the corresponding entity node in the component tree by the component ID, taking effect in the current frame. This is suitable for scenarios where you need to actively focus on a specified component during form validation, page initialization, or keyboard operation flows.
 
 **Since:** 12
 
@@ -402,7 +402,7 @@ struct CustomDialogUser {
 setKeyProcessingMode(mode: KeyProcessingMode): void
 ```
 
-Sets the mode for processing key events.
+Sets the priority of key event handling. This is suitable for scenarios where both parent and child components need to handle key events, and you need to control the key event dispatch strategy.
 
 **Since:** 15
 

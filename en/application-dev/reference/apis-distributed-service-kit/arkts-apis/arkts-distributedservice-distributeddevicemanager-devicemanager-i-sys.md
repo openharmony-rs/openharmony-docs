@@ -52,12 +52,13 @@ Obtains the device icon. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
 | [11600106](../errorcode-device-manager.md#11600106-failed-to-obtain-data-from-the-cloud) | Get data from cloud fail. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -87,6 +88,8 @@ try {
   console.error('getDeviceIconInfo errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDeviceNetworkIdList
 
@@ -124,10 +127,11 @@ Obtains the list of network devices according to the specified filter options.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Parameter verification failed; |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
 | [11600107](../errorcode-device-manager.md#11600107-login-account-required) | A login account is required. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -150,6 +154,8 @@ try {
   console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDeviceProfileInfoList
 
@@ -185,13 +191,14 @@ Obtains the list of devices under the same account. This API uses a promise to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 500. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
 | [11600106](../errorcode-device-manager.md#11600106-failed-to-obtain-data-from-the-cloud) | Get data from cloud fail. |
 | [11600107](../errorcode-device-manager.md#11600107-login-account-required) | A login account is required. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -210,6 +217,8 @@ try {
   console.error('getDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getIdentificationByDeviceIds
 
@@ -249,9 +258,10 @@ Query device identification by device IDs.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [11600101](../errorcode-device-manager.md#11600101-service-invoking-exception) | Failed to execute the function. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -278,6 +288,8 @@ getDeviceUdids(deviceIds: Array<string>): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getLocalDisplayDeviceName
 
@@ -313,11 +325,12 @@ Obtains the local device's display name with the specified length. This API uses
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -337,6 +350,8 @@ try {
   console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getOsTypeByNetworkId
 
@@ -368,7 +383,7 @@ Query the device operating system type by device network ID.
 
 | Type | Description |
 | --- | --- |
-| number | Returns the device operating system type. Possible return:   1. 10: Operating system based on OpenHarmony 2. 11: Operating system not based on OpenHarmony 3. -1: Unknown |
+| number | Returns the device operating system type. Possible return:           1. 10: Operating system based on OpenHarmony         2. 11: Operating system not based on OpenHarmony         3. -1: Unknown |
 
 **Error codes:**
 
@@ -408,10 +423,11 @@ Unsubscribes from the reply to the UI operation result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 255. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -426,6 +442,8 @@ try {
   console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('replyResult')
 
@@ -456,10 +474,11 @@ Subscribes to the reply to the UI operation result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 255. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -487,6 +506,8 @@ try {
   console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## putDeviceProfileInfoList
 
@@ -522,11 +543,12 @@ Updates the device list. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 500. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -546,6 +568,8 @@ try {
   console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## replyUiAction
 
@@ -578,8 +602,9 @@ Replies to the user's UI operation. This API can be used only by the PIN HAP of 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified actionResult is greater than 255. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified actionResult is greater than 255. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -603,6 +628,8 @@ try {
   console.error('replyUiAction errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## restoreLocalDeviceName
 
@@ -632,6 +659,7 @@ Restores the local device name.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -646,6 +674,8 @@ try {
   console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setHeartbeatPolicy
 
@@ -678,9 +708,10 @@ Sets the heartbeat broadcast policy.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -697,6 +728,8 @@ try {
   console.error('setHeartbeatPolicy errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setLocalDeviceName
 
@@ -732,7 +765,7 @@ Sets the local device name. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
@@ -740,6 +773,7 @@ Sets the local device name. This API uses a promise to return the result.
 | [11600107](../errorcode-device-manager.md#11600107-login-account-required) | A login account is required. |
 | [11600108](../errorcode-device-manager.md#11600108-unlawful-information-in-device-name) | The device name contains non-compliant content. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -759,6 +793,8 @@ try {
   console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setRemoteDeviceName
 
@@ -795,7 +831,7 @@ Sets the remote device name. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
@@ -803,6 +839,7 @@ Sets the remote device name. This API uses a promise to return the result.
 | [11600107](../errorcode-device-manager.md#11600107-login-account-required) | A login account is required. |
 | [11600108](../errorcode-device-manager.md#11600108-unlawful-information-in-device-name) | The device name contains non-compliant content. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -823,6 +860,8 @@ try {
   console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## restoreLocalDeivceName
 
@@ -854,6 +893,7 @@ Restores the local device name by resetting the network settings.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -868,3 +908,5 @@ try {
   console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->

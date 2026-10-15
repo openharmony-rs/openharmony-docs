@@ -27,6 +27,6 @@ The **bytrace** module implements performance tracing for processes.
 
 | Name | Description |
 | --- | --- |
-| [finishTrace](arkts-api10lessdeprecatedmodules-bytrace-finishtrace-f.md) | Marks the end of a timeslice trace task. |
-| [startTrace](arkts-api10lessdeprecatedmodules-bytrace-starttrace-f.md) | Marks the start of a timeslice trace task. |
-| [traceByValue](arkts-api10lessdeprecatedmodules-bytrace-tracebyvalue-f.md) | Defines a numeric variable that indicates the number of timeslice trace tasks. |
+| [finishTrace](arkts-api10lessdeprecatedmodules-bytrace-finishtrace-f.md#finishtrace) | Marks the end of a timeslice trace task. |
+| [startTrace](arkts-api10lessdeprecatedmodules-bytrace-starttrace-f.md#starttrace) | Marks the start of a timeslice trace task. |
+| [traceByValue](arkts-api10lessdeprecatedmodules-bytrace-tracebyvalue-f.md#tracebyvalue) | Defines a numeric variable that indicates the number of timeslice trace tasks. |

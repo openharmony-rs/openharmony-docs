@@ -36,7 +36,7 @@ HOUR_MINUTE
 HOUR_MINUTE_SECOND
 ```
 
-Hour and minute and second
+按照小时、分钟和秒进行显示。
 
 **起始版本：** 11
 

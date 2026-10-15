@@ -14,19 +14,19 @@ Album operation attribute.
 
 **System API:** This is a system API.
 
-## NICK_NAME_ATTR
+## CONTACT_INFO_ATTR
 
 ```TypeScript
-NICK_NAME_ATTR = 'nickname'
+CONTACT_INFO_ATTR = 'contact_info'
 ```
 
-The album nickname operation attribute.
+The album contact_info operation attribute.
 
-**Since:** 26.0.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'--><!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'-End-->
+<!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'--><!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -50,24 +50,6 @@ The album extra_info operation attribute.
 
 **System API:** This is a system API.
 
-## IS_REMOVED_ATTR
-
-```TypeScript
-IS_REMOVED_ATTR = 'is_removed'
-```
-
-The album is_removed operation attribute.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'--><!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## FRIEND_ID_ATTR
 
 ```TypeScript
@@ -86,19 +68,37 @@ The album friend_id operation attribute.
 
 **System API:** This is a system API.
 
-## CONTACT_INFO_ATTR
+## IS_REMOVED_ATTR
 
 ```TypeScript
-CONTACT_INFO_ATTR = 'contact_info'
+IS_REMOVED_ATTR = 'is_removed'
 ```
 
-The album contact_info operation attribute.
+The album is_removed operation attribute.
 
-**Since:** 26.0.1
+**Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'--><!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'-End-->
+<!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'--><!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## NICK_NAME_ATTR
+
+```TypeScript
+NICK_NAME_ATTR = 'nickname'
+```
+
+The album nickname operation attribute.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'--><!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

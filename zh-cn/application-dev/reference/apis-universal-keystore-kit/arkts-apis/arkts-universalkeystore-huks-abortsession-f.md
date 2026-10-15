@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="abortsession1"></a>
+
 ## abortSession
 
 ```TypeScript
@@ -36,8 +38,8 @@ abortSession终止密钥操作。使用callback异步回调。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
@@ -429,7 +431,7 @@ export default {
 ```
 
 
-<a id="abortsession-1"></a>
+<a id="abortsession2"></a>
 
 ## abortSession
 
@@ -464,8 +466,8 @@ abortSession终止密钥操作。使用Promise异步回调。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |

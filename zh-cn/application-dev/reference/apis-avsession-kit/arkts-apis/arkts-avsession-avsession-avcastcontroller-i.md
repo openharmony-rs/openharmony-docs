@@ -22,6 +22,8 @@ interface AVCastController
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getavplaybackstate1"></a>
+
 ## getAVPlaybackState
 
 ```TypeScript
@@ -60,7 +62,7 @@ avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlay
 });
 ```
 
-<a id="getavplaybackstate-1"></a>
+<a id="getavplaybackstate2"></a>
 
 ## getAVPlaybackState
 
@@ -72,7 +74,7 @@ getAVPlaybackState(): Promise<AVPlaybackState>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-getAVPlaybackState(): Promise<AVPlaybackState>--><!--Device-AVCastController-getAVPlaybackState(): Promise<AVPlaybackState>-End-->
 
@@ -99,6 +101,8 @@ avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) =>
   console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="getcurrentitem1"></a>
 
 ## getCurrentItem
 
@@ -138,7 +142,7 @@ avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueIte
 });
 ```
 
-<a id="getcurrentitem-1"></a>
+<a id="getcurrentitem2"></a>
 
 ## getCurrentItem
 
@@ -150,7 +154,7 @@ getCurrentItem(): Promise<AVQueueItem>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-getCurrentItem(): Promise<AVQueueItem>--><!--Device-AVCastController-getCurrentItem(): Promise<AVQueueItem>-End-->
 
@@ -188,7 +192,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel>--><!--Device-AVCastController-getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel>-End-->
 
@@ -233,7 +237,7 @@ getSupportedDecoders(): Promise<Array<DecoderType>>
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-getSupportedDecoders(): Promise<Array<DecoderType>>--><!--Device-AVCastController-getSupportedDecoders(): Promise<Array<DecoderType>>-End-->
 
@@ -274,7 +278,7 @@ getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>--><!--Device-AVCastController-getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>-End-->
 
@@ -317,7 +321,7 @@ getSupportedPlaySpeeds(): Promise<Array<number>>
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-getSupportedPlaySpeeds(): Promise<Array<double>>--><!--Device-AVCastController-getSupportedPlaySpeeds(): Promise<Array<double>>-End-->
 
@@ -347,6 +351,8 @@ avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
   console.error(`Failed to get supported play speeds, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="getvalidcommands1"></a>
 
 ## getValidCommands
 
@@ -386,7 +392,7 @@ avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastCo
 });
 ```
 
-<a id="getvalidcommands-1"></a>
+<a id="getvalidcommands2"></a>
 
 ## getValidCommands
 
@@ -1085,7 +1091,7 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playbackStateChange' | 是 |  |
-| filter | Array&lt;keyof AVPlaybackState&gt; &#124; 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array&lt;keyof AVPlaybackState&gt;表示关注Array中的字段变化。 |
+| filter | Array&lt;keyof AVPlaybackState&gt; &#124; 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array<keyof AVPlaybackState>表示关注Array中的字段变化。 |
 | callback | (state: AVPlaybackState) =&gt; void | 是 | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
@@ -1859,6 +1865,8 @@ avCastController.on('customDataChange', (data: Record<string, Object>) => {
 });
 ```
 
+<a id="prepare1"></a>
+
 ## prepare
 
 ```TypeScript
@@ -1918,7 +1926,7 @@ avCastController.prepare(playItem, (err: BusinessError) => {
 });
 ```
 
-<a id="prepare-1"></a>
+<a id="prepare2"></a>
 
 ## prepare
 
@@ -1930,7 +1938,7 @@ prepare(item: AVQueueItem): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-prepare(item: AVQueueItem): Promise<void>--><!--Device-AVCastController-prepare(item: AVQueueItem): Promise<void>-End-->
 
@@ -1994,7 +2002,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>--><!--Device-AVCastController-processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>-End-->
 
@@ -2037,6 +2045,8 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -2075,7 +2085,7 @@ avCastController.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -2087,7 +2097,7 @@ release(): Promise<void>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-release(): Promise<void>--><!--Device-AVCastController-release(): Promise<void>-End-->
 
@@ -2114,6 +2124,8 @@ avCastController.release().then(() => {
   console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="sendcontrolcommand1"></a>
 
 ## sendControlCommand
 
@@ -2158,7 +2170,7 @@ avCastController.sendControlCommand(avCommand, (err: BusinessError) => {
 });
 ```
 
-<a id="sendcontrolcommand-1"></a>
+<a id="sendcontrolcommand2"></a>
 
 ## sendControlCommand
 
@@ -2170,7 +2182,7 @@ sendControlCommand(command: AVCastControlCommand): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-sendControlCommand(command: AVCastControlCommand): Promise<void>--><!--Device-AVCastController-sendControlCommand(command: AVCastControlCommand): Promise<void>-End-->
 
@@ -2218,7 +2230,7 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-sendCustomData(data: Record<string, Object>): Promise<void>--><!--Device-AVCastController-sendCustomData(data: Record<string, Object>): Promise<void>-End-->
 
@@ -2252,6 +2264,8 @@ avCastController.sendCustomData({customData: 'This is custom data'}).then(() => 
 });
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -2263,7 +2277,7 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 在音视频投播场景下，当应用程序顺序调用
-> [prepare](#prepare)和start接口，且
+> [prepare](#prepare1)和start接口，且
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10
@@ -2318,7 +2332,7 @@ avCastController.start(playItem, (err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -2331,12 +2345,12 @@ start(item: AVQueueItem): Promise<void>
 > **说明：** 
 > 
 > 在音视频投播场景下，当应用程序顺序调用
-> [prepare](#prepare)和start接口，且
+> [prepare](#prepare1)和start接口，且
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastController-start(item: AVQueueItem): Promise<void>--><!--Device-AVCastController-start(item: AVQueueItem): Promise<void>-End-->
 

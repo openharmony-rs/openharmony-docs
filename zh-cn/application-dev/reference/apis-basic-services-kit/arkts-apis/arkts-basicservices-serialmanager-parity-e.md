@@ -12,34 +12,6 @@ enum Parity
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
-## PARITY_NONE
-
-```TypeScript
-PARITY_NONE = 0
-```
-
-无校验。
-
-**起始版本：** 19
-
-<!--Device-Parity-PARITY_NONE = 0--><!--Device-Parity-PARITY_NONE = 0-End-->
-
-**系统能力：** SystemCapability.USB.USBManager.Serial
-
-## PARITY_ODD
-
-```TypeScript
-PARITY_ODD = 1
-```
-
-奇校验。
-
-**起始版本：** 19
-
-<!--Device-Parity-PARITY_ODD = 1--><!--Device-Parity-PARITY_ODD = 1-End-->
-
-**系统能力：** SystemCapability.USB.USBManager.Serial
-
 ## PARITY_EVEN
 
 ```TypeScript
@@ -65,6 +37,34 @@ PARITY_MARK = 3
 **起始版本：** 19
 
 <!--Device-Parity-PARITY_MARK = 3--><!--Device-Parity-PARITY_MARK = 3-End-->
+
+**系统能力：** SystemCapability.USB.USBManager.Serial
+
+## PARITY_NONE
+
+```TypeScript
+PARITY_NONE = 0
+```
+
+无校验。
+
+**起始版本：** 19
+
+<!--Device-Parity-PARITY_NONE = 0--><!--Device-Parity-PARITY_NONE = 0-End-->
+
+**系统能力：** SystemCapability.USB.USBManager.Serial
+
+## PARITY_ODD
+
+```TypeScript
+PARITY_ODD = 1
+```
+
+奇校验。
+
+**起始版本：** 19
+
+<!--Device-Parity-PARITY_ODD = 1--><!--Device-Parity-PARITY_ODD = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 

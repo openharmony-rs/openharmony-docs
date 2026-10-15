@@ -18,7 +18,7 @@ Basic event type.
 getModifierKeyState?(keys: Array<string>): boolean
 ```
 
-Obtains the pressed status of modifier keys. For details about the error message, see the following error codes. The Ctrl, Alt, and Shift keys are supported.
+Obtains the pressed state of modifier keys. It can be used to determine whether the Ctrl, Alt, and Shift modifier keys are pressed during gesture event handling, so as to process combined-key interaction logic. For error information, see the error codes below. Supported modifier keys: 'Ctrl'|'Alt'|'Shift'.
 
 > **NOTE:** 
 > 
@@ -38,7 +38,7 @@ Obtains the pressed status of modifier keys. For details about the error message
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keys | Array&lt;string&gt; | Yes | Modifier key list. |
+| keys | Array&lt;string&gt; | Yes | List of modifier keys. The array elements support 'Ctrl', 'Alt', and 'Shift', and are used to query whether the specified modifier keys are all pressed. |
 
 **Return value:**
 
@@ -65,6 +65,8 @@ Default value: **0**
 **NOTE:** 
 
 This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.
+
+For the horizontal scrolling scenario triggered by Shift + mouse wheel, axisHorizontal is 0, and the scroll value is reflected in axisVertical.
 
 **Type:** number
 
@@ -125,6 +127,8 @@ Default value: **0**
 **NOTE:** 
 
 This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.
+
+For the horizontal scrolling scenario triggered by Shift + mouse wheel, the scroll value is reflected in axisVertical.
 
 **Type:** number
 
@@ -194,9 +198,11 @@ Value range: [0, 1], typical value 0.913168, where higher values indicate greate
 rollAngle?: number
 ```
 
-Angle between the stylus and the device's surface.
+Angle of rotation of the stylus around the long axis of the pen body, similar to the rotation angle when using a screwdriver.
 
 Unit: deg
+
+Value range: [-179, 179], where [0, 179] corresponds to positive angle values [0, 179], and the actual values for the [-179, -1] part are [65357, 65535]. 0 is the hardware reference baseline and does not mean the pen body has no rotation. A positive value indicates clockwise rotation from the baseline direction (that is, from the pen body toward the pen tip, the rotation direction determined by the right-hand rule is clockwise), and a negative value indicates counterclockwise rotation from the baseline direction. When continuous rotation exceeds ±179, the value jumps to the opposite boundary and continues to change.
 
 **Type:** number
 
@@ -258,7 +264,7 @@ Event input source type.
 target: EventTarget
 ```
 
-Object that triggers the gesture event.
+Element object that triggers the gesture event.
 
 **Type:** [EventTarget](arkts-arkui-common-comp-eventtarget-i.md)
 
@@ -353,6 +359,8 @@ timestamp: number
 Timestamp of the event. It is the interval between the time when the event is triggered and the time when the system starts.
 
 Unit: ns
+
+Value range: [0, +∞).
 
 **Type:** number
 

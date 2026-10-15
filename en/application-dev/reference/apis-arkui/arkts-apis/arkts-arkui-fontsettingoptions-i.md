@@ -18,7 +18,7 @@ Defines font setting options.
 enableVariableFontWeight?: boolean
 ```
 
-Whether to enable variable font weight adjustment. This font configuration item is used as an input parameter of the [fontWeight](../arkts-components/arkts-arkui-text-comp-attribute.md#fontweight-1) API. When the value of **weight** in the **fontWeight** API is a non-multiple-of-100 value within [100, 900], **enableVariableFontWeight** determines whether the value of **weight** takes effect.
+Whether to enable variable font weight adjustment. This font configuration item is used as an input parameter of the [fontWeight](../arkts-components/arkts-arkui-text-comp-attribute.md#fontweight2) API. When the value of **weight** in the **fontWeight** API is a non-multiple-of-100 value within [100, 900], **enableVariableFontWeight** determines whether the value of **weight** takes effect.
 
 Default value: **false**
 

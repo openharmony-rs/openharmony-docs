@@ -26,20 +26,6 @@ TRIANGLES_VERTEXMODE = 0
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## TRIANGLESSTRIP_VERTEXMODE
-
-```TypeScript
-TRIANGLESSTRIP_VERTEXMODE = 1
-```
-
-连续的三角形共享一条边，对于连续表面效率高。
-
-**起始版本：** 23
-
-<!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1--><!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
 ## TRIANGLESFAN_VERTEXMODE
 
 ```TypeScript
@@ -51,5 +37,19 @@ TRIANGLESFAN_VERTEXMODE = 2
 **起始版本：** 23
 
 <!--Device-VertexMode-TRIANGLESFAN_VERTEXMODE = 2--><!--Device-VertexMode-TRIANGLESFAN_VERTEXMODE = 2-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## TRIANGLESSTRIP_VERTEXMODE
+
+```TypeScript
+TRIANGLESSTRIP_VERTEXMODE = 1
+```
+
+连续的三角形共享一条边，对于连续表面效率高。
+
+**起始版本：** 23
+
+<!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1--><!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

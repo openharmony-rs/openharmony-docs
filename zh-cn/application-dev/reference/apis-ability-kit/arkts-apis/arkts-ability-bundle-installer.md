@@ -1,4 +1,4 @@
-# @ohos.bundle.installer
+# @ohos.bundle.installer(installer模块)
 
 在设备上安装、升级和卸载应用。
 
@@ -27,9 +27,9 @@ import { installer } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller) | 获取BundleInstaller对象。使用callback异步回调。 |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller-1) | 获取BundleInstaller对象。使用Promise异步回调。 |
-| [getBundleInstallerSync](arkts-ability-installer-getbundleinstallersync-f-sys.md) | 获取并返回BundleInstaller对象。 |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller1) | 获取BundleInstaller对象。使用callback异步回调。 |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller2) | 获取BundleInstaller对象。使用Promise异步回调。 |
+| [getBundleInstallerSync](arkts-ability-installer-getbundleinstallersync-f-sys.md#getbundleinstallersync) | 获取并返回BundleInstaller对象。接口调用失败时可能返回null，需校验返回值后使用。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -46,5 +46,5 @@ import { installer } from '@kit.AbilityKit';
 | [PGOParam](arkts-ability-installer-pgoparam-i-sys.md) | PGO（Profile-guided Optimization）配置文件参数信息。 |
 | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 插件应用安装、卸载的参数信息。 |
 | [UninstallParam](arkts-ability-installer-uninstallparam-i-sys.md) | 共享包卸载需指定的参数信息。 |
-| [VerifyCodeParam](arkts-ability-installer-verifycodeparam-i-sys.md) | 应用程序代码签名文件信息。 |
+| [VerifyCodeParam](arkts-ability-installer-verifycodeparam-i-sys.md) | > 从API version 11开始不再维护，应用的代码签名文件将集成到安装包中，不再需要该接口来指定安装包的代码签名文件。 > 应用程序代码签名文件信息。 |
 <!--DelEnd-->

@@ -45,6 +45,7 @@ Obtains the list of detailed information about peripherals. If the device has no
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | [26300001](../errorcode-deviceManager.md#26300001-externaldevicemanager-service-exception) | ExternalDeviceManager service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   console.error(`Failed to query device info. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

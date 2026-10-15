@@ -34,6 +34,7 @@ Re-connects to current network.
 | --- | --- |
 | boolean | `true` if the Wi-Fi network is re-connect successfully. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

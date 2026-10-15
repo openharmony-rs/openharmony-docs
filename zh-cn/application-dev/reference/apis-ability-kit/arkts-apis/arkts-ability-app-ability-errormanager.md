@@ -20,22 +20,22 @@ import { errorManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [off](arkts-ability-errormanager-off-f.md#offerror) | 注销错误观测器。使用callback异步返回。 |
-| [off](arkts-ability-errormanager-off-f.md#offerror) | 注销错误观测器。使用Promise异步返回。 |
-| [off](arkts-ability-errormanager-off-f.md#offloopobserver) | 注销主线程消息处理监听器。 |
-| [off](arkts-ability-errormanager-off-f.md#offunhandledrejection) | 注销被拒绝promise监听器。 |
-| [off](arkts-ability-errormanager-off-f.md#offglobalunhandledrejectiondetected) | 注销被拒绝promise监听器，注销后无法监听进程中的promise异常。 |
-| [off](arkts-ability-errormanager-off-f.md#offfreeze) | 取消之前注册的应用主线程freeze监听。 |
-| [off](arkts-ability-errormanager-off-f.md#offglobalerroroccurred) | 注销错误观测器，注销之前注册在同一线程的callback全局监听。 |
-| [on](arkts-ability-errormanager-on-f.md#onerror) | 注册错误观测器。注册后可以捕获到应用产生的js crash，属于应用崩溃的一种。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。 |
-| [on](arkts-ability-errormanager-on-f.md#onloopobserver) | 注册主线程消息处理耗时监听器。注册后可以捕获到应用主线程处理消息的具体执行时间。 |
-| [on](arkts-ability-errormanager-on-f.md#onunhandledrejection) | 注册被拒绝promise监听器。注册后可以捕获到当前线程中未被捕获到的promise rejection。 |
-| [on](arkts-ability-errormanager-on-f.md#onglobalunhandledrejectiondetected) | 在进程中任意线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection。 |
-| [on](arkts-ability-errormanager-on-f.md#onfreeze) | 注册应用主线程freeze监听。多次注册情况下，取最后一次注册的结果。 |
-| [on](arkts-ability-errormanager-on-f.md#onglobalerroroccurred) | 在进程中的任意线程中注册 `errormanager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。 |
-| [setDefaultErrorHandler](arkts-ability-errormanager-setdefaulterrorhandler-f.md) | 发生JS_CRASH异常时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 |
-| [setDefaultFreezeObserver](arkts-ability-errormanager-setdefaultfreezeobserver-f.md) | 发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 |
-| [setDefaultResourceUsageObserver](arkts-ability-errormanager-setdefaultresourceusageobserver-f.md) | 设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。 |
+| [off('error')](arkts-ability-errormanager-off-f.md#offerror) | 注销错误观测器。使用callback异步返回。 |
+| [off('error')](arkts-ability-errormanager-off-f.md#offerror) | 注销错误观测器。使用Promise异步返回。 |
+| [off('loopObserver')](arkts-ability-errormanager-off-f.md#offloopobserver) | 注销主线程消息处理监听器。 |
+| [off('unhandledRejection')](arkts-ability-errormanager-off-f.md#offunhandledrejection) | 注销被拒绝promise监听器。 |
+| [off('globalUnhandledRejectionDetected')](arkts-ability-errormanager-off-f.md#offglobalunhandledrejectiondetected) | 注销被拒绝promise监听器，注销后无法监听进程中的promise异常。 |
+| [off('freeze')](arkts-ability-errormanager-off-f.md#offfreeze) | 取消之前注册的应用主线程freeze监听。 |
+| [off('globalErrorOccurred')](arkts-ability-errormanager-off-f.md#offglobalerroroccurred) | 注销错误观测器，注销之前注册在同一线程的callback全局监听。 |
+| [on('error')](arkts-ability-errormanager-on-f.md#onerror) | 注册错误观测器。注册后可以捕获到应用产生的js crash，属于应用崩溃的一种。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。 |
+| [on('loopObserver')](arkts-ability-errormanager-on-f.md#onloopobserver) | 注册主线程消息处理耗时监听器。注册后可以捕获到应用主线程处理消息的具体执行时间。 |
+| [on('unhandledRejection')](arkts-ability-errormanager-on-f.md#onunhandledrejection) | 注册被拒绝promise监听器。注册后可以捕获到当前线程中未被捕获到的promise rejection。 |
+| [on('globalUnhandledRejectionDetected')](arkts-ability-errormanager-on-f.md#onglobalunhandledrejectiondetected) | 在进程中任意线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection。 |
+| [on('freeze')](arkts-ability-errormanager-on-f.md#onfreeze) | 注册应用主线程freeze监听。多次注册情况下，取最后一次注册的结果。 |
+| [on('globalErrorOccurred')](arkts-ability-errormanager-on-f.md#onglobalerroroccurred) | 在进程中的任意线程中注册 `errormanager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。 |
+| [setDefaultErrorHandler](arkts-ability-errormanager-setdefaulterrorhandler-f.md#setdefaulterrorhandler) | 发生JS_CRASH异常时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 |
+| [setDefaultFreezeObserver](arkts-ability-errormanager-setdefaultfreezeobserver-f.md#setdefaultfreezeobserver) | 发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 |
+| [setDefaultResourceUsageObserver](arkts-ability-errormanager-setdefaultresourceusageobserver-f.md#setdefaultresourceusageobserver) | 设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。 |
 
 ### 接口
 

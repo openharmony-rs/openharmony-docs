@@ -40,7 +40,7 @@ Pinch scale factor. The value is greater than or equal to 0.
 type: ActionType
 ```
 
-Gesture event type, for example, gesture start, gesture update, or gesture end.
+Gesture event type, including gesture cancel, gesture start, gesture update, and gesture end.
 
 **Type:** [ActionType](arkts-input-multimodalinput-gestureevent-actiontype-e.md)
 

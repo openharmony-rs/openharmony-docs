@@ -22,7 +22,7 @@ Creates a circle. After the call, a **Circle** object is created, and its width 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute--><!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute-End-->
+<!--Device-CircleInterface-(value?: CircleOptions): CircleAttribute--><!--Device-CircleInterface-(value?: CircleOptions): CircleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,7 +30,7 @@ Creates a circle. After the call, a **Circle** object is created, and its width 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CircleOptions](arkts-arkui-circle-comp-circleoptions-i.md) | No | Circle size. Pass this parameter when you need to customize the circle size. If it is not passed, width and height default to **0**.<br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
+| value | [CircleOptions](arkts-arkui-circle-comp-circleoptions-i.md) | No | Circle size. Pass this parameter when you need to customize the circle size. If it is not passed, width and height default to **0**.<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ## Circle
 
@@ -48,7 +48,7 @@ Creates a circle. After the call, a **Circle** object is created, and its width 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-CircleInterface-(value?: CircleOptions): CircleAttribute--><!--Device-CircleInterface-(value?: CircleOptions): CircleAttribute-End-->
+<!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute--><!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +56,7 @@ Creates a circle. After the call, a **Circle** object is created, and its width 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CircleOptions](arkts-arkui-circle-comp-circleoptions-i.md) | No | Circle size. Pass this parameter when you need to customize the circle size. If it is not passed, width and height default to **0**.<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
+| value | [CircleOptions](arkts-arkui-circle-comp-circleoptions-i.md) | No | Circle size. Pass this parameter when you need to customize the circle size. If it is not passed, width and height default to **0**.<br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
 
 ## Summary
 

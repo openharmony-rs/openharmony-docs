@@ -12,6 +12,8 @@ declare class Matrix2D
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -32,7 +34,7 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -112,7 +114,7 @@ invert(): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | 逆矩阵结果。 |
 
-<a id="rotate-1"></a>
+<a id="rotate2"></a>
 
 ## rotate
 
@@ -146,7 +148,9 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | 旋转后结果矩阵对象。 |
+
+<a id="rotate1"></a>
 
 ## rotate
 
@@ -181,7 +185,7 @@ rotate(rx?: number, ry?: number): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | 旋转后结果矩阵对象。 |
 
 ## scale
 
@@ -214,7 +218,7 @@ scale(sx?: number, sy?: number): Matrix2D
 
 | 类型 | 说明 |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | 缩放后结果矩阵对象。 |
 
 ## translate
 

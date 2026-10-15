@@ -8,7 +8,7 @@ interface RdbStore
 
 在使用以下API前，请先通过[getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md)方法获取RdbStore实例，并使用该实例调用对应接口方法。
 
-在此基础上，建议优先使用[execute](#execute)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
+在此基础上，建议优先使用[execute](#execute1)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
 
 **起始版本：** 9
 
@@ -21,6 +21,8 @@ interface RdbStore
 ```TypeScript
 import { relationalStore } from '@kit.ArkData';
 ```
+
+<a id="attach1"></a>
 
 ## attach
 
@@ -63,7 +65,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-数据库路径不合法) | Failed to open or delete the database by an invalid database path. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
@@ -100,7 +102,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="attach-1"></a>
+<a id="attach2"></a>
 
 ## attach
 
@@ -144,7 +146,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-数据库路径不合法) | Failed to open or delete the database by an invalid database path. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
@@ -171,6 +173,8 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 **示例**
 
 参见 [attach](#attach)
+
+<a id="backup1"></a>
 
 ## backup
 
@@ -234,7 +238,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="backup-1"></a>
+<a id="backup2"></a>
 
 ## backup
 
@@ -303,6 +307,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="batchinsert1"></a>
+
 ## batchInsert
 
 ```TypeScript
@@ -317,9 +323,9 @@ batchInsert(table: string, values: Array<ValuesBucket>, callback: AsyncCallback<
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -413,7 +419,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="batchinsert-1"></a>
+<a id="batchinsert2"></a>
 
 ## batchInsert
 
@@ -429,9 +435,9 @@ batchInsert(table: string, values: Array<ValuesBucket>): Promise<number>
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -565,9 +571,9 @@ batchInsertSync(table: string, values: Array<ValuesBucket>): number
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -685,9 +691,9 @@ batchInsertWithConflictResolution(
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -803,9 +809,9 @@ batchInsertWithConflictResolutionSync(
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -921,9 +927,9 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -1009,9 +1015,9 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -1109,7 +1115,7 @@ beginTrans(): Promise<number>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: The RdbStore verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.). |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.). |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
@@ -1218,6 +1224,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="cleandirtydata1"></a>
+
 ## cleanDirtyData
 
 ```TypeScript
@@ -1246,9 +1254,9 @@ cleanDirtyData(table: string, cursor: number, callback: AsyncCallback<void>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 1 - 3 parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Need 1 - 3 parameter(s)! 2. The RdbStore must be not nullptr.         3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -1281,7 +1289,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="cleandirtydata-1"></a>
+<a id="cleandirtydata2"></a>
 
 ## cleanDirtyData
 
@@ -1308,9 +1316,9 @@ cleanDirtyData(table: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 1 - 3 parameter(s). 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Need 1 - 3 parameter(s). 2. The RdbStore must be not nullptr.         3. The tablesNames must be not empty string. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -1343,7 +1351,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="cleandirtydata-2"></a>
+<a id="cleandirtydata3"></a>
 
 ## cleanDirtyData
 
@@ -1376,9 +1384,9 @@ cleanDirtyData(table: string, cursor?: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 1 - 3 parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Need 1 - 3 parameter(s)! 2. The RdbStore must be not nullptr.         3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -1452,6 +1460,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="cloudsync1"></a>
+
 ## cloudSync
 
 ```TypeScript
@@ -1478,8 +1488,8 @@ cloudSync(mode: SyncMode, progress: Callback<ProgressDetails>, callback: AsyncCa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 2 - 4 parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. 5. The callback must be a function. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 2 - 4 parameter(s). 2. The RdbStore must be not nullptr.         3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type.         5. The callback must be a function. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -1498,7 +1508,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="cloudsync-1"></a>
+<a id="cloudsync2"></a>
 
 ## cloudSync
 
@@ -1531,8 +1541,8 @@ cloudSync(mode: SyncMode, progress: Callback<ProgressDetails>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 2 - 4 parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 2 - 4 parameter(s). 2. The RdbStore must be not nullptr.         3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -1551,7 +1561,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="cloudsync-2"></a>
+<a id="cloudsync3"></a>
 
 ## cloudSync
 
@@ -1586,7 +1596,7 @@ cloudSync(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -1607,7 +1617,7 @@ if (store != undefined) {
 };
 ```
 
-<a id="cloudsync-3"></a>
+<a id="cloudsync4"></a>
 
 ## cloudSync
 
@@ -1641,8 +1651,8 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback<ProgressDetails>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 2 - 4 parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 2 - 4 parameter(s). 2. The RdbStore must be not nullptr.         3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty.         5. The progress must be a callback type. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -1757,6 +1767,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="commit1"></a>
+
 ## commit
 
 ```TypeScript
@@ -1820,7 +1832,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="commit-1"></a>
+<a id="commit2"></a>
 
 ## commit
 
@@ -1908,7 +1920,7 @@ createTransaction(options?: TransactionOptions): Promise<Transaction>
 
 创建一个事务对象并开始事务，使用Promise异步回调。
 
-与[beginTransaction](#begintransaction)的区别在于：createTransaction接口会返回一个事务对象，不同事务对象之间是隔离的。使用事务对象进行插入、删除或更新数据等操作，无法被注册数据变更通知[on('dataChange')](#on)监听到。
+与[beginTransaction](#begintransaction)的区别在于：createTransaction接口会返回一个事务对象，不同事务对象之间是隔离的。使用事务对象进行插入、删除或更新数据等操作，无法被注册数据变更通知[on('dataChange')](../../apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatachange)监听到。
 
 一个store最多支持同时存在四个事务对象，超过后会返回14800015错误码，此时需要检查是否持有事务对象时间过长或并发事务过多，若确认无法通过上述优化解决问题，建议等待现有事务释放后，再尝试新建事务对象。
 
@@ -1966,6 +1978,8 @@ if (store != undefined) {
   });
 }
 ```
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -2031,7 +2045,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -2395,14 +2409,14 @@ emit(event: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | string | 是 | 通知订阅事件的名称，可自定义事件名称，不能与系统已有事件[dataChange](#on)，[autoSyncProgress](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#onautosyncprogress11)，[statistics](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#onstatistics12)名称重复。 |
+| event | string | 是 | 通知订阅事件的名称，可自定义事件名称，不能与系统已有事件[dataChange](../../apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatachange)，[autoSyncProgress](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#onautosyncprogress11)，[statistics](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#onstatistics12)名称重复。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800050](../errorcode-data-rdb.md#14800050-获取订阅服务失败) | Failed to obtain the subscription service. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -2415,6 +2429,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="execute1"></a>
+
 ## execute
 
 ```TypeScript
@@ -2425,7 +2441,7 @@ execute(sql: string, args?: Array<ValueType>): Promise<ValueType>
 
 该接口支持执行增删改操作，支持执行PRAGMA语法的sql，支持对表的操作（建表、删表、修改表），返回结果类型由执行具体sql的结果决定。
 
-此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql)、[query](#query)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
+此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql1)、[query](#query1)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
 向量数据库使用该接口执行插入操作，数据来源于子查询时，支持全字段插入，暂不支持部分字段插入。
 
@@ -2457,7 +2473,7 @@ execute(sql: string, args?: Array<ValueType>): Promise<ValueType>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.). |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.). |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
@@ -2531,7 +2547,7 @@ await store!.execute(insertSql, [0, vectorValue]);
 await store!.execute("insert into test values(1, '[3.5, 1.8]');");
 ```
 
-<a id="execute-1"></a>
+<a id="execute2"></a>
 
 ## execute
 
@@ -2543,7 +2559,7 @@ execute(sql: string, txId: number, args?: Array<ValueType>): Promise<ValueType>
 
 该接口仅支持向量数据库（在[StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md)中配置vector为true）使用。使用该接口执行插入操作，数据来源于子查询时，支持全字段插入，暂不支持部分字段插入。
 
-此接口不支持执行查询，可以使用[querySql](#querysql)接口代替。
+此接口不支持执行查询，可以使用[querySql](#querysql1)接口代替。
 
 不支持分号分隔的多条语句。
 
@@ -2576,7 +2592,7 @@ execute(sql: string, txId: number, args?: Array<ValueType>): Promise<ValueType>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.). |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.). |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
@@ -2621,6 +2637,8 @@ if (store != null) {
 }
 ```
 
+<a id="executesql1"></a>
+
 ## executeSql
 
 ```TypeScript
@@ -2629,7 +2647,7 @@ executeSql(sql: string, callback: AsyncCallback<void>): void
 
 执行指定的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
-此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql)、[query](#query)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
+此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql1)、[query](#query1)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
 不支持分号分隔的多条语句。
 
@@ -2653,7 +2671,7 @@ executeSql(sql: string, callback: AsyncCallback<void>): void
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.).<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.).<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -2687,7 +2705,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="executesql-1"></a>
+<a id="executesql2"></a>
 
 ## executeSql
 
@@ -2697,7 +2715,7 @@ executeSql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<void
 
 执行指定的SQL语句，支持传入SQL语句中参数的值，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
-此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql)、[query](#query)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
+此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql1)、[query](#query1)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
 不支持分号分隔的多条语句。
 
@@ -2722,7 +2740,7 @@ executeSql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.).<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.).<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -2756,7 +2774,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="executesql-2"></a>
+<a id="executesql3"></a>
 
 ## executeSql
 
@@ -2766,7 +2784,7 @@ executeSql(sql: string, bindArgs?: Array<ValueType>): Promise<void>
 
 执行指定的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
 
-此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql)、[query](#query)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
+此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql1)、[query](#query1)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
 不支持分号分隔的多条语句。
 
@@ -2796,7 +2814,7 @@ executeSql(sql: string, bindArgs?: Array<ValueType>): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.).<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.).<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -2840,7 +2858,7 @@ executeSync(sql: string, args?: Array<ValueType>): ValueType
 
 该接口支持执行增删改操作，支持执行PRAGMA语法的sql，支持对表的操作（建表、删表、修改表），返回结果类型由执行具体sql的结果决定。
 
-此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql)、[query](#query)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
+此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql1)、[query](#query1)、[attach](#attach)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
 不支持分号分隔的多条语句。
 
@@ -2927,6 +2945,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="getmodifytime1"></a>
+
 ## getModifyTime
 
 ```TypeScript
@@ -2959,9 +2979,9 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[]): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 3 - 4 parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Need 3 - 4 parameter(s)! 2. The RdbStore must be not nullptr.         3. The tablesNames must be not empty string. 4. The columnName must be not empty string.         5. The PRIKey must be number or string. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -2997,7 +3017,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="getmodifytime-1"></a>
+<a id="getmodifytime2"></a>
 
 ## getModifyTime
 
@@ -3031,9 +3051,9 @@ getModifyTime(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 3 - 4 parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Need 3 - 4 parameter(s)! 2. The RdbStore must be not nullptr.         3. The tablesNames must be not empty string. 4. The columnName must be not empty string.         5. The PRIKey must be number or string. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |
@@ -3067,6 +3087,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="insert1"></a>
+
 ## insert
 
 ```TypeScript
@@ -3077,9 +3099,9 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback<number>): vo
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -3163,7 +3185,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="insert-1"></a>
+<a id="insert2"></a>
 
 ## insert
 
@@ -3175,9 +3197,9 @@ insert(table: string, values: ValuesBucket, conflict: ConflictResolution, callba
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -3263,7 +3285,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="insert-2"></a>
+<a id="insert3"></a>
 
 ## insert
 
@@ -3275,9 +3297,9 @@ insert(table: string, values: ValuesBucket): Promise<number>
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -3364,7 +3386,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="insert-3"></a>
+<a id="insert4"></a>
 
 ## insert
 
@@ -3376,9 +3398,9 @@ insert(table: string, values: ValuesBucket, conflict: ConflictResolution): Promi
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -3466,6 +3488,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="insertsync1"></a>
+
 ## insertSync
 
 ```TypeScript
@@ -3476,9 +3500,9 @@ insertSync(table: string, values: ValuesBucket, conflict?: ConflictResolution): 
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -3565,7 +3589,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="insertsync-1"></a>
+<a id="insertsync2"></a>
 
 ## insertSync
 
@@ -3577,9 +3601,9 @@ insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -3724,6 +3748,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="obtaindistributedtablename1"></a>
+
 ## obtainDistributedTableName
 
 ```TypeScript
@@ -3760,7 +3786,7 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -3797,7 +3823,7 @@ if (store != undefined && deviceId != undefined) {
 }
 ```
 
-<a id="obtaindistributedtablename-1"></a>
+<a id="obtaindistributedtablename2"></a>
 
 ## obtainDistributedTableName
 
@@ -3840,7 +3866,7 @@ obtainDistributedTableName(device: string, table: string): Promise<string>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -3875,6 +3901,8 @@ if (store != undefined && deviceId != undefined) {
 }
 ```
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -3895,14 +3923,14 @@ off(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>)
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | [SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md) | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array<string>为数据库中的数据发生改变的对端设备ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -3935,7 +3963,7 @@ try {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -3961,7 +3989,7 @@ off(
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | [SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md) | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; &#124; [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[ChangeInfo](arkts-arkdata-relationalstore-changeinfo-i.md)&gt;&gt; | 否 | 回调函数。<br>当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。<br> 当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的云端账号。<br> 当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为数据库端云同步过程的详情。<br>当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为本地数据库中的数据更改的详情。<br>当observer没有传入时，表示取消当前type类型下所有数据变更的事件监听。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; &#124; [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[ChangeInfo](arkts-arkdata-relationalstore-changeinfo-i.md)&gt;&gt; | 否 | 回调函数。<br>当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback<Array<string>&gt;，其中Array<string>为数据库中的数据发生改变的对端设备ID。<br> 当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback<Array<string>&gt;，其中Array<string>为数据库中的数据发生改变的云端账号。<br> 当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback<Array<ChangeInfo>&gt;，其中Array<ChangeInfo>为数据库端云同步过程的详情。<br>当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback<Array<ChangeInfo>&gt;，其中Array<ChangeInfo>为本地数据库中的数据更改的详情。<br>当observer没有传入时，表示取消当前type类型下所有数据变更的事件监听。 |
 
 **错误码：**
 
@@ -3969,14 +3997,14 @@ off(
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
 
 参见 [off](#off)
 
-<a id="off-2"></a>
+<a id="off3"></a>
 
 ## off
 
@@ -4005,7 +4033,7 @@ off(event: string, interProcess: boolean, observer?: Callback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800050](../errorcode-data-rdb.md#14800050-获取订阅服务失败) | Failed to obtain the subscription service. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -4014,7 +4042,7 @@ off(event: string, interProcess: boolean, observer?: Callback<void>): void
 
 参见 [off](#off)
 
-<a id="off-3"></a>
+<a id="off4"></a>
 
 ## off
 
@@ -4041,15 +4069,15 @@ off(event: 'autoSyncProgress', progress?: Callback<ProgressDetails>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Need 1 - 3 parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Need 1 - 3 parameter(s)! 2. The RdbStore must be valid.         3. The event must be a not empty string. 4. The progress must be function. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
 
 参见 [off](#off)
 
-<a id="off-4"></a>
+<a id="off5"></a>
 
 ## off
 
@@ -4077,7 +4105,7 @@ off(event: 'statistics', observer?: Callback<SqlExecutionInfo> ): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 
@@ -4085,7 +4113,7 @@ off(event: 'statistics', observer?: Callback<SqlExecutionInfo> ): void
 
 参见 [off](#off)
 
-<a id="off-5"></a>
+<a id="off6"></a>
 
 ## off
 
@@ -4112,14 +4140,14 @@ off(event: 'perfStat', observer?: Callback<SqlExecutionInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 
 **示例**
 
 参见 [off](#off)
 
-<a id="off-6"></a>
+<a id="off7"></a>
 
 ## off
 
@@ -4146,12 +4174,14 @@ off(event: 'sqliteErrorOccurred', observer?: Callback<ExceptionMessage>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 
 **示例**
 
 参见 [off](#off)
+
+<a id="on1"></a>
 
 ## on
 
@@ -4173,14 +4203,14 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>):
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | [SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md) | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array<string>为数据库中的数据发生改变的对端设备ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -4203,7 +4233,7 @@ try {
 }
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -4225,7 +4255,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>> |
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | [SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md) | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; &#124; [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[ChangeInfo](arkts-arkdata-relationalstore-changeinfo-i.md)&gt;&gt; | 是 | 回调函数。<br>当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。<br>当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的云端账号。<br>当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为数据库端云同步过程的详情。<br>当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为本地数据库中的数据更改的详情。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; &#124; [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[ChangeInfo](arkts-arkdata-relationalstore-changeinfo-i.md)&gt;&gt; | 是 | 回调函数。<br>当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback<Array<string>&gt;，其中Array<string>为数据库中的数据发生改变的对端设备ID。<br>当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback<Array<string>&gt;，其中Array<string>为数据库中的数据发生改变的云端账号。<br>当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback<Array<ChangeInfo>&gt;，其中Array<ChangeInfo>为数据库端云同步过程的详情。<br>当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback<Array<ChangeInfo>&gt;，其中Array<ChangeInfo>为本地数据库中的数据更改的详情。 |
 
 **错误码：**
 
@@ -4233,14 +4263,14 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>> |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
 
 参见 [on](#on)
 
-<a id="on-2"></a>
+<a id="on3"></a>
 
 ## on
 
@@ -4248,7 +4278,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>> |
 on(event: string, interProcess: boolean, observer: Callback<void>): void
 ```
 
-注册数据库的进程内或者进程间事件监听。当调用emit接口时，将调用回调。
+注册数据库的进程内或者进程间事件监听。当调用[emit](#emit)接口时，将调用回调。
 
 **起始版本：** 10
 
@@ -4269,7 +4299,7 @@ on(event: string, interProcess: boolean, observer: Callback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800050](../errorcode-data-rdb.md#14800050-获取订阅服务失败) | Failed to obtain the subscription service. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -4278,7 +4308,7 @@ on(event: string, interProcess: boolean, observer: Callback<void>): void
 
 参见 [on](#on)
 
-<a id="on-3"></a>
+<a id="on4"></a>
 
 ## on
 
@@ -4306,14 +4336,14 @@ on(event: 'autoSyncProgress', progress: Callback<ProgressDetails>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed; <br>4. The event must be a not empty string; 5. The progress must be function. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
 
 参见 [on](#on)
 
-<a id="on-4"></a>
+<a id="on5"></a>
 
 ## on
 
@@ -4341,7 +4371,7 @@ on(event: 'statistics', observer: Callback<SqlExecutionInfo> ): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 
@@ -4349,7 +4379,7 @@ on(event: 'statistics', observer: Callback<SqlExecutionInfo> ): void
 
 参见 [on](#on)
 
-<a id="on-5"></a>
+<a id="on6"></a>
 
 ## on
 
@@ -4376,14 +4406,14 @@ on(event: 'perfStat', observer: Callback<SqlExecutionInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 
 **示例**
 
 参见 [on](#on)
 
-<a id="on-6"></a>
+<a id="on7"></a>
 
 ## on
 
@@ -4410,12 +4440,14 @@ on(event: 'sqliteErrorOccurred', observer: Callback<ExceptionMessage>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 
 **示例**
 
 参见 [on](#on)
+
+<a id="query1"></a>
 
 ## query
 
@@ -4478,7 +4510,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="query-1"></a>
+<a id="query2"></a>
 
 ## query
 
@@ -4542,7 +4574,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="query-2"></a>
+<a id="query3"></a>
 
 ## query
 
@@ -4611,6 +4643,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="querybystep1"></a>
+
 ## queryByStep
 
 ```TypeScript
@@ -4677,7 +4711,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="querybystep-1"></a>
+<a id="querybystep2"></a>
 
 ## queryByStep
 
@@ -4827,6 +4861,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="querysql1"></a>
+
 ## querySql
 
 ```TypeScript
@@ -4908,7 +4944,7 @@ const querySql2 = "select * from test where id in (select id from test1)";
 let resultSet2 = await store.querySql(querySql2);
 ```
 
-<a id="querysql-1"></a>
+<a id="querysql2"></a>
 
 ## querySql
 
@@ -4974,7 +5010,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="querysql-2"></a>
+<a id="querysql3"></a>
 
 ## querySql
 
@@ -5125,7 +5161,7 @@ if (store != undefined) {
 querySqlWithoutRowCount(sql: string, bindArgs?: Array<ValueType>): Promise<LiteResultSet>
 ```
 
-根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql-2)接口。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
+根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql3)接口。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
 
 **起始版本：** 23
 
@@ -5320,7 +5356,7 @@ if (store != undefined) {
 queryWithoutRowCount(predicates: RdbPredicates, columns?: Array<string>): Promise<LiteResultSet>
 ```
 
-根据指定条件查询数据库中的数据，查询时不计算行数，性能优于[query](#query-2)接口。使用Promise异步回调。
+根据指定条件查询数据库中的数据，查询时不计算行数，性能优于[query](#query3)接口。使用Promise异步回调。
 
 **起始版本：** 23
 
@@ -5486,7 +5522,7 @@ rekey(cryptoParam?: CryptoParam): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-无效的参数) | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
@@ -5685,7 +5721,7 @@ rekeyEx(cryptoParam: CryptoParam): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-无效的参数) | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
@@ -5696,6 +5732,8 @@ rekeyEx(cryptoParam: CryptoParam): Promise<void>
 | [14800027](../errorcode-data-rdb.md#14800027-sqlite尝试写入只读数据库) | SQLite: Attempt to write a readonly database. |
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite发生了某种磁盘io错误) | SQLite: Some kind of disk I/O error occurred. |
 | [14800029](../errorcode-data-rdb.md#14800029-sqlite数据库已满) | SQLite: The database is full. |
+
+<a id="remotequery1"></a>
 
 ## remoteQuery
 
@@ -5739,7 +5777,7 @@ remoteQuery(
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -5793,7 +5831,7 @@ if (store != undefined && deviceId != undefined) {
 }
 ```
 
-<a id="remotequery-1"></a>
+<a id="remotequery2"></a>
 
 ## remoteQuery
 
@@ -5836,7 +5874,7 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -5887,6 +5925,8 @@ if (store != undefined && deviceId != undefined) {
   });
 }
 ```
+
+<a id="restore1"></a>
 
 ## restore
 
@@ -5949,7 +5989,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="restore-1"></a>
+<a id="restore2"></a>
 
 ## restore
 
@@ -6168,6 +6208,8 @@ if (store != null) {
 }
 ```
 
+<a id="setdistributedtables1"></a>
+
 ## setDistributedTables
 
 ```TypeScript
@@ -6197,7 +6239,7 @@ setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -6214,7 +6256,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="setdistributedtables-1"></a>
+<a id="setdistributedtables2"></a>
 
 ## setDistributedTables
 
@@ -6250,7 +6292,7 @@ setDistributedTables(tables: Array<string>): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -6267,7 +6309,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="setdistributedtables-2"></a>
+<a id="setdistributedtables3"></a>
 
 ## setDistributedTables
 
@@ -6300,7 +6342,7 @@ setDistributedTables(tables: Array<string>, type: DistributedType, callback: Asy
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800051](../errorcode-data-rdb.md#14800051-分布式表类型不匹配) | The type of the distributed table does not match. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -6317,7 +6359,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="setdistributedtables-3"></a>
+<a id="setdistributedtables4"></a>
 
 ## setDistributedTables
 
@@ -6356,7 +6398,7 @@ setDistributedTables(
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800051](../errorcode-data-rdb.md#14800051-分布式表类型不匹配) | The type of the distributed table does not match. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -6375,7 +6417,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="setdistributedtables-4"></a>
+<a id="setdistributedtables5"></a>
 
 ## setDistributedTables
 
@@ -6399,7 +6441,7 @@ setDistributedTables(tables: Array<string>, type?: DistributedType, config?: Dis
 | --- | --- | --- | --- |
 | tables | Array&lt;string&gt; | 是 | 要设置的分布式数据库的表名。 |
 | type | [DistributedType](arkts-arkdata-relationalstore-distributedtype-e.md) | 否 | 表的分布式类型。默认值是relationalStore.DistributedType.DISTRIBUTED_DEVICE。 |
-| config | [DistributedConfig](arkts-arkdata-relationalstore-distributedconfig-i.md) | 否 | 表的分布式配置信息。不传入时默认autoSync为false，需要调用[cloudSync](#cloudsync-3)接口触发端云同步。 |
+| config | [DistributedConfig](arkts-arkdata-relationalstore-distributedconfig-i.md) | 否 | 表的分布式配置信息。不传入时默认autoSync为false，需要调用[cloudSync](#cloudsync4)接口触发端云同步。 |
 
 **返回值：**
 
@@ -6414,7 +6456,7 @@ setDistributedTables(tables: Array<string>, type?: DistributedType, config?: Dis
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800051](../errorcode-data-rdb.md#14800051-分布式表类型不匹配) | The type of the distributed table does not match. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -6465,7 +6507,7 @@ setLocale(locale: string) : Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800001](../errorcode-data-rdb.md#14800001-无效的参数) | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 | [14800024](../errorcode-data-rdb.md#14800024-sqlite数据库文件已锁定) | SQLite: The database file is locked. |
@@ -6517,7 +6559,7 @@ stopCloudSync(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The device does not support the cloud synchronization capability. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The device does not support the cloud synchronization capability. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 
 **示例**
@@ -6533,6 +6575,8 @@ if (store != undefined) {
   });
 }
 ```
+
+<a id="sync1"></a>
 
 ## sync
 
@@ -6566,7 +6610,7 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback<Array<[s
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -6606,7 +6650,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="sync-1"></a>
+<a id="sync2"></a>
 
 ## sync
 
@@ -6643,7 +6687,7 @@ sync(mode: SyncMode, predicates: RdbPredicates): Promise<Array<[string, number]>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
 **示例**
@@ -6833,6 +6877,8 @@ if (store != undefined) {
 }
 ```
 
+<a id="update1"></a>
+
 ## update
 
 ```TypeScript
@@ -6843,9 +6889,9 @@ update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback<
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -6931,7 +6977,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="update-1"></a>
+<a id="update2"></a>
 
 ## update
 
@@ -6948,9 +6994,9 @@ update(
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -7037,7 +7083,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="update-2"></a>
+<a id="update3"></a>
 
 ## update
 
@@ -7049,9 +7095,9 @@ update(values: ValuesBucket, predicates: RdbPredicates): Promise<number>
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -7140,7 +7186,7 @@ if (store != undefined) {
 }
 ```
 
-<a id="update-3"></a>
+<a id="update4"></a>
 
 ## update
 
@@ -7152,9 +7198,9 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -7254,9 +7300,9 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](#query-1)或[querySql](#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query2)或[querySql](#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -7546,7 +7592,7 @@ version: int
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**适用版本：** 12+ |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 | [14800015](../errorcode-data-rdb.md#14800015-数据库没有响应) | The database does not respond.<br>**适用版本：** 12+ |

@@ -6,6 +6,8 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -31,7 +33,7 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | Yes | Ability to start. |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | Yes | Ability to start. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **0**; otherwise, **err** is a non-zero value. |
 
 **Examples**
@@ -66,7 +68,7 @@ featureAbility.startAbility(
 ```
 
 
-<a id="startability-1"></a>
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -93,7 +95,7 @@ Starts an ability. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | Yes | Ability to start. |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | Yes | Ability to start. |
 
 **Return value:**
 

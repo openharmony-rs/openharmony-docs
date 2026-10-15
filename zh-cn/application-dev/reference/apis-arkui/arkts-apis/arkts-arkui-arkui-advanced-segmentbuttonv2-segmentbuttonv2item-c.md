@@ -4,6 +4,8 @@
 export declare class SegmentButtonV2Item
 ```
 
+分段按钮选项类，用于定义单个分段按钮的文本、图标等属性。
+
 **起始版本：** 18
 
 **装饰器类型：** @ObservedV2
@@ -48,13 +50,11 @@ constructor(options: SegmentButtonV2ItemOptions)
 accessibilityDescription?: ResourceStr
 ```
 
-分段按钮选项无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription)。
+分段按钮选项无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription1)。
 
 默认值：""
 
 值为undefined时，按默认值处理。
-
-装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -82,8 +82,6 @@ accessibilityLevel?: string
 
 值为undefined时，按默认值处理。
 
-装饰器类型：@Trace
-
 **类型：** string
 
 **起始版本：** 18
@@ -104,13 +102,11 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)。
+分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1)。
 
 默认值：""
 
 值为undefined时，按默认值处理。
-
-装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -140,8 +136,6 @@ true：可用；false：不可用。
 
 值为undefined时，按默认值处理。
 
-装饰器类型：@Trace
-
 **类型：** boolean
 
 **起始版本：** 18
@@ -165,8 +159,6 @@ icon?: ResourceStr
 分段按钮选项图片类型图标。
 
 默认值：undefined
-
-装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -192,9 +184,7 @@ iconModifier?: ImageModifier
 
 默认值：undefined
 
-装饰器类型：@Trace
-
-**类型：** ImageModifier
+**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -238,8 +228,6 @@ symbol?: Resource
 
 默认值：undefined
 
-装饰器类型：@Trace
-
 **类型：** [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 18
@@ -264,9 +252,7 @@ symbolModifier?: SymbolGlyphModifier
 
 默认值：undefined
 
-装饰器类型：@Trace
-
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -289,8 +275,6 @@ text?: ResourceStr
 分段按钮选项文本。
 
 默认值：undefined
-
-装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -316,9 +300,7 @@ textModifier?: TextModifier
 
 默认值：undefined
 
-装饰器类型：@Trace
-
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 

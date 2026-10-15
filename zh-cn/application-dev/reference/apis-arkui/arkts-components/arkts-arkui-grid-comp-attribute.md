@@ -6,7 +6,7 @@ declare class GridAttribute extends ScrollableCommonMethod<GridAttribute>
 
 除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md)和滚动组件通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
 
 **继承/实现关系：** GridAttribute extends ScrollableCommonMethod&lt;GridAttribute&gt;
 
@@ -22,7 +22,7 @@ declare class GridAttribute extends ScrollableCommonMethod<GridAttribute>
 alignItems(alignment: Optional<GridItemAlignment>)
 ```
 
-设置Grid中GridItem的对齐方式， 使用方法可以参考示例9。
+设置Grid中GridItem的对齐方式， 使用方法可以参考[示例9](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例9以当前行最高的griditem的高度为其他griditem的高度)。
 
 **起始版本：** 12
 
@@ -39,6 +39,8 @@ alignItems(alignment: Optional<GridItemAlignment>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | alignment | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[GridItemAlignment](arkts-arkui-grid-comp-griditemalignment-e.md)&gt; | 是 | 设置Grid中GridItem的对齐方式。<br>默认值：GridItemAlignment.DEFAULT |
+
+<a id="cachedcount1"></a>
 
 ## cachedCount
 
@@ -68,7 +70,7 @@ cachedCount(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 预加载的GridItem的数量。<br>默认值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br>通过状态变量单独更新value值时，Grid组件不会触发布局更新，缓存节点数量仅会在下次布局时更新。 |
 
-<a id="cachedcount-1"></a>
+<a id="cachedcount2"></a>
 
 ## cachedCount
 
@@ -78,7 +80,7 @@ cachedCount(count: number, show: boolean)
 
 设置主轴方向前后两侧分别预加载的网格行/列数，并配置是否显示预加载节点，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。
 
-设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 **起始版本：** 14
 
@@ -152,6 +154,8 @@ columnsGap(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 列与列的间距。<br>默认值：0 <br>取值范围：[0, +∞)，设置为小于0的值时，按默认值0显示。 |
 
+<a id="columnstemplate1"></a>
+
 ## columnsTemplate
 
 ```TypeScript
@@ -174,7 +178,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 
 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)。
 
-使用效果可以参考示例8。
+使用效果可以参考[示例8](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例8设置自适应列数)。
 
 设置为'0fr'时，该列的列宽为0，不显示GridItem。设置为其他非法值时，GridItem显示为固定1列。
 
@@ -194,7 +198,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 | --- | --- | --- | --- |
 | value | string | 是 |  |
 
-<a id="columnstemplate-1"></a>
+<a id="columnstemplate2"></a>
 
 ## columnsTemplate
 
@@ -204,7 +208,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 设置当前网格组件布局列的数量，不设置时默认1列。
 
-当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate1)。
 
 当value设置为ItemFillPolicy类型时，将根据Grid组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
@@ -649,9 +653,9 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 由于拖拽检测也需要长按，且事件处理机制优先触发子组件事件，GridItem上绑定[LongPressGesture](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md)时无法触发拖拽。如有长按和拖拽同时使用的需求可以使用通用拖拽事件。
 
-拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考示例16（实现GridItem自定义拖拽）。
+拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例16实现griditem自定义拖拽)。
 
-不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考示例17（通过拖拽事件实现GridItem拖拽）。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考示例22（使用OnMove进行拖拽）。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
+不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
 
 **起始版本：** 8
 
@@ -971,6 +975,8 @@ scrollBar(value: BarState)
 | --- | --- | --- | --- |
 | value | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | 是 | 滚动条状态。<br>默认值：BarState.Auto<br>**说明：** <br>API version 9及以下版本默认值为BarState.Off，API version 10及以上版本的默认值为BarState.Auto。 |
 
+<a id="scrollbarcolor1"></a>
+
 ## scrollBarColor
 
 ```TypeScript
@@ -995,7 +1001,7 @@ scrollBarColor(value: Color | number | string)
 | --- | --- | --- | --- |
 | value | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | 是 | 滚动条的颜色。<br>默认值：'#182431'（40%不透明度）<br>number为HEX格式颜色，支持rgb或者argb，示例：0 xffffff。<br>string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
-<a id="scrollbarcolor-1"></a>
+<a id="scrollbarcolor2"></a>
 
 ## scrollBarColor
 
@@ -1003,7 +1009,7 @@ scrollBarColor(value: Color | number | string)
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比， 参数名改为color，并开始支持Resource类型。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor1)相比， 参数名改为color，并开始支持Resource类型。
 
 **起始版本：** 22
 
@@ -1020,6 +1026,8 @@ scrollBarColor(color: Color | number | string | Resource)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的颜色。<br>默认值：'#182431'（40%不透明度）<br>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+
+<a id="scrollbarwidth1"></a>
 
 ## scrollBarWidth
 
@@ -1045,7 +1053,7 @@ scrollBarWidth(value: number | string)
 | --- | --- | --- | --- |
 | value | number &#124; string | 是 | 滚动条的宽度。<br>默认值：4<br>单位：vp<br>取值范围：[0, +∞)，设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
 
-<a id="scrollbarwidth-1"></a>
+<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 
@@ -1073,6 +1081,32 @@ scrollBarWidth(value: number | string | Resource)
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的宽度。<br>单位：vp<br>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。 |
 
+## scrollSnapStrategy
+
+```TypeScript
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+```
+
+设置Grid的两阶段滚动吸附策略。
+
+START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方通过calculateApproachOffset计算趋近距离，通过calculateSnapOffset计算最终目标。设置为NONE或undefined时清除策略，恢复默认滚动行为。不支持的布局不启用吸附。吸附目标受合法滚动范围限制。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute--><!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| strategy | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) &#124; [ScrollSnapOffsetProvider](../arkts-apis/arkts-arkui-scrollsnapoffsetprovider-i.md) | 否 | 内置对齐策略或自定义提供方。 |
+
 ## supportAnimation
 
 ```TypeScript
@@ -1083,7 +1117,7 @@ supportAnimation(value: boolean)
 
 仅在大小规则的Grid中支持拖拽动画，跨行或跨列场景不支持。
 
-supportAnimation动画效果参考示例5（Grid拖拽场景），其他动画效果需要应用自定义拖拽实现。
+supportAnimation动画效果参考[示例5（Grid拖拽场景）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例5grid拖拽场景)，其他动画效果需要应用自定义拖拽实现。
 
 **起始版本：** 8
 
@@ -1161,7 +1195,7 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
 
 **废弃版本：** 12
 
-**替代接口：** onDidScroll
+**替代接口：** [onDidScroll](arkts-arkui-common-comp-scrollablecommonmethod-c.md#ondidscroll)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

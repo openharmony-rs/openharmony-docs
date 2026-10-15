@@ -41,6 +41,7 @@ Delete the persistent P2P group with the specified network ID.
 | [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | Operation failed. |
 | [2801001](../errorcode-wifi.md#2801001-p2p-module-error) | Wi-Fi STA disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,3 +54,5 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

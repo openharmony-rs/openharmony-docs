@@ -12,22 +12,6 @@ GATT connection parameters.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## LOW_POWER
-
-```TypeScript
-LOW_POWER = 1
-```
-
-low power mode.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ConnectionParam-LOW_POWER = 1--><!--Device-ConnectionParam-LOW_POWER = 1-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## BALANCED
 
 ```TypeScript
@@ -57,5 +41,21 @@ Use the highest connection parameters.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ConnectionParam-HIGH = 3--><!--Device-ConnectionParam-HIGH = 3-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## LOW_POWER
+
+```TypeScript
+LOW_POWER = 1
+```
+
+low power mode.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionParam-LOW_POWER = 1--><!--Device-ConnectionParam-LOW_POWER = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

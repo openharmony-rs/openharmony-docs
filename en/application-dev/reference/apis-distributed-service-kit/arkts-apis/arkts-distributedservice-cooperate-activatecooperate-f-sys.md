@@ -6,6 +6,8 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="activatecooperate1"></a>
+
 ## activateCooperate
 
 ```TypeScript
@@ -41,6 +43,7 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [20900001](../errorcode-devicestatus.md#20900001-input-device-operation-failed) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,8 +64,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="activatecooperate-1"></a>
+
+<a id="activatecooperate2"></a>
 
 ## activateCooperate
 
@@ -104,6 +109,7 @@ Starts screen hopping. This API uses a promise to return the result.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [20900001](../errorcode-devicestatus.md#20900001-input-device-operation-failed) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -121,3 +127,5 @@ try {
   console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+<!--DelEnd-->

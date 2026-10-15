@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="updateform1"></a>
+
 ## updateForm
 
 ```TypeScript
@@ -56,7 +58,7 @@ formProvider.updateForm(formId, obj, (error: BusinessError) => {
 ```
 
 
-<a id="updateform-1"></a>
+<a id="updateform2"></a>
 
 ## updateForm
 

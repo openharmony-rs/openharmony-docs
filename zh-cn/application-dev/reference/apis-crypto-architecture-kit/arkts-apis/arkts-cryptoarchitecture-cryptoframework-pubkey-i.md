@@ -34,7 +34,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PubKey-getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int--><!--Device-PubKey-getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int-End-->
 
@@ -58,7 +58,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported.<br>**适用版本：** 12+ |
@@ -118,7 +118,7 @@ getEncodedDer(format: string): DataBlob
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PubKey-getEncodedDer(format: string): DataBlob--><!--Device-PubKey-getEncodedDer(format: string): DataBlob-End-->
 
@@ -140,7 +140,7 @@ getEncodedDer(format: string): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -172,7 +172,7 @@ getEncodedPem(format: string): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PubKey-getEncodedPem(format: string): string--><!--Device-PubKey-getEncodedPem(format: string): string-End-->
 
@@ -194,7 +194,7 @@ getEncodedPem(format: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | Crypto operation error. |
@@ -233,7 +233,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PubKey-getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>--><!--Device-PubKey-getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>-End-->
 
@@ -288,7 +288,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PubKey-getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array--><!--Device-PubKey-getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array-End-->
 

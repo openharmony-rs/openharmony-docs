@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="disablenotificationfeature1"></a>
+
 ## disableNotificationFeature
 
 ```TypeScript
@@ -43,11 +45,12 @@ function disableNotificationFeature(disabled:boolean, bundleList: Array<string>)
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="disablenotificationfeature-1"></a>
+
+<a id="disablenotificationfeature2"></a>
 
 ## disableNotificationFeature
 
@@ -111,6 +116,7 @@ function disableNotificationFeature(disabled: boolean, bundleList: Array<string>
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -130,3 +136,5 @@ try {
   hilog.error(0x0000, 'testTag', '%{public}s', `testTag failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

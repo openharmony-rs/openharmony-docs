@@ -67,7 +67,7 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'spatializationEnabledChangeForCurrentDevice' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('spatializationEnabledChangeForCurrentDevice')](#onspatializationenabledchangeforcurrentdevice)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与on('spatializationEnabledChangeForCurrentDevice')绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 

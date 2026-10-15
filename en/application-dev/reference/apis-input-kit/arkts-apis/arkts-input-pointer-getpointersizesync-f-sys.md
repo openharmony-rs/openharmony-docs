@@ -26,14 +26,15 @@ Obtains the pointer size. This API returns the result synchronously.
 
 | Type | Description |
 | --- | --- |
-| number | Mouse pointer size. The value ranges from **1** to **7**. |
+| number | Mouse pointer size. The value range is [1, 7]. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,3 +59,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

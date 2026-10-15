@@ -4,7 +4,7 @@
 export interface ToolBarV2ItemTextOptions
 ```
 
-Declare the options of ToolBarV2ItemText
+Defines the options for initializing a **ToolBarV2ItemText** object.
 
 **Since:** 18
 
@@ -24,7 +24,9 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 activatedColor?: ColorMetrics
 ```
 
-Text fontColor when the item is activated.
+Font color of the toolbar item in the activated state.
+
+Default value: **$r('sys.color.font_emphasize')**.
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -44,7 +46,9 @@ Text fontColor when the item is activated.
 color?: ColorMetrics
 ```
 
-Define text fontColor.
+Font color of the toolbar item.
+
+Default value: **$r('sys.color.font_primary')**.
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -64,7 +68,7 @@ Define text fontColor.
 text: ResourceStr
 ```
 
-Define text content.
+Text of the toolbar item.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

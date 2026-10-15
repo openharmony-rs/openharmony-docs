@@ -12,24 +12,6 @@ Enumerates the main axis layout directions.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Row
-
-```TypeScript
-Row
-```
-
-Horizontal layout, where the child components are arranged from left to right as the main axis runs along the rows.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-GridDirection-Row--><!--Device-GridDirection-Row-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Column
 
 ```TypeScript
@@ -48,24 +30,6 @@ Vertical layout, where the child components are arranged from top to bottom as t
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## RowReverse
-
-```TypeScript
-RowReverse
-```
-
-Reverse horizontal layout, where the child components are arranged from right to left as the main axis runs along the rows.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-GridDirection-RowReverse--><!--Device-GridDirection-RowReverse-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## ColumnReverse
 
 ```TypeScript
@@ -81,5 +45,41 @@ Reverse vertical layout, where the child components are arranged from bottom up 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-GridDirection-ColumnReverse--><!--Device-GridDirection-ColumnReverse-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Row
+
+```TypeScript
+Row
+```
+
+Horizontal layout, where the child components are arranged from left to right as the main axis runs along the rows.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GridDirection-Row--><!--Device-GridDirection-Row-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## RowReverse
+
+```TypeScript
+RowReverse
+```
+
+Reverse horizontal layout, where the child components are arranged from right to left as the main axis runs along the rows.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GridDirection-RowReverse--><!--Device-GridDirection-RowReverse-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

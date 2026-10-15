@@ -18,6 +18,8 @@ Before calling any of the following APIs to manage the calendar, you must use [g
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
+<a id="createcalendar1"></a>
+
 ## createCalendar
 
 ```TypeScript
@@ -78,7 +80,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 });
 ```
 
-<a id="createcalendar-1"></a>
+<a id="createcalendar2"></a>
 
 ## createCalendar
 
@@ -139,6 +141,8 @@ try {
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="deletecalendar1"></a>
 
 ## deleteCalendar
 
@@ -211,7 +215,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 })
 ```
 
-<a id="deletecalendar-1"></a>
+<a id="deletecalendar2"></a>
 
 ## deleteCalendar
 
@@ -331,6 +335,8 @@ calendarMgr?.editEvent(event).then((eventId: number): void => {
 });
 ```
 
+<a id="getallcalendars1"></a>
+
 ## getAllCalendars
 
 ```TypeScript
@@ -385,7 +391,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 });
 ```
 
-<a id="getallcalendars-1"></a>
+<a id="getallcalendars2"></a>
 
 ## getAllCalendars
 
@@ -440,6 +446,8 @@ calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar
   }
 });
 ```
+
+<a id="getcalendar1"></a>
 
 ## getCalendar
 
@@ -499,7 +507,7 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
 });
 ```
 
-<a id="getcalendar-1"></a>
+<a id="getcalendar2"></a>
 
 ## getCalendar
 
@@ -566,7 +574,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 })
 ```
 
-<a id="getcalendar-2"></a>
+<a id="getcalendar3"></a>
 
 ## getCalendar
 

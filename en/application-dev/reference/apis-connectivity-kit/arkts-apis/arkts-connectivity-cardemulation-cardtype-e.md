@@ -12,28 +12,10 @@ Enumerates the types of services used by the card emulation application.
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
-## PAYMENT
-
-```TypeScript
-PAYMENT = "payment"
-```
-
-Payment service.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-CardType-PAYMENT = "payment"--><!--Device-CardType-PAYMENT = "payment"-End-->
-
-**System capability:** SystemCapability.Communication.NFC.CardEmulation
-
 ## OTHER
 
 ```TypeScript
-OTHER = "other"
+OTHER = 'other'
 ```
 
 Other services.
@@ -42,8 +24,26 @@ Other services.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-CardType-OTHER = "other"--><!--Device-CardType-OTHER = "other"-End-->
+<!--Device-CardType-OTHER = 'other'--><!--Device-CardType-OTHER = 'other'-End-->
+
+**System capability:** SystemCapability.Communication.NFC.CardEmulation
+
+## PAYMENT
+
+```TypeScript
+PAYMENT = 'payment'
+```
+
+Payment service.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CardType-PAYMENT = 'payment'--><!--Device-CardType-PAYMENT = 'payment'-End-->
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation

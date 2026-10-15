@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="isrunninginstabilitytest1"></a>
+
 ## isRunningInStabilityTest
 
 ```TypeScript
@@ -21,7 +23,7 @@ Checks whether the system is undergoing a stability test. This API uses an async
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function isRunningInStabilityTest(callback: AsyncCallback<boolean>): void--><!--Device-appManager-function isRunningInStabilityTest(callback: AsyncCallback<boolean>): void-End-->
 
@@ -39,7 +41,7 @@ Checks whether the system is undergoing a stability test. This API uses an async
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
 **Examples**
@@ -57,7 +59,7 @@ appManager.isRunningInStabilityTest((err, flag) => {
 ```
 
 
-<a id="isrunninginstabilitytest-1"></a>
+<a id="isrunninginstabilitytest2"></a>
 
 ## isRunningInStabilityTest
 
@@ -74,7 +76,7 @@ Checks whether the system is undergoing a stability test. This API uses a promis
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function isRunningInStabilityTest(): Promise<boolean>--><!--Device-appManager-function isRunningInStabilityTest(): Promise<boolean>-End-->
 

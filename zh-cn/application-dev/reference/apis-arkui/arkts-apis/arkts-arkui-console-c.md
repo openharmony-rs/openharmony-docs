@@ -32,7 +32,7 @@ static debug(message: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | string | 是 | 要打印的文本信息。@static |
+| message | string | 是 | 要打印的文本信息。 |
 
 ## error
 
@@ -54,7 +54,7 @@ static error(message: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | string | 是 | 要打印的错误信息。@static |
+| message | string | 是 | 要打印的错误信息。 |
 
 ## info
 
@@ -76,7 +76,7 @@ static info(message: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | string | 是 | 要打印的文本信息。@static |
+| message | string | 是 | 要打印的文本信息。 |
 
 ## log
 
@@ -98,7 +98,7 @@ static log(message: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | string | 是 | 要打印的文本信息。@static |
+| message | string | 是 | 要打印的文本信息。 |
 
 ## warn
 
@@ -120,4 +120,4 @@ static warn(message: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | string | 是 | 要打印的警告信息。@static |
+| message | string | 是 | 要打印的警告信息。 |

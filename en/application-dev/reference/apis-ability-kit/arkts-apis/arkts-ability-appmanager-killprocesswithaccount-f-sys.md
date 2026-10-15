@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="killprocesswithaccount1"></a>
+
 ## killProcessWithAccount
 
 ```TypeScript
@@ -50,9 +52,10 @@ Kills a process by bundle name and account ID. This API uses a promise to return
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,8 +78,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="killprocesswithaccount-1"></a>
+
+<a id="killprocesswithaccount2"></a>
 
 ## killProcessWithAccount
 
@@ -126,6 +131,7 @@ Kills a process by bundle name and account ID. This API uses a promise to return
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | If the input parameter is not valid parameter. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -150,8 +156,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="killprocesswithaccount-2"></a>
+
+<a id="killprocesswithaccount3"></a>
 
 ## killProcessWithAccount
 
@@ -192,9 +200,10 @@ Kills a process by bundle name and account ID. This API uses an asynchronous cal
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -214,3 +223,5 @@ function killProcessWithAccountCallback(err: BusinessError) {
 
 appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
 ```
+
+<!--DelEnd-->

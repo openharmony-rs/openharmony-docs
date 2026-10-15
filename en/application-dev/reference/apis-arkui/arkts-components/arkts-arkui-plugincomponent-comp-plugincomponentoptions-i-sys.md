@@ -26,7 +26,7 @@ Defines options for constructing a **PluginComponent**.
 data: any
 ```
 
-Data passed to the **PluginComponent** provider.
+Data passed to the plugin component provider for use. The type is not limited (objects, strings, and so on are supported). The specific data format is defined through negotiation between the user and the provider.
 
 **Type:** any
 

@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAppClonePreference(bundleName: string): Promise<AppClonePreference>
 ```
 
-Obtains the application clone preference configuration based on the given bundle name.
+Queries the app clone preference settings based on the given bundleName. This API uses a promise to return the result asynchronously.
 
 **Since:** 26.0.0
 
@@ -30,13 +30,13 @@ Obtains the application clone preference configuration based on the given bundle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name of the target application. |
+| bundleName | string | Yes | bundleName of the target application. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AppClonePreference](arkts-ability-bundlemanager-appclonepreference-t-sys.md)&gt; | Promise used to return the application clone preference configuration. |
+| Promise&lt;[AppClonePreference](arkts-ability-bundlemanager-appclonepreference-t-sys.md)&gt; | Promise used to return the app clone preference settings. |
 
 **Error codes:**
 
@@ -47,6 +47,7 @@ Obtains the application clone preference configuration based on the given bundle
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700095](../errorcode-bundle.md#17700095-the-specified-application-has-no-clone-preference) | The specified bundle not found app clone preference. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,3 +69,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAppClonePreference failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

@@ -16,53 +16,13 @@ Enumerates flags for using a WantAgent.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## ONE_TIME_FLAG
-
-```TypeScript
-ONE_TIME_FLAG = 0
-```
-
-Indicates that the WantAgent can be used only once. This flag is valid only when OperationType is set to START_ABILITY, START_SERVICE, or SEND_COMMON_EVENT.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [ONE_TIME_FLAG](arkts-ability-wantagent-wantagentflags-e.md#one_time_flag)
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-WantAgentFlags-ONE_TIME_FLAG = 0--><!--Device-WantAgentFlags-ONE_TIME_FLAG = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## NO_BUILD_FLAG
-
-```TypeScript
-NO_BUILD_FLAG
-```
-
-Indicates that null is returned if the WantAgent does not exist. This flag is valid only when OperationType is set to START_ABILITY, START_SERVICE, or SEND_COMMON_EVENT.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [NO_BUILD_FLAG](arkts-ability-wantagent-wantagentflags-e.md#no_build_flag)
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-WantAgentFlags-NO_BUILD_FLAG--><!--Device-WantAgentFlags-NO_BUILD_FLAG-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
 ## CANCEL_PRESENT_FLAG
 
 ```TypeScript
 CANCEL_PRESENT_FLAG
 ```
 
-Indicates that the existing WantAgent should be canceled before a new object is generated. This flag is valid only when OperationType is set to START_ABILITY, START_SERVICE, or SEND_COMMON_EVENT.
+The existing WantAgent object should be canceled before a new object is generated.
 
 **Since:** 7
 
@@ -76,33 +36,13 @@ Indicates that the existing WantAgent should be canceled before a new object is 
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## UPDATE_PRESENT_FLAG
-
-```TypeScript
-UPDATE_PRESENT_FLAG
-```
-
-Indicates that the system only replaces the extra data of the existing WantAgent with that of the new object. This flag is valid only when OperationType is set to START_ABILITY, START_SERVICE, or SEND_COMMON_EVENT.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [UPDATE_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#update_present_flag)
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG--><!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
 ## CONSTANT_FLAG
 
 ```TypeScript
 CONSTANT_FLAG
 ```
 
-Indicates that the created WantAgent should be immutable.
+The WantAgent object is immutable.
 
 **Since:** 7
 
@@ -116,23 +56,43 @@ Indicates that the created WantAgent should be immutable.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## REPLACE_ELEMENT
+## NO_BUILD_FLAG
 
 ```TypeScript
-REPLACE_ELEMENT
+NO_BUILD_FLAG
 ```
 
-Indicates that the current value of element can be replaced when the WantAgent is triggered.
+The WantAgent object does not exist and hence it is not created. In this case, null is returned.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [REPLACE_ELEMENT](arkts-ability-wantagent-wantagentflags-e.md#replace_element)
+**Substitutes:** [NO_BUILD_FLAG](arkts-ability-wantagent-wantagentflags-e.md#no_build_flag)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-WantAgentFlags-REPLACE_ELEMENT--><!--Device-WantAgentFlags-REPLACE_ELEMENT-End-->
+<!--Device-WantAgentFlags-NO_BUILD_FLAG--><!--Device-WantAgentFlags-NO_BUILD_FLAG-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ONE_TIME_FLAG
+
+```TypeScript
+ONE_TIME_FLAG = 0
+```
+
+The WantAgent object can be used only once.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [ONE_TIME_FLAG](arkts-ability-wantagent-wantagentflags-e.md#one_time_flag)
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WantAgentFlags-ONE_TIME_FLAG = 0--><!--Device-WantAgentFlags-ONE_TIME_FLAG = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -142,7 +102,7 @@ Indicates that the current value of element can be replaced when the WantAgent i
 REPLACE_ACTION
 ```
 
-Indicates that the current value of action can be replaced when the WantAgent is triggered.
+The action property in the current Want can be replaced by the action property in the Want passed in WantAgent.trigger().
 
 **Since:** 7
 
@@ -156,23 +116,43 @@ Indicates that the current value of action can be replaced when the WantAgent is
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## REPLACE_URI
+## REPLACE_BUNDLE
 
 ```TypeScript
-REPLACE_URI
+REPLACE_BUNDLE
 ```
 
-Indicates that the current value of uri can be replaced when the WantAgent is triggered.
+The bundleName property in the current Want can be replaced by the bundleName property in the Want passed in WantAgent.trigger().
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [REPLACE_URI](arkts-ability-wantagent-wantagentflags-e.md#replace_uri)
+**Substitutes:** [REPLACE_BUNDLE](arkts-ability-wantagent-wantagentflags-e.md#replace_bundle)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-WantAgentFlags-REPLACE_URI--><!--Device-WantAgentFlags-REPLACE_URI-End-->
+<!--Device-WantAgentFlags-REPLACE_BUNDLE--><!--Device-WantAgentFlags-REPLACE_BUNDLE-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## REPLACE_ELEMENT
+
+```TypeScript
+REPLACE_ELEMENT
+```
+
+The element property in the current Want can be replaced by the element property in the Want passed in WantAgent.trigger().
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [REPLACE_ELEMENT](arkts-ability-wantagent-wantagentflags-e.md#replace_element)
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WantAgentFlags-REPLACE_ELEMENT--><!--Device-WantAgentFlags-REPLACE_ELEMENT-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -182,7 +162,7 @@ Indicates that the current value of uri can be replaced when the WantAgent is tr
 REPLACE_ENTITIES
 ```
 
-Indicates that the current value of entities can be replaced when the WantAgent is triggered.
+The entities property in the current Want can be replaced by the entities property in the Want passed in WantAgent.trigger().
 
 **Since:** 7
 
@@ -196,22 +176,42 @@ Indicates that the current value of entities can be replaced when the WantAgent 
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## REPLACE_BUNDLE
+## REPLACE_URI
 
 ```TypeScript
-REPLACE_BUNDLE
+REPLACE_URI
 ```
 
-Indicates that the current value of packageName can be replaced when the WantAgent is triggered.
+The uri property in the current Want can be replaced by the uri property in the Want passed in WantAgent.trigger().
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [REPLACE_BUNDLE](arkts-ability-wantagent-wantagentflags-e.md#replace_bundle)
+**Substitutes:** [REPLACE_URI](arkts-ability-wantagent-wantagentflags-e.md#replace_uri)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-WantAgentFlags-REPLACE_BUNDLE--><!--Device-WantAgentFlags-REPLACE_BUNDLE-End-->
+<!--Device-WantAgentFlags-REPLACE_URI--><!--Device-WantAgentFlags-REPLACE_URI-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## UPDATE_PRESENT_FLAG
+
+```TypeScript
+UPDATE_PRESENT_FLAG
+```
+
+Extra information of the existing WantAgent object is replaced with that of the new object.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [UPDATE_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#update_present_flag)
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG--><!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

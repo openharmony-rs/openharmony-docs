@@ -24,12 +24,12 @@ import { socket } from '@kit.NetworkKit';
 close(): Promise<void>
 ```
 
-Stops listening for events of the **TCPSocketServer** object and releases the port bound by [listen](#listen). If [listen](#listen) has been called for multiple times, all listening ports of the **TCPSocketServer** object are released when this API is called. This API uses a promise to return the result.
+Stops listening for events of the **TCPSocketServer** object and releases the port bound by [listen](#listen1). If [listen](#listen1) has been called for multiple times, all listening ports of the **TCPSocketServer** object are released when this API is called. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
 > This API does not close existing connections. To close connections, call the
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close) API of
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close1) API of
 > [TCPSocketConnection](arkts-network-socket-tcpsocketconnection-i.md).
 
 **Since:** 20
@@ -143,7 +143,7 @@ Obtains the file descriptor bound to the TCPSocketServer listening port. This AP
 
 > **NOTE:** 
 > 
-> - This method can be called only after the [listen](#listen) method is successfully called. When listen is called for multiple times, the file descriptor bound to the latest listening port is obtained.
+> - This method can be called only after the [listen](#listen1) method is successfully called. When listen is called for multiple times, the file descriptor bound to the latest listening port is obtained.
 > 
 > - This API returns **-1** in abnormal cases such as listening exceptions or socket closed (for example, after close is called).
 > 
@@ -192,6 +192,8 @@ tcpServer.listen(listenAddr).then(() => {
   console.error('listen fail');
 });
 ```
+
+<a id="getstate1"></a>
 
 ## getState
 
@@ -256,7 +258,7 @@ tcpServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
 })
 ```
 
-<a id="getstate-1"></a>
+<a id="getstate2"></a>
 
 ## getState
 
@@ -317,6 +319,8 @@ tcpServer.getState().then((data: socket.SocketStateBase) => {
   console.error('getState fail');
 });
 ```
+
+<a id="listen1"></a>
 
 ## listen
 
@@ -379,7 +383,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
-<a id="listen-1"></a>
+<a id="listen2"></a>
 
 ## listen
 
@@ -669,6 +673,8 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
+<a id="setextraoptions1"></a>
+
 ## setExtraOptions
 
 ```TypeScript
@@ -749,7 +755,7 @@ tcpServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="setextraoptions-1"></a>
+<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="isramconstraineddevice1"></a>
+
 ## isRamConstrainedDevice
 
 ```TypeScript
@@ -16,7 +18,7 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function isRamConstrainedDevice(): Promise<boolean>--><!--Device-appManager-function isRamConstrainedDevice(): Promise<boolean>-End-->
 
@@ -48,7 +50,7 @@ appManager.isRamConstrainedDevice().then((data) => {
 ```
 
 
-<a id="isramconstraineddevice-1"></a>
+<a id="isramconstraineddevice2"></a>
 
 ## isRamConstrainedDevice
 
@@ -60,7 +62,7 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appManager-function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void--><!--Device-appManager-function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void-End-->
 
@@ -76,7 +78,7 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
 **Examples**

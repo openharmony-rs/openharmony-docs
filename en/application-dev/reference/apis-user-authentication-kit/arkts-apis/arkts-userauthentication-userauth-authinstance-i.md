@@ -70,7 +70,7 @@ try {
   auth.cancel();
   console.info('cancel auth successfully.');
 } catch (error) {
-  console.error(`cancel auth failed. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to cancel auth. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```
 
@@ -133,7 +133,7 @@ try {
   auth.off('result');
   console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
-  console.error(`cancel subscribe authentication event failed. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to cancel subscribe authentication event. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 ```
@@ -196,7 +196,7 @@ try {
   });
   // Subscribe to authentication tip information.
   auth.on('tip', {
-    callback : (result : userAuth.TipInfo) => {
+    callback: (result: userAuth.TipInfo) => {
       switch (result.tip) {
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT:
           // Do something.
@@ -212,7 +212,7 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 ```
@@ -271,6 +271,6 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed. Code: ${error?.code}, message: ${error?.message}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```

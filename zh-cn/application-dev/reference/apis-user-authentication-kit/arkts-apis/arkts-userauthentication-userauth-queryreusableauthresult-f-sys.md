@@ -46,6 +46,7 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 | [12500008](../errorcode-useriam.md#12500008-参数校验失败) | The parameter is out of range. |
 | [12500017](../errorcode-useriam.md#12500017-复用身份认证结果失败) | Failed to reuse authentication result. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -74,3 +75,5 @@ try {
   console.error(`Failed to query reuse auth result. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

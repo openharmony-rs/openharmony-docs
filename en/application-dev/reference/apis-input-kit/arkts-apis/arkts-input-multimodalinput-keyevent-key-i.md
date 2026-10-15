@@ -32,7 +32,7 @@ Key code.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Key-code: KeyCode--><!--Device-Key-code: KeyCode-End-->
 
@@ -50,7 +50,7 @@ Unique ID of the input device. If a physical device is repeatedly reinstalled or
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Key-deviceId: int--><!--Device-Key-deviceId: int-End-->
 
@@ -68,7 +68,7 @@ Time when the key is pressed, in microseconds (μs) since the system starts.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Key-pressedTime: long--><!--Device-Key-pressedTime: long-End-->
 

@@ -32,7 +32,7 @@ File name extension, for example, **'jpg'**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-CreationSetting-fileNameExtension: string--><!--Device-CreationSetting-fileNameExtension: string-End-->
 
@@ -52,7 +52,7 @@ photoType: PhotoType
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-CreationSetting-photoType: PhotoType--><!--Device-CreationSetting-photoType: PhotoType-End-->
 
@@ -79,7 +79,7 @@ Therefore, the title length cannot be too long.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-CreationSetting-title?: string--><!--Device-CreationSetting-title?: string-End-->
 

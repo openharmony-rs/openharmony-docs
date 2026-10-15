@@ -7,5 +7,5 @@
 
 | Name | Description |
 | --- | --- |
-| [NotificationSortingMap](arkts-notification-notificationsortingmap-notificationsortingmap-i-sys.md) | The **NotificationSortingMap** module provides APIs for defining the sorting information of active notifications in all subscribed notifications. |
+| [NotificationSortingMap](arkts-notification-notificationsortingmap-i-sys.md) | The **NotificationSortingMap** module provides APIs for defining the sorting information of active notifications in all subscribed notifications. |
 <!--DelEnd-->

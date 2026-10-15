@@ -22,7 +22,7 @@ Only intra-application pasting is allowed.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ShareOption-INAPP = 0--><!--Device-ShareOption-INAPP = 0-End-->
 
@@ -38,7 +38,7 @@ Paste is allowed in any application.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ShareOption-LOCALDEVICE = 1--><!--Device-ShareOption-LOCALDEVICE = 1-End-->
 

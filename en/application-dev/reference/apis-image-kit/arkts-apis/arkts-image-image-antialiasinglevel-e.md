@@ -12,19 +12,19 @@ Enumerates the anti-aliasing levels.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## NONE
+## HIGH
 
 ```TypeScript
-NONE = 0
+HIGH = 3
 ```
 
-Nearest neighbor interpolation.
+Cubic interpolation.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-AntiAliasingLevel-NONE = 0--><!--Device-AntiAliasingLevel-NONE = 0-End-->
+<!--Device-AntiAliasingLevel-HIGH = 3--><!--Device-AntiAliasingLevel-HIGH = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -38,7 +38,7 @@ Bilinear interpolation.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-AntiAliasingLevel-LOW = 1--><!--Device-AntiAliasingLevel-LOW = 1-End-->
 
@@ -54,24 +54,24 @@ Bilinear interpolation with mipmap enabled. You are advised to use this value wh
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-AntiAliasingLevel-MEDIUM = 2--><!--Device-AntiAliasingLevel-MEDIUM = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## HIGH
+## NONE
 
 ```TypeScript
-HIGH = 3
+NONE = 0
 ```
 
-Cubic interpolation.
+Nearest neighbor interpolation.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-AntiAliasingLevel-HIGH = 3--><!--Device-AntiAliasingLevel-HIGH = 3-End-->
+<!--Device-AntiAliasingLevel-NONE = 0--><!--Device-AntiAliasingLevel-NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

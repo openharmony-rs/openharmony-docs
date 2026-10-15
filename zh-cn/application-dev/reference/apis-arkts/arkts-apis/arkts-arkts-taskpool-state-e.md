@@ -18,19 +18,19 @@ enum State
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## WAITING
+## CANCELED
 
 ```TypeScript
-WAITING = 1
+CANCELED = 3
 ```
 
-任务正在等待。
+任务已被取消。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-State-WAITING = 1--><!--Device-State-WAITING = 1-End-->
+<!--Device-State-CANCELED = 3--><!--Device-State-CANCELED = 3-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -50,18 +50,18 @@ RUNNING = 2
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## CANCELED
+## WAITING
 
 ```TypeScript
-CANCELED = 3
+WAITING = 1
 ```
 
-任务已被取消。
+任务正在等待。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-State-CANCELED = 3--><!--Device-State-CANCELED = 3-End-->
+<!--Device-State-WAITING = 1--><!--Device-State-WAITING = 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang

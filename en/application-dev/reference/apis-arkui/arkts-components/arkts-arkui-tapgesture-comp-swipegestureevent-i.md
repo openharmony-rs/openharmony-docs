@@ -46,6 +46,8 @@ speed: number
 
 Swipe gesture speed, defined as the average swipe speed of all fingers relative to the original area of the current component. The unit is vp/s.
 
+Value range: [0, +∞)
+
 **Type:** number
 
 **Since:** 11

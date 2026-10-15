@@ -12,45 +12,17 @@ Enumerates the audio volume types.
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
-## VOICE_CALL
+## ACCESSIBILITY
 
 ```TypeScript
-VOICE_CALL = 0
+ACCESSIBILITY = 5
 ```
 
-Audio volume type for voice calls.
+Audio volume type for accessibility.
 
-**Since:** 8
+**Since:** 10
 
-<!--Device-AudioVolumeType-VOICE_CALL = 0--><!--Device-AudioVolumeType-VOICE_CALL = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-## RINGTONE
-
-```TypeScript
-RINGTONE = 2
-```
-
-Audio volume type for ringtones.
-
-**Since:** 7
-
-<!--Device-AudioVolumeType-RINGTONE = 2--><!--Device-AudioVolumeType-RINGTONE = 2-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-## MEDIA
-
-```TypeScript
-MEDIA = 3
-```
-
-Audio volume type for media purpose.
-
-**Since:** 7
-
-<!--Device-AudioVolumeType-MEDIA = 3--><!--Device-AudioVolumeType-MEDIA = 3-End-->
+<!--Device-AudioVolumeType-ACCESSIBILITY = 5--><!--Device-AudioVolumeType-ACCESSIBILITY = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -68,17 +40,31 @@ Audio volume type for alarming.
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
-## ACCESSIBILITY
+## MEDIA
 
 ```TypeScript
-ACCESSIBILITY = 5
+MEDIA = 3
 ```
 
-Audio volume type for accessibility.
+Audio volume type for media purpose.
 
-**Since:** 10
+**Since:** 7
 
-<!--Device-AudioVolumeType-ACCESSIBILITY = 5--><!--Device-AudioVolumeType-ACCESSIBILITY = 5-End-->
+<!--Device-AudioVolumeType-MEDIA = 3--><!--Device-AudioVolumeType-MEDIA = 3-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+## RINGTONE
+
+```TypeScript
+RINGTONE = 2
+```
+
+Audio volume type for ringtones.
+
+**Since:** 7
+
+<!--Device-AudioVolumeType-RINGTONE = 2--><!--Device-AudioVolumeType-RINGTONE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -93,5 +79,19 @@ Audio volume type for voice assistant.
 **Since:** 8
 
 <!--Device-AudioVolumeType-VOICE_ASSISTANT = 9--><!--Device-AudioVolumeType-VOICE_ASSISTANT = 9-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+## VOICE_CALL
+
+```TypeScript
+VOICE_CALL = 0
+```
+
+Audio volume type for voice calls.
+
+**Since:** 8
+
+<!--Device-AudioVolumeType-VOICE_CALL = 0--><!--Device-AudioVolumeType-VOICE_CALL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume

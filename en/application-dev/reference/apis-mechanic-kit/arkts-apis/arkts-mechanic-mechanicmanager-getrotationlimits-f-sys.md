@@ -42,6 +42,7 @@ Obtains the maximum rotation angles relative to the reference point for the spec
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-device-not-connected) | Device not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ console.info('Query rotation limit information');
 let degreeLimit: mechanicManager.RotationLimits = mechanicManager.getRotationLimits(0);
 console.info(`'Query the rotation limit information successfully, limit information:' ${degreeLimit}`);
 ```
+
+<!--DelEnd-->

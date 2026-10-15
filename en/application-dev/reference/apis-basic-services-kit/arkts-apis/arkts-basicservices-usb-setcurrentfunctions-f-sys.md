@@ -38,6 +38,7 @@ Sets the current USB function list in Device mode.
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ usb.setCurrentFunctions(funcs).then(() => {
     console.error('usb setCurrentFunctions failed: ' + err.code + ' message: ' + err.message);
 });
 ```
+
+<!--DelEnd-->

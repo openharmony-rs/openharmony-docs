@@ -4,7 +4,7 @@
 export interface PluginModuleInfo
 ```
 
-Defines the module information of a plugin.
+Provides the module information of a plugin, which describes the name and function description of the plugin module.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Defines the module information of a plugin.
 readonly description: string
 ```
 
-Description of the module.
+Description of the plugin module. It corresponds to the **description** field configured in the [module.json5 configuration file](../../../quick-start/module-configuration-file.md#tags-in-the-configuration-file).
 
 **Type:** string
 
@@ -34,7 +34,7 @@ Description of the module.
 readonly descriptionId: number
 ```
 
-Resource ID of the module description.
+Resource ID of the plugin module description. It is a resource ID automatically generated during compilation and building based on the **description** configured in the plugin configuration.
 
 **Type:** number
 
@@ -50,7 +50,7 @@ Resource ID of the module description.
 readonly moduleName: string
 ```
 
-Module name of the plugin.
+Name of the plugin module. It corresponds to the **name** field configured in the [module.json5 configuration file](../../../quick-start/module-configuration-file.md#tags-in-the-configuration-file).
 
 **Type:** string
 

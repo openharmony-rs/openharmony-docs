@@ -9,7 +9,11 @@ import { config } from '@kit.AccessibilityKit';
 ## enableAbilityWithCallback
 
 ```TypeScript
-function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>
+function enableAbilityWithCallback(
+    name: string,
+    capability: Array<accessibility.Capability>,
+    connectCallback: ConnectCallback
+  ): Promise<void>
 ```
 
 启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md)作为辅助扩展连接断开事件的回调函数。使用Promise异步回调。
@@ -22,7 +26,7 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-config-function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>--><!--Device-config-function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>-End-->
+<!--Device-config-function enableAbilityWithCallback(    name: string,    capability: Array<accessibility.Capability>,    connectCallback: ConnectCallback  ): Promise<void>--><!--Device-config-function enableAbilityWithCallback(    name: string,    capability: Array<accessibility.Capability>,    connectCallback: ConnectCallback  ): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -51,6 +55,7 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 | [9300001](../errorcode-accessibility.md#9300001-输入无效的包名称或者ability名称) | Invalid bundle name or ability name. |
 | [9300002](../errorcode-accessibility.md#9300002-目标ability已启用) | Target ability already enabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +76,5 @@ config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
   console.error(`Failed to enable ability. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

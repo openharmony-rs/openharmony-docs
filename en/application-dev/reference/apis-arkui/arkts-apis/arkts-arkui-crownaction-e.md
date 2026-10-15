@@ -12,25 +12,21 @@ Enumerates the crown actions.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BEGIN
+## END
 
 ```TypeScript
-BEGIN = 0
+END = 2
 ```
 
-The crown starts rotating.
-
-**Note:** Supported from API version 18 and deprecated from API version 24.
+The crown stops rotating.
 
 **Since:** 18
-
-**Deprecated since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-CrownAction-BEGIN = 0--><!--Device-CrownAction-BEGIN = 0-End-->
+<!--Device-CrownAction-END = 2--><!--Device-CrownAction-END = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,20 +48,24 @@ The crown is rotating.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## END
+## BEGIN
 
 ```TypeScript
-END = 2
+BEGIN = 0
 ```
 
-The crown stops rotating.
+The crown starts rotating.
+
+**Note:** Supported from API version 18 and deprecated from API version 24.
 
 **Since:** 18
+
+**Deprecated since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-CrownAction-END = 2--><!--Device-CrownAction-END = 2-End-->
+<!--Device-CrownAction-BEGIN = 0--><!--Device-CrownAction-BEGIN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

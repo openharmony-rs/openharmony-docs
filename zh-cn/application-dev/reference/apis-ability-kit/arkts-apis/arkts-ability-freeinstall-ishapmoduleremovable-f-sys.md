@@ -6,6 +6,8 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
+<a id="ishapmoduleremovable1"></a>
+
 ## isHapModuleRemovable
 
 ```TypeScript
@@ -30,7 +32,7 @@ function isHapModuleRemovable(bundleName: string, moduleName: string, callback: 
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | moduleName | string | 是 | 应用程序模块名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当获取成功时，err为undefined，data为bool值，true表示可以移除；false表示不可移除；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当获取成功时，err为undefined，data为bool值，true表示可以移除；false表示不可移除；否则为错误对象。 |
 
 **错误码：**
 
@@ -44,7 +46,7 @@ function isHapModuleRemovable(bundleName: string, moduleName: string, callback: 
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 
 
-<a id="ishapmoduleremovable-1"></a>
+<a id="ishapmoduleremovable2"></a>
 
 ## isHapModuleRemovable
 

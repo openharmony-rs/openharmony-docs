@@ -12,6 +12,22 @@ Native Messaging的错误列表。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## INNER_ERROR
+
+```TypeScript
+INNER_ERROR = 17100201
+```
+
+原生消息的内部错误。
+
+**起始版本：** 21
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NmErrorCode-INNER_ERROR = 17100201--><!--Device-NmErrorCode-INNER_ERROR = 17100201-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## PERMISSION_DENY
 
 ```TypeScript
@@ -41,21 +57,5 @@ WANT_CONTENT_ERROR = 17100202
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-NmErrorCode-WANT_CONTENT_ERROR = 17100202--><!--Device-NmErrorCode-WANT_CONTENT_ERROR = 17100202-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## INNER_ERROR
-
-```TypeScript
-INNER_ERROR = 17100201
-```
-
-原生消息的内部错误。
-
-**起始版本：** 21
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-NmErrorCode-INNER_ERROR = 17100201--><!--Device-NmErrorCode-INNER_ERROR = 17100201-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

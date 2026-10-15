@@ -32,9 +32,7 @@ Describes the rectangle of the surface held by the **XComponent**.
 offsetX?: number
 ```
 
-X-coordinate of the surface rectangle relative to the upper-left corner of the **XComponent**.
-
-Unit: px
+X-coordinate of the Surface display area relative to the upper left corner of the XComponent, in px. If not set, the area is centered by default.
 
 **Type:** number
 
@@ -54,9 +52,7 @@ Unit: px
 offsetY?: number
 ```
 
-Y-coordinate of the surface rectangle relative to the upper left corner of the **XComponent**.
-
-Unit: px
+Y-coordinate of the Surface display area relative to the upper left corner of the XComponent, in px. If not set, the area is centered by default.
 
 **Type:** number
 

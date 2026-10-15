@@ -32,7 +32,7 @@ Constructor for obtaining the instance of the FileUri class.
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-FileUri-constructor(uriOrPath: string)--><!--Device-FileUri-constructor(uriOrPath: string)-End-->
 
@@ -72,7 +72,7 @@ Get the full directory uri where the file URI is located
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-FileUri-getFullDirectoryUri(): string--><!--Device-FileUri-getFullDirectoryUri(): string-End-->
 
@@ -116,7 +116,7 @@ Check whether the incoming URI is a remote URI
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-FileUri-isRemoteUri(): boolean--><!--Device-FileUri-isRemoteUri(): boolean-End-->
 
@@ -160,7 +160,7 @@ Obtains the file name of uri.
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-FileUri-get name(): string--><!--Device-FileUri-get name(): string-End-->
 

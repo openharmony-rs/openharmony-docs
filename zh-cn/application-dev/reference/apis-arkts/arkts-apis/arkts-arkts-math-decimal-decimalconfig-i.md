@@ -24,13 +24,13 @@ import { Decimal } from '@kit.ArkTS';
 crypto?: boolean
 ```
 
-确定是否使用加密安全伪随机数生成的值。默认值：false。
+确定是否使用加密安全伪随机数生成的值。当前不支持使用该能力。默认值：false。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-crypto?: boolean--><!--Device-DecimalConfig-crypto?: boolean-End-->
 
@@ -48,7 +48,7 @@ defaults?: boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-defaults?: boolean--><!--Device-DecimalConfig-defaults?: boolean-End-->
 
@@ -60,13 +60,13 @@ defaults?: boolean
 maxE?: number
 ```
 
-正指数极限，若Decimal的指数值大于该值，会溢出至无穷大。默认值：9e15。
+正指数极限，取值范围为[0, 9e15]；若Decimal的指数值大于该值，会溢出至无穷大。默认值：9e15。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-maxE?: double--><!--Device-DecimalConfig-maxE?: double-End-->
 
@@ -78,13 +78,13 @@ maxE?: number
 minE?: number
 ```
 
-负指数极限，若Decimal的指数值小于该值，会下溢到零。默认值：-9e15。
+负指数极限，取值范围为[-9e15, 0]；若Decimal的指数值小于该值，会下溢到零。默认值：-9e15。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-minE?: double--><!--Device-DecimalConfig-minE?: double-End-->
 
@@ -102,7 +102,7 @@ modulo?: Modulo
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-modulo?: Modulo--><!--Device-DecimalConfig-modulo?: Modulo-End-->
 
@@ -114,13 +114,13 @@ modulo?: Modulo
 precision?: number
 ```
 
-运算结果的最大有效位数。默认值：20。
+运算结果的最大有效位数，取值范围为[1, 1e9]。默认值：20。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-precision?: double--><!--Device-DecimalConfig-precision?: double-End-->
 
@@ -138,7 +138,7 @@ rounding?: Rounding
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-rounding?: Rounding--><!--Device-DecimalConfig-rounding?: Rounding-End-->
 
@@ -150,13 +150,13 @@ rounding?: Rounding
 toExpNeg?: number
 ```
 
-指数表示法的负指数值的极限值，若Decimal的负指数小于等于该值时，使用科学计数法表示。默认值：-7。
+指数表示法的负指数值的极限值，取值范围为[-9e15, 0]；若Decimal的负指数小于等于该值时，使用科学计数法表示。默认值：-7。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-toExpNeg?: double--><!--Device-DecimalConfig-toExpNeg?: double-End-->
 
@@ -168,13 +168,13 @@ toExpNeg?: number
 toExpPos?: number
 ```
 
-指数表示法的正指数值的极限值，若Decimal的正指数大于等于该值时，使用科学计数法表示。默认值：21。
+指数表示法的正指数值的极限值，取值范围为[0, 9e15]；若Decimal的正指数大于等于该值时，使用科学计数法表示。默认值：21。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DecimalConfig-toExpPos?: double--><!--Device-DecimalConfig-toExpPos?: double-End-->
 

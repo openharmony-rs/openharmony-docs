@@ -38,7 +38,7 @@ Controller bound to the component, which can be used to invoke methods of the co
 imageAIOptions?: ImageAIOptions
 ```
 
-AI analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.
+Sets an AI analysis option for the component. Through this option, you can configure the analysis type or bind an analysis controller. It takes effect only when the type is SURFACE or TEXTURE. If this option is not set, no AI analysis option is configured, and AI analysis can be enabled separately through the enableAnalyzer attribute.
 
 **Type:** [ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-i.md)
 

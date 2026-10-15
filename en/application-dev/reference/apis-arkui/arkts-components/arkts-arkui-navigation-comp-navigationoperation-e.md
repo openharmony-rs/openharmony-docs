@@ -12,24 +12,6 @@ Enumerates the page redirection types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PUSH
-
-```TypeScript
-PUSH = 1
-```
-
-The transition is enter transition.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-NavigationOperation-PUSH = 1--><!--Device-NavigationOperation-PUSH = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## POP
 
 ```TypeScript
@@ -45,6 +27,24 @@ The transition is exit transition.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NavigationOperation-POP = 2--><!--Device-NavigationOperation-POP = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PUSH
+
+```TypeScript
+PUSH = 1
+```
+
+The transition is enter transition.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavigationOperation-PUSH = 1--><!--Device-NavigationOperation-PUSH = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -6,6 +6,8 @@ export type NotificationSwitchChangedCallback = _NotificationSwitchChangedCallba
 
 Register the callback function type for notification switch state changes set by the interface of [notificationManager.setNotificationSwitch]{@link./@ohos.notificationManager:notificationManager.setNotificationSwitch}.
 
+**Type:** _NotificationSwitchChangedCallback
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Register the callback function type for notification switch state changes set by
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationSwitchChangedCallback

@@ -28,22 +28,6 @@ LATENCY_TYPE_ALL = 0
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## LATENCY_TYPE_SOFTWARE
-
-```TypeScript
-LATENCY_TYPE_SOFTWARE = 1
-```
-
-输入以获取软件部分的延迟，包括软件中的音频效果。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioLatencyType-LATENCY_TYPE_SOFTWARE = 1--><!--Device-AudioLatencyType-LATENCY_TYPE_SOFTWARE = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 ## LATENCY_TYPE_HARDWARE
 
 ```TypeScript
@@ -57,5 +41,21 @@ LATENCY_TYPE_HARDWARE = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioLatencyType-LATENCY_TYPE_HARDWARE = 2--><!--Device-AudioLatencyType-LATENCY_TYPE_HARDWARE = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## LATENCY_TYPE_SOFTWARE
+
+```TypeScript
+LATENCY_TYPE_SOFTWARE = 1
+```
+
+输入以获取软件部分的延迟，包括软件中的音频效果。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioLatencyType-LATENCY_TYPE_SOFTWARE = 1--><!--Device-AudioLatencyType-LATENCY_TYPE_SOFTWARE = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

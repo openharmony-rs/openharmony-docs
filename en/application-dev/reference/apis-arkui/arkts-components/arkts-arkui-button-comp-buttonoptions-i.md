@@ -18,7 +18,7 @@ Describes the button style.
 buttonStyle?: ButtonStyleMode
 ```
 
-Style and importance of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [fontColor](arkts-arkui-button-comp-attribute.md#fontcolor), and [role](arkts-arkui-button-comp-attribute.md#role) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
+Style and importance of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [fontColor](arkts-arkui-button-comp-attribute.md#fontcolor), and [role](arkts-arkui-button-comp-attribute.md#role) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 Default value: **ButtonStyleMode.EMPHASIZED**
 
@@ -74,7 +74,7 @@ Default value: **ControlSize.NORMAL**
 role?: ButtonRole
 ```
 
-Role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [fontColor](arkts-arkui-button-comp-attribute.md#fontcolor), and [buttonStyle](arkts-arkui-button-comp-attribute.md#buttonstyle) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
+Role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [fontColor](arkts-arkui-button-comp-attribute.md#fontcolor), and [buttonStyle](arkts-arkui-button-comp-attribute.md#buttonstyle) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 Default value: **ButtonRole.NORMAL**
 

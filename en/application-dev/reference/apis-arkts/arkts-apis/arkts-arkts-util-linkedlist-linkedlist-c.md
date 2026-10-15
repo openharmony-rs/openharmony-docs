@@ -87,7 +87,7 @@ Adds an element at the end of this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-add(element: T): boolean--><!--Device-LinkedList-add(element: T): boolean-End-->
 
@@ -139,7 +139,7 @@ Adds an element at the top of this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-addFirst(element: T): void--><!--Device-LinkedList-addFirst(element: T): void-End-->
 
@@ -186,7 +186,7 @@ Clears this LinkedList and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-clear(): void--><!--Device-LinkedList-clear(): void-End-->
 
@@ -221,7 +221,7 @@ Clones an instance identical to this **LinkedList** and returns it. The modifica
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-clone(): LinkedList<T>--><!--Device-LinkedList-clone(): LinkedList<T>-End-->
 
@@ -261,7 +261,7 @@ A constructor used to create a **LinkedList** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-constructor()--><!--Device-LinkedList-constructor()-End-->
 
@@ -289,7 +289,7 @@ Converts this LinkedList into an array and returns the array.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-convertToArray(): Array<T>--><!--Device-LinkedList-convertToArray(): Array<T>-End-->
 
@@ -375,7 +375,7 @@ Obtains an element at the specified position in this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-get(index: int): T--><!--Device-LinkedList-get(index: int): T-End-->
 
@@ -425,7 +425,7 @@ Obtains the first element in this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-getFirst(): T--><!--Device-LinkedList-getFirst(): T-End-->
 
@@ -466,7 +466,7 @@ Obtains the index of the first occurrence of the specified element in this Linke
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-getIndexOf(element: T): int--><!--Device-LinkedList-getIndexOf(element: T): int-End-->
 
@@ -515,7 +515,7 @@ Obtains the last element in this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-getLast(): T--><!--Device-LinkedList-getLast(): T-End-->
 
@@ -556,7 +556,7 @@ Obtains the index of the last occurrence of the specified element in this Linked
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-getLastIndexOf(element: T): int--><!--Device-LinkedList-getLastIndexOf(element: T): int-End-->
 
@@ -605,7 +605,7 @@ Checks whether this LinkedList has the specified element.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-has(element: T): boolean--><!--Device-LinkedList-has(element: T): boolean-End-->
 
@@ -648,7 +648,7 @@ Inserts an element at the specified position in this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-insert(index: int, element: T): void--><!--Device-LinkedList-insert(index: int, element: T): void-End-->
 
@@ -689,7 +689,7 @@ Removes the first occurrence of the specified element from this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-remove(element: T): boolean--><!--Device-LinkedList-remove(element: T): boolean-End-->
 
@@ -825,7 +825,7 @@ Removes the first occurrence of the specified element from this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-removeFirstFound(element: T): boolean--><!--Device-LinkedList-removeFirstFound(element: T): boolean-End-->
 
@@ -915,7 +915,7 @@ Removes the last occurrence of the specified element from this LinkedList.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-removeLastFound(element: T): boolean--><!--Device-LinkedList-removeLastFound(element: T): boolean-End-->
 
@@ -963,7 +963,7 @@ Replaces an element at the specified position in this LinkedList with a given el
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LinkedList-set(index: int, element: T): T--><!--Device-LinkedList-set(index: int, element: T): T-End-->
 

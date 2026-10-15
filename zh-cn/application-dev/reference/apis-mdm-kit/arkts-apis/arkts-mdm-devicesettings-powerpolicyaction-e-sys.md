@@ -14,24 +14,6 @@ enum PowerPolicyAction
 
 **系统接口：** 此接口为系统接口。
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-不执行动作。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PowerPolicyAction-NONE = 0--><!--Device-PowerPolicyAction-NONE = 0-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**系统接口：** 此接口为系统接口。
-
 ## AUTO_SUSPEND
 
 ```TypeScript
@@ -81,6 +63,24 @@ HIBERNATE = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PowerPolicyAction-HIBERNATE = 3--><!--Device-PowerPolicyAction-HIBERNATE = 3-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**系统接口：** 此接口为系统接口。
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+不执行动作。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PowerPolicyAction-NONE = 0--><!--Device-PowerPolicyAction-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -16,4 +16,4 @@ Enumerates the touch exploration event types. Touch exploration is an interactio
 | --- | --- |
 | 'touchBegin' | Start of touch. |
 | 'touchEnd' | End of touch. |
-| 'touchGuideGesture' | Represents a touch exploration gesture. [since 26.0.0] |
+| 'touchGuideGesture' | Represents a touch exploration gesture.<br>**Since:** 26.0.0 |

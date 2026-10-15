@@ -50,9 +50,9 @@ startServiceExtensionAbility(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -65,6 +65,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -93,6 +94,8 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## stopServiceExtensionAbility
 
@@ -128,9 +131,9 @@ stopServiceExtensionAbility(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -140,6 +143,7 @@ stopServiceExtensionAbility(want: Want): Promise<void>
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -168,3 +172,5 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
   }
 }
 ```
+
+<!--DelEnd-->

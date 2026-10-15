@@ -28,7 +28,7 @@ Releases output resources. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Photo-release(): Promise<void>--><!--Device-Photo-release(): Promise<void>-End-->
 
@@ -60,7 +60,7 @@ Full-quality image.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Photo-main: image.Image--><!--Device-Photo-main: image.Image-End-->
 

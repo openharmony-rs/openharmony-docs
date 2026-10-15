@@ -14,24 +14,6 @@ Describes the state type of transfer task.
 
 **System API:** This is a system API.
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-Indicates that the transfer task is running.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TransferState-RUNNING = 0--><!--Device-TransferState-RUNNING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-**System API:** This is a system API.
-
 ## COMPLETED
 
 ```TypeScript
@@ -45,6 +27,24 @@ Indicates that the transfer task has been finished.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TransferState-COMPLETED = 1--><!--Device-TransferState-COMPLETED = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**System API:** This is a system API.
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+Indicates that the transfer task is running.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferState-RUNNING = 0--><!--Device-TransferState-RUNNING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

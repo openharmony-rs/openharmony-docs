@@ -4,7 +4,9 @@
 export type Skill = _Skill.Skill
 ```
 
-Defines the skill information.
+Skill information.
+
+**Type:** [_Skill.Skill](arkts-ability-skill-i.md)
 
 **Since:** 12
 
@@ -13,5 +15,3 @@ Defines the skill information.
 <!--Device-bundleManager-export type Skill = _Skill.Skill--><!--Device-bundleManager-export type Skill = _Skill.Skill-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Type:** [_Skill.Skill](arkts-ability-skill-i.md)

@@ -20,6 +20,8 @@ Before calling any of the following APIs, you must use [onWindowStageCreate()](.
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="createsubwindow1"></a>
+
 ## createSubWindow
 
 ```TypeScript
@@ -32,7 +34,7 @@ Create sub window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-createSubWindow(name: string): Promise<Window>--><!--Device-WindowStage-createSubWindow(name: string): Promise<Window>-End-->
 
@@ -55,7 +57,7 @@ Create sub window of the stage.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed.         2. Internal task error.         3. The subWindow has been created and cannot be created again.         4. It is not allowed to create non-secure window when secure extension exists.         5. The parent window and the subwindow are not created by the same process. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal.<br>**Applicable version:** 9 |
 
 **Examples**
@@ -87,7 +89,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="createsubwindow-1"></a>
+<a id="createsubwindow2"></a>
 
 ## createSubWindow
 
@@ -101,7 +103,7 @@ Create sub window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-createSubWindow(name: string, callback: AsyncCallback<Window>): void--><!--Device-WindowStage-createSubWindow(name: string, callback: AsyncCallback<Window>): void-End-->
 
@@ -119,7 +121,7 @@ Create sub window of the stage.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed.         2. Internal task error.         3. The subWindow has been created and cannot be created again.         4. It is not allowed to create non-secure window when secure extension exists.         5. The parent window and the subwindow are not created by the same process. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal.<br>**Applicable version:** 9 |
 
 **Examples**
@@ -171,7 +173,7 @@ Create sub window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowStage-createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise<Window>--><!--Device-WindowStage-createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise<Window>-End-->
 
@@ -196,7 +198,7 @@ Create sub window of the stage.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The subWindow has been created and cannot be created again. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible causes: 1. The window is not created or destroyed;         2. The subWindow has been created and cannot be created again.         3. Internal task error.         4. It is not allowed to create non-secure window when secure extension exists.         5. The parent window and the subwindow are not created by the same process. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal. |
 
 **Examples**
@@ -232,6 +234,8 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+<a id="getmainwindow1"></a>
+
 ## getMainWindow
 
 ```TypeScript
@@ -244,7 +248,7 @@ Get main window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-getMainWindow(): Promise<Window>--><!--Device-WindowStage-getMainWindow(): Promise<Window>-End-->
 
@@ -295,7 +299,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="getmainwindow-1"></a>
+<a id="getmainwindow2"></a>
 
 ## getMainWindow
 
@@ -309,7 +313,7 @@ Get main window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-getMainWindow(callback: AsyncCallback<Window>): void--><!--Device-WindowStage-getMainWindow(callback: AsyncCallback<Window>): void-End-->
 
@@ -374,7 +378,7 @@ Get main window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-getMainWindowSync(): Window--><!--Device-WindowStage-getMainWindowSync(): Window-End-->
 
@@ -421,6 +425,8 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+<a id="getsubwindow1"></a>
+
 ## getSubWindow
 
 ```TypeScript
@@ -433,7 +439,7 @@ Get sub window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-getSubWindow(): Promise<Array<Window>>--><!--Device-WindowStage-getSubWindow(): Promise<Array<Window>>-End-->
 
@@ -477,7 +483,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="getsubwindow-1"></a>
+<a id="getsubwindow2"></a>
 
 ## getSubWindow
 
@@ -491,7 +497,7 @@ Get sub window of the stage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-getSubWindow(callback: AsyncCallback<Array<Window>>): void--><!--Device-WindowStage-getSubWindow(callback: AsyncCallback<Array<Window>>): void-End-->
 
@@ -549,7 +555,7 @@ Whether the window supports the window rect auto-save.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-WindowStage-isWindowRectAutoSave(): Promise<boolean>--><!--Device-WindowStage-isWindowRectAutoSave(): Promise<boolean>-End-->
 
@@ -566,7 +572,7 @@ Whether the window supports the window rect auto-save.
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally.<br>**Applicable version:** 20 and later |
 
 **Examples**
@@ -595,6 +601,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="loadcontent1"></a>
+
 ## loadContent
 
 ```TypeScript
@@ -607,7 +615,7 @@ Loads the content of a page, with its path in the current project specified, to 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-loadContent(path: string, storage: LocalStorage, callback: AsyncCallback<void>): void--><!--Device-WindowStage-loadContent(path: string, storage: LocalStorage, callback: AsyncCallback<void>): void-End-->
 
@@ -625,7 +633,7 @@ Loads the content of a page, with its path in the current project specified, to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Invalid path parameter. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal.<br>**Applicable version:** 9 |
 
@@ -661,7 +669,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="loadcontent-1"></a>
+<a id="loadcontent2"></a>
 
 ## loadContent
 
@@ -675,7 +683,7 @@ Loads the content of a page, with its path in the current project specified, to 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-loadContent(path: string, storage?: LocalStorage): Promise<void>--><!--Device-WindowStage-loadContent(path: string, storage?: LocalStorage): Promise<void>-End-->
 
@@ -698,7 +706,7 @@ Loads the content of a page, with its path in the current project specified, to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Invalid path parameter. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal.<br>**Applicable version:** 9 |
 
@@ -733,7 +741,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="loadcontent-2"></a>
+<a id="loadcontent3"></a>
 
 ## loadContent
 
@@ -747,7 +755,7 @@ Loads content from a page to this window stage. This API uses an asynchronous ca
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-loadContent(path: string, callback: AsyncCallback<void>): void--><!--Device-WindowStage-loadContent(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -764,7 +772,7 @@ Loads content from a page to this window stage. This API uses an asynchronous ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Invalid path parameter. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal.<br>**Applicable version:** 9 |
 
@@ -797,6 +805,8 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+<a id="loadcontentbyname1"></a>
+
 ## loadContentByName
 
 ```TypeScript
@@ -809,7 +819,7 @@ Loads the content of a [named route](../../../ui/arkts-routing.md#named-route) p
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback<void>): void--><!--Device-WindowStage-loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback<void>): void-End-->
 
@@ -827,7 +837,7 @@ Loads the content of a [named route](../../../ui/arkts-routing.md#named-route) p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Examples**
@@ -885,7 +895,7 @@ export struct Index {
 }
 ```
 
-<a id="loadcontentbyname-1"></a>
+<a id="loadcontentbyname2"></a>
 
 ## loadContentByName
 
@@ -899,7 +909,7 @@ Loads the content of a [named route](../../../ui/arkts-routing.md#named-route) p
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-loadContentByName(name: string, callback: AsyncCallback<void>): void--><!--Device-WindowStage-loadContentByName(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -916,7 +926,7 @@ Loads the content of a [named route](../../../ui/arkts-routing.md#named-route) p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Examples**
@@ -970,7 +980,7 @@ export struct Index {
 }
 ```
 
-<a id="loadcontentbyname-2"></a>
+<a id="loadcontentbyname3"></a>
 
 ## loadContentByName
 
@@ -984,7 +994,7 @@ Loads content by named router
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowStage-loadContentByName(name: string, storage?: LocalStorage): Promise<void>--><!--Device-WindowStage-loadContentByName(name: string, storage?: LocalStorage): Promise<void>-End-->
 
@@ -1007,7 +1017,7 @@ Loads content by named router
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;                                                                                                                                   2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Examples**
@@ -1063,6 +1073,8 @@ export struct Index {
 }
 ```
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -1092,7 +1104,7 @@ Unsubscribes from the window stage lifecycle change event.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Incorrect parameter types;         2. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal. |
 
@@ -1134,7 +1146,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -1198,7 +1210,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="off-2"></a>
+<a id="off3"></a>
 
 ## off
 
@@ -1229,7 +1241,7 @@ Window stage close callback off.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
@@ -1260,6 +1272,8 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -1289,7 +1303,7 @@ Subscribes to the window stage lifecycle change event.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal. |
 
@@ -1316,7 +1330,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -1388,7 +1402,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="on-2"></a>
+<a id="on3"></a>
 
 ## on
 
@@ -1419,7 +1433,7 @@ Window stage close callback on.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
@@ -1547,7 +1561,7 @@ Removes the image that the application has set to be displayed in the multitaski
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**Applicable version:** 26.0.0 and later |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 22 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
 ## removeStartingWindow
@@ -1562,7 +1576,7 @@ Remove the starting window, it must be used with configuration "enable.remove.st
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-WindowStage-removeStartingWindow(): Promise<void>--><!--Device-WindowStage-removeStartingWindow(): Promise<void>-End-->
 
@@ -1579,7 +1593,7 @@ Remove the starting window, it must be used with configuration "enable.remove.st
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window stage is not created or destroyed; 2. The main window is not created or destroyed; 3. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window stage is not created or destroyed;         2. The main window is not created or destroyed;         3. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
 **Examples**
@@ -1603,6 +1617,8 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
+<a id="setcustomdensity1"></a>
 
 ## setCustomDensity
 
@@ -1636,7 +1652,7 @@ If both this API and [setDefaultDensityEnabled(true)](#setdefaultdensityenabled)
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal. |
@@ -1662,7 +1678,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="setcustomdensity-1"></a>
+<a id="setcustomdensity2"></a>
 
 ## setCustomDensity
 
@@ -1736,7 +1752,7 @@ When the default density is not used, if [setCustomDensity()](#setcustomdensity)
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WindowStage-setDefaultDensityEnabled(enabled: boolean): void--><!--Device-WindowStage-setDefaultDensityEnabled(enabled: boolean): void-End-->
 
@@ -1752,7 +1768,7 @@ When the default density is not used, if [setCustomDensity()](#setcustomdensity)
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The main window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-abnormal-windowstage) | This window stage is abnormal. Possible cause: The window stage is not created or destroyed. |
@@ -1787,6 +1803,8 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+<a id="setimageforrecent1"></a>
+
 ## setImageForRecent
 
 ```TypeScript
@@ -1798,8 +1816,8 @@ Sets the image displayed in the multitasking view and on dock hover. This API us
 > **NOTE:** 
 > 
 > Before calling this API, you are advised to complete page loading via
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent) or
-> [setUIContent](arkts-arkui-window-window-i.md#setuicontent-1). If this API is called before the application
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent1) or
+> [setUIContent](arkts-arkui-window-window-i.md#setuicontent2). If this API is called before the application
 > completes page loading, the intended functionality does not take effect. As a result, only the application's
 > launch page is displayed in the multitasking view.
 
@@ -1835,9 +1853,9 @@ Sets the image displayed in the multitasking view and on dock hover. This API us
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**Applicable version:** 26.0.0 and later |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 22 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The WindowStage is running in the background. 3. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. The WindowStage is running in the background.         3. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
+| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid parameter range. 2. Invalid parameter length. |
 
 **Examples**
 
@@ -1865,6 +1883,8 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+<a id="setsupportedwindowmodes1"></a>
+
 ## setSupportedWindowModes
 
 ```TypeScript
@@ -1877,7 +1897,7 @@ Sets the supported window modes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-WindowStage-setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise<void>--><!--Device-WindowStage-setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise<void>-End-->
 
@@ -1900,7 +1920,7 @@ Sets the supported window modes.
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
 **Examples**
@@ -1933,7 +1953,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsupportedwindowmodes-1"></a>
+<a id="setsupportedwindowmodes2"></a>
 
 ## setSupportedWindowModes
 
@@ -1969,9 +1989,9 @@ Sets the supported window modes of the main window.
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function setSupportedWindowModes can not work correctly due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
+| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid parameter range.         2. Invalid parameter length.         3. Incorrect parameter format. |
 
 **Examples**
 
@@ -2015,7 +2035,7 @@ Set the application modality of the windowStage.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-WindowStage-setWindowModal(isModal: boolean): Promise<void>--><!--Device-WindowStage-setWindowModal(isModal: boolean): Promise<void>-End-->
 
@@ -2037,7 +2057,7 @@ Set the application modality of the windowStage.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
@@ -2069,6 +2089,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="setwindowrectautosave1"></a>
+
 ## setWindowRectAutoSave
 
 ```TypeScript
@@ -2081,7 +2103,7 @@ Set to automatically save the window rect.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-WindowStage-setWindowRectAutoSave(enabled: boolean): Promise<void>--><!--Device-WindowStage-setWindowRectAutoSave(enabled: boolean): Promise<void>-End-->
 
@@ -2103,9 +2125,9 @@ Set to automatically save the window rect.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
 **Examples**
@@ -2134,7 +2156,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowrectautosave-1"></a>
+<a id="setwindowrectautosave2"></a>
 
 ## setWindowRectAutoSave
 
@@ -2148,7 +2170,7 @@ Set to automatically save the window rect and whether to enable specifiedFlag. T
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 17.
+**Atomic service API:** This API can be used in atomic services since API version 17.
 
 <!--Device-WindowStage-setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise<void>--><!--Device-WindowStage-setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise<void>-End-->
 
@@ -2171,9 +2193,9 @@ Set to automatically save the window rect and whether to enable specifiedFlag. T
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function setWindowRectAutoSave can not work correctly due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
 **Examples**

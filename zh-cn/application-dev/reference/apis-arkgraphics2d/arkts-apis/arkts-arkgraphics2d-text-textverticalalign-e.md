@@ -22,7 +22,7 @@ BASELINE = 0
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextVerticalAlign-BASELINE = 0--><!--Device-TextVerticalAlign-BASELINE = 0-End-->
 
@@ -38,7 +38,7 @@ BOTTOM = 1
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextVerticalAlign-BOTTOM = 1--><!--Device-TextVerticalAlign-BOTTOM = 1-End-->
 
@@ -54,7 +54,7 @@ CENTER = 2
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextVerticalAlign-CENTER = 2--><!--Device-TextVerticalAlign-CENTER = 2-End-->
 
@@ -70,7 +70,7 @@ TOP = 3
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextVerticalAlign-TOP = 3--><!--Device-TextVerticalAlign-TOP = 3-End-->
 

@@ -57,7 +57,7 @@ declare function truncate(file: string | number, len?: number): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="truncate-1"></a>
+<a id="truncate2"></a>
 
 ## truncate
 
@@ -104,7 +104,7 @@ declare function truncate(file: string | number, callback: AsyncCallback<void>):
 | 13900042 | Unknown error |
 
 
-<a id="truncate-2"></a>
+<a id="truncate3"></a>
 
 ## truncate
 

@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** ColumnAttribute extends CommonMethod<ColumnAttribute>
+**Inheritance/Implementation:** ColumnAttribute extends CommonMethod&lt;ColumnAttribute&gt;
 
 **Since:** 7
 

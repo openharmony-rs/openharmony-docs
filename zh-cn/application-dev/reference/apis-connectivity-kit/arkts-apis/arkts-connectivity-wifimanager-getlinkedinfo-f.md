@@ -6,6 +6,8 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
+<a id="getlinkedinfo1"></a>
+
 ## getLinkedInfo
 
 ```TypeScript
@@ -24,7 +26,7 @@ function getLinkedInfo(): Promise<WifiLinkedInfo>
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-wifiManager-function getLinkedInfo(): Promise<WifiLinkedInfo>--><!--Device-wifiManager-function getLinkedInfo(): Promise<WifiLinkedInfo>-End-->
 
@@ -58,7 +60,7 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 ```
 
 
-<a id="getlinkedinfo-1"></a>
+<a id="getlinkedinfo2"></a>
 
 ## getLinkedInfo
 
@@ -93,11 +95,11 @@ function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
 
 **示例**
 
-参见 getLinkedInfo
+参见 [getLinkedInfo](#getlinkedinfo)

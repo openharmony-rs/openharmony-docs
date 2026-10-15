@@ -4,7 +4,9 @@
 export type Skill = _Skill.Skill
 ```
 
-skill信息。
+Skill信息。
+
+**类型：** [_Skill.Skill](arkts-ability-skill-i.md)
 
 **起始版本：** 12
 
@@ -13,5 +15,3 @@ skill信息。
 <!--Device-bundleManager-export type Skill = _Skill.Skill--><!--Device-bundleManager-export type Skill = _Skill.Skill-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**类型：** [_Skill.Skill](arkts-ability-skill-i.md)

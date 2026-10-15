@@ -6,6 +6,8 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="createasrprocessingcontroller1"></a>
+
 ## createAsrProcessingController
 
 ```TypeScript
@@ -43,6 +45,7 @@ function createAsrProcessingController(audioCapturer: AudioCapturer): AsrProcess
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. e.g. the source type of the input audio capturer is not [SOURCE_TYPE_VOICE_RECOGNITION](arkts-audio-audio-sourcetype-e.md#source_type_voice_recognition) or [SOURCE_TYPE_WAKEUP](arkts-audio-audio-sourcetype-e-sys.md#source_type_wakeup), or this audio capturer is already released. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -77,8 +80,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="createasrprocessingcontroller-1"></a>
+
+<a id="createasrprocessingcontroller2"></a>
 
 ## createAsrProcessingController
 
@@ -117,6 +122,9 @@ function createAsrProcessingController(audioCapturer: AudioCapturer): AsrProcess
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Operation not allowed. e.g. the source type of the input audio capturer is not [SOURCE_TYPE_VOICE_RECOGNITION](arkts-audio-audio-sourcetype-e.md#source_type_voice_recognition) or [SOURCE_TYPE_WAKEUP](arkts-audio-audio-sourcetype-e-sys.md#source_type_wakeup), or this audio capturer is already released. |
 
+<!--Del-->
 **示例**
 
 参见 [createAsrProcessingController](#createasrprocessingcontroller)
+
+<!--DelEnd-->

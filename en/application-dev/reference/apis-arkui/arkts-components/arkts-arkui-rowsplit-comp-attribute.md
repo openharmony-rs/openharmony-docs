@@ -8,12 +8,12 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 > **NOTE:** 
 > 
-> The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip) of the **RowSplit** component is
+> The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip1) of the **RowSplit** component is
 > **true**.
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** RowSplitAttribute extends CommonMethod<RowSplitAttribute>
+**Inheritance/Implementation:** RowSplitAttribute extends CommonMethod&lt;RowSplitAttribute&gt;
 
 **Since:** 7
 

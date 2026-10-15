@@ -26,20 +26,6 @@ AUDIO_SCENE_DEFAULT = 0
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
-## AUDIO_SCENE_RINGING
-
-```TypeScript
-AUDIO_SCENE_RINGING = 1
-```
-
-响铃模式。
-
-**起始版本：** 12
-
-<!--Device-AudioScene-AUDIO_SCENE_RINGING = 1--><!--Device-AudioScene-AUDIO_SCENE_RINGING = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Communication
-
 ## AUDIO_SCENE_PHONE_CALL
 
 ```TypeScript
@@ -51,6 +37,20 @@ AUDIO_SCENE_PHONE_CALL = 2
 **起始版本：** 12
 
 <!--Device-AudioScene-AUDIO_SCENE_PHONE_CALL = 2--><!--Device-AudioScene-AUDIO_SCENE_PHONE_CALL = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+## AUDIO_SCENE_RINGING
+
+```TypeScript
+AUDIO_SCENE_RINGING = 1
+```
+
+响铃模式。
+
+**起始版本：** 12
+
+<!--Device-AudioScene-AUDIO_SCENE_RINGING = 1--><!--Device-AudioScene-AUDIO_SCENE_RINGING = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 

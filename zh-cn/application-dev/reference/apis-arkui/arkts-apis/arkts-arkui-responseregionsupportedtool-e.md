@@ -48,24 +48,6 @@ FINGER = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## PEN
-
-```TypeScript
-PEN = 2
-```
-
-手写笔。
-
-**起始版本：** 22
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-ResponseRegionSupportedTool-PEN = 2--><!--Device-ResponseRegionSupportedTool-PEN = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## MOUSE
 
 ```TypeScript
@@ -81,5 +63,23 @@ MOUSE = 3
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResponseRegionSupportedTool-MOUSE = 3--><!--Device-ResponseRegionSupportedTool-MOUSE = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PEN
+
+```TypeScript
+PEN = 2
+```
+
+手写笔。
+
+**起始版本：** 22
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ResponseRegionSupportedTool-PEN = 2--><!--Device-ResponseRegionSupportedTool-PEN = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

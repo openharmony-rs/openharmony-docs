@@ -12,22 +12,6 @@ Enumerates the album types,
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SMART
-
-```TypeScript
-SMART = 4096
-```
-
-Smart analysis album.
-
-**Since:** 11
-
-<!--Device-AlbumType-SMART = 4096--><!--Device-AlbumType-SMART = 4096-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## SHARE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Share album.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AlbumType-SHARE = 8192--><!--Device-AlbumType-SHARE = 8192-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## SMART
+
+```TypeScript
+SMART = 4096
+```
+
+Smart analysis album.
+
+**Since:** 11
+
+<!--Device-AlbumType-SMART = 4096--><!--Device-AlbumType-SMART = 4096-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

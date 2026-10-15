@@ -6,6 +6,8 @@
 import { childProcessManager } from '@kit.AbilityKit';
 ```
 
+<a id="startchildprocess1"></a>
+
 ## startChildProcess
 
 ```TypeScript
@@ -82,13 +84,13 @@ try {
     }, (err: BusinessError) => {
       console.error(`startChildProcess error, errorCode: ${err.code}`);
     })
-} catch (err: BusinessError) {
+} catch (err) {
   console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```
 
 
-<a id="startchildprocess-1"></a>
+<a id="startchildprocess2"></a>
 
 ## startChildProcess
 
@@ -162,7 +164,7 @@ try {
       console.info(`startChildProcess success, pid: ${data}`);
     }
   });
-} catch (err: BusinessError) {
+} catch (err) {
   console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```

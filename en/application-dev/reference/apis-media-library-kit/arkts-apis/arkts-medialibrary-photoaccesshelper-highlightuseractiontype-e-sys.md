@@ -14,6 +14,54 @@ Enumerates the user behavior types of the highlights album.
 
 **System API:** This is a system API.
 
+## ART_LAYOUT_VIEWED_DURATION
+
+```TypeScript
+ART_LAYOUT_VIEWED_DURATION = 103
+```
+
+Time used to view a highlights album.
+
+**Since:** 12
+
+<!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_DURATION = 103--><!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_DURATION = 103-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## ART_LAYOUT_VIEWED_TIMES
+
+```TypeScript
+ART_LAYOUT_VIEWED_TIMES = 102
+```
+
+Number of times that a highlights album is viewed.
+
+**Since:** 12
+
+<!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_TIMES = 102--><!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_TIMES = 102-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## CHANGED_COVER_COUNT
+
+```TypeScript
+CHANGED_COVER_COUNT = 5
+```
+
+Number of times that a cover is changed.
+
+**Since:** 12
+
+<!--Device-HighlightUserActionType-CHANGED_COVER_COUNT = 5--><!--Device-HighlightUserActionType-CHANGED_COVER_COUNT = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
 ## INSERTED_PIC_COUNT
 
 ```TypeScript
@@ -46,38 +94,6 @@ Number of removed pictures.
 
 **System API:** This is a system API.
 
-## SHARED_SCREENSHOT_COUNT
-
-```TypeScript
-SHARED_SCREENSHOT_COUNT = 2
-```
-
-Number of times that a full-length image in a highlights album is shared.
-
-**Since:** 12
-
-<!--Device-HighlightUserActionType-SHARED_SCREENSHOT_COUNT = 2--><!--Device-HighlightUserActionType-SHARED_SCREENSHOT_COUNT = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## SHARED_COVER_COUNT
-
-```TypeScript
-SHARED_COVER_COUNT = 3
-```
-
-Number of times that a highlights cover is shared.
-
-**Since:** 12
-
-<!--Device-HighlightUserActionType-SHARED_COVER_COUNT = 3--><!--Device-HighlightUserActionType-SHARED_COVER_COUNT = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## RENAMED_COUNT
 
 ```TypeScript
@@ -89,38 +105,6 @@ Number of times that a highlights album is renamed.
 **Since:** 12
 
 <!--Device-HighlightUserActionType-RENAMED_COUNT = 4--><!--Device-HighlightUserActionType-RENAMED_COUNT = 4-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## CHANGED_COVER_COUNT
-
-```TypeScript
-CHANGED_COVER_COUNT = 5
-```
-
-Number of times that a cover is changed.
-
-**Since:** 12
-
-<!--Device-HighlightUserActionType-CHANGED_COVER_COUNT = 5--><!--Device-HighlightUserActionType-CHANGED_COVER_COUNT = 5-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## RENDER_VIEWED_TIMES
-
-```TypeScript
-RENDER_VIEWED_TIMES = 100
-```
-
-Number of times that the pictures in a highlights album are played.
-
-**Since:** 12
-
-<!--Device-HighlightUserActionType-RENDER_VIEWED_TIMES = 100--><!--Device-HighlightUserActionType-RENDER_VIEWED_TIMES = 100-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -142,33 +126,49 @@ Time used to play the pictures in a highlights album.
 
 **System API:** This is a system API.
 
-## ART_LAYOUT_VIEWED_TIMES
+## RENDER_VIEWED_TIMES
 
 ```TypeScript
-ART_LAYOUT_VIEWED_TIMES = 102
+RENDER_VIEWED_TIMES = 100
 ```
 
-Number of times that a highlights album is viewed.
+Number of times that the pictures in a highlights album are played.
 
 **Since:** 12
 
-<!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_TIMES = 102--><!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_TIMES = 102-End-->
+<!--Device-HighlightUserActionType-RENDER_VIEWED_TIMES = 100--><!--Device-HighlightUserActionType-RENDER_VIEWED_TIMES = 100-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
 
-## ART_LAYOUT_VIEWED_DURATION
+## SHARED_COVER_COUNT
 
 ```TypeScript
-ART_LAYOUT_VIEWED_DURATION = 103
+SHARED_COVER_COUNT = 3
 ```
 
-Time used to view a highlights album.
+Number of times that a highlights cover is shared.
 
 **Since:** 12
 
-<!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_DURATION = 103--><!--Device-HighlightUserActionType-ART_LAYOUT_VIEWED_DURATION = 103-End-->
+<!--Device-HighlightUserActionType-SHARED_COVER_COUNT = 3--><!--Device-HighlightUserActionType-SHARED_COVER_COUNT = 3-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## SHARED_SCREENSHOT_COUNT
+
+```TypeScript
+SHARED_SCREENSHOT_COUNT = 2
+```
+
+Number of times that a full-length image in a highlights album is shared.
+
+**Since:** 12
+
+<!--Device-HighlightUserActionType-SHARED_SCREENSHOT_COUNT = 2--><!--Device-HighlightUserActionType-SHARED_SCREENSHOT_COUNT = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

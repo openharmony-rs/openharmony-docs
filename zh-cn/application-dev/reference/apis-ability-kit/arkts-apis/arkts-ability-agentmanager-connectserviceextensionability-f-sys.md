@@ -34,7 +34,7 @@ function connectServiceExtensionAbility(context: AgentExtensionContext, want: Wa
 | --- | --- | --- | --- |
 | context | [AgentExtensionContext](arkts-ability-agentextensioncontext-c.md) | 是 | 当前Agent扩展能力的上下文，包含AgentCard信息。 |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 目标ServiceExtensionAbility的Want信息，包含bundleName、abilityName等。 |
-| callback | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
+| callback | [ConnectOptions](arkts-ability-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
 
 **返回值：**
 
@@ -46,7 +46,7 @@ function connectServiceExtensionAbility(context: AgentExtensionContext, want: Wa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |

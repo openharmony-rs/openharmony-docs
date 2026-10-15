@@ -4,7 +4,7 @@
 declare type OnTabsContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean
 ```
 
-Defines the callback invoked when a new page is about to be displayed.
+Custom callback for intercepting **Tabs** page switching, triggered when a new page is about to be displayed.
 
 **Since:** 18
 
@@ -20,11 +20,11 @@ Defines the callback invoked when a new page is about to be displayed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| currentIndex | number | Yes | Index of the active tab. The index starts from 0. |
-| comingIndex | number | Yes | Index of the new tab to be displayed. |
+| currentIndex | number | Yes | Index of the currently displayed page. The index starts from 0. |
+| comingIndex | number | Yes | Index of the new page to be displayed. The index starts from 0. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | The return value **true** means that the tab can switch to the new page.<br>The value **false** means that the tab cannot switch to the new page and will remain on the current page. |
+| boolean | When the return value of the callback handler is **true**, **Tabs** can switch to the new page.<br>When the return value of the callback handler is **false**, **Tabs** cannot switch to the new page and still displays the original page content. |

@@ -30,7 +30,7 @@ Whether the camera capability is changed after the camera is automatically switc
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoDeviceSwitchStatus-readonly isDeviceCapabilityChanged: boolean--><!--Device-AutoDeviceSwitchStatus-readonly isDeviceCapabilityChanged: boolean-End-->
 
@@ -48,7 +48,7 @@ Whether the camera is automatically switched. **true** if auto-switched, **false
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AutoDeviceSwitchStatus-readonly isDeviceSwitched: boolean--><!--Device-AutoDeviceSwitchStatus-readonly isDeviceSwitched: boolean-End-->
 

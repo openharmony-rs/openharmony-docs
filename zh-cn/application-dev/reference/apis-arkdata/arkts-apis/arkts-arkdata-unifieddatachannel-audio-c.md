@@ -34,7 +34,7 @@ get audioUri(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Audio-get audioUri(): string--><!--Device-Audio-get audioUri(): string-End-->
 
@@ -52,7 +52,7 @@ set audioUri(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Audio-set audioUri(value: string)--><!--Device-Audio-set audioUri(value: string)-End-->
 

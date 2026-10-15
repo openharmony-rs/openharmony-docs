@@ -4,7 +4,7 @@
 export declare class ToolBarModifier
 ```
 
-Provides APIs for setting the height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which only takes effect when there are fewer than five items) of the toolbar, and whether to display the pressed state effect (**stateEffect**).
+Provides methods for setting the toolbar height, background color, left and right padding (takes effect only when the number of items is less than 5), and whether to display the pressed state (**stateEffect**).
 
 **Since:** 13
 
@@ -24,7 +24,7 @@ import { ItemState, ToolBar, ToolBarOption, ToolBarOptions, ToolBarModifier } fr
 backgroundColor(backgroundColor: ResourceColor): ToolBarModifier
 ```
 
-Sets the background color of the toolbar. By overriding this API, you can implement custom drawing for the background color of the toolbar.
+Sets the toolbar background color.
 
 **Since:** 13
 
@@ -40,13 +40,13 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| backgroundColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Toolbar background color<br>Default value: **$r('sys.color.ohos_id_color_toolbar_bg')** |
+| backgroundColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Toolbar background color.<br>Default value: **$r('sys.color.ohos_id_color_toolbar_bg')** |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | **ToolBarModifier** object after the background color is set. |
+| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | Returns the current **ToolBarModifier** object, which supports chained calls. |
 
 ## height
 
@@ -54,7 +54,7 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 height(height: LengthMetrics): ToolBarModifier
 ```
 
-Sets the height of the toolbar. By overriding this API, you can implement custom drawing for the height of the toolbar, which does not include the height of the divider.
+Sets the toolbar height. This height does not include the divider line height.
 
 **Since:** 13
 
@@ -76,7 +76,7 @@ Sets the height of the toolbar. By overriding this API, you can implement custom
 
 | Type | Description |
 | --- | --- |
-| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | **ToolBarModifier** object after the height is set. |
+| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | Returns the current **ToolBarModifier** object, which supports chained calls. |
 
 ## padding
 
@@ -84,7 +84,7 @@ Sets the height of the toolbar. By overriding this API, you can implement custom
 padding(padding: LengthMetrics): ToolBarModifier
 ```
 
-Sets the left and right padding of the toolbar. By overriding this API, you can implement custom drawing for the left and right padding of the toolbar.
+Sets the left and right padding of the toolbar.
 
 **Since:** 13
 
@@ -100,13 +100,13 @@ Sets the left and right padding of the toolbar. By overriding this API, you can 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| padding | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | Yes | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br>By default, the padding is 24 vp when there are fewer than five items and 0 when there are five or more items. |
+| padding | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | Yes | Left and right padding of the toolbar. Takes effect only when the number of items is less than 5.<br>By default, the toolbar padding is 24 vp when the number of items is less than 5, and 0 vp when the number of items is 5 or more. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | **ToolBarModifier** object after the padding is set. |
+| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | Returns the current **ToolBarModifier** object, which supports chained calls. |
 
 ## stateEffect
 
@@ -136,4 +136,4 @@ Sets whether to display the pressed state effect.
 
 | Type | Description |
 | --- | --- |
-| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | **ToolBarModifier** object after the pressed state effect is set. |
+| [ToolBarModifier](arkts-arkui-arkui-advanced-toolbar-toolbarmodifier-c.md) | Returns the current **ToolBarModifier** object, which supports chained calls. |

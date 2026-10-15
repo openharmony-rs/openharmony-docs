@@ -12,7 +12,7 @@ import { observer } from '@kit.TelephonyKit';
 function onCCallStateChange(callback: Callback<CCallStateInfo>, options?: ObserverOptions): void
 ```
 
-三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
+运营商通话状态变更时回调
 
 **起始版本：** 23
 
@@ -28,8 +28,8 @@ function onCCallStateChange(callback: Callback<CCallStateInfo>, options?: Observ
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CCallStateInfo](arkts-telephony-observer-ccallstateinfo-i.md)&gt; | 是 | 回调函数，返回通话状态信息对象。<br>应用可获取到CCallState。<br> |
-| options | [ObserverOptions](arkts-telephony-observer-observeroptions-i.md) | 否 | 电话相关事件订阅参数可选项。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CCallStateInfo](arkts-telephony-observer-ccallstateinfo-i.md)&gt; | 是 | 运营商通话状态变化回调 |
+| options | [ObserverOptions](arkts-telephony-observer-observeroptions-i.md) | 否 | 可选参数 |
 
 **错误码：**
 

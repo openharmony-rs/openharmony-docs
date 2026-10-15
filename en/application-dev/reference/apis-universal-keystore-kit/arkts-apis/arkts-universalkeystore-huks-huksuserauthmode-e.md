@@ -12,22 +12,6 @@ Enumerates the user authentication modes.
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
-## HUKS_USER_AUTH_MODE_LOCAL
-
-```TypeScript
-HUKS_USER_AUTH_MODE_LOCAL = 0
-```
-
-Local authentication.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksUserAuthMode-HUKS_USER_AUTH_MODE_LOCAL = 0--><!--Device-HuksUserAuthMode-HUKS_USER_AUTH_MODE_LOCAL = 0-End-->
-
-**System capability:** SystemCapability.Security.Huks.Extension
-
 ## HUKS_USER_AUTH_MODE_COAUTH
 
 ```TypeScript
@@ -41,5 +25,21 @@ Cross-device collaborative authentication.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HuksUserAuthMode-HUKS_USER_AUTH_MODE_COAUTH = 1--><!--Device-HuksUserAuthMode-HUKS_USER_AUTH_MODE_COAUTH = 1-End-->
+
+**System capability:** SystemCapability.Security.Huks.Extension
+
+## HUKS_USER_AUTH_MODE_LOCAL
+
+```TypeScript
+HUKS_USER_AUTH_MODE_LOCAL = 0
+```
+
+Local authentication.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksUserAuthMode-HUKS_USER_AUTH_MODE_LOCAL = 0--><!--Device-HuksUserAuthMode-HUKS_USER_AUTH_MODE_LOCAL = 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension

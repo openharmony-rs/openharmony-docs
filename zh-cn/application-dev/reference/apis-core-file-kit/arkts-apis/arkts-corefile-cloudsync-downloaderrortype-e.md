@@ -12,62 +12,6 @@ enum DownloadErrorType
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## NO_ERROR
-
-```TypeScript
-NO_ERROR = 0
-```
-
-没有错误。
-
-**起始版本：** 11
-
-<!--Device-DownloadErrorType-NO_ERROR = 0--><!--Device-DownloadErrorType-NO_ERROR = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## UNKNOWN_ERROR
-
-```TypeScript
-UNKNOWN_ERROR = 1
-```
-
-未知错误。
-
-**起始版本：** 11
-
-<!--Device-DownloadErrorType-UNKNOWN_ERROR = 1--><!--Device-DownloadErrorType-UNKNOWN_ERROR = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## NETWORK_UNAVAILABLE
-
-```TypeScript
-NETWORK_UNAVAILABLE = 2
-```
-
-网络不可用。
-
-**起始版本：** 11
-
-<!--Device-DownloadErrorType-NETWORK_UNAVAILABLE = 2--><!--Device-DownloadErrorType-NETWORK_UNAVAILABLE = 2-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## LOCAL_STORAGE_FULL
-
-```TypeScript
-LOCAL_STORAGE_FULL = 3
-```
-
-本地空间不足。
-
-**起始版本：** 11
-
-<!--Device-DownloadErrorType-LOCAL_STORAGE_FULL = 3--><!--Device-DownloadErrorType-LOCAL_STORAGE_FULL = 3-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## CONTENT_NOT_FOUND
 
 ```TypeScript
@@ -93,5 +37,61 @@ FREQUENT_USER_REQUESTS = 5
 **起始版本：** 11
 
 <!--Device-DownloadErrorType-FREQUENT_USER_REQUESTS = 5--><!--Device-DownloadErrorType-FREQUENT_USER_REQUESTS = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## LOCAL_STORAGE_FULL
+
+```TypeScript
+LOCAL_STORAGE_FULL = 3
+```
+
+本地空间不足。
+
+**起始版本：** 11
+
+<!--Device-DownloadErrorType-LOCAL_STORAGE_FULL = 3--><!--Device-DownloadErrorType-LOCAL_STORAGE_FULL = 3-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## NETWORK_UNAVAILABLE
+
+```TypeScript
+NETWORK_UNAVAILABLE = 2
+```
+
+网络不可用。
+
+**起始版本：** 11
+
+<!--Device-DownloadErrorType-NETWORK_UNAVAILABLE = 2--><!--Device-DownloadErrorType-NETWORK_UNAVAILABLE = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## NO_ERROR
+
+```TypeScript
+NO_ERROR = 0
+```
+
+没有错误。
+
+**起始版本：** 11
+
+<!--Device-DownloadErrorType-NO_ERROR = 0--><!--Device-DownloadErrorType-NO_ERROR = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## UNKNOWN_ERROR
+
+```TypeScript
+UNKNOWN_ERROR = 1
+```
+
+未知错误。
+
+**起始版本：** 11
+
+<!--Device-DownloadErrorType-UNKNOWN_ERROR = 1--><!--Device-DownloadErrorType-UNKNOWN_ERROR = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

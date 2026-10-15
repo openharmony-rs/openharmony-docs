@@ -41,7 +41,7 @@ Cancels this authentication. This API is commonly used in the following scenario
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-UserAuthInstance-cancel(): void--><!--Device-UserAuthInstance-cancel(): void-End-->
 
@@ -77,7 +77,7 @@ try {
   if (!randData) {
     return;
   }
-  const authParam : userAuth.AuthParam = {
+  const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
@@ -94,7 +94,7 @@ try {
   console.info('auth cancel successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -173,7 +173,7 @@ try {
   console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -249,7 +249,7 @@ try {
   console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -371,7 +371,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -394,7 +394,7 @@ Starts authentication. This API is commonly used in the following service scenar
 - API version 20 and later: ohos.permission.ACCESS_BIOMETRIC or ohos.permission.USER_AUTH_FROM_BACKGROUND
 - API versions 10 to 19: ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-UserAuthInstance-start(): void--><!--Device-UserAuthInstance-start(): void-End-->
 
@@ -454,6 +454,6 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```

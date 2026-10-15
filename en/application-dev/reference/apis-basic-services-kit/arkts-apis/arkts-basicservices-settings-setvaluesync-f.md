@@ -6,6 +6,8 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
+<a id="setvaluesync1"></a>
+
 ## setValueSync
 
 ```TypeScript
@@ -32,7 +34,7 @@ Set settingsdata value(synchronous method)
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-dataabilityhelper-i.md) | Yes | Indicates dataAbilityHelper instance. |
+| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-i.md) | Yes | Indicates dataAbilityHelper instance. |
 | name | string | Yes | Indicates the name of the character string. |
 | value | string | Yes | Indicates the value of the character string. |
 
@@ -54,7 +56,7 @@ let ret:string = settings.setValueSync(helper, settings.display.SCREEN_BRIGHTNES
 ```
 
 
-<a id="setvaluesync-1"></a>
+<a id="setvaluesync2"></a>
 
 ## setValueSync
 
@@ -101,7 +103,7 @@ let ret = settings.setValueSync(context, settings.display.SCREEN_BRIGHTNESS_STAT
 ```
 
 
-<a id="setvaluesync-2"></a>
+<a id="setvaluesync3"></a>
 
 ## setValueSync
 

@@ -6,6 +6,8 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="show1"></a>
+
 ## show
 
 ```TypeScript
@@ -36,7 +38,7 @@ function show(id: string, callback: AsyncCallback<TaskInfo>): void
 | [21900006](../errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |
 
 
-<a id="show-1"></a>
+<a id="show2"></a>
 
 ## show
 

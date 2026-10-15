@@ -47,6 +47,7 @@ Creating a Stream.
 | [32300003](../errorcode-device-manager.md#32300003-bit-rate-not-supported) | Bitrate not supported. |
 | [32300004](../errorcode-device-manager.md#32300004-color-space-not-supported) | Color space not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,3 +68,5 @@ abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).the
   abilityConnectionManager.startStream(streamId);
 })
 ```
+
+<!--DelEnd-->

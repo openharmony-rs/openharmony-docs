@@ -48,15 +48,3 @@ Obtains an active notification based on **hashCode**. This API uses a promise to
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600007](../errorcode-notification.md#1600007-notification-not-found) | The notification does not exist. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
-    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
-});
-```

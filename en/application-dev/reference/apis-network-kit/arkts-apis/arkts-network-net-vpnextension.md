@@ -39,19 +39,19 @@ import { vpnExtension } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [createVpnConnection](arkts-network-vpnextension-createvpnconnection-f.md) | Creates a **VpnConnection** object. |
-| [createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md) | Creates a VPN observer object. It is used to listen for VPN-related events. |
-| [startVpnExtensionAbility](arkts-network-vpnextension-startvpnextensionability-f.md) | Enables the VPN extension ability. This API uses a promise to return the result. |
-| [stopVpnExtensionAbility](arkts-network-vpnextension-stopvpnextensionability-f.md) | Stops the VPN extension ability. This API uses a promise to return the result. |
+| [createVpnConnection](arkts-network-vpnextension-createvpnconnection-f.md#createvpnconnection) | Creates a **VpnConnection** object. |
+| [createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md#createvpnobserver) | Creates a VPN observer object. It is used to listen for VPN-related events. |
+| [startVpnExtensionAbility](arkts-network-vpnextension-startvpnextensionability-f.md#startvpnextensionability) | Enables the VPN extension ability. This API uses a promise to return the result. |
+| [stopVpnExtensionAbility](arkts-network-vpnextension-stopvpnextensionability-f.md#stopvpnextensionability) | Stops the VPN extension ability. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [isAlwaysOnVpnEnabled](arkts-network-vpnextension-isalwaysonvpnenabled-f-sys.md) | Obtains the status of the **always on** mode. This API uses a promise to return the result. |
-| [setAlwaysOnVpnEnabled](arkts-network-vpnextension-setalwaysonvpnenabled-f-sys.md) | Enables or disables the **always on** mode. This API uses a promise to return the result. |
-| [updateVpnAuthorizedState](arkts-network-vpnextension-updatevpnauthorizedstate-f-sys.md) | Updates the VPN pop-up authorization status. |
+| [isAlwaysOnVpnEnabled](arkts-network-vpnextension-isalwaysonvpnenabled-f-sys.md#isalwaysonvpnenabled) | Obtains the status of the **always on** mode. This API uses a promise to return the result. |
+| [setAlwaysOnVpnEnabled](arkts-network-vpnextension-setalwaysonvpnenabled-f-sys.md#setalwaysonvpnenabled) | Enables or disables the **always on** mode. This API uses a promise to return the result. |
+| [updateVpnAuthorizedState](arkts-network-vpnextension-updatevpnauthorizedstate-f-sys.md#updatevpnauthorizedstate) | Updates the VPN pop-up authorization status. |
 <!--DelEnd-->
 
 ### Interfaces

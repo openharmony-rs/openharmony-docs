@@ -12,48 +12,6 @@ Enumerates the media types that trigger the context menu (enhanced type obtainin
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-Default value, indicating that the current context menu is not associated with any media type (for example, right- click text or blank area).
-
-**Since:** 22
-
-<!--Device-ContextMenuDataMediaType-NONE = 0--><!--Device-ContextMenuDataMediaType-NONE = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## IMAGE
-
-```TypeScript
-IMAGE = 1
-```
-
-Image.
-
-**Since:** 22
-
-<!--Device-ContextMenuDataMediaType-IMAGE = 1--><!--Device-ContextMenuDataMediaType-IMAGE = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## VIDEO
-
-```TypeScript
-VIDEO = 2
-```
-
-Video.
-
-**Since:** 22
-
-<!--Device-ContextMenuDataMediaType-VIDEO = 2--><!--Device-ContextMenuDataMediaType-VIDEO = 2-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## AUDIO
 
 ```TypeScript
@@ -79,5 +37,47 @@ Canvas.
 **Since:** 22
 
 <!--Device-ContextMenuDataMediaType-CANVAS = 4--><!--Device-ContextMenuDataMediaType-CANVAS = 4-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## IMAGE
+
+```TypeScript
+IMAGE = 1
+```
+
+Image.
+
+**Since:** 22
+
+<!--Device-ContextMenuDataMediaType-IMAGE = 1--><!--Device-ContextMenuDataMediaType-IMAGE = 1-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+Default value, indicating that the current context menu is not associated with any media type (for example, right- click text or blank area).
+
+**Since:** 22
+
+<!--Device-ContextMenuDataMediaType-NONE = 0--><!--Device-ContextMenuDataMediaType-NONE = 0-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## VIDEO
+
+```TypeScript
+VIDEO = 2
+```
+
+Video.
+
+**Since:** 22
+
+<!--Device-ContextMenuDataMediaType-VIDEO = 2--><!--Device-ContextMenuDataMediaType-VIDEO = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

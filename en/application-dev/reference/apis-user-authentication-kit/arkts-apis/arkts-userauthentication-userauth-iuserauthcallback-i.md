@@ -69,14 +69,14 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
         // Add the logic to be executed when the authentication fails.
       }
     } catch (error) {
-      console.error(`auth onResult failed. Code: ${error?.code}, message: ${error?.message}`);
+      console.error(`Failed to auth onResult. Code: ${error?.code}, message: ${error?.message}`);
     }
   },
-  onAcquireInfo: (module, acquire, extraInfo : userAuth.AuthResult) => {
+  onAcquireInfo: (module, acquire, extraInfo: userAuth.AuthResult) => {
     try {
       console.info('auth onAcquireInfo successfully.');
     } catch (error) {
-      console.error(`auth onAcquireInfo failed. Code: ${error?.code}, message: ${error?.message}`);
+      console.error(`Failed to auth onAcquireInfo. Code: ${error?.code}, message: ${error?.message}`);
     }
   }
 });
@@ -128,7 +128,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
         // Add the logic to be executed when the authentication fails.
       }
     } catch (error) {
-      console.error(`auth onResult failed. Code: ${error?.code}, message: ${error?.message}`);
+      console.error(`Failed to auth onResult. Code: ${error?.code}, message: ${error?.message}`);
     }
   }
 });

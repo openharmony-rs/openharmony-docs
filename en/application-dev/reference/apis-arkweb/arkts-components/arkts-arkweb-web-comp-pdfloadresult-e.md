@@ -54,20 +54,6 @@ The PDF file format is not supported.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## PARSE_ERROR_PASSWORD
-
-```TypeScript
-PARSE_ERROR_PASSWORD = 3
-```
-
-The PDF file password is incorrect.
-
-**Since:** 20
-
-<!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3--><!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## PARSE_ERROR_HANDLER
 
 ```TypeScript
@@ -79,5 +65,19 @@ Failed to process the PDF file.
 **Since:** 20
 
 <!--Device-PdfLoadResult-PARSE_ERROR_HANDLER = 4--><!--Device-PdfLoadResult-PARSE_ERROR_HANDLER = 4-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## PARSE_ERROR_PASSWORD
+
+```TypeScript
+PARSE_ERROR_PASSWORD = 3
+```
+
+The PDF file password is incorrect.
+
+**Since:** 20
+
+<!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3--><!--Device-PdfLoadResult-PARSE_ERROR_PASSWORD = 3-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

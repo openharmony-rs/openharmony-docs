@@ -12,17 +12,17 @@ VideoControllerAsync是VideoController的异步版本，可以通过Promise获�
 > [pause](arkts-arkui-video-comp-videocontroller-c.md#pause)、[stop](arkts-arkui-video-comp-videocontroller-c.md#stop)、[reset](#reset)等播
 > 放控制命令为异步执行，请求后立即返回不阻塞当前线程，可通过Promise的then和catch方法处理命令执行结果。
 
-## 导入对象
-
-```ts
-let controllerAsync: VideoControllerAsync = new VideoControllerAsync();
-```
-
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-declare class VideoControllerAsync--><!--Device-unnamed-declare class VideoControllerAsync-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```ts
+let controllerAsync: VideoControllerAsync = new VideoControllerAsync();
+```
 
 ## constructor
 

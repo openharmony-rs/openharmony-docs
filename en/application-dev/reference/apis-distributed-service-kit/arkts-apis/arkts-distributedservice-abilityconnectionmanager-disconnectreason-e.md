@@ -12,6 +12,22 @@ Enumerates the disconnection reasons.
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
+## NETWORK_DISCONNECTED
+
+```TypeScript
+NETWORK_DISCONNECTED = 2
+```
+
+The network is disconnected.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2--><!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2-End-->
+
+**System capability:** SystemCapability.DistributedSched.AppCollaboration
+
 ## PEER_APP_CLOSE_COLLABORATION
 
 ```TypeScript
@@ -41,21 +57,5 @@ The peer application exits.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DisconnectReason-PEER_APP_EXIT = 1--><!--Device-DisconnectReason-PEER_APP_EXIT = 1-End-->
-
-**System capability:** SystemCapability.DistributedSched.AppCollaboration
-
-## NETWORK_DISCONNECTED
-
-```TypeScript
-NETWORK_DISCONNECTED = 2
-```
-
-The network is disconnected.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2--><!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

@@ -26,20 +26,6 @@ Default audio scene.
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
-## AUDIO_SCENE_RINGING
-
-```TypeScript
-AUDIO_SCENE_RINGING = 1
-```
-
-Ringing audio scene.
-
-**Since:** 12
-
-<!--Device-AudioScene-AUDIO_SCENE_RINGING = 1--><!--Device-AudioScene-AUDIO_SCENE_RINGING = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Communication
-
 ## AUDIO_SCENE_PHONE_CALL
 
 ```TypeScript
@@ -51,6 +37,20 @@ Phone call audio scene.
 **Since:** 12
 
 <!--Device-AudioScene-AUDIO_SCENE_PHONE_CALL = 2--><!--Device-AudioScene-AUDIO_SCENE_PHONE_CALL = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Communication
+
+## AUDIO_SCENE_RINGING
+
+```TypeScript
+AUDIO_SCENE_RINGING = 1
+```
+
+Ringing audio scene.
+
+**Since:** 12
+
+<!--Device-AudioScene-AUDIO_SCENE_RINGING = 1--><!--Device-AudioScene-AUDIO_SCENE_RINGING = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 

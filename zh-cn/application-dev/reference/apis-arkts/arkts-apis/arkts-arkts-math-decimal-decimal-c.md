@@ -18,6 +18,8 @@ declare class Decimal
 import { Decimal } from '@kit.ArkTS';
 ```
 
+<a id="abs1"></a>
+
 ## abs
 
 ```TypeScript
@@ -28,7 +30,7 @@ abs(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-abs(): Decimal--><!--Device-Decimal-abs(): Decimal-End-->
 
@@ -40,7 +42,7 @@ abs(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="abs-1"></a>
+<a id="abs2"></a>
 
 ## abs
 
@@ -52,7 +54,7 @@ static abs(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static abs(n: Value): Decimal--><!--Device-Decimal-static abs(n: Value): Decimal-End-->
 
@@ -74,7 +76,9 @@ static abs(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="acos1"></a>
 
 ## acos
 
@@ -86,7 +90,7 @@ acos(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-acos(): Decimal--><!--Device-Decimal-acos(): Decimal-End-->
 
@@ -104,7 +108,7 @@ acos(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="acos-1"></a>
+<a id="acos2"></a>
 
 ## acos
 
@@ -116,7 +120,7 @@ static acos(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static acos(n: Value): Decimal--><!--Device-Decimal-static acos(n: Value): Decimal-End-->
 
@@ -138,8 +142,10 @@ static acos(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="acosh1"></a>
 
 ## acosh
 
@@ -147,11 +153,11 @@ static acos(n: Value): Decimal
 acosh(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的双曲余弦的倒数。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲余弦值。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-acosh(): Decimal--><!--Device-Decimal-acosh(): Decimal-End-->
 
@@ -169,7 +175,7 @@ acosh(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="acosh-1"></a>
+<a id="acosh2"></a>
 
 ## acosh
 
@@ -177,11 +183,11 @@ acosh(): Decimal
 static acosh(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是n的双曲余弦的倒数。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是n的反双曲余弦值。按照precision设置有效位数，按照rounding设置舍入模式。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static acosh(n: Value): Decimal--><!--Device-Decimal-static acosh(n: Value): Decimal-End-->
 
@@ -203,8 +209,10 @@ static acosh(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="add1"></a>
 
 ## add
 
@@ -216,7 +224,7 @@ add(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-add(n: Value): Decimal--><!--Device-Decimal-add(n: Value): Decimal-End-->
 
@@ -238,9 +246,9 @@ add(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="add-1"></a>
+<a id="add2"></a>
 
 ## add
 
@@ -252,7 +260,7 @@ static add(x: Value, y: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static add(x: Value, y: Value): Decimal--><!--Device-Decimal-static add(x: Value, y: Value): Decimal-End-->
 
@@ -275,7 +283,9 @@ static add(x: Value, y: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="asin1"></a>
 
 ## asin
 
@@ -287,7 +297,7 @@ asin(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-asin(): Decimal--><!--Device-Decimal-asin(): Decimal-End-->
 
@@ -305,7 +315,7 @@ asin(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="asin-1"></a>
+<a id="asin2"></a>
 
 ## asin
 
@@ -317,7 +327,7 @@ static asin(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static asin(n: Value): Decimal--><!--Device-Decimal-static asin(n: Value): Decimal-End-->
 
@@ -339,8 +349,10 @@ static asin(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="asinh1"></a>
 
 ## asinh
 
@@ -348,11 +360,11 @@ static asin(n: Value): Decimal
 asinh(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的双曲正弦的倒数。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲正弦值。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-asinh(): Decimal--><!--Device-Decimal-asinh(): Decimal-End-->
 
@@ -370,7 +382,7 @@ asinh(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="asinh-1"></a>
+<a id="asinh2"></a>
 
 ## asinh
 
@@ -378,11 +390,11 @@ asinh(): Decimal
 static asinh(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是n的双曲正弦的倒数。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是n的反双曲正弦值。按照precision设置有效位数，按照rounding设置舍入模式。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static asinh(n: Value): Decimal--><!--Device-Decimal-static asinh(n: Value): Decimal-End-->
 
@@ -392,7 +404,7 @@ static asinh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 需要求反双曲函数的数值。 |
 
 **返回值：**
 
@@ -404,8 +416,10 @@ static asinh(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="atan1"></a>
 
 ## atan
 
@@ -417,7 +431,7 @@ atan(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-atan(): Decimal--><!--Device-Decimal-atan(): Decimal-End-->
 
@@ -435,7 +449,7 @@ atan(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="atan-1"></a>
+<a id="atan2"></a>
 
 ## atan
 
@@ -447,7 +461,7 @@ static atan(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static atan(n: Value): Decimal--><!--Device-Decimal-static atan(n: Value): Decimal-End-->
 
@@ -469,7 +483,7 @@ static atan(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
 ## atan2
@@ -482,7 +496,7 @@ static atan2(y: Value, x: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static atan2(y: Value, x: Value): Decimal--><!--Device-Decimal-static atan2(y: Value, x: Value): Decimal-End-->
 
@@ -505,8 +519,10 @@ static atan2(y: Value, x: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="atanh1"></a>
 
 ## atanh
 
@@ -514,11 +530,11 @@ static atan2(y: Value, x: Value): Decimal
 atanh(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的双曲正切的倒数。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲正切值。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-atanh(): Decimal--><!--Device-Decimal-atanh(): Decimal-End-->
 
@@ -536,7 +552,7 @@ atanh(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="atanh-1"></a>
+<a id="atanh2"></a>
 
 ## atanh
 
@@ -548,7 +564,7 @@ static atanh(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static atanh(n: Value): Decimal--><!--Device-Decimal-static atanh(n: Value): Decimal-End-->
 
@@ -558,7 +574,7 @@ static atanh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 需要求反双曲函数的数值。 |
 
 **返回值：**
 
@@ -570,8 +586,10 @@ static atanh(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="cbrt1"></a>
 
 ## cbrt
 
@@ -583,7 +601,7 @@ cbrt(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-cbrt(): Decimal--><!--Device-Decimal-cbrt(): Decimal-End-->
 
@@ -595,7 +613,7 @@ cbrt(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="cbrt-1"></a>
+<a id="cbrt2"></a>
 
 ## cbrt
 
@@ -607,7 +625,7 @@ static cbrt(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static cbrt(n: Value): Decimal--><!--Device-Decimal-static cbrt(n: Value): Decimal-End-->
 
@@ -629,7 +647,9 @@ static cbrt(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="ceil1"></a>
 
 ## ceil
 
@@ -641,7 +661,7 @@ ceil(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-ceil(): Decimal--><!--Device-Decimal-ceil(): Decimal-End-->
 
@@ -653,7 +673,7 @@ ceil(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="ceil-1"></a>
+<a id="ceil2"></a>
 
 ## ceil
 
@@ -665,7 +685,7 @@ static ceil(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static ceil(n: Value): Decimal--><!--Device-Decimal-static ceil(n: Value): Decimal-End-->
 
@@ -687,7 +707,9 @@ static ceil(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="clamp1"></a>
 
 ## clamp
 
@@ -699,7 +721,7 @@ clamp(min: Value, max: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-clamp(min: Value, max: Value): Decimal--><!--Device-Decimal-clamp(min: Value, max: Value): Decimal-End-->
 
@@ -722,10 +744,10 @@ clamp(min: Value, max: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `min` is out of range. |
 
-<a id="clamp-1"></a>
+<a id="clamp2"></a>
 
 ## clamp
 
@@ -737,7 +759,7 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static clamp(n: Value, min: Value, max: Value): Decimal--><!--Device-Decimal-static clamp(n: Value, min: Value, max: Value): Decimal-End-->
 
@@ -761,7 +783,7 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `min` is out of range. |
 
 ## comparedTo
@@ -774,7 +796,7 @@ comparedTo(n: Value): number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-comparedTo(n: Value): double--><!--Device-Decimal-comparedTo(n: Value): double-End-->
 
@@ -796,7 +818,7 @@ comparedTo(n: Value): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## constructor
 
@@ -808,7 +830,7 @@ Decimal的构造函数。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-constructor(n: Value)--><!--Device-Decimal-constructor(n: Value)-End-->
 
@@ -824,7 +846,9 @@ Decimal的构造函数。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="cos1"></a>
 
 ## cos
 
@@ -836,7 +860,7 @@ cos(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-cos(): Decimal--><!--Device-Decimal-cos(): Decimal-End-->
 
@@ -848,7 +872,7 @@ cos(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="cos-1"></a>
+<a id="cos2"></a>
 
 ## cos
 
@@ -860,7 +884,7 @@ static cos(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static cos(n: Value): Decimal--><!--Device-Decimal-static cos(n: Value): Decimal-End-->
 
@@ -882,7 +906,9 @@ static cos(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="cosh1"></a>
 
 ## cosh
 
@@ -894,7 +920,7 @@ cosh(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-cosh(): Decimal--><!--Device-Decimal-cosh(): Decimal-End-->
 
@@ -906,7 +932,7 @@ cosh(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="cosh-1"></a>
+<a id="cosh2"></a>
 
 ## cosh
 
@@ -918,7 +944,7 @@ static cosh(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static cosh(n: Value): Decimal--><!--Device-Decimal-static cosh(n: Value): Decimal-End-->
 
@@ -928,7 +954,7 @@ static cosh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 需要求双曲函数的数值。 |
 
 **返回值：**
 
@@ -940,7 +966,7 @@ static cosh(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## decimalPlaces
 
@@ -952,7 +978,7 @@ decimalPlaces(): number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-decimalPlaces(): double--><!--Device-Decimal-decimalPlaces(): double-End-->
 
@@ -964,6 +990,8 @@ decimalPlaces(): number
 | --- | --- |
 | number | the number type |
 
+<a id="div1"></a>
+
 ## div
 
 ```TypeScript
@@ -974,7 +1002,7 @@ div(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-div(n: Value): Decimal--><!--Device-Decimal-div(n: Value): Decimal-End-->
 
@@ -996,9 +1024,9 @@ div(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="div-1"></a>
+<a id="div2"></a>
 
 ## div
 
@@ -1010,7 +1038,7 @@ static div(x: Value, y: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static div(x: Value, y: Value): Decimal--><!--Device-Decimal-static div(x: Value, y: Value): Decimal-End-->
 
@@ -1033,7 +1061,7 @@ static div(x: Value, y: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## dividedToIntegerBy
 
@@ -1045,7 +1073,7 @@ dividedToIntegerBy(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-dividedToIntegerBy(n: Value): Decimal--><!--Device-Decimal-dividedToIntegerBy(n: Value): Decimal-End-->
 
@@ -1067,7 +1095,7 @@ dividedToIntegerBy(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## equals
 
@@ -1079,7 +1107,7 @@ equals(n: Value): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-equals(n: Value): boolean--><!--Device-Decimal-equals(n: Value): boolean-End-->
 
@@ -1101,7 +1129,9 @@ equals(n: Value): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="exp1"></a>
 
 ## exp
 
@@ -1113,7 +1143,7 @@ exp(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-exp(): Decimal--><!--Device-Decimal-exp(): Decimal-End-->
 
@@ -1131,7 +1161,7 @@ exp(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="exp-1"></a>
+<a id="exp2"></a>
 
 ## exp
 
@@ -1143,7 +1173,7 @@ static exp(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static exp(n: Value): Decimal--><!--Device-Decimal-static exp(n: Value): Decimal-End-->
 
@@ -1165,8 +1195,10 @@ static exp(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="floor1"></a>
 
 ## floor
 
@@ -1178,7 +1210,7 @@ floor(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-floor(): Decimal--><!--Device-Decimal-floor(): Decimal-End-->
 
@@ -1190,7 +1222,7 @@ floor(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="floor-1"></a>
+<a id="floor2"></a>
 
 ## floor
 
@@ -1202,7 +1234,7 @@ static floor(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static floor(n: Value): Decimal--><!--Device-Decimal-static floor(n: Value): Decimal-End-->
 
@@ -1224,7 +1256,7 @@ static floor(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## greaterThan
 
@@ -1236,7 +1268,7 @@ greaterThan(n: Value): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-greaterThan(n: Value): boolean--><!--Device-Decimal-greaterThan(n: Value): boolean-End-->
 
@@ -1258,7 +1290,7 @@ greaterThan(n: Value): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## greaterThanOrEqualTo
 
@@ -1270,7 +1302,7 @@ greaterThanOrEqualTo(n: Value): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-greaterThanOrEqualTo(n: Value): boolean--><!--Device-Decimal-greaterThanOrEqualTo(n: Value): boolean-End-->
 
@@ -1292,7 +1324,7 @@ greaterThanOrEqualTo(n: Value): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## hypot
 
@@ -1304,7 +1336,7 @@ static hypot(...n: Value[]): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static hypot(...n: Value[]): Decimal--><!--Device-Decimal-static hypot(...n: Value[]): Decimal-End-->
 
@@ -1326,7 +1358,7 @@ static hypot(...n: Value[]): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## isFinite
 
@@ -1338,7 +1370,7 @@ isFinite(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-isFinite(): boolean--><!--Device-Decimal-isFinite(): boolean-End-->
 
@@ -1360,7 +1392,7 @@ isInteger(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-isInteger(): boolean--><!--Device-Decimal-isInteger(): boolean-End-->
 
@@ -1382,7 +1414,7 @@ isNaN(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-isNaN(): boolean--><!--Device-Decimal-isNaN(): boolean-End-->
 
@@ -1404,7 +1436,7 @@ isNegative(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-isNegative(): boolean--><!--Device-Decimal-isNegative(): boolean-End-->
 
@@ -1426,7 +1458,7 @@ isPositive(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-isPositive(): boolean--><!--Device-Decimal-isPositive(): boolean-End-->
 
@@ -1448,7 +1480,7 @@ isZero(): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-isZero(): boolean--><!--Device-Decimal-isZero(): boolean-End-->
 
@@ -1470,7 +1502,7 @@ lessThan(n: Value): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-lessThan(n: Value): boolean--><!--Device-Decimal-lessThan(n: Value): boolean-End-->
 
@@ -1492,7 +1524,7 @@ lessThan(n: Value): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## lessThanOrEqualTo
 
@@ -1504,7 +1536,7 @@ lessThanOrEqualTo(n: Value): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-lessThanOrEqualTo(n: Value): boolean--><!--Device-Decimal-lessThanOrEqualTo(n: Value): boolean-End-->
 
@@ -1526,7 +1558,9 @@ lessThanOrEqualTo(n: Value): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="ln1"></a>
 
 ## ln
 
@@ -1538,7 +1572,7 @@ ln(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-ln(): Decimal--><!--Device-Decimal-ln(): Decimal-End-->
 
@@ -1556,7 +1590,7 @@ ln(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="ln-1"></a>
+<a id="ln2"></a>
 
 ## ln
 
@@ -1568,7 +1602,7 @@ static ln(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static ln(n: Value): Decimal--><!--Device-Decimal-static ln(n: Value): Decimal-End-->
 
@@ -1590,8 +1624,10 @@ static ln(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="log1"></a>
 
 ## log
 
@@ -1603,7 +1639,7 @@ log(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-log(n: Value): Decimal--><!--Device-Decimal-log(n: Value): Decimal-End-->
 
@@ -1625,10 +1661,10 @@ log(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="log-1"></a>
+<a id="log2"></a>
 
 ## log
 
@@ -1640,7 +1676,7 @@ static log(n: Value, base: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static log(n: Value, base: Value): Decimal--><!--Device-Decimal-static log(n: Value, base: Value): Decimal-End-->
 
@@ -1663,7 +1699,7 @@ static log(n: Value, base: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
 ## log10
@@ -1676,7 +1712,7 @@ static log10(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static log10(n: Value): Decimal--><!--Device-Decimal-static log10(n: Value): Decimal-End-->
 
@@ -1698,7 +1734,7 @@ static log10(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
 ## log2
@@ -1711,7 +1747,7 @@ static log2(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static log2(n: Value): Decimal--><!--Device-Decimal-static log2(n: Value): Decimal-End-->
 
@@ -1733,7 +1769,7 @@ static log2(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
 ## max
@@ -1742,11 +1778,11 @@ static log2(n: Value): Decimal
 static max(...n: Value[]): Decimal
 ```
 
-返回一个新的Decimal对象，其值是所有参数中的最大值。
+返回一个新的Decimal对象，其值是所有参数中的最大值。未传入参数时会抛出运行时异常。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static max(...n: Value[]): Decimal--><!--Device-Decimal-static max(...n: Value[]): Decimal-End-->
 
@@ -1768,7 +1804,7 @@ static max(...n: Value[]): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## min
 
@@ -1776,11 +1812,11 @@ static max(...n: Value[]): Decimal
 static min(...n: Value[]): Decimal
 ```
 
-返回一个新的Decimal对象，其值是所有参数中的最小值。
+返回一个新的Decimal对象，其值是所有参数中的最小值。未传入参数时会抛出运行时异常。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static min(...n: Value[]): Decimal--><!--Device-Decimal-static min(...n: Value[]): Decimal-End-->
 
@@ -1802,7 +1838,9 @@ static min(...n: Value[]): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="mod1"></a>
 
 ## mod
 
@@ -1814,7 +1852,7 @@ mod(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-mod(n: Value): Decimal--><!--Device-Decimal-mod(n: Value): Decimal-End-->
 
@@ -1836,9 +1874,9 @@ mod(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="mod-1"></a>
+<a id="mod2"></a>
 
 ## mod
 
@@ -1850,7 +1888,7 @@ static mod(x: Value, y: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static mod(x: Value, y: Value): Decimal--><!--Device-Decimal-static mod(x: Value, y: Value): Decimal-End-->
 
@@ -1873,7 +1911,9 @@ static mod(x: Value, y: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="mul1"></a>
 
 ## mul
 
@@ -1885,7 +1925,7 @@ mul(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-mul(n: Value): Decimal--><!--Device-Decimal-mul(n: Value): Decimal-End-->
 
@@ -1907,9 +1947,9 @@ mul(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="mul-1"></a>
+<a id="mul2"></a>
 
 ## mul
 
@@ -1921,7 +1961,7 @@ static mul(x: Value, y: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static mul(x: Value, y: Value): Decimal--><!--Device-Decimal-static mul(x: Value, y: Value): Decimal-End-->
 
@@ -1944,7 +1984,7 @@ static mul(x: Value, y: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## negate
 
@@ -1956,7 +1996,7 @@ negate(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-negate(): Decimal--><!--Device-Decimal-negate(): Decimal-End-->
 
@@ -1968,6 +2008,8 @@ negate(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="pow1"></a>
+
 ## pow
 
 ```TypeScript
@@ -1978,7 +2020,7 @@ pow(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-pow(n: Value): Decimal--><!--Device-Decimal-pow(n: Value): Decimal-End-->
 
@@ -2000,10 +2042,10 @@ pow(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="pow-1"></a>
+<a id="pow2"></a>
 
 ## pow
 
@@ -2015,7 +2057,7 @@ static pow(base: Value, exponent: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static pow(base: Value, exponent: Value): Decimal--><!--Device-Decimal-static pow(base: Value, exponent: Value): Decimal-End-->
 
@@ -2038,8 +2080,10 @@ static pow(base: Value, exponent: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="precision1"></a>
 
 ## precision
 
@@ -2051,7 +2095,7 @@ precision(): number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-precision(): double--><!--Device-Decimal-precision(): double-End-->
 
@@ -2063,7 +2107,7 @@ precision(): number
 | --- | --- |
 | number | the number type |
 
-<a id="precision-1"></a>
+<a id="precision2"></a>
 
 ## precision
 
@@ -2075,7 +2119,7 @@ precision(includeZeros: boolean | number): number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-precision(includeZeros: boolean | int): double--><!--Device-Decimal-precision(includeZeros: boolean | int): double-End-->
 
@@ -2099,6 +2143,8 @@ precision(includeZeros: boolean | number): number
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `includeZeros` is out of range. |
 
+<a id="random1"></a>
+
 ## random
 
 ```TypeScript
@@ -2109,7 +2155,7 @@ static random(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static random(): Decimal--><!--Device-Decimal-static random(): Decimal-End-->
 
@@ -2127,7 +2173,7 @@ static random(): Decimal
 | --- | --- |
 | [10200061](../errorcode-utils.md#10200061-加密方法不可用) | Crypto unavailable. |
 
-<a id="random-1"></a>
+<a id="random2"></a>
 
 ## random
 
@@ -2139,7 +2185,7 @@ static random(significantDigits: number): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static random(significantDigits: double): Decimal--><!--Device-Decimal-static random(significantDigits: double): Decimal-End-->
 
@@ -2161,7 +2207,7 @@ static random(significantDigits: number): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200061](../errorcode-utils.md#10200061-加密方法不可用) | Crypto unavailable. |
 
 ## round
@@ -2174,7 +2220,7 @@ static round(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static round(n: Value): Decimal--><!--Device-Decimal-static round(n: Value): Decimal-End-->
 
@@ -2196,7 +2242,7 @@ static round(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## set
 
@@ -2208,7 +2254,7 @@ static set(config: DecimalConfig): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static set(config: DecimalConfig): void--><!--Device-Decimal-static set(config: DecimalConfig): void-End-->
 
@@ -2224,7 +2270,7 @@ static set(config: DecimalConfig): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `DecimalConfig.properties` is out of range. |
 | [10200061](../errorcode-utils.md#10200061-加密方法不可用) | Crypto unavailable. |
 
@@ -2238,7 +2284,7 @@ static sign(n: Value): number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static sign(n: Value): double--><!--Device-Decimal-static sign(n: Value): double-End-->
 
@@ -2254,14 +2300,16 @@ static sign(n: Value): number
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type<br>**适用版本：** 12 - 17 |
-| number | the Decimal type<br>**适用版本：** 18 |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 参数的符号判断结果<br>**适用版本：** 12 - 17 |
+| number | 参数的符号判断结果<br>**适用版本：** 18 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="sin1"></a>
 
 ## sin
 
@@ -2273,7 +2321,7 @@ sin(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-sin(): Decimal--><!--Device-Decimal-sin(): Decimal-End-->
 
@@ -2285,7 +2333,7 @@ sin(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="sin-1"></a>
+<a id="sin2"></a>
 
 ## sin
 
@@ -2297,7 +2345,7 @@ static sin(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static sin(n: Value): Decimal--><!--Device-Decimal-static sin(n: Value): Decimal-End-->
 
@@ -2319,7 +2367,9 @@ static sin(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="sinh1"></a>
 
 ## sinh
 
@@ -2331,7 +2381,7 @@ sinh(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-sinh(): Decimal--><!--Device-Decimal-sinh(): Decimal-End-->
 
@@ -2343,7 +2393,7 @@ sinh(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="sinh-1"></a>
+<a id="sinh2"></a>
 
 ## sinh
 
@@ -2355,7 +2405,7 @@ static sinh(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static sinh(n: Value): Decimal--><!--Device-Decimal-static sinh(n: Value): Decimal-End-->
 
@@ -2377,7 +2427,9 @@ static sinh(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="sqrt1"></a>
 
 ## sqrt
 
@@ -2389,7 +2441,7 @@ sqrt(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-sqrt(): Decimal--><!--Device-Decimal-sqrt(): Decimal-End-->
 
@@ -2401,7 +2453,7 @@ sqrt(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="sqrt-1"></a>
+<a id="sqrt2"></a>
 
 ## sqrt
 
@@ -2413,7 +2465,7 @@ static sqrt(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static sqrt(n: Value): Decimal--><!--Device-Decimal-static sqrt(n: Value): Decimal-End-->
 
@@ -2435,7 +2487,9 @@ static sqrt(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="sub1"></a>
 
 ## sub
 
@@ -2447,7 +2501,7 @@ sub(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-sub(n: Value): Decimal--><!--Device-Decimal-sub(n: Value): Decimal-End-->
 
@@ -2469,9 +2523,9 @@ sub(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="sub-1"></a>
+<a id="sub2"></a>
 
 ## sub
 
@@ -2483,7 +2537,7 @@ static sub(x: Value, y: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static sub(x: Value, y: Value): Decimal--><!--Device-Decimal-static sub(x: Value, y: Value): Decimal-End-->
 
@@ -2506,7 +2560,7 @@ static sub(x: Value, y: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## sum
 
@@ -2514,13 +2568,13 @@ static sub(x: Value, y: Value): Decimal
 static sum(...n: Value[]): Decimal
 ```
 
-返回一个新的Decimal对象，其值为参数的和。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值为参数的和。按照precision设置有效位数，按照rounding设置舍入模式。未传入参数时会抛出运行时异常。
 
 仅对结果进行舍入，不对中间计算结果进行舍入。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static sum(...n: Value[]): Decimal--><!--Device-Decimal-static sum(...n: Value[]): Decimal-End-->
 
@@ -2542,7 +2596,9 @@ static sum(...n: Value[]): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="tan1"></a>
 
 ## tan
 
@@ -2554,7 +2610,7 @@ tan(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-tan(): Decimal--><!--Device-Decimal-tan(): Decimal-End-->
 
@@ -2566,7 +2622,7 @@ tan(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="tan-1"></a>
+<a id="tan2"></a>
 
 ## tan
 
@@ -2578,7 +2634,7 @@ static tan(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static tan(n: Value): Decimal--><!--Device-Decimal-static tan(n: Value): Decimal-End-->
 
@@ -2600,7 +2656,9 @@ static tan(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="tanh1"></a>
 
 ## tanh
 
@@ -2612,7 +2670,7 @@ tanh(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-tanh(): Decimal--><!--Device-Decimal-tanh(): Decimal-End-->
 
@@ -2624,7 +2682,7 @@ tanh(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="tanh-1"></a>
+<a id="tanh2"></a>
 
 ## tanh
 
@@ -2636,7 +2694,7 @@ static tanh(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static tanh(n: Value): Decimal--><!--Device-Decimal-static tanh(n: Value): Decimal-End-->
 
@@ -2646,7 +2704,7 @@ static tanh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 以弧度为单位的值。 |
+| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} 需要求双曲函数的数值。 |
 
 **返回值：**
 
@@ -2658,7 +2716,9 @@ static tanh(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="tobinary1"></a>
 
 ## toBinary
 
@@ -2670,7 +2730,7 @@ toBinary(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toBinary(): string--><!--Device-Decimal-toBinary(): string-End-->
 
@@ -2682,7 +2742,7 @@ toBinary(): string
 | --- | --- |
 | string | the string type |
 
-<a id="tobinary-1"></a>
+<a id="tobinary2"></a>
 
 ## toBinary
 
@@ -2694,7 +2754,7 @@ toBinary(significantDigits: number): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toBinary(significantDigits: double): string--><!--Device-Decimal-toBinary(significantDigits: double): string-End-->
 
@@ -2718,7 +2778,7 @@ toBinary(significantDigits: number): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
 
-<a id="tobinary-2"></a>
+<a id="tobinary3"></a>
 
 ## toBinary
 
@@ -2730,7 +2790,7 @@ toBinary(significantDigits: number, rounding: Rounding): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toBinary(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toBinary(significantDigits: double, rounding: Rounding): string-End-->
 
@@ -2755,6 +2815,8 @@ toBinary(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
+<a id="todecimalplaces1"></a>
+
 ## toDecimalPlaces
 
 ```TypeScript
@@ -2765,7 +2827,7 @@ toDecimalPlaces(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toDecimalPlaces(): Decimal--><!--Device-Decimal-toDecimalPlaces(): Decimal-End-->
 
@@ -2777,7 +2839,7 @@ toDecimalPlaces(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="todecimalplaces-1"></a>
+<a id="todecimalplaces2"></a>
 
 ## toDecimalPlaces
 
@@ -2789,7 +2851,7 @@ toDecimalPlaces(decimalPlaces: number): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toDecimalPlaces(decimalPlaces: double): Decimal--><!--Device-Decimal-toDecimalPlaces(decimalPlaces: double): Decimal-End-->
 
@@ -2813,7 +2875,7 @@ toDecimalPlaces(decimalPlaces: number): Decimal
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
 
-<a id="todecimalplaces-2"></a>
+<a id="todecimalplaces3"></a>
 
 ## toDecimalPlaces
 
@@ -2825,7 +2887,7 @@ toDecimalPlaces(decimalPlaces: number, rounding: Rounding): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal--><!--Device-Decimal-toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal-End-->
 
@@ -2850,6 +2912,8 @@ toDecimalPlaces(decimalPlaces: number, rounding: Rounding): Decimal
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces &#124; rounding` is out of range. |
 
+<a id="toexponential1"></a>
+
 ## toExponential
 
 ```TypeScript
@@ -2860,7 +2924,7 @@ toExponential(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toExponential(): string--><!--Device-Decimal-toExponential(): string-End-->
 
@@ -2872,7 +2936,7 @@ toExponential(): string
 | --- | --- |
 | string | the string type |
 
-<a id="toexponential-1"></a>
+<a id="toexponential2"></a>
 
 ## toExponential
 
@@ -2884,7 +2948,7 @@ toExponential(decimalPlaces: number): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toExponential(decimalPlaces: double): string--><!--Device-Decimal-toExponential(decimalPlaces: double): string-End-->
 
@@ -2908,7 +2972,7 @@ toExponential(decimalPlaces: number): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
 
-<a id="toexponential-2"></a>
+<a id="toexponential3"></a>
 
 ## toExponential
 
@@ -2920,7 +2984,7 @@ toExponential(decimalPlaces: number, rounding: Rounding): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toExponential(decimalPlaces: double, rounding: Rounding): string--><!--Device-Decimal-toExponential(decimalPlaces: double, rounding: Rounding): string-End-->
 
@@ -2945,6 +3009,8 @@ toExponential(decimalPlaces: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces &#124; rounding` is out of range. |
 
+<a id="tofixed1"></a>
+
 ## toFixed
 
 ```TypeScript
@@ -2955,7 +3021,7 @@ toFixed(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toFixed(): string--><!--Device-Decimal-toFixed(): string-End-->
 
@@ -2967,7 +3033,7 @@ toFixed(): string
 | --- | --- |
 | string | the string type |
 
-<a id="tofixed-1"></a>
+<a id="tofixed2"></a>
 
 ## toFixed
 
@@ -2979,7 +3045,7 @@ toFixed(decimalPlaces: number): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toFixed(decimalPlaces: double): string--><!--Device-Decimal-toFixed(decimalPlaces: double): string-End-->
 
@@ -3003,7 +3069,7 @@ toFixed(decimalPlaces: number): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
 
-<a id="tofixed-2"></a>
+<a id="tofixed3"></a>
 
 ## toFixed
 
@@ -3015,7 +3081,7 @@ toFixed(decimalPlaces: number, rounding: Rounding): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toFixed(decimalPlaces: double, rounding: Rounding): string--><!--Device-Decimal-toFixed(decimalPlaces: double, rounding: Rounding): string-End-->
 
@@ -3040,6 +3106,8 @@ toFixed(decimalPlaces: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces &#124; rounding` is out of range. |
 
+<a id="tofraction1"></a>
+
 ## toFraction
 
 ```TypeScript
@@ -3050,7 +3118,7 @@ toFraction(): Decimal[]
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toFraction(): Decimal[]--><!--Device-Decimal-toFraction(): Decimal[]-End-->
 
@@ -3062,7 +3130,7 @@ toFraction(): Decimal[]
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md)[] | the Decimal[] type |
 
-<a id="tofraction-1"></a>
+<a id="tofraction2"></a>
 
 ## toFraction
 
@@ -3074,7 +3142,7 @@ toFraction(maxDenominator: Value): Decimal[]
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toFraction(maxDenominator: Value): Decimal[]--><!--Device-Decimal-toFraction(maxDenominator: Value): Decimal[]-End-->
 
@@ -3096,7 +3164,9 @@ toFraction(maxDenominator: Value): Decimal[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
+
+<a id="tohexadecimal1"></a>
 
 ## toHexadecimal
 
@@ -3108,7 +3178,7 @@ toHexadecimal(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toHexadecimal(): string--><!--Device-Decimal-toHexadecimal(): string-End-->
 
@@ -3120,7 +3190,7 @@ toHexadecimal(): string
 | --- | --- |
 | string | the string type |
 
-<a id="tohexadecimal-1"></a>
+<a id="tohexadecimal2"></a>
 
 ## toHexadecimal
 
@@ -3132,7 +3202,7 @@ toHexadecimal(significantDigits: number): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toHexadecimal(significantDigits: double): string--><!--Device-Decimal-toHexadecimal(significantDigits: double): string-End-->
 
@@ -3156,7 +3226,7 @@ toHexadecimal(significantDigits: number): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
 
-<a id="tohexadecimal-2"></a>
+<a id="tohexadecimal3"></a>
 
 ## toHexadecimal
 
@@ -3168,7 +3238,7 @@ toHexadecimal(significantDigits: number, rounding: Rounding): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toHexadecimal(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toHexadecimal(significantDigits: double, rounding: Rounding): string-End-->
 
@@ -3193,6 +3263,8 @@ toHexadecimal(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
+<a id="tonearest1"></a>
+
 ## toNearest
 
 ```TypeScript
@@ -3203,7 +3275,7 @@ toNearest(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toNearest(n: Value): Decimal--><!--Device-Decimal-toNearest(n: Value): Decimal-End-->
 
@@ -3225,9 +3297,9 @@ toNearest(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="tonearest-1"></a>
+<a id="tonearest2"></a>
 
 ## toNearest
 
@@ -3239,7 +3311,7 @@ toNearest(n: Value, rounding: Rounding): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toNearest(n: Value, rounding: Rounding): Decimal--><!--Device-Decimal-toNearest(n: Value, rounding: Rounding): Decimal-End-->
 
@@ -3262,7 +3334,7 @@ toNearest(n: Value, rounding: Rounding): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `rounding` is out of range. |
 
 ## toNumber
@@ -3275,7 +3347,7 @@ toNumber(): number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toNumber(): double--><!--Device-Decimal-toNumber(): double-End-->
 
@@ -3287,6 +3359,8 @@ toNumber(): number
 | --- | --- |
 | number | the number type |
 
+<a id="tooctal1"></a>
+
 ## toOctal
 
 ```TypeScript
@@ -3297,7 +3371,7 @@ toOctal(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toOctal(): string--><!--Device-Decimal-toOctal(): string-End-->
 
@@ -3309,7 +3383,7 @@ toOctal(): string
 | --- | --- |
 | string | the string type |
 
-<a id="tooctal-1"></a>
+<a id="tooctal2"></a>
 
 ## toOctal
 
@@ -3321,7 +3395,7 @@ toOctal(significantDigits: number): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toOctal(significantDigits: double): string--><!--Device-Decimal-toOctal(significantDigits: double): string-End-->
 
@@ -3331,7 +3405,7 @@ toOctal(significantDigits: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | number | 是 | {double &#124; string &#124; Decimal} |
+| significantDigits | number | 是 | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
@@ -3345,7 +3419,7 @@ toOctal(significantDigits: number): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
 
-<a id="tooctal-2"></a>
+<a id="tooctal3"></a>
 
 ## toOctal
 
@@ -3357,7 +3431,7 @@ toOctal(significantDigits: number, rounding: Rounding): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toOctal(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toOctal(significantDigits: double, rounding: Rounding): string-End-->
 
@@ -3367,7 +3441,7 @@ toOctal(significantDigits: number, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | number | 是 | {double &#124; string &#124; Decimal} |
+| significantDigits | number | 是 | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
@@ -3382,6 +3456,8 @@ toOctal(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
+<a id="toprecision1"></a>
+
 ## toPrecision
 
 ```TypeScript
@@ -3392,7 +3468,7 @@ toPrecision(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toPrecision(): string--><!--Device-Decimal-toPrecision(): string-End-->
 
@@ -3404,7 +3480,7 @@ toPrecision(): string
 | --- | --- |
 | string | the string type |
 
-<a id="toprecision-1"></a>
+<a id="toprecision2"></a>
 
 ## toPrecision
 
@@ -3416,7 +3492,7 @@ toPrecision(significantDigits: number): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toPrecision(significantDigits: double): string--><!--Device-Decimal-toPrecision(significantDigits: double): string-End-->
 
@@ -3440,7 +3516,7 @@ toPrecision(significantDigits: number): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
 
-<a id="toprecision-2"></a>
+<a id="toprecision3"></a>
 
 ## toPrecision
 
@@ -3452,7 +3528,7 @@ toPrecision(significantDigits: number, rounding: Rounding): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toPrecision(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toPrecision(significantDigits: double, rounding: Rounding): string-End-->
 
@@ -3477,6 +3553,8 @@ toPrecision(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
+<a id="tosignificantdigits1"></a>
+
 ## toSignificantDigits
 
 ```TypeScript
@@ -3487,7 +3565,7 @@ toSignificantDigits(): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toSignificantDigits(): Decimal--><!--Device-Decimal-toSignificantDigits(): Decimal-End-->
 
@@ -3499,7 +3577,7 @@ toSignificantDigits(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="tosignificantdigits-1"></a>
+<a id="tosignificantdigits2"></a>
 
 ## toSignificantDigits
 
@@ -3511,7 +3589,7 @@ toSignificantDigits(significantDigits: number): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toSignificantDigits(significantDigits: double): Decimal--><!--Device-Decimal-toSignificantDigits(significantDigits: double): Decimal-End-->
 
@@ -3535,7 +3613,7 @@ toSignificantDigits(significantDigits: number): Decimal
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
 
-<a id="tosignificantdigits-2"></a>
+<a id="tosignificantdigits3"></a>
 
 ## toSignificantDigits
 
@@ -3547,7 +3625,7 @@ toSignificantDigits(significantDigits: number, rounding: Rounding): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal--><!--Device-Decimal-toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal-End-->
 
@@ -3582,7 +3660,7 @@ toString(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-toString(): string--><!--Device-Decimal-toString(): string-End-->
 
@@ -3594,17 +3672,19 @@ toString(): string
 | --- | --- |
 | string | the string type |
 
+<a id="trunc1"></a>
+
 ## trunc
 
 ```TypeScript
 trunc(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是将参数n截断为整数部分。
+返回一个新的Decimal对象，其值是将当前Decimal截断为整数部分。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-trunc(): Decimal--><!--Device-Decimal-trunc(): Decimal-End-->
 
@@ -3616,7 +3696,7 @@ trunc(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="trunc-1"></a>
+<a id="trunc2"></a>
 
 ## trunc
 
@@ -3628,7 +3708,7 @@ static trunc(n: Value): Decimal
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-static trunc(n: Value): Decimal--><!--Device-Decimal-static trunc(n: Value): Decimal-End-->
 
@@ -3650,7 +3730,7 @@ static trunc(n: Value): Decimal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
 ## valueOf
 
@@ -3662,7 +3742,7 @@ valueOf(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-valueOf(): string--><!--Device-Decimal-valueOf(): string-End-->
 
@@ -3704,7 +3784,7 @@ exponent：表示Decimal数的十进制指数。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-get e(): double--><!--Device-Decimal-get e(): double-End-->
 
@@ -3902,7 +3982,7 @@ sign：表示Decimal数的符号位，0表示正数，1表示负数。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Decimal-get s(): double--><!--Device-Decimal-get s(): double-End-->
 

@@ -6,7 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="publish-2"></a>
+<a id="publish3"></a>
 
 ## publish
 
@@ -42,7 +42,7 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The device does not support geofencing.<br>**适用版本：** 23+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -63,6 +63,7 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 | [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>**适用版本：** 26.0.0+ |
 | [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable.<br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -93,8 +94,10 @@ let notificationRequest: notificationManager.NotificationRequest = {
 notificationManager.publish(notificationRequest, userId, publishCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="publish-3"></a>
+
+<a id="publish4"></a>
 
 ## publish
 
@@ -135,7 +138,7 @@ function publish(request: NotificationRequest, userId: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The device does not support geofencing.<br>**适用版本：** 23+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -156,6 +159,7 @@ function publish(request: NotificationRequest, userId: number): Promise<void>
 | [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>**适用版本：** 26.0.0+ |
 | [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable.<br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -182,3 +186,5 @@ notificationManager.publish(notificationRequest, userId).then(() => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

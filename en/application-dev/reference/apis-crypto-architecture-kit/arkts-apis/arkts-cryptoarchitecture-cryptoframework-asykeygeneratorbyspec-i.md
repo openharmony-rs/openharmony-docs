@@ -20,6 +20,8 @@ Asymmetric key generator interface with specified key specifications, defining m
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="generatekeypair1"></a>
+
 ## generateKeyPair
 
 ```TypeScript
@@ -32,7 +34,7 @@ Generates a key pair using this asymmetric key generator. This API uses an async
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generateKeyPair(callback: AsyncCallback<KeyPair>): void--><!--Device-AsyKeyGeneratorBySpec-generateKeyPair(callback: AsyncCallback<KeyPair>): void-End-->
 
@@ -50,7 +52,7 @@ Generates a key pair using this asymmetric key generator. This API uses an async
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: Incorrect parameter types; |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -97,7 +99,7 @@ function testGenerateKeyPair() {
 }
 ```
 
-<a id="generatekeypair-1"></a>
+<a id="generatekeypair2"></a>
 
 ## generateKeyPair
 
@@ -111,7 +113,7 @@ Generates a key pair using this asymmetric key generator. This API uses a promis
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generateKeyPair(): Promise<KeyPair>--><!--Device-AsyKeyGeneratorBySpec-generateKeyPair(): Promise<KeyPair>-End-->
 
@@ -129,7 +131,7 @@ Generates a key pair using this asymmetric key generator. This API uses a promis
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -190,7 +192,7 @@ Generates a key pair using this asymmetric key generator. This API returns the r
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generateKeyPairSync(): KeyPair--><!--Device-AsyKeyGeneratorBySpec-generateKeyPairSync(): KeyPair-End-->
 
@@ -206,7 +208,7 @@ Generates a key pair using this asymmetric key generator. This API returns the r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -258,6 +260,8 @@ function testGenerateKeyPairSync() {
 }
 ```
 
+<a id="generateprikey1"></a>
+
 ## generatePriKey
 
 ```TypeScript
@@ -270,7 +274,7 @@ Generates a private key using this asymmetric key generator. This API uses an as
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generatePriKey(callback: AsyncCallback<PriKey>): void--><!--Device-AsyKeyGeneratorBySpec-generatePriKey(callback: AsyncCallback<PriKey>): void-End-->
 
@@ -288,7 +292,7 @@ Generates a private key using this asymmetric key generator. This API uses an as
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: Mandatory parameters are left unspecified. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -335,7 +339,7 @@ function testGeneratePriKey() {
 }
 ```
 
-<a id="generateprikey-1"></a>
+<a id="generateprikey2"></a>
 
 ## generatePriKey
 
@@ -349,7 +353,7 @@ Generates a private key using this asymmetric key generator. This API uses a pro
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generatePriKey(): Promise<PriKey>--><!--Device-AsyKeyGeneratorBySpec-generatePriKey(): Promise<PriKey>-End-->
 
@@ -367,7 +371,7 @@ Generates a private key using this asymmetric key generator. This API uses a pro
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -428,7 +432,7 @@ Generates a private key using this asymmetric key generator. This API returns th
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generatePriKeySync(): PriKey--><!--Device-AsyKeyGeneratorBySpec-generatePriKeySync(): PriKey-End-->
 
@@ -444,7 +448,7 @@ Generates a private key using this asymmetric key generator. This API returns th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -494,6 +498,8 @@ function testGeneratePriKeySync() {
 }
 ```
 
+<a id="generatepubkey1"></a>
+
 ## generatePubKey
 
 ```TypeScript
@@ -506,7 +512,7 @@ Generates a public key using this asymmetric key generator. This API uses an asy
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generatePubKey(callback: AsyncCallback<PubKey>): void--><!--Device-AsyKeyGeneratorBySpec-generatePubKey(callback: AsyncCallback<PubKey>): void-End-->
 
@@ -524,7 +530,7 @@ Generates a public key using this asymmetric key generator. This API uses an asy
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: Incorrect parameter types; |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -571,7 +577,7 @@ function testGeneratePubKey() {
 }
 ```
 
-<a id="generatepubkey-1"></a>
+<a id="generatepubkey2"></a>
 
 ## generatePubKey
 
@@ -585,7 +591,7 @@ Generates a public key using this asymmetric key generator. This API uses a prom
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generatePubKey(): Promise<PubKey>--><!--Device-AsyKeyGeneratorBySpec-generatePubKey(): Promise<PubKey>-End-->
 
@@ -603,7 +609,7 @@ Generates a public key using this asymmetric key generator. This API uses a prom
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -664,7 +670,7 @@ Generates a public key using this asymmetric key generator. This API returns the
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-generatePubKeySync(): PubKey--><!--Device-AsyKeyGeneratorBySpec-generatePubKeySync(): PubKey-End-->
 
@@ -680,7 +686,7 @@ Generates a public key using this asymmetric key generator. This API returns the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
@@ -742,7 +748,7 @@ Indicates the algorithm name of the generator.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeyGeneratorBySpec-readonly algName: string--><!--Device-AsyKeyGeneratorBySpec-readonly algName: string-End-->
 

@@ -23,20 +23,20 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md) | 以回调形式创建订阅者。 |
-| [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber-1) | 以Promise形式创建订阅者。 |
-| [publish](arkts-basicservices-commonevent-publish-depr-f.md) | 以回调形式发布公共事件。 |
-| [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish-1) | 以回调形式发布公共事件。 |
-| [subscribe](arkts-basicservices-commonevent-subscribe-depr-f.md) | 以回调形式订阅公共事件。 |
-| [unsubscribe](arkts-basicservices-commonevent-unsubscribe-depr-f.md) | 以回调形式取消订阅公共事件。 |
+| [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber1) | 以回调形式创建订阅者。 |
+| [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber2) | 以Promise形式创建订阅者。 |
+| [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish1) | 以回调形式发布公共事件。 |
+| [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish2) | 以回调形式发布公共事件。 |
+| [subscribe](arkts-basicservices-commonevent-subscribe-depr-f.md#subscribe) | 以回调形式订阅公共事件。 |
+| [unsubscribe](arkts-basicservices-commonevent-unsubscribe-depr-f.md#unsubscribe) | 以回调形式取消订阅公共事件。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [publishAsUser](arkts-basicservices-commonevent-publishasuser-depr-f-sys.md#publishasuser) | 以回调的形式向指定用户发布公共事件。 |
-| [publishAsUser](arkts-basicservices-commonevent-publishasuser-depr-f-sys.md#publishasuser-1) | 以回调形式向指定用户发布公共事件并指定发布信息。 |
+| [publishAsUser](arkts-basicservices-commonevent-publishasuser-depr-f-sys.md#publishasuser1) | 以回调的形式向指定用户发布公共事件。 |
+| [publishAsUser](arkts-basicservices-commonevent-publishasuser-depr-f-sys.md#publishasuser2) | 以回调形式向指定用户发布公共事件并指定发布信息。 |
 <!--DelEnd-->
 
 ### 枚举

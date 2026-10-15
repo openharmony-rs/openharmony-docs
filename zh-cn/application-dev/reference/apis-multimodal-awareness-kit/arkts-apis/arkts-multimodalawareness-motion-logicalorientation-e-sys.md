@@ -14,6 +14,60 @@ export enum LogicalOrientation
 
 **系统接口：** 此接口为系统接口。
 
+## INVERTED
+
+```TypeScript
+INVERTED = 2
+```
+
+表示逻辑方向倒置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LogicalOrientation-INVERTED = 2--><!--Device-LogicalOrientation-INVERTED = 2-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.Motion
+
+**系统接口：** 此接口为系统接口。
+
+## LEFT
+
+```TypeScript
+LEFT = 1
+```
+
+表示向左。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LogicalOrientation-LEFT = 1--><!--Device-LogicalOrientation-LEFT = 1-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.Motion
+
+**系统接口：** 此接口为系统接口。
+
+## RIGHT
+
+```TypeScript
+RIGHT = 3
+```
+
+表示向右。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LogicalOrientation-RIGHT = 3--><!--Device-LogicalOrientation-RIGHT = 3-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.Motion
+
+**系统接口：** 此接口为系统接口。
+
 ## UNKNOWN
 
 ```TypeScript
@@ -45,60 +99,6 @@ UPRIGHT = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-LogicalOrientation-UPRIGHT = 0--><!--Device-LogicalOrientation-UPRIGHT = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.Motion
-
-**系统接口：** 此接口为系统接口。
-
-## LEFT
-
-```TypeScript
-LEFT = 1
-```
-
-表示向左。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LogicalOrientation-LEFT = 1--><!--Device-LogicalOrientation-LEFT = 1-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.Motion
-
-**系统接口：** 此接口为系统接口。
-
-## INVERTED
-
-```TypeScript
-INVERTED = 2
-```
-
-表示逻辑方向倒置。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LogicalOrientation-INVERTED = 2--><!--Device-LogicalOrientation-INVERTED = 2-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.Motion
-
-**系统接口：** 此接口为系统接口。
-
-## RIGHT
-
-```TypeScript
-RIGHT = 3
-```
-
-表示向右。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LogicalOrientation-RIGHT = 3--><!--Device-LogicalOrientation-RIGHT = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 

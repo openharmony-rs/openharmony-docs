@@ -33,7 +33,7 @@ Whether the window is interacting with the user. The value **true** indicates th
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowFilter-active?: boolean--><!--Device-WindowFilter-active?: boolean-End-->
 
@@ -53,7 +53,7 @@ Bundle name of the application to which the window belongs, which is used to fil
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowFilter-bundleName?: string--><!--Device-WindowFilter-bundleName?: string-End-->
 
@@ -73,7 +73,7 @@ ID of the display to which the window belongs. The default value is the default 
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-WindowFilter-displayId?: int--><!--Device-WindowFilter-displayId?: int-End-->
 
@@ -93,7 +93,7 @@ Whether the window is focused. The value **true** indicates that the window is f
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowFilter-focused?: boolean--><!--Device-WindowFilter-focused?: boolean-End-->
 
@@ -113,7 +113,7 @@ Window title, which is used to filter the target window in multi-window scenario
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WindowFilter-title?: string--><!--Device-WindowFilter-title?: string-End-->
 
@@ -137,7 +137,7 @@ This API is supported since API version 9 and deprecated since API version 11. Y
 
 **Deprecated since:** 11
 
-**Substitutes:** active
+**Substitutes:** [active](#active)
 
 <!--Device-WindowFilter-actived?: boolean--><!--Device-WindowFilter-actived?: boolean-End-->
 

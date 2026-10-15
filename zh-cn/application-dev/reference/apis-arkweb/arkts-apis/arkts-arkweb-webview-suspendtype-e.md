@@ -12,6 +12,20 @@ enum SuspendType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## AUTO_CLEANUP
+
+```TypeScript
+AUTO_CLEANUP = 2
+```
+
+系统自动清理。
+
+**起始版本：** 12
+
+<!--Device-SuspendType-AUTO_CLEANUP = 2--><!--Device-SuspendType-AUTO_CLEANUP = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## ENTER_BACK_FORWARD_CACHE
 
 ```TypeScript
@@ -37,19 +51,5 @@ ENTER_BACKGROUND = 1
 **起始版本：** 12
 
 <!--Device-SuspendType-ENTER_BACKGROUND = 1--><!--Device-SuspendType-ENTER_BACKGROUND = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## AUTO_CLEANUP
-
-```TypeScript
-AUTO_CLEANUP = 2
-```
-
-系统自动清理。
-
-**起始版本：** 12
-
-<!--Device-SuspendType-AUTO_CLEANUP = 2--><!--Device-SuspendType-AUTO_CLEANUP = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

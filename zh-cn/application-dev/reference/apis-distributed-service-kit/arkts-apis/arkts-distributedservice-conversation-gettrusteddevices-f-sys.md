@@ -41,6 +41,7 @@ function getTrustedDevices(): DeviceNodeInfo[]
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2000001](../errorcode-conversation.md#2000001-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,3 +59,5 @@ try {
   console.error(`getTrustedDevices errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
+
+<!--DelEnd-->

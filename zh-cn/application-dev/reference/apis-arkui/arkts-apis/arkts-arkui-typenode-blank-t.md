@@ -6,6 +6,8 @@ type Blank = TypedFrameNode<BlankInterface, BlankAttribute>
 
 Blank类型的FrameNode节点类型。不允许添加子组件。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;BlankInterface, [BlankAttribute](../arkts-components/arkts-arkui-blank-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Blank类型的FrameNode节点类型。不允许添加子组件。
 <!--Device-typeNode-type Blank = TypedFrameNode<BlankInterface, BlankAttribute>--><!--Device-typeNode-type Blank = TypedFrameNode<BlankInterface, BlankAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;BlankInterface, [BlankAttribute](../arkts-components/arkts-arkui-blank-comp-attribute.md)&gt;

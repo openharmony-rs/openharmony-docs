@@ -24,15 +24,15 @@ import { socket } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [constructLocalSocketInstance](arkts-network-socket-constructlocalsocketinstance-f.md) | 创建一个LocalSocket对象。 |
-| [constructLocalSocketServerInstance](arkts-network-socket-constructlocalsocketserverinstance-f.md) | 创建一个LocalSocketServer对象。 |
-| [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md) | 创建一个MulticastSocket对象。 |
-| [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md) | 创建一个TCPSocket对象。 |
-| [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md) | 创建一个TCPSocketServer对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | 创建并返回一个TLSSocket对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance-1) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
-| [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md) | 创建并返回一个TLSSocketServer对象。 |
-| [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md) | 创建一个UDPSocket对象。 |
+| [constructLocalSocketInstance](arkts-network-socket-constructlocalsocketinstance-f.md#constructlocalsocketinstance) | 创建一个LocalSocket对象。 |
+| [constructLocalSocketServerInstance](arkts-network-socket-constructlocalsocketserverinstance-f.md#constructlocalsocketserverinstance) | 创建一个LocalSocketServer对象。 |
+| [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md#constructmulticastsocketinstance) | 创建一个MulticastSocket对象。 |
+| [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md#constructtcpsocketinstance) | 创建一个TCPSocket对象。 |
+| [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md#constructtcpsocketserverinstance) | 创建一个TCPSocketServer对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance1) | 创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance2) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md#constructtlssocketserverinstance) | 创建并返回一个TLSSocketServer对象。 |
+| [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md#constructudpsocketinstance) | 创建一个UDPSocket对象。 |
 
 ### 接口
 
@@ -83,4 +83,4 @@ import { socket } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [NetAddress](arkts-network-socket-p.md) | 定义网络地址。 |
+| [NetAddress](arkts-network-socket-p.md#netaddress) | 定义网络地址。 |

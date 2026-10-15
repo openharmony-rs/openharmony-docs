@@ -4,10 +4,10 @@
 export class ContinuousTaskRequest
 ```
 
-Specifies details of the continuous task being requested or updated. It is typically used as input for the [startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-3) and [updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1) APIs. Note that:
+Specifies details of the continuous task being requested or updated. It is typically used as input for the [startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning4) and [updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2) APIs. Note that:
 
 1. When requesting a continuous task via
-[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-3), notifications will be combined if the main type and subtype of the continuous task to be requested are the same as those of the existing continuous task in the current application, and the **combinedTaskNotification** value is **true** for both tasks. Otherwise, notifications will not be combined.
+[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning4), notifications will be combined if the main type and subtype of the continuous task to be requested are the same as those of the existing continuous task in the current application, and the **combinedTaskNotification** value is **true** for both tasks. Otherwise, notifications will not be combined.
 2. Notifications will not be combined if the continuous task has no notification.
 For details about whether notifications are sent for the continuous task, see [BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md).
 3. Notifications cannot be combined if the continuous task includes data transmission.
@@ -15,7 +15,7 @@ For details about whether notifications are sent for the continuous task, see [B
 If notifications have been combined, they cannot be updated to uncombined.
 5. After notifications are combined, tapping the notification will redirect to the UIAbility
 corresponding to the first requested continuous task. If the update API is called, the redirection will target the UIAbility corresponding to the last updated continuous task.
-6. When the [updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1)
+6. When the [updateBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2)
 API is called to update a continuous task, the input **continuousTaskId** must exist. Otherwise, the update fails.
 7. Continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md) type
 are supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
@@ -74,12 +74,13 @@ Checks whether the user has authorized tasks to run continuously in the backgrou
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
+      // Create a continuous task request object.
       let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
       continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
         console.info('Operation checkSpecialScenarioAuth succeeded. data: ' + JSON.stringify(res));
@@ -135,12 +136,13 @@ Check whether the application can request MODE_SPECIAL_SCENARIO_PROCESSING. No e
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
+      // Create a continuous task request object.
       let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
       continuousTaskRequest.checkSpecialScenarioAuthResult(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
         console.info('Operation checkSpecialScenarioAuthResult succeeded. data: ' + JSON.stringify(res));
@@ -166,7 +168,7 @@ Checks whether **BackgroundTaskMode** specified in [ContinuousTaskRequest](arkts
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ContinuousTaskRequest-isModeSupported(): boolean--><!--Device-ContinuousTaskRequest-isModeSupported(): boolean-End-->
 
@@ -189,12 +191,13 @@ Checks whether **BackgroundTaskMode** specified in [ContinuousTaskRequest](arkts
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     let isModeSupported: boolean = false; 
+    // Create a continuous task request object.
     let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
     let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_TASK_KEEPING];
     continuousTaskRequest.backgroundTaskModes = modeList;
@@ -245,15 +248,16 @@ Requests user authorization to run tasks continuously in the background. This AP
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
+const callbackAuth = (authResult: backgroundTaskManager.UserAuthResult) => {
   console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
 }
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
+    // Create a continuous task request object.
     let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
     let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_SPECIAL_SCENARIO_PROCESSING];
     continuousTaskRequest.backgroundTaskModes = modeList;
@@ -310,7 +314,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
+const callbackAuth = (authResult: backgroundTaskManager.UserAuthResult) => {
   console.info('Operation requestAuthFromUserByDialog success. auth result: ' + JSON.stringify(authResult));
 }
 
@@ -321,6 +325,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       try {
+        // Create a continuous task request object.
         let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
         let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_SPECIAL_SCENARIO_PROCESSING];
         continuousTaskRequest.backgroundTaskModes = modeList;
@@ -350,7 +355,7 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ContinuousTaskRequest-get backgroundTaskModes(): BackgroundTaskMode[]--><!--Device-ContinuousTaskRequest-get backgroundTaskModes(): BackgroundTaskMode[]-End-->
 
@@ -368,7 +373,7 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ContinuousTaskRequest-set backgroundTaskModes(value: BackgroundTaskMode[])--><!--Device-ContinuousTaskRequest-set backgroundTaskModes(value: BackgroundTaskMode[])-End-->
 
@@ -388,7 +393,7 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ContinuousTaskRequest-get backgroundTaskSubmodes(): BackgroundTaskSubmode[]--><!--Device-ContinuousTaskRequest-get backgroundTaskSubmodes(): BackgroundTaskSubmode[]-End-->
 
@@ -406,7 +411,7 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ContinuousTaskRequest-set backgroundTaskSubmodes(value: BackgroundTaskSubmode[])--><!--Device-ContinuousTaskRequest-set backgroundTaskSubmodes(value: BackgroundTaskSubmode[])-End-->
 
@@ -420,7 +425,7 @@ combinedTaskNotification?: boolean
 
 Whether to combine notifications. The value **true** means to combine notifications, and the value **false** (default) means the opposite.
 
-Note: This property does not take effect in [updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1) API. If notifications need to be combined for an existing task, request the task again and set the value to **true**.
+Note: This property does not take effect in [updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2) API. If notifications need to be combined for an existing task, request the task again and set the value to **true**.
 
 **Type:** boolean
 
@@ -442,9 +447,9 @@ Continuous task ID. The default value is **-1**.
 
 Note: If **combinedTaskNotification** is set to true, this property is mandatory and the corresponding ID must exist.
 
-Additionally, this property is mandatory (with the corresponding ID required) when used as an input parameter for the [updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning-1) API.
+Additionally, this property is mandatory (with the corresponding ID required) when used as an input parameter for the [updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md#updatebackgroundrunning2) API.
 
-You can call the [getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks-1) API to view information about all continuous tasks.
+You can call the [getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskmanager-getallcontinuoustasks-f.md#getallcontinuoustasks2) API to view information about all continuous tasks.
 
 **Type:** number
 
@@ -488,7 +493,7 @@ Notification parameters, which are used to specify the target page that is redir
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ContinuousTaskRequest-get wantAgent(): WantAgent--><!--Device-ContinuousTaskRequest-get wantAgent(): WantAgent-End-->
 
@@ -504,7 +509,7 @@ Notification parameters, which are used to specify the target page that is redir
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ContinuousTaskRequest-set wantAgent(value: WantAgent)--><!--Device-ContinuousTaskRequest-set wantAgent(value: WantAgent)-End-->
 

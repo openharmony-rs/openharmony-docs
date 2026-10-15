@@ -36,7 +36,7 @@ input parameter.
 
 | Type | Description |
 | --- | --- |
-| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 22: The service is abnormal. Possible causes: 1. The USB service is abnormal. 2. The USB device pipe is abnormal. |
+| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 22: The service is abnormal. Possible causes: 1. The USB service is abnormal.         2. The USB device pipe is abnormal. |
 
 **Error codes:**
 

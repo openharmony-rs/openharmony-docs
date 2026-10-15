@@ -12,63 +12,9 @@ export enum LocationRequestScenario
 
 **替代接口：** [LocationRequestScenario](arkts-location-geolocationmanager-locationrequestscenario-e.md)
 
-**需要权限：** ohos.permission.LOCATION @enum { number }
+**需要权限：** ohos.permission.LOCATION
 
 <!--Device-geolocation-export enum LocationRequestScenario--><!--Device-geolocation-export enum LocationRequestScenario-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## UNSET
-
-```TypeScript
-UNSET = 0x300
-```
-
-表示未设置场景信息。表示LocationRequestScenario字段无效。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [UNSET](arkts-location-geolocationmanager-locationrequestscenario-e.md#unset)
-
-<!--Device-LocationRequestScenario-UNSET = 0x300--><!--Device-LocationRequestScenario-UNSET = 0x300-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## NAVIGATION
-
-```TypeScript
-NAVIGATION
-```
-
-表示导航场景。适用于在户外定位设备实时位置的场景，如车载、步行导航。在此场景下，为保证系统提供位置结果精度最优，主要使用GNSS定位技术提供定位服务。此场景默认以最小1秒间隔上报定位结果。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [NAVIGATION](arkts-location-geolocationmanager-locationrequestscenario-e.md#navigation)
-
-<!--Device-LocationRequestScenario-NAVIGATION--><!--Device-LocationRequestScenario-NAVIGATION-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## TRAJECTORY_TRACKING
-
-```TypeScript
-TRAJECTORY_TRACKING
-```
-
-表示运动轨迹记录场景。适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。主要使用GNSS定位技术提供定位服务。此场景默认以最小1秒间隔上报定位结果。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [TRAJECTORY_TRACKING](arkts-location-geolocationmanager-locationrequestscenario-e.md#trajectory_tracking)
-
-<!--Device-LocationRequestScenario-TRAJECTORY_TRACKING--><!--Device-LocationRequestScenario-TRAJECTORY_TRACKING-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -108,6 +54,24 @@ DAILY_LIFE_SERVICE
 
 **系统能力：** SystemCapability.Location.Location.Core
 
+## NAVIGATION
+
+```TypeScript
+NAVIGATION
+```
+
+表示导航场景。适用于在户外定位设备实时位置的场景，如车载、步行导航。在此场景下，为保证系统提供位置结果精度最优，主要使用GNSS定位技术提供定位服务。此场景默认以最小1秒间隔上报定位结果。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [NAVIGATION](arkts-location-geolocationmanager-locationrequestscenario-e.md#navigation)
+
+<!--Device-LocationRequestScenario-NAVIGATION--><!--Device-LocationRequestScenario-NAVIGATION-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
 ## NO_POWER
 
 ```TypeScript
@@ -123,5 +87,41 @@ NO_POWER
 **替代接口：** [NO_POWER](arkts-location-geolocationmanager-locationrequestscenario-e.md#no_power)
 
 <!--Device-LocationRequestScenario-NO_POWER--><!--Device-LocationRequestScenario-NO_POWER-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## TRAJECTORY_TRACKING
+
+```TypeScript
+TRAJECTORY_TRACKING
+```
+
+表示运动轨迹记录场景。适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。主要使用GNSS定位技术提供定位服务。此场景默认以最小1秒间隔上报定位结果。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [TRAJECTORY_TRACKING](arkts-location-geolocationmanager-locationrequestscenario-e.md#trajectory_tracking)
+
+<!--Device-LocationRequestScenario-TRAJECTORY_TRACKING--><!--Device-LocationRequestScenario-TRAJECTORY_TRACKING-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## UNSET
+
+```TypeScript
+UNSET = 0x300
+```
+
+表示未设置场景信息。表示LocationRequestScenario字段无效。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [UNSET](arkts-location-geolocationmanager-locationrequestscenario-e.md#unset)
+
+<!--Device-LocationRequestScenario-UNSET = 0x300--><!--Device-LocationRequestScenario-UNSET = 0x300-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core

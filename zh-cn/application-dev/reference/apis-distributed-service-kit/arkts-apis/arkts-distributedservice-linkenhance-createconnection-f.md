@@ -41,7 +41,7 @@ function createConnection(deviceId: string, name: string): Connection
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the linkEnhance function has been trimmed.<br>**适用版本：** 26.0.0+ |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 

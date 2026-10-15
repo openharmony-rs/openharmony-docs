@@ -535,6 +535,67 @@ struct Index {
 }
 ```
 
+## dispatchInputEvent
+
+```TypeScript
+dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+```
+
+Dispatches a pointer input event to this FrameNode with an optional competition strategy. This API supports TouchEvent, MouseEvent, and AxisEvent. KeyEvent is dispatched by [dispatchKeyEvent](#dispatchkeyevent) instead.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean--><!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| event | [InputEventType](arkts-arkui-inputeventtype-t.md) | Yes | Input event to dispatch. |
+| competitionStrategy | [CompetitionStrategy](arkts-arkui-competitionstrategy-e.md) | No | Competition strategy for dispatching the event. By default, the event is dispatched without a competition strategy. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Whether the event is successfully dispatched. Returns **true** if the event is dispatched successfully; returns **false** otherwise. |
+
+## dispatchKeyEvent
+
+```TypeScript
+dispatchKeyEvent(event: KeyEvent): boolean
+```
+
+Dispatches a key event to this FrameNode.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean--><!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| event | [KeyEvent](../arkts-components/arkts-arkui-common-comp-keyevent-i.md) | Yes | Key event to be dispatched. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Whether the key event is consumed. Returns **true** if the key event is consumed; returns **false** otherwise. |
+
 ## dispose
 
 ```TypeScript
@@ -844,6 +905,8 @@ struct Index {
 }
 ```
 
+<a id="getchild1"></a>
+
 ## getChild
 
 ```TypeScript
@@ -878,7 +941,7 @@ Obtains the child node in the specified position of this node.
 
 See Example of Node Operations.
 
-<a id="getchild-1"></a>
+<a id="getchild2"></a>
 
 ## getChild
 
@@ -915,6 +978,8 @@ Obtains a child node at a specified index from this FrameNode, with optional sup
 
 See Example of Node Operations in the LazyForEach Scenario.
 
+<a id="getchildrencount1"></a>
+
 ## getChildrenCount
 
 ```TypeScript
@@ -943,7 +1008,7 @@ Obtains the number of child nodes of this FrameNode.
 
 See Example of Node Operations.
 
-<a id="getchildrencount-1"></a>
+<a id="getchildrencount2"></a>
 
 ## getChildrenCount
 
@@ -1936,7 +2001,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to its parent component with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to its parent component with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 
@@ -2112,7 +2177,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to the screen with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to the screen with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 
@@ -2287,7 +2352,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to the window with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to the window with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 

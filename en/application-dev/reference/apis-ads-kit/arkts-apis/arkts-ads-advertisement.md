@@ -6,4 +6,4 @@
 
 | Name | Description |
 | --- | --- |
-| [Advertisement](arkts-ads-advertisement-advertisement-i.md) | This module provides the requested ad content. |
+| [Advertisement](arkts-ads-advertisement-i.md) | This module provides the requested ad content. |

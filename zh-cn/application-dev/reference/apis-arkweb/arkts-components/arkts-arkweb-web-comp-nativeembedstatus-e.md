@@ -28,22 +28,6 @@ CREATE = 0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## UPDATE
-
-```TypeScript
-UPDATE = 1
-```
-
-同层标签更新。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-NativeEmbedStatus-UPDATE = 1--><!--Device-NativeEmbedStatus-UPDATE = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## DESTROY
 
 ```TypeScript
@@ -89,5 +73,21 @@ LEAVE_BFCACHE = 4
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NativeEmbedStatus-LEAVE_BFCACHE = 4--><!--Device-NativeEmbedStatus-LEAVE_BFCACHE = 4-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## UPDATE
+
+```TypeScript
+UPDATE = 1
+```
+
+同层标签更新。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NativeEmbedStatus-UPDATE = 1--><!--Device-NativeEmbedStatus-UPDATE = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

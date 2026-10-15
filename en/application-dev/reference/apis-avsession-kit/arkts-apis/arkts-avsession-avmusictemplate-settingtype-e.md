@@ -6,27 +6,25 @@ enum SettingType
 
 Enumeration of setting type.
 
-@enum { int }
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-enum SettingType--><!--Device-avMusicTemplate-enum SettingType-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-## SWITCH
+## JUMP
 
 ```TypeScript
-SWITCH = 0
+JUMP = 2
 ```
 
-Switch, the type of setting is used to control the on/off status of a function.
+Jump, this type of setting is used to jump to another interface.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingType-SWITCH = 0--><!--Device-SettingType-SWITCH = 0-End-->
+<!--Device-SettingType-JUMP = 2--><!--Device-SettingType-JUMP = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -46,18 +44,18 @@ List, this type of setting is used for selecting one option from multiple choice
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-## JUMP
+## SWITCH
 
 ```TypeScript
-JUMP = 2
+SWITCH = 0
 ```
 
-Jump, this type of setting is used to jump to another interface.
+Switch, the type of setting is used to control the on/off status of a function.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingType-JUMP = 2--><!--Device-SettingType-JUMP = 2-End-->
+<!--Device-SettingType-SWITCH = 0--><!--Device-SettingType-SWITCH = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

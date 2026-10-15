@@ -12,20 +12,6 @@ export enum CertType
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-## CERT_TYPE_PEM
-
-```TypeScript
-CERT_TYPE_PEM = 0
-```
-
-PEM格式证书。
-
-**起始版本：** 11
-
-<!--Device-CertType-CERT_TYPE_PEM = 0--><!--Device-CertType-CERT_TYPE_PEM = 0-End-->
-
-**系统能力：** SystemCapability.Communication.NetStack
-
 ## CERT_TYPE_DER
 
 ```TypeScript
@@ -37,5 +23,19 @@ DER格式证书。
 **起始版本：** 11
 
 <!--Device-CertType-CERT_TYPE_DER = 1--><!--Device-CertType-CERT_TYPE_DER = 1-End-->
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+## CERT_TYPE_PEM
+
+```TypeScript
+CERT_TYPE_PEM = 0
+```
+
+PEM格式证书。
+
+**起始版本：** 11
+
+<!--Device-CertType-CERT_TYPE_PEM = 0--><!--Device-CertType-CERT_TYPE_PEM = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack

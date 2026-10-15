@@ -6,6 +6,8 @@ declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode'
 
 按键对应的意图。
 
+**类型：** import('../api/@ohos.multimodalInput.intentionCode').IntentionCode
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode'
 <!--Device-unnamed-declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').IntentionCode--><!--Device-unnamed-declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').IntentionCode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.multimodalInput.intentionCode').IntentionCode

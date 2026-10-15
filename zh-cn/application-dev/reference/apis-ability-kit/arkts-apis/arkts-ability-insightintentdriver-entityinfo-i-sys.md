@@ -4,7 +4,7 @@
 interface EntityInfo
 ```
 
-EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md)，用于描述[@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
+EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md)，用于描述[@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity)装饰器定义的意图实体的信息。
 
 **起始版本：** 20
 
@@ -26,7 +26,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 readonly className: string
 ```
 
-表示[@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。
+表示[@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity)装饰器修饰的类名。
 
 **类型：** string
 
@@ -86,7 +86,9 @@ readonly entityId: string
 readonly isQueryable?: boolean
 ```
 
-实体是可查询的。
+表示[@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity)装饰器修饰的意图实体类是否支持查询，只有继承自[insightIntent.AppIntentEntity](arkts-ability-insightintent-appintententity-c.md)类的意图实体支持查询。  
+- true：支持查询。  
+- false：不支持查询。
 
 **类型：** boolean
 
@@ -126,7 +128,7 @@ readonly parameters: Record<string, Object>
 readonly parentClassName: string
 ```
 
-表示[@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。
+表示[@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity)装饰器修饰的类的父类名。
 
 **类型：** string
 
@@ -146,7 +148,7 @@ readonly parentClassName: string
 readonly supportedQueryProperties?: string[]
 ```
 
-支持查询属性。
+表示[@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity)装饰器修饰的意图实体支持通过哪些属性进行查询。意图实体查询参数[parameters](arkts-ability-insightintent-queryentityparam-i.md)的key值必须在该属性列表中。
 
 **类型：** string[]
 

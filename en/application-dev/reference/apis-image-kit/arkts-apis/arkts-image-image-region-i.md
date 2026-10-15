@@ -30,9 +30,9 @@ Region size.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Region-size: Size--><!--Device-Region-size: Size-End-->
 
@@ -50,9 +50,9 @@ X coordinate of the top-left corner of the region, in px.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Region-x: int--><!--Device-Region-x: int-End-->
 
@@ -70,9 +70,9 @@ Y coordinate of the top-left corner of the region, in px.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Region-y: int--><!--Device-Region-y: int-End-->
 

@@ -28,22 +28,6 @@ CA证书。
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-## CREDENTIAL_USER
-
-```TypeScript
-CREDENTIAL_USER = 2
-```
-
-用户公共凭据。
-
-**起始版本：** 22
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertificateType-CREDENTIAL_USER = 2--><!--Device-CertificateType-CREDENTIAL_USER = 2-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManagerDialog
-
 ## CREDENTIAL_APP
 
 ```TypeScript
@@ -57,6 +41,22 @@ CREDENTIAL_APP = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CertificateType-CREDENTIAL_APP = 3--><!--Device-CertificateType-CREDENTIAL_APP = 3-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## CREDENTIAL_SYSTEM
+
+```TypeScript
+CREDENTIAL_SYSTEM = 5
+```
+
+系统凭据。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateType-CREDENTIAL_SYSTEM = 5--><!--Device-CertificateType-CREDENTIAL_SYSTEM = 5-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -76,18 +76,18 @@ USB Key证书凭据。
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-## CREDENTIAL_SYSTEM
+## CREDENTIAL_USER
 
 ```TypeScript
-CREDENTIAL_SYSTEM = 5
+CREDENTIAL_USER = 2
 ```
 
-系统凭据。
+用户公共凭据。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CertificateType-CREDENTIAL_SYSTEM = 5--><!--Device-CertificateType-CREDENTIAL_SYSTEM = 5-End-->
+<!--Device-CertificateType-CREDENTIAL_USER = 2--><!--Device-CertificateType-CREDENTIAL_USER = 2-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog

@@ -32,6 +32,8 @@ address: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-PairingStateParam-address: string--><!--Device-PairingStateParam-address: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ preState: PairingState
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingStateParam-preState: PairingState--><!--Device-PairingStateParam-preState: PairingState-End-->
 
@@ -68,6 +72,8 @@ reason: PairingReason
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-PairingStateParam-reason: PairingReason--><!--Device-PairingStateParam-reason: PairingReason-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -86,6 +92,8 @@ reasonMsg?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-PairingStateParam-reasonMsg?: string--><!--Device-PairingStateParam-reasonMsg?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -103,6 +111,8 @@ state: PairingState
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingStateParam-state: PairingState--><!--Device-PairingStateParam-state: PairingState-End-->
 

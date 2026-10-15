@@ -87,7 +87,7 @@ Adds an element at the end of this Queue.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Queue-add(element: T): boolean--><!--Device-Queue-add(element: T): boolean-End-->
 
@@ -138,7 +138,7 @@ A constructor used to create a **Queue** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Queue-constructor()--><!--Device-Queue-constructor()-End-->
 
@@ -212,7 +212,7 @@ Obtains the first element of this Queue.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Queue-getFirst(): T--><!--Device-Queue-getFirst(): T-End-->
 
@@ -253,7 +253,7 @@ Removes the first element from this Queue.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Queue-pop(): T--><!--Device-Queue-pop(): T-End-->
 

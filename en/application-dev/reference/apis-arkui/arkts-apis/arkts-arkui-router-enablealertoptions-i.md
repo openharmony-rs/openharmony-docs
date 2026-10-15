@@ -4,7 +4,7 @@
 interface EnableAlertOptions
 ```
 
-Describes the page routing state.
+Describes the confirm dialog box.
 
 **Since:** 8
 

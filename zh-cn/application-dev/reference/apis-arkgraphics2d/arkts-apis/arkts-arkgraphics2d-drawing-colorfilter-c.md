@@ -24,6 +24,8 @@ class ColorFilter
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createblendmodecolorfilter1"></a>
+
 ## createBlendModeColorFilter
 
 ```TypeScript
@@ -66,7 +68,7 @@ const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.SRC);
 ```
 
-<a id="createblendmodecolorfilter-2"></a>
+<a id="createblendmodecolorfilter3"></a>
 
 ## createBlendModeColorFilter
 

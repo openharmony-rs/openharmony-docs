@@ -6,6 +6,8 @@ type RowData = Array<ValueType>
 
 Indicates a row of data with an array.
 
+**Type:** Array&lt;[ValueType](arkts-arkdata-relationalstore-valuetype-t.md)&gt;
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -13,5 +15,3 @@ Indicates a row of data with an array.
 <!--Device-relationalStore-type RowData = Array<ValueType>--><!--Device-relationalStore-type RowData = Array<ValueType>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Type:** Array&lt;[ValueType](arkts-arkdata-relationalstore-valuetype-t.md)&gt;

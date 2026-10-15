@@ -12,21 +12,21 @@ enum FlashState
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-## FLASH_STATE_UNAVAILABLE
+## FLASH_STATE_FLASHING
 
 ```TypeScript
-FLASH_STATE_UNAVAILABLE = 0
+FLASH_STATE_FLASHING = 2
 ```
 
-闪光灯为不可用状态，为默认值。
+闪光灯已经被打开。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
-<!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0--><!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0-End-->
+<!--Device-FlashState-FLASH_STATE_FLASHING = 2--><!--Device-FlashState-FLASH_STATE_FLASHING = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -42,26 +42,26 @@ FLASH_STATE_READY = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FlashState-FLASH_STATE_READY = 1--><!--Device-FlashState-FLASH_STATE_READY = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-## FLASH_STATE_FLASHING
+## FLASH_STATE_UNAVAILABLE
 
 ```TypeScript
-FLASH_STATE_FLASHING = 2
+FLASH_STATE_UNAVAILABLE = 0
 ```
 
-闪光灯已经被打开。
+闪光灯为不可用状态，为默认值。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
-<!--Device-FlashState-FLASH_STATE_FLASHING = 2--><!--Device-FlashState-FLASH_STATE_FLASHING = 2-End-->
+<!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0--><!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

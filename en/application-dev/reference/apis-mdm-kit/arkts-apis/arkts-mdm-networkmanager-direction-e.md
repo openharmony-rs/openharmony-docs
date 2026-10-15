@@ -12,6 +12,22 @@ Enumerates the direction chains to which the rule applies.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## FORWARD
+
+```TypeScript
+FORWARD = 2
+```
+
+Forward chain.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Direction-FORWARD = 2--><!--Device-Direction-FORWARD = 2-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## INPUT
 
 ```TypeScript
@@ -41,21 +57,5 @@ Output chain.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Direction-OUTPUT = 1--><!--Device-Direction-OUTPUT = 1-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## FORWARD
-
-```TypeScript
-FORWARD = 2
-```
-
-Forward chain.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Direction-FORWARD = 2--><!--Device-Direction-FORWARD = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

@@ -6,6 +6,8 @@ export type BadgeNumberCallbackData = _BadgeNumberCallbackData
 
 Describes the badge number of the application has changed.
 
+**Type:** _BadgeNumberCallbackData
+
 **Since:** 11
 
 <!--Device-notificationSubscribe-export type BadgeNumberCallbackData = _BadgeNumberCallbackData--><!--Device-notificationSubscribe-export type BadgeNumberCallbackData = _BadgeNumberCallbackData-End-->
@@ -13,5 +15,3 @@ Describes the badge number of the application has changed.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _BadgeNumberCallbackData

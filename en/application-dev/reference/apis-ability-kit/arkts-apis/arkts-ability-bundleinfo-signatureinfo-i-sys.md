@@ -4,7 +4,7 @@
 export interface SignatureInfo
 ```
 
-Describes the signature information of the app package,which can identifythe app source, ensure app integrity, and be used for app security verification and identification.
+Describes the signature information of the app package, which can identify the app source, ensure app integrity, and be used for app security verification and identification.
 
 **Since:** 9
 

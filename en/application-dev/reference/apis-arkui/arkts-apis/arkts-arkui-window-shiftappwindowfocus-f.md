@@ -14,19 +14,19 @@ function shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Pr
 
 Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted within the main window and child windows. This API uses a promise to return the result.
 
-Ensure that the target window can gain focus (configurable by calling [setWindowFocusable()](arkts-arkui-window-window-i.md#setwindowfocusable-1)) and that [showWindow()](arkts-arkui-window-window-i.md#showwindow) has been successfully executed.
+Ensure that the target window can gain focus (configurable by calling [setWindowFocusable()](arkts-arkui-window-window-i.md#setwindowfocusable2)) and that [showWindow()](arkts-arkui-window-window-i.md#showwindow1) has been successfully executed.
 
 > **NOTE:** 
 > 
 > Before calling **shiftAppWindowFocus()**, ensure that the target window has called
-> [loadContent()](arkts-arkui-window-window-i.md#loadcontent)
-> or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent)
+> [loadContent()](arkts-arkui-window-window-i.md#loadcontent1)
+> or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent1)
 > and these operations have been effective. Otherwise, an invisible window may gain focus, causing function
 > exceptions or affecting user experience.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-window-function shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promise<void>--><!--Device-window-function shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promise<void>-End-->
 
@@ -49,11 +49,11 @@ Ensure that the target window can gain focus (configurable by calling [setWindow
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported. 2. The two windows are not from the same process. |
+| [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported.         2. The two windows are not from the same process. |
 
 **Examples**
 

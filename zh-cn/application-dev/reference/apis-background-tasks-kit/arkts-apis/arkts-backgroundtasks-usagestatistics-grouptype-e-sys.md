@@ -62,22 +62,6 @@ FIXED_GROUP = 30
 
 **系统接口：** 此接口为系统接口。
 
-## RARE_GROUP
-
-```TypeScript
-RARE_GROUP = 40
-```
-
-极少使用分组，不经常使用。
-
-**起始版本：** 9
-
-<!--Device-GroupType-RARE_GROUP = 40--><!--Device-GroupType-RARE_GROUP = 40-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
-
-**系统接口：** 此接口为系统接口。
-
 ## LIMITED_GROUP
 
 ```TypeScript
@@ -105,6 +89,22 @@ NEVER_GROUP = 60
 **起始版本：** 9
 
 <!--Device-GroupType-NEVER_GROUP = 60--><!--Device-GroupType-NEVER_GROUP = 60-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**系统接口：** 此接口为系统接口。
+
+## RARE_GROUP
+
+```TypeScript
+RARE_GROUP = 40
+```
+
+极少使用分组，不经常使用。
+
+**起始版本：** 9
+
+<!--Device-GroupType-RARE_GROUP = 40--><!--Device-GroupType-RARE_GROUP = 40-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 

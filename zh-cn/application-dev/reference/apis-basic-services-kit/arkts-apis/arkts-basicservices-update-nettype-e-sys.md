@@ -30,6 +30,22 @@ CELLULAR = 1
 
 **系统接口：** 此接口为系统接口。
 
+## CELLULAR_AND_WIFI
+
+```TypeScript
+CELLULAR_AND_WIFI = 7
+```
+
+数据网络和WIFI。
+
+**起始版本：** 9
+
+<!--Device-NetType-CELLULAR_AND_WIFI = 7--><!--Device-NetType-CELLULAR_AND_WIFI = 7-End-->
+
+**系统能力：** SystemCapability.Update.UpdateService
+
+**系统接口：** 此接口为系统接口。
+
 ## METERED_WIFI
 
 ```TypeScript
@@ -73,22 +89,6 @@ WIFI。
 **起始版本：** 9
 
 <!--Device-NetType-WIFI = 6--><!--Device-NetType-WIFI = 6-End-->
-
-**系统能力：** SystemCapability.Update.UpdateService
-
-**系统接口：** 此接口为系统接口。
-
-## CELLULAR_AND_WIFI
-
-```TypeScript
-CELLULAR_AND_WIFI = 7
-```
-
-数据网络和WIFI。
-
-**起始版本：** 9
-
-<!--Device-NetType-CELLULAR_AND_WIFI = 7--><!--Device-NetType-CELLULAR_AND_WIFI = 7-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<CarAwarenessInfo[]>
 ```
 
-/** Disables vehicle awareness and subscribes to vehicle awareness results.
+Obtains the car awareness result of the specified type once.
 
 **Since:** 26.0.1
 
@@ -28,20 +28,20 @@ function getCarAwareness(capability: Capability, options?: CarAwarenessOptions):
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| capability | [Capability](arkts-multimodalawareness-carawareness-capability-e.md) | Yes | Specific capability. |
-| options | [CarAwarenessOptions](arkts-multimodalawareness-carawareness-carawarenessoptions-i-sys.md) | No | Options for a specific function. |
+| capability | [Capability](arkts-multimodalawareness-carawareness-capability-e.md) | Yes | Specifies the type of the awareness capability result to obtain. |
+| options | [CarAwarenessOptions](arkts-multimodalawareness-carawareness-carawarenessoptions-i-sys.md) | No | Optional configuration items of the awareness capability. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[CarAwarenessInfo](arkts-multimodalawareness-carawareness-carawarenessinfo-i-sys.md)[]&gt; | Promise used to return the capability data. |
+| Promise&lt;[CarAwarenessInfo](arkts-multimodalawareness-carawareness-carawarenessinfo-i-sys.md)[]&gt; | Promise used to return an array of awareness result data. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system capability. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-specified-capability-not-supported) | Specific capability not supported. |

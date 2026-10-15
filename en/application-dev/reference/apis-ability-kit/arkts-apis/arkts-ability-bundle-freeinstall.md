@@ -1,12 +1,6 @@
-# @ohos.bundle.freeInstall
+# @ohos.bundle.freeInstall(freeInstall Module)
 
-The module provides APIs for setting and obtaining installation-free information and APIs for obtaining
- BundlePackInfo and DispatchInfo.
-
-> **NOTE**
- >
- > The APIs provided by this module are system APIs.
-
+The module provides APIs for setting and obtaining installation-free information and APIs for obtaining BundlePackInfo and DispatchInfo.
 
 **Since:** 9
 
@@ -29,14 +23,14 @@ import { freeInstall } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo) | Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API uses an asynchronous callback to return the result. |
-| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo-1) | Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API uses a promise to return the result. |
-| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo) | Obtains the dispatch information. This API uses an asynchronous callback to return the result. |
-| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo-1) | Obtains the dispatch information. This API uses a promise to return the result. |
-| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable) | Checks whether a module can be removed. This API uses an asynchronous callback to return the result. |
-| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable-1) | Checks whether a module can be removed. This API uses a promise to return the result. |
-| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag) | Sets an upgrade flag for a module. This API uses an asynchronous callback to return the result. |
-| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag-1) | Sets an upgrade flag for a module. This API uses a promise to return the result. |
+| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo1) | Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API uses an asynchronous callback to return the result. |
+| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo2) | Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API uses a promise to return the result. |
+| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo1) | Obtains the dispatch information. This API uses an asynchronous callback to return the result. |
+| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo2) | Obtains the dispatch information. This API uses a promise to return the result. |
+| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable1) | Checks whether a module can be removed. This API uses an asynchronous callback to return the result. |
+| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable2) | Checks whether a module can be removed. This API uses a promise to return the result. |
+| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag1) | Sets an upgrade flag for a module. This API uses an asynchronous callback to return the result. |
+| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag2) | Sets an upgrade flag for a module. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

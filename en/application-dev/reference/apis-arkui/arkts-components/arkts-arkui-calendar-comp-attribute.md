@@ -4,6 +4,8 @@
 declare class CalendarAttribute
 ```
 
+Defines the attributes of the Calendar component.
+
 **Since:** 7
 
 **Deprecated since:** 20

@@ -30,7 +30,7 @@ Releases output resources. This API uses a promise to return the result. Model c
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-CapturePhoto-release(): Promise<void>--><!--Device-CapturePhoto-release(): Promise<void>-End-->
 
@@ -66,7 +66,7 @@ Object of the full-quality image and the uncompressed image.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-CapturePhoto-main: ImageType--><!--Device-CapturePhoto-main: ImageType-End-->
 
@@ -86,7 +86,7 @@ Object of the oxygen auxiliary photo.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-CapturePhoto-oxygenPhoto?: ImageType--><!--Device-CapturePhoto-oxygenPhoto?: ImageType-End-->
 
@@ -106,7 +106,7 @@ Object of the pigmentation auxiliary photo.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-CapturePhoto-pigmentationPhoto?: ImageType--><!--Device-CapturePhoto-pigmentationPhoto?: ImageType-End-->
 

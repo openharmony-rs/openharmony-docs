@@ -62,7 +62,7 @@ enableEdgeAutoScroll?: boolean
 enableHapticFeedback?: boolean
 ```
 
-表示拖拽时是否启用震动。true表示启用震动，false表示不启用震动。仅在存在蒙层的预览（通过[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)）场景生效。
+表示拖拽时是否启用震动。true表示启用震动，false表示不启用震动。仅在存在蒙层的预览（通过[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)）场景生效。
 
 **注意：** 仅当应用具备 ohos.permission.VIBRATE 权限，且用户启用了触感反馈时才会生效。
 
@@ -88,7 +88,7 @@ isLiftingDisabled?: boolean
 
 表示长按拖拽时，是否禁用浮起效果。true表示禁用浮起效果，false表示不禁用浮起效果。
 
-如果设置为true，当组件支持拖拽并同时设置[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)时，仅弹出配置的自定义菜单预览。
+如果设置为true，当组件支持拖拽并同时设置[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1)时，仅弹出配置的自定义菜单预览。
 
 默认值：false
 
@@ -114,9 +114,9 @@ isMultiSelectionEnabled?: boolean
 
 表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在[Grid](arkts-arkui-grid-comp.md)和[List](arkts-arkui-list-comp.md)组件中的[GridItem](arkts-arkui-griditem-comp.md)组件和[ListItem](arkts-arkui-listitem-comp.md)组件生效。
 
-当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。
+当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview1)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。
 
-不支持组件绑定[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)中参数存在isShown的模式。
+不支持组件绑定[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)中参数存在isShown的模式。
 
 默认值：false
 

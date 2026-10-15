@@ -12,22 +12,6 @@ Enumerates Ethernet connection configuration modes.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## STATIC
-
-```TypeScript
-STATIC = 0
-```
-
-Static configuration of network information for Ethernet connection. When this mode is set, the IP address, subnet mask, default gateway, and DNS server need to be configured synchronously.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-IpSetMode-STATIC = 0--><!--Device-IpSetMode-STATIC = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## DHCP
 
 ```TypeScript
@@ -41,5 +25,21 @@ Dynamic configuration of network information for Ethernet connection. When this 
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-IpSetMode-DHCP = 1--><!--Device-IpSetMode-DHCP = 1-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## STATIC
+
+```TypeScript
+STATIC = 0
+```
+
+Static configuration of network information for Ethernet connection. When this mode is set, the IP address, subnet mask, default gateway, and DNS server need to be configured synchronously.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IpSetMode-STATIC = 0--><!--Device-IpSetMode-STATIC = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

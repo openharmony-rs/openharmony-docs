@@ -14,97 +14,17 @@ Enumerates the authentication credential subtypes.
 
 **System API:** This is a system API.
 
-## PIN_SIX
+## DOMAIN_MIXED
 
 ```TypeScript
-PIN_SIX = 10000
+DOMAIN_MIXED = 10240001
 ```
 
-Six-digit PIN.
+Mixed domain authentication credentials.
 
-**Since:** 8
+**Since:** 9
 
-<!--Device-AuthSubType-PIN_SIX = 10000--><!--Device-AuthSubType-PIN_SIX = 10000-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## PIN_NUMBER
-
-```TypeScript
-PIN_NUMBER = 10001
-```
-
-Custom PIN.
-
-**Since:** 8
-
-<!--Device-AuthSubType-PIN_NUMBER = 10001--><!--Device-AuthSubType-PIN_NUMBER = 10001-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## PIN_MIXED
-
-```TypeScript
-PIN_MIXED = 10002
-```
-
-Custom mixed credentials.
-
-**Since:** 8
-
-<!--Device-AuthSubType-PIN_MIXED = 10002--><!--Device-AuthSubType-PIN_MIXED = 10002-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## PIN_FOUR
-
-```TypeScript
-PIN_FOUR = 10003
-```
-
-4-digit credential.
-
-**Since:** 12
-
-<!--Device-AuthSubType-PIN_FOUR = 10003--><!--Device-AuthSubType-PIN_FOUR = 10003-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## PIN_PATTERN
-
-```TypeScript
-PIN_PATTERN = 10004
-```
-
-Pattern credential.
-
-**Since:** 12
-
-<!--Device-AuthSubType-PIN_PATTERN = 10004--><!--Device-AuthSubType-PIN_PATTERN = 10004-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## PIN_QUESTION
-
-```TypeScript
-PIN_QUESTION = 10005
-```
-
-Security question credential.
-
-**Since:** 14
-
-<!--Device-AuthSubType-PIN_QUESTION = 10005--><!--Device-AuthSubType-PIN_QUESTION = 10005-End-->
+<!--Device-AuthSubType-DOMAIN_MIXED = 10240001--><!--Device-AuthSubType-DOMAIN_MIXED = 10240001-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -190,17 +110,97 @@ Ultrasonic fingerprint.
 
 **System API:** This is a system API.
 
-## DOMAIN_MIXED
+## PIN_FOUR
 
 ```TypeScript
-DOMAIN_MIXED = 10240001
+PIN_FOUR = 10003
 ```
 
-Mixed domain authentication credentials.
+4-digit credential.
 
-**Since:** 9
+**Since:** 12
 
-<!--Device-AuthSubType-DOMAIN_MIXED = 10240001--><!--Device-AuthSubType-DOMAIN_MIXED = 10240001-End-->
+<!--Device-AuthSubType-PIN_FOUR = 10003--><!--Device-AuthSubType-PIN_FOUR = 10003-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## PIN_MIXED
+
+```TypeScript
+PIN_MIXED = 10002
+```
+
+Custom mixed credentials.
+
+**Since:** 8
+
+<!--Device-AuthSubType-PIN_MIXED = 10002--><!--Device-AuthSubType-PIN_MIXED = 10002-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## PIN_NUMBER
+
+```TypeScript
+PIN_NUMBER = 10001
+```
+
+Custom PIN.
+
+**Since:** 8
+
+<!--Device-AuthSubType-PIN_NUMBER = 10001--><!--Device-AuthSubType-PIN_NUMBER = 10001-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## PIN_PATTERN
+
+```TypeScript
+PIN_PATTERN = 10004
+```
+
+Pattern credential.
+
+**Since:** 12
+
+<!--Device-AuthSubType-PIN_PATTERN = 10004--><!--Device-AuthSubType-PIN_PATTERN = 10004-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## PIN_QUESTION
+
+```TypeScript
+PIN_QUESTION = 10005
+```
+
+Security question credential.
+
+**Since:** 14
+
+<!--Device-AuthSubType-PIN_QUESTION = 10005--><!--Device-AuthSubType-PIN_QUESTION = 10005-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## PIN_SIX
+
+```TypeScript
+PIN_SIX = 10000
+```
+
+Six-digit PIN.
+
+**Since:** 8
+
+<!--Device-AuthSubType-PIN_SIX = 10000--><!--Device-AuthSubType-PIN_SIX = 10000-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

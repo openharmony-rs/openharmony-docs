@@ -30,33 +30,17 @@ AUTH_SUB_TYPE = 1
 
 **系统接口：** 此接口为系统接口。
 
-## REMAIN_TIMES
+## CREDENTIAL_LENGTH
 
 ```TypeScript
-REMAIN_TIMES = 2
+CREDENTIAL_LENGTH = 7
 ```
 
-剩余次数。
+凭据长度。
 
-**起始版本：** 8
+**起始版本：** 20
 
-<!--Device-GetPropertyType-REMAIN_TIMES = 2--><!--Device-GetPropertyType-REMAIN_TIMES = 2-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## FREEZING_TIME
-
-```TypeScript
-FREEZING_TIME = 3
-```
-
-冻结时间。
-
-**起始版本：** 8
-
-<!--Device-GetPropertyType-FREEZING_TIME = 3--><!--Device-GetPropertyType-FREEZING_TIME = 3-End-->
+<!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7--><!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -78,17 +62,17 @@ ENROLLMENT_PROGRESS = 4
 
 **系统接口：** 此接口为系统接口。
 
-## SENSOR_INFO
+## FREEZING_TIME
 
 ```TypeScript
-SENSOR_INFO = 5
+FREEZING_TIME = 3
 ```
 
-传感器信息。
+冻结时间。
 
-**起始版本：** 10
+**起始版本：** 8
 
-<!--Device-GetPropertyType-SENSOR_INFO = 5--><!--Device-GetPropertyType-SENSOR_INFO = 5-End-->
+<!--Device-GetPropertyType-FREEZING_TIME = 3--><!--Device-GetPropertyType-FREEZING_TIME = 3-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -110,17 +94,33 @@ NEXT_PHASE_FREEZING_TIME = 6
 
 **系统接口：** 此接口为系统接口。
 
-## CREDENTIAL_LENGTH
+## REMAIN_TIMES
 
 ```TypeScript
-CREDENTIAL_LENGTH = 7
+REMAIN_TIMES = 2
 ```
 
-凭据长度。
+剩余次数。
 
-**起始版本：** 20
+**起始版本：** 8
 
-<!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7--><!--Device-GetPropertyType-CREDENTIAL_LENGTH = 7-End-->
+<!--Device-GetPropertyType-REMAIN_TIMES = 2--><!--Device-GetPropertyType-REMAIN_TIMES = 2-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## SENSOR_INFO
+
+```TypeScript
+SENSOR_INFO = 5
+```
+
+传感器信息。
+
+**起始版本：** 10
+
+<!--Device-GetPropertyType-SENSOR_INFO = 5--><!--Device-GetPropertyType-SENSOR_INFO = 5-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

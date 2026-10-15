@@ -45,8 +45,9 @@ Obtains the intent information on the current device based on the given bundle n
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
-| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module. |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service;         2. The system service fails to communicate with the dependency module. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,3 +69,5 @@ import { insightIntentDriver } from '@kit.AbilityKit';
     }
   }
 ```
+
+<!--DelEnd-->

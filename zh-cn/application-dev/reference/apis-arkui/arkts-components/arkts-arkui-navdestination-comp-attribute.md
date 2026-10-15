@@ -16,6 +16,8 @@ declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribu
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="backbuttonicon1"></a>
+
 ## backButtonIcon
 
 ```TypeScript
@@ -46,7 +48,7 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | 是 | 标题栏返回键图标。<br>**适用版本：** 11 |
 
-<a id="backbuttonicon-1"></a>
+<a id="backbuttonicon2"></a>
 
 ## backButtonIcon
 
@@ -85,7 +87,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 ```
 
-绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见示例1。
+绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
 
 > **说明：** 
 
@@ -117,7 +119,7 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 bindToScrollable(scrollers: Array<Scroller>)
 ```
 
-绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见示例1。
+绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
 
 > **说明：** 
 
@@ -294,6 +296,8 @@ hideBackButton(hide: Optional<boolean>)
 | --- | --- | --- | --- |
 | hide | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否隐藏标题栏中的返回键。<br>默认值：false<br>true：隐藏返回键。<br>false：显示返回键。 |
 
+<a id="hidetitlebar1"></a>
+
 ## hideTitleBar
 
 ```TypeScript
@@ -316,7 +320,7 @@ hideTitleBar(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否隐藏标题栏。<br>默认值：false<br>true：隐藏标题栏。<br>false：显示标题栏。 |
 
-<a id="hidetitlebar-1"></a>
+<a id="hidetitlebar2"></a>
 
 ## hideTitleBar
 
@@ -324,7 +328,7 @@ hideTitleBar(value: boolean)
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
+设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar1)相比，新增标题栏显隐时是否使用动画。
 
 **起始版本：** 13
 
@@ -401,6 +405,8 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 | types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | 否 | 配置扩展安全区域的类型。<br>默认值：<br>[LayoutSafeAreaType.SYSTEM] |
 | edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | 否 | 配置扩展安全区域的方向。<br> 默认值：<br> [LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。<br>默认扩展顶部和底部方向，用于避让系统状态栏和导航栏的安全区域。 |
 
+<a id="menus1"></a>
+
 ## menus
 
 ```TypeScript
@@ -431,7 +437,7 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 | --- | --- | --- | --- |
 | value | Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 页面右上角菜单。 |
 
-<a id="menus-1"></a>
+<a id="menus2"></a>
 
 ## menus
 
@@ -439,7 +445,7 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus1)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 > **说明：** 
 
@@ -498,7 +504,7 @@ mode(value: NavDestinationMode)
 onActive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见示例5。
+NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见[示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：** 
 
@@ -574,7 +580,7 @@ onHidden(callback: Callback<VisibilityChangeReason>)
 onInactive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见示例5。
+NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见[示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：** 
 
@@ -606,7 +612,7 @@ onNewParam(callback: Optional<Callback<ESObject>>)
 
 > **说明：** 
 
-> - [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath)、[replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination)不会触发该回调。
+> - [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath1)、[replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination)不会触发该回调。
 > 
 > - 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 

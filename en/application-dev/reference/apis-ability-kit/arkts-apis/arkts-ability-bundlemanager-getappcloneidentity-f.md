@@ -32,7 +32,7 @@ Obtains the bundle name and clone index of a cloned application based on the giv
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AppCloneIdentity](arkts-ability-bundlemanager-appcloneidentity-t.md)&gt; | Promise used to return the application clone index. |
+| Promise&lt;[AppCloneIdentity](arkts-ability-bundlemanager-appcloneidentity-t.md)&gt; | Promise used to return the AppCloneIdentity information. |
 
 **Error codes:**
 

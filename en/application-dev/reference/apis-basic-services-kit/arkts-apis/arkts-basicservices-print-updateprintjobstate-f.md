@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="updateprintjobstate1"></a>
+
 ## updatePrintJobState
 
 ```TypeScript
@@ -62,7 +64,7 @@ print.updatePrintJobState(jobId, state, subState, (error: BusinessError) => {
 ```
 
 
-<a id="updateprintjobstate-1"></a>
+<a id="updateprintjobstate2"></a>
 
 ## updatePrintJobState
 

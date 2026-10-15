@@ -6,6 +6,8 @@
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
+<a id="createfileaccesshelper1"></a>
+
 ## createFileAccessHelper
 
 ```TypeScript
@@ -75,6 +77,7 @@ function createFileAccessHelper(context: Context): FileAccessHelper
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,8 +101,10 @@ function createFileAccessHelper02(context: common.UIAbilityContext) {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="createfileaccesshelper-1"></a>
+
+<a id="createfileaccesshelper2"></a>
 
 ## createFileAccessHelper
 
@@ -171,6 +176,7 @@ function createFileAccessHelper(context: Context, wants: Array<Want>): FileAcces
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -200,3 +206,5 @@ function createFileAccessHelper01(context: common.UIAbilityContext) {
   }
 }
 ```
+
+<!--DelEnd-->

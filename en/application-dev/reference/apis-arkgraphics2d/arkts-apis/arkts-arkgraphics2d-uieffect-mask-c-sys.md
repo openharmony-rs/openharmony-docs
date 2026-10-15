@@ -118,6 +118,8 @@ Creates a fractal glass mask. It performs periodic horizontal displacement sampl
 | --- | --- |
 | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | Mask instance carrying the fractal‑glass mask effect. |
 
+<a id="createpixelmapmask1"></a>
+
 ## createPixelMapMask
 
 ```TypeScript
@@ -156,6 +158,7 @@ Creates a Mask instance with scaling effect by inputting a pixelMap, the area of
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -197,7 +200,9 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-<a id="createpixelmapmask-1"></a>
+<!--DelEnd-->
+
+<a id="createpixelmapmask2"></a>
 
 ## createPixelMapMask
 
@@ -233,6 +238,7 @@ Creates a Mask instance by inputting a pixelMap. This interface does not perform
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -324,6 +330,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## createRadialGradientMask
 
 ```TypeScript
@@ -362,6 +370,7 @@ Creates an elliptical mask Mask instance by inputting the center position of the
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -383,6 +392,8 @@ struct RadialGradientMaskExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## createRippleMask
 
@@ -421,11 +432,14 @@ Creates a wave ring mask Mask instance by inputting the center position, radius,
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 1.0}, 0.5, 0.3, 0.0);
 ```
+
+<!--DelEnd-->
 
 ## createSweepRefractionMask
 
@@ -492,6 +506,7 @@ Creates and sets a Mask instance indicating whether to use blur caching. This Ma
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -549,6 +564,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## createWarpedRingMask
 
@@ -619,6 +636,7 @@ Creates a single-wave mask Mask instance by inputting the wave source center pos
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -640,3 +658,5 @@ struct WaveGradientMaskExample {
   }
 }
 ```
+
+<!--DelEnd-->

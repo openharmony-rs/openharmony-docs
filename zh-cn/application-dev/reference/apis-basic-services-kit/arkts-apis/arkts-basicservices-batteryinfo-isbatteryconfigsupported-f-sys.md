@@ -42,6 +42,7 @@ function isBatteryConfigSupported(sceneName: string): boolean
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [5100101](../errorcode-battery-info.md#5100101-连接服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ let result = batteryInfo.isBatteryConfigSupported(sceneName);
 
 console.info('The result is: ' + result);
 ```
+
+<!--DelEnd-->

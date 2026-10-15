@@ -24,11 +24,11 @@ import { camera } from '@kit.CameraKit';
 isMacroSupported(): boolean
 ```
 
-Checks whether macro photography is supported in the current state. This API must be called after [commitConfig](arkts-camera-camera-session-i.md#commitconfig).
+Checks whether macro photography is supported in the current state. This API must be called after [commitConfig](arkts-camera-camera-session-i.md#commitconfig1).
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-MacroQuery-isMacroSupported(): boolean--><!--Device-MacroQuery-isMacroSupported(): boolean-End-->
 

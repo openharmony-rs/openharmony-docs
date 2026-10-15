@@ -128,6 +128,8 @@ concat(...items: ConcatArray<T>[]): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The concat method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -150,7 +152,7 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -181,7 +183,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 
@@ -210,6 +212,8 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
+
+<a id="containsall1"></a>
 
 ## containsAll
 
@@ -248,7 +252,7 @@ containsAll(elements: Array<T>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The containsAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
-<a id="containsall-1"></a>
+<a id="containsall2"></a>
 
 ## containsAll
 
@@ -315,7 +319,7 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 修改后的ArkTS Array。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
+| Array&lt;T&gt; | 修改后的ArkTS Array。 |
 
 **错误码：**
 
@@ -624,6 +628,8 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="from1"></a>
+
 ## from
 
 ```TypeScript
@@ -658,7 +664,7 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
-<a id="from-1"></a>
+<a id="from2"></a>
 
 ## from
 
@@ -694,7 +700,7 @@ static from<T>(iterable: Iterable<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
-<a id="from-2"></a>
+<a id="from3"></a>
 
 ## from
 
@@ -725,7 +731,7 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 | --- | --- |
 | Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
-<a id="from-3"></a>
+<a id="from4"></a>
 
 ## from
 
@@ -854,7 +860,7 @@ static isArray(value: Object | undefined | null): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**；否则返回**false**。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
+| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**；否则返回**false**。 |
 
 ## join
 
@@ -1017,7 +1023,7 @@ static of<T>(...items: T[]): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
 ## pop
 
@@ -1083,6 +1089,8 @@ push(...items: T[]): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The push method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduce1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -1118,7 +1126,7 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduce-1"></a>
+<a id="reduce2"></a>
 
 ## reduce
 
@@ -1159,13 +1167,15 @@ reduce<U>(
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduceright1"></a>
+
 ## reduceRight
 
 ```TypeScript
 reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U
 ```
 
-此API与[reduceRight](#reduceright-1)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
+此API与[reduceRight](#reduceright2)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
 
 **起始版本：** 18
 
@@ -1186,7 +1196,7 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 
 | 类型 | 说明 |
 | --- | --- |
-| U | 回调函数执行后的最终结果。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| U | 回调函数执行后的最终结果。 |
 
 **错误码：**
 
@@ -1195,7 +1205,7 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduceright-1"></a>
+<a id="reduceright2"></a>
 
 ## reduceRight
 
@@ -1223,7 +1233,7 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 回调函数执行后的最终结果。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| T | 回调函数执行后的最终结果。 |
 
 **错误码：**
 
@@ -1231,6 +1241,8 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
+
+<a id="retainall1"></a>
 
 ## retainAll
 
@@ -1269,7 +1281,7 @@ retainAll(elements: Array<T>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
-<a id="retainall-1"></a>
+<a id="retainall2"></a>
 
 ## retainAll
 
@@ -1308,7 +1320,7 @@ retainAll(elements: readonly T[]): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
-<a id="retainall-2"></a>
+<a id="retainall3"></a>
 
 ## retainAll
 
@@ -1540,6 +1552,8 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="splice1"></a>
+
 ## splice
 
 ```TypeScript
@@ -1566,7 +1580,7 @@ splice(start: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。 |
 
 **错误码：**
 
@@ -1575,7 +1589,7 @@ splice(start: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="splice-1"></a>
+<a id="splice2"></a>
 
 ## splice
 
@@ -1605,7 +1619,7 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。 |
 
 **错误码：**
 

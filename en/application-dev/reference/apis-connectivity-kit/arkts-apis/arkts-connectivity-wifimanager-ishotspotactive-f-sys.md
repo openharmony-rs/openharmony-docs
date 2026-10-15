@@ -38,6 +38,7 @@ Check whether Wi-Fi hotspot is active on a device.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot-module-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,3 +51,5 @@ import { wifiManager } from '@kit.ConnectivityKit';
     console.error("failed:" + JSON.stringify(error));
   }
 ```
+
+<!--DelEnd-->

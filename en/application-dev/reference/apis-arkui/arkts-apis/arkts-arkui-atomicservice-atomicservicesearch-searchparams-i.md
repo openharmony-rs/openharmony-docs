@@ -292,11 +292,11 @@ fontFeature?: ResourceStr
 
 Font feature, for example, monospaced digits.
 
-Format: normal | &lt;feature-tag-value&gt;
+Format: normal | <feature-tag-value>
 
-Syntax for **&lt;feature-tag-value&gt;**: &lt;string&gt; [ &lt;integer&gt; | on | off ]
+Syntax for **<feature-tag-value>**: <string> [ <integer> | on | off ]
 
-There can be multiple **&lt;feature-tag-value&gt;** values, which are separated by commas (,).
+There can be multiple **<feature-tag-value>** values, which are separated by commas (,).
 
 For example, the input format for monospaced digits is "ss01" on. Default value: **undefined**.
 

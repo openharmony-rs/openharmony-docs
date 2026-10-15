@@ -52,12 +52,13 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise<DeviceIco
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [11600106](../errorcode-device-manager.md#11600106-从云端获取数据失败) | Get data from cloud fail. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -87,6 +88,8 @@ try {
   console.error('getDeviceIconInfo errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDeviceNetworkIdList
 
@@ -124,10 +127,11 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<strin
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Parameter verification failed; |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [11600107](../errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -150,6 +154,8 @@ try {
   console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDeviceProfileInfoList
 
@@ -185,13 +191,14 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 500. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [11600106](../errorcode-device-manager.md#11600106-从云端获取数据失败) | Get data from cloud fail. |
 | [11600107](../errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -210,6 +217,8 @@ try {
   console.error('getDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getIdentificationByDeviceIds
 
@@ -249,9 +258,10 @@ getIdentificationByDeviceIds(deviceIds: Array<string>): Array<DeviceIdentificati
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [11600101](../errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -266,6 +276,8 @@ try {
   idsLists = [];
 }
 ```
+
+<!--DelEnd-->
 
 ## getLocalDisplayDeviceName
 
@@ -301,11 +313,12 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -325,6 +338,8 @@ try {
   console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## getOsTypeByNetworkId
 
@@ -356,7 +371,7 @@ getOsTypeByNetworkId(networkId: string): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Returns the device operating system type. Possible return:   1. 10: Operating system based on OpenHarmony 2. 11: Operating system not based on OpenHarmony 3. -1: Unknown |
+| number | Returns the device operating system type. Possible return:           1. 10: Operating system based on OpenHarmony         2. 11: Operating system not based on OpenHarmony         3. -1: Unknown |
 
 **错误码：**
 
@@ -367,6 +382,7 @@ getOsTypeByNetworkId(networkId: string): number
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [11600110](../errorcode-device-manager.md#11600110-无效的网络id) | Invalid network ID. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -383,6 +399,8 @@ try {
   console.error('getOsTypeByNetworkId errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('replyResult')
 
@@ -413,10 +431,11 @@ off(type: 'replyResult', callback?: Callback<{ param: string; }>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 255. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -431,6 +450,8 @@ try {
   console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('replyResult')
 
@@ -461,10 +482,11 @@ on(type: 'replyResult', callback: Callback<{ param: string; }>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 255. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -492,6 +514,8 @@ try {
   console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## putDeviceProfileInfoList
 
@@ -527,11 +551,12 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 500. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -551,6 +576,8 @@ try {
   console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## replyUiAction
 
@@ -583,8 +610,9 @@ replyUiAction(action: number, actionResult: string): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified actionResult is greater than 255. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified actionResult is greater than 255. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -608,6 +636,8 @@ try {
   console.error('replyUiAction errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## restoreLocalDeviceName
 
@@ -637,6 +667,7 @@ restoreLocalDeviceName(): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -651,6 +682,8 @@ try {
   console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setHeartbeatPolicy
 
@@ -683,9 +716,10 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -702,6 +736,8 @@ try {
   console.error('setHeartbeatPolicy errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setLocalDeviceName
 
@@ -737,7 +773,7 @@ setLocalDeviceName(deviceName: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
@@ -745,6 +781,7 @@ setLocalDeviceName(deviceName: string): Promise<number>
 | [11600107](../errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
 | [11600108](../errorcode-device-manager.md#11600108-设备名称含非法信息) | The device name contains non-compliant content. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -764,6 +801,8 @@ try {
   console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## setRemoteDeviceName
 
@@ -800,7 +839,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed; |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
@@ -808,6 +847,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise<number>
 | [11600107](../errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
 | [11600108](../errorcode-device-manager.md#11600108-设备名称含非法信息) | The device name contains non-compliant content. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -828,6 +868,8 @@ try {
   console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## restoreLocalDeivceName
 
@@ -859,6 +901,7 @@ restoreLocalDeivceName(): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -873,3 +916,5 @@ try {
   console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
+
+<!--DelEnd-->

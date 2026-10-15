@@ -1,5 +1,18 @@
 # @ohos.arkui.advanced.ChipV2
 
+The **ChipV2** component is a chip component that delivers rich styles and interaction capabilities. It provides
+ features such as prefix icons, suffix icons, active states, and close buttons, supports the symbol and image icon
+ types, and offers comprehensive accessibility capabilities. This component is suitable for scenarios such as search
+ history, email recipient lists, tag selection, filters, and contact display.
+
+This component is implemented based on
+ [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared
+ with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1),
+ state management V2 delivers enhanced capabilities for deep observation and management of data objects, and is no
+ longer limited to the component level. With state management V2, you can control component data and state more
+ flexibly, achieving more efficient UI refresh.
+
+
 ## Modules to Import
 
 ```TypeScript
@@ -28,7 +41,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 
 | Name | Description |
 | --- | --- |
-| [ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md) | The **ChipV2** component is a chip component that delivers rich styles and interaction capabilities. It provides features such as prefix icons, suffix icons, active states, and close buttons, supports the symbol and image icon types, and offers comprehensive accessibility capabilities. This component is suitable for scenarios such as search history, email recipient lists, tag selection, filters, and contact display. |
+| [ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md) | Creates a **ChipV2** component. |
 
 ### Interfaces
 

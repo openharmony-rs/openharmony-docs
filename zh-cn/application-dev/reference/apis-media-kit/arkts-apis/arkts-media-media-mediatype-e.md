@@ -12,21 +12,21 @@ enum MediaType
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## MEDIA_TYPE_UNSUPPORTED
+## MEDIA_TYPE_ATTACHMENT
 
 ```TypeScript
-MEDIA_TYPE_UNSUPPORTED = -1
+MEDIA_TYPE_ATTACHMENT = 3
 ```
 
-表示未支持的类型。
+表示附件信息（如嵌入的外部文件）。
 
 **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-MediaType-MEDIA_TYPE_UNSUPPORTED = -1--><!--Device-MediaType-MEDIA_TYPE_UNSUPPORTED = -1-End-->
+<!--Device-MediaType-MEDIA_TYPE_ATTACHMENT = 3--><!--Device-MediaType-MEDIA_TYPE_ATTACHMENT = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -42,99 +42,9 @@ MEDIA_TYPE_AUD = 0
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-MediaType-MEDIA_TYPE_AUD = 0--><!--Device-MediaType-MEDIA_TYPE_AUD = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MEDIA_TYPE_VID
-
-```TypeScript
-MEDIA_TYPE_VID = 1
-```
-
-表示视频。
-
-**原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MediaType-MEDIA_TYPE_VID = 1--><!--Device-MediaType-MEDIA_TYPE_VID = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MEDIA_TYPE_SUBTITLE
-
-```TypeScript
-MEDIA_TYPE_SUBTITLE = 2
-```
-
-表示字幕。
-
-**原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-MediaType-MEDIA_TYPE_SUBTITLE = 2--><!--Device-MediaType-MEDIA_TYPE_SUBTITLE = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MEDIA_TYPE_ATTACHMENT
-
-```TypeScript
-MEDIA_TYPE_ATTACHMENT = 3
-```
-
-表示附件信息（如嵌入的外部文件）。
-
-**原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 20
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-MediaType-MEDIA_TYPE_ATTACHMENT = 3--><!--Device-MediaType-MEDIA_TYPE_ATTACHMENT = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MEDIA_TYPE_DATA
-
-```TypeScript
-MEDIA_TYPE_DATA = 4
-```
-
-表示数据。
-
-**原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 20
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-MediaType-MEDIA_TYPE_DATA = 4--><!--Device-MediaType-MEDIA_TYPE_DATA = 4-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MEDIA_TYPE_TIMED_METADATA
-
-```TypeScript
-MEDIA_TYPE_TIMED_METADATA = 5
-```
-
-表示带时间戳的元数据。
-
-**原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 20
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-MediaType-MEDIA_TYPE_TIMED_METADATA = 5--><!--Device-MediaType-MEDIA_TYPE_TIMED_METADATA = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -150,8 +60,98 @@ MEDIA_TYPE_AUXILIARY = 6
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-MediaType-MEDIA_TYPE_AUXILIARY = 6--><!--Device-MediaType-MEDIA_TYPE_AUXILIARY = 6-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MEDIA_TYPE_DATA
+
+```TypeScript
+MEDIA_TYPE_DATA = 4
+```
+
+表示数据。
+
+**原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaType-MEDIA_TYPE_DATA = 4--><!--Device-MediaType-MEDIA_TYPE_DATA = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MEDIA_TYPE_SUBTITLE
+
+```TypeScript
+MEDIA_TYPE_SUBTITLE = 2
+```
+
+表示字幕。
+
+**原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaType-MEDIA_TYPE_SUBTITLE = 2--><!--Device-MediaType-MEDIA_TYPE_SUBTITLE = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MEDIA_TYPE_TIMED_METADATA
+
+```TypeScript
+MEDIA_TYPE_TIMED_METADATA = 5
+```
+
+表示带时间戳的元数据。
+
+**原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaType-MEDIA_TYPE_TIMED_METADATA = 5--><!--Device-MediaType-MEDIA_TYPE_TIMED_METADATA = 5-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MEDIA_TYPE_UNSUPPORTED
+
+```TypeScript
+MEDIA_TYPE_UNSUPPORTED = -1
+```
+
+表示未支持的类型。
+
+**原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaType-MEDIA_TYPE_UNSUPPORTED = -1--><!--Device-MediaType-MEDIA_TYPE_UNSUPPORTED = -1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MEDIA_TYPE_VID
+
+```TypeScript
+MEDIA_TYPE_VID = 1
+```
+
+表示视频。
+
+**原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaType-MEDIA_TYPE_VID = 1--><!--Device-MediaType-MEDIA_TYPE_VID = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

@@ -50,6 +50,7 @@ Creates a calendar picker.
 | Name | Description |
 | --- | --- |
 | [CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md) | Enumerates alignment types. |
+| [CalendarFirstDayOfWeek](arkts-arkui-calendarpicker-comp-calendarfirstdayofweek-e.md) | Enumerates the first day of the week for the calendar picker. |
 
 ## Examples
 

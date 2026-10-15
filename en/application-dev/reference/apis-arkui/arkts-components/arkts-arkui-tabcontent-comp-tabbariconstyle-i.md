@@ -4,7 +4,7 @@
 declare interface TabBarIconStyle
 ```
 
-Represents a label icon style object.
+Represents a tab bar icon style object.
 
 **Since:** 12
 
@@ -18,7 +18,7 @@ Represents a label icon style object.
 selectedColor?: ResourceColor
 ```
 
-Color of the label icon when it is selected.
+Color of the icon when it is selected.
 
 Default value: **#FF007DFF**
 
@@ -46,7 +46,7 @@ This attribute only applies to an SVG image. Once set, the fill color will repla
 unselectedColor?: ResourceColor
 ```
 
-Color of the label icon when it is not selected.
+Color of the icon when it is not selected.
 
 Default value: **#33182431**
 

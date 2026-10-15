@@ -28,7 +28,7 @@ Obtains the preferred language of an application.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getAppPreferredLanguage(): string--><!--Device-System-static getAppPreferredLanguage(): string-End-->
 
@@ -58,7 +58,7 @@ Obtains the country/region display name in the specified language.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string--><!--Device-System-static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string-End-->
 
@@ -109,7 +109,7 @@ Obtains the language display name in the specified language.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-System-static getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string--><!--Device-System-static getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string-End-->
 
@@ -161,7 +161,7 @@ Obtains the first day of a week in the system settings.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-System-static getFirstDayOfWeek(): WeekDay--><!--Device-System-static getFirstDayOfWeek(): WeekDay-End-->
 
@@ -191,7 +191,7 @@ Obtains the first language in the preferred language list.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getFirstPreferredLanguage(): string--><!--Device-System-static getFirstPreferredLanguage(): string-End-->
 
@@ -221,7 +221,7 @@ Obtains the list of preferred languages.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getPreferredLanguageList(): Array<string>--><!--Device-System-static getPreferredLanguageList(): Array<string>-End-->
 
@@ -251,7 +251,7 @@ Obtains the simplified representation of a language. For example, the simplified
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-System-static getSimplifiedLanguage(language?: string): string--><!--Device-System-static getSimplifiedLanguage(language?: string): string-End-->
 
@@ -303,7 +303,7 @@ Obtains the list of countries/regions supported for the specified language.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getSystemCountries(language: string): Array<string>--><!--Device-System-static getSystemCountries(language: string): Array<string>-End-->
 
@@ -353,9 +353,9 @@ Obtains the current system language. To listen for system language changes, enab
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 11.
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
 <!--Device-System-static getSystemLanguage(): string--><!--Device-System-static getSystemLanguage(): string-End-->
 
@@ -385,7 +385,7 @@ Obtains the list of system languages. Since API version 11, this API is supporte
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getSystemLanguages(): Array<string>--><!--Device-System-static getSystemLanguages(): Array<string>-End-->
 
@@ -416,7 +416,7 @@ Obtains the current system locale. To listen for system locale changes, enable l
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-System-static getSystemLocaleInstance(): Intl.Locale--><!--Device-System-static getSystemLocaleInstance(): Intl.Locale-End-->
 
@@ -446,7 +446,7 @@ Obtains the current system country/region. To listen for system region changes, 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getSystemRegion(): string--><!--Device-System-static getSystemRegion(): string-End-->
 
@@ -476,7 +476,7 @@ Obtains the name of a temperature unit.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-System-static getTemperatureName(type: TemperatureType): string--><!--Device-System-static getTemperatureName(type: TemperatureType): string-End-->
 
@@ -525,7 +525,7 @@ Obtains the temperature unit of the system.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-System-static getTemperatureType(): TemperatureType--><!--Device-System-static getTemperatureType(): TemperatureType-End-->
 
@@ -555,7 +555,7 @@ Checks whether use of local digits is enabled.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static getUsingLocalDigit(): boolean--><!--Device-System-static getUsingLocalDigit(): boolean-End-->
 
@@ -585,9 +585,9 @@ Checks whether the 24-hour clock is used. To listen for system time format chang
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 11.
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
 <!--Device-System-static is24HourClock(): boolean--><!--Device-System-static is24HourClock(): boolean-End-->
 
@@ -617,7 +617,7 @@ Checks whether a language is a suggested language in the specified region. It ca
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static isSuggested(language: string, region?: string): boolean--><!--Device-System-static isSuggested(language: string, region?: string): boolean-End-->
 
@@ -668,7 +668,7 @@ Sets the preferred language of the application. Resources are loaded in the pref
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-System-static setAppPreferredLanguage(language: string): void--><!--Device-System-static setAppPreferredLanguage(language: string): void-End-->
 

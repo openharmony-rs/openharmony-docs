@@ -28,7 +28,7 @@ Defines a listener for progress data changes. If the default progress indicator 
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-progressListener?: ProgressListener--><!--Device-GetDataParams-progressListener?: ProgressListener-End-->
 
@@ -48,7 +48,7 @@ Destination path for copying files. If file processing is not supported, this pa
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-destUri?: string--><!--Device-GetDataParams-destUri?: string-End-->
 
@@ -68,7 +68,7 @@ File conflict options for a paste task. The default value is **OVERWRITE**.
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions--><!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions-End-->
 
@@ -86,7 +86,7 @@ Progress indicator options. You can choose whether to use the default progress i
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-progressIndicator: ProgressIndicator--><!--Device-GetDataParams-progressIndicator: ProgressIndicator-End-->
 
@@ -106,7 +106,7 @@ Function for canceling the paste task. This parameter is valid only when [Progre
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-GetDataParams-progressSignal?: ProgressSignal--><!--Device-GetDataParams-progressSignal?: ProgressSignal-End-->
 

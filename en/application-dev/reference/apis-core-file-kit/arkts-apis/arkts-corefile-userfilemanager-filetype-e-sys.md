@@ -18,6 +18,26 @@ Enumerates media file types.
 
 **System API:** This is a system API.
 
+## AUDIO
+
+```TypeScript
+AUDIO = 3
+```
+
+Audio.
+
+**Since:** 9
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-FileType-AUDIO = 3--><!--Device-FileType-AUDIO = 3-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
 ## IMAGE
 
 ```TypeScript
@@ -53,26 +73,6 @@ Video.
 **Substitutes:** [VIDEO](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-phototype-e.md#video)
 
 <!--Device-FileType-VIDEO = 2--><!--Device-FileType-VIDEO = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
-## AUDIO
-
-```TypeScript
-AUDIO = 3
-```
-
-Audio.
-
-**Since:** 9
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
-
-<!--Device-FileType-AUDIO = 3--><!--Device-FileType-AUDIO = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

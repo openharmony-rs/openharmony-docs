@@ -6,6 +6,8 @@
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="tracebyvalue1"></a>
+
 ## traceByValue
 
 ```TypeScript
@@ -18,7 +20,7 @@ function traceByValue(name: string, count: number): void
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-hiTraceMeter-function traceByValue(name: string, count: long): void--><!--Device-hiTraceMeter-function traceByValue(name: string, count: long): void-End-->
 
@@ -42,7 +44,7 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);  // 当myTestCount发生�
 ```
 
 
-<a id="tracebyvalue-1"></a>
+<a id="tracebyvalue2"></a>
 
 ## traceByValue
 
@@ -54,7 +56,7 @@ function traceByValue(level: HiTraceOutputLevel, name: string, count: number): v
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-hiTraceMeter-function traceByValue(level: HiTraceOutputLevel, name: string, count: long): void--><!--Device-hiTraceMeter-function traceByValue(level: HiTraceOutputLevel, name: string, count: long): void-End-->
 

@@ -6,6 +6,8 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="getenterpriseinfo1"></a>
+
 ## getEnterpriseInfo
 
 ```TypeScript
@@ -37,8 +39,9 @@ function getEnterpriseInfo(admin: Want, callback: AsyncCallback<EnterpriseInfo>)
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,8 +63,10 @@ adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getenterpriseinfo-1"></a>
+
+<a id="getenterpriseinfo2"></a>
 
 ## getEnterpriseInfo
 
@@ -99,8 +104,9 @@ function getEnterpriseInfo(admin: Want): Promise<EnterpriseInfo>
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -120,3 +126,5 @@ adminManager.getEnterpriseInfo(wantTemp).then((result) => {
   console.error(`Failed to get enterprise info. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

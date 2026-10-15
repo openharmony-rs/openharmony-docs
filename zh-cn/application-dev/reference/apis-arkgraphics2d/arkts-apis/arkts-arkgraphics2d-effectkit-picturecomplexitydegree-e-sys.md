@@ -14,17 +14,17 @@ enum PictureComplexityDegree
 
 **系统接口：** 此接口为系统接口。
 
-## UNKNOWN_COMPLEXITY_DEGREE_PICTURE
+## MODERATE_COMPLEXITY_PICTURE
 
 ```TypeScript
-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0
+MODERATE_COMPLEXITY_PICTURE = 2
 ```
 
-默认值，图片内容复杂度未知。
+图片内容复杂度为一般。
 
 **起始版本：** 22
 
-<!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0--><!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0-End-->
+<!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2--><!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -46,17 +46,17 @@ PURE_PICTURE = 1
 
 **系统接口：** 此接口为系统接口。
 
-## MODERATE_COMPLEXITY_PICTURE
+## UNKNOWN_COMPLEXITY_DEGREE_PICTURE
 
 ```TypeScript
-MODERATE_COMPLEXITY_PICTURE = 2
+UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0
 ```
 
-图片内容复杂度为一般。
+默认值，图片内容复杂度未知。
 
 **起始版本：** 22
 
-<!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2--><!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2-End-->
+<!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0--><!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

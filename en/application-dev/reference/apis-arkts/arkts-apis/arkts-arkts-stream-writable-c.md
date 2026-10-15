@@ -28,7 +28,7 @@ A constructor used to create a **Writable** object.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-constructor()--><!--Device-Writable-constructor()-End-->
 
@@ -50,7 +50,7 @@ Forces subsequent writes to be buffered. This API is called to optimize the perf
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-cork(): boolean--><!--Device-Writable-cork(): boolean-End-->
 
@@ -90,7 +90,7 @@ You need to implement this API but do not call it directly. It is automatically 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-doInitialize(callback: Function): void--><!--Device-Writable-doInitialize(callback: Function): void-End-->
 
@@ -129,7 +129,7 @@ A data write API. You need to implement this API but do not call it directly. Th
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void--><!--Device-Writable-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void-End-->
 
@@ -171,7 +171,7 @@ A batch data write API. You need to implement this API but do not call it direct
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-doWritev(chunks: string[] | Uint8Array[], callback: Function): void--><!--Device-Writable-doWritev(chunks: string[] | Uint8Array[], callback: Function): void-End-->
 
@@ -217,7 +217,7 @@ Ends the writing process in a writable stream. If the value of **writableCorked*
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable--><!--Device-Writable-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable-End-->
 
@@ -371,7 +371,7 @@ Sets the default encoding format for the writable stream.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-setDefaultEncoding(encoding?: string): boolean--><!--Device-Writable-setDefaultEncoding(encoding?: string): boolean-End-->
 
@@ -417,7 +417,7 @@ Releases the cork state, flushing the buffered data and writing it to the target
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-uncork(): boolean--><!--Device-Writable-uncork(): boolean-End-->
 
@@ -463,7 +463,7 @@ Writes data to the buffer of the stream. This API uses an asynchronous callback 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean--><!--Device-Writable-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean-End-->
 
@@ -521,7 +521,7 @@ Is true if it is safe to call writable.write(), which means the stream has not b
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-get writable(): boolean--><!--Device-Writable-get writable(): boolean-End-->
 
@@ -539,7 +539,7 @@ Number of times writable.uncork() needs to be called in order to fully uncork th
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-get writableCorked(): int--><!--Device-Writable-get writableCorked(): int-End-->
 
@@ -557,7 +557,7 @@ Whether Writable.end has been called.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-get writableEnded(): boolean--><!--Device-Writable-get writableEnded(): boolean-End-->
 
@@ -575,7 +575,7 @@ Whether Writable.end has been called and all buffers have been flushed.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-get writableFinished(): boolean--><!--Device-Writable-get writableFinished(): boolean-End-->
 
@@ -593,7 +593,7 @@ Value of highWatermark.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-get writableHighWatermark(): int--><!--Device-Writable-get writableHighWatermark(): int-End-->
 
@@ -611,7 +611,7 @@ Size of data that can be flushed, in bytes or objects.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-get writableLength(): int--><!--Device-Writable-get writableLength(): int-End-->
 
@@ -629,7 +629,7 @@ Returns boolean indicating whether it is in ObjectMode.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Writable-get writableObjectMode(): boolean--><!--Device-Writable-get writableObjectMode(): boolean-End-->
 

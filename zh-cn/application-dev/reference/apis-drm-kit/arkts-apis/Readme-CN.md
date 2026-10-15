@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-drmkit-->
 
-- [@ohos.multimedia.drm](arkts-drm-multimedia-drm.md)
+- [@ohos.multimedia.drm（数字版权保护）](arkts-drm-multimedia-drm.md)
   - [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md)
   - [getMediaKeySystems](arkts-drm-drm-getmediakeysystems-f.md)
   - [getMediaKeySystemUuid](arkts-drm-drm-getmediakeysystemuuid-f.md)

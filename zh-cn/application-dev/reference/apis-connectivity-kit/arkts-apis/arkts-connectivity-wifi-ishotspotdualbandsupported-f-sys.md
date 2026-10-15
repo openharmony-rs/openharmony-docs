@@ -34,6 +34,7 @@ function isHotspotDualBandSupported(): boolean
 | --- | --- |
 | boolean | true:支持， false:不支持。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

@@ -46,6 +46,7 @@ Adds the authorization for the app to access the serial port. This function asso
 | [35700002](../errorcode-busmanager-serial.md#35700002-parameter-error) | Invalid parameter. |
 | [35700008](../errorcode-busmanager-serial.md#35700008-permission-denied) | Permission denied. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,3 +61,5 @@ serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.error(`Failed to addPortAuthorization. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

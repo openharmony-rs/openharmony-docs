@@ -1,12 +1,10 @@
 # StepperItem
 
-The **StepperItem** component represents a page component used within a Stepper container.
+The **StepperItem** component represents a page component used within a [Stepper](arkts-arkui-stepper-comp-attribute.md#stepperattribute) container.
 
 > **NOTE:** 
-
-> - This component is supported since API version 8 and deprecated since API version 22. You are advised to use Swiper instead.
-
-> Updates will be marked with a superscript to indicate their
+> 
+> - This component is supported since API version 8 and deprecated since API version 22. You are advised to use [Swiper](arkts-arkui-swiper-comp.md) instead.
 
 ## Child Components
 
@@ -18,9 +16,12 @@ This component supports only one child component.
 StepperItem()
 ```
 
-Creates a page component for the Stepper container.
+Creates a page component for the [Stepper](arkts-arkui-stepper-comp-attribute.md#stepperattribute) container.
 
 > **NOTE:** 
+> 
+> This component is supported since API version 8 and deprecated since API version 22. You are advised to use
+> [Swiper](arkts-arkui-swiper-comp.md) instead.
 
 **Since:** 8
 

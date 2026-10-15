@@ -30,24 +30,6 @@ Date only.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TIME
-
-```TypeScript
-TIME = 1
-```
-
-Time only.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-DisplayMode-TIME = 1--><!--Device-DisplayMode-TIME = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## DATE_TIME
 
 ```TypeScript
@@ -63,5 +45,23 @@ Both date and time.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-DisplayMode-DATE_TIME = 2--><!--Device-DisplayMode-DATE_TIME = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TIME
+
+```TypeScript
+TIME = 1
+```
+
+Time only.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DisplayMode-TIME = 1--><!--Device-DisplayMode-TIME = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

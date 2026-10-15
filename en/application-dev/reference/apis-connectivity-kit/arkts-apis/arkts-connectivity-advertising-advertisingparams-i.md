@@ -32,6 +32,8 @@ Advertising data packet.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-AdvertisingParams-advertisingData: AdvertisingData--><!--Device-AdvertisingParams-advertisingData: AdvertisingData-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ Advertising settings.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-AdvertisingParams-advertisingSettings: AdvertisingSettings--><!--Device-AdvertisingParams-advertisingSettings: AdvertisingSettings-End-->
 

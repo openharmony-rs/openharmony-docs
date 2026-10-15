@@ -36,7 +36,7 @@ Changes the file owner based on the file descriptor. This API uses a promise to 
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
-<a id="fchown-1"></a>
+<a id="fchown2"></a>
 
 ## fchown
 

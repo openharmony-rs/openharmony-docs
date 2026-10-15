@@ -12,7 +12,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 function off(type: 'vibratorStateChange', callback?: Callback<VibratorStatusEvent>): void
 ```
 
-注销马达上线或下线事件的回调函数。当开发者不再需要监听马达上下线状态变化时使用此接口注销回调。传入callback时注销指定回调；不传callback时注销该类型下所有已注册的回调。注销成功后，不再触发对应的回调函数。若传入的callback未注册过，注销操作无效但不会报错。需先通过[vibrator.on](arkts-sensorservice-vibrator-on-f.md#onvibratorstatechange)注册回调后才能注销。同一type重复注册同一callback不会覆盖，需先off再on。
+注销马达上线或下线事件的回调函数。当开发者不再需要监听马达上下线状态变化时使用此接口注销回调。传入callback时注销指定回调；不传callback时注销该类型下所有已注册的回调。注销成功后，不再触发对应的回调函数。若传入的callback未注册过，注销操作无效但不会报错。需先通过vibrator.on注册回调后才能注销。同一type重复注册同一callback不会覆盖，需先off再on。
 
 **起始版本：** 19
 

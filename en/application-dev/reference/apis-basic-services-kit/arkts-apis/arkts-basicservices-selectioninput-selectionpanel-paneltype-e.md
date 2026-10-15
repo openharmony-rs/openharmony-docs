@@ -12,22 +12,6 @@ Enumerates the word selection panel types, which defines the two-level architect
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-## MENU_PANEL
-
-```TypeScript
-MENU_PANEL = 1
-```
-
-Menu panel, which serves as the level-1 panel to display the functions that the current app can provide, such as translation and search.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PanelType-MENU_PANEL = 1--><!--Device-PanelType-MENU_PANEL = 1-End-->
-
-**System capability:** SystemCapability.SelectionInput.Selection
-
 ## MAIN_PANEL
 
 ```TypeScript
@@ -41,5 +25,21 @@ Main panel, which serves as the level-2 panel and is displayed when a user taps 
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PanelType-MAIN_PANEL = 2--><!--Device-PanelType-MAIN_PANEL = 2-End-->
+
+**System capability:** SystemCapability.SelectionInput.Selection
+
+## MENU_PANEL
+
+```TypeScript
+MENU_PANEL = 1
+```
+
+Menu panel, which serves as the level-1 panel to display the functions that the current app can provide, such as translation and search.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanelType-MENU_PANEL = 1--><!--Device-PanelType-MENU_PANEL = 1-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection

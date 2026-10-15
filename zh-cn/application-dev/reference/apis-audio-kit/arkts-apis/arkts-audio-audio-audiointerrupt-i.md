@@ -40,7 +40,7 @@ contentType: ContentType
 
 **废弃版本：** 9
 
-**替代接口：** rendererInfo
+**替代接口：** [rendererInfo](arkts-audio-audio-audiorendereroptions-i.md#rendererinfo)
 
 <!--Device-AudioInterrupt-contentType: ContentType--><!--Device-AudioInterrupt-contentType: ContentType-End-->
 
@@ -80,7 +80,7 @@ streamUsage: StreamUsage
 
 **废弃版本：** 9
 
-**替代接口：** rendererInfo
+**替代接口：** [rendererInfo](arkts-audio-audio-audiorendereroptions-i.md#rendererinfo)
 
 <!--Device-AudioInterrupt-streamUsage: StreamUsage--><!--Device-AudioInterrupt-streamUsage: StreamUsage-End-->
 

@@ -6,6 +6,8 @@ export type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo
 
 Defines the ability information of the module.
 
+**Type:** [_PackInfo.ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md)
+
 **Since:** 9
 
 <!--Device-freeInstall-export type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo--><!--Device-freeInstall-export type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo-End-->
@@ -13,5 +15,3 @@ Defines the ability information of the module.
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
-
-**Type:** [_PackInfo.ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md)

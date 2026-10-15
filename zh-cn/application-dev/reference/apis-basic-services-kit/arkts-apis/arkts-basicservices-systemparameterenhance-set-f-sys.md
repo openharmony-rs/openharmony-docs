@@ -6,6 +6,8 @@
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 ```
 
+<a id="set1"></a>
+
 ## set
 
 ```TypeScript
@@ -39,6 +41,7 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 | [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="set-1"></a>
+
+<a id="set2"></a>
 
 ## set
 
@@ -98,6 +103,7 @@ function set(key: string, value: string): Promise<void>
 | [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,3 +120,5 @@ try {
   console.error('set unexpected error: ' + e);
 }
 ```
+
+<!--DelEnd-->

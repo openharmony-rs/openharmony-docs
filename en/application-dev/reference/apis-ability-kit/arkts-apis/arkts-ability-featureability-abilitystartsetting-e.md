@@ -30,22 +30,6 @@ Ability window size.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## WINDOW_MODE_KEY
-
-```TypeScript
-WINDOW_MODE_KEY = 'windowMode'
-```
-
-Ability window display mode.
-
-**Since:** 7
-
-**Model restriction:** This API can be used only in the FA model.
-
-<!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'--><!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
-
 ## DISPLAY_ID_KEY
 
 ```TypeScript
@@ -59,5 +43,21 @@ Display device ID.
 **Model restriction:** This API can be used only in the FA model.
 
 <!--Device-AbilityStartSetting-DISPLAY_ID_KEY = 'displayId'--><!--Device-AbilityStartSetting-DISPLAY_ID_KEY = 'displayId'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
+
+## WINDOW_MODE_KEY
+
+```TypeScript
+WINDOW_MODE_KEY = 'windowMode'
+```
+
+Ability window display mode.
+
+**Since:** 7
+
+**Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'--><!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel

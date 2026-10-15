@@ -12,7 +12,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 function getSystemTrustedCertificateList(): Promise<CMResult>
 ```
 
-获取系统信任的CA证书列表，仅证书管理应用调用。使用Promise异步回调。
+获取系统信任的CA证书列表。该接口仅由证书管理应用调用。该接口使用Promise返回结果。
 
 **起始版本：** 26.0.0
 
@@ -30,7 +30,7 @@ function getSystemTrustedCertificateList(): Promise<CMResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)&gt; | Promise对象，返回获取系统信任CA证书列表的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的certList属性。 |
+| Promise&lt;[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)&gt; | Promise用于返回操作结果，即[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的**certList**。 |
 
 **错误码：**
 
@@ -40,6 +40,7 @@ function getSystemTrustedCertificateList(): Promise<CMResult>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   console.error(`Failed to get system trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

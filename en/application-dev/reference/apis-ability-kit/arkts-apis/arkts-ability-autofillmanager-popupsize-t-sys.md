@@ -6,6 +6,8 @@ export type PopupSize = _AutoFillPopupConfig.PopupSize
 
 Defines the width and height of an auto-fill pop-up.
 
+**Type:** [_AutoFillPopupConfig.PopupSize](arkts-ability-autofillpopupconfig-popupsize-i-sys.md)
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the width and height of an auto-fill pop-up.
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
-
-**Type:** [_AutoFillPopupConfig.PopupSize](arkts-ability-autofillpopupconfig-popupsize-i-sys.md)

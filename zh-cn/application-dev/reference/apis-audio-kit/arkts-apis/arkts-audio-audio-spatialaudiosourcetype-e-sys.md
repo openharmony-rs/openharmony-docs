@@ -14,24 +14,6 @@ enum SpatialAudioSourceType
 
 **系统接口：** 此接口为系统接口。
 
-## SPATIAL_AUDIO_SOURCE_TYPE_STEREO
-
-```TypeScript
-SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0
-```
-
-立体声源类型。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0--><!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
 ## SPATIAL_AUDIO_SOURCE_TYPE_AUDIO_VIVID
 
 ```TypeScript
@@ -63,6 +45,24 @@ SPATIAL_AUDIO_SOURCE_TYPE_MULTI_CHANNEL = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_MULTI_CHANNEL = 2--><!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_MULTI_CHANNEL = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
+## SPATIAL_AUDIO_SOURCE_TYPE_STEREO
+
+```TypeScript
+SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0
+```
+
+立体声源类型。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0--><!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 

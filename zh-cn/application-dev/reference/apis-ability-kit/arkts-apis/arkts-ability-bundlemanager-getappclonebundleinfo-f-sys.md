@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number, userId?: number): Promise<BundleInfo>
 ```
 
-根据bundleName、分身索引、[bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md)以及用户ID查询主应用或分身应用的BundleInfo。使用Promise异步回调。
+根据bundleName、分身索引、[bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md)以及用户ID查询主应用或分身应用或沙箱应用的BundleInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -31,7 +31,7 @@ function getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
-| appIndex | number | 是 | 表示要查询的分身应用索引。<br>appIndex为0时，表示查询主应用信息。appIndex大于0时，表示查询指定分身应用信息。 |
+| appIndex | number | 是 | 应用索引，用于标识不同的应用实例。取值为整数。<br>取值范围：<br>- 0：主应用<br> - [1, 5]：分身应用<br>- [2000, 3000]：沙箱应用（API版本26.0.0支持） |
 | bundleFlags | number | 是 | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
 | userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
@@ -53,6 +53,7 @@ function getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -76,3 +77,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAppCloneBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

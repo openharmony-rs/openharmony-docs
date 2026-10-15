@@ -28,9 +28,9 @@ Clears the font typesetting cache. The font typesetting cache has a memory limit
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-FontCollection-clearCaches(): void--><!--Device-FontCollection-clearCaches(): void-End-->
 
@@ -64,7 +64,7 @@ Obtains a global **FontCollection** instance.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontCollection-static getGlobalInstance(): FontCollection--><!--Device-FontCollection-static getGlobalInstance(): FontCollection-End-->
 
@@ -109,9 +109,9 @@ Obtains the local **FontCollection** instance. This API is recommended for widge
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-FontCollection-static getLocalInstance(): FontCollection--><!--Device-FontCollection-static getLocalInstance(): FontCollection-End-->
 
@@ -121,7 +121,7 @@ Obtains the local **FontCollection** instance. This API is recommended for widge
 
 | Type | Description |
 | --- | --- |
-| [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | Local FontCollection instance object, recommended for widget scenarios. It can be used to manage font loading, unloading, and typesetting operations. @static |
+| [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | Local FontCollection instance object, recommended for widget scenarios. It can be used to manage font loading, unloading, and typesetting operations. |
 
 **Examples**
 
@@ -140,9 +140,9 @@ Loads the custom font. This API uses a promise to return the result. In this API
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-FontCollection-loadFont(name: string, path: string | Resource): Promise<void>--><!--Device-FontCollection-loadFont(name: string, path: string | Resource): Promise<void>-End-->
 
@@ -153,7 +153,7 @@ Loads the custom font. This API uses a promise to return the result. In this API
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the font. Any string is acceptable. |
-| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to be loaded. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the**resources/rawfile** directory in the project, which includes the font file name). |
+| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Path of the font file to be loaded. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the**resources/rawfile** directory in the project, which includes the font file name). |
 
 **Return value:**
 
@@ -165,7 +165,7 @@ Loads the custom font. This API uses a promise to return the result. In this API
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -204,9 +204,9 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-FontCollection-loadFontSync(name: string, path: string | Resource): void--><!--Device-FontCollection-loadFontSync(name: string, path: string | Resource): void-End-->
 
@@ -217,7 +217,7 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the font to be called after the font is loaded. |
-| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to be imported. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the**resources/rawfile** directory in the project, which includes the font file name). |
+| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Path of the font file to be imported. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the**resources/rawfile** directory in the project, which includes the font file name). |
 
 **Examples**
 
@@ -265,9 +265,9 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-FontCollection-loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void--><!--Device-FontCollection-loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void-End-->
 
@@ -278,7 +278,7 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the font. Any string is acceptable. |
-| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to load. Two formats are supported: "file:// + absolute path of the font file" or $rawfile('font file path'). |
+| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Path of the font file to load. Two formats are supported: "file:// + absolute path of the font file" or $rawfile('font file path'). |
 | index | number | No | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**. |
 
 **Error codes:**
@@ -342,9 +342,9 @@ Loads a custom font. This API uses a promise to return the result. In this API, 
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-FontCollection-loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>--><!--Device-FontCollection-loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>-End-->
 
@@ -355,7 +355,7 @@ Loads a custom font. This API uses a promise to return the result. In this API, 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the font. Any string is acceptable. |
-| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to load. Two formats are supported: "file:// + absolute path of the font file" or $rawfile('font file path'). |
+| path | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Path of the font file to load. Two formats are supported: "file:// + absolute path of the font file" or $rawfile('font file path'). |
 | index | number | No | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**. |
 
 **Return value:**
@@ -431,7 +431,7 @@ Sets whether to enable the typesetting paragraph caching. Typesetting paragraph 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-FontCollection-setParagraphCachesEnabled(enable: boolean): void--><!--Device-FontCollection-setParagraphCachesEnabled(enable: boolean): void-End-->
 
@@ -483,9 +483,9 @@ missing glyphs).
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-FontCollection-unloadFont(name: string): Promise<void>--><!--Device-FontCollection-unloadFont(name: string): Promise<void>-End-->
 
@@ -554,9 +554,9 @@ missing glyphs).
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-FontCollection-unloadFontSync(name: string): void--><!--Device-FontCollection-unloadFontSync(name: string): void-End-->
 

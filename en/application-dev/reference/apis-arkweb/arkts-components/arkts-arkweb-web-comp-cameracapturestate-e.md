@@ -12,6 +12,20 @@ Defines the camera capture states, which identify the current working status of 
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## ACTIVE
+
+```TypeScript
+ACTIVE = 2
+```
+
+The camera is active.
+
+**Since:** 23
+
+<!--Device-CameraCaptureState-ACTIVE = 2--><!--Device-CameraCaptureState-ACTIVE = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## NONE
 
 ```TypeScript
@@ -37,19 +51,5 @@ The camera is paused.
 **Since:** 23
 
 <!--Device-CameraCaptureState-PAUSED = 1--><!--Device-CameraCaptureState-PAUSED = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## ACTIVE
-
-```TypeScript
-ACTIVE = 2
-```
-
-The camera is active.
-
-**Since:** 23
-
-<!--Device-CameraCaptureState-ACTIVE = 2--><!--Device-CameraCaptureState-ACTIVE = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

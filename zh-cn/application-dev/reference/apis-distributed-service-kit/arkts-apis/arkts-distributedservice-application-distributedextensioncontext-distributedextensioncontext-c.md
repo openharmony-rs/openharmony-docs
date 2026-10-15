@@ -26,7 +26,7 @@ import { DistributedExtensionContext } from '@kit.DistributedServiceKit';
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 ```
 
-将当前DistributedExtensionAbility连接到远端（其他设备上的）ServiceExtensionAbility，建立连接后通过onConnect回调返回的[rpc.IRemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md)代理与远端ServiceExtensionAbility进行跨设备IPC通信，以使用其对外提供的能力。适用于多设备限定协同场景，例如在当前设备上调用其他设备的后台服务能力。使用时，开发者首先通过Want中的deviceId指定目标设备、bundleName和abilityName指定目标ServiceExtensionAbility，并构造[ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md)实现onConnect、onDisconnect、onFailed三个回调分别处理连接成功、连接断开和连接失败状态；随后调用connectServiceExtensionAbility发起连接并获取返回的连接ID，连接成功后在onConnect回调中拿到IRemoteObject代理对象，基于该代理与远端ServiceExtensionAbility进行IPC通信；使用完毕后需调用[disconnectServiceExtensionAbility](#disconnectserviceextensionability)断开连接并释放资源。
+将当前DistributedExtensionAbility连接到远端（其他设备上的）ServiceExtensionAbility，建立连接后通过onConnect回调返回的[rpc.IRemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md)代理与远端ServiceExtensionAbility进行跨设备IPC通信，以使用其对外提供的能力。适用于多设备限定协同场景，例如在当前设备上调用其他设备的后台服务能力。使用时，开发者首先通过Want中的deviceId指定目标设备、bundleName和abilityName指定目标ServiceExtensionAbility，并构造[ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md)实现onConnect、onDisconnect、onFailed三个回调分别处理连接成功、连接断开和连接失败状态；随后调用connectServiceExtensionAbility发起连接并获取返回的连接ID，连接成功后在onConnect回调中拿到IRemoteObject代理对象，基于该代理与远端ServiceExtensionAbility进行IPC通信；使用完毕后需调用[disconnectServiceExtensionAbility](#disconnectserviceextensionability)断开连接并释放资源。
 
 **起始版本：** 26.0.0
 
@@ -41,7 +41,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 传入需要连接的远端ServiceExtensionAbility（服务扩展能力）的Want信息。系统将基于这些信息建立到远端设备的连接。 |
-| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md) | 是 | ConnectOptions类型的配置对象，包含服务连接状态回调。连接成功时触发onConnect，连接断开时触发onDisconnect，连接失败时触发onFailed。 |
+| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md) | 是 | ConnectOptions类型的配置对象，包含服务连接状态回调。连接成功时触发onConnect，连接断开时触发onDisconnect，连接失败时触发onFailed。 |
 
 **返回值：**
 
@@ -53,7 +53,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |

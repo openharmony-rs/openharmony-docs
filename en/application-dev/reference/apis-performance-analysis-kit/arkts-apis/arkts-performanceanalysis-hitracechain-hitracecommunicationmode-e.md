@@ -26,17 +26,17 @@ Default communication.
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
-## THREAD
+## DEVICE
 
 ```TypeScript
-THREAD = 1
+DEVICE = 3
 ```
 
-Inter-thread communication.
+Inter-device communication.
 
 **Since:** 8
 
-<!--Device-HiTraceCommunicationMode-THREAD = 1--><!--Device-HiTraceCommunicationMode-THREAD = 1-End-->
+<!--Device-HiTraceCommunicationMode-DEVICE = 3--><!--Device-HiTraceCommunicationMode-DEVICE = 3-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
@@ -54,16 +54,16 @@ Inter-process communication.
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
-## DEVICE
+## THREAD
 
 ```TypeScript
-DEVICE = 3
+THREAD = 1
 ```
 
-Inter-device communication.
+Inter-thread communication.
 
 **Since:** 8
 
-<!--Device-HiTraceCommunicationMode-DEVICE = 3--><!--Device-HiTraceCommunicationMode-DEVICE = 3-End-->
+<!--Device-HiTraceCommunicationMode-THREAD = 1--><!--Device-HiTraceCommunicationMode-THREAD = 1-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace

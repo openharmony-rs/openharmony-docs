@@ -24,7 +24,7 @@ function getCandidateConfigs(): Array<WifiDeviceConfig>
 - API版本10+：ohos.permission.GET_WIFI_INFO
 - API版本9：ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-wifiManager-function getCandidateConfigs(): Array<WifiDeviceConfig>--><!--Device-wifiManager-function getCandidateConfigs(): Array<WifiDeviceConfig>-End-->
 

@@ -22,7 +22,7 @@ The bundle is an application.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleType-APP = 0--><!--Device-BundleType-APP = 0-End-->
 
@@ -38,7 +38,7 @@ The bundle is an atomic service.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BundleType-ATOMIC_SERVICE = 1--><!--Device-BundleType-ATOMIC_SERVICE = 1-End-->
 

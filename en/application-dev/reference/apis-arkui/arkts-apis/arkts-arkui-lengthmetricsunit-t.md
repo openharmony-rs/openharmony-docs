@@ -6,6 +6,8 @@ declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUn
 
 Defines length metrics unit.
 
+**Type:** import('../api/arkui/Graphics').LengthMetricsUnit
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines length metrics unit.
 <!--Device-unnamed-declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit--><!--Device-unnamed-declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/Graphics').LengthMetricsUnit

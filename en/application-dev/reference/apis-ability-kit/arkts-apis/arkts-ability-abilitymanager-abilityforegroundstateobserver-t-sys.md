@@ -6,6 +6,8 @@ export type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.def
 
 Defines the level-2 module AbilityForegroundStateObserver.
 
+**Type:** _AbilityForegroundStateObserver.default
+
 **Since:** 11
 
 <!--Device-abilityManager-export type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.default--><!--Device-abilityManager-export type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.default-End-->
@@ -13,5 +15,3 @@ Defines the level-2 module AbilityForegroundStateObserver.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _AbilityForegroundStateObserver.default

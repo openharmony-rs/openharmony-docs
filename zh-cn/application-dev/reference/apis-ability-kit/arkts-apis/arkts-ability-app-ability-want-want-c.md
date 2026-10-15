@@ -30,7 +30,7 @@ abilityName?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-abilityName?: string--><!--Device-Want-abilityName?: string-End-->
 
@@ -48,7 +48,7 @@ action?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-action?: string--><!--Device-Want-action?: string-End-->
 
@@ -66,7 +66,7 @@ bundleName?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-bundleName?: string--><!--Device-Want-bundleName?: string-End-->
 
@@ -84,7 +84,7 @@ deviceId?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-deviceId?: string--><!--Device-Want-deviceId?: string-End-->
 
@@ -102,7 +102,7 @@ entities?: Array<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-entities?: Array<string>--><!--Device-Want-entities?: Array<string>-End-->
 
@@ -122,7 +122,7 @@ readonly fds?: Record<string, number>
 
 **起始版本：** 15
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-readonly fds?: Record<string, int>--><!--Device-Want-readonly fds?: Record<string, int>-End-->
 
@@ -142,7 +142,7 @@ flags?: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-flags?: int--><!--Device-Want-flags?: int-End-->
 
@@ -164,7 +164,7 @@ moduleName?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-moduleName?: string--><!--Device-Want-moduleName?: string-End-->
 
@@ -233,7 +233,7 @@ type?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-type?: string--><!--Device-Want-type?: string-End-->
 
@@ -251,7 +251,7 @@ uri?: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Want-uri?: string--><!--Device-Want-uri?: string-End-->
 

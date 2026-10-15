@@ -20,6 +20,8 @@ export interface NetHandle
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="bindsocket1"></a>
+
 ## bindSocket
 
 ```TypeScript
@@ -112,7 +114,7 @@ interface Data {
 })
 ```
 
-<a id="bindsocket-1"></a>
+<a id="bindsocket2"></a>
 
 ## bindSocket
 
@@ -206,6 +208,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
+<a id="getaddressbyname1"></a>
+
 ## getAddressByName
 
 ```TypeScript
@@ -261,7 +265,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-<a id="getaddressbyname-1"></a>
+<a id="getaddressbyname2"></a>
 
 ## getAddressByName
 
@@ -317,6 +321,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   });
 });
 ```
+
+<a id="getaddressesbyname1"></a>
 
 ## getAddressesByName
 
@@ -375,7 +381,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-<a id="getaddressesbyname-1"></a>
+<a id="getaddressesbyname2"></a>
 
 ## getAddressesByName
 
@@ -509,7 +515,7 @@ netId: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-NetHandle-netId: int--><!--Device-NetHandle-netId: int-End-->
 

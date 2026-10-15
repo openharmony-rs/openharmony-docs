@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setsyncnotificationenabledwithoutapp1"></a>
+
 ## setSyncNotificationEnabledWithoutApp
 
 ```TypeScript
@@ -40,13 +42,14 @@ Sets whether to enable the notification sync feature for devices where the appli
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,14 +62,16 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void =>
     if (err) {
         console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSyncNotificationEnabledWithoutApp success");
+        console.info('setSyncNotificationEnabledWithoutApp success');
     }
 }
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="setsyncnotificationenabledwithoutapp-1"></a>
+
+<a id="setsyncnotificationenabledwithoutapp2"></a>
 
 ## setSyncNotificationEnabledWithoutApp
 
@@ -107,13 +112,14 @@ Sets whether to enable the notification sync feature for devices where the appli
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -128,3 +134,5 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
     console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

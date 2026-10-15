@@ -4,7 +4,7 @@
 enum Capability
 ```
 
-CarAwareness Capability.
+Enumerates the capability types supported by car awareness.
 
 **Since:** 26.0.1
 
@@ -12,49 +12,13 @@ CarAwareness Capability.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-## SPATIAL_POINT
-
-```TypeScript
-SPATIAL_POINT = 'SpatialPoint'
-```
-
-spatial point specific capability
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Capability-SPATIAL_POINT = 'SpatialPoint'--><!--Device-Capability-SPATIAL_POINT = 'SpatialPoint'-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
-
-**System API:** This is a system API.
-
-## SPATIAL_GESTURE
-
-```TypeScript
-SPATIAL_GESTURE = 'SpatialGesture'
-```
-
-spatial gesture specific capability
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Capability-SPATIAL_GESTURE = 'SpatialGesture'--><!--Device-Capability-SPATIAL_GESTURE = 'SpatialGesture'-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
-
-**System API:** This is a system API.
-
 ## CAR_STATUS
 
 ```TypeScript
 CAR_STATUS = 'CarStatus'
 ```
 
-car status specific capability
+Car status capability, which supports obtaining vehicle-related status information.
 
 **Since:** 26.0.1
 
@@ -66,19 +30,19 @@ car status specific capability
 
 **System API:** This is a system API.
 
-## CAR_CFG
+## GESTURE_CLOSEDOOR
 
 ```TypeScript
-CAR_CFG = 'CarCfg'
+GESTURE_CLOSEDOOR = 'GestureCloseDoor'
 ```
 
-car config specific capability
+Gesture close door capability, which supports recognizing user's hand action for closing the doors.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-Capability-CAR_CFG = 'CarCfg'--><!--Device-Capability-CAR_CFG = 'CarCfg'-End-->
+<!--Device-Capability-GESTURE_CLOSEDOOR = 'GestureCloseDoor'--><!--Device-Capability-GESTURE_CLOSEDOOR = 'GestureCloseDoor'-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -90,13 +54,85 @@ car config specific capability
 HABIT_RECOMMENDATION = 'HabitRecommendation'
 ```
 
-habit recommendation specific capability
+Habit recommendation capability, which supports generating recommendations based on user habits.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Capability-HABIT_RECOMMENDATION = 'HabitRecommendation'--><!--Device-Capability-HABIT_RECOMMENDATION = 'HabitRecommendation'-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**System API:** This is a system API.
+
+## OCCUPANT_SENSE
+
+```TypeScript
+OCCUPANT_SENSE = 'OccupantSense'
+```
+
+Occupant sense capability, which supports recognizing position and classification of in-car occupants.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Capability-OCCUPANT_SENSE = 'OccupantSense'--><!--Device-Capability-OCCUPANT_SENSE = 'OccupantSense'-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**System API:** This is a system API.
+
+## SPATIAL_DRAW
+
+```TypeScript
+SPATIAL_DRAW = 'SpatialDraw'
+```
+
+Spatial draw capability, which supports identifying the users' air gestures during mid-air drawing.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Capability-SPATIAL_DRAW = 'SpatialDraw'--><!--Device-Capability-SPATIAL_DRAW = 'SpatialDraw'-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**System API:** This is a system API.
+
+## SPATIAL_GESTURE
+
+```TypeScript
+SPATIAL_GESTURE = 'SpatialGesture'
+```
+
+Spatial gesture capability, which supports recognizing the user's specific postures and actions.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Capability-SPATIAL_GESTURE = 'SpatialGesture'--><!--Device-Capability-SPATIAL_GESTURE = 'SpatialGesture'-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**System API:** This is a system API.
+
+## SPATIAL_POINT
+
+```TypeScript
+SPATIAL_POINT = 'SpatialPoint'
+```
+
+Spatial point capability, which supports recognizing the in-car components pointed to by the user.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Capability-SPATIAL_POINT = 'SpatialPoint'--><!--Device-Capability-SPATIAL_POINT = 'SpatialPoint'-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 

@@ -4,7 +4,7 @@
 declare class CalendarController
 ```
 
-Calendar controller.
+日历控制器。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Calendar controller.
 backToToday()
 ```
 
-Back to day.
+回到今天。
 
 **起始版本：** 7
 
@@ -44,7 +44,7 @@ Back to day.
 constructor()
 ```
 
-Constructor.
+构造函数。
 
 **起始版本：** 7
 
@@ -66,7 +66,7 @@ Constructor.
 goTo(value: { year: number; month: number; day: number })
 ```
 
-To the specified element.
+跳转到指定日期。
 
 **起始版本：** 7
 
@@ -86,4 +86,4 @@ To the specified element.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { year: number; month: number; day: number } | 是 |  |
+| value | { year: number; month: number; day: number } | 是 | 跳转的目标日期。<br>year: 目标年份。<br>month: 目标月份。<br>day: 目标日期。 |

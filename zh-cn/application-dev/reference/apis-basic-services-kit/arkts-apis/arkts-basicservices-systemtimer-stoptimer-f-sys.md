@@ -6,6 +6,8 @@
 import { systemTimer } from '@kit.BasicServicesKit';
 ```
 
+<a id="stoptimer1"></a>
+
 ## stopTimer
 
 ```TypeScript
@@ -36,6 +38,7 @@ function stopTimer(timer: number, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,8 +71,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="stoptimer-1"></a>
+
+<a id="stoptimer2"></a>
 
 ## stopTimer
 
@@ -106,6 +111,7 @@ function stopTimer(timer: number): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -135,3 +141,5 @@ try {
   console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

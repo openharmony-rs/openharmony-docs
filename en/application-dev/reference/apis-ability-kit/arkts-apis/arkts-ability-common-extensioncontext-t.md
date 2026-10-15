@@ -6,6 +6,8 @@ export type ExtensionContext = _ExtensionContext.default
 
 Defines the context environment for the [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md). It inherits from Context.
 
+**Type:** _ExtensionContext.default
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the context environment for the [ExtensionAbility](arkts-ability-app-abi
 <!--Device-common-export type ExtensionContext = _ExtensionContext.default--><!--Device-common-export type ExtensionContext = _ExtensionContext.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _ExtensionContext.default

@@ -43,6 +43,7 @@ function makeMirrorWithRegion(mainScreen: number, mirrorScreen: Array<number>, m
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ screen.makeMirrorWithRegion(mainScreenId, mirrorScreenIds, mainScreenRegion).the
   console.error(`Failed to set screen area mirroring. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

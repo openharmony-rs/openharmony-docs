@@ -37,6 +37,7 @@ function getBackupVersion(): string
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ function getBackupVersion() {
 ```TypeScript
 { "backupVersion" : "16.0" }
 ```
+
+<!--DelEnd-->

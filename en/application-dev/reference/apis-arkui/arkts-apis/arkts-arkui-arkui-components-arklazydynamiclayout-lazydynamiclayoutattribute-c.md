@@ -6,9 +6,7 @@ export declare class LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamic
 
 Defines the LazyDynamicLayout attribute functions.
 
-@extends CommonMethod&lt;LazyDynamicLayoutAttribute&gt;
-
-**Inheritance/Implementation:** LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamicLayoutAttribute>
+**Inheritance/Implementation:** LazyDynamicLayoutAttribute extends CommonMethod&lt;LazyDynamicLayoutAttribute&gt;
 
 **Since:** 26.0.0
 
@@ -28,7 +26,7 @@ import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
 onVisibleIndexesChange(callback: Callback<number[]> | undefined): LazyDynamicLayoutAttribute
 ```
 
-Called when visible indexes change.
+Sets the **onVisibleIndexesChange** callback. This callback is triggered when the list of child component indexes in the visible area of **LazyDynamicLayout** changes, and returns the list of child component indexes in the visible area.
 
 **Since:** 26.0.0
 
@@ -44,7 +42,7 @@ Called when visible indexes change.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;number[]&gt; &#124; undefined | Yes | Callback used to return the list of index numbers of visible subcomponents.<br>Passing undefined will unregister the callback. |
+| callback | Callback&lt;number[]&gt; &#124; undefined | Yes | Callback used to return the list of child component indexes in the visible area. When the input parameter is **undefined**, the listener is canceled. |
 
 **Return value:**
 

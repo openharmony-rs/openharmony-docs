@@ -47,6 +47,7 @@ function setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInf
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -79,3 +80,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

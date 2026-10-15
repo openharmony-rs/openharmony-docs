@@ -12,24 +12,6 @@ Enumerates the types of axis actions for axis events.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-No axis event.
-
-**Since:** 17
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 17.
-
-<!--Device-AxisAction-NONE = 0--><!--Device-AxisAction-NONE = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## BEGIN
 
 ```TypeScript
@@ -48,13 +30,13 @@ The axis event begins.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## UPDATE
+## CANCEL
 
 ```TypeScript
-UPDATE = 2
+CANCEL = 4
 ```
 
-The axis event is in progress.
+The axis event is canceled.
 
 **Since:** 17
 
@@ -62,7 +44,7 @@ The axis event is in progress.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
-<!--Device-AxisAction-UPDATE = 2--><!--Device-AxisAction-UPDATE = 2-End-->
+<!--Device-AxisAction-CANCEL = 4--><!--Device-AxisAction-CANCEL = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,13 +66,13 @@ The axis event ends.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CANCEL
+## NONE
 
 ```TypeScript
-CANCEL = 4
+NONE = 0
 ```
 
-The axis event is canceled.
+No axis event.
 
 **Since:** 17
 
@@ -98,6 +80,24 @@ The axis event is canceled.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
-<!--Device-AxisAction-CANCEL = 4--><!--Device-AxisAction-CANCEL = 4-End-->
+<!--Device-AxisAction-NONE = 0--><!--Device-AxisAction-NONE = 0-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## UPDATE
+
+```TypeScript
+UPDATE = 2
+```
+
+The axis event is in progress.
+
+**Since:** 17
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-AxisAction-UPDATE = 2--><!--Device-AxisAction-UPDATE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

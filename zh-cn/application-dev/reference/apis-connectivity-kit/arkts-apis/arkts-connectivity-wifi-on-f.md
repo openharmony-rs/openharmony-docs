@@ -211,7 +211,7 @@ function on(type: 'p2pStateChange', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'p2pStateChange' | 是 | 固定填"p2pStateChange"字符串。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 状态改变回调函数。返回状态值枚举：<br>- 1: 空闲。<br>- 2: 打开中。<br>- 3: 已打开。<br>- 4: 关闭中。&lt;br/ &gt;- 5: 已关闭。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 状态改变回调函数。返回状态值枚举：<br>- 1: 空闲。<br>- 2: 打开中。<br>- 3: 已打开。<br>- 4: 关闭中。<br/ >- 5: 已关闭。 |
 
 
 ## on('p2pConnectionChange')

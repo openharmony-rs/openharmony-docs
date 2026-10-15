@@ -22,7 +22,7 @@ High power consumption mode.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PowerConsumptionScenario-HIGH_POWER_CONSUMPTION = 0x601--><!--Device-PowerConsumptionScenario-HIGH_POWER_CONSUMPTION = 0x601-End-->
 
@@ -38,7 +38,7 @@ Low power consumption mode.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PowerConsumptionScenario-LOW_POWER_CONSUMPTION = 0x602--><!--Device-PowerConsumptionScenario-LOW_POWER_CONSUMPTION = 0x602-End-->
 
@@ -54,7 +54,7 @@ Power saving scenarios.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PowerConsumptionScenario-NO_POWER_CONSUMPTION = 0x603--><!--Device-PowerConsumptionScenario-NO_POWER_CONSUMPTION = 0x603-End-->
 

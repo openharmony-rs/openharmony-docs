@@ -4,10 +4,8 @@ Line组件用于在应用界面中绘制直线，支持自定义直线的起点�
 
 > **说明：** 
 > 
-> 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> updateConstructorParams接口更新构造参数。
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 > 
 > - Line组件无法形成闭合区域，fill和fillOpacity属性设置无效。
 > 
@@ -16,32 +14,6 @@ Line组件用于在应用界面中绘制直线，支持自定义直线的起点�
 ## 子组件
 
 无
-
-## Line
-
-```TypeScript
-Line(options?: LineOptions)
-```
-
-Uses new to create the line. Anonymous Object Rectification.
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LineInterface-new (options?: LineOptions): LineAttribute--><!--Device-LineInterface-new (options?: LineOptions): LineAttribute-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数:**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | [LineOptions](arkts-arkui-line-comp-lineoptions-i.md) | 否 | Line options |
 
 ## Line
 
@@ -60,6 +32,32 @@ Line(options?: LineOptions)
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-LineInterface-(options?: LineOptions): LineAttribute--><!--Device-LineInterface-(options?: LineOptions): LineAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [LineOptions](arkts-arkui-line-comp-lineoptions-i.md) | 否 | Line组件绘制区域，包含width和height属性，用于设置Line组件的宽高。不传递此参数时，Line组件的width和height属性将按照各自属性的缺省逻辑处理（参见LineOptions对象说明）。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+## Line
+
+```TypeScript
+Line(options?: LineOptions)
+```
+
+用于绘制直线的构造函数。Line组件在width和height定义的矩形区域内绘制直线，绘制区域的左上角为坐标原点(0,0)，x轴向右延伸，y轴向下延伸。
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LineInterface-new (options?: LineOptions): LineAttribute--><!--Device-LineInterface-new (options?: LineOptions): LineAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

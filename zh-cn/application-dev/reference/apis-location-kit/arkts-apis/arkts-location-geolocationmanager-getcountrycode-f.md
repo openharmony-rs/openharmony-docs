@@ -6,6 +6,8 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
+<a id="getcountrycode1"></a>
+
 ## getCountryCode
 
 ```TypeScript
@@ -30,7 +32,7 @@ function getCountryCode(callback: AsyncCallback<CountryCode>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call ${geoLocationManager.getCountryCode} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301500](../errorcode-geoLocationManager.md#3301500-区域信息包含国家码查询失败) | Failed to query the area information. |
@@ -55,7 +57,7 @@ try {
 ```
 
 
-<a id="getcountrycode-1"></a>
+<a id="getcountrycode2"></a>
 
 ## getCountryCode
 

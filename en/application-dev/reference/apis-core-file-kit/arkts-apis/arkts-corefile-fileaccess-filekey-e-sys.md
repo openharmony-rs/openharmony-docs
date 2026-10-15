@@ -16,26 +16,6 @@ Property elements that support the file queries.
 
 **System API:** This is a system API.
 
-## DISPLAY_NAME
-
-```TypeScript
-DISPLAY_NAME = 'display_name'
-```
-
-The key represents the file name.
-
-**Since:** 10
-
-**Deprecated since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FileKey-DISPLAY_NAME = 'display_name'--><!--Device-FileKey-DISPLAY_NAME = 'display_name'-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileService
-
-**System API:** This is a system API.
-
 ## DATE_ADDED
 
 ```TypeScript
@@ -76,13 +56,13 @@ The key represents the modify date of the file.
 
 **System API:** This is a system API.
 
-## RELATIVE_PATH
+## DISPLAY_NAME
 
 ```TypeScript
-RELATIVE_PATH = 'relative_path'
+DISPLAY_NAME = 'display_name'
 ```
 
-The key represents the relative path.
+The key represents the file name.
 
 **Since:** 10
 
@@ -90,7 +70,7 @@ The key represents the relative path.
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FileKey-RELATIVE_PATH = 'relative_path'--><!--Device-FileKey-RELATIVE_PATH = 'relative_path'-End-->
+<!--Device-FileKey-DISPLAY_NAME = 'display_name'--><!--Device-FileKey-DISPLAY_NAME = 'display_name'-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -111,6 +91,26 @@ The key represents the file size.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-FileKey-FILE_SIZE = 'size'--><!--Device-FileKey-FILE_SIZE = 'size'-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileService
+
+**System API:** This is a system API.
+
+## RELATIVE_PATH
+
+```TypeScript
+RELATIVE_PATH = 'relative_path'
+```
+
+The key represents the relative path.
+
+**Since:** 10
+
+**Deprecated since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileKey-RELATIVE_PATH = 'relative_path'--><!--Device-FileKey-RELATIVE_PATH = 'relative_path'-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

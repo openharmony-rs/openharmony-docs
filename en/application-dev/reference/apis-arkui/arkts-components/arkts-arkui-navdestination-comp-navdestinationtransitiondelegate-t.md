@@ -22,7 +22,7 @@ Defines the delegate function for custom transition animations of the **NavDesti
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | operation | [NavigationOperation](arkts-arkui-navigation-comp-navigationoperation-e.md) | Yes | Type of navigation operation for the current page transition. |
-| isEnter | boolean | Yes | Whether the current page is an entry page.<br>**true**: The current page is an entry page.<br>**false**: The current page is not an entry page. |
+| isEnter | boolean | Yes | Whether the current page is an entry page.<br>**true**: The current page is an entry page. <br>**false**: The current page is not an entry page. |
 
 **Return value:**
 

@@ -44,6 +44,34 @@ INTERSECT = 1
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+## REPLACE
+
+```TypeScript
+REPLACE = 5
+```
+
+两个区域替换操作，用第二个区域完全替换第一个区域。适用于需要完全覆盖的场景。
+
+**起始版本：** 12
+
+<!--Device-RegionOp-REPLACE = 5--><!--Device-RegionOp-REPLACE = 5-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## REVERSE_DIFFERENCE
+
+```TypeScript
+REVERSE_DIFFERENCE = 4
+```
+
+两个区域的反向相减操作，从第二个区域中减去第一个区域。适用于需要反向裁剪的场景。
+
+**起始版本：** 12
+
+<!--Device-RegionOp-REVERSE_DIFFERENCE = 4--><!--Device-RegionOp-REVERSE_DIFFERENCE = 4-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
 ## UNION
 
 ```TypeScript
@@ -69,33 +97,5 @@ XOR = 3
 **起始版本：** 12
 
 <!--Device-RegionOp-XOR = 3--><!--Device-RegionOp-XOR = 3-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## REVERSE_DIFFERENCE
-
-```TypeScript
-REVERSE_DIFFERENCE = 4
-```
-
-两个区域的反向相减操作，从第二个区域中减去第一个区域。适用于需要反向裁剪的场景。
-
-**起始版本：** 12
-
-<!--Device-RegionOp-REVERSE_DIFFERENCE = 4--><!--Device-RegionOp-REVERSE_DIFFERENCE = 4-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## REPLACE
-
-```TypeScript
-REPLACE = 5
-```
-
-两个区域替换操作，用第二个区域完全替换第一个区域。适用于需要完全覆盖的场景。
-
-**起始版本：** 12
-
-<!--Device-RegionOp-REPLACE = 5--><!--Device-RegionOp-REPLACE = 5-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

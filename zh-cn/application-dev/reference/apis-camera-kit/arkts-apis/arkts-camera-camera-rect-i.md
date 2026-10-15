@@ -34,7 +34,7 @@ height: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Rect-height: double--><!--Device-Rect-height: double-End-->
 
@@ -52,7 +52,7 @@ topLeftX: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Rect-topLeftX: double--><!--Device-Rect-topLeftX: double-End-->
 
@@ -70,7 +70,7 @@ topLeftY: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Rect-topLeftY: double--><!--Device-Rect-topLeftY: double-End-->
 
@@ -88,7 +88,7 @@ width: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Rect-width: double--><!--Device-Rect-width: double-End-->
 

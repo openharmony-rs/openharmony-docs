@@ -44,6 +44,7 @@ Rotates a mechanical device to the absolute angles.
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-device-not-connected) | Device not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,3 +59,5 @@ mechanicManager.rotateToEulerAngles(0, degree, 500)
   });
 console.info('End rotation');
 ```
+
+<!--DelEnd-->

@@ -33,6 +33,22 @@ Debug level.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## Error
+
+```TypeScript
+Error = 4
+```
+
+Error level.
+
+**Since:** 8
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MessageLevel-Error = 4--><!--Device-MessageLevel-Error = 4-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## Info
 
 ```TypeScript
@@ -62,22 +78,6 @@ Warning level.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-MessageLevel-Warn = 3--><!--Device-MessageLevel-Warn = 3-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## Error
-
-```TypeScript
-Error = 4
-```
-
-Error level.
-
-**Since:** 8
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-MessageLevel-Error = 4--><!--Device-MessageLevel-Error = 4-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -248,7 +248,7 @@ setSessionId(sessionId?: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [setSessionId](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid)(sessionId: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setSessionId](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid1)(sessionId: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 

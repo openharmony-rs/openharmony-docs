@@ -4,7 +4,7 @@
 interface UserRecognitionResult
 ```
 
-Defines the user recognition result.
+Enumerates the user recognition result.
 
 **Since:** 26.0.1
 
@@ -24,7 +24,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 authTrustLevel?: AuthTrustLevel
 ```
 
-Authentication trust level. Only returned when the status is [MATCH](arkts-userauthentication-userauth-userrecognitionstatus-e.md#match). For details about the values, see [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md).
+Authentication trust level. Valid only when status is MATCH.
 
 **Type:** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
 
@@ -32,7 +32,7 @@ Authentication trust level. Only returned when the status is [MATCH](arkts-usera
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-UserRecognitionResult-authTrustLevel?: AuthTrustLevel--><!--Device-UserRecognitionResult-authTrustLevel?: AuthTrustLevel-End-->
 
@@ -44,7 +44,7 @@ Authentication trust level. Only returned when the status is [MATCH](arkts-usera
 status: UserRecognitionStatus
 ```
 
-Recognition status. For details about the values, see [UserRecognitionStatus](arkts-userauthentication-userauth-userrecognitionstatus-e.md).
+Recognition status.
 
 **Type:** [UserRecognitionStatus](arkts-userauthentication-userauth-userrecognitionstatus-e.md)
 
@@ -52,7 +52,7 @@ Recognition status. For details about the values, see [UserRecognitionStatus](ar
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-UserRecognitionResult-status: UserRecognitionStatus--><!--Device-UserRecognitionResult-status: UserRecognitionStatus-End-->
 
@@ -64,7 +64,7 @@ Recognition status. For details about the values, see [UserRecognitionStatus](ar
 userId: number
 ```
 
-ID of the recognized OS user. The value is a non-negative integer.
+System user ID recognized, which is a non-negative integer.
 
 **Type:** number
 
@@ -72,7 +72,7 @@ ID of the recognized OS user. The value is a non-negative integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-UserRecognitionResult-userId: int--><!--Device-UserRecognitionResult-userId: int-End-->
 
@@ -92,7 +92,7 @@ Information about the recognized user.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-UserRecognitionResult-userInfo: string--><!--Device-UserRecognitionResult-userInfo: string-End-->
 

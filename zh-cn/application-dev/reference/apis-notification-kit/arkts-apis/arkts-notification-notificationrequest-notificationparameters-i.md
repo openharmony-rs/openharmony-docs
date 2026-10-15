@@ -4,7 +4,7 @@
 export interface NotificationParameters
 ```
 
-描述[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)中wantAgent的部分信息。
+描述[NotificationRequest](arkts-notification-notificationrequest-i.md)中wantAgent的部分信息。
 
 **起始版本：** 24
 

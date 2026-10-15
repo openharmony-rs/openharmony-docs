@@ -30,24 +30,6 @@ Default priority, that is, the focus priority assigned by default.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PRIOR
-
-```TypeScript
-PRIOR = 2000
-```
-
-Priority that indicates the component is prioritized in the container. This level is higher than **AUTO**.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-FocusPriority-PRIOR = 2000--><!--Device-FocusPriority-PRIOR = 2000-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## PREVIOUS
 
 ```TypeScript
@@ -63,5 +45,23 @@ Priority of a previously focused node in the container. This level is higher tha
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-FocusPriority-PREVIOUS = 3000--><!--Device-FocusPriority-PREVIOUS = 3000-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PRIOR
+
+```TypeScript
+PRIOR = 2000
+```
+
+Priority that indicates the component is prioritized in the container. This level is higher than **AUTO**.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FocusPriority-PRIOR = 2000--><!--Device-FocusPriority-PRIOR = 2000-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

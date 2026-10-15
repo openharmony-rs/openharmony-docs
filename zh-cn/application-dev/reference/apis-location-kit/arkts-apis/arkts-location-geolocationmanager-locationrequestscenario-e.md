@@ -12,64 +12,6 @@ export enum LocationRequestScenario
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-## UNSET
-
-```TypeScript
-UNSET = 0x300
-```
-
-表示未设置场景信息。
-
-表示[LocationRequestScenario](arkts-location-geolocationmanager-locationrequestscenario-e.md)字段无效。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-LocationRequestScenario-UNSET = 0x300--><!--Device-LocationRequestScenario-UNSET = 0x300-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## NAVIGATION
-
-```TypeScript
-NAVIGATION = 0x301
-```
-
-表示导航场景。
-
-适用于在户外获取设备实时位置的场景，如车载、步行导航。
-
-主要使用GNSS定位技术提供定位服务，功耗较高。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-LocationRequestScenario-NAVIGATION = 0x301--><!--Device-LocationRequestScenario-NAVIGATION = 0x301-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## TRAJECTORY_TRACKING
-
-```TypeScript
-TRAJECTORY_TRACKING = 0x302
-```
-
-表示运动轨迹记录场景。
-
-适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。
-
-主要使用GNSS定位技术提供定位服务，功耗较高。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-LocationRequestScenario-TRAJECTORY_TRACKING = 0x302--><!--Device-LocationRequestScenario-TRAJECTORY_TRACKING = 0x302-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
 ## CAR_HAILING
 
 ```TypeScript
@@ -84,7 +26,7 @@ CAR_HAILING = 0x303
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationRequestScenario-CAR_HAILING = 0x303--><!--Device-LocationRequestScenario-CAR_HAILING = 0x303-End-->
 
@@ -104,9 +46,29 @@ DAILY_LIFE_SERVICE = 0x304
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationRequestScenario-DAILY_LIFE_SERVICE = 0x304--><!--Device-LocationRequestScenario-DAILY_LIFE_SERVICE = 0x304-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## NAVIGATION
+
+```TypeScript
+NAVIGATION = 0x301
+```
+
+表示导航场景。
+
+适用于在户外获取设备实时位置的场景，如车载、步行导航。
+
+主要使用GNSS定位技术提供定位服务，功耗较高。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocationRequestScenario-NAVIGATION = 0x301--><!--Device-LocationRequestScenario-NAVIGATION = 0x301-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -120,8 +82,46 @@ NO_POWER = 0x305
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationRequestScenario-NO_POWER = 0x305--><!--Device-LocationRequestScenario-NO_POWER = 0x305-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## TRAJECTORY_TRACKING
+
+```TypeScript
+TRAJECTORY_TRACKING = 0x302
+```
+
+表示运动轨迹记录场景。
+
+适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。
+
+主要使用GNSS定位技术提供定位服务，功耗较高。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocationRequestScenario-TRAJECTORY_TRACKING = 0x302--><!--Device-LocationRequestScenario-TRAJECTORY_TRACKING = 0x302-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## UNSET
+
+```TypeScript
+UNSET = 0x300
+```
+
+表示未设置场景信息。
+
+表示[LocationRequestScenario](arkts-location-geolocationmanager-locationrequestscenario-e.md)字段无效。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocationRequestScenario-UNSET = 0x300--><!--Device-LocationRequestScenario-UNSET = 0x300-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core

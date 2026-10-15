@@ -1,5 +1,11 @@
 # @ohos.arkui.advanced.ChipGroup
 
+The **ChipGroup** component provides chip group capabilities, supporting single-selection or multi-selection modes,
+ customizable styles, icons, and spacing, as well as selected state management and event callbacks. It is suitable for
+ various scenarios such as file categorization, resource filtering, tag selection, and content grouping, helping
+ developers quickly implement selection functionality while delivering a consistent visual and interactive experience.
+
+
 ## Modules to Import
 
 ```TypeScript
@@ -12,8 +18,8 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 
 | Name | Description |
 | --- | --- |
-| [ChipGroup](arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md) | The **ChipGroup** component provides chip group capabilities, supporting single-selection or multi-selection modes, customizable styles, icons, and spacing, as well as selected state management and event callbacks. It is suitable for various scenarios such as file categorization, resource filtering, tag selection, and content grouping, helping developers quickly implement selection functionality while delivering a consistent visual and interactive experience. |
-| [IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md) | The **ChipGroup** component provides chip group capabilities, supporting single-selection or multi-selection modes, customizable styles, icons, and spacing, as well as selected state management and event callbacks. It is suitable for various scenarios such as file categorization, resource filtering, tag selection, and content grouping, helping developers quickly implement selection functionality while delivering a consistent visual and interactive experience. |
+| [ChipGroup](arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md) | Creates a **ChipGroup** component. |
+| [IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md) | Defines the suffix area icon of a ChipGroup. It is used in the configurable suffix property, which displays custom content at the far right of the ChipGroup component. |
 
 ### Interfaces
 

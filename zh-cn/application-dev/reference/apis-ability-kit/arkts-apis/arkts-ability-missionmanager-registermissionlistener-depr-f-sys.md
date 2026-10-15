@@ -39,6 +39,7 @@ function registerMissionListener(listener: MissionListener): number
 | --- | --- |
 | number | 监听器的index值，由系统创建，在注册系统任务状态监听器时分配，和监听器一一对应 。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,3 +71,5 @@ let listenerId = missionManager.registerMissionListener({
   }
 });
 ```
+
+<!--DelEnd-->

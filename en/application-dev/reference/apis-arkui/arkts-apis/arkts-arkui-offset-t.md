@@ -6,6 +6,8 @@ export type Offset = Vector2
 
 Sets the offset of the component or effect.
 
+**Type:** [Vector2](arkts-arkui-graphics-vector2-i.md)
+
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Sets the offset of the component or effect.
 <!--Device-unnamed-export type Offset = Vector2--><!--Device-unnamed-export type Offset = Vector2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [Vector2](arkts-arkui-graphics-vector2-i.md)

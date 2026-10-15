@@ -6,6 +6,8 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="getvolumebyid1"></a>
+
 ## getVolumeById
 
 ```TypeScript
@@ -43,7 +45,7 @@ function getVolumeById(volumeId: string, callback: AsyncCallback<Volume>): void
 | 13900042 | Unknown error. |
 
 
-<a id="getvolumebyid-1"></a>
+<a id="getvolumebyid2"></a>
 
 ## getVolumeById
 

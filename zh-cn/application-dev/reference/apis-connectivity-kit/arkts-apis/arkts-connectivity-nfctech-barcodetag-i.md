@@ -6,13 +6,13 @@ export interface BarcodeTag extends TagSession
 
 BarcodeTag提供读取条形码标签的属性和访问I/O操作的能力，继承自TagSession。
 
-TagSession是所有NFC Tag 技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
+TagSession是所有NFC Tag 技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-i.md)。
 
 BarcodeTag获取方式请参考[nfc-tag开发指南](../../../connectivity/nfc/nfc-tag-access-guide.md)。
 
 以下是BarcodeTag的独有接口。
 
-**继承/实现关系：** BarcodeTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**继承/实现关系：** BarcodeTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **起始版本：** 18
 
@@ -32,7 +32,7 @@ getBarcode(): Promise<ArrayBuffer>
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-BarcodeTag-getBarcode(): Promise<ArrayBuffer>--><!--Device-BarcodeTag-getBarcode(): Promise<ArrayBuffer>-End-->
 

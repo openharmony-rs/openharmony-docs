@@ -26,20 +26,6 @@ NOTIFY_CHANGE_ADD = 0
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## NOTIFY_CHANGE_UPDATE
-
-```TypeScript
-NOTIFY_CHANGE_UPDATE = 1
-```
-
-媒体资产（图片/视频）或相册修改事件的通知类型。
-
-**起始版本：** 20
-
-<!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1--><!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## NOTIFY_CHANGE_REMOVE
 
 ```TypeScript
@@ -51,5 +37,19 @@ NOTIFY_CHANGE_REMOVE = 2
 **起始版本：** 20
 
 <!--Device-NotifyChangeType-NOTIFY_CHANGE_REMOVE = 2--><!--Device-NotifyChangeType-NOTIFY_CHANGE_REMOVE = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## NOTIFY_CHANGE_UPDATE
+
+```TypeScript
+NOTIFY_CHANGE_UPDATE = 1
+```
+
+媒体资产（图片/视频）或相册修改事件的通知类型。
+
+**起始版本：** 20
+
+<!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1--><!--Device-NotifyChangeType-NOTIFY_CHANGE_UPDATE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

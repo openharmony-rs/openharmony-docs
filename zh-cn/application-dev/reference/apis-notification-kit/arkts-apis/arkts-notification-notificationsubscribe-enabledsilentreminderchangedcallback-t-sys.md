@@ -6,6 +6,8 @@ export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChanged
 
 注册应用通知静默提醒使能状态变化的回调函数类型。
 
+**类型：** _EnabledSilentReminderChangedCallback
+
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChanged
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _EnabledSilentReminderChangedCallback

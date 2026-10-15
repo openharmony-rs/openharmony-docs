@@ -14,33 +14,19 @@ Enum for haptics in tone scenario.
 
 **System API:** This is a system API.
 
-## CALL_SIM_CARD_0
+## ALARM
 
 ```TypeScript
-CALL_SIM_CARD_0 = 0
+ALARM = 41
 ```
 
-Haptics in incoming call scenario for sim card 0.
+Haptics in alarm scenario. Used to configure vibration feedback for alarm tones. This type can be used with getToneHapticsSettings and setToneHapticsSettings to read or modify the vibration settings for alarm scenarios. Value: 41 represents the alarm scenario identifier for haptic feedback configuration.
 
-**Since:** 14
+**Since:** 26.0.1
 
-<!--Device-ToneHapticsType-CALL_SIM_CARD_0 = 0--><!--Device-ToneHapticsType-CALL_SIM_CARD_0 = 0-End-->
+**Model restriction:** This API can be used only in the stage model.
 
-**System capability:** SystemCapability.Multimedia.SystemSound.Core
-
-**System API:** This is a system API.
-
-## CALL_SIM_CARD_1
-
-```TypeScript
-CALL_SIM_CARD_1 = 1
-```
-
-Haptics in incoming call scenario for sim card 1.
-
-**Since:** 14
-
-<!--Device-ToneHapticsType-CALL_SIM_CARD_1 = 1--><!--Device-ToneHapticsType-CALL_SIM_CARD_1 = 1-End-->
+<!--Device-ToneHapticsType-ALARM = 41--><!--Device-ToneHapticsType-ALARM = 41-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -82,33 +68,49 @@ Haptics in incoming call scenario for esim card 1.
 
 **System API:** This is a system API.
 
-## TEXT_MESSAGE_SIM_CARD_0
+## CALL_SIM_CARD_0
 
 ```TypeScript
-TEXT_MESSAGE_SIM_CARD_0 = 20
+CALL_SIM_CARD_0 = 0
 ```
 
-Haptics in text message scenario for sim card 0.
+Haptics in incoming call scenario for sim card 0.
 
 **Since:** 14
 
-<!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_0 = 20--><!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_0 = 20-End-->
+<!--Device-ToneHapticsType-CALL_SIM_CARD_0 = 0--><!--Device-ToneHapticsType-CALL_SIM_CARD_0 = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
 
-## TEXT_MESSAGE_SIM_CARD_1
+## CALL_SIM_CARD_1
 
 ```TypeScript
-TEXT_MESSAGE_SIM_CARD_1 = 21
+CALL_SIM_CARD_1 = 1
 ```
 
-Haptics in text message scenario for sim card 1.
+Haptics in incoming call scenario for sim card 1.
 
 **Since:** 14
 
-<!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_1 = 21--><!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_1 = 21-End-->
+<!--Device-ToneHapticsType-CALL_SIM_CARD_1 = 1--><!--Device-ToneHapticsType-CALL_SIM_CARD_1 = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.SystemSound.Core
+
+**System API:** This is a system API.
+
+## NOTIFICATION
+
+```TypeScript
+NOTIFICATION = 40
+```
+
+Haptics in notification scenario.
+
+**Since:** 14
+
+<!--Device-ToneHapticsType-NOTIFICATION = 40--><!--Device-ToneHapticsType-NOTIFICATION = 40-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -150,35 +152,33 @@ Haptics in text message scenario for esim card 1.
 
 **System API:** This is a system API.
 
-## NOTIFICATION
+## TEXT_MESSAGE_SIM_CARD_0
 
 ```TypeScript
-NOTIFICATION = 40
+TEXT_MESSAGE_SIM_CARD_0 = 20
 ```
 
-Haptics in notification scenario.
+Haptics in text message scenario for sim card 0.
 
 **Since:** 14
 
-<!--Device-ToneHapticsType-NOTIFICATION = 40--><!--Device-ToneHapticsType-NOTIFICATION = 40-End-->
+<!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_0 = 20--><!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_0 = 20-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
 
-## ALARM
+## TEXT_MESSAGE_SIM_CARD_1
 
 ```TypeScript
-ALARM = 41
+TEXT_MESSAGE_SIM_CARD_1 = 21
 ```
 
-Haptics in alarm scenario. Used to configure vibration feedback for alarm tones. This type can be used with getToneHapticsSettings and setToneHapticsSettings to read or modify the vibration settings for alarm scenarios. Value: 41 represents the alarm scenario identifier for haptic feedback configuration.
+Haptics in text message scenario for sim card 1.
 
-**Since:** 26.0.1
+**Since:** 14
 
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ToneHapticsType-ALARM = 41--><!--Device-ToneHapticsType-ALARM = 41-End-->
+<!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_1 = 21--><!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_1 = 21-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 

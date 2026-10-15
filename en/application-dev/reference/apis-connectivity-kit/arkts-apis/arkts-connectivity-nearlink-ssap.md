@@ -4,8 +4,6 @@ This module provides the SparkLink Service Access Protocol (SSAP) connection cap
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace ssap--><!--Device-unnamed-declare namespace ssap-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -22,8 +20,8 @@ import { ssap } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createClient](arkts-connectivity-ssap-createclient-f.md) | Creates an SSAP client instance. |
-| [createServer](arkts-connectivity-ssap-createserver-f.md) | Creates an SSAP server instance. |
+| [createClient](arkts-connectivity-ssap-createclient-f.md#createclient) | Creates an SSAP client instance. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [createServer](arkts-connectivity-ssap-createserver-f.md#createserver) | Creates an SSAP server instance. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
 
 ### Interfaces
 

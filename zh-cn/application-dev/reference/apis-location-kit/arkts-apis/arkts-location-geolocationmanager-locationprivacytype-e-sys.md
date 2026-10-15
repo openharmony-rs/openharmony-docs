@@ -14,6 +14,22 @@ export enum LocationPrivacyType
 
 **系统接口：** 此接口为系统接口。
 
+## CORE_LOCATION
+
+```TypeScript
+CORE_LOCATION = 2
+```
+
+开启网络定位时弹出的隐私协议。
+
+**起始版本：** 9
+
+<!--Device-LocationPrivacyType-CORE_LOCATION = 2--><!--Device-LocationPrivacyType-CORE_LOCATION = 2-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## OTHERS
 
 ```TypeScript
@@ -41,22 +57,6 @@ STARTUP = 1
 **起始版本：** 9
 
 <!--Device-LocationPrivacyType-STARTUP = 1--><!--Device-LocationPrivacyType-STARTUP = 1-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-**系统接口：** 此接口为系统接口。
-
-## CORE_LOCATION
-
-```TypeScript
-CORE_LOCATION = 2
-```
-
-开启网络定位时弹出的隐私协议。
-
-**起始版本：** 9
-
-<!--Device-LocationPrivacyType-CORE_LOCATION = 2--><!--Device-LocationPrivacyType-CORE_LOCATION = 2-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 

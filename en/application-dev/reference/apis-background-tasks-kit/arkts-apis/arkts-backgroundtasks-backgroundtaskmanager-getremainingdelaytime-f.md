@@ -6,6 +6,8 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="getremainingdelaytime1"></a>
+
 ## getRemainingDelayTime
 
 ```TypeScript
@@ -45,8 +47,9 @@ Obtains the remaining time of a transient task. This API uses an asynchronous ca
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-let id = 1;
-backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: number) => {
+// Request ID of the transient task, which is used to query the remaining time.
+let requestId = 1;
+backgroundTaskManager.getRemainingDelayTime(requestId, (error: BusinessError, res: number) => {
   if(error) {
     console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
   } else {
@@ -56,7 +59,7 @@ backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: numb
 ```
 
 
-<a id="getremainingdelaytime-1"></a>
+<a id="getremainingdelaytime2"></a>
 
 ## getRemainingDelayTime
 
@@ -102,8 +105,8 @@ Obtains the remaining time of a transient task. This API uses a promise to retur
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-let id = 1;
-backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
+let requestId = 1;
+backgroundTaskManager.getRemainingDelayTime(requestId).then((res: number) => {
   console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error: BusinessError) => {
   console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);

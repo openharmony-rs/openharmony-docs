@@ -12,24 +12,6 @@ Edge of the safe area for expanding the layout.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
-
-```TypeScript
-TOP = 0
-```
-
-Top edge.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-SafeAreaEdge-TOP = 0--><!--Device-SafeAreaEdge-TOP = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## BOTTOM
 
 ```TypeScript
@@ -45,6 +27,24 @@ Bottom edge.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SafeAreaEdge-BOTTOM = 1--><!--Device-SafeAreaEdge-BOTTOM = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## END
+
+```TypeScript
+END = 3
+```
+
+End edge.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SafeAreaEdge-END = 3--><!--Device-SafeAreaEdge-END = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +66,13 @@ Start edge.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## END
+## TOP
 
 ```TypeScript
-END = 3
+TOP = 0
 ```
 
-End edge.
+Top edge.
 
 **Since:** 10
 
@@ -80,6 +80,6 @@ End edge.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-SafeAreaEdge-END = 3--><!--Device-SafeAreaEdge-END = 3-End-->
+<!--Device-SafeAreaEdge-TOP = 0--><!--Device-SafeAreaEdge-TOP = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

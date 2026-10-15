@@ -24,6 +24,8 @@ Advertising started.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -39,6 +41,8 @@ Advertising stopped.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-AdvertisingState-STOPPED = 2--><!--Device-AdvertisingState-STOPPED = 2-End-->
 

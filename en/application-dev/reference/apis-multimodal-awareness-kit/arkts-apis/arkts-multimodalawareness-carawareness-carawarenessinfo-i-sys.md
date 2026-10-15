@@ -4,7 +4,7 @@
 export interface CarAwarenessInfo
 ```
 
-Interface for car awareness response info.
+Interface for general car awareness response info.
 
 **Since:** 26.0.1
 
@@ -26,7 +26,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 awarenessEvent?:Record<string, Object>
 ```
 
-Interface for car awareness data items list information.
+Key-value pair of the awareness result data. Different capabilities return different fields.
 
 **Type:** Record&lt;string, Object&gt;
 
@@ -46,7 +46,7 @@ Interface for car awareness data items list information.
 capability: Capability
 ```
 
-Indicates specific capability.
+Indicates specific awareness capability type.
 
 **Type:** [Capability](arkts-multimodalawareness-carawareness-capability-e.md)
 
@@ -66,7 +66,7 @@ Indicates specific capability.
 timestamp: number
 ```
 
-Indicates timestamp . Unit: milliseconds.
+Timestamp of the recognition result. Unit: ms.
 
 **Type:** number
 

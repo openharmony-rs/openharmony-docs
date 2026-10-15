@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="isdlpfile1"></a>
+
 ## isDLPFile
 
 ```TypeScript
@@ -26,7 +28,7 @@ During file processing, the system checks whether the file is a DLP file and the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fd | number | Yes | FD of the file to be checked. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| fd | number | Yes | FD of the file to be checked. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 
 **Return value:**
 
@@ -38,7 +40,7 @@ During file processing, the system checks whether the file is a DLP file and the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
@@ -64,7 +66,7 @@ dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
 ```
 
 
-<a id="isdlpfile-1"></a>
+<a id="isdlpfile2"></a>
 
 ## isDLPFile
 
@@ -86,14 +88,14 @@ During file processing, the system checks whether the file is a DLP file and the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fd | number | Yes | FD of the file to be checked. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| fd | number | Yes | FD of the file to be checked. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to receive the query result. The callback parameters include **err** and **res**. **err** is **undefined** when the query is successful; otherwise, **err** is an error object. If **true** is returned, **res** is a DLP file; if **false** is returned, **res** is not a DLP file. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |

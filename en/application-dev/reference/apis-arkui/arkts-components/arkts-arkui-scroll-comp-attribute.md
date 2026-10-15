@@ -8,7 +8,7 @@ In addition to [universal attributes](arkts-arkui-common-comp.md) and [scrollabl
 
 In addition to [universal events](arkts-arkui-common-comp.md) and [scrollable component common events](arkts-arkui-common-comp-scrollablecommonmethod-c.md), the following events are also supported.
 
-**Inheritance/Implementation:** ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
+**Inheritance/Implementation:** ScrollAttribute extends ScrollableCommonMethod&lt;ScrollAttribute&gt;
 
 **Since:** 7
 
@@ -560,6 +560,8 @@ Since API version 10, when the scrollable component has rounded corners, to prev
 | --- | --- | --- | --- |
 | barState | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Scrollbar state.<br>Default value: **BarState.Auto** |
 
+<a id="scrollbarcolor1"></a>
+
 ## scrollBarColor
 
 ```TypeScript
@@ -584,7 +586,7 @@ Sets the scrollbar color.
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color.<br>Default value: **'#66182431'** <br>A number value indicates a HEX color in RGB or ARGB format, value range: [0x0, 0xFFFFFFFF], for example, **0xffffff**. <br>A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
 
-<a id="scrollbarcolor-1"></a>
+<a id="scrollbarcolor2"></a>
 
 ## scrollBarColor
 
@@ -592,7 +594,7 @@ Sets the scrollbar color.
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), this API supports the Resource type for the **color** parameter.
+Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor1), this API supports the Resource type for the **color** parameter.
 
 **Since:** 22
 
@@ -609,6 +611,8 @@ Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), this 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar color.<br>Default value: **'#66182431'**<br>A number value indicates a HEX color in RGB or ARGB format, with a value range of [0x0, 0xFFFFFFFF], for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
+
+<a id="scrollbarwidth1"></a>
 
 ## scrollBarWidth
 
@@ -634,7 +638,7 @@ Sets the width of the scroll bar. Percentage values are not supported. After the
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes | Width of the scrollbar.<br>Default value: **4**<br>Unit: vp <br>Value range: If the value is less than 0, the default value 4 vp is used. If the value is 0, the scrollbar is not displayed. |
 
-<a id="scrollbarwidth-1"></a>
+<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 

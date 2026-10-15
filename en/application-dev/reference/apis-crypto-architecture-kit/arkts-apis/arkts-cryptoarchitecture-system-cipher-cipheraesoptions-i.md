@@ -10,7 +10,7 @@ Defines the input parameters of **cipher.aes()**.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-unnamed-export interface CipherAesOptions--><!--Device-unnamed-export interface CipherAesOptions-End-->
 
@@ -34,7 +34,7 @@ Called when the execution is complete.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-complete: () => void--><!--Device-CipherAesOptions-complete: () => void-End-->
 
@@ -52,7 +52,7 @@ Called when data fails to be encrypted or decrypted.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-fail: (data: string, code: number) => void--><!--Device-CipherAesOptions-fail: (data: string, code: number) => void-End-->
 
@@ -77,7 +77,7 @@ Called when data is encrypted or decrypted successfully.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-success: (data: CipherResponse) => void--><!--Device-CipherAesOptions-success: (data: CipherResponse) => void-End-->
 
@@ -106,7 +106,7 @@ Action to perform. The options are as follows:
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-action: string--><!--Device-CipherAesOptions-action: string-End-->
 
@@ -126,7 +126,7 @@ Initialization vector (IV) for AES-based encryption and decryption. The value is
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-iv?: string--><!--Device-CipherAesOptions-iv?: string-End-->
 
@@ -146,7 +146,7 @@ Length of the IV, in bytes. This field is reserved. The default value is **16**,
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-ivLen?: string--><!--Device-CipherAesOptions-ivLen?: string-End-->
 
@@ -166,7 +166,7 @@ Offset of the IV for AES-based encryption and decryption. The default value is *
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-ivOffset?: string--><!--Device-CipherAesOptions-ivOffset?: string-End-->
 
@@ -186,7 +186,7 @@ Key used for encryption or decryption. It is a Base64 encoded string.
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-key: string--><!--Device-CipherAesOptions-key: string-End-->
 
@@ -208,7 +208,7 @@ The text to be encrypted must be common text. The text to be decrypted must be a
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-text: string--><!--Device-CipherAesOptions-text: string-End-->
 
@@ -228,7 +228,7 @@ Encryption mode and padding of the AES algorithm. The default value is **AES/CBC
 
 **Deprecated since:** 11
 
-**Substitutes:** Cipher
+**Substitutes:** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherAesOptions-transformation?: string--><!--Device-CipherAesOptions-transformation?: string-End-->
 

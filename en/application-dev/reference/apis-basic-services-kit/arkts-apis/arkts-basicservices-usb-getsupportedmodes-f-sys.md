@@ -38,8 +38,11 @@ Obtains the mask combination for the supported mode list of a given USB port.
 | --- | --- |
 | [PortModeType](arkts-basicservices-usb-portmodetype-e-sys.md) | Mask combination for the supported mode list. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let ret = usb.getSupportedModes(0);
 ```
+
+<!--DelEnd-->

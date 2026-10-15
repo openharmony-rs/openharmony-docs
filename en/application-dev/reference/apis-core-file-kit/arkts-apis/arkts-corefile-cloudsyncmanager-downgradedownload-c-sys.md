@@ -55,6 +55,7 @@ A constructor used to create an instance of the **DowngradeDownload** class with
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,6 +69,8 @@ try {
   console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getCloudFileInfo
 
@@ -103,6 +106,7 @@ Obtains the size and count of files for applications requiring full download, in
 | 13900010 | Try again. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -116,6 +120,8 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
   console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## startDownload
 
@@ -161,6 +167,7 @@ Repeated triggering of a full download task will throw an error (22400006).
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400006 | The same task is already in progress. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -182,6 +189,8 @@ downgradeMgr.startDownload(callback).then(() => {
   console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## startTransfer
 
@@ -255,6 +264,7 @@ Stops the full download task triggered by [startDownload](#startdownload). This 
 | 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -279,3 +289,5 @@ if (needStop) {
   });
 }
 ```
+
+<!--DelEnd-->

@@ -24,7 +24,7 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 colors?: CustomColors
 ```
 
-自定义浅色主题颜色资源。&lt;/br&gt;
+自定义浅色主题颜色资源。</br>
 
 **类型：** [CustomColors](arkts-arkui-customcolors-t.md)
 

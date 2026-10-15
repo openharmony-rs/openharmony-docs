@@ -12,19 +12,19 @@ Enumerates the error codes that may be returned when an ability is started.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## NO_ERROR
+## ABILITY_NOT_FOUND
 
 ```TypeScript
-NO_ERROR = 0
+ABILITY_NOT_FOUND = -2
 ```
 
-No error.
+The ability is not found.
 
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
 
-<!--Device-ErrorCode-NO_ERROR = 0--><!--Device-ErrorCode-NO_ERROR = 0-End-->
+<!--Device-ErrorCode-ABILITY_NOT_FOUND = -2--><!--Device-ErrorCode-ABILITY_NOT_FOUND = -2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -44,19 +44,19 @@ Invalid parameter.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## ABILITY_NOT_FOUND
+## NO_ERROR
 
 ```TypeScript
-ABILITY_NOT_FOUND = -2
+NO_ERROR = 0
 ```
 
-The ability is not found.
+No error.
 
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
 
-<!--Device-ErrorCode-ABILITY_NOT_FOUND = -2--><!--Device-ErrorCode-ABILITY_NOT_FOUND = -2-End-->
+<!--Device-ErrorCode-NO_ERROR = 0--><!--Device-ErrorCode-NO_ERROR = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

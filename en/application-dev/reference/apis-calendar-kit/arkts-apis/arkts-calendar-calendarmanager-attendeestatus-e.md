@@ -12,38 +12,6 @@ Enumerates the status types of an attendee.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-The attendee status is unknown.
-
-**Since:** 18
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-AttendeeStatus-UNKNOWN = 0--><!--Device-AttendeeStatus-UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
-## TENTATIVE
-
-```TypeScript
-TENTATIVE = 1
-```
-
-The attendee status is tentative.
-
-**Since:** 18
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-AttendeeStatus-TENTATIVE = 1--><!--Device-AttendeeStatus-TENTATIVE = 1-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
 ## ACCEPTED
 
 ```TypeScript
@@ -73,6 +41,38 @@ The attendee has rejected the conference invitation.
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-AttendeeStatus-DECLINED = 3--><!--Device-AttendeeStatus-DECLINED = 3-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## TENTATIVE
+
+```TypeScript
+TENTATIVE = 1
+```
+
+The attendee status is tentative.
+
+**Since:** 18
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AttendeeStatus-TENTATIVE = 1--><!--Device-AttendeeStatus-TENTATIVE = 1-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+The attendee status is unknown.
+
+**Since:** 18
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AttendeeStatus-UNKNOWN = 0--><!--Device-AttendeeStatus-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 

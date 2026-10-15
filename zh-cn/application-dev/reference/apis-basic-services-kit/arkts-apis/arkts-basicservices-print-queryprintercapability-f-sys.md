@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprintercapability1"></a>
+
 ## queryPrinterCapability
 
 ```TypeScript
@@ -39,6 +41,7 @@ function queryPrinterCapability(printerId: string, callback: AsyncCallback<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ print.queryPrinterCapability(printerId, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="queryprintercapability-1"></a>
+
+<a id="queryprintercapability2"></a>
 
 ## queryPrinterCapability
 
@@ -96,6 +101,7 @@ function queryPrinterCapability(printerId: string): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -109,3 +115,5 @@ print.queryPrinterCapability(printerId).then(() => {
     console.error(`Failed to query printer capability. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

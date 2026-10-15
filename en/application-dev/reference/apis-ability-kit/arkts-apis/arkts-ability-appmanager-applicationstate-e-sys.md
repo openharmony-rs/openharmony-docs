@@ -14,38 +14,6 @@ Enumerates the application states. This enum can be used together with [AbilityS
 
 **System API:** This is a system API.
 
-## STATE_CREATE
-
-```TypeScript
-STATE_CREATE
-```
-
-The application is being created.
-
-**Since:** 9
-
-<!--Device-ApplicationState-STATE_CREATE--><!--Device-ApplicationState-STATE_CREATE-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
-## STATE_FOREGROUND
-
-```TypeScript
-STATE_FOREGROUND
-```
-
-The application is running in the foreground.
-
-**Since:** 9
-
-<!--Device-ApplicationState-STATE_FOREGROUND--><!--Device-ApplicationState-STATE_FOREGROUND-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
 ## STATE_ACTIVE
 
 ```TypeScript
@@ -78,6 +46,22 @@ The application is running in the background.
 
 **System API:** This is a system API.
 
+## STATE_CREATE
+
+```TypeScript
+STATE_CREATE
+```
+
+The application is being created.
+
+**Since:** 9
+
+<!--Device-ApplicationState-STATE_CREATE--><!--Device-ApplicationState-STATE_CREATE-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
 ## STATE_DESTROY
 
 ```TypeScript
@@ -89,6 +73,22 @@ The application is being destroyed.
 **Since:** 9
 
 <!--Device-ApplicationState-STATE_DESTROY--><!--Device-ApplicationState-STATE_DESTROY-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+## STATE_FOREGROUND
+
+```TypeScript
+STATE_FOREGROUND
+```
+
+The application is running in the foreground.
+
+**Since:** 9
+
+<!--Device-ApplicationState-STATE_FOREGROUND--><!--Device-ApplicationState-STATE_FOREGROUND-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

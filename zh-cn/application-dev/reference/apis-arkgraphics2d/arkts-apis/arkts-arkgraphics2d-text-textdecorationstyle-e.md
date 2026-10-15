@@ -12,35 +12,19 @@ enum TextDecorationStyle
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## SOLID
+## DASHED
 
 ```TypeScript
-SOLID = 0
+DASHED = 3
 ```
 
-实线。
+虚线。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## DOUBLE
-
-```TypeScript
-DOUBLE = 1
-```
-
-双层线。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
+<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -54,25 +38,41 @@ DOTTED = 2
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextDecorationStyle-DOTTED = 2--><!--Device-TextDecorationStyle-DOTTED = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## DASHED
+## DOUBLE
 
 ```TypeScript
-DASHED = 3
+DOUBLE = 1
 ```
 
-虚线。
+双层线。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
+<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## SOLID
+
+```TypeScript
+SOLID = 0
+```
+
+实线。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -86,7 +86,7 @@ WAVY = 4
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextDecorationStyle-WAVY = 4--><!--Device-TextDecorationStyle-WAVY = 4-End-->
 

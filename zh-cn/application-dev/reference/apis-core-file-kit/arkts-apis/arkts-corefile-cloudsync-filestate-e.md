@@ -26,20 +26,6 @@ INITIAL_AFTER_DOWNLOAD = 0
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## UPLOADING
-
-```TypeScript
-UPLOADING = 1
-```
-
-上行同步中。
-
-**起始版本：** 20
-
-<!--Device-FileState-UPLOADING = 1--><!--Device-FileState-UPLOADING = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## STOPPED
 
 ```TypeScript
@@ -68,6 +54,20 @@ TO_BE_UPLOADED = 3
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+## UPLOAD_FAILURE
+
+```TypeScript
+UPLOAD_FAILURE = 5
+```
+
+文件上行失败。
+
+**起始版本：** 20
+
+<!--Device-FileState-UPLOAD_FAILURE = 5--><!--Device-FileState-UPLOAD_FAILURE = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
 ## UPLOAD_SUCCESS
 
 ```TypeScript
@@ -82,16 +82,16 @@ UPLOAD_SUCCESS = 4
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## UPLOAD_FAILURE
+## UPLOADING
 
 ```TypeScript
-UPLOAD_FAILURE = 5
+UPLOADING = 1
 ```
 
-文件上行失败。
+上行同步中。
 
 **起始版本：** 20
 
-<!--Device-FileState-UPLOAD_FAILURE = 5--><!--Device-FileState-UPLOAD_FAILURE = 5-End-->
+<!--Device-FileState-UPLOADING = 1--><!--Device-FileState-UPLOADING = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

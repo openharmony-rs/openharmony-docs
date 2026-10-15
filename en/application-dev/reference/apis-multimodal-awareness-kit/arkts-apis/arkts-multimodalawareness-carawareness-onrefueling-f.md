@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function onRefueling(callback: Callback<RefuelingInfo>): void
 ```
 
-Enables refueling awareness and subscribes to refueling awareness results. If this function is not supported, no callback will be triggered. You can obtain the supported capabilities by calling the getAllCapacityList method.
+Subscribes to the refueling status awareness result. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling the getAllCapabilityList method. The data is returned asynchronously through the callback.
 
 **Since:** 26.0.1
 
@@ -30,12 +30,12 @@ Enables refueling awareness and subscribes to refueling awareness results. If th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | Yes | Callback for obtaining the capability data. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | Yes | Callback invoked to return the refueling recognition data. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-specified-capability-not-supported) | Specific capability not supported. |

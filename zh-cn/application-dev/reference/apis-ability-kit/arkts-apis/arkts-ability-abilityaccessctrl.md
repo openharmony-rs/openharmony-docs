@@ -6,22 +6,30 @@
 该模块主要用于以下场景：
 
 - 在业务执行前校验当前应用是否具备访问受保护资源所需要的权限。
- - 在权限未授予时，拉起运行时权限弹窗或权限设置页面，请求用户授权。
- - 订阅当前应用的权限状态变化事件，在权限状态变化后及时调整业务流程。
+
+- 在权限未授予时，拉起运行时权限弹窗或权限设置页面，请求用户授权。
+
+- 订阅当前应用的权限状态变化事件，在权限状态变化后及时调整业务流程。
 
 ## 核心枚举类型
 
-- **[GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md)：** 权限授权状态枚举，用于表示当前权限的授权状态。  
- - **[SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md)：** 全局开关类型枚举，用于表示需要请求的系统全局开关类型。  
- - **[PermissionStateChangeType](arkts-ability-abilityaccessctrl-permissionstatechangetype-e.md)：** 权限状态变化类型枚举，用于表示授权、取消授权等变化。  
- - **[PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md)：** 权限状态枚举，用于表示当前权限状态。  
- - **[SelectedResult](arkts-ability-abilityaccessctrl-selectedresult-e.md)：** 设置页授权选择结果枚举，用于表示用户在权限设置弹窗中的选择结果。
+- **[GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md)：** 权限授权状态枚举，用于表示当前权限的授权状态。
+
+- **[SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md)：** 全局开关类型枚举，用于表示需要请求的系统全局开关类型。
+
+- **[PermissionStateChangeType](arkts-ability-abilityaccessctrl-permissionstatechangetype-e.md)：** 权限状态变化类型枚举，用于表示授权、取消授权等变化。
+
+- **[PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md)：** 权限状态枚举，用于表示当前权限状态。
+
+- **[SelectedResult](arkts-ability-abilityaccessctrl-selectedresult-e.md)：** 设置页授权选择结果枚举，用于表示用户在权限设置弹窗中的选择结果。
 
 ## 核心接口类型
 
-- **[PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)：** 权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。  
- - **[PermissionRequestResult](arkts-ability-permissionrequestresult-t.md)：** 权限申请结果对象，用于返回权限申请后的权限名列表、授权结果和弹窗展示结果。  
- - **[Context](arkts-ability-context-t.md)：** 上下文对象，用于发起权限申请或打开权限设置弹窗。
+- **[PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)：** 权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
+
+- **[PermissionRequestResult](arkts-ability-permissionrequestresult-t.md)：** 权限申请结果对象，用于返回权限申请后的权限名列表、授权结果和弹窗展示结果。
+
+- **[Context](arkts-ability-context-t.md)：** 上下文对象，用于发起权限申请或打开权限设置弹窗。
 
 ## 核心类
 

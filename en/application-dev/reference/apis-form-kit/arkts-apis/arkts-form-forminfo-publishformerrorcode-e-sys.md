@@ -14,55 +14,19 @@ Enumerates the result codes that may be used for the operation of adding a widge
 
 **System API:** This is a system API.
 
-## SUCCESS
+## HOST_FORM_LIMIT
 
 ```TypeScript
-SUCCESS = 0
+HOST_FORM_LIMIT = 5
 ```
 
-The widget is added to the home screen.
+Indicates that the number of forms added to the host exceeds the upper limit.
 
-**Since:** 12
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PublishFormErrorCode-SUCCESS = 0--><!--Device-PublishFormErrorCode-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.Ability.Form
-
-**System API:** This is a system API.
-
-## NO_SPACE
-
-```TypeScript
-NO_SPACE = 1
-```
-
-There is no space for adding widgets.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PublishFormErrorCode-NO_SPACE = 1--><!--Device-PublishFormErrorCode-NO_SPACE = 1-End-->
-
-**System capability:** SystemCapability.Ability.Form
-
-**System API:** This is a system API.
-
-## PARAM_ERROR
-
-```TypeScript
-PARAM_ERROR = 2
-```
-
-Parameter check fails.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PublishFormErrorCode-PARAM_ERROR = 2--><!--Device-PublishFormErrorCode-PARAM_ERROR = 2-End-->
+<!--Device-PublishFormErrorCode-HOST_FORM_LIMIT = 5--><!--Device-PublishFormErrorCode-HOST_FORM_LIMIT = 5-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -86,6 +50,24 @@ An internal error occurs during widget processing.
 
 **System API:** This is a system API.
 
+## NO_SPACE
+
+```TypeScript
+NO_SPACE = 1
+```
+
+There is no space for adding widgets.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishFormErrorCode-NO_SPACE = 1--><!--Device-PublishFormErrorCode-NO_SPACE = 1-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API:** This is a system API.
+
 ## NOT_SUPPORT
 
 ```TypeScript
@@ -104,19 +86,37 @@ Indicates that the host does not support the form.
 
 **System API:** This is a system API.
 
-## HOST_FORM_LIMIT
+## PARAM_ERROR
 
 ```TypeScript
-HOST_FORM_LIMIT = 5
+PARAM_ERROR = 2
 ```
 
-Indicates that the number of forms added to the host exceeds the upper limit.
+Parameter check fails.
 
-**Since:** 26.0.1
+**Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PublishFormErrorCode-HOST_FORM_LIMIT = 5--><!--Device-PublishFormErrorCode-HOST_FORM_LIMIT = 5-End-->
+<!--Device-PublishFormErrorCode-PARAM_ERROR = 2--><!--Device-PublishFormErrorCode-PARAM_ERROR = 2-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API:** This is a system API.
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+The widget is added to the home screen.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishFormErrorCode-SUCCESS = 0--><!--Device-PublishFormErrorCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

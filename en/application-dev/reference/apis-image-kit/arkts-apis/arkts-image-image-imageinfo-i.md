@@ -30,9 +30,9 @@ Alpha type.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-ImageInfo-alphaType: AlphaType--><!--Device-ImageInfo-alphaType: AlphaType-End-->
 
@@ -50,9 +50,9 @@ Pixel density, in ppi.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-ImageInfo-density: int--><!--Device-ImageInfo-density: int-End-->
 
@@ -106,9 +106,9 @@ Pixel format.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-ImageInfo-pixelFormat: PixelMapFormat--><!--Device-ImageInfo-pixelFormat: PixelMapFormat-End-->
 
@@ -126,9 +126,9 @@ Image size.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-ImageInfo-size: Size--><!--Device-ImageInfo-size: Size-End-->
 
@@ -146,9 +146,9 @@ Number of bytes from one row of pixels in memory to the next row of pixels in me
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-ImageInfo-stride: int--><!--Device-ImageInfo-stride: int-End-->
 

@@ -12,13 +12,13 @@ import { SplitPolicy, MultiNavigation, MultiNavPathStack } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [MultiNavPathStack](arkts-arkui-arkui-advanced-multinavigation-multinavpathstack-c.md) | Implements a navigation stack of the **MultiNavigation** component. Currently, this stack can be created only by the user and cannot be obtained through callbacks. Do not use events or APIs such as **onReady** of **NavDestination** to obtain the navigation stack and perform stack operations, as this may lead to unpredictable issues. |
+| [MultiNavPathStack](arkts-arkui-arkui-advanced-multinavigation-multinavpathstack-c.md) | The route stack of **MultiNavigation** can only be created by the user and cannot be obtained through callbacks. Do not use events or APIs such as [onReady](../arkts-components/arkts-arkui-navdestination-comp-attribute.md#onready) of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) to obtain **NavPathStack** and perform stack operations, as this may cause unpredictable issues. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [MultiNavigation](arkts-arkui-arkui-advanced-multinavigation-multinavigation-s.md) | **MultiNavigation** is a component designed for multi-column display and routing navigation on large-screen devices. |
+| [MultiNavigation](arkts-arkui-arkui-advanced-multinavigation-multinavigation-s.md) | The **MultiNavigation** component is a component that supports multi-column navigation, providing multi-layer page stack management capabilities. It uses **MultiNavPathStack** to uniformly manage the navigation stacks of different page types such as the home page, detail page, and full-screen page. It supports intelligent routing strategies such as left-to-right stack clearing, making it suitable for complex navigation scenarios on large-screen devices such as tablets and foldables, optimizing the page transition experience and improving user operation efficiency. |
 
 ### Types
 

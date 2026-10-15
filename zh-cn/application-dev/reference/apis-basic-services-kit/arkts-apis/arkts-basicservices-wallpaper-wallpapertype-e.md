@@ -12,20 +12,6 @@ enum WallpaperType
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 
-## WALLPAPER_SYSTEM
-
-```TypeScript
-WALLPAPER_SYSTEM
-```
-
-主屏幕壁纸标识。
-
-**起始版本：** 7
-
-<!--Device-WallpaperType-WALLPAPER_SYSTEM--><!--Device-WallpaperType-WALLPAPER_SYSTEM-End-->
-
-**系统能力：** SystemCapability.MiscServices.Wallpaper
-
 ## WALLPAPER_LOCKSCREEN
 
 ```TypeScript
@@ -37,5 +23,19 @@ WALLPAPER_LOCKSCREEN
 **起始版本：** 7
 
 <!--Device-WallpaperType-WALLPAPER_LOCKSCREEN--><!--Device-WallpaperType-WALLPAPER_LOCKSCREEN-End-->
+
+**系统能力：** SystemCapability.MiscServices.Wallpaper
+
+## WALLPAPER_SYSTEM
+
+```TypeScript
+WALLPAPER_SYSTEM
+```
+
+主屏幕壁纸标识。
+
+**起始版本：** 7
+
+<!--Device-WallpaperType-WALLPAPER_SYSTEM--><!--Device-WallpaperType-WALLPAPER_SYSTEM-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper

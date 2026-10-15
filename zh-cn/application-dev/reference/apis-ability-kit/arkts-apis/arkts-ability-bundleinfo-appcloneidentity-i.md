@@ -18,7 +18,7 @@ export interface AppCloneIdentity
 readonly appIndex: number
 ```
 
-应用包的分身索引信息。
+应用包的分身索引信息。取值为整数，范围：[0-5]，0表示主应用，1-5等表示分身应用。
 
 **类型：** number
 

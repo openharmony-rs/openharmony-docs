@@ -44,9 +44,7 @@ Drag event information that includes only the drag result.
 extraParams: string
 ```
 
-Additional information about the drag action. Not supported currently.
-
-The default value is null.
+Additional information about the drag event.
 
 **Type:** string
 

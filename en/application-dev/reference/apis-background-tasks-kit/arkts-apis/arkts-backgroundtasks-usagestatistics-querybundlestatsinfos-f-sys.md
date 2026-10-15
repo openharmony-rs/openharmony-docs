@@ -6,6 +6,8 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querybundlestatsinfos1"></a>
+
 ## queryBundleStatsInfos
 
 ```TypeScript
@@ -40,7 +42,7 @@ This method queries usage information at the BY_OPTIMIZED interval by default.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-memory-operation-failure) | Memory operation failed. |
 | [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
@@ -49,6 +51,7 @@ This method queries usage information at the BY_OPTIMIZED interval by default.
 | [10000006](../errorcode-DeviceUsageStatistics.md#10000006-failed-to-obtain-application-information) | Failed to get the application information. |
 | [10000007](../errorcode-DeviceUsageStatistics.md#10000007-time-operation-failure) | Failed to get the system time. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,8 +68,10 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000, (err: BusinessError, re
 });
 ```
 
+<!--DelEnd-->
 
-<a id="querybundlestatsinfos-1"></a>
+
+<a id="querybundlestatsinfos2"></a>
 
 ## queryBundleStatsInfos
 
@@ -107,7 +112,7 @@ This method queries usage information at the BY_OPTIMIZED interval by default.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-memory-operation-failure) | Memory operation failed. |
 | [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc-parcel-write-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
@@ -116,6 +121,7 @@ This method queries usage information at the BY_OPTIMIZED interval by default.
 | [10000006](../errorcode-DeviceUsageStatistics.md#10000006-failed-to-obtain-application-information) | Failed to get the application information. |
 | [10000007](../errorcode-DeviceUsageStatistics.md#10000007-time-operation-failure) | Failed to get the system time. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -129,3 +135,5 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatisti
   console.error('BUNDLE_ACTIVE queryBundleStatsInfos promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
 ```
+
+<!--DelEnd-->

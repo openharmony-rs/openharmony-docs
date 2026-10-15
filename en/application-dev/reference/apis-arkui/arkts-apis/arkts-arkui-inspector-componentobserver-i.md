@@ -4,7 +4,7 @@
 interface ComponentObserver
 ```
 
-The ComponentObserver is used to listen for layout, draw and drawChildren events.
+Defines the handle for component layout and drawing completion callbacks. You can call the following APIs through this handle:
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { inspector } from '@kit.ArkUI';
 off(type: 'layout', callback?: () => void): void
 ```
 
-Deregisters a callback with the corresponding query condition by using the handle. This callback is not triggered when the component layout complete.
+Unregisters the layout completion callback through this handle. This callback will no longer be triggered when the component layout is complete.
 
 **Since:** 10
 
@@ -40,8 +40,8 @@ Deregisters a callback with the corresponding query condition by using the handl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'layout' | Yes | type of the listened event.<br>**Since:** 12 |
-| callback | () =&gt; void | No | callback of the listened event.<br>**Since:** 12 |
+| type | 'layout' | Yes | Event type. The value is fixed at **'layout'**.<br> **layout**: completion of component layout.<br>**Since:** 12 |
+| callback | () =&gt; void | No | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one registered with the [on('layout')](#onlayout) API to successfully unregister.<br>**Since:** 12 |
 
 ## off('draw')
 
@@ -49,7 +49,7 @@ Deregisters a callback with the corresponding query condition by using the handl
 off(type: 'draw', callback?: () => void): void
 ```
 
-Deregisters a callback with the corresponding query condition by using the handle. This callback is not triggered when the component draw complete.
+Unregisters the drawing completion callback through this handle. This callback will no longer be triggered when the component drawing is complete.
 
 **Since:** 10
 
@@ -65,8 +65,8 @@ Deregisters a callback with the corresponding query condition by using the handl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'draw' | Yes | type of the listened event.<br>**Since:** 12 |
-| callback | () =&gt; void | No | callback of the listened event.<br>**Since:** 12 |
+| type | 'draw' | Yes | Event type. The value is fixed at **'draw'**.<br> draw: completion of component drawing.<br>**Since:** 12 |
+| callback | () =&gt; void | No | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one registered with the [on('draw')](#ondraw) API to successfully unregister.<br>**Since:** 12 |
 
 ## off('drawChildren')
 
@@ -74,7 +74,7 @@ Deregisters a callback with the corresponding query condition by using the handl
 off(type: 'drawChildren', callback?: Callback<void>): void
 ```
 
-Deregisters a callback with the corresponding query condition by using the handle. This callback is not triggered when the child of component draw complete.
+Unregisters the child component drawing completion callback through this handle. This callback will no longer be triggered when the child component drawing of the component is complete. When multiple **drawChildren** callbacks exist in the component tree, after the topmost callback is canceled, other **drawChildren** callbacks will not take effect.
 
 **Since:** 20
 
@@ -90,8 +90,8 @@ Deregisters a callback with the corresponding query condition by using the handl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'drawChildren' | Yes | type of the listened event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | callback of the listened event. |
+| type | 'drawChildren' | Yes | Event type. The value is fixed at **'drawChildren'**.<br> **drawChildren**: completion of child component drawing. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one registered with the [on('drawChildren')<sup>20+</sup>](#ondrawchildren) API to successfully unregister. |
 
 ## offDrawChildren
 
@@ -99,7 +99,7 @@ Deregisters a callback with the corresponding query condition by using the handl
 offDrawChildren(callback?: Callback<number[]>): void
 ```
 
-Deregisters a callback with the corresponding query condition by using the handle. This callback is not triggered when the child of component draw complete.
+Unregisters the callback used to listen for the **drawChildren** event. <br>To stop triggering a specific callback after the child component drawing is complete, you only need to unregister the callback through the **ComponentObserver** handle. When multiple **drawChildren** callbacks exist in the component tree, after the topmost callback is canceled, other **drawChildren** callbacks will not take effect.
 
 **Since:** 24
 
@@ -115,7 +115,7 @@ Deregisters a callback with the corresponding query condition by using the handl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number[]&gt; | No | callback of the listened event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number[]&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one registered with the [onDrawChildren](#ondrawchildren) API to successfully unregister. |
 
 **Examples**
 
@@ -160,7 +160,7 @@ struct ImageExample {
 offLayoutChildren(callback?: Callback<void>): void
 ```
 
-Deregisters a callback with the corresponding query condition by using the handle. This callback will not be triggered when the child of component layout is complete.
+Unregisters the callback used to listen for the **layoutChildren** event. <br>To stop triggering a specific callback after the child component layout is complete, you only need to unregister the callback using the **ComponentObserver** handle. When multiple **layoutChildren** callbacks exist in the component tree, after the topmost callback is canceled, other **layoutChildren** callbacks will not take effect.
 
 **Since:** 23
 
@@ -176,7 +176,7 @@ Deregisters a callback with the corresponding query condition by using the handl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | callback of the listened event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one in the [onLayoutChildren<sup>23+</sup>](#onlayoutchildren) API to successfully unregister. |
 
 **Examples**
 
@@ -253,7 +253,7 @@ struct ImageExample {
 on(type: 'layout', callback: () => void): void
 ```
 
-Registers a callback with the corresponding query condition by using the handle. This callback is triggered when the component layout complete.
+Registers a layout completion callback through this handle. This callback is triggered when the component layout is complete. Note that this API cannot listen for window size changes. For related requirements, see [on('windowSizeChange')](./arkts-apis-window-Window.md#onwindowsizechange7). In addition, there is no deterministic execution order dependency between the layout callback and the window size change callback.
 
 **Since:** 10
 
@@ -269,8 +269,8 @@ Registers a callback with the corresponding query condition by using the handle.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'layout' | Yes | type of the listened event.<br>**Since:** 12 |
-| callback | () =&gt; void | Yes | callback of the listened event.<br>**Since:** 12 |
+| type | 'layout' | Yes | Event type. The value is fixed at **'layout'**.<br> **layout**: completion of component layout.<br>**Since:** 12 |
+| callback | () =&gt; void | Yes | Layout completion callback.<br>**Since:** 12 |
 
 ## on('draw')
 
@@ -278,7 +278,7 @@ Registers a callback with the corresponding query condition by using the handle.
 on(type: 'draw', callback: () => void): void
 ```
 
-Registers a callback with the corresponding query condition by using the handle. This callback is triggered when the component draw complete.
+Registers a drawing completion callback through this handle. This callback is triggered when the component drawing is complete.
 
 **Since:** 10
 
@@ -294,8 +294,8 @@ Registers a callback with the corresponding query condition by using the handle.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'draw' | Yes | type of the listened event.<br>**Since:** 12 |
-| callback | () =&gt; void | Yes | callback of the listened event.<br>**Since:** 12 |
+| type | 'draw' | Yes | Event type. The value is fixed at **'draw'**.<br> **draw**: completion of component drawing.<br>**Since:** 12 |
+| callback | () =&gt; void | Yes | Drawing completion callback.<br>**Since:** 12 |
 
 ## on('drawChildren')
 
@@ -303,7 +303,7 @@ Registers a callback with the corresponding query condition by using the handle.
 on(type: 'drawChildren', callback: Callback<void>): void
 ```
 
-Registers a callback with the corresponding query condition by using the handle. This callback is triggered when the child of component draw complete.
+Registers a child component drawing completion callback through ComponentObserver. This callback is triggered when the child component of the component is in the main component tree and its drawing is complete. When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **drawChildren** callbacks will not take effect. After a callback is registered on the current node, changing its hierarchical position in the main tree of the UI component is not supported. If adjustment is needed, unregister the event callback first and then register it again.
 
 **Since:** 20
 
@@ -319,8 +319,8 @@ Registers a callback with the corresponding query condition by using the handle.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'drawChildren' | Yes | type of the listened event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | callback of the listened event. |
+| type | 'drawChildren' | Yes | Event type. The value is fixed at **'drawChildren'**.<br> **drawChildren**: completion of child component drawing. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Child component drawing completion callback. |
 
 ## onDrawChildren
 
@@ -328,7 +328,7 @@ Registers a callback with the corresponding query condition by using the handle.
 onDrawChildren(callback: Callback<number[]>): void
 ```
 
-Registers a callback with the corresponding query condition by using the handle. This callback is triggered when the child of component draw complete.
+Registers a callback used to listen for the **drawChildren** event through ComponentObserver. This API uses an asynchronous callback to return the result. Compared with [on('drawChildren')](#ondrawchildren), this API additionally returns the **uniqueId** information of the child components in the callback (**Callback<number[]>**), making it easier for you to locate specific child components. If you need to obtain child component identifiers, this API is recommended. If child component information is not required, either API can be used. <br>With the node where the event callback is currently registered being used as the root node, when the child component of the component is in the main tree of the UI component and completes drawing, this callback is triggered. When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **drawChildren** callbacks will not take effect. After a callback is registered on the current node, changing its hierarchical position in the main tree of the UI component is not supported. If adjustment is needed, unregister the event callback first and then register it again.
 
 **Since:** 24
 
@@ -344,7 +344,7 @@ Registers a callback with the corresponding query condition by using the handle.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number[]&gt; | Yes | callback of the listened event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number[]&gt; | Yes | Callback used to listen for the **drawChildren** event. The callback parameter is an array of unique IDs of the child components that have finished drawing. |
 
 **Examples**
 
@@ -389,7 +389,7 @@ struct ImageExample {
 onLayoutChildren(callback: Callback<void>): void
 ```
 
-Registers a callback with the corresponding query condition by using the handle. This callback will be triggered when the child of component layout is complete.
+Registers a callback used to listen for the **layoutChildren** event using ComponentObserver. This API uses an asynchronous callback to return the result. <br>With the node where the event callback is currently registered being used as the root node, when the node in the subtree is in the main tree of the UI component and completes layout, this callback is triggered. When multiple **layoutChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled through [offLayoutChildren](#offlayoutchildren), other **layoutChildren** callbacks will not take effect. After a callback is registered on the current node, changing its hierarchical position in the main tree of the UI component is not supported. If adjustment is needed, unregister the event callback first and then register it again.
 
 **Since:** 23
 
@@ -405,4 +405,4 @@ Registers a callback with the corresponding query condition by using the handle.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | callback of the listened event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to listen for the **layoutChildren** event. |

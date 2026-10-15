@@ -14,6 +14,24 @@ Defines the fields related to the traffic plan.
 
 **System API:** This is a system API.
 
+## DAILY_LIMIT_PERCENTAGE
+
+```TypeScript
+DAILY_LIMIT_PERCENTAGE = 7
+```
+
+Daily traffic limit percentage.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrafficPlanParam-DAILY_LIMIT_PERCENTAGE = 7--><!--Device-TrafficPlanParam-DAILY_LIMIT_PERCENTAGE = 7-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**System API:** This is a system API.
+
 ## DISPLAY_TRAFFIC_SWITCH
 
 ```TypeScript
@@ -27,78 +45,6 @@ Display traffic switch.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TrafficPlanParam-DISPLAY_TRAFFIC_SWITCH = 1--><!--Device-TrafficPlanParam-DISPLAY_TRAFFIC_SWITCH = 1-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-**System API:** This is a system API.
-
-## UNLIMIT_TRAFFIC_SWITCH
-
-```TypeScript
-UNLIMIT_TRAFFIC_SWITCH = 2
-```
-
-Unlimit traffic switch.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TrafficPlanParam-UNLIMIT_TRAFFIC_SWITCH = 2--><!--Device-TrafficPlanParam-UNLIMIT_TRAFFIC_SWITCH = 2-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-**System API:** This is a system API.
-
-## TRAFFIC_LIMIT
-
-```TypeScript
-TRAFFIC_LIMIT = 3
-```
-
-Traffic limit.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TrafficPlanParam-TRAFFIC_LIMIT = 3--><!--Device-TrafficPlanParam-TRAFFIC_LIMIT = 3-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-**System API:** This is a system API.
-
-## START_DATE
-
-```TypeScript
-START_DATE = 4
-```
-
-Start date.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TrafficPlanParam-START_DATE = 4--><!--Device-TrafficPlanParam-START_DATE = 4-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-**System API:** This is a system API.
-
-## OVER_LIMIT_BEHAVIOR
-
-```TypeScript
-OVER_LIMIT_BEHAVIOR = 5
-```
-
-Over limit behavior.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TrafficPlanParam-OVER_LIMIT_BEHAVIOR = 5--><!--Device-TrafficPlanParam-OVER_LIMIT_BEHAVIOR = 5-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -122,19 +68,73 @@ Monthly traffic limit percentage.
 
 **System API:** This is a system API.
 
-## DAILY_LIMIT_PERCENTAGE
+## OVER_LIMIT_BEHAVIOR
 
 ```TypeScript
-DAILY_LIMIT_PERCENTAGE = 7
+OVER_LIMIT_BEHAVIOR = 5
 ```
 
-Daily traffic limit percentage.
+Over limit behavior.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TrafficPlanParam-DAILY_LIMIT_PERCENTAGE = 7--><!--Device-TrafficPlanParam-DAILY_LIMIT_PERCENTAGE = 7-End-->
+<!--Device-TrafficPlanParam-OVER_LIMIT_BEHAVIOR = 5--><!--Device-TrafficPlanParam-OVER_LIMIT_BEHAVIOR = 5-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**System API:** This is a system API.
+
+## START_DATE
+
+```TypeScript
+START_DATE = 4
+```
+
+Start date.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrafficPlanParam-START_DATE = 4--><!--Device-TrafficPlanParam-START_DATE = 4-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**System API:** This is a system API.
+
+## TRAFFIC_LIMIT
+
+```TypeScript
+TRAFFIC_LIMIT = 3
+```
+
+Traffic limit.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrafficPlanParam-TRAFFIC_LIMIT = 3--><!--Device-TrafficPlanParam-TRAFFIC_LIMIT = 3-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**System API:** This is a system API.
+
+## UNLIMIT_TRAFFIC_SWITCH
+
+```TypeScript
+UNLIMIT_TRAFFIC_SWITCH = 2
+```
+
+Unlimit traffic switch.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrafficPlanParam-UNLIMIT_TRAFFIC_SWITCH = 2--><!--Device-TrafficPlanParam-UNLIMIT_TRAFFIC_SWITCH = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

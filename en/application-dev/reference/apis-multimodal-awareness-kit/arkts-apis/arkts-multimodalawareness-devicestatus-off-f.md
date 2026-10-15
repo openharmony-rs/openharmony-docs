@@ -43,27 +43,29 @@ Example 1: Unsubscribe from all callbacks of steady standing state change events
 try {
    deviceStatus.off('steadyStandingDetect');
 } catch (err) {
-   console.error('off failed, err = ' + err);
+   console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 Example 2: Unsubscribe from a specific callback of steady standing state change events.
 
 ```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
 // Define the callback variable.
 let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus.SteadyStandingStatus) => {
-   console.info('succeed to get status, now status = ' + data);
+   console.info('succeeded to get status, now status = ' + JSON.stringify(data));
 };
 // Subscribe to a specific callback of steady standing state change events.
 try {
    deviceStatus.on('steadyStandingDetect', callback);
 } catch (err) {
-   console.error('on failed, err = ' + err);
+   console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
 }
 // Unsubscribe from the specific callback of steady standing state change events.
 try {
    deviceStatus.off('steadyStandingDetect', callback);
 } catch (err) {
-   console.error('off failed, err = ' + err);
+   console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```

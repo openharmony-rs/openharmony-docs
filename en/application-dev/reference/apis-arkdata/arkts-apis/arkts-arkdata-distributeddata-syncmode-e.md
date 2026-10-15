@@ -10,7 +10,7 @@ Enumerates the sync modes.
 
 **Deprecated since:** 9
 
-**Substitutes:** SyncMode
+**Substitutes:** [SyncMode](arkts-arkdata-distributedkvstore-syncmode-e.md)
 
 <!--Device-distributedData-enum SyncMode--><!--Device-distributedData-enum SyncMode-End-->
 
@@ -28,7 +28,7 @@ Pull data from the peer end to the local end only.
 
 **Deprecated since:** 9
 
-**Substitutes:** PULL_ONLY
+**Substitutes:** [PULL_ONLY](arkts-arkdata-distributedkvstore-syncmode-e.md#pull_only)
 
 <!--Device-SyncMode-PULL_ONLY = 0--><!--Device-SyncMode-PULL_ONLY = 0-End-->
 
@@ -46,7 +46,7 @@ Push data from the local end to the peer end only.
 
 **Deprecated since:** 9
 
-**Substitutes:** PUSH_ONLY
+**Substitutes:** [PUSH_ONLY](arkts-arkdata-distributedkvstore-syncmode-e.md#push_only)
 
 <!--Device-SyncMode-PUSH_ONLY = 1--><!--Device-SyncMode-PUSH_ONLY = 1-End-->
 
@@ -64,7 +64,7 @@ Push data from the local end to the peer end and then pull data from the peer en
 
 **Deprecated since:** 9
 
-**Substitutes:** PUSH_PULL
+**Substitutes:** [PUSH_PULL](arkts-arkdata-distributedkvstore-syncmode-e.md#push_pull)
 
 <!--Device-SyncMode-PUSH_PULL = 2--><!--Device-SyncMode-PUSH_PULL = 2-End-->
 

@@ -49,6 +49,7 @@ function stopManualNetworkScan(slotId: number): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,3 +62,5 @@ radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRe
     radio.stopManualNetworkScan(0);
 });
 ```
+
+<!--DelEnd-->

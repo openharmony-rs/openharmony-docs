@@ -38,7 +38,7 @@ certificate when an intermediate certificate is missing in the certificate chain
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-allowDownloadIntermediateCa?: boolean--><!--Device-CertValidationParams-allowDownloadIntermediateCa?: boolean-End-->
 
@@ -58,7 +58,7 @@ Validation date, in the format of YYMMDDHHMMSSZ or YYYYMMDDHHMMSSZ. By default, 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-date?: string--><!--Device-CertValidationParams-date?: string-End-->
 
@@ -78,7 +78,7 @@ Email address list. Verify that the certificate contains the specified email add
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-emailAddresses?: Array<string>--><!--Device-CertValidationParams-emailAddresses?: Array<string>-End-->
 
@@ -98,7 +98,7 @@ List of hostnames. Verify that the certificate's subject alternative name (SAN) 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-hostnames?: Array<string>--><!--Device-CertValidationParams-hostnames?: Array<string>-End-->
 
@@ -118,7 +118,7 @@ Allows specific validation errors to be ignored. Maximum count: 8. <br>The error
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-ignoreErrs?: Array<CertResult>--><!--Device-CertValidationParams-ignoreErrs?: Array<CertResult>-End-->
 
@@ -138,7 +138,7 @@ Key usage list. Verify that the certificate's key usage extension includes the s
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-keyUsage?: Array<KeyUsageType>--><!--Device-CertValidationParams-keyUsage?: Array<KeyUsageType>-End-->
 
@@ -163,7 +163,7 @@ certificate;
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-partialChain?: boolean--><!--Device-CertValidationParams-partialChain?: boolean-End-->
 
@@ -183,7 +183,7 @@ Indicates the certificate revocation check parameter. Used to check whether a ce
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-revokedParams?: X509CertRevokedParams--><!--Device-CertValidationParams-revokedParams?: X509CertRevokedParams-End-->
 
@@ -203,7 +203,7 @@ Trust certificate list. Specifies the trusted root certificate or intermediate C
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-trustedCerts?: Array<X509Cert>--><!--Device-CertValidationParams-trustedCerts?: Array<X509Cert>-End-->
 
@@ -227,7 +227,7 @@ Whether to trust the system CA. The default value is **false**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-trustSystemCa?: boolean--><!--Device-CertValidationParams-trustSystemCa?: boolean-End-->
 
@@ -247,7 +247,7 @@ Indicates the list of untrusted certificates. An intermediate certificate is use
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-untrustedCerts?: Array<X509Cert>--><!--Device-CertValidationParams-untrustedCerts?: Array<X509Cert>-End-->
 
@@ -267,7 +267,7 @@ User ID. Used to set the user identifier required for signature verification whe
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-userId?: Uint8Array--><!--Device-CertValidationParams-userId?: Uint8Array-End-->
 
@@ -289,7 +289,7 @@ Indicates whether to verify the date. true: Verify the validity period of the ce
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CertValidationParams-validateDate?: boolean--><!--Device-CertValidationParams-validateDate?: boolean-End-->
 

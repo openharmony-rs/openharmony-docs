@@ -12,13 +12,13 @@ Declare enum ToolBarV2ItemState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ENABLE
+## ACTIVATE
 
 ```TypeScript
-ENABLE = 1
+ACTIVATE = 3
 ```
 
-Enable type.
+Activate type.
 
 **起始版本：** 18
 
@@ -26,7 +26,7 @@ Enable type.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-ToolBarV2ItemState-ENABLE = 1--><!--Device-ToolBarV2ItemState-ENABLE = 1-End-->
+<!--Device-ToolBarV2ItemState-ACTIVATE = 3--><!--Device-ToolBarV2ItemState-ACTIVATE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ Disable type.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ACTIVATE
+## ENABLE
 
 ```TypeScript
-ACTIVATE = 3
+ENABLE = 1
 ```
 
-Activate type.
+Enable type.
 
 **起始版本：** 18
 
@@ -62,6 +62,6 @@ Activate type.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-ToolBarV2ItemState-ACTIVATE = 3--><!--Device-ToolBarV2ItemState-ACTIVATE = 3-End-->
+<!--Device-ToolBarV2ItemState-ENABLE = 1--><!--Device-ToolBarV2ItemState-ENABLE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

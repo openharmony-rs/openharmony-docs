@@ -6,6 +6,8 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="gettouchpadswipeswitch1"></a>
+
 ## getTouchpadSwipeSwitch
 
 ```TypeScript
@@ -32,9 +34,10 @@ function getTouchpadSwipeSwitch(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,8 +69,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="gettouchpadswipeswitch-1"></a>
+
+<a id="gettouchpadswipeswitch2"></a>
 
 ## getTouchpadSwipeSwitch
 
@@ -95,9 +100,10 @@ function getTouchpadSwipeSwitch(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,3 +132,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

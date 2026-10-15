@@ -24,7 +24,7 @@ This API is asynchronous and does not support concurrent calls.
 
 **Deprecated since:** 18
 
-**Substitutes:** registerFont
+**Substitutes:** [registerFont](arkts-arkui-arkui-uicontext-font-c.md#registerfont)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

@@ -36,10 +36,12 @@ function getAccessoryList(): Array<Readonly<USBAccessory>>
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
-  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`);
+  console.info(`Succeeded in getAccessoryList, accList: ${JSON.stringify(accList)}`);
 } catch (error) {
-  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`getAccessoryList error ${err.code}, message is ${err.message}`);
 }
 ```

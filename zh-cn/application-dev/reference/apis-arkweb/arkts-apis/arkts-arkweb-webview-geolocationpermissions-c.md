@@ -164,6 +164,8 @@ struct WebComponent {
 }
 ```
 
+<a id="getaccessiblegeolocation1"></a>
+
 ## getAccessibleGeolocation
 
 ```TypeScript
@@ -235,7 +237,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getaccessiblegeolocation-1"></a>
+<a id="getaccessiblegeolocation2"></a>
 
 ## getAccessibleGeolocation
 
@@ -303,6 +305,8 @@ struct WebComponent {
   }
 }
 ```
+
+<a id="getstoredgeolocation1"></a>
 
 ## getStoredGeolocation
 
@@ -373,7 +377,7 @@ struct WebComponent {
 }
 ```
 
-<a id="getstoredgeolocation-1"></a>
+<a id="getstoredgeolocation2"></a>
 
 ## getStoredGeolocation
 

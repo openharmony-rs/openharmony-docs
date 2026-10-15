@@ -6,7 +6,7 @@ declare class TextAttribute extends CommonMethod<TextAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** TextAttribute extends CommonMethod<TextAttribute>
+**Inheritance/Implementation:** TextAttribute extends CommonMethod&lt;TextAttribute&gt;
 
 **Since:** 7
 
@@ -49,7 +49,7 @@ bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: 
 
 Sets the custom selection menu. If this API is not used, the default menu type is **TextSpanType.TEXT** and the response type is **TextResponseType.LONG_PRESS**.
 
-The long-press response duration of **bindSelectionMenu** is 600 ms while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) is 800 ms. When both are bound and their triggering methods are set to long press, **bindSelectionMenu** takes precedence.
+The long-press response duration of **bindSelectionMenu** is 600 ms while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) is 800 ms. When both are bound and their triggering methods are set to long press, **bindSelectionMenu** takes precedence.
 
 When the custom menu is too long, it is recommended that nest a [Scroll](arkts-arkui-scroll-comp.md) component inside to prevent the keyboard from being obscured.
 
@@ -511,6 +511,8 @@ Adapts the line height to the actual text height for overlapped multi-line text.
 | --- | --- | --- | --- |
 | enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height.<br>**true**: Line height adapts to the actual text height. **false**: Line height does not adapt to the actual text height. <br>**undefined**: Line height does not adapt to the actual text height. |
 
+<a id="font1"></a>
+
 ## font
 
 ```TypeScript
@@ -539,7 +541,7 @@ It is only effective for the **Text** component, not for its child components.
 | --- | --- | --- | --- |
 | value | Font | Yes | Text style. |
 
-<a id="font-1"></a>
+<a id="font2"></a>
 
 ## font
 
@@ -630,11 +632,11 @@ fontFeature(value: string)
 
 Sets the font feature, for example, monospaced digits.
 
-Format: normal \| \&lt;feature-tag-value\&gt;
+Format: normal \| \<feature-tag-value\>
 
-Format of **\&lt;feature-tag-value\&gt;**: \&lt;string\&gt; \[ \&lt;integer\&gt; \| on \| off ]
+Format of **\<feature-tag-value\>**: \<string\> \[ \<integer\> \| on \| off ]
 
-There can be multiple **\&lt;feature-tag-value\&gt;** values, which are separated by commas (,).
+There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).
 
 For example, the input format for monospaced clock fonts is "ss01" on.
 
@@ -643,7 +645,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 > The **Text** component cannot contain both text and the child component **Span** or **ImageSpan**. If both of
 > them exist, only the content in **Span** or **ImageSpan** is displayed.
 > 
-> The typesetting engine rounds down the value of [width](arkts-arkui-common-comp-commonmethod-c.md#width) to ensure that
+> The typesetting engine rounds down the value of [width](arkts-arkui-common-comp-commonmethod-c.md#width1) to ensure that
 > the value is an integer. If the typesetting engine rounds up the value instead, the right side of the text may be
 > clipped.
 > 
@@ -677,7 +679,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Text feature effect. The format is normal &#124; &lt;feature-tag-value&gt;. The format of &lt;feature- tag-value&gt; is &lt;string&gt; [&lt;integer&gt; &#124; on &#124; off]. Multiple values are separated by commas (,). For example, "ss01"on. |
+| value | string | Yes | Text feature effect. The format is normal &#124;<feature-tag-value>. The format of <feature- tag-value> is <string> [<integer> &#124; on &#124; off]. Multiple values are separated by commas (,). For example, "ss01"on. |
 
 ## fontSize
 
@@ -757,6 +759,8 @@ Sets font variations.
 | --- | --- | --- | --- |
 | fontVariations | Array&lt;[FontVariation](../arkts-apis/arkts-arkui-fontvariation-t.md)&gt; | Yes | Array of font variations, where each member represents a distinct font variation. The **fontVariations** attribute takes precedence over [fontWeight](#fontweight). |
 
+<a id="fontweight1"></a>
+
 ## fontWeight
 
 ```TypeScript
@@ -783,7 +787,7 @@ It is only effective for the **Text** component, not for its child components.
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**. If the value is too large, truncation may occur in different fonts. If the input value exceeds the value range or does not meet the interval requirements, the default value is used. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
 
-<a id="fontweight-1"></a>
+<a id="fontweight2"></a>
 
 ## fontWeight
 
@@ -1027,10 +1031,10 @@ The line height equals the input parameter **value** multiplied by **fontHeight*
 > **NOTE:** 
 > 
 > When **lineHeightMultiple** is set to a valid value and [lineHeight](#lineheight) or
-> [lineSpacing](#linespacing) is set at the same time, only
+> [lineSpacing](#linespacing1) is set at the same time, only
 > **lineHeightMultiple** takes effect. If the value of **lineHeightMultiple** is less than 0, it does not take
 > effect. In this case, use [lineHeight](#lineheight) and
-> [lineSpacing](#linespacing) to set the line height and line spacing.
+> [lineSpacing](#linespacing1) to set the line height and line spacing.
 
 **Since:** 22
 
@@ -1049,6 +1053,8 @@ The line height equals the input parameter **value** multiplied by **fontHeight*
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; undefined | Yes | Line height multiple.<br>Value range: [0, +∞) <br>**NOTE:** <br>- Values less than 0 does not take effect. <br>- Value **0** functions the same as **1**, leaving line height unchanged. <br>- Decimal values are supported. <br>- If the value is **undefined**, the default line height is used. |
+
+<a id="linespacing1"></a>
 
 ## lineSpacing
 
@@ -1076,7 +1082,7 @@ If this parameter and [lineHeightMultiple](#lineheightmultiple) are set at the s
 | --- | --- | --- | --- |
 | value | LengthMetrics | Yes | Line spacing.<br>The value range is [0, +∞). If the value is less than 0, the default value **0** is used. |
 
-<a id="linespacing-1"></a>
+<a id="linespacing2"></a>
 
 ## lineSpacing
 
@@ -1479,7 +1485,7 @@ When **Text.optimizeTrailingSpace** is set to **true**:
 * For text containing only spaces, decoration lines, shadows, and background colors follow the space text display.  
 * Leading spaces are not optimized. When text with trailing spaces wraps, trailing spaces on each line are optimized based on component width.
 
-When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrailingspace) to **true**, you cannot simultaneously set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [decoration](#decoration), and [textAlign](#textalign) attributes.
+When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrailingspace) to **true**, you cannot simultaneously set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [decoration](#decoration), and [textAlign](#textalign) attributes.
 
 **Since:** 20
 
@@ -1635,7 +1641,7 @@ If [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE**, the setting
 
 If the value of **selectionStart** is greater than or equal to that of **selectionEnd**, no text will be selected. The value range is [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value is less than 0, the value **0** will be used. If the value is greater than **textSize**, **textSize** will be used.
 
-If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) is set to **false**, the text outside the parent component can be selected.
+If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) is set to **false**, the text outside the parent component can be selected.
 
 You can obtain the selection range change result through the [onTextSelectionChange](#ontextselectionchange) API.
 
@@ -1792,7 +1798,7 @@ When [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE** and the te
 
 The text takes up the full width of the **Text** component.
 
-The vertical position of the text paragraph can be controlled by the [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
+The vertical position of the text paragraph can be controlled by the [align](arkts-arkui-common-comp-commonmethod-c.md#align1) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
 
 - **Alignment.TopStart**, **Alignment.Top**, **Alignment.TopEnd**: Content aligns to the top.  
 - **Alignment.Start**, **Alignment.Center**, **Alignment.End**: Content is centered vertically.  
@@ -1944,7 +1950,7 @@ When **TextOverflowOptions** is set to **TextOverflow.MARQUEE**:
 
 - Text scrolls horizontally within a single line.  
 - The [maxLines](#maxlines), [copyOption](#copyoption), and [selection](#selection) attributes do not take effect, and special text entities cannot be recognized (that is, the attributes do not take effect when **enable** in [enableDataDetector](#enabledatadetector) is set to **true**).  
-- The [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute of the **Text** component defaults to **true**.  
+- The [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute of the **Text** component defaults to **true**.  
 - [CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md) is not supported in marquee mode.  
 - Behavior of [textAlign](#textalign): If the text does not scroll, **textAlign** applies; if  
 the text scrolls, **textAlign** is ignored.  

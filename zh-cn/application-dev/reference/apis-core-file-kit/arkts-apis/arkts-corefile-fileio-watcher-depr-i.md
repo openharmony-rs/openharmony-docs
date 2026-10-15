@@ -21,6 +21,8 @@ Watcher是文件变化监听的实例，调用Watcher.stop()方法（同步或�
 ```TypeScript
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -57,7 +59,7 @@ watcher.stop().then(() => {
 });
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 

@@ -40,6 +40,7 @@ Unregisters receiveImage event.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,6 +49,8 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 let sessionId = 100;
 abilityConnectionManager.off("receiveImage", sessionId);
 ```
+
+<!--DelEnd-->
 
 
 ## off('collaborateEvent')
@@ -84,6 +87,7 @@ Unregisters collaborateEvent event.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -92,3 +96,5 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 let sessionId = 100;
 abilityConnectionManager.off("collaborateEvent", sessionId);
 ```
+
+<!--DelEnd-->

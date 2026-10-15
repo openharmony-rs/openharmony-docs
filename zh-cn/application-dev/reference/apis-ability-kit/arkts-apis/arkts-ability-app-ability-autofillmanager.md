@@ -6,8 +6,6 @@ autoFillManager模块为应用提供账号、密码、地址、电话号码等�
 
 **起始版本：** 11
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace autoFillManager--><!--Device-unnamed-declare namespace autoFillManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -24,22 +22,29 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md) | 请求保存表单数据。使用callback异步回调。如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
+| [requestAutoFill](arkts-ability-autofillmanager-requestautofill-f.md#requestautofill) | 触发自动填充请求。 |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave1) | 请求保存表单数据。使用callback异步回调。如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave2) | 触发自动保存请求。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
+| [AutoFillCallback](arkts-ability-autofillmanager-autofillcallback-i.md) | 自动填充回调。 |
 | [AutoSaveCallback](arkts-ability-autofillmanager-autosavecallback-i.md) | 当保存请求完成时所触发的回调接口。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
+| [AutoFillRect](arkts-ability-autofillmanager-autofillrect-t.md) | 用于自动填充的矩形区域。 |
+| [FillFailureResult](arkts-ability-autofillmanager-fillfailureresult-t.md) | 填充失败结果接口。 |
 | [FillRequest](arkts-ability-autofillmanager-fillrequest-t.md) | 自动填充的请求信息。 |
 | [OnFillFailureFn](arkts-ability-autofillmanager-onfillfailurefn-t.md) | 自动填充请求处理失败时的回调。 |
 | [OnFillSuccessFn](arkts-ability-autofillmanager-onfillsuccessfn-t.md) | 自动填充请求成功处理时的回调。 |
+| [PageNodeInfo](arkts-ability-autofillmanager-pagenodeinfo-t.md) | 自动填充的页面节点信息。 |
 | [SaveRequest](arkts-ability-autofillmanager-saverequest-t.md) | 自动保存的请求信息。 |
+| [ViewData](arkts-ability-autofillmanager-viewdata-t.md) | 自动填充的视图数据信息。 |
 
 <!--Del-->
 ### 类型（系统接口）
@@ -47,13 +52,10 @@ import { autoFillManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AutoFillPopupConfig](arkts-ability-autofillmanager-autofillpopupconfig-t-sys.md) | 自动填充气泡弹窗的尺寸和位置信息。 |
-| [AutoFillRect](arkts-ability-autofillmanager-autofillrect-t-sys.md) | 用于自动填充的矩形区域。 |
 | [CustomData](arkts-ability-autofillmanager-customdata-t-sys.md) | 自定义数据。 |
 | [FillRequestCallback](arkts-ability-autofillmanager-fillrequestcallback-t-sys.md) | 自动填充或者生成密码时的回调对象，可以通过此回调通知客户端成功或者失败。 |
 | [FillResponse](arkts-ability-autofillmanager-fillresponse-t-sys.md) | 自动填充的响应信息。 |
-| [PageNodeInfo](arkts-ability-autofillmanager-pagenodeinfo-t-sys.md) | 自动填充的页面节点信息。 |
 | [PopupSize](arkts-ability-autofillmanager-popupsize-t-sys.md) | 气泡弹窗的宽和高。 |
 | [SaveRequestCallback](arkts-ability-autofillmanager-saverequestcallback-t-sys.md) | 自动保存或者手动保存请求的回调对象。 |
 | [UpdateRequest](arkts-ability-autofillmanager-updaterequest-t-sys.md) | 自动填充的更新信息。 |
-| [ViewData](arkts-ability-autofillmanager-viewdata-t-sys.md) | 自动填充的视图数据信息。 |
 <!--DelEnd-->

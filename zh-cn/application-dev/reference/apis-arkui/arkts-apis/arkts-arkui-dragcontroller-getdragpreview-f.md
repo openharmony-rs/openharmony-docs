@@ -24,7 +24,7 @@ function getDragPreview(): DragPreview
 
 **废弃版本：** 18
 
-**替代接口：** getDragPreview
+**替代接口：** [getDragPreview](arkts-arkui-arkui-uicontext-dragcontroller-c.md#getdragpreview)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,6 +6,8 @@ export type EnabledPriorityNotificationByBundleCallbackData = _EnabledPriorityNo
 
 Describes the bundle switch state for priority notification.
 
+**Type:** _EnabledPriorityNotificationByBundleCallbackData
+
 **Since:** 23
 
 <!--Device-notificationSubscribe-export type EnabledPriorityNotificationByBundleCallbackData = _EnabledPriorityNotificationByBundleCallbackData--><!--Device-notificationSubscribe-export type EnabledPriorityNotificationByBundleCallbackData = _EnabledPriorityNotificationByBundleCallbackData-End-->
@@ -13,5 +15,3 @@ Describes the bundle switch state for priority notification.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _EnabledPriorityNotificationByBundleCallbackData

@@ -32,7 +32,7 @@ Key runtime information for the last exit of the ability (including process ID, 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-LaunchParam-lastExitDetailInfo?: LastExitDetailInfo--><!--Device-LaunchParam-lastExitDetailInfo?: LastExitDetailInfo-End-->
 
@@ -52,7 +52,7 @@ Detailed message that describes the reason for the last exit of the ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-LaunchParam-lastExitMessage: string--><!--Device-LaunchParam-lastExitMessage: string-End-->
 
@@ -72,7 +72,7 @@ An enumerated value indicating the reason for the last exit of the ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LaunchParam-lastExitReason: LastExitReason--><!--Device-LaunchParam-lastExitReason: LastExitReason-End-->
 
@@ -92,7 +92,7 @@ An enumerated value indicating the reason for ability launch (for example, recov
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LaunchParam-launchReason: LaunchReason--><!--Device-LaunchParam-launchReason: LaunchReason-End-->
 
@@ -112,7 +112,7 @@ Detailed message that describes the reason for the ability launch.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-LaunchParam-launchReasonMessage?: string--><!--Device-LaunchParam-launchReasonMessage?: string-End-->
 
@@ -136,7 +136,7 @@ This feature takes effect only when the UIAbility is started. For other types of
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-LaunchParam-launchUptime?: long--><!--Device-LaunchParam-launchUptime?: long-End-->
 
@@ -162,7 +162,7 @@ This feature takes effect only when the UIAbility is started. For other types of
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-LaunchParam-launchUTCTime?: long--><!--Device-LaunchParam-launchUTCTime?: long-End-->
 

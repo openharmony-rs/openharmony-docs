@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="requestenablenotification1"></a>
+
 ## requestEnableNotification
 
 ```TypeScript
@@ -34,7 +36,7 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -57,7 +59,7 @@ notificationManager.requestEnableNotification(requestEnableNotificationCallback)
 ```
 
 
-<a id="requestenablenotification-1"></a>
+<a id="requestenablenotification2"></a>
 
 ## requestEnableNotification
 
@@ -83,7 +85,7 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 
 **参见：**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-2) 查询当前应用通知授权状态。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled3) 查询当前应用通知授权状态。
 
 [openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md) 拉起当前应用的通知设置界面。
 
@@ -100,7 +102,7 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -138,7 +140,7 @@ class MyAbility extends UIAbility {
 ```
 
 
-<a id="requestenablenotification-2"></a>
+<a id="requestenablenotification3"></a>
 
 ## requestEnableNotification
 
@@ -187,7 +189,7 @@ notificationManager.requestEnableNotification().then(() => {
 ```
 
 
-<a id="requestenablenotification-3"></a>
+<a id="requestenablenotification4"></a>
 
 ## requestEnableNotification
 
@@ -213,7 +215,7 @@ function requestEnableNotification(context: UIAbilityContext): Promise<void>
 
 **参见：**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-2) 查询当前应用通知授权状态。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled3) 查询当前应用通知授权状态。
 
 [openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md) 拉起当前应用的通知设置界面。
 
@@ -235,7 +237,7 @@ function requestEnableNotification(context: UIAbilityContext): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |

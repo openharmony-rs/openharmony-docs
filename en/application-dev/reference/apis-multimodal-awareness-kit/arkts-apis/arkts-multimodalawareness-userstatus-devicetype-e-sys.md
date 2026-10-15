@@ -14,24 +14,6 @@ Enumerates device types.
 
 **System API:** This is a system API.
 
-## UNKNOWN_TYPE
-
-```TypeScript
-UNKNOWN_TYPE = 0
-```
-
-Unknown device type.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceType-UNKNOWN_TYPE = 0--><!--Device-DeviceType-UNKNOWN_TYPE = 0-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
-**System API:** This is a system API.
-
 ## PC
 
 ```TypeScript
@@ -81,6 +63,24 @@ Tablet device.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DeviceType-TABLET = 0x11--><!--Device-DeviceType-TABLET = 0x11-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+**System API:** This is a system API.
+
+## UNKNOWN_TYPE
+
+```TypeScript
+UNKNOWN_TYPE = 0
+```
+
+Unknown device type.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceType-UNKNOWN_TYPE = 0--><!--Device-DeviceType-UNKNOWN_TYPE = 0-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

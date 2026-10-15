@@ -47,6 +47,7 @@ function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 | [1600024](../errorcode-notification.md#1600024-未配置自定义铃声) | The specified bundle has no custom ringtone information. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -74,3 +75,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

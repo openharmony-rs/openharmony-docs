@@ -12,24 +12,6 @@ export enum LevelMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## OVERLAY
-
-```TypeScript
-OVERLAY = 0
-```
-
-弹窗层级为应用窗口根节点，应用内路由导航切换弹窗不隐藏。
-
-**起始版本：** 15
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
-
-<!--Device-LevelMode-OVERLAY = 0--><!--Device-LevelMode-OVERLAY = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## EMBEDDED
 
 ```TypeScript
@@ -51,5 +33,23 @@ EMBEDDED = 1
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-LevelMode-EMBEDDED = 1--><!--Device-LevelMode-EMBEDDED = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## OVERLAY
+
+```TypeScript
+OVERLAY = 0
+```
+
+弹窗层级为应用窗口根节点，应用内路由导航切换弹窗不隐藏。
+
+**起始版本：** 15
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-LevelMode-OVERLAY = 0--><!--Device-LevelMode-OVERLAY = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

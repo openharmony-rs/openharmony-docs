@@ -4,7 +4,7 @@
 export declare interface CustomTheme
 ```
 
-Defines the struct of CustomTheme.
+Defines a custom theme object.
 
 **Since:** 12
 
@@ -24,7 +24,7 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 colors?: CustomColors
 ```
 
-Define tokens associated with color resources..
+Custom light theme color resources.
 
 **Type:** [CustomColors](arkts-arkui-customcolors-t.md)
 
@@ -44,7 +44,9 @@ Define tokens associated with color resources..
 darkColors?: CustomDarkColors
 ```
 
-Define tokens associated with dark mode color resources.
+Custom dark theme color resources.
+
+Note: If **darkColors** is not set, the **colors** configuration in light color mode is used and does not change with the system's dark/light color mode. If the corresponding color is set using the resources in the **dark** directory, the resources in the **dark** directory are preferentially used.
 
 **Type:** [CustomDarkColors](arkts-arkui-customdarkcolors-t.md)
 

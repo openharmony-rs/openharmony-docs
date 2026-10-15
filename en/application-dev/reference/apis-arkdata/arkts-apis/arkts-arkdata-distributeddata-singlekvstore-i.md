@@ -14,7 +14,7 @@ Data is not distinguished by device in a single KV store. The data written to di
 
 **Deprecated since:** 9
 
-**Substitutes:** SingleKVStore
+**Substitutes:** [SingleKVStore](arkts-arkdata-distributedkvstore-singlekvstore-i.md)
 
 <!--Device-distributedData-interface SingleKVStore extends KVStore--><!--Device-distributedData-interface SingleKVStore extends KVStore-End-->
 
@@ -25,19 +25,21 @@ Data is not distinguished by device in a single KV store. The data written to di
 ```TypeScript
 ```
 
+<a id="closeresultset1"></a>
+
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset). This API uses an asynchronous callback to return the result.
+Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset1). This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** closeResultSet
+**Substitutes:** [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)
 
 <!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void-End-->
 
@@ -68,7 +70,7 @@ try {
 }
 ```
 
-<a id="closeresultset-1"></a>
+<a id="closeresultset2"></a>
 
 ## closeResultSet
 
@@ -76,13 +78,13 @@ try {
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset). This API uses a promise to return the result.
+Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset1). This API uses a promise to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** closeResultSet
+**Substitutes:** [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)
 
 <!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet): Promise<void>--><!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet): Promise<void>-End-->
 
@@ -116,6 +118,8 @@ try {
 }
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -128,7 +132,7 @@ Obtains the value of the specified key. This API uses an asynchronous callback t
 
 **Deprecated since:** 9
 
-**Substitutes:** get
+**Substitutes:** [get](arkts-arkdata-distributedkvstore-singlekvstore-i.md#get)
 
 <!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>): void--><!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>): void-End-->
 
@@ -163,7 +167,7 @@ try {
 }
 ```
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -177,7 +181,7 @@ Obtains the value of the specified key. This API uses a promise to return the re
 
 **Deprecated since:** 9
 
-**Substitutes:** get
+**Substitutes:** [get](arkts-arkdata-distributedkvstore-singlekvstore-i.md#get)
 
 <!--Device-SingleKVStore-get(key: string): Promise<Uint8Array | string | boolean | number>--><!--Device-SingleKVStore-get(key: string): Promise<Uint8Array | string | boolean | number>-End-->
 
@@ -217,6 +221,8 @@ try {
 }
 ```
 
+<a id="getentries1"></a>
+
 ## getEntries
 
 ```TypeScript
@@ -229,7 +235,7 @@ Obtains all KV pairs that match the specified key prefix. This API uses an async
 
 **Deprecated since:** 9
 
-**Substitutes:** getEntries
+**Substitutes:** [getEntries](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getentries)
 
 <!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void-End-->
 
@@ -272,7 +278,7 @@ try {
 }
 ```
 
-<a id="getentries-1"></a>
+<a id="getentries2"></a>
 
 ## getEntries
 
@@ -286,7 +292,7 @@ Obtains all KV pairs that match the specified key prefix. This API uses a promis
 
 **Deprecated since:** 9
 
-**Substitutes:** getEntries
+**Substitutes:** [getEntries](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getentries)
 
 <!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>-End-->
 
@@ -341,7 +347,7 @@ try {
 }
 ```
 
-<a id="getentries-2"></a>
+<a id="getentries3"></a>
 
 ## getEntries
 
@@ -355,7 +361,7 @@ Obtains the KV pairs that match the specified **Query** object. This API uses an
 
 **Deprecated since:** 9
 
-**Substitutes:** getEntries
+**Substitutes:** [getEntries](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getentries)
 
 <!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void-End-->
 
@@ -403,7 +409,7 @@ try {
 }
 ```
 
-<a id="getentries-3"></a>
+<a id="getentries4"></a>
 
 ## getEntries
 
@@ -417,7 +423,7 @@ Obtains the KV pairs that match the specified **Query** object. This API uses a 
 
 **Deprecated since:** 9
 
-**Substitutes:** getEntries
+**Substitutes:** [getEntries](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getentries)
 
 <!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>-End-->
 
@@ -472,6 +478,8 @@ try {
 }
 ```
 
+<a id="getresultset1"></a>
+
 ## getResultSet
 
 ```TypeScript
@@ -484,7 +492,7 @@ Obtains the result set with the specified prefix. This API uses an asynchronous 
 
 **Deprecated since:** 9
 
-**Substitutes:** getResultSet
+**Substitutes:** [getResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getresultset)
 
 <!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void-End-->
 
@@ -530,7 +538,7 @@ try {
 }
 ```
 
-<a id="getresultset-1"></a>
+<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -544,7 +552,7 @@ Obtains the result set with the specified prefix. This API uses a promise to ret
 
 **Deprecated since:** 9
 
-**Substitutes:** getResultSet
+**Substitutes:** [getResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getresultset)
 
 <!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KvStoreResultSet>--><!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KvStoreResultSet>-End-->
 
@@ -601,7 +609,7 @@ try {
 }
 ```
 
-<a id="getresultset-2"></a>
+<a id="getresultset3"></a>
 
 ## getResultSet
 
@@ -615,7 +623,7 @@ Obtains a **KvStoreResultSet** object that matches the specified **Query** objec
 
 **Deprecated since:** 9
 
-**Substitutes:** getResultSet
+**Substitutes:** [getResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getresultset)
 
 <!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void-End-->
 
@@ -660,7 +668,7 @@ try {
 }
 ```
 
-<a id="getresultset-3"></a>
+<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -674,7 +682,7 @@ Obtains a **KvStoreResultSet** object that matches the specified **Query** objec
 
 **Deprecated since:** 9
 
-**Substitutes:** getResultSet
+**Substitutes:** [getResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getresultset)
 
 <!--Device-SingleKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>--><!--Device-SingleKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>-End-->
 
@@ -728,6 +736,8 @@ try {
 }
 ```
 
+<a id="getresultsize1"></a>
+
 ## getResultSize
 
 ```TypeScript
@@ -740,7 +750,7 @@ Obtains the number of results that match the specified **Query** object. This AP
 
 **Deprecated since:** 9
 
-**Substitutes:** getResultSize
+**Substitutes:** [getResultSize](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getresultsize)
 
 <!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void--><!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void-End-->
 
@@ -783,7 +793,7 @@ try {
 }
 ```
 
-<a id="getresultsize-1"></a>
+<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -797,7 +807,7 @@ Obtains the number of results that match the specified **Query** object. This AP
 
 **Deprecated since:** 9
 
-**Substitutes:** getResultSize
+**Substitutes:** [getResultSize](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getresultsize)
 
 <!--Device-SingleKVStore-getResultSize(query: Query): Promise<number>--><!--Device-SingleKVStore-getResultSize(query: Query): Promise<number>-End-->
 
@@ -849,6 +859,8 @@ try {
 }
 ```
 
+<a id="getsecuritylevel1"></a>
+
 ## getSecurityLevel
 
 ```TypeScript
@@ -861,7 +873,7 @@ Obtains the security level of this KV store. This API uses an asynchronous callb
 
 **Deprecated since:** 9
 
-**Substitutes:** getSecurityLevel
+**Substitutes:** [getSecurityLevel](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getsecuritylevel)
 
 <!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void--><!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void-End-->
 
@@ -886,7 +898,7 @@ try {
 }
 ```
 
-<a id="getsecuritylevel-1"></a>
+<a id="getsecuritylevel2"></a>
 
 ## getSecurityLevel
 
@@ -900,7 +912,7 @@ Obtains the security level of this KV store. This API uses a promise to return t
 
 **Deprecated since:** 9
 
-**Substitutes:** getSecurityLevel
+**Substitutes:** [getSecurityLevel](arkts-arkdata-distributedkvstore-singlekvstore-i.md#getsecuritylevel)
 
 <!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>--><!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>-End-->
 
@@ -927,6 +939,8 @@ try {
 }
 ```
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -939,7 +953,7 @@ Unsubscribes from data changes.
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-arkdata-distributedkvstore-singlekvstore-i.md#off)
 
 <!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void-End-->
 
@@ -973,7 +987,7 @@ class KvstoreModel {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -987,7 +1001,7 @@ Unsubscribes from sync completion events.
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-arkdata-distributedkvstore-singlekvstore-i.md#off)
 
 <!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void-End-->
 
@@ -1021,6 +1035,8 @@ class KvstoreModel {
 }
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -1033,7 +1049,7 @@ Subscribes to data changes of the specified type.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)
 
 <!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void-End-->
 
@@ -1056,7 +1072,7 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 });
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -1070,7 +1086,7 @@ Subscribes to sync completion events.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)
 
 <!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void-End-->
 
@@ -1103,6 +1119,8 @@ try {
 }
 ```
 
+<a id="removedevicedata1"></a>
+
 ## removeDeviceData
 
 ```TypeScript
@@ -1115,7 +1133,7 @@ Deletes data of a device. This API uses an asynchronous callback to return the r
 
 **Deprecated since:** 9
 
-**Substitutes:** removeDeviceData
+**Substitutes:** [removeDeviceData](arkts-arkdata-distributedkvstore-singlekvstore-i.md#removedevicedata)
 
 <!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void-End-->
 
@@ -1154,7 +1172,7 @@ try {
 }
 ```
 
-<a id="removedevicedata-1"></a>
+<a id="removedevicedata2"></a>
 
 ## removeDeviceData
 
@@ -1168,7 +1186,7 @@ Deletes data of a device. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** removeDeviceData
+**Substitutes:** [removeDeviceData](arkts-arkdata-distributedkvstore-singlekvstore-i.md#removedevicedata)
 
 <!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>--><!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>-End-->
 
@@ -1214,6 +1232,8 @@ try {
 }
 ```
 
+<a id="setsyncparam1"></a>
+
 ## setSyncParam
 
 ```TypeScript
@@ -1226,7 +1246,7 @@ Sets the default delay allowed for KV store sync. This API uses an asynchronous 
 
 **Deprecated since:** 9
 
-**Substitutes:** setSyncParam
+**Substitutes:** [setSyncParam](arkts-arkdata-distributedkvstore-singlekvstore-i.md#setsyncparam)
 
 <!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void-End-->
 
@@ -1253,7 +1273,7 @@ try {
 }
 ```
 
-<a id="setsyncparam-1"></a>
+<a id="setsyncparam2"></a>
 
 ## setSyncParam
 
@@ -1267,7 +1287,7 @@ Sets the default delay allowed for KV store sync. This API uses a promise to ret
 
 **Deprecated since:** 9
 
-**Substitutes:** setSyncParam
+**Substitutes:** [setSyncParam](arkts-arkdata-distributedkvstore-singlekvstore-i.md#setsyncparam)
 
 <!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number): Promise<void>--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number): Promise<void>-End-->
 
@@ -1313,7 +1333,7 @@ Synchronizes the KV store manually.
 
 **Deprecated since:** 9
 
-**Substitutes:** sync
+**Substitutes:** [sync](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 

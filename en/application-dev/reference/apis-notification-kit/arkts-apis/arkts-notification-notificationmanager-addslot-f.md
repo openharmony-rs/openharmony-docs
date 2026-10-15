@@ -6,7 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="addslot-2"></a>
+<a id="addslot3"></a>
 
 ## addSlot
 
@@ -26,11 +26,11 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 **See also:**
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md) obtains a notification slot of a specified type.
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot1) obtains a notification slot of a specified type.
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) removes a notification slot of a specified type for this application.
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot1) removes a notification slot of a specified type for this application.
 
-[removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) removes all notification slots for this application.
+[removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md#removeallslots1) removes all notification slots for this application.
 
 **Parameters:**
 
@@ -43,7 +43,7 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -55,18 +55,18 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlot callback
-let addSlotCallBack = (err: BusinessError): void => {
+let addSlotCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
   } else {
     console.info(`Succeeded in adding slot.`);
   }
 }
-notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallback);
 ```
 
 
-<a id="addslot-3"></a>
+<a id="addslot4"></a>
 
 ## addSlot
 
@@ -88,7 +88,7 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 [getSlot](arkts-notification-notificationmanager-getslot-f.md) obtains a notification slot of a specified type.
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) removes a notification slot of a specified type for this application.
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot2) removes a notification slot of a specified type for this application.
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) removes all notificationslots for this application.
 
@@ -108,7 +108,7 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |

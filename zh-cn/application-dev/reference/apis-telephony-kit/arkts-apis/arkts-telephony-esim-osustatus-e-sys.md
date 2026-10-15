@@ -14,17 +14,17 @@ export enum OsuStatus
 
 **系统接口：** 此接口为系统接口。
 
-## EUICC_UPGRADE_IN_PROGRESS
+## EUICC_UPGRADE_ALREADY_LATEST
 
 ```TypeScript
-EUICC_UPGRADE_IN_PROGRESS = 1
+EUICC_UPGRADE_ALREADY_LATEST = 4
 ```
 
-升级中。
+当前为最新版本，无需升级 。
 
 **起始版本：** 18
 
-<!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1--><!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1-End-->
+<!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4--><!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -46,33 +46,17 @@ EUICC_UPGRADE_FAILED = 2
 
 **系统接口：** 此接口为系统接口。
 
-## EUICC_UPGRADE_SUCCESSFUL
+## EUICC_UPGRADE_IN_PROGRESS
 
 ```TypeScript
-EUICC_UPGRADE_SUCCESSFUL = 3
+EUICC_UPGRADE_IN_PROGRESS = 1
 ```
 
-升级成功。
+升级中。
 
 **起始版本：** 18
 
-<!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3--><!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## EUICC_UPGRADE_ALREADY_LATEST
-
-```TypeScript
-EUICC_UPGRADE_ALREADY_LATEST = 4
-```
-
-当前为最新版本，无需升级 。
-
-**起始版本：** 18
-
-<!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4--><!--Device-OsuStatus-EUICC_UPGRADE_ALREADY_LATEST = 4-End-->
+<!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1--><!--Device-OsuStatus-EUICC_UPGRADE_IN_PROGRESS = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -89,6 +73,22 @@ EUICC_UPGRADE_SERVICE_UNAVAILABLE = 5
 **起始版本：** 18
 
 <!--Device-OsuStatus-EUICC_UPGRADE_SERVICE_UNAVAILABLE = 5--><!--Device-OsuStatus-EUICC_UPGRADE_SERVICE_UNAVAILABLE = 5-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## EUICC_UPGRADE_SUCCESSFUL
+
+```TypeScript
+EUICC_UPGRADE_SUCCESSFUL = 3
+```
+
+升级成功。
+
+**起始版本：** 18
+
+<!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3--><!--Device-OsuStatus-EUICC_UPGRADE_SUCCESSFUL = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 

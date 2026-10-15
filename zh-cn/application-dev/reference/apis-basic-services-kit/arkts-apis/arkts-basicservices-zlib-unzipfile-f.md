@@ -17,7 +17,7 @@ function unzipFile(inFile: string, outFile: string, options: Options): Promise<v
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [zlib.decompressFile](arkts-basicservices-zlib-decompressfile-f.md)
+> [zlib.decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile1)
 > 替代。
 > 
 > 传入的压缩包内部文件或者文件夹名称不能包含“../”，否则会返回-1错误码。
@@ -26,7 +26,7 @@ function unzipFile(inFile: string, outFile: string, options: Options): Promise<v
 
 **废弃版本：** 9
 
-**替代接口：** [decompressFile](arkts-basicservices-zlib-decompressfile-f.md)(inFile: string, outFile: string, options: Options, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile1)(inFile: string, outFile: string, options: Options, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-zlib-function unzipFile(inFile: string, outFile: string, options: Options): Promise<void>--><!--Device-zlib-function unzipFile(inFile: string, outFile: string, options: Options): Promise<void>-End-->
 

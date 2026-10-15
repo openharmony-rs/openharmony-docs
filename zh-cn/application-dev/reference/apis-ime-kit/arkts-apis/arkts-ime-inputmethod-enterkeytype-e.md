@@ -12,17 +12,59 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## UNSPECIFIED
+## DONE
 
 ```TypeScript
-UNSPECIFIED = 0
+DONE
 ```
 
-未指定。<br> <br>使用场景：编辑框不指定Enter键具体功能时使用。
+完成。<br> <br>使用场景：适用于单步骤表单的最后输入框，Enter键表示输入完成。
 
 **起始版本：** 10
 
-<!--Device-EnterKeyType-UNSPECIFIED = 0--><!--Device-EnterKeyType-UNSPECIFIED = 0-End-->
+<!--Device-EnterKeyType-DONE--><!--Device-EnterKeyType-DONE-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## GO
+
+```TypeScript
+GO
+```
+
+前往。<br> <br>使用场景：适用于URL输入框，Enter键触发"前往"操作，如打开链接。
+
+**起始版本：** 10
+
+<!--Device-EnterKeyType-GO--><!--Device-EnterKeyType-GO-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## NEWLINE
+
+```TypeScript
+NEWLINE
+```
+
+换行。<br> <br>使用场景：适用于多行文本编辑框，Enter键插入换行符。
+
+**起始版本：** 12
+
+<!--Device-EnterKeyType-NEWLINE--><!--Device-EnterKeyType-NEWLINE-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## NEXT
+
+```TypeScript
+NEXT
+```
+
+下一步。<br> <br>使用场景：适用于多步骤表单，Enter键跳转到下一个输入框。
+
+**起始版本：** 10
+
+<!--Device-EnterKeyType-NEXT--><!--Device-EnterKeyType-NEXT-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,17 +82,17 @@ NONE。<br> <br>使用场景：Enter键无特定行为，仅作为换行或普�
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## GO
+## PREVIOUS
 
 ```TypeScript
-GO
+PREVIOUS
 ```
 
-前往。<br> <br>使用场景：适用于URL输入框，Enter键触发"前往"操作，如打开链接。
+上一步。<br> <br>使用场景：适用于多步骤表单，Enter键跳转到上一个输入框。
 
 **起始版本：** 10
 
-<!--Device-EnterKeyType-GO--><!--Device-EnterKeyType-GO-End-->
+<!--Device-EnterKeyType-PREVIOUS--><!--Device-EnterKeyType-PREVIOUS-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -82,58 +124,16 @@ SEND
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## NEXT
+## UNSPECIFIED
 
 ```TypeScript
-NEXT
+UNSPECIFIED = 0
 ```
 
-下一步。<br> <br>使用场景：适用于多步骤表单，Enter键跳转到下一个输入框。
+未指定。<br> <br>使用场景：编辑框不指定Enter键具体功能时使用。
 
 **起始版本：** 10
 
-<!--Device-EnterKeyType-NEXT--><!--Device-EnterKeyType-NEXT-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-## DONE
-
-```TypeScript
-DONE
-```
-
-完成。<br> <br>使用场景：适用于单步骤表单的最后输入框，Enter键表示输入完成。
-
-**起始版本：** 10
-
-<!--Device-EnterKeyType-DONE--><!--Device-EnterKeyType-DONE-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-## PREVIOUS
-
-```TypeScript
-PREVIOUS
-```
-
-上一步。<br> <br>使用场景：适用于多步骤表单，Enter键跳转到上一个输入框。
-
-**起始版本：** 10
-
-<!--Device-EnterKeyType-PREVIOUS--><!--Device-EnterKeyType-PREVIOUS-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-## NEWLINE
-
-```TypeScript
-NEWLINE
-```
-
-换行。<br> <br>使用场景：适用于多行文本编辑框，Enter键插入换行符。
-
-**起始版本：** 12
-
-<!--Device-EnterKeyType-NEWLINE--><!--Device-EnterKeyType-NEWLINE-End-->
+<!--Device-EnterKeyType-UNSPECIFIED = 0--><!--Device-EnterKeyType-UNSPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

@@ -14,22 +14,6 @@ enum ShareType
 
 **系统接口：** 此接口为系统接口。
 
-## SHARE_NAME_AND_PHONE_NUMBER
-
-```TypeScript
-SHARE_NAME_AND_PHONE_NUMBER = 0
-```
-
-共享名字和号码信息。
-
-**起始版本：** 11
-
-<!--Device-ShareType-SHARE_NAME_AND_PHONE_NUMBER = 0--><!--Device-ShareType-SHARE_NAME_AND_PHONE_NUMBER = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## SHARE_ALL
 
 ```TypeScript
@@ -41,6 +25,22 @@ SHARE_ALL = 1
 **起始版本：** 11
 
 <!--Device-ShareType-SHARE_ALL = 1--><!--Device-ShareType-SHARE_ALL = 1-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_NAME_AND_PHONE_NUMBER
+
+```TypeScript
+SHARE_NAME_AND_PHONE_NUMBER = 0
+```
+
+共享名字和号码信息。
+
+**起始版本：** 11
+
+<!--Device-ShareType-SHARE_NAME_AND_PHONE_NUMBER = 0--><!--Device-ShareType-SHARE_NAME_AND_PHONE_NUMBER = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

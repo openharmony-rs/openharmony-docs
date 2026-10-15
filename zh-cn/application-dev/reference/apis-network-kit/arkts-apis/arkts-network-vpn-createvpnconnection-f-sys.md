@@ -41,6 +41,7 @@ function createVpnConnection(context: AbilityContext): VpnConnection
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
+<!--Del-->
 **示例**
 
 > 说明：
@@ -64,3 +65,5 @@ struct Index {
   build() {  }
 }
 ```
+
+<!--DelEnd-->

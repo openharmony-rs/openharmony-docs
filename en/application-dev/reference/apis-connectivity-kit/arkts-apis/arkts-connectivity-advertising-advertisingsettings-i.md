@@ -18,6 +18,26 @@ Represents the advertising settings.
 import { advertising } from '@kit.ConnectivityKit';
 ```
 
+## frameType
+
+```TypeScript
+frameType?: nearlinkConstant.FrameType
+```
+
+NearLink radio frame type. The default value is **FRAME_TYPE_1**.
+
+**Type:** [nearlinkConstant.FrameType](arkts-connectivity-nearlinkconstant-frametype-e.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-AdvertisingSettings-frameType?: nearlinkConstant.FrameType--><!--Device-AdvertisingSettings-frameType?: nearlinkConstant.FrameType-End-->
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
 ## interval
 
 ```TypeScript
@@ -31,6 +51,8 @@ Advertising interval, in slots. The value ranges from 160 to 16777215, and the d
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-AdvertisingSettings-interval?: int--><!--Device-AdvertisingSettings-interval?: int-End-->
 
@@ -50,6 +72,8 @@ Whether advertising is connectable. **true**: Advertising is connectable. **fals
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-AdvertisingSettings-isConnectable?: boolean--><!--Device-AdvertisingSettings-isConnectable?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -67,6 +91,8 @@ Advertising transmission power. If this parameter is not specified, the default 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-AdvertisingSettings-power?: TxPowerMode--><!--Device-AdvertisingSettings-power?: TxPowerMode-End-->
 

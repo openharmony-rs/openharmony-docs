@@ -48,7 +48,7 @@ declare function lstat(path: string): Promise<Stat>
 | 13900042 | Unknown error |
 
 
-<a id="lstat-1"></a>
+<a id="lstat2"></a>
 
 ## lstat
 

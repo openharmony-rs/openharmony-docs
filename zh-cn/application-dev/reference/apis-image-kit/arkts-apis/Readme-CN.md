@@ -11,7 +11,7 @@
   - [CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md)
   - [createPicture](arkts-image-image-createpicture-f.md)
   <!--Del-->
-  - [createPictureByHdrAndSdrPixelMap(系统接口)](arkts-image-image-createpicturebyhdrandsdrpixelmap-f-sys.md)<!--DelEnd-->
+  - [createPictureByHdrAndSdrPixelMap（系统接口）](arkts-image-image-createpicturebyhdrandsdrpixelmap-f-sys.md)<!--DelEnd-->
   - [createPictureFromParcel](arkts-image-image-createpicturefromparcel-f.md)
   - [createPixelMap](arkts-image-image-createpixelmap-f.md)
   - [createPixelMapFromParcel](arkts-image-image-createpixelmapfromparcel-f.md)
@@ -27,7 +27,7 @@
   - [createPremultipliedPixelMap](arkts-image-image-createpremultipliedpixelmap-f.md)
   - [createUnpremultipliedPixelMap](arkts-image-image-createunpremultipliedpixelmap-f.md)
   <!--Del-->
-  - [decomposeToPicture(系统接口)](arkts-image-image-decomposetopicture-f-sys.md)<!--DelEnd-->
+  - [decomposeToPicture（系统接口）](arkts-image-image-decomposetopicture-f-sys.md)<!--DelEnd-->
   - [getImagePackerSupportedFormats](arkts-image-image-getimagepackersupportedformats-f.md)
   - [getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md)
   - [AvisMetadata](arkts-image-image-avismetadata-c.md)
@@ -47,16 +47,15 @@
   - [Component](arkts-image-image-component-i.md)
   - [DecodingOptions](arkts-image-image-decodingoptions-i.md)
   <!--Del-->
-  - [DecodingOptions(系统接口)](arkts-image-image-decodingoptions-i-sys.md)<!--DelEnd-->
+  - [DecodingOptions（系统接口）](arkts-image-image-decodingoptions-i-sys.md)<!--DelEnd-->
   - [DecodingOptionsForPicture](arkts-image-image-decodingoptionsforpicture-i.md)
   - [DecodingOptionsForThumbnail](arkts-image-image-decodingoptionsforthumbnail-i.md)
   - [GainmapChannel](arkts-image-image-gainmapchannel-i.md)
   <!--Del-->
-  - [GainmapParams(系统接口)](arkts-image-image-gainmapparams-i-sys.md)<!--DelEnd-->
-  - [GetImagePropertyOptions](arkts-image-image-getimagepropertyoptions-i.md)
+  - [GainmapParams（系统接口）](arkts-image-image-gainmapparams-i-sys.md)<!--DelEnd-->
   - [HdrComposeOptions](arkts-image-image-hdrcomposeoptions-i.md)
   <!--Del-->
-  - [HdrDecomposeOptions(系统接口)](arkts-image-image-hdrdecomposeoptions-i-sys.md)<!--DelEnd-->
+  - [HdrDecomposeOptions（系统接口）](arkts-image-image-hdrdecomposeoptions-i-sys.md)<!--DelEnd-->
   - [HdrGainmapMetadata](arkts-image-image-hdrgainmapmetadata-i.md)
   - [HdrStaticMetadata](arkts-image-image-hdrstaticmetadata-i.md)
   - [Image](arkts-image-image-image-i.md)
@@ -71,12 +70,12 @@
   - [ImageReceiverOptions](arkts-image-image-imagereceiveroptions-i.md)
   - [ImageSource](arkts-image-image-imagesource-i.md)
   <!--Del-->
-  - [ImageSource(系统接口)](arkts-image-image-imagesource-i-sys.md)<!--DelEnd-->
+  - [ImageSource（系统接口）](arkts-image-image-imagesource-i-sys.md)<!--DelEnd-->
   - [InitializationOptions](arkts-image-image-initializationoptions-i.md)
   - [Metadata](arkts-image-image-metadata-i.md)
   - [PackingOption](arkts-image-image-packingoption-i.md)
   <!--Del-->
-  - [PackingOption(系统接口)](arkts-image-image-packingoption-i-sys.md)<!--DelEnd-->
+  - [PackingOption（系统接口）](arkts-image-image-packingoption-i-sys.md)<!--DelEnd-->
   - [PackingOptionsForSequence](arkts-image-image-packingoptionsforsequence-i.md)
   - [PackingOptionsForTiff](arkts-image-image-packingoptionsfortiff-i.md)
   - [PackingSizeLimit](arkts-image-image-packingsizelimit-i.md)
@@ -87,10 +86,11 @@
   - [Size](arkts-image-image-size-i.md)
   - [SourceOptions](arkts-image-image-sourceoptions-i.md)
   <!--Del-->
-  - [SourceOptions(系统接口)](arkts-image-image-sourceoptions-i-sys.md)<!--DelEnd-->
+  - [SourceOptions（系统接口）](arkts-image-image-sourceoptions-i-sys.md)<!--DelEnd-->
   - [XMPEnumerateOptions](arkts-image-image-xmpenumerateoptions-i.md)
   - [XMPNamespace](arkts-image-image-xmpnamespace-i.md)
   - [XMPTag](arkts-image-image-xmptag-i.md)
+  - [GetImagePropertyOptions](arkts-image-image-getimagepropertyoptions-i.md)
   - [HdrMetadataValue](arkts-image-image-hdrmetadatavalue-t.md)
   - [AllocatorType](arkts-image-image-allocatortype-e.md)
   - [AlphaType](arkts-image-image-alphatype-e.md)
@@ -116,12 +116,12 @@
   - [PngPropertyKey](arkts-image-image-pngpropertykey-e.md)
   - [PropertyKey](arkts-image-image-propertykey-e.md)
   <!--Del-->
-  - [PropertyKey(系统接口)](arkts-image-image-propertykey-e-sys.md)<!--DelEnd-->
+  - [PropertyKey（系统接口）](arkts-image-image-propertykey-e-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [ResolutionQuality(系统接口)](arkts-image-image-resolutionquality-e-sys.md)<!--DelEnd-->
+  - [ResolutionQuality（系统接口）](arkts-image-image-resolutionquality-e-sys.md)<!--DelEnd-->
   - [ScaleMode](arkts-image-image-scalemode-e.md)
   <!--Del-->
-  - [SVGResourceLimitLevel(系统接口)](arkts-image-image-svgresourcelimitlevel-e-sys.md)<!--DelEnd-->
+  - [SVGResourceLimitLevel（系统接口）](arkts-image-image-svgresourcelimitlevel-e-sys.md)<!--DelEnd-->
   - [TiffPropertyKey](arkts-image-image-tiffpropertykey-e.md)
   - [WebPPropertyKey](arkts-image-image-webppropertykey-e.md)
   - [XmageColorMode](arkts-image-image-xmagecolormode-e.md)
@@ -143,7 +143,7 @@
   - [Region](arkts-image-sendableimage-region-i.md)
   - [Size](arkts-image-sendableimage-size-i.md)
   - [ISendable](arkts-image-sendableimage-isendable-t.md)
-- [@ohos.multimedia.videoProcessingEngine(提供图像画质处理能力。)](arkts-image-multimedia-videoprocessingengine.md)
+- [@ohos.multimedia.videoProcessingEngine（提供图像画质处理能力。）](arkts-image-multimedia-videoprocessingengine.md)
   - [create](arkts-image-videoprocessingengine-create-f.md)
   - [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md)
   - [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md)

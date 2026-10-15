@@ -28,22 +28,6 @@ The rendering process exited abnormally. Possible causes include rendering proce
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## ProcessWasKilled
-
-```TypeScript
-ProcessWasKilled = 1
-```
-
-The rendering process receives a SIGKILL message or is manually terminated.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-RenderExitReason-ProcessWasKilled = 1--><!--Device-RenderExitReason-ProcessWasKilled = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## ProcessCrashed
 
 ```TypeScript
@@ -57,6 +41,22 @@ The rendering process crashes due to segmentation or other errors.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-RenderExitReason-ProcessCrashed = 2--><!--Device-RenderExitReason-ProcessCrashed = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## ProcessExitUnknown
+
+```TypeScript
+ProcessExitUnknown = 4
+```
+
+Other reasons, such as rendering process spawning failure.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RenderExitReason-ProcessExitUnknown = 4--><!--Device-RenderExitReason-ProcessExitUnknown = 4-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -76,18 +76,18 @@ The program memory is insufficient.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## ProcessExitUnknown
+## ProcessWasKilled
 
 ```TypeScript
-ProcessExitUnknown = 4
+ProcessWasKilled = 1
 ```
 
-Other reasons, such as rendering process spawning failure.
+The rendering process receives a SIGKILL message or is manually terminated.
 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-RenderExitReason-ProcessExitUnknown = 4--><!--Device-RenderExitReason-ProcessExitUnknown = 4-End-->
+<!--Device-RenderExitReason-ProcessWasKilled = 1--><!--Device-RenderExitReason-ProcessWasKilled = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

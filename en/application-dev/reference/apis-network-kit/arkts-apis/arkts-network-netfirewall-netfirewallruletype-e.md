@@ -12,17 +12,17 @@ Enumerates the firewall rule types, including IP, Domain, and DNS.
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
-## RULE_IP
+## RULE_DNS
 
 ```TypeScript
-RULE_IP = 1
+RULE_DNS = 3
 ```
 
-IP address-based firewall rule.
+DNS-based firewall rule.
 
 **Since:** 15
 
-<!--Device-NetFirewallRuleType-RULE_IP = 1--><!--Device-NetFirewallRuleType-RULE_IP = 1-End-->
+<!--Device-NetFirewallRuleType-RULE_DNS = 3--><!--Device-NetFirewallRuleType-RULE_DNS = 3-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -40,16 +40,16 @@ Domain name-based rule.
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
-## RULE_DNS
+## RULE_IP
 
 ```TypeScript
-RULE_DNS = 3
+RULE_IP = 1
 ```
 
-DNS-based firewall rule.
+IP address-based firewall rule.
 
 **Since:** 15
 
-<!--Device-NetFirewallRuleType-RULE_DNS = 3--><!--Device-NetFirewallRuleType-RULE_DNS = 3-End-->
+<!--Device-NetFirewallRuleType-RULE_IP = 1--><!--Device-NetFirewallRuleType-RULE_IP = 1-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

@@ -6,6 +6,8 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="settouchpadpinchswitch1"></a>
+
 ## setTouchpadPinchSwitch
 
 ```TypeScript
@@ -33,9 +35,10 @@ function setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback<void>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="settouchpadpinchswitch-1"></a>
+
+<a id="settouchpadpinchswitch2"></a>
 
 ## setTouchpadPinchSwitch
 
@@ -102,9 +107,10 @@ function setTouchpadPinchSwitch(state: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | SystemAPI permission error. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -133,3 +139,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

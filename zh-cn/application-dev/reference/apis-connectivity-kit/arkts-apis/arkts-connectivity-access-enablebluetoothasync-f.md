@@ -20,7 +20,7 @@ function enableBluetoothAsync(): Promise<void>
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-access-function enableBluetoothAsync(): Promise<void>--><!--Device-access-function enableBluetoothAsync(): Promise<void>-End-->
 

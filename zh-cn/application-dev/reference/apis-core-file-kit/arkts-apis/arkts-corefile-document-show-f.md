@@ -35,7 +35,7 @@ declare function show(uri: string, type: string): Promise<void>
 | Promise&lt;void&gt; | Promise回调返回void表示成功打开文件（注：当前返回错误码） |
 
 
-<a id="show-1"></a>
+<a id="show2"></a>
 
 ## show
 

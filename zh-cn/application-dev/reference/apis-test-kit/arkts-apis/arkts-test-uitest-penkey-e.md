@@ -14,6 +14,26 @@ declare enum PenKey
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
 
+## AIR_MOUSE
+
+```TypeScript
+AIR_MOUSE = 2
+```
+
+空鼠键。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PenKey-AIR_MOUSE = 2--><!--Device-PenKey-AIR_MOUSE = 2-End-->
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
 ## HANDWRITING
 
 ```TypeScript
@@ -26,7 +46,7 @@ HANDWRITING = 0
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PenKey-HANDWRITING = 0--><!--Device-PenKey-HANDWRITING = 0-End-->
 
@@ -46,29 +66,9 @@ SMART = 1
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PenKey-SMART = 1--><!--Device-PenKey-SMART = 1-End-->
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
-## AIR_MOUSE
-
-```TypeScript
-AIR_MOUSE = 2
-```
-
-空鼠键。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-PenKey-AIR_MOUSE = 2--><!--Device-PenKey-AIR_MOUSE = 2-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 

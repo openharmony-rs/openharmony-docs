@@ -6,8 +6,6 @@ enum SplitRatioPreference
 
 Describes the type of split ratio preference.
 
-@enum { number }
-
 **Since:** 26.0.0
 
 <!--Device-window-enum SplitRatioPreference--><!--Device-window-enum SplitRatioPreference-End-->

@@ -8,7 +8,7 @@ type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PiPWindow-type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged' | 'micStateChanged'--><!--Device-PiPWindow-type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged' | 'micStateChanged'-End-->
 
@@ -19,4 +19,4 @@ type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged
 | 'hangUp' | 挂断视频会议。 |
 | 'voiceStateChanged' | 静音或解除静音。 |
 | 'videoStateChanged' | 打开或关闭摄像头。 |
-| 'micStateChanged' | 打开或关闭麦克风。 [since 12] |
+| 'micStateChanged' | 打开或关闭麦克风。<br>**起始版本：** 12 |

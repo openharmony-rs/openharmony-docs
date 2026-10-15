@@ -12,6 +12,22 @@ Enumerates the number of data bits.
 
 **System capability:** SystemCapability.BusManager.Serial
 
+## EIGHT
+
+```TypeScript
+EIGHT = 8
+```
+
+Eight data bits.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataBits-EIGHT = 8--><!--Device-DataBits-EIGHT = 8-End-->
+
+**System capability:** SystemCapability.BusManager.Serial
+
 ## FIVE
 
 ```TypeScript
@@ -25,22 +41,6 @@ Five data bits.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DataBits-FIVE = 5--><!--Device-DataBits-FIVE = 5-End-->
-
-**System capability:** SystemCapability.BusManager.Serial
-
-## SIX
-
-```TypeScript
-SIX = 6
-```
-
-Six data bits.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DataBits-SIX = 6--><!--Device-DataBits-SIX = 6-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -60,18 +60,18 @@ Seven data bits.
 
 **System capability:** SystemCapability.BusManager.Serial
 
-## EIGHT
+## SIX
 
 ```TypeScript
-EIGHT = 8
+SIX = 6
 ```
 
-Eight data bits.
+Six data bits.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DataBits-EIGHT = 8--><!--Device-DataBits-EIGHT = 8-End-->
+<!--Device-DataBits-SIX = 6--><!--Device-DataBits-SIX = 6-End-->
 
 **System capability:** SystemCapability.BusManager.Serial

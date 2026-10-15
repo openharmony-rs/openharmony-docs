@@ -12,6 +12,20 @@ export enum UsbTransferStatus
 
 **系统能力：** SystemCapability.USB.USBManager
 
+## TRANSFER_CANCELED
+
+```TypeScript
+TRANSFER_CANCELED = 3
+```
+
+传输已被取消。
+
+**起始版本：** 18
+
+<!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3--><!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3-End-->
+
+**系统能力：** SystemCapability.USB.USBManager
+
 ## TRANSFER_COMPLETED
 
 ```TypeScript
@@ -40,48 +54,6 @@ TRANSFER_ERROR = 1
 
 **系统能力：** SystemCapability.USB.USBManager
 
-## TRANSFER_TIMED_OUT
-
-```TypeScript
-TRANSFER_TIMED_OUT = 2
-```
-
-传输超时。
-
-**起始版本：** 18
-
-<!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2--><!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2-End-->
-
-**系统能力：** SystemCapability.USB.USBManager
-
-## TRANSFER_CANCELED
-
-```TypeScript
-TRANSFER_CANCELED = 3
-```
-
-传输已被取消。
-
-**起始版本：** 18
-
-<!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3--><!--Device-UsbTransferStatus-TRANSFER_CANCELED = 3-End-->
-
-**系统能力：** SystemCapability.USB.USBManager
-
-## TRANSFER_STALL
-
-```TypeScript
-TRANSFER_STALL = 4
-```
-
-检测到暂停（批量/中断端点）。
-
-**起始版本：** 18
-
-<!--Device-UsbTransferStatus-TRANSFER_STALL = 4--><!--Device-UsbTransferStatus-TRANSFER_STALL = 4-End-->
-
-**系统能力：** SystemCapability.USB.USBManager
-
 ## TRANSFER_NO_DEVICE
 
 ```TypeScript
@@ -107,5 +79,33 @@ TRANSFER_OVERFLOW = 6
 **起始版本：** 18
 
 <!--Device-UsbTransferStatus-TRANSFER_OVERFLOW = 6--><!--Device-UsbTransferStatus-TRANSFER_OVERFLOW = 6-End-->
+
+**系统能力：** SystemCapability.USB.USBManager
+
+## TRANSFER_STALL
+
+```TypeScript
+TRANSFER_STALL = 4
+```
+
+检测到暂停（批量/中断端点）。
+
+**起始版本：** 18
+
+<!--Device-UsbTransferStatus-TRANSFER_STALL = 4--><!--Device-UsbTransferStatus-TRANSFER_STALL = 4-End-->
+
+**系统能力：** SystemCapability.USB.USBManager
+
+## TRANSFER_TIMED_OUT
+
+```TypeScript
+TRANSFER_TIMED_OUT = 2
+```
+
+传输超时。
+
+**起始版本：** 18
+
+<!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2--><!--Device-UsbTransferStatus-TRANSFER_TIMED_OUT = 2-End-->
 
 **系统能力：** SystemCapability.USB.USBManager

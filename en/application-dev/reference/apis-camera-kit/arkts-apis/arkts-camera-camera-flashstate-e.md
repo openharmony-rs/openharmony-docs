@@ -12,21 +12,21 @@ Enumerates the flash states.
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
-## FLASH_STATE_UNAVAILABLE
+## FLASH_STATE_FLASHING
 
 ```TypeScript
-FLASH_STATE_UNAVAILABLE = 0
+FLASH_STATE_FLASHING = 2
 ```
 
-The flash is unavailable. This is the default value.
+The flash is turned on.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-<!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0--><!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0-End-->
+<!--Device-FlashState-FLASH_STATE_FLASHING = 2--><!--Device-FlashState-FLASH_STATE_FLASHING = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -42,26 +42,26 @@ The flash is available.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-FlashState-FLASH_STATE_READY = 1--><!--Device-FlashState-FLASH_STATE_READY = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
-## FLASH_STATE_FLASHING
+## FLASH_STATE_UNAVAILABLE
 
 ```TypeScript
-FLASH_STATE_FLASHING = 2
+FLASH_STATE_UNAVAILABLE = 0
 ```
 
-The flash is turned on.
+The flash is unavailable. This is the default value.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-<!--Device-FlashState-FLASH_STATE_FLASHING = 2--><!--Device-FlashState-FLASH_STATE_FLASHING = 2-End-->
+<!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0--><!--Device-FlashState-FLASH_STATE_UNAVAILABLE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

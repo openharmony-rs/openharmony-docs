@@ -44,6 +44,7 @@ Adds a scanner. This API uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ scan.addScanner(uniqueId, discoveryMode).then(() => {
     console.error(`Failed to add scanner. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

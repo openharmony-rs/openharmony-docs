@@ -14,6 +14,38 @@ Enumerates the tip codes for fingerprint authentication.
 
 **System API:** This is a system API.
 
+## FINGERPRINT_TIP_FINGER_DOWN
+
+```TypeScript
+FINGERPRINT_TIP_FINGER_DOWN = 6
+```
+
+The finger is down.
+
+**Since:** 10
+
+<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## FINGERPRINT_TIP_FINGER_UP
+
+```TypeScript
+FINGERPRINT_TIP_FINGER_UP = 7
+```
+
+The finger is up.
+
+**Since:** 10
+
+<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
 ## FINGERPRINT_TIP_GOOD
 
 ```TypeScript
@@ -105,38 +137,6 @@ Failed to read the fingerprint image due to lack of motion.
 **Since:** 8
 
 <!--Device-FingerprintTips-FINGERPRINT_TIP_TOO_SLOW = 5--><!--Device-FingerprintTips-FINGERPRINT_TIP_TOO_SLOW = 5-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## FINGERPRINT_TIP_FINGER_DOWN
-
-```TypeScript
-FINGERPRINT_TIP_FINGER_DOWN = 6
-```
-
-The finger is down.
-
-**Since:** 10
-
-<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_DOWN = 6-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## FINGERPRINT_TIP_FINGER_UP
-
-```TypeScript
-FINGERPRINT_TIP_FINGER_UP = 7
-```
-
-The finger is up.
-
-**Since:** 10
-
-<!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7--><!--Device-FingerprintTips-FINGERPRINT_TIP_FINGER_UP = 7-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

@@ -20,7 +20,7 @@ You apply a point light style by setting the light source that emits illuminatio
 bloom?: number
 ```
 
-Luminous intensity of the component. The recommended value range is 0-1.
+Glow intensity of the component. The value ranges from 0 to 1. If the value is out of range, the default value is used.
 
 Default value: **0**
 

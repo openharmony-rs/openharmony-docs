@@ -6,27 +6,19 @@ declare enum SeekMode
 
 Enumerates video seek modes.
 
-| Name | Value | Description |  
-| ---------------- |--| ---------------------------- |  
-| PreviousKeyframe |0| Seeks to the nearest keyframe before the current playback position. |
-| NextKeyframe |1| Seeks to the nearest keyframe after the current playback position. |
-| ClosestKeyframe |2| Seeks to the keyframe closest to the current playback position. |
-| Accurate |3| Seeks precisely to the specified time point, regardless of whether it is a keyframe. |
-| | |This mode is highly accurate but may require decoding more frames. |
-
 **Since:** 8
 
 <!--Device-unnamed-declare enum SeekMode--><!--Device-unnamed-declare enum SeekMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PreviousKeyframe
+## Accurate
 
 ```TypeScript
-PreviousKeyframe
+Accurate
 ```
 
-Seek to the nearest previous keyframe.
+Seeks precisely to the specified time point, regardless of whether it is a keyframe. This mode is highly accurate but may require decoding more frames.
 
 **Since:** 8
 
@@ -34,25 +26,7 @@ Seek to the nearest previous keyframe.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-SeekMode-PreviousKeyframe--><!--Device-SeekMode-PreviousKeyframe-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## NextKeyframe
-
-```TypeScript
-NextKeyframe
-```
-
-Seek to the nearest next keyframe.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-SeekMode-NextKeyframe--><!--Device-SeekMode-NextKeyframe-End-->
+<!--Device-SeekMode-Accurate--><!--Device-SeekMode-Accurate-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,7 +36,7 @@ Seek to the nearest next keyframe.
 ClosestKeyframe
 ```
 
-Seek to the nearest keyframe.
+Seeks to the keyframe closest to the current playback position.
 
 **Since:** 8
 
@@ -74,13 +48,13 @@ Seek to the nearest keyframe.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Accurate
+## NextKeyframe
 
 ```TypeScript
-Accurate
+NextKeyframe
 ```
 
-Seek to a specific frame, regardless of whether the frame is a keyframe.
+Seeks to the nearest keyframe after the current playback position.
 
 **Since:** 8
 
@@ -88,6 +62,24 @@ Seek to a specific frame, regardless of whether the frame is a keyframe.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-SeekMode-Accurate--><!--Device-SeekMode-Accurate-End-->
+<!--Device-SeekMode-NextKeyframe--><!--Device-SeekMode-NextKeyframe-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PreviousKeyframe
+
+```TypeScript
+PreviousKeyframe
+```
+
+Seeks to the nearest keyframe before the current playback position.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SeekMode-PreviousKeyframe--><!--Device-SeekMode-PreviousKeyframe-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

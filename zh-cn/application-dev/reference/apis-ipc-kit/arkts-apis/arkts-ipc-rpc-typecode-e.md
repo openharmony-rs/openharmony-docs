@@ -12,87 +12,31 @@ enum TypeCode
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## INT8_ARRAY
+## BIGINT64_ARRAY
 
 ```TypeScript
-INT8_ARRAY = 0
+BIGINT64_ARRAY = 8
 ```
 
-TypedArray类型为INT8_ARRAY，数据将以8位有符号整数格式进行读写，每个元素占用1字节。
+TypedArray类型为BIGINT64_ARRAY，数据将以64位大整数格式进行读写，每个元素占用8字节。
 
 **起始版本：** 12
 
-<!--Device-TypeCode-INT8_ARRAY = 0--><!--Device-TypeCode-INT8_ARRAY = 0-End-->
+<!--Device-TypeCode-BIGINT64_ARRAY = 8--><!--Device-TypeCode-BIGINT64_ARRAY = 8-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## UINT8_ARRAY
+## BIGUINT64_ARRAY
 
 ```TypeScript
-UINT8_ARRAY = 1
+BIGUINT64_ARRAY = 9
 ```
 
-TypedArray类型为UINT8_ARRAY，数据将以8位无符号整数格式进行读写，每个元素占用1字节。
+TypedArray类型为BIGUINT64_ARRAY，数据将以64位无符号大整数格式进行读写，每个元素占用8字节。
 
 **起始版本：** 12
 
-<!--Device-TypeCode-UINT8_ARRAY = 1--><!--Device-TypeCode-UINT8_ARRAY = 1-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-## INT16_ARRAY
-
-```TypeScript
-INT16_ARRAY = 2
-```
-
-TypedArray类型为INT16_ARRAY，数据将以16位有符号整数格式进行读写，每个元素占用2字节。
-
-**起始版本：** 12
-
-<!--Device-TypeCode-INT16_ARRAY = 2--><!--Device-TypeCode-INT16_ARRAY = 2-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-## UINT16_ARRAY
-
-```TypeScript
-UINT16_ARRAY = 3
-```
-
-TypedArray类型为UINT16_ARRAY，数据将以16位无符号整数格式进行读写，每个元素占用2字节。
-
-**起始版本：** 12
-
-<!--Device-TypeCode-UINT16_ARRAY = 3--><!--Device-TypeCode-UINT16_ARRAY = 3-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-## INT32_ARRAY
-
-```TypeScript
-INT32_ARRAY = 4
-```
-
-TypedArray类型为INT32_ARRAY，数据将以32位有符号整数格式进行读写，每个元素占用4字节。
-
-**起始版本：** 12
-
-<!--Device-TypeCode-INT32_ARRAY = 4--><!--Device-TypeCode-INT32_ARRAY = 4-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-## UINT32_ARRAY
-
-```TypeScript
-UINT32_ARRAY = 5
-```
-
-TypedArray类型为UINT32_ARRAY，数据将以32位无符号整数格式进行读写，每个元素占用4字节。
-
-**起始版本：** 12
-
-<!--Device-TypeCode-UINT32_ARRAY = 5--><!--Device-TypeCode-UINT32_ARRAY = 5-End-->
+<!--Device-TypeCode-BIGUINT64_ARRAY = 9--><!--Device-TypeCode-BIGUINT64_ARRAY = 9-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -124,30 +68,86 @@ TypedArray类型为FLOAT64_ARRAY，数据将以64位双精度浮点数格式进�
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## BIGINT64_ARRAY
+## INT16_ARRAY
 
 ```TypeScript
-BIGINT64_ARRAY = 8
+INT16_ARRAY = 2
 ```
 
-TypedArray类型为BIGINT64_ARRAY，数据将以64位大整数格式进行读写，每个元素占用8字节。
+TypedArray类型为INT16_ARRAY，数据将以16位有符号整数格式进行读写，每个元素占用2字节。
 
 **起始版本：** 12
 
-<!--Device-TypeCode-BIGINT64_ARRAY = 8--><!--Device-TypeCode-BIGINT64_ARRAY = 8-End-->
+<!--Device-TypeCode-INT16_ARRAY = 2--><!--Device-TypeCode-INT16_ARRAY = 2-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## BIGUINT64_ARRAY
+## INT32_ARRAY
 
 ```TypeScript
-BIGUINT64_ARRAY = 9
+INT32_ARRAY = 4
 ```
 
-TypedArray类型为BIGUINT64_ARRAY，数据将以64位无符号大整数格式进行读写，每个元素占用8字节。
+TypedArray类型为INT32_ARRAY，数据将以32位有符号整数格式进行读写，每个元素占用4字节。
 
 **起始版本：** 12
 
-<!--Device-TypeCode-BIGUINT64_ARRAY = 9--><!--Device-TypeCode-BIGUINT64_ARRAY = 9-End-->
+<!--Device-TypeCode-INT32_ARRAY = 4--><!--Device-TypeCode-INT32_ARRAY = 4-End-->
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+## INT8_ARRAY
+
+```TypeScript
+INT8_ARRAY = 0
+```
+
+TypedArray类型为INT8_ARRAY，数据将以8位有符号整数格式进行读写，每个元素占用1字节。
+
+**起始版本：** 12
+
+<!--Device-TypeCode-INT8_ARRAY = 0--><!--Device-TypeCode-INT8_ARRAY = 0-End-->
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+## UINT16_ARRAY
+
+```TypeScript
+UINT16_ARRAY = 3
+```
+
+TypedArray类型为UINT16_ARRAY，数据将以16位无符号整数格式进行读写，每个元素占用2字节。
+
+**起始版本：** 12
+
+<!--Device-TypeCode-UINT16_ARRAY = 3--><!--Device-TypeCode-UINT16_ARRAY = 3-End-->
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+## UINT32_ARRAY
+
+```TypeScript
+UINT32_ARRAY = 5
+```
+
+TypedArray类型为UINT32_ARRAY，数据将以32位无符号整数格式进行读写，每个元素占用4字节。
+
+**起始版本：** 12
+
+<!--Device-TypeCode-UINT32_ARRAY = 5--><!--Device-TypeCode-UINT32_ARRAY = 5-End-->
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+## UINT8_ARRAY
+
+```TypeScript
+UINT8_ARRAY = 1
+```
+
+TypedArray类型为UINT8_ARRAY，数据将以8位无符号整数格式进行读写，每个元素占用1字节。
+
+**起始版本：** 12
+
+<!--Device-TypeCode-UINT8_ARRAY = 1--><!--Device-TypeCode-UINT8_ARRAY = 1-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core

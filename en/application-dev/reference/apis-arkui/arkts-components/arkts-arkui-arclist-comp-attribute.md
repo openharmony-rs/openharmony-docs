@@ -6,7 +6,7 @@ export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>
 
 In addition to the universal attributes, the following attributes are supported (the [scrollable component common attributes](arkts-arkui-common-comp-scrollablecommonmethod-c.md) are not supported):
 
-**Inheritance/Implementation:** ArcListAttribute extends CommonMethod<ArcListAttribute>
+**Inheritance/Implementation:** ArcListAttribute extends CommonMethod&lt;ArcListAttribute&gt;
 
 **Since:** 18
 

@@ -36,6 +36,7 @@ Called when the application launch or exit state changes.
 | --- | --- | --- | --- |
 | appStateData | [AppStateData](arkts-ability-appstatedata-c.md) | Yes | Application state data. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ let observer: appManager.AppForegroundStateObserver = {
 };
 appManager.on('appForegroundState', observer);
 ```
+
+<!--DelEnd-->

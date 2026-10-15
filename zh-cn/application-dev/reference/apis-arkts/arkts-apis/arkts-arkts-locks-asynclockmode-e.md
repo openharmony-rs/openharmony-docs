@@ -12,22 +12,6 @@ enum AsyncLockMode
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## SHARED
-
-```TypeScript
-SHARED = 1
-```
-
-共享锁模式。如果指定了此模式，允许​​多个线程或并发任务同时获取锁并执行操作。多用于读操作、无数据竞争的并行任务。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-AsyncLockMode-SHARED = 1--><!--Device-AsyncLockMode-SHARED = 1-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## EXCLUSIVE
 
 ```TypeScript
@@ -41,5 +25,21 @@ EXCLUSIVE = 2
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AsyncLockMode-EXCLUSIVE = 2--><!--Device-AsyncLockMode-EXCLUSIVE = 2-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## SHARED
+
+```TypeScript
+SHARED = 1
+```
+
+共享锁模式。如果指定了此模式，允许​​多个线程或并发任务同时获取锁并执行操作。多用于读操作、无数据竞争的并行任务。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AsyncLockMode-SHARED = 1--><!--Device-AsyncLockMode-SHARED = 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang

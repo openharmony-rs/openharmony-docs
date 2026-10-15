@@ -28,7 +28,7 @@ A detailed description of the skill.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-description: string--><!--Device-AgentSkill-description: string-End-->
 
@@ -48,7 +48,7 @@ Example prompts or scenarios that this skill can handle.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-examples?: Array<string>--><!--Device-AgentSkill-examples?: Array<string>-End-->
 
@@ -68,7 +68,7 @@ Extension configuration items for the skill.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-extension?: string--><!--Device-AgentSkill-extension?: string-End-->
 
@@ -88,7 +88,7 @@ A unique identifier for the Skill.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-id: string--><!--Device-AgentSkill-id: string-End-->
 
@@ -108,7 +108,7 @@ The set of supported input media types for this skill, overriding the agent's de
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-inputModes?: Array<string>--><!--Device-AgentSkill-inputModes?: Array<string>-End-->
 
@@ -128,7 +128,7 @@ A human-readable name.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-name: string--><!--Device-AgentSkill-name: string-End-->
 
@@ -148,7 +148,7 @@ The set of supported output media types for this skill, overriding the agent's d
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-outputModes?: Array<string>--><!--Device-AgentSkill-outputModes?: Array<string>-End-->
 
@@ -168,7 +168,7 @@ A set of keywords describing the skill's capabilities.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentSkill-tags: Array<string>--><!--Device-AgentSkill-tags: Array<string>-End-->
 

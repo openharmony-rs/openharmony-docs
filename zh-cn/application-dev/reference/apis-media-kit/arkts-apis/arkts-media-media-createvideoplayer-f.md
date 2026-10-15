@@ -6,6 +6,8 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createvideoplayer1"></a>
+
 ## createVideoPlayer
 
 ```TypeScript
@@ -17,13 +19,13 @@ function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [createAVPlayer](arkts-media-media-createavplayer-f.md)替代。
+> [createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createAVPlayer](arkts-media-media-createavplayer-f.md)(callback: AsyncCallback&lt;AVPlayer&gt;)
+**替代接口：** [createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer1)(callback: AsyncCallback&lt;AVPlayer&gt;)
 
 <!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void--><!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void-End-->
 
@@ -52,7 +54,7 @@ media.createVideoPlayer((error: BusinessError, video: media.VideoPlayer) => {
 ```
 
 
-<a id="createvideoplayer-1"></a>
+<a id="createvideoplayer2"></a>
 
 ## createVideoPlayer
 

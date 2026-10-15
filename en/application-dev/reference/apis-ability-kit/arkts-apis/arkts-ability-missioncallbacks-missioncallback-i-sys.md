@@ -36,6 +36,7 @@ Called by system when mission changed.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,6 +65,8 @@ distributedMissionManager.registerMissionListener(
   }
 );
 ```
+
+<!--DelEnd-->
 
 ## notifyNetDisconnect
 
@@ -85,6 +88,7 @@ Called by system when network disconnect.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,6 +117,8 @@ distributedMissionManager.registerMissionListener(
   }
 );
 ```
+
+<!--DelEnd-->
 
 ## notifySnapshot
 
@@ -134,6 +140,7 @@ Called by system when snapshot changed.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -162,3 +169,5 @@ distributedMissionManager.registerMissionListener(
   }
 );
 ```
+
+<!--DelEnd-->

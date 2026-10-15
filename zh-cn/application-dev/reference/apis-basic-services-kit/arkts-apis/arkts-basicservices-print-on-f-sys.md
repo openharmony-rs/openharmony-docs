@@ -39,6 +39,7 @@ function on(type: 'printerStateChange', callback: (state: PrinterState, info: Pr
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,6 +55,8 @@ print.on('printerStateChange', (state: print.PrinterState, info: print.PrinterIn
     }
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('jobStateChange')
@@ -89,6 +92,7 @@ function on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJ
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,6 +102,8 @@ print.on('jobStateChange', (state: print.PrintJobState, job: print.PrintJob) => 
     console.info('onJobStateChange, state : ' + JSON.stringify(state) + ', job : ' + JSON.stringify(job));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('extInfoChange')
@@ -133,6 +139,7 @@ function on(type: 'extInfoChange', callback: (extensionId: string, info: string)
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -142,3 +149,5 @@ print.on('extInfoChange', (extensionId: string, info: string) => {
     console.info('onExtInfoChange, extensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
 });
 ```
+
+<!--DelEnd-->

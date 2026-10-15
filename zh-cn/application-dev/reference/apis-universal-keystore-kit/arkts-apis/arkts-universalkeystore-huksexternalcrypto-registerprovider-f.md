@@ -19,16 +19,18 @@ function registerProvider(providerName: string, params: Array<HuksExternalCrypto
 1. 自定义ability通过UIExtensionAbility扩展实现。
 2. 注册的UIExtensionAbility可以通过证书管理kit提供的[openUKeyAuthDialog](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-security-certmanager.md)接口统一拉起。
 
-3. 系统拉起自定义弹窗时会通过want接口向开发者传递以下参数：  
-- Action：string参数类型，在拉起自定义弹窗时want传输的Action为"UkeyPINAuth"。  
-- appUid：number参数类型，通过want.parameters传输。"appUid"字段为应用id，开发者可以通过该字段完成应用隔离。  
-- keyUri：string参数类型其值为resourceId，通过want.parameters传输，表示Ukey证书的索引。
+3. 系统拉起自定义弹窗时会通过want接口向开发者传递以下参数：
 
-4. 开发者实现UIExtensionAbility时，应用需根据指定场景返回对应的错误码：  
-- 用户取消操作时，返回-1001。  
-- keyUri指定的证书/密钥不存在时，返回-1008。  
-- 参数格式错误时，返回-1014。  
-- 其余失败场景返回错误码-1000，成功时返回0。
+        - Action：string参数类型，在拉起自定义弹窗时want传输的Action为"UkeyPINAuth"。  
+        - appUid：number参数类型，通过want.parameters传输。"appUid"字段为应用id，开发者可以通过该字段完成应用隔离。  
+        - keyUri：string参数类型其值为resourceId，通过want.parameters传输，表示Ukey证书的索引。
+
+4. 开发者实现UIExtensionAbility时，应用需根据指定场景返回对应的错误码：
+
+        - 用户取消操作时，返回-1001。  
+        - keyUri指定的证书/密钥不存在时，返回-1008。  
+        - 参数格式错误时，返回-1014。  
+        - 其余失败场景返回错误码-1000，成功时返回0。
 
 **起始版本：** 22
 
@@ -56,7 +58,7 @@ function registerProvider(providerName: string, params: Array<HuksExternalCrypto
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed: call the registerProvider API, missing Permission: ohos.permission.CRYPTO_EXTENSION_REGISTER. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | the ability name param is missing. |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient. |

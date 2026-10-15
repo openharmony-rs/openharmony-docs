@@ -46,22 +46,6 @@ SIM_MESSAGE_STATUS_READ = 1
 
 **系统接口：** 此接口为系统接口。
 
-## SIM_MESSAGE_STATUS_UNREAD
-
-```TypeScript
-SIM_MESSAGE_STATUS_UNREAD = 3
-```
-
-消息未读状态
-
-**起始版本：** 7
-
-<!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3-End-->
-
-**系统能力：** SystemCapability.Telephony.SmsMms
-
-**系统接口：** 此接口为系统接口。
-
 ## SIM_MESSAGE_STATUS_SENT
 
 ```TypeScript
@@ -73,6 +57,22 @@ SIM_MESSAGE_STATUS_SENT = 5
 **起始版本：** 7
 
 <!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_SENT = 5--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_SENT = 5-End-->
+
+**系统能力：** SystemCapability.Telephony.SmsMms
+
+**系统接口：** 此接口为系统接口。
+
+## SIM_MESSAGE_STATUS_UNREAD
+
+```TypeScript
+SIM_MESSAGE_STATUS_UNREAD = 3
+```
+
+消息未读状态
+
+**起始版本：** 7
+
+<!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 

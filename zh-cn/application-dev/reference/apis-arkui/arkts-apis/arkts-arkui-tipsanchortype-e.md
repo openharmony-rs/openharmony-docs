@@ -12,24 +12,6 @@ declare enum TipsAnchorType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TARGET
-
-```TypeScript
-TARGET
-```
-
-Tips跟随目标物。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-TipsAnchorType-TARGET--><!--Device-TipsAnchorType-TARGET-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## CURSOR
 
 ```TypeScript
@@ -45,5 +27,23 @@ Tips跟随鼠标。
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-TipsAnchorType-CURSOR--><!--Device-TipsAnchorType-CURSOR-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TARGET
+
+```TypeScript
+TARGET
+```
+
+Tips跟随目标物。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TipsAnchorType-TARGET--><!--Device-TipsAnchorType-TARGET-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

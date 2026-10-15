@@ -6,6 +6,8 @@ type XComponent = TypedFrameNode<XComponentInterface, XComponentAttribute>
 
 XComponent类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;XComponentInterface, [XComponentAttribute](../arkts-components/arkts-arkui-xcomponent-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ XComponent类型的FrameNode节点类型。
 <!--Device-typeNode-type XComponent = TypedFrameNode<XComponentInterface, XComponentAttribute>--><!--Device-typeNode-type XComponent = TypedFrameNode<XComponentInterface, XComponentAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;XComponentInterface, [XComponentAttribute](../arkts-components/arkts-arkui-xcomponent-comp-attribute.md)&gt;

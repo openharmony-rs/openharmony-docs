@@ -14,17 +14,17 @@ Enumerates the watermark editable flags.
 
 **System API:** This is a system API.
 
-## DEFAULT
+## BRAND
 
 ```TypeScript
-DEFAULT = 0
+BRAND = 3
 ```
 
-Watermarks are not editable.
+Brand watermarks are editable.
 
 **Since:** 14
 
-<!--Device-WatermarkType-DEFAULT = 0--><!--Device-WatermarkType-DEFAULT = 0-End-->
+<!--Device-WatermarkType-BRAND = 3--><!--Device-WatermarkType-BRAND = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,17 +62,17 @@ Common watermarks are editable.
 
 **System API:** This is a system API.
 
-## BRAND
+## DEFAULT
 
 ```TypeScript
-BRAND = 3
+DEFAULT = 0
 ```
 
-Brand watermarks are editable.
+Watermarks are not editable.
 
 **Since:** 14
 
-<!--Device-WatermarkType-BRAND = 3--><!--Device-WatermarkType-BRAND = 3-End-->
+<!--Device-WatermarkType-DEFAULT = 0--><!--Device-WatermarkType-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

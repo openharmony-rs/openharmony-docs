@@ -366,6 +366,8 @@ if (proxy != undefined) {
 }
 ```
 
+<a id="sendmessagerequest1"></a>
+
 ## sendMessageRequest
 
 ```TypeScript
@@ -484,7 +486,7 @@ try {
 }
 ```
 
-<a id="sendmessagerequest-1"></a>
+<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -1033,6 +1035,8 @@ if (proxy != undefined) {
 }
 ```
 
+<a id="sendrequest1"></a>
+
 ## sendRequest
 
 ```TypeScript
@@ -1137,7 +1141,7 @@ try {
 }
 ```
 
-<a id="sendrequest-1"></a>
+<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -1256,7 +1260,7 @@ try {
 }
 ```
 
-<a id="sendrequest-2"></a>
+<a id="sendrequest3"></a>
 
 ## sendRequest
 

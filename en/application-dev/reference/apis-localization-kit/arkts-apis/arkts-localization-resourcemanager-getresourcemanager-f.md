@@ -6,6 +6,8 @@
 import { resourceManager } from '@kit.LocalizationKit';
 ```
 
+<a id="getresourcemanager1"></a>
+
 ## getResourceManager
 
 ```TypeScript
@@ -56,7 +58,7 @@ export default {
 ```
 
 
-<a id="getresourcemanager-1"></a>
+<a id="getresourcemanager2"></a>
 
 ## getResourceManager
 
@@ -111,7 +113,7 @@ export default {
 ```
 
 
-<a id="getresourcemanager-2"></a>
+<a id="getresourcemanager3"></a>
 
 ## getResourceManager
 
@@ -159,7 +161,7 @@ export default {
 ```
 
 
-<a id="getresourcemanager-3"></a>
+<a id="getresourcemanager4"></a>
 
 ## getResourceManager
 

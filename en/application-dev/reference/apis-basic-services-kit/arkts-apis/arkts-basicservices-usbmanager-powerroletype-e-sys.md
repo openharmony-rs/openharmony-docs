@@ -30,22 +30,6 @@ None.
 
 **System API:** This is a system API.
 
-## SOURCE
-
-```TypeScript
-SOURCE = 1
-```
-
-Power supply for external devices.
-
-**Since:** 9
-
-<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
 ## SINK
 
 ```TypeScript
@@ -57,6 +41,22 @@ External power supply.
 **Since:** 9
 
 <!--Device-PowerRoleType-SINK = 2--><!--Device-PowerRoleType-SINK = 2-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
+## SOURCE
+
+```TypeScript
+SOURCE = 1
+```
+
+Power supply for external devices.
+
+**Since:** 9
+
+<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

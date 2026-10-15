@@ -50,7 +50,7 @@ Default value: **500**
 
 **NOTE:** 
 
-Value range: [0, +∞). If the value is less than or equal to 0, the default value **500** is used.
+Value range: (0, +∞). If the value is less than or equal to 0, the default value **500** is used.
 
 **Type:** number
 
@@ -70,7 +70,7 @@ Value range: [0, +∞). If the value is less than or equal to 0, the default val
 fingers?: number
 ```
 
-Minimum number of fingers to trigger a long press gesture. The value ranges from 1 to 10.
+Minimum number of fingers to trigger a long press. When **isFingerCountLimited** is enabled, the number of fingers touching the screen must equal the fingers value; otherwise, gesture recognition fails.
 
 Default value: **1**
 

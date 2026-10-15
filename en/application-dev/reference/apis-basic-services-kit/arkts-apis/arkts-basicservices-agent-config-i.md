@@ -33,7 +33,7 @@ Task action.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-action: Action--><!--Device-Config-action: Action-End-->
 
@@ -55,7 +55,7 @@ the server starts to download files.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-begins?: long--><!--Device-Config-begins?: long-End-->
 
@@ -75,7 +75,7 @@ string); the default value is null.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-data?: string | Array<FormItem>--><!--Device-Config-data?: string | Array<FormItem>-End-->
 
@@ -93,7 +93,7 @@ Task description. The value contains a maximum of 1024 characters. The default v
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-description?: string--><!--Device-Config-description?: string-End-->
 
@@ -115,7 +115,7 @@ the server starts to download files.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-ends?: long--><!--Device-Config-ends?: long-End-->
 
@@ -155,7 +155,7 @@ result of the total task.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-gauge?: boolean--><!--Device-Config-gauge?: boolean-End-->
 
@@ -194,7 +194,7 @@ Path index of the task. It is usually used for resumable transfers. The default 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-index?: int--><!--Device-Config-index?: int-End-->
 
@@ -217,7 +217,7 @@ Whether the task is allowed on a metered network. The default value is **false**
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-metered?: boolean--><!--Device-Config-metered?: boolean-End-->
 
@@ -238,7 +238,7 @@ Standard HTTP method for the task. The value can be **GET**, **POST**, or **PUT*
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-method?: string--><!--Device-Config-method?: string-End-->
 
@@ -272,7 +272,7 @@ Task mode. The default mode is background. Since API version 20, the task mode f
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-mode?: Mode--><!--Device-Config-mode?: Mode-End-->
 
@@ -313,7 +313,7 @@ Network used for the task. The default value is **ANY** (Wi-Fi or cellular).
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-network?: Network--><!--Device-Config-network?: Network-End-->
 
@@ -354,7 +354,7 @@ In this case, do not create multiple tasks to download content to the same file 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-overwrite?: boolean--><!--Device-Config-overwrite?: boolean-End-->
 
@@ -375,7 +375,7 @@ The default value is **false**.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-precise?: boolean--><!--Device-Config-precise?: boolean-End-->
 
@@ -432,7 +432,7 @@ Whether redirection is allowed. The default value is **true**.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-redirect?: boolean--><!--Device-Config-redirect?: boolean-End-->
 
@@ -453,7 +453,7 @@ Whether automatic retry is enabled for the task. This parameter is only applicab
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-retry?: boolean--><!--Device-Config-retry?: boolean-End-->
 
@@ -474,7 +474,7 @@ Whether the task is allowed on a roaming network. The default value is **true**.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-roaming?: boolean--><!--Device-Config-roaming?: boolean-End-->
 
@@ -505,7 +505,7 @@ Since API version 20, the default file path can be the cache path of the caller 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-saveas?: string--><!--Device-Config-saveas?: string-End-->
 
@@ -541,7 +541,7 @@ Task title. The value contains a maximum of 256 characters. The default value is
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-title?: string--><!--Device-Config-title?: string-End-->
 
@@ -553,13 +553,13 @@ Task title. The value contains a maximum of 256 characters. The default value is
 token?: string
 ```
 
-Task token. To query a task with a token, you need to provide the token and use [request.agent.touch](arkts-basicservices-agent-touch-f.md). Otherwise, the specified task cannot be queried. The value contains 8 to 2048 bytes. This parameter is left empty by default.
+Task token. To query a task with a token, you need to provide the token and use [request.agent.touch](arkts-basicservices-agent-touch-f.md#touch1). Otherwise, the specified task cannot be queried. The value contains 8 to 2048 bytes. This parameter is left empty by default.
 
 **Type:** string
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-token?: string--><!--Device-Config-token?: string-End-->
 
@@ -577,7 +577,7 @@ Resource URL. From API version 6 to 14, the value contains a maximum of 2048 cha
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Config-url: string--><!--Device-Config-url: string-End-->
 

@@ -42,7 +42,7 @@ Obtains the ID of this component.
 getUniqueId(): number
 ```
 
-Returns the unique ID of the current component.
+Returns the unique ID of the current component. Different from the component ID returned by **getId()**, this API returns the unique ID of the component. When an API parameter requires the unique ID of a component (such as the **uniqueId** of **isHostBelongsTo**), use this API to obtain it.
 
 **Since:** 26.0.0
 

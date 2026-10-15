@@ -18,7 +18,7 @@ A font descriptor is a data structure that describes font features. It contains 
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-text-function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise<FontDescriptor>--><!--Device-text-function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise<FontDescriptor>-End-->
 
@@ -41,7 +41,7 @@ A font descriptor is a data structure that describes font features. It contains 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **Examples**
 

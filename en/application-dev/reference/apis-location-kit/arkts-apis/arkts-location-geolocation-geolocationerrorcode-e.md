@@ -10,45 +10,9 @@ Enum for error code
 
 **Deprecated since:** 9
 
-**Required permissions:** ohos.permission.LOCATION @enum { number }
+**Required permissions:** ohos.permission.LOCATION
 
 <!--Device-geolocation-export enum GeoLocationErrorCode--><!--Device-geolocation-export enum GeoLocationErrorCode-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-## INPUT_PARAMS_ERROR
-
-```TypeScript
-INPUT_PARAMS_ERROR
-```
-
-Indicates input parameter error.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Required permissions:** ohos.permission.LOCATION
-
-<!--Device-GeoLocationErrorCode-INPUT_PARAMS_ERROR--><!--Device-GeoLocationErrorCode-INPUT_PARAMS_ERROR-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-## REVERSE_GEOCODE_ERROR
-
-```TypeScript
-REVERSE_GEOCODE_ERROR
-```
-
-Indicates reverse geocode query failed.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Required permissions:** ohos.permission.LOCATION
-
-<!--Device-GeoLocationErrorCode-REVERSE_GEOCODE_ERROR--><!--Device-GeoLocationErrorCode-REVERSE_GEOCODE_ERROR-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -70,13 +34,13 @@ Indicates geocode query failed.
 
 **System capability:** SystemCapability.Location.Location.Core
 
-## LOCATOR_ERROR
+## INPUT_PARAMS_ERROR
 
 ```TypeScript
-LOCATOR_ERROR
+INPUT_PARAMS_ERROR
 ```
 
-Indicates positioning failed.
+Indicates input parameter error.
 
 **Since:** 7
 
@@ -84,25 +48,7 @@ Indicates positioning failed.
 
 **Required permissions:** ohos.permission.LOCATION
 
-<!--Device-GeoLocationErrorCode-LOCATOR_ERROR--><!--Device-GeoLocationErrorCode-LOCATOR_ERROR-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-## LOCATION_SWITCH_ERROR
-
-```TypeScript
-LOCATION_SWITCH_ERROR
-```
-
-Indicates operation failure caused by abnormal location switch.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Required permissions:** ohos.permission.LOCATION
-
-<!--Device-GeoLocationErrorCode-LOCATION_SWITCH_ERROR--><!--Device-GeoLocationErrorCode-LOCATION_SWITCH_ERROR-End-->
+<!--Device-GeoLocationErrorCode-INPUT_PARAMS_ERROR--><!--Device-GeoLocationErrorCode-INPUT_PARAMS_ERROR-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -139,5 +85,59 @@ Indicates location request timeout.
 **Required permissions:** ohos.permission.LOCATION
 
 <!--Device-GeoLocationErrorCode-LOCATION_REQUEST_TIMEOUT_ERROR--><!--Device-GeoLocationErrorCode-LOCATION_REQUEST_TIMEOUT_ERROR-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+## LOCATION_SWITCH_ERROR
+
+```TypeScript
+LOCATION_SWITCH_ERROR
+```
+
+Indicates operation failure caused by abnormal location switch.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoLocationErrorCode-LOCATION_SWITCH_ERROR--><!--Device-GeoLocationErrorCode-LOCATION_SWITCH_ERROR-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+## LOCATOR_ERROR
+
+```TypeScript
+LOCATOR_ERROR
+```
+
+Indicates positioning failed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoLocationErrorCode-LOCATOR_ERROR--><!--Device-GeoLocationErrorCode-LOCATOR_ERROR-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+## REVERSE_GEOCODE_ERROR
+
+```TypeScript
+REVERSE_GEOCODE_ERROR
+```
+
+Indicates reverse geocode query failed.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoLocationErrorCode-REVERSE_GEOCODE_ERROR--><!--Device-GeoLocationErrorCode-REVERSE_GEOCODE_ERROR-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

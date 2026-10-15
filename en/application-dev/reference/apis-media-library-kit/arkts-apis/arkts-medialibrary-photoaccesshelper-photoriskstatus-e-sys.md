@@ -14,24 +14,6 @@ Enumerates the risk types of images.
 
 **System API:** This is a system API.
 
-## UNIDENTIFIED
-
-```TypeScript
-UNIDENTIFIED = 0
-```
-
-Default type.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PhotoRiskStatus-UNIDENTIFIED = 0--><!--Device-PhotoRiskStatus-UNIDENTIFIED = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## APPROVED
 
 ```TypeScript
@@ -45,6 +27,24 @@ Approved images.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PhotoRiskStatus-APPROVED = 1--><!--Device-PhotoRiskStatus-APPROVED = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## REJECTED
+
+```TypeScript
+REJECTED = 3
+```
+
+Rejected images.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhotoRiskStatus-REJECTED = 3--><!--Device-PhotoRiskStatus-REJECTED = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -68,19 +68,19 @@ Suspicious images.
 
 **System API:** This is a system API.
 
-## REJECTED
+## UNIDENTIFIED
 
 ```TypeScript
-REJECTED = 3
+UNIDENTIFIED = 0
 ```
 
-Rejected images.
+Default type.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PhotoRiskStatus-REJECTED = 3--><!--Device-PhotoRiskStatus-REJECTED = 3-End-->
+<!--Device-PhotoRiskStatus-UNIDENTIFIED = 0--><!--Device-PhotoRiskStatus-UNIDENTIFIED = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -14,6 +14,38 @@ The trace output level lower than the threshold does not take effect. The log ve
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
+## COMMERCIAL
+
+```TypeScript
+COMMERCIAL = 3
+```
+
+Level for the nolog version, which has the highest priority.
+
+**Since:** 19
+
+**Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-HiTraceOutputLevel-COMMERCIAL = 3--><!--Device-HiTraceOutputLevel-COMMERCIAL = 3-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiTrace
+
+## CRITICAL
+
+```TypeScript
+CRITICAL = 2
+```
+
+Level for the log version, which has a higher priority than **INFO**.
+
+**Since:** 19
+
+**Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-HiTraceOutputLevel-CRITICAL = 2--><!--Device-HiTraceOutputLevel-CRITICAL = 2-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiTrace
+
 ## DEBUG
 
 ```TypeScript
@@ -24,7 +56,7 @@ Level used only for debugging, which has the lowest priority.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-HiTraceOutputLevel-DEBUG = 0--><!--Device-HiTraceOutputLevel-DEBUG = 0-End-->
 
@@ -40,41 +72,9 @@ Level for the log version.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-HiTraceOutputLevel-INFO = 1--><!--Device-HiTraceOutputLevel-INFO = 1-End-->
-
-**System capability:** SystemCapability.HiviewDFX.HiTrace
-
-## CRITICAL
-
-```TypeScript
-CRITICAL = 2
-```
-
-Level for the log version, which has a higher priority than **INFO**.
-
-**Since:** 19
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
-
-<!--Device-HiTraceOutputLevel-CRITICAL = 2--><!--Device-HiTraceOutputLevel-CRITICAL = 2-End-->
-
-**System capability:** SystemCapability.HiviewDFX.HiTrace
-
-## COMMERCIAL
-
-```TypeScript
-COMMERCIAL = 3
-```
-
-Level for the nolog version, which has the highest priority.
-
-**Since:** 19
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
-
-<!--Device-HiTraceOutputLevel-COMMERCIAL = 3--><!--Device-HiTraceOutputLevel-COMMERCIAL = 3-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
@@ -88,7 +88,7 @@ Maximum trace output level: **COMMERCIAL**.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-HiTraceOutputLevel-MAX = COMMERCIAL--><!--Device-HiTraceOutputLevel-MAX = COMMERCIAL-End-->
 

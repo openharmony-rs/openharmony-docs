@@ -51,9 +51,10 @@ async function getRawDescriptor() {
     return;
   }
 
+  try {
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
-  if (!rightResult) {
-    console.error(`request right failed`);
+  } catch (err) {
+    console.error(`request right failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
@@ -61,6 +62,7 @@ async function getRawDescriptor() {
     console.error(`connect device failed`);
     return;
   }
+  // 获取原始的USB描述符数据，失败时可能返回undefined，需做判空处理
   usbManager.getRawDescriptor(devicePipe);
   usbManager.closePipe(devicePipe);
 }

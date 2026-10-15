@@ -39,9 +39,10 @@ Checks whether the battery configuration is enabled based on the specified scena
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [5100101](../errorcode-battery-info.md#5100101-service-connection-failure) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ let result = batteryInfo.isBatteryConfigSupported(sceneName);
 
 console.info("The result is: " + result);
 ```
+
+<!--DelEnd-->

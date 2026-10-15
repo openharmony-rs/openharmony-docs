@@ -51,6 +51,7 @@ Checks whether the focus assist is enabled.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,6 +67,8 @@ function getFocusAssist(professionalPhotoSession: camera.ProfessionalPhotoSessio
   return isFocusAssistOpened;
 }
 ```
+
+<!--DelEnd-->
 
 ## getFocusDriven
 
@@ -96,6 +99,7 @@ Obtains the focus drive type in use.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,6 +117,8 @@ function getFocusDriven(session: camera.VideoSessionForSys): camera.FocusDrivenT
   return focusDrivenType;
 }
 ```
+
+<!--DelEnd-->
 
 ## getFocusRange
 
@@ -143,6 +149,7 @@ Obtains the focus range type in use.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -160,6 +167,8 @@ function getFocusRange(session: camera.VideoSessionForSys): camera.FocusRangeTyp
   return focusRangeType;
 }
 ```
+
+<!--DelEnd-->
 
 ## setFocusAssist
 
@@ -191,6 +200,7 @@ Sets the focus assist. Before the setting, call [isFocusAssistSupported](arkts-c
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -206,6 +216,8 @@ function setFocusAssist(professionalPhotoSession: camera.ProfessionalPhotoSessio
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setFocusDriven
 
@@ -234,11 +246,12 @@ Sets a focus drive type. Before the setting, call [isFocusDrivenTypeSupported](a
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -254,6 +267,8 @@ function setFocusDriven(session: camera.VideoSessionForSys, type: camera.FocusDr
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setFocusRange
 
@@ -282,11 +297,12 @@ Sets a focus range type. Before the setting, call [isFocusRangeTypeSupported](ar
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -302,3 +318,5 @@ function setFocusRange(session: camera.VideoSessionForSys, type: camera.FocusRan
   }
 }
 ```
+
+<!--DelEnd-->

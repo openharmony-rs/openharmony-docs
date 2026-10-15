@@ -31,7 +31,7 @@ function startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | shortcutInfo | [ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md) | 是 | 应用的快捷方式信息。 |
-| startReason | string | 是 | 快捷方式的启动原因，取值包括：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](../../../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
+| startReason | string | 是 | 快捷方式的启动原因，取值范围：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](../../../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动Ability所携带的参数，用于指定目标Ability的窗口模式。 |
 
 **返回值：**
@@ -49,6 +49,7 @@ function startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not support. |
 | [17700065](../errorcode-bundle.md#17700065-shortcutinfo结构体中指定的want不支持被拉起) | The specified shortcut want in shortcut info is not supported to be started. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,3 +82,5 @@ try {
   console.error(`startShortcutWithReason errData is errCode:${code}  message:${message}`);
 }
 ```
+
+<!--DelEnd-->

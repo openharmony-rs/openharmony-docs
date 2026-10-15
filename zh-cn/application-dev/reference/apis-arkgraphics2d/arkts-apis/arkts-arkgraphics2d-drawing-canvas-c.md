@@ -125,13 +125,15 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="clear1"></a>
+
 ## clear
 
 ```TypeScript
 clear(color: common2D.Color): void
 ```
 
-使用指定颜色填充画布上的裁剪区域。效果等同于[drawColor](#drawcolor)。
+使用指定颜色填充画布上的裁剪区域。效果等同于[drawColor](#drawcolor1)。
 
 **起始版本：** 12
 
@@ -166,7 +168,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="clear-1"></a>
+<a id="clear2"></a>
 
 ## clear
 
@@ -174,7 +176,7 @@ class DrawingRenderNode extends RenderNode {
 clear(color: common2D.Color | number): void
 ```
 
-使用指定颜色填充画布上的裁剪区域。效果等同于[drawColor](#drawcolor)。
+使用指定颜色填充画布上的裁剪区域。效果等同于[drawColor](#drawcolor1)。
 
 **起始版本：** 18
 
@@ -437,7 +439,7 @@ constructor(pixelmap: image.PixelMap)
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Canvas-constructor(pixelmap: image.PixelMap)--><!--Device-Canvas-constructor(pixelmap: image.PixelMap)-End-->
 
@@ -723,6 +725,8 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="drawcolor1"></a>
+
 ## drawColor
 
 ```TypeScript
@@ -770,7 +774,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawcolor-1"></a>
+<a id="drawcolor2"></a>
 
 ## drawColor
 
@@ -778,7 +782,7 @@ class DrawingRenderNode extends RenderNode {
 drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: BlendMode): void
 ```
 
-使用指定颜色并按照指定的[BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md)对画布当前裁剪区域进行填充。性能优于[drawColor](#drawcolor)接口，推荐使用本接口。
+使用指定颜色并按照指定的[BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md)对画布当前裁剪区域进行填充。性能优于[drawColor](#drawcolor1)接口，推荐使用本接口。
 
 **起始版本：** 12
 
@@ -816,7 +820,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawcolor-2"></a>
+<a id="drawcolor3"></a>
 
 ## drawColor
 
@@ -1705,6 +1709,8 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="drawrect1"></a>
+
 ## drawRect
 
 ```TypeScript
@@ -1750,7 +1756,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawrect-1"></a>
+<a id="drawrect2"></a>
 
 ## drawRect
 
@@ -1758,7 +1764,7 @@ class DrawingRenderNode extends RenderNode {
 drawRect(left: number, top: number, right: number, bottom: number): void
 ```
 
-绘制一个矩形，默认使用黑色填充。性能优于[drawRect](#drawrect)接口，推荐使用本接口。
+绘制一个矩形，默认使用黑色填充。性能优于[drawRect](#drawrect1)接口，推荐使用本接口。
 
 **起始版本：** 12
 
@@ -1890,6 +1896,8 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="drawshadow1"></a>
+
 ## drawShadow
 
 ```TypeScript
@@ -1956,7 +1964,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="drawshadow-1"></a>
+<a id="drawshadow2"></a>
 
 ## drawShadow
 

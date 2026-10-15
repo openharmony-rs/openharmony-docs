@@ -39,6 +39,7 @@ function setMagnificationState(state: boolean): void
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [9300007](../errorcode-accessibility.md#9300007-触发放大功能失败) | Trigger magnification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
   console.error(`Failed to set magnification. Code: ${e.code}, message: ${e.message}`);
 }
 ```
+
+<!--DelEnd-->

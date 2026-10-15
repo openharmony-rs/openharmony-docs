@@ -12,7 +12,7 @@ import { appControl } from '@kit.AbilityKit';
 function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>
 ```
 
-Query all disposed rules under the current user for the specified bundle name.
+Obtains all disposed rules set for a specified application bundle.
 
 **Since:** 23
 
@@ -30,13 +30,13 @@ Query all disposed rules under the current user for the specified bundle name.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Indicates the bundle name of the setter that sets the disposed rules. |
+| bundleName | string | Yes | Bundle name of the application bundle for which the disposed rule is set. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[DisposedRuleConfiguration](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)&gt; | Returns disposed rules. |
+| Array&lt;[DisposedRuleConfiguration](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)&gt; | Disposed rules set for the specified application bundle. |
 
 **Error codes:**
 
@@ -46,6 +46,7 @@ Query all disposed rules under the current user for the specified bundle name.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied. A non-system application is not allowed to call a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   console.error('getDisposedRulesByBundle failed ' + message);
 }
 ```
+
+<!--DelEnd-->

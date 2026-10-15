@@ -56,7 +56,7 @@ readonly name: string
 readonly scheduledUpdateTime: string
 ```
 
-表示卡片定点刷新的时间，采用24小时计数，精确到分钟。
+表示卡片定点刷新的时间，采用24小时计数，精确到分钟，和定时刷新二选一，二者都配置的情况下，定时优先。
 
 **类型：** string
 

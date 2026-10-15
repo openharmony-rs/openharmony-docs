@@ -99,7 +99,7 @@ Clears this HashMap and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-clear(): void--><!--Device-HashMap-clear(): void-End-->
 
@@ -132,7 +132,7 @@ A constructor used to create a **HashMap** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-constructor()--><!--Device-HashMap-constructor()-End-->
 
@@ -160,7 +160,7 @@ Returns an iterator that contains all the elements in this HashMap.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-entries(): IterableIterator<[K, V]>--><!--Device-HashMap-entries(): IterableIterator<[K, V]>-End-->
 
@@ -313,7 +313,7 @@ Checks whether this HashMap has the specified key.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-hasKey(key: K): boolean--><!--Device-HashMap-hasKey(key: K): boolean-End-->
 
@@ -356,7 +356,7 @@ Checks whether this HashMap has the specified value.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-hasValue(value: V): boolean--><!--Device-HashMap-hasValue(value: V): boolean-End-->
 
@@ -399,7 +399,7 @@ Checks whether this HashMap is empty (contains no element).
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-isEmpty(): boolean--><!--Device-HashMap-isEmpty(): boolean-End-->
 
@@ -435,7 +435,7 @@ Returns an iterator that contains all the keys in this HashMap.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-keys(): IterableIterator<K>--><!--Device-HashMap-keys(): IterableIterator<K>-End-->
 
@@ -521,7 +521,7 @@ Replaces the value of a specified key.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-replace(key: K, newValue: V): boolean--><!--Device-HashMap-replace(key: K, newValue: V): boolean-End-->
 
@@ -565,7 +565,7 @@ Adds or updates an element in this HashMap.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-set(key: K, value: V): Object--><!--Device-HashMap-set(key: K, value: V): Object-End-->
 
@@ -608,7 +608,7 @@ Adds all elements in a **HashMap** instance to this HashMap.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-setAll(map: HashMap<K, V>): void--><!--Device-HashMap-setAll(map: HashMap<K, V>): void-End-->
 
@@ -649,7 +649,7 @@ Returns an iterator that contains all the values in this HashMap.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HashMap-values(): IterableIterator<V>--><!--Device-HashMap-values(): IterableIterator<V>-End-->
 

@@ -47,6 +47,7 @@ function setShortcutsEnabled(shortcutsInfo: Array<ShortcutInfo>, isEnabled: bool
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
 | [17700070](../errorcode-bundle.md#17700070-指定的快捷方式id不合法) | The specified shortcut id is illegal. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,3 +82,5 @@ try {
   console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

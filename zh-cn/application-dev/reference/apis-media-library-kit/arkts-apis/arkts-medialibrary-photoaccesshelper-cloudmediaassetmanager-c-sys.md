@@ -52,6 +52,7 @@ cancelDownloadCloudMedia(): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; 2 <br>. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,6 +67,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## cancelDownloadSpecificCloudMedia
 
@@ -106,6 +109,7 @@ cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise<void>
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -122,6 +126,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getCloudMediaAssetManagerInstance
 
@@ -159,6 +165,7 @@ static getCloudMediaAssetManagerInstance(context: Context): CloudMediaAssetManag
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -173,6 +180,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getCloudMediaAssetStatus
 
@@ -206,6 +215,7 @@ getCloudMediaAssetStatus(): Promise<CloudMediaAssetStatus>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -225,6 +235,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## offDownloadProgressChange
 
@@ -248,7 +260,7 @@ offDownloadProgressChange(callback?: Callback<CloudAssetDownloadProgressInfo>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CloudAssetDownloadProgressInfo](arkts-medialibrary-photoaccesshelper-cloudassetdownloadprogressinfo-i-sys.md)&gt; | 否 | 取消监听[onDownloadProgressChange](#ondownloadprogresschange)注册指定的callback监听；不填时，则取消所有进度相关监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CloudAssetDownloadProgressInfo](arkts-medialibrary-photoaccesshelper-cloudassetdownloadprogressinfo-i-sys.md)&gt; | 否 | 取消监听onDownloadProgressChange注册指定的callback监听；不填时，则取消所有进度相关监听。 |
 
 **错误码：**
 
@@ -258,6 +270,7 @@ offDownloadProgressChange(callback?: Callback<CloudAssetDownloadProgressInfo>): 
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -272,6 +285,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDownloadProgressChange
 
@@ -305,6 +320,7 @@ onDownloadProgressChange(callback: Callback<CloudAssetDownloadProgressInfo>): vo
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -323,6 +339,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## pauseDownloadCloudMedia
 
@@ -356,6 +374,7 @@ pauseDownloadCloudMedia(): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -370,6 +389,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## pauseDownloadSpecificCloudMedia
 
@@ -410,6 +431,7 @@ pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise<void>
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -426,6 +448,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## queryDownloadSpecificCloudMediaDetails
 
@@ -465,6 +489,7 @@ queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataShare
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -484,6 +509,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## queryDownloadSpecificCloudMediaTaskCount
 
@@ -523,6 +550,7 @@ queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSha
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -542,6 +570,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## resumeDownloadSpecificCloudMedia
 
@@ -582,6 +612,7 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise<void>
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -598,6 +629,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## retainCloudMediaAsset
 
@@ -638,6 +671,7 @@ retainCloudMediaAsset(retainType: CloudMediaRetainType): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -652,6 +686,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## startDownloadCloudMedia
 
@@ -692,6 +728,7 @@ startDownloadCloudMedia(downloadType: CloudMediaDownloadType): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -706,6 +743,8 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## startDownloadSpecificCloudMedia
 
@@ -746,6 +785,7 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise<Map<string, CloudA
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:<br>1. The assetUris array is empty; <br>2. The assetUris array size is bigger than 500. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -763,3 +803,5 @@ async function example(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->

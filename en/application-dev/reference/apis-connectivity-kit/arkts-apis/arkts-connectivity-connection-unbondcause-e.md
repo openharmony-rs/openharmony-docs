@@ -12,38 +12,6 @@ Enum for cause of unbond.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## USER_REMOVED
-
-```TypeScript
-USER_REMOVED = 0
-```
-
-User proactively removed device.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UnbondCause-USER_REMOVED = 0--><!--Device-UnbondCause-USER_REMOVED = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## REMOTE_DEVICE_DOWN
-
-```TypeScript
-REMOTE_DEVICE_DOWN = 1
-```
-
-Remote device shut down.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UnbondCause-REMOTE_DEVICE_DOWN = 1--><!--Device-UnbondCause-REMOTE_DEVICE_DOWN = 1-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## AUTH_FAILURE
 
 ```TypeScript
@@ -89,5 +57,37 @@ Internal error.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-UnbondCause-INTERNAL_ERROR = 4--><!--Device-UnbondCause-INTERNAL_ERROR = 4-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## REMOTE_DEVICE_DOWN
+
+```TypeScript
+REMOTE_DEVICE_DOWN = 1
+```
+
+Remote device shut down.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnbondCause-REMOTE_DEVICE_DOWN = 1--><!--Device-UnbondCause-REMOTE_DEVICE_DOWN = 1-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## USER_REMOVED
+
+```TypeScript
+USER_REMOVED = 0
+```
+
+User proactively removed device.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnbondCause-USER_REMOVED = 0--><!--Device-UnbondCause-USER_REMOVED = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

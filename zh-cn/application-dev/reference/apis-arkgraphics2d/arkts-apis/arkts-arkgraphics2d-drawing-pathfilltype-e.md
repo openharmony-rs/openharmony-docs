@@ -19,20 +19,6 @@ enum PathFillType
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## WINDING
-
-```TypeScript
-WINDING = 0
-```
-
-绘制区域中的任意一点，向任意方向射出一条射线，对于射线和路径的所有交点，初始计数为0，遇到每个顺时针的交点（路径从射线的左边向右穿过），计数加1，遇到每个逆时针的交点（路径从射线的右边向左穿过），计数减1，若最终的计数结果不为0，则认为这个点在路径内部，需要被涂色；若计数为0则不被涂色。
-
-**起始版本：** 12
-
-<!--Device-PathFillType-WINDING = 0--><!--Device-PathFillType-WINDING = 0-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
 ## EVEN_ODD
 
 ```TypeScript
@@ -44,6 +30,20 @@ EVEN_ODD = 1
 **起始版本：** 12
 
 <!--Device-PathFillType-EVEN_ODD = 1--><!--Device-PathFillType-EVEN_ODD = 1-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## INVERSE_EVEN_ODD
+
+```TypeScript
+INVERSE_EVEN_ODD = 3
+```
+
+EVEN_ODD涂色规则取反。若这条射线和路径相交的次数是奇数，则这个点被认为在路径内部，不涂色；若是偶数则需要被涂色。
+
+**起始版本：** 12
+
+<!--Device-PathFillType-INVERSE_EVEN_ODD = 3--><!--Device-PathFillType-INVERSE_EVEN_ODD = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -61,16 +61,16 @@ WINDING涂色规则取反。若最终的计数结果不为0，则认为这个点
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## INVERSE_EVEN_ODD
+## WINDING
 
 ```TypeScript
-INVERSE_EVEN_ODD = 3
+WINDING = 0
 ```
 
-EVEN_ODD涂色规则取反。若这条射线和路径相交的次数是奇数，则这个点被认为在路径内部，不涂色；若是偶数则需要被涂色。
+绘制区域中的任意一点，向任意方向射出一条射线，对于射线和路径的所有交点，初始计数为0，遇到每个顺时针的交点（路径从射线的左边向右穿过），计数加1，遇到每个逆时针的交点（路径从射线的右边向左穿过），计数减1，若最终的计数结果不为0，则认为这个点在路径内部，需要被涂色；若计数为0则不被涂色。
 
 **起始版本：** 12
 
-<!--Device-PathFillType-INVERSE_EVEN_ODD = 3--><!--Device-PathFillType-INVERSE_EVEN_ODD = 3-End-->
+<!--Device-PathFillType-WINDING = 0--><!--Device-PathFillType-WINDING = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

@@ -12,22 +12,6 @@ export enum LocationRequestPriority
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-## UNSET
-
-```TypeScript
-UNSET = 0x200
-```
-
-表示未设置优先级，表示[LocationRequestPriority](arkts-location-geolocationmanager-locationrequestpriority-e.md)无效。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-LocationRequestPriority-UNSET = 0x200--><!--Device-LocationRequestPriority-UNSET = 0x200-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
 ## ACCURACY
 
 ```TypeScript
@@ -40,27 +24,9 @@ ACCURACY = 0x201
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationRequestPriority-ACCURACY = 0x201--><!--Device-LocationRequestPriority-ACCURACY = 0x201-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## LOW_POWER
-
-```TypeScript
-LOW_POWER = 0x202
-```
-
-表示低功耗优先。
-
-低功耗定位优先策略仅使用网络定位技术，在室内和户外场景均可提供定位服务，因为其依赖周边基站、可见WLAN、蓝牙设备的分布情况，定位结果的精度波动范围较大，推荐在对定位结果精度要求不高的场景下使用该策略，可以有效节省设备功耗。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-LocationRequestPriority-LOW_POWER = 0x202--><!--Device-LocationRequestPriority-LOW_POWER = 0x202-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -76,8 +42,42 @@ FIRST_FIX = 0x203
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-LocationRequestPriority-FIRST_FIX = 0x203--><!--Device-LocationRequestPriority-FIRST_FIX = 0x203-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## LOW_POWER
+
+```TypeScript
+LOW_POWER = 0x202
+```
+
+表示低功耗优先。
+
+低功耗定位优先策略仅使用网络定位技术，在室内和户外场景均可提供定位服务，因为其依赖周边基站、可见WLAN、蓝牙设备的分布情况，定位结果的精度波动范围较大，推荐在对定位结果精度要求不高的场景下使用该策略，可以有效节省设备功耗。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocationRequestPriority-LOW_POWER = 0x202--><!--Device-LocationRequestPriority-LOW_POWER = 0x202-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## UNSET
+
+```TypeScript
+UNSET = 0x200
+```
+
+表示未设置优先级，表示[LocationRequestPriority](arkts-location-geolocationmanager-locationrequestpriority-e.md)无效。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocationRequestPriority-UNSET = 0x200--><!--Device-LocationRequestPriority-UNSET = 0x200-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core

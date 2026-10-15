@@ -9,6 +9,11 @@ type EllipticalMaskCenter = [
 
 定义椭圆形遮罩的中心点。
 
+**类型：** [
+  number,
+  number
+]
+
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -18,8 +23,3 @@ type EllipticalMaskCenter = [
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [
-  number,
-  number
-]

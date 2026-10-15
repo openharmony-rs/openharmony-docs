@@ -1,6 +1,6 @@
 # Calendar (System API)
 
-Defines Calendar Component.
+提供一个月视图组件，用于显示日期、轮休和日程等信息。
 
 ## Calendar
 
@@ -14,7 +14,7 @@ Calendar(value: {
   })
 ```
 
-Set value.
+设置日历配置。
 
 **起始版本：** 7
 
@@ -34,7 +34,7 @@ Set value.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | {     date: { year: number; month: number; day: number };     currentData: MonthData;     preData: MonthData;     nextData: MonthData;     controller?: CalendarController;   } | 是 |  |
+| value | {     date: { year: number; month: number; day: number };     currentData: MonthData;     preData: MonthData;     nextData: MonthData;     controller?: CalendarController;   } | 是 | 日历配置信息。<br>date: 设置为当前日期的日期，包含year、month和day。<br>currentData:当月数据。<br>preData: 上月数据。<br>nextData: 下月数据。<br>controller: 日历控制器。 |
 
 ## 汇总
 
@@ -42,12 +42,12 @@ Set value.
 
 | 名称 | 说明 |
 | --- | --- |
-| CalendarDay | Provides a monthly view component to display information such as date, shift break, and schedule. |
-| CalendarRequestedData | Defines the struct of CalendarRequestedData. |
-| CalendarSelectedDate | Defines the struct of CalendarSelectedDate. |
-| CurrentDayStyle | CurrentDayStyle object. |
-| MonthData | Date object. |
-| NonCurrentDayStyle | Non current day style. |
-| TodayStyle | Non current day style. |
-| WeekStyle | Week Style. |
-| WorkStateStyle | Work state style. |
+| [CalendarDay](arkts-arkui-calendar-comp-calendarday-i-sys.md) | 日历日期信息。 |
+| [CalendarRequestedData](arkts-arkui-calendar-comp-calendarrequesteddata-i-sys.md) | 定义CalendarRequestedData结构体。 |
+| [CalendarSelectedDate](arkts-arkui-calendar-comp-calendarselecteddate-i-sys.md) | 定义CalendarSelectedDate结构体。 |
+| [CurrentDayStyle](arkts-arkui-calendar-comp-currentdaystyle-i-sys.md) | CurrentDayStyle对象。 |
+| [MonthData](arkts-arkui-calendar-comp-monthdata-i-sys.md) | 日期数据对象。 |
+| [NonCurrentDayStyle](arkts-arkui-calendar-comp-noncurrentdaystyle-i-sys.md) | 非当月日期样式。 |
+| [TodayStyle](arkts-arkui-calendar-comp-todaystyle-i-sys.md) | 今日样式。 |
+| [WeekStyle](arkts-arkui-calendar-comp-weekstyle-i-sys.md) | 周样式。 |
+| [WorkStateStyle](arkts-arkui-calendar-comp-workstatestyle-i-sys.md) | 工作状态样式。 |

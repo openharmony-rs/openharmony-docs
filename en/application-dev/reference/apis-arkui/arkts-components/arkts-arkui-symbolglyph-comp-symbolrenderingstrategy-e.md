@@ -12,30 +12,6 @@ Enumerates the rendering modes.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SINGLE
-
-```TypeScript
-SINGLE = 0
-```
-
-Monochrome mode (default value).
-
-One or more colors can be set, and the default is black.
-
-When multiple colors are set, only the first color takes effect.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
-
-<!--Device-SymbolRenderingStrategy-SINGLE = 0--><!--Device-SymbolRenderingStrategy-SINGLE = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## MULTIPLE_COLOR
 
 ```TypeScript
@@ -81,5 +57,29 @@ The opacity is related to the layers. For a common symbol icon, the default opac
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-SymbolRenderingStrategy-MULTIPLE_OPACITY = 2--><!--Device-SymbolRenderingStrategy-MULTIPLE_OPACITY = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SINGLE
+
+```TypeScript
+SINGLE = 0
+```
+
+Monochrome mode (default value).
+
+One or more colors can be set, and the default is black.
+
+When multiple colors are set, only the first color takes effect.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SymbolRenderingStrategy-SINGLE = 0--><!--Device-SymbolRenderingStrategy-SINGLE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

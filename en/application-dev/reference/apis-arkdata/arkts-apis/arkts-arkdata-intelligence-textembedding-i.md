@@ -20,6 +20,8 @@ Describes the text embedding functions of the multi-modal embedding model. Chine
 import { intelligence } from '@kit.ArkData';
 ```
 
+<a id="getembedding1"></a>
+
 ## getEmbedding
 
 ```TypeScript
@@ -75,7 +77,7 @@ textEmbedding.loadModel()
   })
 ```
 
-<a id="getembedding-1"></a>
+<a id="getembedding2"></a>
 
 ## getEmbedding
 

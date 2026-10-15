@@ -14,22 +14,6 @@ Enumerates power consumption types.
 
 **System API:** This is a system API.
 
-## CONSUMPTION_TYPE_INVALID
-
-```TypeScript
-CONSUMPTION_TYPE_INVALID = -17
-```
-
-Unknown type.
-
-**Since:** 8
-
-<!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17--><!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17-End-->
-
-**System capability:** SystemCapability.PowerManager.BatteryStatistics
-
-**System API:** This is a system API.
-
 ## CONSUMPTION_TYPE_APP
 
 ```TypeScript
@@ -73,6 +57,22 @@ Power consumption when the CPU is idle.
 **Since:** 8
 
 <!--Device-ConsumptionType-CONSUMPTION_TYPE_IDLE--><!--Device-ConsumptionType-CONSUMPTION_TYPE_IDLE-End-->
+
+**System capability:** SystemCapability.PowerManager.BatteryStatistics
+
+**System API:** This is a system API.
+
+## CONSUMPTION_TYPE_INVALID
+
+```TypeScript
+CONSUMPTION_TYPE_INVALID = -17
+```
+
+Unknown type.
+
+**Since:** 8
+
+<!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17--><!--Device-ConsumptionType-CONSUMPTION_TYPE_INVALID = -17-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 

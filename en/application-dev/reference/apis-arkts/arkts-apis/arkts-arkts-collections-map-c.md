@@ -79,6 +79,8 @@ Removes all elements from this ArkTS map.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The clear method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -107,7 +109,7 @@ A constructor used to create an ArkTS map.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The ArkTS Map's constructor cannot be directly invoked. |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -408,6 +410,8 @@ Adds or updates a key-value pair to this ArkTS map and returns the previous valu
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The put method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
 
+<a id="putall1"></a>
+
 ## putAll
 
 ```TypeScript
@@ -439,7 +443,7 @@ Updates this ArkTS map with key-value pairs from the specified ArkTS Map.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The putAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
 
-<a id="putall-1"></a>
+<a id="putall2"></a>
 
 ## putAll
 

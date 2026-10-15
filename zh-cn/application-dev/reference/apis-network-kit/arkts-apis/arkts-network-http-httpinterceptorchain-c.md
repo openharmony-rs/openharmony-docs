@@ -116,7 +116,7 @@ public apply(httpRequest: HttpRequest): boolean
 > 更多使用HTTP请求触发拦截器功能，可以参考[HTTP拦截器功能代码示例](../../../network/http-request.md#http拦截器)。
 
 > HTTP拦截器相关能力仅支持
-> [HttpRequest.request](arkts-network-http-httprequest-i.md#request)接口，目前暂
+> [HttpRequest.request](arkts-network-http-httprequest-i.md#request1)接口，目前暂
 > 不支持
 > [HttpRequest.requestInStream](arkts-network-http-httprequest-i.md#requestinstream)
 > (流式传输)接口。

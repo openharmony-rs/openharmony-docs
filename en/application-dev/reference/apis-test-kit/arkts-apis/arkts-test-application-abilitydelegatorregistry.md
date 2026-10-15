@@ -1,6 +1,6 @@
 # @ohos.application.abilityDelegatorRegistry(AbilityDelegatorRegistry)
 
-The **AbilityDelegatorRegistry** module provides APIs for storing global registers of the registered [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) and [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md) objects, including obtaining the **AbilityDelegator** and **AbilityDelegatorArgs** objects. The APIs can be used only in the test framework.
+The **AbilityDelegatorRegistry** module provides APIs for storing global registers of the registered [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) and [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md) objects, including obtaining the **AbilityDelegator** and **AbilityDelegatorArgs** objects. The APIs can be used only in the test framework.
 
 **Since:** 8
 
@@ -25,8 +25,8 @@ The **AbilityDelegatorRegistry** module provides APIs for storing global registe
 
 | Name | Description |
 | --- | --- |
-| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-depr-f.md) | Obtains the **AbilityDelegator** object of the application. |
-| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-depr-f.md) | Obtains the **AbilityDelegatorArgs** object of the application. |
+| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-depr-f.md#getabilitydelegator) | Obtains the **AbilityDelegator** object of the application. |
+| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-depr-f.md#getarguments) | Obtains the **AbilityDelegatorArgs** object of the application. |
 
 ### Enums
 

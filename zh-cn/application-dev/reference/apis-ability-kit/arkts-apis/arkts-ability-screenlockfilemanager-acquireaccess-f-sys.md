@@ -6,7 +6,7 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
-<a id="acquireaccess-1"></a>
+<a id="acquireaccess2"></a>
 
 ## acquireAccess
 
@@ -53,6 +53,7 @@ function acquireAccess(dataType: DataType): AccessStatus
 | [29300003](../errorcode-screenLockFileManager.md#29300003-应用未开启锁屏敏感数据保护功能) | The application is not enabled the data protection under lock screen. |
 | [29300004](../errorcode-screenLockFileManager.md#29300004-锁屏敏感数据访问权限已释放) | File access is denied. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,3 +73,5 @@ try {
     hilog.error(0x0000, 'testTag', 'acquireAccess failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

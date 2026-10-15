@@ -32,7 +32,7 @@ function offBatteryChange(callback?: Callback<BatteryInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BatteryInfo](arkts-connectivity-connection-batteryinfo-i.md)&gt; | 否 | 回调函数。若传参，则需与[bas.onBatteryChange](arkts-connectivity-bas-onbatterychange-f-sys.md)中的回调函数一致；若无传参，则取消订阅电量变化所有回调函数通知。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BatteryInfo](arkts-connectivity-connection-batteryinfo-i.md)&gt; | 否 | 回调函数。若传参，则需与bas.onBatteryChange中的回调函数一致；若无传参，则取消订阅电量变化所有回调函数通知。 |
 
 **错误码：**
 

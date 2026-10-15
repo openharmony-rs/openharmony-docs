@@ -43,6 +43,7 @@ Adds a flock behavior component at the specified node.
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 | param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | Yes | Flock behavior parameters. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,6 +70,8 @@ function manageBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 }
 ```
 
+<!--DelEnd-->
+
 ## addBoidsSimGravityComponent
 
 ```TypeScript
@@ -94,6 +97,7 @@ Adds an attraction field component at the specified node.
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 | param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | Yes | Attraction field parameters. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -114,6 +118,8 @@ function manageBoidsSimGravityComponent(world: BoidsSimWorld, fieldNode: Node): 
   world.removeBoidsSimGravityComponent(fieldNode);
 }
 ```
+
+<!--DelEnd-->
 
 ## addBoidsSimRepulsionComponent
 
@@ -140,6 +146,7 @@ Adds a repulsion field component at the specified node.
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 | param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | Yes | Repulsion field parameters. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -160,6 +167,8 @@ function manageBoidsSimRepulsionComponent(world: BoidsSimWorld, fieldNode: Node)
   world.removeBoidsSimRepulsionComponent(fieldNode);
 }
 ```
+
+<!--DelEnd-->
 
 ## getBoidsSimComponent
 
@@ -191,6 +200,7 @@ Gets the flock behavior parameters on the specified node.
 | --- | --- |
 | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) &#124; null | Returns the flock behavior parameters, or null if the node does not have this component mounted. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -203,6 +213,8 @@ function queryBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getBoidsSimGravityComponent
 
@@ -234,6 +246,7 @@ Gets the attraction field parameters on the specified node.
 | --- | --- |
 | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) &#124; null | Returns the attraction field parameters, or null if the node does not have this component mounted. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -246,6 +259,8 @@ function queryBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getBoidsSimRepulsionComponent
 
@@ -277,6 +292,7 @@ Gets the repulsion field parameters on the specified node.
 | --- | --- |
 | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) &#124; null | Returns the repulsion field parameters, or null if the node does not have this component mounted. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -289,6 +305,8 @@ function queryBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## pause
 
@@ -308,6 +326,7 @@ Pauses the Boids simulation.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -317,6 +336,8 @@ function pauseBoidsSim(world: BoidsSimWorld): void {
   world.pause();
 }
 ```
+
+<!--DelEnd-->
 
 ## play
 
@@ -336,6 +357,7 @@ Starts or resumes the Boids simulation.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -345,6 +367,8 @@ function controlBoidsSimLifecycle(world: BoidsSimWorld): void {
   world.play();
 }
 ```
+
+<!--DelEnd-->
 
 ## removeBoidsSimComponent
 
@@ -370,6 +394,7 @@ Removes the flock behavior component from the specified node.
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -379,6 +404,8 @@ function removeBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
   world.removeBoidsSimComponent(node);
 }
 ```
+
+<!--DelEnd-->
 
 ## removeBoidsSimGravityComponent
 
@@ -404,6 +431,7 @@ Removes the attraction field component on the specified node.
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -413,6 +441,8 @@ function removeBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
   world.removeBoidsSimGravityComponent(node);
 }
 ```
+
+<!--DelEnd-->
 
 ## removeBoidsSimRepulsionComponent
 
@@ -438,6 +468,7 @@ Removes the repulsion field component from the specified node.
 | --- | --- | --- | --- |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -447,6 +478,8 @@ function removeBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
   world.removeBoidsSimRepulsionComponent(node);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBoidsSimComponent
 
@@ -473,6 +506,7 @@ Updates the flock behavior component on the specified node.
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 | param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | Yes | Flock behavior parameters. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -488,6 +522,8 @@ function updateBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
   world.setBoidsSimComponent(node, newParams);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBoidsSimGravityComponent
 
@@ -514,6 +550,7 @@ Updates the attraction field component on the specified node.
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 | param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | Yes | Attraction field parameters. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -524,6 +561,8 @@ function updateBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
   world.setBoidsSimGravityComponent(node, newParams);
 }
 ```
+
+<!--DelEnd-->
 
 ## setBoidsSimRepulsionComponent
 
@@ -550,6 +589,7 @@ Updates the repulsion field component on the specified node.
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | Yes | Node of the target scene. |
 | param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | Yes | Repulsion field parameters. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -560,6 +600,8 @@ function updateBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
   world.setBoidsSimRepulsionComponent(node, newParams);
 }
 ```
+
+<!--DelEnd-->
 
 ## stop
 
@@ -579,6 +621,7 @@ Stops the Boids simulation and resets the state.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -588,6 +631,8 @@ function stopBoidsSim(world: BoidsSimWorld): void {
   world.stop();
 }
 ```
+
+<!--DelEnd-->
 
 ## isPlaying
 

@@ -9,6 +9,8 @@ interface ReadonlyArray<T>
 ```TypeScript
 ```
 
+<a id="find1"></a>
+
 ## find
 
 ```TypeScript
@@ -26,7 +28,7 @@ Returns the value of the first element in the array where predicate is true, and
 | predicate | (this: void, value: T, index: number, obj: readonly T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
 
-<a id="find-1"></a>
+<a id="find2"></a>
 
 ## find
 

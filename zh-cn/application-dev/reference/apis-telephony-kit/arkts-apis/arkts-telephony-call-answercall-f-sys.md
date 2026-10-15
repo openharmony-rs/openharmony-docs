@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="answercall1"></a>
+
 ## answerCall
 
 ```TypeScript
@@ -37,12 +39,13 @@ function answerCall(callId: number, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ call.answerCall(1, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="answercall-1"></a>
+
+<a id="answercall2"></a>
 
 ## answerCall
 
@@ -96,12 +101,13 @@ function answerCall(callId?: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,8 +120,10 @@ call.answerCall(1).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="answercall-3"></a>
+
+<a id="answercall4"></a>
 
 ## answerCall
 
@@ -154,12 +162,13 @@ function answerCall(videoState: VideoStateType, callId: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameters types; |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -172,8 +181,10 @@ call.answerCall(0, 1).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="answercall-4"></a>
+
+<a id="answercall5"></a>
 
 ## answerCall
 
@@ -220,48 +231,19 @@ function answerCall(videoState: VideoStateType, callId: number, isRtt: boolean):
 | 8400003 | System internal error. |
 | 8400999 | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-call.answerCall((err: BusinessError) => {
-    if (err) {
-        console.error(`answerCall fail, err->Code${err.code}, message:${err.message}`);
-    } else {
-        console.info(`answerCall success.`);
-    }
-});
-```
+let callId: number = 1;
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.answerCall(1, (err: BusinessError) => {
-    if (err) {
-        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`answerCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.answerCall(1).then(() => {
-    console.info(`answerCall success.`);
+call.answerCall(call.VideoStateType.TYPE_VOICE, callId, true).then(() => {
+    console.info(`answerCall success, RTT call answered.`);
 }).catch((err: BusinessError) => {
-    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`answerCall fail, code:${err.code}, message:${err.message}`);
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.answerCall(0, 1).then(() => {
-    console.info(`answerCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
+<!--DelEnd-->

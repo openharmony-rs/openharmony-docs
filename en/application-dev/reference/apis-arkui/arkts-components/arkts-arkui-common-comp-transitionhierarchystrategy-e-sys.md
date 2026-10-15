@@ -14,26 +14,6 @@ Enumerates the strategies for the hierarchical position movement of **in** / **o
 
 **System API:** This is a system API.
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-The **in** / **out** components maintain their original hierarchy levels and are affected by the scale and position of their parent components.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12 - 12.
-
-<!--Device-TransitionHierarchyStrategy-NONE = 0--><!--Device-TransitionHierarchyStrategy-NONE = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
 ## ADAPTIVE
 
 ```TypeScript
@@ -53,6 +33,26 @@ For example, if the **in** component is at a higher hierarchy level than the **o
 **Atomic service API:** This API can be used in atomic services since API version 12 - 12.
 
 <!--Device-TransitionHierarchyStrategy-ADAPTIVE = 1--><!--Device-TransitionHierarchyStrategy-ADAPTIVE = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+The **in** / **out** components maintain their original hierarchy levels and are affected by the scale and position of their parent components.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12 - 12.
+
+<!--Device-TransitionHierarchyStrategy-NONE = 0--><!--Device-TransitionHierarchyStrategy-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

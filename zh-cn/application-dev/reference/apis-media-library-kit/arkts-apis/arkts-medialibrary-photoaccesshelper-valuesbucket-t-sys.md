@@ -6,6 +6,8 @@ type ValuesBucket = Record<string, ValueType>
 
 用于存储键值对的类型。
 
+**类型：** Record&lt;string, [ValueType](arkts-medialibrary-photoaccesshelper-valuetype-t-sys.md)&gt;
+
 **起始版本：** 22
 
 <!--Device-photoAccessHelper-type ValuesBucket = Record<string, ValueType>--><!--Device-photoAccessHelper-type ValuesBucket = Record<string, ValueType>-End-->
@@ -13,5 +15,3 @@ type ValuesBucket = Record<string, ValueType>
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** Record&lt;string, [ValueType](arkts-medialibrary-photoaccesshelper-valuetype-t-sys.md)&gt;

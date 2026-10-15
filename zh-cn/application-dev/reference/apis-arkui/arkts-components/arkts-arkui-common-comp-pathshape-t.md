@@ -6,6 +6,8 @@ declare type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 导入PathShape类型对象。
 
+**类型：** import('../api/@ohos.arkui.shape').PathShape
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type PathShape = import('../api/@ohos.arkui.shape').PathShape
 <!--Device-unnamed-declare type PathShape = import('../api/@ohos.arkui.shape').PathShape--><!--Device-unnamed-declare type PathShape = import('../api/@ohos.arkui.shape').PathShape-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.shape').PathShape

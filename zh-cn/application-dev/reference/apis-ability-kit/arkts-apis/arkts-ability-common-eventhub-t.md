@@ -6,6 +6,8 @@ export type EventHub = _EventHub.default
 
 EventHub是系统提供的基于发布-订阅模式实现的事件通信机制。
 
+**类型：** _EventHub.default
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ EventHub是系统提供的基于发布-订阅模式实现的事件通信机制�
 <!--Device-common-export type EventHub = _EventHub.default--><!--Device-common-export type EventHub = _EventHub.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _EventHub.default

@@ -12,17 +12,17 @@ export enum RegState
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## REG_STATE_NO_SERVICE
+## REG_STATE_EMERGENCY_CALL_ONLY
 
 ```TypeScript
-REG_STATE_NO_SERVICE = 0
+REG_STATE_EMERGENCY_CALL_ONLY = 2
 ```
 
-设备不能使用任何服务，包括数据业务、短信、通话等。
+设备只能使用紧急呼叫业务。
 
 **起始版本：** 6
 
-<!--Device-RegState-REG_STATE_NO_SERVICE = 0--><!--Device-RegState-REG_STATE_NO_SERVICE = 0-End-->
+<!--Device-RegState-REG_STATE_EMERGENCY_CALL_ONLY = 2--><!--Device-RegState-REG_STATE_EMERGENCY_CALL_ONLY = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -40,17 +40,17 @@ REG_STATE_IN_SERVICE = 1
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## REG_STATE_EMERGENCY_CALL_ONLY
+## REG_STATE_NO_SERVICE
 
 ```TypeScript
-REG_STATE_EMERGENCY_CALL_ONLY = 2
+REG_STATE_NO_SERVICE = 0
 ```
 
-设备只能使用紧急呼叫业务。
+设备不能使用任何服务，包括数据业务、短信、通话等。
 
 **起始版本：** 6
 
-<!--Device-RegState-REG_STATE_EMERGENCY_CALL_ONLY = 2--><!--Device-RegState-REG_STATE_EMERGENCY_CALL_ONLY = 2-End-->
+<!--Device-RegState-REG_STATE_NO_SERVICE = 0--><!--Device-RegState-REG_STATE_NO_SERVICE = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

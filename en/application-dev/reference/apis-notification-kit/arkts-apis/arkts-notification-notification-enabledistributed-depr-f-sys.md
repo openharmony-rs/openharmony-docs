@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="enabledistributed1"></a>
+
 ## enableDistributed
 
 ```TypeScript
@@ -35,7 +37,7 @@ Sets whether this device supports distributed notifications. This API uses an as
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
-<a id="enabledistributed-1"></a>
+<a id="enabledistributed2"></a>
 
 ## enableDistributed
 

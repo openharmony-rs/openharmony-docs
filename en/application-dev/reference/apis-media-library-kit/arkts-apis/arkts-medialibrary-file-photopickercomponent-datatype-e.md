@@ -12,24 +12,6 @@ Enumerates the types of data sent from **PickerController** to the **PhotoPicker
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SET_SELECTED_URIS
-
-```TypeScript
-SET_SELECTED_URIS = 1
-```
-
-Sends a list of selected items to instruct the **PhotoPickerComponent** to refresh the selection status. A string array needs to be passed in.
-
-For example, after an image is deleted from an application's page, the application calls **setData()** to notify the **PhotoPickerComponent** of the remaining selected items. Then, the **PhotoPickerComponent** refreshes the check box status.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-DataType-SET_SELECTED_URIS = 1--><!--Device-DataType-SET_SELECTED_URIS = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## SET_ALBUM_URI
 
 ```TypeScript
@@ -45,22 +27,6 @@ For example, after an album is selected from an application's page, the applicat
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DataType-SET_ALBUM_URI = 2--><!--Device-DataType-SET_ALBUM_URI = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## SET_SELECTED_INFO
-
-```TypeScript
-SET_SELECTED_INFO = 3
-```
-
-Sends the URI of the selected file and the index of the selected **PhotoPickerComponent**. If the index of a **PhotoPickerComponent** matches the one provided in the parameter, the selected file is automatically highlighted in that **PhotoPickerComponent**.
-
-**Since:** 21
-
-**Atomic service API:** This API can be used in atomic services since API version 21.
-
-<!--Device-DataType-SET_SELECTED_INFO = 3--><!--Device-DataType-SET_SELECTED_INFO = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -95,5 +61,39 @@ Result of the click, which is of the [ClickResult](arkts-medialibrary-file-photo
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-DataType-SET_ITEM_CLICK_RESULT = 5--><!--Device-DataType-SET_ITEM_CLICK_RESULT = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## SET_SELECTED_INFO
+
+```TypeScript
+SET_SELECTED_INFO = 3
+```
+
+Sends the URI of the selected file and the index of the selected **PhotoPickerComponent**. If the index of a **PhotoPickerComponent** matches the one provided in the parameter, the selected file is automatically highlighted in that **PhotoPickerComponent**.
+
+**Since:** 21
+
+**Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-DataType-SET_SELECTED_INFO = 3--><!--Device-DataType-SET_SELECTED_INFO = 3-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## SET_SELECTED_URIS
+
+```TypeScript
+SET_SELECTED_URIS = 1
+```
+
+Sends a list of selected items to instruct the **PhotoPickerComponent** to refresh the selection status. A string array needs to be passed in.
+
+For example, after an image is deleted from an application's page, the application calls **setData()** to notify the **PhotoPickerComponent** of the remaining selected items. Then, the **PhotoPickerComponent** refreshes the check box status.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DataType-SET_SELECTED_URIS = 1--><!--Device-DataType-SET_SELECTED_URIS = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

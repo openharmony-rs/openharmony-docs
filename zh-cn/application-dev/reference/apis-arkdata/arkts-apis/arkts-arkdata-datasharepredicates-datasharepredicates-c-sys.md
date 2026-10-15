@@ -49,12 +49,15 @@ beginsWith(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.beginsWith("NAME", "os");
 ```
+
+<!--DelEnd-->
 
 ## contains
 
@@ -87,12 +90,15 @@ contains(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.contains("NAME", "os");
 ```
+
+<!--DelEnd-->
 
 ## distinct
 
@@ -118,12 +124,15 @@ distinct(): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Rose").distinct();
 ```
+
+<!--DelEnd-->
 
 ## endsWith
 
@@ -156,12 +165,15 @@ endsWith(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.endsWith("NAME", "os");
 ```
+
+<!--DelEnd-->
 
 ## glob
 
@@ -194,12 +206,15 @@ glob(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.glob("NAME", "?h*g");
 ```
+
+<!--DelEnd-->
 
 ## groupBy
 
@@ -231,12 +246,15 @@ groupBy(fields: Array<string>): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.groupBy(["AGE", "NAME"]);
 ```
+
+<!--DelEnd-->
 
 ## indexedBy
 
@@ -268,12 +286,15 @@ indexedBy(field: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.indexedBy("SALARY_INDEX");
 ```
+
+<!--DelEnd-->
 
 ## inKeys
 
@@ -305,12 +326,15 @@ inKeys(keys: Array<string>): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.inKeys(["Lisa", "Rose"]);
 ```
+
+<!--DelEnd-->
 
 ## isNotNull
 
@@ -342,12 +366,15 @@ isNotNull(field: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.isNotNull("NAME");
 ```
+
+<!--DelEnd-->
 
 ## isNull
 
@@ -379,12 +406,15 @@ isNull(field: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.isNull("NAME");
 ```
+
+<!--DelEnd-->
 
 ## prefixKey
 
@@ -416,12 +446,15 @@ prefixKey(prefix: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.prefixKey("NAME");
 ```
+
+<!--DelEnd-->
 
 ## unlike
 
@@ -454,9 +487,12 @@ unlike(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.unlike("NAME", "%os%");
 ```
+
+<!--DelEnd-->

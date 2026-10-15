@@ -6,6 +6,8 @@ declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectW
 
 矩形区域宽度规格枚举。
 
+**类型：** import('../api/@ohos.graphics.text').default.RectWidthStyle
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectW
 <!--Device-unnamed-declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle--><!--Device-unnamed-declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.graphics.text').default.RectWidthStyle

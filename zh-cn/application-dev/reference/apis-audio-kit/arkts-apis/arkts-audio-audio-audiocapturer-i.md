@@ -4,7 +4,7 @@
 interface AudioCapturer
 ```
 
-提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md)获取AudioCapturer实例。
+提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer1)获取AudioCapturer实例。
 
 **起始版本：** 8
 
@@ -17,6 +17,8 @@ interface AudioCapturer
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
+
+<a id="getaudiostreamid1"></a>
 
 ## getAudioStreamId
 
@@ -48,7 +50,7 @@ audioCapturer.getAudioStreamId((err: BusinessError, streamId: number) => {
 });
 ```
 
-<a id="getaudiostreamid-1"></a>
+<a id="getaudiostreamid2"></a>
 
 ## getAudioStreamId
 
@@ -116,6 +118,8 @@ try {
 }
 ```
 
+<a id="getaudiotime1"></a>
+
 ## getAudioTime
 
 ```TypeScript
@@ -146,7 +150,7 @@ audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
 });
 ```
 
-<a id="getaudiotime-1"></a>
+<a id="getaudiotime2"></a>
 
 ## getAudioTime
 
@@ -292,6 +296,8 @@ try {
 }
 ```
 
+<a id="getbuffersize1"></a>
+
 ## getBufferSize
 
 ```TypeScript
@@ -326,7 +332,7 @@ audioCapturer.getBufferSize((err: BusinessError, bufferSize: number) => {
 });
 ```
 
-<a id="getbuffersize-1"></a>
+<a id="getbuffersize2"></a>
 
 ## getBufferSize
 
@@ -394,6 +400,8 @@ try {
 }
 ```
 
+<a id="getcapturerinfo1"></a>
+
 ## getCapturerInfo
 
 ```TypeScript
@@ -430,7 +438,7 @@ audioCapturer.getCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapt
 });
 ```
 
-<a id="getcapturerinfo-1"></a>
+<a id="getcapturerinfo2"></a>
 
 ## getCapturerInfo
 
@@ -678,6 +686,8 @@ try {
 }
 ```
 
+<a id="getstreaminfo1"></a>
+
 ## getStreamInfo
 
 ```TypeScript
@@ -716,7 +726,7 @@ audioCapturer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
 });
 ```
 
-<a id="getstreaminfo-1"></a>
+<a id="getstreaminfo2"></a>
 
 ## getStreamInfo
 
@@ -1444,6 +1454,8 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -1478,7 +1490,7 @@ audioCapturer.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -1510,7 +1522,7 @@ audioCapturer.release().then(() => {
   console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
   console.info(`AudioFrameworkRecLog: AudioCapturer : STATE : ${audioCapturer.state}`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+  console.error(`AudioFrameworkRecLog: Capturer release: ERROR: ${err}`);
 });
 ```
 
@@ -1559,7 +1571,7 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 > **说明：** 
 > 
 > 当音频采集器在运行状态时调用此接口后，必须重新调用接口
-> [start](#start)使其生效。
+> [start](#start1)使其生效。
 
 **起始版本：** 24
 
@@ -1749,6 +1761,8 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -1783,7 +1797,7 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -1820,6 +1834,8 @@ audioCapturer.start().then(() => {
 });
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -1854,7 +1870,7 @@ audioCapturer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 
@@ -1891,6 +1907,8 @@ audioCapturer.stop().then(() => {
 });
 ```
 
+<a id="read1"></a>
+
 ## read
 
 ```TypeScript
@@ -1901,7 +1919,7 @@ read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[on('readData')](#onreaddata)替代。
+> 从API version 8开始支持，从API version 11开始废弃，建议使用on('readData')替代。
 
 **起始版本：** 8
 
@@ -1940,7 +1958,7 @@ audioCapturer.getBufferSize().then((bufferSize: number) => {
 });
 ```
 
-<a id="read-1"></a>
+<a id="read2"></a>
 
 ## read
 
@@ -1952,7 +1970,7 @@ read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[on('readData')](#onreaddata)替代。
+> 从API version 8开始支持，从API version 11开始废弃，建议使用on('readData')替代。
 
 **起始版本：** 8
 

@@ -20,4 +20,4 @@ Represents the callback invoked when an index item is selected.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | selected index |
+| index | number | Yes | Index of the currently selected index item. |

@@ -18,17 +18,51 @@ For details, see [Audio Session Management](../../../media/audio/audio-session-m
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## AUDIO_SESSION_STATE_CHANGE_HINT_RESUME
+## AUDIO_SESSION_STATE_CHANGE_HINT_DUCK
 
 ```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0
+AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4
 ```
 
-A hint is displayed, indicating that the audio session is resuming. The application can proactively trigger operations such as rendering.
+A hint is displayed, indicating that audio ducking starts and the audio is played at a lower volume.
+
+If [enableMuteSuggestionWhenMixWithOthers](arkts-audio-audio-audiosessionmanager-i.md#enablemutesuggestionwhenmixwithothers) is enabled, you can choose to mute the audio.
 
 **Since:** 20
 
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0-End-->
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE
+
+```TypeScript
+AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8
+```
+
+The hint can be received only after the parameter [MUTE_WHEN_INTERRUPTED](arkts-audio-audio-audiosessionbehaviorflags-e.md#mute_when_interrupted) has been set by the interface [setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior) and [setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene) has been called, and the audio session has been activated. After the hint is received, the audio stream is muted.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION
+
+```TypeScript
+AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6
+```
+
+Suggests to mute the playback because there is another application begin to play nonmixable audio, application can decide whether to mute. If interrupt strategy is duck, [AUDIO_SESSION_STATE_CHANGE_HINT_DUCK](#audio_session_state_change_hint_duck) will replace mute suggestion event, but application can still decide to mute when receive hint duck.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -43,6 +77,20 @@ A hint is displayed, indicating that the audio session is paused and the audio f
 **Since:** 20
 
 <!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## AUDIO_SESSION_STATE_CHANGE_HINT_RESUME
+
+```TypeScript
+AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0
+```
+
+A hint is displayed, indicating that the audio session is resuming. The application can proactively trigger operations such as rendering.
+
+**Since:** 20
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -74,22 +122,6 @@ A hint is displayed, indicating that the audio session is stopped by the system 
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## AUDIO_SESSION_STATE_CHANGE_HINT_DUCK
-
-```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4
-```
-
-A hint is displayed, indicating that audio ducking starts and the audio is played at a lower volume.
-
-If [enableMuteSuggestionWhenMixWithOthers](arkts-audio-audio-audiosessionmanager-i.md#enablemutesuggestionwhenmixwithothers) is enabled, you can choose to mute the audio.
-
-**Since:** 20
-
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
 ## AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK
 
 ```TypeScript
@@ -106,19 +138,19 @@ If [enableMuteSuggestionWhenMixWithOthers](arkts-audio-audio-audiosessionmanager
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION
+## AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE
 
 ```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6
+AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9
 ```
 
-Suggests to mute the playback because there is another application begin to play nonmixable audio, application can decide whether to mute. If interrupt strategy is duck, [AUDIO_SESSION_STATE_CHANGE_HINT_DUCK](#audio_session_state_change_hint_duck) will replace mute suggestion event, but application can still decide to mute when receive hint duck.
+The hint can be received only after the parameter [MUTE_WHEN_INTERRUPTED](arkts-audio-audio-audiosessionbehaviorflags-e.md#mute_when_interrupted) has been set by the interface [setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior) and [setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene) has been called, and the audio session has been activated. When the hint is received, the audio stream is unmuted.
 
-**Since:** 23
+**Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6-End-->
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -135,37 +167,5 @@ Suggest to unmute the playback because another application's nonmixable audio en
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE
-
-```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8
-```
-
-The hint can be received only after the parameter [MUTE_WHEN_INTERRUPTED](arkts-audio-audio-audiosessionbehaviorflags-e.md#mute_when_interrupted) has been set by the interface [setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior) and [setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene) has been called, and the audio session has been activated. After the hint is received, the audio stream is muted.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE
-
-```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9
-```
-
-The hint can be received only after the parameter [MUTE_WHEN_INTERRUPTED](arkts-audio-audio-audiosessionbehaviorflags-e.md#mute_when_interrupted) has been set by the interface [setAudioSessionBehavior](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionbehavior) and [setAudioSessionScene](arkts-audio-audio-audiosessionmanager-i.md#setaudiosessionscene) has been called, and the audio session has been activated. When the hint is received, the audio stream is unmuted.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

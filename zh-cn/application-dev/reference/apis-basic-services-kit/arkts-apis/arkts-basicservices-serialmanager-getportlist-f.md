@@ -38,7 +38,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口设备清单 
 function getPortListExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');

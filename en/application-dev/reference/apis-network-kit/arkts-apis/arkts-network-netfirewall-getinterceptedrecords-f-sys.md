@@ -49,6 +49,7 @@ Get intercepted records by userId, and it is necessary to specify the pagination
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 | [29400000](../errorcode-net-netfirewall.md#29400000-specified-user-does-not-exist) | The specified user does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,3 +68,5 @@ netFirewall.getInterceptedRecords(100, interceptRecordParam).then((result: netFi
   console.error("get intercept records failed: " + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

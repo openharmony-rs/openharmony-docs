@@ -39,6 +39,7 @@ function off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callba
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,6 +53,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.off('formAdd', bundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## off('formRemove')
@@ -87,6 +90,7 @@ function off(type: 'formRemove', hostBundleName?: string, observerCallback?: Cal
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -100,6 +104,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.off('formRemove', bundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## off('notifyVisible')
@@ -139,6 +145,7 @@ function off(
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -154,6 +161,8 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 
 formObserver.off('notifyVisible', bundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## off('notifyInvisible')
@@ -193,6 +202,7 @@ function off(
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -208,6 +218,8 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 
 formObserver.off('notifyInvisible', bundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## off('router')
@@ -243,6 +255,7 @@ function off(type: 'router', hostBundleName?: string, observerCallback?: Callbac
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -254,6 +267,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.off('router', hostBundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## off('message')
@@ -289,6 +304,7 @@ function off(type: 'message', hostBundleName?: string, observerCallback?: Callba
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -300,6 +316,8 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.off('message', hostBundleName, callback);
 ```
+
+<!--DelEnd-->
 
 
 ## off('call')
@@ -335,6 +353,7 @@ function off(type: 'call', hostBundleName?: string, observerCallback?: Callback<
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -346,3 +365,5 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.off('call', hostBundleName, callback);
 ```
+
+<!--DelEnd-->

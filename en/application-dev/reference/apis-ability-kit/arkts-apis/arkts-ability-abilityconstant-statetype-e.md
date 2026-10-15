@@ -12,24 +12,6 @@ Enumerates the scenarios for saving application data. You can use it in [onSaveS
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## CONTINUATION
-
-```TypeScript
-CONTINUATION = 0
-```
-
-Application migration scenario.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-StateType-CONTINUATION = 0--><!--Device-StateType-CONTINUATION = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
 ## APP_RECOVERY
 
 ```TypeScript
@@ -42,8 +24,26 @@ Application recovery scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-StateType-APP_RECOVERY = 1--><!--Device-StateType-APP_RECOVERY = 1-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## CONTINUATION
+
+```TypeScript
+CONTINUATION = 0
+```
+
+Application migration scenario.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-StateType-CONTINUATION = 0--><!--Device-StateType-CONTINUATION = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

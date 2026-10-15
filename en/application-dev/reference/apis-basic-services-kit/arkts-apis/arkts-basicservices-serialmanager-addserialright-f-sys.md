@@ -47,6 +47,7 @@ needed. Silent authorization enables system apps to directly obtain the permissi
 | [31400001](../errorcode-usb.md#31400001-serial-port-service-error) |  |
 | [31400003](../errorcode-usb.md#31400003-port-number-not-exist) |  |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -83,3 +84,5 @@ function addSerialRight() {
   });
 }
 ```
+
+<!--DelEnd-->

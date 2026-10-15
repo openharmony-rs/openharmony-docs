@@ -12,19 +12,35 @@ Enumerates the preloading types of the current application process.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## UNSPECIFIED
+## TYPE_CREATE_ABILITY_STAGE
 
 ```TypeScript
-UNSPECIFIED = 0
+TYPE_CREATE_ABILITY_STAGE = 2
 ```
 
-No preloading has taken place, or the preloaded data has been cleared.
+Preloads the process up to the point of [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md) creation completion.
 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AppPreloadType-UNSPECIFIED = 0--><!--Device-AppPreloadType-UNSPECIFIED = 0-End-->
+<!--Device-AppPreloadType-TYPE_CREATE_ABILITY_STAGE = 2--><!--Device-AppPreloadType-TYPE_CREATE_ABILITY_STAGE = 2-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## TYPE_CREATE_BACKGROUND_ABILITY
+
+```TypeScript
+TYPE_CREATE_BACKGROUND_ABILITY = 4
+```
+
+Preloads the process up to the point of [onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground) execution completion.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppPreloadType-TYPE_CREATE_BACKGROUND_ABILITY = 4--><!--Device-AppPreloadType-TYPE_CREATE_BACKGROUND_ABILITY = 4-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,22 +60,6 @@ Preloads the process up to the point of process creation completion.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## TYPE_CREATE_ABILITY_STAGE
-
-```TypeScript
-TYPE_CREATE_ABILITY_STAGE = 2
-```
-
-Preloads the process up to the point of [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md) creation completion.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AppPreloadType-TYPE_CREATE_ABILITY_STAGE = 2--><!--Device-AppPreloadType-TYPE_CREATE_ABILITY_STAGE = 2-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
 ## TYPE_CREATE_WINDOW_STAGE
 
 ```TypeScript
@@ -76,18 +76,18 @@ Preloads the process up to the point of [WindowStage](../../apis-arkui/arkts-api
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## TYPE_CREATE_BACKGROUND_ABILITY
+## UNSPECIFIED
 
 ```TypeScript
-TYPE_CREATE_BACKGROUND_ABILITY = 4
+UNSPECIFIED = 0
 ```
 
-Preloads the process up to the point of [onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground) execution completion.
+No preloading has taken place, or the preloaded data has been cleared.
 
-**Since:** 23
+**Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-AppPreloadType-TYPE_CREATE_BACKGROUND_ABILITY = 4--><!--Device-AppPreloadType-TYPE_CREATE_BACKGROUND_ABILITY = 4-End-->
+<!--Device-AppPreloadType-UNSPECIFIED = 0--><!--Device-AppPreloadType-UNSPECIFIED = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

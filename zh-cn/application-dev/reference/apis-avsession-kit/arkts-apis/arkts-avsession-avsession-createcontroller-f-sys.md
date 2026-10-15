@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="createcontroller1"></a>
+
 ## createController
 
 ```TypeScript
@@ -41,6 +43,7 @@ function createController(sessionId: string, callback: AsyncCallback<AVSessionCo
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,3 +73,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -25,7 +25,7 @@ function convertRecordsToEntries(data: UnifiedData): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本17开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 <!--Device-unifiedDataChannel-function convertRecordsToEntries(data: UnifiedData): void--><!--Device-unifiedDataChannel-function convertRecordsToEntries(data: UnifiedData): void-End-->
 

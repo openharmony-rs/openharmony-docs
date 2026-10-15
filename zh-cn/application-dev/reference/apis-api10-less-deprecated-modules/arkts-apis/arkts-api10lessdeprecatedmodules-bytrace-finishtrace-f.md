@@ -22,7 +22,7 @@ function finishTrace(name: string, taskId: number): void
 
 **废弃版本：** 8
 
-**替代接口：** finishTrace
+**替代接口：** [finishTrace](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-finishtrace-f.md)
 
 <!--Device-bytrace-function finishTrace(name: string, taskId: number): void--><!--Device-bytrace-function finishTrace(name: string, taskId: number): void-End-->
 

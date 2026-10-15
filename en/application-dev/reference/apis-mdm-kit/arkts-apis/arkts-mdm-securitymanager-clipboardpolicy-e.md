@@ -12,6 +12,22 @@ Represents a device clipboard policy.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## CROSS_DEVICE
+
+```TypeScript
+CROSS_DEVICE = 3
+```
+
+Allow the clipboard to be used across devices.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ClipboardPolicy-CROSS_DEVICE = 3--><!--Device-ClipboardPolicy-CROSS_DEVICE = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## DEFAULT
 
 ```TypeScript
@@ -57,21 +73,5 @@ Allow the clipboard to be used on the same device.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ClipboardPolicy-LOCAL_DEVICE = 2--><!--Device-ClipboardPolicy-LOCAL_DEVICE = 2-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## CROSS_DEVICE
-
-```TypeScript
-CROSS_DEVICE = 3
-```
-
-Allow the clipboard to be used across devices.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ClipboardPolicy-CROSS_DEVICE = 3--><!--Device-ClipboardPolicy-CROSS_DEVICE = 3-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

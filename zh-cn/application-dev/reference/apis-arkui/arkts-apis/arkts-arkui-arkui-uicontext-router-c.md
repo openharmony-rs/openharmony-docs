@@ -41,6 +41,8 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
+<a id="back1"></a>
+
 ## back
 
 ```TypeScript
@@ -81,7 +83,7 @@ let router: Router = uiContext.getRouter();
 router.back({url:'pages/detail'});
 ```
 
-<a id="back-1"></a>
+<a id="back2"></a>
 
 ## back
 
@@ -416,6 +418,8 @@ let router: Router = uiContext.getRouter();
 router.hideAlertBeforeBackPage();
 ```
 
+<a id="pushnamedroute1"></a>
+
 ## pushNamedRoute
 
 ```TypeScript
@@ -497,7 +501,7 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute-1"></a>
+<a id="pushnamedroute2"></a>
 
 ## pushNamedRoute
 
@@ -584,7 +588,7 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute-2"></a>
+<a id="pushnamedroute3"></a>
 
 ## pushNamedRoute
 
@@ -675,7 +679,7 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute-3"></a>
+<a id="pushnamedroute4"></a>
 
 ## pushNamedRoute
 
@@ -768,6 +772,8 @@ struct Index {
 }
 ```
 
+<a id="pushurl1"></a>
+
 ## pushUrl
 
 ```TypeScript
@@ -850,7 +856,7 @@ struct Index {
 }
 ```
 
-<a id="pushurl-1"></a>
+<a id="pushurl2"></a>
 
 ## pushUrl
 
@@ -1005,7 +1011,7 @@ struct Second {
 }
 ```
 
-<a id="pushurl-2"></a>
+<a id="pushurl3"></a>
 
 ## pushUrl
 
@@ -1096,7 +1102,7 @@ struct Index {
 }
 ```
 
-<a id="pushurl-3"></a>
+<a id="pushurl4"></a>
 
 ## pushUrl
 
@@ -1191,6 +1197,8 @@ struct Index {
 }
 ```
 
+<a id="replacenamedroute1"></a>
+
 ## replaceNamedRoute
 
 ```TypeScript
@@ -1268,7 +1276,7 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute-1"></a>
+<a id="replacenamedroute2"></a>
 
 ## replaceNamedRoute
 
@@ -1351,7 +1359,7 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute-2"></a>
+<a id="replacenamedroute3"></a>
 
 ## replaceNamedRoute
 
@@ -1438,7 +1446,7 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute-3"></a>
+<a id="replacenamedroute4"></a>
 
 ## replaceNamedRoute
 
@@ -1446,7 +1454,7 @@ struct Index {
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute2)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **起始版本：** 10
 
@@ -1528,6 +1536,8 @@ struct Index {
 }
 ```
 
+<a id="replaceurl1"></a>
+
 ## replaceUrl
 
 ```TypeScript
@@ -1605,7 +1615,7 @@ struct Index {
 }
 ```
 
-<a id="replaceurl-1"></a>
+<a id="replaceurl2"></a>
 
 ## replaceUrl
 
@@ -1693,7 +1703,7 @@ struct Index {
 }
 ```
 
-<a id="replaceurl-2"></a>
+<a id="replaceurl3"></a>
 
 ## replaceUrl
 
@@ -1780,7 +1790,7 @@ struct Index {
 }
 ```
 
-<a id="replaceurl-3"></a>
+<a id="replaceurl4"></a>
 
 ## replaceUrl
 

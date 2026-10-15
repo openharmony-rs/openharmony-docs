@@ -24,7 +24,7 @@ import { EnvironmentCallback } from '@kit.AbilityKit';
 onConfigurationUpdated(config: Configuration): void
 ```
 
-Called when the system configuration changes, after [a listener has been registered for such events](arkts-ability-applicationcontext-c.md#onenvironment).
+Called when the system environment changes, after [a listener has been registered for such events](arkts-ability-applicationcontext-c.md#onenvironment).
 
 **Since:** 9
 
@@ -52,7 +52,7 @@ See Usage of EnvironmentCallback.
 onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 ```
 
-Called when the system memory level changes, after [a listener has been registered for such events](arkts-ability-applicationcontext-c.md#onenvironment).
+Called when the system memory changes, after [a listener has been registered for such events](arkts-ability-applicationcontext-c.md#onenvironment).
 
 **Since:** 9
 

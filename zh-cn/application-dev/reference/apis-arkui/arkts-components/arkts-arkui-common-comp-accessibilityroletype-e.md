@@ -4,7 +4,7 @@
 declare enum AccessibilityRoleType
 ```
 
-定义组件的屏幕朗读功能角色类型。@enum { number }
+定义组件的屏幕朗读功能角色类型。
 
 **起始版本：** 18
 
@@ -52,13 +52,13 @@ ALERT_DIALOG = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## INDEXER_COMPONENT
+## BACK_BUTTON
 
 ```TypeScript
-INDEXER_COMPONENT = 2
+BACK_BUTTON = 6
 ```
 
-索引器组件。
+大图页返回按钮。
 
 **起始版本：** 18
 
@@ -68,7 +68,7 @@ INDEXER_COMPONENT = 2
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilityRoleType-INDEXER_COMPONENT = 2--><!--Device-AccessibilityRoleType-INDEXER_COMPONENT = 2-End-->
+<!--Device-AccessibilityRoleType-BACK_BUTTON = 6--><!--Device-AccessibilityRoleType-BACK_BUTTON = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,13 +132,13 @@ BUTTON = 5
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BACK_BUTTON
+## CALENDAR
 
 ```TypeScript
-BACK_BUTTON = 6
+CALENDAR = 9
 ```
 
-大图页返回按钮。
+日历。
 
 **起始版本：** 18
 
@@ -148,27 +148,7 @@ BACK_BUTTON = 6
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilityRoleType-BACK_BUTTON = 6--><!--Device-AccessibilityRoleType-BACK_BUTTON = 6-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## SHEET_DRAG_BAR
-
-```TypeScript
-SHEET_DRAG_BAR = 7
-```
-
-滑动条。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-SHEET_DRAG_BAR = 7--><!--Device-AccessibilityRoleType-SHEET_DRAG_BAR = 7-End-->
+<!--Device-AccessibilityRoleType-CALENDAR = 9--><!--Device-AccessibilityRoleType-CALENDAR = 9-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,26 +169,6 @@ CALENDAR_PICKER = 8
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-CALENDAR_PICKER = 8--><!--Device-AccessibilityRoleType-CALENDAR_PICKER = 8-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CALENDAR
-
-```TypeScript
-CALENDAR = 9
-```
-
-日历。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-CALENDAR = 9--><!--Device-AccessibilityRoleType-CALENDAR = 9-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -272,6 +232,46 @@ CANVAS_PATTERN = 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## CANVAS_RENDERING_CONTEXT_2D
+
+```TypeScript
+CANVAS_RENDERING_CONTEXT_2D = 18
+```
+
+用于在画布组件上绘制矩形、文本、图片等。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-CANVAS_RENDERING_CONTEXT_2D = 18--><!--Device-AccessibilityRoleType-CANVAS_RENDERING_CONTEXT_2D = 18-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CHART
+
+```TypeScript
+CHART = 19
+```
+
+图表组件。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-CHART = 19--><!--Device-AccessibilityRoleType-CHART = 19-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## CHECKBOX
 
 ```TypeScript
@@ -332,26 +332,6 @@ CIRCLE = 15
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## COLUMN_SPLIT
-
-```TypeScript
-COLUMN_SPLIT = 16
-```
-
-将子组件纵向布局，并在每个子组件之间插入一根横向的分割线。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-COLUMN_SPLIT = 16--><!--Device-AccessibilityRoleType-COLUMN_SPLIT = 16-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## COLUMN
 
 ```TypeScript
@@ -372,13 +352,13 @@ COLUMN = 17
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## CANVAS_RENDERING_CONTEXT_2D
+## COLUMN_SPLIT
 
 ```TypeScript
-CANVAS_RENDERING_CONTEXT_2D = 18
+COLUMN_SPLIT = 16
 ```
 
-用于在画布组件上绘制矩形、文本、图片等。
+将子组件纵向布局，并在每个子组件之间插入一根横向的分割线。
 
 **起始版本：** 18
 
@@ -388,47 +368,7 @@ CANVAS_RENDERING_CONTEXT_2D = 18
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-AccessibilityRoleType-CANVAS_RENDERING_CONTEXT_2D = 18--><!--Device-AccessibilityRoleType-CANVAS_RENDERING_CONTEXT_2D = 18-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CHART
-
-```TypeScript
-CHART = 19
-```
-
-图表组件。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-CHART = 19--><!--Device-AccessibilityRoleType-CHART = 19-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## COUNTER
-
-```TypeScript
-COUNTER = 20
-```
-
-计数器组件。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-COUNTER = 20--><!--Device-AccessibilityRoleType-COUNTER = 20-End-->
+<!--Device-AccessibilityRoleType-COLUMN_SPLIT = 16--><!--Device-AccessibilityRoleType-COLUMN_SPLIT = 16-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -449,6 +389,26 @@ CONTAINER_MODAL = 21
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-CONTAINER_MODAL = 21--><!--Device-AccessibilityRoleType-CONTAINER_MODAL = 21-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## COUNTER
+
+```TypeScript
+COUNTER = 20
+```
+
+计数器组件。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-COUNTER = 20--><!--Device-AccessibilityRoleType-COUNTER = 20-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -909,6 +869,26 @@ IMAGE_SPAN = 44
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-IMAGE_SPAN = 44--><!--Device-AccessibilityRoleType-IMAGE_SPAN = 44-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## INDEXER_COMPONENT
+
+```TypeScript
+INDEXER_COMPONENT = 2
+```
+
+索引器组件。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-INDEXER_COMPONENT = 2--><!--Device-AccessibilityRoleType-INDEXER_COMPONENT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1732,6 +1712,26 @@ RICH_TEXT = 85
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## ROLE_NONE
+
+```TypeScript
+ROLE_NONE = 124
+```
+
+NULL。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-ROLE_NONE = 124--><!--Device-AccessibilityRoleType-ROLE_NONE = 124-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## ROLE_PAGER
 
 ```TypeScript
@@ -1909,6 +1909,26 @@ SHAPE = 94
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-SHAPE = 94--><!--Device-AccessibilityRoleType-SHAPE = 94-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SHEET_DRAG_BAR
+
+```TypeScript
+SHEET_DRAG_BAR = 7
+```
+
+滑动条。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-SHEET_DRAG_BAR = 7--><!--Device-AccessibilityRoleType-SHEET_DRAG_BAR = 7-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2112,26 +2132,6 @@ SYMBOL_GLYPH = 104
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TAB_CONTENT
-
-```TypeScript
-TAB_CONTENT = 105
-```
-
-仅在Tabs中使用，对应一个切换页签的内容视图。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-TAB_CONTENT = 105--><!--Device-AccessibilityRoleType-TAB_CONTENT = 105-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## TAB_BAR
 
 ```TypeScript
@@ -2149,6 +2149,26 @@ TAB_BAR = 106
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-TAB_BAR = 106--><!--Device-AccessibilityRoleType-TAB_BAR = 106-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TAB_CONTENT
+
+```TypeScript
+TAB_CONTENT = 105
+```
+
+仅在Tabs中使用，对应一个切换页签的内容视图。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TAB_CONTENT = 105--><!--Device-AccessibilityRoleType-TAB_CONTENT = 105-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2192,6 +2212,26 @@ TEXT = 108
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## TEXT_AREA
+
+```TypeScript
+TEXT_AREA = 114
+```
+
+输入区域组件。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TEXT_AREA = 114--><!--Device-AccessibilityRoleType-TEXT_AREA = 114-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## TEXT_CLOCK
 
 ```TypeScript
@@ -2229,6 +2269,26 @@ text entry component type
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-TEXT_ENTRY = 110--><!--Device-AccessibilityRoleType-TEXT_ENTRY = 110-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TEXT_FIELD
+
+```TypeScript
+TEXT_FIELD = 115
+```
+
+文本框。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TEXT_FIELD = 115--><!--Device-AccessibilityRoleType-TEXT_FIELD = 115-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2289,46 +2349,6 @@ TEXT_TIMER = 113
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-TEXT_TIMER = 113--><!--Device-AccessibilityRoleType-TEXT_TIMER = 113-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## TEXT_AREA
-
-```TypeScript
-TEXT_AREA = 114
-```
-
-输入区域组件。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-TEXT_AREA = 114--><!--Device-AccessibilityRoleType-TEXT_AREA = 114-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## TEXT_FIELD
-
-```TypeScript
-TEXT_FIELD = 115
-```
-
-文本框。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-TEXT_FIELD = 115--><!--Device-AccessibilityRoleType-TEXT_FIELD = 115-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2489,25 +2509,5 @@ XCOMPONENT = 123
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AccessibilityRoleType-XCOMPONENT = 123--><!--Device-AccessibilityRoleType-XCOMPONENT = 123-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## ROLE_NONE
-
-```TypeScript
-ROLE_NONE = 124
-```
-
-NULL。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AccessibilityRoleType-ROLE_NONE = 124--><!--Device-AccessibilityRoleType-ROLE_NONE = 124-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

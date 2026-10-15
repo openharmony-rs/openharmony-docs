@@ -30,7 +30,7 @@ defaultValue: number
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationAxis-defaultValue: double--><!--Device-FontVariationAxis-defaultValue: double-End-->
 
@@ -48,7 +48,7 @@ flags: number
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationAxis-flags: int--><!--Device-FontVariationAxis-flags: int-End-->
 
@@ -66,7 +66,7 @@ key: string
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationAxis-key: string--><!--Device-FontVariationAxis-key: string-End-->
 
@@ -84,7 +84,7 @@ localName: string
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationAxis-localName: string--><!--Device-FontVariationAxis-localName: string-End-->
 
@@ -102,7 +102,7 @@ maxValue: number
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationAxis-maxValue: double--><!--Device-FontVariationAxis-maxValue: double-End-->
 
@@ -120,7 +120,7 @@ minValue: number
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationAxis-minValue: double--><!--Device-FontVariationAxis-minValue: double-End-->
 
@@ -138,7 +138,7 @@ name: string
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationAxis-name: string--><!--Device-FontVariationAxis-name: string-End-->
 

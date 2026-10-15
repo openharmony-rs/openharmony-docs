@@ -20,20 +20,20 @@ import { fontManager } from '@kit.LocalizationKit';
 
 | Name | Description |
 | --- | --- |
-| [getFontScope](arkts-localization-fontmanager-getfontscope-f.md) | Queries the scope of a font by URL. This API uses a promise to return the result. |
-| [installScopeFont](arkts-localization-fontmanager-installscopefont-f.md) | Install the font file in the specified path as an application-level or session-level font. This API uses a promise to return the result. |
-| [offFontObserver](arkts-localization-fontmanager-offfontobserver-f.md) | Unregisters the font service status listener. |
-| [onFontObserver](arkts-localization-fontmanager-onfontobserver-f.md) | Registers a listener for monitoring the font service status. |
-| [uninstallScopeFont](arkts-localization-fontmanager-uninstallscopefont-f.md) | Uninstall installed application-level or session-level fonts based on the font path. This API uses a promise to return the result. |
+| [getFontScope](arkts-localization-fontmanager-getfontscope-f.md#getfontscope) | Queries the scope of a font by URL. This API uses a promise to return the result. |
+| [installScopeFont](arkts-localization-fontmanager-installscopefont-f.md#installscopefont) | Install the font file in the specified path as an application-level or session-level font. This API uses a promise to return the result. |
+| [offFontObserver](arkts-localization-fontmanager-offfontobserver-f.md#offfontobserver) | Unregisters the font service status listener. |
+| [onFontObserver](arkts-localization-fontmanager-onfontobserver-f.md#onfontobserver) | Registers a listener for monitoring the font service status. |
+| [uninstallScopeFont](arkts-localization-fontmanager-uninstallscopefont-f.md#uninstallscopefont) | Uninstall installed application-level or session-level fonts based on the font path. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md) | Data migration API used during device upgrades to start a migration task, providing real-time feedback on migration progress and results through a callback function. |
-| [installFont](arkts-localization-fontmanager-installfont-f-sys.md) | Installs a font file from a specified path into the system font library. This API uses a promise to return the result. |
-| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md) | Uninstalls an installed font file from the system font library by font name. This API uses a promise to return the result. |
+| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md#datamigration) | Data migration API used during device upgrades to start a migration task, providing real-time feedback on migration progress and results through a callback function. |
+| [installFont](arkts-localization-fontmanager-installfont-f-sys.md#installfont) | Installs a font file from a specified path into the system font library. This API uses a promise to return the result. |
+| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md#uninstallfont) | Uninstalls an installed font file from the system font library by font name. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

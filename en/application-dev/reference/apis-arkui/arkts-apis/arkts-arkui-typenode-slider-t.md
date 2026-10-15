@@ -6,6 +6,8 @@ type Slider = TypedFrameNode<SliderInterface, SliderAttribute>
 
 Represents a FrameNode of the **Slider** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SliderInterface, [SliderAttribute](../arkts-components/arkts-arkui-slider-comp-attribute.md)&gt;
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Slider** type.
 <!--Device-typeNode-type Slider = TypedFrameNode<SliderInterface, SliderAttribute>--><!--Device-typeNode-type Slider = TypedFrameNode<SliderInterface, SliderAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SliderInterface, [SliderAttribute](../arkts-components/arkts-arkui-slider-comp-attribute.md)&gt;

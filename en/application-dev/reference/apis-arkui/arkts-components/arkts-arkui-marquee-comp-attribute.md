@@ -6,7 +6,7 @@ declare class MarqueeAttribute extends CommonMethod<MarqueeAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** MarqueeAttribute extends CommonMethod<MarqueeAttribute>
+**Inheritance/Implementation:** MarqueeAttribute extends CommonMethod&lt;MarqueeAttribute&gt;
 
 **Since:** 8
 

@@ -26,7 +26,7 @@ Sets the alternate icon of the caller based on the given alternate icon name. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alternateIconName | string | Yes | Name of the alternate icon to be set. The alternate icon name must be in the name field of alternateIcons in app.json5. If alternateIconName is left empty, the alternate icon is canceled. |
+| alternateIconName | string | Yes | Name of the alternate icon to set. The alternate icon name must be in the name field of the [alternateIcons tag](../../../quick-start/app-configuration-file.md#alternateicons) in app.json5.<br>If alternateIconName is empty, the alternate icon is canceled. |
 
 **Return value:**
 

@@ -22,7 +22,7 @@ TLS版本号1.0。
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-TlsVersion-TLS_V_1_0 = 4--><!--Device-TlsVersion-TLS_V_1_0 = 4-End-->
 
@@ -38,7 +38,7 @@ TLS版本号1.1。
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-TlsVersion-TLS_V_1_1 = 5--><!--Device-TlsVersion-TLS_V_1_1 = 5-End-->
 
@@ -54,7 +54,7 @@ TLS版本号1.2。
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-TlsVersion-TLS_V_1_2 = 6--><!--Device-TlsVersion-TLS_V_1_2 = 6-End-->
 
@@ -70,7 +70,7 @@ TLS版本号1.3。
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-TlsVersion-TLS_V_1_3 = 7--><!--Device-TlsVersion-TLS_V_1_3 = 7-End-->
 

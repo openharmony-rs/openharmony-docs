@@ -12,6 +12,22 @@ enum SecurityLevel
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## DANGEROUS
+
+```TypeScript
+DANGEROUS = 3
+```
+
+页面不安全。尝试HTTPS并失败、页面未通过身份验证、页面上包含不安全活动内容的HTTPS、恶意软件、网络钓鱼或任何其他可能危险的严重安全问题。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityLevel-DANGEROUS = 3--><!--Device-SecurityLevel-DANGEROUS = 3-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## NONE
 
 ```TypeScript
@@ -57,21 +73,5 @@ WARNING = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SecurityLevel-WARNING = 2--><!--Device-SecurityLevel-WARNING = 2-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## DANGEROUS
-
-```TypeScript
-DANGEROUS = 3
-```
-
-页面不安全。尝试HTTPS并失败、页面未通过身份验证、页面上包含不安全活动内容的HTTPS、恶意软件、网络钓鱼或任何其他可能危险的严重安全问题。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-SecurityLevel-DANGEROUS = 3--><!--Device-SecurityLevel-DANGEROUS = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

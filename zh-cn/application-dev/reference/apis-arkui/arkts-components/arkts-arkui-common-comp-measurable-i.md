@@ -4,7 +4,7 @@
 declare interface Measurable
 ```
 
-子组件位置信息。
+子组件测量信息。Measurable对象由ArkUI框架在onMeasureSize调用时创建并传入，用于测量阶段。与Layoutable（用于布局阶段）不同，Measurable主要用于测量子组件尺寸，开发者通过measure方法设置约束条件并获取测量结果。Measurable和Layoutable是同一子组件在不同布局阶段的两种表示形式。
 
 **起始版本：** 10
 
@@ -18,7 +18,7 @@ declare interface Measurable
 getBorderWidth() : DirectionalEdgesT<number>
 ```
 
-调用此方法获取子组件的borderWidth信息。
+获取子组件的borderWidth信息，返回其边框宽度。
 
 **起始版本：** 12
 
@@ -34,7 +34,7 @@ getBorderWidth() : DirectionalEdgesT<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的borderWidth信息。 |
+| [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的边框宽度对象，包含四个方向的边框宽度值。单位：vp。 |
 
 ## getMargin
 
@@ -42,7 +42,7 @@ getBorderWidth() : DirectionalEdgesT<number>
 getMargin() : DirectionalEdgesT<number>
 ```
 
-调用此方法获取子组件的margin信息。
+获取子组件的margin信息，返回其外边距。
 
 **起始版本：** 12
 
@@ -58,7 +58,7 @@ getMargin() : DirectionalEdgesT<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的margin信息。 |
+| [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的外边距对象，包含四个方向的边距值。单位：vp。 |
 
 ## getPadding
 
@@ -66,7 +66,7 @@ getMargin() : DirectionalEdgesT<number>
 getPadding() : DirectionalEdgesT<number>
 ```
 
-调用此方法获取子组件的padding信息。
+获取子组件的padding信息，返回其内边距。
 
 **起始版本：** 12
 
@@ -82,7 +82,7 @@ getPadding() : DirectionalEdgesT<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的padding信息。 |
+| [DirectionalEdgesT](../arkts-apis/arkts-arkui-directionaledgest-i.md)&lt;number&gt; | 子组件的内边距对象，包含四个方向的内边距值。单位：vp。 |
 
 ## measure
 
@@ -90,7 +90,7 @@ getPadding() : DirectionalEdgesT<number>
 measure(constraint: ConstraintSizeOptions) : MeasureResult
 ```
 
-调用此方法限制子组件的尺寸范围。
+调用此方法限制子组件的尺寸范围，返回测量后的组件布局信息。
 
 **起始版本：** 10
 
@@ -106,13 +106,13 @@ measure(constraint: ConstraintSizeOptions) : MeasureResult
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 约束尺寸。 |
+| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 约束尺寸，包含minWidth、maxWidth、minHeight、maxHeight等约束条件，用于限制子组件的尺寸范围。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [MeasureResult](arkts-arkui-common-comp-measureresult-i.md) | Provides the measurement result of the component. |
+| [MeasureResult](arkts-arkui-common-comp-measureresult-i.md) | 测量后的组件布局信息，包含测量后的宽度和高度。 |
 
 ## uniqueId
 
@@ -120,7 +120,7 @@ measure(constraint: ConstraintSizeOptions) : MeasureResult
 uniqueId?: number
 ```
 
-系统为子组件分配的唯一标识UniqueID。取值限定为整数。
+系统为子组件分配的唯一标识UniqueID。用于唯一标识子组件以进行后续操作（如通过getFrameNodeByUniqueId获取FrameNode）。取值范围[0, +∞)。
 
 **类型：** number
 

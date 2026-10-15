@@ -4,7 +4,7 @@
 interface AuthOptions
 ```
 
-Represents a set of optional parameters for [auth](arkts-basicservices-osaccount-userauth-c-sys.md#auth-1).
+Represents a set of optional parameters for [auth](arkts-basicservices-osaccount-userauth-c-sys.md#auth2).
 
 **Since:** 12
 

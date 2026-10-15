@@ -44,3 +44,21 @@ Sets the result for the operation of adding a widget to the home screen.
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 | [16501001](../errorcode-form.md#16501001-widget-id-not-exist) | The ID of the form to be operated does not exist. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let res: formInfo.PublishFormResult = { code: formInfo.PublishFormErrorCode.SUCCESS, message: '' };
+  formHost.setPublishFormResult(formId, res);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

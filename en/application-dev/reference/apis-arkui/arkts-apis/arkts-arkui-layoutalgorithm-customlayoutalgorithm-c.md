@@ -33,7 +33,7 @@ Customizes the position of the child component to be arranged. When the position
 > 
 > - **onLayout** and [onMeasure](#onmeasure) usually need to be used together to complete the full custom layout process. The framework first calls **onMeasure** to measure the child component size, and then calls **onLayout** to set the child component position.
 > 
-> - In this API, you can call [getChild()](arkts-arkui-framenode-c.md#getchild) of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode, call [layout()](arkts-arkui-framenode-c.md#layout) of [FrameNode](arkts-arkui-framenode-c.md) to set the child component position. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](../../../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
+> - In this API, you can call [getChild()](arkts-arkui-framenode-c.md#getchild1) of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode, call [layout()](arkts-arkui-framenode-c.md#layout) of [FrameNode](arkts-arkui-framenode-c.md) to set the child component position. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](../../../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
 
 **Since:** 24
 
@@ -70,7 +70,7 @@ Customizes the size of the child component to be measured. When the size of the 
 > 
 > - **onMeasure** and [onLayout](#onlayout) usually need to be used together to complete the full custom layout process. The framework first calls **onMeasure** to measure the child component size, and then calls **onLayout** to set the child component position.
 > 
-> - In this API, you can call [getChild()](arkts-arkui-framenode-c.md#getchild) of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode, call [measure()](arkts-arkui-framenode-c.md#measure) of [FrameNode](arkts-arkui-framenode-c.md) to measure the child component size. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](../../../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
+> - In this API, you can call [getChild()](arkts-arkui-framenode-c.md#getchild1) of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode, call [measure()](arkts-arkui-framenode-c.md#measure) of [FrameNode](arkts-arkui-framenode-c.md) to measure the child component size. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](../../../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
 
 **Since:** 24
 

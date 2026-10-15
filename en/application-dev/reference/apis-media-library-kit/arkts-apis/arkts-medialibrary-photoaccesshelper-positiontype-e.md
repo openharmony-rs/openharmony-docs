@@ -12,20 +12,6 @@ Enumerates the file locations.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## LOCAL
-
-```TypeScript
-LOCAL = 1
-```
-
-Stored only on a local device.
-
-**Since:** 16
-
-<!--Device-PositionType-LOCAL = 1--><!--Device-PositionType-LOCAL = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## CLOUD
 
 ```TypeScript
@@ -37,6 +23,20 @@ Stored only on the cloud.
 **Since:** 16
 
 <!--Device-PositionType-CLOUD = 2--><!--Device-PositionType-CLOUD = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## LOCAL
+
+```TypeScript
+LOCAL = 1
+```
+
+Stored only on a local device.
+
+**Since:** 16
+
+<!--Device-PositionType-LOCAL = 1--><!--Device-PositionType-LOCAL = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

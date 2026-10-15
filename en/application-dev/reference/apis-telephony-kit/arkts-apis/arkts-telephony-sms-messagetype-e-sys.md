@@ -14,33 +14,33 @@ Message type.
 
 **System API:** This is a system API.
 
-## TYPE_MMS_SEND_REQ
+## TYPE_MMS_ACKNOWLEDGE_IND
 
 ```TypeScript
-TYPE_MMS_SEND_REQ = 128
+TYPE_MMS_ACKNOWLEDGE_IND = 133
 ```
 
-MMS message sending request.
+MMS message acknowledgement index.
 
 **Since:** 8
 
-<!--Device-MessageType-TYPE_MMS_SEND_REQ = 128--><!--Device-MessageType-TYPE_MMS_SEND_REQ = 128-End-->
+<!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133--><!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
 
-## TYPE_MMS_SEND_CONF
+## TYPE_MMS_DELIVERY_IND
 
 ```TypeScript
-TYPE_MMS_SEND_CONF = 129
+TYPE_MMS_DELIVERY_IND = 134
 ```
 
-MMS message sending configuration.
+MMS message delivery index.
 
 **Since:** 8
 
-<!--Device-MessageType-TYPE_MMS_SEND_CONF = 129--><!--Device-MessageType-TYPE_MMS_SEND_CONF = 129-End-->
+<!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134--><!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -57,6 +57,38 @@ MMS notification index.
 **Since:** 8
 
 <!--Device-MessageType-TYPE_MMS_NOTIFICATION_IND = 130--><!--Device-MessageType-TYPE_MMS_NOTIFICATION_IND = 130-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+**System API:** This is a system API.
+
+## TYPE_MMS_READ_ORIG_IND
+
+```TypeScript
+TYPE_MMS_READ_ORIG_IND = 136
+```
+
+Original MMS message reading index.
+
+**Since:** 8
+
+<!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136--><!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+**System API:** This is a system API.
+
+## TYPE_MMS_READ_REC_IND
+
+```TypeScript
+TYPE_MMS_READ_REC_IND = 135
+```
+
+MMS message reading and receiving index.
+
+**Since:** 8
+
+<!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135--><!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -94,65 +126,33 @@ MMS message retrieval configuration.
 
 **System API:** This is a system API.
 
-## TYPE_MMS_ACKNOWLEDGE_IND
+## TYPE_MMS_SEND_CONF
 
 ```TypeScript
-TYPE_MMS_ACKNOWLEDGE_IND = 133
+TYPE_MMS_SEND_CONF = 129
 ```
 
-MMS message acknowledgement index.
+MMS message sending configuration.
 
 **Since:** 8
 
-<!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133--><!--Device-MessageType-TYPE_MMS_ACKNOWLEDGE_IND = 133-End-->
+<!--Device-MessageType-TYPE_MMS_SEND_CONF = 129--><!--Device-MessageType-TYPE_MMS_SEND_CONF = 129-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
 
-## TYPE_MMS_DELIVERY_IND
+## TYPE_MMS_SEND_REQ
 
 ```TypeScript
-TYPE_MMS_DELIVERY_IND = 134
+TYPE_MMS_SEND_REQ = 128
 ```
 
-MMS message delivery index.
+MMS message sending request.
 
 **Since:** 8
 
-<!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134--><!--Device-MessageType-TYPE_MMS_DELIVERY_IND = 134-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
-**System API:** This is a system API.
-
-## TYPE_MMS_READ_REC_IND
-
-```TypeScript
-TYPE_MMS_READ_REC_IND = 135
-```
-
-MMS message reading and receiving index.
-
-**Since:** 8
-
-<!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135--><!--Device-MessageType-TYPE_MMS_READ_REC_IND = 135-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
-**System API:** This is a system API.
-
-## TYPE_MMS_READ_ORIG_IND
-
-```TypeScript
-TYPE_MMS_READ_ORIG_IND = 136
-```
-
-Original MMS message reading index.
-
-**Since:** 8
-
-<!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136--><!--Device-MessageType-TYPE_MMS_READ_ORIG_IND = 136-End-->
+<!--Device-MessageType-TYPE_MMS_SEND_REQ = 128--><!--Device-MessageType-TYPE_MMS_SEND_REQ = 128-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

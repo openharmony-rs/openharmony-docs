@@ -34,7 +34,7 @@ This method unregisters the device and clears the registered callbacks and handl
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-close(): void--><!--Device-GattClientDevice-close(): void-End-->
 
@@ -78,7 +78,7 @@ The 'BLEConnectionStateChange' event is subscribed to return the connection stat
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-connect(): void--><!--Device-GattClientDevice-connect(): void-End-->
 
@@ -120,7 +120,7 @@ Disconnects from or stops an ongoing connection to a BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-disconnect(): void--><!--Device-GattClientDevice-disconnect(): void-End-->
 
@@ -194,6 +194,8 @@ try {
 }
 ```
 
+<a id="getdevicename1"></a>
+
 ## getDeviceName
 
 ```TypeScript
@@ -208,7 +210,7 @@ Obtains the name of BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-getDeviceName(callback: AsyncCallback<string>): void--><!--Device-GattClientDevice-getDeviceName(callback: AsyncCallback<string>): void-End-->
 
@@ -225,7 +227,7 @@ Obtains the name of BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900099 | Operation failed. |
@@ -254,7 +256,7 @@ try {
 }
 ```
 
-<a id="getdevicename-1"></a>
+<a id="getdevicename2"></a>
 
 ## getDeviceName
 
@@ -270,7 +272,7 @@ Obtains the name of BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-getDeviceName(): Promise<string>--><!--Device-GattClientDevice-getDeviceName(): Promise<string>-End-->
 
@@ -287,7 +289,7 @@ Obtains the name of BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter.Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900099 | Operation failed. |
@@ -316,6 +318,8 @@ try {
 }
 ```
 
+<a id="getrssivalue1"></a>
+
 ## getRssiValue
 
 ```TypeScript
@@ -330,7 +334,7 @@ Get the RSSI value of this BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-getRssiValue(callback: AsyncCallback<int>): void--><!--Device-GattClientDevice-getRssiValue(callback: AsyncCallback<int>): void-End-->
 
@@ -347,7 +351,7 @@ Get the RSSI value of this BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 - 21 |
 | 2900099 | Operation failed. |
@@ -370,7 +374,7 @@ try {
 }
 ```
 
-<a id="getrssivalue-1"></a>
+<a id="getrssivalue2"></a>
 
 ## getRssiValue
 
@@ -386,7 +390,7 @@ Get the RSSI value of this BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-getRssiValue(): Promise<int>--><!--Device-GattClientDevice-getRssiValue(): Promise<int>-End-->
 
@@ -403,7 +407,7 @@ Get the RSSI value of this BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 - 21 |
 | 2900099 | Operation failed. |
@@ -424,6 +428,8 @@ try {
 }
 ```
 
+<a id="getservices1"></a>
+
 ## getServices
 
 ```TypeScript
@@ -438,7 +444,7 @@ Starts discovering services.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-getServices(callback: AsyncCallback<Array<GattService>>): void--><!--Device-GattClientDevice-getServices(callback: AsyncCallback<Array<GattService>>): void-End-->
 
@@ -455,7 +461,7 @@ Starts discovering services.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900099 | Operation failed. |
@@ -493,7 +499,7 @@ try {
 }
 ```
 
-<a id="getservices-1"></a>
+<a id="getservices2"></a>
 
 ## getServices
 
@@ -509,7 +515,7 @@ Starts discovering services.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-getServices(): Promise<Array<GattService>>--><!--Device-GattClientDevice-getServices(): Promise<Array<GattService>>-End-->
 
@@ -526,7 +532,7 @@ Starts discovering services.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900099 | Operation failed. |
@@ -586,7 +592,7 @@ Unsubscribe characteristic value changed event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 **Examples**
@@ -633,7 +639,7 @@ Unsubscribe client connection state changed event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 **Examples**
@@ -680,7 +686,7 @@ Unsubscribe mtu changed event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 **Examples**
@@ -821,7 +827,7 @@ Subscribe characteristic value changed event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 **Examples**
@@ -873,7 +879,7 @@ Subscribe client connection state changed event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 **Examples**
@@ -924,7 +930,7 @@ Subscribe mtu changed event.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 **Examples**
@@ -1035,6 +1041,8 @@ try {
 }
 ```
 
+<a id="readcharacteristicvalue1"></a>
+
 ## readCharacteristicValue
 
 ```TypeScript
@@ -1049,7 +1057,7 @@ Reads the characteristic of a BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void--><!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void-End-->
 
@@ -1067,7 +1075,7 @@ Reads the characteristic of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1116,7 +1124,7 @@ try {
 }
 ```
 
-<a id="readcharacteristicvalue-1"></a>
+<a id="readcharacteristicvalue2"></a>
 
 ## readCharacteristicValue
 
@@ -1130,7 +1138,7 @@ Reads the characteristic of a BLE peripheral device.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>--><!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>-End-->
 
@@ -1153,7 +1161,7 @@ Reads the characteristic of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1193,6 +1201,8 @@ try {
 }
 ```
 
+<a id="readdescriptorvalue1"></a>
+
 ## readDescriptorValue
 
 ```TypeScript
@@ -1205,7 +1215,7 @@ Reads the descriptor of a BLE peripheral device.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<BLEDescriptor>): void--><!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<BLEDescriptor>): void-End-->
 
@@ -1223,7 +1233,7 @@ Reads the descriptor of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1265,7 +1275,7 @@ try {
 }
 ```
 
-<a id="readdescriptorvalue-1"></a>
+<a id="readdescriptorvalue2"></a>
 
 ## readDescriptorValue
 
@@ -1279,7 +1289,7 @@ Reads the descriptor of a BLE peripheral device.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor): Promise<BLEDescriptor>--><!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor): Promise<BLEDescriptor>-End-->
 
@@ -1302,7 +1312,7 @@ Reads the descriptor of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1396,7 +1406,7 @@ Asynchronous interface for setting the mtu size of a BLE peripheral device. The 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-GattClientDevice-setBLEMtu(mtu: int): Promise<int>--><!--Device-GattClientDevice-setBLEMtu(mtu: int): Promise<int>-End-->
 
@@ -1424,6 +1434,19 @@ Asynchronous interface for setting the mtu size of a BLE peripheral device. The 
 | 2900099 | Operation failed. |
 | 2901003 | The connection is not established. |
 
+**Examples**
+
+```TypeScript
+try {
+    let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+    device.setBLEMtu(128).then(outMtuSize => {
+        console.info('Actual MTU: ' + outMtuSize);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 ## setBLEMtuSize
 
 ```TypeScript
@@ -1438,7 +1461,7 @@ Set the mtu size of a BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-setBLEMtuSize(mtu: int): void--><!--Device-GattClientDevice-setBLEMtuSize(mtu: int): void-End-->
 
@@ -1455,7 +1478,7 @@ Set the mtu size of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900099 | Operation failed. |
@@ -1471,6 +1494,8 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+<a id="setcharacteristicchangeindication1"></a>
 
 ## setCharacteristicChangeIndication
 
@@ -1490,7 +1515,7 @@ Enables or disables indication of a characteristic when value changed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-setCharacteristicChangeIndication(      characteristic: BLECharacteristic,      enable: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-GattClientDevice-setCharacteristicChangeIndication(      characteristic: BLECharacteristic,      enable: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -1509,7 +1534,7 @@ Enables or disables indication of a characteristic when value changed.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1546,7 +1571,7 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangeindication-1"></a>
+<a id="setcharacteristicchangeindication2"></a>
 
 ## setCharacteristicChangeIndication
 
@@ -1562,7 +1587,7 @@ Enables or disables indication of a characteristic when value changed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean): Promise<void>--><!--Device-GattClientDevice-setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean): Promise<void>-End-->
 
@@ -1586,7 +1611,7 @@ Enables or disables indication of a characteristic when value changed.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1617,6 +1642,8 @@ try {
 }
 ```
 
+<a id="setcharacteristicchangenotification1"></a>
+
 ## setCharacteristicChangeNotification
 
 ```TypeScript
@@ -1635,7 +1662,7 @@ Enables or disables notification of a characteristic when value changed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-setCharacteristicChangeNotification(      characteristic: BLECharacteristic,      enable: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-GattClientDevice-setCharacteristicChangeNotification(      characteristic: BLECharacteristic,      enable: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -1654,7 +1681,7 @@ Enables or disables notification of a characteristic when value changed.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1691,7 +1718,7 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangenotification-1"></a>
+<a id="setcharacteristicchangenotification2"></a>
 
 ## setCharacteristicChangeNotification
 
@@ -1707,7 +1734,7 @@ Enables or disables indication of a characteristic when value changed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean): Promise<void>--><!--Device-GattClientDevice-setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean): Promise<void>-End-->
 
@@ -1731,7 +1758,7 @@ Enables or disables indication of a characteristic when value changed.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1870,6 +1897,8 @@ try {
 }
 ```
 
+<a id="writecharacteristicvalue1"></a>
+
 ## writeCharacteristicValue
 
 ```TypeScript
@@ -1888,7 +1917,7 @@ Writes the characteristic of a BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-writeCharacteristicValue(      characteristic: BLECharacteristic,      writeType: GattWriteType,      callback: AsyncCallback<void>    ): void--><!--Device-GattClientDevice-writeCharacteristicValue(      characteristic: BLECharacteristic,      writeType: GattWriteType,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -1907,7 +1936,7 @@ Writes the characteristic of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -1952,7 +1981,7 @@ try {
 }
 ```
 
-<a id="writecharacteristicvalue-1"></a>
+<a id="writecharacteristicvalue2"></a>
 
 ## writeCharacteristicValue
 
@@ -1968,7 +1997,7 @@ Writes the characteristic of a BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType): Promise<void>--><!--Device-GattClientDevice-writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType): Promise<void>-End-->
 
@@ -1992,7 +2021,7 @@ Writes the characteristic of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -2031,6 +2060,8 @@ try {
 }
 ```
 
+<a id="writedescriptorvalue1"></a>
+
 ## writeDescriptorValue
 
 ```TypeScript
@@ -2045,7 +2076,7 @@ Writes the descriptor of a BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<void>): void--><!--Device-GattClientDevice-writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<void>): void-End-->
 
@@ -2063,7 +2094,7 @@ Writes the descriptor of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |
@@ -2102,7 +2133,7 @@ try {
 }
 ```
 
-<a id="writedescriptorvalue-1"></a>
+<a id="writedescriptorvalue2"></a>
 
 ## writeDescriptorValue
 
@@ -2118,7 +2149,7 @@ Writes the descriptor of a BLE peripheral device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattClientDevice-writeDescriptorValue(descriptor: BLEDescriptor): Promise<void>--><!--Device-GattClientDevice-writeDescriptorValue(descriptor: BLEDescriptor): Promise<void>-End-->
 
@@ -2141,7 +2172,7 @@ Writes the descriptor of a BLE peripheral device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900011 | The operation is busy. The last operation is not complete.<br>**Applicable version:** 20 and later |

@@ -12,22 +12,6 @@ enum ServiceType
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## SERVICE_NO_TRAFFIC
-
-```TypeScript
-SERVICE_NO_TRAFFIC = 0
-```
-
-低功耗模式，仅维持连接，不传输应用数据，功耗最低。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0--><!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## SERVICE_BEST_EFFORT
 
 ```TypeScript
@@ -57,5 +41,21 @@ SERVICE_GUARANTEED = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ServiceType-SERVICE_GUARANTEED = 2--><!--Device-ServiceType-SERVICE_GUARANTEED = 2-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## SERVICE_NO_TRAFFIC
+
+```TypeScript
+SERVICE_NO_TRAFFIC = 0
+```
+
+低功耗模式，仅维持连接，不传输应用数据，功耗最低。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0--><!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

@@ -46,7 +46,7 @@ function setAbilityDisabled(admin: Want, bundleName: string, accountId: number, 
 **示例**
 
 ```TypeScript
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {

@@ -36,7 +36,7 @@ constructor(antialias?: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| antialias | boolean | 否 | 表明canvas是否开启抗锯齿。<br>异常值undefined或null按默认值处理。<br>true：表示开启抗锯齿，false：表示不开启抗锯齿功能。<br>默认值：false <br>**说明：** <br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias&lt;sup&gt;24+&lt;/sup&gt;](#antialias)接口。 |
+| antialias | boolean | 否 | 表明canvas是否开启抗锯齿。<br>异常值undefined或null按默认值处理。<br>true：表示开启抗锯齿，false：表示不开启抗锯齿功能。<br>默认值：false <br>**说明：** <br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](#antialias)接口。 |
 
 ## antialias
 
@@ -54,7 +54,7 @@ true：表示开启抗锯齿，false：表示不开启抗锯齿功能。
 
 **说明：** 
 
-绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias&lt;sup&gt;24+&lt;/sup&gt;](#antialias)接口。
+绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](#antialias)接口。
 
 **类型：** boolean
 

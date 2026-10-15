@@ -14,22 +14,6 @@ Enumerates the operations for clearing the downloaded cloud data locally.
 
 **System API:** This is a system API.
 
-## CLEAR_CLOUD_INFO
-
-```TypeScript
-CLEAR_CLOUD_INFO = 0
-```
-
-Clear the cloud identifier of the data downloaded from the cloud and retain the data locally.
-
-**Since:** 10
-
-<!--Device-ClearAction-CLEAR_CLOUD_INFO = 0--><!--Device-ClearAction-CLEAR_CLOUD_INFO = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
-
-**System API:** This is a system API.
-
 ## CLEAR_CLOUD_DATA_AND_INFO
 
 ```TypeScript
@@ -41,6 +25,22 @@ Clear the data downloaded from the cloud, excluding the cloud data that has been
 **Since:** 10
 
 <!--Device-ClearAction-CLEAR_CLOUD_DATA_AND_INFO = 1--><!--Device-ClearAction-CLEAR_CLOUD_DATA_AND_INFO = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**System API:** This is a system API.
+
+## CLEAR_CLOUD_INFO
+
+```TypeScript
+CLEAR_CLOUD_INFO = 0
+```
+
+Clear the cloud identifier of the data downloaded from the cloud and retain the data locally.
+
+**Since:** 10
+
+<!--Device-ClearAction-CLEAR_CLOUD_INFO = 0--><!--Device-ClearAction-CLEAR_CLOUD_INFO = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 

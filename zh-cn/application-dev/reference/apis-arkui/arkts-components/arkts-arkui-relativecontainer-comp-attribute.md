@@ -16,6 +16,8 @@ declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerA
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="barrier1"></a>
+
 ## barrier
 
 ```TypeScript
@@ -40,7 +42,7 @@ barrier(value: Array<BarrierStyle>)
 | --- | --- | --- | --- |
 | value | Array&lt;[BarrierStyle](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)&gt; | 是 | RelativeContainer容器内的屏障，用于定义屏障的id、方向和依赖组件，子组件可以以屏障为锚点进行对齐定位。 |
 
-<a id="barrier-1"></a>
+<a id="barrier2"></a>
 
 ## barrier
 

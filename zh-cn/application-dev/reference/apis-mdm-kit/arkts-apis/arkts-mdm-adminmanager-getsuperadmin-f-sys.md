@@ -36,6 +36,7 @@ function getSuperAdmin(): Promise<Want>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,3 +49,5 @@ adminManager.getSuperAdmin().then((result) => {
   console.error(`Failed to get super admin. Code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<!--DelEnd-->

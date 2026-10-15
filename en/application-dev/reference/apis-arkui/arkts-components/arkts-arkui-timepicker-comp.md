@@ -269,9 +269,9 @@ struct TimePickerExample {
 }
 ```
 
-### Example 7: Setting AM/PM to Follow the Time Linkage
+### Example 7: Enabling the AM/PM Indicator to Automatically Switch Based on the Hour Value in 12-hour Format
 
-This example uses [enableCascade](#enablecascade18) and [loop](#loop11) to implement the linkage of AM/PM following the time in the 12-hour format.
+This example demonstrates how to enable the AM/PM indicator to automatically switch based on the hour value in 12-hour format using [enableCascade](#enablecascade18) and [loop](#loop11).
 
 The enableCascade API is added since API version 18.
 

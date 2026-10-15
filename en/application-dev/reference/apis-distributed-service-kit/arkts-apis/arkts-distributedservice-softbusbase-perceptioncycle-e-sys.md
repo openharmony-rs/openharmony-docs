@@ -14,6 +14,24 @@ Defines the keepalive cycle level for perception scanning. A higher level indica
 
 **System API:** This is a system API.
 
+## PERCEPTION_CYCLE_HIGH
+
+```TypeScript
+PERCEPTION_CYCLE_HIGH = 2
+```
+
+High cycle.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PerceptionCycle-PERCEPTION_CYCLE_HIGH = 2--><!--Device-PerceptionCycle-PERCEPTION_CYCLE_HIGH = 2-End-->
+
+**System capability:** SystemCapability.Communication.SoftBus.Core
+
+**System API:** This is a system API.
+
 ## PERCEPTION_CYCLE_LOW
 
 ```TypeScript
@@ -45,24 +63,6 @@ Medium cycle.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PerceptionCycle-PERCEPTION_CYCLE_MEDIUM = 1--><!--Device-PerceptionCycle-PERCEPTION_CYCLE_MEDIUM = 1-End-->
-
-**System capability:** SystemCapability.Communication.SoftBus.Core
-
-**System API:** This is a system API.
-
-## PERCEPTION_CYCLE_HIGH
-
-```TypeScript
-PERCEPTION_CYCLE_HIGH = 2
-```
-
-High cycle.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PerceptionCycle-PERCEPTION_CYCLE_HIGH = 2--><!--Device-PerceptionCycle-PERCEPTION_CYCLE_HIGH = 2-End-->
 
 **System capability:** SystemCapability.Communication.SoftBus.Core
 

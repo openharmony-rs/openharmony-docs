@@ -12,21 +12,21 @@ Sets the device type that triggers the button event.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Unknown
+## JOYSTICK
 
 ```TypeScript
-Unknown
+JOYSTICK
 ```
 
-Unknown input device.
+The input device is a joystick.
 
-**Since:** 7
+**Since:** 15
 
-**Model restriction:** This API can be used in both the stage model and FA model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
-<!--Device-KeySource-Unknown--><!--Device-KeySource-Unknown-End-->
+<!--Device-KeySource-JOYSTICK--><!--Device-KeySource-JOYSTICK-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,20 +48,20 @@ The input device is a keyboard.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## JOYSTICK
+## Unknown
 
 ```TypeScript
-JOYSTICK
+Unknown
 ```
 
-The input device is a joystick.
+Unknown input device.
 
-**Since:** 15
+**Since:** 7
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-KeySource-JOYSTICK--><!--Device-KeySource-JOYSTICK-End-->
+<!--Device-KeySource-Unknown--><!--Device-KeySource-Unknown-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

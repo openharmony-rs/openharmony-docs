@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryextensionabilityinfosync1"></a>
+
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -33,14 +35,14 @@ No permission is required for obtaining the caller's own information.
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want containing the bundle name to query. |
 | extensionAbilityType | [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | Yes | Type of the ExtensionAbility. |
-| extensionAbilityFlags | number | Yes | Type of the ExtensionAbility information to obtain. |
+| extensionAbilityFlags | number | Yes | Flag used to specify the information to be included in the returned ExtensionAbilityInfo object. For details about the values and their meanings, see [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md). |
 | userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. The value must be greater than or equal to 0. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt; | An array of ExtensionAbility information. |
+| Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt; | Returns the list of queried ExtensionAbility information. |
 
 **Error codes:**
 
@@ -48,12 +50,13 @@ No permission is required for obtaining the caller's own information.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified extensionAbility is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified userId is invalid. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -103,8 +106,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="queryextensionabilityinfosync-1"></a>
+
+<a id="queryextensionabilityinfosync2"></a>
 
 ## queryExtensionAbilityInfoSync
 
@@ -133,7 +138,7 @@ No permission is required for obtaining the caller's own information.
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want containing the bundle name to query. |
 | extensionAbilityType | string | Yes | Type of the custom ExtensionAbility. |
-| extensionAbilityFlags | number | Yes | Information flags to be contained in the returned ExtensionAbilityInfo object. |
+| extensionAbilityFlags | number | Yes | Information flags to be included in the returned ExtensionAbilityInfo object. For details about the values and their meanings, see [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md). |
 | userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. The value must be greater than or equal to 0. |
 
 **Return value:**
@@ -148,12 +153,13 @@ No permission is required for obtaining the caller's own information.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified extensionAbility is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified userId is invalid. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -203,8 +209,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="queryextensionabilityinfosync-2"></a>
+
+<a id="queryextensionabilityinfosync3"></a>
 
 ## queryExtensionAbilityInfoSync
 
@@ -232,7 +240,7 @@ No permission is required for obtaining the caller's own information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | extensionAbilityType | string | Yes | Type of the custom ExtensionAbility. |
-| extensionAbilityFlags | number | Yes | Information flags to be contained in the returned ExtensionAbilityInfo object. |
+| extensionAbilityFlags | number | Yes | Information flags to be included in the returned ExtensionAbilityInfo object. For details about the values and their meanings, see [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md). |
 | userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. The value must be greater than or equal to 0. |
 
 **Return value:**
@@ -247,10 +255,11 @@ No permission is required for obtaining the caller's own information.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter extensionAbilityType is empty. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter extensionAbilityType is empty. |
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified extensionAbility is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified userId is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -289,3 +298,5 @@ try {
   hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfoSync failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

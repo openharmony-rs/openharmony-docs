@@ -12,20 +12,6 @@ export enum RequestKeyboardReason
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-表示没有特定的原因触发键盘请求。<br> <br>使用场景：默认值，不指定特定触发原因时使用。
-
-**起始版本：** 15
-
-<!--Device-RequestKeyboardReason-NONE = 0--><!--Device-RequestKeyboardReason-NONE = 0-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
 ## MOUSE
 
 ```TypeScript
@@ -40,17 +26,17 @@ MOUSE = 1
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## TOUCH
+## NONE
 
 ```TypeScript
-TOUCH = 2
+NONE = 0
 ```
 
-表示键盘请求是由触摸操作触发的。<br> <br>使用场景：用户通过触摸点击编辑框触发键盘弹出时使用。
+表示没有特定的原因触发键盘请求。<br> <br>使用场景：默认值，不指定特定触发原因时使用。
 
 **起始版本：** 15
 
-<!--Device-RequestKeyboardReason-TOUCH = 2--><!--Device-RequestKeyboardReason-TOUCH = 2-End-->
+<!--Device-RequestKeyboardReason-NONE = 0--><!--Device-RequestKeyboardReason-NONE = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -65,5 +51,19 @@ OTHER = 20
 **起始版本：** 15
 
 <!--Device-RequestKeyboardReason-OTHER = 20--><!--Device-RequestKeyboardReason-OTHER = 20-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## TOUCH
+
+```TypeScript
+TOUCH = 2
+```
+
+表示键盘请求是由触摸操作触发的。<br> <br>使用场景：用户通过触摸点击编辑框触发键盘弹出时使用。
+
+**起始版本：** 15
+
+<!--Device-RequestKeyboardReason-TOUCH = 2--><!--Device-RequestKeyboardReason-TOUCH = 2-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

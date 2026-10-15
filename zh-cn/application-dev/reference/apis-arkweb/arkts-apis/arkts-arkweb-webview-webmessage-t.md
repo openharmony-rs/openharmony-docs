@@ -16,5 +16,5 @@ type WebMessage = ArrayBuffer | string
 
 | 类型 | 说明 |
 | --- | --- |
-| ArrayBuffer | 二进制类型数据。 [since 11] |
-| string | 字符串类型数据。 [since 11] |
+| ArrayBuffer | 二进制类型数据。<br>**起始版本：** 11 |
+| string | 字符串类型数据。<br>**起始版本：** 11 |

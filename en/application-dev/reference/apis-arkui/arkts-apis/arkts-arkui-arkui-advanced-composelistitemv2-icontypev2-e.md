@@ -12,6 +12,24 @@ Enumerates icon types for the left element of list items.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## APP_ICON
+
+```TypeScript
+APP_ICON = 5
+```
+
+Application icon, sized 64 × 64 vp.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-IconTypeV2-APP_ICON = 5--><!--Device-IconTypeV2-APP_ICON = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## BADGE
 
 ```TypeScript
@@ -27,42 +45,6 @@ Badge icon, sized 8 × 8 vp.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-IconTypeV2-BADGE = 1--><!--Device-IconTypeV2-BADGE = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## NORMAL_ICON
-
-```TypeScript
-NORMAL_ICON = 2
-```
-
-Normal icon, sized 16 × 16 vp.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-IconTypeV2-NORMAL_ICON = 2--><!--Device-IconTypeV2-NORMAL_ICON = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## SYSTEM_ICON
-
-```TypeScript
-SYSTEM_ICON = 3
-```
-
-System icon, sized 24 × 24 vp.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-IconTypeV2-SYSTEM_ICON = 3--><!--Device-IconTypeV2-SYSTEM_ICON = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,13 +66,13 @@ Head sculpture icon, sized 40 × 40 vp.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## APP_ICON
+## LONGITUDINAL
 
 ```TypeScript
-APP_ICON = 5
+LONGITUDINAL = 7
 ```
 
-Application icon, sized 64 × 64 vp.
+Icon of special horizontal ratio (width greater than height), with the longest side kept at 96 vp.
 
 **Since:** 26.0.0
 
@@ -98,7 +80,25 @@ Application icon, sized 64 × 64 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-<!--Device-IconTypeV2-APP_ICON = 5--><!--Device-IconTypeV2-APP_ICON = 5-End-->
+<!--Device-IconTypeV2-LONGITUDINAL = 7--><!--Device-IconTypeV2-LONGITUDINAL = 7-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NORMAL_ICON
+
+```TypeScript
+NORMAL_ICON = 2
+```
+
+Normal icon, sized 16 × 16 vp.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-IconTypeV2-NORMAL_ICON = 2--><!--Device-IconTypeV2-NORMAL_ICON = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,13 +120,13 @@ Preview icon, sized 96 × 96 vp.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LONGITUDINAL
+## SYSTEM_ICON
 
 ```TypeScript
-LONGITUDINAL = 7
+SYSTEM_ICON = 3
 ```
 
-Icon of special horizontal ratio (width greater than height), with the longest side kept at 96 vp.
+System icon, sized 24 × 24 vp.
 
 **Since:** 26.0.0
 
@@ -134,7 +134,7 @@ Icon of special horizontal ratio (width greater than height), with the longest s
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-<!--Device-IconTypeV2-LONGITUDINAL = 7--><!--Device-IconTypeV2-LONGITUDINAL = 7-End-->
+<!--Device-IconTypeV2-SYSTEM_ICON = 3--><!--Device-IconTypeV2-SYSTEM_ICON = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -4,7 +4,7 @@
 type SnapshotRegionType = SnapshotRegion | LocalizedSnapshotRegion
 ```
 
-Defines the snapshot region rect type.
+Represents the region of a component to be captured in a snapshot. It can take one of the following types: SnapshotRegion or LocalizedSnapshotRegion.
 
 **Since:** 15
 

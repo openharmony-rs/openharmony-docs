@@ -28,7 +28,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 onAboutToCreateAbility(): void
 ```
 
-无
+当AbilityStage即将创建第一个Ability时调用。
 
 **起始版本：** 24
 
@@ -51,6 +51,48 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
+## onAboutToCreateAbilityAsync
+
+```TypeScript
+onAboutToCreateAbilityAsync(): Promise<void>
+```
+
+当AbilityStage即将创建第一个Ability时调用。使用Promise异步回调。此方法返回的Promise成功resolve后，后续的生命周期回调才会继续执行，否则将被挂起。若同时实现[onAboutToCreateAbility](#onabouttocreateability)和此方法，仅此方法生效。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AbilityStage-onAboutToCreateAbilityAsync(): Promise<void>--><!--Device-AbilityStage-onAboutToCreateAbilityAsync(): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回值的Promise。 |
+
+**示例**
+
+```TypeScript
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  async onAboutToCreateAbilityAsync(): Promise<void> {
+    console.info('About to create first ability, preparing...');
+    // 执行异步初始化操作
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        console.info('Async preparation completed');
+        resolve();
+      }, 1000);
+    });
+    // 初始化完成后，才会继续创建Ability
+  }
+}
+```
+
 ## onAcceptWant
 
 ```TypeScript
@@ -69,7 +111,7 @@ onAcceptWant(want: Want): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onAcceptWant(want: Want): string--><!--Device-AbilityStage-onAcceptWant(want: Want): string-End-->
 
@@ -114,7 +156,7 @@ onAcceptWantAsync(want: Want): Promise<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onAcceptWantAsync(want: Want): Promise<string>--><!--Device-AbilityStage-onAcceptWantAsync(want: Want): Promise<string>-End-->
 
@@ -166,7 +208,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onConfigurationUpdate(newConfig: Configuration): void--><!--Device-AbilityStage-onConfigurationUpdate(newConfig: Configuration): void-End-->
 
@@ -204,7 +246,7 @@ onCreate(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onCreate(): void--><!--Device-AbilityStage-onCreate(): void-End-->
 
@@ -234,7 +276,7 @@ onDestroy(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onDestroy(): void--><!--Device-AbilityStage-onDestroy(): void-End-->
 
@@ -299,7 +341,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onMemoryLevel(level: AbilityConstant.MemoryLevel): void--><!--Device-AbilityStage-onMemoryLevel(level: AbilityConstant.MemoryLevel): void-End-->
 
@@ -343,8 +385,7 @@ onNewProcessRequest(want: Want): string
 
 > **说明：** 
 > 
-> - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。<!--Del-->从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。&lt;!--DelEnd &gt; --
-> 
+> - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。<!--Del-->从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。<!--DelEnd > -->
 > 
 > - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync)实现时，本回调函数将不执行。
 
@@ -401,7 +442,7 @@ onNewProcessRequestAsync(want: Want): Promise<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onNewProcessRequestAsync(want: Want): Promise<string>--><!--Device-AbilityStage-onNewProcessRequestAsync(want: Want): Promise<string>-End-->
 
@@ -455,7 +496,7 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onPrepareTermination(): AbilityConstant.PrepareTermination--><!--Device-AbilityStage-onPrepareTermination(): AbilityConstant.PrepareTermination-End-->
 
@@ -500,7 +541,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>--><!--Device-AbilityStage-onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>-End-->
 
@@ -541,7 +582,7 @@ AbilityStage上下文。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AbilityStage-context: AbilityStageContext--><!--Device-AbilityStage-context: AbilityStageContext-End-->
 

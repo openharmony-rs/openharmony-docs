@@ -12,19 +12,19 @@ export enum MovingPhotoBadgeStateType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## NOT_MOVING_PHOTO
+## MOVING_PHOTO_DISABLED
 
 ```TypeScript
-NOT_MOVING_PHOTO = 0
+MOVING_PHOTO_DISABLED = 2
 ```
 
-非动态照片。
+关闭动态照片效果。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-MovingPhotoBadgeStateType-NOT_MOVING_PHOTO = 0--><!--Device-MovingPhotoBadgeStateType-NOT_MOVING_PHOTO = 0-End-->
+<!--Device-MovingPhotoBadgeStateType-MOVING_PHOTO_DISABLED = 2--><!--Device-MovingPhotoBadgeStateType-MOVING_PHOTO_DISABLED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -38,24 +38,24 @@ MOVING_PHOTO_ENABLED = 1
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-MovingPhotoBadgeStateType-MOVING_PHOTO_ENABLED = 1--><!--Device-MovingPhotoBadgeStateType-MOVING_PHOTO_ENABLED = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## MOVING_PHOTO_DISABLED
+## NOT_MOVING_PHOTO
 
 ```TypeScript
-MOVING_PHOTO_DISABLED = 2
+NOT_MOVING_PHOTO = 0
 ```
 
-关闭动态照片效果。
+非动态照片。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-MovingPhotoBadgeStateType-MOVING_PHOTO_DISABLED = 2--><!--Device-MovingPhotoBadgeStateType-MOVING_PHOTO_DISABLED = 2-End-->
+<!--Device-MovingPhotoBadgeStateType-NOT_MOVING_PHOTO = 0--><!--Device-MovingPhotoBadgeStateType-NOT_MOVING_PHOTO = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

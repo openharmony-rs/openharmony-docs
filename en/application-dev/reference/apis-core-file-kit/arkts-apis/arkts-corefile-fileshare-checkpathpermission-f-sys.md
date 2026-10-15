@@ -48,6 +48,7 @@ Check permissions for the path.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 13900042 | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -79,3 +80,5 @@ async function checkPersistentPermissionExample() {
   }
 }
 ```
+
+<!--DelEnd-->

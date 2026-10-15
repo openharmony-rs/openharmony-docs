@@ -58,7 +58,7 @@ declare function copyDir(src: string, dest: string, mode?: number): Promise<void
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="copydir-1"></a>
+<a id="copydir2"></a>
 
 ## copyDir
 
@@ -105,7 +105,7 @@ declare function copyDir(src: string, dest: string, callback: AsyncCallback<void
 | 13900042 | Unknown error |
 
 
-<a id="copydir-2"></a>
+<a id="copydir3"></a>
 
 ## copyDir
 
@@ -138,7 +138,7 @@ declare function copyDir(src: string, dest: string, callback: AsyncCallback<void
 | 13900015 | File exists |
 
 
-<a id="copydir-3"></a>
+<a id="copydir4"></a>
 
 ## copyDir
 
@@ -186,7 +186,7 @@ declare function copyDir(src: string, dest: string, mode: number, callback: Asyn
 | 13900042 | Unknown error |
 
 
-<a id="copydir-4"></a>
+<a id="copydir5"></a>
 
 ## copyDir
 

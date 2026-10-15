@@ -721,6 +721,8 @@ struct Index {
 }
 ```
 
+<a id="makebinding1"></a>
+
 ## makeBinding
 
 ```TypeScript
@@ -794,7 +796,7 @@ struct CompV2 {
 }
 ```
 
-<a id="makebinding-1"></a>
+<a id="makebinding2"></a>
 
 ## makeBinding
 

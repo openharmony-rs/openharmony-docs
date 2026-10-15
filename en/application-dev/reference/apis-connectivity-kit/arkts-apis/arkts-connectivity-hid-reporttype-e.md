@@ -12,6 +12,22 @@ Describe the report type.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
+## REPORT_TYPE_FEATURE
+
+```TypeScript
+REPORT_TYPE_FEATURE = 3
+```
+
+Report type feature.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ReportType-REPORT_TYPE_FEATURE = 3--><!--Device-ReportType-REPORT_TYPE_FEATURE = 3-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
 ## REPORT_TYPE_INPUT
 
 ```TypeScript
@@ -41,21 +57,5 @@ Report type output.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ReportType-REPORT_TYPE_OUTPUT = 2--><!--Device-ReportType-REPORT_TYPE_OUTPUT = 2-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## REPORT_TYPE_FEATURE
-
-```TypeScript
-REPORT_TYPE_FEATURE = 3
-```
-
-Report type feature.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ReportType-REPORT_TYPE_FEATURE = 3--><!--Device-ReportType-REPORT_TYPE_FEATURE = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

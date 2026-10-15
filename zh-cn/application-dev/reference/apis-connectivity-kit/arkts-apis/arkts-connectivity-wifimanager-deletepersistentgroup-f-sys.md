@@ -43,6 +43,7 @@ function deletePersistentGroup(netId: number): void
 | [2801000](../errorcode-wifi.md#2801000-p2p模块异常) | Operation failed. |
 | [2801001](../errorcode-wifi.md#2801001-p2p功能未打开) | Wi-Fi STA disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

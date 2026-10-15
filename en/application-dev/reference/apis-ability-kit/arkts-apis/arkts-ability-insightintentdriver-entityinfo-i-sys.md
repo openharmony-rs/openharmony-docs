@@ -4,7 +4,7 @@
 interface EntityInfo
 ```
 
-EntityInfo inherits from [IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md) and is used to describe the information about the intent entity defined by the [@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator.
+EntityInfo inherits from [IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md) and is used to describe the information about the intent entity defined by the [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity) decorator.
 
 **Since:** 20
 
@@ -26,7 +26,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 readonly className: string
 ```
 
-Class name decorated by [@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity).
+Class name decorated by [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity).
 
 **Type:** string
 
@@ -86,7 +86,9 @@ ID of the intent entity.
 readonly isQueryable?: boolean
 ```
 
-The entity is queryable.
+Whether the intent entity class decorated by [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity) supports query. Only intent entities inherited from the [insightIntent.AppIntentEntity](arkts-ability-insightintent-appintententity-c.md) class support query.  
+- true: query is supported.  
+- false: query is not supported.
 
 **Type:** boolean
 
@@ -106,7 +108,7 @@ The entity is queryable.
 readonly parameters: Record<string, Object>
 ```
 
-Data format of intent entity parameters.
+Data format declaration of the intent entity parameters, used to define the data format of entity parameters during intent invocation.
 
 **Type:** Record&lt;string, Object&gt;
 
@@ -126,7 +128,7 @@ Data format of intent entity parameters.
 readonly parentClassName: string
 ```
 
-Parent class name decorated by [@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity).
+Parent class name decorated by [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity).
 
 **Type:** string
 
@@ -146,7 +148,7 @@ Parent class name decorated by [@InsightIntentEntity](../../../reference/apis-ab
 readonly supportedQueryProperties?: string[]
 ```
 
-Support query properties.
+Properties through which the intent entity decorated by [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity) supports query. The key value of the intent entity query parameter [parameters](arkts-ability-insightintent-queryentityparam-i.md) must be in this property list.
 
 **Type:** string[]
 
