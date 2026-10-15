@@ -64,7 +64,7 @@ import { AbilityConstant } from '@kit.AbilityKit';
 import { UkeyAuthExtensionAbility } from '@kit.DeviceCertificateKit';
 
 export default class UkeyAuthExtension extends UkeyAuthExtensionAbility {
-  onCreate(launchParam: AbilityConstant.LaunchParam) {
+  onCreate(launchParam: AbilityConstant.LaunchParam): void {
     console.info('UkeyAuthExtension onCreate');
   }
 }
@@ -96,7 +96,7 @@ import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { UkeyAuthExtensionAbility } from '@kit.DeviceCertificateKit';
 
 export default class UkeyAuthExtension extends UkeyAuthExtensionAbility {
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
     console.info('UkeyAuthExtension onSessionCreate');
     session.loadContent('pages/AuthPage');
   }
@@ -128,7 +128,7 @@ import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { UkeyAuthExtensionAbility } from '@kit.DeviceCertificateKit';
 
 export default class UkeyAuthExtension extends UkeyAuthExtensionAbility {
-  onSessionDestroy(session: UIExtensionContentSession) {
+  onSessionDestroy(session: UIExtensionContentSession): void {
     console.info('UkeyAuthExtension onSessionDestroy');
   }
 }
@@ -163,7 +163,7 @@ export default class UkeyAuthExtension extends UkeyAuthExtensionAbility {
   onDestroy(): void | Promise<void> {
     console.info('UkeyAuthExtension onDestroy');
     return new Promise<void>((resolve) => {
-      resolve();
+      resolve(undefined);
     });
   }
 }
