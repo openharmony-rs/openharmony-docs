@@ -55,7 +55,7 @@ FormBindingData对象的属性定义。
 | -------- | -------- | -------- |-------- | -------- |
 | data | ArkTS-Dyn: Object<br>ArkTS-Sta: RecordData | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。|
 | proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，配置后会订阅代理刷新消息。默认为空数组，表示不订阅代理刷新消息。当需要使用卡片代理刷新功能时传入此参数，不传入时默认为空数组（不使用代理刷新）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
-| isSupportMoreImages<sup>26.0.1+</sup> | boolean | 否 | 是 | 是否支持更多图片数据，在卡片数据使用共享内存时，当设置值为false时，最多支持正常显示的图片是20张，当设置为true时，最多支持正常显示的图片是30张。更多图片有数据总量超过10M的风险，导致卡片数据更新失败。<br>默认值：false。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isSupportMoreImages | boolean | 否 | 是 | 是否支持更多图片数据，在卡片数据使用共享内存时，当设置值为false时，最多支持正常显示的图片是20张，当设置为true时，最多支持正常显示的图片是30张。更多图片有数据总量超过10M的风险，导致卡片数据更新失败。<br>默认值：false。<br>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## formBindingData.createFormBindingData
 
@@ -175,8 +175,6 @@ try {
 ## formBindingData.createFormBindingDataEx<sup>26.0.1+</sup>
 
 ArkTS-Dyn: createFormBindingDataEx(obj?: Object | string): FormBindingData
-
-ArkTS-Sta: createFormBindingDataEx(obj?: RecordData): FormBindingData
 
 创建一个FormBindingData对象，并将isSupportMoreImages设为true。
 
