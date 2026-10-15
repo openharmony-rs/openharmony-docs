@@ -217,19 +217,19 @@ struct WebComponent {
 
    （2）在Web组件中调起软键盘。
 
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>测试网页</title>
-  </head>
-  <body>
-    <h1>DEMO</h1>
-    <input type="text" id="input_a">
-  </body>
-</html>
-```
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+     <head>
+       <title>测试网页</title>
+     </head>
+     <body>
+       <h1>DEMO</h1>
+       <input type="text" id="input_a">
+     </body>
+   </html>
+   ```
 
    ArkTS-Dyn示例：
 
@@ -270,25 +270,7 @@ struct WebComponent {
      }
    }
    ```
-   <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
    
-   ``` TypeScript
-   // Index.ets
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct KeyboardAvoidExample {
-     controller: webview.WebviewController = new webview.WebviewController();
-     build() {
-       Column() {
-         Row().height("50%").width("100%").backgroundColor(Color.Gray)
-         Web({ src: $rawfile("index.html"),controller: this.controller})
-         Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
-       }.width('100%').height("100%")
-     }
-   }
-   ```
    ArkTS-Sta示例：
 
    <!-- @[soft_keyboard_index_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
