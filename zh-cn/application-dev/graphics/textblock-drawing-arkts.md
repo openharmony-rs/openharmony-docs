@@ -320,7 +320,7 @@ let points: common2D.Point[] = [];
 let xOffset = 0;
 for (let i = 0; i < glyphCount; i++) {
   points.push({ x: VALUE_200 + xOffset, y: VALUE_300 });
-  xOffset += 60;
+  xOffset += VALUE_100;
 }
 // 创建支持字体回退的字块数组
 const textBlobs = drawing.TextBlob.makeFromPosTextWithFallback(text, glyphCount, points, font);
