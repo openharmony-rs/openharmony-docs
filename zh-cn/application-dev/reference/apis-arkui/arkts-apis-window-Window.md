@@ -5735,7 +5735,7 @@ const callback = (data: window.WindowFocusState) => {
   console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
 }
 try {
-  // 通过on接口开启监听
+  // 通过onWindowFocusStateChange接口开启监听
   windowClass.onWindowFocusStateChange(callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5758,7 +5758,7 @@ offWindowFocusStateChange(callback?: Callback&lt;WindowFocusState&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否 | 回调函数。返回窗口的焦点状态变化信息。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口焦点状态变化的监听。 |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否 | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
 
 **错误码：**
 
@@ -5777,11 +5777,11 @@ const callback = (data: window.WindowFocusState) => {
   // ...
 }
 try {
-  // 通过on接口开启监听
+  // 通过onWindowFocusStateChange接口开启监听
   windowClass.onWindowFocusStateChange(callback);
   // 关闭指定callback的监听
   windowClass.offWindowFocusStateChange(callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  // 如果通过onWindowFocusStateChange接口开启多个callback进行监听，同时关闭所有监听：
   windowClass.offWindowFocusStateChange();
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -11760,11 +11760,11 @@ const callback = (isInDesktopMode: boolean) => {
   // ...
 }
 try {
-  // 通过on接口开启监听
+  // 通过onWindowPostureModeChange接口开启监听
   windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
   // 关闭指定callback的监听
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  // 如果通过onWindowPostureModeChange接口开启多个callback进行监听，同时关闭所有监听
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
 } catch (exception) {
   console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);

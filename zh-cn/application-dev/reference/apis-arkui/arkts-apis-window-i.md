@@ -371,8 +371,8 @@
 | ---- | ---- | ---- | ---- | ---- |
 | isFocused | boolean | 否 | 否 | 窗口是否获焦，true表示获焦，false表示未获焦。 |
 | focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | 否 | 否 | 焦点状态变化的原因。 |
-| nextFocusedWindowId | number | 否 | 是 | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。 |
-| prevFocusedWindowId | number | 否 | 是 | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。 |
+| nextFocusedWindowId | number | 否 | 是 | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
+| prevFocusedWindowId | number | 否 | 是 | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
 
 ## WindowInfoOptions
 窗口布局信息过滤选项。
