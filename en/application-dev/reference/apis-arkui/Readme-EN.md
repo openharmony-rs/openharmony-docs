@@ -19,7 +19,7 @@
     - [@ohos.arkui.observer (Observer)](js-apis-arkui-observer.md)
     - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (Shape)](js-apis-arkui-shape.md)
-    - [@ohos.arkui.theme(Theme)](js-apis-arkui-theme.md)
+    - [@ohos.arkui.theme (Theme)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
       - [Module Description](arkts-apis-uicontext.md)
       <!--Del-->

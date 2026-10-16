@@ -149,7 +149,7 @@ Implements a **ThemeControl** object to apply the custom theme to the components
 
 setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 
-Sets a custom theme as the default, application-level theme, applying it to all components within the application. When using this API within a page, ensure that the API is called before the page's **build** API executes. When using this API within a UIAbility, ensure that the API is called in the callback after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) during the **onWindowStageCreate** lifecycle phase. For a complete implementation example, see [Setting Custom Theme Colors for Application Components](../../ui/theme_skinning.md#setting-custom-theme-colors-for-application-components).
+Sets a custom theme as the default, application-level theme, applying it to all components within the application. When using this API within a page, ensure that the API is called before the page's **build** API executes. When using this API within a UIAbility, ensure that the API is called in the callback after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) during the **onWindowStageCreate** lifecycle phase. For a complete implementation example, see [Setting Custom Theme Colors for Application Components](../../ui/theme-skinning.md#setting-custom-theme-colors-for-application-components).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
