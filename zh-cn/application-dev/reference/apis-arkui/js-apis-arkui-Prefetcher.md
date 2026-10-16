@@ -1,4 +1,4 @@
-# @ohos.arkui.Prefetcher (Prefetching)
+# @ohos.arkui.Prefetcher (内容预取)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->

@@ -1,4 +1,4 @@
-# @ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）
+# @ohos.enterprise.EnterpriseAdminExtensionAbility (企业设备管理扩展能力)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -731,8 +731,7 @@ onKeyEvent(keyEvent: systemManager.KeyEvent): void
 **示例：**
 
 ```ts
-import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
-import { systemManager } from '@kit.MDMKit';
+import { EnterpriseAdminExtensionAbility, systemManager } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
 

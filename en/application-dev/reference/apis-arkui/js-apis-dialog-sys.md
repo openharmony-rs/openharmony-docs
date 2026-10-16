@@ -13,7 +13,7 @@ A dialog box is one of the important ways for an application to interact with us
 >
 > This topic contains only the system APIs of this module. For other public APIs, see [@ohos.arkui.dialog (Dialog Box)](js-apis-dialog.md).
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## Modules to Import
 

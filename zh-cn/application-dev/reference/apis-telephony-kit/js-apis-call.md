@@ -322,7 +322,7 @@ let context = this.getUIContext().getHostContext() as Context;
 call.makeCall(context, "138xxxxxxxx").then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: err->${err.code)},message:${err.message}`);
+    console.error(`makeCall fail, promise: err->${err.code},message:${err.message}`);
 });
 ```
 
@@ -332,7 +332,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。
 
-> **说明**:
+> **说明：**
 >
 > 该接口返回校验token，应用可以利用phoneNumber和token实现特定能力，比如蜂窝下行流的录制。
 
@@ -384,6 +384,57 @@ call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
     console.error(`makeCallWithToken fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
+
+
+## call.makeDirectCall
+
+makeDirectCall\(phoneNumber: string\): Promise\<void\>
+
+允许应用一键拨号。只支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)中调用。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**需要权限**：ohos.permission.DIRECT_CALL
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明       |
+| ----------- | ------ | ---- | ---------- |
+| phoneNumber | string | 是   | 电话号码。 |
+
+**返回值：**
+
+| 类型                | 说明                              |
+| ------------------- | --------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied. |
+| 8300001  | Invalid parameter value. |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error. |
+| 8300005  | Airplane mode is on. |
+| 8300006  | Network not in service. |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+call.makeDirectCall("138xxxxxxxx").then(() => {
+    console.info(`makeDirectCall success`);
+}).catch((err: BusinessError) => {
+    console.error(`makeDirectCall fail, promise: err->Code${err.code}, message:${err.message}`);
+});
+```
+
 
 ## call.hasCall
 

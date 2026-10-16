@@ -55,6 +55,10 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（密文）。
 
+   - 当数据量较小时，可以在init完成后直接调用final。
+   - 当数据量较大时，可以多次调用update，即分段解密。
+   - 用户可以根据数据量大小自行决定操作方式。例如，当数据量超过1KB时，使用update。
+
 5. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密数据。
 
 **销毁对象**
@@ -216,10 +220,16 @@ end:
    > **说明：**
    >
    > CCM模式不支持分段加解密。
+   >
+   > 当数据量较小时，可以在init完成后直接调用final。
 
 5. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密后的数据。
-   - 已使用update传入数据，此处data传入null。
-   - 在访问final输出结果的具体数据前，需要先判断结果是否为null，以避免异常。
+
+   > **说明：**
+   >
+   > 若使用update传入数据，此处data传入null。
+   >
+   > 在访问final输出结果的具体数据前，需要先判断结果是否为null，以避免异常。
 
 **销毁对象**
 
@@ -593,9 +603,7 @@ end:
 
 3. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey）和GCM模式对应的解密参数（OH_CryptoSymCipherParams），初始化解密Cipher实例。
 
-4. 将一次传入数据量设置为20字节，多次调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（密文）。
-
-5. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)获取解密数据。
+4. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)获取解密数据。
 
 **销毁对象**
 

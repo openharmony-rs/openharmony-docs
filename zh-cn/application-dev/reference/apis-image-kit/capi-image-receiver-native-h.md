@@ -550,7 +550,7 @@ Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNativ
 
 设置OH_ImageReceiverNative对象的内存名称。仅支持ASCII可见字符，空格、换行、制表符及其他控制字符将被过滤掉。如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。过滤后的名称长度（包括结束符'\0'）不得超过256字节。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

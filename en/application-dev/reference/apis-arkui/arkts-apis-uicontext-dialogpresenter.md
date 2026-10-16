@@ -14,7 +14,7 @@ Provides unified Dialog APIs for creating and displaying fixed-style and custom-
 >
 > To use the following APIs, first obtain a DialogPresenter object by calling [getDialogPresenter()](arkts-apis-uicontext-uicontext.md#getdialogpresenter) in UIContext, and then call the corresponding methods through the object.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 ## present
 
@@ -22,7 +22,7 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 Provides a fixed-style dialog box and returns the dialog result. This API uses a promise to return the result. It is applicable to scenarios where the system's unified style is used to display prompts or confirmation information.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -53,7 +53,7 @@ For details about the error codes, see [Popup Window Error Codes](errorcode-prom
 
 This example shows how to call the present API to display a fixed-style dialog box and obtain the dialog result through a promise.
 
-Since API version 26.1.0, the [present](#present) API is added.
+Since API version 26.0.1, the [present](#present) API is added.
 
 ```ts
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -111,7 +111,7 @@ present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent&lt;Obj
 
 Provides a custom-style dialog box that contains the provided content and returns the dialog result. This API uses a promise to return the result. It is applicable to scenarios where the content, layout, and style of the dialog box need to be customized.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -145,7 +145,7 @@ For details about the error codes, see [Popup Window Error Codes](errorcode-prom
 
 This example demonstrates how to present, update, and dismiss a custom-style dialog box by calling the present, update, and dismiss APIs.
 
-Since API version 26.1.0, the [present](#present), [update](#update), and [dismiss](#dismiss) APIs are added.
+Since API version 26.0.1, the [present](#present), [update](#update), and [dismiss](#dismiss) APIs are added.
 
 ```ts
 import { ComponentContent, DialogPresenter, DialogResult, DialogBaseAlignment } from '@kit.ArkUI';
@@ -242,7 +242,7 @@ update(content: ComponentContent&lt;Object&gt;, options?: dialog.DialogBaseOptio
 
 Updates a displayed custom dialog box, with no return result. This API uses a promise to return the result. It applies to interaction scenarios where the style or position of a dialog box needs to be dynamically updated after it is displayed.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -282,7 +282,7 @@ Closes a dialog box with no return result. This API uses a promise to return the
 
 This API accepts a dialog box ID (**dialogId** in [DialogResult](js-apis-dialog.md#dialogresult) returned by [present](#present)) or a [ComponentContent](./js-apis-arkui-ComponentContent.md) reference as the target, and closes the corresponding dialog box.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -313,7 +313,7 @@ For details about the error codes, see [Popup Window Error Codes](errorcode-prom
 
 This example shows how to dismiss a dialog box by its ID via the dismiss API. For details about how to present a dialog box, see the example of [present](#present).
 
-Since API version 26.1.0, the [present](#present) and [dismiss](#dismiss) APIs are added.
+Since API version 26.0.1, the [present](#present) and [dismiss](#dismiss) APIs are added.
 
 ```ts
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';

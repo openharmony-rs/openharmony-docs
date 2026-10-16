@@ -1,15 +1,16 @@
 # Using OpenSL ES for Audio Recording (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-09-18T04:08:45.112Z pushedAt=2026-09-18T10:25:56.013Z -->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform audio processing library that is free of charge. It provides high-performance and low-latency APIs for you to develop applications running on embedded mobile multimedia devices. OpenHarmony has implemented certain native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications developed by the [Khronos Group](https://www.khronos.org/). You can use these APIs through &lt;OpenSLES.h&gt; and &lt;OpenSLES_OpenHarmony.h&gt;.
 
 ## Using OHAudio to Replace OpenSL ES
-OpenHarmony provides the OpenSL ES APIs for audio development at the native layer since SDK8. As the version evolves, these APIs fail to meet the capability expansion requirements of the audio system and therefore are no longer recommended.
+The OpenSL ES APIs on OpenHarmony were introduced in the early SDK 8 to support audio development at the app Native layer. However, as the versions evolved, the API definitions proved insufficiently extensible and could no longer accommodate the expansion of audio system capabilities. Therefore, continued use of these APIs for audio feature development is no longer recommended, as they may exhibit deficiencies due to limited API capabilities.
 
 In SDK 10, OpenHarmony provides the OHAudio APIs, which open up all audio functions of the system. The OHAudio APIs cover all the capabilities provided by OpenSL ES in OpenHarmony. They also support new features such as audio focus events and low latency.
 
@@ -21,7 +22,7 @@ For application developers who integrated with OpenHarmony at an early stage, we
 
 Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio recording functionalities.
 
-If an API that has not been implemented on OpenHarmony is called, **SL_RESULT_FEATURE_UNSUPPORTED** is returned.
+Calling an unimplemented API returns **SL_RESULT_FEATURE_UNSUPPORTED**. Currently, no related extensions are available.
 
 The following lists the OpenSL ES APIs that have been implemented on OpenHarmony. For details, see the [OpenSL ES](https://www.khronos.org/opensles/) specifications.
 
@@ -49,7 +50,7 @@ The following lists the OpenSL ES APIs that have been implemented on OpenHarmony
   - SLresult (\*GetRecordState) (SLRecordItf self,SLuint32 \*pState)
 
 - **BufferQueue APIs implemented on OpenHarmony**
-  
+
   The APIs listed below can be used only after &lt;OpenSLES_OpenHarmony.h&gt; is introduced.
 
   | API| Description| 
@@ -79,7 +80,7 @@ Refer to the sample code below to record an audio file.
    ```
 
 2. Use the **slCreateEngine** API to create and instantiate an engine object.
-     
+
    ```cpp
    SLObjectItf engineObject = nullptr;
    slCreateEngine(&engineObject, 0, nullptr, 0, nullptr, nullptr);
@@ -87,14 +88,14 @@ Refer to the sample code below to record an audio file.
    ```
 
 3. Obtain the engineEngine instance of the **SL_IID_ENGINE** API.
-     
+
    ```cpp
    SLEngineItf engineItf = nullptr;
    (*engineObject)->GetInterface(engineObject, SL_IID_ENGINE, &engineItf);
    ```
 
 4. Configure the recorder information (including the input source **audiosource** and output source **audiosink**), and create a pcmCapturerObject instance.
-     
+
    ```cpp
    SLDataLocator_IODevice io_device = {
        SL_DATALOCATOR_IODEVICE,
@@ -132,21 +133,21 @@ Refer to the sample code below to record an audio file.
    ```
 
 5. Obtain the recordItf instance of the **SL_IID_RECORD** API.
-     
+
    ```cpp
    SLRecordItf  recordItf;
    (*pcmCapturerObject)->GetInterface(pcmCapturerObject, SL_IID_RECORD, &recordItf);
    ```
 
 6. Obtain the bufferQueueItf instance of the **SL_IID_OH_BUFFERQUEUE** API.
-     
+
    ```cpp
    SLOHBufferQueueItf bufferQueueItf;
    (*pcmCapturerObject)->GetInterface(pcmCapturerObject, SL_IID_OH_BUFFERQUEUE, &bufferQueueItf);
    ```
 
 7. Register the **BufferQueueCallback** function.
-     
+
    ```cpp
    static void BufferQueueCallback(SLOHBufferQueueItf bufferQueueItf, void *pContext, SLuint32 size)
    {
@@ -164,13 +165,13 @@ Refer to the sample code below to record an audio file.
    ```
 
 8. Start audio recording.
-     
+
    ```cpp
    (*recordItf)->SetRecordState(recordItf, SL_RECORDSTATE_RECORDING);
    ```
 
 9. Stop audio recording.
-     
+
    ```cpp
    (*recordItf)->SetRecordState(recordItf, SL_RECORDSTATE_STOPPED);
    (*pcmCapturerObject)->Destroy(pcmCapturerObject);

@@ -4,7 +4,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
@@ -183,6 +183,7 @@ interface Rect {
       });
     }
     // ...
+  }
   ```
 
 ## 适配沉浸式布局实现沉浸式效果

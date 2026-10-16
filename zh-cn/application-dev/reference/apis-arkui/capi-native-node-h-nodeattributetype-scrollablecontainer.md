@@ -84,13 +84,13 @@ NODE_SCROLL_BAR_COLOR = 1002002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .data[0].u32 | 滚动条颜色，0xargb类型。儿童智能表的默认值颜色：0xffffffff，表示白色（100%不透明度）。其他设备默认值：0x66182431，表示深蓝灰色（40%不透明度）。 |
+| .data[0].u32 | 滚动条颜色，0xARGB类型。儿童智能表的默认值颜色：0xffffffff，表示白色（100%不透明度）。其他设备默认值：0x66182431，表示深蓝灰色（40%不透明度）。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .data[0].u32 | 滚动条颜色，0xargb类型。 |
+| .data[0].u32 | 滚动条颜色，0xARGB类型。 |
 
 ## NODE_SCROLL_SCROLL_DIRECTION
 
@@ -686,7 +686,7 @@ NODE_SCROLL_ENABLE_SCROLL_WITH_MOUSE = 1002027
 
 | 参数项        | 描述                                                         |
 | ------------- | ------------------------------------------------------------ |
-| .value[0].i32 | 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。默认值：0。 |
+| .value[0].i32 | 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。API版本26.2.0之前，默认值为0。从API版本26.2.0开始，当可滚动组件水平滚动时，默认值为1，否则为0。 |
 
 **返回：**
 
@@ -741,6 +741,24 @@ NODE_SCROLL_BAR_HEIGHT = 1002029
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 滚动条滑轨高度，单位：vp。 |
+
+## NODE_SCROLL_STATE
+
+```c
+NODE_SCROLL_STATE = 1002030
+```
+
+获取当前滚动状态。<br>
+该属性可以根据需要通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)获取。<br>
+作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 当前滚动状态。参数类型为[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 |
 
 ## NODE_LIST_DIRECTION
 
@@ -975,7 +993,7 @@ NODE_LIST_DIVIDER = 1003009
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 分割线颜色，0xargb类型，默认值为0x08000000。 |
+| .value[0].u32 | 分割线颜色，0xARGB类型，默认值为0x08000000。 |
 | .value[1].f32 | 分割线宽，默认值：0，单位vp。 |
 | .value[2].f32 | 分割线距离列表侧边起始端的距离，默认值：0，单位vp。 |
 | .value[3].f32 | 分割线距离列表侧边结束端的距离，默认值：0，单位vp。 |
@@ -984,7 +1002,7 @@ NODE_LIST_DIVIDER = 1003009
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 分割线颜色，0xargb类型。 |
+| .value[0].u32 | 分割线颜色，0xARGB类型。 |
 | .value[1].f32 | 分割线宽，单位vp。 |
 | .value[2].f32 | 分割线距离列表侧边起始端的距离，单位vp。 |
 | .value[3].f32 | 分割线距离列表侧边结束端的距离，单位vp。 |
@@ -1396,7 +1414,7 @@ NODE_LIST_ITEM_GROUP_SET_DIVIDER = 1005002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 颜色，0xargb类型，默认值为0x08000000。 |
+| .value[0].u32 | 颜色，0xARGB类型，默认值为0x08000000。 |
 | .value[1].f32 | 分割线宽，默认值：0，单位vp。 |
 | .value[2].f32 | 分割线距离列表侧边起始端的距离，默认值：0，单位vp。 |
 | .value[3].f32 | 分割线距离列表侧边结束端的距离，默认值：0，单位vp。 |
@@ -1405,7 +1423,7 @@ NODE_LIST_ITEM_GROUP_SET_DIVIDER = 1005002
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 颜色，0xargb类型。 |
+| .value[0].u32 | 颜色，0xARGB类型。 |
 | .value[1].f32 | 分割线宽，单位vp。 |
 | .value[2].f32 | 分割线距离列表侧边起始端的距离，单位vp。 |
 | .value[3].f32 | 分割线距离列表侧边结束端的距离，单位vp。 |
@@ -1651,6 +1669,9 @@ NODE_WATER_FLOW_COLUMN_TEMPLATE = 1010001
 ```
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用[columnsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#columnstemplate)('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1675,6 +1696,9 @@ NODE_WATER_FLOW_ROW_TEMPLATE = 1010002
 ```
 
 设置当前瀑布流组件布局行的数量，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。可使用[rowsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#rowstemplate)('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1991,6 +2015,9 @@ NODE_GRID_COLUMN_TEMPLATE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID = 1013000
 ```
 
 设置当前Grid组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用[columnsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate)('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -2015,6 +2042,9 @@ NODE_GRID_ROW_TEMPLATE = 1013001
 ```
 
 设置当前Grid布局行的数量或最小行高值，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。可使用[rowsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#rowstemplate)('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -2684,13 +2714,13 @@ NODE_ARC_LIST_SCROLL_BAR_COLOR = 1019008
 
 | 参数项 | 描述 |
 | -- | -- |
-| .data[0].u32 | 滚动条颜色，0xargb类型。默认值：0x66182431。 |
+| .data[0].u32 | 滚动条颜色，0xARGB类型。默认值：0x66182431。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .data[0].u32 | 滚动条颜色，0xargb类型。 |
+| .data[0].u32 | 滚动条颜色，0xARGB类型。 |
 
 
 ## NODE_ARC_LIST_SCROLL_BAR_WIDTH

@@ -99,7 +99,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onCastToNormalForm(formId: string): void
 
-Called to notify the widget provider that a temporary widget has been converted to a normal one. Temporary widgets and normal widgets are concepts of the widget host. Temporary widgets have a brief existence, appearing following particular events or user interactions and vanishing automatically upon task completion. Normal widgets are persistent and remain on the home screen until the user actively removes or changes them. The functional widgets used in daily development all fall into this category. Temporary widgets are not used by widget hosts in the current version.
+Notifies the widget provider that a temporary widget has been converted to a normal one. Temporary widgets and normal widgets are concepts defined by the widget host. The host requests the conversion of a temporary widget to a normal one when necessary. After receiving the notification, the provider should update the widget's local record from temporary to normal, so as to avoid mistakenly deleting the converted widget's information during subsequent cleanup of temporary widgets that have remained undeleted for a long time.
 
 **Model restriction**: This API can be used only in the stage model.
 

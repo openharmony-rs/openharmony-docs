@@ -190,11 +190,11 @@ When reuse of old child components during the update is allowed but **@Reusable/
 
 When reuse of old child components during the update is not allowed, data items whose keys do not change use the original child components. For data items whose keys change, if **@Reusable/@ReusableV2** is used and a component is available in the reuse pool, the old component is reused; otherwise, a new child component is created.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,7 +498,7 @@ When reuse of old child components during the update is not allowed, data items 
 | Name| Type                    | Read-Only| Optional| Description            |
 | ------ | ------------------------ | ---- | ---- | ---------------- |
 | type   | [DataOperationType](#dataoperationtype12).RELOAD | No | No   | Type for reloading all data. |
-| reuseImmediately   | boolean | No | Yes   | Whether to reuse the old child components during the update.<br/>**true**: allows reusing the old child components during the update.<br/>**false**: does not allow reusing the old child components during the update.<br/>Default value: false<br/>When the value is **undefined** or **null**, the default value is used.<br/>**Since:** 26.1.0<br/>**Model constraints:** this API is only used under the Stage model.<br/>**Atomic service API:** since API version 26.1.0, this API supports use in atomic services. |
+| reuseImmediately   | boolean | No | Yes   | Whether to reuse the old child components during the update.<br/>**true**: allows reusing the old child components during the update.<br/>**false**: does not allow reusing the old child components during the update.<br/>Default value: false<br/>When the value is **undefined** or **null**, the default value is used.<br/>**Since:** 26.0.1<br/>**Model constraints:** this API is only used under the Stage model.<br/>**Atomic service API:** since API version 26.0.1, this API supports use in atomic services. |
 
 ### DataOperationType<sup>12+</sup>
 

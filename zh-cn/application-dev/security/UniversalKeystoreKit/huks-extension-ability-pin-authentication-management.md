@@ -234,7 +234,7 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
 import { BusinessError } from '@kit.BasicServicesKit';
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -265,7 +265,7 @@ async function authUkeyPin(): Promise<void> {
         value: uid
       }, {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-        value: StringToUint8Array(pin)
+        value: stringToUint8Array(pin)
       }
     ];
 
@@ -281,7 +281,7 @@ async function authUkeyPin(): Promise<void> {
   }
 }
 
-async function TestAuthUkeyPin() {
+async function testAuthUkeyPin() {
   await authUkeyPin();
 }
 ```

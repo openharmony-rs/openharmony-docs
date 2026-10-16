@@ -469,6 +469,7 @@ let types = unifiedData.getTypes();
 | summary   | Record<string, number> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | totalSize | number | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | overview<sup>22+</sup>   | Record<string, number> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| filenameExtensions   | Array\<string> | 是 | 否 | 统一数据对象中文件记录的文件扩展名数组。扩展名是唯一的，包括前导句点，并使用小写ASCII字母。例如，文件myphoto.png的扩展名是'.png'。如果没有有效的文件扩展名，则返回空数组。<br/>**起始版本：** 26.0.1<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -491,6 +492,7 @@ function parseSummary(summary: unifiedDataChannel.Summary) {
   }
   let overviewRecord = summary.overview as Record<string, number>;
   let totalSize = summary.totalSize;
+  let filenameExtensions = summary.filenameExtensions;
 }
 ```
 
@@ -2086,7 +2088,7 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.        |
 
@@ -2126,7 +2128,7 @@ removeAppShareOptions(intention: Intention): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**

@@ -38,7 +38,7 @@ Intent execution mode. Indicates the mode passed when a system entry triggers in
 
 Return result of intent execution.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **System API**: This is a system API.
 
@@ -52,7 +52,7 @@ Return result of intent execution.
 
 Defines the information about the interactive interface to be displayed after the current intent execution is complete.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -68,7 +68,7 @@ Defines the information about the interactive interface to be displayed after th
 
 Defines the information to be displayed as an interactive interface by a modal UIExtension when intent execution is complete. Distributed scenarios are not supported. Inherits from [InteractionUI](#interactionui).
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Defines the information to be displayed as an interactive interface by a modal U
 
 Defines the interactive information returned after the current intent execution is complete.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

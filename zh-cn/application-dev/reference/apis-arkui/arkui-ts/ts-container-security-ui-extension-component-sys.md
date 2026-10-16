@@ -74,7 +74,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)。
+仅支持[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)。
 
 ## 事件
 

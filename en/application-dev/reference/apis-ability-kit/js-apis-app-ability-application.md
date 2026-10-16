@@ -456,9 +456,9 @@ Creates the context of a specified module. In the created module context, the [r
 >
 > Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the **createModuleContextSync** API to create multiple context instances, as this may negatively impact user experience.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

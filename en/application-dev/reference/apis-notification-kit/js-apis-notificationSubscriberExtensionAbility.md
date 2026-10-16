@@ -2,12 +2,12 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:11:41.410Z pushedAt=2026-07-21T09:31:30.176Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:33:08.041Z pushedAt=2026-10-08T10:04:08.571Z -->
 
-NotificationSubscriberExtensionAbility is the base class for notification subscriber extension abilities, providing notification subscription-related functionality. Third-party wearable apps (such as companion applications for watches) implement callback logic by inheriting this class, receiving notification information when notifications are published on the local device and forwarding them to the wearable device via Bluetooth, and receiving callbacks for notification cancellation when local notifications are cancelled and forwarding them to the wearable device to delete the corresponding notifications.
+NotificationSubscriberExtensionAbility is the base class of the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension ability, providing notification subscription related capabilities. Third-party wearable applications (such as companion applications for watches) implement callback logic by inheriting from this class, receive notification information when a notification is published on the local device and forward it to the wearable device over Bluetooth. When a local notification is canceled, they receive the cancellation callback and forward it to the wearable device to delete the corresponding notification.
 
 Use this module when your wearable application needs to obtain local notifications and sync them to a paired wearable device. This module is used together with the **notificationExtensionSubscription** module. This module is responsible for receiving and processing notification data in callbacks, while the **notificationExtensionSubscription** module is responsible for management operations such as authorization, subscription, and unsubscription.
 
@@ -26,6 +26,9 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 **System capability**: SystemCapability.Notification.Notification
 
+### Attributes
+
+**System capability**: SystemCapability.Notification.Notification
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -36,7 +39,7 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 onDestroy(): void
 
-Called when the notification subscription extension is destroyed.
+Triggered when the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension is destroyed.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -64,7 +67,7 @@ Called when a notification is received.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| notificationInfo | [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes | Callback information about the notification received in the notification subscription extension capability. |
+| notificationInfo | [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes | Callback information about the notification received in the notification subscription extension ability. |
 
 **Example**:
 

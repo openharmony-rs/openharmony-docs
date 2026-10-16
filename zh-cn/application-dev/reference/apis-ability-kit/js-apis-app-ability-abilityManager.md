@@ -21,7 +21,7 @@ import { abilityManager } from '@kit.AbilityKit';
 
 ## AbilityState<sup>14+</sup>
 
-Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)返回Ability的状态。
+Ability的状态，该类型为枚举，可配合[AbilityRunningInfo (Ability运行信息)](js-apis-inner-application-abilityRunningInfo.md)返回Ability的状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -108,7 +108,7 @@ restartSelfAtomicService(context: Context): void
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| context    | [Context](./js-apis-inner-application-context.md)   | 是    | 当前Ability的上下文，用于提供重启原子化服务所需的执行环境信息<br>**说明**：当前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
+| context    | [Context](./js-apis-inner-application-context.md)   | 是    | 当前Ability的上下文，用于提供重启原子化服务所需的执行环境信息<br>**说明**：当前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。 |
 
 **错误码**：
 

@@ -140,7 +140,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 |  名称   | 值   |                            说明                            |
 | :-----: | ---- | :--------------------------------------------------------: |
-| PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA，用于提供与用户交互的能力。        |
+| PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA模型，用于提供与用户交互的能力。        |
 | SERVICE | 2    | 后台服务类型的Ability，无UI界面。表示基于Service模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于提供后台运行任务的能力，例如后台下载或者播放音乐。  |
 |  DATA   | 3    | 表示基于Data模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于对外部提供统一的数据访问对象。 |
 
@@ -242,7 +242,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 应用安装状态枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1954,7 +1954,7 @@ getBundleInstallStatus(bundleName: string): BundleInstallStatus
 
 获取指定应用的安装状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

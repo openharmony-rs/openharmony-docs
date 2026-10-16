@@ -1,12 +1,11 @@
 # Handling Crown Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=018bd9fb91a05a75131b70a855b059f14ee7f0a9 translatedAt=2026-07-29T12:46:04.213Z pushedAt=2026-07-30T03:33:39.853Z -->
+<!-- md-trans-meta sourceCommit=d27aaf307ea858355080aeefde96ba220d2e1704 translatedAt=2026-09-21T02:43:57.320Z pushedAt=2026-09-21T10:10:33.277Z -->
 
 The crown event, supported since API version 18, is triggered by the rotation of the watch crown and reports changes in the rotation angle based on the hardware sampling frequency.
 
@@ -44,7 +43,6 @@ To enable a component to obtain information such as the rotation angle, use the 
       .focusOnTouch(true)
       .defaultFocus(true)
     ```
-
 2. Register the crown event callback.
 
     To receive a crown event, you need to register a crown event callback. When a crown event is triggered, the callback function is executed.
@@ -56,7 +54,6 @@ To enable a component to obtain information such as the rotation angle, use the 
     // ···
     })
     ```
-
 3. Understand event fields.
 
     The crown event provides the timestamp, rotation angular velocity, rotation angle, and crown action. To prevent the event from bubbling up, use [stopPropagation](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#crownevent).
@@ -77,6 +74,7 @@ To enable a component to obtain information such as the rotation angle, use the 
 
  ``` TypeScript
  // xxx.ets
+ import { hilog } from '@kit.PerformanceAnalysisKit';
  @Entry
  @Component
  struct Index {

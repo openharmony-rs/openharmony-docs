@@ -104,7 +104,7 @@ const TAG: string = '[testTag] LiveFormExtAbility';
 
 export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
-    console.info(TAG, `onLiveFormDestroy, liveFormInfo: ${liveFormInfo.formId}`);
+    console.info(TAG, `onLiveFormDestroy, formId: ${liveFormInfo.formId}`);
   }
 }
 ```
@@ -136,7 +136,7 @@ LiveFormExtensionAbility不支持以下模块的引用。
 | ConnectivityKit | [@ohos.connectedTag (有源标签)](../apis-connectivity-kit/js-apis-connectedTag.md)<br>[@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](../apis-connectivity-kit/js-apis-cardEmulation.md)<br>[@ohos.nfc.controller (标准NFC)](../apis-connectivity-kit/js-apis-nfcController.md)<br>[@ohos.nfc.tag (标准NFC-Tag)](../apis-connectivity-kit/js-apis-nfcTag.md)<br>[nfctech (标准NFC-Tag Nfc 技术)](../apis-connectivity-kit/js-apis-nfctech.md)<br>[tagSession (标准NFC-Tag TagSession)](../apis-connectivity-kit/js-apis-tagSession.md) |
 | ContactsKit | [@ohos.contact (联系人)](../apis-contacts-kit/js-apis-contact.md) |
 | ArkData | [@ohos.data.distributedData (分布式数据管理)](../apis-arkdata/js-apis-distributed-data.md)<br>[@ohos.data.distributedDataObject (分布式数据对象)](../apis-arkdata/js-apis-data-distributedobject.md)<br>[@ohos.data.distributedKVStore (分布式键值数据库)](../apis-arkdata/js-apis-distributedKVStore.md) |
-| MDMKit | [@ohos.enterprise.adminManager（admin权限管理）](../apis-mdm-kit/js-apis-enterprise-adminManager.md)<br>[@ohos.enterprise.deviceInfo（设备信息管理）](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)<!--Del--><br>[@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)<!--DelEnd--> |
+| MDMKit | [@ohos.enterprise.adminManager (admin权限管理)](../apis-mdm-kit/js-apis-enterprise-adminManager.md)<br>[@ohos.enterprise.deviceInfo (设备信息管理)](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)<!--Del--><br>[@ohos.enterprise.dateTimeManager (系统时间管理)(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)<!--DelEnd--> |
 | CoreFileKit | [@ohos.file.picker (选择器)](../apis-core-file-kit/js-apis-file-picker.md)<!--Del--><br>[@ohos.filemanagement.userFileManager (用户数据管理)(系统接口)](../apis-core-file-kit/js-apis-userFileManager-sys.md)<!--DelEnd--> |
 | MediaLibraryKit | [@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](../apis-media-library-kit/js-apis-sendablePhotoAccessHelper.md)<br>[@ohos.file.AlbumPickerComponent (Album Picker组件)](../apis-media-library-kit/ohos-file-AlbumPickerComponent.md)<br>[@ohos.file.PhotoPickerComponent (PhotoPicker组件)](../apis-media-library-kit/ohos-file-PhotoPickerComponent.md)<br>[@ohos.file.RecentPhotoComponent (最近图片组件)](../apis-media-library-kit/ohos-file-RecentPhotoComponent.md)<br>[@ohos.multimedia.movingphotoview (动态照片)](../apis-media-library-kit/ohos-multimedia-movingphotoview.md) |
 | PerformanceAnalysisKit | [@ohos.hidebug (Debug调试)](../apis-performance-analysis-kit/js-apis-hidebug.md) |
@@ -145,7 +145,7 @@ LiveFormExtensionAbility不支持以下模块的引用。
 | AVSessionKit | [@ohos.multimedia.avCastPicker (投播组件)](../apis-avsession-kit/ohos-multimedia-avcastpicker.md)<br>[@ohos.multimedia.avsession (媒体会话管理)](../apis-avsession-kit/arkts-apis-avsession.md) |
 | MediaKit | [@ohos.multimedia.media (媒体服务)](../apis-media-kit/arkts-apis-media.md) |
 | NotificationKit | [@ohos.notification (Notification模块)](../apis-notification-kit/js-apis-notification.md)<br>[@ohos.notificationManager (NotificationManager模块)](../apis-notification-kit/js-apis-notificationManager.md)<!--Del--><br>[@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](../apis-notification-kit/js-apis-notificationSubscribe-sys.md)<!--DelEnd--> |
-| TelephonyKit | [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>[@ohos.telephony.data (蜂窝数据)](../apis-telephony-kit/js-apis-telephony-data.md)<br>[@ohos.telephony.observer (observer)](../apis-telephony-kit/js-apis-observer.md)<br>[@ohos.telephony.radio (网络搜索)](../apis-telephony-kit/js-apis-radio.md)<br>[@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>[@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md) |
+| TelephonyKit | [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>[@ohos.telephony.data (蜂窝数据)](../apis-telephony-kit/js-apis-telephony-data.md)<br>[@ohos.telephony.observer (电话服务状态监听)](../apis-telephony-kit/js-apis-observer.md)<br>[@ohos.telephony.radio (网络搜索)](../apis-telephony-kit/js-apis-radio.md)<br>[@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>[@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md) |
 | UserAuthenticationKit | [@ohos.userIAM.userAuth (用户认证)](../apis-user-authentication-kit/js-apis-useriam-userauth.md)<!--Del--><br>[@ohos.userIAM.faceAuth (人脸认证)(系统接口)](../apis-user-authentication-kit/js-apis-useriam-faceauth-sys.md)<!--DelEnd--> |
 | ArkUI | [@ohos.window (窗口)](../apis-arkui/arkts-apis-window.md) |
 |<!--DelRow--> AccessibilityKit | [@ohos.accessibility.config (系统辅助功能配置)(系统接口)](../apis-accessibility-kit/js-apis-accessibility-config-sys.md) |

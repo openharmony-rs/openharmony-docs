@@ -15,7 +15,7 @@ typedef struct OH_TrafficFilter_ConntrackMatch {...} OH_TrafficFilter_ConntrackM
 
 连接跟踪（Connection Tracking）匹配条件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)
 

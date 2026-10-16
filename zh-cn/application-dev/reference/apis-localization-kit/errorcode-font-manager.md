@@ -2,7 +2,7 @@
 
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
-<!--Owner: @liule_123-->
+<!--Owner: @OningO-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
@@ -96,7 +96,7 @@ Exceeded the maximum number of installed files.
 
 **可能原因**
 
-安装的字体文件数量超过最大数量200个。
+安装的字体文件个数超过最大数量限制。
  
 **处理步骤**
 
@@ -209,3 +209,77 @@ Data migration is in progress.
 **处理步骤**
 
 不可重复启动迁移任务，请等待当前任务执行完毕。
+
+## 31100112 Scope字体未找到
+
+**错误信息**
+
+The scope font is not found.
+
+**错误描述**
+
+卸载或查询字体时，未找到指定字体路径（url）对应的字体记录。
+
+**可能原因**
+
+未安装该字体或字体路径（url）输入错误。
+ 
+**处理步骤**
+
+请检查应用是否安装此字体，以及检查字体路径（url）是否正确。
+
+## 31100113 字体服务状态监听器已注册
+
+**错误信息**
+
+The font observer is already registered.
+
+**错误描述**
+
+字体服务状态监听器已注册，不可重复注册。
+
+**可能原因**
+
+同一应用重复调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器。
+
+**处理步骤**
+
+无需重复注册，如需更新字体服务状态监听器，请先调用[offFontObserver](js-apis-font-manager.md#offfontobserver)注销后再重新注册。
+
+## 31100114 超过字体服务状态监听器最大数量
+
+**错误信息**
+
+The maximum number of font observers has been reached.
+
+**错误描述**
+
+同一用户下注册的字体服务状态变化监听器数量超过最大限制（5个）。
+
+**可能原因**
+
+同一用户下已有5个不同应用注册了字体服务状态变化监听器。
+
+**处理步骤**
+
+请等待其他应用注销字体服务状态变化监听器后再重试。
+
+## 31100115 字体服务状态变化监听器未注册
+
+**错误信息**
+
+The font observer is not registered.
+
+**错误描述**
+
+安装应用级字体或注销字体服务状态变化监听器时，该字体服务状态变化监听器未注册。
+
+**可能原因**
+
+1. 调用[installScopeFont](js-apis-font-manager.md#installscopefont)接口安装应用级字体时，未先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)接口注册字体服务状态变化监听器。
+2. 调用[offFontObserver](js-apis-font-manager.md#offfontobserver)接口注销字体服务状态变化监听器时，未注册监听器或监听器已被注销。
+
+**处理步骤**
+
+1. 调用[installScopeFont](js-apis-font-manager.md#installscopefont)接口安装应用级字体前，需先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)接口注册字体服务状态变化监听器。
+2. 调用[offFontObserver](js-apis-font-manager.md#offfontobserver)接口注销字体服务状态变化监听器前，需确保已注册监听器且未被注销。

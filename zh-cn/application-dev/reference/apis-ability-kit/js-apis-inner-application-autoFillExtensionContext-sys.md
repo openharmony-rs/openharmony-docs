@@ -1,4 +1,4 @@
-# AutoFillExtensionContext (系统接口) 
+# AutoFillExtensionContext (自动填充扩展上下文)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -43,7 +43,7 @@ reloadInModal(customData: CustomData): Promise\<void>
 
 | 参数名     | 类型                                                      | 必填 | 说明                         |
 | ---------- | --------------------------------------------------------- | ---- | ---------------------------- |
-| customData | [CustomData](js-apis-inner-application-customData-sys.md) | 是   | 拉起模态页面时的自定义信息。 |
+| customData | [CustomData](js-apis-inner-application-customData-sys.md) | 是 | 拉起模态页面时的自定义信息。 |
 
 **返回值：**
 
@@ -57,7 +57,7 @@ reloadInModal(customData: CustomData): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not System App. Interface caller is not a system app.        |
+| 202      | Permission verification failed. A non-system application calls a system API.        |
 | 401      | If the input parameter is not valid parameter.               |
 | 16000011 | The context does not exist.                                  |
 | 16000050 | Internal error.                                              |

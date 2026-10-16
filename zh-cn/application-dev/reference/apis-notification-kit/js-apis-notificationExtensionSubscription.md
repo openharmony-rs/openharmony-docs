@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -32,7 +32,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
 
 **返回值：**
 
@@ -62,7 +62,7 @@ try {
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     console.info(`openSubscriptionSettings success`);
   }).catch((e: Error) => {
-    let error = e as BusinessError
+    let error = e as BusinessError;
     console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
@@ -74,7 +74,7 @@ try {
 
 openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
 
-打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权结果。
 
 **起始版本**：26.0.0
 
@@ -88,13 +88,13 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
 
 **返回值：**
 
 | 类型     | 说明 | 
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权的结果。 |
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权结果。 |
 
 **错误码：**
 
@@ -118,7 +118,7 @@ try {
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
   }).catch((e: Error) => {
-    let error = e as BusinessError
+    let error = e as BusinessError;
     console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
@@ -329,6 +329,108 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: not
 });
 ```
 
+## notificationExtensionSubscription.getUserGrantedBundleIcon
+
+getUserGrantedBundleIcon(bundleName: string): Promise\<image.PixelMap\>
+
+查询本应用中“已获取的本机通知”列表中开关状态为开的应用图标。使用Promise异步回调。
+
+**起始版本**：26.2.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                 |
+| -------- | ------------------------ | ---- |--------------------|
+| bundleName | string | 是 | 需要查询图标的应用包名。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------- |-----------|
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | Promise对象，返回应用图标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 801      | Capability not supported. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Failed to obtain or decode the application icon. |
+| 1600003  | Failed to connect to the service. |
+| 1600022  | The specified bundle is invalid. Possible causes: 1. The application is not in the list. 2. The application is disabled. |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+
+notificationExtensionSubscription.getUserGrantedBundleIcon('com.example.myapplication').then((data: image.PixelMap) => {
+  console.info(`getUserGrantedBundleIcon successfully, pixel bytes number is ${data.getPixelBytesNumber()}`);
+}).catch((err: BusinessError) => {
+  console.error(`getUserGrantedBundleIcon fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationExtensionSubscription.disableUserGrantedByBundle
+
+disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise\<void\>
+
+关闭本应用中“已获取的本机通知”列表中指定应用的开关状态。使用Promise异步回调。
+
+**起始版本**：26.2.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                 |
+| -------- | ------------------------ | ---- |--------------------|
+| bundle | [GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 是 | 需要关闭开关的应用的包信息。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------- |-----------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 801      | Capability not supported. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Database operation failed. |
+| 1600003  | Failed to connect to the service. |
+| 1600022  | The specified bundle is invalid. |
+
+**示例：**
+
+```ts
+let bundle: notificationExtensionSubscription.GrantedBundleInfo = {
+  bundleName: 'com.example.myapplication',
+  appIndex: 0
+};
+notificationExtensionSubscription.disableUserGrantedByBundle(bundle).then(() => {
+  console.info(`disableUserGrantedByBundle successfully`);
+}).catch((err: BusinessError) => {
+  console.error(`disableUserGrantedByBundle fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## NotificationExtensionSubscriptionInfo
 
 type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionInfo
@@ -351,7 +453,7 @@ type NotificationInfo = _NotificationInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) | 通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。 |
 
 ## SubscribeType
 

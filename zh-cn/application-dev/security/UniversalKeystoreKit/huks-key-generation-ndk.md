@@ -49,12 +49,10 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
     }
     ret = OH_Huks_AddParams(*paramSet, params, paramCount);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
     ret = OH_Huks_BuildParamSet(paramSet);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
     return ret;

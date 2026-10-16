@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @JUGaaab-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 如何在应用A启动过程中拉起另一个应用B
@@ -64,7 +64,7 @@ export default class EntryAbility extends UIAbility {
 
 在应用开发中，动态获取窗口宽高主要用于实现响应式布局，以适应不同尺寸的设备或窗口状态变化（如分屏、最大化恢复、拖拽缩放等）。
 
-推荐使用[getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9)、[getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1)、[getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1)中的任一方法获取到Window实例（windowClass），再通过此实例调用[getWindowProperties()](../reference/apis-arkui//arkts-apis-window-Window.md#getwindowproperties9)接口得到其属性WindowProperties，通过属性获取窗口宽高即可。示例代码如下：
+推荐使用[getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9)、[getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1)、[getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1)中的任一方法获取到Window实例（windowClass），再通过此实例调用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)接口得到其属性WindowProperties，通过属性获取窗口宽高即可。示例代码如下：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -836,3 +836,18 @@ windowClass.on('avoidAreaChange', (data) => {
   }
 });
 ```
+
+## 自由多窗下快速改变窗口大小时，窗口大小与应用布局短暂不同步
+
+**问题现象**
+
+在支持[自由多窗模式](window-terminology.md#free-windows自由多窗模式)的设备上快速拖动窗口边框时，窗口边框实时跟随鼠标变化，但窗口内应用内容的布局刷新存在延迟，出现窗口大小与应用布局短暂不同步的现象；拖动结束后，应用布局会与窗口大小保持一致。
+
+**产生原因**
+
+该现象为系统规格行为。窗口管理采用客户端-服务端架构，拖动窗口边框过程中，窗口大小更新与应用布局刷新由两个进程中的独立链路承担：
+
+- 窗口边框由窗口管理服务进程直接驱动渲染，实时跟随鼠标位置更新，从而保障拖拽过程中的渲染连续性与低延迟跟随性。
+- 应用内容布局的刷新管理运行在应用进程中，需要经过跨进程尺寸通知、应用侧计算与重排等环节才能完成。
+
+由上述设计可知，快速拖动窗口边框的过程中窗口外框与应用布局短暂不同步属于设计预期；拖拽操作结束后，系统会将最终窗口大小同步至应用进程，待应用侧完成布局重排后，二者即保持一致。

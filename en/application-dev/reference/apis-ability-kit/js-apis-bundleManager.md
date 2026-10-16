@@ -242,7 +242,7 @@ Enumerates the ability flags, which indicate the type of ability information to 
 
 Enumerates the application installation statuses.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1954,7 +1954,7 @@ getBundleInstallStatus(bundleName: string): BundleInstallStatus
 
 Obtains the installation status of the specified application.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

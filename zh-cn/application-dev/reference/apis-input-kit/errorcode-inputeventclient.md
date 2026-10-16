@@ -11,15 +11,15 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
-## 3800001 输入服务异常
+## 3800001 多模输入服务内部错误
 
 **错误信息**
 
-Input service exception.
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
 
 **错误描述**
 
-当调用输入事件注入相关接口时，如果输入服务内部发生异常，会产生此错误码。
+多模输入服务内部错误。
 
 **可能原因**
 
@@ -36,7 +36,7 @@ Input service exception.
 
 **错误信息**
 
-状态错误，根据具体接口和场景有以下不同情况。
+Status error. The specific scenario varies by interface and context.
 
 **错误描述**
 

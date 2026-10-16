@@ -1151,7 +1151,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
-设置文件或目录的扩展属性。使用promise异步回调。
+设置文件或目录的扩展属性。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1231,7 +1231,7 @@ setxattrSync(path: string, key: string, value: string): void
 
 getxattr(path: string, key: string): Promise&lt;string&gt;
 
-获取文件或目录的扩展属性。使用promise异步回调。
+获取文件或目录的扩展属性。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2382,7 +2382,7 @@ truncateSync(file: string | number, len?: number): void
 
 readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
-逐行读取文件文本内容，只支持读取utf-8格式文件。使用promise异步回调。
+逐行读取文件文本内容，只支持读取utf-8格式文件。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4054,6 +4054,8 @@ moveFileSync(src: string, dest: string, mode?: number): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -5372,7 +5374,7 @@ isBlockDevice(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isBLockDevice = fileIo.statSync(filePath).isBlockDevice();
+  let isBlockDevice = fileIo.statSync(filePath).isBlockDevice();
   ```
 
 ### isCharacterDevice

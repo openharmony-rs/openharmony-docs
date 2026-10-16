@@ -224,9 +224,9 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
         if (canIUse('SystemCapability.Security.DataLossPrevention')) {
           dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
             this.result = 'startDLPManagerForResult result.resultCode:' + res.resultCode;
-            console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
+            console.error('startDLPManagerForResult res.resultCode:' + res.resultCode);
             console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
-            hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
+            hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
             hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.want:' + JSON.stringify(res.want));
           });
         }
@@ -726,7 +726,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     
     function bufferToString(buffer: ArrayBuffer): string {
-      let textDecoder = new util.TextDecoder('utf-8', {
+      let textDecoder = util.TextDecoder.create('utf-8', {
         ignoreBOM: true
       });
       return textDecoder.decodeToString(new Uint8Array(buffer), {

@@ -13,7 +13,7 @@
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.resourceschedule.backgroundProcessManager (后台子进程管控)](js-apis-backgroundProcessManager.md)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -27,7 +27,7 @@ clearBackgroundApps(clearType: ClearType): Promise\<void>;
 
 主动清理后台资源。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.CLEAR_BACKGROUND_APPS
 
@@ -77,7 +77,7 @@ backgroundProcessManager.clearBackgroundApps(backgroundProcessManager.ClearType.
 
 资源清理类型。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

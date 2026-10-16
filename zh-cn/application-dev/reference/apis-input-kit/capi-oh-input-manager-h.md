@@ -3148,7 +3148,7 @@ void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | hotkey 快捷键对象的实例。 |
 | int32_t *preKeys | preKeys 修饰键列表。 |
-| int32_t size | 修饰键个数，取值范围[1, 2]。 |
+| int32_t size | 修饰键个数，取值范围[1, 4]。 |
 
 ### OH_Input_GetPreKeys()
 
@@ -4314,6 +4314,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 获取当前屏幕上鼠标的坐标点。
 
 从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。
+
+从API版本26.2.0开始，在PC设备上，应用不再有焦点或权限要求。
 
 **设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
 

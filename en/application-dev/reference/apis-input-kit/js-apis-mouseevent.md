@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=9a1cb1c28d6db83260f62725623fc8e88729c2c6 translatedAt=2026-09-01T01:21:46.196Z pushedAt=2026-09-03T08:36:09.592Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:18:36.787Z pushedAt=2026-09-11T03:25:11.965Z -->
 
 The **mouseEvent** module provides mouse events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -66,6 +66,7 @@ Enumerates mouse axis types.
 | SCROLL_VERTICAL   | 0 | Vertical scroll axis of the mouse.|
 | SCROLL_HORIZONTAL | 1 | Horizontal scroll axis of the mouse.|
 | PINCH             | 2 | Pinch axis of the mouse.  |
+
 
 ## AxisValue
 

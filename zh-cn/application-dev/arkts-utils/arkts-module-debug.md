@@ -1,8 +1,8 @@
 # 模块化调试工具
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @li-jiangfeng-->
+<!--Designer: @li-jiangfeng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -10,7 +10,8 @@ ArkTS运行时提供了多种模块化调试工具，帮助开发者快速定位
 
 | 工具名称 | 主要功能 | 适用场景 | API版本 |
 |---------|---------|---------|---------|
-| [模块加载链路调试工具](#模块加载链路调试工具)| 检测循环依赖，记录模块加载路径 | 循环依赖问题、模块加载路径分析 |26.0.0|
+| [模块加载链路调试工具](#模块加载链路调试工具)| 记录模块加载路径 | 模块加载异常、模块加载路径分析 |26.0.0|
+| [循环依赖检测工具](#循环依赖检测工具) | 检测模块循环依赖，记录循环依赖链路 | 循环依赖定位、模块初始化异常分析 |26.2.0|
 | [模块化trace打点工具](#模块化trace打点工具) | 分析模块性能，统计使用情况 | 性能分析、性能优化 |26.0.0|
 
 ## 模块加载链路调试工具
@@ -147,6 +148,62 @@ LastFatalMessage:Failed to load &entry/src/main/ets/pages/A&, the dependency imp
 #0 &entry/src/main/ets/pages/A&
 #1 &entry/src/main/ets/pages/Index&
 ```  
+
+## 循环依赖检测工具
+
+当应用存在复杂的模块依赖关系，或出现模块变量未初始化等异常时，可以使用循环依赖检测工具辅助定位循环导入的模块及其依赖链路。工具检测到循环依赖后，会将发生循环的模块名称和模块加载链路记录到文件中，不会中断应用运行。
+
+### 启用和禁用方法
+
+启用工具：
+
+```bash
+# 启用循环依赖检测功能
+hdc shell param set persist.ark.properties 0x40000105c
+```
+
+禁用工具：循环依赖检测期间会持续记录模块加载信息，对运行时性能有一定损耗。问题定位完成后，应及时关闭该功能。
+
+```bash
+# 禁用循环依赖检测功能
+hdc shell param set persist.ark.properties 0x0000105c
+```
+
+> **说明：**
+>
+> 循环依赖检测工具与模块加载链路调试工具使用同一开关。启用循环依赖检测功能后，模块加载链路调试功能也会同时启用。
+
+### 查看检测结果
+启用工具并复现问题后，可以在应用沙箱的 `data/app/el2/100/base/<bundleName>/files/` 目录下查看检测结果文件。文件名格式如下：
+
+```text
+<bundleName>_<pid>_circularImport.txt
+```
+
+当循环依赖发生在Worker线程时，文件名中还会包含线程ID：
+
+```text
+<bundleName>_<tid>_<pid>_circularImport.txt
+```
+
+检测结果示例：
+
+```text
+circular Module Name: &entry/src/main/ets/pages/B&
+ModuleImportStack:
+#0 &entry/src/main/ets/pages/B&
+#1 &entry/src/main/ets/pages/C&
+#2 &entry/src/main/ets/pages/B&
+#3 &entry/src/main/ets/pages/Index&
+```
+
+`circular Module Name` 表示检测到循环导入的模块。`ModuleImportStack` 记录模块加载调用链路，`#0` 表示当前正在加载的模块。同一模块在链路中重复出现，表示该模块参与了循环依赖。开发者可以根据重复模块之间的依赖关系调整代码结构，消除循环导入。
+
+> **注意：**
+>
+> - 检测结果会追加写入文件。多次复现问题时，建议先清理历史结果，避免不同运行过程的记录混淆。
+> - 循环依赖不一定会立即导致应用异常，但可能使模块初始化顺序变得复杂。建议结合异常信息和业务代码判断影响范围。
+
 ## 模块化trace打点工具
 
 当开发者需要分析文件加载场景的性能可以使用此开关。  
@@ -197,4 +254,4 @@ hdc shell param set persist.ark.properties 0x000105c
 
 选中需要分析的区域，会在下方生成表格。可以根据表格数据对耗时长的文件进行性能优化。  
 
-![分析trace](figures/his_analysis.PNG)  
+![分析trace](figures/his_analysis.PNG)

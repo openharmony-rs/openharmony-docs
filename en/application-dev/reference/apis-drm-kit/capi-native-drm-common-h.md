@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:14:07.612Z pushedAt=2026-07-31T03:50:28.692Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=4909e0f12b795772b2cf82a37880ee00c06d19a7 translatedAt=2026-09-14T09:33:49.447Z pushedAt=2026-09-15T00:11:58.929Z -->
 
 ## Overview
 
@@ -37,8 +37,8 @@ The file declares the DRM data types.
 | [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | DRM_PsshInfo | Describes the Protection System Specific Header (PSSH) data for a DRM system.|
 | [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | Describes the DRM information for encrypted content.|
 | [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | DRM_MediaKeySystemDescription | Describes the DRM solution name and UUID list.|
-| [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | Describes the media key system.|
-| [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | Describes the media key session. |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | Describes the MediaKeySystem struct, which represents a media key system instance. MediaKeySystem provides digital rights protection capabilities and is responsible for DRM plugin configuration management, device certificate management, statistics retrieval, content protection level query, and creation of MediaKeySession instances. An instance is created through the OH_MediaKeySystem_Create API and destroyed through the OH_MediaKeySystem_Destroy API. |
+| [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | Describes the MediaKeySession struct, which represents a media key session instance. MediaKeySession is the core component of the DRM decryption process and is responsible for generating license requests, processing license responses, and managing key status. Each MediaKeySession instance corresponds to the key decryption process of a playback session. An instance is created through the OH_MediaKeySystem_CreateMediaKeySession API and destroyed through the OH_MediaKeySession_Destroy API. Each MediaKeySystem can create multiple MediaKeySession instances to handle different playback sessions.  |
 
 ### Enums
 
@@ -216,6 +216,7 @@ Enumerates the device certificate statuses.
 | CERT_STATUS_INVALID | The device certificate is invalid.|
 | CERT_STATUS_UNAVAILABLE | The device certificate is unavailable.|
 
+
 ## Function Description
 
 ### DRM_MediaKeySystemInfoCallback()
@@ -230,8 +231,11 @@ Defines the callback function used to obtain DRM information from a media source
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | Pointer to the DRM information obtained from the media source, including the unique identifier of the DRM system and PSSH data.|
+
+

@@ -28,11 +28,12 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                                          | 值         | 说明                                                         |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
+| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效，并从API版本26.0.1开始在[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
 | GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_COMMON_CLONE  | 0x00080000 | 用于获取普通分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br/>**起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_SANDBOX_CLONE | 0x00100000 | 用于获取沙箱分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br/>**起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
+| GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE | 0x00200000 | 用于获取任一设备模式下已安装的应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)和[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br/>**起始版本：** 26.0.1 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
 
 ## ApplicationFlag
 
@@ -76,7 +77,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | INTENT_PROFILE  | 1    | 意图框架配置文件。    |
-| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。**起始版本：** 26.0.0    |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0    |
 
 ## AppDistributionType<sup>12+</sup>
 
@@ -128,11 +129,28 @@ import { bundleManager } from '@kit.AbilityKit';
 | MAIN_APP          | 1   | 默认使用主应用。 |
 | CLONE_APP         | 2   | 默认使用分身应用。 |
 
+## ApplicationReservedFlag
+
+应用保留标志位枚举，每一位标识相关的应用信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| ENCRYPTED_APPLICATION | 0x00000001 | 表示该应用为加密应用。 |
+| ENCRYPTED_KEY_EXISTED | 0x00000002 | 表示该应用的加密密钥存在。 |
+
 ## DeviceModeDistributionPolicy
 
 设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -151,6 +169,23 @@ import { bundleManager } from '@kit.AbilityKit';
 | PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间部分兼容，具有不同的包体。 |
 | FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间完全兼容，具有相同的包体。 |
 | FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间完全兼容，具有不同的包体。 |
+
+## AppSandboxPolicy
+
+双模式（2in1/平板）场景下的应用沙箱策略。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| SHARED_SANDBOX | 0 | 应用在不同模式中共享沙箱（默认）。 |
+| ISOLATED_SANDBOX | 1 | 应用在不同模式中隔离沙箱，各自有独立的沙箱。 |
 
 ## bundleManager.getApplicationInfo
 
@@ -496,6 +531,74 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAllBundleInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAllBundleInfoInstances
+
+getAllBundleInfoInstances(bundleName: string, bundleFlags: number): Promise\<Array\<BundleInfo>>
+
+根据给定的bundleName和bundleFlags，获取系统中所有的BundleInfo。使用Promise异步回调。
+
+当bundleFlags中携带[GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE](#bundleflag)标记时，可获取应用在任一设备模式下的BundleInfo。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
+| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise对象。返回应用的全部BundleInfo列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE;
+
+try {
+  bundleManager.getAllBundleInfoInstances(bundleName, bundleFlags).then((res: Array<bundleManager.BundleInfo>) => {
+    let index = 0;
+    for (let item of res) {
+      hilog.info(0x0000, 'testTag', 'getAllBundleInfoInstances res: BundleInfo[%{public}d] = %{public}s', index++,
+        JSON.stringify(item));
+    }
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleInfoInstances failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleInfoInstances failed. Cause: %{public}s', message);
 }
 ```
 
@@ -3896,6 +3999,73 @@ try {
 }
 ```
 
+## bundleManager.getAppProvisionInfoInDevice
+
+getAppProvisionInfoInDevice(bundleName: string, userId: number): Promise\<Array\<AppProvisionInfo\>\>
+
+根据bundleName和userId获取应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)。
+
+ - 获取当前用户下应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+
+ - 获取其他用户下应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleName | string | 是 | 指定的bundleName。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>取值范围：大于等于0。 |
+
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)\>\> | Promise对象，返回应用的provision配置文件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.ohos.myapplication";
+let userId = 100;
+
+try {
+  bundleManager.getAppProvisionInfoInDevice(bundleName, userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.getAllAppProvisionInfo<sup>23+</sup>
 
 getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
@@ -3964,6 +4134,70 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAllAppProvisionInfoInDevice
+
+getAllAppProvisionInfoInDevice(userId: number): Promise\<Array\<AppProvisionInfo\>\>
+
+根据userId获取指定用户下所有应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST 或 (ohos.permission.GET_INSTALLED_BUNDLE_LIST 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - 获取当前用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_INSTALLED_BUNDLE_LIST。
+
+ - 获取其他用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_INSTALLED_BUNDLE_LIST和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>取值范围：大于等于0。 |
+
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)\>\> | Promise对象，返回应用的provision配置文件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 17700004 | The specified user ID is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let userId = 100;
+
+try {
+  bundleManager.getAllAppProvisionInfoInDevice(userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', message);
 }
 ```
 
@@ -4393,7 +4627,7 @@ try {
 
 setAdditionalInfo(bundleName: string, additionalInfo: string): void
 
-设置指定应用的额外信息。此接口仅供应用市场调用。
+设置指定应用的自定义扩展管理信息。该接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4406,7 +4640,7 @@ setAdditionalInfo(bundleName: string, additionalInfo: string): void
 | 参数名                | 类型                             | 必填 | 说明                                               |
 | --------------------- | ------------------------------- | ---- | -------------------------------------------------- |
 | bundleName            | string                          | 是   | 指定应用的包名。                                    |
-| additionalInfo        | string                          | 是   | 需要设置的应用的额外信息。                           |
+| additionalInfo        | string                          | 是   | 需要设置的应用的自定义扩展管理信息。                           |
 
 **错误码：**
 
@@ -4436,6 +4670,62 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'setAdditionalInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.setAdditionalInfoByIndex
+
+setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, appIndex: number): void
+
+设置指定应用的自定义扩展管理信息。该接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名                | 类型                             | 必填 | 说明                                               |
+| --------------------- | ------------------------------- | ---- | -------------------------------------------------- |
+| bundleName            | string                          | 是   | 指定应用的包名。                                    |
+| additionalInfo        | string                          | 是   | 需要设置的应用的自定义扩展管理信息。                           |
+| appIndex              | number  | 是   | 指定的应用分身索引。取值范围：0或10000。                  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                    |
+| -------- | ---------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found.                     |
+| 17700053 | The caller is not AppGallery.                                     |
+| 17700061 | AppIndex not in valid range.                                     |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let additionalInfo = "xxxxxxxxx,formUpdateLevel:4";
+let appIndex = 0;
+
+try {
+  bundleManager.setAdditionalInfoByIndex(bundleName, additionalInfo, appIndex);
+  hilog.info(0x0000, 'testTag', 'setAdditionalInfoByIndex successfully.');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAdditionalInfoByIndex failed. Cause: %{public}s', message);
 }
 ```
 
@@ -6461,13 +6751,15 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 
 支持按设备模式分发策略过滤应用列表。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回201错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6517,6 +6809,65 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getBundleExtensionPolicyInfo
+
+getBundleExtensionPolicyInfo(bundleName: string, userId: number): BundleExtensionPolicyInfo
+
+获取指定应用的包扩展策略信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED，查询当前用户包扩展策略信息。 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，可以查跨用户包扩展策略信息。)
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
+| userId | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。该值应为整数。<br>当传参null、undefined时，默认为当前用户。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| [BundleExtensionPolicyInfo](#bundleextensionpolicyinfo) | 应用的包扩展策略信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let userId = 100;
+
+try {
+  let info: bundleManager.BundleExtensionPolicyInfo = bundleManager.getBundleExtensionPolicyInfo(bundleName, userId);
+  hilog.info(0x0000, 'testTag', 'getBundleExtensionPolicyInfo successfully: %{public}s', JSON.stringify(info));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleExtensionPolicyInfo failed: %{public}s', message);
 }
 ```
 
@@ -6663,7 +7014,7 @@ type BundleOptions = _BundleInfo.BundleOptions
 
 ## AppClonePreference
 
-type AppClonePreference = _AppClonePreference
+type AppClonePreference = _BundleInfo.AppClonePreference
 
 应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。
 
@@ -6678,3 +7029,21 @@ type AppClonePreference = _AppClonePreference
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_AppClonePreference](js-apis-bundleManager-BundleInfo-sys.md#appclonepreference) |应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。通过[bundleManager.getAppClonePreference](#bundlemanagergetappclonepreference)查询当前偏好设置，通过[bundleManager.setAppClonePreference](#bundlemanagersetappclonepreference)设置新的偏好。其mode字段决定启动时的选择行为，appIndex字段在mode取值为CLONE_APP时用于指定具体的分身索引。|
+
+## BundleExtensionPolicyInfo
+
+type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo
+
+应用包扩展策略信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| [_BundleInfo.BundleExtensionPolicyInfo](js-apis-bundleManager-BundleInfo-sys.md#bundleextensionpolicyinfo) |应用包扩展策略信息，包含应用包名、应用分身索引、设备模式分发策略和应用沙箱策略。通过[bundleManager.getBundleExtensionPolicyInfo](#bundlemanagergetbundleextensionpolicyinfo)获取。|

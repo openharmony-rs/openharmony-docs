@@ -138,7 +138,7 @@ parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context:
 | -------- | -------- | -------- | -------- |
 | adResponse | string | 是 | 广告响应体。 | 
 | listener | [MultiSlotsAdLoadListener](js-apis-advertising.md#multislotsadloadlistener) | 是 | 请求广告回调监听。 | 
-| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 | 
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
 
 **错误码：**
 
@@ -194,7 +194,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 | 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | controller | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | 是 | Web组件控制器。 |
-| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
 
 **错误码：**
 
@@ -250,7 +250,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 | 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | 是 | Web组件控制器。 |
-| context     | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
 | needRefresh | boolean | 是 | 是否需要刷新页面（true: 需要；false: 不需要）。 | 
 
 **错误码：**

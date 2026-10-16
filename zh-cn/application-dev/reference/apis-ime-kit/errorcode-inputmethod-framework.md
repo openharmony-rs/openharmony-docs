@@ -126,7 +126,8 @@ Input method controller error. Possible cause: create InputMethodController obje
 
 **处理步骤**
 
-无
+1. 开发者执行命令`ps -A | grep inputmethod`检查输入法管理服务进程是否正常运行。若进程不存在，建议重启设备后重试。
+2. 若进程存在但仍报错，将应用后台进程杀死后重新启动应用，再次调用[getController](js-apis-inputmethod.md#inputmethodgetcontroller9)获取InputMethodController实例。
 
 ## 12800007 输入法设置器异常
 
@@ -144,7 +145,8 @@ Input method setter error. Possible cause: create InputMethodSetting object fail
 
 **处理步骤**
 
-无
+1. 开发者执行命令`ps -A | grep inputmethod`检查输入法管理服务进程是否正常运行。若进程不存在，建议重启设备后重试。
+2. 若进程存在但仍报错，将应用后台进程杀死后重新启动应用，再次调用[getSetting](js-apis-inputmethod.md#inputmethodgetsetting9)获取InputMethodSetting实例。
 
 ## 12800008 输入法管理服务异常
 

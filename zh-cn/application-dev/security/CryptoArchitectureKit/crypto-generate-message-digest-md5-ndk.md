@@ -84,9 +84,9 @@ OH_Crypto_ErrCode doTestMd5Md()
 
 5. 调用[OH_DigestCrypto_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_digestcrypto_destroy)，销毁摘要实例（OH_CryptoDigest）。
 
-- 以下使用分段传入数据，获取摘要计算结果为例：
+以下使用分段传入数据，获取摘要计算结果为例：
 
-  <!-- @[message_digest_md5_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/md5/segmentation.cpp) -->
+<!-- @[message_digest_md5_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/md5/segmentation.cpp) -->
 
 ``` C++
 

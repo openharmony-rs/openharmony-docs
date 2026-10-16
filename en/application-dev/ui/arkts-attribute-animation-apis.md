@@ -1,39 +1,36 @@
 # Implementing Property Animation
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e19b652374a358a3a50594a3ad8cb6bde0515e4e translatedAt=2026-07-29T12:43:22.603Z pushedAt=2026-07-31T01:24:06.167Z -->
+<!-- md-trans-meta sourceCommit=8dd2d5cdf88acdc31ee17ec2006247a008c91d7c translatedAt=2026-09-21T02:36:20.506Z pushedAt=2026-09-21T09:08:48.573Z -->
 
 Continuous visual effects on the UI resulting from changes to animatable properties are called property animations. As the most fundamental and intuitive type of animation, property animations form the core of UI animation systems. ArkUI provides three animation APIs to create these effects: [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto), [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md), and [keyframeAnimateTo](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md).
 
 > **NOTE**
 >
-> The attribute animation discussed in this section is not the narrowly defined [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md), but rather a method of animating properties by specifying new end values for animatable properties.
+> The property animation discussed in this section is not the narrowly defined [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md), but rather a method of animating properties by specifying new end values for animatable properties.
 
 | Animation API| Scope| Principle| Use Scenario|
 | -------- | -------- | -------- | -------- |
-| animateTo | UI changes caused by attribute changes within a closure. | A general-purpose function that animates the differences between the UI before the closure and the UI caused by state variable changes within the closure.<br/>Supports multiple calls and nesting. | Suitable for scenarios where multiple animatable attributes share the same animation parameters, or where animation is triggered imperatively and explicitly.<br/>Scenarios requiring nested animations.<br/>To achieve a multi-segment looping animation effect, configure the **playMode** and **iterations** properties of [AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam), or use **keyframeAnimateTo**. |
-| animation | UI changes caused by attribute changes bound to a component through the attribute API. | A declarative attribute animation that detects changes to a component's animatable attributes and automatically applies animation.<br/>Component API calls are executed from bottom to top, and **animation** only affects the attributes called above it.<br/>A component can set different **animation** parameters for multiple attributes based on the call order. | Suitable for scenarios where different animatable attributes require different animation parameters, and for declarative approaches where animation is implicitly triggered upon attribute changes. |
-| keyframeAnimateTo | Segmented property animation caused by property changes in multiple closures.| This API is a common function. It animates the difference between state variables in each closure and the previous state.<br>This API supports multiple calls, but nesting is not recommended.| Multiple animations are applied to the same property sequentially.|
+| animateTo | UI changes caused by attribute changes within a closure. | A general-purpose function that animates the differences between the UI before the closure and the UI caused by state variable changes within the closure.<br/>Supports multiple calls and nesting. | Suitable for scenarios where multiple animatable properties share the same animation parameters, or where animation is triggered imperatively and explicitly.<br/>Scenarios requiring nested animations.<br/>To achieve a multi-segment looping animation effect, configure the **playMode** and **iterations** properties of [AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam), or use **keyframeAnimateTo**. |
+| animation | UI changes caused by attribute changes bound to a component through the attribute API. | A declarative property animation that detects changes to a component's animatable properties and automatically applies animation.<br/>Component API calls are executed from bottom to top, and **animation** only affects the attributes called before it.<br/>A component can set different **animation** parameters for multiple attributes based on the call order. | Suitable for scenarios where different animatable properties require different animation parameters, and for declarative approaches where animation is implicitly triggered upon attribute changes. |
+| keyframeAnimateTo | Segmented property animation caused by property changes in multiple closures.| This API is a common function. It animates the difference between state variables in each closure and the previous state.<br>This API supports multiple calls, but nesting is not recommended.| Suitable for scenarios where the same property requires multiple consecutive animations.|
 
 ## animateTo
 
 <!--deprecated_code_no_check-->
-
 ```ts
 animateTo(value: AnimateParam, event: () => void): void
 ```
 
-In the [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API, **value** specifies the [AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam) (including **duration** and **curve**). **event** is the closure function of the animation. The attribute animation generated due to variable changes in the closure follows the same animation parameters.
+In the [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API, **value** specifies the [AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam) (including **duration** and **curve**). **event** is the closure function of the animation. The property animation generated due to variable changes in the closure follows the same animation parameters.
 
 > **NOTE**
 >
 > Directly using **animateTo** can lead to the issue of [ambiguous UI context](./arkts-global-interface.md). To avoid this, obtain the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) object using the [getUIContext()](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext) API and then call the [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API through this object.
-
 <!-- @[attrAnimateToDemo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template2/Index.ets) -->
 
 ``` TypeScript
@@ -92,6 +89,7 @@ struct attrAnimateToDemo2 {
 ```
 
 ![en-us_image_0000001599958466](figures/animateTo-01.gif)
+
 
 ## animation
 
@@ -156,6 +154,7 @@ struct attrAnimationDemo3 {
 }
 ```
 
+
 ![en-us_image_0000001649279705](figures/animation-01.gif)
 
 ## keyframeAnimateTo
@@ -198,7 +197,7 @@ struct KeyframeAnimateToDemo {
           iterations: 1
         }, [
           {
-            // The first keyframe animation has a duration of 800 ms: Component 1 rotates 90 degrees clockwise. Component 2's opacity changes from 1 to 0.6, and its translation (translate) changes from 0 to 50.
+            // The first keyframe animation lasts 800 ms. Component 1 rotates 90 degrees clockwise, component 2's opacity changes from 1 to 0.6, and component 2's translate moves from 0 to 50.
             duration: 800,
             event: () => {
               this.rotateValue = 90;
@@ -207,7 +206,7 @@ struct KeyframeAnimateToDemo {
             }
           },
           {
-            // The second keyframe animation has a duration of 500 ms. Component 1 rotates 90 degrees counterclockwise to return to 0 degrees. Component 2's opacity changes from 0.6 back to 1, and its translation (translate) changes from 50 back to 0.
+            // The second keyframe animation lasts 500 ms. Component 1 rotates 90 degrees counterclockwise back to 0 degrees, component 2's opacity changes from 0.6 to 1, and component 2's translate moves from 50 to 0.
             duration: 500,
             event: () => {
               this.rotateValue = 0;

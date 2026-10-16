@@ -1,4 +1,4 @@
-# ArkGraphics 3D场景搭建以及管理
+# 场景搭建与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
@@ -13,7 +13,7 @@
 
 模型加载后，可以通过ArkUI的[Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md)渲染组件呈现给用户，Component3D负责将ArkGraphics 3D场景渲染到界面中。在自定义场景模式下，开发者可以使用ArkTS API创建并管理相机和光源节点，从而设置合适的观察角度和光照效果；在自动场景模式下，框架会根据模型自动创建基础相机和光照。ArkTS API可通过napi调用AGP中由C++实现的相应能力。
 
-![3D场景显示流程](./figures/scene.PNG)
+![3D场景显示流程](./figures/scene.png)
 
 ## 模型的加载及呈现
 模型的格式多种多样，目前ArkGraphics 3D仅支持glTF模型的加载，glTF是一种对于3D场景描述的格式，glTF作为一种开源3D场景格式在业界被广泛采用。关于glTF的介绍可以参照[glTF-2.0](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)。
@@ -47,8 +47,8 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.scene == null) {
-     // Load the model and place the gltf file in the related path. Use the actual path during loading.
-     // Switched from .gltf to .glb; same content, different format
+     // 加载模型，并将 glTF 文件放在相关路径下。加载时使用实际路径。
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
        .then(async (result: Scene) => {
          this.scene = result;
@@ -68,9 +68,9 @@ glTF模型中引用的纹理图片支持以下格式：
    <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
    
    ``` TypeScript
-   // Create a Camera.
+   // 创建一个相机。
    this.cam = await rf.createCamera({ name: 'Camera' });
-   // Set proper camera parameters.
+   // 设置合适的相机参数。
    this.cam.enabled = true;
    this.cam.position.z = 5;
    
@@ -85,7 +85,7 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.sceneOpt) {
-     // Use Component3D to display the 3D scenario.
+     // 使用 Component3D 显示 3D 场景。
      Component3D(this.sceneOpt);
    } else {
      Text('Loading···');
@@ -136,16 +136,16 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
    ``` TypeScript
    let camera: Promise<Camera> = sceneFactory.createCamera(sceneCameraParameter);
    camera.then(async (cameraEntity: Camera) => {
-     // Enable the camera node.
+     // 启用相机节点。
      cameraEntity.enabled = true;
    
-     // Set the camera position.
+     // 设置相机位置。
      cameraEntity.position.z = 5;
    
-     // Set the FoV.
+     // 设置视场角（FoV）。
      cameraEntity.fov = 60 * Math.PI / 180;
    
-     // Set other camera parameters.
+     // 设置其他相机参数。
      // ...
      // ...
    }).catch((error: string) => {
@@ -208,7 +208,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
 
 1. 导入相关模块。
 
-   在页面脚本中导入ArkGraphics 3D提供的核心类型，用于加载场景、创建相机与灯光。
+   在页面脚本中导入ArkGraphics 3D提供的核心类型，用于加载场景、创建相机与光源。
 
    <!-- @[light_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
@@ -218,7 +218,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
 
 2. 加载场景资源。
 
-   使用Scene.load()从应用的resources/rawfile/目录加载.glb模型文件，.glb为glTF的二进制封装格式，与.gltf内容等价但更便于加载与使用。模型加载成功后返回Scene对象，可通过它获取SceneResourceFactory用于后续创建灯光。
+   使用Scene.load()从应用的resources/rawfile/目录加载.glb模型文件，.glb为glTF的二进制封装格式，与.gltf内容等价但更便于加载与使用。模型加载成功后返回Scene对象，可通过它获取SceneResourceFactory用于后续创建光源。
 
    <!-- @[light_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
@@ -235,19 +235,19 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
    });
    ```
 
-3. 创建灯光并配置灯光参数。
+3. 创建光源并配置光源参数。
 
-   调用SceneResourceFactory.createLight()创建灯光，并配置灯光的类型、位置、颜色等参数。
+   调用SceneResourceFactory.createLight()创建光源，并配置光源的类型、位置、颜色等参数。
 
    <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
    ``` TypeScript
    let light: Promise<Light> = sceneFactory.createLight(lightParameter, LightType.DIRECTIONAL);
    light.then(async (lightEntity: Light) => {
-     // Set the color of the directional light.
+     // 设置平行光的颜色。
      lightEntity.color = { r: 0.8, g: 0.1, b: 0.2, a: 1.0 };
    
-     // Set other light parameters.
+     // 设置其他光照参数。
      // ...
      // ...
    }).catch((err: string) => {
@@ -258,7 +258,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
 
 4. 初始化与渲染绑定。
 
-   完成灯光初始化后，将加载好的场景与灯光进行绑定，并设置场景渲染参数。通过构建SceneOptions对象，即可将场景交由Component3D渲染显示。同时创建相机并设置观察位置，用于控制场景显示效果。
+   完成光源初始化后，将加载好的场景与光源进行绑定，并设置场景渲染参数。通过构建SceneOptions对象，即可将场景交由Component3D渲染显示。同时创建相机并设置观察位置，用于控制场景显示效果。
 
    <!-- @[light_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
@@ -271,16 +271,16 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      this.cam = await this.rf.createCamera({ name: 'Camera1' });
      this.cam.enabled = true;
      this.cam.position.z = 5;
-     // Initialize color value
+     // 初始化颜色值
      this.red = this.light.color.r;
      this.green = this.light.color.g;
      this.blue = this.light.color.b;
    }
    ```
 
-5. 灯光交互。
+5. 光源交互。
 
-   开发者可通过调整灯光的颜色、位置或方向等参数，实现交互式光照控制。以下示例展示了基于颜色分量（R/G/B）的交互逻辑，其余参数的控制方式与此类似。
+   开发者可通过调整光源的颜色、位置或方向等参数，实现交互式光照控制。以下示例展示了基于颜色分量（R/G/B）的交互逻辑，其余参数的控制方式与此类似。
 
    <!-- @[light_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    

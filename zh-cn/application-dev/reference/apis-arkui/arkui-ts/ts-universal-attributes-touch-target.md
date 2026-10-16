@@ -1,7 +1,7 @@
 # 触摸热区设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -220,7 +220,7 @@ struct TouchTargetExample {
 
 ```ts
 // xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
+import { LengthMetrics, ResponseRegionSupportedTool } from '@kit.ArkUI';
 
 @Entry
 @Component

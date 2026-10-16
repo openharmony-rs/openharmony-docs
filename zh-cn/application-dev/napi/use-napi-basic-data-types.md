@@ -156,8 +156,8 @@ hilog.info(0x0000, 'Node-API', 'get_value_int32_oversize %{public}d',
 // 大于2的31次-1的数字且不是二进制为111111111111111111111111111111111111这样的在int32中有特殊含义的数字也会溢出，导致数值发生改变，返回值按后32位二进制编码解码
 hilog.info(0x0000, 'Node-API', 'get_value_int32_oversize %{public}d',
   testNapi.getValueInt32(687194767355));
-// 传入NAN（not a number）、+Infinity（正无穷）或-Infinity（负无穷），会返回数字0
-hilog.info(0x0000, 'Node-API', 'get_value_int32_number_NAN %{public}d', testNapi.getValueInt32(NaN));
+// 传入NaN（not a number）、+Infinity（正无穷）或-Infinity（负无穷），会返回数字0
+hilog.info(0x0000, 'Node-API', 'get_value_int32_number_NaN %{public}d', testNapi.getValueInt32(NaN));
 hilog.info(0x0000, 'Node-API', 'get_value_int32_number_+Infinity %{public}d',
   testNapi.getValueInt32(+Infinity));
 hilog.info(0x0000, 'Node-API', 'get_value_int32_number_-Infinity %{public}d',
@@ -216,8 +216,8 @@ hilog.info(0x0000, 'Node-API', 'get_value_int64_not_number %{public}s',
 // 输入超过int64表示范围的数字会溢出，失去精度，导致输入数字与返回数字不相等
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_oversize %{public}d',
   testNapi.getValueInt64(9223372036854775809));
-// 传入NAN（not a number）、+Infinity（正无穷）或-Infinity（负无穷）接口返回数字0
-hilog.info(0x0000, 'Node-API', 'get_value_int64_number_NAN %{public}d', testNapi.getValueInt64(NaN));
+// 传入NaN（not a number）、+Infinity（正无穷）或-Infinity（负无穷）接口返回数字0
+hilog.info(0x0000, 'Node-API', 'get_value_int64_number_NaN %{public}d', testNapi.getValueInt64(NaN));
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_+Infinity %{public}d',
   testNapi.getValueInt64(+Infinity));
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_-Infinity %{public}d',
@@ -375,7 +375,7 @@ static napi_value CreateInt64(napi_env env, napi_callback_info info)
     // 要表示的整数值
     int64_t value = 2147483648;
     // 使用给定数值创建一个ArkTS number，仅能准确表示范围从-2^53 + 1到2^53 - 1（闭区间）的整数
-    // 如果想表示的数值超过了2^53，请使用napi_create_bigint64接口
+    // 如果想表示的数值超过了2^53，请使用napi_create_bigint_int64接口
     napi_value result = nullptr;
     napi_status status = napi_create_int64(env, value, &result);
     if (status != napi_ok) {

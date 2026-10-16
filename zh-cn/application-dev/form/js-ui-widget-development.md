@@ -1,4 +1,4 @@
-﻿# JS卡片开发指导（Stage模型）
+# JS卡片开发指导（Stage模型）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
@@ -612,7 +612,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 > 
 > "data"中JSON Value支持多级嵌套数据，在更新数据时，需要注意携带完整数据。
 
-当前卡片显示07.18日Mr.Zhang的课程信息，示例如下。
+当前卡片显示7月18日Mr.Zhang的课程信息，示例如下。
   ```ts
   "data": {
       "Day": "07.18",
@@ -622,7 +622,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
       }
   }
   ```
-当卡片内容需要更新为07.18日Mr.Li的课程信息时，需要传递待更新的完整数据，不能只传递单个数据项，如只传name或只传course，示例如下。
+当卡片内容需要更新为7月18日Mr.Li的课程信息时，需要传递待更新的完整数据，不能只传递单个数据项，如只传name或只传course，示例如下。
   ```ts
   "teacher": {
       "name": "Mr.Li",

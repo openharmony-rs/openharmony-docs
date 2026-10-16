@@ -82,14 +82,14 @@
         hdc shell bm dump -n com.example.myapplication
         ```
 
-    2. 通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
+    2. 通过查看输出中`name`为`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
 
         ```json5
         // 输出示例（skills部分）：
         // ...
-        "name": "EntryAbility",
-        // ...
         {
+          "name": "EntryAbility",
+          // ...
           "skills": [
             {
               "actions": [

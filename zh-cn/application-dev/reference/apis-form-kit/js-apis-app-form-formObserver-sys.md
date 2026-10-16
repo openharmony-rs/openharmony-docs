@@ -100,7 +100,7 @@ formObserver.on('formAdd', bundleName, callback);
 
 ## formObserver.off('formAdd')
 
-off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
+off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void
 
 取消订阅卡片新增事件。使用callback异步回调。
 
@@ -785,6 +785,7 @@ getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter): Pr
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000  | An internal functional error occurred. |
 
+**示例：**
 
 ```ts
 import { formInfo, formObserver } from '@kit.FormKit';

@@ -453,8 +453,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                                         |  值     | 说明                   |
 | :------------------------------------------- | :----- | :--------------------- |
-| SOURCE_TYPE_WAKEUP <sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br/>**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE |
-| SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br/>**需要权限：** ohos.permission.RECORD_VOICE_CALL |
+| SOURCE_TYPE_WAKEUP<sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br>此类型需要`ohos.permission.MANAGE_INTELLIGENT_VOICE`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)会创建失败。 |
+| SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br>此类型需要`ohos.permission.RECORD_VOICE_CALL`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)会创建失败。 |
 | SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | 语音转写音频源。 |
 | SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT<sup>23+</sup>   | 19     | 未处理的语音助手音频源。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -491,6 +491,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
 | ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
 | preferredInputDevice | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频录音器的偏好输入设备。对于该设备有以下要求：<br/>- 此设备必须为输入设备，并且**capturerInfo**中的源类型必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)、[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)或[SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](#sourcetype8)，否则此参数将被忽略。<br/>- 如果用户未指定设备，系统会按当前音频路由策略自动选择可用输入设备。<br/>- 当用户指定偏好设备时：<br/>1. 如果偏好设备在线，当前音频录音器使用该设备录音；如果录音过程中该设备离线，系统会按当前音频路由策略自动选择其他可用输入设备。<br/>2. 如果偏好设备离线，系统会按当前音频路由策略自动选择其他可用输入设备；如果录音过程中该设备上线，系统会自动切换到偏好设备。<br/>- 用户可通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的设备。<br/>**起始版本：** 26.0.0 |
+| actualUsingAppTokenId | number | 否 | 是 | 实际使用该录音流的应用Token ID，用于在点亮麦克风隐私指示器时，显示正确的应用信息。<br>如果未指定该字段，默认使用调用方应用的Token ID。<br>设置该字段时，调用方必须申请`ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR`权限，否则[createMicInAudioCapturer](#audiocreatemicinaudiocapturer23)创建失败。<br>**起始版本：** 26.2.0 |
 
 ## AudioSessionBehaviorFlags<sup>24+</sup>
 
@@ -585,6 +586,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ----- |--------| ---- |---|-------------|
 | preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频采集器的偏好输入设备。<br/>此设备必须为输入设备，并且capturerInfo的source type必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)或[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)。否则，此参数将会被忽略。<br/>1. 当调用者未指定偏好设备时，系统会自动选择一个设备。<br/>2. 当调用者指定了偏好设备创建语音识别或者语音转写流时：<br/>（1）设备在线，当前audiocapturer会使用偏好设备；如果运行过程中，偏好设备下线，系统会自动选择一个录音设备。<br/>（2）设备不在线，当前audiocapturer会自动选择一个录音设备；如果运行过程中，偏好设备上线，系统会自动切换到偏好设备上。<br/>3. 调用者可以通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的录音设备。<br>**系统能力：** SystemCapability.Multimedia.Audio.Capturer |
 | playbackCaptureUid | number | 否 | 是 | 应用UID，用于音视频通话播放采集。<br>此参数仅在[AudioCapturerOptions](./arkts-apis-audio-i.md#audiocaptureroptions8).playbackCaptureMode设置为[AudioPlaybackCaptureMode](#audioplaybackcapturemode).MODE_ONLY_VOIP时生效。在其他模式下，此参数将被忽略。<br>该值必须为整数类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
+| actualUsingAppTokenId | number | 否 | 是 | 实际使用该录音流的应用Token ID，用于在点亮麦克风隐私指示器时，显示正确的应用信息。<br>如果未指定该字段，默认使用调用方应用的Token ID。<br>设置该字段时，调用方必须申请`ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)创建失败。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.Capturer |
 
 ## AudioManager
 
@@ -1003,6 +1005,8 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 根据应用ID获取指定应用的音量百分比（范围为0到100）。使用Promise异步回调。
 
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1044,6 +1048,8 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 根据应用ID设置指定应用的音量百分比（范围为[0, 100]）。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -1281,6 +1287,8 @@ isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
 >
 > 如果有多个调用者设置了静音状态，那么只有当所有调用者都取消静音状态后，此应用才会真正取消静音。
 
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1323,6 +1331,8 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
 setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 根据应用ID设置应用静音状态。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -1490,6 +1500,8 @@ on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>)
 
 监听指定应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1529,6 +1541,8 @@ audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEv
 off(type: 'appVolumeChangeForUid', callback?: Callback\<VolumeEvent>): void
 
 取消监听指定应用应用级音量变化事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -2845,11 +2859,11 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| name | string | 是 | 否 | 声卡名称。 |
-| vendor | string | 是 | 否 | 声卡厂商。 |
-| model | string | 是 | 否 | 声卡型号。 |
-| busAddress | string | 是 | 否 | 声卡总线地址。 |
-| driver | string | 是 | 否 | 声卡驱动信息。 |
+| name | string | 否 | 否 | 声卡名称。 |
+| vendor | string | 否 | 否 | 声卡厂商。 |
+| model | string | 否 | 否 | 声卡型号。 |
+| busAddress | string | 否 | 否 | 声卡总线地址。 |
+| driver | string | 否 | 否 | 声卡驱动信息。 |
 
 ## AudioRoutingManager<sup>9+</sup>
 
@@ -3624,9 +3638,9 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 >
 > 该功能仅能排除外部输出设备，不支持本地输出设备。
 
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
-
-从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+**需要权限：** 
+- API版本23+：N/A
+- API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -3651,7 +3665,7 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied.      |
+| 201     | Permission denied.<br>适用版本：18-22     |
 | 202     | Not system application.                             |
 | 6800101 | Parameter verification failed. |
 
@@ -3693,9 +3707,9 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 解除排除输出设备。成功调用此函数后，音频将会重新选择输出设备。
 
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
-
-从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+**需要权限：** 
+- API版本23+：N/A
+- API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -3720,7 +3734,7 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. |
+| 201     | Permission denied.<br>适用版本：18-22 |
 | 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
@@ -3762,7 +3776,9 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 解除属于特定用途的所有输出设备的排除。成功调用此函数后，音频将会重新选择输出设备。
 
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+**需要权限：** 
+- API版本23+：N/A
+- API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
 
@@ -3788,7 +3804,7 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. |
+| 201     | Permission denied.<br>适用版本：18-22 |
 | 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
@@ -3814,8 +3830,6 @@ async function unexcludeOutputDevices(){
 getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors
 
 获取排除输出设备列表。
-
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -4163,7 +4177,7 @@ let inputAudioCapturerFilter: audio.AudioCapturerFilter = {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
-| 参数名                 | 类型                                                         | 只读 | 可选 | 说明                      |
+| 名称                 | 类型                                                         | 只读 | 可选 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- |---| ------------------------- |
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 否 | 否 | 指定设备的描述。     |
 | enabled               | boolean                                                      | 否 | 否 | 表示开启/关闭空间音频渲染或头动。true为开启，false为关闭。  |
@@ -5353,7 +5367,7 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 | ------- | --------------------------------------------|
 | 201     | Permission denied. Return by promise.     |
 | 202     | Not system App.                             |
-| 801     | Capability not supported on device. |
+| 801     | Capability not supported on the device. |
 | 6800101 | Parameter verification failed. |
 
 **示例：**

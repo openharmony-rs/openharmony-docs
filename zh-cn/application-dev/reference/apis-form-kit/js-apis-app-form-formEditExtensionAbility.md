@@ -23,8 +23,6 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 
 提供卡片编辑功能，继承此类并实现生命周期方法后，可实现卡片编辑界面，用于在用户长按卡片等场景下触发卡片编辑。
 
-### 属性
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form

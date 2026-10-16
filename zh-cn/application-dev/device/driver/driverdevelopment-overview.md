@@ -65,23 +65,23 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 ## 约束与限制
 
-调用Driver Development Kit提供的ArkTS-API或者C-API，开发者需要申请特定权限，才能使用相关接口。
+1. 调用Driver Development Kit提供的ArkTS-API或者C-API，开发者需要申请特定权限，才能使用相关接口。
 
-所需权限如下：
+   所需权限如下：
+      
+   | API 类型 | DDK类型 | 权限名称 |
+   | --------- | --------- | --------- |
+   | ArkTS-API | 不涉及 | ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
+   | C-API     | UsbDdk | ohos.permission.ACCESS_DDK_USB |
+   | C-API     | HidDdk | ohos.permission.ACCESS_DDK_HID |
+   | C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
+   | C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
 
-| API 类型 | DDK类型 | 权限名称 |
-| --------- | --------- | --------- |
-| ArkTS-API | 不涉及 | ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
-| C-API     | UsbDdk | ohos.permission.ACCESS_DDK_USB |
-| C-API     | HidDdk | ohos.permission.ACCESS_DDK_HID |
-| C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
-| C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
+2. Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用。在其他进程（包括子进程）中使用可能会出现功能异常，具体可参考[在子进程或非驱动Ability中调用DDK的C-API失败](./externaldevice-faqs.md#在子进程或非驱动ability中调用ddk的c-api失败)。
 
-Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用。在其他进程（包括子进程）中使用可能会出现功能异常，具体可参考[在子进程或非驱动ability中调用ddk的c-api失败](./externaldevice-faqs.md#在子进程或非驱动ability中调用ddk的c-api失败)。
+3. 针对 DriverExtensionAbility接口调用限制，详细请参考 API 中的[约束限制](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#约束限制)。
 
 <!--RP1--><!--RP1End-->
-
-针对 DriverExtensionAbility接口调用限制，详细请参考 API 中的[约束限制](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#约束限制)。
 
 ## 关联模块
 
@@ -111,7 +111,7 @@ Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用�
     - DriverExtensionAbility的生命周期取决于外设的接入时间，具体来说表现为：
       - 当DriverExtensionAbility配置的“VID + PID”设备列表中的某个外设接入时，其生命周期区间跟该外设接入的时间段一致。
       - 当DriverExtensionAbility配置的“VID + PID”设备列表中的多个外设依次接入时，其生命周期区间从第一个外设的接入持续到最后一个外设的拔出。
-      - 接入的外设同时出现在多个DriverExtensionAbility配置的“VID + PID”列表中时，该外设只会影响最先安装的驱动Ability的生命周期，详见[多个驱动Ability配置了同一型号外设的情况下，插入该外设只会拉起一个驱动Ability](./externaldevice-faqs.md#多个驱动ability配置了同一型号外设的情况下插入该外设只会拉起一个驱动ability)。
+      - 接入的外设同时出现在多个DriverExtensionAbility配置的“VID + PID”列表中时，该外设只会影响最先安装的驱动Ability的生命周期，详见[多个驱动Ability配置了同一型号外设的情况下，插入该外设只支持拉起一个驱动Ability](./externaldevice-faqs.md#多个驱动ability配置了同一型号外设的情况下插入该外设只支持拉起一个驱动ability)。
 
 4. 在DriverExtensionAbility中API访问安全管控说明
     - 系统支持基于ExtensionAbility构建场景化扩展Ability，DriverExtensionAbility为支持开发用户态扩展驱动的一类Ability。

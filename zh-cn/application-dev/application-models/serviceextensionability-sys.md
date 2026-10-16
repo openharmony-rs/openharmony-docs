@@ -385,7 +385,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
     onConnect(elementName, remote: rpc.IRemoteObject): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       let serviceExtProxy: IdlServiceExtProxy = new IdlServiceExtProxy(remote);
@@ -401,7 +401,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code: number): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
   };
   @Entry
@@ -501,7 +501,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
     onConnect(elementName, remote: rpc.IRemoteObject): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       let serviceExtProxy: IdlServiceExtProxy = new IdlServiceExtProxy(remote);
@@ -517,7 +517,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code: number): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
   };
   ```
@@ -537,7 +537,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
     onConnect(elementName, remote): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       let option = new rpc.MessageOption();
@@ -568,7 +568,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback');
     }
   };
   // ...
@@ -606,7 +606,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
         hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
         // 对客户端包名进行识别
         if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
-          hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
+          hilog.error(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
           return;
         }
         // 识别通过，执行正常业务逻辑
@@ -629,7 +629,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
   通过调用[getCallingTokenId()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid8)接口获取客户端的tokenID，再调用[verifyAccessTokenSync()](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstokensync9)接口判断客户端是否有某个具体权限，由于当前不支持自定义权限，因此只能校验当前[系统所定义的权限](../security/AccessToken/app-permissions.md)。示例代码如下：
 
   ```ts
-  import { abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
+  import { abilityAccessCtrl } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -647,26 +647,12 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
     processData(data: number, callback: ProcessDataCallback): void {
       // 开发者自行实现业务逻辑
       hilog.info(DOMAIN_NUMBER, TAG, `processData: ${data}`);
-  
-      let callerUid = rpc.IPCSkeleton.getCallingUid();
-      bundleManager.getBundleNameByUid(callerUid).then((callerBundleName) => {
-        hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
-        // 对客户端包名进行识别
-        if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
-          hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
-          return;
-        }
-        // 识别通过，执行正常业务逻辑
-      }).catch((err: BusinessError) => {
-        hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
-      });
-  
       let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
       let accessManager = abilityAccessCtrl.createAtManager();
       // 所校验的具体权限由开发者自行选择，此处ohos.permission.GET_BUNDLE_INFO_PRIVILEGED只作为示例
       let grantStatus = accessManager.verifyAccessTokenSync(callerTokenId, 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED');
       if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_DENIED) {
-        hilog.info(DOMAIN_NUMBER, TAG, 'PERMISSION_DENIED');
+        hilog.error(DOMAIN_NUMBER, TAG, 'PERMISSION_DENIED');
         callback(ERR_DENY, data); // 鉴权失败，返回错误
         return;
       }

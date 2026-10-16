@@ -155,7 +155,7 @@ setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800013  | window manager service error.      |
 | 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
 

@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=7addffc63d219ad1e54baac60e90c00085674e53 translatedAt=2026-09-16T10:10:37.095Z pushedAt=2026-09-20T09:01:52.224Z -->
 
 ```c
 typedef struct HiAppEvent_Watcher HiAppEvent_Watcher
@@ -13,10 +14,11 @@ typedef struct HiAppEvent_Watcher HiAppEvent_Watcher
 
 ## Overview
 
-Defines the watcher for application events.
+Defines a listener that receives application events. It is used to listen to and process application events.
 
 **Since**: 12
 
 **Related module**: [HiAppEvent](capi-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
+

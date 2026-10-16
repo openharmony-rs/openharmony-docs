@@ -324,7 +324,7 @@ enum Image_ErrorCode
 | -- | -- |
 | IMAGE_SUCCESS = 0 | 操作成功。 |
 | IMAGE_BAD_PARAMETER = 401 | 无效参数。 |
-| OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION = 202 | 权限校验失败。非系统应用调用系统接口。<br>**起始版本：** 26.1.0 |
+| OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION = 202 | 权限校验失败。非系统应用调用系统接口。<br>**起始版本：** 26.0.1 |
 | IMAGE_UNSUPPORTED_MIME_TYPE = 7600101 | 不支持的MIME类型。 |
 | IMAGE_UNKNOWN_MIME_TYPE = 7600102 | 未知的MIME类型。 |
 | IMAGE_TOO_LARGE = 7600103 | 过大的数据或图片。 |
@@ -339,7 +339,7 @@ enum Image_ErrorCode
 | IMAGE_UNSUPPORTED_MEMORY_FORMAT = 7600205 |  不支持的内存格式。<br>**起始版本：** 13 |
 | IMAGE_INVALID_PARAMETER = 7600206 |  无效参数。<br>**起始版本：** 19 |
 | IMAGE_UNSUPPORTED_DATA_FORMAT = 7600207 |  不支持的数据格式。<br>**起始版本：** 22 |
-| OH_IMAGE_ERROR_DECOMPOSE_FAILED = 7600208 | 图像分解失败。<br>**起始版本：** 26.1.0 |
+| OH_IMAGE_ERROR_DECOMPOSE_FAILED = 7600208 | 图像分解失败。<br>**起始版本：** 26.0.1 |
 | IMAGE_ALLOC_FAILED = 7600301 | 申请内存失败。 |
 | IMAGE_COPY_FAILED = 7600302 | 内存拷贝失败。 |
 | IMAGE_LOCK_UNLOCK_FAILED = 7600303 |  内存加锁或解锁失败。<br>**起始版本：** 15 |
@@ -387,15 +387,15 @@ enum IMAGE_ALLOCATOR_MODE
 
 **描述**
 
-pixelmap内存分配类型。
+Pixelmap的内存分配类型。
 
 **起始版本：** 20
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_ALLOCATOR_MODE_AUTO = 0 | 系统决定创建pixelmap时分配内存的类型。 |
-| IMAGE_ALLOCATOR_MODE_DMA = 1 | 分配DMA类型的内存Buffer。 |
-| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | 使用共享内存创建pixelmap。 |
+| IMAGE_ALLOCATOR_MODE_AUTO = 0 | 系统决定内存分配类型。系统会根据图像类型、图像大小、平台能力等选择内存类型。 |
+| IMAGE_ALLOCATOR_MODE_DMA = 1 | 使用DMA（Direct Memory Access，直接内存访问）的内存类型，适用于对解码及渲染性能有较高要求的场景。根据设备硬件的差异可能会在每行像素的末尾产生用于内存对齐的空白填充字节。 |
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | 使用共享内存（Shared Memory）的内存类型。 |
 
 
 ## 函数说明

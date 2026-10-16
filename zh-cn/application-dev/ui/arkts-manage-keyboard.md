@@ -37,7 +37,7 @@
 <!-- @[requestFocus_ShowKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusShowKeyboard.ets) -->
 
 ``` TypeScript
-struct requestFocusShowKeyboard {
+struct RequestFocusShowKeyboard {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = '';
 
@@ -70,7 +70,7 @@ struct requestFocusShowKeyboard {
 <!-- @[tabKey_FocusShowKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TabKeyFocusShowKeyboard.ets) -->
 
 ``` TypeScript
-struct tabKeyFocusShowKeyboard {
+struct TabKeyFocusShowKeyboard {
   build() {
     NavDestination() {
       Column({ space: 20 }) {
@@ -118,7 +118,7 @@ struct tabKeyFocusShowKeyboard {
 <!-- @[closeButton_ClickKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/CloseButtonClickKeyboard.ets) -->
 
 ``` TypeScript
-struct closeButtonClickKeyboard {
+struct CloseButtonClickKeyboard {
   build() {
     NavDestination() {
       Column({ space: 20 }) {
@@ -148,7 +148,7 @@ struct closeButtonClickKeyboard {
 <!-- @[dragText_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/DragTextCloseKeyboard.ets) -->
 
 ``` TypeScript
-struct dragTextCloseKeyboard {
+struct DragTextCloseKeyboard {
   build() {
     NavDestination() {
       Column({ space: 20 }) {
@@ -188,7 +188,7 @@ struct dragTextCloseKeyboard {
 <!-- @[page_ChangeSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/PageChangeSource.ets) -->
 
 ``` TypeScript
-struct pageChangeSource {
+struct PageChangeSource {
   // 创建一个导航控制器对象并传入Navigation
   pathStack: NavPathStack = new NavPathStack()
 
@@ -221,11 +221,11 @@ struct pageChangeSource {
 ``` TypeScript
 @Builder
 export function pageChangeDestinationBuilder() {
-  pageChangeDestination()
+  PageChangeDestination()
 }
 
 @Component
-struct pageChangeDestination {
+struct PageChangeDestination {
   pathStack: NavPathStack = new NavPathStack()
   // 跳转后的页面
   build() {
@@ -284,7 +284,7 @@ struct pageChangeDestination {
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
 
 ``` TypeScript
-struct textInputControllerCloseKeyboard {
+struct TextInputControllerCloseKeyboard {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = '';
 
@@ -320,7 +320,7 @@ struct textInputControllerCloseKeyboard {
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
 ``` TypeScript
-struct requestFocusCloseKeyBoard {
+struct RequestFocusCloseKeyBoard {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = '';
 
@@ -349,7 +349,7 @@ struct requestFocusCloseKeyBoard {
 <!-- @[listScroll_ClearFocus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/ListScrollClearFocus.ets) -->
 
 ``` TypeScript
-struct listScrollClearFocus {
+struct ListScrollClearFocus {
   private arr: number[] = Array.from<number, number>(
     { length: 100 } as ArrayLike<number>,
     (_, i: number) => i + 1
@@ -406,7 +406,7 @@ struct listScrollClearFocus {
 <!-- @[empty_CustomKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/EmptyCustomKeyboard.ets) -->
 
 ``` TypeScript
-struct emptyCustomKeyboard {
+struct EmptyCustomKeyboard {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = '';
 
@@ -446,14 +446,14 @@ struct emptyCustomKeyboard {
 
 **解决措施**
 
-软键盘的[enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型。除EnterKeyType.NEW_LINE外，enterKeyType设置其他的枚举值时，按下软键盘输入法回车键都会触发[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#onsubmit14)事件。可以在TextArea的onSubmit回调中，通过调用[keepEditableState](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#keepeditablestate11)接口保持输入框编辑态，使得点击回车键后不收起键盘。
+软键盘的[enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型。除EnterKeyType.NEW_LINE外，enterKeyType设置其他的枚举值时，按下软键盘输入法回车键都会触发[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#onsubmit14)事件。可以在TextArea的onSubmit()回调中，通过调用[keepEditableState](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#keepeditablestate11)接口保持输入框编辑态，使得点击回车键后不收起键盘。
 
 示例如下，软键盘的回车键显示为发送样式。按下发送之后，键盘不会收起。
 
 <!-- @[keepEditableState_OnSubmit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/KeepEditableStateOnSubmit.ets) -->
 
 ``` TypeScript
-struct keepEditableStateOnSubmit {
+struct KeepEditableStateOnSubmit {
   build() {
     NavDestination() {
       Column({ space: 20 }) {

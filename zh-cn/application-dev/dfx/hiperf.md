@@ -347,7 +347,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 | --verbose | 输出详细的信息。 | 
 | --dumpoptions | 展示当前列表里所有选项的详细信息。 | 
 | --control [command] | 采集操作启停控制参数。命令包括prepare/start/stop。该参数不能和-d一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
-| -o | 设置输出文件路径，并允许用户自定义文件名称。<br>默认路径以设备上运行 hiperf stat -h/--help 时显示的 -o 参数说明为准。<br>该参数必须和--control prepare一起使用，不能和--control一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
+| -o | 设置输出文件路径，并允许用户自定义文件名称。<br>默认路径以设备上运行 hiperf stat -h/--help 时显示的 -o 参数说明为准。<br>该参数必须和--control prepare一起使用。<br/>**说明**：从API version 20开始，支持该参数。 | 
 | -a | 统计整机的性能数据。 |
 <!--RP2End-->
 

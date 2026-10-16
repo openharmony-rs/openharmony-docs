@@ -88,7 +88,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -133,7 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -191,7 +191,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -244,7 +244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -302,7 +302,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -355,7 +355,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -411,7 +411,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -456,7 +456,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -521,7 +521,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -590,7 +590,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -660,7 +660,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -728,7 +728,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -799,7 +799,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -869,7 +869,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -946,7 +946,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1016,7 +1016,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1096,7 +1096,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1166,7 +1166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1242,7 +1242,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1319,7 +1319,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1402,7 +1402,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1473,7 +1473,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1549,7 +1549,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1628,7 +1628,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1708,7 +1708,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1781,7 +1781,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |

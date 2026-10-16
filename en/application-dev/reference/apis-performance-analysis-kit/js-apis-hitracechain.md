@@ -1,4 +1,4 @@
-# @ohos.hiTraceChain (Distributed Tracing)
+# @ohos.hiTraceChain (HiTraceChain)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,8 +6,15 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0e8943e8b8dd159f54837747c5c7d06207b95bd2 translatedAt=2026-09-16T11:36:07.469Z pushedAt=2026-09-20T09:01:52.284Z -->
 
 The **hiTraceChain** module implements call chain trace throughout a service process. It provides functions such as starting and stopping call chain trace and configuring trace points.
+
+When to use:
+- Distributed cross-device business call chain tracing and analysis.
+- Locating performance issues and analyzing bottlenecks.
+- Debugging business processes and troubleshooting faults.
+- Monitoring asynchronous call chains.
 
 > **NOTE**
 >
@@ -21,38 +28,38 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 ## HiTraceFlag
 
-Enumerates trace flag types.
+Enumerates the combinations of trace flags. It is used to control the behavior mode of distributed tracing. For example, use the **INCLUDE_ASYNC** flag in business processes that require tracing asynchronous calls, use the **DONOT_CREATE_SPAN** flag in simple business processes that do not require detailed span information, and use the **TP_INFO** flag in scenarios that require debugging tracepoint information.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| DEFAULT           | 0      | Default flag.      |
-| INCLUDE_ASYNC     | 1      | Asynchronous call flag.<br>When this flag is set, both synchronous and asynchronous calls are traced. By default, only synchronous calls are traced.|
-| DONOT_CREATE_SPAN | 1 << 1 | No span flag.<br>When this flag is set, no span information is created. By default, span information is created.|
-| TP_INFO           | 1 << 2 | Trace point flag.<br>When this flag is set in the debugging scenario, the HiLog logs of the trace point are printed upon calling the **[tracepoint()](#hitracechaintracepoint)** API. By default, the HiLog logs are not printed.|
-| NO_BE_INFO        | 1 << 3 | No begin and end flag.<br>When this flag is set in the debugging scenario, the HiLog logs about the begin and end of tracing are printed when the [begin()](#hitracechainbegin) and [end()](#hitracechainend) APIs are called. By default, the HiLog logs about the begin and end of tracing are not printed.|
-| DISABLE_LOG       | 1 << 4 | Log association flag.<br>When this flag is set, the **HiTraceId** information is not added to the HiLog logs. By default, the **HiTraceId** information is added to the HiLog logs.|
+| DEFAULT           | 0      | Default flag.       |
+| INCLUDE_ASYNC     | 1      | Asynchronous call flag.<br>When this flag is set, both synchronous and asynchronous calls are traced. By default, only synchronous calls are traced. |
+| DONOT_CREATE_SPAN | 1 << 1 | No-span flag.<br>When this flag is set, no span information is created. By default, span information is created. |
+| TP_INFO           | 1 << 2 | Tracepoint flag.<br>When this flag is set, calling [tracepoint()](#hitracechaintracepoint) prints tracepoint information to the hilog. By default, tracepoint information is not printed to the hilog. |
+| NO_BE_INFO        | 1 << 3 | No begin/end information flag.<br>In debugging scenarios, when this flag is set, calling the begin trace API [begin()](#hitracechainbegin) and the end trace API [end()](#hitracechainend) prints begin and end trace information to the hilog respectively. By default, begin and end trace information is not printed to the hilog. |
+| DISABLE_LOG       | 1 << 4 | Log correlation flag.<br>When this flag is set, **HiTraceId** information is not appended to the hilog. By default, **HiTraceId** information is appended to the hilog. |
 | FAILURE_TRIGGER   | 1 << 5 | Failure trigger flag. This is a reserved flag.|
-| D2D_TP_INFO       | 1 << 6 | Device-to-device trace point flag. It is a subset of **TP_INFO** and is used in debugging scenarios.<br>When the **TP_INFO** flag is set, the **D2D_TP_INFO** flag does not take effect.<br>When **TP_INFO** is not set and **D2D_TP_INFO** is set, the HiLog logs of the trace point are printed only when the mode parameter is set to **DEVICE** upon calling [tracepoint()](#hitracechaintracepoint).|
+| D2D_TP_INFO       | 1 << 6 | Device-to-device tracepoint flag, a subset of **TP_INFO**, used in debugging scenarios.<br>When **TP_INFO** is already set, **D2D_TP_INFO** does not take effect.<br>When **TP_INFO** is not set, **D2D_TP_INFO** takes effect, and calling the information tracing point API [tracepoint()](#hitracechaintracepoint) prints tracepoint information to the hilog only when the mode parameter is **DEVICE**. |
 
 ## HiTraceTracepointType
 
-Enumerates trace point types.
+Enumerates tracepoint types. It is used to identify key nodes in a business process. For example, **CS** and **CR** mark the sending and receiving of a client request, **SS** and **SR** mark the receiving and sending of a server request, and **GENERAL** marks other key nodes that cannot be classified into the preceding four scenarios.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| CS       | 0 | CS trace point.      |
-| CR       | 1 | CR trace point.      |
-| SS       | 2 | SS trace point.      |
-| SR       | 3 | SR trace point.      |
+| CS       | 0 | Client Send.       |
+| CR       | 1 | Client Receive.       |
+| SS       | 2 | Server Send.       |
+| SR       | 3 | Server Receive.       |
 | GENERAL  | 4 | General type, which identifies the trace points except the CS, CR, SS, and SR trace points.|
 
 ## HiTraceCommunicationMode
 
-Enumerates communication modes.
+Enumerates trace communication modes. It is used to identify the level at which communication occurs. For example, **THREAD** marks inter-thread communication within the same application, **PROCESS** marks inter-process communication within the same device, and **DEVICE** marks cross-device distributed communication.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -65,7 +72,7 @@ Enumerates communication modes.
 
 ## HiTraceId
 
-Defines a **HiTraceId** object.
+This API is the **HiTraceId** object API. It is used to identify a unique node in a distributed trace chain. It is used in scenarios that require tracing business processes across threads, processes, and devices, such as e-commerce order placement, payment, and distributed service call chains.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -80,11 +87,13 @@ Defines a **HiTraceId** object.
 
 begin(name: string, flags?: number): HiTraceId
 
-Starts call chain trace. This API returns the result synchronously.
+Starts tracing. This is a synchronous API. It is used to start distributed tracing at the starting node of a business process, for example, when a user taps a button to initiate a request, when a server receives a request and starts processing, or when a background task is started.
 
-If the current thread's TLS does not contain a valid HiTrace ID, this function generates one, stores it in TLS, and returns it.
-
-If the current thread's TLS already contains a valid HiTrace ID, this function does not start tracing and returns an invalid HiTrace ID with all property values being 0.
+> **Note:**
+>
+> - If no valid **HiTraceId** exists in the TLS (Thread Local Storage) of the current thread, a valid **HiTraceId** is generated, set to the TLS of the current thread, and returned.
+> - If a valid **HiTraceId** already exists in the TLS of the current thread, no new trace is started, and an invalid **HiTraceId** whose attribute values are all 0 is returned.
+> - **begin()** must be used in pair with **end()**. After **begin()** is called, **end()** should be called to end the trace after the business logic is complete. Failure to call **end()** may prevent the trace chain from ending properly and affect the integrity of the trace data.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -92,14 +101,14 @@ If the current thread's TLS already contains a valid HiTrace ID, this function d
 
 | Name| Type| Mandatory| Description                                            |
 | -------- | -------- | -------- |------------------------------------------------|
-| name  | string | Yes| Traced service name.<br>It is recommended that the length of this parameter be less than or equal to 63 bytes. The excess part will be truncated.   |
-| flags | number | No| Trace flag combination. For details, see [HiTraceFlag](#hitraceflag). The default value is **0**.|
+| **name** | **string** | Yes | Trace business name.<br>The length of this parameter does not exceed 63 bytes; the excess part is truncated. |
+| **flags** | **number** | No | Trace flag combination. For details, see [HiTraceFlag](#hitraceflag). Set **INCLUDE_ASYNC** to trace asynchronous calls, set **DONOT_CREATE_SPAN** to not create span information, and set **TP_INFO** in debugging scenarios to print tracepoint information. The default value is **0**, which means tracing only synchronous calls, creating span information, and not printing logs. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| [HiTraceId](#hitraceid) | **HiTraceId** instance.|
+| [HiTraceId](#hitraceid) | **HiTraceId** instance in the TLS of the current thread. |
 
 **Example**
 
@@ -114,11 +123,11 @@ hiTraceChain.end(traceId);
 
 end(id: HiTraceId): void
 
-Stops call chain trace. This API works in synchronous manner.
-
-If the given HiTrace ID is valid and is the same as the HiTrace ID in the current thread's TLS, the tracing is stopped and the HiTrace ID in the current thread's TLS is set to invalid.
-
-If the given HiTrace ID is invalid or is not the same as the HiTrace ID in the current thread's TLS, the tracing fails to be stopped, and a tracing stop failure log is printed.
+Ends a trace. This is a synchronous API. It is used to terminate distributed tracing at the end node of a business process, for example, when request processing is complete and a result is returned, when a user operation flow ends, or when a background task finishes.
+> **Note:**
+>
+> - If the given **HiTraceId** is valid and equals the **HiTraceId** in the TLS of the current thread, the trace is ended and the **HiTraceId** in the TLS of the current thread is set to invalid. If the given **HiTraceId** is invalid or does not equal the **HiTraceId** in the TLS of the current thread, ending the trace fails and a hilog log indicating the failure to end the trace is printed.
+> - **end()** must be used in pair with **begin()**, and the **HiTraceId** returned by **begin()** must be passed in to end the trace chain started by **begin()** and release related resources.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -141,9 +150,11 @@ hiTraceChain.end(traceId);
 
 getId(): HiTraceId
 
-Obtains the trace ID. This API returns the result synchronously.
-
-Obtains the HiTrace ID in the TLS of the current thread.
+Obtains the trace identifier. This is a synchronous API. It is used in scenarios where the current trace identifier needs to be passed, for example, passing the trace identifier to a child thread, passing it to another process, or recording the current trace identifier in a log.
+> **Note:**
+>
+> - Obtains the **HiTraceId** in the TLS of the current thread. If no valid **HiTraceId** exists in the TLS of the current thread, an invalid **HiTraceId** whose attribute values are all 0 is returned.
+> - This method should be used after **begin()** is called, to obtain the trace identifier between business logic operations in the same thread and then pass it.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -151,7 +162,7 @@ Obtains the HiTrace ID in the TLS of the current thread.
 
 | Type| Description|
 | -------- | -------- |
-| [HiTraceId](#hitraceid) | **HiTraceId** instance.|
+| [HiTraceId](#hitraceid) | HiTraceId instance in the current thread's TLS. |
 
 **Example**
 
@@ -172,9 +183,11 @@ hiTraceChain.end(traceId);
 
 setId(id: HiTraceId): void
 
-Sets a trace ID. This API returns the result synchronously.
+Sets a trace identifier. This is a synchronous API. It is used in scenarios where an external trace identifier needs to be set to the current thread, for example, inheriting a trace identifier from a parent thread, receiving a trace identifier from another process, or obtaining a trace identifier from inter-device communication.
 
-Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace ID is invalid, no operation is performed.
+> **Note:**
+>
+> Sets the given **HiTraceId** to the TLS of the current thread. If the given **HiTraceId** is invalid, no operation is performed.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -197,9 +210,11 @@ hiTraceChain.setId(traceId);
 
 clearId(): void
 
-Clears the trace ID. This API returns the result synchronously.
+Clears the trace identifier. This is a synchronous API. It is used in scenarios where the current trace chain needs to be cut off, for example, when a business logic branch no longer needs tracing, when the trace identifier is cleaned up after a task is complete, or when an old trace identifier is cleaned up before starting a new trace.
 
-Clears the HiTrace ID in the current thread's TLS.
+> **Note:**
+>
+> Sets the **HiTraceId** in the TLS of the current thread to invalid.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -218,9 +233,13 @@ hiTraceChain.end(traceId);
 
 createSpan(): HiTraceId
 
-Creates a trace span. This API works in synchronous manner.
+Creates a trace span. This is a synchronous API. It is used to mark important sub-processes in a business process, for example, key steps during request processing, various stages in a server-side processing chain, or business branches that require special attention.
 
-Specifically, create a **HiTraceId**, use the **chainId** and **spanId** in the TLS of the current thread to initialize the **chainId** and **parentSpanId** of the **HiTraceId**, generate a new **spanId** for the **HiTraceId**, and return the **HiTraceId**.
+
+> **Note:**
+>
+> - Creates a **HiTraceId**, uses the **chainId** and **spanId** in the TLS of the current thread to initialize the **chainId** and **parentSpanId** of the **HiTraceId**, generates a new **spanId** for the **HiTraceId**, and returns the **HiTraceId**.
+> - A valid **HiTraceId** must exist in the TLS of the current thread (that is, **begin()** has been called and **clearId()** has not been called). If no valid **HiTraceId** exists in the TLS of the current thread, an invalid **HiTraceId** whose attribute values are all 0 is returned.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -251,9 +270,10 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 
 Adds a trace point for the [@ohos.hiTraceMeter (Performance Tracing)](./js-apis-hitracemeter.md) logging, which is synchronous.
 
-When type is set to **CS** and **SR**, the HiTraceMeter tracing starts. When type is set to **CR** and **SS**, the HiTraceMeter tracing ends. When type is set to **GENERAL**, the HiTraceMeter tracing does not start.
+> **Note:**
+>
+> This API works together with the **HiTraceMeter** module. **HiTraceChain** is responsible for trace chain management, and **HiTraceMeter** is responsible for performance data collection and statistics. When type is set to **CS** on the client side and **SR** is received on the server side, synchronous **HiTraceMeter** tracing starts. When type is set to **SS** on the server side and **CR** is received on the client side, synchronous **HiTraceMeter** tracing ends. The information tracing points of **CS** and **CR**, as well as **SR** and **SS**, must be used in pairs. Otherwise, the start and end tracing points of **HiTraceMeter** cannot be matched properly. When type is set to the general type **GENERAL**, no **HiTraceMeter** tracing is performed.
 
-The trace points for **CS** and **CR** types must be used as a pair; likewise, trace points for **SR** and **SS** types must also be used together. Otherwise, the start and end trace points of HiTraceMeter cannot match each other.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -261,10 +281,10 @@ The trace points for **CS** and **CR** types must be used as a pair; likewise, t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | Yes| Communication mode for the trace point.|
+| mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | Yes | Communication mode of the trace that the information tracing point needs to specify, used to identify the communication scope where the tracing point occurs: **THREAD** indicates inter-thread communication, **PROCESS** indicates inter-process communication, and **DEVICE** indicates inter-device communication. |
 | type | [HiTraceTracepointType](#hitracetracepointtype)| Yes| Trace point type.|
 | id   | [HiTraceId](#hitraceid) | Yes| **HiTraceId** instance for trace point triggering.|
-| msg  | string | No| Trace description information passed by the HiTraceMeter logging. The default value is "".|
+| msg  | string | No | Trace description information passed in the HiTraceMeter tracing operation, used to identify the tracing point location during performance analysis. Pass a meaningful description (such as a function name or operation step) when different tracing point locations need to be distinguished in the HiTraceMeter report. If not passed, an empty string is used, which does not affect the basic tracing function. The length of this parameter does not exceed 63 bytes, and the excess part is truncated. |
 
 **Example**
 
@@ -315,7 +335,7 @@ hiTraceChain.end(traceId);
 
 isFlagEnabled(id: HiTraceId, flag: HiTraceFlag): boolean
 
-Checks whether the trace flag is enabled for **HiTraceId**. This API returns the result synchronously.
+Determines whether the **HiTraceId** has the specified trace flag enabled. This is a synchronous API. It is used to perform different processing in business logic based on the trace flag, for example, checking whether the **INCLUDE_ASYNC** flag is enabled to decide whether to wait for asynchronous operations to complete, or checking whether the **TP_INFO** flag is enabled to decide whether to print debug information.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -350,7 +370,7 @@ hiTraceChain.end(traceId);
 
 enableFlag(id: HiTraceId, flag: HiTraceFlag): void
 
-Enables the trace flag specified in HiTraceId. This API returns the result synchronously.
+Enables the specified trace flag in the **HiTraceId**. This is a synchronous API. It is used to dynamically adjust tracing behavior in a **Business Process**, for example, enabling the **TP_INFO** flag to print tracing point information during debugging, enabling the **INCLUDE_ASYNC** flag when asynchronous calls need to be traced, or enabling the **DISABLE_LOG** flag when log correlation needs to be disabled.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 

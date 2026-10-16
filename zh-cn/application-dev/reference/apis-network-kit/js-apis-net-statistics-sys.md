@@ -555,7 +555,7 @@ let totalData:number = 1024*1024*1024;   // 套餐总流量为1GB。
 statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
   console.info(`setCalibrationTraffic succ`);
 }).catch((error: BusinessError) => {
-  console.info(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
+  console.error(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
 });
 ```
 

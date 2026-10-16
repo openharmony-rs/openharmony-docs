@@ -1,12 +1,13 @@
 # Traffic Management Error Codes
 
+<!-- md-trans-meta sourceCommit=d7e60ee0c5a2a1b0e78840086e29da8843098be7 translatedAt=2026-09-23T01:50:52.136Z pushedAt=2026-09-24T06:00:14.178Z -->
+
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:02.642Z pushedAt=2026-06-26T03:00:41.283Z -->
 
 > **NOTE**
 >
@@ -30,6 +31,7 @@ The end time is earlier than the start time.
 
 Check whether the start time and end time are properly set.
 
+
 ## 2100002 Service Connection Failure
 
 **Error Information**
@@ -47,9 +49,7 @@ The service is abnormal.
 **Solution**
 
 1. Check whether the system service is running properly.
-
-2. Restart the phone and try again.
-
+2. Restart the device and try again.
 <!--RP1--><!--RP1End-->
 
 ## 2100003 System Internal Error
@@ -65,15 +65,12 @@ This error code is reported if an internal system error occurs.
 **Possible Causes**
 
 1. Memory exception.
-
 2. Null pointer.
 
 **Solution**
 
 1. Check whether the memory space is sufficient. If not, clear the memory and try again.
-
 2. The system is abnormal. Please try again later or restart the device.
-
 <!--RP1--><!--RP1End-->
 
 ## 2103005 Failed to Read the System Map

@@ -134,7 +134,7 @@ Enumerates the modes of the app clone preference.
 
 Enumerates the device mode distribution policies, which specify how applications are distributed to devices.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 
@@ -6463,7 +6463,7 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 
 Filters the application list by device mode distribution policies. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System API**: This is a system API.
 

@@ -52,8 +52,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_get_and_clear_last_exception|获取并清除最近一次出现的异常。|10|
 |FUNC|napi_is_exception_pending|判断是否出现了异常。|10|
 |FUNC|napi_fatal_error|引发致命错误以立即终止进程。|10|
-|FUNC|napi_open_handle_scope|创建一个上下文环境使用。|10|
-|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，所有在其中声明的引用都将被关闭。|10|
+|FUNC|napi_open_handle_scope|创建一个napi_handle_scope。|10|
+|FUNC|napi_close_handle_scope|关闭传入的napi_handle_scope，关闭后，所有在其中声明的引用都将被关闭。|10|
 |FUNC|napi_open_escapable_handle_scope|创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。|10|
 |FUNC|napi_close_escapable_handle_scope|关闭传入的可逃逸的handle scope。|10|
 |FUNC|napi_escape_handle|提升传入的js object的生命周期到其父作用域。|10|
@@ -119,7 +119,7 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_has_named_property|判断给定`Object`中是否有给定名称的属性。|10|
 |FUNC|napi_set_element|在给定`Object`的指定索引处，设置元素。|10|
 |FUNC|napi_get_element|获取给定`Object`指定索引处的元素。|10|
-|FUNC|napi_has_element|若给定`Object`的指定索引处拥有属性，获取该元素。|10|
+|FUNC|napi_has_element|判断给定`Object`的指定索引处是否存在元素。|10|
 |FUNC|napi_delete_element|尝试删除给定`Object`的指定索引处的元素。|10|
 |FUNC|napi_define_properties|批量的向给定`Object`中定义属性。|10|
 |FUNC|napi_type_tag_object|将tag指针的值与`Object`关联。|10|
@@ -174,7 +174,7 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_get_all_property_names|获取一个数组，其中包含此对象过滤后的属性名称。|10|
 |FUNC|napi_detach_arraybuffer|分离给定`ArrayBuffer`的底层数据。|10|
 |FUNC|napi_is_detached_arraybuffer|判断给定的`ArrayBuffer`是否已被分离过。|10|
-|FUNC|napi_run_script|将给定对象作为js代码运行。当前接口实际为空实现，可使用系统扩展接口`napi_run_script_path`接口，提升安全性。|10|
+|FUNC|napi_run_script|将给定对象作为js代码运行。当前接口实际为空实现，请使用系统扩展接口`napi_run_script_path`替代，提升安全性。|10|
 |FUNC|napi_set_instance_data|绑定与当前运行的环境相关联的数据项。|11|
 |FUNC|napi_get_instance_data|检索与当前运行的环境相关联的数据项。|11|
 |FUNC|napi_add_env_cleanup_hook|注册环境清理钩子函数。|11|
@@ -210,6 +210,12 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 - 当code为空指针时，标准库会返回napi_invalid_arg，而OpenHarmony中未做判断。
 
 - 该导出接口允许code属性设置失败。
+
+### napi_throw
+
+**参数：**
+
+- error: OpenHarmony中仅支持Error对象。当传入非Error对象时，该导出接口返回napi_invalid_arg。
 
 ### napi_create_error
 
@@ -251,6 +257,18 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为RangeError。
 
+### napi_reference_ref
+
+**返回：**
+
+- 当引用对应的对象已被垃圾回收（弱引用已回收）时，标准库中不增加引用计数并返回0，而OpenHarmony中仍会增加引用计数并返回非零值。
+
+### napi_reference_unref
+
+**返回：**
+
+- 当引用计数已经为0时，标准库中返回napi_generic_failure且不修改result，而OpenHarmony中返回napi_ok并将result写为0。
+
 ### napi_create_reference
 
 **参数：**
@@ -262,6 +280,38 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **说明：**
 
 - 在OpenHarmony中，如果创建强引用时注册了napi_finalize回调函数，调用该接口的时候会触发该napi_finalize回调。
+
+### napi_create_string_latin1
+
+**参数：**
+
+- str: OpenHarmony中该参数为必填，即使length为0也不允许为nullptr。
+
+**返回：**
+
+- OpenHarmony中该导出接口按UTF-8编码解码输入数据。当输入包含0x80～0xFF范围的数据时，两端可能产生不同的字符串结果。
+
+- OpenHarmony中未校验显式length是否超过INT_MAX，标准库中当length不为NAPI_AUTO_LENGTH且超过INT_MAX时返回napi_invalid_arg。
+
+### napi_create_string_utf8
+
+**参数：**
+
+- str: OpenHarmony中该参数为必填，即使length为0也不允许为nullptr。
+
+**返回：**
+
+- OpenHarmony中未校验显式length是否超过INT_MAX，标准库中当length不为NAPI_AUTO_LENGTH且超过INT_MAX时返回napi_invalid_arg。
+
+### napi_create_string_utf16
+
+**参数：**
+
+- str: OpenHarmony中该参数为必填，即使length为0也不允许为nullptr。
+
+**返回：**
+
+- 当传入显式length时，OpenHarmony仍会通过扫描NUL终止符计算字符串长度，标准库中直接使用显式length，不要求输入缓冲区以NUL结尾。若传入恰好为length个UTF-16单元且末尾无NUL的缓冲区，可能导致越界读取。
 
 ### napi_create_symbol
 
@@ -313,6 +363,18 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - value: 该导出接口额外支持Sendable TypedArray（[Int8Array](../apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）类型。
 
+### napi_is_array
+
+**参数：**
+
+- value: 该导出接口额外支持array类型Sendable Array（SharedArray）。
+
+### napi_get_array_length
+
+**参数：**
+
+- value: 该导出接口额外支持array类型Sendable Array（SharedArray）。
+
 ### napi_get_property_names
 
 **返回：**
@@ -348,6 +410,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **返回：**
 
 - 当参数object不是Object或Function对象时，该导出接口返回napi_object_expected。
+
+**说明：**
+
+- 该接口与napi_has_property行为一致，用于检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。
 
 ### napi_set_named_property
 
@@ -413,6 +479,22 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 当参数js_object不是Object或Function对象时，该导出接口返回napi_object_expected。
 
+### napi_create_function
+
+**参数：**
+
+- utf8name: 当该参数为nullptr时，OpenHarmony中会将函数名设置为"defaultName"，标准库中不设置函数名。
+
+**返回：**
+
+- OpenHarmony中该导出接口完全忽略length参数，使用NUL终止符截取utf8name。标准库中使用显式length，可包含嵌入NUL的函数名。若传入非NUL结尾的名称，可能导致越界读取。
+
+### napi_get_cb_info
+
+**返回：**
+
+- 当argv不为空而argc为空时，OpenHarmony中静默忽略并返回napi_ok。标准库中当argv不为空时要求argc也不为空，否则返回napi_invalid_arg。
+
 ### napi_call_function
 
 **返回：**
@@ -421,17 +503,27 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 当参数func不是Function对象时，该导出接口返回napi_function_expected。
 
+**说明：**
+
+- 该函数执行后会触发微任务执行。
+
 ### napi_new_instance
 
 **返回：**
 
 - 当参数constructor不是Function对象时，该导出接口返回napi_function_expected。
 
+**说明：**
+
+- 该函数执行后会触发微任务执行。
+
 ### napi_define_class
 
 **返回：**
 
 - 当length不为NAPI_AUTO_LENGTH且大于INT_MAX时，该导出接口返回napi_object_expected。
+
+- OpenHarmony中使用min(length, strlen(utf8name))对名称进行截断，显式length范围内的嵌入NUL无法保留。标准库中使用显式length直接创建字符串，可保留嵌入NUL。
 
 ### napi_wrap
 
@@ -443,6 +535,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **返回：**
 
 - 参数js_object不为Object或Function对象时，该导出接口返回napi_object_expected。
+
+- 当对同一个js_object重复调用napi_wrap时，OpenHarmony中后者会覆盖前者的包装，标准库中返回napi_invalid_arg。
 
 ### napi_unwrap
 
@@ -470,6 +564,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 由于当前暂不支持async_hooks资源管理机制，入参async_resource暂时也不做处理。
 
+- complete: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
 ### napi_delete_async_work
 
 **参数：**
@@ -481,6 +577,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **参数：**
 
 - 该导出接口暂时不支持async_hooks资源管理机制。
+
+**返回：**
+
+- 当底层任务入队失败时，OpenHarmony中仍返回napi_ok，并打印失败日志，execute和complete回调函数不会执行。标准库中入队失败时会终止进程。
 
 ### napi_cancel_async_work
 
@@ -495,6 +595,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 - OpenHarmony暂不支持async_hooks资源管理机制。目前未实现与async_hooks交互的内容，该接口调用后并不会有async_hooks的相关操作。
 
 ### napi_make_callback
+
+**参数：**
+
+- recv: OpenHarmony中要求该参数是Object对象，否则返回napi_object_expected。
 
 **说明：**
 
@@ -518,11 +622,21 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - promise的then方法的resolve或者reject回调中出现异常时，如果promise没有catch块，代码会继续执行不会崩溃；如果promise有catch块，则异常会被该catch块捕获。
 
+- 该函数执行后会触发微任务执行。
+
 ### napi_reject_deferred
 
 **说明：**
 
 - promise的then方法的resolve或者reject回调中出现异常时，如果promise没有catch块，代码会继续执行不会崩溃；如果promise有catch块，则异常会被该catch块捕获。
+
+- 该函数执行后会触发微任务执行。
+
+### napi_acquire_threadsafe_function
+
+**返回：**
+
+- 当线程安全函数处于关闭中（closing）状态时，标准库中返回napi_closing，而OpenHarmony中统一返回napi_generic_failure。
 
 ### napi_create_threadsafe_function
 
@@ -553,6 +667,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **说明：**
 
 - OpenHarmony调用uv_async_send接口前会检查env是否存活。
+
+- 调用uv_async_send接口失败时，OpenHarmony中会返回napi_generic_failure。
 
 - ThreadCount为0时，OpenHarmony中会返回napi_generic_failure。
 
@@ -612,6 +728,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony中，data为nullptr时返回napi_invalid_arg。
 
+- OpenHarmony中，result_data为必填参数，为nullptr时返回napi_invalid_arg。
+
 - 标准库中，进入或退出接口前若有异常将直接返回napi_pending_exception，OpenHarmony中没有对此做校验。
 
 ### napi_create_external_buffer
@@ -620,6 +738,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony中创建的buffer类型为ArrayBufferLike。
 
+- OpenHarmony中，data为nullptr时返回napi_invalid_arg。
+
 - OpenHarmony中，length小于等于0时返回napi_invalid_arg。
 
 - OpenHarmony中，length大于2097152时返回napi_invalid_arg并打印错误日志。
@@ -627,6 +747,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 - 标准库中，因未知原因导致创建失败时将返回napi_generic_failure，OpenHarmony中返回napi_pending_exception。
 
 ### napi_get_buffer_info
+
+**参数：**
+
+- OpenHarmony中data和length参数均不可为空，若任一为nullptr会导致进程崩溃。
 
 **返回：**
 
@@ -637,6 +761,12 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **返回：**
 
 - 当入参arraybuffer不为Object对象时，该导出接口返回napi_object_expected；当arraybuffer是Object对象但不为ArrayBuffer对象时，该导出接口返回napi_invalid_arg。
+
+### napi_is_detached_arraybuffer
+
+**返回：**
+
+- 当入参arraybuffer不为ArrayBuffer对象时，OpenHarmony中返回napi_invalid_arg且不写result。若调用方使用未初始化的result值，可能导致后续行为异常。
 
 ### napi_add_env_cleanup_hook
 
@@ -658,6 +788,12 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony在result非空时创建强引用，标准库则创建弱引用。
 
+### napi_get_and_clear_last_exception
+
+**返回：**
+
+- 当没有待处理异常时，OpenHarmony中返回napi_ok但不修改result。若调用方使用未初始化的result值，可能导致后续行为异常。
+
 ### napi_fatal_exception
 
 **参数：**
@@ -678,9 +814,37 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 ### napi_create_arraybuffer
 
+**参数：**
+
+- data: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
 **返回：**
 
 - 当length数值过大时，标准库中会直接抛出异常并中断进程，OpenHarmony中会尝试分配内存，若分配失败则抛出异常并返回undefined。
+
+### napi_create_external_arraybuffer
+
+**参数：**
+
+- external_data: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
+- finalize_cb: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
+### napi_get_arraybuffer_info
+
+**参数：**
+
+- byte_length: OpenHarmony中该参数为必填，为nullptr时返回napi_invalid_arg。
+
+- data: OpenHarmony中该参数为可选，为nullptr时不写数据地址。
+
+- arraybuffer: 该导出接口额外识别SendableArrayBuffer。
+
+### napi_is_arraybuffer
+
+**参数：**
+
+- value: 该导出接口额外识别SendableArrayBuffer。
 
 ## 未从Node-API组件标准库中导出的符号列表
 
@@ -748,7 +912,7 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
 
 **返回：**
 
-如果API成功，则返回napi_ok。
+如果API成功，则返回napi_ok。当底层任务入队失败时，OpenHarmony中仍返回napi_ok，并打印失败日志，execute和complete回调函数不会执行。
 
 ### napi_run_script_path
 
@@ -859,7 +1023,7 @@ napi_status napi_create_object_with_named_properties(napi_env env,
 
 - [in] keys: 一个指向const char*数组的指针，表示属性的名称。
 
-- [in] values: 一个指向napi_value数组的指针，表示属性的值，与属性名称一一对应。
+- [in] values: 一个指向napi_value数组的指针，表示属性的值，与属性名称一一对应。keys数组与values数组的元素个数须一致，若不匹配将返回napi_invalid_arg。
 
 **返回：**
 
@@ -914,7 +1078,7 @@ napi_status napi_create_ark_runtime(napi_env *env)
 
 **参数：**
 
-- [in] env: Node-API的环境对象，表示当前的执行环境。
+- [out] env: 新创建的Node-API环境对象。
 
 **返回：**
 
@@ -1059,7 +1223,7 @@ napi_status napi_deserialize(napi_env env, void* buffer, napi_value* object)
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] buffer: 指向包含二进制数据的指针。这些二进制数据需要被反序列化为JavaScript对象。
+- [in] buffer: 指向包含二进制数据的指针，该数据需通过napi_serialize接口序列化获得。这些二进制数据需要被反序列化为JavaScript对象。
 
 - [out] object: 用于接收反序列化后的JavaScript对象。
 
@@ -1110,7 +1274,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - [in] data: 传递给 JavaScript 回调函数的参数数据。
 
-- [in] priority: 指定调用 JavaScript 回调函数的任务优先级。
+- [in] priority: 指定调用 JavaScript 回调函数的任务优先级，取值范围参见napi_task_priority枚举，该枚举定义了不同的任务优先级等级。
 
 - [in] isTail: 一个布尔值，指示调用是否应该排队等待在事件循环的尾部执行。如果为 true，则调用将在事件循环的尾部执行；如果为 false，则调用将立即执行，不会排队等待。
 
@@ -1169,7 +1333,7 @@ napi_status napi_define_sendable_class(napi_env env,
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] utf8name：一个const char*类型的参数，表示类的名称。
+- [in] utf8name：一个const char*类型的参数，表示类的名称。与length配合使用，OpenHarmony中使用min(length, strlen(utf8name))对名称进行截断。
 
 - [in] length：一个size_t类型的参数，表示类名称的字节数。
 
@@ -1313,9 +1477,9 @@ napi_status napi_create_sendable_typedarray(napi_env env,
 
 - [in] type：TypedArray 的类型。
 
-- [in] length：TypedArray 的长度。
+- [in] length：TypedArray 的长度。length与byte_offset、arraybuffer的大小存在制约关系，若length * sizeof(elementType) + byte_offset超过arraybuffer的大小，将抛出RangeError异常并返回napi_pending_exception。
 
-- [in] arraybuffer：一个 ArrayBuffer 实例。
+- [in] arraybuffer：一个Sendable ArrayBuffer实例（如通过napi_create_sendable_arraybuffer创建）。
 
 - [in] byte_offset：ArrayBuffer 的偏移量。
 
@@ -1345,11 +1509,11 @@ napi_status napi_wrap_sendable(napi_env env,
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [in] native_object：将被包裹在ArkTS对象中的native实例。
 
-- [in] napi_finalize：[可选]ArkTS对象被销毁时调用的回调函数。
+- [in] finalize_cb：[可选]ArkTS对象被销毁时调用的回调函数。
 
 - [in] finalize_hint：[可选]上下文提示，会传递给回调函数。
 
@@ -1378,11 +1542,11 @@ napi_status napi_wrap_sendable_with_size(napi_env env,
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [in] native_object：将被包裹在ArkTS对象中的native实例。
 
-- [in] napi_finalize：[可选]ArkTS对象被销毁时调用的回调函数。
+- [in] finalize_cb：[可选]ArkTS对象被销毁时调用的回调函数。
 
 - [in] finalize_hint：[可选]上下文提示，会传递给回调函数。
 
@@ -1408,7 +1572,7 @@ napi_status napi_unwrap_sendable(napi_env env, napi_value js_object, void** resu
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [out] result：包裹在ArkTS对象中的native实例。
 
@@ -1432,7 +1596,7 @@ napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [out] result：包裹在ArkTS对象中的native实例。
 
@@ -1629,7 +1793,7 @@ napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
 
-- [in] value：ArkTS String对象。
+- [in] value：ArkTS String对象。该接口必须在通过napi_open_critical_scope打开的临界区作用域内调用。
 
 - [out] buffer：接收UTF-16编码内存缓冲区数据的指针。
 
@@ -1666,7 +1830,7 @@ napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_st
 ### napi_delete_strong_reference
 
 ```cpp
-napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_strong_ref ref);
+napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref);
 ```
 
 **描述：**
@@ -1679,8 +1843,6 @@ napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_st
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
-
-- [in] value：ArkTS对象。
 
 - [in] ref：要删除的强引用。
 
@@ -1698,7 +1860,7 @@ napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, n
 **描述：**
 
 根据强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
-1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能预期外的错误。
+1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能导致预期外的错误。
 
 **起始版本：** 21
 
@@ -1948,7 +2110,11 @@ napi_status napi_throw_business_error(napi_env env,
 
 **返回：**
 
-如果API成功，则返回napi_ok。
+- napi_ok：API调用成功时返回。
+
+- napi_invalid_arg：入参env或msg为nullptr时返回。
+
+- napi_pending_exception：当前上下文中存在ArkTS Error时返回。
 
 ### napi_create_callsite_info
 
@@ -2072,9 +2238,9 @@ napi_status napi_get_global_handle_count(napi_env env, size_t* count);
 
 **描述：**
 
-获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。
+获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在微秒(us)级别。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

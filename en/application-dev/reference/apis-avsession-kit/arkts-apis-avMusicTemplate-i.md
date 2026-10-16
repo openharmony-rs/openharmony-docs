@@ -413,7 +413,7 @@ Defines the audio information for search and playback.
 | description   | string                                        | No  | Yes  | Description of the audio.                                     |
 | playMusicOnly | boolean                                       | No  | Yes  | Whether to play only audio. **true**: yes; **false**: no. No default value.|
 | playMode      | string                                        | No  | Yes  | Playback mode of the audio.                                   |
-| extras        | string                                        | No   | Yes   | Additional information about the audio.<br>**Since:** 26.1.0                                    |
+| extras        | string                                        | No   | Yes   | Additional information about the audio.<br>**Since:** 26.0.1                                    |
 
 ## SearchPlayMusicItem
 

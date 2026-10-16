@@ -1,7 +1,7 @@
 # 自定义事件分发
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -46,7 +46,7 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 ## TouchTestInfo<sup>11+</sup>
 
-当前屏幕触点所在组件的坐标系、id和尺寸相关信息。
+当前屏幕触点相对于窗口、父组件和子组件的坐标，以及子组件的id、位置和尺寸相关信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

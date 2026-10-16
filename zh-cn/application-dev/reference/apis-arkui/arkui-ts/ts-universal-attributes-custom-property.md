@@ -146,6 +146,7 @@ function columnChildren() {
 struct CustomLayout {
   @Builder
   doNothingBuilder() {
+    // 空函数，仅演示使用方法。
   };
 
   @BuilderParam builder: () => void = this.doNothingBuilder;
