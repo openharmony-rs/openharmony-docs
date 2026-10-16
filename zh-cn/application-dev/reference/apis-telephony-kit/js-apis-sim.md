@@ -1083,7 +1083,7 @@ sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
 
 getActiveSimAccountInfoList\(callback: AsyncCallback\<Array\<IccAccountInfo\>\>\): void
 
-获取激活SIM卡账户信息列表。使用callback异步回调。
+获取激活SIM卡账户信息列表，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用[sim.getSimLabel](js-apis-sim.md#simgetsimlabel20)接口动态查询。使用callback异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
