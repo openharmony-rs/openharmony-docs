@@ -611,7 +611,7 @@ mechanicManager.searchTarget(targetInfo,
 
 ## mechanicManager.move
 
-move(mechId: int, params: MoveParams): Promise&lt;Result&gt;
+move(mechId: number, params: MoveParams): Promise&lt;Result&gt;
 
 以特定参数移动一个机械体设备。
   
@@ -666,7 +666,7 @@ try {
 
 ## mechanicManager.moveBySpeed
 
-moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&gt;
+moveBySpeed(mechId: number, params: SpeedParams, duration: number): Promise&lt;Result&gt;
 
 以特定速度移动一个机械体设备。
 
@@ -722,7 +722,7 @@ try {
 
 ## mechanicManager.turnBySpeed
 
-turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise&lt;Result&gt;
+turnBySpeed(mechId: number, angleSpeed: number, duration: number): Promise&lt;Result&gt;
 
 以固定速度原地旋转。
 
@@ -774,7 +774,7 @@ try {
 
 ## mechanicManager.isSupportAction
 
-isSupportAction(mechId: int, actionType: ActionType): boolean
+isSupportAction(mechId: number, actionType: ActionType): boolean
 
 判断是否支持某个动作。
 
@@ -822,7 +822,7 @@ try {
 
 ## mechanicManager.doAction
 
-doAction(mechId: int, actionType: ActionType): Promise&lt;Result&gt;
+doAction(mechId: number, actionType: ActionType): Promise&lt;Result&gt;
 
 执行一个动作序列。
 
@@ -1014,7 +1014,7 @@ try {
 
 ## mechanicManager.disconnectDevice
 
-disconnectDevice(mechId: int): Promise&lt;Result&gt;
+disconnectDevice(mechId: number): Promise&lt;Result&gt;
 
 基于机械体设备ID断开设备。
 
