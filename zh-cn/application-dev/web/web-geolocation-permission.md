@@ -35,9 +35,7 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 
  <!-- @[getLocation_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/resources/rawfile/getLocation.html) -->
  
- ``` HTML
- <!DOCTYPE html>
- <html lang="en">
+
 <!-- @[a_pop_up_window_is_used_to_notify_the_app_side_location_permission_request_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ManageLocPerms.ets) -->
 
 ``` TypeScript
@@ -113,29 +111,6 @@ struct WebComponent {
   }
 }
 ```
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>位置信息</title>
- </head>
- <body>
-     <p id="locationInfo">位置信息</p>
-     <button onclick="getLocation()">获取位置</button>
- 
-     <script>
-         let locationInfo = document.getElementById('locationInfo');
-         function getLocation() {
-             if (navigator.geolocation) {
-                 // 访问设备地理位置
-                 navigator.geolocation.getCurrentPosition(showPosition);
-             }
-         }
-         function showPosition(position) {
-             locationInfo.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />Longitude: ' + position.coords.longitude;
-         }
-     </script>
- </body>
- </html>
- ```
 
 
 - 应用代码。
