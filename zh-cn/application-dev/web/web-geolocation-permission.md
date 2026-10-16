@@ -146,3 +146,57 @@ struct WebComponent {
 通过Web组件的[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md)类管理网页的位置权限，提供了新增（[allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)）、查看（[getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)）和删除（[deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation)）网页位置权限的方法。例如查看网页是否已申请位置权限、将网页已申请的位置权限删除。
 
 <!-- @[create_a_web_component_use_GeolocationPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GeolocationPermissions.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  origin: string = 'www.example.com';
+
+  build() {
+    Column() {
+      // 新增指定源的位置权限，再次获取位置信息时则不再触发onGeolocationShow的回调
+      Button('allowGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.allowGeolocation(this.origin);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+      // 删除指定源的位置权限，再次获取位置信息时则触发onGeolocationShow的回调
+      Button('deleteGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.deleteGeolocation(this.origin);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+      // 查询指定源的位置权限
+      Button('getAccessibleGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.getAccessibleGeolocation(this.origin)
+              .then(result => {
+                console.info('getAccessibleGeolocationPromise result: ' + result);
+              }).catch((error: BusinessError) => {
+              console.error(`getAccessibleGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+      // 注意添加网络权限ohos.permission.INTERNET
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
