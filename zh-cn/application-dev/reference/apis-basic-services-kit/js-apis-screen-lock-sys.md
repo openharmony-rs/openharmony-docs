@@ -67,7 +67,7 @@ strongAuthChanged | screenLockDisabledChanged | unlockPolicyChanged
 
 ## StrongAuthReasonFlags<sup>12+</sup>
 
-enum StrongAuthReasonFlags
+type StrongAuthReasonFlags = NONE | AFTER_BOOT | AFTER_TIMEOUT | ACTIVE_REQUEST | POLICY_RESTRICTION
 
 表示请求强认证的原因标志位。
 
@@ -85,9 +85,9 @@ enum StrongAuthReasonFlags
 
 ## AuthState<sup>12+</sup>
 
-enum AuthState
+type AuthState = NOT_AUTHED | PRE_AUTHED_BY_CREDENTIAL | PRE_AUTHED_BY_FINGERPRINT | PRE_AUTHED_BY_FACE | AUTHED_BY_CREDENTIAL | AUTHED_BY_FINGERPRINT | AUTHED_BY_FACE
 
-表示锁屏认证状态。
+表示锁屏认证状态的枚举。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -115,7 +115,7 @@ enum UnlockPolicy
 
 **系统接口**：此接口为系统接口。
 
-**Stage模型：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -137,7 +137,7 @@ isLocked(): boolean
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| boolean | 返回true表示屏幕已锁屏；返回false表示屏幕未锁屏。 |
+| boolean | 表示屏幕是否锁屏，返回true表示屏幕已锁屏；返回false表示屏幕未锁屏。 |
 
 **错误码**：
 
@@ -345,7 +345,7 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| boolean | 返回true表示锁屏相关系统事件注册成功；返回false表示锁屏相关系统事件注册失败。 |
+| boolean | 表示锁屏相关系统事件注册是否成功，返回true表示锁屏相关系统事件注册成功；返回false表示锁屏相关系统事件注册失败。 |
 
 **错误码**：
 
@@ -468,7 +468,7 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
 
 ## screenLock.requestStrongAuth<sup>12+</sup>
 
-requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: int): Promise&lt;void&gt;
+requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: number): Promise&lt;void&gt;
 
 为指定用户请求强认证。
 
@@ -483,13 +483,13 @@ requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: int): Promise&lt;vo
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
 | reasonFlag | [StrongAuthReasonFlags](#strongauthreasonflags12) | 是 | 强认证原因标志位。 |
-| userId | int | 是 | 用户ID。 |
+| userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -516,7 +516,7 @@ screenLock.requestStrongAuth(screenLock.StrongAuthReasonFlags.AFTER_BOOT, 100).t
 
 ## screenLock.getStrongAuth<sup>12+</sup>
 
-getStrongAuth(userId: int): int
+getStrongAuth(userId: number): number
 
 获取指定用户的强认证原因标志位。
 
@@ -530,13 +530,13 @@ getStrongAuth(userId: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| userId | int | 是 | 用户ID。 |
+| userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| int | 强认证原因标志位。 |
+| number | 强认证原因标志位。 |
 
 **错误码：**
 
@@ -558,7 +558,7 @@ console.info(`Strong auth flags: ${strongAuth}`);
 
 ## screenLock.setScreenLockDisabled<sup>12+</sup>
 
-setScreenLockDisabled(disable: boolean, userId: int): Promise&lt;boolean&gt;
+setScreenLockDisabled(disable: boolean, userId: number): Promise&lt;boolean&gt;
 
 为指定用户禁用或启用锁屏。仅在未设置密码时生效。
 
@@ -572,8 +572,8 @@ setScreenLockDisabled(disable: boolean, userId: int): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| disable | boolean | 是 | true表示禁用锁屏，false表示启用锁屏。 |
-| userId | int | 是 | 用户ID。 |
+| disable | boolean | 是 | 表示是否禁用锁屏，true表示禁用锁屏，false表示启用锁屏。 |
+| userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
@@ -606,7 +606,7 @@ screenLock.setScreenLockDisabled(true, 100).then((result: boolean) => {
 
 ## screenLock.isScreenLockDisabled<sup>12+</sup>
 
-isScreenLockDisabled(userId: int): boolean
+isScreenLockDisabled(userId: number): boolean
 
 查询指定用户的锁屏是否被禁用。
 
@@ -620,13 +620,13 @@ isScreenLockDisabled(userId: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| userId | int | 是 | 用户ID。 |
+| userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 返回true表示锁屏已禁用；返回false表示锁屏未禁用。 |
+| boolean | 表示锁屏是否被禁用，返回true表示锁屏已禁用；返回false表示锁屏未禁用。 |
 
 **错误码：**
 
@@ -648,7 +648,7 @@ console.info(`Screen lock disabled: ${isDisabled}`);
 
 ## screenLock.setScreenLockAuthState<sup>12+</sup>
 
-setScreenLockAuthState(state: AuthState, userId: int, authToken: Uint8Array): Promise&lt;boolean&gt;
+setScreenLockAuthState(state: AuthState, userId: number, authToken: Uint8Array): Promise&lt;boolean&gt;
 
 为指定用户设置锁屏认证状态。
 
@@ -663,7 +663,7 @@ setScreenLockAuthState(state: AuthState, userId: int, authToken: Uint8Array): Pr
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
 | state | [AuthState](#authstate12) | 是 | 锁屏认证状态。 |
-| userId | int | 是 | 用户ID。 |
+| userId | number | 是 | 用户ID。 |
 | authToken | Uint8Array | 是 | 该状态对应的认证令牌。 |
 
 **返回值：**
@@ -698,7 +698,7 @@ screenLock.setScreenLockAuthState(screenLock.AuthState.AUTHED_BY_CREDENTIAL, 100
 
 ## screenLock.getScreenLockAuthState<sup>12+</sup>
 
-getScreenLockAuthState(userId: int): AuthState
+getScreenLockAuthState(userId: number): AuthState
 
 获取指定用户的锁屏认证状态。
 
@@ -712,7 +712,7 @@ getScreenLockAuthState(userId: int): AuthState
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| userId | int | 是 | 用户ID。 |
+| userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
@@ -740,7 +740,7 @@ console.info(`Screen lock auth state: ${authState}`);
 
 ## screenLock.isDeviceLocked<sup>20+</sup>
 
-isDeviceLocked(userId: int): boolean
+isDeviceLocked(userId: number): boolean
 
 查询设备是否已锁屏且需要身份认证才能解锁。
 
@@ -752,13 +752,13 @@ isDeviceLocked(userId: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| userId | int | 是 | 用户ID。 |
+| userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 返回true表示设备已锁屏；返回false表示设备未锁屏。 |
+| boolean | 表示设备是否锁屏，返回true表示设备已锁屏；返回false表示设备未锁屏。 |
 
 **错误码：**
 
@@ -766,7 +766,7 @@ isDeviceLocked(userId: int): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | permission verification failed, application which is not a system application uses system API. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
 | 13200002 | The screenlock management service is abnormal. |
 | 13200004 | The userId is not same as the caller, and is not allowed for the caller. |
 
@@ -779,7 +779,7 @@ console.info(`Device locked: ${isDeviceLocked}`);
 
 ## screenLock.getUnlockPolicy
 
-getUnlockPolicy(userId: int): UnlockPolicy
+getUnlockPolicy(userId: number): UnlockPolicy
 
 获取解锁屏幕所使用的认证策略。
 
@@ -791,13 +791,13 @@ getUnlockPolicy(userId: int): UnlockPolicy
 
 **系统接口**：此接口为系统接口。
 
-**Stage模型：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| userId | int | 是 | 用户ID。 |
+| userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
@@ -812,7 +812,7 @@ getUnlockPolicy(userId: int): UnlockPolicy
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 202 | permission verification failed: applications that are not system applications cannot use system API. |
+| 202 | Permission verification failed: applications that are not system applications cannot use system API. |
 | 13200002 | The screen lock management service is abnormal. |
 | 13200004 | The userId is not the same as the caller, and the caller is not authorized. |
 
