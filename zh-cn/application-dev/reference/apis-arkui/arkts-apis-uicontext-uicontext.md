@@ -2886,6 +2886,50 @@ struct Index {
 }
 ```
 
+## isWindowInfoInitialized
+
+isWindowInfoInitialized(): boolean
+
+查询当前实例所在窗口信息是否已初始化。通常用于启动阶段，在通过UI上下文获取窗口布局断点前进行判断。窗口信息未初始化时，断点接口返回是不可信的。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 窗口信息是否已初始化。当宽高有效时返回true，否则返回false。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Button('Check window information')
+        .onClick(() => {
+          const initialized = this.uiContext.isWindowInfoInitialized();
+          console.info(`Window information initialized: ${initialized}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## postFrameCallback<sup>12+</sup>
 
 postFrameCallback(frameCallback: FrameCallback): void
