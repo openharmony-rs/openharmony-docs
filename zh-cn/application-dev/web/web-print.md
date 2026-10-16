@@ -83,6 +83,57 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
   </div>
   </body>
   ```
+  
+  ``` HTML
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+      <meta charset='utf-8'>
+      <title>printTest</title>
+      <style>
+          @media print {
+              h1 {
+                  display: none;
+              }
+          }
+      </style>
+  </head>
+  
+  <body>
+  <div>
+      <h1><b>
+          <center>This is a test page for printing</center>
+      </b>
+          <hr color=#00cc00 width=95%>
+      </h1>
+      <button class='Button Button--outline' onclick='window.print();'>Print</button>
+      <p> content content content </p>
+      <div id='printableTable'>
+          <table>
+              <thead>
+              <tr>
+                  <td>Thing</td>
+                  <td>Chairs</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td>1</td>
+                  <td>blue</td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>green</td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+      <p> content content content </p>
+      <p> content content content </p>
+  </div>
+  </body>
+  ```
 
 - 应用侧代码。
 
