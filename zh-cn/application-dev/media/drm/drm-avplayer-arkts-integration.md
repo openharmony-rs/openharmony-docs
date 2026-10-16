@@ -66,7 +66,7 @@
 
    ```ts
    // 媒体密钥请求与处理。
-   let initData: Uint8Array = new Uint8Array(drmInfoArr[i].pssh);
+   let initData: Uint8Array = new Uint8Array(drmInfo.pssh);
    const optionsData: drm.OptionsData[] = [{
      name: "optionalDataName",
      value: "optionalDataValue"
