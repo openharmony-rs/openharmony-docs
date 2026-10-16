@@ -101,8 +101,6 @@ strongAuthChanged | screenLockDisabledChanged | unlockPolicyChanged
 
 ## UnlockPolicy
 
-enum UnlockPolicy
-
 表示解锁屏幕所使用的锁屏认证策略。
 
 **起始版本：** 26.0.0
