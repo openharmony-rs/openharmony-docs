@@ -63,7 +63,7 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 
 useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
-用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect14)相比，useEffect参数新增了对undefined类型的支持。effectType为DEFAULT时，必须在EffectComponent的子组件上使用且EffectComponent需配置特效属性才能生效；effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。不在对应容器内使用时，useEffect将不产生任何效果。
+用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect14)相比，useEffect参数新增了对undefined类型的支持。effectType为DEFAULT时，必须在<!--Del-->EffectComponent的<!--DelEnd-->子组件上使用且<!--Del-->EffectComponent<!--DelEnd-->需配置特效属性才能生效；effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。不在对应容器内使用时，useEffect将不产生任何效果。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
