@@ -1,7 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "从API version 20开始介绍屏幕录制支持的矩形区域录制能力，允许开发者通过屏幕捕获ID和指定区域参数自主选择录屏范围，适用于在线教育和游戏直播等选择性录制场景。"
-keywords: [矩形区域录制, 屏幕录制, displayId, C API]
+keywords: [矩形区域录制, 屏幕录制, C API]
 doctype: guide
 status: active
 ---
@@ -91,7 +91,7 @@ if (g_avCapture == nullptr) {
 }
 OpenFile("Demo");
 SetCallback(g_avCapture);
-// 初始化录屏，传入配置信息OH_AVScreenRecorderConfig。
+// 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
 OH_AVScreenCaptureConfig config;
 SetConfig05(config);
 OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_Init(g_avCapture, config);
