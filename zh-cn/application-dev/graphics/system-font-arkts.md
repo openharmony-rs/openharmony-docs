@@ -113,7 +113,6 @@
    // 创建一个段落生成器
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
-   
 
 5. 先后将textStyle1和textStyle2添加到段落样式中并添加文字。
    <!-- @[arkts_use_and_change_system_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->

@@ -84,6 +84,7 @@
    OH_Drawing_DestroyTypographyHandler(handler);
    OH_Drawing_DestroyTypographyStyle(typographyStyle);
    ```
+
 4. 调用排版接口并设置段落排版宽度，对段落进行塑形排版。
 
    <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
@@ -95,8 +96,7 @@
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
-   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
-
+   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
 6. 从API version 24开始支持在限定宽高区域内排版文本，获取排版结果。
 

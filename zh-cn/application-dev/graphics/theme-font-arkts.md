@@ -73,7 +73,6 @@
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
-
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
    <!-- @[arkts_theme_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
