@@ -59,6 +59,11 @@ SecureAccessFence的工作流程如下：
    导入后可使用`abilityToolAccessCtrl`模块提供的`requestToolTicket`接口获取CLI工具执行认证ticket。
 
   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/request_tool_ticket.ets) -->
+  
+  ``` TypeScript
+  import { abilityToolAccessCtrl } from '@ohos.abilityToolAccessCtrl';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  ```
 
 2. 构建CLI命令信息。
 
