@@ -84,7 +84,7 @@
     ```
     动态加载libvulkan.so，并加载Vulkan基础函数的指针。
     ```c++
-    // 动态加载 Vulkan 库及基础函数指针
+    // 动态加载Vulkan库及基础函数指针
     bool LoadVulkanLibrary() {
         // 加载 Vulkan 库
         constexpr char *path = "libvulkan.so";
