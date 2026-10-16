@@ -28738,6 +28738,26 @@
 						"end_line":174,
 						"name":"arkts_graphics_draw_feature_text",
 						"start_line":157
+					},
+					{
+						"end_line":193,
+						"name":"arkts_graphics_draw_textblob_string_fallback",
+						"start_line":178
+					},
+					{
+						"end_line":223,
+						"name":"arkts_graphics_draw_textblob_postext_fallback",
+						"start_line":197
+					},
+					{
+						"end_line":257,
+						"name":"arkts_graphics_draw_font_texttoglyphs_fallback",
+						"start_line":227
+					},
+					{
+						"end_line":275,
+						"name":"arkts_graphics_draw_font_measure_fallback",
+						"start_line":261
 					}
 				]
 			}
@@ -28783,6 +28803,36 @@
 						"end_line":1342,
 						"name":"ndk_graphics_draw_feature_text",
 						"start_line":1318
+					},
+					{
+						"end_line":1397,
+						"name":"ndk_graphics_draw_textblob_string_fallback",
+						"start_line":1369
+					},
+					{
+						"end_line":1431,
+						"name":"ndk_graphics_draw_textblob_text_fallback",
+						"start_line":1402
+					},
+					{
+						"end_line":1484,
+						"name":"ndk_graphics_draw_textblob_postext_fallback",
+						"start_line":1436
+					},
+					{
+						"end_line":1531,
+						"name":"ndk_graphics_draw_font_text_to_glyphs_fallback",
+						"start_line":1489
+					},
+					{
+						"end_line":1588,
+						"name":"ndk_graphics_draw_font_measure_text_fallback",
+						"start_line":1536
+					},
+					{
+						"end_line":1654,
+						"name":"ndk_graphics_draw_font_measure_text_with_brush_or_pen_fallback",
+						"start_line":1593
 					}
 				]
 			}
