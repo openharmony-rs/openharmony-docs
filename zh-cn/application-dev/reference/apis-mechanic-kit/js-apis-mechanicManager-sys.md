@@ -614,6 +614,8 @@ mechanicManager.searchTarget(targetInfo,
 move(mechId: int, params: MoveParams): Promise&lt;Result&gt;
 
 以特定参数移动一个机械体设备。
+  
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -667,6 +669,8 @@ try {
 moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&gt;
 
 以特定速度移动一个机械体设备。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -722,6 +726,8 @@ turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise&lt;Result&g
 
 以固定速度原地旋转。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
@@ -772,6 +778,8 @@ isSupportAction(mechId: int, actionType: ActionType): boolean
 
 判断是否支持某个动作。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
@@ -817,6 +825,8 @@ try {
 doAction(mechId: int, actionType: ActionType): Promise&lt;Result&gt;
 
 执行一个动作序列。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -866,6 +876,8 @@ subscribe(events: MechEventType[], callback: Callback&lt;MechEvent&gt;): void
 
 订阅机械体设备事件回调。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
@@ -908,6 +920,8 @@ unSubscribe(events: MechEventType[]): void
 
 取消事件注册。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
@@ -946,6 +960,8 @@ try {
 connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise&lt;AttachStateChangeInfo&gt;
 
 基于地址连接设备。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -1001,6 +1017,8 @@ try {
 disconnectDevice(mechId: int): Promise&lt;Result&gt;
 
 基于机械体设备ID断开设备。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -1295,8 +1313,8 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | INTERRUPTED | 1 | 执行被打断。 |
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
-| TERMINATE_OBSTACLE | 4 | 障碍物导致终止。 |
-| TERMINATE_CLIFF | 5 | 悬崖导致终止。 |
+| TERMINATE_OBSTACLE<sup>26.0.0+<sup> | 4 | 障碍物导致终止。 |
+| TERMINATE_CLIFF<sup>26.0.0+<sup> | 5 | 悬崖导致终止。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
 
 ## TargetType<sup>21+<sup>
