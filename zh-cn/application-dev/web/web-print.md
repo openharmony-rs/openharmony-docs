@@ -83,6 +83,35 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
   示例二（iframe嵌套页面的方式）：
 
   <!-- @[w3c_print_html_iframe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html) --> 
+  
+  ``` HTML
+  <!DOCTYPE html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>iframe嵌套页面打印</title>
+    </head>
+    <body>
+        <button id='printIframe'>打印iframe嵌套页面</button>
+        <iframe id='contentIframe' hidden></iframe>
+  
+        <script>
+            document.getElementById('printIframe').addEventListener('click', () => {
+                var ctIframe = document.getElementById('contentIframe');
+                if (!ctIframe.contentWindow || !ctIframe.contentWindow.document) {
+                  console.error('iframe页面初始化失败');
+                  return;
+                }
+                var ctIframeDoc = ctIframe.contentWindow.document;
+                ctIframeDoc.write('嵌套页面');
+                ctIframeDoc.close();
+                ctIframe.contentWindow.print();
+            });
+        </script>
+    </body>
+    </html>
+  ```
 
 - 应用侧代码。
 
