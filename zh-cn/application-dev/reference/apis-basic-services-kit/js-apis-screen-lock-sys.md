@@ -67,8 +67,6 @@ strongAuthChanged | screenLockDisabledChanged | unlockPolicyChanged
 
 ## StrongAuthReasonFlags<sup>12+</sup>
 
-enum StrongAuthReasonFlags
-
 表示请求强认证的原因标志位。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
@@ -85,9 +83,7 @@ enum StrongAuthReasonFlags
 
 ## AuthState<sup>12+</sup>
 
-enum AuthState
-
-表示锁屏认证状态。
+表示锁屏认证状态的枚举。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -115,7 +111,7 @@ enum UnlockPolicy
 
 **系统接口**：此接口为系统接口。
 
-**Stage模型：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -137,7 +133,7 @@ isLocked(): boolean
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| boolean | 返回true表示屏幕已锁屏；返回false表示屏幕未锁屏。 |
+| boolean | 表示屏幕是否锁屏，返回true表示屏幕已锁屏；返回false表示屏幕未锁屏。 |
 
 **错误码**：
 
@@ -345,7 +341,7 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| boolean | 返回true表示锁屏相关系统事件注册成功；返回false表示锁屏相关系统事件注册失败。 |
+| boolean | 表示锁屏相关系统事件注册是否成功，返回true表示锁屏相关系统事件注册成功；返回false表示锁屏相关系统事件注册失败。 |
 
 **错误码**：
 
@@ -489,7 +485,7 @@ requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: int): Promise&lt;vo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -572,7 +568,7 @@ setScreenLockDisabled(disable: boolean, userId: int): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| disable | boolean | 是 | true表示禁用锁屏，false表示启用锁屏。 |
+| disable | boolean | 是 | 表示是否禁用锁屏，true表示禁用锁屏，false表示启用锁屏。 |
 | userId | int | 是 | 用户ID。 |
 
 **返回值：**
@@ -626,7 +622,7 @@ isScreenLockDisabled(userId: int): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 返回true表示锁屏已禁用；返回false表示锁屏未禁用。 |
+| boolean | 表示锁屏是否被禁用，返回true表示锁屏已禁用；返回false表示锁屏未禁用。 |
 
 **错误码：**
 
@@ -758,7 +754,7 @@ isDeviceLocked(userId: int): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 返回true表示设备已锁屏；返回false表示设备未锁屏。 |
+| boolean | 表示设备是否锁屏，返回true表示设备已锁屏；返回false表示设备未锁屏。 |
 
 **错误码：**
 
@@ -791,7 +787,7 @@ getUnlockPolicy(userId: int): UnlockPolicy
 
 **系统接口**：此接口为系统接口。
 
-**Stage模型：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
