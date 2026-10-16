@@ -147,7 +147,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
@@ -156,7 +156,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```
    ArkTS-Sta示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
@@ -264,7 +264,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
@@ -274,7 +274,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
