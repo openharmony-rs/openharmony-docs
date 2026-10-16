@@ -84,7 +84,7 @@
     ```
     动态加载libvulkan.so，并加载Vulkan基础函数的指针。
     ```c++
-    // 动态加载 Vulkan 库及基础函数指针
+    // 动态加载Vulkan库及基础函数指针
     bool LoadVulkanLibrary() {
         // 加载 Vulkan 库
         constexpr char *path = "libvulkan.so";
@@ -487,7 +487,7 @@
             .sharingMode = VK_SHARING_MODE_EXCLUSIVE,
             .queueFamilyIndexCount = 1,
             .pQueueFamilyIndices = &queueFamilyIndex_,
-            // 在使用外部内存时，VK_IMAGE_LAYOUT_UNDEFINED 是必需的
+            // 在使用外部内存时，VK_IMAGE_LAYOUT_UNDEFINED是必需的
             .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED
         };
 
