@@ -1231,9 +1231,14 @@ export struct OpenCustomDialogWithControllerAfterMigrate {
 
 ### 使用方式差异
 
-新接口可以支持一些新的使用方式而老接口不能使用，比如老接口不支持弹出后动态修改弹出框位置，新接口可以；老接口在自定义场景不能使用系统材质，新接口可以。
+新老接口在以下两种使用方式上存在差异：
 
-老接口示例：
+- **弹出后动态修改弹出框位置**：老接口不支持弹出后动态修改弹出框位置（对齐、偏移、蒙层颜色等），需要先关闭再重新打开；新接口支持弹出后直接更新，无需关闭重开。
+- **自定义弹出框场景的系统材质**：老接口在自定义弹出框场景不支持系统材质；新接口支持。
+
+下面以自定义弹出框为例，对比老接口与新接口的实现方式。
+
+老接口示例：使用 `promptAction.openCustomDialog` 弹出自定义弹出框，当需要更新弹出框样式（如颜色模式变化）时，必须先调用 `closeCustomDialog` 关闭再重新打开，且不支持系统材质。
 
 <!-- @[custom_dialog_old_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogOldInterface.ets) -->
 
@@ -1340,7 +1345,7 @@ export struct CustomDialogOldInterface {
 
 ![老接口示例图](figures/CustomDialogOldInterface.gif)
 
-新接口示例：
+新接口示例：使用 `DialogPresenter.present` 弹出自定义弹出框并设置系统材质，通过 `DialogPresenter.update` 在弹出后动态修改弹出框偏移量，无需关闭重开。
 
 <!-- @[custom_dialog_new_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogNewInterface.ets) -->
 
@@ -1448,6 +1453,8 @@ export struct CustomDialogNewInterface {
 
 ### 全局自定义弹出框迁移
 
+本示例将全局自定义弹出框从老接口迁移到新接口，封装 `DialogPresenterClassNew` 工具类统一管理弹出框的打开、关闭和更新操作，并在页面中调用该工具类实现弹出框的弹出与动态更新（修改对齐方式和偏移量）。
+
 **迁移前示例（老接口）：**
 
 [完整示例](arkts-uicontext-custom-dialog.md#完整示例)
@@ -1526,6 +1533,8 @@ export class DialogPresenterClassNew {
   }
 }
 ```
+
+上述代码封装了 `DialogPresenterClassNew` 工具类，提供弹出框的打开（`openDialog`）、关闭（`closeDialog`）和更新（`updateDialog`）方法。下方页面示例调用该工具类，演示弹出框弹出后动态更新对齐方式、偏移量以及内容的效果。
 
 <!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
 
@@ -1609,6 +1618,8 @@ export struct OpenDialogAndUpdate {
 
 ### 页面级弹出框迁移
 
+本示例将页面级弹出框从老接口迁移到新接口，分别给出基于 Router 路由模式和 Navigation 导航模式两种场景下的实现。页面级弹出框跟随所在页面的生命周期，弹窗内可进行路由跳转。
+
 **迁移前示例（老接口）：**
 
 [完整示例](arkts-embedded-dialog.md#完整示例)
@@ -1677,6 +1688,8 @@ export struct PageLevelDialogBox {
   }
 }
 ```
+
+下方 `Next.ets` 为弹窗内点击"Next"按钮路由跳转的目标页面，点击"Back"按钮返回上一页。
 
 <!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
 
