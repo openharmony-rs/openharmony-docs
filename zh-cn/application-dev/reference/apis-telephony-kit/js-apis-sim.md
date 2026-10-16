@@ -181,7 +181,7 @@ hasOperatorPrivileges\(slotId: number, callback: AsyncCallback\<boolean\>\): voi
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId   | number                   | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。 |
+| slotId   | number                   | 是   | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback\<boolean\> | 是   | 回调函数。 返回检查应用（调用者）是否已被授予运营商权限。<br/>- true：授权。<br/>- false：未授权（未插入SIM卡或停用）。   |
 
 **错误码：**
@@ -223,7 +223,7 @@ hasOperatorPrivileges\(slotId: number\): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
