@@ -70,7 +70,7 @@ static get empty(): Material
 
 返回空材质对象，用于组件单独关闭沉浸式系统材质效果。使用方式为`uiMaterial.Material.empty`。
 
-在ENABLE使能模式下，可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果。如果组件未支持组件级沉浸式系统材质接口，则无法通过此方法关闭材质效果。
+可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果。如果组件不支持组件级沉浸式系统材质接口，则无法通过此方法关闭材质效果。
 
 **起始版本：** 26.0.0
 
@@ -271,6 +271,7 @@ isImmersiveMaterialSupported(): boolean
 | applyShadow   | boolean                                   | 否 | 是   | 是否添加材质的阴影效果。<br>当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。<br>**说明**：该参数对支持沉浸式材质的所有档位的算力设备的显示效果生效。<br>默认值：true |
 | interactive   | boolean                                   | 否 | 是   | 是否启用交互形变效果。交互形变效果是指组件在用户交互时产生形变的视觉反馈效果。<br>当该参数为true时，启用交互形变效果。当该参数为false时，不启用交互形变效果。<br>**说明**：该参数对支持沉浸式材质的所有档位的算力设备的显示效果生效。<br>默认值：false |
 | lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 光感交互反馈效果参数。传入LightEffectOptions对象时启用光感交互反馈；传入null时显式禁用光感交互反馈效果；不传入时默认为undefined，取决于组件是否默认有交互光感效果。<br>**说明**：该参数仅对支持沉浸式材质的高算力和中算力设备的显示效果生效。<br>默认值：undefined，不设置光感交互反馈效果。 |
+| lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 光感交互反馈效果参数。传入LightEffectOptions对象时启用光感交互反馈；传入null时显式禁用光感交互反馈效果；不传入时默认为undefined，取决于组件是否默认有交互光感效果。<br>**说明**：该参数仅对支持沉浸式材质的高算力和中算力设备的显示效果生效。<br>默认值：undefined，跟随组件的默认效果。 |
 
 **表1** 特殊资源值对应的深浅色值
 
