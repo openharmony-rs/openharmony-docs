@@ -1273,6 +1273,68 @@ struct example {
 }
 ```
 
+### mapColorByBrightness
+
+mapColorByBrightness(colors: Array\<Color\>, positions: Array\<number\>): Filter
+
+根据输入的颜色数组和对应的亮度锚点位置，将图片的亮度分布映射为指定的颜色渐变效果。颜色映射为循环方式，如输入5个颜色并按亮度锚点位置从小到大排序，则颜色映射顺序依次为第1个、第2个、第3个、第4个、第5个，然后循环回到第1个。
+
+> **说明：**
+>
+> 建议作为前景滤镜使用。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                       | 必填 | 说明                                                                                                                          |
+| ----------- | -------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| colors      | Array\<[Color](#color20)\>   | 是   | 应用的颜色数组。每个颜色的各分量值（包括alpha）均参与映射，且必须大于等于0.0，推荐使用范围为[0.0, 1.0]。小于0.0时无效果。大于1.0时按1.0处理。数组长度范围为1到5，数组长度小于1时无效果；数组长度为1时为纯色效果；数组长度大于5时，效果仅应用前5个颜色。 |
+| positions   | Array\<number\>              | 是   | 每个颜色对应的亮度锚点位置。亮度值越小对应图片中越暗的区域，0.0对应最暗（黑色），1.0对应最亮（白色）。取值范围为[0.0, 1.0]，超出范围时按边界值处理。数组长度必须与colors数组的长度一致，不一致时无效果。           |
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | ---------------------------------- |
+| [Filter](#filter) | 返回挂载了颜色亮度映射效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State colors: Array<uiEffect.Color> = [
+    { red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 },
+    { red: 1.0, green: 0.1, blue: 0.1, alpha: 1.0 },
+    { red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 }
+  ];
+  @State positions: Array<number> = [0.0, 0.5, 1.0];
+
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          // 根据图片的明暗程度进行颜色渐变映射
+          .foregroundFilter(uiEffect.createFilter().mapColorByBrightness(this.colors, this.positions))
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## TileMode
 像素填充模式枚举。
 
