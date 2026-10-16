@@ -117,3 +117,139 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
 2. 在前端页面代码中，利用JavaScript调用传感器相关的W3C标准协议接口。
 
   <!-- @[the_type_of_resource_for_which_permission_is_requested_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html) --> 
+  
+  ``` HTML
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <meta name="msapplication-tap-highlight" content="no" />
+      <meta name="HandheldFriendly" content="true" />
+      <meta name="MobileOptimized" content="320" />
+      <title>运动和方向传感器</title>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+          }
+      </style>
+      <script type="text/javascript">
+          // 访问设备的加速度计传感器，并获取其数据。
+          function getAccelerometer() {
+              let acc = new Accelerometer({frequency: 60});
+              acc.addEventListener('activate', () => console.info('Ready to measure.'));
+              acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+              acc.addEventListener('reading', () => {
+                  console.info(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
+              });
+              acc.start();
+          }
+  
+          // 访问设备的陀螺仪传感器，并获取其数据。
+          function getGyroscope() {
+              let gyr = new Gyroscope({frequency: 60});
+              gyr.addEventListener('activate', () => console.info('Ready to measure.'));
+              gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+              gyr.addEventListener('reading', () => {
+                  console.info(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
+              });
+              gyr.start();
+          }
+  
+          // 访问设备的方向传感器，并获取其数据。
+          function getAbsoluteOrientationSensor() {
+              let aos = new AbsoluteOrientationSensor({frequency: 60});
+              aos.addEventListener('activate', () => console.info('Ready to measure.'));
+              aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+              aos.addEventListener('reading', () => {
+                  console.info(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
+              });
+              aos.start();
+          }
+  
+          // 监听设备的运动事件，并执行相应的处理逻辑。
+          function listenDeviceMotionEvent() {
+              removeDeviceMotionEvent();
+              if ('DeviceMotionEvent' in window) {
+                  window.addEventListener('devicemotion', handleMotionEvent, false);
+              } else {
+                console.info('不支持DeviceMotionEvent');
+              }
+          }
+  
+          // 移除之前添加的设备运动事件监听器。
+          function removeDeviceMotionEvent() {
+              if ('DeviceMotionEvent' in window) {
+                window.removeEventListener('devicemotion', handleMotionEvent, false);
+              } else {
+                console.info('不支持DeviceMotionEvent');
+              }
+          }
+  
+          // 处理运动事件。
+          function handleMotionEvent(event) {
+              const x = event.accelerationIncludingGravity.x;
+              const y = event.accelerationIncludingGravity.y;
+              const z = event.accelerationIncludingGravity.z;
+              console.info(`DeviceMotionEvent data: ${event.timeStamp}, ${x}, ${y}, ${z}`);
+          }
+  
+          // 监听设备方向的变化，并执行相应的处理逻辑。
+          function listenDeviceOrientationEvent() {
+              removeDeviceOrientationEvent();
+              if ('DeviceOrientationEvent' in window) {
+                  window.addEventListener('deviceorientation', handleOrientationEvent, false);
+              } else {
+                  console.info('不支持DeviceOrientationEvent');
+              }
+          }
+  
+          // 移除之前添加的设备方向事件监听器。
+          function removeDeviceOrientationEvent() {
+              if ('DeviceOrientationEvent' in window) {
+                window.removeEventListener('deviceorientation', handleOrientationEvent, false);
+              } else {
+                console.info('不支持DeviceOrientationEvent');
+              }
+          }
+  
+          // 监听设备方向的变化，并执行相应的处理逻辑。
+          function listenDeviceOrientationEvent2() {
+              removeDeviceOrientationEvent2();
+              if ('DeviceOrientationEvent' in window) {
+                  window.addEventListener('deviceorientationabsolute', handleOrientationEvent, false);
+              } else {
+                  console.info('不支持DeviceOrientationEvent');
+              }
+          }
+  
+          // 移除之前添加的设备方向事件监听器。
+          function removeDeviceOrientationEvent2() {
+              if ('DeviceOrientationEvent' in window) {
+                window.removeEventListener('deviceorientationabsolute', handleOrientationEvent, false);
+              } else {
+                console.info('不支持DeviceOrientationEvent');
+              }
+          }
+  
+          // 处理方向事件。
+          function handleOrientationEvent(event) {
+              console.info(`DeviceOrientationEvent data: ${event.timeStamp}, ${event.absolute}, ${event.alpha}, ${event.beta}, ${event.gamma}`);
+          }
+      </script>
+  </head>
+  <body>
+  <div id="dcontent" class="dcontent">
+      <h3>运动和方向:</h3>
+      <ul class="dlist">
+          <li><button type="button" onclick="getAccelerometer()">加速度</button></li>
+          <li><button type="button" onclick="getGyroscope()">陀螺仪</button></li>
+          <li><button type="button" onclick="getAbsoluteOrientationSensor()">设备方向(绝对定位)</button></li>
+          <li><button type="button" onclick="listenDeviceMotionEvent()">设备运动事件</button></li>
+          <li><button type="button" onclick="listenDeviceOrientationEvent()">设备方向事件</button></li>
+          <li><button type="button" onclick="listenDeviceOrientationEvent2()">设备方向事件(绝对定位)</button></li>
+      </ul>
+  </div>
+  </body>
+  </html>
+  ```
