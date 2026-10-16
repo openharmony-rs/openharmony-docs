@@ -205,30 +205,36 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
   ```
 
 在ArkTS中，获取被拦截请求的信息：
-  ```ts
-  this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+  <!-- @[Intercept_requested_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets) -->
+  
+  ``` TypeScript
+  this.schemeHandler.onRequestStart
+  ((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+    console.info('[schemeHandler] onRequestStart');
     try {
-      console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
-      console.info("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
-      console.info("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
-      console.info("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
-      console.info("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
-      console.info("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
-      console.info("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
-      console.info("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
+      console.info('[schemeHandler] onRequestStart url:' + request.getRequestUrl());
+      console.info('[schemeHandler] onRequestStart method:' + request.getRequestMethod());
+      console.info('[schemeHandler] onRequestStart referrer:' + request.getReferrer());
+      console.info('[schemeHandler] onRequestStart isMainFrame:' + request.isMainFrame());
+      console.info('[schemeHandler] onRequestStart hasGesture:' + request.hasGesture());
+      console.info('[schemeHandler] onRequestStart header size:' + request.getHeader().length);
+      console.info('[schemeHandler] onRequestStart resource type:' + request.getRequestResourceType());
+      console.info('[schemeHandler] onRequestStart frame url:' + request.getFrameUrl());
       let header = request.getHeader();
       for (let i = 0; i < header.length; i++) {
-        console.info("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+        console.info('[schemeHandler] onRequestStart header:' + header[i].headerKey + ' ' + header[i].headerValue);
       }
       let stream = request.getHttpBodyStream();
       if (stream) {
-        console.info("[schemeHandler] onRequestStart has http body stream");
+        console.info('[schemeHandler] onRequestStart has http body stream');
       } else {
-        console.info("[schemeHandler] onRequestStart has no http body stream");
+        console.info('[schemeHandler] onRequestStart has no http body stream');
       }
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+  
+    // ...
     return true;
   })
   ```
