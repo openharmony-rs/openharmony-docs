@@ -875,7 +875,7 @@ subscribe(events: MechEventType[], callback: Callback&lt;MechEvent&gt;): void
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | events | [MechEventType](#mecheventtype) | 是 | 订阅的事件列表。 |
-| callback | Callback&lt;[MechEvent](#mechevent)&gt; | 是 | 动作序列类型。|
+| callback | Callback&lt;[MechEvent](#mechevent)&gt; | 是 | 回调函数，返回订阅的机械体设备事件。 |
 
 **错误码：**
 
