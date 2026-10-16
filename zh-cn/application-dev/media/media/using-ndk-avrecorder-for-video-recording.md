@@ -1,7 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "介绍如何使用AVRecorder的C/C++接口实现视频录制，涵盖创建实例、配置录制参数、获取Surface及录制控制等全流程，适用于Native层视频录制开发。"
-keywords: [AVRecorder, 视频录制, C/C++, 录制状态机, Surface, 相机录制]
+keywords: [AVRecorder, 视频录制, C/C++, 录制状态机, 相机录制]
 doctype: guide
 status: active
 ---
