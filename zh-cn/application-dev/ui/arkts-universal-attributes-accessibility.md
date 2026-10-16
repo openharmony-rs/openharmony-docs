@@ -549,19 +549,45 @@ ArkTS-Sta示例：
 @Entry
 @Component
 struct VirtualNodeExample {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  // 无障碍虚拟子节点，占位组件仅做布局不做显示，位置和大小与画布中绘制内容所在区域保持一致。
   @Builder customAccessibilityNode(): void {
-    Text('文本2')
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
+    Stack() {
+      Text('Submit')
+        .position({ x: 50, y: 100 })
+        .width(100)
+        .height(50)
+      Text('Reset')
+        .position({ x: 200, y: 100 })
+        .width(100)
+        .height(50)
+    }
+    .width('100%')
+    .height('100%')
   }
 
   build(): void {
     Column() {
-      Text('文本1')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
+      Canvas(this.context)
+        .width(350)
+        .height(300)
+        .onReady(() => {
+          // 绘制“Submit”按钮，绘制内容无法直接被无障碍服务识别。
+          this.context.fillStyle = '#007DFF';
+          this.context.fillRect(50, 100, 100, 50);
+          this.context.fillStyle = '#FFFFFF';
+          this.context.font = '30px sans-serif';
+          this.context.fillText('Submit', 70, 132);
+          // 绘制“Reset”按钮。
+          this.context.fillStyle = '#007DFF';
+          this.context.fillRect(200, 100, 100, 50);
+          this.context.fillStyle = '#FFFFFF';
+          this.context.fillText('Reset', 220, 132);
+        })
+        .accessibilityVirtualNode(this.customAccessibilityNode)
     }
-    .accessibilityVirtualNode(this.customAccessibilityNode)
   }
 }
 ```
