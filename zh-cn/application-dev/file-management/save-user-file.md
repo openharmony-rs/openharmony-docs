@@ -152,7 +152,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ``` TypeScript
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
    ArkTS-Sta示例：
 
