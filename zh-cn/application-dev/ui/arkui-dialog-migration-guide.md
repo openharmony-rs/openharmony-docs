@@ -62,7 +62,7 @@
   | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
   | 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
   | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`，其余同名） |
+  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 对应为 `borderRadius`） |
   | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
   | 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`） | `dialogTransition: TransitionEffect` |
   | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
@@ -261,7 +261,7 @@
   **迁移前示例（老接口）：** 使用[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)弹出告警框，包含标题、消息和按钮。
 
   <!-- @[alert_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogBeforeMigrate.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -556,11 +556,11 @@
   |------|------|------|
   | 编程模型 | `promptAction.showDialog(options): Promise<ShowDialogSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
   | 标题 | `title: string \| Resource` | `title: ResourceStr` |
-  | 副标题 | 无 | `subtitle: ResourceStr`（新增） |
+  | 副标题 | 无 | `subtitle: ResourceStr` |
   | 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
   | 按钮 | `buttons: Array<Button>`（仅 text + color + primary） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） |
   | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-  | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（新增） |
+  | 操作菜单 | 无 | `sheets: Array<DialogSheet>` |
   | 网格数 | 无 | `gridCount: number` |
   | 确认回调 | 通过 `ShowDialogSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
   | 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
@@ -708,11 +708,11 @@
   |------|------|------|
   | 编程模型 | `promptAction.showActionMenu(options): Promise<ActionMenuSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
   | 标题 | `title: string \| Resource` | `title: ResourceStr` |
-  | 副标题 | 无 | `subtitle: ResourceStr`（新增） |
-  | 消息内容 | 无 | `message: DialogMessage`（新增） |
-  | 按钮 | `buttons: [Button, ...]`（1-6 个，仅 text + color + primary） | `buttons: Array<DialogButton>`（无数量限制，含 value/fontColor/backgroundColor/enabled/primary/style/action） |
+  | 副标题 | 无 | `subtitle: ResourceStr` |
+  | 消息内容 | 无 | `message: DialogMessage` |
+  | 按钮 | `buttons: [Button, ...]`（支持1-6个按钮，结构为仅text + color + primary） | `buttons: Array<DialogButton>`（无数量限制，结构含value/fontColor/backgroundColor/enabled/primary/style/action） |
   | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-  | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（新增） |
+  | 操作菜单 | 无 | `sheets: Array<DialogSheet>` |
   | 网格数 | 无 | `gridCount: number` |
   | 确认回调 | 通过 `ActionMenuSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
   | 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
