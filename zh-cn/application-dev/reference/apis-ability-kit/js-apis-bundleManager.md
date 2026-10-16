@@ -600,7 +600,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 | moduleName           | string                        | 是   | 表示Module名称。                                   |
 | extensionAbilityName | string                        | 是   | 表示ExtensionAbility组件的名称。                         |
 | metadataName         | string                        | 是   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。                                 |
-| callback             | AsyncCallback<Array\<string>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，datadata为获取到的配置文件的json格式字符串数组；否则为错误对象。 |
+| callback             | AsyncCallback<Array\<string>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的配置文件的json格式字符串数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -1812,11 +1812,17 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
-  hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
-});
+try {
+  bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
+    hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+}
 ```
 
 ## bundleManager.getInstalledBundleList

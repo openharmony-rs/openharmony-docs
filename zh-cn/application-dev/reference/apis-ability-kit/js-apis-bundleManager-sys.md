@@ -2377,7 +2377,7 @@ setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 | 参数名    | 类型        | 必填 | 说明                                  |
 | -------- | ----------- | ---- | ------------------------------------- |
 | info     | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 是   | 需要被设置的组件。              |
-| isEnabled| boolean     | 是   | 值为true表启用，值为false表示禁用。 |
+| isEnabled| boolean     | 是   | 值为true表示启用，值为false表示禁用。 |
 
 **错误码：**
 
@@ -4776,7 +4776,7 @@ getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，返回查询到的所有预置应用信息。。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，返回查询到的所有预置应用信息。 |
 
 **错误码：**
 
