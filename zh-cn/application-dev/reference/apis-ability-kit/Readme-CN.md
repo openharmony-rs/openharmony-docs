@@ -189,6 +189,8 @@
       - [ErrorObserver](js-apis-inner-application-errorObserver.md)
       - [EventHub](js-apis-inner-application-eventHub.md)
       - [ExtensionContext](js-apis-inner-application-extensionContext.md)
+      - [FocusedApplicationInfo (获焦应用信息)](js-apis-inner-application-focusedApplicationInfo.md)
+      - [FocusedApplicationObserver (获焦应用监听器)](js-apis-inner-application-focusedApplicationObserver.md)
       - [KioskStatus (Kiosk状态信息)](js-apis-application-KioskStatus.md)
       - [LoopObserver](js-apis-inner-application-loopObserver.md)
       - [PageNodeInfo (页面节点信息)](js-apis-inner-application-pageNodeInfo.md)
