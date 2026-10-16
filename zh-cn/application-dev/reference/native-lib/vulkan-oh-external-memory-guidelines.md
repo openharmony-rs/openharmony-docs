@@ -487,7 +487,7 @@
             .sharingMode = VK_SHARING_MODE_EXCLUSIVE,
             .queueFamilyIndexCount = 1,
             .pQueueFamilyIndices = &queueFamilyIndex_,
-            // 在使用外部内存时，VK_IMAGE_LAYOUT_UNDEFINED 是必需的
+            // 在使用外部内存时，VK_IMAGE_LAYOUT_UNDEFINED是必需的
             .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED
         };
 
