@@ -7718,7 +7718,7 @@ inputMethodEngine.getInputMethodAbility()
 
 ArkTS-Dyn: getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-ArkTS-Sta: getLeftRichText(length: int): Promise&lt;InputMethodRichText&gt;
+ArkTS-Sta: getLeftRichText(length: int): Promise&lt;InputMethodRichText | null&gt;
 
 获取光标前指定长度的富文本内容。使用Promise异步回调。
 
@@ -7789,7 +7789,11 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText | null) => {
+  if (richText === null) {
+    console.info('getLeftRichText: result is null');
+    return;
+  }
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -7810,7 +7814,7 @@ inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMeth
 
 ArkTS-Dyn: getLeftRichTextSync(length: number): InputMethodRichText
 
-ArkTS-Sta: getLeftRichTextSync(length: int): InputMethodRichText
+ArkTS-Sta: getLeftRichTextSync(length: int): InputMethodRichText | null
 
 获取光标前指定长度的富文本内容。
 
@@ -7882,7 +7886,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: int = 5;
-  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+  let richText: inputMethodEngine.InputMethodRichText | null = inputClient!.getLeftRichTextSync(length);
+  if (richText === null) {
+    console.info('getLeftRichTextSync: result is null');
+    return;
+  }
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -7903,7 +7911,7 @@ try {
 
 ArkTS-Dyn: getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-ArkTS-Sta: getRightRichText(length: int): Promise&lt;InputMethodRichText&gt;
+ArkTS-Sta: getRightRichText(length: int): Promise&lt;InputMethodRichText | null&gt;
 
 获取光标后指定长度的富文本内容。使用Promise异步回调。
 
@@ -7974,7 +7982,11 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText | null) => {
+  if (richText === null) {
+    console.info('getRightRichText: result is null');
+    return;
+  }
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -7995,7 +8007,7 @@ inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMet
 
 ArkTS-Dyn: getRightRichTextSync(length: number): InputMethodRichText
 
-ArkTS-Sta: getRightRichTextSync(length: int): InputMethodRichText
+ArkTS-Sta: getRightRichTextSync(length: int): InputMethodRichText | null
 
 获取光标后指定长度的富文本内容。
 
@@ -8067,7 +8079,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: int = 5;
-  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getRightRichTextSync(length);
+  let richText: inputMethodEngine.InputMethodRichText | null = inputClient!.getRightRichTextSync(length);
+  if (richText === null) {
+    console.info('getRightRichTextSync: result is null');
+    return;
+  }
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
