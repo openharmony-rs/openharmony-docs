@@ -1735,3 +1735,19 @@ With this permission, the application can add sync root folders to the sidebar o
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.1
+
+## ohos.permission.INPUT_RECORDING
+
+Allows an application to listen for input events.
+
+Applicable scenarios and functionalities: With this permission, an application can implement the recording and playback functions of input events.
+
+<!--RP116--><!--RP116End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.2.0
