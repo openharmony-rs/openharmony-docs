@@ -56,11 +56,11 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   ``` TypeScript
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getFreeSize(path, (err: BusinessError, number: number) => {
+  statfs.getFreeSize(path, (err: BusinessError, freeSize: number) => {
     if (err) {
       console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.info(`Invoke getFreeSize succeeded, size is ${number}`);
+      console.info(`Invoke getFreeSize succeeded, size is ${freeSize}`);
     }
   });
   ```
