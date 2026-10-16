@@ -75,6 +75,7 @@
         "appCrashPolicy": { // 崩溃事件配置策略
           "pageSwitchLogEnable": true, // 从API version 24开始，支持使能页面切换日志
           "collectMinidump": true // 从API版本26.0.0开始，支持使能minidump
+          "publishOnNextLaunch": true // 从API版本26.2.0开始，支持使能固定在重启后收到事件回调
         }
       };
       // 开发者可以设置崩溃事件配置策略

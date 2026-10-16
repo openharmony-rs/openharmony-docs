@@ -187,6 +187,9 @@
           // native崩溃场景，使能minidump
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_COLLECT_MINIDUMP, "true");
       
+          // 使能固定在应用重启之后收到事件回调。
+          OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH, "true");
+      
           // 3. 应用配置到 EVENT_APP_CRASH 事件
           int ret = OH_HiAppEvent_SetEventConfig(EVENT_APP_CRASH, config);
           if (ret == HIAPPEVENT_SUCCESS) {
