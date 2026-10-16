@@ -12,7 +12,9 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件为卡片组件的使用方，对应提供方的使用参考文档[JS服务卡片UI组件](../js-service-widget-ui/js-service-widget-file.md)。
+> - 该组件为卡片组件的使用方，对应提供方的使用参考文档[文件组织](../js-service-widget-ui/js-service-widget-file.md)。
+>
+> - 从API版本26.2.0开始：支持同一应用的不同进程使用相同卡片标识（id）挂载卡片，多个使用方共享同一卡片实例。
 >
 > - 该组件使用需要具有系统签名。
 >
@@ -58,7 +60,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明                                                                |
 | --------- | ------------------------------- | ---- |---- |-------|
-| id        | number \| string                    | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。<br>id大于等于0小于2^32。                                        |
+| id        | number \| string                    | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。从API版本26.2.0开始：同一应用的不同进程可以使用相同id，多个使用方共享同一卡片实例。<br/>同一使用方使用相同id时，显示后添加的卡片。<br>id大于等于0小于2^32。                                        |
 | name      | string                          |  否   | 否   | 卡片名称。                                                              |
 | bundle    | string                          |  否   | 否   | 目标卡片包名。                                                          |
 | ability   | string                          |  否   | 否   | 目标卡片Ability名称。                                                   |
@@ -66,7 +68,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 | dimension | [FormDimension](#formdimension) |  否   | 是   | 卡片尺寸，支持2 * 2，4 * 4，2 * 4等类型卡片。<br/>默认值：Dimension_2_2。 |
 | temporary | boolean                         |  否   | 是   | 卡片是否为临时卡片，true表示是临时卡片，false表示不是临时卡片。<br/>默认值：false。 |
 | renderingMode | [FormRenderingMode](#formrenderingmode11) |  否   | 是   | 卡片渲染模式。取值如下，默认值为 FULL_COLOR。<br>- FULL_COLOR：代表全色模式，卡片框架不会对卡片效果做出修改，保持和卡片开发者设置的效果不变。<br>- SINGLE_COLOR：代表单色模式，卡片框架会把卡片背景设为透明，开发者需按最佳实践设置卡片风格。<br>**说明：**<br/>如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。 |
-| want | [import('../api/@ohos.app.ability.Want').default](../../../reference/apis-ability-kit/js-apis-app-ability-want.md#want) |  否   | 是   | 卡片传递信息的载体。 |
+| want | [Want](../../../reference/apis-ability-kit/js-apis-app-ability-want.md#want) |  否   | 是   | 卡片传递信息的载体。 |
 | shape  | [FormShape](#formshape12)      | 否    | 是    | 卡片的形状。 |
 | exemptAppLock<sup>20+</sup> |boolean        |  否   | 是   | 卡片是否豁免应用锁，true表示卡片所属应用添加应用锁时，不受应用锁管控，不显示应用锁蒙层；false表示卡片所属应用添加应用锁时，受应用锁管控，正常展示应用锁蒙层。<br/>默认值：false。 |
 
@@ -320,7 +322,7 @@ onRouter(callback: Callback\<object\>)
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 |------| - | ---- | ------------------------------------------------------------ |
-| callback | Callback\<object\>  | 是   | 获得[routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 |
+| callback | Callback\<object\>  | 是   | 获得[事件绑定](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 |
 
 ### onUninstall
 
@@ -372,28 +374,29 @@ onUpdate(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 ## 示例
 
-卡片示例。
+### 示例1（创建卡片并注册事件回调）
 
-该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调。
+该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调，在onAcquired回调中获取卡片标识。
+
 ```ts
 // card.ets
 @Entry
 @Component
 struct CardExample {
-  @State formId:string = '0';
+  @State formId: string = '0';
   build() {
     Column() {
       Text('this is a card')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       FormComponent({
-        id:this.formId,
-        name:"Form1",
-        bundle:"com.example.cardexample",
-        ability:"FormAbility",
-        module:"entry",
-        dimension:FormDimension.Dimension_2_2,
-        temporary:false
+        id: this.formId,
+        name: "Form1",
+        bundle: "com.example.cardexample",
+        ability: "FormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false
       })
         .allowUpdate(true)
         .size({width:360,height:360})
@@ -421,6 +424,50 @@ struct CardExample {
         })
         .onUpdate((form: FormCallbackInfo)=>{
           console.info(`form update done : ${form?.id}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![Form](figures/form.png)
+
+### 示例2（同一应用的不同进程使用相同卡片标识挂载卡片）
+
+从API版本26.2.0开始：同一应用的不同进程可以使用相同卡片标识（id）挂载卡片，多个使用方共享同一卡片实例。该示例中，formId为同一应用其他进程已获取的卡片标识。
+
+```ts
+// card.ets
+@Entry
+@Component
+struct CardExample2 {
+  // 已存在的卡片标识（示例值），实际开发中由同一应用的其他进程获取后传递
+  @State formId: string = '1747282432568508160';
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "Form1",
+        bundle: "com.example.cardexample",
+        ability: "FormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false
+      })
+        .allowUpdate(true)
+        .size({width:360,height:360})
+        .onAcquired((form: FormCallbackInfo)=>{
+          console.info(`form info : ${form?.id}`);
+          if (form.id == -1) {
+            this.formId = form.idString;
+          } else {
+            this.formId = form.id.toString();
+          }
+        })
+        .onError((error)=>{
+          console.error(`fail to add form, error code: ${error?.errcode}, error message: ${error?.msg}`);
         })
     }
     .width('100%')
