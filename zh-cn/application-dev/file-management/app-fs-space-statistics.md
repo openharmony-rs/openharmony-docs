@@ -203,8 +203,8 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->       
   
   ``` TypeScript
-  storageStatistics.getFreeSize().then((number: number) => {
-    console.info(`getFreeSize successfully, number is ${number}`);
+  storageStatistics.getFreeSize().then((freeSize: number) => {
+    console.info(`getFreeSize successfully, number is ${freeSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
   });
