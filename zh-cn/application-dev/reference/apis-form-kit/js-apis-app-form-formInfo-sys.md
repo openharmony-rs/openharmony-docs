@@ -222,7 +222,7 @@ import { formInfo } from '@kit.FormKit';
 | abilityName | string | 否  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。 |
 | targetBundleName  | string | 否  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。        |
 | subBundleName  | string | 否  | 否   | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
-| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。 |
+| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。 |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -399,6 +399,40 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
   };
 ```
 
+## GetLiveFormStatusCallback<sup>20+</sup>
+
+type GetLiveFormStatusCallback = () => Record&lt;string, string&gt;
+
+获取互动卡片状态的回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Record&lt;string, string&gt; | 返回卡片的状态信息。key为formID，value为卡片的状态信息。状态信息有"INACTIVE"、"PAUSE"、"ACTIVE"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                  |
+|-------|-----------------------------------------------------------------------------------------------------------|
+| 202   | The application is not a system application.                                                              |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let GetLiveFormStatusCallback: formInfo.GetLiveFormStatusCallback = (): Record<string, string> => {
+  return { '1256444': 'ACTIVE' };
+};
+```
+
 ## SceneAnimationTriggerType
 
 场景动效卡片触发类型枚举。
@@ -433,7 +467,7 @@ type GetWantParamsCallback = (formInfo: Array&lt;formInfo.FormInfo&gt;) => Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|----|------|
-| formInfo | Array&lt;[FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
+| formInfo | Array&lt;[formInfo.FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
 
 **返回值：**
 
