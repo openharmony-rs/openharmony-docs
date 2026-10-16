@@ -190,7 +190,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
    <!-- @[TestHidebugNdk_CMakeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/CMakeLists.txt) -->
    
-   ```cmake
+   ``` Text
    # 新增动态库依赖libohhidebug.so和libhilog_ndk.z.so（日志输出）
    add_library(entry SHARED napi_init.cpp test_backtrace.cpp test_async_context.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhidebug.so)
