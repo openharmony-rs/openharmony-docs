@@ -1154,7 +1154,7 @@ console.info('Result: '+ sim.getMaxSimCount());
 
 getActiveSimAccountInfoList\(\): Promise\<Array\<IccAccountInfo\>\>
 
-获取激活SIM卡账户信息列表。使用Promise异步回调。
+获取激活SIM卡账户信息列表，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用[sim.getSimLabel](js-apis-sim.md#simgetsimlabel20)接口动态查询。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -1447,7 +1447,7 @@ console.info(`getOpName success, data->${JSON.stringify(data)}`);
 
 getDefaultVoiceSimId\(callback: AsyncCallback\<number\>\): void
 
-获取默认语音业务的SIM卡ID。使用callback异步回调。
+获取默认语音业务的SIM卡ID，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用[sim.getSimLabel](js-apis-sim.md#simgetsimlabel20)接口动态查询。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -1490,7 +1490,7 @@ sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
 
 getDefaultVoiceSimId\(\): Promise\<number\>
 
-获取默认语音业务的SIM卡ID。使用Promise异步回调。
+获取默认语音业务的SIM卡ID，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用[sim.getSimLabel](js-apis-sim.md#simgetsimlabel20)接口动态查询。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
