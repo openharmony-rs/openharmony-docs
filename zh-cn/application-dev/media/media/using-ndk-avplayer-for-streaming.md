@@ -1,7 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "从API version 11开始介绍如何使用AVPlayer的C/C++接口实现流媒体播放，涵盖HLS、DASH、HTTP-FLV等协议的流媒体端到端播放全流程，适用于Native层网络流媒体播放。"
-keywords: [AVPlayer, 流媒体播放, C/C++, HLS, DASH, HTTP-FLV, 直播, 点播]
+keywords: [AVPlayer, 流媒体播放, C/C++, HLS, DASH, HTTP, 直播, 点播]
 doctype: guide
 status: active
 ---
