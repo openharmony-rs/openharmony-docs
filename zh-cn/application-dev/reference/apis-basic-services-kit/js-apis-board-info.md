@@ -6,15 +6,12 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供板级硬件信息查询能力，支持获取CPU、主板、BIOS等硬件信息，
-适用于设备识别、资产管理、兼容性判断等场景。开发者不可配置这些信息。
+本模块提供板级硬件信息查询能力，支持获取CPU、主板、BIOS等硬件信息，适用于设备识别、资产管理、兼容性判断等场景。开发者不可配置这些信息。
 
 > **说明：**
 >
 > 本模块首批接口从API version 26.0.1开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。</br>
-> 本模块接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。</br>
-> 为确保应用主线程的响应性能，建议避免在主线程中调用。硬件信息因设备而异且固定不变，</br>
-> 可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。</br>
+> 本模块接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。硬件信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。</br>
 > 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
@@ -38,7 +35,7 @@ import { boardInfo } from '@kit.BasicServicesKit';
 | cpuId | string | 是 | CPU ID。<br>示例：AA AA AA AA 00 00 00 00（十六进制字符串）|
 | cpuArch | string | 是 | CPU架构。<br>示例：aarch64 |
 | cpuVendor | string | 是 | CPU厂商信息。<br>示例：HISILICON |
-| boardSn | string | 是 | 主板序列号。<br>**需要权限**：ohos.permission.ACCESS_BOARD_INFO<br>仅系统及企业应用可申请<br>示例：0123456789ABCDEF |
+| boardSn | string | 是 | 主板序列号。<br>**需要权限**：ohos.permission.ACCESS_BOARD_INFO<br>示例：0123456789ABCDEF |
 | boardVendor | string | 是 | 主板厂商。<br>示例：HUAWEI |
 | boardName | string | 是 | 主板产品名称。<br>示例：HAD-PCB |
 | biosVendor | string | 是 | BIOS厂商。<br>示例：HUAWEI |
