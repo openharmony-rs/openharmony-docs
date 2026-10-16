@@ -104,7 +104,7 @@ If the security component cannot be called to save images and videos in your dev
    ```ts
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file.fd);
+   fileIo.closeSync(file);
    ```
 
 ## Saving Audio Clips
@@ -166,7 +166,7 @@ If the security component cannot be called to save images and videos in your dev
    ```ts
    let writeLen = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file.fd);
+   fileIo.closeSync(file);
  
    ```
 
