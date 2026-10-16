@@ -95,7 +95,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 | DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板来渲染组件特效。 |
 | WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板来渲染组件特效。 |
 
-效果模板
+窗口定义的效果模板
 
 |  设备类型    | 模糊半径（单位：px）   | 饱和度                 |  亮度  |  颜色  |
 | -------- | ---- | ---------------------- | -------- | -------- |
