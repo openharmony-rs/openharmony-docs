@@ -10,7 +10,7 @@
 
 本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹出框类别提供从老接口到新接口的迁移映射。
 
-> 从API版本26.0.1开始，新增[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)，提供统一的Dialog类型声明能力。
+从API版本26.0.1开始，新增[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)，提供统一的Dialog类型声明能力。
 
 ## 接口说明
 
@@ -30,7 +30,7 @@
 | [DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) | 提供关闭弹出框操作的信息与关闭接口。 |
 | [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) | 弹出框的对齐方式。 |
 | [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) | 弹出框中按钮的排列方式。 |
-| [DialogState](../reference/apis-arkui/js-apis-dialog.md#dialogstate) | `DialogState`的枚举。 |
+| [DialogState](../reference/apis-arkui/js-apis-dialog.md#dialogstate) | 弹出框状态枚举。 |
 
 ## 弹出框新老接口差异
 
@@ -43,315 +43,258 @@
 
 - CustomDialog（自定义弹出框）
 
-  老接口使用[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的open和close接口打开和关闭弹出框，新接口使用[DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md)的present和dismiss接口打开和关闭弹出框，具体示例见表格下方。
-
-| 属性 | 老接口（@CustomDialog + CustomDialogController） | 新接口（DialogPresenter.present + DialogCustomOptions） |
-|------|------|------|
-| 编程模型 | `@CustomDialog` 装饰器声明自定义组件 + `CustomDialogController` 实例化控制 | `UIContext.getDialogPresenter()` 获取 Presenter，`present(content, options)` 弹出 |
-| 内容构建 | `@CustomDialog` 装饰器包裹 `@Component` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` 作为 `present` 第一个参数 |
-| 样式控制 | `customStyle: boolean`（CustomDialogControllerOptions） | `DialogCustomOptions.customStyle: boolean` |
-| 打开 | `controller.open()` | `presenter.present(content, options): Promise<DialogResult>` |
-| 关闭 | `controller.close()` | `DialogBaseController.close()` 或 `presenter.dismiss(target)` |
-| 状态查询 | `controller.getState(): PromptActionCommonState` | `DialogBaseController.getState(): DialogState` |
-| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: { dx, dy }` | `offset: Offset` |
-| 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-| 蒙层颜色 | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
-| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean` | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 焦点 | `focusable: boolean`（可配置，默认 true） | `focusable: boolean`（可配置，默认 true） |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`，其余同名） |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-| 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`） | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance` | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |<!--Del-->
-| 系统接口属性 | distortionMode、edgeLightMode | distortionMode、edgeLightMode |
-<!--DelEnd-->
-
-**迁移前示例（老接口）：** 使用[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的`open()`和`close()`打开和关闭自定义弹出框。
-
-<!-- @[custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogBeforeMigrate.ets) -->
-
-``` TypeScript
-@CustomDialog
-struct CustomDialogExample {
-  controller?: CustomDialogController
-  build() {
-    Column() {
-      Text('自定义弹窗内容')
-      Button('关闭').onClick(() => { this.controller?.close() })
-    }
-  }
-}
-
-@Entry
-@Component
-export struct CustomDialogBeforeMigrate {
-  dialogController: CustomDialogController = new CustomDialogController({
-    builder: CustomDialogExample(),
-    alignment: DialogAlignment.Center,
-    autoCancel: true,
-    maskColor: 0x33000000
-  })
-  build() {
-    NavDestination() {
+  | 属性 | 老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)） | 新接口（[DialogPresenter](../reference/apis-arkui/  arkts-apis-uicontext-dialogpresenter.md)） |
+  |------|------|------|
+  | 编程模型 | `@CustomDialog` 装饰器声明自定义组件 + `CustomDialogController` 实例化控制 | `UIContext.getDialogPresenter()` 获取 Presenter，`present(content, options)` 弹出 |
+  | 内容构建 | `@CustomDialog` 装饰器包裹 `@Component` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` 作为 `present` 第一个参数 |
+  | 样式控制 | `customStyle: boolean`（CustomDialogControllerOptions） | `DialogCustomOptions.customStyle: boolean` |
+  | 打开 | `controller.open()` | `presenter.present(content, options): Promise<DialogResult>` |
+  | 关闭 | `controller.close()` | `DialogBaseController.close()` 或 `presenter.dismiss(target)` |
+  | 状态查询 | `controller.getState(): PromptActionCommonState` | `DialogBaseController.getState(): DialogState` |
+  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | 偏移 | `offset: { dx, dy }` | `offset: Offset` |
+  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
+  | 蒙层颜色 | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
+  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | 模态 | `isModal: boolean` | `isModal: boolean` |
+  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | 焦点 | `focusable: boolean`（可配置，默认 true） | `focusable: boolean`（可配置，默认 true） |
+  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`，其余同名） |
+  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`） | `dialogTransition: TransitionEffect` |
+  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
+  | 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance` | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |<!--Del-->
+  | 系统接口属性 | `distortionMode`、`edgeLightMode` | `distortionMode`、`edgeLightMode` |
+  <!--DelEnd-->
+  
+  **迁移前示例（老接口）：** 使用[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的`open()`和`close()`打开和关闭自定义弹出框。
+  
+  <!-- @[custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/CustomDialogBeforeMigrate.ets) -->
+  
+  ``` TypeScript
+  @CustomDialog
+  struct CustomDialogExample {
+    controller?: CustomDialogController
+    build() {
       Column() {
-        Button('打开弹窗').onClick(() => {
-          this.dialogController.open()
-        })
+        Text('自定义弹窗内容')
+        Button('关闭').onClick(() => { this.controller?.close() })
       }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
     }
   }
-}
-```
-
- ![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
-
-**迁移后示例（新接口）：** 使用[DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md)的`present()`和`dismiss()`打开和关闭自定义弹出框，并通过Promise获取返回结果。
-
-<!-- @[custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogAfterMigrate.ets) -->
-
-``` TypeScript
-import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 定义参数类，用于向自定义弹出框内容传递数据
-class Params {
-  public text: string = '';
-
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-// 自定义弹出框内容的构建器函数
-@Builder
-function buildText(params: Params) {
-  Column({ space: 20 }) {
-    Text(params.text)
-      .fontSize(30)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-    // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框
-    Button('关闭弹窗')
-      .onClick(() => {
-        dialogPresenter?.dismiss(contentNode)
-          .then(() => {
-            console.info('dismiss success');
-          })
-          .catch((error: BusinessError) => {
-            console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
-          })
-      })
-  }
-}
-
-let contentNode: ComponentContent<Object> | null = null;
-// 全局变量，保存DialogPresenter实例
-let dialogPresenter: DialogPresenter | null = null;
-
-@Entry
-@Component
-export struct CustomDialogAfterMigrate {
-  @State result: string = '';
-
-  aboutToAppear(): void {
-    // 获取DialogPresenter实例
-    dialogPresenter = this.getUIContext().getDialogPresenter();
-    // 创建ComponentContent，绑定自定义构建器函数和参数
-    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params('自定义弹窗内容'));
-  }
-
-  build() {
-    NavDestination() {
-      Row() {
-        Column() {
-          Text('CustomDialog 迁移示例')
-            .fontSize(18)
-            .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 20 })
-
-          Button('老接口：@CustomDialog + CustomDialogController')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showOldCustomDialog();
-            })
-
-          Button('新接口：DialogPresenter.present（自定义弹窗）')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showNewCustomDialog();
-            })
-
-          if (this.result) {
-            Text(this.result)
-              .fontSize(14)
-              .margin({ top: 10 })
-          }
-        }
-        .width('100%')
-      }
-      .height('100%')
-    }
-  }
-
-  private showOldCustomDialog(): void {
-    this.result = '老接口示例请参考 DialogProject 工程';
-  }
-
-  private showNewCustomDialog(): void {
-    dialogPresenter?.present(contentNode, {
-      alignment: DialogBaseAlignment.CENTER,
+  
+  @Entry
+  @Component
+  export struct CustomDialogBeforeMigrate {
+    dialogController: CustomDialogController = new CustomDialogController({
+      builder: CustomDialogExample(),
+      alignment: DialogAlignment.Center,
       autoCancel: true,
       maskColor: 0x33000000
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
+    })
+    build() {
+      NavDestination() {
+        Column() {
+          Button('打开弹窗').onClick(() => {
+            this.dialogController.open()
+          })
+        }
+        .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
+      }
+    }
   }
-}
-```
-
-![迁移后示例图](figures/CustomDialogAfterMigrate.png)
+  ```
+  
+   ![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
+  
+  **迁移后示例（新接口）：** 使用[DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md)的`present()`和`dismiss()`打开和关闭自定义弹出框，并通过Promise获取返回结果。
+  
+  <!-- @[custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/CustomDialogAfterMigrate.ets) -->
+  
+  ``` TypeScript
+  import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  // 定义参数类，用于向自定义弹出框内容传递数据
+  class Params {
+    public text: string = '';
+  
+    constructor(text: string) {
+      this.text = text;
+    }
+  }
+  
+  // 自定义弹出框内容的构建器函数
+  @Builder
+  function buildText(params: Params) {
+    Column({ space: 20 }) {
+      Text(params.text)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 })
+      // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框
+      Button('关闭弹窗')
+        .onClick(() => {
+          dialogPresenter?.dismiss(contentNode)
+            .then(() => {
+              console.info('dismiss success');
+            })
+            .catch((error: BusinessError) => {
+              console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
+            })
+        })
+    }
+  }
+  
+  let contentNode: ComponentContent<Object> | null = null;
+  // 全局变量，保存DialogPresenter实例
+  let dialogPresenter: DialogPresenter | null = null;
+  
+  @Entry
+  @Component
+  export struct CustomDialogAfterMigrate {
+    @State result: string = '';
+  
+    aboutToAppear(): void {
+      // 获取DialogPresenter实例
+      dialogPresenter = this.getUIContext().getDialogPresenter();
+      // 创建ComponentContent，绑定自定义构建器函数和参数
+      contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params('自定义弹窗内容'));
+    }
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('CustomDialog 迁移示例')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+  
+            Button('老接口：@CustomDialog + CustomDialogController')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showOldCustomDialog();
+              })
+  
+            Button('新接口：DialogPresenter.present（自定义弹窗）')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showNewCustomDialog();
+              })
+  
+            if (this.result) {
+              Text(this.result)
+                .fontSize(14)
+                .margin({ top: 10 })
+            }
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+  
+    private showOldCustomDialog(): void {
+      this.result = '老接口示例请参考 DialogProject 工程';
+    }
+  
+    private showNewCustomDialog(): void {
+      dialogPresenter?.present(contentNode, {
+        alignment: DialogBaseAlignment.CENTER,
+        autoCancel: true,
+        maskColor: 0x33000000
+      }).then((result: DialogResult) => {
+        this.result = 'present success, dialogId: ' + result.dialogId;
+      }).catch((error: BusinessError) => {
+        this.result = `present error: ${error.code}`;
+      });
+    }
+  }
+  ```
+  
+  ![迁移后示例图](figures/CustomDialogAfterMigrate.png)
 
 - AlertDialog（告警弹出框）
 
-  老接口使用[UIContext.showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)弹出告警框，新接口使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出告警框，具体示例见表格下方。
+  | 属性 | 老接口（[UIContext.showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  |------|------|------|
+  | 编程模型 | `AlertDialog.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
+  | 标题 | `title: ResourceStr` | `title: ResourceStr` |
+  | 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
+  | 消息内容 | `message: ResourceStr` | `message: DialogMessage`（content + wordBreak） |
+  | 文本样式 | `textStyle: TextStyle` | `message.wordBreak: WordBreak`（通过 DialogMessage 设置） |
+  | 按钮 | `confirm`（单个）/ `primaryButton` + `secondaryButton`（两个）/ `buttons: Array<AlertDialogButtonOptions>`（多个） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/  enabled/primary/style/action） |
+  | 按钮排列 | `buttonDirection: DialogButtonDirection` | `buttonDirection: DialogButtonOrientation` |
+  | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（action-sheet 风格） |
+  | 网格数 | `gridCount: number` | `gridCount: number` |
+  | 确认回调 | `confirm` / `primaryButton.action` / `secondaryButton.action` / `buttons[].action` | `DialogButton.action`（通过 Promise 结果） |
+  | 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | 偏移 | `offset: Offset` | `offset: Offset` |
+  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
+  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | 模态 | `isModal: boolean` | `isModal: boolean` |
+  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | 背景色 | `backgroundColor` | `backgroundColor` |
+  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
+  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | 尺寸 | `width` / `height` | `width` / `height` |
+  | 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
+  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
+  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
-| 属性 | 老接口（AlertDialog.show） | 新接口（DialogPresenter.present + DialogStyleOptions） |
-|------|------|------|
-| 编程模型 | `AlertDialog.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
-| 标题 | `title: ResourceStr` | `title: ResourceStr` |
-| 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
-| 消息内容 | `message: ResourceStr` | `message: DialogMessage`（content + wordBreak） |
-| 文本样式 | `textStyle: TextStyle` | `message.wordBreak: WordBreak`（通过 DialogMessage 设置） |
-| 按钮 | `confirm`（单个）/ `primaryButton` + `secondaryButton`（两个）/ `buttons: Array<AlertDialogButtonOptions>`（多个） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） |
-| 按钮排列 | `buttonDirection: DialogButtonDirection` | `buttonDirection: DialogButtonOrientation` |
-| 操作菜单 | 无 | `sheets: Array<DialogSheet>`（action-sheet 风格） |
-| 网格数 | `gridCount: number` | `gridCount: number` |
-| 确认回调 | `confirm` / `primaryButton.action` / `secondaryButton.action` / `buttons[].action` | `DialogButton.action`（通过 Promise 结果） |
-| 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: Offset` | `offset: Offset` |
-| 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean` | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 背景色 | `backgroundColor` | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | `width` / `height` | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
+  **迁移前示例（老接口）：** 使用[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)弹出告警框，包含标题、消息和按钮。
 
-**迁移前示例（老接口）：** 使用[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)弹出告警框，包含标题、消息和按钮。
+  <!-- @[alert_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogBeforeMigrate.ets) -->
 
-<!-- @[alert_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogBeforeMigrate.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-export struct AlertDialogBeforeMigrate {
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Column() {
-        Button('打开 AlertDialog')
-          .onClick(() => {
-            this.getUIContext().showAlertDialog({
-              title: '提示',
-              message: '确认删除？',
-              autoCancel: true,
-              buttons: [
-                {
-                  value: '取消', action: () => {
-                  this.result = '取消';
-                }
-                },
-                {
-                  value: '确认', action: () => {
-                  this.result = '确认';
-                }
-                }
-              ],
-              cancel: () => {
-                this.result = 'cancel';
-              }
-            });
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
-
-![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
-
-**迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出告警框，通过Promise获取按钮点击结果。
-
-<!-- @[alert_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogAfterMigrate.ets) -->
-
-``` TypeScript
-import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct AlertDialogAfterMigrate {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Row() {
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct AlertDialogBeforeMigrate {
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
         Column() {
-          Text('AlertDialog 迁移示例')
-            .fontSize(18)
-            .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 20 })
-
-          Button('老接口：showAlertDialog')
-            .width('90%')
-            .margin({ bottom: 10 })
+          Button('打开 AlertDialog')
             .onClick(() => {
-              this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
+              this.getUIContext().showAlertDialog({
+                title: '提示',
+                message: '确认删除？',
+                autoCancel: true,
+                buttons: [
+                  {
+                    value: '取消', action: () => {
+                    this.result = '取消';
+                  }
+                  },
+                  {
+                    value: '确认', action: () => {
+                    this.result = '确认';
+                  }
+                  }
+                ],
+                cancel: () => {
+                  this.result = 'cancel';
+                }
+              });
             })
-
-          Button('新接口：DialogPresenter.present（固定样式弹窗）')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showNewAlertDialog();
-            })
-
+  
           if (this.result) {
             Text(this.result)
               .fontSize(14)
@@ -359,167 +302,165 @@ export struct AlertDialogAfterMigrate {
           }
         }
         .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
-      .height('100%')
     }
   }
-
-  private showNewAlertDialog(): void {
-    this.presenter.present({
-      title: '提示',
-      message: { content: '确认删除？' },
-      buttons: [
-        {
-          value: '取消', action: () => {
-          this.result = '用户点击取消';
+  ```
+  
+  ![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
+  
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出告警框，通过Promise获取按钮点击结果。
+  
+  <!-- @[alert_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/AlertDialogAfterMigrate.ets) -->
+  
+  ``` TypeScript
+  import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct AlertDialogAfterMigrate {
+    private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('AlertDialog 迁移示例')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+  
+            Button('老接口：showAlertDialog')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
+              })
+  
+            Button('新接口：DialogPresenter.present（固定样式弹窗）')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showNewAlertDialog();
+              })
+  
+            if (this.result) {
+              Text(this.result)
+                .fontSize(14)
+                .margin({ top: 10 })
+            }
+          }
+          .width('100%')
         }
-        },
-        {
-          value: '确认', action: () => {
-          this.result = '用户点击确认';
-        }
-        }
-      ],
-      alignment: DialogBaseAlignment.BOTTOM,
-      onWillDismiss: (dismissal: DialogDismissal) => {
-        this.result = 'onWillDismiss, reason: ' + dismissal.reason;
-        dismissal.dismiss();
+        .height('100%')
       }
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
+    }
+  
+    private showNewAlertDialog(): void {
+      this.presenter.present({
+        title: '提示',
+        message: { content: '确认删除？' },
+        buttons: [
+          {
+            value: '取消', action: () => {
+            this.result = '用户点击取消';
+          }
+          },
+          {
+            value: '确认', action: () => {
+            this.result = '用户点击确认';
+          }
+          }
+        ],
+        alignment: DialogBaseAlignment.BOTTOM,
+        onWillDismiss: (dismissal: DialogDismissal) => {
+          this.result = 'onWillDismiss, reason: ' + dismissal.reason;
+          dismissal.dismiss();
+        }
+      }).then((result: DialogResult) => {
+        this.result = 'present success, dialogId: ' + result.dialogId;
+      }).catch((error: BusinessError) => {
+        this.result = `present error: ${error.code}`;
+      });
+    }
   }
-}
-```
-
-![迁移后示例图](figures/AlertDialogAfterMigrate.png)
+  ```
+  
+  ![迁移后示例图](figures/AlertDialogAfterMigrate.png)
 
 - ActionSheet（列表选择弹出框）
 
-  老接口使用[UIContext.showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)弹出列表选择弹出框，新接口使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出列表选择弹出框，具体示例见表格下方。
+  | 属性 | 老接口（[UIContext.showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  |------|------|------|
+  | 编程模型 | `ActionSheet.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
+  | 标题 | `title: string \| Resource` | `title: ResourceStr` |
+  | 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
+  | 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
+  | 按钮 | `confirm: ActionSheetButtonOptions`（单个确认按钮） | `buttons: Array<DialogButton>` |
+  | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
+  | 操作菜单 | `sheets: Array<SheetInfo>`（title/icon/action） | `sheets: Array<DialogSheet>`（title/icon/action） |
+  | 网格数 | 无 | `gridCount: number` |
+  | 确认回调 | `confirm.action: VoidCallback` | `DialogButton.action` |
+  | 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | 偏移 | `offset: ActionSheetOffset`（含 dx/dy） | `offset: Offset`（含 dx/dy） |
+  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
+  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | 模态 | `isModal: boolean` | `isModal: boolean` |
+  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | 背景色 | `backgroundColor` | `backgroundColor` |
+  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
+  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | 尺寸 | `width` / `height` | `width` / `height` |
+  | 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
+  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
+  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
-| 属性 | 老接口（ActionSheet.show） | 新接口（DialogPresenter.present + DialogStyleOptions） |
-|------|------|------|
-| 编程模型 | `ActionSheet.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
-| 标题 | `title: string \| Resource` | `title: ResourceStr` |
-| 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
-| 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
-| 按钮 | `confirm: ActionSheetButtonOptions`（单个确认按钮） | `buttons: Array<DialogButton>` |
-| 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-| 操作菜单 | `sheets: Array<SheetInfo>`（title/icon/action） | `sheets: Array<DialogSheet>`（title/icon/action） |
-| 网格数 | 无 | `gridCount: number` |
-| 确认回调 | `confirm.action: VoidCallback` | `DialogButton.action` |
-| 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: ActionSheetOffset`（含 dx/dy） | `offset: Offset`（含 dx/dy） |
-| 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean` | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 背景色 | `backgroundColor` | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | `width` / `height` | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
-
-**迁移前示例（老接口）：** 使用[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)弹出列表选择弹出框，包含标题和菜单项。
-
-<!-- @[action_sheet_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetBeforeMigrate.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-export struct ActionSheetBeforeMigrate {
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Column() {
-        Button('打开 ActionSheet')
-          .onClick(() => {
-            this.getUIContext().showActionSheet({
-              title: '选择操作',
-              message: '请选择一个操作',
-              autoCancel: true,
-              sheets: [
-                {
-                  title: '复制', action: () => {
-                  this.result = '复制';
-                }
-                },
-                {
-                  title: '删除', action: () => {
-                  this.result = '删除';
-                }
-                }
-              ],
-              cancel: () => {
-                this.result = '取消';
-              }
-            });
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
-
-![迁移前示例图](figures/ActionSheetBeforeMigrate.png)
-
-**迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出列表选择弹出框，通过Promise获取选择结果。
-
-<!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets) -->
-
-``` TypeScript
-import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct ActionSheetAfterMigrate {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Row() {
+  **迁移前示例（老接口）：** 使用[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)弹出列表选择弹出框，包含标题和菜单项。
+  
+  <!-- @[action_sheet_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/ActionSheetBeforeMigrate.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct ActionSheetBeforeMigrate {
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
         Column() {
-          Text('ActionSheet 迁移示例')
-            .fontSize(18)
-            .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 20 })
-
-          Button('老接口：showActionSheet')
-            .width('90%')
-            .margin({ bottom: 10 })
+          Button('打开 ActionSheet')
             .onClick(() => {
-              this.result = '老接口示例请参考 ts-methods-action-sheet.md';
+              this.getUIContext().showActionSheet({
+                title: '选择操作',
+                message: '请选择一个操作',
+                autoCancel: true,
+                sheets: [
+                  {
+                    title: '复制', action: () => {
+                    this.result = '复制';
+                  }
+                  },
+                  {
+                    title: '删除', action: () => {
+                    this.result = '删除';
+                  }
+                  }
+                ],
+                cancel: () => {
+                  this.result = '取消';
+                }
+              });
             })
-
-          Button('新接口：DialogPresenter.present（列表选择弹窗）')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showNewActionSheet();
-            })
-
+  
           if (this.result) {
             Text(this.result)
               .fontSize(14)
@@ -527,158 +468,156 @@ export struct ActionSheetAfterMigrate {
           }
         }
         .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
-      .height('100%')
     }
   }
-
-  private showNewActionSheet(): void {
-    this.presenter.present({
-      title: '选择操作',
-      message: { content: '请选择一个操作' },
-      autoCancel: true,
-      sheets: [
-        { title: '复制', action: () => { this.result = '复制'; } },
-        { title: '删除', action: () => { this.result = '删除'; } }
-      ],
-      onWillDismiss: (dismissal: DialogDismissal) => {
-        this.result = '取消';
-        dismissal.dismiss();
+  ```
+  
+  ![迁移前示例图](figures/ActionSheetBeforeMigrate.png)
+  
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出列表选择弹出框，通过Promise获取选择结果。
+  
+  <!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/ActionSheetAfterMigrate.ets) -->
+  
+  ``` TypeScript
+  import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct ActionSheetAfterMigrate {
+    private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('ActionSheet 迁移示例')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+  
+            Button('老接口：showActionSheet')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.result = '老接口示例请参考 ts-methods-action-sheet.md';
+              })
+  
+            Button('新接口：DialogPresenter.present（列表选择弹窗）')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showNewActionSheet();
+              })
+  
+            if (this.result) {
+              Text(this.result)
+                .fontSize(14)
+                .margin({ top: 10 })
+            }
+          }
+          .width('100%')
+        }
+        .height('100%')
       }
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
+    }
+  
+    private showNewActionSheet(): void {
+      this.presenter.present({
+        title: '选择操作',
+        message: { content: '请选择一个操作' },
+        autoCancel: true,
+        sheets: [
+          { title: '复制', action: () => { this.result = '复制'; } },
+          { title: '删除', action: () => { this.result = '删除'; } }
+        ],
+        onWillDismiss: (dismissal: DialogDismissal) => {
+          this.result = '取消';
+          dismissal.dismiss();
+        }
+      }).then((result: DialogResult) => {
+        this.result = 'present success, dialogId: ' + result.dialogId;
+      }).catch((error: BusinessError) => {
+        this.result = `present error: ${error.code}`;
+      });
+    }
   }
-}
-```
-
-![迁移后示例图](figures/ActionSheetAfterMigrate.png)
+  ```
+  
+  ![迁移后示例图](figures/ActionSheetAfterMigrate.png)
 
 - promptAction.showDialog（对话框）
 
-  老接口使用[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)弹出对话框，新接口使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出对话框，具体示例见表格下方。
+  | 属性 | 老接口（[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  |------|------|------|
+  | 编程模型 | `promptAction.showDialog(options): Promise<ShowDialogSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
+  | 标题 | `title: string \| Resource` | `title: ResourceStr` |
+  | 副标题 | 无 | `subtitle: ResourceStr`（新增） |
+  | 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
+  | 按钮 | `buttons: Array<Button>`（仅 text + color + primary） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） |
+  | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
+  | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（新增） |
+  | 网格数 | 无 | `gridCount: number` |
+  | 确认回调 | 通过 `ShowDialogSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
+  | 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
+  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | 偏移 | `offset: Offset` | `offset: Offset` |
+  | 自动取消 | 无 | `autoCancel: boolean` |
+  | 蒙层颜色 | 无 | `maskColor: ResourceColor` |
+  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | 模态 | `isModal: boolean` | `isModal: boolean` |
+  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | 背景色 | `backgroundColor` | `backgroundColor` |
+  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
+  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | 尺寸 | 无 | `width` / `height` |
+  | 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
+  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
+  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
-| 属性 | 老接口（promptAction.showDialog） | 新接口（DialogPresenter.present + DialogStyleOptions） |
-|------|------|------|
-| 编程模型 | `promptAction.showDialog(options): Promise<ShowDialogSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
-| 标题 | `title: string \| Resource` | `title: ResourceStr` |
-| 副标题 | 无 | `subtitle: ResourceStr`（新增） |
-| 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
-| 按钮 | `buttons: Array<Button>`（仅 text + color + primary） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） |
-| 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-| 操作菜单 | 无 | `sheets: Array<DialogSheet>`（新增） |
-| 网格数 | 无 | `gridCount: number` |
-| 确认回调 | 通过 `ShowDialogSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
-| 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
-| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: Offset` | `offset: Offset` |
-| 自动取消 | 无 | `autoCancel: boolean` |
-| 蒙层颜色 | 无 | `maskColor: ResourceColor` |
-| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean` | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 背景色 | `backgroundColor` | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | 无 | `width` / `height` |
-| 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
-
-**迁移前示例（老接口）：** 使用[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)弹出对话框，包含标题、消息和按钮。
-
-<!-- @[show_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogBeforeMigrate.ets) -->
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct ShowDialogBeforeMigrate {
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Column() {
-        Button('打开 showDialog')
-          .onClick(() => {
-            this.getUIContext()
-              .getPromptAction()
-              .showDialog({
-                title: '提示',
-                message: '确认删除？',
-                buttons: [
-                  { text: '取消', color: '#666666' },
-                  { text: '确认', color: '#0000FF' }
-                ]
-              })
-              .then((data) => {
-                this.result = 'click button index: ' + data.index;
-              })
-              .catch((error: BusinessError) => {
-                this.result = `showDialog error: ${error.code}`;
-              });
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
-
-![迁移前示例图](figures/ShowDialogBeforeMigrate.png)
-
-**迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出对话框，通过Promise获取按钮点击结果。
-
-<!-- @[show_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogAfterMigrate.ets) -->
-
-``` TypeScript
-import { DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct ShowDialogAfterMigrate {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Row() {
+  **迁移前示例（老接口）：** 使用[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)弹出对话框，包含标题、消息和按钮。
+  
+  <!-- @[show_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/ShowDialogBeforeMigrate.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct ShowDialogBeforeMigrate {
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
         Column() {
-          Text('showDialog 迁移示例')
-            .fontSize(18)
-            .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 20 })
-
-          Button('老接口：promptAction.showDialog')
-            .width('90%')
-            .margin({ bottom: 10 })
+          Button('打开 showDialog')
             .onClick(() => {
-              this.result = '老接口示例请参考 js-apis-promptAction.md';
+              this.getUIContext()
+                .getPromptAction()
+                .showDialog({
+                  title: '提示',
+                  message: '确认删除？',
+                  buttons: [
+                    { text: '取消', color: '#666666' },
+                    { text: '确认', color: '#0000FF' }
+                  ]
+                })
+                .then((data) => {
+                  this.result = 'click button index: ' + data.index;
+                })
+                .catch((error: BusinessError) => {
+                  this.result = `showDialog error: ${error.code}`;
+                });
             })
-
-          Button('新接口：DialogPresenter.present（对话框）')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showNewDialog();
-            })
-
+  
           if (this.result) {
             Text(this.result)
               .fontSize(14)
@@ -686,153 +625,151 @@ export struct ShowDialogAfterMigrate {
           }
         }
         .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
-      .height('100%')
     }
   }
-
-  private showNewDialog(): void {
-    this.presenter.present({
-      title: '提示',
-      message: { content: '确认删除？' },
-      buttons: [
-        { value: '取消', action: () => { this.result = '取消'; } },
-        { value: '确认', action: () => { this.result = '确认'; } }
-      ]
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
+  ```
+  
+  ![迁移前示例图](figures/ShowDialogBeforeMigrate.png)
+  
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出对话框，通过Promise获取按钮点击结果。
+  
+  <!-- @[show_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/ShowDialogAfterMigrate.ets) -->
+  
+  ``` TypeScript
+  import { DialogPresenter, DialogResult } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct ShowDialogAfterMigrate {
+    private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('showDialog 迁移示例')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+  
+            Button('老接口：promptAction.showDialog')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.result = '老接口示例请参考 js-apis-promptAction.md';
+              })
+  
+            Button('新接口：DialogPresenter.present（对话框）')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showNewDialog();
+              })
+  
+            if (this.result) {
+              Text(this.result)
+                .fontSize(14)
+                .margin({ top: 10 })
+            }
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+  
+    private showNewDialog(): void {
+      this.presenter.present({
+        title: '提示',
+        message: { content: '确认删除？' },
+        buttons: [
+          { value: '取消', action: () => { this.result = '取消'; } },
+          { value: '确认', action: () => { this.result = '确认'; } }
+        ]
+      }).then((result: DialogResult) => {
+        this.result = 'present success, dialogId: ' + result.dialogId;
+      }).catch((error: BusinessError) => {
+        this.result = `present error: ${error.code}`;
+      });
+    }
   }
-}
-```
-
-![迁移后示例图](figures/ShowDialogAfterMigrate.png)
+  ```
+  
+  ![迁移后示例图](figures/ShowDialogAfterMigrate.png)
 
 - promptAction.showActionMenu（操作菜单）
 
-  老接口使用[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)弹出操作菜单，新接口使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出操作菜单，具体示例见表格下方。
+  | 属性 | 老接口（[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  |------|------|------|
+  | 编程模型 | `promptAction.showActionMenu(options): Promise<ActionMenuSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
+  | 标题 | `title: string \| Resource` | `title: ResourceStr` |
+  | 副标题 | 无 | `subtitle: ResourceStr`（新增） |
+  | 消息内容 | 无 | `message: DialogMessage`（新增） |
+  | 按钮 | `buttons: [Button, ...]`（1-6 个，仅 text + color + primary） | `buttons: Array<DialogButton>`（无数量限制，含 value/fontColor/backgroundColor/enabled/primary/style/action） |
+  | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
+  | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（新增） |
+  | 网格数 | 无 | `gridCount: number` |
+  | 确认回调 | 通过 `ActionMenuSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
+  | 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
+  | 对齐 | 无 | `alignment: DialogBaseAlignment` |
+  | 偏移 | 无 | `offset: Offset` |
+  | 自动取消 | 无 | `autoCancel: boolean` |
+  | 蒙层颜色 | 无 | `maskColor: ResourceColor` |
+  | 蒙层区域 | 无 | `maskRect: Rectangle` |
+  | 模态 | `isModal: boolean` | `isModal: boolean` |
+  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | 背景色 | 无 | `backgroundColor` |
+  | 背景模糊 | 无 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
+  | 阴影 | 无 | `shadow: ShadowOptions \| ShadowStyle` |
+  | 尺寸 | 无 | `width` / `height` |
+  | 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
+  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
+  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | 悬浮模式 | 无 | `enableHoverMode` + `hoverModeArea` |
+  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
-| 属性 | 老接口（promptAction.showActionMenu） | 新接口（DialogPresenter.present + DialogStyleOptions） |
-|------|------|------|
-| 编程模型 | `promptAction.showActionMenu(options): Promise<ActionMenuSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
-| 标题 | `title: string \| Resource` | `title: ResourceStr` |
-| 副标题 | 无 | `subtitle: ResourceStr`（新增） |
-| 消息内容 | 无 | `message: DialogMessage`（新增） |
-| 按钮 | `buttons: [Button, ...]`（1-6 个，仅 text + color + primary） | `buttons: Array<DialogButton>`（无数量限制，含 value/fontColor/backgroundColor/enabled/primary/style/action） |
-| 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-| 操作菜单 | 无 | `sheets: Array<DialogSheet>`（新增） |
-| 网格数 | 无 | `gridCount: number` |
-| 确认回调 | 通过 `ActionMenuSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
-| 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
-| 对齐 | 无 | `alignment: DialogBaseAlignment` |
-| 偏移 | 无 | `offset: Offset` |
-| 自动取消 | 无 | `autoCancel: boolean` |
-| 蒙层颜色 | 无 | `maskColor: ResourceColor` |
-| 蒙层区域 | 无 | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean` | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 背景色 | 无 | `backgroundColor` |
-| 背景模糊 | 无 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-| 阴影 | 无 | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | 无 | `width` / `height` |
-| 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 悬浮模式 | 无 | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
-
-**迁移前示例（老接口）：** 使用[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)弹出操作菜单，包含标题和菜单项。
-
-<!-- @[action_menu_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuBeforeMigrate.ets) -->
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct ActionMenuBeforeMigrate {
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Column() {
-        Button('打开 showActionMenu')
-          .onClick(() => {
-            this.getUIContext()
-              .getPromptAction()
-              .showActionMenu({
-                title: '选择操作',
-                buttons: [
-                  { text: '保存', color: '#0000FF' },
-                  { text: '分享', color: '#0000FF' },
-                  { text: '删除', color: '#FF0000' }
-                ]
-              })
-              .then((data) => {
-                this.result = 'click button index: ' + data.index;
-              })
-              .catch((error: BusinessError) => {
-                this.result = `showActionMenu error: ${error.code}`;
-              });
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
-
-![迁移前示例图](figures/ActionMenuBeforeMigrate.png)
-
-**迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出操作菜单，通过Promise获取选择结果。
-
-<!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets) -->
-
-``` TypeScript
-import { DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct ActionMenuAfterMigrate {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Row() {
+  **迁移前示例（老接口）：** 使用[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)弹出操作菜单，包含标题和菜单项。
+  
+  <!-- @[action_menu_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/ActionMenuBeforeMigrate.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct ActionMenuBeforeMigrate {
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
         Column() {
-          Text('showActionMenu 迁移示例')
-            .fontSize(18)
-            .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 20 })
-
-          Button('老接口：promptAction.showActionMenu')
-            .width('90%')
-            .margin({ bottom: 10 })
+          Button('打开 showActionMenu')
             .onClick(() => {
-              this.result = '老接口示例请参考 js-apis-promptAction.md';
+              this.getUIContext()
+                .getPromptAction()
+                .showActionMenu({
+                  title: '选择操作',
+                  buttons: [
+                    { text: '保存', color: '#0000FF' },
+                    { text: '分享', color: '#0000FF' },
+                    { text: '删除', color: '#FF0000' }
+                  ]
+                })
+                .then((data) => {
+                  this.result = 'click button index: ' + data.index;
+                })
+                .catch((error: BusinessError) => {
+                  this.result = `showActionMenu error: ${error.code}`;
+                });
             })
-
-          Button('新接口：DialogPresenter.present（操作菜单）')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showNewActionMenu();
-            })
-
+  
           if (this.result) {
             Text(this.result)
               .fontSize(14)
@@ -840,162 +777,159 @@ export struct ActionMenuAfterMigrate {
           }
         }
         .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
-      .height('100%')
     }
   }
-
-  private showNewActionMenu(): void {
-    this.presenter.present({
-      title: '选择操作',
-      buttons: [
-        { value: '保存', action: () => { this.result = '保存'; } },
-        { value: '分享', action: () => { this.result = '分享'; } },
-        { value: '删除', action: () => { this.result = '删除'; } }
-      ]
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
+  ```
+  
+  ![迁移前示例图](figures/ActionMenuBeforeMigrate.png)
+  
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出操作菜单，通过Promise获取选择结果。
+  
+  <!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/ActionMenuAfterMigrate.ets) -->
+  
+  ``` TypeScript
+  import { DialogPresenter, DialogResult } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct ActionMenuAfterMigrate {
+    private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('showActionMenu 迁移示例')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+  
+            Button('老接口：promptAction.showActionMenu')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.result = '老接口示例请参考 js-apis-promptAction.md';
+              })
+  
+            Button('新接口：DialogPresenter.present（操作菜单）')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showNewActionMenu();
+              })
+  
+            if (this.result) {
+              Text(this.result)
+                .fontSize(14)
+                .margin({ top: 10 })
+            }
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+  
+    private showNewActionMenu(): void {
+      this.presenter.present({
+        title: '选择操作',
+        buttons: [
+          { value: '保存', action: () => { this.result = '保存'; } },
+          { value: '分享', action: () => { this.result = '分享'; } },
+          { value: '删除', action: () => { this.result = '删除'; } }
+        ]
+      }).then((result: DialogResult) => {
+        this.result = 'present success, dialogId: ' + result.dialogId;
+      }).catch((error: BusinessError) => {
+        this.result = `present error: ${error.code}`;
+      });
+    }
   }
-}
-```
-
-![迁移后示例图](figures/ActionMenuAfterMigrate.png)
+  ```
+  
+  ![迁移后示例图](figures/ActionMenuAfterMigrate.png)
 
 - promptAction.presentCustomDialog（自定义弹出框）
 
-  老接口使用[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)弹出自定义弹出框，新接口使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出自定义弹出框，具体示例见表格下方。
+  | 属性 | 老接口（[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  |------|------|------|
+  | 编程模型 | `promptAction.presentCustomDialog(builder, controller?, options?): Promise<number>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
+  | 内容构建 | `CustomBuilder` / `CustomBuilderWithId` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
+  | 控制器 | `promptAction.DialogController` | `DialogBaseController` |
+  | 选项类型 | `DialogOptions`（继承 `BaseDialogOptions`） | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
+  | 样式控制 | 无 `customStyle` 属性（内容样式完全由 builder 决定） | `customStyle: boolean` |
+  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | 偏移 | `offset: Offset` | `offset: Offset` |
+  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
+  | 蒙层颜色 | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
+  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | 模态 | `isModal: boolean` | `isModal: boolean` |
+  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | 背景色 | `backgroundColor`（`DialogOptions`） | `backgroundColor` |
+  | 背景模糊 | `backgroundBlurStyle`（`DialogOptions`） + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle`（`DialogOptions`） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为   `borderRadius`） |
+  | 阴影 | `shadow`（`DialogOptions`） | `shadow: ShadowOptions \| ShadowStyle` |
+  | 尺寸 | `width` / `height`（`DialogOptions`） | `width` / `height` |
+  | 过渡动画 | `transition: TransitionEffect` / `dialogTransition` | `dialogTransition: TransitionEffect` |
+  | 蒙层动画 | `maskTransition: TransitionEffect` | `maskTransition: TransitionEffect` |
+  | 焦点 | `focusable: boolean` | `focusable: boolean` |
+  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | 取消回调 | `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+  | 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
+  | 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
-| 属性 | 老接口（promptAction.presentCustomDialog） | 新接口（DialogPresenter.present + DialogCustomOptions） |
-|------|------|------|
-| 编程模型 | `promptAction.presentCustomDialog(builder, controller?, options?): Promise<number>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
-| 内容构建 | `CustomBuilder` / `CustomBuilderWithId` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
-| 控制器 | `promptAction.DialogController` | `DialogBaseController` |
-| 选项类型 | `DialogOptions`（继承 `BaseDialogOptions`） | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
-| 样式控制 | 无 `customStyle` 属性（内容样式完全由 builder 决定） | `customStyle: boolean` |
-| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: Offset` | `offset: Offset` |
-| 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-| 蒙层颜色 | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
-| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean` | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 背景色 | `backgroundColor`（`DialogOptions`） | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle`（`DialogOptions`） + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle`（`DialogOptions`） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
-| 阴影 | `shadow`（`DialogOptions`） | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | `width` / `height`（`DialogOptions`） | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect` / `dialogTransition` | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | `maskTransition: TransitionEffect` | `maskTransition: TransitionEffect` |
-| 焦点 | `focusable: boolean` | `focusable: boolean` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-| 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-| 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
-
-**迁移前示例（老接口）：** 使用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)弹出自定义弹出框。
-
-<!-- @[present_custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogBeforeMigrate.ets) -->
-
-``` TypeScript
-import { promptAction } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct PresentCustomDialogBeforeMigrate {
-  private dialogController: promptAction.DialogController = new promptAction.DialogController();
-  @State result: string = '';
-
-  @Builder customDialogComponent() {
-    Column() {
-      Text('自定义弹窗内容')
-        .fontSize(16)
-        .margin({ bottom: 10 })
-      Button('关闭弹窗')
-        .onClick(() => {
-          this.dialogController.close();
-        })
-    }
-    .padding(20)
-  }
-
-  build() {
-    NavDestination() {
+  **迁移前示例（老接口）：** 使用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)弹出自定义弹出框。
+  
+  <!-- @[present_custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/  pages/opencustomdialog/PresentCustomDialogBeforeMigrate.ets) -->
+  
+  ``` TypeScript
+  import { promptAction } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct PresentCustomDialogBeforeMigrate {
+    private dialogController: promptAction.DialogController = new promptAction.DialogController();
+    @State result: string = '';
+  
+    @Builder customDialogComponent() {
       Column() {
-        Button('打开 presentCustomDialog')
+        Text('自定义弹窗内容')
+          .fontSize(16)
+          .margin({ bottom: 10 })
+        Button('关闭弹窗')
           .onClick(() => {
-            this.getUIContext()
-              .getPromptAction()
-              .presentCustomDialog(() => {
-                this.customDialogComponent()
-              }, this.dialogController, { autoCancel: true })
-              .then((dialogId: number) => {
-                this.result = 'present success, dialogId: ' + dialogId;
-              })
-              .catch((error: BusinessError) => {
-                this.result = `present error: ${error.code}`;
-              });
+            this.dialogController.close();
           })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
       }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
+      .padding(20)
     }
-  }
-}
-```
-
-![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png)
-
-**迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出自定义弹出框，通过Promise获取返回结果。
-
-<!-- @[present_custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogAfterMigrate.ets) -->
-
-``` TypeScript
-import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct PresentCustomDialogAfterMigrate {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  private controller: DialogBaseController = new DialogBaseController();
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Row() {
+  
+    build() {
+      NavDestination() {
         Column() {
-          Text('presentCustomDialog 迁移示例')
-            .fontSize(18)
-            .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 20 })
-
-          Button('老接口：promptAction.presentCustomDialog')
-            .width('90%')
-            .margin({ bottom: 10 })
+          Button('打开 presentCustomDialog')
             .onClick(() => {
-              this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+              this.getUIContext()
+                .getPromptAction()
+                .presentCustomDialog(() => {
+                  this.customDialogComponent()
+                }, this.dialogController, { autoCancel: true })
+                .then((dialogId: number) => {
+                  this.result = 'present success, dialogId: ' + dialogId;
+                })
+                .catch((error: BusinessError) => {
+                  this.result = `present error: ${error.code}`;
+                });
             })
-
-          Button('新接口：DialogPresenter.present（自定义弹窗）')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showNewCustomDialog();
-            })
-
+  
           if (this.result) {
             Text(this.result)
               .fontSize(14)
@@ -1003,183 +937,181 @@ export struct PresentCustomDialogAfterMigrate {
           }
         }
         .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
-      .height('100%')
     }
   }
-
-  @Builder
-  CustomComponentContent() {
-    Column() {
-      Text('自定义弹窗内容')
-        .fontSize(16)
-        .margin({ bottom: 10 })
-      Button('关闭弹窗')
-        .onClick(() => {
-          this.controller.close();
-        })
+  ```
+  
+  ![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png)
+  
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出自定义弹出框，通过Promise获取返回结果。
+  
+  <!-- @[present_custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/  opencustomdialog/PresentCustomDialogAfterMigrate.ets) -->
+  
+  ``` TypeScript
+  import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct PresentCustomDialogAfterMigrate {
+    private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+    private controller: DialogBaseController = new DialogBaseController();
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('presentCustomDialog 迁移示例')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+  
+            Button('老接口：promptAction.presentCustomDialog')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+              })
+  
+            Button('新接口：DialogPresenter.present（自定义弹窗）')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showNewCustomDialog();
+              })
+  
+            if (this.result) {
+              Text(this.result)
+                .fontSize(14)
+                .margin({ top: 10 })
+            }
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
     }
-    .padding(20)
+  
+    @Builder
+    CustomComponentContent() {
+      Column() {
+        Text('自定义弹窗内容')
+          .fontSize(16)
+          .margin({ bottom: 10 })
+        Button('关闭弹窗')
+          .onClick(() => {
+            this.controller.close();
+          })
+      }
+      .padding(20)
+    }
+  
+    private showNewCustomDialog(): void {
+      this.presenter.present(() => {
+        this.CustomComponentContent()
+      }, {
+        controller: this.controller,
+        autoCancel: true
+      }).then((result: DialogResult) => {
+        this.result = 'present success, dialogId: ' + result.dialogId;
+      }).catch((error: BusinessError) => {
+        this.result = `present error: ${error.code}`;
+      });
+    }
   }
-
-  private showNewCustomDialog(): void {
-    this.presenter.present(() => {
-      this.CustomComponentContent()
-    }, {
-      controller: this.controller,
-      autoCancel: true
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
+  ```
+  
+  ![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
 
 - promptAction.openCustomDialogWithController（带控制器的自定义弹出框）
 
-  老接口使用[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)弹出带控制器的自定义弹出框，新接口使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出带控制器的自定义弹出框，具体示例见表格下方。
+  | 属性 | 老接口（[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  |------|------|------|
+  | 编程模型 | `promptAction.openCustomDialogWithController(content, controller, options?): Promise<void>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
+  | 内容构建 | `ComponentContent<Object>` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
+  | 控制器 | `promptAction.DialogController`  | `DialogBaseController` |
+  | 选项类型 | `BaseDialogOptions` | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
+  | 样式控制 | 无 `customStyle` 属性（内容样式完全由 ComponentContent 决定） | `customStyle: boolean` |
+  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | 偏移 | `offset: Offset` | `offset: Offset` |
+  | 自动取消 | `autoCancel: boolean`  | `autoCancel: boolean` |
+  | 蒙层颜色 | `maskColor: ResourceColor`  | `maskColor: ResourceColor` |
+  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | 模态 | `isModal: boolean` | `isModal: boolean` |
+  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | 背景色 | 无（`BaseDialogOptions` 不含 `backgroundColor`） | `backgroundColor` |
+  | 背景模糊 | `backgroundBlurStyleOptions`  + `backgroundEffect`  | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | 边框 | 无（`BaseDialogOptions` 不含边框属性） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
+  | 阴影 | 无（`BaseDialogOptions` 不含 `shadow`） | `shadow: ShadowOptions \| ShadowStyle` |
+  | 尺寸 | 无（`BaseDialogOptions` 不含 `width` / `height`） | `width` / `height` |
+  | 过渡动画 | `transition: TransitionEffect`  / `dialogTransition`  | `dialogTransition: TransitionEffect` |
+  | 蒙层动画 | `maskTransition: TransitionEffect`  | `maskTransition: TransitionEffect` |
+  | 焦点 | `focusable: boolean`  | `focusable: boolean` |
+  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`  | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`  | `onWillDismiss: Callback<DialogDismissal>` |
+  | 键盘避让 | `keyboardAvoidMode`  + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+  | 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
+  | 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
-| 属性 | 老接口（promptAction.openCustomDialogWithController） | 新接口（DialogPresenter.present + DialogCustomOptions） |
-|------|------|------|
-| 编程模型 | `promptAction.openCustomDialogWithController(content, controller, options?): Promise<void>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
-| 内容构建 | `ComponentContent<Object>` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
-| 控制器 | `promptAction.DialogController`  | `DialogBaseController` |
-| 选项类型 | `BaseDialogOptions` | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
-| 样式控制 | 无 `customStyle` 属性（内容样式完全由 ComponentContent 决定） | `customStyle: boolean` |
-| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: Offset` | `offset: Offset` |
-| 自动取消 | `autoCancel: boolean`  | `autoCancel: boolean` |
-| 蒙层颜色 | `maskColor: ResourceColor`  | `maskColor: ResourceColor` |
-| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean` | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 背景色 | 无（`BaseDialogOptions` 不含 `backgroundColor`） | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyleOptions`  + `backgroundEffect`  | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | 无（`BaseDialogOptions` 不含边框属性） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-| 阴影 | 无（`BaseDialogOptions` 不含 `shadow`） | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | 无（`BaseDialogOptions` 不含 `width` / `height`） | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect`  / `dialogTransition`  | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | `maskTransition: TransitionEffect`  | `maskTransition: TransitionEffect` |
-| 焦点 | `focusable: boolean`  | `focusable: boolean` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`  | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`  | `onWillDismiss: Callback<DialogDismissal>` |
-| 键盘避让 | `keyboardAvoidMode`  + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-| 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
-
-**迁移前示例（老接口）：** 使用[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)弹出带控制器的自定义弹出框。
-
-<!-- @[open_custom_dialog_with_controller_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerBeforeMigrate.ets) -->
-
-``` TypeScript
-import { ComponentContent, promptAction } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class Params {
-  public text: string = '';
-
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column() {
-    Text(params.text)
-      .fontSize(16)
-      .margin({ bottom: 10 })
-  }
-  .padding(20)
-}
-
-@Entry
-@Component
-export struct OpenCustomDialogWithControllerBeforeMigrate {
-  private dialogController: promptAction.DialogController = new promptAction.DialogController();
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Column() {
-        Button('打开 openCustomDialogWithController')
-          .onClick(() => {
-            let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
-              new Params('自定义弹窗内容'));
-            this.getUIContext()
-              .getPromptAction()
-              .openCustomDialogWithController(contentNode,
-                this.dialogController, {
-                  autoCancel: true,
-                  alignment: DialogAlignment.Center
-                })
-              .then(() => {
-                this.result = 'opened';
-              })
-              .catch((error: BusinessError) => {
-                this.result = `open error: ${error.code}`;
-              });
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
+  **迁移前示例（老接口）：** 使用[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)弹出带控制器的自定义弹出框。
+  
+  <!-- @[open_custom_dialog_with_controller_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/  main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerBeforeMigrate.ets) -->
+  
+  ``` TypeScript
+  import { ComponentContent, promptAction } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  class Params {
+    public text: string = '';
+  
+    constructor(text: string) {
+      this.text = text;
     }
   }
-}
-```
-
-![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
-
-**迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出带控制器的自定义弹出框，通过Promise获取返回结果。
-
-<!-- @[open_custom_dialog_with_controller_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets) -->
-
-``` TypeScript
-import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-export struct OpenCustomDialogWithControllerAfterMigrate {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  private controller: DialogBaseController = new DialogBaseController();
-  @State result: string = '';
-
-  build() {
-    NavDestination() {
-      Row() {
+  
+  @Builder
+  function buildText(params: Params) {
+    Column() {
+      Text(params.text)
+        .fontSize(16)
+        .margin({ bottom: 10 })
+    }
+    .padding(20)
+  }
+  
+  @Entry
+  @Component
+  export struct OpenCustomDialogWithControllerBeforeMigrate {
+    private dialogController: promptAction.DialogController = new promptAction.DialogController();
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
         Column() {
-          Text('openCustomDialogWithController 迁移示例')
-            .fontSize(18)
-            .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 20 })
-
-          Button('老接口：promptAction.openCustomDialogWithController')
-            .width('90%')
-            .margin({ bottom: 10 })
+          Button('打开 openCustomDialogWithController')
             .onClick(() => {
-              this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+              let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
+                new Params('自定义弹窗内容'));
+              this.getUIContext()
+                .getPromptAction()
+                .openCustomDialogWithController(contentNode,
+                  this.dialogController, {
+                    autoCancel: true,
+                    alignment: DialogAlignment.Center
+                  })
+                .then(() => {
+                  this.result = 'opened';
+                })
+                .catch((error: BusinessError) => {
+                  this.result = `open error: ${error.code}`;
+                });
             })
-
-          Button('新接口：DialogPresenter.present（自定义弹窗）')
-            .width('90%')
-            .margin({ bottom: 10 })
-            .onClick(() => {
-              this.showNewCustomDialog();
-            })
-
+  
           if (this.result) {
             Text(this.result)
               .fontSize(14)
@@ -1187,42 +1119,96 @@ export struct OpenCustomDialogWithControllerAfterMigrate {
           }
         }
         .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
-      .height('100%')
     }
   }
-
-  @Builder
-  CustomContent() {
-    Column() {
-      Text('自定义弹窗内容')
-        .fontSize(16)
-        .margin({ bottom: 10 })
-      Button('关闭弹窗')
-        .onClick(() => {
-          this.controller.close();
-        })
+  ```
+  
+  ![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
+  
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出带控制器的自定义弹出框，通过Promise获取返回结果。
+  
+  <!-- @[open_custom_dialog_with_controller_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/  main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets) -->
+  
+  ``` TypeScript
+  import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  export struct OpenCustomDialogWithControllerAfterMigrate {
+    private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+    private controller: DialogBaseController = new DialogBaseController();
+    @State result: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('openCustomDialogWithController 迁移示例')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+              .margin({ bottom: 20 })
+  
+            Button('老接口：promptAction.openCustomDialogWithController')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+              })
+  
+            Button('新接口：DialogPresenter.present（自定义弹窗）')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showNewCustomDialog();
+              })
+  
+            if (this.result) {
+              Text(this.result)
+                .fontSize(14)
+                .margin({ top: 10 })
+            }
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
     }
-    .padding(20)
+  
+    @Builder
+    CustomContent() {
+      Column() {
+        Text('自定义弹窗内容')
+          .fontSize(16)
+          .margin({ bottom: 10 })
+        Button('关闭弹窗')
+          .onClick(() => {
+            this.controller.close();
+          })
+      }
+      .padding(20)
+    }
+  
+    private showNewCustomDialog(): void {
+      this.presenter.present(() => {
+        this.CustomContent()
+      }, {
+        controller: this.controller,
+        autoCancel: true,
+        alignment: DialogBaseAlignment.CENTER
+      }).then((result: DialogResult) => {
+        this.result = 'present success, dialogId: ' + result.dialogId;
+      }).catch((error: BusinessError) => {
+        this.result = `present error: ${error.code}`;
+      });
+    }
   }
-
-  private showNewCustomDialog(): void {
-    this.presenter.present(() => {
-      this.CustomContent()
-    }, {
-      controller: this.controller,
-      autoCancel: true,
-      alignment: DialogBaseAlignment.CENTER
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
+  ```
+  
+  ![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
 
 - 高级动画参数差异
 
@@ -1625,7 +1611,7 @@ export struct OpenDialogAndUpdate {
 
 **迁移后示例（新接口）：**
 
-下述示例为基于Router路由模式下的页面级弹出框。
+- 基于Router路由模式下的页面级弹出框：
 
 <!-- @[page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
 
@@ -1718,7 +1704,7 @@ struct Next {
 
 ![页面级弹出框1](figures/RoutePageLevelDialogBasePresenter.gif)
 
-下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
+- 基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
 
 <!-- @[page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogInNavigation.ets) -->
 
