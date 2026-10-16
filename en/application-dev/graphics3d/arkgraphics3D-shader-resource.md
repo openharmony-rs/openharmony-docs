@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=9337b894cc276e9d41c374e020c39c9ad5e59a9d translatedAt=2026-09-20T06:51:30.989Z pushedAt=2026-09-20T08:27:17.778Z -->
+<!-- md-trans-meta sourceCommit=6ea55b569873c1e56b6be083cc1e723f695ae222 translatedAt=2026-10-13T13:00:58.246Z pushedAt=2026-10-16T02:45:01.515Z -->
 
 In ArkGraphics 3D, .shader files are based on the JSON format and must adhere to JSON syntax. These files consist of the following sections:
 
@@ -215,11 +215,11 @@ Specifies the blending properties of the rendering source and destination in thi
    - **alphaBlendOp**: specifies the blending option for the source and destination alpha channels. The following table lists the values and their meanings.
      | Value| Description|
      | :----: | :----: |
-     | "add" | Adds the source and destination alphas.|
-     | "subtract" | Subtracts the destination alpha from the source alpha.|
-     | "reverse_subtract" | Subtracts the source alpha from the destination alpha.|
-     | "min" | Takes the minimum of the source and destination alphas.|
-     | "max" | Takes the maximum of the source and destination alphas.|
+     | "add" | Source alpha + Destination alpha |
+     | "subtract" | Source alpha - Destination alpha |
+     | "reverse_subtract" | Destination alpha - Source alpha |
+     | "min" | Takes the minimum of the source and destination alphas. |
+     | "max" | Takes the maximum of the source and destination alphas. |
 
 ## materialMetadata
  - Type: `array<MaterialMetadata>`

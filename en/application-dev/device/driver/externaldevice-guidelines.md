@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=8e92ad7d2c5176006885e7473a8759d4a32dfa84 translatedAt=2026-09-14T08:43:26.222Z pushedAt=2026-09-15T10:32:46.136Z -->
+<!-- md-trans-meta sourceCommit=7c0f82bbecfb43d53c7c1cbe2897743059d65942 translatedAt=2026-10-13T12:45:37.959Z pushedAt=2026-10-15T10:17:02.065Z -->
 
 ## When to Use
 
@@ -59,7 +59,7 @@ The following sample code is a demo that illustrates how to develop both the cli
    > All the following sample code is written in the **entry/src/main/ets/pages/Index.ets** file.
 
    <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { deviceManager } from '@kit.DriverDevelopmentKit';
@@ -79,7 +79,7 @@ The following sample code is a demo that illustrates how to develop both the cli
    > The following APIs are defined in **struct Index{}**.
 
    <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    @State message: string = 'Hello';
    private remote: rpc.IRemoteObject | null = null;
@@ -88,7 +88,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 4. Define the **queryDevices** API, and use it to obtain the device ID of the peripheral.
 
    <!-- @[driver_ui_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    private async queryTargetDeviceId(): Promise<number> {
      try {
@@ -112,16 +112,16 @@ The following sample code is a demo that illustrates how to develop both the cli
    }
    ```
 
-5. Define the **bindDriverWithDeviceId** API, and use it to obtain the remote object.
+5. Define the interface for obtaining the corresponding driver remote object, and obtain the remote object through bindDriverWithDeviceId.
 
    <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
      try {
        let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
          (err: BusinessError, id: number) => {
-           hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
+           hilog.error(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
          });
        return remoteDeviceDriver.remote;
      } catch (error) {
@@ -134,7 +134,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 6. Define the **sendMessageRequest** API, and use it to perform IPC with the remote object.
 
    <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    private async communicateWithRemote(): Promise<void> {
      const deviceId: number = await this.queryTargetDeviceId();
@@ -171,7 +171,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 7. Render the UI. For details about UI development, see [UI Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-development).
 
    <!-- @[driver_ui_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    build() {
      Row() {
@@ -195,7 +195,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 <!--RP1-->
 ## Application Signing
 
-> **NOTE**
+> **NOTE** 
 >
 > Configure the permission before enabling automatic signing.
 

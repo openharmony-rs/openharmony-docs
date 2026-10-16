@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:41:44.568Z pushedAt=2026-09-16T08:26:14.610Z -->
+<!-- md-trans-meta sourceCommit=00169c2f8e4bd2c893e1df196e04a0ba69888b0e translatedAt=2026-10-13T13:14:59.420Z pushedAt=2026-10-16T06:35:06.513Z -->
 
 ## Introduction
 
@@ -157,8 +157,8 @@ hilog.info(0x0000, 'Node-API', 'get_value_int32_oversize %{public}d',
 // Numbers greater than 2^31 - 1 that do not have a binary representation like 111111111111111111111111111111111111 (which has special meaning in int32) also overflow, causing the value to change. The return value is decoded based on the last 32 bits of the binary encoding.
 hilog.info(0x0000, 'Node-API', 'get_value_int32_oversize %{public}d',
   testNapi.getValueInt32(687194767355));
-// When NaN (not a number), +Infinity (positive infinity), or -Infinity (negative infinity) is passed in, the number 0 is returned.
-hilog.info(0x0000, 'Node-API', 'get_value_int32_number_NAN %{public}d', testNapi.getValueInt32(NaN));
+// Passing NaN (not a number), +Infinity (positive infinity), or -Infinity (negative infinity) returns the number 0.
+hilog.info(0x0000, 'Node-API', 'get_value_int32_number_NaN %{public}d', testNapi.getValueInt32(NaN));
 hilog.info(0x0000, 'Node-API', 'get_value_int32_number_+Infinity %{public}d',
   testNapi.getValueInt32(+Infinity));
 hilog.info(0x0000, 'Node-API', 'get_value_int32_number_-Infinity %{public}d',
@@ -217,8 +217,8 @@ hilog.info(0x0000, 'Node-API', 'get_value_int64_not_number %{public}s',
 // When a number exceeding the int64 representable range is passed in, it overflows and loses precision, causing the input number and the returned number to differ.
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_oversize %{public}d',
   testNapi.getValueInt64(9223372036854775809));
-// When NaN (not a number), +Infinity (positive infinity), or -Infinity (negative infinity) is passed in, the API returns the number 0.
-hilog.info(0x0000, 'Node-API', 'get_value_int64_number_NAN %{public}d', testNapi.getValueInt64(NaN));
+// When NaN (not a number), +Infinity (positive infinity), or -Infinity (negative infinity) is passed, the API returns 0.
+hilog.info(0x0000, 'Node-API', 'get_value_int64_number_NaN %{public}d', testNapi.getValueInt64(NaN));
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_+Infinity %{public}d',
   testNapi.getValueInt64(+Infinity));
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_-Infinity %{public}d',

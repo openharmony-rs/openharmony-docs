@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:56:48.911Z pushedAt=2026-08-26T03:35:29.919Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:06:48.679Z pushedAt=2026-10-16T04:10:31.115Z -->
 
 ## Overview
 
@@ -217,29 +217,29 @@ static JSVM_Value ObjectSeal(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    // Call OH_JSVM_ObjectSeal to seal the passed object so that no new properties can be added
+    // Call the OH_JSVM_ObjectSeal API to seal the passed object so that new properties cannot be added.
     JSVM_Status status = OH_JSVM_ObjectSeal(env, argv[0]);
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal success");
     }
-    // Check whether properties of the sealed object can be modified, deleted, or added
-    // Modify the sealed object
+    // Check whether properties of the sealed object can be modified, deleted, or added.
+    // Modify the sealed object.
     JSVM_Value changeValue = nullptr;
     OH_JSVM_CreateInt32(env, TEST_VALUE, &changeValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "data", changeValue);
-    // Delete from the sealed object
+    // Delete from the sealed object.
     JSVM_Value deleteProperty = nullptr;
     OH_JSVM_CreateStringUtf8(env, "message", JSVM_AUTO_LENGTH, &deleteProperty);
     bool result = false;
     OH_JSVM_DeleteProperty(env, argv[0], deleteProperty, &result);
     if (result) {
-        OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
+        OH_LOG_ERROR(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
     }
-    // Add to the sealed object
+    // Add to the sealed object.
     JSVM_Value addValue = nullptr;
     OH_JSVM_CreateStringUtf8(env, "addValue", JSVM_AUTO_LENGTH, &addValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "newProperty", addValue);
-    // Return the modified sealed object to the JavaScript side
+    // Return the modified sealed object to the JavaScript side.
     return argv[0];
 }
 // Register the ObjectSeal callback
@@ -653,7 +653,7 @@ static JSVM_Value CreateSymbol(JSVM_Env env, JSVM_CallbackInfo info)
     if (valuetypeSymbol == JSVM_SYMBOL) {
         OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol Success");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CreateSymbol fail");
     }
     return returnSymbol;
 }

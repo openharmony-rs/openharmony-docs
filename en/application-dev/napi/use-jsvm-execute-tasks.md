@@ -1,11 +1,11 @@
 # Working with Tasks Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:09:39.530Z pushedAt=2026-10-16T04:12:19.525Z -->
 
 ## Introduction
 
@@ -14,7 +14,6 @@ This topic describes how to start a task queue on a VM, check whether there are 
 ## Basic Concepts
 
 - Task queue: a mechanism used to manage the scheduling and execution of asynchronous tasks to ensure that tasks are processed in sequence.
-
 - Micro task: a small task that needs to be executed as soon as possible. Micro tasks usually have a higher priority.
 
 ## Available APIs
@@ -32,13 +31,11 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 **Permission requirements**: To run the Wasm bytecode, the application must have the JIT permission. For details about how to apply for the permission, see [Requesting the JIT Permission](jsvm-apply-jit-profile.md).
 
 **Running restrictions**: In the current JSVM version, all functional modules of WebAssembly are disabled in Secure Shield mode. You need to evaluate application compatibility based on the restrictions. For details, see [JSVM-API Secure Shield Mode](jsvm-secure-shield-mode.md).
-
 ### OH_JSVM_PumpMessageLoop & OH_JSVM_PerformMicrotaskCheckpoint
 
 Call **OH_JSVM_PumpMessageLoop** to start running a task queue.
 
 CPP code:
-
 <!-- @[oh_jsvm_pump_message_loop_and_perform_microtask_checkpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/pumpmessageloop/src/main/cpp/hello.cpp) -->
 
 ``` C++
@@ -148,22 +145,16 @@ static int32_t TestJSVM()
     return 0;
 }
 ```
-
 Expected result:
-
 ```txt
 JSVM API TEST: Called with instance [object Object]
 JSVM API TEST: Called Finally
 ```
-
 ### OH_JSVM_SetMicrotaskPolicy
-
-Call **OH_JSVM_SetMicrotaskPolicy** to set the execution policy for micro tasks.  
+Call **OH_JSVM_SetMicrotaskPolicy** to set the execution policy for micro tasks.
 
 The execution policy can be any of the following:
-
 - **JSVM_MicrotaskPolicy::JSVM_MICROTASK_EXPLICIT**: executes micro tasks after **OH_JSVM_PerformMicrotaskCheckpoint** is called.
-
 - **JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO** (default): executes micro tasks automatically when the JS call stack is empty.
 
 CPP code:
@@ -200,7 +191,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     CHECK_RET(OH_JSVM_PerformMicrotaskCheckpoint(vm));
@@ -208,7 +199,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     return 0;
@@ -216,7 +207,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
 
 static void RunDemo(JSVM_VM vm, JSVM_Env env) {
     if (SetMicrotaskPolicy(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run Microtask Policy failed");
+        OH_LOG_ERROR(LOG_APP, "Run Microtask Policy failed");
     }
 }
 
@@ -254,9 +245,8 @@ static int32_t TestJSVM() {
 ```
 
 Expected result:
-
 ```txt
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask : 1
-Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: 0
-Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: 1
+Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: 0
+Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: 1
 ```

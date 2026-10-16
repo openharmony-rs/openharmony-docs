@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:39:49.173Z pushedAt=2026-09-02T06:19:24.740Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:06:36.290Z pushedAt=2026-10-16T04:10:20.738Z -->
 
 ## Introduction
 
@@ -70,7 +70,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// Alias for the wrapperObject method to be called from JS.
+// Alias of the testExternalString method for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"testExternalString", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

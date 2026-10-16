@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4365b97fb0db45a318e9a8db0188ab1817f70891 translatedAt=2026-09-28T02:32:40.542Z pushedAt=2026-09-29T06:23:56.995Z -->
+<!-- md-trans-meta sourceCommit=10a610804a79467a97f1f91ac218dd70bd340223 translatedAt=2026-10-13T12:57:03.363Z pushedAt=2026-10-15T13:09:53.446Z -->
 
 ## Overview
 
@@ -383,7 +383,7 @@ A GPU backend canvas is a canvas that is drawn based on the GPU. The parallel co
            return -1;
        }
    
-       SAMPLE_LOGE("Init success.");
+       SAMPLE_LOGI("Init success.");
        return 0;
    }
    ```

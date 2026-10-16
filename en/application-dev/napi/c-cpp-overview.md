@@ -5,6 +5,7 @@
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=4b07e88550e0184fe83fe80e1f31b5c935b7680c translatedAt=2026-10-16T06:37:50.065Z pushedAt=2026-10-16T06:38:56.126Z -->
 
 The OpenHarmony NDK provides industry standard libraries [musl libc](../reference/native-lib/musl.md) and [C++ Standard Library](../reference/native-lib/cpp.md). This topic describes the mechanisms of these libraries in OpenHarmony. Understanding these mechanisms helps you avoid pitfalls during NDK development.
 
@@ -23,7 +24,7 @@ The two libraries use different C++ namespaces. **libc++.so** uses **__h**, and 
 
 **Known C++ Compatibility Issues**
 
-If "symbol not found, s=\_\_emutls_get_address" is reported when an application starts or when **dlopen()** is called, update the SDK of the application or HAR. This symbol is not provided by **libc++\_shared.so** in the API version 9 or earlier, and is available since API version 11.  
+If "symbol not found, s=\_\_emutls_get_address" is reported when an application starts or when **dlopen()** is called, update the SDK of the application or HAR. This symbol is not provided by **libc++\_shared.so** in the API version 9 or earlier, and is available since API version 11.
 
 ## musl libc Dynamic Linker
 
@@ -38,12 +39,12 @@ OpenHarmony has the following types of linker namespaces:
 
 - NDK ns: default namespace created for exposing the NDK interfaces in .so files in **/system/lib{abi}/ndk** when the dynamic linker stats.
 
-- App ns: namespace created when an application is started. It directs to the application installation path (sandbox path), that is, the .so file used to load the application.
+- App ns: namespace created when the application starts. Its search path is generally the application installation path (possibly a sandbox path), so that the application's .so files can be loaded.
 
 The namespace mechanism restricts the invocation between the application native library and the system native library, as shown in the following figure.
 
- The default ns and NDK ns can access all .so files of each other, but cannot access the .so files of the app ns.
- The app ns can access all .so files of the NDK ns, but cannot access the .so files of the default ns.
+1. The default ns and NDK ns can access all .so files of each other, but cannot access the .so files of the app ns.
+2. The app ns can access all .so files of the NDK ns, but cannot access the .so files of the default ns.
 
 ![](figures/dl_namespace.png)
 
@@ -80,7 +81,6 @@ File descriptor sanitizer ([fdsan](./fdsan.md)) helps detect the user-after-clos
 Using **RTM_GETLINK** (the core message type for network interface information) through the **send**, **sendto**, **sendmsg**, **getifaddrs**, and **if_nameindex** APIs on sockets of the route netlink type poses security risks and is therefore not recommended. You are advised to use the C library **ioctl** API and the corresponding **cmd** values to query network interface information.
 
 The meanings of HarmonyOS internal **ioctl** **cmd** values are as follows:
-
 | Name | Description |
 | --- | --- |
 | SIOCGIFINDEX | Obtains the network interface index. |

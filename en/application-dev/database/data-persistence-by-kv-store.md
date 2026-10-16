@@ -5,8 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:43.521Z pushedAt=2026-06-22T08:08:13.204Z -->
-
+<!-- md-trans-meta sourceCommit=cd8ba616ecb8c3234021b30b9e8bf97d2bc7a45f translatedAt=2026-10-13T12:44:05.617Z pushedAt=2026-10-13T13:19:02.857Z -->
 
 ## When to Use
 
@@ -30,7 +29,7 @@ The following are APIs related to the KV store persistence feature. For more API
 
 | API| Description| 
 | -------- | -------- |
-| createKVManager(config: KVManagerConfig): KVManager | Creates a **KvManager** instance to manage database objects.| 
+| createKVManager(config: KVManagerConfig): KVManager | Creates a **KVManager** instance to manage database objects.| 
 | getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void | Obtains a KV store of the specified type.| 
 | put(key: string, value: Uint8Array \| string \| number \| boolean, callback: AsyncCallback&lt;void&gt;): void | Adds a KV pair of the specified type to this KV store.| 
 | get(key: string, callback: AsyncCallback\<boolean \| string \| number \| Uint8Array>): void | Obtains the value of the specified key.| 
@@ -41,61 +40,49 @@ The following are APIs related to the KV store persistence feature. For more API
 
 ## How to Develop
 
-1. Use the **createKVManager()** method to create a **KVManager** instance for managing database objects. <br>Example:
+1. To use a KV store, first call the `createKVManager()` method to obtain a `KVManager` instance for managing database objects. The following example uses the Stage model to obtain the context. For details about how to obtain the context in the FA model, see [context](../application-models/application-context-fa.md). The example code is as follows:
 
-   ```ts
-   // Import the module.
-   // Create a KvStoreInterface.ets file in the pages directory.
+   <!-- @[CreateKvManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import EntryAbility from '../entryability/EntryAbility';
-   // Logger implements the print feature after Hilog is encapsulated.
    import Logger from '../common/Logger';
-
+   
    let kvManager: distributedKVStore.KVManager | undefined = undefined;
    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
    let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
-   // Obtain the context of the stage model from EntryAbility.ets.
+   // Obtain the context.
    const context = EntryAbility.getContext();
-
-   // Obtain the context of the FA model.
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let context = featureAbility.getContext();
-
-   // The code of all the following APIs is implemented in KvInterface.
-   export class KvInterface {
-   }
-   ```
-   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
-   ``` TypeScript
-   public CreateKvManager = (() => {
-     Logger.info('CreateKvManager start');
-     if (typeof (kvManager) === 'undefined') {
-       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         bundleName: appId,
-         context: context
-       };
-       try {
-         // Create a KVManager instance.
-         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         Logger.info('Succeeded in creating KVManager.');
-       } catch (err) {
-         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+   
+   // ...
+     public CreateKvManager = (() => {
+       Logger.info('CreateKvManager start');
+       if (typeof (kvManager) === 'undefined') {
+         const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+           bundleName: appId,
+           context: context
+         };
+         try {
+           // Create a KVManager instance.
+           kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+           Logger.info('Succeeded in creating KVManager.');
+         } catch (err) {
+           Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+         }
+       } else {
+         Logger.info ('KVManager has created');
        }
-     } else {
-       Logger.info ('KVManager has created');
-     }
-   })
+     })
    ```
 
 2. Use the **getKVStore()** method to create and obtain a KV store. <br>Example:
 
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -155,7 +142,7 @@ The following are APIs related to the KV store persistence feature. For more API
 3. Use the **on()** method to subscribe to distributed data changes. To unsubscribe from the data changes, call [off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange). <br>Example:
 
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public On = (() =>{
      Logger.info('On start');
@@ -177,7 +164,7 @@ The following are APIs related to the KV store persistence feature. For more API
 4. Use **put()** to add data to the KV store. <br>Example:
 
    <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public Put = (() => {
      Logger.info('Put start');
@@ -210,7 +197,7 @@ The following are APIs related to the KV store persistence feature. For more API
 5. Use **get()** to obtain the value of a key. <br>Example:
 
    <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public Get = (() => {
      Logger.info('Get start');
@@ -237,7 +224,7 @@ The following are APIs related to the KV store persistence feature. For more API
 6. Use **delete()** to delete the data of the specified key. <br>Example:
 
    <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public Delete = (() => {
      Logger.info('DeleteData start');
@@ -264,7 +251,7 @@ The following are APIs related to the KV store persistence feature. For more API
 7. Use **closeKVStore()** to close the specified distributed KV store by **storeId**. <br>Example:
 
     <!-- @[kv_store10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+    
     ``` TypeScript
     public CloseKVStore = (()=>{
       Logger.info('CloseKVStore start');
@@ -292,7 +279,7 @@ The following are APIs related to the KV store persistence feature. For more API
 8. Use **deleteKVStore()** to delete the specified distributed KV store by **storeId**. <br>Example:
 
     <!-- @[kv_store11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+    
     ``` TypeScript
     public DeleteKvStore = (()=>{
       Logger.info('DeleteKvStore start');

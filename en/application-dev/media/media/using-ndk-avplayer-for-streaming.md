@@ -1,12 +1,11 @@
 # Using AVPlayer to Play Streaming Media (C/C++)
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia--> 
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d2114fc37f3314c085e77066b3804cf1306d0e8a translatedAt=2026-08-11T01:55:12.187Z pushedAt=2026-08-12T03:03:07.897Z -->
+<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-10-13T13:22:05.943Z pushedAt=2026-10-16T03:07:21.857Z -->
 
 Starting from API version 11, [AVPlayer](../../reference/apis-media-kit/capi-avplayer.md) supports end-to-end playback of streaming media resources. This guide walks you through the complete playback of a streaming media example, covering AVPlayer streaming media playback features.
 
@@ -22,13 +21,10 @@ For detailed state descriptions, see [AVPlayerState](../../reference/apis-media-
 ## Development Suggestions
 
 This guide only describes how to implement streaming media resource playback. To play local resources, see [Using AVPlayer to Play Videos (C/C++)](using-ndk-avplayer-for-video-playback.md). If your app development involves background playback, playback conflicts, or similar scenarios, refer to the following instructions as needed.
-
+ 
 Avoid forced interruption of playback by the system. This feature is only available for ArkTS APIs. To use this feature, see [Using AVPlayer to Play Videos (ArkTS)](video-playback.md).
-
 - During playback, if the media data being played involves audio, the playback may be interrupted by other apps according to the system audio management policy (see [Handling Audio Focus Changes](../audio/audio-playback-concurrency.md#handling-audio-focus-changes)). You are advised to use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) to proactively listen for the audio interruption event [AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_INTERRUPT_EVENT, and handle it accordingly based on the specific information to avoid inconsistencies between the app state and the expected behavior.
-
 - When the device is connected to multiple audio output devices simultaneously, it is recommended to use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) to proactively listen for the audio output device change event [AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE and handle it accordingly.
-
 - During playback, the app may encounter exceptions due to internal system issues such as network data download failures or abnormal termination of media services. You are advised to set an error listener callback function through the [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) API, and handle different error types accordingly to prevent playback exceptions.
 
 ## How to Develop
@@ -64,7 +60,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 1. Call [OH_AVPlayer_Create()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_create) to create an AVPlayer instance. The AVPlayer is initialized to the [AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)`.AV_IDLE` state.
 
    <!-- @[OH_AVPlayer_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVPlayer *player = OH_AVPlayer_Create();
    ```
@@ -72,14 +68,14 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 2. Call [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information listener callback and error listener callback for use in full-process scenarios. While obtaining more information, you can also differentiate playback instances by setting `userData`.
 
    The following table lists supported listener events.
-
+ 
    | Event Type | Description |
    | -------- | -------- |
    | OH_AVPlayerOnInfoCallback | Mandatory event. Listens for process information of the player.<br>This listener must be set when the player is in the AV_IDLE state and before any resource setting API is called. If the listener is set after calling a resource setting API, the OH_AVPlayerOnInfoCallback events reported during resource setting cannot be received. |
    | OH_AVPlayerOnErrorCallback | Mandatory event. Listens for error information of the player.<br>This listener must be set when the player is in the AV_IDLE state and before any resource setting API is called. If the listener is set after calling a resource setting API, the OH_AVPlayerOnErrorCallback events reported during resource setting cannot be received. |
 
    <!-- @[OH_AVPlayer_SetOnInfoCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
-
+   
    ``` C++
    // Set the callback to listen for information.
    LOG("call OH_AVPlayer_SetOnInfoCallback");
@@ -88,7 +84,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
    ```
 
    <!-- @[OH_AVPlayer_SetOnErrorCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
-
+   
    ``` C++
    LOG("call OH_AVPlayer_SetOnErrorCallback");
    ret = OH_AVPlayer_SetOnErrorCallback(player, OHAVPlayerOnErrorCallback, nullptr);
@@ -98,7 +94,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 3. Call [OH_AVPlayer_SetURLSource()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seturlsource) to set the URL (supports on-demand and live streaming sources). The AVPlayer enters the [AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)`.AV_INITIALIZED` (initialized) state.
 
    <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
-
+   
    ``` C++
    LOG("player %{public}s >> URL source", url);
    LOG("call %{public}s", "OH_AVPlayer_SetURLSource");
@@ -109,7 +105,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 4. (Optional) In live streaming scenarios, call [OH_AVPlayer_SetPlaybackStrategy()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplaybackstrategy) to enable smart frame catching for the AVPlayer.
 
    <!-- @[OH_AVPlayer_SetPlaybackStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    void OHAVPlayerSetPlaybackStrategy(OH_AVPlayer *player)
    {
@@ -126,7 +122,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 5. (Optional) Call [OH_AVPlayer_SetAudioRendererInfo()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiorendererinfo) to set the audio stream type for the AVPlayer.
 
    <!-- @[OH_AVPlayer_SetAudioRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // Set the audio stream type.
    LOG("call %{public}s", "OH_AVPlayer_SetAudioRendererInfo");
@@ -138,7 +134,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 6. (Optional) Call [OH_AVPlayer_SetAudioInterruptMode()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode) to set the audio stream interruption mode for the AVPlayer.
 
    <!-- @[OH_AVPlayer_SetAudioInterruptMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // Set the audio stream interrupt mode.
    LOG("call OH_AVPlayer_SetAudioInterruptMode");
@@ -150,7 +146,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 7. Call [OH_AVPlayer_SetVideoSurface()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setvideosurface) to set the playback window. This function must be called after `SetSource` and before `Prepare`.
 
    <!-- @[OH_AVPlayer_SetVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    ret = OH_AVPlayer_SetVideoSurface(player, context->nativeWindow_);
    LOG("OH_AVPlayer_SetVideoSurface ret:%{public}d", ret);
@@ -159,7 +155,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 8. Call [OH_AVPlayer_Prepare()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_prepare). The AVPlayer enters the [AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)`.AV_PREPARED` state, where you can obtain the duration and set the volume.
 
    <!-- @[OH_AVPlayer_Prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    ret = OH_AVPlayer_Prepare(player); // Triggered after the playback source is set.
    if (ret != AV_ERR_OK) {
@@ -171,7 +167,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 9. (Optional) Call [OH_AVPlayer_SetAudioEffectMode()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudioeffectmode) to set the audio effect mode for the AVPlayer.
 
    <!-- @[OH_AVPlayer_SetAudioEffectMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    LOG("AVPlayerState AV_PREPARED");
    ret = OH_AVPlayer_SetAudioEffectMode(player, EFFECT_NONE); // Set the audio effect mode.
@@ -181,7 +177,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 10. Call [OH_AVPlayer_Play()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_play), [OH_AVPlayer_Pause()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_pause), [OH_AVPlayer_Seek()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seek), and [OH_AVPlayer_Stop()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_stop) to control the playback.
 
     <!-- @[OH_AVPlayer_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static napi_value NAPI_Global_Play(napi_env env, napi_callback_info info) {
         int ret = -1;
@@ -199,7 +195,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
     ```
 
     <!-- @[OH_AVPlayer_Pause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static napi_value NAPI_Global_Pause(napi_env env, napi_callback_info info) {
         int ret = 100;
@@ -217,7 +213,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
     ```
 
     <!-- @[OH_AVPlayer_Seek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static napi_value NAPI_Global_Seek(napi_env env, napi_callback_info info) {
         size_t argc = 2;
@@ -259,7 +255,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
     ```
 
     <!-- @[OH_AVPlayer_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static napi_value NAPI_Global_Stop(napi_env env, napi_callback_info info) {
         int ret = 100;
@@ -279,7 +275,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 11. (Optional) Call [OH_AVPlayer_Reset()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_reset) to reset the resource. AVPlayer re-enters the [AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)`.AV_IDLE state`, allowing the resource URL to be changed.
 
     <!-- @[OH_AVPlayer_Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static napi_value NAPI_Global_Reset(napi_env env, napi_callback_info info) {
         int ret = 100;
@@ -299,7 +295,7 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 12. Call [OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release) to destroy the instance. AVPlayer enters the [AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)`.AV_RELEASED` state and exits playback. Any subsequent operations on the AVPlayer instance will result in undefined behavior, which may cause the app process to crash or the app to exit abnormally.
 
     <!-- @[OH_AVPlayer_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     static napi_value NAPI_Global_Release(napi_env env, napi_callback_info info) {
         int ret = -1;
@@ -319,5 +315,4 @@ For detailed API descriptions, see [AVPlayer](../../reference/apis-media-kit/cap
 ## Running the Complete Sample
 
 1. Create a project and download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia).
-
 2. Compile the newly created project and run it.

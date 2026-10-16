@@ -1,12 +1,11 @@
 # Using AVPlayer to Play Videos (ArkTS)
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5431dfef3480aa170de3ea7c328962a87045baac translatedAt=2026-08-11T01:55:19.326Z pushedAt=2026-08-12T03:26:46.348Z -->
+<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-10-13T13:23:05.666Z pushedAt=2026-10-16T03:07:50.579Z -->
 
 The system provides two solutions for video playback development:
 
@@ -18,7 +17,7 @@ This section describes how to use AVPlayer to implement video playback. It uses 
 
 The full playback process includes creating an AVPlayer instance, setting the media asset to play and the window to display the video, setting playback parameters (volume, speed, and scale type), controlling playback (play, pause, seek, and stop), resetting the playback configuration, and releasing the instance. During application development, you can use the **state** property of AVPlayer to obtain its state or call **on('stateChange')** to listen for state changes. If the application performs an operation when the AVPlayer is not in the given state, the system may throw an exception or generate other undefined behavior.
 
-**Figure 1** Playback state transition 
+**Figure 1** Playback state transition
 
 ![Playback state change](figures/video-playback-status-change.png)
 
@@ -29,11 +28,8 @@ For details about the states, see [AVPlayerState](../../reference/apis-media-kit
 This topic describes only how to implement the playback of a media asset. In practice, background playback and playback conflicts may be involved. You can refer to the following description to handle the situation based on your service requirements.
 
 - If you want the application to continue playing the media asset in the background or when the screen is off, use the [AVSession](../avsession/avsession-access-scene.md) and [continuous task](../../task-management/continuous-task.md) to prevent the playback from being forcibly interrupted by the system.
-
 - If the media asset being played involves audio, the playback may be interrupted by other applications based on the system audio management policy. (For details, see [Processing Audio Interruption Events](../audio/audio-playback-concurrency.md).) It is recommended that the player application proactively listen for audio interruption events and handle the events accordingly to avoid the inconsistency between the application status and the expected effect.
-
 - When a device is connected to multiple audio output devices, the application can listen for audio output device changes through [on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11) and handle them accordingly.
-
 - To access online media resources, you must request the ohos.permission.INTERNET permission.
 
 ## How to Develop
@@ -50,7 +46,6 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
     ```
 
 2. Set the events to listen for, which will be used in the full-process scenario. The table below lists the supported events.
-
    | Event Type| Description|
    | -------- | -------- |
    | stateChange | Mandatory; used to listen for changes of the **state** property of the AVPlayer.<br>To ensure proper functionality, the listener must be configured when the AVPlayer is in the idle state and before the resource setting API is called. If the listener is set after the resource setting API is called, the stateChange event reported during resource setting may fail to be received.|
@@ -114,7 +109,6 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
     ```
 
 3. Set the media asset URL. The AVPlayer enters the **initialized** state.
-
    > **NOTE**
    >
    > The URL in the code snippet below is for reference only. You need to check the media asset validity and set the URL based on service requirements.
@@ -235,7 +229,6 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
 ## Running the Sample Project
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo), and copy its resources to the corresponding directories.
-
     ```text
     AVPlayerArkTSVideo
     entry/src/main/ets/
@@ -253,7 +246,6 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
     └── rawfile
         └── test1.mp4 (video resource)
     ```
-
 2. Compile and run the project.
 
 ## Samples
