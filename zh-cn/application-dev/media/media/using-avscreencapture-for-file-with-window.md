@@ -1,7 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "从API version 10开始介绍如何使用AVScreenCapture的C API实现窗口级录屏，涵盖通过屏幕捕获Picker选择窗口和指定窗口ID两种方式，适用于教学演示、在线课程、会议记录等场景。"
-keywords: [AVScreenCapture, 窗口级录屏, C/C++, NDK, 屏幕捕获Picker, 指定窗口录屏, CaptureMode, 窗口捕获]
+keywords: [AVScreenCapture, 窗口级录屏, C/C++, 屏幕捕获Picker, 指定窗口录屏]
 doctype: guide
 status: active
 ---
