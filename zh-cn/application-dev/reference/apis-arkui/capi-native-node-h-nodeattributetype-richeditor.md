@@ -990,3 +990,31 @@ NODE_TEXT_EDITOR_SHOW_COUNTER = 22047
 | .value[1].f32 | 可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]。 |
 | .value[2].i32 | 输入字符超出限制时高亮边框。0表示不高亮边框，1表示高亮边框。 |
 | .object | 计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。 |
+
+## NODE_TEXT_EDITOR_INPUT_FILTER
+
+```c
+NODE_TEXT_EDITOR_INPUT_FILTER = 22048
+```
+
+设置TextEditor组件的输入过滤正则表达式，支持属性设置、属性重置和属性获取。<br>
+该属性仅在StyledString模式下生效（包含单行和多行模式），即设置了[NODE_TEXT_EDITOR_STYLED_STRING_CONTROLLER](#node_text_editor_styled_string_controller)后的模式。<br>
+当同时设置该属性和[NODE_TEXT_EDITOR_MAX_LENGTH](#node_text_editor_max_length)时，过滤优先级为：先NODE_TEXT_EDITOR_INPUT_FILTER过滤，再NODE_TEXT_EDITOR_MAX_LENGTH截断。<br>
+正则表达式变更时，已有内容会被静默重新过滤（与TextInput行为一致）。<br>
+非字符内容（ImageSpan/SymbolSpan/BuilderSpan）在正则匹配时被视为\uFFFC字符。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .string | 正则表达式，用于过滤用户输入内容。匹配表达式的输入允许显示，不匹配的输入将被过滤。当需要限制用户只能输入特定格式的字符时设置此属性，例如"[a-zA-Z]"表示只允许字母，"[0-9]"表示只允许数字。空字符串等效于不设置过滤。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .string | 当前设置的输入过滤正则表达式字符串。 |
