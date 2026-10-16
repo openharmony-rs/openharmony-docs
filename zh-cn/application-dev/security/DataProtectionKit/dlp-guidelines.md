@@ -160,9 +160,9 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
         if (canIUse('SystemCapability.Security.DataLossPrevention')) {
           dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
             this.result = 'startDLPManagerForResult result.resultCode:' + res.resultCode;
-            console.error('startDLPManagerForResult res.resultCode:' + res.resultCode);
+            console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
             console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
-            hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
+            hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
             hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.want:' + JSON.stringify(res.want));
           });
         }
@@ -228,9 +228,9 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     getDLPSupportedFileTypes() {
       if (canIUse('SystemCapability.Security.DataLossPrevention')) {
         dlpPermission.getDLPSupportedFileTypes((err, result) => {
-          console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+          console.error('getDLPSupportedFileTypes: ' + JSON.stringify(err));
           console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
           hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
           this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
         });
