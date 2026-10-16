@@ -77,7 +77,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
        mediaKeySystem.generateKeySystemRequest().then(async (drmRequest: drm.ProvisionRequest) => {
            console.info("generateKeySystemRequest success", drmRequest.data, drmRequest.defaultURL);
        }).catch((err:BusinessError) =>{
-           console.error("generateKeySystemRequest err end", err.code);
+           console.error("generateKeySystemRequest failed", err.code);
        });
    } else {
        console.info("The certificate already exists.");
@@ -87,7 +87,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
    mediaKeySystem.processKeySystemResponse(provisionResponseByte).then(() => {
        console.info("processKeySystemResponse success");
    }).catch((err:BusinessError) =>{
-       console.error("processKeySystemResponse err end", err.code);
+       console.error("processKeySystemResponse failed", err.code);
    });
    ```
 
@@ -132,9 +132,9 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
       ```ts
       mediaKeySession.on('keysChange', (keyInfo : drm.KeysInfo[], newKeyAvailable:boolean) => {
-          for(let i = 0; i < keyInfo.length; i++){
-              console.info('keysChange' + 'info:' + keyInfo[i].keyId + ' extraInfo:' + keyInfo[i].value);
-          }
+          keyInfo.forEach((info: drm.KeysInfo) => {
+              console.info('keysChange' + 'info:' + info.keyId + ' extraInfo:' + info.value);
+          });
       });
       ```
 
@@ -169,10 +169,10 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
        mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
          console.info("processMediaKeyResponse success");
        }).catch((err:BusinessError) =>{
-         console.error("processMediaKeyResponse err end", err.code);
+         console.error("processMediaKeyResponse failed", err.code);
       });
     }).catch((err:BusinessError) =>{
-      console.error("generateMediaKeyRequest err end", err.code);
+      console.error("generateMediaKeyRequest failed", err.code);
     });
     // 离线媒体密钥请求和响应。
     let offlineMediaKeyId: Uint8Array;
@@ -184,10 +184,10 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
          offlineMediaKeyId = new Uint8Array(mediaKeyId);
          console.info("processMediaKeyResponse success");
        }).catch((err:BusinessError) =>{
-         console.error("processMediaKeyResponse err end", err.code);
+         console.error("processMediaKeyResponse failed", err.code);
       });
     }).catch((err:BusinessError) =>{
-      console.error("generateMediaKeyRequest err end", err.code);
+      console.error("generateMediaKeyRequest failed", err.code);
     });
       ```
 
