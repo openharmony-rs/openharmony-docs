@@ -7166,6 +7166,26 @@
 						"start_line":244
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":181,
+						"name":"storageStatistics_statfs_getFreeSize",
+						"start_line":171
+					},
+					{
+						"end_line":197,
+						"name":"storageStatistics_getTotalSize",
+						"start_line":191
+					},
+					{
+						"end_line":226,
+						"name":"storageStatistics_getFreeSize",
+						"start_line":220
+					}
+				]
 			}
 		]
 	},
