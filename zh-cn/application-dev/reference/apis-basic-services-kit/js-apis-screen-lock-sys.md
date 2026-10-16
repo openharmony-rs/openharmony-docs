@@ -67,8 +67,6 @@ strongAuthChanged | screenLockDisabledChanged | unlockPolicyChanged
 
 ## StrongAuthReasonFlags<sup>12+</sup>
 
-type StrongAuthReasonFlags = NONE | AFTER_BOOT | AFTER_TIMEOUT | ACTIVE_REQUEST | POLICY_RESTRICTION
-
 表示请求强认证的原因标志位。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
@@ -84,8 +82,6 @@ type StrongAuthReasonFlags = NONE | AFTER_BOOT | AFTER_TIMEOUT | ACTIVE_REQUEST 
 | POLICY_RESTRICTION | 0x00000008 | 表示策略限制请求强认证。 |
 
 ## AuthState<sup>12+</sup>
-
-type AuthState = NOT_AUTHED | PRE_AUTHED_BY_CREDENTIAL | PRE_AUTHED_BY_FINGERPRINT | PRE_AUTHED_BY_FACE | AUTHED_BY_CREDENTIAL | AUTHED_BY_FINGERPRINT | AUTHED_BY_FACE
 
 表示锁屏认证状态的枚举。
 
