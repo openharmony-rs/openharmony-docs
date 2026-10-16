@@ -3360,7 +3360,7 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 - 编辑框属性：通过[getEditorAttribute](#geteditorattribute9)/[getEditorAttributeSync](#geteditorattributesync10)获取编辑框属性信息（输入类型、回车键类型等），据此调整键盘布局。
 - 文本预览：通过[setPreviewText](#setpreviewtext12)/[setPreviewTextSync](#setpreviewtextsync12)设置预览文本，通过[finishTextPreview](#finishtextpreview12)/[finishTextPreviewSync](#finishtextpreviewsync12)结束文本预览。
 - 私有通信：通过[sendPrivateCommand](#sendprivatecommand12)向应用发送私有命令，通过[sendMessage](#sendmessage15)/[recvMessage](#recvmessage15)进行消息通信。
-- 富文本获取：通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)获取光标前的富文本内容，通过[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取光标后的富文本内容，用于获取编辑框中的纯文本、图片、符号等多种span类型的富文本数据。
+- 富文本获取：通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)获取光标前的富文本内容，通过[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取光标后的富文本内容，包括编辑框中的纯文本、图片、符号等多种span类型的富文本数据。
 
 注意事项：
 - InputClient实例与当前绑定的编辑框关联，当编辑框失去焦点或输入法解绑时，该实例可能失效。
@@ -5217,7 +5217,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-获取光标前指定长度的富文本内容。使用promise异步回调。
+获取光标前指定长度的富文本内容。使用Promise异步回调。
 
 使用场景：获取编辑框中光标前的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析已输入的多模态内容，提供更精准的智能补全和输入建议。
 
@@ -5225,7 +5225,7 @@ getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
 > **说明：**
 >
-> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
 
 **起始版本：** 26.2.0
 
@@ -5286,7 +5286,7 @@ getLeftRichTextSync(length: number): InputMethodRichText
 >
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getLeftRichText](#getleftrichtext)。
 >
-> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
 
 **起始版本：** 26.2.0
 
@@ -5343,7 +5343,7 @@ try {
 
 getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-获取光标后指定长度的富文本内容。使用promise异步回调。
+获取光标后指定长度的富文本内容。使用Promise异步回调。
 
 使用场景：获取编辑框中光标后的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析光标后的多模态内容，提供更精准的智能补全和输入建议。
 
@@ -5351,7 +5351,7 @@ getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
 > **说明：**
 >
-> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
 
 **起始版本：** 26.2.0
 
@@ -5412,7 +5412,7 @@ getRightRichTextSync(length: number): InputMethodRichText
 >
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getRightRichText](#getrightrichtext)。
 >
-> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
 
 **起始版本：** 26.2.0
 
@@ -5525,7 +5525,7 @@ inputMethodEngine.getInputMethodAbility()!
 
 ### getSpans
 
-getSpans(): Array&lt;[RichTextSpan](#richtextspan)&gt;
+getSpans(): Array&lt;RichTextSpan&gt;
 
 获取组成富文本的span数组。
 
@@ -5572,7 +5572,7 @@ inputMethodEngine.getInputMethodAbility()!
 
 ### getType
 
-getType(): [SpanType](#spantype)
+getType(): SpanType
 
 获取span的类型。
 
@@ -5644,7 +5644,7 @@ inputMethodEngine.getInputMethodAbility()!
 
 ### getRange
 
-getRange(): [Range](#range10)
+getRange(): Range
 
 获取span在富文本中的范围，由起始位置和结束位置表示。
 
