@@ -132,8 +132,8 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
   
   ``` TypeScript
-  storageStatistics.getTotalSize().then((number: number) => {
-    console.info(`getTotalSize successfully, number is ${number}`);
+  storageStatistics.getTotalSize().then((totalSize: number) => {
+    console.info(`getTotalSize successfully, number is ${totalSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getTotalSize failed with error, code is ${err.code}, message is ${err.message}`);
   });
