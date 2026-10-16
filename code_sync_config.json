@@ -29004,19 +29004,19 @@
 						"start_line":1436
 					},
 					{
-						"end_line":1531,
+						"end_line":1542,
 						"name":"ndk_graphics_draw_font_text_to_glyphs_fallback",
 						"start_line":1489
 					},
 					{
-						"end_line":1588,
+						"end_line":1606,
 						"name":"ndk_graphics_draw_font_measure_text_fallback",
-						"start_line":1536
+						"start_line":1547
 					},
 					{
-						"end_line":1654,
+						"end_line":1678,
 						"name":"ndk_graphics_draw_font_measure_text_with_brush_or_pen_fallback",
-						"start_line":1593
+						"start_line":1611
 					}
 				]
 			}
