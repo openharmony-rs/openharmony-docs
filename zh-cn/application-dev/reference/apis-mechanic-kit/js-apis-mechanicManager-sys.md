@@ -1383,7 +1383,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## MoveParams
 
 设备移动参数。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1400,7 +1400,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## SpeedParams
 
 速度控制参数。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1416,7 +1416,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## SpeedGear
 
 速度档位枚举。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1433,7 +1433,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## MarchingMode
 
 行进模式枚举。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1448,7 +1448,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## ActionType
 
 动作序列类型枚举。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1486,7 +1486,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## MechEvent
 
 机械体设备事件定义。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1501,7 +1501,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## MechEventType
 
 机械体设备事件定义。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1519,7 +1519,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## AddressInfo
 
 配件设备信息定义。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1534,7 +1534,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## AddressType
 
 机械体设备地址类型。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1548,7 +1548,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## ConnectParam
 
 连接参数定义。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1564,7 +1564,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## AttachStateChangeInfo
 
 连接参数定义。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1579,7 +1579,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## AttachState
 
 机械体设备附加状态。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1594,7 +1594,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## MechInfo
 
 机械体设备信息。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -1610,7 +1610,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## MechDeviceType
 
 机械体设备类型枚举。
-  
+
 **起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Mechanic.Core
