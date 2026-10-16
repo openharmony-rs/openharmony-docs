@@ -66762,9 +66762,9 @@
 						"start_line":390
 					},
 					{
-						"end_line":419,
+						"end_line":433,
 						"name":"dlp_getDLPSupportedFileTypes",
-						"start_line":407
+						"start_line":421
 					},
 					{
 						"end_line":452,
