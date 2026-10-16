@@ -1711,7 +1711,7 @@ Icc账户信息。
 | 名称       | 类型    | 只读|可选| 说明             |
 | ---------- | ------- | ---- |--- |---------------- |
 | simId      | number  |  否 |否 | SIM卡ID。与SIM卡绑定，从1开始递增。          |
-| slotIndex  | number  |  否  |否 | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID <br/>- 0：卡槽1。<br/>- 1：卡槽2。           |
+| slotIndex  | number  |  否  |否 | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。 <br/>- 0：卡槽1。<br/>- 1：卡槽2。           |
 | isEsim     | boolean |  否 | 否| 标记卡是否是eSIM。<br/>- true：是eSIM。<br/>- false：不是eSIM。 |
 | isActive   | boolean |  否 | 否| 卡是否被激活。<br/>- true：激活。<br/>- false：未激活。  |
 | iccId      | string  |  否 | 否| ICCID号码。        |
