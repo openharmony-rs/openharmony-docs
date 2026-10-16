@@ -6691,3 +6691,17 @@ Allows an application to switch the list of displayable applications on multi-mo
 **Supported devices**: tablets | PCs/2-in-1 devices
 
 **Valid since**: 26.0.1
+
+## ohos.permission.SOFTBUS_MANAGER_RESOURCE
+
+Allows a system application to manage SoftBus resources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+
+**Valid since**: 26.0.1
