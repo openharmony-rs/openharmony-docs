@@ -216,7 +216,7 @@ Sends data to the peer end. This API uses a promise to return the result. This m
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;void&gt; | Promise that returns no value. If the data is sent successfully, **resolve** returns a value. If the data fails to be sent, **reject** returns an error message. |
+| &nbsp;Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
