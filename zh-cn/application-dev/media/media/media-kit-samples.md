@@ -1,6 +1,6 @@
 # Media Kit指南配套示例代码汇总
 
-### ArkTS示例
+## ArkTS示例
 
 | 分类 | Sample名称 | 场景介绍 |
 | -------- | -------- | -------- |
@@ -15,7 +15,7 @@
 | 视频转码 | [AVTranscoderArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS) | 使用AVTranscoder（ArkTS）视频转码，演示开始-暂停-恢复-完成全流程 |
 | 异步转码 | [AsyncTranscoder](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder) | 使用worker线程创建异步线程执行AVTranscoder视频转码 |
 
-### C/C++示例
+## C/C++示例
 | 分类 | Sample名称 | 场景介绍 |
 | -------- | -------- | -------- |
 | 音频播放 | [AVPlayerNDKAudio](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKAudio) | 使用AVPlayer（C/C++）完整播放一首音乐，演示NDK接口音频播放 |
