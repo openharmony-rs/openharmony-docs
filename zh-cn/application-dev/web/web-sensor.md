@@ -29,6 +29,18 @@
 
   <!-- @[declare_the_appropriate_sensor_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/module.json5) --> 
   
+  ``` JSON5
+  "requestPermissions": [
+    // ...
+    {
+      "name" : "ohos.permission.ACCELEROMETER" // 加速度权限
+    },
+    {
+      "name" : "ohos.permission.GYROSCOPE"     // 陀螺仪权限
+    }
+  ]
+  ```
+  
 
 Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口，通过该接口接收权限请求通知。
 
