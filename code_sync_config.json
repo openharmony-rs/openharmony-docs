@@ -26168,7 +26168,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":63,
 						"name":"virtual_node_example_start",
 						"start_line":18
 					}
