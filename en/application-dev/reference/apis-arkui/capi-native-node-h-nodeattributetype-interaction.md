@@ -128,10 +128,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .string | Overlay text. |
-| .value[0].i32 | Position of the overlay relative to the component. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
+| .value[0].i32 | Position of the overlay relative to the component. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
 | .value[1].f32 | Offset of the overlay relative to the upper left corner of itself on the x-axis, in vp.|
 | .value[2].f32 | Offset of the overlay relative to the upper left corner of itself on the y-axis, in vp.|
-| .value[3].i32 | Layout direction of the overlay. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_LTR**. It is supported since API version 21.|
+| .value[3].i32 | Layout direction of the overlay. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_LTR**. It is supported since API version 21.|
 | .object | Node tree used for overlay. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). It is supported since API version 21.|
 
 ## NODE_FOCUS_STATUS
@@ -199,7 +199,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0]?.u32 | Types of the expanded safe area, which are enumerated values of [ArkUI_SafeAreaType](capi-native-type-h.md#arkui_safeareatype). Example: **ARKUI_SAFE_AREA_TYPE_SYSTEM \| ARKUI_SAFE_AREA_TYPE_CUTOUT**.|
-| .value[1]?.u32 | Edges for expanding the safe area, which are enumerated values of [ArkUI_SafeAreaEdge](capi-native-type-h.md#arkui_safeareaedge). Example: **ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM**.|
+| .value[1]?.u32 | Edges for expanding the safe area, which are enumerated values of [ArkUI_SafeAreaEdge](capi-layout-h.md#arkui_safeareaedge). Example: **ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM**.|
 
 **Returns**
 
