@@ -6,7 +6,7 @@
 <!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-08-15T01:54:04.120Z pushedAt=2026-08-15T08:42:42.651Z -->
+<!-- md-trans-meta sourceCommit=d3e47e1da0a0d7b416984a469b286315f873dd35 translatedAt=2026-10-13T13:02:53.191Z pushedAt=2026-10-16T02:45:40.328Z -->
 
 During translation, different languages have varying requirements for singular and plural forms of nouns or unit expressions. Some languages do not distinguish between singular and plural, some have two forms, and others have multiple forms. For example, English nouns support two singular/plural forms, whereas Chinese nouns do not distinguish between singular and plural and instead express quantity through measure words.
 

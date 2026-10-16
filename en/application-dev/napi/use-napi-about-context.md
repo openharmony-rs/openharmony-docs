@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:29:17.098Z pushedAt=2026-09-16T08:21:11.179Z -->
+<!-- md-trans-meta sourceCommit=82b72d075adc31c15fba68dcf8f34e61b2521f6c translatedAt=2026-10-13T13:12:25.312Z pushedAt=2026-10-16T04:12:44.714Z -->
 
 When an application is started, the main thread of the application is an ArkTS thread, which has a context managed by the system. When ArkTS interacts with C/C++, **napi_env** represents the context on the C/C++ side. Every context has an independent **globalThis** object.
 
@@ -230,7 +230,7 @@ If an API does not involve context switching, it is irrelevant to the runtime co
 |napi_delete_strong_sendable_reference | napi_invalid_arg |
 |napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
-### Sample Code
+## Sample Code
 - Module registration
     ```c++
     // napi_init.cpp

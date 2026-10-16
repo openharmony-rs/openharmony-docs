@@ -1,14 +1,13 @@
 # Developing a Scene-based Widget
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f4bb484b1d8ec0f6bcf2535184c19569a539d4ab translatedAt=2026-08-22T01:25:35.772Z pushedAt=2026-08-22T03:02:39.941Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-10-13T12:52:41.597Z pushedAt=2026-10-15T12:17:16.857Z -->
 
-Starting from API version 20, scene animation interaction type interactive widgets support triggering widget-specific effects in specific scenarios. For example, you can choose to extend the animation rendering area beyond the widget's own rendering area to create an "overflow" effect. This document provides development guidance for scene animation interaction type interactive widgets, including the concepts of scene animation interaction type interactive widgets, constraints and limitations, development of the widget inactive state and active state UI, and development of the widget configuration file.
+Starting from API version 20, scene-based interactive widgets support triggering widget-specific effects in specific scenarios. For example, you can choose to extend the overflow area beyond the widget's own rendering area to create an "overflow" effect. This document provides development guidance for scene-based interactive widgets, including the concepts of the widgets, constraints and limitations, development of the widget inactive state and active state UI, and development of the widget configuration file.
 
 ## Basic Concepts
 
@@ -45,18 +44,13 @@ You can call the [formProvider.requestOverflow](../reference/apis-form-kit/js-ap
 ## Constraints
 
 ### Supported Scenarios
-
 1. Currently, the interactive widget animation takes effect only on a single widget with [FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20) set to **DESKTOP**.
-
 2. Due to the impact on performance and power consumption, only some models are supported. If a model is not supported, the error code [801](../reference/errorcode-universal.md#801-api-not-supported) is reported.
 
 ### Parameter Request
-
 1. The maximum valid animation duration that an interactive widget can request is 3500 ms. When the countdown ends, the widget switches back to the inactive state.<!--Del-->System applications additionally support long-time activated widgets, with no limit on the animation duration. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
-
 2. A single widget's animation triggered by interval-based and time-specific updates can occur up to 50 times a day.
-
-3. As illustrated, rectangle ABCD denotes the widget's rendering area, whereas rectangle IJKL indicates the maximum animation rendering area the widget can request. The centers of the two rectangles are aligned. The dimensions meet the requirements described in the following table.
+3. As illustrated, rectangle ABCD denotes the widget's rendering area, whereas rectangle IJKL indicates the maximum overflow area the widget can request. The centers of the two rectangles are aligned. The dimensions meet the requirements described in the following table.
 
 | Widget Style | Length of JK | Length of IJ |
 |-------|---------------|---------------|
@@ -76,34 +70,24 @@ Example: On a device, a 2×2 widget measures 158vp × 158vp. Referring to the fi
 
 (2) Points I and A are horizontally 39.5vp apart and vertically 39.5vp apart.
 
-Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 5 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.
+Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 6 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.
 
 The interactive widget can call the [formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20) API to obtain its dimensions and relative coordinate position in the window. The widget provider uses this information to calculate the animation request range. When calculating coordinates, use point A in the figure above as the origin (0, 0) and calculate the corresponding parameters for rectangle EFGH, in vp.
 
-When [formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) is called, the animation rendering area (rectangle EFGH) described in [overflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20) must meet the following requirements:
-
+When [formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) is called, the overflow area (rectangle EFGH) described in [overflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20) must meet the following requirements:
 1. It contains the widget (rectangle ABCD).
-
 2. It does not exceed rectangle IJKL (rectangle IJKL completely contains rectangle EFGH).<!--Del-->This applies only to third-party applications.<!--DelEnd-->
 
 ### Power Consumption
-
 1. When a device enters the power-saving mode, interactive widgets do not respond to animation effect requests.
-
 2. When the device's thermal level reaches HOT, it no longer responds to animation requests triggered by non-tap operations; when the thermal level reaches OVERHEATED, it no longer responds to any animation requests. For details, see [ThermalLevel](../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 ### Animation Request
-
 1. At a time, only one widget executes the interactive widget animation.
-
 2. When a user actively triggers an animation effect for an interactive widget (for example, via a tap), this request takes priority. At this point, the current widget switches to the active state and runs the animation, while other widgets switch to the inactive state.
-
 3. Other triggering modes, for example, triggering an animation via the widget interval-based and time-specific data update mechanism, follow the first-come, first-served principle. The system processes only the first valid animation request. Other requests return a failure and are not cached.
-
 4. Other valid operations (such as tapping an application or widget, swiping pages, pulling down to access full search, dual-center, dragging a widget, and long pressing a widget) on the home screen will interrupt the current animation, and the widget will become inactive again.<!--Del-->System applications can suspend some operations on the home screen by configuring the suspend gesture. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
-
-5. The interactive widget does not respond to the events that exceed the animation rendering area (rectangle ABCD in Figure 6).
-
+5. The interactive widget does not respond to the events that exceed the overflow area (rectangle ABCD in Figure 6).
 6. For details about the restrictions on the interactive widget in the active state, see [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md).
 
 ## Available APIs
@@ -131,7 +115,7 @@ The following table lists the key APIs for a scene-based widget.
     Create an interactive widget through [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) and load the widget page.
 
     <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) -->
-
+    
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets
     import { formInfo, LiveFormExtensionAbility, LiveFormInfo } from '@kit.FormKit';
@@ -167,11 +151,12 @@ The following table lists the key APIs for a scene-based widget.
       }
     };
     ```
+    
 
 2. Implement an interactive widget page.
 
    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
    import { formInfo, formProvider } from '@kit.FormKit';
@@ -307,12 +292,13 @@ The following table lists the key APIs for a scene-based widget.
    }
    ```
 
+
 3. Configure LiveFormExtensionAbility for interactive widgets.
 
     Configure LiveFormExtensionAbility in [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) of the **module.json5** file.
 
     <!-- @[liveform_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     // entry/src/main/module.json5
     // ...
@@ -347,7 +333,7 @@ The following table lists the key APIs for a scene-based widget.
     The page development process of a widget in the inactive state is the same as that of a common widget and is completed in **widgetCard.ets**, which is automatically generated when a widget is created. For details about the widget creation process, see [Creating an ArkTS Widget](arkts-ui-widget-creation.md). On the inactive widget page, request the widget animation when the widget is tapped.
 
     <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-
+    
     ``` TypeScript
     // entry/src/main/ets/widget/pages/WidgetCard.ets
     @Entry
@@ -380,6 +366,7 @@ The following table lists the key APIs for a scene-based widget.
       }
     }
     ```
+
 
 2. Configure the **form_config.json** file.
 
@@ -428,7 +415,7 @@ The following table lists the key APIs for a scene-based widget.
     Call the [formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) API, and specify the animation request range, animation duration, and whether to use the default switching animation provided by the system. For details, see [formInfo.OverflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20). You can call the [formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20) API to obtain the dimensions and position of the interactive widget in the window. The widget provider calculates the animation request range (in vp) based on these dimensions. For details about the calculation rules, see the [constraints on widget parameter request](#parameter-request).
 
     <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
-
+    
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
     import { FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -458,7 +445,7 @@ The following table lists the key APIs for a scene-based widget.
           return;
         }
     
-        // Calculate the animation rendering area of the widget based on the dimension.
+        // Calculate the overflow area of the widget based on the dimension.
         let left: number = -Constants.OVERFLOW_LEFT_RATIO * formWidth;
         let top: number = -Constants.OVERFLOW_TOP_RATIO * formHeight;
         let width: number = Constants.OVERFLOW_WIDTH_RATIO * formWidth;
@@ -493,10 +480,11 @@ The following table lists the key APIs for a scene-based widget.
     }
     ```
 
+
 2. Implement the tool functions of the interactive widget animation.
 
    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/common/Constants.ets
    // Develop animation-related constants.
@@ -513,6 +501,7 @@ The following table lists the key APIs for a scene-based widget.
      public static readonly OVERFLOW_DURATION: number = 3500;
    }
    ```
+
 
 3. Configure the resource file **string.json**.
 
@@ -533,7 +522,6 @@ The following table lists the key APIs for a scene-based widget.
     ```
 
 ## Effect
-
 The following is a demo developed based on the code examples in this document. When the demo is executed, the [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) API is called to interrupt the current overflow animation and the widget is switched to the inactive state.
 
 ![live-form-base-demo.gif](figures/live-form-base-demo.gif)

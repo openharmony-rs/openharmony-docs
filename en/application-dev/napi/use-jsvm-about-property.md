@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:57:38.917Z pushedAt=2026-08-26T03:38:56.480Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:08:29.968Z pushedAt=2026-10-16T04:10:56.718Z -->
 
 ## Introduction
 
@@ -736,7 +736,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 
 // Sample test JS
 const char *SRC_CALL_NATIVE = R"JS(
-    let obj = '{ data: 0, message: "hello world", 50: 1}';
+    let obj = { data: 0, message: "hello world", 50: 1};
     let script = getAllPropertyNames(obj);
 )JS";
 ```

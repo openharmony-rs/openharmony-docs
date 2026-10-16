@@ -1,12 +1,11 @@
 # (Recommended) Using OHAudio for Audio Recording (C/C++)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zyy0412-->
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e5ffacb738adcbcbdef8bb46a1f51b91ed565ad8 translatedAt=2026-08-06T01:54:36.184Z pushedAt=2026-08-06T09:45:51.610Z -->
+<!-- md-trans-meta sourceCommit=3b8a0d17c5c2caf9a98560e7e5f6e195bf7195f7 translatedAt=2026-10-13T13:19:34.916Z pushedAt=2026-10-16T02:47:23.173Z -->
 
 OHAudio is a set of C APIs introduced in API version 10. These APIs are designed with a unified approach and support both regular audio paths and low-latency paths. Only PCM format is supported, making OHAudio suitable for scenarios where audio input is implemented at the native layer.
 
@@ -15,6 +14,7 @@ When an audio stream is in the working state (non-released), it occupies system 
 The following figure shows the state changes of OHAudio audio recording:
 
 ![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
+
 
 ## Prerequisites
 
@@ -27,9 +27,7 @@ The examples below are code snippets. You can obtain the [complete sample](https
 ``` cmake
 target_link_libraries(sample PUBLIC libohaudio.so)
 ```
-
 ### Adding Header Files
-
 You can use audio recording APIs by importing the <[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)> and <[native_audiocapturer.h](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md)> header files.
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
@@ -50,7 +48,6 @@ OHAudio provides the OH_AudioStreamBuilder interface, which follows the builder 
 `OH_AudioStream_Type` includes two types:
 
 - AUDIOSTREAM_TYPE_RENDERER
-
 - AUDIOSTREAM_TYPE_CAPTURER
 
 Use [OH_AudioStreamBuilder_Create](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create) to create a builder instance:
@@ -104,14 +101,14 @@ You can implement basic audio recording by following these steps.
    OH_AudioStreamBuilder_SetCapturerInfo(builder, AUDIOSTREAM_SOURCE_TYPE_MIC);
    ```
 
-During audio recording, audio data must be read in through a callback interface. You must implement the callback interface. Starting from API version 12, you can use [OH_AudioStreamBuilder_SetCapturerReadDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerreaddatacallback) to set the callback function. For the callback function declaration, see [OH_AudioCapturer_OnReadDataCallback](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback).
+   During audio recording, audio data must be read in through a callback interface. You must implement the callback interface. Starting from API version 12, you can use [OH_AudioStreamBuilder_SetCapturerReadDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerreaddatacallback) to set the callback function. For the callback function declaration, see [OH_AudioCapturer_OnReadDataCallback](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback).
 
 3. Set the audio callback functions.
 
-For concurrent audio processing, refer to [Introduction to Audio Focus](audio-playback-concurrency.md). The only difference lies in the API language used.
+   For concurrent audio processing, refer to [Introduction to Audio Focus](audio-playback-concurrency.md). The only difference lies in the API language used.
 
    <!-- @[Set_AudioCallbackFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+   
    ``` C++
    void MyOnReadData_NewAPI(
        OH_AudioCapturer* capturer,
@@ -220,7 +217,6 @@ OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEn
 ```
 
 ### Setting the Mute Interruption Mode
-
 The mute-on-interruption mode provides the capability to switch the interruption policy from stopping recording to muted recording, so that the recording session is not interrupted by the system based on audio focus concurrency rules, and other apps can still start recording during the session. When creating an audio recording constructor, call [OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerwillmutewheninterrupted) to set whether to enable the mute-on-interruption mode. This mode is disabled by default, in which case the audio focus policy manages the execution order of concurrent audio streams. When enabled, if the recording is stopped or paused due to interruption by another app, the capturer enters the muted recording state, where the recorded audio contains no sound.
 
 ### Setting Mute Hint for Recording Stream
@@ -249,17 +245,20 @@ The echo cancellation feature effectively eliminates echo interference during re
 Before enabling this feature, you are advised to call [OH_AudioStreamManager_IsAcousticEchoCancelerSupported](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isacousticechocancelersupported) (supported from API version 20) to check whether the current device supports echo cancellation for the audio source type [OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype), ensuring feature availability. If supported, you can set the corresponding audio source type through [OH_AudioStreamBuilder_SetCapturerInfo](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerinfo) when creating the audio recording constructor, thereby activating the echo cancellation processing pipeline.
 
 ### Samples
-
 For samples related to audio recording development with OHAudio, see [OHAudio Recording and Playback](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio).
 
 ## Precautions
 
-Starting from API version 12, using [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) to set audio callback functions is **no longer recommended**. If you must use it, set the audio callback functions in either of the following two ways to avoid unexpected behavior.
+Starting from API version 12, using [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) to set audio callback functions is **no longer recommended**. If you must use it, complete initialization in either of the following ways before configuring the callback functions.
 
-- Method 1: Ensure that every callback in [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) is initialized with either a **custom callback method** or a **null pointer**.
+> **NOTE**
+>
+> You must initialize the `OH_AudioCapturer_Callbacks` structure. Uninitialized callback fields may contain random addresses, which the system may mistakenly execute as callback functions when triggering callbacks, resulting in wild pointers and process crashes.
+
+- Method 1: Ensure that every callback in [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) is explicitly initialized with either a **custom callback** or a **null pointer**. Unused callbacks must be set to null pointers and must not retain uninitialized values.
 
   <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+  
   ``` C++
   int32_t MyOnReadData_Legacy(
       OH_AudioCapturer* capturer,
@@ -289,10 +288,10 @@ Starting from API version 12, using [OH_AudioCapturer_Callbacks](../../reference
       callbacks.OH_AudioCapturer_OnError = nullptr;
   ```
 
-- Method 2: Before use, initialize and zero out the structure.
+- Method 2: Before use, initialize and zero out the structure to ensure that all unconfigured callback fields are null pointers.
 
   <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+  
   ``` C++
   int32_t MyOnReadData_Legacy(
       OH_AudioCapturer* capturer,
@@ -319,8 +318,5 @@ Starting from API version 12, using [OH_AudioCapturer_Callbacks](../../reference
       callbacks.OH_AudioCapturer_OnReadData = MyOnReadData_Legacy;
       callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
   ```
-
 <!--RP1-->
 <!--RP1End-->
-
-<!--no_check-->

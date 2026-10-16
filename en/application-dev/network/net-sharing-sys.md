@@ -1,12 +1,11 @@
 # Network Sharing (for System Applications Only)
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-08-13T03:09:02.389Z pushedAt=2026-08-13T06:39:53.673Z -->
+<!-- md-trans-meta sourceCommit=8e9bab72312dfbfdd6694d93b2af68b6058e6bfd translatedAt=2026-10-13T13:15:52.939Z pushedAt=2026-10-16T04:13:22.664Z -->
 
 ## Overview
 
@@ -18,15 +17,12 @@ The Network Sharing module allows you to share your device's Internet connection
 ## Basic Concepts
 
 - Wi-Fi sharing: Shares the network through a Wi-Fi hotspot.
-
 - Bluetooth sharing: Shares the network through Bluetooth.
-
 - USB tethering: Shares the network using a USB flash drive.
 
 ## Constraint
 
 - Programming language: JS
-
 - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## When to Use
@@ -34,9 +30,7 @@ The Network Sharing module allows you to share your device's Internet connection
 Typical network sharing scenarios are as follows:
 
 - Enabling network sharing
-
 - Disabling network sharing
-
 - Obtaining the data traffic of the shared network
 
 The following describes the development procedure specific to each application scenario.
@@ -67,11 +61,8 @@ For the complete list of APIs and example code, see [Network Sharing](../referen
 ## Enabling network sharing
 
 1. Import the **sharing** namespace from **@kit.NetworkKit**.
-
 2. Subscribe to network sharing state changes.
-
 3. Call **startSharing** to start network sharing of the specified type.
-
 4. Return the callback for successfully starting network sharing.
 
 ```ts
@@ -97,11 +88,8 @@ sharing.startSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
 ### How to Develop
 
 1. Import the **sharing** namespace from **@kit.NetworkKit**.
-
 2. Subscribe to network sharing state changes.
-
 3. Call **stopSharing** to stop network sharing of the specified type.
-
 4. Return the callback for successfully stopping network sharing.
 
 ```ts
@@ -118,7 +106,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 ```
 
@@ -127,11 +115,8 @@ sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
 ### How to Develop
 
 1. Import the **sharing** namespace from **@kit.NetworkKit**.
-
 2. Call **startSharing** to start network sharing of the specified type.
-
 3. Call **getStatsTotalBytes** to obtain the data traffic generated during data sharing.
-
 4. Call **stopSharing** to stop network sharing of the specified type and clear the data volume of network sharing.
 
 ```ts
@@ -157,7 +142,7 @@ sharing.getStatsTotalBytes().then((data: number) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 
 // Call getStatsTotalBytes again. The data volume of network sharing has been cleared.

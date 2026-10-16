@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3cba3d1071f73693662a910e0841fe04876df38d translatedAt=2026-09-28T02:37:01.903Z pushedAt=2026-09-29T07:23:12.551Z -->
+<!-- md-trans-meta sourceCommit=cac2d4956f49e70c22c21caf87e918d83d8b28c6 translatedAt=2026-10-13T13:17:54.496Z pushedAt=2026-10-16T02:46:32.572Z -->
 
 The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It is suitable if you have extensive audio development experience and want to implement more flexible recording features.
 
@@ -26,6 +26,8 @@ When an audio stream is in the working state (not in the released state), it occ
 ### How to Develop
 
 The following examples are code snippets. You can obtain the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS) via the link at the bottom right of the sample code.
+
+The complete example demonstrates how to use `AudioCapturer` to record audio and play back the recorded audio after recording is complete.
 
 1. Set audio capture parameters and create an AudioCapturer instance. For details about the parameters, see [AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8).
 
