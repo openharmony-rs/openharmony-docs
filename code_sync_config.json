@@ -3072,6 +3072,26 @@
 						"end_line":134,
 						"name":"arkts_graphics_draw_theme_text",
 						"start_line":123
+					},
+					{
+						"end_line":193,
+						"name":"arkts_graphics_draw_textblob_string_fallback",
+						"start_line":178
+					},
+					{
+						"end_line":223,
+						"name":"arkts_graphics_draw_textblob_postext_fallback",
+						"start_line":197
+					},
+					{
+						"end_line":257,
+						"name":"arkts_graphics_draw_font_texttoglyphs_fallback",
+						"start_line":227
+					},
+					{
+						"end_line":275,
+						"name":"arkts_graphics_draw_font_measure_fallback",
+						"start_line":261
 					}
 				]
 			}
@@ -47734,6 +47754,46 @@
 						"end_line":54,
 						"name":"print_extension_impl",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/textblock-drawing-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp",
+				"functions":[
+					{
+						"end_line":1397,
+						"name":"ndk_graphics_draw_textblob_string_fallback",
+						"start_line":1369
+					},
+					{
+						"end_line":1431,
+						"name":"ndk_graphics_draw_textblob_text_fallback",
+						"start_line":1402
+					},
+					{
+						"end_line":1484,
+						"name":"ndk_graphics_draw_textblob_postext_fallback",
+						"start_line":1436
+					},
+					{
+						"end_line":1531,
+						"name":"ndk_graphics_draw_font_text_to_glyphs_fallback",
+						"start_line":1489
+					},
+					{
+						"end_line":1588,
+						"name":"ndk_graphics_draw_font_measure_text_fallback",
+						"start_line":1536
+					},
+					{
+						"end_line":1654,
+						"name":"ndk_graphics_draw_font_measure_text_with_brush_or_pen_fallback",
+						"start_line":1593
 					}
 				]
 			}
