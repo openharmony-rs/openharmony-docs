@@ -1492,3 +1492,17 @@ Allows an application to generate, use, and delete secure element keys.
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.kernel.ALLOW_PTRACE_READ
+
+Allows an application to use PTRACE read capabilities to obtain register and memory information of application processes.
+
+<!--RP110--><!--RP110End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
