@@ -13,6 +13,10 @@
     - [相机管理(ArkTS)](camera-device-management.md)
     - [设备输入(ArkTS)](camera-device-input.md)
     - [会话管理(ArkTS)](camera-session-management.md)
+    - [适配不同折叠状态的摄像头变更(ArkTS)](camera-foldable-display.md)
+    - [相机启动恢复实践(ArkTS)](camera-background-recovery.md)
+    - [自动切换摄像头实践(ArkTS)](camera-auto-switch.md)
+    - [多摄同开(ArkTS)](camera-concurrent-open.md)
   - 拍照与预览(ArkTS)<!--camera-dev-arkts-preview-->
     - [通过系统相机拍照和录像(CameraPicker)](camera-picker.md)
     - [预览(ArkTS)](camera-preview.md)
@@ -50,10 +54,6 @@
     - [相机管理(C/C++)](native-camera-device-management.md)
     - [设备输入(C/C++)](native-camera-device-input.md)
     - [会话管理(C/C++)](native-camera-session-management.md)
-    - [适配不同折叠状态的摄像头变更(ArkTS)](camera-foldable-display.md)
-    - [相机启动恢复实践(ArkTS)](camera-background-recovery.md)
-    - [自动切换摄像头实践(ArkTS)](camera-auto-switch.md)
-    - [多摄同开(ArkTS)](camera-concurrent-open.md)
   - 拍照与预览(C/C++)<!--camera-dev-native-preview-->
     - [预览(C/C++)](native-camera-preview.md)
     - [预览流二次处理(C/C++)](native-camera-preview-imageReceiver.md)
