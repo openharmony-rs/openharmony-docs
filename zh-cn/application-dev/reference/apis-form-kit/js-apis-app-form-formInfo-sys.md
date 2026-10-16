@@ -192,6 +192,7 @@ import { formInfo } from '@kit.FormKit';
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
 | NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>适用版本：26.0.1 |
+| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>适用版本：26.0.1 |
 
 ## RenderingMode<sup>18+</sup>
 
