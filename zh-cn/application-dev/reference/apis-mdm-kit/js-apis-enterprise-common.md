@@ -159,7 +159,7 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | EXEMPTION_RESOURCE | 6 | 资源豁免          |
 | X_KEY | 7 | x键          |
 | SYSTEM_ROLLBACK | 8 | 系统回退          |
-| SUPER_PRIVACY | 9 | 超级隐私功能          |
+| SUPER_PRIVACY | 9 | 超级隐私模式          |
 
 ## common.isFeatureSupported
 
