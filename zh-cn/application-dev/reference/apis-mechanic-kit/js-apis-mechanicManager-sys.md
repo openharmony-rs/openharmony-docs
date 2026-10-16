@@ -1329,7 +1329,6 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | ----------- | ------|---- | --------------- |
 | HUMAN_FACE | int | 0 | 目标人脸信息。 |
 
-
   ## SearchDirection<sup>21+<sup>
 
 系统默认的搜索方向。
@@ -1355,7 +1354,6 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
-
 
 ## SearchParams<sup>21+<sup>
 
@@ -1640,7 +1638,6 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | mechId | number | 否 | 否 | 机械体设备ID。 |
 | batteryLevel | number | 否 | 否 | 设备电量。 |
 | isCharging | boolean | 否 | 否 | 是否充电中。 |
-
 
 ## AdsorbState
 
