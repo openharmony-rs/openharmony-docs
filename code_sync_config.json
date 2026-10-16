@@ -34671,6 +34671,30 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"customize_a_webtag_and_send_it_to_the_native_side_of_the_application",
+						"start_line":40
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"interact_with_the_webview_via_the_native_api",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/types/libentry/Index.d.ts",
 				"functions":[
 					{
 						"end_line":20,
@@ -34680,12 +34704,82 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":53,
-						"name":"customize_a_webtag_and_send_it_to_the_native_side_of_the_application",
-						"start_line":40
+						"end_line":361,
+						"name":"node_api_layer_code",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/jsbridge_object.h",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"the_service_code_on_the_native_side",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/jsbridge_object.cpp",
+				"functions":[
+					{
+						"end_line":91,
+						"name":"handles_javascript_calls_from_webview",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"interact_with_the_webview_via_the_native_api",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"the_arkts_interface_is_exposed_on_the_node_api_side",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/hello.cpp",
+				"functions":[
+					{
+						"end_line":331,
+						"name":"node_api_layer_code",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/jsbridge_object.h",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"jsbridge_object_h",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/jsbridge_object.cpp",
+				"functions":[
+					{
+						"end_line":91,
+						"name":"jsbridge_object_cpp",
+						"start_line":16
 					}
 				]
 			}
@@ -34916,6 +35010,76 @@
 						"end_line":80,
 						"name":"Register_after_loaded",
 						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_one.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"pass_an_array_between_the_application_side_and_the_front_end_page",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_two.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"the_base_type_is_passed_between_the_app_side_and_front_end_pages",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_three.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"the_application_side_calls_the_callback_of_the_front_end_page",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_four.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"call_the_function_in_the_object_of_the_front_end_page_on_the_application_side",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_five.ets",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"the_front_end_page_calls_the_function_in_the_object_on_the_application_side",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_one.ets",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"on_the_application_side_of_new_promise",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_two.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"on_the_front_end_page_new_promise",
+						"start_line":16
 					}
 				]
 			}
@@ -35246,6 +35410,16 @@
 						"end_line":55,
 						"name":"register_init_scheme",
 						"start_line":26
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets",
+				"functions":[
+					{
+						"end_line":96,
+						"name":"Intercept_requested_information",
+						"start_line":32
 					}
 				]
 			}
@@ -35775,6 +35949,36 @@
 					{
 						"end_line":40,
 						"name":"ChangeUserAgent",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"CrossDomainIntercept",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/resources/rawfile/js/script.js",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"script",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/resources/resfile/js/script.js",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"script2",
 						"start_line":15
 					}
 				]
@@ -47809,6 +48013,36 @@
 						"end_line":45,
 						"name":"web_get_dmp_files",
 						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-app-page-data-channel.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry3/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":108,
+						"name":"create_a_message_port_to_implement_communication_between_the_two_ends",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-page-loading-with-web-components.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"EntryAbility",
+						"start_line":16
 					}
 				]
 			}
