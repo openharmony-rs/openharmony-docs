@@ -36,7 +36,7 @@
 
 > **说明：**
 >
-> 在调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口之前，请确保已通过[windowStage.getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9)获取到有效的主窗口实例。
+> 在调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口之前，请确保已通过[getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9)获取到有效的主窗口实例。
 
 ## 实现屏幕方向和窗口的orientation的相互转换
 
