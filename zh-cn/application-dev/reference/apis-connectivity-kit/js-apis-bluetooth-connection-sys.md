@@ -1043,31 +1043,31 @@ getBleMacByBrMac(brMac: string): string
 
 根据已配对对端设备的真实BR地址，获取该设备的真实BLE地址。
 
-本接口用于在已配对设备列表中识别同一双模设备的BR入口与BLE入口：入参brMac为已配对对端设备的真实BR地址，返回值为同一对端设备的真实BLE地址。若对端设备未配对，则抛出错误码2900016；若该BR地址无关联的BLE地址，则抛出错误码2900103。
+本接口用于在已配对设备列表中识别同一双模设备的BR入口与BLE入口：入参brMac为已配对对端设备的真实BR地址，返回值为同一对端设备的真实BLE地址。若对端设备未配对，则抛出错误码2900016；若该BR地址无关联的BLE地址，则抛出错误码2900017。
 
-**起始版本：** 27.0.0
+**起始版本**： 27.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**： 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限**： ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
+**系统能力**： SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | brMac | string | 是 | 表示已配对对端设备的真实BR地址，例如"11:22:33:AA:BB:FF"。 |
 
-**返回值：**
+**返回值**：
 
 | 类型 | 说明 |
 | ---- | ---- |
 | string | 表示对端设备的真实BLE地址，例如"11:22:33:AA:BB:FF"。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -1075,14 +1075,13 @@ getBleMacByBrMac(brMac: string): string
 | -------- | -------- |
 |201 | Permission denied. |
 |202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 |801 | Capability not supported. |
 |2900003 | Bluetooth disabled. |
 |2900016 | Device unpaired. |
 |2900099 | Operation failed. |
-|2900103 | No BLE address is associated with the input BR address. |
+|2900017 | No BLE address is associated with the input BR address. |
 
-**示例：**
+**示例**：
 
 ```js
 import { connection } from '@kit.ConnectivityKit';
