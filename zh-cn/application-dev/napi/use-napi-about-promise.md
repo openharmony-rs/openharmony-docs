@@ -118,7 +118,7 @@ napi_value NapiPromiseDemo(napi_env env, napi_callback_info info)
 
 ### napi_resolve_deferred & napi_reject_deferred
 
-使用napi_resolve_deferred对Promise关联的deferred对象进行解析，从挂起状态转换为已兑现状态，或从挂起状态转换为已拒绝状态。
+使用napi_resolve_deferred对Promise关联的deferred对象进行解析，使其从挂起状态转换为已兑现状态；使用napi_reject_deferred对Promise关联的deferred对象进行拒绝，使其从挂起状态转换为已拒绝状态。
 
 为确保微任务正确执行，ArkTS运行时在使用Node-API方法兑现Promise时，会触发一次微任务执行。
 
