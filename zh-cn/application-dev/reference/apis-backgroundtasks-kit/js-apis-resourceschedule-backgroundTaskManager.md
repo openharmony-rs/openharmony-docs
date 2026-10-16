@@ -682,9 +682,17 @@ export default class EntryAbility extends UIAbility {
 
 ## backgroundTaskManager.startContinuousTask
 
-startContinuousTask(context: Context, request: ContinuousTaskRequest): Promise&lt;int&gt;
+startContinuousTask(context: Context, request: ContinuousTaskRequest): Promise&lt;number&gt;
 
-申请长时任务，一个UIAbility下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。<br>同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。<br>如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。接口返回的长时任务通知Id为数据传输类型的Id，主要用于数据传输的进度更新。<br>通过本接口申请长时任务时，支持包含数据传输类型的长时任务直接发送进度模版通知，可选择通知是否有进度环，进度为100时是否响铃，具体请参考[ProgressInfo](#progressinfo)。也可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知。<!--RP1--><!--RP1End-->
+申请长时任务，一个UIAbility下支持通过本接口申请多个长时任务，使用Promise异步回调。
+
+通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。
+
+同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。
+
+如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。
+
+通过本接口申请长时任务时，支持包含数据传输类型的长时任务直接发送进度模版通知，可选择通知是否有进度环，进度为100时是否响铃，具体请参考[ProgressInfo](#progressinfo)。也可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知。<!--RP1--><!--RP1End-->
 
 **起始版本：** 26.0.1
 
@@ -707,7 +715,7 @@ startContinuousTask(context: Context, request: ContinuousTaskRequest): Promise&l
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回长时任务ID。 |
+| Promise\<number> | Promise对象，返回长时任务ID。 |
 
 **错误码：**
 
