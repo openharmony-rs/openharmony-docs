@@ -162,7 +162,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
    // ...
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
 
 ## 保存音频类文件
@@ -280,7 +280,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
    // ...
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
 
 ## DOWNLOAD模式保存文件
