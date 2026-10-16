@@ -117,4 +117,3 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
 2. 在前端页面代码中，利用JavaScript调用传感器相关的W3C标准协议接口。
 
   <!-- @[the_type_of_resource_for_which_permission_is_requested_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html) --> 
-  
