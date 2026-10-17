@@ -1034,7 +1034,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
 
-允许应用加载二进制证书签名的共享库。
+允许应用加载二进制证书签名、调试证书签名、自签名的共享库。
 
 <!--RP61--><!--RP61End-->
 
@@ -1491,6 +1491,20 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY
+ 
+允许应用加载二进制证书签名与调试证书签名的共享库。
+ 
+<!--RP109--><!--RP109End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
 
 ## ohos.permission.kernel.ALLOW_PTRACE_READ
 
