@@ -1310,11 +1310,11 @@ getScrollState(): ScrollState
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
 | extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。 |
-| fastScroll<sup>26.2.0+</sup> | [FastScrollMode](#fastscrollmode2620枚举说明) | 否 | 是 | 滚动到指定Index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。仅List组件支持，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**原子化服务API：** 从API version 26.2.0开始，该接口支持在原子化服务中使用。 |
+| fastScroll<sup>26.2.0+</sup> | [FastScrollMode](#fastscrollmode2620枚举说明) | 否 | 是 | 滚动到指定index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。仅List组件支持，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**原子化服务API：** 从API version 26.2.0开始，该接口支持在原子化服务中使用。 |
 
 ## FastScrollMode<sup>26.2.0+</sup>枚举说明
 
-滚动到指定Index时使用的快速滚动模式，配合[ScrollToIndexOptions](#scrolltoindexoptions12对象说明)的fastScroll字段使用。
+滚动到指定index时使用的快速滚动模式，配合[ScrollToIndexOptions](#scrolltoindexoptions12对象说明)的fastScroll字段使用。
 
 **原子化服务API：** 从API version 26.2.0开始，该接口支持在原子化服务中使用。
 
