@@ -31,6 +31,8 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
