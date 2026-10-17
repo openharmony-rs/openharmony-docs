@@ -7789,7 +7789,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-this.mTextInputClient?.getLeftRichText(length).then((richText) => {
+inputClient?.getLeftRichText(length).then((richText) => {
   if (richText === null) {
     console.info('getLeftRichText: result is null');
   } else {
@@ -7982,7 +7982,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-this.mTextInputClient?.getRightRichText(length).then((richText) => {
+inputClient?.getRightRichText(length).then((richText) => {
   if (richText === null) {
     console.info('getRightRichText: result is null');
   } else {
