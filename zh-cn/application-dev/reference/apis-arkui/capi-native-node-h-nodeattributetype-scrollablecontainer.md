@@ -741,6 +741,24 @@ NODE_SCROLL_BAR_HEIGHT = 1002029
 | -- | -- |
 | .value[0].f32 | 滚动条滑轨高度，单位：vp。 |
 
+## NODE_SCROLL_STATE
+
+```c
+NODE_SCROLL_STATE = 1002030
+```
+
+获取当前滚动状态。<br>
+该属性可以根据需要通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)获取。<br>
+作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 当前滚动状态。参数类型为[ArkUI_ScrollState](capi-native-type-h.md#arkui_scrollstate)。 |
+
 ## NODE_LIST_DIRECTION
 
 ```c
