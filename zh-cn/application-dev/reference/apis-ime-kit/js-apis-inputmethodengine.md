@@ -7789,20 +7789,20 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText | null) => {
+this.mTextInputClient?.getLeftRichText(length).then((richText) => {
   if (richText === null) {
     console.info('getLeftRichText: result is null');
-    return;
-  }
-  let plainText: string = richText.getString();
-  console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
-  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-  for (let i = 0; i < spans.length; i++) {
-    let span: inputMethodEngine.RichTextSpan = spans[i];
-    let type: inputMethodEngine.SpanType = span.getType();
-    let content: string = span.getContent();
-    let range: inputMethodEngine.Range = span.getRange();
-    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  } else {
+    let plainText: string = richText.getString();
+    console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
+    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+    for (let i = 0; i < spans.length; i++) {
+      let span: inputMethodEngine.RichTextSpan = spans[i];
+      let type: inputMethodEngine.SpanType = span.getType();
+      let content: string = span.getContent();
+      let range: inputMethodEngine.Range = span.getRange();
+      console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+    }
   }
 }).catch((err: Object) => {
   let error = err as BusinessError;
@@ -7982,20 +7982,20 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText | null) => {
+this.mTextInputClient?.getRightRichText(length).then((richText) => {
   if (richText === null) {
     console.info('getRightRichText: result is null');
-    return;
-  }
-  let plainText: string = richText.getString();
-  console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
-  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-  for (let i = 0; i < spans.length; i++) {
-    let span: inputMethodEngine.RichTextSpan = spans[i];
-    let type: inputMethodEngine.SpanType = span.getType();
-    let content: string = span.getContent();
-    let range: inputMethodEngine.Range = span.getRange();
-    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  } else {
+    let plainText: string = richText.getString();
+    console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
+    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+    for (let i = 0; i < spans.length; i++) {
+      let span: inputMethodEngine.RichTextSpan = spans[i];
+      let type: inputMethodEngine.SpanType = span.getType();
+      let content: string = span.getContent();
+      let range: inputMethodEngine.Range = span.getRange();
+      console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+    }
   }
 }).catch((err: Object) => {
   let error = err as BusinessError;
