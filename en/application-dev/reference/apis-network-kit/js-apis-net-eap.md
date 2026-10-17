@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 <!-- md-trans-meta sourceCommit=f9f6b37ec87d9c0bf979f62eb07082fa84f5f2fe translatedAt=2026-09-28T01:31:58.212Z pushedAt=2026-10-09T03:25:34.605Z -->
 
-The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
+The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication. It also provides APIs for configuring Ethernet 802.1X EAP authentication, querying authentication state, and managing authentication state change callbacks.
 
 > **NOTE**
 >
@@ -270,6 +270,344 @@ try{
 }
 ```
 
+## eap.setEthEapConfig
+
+setEthEapConfig(config: EthEapConfig): void
+
+Sets the 802.1X EAP configuration for Ethernet. The configuration is persisted in encrypted form. Any field change triggers one automatic authentication cycle unless 802.1X is disabled or authentication is currently occupied by an enterprise application. In the latter case, the configuration is persisted, while the enterprise application keeps control. The authentication result is delivered through the `onStateChange` callback, not by this API's return value.
+
+For sensitive fields in `config.profile` (`password`, `certPassword`, and `certEntry`), an empty string or empty array preserves the corresponding value already stored. Do not log the configuration or its sensitive fields. When `locked` is `true`, configuration changes are denied; only an update that unlocks the configuration is allowed.
+
+**Since**: 26.2.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| config | [EthEapConfig](#etheapconfig) | Yes | Ethernet 802.1X EAP configuration. The `profile` property must include every required field defined by [EthEapProfile](#etheapprofile). |
+
+**Error codes**
+
+| Error Code | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const config: eap.EthEapConfig = {
+  profile: {
+    eapMethod: eap.EapMethod.EAP_PEAP,
+    phase2Method: eap.Phase2Method.PHASE2_MSCHAPV2,
+    identity: 'identity-placeholder',
+    anonymousIdentity: '',
+    password: 'password-placeholder',
+    caCertAliases: '',
+    caPath: '',
+    clientCertAliases: '',
+    certEntry: new Uint8Array(),
+    certPassword: '',
+    altSubjectMatch: '',
+    domainSuffixMatch: '',
+    realm: '',
+    plmn: '',
+    eapSubId: 1
+  },
+  enabled: true,
+  autoAuth: true,
+  locked: false
+};
+
+try {
+  eap.setEthEapConfig(config);
+  console.info('setEthEapConfig succeeded');
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`setEthEapConfig failed: ${error.code} - ${error.message}`);
+}
+```
+
+## eap.getEthEapConfig
+
+getEthEapConfig(): Promise\<EthEapConfig>
+
+Gets the persisted Ethernet 802.1X EAP configuration. The configuration is persisted in encrypted form. Sensitive fields (`password`, `certPassword`, and `certEntry`) are always returned as empty values and cannot be read through this API. Do not log the returned configuration.
+
+**Since**: 26.2.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<[EthEapConfig](#etheapconfig)> | Promise used to return the persisted Ethernet 802.1X EAP configuration. |
+
+**Error codes**
+
+| Error Code | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  eap.getEthEapConfig().then((config: eap.EthEapConfig) => {
+    console.info(`getEthEapConfig succeeded. Enabled: ${config.enabled}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getEthEapConfig failed: ${err.code} - ${err.message}`);
+  });
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`getEthEapConfig threw: ${error.code} - ${error.message}`);
+}
+```
+
+## eap.deleteEthEapConfig
+
+deleteEthEapConfig(): Promise\<void>
+
+Deletes the persisted Ethernet 802.1X EAP configuration and stops any ongoing automatic authentication. This API is idempotent: it resolves successfully even when no configuration is stored.
+
+**Since**: 26.2.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+| Error Code | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  eap.deleteEthEapConfig().then(() => {
+    console.info('deleteEthEapConfig succeeded');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteEthEapConfig failed: ${err.code} - ${err.message}`);
+  });
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`deleteEthEapConfig threw: ${error.code} - ${error.message}`);
+}
+```
+
+## eap.getEthEapStateInfo
+
+getEthEapStateInfo(): EthEapStateInfo
+
+Queries the current Ethernet 802.1X EAP authentication state information. The result includes the current state, retry count, and an optional supplementary message such as a failure reason. The message is empty on success.
+
+**Since**: 26.2.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| [EthEapStateInfo](#etheapstateinfo) | Current authentication state information. |
+
+**Error codes**
+
+| Error Code | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const stateInfo: eap.EthEapStateInfo = eap.getEthEapStateInfo();
+  console.info(`getEthEapStateInfo succeeded. State: ${stateInfo.state}`);
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`getEthEapStateInfo failed: ${error.code} - ${error.message}`);
+}
+```
+
+## eap.onStateChange
+
+onStateChange(callback: Callback\<EthEapStateInfo>): void
+
+Subscribes to Ethernet 802.1X EAP authentication state changes. Authentication results, including failures and successful authentication, are delivered through the callback.
+
+**Since**: 26.2.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)> | Yes | Callback used to return the current authentication state information. Keep the same callback reference when calling `offStateChange` to remove only this subscription. |
+
+**Error codes**
+
+| Error Code | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (stateInfo: eap.EthEapStateInfo): void => {
+  console.info(`Ethernet EAP state changed: ${stateInfo.state}`);
+};
+
+try {
+  eap.onStateChange(callback);
+  console.info('onStateChange succeeded');
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`onStateChange failed: ${error.code} - ${error.message}`);
+}
+```
+
+## eap.offStateChange
+
+offStateChange(callback?: Callback\<EthEapStateInfo>): void
+
+Unsubscribes from Ethernet 802.1X EAP authentication state changes. Pass the same callback reference used with `onStateChange` to remove that subscription, or omit `callback` to remove all state change subscriptions.
+
+**Since**: 26.2.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)> | No | Callback to remove. If omitted, all state change subscriptions are removed. |
+
+**Error codes**
+
+| Error Code | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (stateInfo: eap.EthEapStateInfo): void => {
+  console.info(`Ethernet EAP state changed: ${stateInfo.state}`);
+};
+
+try {
+  eap.onStateChange(callback);
+  // Unregister using the same callback reference.
+  eap.offStateChange(callback);
+  // To remove all state change subscriptions, call eap.offStateChange().
+  console.info('offStateChange succeeded');
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`offStateChange failed: ${error.code} - ${error.message}`);
+}
+```
+
+## eap.connect
+
+connect(action: EthEapConnectAction): Promise\<void>
+
+Manually triggers or disconnects Ethernet 802.1X EAP authentication. With `ACTION_CONNECT`, authentication is re-triggered with the saved configuration; the call fails if no configuration has been stored. With `ACTION_DISCONNECT`, automatic authentication is stopped and the underlying 802.1X authentication is logged off. If authentication is occupied by an enterprise application, this API does not interrupt that application; the result is delivered through the `onStateChange` callback.
+
+**Since**: 26.2.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| action | [EthEapConnectAction](#etheapconnectaction) | Yes | Manual action: `ACTION_CONNECT` re-triggers authentication, or `ACTION_DISCONNECT` stops automatic authentication and logs off. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+| Error Code | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  eap.connect(eap.EthEapConnectAction.ACTION_CONNECT).then(() => {
+    console.info('connect succeeded');
+  }).catch((err: BusinessError) => {
+    console.error(`connect failed: ${err.code} - ${err.message}`);
+  });
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`connect threw: ${error.code} - ${error.message}`);
+}
+```
+
 ## EapData
 
 Defines the EAP data.
@@ -352,3 +690,69 @@ Represents the EAP profile information.
 | realm             | string                        | No  | No| Realm for the passpoint credential.              |
 | plmn              | string                        | No  | No| Public land mobile network (PLMN) of the passpoint credential provider.|
 | eapSubId          | number                        | No  | No| Sub-ID of the SIM card.                   |
+
+## EthEapConfig
+
+Represents the Ethernet 802.1X EAP configuration, including the EAP profile and feature switches. The configuration is persisted in encrypted form by [setEthEapConfig](#eapsetetheapconfig).
+
+**Since**: 26.2.0
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| profile | [EthEapProfile](#etheapprofile) | No | No | EAP profile information. All fields defined by `EthEapProfile` are required. When setting the configuration, an empty string for `password` or `certPassword`, or an empty array for `certEntry`, preserves the stored value of that field. These three sensitive fields are always returned empty when reading the configuration. |
+| enabled | boolean | No | No | Whether Ethernet 802.1X is enabled. `true`: enabled; `false`: disabled. |
+| autoAuth | boolean | No | No | Whether to initiate authentication automatically when the network cable is connected or the device boots. `true`: automatically initiate authentication; `false`: do not automatically initiate authentication on these events. |
+| locked | boolean | No | No | Whether the configuration is locked. `true`: locked; `false`: unlocked. When locked, configuration modifications are denied except for unlocking. |
+
+## EthEapState
+
+Enumerates the Ethernet 802.1X EAP authentication states.
+
+**Since**: 26.2.0
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| STATE_IDLE | 0 | Idle. Authentication has not been initiated. |
+| STATE_AUTHENTICATING | 1 | Authenticating. 802.1X authentication is in progress. |
+| STATE_AUTHENTICATED | 2 | Authenticated. Authentication succeeded. |
+| STATE_FAILED | 3 | Failed. The maximum retry count has been reached. |
+| STATE_RETRYING | 4 | Retrying. Waiting before the next retry attempt. |
+
+## EthEapStateInfo
+
+Represents Ethernet 802.1X EAP authentication state information returned by [getEthEapStateInfo](#eapgetetheapstateinfo) or delivered through the [onStateChange](#eaponstatechange) callback.
+
+**Since**: 26.2.0
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| state | [EthEapState](#etheapstate) | No | No | Current authentication state. |
+| retryCount | number | No | No | Current retry count, which must be an integer and resets to 0 on success. |
+| message | string | No | Yes | Supplementary message, such as the failure reason. Empty on success. |
+
+## EthEapConnectAction
+
+Enumerates the manual actions for Ethernet 802.1X EAP authentication.
+
+**Since**: 26.2.0
+
+**System capability**: SystemCapability.Communication.NetManager.Eap
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| ACTION_CONNECT | 0 | Re-triggers authentication with the saved configuration. |
+| ACTION_DISCONNECT | 1 | Stops automatic authentication and logs off the underlying 802.1X authentication. |
