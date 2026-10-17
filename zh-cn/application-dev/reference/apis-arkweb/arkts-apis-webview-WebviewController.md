@@ -11445,7 +11445,7 @@ enableAutoReload(enable: boolean): void
 >
 > - 只有网络错误才会触发自动重新加载。不包括以下内容：证书错误、SSL（安全套接字层）协议错误、身份验证错误、POST请求、非HTTP(S)协议和客户端拦截的错误。
 > - 自动重新加载不会影响[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调。
-> - 当触发自动重新加载时，[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调将被每次重试都会重新调用。
+> - 当触发自动重新加载时，每次重试时[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调都会被重新调用。
 
 **起始版本：** 26.2.0
 
@@ -11486,7 +11486,7 @@ struct WebComponent {
           this.controller.enableAutoReload(true);
           // 查询是否已启用
           let isEnabled: boolean = this.controller.isAutoReloadEnabled();
-          console.info("Auto reload enabled: " + isEnabled);
+          console.info("已启用自动重载: " + isEnabled);
         })
     }
   }
