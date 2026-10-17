@@ -31,6 +31,7 @@
 - **[UserAuthResultCode](#userauthresultcode9)**：认证结果码枚举。
 - **[ReuseMode](#reusemode12)**：认证结果复用模式枚举。
 - **[UserAuthTipCode](#userauthtipcode20)**：认证提示码枚举。
+- **[UserRecognitionStatus](#userrecognitionstatus)**：用户识别状态枚举。
 
 ### 核心接口类型
 
@@ -40,10 +41,12 @@
 - **[ReuseUnlockResult](#reuseunlockresult12)**：认证结果复用信息接口。
 - **[EnrolledState](#enrolledstate12)**：已注册凭据状态接口。
 - **[AuthLockState](#authlockstate22)**：认证锁定状态接口。
+- **[UserRecognitionResult](#userrecognitionresult)**：用户识别结果接口。
 
 ### 核心类
 
 - **[UserAuthInstance](#userauthinstance10)**：用户认证实例类，提供认证执行、取消、事件订阅等能力。
+- **[UserRecognitionMgr](#userrecognitionmgr)**：用户识别管理类，提供查询和订阅识别结果的能力。
 
 ![类关系图](figures/uml_userauth.png)
 
@@ -106,8 +109,8 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称        | 类型   | 值   | 说明       |
 | ----------- | ---- | ---- | ---------- |
-| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>     | number | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒（5分钟）。用于限制认证结果复用的最大时长，防止长时间复用过期的认证结果带来的安全风险。该常量可作为[ReuseUnlockResult](#reuseunlockresult12)中reuseDuration参数的最大值。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>      | number | 0x7fffffff | 永久冻结时间，值为0x7fffffff毫秒。当认证不通过次数达到上限后，认证器将进入永久冻结状态，此时需要通过PIN认证才能解锁。该值用于标识认证器的永久冻结状态，可通过[AuthLockState](#authlockstate22)的lockoutDuration字段返回。<br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>     | number | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒（5分钟）。用于限制认证结果复用的最大时长，防止长时间复用过期的认证结果带来的安全风险。该常量可作为[ReuseUnlockResult](#reuseunlockresult12)中reuseDuration参数的最大值。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>      | number | 0x7fffffff | 永久冻结时间，值为0x7fffffff毫秒。当认证不通过次数达到上限后，认证器将进入永久冻结状态，此时需要通过PIN认证才能解锁。该值用于标识认证器的永久冻结状态，可通过[AuthLockState](#authlockstate22)的lockoutDuration字段返回。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## AuthLockState<sup>22+</sup>
 
@@ -162,10 +165,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| AUTH_TYPE_RELEVANT    | 1   | 与认证类型相关，只有当设备解锁认证结果在有效时间内，并且设备解锁的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/>例如：用户使用人脸解锁设备后，在有效时间内发起需要人脸认证的业务操作，可直接复用解锁结果；但如果发起需要指纹认证的业务操作，则无法复用。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| AUTH_TYPE_IRRELEVANT  | 2   | 与认证类型无关，设备解锁认证结果在有效时间内，可以重复使用。<br/>例如：用户使用人脸解锁设备后，在有效时间内发起需要指纹或PIN认证的业务操作，均可直接复用解锁结果，无需再次认证。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT<sup>14+</sup>    | 3   | 与认证类型相关，任意身份认证（包括设备解锁）结果在有效时间内，并且身份认证的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/>例如：用户在某应用中使用人脸认证完成支付后，在有效时间内另一应用发起需要人脸认证的操作，可复用之前的认证结果；但如果发起需要指纹认证的操作，则无法复用。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT<sup>14+</sup>  | 4   | 与认证类型无关，任意身份认证（包括设备解锁）结果在有效时间内，可以重复使用。<br/>例如：用户在某应用中使用人脸认证完成操作后，在有效时间内另一应用发起任意类型的认证操作，均可复用之前的认证结果。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| AUTH_TYPE_RELEVANT    | 1   | 与认证类型相关，只有当设备解锁认证结果在有效时间内，并且设备解锁的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br>例如：用户使用人脸解锁设备后，在有效时间内发起需要人脸认证的业务操作，可直接复用解锁结果；但如果发起需要指纹认证的业务操作，则无法复用。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| AUTH_TYPE_IRRELEVANT  | 2   | 与认证类型无关，设备解锁认证结果在有效时间内，可以重复使用。<br>例如：用户使用人脸解锁设备后，在有效时间内发起需要指纹或PIN认证的业务操作，均可直接复用解锁结果，无需再次认证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT<sup>14+</sup>    | 3   | 与认证类型相关，任意身份认证（包括设备解锁）结果在有效时间内，并且身份认证的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br>例如：用户在某应用中使用人脸认证完成支付后，在有效时间内另一应用发起需要人脸认证的操作，可复用之前的认证结果；但如果发起需要指纹认证的操作，则无法复用。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT<sup>14+</sup>  | 4   | 与认证类型无关，任意身份认证（包括设备解锁）结果在有效时间内，可以重复使用。<br>例如：用户在某应用中使用人脸认证完成操作后，在有效时间内另一应用发起任意类型的认证操作，均可复用之前的认证结果。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 ## ReuseUnlockResult<sup>12+</sup>
 
@@ -230,11 +233,11 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let queryType = userAuth.UserAuthType.PIN;
-let authLockState : userAuth.AuthLockState = {
-  isLocked : false,
-  remainingAuthAttempts : 0,
-  lockoutDuration : 0
-}
+let authLockState: userAuth.AuthLockState = {
+  isLocked: false,
+  remainingAuthAttempts: 0,
+  lockoutDuration: 0
+};
 
 userAuth.getAuthLockState(queryType)
   .then((result: userAuth.AuthLockState) => {
@@ -242,8 +245,8 @@ userAuth.getAuthLockState(queryType)
     console.info('get auth lock state successfully.');
   })
   .catch((err: BusinessError) => {
-    console.error(`get auth lock state failed, err code is : ${err?.code}, err message is : ${err?.message}`);
-  })
+    console.error(`Failed to get auth lock state. Code: ${err?.code}, message: ${err?.message}`);
+  });
 ```
 
 ## userAuth.getEnrolledState<sup>12+</sup>
@@ -293,7 +296,7 @@ try {
   console.info('get current enrolled state successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to get current enrolled state. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -309,7 +312,7 @@ try {
 | authType       | [UserAuthType](#userauthtype8)[]   |  否  |  否  | 认证类型列表，用来指定用户认证界面提供的认证方法。可同时指定多种认证类型，如[UserAuthType.PIN, UserAuthType.FACE, UserAuthType.FINGERPRINT]，用户可选择任意一种完成认证。认证类型的选择会影响认证结果复用的匹配条件。暂不支持同时发起伴随设备认证和其他认证类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) |  否  |  否  | 期望达到的认证可信等级。认证可信等级决定了认证的安全强度，应根据业务场景的安全需求选择合适的等级：<br>- ATL1：适用于业务风控、一般个人数据查询等低安全场景。<br>- ATL2：适用于应用登录、维持设备解锁状态等中等安全场景。<br>- ATL3：适用于设备解锁等较高安全场景。<br>- ATL4：适用于小额支付等高安全场景。<br>典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) |  否  |  是  | 表示可以复用解锁认证的结果。配置后，若满足复用条件，系统将直接返回之前的认证结果，无需用户再次进行认证交互。默认为不复用。启用认证结果复用可以提升用户体验，但应根据业务场景的安全需求合理配置复用模式和有效时长。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| skipLockedBiometricAuth<sup>20+</sup> | boolean |  否  |  是  | 是否跳过已禁用的认证方式自动切换至其他方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>- true：生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证（如从冻结的指纹切换到PIN）。适用于希望快速完成认证的场景。<br/>- false（默认）：不跳过，用户需要等待冻结倒计时结束后才能继续尝试该认证方式或手动切换。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| skipLockedBiometricAuth<sup>20+</sup> | boolean |  否  |  是  | 是否跳过已冻结的认证方式自动切换至其他方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br>- true：生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证（如从冻结的指纹切换到PIN）。适用于希望快速完成认证的场景。<br>- false（默认）：不跳过，用户需要等待冻结倒计时结束后才能继续尝试该认证方式或手动切换。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## WidgetParam<sup>10+</sup>
 
@@ -404,7 +407,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -458,7 +461,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -512,7 +515,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -587,7 +590,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -676,7 +679,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -723,8 +726,8 @@ struct Index {
       console.info('get userAuth instance successfully.');
       // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
       userAuthInstance.on('result', {
-        onResult (result) {
-          console.info(`userAuthInstance callback result =${result.result}`);
+        onResult: (result) => {
+          console.info(`userAuthInstance callback result = ${result.result}`);
         }
       });
       console.info('auth on successfully.');
@@ -732,7 +735,7 @@ struct Index {
       console.info('auth start successfully.');
     } catch (error) {
       const err: BusinessError = error as BusinessError;
-      console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+      console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
     }
   }
 
@@ -741,7 +744,7 @@ struct Index {
       Button('start auth')
         .onClick(() => {
           this.modelApplicationAuth();
-        })
+        });
     }
   }
 }
@@ -817,7 +820,7 @@ try {
   console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -897,7 +900,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -947,7 +950,7 @@ try {
   if(!randData){
     return;
   }
-  const authParam : userAuth.AuthParam = {
+  const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
@@ -964,7 +967,7 @@ try {
   console.info('auth cancel successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -1038,7 +1041,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -1109,7 +1112,7 @@ try {
   console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -1185,7 +1188,275 @@ try {
   console.info('get userAuth instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## UserRecognitionStatus
+
+用户识别状态枚举。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+| 名称      | 值 | 说明                               |
+| --------- | -- | ---------------------------------- |
+| UNCERTAIN | 0  | 不确定机主。                       |
+| MISMATCH  | 1  | 识别的用户与前台用户不匹配。       |
+| MATCH     | 2  | 识别的用户与前台用户匹配。         |
+
+## UserRecognitionResult
+
+用户识别结果。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+| 名称           | 类型                                    | 只读 | 可选 | 说明                                                     |
+| -------------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| status         | [UserRecognitionStatus](#userrecognitionstatus) | 否   | 否   | 识别状态。                        |
+| userId         | number                                  | 否   | 否   | 识别的系统用户ID，为非负整数。                              |
+| userInfo       | string                                  | 否   | 否   | 识别用户的信息。                                           |
+| authTrustLevel | [AuthTrustLevel](#authtrustlevel8)      | 否   | 是   | 认证信任等级。仅在status为MATCH时有效。                    |
+
+## UserRecognitionResultCallback
+
+type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
+
+用户识别结果回调类型。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+**参数：**
+
+| 参数名 | 类型                                              | 必填 | 说明           |
+| ------ | ------------------------------------------------- | ---- | -------------- |
+| result | [UserRecognitionResult](#userrecognitionresult) | 是   | 用户识别结果。 |
+
+## UserRecognitionMgr
+
+提供查询和订阅用户识别结果的接口。通过[getUserRecognitionMgr](#userauthgetuserrecognitionmgr)获取实例。
+
+> **说明：**
+>
+> 每次调用getUserRecognitionMgr返回新的UserRecognitionMgr实例。on和off需使用同一实例。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+### getUserRecognitionResult
+
+getUserRecognitionResult(): Promise\<UserRecognitionResult\>
+
+获取最新的用户识别结果。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+**返回值：**
+
+| 类型                                                   | 说明                       |
+| ------------------------------------------------------ | -------------------------- |
+| Promise\<[UserRecognitionResult](#userrecognitionresult)\> | Promise对象，返回用户识别结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  mgr.getUserRecognitionResult()
+    .then((result: userAuth.UserRecognitionResult) => {
+      console.info(`status: ${result.status}, userId: ${result.userId}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`getUserRecognitionResult failed, Code: ${err?.code}, message: ${err?.message}`);
+    });
+}
+```
+
+### onUserRecognitionChange
+
+onUserRecognitionChange(callback: UserRecognitionResultCallback): void
+
+订阅用户识别结果变化事件。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                       |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback) | 是   | 用户识别结果回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
+    console.info(`status: ${result.status}, userId: ${result.userId}`);
+  };
+  mgr.onUserRecognitionChange(callback);
+}
+```
+
+### offUserRecognitionChange
+
+offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
+
+取消订阅用户识别结果变化事件。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback) | 否   | 要取消的回调。仅可取消通过本实例[onUserRecognitionChange](#onuserrecognitionchange)订阅的回调；不指定则取消本实例下所有已注册的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
+    console.info(`status: ${result.status}, userId: ${result.userId}`);
+  };
+  mgr.onUserRecognitionChange(callback);
+  // 取消指定回调
+  mgr.offUserRecognitionChange(callback);
+  // 取消所有回调
+  mgr.offUserRecognitionChange();
+}
+```
+
+## userAuth.getUserRecognitionMgr
+
+getUserRecognitionMgr(): UserRecognitionMgr | null
+
+获取[UserRecognitionMgr](#userrecognitionmgr)实例，用于查询和订阅用户识别结果。每次调用返回新的UserRecognitionMgr实例。
+
+**需要权限：** ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+**返回值：**
+
+| 类型                                        | 说明                     |
+| ------------------------------------------- | ------------------------ |
+| [UserRecognitionMgr](#userrecognitionmgr) \| null | 用户识别管理实例。如果设备不支持此能力则返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 201      | Permission denied.       |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  console.info(`get user recognition mgr: ${mgr}`);
 }
 ```
 
@@ -1269,7 +1540,7 @@ type AuthEventKey = 'result' | 'tip'
 
 ### callback<sup>(deprecated)</sup>
 
-callback(result : EventInfo) : void
+callback(result: EventInfo): void
 
 通过该回调获取认证结果信息或认证过程中的提示信息。
 
@@ -1304,14 +1575,14 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed, error = ${error}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 // 通过callback获取认证过程中的提示信息。
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.on('tip', {
-    callback : (result : userAuth.TipInfo) => {
+    callback: (result: userAuth.TipInfo) => {
       switch (result.tip) {
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT:
           // do something;
@@ -1327,7 +1598,7 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed, error = ${error}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 ```
@@ -1342,7 +1613,7 @@ try {
 
 ### on<sup>(deprecated)</sup>
 
-on : (name : AuthEventKey, callback : AuthEvent) => void
+on: (name: AuthEventKey, callback: AuthEvent) => void
 
 订阅指定类型的用户认证事件。
 
@@ -1388,7 +1659,7 @@ try {
   });
   // 订阅认证过程中的提示信息。
   auth.on('tip', {
-    callback : (result : userAuth.TipInfo) => {
+    callback: (result: userAuth.TipInfo) => {
       switch (result.tip) {
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT:
           // do something;
@@ -1404,14 +1675,14 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed, error = ${error}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 ```
 
 ### off<sup>(deprecated)</sup>
 
-off : (name : AuthEventKey) => void
+off: (name: AuthEventKey) => void
 
 取消订阅特定类型的认证事件。
 
@@ -1456,14 +1727,14 @@ try {
   auth.off('result');
   console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
-  console.error(`cancel subscribe authentication event failed, error = ${error}`);
+  console.error(`Failed to cancel subscribe authentication event. Code: ${error?.code}, message: ${error?.message}`);
   // do error.
 }
 ```
 
 ### start<sup>(deprecated)</sup>
 
-start : () => void
+start: () => void
 
 开始认证。
 
@@ -1509,13 +1780,13 @@ try {
   auth.start();
   console.info('auth start successfully.');
 } catch (error) {
-  console.error(`auth failed, error = ${error}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```
 
 ### cancel<sup>(deprecated)</sup>
 
-cancel : () => void
+cancel: () => void
 
 取消认证。
 
@@ -1553,13 +1824,13 @@ try {
   auth.cancel();
   console.info('cancel auth successfully.');
 } catch (error) {
-  console.error(`cancel auth failed, error = ${error}`);
+  console.error(`Failed to cancel auth. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```
 
 ## userAuth.getAuthInstance<sup>(deprecated)</sup>
 
-getAuthInstance(challenge : Uint8Array, authType : UserAuthType, authTrustLevel : AuthTrustLevel): AuthInstance
+getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLevel): AuthInstance
 
 获取AuthInstance对象，用于执行用户身份认证。
 
@@ -1610,13 +1881,13 @@ try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   console.info('get auth instance successfully.');
 } catch (error) {
-  console.error(`get auth instance failed, error = ${error}`);
+  console.error(`Failed to get auth instance. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```
 
 ## userAuth.getAvailableStatus<sup>9+</sup>
 
-getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): void
+getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): void
 
 查询指定类型和等级的认证能力是否支持。该接口用于检查当前设备是否支持指定的认证类型和认证可信等级，帮助应用在发起认证前判断认证能力是否可用，从而避免不必要的认证不通过。若查询通过（无错误抛出），表示认证能力可用；若抛出错误，应用应根据错误码判断具体原因并采取相应处理。
 
@@ -1670,7 +1941,7 @@ try {
   userAuth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL3);
   console.info('current auth trust level is supported');
 } catch (error) {
-  console.error(`current auth trust level is not supported, error = ${error}`);
+  console.error(`Failed to check auth trust level. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```
 
@@ -1682,19 +1953,19 @@ try {
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| SUCCESS                          | 12500000      | 执行成功。表示用户身份认证通过，认证令牌有效。应用可使用返回的token进行后续的安全操作。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| FAIL                             | 12500001      | 认证不通过。表示用户特征与已注册凭据比对不匹配，可能是用户输入错误或使用了未注册的凭据。建议提示用户重新尝试。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| GENERAL_ERROR                    | 12500002      | 操作通用错误。表示认证过程中发生未知错误，建议稍后重试或联系系统管理员。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CANCELED                         | 12500003      | 认证取消。表示用户主动取消了认证操作或认证被系统取消。应用可根据业务逻辑决定是否重新发起认证。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| TIMEOUT                          | 12500004      | 认证超时。表示用户在规定时间内未完成认证交互（如未及时输入密码、未正视摄像头等）。建议提示用户重新尝试并注意操作时限。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| TYPE_NOT_SUPPORT                 | 12500005      | 认证类型不支持。表示当前设备不支持指定的认证类型（如设备无指纹传感器却请求指纹认证）。建议检查设备能力或更换认证类型。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| TRUST_LEVEL_NOT_SUPPORT          | 12500006      | 认证等级不支持。表示指定的认证可信等级高于当前认证类型所能达到的最高等级。建议降低认证等级或使用更安全的认证类型。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| BUSY                             | 12500007      | 系统繁忙。表示认证服务正忙于处理其他请求，建议稍后重试。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| INVALID_PARAMETERS<sup>20+</sup> | 12500008      | 参数校验失败。表示传入的参数不符合要求，如参数类型错误、参数值超出范围等。建议检查参数并重新调用。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
-| LOCKED                           | 12500009      | 认证器已锁定。表示认证器因连续多次认证不通过而进入冻结状态，用户需等待冻结解除或使用PIN解锁后才能继续认证。可通过[getAuthLockState](#userauthgetauthlockstate22)查询具体冻结状态。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| NOT_ENROLLED                     | 12500010      | 用户未录入指定的系统身份认证凭据。表示用户未注册所请求的认证类型（如请求指纹认证但用户未录入指纹）。建议引导用户先注册相应凭据。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | 用户取消了系统认证方式，选择应用自定义认证。表示用户点击了认证界面上的导航按钮，选择使用应用提供的自定义认证方式。应用需拉起自定义认证界面。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PIN_EXPIRED<sup>12+</sup> | 12500013 | 锁屏密码过期。表示系统锁屏口令已过期（如企业策略要求定期更换密码），用户需更新锁屏密码后才能继续使用认证功能。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SUCCESS                          | 12500000      | 执行成功。表示用户身份认证通过，认证令牌有效。应用可使用返回的token进行后续的安全操作。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| FAIL                             | 12500001      | 认证不通过。表示用户特征与已注册凭据比对不匹配，可能是用户输入错误或使用了未注册的凭据。建议提示用户重新尝试。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| GENERAL_ERROR                    | 12500002      | 操作通用错误。表示认证过程中发生未知错误，建议稍后重试或联系系统管理员。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CANCELED                         | 12500003      | 认证取消。表示用户主动取消了认证操作或认证被系统取消。应用可根据业务逻辑决定是否重新发起认证。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| TIMEOUT                          | 12500004      | 认证超时。表示用户在规定时间内未完成认证交互（如未及时输入密码、未正视摄像头等）。建议提示用户重新尝试并注意操作时限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| TYPE_NOT_SUPPORT                 | 12500005      | 认证类型不支持。表示当前设备不支持指定的认证类型（如设备无指纹传感器却请求指纹认证）。建议检查设备能力或更换认证类型。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| TRUST_LEVEL_NOT_SUPPORT          | 12500006      | 认证等级不支持。表示指定的认证可信等级高于当前认证类型所能达到的最高等级。建议降低认证等级或使用更安全的认证类型。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| BUSY                             | 12500007      | 系统繁忙。表示认证服务正忙于处理其他请求，建议稍后重试。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| INVALID_PARAMETERS<sup>20+</sup> | 12500008      | 参数校验失败。表示传入的参数不符合要求，如参数类型错误、参数值超出范围等。建议检查参数并重新调用。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| LOCKED                           | 12500009      | 认证器已锁定。表示认证器因连续多次认证不通过而进入冻结状态，用户需等待冻结解除或使用PIN解锁后才能继续认证。可通过[getAuthLockState](#userauthgetauthlockstate22)查询具体冻结状态。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| NOT_ENROLLED                     | 12500010      | 用户未录入指定的系统身份认证凭据。表示用户未注册所请求的认证类型（如请求指纹认证但用户未录入指纹）。建议引导用户先注册相应凭据。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | 用户取消了系统认证方式，选择应用自定义认证。表示用户点击了认证界面上的导航按钮，选择使用应用提供的自定义认证方式。应用需拉起自定义认证界面。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PIN_EXPIRED<sup>12+</sup> | 12500013 | 锁屏密码过期。表示系统锁屏口令已过期（如企业策略要求定期更换密码），用户需更新锁屏密码后才能继续使用认证功能。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## UserAuth<sup>(deprecated)</sup>
 
@@ -1722,7 +1993,7 @@ let auth = new userAuth.UserAuth();
 
 ### getVersion<sup>(deprecated)</sup>
 
-getVersion() : number
+getVersion(): number
 
 获取认证器的版本信息。
 
@@ -1752,7 +2023,7 @@ console.info(`auth version = ${version}`);
 
 ### getAvailableStatus<sup>(deprecated)</sup>
 
-getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel) : number
+getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): number
 
 查询指定类型和等级的认证能力是否支持。
 
@@ -1787,7 +2058,7 @@ let checkCode = auth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.Aut
 if (checkCode == userAuth.ResultCode.SUCCESS) {
   console.info('check auth support successfully.');
 } else {
-  console.error(`check auth support failed, code = ${checkCode}`);
+  console.error(`Failed to check auth support. Code: ${checkCode}`);
 }
 ```
 
@@ -1837,7 +2108,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
         // 此处添加认证失败逻辑。
       }
     } catch (error) {
-      console.error(`auth onResult failed, error = ${error}`);
+      console.error(`Failed to auth onResult. Code: ${error?.code}, message: ${error?.message}`);
     }
   }
 });
@@ -1845,7 +2116,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 ### cancelAuth<sup>(deprecated)</sup>
 
-cancelAuth(contextID : Uint8Array) : number
+cancelAuth(contextID: Uint8Array): number
 
 表示通过contextID取消本次认证。
 
@@ -1881,7 +2152,7 @@ let cancelCode = auth.cancelAuth(contextId);
 if (cancelCode == userAuth.ResultCode.SUCCESS) {
   console.info('cancel auth successfully.');
 } else {
-  console.error('cancel auth failed.');
+  console.error('Failed to cancel auth.');
 }
 ```
 
@@ -1895,7 +2166,7 @@ if (cancelCode == userAuth.ResultCode.SUCCESS) {
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult: (result : number, extraInfo : AuthResult) => void
+onResult: (result: number, extraInfo: AuthResult) => void
 
 回调函数，返回认证结果。
 
@@ -1910,7 +2181,7 @@ onResult: (result : number, extraInfo : AuthResult) => void
 | 参数名    | 类型                       | 必填 | 说明        |
 | --------- | -------------------------- | ---- | ------------------------------------------------ |
 | result    | number           | 是   | 认证结果，参见[ResultCode](#resultcodedeprecated)。 |
-| extraInfo | [AuthResult](#authresultdeprecated) | 是   | 扩展信息，不同情况下的具体信息，<br/>如果身份验证通过，则在extraInfo中返回用户认证令牌，<br/>如果身份验证失败，则在extraInfo中返回剩余的用户认证次数，<br/>如果身份验证执行器被锁定，则在extraInfo中返回冻结时间。 |
+| extraInfo | [AuthResult](#authresultdeprecated) | 是   | 扩展信息，不同情况下的具体信息，<br>如果身份验证通过，则在extraInfo中返回用户认证令牌，<br>如果身份验证失败，则在extraInfo中返回剩余的用户认证次数，<br>如果身份验证执行器被锁定，则在extraInfo中返回冻结时间。 |
 
 **示例：**
 
@@ -1929,7 +2200,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
         // 此处添加认证失败逻辑。
       }
     } catch (error) {
-      console.error(`auth onResult failed, error = ${error}`);
+      console.error(`Failed to auth onResult. Code: ${error?.code}, message: ${error?.message}`);
     }
   }
 });
@@ -1937,7 +2208,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 ### onAcquireInfo<sup>(deprecated)</sup>
 
-onAcquireInfo ?: (module : number, acquire : number, extraInfo : any) => void
+onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void
 
 回调函数，返回认证过程中的提示信息，非必须实现。
 
@@ -1972,14 +2243,14 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
         // 此处添加认证失败逻辑。
       }
     } catch (error) {
-      console.error(`auth onResult failed, error = ${error}`);
+      console.error(`Failed to auth onResult. Code: ${error?.code}, message: ${error?.message}`);
     }
   },
-  onAcquireInfo: (module, acquire, extraInfo : userAuth.AuthResult) => {
+  onAcquireInfo: (module, acquire, extraInfo: userAuth.AuthResult) => {
     try {
       console.info('auth onAcquireInfo successfully.');
     } catch (error) {
-      console.error(`auth onAcquireInfo failed, error = ${error}`);
+      console.error(`Failed to auth onAcquireInfo. Code: ${error?.code}, message: ${error?.message}`);
     }
   }
 });
@@ -2150,11 +2421,11 @@ getAuthenticator(): Authenticator
 | [Authenticator](#authenticatordeprecated) | 认证器对象。 |
 
 **示例：**
-  ```ts
-  import { userAuth } from '@kit.UserAuthenticationKit';
-  
-  let authenticator = userAuth.getAuthenticator();
-  ```
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let authenticator = userAuth.getAuthenticator();
+```
 
 ## Authenticator<sup>(deprecated)</sup>
 
@@ -2182,8 +2453,8 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 
 | 参数名   | 类型                        | 必填 | 说明                                                                                                                    |
 | -------- | --------------------------- | ---- |-----------------------------------------------------------------------------------------------------------------------|
-| type     | AuthType                      | 是   | 认证类型，当前只支持"FACE_ONLY"。<br/>ALL为预留参数。当前版本暂不支持ALL类型的认证。                                                                 |
-| level    | SecureLevel  | 是   | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。<br/>具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。<br/>具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
+| type     | AuthType                      | 是   | 认证类型，当前只支持"FACE_ONLY"。<br>ALL为预留参数。当前版本暂不支持ALL类型的认证。                                                                 |
+| level    | SecureLevel  | 是   | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。<br>具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。<br>具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。number表示认证结果，参见[AuthenticationResult](#authenticationresultdeprecated)。 |
 
 **示例：**
@@ -2197,14 +2468,14 @@ authenticator.execute('FACE_ONLY', 'S2', (error, code)=>{
     console.info('auth successfully.');
     return;
   }
-  console.error(`auth failed, code = ${code}`);
+  console.error(`Failed to auth. Code: ${code}`);
 });
 ```
 
 
 ### execute<sup>(deprecated)</sup>
 
-execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
+execute(type: AuthType, level: SecureLevel): Promise&lt;number&gt;
 
 执行用户认证，使用promise方式作为异步方法。
 
@@ -2220,8 +2491,8 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                                                                                                    |
 | ------ | ------ | ---- |-----------------------------------------------------------------------------------------------------------------------|
-| type   | AuthType | 是   | 认证类型，当前只支持"FACE_ONLY"。<br/>ALL为预留参数。当前版本暂不支持ALL类型的认证。                                                                 |
-| level  | SecureLevel | 是   | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。<br/>具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。<br/>具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
+| type   | AuthType | 是   | 认证类型，当前只支持"FACE_ONLY"。<br>ALL为预留参数。当前版本暂不支持ALL类型的认证。                                                                 |
+| level  | SecureLevel | 是   | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。<br>具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。<br>具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
 
 **返回值：**
 
@@ -2238,9 +2509,9 @@ try {
   let authenticator = userAuth.getAuthenticator();
   authenticator.execute('FACE_ONLY', 'S2').then((code)=>{
     console.info('auth successfully.');
-  })
+  });
 } catch (error) {
-  console.error(`auth failed, code = ${error}`);
+  console.error(`Failed to auth. Code: ${error?.code}, message: ${error?.message}`);
 }
 ```
 
