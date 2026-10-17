@@ -404,7 +404,7 @@ Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 相机模式。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 相机模式。推荐使用[OH_CameraManager_GetSupportedSceneMode](./capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取当前相机设备支持的模式。 |
 
 **返回：**
 
@@ -868,6 +868,8 @@ Camera_ErrorCode OH_CaptureSession_GetFlashMode(Camera_CaptureSession* session, 
 
 获取当前闪光灯模式。
 
+在获取前需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)检查会话是否支持闪光灯。
+
 **起始版本：** 11
 
 **参数：**
@@ -892,6 +894,8 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 **描述**
 
 设置闪光灯模式。
+
+在设置前需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)和[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)检查会话是否支持闪光灯以及设置的闪光灯模式是否支持。
 
 **起始版本：** 11
 
@@ -1038,6 +1042,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureMode(Camera_CaptureSession* sessio
 
 设置曝光模式。
 
+进行设置之前，需要先检查设备是否支持指定的曝光模式，可使用方法[OH_CaptureSession_IsExposureModeSupported](#oh_capturesession_isexposuremodesupported)。
+
 **起始版本：** 11
 
 **参数：**
@@ -1163,6 +1169,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureMeteringMode(const Camera_CaptureS
 **描述**
 
 设置曝光测光模式。
+
+进行设置之前，需要先检查设备是否支持指定的曝光测光模式，可使用方法[OH_CaptureSession_IsExposureMeteringModeSupported](#oh_capturesession_isexposuremeteringmodesupported)。
 
 **起始版本：** 24
 
@@ -1481,7 +1489,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSessi
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
-| int32_t exposureDuration | 待设置的目标曝光时间。|
+| int32_t exposureDuration | 待设置的目标曝光时间。通过[getSupportedExposureDurationRange](#oh_capturesession_getsupportedexposuredurationrange)接口获取支持的曝光时长范围。|
 
 **返回：**
 
@@ -1643,6 +1651,8 @@ Camera_ErrorCode OH_CaptureSession_SetFocusMode(Camera_CaptureSession* session, 
 **描述**
 
 设置聚焦模式。
+
+设置聚焦模式前，先通过[OH_CaptureSession_IsFocusModeSupported](#oh_capturesession_isfocusmodesupported)查询设置的模式是否支持。
 
 **起始版本：** 11
 
@@ -1847,6 +1857,8 @@ Camera_ErrorCode OH_CaptureSession_SetVideoStabilizationMode(Camera_CaptureSessi
 **描述**
 
 设置录像防抖模式。
+
+设置前需要通过[isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11)方法判断所设置的模式是否支持。
 
 **起始版本：** 11
 
@@ -2156,6 +2168,8 @@ Camera_ErrorCode OH_CaptureSession_SetFocusDistance(const Camera_CaptureSession*
 
 设置对焦距离。取值范围为[0.0, 1.0]。0.0表示镜头可对焦的最近距离；1.0表示最远距离。默认值为1.0。
 
+设置前可以通过[OH_CaptureSession_IsFocusDistanceSupported](#oh_capturesession_isfocusdistancesupported)查询是否支持对焦距离的设置。
+
 **起始版本：** 24
 
 **参数：**
@@ -2335,6 +2349,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(Camera
 
 注册设备切换事件回调。
 
+可以通过[OH_CaptureSession_IsAutoDeviceSwitchSupported](#oh_capturesession_isautodeviceswitchsupported)接口查询是否支持自动设备切换能力。
+
 **起始版本：** 13
 
 **参数：**
@@ -2359,6 +2375,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(Came
 **描述**
 
 注销设备切换事件回调。
+
+可以通过[OH_CaptureSession_IsAutoDeviceSwitchSupported](#oh_capturesession_isautodeviceswitchsupported)接口查询是否支持自动设备切换能力。
 
 **起始版本：** 13
 
@@ -2534,6 +2552,8 @@ Camera_ErrorCode OH_CaptureSession_EnableMacro(Camera_CaptureSession* session, b
 **描述**
 
 是否启用相机设备的微距能力。
+
+使能前先通过[OH_CaptureSession_IsMacroSupported](#oh_capturesession_ismacrosupported)接口查询是否支持微距能力。
 
 **起始版本：** 19
 
@@ -2737,6 +2757,8 @@ Camera_ErrorCode OH_CaptureSession_SetWhiteBalanceMode(Camera_CaptureSession* se
 
 设置白平衡模式。
 
+设置之前需要先检查设备是否支持指定的白平衡模式，具体方法请参考[OH_CaptureSession_IsWhiteBalanceModeSupported](#oh_capturesession_iswhitebalancemodesupported)。
+
 **起始版本：** 20
 
 **参数：**
@@ -2813,6 +2835,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession
 
 获取相机控制器支持的效果类型。
 
+通过[OH_CaptureSession_IsControlCenterSupported](#oh_capturesession_iscontrolcentersupported)接口检查是否支持相机控制器。
 
 **起始版本：** 20
 
@@ -2840,6 +2863,8 @@ Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectTypes(Camera_CaptureSess
 
 删除相机控制器效果类型列表。
 
+通过[OH_CaptureSession_IsControlCenterSupported](#oh_capturesession_iscontrolcentersupported)接口检查是否支持相机控制器。
+
 **起始版本：** 20
 
 **参数：**
@@ -2866,6 +2891,8 @@ Camera_ErrorCode OH_CaptureSession_EnableControlCenter(Camera_CaptureSession* se
 
 是否启用相机控制器。
 
+通过[OH_CaptureSession_IsControlCenterSupported](#oh_capturesession_iscontrolcentersupported)接口检查是否支持相机控制器。
+
 **起始版本：** 20
 
 **参数：**
@@ -2891,6 +2918,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallba
 
 注册相机控制器效果激活状态变化回调。
 
+通过[OH_CaptureSession_IsControlCenterSupported](#oh_capturesession_iscontrolcentersupported)接口检查是否支持相机控制器。
+
 **起始版本：** 20
 
 **参数：**
@@ -2915,6 +2944,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 **描述**
 
 注销相机控制器效果激活状态变化回调。
+
+通过[OH_CaptureSession_IsControlCenterSupported](#oh_capturesession_iscontrolcentersupported)接口检查是否支持相机控制器。
 
 **起始版本：** 20
 
@@ -2960,6 +2991,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 
 注册相机会话微距状态改变回调函数。
 
+可以通过[OH_CaptureSession_IsMacroSupported](#oh_capturesession_ismacrosupported)接口查询是否支持微距能力。
+
 **起始版本：** 20
 
 **参数：**
@@ -2984,6 +3017,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 **描述**
 
 取消注册相机会话微距状态改变回调函数。
+
+可以通过[OH_CaptureSession_IsMacroSupported](#oh_capturesession_ismacrosupported)接口查询是否支持微距能力。
 
 **起始版本：** 20
 
@@ -3210,6 +3245,8 @@ Camera_ErrorCode OH_CaptureSession_SetOISMode(const Camera_CaptureSession* sessi
 
 设置光学防抖（OIS）模式。
 
+设置防抖前先通过[OH_CaptureSession_IsOISModeSupported](#oh_capturesession_isoismodesupported)接口查询设置的模式是否支持。
+
 **起始版本：** 24
 
 **参数：**
@@ -3410,6 +3447,8 @@ Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* sess
 
 锁定焦点跟踪，可通过[OH_CaptureSession_UnlockFocusTracking](#oh_capturesession_unlockfocustracking)解锁。
 
+在使用焦点跟踪前可以通过[OH_CaptureSession_IsLockFocusTrackingSupported](#oh_capturesession_islockfocustrackingsupported)接口查询是否支持焦点跟踪。
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -3434,6 +3473,8 @@ Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* se
 **描述**
 
  解锁焦点跟踪。
+
+ 可以通过[OH_CaptureSession_IsLockFocusTrackingSupported](#oh_capturesession_islockfocustrackingsupported)接口查询是否支持焦点跟踪。
 
 **起始版本：** 26.0.0
 

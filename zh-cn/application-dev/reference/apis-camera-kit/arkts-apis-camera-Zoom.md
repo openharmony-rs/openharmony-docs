@@ -50,13 +50,13 @@ setZoomRatio(zoomRatio: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<number>): void {
+function setZoomRatio(photoSession: camera.PhotoSession): void {
+  let zoomRatioRange = photoSession.getZoomRatioRange();
   if (zoomRatioRange === undefined || zoomRatioRange.length <= 0) {
     return;
   }
-  let zoomRatio = zoomRatioRange[0];
   try {
-    photoSession.setZoomRatio(zoomRatio);
+    photoSession.setZoomRatio(zoomRatioRange[0]);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -137,7 +137,17 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 **示例：**
 
 ```ts
-function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number, mode: camera.SmoothZoomMode): void {
-  sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
+function setSmoothZoom(sessionExtendsZoom: camera.Zoom, photoSession: camera.PhotoSession, mode: camera.SmoothZoomMode): void {
+  let targetZoomRatio = photoSession.getZoomRatioRange();
+  if (targetZoomRatio === undefined || targetZoomRatio.length <= 0) {
+    return;
+  }
+  try {
+    sessionExtendsZoom.setSmoothZoom(targetZoomRatio[0], mode);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setSmoothZoom call failed. error code: ${err.code}`);
+  }
 }
 ```

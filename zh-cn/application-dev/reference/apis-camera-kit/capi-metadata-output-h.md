@@ -237,7 +237,7 @@ Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes(Camera_MetadataOutput*
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 元数据输出实例。 |
-| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* types | 用于添加到Camera_MetadataOutput实例的元数据对象类型数组。 |
+| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* types | 用于添加到Camera_MetadataOutput实例的元数据对象类型数组。推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机元数据对象类型数组。 |
 | uint32_t size | 元数据对象类型数组长度。 |
 
 **返回：**
@@ -263,7 +263,7 @@ Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes(Camera_MetadataOutp
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 元数据输出实例。 |
-| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* types | 从Camera_MetadataOutput实例移除的元数据对象类型数组。 |
+| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* types | 从Camera_MetadataOutput实例移除的元数据对象类型数组。推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机元数据对象类型数组。 |
 | uint32_t size | 元数据对象类型数组长度。 |
 
 **返回：**

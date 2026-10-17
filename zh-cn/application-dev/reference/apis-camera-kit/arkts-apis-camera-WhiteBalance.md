@@ -53,7 +53,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setWhiteBalanceMode(session: camera.PhotoSession | camera.VideoSession): void {
   try {
-    session.setWhiteBalanceMode(camera.WhiteBalanceMode.DAYLIGHT);
+    if (session.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.DAYLIGHT)) {
+      session.setWhiteBalanceMode(camera.WhiteBalanceMode.DAYLIGHT);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setWhiteBalanceMode call failed. error code: ${err.code}`);
@@ -136,8 +138,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession): void {
   try {
-    let whiteBalance: number = 1000;
-    session.setWhiteBalance(whiteBalance);
+    let whiteBalance: Array<number> = session.getWhiteBalanceRange();
+    session.setWhiteBalance(whiteBalance[0]);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setWhiteBalance call failed. error code: ${err.code}`);
@@ -222,9 +224,9 @@ setColorTint(colorTint: number): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function setColorTint(session: camera.PhotoSession | camera.VideoSession): void {
-  let colorTint: number = 0;
+  let colorTint: Array<number> = session.getColorTintRange();
   try {
-    session.setColorTint(colorTint);
+    session.setColorTint(colorTint[0]);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setColorTint call failed. error code: ${err.code}`);

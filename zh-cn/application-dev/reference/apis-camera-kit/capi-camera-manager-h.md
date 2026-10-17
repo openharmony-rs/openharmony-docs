@@ -351,7 +351,7 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapability(Camera_Mana
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取相机设备对象。 |
 | [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability。 |
 
 **返回：**
@@ -377,8 +377,8 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMod
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
-| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 指定相机模式。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取相机设备对象。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 指定相机模式。推荐使用[OH_CameraManager_GetSupportedSceneModes](capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取当前相机设备支持的模式。 |
 | [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability列表。 |
 
 **返回：**
@@ -404,8 +404,8 @@ Camera_ErrorCode OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithScen
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
-| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 指定相机模式。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取相机设备对象。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 指定相机模式。推荐使用[OH_CameraManager_GetSupportedSceneModes](capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取当前相机设备支持的模式。 |
 | [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)** cameraOutputCapability | 如果方法调用成功，将记录支持的Camera_OutputCapability列表。 |
 
 **返回：**
@@ -508,7 +508,7 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput(Camera_Manager* cameraManage
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于创建Camera_Input实例的Camera_Device。 |
+| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于创建Camera_Input实例的Camera_Device。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取相机设备对象。 |
 | [Camera_Input](capi-oh-camera-camera-input.md)** cameraInput | 如果方法调用成功，将创建Camera_Input实例。 |
 
 **返回：**
@@ -563,7 +563,7 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraMana
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机预览流配置文件。 |
 | const char* surfaceId | 用于创建Camera_PreviewOutput实例的surfaceId。 |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
 
@@ -590,7 +590,7 @@ Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manag
 | 参数项 | 描述 |
 | -- | -- |
 | [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机预览流配置文件。 |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
 
 **返回：**
@@ -642,7 +642,7 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutput(Camera_Manager* cameraManage
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PhotoOutput实例的相机流配置文件。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PhotoOutput实例的相机流配置文件。推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机拍照流配置文件。 |
 | const char* surfaceId | 用于创建Camera_PhotoOutput实例的surfaceId。 |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)** photoOutput | 如果方法调用成功，将创建Camera_PhotoOutput实例。 |
 
@@ -721,7 +721,8 @@ Camera_ErrorCode OH_CameraManager_CreateVideoOutput(Camera_Manager* cameraManage
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)* profile | 用于创建Camera_VideoOutput实例的录像配置文件。 |
+| [const Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)* profile | 用于创建Camera_VideoOutput实例的录像配置文件。
+推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机录像流配置文件。 |
 | const char* surfaceId | 用于创建Camera_VideoOutput实例的surfaceId。 |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)** videoOutput | 如果方法调用成功，将创建Camera_VideoOutput实例。 |
 
@@ -774,7 +775,7 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutput(Camera_Manager* cameraMan
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* profile | 用于创建Camera_MetadataOutput实例的元数据对象类型。 |
+| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* profile | 用于创建Camera_MetadataOutput实例的元数据对象类型。推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机元数据对象类型数组。 |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)** metadataOutput | 如果方法调用成功，将创建Camera_MetadataOutput实例。 |
 
 **返回：**
@@ -800,7 +801,7 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutputWithObjectTypes(Camera_Man
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
-| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* metadataObjectTypes | 用于创建Camera_MetadataOutput实例的元数据对象类型数组。 |
+| [const Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* metadataObjectTypes | 用于创建Camera_MetadataOutput实例的元数据对象类型数组。推荐使用[OH_CameraManager_GetSupportedCameraOutputCapability](#oh_cameramanager_getsupportedcameraoutputcapability)获取相机元数据对象类型数组。 |
 | uint32_t size | 元数据对象类型数组长度。 |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)** metadataOutput | 如果方法调用成功，将创建Camera_MetadataOutput实例。 |
 
@@ -826,7 +827,7 @@ Camera_ErrorCode OH_CameraManager_GetSupportedSceneModes(Camera_Device* camera, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* camera | 要查询的Camera_Device。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取相机设备对象。 |
 | [Camera_SceneMode](capi-camera-h.md#camera_scenemode)** sceneModes | 如果方法调用成功，将记录支持的场景模式列表。 |
 | uint32_t* size | 如果方法调用成功，将记录支持的场景模式列表大小。 |
 
