@@ -234,7 +234,8 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
            if (id == "xcomponentId_30") {
                int offset = 16;
                render->ConstructPath(offset, offset, render->defaultOffsetY);
-           } else if (id == "xcomponentId_120") {
+           }
+           if (id == "xcomponentId_120") {
                int offset = 4;
                render->ConstructPath(offset, offset, render->defaultOffsetY);
            }
@@ -304,7 +305,8 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
            bool useExclusiveThread = false;
            if (id == "xcomponentId_30") {
                range = {30, 120, 30};
-           } else if (id == "xcomponentId_120") {
+           }
+           if (id == "xcomponentId_120") {
                range = {30, 120, 120};
            }
            ExecuteDisplaySoloist(id, range, useExclusiveThread, nativeXComponent);
