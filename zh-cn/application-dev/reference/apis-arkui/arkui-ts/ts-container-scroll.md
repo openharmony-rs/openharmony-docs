@@ -1314,7 +1314,7 @@ getScrollState(): ScrollState
 
 ## FastScrollMode<sup>26.2.0+</sup>枚举说明
 
-滚动到指定index时使用的快速滚动模式，配合[ScrollToIndexOptions](#scrolltoindexoptions12对象说明)的fastScroll字段使用。
+FastScrollMode表示滚动到指定index时使用的快速滚动模式，配合[ScrollToIndexOptions](#scrolltoindexoptions12对象说明)的fastScroll字段使用。
 
 **原子化服务API：** 从API version 26.2.0开始，该接口支持在原子化服务中使用。
 
