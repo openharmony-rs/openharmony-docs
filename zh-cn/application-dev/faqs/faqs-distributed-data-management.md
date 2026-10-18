@@ -15,7 +15,7 @@
 
 **参考链接**
 
-关系型数据库[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
+关系型数据库[StoreConfig](../reference/apis-arkdata/arkts-apis/arkts-arkdata-rdb-storeconfig-i.md#storeconfig)
 
 
 ## 关系型数据库rdb中使用TRUNCATE TABLE语句无法清空表数据(API 9)
@@ -79,7 +79,7 @@ PixelMap应该被转换成相应的ArrayBuffer再放进数据库。
 
 **参考链接**
 
-[readPixelsToBuffer](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#readpixelstobuffer7-1)
+[readPixelsToBuffer](../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#readpixelstobuffer)
 
 
 ## 如何获取rdb关系型数据库文件(API 9)
@@ -158,7 +158,7 @@ RDB数据库底层使用的是SQLite，默认的内存数据库模式是文件�
 
 **解决措施**
 
-可以使用[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行SQL语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。关系型数据库使用的是WAL模式，在查询前可以执行SQL语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
+可以使用[execute](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#execute)接口执行SQL语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。关系型数据库使用的是WAL模式，在查询前可以执行SQL语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
 
 
 ## 如何获取rdb关系型数据库路径

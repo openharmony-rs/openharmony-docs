@@ -6,13 +6,13 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md)允许开发者创建可以嵌入到其他应用窗口上的界面扩展，使得应用能够提供更加丰富和灵活的用户体验。
+[UIExtension](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uiextension.md)允许开发者创建可以嵌入到其他应用窗口上的界面扩展，使得应用能够提供更加丰富和灵活的用户体验。
 
 ![uiextension-ability](figures/uiextension-ability.png)
 
 ## 基本概念
 
-- [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)组件
+- [UIExtensionComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)组件
 
   在使用方应用中定义使用，是ArkUI提供的组件。支持开发者使用ArkTS的声明式开发范式，在应用中直接定义与使用。
 
@@ -33,14 +33,14 @@ UIExtension提供了一种跨进程的应用组件共享机制。 使用方应�
 
 ![uiextension-process-model](figures/uiextension-process-model.png)
 
-- 使用方应用向提供方应用发送消息：使用方可以通过[UIExtensionProxy.send](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#send)和提供方应用进行消息的通信，提供方应用中可以使用[UIExtensionContentSession.setReceiveDataCallback](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)获取使用方应用发送的数据信息。
-- 提供方应用向使用方应用发送消息：提供方可以使用[UIExtensionContentSession.sendData](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#senddata)向使用方应用发送数据，使用方使用[UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)的[onReceive](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onreceive)事件接收消息。
+- 使用方应用向提供方应用发送消息：使用方可以通过[UIExtensionProxy.send](../reference/apis-arkui/arkts-components/arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionproxy-i-sys.md#send)和提供方应用进行消息的通信，提供方应用中可以使用[UIExtensionContentSession.setReceiveDataCallback](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md#setreceivedatacallback)获取使用方应用发送的数据信息。
+- 提供方应用向使用方应用发送消息：提供方可以使用[UIExtensionContentSession.sendData](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md#senddata)向使用方应用发送数据，使用方使用[UIExtensionComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)的[onReceive](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent-fullscreenlaunchcomponent-s.md#onreceive)事件接收消息。
 
 ## 能力范围
 
 ### 组件基本能力
 
-- 组件式[UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)：提供嵌入式的扩展能力，能够在应用页面中嵌入调用其他应用的页面扩展。
+- 组件式[UIExtensionComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)：提供嵌入式的扩展能力，能够在应用页面中嵌入调用其他应用的页面扩展。
 - 全屏模态式UIExtension：会显示全屏模态页面进行交互，不可被遮挡。由系统应用基于UIExtension的内部能力开放组件或Node-API，提供特定能力供三方应用使用。
 
 ### UIExtensionAbility进程应用可用能力范围
@@ -53,23 +53,23 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 
 **通用属性**
 
-当前组件可以通过属性影响其他组件或者使用方应用信息（UI上下文[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)、[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)等）的能力，但由于跨进程的机制问题，UIExtension组件默认不支持。
+当前组件可以通过属性影响其他组件或者使用方应用信息（UI上下文[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)、[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)等）的能力，但由于跨进程的机制问题，UIExtension组件默认不支持。
 
 组件支持的属性存在跨组件场景的情况下，不支持如下能力：
 
-- 提供方组件的属性对其他组件、宿主应用组件的属性存在控制、赋值、合并整合等场景，如[组件标识](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md)。
-- 提供方组件的属性控制提供方组件显示效果、动效等超出UIExtension组件边界的场景，如[全屏模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)。
+- 提供方组件的属性对其他组件、宿主应用组件的属性存在控制、赋值、合并整合等场景，如组件标识。
+- 提供方组件的属性控制提供方组件显示效果、动效等超出UIExtension组件边界的场景，如[全屏模态转场](../reference/apis-arkui/arkui-js/js-components-common-transition.md)。
 
 详情如下：
 
 | 属性                                                         | 能力规格 | 功能说明                                                     | 规格补充说明                                                 |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [组件标识](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md) | 不支持   | id为组件的唯一标识，在整个应用内唯一。本模块提供组件标识相关接口，可以获取指定id组件的属性，也提供向指定id组件发送事件的功能。 | UIExtensionComponent自身可以使用组件标识，提供方也可以正常设置组件标识。但针对宿主方和提供方并未实现统一的标识管理，宿主方无法通过组件标识查询提供方内组件的信息，所以提供方内部设置的组件标识对宿主方不可见、无法用于跨进程查询。 |
-| [图像效果](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md) | 不支持   | 设置组件的模糊、阴影、球面效果以及设置图片的图像效果。       | —                                                            |
-| [分布式迁移标识](../reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md) | 不支持   | 组件的分布式迁移标识，指明了该组件在分布式迁移场景下可以将特定状态恢复到对端设备。 | —                                                            |
-| [拖拽控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md) | 不支持   | 设置组件是否可以响应拖拽事件。                               | —                                                            |
-| [全屏模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md) | 部分支持 | 通过bindContentCover属性为组件绑定全屏模态页面，在组件插入和删除时可通过设置转场参数ModalTransition显示过渡动效。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
-| [半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md) | 部分支持 | 通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
+| 组件标识 | 不支持   | id为组件的唯一标识，在整个应用内唯一。本模块提供组件标识相关接口，可以获取指定id组件的属性，也提供向指定id组件发送事件的功能。 | UIExtensionComponent自身可以使用组件标识，提供方也可以正常设置组件标识。但针对宿主方和提供方并未实现统一的标识管理，宿主方无法通过组件标识查询提供方内组件的信息，所以提供方内部设置的组件标识对宿主方不可见、无法用于跨进程查询。 |
+| 图像效果 | 不支持   | 设置组件的模糊、阴影、球面效果以及设置图片的图像效果。       | —                                                            |
+| 分布式迁移标识 | 不支持   | 组件的分布式迁移标识，指明了该组件在分布式迁移场景下可以将特定状态恢复到对端设备。 | —                                                            |
+| 拖拽控制 | 不支持   | 设置组件是否可以响应拖拽事件。                               | —                                                            |
+| [全屏模态转场](../reference/apis-arkui/arkui-js/js-components-common-transition.md) | 部分支持 | 通过bindContentCover属性为组件绑定全屏模态页面，在组件插入和删除时可通过设置转场参数ModalTransition显示过渡动效。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
+| [半模态转场](../reference/apis-arkui/arkui-js/js-components-common-transition.md) | 部分支持 | 通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
 
 **组件**
 
@@ -83,22 +83,22 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 
 | 组件                                                         | 能力规格 | 功能说明                                                     | 规格补充说明                                                 |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [PluginComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md) | 不支持   | 用于给插件组件的使用者请求组件和数据，使用者发送组件模板和数据。支撑SystemUI实现插件化方式集成其他业务提供的UI。 | 1、和UIExtension能力类似，容易出现嵌套，增加复杂度。<br>2、由于UIExtension组件的提供方已经在另一个进程中，默认能力下，无法提供访问宿主组件的能力。 |
-| [FormComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md) | 不支持   | 提供卡片组件，实现卡片的显示功能。                           | 卡片组件提供的是跨进程的组件调用能力，UIExtension中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
-| [IsolatedComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md) | 不支持   | IsolatedComponent用于支持在本页面内嵌入显示独立ABC（.abc文件）提供的UI，展示的内容在受限worker线程中运行。 | 由于IsolatedComponent所承载的能力（如云卡）涉及跨应用调度，在UIExtension跨进程场景下嵌套使用会导致进程关系复杂，UIExtension中暂不支持。 |
-| [FullScreenLaunchComponent (全屏启动元服务组件)](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md) | 不支持   | 全屏启动元服务组件，当被拉起方授权使用方可以嵌入式运行元服务时，使用方全屏嵌入式运行元服务；未授权时，使用方跳出式拉起元服务。 | 由于是一种跨应用调度的能力，UIExtension中暂不支持嵌套拉起。  |
-| [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) | 不支持   | EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。 | 由于EmbeddedComponent涉及跨进程拉起独立的EmbeddedUIExtensionAbility进程，在UIExtension已有的跨进程场景下嵌套使用会导致进程关系复杂，UIExtension中暂不支持嵌套拉起。  |
-| [RemoteWindow](../reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md) | 不支持   | 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画能力。 | UIExtension中的组件已经在另一个进程中，无法影响控制宿主应用的窗口。 |
-| [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | 不支持   | 富文本组件，解析并显示HTML格式文本。                         | —                                                            |
-| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | 不支持   | FolderStack继承于[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)(层叠布局)组件，新增了折叠屏悬停能力，通过识别upperItems自动避让折叠屏折痕区后移到上半屏。 | 折叠屏划分组件能力，需要和宿主方窗口形成联动，从而需要在提供方内获取宿主主窗的信息，目前无法支持。 |
-| [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) | 不支持   | 可用于[EGL/OpenGLES](../../third-party-cases/how-to-use-opengl-to-draw-3d-graphics.md)和媒体数据写入，并显示在XComponent组件上。   | —                                                            |
-| [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md) | 不支持   | 提供静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。 | 卡片提供的是跨进程的组件调用能力，UIExtension中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
-| [HyperLink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md) | 不支持   | 超链接组件，组件宽高范围内点击实现跳转。                     | —                                                            |
-| [ContextMenu](../reference/apis-arkui/arkui-ts/ts-methods-menu.md) | 不支持   | 在页面范围内关闭通过[bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12)属性绑定的菜单。 | —                                                            |
-| [警告弹窗](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md) | 部分支持 | 显示警告弹窗组件，可设置文本内容与响应回调。若在UIExtension中设置[showInSubWindow](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
-| [列表选择弹窗](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md) | 部分支持 | 列表弹窗。若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
-| [自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md) | 部分支持 | 通过[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)类显示自定义弹窗。使用弹窗组件时，可优先考虑自定义弹窗，便于自定义弹窗的样式与内容。若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
-| [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | 部分支持 | 该组件从API version 11开始默认支持安全区避让特性(默认值为：[expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为。 | 1、如果UIExtension未设置模态或沉浸式，Navigation无法扩展到安全区。<br>2、无法路由到宿主方的页面中。 |
+| [PluginComponent (系统接口)](../reference/apis-arkui/arkts-apis/arkts-arkui-plugincomponent.md) | 不支持   | 用于给插件组件的使用者请求组件和数据，使用者发送组件模板和数据。支撑SystemUI实现插件化方式集成其他业务提供的UI。 | 1、和UIExtension能力类似，容易出现嵌套，增加复杂度。<br>2、由于UIExtension组件的提供方已经在另一个进程中，默认能力下，无法提供访问宿主组件的能力。 |
+| FormComponent (系统接口) | 不支持   | 提供卡片组件，实现卡片的显示功能。                           | 卡片组件提供的是跨进程的组件调用能力，UIExtension中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
+| [IsolatedComponent (系统接口)](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md) | 不支持   | IsolatedComponent用于支持在本页面内嵌入显示独立ABC（.abc文件）提供的UI，展示的内容在受限worker线程中运行。 | 由于IsolatedComponent所承载的能力（如云卡）涉及跨应用调度，在UIExtension跨进程场景下嵌套使用会导致进程关系复杂，UIExtension中暂不支持。 |
+| [FullScreenLaunchComponent (全屏启动元服务组件)](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent-fullscreenlaunchcomponent-s.md) | 不支持   | 全屏启动元服务组件，当被拉起方授权使用方可以嵌入式运行元服务时，使用方全屏嵌入式运行元服务；未授权时，使用方跳出式拉起元服务。 | 由于是一种跨应用调度的能力，UIExtension中暂不支持嵌套拉起。  |
+| [EmbeddedComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-embeddedcomponent.md) | 不支持   | EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-embeddeduiextensionability.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。 | 由于EmbeddedComponent涉及跨进程拉起独立的EmbeddedUIExtensionAbility进程，在UIExtension已有的跨进程场景下嵌套使用会导致进程关系复杂，UIExtension中暂不支持嵌套拉起。  |
+| RemoteWindow | 不支持   | 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画能力。 | UIExtension中的组件已经在另一个进程中，无法影响控制宿主应用的窗口。 |
+| [RichText](../reference/apis-arkui/arkui-js/js-components-basic-richtext.md) | 不支持   | 富文本组件，解析并显示HTML格式文本。                         | —                                                            |
+| FolderStack | 不支持   | FolderStack继承于[Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md)(层叠布局)组件，新增了折叠屏悬停能力，通过识别upperItems自动避让折叠屏折痕区后移到上半屏。 | 折叠屏划分组件能力，需要和宿主方窗口形成联动，从而需要在提供方内获取宿主主窗的信息，目前无法支持。 |
+| [XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md) | 不支持   | 可用于[EGL/OpenGLES](../../third-party-cases/how-to-use-opengl-to-draw-3d-graphics.md)和媒体数据写入，并显示在XComponent组件上。   | —                                                            |
+| FormLink | 不支持   | 提供静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。 | 卡片提供的是跨进程的组件调用能力，UIExtension中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
+| HyperLink | 不支持   | 超链接组件，组件宽高范围内点击实现跳转。                     | —                                                            |
+| [ContextMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-contextmenu-c.md) | 不支持   | 在页面范围内关闭通过[bindContextMenu](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)属性绑定的菜单。 | —                                                            |
+| 警告弹窗 | 部分支持 | 显示警告弹窗组件，可设置文本内容与响应回调。若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
+| [列表选择弹窗](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheet.md) | 部分支持 | 列表弹窗。若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
+| 自定义弹窗 | 部分支持 | 通过[CustomDialogController](../reference/apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md#customdialogcontroller)类显示自定义弹窗。使用弹窗组件时，可优先考虑自定义弹窗，便于自定义弹窗的样式与内容。若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
+| Navigation | 部分支持 | 该组件从API version 11开始默认支持安全区避让特性(默认值为：[expandSafeArea](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#expandsafearea)([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为。 | 1、如果UIExtension未设置模态或沉浸式，Navigation无法扩展到安全区。<br>2、无法路由到宿主方的页面中。 |
 
 **ArkTS API接口**
 
@@ -111,16 +111,16 @@ ArkTS API接口提供能力，在UIExtension场景下也需要考虑是否是跨
 
 | 模块                                                         | 能力规格 | 功能说明                                                     | 规格补充说明                                                 |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [页面间转场](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md) | 不支持   | 当路由进行切换时，可以通过在pageTransition函数中自定义页面入场和页面退场的转场动效。 | —                                                            |
-| [组件内隐式共享元素转场](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) | 不支持   | 在视图切换过程中提供丝滑的上下文传承过渡。通用transition机制提供了opacity、scale等转场效果，geometryTransition通过安排绑定的in/out组件(in指新视图、out指旧视图)的frame、position使得原本独立的transition动画在空间位置上发生联系，将视觉焦点由旧视图位置引导到新视图位置。 | —                                                            |
-| [componentUtils](../reference/apis-arkui/js-apis-arkui-componentUtils.md) | 不支持   | 提供获取组件绘制区域坐标和大小的能力。                       | 获取信息来自于窗口，默认情况下直接获取到的位置信息是UIExtensionAbility的WindowProxy的信息，非宿主应用的主窗口信息。 |
-| [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) | 不支持   | @ohos.window在API version 10 新增[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)接口，获取UI上下文实例UIContext对象，使用UIContext对象提供的替代方法，可以直接作用在对应的UI实例上。 | 基于window获取，但UIExtension内部默认方式下，提供方无真正的窗口承载，无法使用该接口获取到正确的UIContext。 |
-| [DragController](../reference/apis-arkui/js-apis-arkui-dragController.md) | 不支持   | 本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。<br>本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](./arkts-global-interface.md)的地方使用，参见UIContext说明。 | 拖拽时通过UIContext上下文传递组件间的事件，使用方应用和提供方应用不共享UIContext内容，默认能力下无法支持拖拽事件的传递。 |
-| [布局回调](../reference/apis-arkui/js-apis-arkui-inspector.md) | 部分支持 | 提供注册组件布局和绘制完成回调通知的能力。                   | 如果指定UIExtension组件，预期是获得所有UIExtension中的组件信息，尚未支持该能力；提供方内部可以正常使用。 |
-| [性能监测](../reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md) | 不支持   | 用户操作场景提供性能相关指标监测能力，目前仅包含响应时延、完成时延、丢帧。 | —                                                            |
-| [注册自定义字体](../reference/apis-arkui/js-apis-font.md)    | 不支持   | 本模块提供注册自定义字体。                                   | 注册字体存在影响范围的问题，提供方侧无法影响使用方应用的字体。 |
-| [PluginComponentManager](../reference/apis-arkui/js-apis-plugincomponent.md) | 不支持   | 用于给插件组件的使用者请求组件与数据，使用者发送组件模板和数据。 | 依赖获取其他组件的数据，提供方组件在另一个进程中，无法提供访问宿主组件的能力。 |
-| [用户界面外观](../reference/apis-arkui/js-apis-uiappearance-sys.md)(系统接口) | 不支持   | 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。 | 提供方不能通过该能力影响使用方。                             |
+| [页面间转场](../reference/apis-arkui/errorcode-animation.md) | 不支持   | 当路由进行切换时，可以通过在pageTransition函数中自定义页面入场和页面退场的转场动效。 | —                                                            |
+| 组件内隐式共享元素转场 | 不支持   | 在视图切换过程中提供丝滑的上下文传承过渡。通用transition机制提供了opacity、scale等转场效果，geometryTransition通过安排绑定的in/out组件(in指新视图、out指旧视图)的frame、position使得原本独立的transition动画在空间位置上发生联系，将视觉焦点由旧视图位置引导到新视图位置。 | —                                                            |
+| [componentUtils](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-componentutils.md) | 不支持   | 提供获取组件绘制区域坐标和大小的能力。                       | 获取信息来自于窗口，默认情况下直接获取到的位置信息是UIExtensionAbility的WindowProxy的信息，非宿主应用的主窗口信息。 |
+| [UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | 不支持   | @ohos.window在API version 10 新增[getUIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getuicontext)接口，获取UI上下文实例UIContext对象，使用UIContext对象提供的替代方法，可以直接作用在对应的UI实例上。 | 基于window获取，但UIExtension内部默认方式下，提供方无真正的窗口承载，无法使用该接口获取到正确的UIContext。 |
+| [DragController](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dragcontroller.md) | 不支持   | 本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。<br>本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](./arkts-global-interface.md)的地方使用，参见UIContext说明。 | 拖拽时通过UIContext上下文传递组件间的事件，使用方应用和提供方应用不共享UIContext内容，默认能力下无法支持拖拽事件的传递。 |
+| [布局回调](../reference/apis-arkui/arkts-apis/arkts-arkui-inspector.md) | 部分支持 | 提供注册组件布局和绘制完成回调通知的能力。                   | 如果指定UIExtension组件，预期是获得所有UIExtension中的组件信息，尚未支持该能力；提供方内部可以正常使用。 |
+| [性能监测](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-performancemonitor.md) | 不支持   | 用户操作场景提供性能相关指标监测能力，目前仅包含响应时延、完成时延、丢帧。 | —                                                            |
+| [注册自定义字体](../reference/apis-arkui/arkts-apis/arkts-arkui-font.md)    | 不支持   | 本模块提供注册自定义字体。                                   | 注册字体存在影响范围的问题，提供方侧无法影响使用方应用的字体。 |
+| [PluginComponentManager](../reference/apis-arkui/arkts-apis/arkts-arkui-plugincomponent.md) | 不支持   | 用于给插件组件的使用者请求组件与数据，使用者发送组件模板和数据。 | 依赖获取其他组件的数据，提供方组件在另一个进程中，无法提供访问宿主组件的能力。 |
+| [用户界面外观](../reference/apis-arkui/arkts-apis/arkts-arkui-uiappearance.md)(系统接口) | 不支持   | 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。 | 提供方不能通过该能力影响使用方。                             |
 
 ## 约束与限制
 
@@ -140,7 +140,7 @@ UIExtensionComponent组件（使用方）可以访问调用集成了UIExtensionA
 
 - 提供方应用可以根据自身业务的情况，设置是否允许使用方应用进行遮挡。
 
-- 推荐消减措施：[hideNonSecureWindows](../reference/apis-arkui/js-apis-uiExtensionHost-sys.md#hidenonsecurewindows)。
+- 推荐消减措施：[hideNonSecureWindows](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextensionhost-uiextensionhostwindowproxy-i-sys.md#hidenonsecurewindows)。
 
 - 缺点：设置后使用方的交互行为将受限，使用方无法再创建任何子窗覆盖到提供方的窗口上。
 
@@ -178,12 +178,12 @@ UIExtensionComponent组件（使用方）可以访问调用集成了UIExtensionA
 
 | 场景     | 分类                       | 是否支持 | 同步/异步（宿主与提供方） | 备注                                                         |
 | -------- | -------------------------- | -------- | ------------------------- | ------------------------------------------------------------ |
-| 通用事件 | [点击事件](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)（Click）          | 支持     | 异步                      | —                                                            |
-| 通用事件 | [触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)（Touch）          | 支持     | 异步                      | —                                                            |
-| 通用事件 | [拖拽事件](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md)（onDragXXX）      | 支持     | 异步                      | —                                                            |
-| 通用事件 | [按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)（KeyEvent）       | 支持     | 同步                      | 循环嵌套或者嵌套过深会导致应用无法响应，提供默认兜底机制：支持超时等待机制，超时后会结束等待，对上层来说相当于事件未处理。 |
-| 通用事件 | [焦点事件](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md)（onFocus/onBlur） | 支持     | 同步                      | 循环嵌套或者嵌套过深会导致应用无法响应，提供默认兜底机制：支持超时等待机制，超时后会结束等待，对上层来说相当于事件未处理。 |
-| 通用事件 | [鼠标事件](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md)（onHover/onMouse） | 支持     | 异步                      | —                                                            |
+| 通用事件 | 点击事件（Click）          | 支持     | 异步                      | —                                                            |
+| 通用事件 | 触摸事件（Touch）          | 支持     | 异步                      | —                                                            |
+| 通用事件 | 拖拽事件（onDragXXX）      | 支持     | 异步                      | —                                                            |
+| 通用事件 | 按键事件（KeyEvent）       | 支持     | 同步                      | 循环嵌套或者嵌套过深会导致应用无法响应，提供默认兜底机制：支持超时等待机制，超时后会结束等待，对上层来说相当于事件未处理。 |
+| 通用事件 | [焦点事件](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-drag-event.md)（onFocus/onBlur） | 支持     | 同步                      | 循环嵌套或者嵌套过深会导致应用无法响应，提供默认兜底机制：支持超时等待机制，超时后会结束等待，对上层来说相当于事件未处理。 |
+| 通用事件 | 鼠标事件（onHover/onMouse） | 支持     | 异步                      | —                                                            |
 | 手势处理 | —                          | 支持     | 异步                      | —                                                            |
 | 无障碍   | —                          | 支持     | 同步                      | 循环嵌套或者嵌套过深会导致应用无法响应，提供默认兜底机制：支持超时等待机制，超时后会结束等待，对上层来说相当于事件未处理。 |
 
@@ -203,8 +203,8 @@ UIExtensionComponent组件（使用方）可以访问调用集成了UIExtensionA
 
 应用开发者（使用方）可以通过如下方式消减闪白问题：
 
-- 根据使用方应用的页面以及提供方页面的背景色，更改UIExtensionComponent的背景色（[背景设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)），做到在加载过程中配合场景过渡显示，从而实现无跳变感知。
-- 通过本组件提供的[placeholder](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionoptions11)机制，在UIExtensionComponent与提供方建立连接、提供方页面完全显示之前，显示自定义的背景UI。
+- 根据使用方应用的页面以及提供方页面的背景色，更改UIExtensionComponent的背景色（背景设置），做到在加载过程中配合场景过渡显示，从而实现无跳变感知。
+- 通过本组件提供的[placeholder](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-counter-countercomponent-s.md#options)机制，在UIExtensionComponent与提供方建立连接、提供方页面完全显示之前，显示自定义的背景UI。
 
 如果消减后效果不能完全满足应用交互诉求，由于跨进程的能力约束，建议应用优先考虑其他方案。
 

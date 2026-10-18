@@ -16,7 +16,7 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.cameraPicker (相机选择器)](../../reference/apis-camera-kit/js-apis-cameraPicker.md)。
+详细的API说明请参考[@ohos.multimedia.cameraPicker (相机选择器)](../../reference/apis-camera-kit/arkts-apis/arkts-camera-multimedia-camerapicker.md)。
 
 1. 导入相关接口，导入方法如下。
 
@@ -27,7 +27,7 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
    import { fileIo, fileUri } from '@kit.CoreFileKit';
    ```
 
-2. 配置[PickerProfile](../../reference/apis-camera-kit/js-apis-cameraPicker.md#pickerprofile)。
+2. 配置[PickerProfile](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camerapicker-pickerprofile-c.md#pickerprofile)。
 
    > **说明：**
    >
@@ -54,7 +54,7 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
    }
    ```
 
-   fileIo接口调用方法请参考：[createRandomAccessFileSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreaterandomaccessfilesync10)和[getUriFromPath](../../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)。
+   fileIo接口调用方法请参考：[createRandomAccessFileSync](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-createrandomaccessfilesync-f.md#createrandomaccessfilesync)和[getUriFromPath](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)。
 
 3. 调用picker拍摄接口获取拍摄的结果。
 

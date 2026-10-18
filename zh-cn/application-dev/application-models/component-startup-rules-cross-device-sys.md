@@ -7,7 +7,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-在跨设备协同场景中，系统应用常需启动其他设备上的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)或[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)组件以实现多端交互。跨设备启动涉及设备可信关系、安全等级匹配及权限校验等多重约束，未满足规则将导致启动失败。本文档梳理了系统应用跨设备启动组件的完整规则，涵盖协同接口选型、启动条件及权限要求，适用于系统应用开发者在实现跨设备组件启动与多端协同功能时参考。
+在跨设备协同场景中，系统应用常需启动其他设备上的[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)或[ExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability.md)组件以实现多端交互。跨设备启动涉及设备可信关系、安全等级匹配及权限校验等多重约束，未满足规则将导致启动失败。本文档梳理了系统应用跨设备启动组件的完整规则，涵盖协同接口选型、启动条件及权限要求，适用于系统应用开发者在实现跨设备组件启动与多端协同功能时参考。
 
 ## 基本概念
 
@@ -19,11 +19,11 @@
 
 | 分类 | 接口 | 适用场景 |
 | --- | --- | --- |
-| 多轮交互 | [abilityConnectionManager](../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md) | 支持跨设备启动UIAbility组件；推荐优先使用该接口，协同连接速度更快且传输性能更优，具体请参考[跨设备连接UIAbility开发指南](../distributedservice/abilityconnectmanager-guidelines.md)。 |
-| 多轮交互 | [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) | 支持跨设备启动ExtensionAbility组件。 |
-| 多轮交互 | [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 支持跨设备启动UIAbility组件，并支持多轮交互。 |
-| 单次交互 | [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 支持跨设备启动UIAbility组件的单次交互，仅返回启动结果。 |
-| 单次交互 | [startAbilityForResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) | 支持跨设备启动UIAbility组件的单次交互，且支持由目标方组件调用terminateSelfWithResult销毁时返回详细结果。 |
+| 多轮交互 | abilityConnectionManager | 支持跨设备启动UIAbility组件；推荐优先使用该接口，协同连接速度更快且传输性能更优，具体请参考[跨设备连接UIAbility开发指南](../distributedservice/abilityconnectmanager-guidelines.md)。 |
+| 多轮交互 | [connectServiceExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#connectserviceextensionability) | 支持跨设备启动ExtensionAbility组件。 |
+| 多轮交互 | [startAbilityByCall](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilitybycall) | 支持跨设备启动UIAbility组件，并支持多轮交互。 |
+| 单次交互 | [startAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability) | 支持跨设备启动UIAbility组件的单次交互，仅返回启动结果。 |
+| 单次交互 | [startAbilityForResult](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) | 支持跨设备启动UIAbility组件的单次交互，且支持由目标方组件调用terminateSelfWithResult销毁时返回详细结果。 |
 
 ## 启动条件
 
@@ -52,11 +52,11 @@
 
 | 接口 | 目标方对启动方的权限要求 | 启动方与目标方的分布式协同相关权限要求 |
 | --- | --- | --- |
-| [abilityConnectionManager](../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | ohos.permission.DISTRIBUTED_DATASYNC<br>ohos.permission.GET_NETWORK_INFO<br>ohos.permission.SET_NETWORK_INFO<br>ohos.permission.INTERNET |
-| [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | ohos.permission.DISTRIBUTED_DATASYNC |
-| [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 无要求（仅限同一应用间调用）。 | ohos.permission.DISTRIBUTED_DATASYNC |
-| [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | 无要求（仅单次交互）。 |
-| [startAbilityForResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | 无要求（仅单次交互）。 |
+| abilityConnectionManager | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | ohos.permission.DISTRIBUTED_DATASYNC<br>ohos.permission.GET_NETWORK_INFO<br>ohos.permission.SET_NETWORK_INFO<br>ohos.permission.INTERNET |
+| [connectServiceExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#connectserviceextensionability) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | ohos.permission.DISTRIBUTED_DATASYNC |
+| [startAbilityByCall](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilitybycall) | 无要求（仅限同一应用间调用）。 | ohos.permission.DISTRIBUTED_DATASYNC |
+| [startAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | 无要求（仅单次交互）。 |
+| [startAbilityForResult](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilityforresult)<br>[terminateSelfWithResult](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) | 若目标方在module.json5文件中配置了abilities标签的`permissions`，启动方须持有其中全部权限。<br>若目标方在module.json5文件中配置了exported为false，需申请ohos.permission.START_INVISIBLE_ABILITY权限。 | 无要求（仅单次交互）。 |
 
 > **说明**
 >

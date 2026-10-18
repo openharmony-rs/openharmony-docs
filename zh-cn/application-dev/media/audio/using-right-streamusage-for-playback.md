@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-播放流类型由[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)定义，用于描述播放音频的用途。系统会根据播放流类型管理音量、音频焦点和输出设备，并结合音频流参数选择音频通路。为了使音频行为符合预期，应用应根据实际播放场景选择合适的StreamUsage。
+播放流类型由[StreamUsage](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiointerrupt-i.md#streamusage)定义，用于描述播放音频的用途。系统会根据播放流类型管理音量、音频焦点和输出设备，并结合音频流参数选择音频通路。为了使音频行为符合预期，应用应根据实际播放场景选择合适的StreamUsage。
 
 ## 常用的播放流类型及其适用场景
 
@@ -27,7 +27,7 @@
 
 ### 音量控制
 
-播放流类型决定了音频流所属的音量类型（[AudioVolumeType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiovolumetype)）。各类音量类型（如媒体、铃声、闹钟、通话等）拥有独立的音量值，在用户界面上可独立调节，相互之间不会影响。
+播放流类型决定了音频流所属的音量类型（[AudioVolumeType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiovolumetype-e-sys.md#audiovolumetype)）。各类音量类型（如媒体、铃声、闹钟、通话等）拥有独立的音量值，在用户界面上可独立调节，相互之间不会影响。
 
 常见的播放流类型与音量类型的对应关系为：
 
@@ -55,17 +55,17 @@
 - 语音通话（VoiceCommunication）类型音频流的默认输出设备为听筒。
 - 闹铃（Alarm）类型音频流的默认输出设备为扬声器。若先连接蓝牙耳机，再开始播放Alarm音频，则扬声器和蓝牙耳机会同时播放。
 
-当默认输出设备不符合使用诉求，应用[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)设置默认发声设备。
+当默认输出设备不符合使用诉求，应用[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setdefaultoutputdevice)设置默认发声设备。
 
 ## 设置播放流类型
 
 应用可采用多种方式实现音频播放，不同场景下设置播放流类型的方法如下：
 
-- [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)：调用[createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)时，通过AudioRendererOptions中的AudioRendererInfo.usage指定StreamUsage。
-- [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)：调用[OH_AudioStreamBuilder_SetRendererInfo](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinfo)时，传入[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)。
+- [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)：调用[createAudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)时，通过AudioRendererOptions中的AudioRendererInfo.usage指定StreamUsage。
+- [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)：调用OH_AudioStreamBuilder_SetRendererInfo时，传入OH_AudioStream_Usage。
 - [使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)：通过AVPlayer的audioRendererInfo属性设置AudioRendererInfo.usage。该属性只允许在initialized状态下设置。应用未主动设置时，媒体源包含视频的usage默认值为STREAM_USAGE_MOVIE，否则为STREAM_USAGE_MUSIC。
-- [使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)：调用[OH_AVPlayer_SetAudioRendererInfo](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiorendererinfo)时，传入OH_AudioStream_Usage。
-- [使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)：调用[createSoundPool](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10)时，传入StreamUsage。
+- [使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)：调用[OH_AVPlayer_SetAudioRendererInfo](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audiorendererinfo)时，传入OH_AudioStream_Usage。
+- [使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)：调用[createSoundPool](../../reference/apis-media-kit/arkts-apis/arkts-media-media-createsoundpool-f.md#createsoundpool)时，传入StreamUsage。
 
 ## 使用不同播放通路
 
@@ -83,10 +83,10 @@
 
 | 接口 | 说明 |
 | ---------- | ---------- |
-| [isFastPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastplaybacksupported) | 查询是否支持低时延播放。<br>**起始版本**：26.0.0 |
-| [isMultichannelPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#ismultichannelplaybacksupported) | 查询是否支持多声道播放。<br>**起始版本**：26.0.0 |
-| [isDirectPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isdirectplaybacksupported) | 查询是否支持直通播放。<br>**起始版本**：26.0.0 |
-| [isOffloadPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isoffloadplaybacksupported) | 查询是否支持低功耗播放。<br>**起始版本**：26.0.0 |
+| [isFastPlaybackSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isfastplaybacksupported) | 查询是否支持低时延播放。<br>**起始版本**：26.0.0 |
+| [isMultichannelPlaybackSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#ismultichannelplaybacksupported) | 查询是否支持多声道播放。<br>**起始版本**：26.0.0 |
+| [isDirectPlaybackSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isdirectplaybacksupported) | 查询是否支持直通播放。<br>**起始版本**：26.0.0 |
+| [isOffloadPlaybackSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isoffloadplaybacksupported) | 查询是否支持低功耗播放。<br>**起始版本**：26.0.0 |
 
 > **说明：**
 >

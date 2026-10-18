@@ -27,4 +27,4 @@
 
 ## 示例
 
-具体参数、使用方式等信息，请参考对应的[@ohos.userIAM.userAuthIcon (嵌入式用户身份认证控件)](../../reference/apis-user-authentication-kit/ohos-useriam-userauthicon.md)。
+具体参数、使用方式等信息，请参考对应的[@ohos.userIAM.userAuthIcon (嵌入式用户身份认证控件)](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-useriam-userauthicon.md)。

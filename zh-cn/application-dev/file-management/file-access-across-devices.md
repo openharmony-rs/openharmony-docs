@@ -81,7 +81,7 @@
    设备B主动向设备A发起建链，建链成功后设备B可在分布式目录下读取测试文件。
    > **说明：**
    >
-   > 这里通过分布式设备管理的接口获取设备networkId，详见[@ohos.distributedDeviceManager (设备管理)](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md)。
+   > 这里通过分布式设备管理的接口获取设备networkId，详见@ohos.distributedDeviceManager (设备管理)。
 
    ```ts
    import { fileIo } from '@kit.CoreFileKit';

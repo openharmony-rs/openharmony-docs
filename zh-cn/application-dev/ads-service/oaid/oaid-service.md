@@ -31,8 +31,8 @@ OAID会在下述场景中发生变化：
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| <!--Del-->[<!--DelEnd-->getOAID<!--Del-->](../../reference/apis-ads-kit/js-apis-oaid.md#identifiergetoaid)<!--DelEnd-->(): Promise&lt;string&gt; | 获取OAID，通过Promise异步返回结果。 |
-| <!--Del-->[<!--DelEnd-->getOAID<!--Del-->](../../reference/apis-ads-kit/js-apis-oaid.md#identifiergetoaid-1)<!--DelEnd-->(callback:&nbsp;AsyncCallback&lt;string&gt;):&nbsp; void | 获取OAID，通过Callback回调返回值。 |
+| <!--Del--><!--DelEnd-->getOAID<!--Del--><!--DelEnd-->(): Promise&lt;string&gt; | 获取OAID，通过Promise异步返回结果。 |
+| <!--Del-->[<!--DelEnd-->getOAID<!--Del-->](../../reference/apis-ads-kit/arkts-apis/arkts-ads-identifier-getoaid-f.md#getoaid)<!--DelEnd-->(callback:&nbsp;AsyncCallback&lt;string&gt;):&nbsp; void | 获取OAID，通过Callback回调返回值。 |
 
 > **说明：**
 > 

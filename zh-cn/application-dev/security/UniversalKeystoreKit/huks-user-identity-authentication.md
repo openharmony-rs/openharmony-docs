@@ -13,7 +13,7 @@
 
 ### 生成密钥
 
-指定用户身份认证访问控制类型及相关属性。具体而言，生成或导入密钥时，在密钥属性集中需指定三个参数：用户认证类型[HuksUserAuthType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksuserauthtype9)、授权访问类型[HuksAuthAccessType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthaccesstype9)、挑战值类型[HuksChallengeType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukschallengetype9)。
+指定用户身份认证访问控制类型及相关属性。具体而言，生成或导入密钥时，在密钥属性集中需指定三个参数：用户认证类型[HuksUserAuthType](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksuserauthtype-e.md#huksuserauthtype)、授权访问类型[HuksAuthAccessType](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksauthaccesstype-e.md#huksauthaccesstype)、挑战值类型[HuksChallengeType](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukschallengetype-e.md#hukschallengetype)。
 
 <!-- @[user_authentication_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
 

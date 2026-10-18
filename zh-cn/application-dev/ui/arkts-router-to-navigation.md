@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-鉴于组件导航（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
+鉴于组件导航（Navigation）支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
 
 ## 页面结构
 
@@ -99,7 +99,7 @@ struct PageOne {
 }
 ```
 
-而基于Navigation的路由页面分为导航页和子页，导航页又叫[Navbar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)，是Navigation包含的子组件，子页是[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)包含的子组件。
+而基于Navigation的路由页面分为导航页和子页，导航页又叫[Navbar](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navbar-t.md#navbar)，是Navigation包含的子组件，子页是NavDestination包含的子组件。
 
 以下为Navigation导航页的示例。
 
@@ -185,7 +185,7 @@ export struct PageOne {
 
 ## 路由操作
 
-Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](../reference/apis-arkui/arkts-apis-uicontext-router.md)对象。
+Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-router-c.md)对象。
 
 <!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->  
 
@@ -209,7 +209,7 @@ let size = this.getUIContext().getRouter().getLength();
 let pageState = this.getUIContext().getRouter().getState();
 ```
 
-Navigation通过导航控制器对象[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法来操作页面，需要创建一个栈对象并传入Navigation中。
+Navigation通过导航控制器对象[NavPathStack](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md#navpathstack)提供的方法来操作页面，需要创建一个栈对象并传入Navigation中。
 
 <!-- @[nav_stack_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/Index.ets) -->
 
@@ -308,7 +308,7 @@ export struct PageOne {
 }
 ```
 
-**方式二**：子页面通过[OnReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调获取。
+**方式二**：子页面通过[OnReady](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#onready)回调获取。
 
 <!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
 
@@ -367,7 +367,7 @@ export struct PageOne {
 }
 ```
 
-**方式四**：通过自定义组件查询接口获取，参考[queryNavigationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavigationinfo12)。
+**方式四**：通过自定义组件查询接口获取，参考[queryNavigationInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#querynavigationinfo)。
 
 <!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) --> 
 
@@ -481,13 +481,13 @@ Router和Navigation都提供了系统的转场动画，也提供了自定义转�
 
 其中Router自定义页面转场通过通用方法`pageTransition()`实现，具体可参考Router[页面转场动画](arkts-page-transition-animation.md)。
 
-Navigation作为路由容器组件，其内部的页面切换动画本质上属于组件跟组件之间的属性动画，可以通过Navigation中的[customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11)事件提供自定义转场动画的能力，具体实现可以参考Navigation[自定义转场](./arkts-navigation-animation.md#自定义转场)。（注意：API version 13之前，Dialog类型的页面默认无转场动画。从API version13开始，Dialog类型的页面支持系统转场动画。）
+Navigation作为路由容器组件，其内部的页面切换动画本质上属于组件跟组件之间的属性动画，可以通过Navigation中的[customNavContentTransition](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#customnavcontenttransition)事件提供自定义转场动画的能力，具体实现可以参考Navigation[自定义转场](./arkts-navigation-animation.md#自定义转场)。（注意：API version 13之前，Dialog类型的页面默认无转场动画。从API version13开始，Dialog类型的页面支持系统转场动画。）
 
 ## 共享元素转场
 
 页面和页面之间跳转的时候需要进行共享元素过渡动画，Router可以通过通用属性`sharedTransition`来实现共享元素转场，具体可以参考如下链接：
 
-[共享元素转场](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)。
+[共享元素转场](../reference/apis-arkui/arkui-js/js-components-create-elements.md)。
 
 Navigation也提供了共享元素一镜到底的转场能力，需要配合`geometryTransition`属性，在子页面（NavDestination）之间切换时，可以实现共享元素转场，具体可参考[Navigation共享元素转场动画](./arkts-navigation-animation.md#共享元素转场)。
 
@@ -670,7 +670,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 基本实现跟上述Router动态路由类似。
 1. 开发者自定义路由管理模块，各个提供路由页面的模块均依赖此模块；
 2. 构建Navigation组件时，将NavPathStack注入路由管理模块，路由管理模块对NavPathStack进行封装，对外提供路由能力；
-3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)封装的构建函数，并再通过[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)封装后，实现全局封装；
+3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-editormenuoptions-i.md#builder)封装的构建函数，并再通过[WrappedBuilder](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md#wrappedbuilder)封装后，实现全局封装；
 4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册到路由模块；
 5. 当路由需要跳转到指定路由时，路由模块完成对指定路由模块的动态导入，并完成路由跳转。
 
@@ -684,7 +684,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 ## 生命周期监听
 
-Router可以通过observer实现注册监听，接口定义请参考Router无感监听[uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate)。
+Router可以通过observer实现注册监听，接口定义请参考Router无感监听uiObserver.on('routerPageUpdate')。
 
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
@@ -749,7 +749,7 @@ export default class EntryAbility extends UIAbility {
 
 为了实现页面内自定义组件跟页面解耦，自定义组件中提供了全局查询页面信息的接口。
 
-Router可以通过[queryRouterPageInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#queryrouterpageinfo12)接口查询当前自定义组件所在的Page页面的信息，其返回值包含如下几个属性，其中pageId是页面的唯一标识符：
+Router可以通过[queryRouterPageInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#queryrouterpageinfo)接口查询当前自定义组件所在的Page页面的信息，其返回值包含如下几个属性，其中pageId是页面的唯一标识符：
 
 | 名称                 | 类型                        | 必填 | 说明                           |
 | -------------------- | --------------------------- | ---- | ------------------------------ |
@@ -778,7 +778,7 @@ struct MyComponent {
 }
 ```
 
-Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)接口查询当前自定义组件所在的NavDestination的信息，其返回值包含如下几个属性，其中navDestinationId是页面的唯一标识符：
+Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#querynavdestinationinfo)接口查询当前自定义组件所在的NavDestination的信息，其返回值包含如下几个属性，其中navDestinationId是页面的唯一标识符：
 
 | 名称                          | 类型                | 必填 | 说明                                         |
 | ----------------------------- | ------------------- | ---- | -------------------------------------------- |
@@ -826,4 +826,4 @@ struct MyComponent {
 
 Router没有提供路由拦截的能力，开发者需要自行封装路由跳转接口，并在自己封装的接口中做路由拦截的判断并重定向路由。
 
-Navigation提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)方法，用于设置Navigation页面跳转拦截回调。具体可以参考文档：Navigation[路由拦截](./arkts-navigation-jump.md#路由拦截)
+Navigation提供了[setInterception](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#setinterception)方法，用于设置Navigation页面跳转拦截回调。具体可以参考文档：Navigation[路由拦截](./arkts-navigation-jump.md#路由拦截)

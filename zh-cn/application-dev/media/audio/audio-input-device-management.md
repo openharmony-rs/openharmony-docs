@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-本模块提供音频输入设备管理能力，包括查询输入设备信息、监听设备连接状态变化等。具体API说明可参考文档[AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
+本模块提供音频输入设备管理能力，包括查询输入设备信息、监听设备连接状态变化等。具体API说明可参考文档[AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioroutingmanager-i.md)。
 
 以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
 
@@ -38,7 +38,7 @@ let audioRoutingManager = audioManager.getRoutingManager();
 
 ## 获取输入设备信息
 
-使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输入设备的信息。
+使用[getDevices](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioroutingmanager-i.md#getdevices)方法可以获取当前所有输入设备的信息。
 
 <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
@@ -87,7 +87,7 @@ let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
 <!--Del-->
 ## 选择音频输入设备（仅对系统应用开放）
 
-选择音频输入设备，当前只能选择一个输入设备，以设备id作为唯一标识。AudioDeviceDescriptors的具体信息可以参考[AudioDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis-audio-t.md#audiodevicedescriptors)。
+选择音频输入设备，当前只能选择一个输入设备，以设备id作为唯一标识。AudioDeviceDescriptors的具体信息可以参考[AudioDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptors-t.md#audiodevicedescriptors)。
 
 > **说明：**
 > 

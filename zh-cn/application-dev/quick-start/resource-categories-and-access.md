@@ -11,7 +11,7 @@
 
 在应用开发中，常需使用字符串、颜色、字体、间距和图标等资源。为了让应用在不同设备（如手机、平板、车机）和配置（如语言、屏幕密度、颜色模式）下都能提供最佳体验，系统支持通过资源动态匹配机制，自动为各类场景选取最合适的资源。本文档将介绍资源类型与组织方式，并提供资源开发指导。
 
-根据来源差异，资源可分为系统资源和应用资源。系统资源是系统提供的资源，<!--RP2-->开发者可以在[global_system_resources](https://gitcode.com/openharmony/global_system_resources/tree/master/systemres/main/resources/base/element)中获取系统symbol图标、颜色、间距、字符等资源信息。<!--RP2End-->其中symbol图标还可通过[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)对图标颜色等进一步设置。应用资源是开发者在应用中自定义的资源，可以利用资源文件管理资源在不同的设备或配置中的表现。
+根据来源差异，资源可分为系统资源和应用资源。系统资源是系统提供的资源，<!--RP2-->开发者可以在[global_system_resources](https://gitcode.com/openharmony/global_system_resources/tree/master/systemres/main/resources/base/element)中获取系统symbol图标、颜色、间距、字符等资源信息。<!--RP2End-->其中symbol图标还可通过[SymbolGlyph](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-symbolglyph-t.md)对图标颜色等进一步设置。应用资源是开发者在应用中自定义的资源，可以利用资源文件管理资源在不同的设备或配置中的表现。
 
 ## 资源分类
 
@@ -55,7 +55,7 @@ resources
 | base目录 | base目录默认存在。二级子目录element用于存放字符串、颜色、布尔值等基础元素，media和profile子目录存放媒体、动画、布局等资源文件。<br/>目录中的资源文件会被编译成二进制文件，并分配资源ID。通过指定资源类型（type）和资源名称（name）来访问。 |
 | 限定词目录 | 限定词目录需要开发者根据开发需要自行创建，二级子目录element用于存放字符串、颜色、布尔值等基础元素，media和profile子目录存放媒体、动画、布局等资源文件。<br/>同样，目录中的资源文件会被编译成二进制文件，并分配资源ID。通过指定资源类型（type）和资源名称（name）来访问。限定词的含义和取值范围以及限定词目录的命名规则请参考下方[限定词目录](#限定词目录)中的说明。 |
 | rawfile目录 | 支持创建多层子目录，子目录名称可以自定义，文件夹内可以自由放置各类资源文件。<br/>目录中的资源文件会被直接打包进应用，不经过编译，也不会分配资源ID。通过指定文件路径和文件名访问。 |
-| resfile目录 | 支持创建多层子目录，子目录名称可以自定义，文件夹内可以自由放置各类资源文件。<br/>目录中的资源文件会被直接打包进应用，不经过编译，也不会分配资源ID。应用安装后，resfile资源会被解压到应用沙箱路径，通过Context属性[resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取到resfile资源目录后，可通过文件路径访问，且该路径仅能以只读方式访问。 |
+| resfile目录 | 支持创建多层子目录，子目录名称可以自定义，文件夹内可以自由放置各类资源文件。<br/>目录中的资源文件会被直接打包进应用，不经过编译，也不会分配资源ID。应用安装后，resfile资源会被解压到应用沙箱路径，通过Context属性resourceDir获取到resfile资源目录后，可通过文件路径访问，且该路径仅能以只读方式访问。 |
 
 ### 资源组目录
 
@@ -63,9 +63,9 @@ resources
 
 | 目录类型    | 说明                                     | 资源文件                                     |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| element | 表示元素资源，以下每一类数据都采用相应的JSON文件来表征（目录下仅支持文件类型）。<br/>-&nbsp;boolean，布尔型。<br/>-&nbsp;color，颜色。<br/>-&nbsp;float，浮点型，范围是`-2^128到2^128`。<br/>-&nbsp;intarray，整型数组。<br/>-&nbsp;integer，整型，范围是`-2^31到2^31-1`。<br/>-&nbsp;plural，复数形式。<br/>-&nbsp;strarray，字符串数组。<br/>-&nbsp;string，字符串，单个字符串最大长度为65535字节，超长字符串建议转换为文本文件存放在rawfile目录下。若想在字符串中添加占位符并对其进行格式化，请参考[getStringSync](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10)接口。<!--Del--><br/>-&nbsp;pattern，样式（仅支持系统应用使用）。<!--DelEnd--><!--Del--><br/>-&nbsp;theme，主题（仅支持系统应用使用）。<!--DelEnd-->| element目录中的文件名称建议与下面的文件名保持一致。每个文件中只能包含同一类型的数据。<br/>-&nbsp;boolean.json<br/>-&nbsp;color.json<br/>-&nbsp;float.json<br/>-&nbsp;intarray.json<br/>-&nbsp;integer.json<br/>-&nbsp;plural.json<br/>-&nbsp;strarray.json<br/>-&nbsp;string.json<!--Del--><br/>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br/>-&nbsp;theme.json<!--DelEnd--> |
+| element | 表示元素资源，以下每一类数据都采用相应的JSON文件来表征（目录下仅支持文件类型）。<br/>-&nbsp;boolean，布尔型。<br/>-&nbsp;color，颜色。<br/>-&nbsp;float，浮点型，范围是`-2^128到2^128`。<br/>-&nbsp;intarray，整型数组。<br/>-&nbsp;integer，整型，范围是`-2^31到2^31-1`。<br/>-&nbsp;plural，复数形式。<br/>-&nbsp;strarray，字符串数组。<br/>-&nbsp;string，字符串，单个字符串最大长度为65535字节，超长字符串建议转换为文本文件存放在rawfile目录下。若想在字符串中添加占位符并对其进行格式化，请参考[getStringSync](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getstringsync)接口。<!--Del--><br/>-&nbsp;pattern，样式（仅支持系统应用使用）。<!--DelEnd--><!--Del--><br/>-&nbsp;theme，主题（仅支持系统应用使用）。<!--DelEnd-->| element目录中的文件名称建议与下面的文件名保持一致。每个文件中只能包含同一类型的数据。<br/>-&nbsp;boolean.json<br/>-&nbsp;color.json<br/>-&nbsp;float.json<br/>-&nbsp;intarray.json<br/>-&nbsp;integer.json<br/>-&nbsp;plural.json<br/>-&nbsp;strarray.json<br/>-&nbsp;string.json<!--Del--><br/>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br/>-&nbsp;theme.json<!--DelEnd--> |
 | media   | 表示媒体资源，包括图片、音频、视频等非文本格式的文件（目录下只支持文件类型）。<br/>图片和音视频的类型说明见表3和表4。              | 文件名可自定义，例如：icon.png。                     |
-| profile  | 表示自定义配置文件，其文件内容可通过包管理接口[bundleManager.getProfileByAbility](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)获取（目录下只支持json文件类型）。       | 文件名可自定义，例如：test_profile.json。           |
+| profile  | 表示自定义配置文件，其文件内容可通过包管理接口[bundleManager.getProfileByAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getprofilebyability-f.md#getprofilebyability)获取（目录下只支持json文件类型）。       | 文件名可自定义，例如：test_profile.json。           |
 
 **媒体资源类型说明**
 
@@ -342,7 +342,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
   Text($r('app.plural.eat_apple', 2, 2)).id('app_plural_resource')
   ```
 
-**方式二：** 通过[资源管理](../reference/apis-localization-kit/js-apis-resource-manager.md)接口访问资源。此方法提供的API更为丰富，适用于构建更加复杂的应用逻辑，比如图像效果处理。
+**方式二：** 通过[资源管理](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)接口访问资源。此方法提供的API更为丰富，适用于构建更加复杂的应用逻辑，比如图像效果处理。
 
 获取本模块上下文的resourceManager对象后，调用资源管理接口，通过资源ID值或资源名称访问各类资源，如通过`getContext().resourceManager.getStringByNameSync('test')`可获取字符串资源；通过`getContext().resourceManager.getRawFd('rawfilepath')`可获取rawfile文件所在HAP包的descriptor信息，再使用其中的{fd, offset, length}可访问rawfile文件。
 
@@ -356,7 +356,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 <!--Del-->
 **bundle不同，跨bundle访问（仅支持系统应用使用）**
 
-- 通过[createBundleContext(context, bundleName)](../reference/apis-ability-kit/js-apis-app-ability-application-sys.md#applicationcreatebundlecontext)接口创建对应HAP/HSP包的上下文，获取resourceManager对象后，调用不同[资源管理](../reference/apis-localization-kit/js-apis-resource-manager.md)接口通过资源ID值或资源名称访问各类资源。
+- 通过[createBundleContext(context, bundleName)](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-createbundlecontext-f-sys.md#createbundlecontext)接口创建对应HAP/HSP包的上下文，获取resourceManager对象后，调用不同[资源管理](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)接口通过资源ID值或资源名称访问各类资源。
 <!--DelEnd-->
 
 **bundle相同，跨module访问**
@@ -427,7 +427,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
 **方式二：** 通过createModuleContext访问跨HAP/HSP包资源。根据业务逻辑需要对资源文件数据进行处理，比如图片编解码、字符串拼接处理，适合少量数据的使用。
 
-通过[createModuleContext(context, moduleName)](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext)接口创建同应用中不同module的上下文，获取resourceManager对象后，调用不同[资源管理](../reference/apis-localization-kit/js-apis-resource-manager.md)接口，通过资源ID值或资源名称访问各类资源。
+通过[createModuleContext(context, moduleName)](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext)接口创建同应用中不同module的上下文，获取resourceManager对象后，调用不同[资源管理](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)接口，通过资源ID值或资源名称访问各类资源。
 
 **方式三：** HSP导出资源给其他模块使用。跨包访问HSP内资源时，推荐实现一个资源管理类，以封装对外导出的资源，其他模块无需感知HSP内部的资源名称。当HSP内部的资源名称发生变化时，其他模块不受影响。
 
@@ -534,9 +534,9 @@ Image($r('sys.media.ohos_app_icon'))
 
 | 接口名                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [getOverrideResourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md#getoverrideresourcemanager12)(configuration?: [Configuration](../reference/apis-localization-kit/js-apis-resource-manager.md#configuration)) : [ResourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md#resourcemanager) | 获取可以加载指定配置的资源的资源管理对象，使用同步方式返回。 |
-| [getOverrideConfiguration](../reference/apis-localization-kit/js-apis-resource-manager.md#getoverrideconfiguration12)() : [Configuration](../reference/apis-localization-kit/js-apis-resource-manager.md#configuration) | 获取指定的配置，使用同步方式返回。                             |
-| [updateOverrideConfiguration](../reference/apis-localization-kit/js-apis-resource-manager.md#updateoverrideconfiguration12)(configuration: [Configuration](../reference/apis-localization-kit/js-apis-resource-manager.md#configuration)) : void | 更新指定的配置。                                               |
+| [getOverrideResourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getoverrideresourcemanager)(configuration?: [Configuration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md#configuration)) : [ResourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#resourcemanager) | 获取可以加载指定配置的资源的资源管理对象，使用同步方式返回。 |
+| [getOverrideConfiguration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getoverrideconfiguration)() : [Configuration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md#configuration) | 获取指定的配置，使用同步方式返回。                             |
+| [updateOverrideConfiguration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#updateoverrideconfiguration)(configuration: [Configuration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md#configuration)) : void | 更新指定的配置。                                               |
 
 **示例**
 
@@ -656,7 +656,7 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
 ### 动态overlay使用方式
 
 1. 对应的overlay资源包需要放在对应应用安装路径下。如应用`com.example.overlay`的安装路径为`data/app/el1/bundle/public/com.example.overlay/`。
-2. 应用通过[addResource](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10)，实现资源覆盖；通过[removeResource](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10)，实现overlay删除。overlay资源路径需经过元能力的getContext().bundleCodeDir获取此应用对应的沙箱根目录，由应用的沙箱根目录与overlay资源包名称拼接而成。如：`let path = getContext().bundleCodeDir + "overlay资源包名称"`，其对应沙箱路径为`/data/storage/el1/bundle/overlay资源包名称`。
+2. 应用通过[addResource](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#addresource)，实现资源覆盖；通过[removeResource](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#removeresource)，实现overlay删除。overlay资源路径需经过元能力的getContext().bundleCodeDir获取此应用对应的沙箱根目录，由应用的沙箱根目录与overlay资源包名称拼接而成。如：`let path = getContext().bundleCodeDir + "overlay资源包名称"`，其对应沙箱路径为`/data/storage/el1/bundle/overlay资源包名称`。
 
 > **说明：**
 >
@@ -666,7 +666,7 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
 
 ### 静态overlay配置方式
 
-该功能默认使能，使能及去使能请参考[@ohos.bundle.overlay (overlay特征模块)](../reference/apis-ability-kit/js-apis-overlay.md)。
+该功能默认使能，使能及去使能请参考[@ohos.bundle.overlay (overlay特征模块)](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundle-overlay.md)。
 
 包内overlay资源包中的配置文件app.json5中支持的字段：
 ```json

@@ -79,7 +79,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
    import { abilityAccessCtrl } from '@kit.AbilityKit';
    ```
 
-3. 分布式数据同步权限的授权方式为user_grant，因此需要调用[requestPermissionsFromUser()](../../application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)接口，以动态弹窗的方式向用户申请授权。
+3. 分布式数据同步权限的授权方式为user_grant，因此需要调用[requestPermissionsFromUser()](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口，以动态弹窗的方式向用户申请授权。
 
    <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -106,7 +106,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void;
 
-发现周边同局域网或者开启蓝牙的设备。详细信息参见：[startDiscovering](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)。
+发现周边同局域网或者开启蓝牙的设备。详细信息参见：[startDiscovering](../reference/apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)。
 
 
 ### 开发步骤
@@ -225,7 +225,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void;
 
-设备绑定。详细信息参见：[bindTarget](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#bindtarget)。
+设备绑定。详细信息参见：[bindTarget](../reference/apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#bindtarget)。
 
 ### 开发步骤
 
@@ -285,7 +285,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 
 getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
-设备信息查询。详细信息参见：[getAvailableDeviceListSync](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)。
+设备信息查询。详细信息参见：[getAvailableDeviceListSync](../reference/apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)。
 
 ### 开发步骤
 
@@ -330,7 +330,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void;
 
-设备上下线监听。详细信息参见：[on('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)。
+设备上下线监听。详细信息参见：[on('deviceStateChange')](../reference/apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)。
 
 ### 开发步骤
 

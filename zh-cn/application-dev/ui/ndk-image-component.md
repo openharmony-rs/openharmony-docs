@@ -11,11 +11,11 @@
 ## 约束与限制
 
 1. **线程安全**：所有UI相关接口必须在主线程调用，多线程操作可能导致应用崩溃。
-2. **组件挂载**：组件创建后需要通过[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)添加到父节点才能显示。
+2. **组件挂载**：组件创建后需要通过[addChild](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)添加到父节点才能显示。
 3. **图片路径**：
    - 本地图片需使用完整路径或相对路径。
    - 网络图片需申请`ohos.permission.INTERNET`权限。
-4. **资源释放**：释放组件时需要调用[disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)来避免内存泄漏。
+4. **资源释放**：释放组件时需要调用[disposeNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)来避免内存泄漏。
 5. **同步加载**：不建议在图片加载较长时间时使用同步加载，会导致页面无法响应。
 
 ## 前置条件
@@ -103,7 +103,7 @@
 
 ### 创建并初始化Image组件
 
-在使用Image组件之前，需要先获取nativeNodeApi，然后使用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Image组件。
+在使用Image组件之前，需要先获取nativeNodeApi，然后使用[createNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Image组件。
 
 <!-- @[image_getnode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -125,7 +125,7 @@ ArkUI_NodeHandle image1 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
 
 ### 设置图片源
 
-Image组件支持通过字符串路径或[DrawableDescriptor](../reference/apis-arkui/js-apis-arkui-drawableDescriptor.md)对象设置图片源。
+Image组件支持通过字符串路径或[DrawableDescriptor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor.md)对象设置图片源。
 
 <!-- @[image_source_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -139,7 +139,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_SRC, &srcItem);
 
 ### Image属性
 
-Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的枚举定义。
+Image独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚举定义。
 
 | 属性名 | 说明 | 起始版本 |
 |-------|--------|---------|
@@ -172,7 +172,7 @@ Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 
 ### 设置图片缩放类型
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_OBJECT_FIT属性设置图片在容器中的缩放方式。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_OBJECT_FIT属性设置图片在容器中的缩放方式。
 
 <!-- @[image_zoom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -185,7 +185,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 
 ### 设置图片插值效果
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_INTERPOLATION属性设置图片插值效果。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_INTERPOLATION属性设置图片插值效果。
 
 <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -198,7 +198,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem
 
 ### 设置图片重复样式
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_OBJECT_REPEAT属性设置图片重复样式。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_OBJECT_REPEAT属性设置图片重复样式。
 
 <!-- @[image_repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -211,7 +211,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 
 ### 设置图片填充颜色
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_FILL_COLOR属性设置SVG图片填充颜色。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_FILL_COLOR属性设置SVG图片填充颜色。
 
 <!-- @[image_fillcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -224,7 +224,7 @@ nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
 
 ### 设置占位图
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_ALT属性设置占位图。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_ALT属性设置占位图。
 
 <!-- @[image_alt_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -236,7 +236,7 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 
 ### 设置图片解码尺寸
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_SOURCE_SIZE属性设置图片解码尺寸。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_SOURCE_SIZE属性设置图片解码尺寸。
 
 <!-- @[image_decode_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -249,7 +249,7 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
 
 ### 设置图片渲染模式
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_RENDER_MODE属性设置图片渲染模式。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_RENDER_MODE属性设置图片渲染模式。
 
 <!-- @[image_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -262,7 +262,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_RENDER_MODE, &renderModeItem);
 
 ### 设置同步加载
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_SYNC_LOAD属性设置图片的同步或异步加载方式。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_SYNC_LOAD属性设置图片的同步或异步加载方式。
 
 <!-- @[image_load_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -275,7 +275,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_SYNC_LOAD, &syncLoadItem);
 
 ### 设置图片颜色滤镜
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_COLOR_FILTER属性设置图片颜色滤镜。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_COLOR_FILTER属性设置图片颜色滤镜。
 
 <!-- @[image_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -311,7 +311,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_COLOR_FILTER, &colorFilterItem);
 
 ### 设置图片显示方向
 
-通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_ORIENTATION属性设置图片显示方向。
+通过ArkUI_NodeAttributeType中的NODE_IMAGE_ORIENTATION属性设置图片显示方向。
 
 <!-- @[image_orientation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -324,11 +324,11 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_ORIENTATION, &orientationItem);
 
 ## 监听图片事件
 
-通过注册全局事件接收器接收所有节点事件，并在具体节点上通过[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)中的NODE_IMAGE_ON_COMPLETE，NODE_IMAGE_ON_ERROR，NODE_IMAGE_ON_SVG_PLAY_FINISH和NODE_IMAGE_ON_DOWNLOAD_PROGRESS接口来注册特定事件来实现图片事件的监听。
+通过注册全局事件接收器接收所有节点事件，并在具体节点上通过ArkUI_NodeEventType中的NODE_IMAGE_ON_COMPLETE，NODE_IMAGE_ON_ERROR，NODE_IMAGE_ON_SVG_PLAY_FINISH和NODE_IMAGE_ON_DOWNLOAD_PROGRESS接口来注册特定事件来实现图片事件的监听。
 
 ### 注册全局事件接收器
 
-在处理图片事件之前，需要先通过[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)接口注册全局事件接收器。
+在处理图片事件之前，需要先通过[registerNodeEventReceiver](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)接口注册全局事件接收器。
 
 <!-- @[event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -363,7 +363,7 @@ nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
 
 ### 监听图片加载完成事件
 
-在图片节点上使用[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册加载NODE_IMAGE_ON_COMPLETE完成事件，当图片加载成功后触发该事件，事件回调中可获取图片尺寸信息。
+在图片节点上使用[registerNodeEvent](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册加载NODE_IMAGE_ON_COMPLETE完成事件，当图片加载成功后触发该事件，事件回调中可获取图片尺寸信息。
 
 <!-- @[image_load_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -400,7 +400,7 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_COMPLETE, 0, nullptr);
 
 ### 监听图片加载失败事件
 
-在图片节点上使用[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册加载NODE_IMAGE_ON_ERROR失败事件，当图片加载失败时触发该事件，事件回调中可获取错误码信息。
+在图片节点上使用[registerNodeEvent](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册加载NODE_IMAGE_ON_ERROR失败事件，当图片加载失败时触发该事件，事件回调中可获取错误码信息。
 
 <!-- @[image_load_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
@@ -428,7 +428,7 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_ERROR, 0, nullptr);
 ```
 ### 监听SVG播放完成事件
 
-在图片节点上使用[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册NODE_IMAGE_ON_SVG_PLAY_FINISH播放完成事件，当SVG动画播放结束时触发该事件。
+在图片节点上使用[registerNodeEvent](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册NODE_IMAGE_ON_SVG_PLAY_FINISH播放完成事件，当SVG动画播放结束时触发该事件。
 
 <!-- @[image_svg_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 

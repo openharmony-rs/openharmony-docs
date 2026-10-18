@@ -14,7 +14,7 @@ ArkUI开发框架在NDK接口提供了瀑布流容器组件，通过瀑布流自
 
 ## 使用懒加载
 ### NodeAdapter介绍 
-NDK中提供了NodeAdapter对象替代ArkTS侧的[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)功能，用于按需生成子组件。详情请参阅[NodeAdapter介绍](../ui/ndk-loading-long-list.md#nodeadapter介绍)。
+NDK中提供了NodeAdapter对象替代ArkTS侧的LazyForEach功能，用于按需生成子组件。详情请参阅[NodeAdapter介绍](../ui/ndk-loading-long-list.md#nodeadapter介绍)。
 
 ### 实现懒加载适配器
 
@@ -207,19 +207,19 @@ private:
 
 ### 更新和复用FlowItem
 
-通过NodeAdapter复用FlowItem时，建议保持FlowItem及其直属子组件的节点结构稳定，并通过[setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)更新已有子组件的内容或样式。上述示例在复用FlowItem时，仅更新已有Text组件的文本内容。
+通过NodeAdapter复用FlowItem时，建议保持FlowItem及其直属子组件的节点结构稳定，并通过[setAttribute](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)更新已有子组件的内容或样式。上述示例在复用FlowItem时，仅更新已有Text组件的文本内容。
 
 > **说明：**
 >
-> 对于已经显示且设置固定尺寸的FlowItem，不建议在WaterFlow滚动过程中先调用[removeChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)移除其直属子组件，再调用[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)挂载新的直属子组件。该写法可能导致新挂载的子组件未及时参与布局，造成显示异常。
+> 对于已经显示且设置固定尺寸的FlowItem，不建议在WaterFlow滚动过程中先调用[removeChild](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)移除其直属子组件，再调用[addChild](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)挂载新的直属子组件。该写法可能导致新挂载的子组件未及时参与布局，造成显示异常。
 >
 > 需要更新复杂内容时，建议采用以下方式之一：
 >
-> - 保持FlowItem的直属容器（例如[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)或[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)）不变，仅更新容器内的内容。
-> - 创建新的FlowItem及其完整子树，并通过[OH_ArkUI_NodeAdapter_ReloadItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_reloaditem)通知NodeAdapter更新对应数据项。
+> - 保持FlowItem的直属容器（例如[Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md)或[Column](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-column-t.md)）不变，仅更新容器内的内容。
+> - 创建新的FlowItem及其完整子树，并通过OH_ArkUI_NodeAdapter_ReloadItem通知NodeAdapter更新对应数据项。
 
 ## 创建分组
-使用WaterflowSection类管理[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建[ArkUI_WaterFlowSectionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)对象，在析构函数中将其销毁。
+使用WaterflowSection类管理[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建[ArkUI_WaterFlowSectionOption](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)对象，在析构函数中将其销毁。
 
 
 <!-- @[waterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->

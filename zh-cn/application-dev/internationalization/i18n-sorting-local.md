@@ -13,4 +13,4 @@
 
 ## 开发步骤
 
-多语言列表按照当地用户习惯进行排序，具体可参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator)。
+多语言列表按照当地用户习惯进行排序，具体可参考Intl.Collator。

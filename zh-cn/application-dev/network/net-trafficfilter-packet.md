@@ -75,7 +75,7 @@ libnet_trafficfilter.so
 
 1. 在源文件中编写调用该API的代码，实现报文控制器的创建。
 
-   使用[OH_TrafficFilter_CreatePacketController](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_createpacketcontroller)接口创建报文控制器。其中`group_id`用于标识控制器的分组，`priority`控制规则优先级，`packetCopyMode`与 `packetCopyLen`用于配置NFQueue（Netfilter Queue，内核与用户态交互报文拷贝的队列机制）报文拷贝模式与长度，`nfqueueMaxlen`与`nfqueueFlags`用于设置队列长度与标志位。
+   使用OH_TrafficFilter_CreatePacketController接口创建报文控制器。其中`group_id`用于标识控制器的分组，`priority`控制规则优先级，`packetCopyMode`与 `packetCopyLen`用于配置NFQueue（Netfilter Queue，内核与用户态交互报文拷贝的队列机制）报文拷贝模式与长度，`nfqueueMaxlen`与`nfqueueFlags`用于设置队列长度与标志位。
 
    <!-- @[create_packet_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -207,7 +207,7 @@ libnet_trafficfilter.so
 
 2. 添加报文过滤规则。规则中可配置源/目的IP、端口、接口、UID、MAC、TCP标志位以及连接跟踪状态。
 
-   使用[OH_TrafficFilter_AddPacketRule](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)接口向指定控制器添加规则。`OH_TrafficFilter_FilterRule`支持以下匹配条件：
+   使用OH_TrafficFilter_AddPacketRule接口向指定控制器添加规则。`OH_TrafficFilter_FilterRule`支持以下匹配条件：
    - **IP匹配**：不限制、单个、CIDR（无类别域间路由，支持如`192.168.1.0/24`的网络前缀）、范围（192.168.1.0~192.168.1.10）、多个（192.168.1.0,192.168.1.100，...）。
    - **端口匹配**：不限制、单个、范围（如端口5050~8080）、多个（5050,5051,8081，...）。
    - **接口匹配**：按入接口或出接口名称匹配，支持前缀匹配和取反。
@@ -276,7 +276,7 @@ libnet_trafficfilter.so
 
 3. 注册报文回调，在回调中根据报文信息返回放行或丢弃决策。
 
-   使用[OH_TrafficFilter_RegisterPacketCallback](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_registerpacketcallback) 接口注册回调函数。回调运行在非JS线程，如需将报文信息展示到ArkTS层，需通过`napi_threadsafe_function` 创建线程安全函数，在回调中调用`napi_call_threadsafe_function`将数据转发到ArkTS线程。
+   使用OH_TrafficFilter_RegisterPacketCallback 接口注册回调函数。回调运行在非JS线程，如需将报文信息展示到ArkTS层，需通过`napi_threadsafe_function` 创建线程安全函数，在回调中调用`napi_call_threadsafe_function`将数据转发到ArkTS线程。
 
    <!-- @[register_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -339,9 +339,9 @@ libnet_trafficfilter.so
 4. 注销回调、清除规则并销毁报文控制器。
 
    测试完成后，建议按**注销回调 → 清除规则 → 销毁控制器**的顺序释放资源，避免清理过程中仍有报文进入回调。
-   - 使用[OH_TrafficFilter_UnregisterPacketCallback](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_unregisterpacketcallback)注销回调。
-   - 使用[OH_TrafficFilter_ClearPacketRule](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_clearpacketrule)清除该控制器上的所有规则。
-   - 使用[OH_TrafficFilter_DestroyPacketController](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_destroypacketcontroller)销毁控制器并释放资源。
+   - 使用OH_TrafficFilter_UnregisterPacketCallback注销回调。
+   - 使用OH_TrafficFilter_ClearPacketRule清除该控制器上的所有规则。
+   - 使用OH_TrafficFilter_DestroyPacketController销毁控制器并释放资源。
 
    <!-- @[unregister_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
    

@@ -70,7 +70,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 | slb | 语义标签（Semantic Label） | 0（未指定）或1（人脸） |  否   | 该参数仅供开发者区分ROI区域类型，不影响编码行为。  |
 
 - dqp为负表示ROI区域编码画质优于非ROI区域，绝对值越大质量差异越大。
-- slb取值对应[OH_VideoMetadataRoiSemanticLabel](../../reference/apis-avcodec-kit/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)枚举：`OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER`（0）表示未指定区域类型，`OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE`（1）表示人脸区域。
+- slb取值对应OH_VideoMetadataRoiSemanticLabel枚举：`OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER`（0）表示未指定区域类型，`OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE`（1）表示人脸区域。
 - 多个ROI参数之间通过";"连接，多ROI配置如`100,50-300,200=dqp:-6,slb:1;400,30-600,200=dqp:-3`。
 
 **数量和面积限制：**
@@ -111,7 +111,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 
 Surface模式和Buffer模式共用相同的ROI信息获取与组装流程，区别在于如何将ROI配置到编码器。
 
-当相机输出视频帧时，如果检测到ROI区域（如人脸），会将ROI信息写入帧的NativeBuffer元数据。开发者可直接从每帧中提取，无需额外的回调接口和时间戳匹配，具体参考[OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。
+当相机输出视频帧时，如果检测到ROI区域（如人脸），会将ROI信息写入帧的NativeBuffer元数据。开发者可直接从每帧中提取，无需额外的回调接口和时间戳匹配，具体参考OH_NativeBuffer_MetadataKey。
 
 Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开发者在帧处理线程中从每帧的NativeBuffer元数据提取ROI信息并组装成配置字符串，随后将ROI字符串写入编码器输入帧的NativeBuffer元数据，实现ROI随帧下发到编码器（如图2所示）。
 

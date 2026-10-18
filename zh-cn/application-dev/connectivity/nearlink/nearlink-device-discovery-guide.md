@@ -16,7 +16,7 @@
 
 ### 接口说明
 
-发送星闪广播，完整的API说明以及示例代码请参考：[@ohos.nearlink.advertising (星闪广播能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md)。
+发送星闪广播，完整的API说明以及示例代码请参考：[@ohos.nearlink.advertising (星闪广播能力)](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-nearlink-advertising.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -144,7 +144,7 @@
 
 ### 接口说明
 
-发起星闪扫描，完整的API说明以及示例代码请参考：[@ohos.nearlink.scan (星闪扫描能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md)。
+发起星闪扫描，完整的API说明以及示例代码请参考：[@ohos.nearlink.scan (星闪扫描能力)](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-nearlink-scan.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -166,7 +166,7 @@
     import { util } from '@kit.ArkTS';
     ```
 
-2. 订阅扫描结果。为避免重复订阅，先调用[offDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanoffdevicefound)取消已有订阅，再调用[onDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound)订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
+2. 订阅扫描结果。为避免重复订阅，先调用[offDeviceFound()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-scan-offdevicefound-f.md#offdevicefound)取消已有订阅，再调用[onDeviceFound()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-scan-ondevicefound-f.md#ondevicefound)订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
 
     <!-- @[scan_on_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     

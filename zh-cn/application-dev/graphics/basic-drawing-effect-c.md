@@ -21,7 +21,7 @@
 
 ### 接口说明
 
-使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing_brush](../reference/apis-arkgraphics2d/capi-drawing-brush-h.md)和[drawing_canvas](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing_brush](../reference/apis-arkgraphics2d/c-apis/capi-drawing-brush-h.md)和[drawing_canvas](../reference/apis-arkgraphics2d/c-apis/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -104,7 +104,7 @@
 
 ### 接口说明
 
-使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing_pen](../reference/apis-arkgraphics2d/capi-drawing-pen-h.md)和[drawing_canvas](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing_pen](../reference/apis-arkgraphics2d/c-apis/capi-drawing-pen-h.md)和[drawing_canvas](../reference/apis-arkgraphics2d/c-apis/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |

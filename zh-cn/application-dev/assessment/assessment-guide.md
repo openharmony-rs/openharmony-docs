@@ -56,16 +56,16 @@
 
 ## 接口说明
 
-评估管理关键接口如下表所示，具体API说明详见[@ohos.customization.assessment (评估管理)](../reference/apis-assessment-kit/js-apis-customization-assessment.md)。
+评估管理关键接口如下表所示，具体API说明详见[@ohos.customization.assessment (评估管理)](../reference/apis-assessment-kit/errorcode-assessment.md)。
 
 **表2** 评估管理接口功能介绍
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [begin(context, config, callback)](../reference/apis-assessment-kit/js-apis-customization-assessment.md#assessmentbegin): void | 开始评估，弹出确认弹窗，用户确认后进入评估模式。 |
-| [end(context)](../reference/apis-assessment-kit/js-apis-customization-assessment.md#assessmentend): void | 结束评估，解除评估模式下的系统能力限制。 |
-| [isActive()](../reference/apis-assessment-kit/js-apis-customization-assessment.md#assessmentisactive): boolean | 查询当前是否处于评估状态。 |
-| [getConfiguration()](../reference/apis-assessment-kit/js-apis-customization-assessment.md#assessmentgetconfiguration): AssessmentConfig | 获取当前评估配置。 |
+| begin(context, config, callback): void | 开始评估，弹出确认弹窗，用户确认后进入评估模式。 |
+| end(context): void | 结束评估，解除评估模式下的系统能力限制。 |
+| isActive(): boolean | 查询当前是否处于评估状态。 |
+| getConfiguration(): AssessmentConfig | 获取当前评估配置。 |
 
 ## 开发步骤
 

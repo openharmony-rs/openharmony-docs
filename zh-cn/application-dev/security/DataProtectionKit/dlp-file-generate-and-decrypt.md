@@ -23,9 +23,9 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     2.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    2.2 需要获取明文文件和加密文件的文件描述符。设置DLP文件通用策略[DLPProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpproperty21)和企业定制策略[CustomProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#customproperty21)。
+    2.2 需要获取明文文件和加密文件的文件描述符。设置DLP文件通用策略[DLPProperty](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlpfile-i-sys.md#dlpproperty)和企业定制策略[CustomProperty](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-customproperty-i.md#customproperty)。
 
-    2.3 调用[dlpPermission.generateDlpFileForEnterprise](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongeneratedlpfileforenterprise21)将明文文件加密生成企业账号DLP文件。
+    2.3 调用[dlpPermission.generateDlpFileForEnterprise](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f.md#generatedlpfileforenterprise)将明文文件加密生成企业账号DLP文件。
 
     <!-- @[dlp_generateDlpFileForEnterprise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -80,7 +80,7 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     3.2 需要获取明文文件和加密文件的文件描述符。
 
-    3.3 调用[dlpPermission.decryptDlpFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiondecryptdlpfile21)将明文文件加密生成企业账号DLP文件。
+    3.3 调用[dlpPermission.decryptDlpFile](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-decryptdlpfile-f.md#decryptdlpfile)将明文文件加密生成企业账号DLP文件。
 
     <!-- @[dlp_decryptDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     

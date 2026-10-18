@@ -17,19 +17,19 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 
 ### HMAC（一次性传入）
 
-1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac)，指定摘要算法SHA256，生成消息认证码实例（Mac）。
+1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)，指定摘要算法SHA256，生成消息认证码实例（Mac）。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
+2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
 
    详细开发指导请参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 
-3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-6)，指定共享对称密钥（SymKey），初始化Mac对象。
+3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)，指定共享对称密钥（SymKey），初始化Mac对象。
 
-4. 调用[Mac.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-8)，传入自定义消息，进行消息认证码计算。单次update长度没有限制。
+4. 调用[Mac.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)，传入自定义消息，进行消息认证码计算。单次update长度没有限制。
 
-5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-2)，获取Mac计算结果。
+5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-2)，获取Mac计算结果。
 
-6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
+6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-mac-i.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
 
 - 以使用await方式一次性传入数据，获取消息认证码计算结果为例：
   <!-- @[message_authentication_code_calculated_as_fragmented_hmac_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets) -->
@@ -100,19 +100,19 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 
 ### 分段HMAC
 
-1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac)，指定摘要算法SHA256，生成消息认证码实例（Mac）。
+1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)，指定摘要算法SHA256，生成消息认证码实例（Mac）。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
+2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
 
    生成对称密钥的开发指导，请参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 
-3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-7)，指定共享对称密钥（SymKey），初始化Mac对象。
+3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)，指定共享对称密钥（SymKey），初始化Mac对象。
 
-4. 传入自定义消息，将一次传入数据量设置为20字节，多次调用[Mac.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-9)，进行消息认证码计算。
+4. 传入自定义消息，将一次传入数据量设置为20字节，多次调用[Mac.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)，进行消息认证码计算。
 
-5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-3)，获取Mac计算结果。
+5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-3)，获取Mac计算结果。
 
-6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
+6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-mac-i.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
 
 - 使用await方式分段传入数据，获取消息认证码计算结果。
 
@@ -197,19 +197,19 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 
 
 ### HMAC（HmacSpec作为参数传入）
-1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac)，指定消息认证码算法HMAC，指定摘要算法SHA256，生成消息认证码实例（Mac）。
+1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)，指定消息认证码算法HMAC，指定摘要算法SHA256，生成消息认证码实例（Mac）。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
+2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
 
    参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 
-3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-6)，指定共享对称密钥（SymKey），初始化Mac对象。
+3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)，指定共享对称密钥（SymKey），初始化Mac对象。
 
-4. 调用[Mac.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-8)，传入自定义消息，进行消息认证码计算。单次update长度没有限制。
+4. 调用[Mac.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)，传入自定义消息，进行消息认证码计算。单次update长度没有限制。
 
-5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-2)，获取Mac计算结果。
+5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-2)，获取Mac计算结果。
 
-6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
+6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-mac-i.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
 
 - 以使用await方式一次性传入数据，获取消息认证码计算结果为例：
   <!-- @[hmac_spec_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Spec.ets) -->

@@ -19,7 +19,7 @@
 
 ## SSAP服务端开发
 
-SSAP服务端是服务的承载方：创建服务并声明属性，接收和响应客户端的属性读写请求，并可通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)将属性变化推送给已开启通知的客户端。
+SSAP服务端是服务的承载方：创建服务并声明属性，接收和响应客户端的属性读写请求，并可通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-server-i.md#notifypropertychanged)将属性变化推送给已开启通知的客户端。
 
 > **说明：**
 >
@@ -27,7 +27,7 @@ SSAP服务端是服务的承载方：创建服务并声明属性，接收和响�
 
 ### 接口说明
 
-SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-nearlink-ssap.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -73,7 +73,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-4. 添加服务端支持的服务。服务与属性使用自定义UUID（禁止使用标准UUID），参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)；支持通知的属性需声明客户端属性值配置描述符，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。若需客户端通过扫描发现服务端并建立连接，服务端需调用[advertising.startAdvertising()](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md#advertisingstartadvertising)主动发起广播，参见[发现星闪设备 > 发起星闪广播](nearlink-device-discovery-guide.md#发起星闪广播)。
+4. 添加服务端支持的服务。服务与属性使用自定义UUID（禁止使用标准UUID），参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)；支持通知的属性需声明客户端属性值配置描述符，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。若需客户端通过扫描发现服务端并建立连接，服务端需调用[advertising.startAdvertising()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-advertising-startadvertising-f.md#startadvertising)主动发起广播，参见[发现星闪设备 > 发起星闪广播](nearlink-device-discovery-guide.md#发起星闪广播)。
 
     <!-- @[ssap_server_add_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
     
@@ -112,7 +112,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-5. 订阅连接状态变化事件，并在回调中保存客户端地址，供后续通知使用。不再需要订阅事件时，调用[offConnectionStateChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offconnectionstatechange)取消订阅。
+5. 订阅连接状态变化事件，并在回调中保存客户端地址，供后续通知使用。不再需要订阅事件时，调用[offConnectionStateChange()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#offconnectionstatechange)取消订阅。
 
     <!-- @[ssap_server_on_conn_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
     
@@ -145,7 +145,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用[offPropertyWrite()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertywrite)取消订阅。
+7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用[offPropertyWrite()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-server-i.md#offpropertywrite)取消订阅。
 
     <!-- @[ssap_server_on_property_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
     
@@ -191,7 +191,7 @@ SSAP客户端是服务的使用方：通过扫描发现服务端设备并发起�
 
 ### 接口说明
 
-SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-nearlink-ssap.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -254,7 +254,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-5. 订阅属性变化事件。不再需要订阅事件时，调用[offConnectionStateChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offconnectionstatechange)、[offPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertychange)取消订阅。
+5. 订阅属性变化事件。不再需要订阅事件时，调用[offConnectionStateChange()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#offconnectionstatechange)、[offPropertyChange()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#offpropertychange)取消订阅。
 
     <!-- @[ssap_client_on_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
     
@@ -299,7 +299,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-8. 启用属性变化通知。调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用指定属性的通知；服务端对应属性需声明通知（NOTIFY）操作和客户端属性值配置描述符，否则客户端将收不到属性变化通知。完整条件参见[星闪常见问题 > 客户端如何接收属性变化通知](nearlink-faq-guide.md#客户端如何接收属性变化通知)。
+8. 启用属性变化通知。调用[setPropertyNotification()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#setpropertynotification)启用指定属性的通知；服务端对应属性需声明通知（NOTIFY）操作和客户端属性值配置描述符，否则客户端将收不到属性变化通知。完整条件参见[星闪常见问题 > 客户端如何接收属性变化通知](nearlink-faq-guide.md#客户端如何接收属性变化通知)。
 
     <!-- @[ssap_client_set_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
     
@@ -313,7 +313,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-9. 读取指定服务的属性值。property为待读取的属性，可从[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)返回的服务列表中获得。服务与属性UUID必须为自定义UUID，且与服务端声明的UUID一致，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。
+9. 读取指定服务的属性值。property为待读取的属性，可从[getServices()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#getservices)返回的服务列表中获得。服务与属性UUID必须为自定义UUID，且与服务端声明的UUID一致，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。
 
     <!-- @[ssap_client_read_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
     

@@ -30,13 +30,13 @@
 
 - 模态窗
 
-- 系统窗口：包括音量条、壁纸、通知栏、导航栏窗口等。系统窗口类型具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
+- 系统窗口：包括音量条、壁纸、通知栏、导航栏窗口等。系统窗口类型具体可见[WindowType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-configuration-i.md#windowtype)。
 
 此处以创建“可设置窗口层级的系统窗口”为例，设置其显示/隐藏过程中的组合动画效果。
 
 1. 获取窗口属性转换控制器。
 
-   通过[getTransitionController()](../reference/apis-arkui/js-apis-window-sys.md#gettransitioncontroller9)接口获取控制器。后续的动画操作都由属性控制器来完成。
+   通过[getTransitionController()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i-sys.md#gettransitioncontroller)接口获取控制器。后续的动画操作都由属性控制器来完成。
 
    <!-- @[window_animation_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
    
@@ -68,7 +68,7 @@
 
 2. 配置窗口显示/隐藏时的动画。
 
-   通过动画函数[animateTo()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，通过[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，通过[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，通过[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
+   通过动画函数[animateTo()](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-transitionanimation-i.md#opacity)设置窗口不透明度，通过[scale()](../reference/apis-arkui/arkts-apis/arkts-arkui-pipwindow-pipwindowsize-i.md#scale)设置缩放参数，通过[rotate()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i-sys.md#rotate)设置旋转参数，通过[translate()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i-sys.md#translate)设置平移参数。
 
    <!-- @[window_animation_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
    
@@ -129,7 +129,7 @@
 
 3. 设置属性转换完成。
 
-   通过[completeTransition()](../reference/apis-arkui/js-apis-window-sys.md#completetransition9)传入true来设置属性转换的最终完成状态。如果传入false，则表示撤销本次转换。
+   通过[completeTransition()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-transitioncontext-i-sys.md#completetransition)传入true来设置属性转换的最终完成状态。如果传入false，则表示撤销本次转换。
 
    <!-- @[window_animation_complete_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
    
@@ -166,7 +166,7 @@
 
 4. 显示或隐藏当前窗口，过程中播放动画。
 
-   调用[showWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#showwithanimation9)接口，来显示窗口并播放动画。调用[hideWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#hidewithanimation9)接口，来隐藏窗口并播放动画。
+   调用[showWithAnimation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i-sys.md#showwithanimation)接口，来显示窗口并播放动画。调用[hideWithAnimation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i-sys.md#hidewithanimation)接口，来隐藏窗口并播放动画。
 
    <!-- @[window_animation_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
    
@@ -198,9 +198,9 @@
 
 ## 设置应用内UIAbility组件启动淡入淡出动效
 
-在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起同一应用内其他UIAbility组件时，可以通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)中[WindowCreateParams](../reference/apis-arkui/arkts-apis-window-i.md#windowcreateparams20)配置窗口的启动动画。
+在使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)接口拉起同一应用内其他UIAbility组件时，可以通过[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions.md)中[WindowCreateParams](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowcreateparams-i-sys.md#windowcreateparams)配置窗口的启动动画。
 
-目前支持将窗口启动动画配置为淡入淡出动效[FADE_IN_OUT](../reference/apis-arkui/arkts-apis-window-e.md#animationtype20)。
+目前支持将窗口启动动画配置为淡入淡出动效[FADE_IN_OUT](../reference/apis-arkui/arkts-apis/arkts-arkui-window-animationtype-e-sys.md#animationtype)。
 
 示例代码如下：
 
@@ -265,7 +265,7 @@ struct Index {
 
 ## 设置主窗口销毁时的转场动画
 
-在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，应用使用[getWindowTransitionAnimation()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowtransitionanimation20)获取主窗口转场的动画配置，当前转场动画配置不符合业务诉求时，可以使用[setWindowTransitionAnimation()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtransitionanimation20)接口配置窗口转场时的动画，当前仅支持配置窗口销毁时的转场动画。
+在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，应用使用[getWindowTransitionAnimation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowtransitionanimation)获取主窗口转场的动画配置，当前转场动画配置不符合业务诉求时，可以使用[setWindowTransitionAnimation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowtransitionanimation)接口配置窗口转场时的动画，当前仅支持配置窗口销毁时的转场动画。
 
 示例代码如下：
 

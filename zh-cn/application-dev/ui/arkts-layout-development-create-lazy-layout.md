@@ -7,9 +7,9 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)四种滚动类组件。其中，Scroll不支持懒加载，List、Grid、WaterFlow虽支持配合[LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md)实现懒加载，但各自仅支持特定的布局模式。在实际业务场景中，一个滚动页面往往需要混合使用多种布局模式。例如，电商首页可能同时包含多列网格分类入口、瀑布流商品卡片、线性列表推荐；社交应用信息流可能同时包含文本列表、九宫格图片、视频卡片。此时单一滚动组件无法灵活适配，存在一定局限性。
+ArkUI提供了[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)四种滚动类组件。其中，Scroll不支持懒加载，List、Grid、WaterFlow虽支持配合[LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md)实现懒加载，但各自仅支持特定的布局模式。在实际业务场景中，一个滚动页面往往需要混合使用多种布局模式。例如，电商首页可能同时包含多列网格分类入口、瀑布流商品卡片、线性列表推荐；社交应用信息流可能同时包含文本列表、九宫格图片、视频卡片。此时单一滚动组件无法灵活适配，存在一定局限性。
 
-懒加载布局容器是一类嵌套在可滚动父组件（Scroll、List、WaterFlow）内部，负责按需加载子组件的布局容器。这类容器本身不提供滚动能力，由父组件统一处理滚动。它仅创建和布局处于可滚动父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容，从而减少首帧渲染时间和内存开销。ArkUI提供了三种支持懒加载的布局容器组件：垂直线性布局[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)、垂直网格布局[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)、垂直瀑布流布局[LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md)。不同的懒加载布局容器提供不同的布局模式，开发者可以将多种类型的懒加载布局容器组合在同一个父组件中使用，灵活实现混合布局。
+懒加载布局容器是一类嵌套在可滚动父组件（Scroll、List、WaterFlow）内部，负责按需加载子组件的布局容器。这类容器本身不提供滚动能力，由父组件统一处理滚动。它仅创建和布局处于可滚动父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容，从而减少首帧渲染时间和内存开销。ArkUI提供了三种支持懒加载的布局容器组件：垂直线性布局LazyColumnLayout、垂直网格布局LazyVGridLayout、垂直瀑布流布局LazyVWaterFlowLayout。不同的懒加载布局容器提供不同的布局模式，开发者可以将多种类型的懒加载布局容器组合在同一个父组件中使用，灵活实现混合布局。
 
 从API版本19开始，支持LazyVGridLayout。从API版本26.0.0开始，支持LazyColumnLayout和LazyVWaterFlowLayout。
 
@@ -30,43 +30,43 @@ ArkUI提供了[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)�
 | 能力 | LazyVGridLayout | LazyVWaterFlowLayout | LazyColumnLayout |
 |------|-----------------|---------------------|-----------------|
 | API起始版本 | 19 | 26.0.0 | 26.0.0 |
-| 设置行间距 | 支持（[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#rowsgap)） | 支持（[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md#rowsgap)） | 支持（[space](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md#space)） |
-| 设置列间距（[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnsgap)） | 支持 | 支持 | 不支持 |
-| 设置列数（[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate)） | 支持 | 支持 | 不支持 |
-| 设置子组件水平对齐方式（[alignItems](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md#alignitems)） | 不支持 | 不支持 | 支持 |
-| 设置头部组件（[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
-| 设置尾部组件（[footer](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#footer)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
-| 设置吸附效果（[sticky](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#sticky)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
-| 监听可视区域子组件索引变化（[onVisibleIndexesChange](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#onvisibleindexeschange)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
+| 设置行间距 | 支持（[rowsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#rowsgap)） | 支持（[rowsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvwaterflowlayout-comp-lazywaterflowlayoutattribute-c.md#rowsgap)） | 支持（[space](../reference/apis-arkui/arkts-components/arkts-arkui-lazycolumnlayout-comp-attribute.md#space)） |
+| 设置列间距（[columnsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#columnsgap)） | 支持 | 支持 | 不支持 |
+| 设置列数（[columnsTemplate](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)） | 支持 | 支持 | 不支持 |
+| 设置子组件水平对齐方式（[alignItems](../reference/apis-arkui/arkts-components/arkts-arkui-lazycolumnlayout-comp-attribute.md#alignitems)） | 不支持 | 不支持 | 支持 |
+| 设置头部组件（[header](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#header)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
+| 设置尾部组件（[footer](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#footer)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
+| 设置吸附效果（[sticky](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#sticky)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
+| 监听可视区域子组件索引变化（[onVisibleIndexesChange](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#onvisibleindexeschange)） | 从API版本26.0.0开始支持 | 支持 | 支持 |
 | 嵌套懒加载布局容器 | 不支持 | 不支持 | 支持 |
 | 布局模式 | 垂直网格布局 | 垂直瀑布流布局 | 垂直线性布局 |
 | 示例图 | ![lazy-vgrid-layout.png](figures/lazy-vgrid-layout.png) | ![lazy-vwaterflow-layout.png](figures/lazy-vwaterflow-layout.png) | ![lazy-column-layout.png](figures/lazy-column-layout.png) |
 
 ## 约束与限制
 
-1. 三种懒加载布局容器的高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[size](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)中的height、[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)，以及[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height15)取[LayoutPolicy](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutpolicy15)值的场景。
+1. 三种懒加载布局容器的高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)、[size](../reference/apis-arkui/arkts-apis/arkts-arkui-componentutils-size-i.md#size)中的height、[constraintSize](../reference/apis-arkui/arkts-apis/arkts-arkui-securitycomponentmethod-c.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[layoutWeight](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#layoutweight)，以及[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)取[LayoutPolicy](../reference/apis-arkui/arkts-apis/arkts-arkui-customspanmeasureinfo-i.md#layoutpolicy)值的场景。
 
 2. 三种懒加载布局容器均需要配合可滚动父组件使用，不同容器支持的父组件范围有所差异。
 
-   - LazyVGridLayout：API版本26.0.0之前，其父组件支持[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)和[FlowItem](../reference/apis-arkui/arkui-ts/ts-container-flowitem.md)组件，并支持使用自定义组件或[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)组件封装后应用在WaterFlow或FlowItem中。从API版本26.0.0开始，其父组件新增支持[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)和[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)，同时新增支持使用自定义组件或[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
+   - LazyVGridLayout：API版本26.0.0之前，其父组件支持[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)和[FlowItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-flowitem-t.md)组件，并支持使用自定义组件或NodeContainer组件封装后应用在WaterFlow或FlowItem中。从API版本26.0.0开始，其父组件新增支持[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)和LazyColumnLayout，同时新增支持使用自定义组件或NodeContainer组件封装后应用在List、Scroll或LazyColumnLayout中。
 
-   - LazyColumnLayout、LazyVWaterFlowLayout：其父组件仅限于[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)、[FlowItem](../reference/apis-arkui/arkui-ts/ts-container-flowitem.md)或[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)，并支持使用自定义组件或[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
+   - LazyColumnLayout、LazyVWaterFlowLayout：其父组件仅限于[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)、[FlowItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-flowitem-t.md)或LazyColumnLayout，并支持使用自定义组件或NodeContainer组件封装后应用在上述组件中。
 
 3. 三种懒加载布局容器在不同父组件下的懒加载支持条件如下。
 
-   - 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用懒加载布局容器会导致应用崩溃。当List设置了[lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9)、[chainAnimation](../reference/apis-arkui/arkui-ts/ts-container-list.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，懒加载布局容器的懒加载功能会失效。
+   - 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用懒加载布局容器会导致应用崩溃。当List设置了[lanes](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#lanes)、[chainAnimation](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个或多个时，懒加载布局容器的懒加载功能会失效。
 
-   - 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical），在非竖直方向的Scroll中使用懒加载布局容器会导致应用崩溃。
+   - 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](../reference/apis-arkui/arkts-components/arkts-arkui-scroll-comp-attribute.md#scrollable)属性设置为ScrollDirection.Vertical），在非竖直方向的Scroll中使用懒加载布局容器会导致应用崩溃。
 
-   - 在WaterFlow组件下，要求WaterFlow组件布局方向必须是竖直方向（即[layoutDirection](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#layoutdirection)属性设置为FlexDirection.Column），在非竖直方向的WaterFlow中使用LazyColumnLayout或LazyVWaterFlowLayout会导致应用崩溃，使用LazyVGridLayout不会导致应用崩溃，但懒加载功能会失效。当WaterFlow为多列模式或分段布局中的多列分段时，三种懒加载布局容器的懒加载功能均会失效。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用懒加载布局容器会导致显示异常。
+   - 在WaterFlow组件下，要求WaterFlow组件布局方向必须是竖直方向（即[layoutDirection](../reference/apis-arkui/arkts-components/arkts-arkui-waterflow-comp-attribute.md#layoutdirection)属性设置为FlexDirection.Column），在非竖直方向的WaterFlow中使用LazyColumnLayout或LazyVWaterFlowLayout会导致应用崩溃，使用LazyVGridLayout不会导致应用崩溃，但懒加载功能会失效。当WaterFlow为多列模式或分段布局中的多列分段时，三种懒加载布局容器的懒加载功能均会失效。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用懒加载布局容器会导致显示异常。
 
 ## 创建懒加载网格布局 (LazyVGridLayout)
 
-从API version 19开始，支持懒加载垂直网格布局[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)，其适用于等宽等高的多列网格展示场景，如九宫格图片展示、功能入口图标，也适用于不等宽的多列网格展示场景，如按比例分配列宽的数据面板、设置页面。
+从API version 19开始，支持懒加载垂直网格布局LazyVGridLayout，其适用于等宽等高的多列网格展示场景，如九宫格图片展示、功能入口图标，也适用于不等宽的多列网格展示场景，如按比例分配列宽的数据面板、设置页面。
 
 ### 创建LazyVGridLayout
 
-以下以在[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件中为例，展示了LazyVGridLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
+以下以在[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)组件中为例，展示了LazyVGridLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
 
 <!-- @[create_lazy_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVGridLayoutSample.ets) -->
 
@@ -83,7 +83,7 @@ Scroll() {
 
 ### 设置列数
 
-LazyVGridLayout组件提供了[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate)属性用于设置当前网格布局的列数和每列尺寸占比。
+LazyVGridLayout组件提供了[columnsTemplate](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)属性用于设置当前网格布局的列数和每列尺寸占比。
 
 columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即网格布局的列数，fr前面的数值大小用于计算该列在网格布局宽度上的占比，最终决定该列宽度。不设置时默认1列。设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 
@@ -115,7 +115,7 @@ columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'rep
 |------|------|------|
 | auto-fit | `'repeat(auto-fit, 80vp)'` | 设置最小列宽，自动计算列数和实际列宽。仅支持一个有效列宽值。 |
 | auto-fill | `'repeat(auto-fill, 80vp)'` | 设置固定列宽，自动计算列数。支持一个或多个有效列宽，如`'repeat(auto-fill, 20 80px)'`。 |
-| auto-stretch | `'repeat(auto-stretch, 80vp)'` | 设置固定列宽，以[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnsgap)为最小列间距，自动计算列数和实际列间距。仅支持一个有效列宽值，不支持单位%。 |
+| auto-stretch | `'repeat(auto-stretch, 80vp)'` | 设置固定列宽，以[columnsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#columnsgap)为最小列间距，自动计算列数和实际列间距。仅支持一个有效列宽值，不支持单位%。 |
 
 ### 设置行列间距
 
@@ -125,7 +125,7 @@ columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'rep
 
 ![grid8](figures/grid8.png)
 
-LazyVGridLayout组件提供了[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnsgap)属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
+LazyVGridLayout组件提供了[rowsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#columnsgap)属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 
 <!-- @[lazy_grid_gap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVGridLayoutSample.ets) -->
 
@@ -141,13 +141,13 @@ LazyVGridLayout() {
 
 ## 创建懒加载瀑布流布局 (LazyVWaterFlowLayout)
 
-从API版本26.0.0开始，支持懒加载垂直瀑布流布局[LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md)，其适用于多列等宽但不等高的卡片展示场景，如图片展示、商品推荐。在瀑布流布局中，每个子节点都会放置在当前总高度最小的列。若多列总高度相同，则按照从左到右的顺序进行填充。
+从API版本26.0.0开始，支持懒加载垂直瀑布流布局LazyVWaterFlowLayout，其适用于多列等宽但不等高的卡片展示场景，如图片展示、商品推荐。在瀑布流布局中，每个子节点都会放置在当前总高度最小的列。若多列总高度相同，则按照从左到右的顺序进行填充。
 
 ### 创建LazyVWaterFlowLayout
 
 使用LazyVWaterFlowLayout前，需要通过`import { LazyVWaterFlowLayout } from '@kit.ArkUI'`导入该组件。
 
-以下以在[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件中为例，展示了LazyVWaterFlowLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
+以下以在[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)组件中为例，展示了LazyVWaterFlowLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
 
 <!-- @[create_lazy_water_flow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVWaterFlowLayoutSample.ets) -->
 
@@ -164,7 +164,7 @@ Scroll() {
 
 ### 设置列数
 
-LazyVWaterFlowLayout组件提供了[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md#columnstemplate)属性用于设置当前瀑布流布局的列数和每列尺寸占比。
+LazyVWaterFlowLayout组件提供了[columnsTemplate](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvwaterflowlayout-comp-attribute.md#columnstemplate)属性用于设置当前瀑布流布局的列数和每列尺寸占比。
 
 columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即瀑布流布局的列数，fr前面的数值大小用于计算该列在瀑布流布局宽度上的占比，最终决定该列宽度。不设置时默认1列。设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 
@@ -186,20 +186,20 @@ LazyVWaterFlowLayout() {
 
 columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`，其中repeat、auto-fit、auto-fill、auto-stretch为关键字，track-size为列宽，支持px、vp、%等单位，默认单位为vp，也支持无单位的有效数字。track-size至少包含一个有效列宽。
 
-LazyVWaterFlowLayout组件的columnsTemplate属性还支持设置为[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)类型的枚举值，此时会根据内容区宽度对应的[栅格容器断点](./arkts-layout-development-grid-layout.md#栅格容器断点)类型自动确定列数。例如，设置为ItemFillPolicy.BREAKPOINT_DEFAULT，内容区宽度属于sm及更小的断点区间时LazyVWaterFlowLayout显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。从API版本26.2.0开始，LazyVGridLayout组件的[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate-1)属性同样支持设置为ItemFillPolicy类型，断点与列数的对应关系与LazyVWaterFlowLayout一致。断点判断使用的内容区宽度：内容区宽度 = 组件宽度 − 左右内边距（[padding](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)）− 占用布局的左右边框（[border](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#border)）宽度。
+LazyVWaterFlowLayout组件的columnsTemplate属性还支持设置为[ItemFillPolicy](../reference/apis-arkui/arkts-apis/arkts-arkui-itemfillpolicy-i.md#itemfillpolicy)类型的枚举值，此时会根据内容区宽度对应的[栅格容器断点](./arkts-layout-development-grid-layout.md#栅格容器断点)类型自动确定列数。例如，设置为ItemFillPolicy.BREAKPOINT_DEFAULT，内容区宽度属于sm及更小的断点区间时LazyVWaterFlowLayout显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。从API版本26.2.0开始，LazyVGridLayout组件的[columnsTemplate](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#columnstemplate-1)属性同样支持设置为ItemFillPolicy类型，断点与列数的对应关系与LazyVWaterFlowLayout一致。断点判断使用的内容区宽度：内容区宽度 = 组件宽度 − 左右内边距（[padding](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-chipoptions-i.md#padding)）− 占用布局的左右边框（[border](../reference/apis-arkui/arkts-apis/arkts-arkui-illuminatedtype-e-sys.md#border)）宽度。
 
 | 模式 | 示例 | 说明 |
 |------|------|------|
 | auto-fit | `'repeat(auto-fit, 80vp)'` | 设置最小列宽，自动计算列数和实际列宽。仅支持一个有效列宽值。 |
 | auto-fill | `'repeat(auto-fill, 80vp)'` | 设置固定列宽，自动计算列数。支持一个或多个有效列宽，如`'repeat(auto-fill, 20 80px)'`。 |
-| auto-stretch | `'repeat(auto-stretch, 80vp)'` | 设置固定列宽，以[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md#columnsgap)为最小列间距，自动计算列数和实际列间距。仅支持一个有效列宽值，不支持单位%。 |
+| auto-stretch | `'repeat(auto-stretch, 80vp)'` | 设置固定列宽，以[columnsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvwaterflowlayout-comp-lazywaterflowlayoutattribute-c.md#columnsgap)为最小列间距，自动计算列数和实际列间距。仅支持一个有效列宽值，不支持单位%。 |
 | 断点适配 | `ItemFillPolicy.BREAKPOINT_DEFAULT` | 根据组件宽度对应断点类型确定列数。 |
 
 ### 设置行列间距
 
 在两个子组件之间的垂直间距称为行间距，水平间距称为列间距。
 
-LazyVWaterFlowLayout组件提供了[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md#columnsgap)属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
+LazyVWaterFlowLayout组件提供了[rowsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvwaterflowlayout-comp-lazywaterflowlayoutattribute-c.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvwaterflowlayout-comp-lazywaterflowlayoutattribute-c.md#columnsgap)属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 
 <!-- @[lazy_water_flow_gap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVWaterFlowLayoutSample.ets) -->
 
@@ -215,13 +215,13 @@ LazyVWaterFlowLayout() {
 
 ## 创建懒加载线性布局 (LazyColumnLayout)
 
-从API版本26.0.0开始，支持懒加载线性布局[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)，其子元素在垂直方向依次排列，常用于单列列表场景，如消息列表、设置项列表。
+从API版本26.0.0开始，支持懒加载线性布局LazyColumnLayout，其子元素在垂直方向依次排列，常用于单列列表场景，如消息列表、设置项列表。
 
 ### 创建LazyColumnLayout
 
 使用LazyColumnLayout前，需要通过`import { LazyColumnLayout } from '@kit.ArkUI'`导入该组件。
 
-以下以在[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件中为例，展示了LazyColumnLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
+以下以在[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)组件中为例，展示了LazyColumnLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
 
 <!-- @[create_lazy_column](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutSample.ets) -->
 
@@ -238,7 +238,7 @@ Scroll() {
 
 ### 设置子组件间距
 
-LazyColumnLayout组件提供了[space](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md#space)属性用于设置子组件在垂直方向上的间距。默认值为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
+LazyColumnLayout组件提供了[space](../reference/apis-arkui/arkts-components/arkts-arkui-lazycolumnlayout-comp-attribute.md#space)属性用于设置子组件在垂直方向上的间距。默认值为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 
 <!-- @[lazy_column_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutSample.ets) -->
 
@@ -252,7 +252,7 @@ LazyColumnLayout() {
 
 ### 设置子组件对齐方式
 
-LazyColumnLayout组件提供了[alignItems](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md#alignitems)属性用于设置子组件在水平方向上的对齐方式。未设置时，对齐方式默认值为HorizontalAlign.Center。
+LazyColumnLayout组件提供了[alignItems](../reference/apis-arkui/arkts-components/arkts-arkui-lazycolumnlayout-comp-attribute.md#alignitems)属性用于设置子组件在水平方向上的对齐方式。未设置时，对齐方式默认值为HorizontalAlign.Center。
 
 <!-- @[lazy_column_align_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutSample.ets) -->
 
@@ -301,7 +301,7 @@ Scroll() {
 
 ## 监听可视区域变化
 
-三种懒加载布局容器均支持通过[onVisibleIndexesChange](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#onvisibleindexeschange)事件监听可视区域内子组件索引值的变化。在组件初始化时或可视区域内子组件的索引值发生变化时触发回调，返回可视区域内子组件的起始索引值和终止索引值。当懒加载布局容器内没有子组件或可视区域内无可见子组件时，start和end均返回-1。
+三种懒加载布局容器均支持通过[onVisibleIndexesChange](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#onvisibleindexeschange)事件监听可视区域内子组件索引值的变化。在组件初始化时或可视区域内子组件的索引值发生变化时触发回调，返回可视区域内子组件的起始索引值和终止索引值。当懒加载布局容器内没有子组件或可视区域内无可见子组件时，start和end均返回-1。
 
 以下示例分别展示了三种懒加载布局容器注册onVisibleIndexesChange事件回调的方式。
 
@@ -372,7 +372,7 @@ List({ space: 10 }) {
 
 通过将多种懒加载布局容器组合在同一个可滚动父组件中使用，可以灵活实现混合布局。
 
-以下示例以[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件作为可滚动父组件为例，在其中同时使用LazyVGridLayout和LazyVWaterFlowLayout，并为每个容器分别配置独立的列数和行列间距，实现了混合布局。
+以下示例以[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)组件作为可滚动父组件为例，在其中同时使用LazyVGridLayout和LazyVWaterFlowLayout，并为每个容器分别配置独立的列数和行列间距，实现了混合布局。
 
 <!-- @[list_nested_lazy_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/ListNestedLazyLayout.ets) -->
 
@@ -561,7 +561,7 @@ export struct ListNestedLazyLayout {
 
 利用LazyColumnLayout的嵌套能力，可以进一步实现更复杂的混合布局。例如，在一个页面中同时包含线性列表、网格和瀑布流三种排列方式的内容区域。
 
-以下示例以[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件作为可滚动父组件为例，使用LazyColumnLayout作为主布局容器，嵌套LazyColumnLayout（线性列表区域）、LazyVGridLayout（网格区域）和LazyVWaterFlowLayout（瀑布流区域），实现了多种布局方式的混合展示。
+以下示例以[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)组件作为可滚动父组件为例，使用LazyColumnLayout作为主布局容器，嵌套LazyColumnLayout（线性列表区域）、LazyVGridLayout（网格区域）和LazyVWaterFlowLayout（瀑布流区域），实现了多种布局方式的混合展示。
 
 <!-- @[lazy_column_nested_lazy_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutNestedLazyLayout.ets) -->
 
@@ -791,11 +791,11 @@ export struct LazyColumnLayoutNestedLazyLayout {
 
 ## 分组展示与粘性标题
 
-在混合布局页面中，不同内容区域通常需要分组展示，并配以独立的标题或操作栏，方便用户快速识别和定位内容。从API版本26.0.0开始，三种懒加载布局容器均提供了[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)和[footer](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#footer)属性，分别用于展示分组标题，提示数据加载完毕（如“已经到底了”）或提供快捷操作（如“查看更多”）。同时，三种容器还提供了[sticky](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#sticky)属性，可以将header或footer在滚动过程中分别吸附在可视区域的顶部或底部，实现粘性标题效果，帮助用户识别当前所在的内容区域。
+在混合布局页面中，不同内容区域通常需要分组展示，并配以独立的标题或操作栏，方便用户快速识别和定位内容。从API版本26.0.0开始，三种懒加载布局容器均提供了[header](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#header)和[footer](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#footer)属性，分别用于展示分组标题，提示数据加载完毕（如“已经到底了”）或提供快捷操作（如“查看更多”）。同时，三种容器还提供了[sticky](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#sticky)属性，可以将header或footer在滚动过程中分别吸附在可视区域的顶部或底部，实现粘性标题效果，帮助用户识别当前所在的内容区域。
 
 ### 添加分组标题
 
-可以通过[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)属性为懒加载布局容器添加头部组件，用于展示分组标题。以下示例使用[@Builder](state-management/arkts-builder.md)构建了一个带参数的分组标题组件，并通过header属性设置到[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)中。
+可以通过[header](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#header)属性为懒加载布局容器添加头部组件，用于展示分组标题。以下示例使用[@Builder](state-management/arkts-builder.md)构建了一个带参数的分组标题组件，并通过header属性设置到LazyVGridLayout中。
 
 <!-- @[lazy_layout_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
 
@@ -842,7 +842,7 @@ build() {
 
 ### 添加末尾提示
 
-可以通过[footer](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md#footer)属性为懒加载布局容器添加尾部组件，用于提示数据加载完毕。以下示例使用[@Builder](state-management/arkts-builder.md)构建了一个尾部提示组件，并通过footer属性设置到[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)中。
+可以通过[footer](../reference/apis-arkui/arkts-components/arkts-arkui-lazycolumnlayout-comp-attribute.md#footer)属性为懒加载布局容器添加尾部组件，用于提示数据加载完毕。以下示例使用[@Builder](state-management/arkts-builder.md)构建了一个尾部提示组件，并通过footer属性设置到LazyColumnLayout中。
 
 <!-- @[lazy_layout_footer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
 
@@ -877,7 +877,7 @@ build() {
 
 ### 设置粘性标题
 
-通过[sticky](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#sticky)属性，可以将[header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header)或[footer](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#footer)在滚动过程中吸附在可视区域的顶部或底部，帮助用户在滚动时识别当前所在的内容区域。sticky属性支持以下模式。
+通过[sticky](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#sticky)属性，可以将[header](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#header)或[footer](../reference/apis-arkui/arkts-components/arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md#footer)在滚动过程中吸附在可视区域的顶部或底部，帮助用户在滚动时识别当前所在的内容区域。sticky属性支持以下模式。
 
 - StickyStyle.Header：仅header吸附在可视区域顶部，常用于分组标题吸顶。
 - StickyStyle.Footer：仅footer吸附在可视区域底部，常用于汇总信息或操作入口吸底。
@@ -889,9 +889,9 @@ build() {
 | :---: | :---: | :---: |
 | ![lazy-layout-sticky-header](figures/lazy-layout-sticky-header.gif) | ![lazy-layout-sticky-footer](figures/lazy-layout-sticky-footer.gif) | ![lazy-layout-sticky-both](figures/lazy-layout-sticky-both.gif) |
 
-由于浮点数计算精度，设置sticky后，在滚动过程中小概率产生缝隙，可以通过[pixelRound](../reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForComponent.md#pixelround)指定当前组件向下像素取整解决该问题。
+由于浮点数计算精度，设置sticky后，在滚动过程中小概率产生缝隙，可以通过[pixelRound](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#pixelround)指定当前组件向下像素取整解决该问题。
 
-以下示例模拟图库页面，展示了分组展示与粘性标题的效果。外层[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)通过footer显示”已经到底了”，提示数据已全部加载；内层通过[LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md)动态创建多个[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)展示各月份照片网格，每个LazyVGridLayout设置了header和sticky(StickyStyle.Header)，使月份标题在滚动时吸顶。
+以下示例模拟图库页面，展示了分组展示与粘性标题的效果。外层LazyColumnLayout通过footer显示”已经到底了”，提示数据已全部加载；内层通过[LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md)动态创建多个LazyVGridLayout展示各月份照片网格，每个LazyVGridLayout设置了header和sticky(StickyStyle.Header)，使月份标题在滚动时吸顶。
 
 <!-- @[lazy_layout_group](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
 

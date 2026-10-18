@@ -11,7 +11,7 @@
 
 > **说明**：
 >
-> 多态样式仅支持通用属性。如果多态样式不生效，则该属性可能为组件的私有属性，例如：[fontColor](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件的[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)等。此时，可以通过[attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件属性来解决此问题。
+> 多态样式仅支持通用属性。如果多态样式不生效，则该属性可能为组件的私有属性，例如：[fontColor](../../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogbuttonbaseoptions-i.md#fontcolor)、[TextInput](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md)组件的[backgroundColor](../../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)等。此时，可以通过[attributeModifier](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#attributemodifier)动态设置组件属性来解决此问题。
 
 ## 概述
 

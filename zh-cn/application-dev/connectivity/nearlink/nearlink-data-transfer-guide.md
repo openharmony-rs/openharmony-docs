@@ -16,12 +16,12 @@
 
 > **说明：**
 >
-> 1. 端口通道不保证链路加密。如需加密数据传输，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#startpairing)接口发起。
-> 2. 链路是否加密可通过[getAcbState()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#getacbstate)接口查询，ENCRYPTED状态表示链路已加密。
+> 1. 端口通道不保证链路加密。如需加密数据传输，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-remotedevice-remotedevice-i.md#startpairing)接口发起。
+> 2. 链路是否加密可通过[getAcbState()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-remotedevice-remotedevice-i.md#getacbstate)接口查询，ENCRYPTED状态表示链路已加密。
 
 ## 接口说明
 
-使用星闪传输数据，完整的API说明以及示例代码请参考：[@ohos.nearlink.dataTransfer (星闪数据传输能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+使用星闪传输数据，完整的API说明以及示例代码请参考：@ohos.nearlink.dataTransfer (星闪数据传输能力)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -69,7 +69,7 @@
     }
     ```
 
-4. 订阅端口通道连接状态变更事件。不再需要订阅事件时，调用[offConnectionStateChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffconnectionstatechanged)取消订阅。
+4. 订阅端口通道连接状态变更事件。不再需要订阅事件时，调用offConnectionStateChanged()取消订阅。
 
     <!-- @[datatransfer_on_conn_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     
@@ -85,7 +85,7 @@
     }
     ```
 
-5. 订阅端口通道数据接收事件。不再需要订阅事件时，调用[offReadData()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffreaddata)取消订阅。
+5. 订阅端口通道数据接收事件。不再需要订阅事件时，调用offReadData()取消订阅。
 
     <!-- @[datatransfer_on_read_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     

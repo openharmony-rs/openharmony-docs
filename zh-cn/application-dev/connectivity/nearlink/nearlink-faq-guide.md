@@ -17,7 +17,7 @@
 >
 > 自定义服务必须使用自定义UUID，禁止使用标准UUID。
 
-自定义服务的[ssap.Service.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#service)、[ssap.Property.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#property)等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
+自定义服务的[ssap.Service.serviceUuid](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-service-i-sys.md#service)、[ssap.Property.serviceUuid](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-property-i.md#property)等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
 
 
 ## 事件订阅类接口的权限要求问题
@@ -47,23 +47,23 @@
 
 其中，客户端属性值配置描述符和服务端属性值配置描述符在一个属性中最多只能有一个。
 
-当属性支持通知（NOTIFY）操作时，需要为其声明客户端属性值配置描述符：客户端通过[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)开启或关闭该属性的通知，服务端通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)向已开启通知的客户端推送属性变化。
+当属性支持通知（NOTIFY）操作时，需要为其声明客户端属性值配置描述符：客户端通过[setPropertyNotification()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#setpropertynotification)开启或关闭该属性的通知，服务端通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-server-i.md#notifypropertychanged)向已开启通知的客户端推送属性变化。
 
 ## 客户端如何接收属性变化通知
 
-客户端接收属性变化通知（即收到[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)回调）需同时满足以下条件：
+客户端接收属性变化通知（即收到[onPropertyChange()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#onpropertychange)回调）需同时满足以下条件：
 
 1. 服务端在创建该属性时声明了通知（NOTIFY）操作和客户端属性值配置描述符（CLIENT_PROPERTY_CONFIG）；
 2. 客户端已与服务端成功建立SSAP连接；
-3. 客户端已通过[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)获取到该属性；
-4. 客户端已调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用该属性的通知；
-5. 客户端已调用[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)注册属性变化回调。
+3. 客户端已通过[getServices()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#getservices)获取到该属性；
+4. 客户端已调用[setPropertyNotification()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#setpropertynotification)启用该属性的通知；
+5. 客户端已调用[onPropertyChange()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#onpropertychange)注册属性变化回调。
 
-满足上述条件后，服务端调用[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)更新属性值时，会向客户端发送属性变化通知。若上述任一条件不满足，客户端将收不到通知。
+满足上述条件后，服务端调用[notifyPropertyChanged()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-server-i.md#notifypropertychanged)更新属性值时，会向客户端发送属性变化通知。若上述任一条件不满足，客户端将收不到通知。
 
 > **说明：**
 >
-> 连接断开后，已启用的通知会失效，重新连接后需重新调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用。
+> 连接断开后，已启用的通知会失效，重新连接后需重新调用[setPropertyNotification()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#setpropertynotification)启用。
 
 ## 什么是星闪设备随机地址
 
@@ -71,7 +71,7 @@
 
 扫描结果（scan.ScanResults.address）中返回的设备地址是随机地址：系统为保护设备隐私，不直接暴露设备的真实地址，而是将其转换为随机地址后上报，并维护真实地址与随机地址的映射关系。同一设备的随机地址在映射保留周期内保持不变（已配对设备的映射长期保留），映射被清理后重新扫描会生成新的随机地址。
 
-应用不宜将扫描到的地址作为长期标识持久化使用。需要长期识别设备时，应结合设备名称、配对关系等信息综合判断，已配对设备的地址可通过manager.[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取。随机地址不影响设备连接：可通过扫描获取的当前地址发起连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）。
+应用不宜将扫描到的地址作为长期标识持久化使用。需要长期识别设备时，应结合设备名称、配对关系等信息综合判断，已配对设备的地址可通过manager.[getPairedDevices()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-manager-getpaireddevices-f.md#getpaireddevices)获取。随机地址不影响设备连接：可通过扫描获取的当前地址发起连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）。
 
 ## 星闪数据传输方式如何选择
 
@@ -86,10 +86,10 @@
 
 手机、平板和PC/2in1之间可以完成星闪配对，但无法通过设置界面建立连接。设置界面发起的连接为系统连接流程，与应用通过星闪接口发起的连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）不同：链路建立后，系统会检查对端设备是否提供本端可用的服务，若没有可用的服务，连接会立即断开。
 
-手机、平板和PC/2in1一般作为中心设备使用外围设备提供的服务（如键盘、鼠标、手写笔等HID设备提供的服务），是服务的使用者而非提供者，这些设备之间没有可用的服务，因此无法从设置界面建立连接。需要建立设备间的业务连接时，应通过[ssap.Client.connect()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#connect)（SSAP连接）或[dataTransfer.connect()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferconnect)（端口数据传输）等接口发起连接，由应用明确业务。
+手机、平板和PC/2in1一般作为中心设备使用外围设备提供的服务（如键盘、鼠标、手写笔等HID设备提供的服务），是服务的使用者而非提供者，这些设备之间没有可用的服务，因此无法从设置界面建立连接。需要建立设备间的业务连接时，应通过[ssap.Client.connect()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#connect)（SSAP连接）或dataTransfer.connect()（端口数据传输）等接口发起连接，由应用明确业务。
 
 ## 连续调用writeData为什么会发送失败
 
-连续多次调用[writeData()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferwritedata)可能会导致发送队列拥塞，从而发送失败。
+连续多次调用writeData()可能会导致发送队列拥塞，从而发送失败。
 
-您可以通过设置数据发送间隔来解决连续传输数据时失败的问题。使用[setInterval()](../../reference/common/js-apis-timer.md#setinterval)设置函数调用的时间间隔，建议的数据发送时间间隔为10ms。
+您可以通过设置数据发送间隔来解决连续传输数据时失败的问题。使用[setInterval()](../../reference/apis-arkui/arkts-apis/arkts-arkui-global-setinterval-f.md#setinterval)设置函数调用的时间间隔，建议的数据发送时间间隔为10ms。

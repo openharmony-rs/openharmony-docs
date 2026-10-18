@@ -10,11 +10,11 @@
 
 对于不具备自己的渲染环境的三方框架，尽管已实现前端解析、布局及事件处理等功能，但仍需依赖系统的基础渲染和动画能力。[FrameNode](./arkts-user-defined-arktsNode-frameNode.md)上的通用属性与通用事件对这类框架而言是冗余的，会导致多次不必要的操作，涵盖布局、事件处理等逻辑。
 
-自定义渲染节点 ([RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md))是更加轻量的渲染节点，仅具备与渲染相关的功能。它提供了设置基础渲染属性的能力，以及节点的动态添加、删除和自定义绘制的能力。RenderNode能够为第三方框架提供基础的渲染和动画支持。
+自定义渲染节点 ([RenderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode.md))是更加轻量的渲染节点，仅具备与渲染相关的功能。它提供了设置基础渲染属性的能力，以及节点的动态添加、删除和自定义绘制的能力。RenderNode能够为第三方框架提供基础的渲染和动画支持。
 
 ## 创建和删除节点
 
-RenderNode提供了节点创建和删除的能力。可以通过RenderNode的构造函数创建自定义的RenderNode节点。通过构造函数创建的节点对应一个实体的节点。同时，可以通过RenderNode中的[dispose](../reference/apis-arkui/js-apis-arkui-renderNode.md#dispose12)接口来实现与实体节点的引用关系的解除。
+RenderNode提供了节点创建和删除的能力。可以通过RenderNode的构造函数创建自定义的RenderNode节点。通过构造函数创建的节点对应一个实体的节点。同时，可以通过RenderNode中的[dispose](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#dispose)接口来实现与实体节点的引用关系的解除。
 
 ## 操作节点树
 
@@ -22,7 +22,7 @@ RenderNode提供了节点的增、删、查、改的能力，能够修改节点�
 
 > **说明：**
 >
-> - RenderNode中获取的子树结构由开发者通过RenderNode的[appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)接口传入的参数构建。
+> - RenderNode中获取的子树结构由开发者通过RenderNode的[appendChild](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#appendchild)接口传入的参数构建。
 >
 > - RenderNode如果要与系统直接结合显示，需通过FrameNode中获取的RenderNode进行挂载上树。
 
@@ -115,7 +115,7 @@ export struct OperationNodeTree {
 
 ## 设置和获取渲染相关属性
 
-RenderNode中可以设置渲染相关的属性，包括：[backgroundColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor)，[clipToFrame](../reference/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe)，[opacity](../reference/apis-arkui/js-apis-arkui-renderNode.md#opacity)，[size](../reference/apis-arkui/js-apis-arkui-renderNode.md#size)，[position](../reference/apis-arkui/js-apis-arkui-renderNode.md#position)，[frame](../reference/apis-arkui/js-apis-arkui-renderNode.md#frame)，[pivot](../reference/apis-arkui/js-apis-arkui-renderNode.md#pivot)，[scale](../reference/apis-arkui/js-apis-arkui-renderNode.md#scale)，[translation](../reference/apis-arkui/js-apis-arkui-renderNode.md#translation)，[rotation](../reference/apis-arkui/js-apis-arkui-renderNode.md#rotation)，[transform](../reference/apis-arkui/js-apis-arkui-renderNode.md#transform)，[shadowColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor)，[shadowOffset](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset)，[shadowAlpha](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha)，[shadowElevation](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation)，[shadowRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowradius)，[borderStyle](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12)，[borderWidth](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12)，[borderColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12)，[borderRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderradius12)，[shapeMask](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapemask12)，[shapeClip](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12)，[markNodeGroup](../reference/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12)等。具体属性支持范围参考[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)接口说明。
+RenderNode中可以设置渲染相关的属性，包括：[backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#backgroundcolor)，[clipToFrame](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#cliptoframe)，[opacity](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#opacity)，[size](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#size)，[position](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#position)，[frame](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#frame)，[pivot](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#pivot)，[scale](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#scale)，[translation](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#translation)，[rotation](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#rotation)，[transform](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#transform)，[shadowColor](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#shadowcolor)，[shadowOffset](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#shadowoffset)，[shadowAlpha](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#shadowalpha)，[shadowElevation](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#shadowelevation)，[shadowRadius](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#shadowradius)，[borderStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#borderstyle)，[borderWidth](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#borderwidth)，[borderColor](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#bordercolor)，[borderRadius](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#borderradius)，[shapeMask](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#shapemask)，[shapeClip](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#shapeclip)，[markNodeGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#marknodegroup)等。具体属性支持范围参考[RenderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode.md)接口说明。
 
 > **说明：**
 > 
@@ -335,7 +335,7 @@ export struct RenderingProperties {
 
 ## 自定义绘制
 
-通过重写RenderNode中的[draw](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw)方法，可以自定义RenderNode的绘制内容，通过[invalidate](../reference/apis-arkui/js-apis-arkui-renderNode.md#invalidate)接口可以主动触发节点的重新绘制。
+通过重写RenderNode中的[draw](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#draw)方法，可以自定义RenderNode的绘制内容，通过[invalidate](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#invalidate)接口可以主动触发节点的重新绘制。
 
 > **说明：**
 > 
@@ -440,15 +440,15 @@ export struct CustomDraw {
 
 ## 调整自定义绘制Canvas的变换矩阵
 
-从API version 12开始，通过重写RenderNode中的[draw](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw)方法，可以自定义RenderNode的绘制内容。
+从API version 12开始，通过重写RenderNode中的[draw](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#draw)方法，可以自定义RenderNode的绘制内容。
 
-通过[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)可以调整自定义绘制Canvas的变换矩阵。
+通过[concatMatrix](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#concatmatrix)可以调整自定义绘制Canvas的变换矩阵。
 
 > **说明：**
 > 
-> - [getTotalMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#gettotalmatrix12)获取的是用来记录绘制指令的临时canvas的变换矩阵。
+> - [getTotalMatrix](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#gettotalmatrix)获取的是用来记录绘制指令的临时canvas的变换矩阵。
 > 
-> - 如果开发者希望对画布进行预期的变换，应使用[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
+> - 如果开发者希望对画布进行预期的变换，应使用[concatMatrix](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#concatmatrix)而不是[setMatrix](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#setmatrix)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
 
 **ArkTS接口调用示例：**
 
@@ -598,7 +598,7 @@ export struct CustomDrawCanvas {
 
 **Node-API调用示例：**
 
-C++侧可通过Node-API来获取[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)，并进行后续的自定义绘制操作。
+C++侧可通过Node-API来获取[Canvas](../reference/apis-arkui/errorcode-canvas.md)，并进行后续的自定义绘制操作。
 
 <!-- @[native_bridge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/NativeBridge.cpp) -->
 
@@ -776,7 +776,7 @@ export struct CustomDrawCanvasNative {
 
 ## 设置标签
 
-开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，有助于在使用inspector[检查页面布局](./arkts-inspector-overview.md)时更清晰区分各节点。
+开发者可利用[label](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#label)接口向RenderNode设置标签信息，有助于在使用inspector[检查页面布局](./arkts-inspector-overview.md)时更清晰区分各节点。
 
 <!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
 
@@ -834,7 +834,7 @@ export struct SetLabel {
 
 前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除引用关系后，再次调用接口可能会出现crash、返回默认值的情况。在ArkUI框架中，前端节点是在ArkTS代码层面创建的节点，负责与开发者交互；后端节点是在ArkUI框架底层维护的实体节点，负责具体逻辑的处理。
 
-从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
+从API version 20开始，使用[isDisposed](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#isdisposed)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
 <!-- @[check_render_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets) -->
 

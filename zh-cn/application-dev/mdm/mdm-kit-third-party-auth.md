@@ -19,14 +19,14 @@ MDM（Mobile Device Management，移动设备管理）应用支持为账号添�
 
 | 接口名称 | 所属模块 | 功能描述 |
 | -------- | -------- | -------- |
-| [openSession](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanageropensession) | @kit.MDMKit | 打开用户身份认证凭据变更会话，获取挑战值（challenge），用于防重放攻击。 |
-| [closeSession](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagerclosesession) | @kit.MDMKit | 关闭用户身份认证凭据变更会话。 |
-| [addUserExtendCredential](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanageradduserextendcredential) | @kit.MDMKit | 添加三方自定义身份认证凭据。 |
-| [removeUserExtendCredential](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagerremoveuserextendcredential) | @kit.MDMKit | 删除三方自定义身份认证凭据。 |
-| [getUserExtendCredential](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagergetuserextendcredential) | @kit.MDMKit | 查询已添加的三方自定义身份认证凭据列表。 |
-| [setUnlockPolicy](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagersetunlockpolicy) | @kit.MDMKit | 配置设备解锁策略：系统内置认证方式单独解锁、三方自定义认证单独解锁、三方自定义认证与系统内置认证融合解锁。 |
-| [getUnlockPolicy](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagergetunlockpolicy) | @kit.MDMKit | 查询当前设备解锁策略。 |
-| [getUserAuthInstance](../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10) | @kit.UserAuthenticationKit | 发起用户身份认证，获取认证通过凭证authToken。 |
+| openSession | @kit.MDMKit | 打开用户身份认证凭据变更会话，获取挑战值（challenge），用于防重放攻击。 |
+| closeSession | @kit.MDMKit | 关闭用户身份认证凭据变更会话。 |
+| addUserExtendCredential | @kit.MDMKit | 添加三方自定义身份认证凭据。 |
+| removeUserExtendCredential | @kit.MDMKit | 删除三方自定义身份认证凭据。 |
+| getUserExtendCredential | @kit.MDMKit | 查询已添加的三方自定义身份认证凭据列表。 |
+| setUnlockPolicy | @kit.MDMKit | 配置设备解锁策略：系统内置认证方式单独解锁、三方自定义认证单独解锁、三方自定义认证与系统内置认证融合解锁。 |
+| getUnlockPolicy | @kit.MDMKit | 查询当前设备解锁策略。 |
+| [getUserAuthInstance](../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance) | @kit.UserAuthenticationKit | 发起用户身份认证，获取认证通过凭证authToken。 |
 
 ## 约束与限制
 
@@ -65,24 +65,24 @@ MDM（Mobile Device Management，移动设备管理）应用支持为账号添�
    import { userAuth } from '@kit.UserAuthenticationKit';
    ```
 
-3. 调用[openSession](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanageropensession)打开用户身份认证凭据变更会话，获取挑战值challenge。
+3. 调用openSession打开用户身份认证凭据变更会话，获取挑战值challenge。
 
-4. （可选）指定用户认证相关参数[AuthParam](../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10)（使用上一步获取的challenge作为挑战值），调用[getUserAuthInstance](../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10)获取认证对象。
+4. （可选）指定用户认证相关参数[AuthParam](../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authparam-i-sys.md#authparam)（使用上一步获取的challenge作为挑战值），调用[getUserAuthInstance](../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance)获取认证对象。
 
    > **说明：**
    >
-   > - 认证类型[UserAuthType](../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)仅支持传入`PIN`（锁屏口令认证），不支持人脸、指纹等其他类型。
-   > - 认证可信等级[AuthTrustLevel](../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtrustlevel8)仅支持传入`ATL4`，即最高安全等级。
+   > - 认证类型[UserAuthType](../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthtype-e-sys.md#userauthtype)仅支持传入`PIN`（锁屏口令认证），不支持人脸、指纹等其他类型。
+   > - 认证可信等级[AuthTrustLevel](../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-useraccessctrl-authtoken-i-sys.md#authtrustlevel)仅支持传入`ATL4`，即最高安全等级。
    > - `UserAuthInstance.start`会弹出系统密码认证控件，调用将阻塞直到用户完成认证。此外，锁屏等系统行为也可能关闭该认证控件。
    > - 第4步和第5步为可选步骤：添加凭据时未完成用户身份认证，凭据仍可添加成功，但在三方自定义认证首次解锁设备时，会要求用户补做一次本地PIN或域账号密码认证。原因是三方自定义认证需要从本地PIN或域账号密码认证通过的结果中，继承用于解密文件系统的根密钥。
 
-5. （可选）调用[UserAuthInstance.on('result')](../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onresult10-1)订阅认证结果，调用[UserAuthInstance.start](../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)发起认证，在回调中获取认证通过凭证authToken。
+5. （可选）调用[UserAuthInstance.on('result')](../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-iauthcallback-i.md#onresult)订阅认证结果，调用[UserAuthInstance.start](../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authinstance-i.md#start)发起认证，在回调中获取认证通过凭证authToken。
 
-6. 根据业务场景调用[addUserExtendCredential](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanageradduserextendcredential)（添加凭据）或[removeUserExtendCredential](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagerremoveuserextendcredential)（删除凭据），传入authToken。添加凭据时需同时传入`pluginInfo`，该值为三方自定义认证器的标识名称，由认证器提供方提供。
+6. 根据业务场景调用addUserExtendCredential（添加凭据）或removeUserExtendCredential（删除凭据），传入authToken。添加凭据时需同时传入`pluginInfo`，该值为三方自定义认证器的标识名称，由认证器提供方提供。
 
-7. 调用[closeSession](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagerclosesession)关闭用户身份认证凭据变更会话。
+7. 调用closeSession关闭用户身份认证凭据变更会话。
 
-8. （可选）调用[setUnlockPolicy](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagersetunlockpolicy)配置设备解锁策略。
+8. （可选）调用setUnlockPolicy配置设备解锁策略。
 
 > **说明：**
 >
@@ -288,7 +288,7 @@ export async function unbindUsbKey(uiContext: UIContext): Promise<string> {
 
 ## 查询三方自定义身份认证凭据
 
-调用[getUserExtendCredential](../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md#securitymanagergetuserextendcredential)查询已添加的三方自定义身份认证凭据，返回的credentialId用于删除凭据。
+调用getUserExtendCredential查询已添加的三方自定义身份认证凭据，返回的credentialId用于删除凭据。
 
 <!-- @[query_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MDMKit/UsbKeyAuth/entry/src/main/ets/service/UsbKeyAuthService.ets) -->
 

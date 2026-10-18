@@ -205,7 +205,7 @@ Base64编码表如下：
 
 ## 为什么HashSet和TreeSet的add方法添加已存在元素时返回true
 
-[HashSet](../reference/apis-arkts/js-apis-hashset.md)和[TreeSet](../reference/apis-arkts/js-apis-treeset.md)的add方法在API参考中的返回值描述为：成功添加新元素至容器返回true，当元素已存在时返回false。当前代码实现中，添加已存在的元素时返回值同样为true，与API参考中的返回值描述存在差异。
+[HashSet](../reference/apis-arkts/arkts-apis/arkts-arkts-util-hashset.md)和[TreeSet](../reference/apis-arkts/arkts-apis/arkts-arkts-util-treeset.md)的add方法在API参考中的返回值描述为：成功添加新元素至容器返回true，当元素已存在时返回false。当前代码实现中，添加已存在的元素时返回值同样为true，与API参考中的返回值描述存在差异。
 
 > **说明：**
 >
@@ -247,7 +247,7 @@ if (!hashSet.has(value)) {
 
 ## 解析包含大量数字键的JSON字符串
 
-当需要将包含大量数字键的JSON字符串转换为Sendable对象时，可以使用[JSON.parseSendable](../reference/apis-arkts/js-apis-json.md#jsonparsesendable)接口进行处理。
+当需要将包含大量数字键的JSON字符串转换为Sendable对象时，可以使用[JSON.parseSendable](../reference/apis-arkts/arkts-apis/arkts-arkts-json-parsesendable-f.md#parsesendable)接口进行处理。
 
 ```ts
 import { JSON, lang } from '@kit.ArkTS';

@@ -25,9 +25,9 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     2.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    2.2 设置企业DLP文件的查询选项[DlpFileQueryOptions](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpfilequeryoptions)。当需要按分类标签筛选查询特定企业DLP文件时传入此参数，当需要查询所有企业DLP文件时可不传此参数。
+    2.2 设置企业DLP文件的查询选项[DlpFileQueryOptions](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlpfilequeryoptions-i.md#dlpfilequeryoptions)。当需要按分类标签筛选查询特定企业DLP文件时传入此参数，当需要查询所有企业DLP文件时可不传此参数。
 
-    2.3 调用[dlpPermission.queryOpenedEnterpriseDlpFiles](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionqueryopenedenterprisedlpfiles)查询已打开且符合指定选项的企业DLP文件的URI列表。
+    2.3 调用[dlpPermission.queryOpenedEnterpriseDlpFiles](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-queryopenedenterprisedlpfiles-f.md#queryopenedenterprisedlpfiles)查询已打开且符合指定选项的企业DLP文件的URI列表。
 
     <!-- @[dlp_queryOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -59,9 +59,9 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     3.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    3.2 设置企业DLP文件的查询选项[DlpFileQueryOptions](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpfilequeryoptions)。当需要按分类标签筛选关闭特定企业DLP文件时传入此参数，当需要关闭所有企业DLP文件时可不传此参数。
+    3.2 设置企业DLP文件的查询选项[DlpFileQueryOptions](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlpfilequeryoptions-i.md#dlpfilequeryoptions)。当需要按分类标签筛选关闭特定企业DLP文件时传入此参数，当需要关闭所有企业DLP文件时可不传此参数。
 
-    3.3 调用[dlpPermission.closeOpenedEnterpriseDlpFiles](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissioncloseopenedenterprisedlpfiles)关闭当前打开的所有符合指定选项的企业DLP文件。
+    3.3 调用[dlpPermission.closeOpenedEnterpriseDlpFiles](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-closeopenedenterprisedlpfiles-f.md#closeopenedenterprisedlpfiles)关闭当前打开的所有符合指定选项的企业DLP文件。
 
     <!-- @[dlp_closeOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -91,9 +91,9 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     4.1 申请权限：从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    4.2 [DlpConnPlugin](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpconnplugin21)被用于registerPlugin接口中，将回调能力注册到SA（System Ability）中。
+    4.2 [DlpConnPlugin](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlpconnplugin-i.md#dlpconnplugin)被用于registerPlugin接口中，将回调能力注册到SA（System Ability）中。
 
-    4.3 [connectServer](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#connectserver21)提供给SA侧调用，处理完连接云端服务的请求后，通过callback将结果返回给SA。
+    4.3 [connectServer](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlpconnplugin-i.md#connectserver)提供给SA侧调用，处理完连接云端服务的请求后，通过callback将结果返回给SA。
 
     <!-- @[dlp_DlpConnPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -112,9 +112,9 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     5.1 申请权限：从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    5.2 [DlpConnPlugin](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpconnplugin21)被用于registerPlugin接口中，将回调能力注册到SA中。
+    5.2 [DlpConnPlugin](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlpconnplugin-i.md#dlpconnplugin)被用于registerPlugin接口中，将回调能力注册到SA中。
 
-    5.3 [registerPlugin](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#registerplugin21)将plugin注册到SA侧，待SA调用。
+    5.3 [registerPlugin](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlpconnmanager-c.md#registerplugin)将plugin注册到SA侧，待SA调用。
 
     <!-- @[dlp_registerPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     

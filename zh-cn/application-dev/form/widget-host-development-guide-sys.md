@@ -31,7 +31,7 @@
 
 ## 卡片组件
 
-提供卡片组件，实现卡片的显示功能。详情见[FormComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)。
+提供卡片组件，实现卡片的显示功能。详情见FormComponent。
 
 > **说明：**
 >
@@ -43,7 +43,7 @@
 >
 > - 本模块为系统接口。
 
-通过卡片组件成功添加卡片时，会调用到卡片提供方FormExtensionAbility中的[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)方法。
+通过卡片组件成功添加卡片时，会调用到卡片提供方FormExtensionAbility中的[onAddForm](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onaddform)方法。
 
 ### 临时卡片和常态卡片
 
@@ -51,19 +51,19 @@
 
 - **常态卡片**：由卡片管理服务持久化保存的卡片。使用方进程退出时保留，卡片管理服务重启后从数据库恢复，如添加到桌面的卡片。
 
-- **临时卡片**：卡片管理服务不持久化保存的卡片。在卡片使用方进程存活期间不会自动销毁，需在卡片不再使用时调用[formHost.deleteForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)主动删除；仅在卡片使用方进程退出时由卡片管理服务自动清理，若不主动删除将常驻内存。
+- **临时卡片**：卡片管理服务不持久化保存的卡片。在卡片使用方进程存活期间不会自动销毁，需在卡片不再使用时调用[formHost.deleteForm](../reference/apis-form-kit/arkts-apis/arkts-form-formhost-deleteform-depr-f-sys.md#deleteform)主动删除；仅在卡片使用方进程退出时由卡片管理服务自动清理，若不主动删除将常驻内存。
 
 > **说明：**
 >
 > 卡片管理服务重启后，临时卡片会被删除，且对应卡片ID不会通知到卡片提供方。因此：
-> - **卡片使用方**：若需将临时卡片保留为常态卡片，应在进程退出前调用[formHost.castToNormalForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostcasttonormalform)转换。
+> - **卡片使用方**：若需将临时卡片保留为常态卡片，应在进程退出前调用[formHost.castToNormalForm](../reference/apis-form-kit/arkts-apis/arkts-form-formhost-casttonormalform-f-sys.md#casttonormalform)转换。
 > - **卡片提供方**：需自行清理长时间未删除的临时卡片；若使用方已将临时卡片转为常态卡片，提供方需同步更新记录，防止清理时误删已转换的卡片信息。
 >
 > 此外，系统对可添加的卡片数量有一定限制，具体配额上限请参考卡片的[约束与限制](formkit-overview.md#约束与限制)。
 
 ## formHost接口
 
-formHost提供一系列的卡片使用方接口，来操作卡片的更新、删除等行为，具体的API介绍详见[@ohos.app.form.formHost (formHost)(系统接口)](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md)。
+formHost提供一系列的卡片使用方接口，来操作卡片的更新、删除等行为，具体的API介绍详见[@ohos.app.form.formHost (formHost)(系统接口)](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formhost.md)。
 
 ## 卡片使用方示例
 <!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->

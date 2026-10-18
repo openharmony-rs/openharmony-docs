@@ -41,7 +41,7 @@
 
 ## 接口说明
 
-常用接口说明如下表。具体接口说明详见API参考：[@ohos.distributed.softbusBase](../reference/apis-distributedservice-kit/js-apis-softbusBase-sys.md)。
+常用接口说明如下表。具体接口说明详见API参考：[@ohos.distributed.softbusBase](../reference/apis-distributedservice-kit/errorcode-softbusBase.md)。
 
 | 接口名 | 功能描述 |
 | --- | --- |

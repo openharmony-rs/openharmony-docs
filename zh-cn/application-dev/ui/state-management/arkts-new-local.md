@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现对\@ComponentV2装饰的自定义组件中变量变化的观测，开发者可以使用[\@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local.md#local)装饰器装饰变量。
+为了实现对\@ComponentV2装饰的自定义组件中变量变化的观测，开发者可以使用[\@Local](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-local-d.md#local)装饰器装饰变量。
 
 在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
 
@@ -670,7 +670,7 @@ struct Index {
 
 ### 在状态管理V2中使用animateTo动画效果异常
 
-在下面的场景中，[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)暂不支持直接在状态管理V2中使用。
+在下面的场景中，[animateTo](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)暂不支持直接在状态管理V2中使用。
 
 <!-- @[Local_AnimateTo_V2_Problem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalAnimateToV2Problem.ets) -->
 

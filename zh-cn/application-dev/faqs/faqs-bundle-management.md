@@ -14,7 +14,7 @@
 
 **参考链接**
 
-[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundle-bundlemanager.md)
 
 
 ## 如何获取应用配置的versionCode和versionName(API 9)
@@ -44,7 +44,7 @@ try {
 
 **参考链接**
 
-[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)
+[getBundleInfoForSelf](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)
 
 
 ## 如何获取应用自身的bundleName(API 9)
@@ -63,7 +63,7 @@ console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 
 **参考链接**
 
-[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[AbilityInfo](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
+[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md)、[AbilityInfo](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-abilityinfo-t.md)
 
 
 ## 如何获取App版本号，版本名，屏幕分辨率等信息(API 9)
@@ -134,7 +134,7 @@ console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 
 **参考链接**
 
-[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundle-bundlemanager.md)
 
 
 ## 如何查询进程的pid(API 9)
@@ -152,7 +152,7 @@ private pid = process.pid;
 
 **参考链接**
 
-[@ohos.process (获取进程相关的信息)](../reference/apis-arkts/js-apis-process.md)
+[@ohos.process (获取进程相关的信息)](../reference/apis-arkts/arkts-apis/arkts-arkts-process.md)
 
 
 ## 如何让最大化按钮不可用(API 9)
@@ -197,5 +197,5 @@ private pid = process.pid;
 
 **参考链接**
 
-[supportWindowModes](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md#abilityinfo-1)参考文档
+[supportWindowModes](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityinfo-i.md#abilityinfo)参考文档
 

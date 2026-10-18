@@ -71,11 +71,11 @@ ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程�
 
 ## 组件预览
 
-ArkTS应用/原子化服务支持组件预览功能。组件预览通过在自定义组件前添加[@Preview装饰器](../reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md#preview装饰器)实现。在单个源文件中，最多可以使用10个`@Preview`装饰自定义组件。启动方式：
+ArkTS应用/原子化服务支持组件预览功能。组件预览通过在自定义组件前添加@Preview装饰器实现。在单个源文件中，最多可以使用10个`@Preview`装饰自定义组件。启动方式：
 - 当组件被\@Entry和\@Preview装饰时，点击右侧侧边栏的Previewer按钮，启动页面预览，页面加载成功后，点击![ide_previewer_003](figures/ide_previewer_003.png)，切换到组件预览。
 - 当组件仅被\@Preview装饰时，点击右侧侧边栏的Previewer按钮，则默认为组件预览。
 
-组件预览时，使用@Preview装饰器的默认属性（请参考[PreviewParams](../reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md#previewparams9)）进行效果显示。可以通过设置@Preview的参数，指定预览设备的相关属性，包括设备类型、屏幕形状等。
+组件预览时，使用@Preview装饰器的默认属性（请参考[PreviewParams](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-previewparams-i.md#previewparams)）进行效果显示。可以通过设置@Preview的参数，指定预览设备的相关属性，包括设备类型、屏幕形状等。
 
 @Preview的使用参考如下示例：
 

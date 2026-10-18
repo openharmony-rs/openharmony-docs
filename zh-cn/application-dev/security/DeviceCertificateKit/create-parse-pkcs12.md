@@ -15,14 +15,14 @@ PKCS #12是一种用于存储和传输用户私钥、证书及其相关证书链
 
 ## 开发步骤
 
-1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-security-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createPkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatepkcs1221)创建PKCS12文件。
+2. 调用cert.createPkcs12创建PKCS12文件。
 
-3. 调用[cert.parsePkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certparsepkcs1218)解析PKCS12文件。
+3. 调用cert.parsePkcs12解析PKCS12文件。
 
 - 异步方法示例：
 

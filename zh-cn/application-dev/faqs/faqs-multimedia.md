@@ -184,7 +184,7 @@ CAMERA_STATUS_AVAILABLE 2 相机可用。
 
 CAMERA_STATUS_UNAVAILABLE 3 相机不可用。
 
-参考文档：[CameraStatus](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#oncamerastatus)
+参考文档：[CameraStatus](../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#oncamerastatus)
 
 ## SoundPool播放的音频是否支持wmv格式？支持哪些格式？(API 10)
 **解决措施**
@@ -203,7 +203,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-[readLatestImage](../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md#readlatestimage9)
+[readLatestImage](../reference/apis-image-kit/arkts-apis/arkts-image-image-imagereceiver-i.md#readlatestimage)
 
 ## 如何实现录音监听？(API 10)
 
@@ -213,7 +213,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-[on('audioCapturerChange')](../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)
+[on('audioCapturerChange')](../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#onaudiocapturerchange)
 
 ## 音频处理哪些场景内置了3A处理的算法(AEC、ANC、AGC)？若内置了，有无音频3A处理的相关接口，如何调用？系统3A算法AEC、ANC、AGC是否支持独立开关？录音场景系统是否支持3A，如果不支持的话，解决方案是什么？例如：如何在播放音乐时，不影响音频录制的音质？(API 10)
 
@@ -223,7 +223,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-[AudioCapturer](../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)
+[AudioCapturer](../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md)
 
 ## 如何实现低时延音频采集？(API 11)
 
@@ -233,7 +233,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-[OHAudio](../reference/apis-audio-kit/capi-ohaudio.md)
+[OHAudio](../reference/apis-audio-kit/c-apis/capi-ohaudio.md)
 
 ## 如何实现实时视频流传输？如何实现直播场景？(API 10)
 
@@ -281,5 +281,5 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **参考资料**
 
-1. [scale](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#scale9)
-2. [packing](../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)
+1. [scale](../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#scale)
+2. [packing](../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packing)

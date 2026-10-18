@@ -52,7 +52,7 @@ MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用)提供设备管理能力，包
 
 > **说明**
 > 
-> 所需要申请的权限请参考具体接口，这里提供了[admin权限管理](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)的链接，可基于该文档查看MDM Kit内其他API文档。
+> 所需要申请的权限请参考具体接口，这里提供了[admin权限管理](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-enterprise-adminmanager.md)的链接，可基于该文档查看MDM Kit内其他API文档。
 >
 > <!--RP4--><!--RP4End-->
 

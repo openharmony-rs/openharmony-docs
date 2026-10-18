@@ -10,7 +10,7 @@
 
 ![image](figures/overlayManager.png)
 
-可以通过使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getOverlayManager](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getoverlaymanager12)方法获取当前UI上下文关联的[OverlayManager](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md)对象，再通过该对象调用对应方法。
+可以通过使用[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getOverlayManager](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getoverlaymanager)方法获取当前UI上下文关联的[OverlayManager](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md)对象，再通过该对象调用对应方法。
 
 ## 规格约束
 
@@ -18,12 +18,12 @@
 * OverlayManager添加的节点显示和消失时没有默认动画。
 * OverlayManager上节点安全区域内外的绘制方式与Page一致，键盘避让方式与Page一致。
 * 推荐使用AppStorage存储与OverlayManager相关的属性，以避免页面切换时属性值变化导致业务错误。
-* 当使用API version 19以下版本时，OverlayManager不支持侧滑（左滑/右滑）关闭，需在[onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)中添加OverlayManager关闭的逻辑。API 19及以上版本可通过配置[OverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-i.md#overlaymanageroptions15)中的enableBackPressedEvent属性设置OverlayManager是否响应侧滑手势。
-* OverlayManager中的事件机制优先被[WrappedBuilder](state-management/arkts-wrapBuilder.md)装饰的组件接收。若需实现浮层底部接收事件，可通过设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent将事件传递至底层。
+* 当使用API version 19以下版本时，OverlayManager不支持侧滑（左滑/右滑）关闭，需在[onBackPress](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md#onbackpress)中添加OverlayManager关闭的逻辑。API 19及以上版本可通过配置[OverlayManagerOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md#overlaymanageroptions)中的enableBackPressedEvent属性设置OverlayManager是否响应侧滑手势。
+* OverlayManager中的事件机制优先被[WrappedBuilder](state-management/arkts-wrapBuilder.md)装饰的组件接收。若需实现浮层底部接收事件，可通过设置[hitTestBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior)为HitTestMode.Transparent将事件传递至底层。
 
 ## 设置浮层
 
-在OverlayManager上新增指定节点（[addComponentContent](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontent12)）、删除指定节点（[removeComponentContent](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#removecomponentcontent12)）、显示所有节点（[showAllComponentContents](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#showallcomponentcontents12)）和隐藏所有节点（[hideAllComponentContents](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#hideallcomponentcontents12)）。
+在OverlayManager上新增指定节点（[addComponentContent](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md#addcomponentcontent)）、删除指定节点（[removeComponentContent](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md#removecomponentcontent)）、显示所有节点（[showAllComponentContents](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md#showallcomponentcontents)）和隐藏所有节点（[hideAllComponentContents](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md#hideallcomponentcontents)）。
 
 <!-- @[OverlayManager_Demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets) -->  
 
@@ -217,7 +217,7 @@ export struct OverlayManagerAlertDialog {
 ```
 ![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
 
-从API version 18开始，可以利用OverlayManager对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
+从API version 18开始，可以利用OverlayManager对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md#addcomponentcontentwithorder)），层次高的浮层会覆盖在层级低的浮层之上。
 
 <!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->  
 
@@ -318,7 +318,7 @@ export struct OverlayManagerWithOrder {
 ```
 ![overlayManager-demo3](figures/overlaymanager-demo_3.gif)
 
-从API版本26.0.0开始，可通过设置[OverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-i.md#overlaymanageroptions15)中的onBackPress回调拦截Overlay的侧滑返回事件。当enableBackPressedEvent设置为true并注册onBackPress回调时，侧滑返回事件不会自动关闭Overlay，而是调用该回调由开发者决定是否拦截：返回true表示拦截该事件（事件被消费，不会向下层传递），返回false表示事件向下层组件透传。该回调需在调用getOverlayManager之前通过[setOverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setoverlaymanageroptions15)设置。
+从API版本26.0.0开始，可通过设置[OverlayManagerOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md#overlaymanageroptions)中的onBackPress回调拦截Overlay的侧滑返回事件。当enableBackPressedEvent设置为true并注册onBackPress回调时，侧滑返回事件不会自动关闭Overlay，而是调用该回调由开发者决定是否拦截：返回true表示拦截该事件（事件被消费，不会向下层传递），返回false表示事件向下层组件透传。该回调需在调用getOverlayManager之前通过[setOverlayManagerOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#setoverlaymanageroptions)设置。
 
 <!-- @[OverlayManager_Demo4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerOnBackPress.ets) -->
 

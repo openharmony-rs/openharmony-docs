@@ -74,7 +74,7 @@
     }
    ```
 
-2. 调用[registerInputer](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#registerinputer8)注册PIN码输入器。
+2. 调用[registerInputer](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-inputermanager-c-sys.md#registerinputer)注册PIN码输入器。
 
    ```ts
     let PINAuth: osAccount.PINAuth = new osAccount.PINAuth();
@@ -85,11 +85,11 @@
 
 ## 打开会话
 
-在进行凭据管理前，请先打开一个新的会话。开发者可以使用[openSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#opensession8)接口完成此操作。
+在进行凭据管理前，请先打开一个新的会话。开发者可以使用[openSession](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#opensession)接口完成此操作。
 
 具体开发实例如下：
 
-调用[openSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#opensession8)接口打开一个新的凭据管理会话。
+调用[openSession](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#opensession)接口打开一个新的凭据管理会话。
 
    ```ts
    let session: Uint8Array = await userIDM.openSession();
@@ -97,7 +97,7 @@
 
 ## 录入PIN码
 
-前述操作完成后，可以进行PIN码录入。开发者可以使用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)接口完成此操作。
+前述操作完成后，可以进行PIN码录入。开发者可以使用[addCredential](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-credentialchangetype-e-sys.md#addcredential)接口完成此操作。
 
 具体开发实例如下：
 
@@ -112,7 +112,7 @@
    };
    ```
 
-2. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)接口添加指定的凭据信息，执行结果通过回调获取。
+2. 调用[addCredential](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-credentialchangetype-e-sys.md#addcredential)接口添加指定的凭据信息，执行结果通过回调获取。
 
    ```ts
    userIDM.addCredential(credentialInfo,{
@@ -126,7 +126,7 @@
 
 ## 认证PIN码
 
-录入完PIN码，用户可以进行PIN码认证。开发者可以使用[auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth8)接口完成此操作。
+录入完PIN码，用户可以进行PIN码认证。开发者可以使用[auth](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-domainaccountmanager-c-sys.md#auth)接口完成此操作。
 
 具体开发实例如下：
 
@@ -145,7 +145,7 @@
    let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
    ```
 
-2. 调用[auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth8)接口进行认证。
+2. 调用[auth](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-domainaccountmanager-c-sys.md#auth)接口进行认证。
 
    ```ts
    let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
@@ -178,7 +178,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
     }
    ```
 
-3. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)录入人脸凭据。
+3. 调用[addCredential](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-credentialchangetype-e-sys.md#addcredential)录入人脸凭据。
 
    ```ts
    userIDM.addCredential(faceCredInfo, {
@@ -200,7 +200,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
    }
    ```
 
-5. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)录入指纹凭据。
+5. 调用[addCredential](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-credentialchangetype-e-sys.md#addcredential)录入指纹凭据。
 
    ```ts
    userIDM.addCredential(fingerprintCredInfo, {
@@ -215,7 +215,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 ## 认证生物识别凭据
 
-录入生物识别凭据后，用户可以进行生物识别认证。类似PIN码认证，开发者可以使用[auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth8)接口完成此操作。
+录入生物识别凭据后，用户可以进行生物识别认证。类似PIN码认证，开发者可以使用[auth](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-domainaccountmanager-c-sys.md#auth)接口完成此操作。
 
 具体开发实例如下：
 
@@ -250,7 +250,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 ## 更新凭据
 
-用户可以修改系统账号的凭据。开发者可以使用[updateCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#updatecredential8)接口完成此操作。
+用户可以修改系统账号的凭据。开发者可以使用[updateCredential](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-credentialchangetype-e-sys.md#updatecredential)接口完成此操作。
 
 具体开发实例如下：
 
@@ -267,7 +267,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
    };
    ```
 
-3. 调用[updateCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#updatecredential8)更新凭据。
+3. 调用[updateCredential](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-credentialchangetype-e-sys.md#updatecredential)更新凭据。
 
    ```ts
    userIDM.updateCredential(credentialInfo, {
@@ -282,7 +282,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 ## 查询凭据信息
 
-凭据管理界面需要向用户展示已录入的凭据信息；锁屏界面需要展示可认证的凭据类型。开发者可以使用[getAuthInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getauthinfo8)接口查询已录入的凭据信息，实现前述业务场景功能。
+凭据管理界面需要向用户展示已录入的凭据信息；锁屏界面需要展示可认证的凭据类型。开发者可以使用[getAuthInfo](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo)接口查询已录入的凭据信息，实现前述业务场景功能。
 
 具体开发实例如下：
 
@@ -292,7 +292,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
    let enrolledCredInfoList: osAccount.EnrolledCredInfo[] = await userIDM.getAuthInfo();
    ```
 
-2. 调用[getAuthInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getauthinfo8)接口，获取指定类型的凭据信息（以PIN码凭据为例）。
+2. 调用[getAuthInfo](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo)接口，获取指定类型的凭据信息（以PIN码凭据为例）。
 
    ```ts
       let enrolledPinCredInfoList: osAccount.EnrolledCredInfo[] =
@@ -320,7 +320,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 2. [认证PIN码](#认证pin码)，获取授权令牌。
 
-3. 调用[delCred](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#delcred8)接口，删除指定凭据。
+3. 调用[delCred](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#delcred)接口，删除指定凭据。
 
    ```ts
    userIDM.delCred(credentialId, authResult.token, {
@@ -335,7 +335,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 ## 注销PIN码输入器
 
-不再使用输入器时，可以调用[unregisterInputer](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#unregisterinputer8)注销PIN码输入器。
+不再使用输入器时，可以调用[unregisterInputer](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-inputermanager-c-sys.md#unregisterinputer)注销PIN码输入器。
 
 具体开发实例如下：
 
@@ -346,7 +346,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 ## 关闭会话
 
-调用[closeSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#closesession8)关闭会话，结束凭据管理。
+调用[closeSession](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#closesession)关闭会话，结束凭据管理。
 
 具体开发实例如下：
 

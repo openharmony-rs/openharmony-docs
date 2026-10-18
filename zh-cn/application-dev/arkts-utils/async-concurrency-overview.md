@@ -85,7 +85,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 > **说明：**
 >
-> 当Promise被reject且未通过catch方法处理时，会触发globalUnhandledRejectionDetected事件。可使用[errorManager.on('globalUnhandledRejectionDetected')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronglobalunhandledrejectiondetected18)接口监听该事件，以全局捕获未处理的Promise reject。
+> 当Promise被reject且未通过catch方法处理时，会触发globalUnhandledRejectionDetected事件。可使用[errorManager.on('globalUnhandledRejectionDetected')](../reference/apis-ability-kit/arkts-apis/arkts-ability-errormanager-on-f.md#onglobalunhandledrejectiondetected)接口监听该事件，以全局捕获未处理的Promise reject。
 
 ## async/await
 

@@ -17,7 +17,7 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
 
 ## 接口说明
 
-完整的JS API说明以及示例代码请参考：[STA接口](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+完整的JS API说明以及示例代码请参考：[STA接口](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-wifimanager.md)。
 
 接口具体说明如下表所示。
 
@@ -137,5 +137,5 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
      console.error(`WiFi Connection failed. ${error.message}`);
    }
    ```
-6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate)。
+6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-wifimanager-connstate-e.md#connstate)。
 7. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。

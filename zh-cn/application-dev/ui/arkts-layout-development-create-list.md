@@ -11,9 +11,9 @@
 
 列表是一种复杂的容器，当列表项达到一定数量，内容超过屏幕大小时，可以自动提供滚动功能。它适合用于呈现同类数据类型或数据类型集，例如图片和文本。在列表中显示数据集合是许多应用程序中的常见要求（如通讯录、音乐列表、购物清单等）。
 
-使用列表可以轻松高效地显示结构化、可滚动的信息。通过在[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中按垂直或者水平方向线性排列子组件[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)或[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)，为列表中的行或列提供单个视图，或使用[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)迭代一组行或列，或混合任意数量的单个视图和ForEach结构，构建一个列表。List组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、循环渲染、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等[渲染控制](../ui/rendering-control/arkts-rendering-control-overview.md)方式生成子组件。
+使用列表可以轻松高效地显示结构化、可滚动的信息。通过在[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)组件中按垂直或者水平方向线性排列子组件[ListItemGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitemgroup-t.md)或[ListItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitem-t.md)，为列表中的行或列提供单个视图，或使用[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)迭代一组行或列，或混合任意数量的单个视图和ForEach结构，构建一个列表。List组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、循环渲染、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等[渲染控制](../ui/rendering-control/arkts-rendering-control-overview.md)方式生成子组件。
 
-在圆形屏幕设备上，推荐使用[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)组件，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)。
+在圆形屏幕设备上，推荐使用ArcList组件，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)。
 
 以下各步骤示例为片段代码，可通过点击示例代码右下方的链接获取完整示例。
 
@@ -91,7 +91,7 @@ List组件交叉轴方向在没有设置尺寸时，其尺寸默认自适应父�
 
 List组件主轴默认是垂直方向，即默认情况下不需要手动设置List方向，就可以构建一个垂直滚动列表。
 
-若是水平滚动列表场景，将List的[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
+若是水平滚动列表场景，将List的[listDirection](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#listdirection)属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
 
 
 <!-- @[build_a_horizontal_scrolling_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
@@ -108,9 +108,9 @@ List(
 
 ### 设置交叉轴布局
 
-List组件的交叉轴布局可以通过[lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9)和[alignListItem](../reference/apis-arkui/arkui-ts/ts-container-list.md#alignlistitem9)属性进行设置，lanes属性用于确定交叉轴排列的列表项数量，alignListItem用于设置子组件在交叉轴方向的对齐方式。
+List组件的交叉轴布局可以通过[lanes](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#lanes)和[alignListItem](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#alignlistitem)属性进行设置，lanes属性用于确定交叉轴排列的列表项数量，alignListItem用于设置子组件在交叉轴方向的对齐方式。
 
-List组件的lanes属性通常用于在不同尺寸的设备自适应构建不同行数或列数的列表，即一次开发、多端部署的场景。lanes属性的取值类型是"number | [LengthConstrain](../reference/apis-arkui/arkui-ts/ts-types.md#lengthconstrain)"，即整数或者LengthConstrain类型。以垂直列表为例，如果将lanes属性设为2，表示构建的是一个两列的垂直列表，如图2中右图所示。lanes的默认值为1，即默认情况下，垂直列表的列数是1。
+List组件的lanes属性通常用于在不同尺寸的设备自适应构建不同行数或列数的列表，即一次开发、多端部署的场景。lanes属性的取值类型是"number | LengthConstrain"，即整数或者LengthConstrain类型。以垂直列表为例，如果将lanes属性设为2，表示构建的是一个两列的垂直列表，如图2中右图所示。lanes的默认值为1，即默认情况下，垂直列表的列数是1。
 
 
 <!-- @[lanes_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
@@ -188,7 +188,7 @@ List组件创建时，显示区域中的ListItem会被创建与布局。预加�
 ### 使用Repeat创建ListItem
 **使用virtualScroll**
 
-List组件创建时，使用设置了[virtualScroll](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll)的Repeat生成ListItem，此时显示区域内的ListItem将被创建和布局。预加载范围内的ListItem在渲染线程空闲时创建和布局，并且挂载至组件树上。预加载范围外的ListItem则不会被创建。
+List组件创建时，使用设置了[virtualScroll](../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll)的Repeat生成ListItem，此时显示区域内的ListItem将被创建和布局。预加载范围内的ListItem在渲染线程空闲时创建和布局，并且挂载至组件树上。预加载范围外的ListItem则不会被创建。
 
 当List组件滑动时，进入预加载及显示区域的ListItem，将从缓存池中获取ListItem并复用及布局，若缓存池中无ListItem，则会新创建并布局。滑出预加载及显示区域的ListItem将被回收至缓存池。
 
@@ -355,7 +355,7 @@ export struct ListIteration {
 
 ### 设置内容间距
 
-在初始化列表时，如需在列表项之间添加间距，可以使用[ListOptions](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18对象说明)的space参数。例如，在每个列表项之间沿主轴方向添加10vp的间距。
+在初始化列表时，如需在列表项之间添加间距，可以使用ListOptions的space参数。例如，在每个列表项之间沿主轴方向添加10vp的间距。
 
 
 <!-- @[set_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
@@ -374,7 +374,7 @@ List({ space: 10 }) {
 
 ![list13](figures/list13.png)
 
-List提供了[divider](../reference/apis-arkui/arkui-ts/ts-container-list.md#divider)属性用于给列表项之间添加分隔线。在设置divider属性时，可以通过strokeWidth和color属性设置分隔线的粗细和颜色。
+List提供了[divider](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#divider)属性用于给列表项之间添加分隔线。在设置divider属性时，可以通过strokeWidth和color属性设置分隔线的粗细和颜色。
 
 startMargin和endMargin属性分别用于设置分隔线距离列表侧边起始端的距离和距离列表侧边结束端的距离。
 
@@ -435,7 +435,7 @@ export struct CustomListStyle {
 
 ![zh-cn_image_0000001511740544](figures/zh-cn_image_0000001511740544.gif)
 
-在使用List组件时，可通过scrollBar属性控制列表滚动条的显示。scrollBar的取值类型为[BarState](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#barstate)，当取值为BarState.Auto表示按需显示滚动条。此时，当触摸到滚动条区域时显示控件，可上下拖拽滚动条快速浏览内容，拖拽时会变粗。若不进行任何操作，2秒后滚动条自动消失。
+在使用List组件时，可通过scrollBar属性控制列表滚动条的显示。scrollBar的取值类型为[BarState](../reference/apis-arkui/arkts-apis/arkts-arkui-barstate-e.md#barstate)，当取值为BarState.Auto表示按需显示滚动条。此时，当触摸到滚动条区域时显示控件，可上下拖拽滚动条快速浏览内容，拖拽时会变粗。若不进行任何操作，2秒后滚动条自动消失。
 
 scrollBar属性API version 9及以下版本默认值为BarState.Off，从API version 10版本开始默认值为BarState.Auto。
 <!-- @[add_a_scrollbar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
@@ -452,9 +452,9 @@ List(
 
 ## 添加外置滚动条
 
-列表[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)可与[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)组件配合使用，为列表添加外置滚动条。两者通过绑定同一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)滚动控制器对象实现联动。
+列表[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)可与ScrollBar组件配合使用，为列表添加外置滚动条。两者通过绑定同一个[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)滚动控制器对象实现联动。
 
-1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)类型的对象listScroller。
+1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)类型的对象listScroller。
 
    <!-- @[external_scroll_ctrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
    
@@ -462,7 +462,7 @@ List(
    private listScroller: Scroller = new Scroller();
    ```
 
-2. 然后，列表通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18对象说明)参数绑定滚动控制器。
+2. 然后，列表通过scroller参数绑定滚动控制器。
 
    <!-- @[external_scroll_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
    
@@ -473,7 +473,7 @@ List(
    }
    ```
 
-3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions对象说明)参数绑定滚动控制器。
+3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkts-components/arkts-arkui-scrollbar-comp.md#scrollbaroptions对象说明)参数绑定滚动控制器。
 
    <!-- @[external_scroll_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
    
@@ -487,8 +487,8 @@ List(
 ![ScrollBar](figures/list_scrollbar.gif)
 
 >**说明：**
->- 滚动条组件[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)，还可配合其他可滚动组件使用，如[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)。
->- 在圆形屏幕设备上，[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)可以与弧形滚动条组件[ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md)配合使用为列表添加弧形外置滚动条，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)的[添加外置滚动条ArcScrollBar](./arkts-layout-development-create-arclist.md#添加外置滚动条arcscrollbar)章节。
+>- 滚动条组件ScrollBar，还可配合其他可滚动组件使用，如ArcList、[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)。
+>- 在圆形屏幕设备上，[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)可以与弧形滚动条组件ArcScrollBar配合使用为列表添加弧形外置滚动条，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)的[添加外置滚动条ArcScrollBar](./arkts-layout-development-create-arclist.md#添加外置滚动条arcscrollbar)章节。
 
 ## 支持分组列表
 
@@ -551,7 +551,7 @@ export struct GroupedList {
 
 ![zh-cn_image_0000001511740552](figures/zh-cn_image_0000001511740552.gif)
 
-List组件的[sticky](../reference/apis-arkui/arkui-ts/ts-container-list.md#sticky9)属性配合ListItemGroup组件使用，用于设置ListItemGroup中的头部组件是否呈现吸顶效果或者尾部组件是否呈现吸底效果。
+List组件的[sticky](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#sticky)属性配合ListItemGroup组件使用，用于设置ListItemGroup中的头部组件是否呈现吸顶效果或者尾部组件是否呈现吸底效果。
 
 通过给List组件设置sticky属性为StickyStyle.Header，即可实现列表的粘性标题效果。如果需要支持吸底效果，可以通过footer参数初始化ListItemGroup的底部组件，并将sticky属性设置为StickyStyle.Footer。
 
@@ -675,7 +675,7 @@ export struct StickyHeaderList {
 
 ![list18](figures/list18.gif)
 
-List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex方法使列表滚动到指定的列表项索引位置。
+List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex方法使列表滚动到指定的列表项索引位置。
 
 首先，需要创建一个Scroller的对象listScroller。
 
@@ -719,7 +719,7 @@ Stack({ alignContent: Alignment.Bottom }) {
 
 ![list19](figures/list19.gif)
 
-如上图所示，当联系人列表从A滚动到B时，右侧索引栏也需要同步从选中A状态变成选中B状态。此场景可以通过监听List组件的[onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)事件来实现，右侧索引栏需要使用字母表索引组件[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)。
+如上图所示，当联系人列表从A滚动到B时，右侧索引栏也需要同步从选中A状态变成选中B状态。此场景可以通过监听List组件的[onScrollIndex](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#onscrollindex)事件来实现，右侧索引栏需要使用字母表索引组件AlphabetIndexer。
 
 在列表滚动时，根据列表此时所在的索引值位置firstIndex，重新计算字母索引栏对应字母的位置selectedIndex。由于AlphabetIndexer组件通过selected属性设置了选中项索引值，当selectedIndex变化时会触发AlphabetIndexer组件重新渲染，从而显示为选中对应字母的状态。
 
@@ -777,7 +777,7 @@ export struct ResponsiveScrollPositionList {
 
 ![list20](figures/list20.gif)
 
-ListItem的[swipeAction](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeaction9)属性可用于实现列表项的左右滑动功能。swipeAction属性方法初始化时有必填参数SwipeActionOptions，其中，start参数表示设置列表项右滑时起始端滑出的组件，end参数表示设置列表项左滑时尾端滑出的组件。
+ListItem的[swipeAction](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-arclistitemattribute-c.md#swipeaction)属性可用于实现列表项的左右滑动功能。swipeAction属性方法初始化时有必填参数SwipeActionOptions，其中，start参数表示设置列表项右滑时起始端滑出的组件，end参数表示设置列表项左滑时尾端滑出的组件。
 
 在消息列表中，end参数表示设置ListItem左滑时尾端滑出自定义组件，即删除按钮。在初始化end方法时，将滑动列表项的索引传入删除按钮组件，当用户点击删除按钮时，可以根据索引值来删除列表项对应的数据，从而实现侧滑删除功能。
 
@@ -829,7 +829,7 @@ ListItem的[swipeAction](../reference/apis-arkui/arkui-ts/ts-container-listitem.
 
 ![list21](figures/list21.png)
 
-在ListItem中使用[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md)组件可实现给列表项添加标记功能。Badge是可以附加在单个组件上用于信息标记的容器组件。
+在ListItem中使用[Badge](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-badge-t.md)组件可实现给列表项添加标记功能。Badge是可以附加在单个组件上用于信息标记的容器组件。
 
 在消息列表中，若希望在消息的右上角添加标记，可在实现消息列表项ListItem中，将对应的组件作为Badge的子组件。
 
@@ -854,7 +854,7 @@ ListItem() {
 
 ## 下拉刷新与上拉加载
 
-页面的下拉刷新与上拉加载功能在移动应用中十分常见，例如，新闻页面的内容刷新和加载。这两种操作的原理都是通过响应用户的[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)，在顶部或者底部显示一个刷新或加载视图，完成后再将此视图隐藏。
+页面的下拉刷新与上拉加载功能在移动应用中十分常见，例如，新闻页面的内容刷新和加载。这两种操作的原理都是通过响应用户的触摸事件，在顶部或者底部显示一个刷新或加载视图，完成后再将此视图隐藏。
 
 以下拉刷新为例，其实现主要分成三步：
 
@@ -866,7 +866,7 @@ ListItem() {
 
 > **说明：** 
 >
-> 页面的下拉刷新操作推荐使用[Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md)组件实现。
+> 页面的下拉刷新操作推荐使用[Refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md)组件实现。
 
 <!--RP1--><!--RP1End-->
 
@@ -1193,7 +1193,7 @@ ListItem() {
 
 关于长列表按需加载优化的具体实现可参考[数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)章节中的示例。
 
-当使用懒加载方式渲染列表时，为了更好的列表滚动体验，减少列表滑动时出现白块，List组件提供了[cachedCount](../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)参数用于设置列表项缓存数，懒加载方式只会预加载List显示区域外cachedCount的内容，而非懒加载会全部加载。无论懒加载还是非懒加载都只布局List显示区域+List显示区域外cachedCount的内容。
+当使用懒加载方式渲染列表时，为了更好的列表滚动体验，减少列表滑动时出现白块，List组件提供了[cachedCount](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#cachedcount)参数用于设置列表项缓存数，懒加载方式只会预加载List显示区域外cachedCount的内容，而非懒加载会全部加载。无论懒加载还是非懒加载都只布局List显示区域+List显示区域外cachedCount的内容。
 
 
 <!-- @[implement_cached_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1385,7 +1385,7 @@ List(
    }
    ```
 
-3. 通过改变ListItem的状态，来控制每个列表项是否展开，并通过[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)和[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)来实现展开与折叠过程中的动效效果。
+3. 通过改变ListItem的状态，来控制每个列表项是否展开，并通过[animation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md#animation)和[animateTo](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)来实现展开与折叠过程中的动效效果。
 
    <!-- @[list_item_data_group_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
    
@@ -1435,7 +1435,7 @@ List(
    }
    ```
 
-2. 构造列表结构，同时把[stackFromEnd](../reference/apis-arkui/arkui-ts/ts-container-list.md#stackfromend19)接口参数值设置为true，即可实现List列表在底部插入数据时，内容向上滚动。
+2. 构造列表结构，同时把[stackFromEnd](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#stackfromend)接口参数值设置为true，即可实现List列表在底部插入数据时，内容向上滚动。
 
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
@@ -1499,7 +1499,7 @@ List(
 
 ## 支持滑动离手事件
 
-从API version 20开始，滚动类组件（[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)）支持滑动离手事件回调功能，当用户手指离开屏幕时，会触发该事件并上报离手瞬间的滑动速度。开发者可利用此接口实现类似新闻浏览页面的自定义限位滚动效果，短新闻限位滚动，长新闻自由滚动。
+从API version 20开始，滚动类组件（[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)）支持滑动离手事件回调功能，当用户手指离开屏幕时，会触发该事件并上报离手瞬间的滑动速度。开发者可利用此接口实现类似新闻浏览页面的自定义限位滚动效果，短新闻限位滚动，长新闻自由滚动。
 
   **图26** 自定义限位滚动效果
 
@@ -1558,7 +1558,7 @@ List(
      })
      ```
 
-   - 通过[getItemRect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#getitemrect11)接口方法获取当前项位置信息。
+   - 通过[getItemRect](../reference/apis-arkui/arkts-components/arkts-arkui-scroll-comp-scroller-c.md#getitemrect)接口方法获取当前项位置信息。
 
      <!-- @[scroller_list_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
      
@@ -1611,7 +1611,7 @@ List(
 
 ## 设置边缘滑动效果
 
-边缘滑动效果是指当用户滑动滚动组件至边缘后，继续滑动时触发的交互效果。当前List支持通过[edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-list.md#edgeeffect)属性设置三种边缘滑动效果，分别为弹簧效果（即回弹效果）、阴影效果、无效果。具体效果说明请参见[EdgeEffect](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)的枚举说明。
+边缘滑动效果是指当用户滑动滚动组件至边缘后，继续滑动时触发的交互效果。当前List支持通过[edgeEffect](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#edgeeffect)属性设置三种边缘滑动效果，分别为弹簧效果（即回弹效果）、阴影效果、无效果。具体效果说明请参见[EdgeEffect](../reference/apis-arkui/arkts-apis/arkts-arkui-edgeeffect-e.md#edgeeffect)的枚举说明。
 
 当List组件的内容区大于等于一屏时，List的边缘滑动效果默认为回弹效果，如下图所示。
 
@@ -1635,7 +1635,7 @@ List(
 
 ## 手指滑动多选
 
-从API版本26.0.0开始，[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)支持在编辑模式下实现手指滑动多选能力。进入编辑模式后，用户可以滑动经过多个[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)，批量选择或取消选择列表项。应用可以在ListItem上设置是否允许被选择，并根据回调记录已选择的列表项。该能力适用于文件管理、消息列表、待办列表等需要连续批量选择列表项的场景。
+从API版本26.0.0开始，[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)支持在编辑模式下实现手指滑动多选能力。进入编辑模式后，用户可以滑动经过多个[ListItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitem-t.md)，批量选择或取消选择列表项。应用可以在ListItem上设置是否允许被选择，并根据回调记录已选择的列表项。该能力适用于文件管理、消息列表、待办列表等需要连续批量选择列表项的场景。
 
 **List手指滑动多选示例效果图**
 
@@ -1643,9 +1643,9 @@ List(
 
 ### 设置编辑模式
 
-通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-list.md#enableeditmode)设置是否进入编辑模式。设置为true时，List进入编辑模式，用户可以单指滑动经过多个ListItem进行批量选择或取消选择；设置为false时，List退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
+通过[enableEditMode](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#enableeditmode)设置是否进入编辑模式。设置为true时，List进入编辑模式，用户可以单指滑动经过多个ListItem进行批量选择或取消选择；设置为false时，List退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
 
-通过[editModeOptions](../reference/apis-arkui/arkui-ts/ts-container-list.md#editmodeoptions23)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示ListItem右侧的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
+通过[editModeOptions](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#editmodeoptions)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示ListItem右侧的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
 <!-- @[Add_list_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
 
 ``` TypeScript
@@ -1669,7 +1669,7 @@ List({ space: 10 }) {
 
 3. 自定义选择控件和ListItem使用同一份选择结果数据。ListItem仍需配置selectable、selected和onSelect，用于在手指滑动多选过程中同步最新选择结果。
 
-4. 关闭了默认编辑样式以后，开发者需要通过[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)进行手势裁决，来决定滑动哪块区域能够进行滑动多选。开发者可根据编辑模式状态、手势类型、手势tag或触摸区域返回GestureJudgeResult.REJECT或GestureJudgeResult.CONTINUE，决定当前业务手势是否继续参与识别。
+4. 关闭了默认编辑样式以后，开发者需要通过[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturerecognizerjudgebegin)进行手势裁决，来决定滑动哪块区域能够进行滑动多选。开发者可根据编辑模式状态、手势类型、手势tag或触摸区域返回GestureJudgeResult.REJECT或GestureJudgeResult.CONTINUE，决定当前业务手势是否继续参与识别。
 <!-- @[Add_list_GestureRecognizerJudgeBegin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
 
 ``` TypeScript
@@ -1686,7 +1686,7 @@ List({ space: 10 }) {
 
 ### 记录列表项选择结果
 
-在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个列表项的最新选择结果。
+在ListItem上配置[selectable](../reference/apis-arkui/arkts-components/arkts-arkui-listitem-comp-attribute.md#selectable)、[selected](../reference/apis-arkui/arkts-components/arkts-arkui-listitem-comp-attribute.md#selected)和[onSelect](../reference/apis-arkui/arkts-components/arkts-arkui-listitem-comp-attribute.md#onselect)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个列表项的最新选择结果。
 <!-- @[Add_list_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
 
 ``` TypeScript
@@ -1703,8 +1703,8 @@ ListItem() {
 >**说明：**
 >
 >- 建议使用列表项数据中不会随位置变化的唯一标识（例如消息ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
->- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange)回调中保存选择结果。
->- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
+>- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#oneditmodechange)回调中保存选择结果。
+>- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#datachangelistener)通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
 
 <!--RP2-->
 ## 相关实例

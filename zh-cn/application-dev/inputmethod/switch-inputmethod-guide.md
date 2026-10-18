@@ -16,7 +16,7 @@
 
 ## 切换当前输入法子类型
 
-1. 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodsubtype9)接口，传入当前输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)作为参数即可切换当前输入法子类型。
+1. 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype)接口，传入当前输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethodsubtype-i.md#inputmethodsubtype)作为参数即可切换当前输入法子类型。
 
    <!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
    
@@ -53,7 +53,7 @@
 
 ## 切换输入法应用
 
-在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchInputMethod](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchinputmethod9)接口，传入目标输入法的[InputMethodProperty](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)信息，即可切换输入法到目标输入法。
+在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchInputMethod](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-switchinputmethod-f-sys.md#switchinputmethod)接口，传入目标输入法的[InputMethodProperty](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodproperty-i.md#inputmethodproperty)信息，即可切换输入法到目标输入法。
 
    <!-- @[input_case_input_switchInputMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
    
@@ -76,7 +76,7 @@
 
 ## 切换输入法应用和子类型
 
-在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodAndSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodandsubtype9)接口，传入目标输入法的[InputMethodProperty](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)，目标输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)信息，即可切换输入法到目标输入法的指定子类型。
+在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodAndSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype)接口，传入目标输入法的[InputMethodProperty](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodproperty-i.md#inputmethodproperty)，目标输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethodsubtype-i.md#inputmethodsubtype)信息，即可切换输入法到目标输入法的指定子类型。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -21,7 +21,7 @@
 
 不同退出场景下，UIAbility的生命周期执行情况如下表所示：
 
-| 退出类型    | 具体触发场景       | 是否触发[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)  |
+| 退出类型    | 具体触发场景       | 是否触发[onDestroy](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#ondestroy)  |
 | ------------| ---------------- | ----------------------- |
 | 用户主动退出（正常退出）  | 用户侧滑返回或按返回键退出；用户在多任务管理界面中上滑清理单个卡片，或点击"清除全部"按钮。 |   是   |
 | 应用主动退出（正常退出） | 开发者显式调用terminateSelf()终止当前应用进程，常见场景包括：应用检测到致命错误，主动终止进程以避免数据损坏；完成应用内一键清理缓存等核心任务后，主动结束生命周期。 |  是 |
@@ -50,9 +50,9 @@
 
 应用退出时，系统按照"UIAbility -> AbilityStage -> 进程"的顺序依次销毁，具体流程如下：
 
-1. **UIAbility销毁**：当某个UIAbility实例被销毁时，系统依次回调[onWindowStageWillDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagewilldestroy12)、[onWindowStageDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)，最后回调[onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)生命周期。开发者可以在`onDestroy()`中执行该UIAbility实例的资源释放操作，如关闭网络连接、释放文件句柄等。
+1. **UIAbility销毁**：当某个UIAbility实例被销毁时，系统依次回调[onWindowStageWillDestroy()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagewilldestroy)、[onWindowStageDestroy()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagedestroy)，最后回调[onDestroy()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#ondestroy)生命周期。开发者可以在`onDestroy()`中执行该UIAbility实例的资源释放操作，如关闭网络连接、释放文件句柄等。
 
-2. **AbilityStage销毁**：当某个AbilityStage下所有的UIAbility对象均被销毁后，系统回调该AbilityStage的[onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#ondestroy12)生命周期。开发者可以在该回调中执行Module级别的资源释放操作，如释放Module级别的缓存、关闭Module级别的数据库连接等。
+2. **AbilityStage销毁**：当某个AbilityStage下所有的UIAbility对象均被销毁后，系统回调该AbilityStage的[onDestroy()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#ondestroy)生命周期。开发者可以在该回调中执行Module级别的资源释放操作，如释放Module级别的缓存、关闭Module级别的数据库连接等。
 
 3. **进程退出**：当应用进程内所有AbilityStage均被销毁后，应用进程退出，操作系统回收该进程的全部内存与线程资源。
 
@@ -65,9 +65,9 @@
 ## 用户主动退出
 
 ### 用户通过返回退出
-**场景示例**：在手机类设备上，用户按下返回键时，系统回调UIAbility的[onBackPressed()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackpressed10)回调，该回调默认返回true，系统将UIAbility置于后台而不是销毁。
+**场景示例**：在手机类设备上，用户按下返回键时，系统回调UIAbility的[onBackPressed()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onbackpressed)回调，该回调默认返回true，系统将UIAbility置于后台而不是销毁。
 
-**开发实现**：开发者可以通过重写[onBackPressed()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackpressed10)方法返回true来改变返回键的默认行为，例如在onBackPressed()中调用terminateSelf()，实现按下返回键时直接退出UIAbility。
+**开发实现**：开发者可以通过重写[onBackPressed()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onbackpressed)方法返回true来改变返回键的默认行为，例如在onBackPressed()中调用terminateSelf()，实现按下返回键时直接退出UIAbility。
 
 **开发步骤**：
 
@@ -118,7 +118,7 @@ export default class OnBackPressedAbility extends UIAbility {
 
 **场景示例**：用户点击应用内自定义的"退出"按钮；或者由UIAbility承载的广告页面倒计时结束，需要自动关闭。
 
-**开发实现**：开发者可以在业务逻辑执行完毕后，通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself-1)接口主动退出当前UIAbility。
+**开发实现**：开发者可以在业务逻辑执行完毕后，通过调用[terminateSelf()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateself-1)接口主动退出当前UIAbility。
 
 
 **开发步骤**：

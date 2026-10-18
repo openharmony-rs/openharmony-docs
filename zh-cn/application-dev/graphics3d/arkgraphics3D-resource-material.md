@@ -19,13 +19,13 @@ ArkGraphics 3D支持开发者创建自定义的着色器，开发者可以通过
 着色器通常配合MaterialType.SHADER材质使用，是实现个性化渲染的重要手段。其创建依赖名称及沙箱路径，创建后可绑定至材质上，替代默认的渲染行为。
 
 ## 材质类型（MaterialType）
-ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialtype)枚举指定，目前支持以下两种类型：
+ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-material-i.md#materialtype)枚举指定，目前支持以下两种类型：
 
 - MaterialType.SHADER：基于Shader（着色器）的材质类型，支持绑定自定义着色器，开发者可通过自定义渲染程序实现个性化的视觉表现，适用于高级图形渲染需求。
 
 - MaterialType.METALLIC_ROUGHNESS：基于金属-粗糙度模型的标准PBR材质类型，符合glTF材质规范，适合快速构建真实感渲染效果，支持设置基础色、金属度、粗糙度、法线贴图等常见属性。
 
-材质的创建一般通过[SceneResourceFactory.createMaterial()](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#creatematerial)方法完成，需指定材质名称和类型。不同类型的材质支持不同的参数配置，开发者可按需选择以实现预期的渲染效果。
+材质的创建一般通过[SceneResourceFactory.createMaterial()](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scene-sceneresourcefactory-i.md#creatematerial)方法完成，需指定材质名称和类型。不同类型的材质支持不同的参数配置，开发者可按需选择以实现预期的渲染效果。
 
 
 ## 材质的属性
@@ -35,7 +35,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 
 
 ### 通用属性
-所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置[Material](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#material)类型对象实现，用于控制材质的类型及其渲染基础行为：
+所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置[Material](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-material-i.md#material)类型对象实现，用于控制材质的类型及其渲染基础行为：
 
 - materialType：材质类型，标识该材质是标准PBR材质还是基于Shader的自定义材质。
 
@@ -66,7 +66,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
   适用场景：以线框模式渲染3D物体的网格，可直观显示模型的建模结构。
 
 ### PBR材质属性
-符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置[MetallicRoughnessMaterial](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#metallicroughnessmaterial20)实现，其中各项属性采用[MaterialProperty](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialproperty20)类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
+符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置[MetallicRoughnessMaterial](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-metallicroughnessmaterial-i.md#metallicroughnessmaterial)实现，其中各项属性采用[MaterialProperty](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-materialproperty-i.md#materialproperty)类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
 
 - baseColor：基础颜色和透明度，包含纹理及对应因子，用于定义材质表面的主色调。
 

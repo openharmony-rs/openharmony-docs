@@ -9,7 +9,7 @@ Stage模型是从API version 9开始支持，目前主推且会长期演进的�
 
 ## 接口说明
 
-FormExtensionAbility类拥有如下API接口，具体的API介绍详见[@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)。
+FormExtensionAbility类拥有如下API接口，具体的API介绍详见[@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability.md)。
 
 | 接口名                                                                                              | 描述 |
 | -------- | -------- |
@@ -21,7 +21,7 @@ FormExtensionAbility类拥有如下API接口，具体的API介绍详见[@ohos.ap
 | onRemoveForm(formId:&nbsp;string):&nbsp;void                                                     | 卡片提供方接收删除卡片的通知接口。 |
 | onConfigurationUpdate(newConfig:&nbsp;Configuration):&nbsp;void                                  | 当系统配置更新时调用。 |
 
-formProvider类部分API接口如下，具体的API介绍详见[@ohos.app.form.formProvider (formProvider)](../reference/apis-form-kit/js-apis-app-form-formProvider.md)。
+formProvider类部分API接口如下，具体的API介绍详见[@ohos.app.form.formProvider (formProvider)](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formprovider.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -30,7 +30,7 @@ formProvider类部分API接口如下，具体的API介绍详见[@ohos.app.form.f
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | 更新指定的卡片，使用callback异步回调。 |
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData):&nbsp;Promise&lt;void&gt; | 更新指定的卡片，使用Promise异步回调。 |
 
-formBindingData类部分API接口如下，具体的API介绍详见[@ohos.app.form.formBindingData (卡片数据绑定类)](../reference/apis-form-kit/js-apis-app-form-formBindingData.md)。
+formBindingData类部分API接口如下，具体的API介绍详见[@ohos.app.form.formBindingData (卡片数据绑定类)](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formbindingdata.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

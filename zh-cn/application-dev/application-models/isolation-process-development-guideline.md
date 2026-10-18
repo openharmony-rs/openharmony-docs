@@ -65,9 +65,9 @@
 
 ### 场景介绍
 
-动态指定进程适用于在运行阶段去动态确定运行进程的场景，例如将某些组件动态隔离到独立进程中运行，提高应用的稳定性和安全性。针对UIAbility实例，开发者需要将该UIAbility对应的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中的isolationProcess字段配置为true；系统在启动该UIAbility实例时，[主控进程](ability-terminology.md#masterprocess主控进程)会触发[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调方法返回用于标识独立进程的字符串。UIAbility所运行的独立进程名称的拼接规则为"包名:onNewProcessRequest回调方法返回的字符串"。如果返回的字符串是开发者曾创建过的，则复用该标识所对应的进程，否则创建新的进程。
+动态指定进程适用于在运行阶段去动态确定运行进程的场景，例如将某些组件动态隔离到独立进程中运行，提高应用的稳定性和安全性。针对UIAbility实例，开发者需要将该UIAbility对应的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中的isolationProcess字段配置为true；系统在启动该UIAbility实例时，[主控进程](ability-terminology.md#masterprocess主控进程)会触发[onNewProcessRequest](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#onnewprocessrequest)回调方法返回用于标识独立进程的字符串。UIAbility所运行的独立进程名称的拼接规则为"包名:onNewProcessRequest回调方法返回的字符串"。如果返回的字符串是开发者曾创建过的，则复用该标识所对应的进程，否则创建新的进程。
 <!--Del-->
-针对sys/commonUI类型的UIExtensionAbility，开发者需要将该UIExtensionAbility对应的[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)中的isolationProcess字段配置为true；同样的，系统在启动该sys/commonUI类型的UIExtensionAbility实例时，[主控进程](ability-terminology.md#masterprocess主控进程)会触发[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调方法返回用于标识独立进程的字符串。
+针对sys/commonUI类型的UIExtensionAbility，开发者需要将该UIExtensionAbility对应的[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)中的isolationProcess字段配置为true；同样的，系统在启动该sys/commonUI类型的UIExtensionAbility实例时，[主控进程](ability-terminology.md#masterprocess主控进程)会触发[onNewProcessRequest](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#onnewprocessrequest)回调方法返回用于标识独立进程的字符串。
 <!--DelEnd-->
 
 典型场景包括：
@@ -115,7 +115,7 @@
 
 2. 实现AbilityStage的onNewProcessRequest回调方法。
 
-    在srcEntry指定的AbilityStage源文件中，实现[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调方法。系统在启动配置isolationProcess为true的UIAbility实例时会触发该回调方法，然后根据该方法返回的字符串来动态地指定UIAbility实例所运行的独立进程。
+    在srcEntry指定的AbilityStage源文件中，实现[onNewProcessRequest](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#onnewprocessrequest)回调方法。系统在启动配置isolationProcess为true的UIAbility实例时会触发该回调方法，然后根据该方法返回的字符串来动态地指定UIAbility实例所运行的独立进程。
 
     <!-- @[dynamic_isolation_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/ets/MyAbilityStage/MyAbilityStage.ets) --> 
     

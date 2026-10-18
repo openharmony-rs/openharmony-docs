@@ -17,9 +17,9 @@
 
 **ArkTS接口**
 
-1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流，长度为1-128字节。
+1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流，长度为1-128字节。
 
-2. 调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口，需捕获BusinessError处理失败。
+2. 调用[registerProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider)接口，需捕获BusinessError处理失败。
 
 **C++接口**
 
@@ -29,9 +29,9 @@
    target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
    ```
 
-2. 构造注册参数，需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。
+2. 构造注册参数，需要传入OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME。
 
-3. 调用注册接口[OH_Huks_RegisterProvider](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_registerprovider)。
+3. 调用注册接口OH_Huks_RegisterProvider。
 
 ### 开发示例
 
@@ -153,11 +153,11 @@ static napi_value RegisterProvider(napi_env env, napi_callback_info info)
 
 ### 开发步骤
 
-1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流。
+1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流。
 
-2. 构造UIExtensionAbility注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段。
+2. 构造UIExtensionAbility注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)字段。
 
-3. 调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口，需捕获BusinessError处理失败。
+3. 调用[registerProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider)接口，需捕获BusinessError处理失败。
 
 ### 开发示例
 
@@ -221,9 +221,9 @@ async function testRegisterProvider(): Promise<void> {
 
 **ArkTS接口**
 
-1. 构造注销参数，注销单个ability需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数。批量注销不需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数。
+1. 构造注销参数，注销单个ability需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)参数。批量注销不需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)参数。
 
-2. 调用注销接口[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)。
+2. 调用注销接口[unregisterProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider)。
 
 **C++接口**
 
@@ -232,9 +232,9 @@ async function testRegisterProvider(): Promise<void> {
    target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
    ```
 
-2. 构造注销参数，注销单个ability需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。批量注销不需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。
+2. 构造注销参数，注销单个ability需要传入OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME。批量注销不需要传入OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME。
 
-3. 调用注销接口[OH_Huks_UnregisterProvider](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_unregisterprovider)。
+3. 调用注销接口OH_Huks_UnregisterProvider。
 
 ### 开发示例
 

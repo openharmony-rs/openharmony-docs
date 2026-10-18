@@ -106,7 +106,7 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
 
 ## 自定义路由表
 
-自定义路由表通过给Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性设置Builder函数实现，其特点是需要import页面。有两种import页面的方式，静态import和动态import，二者的区别在于：
+自定义路由表通过给Navigation的[navDestination](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-multinavigation-multinavigation-s.md#navdestination)属性设置Builder函数实现，其特点是需要import页面。有两种import页面的方式，静态import和动态import，二者的区别在于：
 
 | import方式 | 模块间耦合度   | 实现复杂度 | 性能                                     |
 | ---------- | -------------- | ---------- | ---------------------------------------- |
@@ -126,10 +126,10 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
 实现步骤如下，具体请参考<!--RP1-->[Navigation动态路由](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End-->示例。
 
 1. 定义页面跳转配置项。
-   - 使用资源文件进行定义，通过资源管理[@ohos.resourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md)在运行时对资源文件解析。
+   - 使用资源文件进行定义，通过资源管理[@ohos.resourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)在运行时对资源文件解析。
    - 在ets文件中配置路由加载配置项，一般包括路由页面名称（即pushPath等接口中页面的别名），文件所在模块名称（HSP/HAR的模块名），加载页面在模块内的路径（相对src目录的路径）。
 2. 加载目标跳转页面，通过[动态import](../arkts-utils/arkts-dynamic-import.md)将跳转目标页面所在的模块在运行时加载，在模块加载完成后，调用模块中的方法，通过import在模块的方法中加载模块中显示的目标页面，并返回页面加载完成后定义的Builder函数。
-3. 触发页面跳转，在Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性中执行步骤2加载的Builder函数，即可跳转到目标页面。
+3. 触发页面跳转，在Navigation的[navDestination](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-multinavigation-multinavigation-s.md#navdestination)属性中执行步骤2加载的Builder函数，即可跳转到目标页面。
 
 ### 静态import
 
@@ -139,7 +139,7 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
 
 1. 使用[@Builder装饰器](./state-management/arkts-builder.md)创建自定义构造函数`pageMap`。
 2. 在自定义构造函数`pageMap`里实现路由表，根据传入的页面名称构造不同的页面。
-3. 将`pageMap`配置到Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性中，完成路由表注册。
+3. 将`pageMap`配置到Navigation的[navDestination](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-multinavigation-multinavigation-s.md#navdestination)属性中，完成路由表注册。
 
 <!-- @[CustomRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/CustomRoutingTable.ets) -->
 

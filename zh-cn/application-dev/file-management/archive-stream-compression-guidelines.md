@@ -17,7 +17,7 @@
 
 ## 接口说明
 
-接口的详细说明，请参考[oh_archive.h](../reference/apis-core-file-kit/capi-oh-archive-h.md)。
+接口的详细说明，请参考[oh_archive.h](../reference/apis-core-file-kit/c-apis/capi-oh-archive-h.md)。
 
 ### 流式压缩解压缩接口
 

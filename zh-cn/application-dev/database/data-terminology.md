@@ -56,7 +56,7 @@ FULL模式是SQLite中数据库同步写入策略之一，当每次执行数据�
 
 ### RelationalStore；关系型数据库
 
-基于SQLite组件提供的数据持久化方案，以行和列形式存储数据。支持增删改查接口和自定义SQL语句，提供事务、索引等特性。从API version 18开始支持向量数据库能力。详细介绍请查看[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+基于SQLite组件提供的数据持久化方案，以行和列形式存储数据。支持增删改查接口和自定义SQL语句，提供事务、索引等特性。从API version 18开始支持向量数据库能力。详细介绍请查看[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-relationalstore.md)。
 
 ### ResultSet；结果集
 

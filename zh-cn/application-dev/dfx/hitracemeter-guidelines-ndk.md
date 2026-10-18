@@ -14,7 +14,7 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 
 ## 接口说明
 
-性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
+性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考[trace.h](../reference/apis-performance-analysis-kit/c-apis/capi-trace-h.md)。
 
 | 方法 | 接口描述 |
 | -------- | -------- |

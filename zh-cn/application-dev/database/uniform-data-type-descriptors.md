@@ -47,7 +47,7 @@ UTD中定义的标准化数据类型在设计原则上按物理和逻辑分为�
 
 ## 标准化数据类型的定义
 
-标准化数据类型包含了标准化数据类型的标识ID、归属类型关系、简要描述等信息，具体可见[TypeDescriptor属性](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md#属性)，每个类型定义具体包含以下内容：
+标准化数据类型包含了标准化数据类型的标识ID、归属类型关系、简要描述等信息，具体可见TypeDescriptor属性，每个类型定义具体包含以下内容：
 
 + **typeId：** 定义标准化数据类型的ID，该ID具有唯一性。
 + **belongingToTypes：** 定义标准化数据类型的归属关系，即该标准化数据类型归属于哪个更高层级的类型，允许存在一个标准化数据类型归属于多个类型的情况。
@@ -171,7 +171,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 ## 接口说明
 
-以下是UTD常用接口说明，对于预置数据类型和应用自定义数据类型同样适用，更多接口和详细说明，请见[ @ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)。
+以下是UTD常用接口说明，对于预置数据类型和应用自定义数据类型同样适用，更多接口和详细说明，请见[ @ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md)。
 
 | 接口名称                                                     | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

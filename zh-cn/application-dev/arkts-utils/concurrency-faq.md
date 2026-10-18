@@ -255,12 +255,12 @@ TaskPool第一次执行任务慢，间隔几百毫秒，原因是子线程反序
 
 **问题原因**
 
-TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
+TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看序列化支持类型。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
 
 **场景示例**
 
 1. 应用在启动TaskPool任务时，在Concurrent函数中传入线程间通信不支持的对象类型，导致抛出入参序列化失败异常。  
-**解决方案**：应用需要查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
+**解决方案**：应用需要查看序列化支持类型排查Concurrent函数入参。
 
 2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时hilog打印错误日志Unsupported serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
 **解决方案**：TaskPool不支持@State、@Prop等装饰器修饰的复杂类型，具体内容可见[TaskPool注意事项](taskpool-introduction.md#taskpool注意事项)。应用需要去掉@State装饰器。
@@ -533,10 +533,10 @@ TaskPool执行的任务函数必须使用@Concurrent装饰器修饰，由于Conc
 
 ## @Concurrent修饰的函数与async函数异同点是什么
 
-1. Concurrent函数常与taskpool配合使用以完成异步并发任务；async是用于处理异步操作的Promise语法糖，async函数返回Promise对象，实现异步操作。此两类函数的constructor.name属性均为`'AsyncFunction'`，通过[isAsyncFunction](../reference/apis-arkts/js-apis-util.md#isasyncfunction8)的异步函数类型检查的结果均为true。
+1. Concurrent函数常与taskpool配合使用以完成异步并发任务；async是用于处理异步操作的Promise语法糖，async函数返回Promise对象，实现异步操作。此两类函数的constructor.name属性均为`'AsyncFunction'`，通过[isAsyncFunction](../reference/apis-arkts/arkts-apis/arkts-arkts-util-types-c.md#isasyncfunction)的异步函数类型检查的结果均为true。
 2. async函数会将返回值自动封装成Promise；Concurrent函数的返回值与被修饰函数保持一致，不会被自动封装。
 3. Concurrent函数不能访问闭包，函数内不可调用当前文件的其他普通函数；async函数无此限制。
-4. 使用[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)进行异常捕获时，@Concurrent修饰符不会改变被修饰函数的异常捕获行为；async函数会被[globalUnhandledRejectionDetected](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronglobalunhandledrejectiondetected18)和[unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获。
+4. 使用[errorManager](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-errormanager.md)进行异常捕获时，@Concurrent修饰符不会改变被修饰函数的异常捕获行为；async函数会被[globalUnhandledRejectionDetected](../reference/apis-ability-kit/arkts-apis/arkts-ability-errormanager-on-f.md#onglobalunhandledrejectiondetected)和[unhandledRejection](../reference/apis-ability-kit/arkts-apis/arkts-ability-errormanager-on-f.md#onunhandledrejection)捕获。
 
 ## TaskPool任务执行后的结果如何保存到自定义的数据结构
 

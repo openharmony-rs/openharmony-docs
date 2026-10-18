@@ -20,8 +20,8 @@
 
 ### 生效方式
 
-- 播放对端声音时，`AudioRendererInfo`中的`usage`需设置为[STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或者[STREAM_USAGE_VIDEO_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)，用于标识VoIP语音通话播放流。该类型的播放流起播时，会触发开启3A算法。
-- 录制本端声音时，`AudioCapturerInfo`中的`source`需设置为[SOURCE_TYPE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)，用于标识语音通话采集流。
+- 播放对端声音时，`AudioRendererInfo`中的`usage`需设置为[STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiointerrupt-i.md#streamusage)或者[STREAM_USAGE_VIDEO_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiointerrupt-i.md#streamusage)，用于标识VoIP语音通话播放流。该类型的播放流起播时，会触发开启3A算法。
+- 录制本端声音时，`AudioCapturerInfo`中的`source`需设置为[SOURCE_TYPE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)，用于标识语音通话采集流。
 - 播放和录制具体开发流程见下文[音频通话功能](audio-call-development.md#音频通话功能)。
 
 ### 注意事项

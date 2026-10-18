@@ -12,7 +12,7 @@ PersistenceV2是应用程序中的可选单例对象。此对象的作用是持�
 
 PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistenceV2-API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-persistencev2-c.md#persistencev2)。
 
 >**说明：**
 >
@@ -32,7 +32,7 @@ PersistenceV2可以和UI组件同步，且可以在应用业务逻辑中被访�
 
 PersistenceV2支持应用的[主线程](../../application-models/thread-model-stage.md)内多个UIAbility实例间的状态共享。
 
-PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)，支持通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect)创建或获取存储的数据。
+PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)，支持通过[connect](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#connect)创建或获取存储的数据。
 
 ## 使用说明
 - globalConnect：创建或获取存储的数据。
@@ -46,7 +46,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)和[AppStorageV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
+以上接口详细描述请参考[PersistenceV2-API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-persistencev2-c.md#persistencev2)和[AppStorageV2-API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)。
 
 ## 使用限制
 
@@ -57,7 +57,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 2. 在API version 23以前，不支持`collections.Set`、`collections.Map`等类型。
 
-   - 从API version 23开始，提供globalConnect接口，支持[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)和[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
+   - 从API version 23开始，提供globalConnect接口，支持[collections.Set](../../reference/apis-arkts/arkts-apis/arkts-arkts-collections-set-c.md)、[collections.Map](../../reference/apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)和[collections.Array](../../reference/apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-persistencev2-c.md#save)保存变化的数据。
 
    如下是新增接口globalConnect支持collections.Array的示例代码:
     
@@ -183,7 +183,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
      }
      ```
 
-3. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
+3. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)、NativePointer、[ArrayList](../../reference/apis-arkts/arkts-apis/arkts-arkts-util-arraylist.md)等Native类型。
 
 4. 在API version 23以前，单个key支持数据大小约8k，过大会导致持久化失败。
 
@@ -410,7 +410,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 8. connect和globalConnect不建议混用，如果混用，key不能一样，否则应用crash，从API version 23开始，将返回错误码[140105](../../reference/apis-arkui/errorcode-stateManagement.md#140105-persistencev2混用connect和globalconnect并使用相同的key)。
 
-9. PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
+9. PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent)回调触发后）。
    ```ts
    // EntryAbility.ets
    // 以下为代码片段，需要开发者自己在EntryAbility.ets中补全
@@ -440,9 +440,9 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 12. globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
 13. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
-    - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+    - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/arkts-apis/arkts-arkui-persistenceerrorcallback-t.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
-14. 在API版本26.2.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.2.0开始，通过在[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18)中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
+14. 在API版本26.2.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.2.0开始，通过在ConnectOptions中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
 
     ```typescript
     import { PersistenceV2 } from '@kit.ArkUI';

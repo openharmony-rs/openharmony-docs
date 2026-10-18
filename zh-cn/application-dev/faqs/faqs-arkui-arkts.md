@@ -393,7 +393,7 @@ listener.off('change', onPortrait) // 去注册回调
 
 **参考链接**
 
-[媒体查询](../reference/apis-arkui/js-apis-mediaquery.md)
+[媒体查询](../reference/apis-arkui/arkts-apis/arkts-arkui-mediaquery.md)
 
 
 ## 创建的单例换了页面后不生效问题(API 9)
@@ -469,7 +469,7 @@ function stringToArray(testString : string): number[] {
 
 **参考链接**
 
-[TextEncoder](../reference/apis-arkts/js-apis-util.md#textencoder)、[TextDecoder](../reference/apis-arkts/js-apis-util.md#textdecoder)
+[TextEncoder](../reference/apis-arkts/arkts-apis/arkts-arkts-util-textencoder-c.md#textencoder)、[TextDecoder](../reference/apis-arkts/arkts-apis/arkts-arkts-util-textdecoder-c.md#textdecoder)
 
 
 ## 如何导入和导出namespace命名空间(API 9)
@@ -512,7 +512,7 @@ function stringToArray(testString : string): number[] {
 
 **参考链接**
 
-[资源访问](../quick-start/resource-categories-and-access.md)与[资源管理](../reference/apis-localization-kit/js-apis-resource-manager.md)
+[资源访问](../quick-start/resource-categories-and-access.md)与[资源管理](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)
 
 
 ## XML格式如何转为JSON格式(API 9)
@@ -655,7 +655,7 @@ generateRandomUUID底层使用Node.js crypto.randomUUID()接口，传递参数�
 
 **参考链接**
 
-参考文档：[util.generateRandomUUID](../reference/apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)
+参考文档：[util.generateRandomUUID](../reference/apis-arkts/arkts-apis/arkts-arkts-util-generaterandomuuid-f.md#generaterandomuuid)
 
 
 ## worker线程与主线程是否运行在相同的全局上下文中(API 9)
@@ -666,7 +666,7 @@ worker线程与主线程不在同一个上下文中，它们使用数据通信�
 
 **参考链接**
 
-worker：[启动一个Worker](../reference/apis-arkts/js-apis-worker.md)
+worker：[启动一个Worker](../reference/apis-arkts/arkts-apis/arkts-arkts-worker.md)
 
 
 ## 应用图标一多设置(API 9)
@@ -750,7 +750,7 @@ Text组件不用设置lineHeight属性，默认就是居中的。绘制文本是
 
 **参考链接**
 
-[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例1设置文本布局)
+[Text](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp.md#示例1设置文本布局)
 
 
 ## 使用什么接口进行url编码(API 9)
@@ -773,7 +773,7 @@ console.info(a) // %20
 
 **参考链接**
 
-[xml转换JavaScript](../reference/apis-arkts/js-apis-convertxml.md)
+[xml转换JavaScript](../reference/apis-arkts/arkts-apis/arkts-arkts-convertxml.md)
 
 
 ## 使用Styles装饰器，编译报错.stateStyles doesn't conform standard(API 9)
@@ -852,7 +852,7 @@ AppStorage是UI相关的数据，需要运行在UI线程，无法将对象共享
 
 **参考链接**
 
-[@ohos.font (注册自定义字体)](../reference/apis-arkui/js-apis-font.md)
+[@ohos.font (注册自定义字体)](../reference/apis-arkui/arkts-apis/arkts-arkui-font.md)
 
 ## Text组件如何加载Unicode字符(API 10)
 

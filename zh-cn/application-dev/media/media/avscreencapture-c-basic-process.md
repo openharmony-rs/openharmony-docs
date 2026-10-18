@@ -70,7 +70,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 ### 创建AVScreenCapture实例
 
-实例化对象，通过[OH_AVScreenCapture_Create](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create)创建[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)。
+实例化对象，通过OH_AVScreenCapture_Create创建[OH_AVScreenCapture](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-avscreencapture.md)。
 
 <!-- @[screenCapture_create_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
@@ -80,7 +80,7 @@ g_avCapture = OH_AVScreenCapture_Create();
 
 ### 配置音频采集参数
 
-创建AVScreenCapture实例后，可设置屏幕录制所需要的音频参数[OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md)，包括内录、麦克风音频[OH_AudioCaptureInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audiocaptureinfo.md)和输出规格[OH_AudioEncInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioencinfo.md)。
+创建AVScreenCapture实例后，可设置屏幕录制所需要的音频参数[OH_AudioInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-audioinfo.md)，包括内录、麦克风音频[OH_AudioCaptureInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-audiocaptureinfo.md)和输出规格[OH_AudioEncInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-audioencinfo.md)。
 
 如果配置了采集麦克风音频数据，需：
 
@@ -118,7 +118,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 
 ### 配置视频采集参数
 
-录屏的视频采集信息[OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md)包含录屏输入规格配置[OH_VideoCaptureInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videocaptureinfo.md)和录屏输出规格配置[OH_VideoEncInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoencinfo.md)。配置录屏宽高时，需要[设置正确的视频宽高](../avcodec/obtain-supported-codecs.md#设置正确的视频宽高)。
+录屏的视频采集信息[OH_VideoInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-videoinfo.md)包含录屏输入规格配置[OH_VideoCaptureInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-videocaptureinfo.md)和录屏输出规格配置[OH_VideoEncInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-videoencinfo.md)。配置录屏宽高时，需要[设置正确的视频宽高](../avcodec/obtain-supported-codecs.md#设置正确的视频宽高)。
 
 <!-- @[screenCapture_config_buffer_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -159,9 +159,9 @@ OH_VideoInfo videoInfo = {
 
 ### 初始化AVScreenCapture实例配置
 
-AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencaptureconfig.md)，包括录制数据格式[OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md)、音视频采集参数[OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md)、录屏模式[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)等，录屏模式包含OH_CAPTURE_HOME_SCREEN、OH_CAPTURE_SPECIFIED_SCREEN、OH_CAPTURE_SPECIFIED_WINDOW。
+AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-avscreencaptureconfig.md)，包括录制数据格式[OH_VideoInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-videoinfo.md)、音视频采集参数[OH_AudioInfo](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-audioinfo.md)、录屏模式OH_CaptureMode等，录屏模式包含OH_CAPTURE_HOME_SCREEN、OH_CAPTURE_SPECIFIED_SCREEN、OH_CAPTURE_SPECIFIED_WINDOW。
 
-配置完成后通过[OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init)将配置项设置到[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)中。
+配置完成后通过OH_AVScreenCapture_Init将配置项设置到[OH_AVScreenCapture](../../reference/apis-media-kit/c-apis/capi-avscreencapture-oh-avscreencapture.md)中。
 
 > **说明：**
 >
@@ -184,7 +184,7 @@ config = {
 
 ### 设置数据更新、状态切换、错误上报的回调
 
-回调函数主要用来监听录屏过程中的错误发生、音视频流生成和录屏状态变更等事件，详细内容请参考：错误回调[OH_AVScreenCaptureOnError](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror)、状态回调[OH_AVScreenCapture_SetStateCallback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)和获取数据回调[OH_AVScreenCapture_SetDataCallback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback)。
+回调函数主要用来监听录屏过程中的错误发生、音视频流生成和录屏状态变更等事件，详细内容请参考：错误回调OH_AVScreenCaptureOnError、状态回调OH_AVScreenCapture_SetStateCallback和获取数据回调OH_AVScreenCapture_SetDataCallback。
 
 <!-- @[screenCapture_config_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -304,9 +304,9 @@ void SetCallback(struct OH_AVScreenCapture *capture)
 
 ### 启动录屏
 
-启动录屏[OH_AVScreenCapture_StartScreenCapture](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreencapture)后，开始采集原始码流，通过回调[OH_AVScreenCapture_OnBufferAvailable](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)来监听当前是否有码流的产生，通过回调[OH_AVScreenCapture_OnStateChange](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onstatechange)来监听启动状态的变更。
+启动录屏[OH_AVScreenCapture_StartScreenCapture](../../reference/apis-arkui/arkts-apis/arkts-arkui-screenshot-capture-f.md#capture)后，开始采集原始码流，通过回调OH_AVScreenCapture_OnBufferAvailable来监听当前是否有码流的产生，通过回调OH_AVScreenCapture_OnStateChange来监听启动状态的变更。
 
-在回调接口中，可以调用获取音频码流[OH_AVScreenCapture_AcquireAudioBuffer](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer)和获取视频码流[OH_AVScreenCapture_AcquireVideoBuffer](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer)的接口来获取录屏的原始码流。
+在回调接口中，可以调用获取音频码流OH_AVScreenCapture_AcquireAudioBuffer和获取视频码流OH_AVScreenCapture_AcquireVideoBuffer的接口来获取录屏的原始码流。
 
 <!-- @[screenCapture_startScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -391,7 +391,7 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 
 ### 停止录屏
 
-调用[OH_AVScreenCapture_StopScreenCapture](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_stopscreencapture)后应用会停止录屏或屏幕共享，释放麦克风。
+调用[OH_AVScreenCapture_StopScreenCapture](../../reference/apis-arkui/arkts-apis/arkts-arkui-screenshot-capture-f.md#capture)后应用会停止录屏或屏幕共享，释放麦克风。
 
 <!-- @[screenCapture_stopScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -401,7 +401,7 @@ result = OH_AVScreenCapture_StopScreenCapture(g_avCapture);
 
 ### 释放资源
 
-调用[OH_AVScreenCapture_Release](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_release)释放创建的OH_AVScreenCapture实例，需要在停止录屏后释放。
+调用OH_AVScreenCapture_Release释放创建的OH_AVScreenCapture实例，需要在停止录屏后释放。
 
 <!-- @[screenCapture_releaseScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -416,13 +416,13 @@ g_avCapture = nullptr;
 
 ## 录屏模式说明
 
-系统提供三种录屏模式：[录制指定屏幕](#录制指定屏幕)、[录制主屏幕](#录制主屏幕)和[录制指定窗口](#录制指定窗口)。通过[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)设置不同的录屏模式。
+系统提供三种录屏模式：[录制指定屏幕](#录制指定屏幕)、[录制主屏幕](#录制主屏幕)和[录制指定窗口](#录制指定窗口)。通过OH_CaptureMode设置不同的录屏模式。
 
-录屏模式会使用到屏幕ID（displayId）和窗口ID（missionIds）。获取方式请分别参考：[OH_NativeDisplayManager_CreateAllDisplays](../../reference/apis-arkui/capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays)和[getWindowProperties](../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。
+录屏模式会使用到屏幕ID（displayId）和窗口ID（missionIds）。获取方式请分别参考：OH_NativeDisplayManager_CreateAllDisplays和[getWindowProperties](../../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties)。
 
 ### 录制指定屏幕
 
-即[OH_CAPTURE_SPECIFIED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
+即OH_CAPTURE_SPECIFIED_SCREEN模式。
 
 在此模式下，录屏应用指定录制某个屏幕的内容。默认选中videoCapInfo.displayId参数对应的屏幕。如果传入的displayId对应的屏幕不存在，则不做任何选中。
 
@@ -453,7 +453,7 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 ### 录制主屏幕
 
-即[OH_CAPTURE_HOME_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
+即OH_CAPTURE_HOME_SCREEN模式。
 
 在此模式下，录屏应用录制设备主屏幕的内容。启动录屏后，配置的videoCapInfo.displayId参数不会生效，默认生效主屏的displayId。
 
@@ -481,7 +481,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 ### 录制指定窗口
 
-即[OH_CAPTURE_SPECIFIED_WINDOW](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
+即OH_CAPTURE_SPECIFIED_WINDOW模式。
 
 应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕ID。
 
@@ -549,7 +549,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 ### 录制虚拟扩展屏幕
 
-从API版本26.0.1开始，支持[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN模式，即可以创建虚拟扩展屏幕并对其内容进行录制。
+从API版本26.0.1开始，支持OH_CaptureMode.OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN模式，即可以创建虚拟扩展屏幕并对其内容进行录制。
 
 在此模式下，系统会创建一个虚拟扩展屏幕，应用可对其内容进行录制。关于虚拟屏和扩展屏的概念说明请参见[屏幕管理开发术语](../../displaymanager/display-terminology.md)。
 
@@ -570,14 +570,14 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 > **说明：**
 >
-> - 无论[OH_AVScreenCapture_StrategyForPickerPopUp()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值，该模式下都不会弹出Picker。
+> - 无论OH_AVScreenCapture_StrategyForPickerPopUp()设置为任何值，该模式下都不会弹出Picker。
 > - 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制。针对有内置屏的设备，只能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
 
 
 
 ## 弹窗模式说明
 
-从API version 23开始，支持PC/2in1设备、Phone/Tablet设备通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)控制是否统一弹出选择共享内容弹窗。
+从API version 23开始，支持PC/2in1设备、Phone/Tablet设备通过OH_AVScreenCapture_StrategyForPickerPopUp控制是否统一弹出选择共享内容弹窗。
 
 **OH_AVScreenCapture_StrategyForPickerPopUp为true**
 
@@ -637,10 +637,10 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 > **说明：**
 >
-> 从API版本26.0.1开始，当录屏模式为[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
+> 从API版本26.0.1开始，当录屏模式为OH_CaptureMode.OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
 
 ## 更多资源
 
-- API参考：详细的API描述请见[native_avscreen_capture.h](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md)。
+- API参考：详细的API描述请见[native_avscreen_capture.h](../../reference/apis-media-kit/c-apis/capi-native-avscreen-capture-h.md)。
 
 - 示例工程：该示例调用了媒体AVScreenCapture组件提供的接口能力，提供屏幕捕获的功能，详情见[录屏示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample)。

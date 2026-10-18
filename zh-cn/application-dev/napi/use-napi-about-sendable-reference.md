@@ -11,15 +11,15 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
 
 ## 场景介绍
 
-开发者可使用[napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference)接口创建指向Sendable ArkTS对象的Sendable强引用，使用[napi_get_strong_sendable_reference_value](../reference/native-lib/napi.md#napi_get_strong_sendable_reference_value)获取被引用的ArkTS对象，使用[napi_delete_strong_sendable_reference](../reference/native-lib/napi.md#napi_delete_strong_sendable_reference)删除Sendable强引用。这些操作既可以在同一ArkTS线程进行，也可在不同ArkTS线程进行。
+开发者可使用napi_create_strong_sendable_reference接口创建指向Sendable ArkTS对象的Sendable强引用，使用napi_get_strong_sendable_reference_value获取被引用的ArkTS对象，使用napi_delete_strong_sendable_reference删除Sendable强引用。这些操作既可以在同一ArkTS线程进行，也可在不同ArkTS线程进行。
 
 ## Sendable强引用对象关联接口
 
 | 接口                                     | 描述                                       |
 | ---------------------------------------- | ------------------------------------------ |
-| [napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference)    | 创建指向Sendable ArkTS对象的Sendable强引用。 |
-| [napi_delete_strong_sendable_reference](../reference/native-lib/napi.md#napi_delete_strong_sendable_reference)    | 删除Sendable强引用。                        |
-| [napi_get_strong_sendable_reference_value](../reference/native-lib/napi.md#napi_get_strong_sendable_reference_value) | 根据Sendable强引用获取其关联的ArkTS对象值。   |
+| napi_create_strong_sendable_reference    | 创建指向Sendable ArkTS对象的Sendable强引用。 |
+| napi_delete_strong_sendable_reference    | 删除Sendable强引用。                        |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。   |
 
 ## 示例代码
 

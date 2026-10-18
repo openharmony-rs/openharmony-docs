@@ -10,11 +10,11 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 ## 开发指导
 
-使用AudioCapturer录制音频涉及AudioCapturer实例的创建、音频采集参数的配置、采集的开始与停止、资源的释放等。本开发指导将以一次录制音频数据的过程为例，向开发者讲解如何使用AudioCapturer进行音频录制，建议搭配[AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)的API说明阅读。
+使用AudioCapturer录制音频涉及AudioCapturer实例的创建、音频采集参数的配置、采集的开始与停止、资源的释放等。本开发指导将以一次录制音频数据的过程为例，向开发者讲解如何使用AudioCapturer进行音频录制，建议搭配[AudioCapturer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md)的API说明阅读。
 
 下图展示了AudioCapturer的状态变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。需要注意的是，在确定的状态执行不合适的方法可能导致AudioCapturer发生错误，建议开发者在调用状态转换的方法前进行状态检查，避免程序运行产生预期以外的结果。
 
-使用[on('stateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onstatechange8)方法可以监听AudioCapturer的状态变化，每个状态对应值与说明见[AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)。
+使用[on('stateChange')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#onstatechange)方法可以监听AudioCapturer的状态变化，每个状态对应值与说明见[AudioState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostate-e.md#audiostate)。
 
 当音频流处于工作状态（非released状态）时，会占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用release()回收音频资源，做好资源利用，避免后续创建音频流失败。
 
@@ -28,11 +28,11 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 完整示例展示了使用AudioCapturer完成录音，并在录音完成后播放所录制音频的实现。
 
-1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8)。
+1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocaptureroptions-i-sys.md#audiocaptureroptions)。
 
    > **说明：**
    >
-   > 当设置Mic音频源（即[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+   > 当设置Mic音频源（即[SourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
    <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
@@ -70,12 +70,12 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      });
    ```
 
-2. 调用[on('readData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onreaddata11)方法，订阅监听音频数据读入回调。
+2. 调用[on('readData')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#onreaddata)方法，订阅监听音频数据读入回调。
    > **注意：**
    > 
    > - **主线程阻塞风险**：录音流会持续产生音频数据，对回调响应的及时性要求较高。ArkTS应用的主线程通常负责UI刷新、用户交互和部分业务回调，如果在主线程中执行同步文件读写、复杂计算、频繁日志打印等耗时任务，会导致主线程无法及时处理录音数据回调。对于AudioCapturer，`readData`回调执行不及时会影响音频缓冲区流转，可能造成录音数据缺失、卡顿或杂音。因此，应该避免在主线程中注册回调，以免被其他业务阻塞导致响应回调不及时造成卡顿。录音数据回调中只做必要的轻量处理，例如复制数据、更新少量状态，然后尽快返回。文件保存、编码、网络传输等耗时处理应按业务需要投递到异步任务或Worker中执行。
    > - **高负载阻塞风险**：在高负载场景下，承载回调的ArkTS执行上下文可能被其他业务的任务持续占用，导致回调调度延迟。此类场景会产生和主线程阻塞类似的录音数据缺失、卡顿或杂音问题。处理高负载时，应降低同一执行上下文中非必要任务的执行频率，避免多个定时任务同时运行，必要时暂停其他非关键业务。
-   > - **录音过载确认**：录音过程中，系统音频模块将音频输入数据写入与应用侧音频客户端共享的录音缓冲区，应用侧音频客户端从该缓冲区读取数据。应用侧读取数据的速率低于系统音频模块写入速率时，未处理的数据会持续积压。当共享缓冲区剩余可写空间不足以容纳一个完整音频帧时，系统音频模块判定发生过载。此时输入数据不会写入共享缓冲区，应用侧无法读取数据。过载计数用于记录检测到的过载情况，ArkTS应用可调用[getOverflowCount()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcount12)或[getOverflowCountSync()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcountsync12)查询过载音频帧数量。从API版本26.0.0及以上，使用[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)输出录音快照时，也可查看其中的`overflowCount`，用于录音结束后的问题定位。高负载或任务队列积压期间，如果过载计数持续增加，应优先降低任务竞争、限制队列长度或主动停止录音流。
+   > - **录音过载确认**：录音过程中，系统音频模块将音频输入数据写入与应用侧音频客户端共享的录音缓冲区，应用侧音频客户端从该缓冲区读取数据。应用侧读取数据的速率低于系统音频模块写入速率时，未处理的数据会持续积压。当共享缓冲区剩余可写空间不足以容纳一个完整音频帧时，系统音频模块判定发生过载。此时输入数据不会写入共享缓冲区，应用侧无法读取数据。过载计数用于记录检测到的过载情况，ArkTS应用可调用[getOverflowCount()](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#getoverflowcount)或[getOverflowCountSync()](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#getoverflowcountsync)查询过载音频帧数量。从API版本26.0.0及以上，使用[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodebuggingmanager-i.md#printcapturerinfo)输出录音快照时，也可查看其中的`overflowCount`，用于录音结束后的问题定位。高负载或任务队列积压期间，如果过载计数持续增加，应优先降低任务竞争、限制队列长度或主动停止录音流。
    > - **线程管理**：不建议直接使用多线程处理数据读取。如果需要将数据保存、编码、网络传输等耗时任务投递到异步任务或Worker中处理，要求做好线程管理。
    > - **数据缓存**：`readData`回调返回的ArrayBuffer对应底层音频缓冲区，回调返回后该缓冲区可能被系统复用。如果需要在回调结束后继续处理数据，应先复制ArrayBuffer，再投递到异步任务中处理。
    > - **接口调用**：`readData`回调仅用于获取音频数据，不建议在回调中调用AudioCapturer的start、stop、release、off等接口。注册`readData`回调后，同一个AudioCapturer实例不建议再调用已废弃的read接口读取数据。
@@ -119,7 +119,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      // ...
          audioCapturer.on('readData', onReadData);
    ```
-3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8)方法进入running状态，开始录制音频。
+3. 调用[start](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#start)方法进入running状态，开始录制音频。
 
    <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
@@ -136,7 +136,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          console.error(`${TAG}: Capturer start failed, code: ${error.code}, message: ${error.message}`);
        }
    ```
-4. 调用[stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8)方法停止录制。
+4. 调用[stop](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#stop)方法停止录制。
 
    <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
@@ -153,7 +153,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          console.error(`${TAG}: Capturer stop failed, code: ${error.code}, message: ${error.message}`);
        }
    ```
-5. 调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)方法销毁实例，释放资源。
+5. 调用[release](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#release)方法销毁实例，释放资源。
 <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
@@ -495,13 +495,13 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
 
 ### 设置静音打断模式
 
-如果需要实现录音全程不被系统基于焦点并发规则打断的效果，提供将打断策略从停止录音切换为静音录制的功能，录音过程中也不影响其他应用启动录音。开发者在创建AudioCapturer实例时，调用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口设置是否开启静音打断模式。默认不开启，此时由音频焦点策略管理并发音频流的执行顺序。开启后，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音。
+如果需要实现录音全程不被系统基于焦点并发规则打断的效果，提供将打断策略从停止录音切换为静音录制的功能，录音过程中也不影响其他应用启动录音。开发者在创建AudioCapturer实例时，调用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#setwillmutewheninterrupted)接口设置是否开启静音打断模式。默认不开启，此时由音频焦点策略管理并发音频流的执行顺序。开启后，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音。
 
 ### 设置录音流静音提示
 
-从API版本24开始，当应用已在业务侧将某条录音流静音时，可以调用[setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24)接口将该状态上报给系统音频模块，并记录最近一次设置成功的值，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口只是告知系统音频模块，应用已将当前录音流进行过静音，不会实际触发静音，也不会对录音数据做静音处理。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
+从API版本24开始，当应用已在业务侧将某条录音流静音时，可以调用[setMuteHint](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#setmutehint)接口将该状态上报给系统音频模块，并记录最近一次设置成功的值，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口只是告知系统音频模块，应用已将当前录音流进行过静音，不会实际触发静音，也不会对录音数据做静音处理。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
 
-该接口仅允许在AudioCapturer处于running状态时调用，否则会返回错误码`6800103`。如果同一录音流同时设置了流级静音提示和会话级静音提示[setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24)，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示；`capturerMuteHintEnabledByApp`为应用本地维护的状态，记录当前设置的muteHint的值。
+该接口仅允许在AudioCapturer处于running状态时调用，否则会返回错误码`6800103`。如果同一录音流同时设置了流级静音提示和会话级静音提示[setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiosessionmanager-i.md#setcapturermutehint)，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示；`capturerMuteHintEnabledByApp`为应用本地维护的状态，记录当前设置的muteHint的值。
 
 <!-- @[set_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
@@ -520,6 +520,6 @@ try {
 
 ### 回声消除功能
 
-回声消除功能可在支持的设备上有效消除录音过程中的回声干扰，提升音频采集质量。开发者可通过指定特定的Mic音频源[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)（SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_LIVE）来启用该功能，系统将会自动对采集的音频信号进行回声消除处理。
+回声消除功能可在支持的设备上有效消除录音过程中的回声干扰，提升音频采集质量。开发者可通过指定特定的Mic音频源[SourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)（SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_LIVE）来启用该功能，系统将会自动对采集的音频信号进行回声消除处理。
 
-在启用前，建议先调用[isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20)接口（从API version 20开始支持）查询当前设备对音频输入源类型[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)是否支持回声消除功能，以确保功能的可用性。若支持，则可在创建音频录制构造器时设置相应的Mic音频源，从而激活回声消除处理流程。
+在启用前，建议先调用[isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isacousticechocancelersupported)接口（从API version 20开始支持）查询当前设备对音频输入源类型[SourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)是否支持回声消除功能，以确保功能的可用性。若支持，则可在创建音频录制构造器时设置相应的Mic音频源，从而激活回声消除处理流程。

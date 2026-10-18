@@ -24,7 +24,7 @@ Game Controller Kit支持的手柄键位参考图如下：
 
 ## 接口说明
 
-接口详细介绍请参考[GameController](../reference/apis-game-controller-kit/capi-gamecontroller.md)。
+接口详细介绍请参考[GameController](../reference/apis-game-controller-kit/c-apis/capi-gamecontroller.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -78,11 +78,11 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 | 物理轴 | 轴值获取接口 | 
 | -------- | -------- |
-| LeftThumbstick | 通过[OH_GamePad_AxisEvent_GetXAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getxaxisvalue)获取X轴的轴值。<br/>通过[OH_GamePad_AxisEvent_GetYAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getyaxisvalue)获取Y轴的轴值。 | 
-| RightThumbstick | 通过[OH_GamePad_AxisEvent_GetZAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getzaxisvalue)获取Z轴的轴值。<br/>通过[OH_GamePad_AxisEvent_GetRZAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getrzaxisvalue)获取RZ轴的轴值。 | 
-| DPAD | 通过[OH_GamePad_AxisEvent_GetHatXAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_gethatxaxisvalue)获取HatX轴的轴值。<br/>通过[OH_GamePad_AxisEvent_GetHatYAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_gethatyaxisvalue)获取HatY轴的轴值。 | 
-| LeftTrigger | 通过[OH_GamePad_AxisEvent_GetBrakeAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getbrakeaxisvalue)获取Brake轴的轴值。 | 
-| RightTrigger | 通过[OH_GamePad_AxisEvent_GetGasAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getgasaxisvalue)获取Gas轴的轴值。 | 
+| LeftThumbstick | 通过OH_GamePad_AxisEvent_GetXAxisValue获取X轴的轴值。<br/>通过OH_GamePad_AxisEvent_GetYAxisValue获取Y轴的轴值。 | 
+| RightThumbstick | 通过OH_GamePad_AxisEvent_GetZAxisValue获取Z轴的轴值。<br/>通过OH_GamePad_AxisEvent_GetRZAxisValue获取RZ轴的轴值。 | 
+| DPAD | 通过OH_GamePad_AxisEvent_GetHatXAxisValue获取HatX轴的轴值。<br/>通过OH_GamePad_AxisEvent_GetHatYAxisValue获取HatY轴的轴值。 | 
+| LeftTrigger | 通过OH_GamePad_AxisEvent_GetBrakeAxisValue获取Brake轴的轴值。 | 
+| RightTrigger | 通过OH_GamePad_AxisEvent_GetGasAxisValue获取Gas轴的轴值。 | 
 
 以LeftThumbstick轴事件为例。
 
@@ -156,7 +156,7 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
 | Dpad_RightButton | 2015 | 
 
 > **说明：**<br/>
-> 非标准按键的按键值请参见[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)。
+> 非标准按键的按键值请参见[KeyCode](../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md#keycode)。
 
 以LeftShoulder按键事件为例。
 

@@ -19,15 +19,15 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 | 键 | 数据类型 | 描述                                      |
 | ------------------ | ------------------ | ------------------ |
 | accessibilityEnabled              | string                  | 是否启用无障碍屏幕阅读。'true'表示启用，'false'表示不启用。|
-| colorMode              | [ColorMode](../../reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md#colormode)                  | 色彩模式类型。<br>- ColorMode.LIGHT：浅色。<br>- ColorMode.DARK：深色。                 |
+| colorMode              | [ColorMode](../../reference/apis-arkui/arkts-apis/arkts-arkui-colormode-e.md#colormode)                  | 色彩模式类型。<br>- ColorMode.LIGHT：浅色。<br>- ColorMode.DARK：深色。                 |
 | fontScale              | number                  | 字体大小比例。开发者需要配置configuration，设置fontSizeScale为"followSystem"，具体配置步骤可参考[configuration](../../quick-start/app-configuration-file.md#configuration标签)使fontScale跟随系统变化。<br>默认值跟随系统默认参数。                |
 | fontWeightScale              | number                  | 字体粗细缩放比例。在不同的系统或者机型中，fontWeightScale的取值范围可能会有所不同。<br>默认值跟随系统默认参数。                |
-| layoutDirection              | [LayoutDirection](../../reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md#layoutdirection)                  | 布局方向类型：<br>- LayoutDirection.LTR：从左到右。<br>- LayoutDirection.RTL：从右到左。                 |
+| layoutDirection              | [LayoutDirection](../../reference/apis-arkui/arkts-apis/arkts-arkui-layoutdirection-e.md#layoutdirection)                  | 布局方向类型：<br>- LayoutDirection.LTR：从左到右。<br>- LayoutDirection.RTL：从右到左。                 |
 | languageCode              | string                  | 当前系统语言值，取值必须为小写字母（例如：zh）。<br>默认值跟随系统默认参数。                 |
 
 ## 限制条件
 
-Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)相关联，需要在UIContext明确的时候才可以调用Environment的接口，可以通过在[runScopedTask](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)里调用明确上下文。如果不是在UIContext明确的地方调用，将导致无法查询到设备环境数据。
+Environment和[UIContext](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)相关联，需要在UIContext明确的时候才可以调用Environment的接口，可以通过在[runScopedTask](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask)里调用明确上下文。如果不是在UIContext明确的地方调用，将导致无法查询到设备环境数据。
   <!-- @[limiting_condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/entryability/EntryAbilityDemo.ets) -->   
   
   ``` TypeScript
@@ -53,7 +53,7 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
 
 ### 从UI中访问Environment参数
 
-- 使用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)将设备运行的环境变量存入AppStorage中。
+- 使用Environment.[envProp](../../reference/apis-arkui/arkts-apis/arkts-arkui-environment-c.md#envprop)将设备运行的环境变量存入AppStorage中。
 
   <!-- @[showfirst_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/ShowDetails.ets) --> 
   

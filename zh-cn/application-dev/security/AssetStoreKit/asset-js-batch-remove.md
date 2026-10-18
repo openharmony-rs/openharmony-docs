@@ -9,7 +9,7 @@
 
 ## 接口介绍
 
-从版本26.0.0开始，系统提供异步接口[batchRemove](../../reference/apis-asset-store-kit/js-apis-asset.md#assetbatchremove)以便开发者批量删除关键资产。
+从版本26.0.0开始，系统提供异步接口[batchRemove](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-batchremove-f.md#batchremove)以便开发者批量删除关键资产。
 
 在批量删除关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
@@ -25,7 +25,7 @@
 
 ## 约束和限制
 
-批量删除的关键资产必须具有相同的[GROUP_ID](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)和[REQUIRE_ATTR_ENCRYPTED](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性。
+批量删除的关键资产必须具有相同的[GROUP_ID](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-tag-e.md#tag)和[REQUIRE_ATTR_ENCRYPTED](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-tag-e.md#tag)属性。
 
 批量删除的关键资产数量最大值为100。
 

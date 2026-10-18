@@ -67,7 +67,7 @@ import { fileIo as fileio } from '@kit.CoreFileKit';
 
 在使用调试接口前，需先获取音频调试管理器实例。该实例为单例，获取后可重复使用。
 
-接口说明请参考[getDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getdebuggingmanager)。
+接口说明请参考[getDebuggingManager](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiomanager-i.md#getdebuggingmanager)。
 
 **C/C++接口：**
 
@@ -110,7 +110,7 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManag
 >
 > 各快照详细字段信息见下方对应章节的输出示例。
 
-接口说明请参考[printAppInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printappinfo)。
+接口说明请参考[printAppInfo](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodebuggingmanager-i.md#printappinfo)。
 
 **C/C++接口：**
 
@@ -186,7 +186,7 @@ audioApp {
 >
 > 详细字段信息见下方输出示例。
 
-接口说明请参考[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
+接口说明请参考[printRendererInfo](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodebuggingmanager-i.md#printrendererinfo)。
 
 **C/C++接口：**
 
@@ -284,7 +284,7 @@ audioRenderer {
 >
 > 详细字段信息见下方输出示例。
 
-接口说明请参考[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
+接口说明请参考[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodebuggingmanager-i.md#printcapturerinfo)。
 
 **C/C++接口：**
 
@@ -369,7 +369,7 @@ audioCapturer {
 > 详细字段信息见下方输出示例。
 > 调用该方法前，需要先创建AudioLoopback实例。耳返的创建及使用方式可参考[实现低时延耳返](audio-ear-monitor-loopback.md)。耳返处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，可查询到完整的快照信息。
 
-接口说明请参考[printLoopbackInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printloopbackinfo)。
+接口说明请参考[printLoopbackInfo](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodebuggingmanager-i.md#printloopbackinfo)。
 
 **ArkTS接口：**
 
@@ -438,7 +438,7 @@ audioLoopback {
 > 详细字段信息见下方输出示例。
 > 调用该方法前，需要先创建并激活音频会话。音频会话的创建及使用方式可参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)或[音频会话管理(ArkTS)](audio-session-management.md)。
 
-接口说明请参考[printSessionInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printsessioninfo)。
+接口说明请参考[printSessionInfo](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodebuggingmanager-i.md#printsessioninfo)。
 
 **C/C++接口：**
 
@@ -536,7 +536,7 @@ audioSession {
 >
 > 详细字段信息见下方输出示例。
 
-接口说明请参考[OH_AudioSuite_PrintInfo](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuite_printinfo)。
+接口说明请参考OH_AudioSuite_PrintInfo。
 
 <!-- @[audioSuite_PrintInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/print_info_to_file.cpp) -->
 
@@ -618,4 +618,4 @@ Pipeline [ID: 1]                         // 管线唯一标识符。
 - 耳返须处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，才能查询到完整的快照信息。
 - 调用会话快照接口前，需要先创建并激活音频会话，否则无法获取到完整的快照信息。
 - 当`pipeline`参数为NULL时，输出引擎下所有管线的信息。
-- 节点属性配置的具体参数因节点类型而异，详见[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)中各节点的说明。
+- 节点属性配置的具体参数因节点类型而异，详见[OHAudioSuite](../../reference/apis-audio-kit/c-apis/capi-ohaudiosuite.md)中各节点的说明。

@@ -18,7 +18,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
 ![emitter](figures/emitter.png)
 
 ## 接口说明
-详细请参见[@ohos.events.emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md)。
+详细请参见[@ohos.events.emitter](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-events-emitter.md)。
 | 接口名  | 用途   | 说明     |
 | ------- | ------ | -------- |
 | on | 订阅事件 | 持续订阅事件，直至该事件被取消订阅。 |
@@ -102,7 +102,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > **说明：**
     >
     > - 当不需要订阅某个事件时，需要及时取消订阅避免造成内存泄漏。
-    > - 使用[off](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteroff)接口取消某个事件订阅后，已通过[emit](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteremit)接口发布但尚未被执行的事件将被取消。
+    > - 使用[off](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-off-f.md#off)接口取消某个事件订阅后，已通过[emit](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-emit-f.md#emit)接口发布但尚未被执行的事件将被取消。
 
    <!-- @[emitter_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
    

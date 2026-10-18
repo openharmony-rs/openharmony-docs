@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Progress是进度条显示组件，显示内容通常为目标操作的当前进度。具体用法请参考[Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)。
+Progress是进度条显示组件，显示内容通常为目标操作的当前进度。具体用法请参考[Progress](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-progress-t.md)。
 
 
 ## 创建进度条
@@ -30,7 +30,7 @@ Progress({ value: 24, total: 100, type: ProgressType.Linear }) // 创建一个�
 
 ## 设置进度条样式
 
-Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#progresstype8枚举说明)可以设置进度条样式。ProgressType类型包括：ProgressType.Linear（线性样式）、 ProgressType.Ring（环形无刻度样式）、ProgressType.ScaleRing（环形有刻度样式）、ProgressType.Eclipse（圆形样式）和ProgressType.Capsule（胶囊样式）。
+Progress有5种可选类型，通过ProgressType可以设置进度条样式。ProgressType类型包括：ProgressType.Linear（线性样式）、 ProgressType.Ring（环形无刻度样式）、ProgressType.ScaleRing（环形有刻度样式）、ProgressType.Eclipse（圆形样式）和ProgressType.Capsule（胶囊样式）。
 
 
 - 线性样式进度条（默认类型）

@@ -15,7 +15,7 @@ AVScreenCapture支持应用完成场景化的自定义配置，具体配置可�
 
 从API version 20开始支持蜂窝通话设置。
 
-使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置蜂窝通话时是否保持录屏。
+使用OH_AVScreenCapture_StrategyForKeepCaptureDuringCall设置蜂窝通话时是否保持录屏。
 
 <!-- @[screenCapture_buffer_strategy_keepCaptureDuringCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -30,7 +30,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 从API version 20开始支持设置B帧编码。
 
-使用[OH_AVScreenCapture_StrategyForBFramesEncoding](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforbframesencoding)设置是否使用B帧编码，用于减小录制文件的大小。
+使用OH_AVScreenCapture_StrategyForBFramesEncoding设置是否使用B帧编码，用于减小录制文件的大小。
 
 <!-- @[screenCapture_buffer_strategy_BFramesEncoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -47,7 +47,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 从API version 23开始，支持在Phone/Tablet设备上设置屏幕捕获Picker。
 
-使用[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置是否弹出屏幕捕获Picker。
+使用OH_AVScreenCapture_StrategyForPickerPopUp设置是否弹出屏幕捕获Picker。
 
 <!-- @[screenCapture_buffer_strategy_pickerPopUp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -68,15 +68,15 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 > **说明：**
 >
-> 从API版本26.0.1开始，当录屏模式设置为[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
+> 从API版本26.0.1开始，当录屏模式设置为OH_CaptureMode.OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
 
 ## 设置旋转适配
 
 从API version 20开始支持设置旋转适配。
 
-使用[OH_AVScreenCapture_StrategyForCanvasFollowRotation](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)，可设置录屏时是否自动跟随屏幕旋转。
+使用OH_AVScreenCapture_StrategyForCanvasFollowRotation，可设置录屏时是否自动跟随屏幕旋转。
 
-调用此接口完成设置后，无需再调用[OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas)手动修改分辨率。
+调用此接口完成设置后，无需再调用OH_AVScreenCapture_ResizeCanvas手动修改分辨率。
 
 <!-- @[screenCapture_buffer_strategy_canvasFollowRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -90,7 +90,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 ## 设置麦克风开关
 
-使用[OH_AVScreenCapture_SetMicrophoneEnabled](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmicrophoneenabled)，可设置在录屏过程中是否开启麦克风，默认麦克风开关为开启状态。
+使用OH_AVScreenCapture_SetMicrophoneEnabled，可设置在录屏过程中是否开启麦克风，默认麦克风开关为开启状态。
 
 > **说明：**
 > 使用麦克风录制，需要：
@@ -107,7 +107,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 
 ## 隐私设置
 
-从API version 20开始，支持使用[OH_AVScreenCapture_StrategyForPrivacyMaskMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforprivacymaskmode)设置录屏隐私窗口屏蔽模式。
+从API version 20开始，支持使用OH_AVScreenCapture_StrategyForPrivacyMaskMode设置录屏隐私窗口屏蔽模式。
 
 <!-- @[screenCapture_buffer_strategy_privacyMaskMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -120,7 +120,7 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
 
-在API version 12时，支持使用[OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode)设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
+在API version 12时，支持使用OH_AVScreenCapture_SkipPrivacyMode设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
 
 <!-- @[screenCapture_buffer_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -134,7 +134,7 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, windowIdsSkipPrivacy.empty() ? nullp
 
 从API version 20开始支持设置捕获区域。
 
-可以根据需要设置区域坐标和大小，使用[OH_AVScreenCapture_SetCaptureArea](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)设置想要捕获的区域，如下方创建了一个从（0，0）为起点的宽100px，高100px的矩形区域。此接口在录屏开始前后都可以设置。
+可以根据需要设置区域坐标和大小，使用OH_AVScreenCapture_SetCaptureArea设置想要捕获的区域，如下方创建了一个从（0，0）为起点的宽100px，高100px的矩形区域。此接口在录屏开始前后都可以设置。
 
 <!-- @[screenCapture_buffer_setCaptureArea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
@@ -154,7 +154,7 @@ region = nullptr;
 
 从API version 15开始支持设置捕获光标。
 
-使用[OH_AVScreenCapture_ShowCursor](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_showcursor)设置光标显示开关，开始录屏前后均可调用。
+使用OH_AVScreenCapture_ShowCursor设置光标显示开关，开始录屏前后均可调用。
 
 <!-- @[screenCapture_buffer_showCursor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -166,7 +166,7 @@ OH_AVScreenCapture_ShowCursor(g_avCapture, false);
 
 从API version 14开始支持设置最大帧率。
 
-使用[OH_AVScreenCapture_SetMaxVideoFrameRate](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmaxvideoframerate)设置录屏时的最大帧率，需在录屏启动后被调用。
+使用OH_AVScreenCapture_SetMaxVideoFrameRate设置录屏时的最大帧率，需在录屏启动后被调用。
 
 <!-- @[screenCapture_buffer_setMaxVideoFrameRate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -176,7 +176,7 @@ OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
 
 ## 设置屏幕分辨率
 
-使用[OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas)调整录屏分辨率，需在启动后调用。分辨率有范围限制，视频的宽度和高度最大值不能超过[OH_AVCapability_GetVideoWidthRange](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange)和[OH_AVCapability_GetVideoHeightRange](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange)接口中定义的范围。
+使用OH_AVScreenCapture_ResizeCanvas调整录屏分辨率，需在启动后调用。分辨率有范围限制，视频的宽度和高度最大值不能超过OH_AVCapability_GetVideoWidthRange和OH_AVCapability_GetVideoHeightRange接口中定义的范围。
 
 <!-- @[screenCapture_buffer_resizeCanvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -188,9 +188,9 @@ OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_
 
 选择录屏时要过滤的声音和窗口。
 
-使用[OH_AVScreenCapture_ContentFilter_AddAudioContent](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_contentfilter_addaudiocontent)设置可过滤的声音，包含系统音和应用自身声音。
+使用OH_AVScreenCapture_ContentFilter_AddAudioContent设置可过滤的声音，包含系统音和应用自身声音。
 
-使用[OH_AVScreenCapture_ContentFilter_AddWindowContent](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_contentfilter_addwindowcontent)设置可过滤的窗口，通过窗口ID来指定。
+使用OH_AVScreenCapture_ContentFilter_AddWindowContent设置可过滤的窗口，通过窗口ID来指定。
 
 <!-- @[screenCapture_buffer_excludeContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -210,6 +210,6 @@ contentFilter = nullptr;
 
 ## 更多资源
 
-- API参考：详细的API描述请见[native_avscreen_capture.h](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md)。
+- API参考：详细的API描述请见[native_avscreen_capture.h](../../reference/apis-media-kit/c-apis/capi-native-avscreen-capture-h.md)。
 
 - 示例工程：该示例调用了媒体AVScreenCapture组件提供的接口能力，提供屏幕捕获的功能，详情见[录屏示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample)。

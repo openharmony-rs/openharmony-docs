@@ -21,7 +21,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 ## 获取可直接显示的Canvas画布
 
-通过[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)获取可直接上屏显示的Canvas画布。
+通过[RenderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode.md)获取可直接上屏显示的Canvas画布。
 
 1. 导入依赖的相关文件。
 
@@ -65,7 +65,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    }
    ```
 
-3. 添加自定义[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)。
+3. 添加自定义[NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md)。
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_node_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
    
@@ -94,7 +94,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    }
    ```
 
-4. 重写自定义RenderNode的[draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw)函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
+4. 重写自定义RenderNode的[draw()](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#draw)函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_rewrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
    
@@ -171,11 +171,11 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 2. 添加自定义RenderNode。
 
-3. 添加自定义[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)。
+3. 添加自定义[NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md)。
 
 4. 在MyNodeController的aboutToAppear()函数中创建PixelMap。
 
-5. 重写自定义RenderNode的[draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw)函数，在其中获取离屏Canvas进行绘制：
+5. 重写自定义RenderNode的[draw()](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#draw)函数，在其中获取离屏Canvas进行绘制：
 
    1. 利用4中创建的PixelMap构造离屏Canvas。
    2. 对离屏Canvas进行自定义的绘制操作。

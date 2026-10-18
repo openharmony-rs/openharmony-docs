@@ -126,9 +126,9 @@ SQL语句中的函数，如下所示：
 
 ## 开发步骤
 
-更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-relationalstore.md)。
 
-1. 调用[isVectorSupported()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreisvectorsupported18)接口判断当前系统是否支持向量数据库，返回false表示当前系统不具备向量数据库能力。示例代码如下：
+1. 调用[isVectorSupported()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-isvectorsupported-f.md#isvectorsupported)接口判断当前系统是否支持向量数据库，返回false表示当前系统不具备向量数据库能力。示例代码如下：
 
    <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
@@ -146,7 +146,7 @@ SQL语句中的函数，如下所示：
      }
    ```
 
-2. 若支持向量数据库则需要获取一个RdbStore。通过[getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口创建数据库，并通过[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行建表操作。
+2. 若支持向量数据库则需要获取一个RdbStore。通过[getRdbStore()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore)接口创建数据库，并通过[execute()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#execute)接口执行建表操作。
 
    > **说明：**
    >
@@ -181,7 +181,7 @@ SQL语句中的函数，如下所示：
      };
    ```
 
-3. 获取到RdbStore后，调用[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口插入数据。
+3. 获取到RdbStore后，调用[execute()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#execute)接口插入数据。
 
    > **说明：**
    >
@@ -203,7 +203,7 @@ SQL语句中的函数，如下所示：
    }
    ```
 
-4. 获取到RdbStore后，调用[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口修改或删除数据。示例代码如下：
+4. 获取到RdbStore后，调用[execute()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#execute)接口修改或删除数据。示例代码如下：
 
    <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
@@ -230,7 +230,7 @@ SQL语句中的函数，如下所示：
    }
    ```
 
-5. 获取到RdbStore后，调用[querySql()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#querysql)接口查找数据，返回一个ResultSet结果集。
+5. 获取到RdbStore后，调用[querySql()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#querysql)接口查找数据，返回一个ResultSet结果集。
 
    > **说明：**
    >
@@ -492,7 +492,7 @@ SQL语句中的函数，如下所示：
 
 11. 删除数据库。
 
-    调用[deleteRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoredeleterdbstore)接口删除数据库及数据库相关文件。示例代码如下：
+    调用[deleteRdbStore()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore)接口删除数据库及数据库相关文件。示例代码如下：
 
     <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
     

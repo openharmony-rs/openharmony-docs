@@ -171,7 +171,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 ***
 ```
 
-从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HiTraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracechain-hitraceid-i.md#hitraceid)信息打印。HiTraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
 **NOTE信息说明：**
 
@@ -563,9 +563,9 @@ client actions for app:
    | - | MainThread::ScheduleLaunchAbility | 应用进程收到加载Ability的请求，准备执行Ability的创建流程。 | 主线程被阻塞。 | 是，检查主线程是否存在耗时任务。 |
    | - | MainThread::HandleLaunchAbility | 应用主线程处理Ability加载请求。 | - | 否，系统侧加载过程。 |
    | - | JsAbilityStage::Create | 加载[AbilityStage](../application-models/abilitystage.md)。 | - | 否，系统侧加载过程。 |
-   | - | JsAbilityStage::OnCreate begin | AbilityStage [onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期开始。 | AbilityStage onCreate中执行耗时操作。 | 是，避免在AbilityStage onCreate中执行耗时操作。 |
+   | - | JsAbilityStage::OnCreate begin | AbilityStage [onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)生命周期开始。 | AbilityStage onCreate中执行耗时操作。 | 是，避免在AbilityStage onCreate中执行耗时操作。 |
    | - | JsAbilityStage::OnCreate end | AbilityStage的onCreate生命周期结束，AbilityStage初始化完成。与begin对比可计算耗时。 | AbilityStage onCreate耗时过长。 | 是，优化AbilityStage onCreate逻辑。 |
-   | - | JsAbilityStage::OnAboutToCreateAbility begin（InsightIntent场景） | AbilityStage即将创建Ability（[onAboutToCreateAbility](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24)回调）。 | onAboutToCreateAbility中执行耗时操作。 | 是，避免在onAboutToCreateAbility中执行耗时操作。 |
+   | - | JsAbilityStage::OnAboutToCreateAbility begin（InsightIntent场景） | AbilityStage即将创建Ability（[onAboutToCreateAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#onabouttocreateability)回调）。 | onAboutToCreateAbility中执行耗时操作。 | 是，避免在onAboutToCreateAbility中执行耗时操作。 |
    | - | JsAbilityStage::OnAboutToCreateAbility end（InsightIntent场景） | onAboutToCreateAbility回调结束。与begin对比可计算耗时。 | onAboutToCreateAbility耗时过长。 | 是，优化onAboutToCreateAbility逻辑。 |
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync begin（InsightIntent场景） | 异步创建Ability（onAboutToCreateAbilityAsync回调）。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync end（InsightIntent场景） | onAboutToCreateAbilityAsync回调结束。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
@@ -596,11 +596,11 @@ client actions for app:
    | ScheduleAbilityTransaction ipc error *（异常场景） | - | ScheduleAbilityTransaction IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
    | - | AbilityThread::ScheduleAbilityTransaction | 应用收到Ability前台调度，准备对具体的Ability进行事务处理。 | 主线程被阻塞。 | 是，检查主线程是否存在耗时任务。 |
    | - | AbilityThread::HandleAbilityTransaction | 主线程执行Ability前台调度，触发Ability的生命周期回调。 | - | 否，系统侧记录。 |
-   | - | JsUIAbility::OnStart begin | [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期开始，Ability执行初始化工作。 | onCreate中执行耗时操作。 | 是，避免在onCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnStart begin | [onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期开始，Ability执行初始化工作。 | onCreate中执行耗时操作。 | 是，避免在onCreate中执行耗时操作。 |
    | - | JsUIAbility::OnStart end | onCreate生命周期结束，Ability的初始资源已准备就绪。与begin对比可计算耗时。 | onCreate耗时过长。 | 是，避免在onCreate中执行耗时操作。 |
-   | - | JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 | [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)中执行耗时操作。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 | [onWindowStageCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)中执行耗时操作。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
    | - | JsUIAbility::OnSceneCreated end | 创建窗口scene结束。与begin对比可计算耗时。 | onWindowStageCreate耗时过长。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
-   | - | JsUIAbility::OnWillForeground begin | [onWillForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwillforeground20)回调开始。 | onWillForeground中执行耗时操作。 | 是，避免在onWillForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnWillForeground begin | [onWillForeground](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwillforeground)回调开始。 | onWillForeground中执行耗时操作。 | 是，避免在onWillForeground中执行耗时操作。 |
    | - | JsUIAbility::OnWillForeground end | onWillForeground回调结束。与begin对比可计算耗时。 | onWillForeground耗时过长。 | 是，避免在onWillForeground中执行耗时操作。 |
    | - | JsUIAbility::WindowScene::GoForeground begin | 调用窗口接口执行GoForeground开始。 | 窗口scene初始化失败、窗口系统响应慢。 | 否，窗口系统问题。 |
    | - | JsUIAbility::DoOnForegroundForSceneIsNull; error *（异常场景） | 窗口scene初始化失败，记录错误码。 | 窗口scene创建失败、displayId获取失败。 | 否，窗口系统问题。 |
@@ -613,9 +613,9 @@ client actions for app:
    | - | JsUIAbility::IntentPage execute start（InsightIntent场景） | Intent页面执行模式开始。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
    | - | JsUIAbility::IntentPage execute end（InsightIntent场景） | Intent页面执行模式结束。与start对比可计算耗时。 | InsightIntent执行器耗时过长。 | 是，确保Intent执行器及时完成。 |
    | - | UIAbilityImpl::HandleExecuteInsightIntentForeground（InsightIntent场景） | 处理前台意图执行。 | InsightIntent参数生成失败。 | 是，检查InsightIntent参数配置。 |
-   | - | JsUIAbility::OnForeground begin | [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)生命周期开始，通知开发者Ability已经在前台展示。 | onForeground中执行耗时操作。 | 是，避免在onForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnForeground begin | [onForeground](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)生命周期开始，通知开发者Ability已经在前台展示。 | onForeground中执行耗时操作。 | 是，避免在onForeground中执行耗时操作。 |
    | - | JsUIAbility::OnForeground end | onForeground生命周期结束，Ability的前台生命周期回调完成。与begin对比可计算耗时。 | onForeground耗时过长。 | 是，避免在onForeground中执行耗时操作。 |
-   | - | JsUIAbility::OnDidForeground begin | [onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)回调开始。 | onDidForeground中执行耗时操作。 | 是，避免在onDidForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnDidForeground begin | [onDidForeground](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#ondidforeground)回调开始。 | onDidForeground中执行耗时操作。 | 是，避免在onDidForeground中执行耗时操作。 |
    | - | JsUIAbility::OnDidForeground end | onDidForeground回调结束。与begin对比可计算耗时。 | onDidForeground耗时过长。 | 是，避免在onDidForeground中执行耗时操作。 |
    | - | AbilityManagerClient::AbilityTransitionDone | 客户端通知AMS前台切换完成。 | AbilityTransitionDone IPC调用失败。 | 否，系统侧IPC问题。 |
    | - | AbilityTransitionDone; write saveData failed（异常场景） | 客户端序列化saveData失败，记录异常信息。 | - | 否，系统侧数据问题。 |

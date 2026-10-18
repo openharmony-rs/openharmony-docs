@@ -13,35 +13,35 @@
 
 **加密**
 
-1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
+1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
    
    如何生成SM4对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：SM4](crypto-key-generation-conversion.md#sm4)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 
-3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），初始化加密Cipher实例。
    
    ECB模式无加密参数，直接传入null。
 
-4. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（明文）。
+4. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（明文）。
    
    - 当数据量较小时，可以在init完成后直接调用doFinal。
    - 当数据量较大时，可以多次调用update，即分段加解密。
 
-5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。
+5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取加密后的数据。
    
    - 由于已使用update传入数据，此处data传入null。
    - doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
 **解密**
 
-1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成解密操作。
+1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成解密操作。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）初始化解密Cipher实例。ECB模式无加密参数，直接传入null。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）初始化解密Cipher实例。ECB模式无加密参数，直接传入null。
 
-3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（密文）。
+3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（密文）。
 
-4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
+4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取解密后的数据。
 
 SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-ecbcbc算法解密时调用dofinal失败)
 
@@ -145,33 +145,33 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
 
 **加密**
 
-1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
+1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
    
    如何生成SM4对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：SM4](crypto-key-generation-conversion.md#sm4)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|CBC|PKCS7'，创建对称密钥类型为SM4_128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成加密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|CBC|PKCS7'，创建对称密钥类型为SM4_128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 
-3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和CBC模式对应的加密参数（IvParamsSpec），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和CBC模式对应的加密参数（IvParamsSpec），初始化加密Cipher实例。
 
-4. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（明文）。
+4. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（明文）。
    
    - 当数据量较小时，可以在init完成后直接调用doFinal。
    - 当数据量较大时，可以多次调用update，即分段加解密。
 
-5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。
+5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取加密后的数据。
    
    - 由于已使用update传入数据，此处data传入null。
    - doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
 **解密**
 
-1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|CBC|PKCS7'，创建对称密钥类型为SM4_128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成解密操作。
+1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|CBC|PKCS7'，创建对称密钥类型为SM4_128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成解密操作。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和CBC模式对应的解密参数（IvParamsSpec），初始化解密Cipher实例。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和CBC模式对应的解密参数（IvParamsSpec），初始化解密Cipher实例。
 
-3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（密文）。
+3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（密文）。
 
-4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
+4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取解密后的数据。
 
 SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-ecbcbc算法解密时调用dofinal失败)
 
@@ -317,38 +317,38 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
 
 **加密**
 
-1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
+1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
    
    如何生成SM4对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：SM4](crypto-key-generation-conversion.md#sm4)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成加密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成加密操作。
 
-3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。
 
-4. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（明文）。
+4. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（明文）。
    
    当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
    - 当数据量较小时，可以在init完成后直接调用doFinal。
    - 当数据量较大时，可以多次调用update，即[分段加解密](crypto-sm4-sym-encrypt-decrypt.md#使用sm4对称密钥gcm模式分段加解密)。
 
-5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。
+5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取加密后的数据。
    - 由于已使用update传入数据，此处data传入null。
    - doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
-6. 读取[GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag作为解密的认证信息。
+6. 读取[GcmParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-gcmparamsspec-i.md#gcmparamsspec).authTag作为解密的认证信息。
 
    在GCM模式下，需要从加密后的数据中取出末尾16字节，作为解密时初始化的认证信息。示例中authTag恰好为16字节。
 
 **解密**
 
-1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成解密操作。
+1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成解密操作。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和GCM模式对应的解密参数（GcmParamsSpec），初始化解密Cipher实例。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和GCM模式对应的解密参数（GcmParamsSpec），初始化解密Cipher实例。
 
-3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（密文）。
+3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（密文）。
 
-4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
+4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取解密后的数据。
 
 SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-gcm算法解密时调用dofinal失败)
 
@@ -522,15 +522,15 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
 
 **加密**
 
-1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
+1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。
    
    如何生成SM4对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：SM4](crypto-key-generation-conversion.md#sm4)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成加密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成加密操作。
 
-3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。
 
-4. 将一次传入数据量设置为20字节，多次调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（明文）。
+4. 将一次传入数据量设置为20字节，多次调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（明文）。
    
    - 当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
    - 建议开发者对每次update的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文。因为在不同的模式下，update的结果可能会受到不同影响。
@@ -539,24 +539,24 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
 
       2）对于流加密模式（比如CTR和OFB模式），通常密文长度和明文长度相等。
 
-5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。
+5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取加密后的数据。
    
    - 由于已使用update传入数据，此处data传入null。
    - doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
-6. 读取[GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag作为解密的认证信息。
+6. 读取[GcmParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-gcmparamsspec-i.md#gcmparamsspec).authTag作为解密的认证信息。
    
    在GCM模式下，需要从加密后的数据中取出末尾16字节，作为解密时初始化的认证信息。示例中authTag恰好为16字节。
 
 **解密**
 
-1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成解密操作。
+1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成解密操作。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和GCM模式对应的解密参数（GcmParamsSpec），初始化解密Cipher实例。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和GCM模式对应的解密参数（GcmParamsSpec），初始化解密Cipher实例。
 
-3. 将一次传入数据量设置为20字节，多次调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（密文）。
+3. 将一次传入数据量设置为20字节，多次调用[Cipher.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update-1)，更新数据（密文）。
 
-4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
+4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal-1)，获取解密后的数据。
 
 SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-gcm算法解密时调用dofinal失败)
 

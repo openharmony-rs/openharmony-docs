@@ -16,7 +16,7 @@ Host模式下，可以获取到已经连接的USB设备列表，并根据需要�
 
 USB服务主要提供的功能有：查询USB设备列表、批量数据传输、控制命令传输、权限控制等。
 
-USB类开放能力如下，具体请查阅[@ohos.usbManager](../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+USB类开放能力如下，具体请查阅[@ohos.usbManager](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-usbmanager.md)。
 
 **表1** USB类的开放能力接口
 

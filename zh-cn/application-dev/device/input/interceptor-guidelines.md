@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考[oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md)。
+创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考[oh_input_manager.h](../../reference/apis-input-kit/c-apis/capi-oh-input-manager-h.md)。
 
 | 接口名称 | 描述 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

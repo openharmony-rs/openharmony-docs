@@ -36,5 +36,5 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是NIST FIPS 203标�
 
 | 算法 | 备注 | 公钥长度（字节） | 密文长度（字节） | 共享密钥长度（字节） | API级别 | <!--DelCol7-->是否必选规格 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| ML-KEM-768 | 密钥封装类型为ML-KEM，密钥用途为[HUKS_KEY_PURPOSE_WRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)和[HUKS_KEY_PURPOSE_UNWRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)。 | 1184 | 784 | 32 | 26.0.0+ | 是 |
-| ML-KEM-1024 | 密钥封装类型为ML-KEM，密钥用途为[HUKS_KEY_PURPOSE_WRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)和[HUKS_KEY_PURPOSE_UNWRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)。 | 1568 | 912 | 32 | 26.0.0+ | 否 |
+| ML-KEM-768 | 密钥封装类型为ML-KEM，密钥用途为[HUKS_KEY_PURPOSE_WRAP](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeypurpose-e.md#hukskeypurpose)和[HUKS_KEY_PURPOSE_UNWRAP](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeypurpose-e.md#hukskeypurpose)。 | 1184 | 784 | 32 | 26.0.0+ | 是 |
+| ML-KEM-1024 | 密钥封装类型为ML-KEM，密钥用途为[HUKS_KEY_PURPOSE_WRAP](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeypurpose-e.md#hukskeypurpose)和[HUKS_KEY_PURPOSE_UNWRAP](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeypurpose-e.md#hukskeypurpose)。 | 1568 | 912 | 32 | 26.0.0+ | 否 |

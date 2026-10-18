@@ -32,9 +32,9 @@
 
 **迁移规则**
 
-- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
+- [aboutToRecycle](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttorecycle)生命周期无需改动，可保留原实现。
 
-- [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
+- [aboutToReuse](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoreuse)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
 
 ``` TypeScript
 // V1原组件
@@ -90,7 +90,7 @@ struct ReusableV2Component {
 
 **迁移规则**
 
-在组件复用V1中，使用[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)属性标记组件的复用组。迁移到组件复用V2后，需更换使用[reuse](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse)属性。
+在组件复用V1中，使用[reuseId](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#reuseid)属性标记组件的复用组。迁移到组件复用V2后，需更换使用[reuse](../../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#reuse)属性。
 
 ``` TypeScript
 // V1原写法

@@ -52,7 +52,7 @@
    针对应用在后台录音被其他音频流打断后无法恢复的场景，推荐使用以下解决方案：
 
    - 应用录音在后台被打断，收到焦点恢复通知时出现start失败，可以弹窗提醒用户再次打开应用手动重新开始录音。
-   - 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED，录音流焦点策略被设置成静音打断模式，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音，其他应用录制动作完成后恢复录制有声数据。
+   - 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#setindependentaudiosessionstrategy)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED，录音流焦点策略被设置成静音打断模式，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音，其他应用录制动作完成后恢复录制有声数据。
 
 3. 申请录音类型长时任务。
 
@@ -111,7 +111,7 @@
 
 4. 停止录音并释放资源。
 
-   用户停止录音、录音异常中断或业务结束时，应用需要调用AudioCapturer的[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)接口停止录音、释放音频采集资源，并同步取消录音类型长时任务。
+   用户停止录音、录音异常中断或业务结束时，应用需要调用AudioCapturer的[release](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#release)接口停止录音、释放音频采集资源，并同步取消录音类型长时任务。
 
    <!-- @[background_task_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) --> 
    

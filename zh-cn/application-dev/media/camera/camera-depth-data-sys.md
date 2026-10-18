@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)(系统接口)](../../reference/apis-camera-kit/js-apis-camera-sys.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)(系统接口)](../../reference/apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md)。
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
      
@@ -19,7 +19,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 通过[CameraOutputCapability](../../reference/apis-camera-kit/js-apis-camera-sys.md#cameraoutputcapability)中的depthProfiles属性获取当前设备支持的深度能力，返回depthProfilesArray数组。通过[createDepthDataOutput](../../reference/apis-camera-kit/js-apis-camera-sys.md#createdepthdataoutput13)方法创建深度流。
+2. 通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的depthProfiles属性获取当前设备支持的深度能力，返回depthProfilesArray数组。通过[createDepthDataOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i-sys.md#createdepthdataoutput)方法创建深度流。
 
    ```ts
    function getDepthDataOutput(cameraManager: camera.CameraManager,
@@ -45,7 +45,7 @@
    }
    ```
 
-3. 使能。通过depthDataOutput的[start](../../reference/apis-camera-kit/js-apis-camera-sys.md#start13)方法输出深度流。接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+3. 使能。通过depthDataOutput的[start](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#start)方法输出深度流。接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
      
    ```ts
    async function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): Promise<void> {
@@ -80,7 +80,7 @@
   }
   ```
 
-- 通过注册固定的error回调函数获取监听深度流输出错误结果，callback返回深度输出接口使用错误时对应的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听深度流输出错误结果，callback返回深度输出接口使用错误时对应的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
     
   ```ts
   function onDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {

@@ -88,7 +88,7 @@ Canvas添加长按事件，长按后可获取Canvas组件的dataUrl值（toDataU
 
 > **说明：** 
 >
-> promptAction相关接口参考[弹窗](../reference/apis-arkui/js-apis-promptAction.md)。
+> promptAction相关接口参考[弹窗](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)。
 
 
 ```html

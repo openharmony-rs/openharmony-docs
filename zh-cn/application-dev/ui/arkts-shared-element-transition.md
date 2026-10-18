@@ -21,12 +21,12 @@
 | 一镜到底实现方式 | 特点 | 适用场景 |
 | ------ | ---- | ---- |
 | 不新建容器直接变化原容器 | 不发生路由跳转，需要在一个组件中实现展开及关闭两种状态的布局，展开后组件层级不变。| 适用于转场开销小的简单场景，如点开页面无需加载大量数据及组件。 |
-| 新建容器并跨容器迁移组件 | 通过使用[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
-| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)接口绑定同一id，同时将转场逻辑置于[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
+| 新建容器并跨容器迁移组件 | 通过使用[NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md)，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
+| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用geometryTransition接口绑定同一id，同时将转场逻辑置于[animateTo](../reference/apis-arkui/errorcode-animation.md)动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
 
 ## 不新建容器并直接变化原容器
 
-该方法不新建容器，通过在已有容器上增删组件触发[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)，搭配组件[属性动画](./arkts-attribute-animation-apis.md)实现一镜到底效果。
+该方法不新建容器，通过在已有容器上增删组件触发[transition](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)，搭配组件[属性动画](./arkts-attribute-animation-apis.md)实现一镜到底效果。
 
 对于同一个容器展开，容器内兄弟组件消失或者出现的场景，可通过对同一个容器展开前后进行宽高位置变化并配置属性动画，对兄弟组件配置出现消失转场动画实现一镜到底效果。基本步骤为：
 
@@ -197,7 +197,7 @@ export default struct Post {
 
 ## 新建容器并跨容器迁移组件
 
-通过[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)[自定义占位节点](arkts-user-defined-place-holder.md)，利用[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)实现组件的跨节点迁移，配合属性动画给组件的迁移过程赋予一镜到底效果。这种一镜到底的实现方式可以结合多种转场方式使用，如导航转场（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）、半模态转场（[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)）等。
+通过NodeContainer[自定义占位节点](arkts-user-defined-place-holder.md)，利用[NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md)实现组件的跨节点迁移，配合属性动画给组件的迁移过程赋予一镜到底效果。这种一镜到底的实现方式可以结合多种转场方式使用，如导航转场（Navigation）、半模态转场（[bindSheet](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet)）等。
 
 ### 结合Stack使用
 
@@ -585,7 +585,7 @@ export const deleteNode = (id: string) => {
 
 ### 结合Navigation使用
 
-可以利用[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)的自定义导航转场动画能力（[customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11)，可参考Navigation[示例3](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例3设置可交互转场动画)）实现一镜到底动效。共享元素转场期间，组件由消失页面迁移至出现页面。
+可以利用Navigation的自定义导航转场动画能力（[customNavContentTransition](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#customnavcontenttransition)，可参考Navigation[示例3](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp.md#示例3设置可交互转场动画)）实现一镜到底动效。共享元素转场期间，组件由消失页面迁移至出现页面。
 
 以展开收起缩略图的场景为例，实现步骤为：
 
@@ -1376,13 +1376,13 @@ export const getMyNode = (): MyNodeController | undefined => {
 
 ### 结合BindSheet使用
 
-想实现半模态转场（[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)）的同时，组件从初始界面做一镜到底动画到半模态页面的效果，可以使用这样的设计思路。将[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)中的mode设置为SheetMode.EMBEDDED，该模式下新起的页面可以覆盖在半模态弹窗上，页面返回后该半模态依旧存在，半模态面板内容不丢失。在半模态转场的同时设置一全模态转场（[bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)）页面无转场出现，该页面仅有需要做共享元素转场的组件，通过属性动画，展示组件从初始界面至半模态页面的一镜到底动效，并在动画结束时关闭页面，并将该组件迁移至半模态页面。
+想实现半模态转场（[bindSheet](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet)）的同时，组件从初始界面做一镜到底动画到半模态页面的效果，可以使用这样的设计思路。将[SheetOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-sheetoptions-i-sys.md#sheetoptions)中的mode设置为SheetMode.EMBEDDED，该模式下新起的页面可以覆盖在半模态弹窗上，页面返回后该半模态依旧存在，半模态面板内容不丢失。在半模态转场的同时设置一全模态转场（[bindContentCover](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover)）页面无转场出现，该页面仅有需要做共享元素转场的组件，通过属性动画，展示组件从初始界面至半模态页面的一镜到底动效，并在动画结束时关闭页面，并将该组件迁移至半模态页面。
 
 以点击图片展开半模态页的场景为例，实现步骤为：
 
 - 在初始界面挂载半模态转场和全模态转场两个页面，半模态页按需布局，全模态页面仅放置一镜到底动效需要的组件，抓取布局信息，使其初始位置为初始界面图片的位置。点击初始界面图片时，同时触发半模态和全模态页面出现，因设置为SheetMode.EMBEDDED模式，此时全模态页面层级最高。
 
-- 设置不可见的占位图片置于半模态页上，作为一镜到底动效结束时图片的终止位置。利用[布局回调](../reference/apis-arkui/js-apis-arkui-inspector.md)监听该占位图片布局完成的时候，此时执行回调抓取占位图片的位置信息，随后全模态页面上的图片利用属性动画开始进行共享元素转场。
+- 设置不可见的占位图片置于半模态页上，作为一镜到底动效结束时图片的终止位置。利用[布局回调](../reference/apis-arkui/arkts-apis/arkts-arkui-inspector.md)监听该占位图片布局完成的时候，此时执行回调抓取占位图片的位置信息，随后全模态页面上的图片利用属性动画开始进行共享元素转场。
 
 - 全模态页面的动画结束时触发结束回调，关闭全模态页面，将共享元素图片的节点迁移至半模态页面，替换占位图片。
 
@@ -1930,7 +1930,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 使用geometryTransition共享元素转场
 
-[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)用于组件内隐式共享元素转场，在视图状态切换过程中提供丝滑的上下文继承过渡体验。
+geometryTransition用于组件内隐式共享元素转场，在视图状态切换过程中提供丝滑的上下文继承过渡体验。
 
 geometryTransition的使用方式为对需要添加一镜到底动效的两个组件使用geometryTransition接口绑定同一id，这样在其中一个组件消失同时另一个组件创建出现的时候，系统会对二者添加一镜到底动效。
 
@@ -1940,7 +1940,7 @@ geometryTransition绑定两个对象的实现方式使得geometryTransition区�
 >
 > 1. 使用geometryTransition接口绑定同一id的组件不能相互嵌套，即一个绑定了该id的组件内部不能再嵌套另一个绑定了相同id的组件，否则会导致转场动画异常。
 >
-> 2. 建议在动画结束回调（[onFinish](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场。下次触发转场前再将id设置回所需值。
+> 2. 建议在动画结束回调（onFinish）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场。下次触发转场前再将id设置回所需值。
 
 ### geometryTransition的简单使用
 

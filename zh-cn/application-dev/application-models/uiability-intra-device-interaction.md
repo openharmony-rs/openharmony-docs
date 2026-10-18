@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)是系统调度的最小单元。在设备内的功能模块之间跳转时，会涉及到启动特定的UIAbility，包括应用内的其他UIAbility、或者其他应用的UIAbility（例如启动三方支付UIAbility）。
+[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)是系统调度的最小单元。在设备内的功能模块之间跳转时，会涉及到启动特定的UIAbility，包括应用内的其他UIAbility、或者其他应用的UIAbility（例如启动三方支付UIAbility）。
 
 
 本文主要介绍启动应用内的UIAbility组件的方式。应用间的组件跳转详见[应用间跳转](link-between-apps-overview.md)。<!--Del-->对于跨设备的应用组件交互，请参见[应用组件跨设备交互（流转）](inter-device-interaction-hop-overview.md)。<!--DelEnd-->
@@ -23,11 +23,11 @@
 
 ## 启动应用内的UIAbility
 
-当一个应用内包含多个[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)时，存在应用内启动UIAbility的场景。例如在支付应用中从入口UIAbility启动收付款UIAbility。
+当一个应用内包含多个[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)时，存在应用内启动UIAbility的场景。例如在支付应用中从入口UIAbility启动收付款UIAbility。
 
 假设应用中有两个UIAbility：EntryAbility和FuncAbility（可以在同一个Module中，也可以在不同的Module中），需要从EntryAbility的页面中启动FuncAbility。
 
-1. 在EntryAbility中，通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动UIAbility，[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
+1. 在EntryAbility中，通过调用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)方法启动UIAbility，[want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
     <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
@@ -84,7 +84,7 @@
     }
     ```
 
-2. 在FuncAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调文件中接收EntryAbility传递过来的参数。
+2. 在FuncAbility的[onCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期回调文件中接收EntryAbility传递过来的参数。
 
     <!-- @[Ability_FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityA.ets) -->
 
@@ -106,9 +106,9 @@
 
     > **说明：**
     >
-    > 在被拉起的FuncAbility中，可以通过获取传递过来的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数的`parameters`来获取拉起方[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的PID、Bundle Name等信息。
+    > 在被拉起的FuncAbility中，可以通过获取传递过来的[want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)参数的`parameters`来获取拉起方[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)的PID、Bundle Name等信息。
 
-3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，在FuncAbility中通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
+3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)实例，在FuncAbility中通过调用[terminateSelf()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateself)方法实现。
 
     <!-- @[FuncAbilityAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
     
@@ -148,14 +148,14 @@
     >
     > 调用terminateSelf()方法停止当前UIAbility实例时，默认会保留该实例的快照（Snapshot），即在最近任务列表中仍然能查看到该实例对应的任务。如不需要保留该实例的快照，可以在其对应UIAbility的[module.json5配置文件](../quick-start/module-configuration-file.md)中，将[abilities标签](../quick-start/module-configuration-file.md#abilities标签)的removeMissionAfterTerminate字段配置为true。
 
-4. 如需要关闭应用所有的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以调用[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)的[killAllProcesses()](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextkillallprocesses)方法实现关闭应用所有的进程。
+4. 如需要关闭应用所有的[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)实例，可以调用[ApplicationContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-applicationcontext-t.md)的[killAllProcesses()](../reference/apis-ability-kit/arkts-apis/arkts-ability-applicationcontext-c.md#killallprocesses)方法实现关闭应用所有的进程。
 
 
 ## 启动应用内的UIAbility并获取返回结果
 
-在一个EntryAbility启动另外一个FuncAbility时，希望在被启动的FuncAbility完成相关业务后，能将结果返回给调用方。例如在应用中将入口功能和账号登录功能分别设计为两个独立的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)，在账号登录UIAbility中完成登录操作后，需要将登录的结果返回给入口UIAbility。
+在一个EntryAbility启动另外一个FuncAbility时，希望在被启动的FuncAbility完成相关业务后，能将结果返回给调用方。例如在应用中将入口功能和账号登录功能分别设计为两个独立的[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)，在账号登录UIAbility中完成登录操作后，需要将登录的结果返回给入口UIAbility。
 
-1. 在EntryAbility中，调用[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)接口启动FuncAbility，异步回调中的data用于接收FuncAbility停止自身后返回给EntryAbility的信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
+1. 在EntryAbility中，调用[startAbilityForResult()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilityforresult-2)接口启动FuncAbility，异步回调中的data用于接收FuncAbility停止自身后返回给EntryAbility的信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
     <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
@@ -223,7 +223,7 @@
     }
     ```
 
-2. 在FuncAbility停止自身时，需要调用[terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，入参[abilityResult](../reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md)为FuncAbility需要返回给EntryAbility的信息。
+2. 在FuncAbility停止自身时，需要调用[terminateSelfWithResult()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)方法，入参[abilityResult](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-abilityresult-t.md)为FuncAbility需要返回给EntryAbility的信息。
 
     <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
     
@@ -278,7 +278,7 @@
     }
     ```
 
-3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
+3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilityforresult-2)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
 
     <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
@@ -351,7 +351,7 @@
 
 ### 概述
 
-一个[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)可以对应多个页面，在不同的场景下启动该UIAbility时需要展示不同的页面，例如从一个UIAbility的页面中跳转到另外一个UIAbility时，希望启动目标UIAbility的指定页面。
+一个[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)可以对应多个页面，在不同的场景下启动该UIAbility时需要展示不同的页面，例如从一个UIAbility的页面中跳转到另外一个UIAbility时，希望启动目标UIAbility的指定页面。
 
 UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动。
 
@@ -363,7 +363,7 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 
 ### 调用方UIAbility指定启动页面
 
-调用方[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，Second对应功能A页面），此时需要在传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中配置指定的页面路径信息，可以通过Want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
+调用方[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，Second对应功能A页面），此时需要在传入的[want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)参数中配置指定的页面路径信息，可以通过Want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
 
 <!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
@@ -423,7 +423,7 @@ struct MainPage {
 
 ### 目标UIAbility冷启动
 
-目标[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)冷启动时，在目标UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中，接收调用方传过来的参数。然后在目标UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，解析调用方传递过来的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法。
+目标[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)冷启动时，在目标UIAbility的[onCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期回调中，接收调用方传过来的参数。然后在目标UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期回调中，解析调用方传递过来的[want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent)方法。
 
 <!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
 
@@ -461,7 +461,7 @@ export default class ColdStartAbility extends UIAbility {
 
 ### 目标UIAbility热启动
 
-在应用开发中，会遇到目标[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例之前已经启动过的场景，这时再次启动目标UIAbility时，不会重新走初始化逻辑，只会直接触发[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期方法。为了实现跳转到指定页面，需要在onNewWant()中解析参数进行处理。
+在应用开发中，会遇到目标[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)实例之前已经启动过的场景，这时再次启动目标UIAbility时，不会重新走初始化逻辑，只会直接触发[onNewWant()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期方法。为了实现跳转到指定页面，需要在onNewWant()中解析参数进行处理。
 
 例如短信应用和联系人应用配合使用的场景。
 
@@ -469,7 +469,7 @@ export default class ColdStartAbility extends UIAbility {
 2. 用户将设备回到桌面界面，短信应用进入后台运行状态。
 3. 用户打开联系人应用，找到联系人张三。
 4. 用户点击联系人张三的短信按钮，会再次启动短信应用的UIAbility实例。
-5. 由于短信应用的UIAbility实例已经启动过了，此时会触发该UIAbility的onNewWant()回调，而不会再走[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)等初始化逻辑。
+5. 由于短信应用的UIAbility实例已经启动过了，此时会触发该UIAbility的onNewWant()回调，而不会再走[onCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)和[onWindowStageCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)等初始化逻辑。
 
 图1 目标UIAbility热启动
 
@@ -477,7 +477,7 @@ export default class ColdStartAbility extends UIAbility {
 
 开发步骤如下所示。
 
-1. 冷启动短信应用的UIAbility实例时，在[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过调用[getUIContext()](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)接口获取UI上下文实例[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)对象。
+1. 冷启动短信应用的UIAbility实例时，在[onWindowStageCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期回调中，通过调用[getUIContext()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getuicontext)接口获取UI上下文实例[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
     <!-- @[HotAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
     
@@ -519,7 +519,7 @@ export default class ColdStartAbility extends UIAbility {
     }
     ```
 
-2. 在短信应用UIAbility的[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调中通过AppStorage设置全局变量nameForNavi的值，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
+2. 在短信应用UIAbility的[onNewWant()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)回调中通过AppStorage设置全局变量nameForNavi的值，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
 
     1. 导入相关模块，并在onNewWant()生命周期回调中设置全局变量nameForNavi的值。
 
@@ -658,7 +658,7 @@ export default class ColdStartAbility extends UIAbility {
 <!--Del-->
 ## 启动UIAbility指定窗口模式（仅对系统应用开放）
 
-当用户打开应用时，应用程序会以不同的窗口模式进行展示，即启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的窗口模式。应用程序可以启动为全屏模式，悬浮窗模式或分屏模式。
+当用户打开应用时，应用程序会以不同的窗口模式进行展示，即启动[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)的窗口模式。应用程序可以启动为全屏模式，悬浮窗模式或分屏模式。
 
 全屏模式是指应用程序启动后，占据整个屏幕，用户无法同时查看其他窗口或应用程序。全屏模式通常适用于那些要求用户专注于特定任务或界面的应用程序。
 
@@ -666,7 +666,7 @@ export default class ColdStartAbility extends UIAbility {
 
 分屏模式允许用户在同一屏幕上同时运行两个应用程序，其中一个应用程序占据屏幕左侧/上侧的一部分，另一个应用程序占据右侧/下侧的一部分。分屏模式主要用于提高用户的多任务处理效率。
 
-使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动UIAbility时，可以通过在入参中增加[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)参数的windowMode属性来配置启动UIAbility的窗口模式。
+使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)方法启动UIAbility时，可以通过在入参中增加[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions.md)参数的windowMode属性来配置启动UIAbility的窗口模式。
 
 > **说明：**
 >

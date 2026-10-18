@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-简单文本绘制的相关接口如下所示，详细接口说明请参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
+简单文本绘制的相关接口如下所示，详细接口说明请参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/c-apis/capi-drawing-text-typography-h.md)。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |

@@ -6,11 +6,11 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-TonePlayer<sup>9+</sup>提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。其工作原理是将指定的[ToneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9)类型，通过自带算法生成多个不同频率的正弦波叠加形成声音数据，通过[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md)进行播放，同时对播放任务进行管理。包含加载DTMF音调配置、启动DTMF音调播放、停止当前正在播放的音调、释放与此TonePlayer对象关联的资源等流程。详细API说明请参考[TonePlayer](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9)。
+TonePlayer<sup>9+</sup>提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。其工作原理是将指定的[ToneType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-devicechangeaction-i.md#type)类型，通过自带算法生成多个不同频率的正弦波叠加形成声音数据，通过[AudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md)进行播放，同时对播放任务进行管理。包含加载DTMF音调配置、启动DTMF音调播放、停止当前正在播放的音调、释放与此TonePlayer对象关联的资源等流程。详细API说明请参考[TonePlayer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getmockhapticringtoneplayer)。
 
 ## 支持的播放音调类型
 
-播放音调类型[ToneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9)信息（如下表所示），可通过"audio.ToneType.指定类型" 作为参数调用[load](../../reference/apis-audio-kit/js-apis-audio-sys.md#load9)方法加载指定类型的音调资源。
+播放音调类型[ToneType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-devicechangeaction-i.md#type)信息（如下表所示），可通过"audio.ToneType.指定类型" 作为参数调用[load](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-toneplayer-i-sys.md#load)方法加载指定类型的音调资源。
 
 | 播放音调类型 | 值 | 说明 | 
 | -------- | -------- | -------- |
@@ -100,7 +100,7 @@ TonePlayer<sup>9+</sup>提供播放和管理DTMF（Dual Tone Multi Frequency，�
 
 参考以下示例，点击拨号键盘按键，并启动对应的DTMF音调播放。
 
-为保证UI线程不被阻塞，大部分TonePlayer调用都是异步的。对于每个API均提供了callback函数和Promise函数，以下示例均采用Promise函数，更多方式可参考API文档[TonePlayer](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9)。
+为保证UI线程不被阻塞，大部分TonePlayer调用都是异步的。对于每个API均提供了callback函数和Promise函数，以下示例均采用Promise函数，更多方式可参考API文档[TonePlayer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#getmockhapticringtoneplayer)。
 
 ```ts
 import { audio } from '@kit.AudioKit';

@@ -16,16 +16,16 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
 | 对象类型 | 适用场景 | 特性 |
 |---|---|---|
-| [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 单图显示、基础图片处理 | 单一像素数据，支持图像变换（裁剪、缩放、旋转等）、位图操作，可直接传给Image组件显示。 |
-| [Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md) | HDR图片、HEIF专业格式、辅助图处理 | 包含主图+辅助图+元数据，可提取主图/增益图/合成HDR图为PixelMap后显示或处理，支持辅助图和元数据操作。 |
+| [PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 单图显示、基础图片处理 | 单一像素数据，支持图像变换（裁剪、缩放、旋转等）、位图操作，可直接传给Image组件显示。 |
+| [Picture](../../reference/apis-image-kit/arkts-apis/arkts-image-image-picture-i.md) | HDR图片、HEIF专业格式、辅助图处理 | 包含主图+辅助图+元数据，可提取主图/增益图/合成HDR图为PixelMap后显示或处理，支持辅助图和元数据操作。 |
 
 > **选择建议：**
 > - 需要直接显示单张图片或进行裁剪、缩放、旋转等图像处理时，使用PixelMap。
-> - 需要处理HDR图片、获取辅助图（如GAINMAP）、操作图片元数据时，使用Picture。如需对Picture的内容进行裁剪缩放，可通过[getMainPixelmap](../../reference/apis-image-kit/arkts-apis-image-Picture.md#getmainpixelmap13)等方法提取PixelMap后再处理。
+> - 需要处理HDR图片、获取辅助图（如GAINMAP）、操作图片元数据时，使用Picture。如需对Picture的内容进行裁剪缩放，可通过[getMainPixelmap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-picture-i.md#getmainpixelmap)等方法提取PixelMap后再处理。
 
 ## 开发步骤
 
-图片解码相关API的详细介绍请参见[ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md)。
+图片解码相关API的详细介绍请参见[ImageSource](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md)。
 
 1. 全局导入Image模块。
 
@@ -52,7 +52,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
      }
      ```
 
-   - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考文档[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)。该方法需要导入\@kit.CoreFileKit模块。
+   - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考文档[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-file-fs.md)。该方法需要导入\@kit.CoreFileKit模块。
    
      <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -70,7 +70,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
      }
      ```
    
-   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[getRawFileContent](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[getRawFileContent](../../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfilecontent)。该方法需要导入\@kit.LocalizationKit模块。
    
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
      
@@ -91,7 +91,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
      }
      ```
    
-   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[getRawFd](../../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd)。该方法需要导入\@kit.LocalizationKit模块。
      
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -159,7 +159,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
    > **说明：**
    >
-   > 并非所有图片都包含辅助图。在获取辅助图前，应先调用Picture的[getAuxiliaryPicture](../../reference/apis-image-kit/arkts-apis-image-Picture.md#getauxiliarypicture13)方法尝试获取。其他辅助图类型请参考[AuxiliaryPictureType](../../reference/apis-image-kit/arkts-apis-image-e.md#auxiliarypicturetype13)。
+   > 并非所有图片都包含辅助图。在获取辅助图前，应先调用Picture的[getAuxiliaryPicture](../../reference/apis-image-kit/arkts-apis/arkts-image-image-picture-i.md#getauxiliarypicture)方法尝试获取。其他辅助图类型请参考[AuxiliaryPictureType](../../reference/apis-image-kit/arkts-apis/arkts-image-image-auxiliarypictureinfo-i.md#auxiliarypicturetype)。
 
    <!-- @[create_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    

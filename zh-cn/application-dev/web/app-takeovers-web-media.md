@@ -57,7 +57,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ### 开启接管网页媒体播放
 
-需要先通过[enableNativeMediaPlayer](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)接口开启接管网页媒体播放的功能。
+需要先通过[enableNativeMediaPlayer](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#enablenativemediaplayer)接口开启接管网页媒体播放的功能。
 
   ```ts
   // xxx.ets
@@ -79,7 +79,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ### 创建本地播放器(NativeMediaPlayer)
 
-该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)注册的回调函数。
+该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer)注册的回调函数。
 
 应用则需要调用onCreateNativeMediaPlayer来注册一个创建本地播放器的回调函数。
 
@@ -88,7 +88,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
   * 如果应用不接管当前的网页媒体资源， 需在回调函数里返回null。
   * 如果应用接管当前的网页媒体资源， 需在回调函数里返回一个本地播放器实例。
 
-本地播放器需要实现[NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)接口，以便ArkWeb内核对本地播放器进行播控操作。
+本地播放器需要实现[NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-nativemediaplayerbridge-i.md)接口，以便ArkWeb内核对本地播放器进行播控操作。
 
   ```ts
   // xxx.ets
@@ -150,7 +150,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 该流程与[同层渲染](web-same-layer.md)绘制一致。
 
-1. 在应用启动阶段，应用应保存[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)，以便后续的同层渲染绘制流程能够使用该UIContext。
+1. 在应用启动阶段，应用应保存[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)，以便后续的同层渲染绘制流程能够使用该UIContext。
 
    <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
    
@@ -254,7 +254,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ### 执行ArkWeb内核发送给本地播放器的播控命令
 
-为了方便ArkWeb内核对本地播放器进行播控操作，应用需要令本地播放器实现[NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)接口，并根据每个接口方法的功能对本地播放器进行相应操作。
+为了方便ArkWeb内核对本地播放器进行播控操作，应用需要令本地播放器实现[NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-nativemediaplayerbridge-i.md)接口，并根据每个接口方法的功能对本地播放器进行相应操作。
 
   ```ts
   // xxx.ets
@@ -321,7 +321,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：视频的宽高、播放时间、缓存时间等），因此，应用需要将本地播放器的状态信息通知给ArkWeb内核。
 
-在[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)接口中， ArkWeb内核传递一个[NativeMediaPlayerHandler](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md)对象给应用。应用需要通过该对象，将本地播放器的最新状态信息通知给ArkWeb内核。
+在[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer)接口中， ArkWeb内核传递一个[NativeMediaPlayerHandler](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-nativemediaplayerhandler-i.md)对象给应用。应用需要通过该对象，将本地播放器的最新状态信息通知给ArkWeb内核。
 
   ```ts
   // xxx.ets
@@ -484,7 +484,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     ]
   ```
 
-- 在应用启动阶段保存[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)。
+- 在应用启动阶段保存[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)。
 
   ```ts
   // xxxAbility.ets

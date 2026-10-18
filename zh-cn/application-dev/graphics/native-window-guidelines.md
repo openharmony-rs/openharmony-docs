@@ -22,7 +22,7 @@ NativeWindow是**本地平台化窗口**，表示图形队列的生产者端，�
 | OH_NativeWindow_NativeWindowFlushBuffer (OHNativeWindow \*window, OHNativeWindowBuffer \*buffer, int fenceFd, Region region) | 通过OHNativeWindow将生产好内容的OHNativeWindowBuffer放回到Buffer队列中，用以内容消费。 | 
 | OH_NativeWindow_NativeWindowHandleOpt (OHNativeWindow \*window, int code,...) | 设置/获取OHNativeWindow的属性，包括设置/获取宽高、内容格式等。 | 
 
-详细的接口说明请参考[NativeWindow](../reference/apis-arkgraphics2d/capi-nativewindow.md)。
+详细的接口说明请参考[NativeWindow](../reference/apis-arkgraphics2d/c-apis/capi-nativewindow.md)。
 
 ## 开发步骤
 
@@ -47,7 +47,7 @@ libnative_window.so
 
 1. 获取OHNativeWindow实例。
 
-    可通过[`OH_NativeXComponent_Callback`](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md)接口获取OHNativeWindow。代码示例如下。关于XComponent模块的使用方法，详见[XComponent开发指导](../ui/napi-xcomponent-guidelines.md)。
+    可通过[`OH_NativeXComponent_Callback`](../reference/apis-arkui/c-apis/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md)接口获取OHNativeWindow。代码示例如下。关于XComponent模块的使用方法，详见[XComponent开发指导](../ui/napi-xcomponent-guidelines.md)。
 
     1. 在xxx.ets中添加一个XComponent组件。
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->

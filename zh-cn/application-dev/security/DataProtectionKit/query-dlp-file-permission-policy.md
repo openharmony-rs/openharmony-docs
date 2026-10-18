@@ -26,7 +26,7 @@ Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力�
 
     2.2 设置待查询策略的DLP文件的文件标识符ciphertextFd。
 
-    2.3 调用[dlpPermission.queryDlpPolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionquerydlppolicy21)获取DLP明文策略。
+    2.3 调用[dlpPermission.queryDlpPolicy](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-querydlppolicy-f.md#querydlppolicy)获取DLP明文策略。
 
     <!-- @[dlp_queryDlpPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     

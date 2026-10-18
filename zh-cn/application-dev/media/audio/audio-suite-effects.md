@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API版本22开始，[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供多种音频效果节点，开发者可根据业务需求选择合适的效果节点对音频进行处理。
+从API版本22开始，[OHAudioSuite](../../reference/apis-audio-kit/c-apis/capi-ohaudiosuite.md)提供多种音频效果节点，开发者可根据业务需求选择合适的效果节点对音频进行处理。
 
 ## 效果节点类型
 
@@ -15,7 +15,7 @@
 | [均衡器](#均衡器) | EFFECT_NODE_TYPE_EQUALIZER | API版本22 | 频段调节，改变音频频率特性。 | - |
 | [降噪](#降噪) | EFFECT_NODE_TYPE_NOISE_REDUCTION | API版本22 | 降低背景噪声，提升语音清晰度。 | - |
 | [声场](#声场) | EFFECT_NODE_TYPE_SOUND_FIELD | API版本22 | 调整声音空间感和声场范围。 | - |
-| [音源分离](#音源分离) | EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION | API版本22 | 分离人声与伴奏（多路输出）。 | 该功能依赖NPU，创建节点前需调用[OH_AudioSuiteEngine_IsNodeTypeSupported()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_isnodetypesupported)检查是否支持该节点类型。 |
+| [音源分离](#音源分离) | EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION | API版本22 | 分离人声与伴奏（多路输出）。 | 该功能依赖NPU，创建节点前需调用OH_AudioSuiteEngine_IsNodeTypeSupported()检查是否支持该节点类型。 |
 | [声音美化](#声音美化) | EFFECT_NODE_TYPE_VOICE_BEAUTIFIER | API版本22 | 提升音质和听感。 | - |
 | [环境效果](#环境效果) | EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT | API版本22 | 模拟不同环境的声学效果。 | - |
 | [混音](#混音) | EFFECT_NODE_TYPE_AUDIO_MIXER | API版本22 | 多路音频混合为一路。 | - |
@@ -27,7 +27,7 @@
 
 ## 均衡器
 
-均衡器效果节点[EFFECT_NODE_TYPE_EQUALIZER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)通过调整不同频段的增益来改变音频的频率特性，实现丰富的音乐风格效果。
+均衡器效果节点EFFECT_NODE_TYPE_EQUALIZER通过调整不同频段的增益来改变音频的频率特性，实现丰富的音乐风格效果。
 
 ### 均衡器频段
 
@@ -52,15 +52,15 @@
 
 均衡器节点内置以下预置效果：
 
-- [OH_EQUALIZER_PARAM_DEFAULT](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：默认效果，各频段增益为{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。
-- [OH_EQUALIZER_PARAM_BALLADS](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：民谣效果，各频段增益为{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。
-- [OH_EQUALIZER_PARAM_CHINESE_STYLE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：中国风效果，各频段增益为{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。
-- [OH_EQUALIZER_PARAM_CLASSICAL](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：古典效果，各频段增益为{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。
-- [OH_EQUALIZER_PARAM_DANCE_MUSIC](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：舞曲效果，各频段增益为{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。
-- [OH_EQUALIZER_PARAM_JAZZ](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：爵士效果，各频段增益为{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。
-- [OH_EQUALIZER_PARAM_POP](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：流行效果，各频段增益为{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。
-- [OH_EQUALIZER_PARAM_RB](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：R&B效果，各频段增益为{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。
-- [OH_EQUALIZER_PARAM_ROCK](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#变量)：摇滚效果，各频段增益为{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。
+- [OH_EQUALIZER_PARAM_DEFAULT](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：默认效果，各频段增益为{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。
+- [OH_EQUALIZER_PARAM_BALLADS](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：民谣效果，各频段增益为{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。
+- [OH_EQUALIZER_PARAM_CHINESE_STYLE](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：中国风效果，各频段增益为{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。
+- [OH_EQUALIZER_PARAM_CLASSICAL](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：古典效果，各频段增益为{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。
+- [OH_EQUALIZER_PARAM_DANCE_MUSIC](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：舞曲效果，各频段增益为{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。
+- [OH_EQUALIZER_PARAM_JAZZ](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：爵士效果，各频段增益为{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。
+- [OH_EQUALIZER_PARAM_POP](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：流行效果，各频段增益为{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。
+- [OH_EQUALIZER_PARAM_RB](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：R&B效果，各频段增益为{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。
+- [OH_EQUALIZER_PARAM_ROCK](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#变量)：摇滚效果，各频段增益为{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。
 
 ### 均衡器效果节点设置方法
 
@@ -78,11 +78,11 @@ OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(*node, gains);
 
 ## 降噪
 
-降噪效果节点[EFFECT_NODE_TYPE_NOISE_REDUCTION](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)用于降低音频中的背景噪声，提升语音的清晰度与可懂度。
+降噪效果节点EFFECT_NODE_TYPE_NOISE_REDUCTION用于降低音频中的背景噪声，提升语音的清晰度与可懂度。
 
 ### 配置说明
 
-降噪效果节点无需额外配置参数，创建节点并接入管线后即生效。开发者可通过[OH_AudioSuiteEngine_BypassEffectNode](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_bypasseffectnode)控制是否旁路（透传）该效果。
+降噪效果节点无需额外配置参数，创建节点并接入管线后即生效。开发者可通过OH_AudioSuiteEngine_BypassEffectNode控制是否旁路（透传）该效果。
 
 ### 降噪效果节点设置方法
 
@@ -97,11 +97,11 @@ OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
 
 ## 声场
 
-声场效果节点[EFFECT_NODE_TYPE_SOUND_FIELD](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)通过调整声音的空间感与声场范围，营造不同的听感氛围。
+声场效果节点EFFECT_NODE_TYPE_SOUND_FIELD通过调整声音的空间感与声场范围，营造不同的听感氛围。
 
 ### 声场类型
 
-声场效果节点支持以下四种声场效果，通过[OH_SoundFieldType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_soundfieldtype)进行设置：
+声场效果节点支持以下四种声场效果，通过OH_SoundFieldType进行设置：
 
 | 枚举值 | 名称 | 描述 |
 |--------|------|------|
@@ -125,12 +125,12 @@ OH_AudioSuiteEngine_SetSoundFieldType(*node, static_cast<OH_SoundFieldType>(para
 
 ## 音源分离
 
-音源分离效果节点[EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)可将混合音频分离为人声与伴奏两路，属于多输出效果节点，每个管线中数量不超过1个。
+音源分离效果节点EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION可将混合音频分离为人声与伴奏两路，属于多输出效果节点，每个管线中数量不超过1个。
 
 ### 配置说明
 
 - 音源分离效果节点只能连接输出节点，不能连接其他效果节点。
-- 由于是多输出节点，需通过[OH_AudioSuiteEngine_MultiRenderFrame](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_multirenderframe)获取处理后的数据。`audioDataArray`大小要和输出数量一一对应，人声1路、伴奏1路。
+- 由于是多输出节点，需通过OH_AudioSuiteEngine_MultiRenderFrame获取处理后的数据。`audioDataArray`大小要和输出数量一一对应，人声1路、伴奏1路。
 
 ### 音源分离效果节点设置方法
 
@@ -138,11 +138,11 @@ OH_AudioSuiteEngine_SetSoundFieldType(*node, static_cast<OH_SoundFieldType>(para
 
 ## 声音美化
 
-声音美化效果节点[EFFECT_NODE_TYPE_VOICE_BEAUTIFIER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)可以提升音频的音质和听感，为用户带来更加优质的听觉体验。
+声音美化效果节点EFFECT_NODE_TYPE_VOICE_BEAUTIFIER可以提升音频的音质和听感，为用户带来更加优质的听觉体验。
 
 ### 美化类型
 
-声音美化效果节点支持以下四种美化效果类型，通过[OH_VoiceBeautifierType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)进行设置：
+声音美化效果节点支持以下四种美化效果类型，通过OH_VoiceBeautifierType进行设置：
 
 | 枚举值 | 名称 | 描述 |
 |--------|------|------|
@@ -167,11 +167,11 @@ OH_AudioSuiteEngine_SetVoiceBeautifierType(*node,
 
 ## 环境效果
 
-环境效果节点[EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)通过模拟不同声学环境的特性，使音频呈现对应场景的听感。
+环境效果节点EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT通过模拟不同声学环境的特性，使音频呈现对应场景的听感。
 
 ### 环境类型
 
-环境效果节点支持以下四种环境效果，通过[OH_EnvironmentType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_environmenttype)进行设置：
+环境效果节点支持以下四种环境效果，通过OH_EnvironmentType进行设置：
 
 | 枚举值 | 名称 | 描述 |
 |--------|------|------|
@@ -195,7 +195,7 @@ OH_AudioSuiteEngine_SetEnvironmentType(*node, static_cast<OH_EnvironmentType>(pa
 
 ## 混音
 
-混音效果节点[EFFECT_NODE_TYPE_AUDIO_MIXER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)用于将多路输入音频混合为一路输出，每个管线中混音节点的数量不超过3个。
+混音效果节点EFFECT_NODE_TYPE_AUDIO_MIXER用于将多路输入音频混合为一路输出，每个管线中混音节点的数量不超过3个。
 
 ### 混音效果节点设置方法
 
@@ -203,7 +203,7 @@ OH_AudioSuiteEngine_SetEnvironmentType(*node, static_cast<OH_EnvironmentType>(pa
 
 ## 空间渲染
 
-空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)用于实现3D空间音频的定位与渲染，采用左手坐标系（拇指指向x轴正方向、食指指向y轴正方向、其余手指指向z轴正方向），详细说明请参考[空间音频渲染(C/C++)](audio-suite-space-render.md)。
+空间渲染效果节点EFFECT_NODE_TYPE_SPACE_RENDER用于实现3D空间音频的定位与渲染，采用左手坐标系（拇指指向x轴正方向、食指指向y轴正方向、其余手指指向z轴正方向），详细说明请参考[空间音频渲染(C/C++)](audio-suite-space-render.md)。
 
 ### 渲染模式
 
@@ -211,7 +211,7 @@ OH_AudioSuiteEngine_SetEnvironmentType(*node, static_cast<OH_EnvironmentType>(pa
 
 **固定摆位模式**
 
-通过[OH_AudioSuiteEngine_SetSpaceRenderPositionParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)进行设置，参数结构体[OH_AudioSuite_SpaceRenderPositionParams](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)的成员定义如下：
+通过OH_AudioSuiteEngine_SetSpaceRenderPositionParams进行设置，参数结构体[OH_AudioSuite_SpaceRenderPositionParams](../../reference/apis-audio-kit/c-apis/capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)的成员定义如下：
 
 | 成员 | 类型 | 取值范围 | 单位 | 说明 |
 |------|------|---------|------|------|
@@ -221,7 +221,7 @@ OH_AudioSuiteEngine_SetEnvironmentType(*node, static_cast<OH_EnvironmentType>(pa
 
 **旋转模式**
 
-通过[OH_AudioSuiteEngine_SetSpaceRenderRotationParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)进行设置，参数结构体[OH_AudioSuite_SpaceRenderRotationParams](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)的成员定义如下：
+通过OH_AudioSuiteEngine_SetSpaceRenderRotationParams进行设置，参数结构体[OH_AudioSuite_SpaceRenderRotationParams](../../reference/apis-audio-kit/c-apis/capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)的成员定义如下：
 
 | 成员 | 类型 | 取值范围 | 单位 | 说明 |
 |------|------|---------|------|------|
@@ -229,11 +229,11 @@ OH_AudioSuiteEngine_SetEnvironmentType(*node, static_cast<OH_EnvironmentType>(pa
 | y | float | [-5.0, 5.0] | 米（m） | 空间中的Y坐标。 |
 | z | float | [-5.0, 5.0] | 米（m） | 空间中的Z坐标。 |
 | surroundTime | int32_t | [2, 40] | 秒（s） | 单周环绕时间。 |
-| surroundDirection | [OH_AudioSuite_SurroundDirection](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_surrounddirection) | [0, 1] | - | 环绕方向：0=逆时针（SPACE_RENDER_CCW），1=顺时针（SPACE_RENDER_CW）。 |
+| surroundDirection | OH_AudioSuite_SurroundDirection | [0, 1] | - | 环绕方向：0=逆时针（SPACE_RENDER_CCW），1=顺时针（SPACE_RENDER_CW）。 |
 
 **扩展模式**
 
-通过[OH_AudioSuiteEngine_SetSpaceRenderExtensionParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)进行设置，参数结构体[OH_AudioSuite_SpaceRenderExtensionParams](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)的成员定义如下：
+通过OH_AudioSuiteEngine_SetSpaceRenderExtensionParams进行设置，参数结构体[OH_AudioSuite_SpaceRenderExtensionParams](../../reference/apis-audio-kit/c-apis/capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)的成员定义如下：
 
 | 成员 | 类型 | 取值范围 | 单位 | 说明 |
 |------|------|---------|------|------|
@@ -287,17 +287,17 @@ switch (params.spaceRenderMode) {
 
 ## 传统变声
 
-传统变声效果节点[EFFECT_NODE_TYPE_PURE_VOICE_CHANGE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)通过指定性别、变声类型与音调实现传统变声效果。
+传统变声效果节点EFFECT_NODE_TYPE_PURE_VOICE_CHANGE通过指定性别、变声类型与音调实现传统变声效果。
 
 ### 配置说明
 
-传统变声效果节点通过结构体[OH_AudioSuite_PureVoiceChangeOption](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)配置，包含以下成员：
+传统变声效果节点通过结构体[OH_AudioSuite_PureVoiceChangeOption](../../reference/apis-audio-kit/c-apis/capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)配置，包含以下成员：
 
 | 成员 | 类型 | 说明 |
 |------|------|------|
-| optionGender | [OH_AudioSuite_PureVoiceChangeGenderOption](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangegenderoption) | 变声性别：1=女声（PURE_VOICE_CHANGE_FEMALE），2=男声（PURE_VOICE_CHANGE_MALE）。 |
-| optionType | [OH_AudioSuite_PureVoiceChangeType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangetype) | 参考下方变声类型。 |
-| pitch | float | 音调。使用系统推荐音调设为[宏定义](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#宏定义)中的OH_PURE_VOICE_DEFAULT_PITCH（0.0f）以获得最佳效果，自定义取值范围为[0.3f, 3.0f]。 |
+| optionGender | OH_AudioSuite_PureVoiceChangeGenderOption | 变声性别：1=女声（PURE_VOICE_CHANGE_FEMALE），2=男声（PURE_VOICE_CHANGE_MALE）。 |
+| optionType | OH_AudioSuite_PureVoiceChangeType | 参考下方变声类型。 |
+| pitch | float | 音调。使用系统推荐音调设为[宏定义](../../reference/apis-audio-kit/c-apis/capi-native-audio-suite-base-h.md#宏定义)中的OH_PURE_VOICE_DEFAULT_PITCH（0.0f）以获得最佳效果，自定义取值范围为[0.3f, 3.0f]。 |
 
 **变声类型**
 
@@ -330,11 +330,11 @@ OH_AudioSuiteEngine_SetPureVoiceChangeOption(*node, option);
 
 ## 通用变声
 
-通用变声效果节点[EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)提供多种风格化的变声效果，适用场景更丰富。
+通用变声效果节点EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE提供多种风格化的变声效果，适用场景更丰富。
 
 ### 变声类型
 
-通用变声效果节点支持以下十种变声类型，通过[OH_AudioSuite_GeneralVoiceChangeType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype)进行设置：
+通用变声效果节点支持以下十种变声类型，通过OH_AudioSuite_GeneralVoiceChangeType进行设置：
 
 | 枚举值 | 名称 | 描述 |
 |--------|------|------|
@@ -365,11 +365,11 @@ OH_AudioSuiteEngine_SetGeneralVoiceChangeType(
 
 ## 变速变调
 
-变速变调效果节点[EFFECT_NODE_TYPE_TEMPO_PITCH](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)用于独立或同时改变音频的播放速度与音调。
+变速变调效果节点EFFECT_NODE_TYPE_TEMPO_PITCH用于独立或同时改变音频的播放速度与音调。
 
 ### 配置说明
 
-通过[OH_AudioSuiteEngine_SetTempoAndPitch](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_settempoandpitch)设置，参数说明如下：
+通过OH_AudioSuiteEngine_SetTempoAndPitch设置，参数说明如下：
 
 | 参数 | 类型 | 取值范围 | 说明 |
 |------|------|---------|------|
@@ -391,27 +391,27 @@ OH_AudioSuiteEngine_SetTempoAndPitch(*node, params.tempoSpeed, params.tempoPitch
 
 ## HOA空间音频
 
-HOA（High-Order Ambisonics）转双耳空间音频节点[EFFECT_NODE_TYPE_HOA_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)用于将HOA格式的空间音频转换为双耳（Binaural）立体声输出。
+HOA（High-Order Ambisonics）转双耳空间音频节点EFFECT_NODE_TYPE_HOA_SPACE_RENDER用于将HOA格式的空间音频转换为双耳（Binaural）立体声输出。
 
 ### 输入音频格式
 
 该节点的前置节点必须为HOA格式的输入节点，输入音频格式要求如下：
 
-- 采样率：[OH_Audio_SampleRate](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_16000 或 SAMPLE_RATE_48000。
-- 采样格式：[OH_Audio_SampleFormat](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)。
+- 采样率：OH_Audio_SampleRate.SAMPLE_RATE_16000 或 SAMPLE_RATE_48000。
+- 采样格式：OH_Audio_SampleFormat。
 - 声道布局：支持1阶至3阶HOA，取值如下：
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_FUMA。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_FUMA。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_N3D。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_SN3D。
-  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_FUMA。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER1_FUMA。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER2_FUMA。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_N3D。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_SN3D。
+  - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/c-apis/capi-avcodec-audio-channel-layout-h.md#audiochannellayout).CH_LAYOUT_AMB_ORDER3_FUMA。
 
 ### 配置说明
 
 - 该节点的前置节点必须连接音频格式为HOA的输入节点。
-- 如果节点未正确连接，在调用[OH_AudioSuiteEngine_StartPipeline](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline)接口时将会报错。
+- 如果节点未正确连接，在调用OH_AudioSuiteEngine_StartPipeline接口时将会报错。
 - 该节点无需额外配置参数，创建并正确连接后即会生效。

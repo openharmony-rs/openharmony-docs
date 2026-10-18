@@ -10,7 +10,7 @@
 
 ## 使用入门
 
-开发者使用[native_avsession.h](../../reference/apis-avsession-kit/capi-native-avsession-h.md)实现媒体会话，需要添加对应的头文件。
+开发者使用[native_avsession.h](../../reference/apis-avsession-kit/c-apis/capi-native-avsession-h.md)实现媒体会话，需要添加对应的头文件。
 
 ### 在 CMake 脚本中链接动态库
 

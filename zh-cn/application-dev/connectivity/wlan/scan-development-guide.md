@@ -19,7 +19,7 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
 
 ## 接口说明
 
-完整的JS API说明以及示例代码请参考：[SCAN接口](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+完整的JS API说明以及示例代码请参考：[SCAN接口](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-wifimanager.md)。
 
 接口具体说明如下表所示。
 

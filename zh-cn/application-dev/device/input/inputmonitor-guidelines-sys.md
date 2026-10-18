@@ -19,7 +19,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 ## 接口说明
 
-输入监听常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md)。
+输入监听常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-inputmonitor.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
@@ -40,7 +40,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 ## 开发步骤
 
-当应用需要根据鼠标按键按下状态变化样式时。调用[on](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md#inputmonitoronmouse9)监听鼠标按键事件，调用[off](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md#inputmonitoroffmouse9)取消监听鼠标按键事件。
+当应用需要根据鼠标按键按下状态变化样式时。调用[on](../../reference/apis-input-kit/arkts-apis/arkts-input-inputmonitor-on-f-sys.md#onmouse)监听鼠标按键事件，调用[off](../../reference/apis-input-kit/arkts-apis/arkts-input-inputmonitor-off-f-sys.md#offmouse)取消监听鼠标按键事件。
 
 ```js
 import { inputMonitor, MouseEvent } from '@kit.InputKit';

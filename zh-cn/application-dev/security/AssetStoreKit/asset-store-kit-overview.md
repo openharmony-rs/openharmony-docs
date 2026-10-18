@@ -82,7 +82,7 @@ ASSET数据存储结构如下图所示：
 
   - ASSET不支持沙箱应用、应用分身存储或访问群组数据。
 
-  - [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为true的关键资产，不允许设置为群组共享。
+  - [IS_PERSISTENT](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-tag-e.md#tag)属性设置为true的关键资产，不允许设置为群组共享。
 
 <!--RP2--><!--RP2End-->
 
@@ -90,7 +90,7 @@ ASSET数据存储结构如下图所示：
 
 关键资产有且仅有以下删除时机：
 - 业务主动调用remove删除关键资产时，删除符合条件的数据。详见[删除关键资产(ArkTS)](asset-js-remove.md)/[删除关键资产(C/C++)](asset-native-remove.md)开发指导。
-- 应用卸载时，关键资产存储服务会清除对应的数据。[IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为true的数据将保留。
+- 应用卸载时，关键资产存储服务会清除对应的数据。[IS_PERSISTENT](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-tag-e.md#tag)属性设置为true的数据将保留。
     - 对于API版本21及之后版本：清除存储在ASSET中的非群组数据。群组数据仅在群组内所有应用卸载时清除。
     - 对于API版本20及之前版本：清除存储在ASSET中的非群组和群组数据。
 - 系统子用户删除时，清除该用户下ASSET中所有数据。

@@ -8,13 +8,13 @@
 
 ## ArkTS容器集
 
-ArkTS共享容器（[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis-arkts-collections.md)）是一种在并发实例间共享传输的容器类，用于并发场景下的高性能数据传递。它的功能与ECMAScript 262规范定义的容器类似，但存在部分差异，具体可见[共享容器与原生API方法的行为差异对比](#共享容器与原生api方法的行为差异对比)。
+ArkTS共享容器（[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis/arkts-arkts-collections.md)）是一种在并发实例间共享传输的容器类，用于并发场景下的高性能数据传递。它的功能与ECMAScript 262规范定义的容器类似，但存在部分差异，具体可见[共享容器与原生API方法的行为差异对比](#共享容器与原生api方法的行为差异对比)。
 
 ArkTS共享容器在多个并发实例间传递时，默认采用引用传递，允许多个并发实例操作同一容器实例。此外，还支持拷贝传递，即每个并发实例拥有独立的ArkTS容器实例。
 
 ArkTS共享容器不是线程安全的，内部使用了fail-fast（快速失败）机制，即当检测到多个并发实例同时对容器进行结构性修改时，会触发异常。因此，在多线程场景下修改容器内属性时，开发者需要使用ArkTS提供的[异步锁](arkts-async-lock-introduction.md)机制保证ArkTS容器的安全访问。
 
-ArkTS共享容器包含如下几种：[Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)、[Map](../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)、[Set](../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、TypedArray（[Int8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）、[ArrayBuffer](../reference/apis-arkts/arkts-apis-arkts-collections-ArrayBuffer.md)、[BitVector](../reference/apis-arkts/arkts-apis-arkts-collections-BitVector.md)、[ConcatArray](../reference/apis-arkts/arkts-apis-arkts-collections-ConcatArray.md)，具体可见[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis-arkts-collections.md)。
+ArkTS共享容器包含如下几种：[Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)、[Map](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)、[Set](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-set-c.md)、TypedArray（[Int8Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-int8array-c.md)、[Uint8Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md)、[Int16Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-int16array-c.md)、[Uint16Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-uint16array-c.md)、[Int32Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-int32array-c.md)、[Uint32Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-uint32array-c.md)、[Uint8ClampedArray](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-uint8clampedarray-c.md)、[Float32Array](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-float32array-c.md)）、[ArrayBuffer](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md)、[BitVector](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-bitvector-c.md)、[ConcatArray](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-concatarray-i.md)，具体可见[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis/arkts-arkts-collections.md)。
 
 容器集使用示例如下：
 <!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) --> 
@@ -80,7 +80,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 
 ### Array
 
-支持通过[collections.Array.from](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md#from)方法将原生容器Array转换为ArkTS Array容器；支持通过原生容器Array的from方法将ArkTS Array容器转换为原生容器Array。
+支持通过[collections.Array.from](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md#from)方法将原生容器Array转换为ArkTS Array容器；支持通过原生容器Array的from方法将ArkTS Array容器转换为原生容器Array。
 
 | 原生API方法 | ArkTS容器集方法 | 是否有行为差异 | 在ArkTS容器中的差异表现 |
 | -------- | -------- | -------- | -------- |
@@ -137,7 +137,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 
 ### TypedArray（以Int8Array为例）
 
-支持通过[collections.Int8Array.from](../reference/apis-arkts/arkts-apis-arkts-collections-Int8Array.md#from-1)方法将原生容器Int8Array转换为ArkTS Int8Array容器；也支持通过原生容器 Int8Array的from方法将ArkTS Int8Array容器转换为原生容器Int8Array。
+支持通过[collections.Int8Array.from](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-int8array-c.md#from-1)方法将原生容器Int8Array转换为ArkTS Int8Array容器；也支持通过原生容器 Int8Array的from方法将ArkTS Int8Array容器转换为原生容器Int8Array。
 
 | 原生API方法 | ArkTS容器集方法 | 是否有行为差异 | 在ArkTS容器中的差异表现 |
 | -------- | -------- | -------- | -------- |

@@ -11,19 +11,19 @@
 
 ## 三段式接口说明
 
-签名/验签操作通过HUKS的三段式接口实现，通过指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyclasstype22)，表示指定密钥由密钥管理扩展服务中的密钥。
+签名/验签操作通过HUKS的三段式接口实现，通过指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeyclasstype-e.md#hukskeyclasstype)，表示指定密钥由密钥管理扩展服务中的密钥。
 
 具体使用可参考[签名验签示例](#签名验签示例)。
 
 | 步骤 | 接口 | 说明 |
 |------|------|------|
-| 1 | [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) | 初始化密钥会话，返回会话handle。 |
-| 2 | [updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9) | （可选）传入分段数据，执行中间密码运算。 |
-| 3 | [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) | 结束会话，返回最终结果（签名/验签结果）。 |
+| 1 | [initSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksinitsession) | 初始化密钥会话，返回会话handle。 |
+| 2 | [updateSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksupdatesession) | （可选）传入分段数据，执行中间密码运算。 |
+| 3 | [finishSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksfinishsession) | 结束会话，返回最终结果（签名/验签结果）。 |
 
 > **说明：**
 >
-> 1. 通过[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)指定密钥类别为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyclasstype22)，表示该密钥由外部密钥管理扩展管理。
+> 1. 通过[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)指定密钥类别为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeyclasstype-e.md#hukskeyclasstype)，表示该密钥由外部密钥管理扩展管理。
 > 2. 三段式操作过程中，keyAlias参数需指定为resourceId。
 > 3. finishSession完成后会释放会话句柄。
 > 4. 签名/验签是否需要PIN认证取决于密钥用途：私钥签名需要PIN认证，公钥验签无需。
@@ -38,10 +38,10 @@
 
 | 参数 | 取值 | 必填 | 说明 |
 |------|------|------|------|
-| [HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) | `HUKS_KEY_CLASS_EXTENSION` | 是 | 表示由密钥管理扩展管理 |
-| [HUKS_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) | 用途枚举值 | 否 | 指定用途，未传入则使用密钥管理扩展提供的默认值 |
-| [HUKS_TAG_ALGORITHM](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) | 算法枚举值 | 否 | 指定签名/验签算法 |
-| [HUKS_TAG_KEY_SIZE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) | 密钥长度 | 否 | 如 2048、3072、4096 |
+| [HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag) | `HUKS_KEY_CLASS_EXTENSION` | 是 | 表示由密钥管理扩展管理 |
+| [HUKS_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag) | 用途枚举值 | 否 | 指定用途，未传入则使用密钥管理扩展提供的默认值 |
+| [HUKS_TAG_ALGORITHM](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag) | 算法枚举值 | 否 | 指定签名/验签算法 |
+| [HUKS_TAG_KEY_SIZE](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag) | 密钥长度 | 否 | 如 2048、3072、4096 |
 
 ## 签名/验签示例
 
@@ -57,13 +57,13 @@
 
 2. 参考[PIN码访问控制](huks-extension-ability-pin-authentication-management.md)完成PIN认证。
 
-3. 设置属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，properties传入算法参数配置。
+3. 设置属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksoptions-i.md#huksoptions)，properties传入算法参数配置。
 
-4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，不传入inData，获取sessionHandle。
+4. 调用[initSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksinitsession)初始化密钥会话，不传入inData，获取sessionHandle。
 
-5. （可选）调用[updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)更新密钥会话，inData传入明文数据。
+5. （可选）调用[updateSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksupdatesession)更新密钥会话，inData传入明文数据。
 
-6. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束会话，inData传入明文数据，从返回值的outData中获取signature。
+6. 调用[finishSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksfinishsession)结束会话，inData传入明文数据，从返回值的outData中获取signature。
 
 7. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -71,13 +71,13 @@
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 设置属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，properties传入算法参数配置。
+2. 设置属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksoptions-i.md#huksoptions)，properties传入算法参数配置。
 
-3. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，不传入inData，获取sessionHandle。
+3. 调用[initSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksinitsession)初始化密钥会话，不传入inData，获取sessionHandle。
 
-4. （可选）调用[updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)更新会话，inData传入明文数据。
+4. （可选）调用[updateSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksupdatesession)更新会话，inData传入明文数据。
 
-5. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束会话，inData传入签名。
+5. 调用[finishSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksfinishsession)结束会话，inData传入签名。
 
 6. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -85,29 +85,29 @@
 
 **签名：**
 
-1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，打开资源后完成PIN码认证，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
+1. 通过证书管理系统能力提供的openAuthorizeDialog获取[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)作为resourceId，并作为密钥别名，打开资源后完成PIN码认证，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
 2. 指定待签名的明文数据。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置，并指定KeyClass参数，tag为[OH_HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
+3. 调用OH_Huks_InitParamSet指定算法参数配置，并指定KeyClass参数，tag为OH_HUKS_TAG_KEY_CLASS，值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-arkts/arkts-apis/arkts-arkts-util-type-e.md#type)。
 
-4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
+4. 调用OH_Huks_InitSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession)结束密钥会话，获取签名signature。
+5. 调用OH_Huks_FinishSession结束密钥会话，获取签名signature。
 
 **验签：**
 
-1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，然后打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
+1. 通过证书管理系统能力提供的openAuthorizeDialog获取[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)作为resourceId，并作为密钥别名，然后打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
 2. 获取待验证的签名。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置，并指定KeyClass参数，tag为[OH_HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
+3. 调用OH_Huks_InitParamSet指定算法参数配置，并指定KeyClass参数，tag为OH_HUKS_TAG_KEY_CLASS，值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-arkts/arkts-apis/arkts-arkts-util-type-e.md#type)。
 
-4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
+4. 调用OH_Huks_InitSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[OH_Huks_UpdateSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_updatesession)更新密钥会话。
+5. 调用OH_Huks_UpdateSession更新密钥会话。
 
-6. 调用[OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession)结束密钥会话，验证签名。
+6. 调用OH_Huks_FinishSession结束密钥会话，验证签名。
 
 ### 开发示例
 

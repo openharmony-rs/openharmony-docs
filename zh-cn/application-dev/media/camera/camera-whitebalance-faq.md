@@ -20,9 +20,9 @@
 
 **问题分析步骤**
 
-步骤一：白平衡模式和手动设置白平衡值都可以直接单独设置。如果先设置了白平衡模式，则需要将模式首先调整为[WhiteBalanceMode.MANUAL](../../reference/apis-camera-kit/arkts-apis-camera-e.md#whitebalancemode20)，然后才可以手动设置白平衡值；但是如果先手动设置白平衡值，则可以直接设置白平衡模式。
+步骤一：白平衡模式和手动设置白平衡值都可以直接单独设置。如果先设置了白平衡模式，则需要将模式首先调整为[WhiteBalanceMode.MANUAL](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-whitebalancemode-e.md#whitebalancemode)，然后才可以手动设置白平衡值；但是如果先手动设置白平衡值，则可以直接设置白平衡模式。
 
-步骤二：手动设置白平衡色温值失败，可以通过查看SetManualWhiteBalance相关log来判断问题，包括session是否已经commit。如果之前设置过白平衡模式，则需要判断是否将白平衡模式调整为[WhiteBalanceMode.MANUAL](../../reference/apis-camera-kit/arkts-apis-camera-e.md#whitebalancemode20)，再进行设置色温值。
+步骤二：手动设置白平衡色温值失败，可以通过查看SetManualWhiteBalance相关log来判断问题，包括session是否已经commit。如果之前设置过白平衡模式，则需要判断是否将白平衡模式调整为[WhiteBalanceMode.MANUAL](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-whitebalancemode-e.md#whitebalancemode)，再进行设置色温值。
 
 相关log搜索关键词：whiteBalance
 

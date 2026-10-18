@@ -17,7 +17,7 @@ FaultLogExtensionAbility的原理机制如下图所示：
 
 ![工作机制说明](figures/fault_log_extension_ability_1.PNG)
 
-1. 主进程启动后，在主进程中添加事件观察者A和事件观察者B，其中A包含正常实现的回调处理函数以及事件订阅过滤条件[appEventFilter](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventfilter)，应用发生故障后正常重启会由A的回调处理HiAppEvent事件；B的回调处理函数为空实现，仅用于生成需要保存的事件订阅过滤条件。
+1. 主进程启动后，在主进程中添加事件观察者A和事件观察者B，其中A包含正常实现的回调处理函数以及事件订阅过滤条件[appEventFilter](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-appeventfilter-i.md#appeventfilter)，应用发生故障后正常重启会由A的回调处理HiAppEvent事件；B的回调处理函数为空实现，仅用于生成需要保存的事件订阅过滤条件。
 2. 事件观察者A和B的事件订阅过滤条件会被保存到应用沙箱中。当应用移除事件观察者时，应用沙箱中保存的相应观察者的事件订阅过滤条件也会被删除。
 3. 应用业务运行过程中发生崩溃事件或应用冻屏事件。
 4. 系统服务感知到应用故障后，采集应用故障信息。
@@ -30,13 +30,13 @@ FaultLogExtensionAbility的原理机制如下图所示：
 
 ## 约束与限制
 
-- FaultLogExtensionAbility被拉起后只有10s的时间用以完成故障处理。超时没有处理完成可以在[onDisconnect](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#ondisconnect)中保存状态。
+- FaultLogExtensionAbility被拉起后只有10s的时间用以完成故障处理。超时没有处理完成可以在[onDisconnect](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md#ondisconnect)中保存状态。
 
 - 从开机或上次拉起FaultLogExtensionAbility后，应用首次触发崩溃或冻屏开始计时。在拉起FaultLogExtensionAbility前反复触发崩溃或冻屏事件均不会重新计时。计时30分钟后拉起FaultLogExtensionAbility进程。
 
 - FaultLogExtensionAbility自身崩溃时，不会再次被系统服务拉起。
 
-- 针对FaultLogExtensionAbility接口调用限制，详情请参考API中[约束限制](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#约束限制)。
+- 针对FaultLogExtensionAbility接口调用限制，详情请参考API中约束限制。
 
 - FaultLogExtensionAbility进程中订阅的事件需要在主进程中使用HiAppEvent进行订阅。否则，可能会发生[FaultLogExtensionAbility进程没有接收到回调事件](#faultlogextensionability进程没有接收到回调事件)的问题。
 
@@ -48,7 +48,7 @@ FaultLogExtensionAbility的原理机制如下图所示：
 
 ## 接口说明
 
-API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.FaultLogExtensionAbility (故障延迟通知)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)。
+API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.FaultLogExtensionAbility (故障延迟通知)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability.md)。
 
 仅适用于Stage模型。
 
@@ -56,9 +56,9 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [onConnect(): void](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#onconnect) | 生命周期回调函数，系统连接FaultLogExtensionAbility时触发。 |
-| [onDisconnect(): void](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#ondisconnect) | 生命周期回调函数，系统断开FaultLogExtensionAbility时触发。 |
-| [onFaultReportReady(): void](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#onfaultreportready) | 生命周期回调函数，系统准备好故障信息后，回调该函数通知ability进行处理。回调函数中的业务逻辑建议不超过10s。|
+| [onConnect(): void](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md#onconnect) | 生命周期回调函数，系统连接FaultLogExtensionAbility时触发。 |
+| [onDisconnect(): void](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md#ondisconnect) | 生命周期回调函数，系统断开FaultLogExtensionAbility时触发。 |
+| [onFaultReportReady(): void](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md#onfaultreportready) | 生命周期回调函数，系统准备好故障信息后，回调该函数通知ability进行处理。回调函数中的业务逻辑建议不超过10s。|
 
 ## 事件订阅开发指导
 

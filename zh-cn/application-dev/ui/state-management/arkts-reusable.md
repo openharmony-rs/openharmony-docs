@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
-[\@Reusable](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusable.md#reusable)装饰的自定义组件支持组件复用。当自定义组件从组件树上移除时，会被存入缓存池，后续在创建相同类型的组件节点时，将优先复用缓存池中的组件对象，从而避免重复创建和销毁，提升性能。
+[\@Reusable](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-reusable-d.md#reusable)装饰的自定义组件支持组件复用。当自定义组件从组件树上移除时，会被存入缓存池，后续在创建相同类型的组件节点时，将优先复用缓存池中的组件对象，从而避免重复创建和销毁，提升性能。
 
 > **说明：**
 >
@@ -21,9 +21,9 @@
 
 > **注意：**
 > - \@Reusable装饰的自定义组件在从组件树中移除时，自定义组件（包含视图节点、组件实例和状态上下文）将被放入其父自定义组件的缓存池中。后续创建新自定义组件节点时，将优先复用缓存池中的节点，从而节约组件重新创建的时间。
-> - \@Reusable提供了[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)两个生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse。开发者可以在这两个生命周期中实现组件回收、复用相关的业务逻辑。
+> - \@Reusable提供了[aboutToRecycle](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttorecycle)和[aboutToReuse](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoreuse)两个生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse。开发者可以在这两个生命周期中实现组件回收、复用相关的业务逻辑。
 > - \@Reusable装饰的自定义组件下有子组件时，会在回收和复用时递归调用子组件的aboutToRecycle和aboutToReuse（与子组件是否被@Reusable标记无关），直到遍历完所有子组件。
-> - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用[reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)来区分不同结构的复用组件。
+> - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用[reuseId](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#reuseid)来区分不同结构的复用组件。
 > - 当\@Reusable装饰的自定义组件无子组件时，不会触发回收和复用。
 
 ## 限制条件

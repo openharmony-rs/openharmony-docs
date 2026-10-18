@@ -30,7 +30,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)。
+详细的API说明请参考[AudioCodec](../../reference/apis-avcodec-kit/c-apis/capi-native-avcodec-audiocodec-h.md)。
 
 参考以下示例代码，完成音频编码的全流程，包括：创建编码器、设置编码参数（采样率/码率/声道数等）、开始/刷新/重置/销毁资源。
 
@@ -170,7 +170,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    - OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE：配置音频编码器最大输入缓冲区大小（单位：字节）。FLAC、MP3等帧对齐编码器设置该参数后会启用内部PCM缓存机制，允许输入数据无需按帧大小对齐，编码器会自动进行缓存与拆帧。实际缓冲区大小受编码器实现限制，如果设置的值超出上限，会被设置为上限值（上限为10MB）。
 
-   - OH_MD_KEY_AUDIO_ENCODER_PTS_MODE：配置音频编码器输出PTS模式，值类型为[OH_AudioEncoderPTSMode](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_audioencoderptsmode)。不同模式下输出帧的PTS计算方式不同：
+   - OH_MD_KEY_AUDIO_ENCODER_PTS_MODE：配置音频编码器输出PTS模式，值类型为OH_AudioEncoderPTSMode。不同模式下输出帧的PTS计算方式不同：
      - OH_AUDIO_ENCODER_PTS_MODE_DEFAULT：默认行为，不同编码器的PTS输出方式可能不同。
      - OH_AUDIO_ENCODER_PTS_MODE_ZERO_START：PTS从0开始，按帧时长递增。适用于不依赖输入PTS、需要从0开始计时的场景。
      - OH_AUDIO_ENCODER_PTS_MODE_FIRST_INPUT_START：PTS从首个输入帧的PTS开始，按帧时长递增。适用于需要保持与输入流PTS连续性的场景。

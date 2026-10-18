@@ -70,7 +70,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 ### 获取并解析拉起方传入的应用链接
 
-在目标应用的UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调中，获取、解析拉起方传入的应用链接。
+在目标应用的UIAbility的[onCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期回调中，获取、解析拉起方传入的应用链接。
 
 <!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
 
@@ -102,11 +102,11 @@ export default class DeepAbility extends UIAbility {
 
 ## 拉起方应用实现应用跳转
 
-下面通过三个案例，分别介绍如何使用[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)与[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口实现应用跳转，以及如何在[Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)中实现应用跳转。
+下面通过三个案例，分别介绍如何使用[openLink()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#openlink)与[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)接口实现应用跳转，以及如何在[Web组件](../reference/apis-arkweb/c-apis/capi-web.md)中实现应用跳转。
 
 ### 使用openLink实现应用跳转
 
-在[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口的link字段中传入目标应用的URL信息，并将options字段中的[appLinkingOnly](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md#openlinkoptions)配置为`false`。
+在[openLink()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#openlink)接口的link字段中传入目标应用的URL信息，并将options字段中的[appLinkingOnly](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-openlinkoptions-openlinkoptions-i.md#openlinkoptions)配置为`false`。
 
 
 示例代码如下：
@@ -153,7 +153,7 @@ struct DeepOpenLinkIndex {
 
 ### 使用startAbility实现应用跳转
 
-[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入Want中，通过调用[隐式Want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
+[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)接口是将应用链接放入Want中，通过调用[隐式Want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
 
 
 示例代码如下：
@@ -198,7 +198,7 @@ struct DeepStartIndex {
 
 ### 使用Web组件实现应用跳转
 
-Web组件可以在[onLoadIntercept()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)的回调函数中实现应用跳转。
+Web组件可以在[onLoadIntercept()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onloadintercept)的回调函数中实现应用跳转。
 
 示例代码如下：
 

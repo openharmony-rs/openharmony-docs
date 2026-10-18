@@ -14,8 +14,8 @@ UIServiceExtensionAbility组件是带用户界面（UI）的扩展服务组件�
 本文描述中称被启动的UIServiceExtensionAbility组件为服务端，称UIServiceExtensionAbility组件的启动方为客户端。
 
 应用可以通过启动和连接两种形式使用UIServiceExtensionAbility组件：
-- 通过[UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)调用[startUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startuiserviceextensionability14)方法启动UIServiceExtensionAbility。
-- 通过[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)方法连接UIServiceExtensionAbility。
+- 通过[UIExtensionContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiextensioncontext-t.md)调用[startUIServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)方法启动UIServiceExtensionAbility。
+- 通过[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md)、[UIExtensionContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiextensioncontext-t.md)调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#connectuiserviceextensionability)方法连接UIServiceExtensionAbility。
 
 ## 约束限制
 
@@ -28,7 +28,7 @@ UIServiceExtensionAbility组件是带用户界面（UI）的扩展服务组件�
 
 ## 启动UIServiceExtensionAbility组件
 
-应用通过[startUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startuiserviceextensionability14)方法启动一个UIServiceExtensionAbility组件。UIServiceExtensionAbility组件启动后，其生命周期独立于客户端，即使客户端已经销毁，该后台服务仍可继续运行，窗口创建失败或销毁后该服务会被销毁。
+应用通过[startUIServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)方法启动一个UIServiceExtensionAbility组件。UIServiceExtensionAbility组件启动后，其生命周期独立于客户端，即使客户端已经销毁，该后台服务仍可继续运行，窗口创建失败或销毁后该服务会被销毁。
 
 
 如下示例通过startUIServiceExtensionAbility方法启动一个UIServiceExtensionAbility组件，示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
@@ -76,7 +76,7 @@ struct Start {
 
 ## 客户端连接服务端
 
-  客户端通过[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)连接服务端，获取并保存[UIServiceProxy](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md)对象。通过该proxy对象的[sendData()](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md#uiserviceproxysenddata)方法发送数据给服务端。服务端通过UIServiceExtensionAbility类onData()（系统接口）方法接收客户端数据。
+  客户端通过[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#connectuiserviceextensionability)连接服务端，获取并保存[UIServiceProxy](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiserviceproxy-t.md)对象。通过该proxy对象的[sendData()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiserviceproxy-i.md#senddata)方法发送数据给服务端。服务端通过UIServiceExtensionAbility类onData()（系统接口）方法接收客户端数据。
 
 如下示例通过connectUIServiceExtensionAbility方法连接一个UIServiceExtensionAbility组件，示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)
 

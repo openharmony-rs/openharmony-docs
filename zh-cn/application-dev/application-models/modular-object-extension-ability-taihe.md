@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-从API版本26.0.0开始，通过[Taihe](ability-terminology.md#taihe)可自动生成ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）所需的Proxy/Stub代码及类型库文件，屏蔽IPC通信底层细节（如参数序列化/反序列化、消息码分发等），使开发者专注于接口设计与业务逻辑，大幅简化ModularObjectExtensionAbility的开发流程。taihec工具的获取方式与使用说明请参见[命令行使用](#命令行使用)。
+从API版本26.0.0开始，通过[Taihe](ability-terminology.md#taihe)可自动生成ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/c-apis/capi-modular-object-extension-ability-h.md)）所需的Proxy/Stub代码及类型库文件，屏蔽IPC通信底层细节（如参数序列化/反序列化、消息码分发等），使开发者专注于接口设计与业务逻辑，大幅简化ModularObjectExtensionAbility的开发流程。taihec工具的获取方式与使用说明请参见[命令行使用](#命令行使用)。
 
 ## 命令行使用
 
@@ -84,7 +84,7 @@ taihec -G modobj-ipc -O example/generated example/Easy.ohidl
 
 | 注解                             | 作用范围   |说明                                    | 示例                               |                   
 | :---                             | :---       | :---                                  | :---                               |                     
-| `@main_service(version="x.y.z")` | interface     | 有且仅能声明一个主服务接口，生成的Stub作为[OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc)的返回值。  | @main_service(version="1.0.0")    |
+| `@main_service(version="x.y.z")` | interface     | 有且仅能声明一个主服务接口，生成的Stub作为OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc的返回值。  | @main_service(version="1.0.0")    |
 | `@callback` | 方法 | 用于声明一个回调接口。服务端可持有此接口的实例来调用客户端，相关逻辑会在客户端的线程中执行。典型使用场景：客户端向服务端注册监听器、服务端主动通知客户端事件。完整开发流程参见[示例文件说明](#示例文件说明)中的ITestEventCallback示例。 | @callback interface ICallback {} |
 | `@oneway`                        | 方法       | 异步单向IPC调用，仅支持void类型返回值。       | @oneway Notify(...): void;        |
 | `@!namespace("A","B")`           | ohidl文件   | 设置生成代码所在的命名空间，以及IPC接口描述符字符串前缀。 | @!namespace("OHOS","NativeApp")   |
