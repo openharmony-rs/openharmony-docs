@@ -84,7 +84,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  当前渲染节点从[FrameNode](js-apis-arkui-frameNode.md)中获取且该[FrameNode](js-apis-arkui-frameNode.md)已被取消接纳为附属节点或销毁。错误码的详细介绍请参见[106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁](errorcode-node-render.md#106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  当前节点不处于被接纳状态。错误码的详细介绍请参见[106408 当前节点不处于被接纳状态](errorcode-node-render.md#106408-当前节点不处于被接纳状态)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_COMMAND_UNFINISHED = 106409 | 上一次请求尚未完成。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_NODE_NOT_FOUND = 106410 | 未找到uniqueId对应的节点。<br>**起始版本：** 26.2.0 |
+| ARKUI_ERROR_CODE_NODE_NOT_FOUND = 106410 | 未找到节点ID对应的ArkUI节点。<br>**起始版本：** 26.2.0 |
 | ARKUI_ERROR_CODE_RESULT_TOO_LARGE = 106411 | 结果数据过大。<br>**起始版本：** 26.2.0 |
 | ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED = 106412 | 资源已耗尽。<br>**起始版本：** 26.2.0 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  当前节点无法获得焦点。错误码的详细介绍请参见[150001 节点无法获得焦点](errorcode-focus.md#150001-节点无法获得焦点)。<br>**起始版本：** 15 |

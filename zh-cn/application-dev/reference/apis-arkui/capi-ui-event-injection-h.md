@@ -100,7 +100,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_Contex
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [入参] UI实例指针，不能为NULL。调用方必须在该实例的UI线程上调用；检测到线程违规时，将触发致命错误并终止进程。uniqueId必须能够解析为此实例内的节点。uiContext需在本函数调用期间保持有效。 |
-| uint32_t uniqueId | [入参] 目标节点的唯一Id。框架在uiContext实例中将此Id解析为对应的节点。 |
+| uint32_t uniqueId | [入参] 目标节点ID。框架在uiContext实例中将此节点ID解析为对应的ArkUI节点。 |
 | const OH_ArkUI_NativeModule_UIJsonWrapper *command | [入参] 命令数据，不能为NULL，由OH_ArkUI_NativeModule_UIJsonWrapperCreate创建的OH_ArkUI_NativeModule_UIJsonWrapper对象承载。<br>命令内容的顶层结构为：`{"schemaVersion": 1, "cmd": {"type": "<命令类型>", "action_info": { ... }}}`<br>函数返回前会在内部复制JSON数据；调用方拥有的command可在本函数返回后销毁。 |
 | [OH_ArkUI_NativeModule_UIEventInjectionCallback](capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback) callback | [入参] 完成回调，不能为NULL；请求受理后，须保持可调用直至回调返回，即使调用方等待超时也不能提前释放回调资源。 |
 | void *userData | [入参] 传递给回调的自定义用户数据指针，可以为NULL。用户数据由调用方管理。请求受理后，非NULL数据须保持有效直至回调返回，即使调用方等待超时也不能提前释放。 |
@@ -109,4 +109,4 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_Contex
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回0表示请求已受理，执行结果通过callback报告；返回非零值表示请求被拒绝，不执行命令，也不触发回调。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 请求已受理。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) command或callback为NULL、命令数据无效，或命令提交失败。<br>[ARKUI_ERROR_CODE_NODE_NOT_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) uniqueId无法解析为uiContext实例内的节点。<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) uiContext为NULL，或对应的UI实例正在销毁或已失效。<br>[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前进程中，前一命令对后续请求的限制尚未解除。命令受理后，同一进程内的其他有效请求均返回此错误码。<br>框架在调用完成回调前解除此限制。可在回调中再次提交命令，仍需满足参数和UI线程要求。被拒绝的请求可在限制解除后重试，能否受理仍取决于进程内的其他请求。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回0表示请求已受理，执行结果通过callback报告；返回非零值表示请求被拒绝，不执行命令，也不触发回调。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)请求已受理。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) command或callback为NULL、命令数据无效，或命令提交失败。<br>[ARKUI_ERROR_CODE_NODE_NOT_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)在uiContext实例内未找到节点ID（uniqueId）对应的ArkUI节点。<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) uiContext为NULL，或对应的UI实例正在销毁或已失效。<br>[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)当前进程中，前一命令对后续请求的限制尚未解除。命令受理后，同一进程内的其他有效请求均返回此错误码。<br>框架在调用完成回调前解除此限制。可在回调中再次提交命令，仍需满足参数和UI线程要求。被拒绝的请求可在限制解除后重试，能否受理仍取决于进程内的其他请求。 |
