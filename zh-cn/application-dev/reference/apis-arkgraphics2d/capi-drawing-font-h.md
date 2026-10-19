@@ -27,6 +27,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) | OH_Drawing_TypefaceFallbackInfo | 定义字体回退信息的结构体，包含一组使用相同回退字体的字形数组。 |
 | [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) | OH_Drawing_Font_Metrics | 定义字体度量信息的结构体。 |
 
 ### 枚举
@@ -44,6 +45,7 @@
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetPos(const OH_Drawing_Font* font, const uint16_t* glyphs, int count,const OH_Drawing_Point* origin, OH_Drawing_Point2D* points)](#oh_drawing_fontgetpos) | 用于从指定的原点开始，获取每个字形的相对位置。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetWidthsBounds(const OH_Drawing_Font* font, const uint16_t* glyphs, int count,const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen, float* widths, OH_Drawing_Array* bounds)](#oh_drawing_fontgetwidthsbounds) | 用于获取字形数组中每个字形的宽度和边界框。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_Font* font, const void* text,size_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen,OH_Drawing_Rect* bounds, float* textWidth)](#oh_drawing_fontmeasuretextwithbrushorpen) | 使用画刷或画笔获取文本的宽度和边界框。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush *brush, const OH_Drawing_Pen *pen, OH_Drawing_Rect *bounds, float *textWidth)](#oh_drawing_fontmeasuretextwithbrushorpenwithfallback) | 使用画刷或画笔获取文本的宽度和边界框，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。 |
 | [OH_Drawing_Font* OH_Drawing_FontCreate(void)](#oh_drawing_fontcreate) | 用于创建一个字型对象。 |
 | [void OH_Drawing_FontSetBaselineSnap(OH_Drawing_Font* font, bool baselineSnap)](#oh_drawing_fontsetbaselinesnap) | 当前画布矩阵轴对齐时，将字型基线设置为是否与像素对齐。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [bool OH_Drawing_FontIsBaselineSnap(const OH_Drawing_Font* font)](#oh_drawing_fontisbaselinesnap) | 当前画布矩阵轴对齐时，获取字型基线是否与像素对齐。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -57,9 +59,11 @@
 | [float OH_Drawing_FontGetTextSize(const OH_Drawing_Font* font)](#oh_drawing_fontgettextsize) | 获取字型对象的文字大小。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [int OH_Drawing_FontCountText(OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding)](#oh_drawing_fontcounttext) | 获取文本所表示的字符数量。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font、text任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [uint32_t OH_Drawing_FontTextToGlyphs(const OH_Drawing_Font* font, const void* text, uint32_t byteLength,OH_Drawing_TextEncoding encoding, uint16_t* glyphs, int maxGlyphCount)](#oh_drawing_fonttexttoglyphs) | 用于将文本转换为字形索引。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font、text、glyphs任意一个为NULL或者byteLength等于0或者maxGlyphCount小于等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontTextToGlyphsWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, OH_Drawing_TypefaceFallbackInfo **typefaceFallbackInfo, uint32_t *infosCount)](#oh_drawing_fonttexttoglyphswithfallback) | 将文本转换为字形索引，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。 |
 | [void OH_Drawing_FontGetWidths(const OH_Drawing_Font* font, const uint16_t* glyphs, int count, float* widths)](#oh_drawing_fontgetwidths) | 用于获取字形数组中每个字形的宽度。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font、glyphs、widths任意一个为NULL或者count小于等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacter(const OH_Drawing_Font* font, const char* str,float* textWidth)](#oh_drawing_fontmeasuresinglecharacter) | 用于测量单个字符的宽度。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding, OH_Drawing_Rect* bounds, float* textWidth)](#oh_drawing_fontmeasuretext) | 用于获取文本的宽度和边界框。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, OH_Drawing_Rect *bounds, float *textWidth)](#oh_drawing_fontmeasuretextwithfallback) | 获取文本的宽度和边界框，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。 |
 | [void OH_Drawing_FontSetLinearText(OH_Drawing_Font* font, bool isLinearText)](#oh_drawing_fontsetlineartext) | 用于设置线性可缩放字型。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [bool OH_Drawing_FontIsLinearText(const OH_Drawing_Font* font)](#oh_drawing_fontislineartext) | 获取字型对象是否使用线性缩放。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_FontSetTextSkewX(OH_Drawing_Font* font, float skewX)](#oh_drawing_fontsettextskewx) | 用于给字型设置文本倾斜。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>font为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -86,6 +90,7 @@
 | [OH_Drawing_FontFeatures* OH_Drawing_FontFeaturesCreate(void)](#oh_drawing_fontfeaturescreate) | 用于创建一个字体特征容器对象。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontFeaturesAddFeature(OH_Drawing_FontFeatures* fontFeatures,const char* name, float value)](#oh_drawing_fontfeaturesaddfeature) | 向字体特征容器对象中添加一个字体特征。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontFeaturesDestroy(OH_Drawing_FontFeatures* fontFeatures)](#oh_drawing_fontfeaturesdestroy) | 用于销毁字体特征容器对象并回收该对象占用的内存。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontTypefaceFallbackInfoDestroy(OH_Drawing_TypefaceFallbackInfo *infos, uint32_t count)](#oh_drawing_fonttypefacefallbackinfodestroy) | 释放OH_Drawing_TypefaceFallbackInfo对象数组并回收该数组占用的内存。本函数会销毁数组中的字体和字形IDs，并释放数组本身。 |
 
 ## 枚举类型说明
 
@@ -235,6 +240,31 @@ OH_Drawing_ErrorCode OH_Drawing_FontFeaturesDestroy(OH_Drawing_FontFeatures* fon
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontFeatures为空指针。 |
 
+### OH_Drawing_FontTypefaceFallbackInfoDestroy()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontTypefaceFallbackInfoDestroy(OH_Drawing_TypefaceFallbackInfo *infos, uint32_t count)
+```
+
+**描述**
+
+释放OH_Drawing_TypefaceFallbackInfo对象数组并回收该数组占用的内存。本函数会销毁数组中的字体和字形IDs，并释放数组本身。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) *infos | [入参] 指向OH_Drawing_TypefaceFallbackInfo对象数组的指针。 |
+| uint32_t count | [入参] 数组的大小。count必须与创建数组时返回的数量完全一致，传入其他值将导致未定义行为。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示infos为空或者count为0。 |
+
 ### OH_Drawing_FontMeasureTextWithBrushOrPen()
 
 ```c
@@ -255,7 +285,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_F
 | -- | -- |
 | const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字型对象OH_Drawing_Font的指针。 |
 | const void* text | 指向文本的指针。 |
-| size_t byteLength | 表示以字节为单位的文本长度。 |
+| size_t byteLength | 文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
 | [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | 文本编码类型。 |
 | const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | 指向画刷对象OH_Drawing_Brush的指针。 |
 | const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | 指向画笔对象OH_Drawing_Pen的指针。 |
@@ -267,6 +297,37 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_F
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、text、textWidth至少有一个为空，或者byteLength为0，或者brush和pen同时不为空。 |
+
+### OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush *brush, const OH_Drawing_Pen *pen, OH_Drawing_Rect *bounds, float *textWidth)
+```
+
+**描述**
+
+使用画刷或画笔获取文本的宽度和边界框，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| const void *text | [入参] 指向文本的指针。 |
+| uint32_t byteLength | [入参] 文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [入参] 文本编码类型。 |
+| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) *brush | [入参] 指向画刷对象OH_Drawing_Brush的指针。 |
+| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) *pen | [入参] 指向画笔对象OH_Drawing_Pen的指针。 |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) *bounds | [出参] 用于承载获取的边界框，可以为NULL，为NULL时不返回边界框信息，仅返回文本宽度。 |
+| float *textWidth | [出参] 用于存储得到的文本宽度，单位为物理像素px。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数font、text、textWidth至少有一个为空，或者byteLength为0，或者brush和pen同时存在。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示encoding不在枚举范围内。 |
 
 ### OH_Drawing_FontGetWidthsBounds()
 
@@ -673,8 +734,8 @@ uint32_t OH_Drawing_FontTextToGlyphs(const OH_Drawing_Font* font, const void* te
 | -- | -- |
 | const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字型对象OH_Drawing_Font的指针。 |
 | const void* text | 文本存储首地址。 |
-| uint32_t byteLength | 文本长度，单位为字节。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | 文本编码类型OH_Drawing_TextEncoding。 |
+| uint32_t byteLength | 文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | 文本编码类型。 |
 | uint16_t* glyphs | 字形索引存储首地址，用于存储得到的字形索引。 |
 | int maxGlyphCount | 文本所表示的最大字形数量。 |
 
@@ -683,6 +744,35 @@ uint32_t OH_Drawing_FontTextToGlyphs(const OH_Drawing_Font* font, const void* te
 | 类型 | 说明 |
 | -- | -- |
 | uint32_t | 返回字形索引数量。 |
+
+### OH_Drawing_FontTextToGlyphsWithFallback()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontTextToGlyphsWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, OH_Drawing_TypefaceFallbackInfo **typefaceFallbackInfo, uint32_t *infosCount)
+```
+
+**描述**
+
+将文本转换为字形索引，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| const void *text | [入参] 文本存储首地址。 |
+| uint32_t byteLength | [入参] 文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [入参] 文本编码类型。 |
+| [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) **typefaceFallbackInfo | [出参] 指向OH_Drawing_TypefaceFallbackInfo数组首元素的指针。数组中的每个元素包含使用相同回退字体的字形索引数组。当不再需要时，使用[OH_Drawing_FontTypefaceFallbackInfoDestroy](#oh_drawing_fonttypefacefallbackinfodestroy)释放该数组。 |
+| uint32_t *infosCount | [出参] 存储OH_Drawing_TypefaceFallbackInfo对象数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数font、text、typefaceFallbackInfo、infosCount任意一个为空，或者byteLength为0。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示encoding不在枚举范围内。 |
 
 ### OH_Drawing_FontGetWidths()
 
@@ -758,7 +848,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, con
 | -- | -- |
 | const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字型对象OH_Drawing_Font的指针。 |
 | const void* text | 指向文本的指针。 |
-| size_t byteLength | 表示以字节为单位的文本长度。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
+| size_t byteLength | 文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
 | [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | 文本编码类型。 |
 | [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* bounds | 用于承载获取的边界框，可以为NULL，为NULL时不返回边界框信息，仅返回文本宽度。 |
 | float* textWidth | 用于存储得到的文本宽度，作为出参使用。单位为物理像素px。 |
@@ -768,6 +858,35 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, con
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font，text，textWidth至少有一个为空，或者byteLength为0。 |
+
+### OH_Drawing_FontMeasureTextWithFallback()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, OH_Drawing_Rect *bounds, float *textWidth)
+```
+
+**描述**
+
+获取文本的宽度和边界框，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| const void *text | [入参] 指向文本的指针。 |
+| uint32_t byteLength | [入参] 文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [入参] 文本编码类型。 |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) *bounds | [出参] 用于承载获取的边界框，可以为NULL，为NULL时不返回边界框信息，仅返回文本宽度。 |
+| float *textWidth | [出参] 用于存储得到的文本宽度，单位为物理像素px。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数font、text、textWidth至少有一个为空，或者byteLength为0。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示encoding不在枚举范围内。 |
 
 ### OH_Drawing_FontSetLinearText()
 
