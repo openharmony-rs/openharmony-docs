@@ -213,7 +213,7 @@ internal error.
 
 4. 回调函数异常，如回调未正确实现或抛出未捕获异常，通过日志关键词过滤replyCustomEapData进行定位分析。
 
-5.通信失败，如socket通信异常、连接断开。此原因常见于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口，通过日志关键词过滤startEap或stopEap检查命令是否正常下发。
+5. 通信失败，如socket通信异常、连接断开。此原因常见于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口，通过日志关键词过滤startEap或stopEap检查命令是否正常下发。
 
 **处理步骤**
 

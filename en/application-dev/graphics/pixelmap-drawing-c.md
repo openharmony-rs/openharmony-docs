@@ -63,7 +63,7 @@ You can create a **PixelMap** instance using multiple APIs. The following uses *
            pixels[i * RGBA_SIZE + 2] = 0xFF; // Assign a value to the blue channel while keeping other channels at 0. The color is displayed in blue.
        }
    }
-   // Set the pixel map format (width, height, color type, alpha type).
+   // Set the pixel map format (width, height, color type, and alpha type).
    OH_Pixelmap_InitializationOptions *createOps = nullptr;
    OH_PixelmapInitializationOptions_Create(&createOps);
    OH_PixelmapInitializationOptions_SetWidth(createOps, width);

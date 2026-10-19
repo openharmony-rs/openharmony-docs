@@ -638,7 +638,7 @@ try {
 
 ## systemManager.setLocalHotaDomain
 
-setLocalHotaDomain(admin: Want, domain: string): void
+setLocalHotaDomain(domain: string): void
 
 设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.LOCAL_HOTA_DOMAIN）查询设备是否支持本机HOTA域名特性。
 
@@ -680,7 +680,6 @@ HOTA域名使用流程：
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | domain | string | 是 | 本机HOTA域名，具体校验规则详见接口说明。 |
 
 **错误码**：
@@ -692,6 +691,7 @@ HOTA域名使用流程：
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
 | 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
 | 9200018 | This device is not an enterprise device. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -700,20 +700,14 @@ HOTA域名使用流程：
 
 ```ts
 import { common, systemManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 // 需根据实际情况进行替换
 let domain: string = "https://www.hotaExample.com";
 // 调用本接口前，先查询设备是否支持本机HOTA域名特性
 let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
 if (isSupported) {
   try {
-    systemManager.setLocalHotaDomain(wantTemp, domain);
+    systemManager.setLocalHotaDomain(domain);
     console.info('Succeeded in setting local HOTA domain.');
   } catch (err) {
     console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
@@ -725,7 +719,7 @@ if (isSupported) {
 
 ## systemManager.getLocalHotaDomain
 
-getLocalHotaDomain(admin: Want): string
+getLocalHotaDomain(): string
 
 获取设备本机HOTA（Huawei Over-the-Air）域名。适用于需要查询当前设备配置的本机HOTA域名的场景。
 
@@ -747,12 +741,6 @@ getLocalHotaDomain(admin: Want): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**参数：**
-
-| 参数名 | 类型                                                    | 必填 | 说明                   |
-| ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-
 **返回值：**
 
 | 类型   | 说明                                |
@@ -767,6 +755,7 @@ getLocalHotaDomain(admin: Want): string
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
 | 9200018  | This device is not an enterprise device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -774,15 +763,9 @@ getLocalHotaDomain(admin: Want): string
 
 ```ts
 import { systemManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  let domain: string = systemManager.getLocalHotaDomain(wantTemp);
+  let domain: string = systemManager.getLocalHotaDomain();
   console.info(`Succeeded in getting local HOTA domain: ${domain}`);
 } catch (err) {
   console.error(`Failed to get local HOTA domain. Code is ${err.code}, message is ${err.message}`);

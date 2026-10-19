@@ -109,15 +109,15 @@ The following table lists the common APIs for setting drawing effects with a pen
 
 | API| Description|
 | -------- | -------- |
-| OH_Drawing_Pen\* OH_Drawing_PenCreate(void) | Creates a pen object. |
-| void OH_Drawing_CanvasAttachPen(OH_Drawing_Canvas\* canvas, const OH_Drawing_Pen\* pen) | Attaches a pen to a canvas so that the canvas can use the style and color of the pen to outline a shape. |
-| void OH_Drawing_PenSetColor(OH_Drawing_Pen\* pen, uint32_t color) | Sets the color for a pen. The color is used by the pen to outline a shape. |
-| void OH_Drawing_PenSetWidth(OH_Drawing_Pen\* pen, float width) | Sets the width for a pen. The value **0** is treated as an unusually thin width. During drawing, the width of 0 is always drawn as 1 pixel wide, regardless of any scaling applied to the canvas. Negative values are also regarded as the value **0** during the drawing process. |
-| void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen\* pen, bool antiAlias) | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent. |
-| void OH_Drawing_PenSetCap(OH_Drawing_Pen\* pen, OH_Drawing_PenLineCapStyle capStyle) | Sets the line cap style for a pen. |
-| void OH_Drawing_PenSetJoin(OH_Drawing_Pen\* pen, OH_Drawing_PenLineJoinStyle joinStyle) | Sets the line join style for a pen. |
-| void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas\* canvas) | Removes the pen from the canvas. After this operation, the canvas no longer draws the outline of the graphics shape and restores the default stroke effect. |
-| void OH_Drawing_PenDestroy(OH_Drawing_Pen\* pen) | Destroys a pen object and reclaims the memory occupied by the object. |
+| OH_Drawing_Pen\* OH_Drawing_PenCreate (void) | Creates a pen object.|
+| void OH_Drawing_CanvasAttachPen (OH_Drawing_Canvas\* , const OH_Drawing_Pen\* ) | Attaches a pen to a canvas so that the canvas can use the style and color of the pen to outline a shape.|
+| void OH_Drawing_PenSetColor (OH_Drawing_Pen\* , uint32_t color) | Sets the color for a pen. The color is used by the pen to outline a shape.|
+| void OH_Drawing_PenSetWidth (OH_Drawing_Pen\* , float width) | Sets the width for a pen. The value **0** is treated as an unusually thin width. During drawing, the width of 0 is always drawn as 1 pixel wide, regardless of any scaling applied to the canvas. Negative values are also regarded as the value **0** during the drawing process.|
+| void OH_Drawing_PenSetAntiAlias (OH_Drawing_Pen\* , bool ) | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
+| void OH_Drawing_PenSetCap (OH_Drawing_Pen\* , OH_Drawing_PenLineCapStyle) | Sets the line cap style for a pen.|
+| void OH_Drawing_PenSetJoin (OH_Drawing_Pen\* , OH_Drawing_PenLineJoinStyle) | Sets the line join style for a pen.|
+| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | Removes the pen from the canvas. After the execution, the canvas does not outline the shape and restores to the default fill effect.|
+| void OH_Drawing_PenDestroy (OH_Drawing_Pen\*) | Destroys a pen object and reclaims the memory occupied by the object.|
 
 
 ### How to Develop

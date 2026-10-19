@@ -102,7 +102,7 @@ The following table describes the commonly used APIs for setting drawing effects
 | setAntiAlias(aa: boolean) : void | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
 | setCapStyle(style: CapStyle): void | Sets the line cap style for a pen.|
 | setJoinStyle(style: JoinStyle): void | Sets the line join style for a pen.|
-| detachPen(): void | Removes the pen from the canvas. After this operation, the canvas no longer draws the outline of the graphics shape and restores the default stroke effect. |
+| detachPen(): void | Removes the pen from the canvas. After the execution, the canvas does not draw the outline of the shape and restores to the default fill effect.|
 
 
 ### How to Develop
