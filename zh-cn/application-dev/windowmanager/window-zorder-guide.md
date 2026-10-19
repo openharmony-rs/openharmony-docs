@@ -43,6 +43,8 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 ### 窗口类型层级规则
 
+- **所有窗口类型的层级**
+
 - **相同类型窗口的层级调整**
 
   同类型窗口（多个主窗口、多个普通子窗）之间可通过点击或快捷键（如Alt+Tab）调整层级。
@@ -102,3 +104,11 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 > - 对于需要高优先级显示的关键界面，可通过[raiseToAppTop()](../reference/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14)确保可见性，使用此接口前，需确保该窗口已调用showWindow()类接口（[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)/[showWindow(options: ShowWindowOptions)](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow20)）并执行完毕。
 >
 > - [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)仅在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下生效。开发者可通过[isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22)查询当前窗口是否处于自由窗口，并结合[on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22)事件监听器实时监听窗口模式的变化，从而准确判断何时可以安全调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)。
+
+## 相关实践
+
+### 模态
+
+### 实现应用多窗口置顶
+
+
