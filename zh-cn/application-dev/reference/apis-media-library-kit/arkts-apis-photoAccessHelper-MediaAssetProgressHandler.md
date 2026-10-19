@@ -34,7 +34,7 @@ onProgress(progress: number): void
 | progress | number | 是   | 传入的进度百分比，范围为[0, 100]。 |
 
 ```ts
-import photoAccessHelper from '@ohos.file.photoAccessHelper'
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -45,7 +45,7 @@ async function requestVideoWithProgress(
 ) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    // 查询一个视频资源
+    // 查询一个视频资源。
     const predicates = new dataSharePredicates.DataSharePredicates();
     predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.VIDEO);
     predicates.limit(1, 0);
@@ -58,7 +58,7 @@ async function requestVideoWithProgress(
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     const asset = await fetchResult.getFirstObject();
 
-    // 进度处理器（仅 API 15+ 有效）
+    // 进度处理器，仅在API版本15及以后有效。
     const progressHandler: photoAccessHelper.MediaAssetProgressHandler = {
       onProgress: (progress: number) => {
         console.info(`视频请求进度: ${progress}%`);
