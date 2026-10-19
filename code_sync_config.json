@@ -68030,9 +68030,9 @@
 						"start_line":1246
 					},
 					{
-						"end_line":1861,
+						"end_line":1860,
 						"name":"on_callback_table_callback",
-						"start_line":1800
+						"start_line":1799
 					},
 					{
 						"end_line":1919,
@@ -68045,9 +68045,9 @@
 						"start_line":1926
 					},
 					{
-						"end_line":2169,
+						"end_line":2157,
 						"name":"execute",
-						"start_line":2114
+						"start_line":2102
 					},
 					{
 						"end_line":1563,
