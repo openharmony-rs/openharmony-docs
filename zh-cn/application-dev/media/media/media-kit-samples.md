@@ -14,6 +14,7 @@
 | 流媒体播放 | [AVPlayerArkTSStreamingMedia](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia) | 使用AVPlayer（ArkTS）完整播放一个流媒体视频，演示缓冲监听、HLS码率切换、DASH起播策略与轨道切换 | ArkTS |
 | 视频外挂字幕 | [AVPlayerArkTSSubtitle](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle) | 使用AVPlayer（ArkTS）设置外挂字幕并播放视频，演示addSubtitleFromFd与subtitleUpdate监听 | ArkTS |
 | 短音频播放 | [SoundPoolArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS) | 使用SoundPool（ArkTS）低时延播放短音频，演示一次加载多次播放 | ArkTS |
+| 音视频录制 | [AVRecorder](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVRecorder/AVRecorder) | 使用AVRecorder（ArkTS）录制音视频，演示录制状态机全流程 | ArkTS |
 | 元数据提取 | [AVMetadataExtractorArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS) | 使用AVMetadataExtractor（ArkTS）提取音频资源的元数据 | ArkTS |
 | 视频缩略图 | [AVImageGeneratorArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS) | 使用AVImageGenerator（ArkTS）获取视频资源的缩略图 | ArkTS |
 | 视频转码 | [AVTranscoderArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS) | 使用AVTranscoder（ArkTS）视频转码，演示开始-暂停-恢复-完成全流程 | ArkTS |
