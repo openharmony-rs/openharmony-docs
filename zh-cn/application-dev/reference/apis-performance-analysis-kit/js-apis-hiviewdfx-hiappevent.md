@@ -1195,6 +1195,7 @@ hiAppEvent.configure(config2);
 | logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | collectMinidump    | boolean | 否 | 是   | 是否使能[minidump](../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。<!--RP5--><br/>true：[params字段说明](../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br/>false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP5End--><br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| publishOnNextLaunch    | boolean | 否 | 是   | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。<br>true：使能固定在应用重启之后收到事件回调。<br>false：不使能固定在应用重启之后收到事件回调。<br>默认值：false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>**起始版本**：26.2.0<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
 
 ## AppFreezePolicy<sup>24+</sup>
 
