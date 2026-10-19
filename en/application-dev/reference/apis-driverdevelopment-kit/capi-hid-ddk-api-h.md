@@ -542,7 +542,7 @@ Obtains the report descriptor of the device.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle, which must be opened and obtained by calling [OH_Hid_Open](#oh_hid_open) before being used.|
 | uint8_t *buf | Buffer for storing descriptors.|
-| uint32_t bufSize | Size of the buffer, in bytes. Ensure that the value is greater than 0 and does not exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md# macro definition). Otherwise, the parameter verification fails.|
+| uint32_t bufSize | Size of the buffer, in bytes. Ensure that the value is greater than 0 and does not exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#macros). Otherwise, the parameter verification fails.|
 | uint32_t *bytesRead | Number of bytes to read.|
 
 **Returns**
