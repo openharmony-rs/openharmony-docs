@@ -323,7 +323,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 8. 同步模式调用，写入待解码的数据，获取解码的输出。
 
-   主动请求输入buffer：先通过OH_AudioCodec_QueryInputBuffer()查询可用的输入buffer索引，超时返回AV_ERR_TRY_AGAIN_LATER，再通过OH_AudioCodec_GetInputBuffer()获取该输入buffer：
+   主动请求输入buffer：先通过OH_AudioCodec_QueryInputBuffer()查询可用的输入buffer索引，超时返回AV_ERR_TRY_AGAIN_LATER，再通过OH_AudioCodec_GetInputBuffer()获取该输入buffer。
 
    <!-- @[AudioDecoder::GetInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
