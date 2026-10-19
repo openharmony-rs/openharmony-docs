@@ -237,7 +237,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ``` C++
    int32_t AudioDecoder::SetCallback(CodecUserData *codecUserData)
    {
-       // 异步模式下回调由 codec 内部线程触发并访问传入的 userData；须先停止解码器再销毁该上下文，避免回调访问已释放的对象。
+       // 异步模式下回调由codec内部线程触发并访问传入的userData；须先停止解码器再销毁该上下文，避免回调访问已释放的对象。
        int32_t ret = AV_ERR_OK;
        ret = OH_AudioCodec_RegisterCallback(decoder_,
                                             {SampleCallback::OnCodecError, SampleCallback::OnCodecFormatChange,
@@ -328,12 +328,12 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    int32_t AudioDecoder::Configure(const SampleInfo &sampleInfo)
    {
        // 解码能力表可能未完整列出部分容器编码格式的采样率/声道信息。
-       // 解码器 Configure 调用的返回值才是最终判定依据，此处仅将能力查询结果作为参考日志。
+       // 解码器Configure调用的返回值才是最终判定依据，此处仅将能力查询结果作为参考日志。
        if (!CodecCapability::ValidateAudioConfiguration(sampleInfo, false)) {
            AVCODEC_SAMPLE_LOGW("Audio capability query did not fully describe mime: %{public}s; "
                "continue with decoder configure", sampleInfo.audio.audioCodecMime.c_str());
        }
-       // format 仅用于本次 Configure；所有失败路径和成功路径都要在返回前销毁。
+       // format仅用于本次Configure；所有失败路径和成功路径都要在返回前销毁。
        OH_AVFormat *format = OH_AVFormat_Create();
        CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
    
@@ -366,7 +366,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 6. 调用OH_AudioCodec_Prepare()，解码器就绪。
 
-   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：Config()函数中先完成Configure()配置与回调注册，之后再调用OH_AudioCodec_Prepare()使解码器就绪。以下为其中Prepare部分的代码：
+   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：在Config()函数中先完成Configure()配置与回调注册，之后再调用OH_AudioCodec_Prepare()使解码器就绪。以下为其中Prepare部分的代码：
 
    <!-- @[AudioDecoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    

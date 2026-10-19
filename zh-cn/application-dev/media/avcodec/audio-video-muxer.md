@@ -31,6 +31,10 @@
 
 详细的API说明请参考[native_avmuxer.h](../../reference/apis-avcodec-kit/capi-native-avmuxer-h.md)。
 
+> **说明：**
+>
+> 如果调用封装模块写本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA, ohos.permission.WRITE_MEDIA。
+
 ### 在 CMake 脚本中链接动态库
 
 ``` cmake
@@ -357,7 +361,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     
         ret = OH_AVMuxer_WriteSampleBuffer(muxer_, trackId, buffer);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Write sample failed");
-        // Muxer 不接管编码器输出 Buffer；调用方仍需使用原 bufferIndex 将它归还给编码器。
+        // Muxer不接管编码器输出Buffer；调用方仍需使用原bufferIndex将该Buffer归还给编码器。
         return AVCODEC_SAMPLE_ERR_OK;
     }
     ```
@@ -419,7 +423,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     int32_t Muxer::Release()
     {
         if (muxer_ != nullptr) {
-            // Destroy 只释放封装器资源，不关闭 Create() 时由业务侧传入的文件描述符。
+            // Destroy只释放封装器资源，不关闭Create()时由业务侧传入的文件描述符。
             OH_AVMuxer_Destroy(muxer_);
             muxer_ = nullptr;
         }

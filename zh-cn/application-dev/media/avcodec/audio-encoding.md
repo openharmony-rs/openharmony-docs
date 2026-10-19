@@ -201,7 +201,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ``` C++
    int32_t AudioEncoder::SetCallback(CodecUserData *codecUserData)
    {
-       // 编码器在内部线程回调 userData；释放前应停止编码器并等待消费线程退出。
+       // 编码器在内部线程回调userData；释放前应停止编码器并等待消费线程退出。
        int32_t ret = AV_ERR_OK;
        ret = OH_AudioCodec_RegisterCallback(encoder_,
                                             { SampleCallback::OnCodecError, SampleCallback::OnCodecFormatChange,
@@ -291,7 +291,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 5. 调用OH_AudioCodec_Prepare()，编码器就绪。
 
-   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：Config()函数中先完成Configure()配置与回调注册，之后再调用OH_AudioCodec_Prepare()使编码器就绪。以下为其中Prepare部分的代码：
+   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：在Config()函数中先完成Configure()配置与回调注册，之后再调用OH_AudioCodec_Prepare()使编码器就绪。以下为其中Prepare部分的代码：
 
    <!-- @[AudioEncoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
@@ -390,7 +390,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    在上方案例中，attr.flags代表缓冲区标记的类别。
 
-   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS，示例中录制结束时获取一个输入buffer，填入长度为0的数据并标识EOS标志后送入编码器：
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。在示例中，当录制结束时获取一个输入buffer，填入长度为0的数据并标识EOS标志后送入编码器。
 
    <!-- @[AudioEncoder::NotifyEndOfStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
@@ -399,7 +399,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
    
-       // 使用空输入 Buffer 携带 EOS。即使没有媒体数据也必须提交它，编码器才会输出尾部数据。
+       // 使用空输入Buffer携带EOS。即使没有媒体数据也必须提交该Buffer，编码器才会输出尾部数据。
        CodecBufferInfo bufferInfo;
        auto buffer = GetInputBuffer(bufferInfo, TIMEOUT_US);
        if (buffer == nullptr) {
@@ -407,7 +407,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            return AVCODEC_SAMPLE_ERR_ERROR;
        }
    
-       // EOS 不包含有效音频字节；调用 PushInputBuffer 后该 Buffer 立即归 codec 管理。
+       // EOS不包含有效音频字节；调用PushInputBuffer后该Buffer立即归codec管理。
        bufferInfo.attr.size = 0;
        bufferInfo.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
        int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &bufferInfo.attr);

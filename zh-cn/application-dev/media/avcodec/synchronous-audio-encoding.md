@@ -126,7 +126,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    例如，对44100Hz采样率、2声道立体声、SAMPLE_S16LE采样格式的PCM音频，以32000bps的码率进行AAC编码的调用流程如下：
 
-   配置前建议先通过OH_AVCapability能力查询接口校验待配置参数是否在编码器支持范围内。同步模式通过OH_MD_KEY_ENABLE_SYNC_MODE开启：需要使用同步模式时，在Configure传入的OH_AVFormat中将OH_MD_KEY_ENABLE_SYNC_MODE设置为1；示例中根据是否使用同步模式决定是否设置该参数：
+   配置前建议先通过OH_AVCapability能力查询接口校验待配置参数是否在编码器支持范围内。同步模式通过OH_MD_KEY_ENABLE_SYNC_MODE开启：需要使用同步模式时，在Configure传入的OH_AVFormat中将OH_MD_KEY_ENABLE_SYNC_MODE设置为1；示例中根据是否使用同步模式决定是否设置该参数。
 
    <!--RP3-->
    <!-- @[AudioEncoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
@@ -186,7 +186,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 4. 调用OH_AudioCodec_Prepare()，编码器就绪。
 
-   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：Config()函数中先完成Configure()配置，之后再调用OH_AudioCodec_Prepare()使编码器就绪。以下为其中Prepare部分的代码：
+   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：在Config()函数中先完成Configure()配置，之后再调用OH_AudioCodec_Prepare()使编码器就绪。以下为其中Prepare部分的代码：
 
    <!-- @[AudioEncoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
@@ -237,7 +237,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    单次编码输入的数据量（单位：字节）为：SAMPLES_PER_FRAME * 声道数 * 单个采样点的占用字节。
 
-   主动请求输入buffer：先通过OH_AudioCodec_QueryInputBuffer()查询可用的输入buffer索引，超时返回AV_ERR_TRY_AGAIN_LATER，再通过OH_AudioCodec_GetInputBuffer()获取该输入buffer：
+   主动请求输入buffer：先通过OH_AudioCodec_QueryInputBuffer()查询可用的输入buffer索引，超时返回AV_ERR_TRY_AGAIN_LATER，再通过OH_AudioCodec_GetInputBuffer()获取该输入buffer。
 
    <!-- @[AudioEncoder::GetInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
@@ -250,7 +250,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            case AV_ERR_OK: {
                OH_AVBuffer *buffer = OH_AudioCodec_GetInputBuffer(encoder_, info.bufferIndex);
                CHECK_AND_RETURN_RET_LOG(buffer != nullptr, nullptr, "Input buffer is null");
-               // 该 Buffer 只能在 PushInputData 前填充；提交后所有权回到 codec。
+               // 该Buffer只能在PushInputData前填充；提交后所有权回到codec。
                info.buffer = buffer;
                return buffer;
            }
@@ -287,7 +287,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
                }
                continue;
            }
-           // 数据充足后才申请 codec 输入 Buffer；减少申请成功后因缓存不足无法及时归还的风险。
+           // 数据充足后才可以申请codec输入Buffer；减少申请成功后因缓存不足无法及时归还的风险。
            CodecBufferInfo bufferInfo;
            bufferInfo.bufferIndex = std::numeric_limits<uint32_t>::max();
            auto buffer = audioEncoder_->GetInputBuffer(bufferInfo, TIMEOUT_US);
@@ -309,7 +309,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    在上方案例中，attr.flags表示缓冲区标记的类别。
 
-   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS，示例中录制结束时获取一个输入buffer，填入长度为0的数据并标识EOS标志后送入编码器：
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS，示例中录制结束时获取一个输入buffer，填入长度为0的数据并标识EOS标志后送入编码器。
 
    <!-- @[AudioEncoder::NotifyEndOfStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
@@ -318,7 +318,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
    
-       // 使用空输入 Buffer 携带 EOS。即使没有媒体数据也必须提交它，编码器才会输出尾部数据。
+       // 使用空输入Buffer携带EOS。即使没有媒体数据也必须提交该Buffer，编码器才会输出尾部数据。
        CodecBufferInfo bufferInfo;
        auto buffer = GetInputBuffer(bufferInfo, TIMEOUT_US);
        if (buffer == nullptr) {
@@ -326,7 +326,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            return AVCODEC_SAMPLE_ERR_ERROR;
        }
    
-       // EOS 不包含有效音频字节；调用 PushInputBuffer 后该 Buffer 立即归 codec 管理。
+       // EOS不包含有效音频字节；调用PushInputBuffer后该Buffer立即归codec管理。
        bufferInfo.attr.size = 0;
        bufferInfo.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
        int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &bufferInfo.attr);
@@ -358,7 +358,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        info.buffer = nullptr;
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
-       // 一批输入可能产生多帧输出，需要持续取出并归还，直到 codec 暂无输出或返回 EOS。
+       // 一批输入可能产生多帧输出，需要持续取出并归还，直到codec暂无输出或返回EOS。
        OH_AVErrCode ret = OH_AudioCodec_QueryOutputBuffer(encoder_, &info.bufferIndex, timeoutUs);
        if (ret == AV_ERR_TRY_AGAIN_LATER) {
            // 超时，可能输入的数据不足以编码出一帧，或者超时时间设置过短。
@@ -372,7 +372,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    
        OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(encoder_, info.bufferIndex);
        if (outputBuf == nullptr) {
-           // 查询成功后索引已被 codec 交给应用，异常路径同样需要归还。
+           // 查询成功后索引已被codec交给应用，异常路径同样需要归还。
            const int32_t freeRet = OH_AudioCodec_FreeOutputBuffer(encoder_, info.bufferIndex);
            AVCODEC_SAMPLE_LOGE("Get output buffer failed, free ret: %{public}d", freeRet);
            return AVCODEC_SAMPLE_ERR_ERROR; // break;
