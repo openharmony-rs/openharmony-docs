@@ -540,7 +540,7 @@ class AVPlayerManager {
 
 主要代码逻辑如下：
 
-1. 拟广告页，通过点击不同按钮分别进入普通页面和预加载页面。
+1. 模拟广告页，通过点击不同按钮分别进入普通页面和预加载页面。
     ```typescript
     // Index.ets
     @Entry
