@@ -1831,3 +1831,4 @@ type Nullable\<T> = T \| undefined
 | ------ | ---- | ---------- |
 | AVOID_CUTOUT | 0 | 避让挖孔区域。<br/>该策略的优先级比module.json5中的avoid_cutout配置项低，如果在module.json5的metadata中配置了avoid_cutout，该配置项的效果会优先生效，具体配置方式请参考[安全区域](ts-universal-attributes-expand-safe-area.md)文档说明。 |
 | AVOID_FLOAT_NAV | 1 | 避让三键导航栏区域。 |
+| NAVIGATION_EXPAND_SAFE_AREA | 8 | 将Navigation/NavDestination组件的标题栏和工具栏扩展为内容区的安全区域，若在Navigation/NavDestination组件上显式设置了标题栏或工具栏样式，则显式设置优先于该配置。 |
