@@ -9816,9 +9816,9 @@ onWindowFocusStateChange(callback: Callback&lt;WindowFocusState&gt;): void
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是 | 回调函数。返回窗口的焦点状态变化信息。 |
+| 参数名   | 类型                                                                        | 必填 | 说明                                   |
+| -------- | --------------------------------------------------------------------------- | ---- | -------------------------------------- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息。 |
 
 **错误码：**
 
@@ -9860,9 +9860,9 @@ offWindowFocusStateChange(callback?: Callback&lt;WindowFocusState&gt;): void
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否 | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
+| 参数名   | 类型                                                                        | 必填 | 说明                                                                           |
+| -------- | --------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------ |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
 
 **错误码：**
 

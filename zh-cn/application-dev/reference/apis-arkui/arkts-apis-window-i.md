@@ -431,12 +431,12 @@
 
 **ArkTS-Sta起始版本：** 26.0.1
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| isFocused | boolean | 否 | 否 | 窗口是否获焦，true表示获焦，false表示未获焦。 |
-| focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | 否 | 否 | 焦点状态变化的原因。 |
-| nextFocusedWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
-| prevFocusedWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
+| 名称                | 类型                                                          | 只读 | 可选 | 说明                                                                                                            |
+| ------------------- | ------------------------------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------- |
+| isFocused           | boolean                                                       | 否   | 否   | 窗口是否获焦，true表示获焦，false表示未获焦。                                                                   |
+| focusChangeReason   | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | 否   | 否   | 焦点状态变化的原因。                                                                                            |
+| nextFocusedWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int                           | 否   | 是   | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
+| prevFocusedWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int                           | 否   | 是   | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
 
 ## WindowInfoOptions
 
