@@ -889,6 +889,61 @@ try {
 }
 ```
 
+### isPermissionSupported
+
+isPermissionSupported(permissionName: Permissions): boolean
+
+查询当前设备是否支持该权限，同步返回结果。调用成功后，返回该权限在当前设备上的支持状态。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要查询支持状态的权限名称。权限名不能为空，且长度不能超过256个字符，传入无效值时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| boolean | 返回true表示当前设备支持该权限；返回false表示当前设备不支持该权限。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+try {
+  // 查询目标权限的支持状态
+  let result: boolean = atManager.isPermissionSupported('ohos.permission.CAMERA');
+  console.info(`isPermissionSupported success, result: ${result}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isPermissionSupported fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### openPermissionOnSetting<sup>22+</sup>
 
 openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
