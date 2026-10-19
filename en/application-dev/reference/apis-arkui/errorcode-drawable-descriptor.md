@@ -5,12 +5,13 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9d2ed365b2947557fde89ea0523217e28678338c translatedAt=2026-10-15T10:42:53.713Z pushedAt=2026-10-16T02:51:57.168Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 111001 Internal Error
+## 111001 Failed to Load Resources
 
 **Error Message**
 

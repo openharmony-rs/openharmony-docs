@@ -1,12 +1,13 @@
 # @ohos.arkui.componentUtils (componentUtils)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-15T10:54:17.450Z pushedAt=2026-10-19T01:57:36.350Z -->
 
-The **componentUtils** module provides API for obtaining the coordinates and size of the drawing area of a component.
+The **componentUtils** module provides API for obtaining the coordinates and size of the drawing area of a component. It is applicable to scenarios where the actual drawing area information of a component needs to be queried after the component layout is complete, helping you obtain layout results such as component sizes and positions.
 
 > **NOTE**
 >
@@ -14,7 +15,7 @@ The **componentUtils** module provides API for obtaining the coordinates and siz
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
+> - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](./arkts-apis-uicontext-uicontext.md).
 
 ## Modules to Import
 
@@ -29,9 +30,11 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid) instead. Before calling this API, you need to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object using the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - Supported since API version 10 and deprecated since API version 18. You are advised to use [getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid) instead. To use getRectangleById, you need to first obtain a [ComponentUtils](arkts-apis-uicontext-componentutils.md) object through [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) in [UIContext](arkts-apis-uicontext-uicontext.md), and then call the API through this object.
 >
-> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API provides access to component coordinates and size information after the target component completes layout. It is recommended that you invoke this API within [layout completion callbacks](./js-apis-arkui-inspector.md). Note that dynamically created components must be mounted to the component tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
+> - Since API version 10, you can use [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. After the target component is laid out, this API can be used to obtain the component's coordinates and size information. You are advised to use this API in the [layout callback](./js-apis-arkui-inspector.md). If a component is dynamically created but not mounted to the component tree, its coordinates and size information cannot be obtained through this API. This is because a component that is not mounted to the component tree has generally not undergone measurement and layout by the UI framework. In this case, ensure that the component is mounted to the component tree before attempting to obtain its information.
+>
+> - The component position returned by this API is the layout position, and calculation of certain attributes is not supported, such as the position-setting attributes [offset](./arkui-ts/ts-universal-attributes-location.md#offset), [markAnchor](./arkui-ts/ts-universal-attributes-location.md#markanchor), and [position](./arkui-ts/ts-universal-attributes-location.md#position) of the [Edges](./arkui-ts/ts-types.md#edges12) and [LocalizedEdges](./arkui-ts/ts-types.md#localizededges12) types, as well as the graphics transformation attributes [rotate](./arkui-ts/ts-universal-attributes-transformation.md#rotate), [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate), [scale](./arkui-ts/ts-universal-attributes-transformation.md#scale), and [transform](./arkui-ts/ts-universal-attributes-transformation.md#transform). You can use the alternative API [getPositionToWindowWithTransform](./js-apis-arkui-frameNode.md#getpositiontowindowwithtransform12) to obtain the position offset of the component relative to the window, including the drawing attributes.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -41,7 +44,7 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| id     | string | Yes  | Component ID.|
+| id     | string | Yes   | Component ID. The target component must be mounted to the component tree and have completed layout. |
 
 **Return value**
 
@@ -61,7 +64,7 @@ For details about the error codes, see [API Call Error Codes](errorcode-internal
 
 ```ts
 import { componentUtils } from '@kit.ArkUI';
-let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("onClick");
+let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById('onClick');
 ```
 
 ## ComponentInfo
@@ -75,15 +78,15 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | Name          | Type            | Read-Only   | Optional          | Description                        |
 | ---------------|------------| --------------- | -----------------------------| -----------------------------|
 | size           | [Size](#size) | No      | No    | Component size.                   |
-| localOffset    | [Offset](#offset) | No      | No   | Offset of the component relative to the parent component.        |
-| windowOffset   | [Offset](#offset) | No      | No   | Offset of the component relative to the window.          |
-| screenOffset   | [Offset](#offset) | No      | No   | Offset of the component relative to the screen.          |
+| localOffset    | [Offset](#offset) | No       | No    | Offset of the component relative to its parent component.         |
+| windowOffset   | [Offset](#offset) | No       | No    | Offset of the component relative to the window.           |
+| screenOffset   | [Offset](#offset) | No       | No    | Offset of the component relative to the screen.           |
 | translate      | [TranslateResult](#translateresult)| No      | No    | Translation of the component.               |
 | scale          | [ScaleResult](#scaleresult) | No      | No    | Scaling of the component.               |
 | rotate         | [RotateResult](#rotateresult) | No      | No    | Rotation of the component.               |
 | transform      | [Matrix4Result](#matrix4result) | No      | No    | Affine matrix of the component, which is a 4x4 matrix object created based on the input parameter. |
 
-### Size 
+## Size
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -91,10 +94,10 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 
 | Name    | Type | Read-Only   | Optional   | Description                              |
 | -------- | ---- | -------------------------| ------------------------| ----------------------------------|
-| width    | number | No      | No    | Component width.<br>Unit: px                     |
-| height   | number | No      | No    | Component height.<br>Unit: px                     |
+| width    | number | No       | No     | Component width.<br>Unit: px                      |
+| height   | number | No       | No     | Component height.<br>Unit: px                      |
 
-### Offset
+## Offset
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -102,10 +105,10 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 
 | Name    | Type | Read-Only   | Optional    | Description                              |
 | --------| ---- | --------------| ------------------------------------| -----------------------------------|
-| x       | number| No      | No    | X-coordinate.<br>Unit: px                          |
-| y       | number| No      | No    | Y-coordinate.<br>Unit: px                          |
+| x       | number| No       | No     | X-coordinate.<br>Unit: px                           |
+| y       | number| No       | No     | Y-coordinate.<br>Unit: px                           |
 
-### TranslateResult
+## TranslateResult
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -113,11 +116,11 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 
 | Name    | Type| Read-Only   | Optional    | Description                              |
 | --------| ---- | -------------------| -------------------------------| -----------------------------------|
-| x       | number | No      | No   | Translation distance along the x-axis.<br>Unit: vp                      |
-| y       | number | No      | No   | Translation distance along the y-axis.<br>Unit: vp                      |
-| z       | number | No      | No    | Translation distance along the z-axis.<br>Unit: vp                      |
+| x       | number | No       | No    | Translation distance along the x-axis.<br>Unit: vp                       |
+| y       | number | No       | No    | Translation distance along the y-axis.<br>Unit: vp                       |
+| z       | number | No       | No     | Translation distance along the z-axis.<br>Unit: vp                       |
 
-### ScaleResult
+## ScaleResult
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -128,10 +131,10 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | x       | number | No      | No| Scale factor along the x-axis.                      |
 | y       | number | No      | No | Scale factor along the y-axis.                      |
 | z       | number | No      | No| Scale factor along the z-axis.                      |
-| centerX | number | No      | No| X-coordinate of the center point.<br>Unit: vp                 |
-| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: vp               |
+| centerX | number | No       | No | X-axis coordinate of the transform center point.<br>Unit: vp                  |
+| centerY | number | No       | No  | Y-axis coordinate of the transform center point.<br>Unit: vp                |
 
-### RotateResult
+## RotateResult
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -141,12 +144,12 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | --------| ---- | -----------------| ---------------------------------| -----------------------------------|
 | x       | number | No      | No | X-coordinate of the rotation vector.                  |
 | y       | number | No      | No | Y-coordinate of the rotation vector.                  |
-| z       | number | No      | No | Z coordinate of the rotation vector.                  |
-| angle   | number | No      | No | Rotation angle.<br>Unit: deg                         |
-| centerX | number | No      | No | X-coordinate of the center point.<br>Unit: vp                |
-| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: vp                |
+| z       | number | No      | No | Z-coordinate of the rotation vector.                  |
+| angle   | number | No       | No  | Rotation angle.<br>Unit: deg                          |
+| centerX | number | No       | No  | X-axis coordinate of the transform center point.<br>Unit: vp                 |
+| centerY | number | No       | No  | Y-axis coordinate of the transform center point.<br>Unit: vp                 |
 
-### Matrix4Result
+## Matrix4Result
 
 type Matrix4Result = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
 
@@ -156,7 +159,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 
 | Type| Description                              |
 | --------| -----------------------------------|
-| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**. |
+| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | Number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.  |
 
 **4 x 4 matrix description**
 
@@ -183,10 +186,10 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 
 ### Example 1: Obtaining the ComponentUtils Object
 
-You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
+You are advised to use the [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the **ComponentUtils** object associated with the current UI context.
 
 ```ts
-import { matrix4, componentUtils } from '@kit.ArkUI';
+import { matrix4 } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -200,7 +203,7 @@ struct Utils {
   build() {
     Column() {
       // Replace $r("app.media.img") with the image resource file you use.
-      Image($r("app.media.img"))
+      Image($r('app.media.img'))
         .transform(this.matrix1)
         .translate({ x: 20, y: 20, z: 20 })
         .scale({ x: 0.5, y: 0.5, z: 1 })
@@ -214,12 +217,12 @@ struct Utils {
         })
         .width(300)
         .height(100)
-        .key("image_01")
+        .key('image_01')
       Button('getRectangleById')
         .onClick(() => {
           this.value = JSON.stringify(this.getUIContext()
             .getComponentUtils()
-            .getRectangleById("image_01")) // You are advised to use this.getUIContext().getComponentUtils().
+            .getRectangleById('image_01')); // You are advised to use the this.getUIContext().getComponentUtils() API instead.
         }).margin(10).id('onClick')
       Text(this.value)
         .margin(20)
@@ -231,4 +234,4 @@ struct Utils {
 }
 ```
 
-![componentget](figures/getRectangleById.gif) 
+![componentget](figures/getRectangleById.gif)
