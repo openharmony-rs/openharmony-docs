@@ -93,6 +93,10 @@ edgeLight(params: EdgeLightParams | undefined): T
 >
 > - 仅设置edgeLight不会产生边缘流光效果，需结合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)更改position参数达到流光效果。可参考[示例4（设置组件边缘流光效果）](#示例4设置组件边缘流光效果)。
 >
+> - 流光效果支持与沉浸光感混用。
+>
+> - 流光效果只沿控件原始边缘绘制；若控件经过裁剪（如clip形状），不会沿裁剪后的边缘呈现流光。
+>
 > - 当position参数以对角线方式变更时（如从TOP_LEFT变更到BOTTOM_RIGHT），边缘流光将沿倾斜角45°的方式运行。
 
 **起始版本：** 26.0.0
