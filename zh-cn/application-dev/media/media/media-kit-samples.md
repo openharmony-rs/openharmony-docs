@@ -1,4 +1,10 @@
 # Media Kit指南配套示例代码汇总
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia--> 
+<!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 | 分类 | Sample名称 | 场景介绍 | 语言 |
 | -------- | -------- | -------- | -------- |
