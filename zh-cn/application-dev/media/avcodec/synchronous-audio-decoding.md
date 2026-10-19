@@ -178,7 +178,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | Vorbis      | 8000 ~ 192000   |
    | APE         | 1 ~ 2147483647  |
 
-   同步模式通过OH_MD_KEY_ENABLE_SYNC_MODE开启：需要使用同步模式时，在Configure传入的OH_AVFormat中将OH_MD_KEY_ENABLE_SYNC_MODE设置为1；示例中根据是否使用同步模式决定是否设置该参数：
+   同步模式通过OH_MD_KEY_ENABLE_SYNC_MODE开启：需要使用同步模式时，在Configure传入的OH_AVFormat中将OH_MD_KEY_ENABLE_SYNC_MODE设置为1。示例中根据是否使用同步模式决定是否设置该参数：
 
    <!-- @[AudioDecoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
