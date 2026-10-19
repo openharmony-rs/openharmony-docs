@@ -13,7 +13,7 @@
 
 1. 创建模态窗口。  
 
-   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建模态窗口（TYPE_DIALOG）。
+   通过[window.createWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-createwindow-f.md#createwindow)接口创建模态窗口（TYPE_DIALOG）。
 
    <!-- @[dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
@@ -40,7 +40,7 @@
 
    - 模态窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置窗口背景色、亮度等属性。
 
-   - 在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)之前，建议设置模态窗口的大小和位置。
+   - 在调用[showWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#showwindow)之前，建议设置模态窗口的大小和位置。
 
    <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
@@ -68,7 +68,7 @@
 
 3. 加载显示窗口的具体内容。  
 
-   通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)接口加载显示模态窗口的具体内容。
+   通过[setUIContent()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setuicontent)和[showWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#showwindow)接口加载显示模态窗口的具体内容。
 
    <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
@@ -93,7 +93,7 @@
 
 4. 销毁窗口。 
 
-   当不再需要模态窗口时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)接口销毁模态窗口。
+   当不再需要模态窗口时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#destroywindow)接口销毁模态窗口。
 
    <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) -->  
    

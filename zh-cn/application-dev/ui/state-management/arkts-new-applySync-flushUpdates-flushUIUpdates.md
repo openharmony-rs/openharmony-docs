@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现状态管理V2与[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)等动效的同步刷新，开发者可以使用[applySync](../../reference/apis-arkui/js-apis-stateManagement.md#applysync22)、[flushUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushupdates22)或[flushUIUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushuiupdates22)接口。
+为了实现状态管理V2与[animateTo](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)等动效的同步刷新，开发者可以使用[applySync](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#applysync)、[flushUpdates](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#flushupdates)或[flushUIUpdates](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#flushuiupdates)接口。
 
 > **说明：**
 >
@@ -415,7 +415,7 @@ struct Index {
 
 ### 路由场景
 
-在路由场景下设置[共享元素转场](../../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)，使用applySync接口可以使得转场时同步刷新name值，实现转场动效效果。在如下示例代码中，从Index页面向PageTransitionTwo页面跳转时，两个页面的id值不匹配，没有转场动效。从PageTransitionTwo页面返回Index页面时，两个页面的id值匹配，有转场动效。
+在路由场景下设置[共享元素转场](../../reference/apis-arkui/arkui-js/js-components-create-elements.md)，使用applySync接口可以使得转场时同步刷新name值，实现转场动效效果。在如下示例代码中，从Index页面向PageTransitionTwo页面跳转时，两个页面的id值不匹配，没有转场动效。从PageTransitionTwo页面返回Index页面时，两个页面的id值匹配，有转场动效。
 
 <!-- @[PageUse_PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageUse.ets) -->
 

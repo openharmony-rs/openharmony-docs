@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-在前文的示例中，可以使用[\@Styles](arkts-style.md)复用样式。在\@Styles的基础上，ArkUI提供了[\@Extend](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-extend.md#extend)，用于扩展组件样式。
+在前文的示例中，可以使用[\@Styles](arkts-style.md)复用样式。在\@Styles的基础上，ArkUI提供了[\@Extend](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-extend-d.md#extend)，用于扩展组件样式。
 
 > **说明：**
 >
@@ -293,7 +293,7 @@
 
 ## 使用场景
 
-以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontstyle)、[fontWeight](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontweight) 和[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)样式。
+以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../reference/apis-arkui/arkts-apis/arkts-arkui-textstyle-c.md#fontstyle)、[fontWeight](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md#fontweight) 和[backgroundColor](../../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)样式。
 <!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) --> 
 
 ``` TypeScript

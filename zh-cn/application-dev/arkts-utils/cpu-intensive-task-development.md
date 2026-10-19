@@ -24,7 +24,7 @@ CPU密集型任务是指需要占用系统资源进行大量计算的任务，�
 
 2. 对数据进行分段，并通过任务组发起关联任务调度。
 
-   创建[TaskGroup](../reference/apis-arkts/js-apis-taskpool.md#taskgroup10)，通过[addTask()](../reference/apis-arkts/js-apis-taskpool.md#addtask10)添加对应的任务，然后通过[execute()](../reference/apis-arkts/js-apis-taskpool.md#taskpoolexecute10)执行任务组，并指定为[HIGH](../reference/apis-arkts/js-apis-taskpool.md#priority)优先级。在当前任务组所有任务结束后，会将直方图处理结果同时返回。
+   创建[TaskGroup](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-taskgroup-c.md#taskgroup)，通过[addTask()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-taskgroup-c.md#addtask)添加对应的任务，然后通过[execute()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-asyncrunner-c.md#execute)执行任务组，并指定为[HIGH](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-configs-i.md#priority)优先级。在当前任务组所有任务结束后，会将直方图处理结果同时返回。
 
 3. 汇总处理结果数组。
 
@@ -96,7 +96,7 @@ struct Index {
 
    ![newWorker](figures/newWorker.png)
 
-2. 在宿主线程中首先调用ThreadWorker的[constructor()](../reference/apis-arkts/js-apis-worker.md#constructor9)方法创建Worker对象；然后通过注册[onmessage()](../reference/apis-arkts/js-apis-worker.md#属性)回调接收Worker线程发送过来的消息；最后通过调用[postMessage()](../reference/apis-arkts/js-apis-worker.md#postmessage9)方法向Worker线程发送消息。
+2. 在宿主线程中首先调用ThreadWorker的[constructor()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-restrictedworker-c-sys.md#constructor)方法创建Worker对象；然后通过注册onmessage()回调接收Worker线程发送过来的消息；最后通过调用[postMessage()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-dedicatedworkerglobalscope-i.md#postmessage)方法向Worker线程发送消息。
 
    例如，向Worker线程发送训练和预测的消息，并接收Worker线程发送回来的消息。
 
@@ -129,7 +129,7 @@ struct Index {
    ```
 
 
-3. 在MyWorker1.ets文件中绑定Worker对象，当前线程即为Worker线程。在Worker线程中通过注册[onmessage()](../reference/apis-arkts/js-apis-worker.md#属性-1)回调接收宿主线程发送的消息，并通过调用[postMessage()](../reference/apis-arkts/js-apis-worker.md#postmessage9-2)方法向宿主线程发送消息。
+3. 在MyWorker1.ets文件中绑定Worker对象，当前线程即为Worker线程。在Worker线程中通过注册onmessage()回调接收宿主线程发送的消息，并通过调用[postMessage()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-dedicatedworkerglobalscope-i.md#postmessage)方法向宿主线程发送消息。
 
     例如，在Worker线程中定义预测模型及其训练过程，并与宿主线程进行信息交互。
 
@@ -190,7 +190,7 @@ struct Index {
 
 4. 在Worker线程中完成任务后，可以执行销毁操作。销毁方式有两种：一是在宿主线程中销毁Worker线程；二是在Worker线程中主动销毁。
 
-    在宿主线程中通过调用[onexit()](../reference/apis-arkts/js-apis-worker.md#属性)回调定义Worker线程销毁后的处理逻辑。
+    在宿主线程中通过调用onexit()回调定义Worker线程销毁后的处理逻辑。
 
     <!-- @[after_destroy_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) -->
     
@@ -201,14 +201,14 @@ struct Index {
     }
     ```
 
-    方式一：在宿主线程中通过调用[terminate()](../reference/apis-arkts/js-apis-worker.md#terminate9)方法销毁Worker线程，并终止Worker接收消息。
+    方式一：在宿主线程中通过调用[terminate()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-threadworker-c.md#terminate)方法销毁Worker线程，并终止Worker接收消息。
 
     ```ts
     // 销毁Worker线程
     workerInstance.terminate();
     ```
 
-    方式二：在Worker线程中通过调用[close()](../reference/apis-arkts/js-apis-worker.md#close9)方法主动销毁Worker线程，并终止Worker接收消息。
+    方式二：在Worker线程中通过调用[close()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-dedicatedworkerglobalscope-i.md#close)方法主动销毁Worker线程，并终止Worker接收消息。
 
     ```ts
     // 销毁线程

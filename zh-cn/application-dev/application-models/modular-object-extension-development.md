@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-从API版本26.0.0开始，系统提供ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）组件，支持应用将自身功能以模块化对象的形式开放给其他应用调用。本文将介绍如何实现ModularObjectExtensionAbility服务端和客户端。
+从API版本26.0.0开始，系统提供ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/c-apis/capi-modular-object-extension-ability-h.md)）组件，支持应用将自身功能以模块化对象的形式开放给其他应用调用。本文将介绍如何实现ModularObjectExtensionAbility服务端和客户端。
 
 > **说明**
 >
@@ -21,10 +21,10 @@ ModularObjectExtensionAbility组件当前仅支持PC/2in1设备。
 
 ### 规格限制
 
-- 客户端连接服务端时，客户端进程需要处于前台状态，服务端应用需要有正在运行的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)或[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)实例。
+- 客户端连接服务端时，客户端进程需要处于前台状态，服务端应用需要有正在运行的[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)或[UIExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability.md)实例。
 - 同一服务端应用下运行的Ability名称相同的ModularObjectExtensionAbility实例个数不能超过20个。
 - 同一客户端进程，针对同一服务端应用下Ability名称相同的ModularObjectExtensionAbility，最多创建5个连接。
-- 同一客户端应用，调用[OH_AbilityRuntime_ConnectModularObjectExtensionAbility](../reference/apis-ability-kit/capi-modular-object-extension-manager-h.md#oh_abilityruntime_connectmodularobjectextensionability)接口的频率不能超过20次每秒。
+- 同一客户端应用，调用OH_AbilityRuntime_ConnectModularObjectExtensionAbility接口的频率不能超过20次每秒。
 
 ## ModularObjectExtensionAbility配置说明
 
@@ -34,7 +34,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
 | --- | --- | --- | --- |
 | launchMode | 启动模式。决定了ModularObjectExtensionAbility是否允许跨进程启动。 | IN_PROCESS：表示ModularObjectExtensionAbility将在客户端进程中启动。此模式下，客户端与目标Ability必须属于同一应用。<br/>CROSS_PROCESS：表示ModularObjectExtensionAbility允许跨进程启动。 | IN_PROCESS |
 | processMode | 进程模式。决定了多个ModularObjectExtensionAbility实例之间的进程共享策略，仅在launchMode配置为CROSS_PROCESS时生效。 | BUNDLE：表示同一应用下的所有ModularObjectExtensionAbility实例共享一个进程。<br/>TYPE：表示Ability名称相同的ModularObjectExtensionAbility实例共享一个进程。<br/>INSTANCE：表示每个ModularObjectExtensionAbility实例独占一个进程。 | BUNDLE |
-| threadMode | 线程模式。决定了IPC请求的执行线程。<br/>**说明：**<br/>需要使用[OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub](../reference/apis-ability-kit/capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_createipcremotestub)接口创建[OHIPCRemoteStub](../reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)，threadMode才能生效，否则IPC请求将在IPC工作线程池中执行。详见[实现ModularObjectExtensionAbility服务端](#实现modularobjectextensionability服务端)中实现IPC Stub部分。 | BUNDLE：表示同一应用下的所有ModularObjectExtensionAbility实例共享一个线程。<br/>TYPE：表示Ability名称相同的ModularObjectExtensionAbility实例共享一个线程。<br/>INSTANCE：表示每个ModularObjectExtensionAbility实例独占一个线程。 | BUNDLE |
+| threadMode | 线程模式。决定了IPC请求的执行线程。<br/>**说明：**<br/>需要使用OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub接口创建[OHIPCRemoteStub](../reference/apis-ipc-kit/c-apis/capi-ohipcparcel-ohipcremotestub.md)，threadMode才能生效，否则IPC请求将在IPC工作线程池中执行。详见[实现ModularObjectExtensionAbility服务端](#实现modularobjectextensionability服务端)中实现IPC Stub部分。 | BUNDLE：表示同一应用下的所有ModularObjectExtensionAbility实例共享一个线程。<br/>TYPE：表示Ability名称相同的ModularObjectExtensionAbility实例共享一个线程。<br/>INSTANCE：表示每个ModularObjectExtensionAbility实例独占一个线程。 | BUNDLE |
 | isDisabled | 是否禁用该ExtensionAbility。 | true：禁用，只允许本应用连接该ExtensionAbility。<br/>false：不禁用，允许其他应用连接该ExtensionAbility。 | false |
 
 ## 实现ModularObjectExtensionAbility服务端
@@ -226,7 +226,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
     }
     ```
 
-5. 在cpp目录下创建moe_ability.cpp文件，实现[OH_AbilityRuntime_OnNativeExtensionCreate](../reference/apis-ability-kit/capi-extension-ability-h.md#oh_abilityruntime_onnativeextensioncreate)入口函数，在该函数中获取ModularObjectExtensionAbility实例并注册生命周期回调。在OnConnect回调中，创建CalculatorStub并返回[OHIPCRemoteStub](../reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)对象。
+5. 在cpp目录下创建moe_ability.cpp文件，实现[OH_AbilityRuntime_OnNativeExtensionCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)入口函数，在该函数中获取ModularObjectExtensionAbility实例并注册生命周期回调。在OnConnect回调中，创建CalculatorStub并返回[OHIPCRemoteStub](../reference/apis-ipc-kit/c-apis/capi-ohipcparcel-ohipcremotestub.md)对象。
 
     <!-- @[modular_object_extension_moe_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionService/entry/src/main/cpp/moe_ability.cpp) -->
     
@@ -467,7 +467,7 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
 
 ### 断连ModularObjectExtensionAbility
 
-客户端通过[OH_AbilityRuntime_DisconnectModularObjectExtensionAbility](../reference/apis-ability-kit/capi-modular-object-extension-manager-h.md#oh_abilityruntime_disconnectmodularobjectextensionability)断开连接。断连成功后系统会触发[OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback](../reference/apis-ability-kit/capi-connect-options-h.md#oh_abilityruntime_connectoptions_ondisconnectcallback)回调，在回调中清理保存的g_remoteProxy。
+客户端通过OH_AbilityRuntime_DisconnectModularObjectExtensionAbility断开连接。断连成功后系统会触发OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback回调，在回调中清理保存的g_remoteProxy。
 <!-- @[modular_object_extension_disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++

@@ -15,14 +15,14 @@
 
 - 在应用侧，应用开发者可以通过Web组件的同层渲染事件上报接口，感知到H5同层标签的生命周期以及输入事件，进行同层渲染组件的相应业务逻辑处理。
 
-- 在应用侧，应用开发者可以使用ArkUI的NodeContainer等接口，构建H5同层标签对应的同层渲染组件。可支持同层渲染的ArkUI常用组件包括：[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)。具体规格可参见[同层渲染规格小节](#规格约束)。
+- 在应用侧，应用开发者可以使用ArkUI的NodeContainer等接口，构建H5同层标签对应的同层渲染组件。可支持同层渲染的ArkUI常用组件包括：[TextInput](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md), [XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md), [Canvas](../reference/apis-arkui/errorcode-canvas.md), [Video](../reference/apis-arkui/errorcode-video.md), [Web](../reference/apis-arkweb/c-apis/capi-web.md)。具体规格可参见[同层渲染规格小节](#规格约束)。
 
 ### 三方UI框架
 Flutter提供了PlatformView与Texture抽象组件，这些组件可使用系统组件渲染，用于支持Flutter组件功能不足的部分。Weex2.0框架的Camera、Video和Canvas组件可以使用系统组件渲染，以增强功能和性能。
 
 - 在三方框架页面侧，由于Flutter、Weex等三方框架不在操作系统范围内，本文不列举可被同层渲染的三方框架UI组件的范围与使用方式。
 
-- 在应用侧，应用开发者可以使用ArkUI的NodeContainer等接口，构建三方框架同层标签对应的同层渲染组件。可支持同层渲染的ArkUI常用组件包括：[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)。具体规格可参见[同层渲染规格](#规格约束)。
+- 在应用侧，应用开发者可以使用ArkUI的NodeContainer等接口，构建三方框架同层标签对应的同层渲染组件。可支持同层渲染的ArkUI常用组件包括：[TextInput](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md), [XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md), [Canvas](../reference/apis-arkui/errorcode-canvas.md), [Video](../reference/apis-arkui/errorcode-video.md), [Web](../reference/apis-arkweb/c-apis/capi-web.md)。具体规格可参见[同层渲染规格](#规格约束)。
 
 ## 整体架构
 ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和事件命中转发处理。 
@@ -40,17 +40,17 @@ ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和�
 
 **支持的组件范围:**
 
-- 基础组件：[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md), [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md), [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md), [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md), [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md), [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md), [ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md), [DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md), [Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md), [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md), [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md), [ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md), [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md), [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md), [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md), [PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md), [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md), [QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md), [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md), [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md), [ScrollBar](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md), [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md), [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [TextClock](../reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md), [TextTimer](../reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md), [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)
+- 基础组件：AlphabetIndexer, [Blank](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-blank-t.md), [Button](../reference/apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md), [CalendarPicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-calendarpicker.md), [Checkbox](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-checkbox-t.md), [CheckboxGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-checkboxgroup-t.md), ContainerSpan, DataPanel, [DatePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md), [Divider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-divider-t.md), Gauge, Hyperlink, [Image](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-image-t.md), [ImageAnimator](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-imageanimator.md), ImageSpan, [LoadingProgress](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-loadingprogress-t.md), [Marquee](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-marquee-t.md), PatternLock, [Progress](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-progress-t.md), [QRCode](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-qrcode-t.md), [Radio](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-radio-t.md), [Rating](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-rating-t.md), [Refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md), [ScrollBar](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md), [Search](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-search-t.md), [Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md), [Select](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-select-t.md), [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md), [Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md), [TextArea](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textarea-t.md), [TextClock](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textclock-t.md), [TextInput](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md), [TextPicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-textpicker.md), [TextTimer](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-texttimer-t.md), [TimePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-timepicker.md), [Toggle](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-toggle-t.md)
 
-- 容器类组件：[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), [ColumnSplit](../reference/apis-arkui/arkui-ts/ts-container-columnsplit.md), [Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md), [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), [GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md), [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md), [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md), [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [RowSplit](../reference/apis-arkui/arkui-ts/ts-container-rowsplit.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md), [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md), [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md), [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md), [StepperItem](../reference/apis-arkui/arkui-ts/ts-basic-components-stepperitem.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [FlowItem](../reference/apis-arkui/arkui-ts/ts-container-flowitem.md)
+- 容器类组件：[Badge](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-badge-t.md), [Column](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-column-t.md), ColumnSplit, [Counter](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-counter.md), [Flex](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-flex-t.md), [GridCol](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-gridcol-t.md), [GridRow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-gridrow-t.md), [Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md), [GridItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-griditem-t.md), [List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md), [ListItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitem-t.md), [ListItemGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitemgroup-t.md), [RelativeContainer](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-relativecontainer-t.md), [Row](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-row-t.md), RowSplit, [Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md), [Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md), [Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md), [Tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md), TabContent, NodeContainer, SideBarContainer, [Stepper](../reference/apis-arkui/arkui-js/js-components-container-stepper.md), StepperItem, [WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md), [FlowItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-flowitem-t.md)
 
-- 自绘制类组件：[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)
+- 自绘制类组件：[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md), [Canvas](../reference/apis-arkui/errorcode-canvas.md), [Video](../reference/apis-arkui/errorcode-video.md), [Web](../reference/apis-arkweb/c-apis/capi-web.md)
 
-- 命令式自定义绘制节点：[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md), [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md), [Graphics](../reference/apis-arkui/js-apis-arkui-graphics.md), [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), [XComponentNode](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md), [AttributeUpdater](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md), [ArkUI_NativeModule](../reference/apis-arkui/capi-arkui-nativemodule.md)（支持同层渲染的组件范围同ArkTS）
+- 命令式自定义绘制节点：[BuilderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode.md), [ComponentContent](../reference/apis-arkui/arkts-apis/arkts-arkui-componentcontent.md), ContentSlot, [FrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode.md), [Graphics](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics.md), [NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md), [RenderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode.md), [XComponentNode](../reference/apis-arkui/arkts-apis/arkts-arkui-xcomponentnode.md), [AttributeUpdater](../reference/apis-arkui/arkts-apis/arkts-arkui-attributeupdater.md), [ArkUI_NativeModule](../reference/apis-arkui/c-apis/capi-arkui-nativemodule.md)（支持同层渲染的组件范围同ArkTS）
 
 **支持的组件通用属性与事件:**
 
-- 不支持的通用属性：[分布式迁移标识](../reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md)，[特效绘制合并](../reference/apis-arkui/arkui-ts/ts-universal-attributes-use-effect.md)。
+- 不支持的通用属性：分布式迁移标识，特效绘制合并。
 
 - 其他未明确标注不支持的属性与事件及组件能力，均默认支持。
 
@@ -72,41 +72,41 @@ ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和�
 
 **同层标签支持的css属性：** 
 
-display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（支持translate/scale，scale对应参数只支持大于等于0的值。从API版本26.2.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true，支持transform中的rotate和skew属性）
+display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（支持translate/scale，scale对应参数只支持大于等于0的值。从API版本26.2.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#nativeembedoptions)将[EmbedOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-embedoptions-i.md#embedoptions)中的supportTransformRotateAndSkew设为true，支持transform中的rotate和skew属性）
 
  除上面支持的css属性范围，其他的css属性均不保证符合预期。
 
 **同层标签的生命周期管理：** 
-当同层标签生命周期变化时触发[onNativeEmbedLifecycleChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)回调。
+当同层标签生命周期变化时触发[onNativeEmbedLifecycleChange()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedlifecyclechange)回调。
 
 - 支持创建、销毁、位置宽高变化。
 
 - 支持同层组件所在Web页面进入前进后退缓存。
 
 **同层标签的输入事件分发处理：**
-- 支持触摸事件TouchEvent的DOWN/UP/MOVE/CANCEL。支持[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedgestureevent11)（配置触摸事件消费结果），默认为应用侧消费。
+- 支持触摸事件TouchEvent的DOWN/UP/MOVE/CANCEL。支持[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedgestureevent)（配置触摸事件消费结果），默认为应用侧消费。
 
-- 不支持同层标签所在的应用页面缩放和[initialScale](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#initialscale9)、[zoom](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoom)、[zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout)等缩放接口。
+- 不支持同层标签所在的应用页面缩放和[initialScale](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#initialscale)、[zoom](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#zoom)、[zoomIn](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#zoomin)、[zoomOut](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#zoomout)等缩放接口。
 
 - 暂不支持鼠标、键盘、触摸板事件上报。
 
 - 支持默认将鼠标和触摸板左键事件（MousePress/MouseRelease/MouseMOVE）转换为触摸事件（TouchDOWN/TouchUP/TouchMOVE）上报。
 
 **同层标签的可见状态变化：**
-当同层标签可见状态变化时触发[onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedvisibilitychange12)回调。
+当同层标签可见状态变化时触发[onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedvisibilitychange)回调。
 
 - 支持同层标签相对于视口的可见状态上报。
 
-- 默认不支持由于同层标签CSS样式或尺寸变化导致的可见状态变化上报，具体规格参考[onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedvisibilitychange12)。
+- 默认不支持由于同层标签CSS样式或尺寸变化导致的可见状态变化上报，具体规格参考[onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedvisibilitychange)。
 
 **同层渲染&lt;object&gt;标签内嵌param元素状态变化：**
-当同层渲染&lt;object&gt;内嵌标签param元素变化时触发[onNativeEmbedObjectParamChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)回调。
+当同层渲染&lt;object&gt;内嵌标签param元素变化时触发[onNativeEmbedObjectParamChange()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedobjectparamchange)回调。
 
 - 支持上报param元素的增加、修改、删除三种状态变化。
 
 - 接口每次最多上报500个param元素变化信息，超出部分将分多次上报。
 
-- 详细上报信息参考[NativeEmbedParamDataInfo](../reference/apis-arkweb/arkts-basic-components-web-i.md#nativeembedparamdatainfo21)。
+- 详细上报信息参考[NativeEmbedParamDataInfo](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-nativeembedparamdatainfo-i.md#nativeembedparamdatainfo)。
 
 **约束限制：**
 
@@ -114,7 +114,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 - 受GPU限制，同层标签最大高度不超过8000px，最大纹理大小为8000px。
 
-- 开启同层渲染后，Web组件打开的所有Web页面将不支持同步渲染模式[RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12)。
+- 开启同层渲染后，Web组件打开的所有Web页面将不支持同步渲染模式[RenderMode](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-rendermode-e.md#rendermode)。
 
 - Video组件：在非全屏Video变为全屏时，Video组件变为非纹理导出模式，视频播放状态保持延续；恢复为非全屏时，变为纹理导出模式，视频播放状态保持延续。
 
@@ -202,7 +202,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 2. 在应用侧开启同层渲染功能。
 
-   同层渲染功能默认不开启，如果要使用同层渲染的功能，可通过[enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11)来开启。
+   同层渲染功能默认不开启，如果要使用同层渲染的功能，可通过[enableNativeEmbedMode](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#enablenativeembedmode)来开启。
 
    <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
    
@@ -323,9 +323,9 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 5. 监听同层渲染的生命周期变化。
 
-   开启该功能后，当网页中存在同层渲染支持的标签时，ArkWeb内核会触发由[onNativeEmbedLifecycleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)注册的回调函数。
+   开启该功能后，当网页中存在同层渲染支持的标签时，ArkWeb内核会触发由[onNativeEmbedLifecycleChange](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedlifecyclechange)注册的回调函数。
 
-   开发者则需要调用[onNativeEmbedLifecycleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)来监听同层渲染标签的生命周期变化。
+   开发者则需要调用[onNativeEmbedLifecycleChange](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedlifecyclechange)来监听同层渲染标签的生命周期变化。
 
    <!-- @[native_embed_lifecycle_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
    
@@ -393,9 +393,9 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 6. 同层渲染手势事件。
 
-   开启该功能后，每当在同层渲染的区域进行触摸操作时，ArkWeb内核会触发[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedgestureevent11)注册的回调函数。
+   开启该功能后，每当在同层渲染的区域进行触摸操作时，ArkWeb内核会触发[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedgestureevent)注册的回调函数。
 
-   开发者则需要调用[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedgestureevent11)来监听同层渲染区域的手势事件。
+   开发者则需要调用[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedgestureevent)来监听同层渲染区域的手势事件。
 
    <!-- @[native_embed_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
    
@@ -424,12 +424,12 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 7. 同层渲染鼠标事件
 
-   开启该功能后，在同层渲染的区域进行下述动作时，ArkWeb内核会触发[onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20)注册的回调函数：
+   开启该功能后，在同层渲染的区域进行下述动作时，ArkWeb内核会触发[onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedmouseevent)注册的回调函数：
 
    - 使用鼠标左键、中键、右键进行点击或长按。
    - 使用触摸板进行对应鼠标左键、中键、右键点击长按的操作。
 
-   开发者则需要调用[onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20)来监听同层渲染区域的鼠标事件。
+   开发者则需要调用[onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onnativeembedmouseevent)来监听同层渲染区域的鼠标事件。
 
    <!-- @[native_embed_mouse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
    
@@ -1620,7 +1620,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 
 - transform rotate/skew变换导致
 
-  同层标签应用CSS transform中的rotate/skew变换后，画面会出现拉伸变形，从API版本26.2.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true解决。
+  同层标签应用CSS transform中的rotate/skew变换后，画面会出现拉伸变形，从API版本26.2.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#nativeembedoptions)将[EmbedOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-embedoptions-i.md#embedoptions)中的supportTransformRotateAndSkew设为true解决。
 
 - 自定义组件宽高未指定为同层渲染标签的宽高
 
@@ -1644,11 +1644,11 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
   ```
 
 ### 如何将同层渲染组件捕获到的事件透传到Web前端？
-同层渲染手势事件通过[setGestureEventResult()](../reference/apis-arkweb/arkts-basic-components-web-EventResult.md#setgestureeventresult14)设置手势事件消费结果，可以选择系统组件侧或ArkWeb侧消费手势事件。如果要实现系统组件侧和ArkWeb侧同时消费手势事件，可以在[setGestureEventResult()](../reference/apis-arkweb/arkts-basic-components-web-EventResult.md#setgestureeventresult14)中将stopPropagation设置为false，即系统组件侧消费的同时可以将手势事件向上冒泡给ArkWeb。
+同层渲染手势事件通过[setGestureEventResult()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-eventresult-c.md#setgestureeventresult)设置手势事件消费结果，可以选择系统组件侧或ArkWeb侧消费手势事件。如果要实现系统组件侧和ArkWeb侧同时消费手势事件，可以在[setGestureEventResult()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-eventresult-c.md#setgestureeventresult)中将stopPropagation设置为false，即系统组件侧消费的同时可以将手势事件向上冒泡给ArkWeb。
 
 ### 同层渲染页面显示该插件不支持该如何解决？
 
-- 同层渲染开关[enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11)未开启
+- 同层渲染开关[enableNativeEmbedMode](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#enablenativeembedmode)未开启
 
   使用同层渲染技术需要显式开启同层渲染开关
   ```ts

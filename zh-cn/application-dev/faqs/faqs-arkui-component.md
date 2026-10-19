@@ -14,7 +14,7 @@
 
 **参考链接**
 
-[自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 自定义弹窗中的变量如何传递给页面(API 9)
@@ -168,7 +168,7 @@
 
 **参考链接**
 
-[组件区域变化事件](../reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md)，[点击事件](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)，[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)
+[组件区域变化事件](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-drag-event.md)，点击事件，触摸事件
 
 
 ## 如何一键清空TextInput、TextArea组件内容(API 9)
@@ -224,7 +224,7 @@ struct Index {
 
 **参考链接**
 
-[自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 如何隐藏容器组件的溢出内容(API 9)
@@ -239,7 +239,7 @@ struct Index {
 
 **参考链接**
 
-[形状裁剪](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md)
+形状裁剪
 
 
 ## 自定义弹窗大小如何自适应内容(API 9)
@@ -256,7 +256,7 @@ struct Index {
 
 **参考链接**
 
-[自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 如何理解自定义弹窗中的gridCount参数(API 9)
@@ -267,7 +267,7 @@ gridCount参数是指弹窗宽度占栅格列数的个数。系统把窗口宽�
 
 **参考链接**
 
-[自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## 如何去除自定义弹窗的白色背景(API 9)
@@ -286,7 +286,7 @@ gridCount参数是指弹窗宽度占栅格列数的个数。系统把窗口宽�
 
 **参考链接**
 
-[自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 
 ## TextInput组件密码模式下，右边的眼睛图标能否支持自定义(API 9)
@@ -301,7 +301,7 @@ TextInput组件设置type为InputType.Password时，右侧出现眼睛图标，�
 
 **参考链接**
 
-[TextInput组件](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)
+[TextInput组件](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md)
 
 
 ## TextInput的onSubmit事件如何使用(API 9)
@@ -316,7 +316,7 @@ onSubmit事件在外接键盘或软键盘回车时触发该回调，回调的参
 
 **参考链接**
 
-[TextInput组件](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)
+[TextInput组件](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md)
 
 
 ## TextInput在聚焦时如何使光标回到起点(API 9)
@@ -356,7 +356,7 @@ struct TextInputDemo {
 
 **参考链接**
 
-[TextInput组件](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)
+[TextInput组件](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md)
 
 
 ## 如何获取可滚动组件的当前滚动偏移量(API 9)
@@ -373,7 +373,7 @@ struct TextInputDemo {
 
 **参考链接**
 
-[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)
+[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)
 
 
 ## 如何实现文本竖向排列(API 9)
@@ -578,7 +578,7 @@ struct VideoCreateComponent {
 
 **参考链接**
 
-[Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md)
+[Video](../reference/apis-arkui/errorcode-video.md)
 
 ## 如何设置组件不同状态下的样式(API 9)
 
@@ -638,7 +638,7 @@ struct StyleExample {
 
 **参考链接**
 
-[多态样式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md)
+[多态样式](../reference/apis-arkui/arkui-js/js-components-custom-style.md)
 
 ## Scroll内Flex加宽高与滑动冲突(API 9)
 
@@ -712,7 +712,7 @@ struct MyComponent {
 
 **参考链接**
 
-焦点控制：[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)
+焦点控制：[焦点控制](../reference/apis-arkui/arkts-apis/arkts-arkui-focus.md)
 
 
 ## SideBarContainer如何设置controlButton属性(API 9)
@@ -785,7 +785,7 @@ Canvas组件最终的显示内容分两种，一种是组件通用属性的绘�
 
 **参考链接**
 
-[CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)
+[CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)
 
 ## 怎么解决列表组件List在不设置高度的情况下，会出现滑动不到底的问题(API 10)
 
@@ -799,7 +799,7 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **参考链接**
 
-[尺寸设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)
+尺寸设置
 
 ## 如何实现瀑布流滑动时，数据的无限加载和显示(API 10)
 
@@ -821,7 +821,7 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **参考链接**
 
-[自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+自定义弹窗
 
 ## 当前ArkUI-X的支持进展如何，有无明确路线图(API 10)
 
@@ -880,9 +880,9 @@ Resource - 资源引用类型，引入系统资源或者应用资源中的尺寸
 
 **解决措施**
 
-当Surface模式下的XComponent组件其内容与组件尺寸不一致时，可通过设置[renderFit](../reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md#renderfit18)属性，以调整绘制内容在组件尺寸范围内的布局方式，例如拉伸、居中、等比缩放等。
+当Surface模式下的XComponent组件其内容与组件尺寸不一致时，可通过设置[renderFit](../reference/apis-arkui/arkts-apis/arkts-arkui-renderfit-e.md#renderfit)属性，以调整绘制内容在组件尺寸范围内的布局方式，例如拉伸、居中、等比缩放等。
 
-在API version 18之前，Surface模式下的XComponent组件的[renderFit](../reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md#renderfit18)属性仅支持设置为RenderFit.RESIZE_FILL；如果设置为其他属性值可能会在部分机型出现显示异常。如果确实需要设置RESIZE_FILL之外的属性值，可以通过升级至API version 18或在XComponent组件的id字段中包含"RenderFitSurface"关键字来修正显示效果（在API version 18前）。
+在API version 18之前，Surface模式下的XComponent组件的[renderFit](../reference/apis-arkui/arkts-apis/arkts-arkui-renderfit-e.md#renderfit)属性仅支持设置为RenderFit.RESIZE_FILL；如果设置为其他属性值可能会在部分机型出现显示异常。如果确实需要设置RESIZE_FILL之外的属性值，可以通过升级至API version 18或在XComponent组件的id字段中包含"RenderFitSurface"关键字来修正显示效果（在API version 18前）。
 
 示例代码如下：
 

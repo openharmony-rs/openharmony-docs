@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
+ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-editormenuoptions-i.md#builder)，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
 
 \@Builder装饰的函数也称为“自定义构建函数”。
 
@@ -14,7 +14,7 @@ ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/a
 
 @Builder装饰器和[@Component装饰器](./arkts-create-custom-components.md#component)在功能和使用方式上的主要差异：
 
-1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
+1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-js-lite/js-lite-framework-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
 
 2. 在ArkUI框架中，@Component装饰器作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。该装饰器不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
 
@@ -235,7 +235,7 @@ struct ParameterValue {
 
 ## 限制条件
 
-1. \@Builder装饰的函数内部在没有使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)时不允许修改参数值，修改不会触发UI刷新。若[按引用传递参数](#按引用传递参数)且仅传入一个参数时，修改参数内部的属性会抛出运行时错误。使用MutableBinding可以帮助开发者在\@Builder装饰的函数内部修改参数值，请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
+1. \@Builder装饰的函数内部在没有使用MutableBinding时不允许修改参数值，修改不会触发UI刷新。若[按引用传递参数](#按引用传递参数)且仅传入一个参数时，修改参数内部的属性会抛出运行时错误。使用MutableBinding可以帮助开发者在\@Builder装饰的函数内部修改参数值，请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
 
 2. @Builder按引用传递传入一个参数时，可以触发动态渲染UI，请参考[按引用传递参数](#按引用传递参数)。
 
@@ -250,7 +250,7 @@ struct ParameterValue {
 
 ### 自定义组件内使用自定义构建函数
 
-创建私有的`@Builder`函数，在`Column`中使用`this.builder()`调用。通过[`aboutToAppear`](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数和按钮的点击事件更新`builderValue`，实现UI的动态渲染。
+创建私有的`@Builder`函数，在`Column`中使用`this.builder()`调用。通过[`aboutToAppear`](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoappear)生命周期函数和按钮的点击事件更新`builderValue`，实现UI的动态渲染。
 
 <!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) --> 
 
@@ -463,7 +463,7 @@ struct ParentSample {
 
 ### 将@Builder装饰的函数当作CustomBuilder类型使用
 
-当参数类型为[CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
+当参数类型为[CustomBuilder](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md#custombuilder)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
 
 全局`@Builder`函数当作`CustomBuilder`类型传递时需要绑定this上下文，开发者可以直接调用全局`@Builder`函数，编译工具链会自动生成绑定this上下文的代码。
 
@@ -970,7 +970,7 @@ struct ReusableChildTwoPage {
 
 ### \@Builder支持状态变量刷新
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#makebinding)。
 
 <!-- @[builder_supports_state_variable_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderSupports.ets) --> 
 
@@ -1678,7 +1678,7 @@ struct MakeBindingTest1 {
   }
 }
 ```
-使用规格详见状态管理API文档中的[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)。
+使用规格详见状态管理API文档中的MutableBinding。
 
 【正例】
 <!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->
@@ -1737,7 +1737,7 @@ struct MakeBindingTest2 {
 
 ### 在@Builder装饰的函数内部修改入参内容
 
-不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)。
+不使用MutableBinding的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)。
 
 【反例】
 <!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->
@@ -1807,7 +1807,7 @@ struct ParentMod1 {
   }
 }
 ```
-正确使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)可以帮助开发者在\@Builder装饰的函数内部修改参数值。
+正确使用MutableBinding可以帮助开发者在\@Builder装饰的函数内部修改参数值。
 
 【正例】
 <!-- @[changing_input_parameters_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingCorrectUsage.ets) -->

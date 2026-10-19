@@ -16,7 +16,7 @@ AVRecorder支持开发音视频录制，集成了音频捕获、音频编码、�
 
 ![Recording status change](figures/video-recording-status-change.png)
 
-状态的详细说明请参考[OH_AVRecorder_State](../../reference/apis-media-kit/capi-avrecorder-base-h.md#oh_avrecorder_state)。
+状态的详细说明请参考OH_AVRecorder_State。
 
 
 ## 申请权限
@@ -41,16 +41,16 @@ AVRecorder支持开发音视频录制，集成了音频捕获、音频编码、�
 > 文件的创建与存储，请参考[应用文件访问与管理](../../file-management/app-file-access.md)，默认存储在应用的沙箱路径之下，如需存储至图库，请使用[安全控件保存媒体资源](../medialibrary/photoAccessHelper-savebutton.md)对沙箱内文件进行存储。
 
 
-开发者通过引入[avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md)、[avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用视频录制相关API。
+开发者通过引入[avrecorder.h](../../reference/apis-media-kit/c-apis/capi-avrecorder-h.md)、[avrecorder_base.h](../../reference/apis-media-kit/c-apis/capi-avrecorder-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/c-apis/capi-native-averrors-h.md)头文件，使用视频录制相关API。
 
-AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/capi-avrecorder.md)。
+AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/c-apis/capi-avrecorder.md)。
 
 在CMake脚本中链接动态库。
 ```C++
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[native_avformat.h](../../reference/apis-avcodec-kit/c-apis/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -60,7 +60,7 @@ target_link_libraries(entry PUBLIC libavrecorder.so)
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
-开发者通过引入[application_context.h](../../reference/apis-ability-kit/capi-application-context-h.md)头文件，使用程序框架服务相关API。
+开发者通过引入[application_context.h](../../reference/apis-ability-kit/c-apis/capi-application-context-h.md)头文件，使用程序框架服务相关API。
 ```c++
 #include <AbilityKit/ability_runtime/application_context.h>
 ```

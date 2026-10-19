@@ -79,7 +79,7 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 2. Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用。在其他进程（包括子进程）中使用可能会出现功能异常，具体可参考[在子进程或非驱动Ability中调用DDK的C-API失败](./externaldevice-faqs.md#在子进程或非驱动ability中调用ddk的c-api失败)。
 
-3. 针对 DriverExtensionAbility接口调用限制，详细请参考 API 中的[约束限制](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#约束限制)。
+3. 针对 DriverExtensionAbility接口调用限制，详细请参考 API 中的约束限制。
 
 <!--RP1--><!--RP1End-->
 
@@ -89,10 +89,10 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 | 名称 | 作用 | 
 | --------- | --------- |
-| PerformanceAnalysisKit | 引入[hilog](../../reference/apis-performance-analysis-kit/js-apis-hilog.md)用于日志打印。| 
-| BasicServicesKit       | 引入[BusinessError](../../reference/apis-basic-services-kit/js-apis-base.md#businesserror)用于捕获错误信息。 |
-| IPCKit                 | 引入[rpc](../../reference/apis-ipc-kit/js-apis-rpc.md)用于驱动与客户端IPC（Inter-Process Communication）通信。|
-| AbilityKit             | 引入[@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md)用于生命周期管理。|
+| PerformanceAnalysisKit | 引入[hilog](../../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hilog.md)用于日志打印。| 
+| BasicServicesKit       | 引入[BusinessError](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md#businesserror)用于捕获错误信息。 |
+| IPCKit                 | 引入[rpc](../../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc.md)用于驱动与客户端IPC（Inter-Process Communication）通信。|
+| AbilityKit             | 引入[@ohos.application.Want (Want)](../../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)用于生命周期管理。|
 
 ## 驱动应用规格说明
 1. 驱动应用定义

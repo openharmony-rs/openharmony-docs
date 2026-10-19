@@ -368,9 +368,9 @@ LazyForEach数据懒加载可以通过设置cachedCount属性来指定缓存数�
 
 [LazyForEach:数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)
 
-[容器组件：Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)
+[容器组件：Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md)
 
-[基础组件：Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)
+[基础组件：Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)
 
 ## 示例代码
 

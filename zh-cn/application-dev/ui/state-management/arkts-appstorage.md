@@ -12,7 +12,7 @@ AppStorage是与应用进程绑定的全局UI状态存储中心，由UI框架在
 
 作为应用的“中枢”，AppStorage是[持久化数据PersistentStorage](arkts-persiststorage.md)和[环境变量Environment](arkts-environment.md)与UI交互的中转桥梁。其核心价值在于为开发者提供跨ability的大范围UI状态数据共享能力。
 
-AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合[AppStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合[AppStorage API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-appstorage-c.md#appstorage)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
 
 > **说明：**
 >
@@ -24,13 +24,13 @@ AppStorage提供了API接口，允许开发者在自定义组件外手动触发A
 
 AppStorage是在应用启动时创建的单例，用于提供应用状态数据的中心存储。这些状态数据在应用级别可访问。AppStorage在应用运行过程中保留其属性。
 
-AppStorage中的属性通过唯一的字符串类型属性名（key）访问，支持与UI组件同步，并可在应用业务逻辑中被访问。其支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
+AppStorage中的属性通过唯一的字符串类型属性名（key）访问，支持与UI组件同步，并可在应用业务逻辑中被访问。其支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)实例间的UI状态数据共享。
 
 AppStorage中的属性可以被双向同步，并具有不同的功能，比如数据持久化（详见[PersistentStorage](arkts-persiststorage.md)）。这些UI状态是通过业务逻辑实现，与UI解耦，如果希望这些UI状态在UI中使用，需要用到[@StorageProp](#storageprop)和[@StorageLink](#storagelink)。
 
 ## \@StorageProp
 
-[\@StorageProp](../../reference/apis-arkui/arkui-ts/ts-state-management-storageprop.md#storageprop)与AppStorage中对应的属性建立单向数据同步。
+[\@StorageProp](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-storageprop-d.md#storageprop)与AppStorage中对应的属性建立单向数据同步。
 
 > **说明：**
 >
@@ -82,7 +82,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 ## \@StorageLink
 
-[\@StorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-storagelink.md#storagelink)与AppStorage中对应的属性建立双向数据同步。
+[\@StorageLink](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-storagelink-d.md#storagelink)与AppStorage中对应的属性建立双向数据同步。
 
 > **说明：**
 >
@@ -158,9 +158,9 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 3. AppStorage与[PersistentStorage](arkts-persiststorage.md)以及[Environment](arkts-environment.md)配合使用时，需要注意以下几点：
 
-   (1) 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
+   (1) 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkts-apis/arkts-arkui-persistentstorage-c.md#persistprop)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
 
-   (2) 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
+   (2) 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkts-apis/arkts-arkui-environment-c.md#envprop)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
 
    ```ts
    AppStorage.setOrCreate('languageCode', 'en');
@@ -168,7 +168,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
    let result = Environment.envProp('languageCode','en'); 
    ```
 
-4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用[emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md)方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
+4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用[emitter](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-events-emitter.md)方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
 
 5. AppStorage同一进程内共享，UIAbility和<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd-->是两个进程，所以在<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd-->中不共享主进程的AppStorage。
 
@@ -839,7 +839,7 @@ export struct TapImage {
 }
 ```
 
-相比借助@StorageLink的双向同步机制实现事件通知，开发者可以使用[emit](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteremit)订阅某个事件并接收事件回调的方式来减少开销，增强代码的可读性。
+相比借助@StorageLink的双向同步机制实现事件通知，开发者可以使用[emit](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-emit-f.md#emit)订阅某个事件并接收事件回调的方式来减少开销，增强代码的可读性。
 
 > **说明：**
 >

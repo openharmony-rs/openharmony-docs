@@ -66,7 +66,7 @@ libnet_trafficfilter.so
 
 1. 在源文件中编写调用该API的代码，实现重定向器的创建。
 
-   使用[OH_TrafficFilter_CreateRedirector](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_createredirector)接口创建流量重定向实例。`group_id`用于标识重定向器分组，`priority`控制规则优先级。
+   使用OH_TrafficFilter_CreateRedirector接口创建流量重定向实例。`group_id`用于标识重定向器分组，`priority`控制规则优先级。
 
    <!-- @[create_redirector](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -154,7 +154,7 @@ libnet_trafficfilter.so
 
 2. 添加重定向规则。规则中可配置源/目的IP、端口、接口、UID范围以及代理服务器地址。
 
-   使用[OH_TrafficFilter_AddRedirectRule](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)接口向重定向器添加规则。`OH_TrafficFilter_RedirectRule`中`protocol`固定为TCP，`hookPoint`（Netfilter钩子点）仅支持`PREROUTING`和`OUTPUT`，`proxy_ip`与`proxy_port`指定代理服务器地址。
+   使用OH_TrafficFilter_AddRedirectRule接口向重定向器添加规则。`OH_TrafficFilter_RedirectRule`中`protocol`固定为TCP，`hookPoint`（Netfilter钩子点）仅支持`PREROUTING`和`OUTPUT`，`proxy_ip`与`proxy_port`指定代理服务器地址。
 
    <!-- @[add_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -208,8 +208,8 @@ libnet_trafficfilter.so
 3. 清除规则并销毁重定向器。
 
    测试完成后，建议先清除规则，再销毁重定向器，释放相关资源。
-   - 使用[OH_TrafficFilter_ClearRedirectRule](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_clearredirectrule)清除所有重定向规则。
-   - 使用[OH_TrafficFilter_DestroyRedirector](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_destroyredirector)销毁重定向器。
+   - 使用OH_TrafficFilter_ClearRedirectRule清除所有重定向规则。
+   - 使用OH_TrafficFilter_DestroyRedirector销毁重定向器。
 
    <!-- @[clear_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -299,7 +299,7 @@ libnet_trafficfilter.so
 
 ### 查询连接所属进程
 
-[OH_TrafficFilter_QueryProcess](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess) 可根据五元组（源IP、目的IP、源端口、目的端口、协议）查询发起该连接的进程信息，常用于在重定向前识别流量归属。
+OH_TrafficFilter_QueryProcess 可根据五元组（源IP、目的IP、源端口、目的端口、协议）查询发起该连接的进程信息，常用于在重定向前识别流量归属。
 
 <!-- @[query_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
 

@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Button是按钮组件，通常用于响应用户的点击操作，其类型包括胶囊按钮、圆形按钮、普通按钮、圆角矩形按钮。Button作为容器使用时可以通过添加子组件实现包含文字、图片等元素的按钮。具体用法请参考[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)。
+Button是按钮组件，通常用于响应用户的点击操作，其类型包括胶囊按钮、圆形按钮、普通按钮、圆角矩形按钮。Button作为容器使用时可以通过添加子组件实现包含文字、图片等元素的按钮。具体用法请参考[Button](../reference/apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md)。
 
 
 ## 创建按钮
@@ -15,7 +15,7 @@ Button是按钮组件，通常用于响应用户的点击操作，其类型包�
 Button通过调用接口来创建，接口调用有以下两种形式：
 
 
-- 通过label和[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建不包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
+- 通过label和ButtonOptions创建不包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
 
   ```ts
   Button(label?: ResourceStr, options?: { type?: ButtonType, stateEffect?: boolean })
@@ -36,7 +36,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   ![button-code](figures/button-code.png)
 
 
-- 通过[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
+- 通过ButtonOptions创建包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
 
   ```ts
   Button(options?: {type?: ButtonType, stateEffect?: boolean})
@@ -113,7 +113,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
 - 圆角矩形按钮。
 
-  当[controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11)为NORMAL时，默认圆角大小为20vp，[controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11)为SMALL时，圆角大小为14vp，支持通过borderRadius属性重新设置圆角。
+  当[controlSize](../reference/apis-arkui/arkts-components/arkts-arkui-button-comp-attribute.md#controlsize)为NORMAL时，默认圆角大小为20vp，[controlSize](../reference/apis-arkui/arkts-components/arkts-arkui-button-comp-attribute.md#controlsize)为SMALL时，圆角大小为14vp，支持通过borderRadius属性重新设置圆角。
 
   <!-- @[create_rounded_rectangle_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
   

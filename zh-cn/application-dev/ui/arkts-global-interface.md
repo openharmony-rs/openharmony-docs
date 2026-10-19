@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文主要介绍了多UI实例涉及的概念，以及使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的方法替换全局接口的原因，并提供了相应的替换方案。
+本文主要介绍了多UI实例涉及的概念，以及使用[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)的方法替换全局接口的原因，并提供了相应的替换方案。
 
 ## 基本概念
 
@@ -50,7 +50,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 
 ## UIContext接口替换全局接口的关系
 
-部分多实例替代接口如下表所示，UIContext实例支持的全量接口以[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中描述为准。
+部分多实例替代接口如下表所示，UIContext实例支持的全量接口以[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中描述为准。
 
 |               全局接口                |               替代接口                |            说明            |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
@@ -82,11 +82,11 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 
 ## 常见UIContext接口替换全局接口的场景
 
-以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API版本20开始生效，UIContext.resolveUIContext()、UIContext.getCallingScopeUIContext()、UIContext.getLastFocusedUIContext()、UIContext.getLastForegroundUIContext()、UIContext.getAllUIContexts()以及UIContext()构造函数从API版本22开始生效，其余接口从API版本15开始生效。
+以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkts-apis/arkts-arkui-units.md)接口为例。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#isavailable)从API版本20开始生效，UIContext.resolveUIContext()、UIContext.getCallingScopeUIContext()、UIContext.getLastFocusedUIContext()、UIContext.getLastForegroundUIContext()、UIContext.getAllUIContexts()以及UIContext()构造函数从API版本22开始生效，其余接口从API版本15开始生效。
 
 ### 通过自定义组件获取UIContext
 
-当全局接口在[自定义组件](./ui-js-custom-components.md)的成员方法或组件生命周期方法等其他作用域中，且this指向自定义组件时，可以通过调用自定义组件的成员方法[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)来获取UIContext对象。
+当全局接口在[自定义组件](./ui-js-custom-components.md)的成员方法或组件生命周期方法等其他作用域中，且this指向自定义组件时，可以通过调用自定义组件的成员方法[getUIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getuicontext)来获取UIContext对象。
 
 >**说明：**
 > 1. 在异步调用的回调方法中使用getUIContext，或者该接口的起始调用不在当前页面时，可能会在自定义组件销毁后调用接口，从而导致返回undefined。
@@ -158,12 +158,12 @@ struct Index {
 
 ### 通过窗口对象获取UIContext对象
 
-开发者可以通过窗口对象的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext对象。
+开发者可以通过窗口对象的[getUIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getuicontext)方法获取UIContext对象。
 
 >**说明：**
 >
 >1. 必须在UI实例创建完成后，才可以通过窗口对象的getUIContext方法获取UIContext。建议在loadContent的成功回调中调用，以确保UI实例准备就绪。
->2. vp2px/px2vp在UI实例未创建时会获取默认值进行计算，替换时可考虑获取当前默认的[Display](../reference/apis-arkui/js-apis-display.md#display)对象的逻辑像素密度进行计算结果，可参考[像素单位转换接口替换为UIContext接口](#像素单位转换接口替换为uicontext接口)。
+>2. vp2px/px2vp在UI实例未创建时会获取默认值进行计算，替换时可考虑获取当前默认的[Display](../reference/apis-arkui/arkts-apis/arkts-arkui-display-display-i-sys.md#display)对象的逻辑像素密度进行计算结果，可参考[像素单位转换接口替换为UIContext接口](#像素单位转换接口替换为uicontext接口)。
 
 使用全局接口：
 <!--deprecated_code_no_check-->
@@ -267,7 +267,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 ### 通过静态方法获取UIContext对象
-从API版本22开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)获取UIContext对象。
+从API版本22开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#resolveuicontext)获取UIContext对象。
 
 >**说明：**
 > - 优先通过自定义组件或者窗口对象获取UIContext，通过这两种方式获取不受调用作用域的影响，且获取到的是可预期的UIContext实例。
@@ -436,7 +436,7 @@ struct Index {
 }
 ```
 
-[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
+[resolveUIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#resolveuicontext)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
 
 <!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->  
 
@@ -850,7 +850,7 @@ struct Index {
 
 ### 执行绑定UI实例的闭包
 
-对于UIContext中没有提供替代的接口（例如CalendarPickerDialog），或者开发者自定义实现的业务行为与多实例相关，需要和实例绑定时（例如，一个代码段），可以使用UIContext对象[runScopedTask](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)方法执行闭包。
+对于UIContext中没有提供替代的接口（例如CalendarPickerDialog），或者开发者自定义实现的业务行为与多实例相关，需要和实例绑定时（例如，一个代码段），可以使用UIContext对象[runScopedTask](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask)方法执行闭包。
 
 使用UIContext接口替换：
 
@@ -894,7 +894,7 @@ struct CalendarPickerDialogPage {
 
 ### 像素单位转换接口替换为UIContext接口
 
-因为不同的UI实例可以有不同的转换系数，[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
+因为不同的UI实例可以有不同的转换系数，[像素单位](../reference/apis-arkui/arkts-apis/arkts-arkui-units.md)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
 
 | 像素单位转换接口调用时机                                     | 接口行为                                                     | 可能与预期不一致的场景                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -904,7 +904,7 @@ struct CalendarPickerDialogPage {
 | 多Ability或多窗口的多UI实例场景，在loadContent或setUIContent调用之后，但在其他异步回调中调用。 | 无法根据UI跟踪的调用域（Scope）找到具体的UI实例，也无法确定唯一实例。接口按照最近获焦、最近前台、最近创建的优先级依次查找匹配的UI实例，并根据UI实例关联的信息进行计算。 | 多实例场景可能存在作用实例和预期不一致。如预期以主窗所处屏幕的逻辑像素密度计算结果，实际以子窗所处屏幕的像素密度计算结果。 |
 | 所有的窗口销毁，无UI实例后。                                 | 没有合适的UI实例。<br/>px2vp/vp2px使用默认屏幕的density进行换算，返回结果。<br/>fp2px/px2fp/lpx2px/px2lpx返回undefined。 | px2vp/vp2px在多屏场景下可能与预期不一致。如预期以扩展屏的逻辑像素密度计算结果，实际以主屏的像素密度计算结果。 |
 
-在实际的开发场景中，全局接口可能在UI实例创建前被调用。此时，在替换vp2px/px2vp时，开发者可以通过[display.getDefaultDisplaySync](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取当前默认屏幕的逻辑像素密度计算结果；替换fp2px/px2fp/lpx2px/px2lpx接口时，可以直接返回undefined，以保证行为的一致性。
+在实际的开发场景中，全局接口可能在UI实例创建前被调用。此时，在替换vp2px/px2vp时，开发者可以通过[display.getDefaultDisplaySync](../reference/apis-arkui/arkts-apis/arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync)获取当前默认屏幕的逻辑像素密度计算结果；替换fp2px/px2fp/lpx2px/px2lpx接口时，可以直接返回undefined，以保证行为的一致性。
 
 使用全局接口：
 <!--deprecated_code_no_check-->
@@ -976,7 +976,7 @@ export class PixelUtils {
 
 ### 获取Ability的Context
 
-[getContext](../reference/apis-arkui/js-apis-getContext.md)接口用于在UI页面中获取对应UI实例所属Ability的Context，因此依赖于UI实例。
+getContext接口用于在UI页面中获取对应UI实例所属Ability的Context，因此依赖于UI实例。
 
 | getContext接口的调用时机                                     | 接口行为                                                     | 可能与预期不一致的场景                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -1120,7 +1120,7 @@ hilog.info(DOMAIN, 'testTag', `The context is ${context}`);
 
 ### LocalStorage替换为UIContext的接口
 
-LocalStorage是页面级的UI状态存储，通过@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。使用全局接口时，开发者使用[getShared](../reference/apis-arkui/arkui-ts/ts-state-management.md#getshareddeprecated)向@Entry装饰器传递LocalStorage对象。使用UIContext接口后，无法直接获取UIContext对象，可以将[EntryOptions](../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entryoptions10)的useSharedStorage参数设置为true，以使用共享的LocalStorage实例对象。
+LocalStorage是页面级的UI状态存储，通过@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。使用全局接口时，开发者使用[getShared](../reference/apis-arkui/arkts-apis/arkts-arkui-localstorage-c.md#getshared)向@Entry装饰器传递LocalStorage对象。使用UIContext接口后，无法直接获取UIContext对象，可以将[EntryOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-entryoptions-i.md#entryoptions)的useSharedStorage参数设置为true，以使用共享的LocalStorage实例对象。
 
 使用全局接口，该接口已经废弃，推荐使用下方的UIContext接口替换：
 

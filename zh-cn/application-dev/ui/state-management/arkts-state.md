@@ -8,7 +8,7 @@
 
 被状态变量装饰器装饰的变量称为状态变量，使普通变量具备状态属性。当状态变量改变时，会触发其直接绑定的UI组件渲染更新。
 
-在状态变量相关装饰器中，[@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state.md#state)是最基础的装饰器，也是大部分状态变量的数据源。
+在状态变量相关装饰器中，[@State](../../reference/apis-arkui/arkts-apis/arkts-arkui-floatview-floatviewstatechangeinfo-i.md#state)是最基础的装饰器，也是大部分状态变量的数据源。
 
 在阅读\@State文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
@@ -32,7 +32,7 @@
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
 | 同步类型           | 不与父组件中任何类型的变量同步。                             |
-| 允许装饰的变量类型 | object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@State支持联合类型实例](#state支持联合类型实例)。<br/>支持类型的场景见[观察变化](#观察变化)。|
+| 允许装饰的变量类型 | object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkts-apis/arkts-arkui-length-t.md#length)、[ResourceStr](../../reference/apis-arkui/arkts-apis/arkts-arkui-resourcestr-t.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md#resourcecolor)类型以及这些类型的联合类型，示例见[@State支持联合类型实例](#state支持联合类型实例)。<br/>支持类型的场景见[观察变化](#观察变化)。|
 | 不允许装饰的变量类型 | 不允许装饰Function类型。      |
 | 被装饰变量的初始值 | 必须本地初始化。      |
 
@@ -191,7 +191,7 @@
 
 ### 装饰简单类型的变量
 
-以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起[Button](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的刷新：
+以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起[Button](../../reference/apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md)组件的刷新：
 
 - 当状态变量count改变时，只能查询到Button组件与之关联。
 

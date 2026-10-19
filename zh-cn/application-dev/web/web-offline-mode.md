@@ -8,7 +8,7 @@
 
 Web组件能够实现在不同窗口的组件树上进行挂载或移除操作，这一能力使得开发者可以预先创建Web组件，从而实现性能优化。例如，Tab页为Web组件时，页面预先渲染，便于即时显示。
 
-离线Web组件基于自定义占位组件[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)实现。基本原理是构建支持命令式创建的Web组件，此类组件创建后不会立即挂载到组件树中，状态为Hidden和Inactive，因此不会立即对用户呈现。开发者可以在后续使用中按需动态挂载这些组件，以实现更灵活的使用方式。
+离线Web组件基于自定义占位组件NodeContainer实现。基本原理是构建支持命令式创建的Web组件，此类组件创建后不会立即挂载到组件树中，状态为Hidden和Inactive，因此不会立即对用户呈现。开发者可以在后续使用中按需动态挂载这些组件，以实现更灵活的使用方式。
 
 使用离线Web组件可以预启动渲染进程和预渲染Web页面。
 
@@ -17,7 +17,7 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 
 ## 整体架构
 
-如下图所示，在需要离屏创建Web组件时，定义一个自定义组件以封装Web组件，此Web组件在离线状态下被创建，封装于无状态的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)节点中，并与相应的[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)组件绑定。Web组件在后台预渲染完毕后，当需要展示时，通过[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)将其挂载到ViewTree的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)中，即与对应的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)组件绑定，即可挂载上树并显示。
+如下图所示，在需要离屏创建Web组件时，定义一个自定义组件以封装Web组件，此Web组件在离线状态下被创建，封装于无状态的NodeContainer节点中，并与相应的[NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md)组件绑定。Web组件在后台预渲染完毕后，当需要展示时，通过[NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md)将其挂载到ViewTree的NodeContainer中，即与对应的NodeContainer组件绑定，即可挂载上树并显示。
 
 ![web-offline-mode](figures/web-offline-mode.png)
 
@@ -359,7 +359,7 @@ struct Index2 {
 >
 > 1. 预渲染Web页面时，需要明确加载的资源。
 > 2. 由于该方案会将不可见的后台Web设置为Active状态，建议不要预渲染包含自动播放音视频的页面。应用开发者请自行检查和管理页面行为。
-> 3. 预渲染的网页会在后台不断进行渲染，建议在预渲染完成后立即停止渲染，以防止发热和功耗问题。可以参考以下示例，使用 [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) 来确定停止时机，该接口适用于http和https网页。
+> 3. 预渲染的网页会在后台不断进行渲染，建议在预渲染完成后立即停止渲染，以防止发热和功耗问题。可以参考以下示例，使用 [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onfirstmeaningfulpaint) 来确定停止时机，该接口适用于http和https网页。
 
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -629,7 +629,7 @@ export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
 2. 在应用退后台时，释放离线Web组件的具体实现步骤。
 3. 复用离线Web组件的具体实现步骤。
 
-示例演示了如何让应用退后台释放离线Web组件以及切前台恢复离线Web组件，在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的onBackground和onForeground回调中分别进行了离线Web组件的释放和恢复。 
+示例演示了如何让应用退后台释放离线Web组件以及切前台恢复离线Web组件，在[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)的onBackground和onForeground回调中分别进行了离线Web组件的释放和恢复。 
 
 <!-- @[entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 
@@ -698,9 +698,9 @@ onBackground(): void {
 ```
 
 
-2.排查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的逻辑。
+2.排查NodeContainer与节点绑定的逻辑。
 
-检查节点是否已上组件树，建议在已有的Web组件上方加上Text（请参考以下例子），如果白屏的时候没有出现Text，建议检查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的情况。
+检查节点是否已上组件树，建议在已有的Web组件上方加上Text（请参考以下例子），如果白屏的时候没有出现Text，建议检查NodeContainer与节点绑定的情况。
 
 ```ts
 @Builder
@@ -716,4 +716,4 @@ function WebBuilder(data:Data) {
 
 3.排查Web可见性状态。
 
-如果整个节点已上树，可通过日志[WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)查看Web组件可见性状态是否正确，不可见的Web组件可能会造成白屏。
+如果整个节点已上树，可通过日志[WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)查看Web组件可见性状态是否正确，不可见的Web组件可能会造成白屏。

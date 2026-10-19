@@ -18,11 +18,11 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 初始化参数集：通过[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)、[OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams)、[OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集paramSet，参数集中必须包含[OH_Huks_KeyAlg](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg)，[OH_Huks_KeySize](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize)，[OH_Huks_KeyPurpose](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose)属性。
+2. 初始化参数集：通过OH_Huks_InitParamSet、OH_Huks_AddParams、OH_Huks_BuildParamSet构造参数集paramSet，参数集中必须包含OH_Huks_KeyAlg，OH_Huks_KeySize，OH_Huks_KeyPurpose属性。
 
 3. 生成非对称密钥，具体请参考[密钥生成](huks-key-generation-ndk.md)。
 
-4. 将密钥别名与参数集作为参数传入[OH_Huks_AttestKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_attestkeyitem)方法中，即可证明密钥。
+4. 将密钥别名与参数集作为参数传入OH_Huks_AttestKeyItem方法中，即可证明密钥。
 
 ## 开发案例
 <!-- @[non_anonymized_key_proof_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/cpp/napi_init.cpp) -->

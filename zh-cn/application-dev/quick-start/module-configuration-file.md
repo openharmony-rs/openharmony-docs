@@ -126,7 +126,7 @@ module.json5配置文件包含以下标签。
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| name | 标识当前Module的名称，确保该名称在整个应用中唯一。命名规则如下&nbsp;：<br/>-&nbsp;由字母、数字和下划线组成，且必须以字母开头。<br/>-&nbsp;最大长度128字节。<br/>应用升级时允许修改该名称，但需要应用适配Module相关数据目录的迁移，详见[@ohos.file.fs (文件管理)](../reference/apis-core-file-kit/js-apis-file-fs.md)。<br/>**说明：**<br/>DevEco Studio新建模块时，限制模块名称的长度不能超过31。如果长度无法满足开发者需求，可以在配置文件修改该标签。 | 字符串 | 该标签不可缺省。 |
+| name | 标识当前Module的名称，确保该名称在整个应用中唯一。命名规则如下&nbsp;：<br/>-&nbsp;由字母、数字和下划线组成，且必须以字母开头。<br/>-&nbsp;最大长度128字节。<br/>应用升级时允许修改该名称，但需要应用适配Module相关数据目录的迁移，详见[@ohos.file.fs (文件管理)](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-file-fs.md)。<br/>**说明：**<br/>DevEco Studio新建模块时，限制模块名称的长度不能超过31。如果长度无法满足开发者需求，可以在配置文件修改该标签。 | 字符串 | 该标签不可缺省。 |
 | type | 标识当前Module的类型。支持的取值如下：<br/>-&nbsp;entry：应用的主模块。<br/>-&nbsp;feature：应用的动态特性模块。<br/>-&nbsp;har：静态共享包模块。<br/>-&nbsp;shared：动态共享包模块。<br/>-&nbsp;skill：技能包模块，用于定义AI代理的技能能力。该类型模块必须配置[skillProfiles](#skillprofiles标签)标签。仅当应用的[bundleType](./app-configuration-file.md#配置文件标签)配置为skill，即app.json5配置文件中的bundleType为skill时，才允许将Module的type配置为skill，且此时应用只能包含1个Module。从API版本26.0.0开始，支持该标签。该标签仅对预置应用生效。 | 字符串 | 该标签不可缺省。 |
 | srcEntry | 标识AbilityStage组件的代码路径，详情参考[AbilityStage组件容器](../application-models/abilitystage.md)，取值为长度不超过127字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | description | 标识当前Module的描述信息，开发者可以通过该标签描述当前模块的功能与作用，取值为长度不超过255字节的字符串，可以采用字符串资源索引格式。 | 字符串 | 该标签可缺省，缺省值为空。 |
@@ -160,8 +160,8 @@ module.json5配置文件包含以下标签。
 | appStartup | 标识当前Module[启动框架](../application-models/app-startup.md)配置路径，只允许entry类型模块配置。<br>从API version 18开始，新增支持在HSP、HAR中配置。<br>从API version 20开始，新增支持在feature类型的Module中配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | [hnpPackages](#hnppackages标签) | 标识当前应用包含的Native软件包信息。只允许entry类型模块配置。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | [systemTheme](#systemtheme标签) | 标识当前使用的系统主题配置项。只允许entry类型模块配置。取值为不超过255字节的字符串。<br/>**说明：** <br/>从API version 20开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| abilitySrcEntryDelegator | 标识当前Module需要重定向到的UIAbility的名称，与abilityStageSrcEntryDelegator标签组合使用，共同指定重定向的目标对象。<br/>**说明：**<br/>1.从API version 17开始，支持该标签。<br/>2.当UIAbility是通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动时，该标签不生效。<br/>3.不支持在HAR的配置文件中配置该标签，也不支持重定向到HAR的UIAbility。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| abilityStageSrcEntryDelegator | 标识当前Module需要重定向到的UIAbility对应的Module名称（不可为当前Module名称），与abilitySrcEntryDelegator标签组合使用，共同指定重定向的目标对象。<br/>**说明：**<br/>1.从API version 17开始，支持该标签。<br/>2.当UIAbility是通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动时，该标签不生效。<br/>3.不支持在HAR的配置文件中配置该标签，也不支持重定向到HAR的UIAbility。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| abilitySrcEntryDelegator | 标识当前Module需要重定向到的UIAbility的名称，与abilityStageSrcEntryDelegator标签组合使用，共同指定重定向的目标对象。<br/>**说明：**<br/>1.从API version 17开始，支持该标签。<br/>2.当UIAbility是通过[startAbilityByCall](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilitybycall)接口启动时，该标签不生效。<br/>3.不支持在HAR的配置文件中配置该标签，也不支持重定向到HAR的UIAbility。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| abilityStageSrcEntryDelegator | 标识当前Module需要重定向到的UIAbility对应的Module名称（不可为当前Module名称），与abilitySrcEntryDelegator标签组合使用，共同指定重定向的目标对象。<br/>**说明：**<br/>1.从API version 17开始，支持该标签。<br/>2.当UIAbility是通过[startAbilityByCall](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startabilitybycall)接口启动时，该标签不生效。<br/>3.不支持在HAR的配置文件中配置该标签，也不支持重定向到HAR的UIAbility。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | crossAppSharedConfig | 标识应用间共享配置的配置文件名。取值为不超过255字节的字符串。用于发布配置给其他应用读取，在应用安装时生效，应用卸载时失效。详细使用方式见[共享配置使用](../database/share-config.md#配置发布方)。<br/>**说明：**<br/>从API version 20开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | formWidgetModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，应用包需要配置该标签，用来关联卡片包。取值为卡片包的模块名称，对应卡片包module.json5中的name标签。具体使用方式请参考[FormExtensionAbility配置](../form/arkts-ui-widget-configuration.md#formextensionability配置)。<br/>**说明：**<br/> 1. 从API version 20开始，支持该标签。<br/> 2. 仅在独立卡片包的应用包中，该标签配置生效，且要求对应的卡片包模块必须配置formExtensionModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
@@ -424,8 +424,8 @@ abilities示例：
 | host | 标识URI的主机地址部分，该标签只有当scheme配置时才生效。常见的方式：<br/>-&nbsp;域名方式，如example.com。<br/>-&nbsp;IP地址方式，如10.10.10.1。<br/>**说明：**<br/>从API 18开始，该标签在参与隐式Want匹配时不区分大小写。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | port | 标识URI的端口部分。如http默认端口为80，https默认端口是443，ftp默认端口是21。该标签只有当scheme和host都配置时才生效。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | path&nbsp;\|&nbsp;pathStartWith&nbsp;\|&nbsp;pathRegex | 标识URI的路径部分，path、pathStartWith和pathRegex配置时三选一。path标识URI与want中的路径部分全匹配，pathStartWith标识URI与want中的路径部分允许前缀匹配，pathRegex标识URI与want中的路径部分允许正则匹配。该标签只有当scheme和host都配置时才生效。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| type | 标识与Want相匹配的数据类型，使用MIME（Multipurpose&nbsp;Internet&nbsp;Mail&nbsp;Extensions）类型规范和[UniformDataType](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型规范。可以与scheme同时配置，也可以单独配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| utd | 标识与Want相匹配的标准化数据类型，具体请参考[@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)，适用于分享等场景。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| type | 标识与Want相匹配的数据类型，使用MIME（Multipurpose&nbsp;Internet&nbsp;Mail&nbsp;Extensions）类型规范和[UniformDataType](../reference/apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#uniformdatatype)类型规范。可以与scheme同时配置，也可以单独配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| utd | 标识与Want相匹配的标准化数据类型，具体请参考[@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md)，适用于分享等场景。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | maxFileSupported | 对于指定类型的文件，标识一次能接收或打开的最大数量，适用于分享等场景，需要与utd配合使用。| 整数 | 该标签可缺省，缺省值为0。|
 | linkFeature | 标识URI提供的功能类型（如文件打开、分享、导航等），用于实现应用间跳转。取值为长度不超过127字节的字符串，不支持中文。同一Bundle中声明的linkFeature数量不能超过150个。详情见[linkFeature标签说明](../application-models/app-uri-config.md#linkfeature标签说明)。 | 字符串 | 该标签可缺省，缺省值为空。|
 
@@ -503,7 +503,7 @@ skills示例：
 | dataGroupIds | 标识当前ExtensionAbility组件的dataGroupId集合。如果当前ExtensionAbility组件所在的应用在应用市场申请的证书里groupIds也申请了某个dataGroupId，那么当前ExtensionAbility组件可以和应用共享这一个dataGroupId生成的目录，所以ExtensionAbility组件的dataGroupId需要是应用的签名证书中groupIds标签里配置的才能生效。 且该标签仅在当前ExtensionAbility组件存在独立的沙箱目录时生效。<!--RP8--><!--RP8End--> | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[独立进程配置](../application-models/process-model-overview.md#独立进程配置)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| skipAbilityStageLifecycle | 标识type为backup的ExtensionAbility组件是否跳过[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)生命周期回调。<br/>-&nbsp;true：跳过AbilityStage生命周期，不执行onCreate、onDestroy等回调。<br/>-&nbsp;false：不跳过AbilityStage生命周期，正常执行生命周期回调。<br/>**说明：**<br/>1. 该标签仅在ExtensionAbility的type为backup时配置生效。<br/>2. 从API version 26.0.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| skipAbilityStageLifecycle | 标识type为backup的ExtensionAbility组件是否跳过[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage.md)生命周期回调。<br/>-&nbsp;true：跳过AbilityStage生命周期，不执行onCreate、onDestroy等回调。<br/>-&nbsp;false：不跳过AbilityStage生命周期，正常执行生命周期回调。<br/>**说明：**<br/>1. 该标签仅在ExtensionAbility的type为backup时配置生效。<br/>2. 从API version 26.0.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 
 extensionAbilities示例：
 
@@ -554,7 +554,7 @@ extensionAbilities示例：
 |form|卡片的ExtensionAbility。|
 |workScheduler|延时任务的ExtensionAbility。|
 |inputMethod|输入法的ExtensionAbility。|
-|share|提供内容分享处理功能的[ShareExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-shareExtensionAbility.md)。|
+|share|提供内容分享处理功能的[ShareExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-shareextensionability.md)。|
 |service|后台运行的service组件，三方配置无法安装应用，需要申请特权<!--Del-->allowAppUsePrivilegeExtension，具体请参考[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)<!--DelEnd-->，特权申请不对三方应用开放。|
 |accessibility|辅助能力的ExtensionAbility。|
 |fileAccess|公共数据访问的ExtensionAbility，允许应用程序提供文件和文件夹给文件管理类应用展示，三方应用配置不生效，当前配置仅在系统应用中有效。|
@@ -562,7 +562,7 @@ extensionAbilities示例：
 |staticSubscriber|静态广播的ExtensionAbility，三方应用配置不生效，当前配置仅在系统应用中有效。|
 |fileShare|文件共享的ExtensionAbility。<!--Del-->|
 |sysPicker/camera|拉起相机picker的ExtensionAbility。<!--DelEnd-->|
-|vpn|为开发者提供[@ohos.app.ability.VpnExtensionAbility (三方VPN能力)](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md)的ExtensionAbility。|
+|vpn|为开发者提供[@ohos.app.ability.VpnExtensionAbility (三方VPN能力)](../reference/apis-network-kit/arkts-apis/arkts-network-app-ability-vpnextensionability.md)的ExtensionAbility。|
 |wallpaper|壁纸的ExtensionAbility。|
 |backup|数据备份的ExtensionAbility。|
 |enterpriseAdmin|[企业设备管理](../mdm/mdm-kit-admin.md)的ExtensionAbility。企业设备管理应用必须拥有此类型的ExtensionAbility。|
@@ -611,15 +611,15 @@ extensionAbilities示例：
 |assetAcceleration|资源预下载的ExtensionAbility。|
 |formEdit|卡片编辑的ExtensionAbility。|
 |distributed|分布式扩展的ExtensionAbility。|
-|liveForm<sup>20+</sup>|互动卡片的[ExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)。|
-|appService<sup>20+</sup>|为应用提供后台服务相关扩展能力[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)，包括后台服务的创建、销毁、连接、断开等生命周期回调。|
-|webNativeMessaging<sup>21+</sup>|为开发者提供Web消息通信能力的[ExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)。|
-|faultLog<sup>21+</sup>|故障延迟通知的[ExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)。|
-|notificationSubscriber<sup>22+</sup>|提供通知订阅相关功能的[ExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。|
+|liveForm<sup>20+</sup>|互动卡片的[ExtensionAbility](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-liveformextensionability.md)。|
+|appService<sup>20+</sup>|为应用提供后台服务相关扩展能力[AppServiceExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-appserviceextensionability.md)，包括后台服务的创建、销毁、连接、断开等生命周期回调。|
+|webNativeMessaging<sup>21+</sup>|为开发者提供Web消息通信能力的[ExtensionAbility](../reference/apis-arkweb/arkts-apis/arkts-arkweb-web-webnativemessagingextensionability.md)。|
+|faultLog<sup>21+</sup>|故障延迟通知的[ExtensionAbility](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability.md)。|
+|notificationSubscriber<sup>22+</sup>|提供通知订阅相关功能的[ExtensionAbility](../reference/apis-notification-kit/arkts-apis/arkts-notification-application-notificationsubscriberextensionability.md)。|
 |crypto<sup>22+</sup>|外部密钥管理扩展的[ExtensionAbility](../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)。|
-|partnerAgent<sup>23+</sup>|基于蓝牙通信技术，提供设备发现与设备下线的通知功能的[ExtensionAbility](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)。|
+|partnerAgent<sup>23+</sup>|基于蓝牙通信技术，提供设备发现与设备下线的通知功能的[ExtensionAbility](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-fusionconnectivity-partneragentextensionability.md)。|
 |contentEmbed<sup>24+</sup>|对象插入编辑框架的[ExtensionAbility](../content-embed/content-embed-server-guidelines.md)。|
-|selection|划词扩展的[ExtensionAbility](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)。从API version 20开始，仅支持系统应用配置，三方应用配置不生效。从API version 24开始，支持三方应用配置。|
+|selection|划词扩展的[ExtensionAbility](../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-selectioninput-selectionextensionability.md)。从API version 20开始，仅支持系统应用配置，三方应用配置不生效。从API version 24开始，支持三方应用配置。|
 |awc/webpage|通用网页浏览的ExtensionAbility。|
 |awc/newsfeed|信息流资讯业务的ExtensionAbility。|
 |assetCache<sup>24+</sup>|提供通用应用数据缓存能力的ExtensionAbility。三方应用配置不生效，当前配置仅在系统应用中有效。|
@@ -1053,8 +1053,8 @@ routerMap配置文件描述模块的路由表信息，routerMap标签的值为�
 | name          | 标识跳转页面的名称。取值为长度不超过1023字节的字符串。 | 字符串  | 该标签不可缺省。       |
 | pageSourceFile| 标识页面在模块内的路径。取值为长度不超过255字节的字符串。 | 字符串 | 该标签不可缺省。  |
 | buildFunction | 标识被@Builder修饰的函数，该函数描述页面的UI。取值为长度不超过1023字节的字符串。 | 字符串  | 该标签不可缺省。   |
-| [data](#data标签)  | 标识字符串类型的自定义数据，开发者自行扩展能力，可以通过[HapModuleInfo对象](../reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md)中routerMap集合对象下的data获取标签内容，该标签已由系统解析，无需开发者自行解析。 每个自定义数据字符串取值不超过128字节。 | 对象   | 该标签可缺省，缺省值为空。   |
-| [customData](#customdata标签)  | 标识任意类型的自定义数据，开发者自行扩展能力，可以通过[HapModuleInfo对象](../reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md)中routerMap集合对象下的customData获取标签内容，开发者需要调用JSON.parse函数解析出具体内容。总长度不超过4096字节。  | 对象   | 该标签可缺省，缺省值为空。   |
+| [data](#data标签)  | 标识字符串类型的自定义数据，开发者自行扩展能力，可以通过[HapModuleInfo对象](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-hapmoduleinfo-t.md)中routerMap集合对象下的data获取标签内容，该标签已由系统解析，无需开发者自行解析。 每个自定义数据字符串取值不超过128字节。 | 对象   | 该标签可缺省，缺省值为空。   |
+| [customData](#customdata标签)  | 标识任意类型的自定义数据，开发者自行扩展能力，可以通过[HapModuleInfo对象](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-hapmoduleinfo-t.md)中routerMap集合对象下的customData获取标签内容，开发者需要调用JSON.parse函数解析出具体内容。总长度不超过4096字节。  | 对象   | 该标签可缺省，缺省值为空。   |
 
 示例如下：
 
@@ -1227,7 +1227,7 @@ hnpPackages示例：
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| startWindowType | 标识当前UIAbility组件是否隐藏启动页。<br/>当前仅支持在2in1设备或平板设备的自由多窗模式下使用。<br/>不同取值含义如下：<br/>\- "REQUIRED_SHOW"：强制显示启动页。不受[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的影响。<br/>\- "REQUIRED_HIDE"：强制隐藏启动页。不受[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的影响。<br/>\- "OPTIONAL_SHOW"：可选显示，默认行为为显示启动页，如果[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)设置隐藏启动页，则隐藏启动页。<br/>\- 如未配置该标签，默认取值为"REQUIRED_SHOW"，即强制显示启动页。<br/>从API version 20开始支持该标签。 | 字符串 | 可缺省，缺省值为REQUIRED_SHOW。 |
+| startWindowType | 标识当前UIAbility组件是否隐藏启动页。<br/>当前仅支持在2in1设备或平板设备的自由多窗模式下使用。<br/>不同取值含义如下：<br/>\- "REQUIRED_SHOW"：强制显示启动页。不受[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)的影响。<br/>\- "REQUIRED_HIDE"：强制隐藏启动页。不受[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)的影响。<br/>\- "OPTIONAL_SHOW"：可选显示，默认行为为显示启动页，如果[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)设置隐藏启动页，则隐藏启动页。<br/>\- 如未配置该标签，默认取值为"REQUIRED_SHOW"，即强制显示启动页。<br/>从API version 20开始支持该标签。 | 字符串 | 可缺省，缺省值为REQUIRED_SHOW。 |
 | startWindowAppIcon | 标识当前UIAbility组件启动页面图标资源文件的索引，取值为长度不超过255字节的字符串。<br/><!--RP12-->从API version 20开始支持该标签。<!--RP12End-->| 字符串 | 可缺省，缺省值为空。 |
 | startWindowIllustration | 标识当前UIAbility组件启动页面插画资源文件的索引，取值为长度不超过255字节的字符串。<br/><!--RP12-->从API version 20开始支持该标签。<!--RP12End--> | 字符串 | 可缺省，缺省值为空。 |
 | startWindowBrandingImage | 标识当前UIAbility组件启动页面品牌标识资源文件的索引，取值为长度不超过255字节的字符串。<br/><!--RP12-->从API version 20开始支持该标签。<!--RP12End--> | 字符串 | 可缺省，缺省值为空。 |

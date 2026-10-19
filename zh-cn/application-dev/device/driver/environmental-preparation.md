@@ -20,10 +20,10 @@ DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之�
 
 | NDK接口          | SDK版本    |
 |----------------|----------|
-| [UsbDdk](../../reference/apis-driverdevelopment-kit/capi-usbddk.md)  | API10及以上 |
-| [HidDdk](../../reference/apis-driverdevelopment-kit/capi-hidddk.md)        | API11及以上 |
-| [USBSerialDDK](../../reference/apis-driverdevelopment-kit/capi-serialddk.md) | API18及以上 |
-| [ScsiPeripheralDDK](../../reference/apis-driverdevelopment-kit/capi-scsiperipheralddk.md)  | API18及以上 |
+| [UsbDdk](../../reference/apis-driver-development-kit/c-apis/capi-usbddk.md)  | API10及以上 |
+| [HidDdk](../../reference/apis-driver-development-kit/c-apis/capi-hidddk.md)        | API11及以上 |
+| [USBSerialDDK](../../reference/apis-driver-development-kit/c-apis/capi-usbserialddk.md) | API18及以上 |
+| [ScsiPeripheralDDK](../../reference/apis-driver-development-kit/c-apis/capi-scsiperipheralddk.md)  | API18及以上 |
 
 ## 检验环境是否搭建成功
 

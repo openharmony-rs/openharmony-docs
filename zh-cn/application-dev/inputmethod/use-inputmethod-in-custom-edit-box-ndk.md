@@ -12,7 +12,7 @@ IME Kit支持开发者在自绘编辑框中使用输入法，与输入法应用�
 
 ## 接口说明
 
-详细接口说明请参考[InputMethod接口文档](../reference/apis-ime-kit/capi-inputmethod.md)。
+详细接口说明请参考[InputMethod接口文档](../reference/apis-ime-kit/c-apis/capi-inputmethod.md)。
 
 ## 添加动态链接库
 
@@ -32,7 +32,7 @@ libhilog_ndk.z.so
 
 ## 绑定输入法
 
-开发者需要在输入框获焦时，通过调用接口[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)绑定输入法，绑定成功后用户可以通过输入法输入文字。
+开发者需要在输入框获焦时，通过调用接口OH_InputMethodController_Attach绑定输入法，绑定成功后用户可以通过输入法输入文字。
 
 1. 创建InputMethod_TextEditorProxy实例，示例代码如下所示：
 
@@ -73,7 +73,7 @@ libhilog_ndk.z.so
 
 ## 显示/隐藏面板功能
 
-绑定成功后，可以使用获取到的[InputMethod_InputMethodProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-inputmethodproxy.md)对象向输入法发送消息。示例代码如下所示：
+绑定成功后，可以使用获取到的[InputMethod_InputMethodProxy](../reference/apis-ime-kit/c-apis/capi-inputmethod-inputmethod-inputmethodproxy.md)对象向输入法发送消息。示例代码如下所示：
 
 ```c
 // 显示键盘
@@ -111,7 +111,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    // ......
    ```
 
-2. 将实现后的响应函数，设置到[InputMethod_TextEditorProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-texteditorproxy.md)中，再通过绑定输入法时调用的[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)将其设置到输入法框架中，完成监听注册。示例代码如下所示：
+2. 将实现后的响应函数，设置到[InputMethod_TextEditorProxy](../reference/apis-ime-kit/c-apis/capi-inputmethod-inputmethod-texteditorproxy.md)中，再通过绑定输入法时调用的OH_InputMethodController_Attach将其设置到输入法框架中，完成监听注册。示例代码如下所示：
 
    <!-- @[input_case_input_ConstructTextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -136,7 +136,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 ## 解绑输入法
 
-当编辑框失焦，需要结束使用输入法，通过接口[OH_InputMethodController_Detach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_detach)与输入法框架解绑。
+当编辑框失焦，需要结束使用输入法，通过接口OH_InputMethodController_Detach与输入法框架解绑。
 
 
    <!-- @[input_case_input_OH_InputMethodController_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->

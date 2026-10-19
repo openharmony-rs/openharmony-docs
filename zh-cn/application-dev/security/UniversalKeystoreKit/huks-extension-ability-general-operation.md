@@ -35,9 +35,9 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
 
 1. 通过[获取资源ID](#获取资源id)，得到resourceId。
 
-2. 调用[openResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开资源。
+2. 调用[openResource](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-openresource-f.md#openresource)打开资源。
 
-3. 操作执行完后，调用[closeResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptocloseresource)关闭资源。
+3. 操作执行完后，调用[closeResource](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-closeresource-f.md#closeresource)关闭资源。
 
 **C++接口**
 
@@ -46,11 +46,11 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
    target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
    ```
 
-2. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)，并将其作为resourceId。
+2. 通过证书管理系统能力提供的openAuthorizeDialog获取[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)，并将其作为resourceId。
 
-3. 初始化参数集：通过[OH_Huks_InitExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_initexternalcryptoparamset)、[OH_Huks_AddExternalCryptoParams](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_addexternalcryptoparams)、[OH_Huks_BuildExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_buildexternalcryptoparamset)构造参数集paramSet。
+3. 初始化参数集：通过OH_Huks_InitExternalCryptoParamSet、OH_Huks_AddExternalCryptoParams、OH_Huks_BuildExternalCryptoParamSet构造参数集paramSet。
 
-4. 调用[OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)打开资源。
+4. 调用OH_Huks_OpenResource打开资源。
 
 ### 开发示例
 
@@ -184,7 +184,7 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 ## 获取资源ID
 
-在密钥管理扩展场景下，资源ID用于标识密钥管理扩展服务中的具体资源（如UKey设备、容器、密钥等）。从API版本26.0.0开始，应用可通过[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取资源ID，并使用该资源ID执行密钥生成与导入导出、通用查询、PIN码认证及清除PIN码认证状态等后续操作。
+在密钥管理扩展场景下，资源ID用于标识密钥管理扩展服务中的具体资源（如UKey设备、容器、密钥等）。从API版本26.0.0开始，应用可通过[getResourceId](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid)获取资源ID，并使用该资源ID执行密钥生成与导入导出、通用查询、PIN码认证及清除PIN码认证状态等后续操作。
 
 ### 获取途径
 
@@ -194,7 +194,7 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 适用于浏览器双向SSL认证等需要用户选择证书的场景。
 
-通过[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)（由证书管理提供）展示证书列表，由用户选择证书。返回的[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)即为resourceId，每个证书链对应1个resourceId。
+通过openAuthorizeDialog（由证书管理提供）展示证书列表，由用户选择证书。返回的[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)即为resourceId，每个证书链对应1个resourceId。
 
 **通过getResourceId接口获取**
 
@@ -207,11 +207,11 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 1. 传入提供者名称（providerName），建议包含厂商信息，全局唯一，长度最大为128字节。
 
 2. 构造必选参数：
-   - 通过[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入CryptoExtensionAbility名称。
-   - 通过[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入应用包名，包名长度为7-127。
-   - 通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入厂商自定义的资源信息。
+   - 通过[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入CryptoExtensionAbility名称。
+   - 通过[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入应用包名，包名长度为7-127。
+   - 通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入厂商自定义的资源信息。
 
-3. 调用[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取resourceId。
+3. 调用[getResourceId](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid)获取resourceId。
 
 ### 开发示例
 
@@ -254,17 +254,17 @@ async function getResourceId(): Promise<string> {
 
 ## 查询
 
-从API版本22开始，huksExternalCrypto提供查询[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)接口。从密钥管理扩展服务中获取通用属性信息，完成属性查询操作。
+从API版本22开始，huksExternalCrypto提供查询[getProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty)接口。从密钥管理扩展服务中获取通用属性信息，完成属性查询操作。
 
 ### 规格说明
 
-打开密钥管理扩展服务中的资源后，可调用该接口获取属性信息，由密钥管理扩展服务（即[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)）实现方提供具体的propertyId。
+打开密钥管理扩展服务中的资源后，可调用该接口获取属性信息，由密钥管理扩展服务（即[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability.md)）实现方提供具体的propertyId。
 
 - resourceId为已通过[打开/关闭资源](#打开关闭资源)步骤打开的资源ID，长度为1-1024字节。
 
 - propertyId需要与密钥管理扩展约定调用规则，长度为1-100字节。建议采用GM/T 0016-2023标准中定义的SKF函数名称。
 
-- 输出参数通过[HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)携带，应用可以提取查询的属性数据，并按照和密钥管理扩展服务实现方的约定，解析数据。
+- 输出参数通过[HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)携带，应用可以提取查询的属性数据，并按照和密钥管理扩展服务实现方的约定，解析数据。
 
 ### 开发步骤
 
@@ -274,7 +274,7 @@ async function getResourceId(): Promise<string> {
 
 2. 构造propertyId和可选输入参数。
 
-3. 调用[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)获取属性信息。
+3. 调用[getProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty)获取属性信息。
 
 **C++接口**
 
@@ -283,15 +283,15 @@ async function getResourceId(): Promise<string> {
    target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
    ```
 
-2. 构造resourceId和propertyId，先调用[OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)打开资源。
+2. 构造resourceId和propertyId，先调用OH_Huks_OpenResource打开资源。
 
-3. 初始化参数集：通过[OH_Huks_InitExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_initexternalcryptoparamset)、[OH_Huks_AddExternalCryptoParams](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_addexternalcryptoparams)、[OH_Huks_BuildExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_buildexternalcryptoparamset)构造参数集paramSet。
+3. 初始化参数集：通过OH_Huks_InitExternalCryptoParamSet、OH_Huks_AddExternalCryptoParams、OH_Huks_BuildExternalCryptoParamSet构造参数集paramSet。
 
-4. 调用[OH_Huks_GetProperty](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getproperty)获取属性信息。
+4. 调用OH_Huks_GetProperty获取属性信息。
 
-5. 调用[OH_Huks_GetExternalCryptoParam](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getexternalcryptoparam)从输出参数集中提取结果。
+5. 调用OH_Huks_GetExternalCryptoParam从输出参数集中提取结果。
 
-6. 调用[OH_Huks_FreeExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_freeexternalcryptoparamset)释放参数集资源。
+6. 调用OH_Huks_FreeExternalCryptoParamSet释放参数集资源。
 
 ### 开发示例
 
@@ -431,11 +431,11 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 
 ## 属性设置
 
-从API版本22开始，huksExternalCrypto提供设置属性[setProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptosetproperty)的接口。
+从API版本22开始，huksExternalCrypto提供设置属性[setProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-setproperty-f.md#setproperty)的接口。
 
 ### 规格说明
 
-打开密钥管理扩展服务中的资源后，可调用该接口设置指定资源的属性值，由密钥管理扩展服务（即[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)）实现方提供具体的propertyId。
+打开密钥管理扩展服务中的资源后，可调用该接口设置指定资源的属性值，由密钥管理扩展服务（即[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability.md)）实现方提供具体的propertyId。
 
 - resourceId为已通过[打开/关闭资源](#打开关闭资源)步骤打开的资源ID，长度为1-1024字节。
 
@@ -447,7 +447,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 
 2. 构造propertyId和可选输入参数。
 
-3. 调用[setProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptosetproperty)设置属性值。
+3. 调用[setProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-setproperty-f.md#setproperty)设置属性值。
 
 ### 开发示例
 
@@ -470,13 +470,13 @@ async function setProperty(resourceId: string, propertyId: string): Promise<void
 
 ## 获取错误信息
 
-从API版本26.0.0开始，huksExternalCrypto提供[getErrorInfo](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogeterrorinfo)接口，用于获取最近一次密钥管理扩展操作的详细错误信息。
+从API版本26.0.0开始，huksExternalCrypto提供[getErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo)接口，用于获取最近一次密钥管理扩展操作的详细错误信息。
 
-该错误信息由密钥管理扩展（[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)）返回，可用于辅助定位问题。
+该错误信息由密钥管理扩展（[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability.md)）返回，可用于辅助定位问题。
 
 ### 规格说明
 
-getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalerrorinfo)，其中errno字段为密钥管理扩展服务写入的详细错误码，errorDesc为密钥管理扩展服务写入的详细错误信息，最大长度为256字节，超出部分截断后返回。
+getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalerrorinfo-i.md#huksexternalerrorinfo)，其中errno字段为密钥管理扩展服务写入的详细错误码，errorDesc为密钥管理扩展服务写入的详细错误信息，最大长度为256字节，超出部分截断后返回。
 
 **错误信息更新规则：**
 
@@ -496,7 +496,7 @@ getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis
 
 1. 调用密钥管理扩展接口（如authUkeyPin、getProperty等）。
 
-2. 操作失败后，调用[getErrorInfo](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogeterrorinfo)获取Extension错误信息。
+2. 操作失败后，调用[getErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo)获取Extension错误信息。
 
 ### 开发示例
 

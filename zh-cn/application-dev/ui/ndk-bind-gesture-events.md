@@ -167,12 +167,12 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
 可以将多个不同类型的手势组合在一起，形成一个手势组，这个手势组可以作为一个识别整体，达到对用户多个不同类型手势序列的识别目的。
 
-通过设置[ArkUI_GroupGestureMode](../reference/apis-arkui/capi-native-gesture-h.md#arkui_groupgesturemode)来指定这个手势组的识别模式，即组内的手势之间的关系，包含顺序识别SEQUENTIAL_GROUP，并行识别PARALLEL_GROUP，互斥识别EXCLUSIVE_GROUP。
+通过设置ArkUI_GroupGestureMode来指定这个手势组的识别模式，即组内的手势之间的关系，包含顺序识别SEQUENTIAL_GROUP，并行识别PARALLEL_GROUP，互斥识别EXCLUSIVE_GROUP。
 
 
 ### 顺序识别
 
-顺序识别组合手势对应的ArkUI_GroupGestureMode为SEQUENTIAL_GROUP。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应[GESTURE_EVENT_ACTION_END](../reference/apis-arkui/capi-native-gesture-h.md#arkui_gestureeventactiontype)。
+顺序识别组合手势对应的ArkUI_GroupGestureMode为SEQUENTIAL_GROUP。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应GESTURE_EVENT_ACTION_END。
 
 以顺序识别长按和快滑手势为例：
 
@@ -689,7 +689,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 ## 获取事件信息
 
-绑定手势事件已详细说明如何将手势绑定到节点上。在回调执行时，ArkUI框架提供了[OH_ArkUI_GestureEvent_GetRawInputEvent()](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口，可从手势事件中获取基础事件对象。之后，可通过调用[OH_ArkUI_PointerEvent_GetDisplayX()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayx)、[OH_ArkUI_PointerEvent_GetDisplayXByIndex()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayxbyindex)、[OH_ArkUI_UIInputEvent_GetAction()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_getaction)和[OH_ArkUI_UIInputEvent_GetEventTime()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_geteventtime)等接口，从基础事件中获取更多信息。应用依据获取的信息，在手势事件执行过程中实现差异化交互逻辑。
+绑定手势事件已详细说明如何将手势绑定到节点上。在回调执行时，ArkUI框架提供了OH_ArkUI_GestureEvent_GetRawInputEvent()接口，可从手势事件中获取基础事件对象。之后，可通过调用OH_ArkUI_PointerEvent_GetDisplayX()、OH_ArkUI_PointerEvent_GetDisplayXByIndex()、OH_ArkUI_UIInputEvent_GetAction()和OH_ArkUI_UIInputEvent_GetEventTime()等接口，从基础事件中获取更多信息。应用依据获取的信息，在手势事件执行过程中实现差异化交互逻辑。
 
 
   <!-- @[gesture_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
@@ -753,7 +753,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 下面通过示例介绍如何实现自定义干预事件和手势的收集结果。
 
-1. 注册`NODE_ON_GESTURE_COLLECT_INTERCEPT`节点事件并绑定回调处理函数。在回调中使用[OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturecollectinterceptinfo_getresponserecognizers)获取手势识别器、[OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturecollectinterceptinfo_gettouchrecognizers)获取触摸识别器，并结合处理函数完成干预。
+1. 注册`NODE_ON_GESTURE_COLLECT_INTERCEPT`节点事件并绑定回调处理函数。在回调中使用OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers获取手势识别器、OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers获取触摸识别器，并结合处理函数完成干预。
 
     <!-- @[gesture_intercepting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept/entry/src/main/cpp/function.h) -->
     
@@ -783,10 +783,10 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
     ```
 
 2. 创建手势收集干预处理函数，在处理函数中可调用以下接口对响应识别器和触摸识别器进行干预。
-   - 通过[OH_ArkUI_GetGestureBindNodeUniqueId](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_getgesturebindnodeuniqueid)接口获取绑定节点ID。
-   - 通过[OH_ArkUI_GestureRecognizer_IsHostBelongsTo](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturerecognizer_ishostbelongsto)接口判断手势识别器是否为指定节点的后代。
-   - 通过[OH_ArkUI_TouchRecognizer_IsHostBelongsTo](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_touchrecognizer_ishostbelongsto)接口判断触摸识别器是否为指定节点的后代。
-   - 通过[OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturecollectinterceptinfo_setgesturecollectintervention)接口设置收集干预策略。
+   - 通过OH_ArkUI_GetGestureBindNodeUniqueId接口获取绑定节点ID。
+   - 通过OH_ArkUI_GestureRecognizer_IsHostBelongsTo接口判断手势识别器是否为指定节点的后代。
+   - 通过OH_ArkUI_TouchRecognizer_IsHostBelongsTo接口判断触摸识别器是否为指定节点的后代。
+   - 通过OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention接口设置收集干预策略。
 
     <!-- @[create_interception_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept/entry/src/main/cpp/function.h) -->
     

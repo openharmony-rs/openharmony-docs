@@ -7,12 +7,12 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-TextInput、TextArea是输入框组件，用于响应用户输入，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参考[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)和[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)组件的API文档。Search是特殊的输入框组件，称为搜索框，默认样式包含搜索图标。具体用法请参考[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)组件的API文档。
+TextInput、TextArea是输入框组件，用于响应用户输入，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参考[TextInput](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md)和[TextArea](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textarea-t.md)组件的API文档。Search是特殊的输入框组件，称为搜索框，默认样式包含搜索图标。具体用法请参考[Search](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-search-t.md)组件的API文档。
 
 
 >  **说明：**
 >
->  仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件。
+>  仅支持单文本样式，若需实现富文本样式，建议使用RichEditor组件。
 
 ## 创建输入框
 
@@ -59,7 +59,7 @@ TextInput是单行输入框，TextArea是多行输入框，Search是搜索框。
 
 TextInput、TextArea和Search都支持设置输入框类型，通过type属性进行设置，但是各组件的枚举值略有不同。下面以单行输入框为例进行说明。
 
-TextInput有以下类型可选择：Normal基本输入、Password密码输入、Email邮箱地址输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
+TextInput有以下类型可选择：Normal基本输入、Password密码输入、Email邮箱地址输入模式。通过[type](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#type)属性进行设置：
 
 ### 基本输入模式
 
@@ -100,11 +100,11 @@ TextInput()
 ![text_input_type_email](figures/text_input_type_email.PNG)
 
 ## 设置输入框样式
-可以通过style、placeholder、backgroundColor、contentType等属性设置输入框样式。更丰富的样式可以结合[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)实现。
+可以通过style、placeholder、backgroundColor、contentType等属性设置输入框样式。更丰富的样式可以结合[通用属性](../reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md)实现。
 
 ### 设置输入框多态样式
 
-TextInput、TextArea支持设置输入框多态样式，通过[style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10)属性进行设置。下面以多行输入框TextArea为例进行说明。
+TextInput、TextArea支持设置输入框多态样式，通过[style](../reference/apis-arkui/arkts-components/arkts-arkui-textarea-comp-attribute.md#style)属性进行设置。下面以多行输入框TextArea为例进行说明。
 
 TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.DEFAULT；内联模式，也称内联输入风格，入参是TextContentStyle.INLINE。
 
@@ -187,7 +187,7 @@ TextInput({
 
 ### 设置输入框自动填充类型
 
-输入框可以通过[contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12)属性设置自动填充类型。支持的类型请参考[ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12枚举说明)。
+输入框可以通过[contentType](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#contenttype)属性设置自动填充类型。支持的类型请参考ContentType。
 <!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
 ``` TypeScript
@@ -202,15 +202,15 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
 
 ## 绑定文本输入框事件
 
-文本框主要用于获取用户输入的信息，并将信息处理成数据进行上传，绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onchange)事件可以获取输入框内改变的文本内容，绑定[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsubmit)事件可以获取回车提交的文本信息，绑定[onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ontextselectionchange10)事件可以获取文本选中时手柄的位置信息或者编辑时光标的位置信息等等。用户也可以使用通用事件进行相应的交互操作。
+文本框主要用于获取用户输入的信息，并将信息处理成数据进行上传，绑定[onChange](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onchange)事件可以获取输入框内改变的文本内容，绑定[onSubmit](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onsubmit)事件可以获取回车提交的文本信息，绑定[onTextSelectionChange](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#ontextselectionchange)事件可以获取文本选中时手柄的位置信息或者编辑时光标的位置信息等等。用户也可以使用通用事件进行相应的交互操作。
 
 >  **说明：**
 >
->  在密码模式下，设置[showPassword](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#showpassword12)属性时，在[onSecurityStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsecuritystatechange12)回调中，建议增加状态同步，具体详见如下示例。
+>  在密码模式下，设置[showPassword](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#showpassword)属性时，在[onSecurityStateChange](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onsecuritystatechange)回调中，建议增加状态同步，具体详见如下示例。
 >
-> [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12)、[onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12)、[onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12)、[onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12)回调仅支持系统输入法的场景。
+> [onWillInsert](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onwillinsert)、[onDidInsert](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#ondidinsert)、[onWillDelete](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onwilldelete)、[onDidDelete](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#ondiddelete)回调仅支持系统输入法的场景。
 >
-> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15)的回调时序晚于[onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12)、[onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12)，早于[onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12)、[onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12)。
+> [onWillChange](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onwillchange)的回调时序晚于[onWillInsert](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onwillinsert)、[onWillDelete](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onwilldelete)，早于[onDidInsert](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#ondidinsert)、[onDidDelete](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#ondiddelete)。
 
 <!-- @[TextInputAddEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextInputAddEvent.ets) -->
 
@@ -305,7 +305,7 @@ struct TextInputEventAdd {
 ![text_input_event](figures/text_input_event.gif)
 
 ## 文本菜单管理
-TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、混合内容等多类型Span的场景，因此仅提供系统文本菜单。可通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12)接口对系统菜单项进行定制，包括追加自定义菜单项、移除系统菜单项、修改菜单项内容及拦截菜单项点击事件，从而在系统菜单框架内实现菜单选项的自定义。
+TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、混合内容等多类型Span的场景，因此仅提供系统文本菜单。可通过[editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#editmenuoptions)接口对系统菜单项进行定制，包括追加自定义菜单项、移除系统菜单项、修改菜单项内容及拦截菜单项点击事件，从而在系统菜单框架内实现菜单选项的自定义。
 
 ### 系统菜单
 
@@ -334,7 +334,7 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ### 系统菜单中自定义菜单项
-从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#editmenuoptions)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在[onPrepareMenu](../reference/apis-arkui/arkui-js/js-components-common-animation.md#属性)回调中，进行菜单数据的设置。
 
 <!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
@@ -411,7 +411,7 @@ TextInput({ text: $r('app.string.show_selected_menu') })
 
 ### 系统菜单中屏蔽系统菜单项
 
-从API version 20开始，支持使用[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)方法屏蔽文本选择菜单中的所有系统服务菜单项。更多详见[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
+从API version 20开始，支持使用[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textmenucontroller-c.md#disablesystemservicemenuitems)方法屏蔽文本选择菜单中的所有系统服务菜单项。更多详见[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textmenucontroller-c.md#disablesystemservicemenuitems)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)和[onDestroy](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#ondestroy)。
 
 <!-- @[DisableSystemServiceMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableSystemServiceMenuItems.ets) -->
 
@@ -459,7 +459,7 @@ struct DisableSystemServiceMenuItem {
 
 ![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
-从API version 20开始，支持使用[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)方法屏蔽文本选择菜单中指定的系统服务菜单项。更多详见[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
+从API version 20开始，支持使用[disableMenuItems](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textmenucontroller-c.md#disablemenuitems)方法屏蔽文本选择菜单中指定的系统服务菜单项。更多详见[disableMenuItems](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textmenucontroller-c.md#disablemenuitems)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)和[onDestroy](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#ondestroy)。
 
 <!-- @[DisableMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableMenuItems.ets) -->
 
@@ -509,7 +509,7 @@ struct DisableMenuItem {
 
 ### 在子窗口中显示文本菜单
 
-TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
+TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkts-apis/arkts-arkui-textmenushowmode-e.md#textmenushowmode)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
 
 <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
@@ -544,7 +544,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 
 ### 键盘避让
 
-键盘抬起后，具有滚动能力的容器组件在横竖屏切换时，才会生效键盘避让，若希望无滚动能力的容器组件也生效键盘避让，建议在组件外嵌套一层具有滚动能力的容器组件，比如[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)。
+键盘抬起后，具有滚动能力的容器组件在横竖屏切换时，才会生效键盘避让，若希望无滚动能力的容器组件也生效键盘避让，建议在组件外嵌套一层具有滚动能力的容器组件，比如[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)。
 
 <!-- @[keyboard_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets) -->
 
@@ -575,7 +575,7 @@ struct KeyboardAvoid {
 
 ### 光标避让
 
-[keyBoardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)枚举中的OFFSET和RESIZE在键盘抬起后，不支持二次避让。如果想要支持光标位置在点击或者通过接口设置变化后发生二次避让，可以考虑使用OFFSET_WITH_CARET和RESIZE_CARET替换原有的OFFSET和RESIZE模式。<br>
+[keyBoardAvoidMode](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md#keyboardavoidmode)枚举中的OFFSET和RESIZE在键盘抬起后，不支持二次避让。如果想要支持光标位置在点击或者通过接口设置变化后发生二次避让，可以考虑使用OFFSET_WITH_CARET和RESIZE_CARET替换原有的OFFSET和RESIZE模式。<br>
 
 对于滚动容器更推荐使用RESIZE_WITH_CARET，非滚动容器应该使用OFFSET_WITH_CARET。
 

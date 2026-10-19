@@ -28,7 +28,7 @@
 
 > **说明：**
 >
-> 表格中键的定义请参考[native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md)。
+> 表格中键的定义请参考[native_avcodec_base.h](../../reference/apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md)。
 
 
 ## 核心概念详解
@@ -322,6 +322,6 @@ Configure 配置参数：
 
 - [异步模式视频编码开发指导](video-encoding.md) —— Surface模式/Buffer模式完整流程。
 - [异步模式视频解码开发指导](video-decoding.md) —— Surface模式/Buffer模式完整流程。
-- [native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md) —— 所有键名定义。
-- [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md) —— 编码器接口。
-- [native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md) —— 解码器接口。
+- [native_avcodec_base.h](../../reference/apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md) —— 所有键名定义。
+- [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/c-apis/capi-native-avcodec-videoencoder-h.md) —— 编码器接口。
+- [native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/c-apis/capi-native-avcodec-videodecoder-h.md) —— 解码器接口。

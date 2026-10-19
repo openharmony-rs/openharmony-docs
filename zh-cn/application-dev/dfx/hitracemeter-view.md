@@ -80,17 +80,17 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
 
 > **注意：**
 >
-> 1. 一条有效且完整的同步跟踪trace与异步跟踪trace，均包含一条起始trace和一条结束trace，开发者需要保证接口调用的匹配性，否则会导致性能跟踪异常问题。具体可参考ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)或C++接口[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
+> 1. 一条有效且完整的同步跟踪trace与异步跟踪trace，均包含一条起始trace和一条结束trace，开发者需要保证接口调用的匹配性，否则会导致性能跟踪异常问题。具体可参考ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)或C++接口[trace.h](../reference/apis-performance-analysis-kit/c-apis/capi-trace-h.md)。
 > 2. 用户态trace总长度限制512字符，超过部分将被截断。
 
 
 ### 字段说明
 
-本小节将详细介绍用户态trace的各个字段，包括字段组成、含义，字段与打点入参之间的关系，使用[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)作为参考。
+本小节将详细介绍用户态trace的各个字段，包括字段组成、含义，字段与打点入参之间的关系，使用[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)作为参考。
 
 - **类型标识符**
 
-  类型标识符与调用的[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)具体接口相关，其映射关系如下：
+  类型标识符与调用的[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)具体接口相关，其映射关系如下：
 
   - `B`：开启一个同步时间片跟踪事件。
   - `E`：结束一个同步时间片跟踪事件。
@@ -100,7 +100,7 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
 
 - **分布式跟踪链路ID**
 
-  开启HiTraceChain（分布式跟踪）时，会将[HiTraceId](../reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md)核心信息记录在trace打点中，格式为`[ChainId,SpanId,ParentSpanId]`，结尾使用`#`分隔符与内容字段区分。
+  开启HiTraceChain（分布式跟踪）时，会将[HiTraceId](../reference/apis-performance-analysis-kit/c-apis/capi-hitrace-hitraceid.md)核心信息记录在trace打点中，格式为`[ChainId,SpanId,ParentSpanId]`，结尾使用`#`分隔符与内容字段区分。
 
   未开启HiTraceChain（分布式跟踪）时，打点不包含该字段。
 
@@ -112,21 +112,21 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
 
 - **内容**
 
-  表示打点名称或整数变量名。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`name`入参。
+  表示打点名称或整数变量名。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)接口的`name`入参。
 
 - **异步任务ID**
 
-  和内容字段合并用于匹配相同的异步跟踪trace的开始与结束打点。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`taskId`入参。
+  和内容字段合并用于匹配相同的异步跟踪trace的开始与结束打点。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)接口的`taskId`入参。
 
 - **整数值**
 
-  仅在整数值跟踪trace中包含，为跟踪的整数值。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`count`入参。
+  仅在整数值跟踪trace中包含，为跟踪的整数值。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)接口的`count`入参。
 
 - **级别与所属Tag集合**
 
   本字段由级别和所属Tag集合两部分信息组成。
 
-  通过打点接口传入的`级别`信息，该部分为以下字符之一：`D`、`I`、`C`、`M`。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`level`入参，详细介绍及映射关系参考[HiTraceOutputLevel](#hitraceoutputlevel)。
+  通过打点接口传入的`级别`信息，该部分为以下字符之一：`D`、`I`、`C`、`M`。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)接口的`level`入参，详细介绍及映射关系参考[HiTraceOutputLevel](#hitraceoutputlevel)。
 
   所属Tag集合表示trace打点所属Tag类别，每类用两位数字表示，可包含多个从小到大排列的两位数字。
 
@@ -136,18 +136,18 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
   >
   > 1. 对于API version 19及之后接口，支持自定义输出级别；对于API version 18及之前接口，trace打点默认为`COMMERCIAL`级别打点。
   >
-  > 2. 系统侧存在一条用户态trace隶属于多个Tag的情况，ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和C++接口[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)提供的应用侧用户态trace打点功能无法指定`所属Tag集合`，对应Tag分类固定为`app`，字段值为`62`。
+  > 2. 系统侧存在一条用户态trace隶属于多个Tag的情况，ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)和C++接口[trace.h](../reference/apis-performance-analysis-kit/c-apis/capi-trace-h.md)提供的应用侧用户态trace打点功能无法指定`所属Tag集合`，对应Tag分类固定为`app`，字段值为`62`。
 
 
 - **自定义聚类名称**
 
-  可用于开发者自定义的聚类操作。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`customCategory`入参。该字段值可能为空，从而使得日志格式发生变化，详见[字段为空情况说明](#字段为空情况说明)。
+  可用于开发者自定义的聚类操作。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)接口的`customCategory`入参。该字段值可能为空，从而使得日志格式发生变化，详见[字段为空情况说明](#字段为空情况说明)。
 
   在trace可视化工具中，同一进程中相同聚类名称的异步打点放在同一泳道上进行展示。
 
 - **自定义键值对**
 
-  格式为`key=value`，多个键值对使用逗号分隔，例如`key1=value1,key2=value2`。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)接口的`customArgs`入参。该字段值可能为空，从而使得日志格式发生变化，详见[字段为空情况说明](#字段为空情况说明)。
+  格式为`key=value`，多个键值对使用逗号分隔，例如`key1=value1,key2=value2`。对应[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)接口的`customArgs`入参。该字段值可能为空，从而使得日志格式发生变化，详见[字段为空情况说明](#字段为空情况说明)。
 
   在trace可视化工具中，对满足格式要求的自定义键值对，以键值对形式展示解析结果。
 
@@ -175,7 +175,7 @@ API version 19及后续版本的新增字段，均以**竖线+字段**的方式�
 
 ### 字段为空情况说明
 
-如果用户态trace格式中间字段对应接口参数传入内容为空，用户态trace格式将保留`|`分隔符，如果尾部字段为空，用户态trace格式将不保留`|`分隔符。以[hiTraceMeter.startAsyncTrace()](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md#hitracemeterstartasynctrace19)和[hiTraceMeter.startSyncTrace()](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md#hitracemeterstartsynctrace19)接口的`自定义聚类名称`和`自定义键值对`参数为例，对应的格式参考如下。
+如果用户态trace格式中间字段对应接口参数传入内容为空，用户态trace格式将保留`|`分隔符，如果尾部字段为空，用户态trace格式将不保留`|`分隔符。以[hiTraceMeter.startAsyncTrace()](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-startasynctrace-f.md#startasynctrace)和[hiTraceMeter.startSyncTrace()](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-startsynctrace-f.md#startsynctrace)接口的`自定义聚类名称`和`自定义键值对`参数为例，对应的格式参考如下。
 
 - 开始同步trace打点。
 

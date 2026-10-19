@@ -20,7 +20,7 @@ ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if�
 
 - 允许在容器组件内使用，通过条件渲染语句构建不同的子组件。
 
-- 条件渲染语句在涉及到组件的父子关系时是“透明”的，父组件和子组件之间的条件渲染语句不影响父组件关于子组件使用的限制。例如，某些容器组件限制子组件的类型或数量。将条件渲染语句用于这些组件内时，这些限制同样适用于条件渲染语句内创建的组件。具体而言，[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)容器组件的子组件仅支持[GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md)组件。在Grid内使用条件渲染语句时，条件渲染语句内仅允许使用GridItem组件。
+- 条件渲染语句在涉及到组件的父子关系时是“透明”的，父组件和子组件之间的条件渲染语句不影响父组件关于子组件使用的限制。例如，某些容器组件限制子组件的类型或数量。将条件渲染语句用于这些组件内时，这些限制同样适用于条件渲染语句内创建的组件。具体而言，[Grid](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)容器组件的子组件仅支持[GridItem](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-griditem-t.md)组件。在Grid内使用条件渲染语句时，条件渲染语句内仅允许使用GridItem组件。
 
 - 每个分支内部的构建函数必须遵循构建函数的规则，并创建一个或多个组件。无法创建组件的空构建函数会产生语法错误。关于构建函数的规则，请参考：[基本语法概述](../state-management/arkts-basic-syntax-overview.md)、[声明式UI描述](../state-management/arkts-declarative-ui-description.md)。
 
@@ -81,7 +81,7 @@ if语句的每个分支都包含一个构建函数。此类构建函数必须创
 
 2. 执行新分支的构建函数，将生成的子组件添加到其父组件中。
 
-在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构建函数，创建一个[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)组件中删除。由于没有else分支，因此不会执行新的构建函数。
+在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构建函数，创建一个[Text](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从[Column](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-column-t.md)组件中删除。由于没有else分支，因此不会执行新的构建函数。
 
 ### if ... else ...语句和子组件状态
 

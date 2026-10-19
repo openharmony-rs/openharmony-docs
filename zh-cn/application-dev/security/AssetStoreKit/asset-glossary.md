@@ -21,7 +21,7 @@
 
 ### Challenge；挑战值
 
-[preQuery](../../reference/apis-asset-store-kit/js-apis-asset.md#assetprequery)接口返回的用于用户认证的随机值。
+[preQuery](../../reference/apis-asset-store-kit/c-apis/capi-asset-api-h.md#ohassetprequery)接口返回的用于用户认证的随机值。
 
 ## I
 

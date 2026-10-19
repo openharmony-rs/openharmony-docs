@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg等格式，不支持apng和svga格式，具体支持格式和用法请参考[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件。
+开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg等格式，不支持apng和svga格式，具体支持格式和用法请参考[Image](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-image-t.md)组件。
 
 
 Image通过调用接口来创建，接口调用形式如下：
@@ -58,7 +58,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   首次加载网络图片时，Image组件需要请求网络资源；非首次加载时，默认从缓存中直接读取图片。
   
-  更多图片缓存设置请参考[setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7)、[setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7)和[setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7)。这三个图片缓存接口主要用于支持简单、通用的场景，后续不再继续演进，且在灵活和扩展性方面存在一定限制，例如：
+  更多图片缓存设置请参考[setImageCacheCount](../reference/apis-arkui/arkts-apis/arkts-arkui-system-app-app-c.md#setimagecachecount)、[setImageRawDataCacheSize](../reference/apis-arkui/arkts-apis/arkts-arkui-system-app-app-c.md#setimagerawdatacachesize)和[setImageFileCacheSize](../reference/apis-arkui/arkts-apis/arkts-arkui-system-app-app-c.md#setimagefilecachesize)。这三个图片缓存接口主要用于支持简单、通用的场景，后续不再继续演进，且在灵活和扩展性方面存在一定限制，例如：
   - 无法获取当前缓存占用信息。Image组件目前不支持查询磁盘缓存的实时状态，包括文件总大小和文件数量。
   - 缓存策略不可定制，缺乏缓存状态观测能力。开发者无法通过接口感知缓存命中率、淘汰次数等运行时的指标，难以基于实际缓存效果进行动态调优。
 
@@ -66,7 +66,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用[HTTP](../network/http-request.md)工具提前下载，提高图片加载性能，方便应用侧管理数据。
 
-  在显示网络图片时，Image组件在机制上会依赖[@ohos.request.cacheDownload (缓存下载)](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md)，开发者可参考[示例3（下载与显示网络gif图片）](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例3下载与显示网络gif图片)了解具体用法。
+  在显示网络图片时，Image组件在机制上会依赖[@ohos.request.cacheDownload (缓存下载)](../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-request-cachedownload.md)，开发者可参考[示例3（下载与显示网络gif图片）](../reference/apis-arkui/arkts-components/arkts-arkui-image-comp.md#示例3下载与显示网络gif图片)了解具体用法。
   
   缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
 
@@ -111,7 +111,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
 - 媒体库资源（file://路径前缀）
   
-  支持file://路径前缀的字符串，用于访问通过[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)提供的图片路径。
+  支持file://路径前缀的字符串，用于访问通过[选择器](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-file-picker.md)提供的图片路径。
   1. 调用接口获取图库的照片url。
       <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->    
   
@@ -245,7 +245,7 @@ struct HttpExample {
 
 ### 可绘制描述符
 
-DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考[DrawableDescriptor](../../application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md)。
+DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考[DrawableDescriptor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor.md)。
 
 通过DrawableDescriptor显示图片及动画的示例如下所示：
 
@@ -373,7 +373,7 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
 
 ## 显示矢量图
 
-Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-svg.md)。
+Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明](../reference/apis-arkui/arkui-js/js-components-svg.md)。
 
 如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过`<image>`标签引用SVG格式和gif格式的本地其他图片。
 
@@ -428,11 +428,11 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ## 添加属性
 
-给Image组件设置属性可以使图片显示更灵活，达到一些自定义的效果。以下是几个常用属性的使用示例，完整属性信息详见[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)。
+给Image组件设置属性可以使图片显示更灵活，达到一些自定义的效果。以下是几个常用属性的使用示例，完整属性信息详见[Image](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-image-t.md)。
 
 ### 设置图片缩放类型
 
-通过设置[objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#objectfit)属性，可以使图片在高度和宽度确定的框内进行缩放。
+通过设置[objectFit](../reference/apis-arkui/arkts-apis/arkts-arkui-imageattachment-c.md#objectfit)属性，可以使图片在高度和宽度确定的框内进行缩放。
 
 
   <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
@@ -528,7 +528,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ### 图片插值
 
-当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用[interpolation](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#interpolation)属性对图片进行插值，以提高显示清晰度。
+当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用[interpolation](../reference/apis-arkui/arkts-components/arkts-arkui-image-comp-attribute.md#interpolation)属性对图片进行插值，以提高显示清晰度。
 
 
   <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->    
@@ -593,7 +593,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ### 设置图片重复样式
 
-通过objectRepeat属性设置图片的重复样式方式，重复样式请参考[ImageRepeat](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#imagerepeat)枚举说明。
+通过objectRepeat属性设置图片的重复样式方式，重复样式请参考[ImageRepeat](../reference/apis-arkui/arkts-apis/arkts-arkui-imagerepeat-e.md#imagerepeat)枚举说明。
 
 
   <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->    

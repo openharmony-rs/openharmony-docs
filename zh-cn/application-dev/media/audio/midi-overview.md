@@ -42,17 +42,17 @@ OH_MIDI包含客户端、设备、端口和事件四个核心概念。使用OH_M
 
 客户端是应用使用MIDI服务的入口点，所有MIDI操作都需要先创建客户端。同时，客户端负责管理与MIDI服务的连接、提供设备枚举、设备打开和端口管理等核心功能。
 
-通过[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建客户端后，应用可以获取当前连接的所有MIDI设备列表，并通过注册的回调监听设备的热插拔事件（[OH_MIDICallback_OnDeviceChange](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_ondevicechange)）和系统级错误（[OH_MIDICallback_OnError](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_onerror)）。
+通过OH_MIDIClient_Create接口创建客户端后，应用可以获取当前连接的所有MIDI设备列表，并通过注册的回调监听设备的热插拔事件（OH_MIDICallback_OnDeviceChange）和系统级错误（OH_MIDICallback_OnError）。
 
 关闭客户端时，系统会自动关闭该客户端名下打开的所有设备和端口（自动资源回收机制）。建议应用按相反顺序（端口→设备→客户端）主动释放资源，以保证代码逻辑清晰。
 
 ## OH_MIDI设备（Device）
 
-MIDI设备是指物理或虚拟的MIDI接口设备，包括USB MIDI键盘、蓝牙MIDI控制器等。设备连接后，MIDI服务会为其分配标识符（[OH_MIDIDeviceInformation](../../reference/apis-audio-kit/capi-ohmidi-oh-midideviceinformation.md)中的`midiDeviceId`），用于在当前会话中区分和管理不同设备。
+MIDI设备是指物理或虚拟的MIDI接口设备，包括USB MIDI键盘、蓝牙MIDI控制器等。设备连接后，MIDI服务会为其分配标识符（[OH_MIDIDeviceInformation](../../reference/apis-audio-kit/c-apis/capi-ohmidi-oh-midideviceinformation.md)中的`midiDeviceId`），用于在当前会话中区分和管理不同设备。
 
 设备信息包含设备类型（USB或蓝牙）、原生协议能力、设备名称、厂商ID、产品ID和设备地址等属性。
 
-**连接方式：** USB设备通过[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开，蓝牙低功耗（Bluetooth Low Energy）MIDI设备则需要通过[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步连接。
+**连接方式：** USB设备通过OH_MIDIClient_OpenDevice接口同步打开，蓝牙低功耗（Bluetooth Low Energy）MIDI设备则需要通过OH_MIDIClient_OpenBLEDevice接口异步连接。
 
 **原生协议能力：** 指示设备当前的通讯协议模式。在当前版本中，当设备支持多种协议时，系统会优先以MIDI 1.0模式与设备通讯，并在MIDI服务层将数据封装为MIDI 2.0 UMP格式提供给应用。
 
@@ -60,24 +60,24 @@ MIDI设备是指物理或虚拟的MIDI接口设备，包括USB MIDI键盘、蓝�
 
 MIDI端口是设备上的数据传输端点，分为输入端口和输出端口。
 
-* 输入端口（Input Port）：用于从设备接收MIDI数据。通过[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)接口打开并注册[OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)回调，实现批量消息接收。
+* 输入端口（Input Port）：用于从设备接收MIDI数据。通过OH_MIDIDevice_OpenInputPort接口打开并注册OH_MIDIDevice_OnReceived回调，实现批量消息接收。
 
   数据流向说明：MIDI设备向应用发送数据，应用通过回调接收。
 
-* 输出端口（Output Port）：用于向设备发送MIDI数据。通过[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口打开输出端口后，使用[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送UMP格式消息。
+* 输出端口（Output Port）：用于向设备发送MIDI数据。通过OH_MIDIDevice_OpenOutputPort接口打开输出端口后，使用OH_MIDIDevice_Send接口发送UMP格式消息。
 
-  数据流向说明：应用调用[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口向MIDI设备发送数据。
+  数据流向说明：应用调用OH_MIDIDevice_Send接口向MIDI设备发送数据。
 
 ``` Text
 [应用] <--接收-- [输入端口] <-- [设备]
 [应用] --发送--> [输出端口] --> [设备]
 ```
 
-每个设备可以有多个输入和输出端口。当每个端口打开时，可以通过[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置期望的协议行为。
+每个设备可以有多个输入和输出端口。当每个端口打开时，可以通过[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/c-apis/capi-ohmidi-oh-midiportdescriptor.md)结构配置期望的协议行为。
 
 * 数据转换：无论底层设备是MIDI 1.0还是2.0，应用层均统一收发UMP数据包。
 * 协议降级：如果应用请求发送MIDI 2.0高精度消息（UMP Type 4），但底层设备仅支持MIDI 1.0，MIDI服务层会自动将其降级转换为MIDI 1.0消息发送。
-* 自动转换说明：系统服务层会在接收方向自动将底层协议数据转换为UMP格式供应用处理。但在发送方向上，应用需要按照UMP规范自行构造[OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md)数据。
+* 自动转换说明：系统服务层会在接收方向自动将底层协议数据转换为UMP格式供应用处理。但在发送方向上，应用需要按照UMP规范自行构造[OH_MIDIEvent](../../reference/apis-audio-kit/c-apis/capi-ohmidi-oh-midievent.md)数据。
 
 ## OH_MIDI事件（Event）
 
@@ -130,29 +130,29 @@ UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据
 
 ## 约束与限制
 
-- 同时打开的设备数量限制：单个客户端最多可同时打开16个MIDI设备。超过限制时，[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口将返回OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES错误。
+- 同时打开的设备数量限制：单个客户端最多可同时打开16个MIDI设备。超过限制时，OH_MIDIClient_OpenDevice接口将返回OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES错误。
 
-- 每个设备的端口数量限制：每个MIDI设备最多可有64个端口（输入+输出总计）。单个客户端最多可同时打开64个端口。超过限制时，[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)或[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口将返回OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS错误。
+- 每个设备的端口数量限制：每个MIDI设备最多可有64个端口（输入+输出总计）。单个客户端最多可同时打开64个端口。超过限制时，OH_MIDIDevice_OpenInputPort或OH_MIDIDevice_OpenOutputPort接口将返回OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS错误。
 
-- 缓冲区大小限制：共享内存缓冲区大小为4KB。发送大量MIDI消息时，如果缓冲区填满，[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口将返回OH_MIDI_STATUS_WOULD_BLOCK。建议应用批量发送消息，并在收到此错误后延迟10ms再重试。
+- 缓冲区大小限制：共享内存缓冲区大小为4KB。发送大量MIDI消息时，如果缓冲区填满，OH_MIDIDevice_Send接口将返回OH_MIDI_STATUS_WOULD_BLOCK。建议应用批量发送消息，并在收到此错误后延迟10ms再重试。
 
-- 线程模型和回调执行环境：所有回调（[OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)、[OH_MIDICallback_OnDeviceChange](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_ondevicechange)、[OH_MIDICallback_OnError](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_onerror)）在高优先级系统线程上执行。回调中应避免执行阻塞操作、大量计算或I/O操作，以免影响MIDI系统的实时性能。
+- 线程模型和回调执行环境：所有回调（OH_MIDIDevice_OnReceived、OH_MIDICallback_OnDeviceChange、OH_MIDICallback_OnError）在高优先级系统线程上执行。回调中应避免执行阻塞操作、大量计算或I/O操作，以免影响MIDI系统的实时性能。
 
-- 内存安全：[OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)回调中的events数组及其包含的数据指针仅在回调期间有效。如需保留数据，必须在回调返回前复制。访问过期指针会导致未定义行为（崩溃、内存损坏）。
+- 内存安全：OH_MIDIDevice_OnReceived回调中的events数组及其包含的数据指针仅在回调期间有效。如需保留数据，必须在回调返回前复制。访问过期指针会导致未定义行为（崩溃、内存损坏）。
 
 - 资源管理顺序：关闭客户端时会自动关闭所有设备和端口。建议应用按相反顺序关闭资源，以保证代码逻辑清晰。
-  - 第一步：关闭所有端口（[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)/[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)）。
-  - 第二步：关闭所有设备（[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)）。
-  - 第三步：销毁客户端（[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)）。
+  - 第一步：关闭所有端口（OH_MIDIDevice_CloseInputPort/OH_MIDIDevice_CloseOutputPort）。
+  - 第二步：关闭所有设备（OH_MIDIClient_CloseDevice）。
+  - 第三步：销毁客户端（OH_MIDIClient_Destroy）。
 
   此顺序为推荐做法，用于保证代码逻辑清晰，但系统提供自动资源回收机制确保资源正确释放。
 
 - 设备类型特性差异：
   - USB MIDI设备：通过USB连接，支持低延迟传输，设备枚举通过系统USB驱动完成。
-  - 蓝牙MIDI设备：通过蓝牙BLE连接，需要ohos.permission.ACCESS_BLUETOOTH权限，使用[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步打开。
+  - 蓝牙MIDI设备：通过蓝牙BLE连接，需要ohos.permission.ACCESS_BLUETOOTH权限，使用OH_MIDIClient_OpenBLEDevice接口异步打开。
 
 ## 相关参考
 
 - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
-- - [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
-- MIDI状态码枚举：[OH_MIDIStatusCode](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midistatuscode)
+- - [OHMIDI](../../reference/apis-audio-kit/c-apis/capi-ohmidi.md)API参考
+- MIDI状态码枚举：[OH_MIDIStatusCode](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md#code)

@@ -51,15 +51,15 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 开发步骤
 
-1. 调用[OH_CryptoRand_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_create)，创建随机数生成器。
+1. 调用OH_CryptoRand_Create，创建随机数生成器。
 
-2. 调用[OH_CryptoRand_EnableHardwareEntropy](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_enablehardwareentropy)，开启硬件熵源。
+2. 调用OH_CryptoRand_EnableHardwareEntropy，开启硬件熵源。
 
-3. （可选）调用[OH_CryptoRand_SetSeed](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_setseed)，为随机数生成器设置种子。
+3. （可选）调用OH_CryptoRand_SetSeed，为随机数生成器设置种子。
 
-4. 调用[OH_CryptoRand_GenerateRandom](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_generaterandom)，生成指定长度的安全随机数。指定字节长度范围为1~INT_MAX。
+4. 调用OH_CryptoRand_GenerateRandom，生成指定长度的安全随机数。指定字节长度范围为1~INT_MAX。
 
-5. 调用[OH_CryptoRand_GetAlgoName](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_getalgoname)，获取随机数生成器使用的算法名称。
+5. 调用OH_CryptoRand_GetAlgoName，获取随机数生成器使用的算法名称。
 
 <!-- @[rand_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/cpp/types/project/rand_test.cpp) -->
 

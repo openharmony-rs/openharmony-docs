@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-网盘服务底座为应用开发者提供了一套高效、安全的文件管理能力，支持对网盘同步根目录及其子目录进行状态管理，状态查询，变更监听等功能。网盘服务底座的接口由CloudDisk模块提供，详细API请参考[oh_cloud_disk_manager.h](../reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md)。
+网盘服务底座为应用开发者提供了一套高效、安全的文件管理能力，支持对网盘同步根目录及其子目录进行状态管理，状态查询，变更监听等功能。网盘服务底座的接口由CloudDisk模块提供，详细API请参考[oh_cloud_disk_manager.h](../reference/apis-core-file-kit/c-apis/capi-oh-cloud-disk-manager-h.md)。
 
 本开发指导围绕以下四个方面展开，各项能力存在层层依赖关系：
 

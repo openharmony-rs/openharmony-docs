@@ -37,7 +37,7 @@
 
 ## 如何选择内录接口
 
-如果仅需要获取系统播放音频的PCM数据，或需要将音频数据接入自定义编码、算法和传输链路，使用[AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)（ArkTS API）或[native_audiocapturer.h](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md)（C API）。如果需要同时录制屏幕画面和系统音频，使用[AVScreenCapture录屏基础流程](../media/avscreencapture-c-basic-process.md)。
+如果仅需要获取系统播放音频的PCM数据，或需要将音频数据接入自定义编码、算法和传输链路，使用[AudioCapturer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md)（ArkTS API）或[native_audiocapturer.h](../../reference/apis-audio-kit/c-apis/capi-native-audiocapturer-h.md)（C API）。如果需要同时录制屏幕画面和系统音频，使用[AVScreenCapture录屏基础流程](../media/avscreencapture-c-basic-process.md)。
 
 | 接口类型 | 开放版本 | 适用场景 | 开发指导 |
 | -------- | ------------ | -------- | -------- |

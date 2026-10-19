@@ -208,7 +208,7 @@ try {
 
 参考链接
 
-[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)
+[FormExtensionAbility](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability.md)
 
 
 ## 使用ServiceExtensionAbility和DataShareExtensionAbility的相关接口后DevEco Studio无法编译(API 9)

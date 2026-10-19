@@ -18,11 +18,11 @@
 ## 基础概念
 在开发前，需要了解以下基础概念：
 
-- [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)
+- [PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
   位图对象。可用于读取或写入像素数据，可以进行裁剪、缩放、平移、旋转、镜像等操作，并可直接传给[Image组件](../../ui/arkts-graphics-display.md)用于显示。还提供了获取图片信息、获取和设置图片色域、HDR元数据的方法。
 
-- [Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md)
+- [Picture](../../reference/apis-image-kit/arkts-apis/arkts-image-image-picture-i.md)
   
   多图对象。包含主图、辅助图和元数据。其中，主图包含了主要图像信息；辅助图用于存储与主图相关的附加信息；元数据用于存储与图片相关的其他信息。Picture提供获取主图、合成HDR图、获取辅助图、设置辅助图、获取元数据、设置元数据等方法。
 
@@ -67,14 +67,14 @@ Image Kit还提供了读取和[编辑图片EXIF信息](../image/image-tool.md)�
 
 - **选择合适的C API接口：**
   
-  Image Kit当前提供了两套C API接口，分别为依赖于JS对象的C API（[Image](../../reference/apis-image-kit/capi-image.md)）和不依赖于JS对象的C API（[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)）。
+  Image Kit当前提供了两套C API接口，分别为依赖于JS对象的C API（[Image](../../reference/apis-image-kit/c-apis/capi-image.md)）和不依赖于JS对象的C API（[Image_NativeModule](../../reference/apis-image-kit/c-apis/capi-image-nativemodule.md)）。
   - 依赖于JS对象的C接口
   
-    这类接口可以完成图片编解码，图片接收器，处理图像数据等功能，相关示例代码可以参考[图片开发指导(依赖JS对象)(C/C++)](image-decoding-native.md)节点下的内容。开发者可查看[Image](../../reference/apis-image-kit/capi-image.md)模块下的C API，确认API范围。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。
+    这类接口可以完成图片编解码，图片接收器，处理图像数据等功能，相关示例代码可以参考[图片开发指导(依赖JS对象)(C/C++)](image-decoding-native.md)节点下的内容。开发者可查看[Image](../../reference/apis-image-kit/c-apis/capi-image.md)模块下的C API，确认API范围。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。
 
   - 不依赖于JS对象的C接口
   
-    这类接口除了提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。开发者可查看[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)模块下的C API，确认API范围。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。
+    这类接口除了提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。开发者可查看[Image_NativeModule](../../reference/apis-image-kit/c-apis/capi-image-nativemodule.md)模块下的C API，确认API范围。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。
 
   > **注意：**
   >
@@ -84,7 +84,7 @@ Image Kit还提供了读取和[编辑图片EXIF信息](../image/image-tool.md)�
 
 ## 与相关Kit的关系
 
-Image Kit提供图片编解码、图片接收、图片编辑和处理等能力，为Image组件、图库以及其他有图片相关需求的应用提供支撑。图片解码得到的PixelMap可以传给[Image组件](../../ui/arkts-graphics-display.md)显示。通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)（图片接收）可以实现[相机预览流二次处理](../camera/native-camera-preview-imageReceiver.md)。
+Image Kit提供图片编解码、图片接收、图片编辑和处理等能力，为Image组件、图库以及其他有图片相关需求的应用提供支撑。图片解码得到的PixelMap可以传给[Image组件](../../ui/arkts-graphics-display.md)显示。通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagereceiver-i.md)（图片接收）可以实现[相机预览流二次处理](../camera/native-camera-preview-imageReceiver.md)。
 
 ## 相关实例
 

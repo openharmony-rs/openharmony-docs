@@ -17,12 +17,12 @@
 
 ### 时间日期格式化
 
-时间日期格式化请参考[Intl.DateTimeFormat](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)接口。
+时间日期格式化请参考Intl.DateTimeFormat接口。
 
 ### 相对时间格式化
 
-相对时间格式化请参考[format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format)接口。
+相对时间格式化请参考format接口。
 
 ### 时间段格式化
 
-时间段格式化请参考[formatRange](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange)接口。
+时间段格式化请参考formatRange接口。

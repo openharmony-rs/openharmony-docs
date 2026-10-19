@@ -16,8 +16,8 @@ NDK接口为组件提供了事件监听能力，开发者可以通过添加事�
 
 NDK接口支持以下两种事件监听方式。
 
-- **监听节点事件**：针对单个组件添加事件监听器，只监听该组件上发生的事件。使用[addNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver)添加监听器，然后使用[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)声明需要监听的事件类型。
-- **监听全局事件**：监听所有Native组件的事件触发。使用[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)注册全局的事件处理函数，能够统一处理各个组件的事件。
+- **监听节点事件**：针对单个组件添加事件监听器，只监听该组件上发生的事件。使用[addNodeEventReceiver](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver)添加监听器，然后使用[registerNodeEvent](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)声明需要监听的事件类型。
+- **监听全局事件**：监听所有Native组件的事件触发。使用[registerNodeEventReceiver](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)注册全局的事件处理函数，能够统一处理各个组件的事件。
 
 除了组件交互事件外，NDK接口还支持监听组件布局完成事件、绘制送显事件以及系统深浅色变更事件等。
 
@@ -50,7 +50,7 @@ NDK接口支持以下两种事件监听方式。
 
 **通用拖拽：** 通过组件的拖拽属性设置，使组件具备可拖拽能力。在拖拽的不同阶段会触发相应的组件事件（如预拖拽、起拖、进入、移动、离开、落入、结束等），支持自定义拖拽预览图和跟手图选项，并通过UDMF（统一数据管理框架）进行数据传递。
 
-**DragAction主动发起拖拽：** 通过事件主动发起拖拽的能力。通过注册[NODE_ON_TOUCH_INTERCEPT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，在接收到触摸事件后创建DragAction对象，设置跟手图选项、跟手点和拖拽数据，然后主动发起拖拽。这种方式提供了更灵活的拖拽控制，可实现按需触发拖拽的场景。
+**DragAction主动发起拖拽：** 通过事件主动发起拖拽的能力。通过注册NODE_ON_TOUCH_INTERCEPT事件，在接收到触摸事件后创建DragAction对象，设置跟手图选项、跟手点和拖拽数据，然后主动发起拖拽。这种方式提供了更灵活的拖拽控制，可实现按需触发拖拽的场景。
 
 ## 相关文档
 

@@ -11,7 +11,7 @@
 
 网格布局是由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。网格布局具有较强的页面均分能力，子组件占比控制能力，是一种重要自适应布局，其使用场景有九宫格图片展示、日历、计算器等。
 
-ArkUI提供了[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)容器组件和子组件[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)，用于构建网格布局。Grid用于设置网格布局相关参数，GridItem定义子组件相关特征。Grid组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等方式生成子组件。
+ArkUI提供了[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)容器组件和子组件[GridItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-griditem-t.md)，用于构建网格布局。Grid用于设置网格布局相关参数，GridItem定义子组件相关特征。Grid组件支持使用[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)、[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等方式生成子组件。
 
 > **说明：** 
 >
@@ -49,7 +49,7 @@ Grid组件根据行列数量与占比属性的设置，可以分为三种布局�
 
 ### 设置行列数量与占比
 
-通过设置行列数量与尺寸占比可以确定网格布局的整体排列方式。Grid组件提供了[rowsTemplate](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowstemplate)和[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate)属性用于设置网格布局行列数量与尺寸占比。
+通过设置行列数量与尺寸占比可以确定网格布局的整体排列方式。Grid组件提供了[rowsTemplate](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#rowstemplate)和[columnsTemplate](../reference/apis-arkui/arkts-apis/arkts-arkui-layoutalgorithm-gridlayoutalgorithm-c.md#columnstemplate)属性用于设置网格布局行列数量与尺寸占比。
 
 rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即网格布局的行或列数，fr前面的数值大小，用于计算该行或列在网格布局对应方向上的尺寸占比，最终决定该行的高度或列的宽度。
 
@@ -72,12 +72,12 @@ Grid() {
 
 >**说明：**
 >
->当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考[Grid-属性](../reference/apis-arkui/arkui-ts/ts-container-grid.md#属性)。
+>当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考[Grid-属性](../reference/apis-arkui/arkui-js/js-components-grid-col.md#属性)。
 
 
 ### 设置子组件所占行列数
 
-除了大小相同的等比例网格布局，由不同大小的网格组成不均匀分布的网格布局场景在实际应用中十分常见，如下图所示。在Grid组件中，可以通过创建Grid时传入合适的[GridLayoutOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#gridlayoutoptions10对象说明)实现如图所示的单个网格横跨多行或多列的场景，其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用。
+除了大小相同的等比例网格布局，由不同大小的网格组成不均匀分布的网格布局场景在实际应用中十分常见，如下图所示。在Grid组件中，可以通过创建Grid时传入合适的GridLayoutOptions实现如图所示的单个网格横跨多行或多列的场景，其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用。
 
   **图4** 不均匀网格布局 
 
@@ -119,7 +119,7 @@ Grid(undefined, this.layoutOptions) {
 
 ### 设置主轴方向
 
-使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过[layoutDirection](../reference/apis-arkui/arkui-ts/ts-container-grid.md#layoutdirection8)设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合[minCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#mincount8)和[maxCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#maxcount8)属性来约束主轴方向上的网格数量。
+使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过[layoutDirection](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#layoutdirection)设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合[minCount](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#mincount)和[maxCount](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#maxcount)属性来约束主轴方向上的网格数量。
 
   **图6** 主轴方向示意图  
 
@@ -240,7 +240,7 @@ export struct DataInGrid {
 
 ![grid8](figures/grid8.png)
 
-通过Grid的[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnsgap)可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15vp，列间距为10vp。
+通过Grid的[rowsGap](../reference/apis-arkui/arkts-apis/arkts-arkui-layoutalgorithm-gridlayoutalgorithm-c.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkts-apis/arkts-arkui-layoutalgorithm-gridlayoutalgorithm-c.md#columnsgap)可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15vp，列间距为10vp。
 
 <!-- @[set_rows_and_columns_occupied](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridColumnsGap.ets) -->
 
@@ -312,7 +312,7 @@ export struct ScrollableGrid {
 
 ![grid10](figures/grid10.gif)
 
-Grid组件初始化时，可以绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，用于进行滚动控制，例如通过Scroller对象的[scrollPage](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollpage9)方法进行翻页。
+Grid组件初始化时，可以绑定一个[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)对象，用于进行滚动控制，例如通过Scroller对象的[scrollPage](../reference/apis-arkui/arkts-components/arkts-arkui-scroll-comp-scroller-c.md#scrollpage)方法进行翻页。
 
 <!-- @[build_a_private_scrolling_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/ScrollPositionGrid.ets) -->
 
@@ -352,16 +352,16 @@ private scroller: Scroller = new Scroller();
 
 ## 添加外置滚动条
 
-网格组件[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)可与[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)组件配合使用，为网格添加外置滚动条。两者通过绑定同一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)滚动控制器对象实现联动。
+网格组件[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)可与ScrollBar组件配合使用，为网格添加外置滚动条。两者通过绑定同一个[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)滚动控制器对象实现联动。
 
-1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)类型的对象gridScroller。
+1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)类型的对象gridScroller。
    <!-- @[Add_external_scrollbar_gridScroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
    
    ``` TypeScript
    private gridScroller: Scroller = new Scroller();
    ```
 
-2. 然后，通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-grid.md#接口)参数绑定滚动控制器。
+2. 然后，通过[scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-gridobjectsortcomponent.md#接口)参数绑定滚动控制器。
    
    <!-- @[Add_external_scrollbar1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
    
@@ -373,7 +373,7 @@ private scroller: Scroller = new Scroller();
    ```
 
 
-3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions对象说明)参数绑定滚动控制器。
+3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkts-components/arkts-arkui-scrollbar-comp.md#scrollbaroptions对象说明)参数绑定滚动控制器。
       
 
    <!-- @[Add_external_scrollbar2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
@@ -388,12 +388,12 @@ private scroller: Scroller = new Scroller();
 ![ScrollBar](figures/grid_scrollbar.gif)
 
 >**说明：**
->- 滚动条组件[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)，还可配合其他可滚动组件使用，如[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)。
->- 在圆形屏幕设备上，[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)可以与弧形滚动条组件[ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md)配合使用为网格添加弧形外置滚动条，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)的[添加外置滚动条ArcScrollBar](./arkts-layout-development-create-arclist.md#添加外置滚动条arcscrollbar)章节。
+>- 滚动条组件ScrollBar，还可配合其他可滚动组件使用，如ArcList、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)。
+>- 在圆形屏幕设备上，[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)可以与弧形滚动条组件ArcScrollBar配合使用为网格添加弧形外置滚动条，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)的[添加外置滚动条ArcScrollBar](./arkts-layout-development-create-arclist.md#添加外置滚动条arcscrollbar)章节。
 
 ## 手指滑动多选
 
-从API版本26.0.0开始，[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)支持在编辑模式下实现手指滑动多选能力。进入编辑模式后，用户可以通过手指滑动经过多个[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)，批量选择或取消选择网格项。应用可以在GridItem上设置是否允许被选择，并根据回调记录已选择的网格项。该能力适用于相册、文件管理、视频列表等需要连续批量选择网格项的场景。
+从API版本26.0.0开始，[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)支持在编辑模式下实现手指滑动多选能力。进入编辑模式后，用户可以通过手指滑动经过多个[GridItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-griditem-t.md)，批量选择或取消选择网格项。应用可以在GridItem上设置是否允许被选择，并根据回调记录已选择的网格项。该能力适用于相册、文件管理、视频列表等需要连续批量选择网格项的场景。
 
 **Grid手指滑动多选示例效果图**
 
@@ -401,9 +401,9 @@ private scroller: Scroller = new Scroller();
 
 ### 设置编辑模式
 
-通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-grid.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
+通过[enableEditMode](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
 
-通过[editModeOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#editmodeoptions23)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示GridItem右下角的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
+通过[editModeOptions](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#editmodeoptions)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示GridItem右下角的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
 <!-- @[Add_grid_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
 
 ``` TypeScript
@@ -419,7 +419,7 @@ Grid() {
 
 ### 记录网格项选择结果
 
-在GridItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#onselect8)。selectable用于设置网格项是否允许被选择，selected用于设置网格项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个网格项的最新选择结果。
+在GridItem上配置[selectable](../reference/apis-arkui/arkts-components/arkts-arkui-griditem-comp-attribute.md#selectable)、[selected](../reference/apis-arkui/arkts-components/arkts-arkui-griditem-comp-attribute.md#selected)和[onSelect](../reference/apis-arkui/arkts-components/arkts-arkui-griditem-comp-attribute.md#onselect)。selectable用于设置网格项是否允许被选择，selected用于设置网格项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个网格项的最新选择结果。
 <!-- @[Add_grid_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
 
 ``` TypeScript
@@ -436,8 +436,8 @@ GridItem() {
 >**说明：**
 >
 >- 建议使用网格项数据中不会随位置变化的唯一标识（例如文件ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
->- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)回调中保存选择结果。
->- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中网格项状态与数据源一致。
+>- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#oneditmodechange)回调中保存选择结果。
+>- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#datachangelistener)通知组件刷新，确保滑动多选过程中网格项状态与数据源一致。
 
 ## 性能优化
 
@@ -445,7 +445,7 @@ GridItem() {
 
 关于按需加载优化的具体实现可参考[数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)章节中的示例。
 
-当使用懒加载方式渲染网格时，为了更好的滚动体验，减少滑动时出现白块，Grid组件中也可通过[cachedCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#cachedcount)属性设置GridItem的预加载数量，只在懒加载[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)中生效。
+当使用懒加载方式渲染网格时，为了更好的滚动体验，减少滑动时出现白块，Grid组件中也可通过[cachedCount](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#cachedcount)属性设置GridItem的预加载数量，只在懒加载[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)中生效。
 
   设置预加载数量后，会在Grid显示区域前后各缓存cachedCount\*列数个GridItem，超出显示和缓存范围的GridItem会被释放。
 

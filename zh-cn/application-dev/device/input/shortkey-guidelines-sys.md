@@ -19,7 +19,7 @@ import { shortKey } from '@kit.InputKit';
 
 ## 接口说明
 
-系统预置全局快捷键常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)](../../reference/apis-input-kit/js-apis-shortKey-sys.md)。
+系统预置全局快捷键常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)](../../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-shortkey.md)。
 
 | 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |

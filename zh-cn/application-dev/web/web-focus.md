@@ -10,7 +10,7 @@
 
 - Web组件与ArkUI组件焦点控制的常用接口及其使用场景：
 
-  1. 通过requestFocus主动请求Web组件获焦：当应用内有多个组件时，开发者可通过Web组件的[requestFocus](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#requestfocus)接口，主动将焦点转移到Web组件。
+  1. 通过requestFocus主动请求Web组件获焦：当应用内有多个组件时，开发者可通过Web组件的[requestFocus](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#requestfocus)接口，主动将焦点转移到Web组件。
   2. 根据焦点情况更改Web组件样式：组件监听焦点事件上报，为组件修改样式，例如边框、背景色等，以提供视觉和交互反馈。
 
 - Web组件内H5元素焦点控制的常用接口及其使用场景：
@@ -59,19 +59,19 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 
 - Web组件不可见：Web组件获焦后，应用前后台切换、页面切换、Navigation导航等场景，Web组件会失焦再获焦。
 
-- Web组件加载网页：Web组件通过src、loadUrl、loadData加载网页，默认会获取焦点，但若此时Web组件为不可获焦状态则会获焦失败（常见的不可获焦状态原因有：转场动画过程中父组件不可获焦、应用侧设置了Web组件或其父组件不可获焦属性等），应用侧可以调用主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#requestfocus)再次尝试使Web组件获焦。当获焦成功后，应用侧onFocus、W3C focus事件均会上报。
+- Web组件加载网页：Web组件通过src、loadUrl、loadData加载网页，默认会获取焦点，但若此时Web组件为不可获焦状态则会获焦失败（常见的不可获焦状态原因有：转场动画过程中父组件不可获焦、应用侧设置了Web组件或其父组件不可获焦属性等），应用侧可以调用主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#requestfocus)再次尝试使Web组件获焦。当获焦成功后，应用侧onFocus、W3C focus事件均会上报。
 
 - autofocus样式：设置了autofocus样式的元素网页完成加载时默认获焦。若该元素支持文本输入，则输入框会有光标闪烁，但不会弹出软键盘。如需自动弹出软键盘，可参考[软键盘自动弹出](web-docking-softkeyboard.md#软键盘自动弹出)。
 
 
-- 菜单弹出：ArkUI的overlay属性类型组件默认抢焦，在与此类组件结合的Web组件场景中（[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md)、下拉框、弹窗等），Web组件均会失焦。
+- 菜单弹出：ArkUI的overlay属性类型组件默认抢焦，在与此类组件结合的Web组件场景中（[Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[DatePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md)、[TimePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-timepicker.md)、下拉框、弹窗等），Web组件均会失焦。
 
 ## Web组件与ArkUI组件焦点控制
 
-- 应用侧通用获焦回调接口[onFocus](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)，获焦事件回调，绑定该接口的组件获焦时，回调响应。
-- 应用侧通用失焦回调接口[onBlur](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)，失焦事件回调，绑定该接口的组件失焦时，回调响应。
-- 应用侧主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#requestfocus)，组件主动申请获焦。
-- 设置组件是否可获焦：应用可以通过设置[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)属性，控制Web组件是否能够获取焦点。Web组件默认可获焦。
+- 应用侧通用获焦回调接口[onFocus](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onfocus)，获焦事件回调，绑定该接口的组件获焦时，回调响应。
+- 应用侧通用失焦回调接口[onBlur](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onblur)，失焦事件回调，绑定该接口的组件失焦时，回调响应。
+- 应用侧主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#requestfocus)，组件主动申请获焦。
+- 设置组件是否可获焦：应用可以通过设置[focusable](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-counter-commonoptions-c.md#focusable)属性，控制Web组件是否能够获取焦点。Web组件默认可获焦。
 
 **示例：**
 1. requestFocus接口允许应用开发者主动控制让Web组件获焦。

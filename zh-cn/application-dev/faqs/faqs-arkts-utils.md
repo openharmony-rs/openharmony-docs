@@ -111,7 +111,7 @@ for (let i: number = 0; i < allCount; i++) { // 每次执行3个任务
 
 **参考链接**
 
-1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)
+1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool.md)
 
 ## 如何将内存共享的线程模型，转换成在ArkTS的线程模型下（内存隔离）的实现方式？(API 11)
 
@@ -451,8 +451,8 @@ Worker支持通过PostMessage往父线程抛任务。TaskPool支持往父线程�
 
 **参考链接**
 
-1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)
-2. [@ohos.worker (启动一个Worker)](../reference/apis-arkts/js-apis-worker.md)
+1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool.md)
+2. [@ohos.worker (启动一个Worker)](../reference/apis-arkts/arkts-apis/arkts-arkts-worker.md)
 
 ## ArkTS是否支持共享内存模型进行多线程开发吗？(API 10)
 
@@ -704,7 +704,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **解决方案**
 
-建议使用[长时任务](../reference/apis-arkts/js-apis-taskpool.md#longtask12)。
+建议使用[长时任务](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-longtask-c.md#longtask)。
 
 ## taskpool中监听任务的接口onEnqueued、onStartExecution、onExecutionFailed、onExecutionSucceeded是否有调用顺序(API 12)
 

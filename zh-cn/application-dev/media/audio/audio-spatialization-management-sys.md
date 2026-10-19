@@ -20,7 +20,7 @@
 
 ## 获取空间音频管理接口
 
-在使用AudioSpatializationManager的接口前，需要先调用[getSpatializationManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getspatializationmanager18)创建AudioSpatializationManager实例。
+在使用AudioSpatializationManager的接口前，需要先调用[getSpatializationManager](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiomanager-i.md#getspatializationmanager)创建AudioSpatializationManager实例。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -31,7 +31,7 @@
 
 ## 查询系统是否支持空间音频渲染能力
 
-系统应用开发者可以通过[isSpatializationSupported](../../reference/apis-audio-kit/js-apis-audio-sys.md#isspatializationsupported11)接口查询当前系统是否具有空间音频渲染的能力。
+系统应用开发者可以通过[isSpatializationSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatialdevicestate-i-sys.md#isspatializationsupported)接口查询当前系统是否具有空间音频渲染的能力。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -47,7 +47,7 @@
 
 ## 查询指定设备是否支持空间音频渲染能力
 
-系统应用开发者可以通过[isSpatializationSupportedForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#isspatializationsupportedfordevice11)接口查询指定设备是否具有空间音频渲染的能力，该接口需要使用[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。
+系统应用开发者可以通过[isSpatializationSupportedForDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#isspatializationsupportedfordevice)接口查询指定设备是否具有空间音频渲染的能力，该接口需要使用[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -78,7 +78,7 @@
 
 ## 查询系统是否支持头动跟踪能力
 
-系统应用开发者可以通过[isHeadTrackingSupported](../../reference/apis-audio-kit/js-apis-audio-sys.md#isheadtrackingsupported11)接口查询当前系统是否具有头动跟踪的能力。
+系统应用开发者可以通过[isHeadTrackingSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatialdevicestate-i-sys.md#isheadtrackingsupported)接口查询当前系统是否具有头动跟踪的能力。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -94,7 +94,7 @@
 
 ## 查询指定设备是否支持头动跟踪能力
 
-系统应用开发者可以通过[isHeadTrackingSupportedForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#isheadtrackingsupportedfordevice11)接口查询指定设备是否具有头动跟踪的能力，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
+系统应用开发者可以通过[isHeadTrackingSupportedForDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#isheadtrackingsupportedfordevice)接口查询指定设备是否具有头动跟踪的能力，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -126,9 +126,9 @@
 
 ## 开启/关闭指定设备的空间音频渲染效果
 
-系统应用开发者可以通过[setSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationenabled12)接口开启/关闭指定设备的空间音频渲染效果，该接口需要传递两个参数：AudioDeviceDescriptor和enabled。
+系统应用开发者可以通过[setSpatializationEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setspatializationenabled)接口开启/关闭指定设备的空间音频渲染效果，该接口需要传递两个参数：AudioDeviceDescriptor和enabled。
 
-AudioDeviceDescriptor：用于指定音频设备。建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
+AudioDeviceDescriptor：用于指定音频设备。建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)。
 
 enabled：布尔值类型，用于控制指定设备的空间音频渲染开关。入参为true时为开启空间音频渲染，入参为false时为关闭空间音频渲染。
 
@@ -165,7 +165,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
 
 ## 查询指定设备的空间音频渲染效果开关状态
 
-系统应用开发者可以通过[isSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isspatializationenabled12)接口查询指定设备的空间音频渲染效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示空间音频渲染开启，false表示空间音频渲染关闭。返回值为[setSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationenabled12)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。此状态仅表示开关状态，实际是否生效还需依赖系统和指定设备是否支持空间音频渲染。
+系统应用开发者可以通过[isSpatializationEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#isspatializationenabled)接口查询指定设备的空间音频渲染效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)。该接口返回为true表示空间音频渲染开启，false表示空间音频渲染关闭。返回值为[setSpatializationEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setspatializationenabled)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。此状态仅表示开关状态，实际是否生效还需依赖系统和指定设备是否支持空间音频渲染。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -197,7 +197,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
 
 ## 订阅空间音频渲染效果的开关状态变化事件
 
-系统应用开发者可以通过[on('spatializationEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/js-apis-audio-sys.md#onspatializationenabledchangeforanydevice12)接口订阅空间音频渲染效果的开关状态变化事件，回调包含[AudioSpatialEnabledStateForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialenabledstatefordevice12)参数，AudioSpatialEnabledStateForDevice包含deviceDescriptor和enabled属性，其中deviceDescriptor为被改变设备的描述信息，enabled为true表示空间音频渲染被开启，false表示空间音频渲染被关闭。当通过[setSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationenabled12)接口成功地改变了任一设备的空间音频渲染开关状态时，回调将被触发。
+系统应用开发者可以通过[on('spatializationEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#onspatializationenabledchangeforanydevice)接口订阅空间音频渲染效果的开关状态变化事件，回调包含AudioSpatialEnabledStateForDevice参数，AudioSpatialEnabledStateForDevice包含deviceDescriptor和enabled属性，其中deviceDescriptor为被改变设备的描述信息，enabled为true表示空间音频渲染被开启，false表示空间音频渲染被关闭。当通过[setSpatializationEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setspatializationenabled)接口成功地改变了任一设备的空间音频渲染开关状态时，回调将被触发。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -210,7 +210,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
 
 ## 取消订阅空间音频渲染效果的开关状态变化事件
 
-系统应用开发者可以通过[off('spatializationEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/js-apis-audio-sys.md#offspatializationenabledchangeforanydevice12)接口取消订阅空间音频渲染效果的开关状态变化事件。
+系统应用开发者可以通过[off('spatializationEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#offspatializationenabledchangeforanydevice)接口取消订阅空间音频渲染效果的开关状态变化事件。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -219,9 +219,9 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
 
 ## 开启/关闭指定设备的头动跟踪效果
 
-系统应用开发者可以通过[setHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setheadtrackingenabled12)接口开启/关闭指定设备的头动跟踪效果，该接口需要传递两个参数：AudioDeviceDescriptor和enabled。
+系统应用开发者可以通过[setHeadTrackingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setheadtrackingenabled)接口开启/关闭指定设备的头动跟踪效果，该接口需要传递两个参数：AudioDeviceDescriptor和enabled。
 
-AudioDeviceDescriptor：用于指定音频设备。建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
+AudioDeviceDescriptor：用于指定音频设备。建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)。
 
 enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入参为true时为开启头动跟踪，入参为false时为关闭头动跟踪。
 
@@ -258,7 +258,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 查询指定设备的头动跟踪效果开关状态
 
-系统应用开发者可以通过[isHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isheadtrackingenabled12)接口查询指定设备的头动跟踪效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示头动跟踪开启，false表示头动跟踪关闭。返回值为[setHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setheadtrackingenabled12)接口中成功设置的指定设备头动跟踪开关状态，默认为关闭。此状态仅表示开关状态，实际是否生效还需依赖系统和指定设备是否支持头动跟踪，以及指定设备空间音频渲染开关是否打开。
+系统应用开发者可以通过[isHeadTrackingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#isheadtrackingenabled)接口查询指定设备的头动跟踪效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)。该接口返回为true表示头动跟踪开启，false表示头动跟踪关闭。返回值为[setHeadTrackingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setheadtrackingenabled)接口中成功设置的指定设备头动跟踪开关状态，默认为关闭。此状态仅表示开关状态，实际是否生效还需依赖系统和指定设备是否支持头动跟踪，以及指定设备空间音频渲染开关是否打开。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -290,7 +290,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 订阅头动跟踪效果的开关状态变化事件
 
-系统应用开发者可以通过[on('headTrackingEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/js-apis-audio-sys.md#onheadtrackingenabledchangeforanydevice12)接口订阅头动跟踪效果的开关状态变化事件，回调包含[AudioSpatialEnabledStateForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialenabledstatefordevice12)参数，AudioSpatialEnabledStateForDevice包含deviceDescriptor和enabled属性，其中deviceDescriptor为被改变设备的描述信息，enabled为true表示头动跟踪被开启，false表示头动跟踪被关闭。当通过[setHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setheadtrackingenabled12)接口成功地改变了任一设备的头动跟踪开关状态时，回调将被触发。
+系统应用开发者可以通过[on('headTrackingEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#onheadtrackingenabledchangeforanydevice)接口订阅头动跟踪效果的开关状态变化事件，回调包含AudioSpatialEnabledStateForDevice参数，AudioSpatialEnabledStateForDevice包含deviceDescriptor和enabled属性，其中deviceDescriptor为被改变设备的描述信息，enabled为true表示头动跟踪被开启，false表示头动跟踪被关闭。当通过[setHeadTrackingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setheadtrackingenabled)接口成功地改变了任一设备的头动跟踪开关状态时，回调将被触发。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -303,7 +303,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 取消订阅头动跟踪效果的开关状态变化事件
 
-系统应用开发者可以通过[off('headTrackingEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/js-apis-audio-sys.md#offheadtrackingenabledchangeforanydevice12)接口取消订阅头动跟踪效果的开关状态变化事件。
+系统应用开发者可以通过[off('headTrackingEnabledChangeForAnyDevice')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#offheadtrackingenabledchangeforanydevice)接口取消订阅头动跟踪效果的开关状态变化事件。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -312,11 +312,11 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 更新空间化设备状态
 
-系统应用开发者可以通过[updateSpatialDeviceState](../../reference/apis-audio-kit/js-apis-audio-sys.md#updatespatialdevicestate11)接口更新空间化设备状态，空间化设备状态包含设备的地址、是否具有空间音频渲染的能力、是否具有头动跟踪的能力和设备的形态类型。
+系统应用开发者可以通过[updateSpatialDeviceState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#updatespatialdevicestate)接口更新空间化设备状态，空间化设备状态包含设备的地址、是否具有空间音频渲染的能力、是否具有头动跟踪的能力和设备的形态类型。
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-空间化设备状态的具体信息可以参考[AudioSpatialDeviceState](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialdevicestate11)。
+空间化设备状态的具体信息可以参考[AudioSpatialDeviceState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#state)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -340,11 +340,11 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 设置空间音频渲染场景类型
 
-系统应用开发者可以通过[setSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationscenetype12)接口设置空间音频渲染场景类型，可以选择默认场景、音乐场景、电影场景或有声读物场景，默认为默认场景。空间音频渲染场景类型的生效依赖空间音频渲染开关的打开。
+系统应用开发者可以通过[setSpatializationSceneType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setspatializationscenetype)接口设置空间音频渲染场景类型，可以选择默认场景、音乐场景、电影场景或有声读物场景，默认为默认场景。空间音频渲染场景类型的生效依赖空间音频渲染开关的打开。
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-空间音频渲染场景类型的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatializationscenetype12)。
+空间音频渲染场景类型的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-devicechangeaction-i.md#type)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -361,9 +361,9 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 查询空间音频渲染场景类型
 
-系统应用开发者可以通过[getSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#getspatializationscenetype12)接口查询当前空间音频渲染场景类型。该接口将返回setSpatializationSceneType()接口中成功设置的值，默认为默认场景。
+系统应用开发者可以通过[getSpatializationSceneType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#getspatializationscenetype)接口查询当前空间音频渲染场景类型。该接口将返回setSpatializationSceneType()接口中成功设置的值，默认为默认场景。
 
-空间音频渲染场景类型AudioSpatializationSceneType的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatializationscenetype12)。
+空间音频渲染场景类型AudioSpatializationSceneType的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-devicechangeaction-i.md#type)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -380,11 +380,11 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 查询指定设备的自适应空间音频渲染效果开关状态
 
-从API版本24开始，系统应用开发者可以通过[isAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isadaptivespatialrenderingenabled24)接口查询指定设备的自适应空间音频渲染效果开关状态。
+从API版本24开始，系统应用开发者可以通过[isAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#isadaptivespatialrenderingenabled)接口查询指定设备的自适应空间音频渲染效果开关状态。
 
-入参需要使用AudioDeviceDescriptor来指定设备，建议通过音频框架的[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/js-apis-audio-sys.md#getactiveoutputdevicedescriptors)接口获取当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
+入参需要使用AudioDeviceDescriptor来指定设备，建议通过音频框架的[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioroutingmanager-i-sys.md#getactiveoutputdevicedescriptors)接口获取当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)。
 
-返回值表示指定设备的自适应空间音频渲染开关状态：返回true表示自适应空间音频渲染已开启，返回false表示已关闭（默认为关闭）。该状态可通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setadaptivespatialrenderingenabled24)接口设置。
+返回值表示指定设备的自适应空间音频渲染开关状态：返回true表示自适应空间音频渲染已开启，返回false表示已关闭（默认为关闭）。该状态可通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setadaptivespatialrenderingenabled)接口设置。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -418,7 +418,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 开启/关闭指定设备的自适应空间音频渲染效果
 
-从API版本24开始，系统应用开发者可以通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setadaptivespatialrenderingenabled24)接口开启/关闭指定设备的自适应空间音频渲染效果。
+从API版本24开始，系统应用开发者可以通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setadaptivespatialrenderingenabled)接口开启/关闭指定设备的自适应空间音频渲染效果。
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
@@ -456,11 +456,11 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 订阅自适应空间音频渲染效果的开关状态变化事件
 
-从API版本24开始，系统应用开发者可以通过[onAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#onadaptivespatialrenderingenabledchangeforanydevice24)接口订阅自适应空间音频渲染效果的开关状态变化事件。
+从API版本24开始，系统应用开发者可以通过[onAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#onadaptivespatialrenderingenabledchangeforanydevice)接口订阅自适应空间音频渲染效果的开关状态变化事件。
 
-回调包含[AudioSpatialEnabledStateForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialenabledstatefordevice12)参数，其中deviceDescriptor为被改变设备的描述信息，enabled为true表示自适应空间音频渲染被开启，false表示自适应空间音频渲染被关闭。
+回调包含AudioSpatialEnabledStateForDevice参数，其中deviceDescriptor为被改变设备的描述信息，enabled为true表示自适应空间音频渲染被开启，false表示自适应空间音频渲染被关闭。
 
-当通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setadaptivespatialrenderingenabled24)接口成功地改变了任一设备的自适应空间音频渲染开关状态时，回调将被触发。
+当通过[setAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#setadaptivespatialrenderingenabled)接口成功地改变了任一设备的自适应空间音频渲染开关状态时，回调将被触发。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -474,7 +474,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 取消订阅自适应空间音频渲染效果的开关状态变化事件
 
-从API版本24开始，系统应用开发者可以通过[offAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#offadaptivespatialrenderingenabledchangeforanydevice24)接口取消订阅自适应空间音频渲染效果的开关状态变化事件。
+从API版本24开始，系统应用开发者可以通过[offAdaptiveSpatialRenderingEnabledChangeForAnyDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#offadaptivespatialrenderingenabledchangeforanydevice)接口取消订阅自适应空间音频渲染效果的开关状态变化事件。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -484,9 +484,9 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 获取当前空间音频源类型
 
-从API版本24开始，系统应用开发者可以通过[getCurrentSpatialAudioSourceType](../../reference/apis-audio-kit/js-apis-audio-sys.md#getcurrentspatialaudiosourcetype24)接口获取当前空间音频源类型。该接口返回当前播放的音频流类型，包括立体声、Audio Vivid或多声道。
+从API版本24开始，系统应用开发者可以通过[getCurrentSpatialAudioSourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#getcurrentspatialaudiosourcetype)接口获取当前空间音频源类型。该接口返回当前播放的音频流类型，包括立体声、Audio Vivid或多声道。
 
-空间音频源类型的具体信息可以参考[SpatialAudioSourceType](../../reference/apis-audio-kit/js-apis-audio-sys.md#spatialaudiosourcetype24)。
+空间音频源类型的具体信息可以参考[SpatialAudioSourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#getcurrentspatialaudiosourcetype)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -504,7 +504,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 订阅空间音频源类型变化事件
 
-从API版本24开始，系统应用开发者可以通过[onSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/js-apis-audio-sys.md#onspatialaudiosourcetypechange24)接口订阅空间音频源类型变化事件，回调包含SpatialAudioSourceType参数，表示变化后的空间音频源类型。当开始播放不同类型的音频流时，空间音频源类型会自动更新并触发回调。
+从API版本24开始，系统应用开发者可以通过[onSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#onspatialaudiosourcetypechange)接口订阅空间音频源类型变化事件，回调包含SpatialAudioSourceType参数，表示变化后的空间音频源类型。当开始播放不同类型的音频流时，空间音频源类型会自动更新并触发回调。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -517,7 +517,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 取消订阅空间音频源类型变化事件
 
-从API版本24开始，系统应用开发者可以通过[offSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/js-apis-audio-sys.md#offspatialaudiosourcetypechange24)接口取消订阅空间音频源类型变化事件。
+从API版本24开始，系统应用开发者可以通过[offSpatialAudioSourceTypeChange](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiospatializationmanager-i-sys.md#offspatialaudiosourcetypechange)接口取消订阅空间音频源类型变化事件。
 
   ```ts
   import { audio } from '@kit.AudioKit';

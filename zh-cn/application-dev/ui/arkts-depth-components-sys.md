@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[DepthComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md)是一个景深组件，能够利用一张背景图和一张深度图（或自带深度信息的3D模型），把原本平面的内容渲染出立体的空间纵深感，可以简单理解为给平面背景加上“裸眼3D”效果。背景中各像素点依据深度图呈现距离相机远近不同的层次感；子组件（如文字、图标）可以借助空间效果融入这个立体场景，实现被背景物体遮挡、视觉倾斜等真实的空间交互。该组件从API版本26.0.0开始支持。
+DepthComponent是一个景深组件，能够利用一张背景图和一张深度图（或自带深度信息的3D模型），把原本平面的内容渲染出立体的空间纵深感，可以简单理解为给平面背景加上“裸眼3D”效果。背景中各像素点依据深度图呈现距离相机远近不同的层次感；子组件（如文字、图标）可以借助空间效果融入这个立体场景，实现被背景物体遮挡、视觉倾斜等真实的空间交互。该组件从API版本26.0.0开始支持。
 
 景深组件常用于壁纸、桌面、锁屏等需要营造立体纵深感与空间沉浸感的场景。
 
@@ -16,11 +16,11 @@
 
 | 能力层 | 组件中的体现 | 说明 |
 | -------- | -------- | -------- |
-| 背景资源 | [background](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#接口) | 作为景深场景底图的静态图片或3D模型，仅支持glTF和glb格式；图片资源引用方式请参考[加载图片资源](arkts-graphics-display.md#加载图片资源)。 |
-| 深度图 | [depthMap](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthmap) | 一张黑白的灰度图像，用每个像素的明暗描述背景中该位置距相机的远近——越白越近、越黑越远；背景为静态图片时需设置且需与背景图分辨率一致，背景为3D模型时由模型自带、无需设置。 |
-| 相机 | [camera](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camera) | 配置观察景深场景的虚拟相机，决定从哪个位置与角度拍摄三维场景。 |
-| 光照 | [light](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#light) | 定义照射景深场景的光照，为场景补充明暗与色彩，增强立体真实感。 |
-| 空间效果 | [spatialEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffect) | 作用在子组件上的属性，通过设置子组件在三维空间中的位置和遮挡权重，使其与背景产生遮挡、倾斜等空间交互。 |
+| 背景资源 | [background](../reference/apis-arkui/arkts-components/arkts-arkui-depthcomponent-comp-sys.md#接口) | 作为景深场景底图的静态图片或3D模型，仅支持glTF和glb格式；图片资源引用方式请参考[加载图片资源](arkts-graphics-display.md#加载图片资源)。 |
+| 深度图 | [depthMap](../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-depthdata-i-sys.md#depthmap) | 一张黑白的灰度图像，用每个像素的明暗描述背景中该位置距相机的远近——越白越近、越黑越远；背景为静态图片时需设置且需与背景图分辨率一致，背景为3D模型时由模型自带、无需设置。 |
+| 相机 | [camera](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-switchtype-e.md#camera) | 配置观察景深场景的虚拟相机，决定从哪个位置与角度拍摄三维场景。 |
+| 光照 | [light](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-backgroundtheme-e.md#light) | 定义照射景深场景的光照，为场景补充明暗与色彩，增强立体真实感。 |
+| 空间效果 | [spatialEffect](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c-sys.md#spatialeffect) | 作用在子组件上的属性，通过设置子组件在三维空间中的位置和遮挡权重，使其与背景产生遮挡、倾斜等空间交互。 |
 
 此外，理解景深组件还会用到几个最基础的图形学概念：
 
@@ -44,15 +44,15 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 渲染过程主要包含以下几个阶段：
 
-- **[重建场景](#重建场景)**：依据深度图[depthMap](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthmap)为背景的每个像素赋予空间深度，由一张平面背景重建出具有立体层次的场景。
+- **[重建场景](#重建场景)**：依据深度图[depthMap](../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-depthdata-i-sys.md#depthmap)为背景的每个像素赋予空间深度，由一张平面背景重建出具有立体层次的场景。
 
 - **[投影变换](#投影变换)**：背景与子组件统一经过相同的三维变换管线，完成从三维空间到屏幕像素坐标的投影。
 
-- **[映射子组件空间](#映射子组件空间)**：子组件通过空间效果[spatialEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffect)设置自身在三维空间中的位置，并以两种坐标模式参与投影。
+- **[映射子组件空间](#映射子组件空间)**：子组件通过空间效果[spatialEffect](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c-sys.md#spatialeffect)设置自身在三维空间中的位置，并以两种坐标模式参与投影。
 
-- **[合成深度遮挡](#合成深度遮挡)**：将子组件深度与背景对应位置的深度进行比较，按遮挡权重[SpatialEffectParams](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)决定被背景遮挡的程度。
+- **[合成深度遮挡](#合成深度遮挡)**：将子组件深度与背景对应位置的深度进行比较，按遮挡权重SpatialEffectParams决定被背景遮挡的程度。
 
-- **[计算光照](#计算光照)**：通过光照参数[light](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#light)为场景补充明暗效果，增强立体感。
+- **[计算光照](#计算光照)**：通过光照参数[light](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-backgroundtheme-e.md#light)为场景补充明暗效果，增强立体感。
 
 ### 重建场景
 
@@ -76,25 +76,25 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 ### 投影变换
 
-相机参数[camera](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camera)用于配置观察景深场景的虚拟相机，主要包括以下参数：
+相机参数[camera](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-switchtype-e.md#camera)用于配置观察景深场景的虚拟相机，主要包括以下参数：
 
-- **[position](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机自身的位置。决定“从哪个位置观察场景”，移动相机会改变看到的远近与角度。
+- **position**：相机自身的位置。决定“从哪个位置观察场景”，移动相机会改变看到的远近与角度。
 
-- **[quaternion](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机的旋转（朝向），用四元数按(x, y, z, w)表示。决定“朝哪个方向看”。四元数是一种描述三维旋转的方式，相比直接用角度更平滑，可避免欧拉角旋转中的万向锁（两个旋转轴重合导致丢失一个旋转自由度）问题。
+- **quaternion**：相机的旋转（朝向），用四元数按(x, y, z, w)表示。决定“朝哪个方向看”。四元数是一种描述三维旋转的方式，相比直接用角度更平滑，可避免欧拉角旋转中的万向锁（两个旋转轴重合导致丢失一个旋转自由度）问题。
 
-- **[yFov](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：垂直视场角（弧度）。即相机的视野范围，类似镜头能拍到多宽的画面，值越大视野越广。
+- **yFov**：垂直视场角（弧度）。即相机的视野范围，类似镜头能拍到多宽的画面，值越大视野越广。
 
-- **[zNear](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：近裁剪面距离。离相机太近（小于该值）的物体会被裁掉、不显示，必须为正数。
+- **zNear**：近裁剪面距离。离相机太近（小于该值）的物体会被裁掉、不显示，必须为正数。
 
-- **[zFar](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：远裁剪面距离。离相机太远（大于该值）的物体会被裁掉、不显示，必须为正数。
+- **zFar**：远裁剪面距离。离相机太远（大于该值）的物体会被裁掉、不显示，必须为正数。
 
-- **[cameraBufferCrop](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camerabuffercrop)**（可选，移轴裁剪）：在不改变相机位置与朝向的前提下，把“裁剪窗口”在背景图所在平面内平移并缩放，只截取画面的某个局部渲染到组件——这与摄影中移轴镜头“平移取景”的原理相通，故又称离轴渲染。常用于从一张高分辨率壁纸中截取并放大某一局部（连同其深度关系一起保留）。包含四个子参数：
+- **[cameraBufferCrop](../reference/apis-arkui/arkts-components/arkts-arkui-depthcomponent-comp-depthcameraparams-i-sys.md#camerabuffercrop)**（可选，移轴裁剪）：在不改变相机位置与朝向的前提下，把“裁剪窗口”在背景图所在平面内平移并缩放，只截取画面的某个局部渲染到组件——这与摄影中移轴镜头“平移取景”的原理相通，故又称离轴渲染。常用于从一张高分辨率壁纸中截取并放大某一局部（连同其深度关系一起保留）。包含四个子参数：
 
-  - **[bufferWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camerabuffercrop) / [bufferHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camerabuffercrop)**：基准图的宽、高（像素）。应与背景图的真实分辨率一致，作为裁剪坐标的参照系；不一致可能导致显示异常（如渲染位置偏移）。
+  - **[bufferWidth](../reference/apis-arkui/arkts-components/arkts-arkui-depthcomponent-comp-depthcameraparams-i-sys.md#camerabuffercrop) / [bufferHeight](../reference/apis-arkui/arkts-components/arkts-arkui-depthcomponent-comp-depthcameraparams-i-sys.md#camerabuffercrop)**：基准图的宽、高（像素）。应与背景图的真实分辨率一致，作为裁剪坐标的参照系；不一致可能导致显示异常（如渲染位置偏移）。
 
-  - **[cropOffset](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#cropoffset)**：裁剪窗口左上角相对于基准图左上角的偏移量（x、y像素）。改变它即可平移裁剪窗口，实现离轴取景。
+  - **[cropOffset](../reference/apis-arkui/arkts-components/arkts-arkui-depthcomponent-comp-camerabuffercrop-i-sys.md#cropoffset)**：裁剪窗口左上角相对于基准图左上角的偏移量（x、y像素）。改变它即可平移裁剪窗口，实现离轴取景。
 
-  - **[cropScale](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camerabuffercrop)**：裁剪窗口缩放比例，裁剪窗口基础大小为组件布局尺寸。小于1表示裁剪窗口更小、对应放大局部；大于1表示裁剪窗口更大、对应缩小内容。
+  - **[cropScale](../reference/apis-arkui/arkts-components/arkts-arkui-depthcomponent-comp-depthcameraparams-i-sys.md#camerabuffercrop)**：裁剪窗口缩放比例，裁剪窗口基础大小为组件布局尺寸。小于1表示裁剪窗口更小、对应放大局部；大于1表示裁剪窗口更大、对应缩小内容。
 
 未设置时，默认以组件布局尺寸为基准图、偏移 (0, 0)、缩放1.0，即渲染整图的默认映射；需要截取局部渲染时可参考[使用移轴裁剪渲染背景局部](#使用移轴裁剪渲染背景局部)示例。
 
@@ -120,11 +120,11 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 子组件通过spatialEffect设置自身在三维空间中的位置，参与景深组件的三维变换，与背景产生遮挡、倾斜等空间交互。子组件空间效果由SpatialEffectParams定义，主要包括以下参数：
 
-- **[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：子组件在三维空间中的位置。支持两种写法——数值写法表示子组件的深度信息（决定其距相机的远近层次；示例中取负值表示子组件位于相机前方，绝对值越大距相机越远）；结构体类型用四个角（左上、右上、左下、右下）来定位组件，可表现倾斜摆放的效果。
+- **position**：子组件在三维空间中的位置。支持两种写法——数值写法表示子组件的深度信息（决定其距相机的远近层次；示例中取负值表示子组件位于相机前方，绝对值越大距相机越远）；结构体类型用四个角（左上、右上、左下、右下）来定位组件，可表现倾斜摆放的效果。
 
-- **[occlusionWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：遮挡权重。控制子组件被背景遮挡的程度，取值范围[0, 1]，默认值0；0表示不被遮挡，1表示完全被遮挡。
+- **occlusionWeight**：遮挡权重。控制子组件被背景遮挡的程度，取值范围[0, 1]，默认值0；0表示不被遮挡，1表示完全被遮挡。
 
-结构体类型用四个角定位组件时，可通过[positionMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialpositionmode)指定角点使用的坐标模式（默认 `SpatialPositionMode.WORLD_XYZ`）：
+结构体类型用四个角定位组件时，可通过positionMode指定角点使用的坐标模式（默认 `SpatialPositionMode.WORLD_XYZ`）：
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
@@ -140,7 +140,7 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 })
 ```
 
-positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialpositionmode)），两种取值对比如下：
+positionMode决定四角坐标使用的坐标系（详见SpatialPositionMode），两种取值对比如下：
 
 | 模式 | 坐标含义 | 屏幕运动 | 适用场景 |
 | -------- | -------- | -------- | -------- |
@@ -149,7 +149,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 无论子组件在世界空间还是NDC中移动，观察效果一致——沿X轴对应屏幕水平移动、沿Y轴对应垂直移动、沿Z轴对应近大远小（靠近变大、远离变小），其中NDC的X、Y建议取值范围为[-1, 1]（NDC原点位于屏幕中心，X轴向右为正、Y轴向下为正，即左上角为(-1, -1)、右下角为(1, 1)）。由于透视投影的特性，子组件沿Z轴移动时投影尺寸会按距离比例缩放：距相机越近，相同位移引起的尺寸变化越明显。
 
-详细说明请参考[空间效果](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md)。
+详细说明请参考空间效果。
 
 > **说明：** 
 >
@@ -169,11 +169,11 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 光照参数 light定义照射景深场景的光照，渲染时依据光照方向与场景几何计算各像素明暗、再与背景颜色合成，为场景补充明暗与色彩、增强立体真实感，主要包括以下参数：
 
-- **[direction](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照方向。决定光从哪个方向照过来，影响物体哪一面被照亮、哪一面背光。
+- **direction**：光照方向。决定光从哪个方向照过来，影响物体哪一面被照亮、哪一面背光。
 
-- **[color](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照颜色。影响场景整体的色调。
+- **color**：光照颜色。影响场景整体的色调。
 
-- **[intensity](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照强度。取值范围[0, +∞)，建议[0, 1]；设置为0时无光照。
+- **intensity**：光照强度。取值范围[0, +∞)，建议[0, 1]；设置为0时无光照。
 
 各参数的作用可参考下图：
 
@@ -183,7 +183,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 1. 本组件为系统接口，仅对系统应用开放，且仅可在Stage模型下使用。
 
-2. 子组件需要设置空间效果后，才能与景深组件的背景产生交互效果。空间效果不支持[Web](../web/web-component-overview.md)、[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)、[RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md)、[Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md)、[Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md)、[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)组件。
+2. 子组件需要设置空间效果后，才能与景深组件的背景产生交互效果。空间效果不支持[Web](../web/web-component-overview.md)、[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md)、RichEditor、[RichText](../reference/apis-arkui/arkui-js/js-components-basic-richtext.md)、[Video](../reference/apis-arkui/errorcode-video.md)、Component3D、[EmbeddedComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-embeddedcomponent.md)组件。
 
 3. 背景为静态图片时需要设置深度图，且深度图需要与背景图的分辨率保持一致；背景为3D模型时无需设置深度图。
 
@@ -193,7 +193,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 5. 相机的zNear和zFar必须为正数，且zNear应小于zFar。
 
-6. 构造参数选项（[DepthComponentOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcomponentoptions)）中的render3DScale为3D渲染窗口的缩放比例，同时作用于宽度和高度，取值范围为(0.0, 1.0]，默认值1.0，超出该范围的值无效（继承之前的取值，未设置过时取默认值）。
+6. 构造参数选项（DepthComponentOptions）中的render3DScale为3D渲染窗口的缩放比例，同时作用于宽度和高度，取值范围为(0.0, 1.0]，默认值1.0，超出该范围的值无效（继承之前的取值，未设置过时取默认值）。
 
 7. 光照强度intensity取值范围为[0, +∞)，建议取值范围为[0, 1]，设置为0时无光照。
 
@@ -213,7 +213,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 | 配置项 | 2D场景（静态图片背景） | 3D场景（3D模型背景） |
 | -------- | -------- | -------- |
-| 色域（[colorSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcomponentoptions)） | PixelMap自带色域无需设置；ResourceStr可按需设置。 | 按需设置；模型为sRGB时无需设置（默认sRGB），为其他色域（如Display P3、Adobe RGB等）时需通过colorSpace指定。 |
+| 色域（colorSpace） | PixelMap自带色域无需设置；ResourceStr可按需设置。 | 按需设置；模型为sRGB时无需设置（默认sRGB），为其他色域（如Display P3、Adobe RGB等）时需通过colorSpace指定。 |
 | 深度图（depthMap） | 必须设置，且需与背景图分辨率一致。 | 无需设置，3D模型自带深度信息。 |
 | 相机参数（camera） | 不影响背景，仅影响子组件空间效果。 | 同时影响背景与子组件渲染效果。 |
 
@@ -391,7 +391,7 @@ struct DepthComponent2DExample {
 
 打开应用页面，DepthComponent加载背景图片与深度图成功后，文字“Depth Component”呈现视觉倾斜效果，且部分内容被背景中的物体遮挡。
 
-   ![2D背景下的文字倾斜与遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-2D.png)
+   !2D背景下的文字倾斜与遮挡效果
 
 ### 实现文字倾斜与遮挡效果（3D模型背景）
 
@@ -517,7 +517,7 @@ struct DepthComponent3DExample {
 
 打开应用页面，DepthComponent加载3D模型成功后，文字“Depth Component”呈现视觉倾斜效果，且部分内容被模型遮挡。
 
-   ![3D背景下的文字倾斜与遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-3D.png)
+   !3D背景下的文字倾斜与遮挡效果
 
 ### 仅设置深度实现文字遮挡效果
 
@@ -582,7 +582,7 @@ struct DepthComponentDepthExample {
 
 打开应用页面，文字“Spatial Effect”不发生倾斜，按深度-2.0处于背景的空间层次中；遮挡权重为1时，背景中距相机更近的物体会完全遮挡文字的相应部分。
 
-   ![仅设置深度的文字遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-depthonly.png)
+   !仅设置深度的文字遮挡效果
 
 ### 使用NDC坐标实现可控的文字倾斜
 
@@ -663,7 +663,7 @@ struct DepthComponentNdcExample {
 
 打开应用页面，文字“NDC Mode”在屏幕上呈现上窄下宽（上小下大）的倾斜形态：四角X、Y直接映射到屏幕，顶边宽度（x从-0.2到0.2）约为底边宽度（x从-0.5到0.5）的40%；本例遮挡权重设为0.5，文字的相应部分会被背景中距相机更近的物体遮挡。
 
-   ![NDC坐标实现的文字倾斜效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-NDC.png)
+   !NDC坐标实现的文字倾斜效果
 
 
 ### 使用移轴裁剪渲染背景局部
@@ -756,10 +756,10 @@ struct DepthComponentCropExample {
 
 > **说明：**
 >
-> 本示例子组件采用空间效果position的数值写法（直接给出深度，决定子组件距相机的远近层次），写法与[仅设置深度实现文字遮挡效果](#仅设置深度实现文字遮挡效果)示例一致（该示例取-2.0，本例取-10.0），与四角结构体（leftTop/rightTop/leftBottom/rightBottom）定位、可表现倾斜的写法相对；两种写法详见[SpatialEffectParams](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)。
+> 本示例子组件采用空间效果position的数值写法（直接给出深度，决定子组件距相机的远近层次），写法与[仅设置深度实现文字遮挡效果](#仅设置深度实现文字遮挡效果)示例一致（该示例取-2.0，本例取-10.0），与四角结构体（leftTop/rightTop/leftBottom/rightBottom）定位、可表现倾斜的写法相对；两种写法详见SpatialEffectParams。
 
 **预期效果**
 
 打开应用页面，DepthComponent以背景图左上角 (100, 100) 为起点截取一个约为组件尺寸0.65倍的局部，放大渲染为景深背景，文字“Spatial Effect”悬浮其上。
 
-   ![移轴裁剪截取局部渲染效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-cameraCrop.png)
+   !移轴裁剪截取局部渲染效果

@@ -6,9 +6,9 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ArkUI NDK提供了多种表单组件，包括[按钮（Button）](./arkts-common-components-button.md)、滑动条[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[切换按钮（Toggle）](./arkts-common-components-switch.md)、多选框[Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)、多选框群组[CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md)和[单选框（Radio）](./arkts-common-components-radio-button.md)。这些组件是用户交互的基础元素，可以用于构建丰富的表单界面。
+ArkUI NDK提供了多种表单组件，包括[按钮（Button）](./arkts-common-components-button.md)、滑动条[Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)、[切换按钮（Toggle）](./arkts-common-components-switch.md)、多选框[Checkbox](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-checkbox-t.md)、多选框群组[CheckboxGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-checkboxgroup-t.md)和[单选框（Radio）](./arkts-common-components-radio-button.md)。这些组件是用户交互的基础元素，可以用于构建丰富的表单界面。
 
-表单组件的相关接口定义在[native_node.h](../reference/apis-arkui/capi-native-node-h.md)中。
+表单组件的相关接口定义在[native_node.h](../reference/apis-arkui/c-apis/capi-native-node-h.md)中。
 
 本文提供表单组件NDK开发指导，查询之前需要先接入ArkTS页面，具体请参考[接入ArkTS页面](./ndk-access-the-arkts-page.md)。
 
@@ -18,7 +18,7 @@ Button组件用于创建可点击的按钮，支持多种按钮类型和样式�
 
 ### 创建Button组件
 
-使用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Button组件，节点类型为ARKUI_NODE_BUTTON。
+使用[createNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Button组件，节点类型为ARKUI_NODE_BUTTON。
 
  <!-- @[button_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->   
  
@@ -47,7 +47,7 @@ Button组件用于创建可点击的按钮，支持多种按钮类型和样式�
 
 ### 设置Button类型
 
-Button组件支持通过设置NODE_BUTTON_TYPE属性实现不同的按钮类型，包括普通按钮、胶囊按钮、圆形按钮和圆角矩形按钮。按钮类型对应枚举请参考[ArkUI_ButtonType](../reference/apis-arkui/capi-button-h.md#arkui_buttontype)。
+Button组件支持通过设置NODE_BUTTON_TYPE属性实现不同的按钮类型，包括普通按钮、胶囊按钮、圆形按钮和圆角矩形按钮。按钮类型对应枚举请参考[ArkUI_ButtonType](../reference/apis-arkui/arkts-components/arkts-arkui-button-comp-buttontype-e.md#buttontype)。
 
 下述示例将按钮类型设置为ARKUI_BUTTON_TYPE_CIRCLE圆形按钮。
 
@@ -62,7 +62,7 @@ circleBtn->SetMargin(PARAM_20, false);
 
 ### Button属性
 
-Button独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的枚举定义。
+Button独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚举定义。
 
 | 属性 | 说明 |
 |------|------|
@@ -77,7 +77,7 @@ Slider组件用于创建滑动条，用户可以通过拖动滑块来选择数�
 
 ### 创建Slider组件
 
-使用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Slider组件，节点类型为ARKUI_NODE_SLIDER。
+使用[createNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Slider组件，节点类型为ARKUI_NODE_SLIDER。
 
 <!-- @[slider_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
 
@@ -111,7 +111,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateSliderExample()
 
 ### 设置Slider样式
 
-Slider支持两种样式，通过[ARKUI_SliderStyle](../reference/apis-arkui/capi-slider-h.md#arkui_sliderstyle)枚举定义：
+Slider支持两种样式，通过[ARKUI_SliderStyle](../reference/apis-arkui/arkts-components/arkts-arkui-slider-comp-sliderstyle-e.md#sliderstyle)枚举定义：
 
 - ARKUI_SLIDER_STYLE_OUT_SET：滑块在滑动条外（默认值）。
 - ARKUI_SLIDER_STYLE_IN_SET：滑块在滑动条内。
@@ -148,7 +148,7 @@ sliderOutSet->SetIsShowSteps(true);
 
 ### Slider属性
 
-Slider独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的枚举定义。
+Slider独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚举定义。
 
 | 属性 | 说明 |
 |------|------|
@@ -170,7 +170,7 @@ Toggle组件用于创建开关，用户可以在开和关两种状态之间切�
 
 ### 创建Toggle组件
 
-使用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Toggle组件，节点类型为ARKUI_NODE_TOGGLE。
+使用[createNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Toggle组件，节点类型为ARKUI_NODE_TOGGLE。
 
 <!-- @[toggle_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
 
@@ -206,7 +206,7 @@ toggle->SetSwitchPointColor(0xFF00FF00);
 
 ### Toggle属性
 
-Toggle独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的枚举定义。
+Toggle独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚举定义。
 
 | 属性 | 说明 |
 |------|------|
@@ -221,7 +221,7 @@ Checkbox组件用于创建多选框，用户可以选中或取消选中。Checkb
 
 ### 创建Checkbox组件
 
-使用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Checkbox组件，节点类型为ARKUI_NODE_CHECKBOX。
+使用[createNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Checkbox组件，节点类型为ARKUI_NODE_CHECKBOX。
 
 <!-- @[checkbox_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
 
@@ -289,7 +289,7 @@ checkbox3->SetCheckboxName("check_group3");
 
 ### Checkbox属性
 
-Checkbox独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的枚举定义。
+Checkbox独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚举定义。
 
 | 属性 | 说明 |
 |------|------|
@@ -303,7 +303,7 @@ Checkbox独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../r
 
 ### CheckboxGroup属性
 
-CheckboxGroup独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的枚举定义。
+CheckboxGroup独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚举定义。
 
 | 属性 | 说明 |
 |------|------|
@@ -320,7 +320,7 @@ Radio组件用于创建单选按钮，同一组内的单选按钮只能选中一
 
 ### 创建Radio组件
 
-使用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Radio组件，节点类型为ARKUI_NODE_RADIO。
+使用[createNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建Radio组件，节点类型为ARKUI_NODE_RADIO。
 
 <!-- @[radio_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
 
@@ -374,7 +374,7 @@ radio3->SetRadioStyle(0xFFFF0000, 0xFF00FF00, 0xFF00FFFF);
 
 ### Radio属性
 
-Radio独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的枚举定义。
+Radio独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚举定义。
 
 | 属性 | 说明 |
 |------|------|

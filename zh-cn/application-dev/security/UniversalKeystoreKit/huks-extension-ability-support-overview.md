@@ -10,7 +10,7 @@
 CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类，适配底层外部密钥管理能力的实现差异，将外部密钥管理能力接入HUKS框架，向上层应用提供签名验签、密钥使用、证书查询、PIN认证等能力。
 
 
-本文档面向**密钥管理扩展应用开发者**（实现方），说明密钥管理扩展应用在实现CryptoExtensionAbility时需要关注的接口、状态管理和约束限制。详细API参数和各接口建议返回的错误码请参考[@ohos.security.CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)。
+本文档面向**密钥管理扩展应用开发者**（实现方），说明密钥管理扩展应用在实现CryptoExtensionAbility时需要关注的接口、状态管理和约束限制。详细API参数和各接口建议返回的错误码请参考[@ohos.security.CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability.md)。
 
 ## 整体流程
 
@@ -18,9 +18,9 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 
 1. 接口实现：继承CryptoExtensionAbility，根据业务需要实现[核心能力实现](#核心能力实现)中的回调接口，封装对底层外部密钥管理后端的调用。
 
-2. 注册到HUKS：在密钥管理扩展设备/服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)将CryptoExtensionAbility注册到HUKS。注册成功后，HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
+2. 注册到HUKS：在密钥管理扩展设备/服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider)将CryptoExtensionAbility注册到HUKS。注册成功后，HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
 
-3. 注销下线：在设备拔出、服务停止等不可用场景下调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)注销已注册的能力，避免资源残留。
+3. 注销下线：在设备拔出、服务停止等不可用场景下调用[unregisterProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider)注销已注册的能力，避免资源残留。
 
 ## 接入能力
 
@@ -36,7 +36,7 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 
 ### 可用性检测与注册/注销时机
 
-密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)。
+密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)。
 
 检测机制因设备形态而异：
 - UKey物理设备：监听USB插拔事件。
@@ -59,7 +59,7 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 从API版本26.0.0开始，OpenHarmony中支持两类ExtensionAbility配合使用：CryptoExtensionAbility处理密码学操作，UIExtensionAbility处理需要定制化的UI交互的流程（如PIN输入框、证书选择界面）。密钥管理扩展应用可根据实际业务需要，在注册Provider时同步关联UIExtensionAbility。
 
 - 数量限制：1个CryptoExtensionAbility最多关联**10个**UIExtensionAbility，超出时registerProvider返回HUKS_ERR_CODE_EXCEED_LIMIT。
-- 字段说明：通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中UIExtensionAbility的name字段，最大长度为128字节，index字段对应resourceId，最大长度为512字节，用于将UIExtensionAbility路由到具体资源。
+- 字段说明：通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中UIExtensionAbility的name字段，最大长度为128字节，index字段对应resourceId，最大长度为512字节，用于将UIExtensionAbility路由到具体资源。
 - 典型场景：自定义PIN输入框、自定义证书选择界面、自定义用户确认对话框等。
 
 ## 核心能力实现
@@ -76,20 +76,20 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 > **说明：**
 >
 > 1. CryptoExtensionAbility所有接口的params中都会携带调用方身份信息（通过HUKS_EXT_CRYPTO_TAG_UID标识）。密钥管理扩展应用可基于业务需要决定是否使用，例如在句柄管理、会话管理、认证管理等场景下基于UID进行隔离与校验。
-> 2. 接口函数的resultCode不支持自定义，必须按[HuksCryptoExtensionResultCode](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensionresultcode)枚举定义的错误码返回，否则可能导致异常。
-> 3. 从API版本26.0.0开始，厂商如需传递自定义的细粒度错误信息，可通过返回值的errInfo字段传入，errInfo为[HuksExternalErrorInfo](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalerrorinfo)类型。上层应用可通过[huksExternalCrypto.getErrorInfo](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogeterrorinfo)接口获取。
+> 2. 接口函数的resultCode不支持自定义，必须按[HuksCryptoExtensionResultCode](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresultcode-e.md#hukscryptoextensionresultcode)枚举定义的错误码返回，否则可能导致异常。
+> 3. 从API版本26.0.0开始，厂商如需传递自定义的细粒度错误信息，可通过返回值的errInfo字段传入，errInfo为[HuksExternalErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalerrorinfo-i.md#huksexternalerrorinfo)类型。上层应用可通过[huksExternalCrypto.getErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo)接口获取。
 
 ### 句柄管理
 
 针对同一个密钥管理扩展资源（例如容器下的密钥），需要通过句柄管理来控制资源访问的生命周期。
 
-- 打开资源：通过[onOpenResource](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onopenresource)接口打开resourceId标识的资源。
+- 打开资源：通过[onOpenResource](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onopenresource)接口打开resourceId标识的资源。
 
    密钥管理扩展应用需在内部建立resourceId与新句柄的映射（具体实现由接入的设备/服务决定，如UKey打开会话、数字盾启动服务等），并返回给HUKS，句柄值由密钥管理扩展应用自行生成并保证唯一性。
 
    业务身份通过params参数中的HUKS_EXT_CRYPTO_TAG_UID携带，建议密钥管理扩展应用基于此UID做句柄资源的隔离存储。
 
-- 关闭资源：通过[onCloseResource](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#oncloseresource)接口关闭handle对应的资源，密钥管理扩展应用需在内部释放resourceId与句柄的映射关系（具体实现由接入的设备/服务决定，如UKey关闭会话等），并通知HUKS资源已关闭。
+- 关闭资源：通过[onCloseResource](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#oncloseresource)接口关闭handle对应的资源，密钥管理扩展应用需在内部释放resourceId与句柄的映射关系（具体实现由接入的设备/服务决定，如UKey关闭会话等），并通知HUKS资源已关闭。
 
 - 句柄映射：
   - 建议支持多个OpenHarmony应用可同时打开/关闭同一资源，每个应用应获得独立的映射句柄。例如：OpenHarmony应用1打开资源A后，OpenHarmony应用2也可以再次打开资源A。
@@ -105,28 +105,28 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - 认证状态维度：建议PIN认证以GM/T 0016-2023中定义的Application为单位，不同Application需独立认证。OpenHarmony应用1完成Application A的PIN认证后，OpenHarmony应用2访问Application A仍需独立认证。同一应用访问不同Application，也需分别进行认证。
 
-- PIN加密传输：调用方传入的PIN是通过[onGetProperty](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongetproperty)中导出的公钥加密后的密文，密钥管理扩展应用在[onAuthUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onauthukeypin)中需先使用对应私钥解密，再调用底层驱动进行验证。[onGetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongetukeypinauthstate)用于查询PIN认证状态。
+- PIN加密传输：调用方传入的PIN是通过[onGetProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#ongetproperty)中导出的公钥加密后的密文，密钥管理扩展应用在[onAuthUkeyPin](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onauthukeypin)中需先使用对应私钥解密，再调用底层驱动进行验证。[onGetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#ongetukeypinauthstate)用于查询PIN认证状态。
 
-- 重置认证状态范围：[onClearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onclearukeypinauthstate)用于清除应用维度的认证状态（不解除外部密钥管理能力或设备本身的PIN锁定）。例如UKey物理PIN解锁需通过UKey物理按键或厂商私有通道完成，不通过CryptoExtensionAbility接口暴露。
+- 重置认证状态范围：[onClearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onclearukeypinauthstate)用于清除应用维度的认证状态（不解除外部密钥管理能力或设备本身的PIN锁定）。例如UKey物理PIN解锁需通过UKey物理按键或厂商私有通道完成，不通过CryptoExtensionAbility接口暴露。
 
 ### 密钥生成/导入/导出
 
 从API版本26.0.0开始，提供密钥的生成、公钥导出、加密封装密钥导入能力（密钥存储在外部密钥管理能力内）。
 
-- 生成密钥：通过[onGenerateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongeneratekeyitem)接口在密钥管理扩展服务中生成密钥对。入参支持指定算法、密钥长度、用途，密钥管理扩展应用需设置合理默认值（如RSA-2048、签名用途）。返回成功表示密钥对已生成。
+- 生成密钥：通过[onGenerateKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#ongeneratekeyitem)接口在密钥管理扩展服务中生成密钥对。入参支持指定算法、密钥长度、用途，密钥管理扩展应用需设置合理默认值（如RSA-2048、签名用途）。返回成功表示密钥对已生成。
 
-- 导出公钥：通过[onExportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onexportkeyitem)接口从密钥管理扩展服务导出公钥。推荐传入密钥用途参数以导出指定用途的公钥，建议未指定时默认签名用途。导出的公钥数据通过result.outData返回。
+- 导出公钥：通过[onExportKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onexportkeyitem)接口从密钥管理扩展服务导出公钥。推荐传入密钥用途参数以导出指定用途的公钥，建议未指定时默认签名用途。导出的公钥数据通过result.outData返回。
 
-- 导入封装密钥：通过[onImportWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onimportwrappedkeyitem)接口将加密封装的密钥对导入到密钥管理扩展服务。需配合密钥管理扩展服务内的传输密钥（wrappingHandle）使用，wrappedKey数据格式由密钥管理扩展应用定义。典型场景：通过密钥管理扩展服务内的传输密钥安全导入外部生成的密钥对。
+- 导入封装密钥：通过[onImportWrappedKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onimportwrappedkeyitem)接口将加密封装的密钥对导入到密钥管理扩展服务。需配合密钥管理扩展服务内的传输密钥（wrappingHandle）使用，wrappedKey数据格式由密钥管理扩展应用定义。典型场景：通过密钥管理扩展服务内的传输密钥安全导入外部生成的密钥对。
 
 ### 密钥会话管理
 
 签名/验签、加解密等操作采用三段式协议完成。
 
 - 会话模型：
-  - [onInitSession](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#oninitsession)：初始化密钥会话，返回新的会话handle。
-  - [onUpdateSession](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onupdatesession)：传入分段数据（可调用0次或多次），执行中间密码运算。
-  - [onFinishSession](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onfinishsession)：传入最后一段数据，执行最终密码运算，结束会话并返回最终结果。
+  - [onInitSession](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#oninitsession)：初始化密钥会话，返回新的会话handle。
+  - [onUpdateSession](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onupdatesession)：传入分段数据（可调用0次或多次），执行中间密码运算。
+  - [onFinishSession](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onfinishsession)：传入最后一段数据，执行最终密码运算，结束会话并返回最终结果。
 
 - 状态缓存：厂商需缓存会话状态，至少应包含会话句柄与底层会话的映射、累积的中间数据、业务身份（通过HUKS_EXT_CRYPTO_TAG_UID传入）。
 
@@ -134,7 +134,7 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 ### 证书查询与导入
 
-密钥管理扩展应用可支持按证书用途[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)查询、枚举和导入证书。如未指定，密钥管理扩展应用需设置合理默认值（如签名用途的证书）。
+密钥管理扩展应用可支持按证书用途[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)查询、枚举和导入证书。如未指定，密钥管理扩展应用需设置合理默认值（如签名用途的证书）。
 
 - 证书用途过滤：通过`HUKS_EXT_CRYPTO_TAG_PURPOSE`参数指定，建议支持以下取值：
   - `0`：默认用途
@@ -143,19 +143,19 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
   - `3`：凭据加密
   - 未指定时默认获取签名证书
 
-- 证书查询：[onExportCertificate](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onexportcertificate)查询resourceId下的单个证书。
+- 证书查询：[onExportCertificate](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onexportcertificate)查询resourceId下的单个证书。
 
-- 证书枚举：[onEnumCertificates](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onenumcertificates)枚举当前CryptoExtensionAbility下的所有证书。
+- 证书枚举：[onEnumCertificates](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onenumcertificates)枚举当前CryptoExtensionAbility下的所有证书。
 
-- 返回结构：通过result.certs返回，元素类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensioncertinfo)>。
+- 返回结构：通过result.certs返回，元素类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensioncertinfo-i.md#hukscryptoextensioncertinfo)>。
 
-- 证书导入（从API版本26.0.0起支持）：通过[onImportCertificate](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onimportcertificate)接口将证书导入密钥管理扩展服务。
+- 证书导入（从API版本26.0.0起支持）：通过[onImportCertificate](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onimportcertificate)接口将证书导入密钥管理扩展服务。
 
 ### 属性查询与设置
 
 密钥管理扩展应用可支持对密钥管理扩展服务信息的查询与设置。
 
-通过[onGetProperty](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongetproperty)接口可实现对设备信息、公钥等属性的查询；在API版本26.0.0之后，可通过[onSetProperty](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onsetproperty)接口设置属性。
+通过[onGetProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#ongetproperty)接口可实现对设备信息、公钥等属性的查询；在API版本26.0.0之后，可通过[onSetProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onsetproperty)接口设置属性。
 
 - propertyId命名约定：propertyId是上层应用与密钥管理扩展应用之间的调用契约，且长度必须介于1-100字节。上层应用调用时指定propertyId，密钥管理扩展应用在onGetProperty/onSetProperty中识别该propertyId并执行对应操作。两端需约定以下三项内容：
   - 函数名集合：驱动支持哪些propertyId、上层应用可调用哪些。
@@ -170,11 +170,11 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 ### 资源标识
 
-从API版本26.0.0开始，提供[onGetResourceId](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongetresourceid)接口。根据密钥管理扩展应用自定义的Provider/Ability/Bundle名称、调用方UID等参数，返回对应的resourceId。
+从API版本26.0.0开始，提供[onGetResourceId](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#ongetresourceid)接口。根据密钥管理扩展应用自定义的Provider/Ability/Bundle名称、调用方UID等参数，返回对应的resourceId。
 
 - 接口职责：密钥管理扩展应用根据上层应用传入的业务标识，返回对应的resourceId，使上层应用后续可通过openResource等接口访问该资源。
 
-- 实现要点：上层应用调用时会在params中携带Ability名称、Bundle名称、业务标识（通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入）等参数。密钥管理扩展应用需基于业务标识区分上层应用要访问的资源，并将该业务标识映射为对应的resourceId。业务标识的具体形态由密钥管理扩展应用根据底层资源管理方式自行定义。
+- 实现要点：上层应用调用时会在params中携带Ability名称、Bundle名称、业务标识（通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入）等参数。密钥管理扩展应用需基于业务标识区分上层应用要访问的资源，并将该业务标识映射为对应的resourceId。业务标识的具体形态由密钥管理扩展应用根据底层资源管理方式自行定义。
 
 - 返回结构：成功时通过result.resourceId字段返回资源ID，标识密钥管理扩展服务中的某个具体资源，可供上层应用用于后续 openResource等接口的入参。
 

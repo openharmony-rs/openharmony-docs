@@ -15,7 +15,7 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 
 ## 接口说明
 
-这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)。
+这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见MindSpore。
 
 ### Context 相关接口
 

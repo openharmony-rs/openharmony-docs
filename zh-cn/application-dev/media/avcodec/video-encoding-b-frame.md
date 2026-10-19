@@ -26,9 +26,9 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
 
 ## 约束和限制
 
-- **支持的平台**：该能力与平台能力有关，可以通过[OH_AVCapability_IsFeatureSupported](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口查询系统支持情况。
+- **支持的平台**：该能力与平台能力有关，可以通过OH_AVCapability_IsFeatureSupported接口查询系统支持情况。
 - **支持的API版本**：API version 20及以后。
-- **支持的编码器**：该能力与编码器能力有关，可以通过[OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory)接口查询支持情况。
+- **支持的编码器**：该能力与编码器能力有关，可以通过OH_AVCodec_GetCapabilityByCategory接口查询支持情况。
 - **支持的码控模式**：VBR、CBR、SQR、CQ，从API版本26.0.0开始，新增支持CBR_HIGH_QUALITY。
 - 不支持与时域可分层视频编码共同使能。
 - 不支持与长期参考帧共同使能。

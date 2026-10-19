@@ -9,7 +9,7 @@
 手势冲突是指多个手势识别器在同一组件或重叠区域同时识别时产生竞争，导致识别结果不符合预期。常见冲突场景包括：
 - 同一组件上的多手势（如按钮同时添加点击与长按手势）。
 - 父子组件的同类型手势识别器。
-- 系统默认手势与自定义手势（如[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)滑动手势与子组件点击手势冲突）。
+- 系统默认手势与自定义手势（如[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)滑动手势与子组件点击手势冲突）。
 
 干预手势处理可有效解决冲突，除控制组件响应热区和命中测试模式外，主要通过以下四种方式：[自定义手势判定](#自定义手势判定)、[手势并行动态控制](#手势并行动态控制)、[阻止手势参与识别](#阻止手势参与识别)、[自定义干预事件和手势的收集结果](#自定义干预事件和手势的收集结果)。
 
@@ -25,8 +25,8 @@
 
 | 接口 | 说明 |
 | ------- | -------------- |
-|[onGestureJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#ongesturejudgebegin)|用于手势拦截，是通用事件。在手势满足系统触发阈值场景下，回调给应用判断是否拦截手势。|
-|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截、获取手势识别器和设置手势识别器开闭状态。是onGestureJudgeBegin接口的能力扩展，可以代替onGestureJudgeBegin接口。<br>获取手势识别器时，会获取一次交互中手势响应链上的所有手势识别器，以及当前即将触发成功的手势识别器，此时可以设置手势的激活状态。|
+|[onGestureJudgeBegin](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin)|用于手势拦截，是通用事件。在手势满足系统触发阈值场景下，回调给应用判断是否拦截手势。|
+|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturerecognizerjudgebegin)|用于手势拦截、获取手势识别器和设置手势识别器开闭状态。是onGestureJudgeBegin接口的能力扩展，可以代替onGestureJudgeBegin接口。<br>获取手势识别器时，会获取一次交互中手势响应链上的所有手势识别器，以及当前即将触发成功的手势识别器，此时可以设置手势的激活状态。|
 
 以下示例中，Image和Stack两个组件位于同一区域。长按Stack组件的上半部分可触发挂载在Stack组件上的长按手势，长按Stack组件的下半部分则会响应Image组件的拖拽操作。
 
@@ -183,7 +183,7 @@
 
 手势并行动态控制的前提是手势识别成功，如果手势不成功则不会产生手势回调响应。
 
-1. 业务手势作业流：指真正触发UI变化的业务手势，比如使页面滚动的[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)，触发点击的[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)等。
+1. 业务手势作业流：指真正触发UI变化的业务手势，比如使页面滚动的PanGesture，触发点击的TapGesture等。
 
 2. 监听手势作业流：指在监听手势运行的过程中，应根据上下文的业务状态变化动态控制手势识别器的开闭，例如判断组件嵌套滚动过程中是否已滑至边缘。这一监听事件可借助一个使用[并行手势绑定方式](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)的PanGesture实现，或者采用Touch事件来完成。
 
@@ -197,11 +197,11 @@
 
 | 接口 | 说明 |
 | ------- | -------------- |
-|[shouldBuiltInRecognizerParallelWith](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#shouldbuiltinrecognizerparallelwith)|用于设置系统组件内置手势与其他手势并行。|
-|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截，获取手势识别器，初始化手势识别器开闭状态。|
+|[shouldBuiltInRecognizerParallelWith](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shouldbuiltinrecognizerparallelwith)|用于设置系统组件内置手势与其他手势并行。|
+|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturerecognizerjudgebegin)|用于手势拦截，获取手势识别器，初始化手势识别器开闭状态。|
 |[parallelGesture](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)|可使开发者定义的手势，与比它优先级高的手势并行。|
 
-以下示例在两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景下，使用手势控制的接口控制外部组件和内部组件的嵌套滚动联动。
+以下示例在两个[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)组件的嵌套滚动场景下，使用手势控制的接口控制外部组件和内部组件的嵌套滚动联动。
 
 1. 使用shouldBuiltInRecognizerParallelWith接口设置外部Scroll组件的PanGesture手势与内部Scroll组件的PanGesture手势并行。
 
@@ -447,8 +447,8 @@
 
 | 接口 | 说明 |
 | ------- | -------------- |
-|[shouldRecognizerParallelWith](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#shouldrecognizerparallelwith)|用于设置组件非内置手势与其他手势并行。|
-|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于获取手势识别器，再通过控制手势识别器开闭状态拦截手势。|
+|[shouldRecognizerParallelWith](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shouldrecognizerparallelwith)|用于设置组件非内置手势与其他手势并行。|
+|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturerecognizerjudgebegin)|用于获取手势识别器，再通过控制手势识别器开闭状态拦截手势。|
 
 以下示例在嵌套滚动场景下，使用手势控制的接口控制外部的Column组件和内部的Scroll组件的嵌套滚动联动。
 
@@ -643,7 +643,7 @@
 
 手势识别基于[触摸测试](./arkts-interaction-basic-principles.md#触摸测试)的响应链结果进行，因此在用户按下时，通过控制响应链中手势识别器的参与状态，实现高效的动态干预手势处理。
 
-从API version 20开始，可以结合[onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20)接口来阻止手势参与识别。完成触摸测试后，系统通过该接口回调返回所有手势识别器对象。应用可根据类型、组件标识或关联组件信息筛选识别器，并通过调用[preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#preventbegin20)接口主动禁用特定识别器。
+从API version 20开始，可以结合[onTouchTestDone](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouchtestdone)接口来阻止手势参与识别。完成触摸测试后，系统通过该接口回调返回所有手势识别器对象。应用可根据类型、组件标识或关联组件信息筛选识别器，并通过调用[preventBegin](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#preventbegin)接口主动禁用特定识别器。
 
 根据手势类型进行禁用：
 
@@ -663,7 +663,7 @@
 
 根据手势所归属的组件禁用：
 
-组件需要提前通过通用属性[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)配置组件标识。
+组件需要提前通过通用属性[id](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-gridobjectsortcomponent-gridobjectsortcomponentitem-i.md#id)配置组件标识。
 
    <!-- @[component_disabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
    
@@ -701,7 +701,7 @@
 >
 > 系统由内向外执行节点上的onTouchTestDone回调。 
 
-在NDK中onTouchTestDone与preventBegin对应的接口分别为[OH_ArkUI_SetTouchTestDoneCallback](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_settouchtestdonecallback)和[OH_ArkUI_PreventGestureRecognizerBegin](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_preventgesturerecognizerbegin)，它们的使用方式及功能与ArkTS接口一致。
+在NDK中onTouchTestDone与preventBegin对应的接口分别为OH_ArkUI_SetTouchTestDoneCallback和OH_ArkUI_PreventGestureRecognizerBegin，它们的使用方式及功能与ArkTS接口一致。
 
 以下通过一个简化的视频播放界面交互为例来说明具体的用法：
 
@@ -1009,9 +1009,9 @@ struct Index {
 
 | 接口 | 说明 |
 | ------- | -------------- |
-| [onGestureCollectIntercept](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturecollectintercept) | 在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。回调返回干预策略，控制后续收集流程。 |
-| [getUniqueId](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#getuniqueid) | 通过识别器的[getEventTargetInfo()](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#geteventtargetinfo12)获取的组件信息对象上调用，返回当前组件的唯一数字ID，可用于与其他组件的唯一ID进行比对。 |
-| [isHostBelongsTo](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#ishostbelongsto) | 判断当前手势或触摸识别器绑定的节点是否为指定组件的后代节点。传入组件的唯一ID，返回布尔值。该接口在[GestureRecognizer](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gesturerecognizer12)和[TouchRecognizer](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#touchrecognizer20)上均可调用。 |
+| [onGestureCollectIntercept](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturecollectintercept) | 在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。回调返回干预策略，控制后续收集流程。 |
+| [getUniqueId](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#getuniqueid) | 通过识别器的[getEventTargetInfo()](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#geteventtargetinfo)获取的组件信息对象上调用，返回当前组件的唯一数字ID，可用于与其他组件的唯一ID进行比对。 |
+| [isHostBelongsTo](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#ishostbelongsto) | 判断当前手势或触摸识别器绑定的节点是否为指定组件的后代节点。传入组件的唯一ID，返回布尔值。该接口在[GestureRecognizer](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#gesturerecognizer)和[TouchRecognizer](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-touchrecognizer-c.md#touchrecognizer)上均可调用。 |
 
 下面通过示例介绍如何实现自定义干预事件和手势的收集结果。示例中构建了如下组件树。
 

@@ -15,18 +15,18 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
 
 ## 开发步骤
 
-1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-security-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 2. 签名的开发步骤查看[CMS签名](../../security/DeviceCertificateKit/create-cms-sign-object.md)。
 
-3. 调用[cert.createCmsParser](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsparser22)创建CmsParser对象。
+3. 调用[cert.createCmsParser](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createcmsparser-f.md#createcmsparser)创建CmsParser对象。
 
-4. 调用[cmsParser.setRawData](../../reference/apis-device-certificate-kit/js-apis-cert.md#setrawdata22)设置CMS数据。
+4. 调用[cmsParser.setRawData](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-cmsparser-i.md#setrawdata)设置CMS数据。
 
-5. 调用[cmsParser.verifySignedData](../../reference/apis-device-certificate-kit/js-apis-cert.md#verifysigneddata22)进行验签。
+5. 调用[cmsParser.verifySignedData](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-cmsparser-i.md#verifysigneddata)进行验签。
 
 验签示例：
 

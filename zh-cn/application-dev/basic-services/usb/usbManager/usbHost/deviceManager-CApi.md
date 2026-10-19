@@ -122,19 +122,19 @@ HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命
 | OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe \*pipe, int32_t \*fd) | 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的底层USB传输。 |
 | OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe \*pipe) | 关闭USB设备管道并释放底层资源。管道必须由OH_UsbManager_ConnectDevice获取。 |
 
-详细的接口说明请参考[OH_UsbManager](../../../../reference/apis-basic-services-kit/capi-usbmanager.md)和[ohusb_manager.h](../../../../reference/apis-basic-services-kit/capi-ohusb-manager-h.md)。
+详细的接口说明请参考[OH_UsbManager](../../../../reference/apis-basic-services-kit/c-apis/capi-usbmanager.md)和[ohusb_manager.h](../../../../reference/apis-basic-services-kit/c-apis/capi-ohscan-h.md)。
 
 ### 数据结构
 
 | 结构体 | 描述 |
 | -------- | -------- |
-| [OH_UsbManager_UsbDevice](../../../../reference/apis-basic-services-kit/capi-usbmanager-oh-usbmanager-usbdevice.md) | USB设备信息，包含总线号、设备地址、名称、厂商信息、产品ID、配置列表等。 |
-| [OH_UsbManager_UsbConfig](../../../../reference/apis-basic-services-kit/capi-usbmanager-oh-usbmanager-usbconfig.md) | USB配置信息，包含配置ID、属性、最大功率、接口列表等。一个UsbDevice可包含多个UsbConfig。 |
-| [OH_UsbManager_UsbInterface](../../../../reference/apis-basic-services-kit/capi-usbmanager-oh-usbmanager-usbinterface.md) | USB接口信息，包含接口ID、协议、类别、端点列表等。一个UsbConfig可包含多个UsbInterface。 |
-| [OH_UsbManager_UsbEndpoint](../../../../reference/apis-basic-services-kit/capi-usbmanager-oh-usbmanager-usbendpoint.md) | USB端点信息，包含端点地址、属性、传输类型、方向等。一个UsbInterface可包含多个UsbEndpoint。 |
-| [OH_UsbManager_UsbPipe](../../../../reference/apis-basic-services-kit/capi-usbmanager-oh-usbmanager-usbpipe.md) | USB设备管道，包含总线号和设备地址，用于标识已打开的设备通信通道。 |
+| [OH_UsbManager_UsbDevice](../../../../reference/apis-basic-services-kit/c-apis/capi-usbmanager-oh-usbmanager-usbdevice.md) | USB设备信息，包含总线号、设备地址、名称、厂商信息、产品ID、配置列表等。 |
+| [OH_UsbManager_UsbConfig](../../../../reference/apis-basic-services-kit/c-apis/capi-usbmanager-oh-usbmanager-usbconfig.md) | USB配置信息，包含配置ID、属性、最大功率、接口列表等。一个UsbDevice可包含多个UsbConfig。 |
+| [OH_UsbManager_UsbInterface](../../../../reference/apis-basic-services-kit/c-apis/capi-usbmanager-oh-usbmanager-usbinterface.md) | USB接口信息，包含接口ID、协议、类别、端点列表等。一个UsbConfig可包含多个UsbInterface。 |
+| [OH_UsbManager_UsbEndpoint](../../../../reference/apis-basic-services-kit/c-apis/capi-usbmanager-oh-usbmanager-usbendpoint.md) | USB端点信息，包含端点地址、属性、传输类型、方向等。一个UsbInterface可包含多个UsbEndpoint。 |
+| [OH_UsbManager_UsbPipe](../../../../reference/apis-basic-services-kit/c-apis/capi-usbmanager-oh-usbmanager-usbpipe.md) | USB设备管道，包含总线号和设备地址，用于标识已打开的设备通信通道。 |
 
-详细的数据结构说明请参考[OH_UsbManager](../../../../reference/apis-basic-services-kit/capi-usbmanager.md)和[ohusb_manager.h](../../../../reference/apis-basic-services-kit/capi-ohusb-manager-h.md)。
+详细的数据结构说明请参考[OH_UsbManager](../../../../reference/apis-basic-services-kit/c-apis/capi-usbmanager.md)和[ohusb_manager.h](../../../../reference/apis-basic-services-kit/c-apis/capi-ohscan-h.md)。
 
 ### 错误码
 
@@ -150,7 +150,7 @@ OH_UsbManager C接口通过`OH_UsbManager_ErrorCode`枚举返回错误码，具�
 | OH_USBMANAGER_ERROR_IO_ERROR | 14400012 | 传输I/O错误。 |
 | OH_USBMANAGER_ERROR_INVALID_PARAMETER | 14400014 | 无效参数。对不可为空的参数传入了空指针。 |
 
-详细的错误码说明请参考[ohusb_manager.h](../../../../reference/apis-basic-services-kit/capi-ohusb-manager-h.md)。
+详细的错误码说明请参考[ohusb_manager.h](../../../../reference/apis-basic-services-kit/c-apis/capi-ohscan-h.md)。
 
 ## 开发步骤
 

@@ -12,7 +12,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ## 开发指导
 
-使用AudioHaptic开发音频与振动协同播放功能，涉及到音频及振动资源的管理、音频时延模式及音频流使用类型的配置、音振播放器的创建及管理等。本文将以一次音振协同播放的过程为例，讲解如何使用AudioHaptic开发音振协同播放功能，建议结合[audioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md)API接口文档一起阅读。
+使用AudioHaptic开发音频与振动协同播放功能，涉及到音频及振动资源的管理、音频时延模式及音频流使用类型的配置、音振播放器的创建及管理等。本文将以一次音振协同播放的过程为例，讲解如何使用AudioHaptic开发音振协同播放功能，建议结合[audioHaptic](../../reference/apis-audio-kit/arkts-apis/arkts-audio-multimedia-audiohaptic.md)API接口文档一起阅读。
 
 ### 权限申请
 
@@ -23,9 +23,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ### 开发步骤及注意事项
 
-1. 获取音振管理器实例，并注册音频及振动资源，单个应用最多支持同时注册128个资源，播放器支持的音频和振动资源格式，请查看[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)文档中的描述。开发者可通过如下两种方式注册资源：
-   - 方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
-   - 方式2（推荐）：从API版本20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源。
+1. 获取音振管理器实例，并注册音频及振动资源，单个应用最多支持同时注册128个资源，播放器支持的音频和振动资源格式，请查看[registerSource](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticmanager-i.md#registersource)文档中的描述。开发者可通过如下两种方式注册资源：
+   - 方式1：使用[registerSource](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticmanager-i.md#registersource)接口，通过文件URI来注册资源。
+   - 方式2（推荐）：从API版本20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticmanager-i.md#registersourcefromfd)接口，通过文件描述符来注册资源。
 
    <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -76,7 +76,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
      });
    ```
 
-2. 设置音振播放器音频时延模式和音频流使用类型，具体作用和类型可以查看[setAudioLatencyMode](../../reference/apis-audio-kit/js-apis-audioHaptic.md#setaudiolatencymode)和[setStreamUsage](../../reference/apis-audio-kit/js-apis-audioHaptic.md#setstreamusage)接口的文档，推荐短信、通知音等短提示音搭配FAST模式，来电铃声等长铃声搭配NORMAL模式。
+2. 设置音振播放器音频时延模式和音频流使用类型，具体作用和类型可以查看[setAudioLatencyMode](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticmanager-i.md#setaudiolatencymode)和[setStreamUsage](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticmanager-i.md#setstreamusage)接口的文档，推荐短信、通知音等短提示音搭配FAST模式，来电铃声等长铃声搭配NORMAL模式。
 
    <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -88,7 +88,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
 
-3. 调用[createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer)方法，创建AudioHapticPlayer实例，其中options参数控制是否将音频静音，是否禁止振动。参数为空时，播放器默认开启音频，允许振动。
+3. 调用[createPlayer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer)方法，创建AudioHapticPlayer实例，其中options参数控制是否将音频静音，是否禁止振动。参数为空时，播放器默认开启音频，允许振动。
 
    <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -106,7 +106,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
        });
    ```
 
-4. 调用[start](../../reference/apis-audio-kit/js-apis-audioHaptic.md#start)方法，开启音频播放并同步开启振动。
+4. 调用[start](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticplayer-i.md#start)方法，开启音频播放并同步开启振动。
 
    <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -120,7 +120,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    });
    ```
 
-5. 调用[stop](../../reference/apis-audio-kit/js-apis-audioHaptic.md#stop)方法，停止音频播放并同步停止振动。
+5. 调用[stop](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticplayer-i.md#stop)方法，停止音频播放并同步停止振动。
 
    <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -134,7 +134,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    });
    ```
 
-6. 应用在使用完音振协同播放器后应主动调用[release](../../reference/apis-audio-kit/js-apis-audioHaptic.md#release)方法，释放AudioHapticPlayer实例，防止播放器实例长期占用系统音振资源，产生严重的内存与系统资源泄漏，从而导致应用后续无法再创建音振协同播放器。
+6. 应用在使用完音振协同播放器后应主动调用[release](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticplayer-i.md#release)方法，释放AudioHapticPlayer实例，防止播放器实例长期占用系统音振资源，产生严重的内存与系统资源泄漏，从而导致应用后续无法再创建音振协同播放器。
 
    <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -148,7 +148,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    });
    ```
 
-7. 当资源不再使用时，应用必须调用[unregisterSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#unregistersource)方法，将已注册的音频及振动资源移除注册，若长期堆积未注销的无效资源，会快速耗尽应用128个资源注册配额，直接导致后续所有音振资源注册失败、播放器无法创建，音振协同播放功能不可用，同时会引发持续性资源泄漏问题。
+7. 当资源不再使用时，应用必须调用[unregisterSource](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audiohaptic-audiohapticmanager-i.md#unregistersource)方法，将已注册的音频及振动资源移除注册，若长期堆积未注销的无效资源，会快速耗尽应用128个资源注册配额，直接导致后续所有音振资源注册失败、播放器无法创建，音振协同播放功能不可用，同时会引发持续性资源泄漏问题。
 
    <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    

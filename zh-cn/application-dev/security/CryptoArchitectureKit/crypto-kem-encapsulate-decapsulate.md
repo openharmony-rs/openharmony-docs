@@ -23,19 +23,19 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格�
 
 **封装**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)和[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为ML-KEM的非对称密钥（KeyPair）。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)和[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair-1)，生成密钥算法为ML-KEM的非对称密钥（KeyPair）。
 
-2. 调用[cryptoFramework.createKem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekem)，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
+2. 调用[cryptoFramework.createKem](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createkem-f.md#createkem)，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
 
-3. 调用[Kem.encapsulate](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#encapsulate)，基于传入的公钥（KeyPair.pubKey）进行密钥封装，返回封装结果（[KemEncapResult](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kemencapresult)）。
+3. 调用[Kem.encapsulate](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-kem-i.md#encapsulate)，基于传入的公钥（KeyPair.pubKey）进行密钥封装，返回封装结果（[KemEncapResult](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-kemencapresult-i.md#kemencapresult)）。
 
-   [KemEncapResult](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kemencapresult)包含sharedSecret（共享密钥）和wrappedKey（封装密钥）。封装方保留sharedSecret，将wrappedKey发送给解封装方。ikme参数传入null时，由算法库内部随机生成临时密钥。
+   [KemEncapResult](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-kemencapresult-i.md#kemencapresult)包含sharedSecret（共享密钥）和wrappedKey（封装密钥）。封装方保留sharedSecret，将wrappedKey发送给解封装方。ikme参数传入null时，由算法库内部随机生成临时密钥。
 
 **解封装**
 
-1. 调用[cryptoFramework.createKem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekem)，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
+1. 调用[cryptoFramework.createKem](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createkem-f.md#createkem)，指定算法参数为KemAlgNameId.ML_KEM_768，创建Kem实例。
 
-2. 调用[Kem.decapsulate](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#decapsulate)，基于传入的私钥（KeyPair.priKey）和封装密钥（wrappedKey）进行密钥解封装，返回共享密钥。
+2. 调用[Kem.decapsulate](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-kem-i.md#decapsulate)，基于传入的私钥（KeyPair.priKey）和封装密钥（wrappedKey）进行密钥解封装，返回共享密钥。
 
    解封装得到的共享密钥应与封装时生成的sharedSecret一致。
 

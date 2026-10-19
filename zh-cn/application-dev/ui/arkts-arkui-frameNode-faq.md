@@ -12,7 +12,7 @@
 
 **问题现象**
 
-不规范地使用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)后出现[JS Crash](../dfx/jscrash-guidelines.md)。
+不规范地使用[FrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode.md)后出现[JS Crash](../dfx/jscrash-guidelines.md)。
 
 <!--RP1-->
 ![](figures/jscrash_happened.png)
@@ -24,7 +24,7 @@
 
 **示例代码**
 
-该示例演示了FrameNode抛出[dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12)相关异常的场景。运行示例代码后会出现JS Crash报错，参考下方的动图，跳转至具体的报错场景，发现报错的原因是调用dispose后不能调用[getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)，在本示例中，删除dispose相关代码即可正常运行。
+该示例演示了FrameNode抛出[dispose](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#dispose)相关异常的场景。运行示例代码后会出现JS Crash报错，参考下方的动图，跳转至具体的报错场景，发现报错的原因是调用dispose后不能调用[getMeasuredSize](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getmeasuredsize)，在本示例中，删除dispose相关代码即可正常运行。
 
 ```ts
 import { NodeController, FrameNode } from '@kit.ArkUI';
@@ -58,7 +58,7 @@ struct FrameNodeTypeTest {
 
 **问题现象**
 
-开发者对[ArkUI_NodeHandle](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)执行[disposeNode](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)前，未清理节点相关的资源对象（如回调、捕获引用等），导致节点下树后高概率发生程序崩溃，崩溃原因为释放后使用（Use After Free）。
+开发者对ArkUI_NodeHandle执行[disposeNode](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)前，未清理节点相关的资源对象（如回调、捕获引用等），导致节点下树后高概率发生程序崩溃，崩溃原因为释放后使用（Use After Free）。
 
 <!--RP2-->
 ![](figures/cppcrash_happened.png)
@@ -72,7 +72,7 @@ struct FrameNodeTypeTest {
 
 调整资源释放顺序，优先释放节点衍生资源（依赖节点创建的对象与回调、捕获引用等），再释放节点。
 
-下面提供一个cppcrash的示例。具体实现为创建[XComponent](./../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)时调用BindNode，将TS侧XComponent传入Native侧并创建[OH_ArkUI_SurfaceCallback](./../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)，在XComponent下树时调用UnbindNode回收相关资源。BindNode通过XComponent节点创建[OH_ArkUI_SurfaceHolder](./../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)对象并注册[OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent](./../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_setsurfacedestroyedevent)事件。在UnbindNode中，由于XComponent的dispose在OH_ArkUI_SurfaceHolder调用dispose之前执行，导致后者释放时使用了已释放的XComponent节点，从而触发cppcrash。
+下面提供一个cppcrash的示例。具体实现为创建[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md)时调用BindNode，将TS侧XComponent传入Native侧并创建[OH_ArkUI_SurfaceCallback](../reference/apis-arkui/c-apis/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)，在XComponent下树时调用UnbindNode回收相关资源。BindNode通过XComponent节点创建[OH_ArkUI_SurfaceHolder](../reference/apis-arkui/c-apis/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)对象并注册OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent事件。在UnbindNode中，由于XComponent的dispose在OH_ArkUI_SurfaceHolder调用dispose之前执行，导致后者释放时使用了已释放的XComponent节点，从而触发cppcrash。
 
 针对上述示例，在UnbindNode函数中，把disposeNode移至函数末尾前执行，即可修复此问题。
 

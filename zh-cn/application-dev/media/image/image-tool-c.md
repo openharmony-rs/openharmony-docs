@@ -12,7 +12,7 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 在图库、相机、图片编辑等应用中，开发者可以读取图片的拍摄时间、方向、焦距、地理位置等Exif信息，也可以在需要时修改部分Exif信息。例如，当摄像机的手动镜头参数无法自动写入Exif信息，或者因相机断电导致拍摄时间错误时，可手动修正对应的Exif数据。
 
-系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见[变量](../../reference/apis-image-kit/capi-image-common-h.md#变量)里的OHOS_IMAGE_PROPERTY_XXX类型。不同图片格式对Exif信息的读写支持情况如下。
+系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见[变量](../../reference/apis-image-kit/c-apis/capi-image-effect-filter-h.md#变量)里的OHOS_IMAGE_PROPERTY_XXX类型。不同图片格式对Exif信息的读写支持情况如下。
 
 | 图片格式 | 读取Exif信息 | 修改Exif信息 |
 | -------- | -------- | -------- |
@@ -24,12 +24,12 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 ## 接口说明
 
-Exif信息的读取与编辑相关C API如下，详细介绍请参考[image_source_native.h](../../reference/apis-image-kit/capi-image-source-native-h.md)。
+Exif信息的读取与编辑相关C API如下，详细介绍请参考[image_source_native.h](../../reference/apis-image-kit/c-apis/capi-image-source-native-h.md)。
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [OH_ImageSourceNative_GetImagePropertyWithNull()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertywithnull) | 获取指定属性键的Exif信息。 |
-| [OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | 修改指定属性键的Exif信息。 |
+| OH_ImageSourceNative_GetImagePropertyWithNull() | 获取指定属性键的Exif信息。 |
+| OH_ImageSourceNative_ModifyImageProperty() | 修改指定属性键的Exif信息。 |
 
 ## 注意事项
 

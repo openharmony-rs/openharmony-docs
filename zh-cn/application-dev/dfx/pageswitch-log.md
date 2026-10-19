@@ -211,7 +211,7 @@
 
 ## 日志获取
 
-获取故障页面切换日志需要对故障事件进行订阅并使能故障事件的页面切换日志，日志获取依赖于HiAppEvent的事件订阅和系统事件策略配置能力。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+获取故障页面切换日志需要对故障事件进行订阅并使能故障事件的页面切换日志，日志获取依赖于HiAppEvent的事件订阅和系统事件策略配置能力。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent.md)。
 
 ### 接口说明
 | 接口名 | 描述 |

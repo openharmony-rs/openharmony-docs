@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的相机功能API说明请参考Camera模块描述[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的相机功能API说明请参考Camera模块描述[OH_Camera](../../reference/apis-camera-kit/c-apis/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
@@ -73,7 +73,7 @@
 
 4. 获取相机设备完整输出能力。
 
-   通过[OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode)方法，获取当前设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，其中拍照流支持YUV格式。根据相机设备指定模式[Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode)的不同，需要添加不同类型的输出流。
+   通过OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()方法，获取当前设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，其中拍照流支持YUV格式。根据相机设备指定模式[Camera_SceneMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-scenemode-e-sys.md#scenemode)的不同，需要添加不同类型的输出流。
 
    <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -98,9 +98,9 @@
 
 5. 选择设备支持的输出流能力，创建拍照输出流。
 
-   通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
+   通过OH_CameraManager_CreatePhotoOutputWithoutSurface()方法创建拍照输出流。
 
-   可以通过[OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode)获取相机在指定模式下支持的完整输出能力cameraOutputCapability，参考步骤2。在cameraOutputCapability的photoProfiles中选择支持YUV格式的profile，作为创建拍照输出流的参数photoProfile。
+   可以通过OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()获取相机在指定模式下支持的完整输出能力cameraOutputCapability，参考步骤2。在cameraOutputCapability的photoProfiles中选择支持YUV格式的profile，作为创建拍照输出流的参数photoProfile。
 
    <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -130,7 +130,7 @@
 
    - **单段式拍照（PhotoAvailable）开发流程**：
 
-     - 在会话[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)前注册单段式拍照回调。
+     - 在会话[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-session-i.md#commitconfig)前注册单段式拍照回调。
      - 在单段式拍照回调函数中获取图片信息，解析出pixelMap数据，做自定义业务处理。
      - 将处理完的pixelMap通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
      - 使用完后解注册单段式拍照回调函数。
@@ -228,10 +228,10 @@
 
    - **分段式拍照（PhotoAssetAvailable）开发流程**：
 
-     - 在会话[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)前注册分段式拍照回调。
+     - 在会话[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-session-i.md#commitconfig)前注册分段式拍照回调。
      - 在分段式拍照回调函数中获取图片信息，解析出pixelMap数据，做自定义业务处理。
      - 将处理完的pixelMap通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
-     - 调用[OH_PhotoOutput_Capture](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture)拍照后，需要及时调用[OH_MediaAssetChangeRequest_SaveCameraPhoto](../../reference/apis-media-library-kit/capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_savecameraphoto)保存图片或[OH_MediaAssetChangeRequest_DiscardCameraPhoto](../../reference/apis-media-library-kit/capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_discardcameraphoto)取消保存图片，否则会影响后续图片的拍摄。
+     - 调用OH_PhotoOutput_Capture拍照后，需要及时调用OH_MediaAssetChangeRequest_SaveCameraPhoto保存图片或OH_MediaAssetChangeRequest_DiscardCameraPhoto取消保存图片，否则会影响后续图片的拍摄。
      - 使用完后解注册分段式拍照回调函数。
 
      <!-- @[set_photo_double_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
@@ -324,7 +324,7 @@
 
 8. 触发拍照。
 
-   通过[OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture)方法，执行拍照任务。
+   通过OH_PhotoOutput_Capture()方法，执行拍照任务。
 
    <!-- @[take_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -400,7 +400,7 @@
   }
   ```
 
-- 通过注册固定的onError回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
+- 通过注册固定的onError回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见Camera_ErrorCode。
 
   <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
   

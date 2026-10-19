@@ -8,47 +8,47 @@
 
 从API版本26.0.0开始支持智慧手势。智慧手势指用户通过设备上的“敲一敲”，“划一划”和“翻腕”的隔空手势，实现对界面组件的选中、点击、滚动、翻页和返回等交互动作的能力。系统会根据用户的操作意图自动推断目标组件和执行动作，开发者也可接收当前手势的默认动作处理并进行自定义干预。
 
-智慧手势交互依赖组件的[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)标识和[smartGestureShortcut](../reference/apis-arkui/arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)属性配置，系统据此识别可响应手势的组件。开发者通过[SmartGestureController](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md)获取控制器实例，使能手势、注册监听回调，并根据系统推断的手势意图动态决策最终执行的动作。
+智慧手势交互依赖组件的[id](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-gridobjectsortcomponent-gridobjectsortcomponentitem-i.md#id)标识和[smartGestureShortcut](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#smartgestureshortcut)属性配置，系统据此识别可响应手势的组件。开发者通过[SmartGestureController](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md)获取控制器实例，使能手势、注册监听回调，并根据系统推断的手势意图动态决策最终执行的动作。
 
 > **说明：**
 >
-> - 智慧手势的敲一敲和划一划操作需通过[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures)接口显式启用，关闭后组件侧的smartGestureShortcut配置仍会保留，但不会响应敲一敲和划一划手势。
+> - 智慧手势的敲一敲和划一划操作需通过[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#enablesmarttapandslidegestures)接口显式启用，关闭后组件侧的smartGestureShortcut配置仍会保留，但不会响应敲一敲和划一划手势。
 > - 智慧手势的翻腕手势默认开启，不受到enableSmartTapAndSlideGestures接口影响。
 > - 智慧手势仅可在Stage模型下使用。
 
 ## 基本概念
 
-* 智慧手势：用户通过设备上的“敲一敲”，“划一划”和“翻腕”的隔空手势，实现对界面组件的选中、点击、滚动、翻页和返回等交互动作的能力。翻腕手势默认开启，敲一敲和划一划需通过[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures)接口显式启用。
+* 智慧手势：用户通过设备上的“敲一敲”，“划一划”和“翻腕”的隔空手势，实现对界面组件的选中、点击、滚动、翻页和返回等交互动作的能力。翻腕手势默认开启，敲一敲和划一划需通过[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#enablesmarttapandslidegestures)接口显式启用。
 
-* 操作意图（OperateIntention）：用户底层操作的语义分类，即用户做了什么动作。取值范围为TAP（敲一敲）、SLIDE_FORWARD（划一划）、BACK_PRESS（翻腕），详见[OperateIntention](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#operateintention)。操作意图是系统推断执行动作的输入依据。
+* 操作意图（OperateIntention）：用户底层操作的语义分类，即用户做了什么动作。取值范围为TAP（敲一敲）、SLIDE_FORWARD（划一划）、BACK_PRESS（翻腕），详见[OperateIntention](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md#operateintention)。操作意图是系统推断执行动作的输入依据。
 
-* 执行动作（SmartGestureAction）：系统根据操作意图推断的最终执行动作，即系统打算做什么。取值范围为CLICK（点击）、SELECT（选中）、SCROLL_FORWARD（滚动）、PAGE_FORWARD（翻页）、BACK_PRESS（返回）、NONE（无动作），详见[SmartGestureAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#smartgestureaction)。同一操作意图可对应不同执行动作，例如敲一敲（TAP）仅对应点击（CLICK），而划一划（SLIDE_FORWARD）可对应选中（SELECT）、滚动（SCROLL_FORWARD）或翻页（PAGE_FORWARD），系统会根据当前页面结构和目标组件自动推断最合适的执行动作。
+* 执行动作（SmartGestureAction）：系统根据操作意图推断的最终执行动作，即系统打算做什么。取值范围为CLICK（点击）、SELECT（选中）、SCROLL_FORWARD（滚动）、PAGE_FORWARD（翻页）、BACK_PRESS（返回）、NONE（无动作），详见[SmartGestureAction](../reference/apis-arkui/arkts-apis/arkts-arkui-smartgestureaction-e.md#smartgestureaction)。同一操作意图可对应不同执行动作，例如敲一敲（TAP）仅对应点击（CLICK），而划一划（SLIDE_FORWARD）可对应选中（SELECT）、滚动（SCROLL_FORWARD）或翻页（PAGE_FORWARD），系统会根据当前页面结构和目标组件自动推断最合适的执行动作。
 
 * 动作处理（ActionProposal）：开发者通过监听回调返回的具体操作方案，用于覆写系统默认动作。每种执行动作对应一个动作处理类，具体如下：
-  - [ClickActionProposal](../reference/apis-arkui/arkts-apis-uicontext-clickactionproposal.md)：点击动作处理，触发目标组件的onClick事件。遵循"先选中再点击"语义，若目标组件尚未被选中，敲一敲会先建立选中态，下次敲一敲才触发点击。
-  - [SelectActionProposal](../reference/apis-arkui/arkts-apis-uicontext-selectactionproposal.md)：选中动作处理，使目标组件进入选中态，适用于按钮、文本、列表项等可选中组件。
-  - [ScrollActionProposal](../reference/apis-arkui/arkts-apis-uicontext-scrollactionproposal.md)：滚动动作处理，使滚动容器（Scroll、List、Grid等）向前滚动指定距离，默认方向包括向下和向右。构造参数distance取值范围[0,+∞)，小于0时按0处理，单位为vp。
-  - [PageSwitchActionProposal](../reference/apis-arkui/arkts-apis-uicontext-pageswitchactionproposal.md)：翻页动作处理，使Swiper容器向前翻页，默认方向包括向右和向下。构造参数pageCount取值范围[0,+∞)，小于0时按0处理，单位为页。
-  - [BackPressActionProposal](../reference/apis-arkui/arkts-apis-uicontext-backpressactionproposal.md)：返回动作处理，模拟返回键触发页面返回。
-  - [NoneActionProposal](../reference/apis-arkui/arkts-apis-uicontext-noneactionproposal.md)：空动作处理，不触发任何操作，可用于拒绝本次手势。
+  - [ClickActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-clickactionproposal-c.md)：点击动作处理，触发目标组件的onClick事件。遵循"先选中再点击"语义，若目标组件尚未被选中，敲一敲会先建立选中态，下次敲一敲才触发点击。
+  - [SelectActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-selectactionproposal-c.md)：选中动作处理，使目标组件进入选中态，适用于按钮、文本、列表项等可选中组件。
+  - [ScrollActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-scrollactionproposal-c.md)：滚动动作处理，使滚动容器（Scroll、List、Grid等）向前滚动指定距离，默认方向包括向下和向右。构造参数distance取值范围[0,+∞)，小于0时按0处理，单位为vp。
+  - [PageSwitchActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-pageswitchactionproposal-c.md)：翻页动作处理，使Swiper容器向前翻页，默认方向包括向右和向下。构造参数pageCount取值范围[0,+∞)，小于0时按0处理，单位为页。
+  - [BackPressActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-backpressactionproposal-c.md)：返回动作处理，模拟返回键触发页面返回。
+  - [NoneActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-noneactionproposal-c.md)：空动作处理，不触发任何操作，可用于拒绝本次手势。
 
-* 手势处理结果（[GestureHandlingResolution](../reference/apis-arkui/arkts-apis-uicontext-gesturehandlingresolution.md)）：监听回调的返回值，声明是否消费本次手势以及选择何种动作处理。isConsumed为true时消费手势，若同时设置了selectedProposal则以自定义动作处理替代系统默认动作；isConsumed为false时不消费手势，系统将本次手势视为未处理，此时selectedProposal设置不生效。
+* 手势处理结果（[GestureHandlingResolution](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)）：监听回调的返回值，声明是否消费本次手势以及选择何种动作处理。isConsumed为true时消费手势，若同时设置了selectedProposal则以自定义动作处理替代系统默认动作；isConsumed为false时不消费手势，系统将本次手势视为未处理，此时selectedProposal设置不生效。
 
-* 选中态：组件成功进入选中态后会显示选中提示框，选中框样式根据设备有所不同。开发者可通过[requestSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#requestselected)主动请求组件进入选中态，通过[clearSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearselected)清空选中态。requestSelected仅当目标组件满足以下全部条件时请求才会生效：组件可以响应智慧手势（smartGestureShortcut中enabled为true）、组件在屏幕内可见、且组件绑定了onClick或绑定了单击手势[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
+* 选中态：组件成功进入选中态后会显示选中提示框，选中框样式根据设备有所不同。开发者可通过[requestSelected](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#requestselected)主动请求组件进入选中态，通过[clearSelected](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#clearselected)清空选中态。requestSelected仅当目标组件满足以下全部条件时请求才会生效：组件可以响应智慧手势（smartGestureShortcut中enabled为true）、组件在屏幕内可见、且组件绑定了onClick或绑定了单击手势TapGesture。
 
 ## 交互流程
 
 智慧手势的完整交互流程如下。
 
-1. 使能手势：页面出现时调用[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures)启用敲一敲和划一划手势。
+1. 使能手势：页面出现时调用[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#enablesmarttapandslidegestures)启用敲一敲和划一划手势。
 
-2. 标记组件：为需要响应智慧手势的组件设置[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)和[smartGestureShortcut](../reference/apis-arkui/arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)属性，声明其响应优先级和可选中能力。
+2. 标记组件：为需要响应智慧手势的组件设置[id](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-gridobjectsortcomponent-gridobjectsortcomponentitem-i.md#id)和[smartGestureShortcut](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#smartgestureshortcut)属性，声明其响应优先级和可选中能力。
 
-3. 注册监听：调用[registerMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)注册监听回调，在系统处理手势前接收手势意图并进行自定义决策。如需取消单个已注册的回调，可调用[unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor)注销指定回调。
+3. 注册监听：调用[registerMonitor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor)注册监听回调，在系统处理手势前接收手势意图并进行自定义决策。如需取消单个已注册的回调，可调用[unregisterMonitor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#unregistermonitor)注销指定回调。
 
 4. 动态决策：在监听回调中，根据回调返回的具体操作类型ActionProposal和用户实际的操作意图，构造合适的ActionProposal，通过GestureHandlingResolution返回处理结果。
 
-5. 关闭手势：页面消失时调用[clearMonitors](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors)清空所有监听回调（也可通过[unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor)逐个注销指定回调），并调用[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures)关闭手势使能。
+5. 关闭手势：页面消失时调用[clearMonitors](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#clearmonitors)清空所有监听回调（也可通过[unregisterMonitor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#unregistermonitor)逐个注销指定回调），并调用[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#enablesmarttapandslidegestures)关闭手势使能。
 
 ## 智慧手势开发指导
 
@@ -60,11 +60,11 @@
 
 1. 获取控制器并使能手势。
 
-   在组件的[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期中获取[SmartGestureController](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md)实例，并启用敲一敲和划一划手势。在[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中清空监听回调并关闭手势。
+   在组件的[aboutToAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoappear)生命周期中获取[SmartGestureController](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md)实例，并启用敲一敲和划一划手势。在[aboutToDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttodisappear)中清空监听回调并关闭手势。
 
    > **说明：**
    >
-   > [clearMonitors](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors)会清空所有已注册的监听回调。如需仅取消某个特定回调而保留其他回调，可使用[unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor)注销指定回调，传入的参数必须与[registerMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)注册时传入的回调引用一致。
+   > [clearMonitors](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#clearmonitors)会清空所有已注册的监听回调。如需仅取消某个特定回调而保留其他回调，可使用[unregisterMonitor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#unregistermonitor)注销指定回调，传入的参数必须与[registerMonitor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor)注册时传入的回调引用一致。
 
    <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
    
@@ -107,7 +107,7 @@
 
 3. 注册监听回调并动态决策。
 
-   在监听回调中，将[BaseGestureHandlingProposal](../reference/apis-arkui/arkts-apis-uicontext-basegesturehandlingproposal.md)转换为[TargetedGestureProposal](../reference/apis-arkui/arkts-apis-uicontext-targetedgestureproposal.md)以获取系统推断的目标节点，根据action类型构造对应的ActionProposal并返回GestureHandlingResolution。
+   在监听回调中，将[BaseGestureHandlingProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md)转换为[TargetedGestureProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-targetedgestureproposal-c.md)以获取系统推断的目标节点，根据action类型构造对应的ActionProposal并返回GestureHandlingResolution。
 
 > **说明：**
 >
@@ -351,7 +351,7 @@ struct Demo1 {
 
 ### 长列表场景
 
-当页面使用[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件展示大量可选中列表项时，划一划手势可选中列表项，敲一敲手势可触发列表项的点击。滚动动作需要指定List组件作为滚动目标。
+当页面使用[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)组件展示大量可选中列表项时，划一划手势可选中列表项，敲一敲手势可触发列表项的点击。滚动动作需要指定List组件作为滚动目标。
 
 > **说明：**
 >
@@ -499,16 +499,16 @@ struct Demo2 {
 
 ### 多组件类型场景手动控制选中态
 
-在非滚动的单页面中，可能存在[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)等多种类型的交互组件。此时不需要处理滚动和翻页动作，仅处理CLICK和SELECT。开发者可通过[requestSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#requestselected)主动请求某个组件进入选中态，通过[clearSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearselected)清空选中态。
+在非滚动的单页面中，可能存在[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)、[Button](../reference/apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md)、[Toggle](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-toggle-t.md)等多种类型的交互组件。此时不需要处理滚动和翻页动作，仅处理CLICK和SELECT。开发者可通过[requestSelected](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#requestselected)主动请求某个组件进入选中态，通过[clearSelected](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#clearselected)清空选中态。
 
 该示例包含以下操作。
-- 划一划手势选中Text、Button或Toggle组件，敲一敲手势触发选中组件的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)事件。
+- 划一划手势选中Text、Button或Toggle组件，敲一敲手势触发选中组件的[onClick](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md#onclick)事件。
 - 通过“选中按钮”，“选中文本”和“选中开关”按钮调用requestSelected手动请求组件进入选中态。
 - 通过“清空选中”按钮调用clearSelected清除当前选中态。
 
 > **说明：**
 >
-> requestSelected仅当目标组件满足以下全部条件时请求才会生效：组件可以响应智慧手势（smartGestureShortcut中enabled为true）、组件在屏幕内可见、且组件绑定了onClick或绑定了单击手势[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
+> requestSelected仅当目标组件满足以下全部条件时请求才会生效：组件可以响应智慧手势（smartGestureShortcut中enabled为true）、组件在屏幕内可见、且组件绑定了onClick或绑定了单击手势TapGesture。
 
 <!-- @[smartgesture_case3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case3.ets) -->
 
@@ -685,7 +685,7 @@ struct Demo3 {
 
 ### Swiper组件翻页场景
 
-当页面使用[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)组件展示多页内容时，划一划手势可翻页切换Swiper页面。此时需要使用[PageSwitchActionProposal](../reference/apis-arkui/arkts-apis-uicontext-pageswitchactionproposal.md)指定翻页目标容器和翻页数量。
+当页面使用[Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md)组件展示多页内容时，划一划手势可翻页切换Swiper页面。此时需要使用[PageSwitchActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-pageswitchactionproposal-c.md)指定翻页目标容器和翻页数量。
 
 该示例包含以下操作。
 - 划一划手势可翻页切换Swiper页面，使用PageSwitchActionProposal指定翻页数量为1页。

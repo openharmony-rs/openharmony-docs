@@ -14,13 +14,13 @@
 
 会话的配置流程主要包括beginConfig、addInput、addOutput和commitConfig四个流程。流程间的调用顺序不可改变，并且要保证四个流程都成功配置，相机才能正常运行。具体原因可能有如下情况：
 
-1. [beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)失败。
+1. [beginConfig](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#beginconfig)失败。
 
-2. [addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)失败。
+2. [addInput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#addinput)失败。
 
-3. [addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)失败。
+3. [addOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#addoutput)失败。
 
-4. [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)失败。
+4. [commitConfig](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#commitconfig)失败。
 
 **问题分析步骤**
 

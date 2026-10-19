@@ -9,11 +9,11 @@
 
 ## 约束限制
 
-针对CryptoExtensionAbility接口调用限制，详细请参考API中的[约束限制](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#约束限制)。
+针对CryptoExtensionAbility接口调用限制，详细请参考API中的约束限制。
 
 ## 适配指导
 
-本文档旨在指导**密钥管理扩展应用开发者**如何继承实现[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)中的接口能力，涵盖项目搭建、核心实现模式、所有接口的参考示例。此处给出实现参考，可根据业务按需实现其中部分接口，其他实现依照业务需要依次调用driver封装的底层驱动函数。
+本文档旨在指导**密钥管理扩展应用开发者**如何继承实现[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability.md)中的接口能力，涵盖项目搭建、核心实现模式、所有接口的参考示例。此处给出实现参考，可根据业务按需实现其中部分接口，其他实现依照业务需要依次调用driver封装的底层驱动函数。
 
 在DevEco Studio工程中手动新建一个CryptoExtensionAbility组件，具体步骤如下：
 
@@ -69,7 +69,7 @@
    }
    ```
 
-5. 在CryptoAbility.ets文件中导入依赖包，自定义类继承[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)组件并按需实现其中的接口函数。此处给出实现参考，与底层驱动的调用对应关系参见下文。
+5. 在CryptoAbility.ets文件中导入依赖包，自定义类继承[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability.md)组件并按需实现其中的接口函数。此处给出实现参考，与底层驱动的调用对应关系参见下文。
 
    ```ts
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult, HuksCryptoExtensionResultCode } from '@kit.UniversalKeystoreKit';
@@ -296,13 +296,13 @@ onGetProperty用于获取指定资源的属性信息，handle为资源句柄，p
 
 ### 调用onAuthUkeyPin验证PIN码
 
-onAuthUkeyPin用于在使用私钥进行签名之前验证PIN码。加密后的PIN码通过param中传入[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，需使用onGetProperty中保存的私钥进行解密。
+onAuthUkeyPin用于在使用私钥进行签名之前验证PIN码。加密后的PIN码通过param中传入[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)参数携带，需使用onGetProperty中保存的私钥进行解密。
 
-- **验证成功**：当PIN码校验成功时，返回值中的resultCode成员需设置为0，返回值中的authState设置为[HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalpinauthstate)。
+- **验证成功**：当PIN码校验成功时，返回值中的resultCode成员需设置为0，返回值中的authState设置为[HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalpinauthstate-e.md#huksexternalpinauthstate)。
 
 - **验证失败**：当PIN码不正确时，resultCode携带错误码信息，返回值中的retryCount设置为剩余重试次数，每次认证失败重试次数减1。
 
-- **UKey锁住**：当重试次数为0时，resultCode设置为[HUKS_CRYPTO_EXTENSION_ERR_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensionresultcode)，authState设置为[HUKS_EXT_CRYPTO_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalpinauthstate)。
+- **UKey锁住**：当重试次数为0时，resultCode设置为[HUKS_CRYPTO_EXTENSION_ERR_PIN_LOCKED](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresultcode-e.md#hukscryptoextensionresultcode)，authState设置为[HUKS_EXT_CRYPTO_PIN_LOCKED](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalpinauthstate-e.md#huksexternalpinauthstate)。
 
    ```ts
    onAuthUkeyPin(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
@@ -550,7 +550,7 @@ onFinishSession用于传输最后一段明文，在验签操作中用于传输�
 
 ### 调用onExportCertificate查询证书
 
-onExportCertificate用于查询某个resourceId下的证书。可以通过解析参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)获取业务希望的证书类型。如未指定，密钥管理扩展应用实现方需设置默认类型（建议签名证书）。
+onExportCertificate用于查询某个resourceId下的证书。可以通过解析参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)获取业务希望的证书类型。如未指定，密钥管理扩展应用实现方需设置默认类型（建议签名证书）。
 
    ```ts
    onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
@@ -579,7 +579,7 @@ onExportCertificate用于查询某个resourceId下的证书。可以通过解析
 
 ### 调用onEnumCertificates查询证书列表
 
-onEnumCertificates用于枚举证书列表。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的certs成员包含证书列表（类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensioncertinfo)>）。调用失败时，resultCode携带错误码信息。
+onEnumCertificates用于枚举证书列表。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的certs成员包含证书列表（类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensioncertinfo-i.md#hukscryptoextensioncertinfo)>）。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {

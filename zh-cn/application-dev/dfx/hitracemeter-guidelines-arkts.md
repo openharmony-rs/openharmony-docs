@@ -14,7 +14,7 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 
 ## 接口说明
 
-性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)。
+性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

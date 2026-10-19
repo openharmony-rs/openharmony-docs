@@ -30,7 +30,7 @@ if/else条件渲染是ArkUI应用开发框架提供的渲染控制的能力之�
 | Hidden  | 组件状态为不可见，但参与布局、进行占位   |
 | None    | 组件状态为不可见，不参与布局、不进行占位 |
 
-关于显隐控制的详细说明，可以参考[显隐控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md)。
+关于显隐控制的详细说明，可以参考显隐控制。
 
 ### 机制区别
 

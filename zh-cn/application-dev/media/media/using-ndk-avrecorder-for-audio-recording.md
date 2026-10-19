@@ -16,14 +16,14 @@ AVRecorder支持开发音频或视频单独录制，集成了音频捕获、音�
 
 ![Recording status change](figures/audio-recording-status-change.png)
 
-状态的详细说明请参考[OH_AVRecorder_State](../../reference/apis-media-kit/capi-avrecorder-base-h.md#oh_avrecorder_state)。
+状态的详细说明请参考OH_AVRecorder_State。
 
 
 ## 申请权限
 
 在开发此功能前，开发者应根据实际需求申请相关权限：
 - 当需要使用麦克风时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
-- 当需要读取和保存音频文件时，请优先使用[AudioViewPicker音频选择器对象](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)。
+- 当需要读取和保存音频文件时，请优先使用[AudioViewPicker音频选择器对象](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)。
 
 > **说明：**
 >
@@ -34,9 +34,9 @@ AVRecorder支持开发音频或视频单独录制，集成了音频捕获、音�
 > 选择只录音频时，与视频相关的所有参数（如videoFrameWidth和videoFrameHeight）均不需要配置。同理，选择只录视频不录音频时，与音频相关的所有参数（如audioBitrate和audioChannels）均不需要配置。
 
 
-开发者通过引入[avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md)、[avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用音频录制相关API。
+开发者通过引入[avrecorder.h](../../reference/apis-media-kit/c-apis/capi-avrecorder-h.md)、[avrecorder_base.h](../../reference/apis-media-kit/c-apis/capi-avrecorder-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/c-apis/capi-native-averrors-h.md)头文件，使用音频录制相关API。
 
-AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/capi-avrecorder.md)。
+AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/c-apis/capi-avrecorder.md)。
 
 
 在CMake脚本中链接动态库。
@@ -44,7 +44,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[native_avformat.h](../../reference/apis-avcodec-kit/c-apis/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```c++
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -54,7 +54,7 @@ target_link_libraries(entry PUBLIC libavrecorder.so)
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
-开发者通过引入[application_context.h](../../reference/apis-ability-kit/capi-application-context-h.md)头文件，使用程序框架服务相关API。
+开发者通过引入[application_context.h](../../reference/apis-ability-kit/c-apis/capi-application-context-h.md)头文件，使用程序框架服务相关API。
 ```c++
 #include <AbilityKit/ability_runtime/application_context.h>
 ```

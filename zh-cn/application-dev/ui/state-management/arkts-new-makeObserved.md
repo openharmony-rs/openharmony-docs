@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了将普通不可观察数据变为可观察数据，开发者可以使用[makeObserved接口](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)。
+为了将普通不可观察数据变为可观察数据，开发者可以使用[makeObserved接口](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved)。
 
 
 makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档前，建议提前阅读：[\@Trace](./arkts-new-observedV2-and-trace.md)。
@@ -166,7 +166,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
 
 - 支持未被[\@Observed](./arkts-observed-and-objectlink.md)或[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类。
 - 支持Array、Map、Set和Date。
-- 支持[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md), [collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)和[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)。
+- 支持[collections.Array](../../reference/apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md), [collections.Set](../../reference/apis-arkts/arkts-apis/arkts-arkts-collections-set-c.md)和[collections.Map](../../reference/apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)。
 - JSON.parse返回的Object。
 - @Sendable装饰的类。
 
@@ -276,7 +276,7 @@ struct Page3 {
 需要注意：数据的构建和处理可以在子线程中完成，但有观察能力的数据不能传给子线程，只有在主线程里才可以操作可观察的数据。所以上述例子中只是将`this.send`的属性`name`传给子线程操作。
 
 ### makeObserved和collections.Array/Set/Map配合使用
-collections提供ArkTS容器集，可用于并发场景下的高性能数据传递。详情见[@arkts.collections (ArkTS容器集)](../../reference/apis-arkts/arkts-apis-arkts-collections.md)相关文档。
+collections提供ArkTS容器集，可用于并发场景下的高性能数据传递。详情见[@arkts.collections (ArkTS容器集)](../../reference/apis-arkts/arkts-apis/arkts-arkts-collections.md)相关文档。
 
 makeObserved可以在ArkUI中导入可观察的collections容器，但makeObserved不能和状态管理V1的状态变量装饰器如@State和[@Prop](./arkts-prop.md)等配合使用，否则会抛出运行时异常。
 

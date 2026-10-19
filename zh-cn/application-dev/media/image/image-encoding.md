@@ -8,15 +8,15 @@
 
 图片编码指将PixelMap压缩成不同格式的图片文件，用于保存和传输。
 
-支持使用[PackToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13-1)和[PackToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)将[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)编码为JPEG、WebP、PNG、HEIC和TIFF格式。
+支持使用[PackToData](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packtodata)和[PackToFile](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packtofile)将[PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)编码为JPEG、WebP、PNG、HEIC和TIFF格式。
 
-从API version 18开始，支持使用[PackToDataFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodatafrompixelmapsequence18)和[PackToFileFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofilefrompixelmapsequence18)将多个PixelMap编码为GIF格式。
+从API version 18开始，支持使用[PackToDataFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packtodatafrompixelmapsequence)和[PackToFileFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packtofilefrompixelmapsequence)将多个PixelMap编码为GIF格式。
 
-从API版本26.0.0开始，支持使用[PackBinaryImageToTiffFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packbinaryimagetotifffile)和[PackBinaryImageToTiffData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packbinaryimagetotiffdata)将二值图像数据编码为TIFF格式。
+从API版本26.0.0开始，支持使用[PackBinaryImageToTiffFile](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packbinaryimagetotifffile)和[PackBinaryImageToTiffData](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packbinaryimagetotiffdata)将二值图像数据编码为TIFF格式。
 
 ## 开发步骤
 
-图片编码相关API的详细介绍请参见[ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
+图片编码相关API的详细介绍请参见[ImagePacker](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md)。
 
 ### 图片编码进文件流
 
@@ -33,7 +33,7 @@
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. 设置编码选项[PackingOption](../../reference/apis-image-kit/arkts-apis-image-i.md#packingoption)。
+2. 设置编码选项[PackingOption](../../reference/apis-image-kit/arkts-apis/arkts-image-image-packingoption-i-sys.md#packingoption)。
    
    2.1 这里以编码成jpeg图片为例。编码的目标格式format遵循MIME标准定义，因此PackingOption.format应设置为image/jpeg，编码后的文件扩展名可设为.jpg或.jpeg。
    
@@ -53,7 +53,7 @@
    packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
    ```
 
-3. 封装函数，传入imageSource或pixelMap，使用[packToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13)接口编码到ArrayBuffer，或使用[packToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11)接口编码到文件。
+3. 封装函数，传入imageSource或pixelMap，使用[packToData](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packtodata)接口编码到ArrayBuffer，或使用[packToFile](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagepacker-i.md#packtofile)接口编码到文件。
    
    > **说明：**
    >

@@ -29,7 +29,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
 
 ## 接口说明
 
-检测模式接口由HiChecker模块提供，详细API请参考[@ohos.hichecker](../reference/apis-performance-analysis-kit/js-apis-hichecker.md)。
+检测模式接口由HiChecker模块提供，详细API请参考[@ohos.hichecker](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hichecker.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

@@ -10,12 +10,12 @@
 
 ArrayBuffer是JavaScript中的一种数据类型，用于表示通用的、固定长度的原始二进制数据缓冲区。提供了一种在JavaScript中有效地表示和操作原始二进制数据的方式。
 
-在某些场景下，如应用已有一块外部内存（如从文件映射、硬件缓冲区、或其他Native模块分配的内存），希望将其包装为JavaScript的ArrayBuffer对象，以便在JS层进行读写操作。从API版本26.0.0开始，JSVM-API提供了[OH_JSVM_CreateArrayBufferFromExternalMemory](../reference/common/capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口来满足这类场景。
+在某些场景下，如应用已有一块外部内存（如从文件映射、硬件缓冲区、或其他Native模块分配的内存），希望将其包装为JavaScript的ArrayBuffer对象，以便在JS层进行读写操作。从API版本26.0.0开始，JSVM-API提供了OH_JSVM_CreateArrayBufferFromExternalMemory接口来满足这类场景。
 
 ## 基本概念
 
 - **零拷贝与拷贝**：该接口**不保证零拷贝**。在某些JSVM实现或版本中，外部内存可能被拷贝到引擎内部缓冲区。输出参数`copied`显示当前是否发生了拷贝。**开发者不应依赖零拷贝行为**，因为`copied`的值可能随JSVM版本演进而发生变化。
-- **内存生命周期**：该接口接收可选的类型为[JSVM_FinalizeArrayBuffer](../reference/common/capi-jsvm-types-h.md#jsvm_finalizearraybuffer)的回调函数，回调函数中包含`bool copied`参数，指示数据是否被拷贝。当`copied`为false（零拷贝）时，ArrayBuffer直接引用外部内存，调用方**必须保证在finalizeCb被调用之前不释放该内存**（调用方可在回调函数中释放外部内存）；当`copied`为true时，调用方可在API返回后立即释放外部内存。
+- **内存生命周期**：该接口接收可选的类型为JSVM_FinalizeArrayBuffer的回调函数，回调函数中包含`bool copied`参数，指示数据是否被拷贝。当`copied`为false（零拷贝）时，ArrayBuffer直接引用外部内存，调用方**必须保证在finalizeCb被调用之前不释放该内存**（调用方可在回调函数中释放外部内存）；当`copied`为true时，调用方可在API返回后立即释放外部内存。
 
 ## 接口说明
 
@@ -31,13 +31,13 @@ ArrayBuffer是JavaScript中的一种数据类型，用于表示通用的、固�
 
 | 参数项 | 描述 |
 | -- | -- |
-| [JSVM_Env](../reference/common/capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
+| JSVM_Env env | 调用JSVM-API的环境。 |
 | void *externalData | 外部内存指针。**必须8字节对齐**。 |
 | size_t byteLength | 外部内存的长度（字节）。不得超过引擎最大ArrayBuffer大小。 |
-| [JSVM_FinalizeArrayBuffer](../reference/common/capi-jsvm-types-h.md#jsvm_finalizearraybuffer) finalizeCb | 可选参数。当ArrayBuffer被GC回收时调用的callback。回调签名含`bool copied`参数，指示是否发生了拷贝。byteLength==0时此参数应该传递NULL。|
+| JSVM_FinalizeArrayBuffer finalizeCb | 可选参数。当ArrayBuffer被GC回收时调用的callback。回调签名含`bool copied`参数，指示是否发生了拷贝。byteLength==0时此参数应该传递NULL。|
 | void* finalizeHint | 可选参数。传递给finalizeCb的自定义提示数据。 |
 | bool* copied | 可选输出参数。为true表示数据被拷贝，为false表示零拷贝   |
-| [JSVM_Value](../reference/common/capi-jsvm-jsvm-value--8h.md) *result | 输出参数。创建的ArrayBuffer对象。 |
+| JSVM_Value *result | 输出参数。创建的ArrayBuffer对象。 |
 
 ### JSVM_FinalizeArrayBuffer回调类型
 

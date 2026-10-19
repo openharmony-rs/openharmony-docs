@@ -11,7 +11,7 @@
 
 ### AbilityStage
 
-[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)是一个[Module](../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器。
+[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage.md)是一个[Module](../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器。
 
 ### App Linking
 
@@ -68,7 +68,7 @@ FA模型是早期的应用模型，为应用程序提供必备的组件与运行
 
 ### InsightIntentProvider (意图提供方管理能力)
 
-[意图提供方管理能力](../reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md)指通过声明标准意图或自定义意图，将业务功能接入意图框架的应用主体。
+意图提供方管理能力指通过声明标准意图或自定义意图，将业务功能接入意图框架的应用主体。
 
 
 ## K
@@ -84,7 +84,7 @@ FA模型是早期的应用模型，为应用程序提供必备的组件与运行
 
 当应用存在多个进程时，如果开发者需要将不同的Ability实例动态分配给指定进程，系统会在应用启动时自动指定一个进程来负责总体的协调分配工作，该进程即为主控进程。默认情况下，系统指定应用启动的第一个进程为主控进程。
 
-开发者可以设置[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
+开发者可以设置[onNewProcessRequest](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#onnewprocessrequest)的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
 
 
 ## N
@@ -144,7 +144,7 @@ UIAbility热启动发生在实例已启动并切换至后台后再次被启动�
 
 ### 显式Want启动
 
-显式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中指定了abilityName和bundleName，称为显式Want启动。
+显式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)参数中指定了abilityName和bundleName，称为显式Want启动。
 
 当有明确处理请求的对象时，显式Want启动是一种简单有效的启动目标应用组件的方式。
 
@@ -157,7 +157,7 @@ UIAbility热启动发生在实例已启动并切换至后台后再次被启动�
 
 ### 隐式Want启动
 
-隐式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中未指定abilityName，称为隐式Want启动。
+隐式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)参数中未指定abilityName，称为隐式Want启动。
 
 当目标处理对象不明确时，可以使用隐式Want启动。它允许当前应用直接调用其他应用提供的某项能力，而无需关心该能力由哪个具体应用提供。
 

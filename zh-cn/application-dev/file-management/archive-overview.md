@@ -27,9 +27,9 @@
 
 ## 与相关模块的关系
 
-Basic Services Kit还提供了基于ArkTS的[@ohos.zlib (Zip模块)](../reference/apis-basic-services-kit/js-apis-zlib.md)，用于文件和数据的压缩解压缩。二者主要差异如下：
+Basic Services Kit还提供了基于ArkTS的[@ohos.zlib (Zip模块)](../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-zlib.md)，用于文件和数据的压缩解压缩。二者主要差异如下：
 
 | 模块 | Archive模块 | zlib模块 |
 |---|---|---|
 | **本质** | 面向高性能场景的自研压缩框架 | zlib C库的ArkTS封装及少量高层文件接口 |
-| **适用场景** | 使用Native接口开发，对性能有要求，需要使用进度回调和取消操作接口[OH_Archive_Reader_SetProgressHandlerWithData](../reference/apis-core-file-kit/capi-oh-archive-h.md#oh_archive_reader_setprogresshandlerwithdata)，大数据流场景 | 仅使用ArkTS开发，需使用zlib全套底层能力 |
+| **适用场景** | 使用Native接口开发，对性能有要求，需要使用进度回调和取消操作接口OH_Archive_Reader_SetProgressHandlerWithData，大数据流场景 | 仅使用ArkTS开发，需使用zlib全套底层能力 |

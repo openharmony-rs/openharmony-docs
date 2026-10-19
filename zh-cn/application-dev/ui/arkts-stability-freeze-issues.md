@@ -35,7 +35,7 @@
 
 **参考链接**
 
-相关接口详见[syncLoad](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#syncload8)。
+相关接口详见[syncLoad](../reference/apis-arkui/arkts-apis/arkts-arkui-resourceimageattachmentoptions-i.md#syncload)。
 
 
 ## 在UI主线程执行耗时任务

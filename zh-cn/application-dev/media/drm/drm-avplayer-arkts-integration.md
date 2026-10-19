@@ -24,7 +24,7 @@
    import { BusinessError } from '@kit.BasicServicesKit'
    ```
 
-3. 调用[createAVPlayer](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9)，创建AVPlayer实例并设置DRM信息监听事件。
+3. 调用[createAVPlayer](../../reference/apis-media-kit/arkts-apis/arkts-media-media-createavplayer-f.md#createavplayer)，创建AVPlayer实例并设置DRM信息监听事件。
 
    ```ts
    let playerHandle: media.AVPlayer;
@@ -38,7 +38,7 @@
    }
    ```
 
-4. 调用[createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)和[createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession-1)根据DRM信息中的uuid创建MediaKeySystem和MediaKeySession实例。
+4. 调用[createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis/arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)和[createMediaKeySession](../../reference/apis-drm-kit/arkts-apis/arkts-drm-drm-mediakeysystem-i.md#createmediakeysession-1)根据DRM信息中的uuid创建MediaKeySystem和MediaKeySession实例。
 
    ```ts
    let mediaKeySystem: drm.MediaKeySystem
@@ -66,7 +66,7 @@
    }
    ```
 
-5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
+5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis/arkts-drm-drm-mediakeysession-i.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis/arkts-drm-drm-mediakeysession-i.md#processmediakeyresponse)处理媒体密钥响应。
 
    ```ts
    let initData: Uint8Array = new Uint8Array(drmInfoArr[i].pssh);
@@ -88,7 +88,7 @@
    });
    ```
 
-6. 调用[requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule)和[setDecryptionConfig](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setdecryptionconfig11)，在处理媒体密钥响应成功后设置解密session。
+6. 调用[requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis/arkts-drm-drm-mediakeysession-i.md#requiresecuredecodermodule)和[setDecryptionConfig](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#setdecryptionconfig)，在处理媒体密钥响应成功后设置解密session。
 
    ```ts
    // 实际开发中应从轨道信息获取codec mime type（如video/avc），再传入requireSecureDecoderModule。

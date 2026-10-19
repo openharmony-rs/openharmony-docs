@@ -328,7 +328,7 @@ try {
 
 ### napi_throw_business_error
 
-[napi_throw_business_error](../reference/native-lib/napi.md#napi_throw_business_error)用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。
+napi_throw_business_error用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。
 
 cpp部分代码
 

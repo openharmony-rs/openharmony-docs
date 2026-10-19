@@ -36,15 +36,15 @@ ArkTS卡片创建完成，在开发卡片过程中，支持对卡片进行[实�
 ### 工程结构介绍
 **图1** ArkTS卡片工程目录、相关模块<br>
 ![WidgetModules](figures/WidgetModules.png)
-- [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
+- [FormExtensionAbility](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability.md)：卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
 
-- [FormExtensionContext](../reference/apis-form-kit/js-apis-inner-application-formExtensionContext.md)：FormExtensionAbility的上下文环境，提供FormExtensionAbility具有的接口和能力。
+- [FormExtensionContext](../reference/apis-form-kit/arkts-apis/arkts-form-formextensioncontext.md)：FormExtensionAbility的上下文环境，提供FormExtensionAbility具有的接口和能力。
 
-- [formProvider](../reference/apis-form-kit/js-apis-app-form-formProvider.md)：提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
+- [formProvider](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formprovider.md)：提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
 
-- [formInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md)：提供了卡片信息和状态等相关类型和枚举。
+- [formInfo](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-forminfo.md)：提供了卡片信息和状态等相关类型和枚举。
 
-- [formBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md)：提供卡片数据绑定的能力，包括FormBindingData对象的创建、相关信息的描述。
+- [formBindingData](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formbindingdata.md)：提供卡片数据绑定的能力，包括FormBindingData对象的创建、相关信息的描述。
 
 - [页面布局（WidgetCard.ets）](arkts-ui-widget-page-overview.md)：基于ArkUI提供卡片UI开发能力。
    - [ArkTS卡片通用能力](arkts-ui-widget-page-overview.md#arkts卡片支持的页面能力)：提供了能在ArkTS卡片中使用的组件、属性和API。

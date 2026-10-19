@@ -99,14 +99,14 @@ Timestamp:2025-05-17 19:17:07.000
 
 | 接口名 | 描述 |
 | --- | --- |
-| int [OH_HiAppEvent_SetEventConfig](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig)(const char* name, HiAppEvent_Config* config) | 崩溃日志规格自定义设置，拼接应用日志功能接口。**仅支持NativeCrash类型崩溃。**|
+| int [OH_HiAppEvent_SetEventConfig](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-seteventconfig-f.md#seteventconfig)(const char* name, HiAppEvent_Config* config) | 崩溃日志规格自定义设置，拼接应用日志功能接口。**仅支持NativeCrash类型崩溃。**|
 
 ### OH_HiAppEvent_SetEventConfig接口参数设置说明
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | const char* | 是 | 应用崩溃事件名称，此处为宏**EVENT_APP_CRASH**。 |
-| config | HiAppEvent_Config* | 是 | 应用崩溃事件配置参数，可使用[OH_HiAppEvent_SetConfigItem](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
+| config | HiAppEvent_Config* | 是 | 应用崩溃事件配置参数，可使用OH_HiAppEvent_SetConfigItem函数设置config参数的配置项。 |
 
 | 配置项名称 | 类型 | 必须配置 | 说明 |
 | --- | --- | --- | --- |
@@ -128,15 +128,15 @@ OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步�
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置崩溃事件策略参数接口，支持开启崩溃事件的页面切换日志采集，支持设置崩溃日志配置参数。 |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-configeventpolicy-f.md#configeventpolicy) (policy: EventPolicy): Promise&lt;void>| 设置崩溃事件策略参数接口，支持开启崩溃事件的页面切换日志采集，支持设置崩溃日志配置参数。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来设置崩溃日志配置参数和开启崩溃事件的页面切换日志采集。
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-eventpolicy-i.md#eventpolicy) 的参数来设置崩溃日志配置参数和开启崩溃事件的页面切换日志采集。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| appCrashPolicy | [AppCrashPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。 |
+| appCrashPolicy | [AppCrashPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-appcrashpolicy-i.md#appcrashpolicy) | 否 | 是   | 崩溃事件配置策略。 |
 
 参数设置示例如下：
 
@@ -164,7 +164,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 ### params字段说明
 
-params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventinfo)中事件参数对象，包含每个事件参数的参数名和参数值。
+params是[AppEventInfo](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-appeventinfo-i.md#appeventinfo)中事件参数对象，包含每个事件参数的参数名和参数值。
 
 系统事件中params包含的字段已由各系统事件定义。
 

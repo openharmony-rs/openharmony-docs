@@ -29,7 +29,7 @@
 
 1. 创建全局悬浮窗。  
 
-   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
+   通过[window.createWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-createwindow-f.md#createwindow)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
    <!-- @[floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
@@ -82,7 +82,7 @@
 
 3. 加载显示全局悬浮窗的具体内容。
 
-   通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)接口加载显示全局悬浮窗的具体内容。
+   通过[setUIContent()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setuicontent)和[showWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#showwindow)接口加载显示全局悬浮窗的具体内容。
 
    <!-- @[floating_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
@@ -107,7 +107,7 @@
 
 4. 销毁全局悬浮窗。  
 
-   当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁全局悬浮窗。
+   当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#destroywindow)接口销毁全局悬浮窗。
 
    <!-- @[destroy_floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    

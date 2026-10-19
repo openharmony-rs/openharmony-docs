@@ -18,7 +18,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md)。
 
 1. 导入相关接口，导入方法如下。
    ```ts
@@ -26,7 +26,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 调用[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的supportedMetadataObjectTypes属性，获取当前设备支持的元数据类型，并通过[createMetadataOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createmetadataoutput)方法创建元数据输出流。
+2. 调用[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的supportedMetadataObjectTypes属性，获取当前设备支持的元数据类型，并通过[createMetadataOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createmetadataoutput)方法创建元数据输出流。
 
    ```ts
    function getMetadataOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability): camera.MetadataOutput | undefined {
@@ -42,7 +42,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
    }
    ```
 
-3. 调用[Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法开启metadata数据输出，再通过监听事件metadataObjectsAvailable回调拿到数据，接口调用失败时，会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+3. 调用[Session.start](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#start)方法开启metadata数据输出，再通过监听事件metadataObjectsAvailable回调拿到数据，接口调用失败时，会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
 
    previewOutput获取方式请参考[相机预览开发步骤](camera-preview.md#开发步骤)。
 
@@ -90,7 +90,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
    }
    ```
 
-4. 调用[Session.stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11)方法停止输出metadata数据，接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+4. 调用[Session.stop](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#stop)方法停止输出metadata数据，接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
      
    ```ts
    function stopMetadataOutput(session: camera.Session): void {
@@ -123,7 +123,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
   >
   > 当前的元数据类型仅支持人脸检测（FACE_DETECTION）功能。元数据信息对象为识别到的人脸区域的矩形信息（Rect），包含矩形区域的左上角x坐标、y坐标和矩形的宽高数据。
 
-- 通过注册回调函数，获取监听metadata流的错误结果，callback返回metadata输出接口使用错误时返回的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+- 通过注册回调函数，获取监听metadata流的错误结果，callback返回metadata输出接口使用错误时返回的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
     
   ```ts
   function onMetadataError(metadataOutput: camera.MetadataOutput): void {

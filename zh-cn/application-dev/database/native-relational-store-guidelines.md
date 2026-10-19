@@ -30,7 +30,7 @@ RelationalStore提供了一套完整的对本地数据库进行管理的机制�
 
 ## 开发步骤
 
-详细的接口说明请参考[RDB](../reference/apis-arkdata/capi-rdb.md)。
+详细的接口说明请参考[RDB](../reference/apis-arkdata/c-apis/capi-rdb.md)。
 
 **添加动态链接库**
 
@@ -55,7 +55,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 #include <hilog/log.h>
 ```
 
-1. 获取OH_Rdb_Store实例，创建数据库文件。其中dataBaseDir变量为应用沙箱路径，Stage模式下建议使用数据库目录，参考[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)的databaseDir属性。FA模式下，由于没有接口获取数据库沙箱路径，可使用应用程序的文件目录，可参考[Context](../reference/apis-ability-kit/js-apis-inner-app-context.md)的getFilesDir接口。area为数据库文件存放的安全区域，详见[contextConstant](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md)，开发时需要实现由AreaMode枚举值对Rdb_SecurityArea枚举值的转换。示例代码如下所示：
+1. 获取OH_Rdb_Store实例，创建数据库文件。其中dataBaseDir变量为应用沙箱路径，Stage模式下建议使用数据库目录，参考[Context](../reference/apis-ability-kit/arkts-apis/arkts-ability-featureability-context-t.md)的databaseDir属性。FA模式下，由于没有接口获取数据库沙箱路径，可使用应用程序的文件目录，可参考[Context](../reference/apis-ability-kit/arkts-apis/arkts-ability-featureability-context-t.md)的getFilesDir接口。area为数据库文件存放的安全区域，详见[contextConstant](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-contextconstant.md)，开发时需要实现由AreaMode枚举值对Rdb_SecurityArea枚举值的转换。示例代码如下所示：
     <!--@[rdb_OH_Rdb_CreateOrOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++
@@ -94,7 +94,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     ```
 
-    如果需要设置自定义数据库路径，可在上述代码// ...处调用[OH_Rdb_SetCustomDir()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setcustomdir)接口设置。如果需要设置为只读模式打开数据库，可在上述代码// ...处调用[OH_Rdb_SetReadOnly()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setreadonly)接口设置。示例代码如下所示：
+    如果需要设置自定义数据库路径，可在上述代码// ...处调用OH_Rdb_SetCustomDir()接口设置。如果需要设置为只读模式打开数据库，可在上述代码// ...处调用OH_Rdb_SetReadOnly()接口设置。示例代码如下所示：
     <!--@[rdb_OH_Rdb_SetCustomDir_and_SetReadOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++
@@ -105,7 +105,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Rdb_SetReadOnly(config, true);
     ```
 
-2. 获取到OH_Rdb_Store后，调用[OH_Rdb_Execute()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_execute)接口创建表，并调用[OH_Rdb_Insert()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_insert)接口插入数据。示例代码如下所示：
+2. 获取到OH_Rdb_Store后，调用OH_Rdb_Execute()接口创建表，并调用OH_Rdb_Insert()接口插入数据。示例代码如下所示：
 
     <!--@[rdb_OH_Rdb_Execute_create_table](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -149,7 +149,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
-   调用[OH_Rdb_Update()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_update)接口修改数据，调用[OH_Rdb_Delete()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_delete)接口删除数据。示例代码如下所示：
+   调用OH_Rdb_Update()接口修改数据，调用OH_Rdb_Delete()接口删除数据。示例代码如下所示：
 
     <!--@[rdb_OH_Rdb_Update_and_UpdateWithConflictResolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -222,7 +222,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 4. 根据谓词指定的查询条件查找数据。
 
-   调用[OH_Rdb_Query()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_query)接口查找数据，返回一个OH_Cursor结果集。示例代码如下所示：
+   调用OH_Rdb_Query()接口查找数据，返回一个OH_Cursor结果集。示例代码如下所示：
 
     <!--@[rdb_OH_Rdb_Query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -375,16 +375,16 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     notGlobQueryCursor->destroy(notGlobQueryCursor);
     notGlobPredicates->destroy(notGlobPredicates);
     ```
-   如需指定排序时使用的语言规则，例如zh_CN表示中文，tr_TR表示土耳其语等。可调用[OH_Rdb_SetLocale()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setlocale)接口配置相应规则。
+   如需指定排序时使用的语言规则，例如zh_CN表示中文，tr_TR表示土耳其语等。可调用OH_Rdb_SetLocale()接口配置相应规则。
     <!--@[rdb_OH_Rdb_SetLocale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++
     OH_Rdb_SetLocale(store_, "zh_CN");
     ```
 
-    如需配置fts（Full-Text Search，即全文搜索引擎）动态库，可使用[OH_Rdb_SetPlugins()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setplugins)接口进行配置。
+    如需配置fts（Full-Text Search，即全文搜索引擎）动态库，可使用OH_Rdb_SetPlugins()接口进行配置。
     
-    使用约束详见[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中pluginLibs配置项。
+    使用约束详见[StoreConfig](../reference/apis-arkdata/arkts-apis/arkts-arkdata-rdb-storeconfig-i.md#storeconfig)中pluginLibs配置项。
 
     <!--@[rdb_OH_Rdb_SetPlugins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -398,9 +398,9 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 5. 使用事务对象进行插入、删除或更新数据操作。
 
-   调用[OH_RdbTransOption_SetType()](../reference/apis-arkdata/capi-oh-rdb-transaction-h.md#oh_rdbtransoption_settype)接口，配置要创建的事务类型，支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
+   调用OH_RdbTransOption_SetType()接口，配置要创建的事务类型，支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
-   调用[OH_Rdb_CreateTransaction()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_createtransaction)接口创建事务对象，使用该事务对象执行相应事务操作。
+   调用OH_Rdb_CreateTransaction()接口创建事务对象，使用该事务对象执行相应事务操作。
 
     <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
     
@@ -576,7 +576,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 6. 附加数据库。
    
-    调用[OH_Rdb_Attach()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_attach)接口将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+    调用OH_Rdb_Attach()接口将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
     
     此API不支持附加加密数据库。
 
@@ -584,7 +584,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     
     attach不能并发调用，可能出现未响应情况，报错14800015，需要重试。
     
-    当不再使用附加数据时，可调用[OH_Rdb_Detach()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_detach)接口分离附加数据库。
+    当不再使用附加数据时，可调用OH_Rdb_Detach()接口分离附加数据库。
 
     <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
@@ -786,7 +786,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     ```
 
-9. 查询数据的最后修改时间。调用[OH_Rdb_FindModifyTime()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_findmodifytime)接口查询指定表中指定列的数据的最后修改时间，该接口返回一个有两列数据的OH_Cursor对象，第一列为传入的主键/RowId，第二列为最后修改时间。示例代码如下所示：
+9. 查询数据的最后修改时间。调用OH_Rdb_FindModifyTime()接口查询指定表中指定列的数据的最后修改时间，该接口返回一个有两列数据的OH_Cursor对象，第一列为传入的主键/RowId，第二列为最后修改时间。示例代码如下所示：
     <!--@[rdb_OH_Rdb_FindModifyTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++
@@ -810,7 +810,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     ```
 
-10. 删除数据库。调用[OH_Rdb_DeleteStoreV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_deletestorev2)接口删除数据库及数据库相关文件。示例代码如下：
+10. 删除数据库。调用OH_Rdb_DeleteStoreV2()接口删除数据库及数据库相关文件。示例代码如下：
     
     <!--@[rdb_OH_Rdb_CloseStore_and_DeleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 

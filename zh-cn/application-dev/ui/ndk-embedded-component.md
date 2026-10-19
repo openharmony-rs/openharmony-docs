@@ -9,20 +9,20 @@
 ArkUI在Native侧提供的能力是ArkTS的子集，某些能力不会在Native侧提供，例如声明式UI语法、自定义struct组件及UI系统预置UI组件库。
 
 
-从API version 20开始，ArkUI开发框架提供了Native侧嵌入EmbeddedComponent组件的能力，此能力依赖于[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)机制。EmbeddedComponent用于支持在当前页面嵌入同一应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，负责页面布局和渲染。此功能主要用于有进程隔离需求的模块化开发场景。
+从API version 20开始，ArkUI开发框架提供了Native侧嵌入EmbeddedComponent组件的能力，此能力依赖于[EmbeddedComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-embeddedcomponent.md)机制。EmbeddedComponent用于支持在当前页面嵌入同一应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-embeddeduiextensionability.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，负责页面布局和渲染。此功能主要用于有进程隔离需求的模块化开发场景。
 
 
 > **说明：**
 >
-> - 使用[OH_ArkUI_EmbeddedComponentOption_Create](../reference/apis-arkui/capi-embedded-component-h.md#oh_arkui_embeddedcomponentoption_create)获取[ArkUI_EmbeddedComponentOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)后，可以使用[OH_ArkUI_EmbeddedComponentOption_SetOnError](../reference/apis-arkui/capi-embedded-component-h.md#oh_arkui_embeddedcomponentoption_setonerror)设置onError回调，使用[OH_ArkUI_EmbeddedComponentOption_SetOnTerminated](../reference/apis-arkui/capi-embedded-component-h.md#oh_arkui_embeddedcomponentoption_setonterminated)设置onTerminated回调。可以使用[OH_ArkUI_NodeUtils_MoveTo](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_moveto)迁移节点。
+> - 使用OH_ArkUI_EmbeddedComponentOption_Create获取[ArkUI_EmbeddedComponentOption](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)后，可以使用OH_ArkUI_EmbeddedComponentOption_SetOnError设置onError回调，使用OH_ArkUI_EmbeddedComponentOption_SetOnTerminated设置onTerminated回调。可以使用OH_ArkUI_NodeUtils_MoveTo迁移节点。
 >
-> - 使用[OH_ArkUI_EmbeddedComponentOption_SetOnTerminated](../reference/apis-arkui/capi-embedded-component-h.md#oh_arkui_embeddedcomponentoption_setonterminated)设置onTerminated回调时，返回的want参数只支持解析提供方返回的key-value，不支持嵌套解析。
+> - 使用OH_ArkUI_EmbeddedComponentOption_SetOnTerminated设置onTerminated回调时，返回的want参数只支持解析提供方返回的key-value，不支持嵌套解析。
 >
-> - 在EmbeddedComponentOption属性设置完成后，调用[OH_ArkUI_EmbeddedComponentOption_Dispose](../reference/apis-arkui/capi-embedded-component-h.md#oh_arkui_embeddedcomponentoption_dispose)释放内存，避免内存泄漏。
+> - 在EmbeddedComponentOption属性设置完成后，调用OH_ArkUI_EmbeddedComponentOption_Dispose释放内存，避免内存泄漏。
 >
-> - EmbeddedComponent组件需要使用[setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)设置宽高才能显示。
+> - EmbeddedComponent组件需要使用[setAttribute](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)设置宽高才能显示。
 
-本示例展示EmbeddedComponent组件NDK的基础使用方式，ability相关使用请参考[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)。示例应用的bundleName为"com.example.uiextensionandaccessibility"，同一应用下被拉起的EmbeddedUIExtensionAbility为"ExampleEmbeddedAbility"。本示例仅支持在具有多进程权限的设备上运行，例如PC/2in1。
+本示例展示EmbeddedComponent组件NDK的基础使用方式，ability相关使用请参考[EmbeddedComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-embeddedcomponent.md)。示例应用的bundleName为"com.example.uiextensionandaccessibility"，同一应用下被拉起的EmbeddedUIExtensionAbility为"ExampleEmbeddedAbility"。本示例仅支持在具有多进程权限的设备上运行，例如PC/2in1。
 
 <!-- @[embeddedComponentCTest_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/cpp/embedded/embedded.cpp) -->
 

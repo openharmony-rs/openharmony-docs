@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-参考[commonEventManager.removeStickyCommonEvent](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)。
+参考[commonEventManager.removeStickyCommonEvent](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent)。
 
 | 接口名 | 接口描述 |
 | -------- | -------- |
@@ -33,7 +33,7 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-3. 调用[removeStickyCommonEvent()](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)方法移除对应的粘性公共事件。
+3. 调用[removeStickyCommonEvent()](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent)方法移除对应的粘性公共事件。
 
    > **说明：**
    >

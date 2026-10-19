@@ -17,18 +17,18 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
 
 ## 开发步骤
 
-1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-security-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createCmsGenerator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsgenerator18)创建cmsGenerator对象。
+2. 调用[cert.createCmsGenerator](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createcmsgenerator-f.md#createcmsgenerator)创建cmsGenerator对象。
 
-3. 调用[cmsGenerator.addSigner](../../reference/apis-device-certificate-kit/js-apis-cert.md#addsigner18)添加签名者信息。
+3. 调用[cmsGenerator.addSigner](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-cmsgenerator-i.md#addsigner)添加签名者信息。
 
-4. 调用[cmsGenerator.addCert](../../reference/apis-device-certificate-kit/js-apis-cert.md#addcert18)添加证书。
+4. 调用[cmsGenerator.addCert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-cmsgenerator-i.md#addcert)添加证书。
 
-5. 调用[cmsGenerator.doFinal](../../reference/apis-device-certificate-kit/js-apis-cert.md#dofinal18)获取Cms最终签名数据。
+5. 调用[cmsGenerator.doFinal](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-cmsgenerator-i.md#dofinal)获取Cms最终签名数据。
 
 - 异步方法示例：
 

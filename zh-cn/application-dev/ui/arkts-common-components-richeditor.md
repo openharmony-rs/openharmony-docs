@@ -6,11 +6,11 @@
 <!--Tester: @mateng_Holtens-->
 <!--Adviser: @Brilliantry_Rui-->
 
-RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混排内容的输入操作，例如可以输入图文的评论区。具体用法参考[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件的API文档。
+RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混排内容的输入操作，例如可以输入图文的评论区。具体用法参考RichEditor组件的API文档。
 
-对于仅需图文展示而不需要编辑的场景，建议使用[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件。
+对于仅需图文展示而不需要编辑的场景，建议使用[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)组件。
 
-对于需要大量展示HTML格式内容的场景，建议使用[RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md)组件。
+对于需要大量展示HTML格式内容的场景，建议使用[RichText](../reference/apis-arkui/arkui-js/js-components-basic-richtext.md)组件。
 
 ## 组件构成
 
@@ -33,7 +33,7 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 ### 基于属性字符串的RichEditor组件
 
-使用RichEditor(options: [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12))接口可以创建基于属性字符串（[StyledString/MutableStyledString](arkts-styled-string.md)）进行内容管理的RichEditor组件。这种构建方式开发者可以通过在应用侧持有属性字符串对象来管理数据，通过修改属性字符串对象的内容、样式，再传递给组件，即可实现对富文本组件内容的更新。
+使用RichEditor(options: [RichEditorStyledStringOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md#richeditorstyledstringoptions))接口可以创建基于属性字符串（[StyledString/MutableStyledString](arkts-styled-string.md)）进行内容管理的RichEditor组件。这种构建方式开发者可以通过在应用侧持有属性字符串对象来管理数据，通过修改属性字符串对象的内容、样式，再传递给组件，即可实现对富文本组件内容的更新。
 
 相比于使用controller提供的接口进行内容样式更新，使用起来更加灵活便捷。同时属性字符串对象可以设置到各类支持属性字符串的文本组件中，可以快速实现内容的迁移。
 
@@ -88,7 +88,7 @@ struct CreateRichEditor {
 
 ### 基于Span的RichEditor组件
 
-使用RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditoroptions))接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过[RichEditorController](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorcontroller)提供的接口实现内容、样式的管理。
+使用RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditoroptions-i.md#richeditoroptions))接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过[RichEditorController](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md#richeditorcontroller)提供的接口实现内容、样式的管理。
 
 <!-- @[richEditor_create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) --> 
 
@@ -141,7 +141,7 @@ struct CreateRichEditor {
 
 ### 添加文本内容
 
-除了直接在组件内输入内容，也可以通过[addTextSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addtextspan)添加文本内容。
+除了直接在组件内输入内容，也可以通过[addTextSpan](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addtextspan)添加文本内容。
 
 此接口可以实现文本样式多样化，例如创建混合样式文本。
 
@@ -193,7 +193,7 @@ build() {
 
 ### 添加图片内容
 
-通过[addImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addimagespan)添加图片内容。
+通过[addImageSpan](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addimagespan)添加图片内容。
 
 此接口可用于内容丰富与可视化展示，例如在新闻中加入图片，在文档中加入数据可视化图形等。
 
@@ -244,11 +244,11 @@ build() {
 
 ### 添加@Builder装饰器修饰的内容
 
-通过[addBuilderSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addbuilderspan11)添加@Builder装饰器修饰的内容。
+通过[addBuilderSpan](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addbuilderspan)添加@Builder装饰器修饰的内容。
 
 此接口可用于自定义复杂组件的嵌入，例如在组件内加入自定义图表。
 
-该接口内可通过[RichEditorBuilderSpanOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorbuilderspanoptions11)设置在组件中添加builder的位置，省略或者为异常值时，则添加builder到所有内容的最后位置。
+该接口内可通过[RichEditorBuilderSpanOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorbuilderspanoptions-i-sys.md#richeditorbuilderspanoptions)设置在组件中添加builder的位置，省略或者为异常值时，则添加builder到所有内容的最后位置。
 
 <!-- @[richEditor_addBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets) -->
 
@@ -314,7 +314,7 @@ build() {
 
 ### 添加SymbolSpan内容
 
-可通过[addSymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addsymbolspan11)添加Symbol内容。此接口可用于Symbol矢量图标的添加，例如在文本中插入图标、标志等可视化符号元素。
+可通过[addSymbolSpan](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addsymbolspan)添加Symbol内容。此接口可用于Symbol矢量图标的添加，例如在文本中插入图标、标志等可视化符号元素。
 
 添加Symbol内容时，如果组件是获焦状态并且光标在闪烁，那么添加Symbol后，光标将移动到新插入Symbol的右侧。
 
@@ -370,7 +370,7 @@ build() {
 
 ### 获取组件内图文信息
 
-可通过[getSpans](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#getspans)获取组件内所有图文内容的信息，包括图文的内容、id、样式、位置等信息。获取内容位置信息后，可对指定范围内容进行样式的更新。
+可通过[getSpans](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md#getspans)获取组件内所有图文内容的信息，包括图文的内容、id、样式、位置等信息。获取内容位置信息后，可对指定范围内容进行样式的更新。
 
 此接口适用于已有的内容样式获取与检查，例如在模板应用场景下，可利用此接口获取文本样式。此外，它还适用于内容解析与处理，例如在文本分析应用中，此接口能够获取特定范围内的文本信息。
 
@@ -432,7 +432,7 @@ struct GetGraphicInfoInComponent {
 
 ### 设置无输入时的提示文本
 
-通过[placeholder](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#placeholder12)设置无输入时的提示文本。
+通过[placeholder](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#placeholder)设置无输入时的提示文本。
 
 例如，在用户登录界面采用提示文本，有助于用户区分用户名与密码的输入框。又如，在文本编辑框中，使用提示文本明确输入要求，如“限输入100字以内”，以此指导用户正确操作。
 
@@ -471,7 +471,7 @@ build() {
 
 ### 设置最大长度
 
-从API version 18开始，支持通过[maxLength](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlength18)属性设置富文本的最大可输入字符数。
+从API version 18开始，支持通过[maxLength](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#maxlength)属性设置富文本的最大可输入字符数。
 
 <!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
 
@@ -503,7 +503,7 @@ build() {
 
 ### 设置预设文本样式
 
-通过[setTypingStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#settypingstyle11)可以设置用户预设的文本样式。
+通过[setTypingStyle](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md#settypingstyle)可以设置用户预设的文本样式。
 
 此接口可用于个性化的写作体验，例如可以使用此接口让输入的不同层级标题自动应用相应格式（如一级、二级标题）。
 
@@ -563,7 +563,7 @@ struct SetUserPresetTextStyles {
 
 ### 设置装饰线
 
-通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration)设置富文本组件中文本装饰线的样式、颜色和粗细。
+通过[decoration](../reference/apis-arkui/arkts-components/arkts-arkui-span-comp-attribute.md#decoration)设置富文本组件中文本装饰线的样式、颜色和粗细。
 
 设置文本装饰线可突出关键信息、区分文本状态、增强视觉层次。例如，为重要标题或关键词添加装饰线，帮助用户快速获取信息。
 
@@ -602,7 +602,7 @@ build() {
 
 ![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
-从API version 20开始，支持通过[DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
+从API version 20开始，支持通过[DecorationOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-decorationoptions-i.md#decorationoptions)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
 
 此接口适用于复杂业务场景，满足文本装饰的多样化需求。在文档协作过程中，多人编辑时，可以通过使用不同的装饰线组合来区分文本状态，从而提高协作效率。
 
@@ -658,7 +658,7 @@ Button($r('app.string.Demo_SetStyledStringButton'))
 
 ### 设置垂直居中
 
-从API version 20开始，支持通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性设置文本段落在垂直方向的对齐方式。
+从API version 20开始，支持通过[textVerticalAlign](../reference/apis-arkui/arkts-apis/arkts-arkui-textverticalalign-e.md#textverticalalign)属性设置文本段落在垂直方向的对齐方式。
 
 此接口可用于优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
 
@@ -705,7 +705,7 @@ build() {
 
 ### 设置中西文自动间距
 
-从API version 20开始，支持通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20)属性设置是否开启中文与西文的自动间距。
+从API version 20开始，支持通过[enableAutoSpacing](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#enableautospacing)属性设置是否开启中文与西文的自动间距。
 
 此接口可用于优化文本排版，提升组件内文本的可读性。设置自动间距后，中西文间产生适当空隙，便于区分不同语种，减少视觉干扰。
 
@@ -756,7 +756,7 @@ struct EnableAutoSpacing {
 
 ### 设置最大行数
 
-从API version 18开始，支持通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlines18)属性设置富文本组件内可显示文本的最大行数。
+从API version 18开始，支持通过[maxLines](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#maxlines)属性设置富文本组件内可显示文本的最大行数。
 
 此接口用于控制组件内文本的显示范围，防止文本过长影响页面布局，确保不同设备和场景下的文本显示效果一致，提升界面兼容性和美观度。
 
@@ -801,11 +801,11 @@ build() {
 
 ### 添加图文变化前和图文变化后可触发的回调
 
-通过[onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onwillchange12)添加图文变化前可触发的回调。此回调适用于用户实时数据校验与提醒，例如在用户输入文本时，可在回调内实现对输入内容的检测，若检测到敏感词汇，应立即弹出提示框。此外，它还适用于实时字数统计与限制，对于有字数限制的输入场景，可在回调中实时统计用户输入的字数，并在接近字数上限时提供相应的提示。
+通过[onWillChange](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#onwillchange)添加图文变化前可触发的回调。此回调适用于用户实时数据校验与提醒，例如在用户输入文本时，可在回调内实现对输入内容的检测，若检测到敏感词汇，应立即弹出提示框。此外，它还适用于实时字数统计与限制，对于有字数限制的输入场景，可在回调中实时统计用户输入的字数，并在接近字数上限时提供相应的提示。
 
-通过[onDidChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidchange12)添加图文变化后可触发的回调。此回调适用于内容保存与同步，例如在用户完成内容编辑后，可使用该回调自动将最新内容保存至本地或同步至服务器。此外，它还适用于内容状态更新与渲染，例如在待办事项列表应用中，用户编辑富文本格式的待办事项描述后，可使用该回调更新待办事项在列表中的显示样式。
+通过[onDidChange](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#ondidchange)添加图文变化后可触发的回调。此回调适用于内容保存与同步，例如在用户完成内容编辑后，可使用该回调自动将最新内容保存至本地或同步至服务器。此外，它还适用于内容状态更新与渲染，例如在待办事项列表应用中，用户编辑富文本格式的待办事项描述后，可使用该回调更新待办事项在列表中的显示样式。
 
-使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)构建的RichEditor组件不支持上述两种回调。
+使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md#richeditorstyledstringoptions)构建的RichEditor组件不支持上述两种回调。
 
 <!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
@@ -874,11 +874,11 @@ build() {
 
 添加输入法输入内容前和完成输入后可触发的回调。
 
-在添加输入法输入内容前，可以通过[aboutToIMEInput](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#abouttoimeinput)触发回调。在输入法完成输入后，可以通过[onDidIMEInput](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidimeinput12)触发回调。
+在添加输入法输入内容前，可以通过[aboutToIMEInput](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#abouttoimeinput)触发回调。在输入法完成输入后，可以通过[onDidIMEInput](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#ondidimeinput)触发回调。
 
 这两种回调机制适用于文本上屏过程的业务逻辑处理。例如：在用户输入的文本上屏前，利用回调提供联想词汇，在用户完成输入后，执行自动化纠错或格式转换。两种回调的时序依次为：aboutToIMEInput、onDidIMEInput。
 
-使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)构建的组件不支持上述两种回调功能。
+使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md#richeditorstyledstringoptions)构建的组件不支持上述两种回调功能。
 
 <!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
@@ -944,7 +944,7 @@ build() {
 
 ### 添加完成粘贴前可触发的回调
 
-通过[onPaste](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onpaste11)回调，来添加粘贴前要处理的流程。
+通过[onPaste](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#onpaste)回调，来添加粘贴前要处理的流程。
 
 此回调适用于内容格式的处理。例如，当用户复制包含HTML标签的文本时，可在回调中编写代码，将其转换为富文本组件所支持的格式，同时剔除不必要的标签或仅保留纯文本内容。
 
@@ -1035,7 +1035,7 @@ struct on_cut_copy_paste {
 
 ### 添加完成剪切前可触发的回调
 
-通过[onCut](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncut12)回调，来添加剪切前要处理的流程。
+通过[onCut](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#oncut)回调，来添加剪切前要处理的流程。
 
 此回调功能适用于数据处理与存储。例如，当用户从富文本组件中剪切内容时，可在回调中临时存储被剪切的内容，确保后续的粘贴操作能够准确无误地还原内容。
 
@@ -1090,7 +1090,7 @@ build() {
 
 ### 添加完成复制前可触发的回调
 
-通过[onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncopy12)回调，来添加复制前要处理的流程。
+通过[onCopy](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#oncopy)回调，来添加复制前要处理的流程。
 
 此回调适用于内容的备份与共享，例如在用户复制内容时，可在回调中执行以下操作：将复制的内容及其格式信息保存至本地备份文件夹，或自动生成一段包含复制内容及产品购买链接的分享文案，以方便用户进行粘贴和分享。
 
@@ -1145,7 +1145,7 @@ build() {
 
 ![alt text](figures/richeditor_image_oncut_paste_copy.gif)
 
-更多事件使用请参考[RichEditor事件](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#事件)。
+更多事件使用请参考[RichEditor事件](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitem.md#事件)。
 
 ## 组件交互
 
@@ -1153,7 +1153,7 @@ build() {
 
 ### 设置输入框光标和手柄的颜色
 
-通过[caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#caretcolor12)设置输入框光标和手柄的颜色。
+通过[caretColor](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#caretcolor)设置输入框光标和手柄的颜色。
 
 设置不同颜色的光标和手柄可以提高视觉辨识度，特别是在包含多个输入区域的复杂界面中，独特的光标颜色能帮助快速定位当前操作的输入区域。这一特性也可以提升用户体验，使光标颜色与应用页面整体的风格相协调。
 
@@ -1192,7 +1192,7 @@ build() {
 
 ### 添加组件内容选择区域或编辑状态下光标位置改变时可触发的回调
 
-通过[onSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onselectionchange12)来添加组件内容选择区域或编辑状态下光标位置改变时可触发的回调。
+通过[onSelectionChange](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#onselectionchange)来添加组件内容选择区域或编辑状态下光标位置改变时可触发的回调。
 
 该回调可用于实时监听组件内容选中区域变化，例如实现实时更新工具栏状态（显示字体、段落格式等）、统计选中内容长度或生成选中内容摘要。实时响应选中状态，动态联动交互元素，提升富文本编辑的操作反馈体验和功能的灵活性。
 
@@ -1244,7 +1244,7 @@ build() {
 
 ### 设置内容选中区范围
 
-通过[setSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#setselection11)设置组件内的内容选中时部分背板高亮。
+通过[setSelection](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md#setselection)设置组件内的内容选中时部分背板高亮。
 
 此接口可用于实现文本聚焦效果，例如当用户点击某个文本段落的标题或摘要时，可通过该接口自动选中并高亮出对应正文内容。
 
@@ -1295,7 +1295,7 @@ build() {
 
 ### 管理选中菜单项
 
-当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
+当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-js/js-components-common-animation.md#属性)回调，可在该回调中进行菜单数据设置。
 
 <!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -1391,7 +1391,7 @@ struct PrepareMenu {
 
 ### 屏蔽系统服务类菜单项
 
-通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)屏蔽富文本选择菜单内所有系统服务菜单项。
+通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textmenucontroller-c.md#disablesystemservicemenuitems)屏蔽富文本选择菜单内所有系统服务菜单项。
 
 此接口保护内容安全，适用于限制文本操作的场景，例如展示保密内容或禁止复制的版权文本。屏蔽系统服务菜单项，防止用户通过系统服务菜单复制、分享文本，降低内容泄露风险。
 
@@ -1448,7 +1448,7 @@ struct DisableSystemServiceMenu {
 
 ![RichEditor_disable_system_service_menuItems](figures/RichEditor_disable_system_service_menuItems.gif)
 
-通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)可以屏蔽富文本选择菜单内指定的系统服务菜单项。
+通过[disableMenuItems](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textmenucontroller-c.md#disablemenuitems)可以屏蔽富文本选择菜单内指定的系统服务菜单项。
 
 此接口可精确屏蔽指定的系统服务菜单项，保留应用所需的系统菜单功能，使菜单更贴合实际交互设计。
 
@@ -1506,7 +1506,7 @@ struct DisableMenuItem {
 
 ### 设置自定义选择菜单
 
-通过[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#bindselectionmenu)设置自定义选择菜单。
+通过[bindSelectionMenu](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu)设置自定义选择菜单。
 
 组件原本具有默认的文本选择菜单，包含复制、剪切和全选的功能。用户可使用该属性设定自定义菜单，例如翻译英文、加粗字体等丰富的菜单功能。
 

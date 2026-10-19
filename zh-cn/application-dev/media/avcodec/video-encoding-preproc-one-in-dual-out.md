@@ -15,8 +15,8 @@
 
 | 编码器角色 | 创建方式 | 说明 |
 |-----------|----------|------|
-| 主编码器（Primary） | [OH_VideoEncoder_CreatePrimaryWithPreproc](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)创建 | 管理共享输入Surface，负责前处理管线调度，可配置独立的编码参数和前处理参数。 |
-| 副编码器（Secondary） | [OH_VideoEncoder_CreateSecondaryFromPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)从主编码器创建 | 共享主编码器的输入源，可配置独立的编码参数和前处理参数。 |
+| 主编码器（Primary） | OH_VideoEncoder_CreatePrimaryWithPreproc创建 | 管理共享输入Surface，负责前处理管线调度，可配置独立的编码参数和前处理参数。 |
+| 副编码器（Secondary） | OH_VideoEncoder_CreateSecondaryFromPrimary从主编码器创建 | 共享主编码器的输入源，可配置独立的编码参数和前处理参数。 |
 
 ### 架构图
 
@@ -48,29 +48,29 @@
 
 | 接口 | 主编码器 | 副编码器 | 备注 |
 |------|:--------:|:--------:|------|
-| [OH_VideoEncoder_CreatePrimaryWithPreproc](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc) | √ | N/A | 创建主编码器入口。 |
-| [OH_VideoEncoder_CreateSecondaryFromPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary) | √ | N/A | 创建副编码器入口，仅可以通过主编码器句柄创建。 |
-| [OH_VideoEncoder_RegisterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback) | √ | √ | 各自独立注册。 |
-| [OH_VideoEncoder_RegisterParameterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registerparametercallback) | × | × | 不支持随帧参数。 |
-| [OH_VideoEncoder_PushInputParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputparameter) | × | × | 不支持随帧参数。 |
-| [OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure) | √ | √ | 各自独立配置（分辨率、码率、前处理等均可不同）。 |
-| [OH_VideoEncoder_GetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getsurface) | √ | × | **仅限主编码器调用者**，副编码器调用返回错误。 |
-| [OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare) | √ | √ | 各自准备资源，参考普通编码器。 |
-| [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) | √ | √ | 各自独立控制，参考普通编码器。 |
-| [OH_VideoEncoder_Stop](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_stop) | √ | √ | 各自独立控制，参考普通编码器。 |
-| [OH_VideoEncoder_Flush](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_flush) | √ | √ | 各自独立控制，参考普通编码器。 |
-| [OH_VideoEncoder_Reset](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_reset) | √ | √ | 各自独立控制，参考普通编码器。 |
-| [OH_VideoEncoder_SetParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter) | √ | √ | 运行时动态调整。 |
-| [OH_VideoEncoder_NotifyEndOfStream](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_notifyendofstream) | √ | √ | Surface模式专用。 |
-| [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer) | √ | √ | 各自释放各自的 output buffer。 |
-| [OH_VideoEncoder_PushInputData](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputdata) | × | × | 不支持 Buffer模式。 |
-| [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer) | × | × | 不支持Buffer模式。 |
-| [OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer) | × | × | 不支持同步模式。 |
-| [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer) | × | × | 不支持同步模式。 |
-| [OH_VideoEncoder_GetInputDescription](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) | √ | √ | 含前处理元数据信息。 |
-| [OH_VideoEncoder_GetOutputDescription](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription) | √ | √ | 各自信息查询，参考普通编码器。 |
-| [OH_VideoEncoder_IsValid](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_isvalid) | √ | √ | 各自有效性判断，参考普通编码器。 |
-| [OH_VideoEncoder_Destroy](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy) | √ | √ | 先销毁Secondary，再销毁Primary。 |
+| OH_VideoEncoder_CreatePrimaryWithPreproc | √ | N/A | 创建主编码器入口。 |
+| OH_VideoEncoder_CreateSecondaryFromPrimary | √ | N/A | 创建副编码器入口，仅可以通过主编码器句柄创建。 |
+| OH_VideoEncoder_RegisterCallback | √ | √ | 各自独立注册。 |
+| OH_VideoEncoder_RegisterParameterCallback | × | × | 不支持随帧参数。 |
+| OH_VideoEncoder_PushInputParameter | × | × | 不支持随帧参数。 |
+| OH_VideoEncoder_Configure | √ | √ | 各自独立配置（分辨率、码率、前处理等均可不同）。 |
+| OH_VideoEncoder_GetSurface | √ | × | **仅限主编码器调用者**，副编码器调用返回错误。 |
+| OH_VideoEncoder_Prepare | √ | √ | 各自准备资源，参考普通编码器。 |
+| OH_VideoEncoder_Start | √ | √ | 各自独立控制，参考普通编码器。 |
+| OH_VideoEncoder_Stop | √ | √ | 各自独立控制，参考普通编码器。 |
+| OH_VideoEncoder_Flush | √ | √ | 各自独立控制，参考普通编码器。 |
+| OH_VideoEncoder_Reset | √ | √ | 各自独立控制，参考普通编码器。 |
+| OH_VideoEncoder_SetParameter | √ | √ | 运行时动态调整。 |
+| OH_VideoEncoder_NotifyEndOfStream | √ | √ | Surface模式专用。 |
+| OH_VideoEncoder_FreeOutputBuffer | √ | √ | 各自释放各自的 output buffer。 |
+| OH_VideoEncoder_PushInputData | × | × | 不支持 Buffer模式。 |
+| OH_VideoEncoder_PushInputBuffer | × | × | 不支持Buffer模式。 |
+| OH_VideoEncoder_QueryInputBuffer | × | × | 不支持同步模式。 |
+| OH_VideoEncoder_QueryOutputBuffer | × | × | 不支持同步模式。 |
+| OH_VideoEncoder_GetInputDescription | √ | √ | 含前处理元数据信息。 |
+| OH_VideoEncoder_GetOutputDescription | √ | √ | 各自信息查询，参考普通编码器。 |
+| OH_VideoEncoder_IsValid | √ | √ | 各自有效性判断，参考普通编码器。 |
+| OH_VideoEncoder_Destroy | √ | √ | 先销毁Secondary，再销毁Primary。 |
 
 **配置约束**
 

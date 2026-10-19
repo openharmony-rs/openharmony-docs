@@ -57,13 +57,13 @@
 
 ### 解决措施
 
-目前，`ohos.permission.ACCESS_DDK_DRIVERS`权限在应用市场的申请和运营流程正在维护中，涉及工程中使用了[bindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)、[unbindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口的，可以替换为[bindDeviceDriver](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddevicedriverdeprecated-1)、[unbindDevice](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddevicedeprecated-1)接口，接口的业务功能完全一致。
+目前，`ohos.permission.ACCESS_DDK_DRIVERS`权限在应用市场的申请和运营流程正在维护中，涉及工程中使用了[bindDriverWithDeviceId](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-binddriverwithdeviceid-f.md#binddriverwithdeviceid)、[unbindDriverWithDeviceId](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid)接口的，可以替换为[bindDeviceDriver](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-binddevicedriver-f.md#binddevicedriver)、[unbindDevice](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-unbinddevice-f.md#unbinddevice)接口，接口的业务功能完全一致。
 
 ## 使用基于缓冲区发送数据的DDK接口时，未按照指定的offset和bufferLength发送
 
 ### 问题现象
 
-以[OH_Usb_SendPipeRequest](../../reference/apis-driverdevelopment-kit/capi-usb-ddk-api-h.md#oh_usb_sendpiperequest)为例，使用此类基于缓冲区发送数据的接口时，对参数[UsbDeviceMemMap](../../reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicememmap.md)的offset、bufferLength字段做了赋值，但是实际传输的数据内容是按照size大小将整个缓冲区的数据发送。
+以OH_Usb_SendPipeRequest为例，使用此类基于缓冲区发送数据的接口时，对参数[UsbDeviceMemMap](../../reference/apis-driver-development-kit/c-apis/capi-usbddk-usbdevicememmap.md)的offset、bufferLength字段做了赋值，但是实际传输的数据内容是按照size大小将整个缓冲区的数据发送。
 
 ### 解决措施
 
@@ -100,7 +100,7 @@ OH_Usb_DestroyDeviceMemMap(devMmap);
 
 ### 解决措施
 
-Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用，如果在其他进程中需要实现外设的管理和通信，建议使用[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/js-apis-usbManager.md)、libusb三方库等提供的接口。
+Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用，如果在其他进程中需要实现外设的管理和通信，建议使用[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-usbmanager.md)、libusb三方库等提供的接口。
 
 ## 多个驱动Ability配置了同一型号外设的情况下，插入该外设只支持拉起一个驱动Ability
 
@@ -110,4 +110,4 @@ Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用�
 
 ### 解决措施
 
-驱动Ability的设计初衷是支持厂商为单个或多个型号的外设开发一个驱动应用，规格上不支持为同一外设同时部署多个驱动Ability的场景，相同`VID/PID`的外设仅会和一个驱动Ability关联（例如：Ukey厂商为网银应用提供驱动程序，若多个网银Ukey设备的`VID/PID`均相同，则无法同时拉起这些网银应用的驱动Ability，且当前的绑定接口不会区分`VID/PID`相同的驱动Ability）。对于需要封装相同`VID/PID`外设功能然后提供给多个上游应用的场景，可以使用USB系统服务提供的[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/js-apis-usbManager.md)、libusb三方库等实现。
+驱动Ability的设计初衷是支持厂商为单个或多个型号的外设开发一个驱动应用，规格上不支持为同一外设同时部署多个驱动Ability的场景，相同`VID/PID`的外设仅会和一个驱动Ability关联（例如：Ukey厂商为网银应用提供驱动程序，若多个网银Ukey设备的`VID/PID`均相同，则无法同时拉起这些网银应用的驱动Ability，且当前的绑定接口不会区分`VID/PID`相同的驱动Ability）。对于需要封装相同`VID/PID`外设功能然后提供给多个上游应用的场景，可以使用USB系统服务提供的[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-usbmanager.md)、libusb三方库等实现。

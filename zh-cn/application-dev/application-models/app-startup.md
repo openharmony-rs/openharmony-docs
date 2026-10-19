@@ -8,7 +8,7 @@
 
 ## 概述
 
-应用启动时通常需要执行一系列初始化启动任务，如果将启动任务都放在[HAP](../quick-start/hap-package.md)的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，那么只能在主线程中依次执行，不但影响应用的启动速度，而且当启动任务过多时，任务之间复杂的依赖关系还会使得代码难以维护。
+应用启动时通常需要执行一系列初始化启动任务，如果将启动任务都放在[HAP](../quick-start/hap-package.md)的[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)组件的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期中，那么只能在主线程中依次执行，不但影响应用的启动速度，而且当启动任务过多时，任务之间复杂的依赖关系还会使得代码难以维护。
 
 AppStartup提供了一种简单高效的应用启动方式，可以支持任务的异步启动，加快应用启动速度。同时，通过在一个配置文件中统一设置多个启动任务的执行顺序以及依赖关系，让执行启动任务的代码变得更加简洁清晰、容易维护。
 
@@ -24,7 +24,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 ![app-startup-auto](figures/app-startup-auto.png)
 
-开发者也可以在AbilityStage创建完后调用[startupManager.run](../reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md#startupmanagerrun)方法，执行手动模式的启动任务。
+开发者也可以在AbilityStage创建完后调用[startupManager.run](../reference/apis-ability-kit/arkts-apis/arkts-ability-startupmanager-run-f.md#run)方法，执行手动模式的启动任务。
 
 **图3** 启动框架手动模式执行时机
 
@@ -58,7 +58,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
    4. [定义预加载so任务配置](#定义预加载so任务配置)：在启动框架配置文件中添加预加载so任务的配置信息。
 
 2. [设置启动参数](#设置启动参数)：在启动参数文件中，设置超时时间和启动任务的监听器等参数。
-3. [为每个待初始化功能组件添加启动任务](#为每个待初始化功能组件添加启动任务)：通过实现[StartupTask](../reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md)接口，启动框架将会按顺序执行初始化流程。
+3. [为每个待初始化功能组件添加启动任务](#为每个待初始化功能组件添加启动任务)：通过实现[StartupTask](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startuptask.md)接口，启动框架将会按顺序执行初始化流程。
 4. [可选操作](#可选操作)：开发者可以在复杂场景下更精细地控制启动框架的行为。
    - [HSP与HAR中使用启动框架](#hsp与har中使用启动框架)：在HSP与HAR中配置启动任务、so预加载任务。实现跨模块的启动任务依赖管理，提升大型应用的启动效率和代码可维护性。
    - [修改启动模式](#修改启动模式)：将启动任务、so预加载任务修改为手动模式，灵活控制任务执行时机，避免不必要的启动开销。
@@ -291,10 +291,10 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 ## 设置启动参数
 
-在启动参数配置文件（本文为“ets/startup/StartupConfig.ets”文件）中，使用[StartupConfigEntry](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md)接口实现启动框架公共参数的配置，包括超时时间和启动任务的监听器等参数，其中需要用到如下接口：
+在启动参数配置文件（本文为“ets/startup/StartupConfig.ets”文件）中，使用[StartupConfigEntry](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startupconfigentry.md)接口实现启动框架公共参数的配置，包括超时时间和启动任务的监听器等参数，其中需要用到如下接口：
 
-- [StartupConfig](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md)：用于设置任务超时时间和启动框架的监听器。
-- [StartupListener](../reference/apis-ability-kit/js-apis-app-appstartup-startupListener.md)：用于监听启动任务是否执行成功。
+- [StartupConfig](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startupconfig.md)：用于设置任务超时时间和启动框架的监听器。
+- [StartupListener](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startuplistener.md)：用于监听启动任务是否执行成功。
 
 <!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
@@ -330,10 +330,10 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
 
 ## 为每个待初始化功能组件添加启动任务
 
-上述操作中已完成启动框架配置文件、启动参数的配置，还需要在每个功能组件对应的启动任务文件中，通过实现[StartupTask](../reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md)来添加启动任务。其中，需要用到下面的两个方法：
+上述操作中已完成启动框架配置文件、启动参数的配置，还需要在每个功能组件对应的启动任务文件中，通过实现[StartupTask](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startuptask.md)来添加启动任务。其中，需要用到下面的两个方法：
 
-- [init](../reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md#init)：启动任务初始化。当该任务依赖的启动任务全部执行完毕，即onDependencyCompleted完成调用后，才会执行init方法对该任务进行初始化。
-- [onDependencyCompleted](../reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md#ondependencycompleted)：当前任务依赖的启动任务执行完成时，调用该方法。
+- [init](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startuptask-startuptask-c.md#init)：启动任务初始化。当该任务依赖的启动任务全部执行完毕，即onDependencyCompleted完成调用后，才会执行init方法对该任务进行初始化。
+- [onDependencyCompleted](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startuptask-startuptask-c.md#ondependencycompleted)：当前任务依赖的启动任务执行完成时，调用该方法。
 
 
 下面以[startup_config.json](#定义启动任务配置)中的StartupTask_001.ets文件为例，示例代码如下。开发者需要分别为每个待初始化功能组件添加启动任务。
@@ -520,7 +520,7 @@ export default class StartupTask_001 extends StartupTask {
 AppStartup分别提供了自动和手动两种方式来执行启动任务，entry模块中默认采用自动模式，开发者可以根据需要修改为手动模式，HSP与HAR只能配置为手动模式。
 
 - 自动模式：当AbilityStage完成创建后，自动执行启动任务。
-- 手动模式：在UIAbility完成创建后手动调用，来执行启动任务与so预加载任务。对于某些使用频率不高的模块，不需要应用最开始启动时就进行初始化。开发者可以选择将该部分启动任务修改为手动模式，在应用启动完成后调用[startupManager.run](../reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md#startupmanagerrun)方法来执行启动任务与so预加载任务。
+- 手动模式：在UIAbility完成创建后手动调用，来执行启动任务与so预加载任务。对于某些使用频率不高的模块，不需要应用最开始启动时就进行初始化。开发者可以选择将该部分启动任务修改为手动模式，在应用启动完成后调用[startupManager.run](../reference/apis-ability-kit/arkts-apis/arkts-ability-startupmanager-run-f.md#run)方法来执行启动任务与so预加载任务。
 
 下面以UIAbility的onCreate生命周期中为例，介绍如何采用手动模式来启动任务，示例代码如下。
 
@@ -612,10 +612,10 @@ struct Index {
 
   | 属性名称 | 含义 | 数据类型 | 是否可缺省 | 适用场景 |
   | -------- | -------- | -------- | -------- | -------- |
-  | uris | 表示自动模式执行的任务的uri取值范围。当UIAbility启动时，会将[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中携带的uri属性，与此处配置的uris数组取值进行匹配。格式为`scheme://host/path`，uri中的其它内容会被忽略（如port、fragment等）。 | 字符串数组 | 可缺省，缺省值为空。 | 通过特定uri拉起UIAbility的场景。 |
-  | actions | 表示自动模式执行的任务的action取值范围。当UIAbility启动时，会将[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中携带的action属性，与此处配置的actions数组取值进行匹配。 | 字符串数组 | 可缺省，缺省值为空。 | 通过特定action拉起UIAbility的场景。 |
+  | uris | 表示自动模式执行的任务的uri取值范围。当UIAbility启动时，会将[Want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)中携带的uri属性，与此处配置的uris数组取值进行匹配。格式为`scheme://host/path`，uri中的其它内容会被忽略（如port、fragment等）。 | 字符串数组 | 可缺省，缺省值为空。 | 通过特定uri拉起UIAbility的场景。 |
+  | actions | 表示自动模式执行的任务的action取值范围。当UIAbility启动时，会将[Want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)中携带的action属性，与此处配置的actions数组取值进行匹配。 | 字符串数组 | 可缺省，缺省值为空。 | 通过特定action拉起UIAbility的场景。 |
   | insightIntents | 表示自动模式执行的任务的意图名称取值范围。当UIAbility启动时，会将意图名称与此处配置的insightIntents数组取值进行匹配。 | 字符串数组 | 可缺省，缺省值为空。 | 通过特定意图名称拉起UIAbility的场景。 |
-  | customization | 表示自动模式执行的任务的自定义规则取值范围。通过实现StartupConfigEntry的[onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20)接口返回自定义规则值。当UIAbility启动时，会将自定义规则值与此处配置的customization数组取值进行匹配。<br/>**说明：**<br/>仅支持startupTasks中的任务配置。 | 字符串数组 | 可缺省，缺省值为空。 | 如果使用uris、actions、insightIntents字段无法满足要求，可以使用customization自定义规则。 |
+  | customization | 表示自动模式执行的任务的自定义规则取值范围。通过实现StartupConfigEntry的[onRequestCustomMatchRule](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startupconfigentry-startupconfigentry-c.md#onrequestcustommatchrule)接口返回自定义规则值。当UIAbility启动时，会将自定义规则值与此处配置的customization数组取值进行匹配。<br/>**说明：**<br/>仅支持startupTasks中的任务配置。 | 字符串数组 | 可缺省，缺省值为空。 | 如果使用uris、actions、insightIntents字段无法满足要求，可以使用customization自定义规则。 |
 
   > **说明：** 
   >
@@ -667,7 +667,7 @@ struct Index {
 
 假定需要用户点击天气卡片跳转到天气界面时，仅自动执行StartupTask_006启动任务和excludeFromAutoStart=false配置的预加载so任务。若启动天气UIAbility时Want中传入的自定义参数`fromType`为`card`，可以通过customization匹配。示例如下：
 
-  1. 对[设置启动参数](#设置启动参数)步骤中的MyStartupConfigEntry.ets文件进行修改，新增[onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20)方法。
+  1. 对[设置启动参数](#设置启动参数)步骤中的MyStartupConfigEntry.ets文件进行修改，新增[onRequestCustomMatchRule](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-appstartup-startupconfigentry-startupconfigentry-c.md#onrequestcustommatchrule)方法。
 
      <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
      
@@ -709,7 +709,7 @@ struct Index {
 
 ### 设置启动任务调度阶段
 
-从API version 21开始，支持设置启动任务调度阶段。启动任务默认在AbilityStage模块加载后、[AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期之前开始执行。对于大型应用，AbilityStage模块的加载可能耗时较长，开发者可以将启动任务的schedulerPhase字段配置为preAbilityStageLoad，使启动任务在AbilityStage模块加载前被调度，并在异步线程中与AbilityStage模块加载并发执行，从而缩短应用启动时间。
+从API version 21开始，支持设置启动任务调度阶段。启动任务默认在AbilityStage模块加载后、[AbilityStage.onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)生命周期之前开始执行。对于大型应用，AbilityStage模块的加载可能耗时较长，开发者可以将启动任务的schedulerPhase字段配置为preAbilityStageLoad，使启动任务在AbilityStage模块加载前被调度，并在异步线程中与AbilityStage模块加载并发执行，从而缩短应用启动时间。
 
 > **说明：**
 >

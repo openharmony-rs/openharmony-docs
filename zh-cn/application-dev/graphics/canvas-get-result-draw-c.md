@@ -18,7 +18,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 ## 接口说明
 
-创建Canvas常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)和[drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md)。
+创建Canvas常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/c-apis/capi-drawing-canvas-h.md)和[drawing_surface.h](../reference/apis-arkgraphics2d/c-apis/capi-drawing-surface-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -54,7 +54,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    #include <native_drawing/drawing_surface.h>
    ```
 
-3. 从XComponent对应的NativeWindow中获取BufferHandle对象。NativeWindow相关的API请参考[NativeWindow](../reference/apis-arkgraphics2d/capi-nativewindow.md)。
+3. 从XComponent对应的NativeWindow中获取BufferHandle对象。NativeWindow相关的API请参考[NativeWindow](../reference/apis-arkgraphics2d/c-apis/capi-nativewindow.md)。
 
    <!-- @[ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -387,7 +387,7 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
    }
    ```
 
-4. 创建GPU后端Canvas。GPU后端Canvas需要借助Surface对象来获取，需先创建surface，surface的API请参考[drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md)。通过OH_Drawing_GpuContextCreateFromGL接口创建绘图上下文，再将这个上下文作为参数创建surface，最后通过OH_Drawing_SurfaceGetCanvas接口从surface中获取到canvas。
+4. 创建GPU后端Canvas。GPU后端Canvas需要借助Surface对象来获取，需先创建surface，surface的API请参考[drawing_surface.h](../reference/apis-arkgraphics2d/c-apis/capi-drawing-surface-h.md)。通过OH_Drawing_GpuContextCreateFromGL接口创建绘图上下文，再将这个上下文作为参数创建surface，最后通过OH_Drawing_SurfaceGetCanvas接口从surface中获取到canvas。
 
    <!-- @[ndk_graphics_draw_create_canvas_by_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    

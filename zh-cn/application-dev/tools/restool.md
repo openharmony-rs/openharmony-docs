@@ -9,7 +9,7 @@
 
 ## 简介
 
-restool是应用资源编译工具，会解析应用资源文件生成资源索引文件和资源二进制文件等产物，生成的产物由[打包工具](../tools/packing-tool.md)打包到应用包中，在应用运行阶段开发者可以通过[资源管理](../reference/apis-localization-kit/js-apis-resource-manager.md)接口获取应用包中的资源。
+restool是应用资源编译工具，会解析应用资源文件生成资源索引文件和资源二进制文件等产物，生成的产物由[打包工具](../tools/packing-tool.md)打包到应用包中，在应用运行阶段开发者可以通过[资源管理](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)接口获取应用包中的资源。
 
 restool工具存放在SDK安装目录下的toolchains文件夹中。
 

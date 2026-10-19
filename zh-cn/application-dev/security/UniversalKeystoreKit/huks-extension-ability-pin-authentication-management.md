@@ -11,7 +11,7 @@ PIN（Personal Identification Number）码是密钥管理扩展服务中的安�
 
 PIN码作用如下：
 
-1. 防暴力破解：连续错误输入达到一定次数（与密钥管理扩展服务实现相关）后自动锁定，通过[onAuthUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onauthukeypin)返回值中的retryCount字段查询剩余重试次数。
+1. 防暴力破解：连续错误输入达到一定次数（与密钥管理扩展服务实现相关）后自动锁定，通过[onAuthUkeyPin](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onauthukeypin)返回值中的retryCount字段查询剩余重试次数。
 
 2. 硬件级安全：PIN码验证在密钥管理扩展服务内完成，敏感信息不离开服务。
 
@@ -21,12 +21,12 @@ PIN码作用如下：
 
 HUKS提供以下PIN码认证状态管理能力：
 
-- **查询认证状态**：从API版本22开始，可通过[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetukeypinauthstate)查询当前PIN码认证状态。
+- **查询认证状态**：从API版本22开始，可通过[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md#getukeypinauthstate)查询当前PIN码认证状态。
 
-- **清除认证状态**：从API版本26.0.0开始，可通过[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoclearukeypinauthstate)清除指定资源的PIN码认证状态。
+- **清除认证状态**：从API版本26.0.0开始，可通过[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md#clearukeypinauthstate)清除指定资源的PIN码认证状态。
 <!--Del-->
       
-- **PIN认证**：从API版本22开始，可通过[authUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto-sys.md#huksexternalcryptoauthukeypin)发起验证PIN码请求。
+- **PIN认证**：从API版本22开始，可通过[authUkeyPin](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md#authukeypin)发起验证PIN码请求。
 <!--DelEnd-->
 
 > **说明：**
@@ -43,7 +43,7 @@ HUKS提供以下PIN码认证状态管理能力：
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用查询认证状态接口[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetukeypinauthstate)验证PIN码。
+2. 调用查询认证状态接口[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md#getukeypinauthstate)验证PIN码。
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -56,9 +56,9 @@ HUKS提供以下PIN码认证状态管理能力：
 
 2. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)中的证书管理途径获取resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-3. 调用[OH_Huks_InitExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_initexternalcryptoparamset)指定参数配置。
+3. 调用OH_Huks_InitExternalCryptoParamSet指定参数配置。
 
-4. 调用[OH_Huks_GetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getukeypinauthstate)获取PIN码认证状态。
+4. 调用OH_Huks_GetUkeyPinAuthState获取PIN码认证状态。
 
 5. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -187,7 +187,7 @@ static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoclearukeypinauthstate)清除PIN码认证状态。
+2. 调用[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md#clearukeypinauthstate)清除PIN码认证状态。
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -214,17 +214,17 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
 <!--Del-->
 ## PIN认证
 
-应用在用户输入PIN码后，可调用对应接口完成PIN码认证。在发起PIN认证流程前，调用方需要先获取密钥管理扩展服务中的公钥用于加密用户输入的PIN码。调用[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)接口并传入SKF_ExportPublicKey作为propertyId。
+应用在用户输入PIN码后，可调用对应接口完成PIN码认证。在发起PIN认证流程前，调用方需要先获取密钥管理扩展服务中的公钥用于加密用户输入的PIN码。调用[getProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty)接口并传入SKF_ExportPublicKey作为propertyId。
 
 ### 开发步骤
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)并传入SKF_ExportPublicKey作为propertyId，导出用于PIN码加密传输的公钥。
+2. 调用[getProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty)并传入SKF_ExportPublicKey作为propertyId，导出用于PIN码加密传输的公钥。
 
-3. 构造参数，必传[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)和[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)。
+3. 构造参数，必传[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)和[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)。
 
-4. 调用接口[authUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto-sys.md#huksexternalcryptoauthukeypin)验证PIN码。
+4. 调用接口[authUkeyPin](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md#authukeypin)验证PIN码。
 
 5. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 

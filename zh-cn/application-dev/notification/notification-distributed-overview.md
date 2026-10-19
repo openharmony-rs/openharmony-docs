@@ -15,7 +15,7 @@
 
 ## 约束条件
   - [跨设备协同](notification-glossary.md#cross-device-collaboration跨设备协同)支持的设备：从API version 18开始，支持Phone与Wearable之间通知消息的协同；从API version 20开始，支持Phone与Tablet、PC/2in1设备之间通知消息的协同。
-  - 跨设备协同支持的[通知渠道](../../application-dev/reference/apis-notification-kit/js-apis-notificationManager.md#slottype)：
+  - 跨设备协同支持的[通知渠道](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-notificationcheckinfo-i-sys.md#slottype)：
     - Wearable：带快捷回复的社交通讯类通知（社交通讯）、实况窗。
     - Tablet：社交通讯、服务提醒、实况窗、客服消息。
     - PC/2in1：社交通讯、服务提醒、客服消息。

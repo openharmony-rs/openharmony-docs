@@ -22,7 +22,7 @@
 
 ## 卡片数据接收机制差异
 
-卡片UI（widget页面）运行在系统的卡片渲染服务进程中，与卡片提供方应用（FormExtensionAbility）相互独立。两者之间的数据交互只能通过[updateForm](../../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口实现：卡片提供方调用updateForm推送数据，卡片UI接收数据后刷新界面。
+卡片UI（widget页面）运行在系统的卡片渲染服务进程中，与卡片提供方应用（FormExtensionAbility）相互独立。两者之间的数据交互只能通过[updateForm](../../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口实现：卡片提供方调用updateForm推送数据，卡片UI接收数据后刷新界面。
 
 V1与V2在数据接收上的核心差异在于匹配规则：
 
@@ -49,7 +49,7 @@ V1与V2在数据接收上的核心差异在于匹配规则：
 - 迁移时需确保V2装饰器的变量名与卡片提供方updateForm推送数据的key值一致。若原V1代码中\@LocalStorageProp的入参key与变量名不同，迁移时应统一为相同名称。
 - 卡片提供方FormExtensionAbility的updateForm调用逻辑无需改动。
 
-以卡片主动刷新场景为例：卡片上展示标题和详情信息，点击刷新按钮后通过[postCardAction](../../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)触发message事件，FormExtensionAbility在[onFormEvent](../../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)回调中调用updateForm刷新卡片数据。
+以卡片主动刷新场景为例：卡片上展示标题和详情信息，点击刷新按钮后通过[postCardAction](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-postcardaction-f.md#postcardaction-1)触发message事件，FormExtensionAbility在[onFormEvent](../../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onformevent)回调中调用updateForm刷新卡片数据。
 
 **V1实现代码如下：**
 

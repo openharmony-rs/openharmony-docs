@@ -11,7 +11,7 @@
 
 ## 系统窗口
 
-系统窗口指完成系统特定功能的窗口。如音量条、壁纸、通知栏、状态栏、导航栏等。<!--Del-->具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。<!--DelEnd-->
+系统窗口指完成系统特定功能的窗口。如音量条、壁纸、通知栏、状态栏、导航栏等。<!--Del-->具体可见[WindowType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-configuration-i.md#windowtype)。<!--DelEnd-->
 
 ## 应用窗口
 
@@ -29,23 +29,23 @@
 
 - 子窗口  
 
-  Stage模型下通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口创建。具体可见[子窗口开发指导](subwindow-guide.md)。
+  Stage模型下通过[createSubWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindow)或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindowwithoptions)接口创建。具体可见[子窗口开发指导](subwindow-guide.md)。
 
-  当使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口配置zLevelAboveParentLoosened属性为true时，创建得到的子窗称为独立子窗。
+  当使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindowwithoptions)接口配置zLevelAboveParentLoosened属性为true时，创建得到的子窗称为独立子窗。
 
 - 全局悬浮窗（即WindowType.TYPE_FLOAT），具体可见[全局悬浮窗开发指导](global-floating-window-guide.md)。
 
 - 模态窗口（即WindowType.TYPE_DIALOG），具体可见[模态窗口开发指导](dialog-window-guide.md)。
 
-- [画中画](../reference/apis-arkui/js-apis-pipWindow.md)
+- [画中画](../reference/apis-arkui/arkts-apis/arkts-arkui-pipwindow.md)
 
-- [闪控球](../reference/apis-arkui/js-apis-floatingBall.md)
+- [闪控球](../reference/apis-arkui/arkts-apis/arkts-arkui-window-floatingball.md)
 
-- [闪控窗](../reference/apis-arkui/js-apis-floatView.md)
+- [闪控窗](../reference/apis-arkui/arkts-apis/arkts-arkui-window-floatview.md)
 
 ##  闪控球和闪控窗的对比 
 
-- 共同点：闪控窗和[闪控球](../reference/apis-arkui/js-apis-floatingBall.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility（应用组件）退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用闪控窗或闪控球继续显示UI。
+- 共同点：闪控窗和[闪控球](../reference/apis-arkui/arkts-apis/arkts-arkui-window-floatingball.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility（应用组件）退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用闪控窗或闪控球继续显示UI。
 
 - 区别：
 
@@ -61,7 +61,7 @@
 
   - 闪控窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。比如股市盯盘应用、直播应用。
 
-- 联动：闪控窗和闪控球可以联合使用。通过[floatView.bind](../reference/apis-arkui/js-apis-floatView.md#floatviewbind)接口将闪控窗控制器与闪控球控制器绑定后，用户点击闪控球可展开为闪控窗，点击闪控窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。 
+- 联动：闪控窗和闪控球可以联合使用。通过[floatView.bind](../reference/apis-arkui/arkts-apis/arkts-arkui-floatview-bind-f.md#bind)接口将闪控窗控制器与闪控球控制器绑定后，用户点击闪控球可展开为闪控窗，点击闪控窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。 
 
 ## 全局悬浮窗和闪控窗的对比 
 
@@ -73,7 +73,7 @@
 
   - 闪控窗由系统管理并统一绘制UI，动效更为高端精致。
 
-  - 闪控窗支持与[闪控球](../reference/apis-arkui/js-apis-floatingBall.md)互相绑定联合使用，实现更复杂场景。
+  - 闪控窗支持与[闪控球](../reference/apis-arkui/arkts-apis/arkts-arkui-window-floatingball.md)互相绑定联合使用，实现更复杂场景。
 
   - 全局悬浮窗仅支持在PC/2in1设备上使用。
 
@@ -85,4 +85,4 @@
 
   - 闪控窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。比如股市盯盘应用、手机直播应用。
 
-  - 针对其他非指定场景，如视频播放、视频会议、视频通话等，建议使用[画中画](../reference/apis-arkui/js-apis-pipWindow.md)来以小窗模式呈现视频内容。
+  - 针对其他非指定场景，如视频播放、视频会议、视频通话等，建议使用[画中画](../reference/apis-arkui/arkts-apis/arkts-arkui-pipwindow.md)来以小窗模式呈现视频内容。

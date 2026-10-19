@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-[loadNativeModule (同步动态加载系统库接口)](../reference/common/js-apis-common-load-native-module.md)用于同步动态加载Native模块，目的是按需加载所需要的模块。
+loadNativeModule (同步动态加载系统库接口)用于同步动态加载Native模块，目的是按需加载所需要的模块。
 
 ## 函数说明
 

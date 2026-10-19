@@ -18,8 +18,8 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 指定非压缩点数据转换为压缩点数据
 
-1. 指定uint8_t类型的ECC非压缩点数据，调用[OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create)，构造[OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md)对象，用于生成点数据。
-2. 调用[OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode)，获取压缩点数据。
+1. 指定uint8_t类型的ECC非压缩点数据，调用OH_CryptoEcPoint_Create，构造[OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/c-apis/capi-cryptoasymkeyapi-oh-cryptoecpoint.md)对象，用于生成点数据。
+2. 调用[OH_CryptoEcPoint_Encode](../../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md#code)，获取压缩点数据。
 
 <!-- @[convert_ecc_uncompressed_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/compressedPointData.cpp) -->
 
@@ -54,8 +54,8 @@ OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
 
 ## 指定压缩点数据获取密钥对象
 
-1. 指定uint8_t类型的ECC压缩点数据，调用[OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create)，构造[OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md)对象，用于生成点数据。
-2. 调用[OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode)，获取非压缩点数据。
+1. 指定uint8_t类型的ECC压缩点数据，调用OH_CryptoEcPoint_Create，构造[OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/c-apis/capi-cryptoasymkeyapi-oh-cryptoecpoint.md)对象，用于生成点数据。
+2. 调用[OH_CryptoEcPoint_Encode](../../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-key-i.md#code)，获取非压缩点数据。
 
 <!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/getKeyObject.cpp) -->
 

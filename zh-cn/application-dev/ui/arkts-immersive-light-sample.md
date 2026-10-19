@@ -12,7 +12,7 @@
 
 在信息浏览类应用（如新闻、贴吧、小说阅读等应用）的场景中，用户上滑首页内容区后，标题栏显示范围可随之缩小，同时通过沉浸光感提升标题栏的交互体验。
 
-1. 设置底部Tabs悬浮并为Tabs组件开启沉浸光感，同时使用[ExpandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)将显示内容延伸至状态栏区域，使应用整体体验更加一致。
+1. 设置底部Tabs悬浮并为Tabs组件开启沉浸光感，同时使用[ExpandSafeArea](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#expandsafearea)将显示内容延伸至状态栏区域，使应用整体体验更加一致。
    <!-- @[immersive_tabs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/BestPractice.ets) -->
    ```TypeScript
    @Entry
@@ -86,7 +86,7 @@
    }
    ```
 
-2. 针对跳转的目标页面，通过[NavigationTitleOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationtitleoptions11)为对应的页签页面标题栏区域开启沉浸光感。建议将Navigation组件的BarStyle设置为STACK模式，使内容区显示在标题栏下方，从而实现透底的效果。下面代码实现以下效果：标题栏以及标题栏子组件开启沉浸光感。上滑时搜索框隐藏，分类列表保留并突出显示。分类列表项开启沉浸光感，提升用户交互体验和内容曝光率。
+2. 针对跳转的目标页面，通过[NavigationTitleOptions](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationtitleoptions-i.md#navigationtitleoptions)为对应的页签页面标题栏区域开启沉浸光感。建议将Navigation组件的BarStyle设置为STACK模式，使内容区显示在标题栏下方，从而实现透底的效果。下面代码实现以下效果：标题栏以及标题栏子组件开启沉浸光感。上滑时搜索框隐藏，分类列表保留并突出显示。分类列表项开启沉浸光感，提升用户交互体验和内容曝光率。
    <!-- @[explore_home_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ExploreHomePage.ets) -->
    ```TypeScript
    @ComponentV2

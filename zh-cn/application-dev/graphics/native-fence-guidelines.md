@@ -20,7 +20,7 @@ NativeFence是管理fenceFd同步状态的模块。fenceFd是一种文件描述�
 | OH_NativeFence_WaitForever (int fenceFd) | 永久阻塞传入的fenceFd。 |
 | OH_NativeFence_Close (int fenceFd) | 关闭fenceFd。 |
 
-详细的接口说明请参考[NativeFence](../reference/apis-arkgraphics2d/capi-nativefence.md)。
+详细的接口说明请参考[NativeFence](../reference/apis-arkgraphics2d/c-apis/capi-nativefence.md)。
 
 ## 开发步骤
 

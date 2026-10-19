@@ -65,12 +65,12 @@
 
 ## 使用说明
 
-- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)（CommonAttribute）。
+- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是[通用属性](../reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md)（CommonAttribute）。
 - 在组件首次初始化或者关联的状态变量发生变化时，如果传入的实例实现了对应接口，会触发`applyNormalAttribute`。
-- 回调[applyNormalAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applynormalattribute)时，会传入组件属性对象，通过该对象可以设置当前组件的属性/事件。
+- 回调[applyNormalAttribute](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#applynormalattribute)时，会传入组件属性对象，通过该对象可以设置当前组件的属性/事件。
 - 暂未支持的属性/事件，执行时会抛异常。
 - 属性变化触发`applyXxxAttribute`函数时，该组件之前已设置的属性，在本次变化后未设置的属性会恢复为属性的默认值。
-- 可以通过该接口使用多态样式的功能，例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现[applyPressedAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applypressedattribute)方法完成。
+- 可以通过该接口使用多态样式的功能，例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现[applyPressedAttribute](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#applypressedattribute)方法完成。
 - 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
 - 一个Modifier实例对象可以在多个组件上使用。
 - 一个组件上多次使用`applyNormalAttribute`设置不同的Modifier实例，每次状态变量刷新均会按顺序执行这些实例的方法属性设置，同样遵循属性覆盖原则。
@@ -333,68 +333,68 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   
   | 组件通用信息/系统组件的名称 | 属性/事件的名称             | 告警信息                  | 说明                                    |
   | ------------------------ | -------- | ----------------------------------------- | ------------------------ |
-  | CommonAttribute | [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext12)     | -   | -  |
-  | CommonAttribute | [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription12)     | -   | -  |
-  | CommonAttribute | [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)                | Method not implemented.   | 不支持animation相关属性。                 |
-  | CommonAttribute | [attributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)        | -                         | attributeModifier不支持嵌套使用，不生效。 |
-  | CommonAttribute | [backgroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#backgroundfilter)         | is not callable           | -                                         |
-  | CommonAttribute | [compositingFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#compositingfilter)        | is not callable           | -                                         |
-  | CommonAttribute | [drawModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawmodifier)             | is not callable           | 不支持modifier相关的属性。                |
-  | CommonAttribute | [foregroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#foregroundfilter)         | is not callable           | -                                         |
-  | CommonAttribute    | [freeze](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#freeze18)                   | is not callable           | -                                         |
-  | CommonAttribute    | [gesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#gesture)                   | Method not implemented.   | 不支持gesture相关的属性。                 |
-  | CommonAttribute | [gestureModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gesture-modifier.md#gesturemodifier)          | is not callable           | 不支持modifier相关的属性。                |
-  | CommonAttribute | [onAccessibilityHover](../reference/apis-arkui/arkui-ts/ts-universal-accessibility-hover-event.md#onaccessibilityhover)      | is not callable           | -                                         |
-  | CommonAttribute | [onDigitalCrown](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#ondigitalcrown)            | is not callable.          | -                                       |
-  | CommonAttribute | [parallelGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#parallelgesture)          | Method not implemented.   | 不支持gesture相关的属性。                 |
-  | CommonAttribute | [priorityGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#prioritygesture)          | Method not implemented.   | 不支持gesture相关的属性。                 |
-  | CommonAttribute   | [reuseId](../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)                  | Method not implemented.   | -                                         |
-  | CommonAttribute | [stateStyles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md#statestyles)              | Method not implemented.   | 不支持stateStyles相关的属性。             |
-  | CommonAttribute | [useSizeType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)            | Method not implemented.   | 不支持已废弃属性。                        |
-  | CommonAttribute | [visualEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#visualeffect)             | is not callable           | -                                         |
-  | CommonAttribute | [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) | Method not implemented. | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover) | Method not implemented. | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet) | Method not implemented. | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview15) | Builder is not supported. | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) | Method not implemented. | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11) | is not callable | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [chainWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainweight14) | - | - |
-  | CheckboxGroup |  [contentModifier](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md#contentmodifier21)| - | - |
-  | CommonAttribute  | [backgroundImage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundimage18) | - | - |
-  | CommonAttribute  | [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12) | - | - |
-  | CommonAttribute  | [toolbar](../reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md#toolbar) | - | - |
-  | CommonAttribute  | [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup14) | - | - |
-  | CommonAttribute  | [reuse](../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse) | - | - |
-  | CommonAttribute  | [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13) | - | - |
-  | EmbeddedComponent  | [onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror) | - | - |
-  | EmbeddedComponent  | [onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated) | - | - |
-  | NavDestination | [backButtonIcon<sup>19+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#backbuttonicon19) | - | - |
-  | NavDestination | [menus<sup>19+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus19) | - | - |
-  | NavDestination | [customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15) | - | - |
-  | Navigation | [backButtonIcon](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#backbuttonicon19) | - | - |
-  | Navigation | [menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus19) | - | - |
-  | Repeat | [each](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each) | - | - |
-  | Repeat | [key](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#key) | - | - |
-  | Repeat | [virtualScroll](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll) | - | - |
-  | Repeat | [template](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template) | - | - |
-  | Repeat | [templateId](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid) | - | - |
-  | Search | [customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#customkeyboard10) | - | - |
-  | Search | [onWillAttachIME](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#onwillattachime20) | - | - |
-  | Select | [menuItemContentModifier<sup>12+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menuitemcontentmodifier12) | - | - |
-  | Select | [menuItemContentModifier<sup>18+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menuitemcontentmodifier18) | - | - |
-  | Select | [textModifier](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#textmodifier20) | - | - |
-  | Select | [arrowModifier](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#arrowmodifier20) | - | - |
-  | Select | [optionTextModifier](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#optiontextmodifier20) | - | - |
-  | Select | [selectedOptionTextModifier](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#selectedoptiontextmodifier20) | - | - |
-  | Slider | [digitalCrownSensitivity](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#digitalcrownsensitivity18) | - | - |
-  | Swiper | [prevMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#prevmargin10) | - | - |
-  | Swiper | [nextMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#nextmargin10) | - | - |
-  | TextArea | [customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#customkeyboard10) | - | - |
-  | Text | [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11) | - | - |
-  | TextInput | [customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#customkeyboard10) | - | - |
-  | TextInput | [onWillAttachIME](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillattachime20) | - | - |
-  | TextPicker | [onEnterSelectedArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onenterselectedarea18) | - | - |
-  | TimePicker | [onEnterSelectedArea](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#onenterselectedarea18) | - | - |
+  | CommonAttribute | [accessibilityText](../reference/apis-arkui/arkts-apis/arkts-arkui-accessibilityspanoptions-i.md#accessibilitytext)     | -   | -  |
+  | CommonAttribute | [accessibilityDescription](../reference/apis-arkui/arkts-apis/arkts-arkui-accessibilityspanoptions-i.md#accessibilitydescription)     | -   | -  |
+  | CommonAttribute | [animation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md#animation)                | Method not implemented.   | 不支持animation相关属性。                 |
+  | CommonAttribute | [attributeModifier](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#attributemodifier)        | -                         | attributeModifier不支持嵌套使用，不生效。 |
+  | CommonAttribute | [backgroundFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundfilter)         | is not callable           | -                                         |
+  | CommonAttribute | [compositingFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#compositingfilter)        | is not callable           | -                                         |
+  | CommonAttribute | [drawModifier](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-drawmodifier-c.md#drawmodifier)             | is not callable           | 不支持modifier相关的属性。                |
+  | CommonAttribute | [foregroundFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#foregroundfilter)         | is not callable           | -                                         |
+  | CommonAttribute    | [freeze](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#freeze)                   | is not callable           | -                                         |
+  | CommonAttribute    | [gesture](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-swiperdynamicsyncscenetype-e.md#gesture)                   | Method not implemented.   | 不支持gesture相关的属性。                 |
+  | CommonAttribute | [gestureModifier](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-gesturemodifier-i.md#gesturemodifier)          | is not callable           | 不支持modifier相关的属性。                |
+  | CommonAttribute | [onAccessibilityHover](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityhover)      | is not callable           | -                                         |
+  | CommonAttribute | [onDigitalCrown](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondigitalcrown)            | is not callable.          | -                                       |
+  | CommonAttribute | [parallelGesture](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#parallelgesture)          | Method not implemented.   | 不支持gesture相关的属性。                 |
+  | CommonAttribute | [priorityGesture](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#prioritygesture)          | Method not implemented.   | 不支持gesture相关的属性。                 |
+  | CommonAttribute   | [reuseId](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#reuseid)                  | Method not implemented.   | -                                         |
+  | CommonAttribute | [stateStyles](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-statestyles-i.md#statestyles)              | Method not implemented.   | 不支持stateStyles相关的属性。             |
+  | CommonAttribute | [useSizeType](../reference/apis-arkui/arkui-js/js-components-grid-col.md#属性)            | Method not implemented.   | 不支持已废弃属性。                        |
+  | CommonAttribute | [visualEffect](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-visualeffect-t.md#visualeffect)             | is not callable           | -                                         |
+  | CommonAttribute | [bindContextMenu](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Method not implemented. | 不支持入参为CustomBuilder。 |
+  | CommonAttribute | [bindContentCover](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover) | Method not implemented. | 不支持入参为CustomBuilder。 |
+  | CommonAttribute | [bindSheet](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet) | Method not implemented. | 不支持入参为CustomBuilder。 |
+  | CommonAttribute | [dragPreview](../reference/apis-arkui/arkts-apis/arkts-arkui-dragcontroller-dragpreview-c.md#dragpreview) | Builder is not supported. | 不支持入参为CustomBuilder。 |
+  | CommonAttribute | [bindPopup](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindpopup) | Method not implemented. | 不支持入参为CustomBuilder。 |
+  | CommonAttribute | [accessibilityVirtualNode](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityvirtualnode) | is not callable | 不支持入参为CustomBuilder。 |
+  | CommonAttribute | [chainWeight](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#chainweight) | - | - |
+  | CheckboxGroup |  [contentModifier](../reference/apis-arkui/arkts-components/arkts-arkui-checkboxgroup-comp-attribute.md#contentmodifier)| - | - |
+  | CommonAttribute  | [backgroundImage](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-interstitialdialogaction-dialogoptions-i.md#backgroundimage) | - | - |
+  | CommonAttribute  | [onClick](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md#onclick) | - | - |
+  | CommonAttribute  | [toolbar](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-toolbar-toolbar-s.md#toolbar) | - | - |
+  | CommonAttribute  | [accessibilityGroup](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup) | - | - |
+  | CommonAttribute  | [reuse](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#reuse) | - | - |
+  | CommonAttribute  | [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturerecognizerjudgebegin) | - | - |
+  | EmbeddedComponent  | [onError](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent-fullscreenlaunchcomponent-s.md#onerror) | - | - |
+  | EmbeddedComponent  | [onTerminated](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent-fullscreenlaunchcomponent-s.md#onterminated) | - | - |
+  | NavDestination | [backButtonIcon<sup>19+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#backbuttonicon) | - | - |
+  | NavDestination | [menus<sup>19+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#menus) | - | - |
+  | NavDestination | [customTransition](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#customtransition) | - | - |
+  | Navigation | [backButtonIcon](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#backbuttonicon) | - | - |
+  | Navigation | [menus](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md#menus) | - | - |
+  | Repeat | [each](../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-attribute.md#each) | - | - |
+  | Repeat | [key](../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-attribute.md#key) | - | - |
+  | Repeat | [virtualScroll](../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll) | - | - |
+  | Repeat | [template](../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-attribute.md#template) | - | - |
+  | Repeat | [templateId](../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-attribute.md#templateid) | - | - |
+  | Search | [customKeyboard](../reference/apis-arkui/arkts-components/arkts-arkui-search-comp-attribute.md#customkeyboard) | - | - |
+  | Search | [onWillAttachIME](../reference/apis-arkui/arkts-components/arkts-arkui-search-comp-attribute.md#onwillattachime) | - | - |
+  | Select | [menuItemContentModifier<sup>12+</sup>](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicesearch-selectparams-i.md#menuitemcontentmodifier) | - | - |
+  | Select | [menuItemContentModifier<sup>18+</sup>](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicesearch-selectparams-i.md#menuitemcontentmodifier) | - | - |
+  | Select | [textModifier](../reference/apis-arkui/arkts-components/arkts-arkui-select-comp-attribute.md#textmodifier) | - | - |
+  | Select | [arrowModifier](../reference/apis-arkui/arkts-components/arkts-arkui-select-comp-attribute.md#arrowmodifier) | - | - |
+  | Select | [optionTextModifier](../reference/apis-arkui/arkts-components/arkts-arkui-select-comp-attribute.md#optiontextmodifier) | - | - |
+  | Select | [selectedOptionTextModifier](../reference/apis-arkui/arkts-components/arkts-arkui-select-comp-attribute.md#selectedoptiontextmodifier) | - | - |
+  | Slider | [digitalCrownSensitivity](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcslider-arcslideroptions-c.md#digitalcrownsensitivity) | - | - |
+  | Swiper | [prevMargin](../reference/apis-arkui/arkts-components/arkts-arkui-swiper-comp-attribute.md#prevmargin) | - | - |
+  | Swiper | [nextMargin](../reference/apis-arkui/arkts-components/arkts-arkui-swiper-comp-attribute.md#nextmargin) | - | - |
+  | TextArea | [customKeyboard](../reference/apis-arkui/arkts-components/arkts-arkui-textarea-comp-attribute.md#customkeyboard) | - | - |
+  | Text | [bindSelectionMenu](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#bindselectionmenu) | - | - |
+  | TextInput | [customKeyboard](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#customkeyboard) | - | - |
+  | TextInput | [onWillAttachIME](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onwillattachime) | - | - |
+  | TextPicker | [onEnterSelectedArea](../reference/apis-arkui/arkts-components/arkts-arkui-textpicker-comp-attribute.md#onenterselectedarea) | - | - |
+  | TimePicker | [onEnterSelectedArea](../reference/apis-arkui/arkts-components/arkts-arkui-timepicker-comp-attribute.md#onenterselectedarea) | - | - |
   
   ### 属性或事件的起始版本与支持attributeModifier版本不一致的范围
   
@@ -402,112 +402,112 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   
   | 组件通用信息/系统组件的名称 | 属性/事件的名称                                              | 属性/事件的起始版本 | 支持attributeModifier的版本 |
   | --------------------------- | ------------------------------------------------------------ | ------------------- | --------------------------- |
-  | AlphabetIndexer | [autoCollapse](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#autocollapse11) | 11 | 12 |
-  | Button | [buttonStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonstyle11) |11  |12  |
-  | Button | [controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11) |11  |12  |
-  | CalendarPicker |[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md#onchange18)  | 18 |20  |
-  | Canvas | [enableAnalyzer](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md#enableanalyzer12) | 12 | 20 |
-  | CommonAttribute | [accessibilityTextHint](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytexthint12)    | 12   | 20|
-  | CommonAttribute | [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)     | 13 | 20  |
-  | CommonAttribute | [accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)    | 13 | 20 |
-  | CommonAttribute | [background](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#background10) | 10 | 20|
-  | CommonAttribute  | [visualEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#visualeffect) | 12 | 20 |
-  | CommonAttribute | [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | 8 | 13 |
-  | CommonAttribute  | [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) | 17     | 23     |
-  | CommonAttribute  | [onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange) | 9     | 20     |
-  | CommonAttribute  | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | 12       | 20    |
-  | CommonAttribute  | [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)    | 12                  | 20             |
-  | CommonAttribute  | [onChildTouchTest](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md#onchildtouchtest11) | 11      | 20  |
-  | CommonAttribute  | [backgroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#backgroundfilter) | 12 | 20 |
-  | CommonAttribute  | [foregroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#foregroundfilter) | 12 | 20 |
-  | CommonAttribute  | [compositingFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#compositingfilter) | 12 | 20 |
-  | CommonAttribute  | [foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle) | 10 | 18 |
-  | CommonAttribute  | [freeze<sup>12+</sup>](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#freeze12) | 12 | 20 |
-  | CommonAttribute  | [freeze<sup>18+</sup>](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#freeze18) | 18 | 20 |
-  | CommonAttribute  | [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11) | 11 | 12 |
-  | CommonAttribute  | [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu) | 11| 20|
-  | CommonAttribute  | [transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transition12) | 12| 20|
-  | CommonAttribute  | [safeAreaPadding](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#safeareapadding14) | 14| 18|
-  | CommonAttribute  | [pixelRound](../reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForComponent.md#pixelround) | 11| 12|
-  | ContainerSpan  | [textBackgroundStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md#textbackgroundstyle) | 11 | 12 |
-  | DatePicker  | [onDateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md#ondatechange18) | 18 | 20 |
-  | FolderStack  | [alignContent](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md#aligncontent) | 11 | 12 |
-  | FolderStack  | [onFolderStateChange](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md#onfolderstatechange) | 11 | 20 |
-  | FolderStack  | [onHoverStatusChange](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md#onhoverstatuschange12) | 11 | 20 |
-  | FolderStack  | [enableAnimation](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md#enableanimation) | 11 | 12 |
-  | FolderStack  | [autoHalfFold](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md#autohalffold) | 11 | 12 |
-  | Gauge  | [privacySensitive](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md#privacysensitive12) | 12 | 20 |
-  | Image  | [enableAnalyzer](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#enableanalyzer11) | 11 | 12 |
-  | Image  | [resizable](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#resizable11) | 11 | 20 |
-  | List  | [OnScrollVisibleContentChangeCallback](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollvisiblecontentchangecallback12) | 12 | 14 |
-  | List  | [onItemDragStart](../reference/apis-arkui/arkui-ts/ts-container-list.md#onitemdragstart8) | 8 | 14 |
-  | NavDestination | [title](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#title) | 9 | 12 |
-  | NavDestination | [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#mode11) | 11 | 12 |
-  | NavDestination | [backButtonIcon<sup>11+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#backbuttonicon11) | 11 | 12 |
-  | NavDestination | [menus<sup>12+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus12) | 12 | 14 |
-  | NavDestination | [toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#toolbarconfiguration13) | 13 | 20 |
-  | NavDestination | [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11) | 11 | 20 |
-  | NavDestination | [onWillAppear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillappear12) | 12 | 20 |
-  | NavDestination | [onWillDisappear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwilldisappear12) | 12 | 20 |
-  | NavDestination | [onWillShow](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillshow12) | 12 | 20 |
-  | NavDestination | [onWillHide](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillhide12) | 12 | 20 |
-  | NavDestination | [systemBarStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#systembarstyle12) | 12 | 20 |
-  | NavDestination | [onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15) | 15 | 22 |
-  | NavDestination | [bindToScrollable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#bindtoscrollable14) | 14 | 22 |
-  | NavDestination | [bindToNestedScrollable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#bindtonestedscrollable14) | 14 | 22 |
-  | NavDestination | [onActive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17) | 17 | 22 |
-  | NavDestination | [onInactive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17) | 17 | 22 |
-  | NavDestination | [onNewParam](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onnewparam19) | 19 | 22 |
-  | Navigation | [title](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title) | 8 | 12 |
-  | Navigation | [toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10) | 10 | 20 |
-  | Navigation | [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) | 11 | 20 |
-  | Navigation | [systemBarStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#systembarstyle12) | 12 | 20 |
-  | Navigation | [enableVisibilityLifecycleWithContentCover](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enablevisibilitylifecyclewithcontentcover21) | 21 | 23 |
-  | PatternLock | [backgroundColor](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md#backgroundcolor) | 9 | 20 |
-  | PatternLock | [onDotConnect](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md#ondotconnect11) | 11 | 20 |
-  | Progress | [privacySensitive](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#privacysensitive12) | 12 | 20 |
-  | Refresh | [onOffsetChange](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#onoffsetchange12) | 12 | 20 |
-  | RichEditor | [customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#customkeyboard) | 10 | 23 |
-  | RichEditor | [onDidIMEInput](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidimeinput12) | 12 | 20 |
-  | RichEditor | [enablePreviewText](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enablepreviewtext12) | 12 | 18 |
-  | RichEditor | [placeholder](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#placeholder12) | 12 | 18 |
-  | RichEditor | [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onwillchange12) | 12 | 18 |
-  | RichEditor | [onDidChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidchange12) | 12 | 18 |
-  | RichEditor | [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#editmenuoptions12) | 12 | 18 |
-  | RichEditor | [enableKeyboardOnFocus](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enablekeyboardonfocus12) | 12 | 18 |
-  | RichEditor | [enableHapticFeedback](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enablehapticfeedback13) | 13 | 20 |
-  | RichEditor | [barState](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#barstate13) | 13 | 18 |
-  | Select | [menuBackgroundColor](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menubackgroundcolor11) | 11 | 12 |
-  | Select | [menuBackgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menubackgroundblurstyle11) | 11 | 12 |
-  | Swiper | [displayCount](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displaycount8) | 8 | 12 |
-  | SymbolGlyph | [fontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontsize) | 11 | 12 |
-  | SymbolGlyph | [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) | 11 | 12 |
-  | SymbolGlyph | [fontWeight](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontweight) | 11 | 12 |
-  | SymbolGlyph | [effectStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#effectstrategy) | 11 | 12 |
-  | SymbolGlyph | [renderingStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#renderingstrategy) | 11 | 12 |
-  | SymbolSpan | [fontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontsize) | 11 | 12 |
-  | SymbolSpan | [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontcolor) | 11 | 12 |
-  | SymbolSpan | [fontWeight](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontweight) | 11 | 12 |
-  | SymbolSpan | [effectStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#effectstrategy) | 11 | 12 |
-  | SymbolSpan | [renderingStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#renderingstrategy) | 11 | 12 |
-  | ScrollableCommonAttribute | [onWillScroll](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onwillscroll12) | 12 | 14 |
-  | ScrollableCommonAttribute | [onDidScroll](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12) | 12 | 14 |
-  | TabContent | [onWillShow](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#onwillshow12) | 12 | 20 |
-  | TabContent | [onWillHide](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#onwillhide12) | 12 | 20 |
-  | Tabs | [edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#edgeeffect12) | 12 | 17 |
-  | Tabs | [customContentTransition](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#customcontenttransition11) | 11 | 20 |
-  | Tabs | [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12) | 12 | 20 |
-  | Tabs | [barBackgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barbackgroundblurstyle11) | 11 | 12 |
-  | TextArea | [enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11) | 11 | 12 |
-  | Text | [enableHapticFeedback](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enablehapticfeedback13) | 13 | 18 |
-  | TextInput | [showCounter](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#showcounter11) | 11 | 12 |
-  | TextInput | [onSecurityStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsecuritystatechange12) | 12 | 20 |
-  | TextPicker | [onScrollStop<sup>14+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14) | 14 | 20 |
-  | TextPicker | [onScrollStop<sup>18+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop18) | 18 | 20 |
-  | TextTimer | [textShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md#textshadow11) | 11 | 12 |
-  | TimePicker | [enableHapticFeedback](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#enablehapticfeedback12) | 12 | 18 |
-  | TimePicker | [onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#onchange18) | 18 | 20 |
-  | Video | [enableAnalyzer](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#enableanalyzer12) | 12 | 20 |
-  | Video | [analyzerConfig](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#analyzerconfig12) | 12 | 20 |
-  | Video | [onError](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#onerror) | 7 | 20 |
-  | WaterFlow | [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#onscrollindex11) | 11 | 20 |
+  | AlphabetIndexer | [autoCollapse](../reference/apis-arkui/arkts-components/arkts-arkui-alphabetindexer-comp-attribute.md#autocollapse) | 11 | 12 |
+  | Button | [buttonStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md#buttonstyle) |11  |12  |
+  | Button | [controlSize](../reference/apis-arkui/arkts-components/arkts-arkui-button-comp-attribute.md#controlsize) |11  |12  |
+  | CalendarPicker |[onChange](../reference/apis-arkui/arkts-components/arkts-arkui-calendarpicker-comp-attribute.md#onchange)  | 18 |20  |
+  | Canvas | [enableAnalyzer](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-attribute.md#enableanalyzer) | 12 | 20 |
+  | CommonAttribute | [accessibilityTextHint](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytexthint)    | 12   | 20|
+  | CommonAttribute | [accessibilityChecked](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitychecked)     | 13 | 20  |
+  | CommonAttribute | [accessibilitySelected](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityselected)    | 13 | 20 |
+  | CommonAttribute | [background](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md#background) | 10 | 20|
+  | CommonAttribute  | [visualEffect](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-visualeffect-t.md#visualeffect) | 12 | 20 |
+  | CommonAttribute | [onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart) | 8 | 13 |
+  | CommonAttribute  | [onVisibleAreaApproximateChange](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onvisibleareaapproximatechange) | 17     | 23     |
+  | CommonAttribute  | [onVisibleAreaChange](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) | 9     | 20     |
+  | CommonAttribute  | [onTouchIntercept](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouchintercept) | 12       | 20    |
+  | CommonAttribute  | [onPreDrag](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onpredrag)    | 12                  | 20             |
+  | CommonAttribute  | [onChildTouchTest](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onchildtouchtest) | 11      | 20  |
+  | CommonAttribute  | [backgroundFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundfilter) | 12 | 20 |
+  | CommonAttribute  | [foregroundFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#foregroundfilter) | 12 | 20 |
+  | CommonAttribute  | [compositingFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#compositingfilter) | 12 | 20 |
+  | CommonAttribute  | [foregroundBlurStyle](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle) | 10 | 18 |
+  | CommonAttribute  | [freeze<sup>12+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#freeze) | 12 | 20 |
+  | CommonAttribute  | [freeze<sup>18+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#freeze) | 18 | 20 |
+  | CommonAttribute  | [dragPreviewOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#dragpreviewoptions) | 11 | 12 |
+  | CommonAttribute  | [bindMenu](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu) | 11| 20|
+  | CommonAttribute  | [transition](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#transition) | 12| 20|
+  | CommonAttribute  | [safeAreaPadding](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#safeareapadding) | 14| 18|
+  | CommonAttribute  | [pixelRound](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#pixelround) | 11| 12|
+  | ContainerSpan  | [textBackgroundStyle](../reference/apis-arkui/arkts-components/arkts-arkui-containerspan-comp-attribute.md#textbackgroundstyle) | 11 | 12 |
+  | DatePicker  | [onDateChange](../reference/apis-arkui/arkts-components/arkts-arkui-datepicker-comp-attribute.md#ondatechange) | 18 | 20 |
+  | FolderStack  | [alignContent](../reference/apis-arkui/arkts-components/arkts-arkui-folderstack-comp-attribute.md#aligncontent) | 11 | 12 |
+  | FolderStack  | [onFolderStateChange](../reference/apis-arkui/arkts-components/arkts-arkui-folderstack-comp-attribute.md#onfolderstatechange) | 11 | 20 |
+  | FolderStack  | [onHoverStatusChange](../reference/apis-arkui/arkts-components/arkts-arkui-folderstack-comp-attribute.md#onhoverstatuschange) | 11 | 20 |
+  | FolderStack  | [enableAnimation](../reference/apis-arkui/arkts-components/arkts-arkui-folderstack-comp-attribute.md#enableanimation) | 11 | 12 |
+  | FolderStack  | [autoHalfFold](../reference/apis-arkui/arkts-components/arkts-arkui-folderstack-comp-attribute.md#autohalffold) | 11 | 12 |
+  | Gauge  | [privacySensitive](../reference/apis-arkui/arkts-components/arkts-arkui-gauge-comp-attribute.md#privacysensitive) | 12 | 20 |
+  | Image  | [enableAnalyzer](../reference/apis-arkui/arkts-components/arkts-arkui-image-comp-attribute.md#enableanalyzer) | 11 | 12 |
+  | Image  | [resizable](../reference/apis-arkui/arkts-apis/arkts-arkui-imageattachment-c.md#resizable) | 11 | 20 |
+  | List  | [OnScrollVisibleContentChangeCallback](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-onscrollvisiblecontentchangecallback-t.md#onscrollvisiblecontentchangecallback) | 12 | 14 |
+  | List  | [onItemDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#onitemdragstart) | 8 | 14 |
+  | NavDestination | [title](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#title) | 9 | 12 |
+  | NavDestination | [mode](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationinfo-i.md#mode) | 11 | 12 |
+  | NavDestination | [backButtonIcon<sup>11+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#backbuttonicon) | 11 | 12 |
+  | NavDestination | [menus<sup>12+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#menus) | 12 | 14 |
+  | NavDestination | [toolbarConfiguration](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#toolbarconfiguration) | 13 | 20 |
+  | NavDestination | [onReady](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#onready) | 11 | 20 |
+  | NavDestination | [onWillAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillappear) | 12 | 20 |
+  | NavDestination | [onWillDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwilldisappear) | 12 | 20 |
+  | NavDestination | [onWillShow](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillshow) | 12 | 20 |
+  | NavDestination | [onWillHide](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillhide) | 12 | 20 |
+  | NavDestination | [systemBarStyle](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#systembarstyle) | 12 | 20 |
+  | NavDestination | [onResult](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#onresult) | 15 | 22 |
+  | NavDestination | [bindToScrollable](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#bindtoscrollable) | 14 | 22 |
+  | NavDestination | [bindToNestedScrollable](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#bindtonestedscrollable) | 14 | 22 |
+  | NavDestination | [onActive](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onactive) | 17 | 22 |
+  | NavDestination | [onInactive](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#oninactive) | 17 | 22 |
+  | NavDestination | [onNewParam](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#onnewparam) | 19 | 22 |
+  | Navigation | [title](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md#title) | 8 | 12 |
+  | Navigation | [toolbarConfiguration](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#toolbarconfiguration) | 10 | 20 |
+  | Navigation | [customNavContentTransition](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#customnavcontenttransition) | 11 | 20 |
+  | Navigation | [systemBarStyle](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#systembarstyle) | 12 | 20 |
+  | Navigation | [enableVisibilityLifecycleWithContentCover](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#enablevisibilitylifecyclewithcontentcover) | 21 | 23 |
+  | PatternLock | [backgroundColor](../reference/apis-arkui/arkts-components/arkts-arkui-patternlock-comp-attribute.md#backgroundcolor) | 9 | 20 |
+  | PatternLock | [onDotConnect](../reference/apis-arkui/arkts-components/arkts-arkui-patternlock-comp-attribute.md#ondotconnect) | 11 | 20 |
+  | Progress | [privacySensitive](../reference/apis-arkui/arkts-components/arkts-arkui-progress-comp-attribute.md#privacysensitive) | 12 | 20 |
+  | Refresh | [onOffsetChange](../reference/apis-arkui/arkts-components/arkts-arkui-refresh-comp-attribute.md#onoffsetchange) | 12 | 20 |
+  | RichEditor | [customKeyboard](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#customkeyboard) | 10 | 23 |
+  | RichEditor | [onDidIMEInput](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#ondidimeinput) | 12 | 20 |
+  | RichEditor | [enablePreviewText](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#enablepreviewtext) | 12 | 18 |
+  | RichEditor | [placeholder](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#placeholder) | 12 | 18 |
+  | RichEditor | [onWillChange](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#onwillchange) | 12 | 18 |
+  | RichEditor | [onDidChange](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#ondidchange) | 12 | 18 |
+  | RichEditor | [editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#editmenuoptions) | 12 | 18 |
+  | RichEditor | [enableKeyboardOnFocus](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#enablekeyboardonfocus) | 12 | 18 |
+  | RichEditor | [enableHapticFeedback](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#enablehapticfeedback) | 13 | 20 |
+  | RichEditor | [barState](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#barstate) | 13 | 18 |
+  | Select | [menuBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicesearch-selectparams-i.md#menubackgroundcolor) | 11 | 12 |
+  | Select | [menuBackgroundBlurStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicesearch-selectparams-i.md#menubackgroundblurstyle) | 11 | 12 |
+  | Swiper | [displayCount](../reference/apis-arkui/arkts-components/arkts-arkui-swiper-comp-attribute.md#displaycount) | 8 | 12 |
+  | SymbolGlyph | [fontSize](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontsize) | 11 | 12 |
+  | SymbolGlyph | [fontColor](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor) | 11 | 12 |
+  | SymbolGlyph | [fontWeight](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontweight) | 11 | 12 |
+  | SymbolGlyph | [effectStrategy](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) | 11 | 12 |
+  | SymbolGlyph | [renderingStrategy](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#renderingstrategy) | 11 | 12 |
+  | SymbolSpan | [fontSize](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorsymbolspanstyle-i.md#fontsize) | 11 | 12 |
+  | SymbolSpan | [fontColor](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorsymbolspanstyle-i.md#fontcolor) | 11 | 12 |
+  | SymbolSpan | [fontWeight](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorsymbolspanstyle-i.md#fontweight) | 11 | 12 |
+  | SymbolSpan | [effectStrategy](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorsymbolspanstyle-i.md#effectstrategy) | 11 | 12 |
+  | SymbolSpan | [renderingStrategy](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorsymbolspanstyle-i.md#renderingstrategy) | 11 | 12 |
+  | ScrollableCommonAttribute | [onWillScroll](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-scrollablecommonmethod-c.md#onwillscroll) | 12 | 14 |
+  | ScrollableCommonAttribute | [onDidScroll](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-scrollablecommonmethod-c.md#ondidscroll) | 12 | 14 |
+  | TabContent | [onWillShow](../reference/apis-arkui/arkts-components/arkts-arkui-tabcontent-comp-attribute.md#onwillshow) | 12 | 20 |
+  | TabContent | [onWillHide](../reference/apis-arkui/arkts-components/arkts-arkui-tabcontent-comp-attribute.md#onwillhide) | 12 | 20 |
+  | Tabs | [edgeEffect](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#edgeeffect) | 12 | 17 |
+  | Tabs | [customContentTransition](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#customcontenttransition) | 11 | 20 |
+  | Tabs | [onContentWillChange](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicetabs-atomicservicetabs-s.md#oncontentwillchange) | 12 | 20 |
+  | Tabs | [barBackgroundBlurStyle](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#barbackgroundblurstyle) | 11 | 12 |
+  | TextArea | [enterKeyType](../reference/apis-arkui/arkts-components/arkts-arkui-textarea-comp-attribute.md#enterkeytype) | 11 | 12 |
+  | Text | [enableHapticFeedback](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#enablehapticfeedback) | 13 | 18 |
+  | TextInput | [showCounter](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#showcounter) | 11 | 12 |
+  | TextInput | [onSecurityStateChange](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#onsecuritystatechange) | 12 | 20 |
+  | TextPicker | [onScrollStop<sup>14+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-textpicker-comp-attribute.md#onscrollstop) | 14 | 20 |
+  | TextPicker | [onScrollStop<sup>18+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-textpicker-comp-attribute.md#onscrollstop) | 18 | 20 |
+  | TextTimer | [textShadow](../reference/apis-arkui/arkts-components/arkts-arkui-texttimer-comp-attribute.md#textshadow) | 11 | 12 |
+  | TimePicker | [enableHapticFeedback](../reference/apis-arkui/arkts-components/arkts-arkui-timepicker-comp-attribute.md#enablehapticfeedback) | 12 | 18 |
+  | TimePicker | [onChange](../reference/apis-arkui/arkts-components/arkts-arkui-timepicker-comp-attribute.md#onchange) | 18 | 20 |
+  | Video | [enableAnalyzer](../reference/apis-arkui/arkts-components/arkts-arkui-video-comp-attribute.md#enableanalyzer) | 12 | 20 |
+  | Video | [analyzerConfig](../reference/apis-arkui/arkts-components/arkts-arkui-video-comp-attribute.md#analyzerconfig) | 12 | 20 |
+  | Video | [onError](../reference/apis-arkui/arkts-components/arkts-arkui-video-comp-attribute.md#onerror) | 7 | 20 |
+  | WaterFlow | [onScrollIndex](../reference/apis-arkui/arkts-components/arkts-arkui-waterflow-comp-attribute.md#onscrollindex) | 11 | 20 |

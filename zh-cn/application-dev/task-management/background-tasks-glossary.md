@@ -30,4 +30,4 @@
 
 ### WorkSchedulerExtensionAbility；延迟任务调度扩展能力
 
-延迟任务的回调扩展能力，实现[onWorkStart](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstart)和[onWorkStop](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstop)方法，用于处理延迟任务的开始和结束回调。
+延迟任务的回调扩展能力，实现[onWorkStart](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workschedulerextensionability-c.md#onworkstart)和[onWorkStop](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workschedulerextensionability-c.md#onworkstop)方法，用于处理延迟任务的开始和结束回调。

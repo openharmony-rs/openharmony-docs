@@ -21,13 +21,13 @@ UIAbility通过WindowStage管理主窗口，确保窗口状态与应用逻辑同
 
 ## 管理应用主窗的生命周期
 
-在Stage模型下，应用主窗由UIAbility通过WindowStage管理，并维护其生命周期，开发者可以通过[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)和[onWindowStageDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)接收主窗口创建和销毁的通知。具体请见[UIAbility组件生命周期](../application-models/uiability-lifecycle.md)。
+在Stage模型下，应用主窗由UIAbility通过WindowStage管理，并维护其生命周期，开发者可以通过[onWindowStageCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)和[onWindowStageDestroy](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagedestroy)接收主窗口创建和销毁的通知。具体请见[UIAbility组件生命周期](../application-models/uiability-lifecycle.md)。
 
 此外，WindowStage和主窗口还提供了以下生命周期状态的监听管理手段：
 
-- 通过WindowStage的[on('windowStageLifecycleEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstagelifecycleevent20)接口，监听WindowStage的生命周期变化。
+- 通过WindowStage的on('windowStageLifecycleEvent')接口，监听WindowStage的生命周期变化。
 
-- 通过WindowStage的[getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1)接口获取主窗，然后通过利用[on('windowEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowevent10)接口监听主窗口的显示、隐藏等事件。
+- 通过WindowStage的[getMainWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#getmainwindow)接口获取主窗，然后通过利用[on('windowEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowevent)接口监听主窗口的显示、隐藏等事件。
 
 ### 应用主窗的生命周期状态
 
@@ -59,17 +59,17 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 开发者可以使用以下接口来监听应用WindowStage的生命周期变化。
 
-- API version 20之前，可通过调用[on('windowStageEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageevent9)注册WindowStage生命周期变化的监听，通过调用[off('windowStageEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#offwindowstageevent9)注销WindowStage生命周期变化的监听。
+- API version 20之前，可通过调用on('windowStageEvent')注册WindowStage生命周期变化的监听，通过调用off('windowStageEvent')注销WindowStage生命周期变化的监听。
 
-  - 此时返回的生命周期状态为[WindowStageEventType](../reference/apis-arkui/arkts-apis-window-e.md#windowstageeventtype9)：包含**SHOWN**（前台状态）、**ACTIVE**（获焦状态）、**INACTIVE**（失焦状态）、**HIDDEN**（后台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）6种状态。
+  - 此时返回的生命周期状态为[WindowStageEventType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstageeventtype-e.md#windowstageeventtype)：包含**SHOWN**（前台状态）、**ACTIVE**（获焦状态）、**INACTIVE**（失焦状态）、**HIDDEN**（后台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）6种状态。
 
   - 本接口无法保证生命周期状态切换间的顺序，对于关注状态间的切换顺序的情况下不建议使用。
 
-- （推荐）从API version 20开始，可通过调用[on('windowStageLifecycleEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstagelifecycleevent20)注册WindowStage生命周期变化的监听，通过调用接口[off('windowStageLifecycleEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#offwindowstagelifecycleevent20)注销WindowStage生命周期变化的监听。
+- （推荐）从API version 20开始，可通过调用on('windowStageLifecycleEvent')注册WindowStage生命周期变化的监听，通过调用接口off('windowStageLifecycleEvent')注销WindowStage生命周期变化的监听。
 
-  - 此时返回的生命周期状态为[WindowStageLifeCycleEventType](../reference/apis-arkui/arkts-apis-window-e.md#windowstagelifecycleeventtype20)：包含**SHOWN**（前台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）、**HIDDEN**（后台状态）4种状态。
+  - 此时返回的生命周期状态为[WindowStageLifeCycleEventType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstagelifecycleeventtype-e.md#windowstagelifecycleeventtype)：包含**SHOWN**（前台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）、**HIDDEN**（后台状态）4种状态。
 
-  - 对于WindowStage获焦失焦状态推荐使用[on('windowEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowevent10)进行监听。
+  - 对于WindowStage获焦失焦状态推荐使用[on('windowEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowevent)进行监听。
 
 
 ### 不同设备UIAbility生命周期的差异化行为
@@ -98,15 +98,15 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 | 接口名 | 典型场景 |
 | -------- | -------- |
-| [createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9) | 创建一个全局悬浮窗、模态窗口或系统窗，用作弹窗等场景。 |
-| [createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9) | 创建一个子窗口，用作二级页面等场景。 |
-| [createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11) | 创建一个子窗口，用作二级页面或弹窗等场景。 |
-| [destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9) | 销毁当前窗口，例如关闭弹窗、退出应用等场景。 |
-| [showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1) | 在窗口创建后显示，或窗口隐藏后恢复显示。 |
-| [minimize()](../reference/apis-arkui/arkts-apis-window-Window.md#minimize11) | 最小化当前窗口，仅支持主窗口、子窗口和全局悬浮窗，如点击最小化按钮时隐藏窗口。 |
-| [isWindowShowing()](../reference/apis-arkui/arkts-apis-window-Window.md#iswindowshowing9) | 判断当前窗口是否已显示，避免重复显示或执行无效操作等。 |
-| [on('windowEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowevent10) | 监听窗口的生命周期变化，如窗口创建、显示、隐藏、销毁等。 |
-| [on('windowWillClose')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowwillclose15) | 监听窗口关闭事件，在用户通过标题栏关闭窗口时执行特定操作，如保存数据、确认退出、清理资源等。 |
+| [createWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-createwindow-f.md#createwindow) | 创建一个全局悬浮窗、模态窗口或系统窗，用作弹窗等场景。 |
+| [createSubWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindow) | 创建一个子窗口，用作二级页面等场景。 |
+| [createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindowwithoptions) | 创建一个子窗口，用作二级页面或弹窗等场景。 |
+| [destroyWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#destroywindow) | 销毁当前窗口，例如关闭弹窗、退出应用等场景。 |
+| [showWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#showwindow) | 在窗口创建后显示，或窗口隐藏后恢复显示。 |
+| [minimize()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#minimize) | 最小化当前窗口，仅支持主窗口、子窗口和全局悬浮窗，如点击最小化按钮时隐藏窗口。 |
+| [isWindowShowing()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#iswindowshowing) | 判断当前窗口是否已显示，避免重复显示或执行无效操作等。 |
+| [on('windowEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowevent) | 监听窗口的生命周期变化，如窗口创建、显示、隐藏、销毁等。 |
+| [on('windowWillClose')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowwillclose) | 监听窗口关闭事件，在用户通过标题栏关闭窗口时执行特定操作，如保存数据、确认退出、清理资源等。 |
 
 ## 辅助窗口生命周期的跟随策略差异
 

@@ -22,7 +22,7 @@ FileUri提供了关于文件URI的基本操作，将URI转换成对应的沙箱�
 
 ## 接口说明
 
-接口的详细说明，请参考[oh_file_uri.h](../reference/apis-core-file-kit/capi-oh-file-uri-h.md)。
+接口的详细说明，请参考[oh_file_uri.h](../reference/apis-core-file-kit/c-apis/capi-oh-file-uri-h.md)。
 
 | 接口名称 | 描述 |
 | -------- |-------|

@@ -37,7 +37,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 ## 接口说明
 
-以下是UDMF标准化数据通路的相关接口，更多接口及使用方式请见[标准化数据通路](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md)和[标准化数据定义与描述](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)。
+以下是UDMF标准化数据通路的相关接口，更多接口及使用方式请见[标准化数据通路](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-unifieddatachannel.md)和[标准化数据定义与描述](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md)。
 
 | 接口名称                                                                                    | 描述                                          | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -49,7 +49,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 ## 开发步骤
 
-以[PlainText](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#plaintext)、[HTML](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#html)、[PixelMap](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#pixelmap15)三种数据进行多对多数据共享的过程为例说明开发步骤，数据提供方可以通过UDMF提供的insertData接口将数据写入公共数据通路，获取到的返回值（生成的数据的唯一标识符），可用于对其插入的数据进行更新和删除操作。数据访问方则可以通过UDMF提供的查询接口获取当前公共数据通路的全量数据。
+以[PlainText](../reference/apis-arkdata/arkts-apis/arkts-arkdata-uniformdatastruct-plaintext-i.md#plaintext)、[HTML](../reference/apis-arkdata/arkts-apis/arkts-arkdata-uniformdatastruct-html-i.md#html)、[PixelMap](../reference/apis-arkdata/arkts-apis/arkts-arkdata-uniformdatastruct-pixelmap-i.md#pixelmap)三种数据进行多对多数据共享的过程为例说明开发步骤，数据提供方可以通过UDMF提供的insertData接口将数据写入公共数据通路，获取到的返回值（生成的数据的唯一标识符），可用于对其插入的数据进行更新和删除操作。数据访问方则可以通过UDMF提供的查询接口获取当前公共数据通路的全量数据。
 
 ### 数据提供方
 

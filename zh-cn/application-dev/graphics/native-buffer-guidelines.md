@@ -23,7 +23,7 @@ NativeBuffer的常见应用场景包括：图像数据处理、视频编解码�
 | OH_NativeBuffer_Unmap (OH_NativeBuffer \*buffer) | 将OH_NativeBuffer对应的ION内存从进程空间解除映射。 | 
 | OH_NativeBuffer_GetSeqNum (OH_NativeBuffer \*buffer) | 获取OH_NativeBuffer的序列号。 | 
 
-详细的接口说明请参考[OH_NativeBuffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md)。
+详细的接口说明请参考[OH_NativeBuffer](../reference/apis-arkgraphics2d/c-apis/capi-oh-nativebuffer.md)。
 
 ## 开发步骤
 

@@ -17,7 +17,7 @@
 
 ## 能力范围
 
-- 评估管理：提供评估场景的开始与结束、评估状态查询与评估配置获取、评估过程事件回调，以及评估期间通知受限等系统能力管控。开发详情参见[评估管理开发指南](assessment-guide.md)，接口详情参见[@ohos.customization.assessment (评估管理)](../reference/apis-assessment-kit/js-apis-customization-assessment.md)。
+- 评估管理：提供评估场景的开始与结束、评估状态查询与评估配置获取、评估过程事件回调，以及评估期间通知受限等系统能力管控。开发详情参见[评估管理开发指南](assessment-guide.md)，接口详情参见[@ohos.customization.assessment (评估管理)](../reference/apis-assessment-kit/errorcode-assessment.md)。
 
 ## 亮点/特征
 
@@ -38,4 +38,4 @@
 
 ## 与开发指南的关系
 
-本文说明Automatic Scene Configuration Kit是什么、提供哪些模块与Kit级约束；[评估管理开发指南](assessment-guide.md)说明评估管理模块怎么做，含模块级约束与限制、开发流程、接口说明、示例代码、调测验证与常见问题；[Automatic Scene Configuration Kit术语](assessment-glossary.md)统一本文档集的名词定义；接口签名与错误码参见`../reference/apis-assessment-kit/`下的[@ohos.customization.assessment (评估管理)](../reference/apis-assessment-kit/js-apis-customization-assessment.md)与[评估管理错误码](../reference/apis-assessment-kit/errorcode-assessment.md)。
+本文说明Automatic Scene Configuration Kit是什么、提供哪些模块与Kit级约束；[评估管理开发指南](assessment-guide.md)说明评估管理模块怎么做，含模块级约束与限制、开发流程、接口说明、示例代码、调测验证与常见问题；[Automatic Scene Configuration Kit术语](assessment-glossary.md)统一本文档集的名词定义；接口签名与错误码参见`../reference/apis-assessment-kit/`下的[@ohos.customization.assessment (评估管理)](../reference/apis-assessment-kit/errorcode-assessment.md)与[评估管理错误码](../reference/apis-assessment-kit/errorcode-assessment.md)。

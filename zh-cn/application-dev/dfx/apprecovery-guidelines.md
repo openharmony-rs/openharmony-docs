@@ -13,7 +13,7 @@
 
 系统默认对异常的处理方式为进程退出，如果应用使用过程中产生了用户数据，直接退出可能会导致用户工作中断，数据丢失。
 
-如果应用在[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#abilitystage)中使能[应用恢复功能](#应用恢复接口功能介绍)，并对临时数据进行保存，应用非预期退出后的下一次启动会恢复先前的状态和数据，给用户更连贯的使用体验。这里状态包括应用的页面栈以及onSaveState接口中保存的数据。
+如果应用在[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#abilitystage)中使能[应用恢复功能](#应用恢复接口功能介绍)，并对临时数据进行保存，应用非预期退出后的下一次启动会恢复先前的状态和数据，给用户更连贯的使用体验。这里状态包括应用的页面栈以及onSaveState接口中保存的数据。
 
 API版本9上的应用恢复接口支持单UIAbility的Stage模型应用开发。支持JsError故障时的状态保存与自动重启。
 
@@ -33,7 +33,7 @@ API版本10在API版本9的基础上新增支持多UIAbility的Stage模型应用
 | saveAppState(context?: UIAbilityContext): boolean | 主动保存由Context指定的UIAbility状态。 |
 | setRestartWant(want: Want): void | 设置主动调用**restartApp**以及**RestartFlag**不为**NO_RESTART**时重启的UIAbility（want的abilityName属性可设置为UIAbility的名称）。该UIAbility必须在同一个包名下。 |
 
-由于上述接口可能在故障处理时使用，所以不会返回异常，需要开发者熟悉使用的场景。具体其各参数定义详见[应用故障恢复](../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)。
+由于上述接口可能在故障处理时使用，所以不会返回异常，需要开发者熟悉使用的场景。具体其各参数定义详见[应用故障恢复](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-apprecovery.md)。
 
 **enableAppRecovery**：需要在应用初始化阶段调用，比如AbilityStage的onCreate调用。调用该接口后，应用恢复时将按首个支持恢复的UIAbility进行恢复。
 
@@ -69,13 +69,13 @@ API版本10开始支持应用卡死时的状态保存。JsError故障时，onSav
 
 故障管理是应用提升用户体验的重要手段。应用程序框架为开发者提供了故障监听、故障恢复、以及故障查询三种方式来管理应用的故障。
 
-- 故障监听指的是通过[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)注册[ErrorObserver](../reference/apis-ability-kit/js-apis-inner-application-errorObserver.md)，监听故障的发生，并通知到监听方。
+- 故障监听指的是通过[errorManager](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-errormanager.md)注册[ErrorObserver](../reference/apis-ability-kit/arkts-apis/arkts-ability-errormanager-errorobserver-t.md)，监听故障的发生，并通知到监听方。
 
-- 故障恢复指的是[appRecovery](../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)，即故障发生后，将应用重启恢复到故障之前的状态。
+- 故障恢复指的是[appRecovery](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-apprecovery.md)，即故障发生后，将应用重启恢复到故障之前的状态。
 
-- 故障查询指的是[faultLogger](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)通过其查询接口获取当前的故障信息。
+- 故障查询指的是[faultLogger](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger.md)通过其查询接口获取当前的故障信息。
 
-下图中并没有标记faultLogger的调用时机，开发者可以根据应用启动时传入的[LastExitReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitreason)来决定是否调用faultLogger查询上次的故障信息。
+下图中并没有标记faultLogger的调用时机，开发者可以根据应用启动时传入的[LastExitReason](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-lastexitreason-e.md#lastexitreason)来决定是否调用faultLogger查询上次的故障信息。
 
 ![20221106203527](figures/20221106203527.png)
 
@@ -83,7 +83,7 @@ API版本10开始支持应用卡死时的状态保存。JsError故障时，onSav
 
 如果开发者没有注册ErrorObserver也没有使能应用恢复，则按照系统的默认逻辑执行进程退出。用户可以选择从启动器再次打开应用。
 
-如果开发者使能应用恢复，框架会首先检查当前故障是否支持状态保存以及开发者是否配置了状态保存，如果支持则会回调UIAbility的[onSaveState](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)的接口。最后重启应用。
+如果开发者使能应用恢复，框架会首先检查当前故障是否支持状态保存以及开发者是否配置了状态保存，如果支持则会回调UIAbility的[onSaveState](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onsavestate)的接口。最后重启应用。
 
 ### 应用故障管理接口支持场景
 
@@ -91,9 +91,9 @@ API版本10开始支持应用卡死时的状态保存。JsError故障时，onSav
 
 | 故障名称 | 故障监听 | 状态保存 | 自动重启 | 日志查询 |
 | -------- | -------- | -------- | -------- | -------- |
-| [JS_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 支持 | 支持 | 支持 | 支持 |
-| [APP_FREEZE](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | API18及以上支持 | 支持 | 支持 | 支持 |
-| [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 不支持 | 不支持 | API24及以上支持 | 支持 |
+| [JS_CRASH](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md#faulttype) | 支持 | 支持 | 支持 | 支持 |
+| [APP_FREEZE](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md#faulttype) | API18及以上支持 | 支持 | 支持 | 支持 |
+| [CPP_CRASH](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md#faulttype) | 不支持 | 不支持 | API24及以上支持 | 支持 |
 
 这里状态保存指的是故障时状态保存，对于应用卡死场景，开发者可以采用定时保存状态或者在UIAbility切入后台后自动保存的方式最大限度地保护用户数据。
 
@@ -145,7 +145,7 @@ import { AbilityConstant, appRecovery, errorManager } from '@kit.AbilityKit';
 
 **主动触发保存和恢复**
 
-- 定义和注册[ErrorObserver](../reference/apis-ability-kit/js-apis-inner-application-errorObserver.md) callback，具体可参考[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)里的使用方法。
+- 定义和注册[ErrorObserver](../reference/apis-ability-kit/arkts-apis/arkts-ability-errormanager-errorobserver-t.md) callback，具体可参考[errorManager](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-errormanager.md)里的使用方法。
 
 ```ts
 import { appRecovery, errorManager, UIAbility } from '@kit.AbilityKit';
@@ -280,7 +280,7 @@ export default class EntryAbility extends UIAbility {
 
 **故障UIAbility的重启恢复标记**
 
-发生故障的UIAbility再次重新启动时，在调用onCreate生命周期里，参数want的parameters成员会有[ABILITY_RECOVERY_RESTART](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params)标记数据，并且值为true。
+发生故障的UIAbility再次重新启动时，在调用onCreate生命周期里，参数want的parameters成员会有[ABILITY_RECOVERY_RESTART](../reference/apis-ability-kit/arkts-apis/arkts-ability-wantconstant-params-e-sys.md#params)标记数据，并且值为true。
 
 ```ts
 import { AbilityConstant, UIAbility, Want, wantConstant } from '@kit.AbilityKit';

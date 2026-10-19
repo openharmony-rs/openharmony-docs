@@ -10,12 +10,12 @@
 在应用开发过程中，可在关键代码处输出日志信息。在运行应用后，通过查看日志信息来分析应用执行情况（如应用是否正常运行、代码运行时序、运行逻辑分支是否正常等）。
 
 
-系统提供不同的API供开发者调用并输出日志信息，即HiLog与Console。两个API在使用时略有差异，本文重点介绍HiLog的用法，Console的具体用法可查看API参考[Console](../reference/common/js-apis-logs.md)。
+系统提供不同的API供开发者调用并输出日志信息，即HiLog与Console。两个API在使用时略有差异，本文重点介绍HiLog的用法，Console的具体用法可查看API参考Console。
 
 
 ## 接口说明
 
-HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[@ohos.hilog](../reference/apis-performance-analysis-kit/js-apis-hilog.md)。
+HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[@ohos.hilog](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hilog.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
@@ -47,13 +47,13 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 
 - **tag**：用于指定日志标识，可以为任意字符串，建议标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断。不建议使用中文字符，可能出现乱码或者对齐问题。
 
-- **level**：用于指定日志级别。取值见[LogLevel](../reference/apis-performance-analysis-kit/js-apis-hilog.md#loglevel)。
+- **level**：用于指定日志级别。取值见[LogLevel](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hilog-loglevel-e.md#loglevel)。
 
-- **prefer**：用于指定偏好策略。取值见[PreferStrategy](../reference/apis-performance-analysis-kit/js-apis-hilog.md#preferstrategy21)。
+- **prefer**：用于指定偏好策略。取值见[PreferStrategy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hilog-preferstrategy-e.md#preferstrategy)。
 
 - **format**：格式字符串，用于日志的格式化输出。日志打印的格式化参数需按照“%{private flag}specifier”的格式打印。
 
-- **type**：hilog的输出类型，取值见[OutputType](../reference/apis-performance-analysis-kit/js-apis-hilog.md#outputtype)。
+- **type**：hilog的输出类型，取值见OutputType。
 
 - **domainIDs**：设置输出类型的domain列表，取值范围为0x0000~0xFFFF。
 

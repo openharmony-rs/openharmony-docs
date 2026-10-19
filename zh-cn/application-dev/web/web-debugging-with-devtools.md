@@ -7,10 +7,10 @@
 <!--Adviser: @HelloShuo-->
 
 
-Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开发调试工具，支持在电脑上调试移动设备前端页面。开发者通过[setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess)接口开启Web组件前端页面调试能力，使用DevTools在电脑上调试移动前端网页，设备需为4.1.0及以上版本。
+Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开发调试工具，支持在电脑上调试移动设备前端页面。开发者通过[setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setwebdebuggingaccess)接口开启Web组件前端页面调试能力，使用DevTools在电脑上调试移动前端网页，设备需为4.1.0及以上版本。
 
 ## 无线调试
-从API version 20开始，可使用无线调试接口[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)，来简化调试流程。
+从API version 20开始，可使用无线调试接口[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setwebdebuggingaccess)，来简化调试流程。
 
 ### 应用代码开启Web调试开关
 
@@ -18,7 +18,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 
-   1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
+   1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setwebdebuggingaccess)接口，设置TCP Socket端口号并启用Web调试功能。
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
       
       ``` TypeScript
@@ -68,7 +68,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
    2. 修改Chrome调试工具的配置。<br/>   
      确保已勾选 "Discover network targets"，以便从指定的IP地址和端口号发现被调试网页。<br/>  
      (1) 点击 "Configure" 按钮。<br/>   
-     (2) 在 "Target discovery settings" 中添加被调试设备的IP地址和[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口中指定的port端口，比如：192.168.0.3:8888。
+     (2) 在 "Target discovery settings" 中添加被调试设备的IP地址和[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setwebdebuggingaccess)接口中指定的port端口，比如：192.168.0.3:8888。
 
    > **说明：**
    >
@@ -87,7 +87,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
 ### 应用代码开启Web调试开关
 
-调试网页前，需要应用侧代码调用[setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess)接口开启Web调试开关。  
+调试网页前，需要应用侧代码调用[setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setwebdebuggingaccess)接口开启Web调试开关。  
 
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 

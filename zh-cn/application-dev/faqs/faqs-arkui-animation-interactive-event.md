@@ -19,7 +19,7 @@
 
 **参考链接**
 
-[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)
+[焦点控制](../reference/apis-arkui/arkts-apis/arkts-arkui-focus.md)
 
 
 ## scroll里面套一个grid，如何禁用grid的滑动事件(API 9)
@@ -28,12 +28,12 @@
 
 **参考链接**
 
-容器嵌套滚动[示例](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例2嵌套滚动实现方式一)
+容器嵌套滚动[示例](../reference/apis-arkui/arkts-components/arkts-arkui-scroll-comp.md#示例2嵌套滚动实现方式一)
 
 
 ## 如何实现一个组件不停地旋转(API 9)
 
-可以通过[属性动画](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)的方式实现。
+可以通过属性动画的方式实现。
 
 
 ## 列表目前无法键盘上下滑动，是否能力不支持(API 9)
@@ -59,7 +59,7 @@
 
 ## 使用router或Navigator实现页面跳转时，如何关闭页面间转场动效(API 9)
 
-1. 参考[页面间转场示例](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#示例)在当前页面和目标页面中定义pageTransition方法。
+1. 参考[页面间转场示例](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheet.md#示例)在当前页面和目标页面中定义pageTransition方法。
 
 2. 将页面入场组件PageTransitionEnter和页面退场组件PageTransitionExit的动效参数duration都设置为0。
 
@@ -70,7 +70,7 @@ PanGesture用于触发拖动手势事件，滑动的最小距离distance默认�
 
 **参考链接**
 
-[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)
+PanGesture
 
 
 ## 是否支持使用fontFamily属性设置不同的字体(API 9)
@@ -194,7 +194,7 @@ struct PageTransition2 {
 
 **参考链接**
 
-[页面间转场](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
+[页面间转场](../reference/apis-arkui/errorcode-animation.md)
 
 ## 自定义组件间如何实现从底部滑入滑出的效果(API 9)
 
@@ -296,11 +296,11 @@ struct ComponentChild2 {
 
 **参考链接**
 
-1. [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)
+1. [hitTestBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior)
 
-2. [自定义事件分发](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md)
+2. 自定义事件分发
 
-3. [自定义手势判定](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md)
+3. 自定义手势判定
 
 ## 如何实现对列表的列表项进行拖动时，其他列表项自动补位和动态排列的效果(API 10)
  
@@ -376,4 +376,4 @@ Image组件默认支持拖拽，中转站感知到拖拽后会主动拉起。
 
 **参考链接**
 
-[draggable](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#draggable9)
+[draggable](../reference/apis-arkui/arkts-components/arkts-arkui-image-comp-attribute.md#draggable)

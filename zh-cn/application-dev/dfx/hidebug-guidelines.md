@@ -11,7 +11,7 @@ HiDebug可用于获取系统或应用进程的内存、CPU和GPU等数据，以�
 
 本文介绍HiDebug模块中的ArkTS和C/C++接口，并按接口能力分类。
 
-接口详情可查看[@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)及[hidebug.h](../reference/apis-performance-analysis-kit/capi-hidebug-h.md)。
+接口详情可查看[@ohos.hidebug](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hidebug.md)及[hidebug.h](../reference/apis-performance-analysis-kit/c-apis/capi-hidebug-h.md)。
 
 ## 约束限制
 
@@ -401,16 +401,16 @@ HiDebug提供修改转储堆快照级别的接口。
 
 ### 使用流程
 
-1. 在异步任务提交前，调用[OH_HiDebug_AcquireAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_acquireasynccontext)获取一个异步上下文。
-2. 在异步任务提交时，调用[OH_HiDebug_PushAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_pushasynccontext)将异步上下文压入当前线程的运行上下文，建立异步调用链。
-3. 在异步任务完成时，调用[OH_HiDebug_PopAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_popasynccontext)将异步上下文弹出，解除异步调用链。
-4. 在异步任务结束后，调用[OH_HiDebug_ReleaseAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_releaseasynccontext)释放异步上下文资源，防止资源泄漏。
+1. 在异步任务提交前，调用OH_HiDebug_AcquireAsyncContext获取一个异步上下文。
+2. 在异步任务提交时，调用OH_HiDebug_PushAsyncContext将异步上下文压入当前线程的运行上下文，建立异步调用链。
+3. 在异步任务完成时，调用OH_HiDebug_PopAsyncContext将异步上下文弹出，解除异步调用链。
+4. 在异步任务结束后，调用OH_HiDebug_ReleaseAsyncContext释放异步上下文资源，防止资源泄漏。
 
 ### 接口说明（C/C++）
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| OH_HiDebug_AcquireAsyncContext | 获取一个异步上下文（AsyncContext），用于后续的异步栈追踪操作。对应的释放函数为[OH_HiDebug_ReleaseAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+| OH_HiDebug_AcquireAsyncContext | 获取一个异步上下文（AsyncContext），用于后续的异步栈追踪操作。对应的释放函数为OH_HiDebug_ReleaseAsyncContext。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 | OH_HiDebug_PushAsyncContext | 将异步上下文压入当前线程的运行上下文中，用于建立异步调用链关系。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 | OH_HiDebug_PopAsyncContext | 将异步上下文从当前线程的运行上下文中弹出，用于解除异步调用链关系。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 | OH_HiDebug_ReleaseAsyncContext | 释放通过OH_HiDebug_AcquireAsyncContext获取的异步上下文资源。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
