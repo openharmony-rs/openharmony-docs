@@ -104,10 +104,10 @@ enum OH_CaptureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。 |
-| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。使用此模式需在OH_AVScreenCaptureConfig中指定displayId。 |
-| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。使用此模式需在OH_AVScreenCaptureConfig中指定windowId。 |
-| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.0.1 |
+| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。适用于全屏录制场景。 |
+| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。适用于多屏环境下选择特定屏幕的场景。使用此模式需在 OH_AVScreenCaptureConfig 中指定 displayId。 |
+| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。适用于仅录制单个应用窗口的场景。使用此模式需在 OH_AVScreenCaptureConfig 中指定 windowId。 |
+| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 录制虚拟扩展屏幕。创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.0.1 |
 | OH_CAPTURE_INVAILD = -1 | 无效模式。 |
 
 ### OH_AudioCaptureSourceType
