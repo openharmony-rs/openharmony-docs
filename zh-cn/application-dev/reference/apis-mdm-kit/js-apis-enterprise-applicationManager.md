@@ -3683,3 +3683,172 @@ async function publishFormToDesktop() {
 | abilityName | string | 否   | 否 | 卡片所属的Ability名称。|
 | name        | string | 否   | 否 | 卡片名称。|
 | dimension   | [formInfo.FormDimension](../apis-form-kit/js-apis-app-form-formInfo.md#formdimension) | 否   | 否 | 卡片尺寸。|
+
+## applicationManager.requestExemptionResource
+
+requestExemptionResource(resourceType: StandbyResourceType, bundleName: string, duration: number): void
+
+为指定应用申请待机资源豁免。申请成功后，指定应用可以在设备进入待机模式时继续使用被豁免的资源（如网络访问）。豁免不做持久化，设备重启后豁免失效。适用于企业场景中管理应用需要持续资源访问以维持服务连续性的需求。
+
+豁免为限时生效。当指定的duration到期后，系统自动释放豁免。duration未到期时再次申请豁免，以多个豁免时间中豁免结束时间最晚的时间生效。如需提前释放豁免，可调用[applicationManager.releaseExemptionResource](#applicationmanagerreleaseexemptionresource)。
+
+> **说明：**
+>
+> 本接口需在设备待机状态下调用，而待机状态下系统进入低功耗休眠，普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发调用。因此，从首次申请到后续续期，均需通过[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)精确定时器来调用本接口。精确定时器可在设备待机休眠下唤醒执行，在其回调中调用本接口，实现待机资源豁免的首次申请和持续续期。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| resourceType | [StandbyResourceType](#standbyresourcetype)             | 是   | 待机资源豁免类型。当前仅支持NETWORK（值=1）。 |
+| bundleName   | string                                                  | 是   | 待申请资源豁免的指定应用包名。包名必须为设备上已安装的有效应用，不能为空字符串。 |
+| duration     | number                                                  | 是   | 豁免时长，单位为秒，必须大于0。系统最大豁免时长为3600秒，传入值超过3600时按3600秒生效。到期后系统自动释放豁免。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+| 9201002  | The application is not installed.                            |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager, systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { systemDateTime } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.test';
+let duration: number = 3600;
+let timerId: number = 0;
+// 精确定时器初始化配置
+let config: systemManager.ExactTimerConfig = {
+  name: 'networkExemptionTimer',
+  repeat: true,
+  interval: 3500000,
+  callback: () => {
+    try {
+      // 在精确定时器回调中调用网络资源豁免接口
+      applicationManager.requestExemptionResource(applicationManager.StandbyResourceType.NETWORK, bundleName, duration);
+      console.info('Succeeded in requesting exemption resource.');
+    } catch (err) {
+      console.error(`Failed to request exemption resource. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+};
+// 创建精确定时器
+systemManager.createExactTimer(config).then((id: number) => {
+  timerId = id;
+  console.info(`Succeeded in creating exact timer, timerId: ${timerId}.`);
+  let triggerTime: number = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP) + 5000;
+  // 启动精确定时器，触发回调，申请网络资源豁免。成功后即可按需调用网络资源
+  return systemManager.startExactTimer(timerId, triggerTime);
+}).then(() => {
+  console.info('Succeeded in starting exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create or start exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## applicationManager.releaseExemptionResource
+
+releaseExemptionResource(resourceType: StandbyResourceType, bundleName: string): void
+
+释放指定应用的待机资源豁免。释放成功后，指定应用将恢复正常的待机资源限制。本接口用于提前释放豁免。若豁免已自动到期（duration已过），调用本接口不会返回错误但无实际效果。
+
+resourceType和bundleName必须与之前申请豁免时一致。
+
+> **说明：**
+>
+> 如使用[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)精确定时器进行网络豁免的首次申请和续期，释放豁免时应同时调用[systemManager.stopExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerstopexacttimer)停止定时器，并调用[systemManager.destroyExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerdestroyexacttimer)销毁定时器，避免定时器资源泄漏。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| resourceType | [StandbyResourceType](#standbyresourcetype)             | 是   | 待机资源豁免类型。当前仅支持NETWORK（值=1）。 |
+| bundleName   | string                                                  | 是   | 待释放资源豁免的指定应用包名。包名必须为设备上已安装的有效应用，不能为空字符串。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+| 9201002  | The application is not installed.                            |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager, systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.test';
+let timerId: number = 1;
+
+// 停止并销毁精确定时器，避免资源泄漏
+systemManager.stopExactTimer(timerId).then(() => {
+  console.info('Succeeded in stopping exact timer.');
+  return systemManager.destroyExactTimer(timerId);
+}).then(() => {
+  console.info('Succeeded in destroying exact timer.');
+  // 释放网络豁免
+  try {
+    applicationManager.releaseExemptionResource(applicationManager.StandbyResourceType.NETWORK, bundleName);
+    console.info('Succeeded in releasing exemption resource.');
+  } catch (err) {
+    console.error(`Failed to release exemption resource. Code is ${err.code}, message is ${err.message}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop or destroy exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## StandbyResourceType
+
+设备待机资源豁免类型枚举。当设备在未充电且灭屏状态下持续超过21分钟时，系统会限制后台应用的网络访问等资源，同时普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发。通过申请待机资源豁免，指定应用可以在设备待机期间继续使用这些资源。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称     | 值 | 说明           |
+| -------- | -- | -------------- |
+| NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的企业应用场景。 |
