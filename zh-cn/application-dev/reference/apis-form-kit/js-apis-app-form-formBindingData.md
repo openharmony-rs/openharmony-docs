@@ -137,6 +137,8 @@ createFormBindingDataEx(obj?: Object | string): FormBindingData
 
 **系统能力：** SystemCapability.Ability.Form
 
+**起始版本：** 26.0.1
+
 **参数：**
 
 | 参数名 | 类型           | 必填 | 说明                                                         |
