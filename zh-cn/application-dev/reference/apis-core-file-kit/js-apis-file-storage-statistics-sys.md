@@ -386,7 +386,7 @@ getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;Bun
 
 异步获取指定的应用存储数据的空间大小（单位为Byte）。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -936,7 +936,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
   
 获取应用存储空间信息的选项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -953,7 +953,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 应用存储空间统计信息的枚举。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
