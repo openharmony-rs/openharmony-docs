@@ -89,7 +89,7 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 | 功能 | 典型场景 | 对应接口 |
 | -------- | -------- | -------- |
 | 设置主窗口置顶 | 用于实现将窗口置于其他应用窗口之上不被遮挡。如视频通话、导航等场景。 | [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) |
-| 调整主窗口Z序 | 可用于同时调整多个窗口Z序，如云应用场景。| [setWindowPosition()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwindowposition) |
+| 调整主窗口Z序 | 可用于同时调整多个窗口Z序，如云应用场景。 | [setWindowPosition()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwindowposition) |
 | 提升子窗口到顶层 | 将子窗口提升至当前应用内同类型子窗口的最顶层，只在当前应用同一个父窗口下相同zLevel值的子窗范围内生效。<br>例如，视频会议中的悬浮工具栏，主窗口是视频画面，子窗口包括聊天框、共享控制栏等。点击聊天框时，可调用raiseToAppTop()将其提升到顶层，避免被其他子窗口遮挡。 | [raiseToAppTop()](../reference/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14) |
 | 禁止/使能子窗点击抬升功能 | 可用于固定布局的工具面板，防止用户误操作导致层级混乱。 | [setRaiseByClickEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) |
 | 获取当前应用内层级最高的窗口 | 可判断当前最前显示的窗口（可能是主窗口或子窗口），用于日志记录或状态同步等场景。 | [getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1) |
