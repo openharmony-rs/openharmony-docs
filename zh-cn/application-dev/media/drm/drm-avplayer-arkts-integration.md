@@ -54,12 +54,15 @@
          solutionName = item.name
          }
        }
-       let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, "video/mp4");
+       // 实际开发中应从播放内容的轨道信息（如AVPlayer.getTrackDescription()）或已知媒体源获取mimeType。
+       // drm.MediaKeySystemInfo不包含mimeType字段，无法直接从drmInfo获取。
+       let mimeType: string = "video/mp4";
+       let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, mimeType);
        if (isSupported) {
          mediaKeySystem = drm.createMediaKeySystem(solutionName);
          mediaKeySession = mediaKeySystem.createMediaKeySession();
      }
-   }
+   })
    ```
 
 5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
@@ -71,7 +74,7 @@
      name: "optionalDataName",
      value: "optionalDataValue"
    }]
-   mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionsData).then(async (licenseRequest) => {
+   mediaKeySession.generateMediaKeyRequest(mimeType, initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionsData).then(async (licenseRequest) => {
      console.info("generateMediaKeyRequest success", licenseRequest.mediaKeyRequestType, licenseRequest.data, licenseRequest.defaultURL);
      // 将媒体密钥请求返回的licenseRequest.data通过网络请求发送给DRM服务获取媒体密钥响应，并处理。
      let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
@@ -88,6 +91,7 @@
 6. 调用[requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule)和[setDecryptionConfig](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setdecryptionconfig11)，在处理媒体密钥响应成功后设置解密session。
 
    ```ts
+   // 实际开发中应从轨道信息获取codec mime type（如video/avc），再传入requireSecureDecoderModule。
    let svp: boolean = mediaKeySession.requireSecureDecoderModule('video/avc');
    playerHandle.setDecryptionConfig(mediaKeySession, svp)
    ```
