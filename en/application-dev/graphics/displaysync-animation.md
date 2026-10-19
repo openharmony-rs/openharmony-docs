@@ -10,7 +10,7 @@ During application development, you can use the optional parameter [ExpectedFram
 
 ## Requesting a Frame Rate for a Property Animation
 The code snippet below defines a property animation for the **Text** component and sets the frame rate to 60.
-<!-- @[display_sync_property_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/PropertyAnimationDisplaySync.ets) -->
+<!-- @[display_sync_property_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/PropertyAnimationDisplaySync.ets) -->
 
 ``` TypeScript
 Text('60')
@@ -29,7 +29,7 @@ Text('60')
 
 ## Requesting a Frame Rate for an Explicit Animation
 The code snippet below defines an explicit animation for the **Button** component and sets the frame rate to 30.
-<!-- @[display_sync_explicit_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/PropertyAnimationDisplaySync.ets) -->
+<!-- @[display_sync_explicit_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/PropertyAnimationDisplaySync.ets) -->
 
 ``` TypeScript
 Button('Start')
