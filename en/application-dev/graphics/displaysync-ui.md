@@ -5,12 +5,13 @@
 <!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c387086483c8d9d4cc63801510c549e16234c84d translatedAt=2026-10-19T01:24:19.142Z pushedAt=2026-10-19T07:35:24.322Z -->
 
-If you want to draw and update a UI component at an independent frame rate, you can call the APIs provided by the **DisplaySync** module. For details, see [@ohos.graphics.displaySync (Variable Frame Rate)](../reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md).
+If you need to draw and update UI content at an independent frame rate, you can use **DisplaySync**. The frame rate for drawing content in an app can be controlled by a **DisplaySync** instance. For details, see [@ohos.graphics.displaySync (Variable Frame Rate)](../reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md).
 
 ## How to Develop
 
-This section describes how to use different frame rates to change the font size of the **\<Text>** component. This operation simulates the effect of different frame rates on the UI components.
+The following example changes the font size of a text component at different frame rates to simulate the effect of different UI drawing frame rates.
 
 1. Import the **DisplaySync** module.
    <!-- @[display_sync_by_ui_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->

@@ -5,6 +5,7 @@
 <!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8274e2d7a391483e6c7c9de842768baf61c0596c translatedAt=2026-10-19T01:23:20.272Z pushedAt=2026-10-19T07:34:01.615Z -->
 
 During application development, you can use the optional parameter [ExpectedFrameRateRange](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11) to set an expected frame rate range for a [property animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) or an [explicit animation](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md).
 
