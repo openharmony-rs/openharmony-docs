@@ -887,6 +887,36 @@ The number of server config reaches the upper limit.
 
 删除冗余的服务器配置信息后再重新添加。
 
+## 12300302 授权操作需要用户交互，但当前交互操作受限
+
+**错误信息**
+
+User interaction is required but not allowed.
+
+**可能原因**
+
+该错误码表示该授权操作需要与用户交互确认，但当前交互操作受限，可能原因如下：
+1. 指定的UIAbility上下文无效。
+2. 应用未处于前台。
+
+**处理步骤**
+
+确保应用处于前台，并传入有效的UIAbilityContext。
+
+## 12300304 授权服务忙
+
+**错误信息**
+
+Authorization service is busy.
+
+**可能原因**
+
+系统正在处理另一个授权请求中。
+
+**处理步骤**
+
+请等待一段时间后重试，并降低调用频率。
+
 ## 12300401 系统账号子身份资料不存在
 
 **错误信息**
