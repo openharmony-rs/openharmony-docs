@@ -114,7 +114,7 @@ bindSheet半模态转场仅支持通过组件级开启方式开启沉浸光感�
 
 ## 按钮与选择类组件
 
-按钮与选择类组件包括Button、Select、Toggle、Slider、ChipGroup/ChipGroupV2和SegmentButton/SegmentButtonV2，是内嵌于内容流中的交互元素，用户通过它们进行选择和操作。沉浸光感为选择类组件提供了细腻的交互反馈与通透的视觉质感：沉浸式系统材质通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持组件背景通透的同时，通过[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)中的交互形变（interactive）和点光源（lightEffect）为按压、触摸等操作提供灵动的视觉反馈，替代组件默认的按压态和悬浮态效果。
+按钮与选择类组件包括Button、Select、Toggle、Slider、ChipGroup/ChipGroupV2和SegmentButton/SegmentButtonV2，是内嵌于内容流中的交互元素，用户通过它们进行选择和操作。沉浸光感为选择类组件提供了细腻的交互反馈与通透的视觉质感：沉浸式系统材质通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持组件背景通透的同时，通过[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)中的交互形变（interactive）和光感交互反馈（lightEffect）为按压、触摸等操作提供灵动的视觉反馈，替代组件默认的按压态和悬浮态效果。
 
 ### 按钮（Button）
 
