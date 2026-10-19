@@ -1844,9 +1844,6 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
-
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
-
 **参数：**
 
 | 参数名               | 类型                             | 必填 | 说明                 |
