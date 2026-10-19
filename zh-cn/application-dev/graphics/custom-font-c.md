@@ -83,6 +83,16 @@
 
    <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
+   ``` C++
+   int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
+   // 0表示注册成功，非0表示注册失败，失败时打印错误码并释放字体集对象后返回
+   if (errorCode != 0) {
+       DRAWING_LOGE("OH_Drawing_RegisterFont failed, errorCode: %{public}d", errorCode);
+       OH_Drawing_DestroyFontCollection(fontCollection);
+       return;
+   }
+   ```
+   
 6. 确保自定义字体注册成功后，使用OH_Drawing_CreateTextStyle()接口创建文本样式对象，并使用OH_Drawing_SetTextStyleFontFamilies()接口加入自定义字体。
 
    <!-- @[custom_font_c_custom_font_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
