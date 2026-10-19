@@ -533,15 +533,15 @@ for ([init]; [condition]; [update]) {
 
 `for`语句的执行流程如下：
 
-1、 执行`init`表达式（如有）。此表达式通常初始化一个或多个循环计数器。
+1. 执行`init`表达式（如有）。此表达式通常初始化一个或多个循环计数器。
 
-2、 计算`condition`。如果它为真值（转换后为`true`的值），则执行循环主体的语句。如果它为假值（转换后为`false`的值），则`for`循环终止。
+2. 计算`condition`。如果它为真值（转换后为`true`的值），则执行循环主体的语句。如果它为假值（转换后为`false`的值），则`for`循环终止。
 
-3、 执行循环主体的语句。
+3. 执行循环主体的语句。
 
-4、 如果有`update`表达式，则执行该表达式。
+4. 如果有`update`表达式，则执行该表达式。
 
-5、 返回步骤2。
+5. 返回步骤2。
 
 示例：
 
@@ -755,9 +755,9 @@ function processData(s: string) {
 
 以下示例是一个简单的函数和它的语法语义说明：
 
-1.参数类型标注：x: string, y: string 显式声明参数类型为字符串类型。
+1. 参数类型标注：x: string, y: string 显式声明参数类型为字符串类型。
 
-2.返回值类型：: string 指定函数返回值为字符串类型。
+2. 返回值类型：: string 指定函数返回值为字符串类型。
 
 <!-- @[function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
