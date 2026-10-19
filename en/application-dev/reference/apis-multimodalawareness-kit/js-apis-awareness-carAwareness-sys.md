@@ -346,3 +346,4 @@ carAwareness.getCarAwareness(carAwareness.Capability.CAR_STATUS)
     hilog.error(DOMAIN, TAG, 'Get car awareness failed, error code: %{public}d', err.code);
   });
 ```
+<!--no_check-->
