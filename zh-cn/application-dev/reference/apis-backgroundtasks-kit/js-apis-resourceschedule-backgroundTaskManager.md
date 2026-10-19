@@ -2165,3 +2165,20 @@ export default class EntryAbility extends UIAbility {
 | title           | string                            | 否    | 否    | 通知标题。 |
 | fileName        | string                            | 否    | 否    | 通知内容。 |
 | progressValue   | number                            | 否    | 是    | 通知进度。取值范围：[0,100]。<br/>**说明：** 如果该字段存在，则通知有进度环，通知类型为实况窗通知。如果该字段不存在或值为100，则通知无进度环，通知类型为普通通知。 |
+| isMute          | boolean                           | 否    | 是    | 通知进度达到100时是否静音，true表示静音，false表示非静音（响铃+震动），默认为false。<br/>**说明：** 该字段仅在progressValue字段值为100时生效。|
+ 
+## DataTransferProgress
+ 
+长时任务通知进度信息。
+ 
+**起始版本：** 26.0.1
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+ 
+| 名称             | 类型                                | 只读   | 可选   | 说明               |
+| ---------------- | --------------------------------- | ---- | ---- | ---------------- |
+| continuousTaskId | number             | 否    | 否    | 长时任务ID。必须是存在的ID。          |
+| wantAgent        | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 是    | 通知参数，用于指定点击长时任务通知后跳转的界面。默认为申请长时任务时传入的wantAgent。 |
+| progressInfo     | [ProgressInfo](#progressinfo)  | 否    | 否    | 通知进度信息。 |
