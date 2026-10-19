@@ -227,6 +227,87 @@ struct Index {
 ArkTS-Dyn示例：
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct SpecificSceneSetOrientationIndex {
+  mainWindow: window.Window | undefined;
+
+  aboutToAppear() {
+    // 在 EntryAbility.ets 中通过 windowStage.getMainWindowSync() 保存主窗
+    this.mainWindow = AppStorage.get('mainWindow_SetOrientation') as window.Window;
+  }
+
+  setOrientationByDisplay() {
+    if (!this.mainWindow) {
+      console.error('Main window is not available.');
+      return;
+    }
+    try {
+      // 1.获取当前默认Display
+      const disp = display.getDefaultDisplaySync();
+      const displayOrientation = disp.orientation; // 当前屏幕方向（0/1/2/3）
+
+      console.info(`Succeeded in getting display orientation, orientation is ${displayOrientation}`);
+      // 2.将displayOrientation转换为windowOrientation
+      let windowOrientation: number =
+        this.mainWindow.convertOrientationAndRotation(
+          window.RotationInfoType.DISPLAY_ORIENTATION,
+          window.RotationInfoType.WINDOW_ORIENTATION,
+          displayOrientation
+        );
+      // 3.根据windowOrientation映射到window.Orientation
+      let orientation: window.Orientation = window.Orientation.UNSPECIFIED;
+
+      switch (windowOrientation) {
+        case 0:
+          orientation = window.Orientation.PORTRAIT;
+          break;
+        case 1:
+          orientation = window.Orientation.LANDSCAPE_INVERTED;
+          break;
+        case 2:
+          orientation = window.Orientation.PORTRAIT_INVERTED;
+          break;
+        case 3:
+          orientation = window.Orientation.LANDSCAPE;
+          break;
+        default:
+          throw new Error('Invalid orientation value');
+      }
+      // 4.设置旋转策略锁定窗口方向
+      this.mainWindow.setPreferredOrientation(orientation).then(() => {
+        console.info('Succeeded in setting preferred orientation.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to set preferred orientation. Code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      console.error(`Failed to set orientation by display. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+  build() {
+    Column() {
+      Text('Lock the display orientation')
+        .fontSize(17)
+      Button('Set orientation from display')
+        .onClick(() => {
+          console.info('Click: Set orientation from display');
+          this.setOrientationByDisplay();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 ArkTS-Sta示例：
 <!-- @[convert_orientation_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) --> 
