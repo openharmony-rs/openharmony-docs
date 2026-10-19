@@ -633,7 +633,7 @@ Enumerates screen hopping events.
 
 > **NOTE**
 >
->This API is supported since API version 9 and deprecated since API version 23. You are advised to use [CooperateMessage](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatemessage11) instead.
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [CooperateState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatestate11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
