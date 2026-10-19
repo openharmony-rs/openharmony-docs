@@ -1,17 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "介绍从API version 20开始如何使用AVTranscoder的C/C++ Native接口实现音视频转码完整流程，适用于需要底层转码能力的开发场景。"
-keywords:
-  - AVTranscoder
-  - C/C++
-  - Native API
-  - 音视频转码
-  - NDK
-  - 状态回调
-  - OH_AVTranscoder
-  - StateCallback
-  - ErrorCallback
-  - ProgressUpdate
+keywords: [AVTranscoder, C/C++, Native API, 音视频转码, NDK, 状态回调, OH_AVTranscoder, StateCallback, ErrorCallback]
 doctype: guide
 status: active
 ---

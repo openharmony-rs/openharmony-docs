@@ -1,16 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "介绍如何使用AVMetadataExtractor的ArkTS接口从音视频资源中提取元数据信息，包括获取专辑封面和视频缩略图，适用于媒体信息展示场景。"
-keywords:
-  - AVMetadataExtractor
-  - 元数据提取
-  - ArkTS
-  - fdSrc
-  - dataSrc
-  - setUrlSource
-  - 专辑封面
-  - 视频缩略图
-  - 媒体信息查询
+keywords: [AVMetadataExtractor, 元数据提取, ArkTS, fdSrc, dataSrc, setUrlSource, 专辑封面, 视频缩略图, 媒体信息查询]
 doctype: guide
 status: active
 ---

@@ -1,16 +1,7 @@
 ---
 kits: ["Drm Kit / 数字版权保护服务"]
 description: "DRM Kit提供数字版权管理能力，支持DRM插件管理、证书管理、许可证管理、节目授权与解密，适用于需要播放加密版权内容的场景。"
-keywords:
-  - DRM
-  - 数字版权管理
-  - DRM插件
-  - MediaKeySystem
-  - MediaKeySession
-  - 安全视频通路
-  - DRM证书
-  - 许可证
-  - pssh
+keywords: [DRM, 数字版权管理, DRM插件, MediaKeySystem, MediaKeySession, 安全视频通路, DRM证书, 许可证, pssh]
 doctype: guide
 status: active
 ---
