@@ -422,6 +422,24 @@ The number of accounts of the specified type has reached the upper limit.
 
 请删除多余的账号后再重试。
 
+## 12300024 系统账号ID已存在
+
+**错误信息**
+
+The specified OS account ID already exists.
+
+**错误描述**
+
+指定的系统账号ID已存在。
+
+**可能原因**
+
+指定的系统账号ID已存在。
+
+**处理步骤**
+
+更换其他ID，或删除已存在的相同ID的系统账号后重试。
+
 <!--DelEnd-->
 
 ## 12300101 凭据不正确
