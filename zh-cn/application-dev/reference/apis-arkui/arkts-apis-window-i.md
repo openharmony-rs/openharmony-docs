@@ -374,6 +374,21 @@
 | nextFocusedWindowId | number | 否 | 是 | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
 | prevFocusedWindowId | number | 否 | 是 | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
 
+## WindowPositionParams
+
+调整主窗口Z序时使用的位置参数。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称        | 类型 | 只读 | 可选 | 说明  |
+| ----------- | ---- | ---- | ---- | ---------- |
+| windowId    | number | 否   | 否   | 待调整Z序的主窗口ID。该窗口必须是当前应用进程中的主窗口。<br>该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
+| insertAfter | number | 否   | 否   | 调整到的位置。取值大于0时，表示另一主窗口的ID，待调整Z序的主窗口将被放置到该主窗口之下；其他取值对应的Z序调整操作请见[WindowPosition](arkts-apis-window-e.md#windowposition)。|
+
 ## WindowInfoOptions
 窗口布局信息过滤选项。
 
