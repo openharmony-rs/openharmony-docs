@@ -740,8 +740,9 @@ caretColor(value: ResourceColor): WebAttribute
 
 点击按钮设置颜色后，点击网页输入框观察光标，或长按选择文字观察手柄。点击重置按钮后，输入光标恢复网页CSS指定的蓝色，选择手柄恢复当前主题颜色。
 
+<!-- @[web_caret_color_zh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/CaretColor/entry/src/main/ets/pages/CaretColorZh.ets) -->
+
 ```ts
-// xxx.ets
 import webview from '@ohos.web.webview';
 
 @Entry
@@ -766,7 +767,7 @@ struct WebComponent {
             this.caretColorValue = '#00000000';
           })
       }
-      Web({ src: $rawfile('caret_color.html'), controller: this.controller })
+      Web({ src: $rawfile('caret_color_zh.html'), controller: this.controller })
         .caretColor(this.caretColorValue)
         .width('100%')
         .layoutWeight(1)
@@ -775,10 +776,11 @@ struct WebComponent {
 }
 ```
 
-加载的HTML文件位于`entry/src/main/resources/rawfile/caret_color.html`。
+加载的HTML文件位于`entry/src/main/resources/rawfile/caret_color_zh.html`。
+
+<!-- @[web_caret_color_zh_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/CaretColor/entry/src/main/resources/rawfile/caret_color_zh.html) -->
 
 ```html
-<!-- caret_color.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
