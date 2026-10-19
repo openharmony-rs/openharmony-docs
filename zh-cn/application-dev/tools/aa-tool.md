@@ -293,7 +293,7 @@ aa dump -a
 通过bundleName强制停止一个进程。
 
 ```bash
-aa force-stop <bundle-name> [-p pid] [-r kill-reason]
+aa force-stop <bundle-name> [-p pid] [-r kill-reason] [-u userId]
 ```
 
   **强制停止进程命令参数列表**
@@ -302,6 +302,7 @@ aa force-stop <bundle-name> [-p pid] [-r kill-reason]
   | -------- |-------------------|
   | -p | 指定pid，需要与-r配合使用，两者共同设置指定pid的进程退出原因。 |
   | -r | 指定进程退出原因，需要与-p配合使用，两者共同设置指定pid的进程退出原因。 |
+  | -u | 可选参数，userId表示要终止进程对应的用户ID。在多用户场景下，用于区分同一设备上不同用户账号下的应用，进而终止指定用户的进程。<br>**说明：** 从API版本26.1.0开始支持该参数。 |
 
   **返回值**：
 
