@@ -547,6 +547,32 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
 
+### enableScrollWithKeyboard
+
+enableScrollWithKeyboard(enabled: boolean | undefined): T
+
+设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认支持键盘方向键滚动。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                          |
+| ------ | ------ | ---- | --------------------------------------------- |
+| enabled  | boolean \| undefined | 是   | 是否支持键盘方向键滚动。<br/>true：支持键盘方向键滚动。<br/>false：不支持键盘方向键滚动。<br/>undefined：支持键盘方向键滚动。 |
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前滚动组件。 |
+
 ## 事件
 
 ### onReachStart<sup>11+</sup>

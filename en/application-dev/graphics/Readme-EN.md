@@ -33,7 +33,9 @@
   - Primitive Drawing<!--primitive-drawing-->
     - [Drawing Primitives](primitive-drawing-overview.md)
     - [Drawing Geometric Shapes (ArkTS)](geometric-shape-drawing-arkts.md)
-    - [Drawing Images](pixelmap-drawing-arkts.md)
+
+    - [Drawing Images (ArkTS)](pixelmap-drawing-arkts.md)
+
     - [Drawing TextBlobs (ArkTS)](textblock-drawing-arkts.md)
     - [Drawing Geometric Shapes (C/C++)](geometric-shape-drawing-c.md)
     - [Drawing Images (C/C++)](pixelmap-drawing-c.md)

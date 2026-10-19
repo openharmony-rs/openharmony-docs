@@ -760,6 +760,29 @@ NODE_SCROLL_STATE = 1002030
 | -- | -- |
 | .value[0].i32 | 当前滚动状态。参数类型为[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 |
 
+## NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD
+
+```c
+NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD = 1002031
+```
+
+设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项        | 描述                                                         |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | 是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。默认值：1。 |
+
+**返回：**
+
+| 类型          | 说明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | 是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。 |
+
 ## NODE_LIST_DIRECTION
 
 ```c
