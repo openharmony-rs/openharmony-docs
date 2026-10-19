@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-15T10:39:21.297Z pushedAt=2026-10-16T02:29:55.529Z -->
 
 ```c
 typedef struct {...} WindowManager_Rect
@@ -26,7 +27,9 @@ Describes the window rectangle, including the window position, width, and height
 
 | Name| Description|
 | -- | -- |
-| int32_t posX | X coordinate of the window, in px. The value is an integer.|
-| int32_t posY | Y coordinate of the window, in px. The value is an integer.|
+| int32_t posX | X-coordinate of the window, in px. The value is an integer. |
+| int32_t posY | Y-coordinate of the window, in px. The value is an integer. |
 | uint32_t width | Window width, in px. The value is an integer.|
 | uint32_t height | Window height, in px. The value is an integer.|
+
+
