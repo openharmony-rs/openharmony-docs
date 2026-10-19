@@ -133,6 +133,55 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
 });
 ```
 
+## avSession.getSessionDescriptorsForAudioZone<sup>26+</sup>
+ 
+getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
+ 
+获取userId用户所属音区的会话描述符信息。使用Promise异步回调。
+ 
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+ 
+**系统接口：** 该接口为系统接口。 
+ 
+**参数：** 
+ 
+| 参数名        | 类型           | 必填 | 说明 |
+| ------------ | -------------- |------|------|
+| userId       | int            | 是   | 指定用户UserId。 |
+ 
+**返回值：**
+ 
+| 类型                                                                        | 说明                                   |
+| --------------------------------------------------------------------------- | -------------------------------------- |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise对象。返回对应音区的会话描述的只读对象。 |
+ 
+**错误码：** 
+ 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+ 
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 201 | permission denied. | 
+| 202 | Not System App. |
+| 6700101  |Session service is not running. | 
+ 
+**示例：** 
+ 
+```ts
+avSession.getSessionDescriptorsForAudioZone(100, (descriptors: avSession.AVSessionDescriptor[]) => { 
+    console.info(`Succeeded in getting session descriptors for userid, length: ${descriptors.length}`); 
+    if (descriptors.length > 0 ) { 
+      console.info(`Succeeded in getting session descriptors for userid, isActive: ${descriptors[0].isActive}`); 
+      console.info(`Succeeded in getting session descriptors for userid, type: ${descriptors[0].type}`); 
+      console.info(`Succeeded in getting session descriptors for userid, sessionTag: ${descriptors[0].sessionTag}`); 
+      console.info(`Succeeded in getting session descriptors for userid, sessionId: ${descriptors[0].sessionId}`); 
+      console.info(`Succeeded in getting session descriptors for userid, bundleName: ${descriptors[0].elementName.bundleName}`); 
+    } 
+});
+```
+
 ## avSession.getHistoricalSessionDescriptors<sup>10+</sup>
 
 getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
@@ -526,6 +575,55 @@ import { avSession } from '@kit.AVSessionKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('Succeeded in starting AV playback.');
+});
+```
+
+## avSession.startAVPlaybackForAudioZone<sup>26+</sup>
+ 
+startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, info?: CommandInfo): Promise\<void>
+ 
+启动指定用户所在音区的媒体播放应用程序。使用Promise异步回调。
+ 
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+ 
+**系统接口：** 该接口为系统接口。
+ 
+**参数：**
+ 
+| 参数名        | 类型           | 必填 | 说明 |
+| ------------ | -------------- |------|------|
+| userId       | int            | 是   | 指定用户UserId。 |
+| bundleName   | string         | 是   | 指定应用包名。   |
+| assetId      | string         | 是   | 指定媒体ID。    |
+| info         | CommandInfo    | 否   | 发送到会话的命令信息。 |
+| extraInfo | ExtraInfo    |  否  |  冷启动扩展信息。 |
+ 
+**返回值：**
+ 
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+ 
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 801 | Capability not supported. Possible causes:  1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 6700101  | Session service is not running. |
+ 
+**示例：**
+ 
+```ts
+import { avSession } from '@kit.AVSessionKit';
+ 
+avSession.startAVPlaybackForAudioZone("100", "com.example.myapplication", "121278").then(() => {
+  console.info('Succeeded in starting AV playbackForAudioZone.');
 });
 ```
 
