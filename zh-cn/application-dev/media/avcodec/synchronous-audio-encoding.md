@@ -275,7 +275,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        while (true) {
            CHECK_AND_BREAK_LOG(isStarted_, "Audio encoder sync thread out");
-           // 收到 EOS 后停止提交新输入，但输出线程仍会继续排空已编码样本。
+           // 收到EOS后停止提交新输入，但输出线程仍会继续排空已编码样本。
            if (isEos_.load()) {
                AVCODEC_SAMPLE_LOGI("Audio input thread received EOS signal, stopping input");
                break;
@@ -293,7 +293,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            auto buffer = audioEncoder_->GetInputBuffer(bufferInfo, TIMEOUT_US);
            if (buffer == nullptr) {
                if (bufferInfo.bufferIndex != std::numeric_limits<uint32_t>::max()) {
-                   // Query 已成功但 Get 失败时，索引可能仍由应用持有；结束会话交由 codec 回收。
+                   // Query已成功但Get失败时，索引可能仍由应用持有；结束会话交由codec回收。
                    AbortRecording("Synchronous audio input buffer retrieval failed");
                    break;
                }
@@ -418,14 +418,14 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            AVCODEC_SAMPLE_LOGW(
                "Audio Out buffer sync count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
                audioEncContext_->outputFrameCount, bufferInfo.attr.size, bufferInfo.attr.flags, bufferInfo.attr.pts);
-           // Muxer 写入不接管 Buffer，写入后仍需显式归还给音频编码器。
+           // Muxer写入不接管Buffer，写入后仍需显式归还给音频编码器。
            muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo.buffer,
                                bufferInfo.attr);
            int32_t ret = audioEncoder_->FreeOutputData(bufferInfo.bufferIndex);
            CHECK_AND_BREAK_LOG(ret == AVCODEC_SAMPLE_ERR_OK, "Encoder output thread out");
            CHECK_AND_BREAK_LOG(!(bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS), "Catch EOS, thread out");
        }
-       // 同步模式仍由视频线程触发释放；音频先结束时，视频仍在使用 Muxer。
+       // 同步模式仍由视频线程触发释放；音频先结束时，视频仍在使用Muxer。
        AVCODEC_SAMPLE_LOGI("Audio output thread exited, waiting for video thread to trigger release");
    }
    ```
