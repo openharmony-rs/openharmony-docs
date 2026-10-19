@@ -460,7 +460,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       let isExposureSupported = session?.isExposureModeSupported(ExposureMode);
   
       // 设置曝光模式。
-      if (hasFlash) {
+      if (isExposureSupported) {
         session?.setExposureMode(ExposureMode);
       }
     }
