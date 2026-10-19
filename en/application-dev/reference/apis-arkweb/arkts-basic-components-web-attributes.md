@@ -725,9 +725,9 @@ Sets the color of the text input caret and text selection handles in the Web com
 
 > **NOTE**
 >
-> - When this attribute is not set or is reset, the caret uses the web page's CSS `caret-color` result. If the CSS value is `auto` or is not set, the engine's default caret color is used. Selection handles use the current theme colors.
+> - When this attribute is not set or is reset, the caret uses the web page's CSS `caret-color` result. If the CSS value is `auto` or is not set, the engine's default caret color (currently `#0A59F7`) is used. Selection handles use the current theme colors.
 > - A non-zero API color takes precedence over CSS `caret-color`, including an explicit CSS color and `transparent`.
-> - The exact parsed color value `0x00000000` resets the API color override and restores the CSS and theme behavior. Use the string `'#00000000'` to reset the attribute. Numeric `0` has its alpha component filled by color parsing and cannot be used for this reset.
+> - The exact parsed color value `0x00000000` resets the API color override and restores the CSS and theme behavior. Use the string `'#00000000'` to reset the attribute. Passing `undefined` or `null` also resets the attribute. Numeric `0` has its alpha component filled by color parsing and cannot be used for this reset.
 > - This attribute affects the input caret, the outer ring of the selection handles, and their connecting lines. It does not change the inner ring or the text selection background.
 > - Applications must provide appropriate colors for light and dark modes, for example through theme-specific color resources or by listening for mode changes and setting a new color. This attribute does not automatically choose suitable colors or guarantee contrast.
 
@@ -741,7 +741,7 @@ Sets the color of the text input caret and text selection handles in the Web com
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | --------- | ----------- |
-| value | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Yes | Color of the text input caret and selection handles. A non-zero color overrides the page's CSS caret color. The string `'#00000000'` resets the color override. |
+| value | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Yes | Color of the text input caret and selection handles. A non-zero color overrides the page's CSS caret color. The string `'#00000000'`, `undefined`, or `null` resets the color override. |
 
 **Example**
 
