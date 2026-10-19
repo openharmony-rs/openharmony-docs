@@ -419,6 +419,25 @@
 | defaultDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 |
 | customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗、模态窗、全局悬浮窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
 
+## WindowFocusState
+
+窗口焦点状态的变化信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| isFocused | boolean | 否 | 否 | 窗口是否获焦，true表示获焦，false表示未获焦。 |
+| focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | 否 | 否 | 焦点状态变化的原因。 |
+| nextFocusedWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
+| prevFocusedWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
+
 ## WindowInfoOptions
 
 窗口布局信息过滤选项。
