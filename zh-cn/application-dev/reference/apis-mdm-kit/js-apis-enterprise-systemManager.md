@@ -1904,6 +1904,7 @@ addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010  | A conflict policy has been configured.|
 | 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
 | 9200019  | The policy list has exceeded the limit. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -1964,7 +1965,8 @@ removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. | 
-| 9200012  | Parameter verification failed. |                
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |                
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2025,6 +2027,7 @@ getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array&l
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -2082,6 +2085,7 @@ addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010  | A conflict policy has been configured.|
 | 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
 | 9200019  | The policy list has exceeded the limit. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -2144,7 +2148,8 @@ removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): voi
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. | 
-| 9200012  | Parameter verification failed. |                
+| 9200012  | Parameter verification failed. | 
+| 9200016  | Service timeout. |               
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2205,6 +2210,7 @@ getAllowedPrinterIPAddressesForAccount(queryPolicy?: common.QueryPolicy): Array&
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
