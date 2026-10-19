@@ -623,6 +623,7 @@ extensionAbilities示例：
 |awc/webpage|通用网页浏览的ExtensionAbility。|
 |awc/newsfeed|信息流资讯业务的ExtensionAbility。|
 |assetCache<sup>24+</sup>|提供通用应用数据缓存能力的ExtensionAbility。三方应用配置不生效，当前配置仅在系统应用中有效。|
+|ukeyAuth|UKey认证扩展能力[UkeyAuthExtensionAbility](../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md)。从API版本26.0.1开始，支持该标签。|
 <!--RP9--><!--RP9End-->
 
 ## shortcuts标签
