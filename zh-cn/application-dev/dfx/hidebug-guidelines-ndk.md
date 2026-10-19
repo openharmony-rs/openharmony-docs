@@ -188,9 +188,11 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
 4. 编辑“CMakeLists.txt”文件，添加库依赖：
 
-   ```cmake
+   <!-- @[TestHidebugNdk_CMakeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    # 新增动态库依赖libohhidebug.so和libhilog_ndk.z.so（日志输出）
-   add_library(entry SHARED napi_init.cpp test_backtrace.cpp)
+   add_library(entry SHARED napi_init.cpp test_backtrace.cpp test_async_context.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhidebug.so)
    ```
 
@@ -203,6 +205,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    #include "hidebug/hidebug.h"
    #include "hilog/log.h"
    #include "test_backtrace.h"
+   #include "test_async_context.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -230,7 +233,13 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
                "GetAppThreadCpuUsage: threadId %{public}d, cpuUsage: %{public}f", cpuUsage->threadId, cpuUsage->cpuUsage);
            cpuUsage = cpuUsage->next; // 获取下一个线程的cpu使用率对象指针。
        }
-       OH_HiDebug_FreeThreadCpuUsage(&cpuUsage); // 释放内存，防止内存泄露。
+       OH_HiDebug_FreeThreadCpuUsage(&cpuUsage); // 释放内存，防止内存泄漏。
+       return nullptr;
+   }
+   
+   napi_value TestAsyncContext(napi_env env, napi_callback_info info)
+   {
+       TestAsyncContextChain();
        return nullptr;
    }
    ```
@@ -243,15 +252,18 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    napi_property_descriptor desc[] = {
        { "testGetThreadCpuUsage", nullptr, TestGetThreadCpuUsage, nullptr, nullptr, nullptr, napi_default, nullptr },
        { "testBackTrace", nullptr, TestBackTrace, nullptr, nullptr, nullptr, napi_default, nullptr },
+       { "testAsyncContext", nullptr, TestAsyncContext, nullptr, nullptr, nullptr, napi_default, nullptr },
    };
    ```
 
 6. 编辑“index.d.ts”文件，声明ArkTS接口：
+
    <!-- @[TestHidebugNdk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
    ``` TypeScript
    export const testGetThreadCpuUsage: () => void;
    export const testBackTrace: () => void;
+   export const testAsyncContext: () => void;
    ```
 
 7. 编辑“Index.ets”文件，添加触发接口调用的按钮，示例代码如下：
@@ -280,6 +292,10 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    function testGetThreadCpuUsage() : void {
      testNapi.testGetThreadCpuUsage();
    }
+   
+   function testAsyncContext() : void {
+     testNapi.testAsyncContext();
+   }
    ```
    添加按钮以触发接口调用：
    <!-- @[TestHidebugNdk_Buttons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
@@ -306,6 +322,17 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
      .height('5%')
      // 添加点击事件
      .onClick(testBackTrace);
+
+   Button('testAsyncContext')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // 添加点击事件
+     .onClick(testAsyncContext);
    ```
 
 步骤二：运行工程
