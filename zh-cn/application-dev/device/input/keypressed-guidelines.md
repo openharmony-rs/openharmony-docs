@@ -18,16 +18,20 @@
 
 ## 接口说明
 
-按键按下事件常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer (全局快捷键)](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
+按键按下事件常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer (全局快捷键)](../../reference/apis-input-kit/js-apis-inputconsumer.md)和[@ohos.multimodalInput.inputDevice (输入设备)](../../reference/apis-input-kit/js-apis-inputdevice.md)。
 
 | 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
+| getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void | 获取所有输入设备的ID列表。 |
+| supportKeysSync(deviceId: number, keys: Array&lt;KeyCode&gt;): Array&lt;boolean&gt; | 查询指定id的输入设备对指定键值的支持情况。 |
 | on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void | 订阅按键按下事件。 |
 | off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void | 取消对'keyPressed'事件的订阅。 |
 
 ## 开发步骤
 
 应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeronkeypressed16)方法订阅按键按下事件，应用关闭时再用[off](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeroffkeypressed16)方法取消订阅按键按下事件。
+
+若订阅的系统功能键为非设备通用键值（如智控键上滑、智控键下滑），订阅前需先查询设备是否支持相关键值的事件上报：调用[inputDevice.getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法获取所有输入设备的ID列表，遍历设备并调用[inputDevice.supportKeysSync](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicesupportkeyssync10)方法查询设备是否支持目标键值；若设备不支持，则不订阅该键值，并关闭对应的功能入口。音量键、多媒体键等设备通用键值无需查询，可直接订阅。
 
 ### 应用内优先响应系统功能键
 
