@@ -56,7 +56,7 @@ Navigation标题栏支持通过应用级开启、组件级开启方式开启沉�
 
 ## 弹窗类组件
 
-弹窗类组件包括Toast、Popup、Tips、Menu和Dialog（包含AlertDialog、CustomDialog及各类PickerDialog）。这些组件是浮层元素，在内容之上建立视觉层次。沉浸式系统材质让弹窗背景呈现轻盈通透的质感，底层内容透过材质层自然透出，配合折射、高光、阴影等多层效果，使弹窗在内容之上建立清晰的视觉层次。沉浸式空间动效为弹窗和菜单的弹出过程增添形变、流光等动态表现，使弹出过程灵动自然。
+弹窗类组件包括Toast、Popup、Tips、Menu和Dialog（包含AlertDialog、CustomDialog及各类PickerDialog）。这些组件是浮层元素，在内容之上建立视觉层次。沉浸式系统材质让弹窗背景呈现轻盈通透的质感，底层内容透过材质层自然透出，配合折射、高光、阴影等多层效果，使弹窗在内容之上建立清晰的视觉层次。沉浸式空间动效为弹窗和菜单的弹出过程增添形变、流光等动态表现，使弹出过程灵动自然。弹窗类组件通常使用较厚的材质样式（THICK或ULTRA_THICK），以获得更强的背景模糊效果，确保弹窗内容与背景内容之间有清晰的视觉分离。沉浸光感开启后，主动设置的背景色、背景模糊等自定义样式属性不生效。
 
 ### 即时反馈（Toast）
 
@@ -106,7 +106,7 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 bindSheet半模态转场仅支持通过组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，bindSheet半模态转场不会默认开启沉浸光感，半模态页面的背板样式仍由已设置的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、背景模糊等属性决定。
+应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，bindSheet半模态转场不会默认开启沉浸光感。
 
 组件级开启：bindSheet支持通过[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial字段设置沉浸光感效果。systemMaterial默认值为undefined，无默认沉浸光感效果，需显式设置后生效。设置systemMaterial后，其影响的背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)等属性不再生效，不建议与上述属性一起使用。
 
