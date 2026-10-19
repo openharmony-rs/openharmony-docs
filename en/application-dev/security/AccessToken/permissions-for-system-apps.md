@@ -9744,3 +9744,17 @@ Allows an application to subscribe to SteerWheelButton (SWB) key events.
 **Supported devices**: cars
 
 **Since**: 26.0.1
+
+## ohos.permission.CONNECT_AGENT_FROM_BACKGROUND
+
+Allows a system application to connect an agent in the background.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets |  TVs | wearables | cars
+
+**Valid since**: 26.2.0
