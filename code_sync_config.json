@@ -48697,5 +48697,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/avsession/using-avsession-developer.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets",
+				"functions":[
+					{
+						"end_line":180,
+						"name":"setAVSessionInformation",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets",
+				"functions":[
+					{
+						"end_line":210,
+						"name":"fixedPlaybackControlCommands",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/avsession/using-switch-call-devices.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"create_castPickerHelper",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
