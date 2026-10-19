@@ -61,7 +61,7 @@
 
   场景2：在自由多窗模式下，应用都会被强制成小窗显示。此时，若应用修改旋转策略，均不会触发旋转。
 
-此外，应用的显示方向跟传感器强相关。在无传感器的设备上（如TV）或传感器旋转被禁用的设备上（如PC模式），设置旋转策略不会生效：可正常调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口，但实际应用方向不会变化。
+此外，应用的显示方向跟传感器强相关。在无传感器的设备上（如TV）或传感器旋转被禁用的设备上（如[电脑模式](../windowmanager/window-terminology.md#pc-mode电脑模式)），设置旋转策略不会生效：可正常调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口，但实际应用方向不会变化。
 
 
 ## 旋转策略及设备差异性
