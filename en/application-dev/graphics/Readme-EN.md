@@ -58,7 +58,7 @@
 
     - [Drawing Geometric Shapes (ArkTS)](geometric-shape-drawing-arkts.md)
 
-    - [Drawing Images](pixelmap-drawing-arkts.md)
+    - [Drawing Images (ArkTS)](pixelmap-drawing-arkts.md)
 
     - [Drawing TextBlobs (ArkTS)](textblock-drawing-arkts.md)
 
