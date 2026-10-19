@@ -2992,7 +2992,7 @@ struct Index {
   // 监听器回调。
   static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
     console.info(`focusedElement:  ${JSON.stringify(data.focusedElement)}`);
-    console.info(`unfocusedElement: ${JSON.stringify(data.focusedElement)}`);
+    console.info(`unfocusedElement: ${JSON.stringify(data.unfocusedElement)}`);
   }
 
   aboutToAppear(): void {
@@ -3068,7 +3068,7 @@ struct Index {
   // 监听器回调。
   static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
     console.info(`focusedElement:  ${JSON.stringify(data.focusedElement)}`);
-    console.info(`unfocusedElement: ${JSON.stringify(data.focusedElement)}`);
+    console.info(`unfocusedElement: ${JSON.stringify(data.unfocusedElement)}`);
   }
 
   aboutToAppear(): void {
