@@ -16,7 +16,7 @@
 | 视频播放 | [AVPlayerNDKVideo](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKVideo) | 使用AVPlayer（C/C++）完整播放一个视频，演示NDK接口端到端播放 | C/C++ |
 | 流媒体播放 | [AVPlayerNDKStreamingMedia](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia) | 使用AVPlayer（C/C++）播放流媒体，演示NDK接口的流媒体播放全流程 | C/C++ |
 | 音视频录制 | [AVRecorderNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVRecorder/AVRecorderNDK) | 使用AVRecorder（C/C++）录制音频，演示录制状态机全流程 | C/C++ |
-| 屏幕录制 | [ScreenCaptureSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample) | 使用AVScreenCapture录屏，覆盖ArkTS/C++的录屏写文件、窗口级录屏、矩形区域录制、自定义场景 | ArkTS和C/C++ |
+| 屏幕录制 | [ScreenCaptureSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample) | 使用AVScreenCapture录屏，覆盖ArkTS/C++的录屏写文件、窗口级录屏、矩形区域录制、自定义场景 | C/C++ |
 | 元数据提取 | [AVMetadataExtractorNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK) | 使用AVMetadataExtractor（C/C++）提取音频资源的元数据 | C/C++ |
 | 视频缩略图 | [AVImageGeneratorNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK) | 使用AVImageGenerator（C/C++）获取视频资源的缩略图 | C/C++ |
 | 视频转码 | [AVTranscoderNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK) | 使用AVTranscoder（C/C++）视频转码，演示开始-暂停-恢复-完成全流程 | C/C++ |
