@@ -1666,3 +1666,5 @@ The following figures show the effect.
 | -------- | -------- |
 | Punctuation compression disabled | ![en-us_image_complexArkTsDemo11_1](figures/en-us_image_complexArkTsDemo11_1.png) |
 | Punctuation compression enabled | ![en-us_image_complexArkTsDemo11_2](figures/en-us_image_complexArkTsDemo11_2.png) |
+
+<!--no_check-->

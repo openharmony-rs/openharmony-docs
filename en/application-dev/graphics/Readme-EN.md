@@ -31,7 +31,7 @@
     - [Basic Drawing Effects (C/C++)](basic-drawing-effect-c.md)
     - [Complex Drawing Effects (C/C++)](complex-drawing-effect-c.md)
   - Primitive Drawing<!--primitive-drawing-->
-    - [Overview of Primitive Drawing](primitive-drawing-overview.md)
+    - [Drawing Primitives](primitive-drawing-overview.md)
     - [Drawing Geometric Shapes (ArkTS)](geometric-shape-drawing-arkts.md)
     - [Drawing Images](pixelmap-drawing-arkts.md)
     - [Drawing TextBlobs (ArkTS)](textblock-drawing-arkts.md)
@@ -67,4 +67,4 @@
   - [NativeWindow Development (C/C++)](native-window-guidelines.md)
   - [GPU/CPU Memory Access Sync (C/C++)](native-fence-guidelines.md)
   - [Common Stability Issues with Graphics Buffers (C/C++)](native-common-mistakes.md)  
-- [Graphics Development Terms](graphic-term.md)
+- [Glossary](graphic-term.md)

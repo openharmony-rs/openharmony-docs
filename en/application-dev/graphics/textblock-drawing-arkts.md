@@ -406,3 +406,5 @@ The following samples are provided to help you better understand how to use the 
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->
+
+<!--no_check-->
