@@ -1916,7 +1916,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 调用方充当GATT客户端，发起和远端BLE设备连接，通过参数autoConnect设置是否直接连接到远端设备或者在远端设备可用时自动重连。
 
 - 若要实现在远端设备可用时自动重连（即[autoConnect](#gattsetting)为true），需保证client端[createGattClientDevice](#blecreategattclientdevice-1)发起连接，并设置[autoConnect](#gattsetting)为true。
-- server端可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件感知连接状态。
+- server端可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件感知连接状态。
 - 当server端想要断开连接时，可主动调用[disconnect](#disconnect)。
 
 **起始版本**：26.0.0
@@ -3435,7 +3435,7 @@ refreshServices(): Promise&lt;void&gt;
 
 client端刷新已连接server端设备的服务缓存。使用Promise异步回调。
 
-- 调用本接口后会清空server端服务的缓存，并异步重新执行服务发现。刷新请求下发到蓝牙服务后Promise随即解决（resolved），无需等待服务发现完成；可通过[getServices](#getservices)方法获取刷新后的服务列表。
+- 调用本接口后会清空client端缓存的server端服务信息，并异步重新执行服务发现。刷新请求下发成功后Promise随即解决（resolved），无需等待服务发现完成，可通过[getServices](#getservices)方法获取刷新后的服务列表。
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 
@@ -3486,7 +3486,7 @@ let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
         });
     }
 };
-device.on('connectionStateChange', connectStateChanged);
+device.on('BLEConnectionStateChange', connectStateChanged);
 try {
     device.connect();
 } catch (error) {

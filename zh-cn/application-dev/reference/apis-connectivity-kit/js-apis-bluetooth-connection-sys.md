@@ -1045,7 +1045,7 @@ getBleMacByBrMac(brMac: string): string
 
 本接口用于在已配对设备列表中识别同一双模设备的BR入口与BLE入口：入参brMac为已配对对端设备的真实BR地址，返回值为同一对端设备的真实BLE地址。若对端设备未配对，则抛出错误码2900016；若该BR地址无关联的BLE地址，则抛出错误码2900017。
 
-**起始版本**： 27.0.0
+**起始版本**： 26.2.0
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -1078,8 +1078,8 @@ getBleMacByBrMac(brMac: string): string
 |801 | Capability not supported. |
 |2900003 | Bluetooth disabled. |
 |2900016 | Device unpaired. |
-|2900099 | Operation failed. |
 |2900017 | No BLE address is associated with the input BR address. |
+|2900099 | Operation failed. |
 
 **示例**：
 
