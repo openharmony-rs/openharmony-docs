@@ -88,5 +88,5 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装，解封装�
   ![](figures/avcodec-muxer-demuxer-logic.png)
 
   具体开发指导请参考[媒体数据封装](audio-video-muxer.md)和[媒体数据解封装](audio-video-demuxer.md)。
-
+<!--RP2--> <!--RP2End-->
 <!--RP1--> <!--RP1End-->
