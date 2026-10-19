@@ -245,3 +245,19 @@ if (!hashSet.has(value)) {
 }
 ```
 
+## 解析包含大量数字键的JSON字符串
+
+当需要将包含大量数字键的JSON字符串转换为Sendable对象时，可以使用[JSON.parseSendable](../reference/apis-arkts/js-apis-json.md#jsonparsesendable)接口进行处理。
+
+```ts
+import { JSON, lang } from '@kit.ArkTS';
+
+// 1021个数字键
+let parts1021: string[] = [];
+for (let i = 0; i < 1021; i++) {
+  parts1021.push('"' + i + '": ' + i);
+}
+let numericObj1021: lang.ISendable | null = JSON.parseSendable('{' + parts1021.join(',') + '}');
+console.info(`result: ${(numericObj1021 as object)?.[0]}`); // result: 0
+console.info(`result: ${(numericObj1021 as object)?.[1020]}`); // result: 1020
+```
