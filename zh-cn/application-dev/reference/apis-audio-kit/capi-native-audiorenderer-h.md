@@ -166,6 +166,41 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数renderer为nullptr。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：执行状态异常。 |
 
+### OH_AudioRenderer_Standby()
+
+```c
+OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool on)
+```
+
+**描述**
+
+进入或退出音频standby状态。
+
+standby状态用于音频播放过程中暂时无数据的场景（例如流媒体等待网络下载）。进入standby后，数据请求回调暂停，已写入系统的缓存数据继续播放完毕，服务端在一段时间收不到数据后会自动进入低功耗standby。退出standby后，数据回调恢复。
+
+> **注意：**
+>
+> - 仅在STATE_RUNNING状态下可调用standby进入（on为true），仅在standby状态下可调用standby退出（on为false）。
+> - standby状态不改变OH_AudioStream_State，流状态仍为STATE_RUNNING。
+> - standby状态下可直接调用OH_AudioRenderer_Pause、OH_AudioRenderer_Stop、OH_AudioRenderer_Release，但不可调用OH_AudioRenderer_Start，调用Start会返回AUDIOSTREAM_ERROR_ILLEGAL_STATE。
+> - Pause、Stop、Release不会退出standby状态。如果应用在standby状态下Stop后重新Start，需要先调用OH_AudioRenderer_Standby(renderer, false)退出standby。
+> - 仅AUDIOSTREAM_USAGE_MUSIC、AUDIOSTREAM_USAGE_MOVIE、AUDIOSTREAM_USAGE_GAME、AUDIOSTREAM_USAGE_AUDIOBOOK类型的播放流支持standby，其他类型调用会返回AUDIOSTREAM_ERROR_ILLEGAL_STATE。
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| bool on | 进入或退出standby状态。true：进入；false：退出。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数renderer为nullptr。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：当前状态不允许该操作。 |
+
 ### OH_AudioRenderer_Flush()
 
 ```c

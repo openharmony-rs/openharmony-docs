@@ -723,6 +723,66 @@ audioRenderer.release().then(() => {
 });
 ```
 
+## standby<sup>26.2.0+</sup>
+
+standby(on: boolean): Promise\<void>
+
+进入或退出音频standby状态。使用Promise异步回调。
+
+standby状态用于音频播放过程中暂时无数据的场景（例如流媒体等待网络下载）。进入standby后，数据请求回调暂停，应用主动写入数据会被拒绝，已写入系统的缓存数据继续播放完毕，服务端在一段时间收不到数据后会自动进入低功耗standby。退出standby后，数据回调恢复。
+
+> **注意：**
+>
+> - 仅在STATE_RUNNING状态下可调用standby(true)进入standby，仅在standby状态下可调用standby(false)退出。
+> - standby状态不改变[AudioState](arkts-apis-audio-e.md#audiostate8)，流状态仍为STATE_RUNNING，不影响AudioStreamManager监听的流状态。
+> - standby状态下可直接调用[pause](#pause8)、[stop](#stop8)、[release](#release8)，但不可调用[start](#start8)，调用start会返回错误码6800103。
+> - pause、stop、release不会退出standby状态。如果应用在standby状态下pause或stop后重新start，需要先调用standby(false)退出standby。
+> - 仅STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME、STREAM_USAGE_AUDIOBOOK类型的播放流支持standby，其他类型调用会返回错误码6800103。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                      |
+| ------ | ------- | ---- | --------------------------------------------------------- |
+| on     | boolean | 是   | 进入或退出standby状态。true：进入；false：退出。         |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------ |
+| 6800103  | The operation is not allowed in the current state. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 进入standby状态。
+audioRenderer.standby(true).then(() => {
+  console.info('Succeeded in entering standby.');
+  // 数据回调已暂停，已写入的缓存继续播放。
+}).catch((err: BusinessError) => {
+  console.error(`Failed to enter standby. Code: ${err.code}, message: ${err.message}`);
+});
+
+// 退出standby状态。
+audioRenderer.standby(false).then(() => {
+  console.info('Succeeded in exiting standby.');
+  // 数据回调恢复。
+}).catch((err: BusinessError) => {
+  console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getAudioTime<sup>8+</sup>
 
 getAudioTime(callback: AsyncCallback\<number>): void
