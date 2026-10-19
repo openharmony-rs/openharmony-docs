@@ -96,7 +96,6 @@
    // 创建一个段落生成器
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
    ```
-   
    ArkTS-Sta示例：
    <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/CustomFont/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -110,7 +109,6 @@
    // 创建一个段落生成器
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
    ```
-   
 5. 生成段落。
 
    <!-- @[arkts_custom_font_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
