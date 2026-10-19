@@ -6705,3 +6705,17 @@ Allows an application to skip enterprise re-signing certificate verification.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
  
 **Since**: 26.0.1
+
+## ohos.permission.SOFTBUS_MANAGER_RESOURCE
+
+Allows a system application to manage SoftBus resources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+
+**Valid since**: 26.0.1

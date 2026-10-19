@@ -6721,6 +6721,7 @@
 **支持设备**：Tablet | PC/2in1
 
 **起始版本**：26.0.1
+
 ## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
  
 允许应用跳过企业重签名证书校验。
@@ -6733,4 +6734,18 @@
  
 **支持设备**：Phone | PC/2in1 | Tablet
  
+**起始版本**：26.0.1
+
+## ohos.permission.SOFTBUS_MANAGER_RESOURCE
+
+允许系统应用处理软总线资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Car | Phone | Tablet | TV | Wearable
+
 **起始版本**：26.0.1
